@@ -1,0 +1,121 @@
+{
+ "slide_title": "What is Machine Learning?",
+ "subtitle_or_header": "Machine Learning:",
+ "verbatim_text": {
+  "bullets": [
+   "Designing algorithms that can learn patterns from data (and exploit them)",
+   "Approach: human supplies training examples, the machine learns",
+   "Example: Show the machine a bunch of spam and legitimate emails and let it learn to predict if a new email is spam or not"
+  ],
+  "labels": [
+   "Machine Learning:",
+   "3"
+  ],
+  "equations": []
+ },
+ "layout": {
+  "arrangement": "Title centered at top in red; below it a large white content box with a thin red border containing a red bold lead-in 'Machine Learning:' followed by three bullets; a small yellow circle with the slide number '3' sits at the top-right corner of the slide frame; the whole slide sits inside a thin red rectangular frame on a light gray background",
+  "regions": [
+   {
+    "name": "slide frame",
+    "position": "full slide, thin red (#C00000) border rectangle inset slightly from edges",
+    "content": "light gray (#E8E8E8) background enclosing all content"
+   },
+   {
+    "name": "title",
+    "position": "top center, ~10-20% of slide height",
+    "content": "red (#C00000) bold title 'What is Machine Learning?'"
+   },
+   {
+    "name": "slide number badge",
+    "position": "top-right corner, small yellow circle",
+    "content": "number '3' in dark gray (#333333) text on a yellow (#FFF9C4) circle"
+   },
+   {
+    "name": "content box",
+    "position": "middle, spanning ~8-92% width and ~25-95% height",
+    "content": "white (#FFFFFF) box with thin red (#C00000) border containing the bold red lead-in 'Machine Learning:' and three bullets: bullet 1 with a yellow (#FFFF00) highlight behind 'learn patterns from data', bullet 2 starting with bold red 'Approach:', and bullet 3 starting with bold red 'Example:' and ending with the phrase 'let it learn to predict if a new email is spam or not' in blue (#0000CC)"
+   }
+  ],
+  "hierarchy": "Red (#C00000) bold title dominates at top; inside the box, red bold lead-in 'Machine Learning:' and red bold keywords 'Approach:' and 'Example:' stand out; body text is black (#000000); the phrase 'learn patterns from data' is highlighted in yellow (#FFFF00); the phrase 'let it learn to predict if a new email is spam or not' is colored blue (#0000CC)"
+ },
+ "visual_elements": [
+  {
+   "type": "highlight-box",
+   "description": "Yellow highlight behind the phrase 'learn patterns from data' in the first bullet",
+   "colors": [
+    "#FFFF00"
+   ],
+   "position": "first bullet, middle of line"
+  },
+  {
+   "type": "other",
+   "description": "Small yellow circle badge containing slide number '3'",
+   "colors": [
+    "#FFF9C4",
+    "#333333"
+   ],
+   "position": "top-right corner of slide frame"
+  },
+  {
+   "type": "other",
+   "description": "Thin red rectangular borders: one framing the entire slide, one framing the inner white content box",
+   "colors": [
+    "#C00000"
+   ],
+   "position": "slide perimeter and around content box"
+  }
+ ],
+ "imagery": [],
+ "colors": {
+  "background": "#E8E8E8",
+  "title_text": "#C00000",
+  "body_text": "#000000",
+  "accents": [
+   "#C00000",
+   "#FFFF00",
+   "#0000CC",
+   "#FFF9C4",
+   "#333333",
+   "#FFFFFF"
+  ]
+ },
+ "typography_notes": "Sans-serif throughout; title is large, bold, red (#C00000), centered; lead-in 'Machine Learning:' is bold red (#C00000); keywords 'Approach:' and 'Example:' are bold red (#C00000) inline at bullet starts; body text is regular black (#000000); the phrase 'let it learn to predict if a new email is spam or not' is blue (#0000CC); standard round bullet markers",
+ "animation_state": "Static and fully built: all three bullets, the yellow highlight, and the blue phrase are visible; no partial reveal",
+ "recreation_brief": "1. Background: set the entire slide background to light gray #E8E8E8.\n2. Outer frame: draw a thin red #C00000 rectangle border inset slightly from all four slide edges so it frames the whole slide.\n3. Title: place the exact text 'What is Machine Learning?' centered horizontally in the top band of the slide (~10-20% of slide height), in large bold red #C00000 sans-serif type.\n4. Slide-number badge: draw a small yellow #FFF9C4 filled circle at the top-right corner of the slide frame and center the number '3' inside it in dark gray #333333 text.\n5. Content box: draw a white #FFFFFF rectangle with a thin red #C00000 border spanning ~8-92% of slide width and ~25-95% of slide height, positioned in the middle-lower area below the title.\n6. Lead-in: inside the content box at its top, place the bold red #C00000 sans-serif text 'Machine Learning:' (this is the slide's header/lead-in; do not repeat it under the title).\n7. Bullet 1: below the lead-in, place a round black bullet marker followed by the exact text 'Designing algorithms that can learn patterns from data (and exploit them)' in regular black #000000 sans-serif, with a yellow #FFFF00 highlight fill behind the phrase 'learn patterns from data'.\n8. Bullet 2: place a round black bullet marker followed by the exact text 'Approach: human supplies training examples, the machine learns', with 'Approach:' in bold red #C00000 and the remainder in regular black #000000 sans-serif.\n9. Bullet 3: place a round black bullet marker followed by the exact text 'Example: Show the machine a bunch of spam and legitimate emails and let it learn to predict if a new email is spam or not', with 'Example:' in bold red #C00000, the phrase 'let it learn to predict if a new email is spam or not' in blue #0000CC, and all remaining words in regular black #000000 sans-serif.\n10. Final check: the slide is static and fully built \u2014 all three bullets, the yellow highlight, and the blue phrase are visible; there are no images, charts, or animations.",
+ "validation": {
+  "verdict": "PASS_WITH_FIXES",
+  "fixes_applied": [
+   "Filled subtitle_or_header (was null) with 'Machine Learning:', the bold red lead-in that functions as the content-box header, as attested by verbatim_text.labels, layout.hierarchy, and typography_notes; recreation step 6 pins its placement inside the content box so it is not duplicated under the title.",
+   "Extended colors.accents with #333333 (badge number text color, specified in visual_elements) and #FFFFFF (white content-box fill, specified in layout.arrangement and layout.regions) so the colors object covers every color referenced elsewhere in the JSON.",
+   "Expanded layout.regions 'content box' content to explicitly cover the yellow #FFFF00 highlight behind 'learn patterns from data' (bullet 1) and the blue #0000CC phrase in bullet 3, so regions cover all items in visual_elements and verbatim_text.",
+   "Added exact hex color codes to layout.regions, layout.hierarchy, and typography_notes, which previously named colors only verbally.",
+   "Rewrote recreation_brief as a 10-step ordered checklist with one element per step, each specifying exact text, position (from layout.regions), hex colors, and shape (rectangle frame, rectangle content box, circle badge, round bullet markers), plus a final static-state check.",
+   "Made animation_state explicit: static, fully built, all three bullets plus the yellow highlight and blue phrase visible, no partial reveal."
+  ],
+  "uncertain_items": [
+   "Exact border thickness of the two red #C00000 rectangles (slide frame and content box) is not specified; the source says only 'thin'.",
+   "Exact inset distance of the outer red frame from the slide edges is not specified ('inset slightly').",
+   "Exact diameter of the yellow slide-number badge is not specified ('small circle').",
+   "Title and content-box geometry is approximate (title ~10-20% of slide height; content box ~8-92% width, ~25-95% height); exact pixel values are unverifiable from the JSON.",
+   "Font family and point sizes are unspecified beyond 'sans-serif' and a 'large' title.",
+   "Whether the yellow badge sits inside or overlaps the red frame at the top-right corner is not fully specified ('top-right corner of the slide frame')."
+  ],
+  "recreatability_score_1_to_10": 9
+ },
+ "_meta": {
+  "frame": "slide_003.jpg",
+  "model": "images",
+  "source_timestamps": {
+   "slide": 3,
+   "image": "slide_003.jpg",
+   "kept_frame": "frame_00181.jpg",
+   "start_sec": 110.0,
+   "end_sec": 180.0,
+   "frame_count": 71
+  },
+  "elapsed_s": 27.2,
+  "validated_by": "glm-5.3",
+  "validation_elapsed_s": 363.2
+ }
+}

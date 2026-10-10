@@ -1,0 +1,116 @@
+{
+ "slide_title": "K -Nearest Neighbors Algorithm",
+ "subtitle_or_header": "No separate subtitle; the header band contains only the centered title and the slide-number badge '41'",
+ "verbatim_text": {
+  "bullets": [
+   "Compute the test point's distance from each training point",
+   "Sort the distances in ascending (or descending) order",
+   "Use the sorted distances to select the K nearest neighbors",
+   "Use majority rule (for classification) or averaging (for regression)",
+   "Unlike other supervised learning algorithms,",
+   "K -Nearest Neighbors doesn't:",
+   "learn an explicit mapping f from the training data",
+   "It simply uses the training data at the test time to make predictions"
+  ],
+  "labels": [
+   "41",
+   "Note: K -Nearest Neighbors is called a non-parametric method"
+  ],
+  "equations": []
+ },
+ "layout": {
+  "arrangement": "Title centered at top of a gray header band; slide number '41' in a yellow circle at top-right; a large red-bordered content box below containing four main bullets, then a 'Note:' line, then a sub-section with one bullet, a red bold line, and two dash sub-bullets",
+  "regions": [
+   {
+    "name": "header band",
+    "position": "top, full width, ~0-15% height",
+    "content": "Title 'K -Nearest Neighbors Algorithm' centered; 'K -Nearest Neighbors' in red, 'Algorithm' in blue; yellow circle with '41' at top-right"
+   },
+   {
+    "name": "main content box",
+    "position": "middle, ~15-100% height, full width with margins",
+    "content": "Red-outlined box containing bulleted algorithm steps and the Note section"
+   },
+   {
+    "name": "bullets block",
+    "position": "upper part of content box, ~25-55% height",
+    "content": "Four round bullets describing the KNN steps"
+   },
+   {
+    "name": "note block",
+    "position": "lower part of content box, ~60-100% height",
+    "content": "Note line about non-parametric method, followed by bullet about supervised learning, red bold 'K -Nearest Neighbors doesn't:' line, and two dash sub-bullets"
+   }
+  ],
+  "hierarchy": "Title largest and boldest (red/blue); body bullets in black with key phrases in bold blue; emphasis line 'K -Nearest Neighbors doesn't:' in bold red; sub-bullets smaller with dash markers"
+ },
+ "visual_elements": [
+  {
+   "type": "highlight-box",
+   "description": "Large rectangular content area with a thin red/maroon border enclosing all body text",
+   "colors": [
+    "#B03030",
+    "#FFFFFF"
+   ],
+   "position": "below the header band, spanning ~15-100% of slide height and the full width with side margins"
+  },
+  {
+   "type": "icon",
+   "description": "Yellow circle badge containing the slide number '41' in dark text",
+   "colors": [
+    "#F5E97A",
+    "#333333"
+   ],
+   "position": "top-right corner of header band"
+  }
+ ],
+ "imagery": [],
+ "colors": {
+  "background": "#FFFFFF",
+  "title_text": "#CC0000",
+  "body_text": "#000000",
+  "accents": [
+   "#0000CC",
+   "#CC0000",
+   "#E8E8E8",
+   "#F5E97A"
+  ]
+ },
+ "typography_notes": "Sans-serif throughout. Title is large bold, split-colored: 'K -Nearest Neighbors' red, 'Algorithm' blue. Body bullets black with key words ('Compute', 'Sort', 'select the K nearest neighbors', 'majority rule') in bold blue. 'non-parametric' is underlined. 'K -Nearest Neighbors doesn't:' is bold red with 'doesn't' underlined. Sub-bullets use en-dash markers.",
+ "animation_state": "All content is fully revealed (no build animations). A mouse cursor is visible near the red 'doesn't' line \u2014 a live-recording artifact of the video frame, not an element of the slide to recreate.",
+ "recreation_brief": "1. Set the slide background to plain white (#FFFFFF).\n2. Draw the header band: a light-gray (#E8E8E8) rectangle spanning the full slide width, from the top edge down to about 15% of slide height, with no border.\n3. Center the title 'K -Nearest Neighbors Algorithm' in the header band in large bold sans-serif, split-colored: 'K -Nearest Neighbors' in red (#CC0000) and 'Algorithm' in blue (#0000CC).\n4. Place a yellow (#F5E97A) circle badge in the top-right corner of the header band containing the number '41' in dark (#333333) text.\n5. Draw the content box: a large rectangle with a thin red/maroon (#B03030) border and no fill (the white background shows through), spanning the full width with side margins and from about 15% to 100% of slide height.\n6. In the upper part of the content box (about 25-55% of slide height), add four round-bulleted lines in black sans-serif, each with one bold blue (#0000CC) key phrase: (a) 'Compute the test point's distance from each training point' with 'Compute' bold blue; (b) 'Sort the distances in ascending (or descending) order' with 'Sort' bold blue; (c) 'Use the sorted distances to select the K nearest neighbors' with 'select the K nearest neighbors' bold blue; (d) 'Use majority rule (for classification) or averaging (for regression)' with 'majority rule' bold blue.\n7. Leave a blank line, then start the note block (about 60-100% of slide height) with the plain line 'Note: K -Nearest Neighbors is called a non-parametric method' in black, with 'non-parametric' underlined.\n8. Add a round bullet 'Unlike other supervised learning algorithms,' in black.\n9. Add the emphasis line 'K -Nearest Neighbors doesn't:' in bold red (#CC0000) with 'doesn't' underlined.\n10. Add two indented sub-bullets with en-dash markers in smaller black text: '\u2013 learn an explicit mapping f from the training data' and '\u2013 It simply uses the training data at the test time to make predictions'.",
+ "validation": {
+  "verdict": "PASS_WITH_FIXES",
+  "fixes_applied": [
+   "Filled the null subtitle_or_header field: documented that the slide has no separate subtitle and that the header band holds only the centered title plus the '41' badge.",
+   "Removed the unsupported 'thin red outline' on the header band from recreation_brief; neither layout nor visual_elements describes any border on the header band \u2014 only the content box carries the red (#B03030) border.",
+   "Replaced the vague position 'covers most of slide below header' in visual_elements with the exact coordinates from layout.regions (~15-100% of slide height, full width with side margins).",
+   "Made the bold-blue phrase for bullet 3 explicit ('select the K nearest neighbors') instead of the vague 'last phrase bold blue'.",
+   "Rewrote recreation_brief as a 10-step ordered checklist in which every step places exactly one element (or one homogeneous group) with its exact text, position, hex color, and marker shape.",
+   "Clarified in animation_state that the visible mouse cursor is a video-frame artifact and must not be recreated on the slide."
+  ],
+  "uncertain_items": [
+   "Exact font point sizes are not given; only relative hierarchy is known (title largest/boldest, sub-bullets smaller).",
+   "The recurring spacing 'K -Nearest Neighbors' (space before the hyphen) appears in the title, Note line, and emphasis line; kept verbatim as extracted \u2014 it may be a rendering/extraction artifact.",
+   "The content box fill cannot be distinguished between white (#FFFFFF) and transparent because the background is white; the brief specifies 'no fill'.",
+   "Whether the word 'Note:' itself is bold is not stated; only 'non-parametric' is explicitly described as underlined.",
+   "The second dash sub-bullet ('It simply uses the training data at the test time to make predictions') reads as a contrast rather than something KNN 'doesn't' do, but every layout field consistently places it as a sub-bullet under the red line, so it was kept as extracted."
+  ],
+  "recreatability_score_1_to_10": 8
+ },
+ "_meta": {
+  "frame": "slide_053.jpg",
+  "model": "images",
+  "source_timestamps": {
+   "slide": 53,
+   "image": "slide_053.jpg",
+   "kept_frame": "frame_03552.jpg",
+   "start_sec": 3459.0,
+   "end_sec": 3551.0,
+   "frame_count": 93
+  },
+  "elapsed_s": 36.9,
+  "validated_by": "glm-5.3",
+  "validation_elapsed_s": 345.9
+ }
+}

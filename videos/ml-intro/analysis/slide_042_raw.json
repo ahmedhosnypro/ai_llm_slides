@@ -1,0 +1,117 @@
+{
+  "slide_title": "K-NN: Computing the distances",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "The K-NN algorithm requires computing distances of the test example from each of the training examples",
+      "Several ways to compute distances",
+      "The choice depends on the type of the features in the data",
+      "Real-valued features (xi \u2208 R^D ): Euclidean distance is commonly used"
+    ],
+    "labels": [
+      "42 (slide number in yellow circle, top-right)",
+      "test (handwritten red annotation near sketch)"
+    ],
+    "equations": [
+      "d(x_i, x_j) = sqrt( sum_{m=1}^{D} (x_{im} - x_{jm})^2 ) = sqrt( ||x_i||^2 + ||x_j||^2 - 2 x_i^T x_j )"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top in red; below it a large red-bordered content box containing four bullets on the left and a hand-drawn red sketch on the right; a yellow highlighted equation box with blue border spans the bottom of the content box; slide number '42' in a yellow circle at top-right corner; whole slide framed by a thin red outer border on a light gray background",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top center, ~10-20% height",
+        "content": "Red bold title 'K-NN: Computing the distances'"
+      },
+      {
+        "name": "slide number",
+        "position": "top-right corner",
+        "content": "Yellow circle with '42'"
+      },
+      {
+        "name": "bullet list",
+        "position": "middle-left, ~25-70% height, left ~60% width",
+        "content": "Four black bullet points; phrases 'test example' and 'each of the training examples' highlighted in yellow; 'Euclidean' underlined"
+      },
+      {
+        "name": "hand-drawn sketch",
+        "position": "middle-right, ~30-70% height, right ~25% width",
+        "content": "Red ink sketch: a test point on the left with arrows fanning out to three training points on the right, labeled 'test'"
+      },
+      {
+        "name": "equation box",
+        "position": "bottom, ~72-92% height, full width of content box",
+        "content": "Yellow-filled box with blue border containing the Euclidean distance formula"
+      }
+    ],
+    "hierarchy": "Red bold title dominates; then black body bullets; yellow highlight draws attention to key phrases; yellow equation box is the visual anchor at the bottom; red sketch is secondary annotation"
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Yellow-filled rectangle with thin blue border containing the Euclidean distance equation: d(x_i, x_j) = sqrt( sum_{m=1}^{D} (x_{im} - x_{jm})^2 ) = sqrt( ||x_i||^2 + ||x_j||^2 - 2 x_i^T x_j )",
+      "colors": [
+        "#FFFF99",
+        "#0000CC",
+        "#000000"
+      ],
+      "position": "bottom of content box, spanning most of its width"
+    },
+    {
+      "type": "diagram",
+      "description": "Hand-drawn red digital-ink sketch: one point/node on the left labeled 'test' with three red arrows pointing rightward to three separate point/node sketches stacked vertically on the right, illustrating distance computation from test example to training examples",
+      "colors": [
+        "#CC0000"
+      ],
+      "position": "right side of content box, beside bullets 1-3"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle with dark outline containing black number '42' (slide number badge)",
+      "colors": [
+        "#FFFF66",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    },
+    {
+      "type": "other",
+      "description": "Yellow text highlighting on the phrases 'test example' and 'each of the training examples' in bullet 1",
+      "colors": [
+        "#FFFF00"
+      ],
+      "position": "within first bullet"
+    }
+  ],
+  "imagery": [
+    "Hand-drawn red ink sketch of a test point with arrows to three training points (digital pen annotation style), right side of slide"
+  ],
+  "colors": {
+    "background": "#F2F2F2",
+    "title_text": "#CC0000",
+    "body_text": "#000000",
+    "accents": [
+      "#FFFF00",
+      "#FFFF99",
+      "#CC0000",
+      "#0000CC"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout; title large, bold, red; body bullets medium black with round bullet markers; 'Euclidean' underlined; equation in italic math serif style; handwritten red annotations in casual pen style",
+  "animation_state": "Fully built; handwritten red annotations appear to be live ink added over the static slide",
+  "recreation_brief": "1. Set slide background to light gray (#F2F2F2) and add a thin red outer border rectangle around the whole slide. 2. Add centered bold red title 'K-NN: Computing the distances' near the top. 3. Add a yellow circle with dark outline at top-right containing '42'. 4. Draw a large red-bordered rectangle below the title occupying most of the slide. 5. Inside, left side, add four bullets: 'The K-NN algorithm requires computing distances of the test example from each of the training examples' (highlight 'test example' and 'each of the training examples' in yellow), 'Several ways to compute distances', 'The choice depends on the type of the features in the data', 'Real-valued features (xi \u2208 R^D ): Euclidean distance is commonly used' (underline 'Euclidean'). 6. On the right side, draw a red freehand sketch: a small node labeled 'test' on the left with three arrows fanning to three nodes on the right. 7. At the bottom of the content box, add a yellow-filled (#FFFF99) rectangle with blue border containing the equation d(x_i, x_j) = sqrt( sum_{m=1}^{D} (x_{im} - x_{jm})^2 ) = sqrt( ||x_i||^2 + ||x_j||^2 - 2 x_i^T x_j ) in black italic math font.",
+  "_meta": {
+    "frame": "slide_054.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 54,
+      "image": "slide_054.jpg",
+      "kept_frame": "frame_03608.jpg",
+      "start_sec": 3552.0,
+      "end_sec": 3607.0,
+      "frame_count": 56
+    },
+    "elapsed_s": 47.2
+  }
+}

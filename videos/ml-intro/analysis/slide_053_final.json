@@ -1,0 +1,169 @@
+{
+  "slide_title": "Example:  Distance without Normalization",
+  "subtitle_or_header": "Feature Vector  of bars:",
+  "verbatim_text": {
+    "bullets": [
+      "Feature Vector  of bars:",
+      "Squared distance between each vector and test vector"
+    ],
+    "labels": [
+      "Red Class",
+      "Blue Class",
+      "Green Class",
+      "Test",
+      "Weight (KG)",
+      "Length (cm)",
+      "Belongs to   Red Class",
+      "53"
+    ],
+    "equations": [
+      "Red Class vectors: (2, 100), (3, 150), (4, 200)",
+      "Blue Class vectors: (7, 150), (8, 200), (9, 250)",
+      "Green Class vectors: (12, 150), (13, 250), (14, 300)",
+      "Test vector: (7, 120)",
+      "Squared distances to Red Class: (425, 916, 6409)",
+      "Squared distances to Blue Class: (900, 6401, 16904)",
+      "Squared distances to Green Class: (925, 16936, 32449)",
+      "Result box: (7, 100) Belongs to Red Class"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title at top in dark red #B00020, with 'without' underlined; slide number '53' in a yellow circle at top-right. Below, a large thin red-bordered (#A00000) rectangle contains the content: 'Feature Vector  of bars:' header at top-left, then a row of four column groups (Red Class, Blue Class, Green Class, Test) each showing parenthesized vertical vectors of two stacked numbers (top = Weight (KG), bottom = Length (cm)) with row labels 'Weight (KG)' and 'Length (cm)' on the left \u2014 Red Class: (2/100), (3/150), (4/200); Blue Class: (7/150), (8/200), (9/250); Green Class: (12/150), (13/250), (14/300); Test: (7/120). Below that, a line 'Squared distance between each vector and test vector' followed by three parenthesized groups of three squared-distance values color-matched to their classes: red (425, 916, 6409), blue (900, 6401, 16904), green (925, 16936, 32449). Bottom-right inside the border is a pale yellow #F5F5DC result box with the vector (7, 100) and 'Belongs to   Red Class'.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top, spanning width, ~5-20% height",
+        "content": "Dark red bold title 'Example:  Distance without Normalization' with 'without' underlined"
+      },
+      {
+        "name": "slide number",
+        "position": "top-right corner",
+        "content": "Yellow circle with '53'"
+      },
+      {
+        "name": "content frame",
+        "position": "middle, ~25-95% height, full width with margins",
+        "content": "Thin dark-red #A00000 rectangular border enclosing all content"
+      },
+      {
+        "name": "feature vectors",
+        "position": "upper-middle inside frame",
+        "content": "Header 'Feature Vector  of bars:' at top-left; row labels 'Weight (KG)' (top row) and 'Length (cm)' (bottom row) at left; four column groups of parenthesized vertical vectors: Red Class (2/100, 3/150, 4/200), Blue Class (7/150, 8/200, 9/250), Green Class (12/150, 13/250, 14/300), Test (7/120)"
+      },
+      {
+        "name": "distances",
+        "position": "middle inside frame",
+        "content": "Caption line 'Squared distance between each vector and test vector', then three parenthesized groups of three squared-distance values: red (425, 916, 6409) with 425 circled in yellow #E8D44D, blue (900, 6401, 16904), green (925, 16936, 32449)"
+      },
+      {
+        "name": "result box",
+        "position": "bottom-right inside frame",
+        "content": "Pale yellow #F5F5DC box: vector (7, 100) followed by 'Belongs to   Red Class' with 'Red Class' in red"
+      }
+    ],
+    "hierarchy": "Title largest and dark red; class headers (Red/Blue/Green Class, Test) medium bold in class colors; vector numbers medium in class colors; distance numbers slightly smaller; result box text bold black with red 'Red Class'."
+  },
+  "visual_elements": [
+    {
+      "type": "table",
+      "description": "Vector grid: row labels 'Weight (KG)' and 'Length (cm)'. Red Class columns: (2 over 100), (3 over 150), (4 over 200). Blue Class: (7 over 150), (8 over 200), (9 over 250). Green Class: (12 over 150), (13 over 250), (14 over 300). Test: (7 over 120). Each vector wrapped in parentheses.",
+      "colors": [
+        "#C00000",
+        "#0000CC",
+        "#2E8B22",
+        "#000000"
+      ],
+      "position": "upper-middle of content frame"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Yellow circle highlight around the value '425' (the smallest squared distance) in the red distances group",
+      "colors": [
+        "#E8D44D"
+      ],
+      "position": "middle-left, around first red distance value"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pale yellow rounded rectangle result box containing vector (7 over 100) in parentheses and text 'Belongs to   Red Class' with 'Red Class' in red bold",
+      "colors": [
+        "#F5F5DC",
+        "#000000",
+        "#C00000"
+      ],
+      "position": "bottom-right inside content frame"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle with dark outline containing slide number '53'",
+      "colors": [
+        "#F0E68C",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    },
+    {
+      "type": "other",
+      "description": "Thin dark-red rectangular border framing the entire content area",
+      "colors": [
+        "#A00000"
+      ],
+      "position": "surrounding content region"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#B00020",
+    "body_text": "#000000",
+    "accents": [
+      "#C00000",
+      "#0000CC",
+      "#2E8B22",
+      "#F0E68C",
+      "#F5F5DC",
+      "#E8D44D",
+      "#A00000"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title large bold dark red with the word 'without' underlined. Class names bold in their respective colors (red, blue, green); 'Test' bold black. Numbers colored to match their class. Result box text bold. No bullet markers; plain lines of text.",
+  "animation_state": "Fully built; the yellow circle around '425' and the result box appear to be final annotation states, not mid-build.",
+  "recreation_brief": "1. Set the slide background to solid white #FFFFFF.\n2. Place the title 'Example:  Distance without Normalization' spanning the top of the slide (~5-20% of slide height, full width): the largest text on the slide, bold sans-serif, dark red #B00020, with the word 'without' underlined.\n3. Place the slide-number badge in the top-right corner: a circle filled yellow #F0E68C with a black #000000 outline, containing the black number '53'.\n4. Draw the content frame: a thin dark-red #A00000 rectangle border enclosing the middle band of the slide (~25-95% of slide height, full width with side margins); all remaining elements go inside this frame.\n5. Inside the frame at the top-left, place the section header 'Feature Vector  of bars:' in bold black #000000.\n6. Along the left edge inside the frame, place two small bold black #000000 row labels: 'Weight (KG)' aligned to the top row of numbers and 'Length (cm)' aligned to the bottom row of numbers.\n7. Place the Red Class column group in the upper-middle of the frame: bold red #C00000 header 'Red Class' with three parenthesized vertical vectors below it in red #C00000, medium size (top number = Weight, bottom number = Length): (2 over 100), (3 over 150), (4 over 200).\n8. Place the Blue Class column group to the right of Red Class: bold blue #0000CC header 'Blue Class' with three parenthesized vertical vectors in blue #0000CC: (7 over 150), (8 over 200), (9 over 250).\n9. Place the Green Class column group to the right of Blue Class: bold green #2E8B22 header 'Green Class' with three parenthesized vertical vectors in green #2E8B22: (12 over 150), (13 over 250), (14 over 300).\n10. Place the Test column group to the right of Green Class: bold black #000000 header 'Test' with one parenthesized vertical vector in black #000000: (7 over 120).\n11. Below the vector grid, place the caption 'Squared distance between each vector and test vector' in black #000000.\n12. Below the caption, place the red distance group at middle-left of the frame: parenthesized '(425   916   6409)' in red #C00000, numbers slightly smaller than the vector numbers.\n13. Place the blue distance group to the right of the red group: parenthesized '(900   6401   16904)' in blue #0000CC, same size as step 12.\n14. Place the green distance group to the right of the blue group: parenthesized '(925   16936   32449)' in green #2E8B22, same size as step 12.\n15. Draw a yellow #E8D44D circle around the value '425' in the red distance group (the smallest squared distance).\n16. Place the result box in the bottom-right inside the frame: a pale yellow #F5F5DC rounded rectangle containing the parenthesized vertical vector (7 over 100) in black #000000, followed by bold black text 'Belongs to   Red Class' with the words 'Red Class' in bold red #C00000.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Filled the null subtitle_or_header with 'Feature Vector  of bars:' (the in-frame section header), reconstructed from verbatim_text.bullets[0] and layout.arrangement.",
+      "Corrected layout.arrangement wording 'each showing two stacked parenthesized vectors' \u2014 per visual_elements, Red/Blue/Green groups contain 3 vectors each and Test contains 1; reworded to 'parenthesized vertical vectors of two stacked numbers (top = Weight, bottom = Length)' and enumerated all 10 vectors.",
+      "Expanded layout.regions: 'feature vectors' region now explicitly includes the 'Feature Vector  of bars:' header, and 'distances' region now quotes the caption 'Squared distance between each vector and test vector', so all 18 verbatim strings (2 bullets, 8 labels, 8 equation lines) are covered by a region.",
+      "Added #E8D44D (425 highlight circle) and #A00000 (content frame border) to colors.accents; both were used in visual_elements but were missing from the color palette.",
+      "Recreation brief: specified the #E8D44D color for the '425' highlight circle (previously an unspecified 'yellow circle') and added explicit left-to-right ordering and relative font sizes for the column groups and distance groups.",
+      "Rewrote recreation_brief from 11 combined steps into a 16-step numbered checklist with exactly one element placed per step, each specifying exact text, position, hex color, and shape type.",
+      "Verified no vague quantifiers remain; all counts are exact: 4 column groups, 3 vectors per class group plus 1 test vector (10 total), 3 distance groups of 3 values each, 5 visual elements, 6 layout regions.",
+      "Preserved verbatim internal spacing from the source ('Example:  Distance', 'Feature Vector  of bars:', 'Belongs to   Red Class') rather than normalizing it.",
+      "Confirmed imagery is genuinely empty (text/diagram-only slide: no photos or illustrations, only text, a vector grid, circles, and rectangles), so it remains [] instead of being filled with invented content."
+    ],
+    "uncertain_items": [
+      "The result box vector is extracted as (7, 100) consistently in three places (verbatim_text.equations, visual_elements, recreation_brief), but it matches neither the test vector (7, 120) nor any of the 9 class vectors; all 9 squared distances arithmetically verify against the test vector (7, 120), so (7, 100) may be a misread of the image \u2014 kept as extracted because the image cannot be re-checked.",
+      "The left-to-right ordering of the three distance groups (red, blue, green) is inferred from the '425' highlight position 'middle-left' and the consistent Red/Blue/Green class ordering used throughout the slide; the source JSON does not state the ordering explicitly.",
+      "Whether the yellow #E8D44D mark on '425' is a filled circle behind the number or an outline circle around it is not specified; the brief uses 'circle around', matching the source wording 'highlight around the value'."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_053.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 53,
+      "image": "slide_053.jpg",
+      "kept_frame": "frame_04503.jpg",
+      "old_slide": 84,
+      "start_sec": 4455.0,
+      "end_sec": 4502.0,
+      "frame_count": 48
+    },
+    "elapsed_s": 73.8,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 266.0,
+    "validation_note": "script 13 in-process runs failed repeatedly (glm empty/malformed output); final assembled from a direct glm-5.3 invocation with the identical VALIDATION_PROMPT/params (response banked at recreated_pptx/qa/slide053/validation_glm_response.txt)"
+  }
+}

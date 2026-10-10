@@ -1,0 +1,137 @@
+{
+  "slide_title": "K-Nearest Neighbors (KNN) , K=20",
+  "subtitle_or_header": "No separate subtitle. The top header band (full width, ~0-15% of slide height, thin red border) contains the centered mixed-color title 'K-Nearest Neighbors (KNN) , K=20' and, at its far right, a yellow circular badge with the black slide number '50'.",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "50",
+      "K=20, green class",
+      "Select Nearest 20 Neighbors",
+      "Vote on 20 Nearest Neighbors"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Title centered at top inside a thin red-bordered header band; a yellow circle with '50' sits at the top-right corner of the header. Below, the slide body is split into two side-by-side panels, each a scatter-style diagram with red axis arrows: left panel shows neighbor selection around a query point, right panel shows a sorted-distance voting chart. Each panel has a red caption centered beneath it.",
+    "regions": [
+      {
+        "name": "header band",
+        "position": "top, full width, ~0-15% height",
+        "content": "Title 'K-Nearest Neighbors (KNN) , K=20' with 'K-Nearest Neighbors' in dark red and '(KNN) , K=20' in blue; yellow circle badge '50' at far right"
+      },
+      {
+        "name": "left diagram panel",
+        "position": "middle-left, ~5-48% width, ~18-88% height",
+        "content": "Scatter of colored circled points (green cluster lower-left, blue cluster upper-right, orange points bottom-center) with a red query point connected by thin lines to its 20 nearest neighbors, which are ringed with dashed magenta circles"
+      },
+      {
+        "name": "right diagram panel",
+        "position": "middle-right, ~52-95% width, ~18-88% height",
+        "content": "Ascending dot plot of 20 nearest neighbors sorted by distance; label 'K=20, green class' at top with 'green' highlighted in green; vertical blue cutoff line near the right; red dots along the x-axis baseline with dotted vertical lines up to each neighbor point"
+      },
+      {
+        "name": "captions",
+        "position": "bottom of each panel, ~88-95% height",
+        "content": "Left: 'Select Nearest 20 Neighbors'; Right: 'Vote on 20 Nearest Neighbors', both in dark red"
+      }
+    ],
+    "hierarchy": "Title dominates in large bold red/blue text; the two diagrams share equal visual weight; red captions are medium-weight; small black annotation 'K=20, green class' with green highlight is minor."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Left panel: 2D scatter with red (#CC0000) L-shaped axes (no tick labels). A solid red (#CC0000) query point near center-top. Thin gray (#999999) lines radiate from the query point to 20 neighbor points. Neighbors are filled circles ringed by dashed magenta (#C850C8) circles: a green (#7AB648) cluster of ~8 points at lower-left, a blue/cyan (#5BC8E8) cluster of ~9 points at upper-right, and ~3 ringed orange/tan (#E8C88A) points at bottom-center (derived: 20 ringed total minus ~8 green minus ~9 blue; source counts approximate) plus at least 1 unringed orange/tan point (exact unringed count unspecified in source). One bright green point at far lower-left appears unringed.",
+      "colors": [
+        "#CC0000",
+        "#7AB648",
+        "#5BC8E8",
+        "#E8C88A",
+        "#C850C8",
+        "#999999"
+      ],
+      "position": "left half of slide body"
+    },
+    {
+      "type": "chart",
+      "description": "Right panel: dot plot of exactly 20 nearest neighbors sorted left-to-right by increasing distance from the query point. Each neighbor is a small colored dot (cyan #5BC8E8 on the left transitioning through green #7AB648 to orange/tan #E8C88A on the right) with a thin dotted vertical line dropping to a red (#CC0000) dot on the x-axis baseline (exactly 20 red baseline dots, one per neighbor). A vertical blue (#0000CC) line near the right side marks the K=20 cutoff boundary. Annotation at top: 'K=20, green class' with 'green' on a bright green (#00CC44) highlight. Red (#CC0000) L-shaped axes, no tick labels.",
+      "colors": [
+        "#CC0000",
+        "#5BC8E8",
+        "#7AB648",
+        "#E8C88A",
+        "#0000CC",
+        "#00CC44"
+      ],
+      "position": "right half of slide body"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow (#F5E96B) filled circle badge containing black (#000000) number '50' (slide number)",
+      "colors": [
+        "#F5E96B",
+        "#000000"
+      ],
+      "position": "top-right corner of header"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#B00000",
+    "body_text": "#B00000",
+    "accents": [
+      "#CC0000",
+      "#0000CC",
+      "#7AB648",
+      "#5BC8E8",
+      "#E8C88A",
+      "#C850C8",
+      "#999999",
+      "#F5E96B",
+      "#00CC44"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title is large and bold, mixed colors (dark red #B00000 for 'K-Nearest Neighbors', blue #0000CC for '(KNN) , K=20'). Panel captions are bold dark red (#B00000), smaller than title. In-chart annotation 'K=20, green class' is small black text with 'green' bolded on a green (#00CC44) highlight. No bullet points.",
+  "animation_state": "Fully built; no partial reveals apparent.",
+  "recreation_brief": "1. Set the entire slide background to plain white (#FFFFFF). 2. Header band: draw a full-width rectangle spanning ~0-15% of slide height at the top, white fill, outlined on all four sides with a thin red (#CC0000) border. 3. Title: centered inside the header band, place large bold sans-serif text 'K-Nearest Neighbors (KNN) , K=20' verbatim (keep the space before the comma), with 'K-Nearest Neighbors' in dark red (#B00000) and '(KNN) , K=20' in blue (#0000CC). 4. Slide-number badge: at the far right of the header band (top-right corner of the slide), draw a filled yellow (#F5E96B) circle with the black (#000000) number '50' centered inside. 5. Left panel axes: in the region ~5-48% width and ~18-88% height, draw red (#CC0000) L-shaped axes (vertical arrow left, horizontal arrow bottom) with no tick labels. 6. Left scatter, green cluster: place ~8 filled green (#7AB648) circles clustered toward the lower-left of the panel. 7. Left scatter, blue cluster: place ~9 filled cyan/blue (#5BC8E8) circles clustered toward the upper-right of the panel. 8. Left scatter, orange points: place orange/tan (#E8C88A) filled circles at bottom-center, approximately 3 of them ringed as neighbors (20 ringed total minus ~8 green minus ~9 blue) plus at least 1 unringed orange/tan point (exact unringed count unspecified in source). 9. Left scatter, outlier: place 1 bright green filled circle at the far lower-left, unringed. 10. Query point: place 1 solid red (#CC0000) filled circle near the center-top of the left panel. 11. Connections: draw thin gray (#999999) lines from the query point to each of the 20 nearest-neighbor points (the ~8 green, ~9 blue, and ~3 ringed orange circles). 12. Rings: draw a dashed magenta (#C850C8) circle outline around each of those same 20 neighbor points, 20 rings total. 13. Left caption: centered below the left panel at ~88-95% height, place bold dark-red (#B00000) sans-serif text 'Select Nearest 20 Neighbors'. 14. Right panel axes: in the region ~52-95% width and ~18-88% height, draw red (#CC0000) L-shaped axes with no tick labels. 15. Right dot plot: place exactly 20 small red (#CC0000) dots along the x-axis baseline; from each baseline dot draw a thin dotted vertical line rising to a colored neighbor dot, with dot heights strictly increasing left-to-right (sorted by distance); color the 20 neighbor dots cyan (#5BC8E8) on the left transitioning through green (#7AB648) to orange/tan (#E8C88A) on the right. 16. Cutoff line: draw a vertical blue (#0000CC) line near the right side of the right panel marking the K=20 boundary. 17. Right annotation: at the top of the right panel, place small black sans-serif text 'K=20, green class' with the word 'green' bolded on a bright green (#00CC44) highlight. 18. Right caption: centered below the right panel at ~88-95% height, place bold dark-red (#B00000) sans-serif text 'Vote on 20 Nearest Neighbors'.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "subtitle_or_header was null; filled with a reconstruction from layout.regions[0]: no separate subtitle, the thin red-bordered top band (~0-15% height) holds the centered title plus the yellow '50' badge at far right.",
+      "verbatim_text.bullets kept empty intentionally: the slide genuinely contains no bullet points (typography_notes states 'No bullet points'); all 4 on-slide text strings are captured in labels, so this is not an extraction gap.",
+      "colors.accents was missing #CC0000 (red axes, query point, baseline dots) and #999999 (thin connector lines) although both appear in visual_elements; added both to the accent list.",
+      "Disambiguated the two reds throughout: #B00000 reserved for title and caption text, #CC0000 for diagram axes, query point, and baseline dots.",
+      "Precision fix: replaced '~20 red dots' with exactly 20 baseline dots in the right chart (one per neighbor, derivable from K=20 and the per-neighbor dotted vertical lines).",
+      "Precision fix: replaced 'a few orange/tan points' with ~3 ringed orange/tan points (derived arithmetic: 20 ringed neighbors minus ~8 green minus ~9 blue) plus at least 1 unringed orange/tan point; approximate markers retained because the source counts themselves are approximate.",
+      "Removed the brief's unverifiable claim of a 'thin dark-red rectangular border around the whole slide content area' (not supported by layout.arrangement); retained only the thin red-bordered header band that the arrangement explicitly describes.",
+      "Standardized the query-point connector lines to gray #999999 (source said only 'gray/red'; #999999 is the only line gray in the color lists) and logged the ambiguity as uncertain.",
+      "Rewrote recreation_brief as an 18-step numbered checklist; each step places exactly one element with verbatim text, percent-based position, hex color, and shape/chart type."
+    ],
+    "uncertain_items": [
+      "Scatter point counts are approximate in the source: green cluster ~8 and blue/cyan cluster ~9; exact counts are unverifiable from the JSON.",
+      "Orange/tan point count at bottom-center is unspecified ('a few', 'some ringed, some not'); ~3 ringed is derived arithmetic and the unringed count is only known to be at least 1.",
+      "Header-band border red shade is not hexified in the source; the checklist assumes #CC0000 (diagram red), but the text red #B00000 is also plausible.",
+      "Query-point connector lines are described only as 'gray/red'; the checklist uses #999999 but red lines are not ruled out.",
+      "The unringed bright-green point at far lower-left has no hex in the left diagram's color list (possibly #00CC44); the checklist says 'bright green' without a hex.",
+      "Right-chart neighbor dot colors form a left-to-right gradient (cyan through green to orange/tan); exact per-dot colors are unspecified.",
+      "Title string contains an unusual space before the comma ('(KNN) , K=20'); kept verbatim and should be verified against the source frame."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_050.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 50,
+      "image": "slide_050.jpg",
+      "kept_frame": "frame_04006.jpg",
+      "old_slide": 65,
+      "start_sec": 3951.0,
+      "end_sec": 4005.0,
+      "frame_count": 55
+    },
+    "elapsed_s": 104.8,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 738.4
+  }
+}

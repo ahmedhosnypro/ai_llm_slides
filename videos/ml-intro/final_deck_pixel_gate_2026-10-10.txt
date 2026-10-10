@@ -1,0 +1,12 @@
+Final-deck re-merge pixel-diff verification (2026-10-10, post founder-defect program)
+Deck: ml-intro_final.pptx rebuilt by scripts/19_build_final_deck.py from all FIXED
+per-slide decks (variant precedence omml > graphed > base; 41 base + 18 graphed + 5 omml).
+Method: soffice (profile /tmp/lo_v2) rendered the merged deck -> 64-page PDF; all 64
+source decks rendered the same session; pdftoppm -r 150 both; PIL ImageChops page N vs
+source N.
+NOTE: the first attempt wrote to /tmp and died ENOSPC (tmpfs 81% full; soffice PDF write
+IO Code:13; only 58/64 source PDFs produced; libpng write errors) — redone under
+qa/final_deck/verify_v2/ on the home disk after cleaning stale worker scratch from /tmp.
+Banked lesson: bulk soffice/pdftoppm QA goes under PROJECT scratch, never /tmp.
+RESULT: 0/64 mismatched pages — every page pixel-identical to its certified source
+render. All 13 founder issues' fixes are baked into this deck.

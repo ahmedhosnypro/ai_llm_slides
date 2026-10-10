@@ -1,0 +1,122 @@
+{
+  "slide_title": "Nearest Neighbor (NN) and K -Nearest Neighbor (K -NN)",
+  "subtitle_or_header": "None \u2014 title-only slide; the three-line title is the only header text (no separate subtitle present in source)",
+  "verbatim_text": {
+    "bullets": [
+      "Nearest Neighbor (NN)",
+      "and",
+      "K -Nearest Neighbor (K -NN)"
+    ],
+    "labels": [
+      "39"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Title slide: large light-gray panel filling most of the slide with a thin red border; inside it a smaller white rectangle with a thin red border centered vertically, containing three centered lines of title text; a small yellow circle with the slide number '39' sits at the top-right corner of the gray panel",
+    "regions": [
+      {
+        "name": "outer gray panel",
+        "position": "fills slide from ~5% to ~95% width, ~8% to ~100% height",
+        "content": "light gray background panel with thin red outline"
+      },
+      {
+        "name": "inner white title box",
+        "position": "center, ~7% to ~92% width, ~28% to ~85% height",
+        "content": "white rectangle with thin red border containing the three-line title"
+      },
+      {
+        "name": "title text",
+        "position": "centered within inner white box",
+        "content": "Line 1: 'Nearest Neighbor (NN)' in blue; Line 2: 'and' in black; Line 3: 'K -Nearest Neighbor (K -NN)' in red"
+      },
+      {
+        "name": "slide number badge",
+        "position": "top-right corner of gray panel, ~90-93% width, ~10-17% height",
+        "content": "yellow circle with dark outline containing '39'"
+      }
+    ],
+    "hierarchy": "The three-line centered title dominates; line 1 (blue) and line 3 (red) are largest and boldest, line 2 'and' is smaller black text; the yellow slide-number circle is a minor accent"
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Outer light-gray rectangle with thin red/maroon border framing the whole slide content",
+      "colors": [
+        "#E8E8E8",
+        "#B03030"
+      ],
+      "position": "full slide frame (x=5%-95% width, y=8%-100% height)"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Inner white rectangle with thin red/maroon border containing the title text",
+      "colors": [
+        "#FFFFFF",
+        "#B03030"
+      ],
+      "position": "center of slide (x=7%-92% width, y=28%-85% height)"
+    },
+    {
+      "type": "icon",
+      "description": "Small yellow circle with dark outline containing the number '39' (slide number badge)",
+      "colors": [
+        "#F5E97A",
+        "#333333"
+      ],
+      "position": "top-right corner of gray panel (~90-93% width, ~10-17% height)"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#E8E8E8",
+    "title_text": "#0000CC",
+    "body_text": "#000000",
+    "accents": [
+      "#CC0000",
+      "#B03030",
+      "#F5E97A",
+      "#FFFFFF"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout; title lines 1 and 3 are large and bold \u2014 line 1 blue (#0000CC), line 3 red (#CC0000); line 2 'and' is smaller black (#000000) text (exact weight unspecified); slide number '39' is small dark (#333333) text inside the yellow circle",
+  "animation_state": "Fully built static title slide; no partial reveals",
+  "recreation_brief": "1. Set the slide background to light gray #E8E8E8. 2. Draw the outer panel: one rectangle spanning x=5%-95% of slide width and y=8%-100% of slide height (5% left/right margins, 8% top margin, flush with the bottom edge), fill #E8E8E8, thin red/maroon border #B03030. 3. Draw the inner title box: one centered white rectangle spanning x=7%-92% of width (~85% wide) and y=28%-85% of height (~57% tall), fill #FFFFFF, thin red/maroon border #B03030. 4. Inside the white box, add one centered text frame with exactly 3 centered lines in a sans-serif font: line 1 'Nearest Neighbor (NN)' in bold blue #0000CC at large size; line 2 'and' in black #000000 at a noticeably smaller size; line 3 'K -Nearest Neighbor (K -NN)' in bold red #CC0000 at the same large size as line 1 \u2014 keep the extracted spacing ('K -Nearest', 'K -NN') verbatim. 5. Draw the slide-number badge: one small yellow circle, fill #F5E97A with thin dark outline #333333, occupying ~90-93% width and ~10-17% height (top-right corner of the gray panel), with the number '39' centered inside in small dark #333333 sans-serif text.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Filled empty verbatim_text.bullets with the 3 verbatim title lines ('Nearest Neighbor (NN)', 'and', 'K -Nearest Neighbor (K -NN)') reconstructed from slide_title and layout.regions so the required field is non-empty and consistent with the title.",
+      "Filled null subtitle_or_header with an explicit absence note (title-only slide; no separate subtitle exists in the source).",
+      "Corrected recreation_brief step 1: slide background is #E8E8E8 per colors.background, not white as the original brief stated.",
+      "Replaced the vague inner-box height '~55%' with the exact region bounds y=28%-85% (~57% tall) from layout.regions.",
+      "Clarified color roles to remove ambiguity between the two reds: #CC0000 = title line 3 text; #B03030 = border of both rectangles; #333333 = badge outline and badge text.",
+      "Added exact percentage positions to each visual_element to match layout.regions.",
+      "Rewrote recreation_brief as a 5-step ordered checklist placing exactly one element per step (background, outer panel, inner box, 3-line title, number badge) with exact text, position, color, and shape.",
+      "Resolved the ambiguous 'regular/bold' description of the word 'and' to 'weight unspecified' rather than asserting an unverifiable fact."
+    ],
+    "uncertain_items": [
+      "The space in 'K -Nearest' / 'K -NN' is kept verbatim but is likely an OCR spacing artifact of 'K-Nearest' / 'K-NN'.",
+      "Exact font point sizes are not in the source; only relative sizes are specified (lines 1 and 3 large and bold, line 2 smaller, badge text small).",
+      "Title line 3 red is #CC0000 per the original recreation_brief; layout.regions only says 'red' without a hex, so #CC0000 vs #B03030 for the text cannot be fully verified from the JSON.",
+      "Color of the slide area outside the gray panel (~5% side / ~8% top margins) is not explicitly stated; recreation uses #E8E8E8 per colors.background.",
+      "Border thickness is described only as 'thin'; no exact weight is given."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_039.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 39,
+      "image": "slide_039.jpg",
+      "kept_frame": "frame_03357.jpg",
+      "old_slide": 51,
+      "start_sec": 3338.0,
+      "end_sec": 3356.0,
+      "frame_count": 19
+    },
+    "elapsed_s": 26.8,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 342.4
+  }
+}

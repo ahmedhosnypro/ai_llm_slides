@@ -1,0 +1,123 @@
+{
+ "slide_title": "Data Sets",
+ "subtitle_or_header": null,
+ "verbatim_text": {
+  "bullets": [],
+  "labels": [
+   "23"
+  ],
+  "equations": []
+ },
+ "layout": {
+  "arrangement": "Minimal section-divider slide: light gray canvas framed by a thin dark-red border; centered horizontally and vertically is a white rectangle with a thin dark-red outline containing the large red bold title 'Data Sets'; a small yellow circle with the number '23' sits at the top-right corner just inside the frame.",
+  "regions": [
+   {
+    "name": "outer frame",
+    "position": "full slide, thin border inset ~5% from edges",
+    "content": "thin dark-red rectangular border around the entire slide"
+   },
+   {
+    "name": "title box",
+    "position": "center, roughly 17%-80% width, 32%-66% height",
+    "content": "white filled rectangle with dark-red outline containing the text 'Data Sets'"
+   },
+   {
+    "name": "page number badge",
+    "position": "top-right corner, ~90%-93% width, ~10%-17% height",
+    "content": "yellow circle with dark outline containing '23'"
+   },
+   {
+    "name": "stray mark",
+    "position": "upper-center, ~54% width, ~24% height",
+    "content": "small faint gray squiggle/artifact (likely a stray pen stroke or cursor mark)"
+   }
+  ],
+  "hierarchy": "The large bold red 'Data Sets' text dominates; secondary is the white box outline; tertiary is the small yellow '23' badge; the gray background and thin frame are neutral."
+ },
+ "visual_elements": [
+  {
+   "type": "highlight-box",
+   "description": "White-filled rectangle with thin dark-red outline, centered, containing the bold red text 'Data Sets'",
+   "colors": [
+    "#FFFFFF",
+    "#A02C3A"
+   ],
+   "position": "center of slide"
+  },
+  {
+   "type": "icon",
+   "description": "Small yellow circle with dark-gray (#3A3A3A) outline containing the dark-gray (#3A3A3A) number '23' (slide/page number badge)",
+   "colors": [
+    "#F5E97A",
+    "#3A3A3A"
+   ],
+   "position": "top-right corner"
+  },
+  {
+   "type": "other",
+   "description": "Thin dark-red rectangular border framing the entire slide",
+   "colors": [
+    "#A02C3A"
+   ],
+   "position": "full-slide perimeter"
+  },
+  {
+   "type": "artifact",
+   "description": "Small faint gray squiggle/stray mark at upper-center (~54% width, ~24% height); likely a stray pen stroke or cursor artifact, not a design element [? exact gray hex not captured]",
+   "colors": [
+    "gray [? hex not captured]"
+   ],
+   "position": "upper-center, ~54% width, ~24% height"
+  }
+ ],
+ "imagery": [],
+ "colors": {
+  "background": "#E8E8E8",
+  "title_text": "#B01E28",
+  "body_text": "#3A3A3A",
+  "accents": [
+   "#A02C3A",
+   "#F5E97A",
+   "#FFFFFF",
+   "#3A3A3A"
+  ]
+ },
+ "typography_notes": "Sans-serif typeface throughout. Title 'Data Sets' is very large, bold, red (#B01E28), centered horizontally and vertically inside the white box. Page number '23' is small, regular weight, dark gray (#3A3A3A), centered inside the yellow circle. Exact font family and point sizes are not captured.",
+ "animation_state": "No mid-build indicators; static section-divider slide. A small faint gray squiggle near the top-center (~54% width, ~24% height) appears to be a stray annotation/cursor artifact, not part of the slide design.",
+ "recreation_brief": "1. Background: fill the entire slide with light gray (#E8E8E8) and place nothing else on the background layer. 2. Outer frame: draw a no-fill rectangle with a thin dark-red (#A02C3A) outline, inset ~5% from every slide edge (spanning ~5%-95% of slide width and ~5%-95% of slide height). 3. Title box: draw a white-filled (#FFFFFF) rectangle with a thin dark-red (#A02C3A) outline spanning ~17%-80% of slide width and ~32%-66% of slide height, so it sits approximately centered. 4. Title text: inside the title box, place the exact text 'Data Sets' in a very large, bold, sans-serif typeface colored red (#B01E28), centered horizontally and vertically within the box. 5. Page-number badge: in the top-right corner, draw a small yellow (#F5E97A) circle with a thin dark-gray (#3A3A3A) outline occupying ~90%-93% of slide width and ~10%-17% of slide height (just inside the frame); center the exact text '23' inside the circle in a small, regular-weight, dark-gray (#3A3A3A) sans-serif font. 6. Optional artifact (only to match the source exactly): draw a small, faint gray squiggle at ~54% of slide width and ~24% of slide height (upper-center); skip this step for a clean recreation.",
+ "validation": {
+  "verdict": "PASS_WITH_FIXES",
+  "fixes_applied": [
+   "subtitle_or_header kept null: this is a section-divider slide with no subtitle or header text (layout.arrangement and all 4 regions list only frame, title box, badge, and artifact).",
+   "verbatim_text.bullets kept empty: the slide contains no bullet text; its only strings are the title 'Data Sets' (captured in slide_title) and the numeral '23' (captured in verbatim_text.labels).",
+   "Added the 'stray mark' region to visual_elements as a type 'artifact' entry so all 4 layout.regions have matching visual-element records; flagged its unknown gray hex with [?].",
+   "Corrected the badge (icon) description from 'black number 23' to dark gray (#3A3A3A) to match its recorded colors array and typography notes.",
+   "Changed colors.body_text from #B01E28 to #3A3A3A: the only non-title text on the slide is the '23' badge numeral, recorded as #3A3A3A; no red body text exists on this slide.",
+   "Added #3A3A3A to colors.accents so the palette lists every color actually used (badge outline and numeral).",
+   "Rewrote recreation_brief as a 6-step ordered checklist; each step places exactly one element with its exact text, percent-based position, hex color, and shape (rectangle, circle, or text), and step 5 now specifies the badge outline/numeral color #3A3A3A instead of the vague 'dark'."
+  ],
+  "uncertain_items": [
+   "Exact hex of the faint gray stray squiggle (~54% width, ~24% height) is not captured; source describes it only as 'faint gray' [?].",
+   "Nature of the stray mark (pen stroke vs. cursor artifact) is uncertain; source says 'likely' [?].",
+   "Exact font family and point sizes are not captured; only 'sans-serif', 'very large, bold' (title) and 'small, regular weight' ('23').",
+   "Title box is described as centered, but its recorded bounds (17%-80% width) center at 48.5% rather than 50%; treated as measurement approximation and preserved as given."
+  ],
+  "recreatability_score_1_to_10": 9
+ },
+ "_meta": {
+  "frame": "slide_023.jpg",
+  "model": "images",
+  "renumbered_from_old_slide": 30,
+  "source_timestamps": {
+   "slide": 23,
+   "image": "slide_023.jpg",
+   "kept_frame": "frame_02161.jpg",
+   "start_sec": 2158.0,
+   "end_sec": 2160.0,
+   "frame_count": 3
+  },
+  "elapsed_s": 37.1,
+  "validated_by": "glm-5.3",
+  "validation_elapsed_s": 685.7
+ }
+}

@@ -1,0 +1,133 @@
+{
+ "slide_title": "Supervised Learning",
+ "subtitle_or_header": "None \u2014 no subtitle exists; the light gray header band contains only the centered red bold title 'Supervised Learning'",
+ "verbatim_text": {
+  "bullets": [
+   "f : x \u2192 y  { f is a function from X to Y }",
+   "Classification:",
+   "y is a discrete variable",
+   "Discrete variable: takes a value from a discrete set y \u2208 {1, . . . , K }",
+   "Example: Category of a web page (sports, politics, business, science, etc.)",
+   "Regression:",
+   "y is a real-valued variable",
+   "Example: Price of a stock"
+  ],
+  "labels": [
+   "11 (slide number in yellow circle, top-right corner)"
+  ],
+  "equations": [
+   "f : x \u2192 y",
+   "y \u2208 {1, . . . , K }"
+  ]
+ },
+ "layout": {
+  "arrangement": "Title centered at top in red on a light gray header band; below it a large white content box with a thin red border containing all body text, left-aligned; a yellow circle with the slide number '11' sits at the top-right corner overlapping the header band; the whole slide is framed by a thin red outer border.",
+  "regions": [
+   {
+    "name": "header band",
+    "position": "top, full width, roughly top 0-22%",
+    "content": "Light gray band with centered red bold title 'Supervised Learning'"
+   },
+   {
+    "name": "slide number badge",
+    "position": "top-right corner, ~95% x, ~8% y",
+    "content": "Yellow circle with purple outline containing '11'"
+   },
+   {
+    "name": "content box",
+    "position": "middle, roughly 8-95% width, 25-95% height",
+    "content": "White box with thin red border containing the function definition, Classification section, and Regression section"
+   },
+   {
+    "name": "outer frame",
+    "position": "entire slide perimeter",
+    "content": "Thin red rectangular border framing the whole slide"
+   }
+  ],
+  "hierarchy": "Red bold title dominates at top; within the content box, 'Classification:' and 'Regression:' are red underlined section headers; the standalone 'y' at the start of the definition lines is bold; 'Example:' is bold; all remaining body text, including the opening line 'f : x \u2192 y  { f is a function from X to Y }', is regular black."
+ },
+ "visual_elements": [
+  {
+   "type": "highlight-box",
+   "description": "Large white rectangular content area with thin red outline containing all body text",
+   "colors": [
+    "#FFFFFF",
+    "#C00000"
+   ],
+   "position": "center, below header band"
+  },
+  {
+   "type": "icon",
+   "description": "Small yellow circle with purple outline containing the number 11 (slide number badge)",
+   "colors": [
+    "#FFFF99",
+    "#7030A0"
+   ],
+   "position": "top-right corner"
+  },
+  {
+   "type": "other",
+   "description": "Thin red rectangular border framing the entire slide",
+   "colors": [
+    "#C00000"
+   ],
+   "position": "slide perimeter"
+  }
+ ],
+ "imagery": [],
+ "colors": {
+  "background": "#F2F2F2",
+  "title_text": "#C00000",
+  "body_text": "#000000",
+  "accents": [
+   "#C00000",
+   "#FFFF99",
+   "#7030A0"
+  ],
+  "content_box_fill": "#FFFFFF",
+  "content_box_border": "#C00000",
+  "slide_number_badge_fill": "#FFFF99",
+  "slide_number_badge_outline": "#7030A0",
+  "outer_frame_border": "#C00000"
+ },
+ "typography_notes": "Sans-serif throughout. Title is large, bold, red, centered. Section headers 'Classification:' and 'Regression:' are red and underlined. The standalone 'y' symbols at the start of the definition lines and the word 'Example:' are bold black. All other body text, including the opening line 'f : x \u2192 y  { f is a function from X to Y }', is regular weight black, smaller than the title. Mathematical notation uses italic-style variables (f, x, y, K).",
+ "animation_state": "No mid-build indicators; all content appears fully revealed.",
+ "recreation_brief": "1. Set the slide background to light gray #F2F2F2; this same gray forms the header band at the top (no separate band fill color is specified). 2. Draw a thin red #C00000 rectangular outline around the entire slide perimeter as the outer frame (thin line, ~1-2 pt). 3. In the header band (top 0-22% of slide height, full width), place the title 'Supervised Learning' centered horizontally in large bold red #C00000 sans-serif type. 4. At the top-right corner (~95% x, ~8% y), draw a circle with diameter ~5-6% of the slide width, filled yellow #FFFF99 with a thin purple #7030A0 outline, and center the number '11' inside it in black. 5. Below the header band, draw the content box: a white #FFFFFF rectangle with a thin red #C00000 border spanning roughly x 8-95% and y 25-95% of the slide. 6. Inside the content box, set all body text left-aligned with even padding, in black #000000 sans-serif noticeably smaller than the title. 7. Body line 1: 'f : x \u2192 y  { f is a function from X to Y }' in regular weight, with the variables f, x, y italic (preserve the two spaces before the brace). 8. Leave one blank line, then body line 2: 'Classification:' in red #C00000, underlined. 9. Body line 3: bold 'y' followed by regular-weight ' is a discrete variable'. 10. Body line 4: 'Discrete variable: takes a value from a discrete set y \u2208 {1, . . . , K }' in regular weight, with y and K italic. 11. Body line 5: bold 'Example:' followed by regular-weight ' Category of a web page (sports, politics, business, science, etc.)'. 12. Leave one blank line, then body line 6: 'Regression:' in red #C00000, underlined. 13. Body line 7: bold 'y' followed by regular-weight ' is a real-valued variable'. 14. Body line 8: bold 'Example:' followed by regular-weight ' Price of a stock'.",
+ "validation": {
+  "verdict": "PASS_WITH_FIXES",
+  "fixes_applied": [
+   "Filled the null subtitle_or_header field with an explicit statement that no subtitle exists and the header band contains only the centered red title 'Supervised Learning'.",
+   "Fixed an internal contradiction: the original recreation_brief specified line 1 'f : x \u2192 y  { f is a function from X to Y }' as bold black, but layout.hierarchy and typography_notes state only the line-initial 'y' symbols and 'Example:' are bold; line 1 is now specified as regular weight with italic variables.",
+   "Replaced the vague phrase 'occupying most of the slide' with the exact content-box bounds from layout.regions (x 8-95%, y 25-95%).",
+   "Added concrete geometry for the slide-number badge (diameter ~5-6% of slide width) and a digit color (black), both previously unspecified, so the badge can be drawn without guesswork.",
+   "Enriched the colors object with named entries derived from visual_elements: content_box_fill #FFFFFF, content_box_border #C00000, slide_number_badge_fill #FFFF99, slide_number_badge_outline #7030A0, outer_frame_border #C00000.",
+   "Clarified in the brief that the light gray header band is the exposed #F2F2F2 background strip above the white content box, since no separate band fill color is given.",
+   "Added italic styling for the mathematical variables (f, x, y, K) per typography_notes, and rewrote the recreation_brief as a 14-step ordered checklist placing exactly one element per step with exact text, position, color, and shape.",
+   "Confirmed all 8 bullets, 1 label, and 2 equations map to the four layout regions (header band, slide number badge, content box, outer frame) with no orphaned or invented content."
+  ],
+  "uncertain_items": [
+   "Exact diameter of the yellow slide-number badge is not stated in the source; ~5-6% of slide width is an estimate.",
+   "Text color of the '11' digit inside the badge is not stated; black is assumed.",
+   "Exact font sizes and border line weights are not stated; only relative sizes ('title large, body smaller') and 'thin' borders are given, so any pt values are approximations.",
+   "Whether the header band uses a fill distinct from the #F2F2F2 background is not stated; it is treated as the background gray itself.",
+   "Whether 'Classification:' and 'Regression:' are bold in addition to red and underlined is not stated; the brief specifies red and underlined only.",
+   "No items were marked [?] in the source JSON."
+  ],
+  "recreatability_score_1_to_10": 9
+ },
+ "_meta": {
+  "frame": "slide_012.jpg",
+  "model": "images",
+  "source_timestamps": {
+   "slide": 12,
+   "image": "slide_012.jpg",
+   "kept_frame": "frame_00992.jpg",
+   "start_sec": 855.0,
+   "end_sec": 991.0,
+   "frame_count": 137
+  },
+  "elapsed_s": 25.2,
+  "validated_by": "glm-5.3",
+  "validation_elapsed_s": 504.4
+ }
+}

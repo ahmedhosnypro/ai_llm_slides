@@ -1,0 +1,134 @@
+{
+  "slide_title": "Data Representation",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Well, we could map Sunny to 0, Overcast to 1, Rainy to 2..",
+      "But such a mapping may not always be appropriate",
+      "Imagine color being a feature in some data",
+      "Let's code 3 possible colors as Red=0, Blue=1, Green=2",
+      "This implies Red is more similar to Blue than to Green !",
+      "Solution: For a feature with K > 2 possible values, we usually create K binary features, one for each possible value"
+    ],
+    "labels": [
+      "28",
+      "Replace",
+      "Out",
+      "Outlook",
+      "With",
+      "S",
+      "Sunny",
+      "O",
+      "Overcast",
+      "R",
+      "Rainy",
+      "Y",
+      "Out",
+      "T",
+      "R",
+      "S?",
+      "O?",
+      "R?",
+      "T",
+      "R"
+    ],
+    "equations": [
+      "K > 2"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top in red on a light gray header band; slide number '28' in a yellow circle at top-right. Below, a large white content area framed by a thin red border containing a bulleted list (with nested sub-bullets). Bottom-left holds a small yellow legend box ('Replace ... With ...'); bottom-center/right holds a wide table diagram showing categorical-to-binary feature encoding with a red arrow in the middle.",
+    "regions": [
+      {
+        "name": "header",
+        "position": "top, full width, ~0-15% height",
+        "content": "Red bold title 'Data Representation' centered; yellow circled '28' at top-right"
+      },
+      {
+        "name": "bullet area",
+        "position": "upper-middle, ~15-60% height, full width inside red border",
+        "content": "Two top-level bullets, three nested sub-bullets, then the 'Solution:' bullet with red emphasized text"
+      },
+      {
+        "name": "legend box",
+        "position": "bottom-left, ~62-88% height, ~8-28% width",
+        "content": "Pale yellow box: 'Replace / Out Outlook / With / S Sunny / O Overcast / R Rainy'"
+      },
+      {
+        "name": "encoding table diagram",
+        "position": "bottom-center to bottom-right, ~62-92% height, ~30-80% width",
+        "content": "Left table with columns Y, Out, T, R (categorical values), red arrow, right table with binary one-hot columns Y, S?, O?, R?, T, R"
+      }
+    ],
+    "hierarchy": "Red bold title dominates; then black body bullets; red bold 'Solution' emphasis and red sub-bullet text draw attention; colored words (Red/Blue/Green) in the color-coding bullet; tables at bottom are supporting detail."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Pale yellow legend box with two-column text: 'Replace' (red) / 'Out  Outlook' / 'With' (red) / 'S  Sunny' / 'O  Overcast' / 'R  Rainy'",
+      "colors": [
+        "#FFFFCC",
+        "#CC0000",
+        "#000000"
+      ],
+      "position": "bottom-left"
+    },
+    {
+      "type": "table",
+      "description": "Left table (categorical data) with column headers Y, Out, T, R. Y column values (blue): P N N P P P N P. Out column (magenta/pink highlighted): Sunny, Sunny, Sunny, Overcast, Overcast, Overcast, Rainy, Rainy. T column (orange highlighted): Low, High, High, Low, High, Low, Low, Low. R column (green highlighted): Yes, Yes, No, Yes, No, No, Yes, No. A red rightward arrow (=>) leads to the right table (binary encoding) with headers Y, S?, O?, R?, T, R. Right table Y column (blue): 1 0 0 1 1 1 0 1. S? column (magenta): 1 1 1 0 0 0 0 0. O? column (magenta/pink): 0 0 0 1 1 1 0 0. R? column (magenta): 0 0 0 0 0 0 1 1. T column (orange): 0 1 1 0 1 0 0 0. R column (green): 1 1 0 1 0 0 1 0.",
+      "colors": [
+        "#FF99FF",
+        "#FFCC99",
+        "#99FF99",
+        "#0000CC",
+        "#CC0000",
+        "#FFFFFF"
+      ],
+      "position": "bottom-center/right"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle with dark outline containing slide number '28'",
+      "colors": [
+        "#FFFF99",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [
+    "No photos; only the legend box, the two data tables with color-highlighted columns, a red transformation arrow, and the circled page number."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#CC0000",
+    "body_text": "#000000",
+    "accents": [
+      "#CC0000",
+      "#0000CC",
+      "#009900",
+      "#FF99FF",
+      "#FFCC99",
+      "#99FF99",
+      "#FFFFCC",
+      "#DDDDDD"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title large, bold, red, centered. Body bullets black with round bullet markers; nested sub-bullets indented. The word 'Solution:' is bold; the phrase 'create K binary features, one for each possible value' is red and bold. In the color bullet, 'Red=0' is red, 'Blue=1' is blue, 'Green=2' is green. The implication bullet is entirely red. Table headers are bold; Y column digits are blue.",
+  "animation_state": "Fully built; no partial reveals apparent. A mouse cursor is visible near the first bullet.",
+  "recreation_brief": "1. White slide background; add a light gray (#DDDDDD) header band across the top (~15% height) with a thin red outline around the whole slide content frame. 2. Center the title 'Data Representation' in bold red (#CC0000) sans-serif in the header. 3. Top-right: yellow (#FFFF99) circle with black outline containing '28'. 4. In the body, add bullets: 'Well, we could map Sunny to 0, Overcast to 1, Rainy to 2..'; 'But such a mapping may not always be appropriate'; nested: 'Imagine color being a feature in some data'; nested: \"Let's code 3 possible colors as Red=0, Blue=1, Green=2\" with Red in red, Blue in blue, Green in green; nested red bullet: 'This implies Red is more similar to Blue than to Green !'. 5. Add bullet: 'Solution: For a feature with K > 2 possible values, we usually create K binary features, one for each possible value' with 'Solution:' bold and the final phrase in bold red. 6. Bottom-left: pale yellow (#FFFFCC) box with lines 'Replace' (red), 'Out   Outlook', 'With' (red), 'S   Sunny', 'O   Overcast', 'R   Rainy'. 7. Bottom-center: build left table with headers Y, Out, T, R and 8 rows: Y (blue) = P,N,N,P,P,P,N,P; Out (magenta fill) = Sunny,Sunny,Sunny,Overcast,Overcast,Overcast,Rainy,Rainy; T (orange fill) = Low,High,High,Low,High,Low,Low,Low; R (green fill) = Yes,Yes,No,Yes,No,No,Yes,No. 8. Draw a red right arrow. 9. Build right table with headers Y, S?, O?, R?, T, R and 8 rows: Y (blue) = 1,0,0,1,1,1,0,1; S? (magenta) = 1,1,1,0,0,0,0,0; O? (magenta) = 0,0,0,1,1,1,0,0; R? (magenta) = 0,0,0,0,0,0,1,1; T (orange) = 0,1,1,0,1,0,0,0; R (green) = 1,1,0,1,0,0,1,0. 10. Keep all table text small sans-serif, centered in cells, with the colored column highlights.",
+  "_meta": {
+    "frame": "slide_028.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 28,
+      "image": "slide_028.jpg",
+      "kept_frame": "frame_02912.jpg",
+      "old_slide": 36,
+      "start_sec": 2845.0,
+      "end_sec": 2911.0,
+      "frame_count": 67
+    },
+    "elapsed_s": 58.4
+  }
+}

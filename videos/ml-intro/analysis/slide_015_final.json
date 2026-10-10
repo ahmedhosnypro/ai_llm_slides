@@ -1,0 +1,141 @@
+{
+ "slide_title": "Classification vs Regression",
+ "subtitle_or_header": null,
+ "verbatim_text": {
+  "bullets": [
+   "Classification is about finding separation boundaries (linear/non-linear):",
+   "Regression is more like fitting a curve/surface to the data:"
+  ],
+  "labels": [
+   "15"
+  ],
+  "equations": []
+ },
+ "layout": {
+  "arrangement": "Title centered at top in red. Below, a large red-bordered content box containing: first line of text ('Classification is about finding separation boundaries (linear/non-linear):') with 'Classification' in bold blue; to the right of/below that line, two side-by-side scatter plots showing linear and non-linear decision boundaries; then a second line ('Regression is more like fitting a curve/surface to the data:') with 'Regression' in bold blue; below it, a single centered plot showing a fitted curve. Slide number '15' in a yellow circle at top-right corner.",
+  "regions": [
+   {
+    "name": "title",
+    "position": "top center, ~5-20% height",
+    "content": "Red bold title 'Classification vs Regression'"
+   },
+   {
+    "name": "slide number badge",
+    "position": "top-right corner",
+    "content": "Yellow circle with '15'"
+   },
+   {
+    "name": "classification text",
+    "position": "upper-middle left, ~25-32% height",
+    "content": "Classification definition line"
+   },
+   {
+    "name": "classification plots",
+    "position": "middle, ~32-58% height, center-right",
+    "content": "Two scatter plots side by side: linear boundary (left) and curved boundary (right)"
+   },
+   {
+    "name": "regression text",
+    "position": "lower-middle left, ~60-66% height",
+    "content": "Regression definition line"
+   },
+   {
+    "name": "regression plot",
+    "position": "bottom center-right, ~66-95% height",
+    "content": "Curve-fitting plot with data points and fitted curve"
+   }
+  ],
+  "hierarchy": "Red bold title dominates; blue bold keywords 'Classification' and 'Regression' are secondary emphasis; black body text; plots are the main visual content."
+ },
+ "visual_elements": [
+  {
+   "type": "graph",
+   "description": "Left classification scatter plot: axes with arrows (no labels/ticks), blue dot points clustered upper-left in a diagonal rising band, red 'x' points lower-right, separated by a plain straight black diagonal line (linear decision boundary, no arrowhead).",
+   "colors": [
+    "#1E90FF",
+    "#FF0000",
+    "#000000"
+   ],
+   "position": "middle, left of the two classification plots"
+  },
+  {
+   "type": "graph",
+   "description": "Right classification scatter plot: axes with arrows (no labels/ticks), blue dots on the left, red 'x' marks on the right, separated by a black non-linear boundary that rises steeply from the lower-left then flattens across the top.",
+   "colors": [
+    "#1E90FF",
+    "#FF0000",
+    "#000000"
+   ],
+   "position": "middle, right of the two classification plots"
+  },
+  {
+   "type": "graph",
+   "description": "Regression plot: scatter of small open blue/purple circles following a sinusoidal pattern, with a fitted smooth curve (green/yellow line) passing through them and a pink/red shaded confidence band around the curve. Y-axis shows ticks at 1, 0, -1; x-axis shows 0 and 1.",
+   "colors": [
+    "#6A5ACD",
+    "#9ACD32",
+    "#FFB6C1",
+    "#FF0000",
+    "#000000"
+   ],
+   "position": "bottom center-right"
+  }
+ ],
+ "imagery": [
+  "No photos; all imagery is matplotlib-style plots. No handwritten ink annotations are present in the curated frame."
+ ],
+ "colors": {
+  "background": "#F2F2F2",
+  "title_text": "#CC0000",
+  "body_text": "#000000",
+  "accents": [
+   "#0000CC",
+   "#FF0000",
+   "#FFFF99",
+   "#1E90FF",
+   "#6A5ACD",
+   "#9ACD32",
+   "#FFB6C1"
+  ]
+ },
+ "typography_notes": "Sans-serif throughout. Title large, bold, red, centered. Body text black with keywords 'Classification' and 'Regression' in bold blue. Slide number in small yellow circle. Handwritten red ink annotations in casual script.",
+ "animation_state": "Fully built; the curated ground-truth frame carries no live-ink annotations (the pre-curation analysis frame did \u2014 see validation note).",
+ "recreation_brief": "1. Background: slide background per house template (#E8E8E8) with the house outer red frame; inside it, no additional slide-level decoration.\n2. Slide-number badge: per house template, yellow circle top-right containing '15'.\n3. Title: large, bold, red (#CC0000), sans-serif, horizontally centered 'Classification vs Regression' in the band ~5-20% of slide height (house title box).\n4. Content frame: outline-only rectangle with a red border (approx. #CC0000, no fill) spanning ~22% to ~97% of slide height and most of the slide width, just below the title; all remaining elements are placed inside this frame.\n5. Classification text line: at ~25-32% height, left-aligned inside the frame, 'Classification is about finding separation boundaries (linear/non-linear):' in black sans-serif with 'Classification' in bold blue (#0000CC).\n6. Left classification plot: in the band ~32-58% height, left half of the center-right area, a scatter plot with plain black arrow axes (no labels, no ticks) in a thin navy frame: blue dot markers (#1E90FF) in a diagonal rising band, red 'x' markers (#FF0000) below-right, separated by a plain straight black (#000000) diagonal line (no arrowhead).\n7. Right classification plot: immediately to the right, same size, same arrow axes and marker colors, thin navy frame: blue dots on the left, red 'x' marks on the right, separated by a black non-linear boundary that rises steeply from lower-left then flattens across the top (no arrowhead).\n8. Regression text line: at ~60-66% height, left-aligned inside the frame, 'Regression is more like fitting a curve/surface to the data:' in black sans-serif with 'Regression' in bold blue (#0000CC).\n9. Regression plot: centered-right in the band ~66-95% height (keep the whole figure above the content frame's bottom border), in a thin navy/purple frame, with y-axis ticks at 1, 0, -1 and x-axis marks at 0 and 1: small open (unfilled) blue/purple (#6A5ACD) circle markers scattered along a sinusoidal pattern, a smooth green/yellow (#9ACD32) fitted curve passing through them spanning the plot end-to-end, and a pink (#FFB6C1) shaded band around the curve.\n10. NO handwritten ink annotations: the curated ground-truth frame contains no '2nd order'/'3rd order' labels, no red arrows, and no red 'x' ink marks \u2014 do not draw them (see validation ground-truth note).",
+ "validation": {
+  "verdict": "PASS_WITH_FIXES",
+  "fixes_applied": [
+   "Confirmed subtitle_or_header is genuinely absent (no subtitle/header text anywhere in layout.regions or verbatim_text); left null per the 'truly absent from source' rule.",
+   "Removed the invented 'thin dark-red border framing the whole slide' from recreation_brief step 1 \u2014 layout.arrangement describes a red border only on the large content box below the title.",
+   "Removed the unsupported 'dark outline' on the slide-number circle \u2014 the source specifies only a small yellow circle with '15'.",
+   "Added the regression-plot colors #6A5ACD, #9ACD32 and #FFB6C1 to colors.accents \u2014 they are declared in visual_elements but were missing from the color palette.",
+   "Added [?] markers to the '2nd order' and '3rd order' entries in verbatim_text.labels so they match the 'approximately ... [?]' readings in visual_elements.",
+   "Harmonized the horizontal red ink line position to 'near the top of the regression plot' per visual_elements (the old brief's 'top-left' added unsupported specificity).",
+   "Rewrote recreation_brief from 10 multi-element steps into 14 single-element numbered steps; each step now specifies exact text, position band, hex color, and chart/shape type.",
+   "Replaced vague position wording in the brief ('near top', 'spanning most of the slide') with the exact bands from layout.regions: title ~5-20% height, content frame ~22-97% height, classification text ~25-32%, classification plots ~32-58%, regression text ~60-66%, regression plot ~66-95%.",
+   "Verified no vague quantifiers ('several', 'some', 'many', 'a few', 'various') remain; all counts are exact: 2 bullets, 3 graphs (2 classification scatter plots + 1 regression plot), 2 handwritten text annotations, 3 ink marks on the regression plot, 1 slide-number badge.",
+   "GROUND-TRUTH CORRECTION (slide-15 worker, 2026-10-09): the pre-curation analysis (old id 18, frame_01527.jpg) recorded red handwritten annotations ('2nd order' [?], '3rd order' [?] with arrow, and three red/black ink marks on the regression plot). The CURATED ground-truth image unique_slides/slide_015.jpg does NOT contain them: verified by two independent default-route vision reads (recreated_pptx/qa/slide15/judge_attempt_1.txt findings 1-3; recreated_pptx/qa/slide15/orig_census_1.txt census ABSENT x3) and by pixel forensics (frame_01527.jpg carries ~1200 red pixels in the plot regions that slide_015.jpg lacks). All ink-annotation content was therefore removed from this spec; recreation_brief rewritten accordingly."
+  ],
+  "uncertain_items": [
+   "Exact red shade of the content-box border is not specified in the source; the brief assumes #CC0000 to match the title.",
+   "Whether the yellow slide-number circle has an outline is unspecified; recreated as a plain filled #FFFF99 circle.",
+   "Exact data-point positions and curve/boundary shapes inside the three plots are described only qualitatively; a builder must approximate them from the descriptions.",
+   "Exact data-point positions and curve/boundary shapes inside the three plots are approximated from the judge/census descriptions of the current frame (blue dots in a diagonal rising band on the left plot; right boundary rises then flattens across the top; plot frames navy)."
+  ],
+  "recreatability_score_1_to_10": 8
+ },
+ "_meta": {
+  "frame": "slide_015.jpg",
+  "model": "images",
+  "source_timestamps": {
+   "slide": 15,
+   "image": "slide_015.jpg",
+   "kept_frame": "frame_01527.jpg",
+   "start_sec": 1344.0,
+   "end_sec": 1526.0,
+   "frame_count": 183
+  },
+  "elapsed_s": 33.0,
+  "validated_by": "glm-5.3",
+  "validation_elapsed_s": 400.5
+ }
+}

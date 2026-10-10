@@ -1,0 +1,117 @@
+{
+  "slide_title": "Data Overfit and Underfit",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Questions:-",
+      "Which of the four red curves fits the data (blue dots) best?",
+      "Which curve is expected to generalize the best?",
+      "Are they both the same? If yes, why? If no, why not?",
+      "Lesson: Simple models should be preferred over complicated models",
+      "Simple models can prevent overfitting",
+      "Too simple a model can underfit (e.g., M = 0 above)",
+      "General guideline: Choose a model not-too-simple, yet not-too-complex"
+    ],
+    "labels": [
+      "18",
+      "M = 0",
+      "M = 1",
+      "M = 3",
+      "M = 9"
+    ],
+    "equations": [
+      "M = 0",
+      "M = 1",
+      "M = 3",
+      "M = 9"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top in dark red. Below, a large bordered content box: left ~55% contains the text (Questions header, two bullets, then stacked lesson lines); right ~45% contains a 2x2 grid of four small curve-fitting plots. A circled slide number '18' sits at the top-right corner outside the content box. The whole slide has a thin dark-red outer border.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top center, ~5-15% height",
+        "content": "Title 'Data Overfit and Underfit' in bold dark red"
+      },
+      {
+        "name": "slide number badge",
+        "position": "top-right corner",
+        "content": "Yellow circle with dark outline containing '18'"
+      },
+      {
+        "name": "text block",
+        "position": "middle-left, ~10-55% width, ~20-90% height",
+        "content": "Questions header, two bullet points, and five lines of lesson/guideline text with colored and underlined emphasis"
+      },
+      {
+        "name": "plots grid",
+        "position": "middle-right, ~55-90% width, ~20-60% height",
+        "content": "2x2 grid of four small scatter/curve plots labeled M = 0, M = 1, M = 3, M = 9"
+      }
+    ],
+    "hierarchy": "Title largest and boldest in dark red. 'Questions:-' bold black. Bullets in red and blue. 'Are they both the same?' in green bold. 'Lesson:' bold black with mixed red/black text. 'General guideline:' in dark red bold. Plots are secondary visual support on the right."
+  },
+  "visual_elements": [
+    {
+      "type": "chart",
+      "description": "2x2 grid of four small polynomial curve-fitting plots. Each shows blue scatter dots (data points), a green sinusoidal true curve, and a red fitted curve. Top-left labeled 'M = 0': red curve is a flat horizontal line (underfit). Top-right labeled 'M = 1': red curve is a straight sloped line. Bottom-left labeled 'M = 3': red curve is a smooth cubic closely following the green curve. Bottom-right labeled 'M = 9': red curve is a highly wiggly high-degree polynomial passing through every blue dot (overfit). Axes have small tick marks but no readable numeric labels.",
+      "colors": [
+        "#0000CC",
+        "#00CC00",
+        "#CC0000",
+        "#FFFFFF"
+      ],
+      "position": "right half of content box, upper-middle"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Thin dark-red rectangular border framing the entire slide, plus a second dark-red border around the inner content box containing text and plots.",
+      "colors": [
+        "#8B0000"
+      ],
+      "position": "slide edges and content area"
+    },
+    {
+      "type": "icon",
+      "description": "Circular badge with yellow fill and dark outline containing the number '18' (slide number).",
+      "colors": [
+        "#FFFF99",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [
+    "Four small matplotlib-style curve-fitting plots showing polynomial regression of degrees 0, 1, 3, and 9 on the same noisy sinusoidal dataset"
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#8B0000",
+    "body_text": "#000000",
+    "accents": [
+      "#CC0000",
+      "#0000CC",
+      "#009900",
+      "#8B0000",
+      "#FFFF99"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title large bold dark red. 'Questions:-' bold black. First bullet in red, second bullet in blue with 'generalize' underlined. 'Are they both the same?' in green bold, remainder of that line black. 'Lesson:' bold black, 'Simple models' in red, 'preferred' bold underlined black. 'can prevent overfitting' underlined. 'Too simple a model' and 'underfit' underlined. 'General guideline:' bold dark red, 'not-too-simple, yet not-too-complex' underlined. Standard round bullet markers.",
+  "animation_state": "Fully built; all bullets and lines visible. A mouse cursor arrow appears near the word 'generalize'.",
+  "recreation_brief": "1. White background slide with a thin dark-red (#8B0000) border around the full slide edge. 2. Add a second dark-red bordered rectangle inset from the edges forming the content box. 3. Top center inside the box: bold dark-red title 'Data Overfit and Underfit'. 4. Top-right corner outside/above the content box: yellow-filled circle with black outline containing '18'. 5. Left side of content box, add text lines in order: bold black 'Questions:-'; bullet 1 in red 'Which of the four red curves fits the data (blue dots) best?'; bullet 2 in blue 'Which curve is expected to generalize the best?' with 'generalize' underlined; green bold 'Are they both the same?' followed by black ' If yes, why? If no, why not?'; 'Lesson: ' bold black + 'Simple models' in red + ' should be ' black + bold underlined 'preferred' + ' over complicated models' black; 'Simple models ' black + underlined 'can prevent overfitting'; underlined 'Too simple a model' + ' can ' + underlined 'underfit' + ' (e.g., M = 0 above)'; bold dark-red 'General guideline: ' + black 'Choose a model ' + underlined 'not-too-simple, yet not-too-complex'. 6. Right side: create a 2x2 grid of four small line/scatter charts, each with blue dot markers, a green smooth sine curve, and a red fit curve; label them 'M = 0' (flat red line), 'M = 1' (straight sloped red line), 'M = 3' (smooth cubic red curve matching green), 'M = 9' (wiggly red curve through all dots). 7. Use sans-serif font (e.g., Arial/Calibri) throughout.",
+  "_meta": {
+    "frame": "slide_018.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 18,
+      "image": "slide_018.jpg",
+      "kept_frame": "frame_01885.jpg",
+      "old_slide": 24,
+      "start_sec": 1788.0,
+      "end_sec": 1884.0,
+      "frame_count": 97
+    },
+    "elapsed_s": 46.6
+  }
+}

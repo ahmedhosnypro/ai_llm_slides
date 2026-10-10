@@ -1,0 +1,135 @@
+{
+  "slide_title": "Data Overfit and Underfit",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "The X axis is the input. The Y axis is the response."
+    ],
+    "labels": [
+      "16",
+      "M = 0",
+      "M = 1",
+      "M = 3",
+      "M = 9",
+      "x",
+      "t"
+    ],
+    "equations": [
+      "M = 0",
+      "M = 1",
+      "M = 3",
+      "M = 9"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top in red on a light gray header band; slide number in yellow circle at top-right; single line of body text below title; large red-bordered container holding a 2x2 grid of four small line/scatter plots in the center; thin red outer border frames the whole slide content area.",
+    "regions": [
+      {
+        "name": "header band",
+        "position": "top, full width, ~0-18% height",
+        "content": "light gray band with red centered title 'Data Overfit and Underfit' and yellow circled '16' at top-right"
+      },
+      {
+        "name": "instruction line",
+        "position": "upper-middle left, ~28-33% height",
+        "content": "black text: 'The X axis is the input. The Y axis is the response.'"
+      },
+      {
+        "name": "plot grid container",
+        "position": "center, ~35-90% height, ~20-75% width",
+        "content": "red-bordered rectangle containing four subplots in 2x2 arrangement"
+      },
+      {
+        "name": "subplot M=0",
+        "position": "top-left of grid",
+        "content": "scatter points with flat red horizontal fit line, green sine curve, yellow 'M = 0' label, large red dot annotation on right side"
+      },
+      {
+        "name": "subplot M=1",
+        "position": "top-right of grid",
+        "content": "scatter points with downward sloping red linear fit, green sine curve, yellow 'M = 1' label"
+      },
+      {
+        "name": "subplot M=3",
+        "position": "bottom-left of grid",
+        "content": "scatter points with smooth red cubic curve closely tracking green sine curve, yellow 'M = 3' label"
+      },
+      {
+        "name": "subplot M=9",
+        "position": "bottom-right of grid",
+        "content": "scatter points with wild oscillating red high-degree polynomial passing through every point, green sine curve, yellow 'M = 9' label"
+      }
+    ],
+    "hierarchy": "Red title dominates at top; the 2x2 plot grid is the main visual mass; black instruction line is secondary; yellow M labels are small accents inside each subplot."
+  },
+  "visual_elements": [
+    {
+      "type": "chart",
+      "description": "Four small MATLAB-style plots in a 2x2 grid. Each shows ~10 blue open-circle data points sampled from a green sinusoidal curve, with a red polynomial fit of increasing order. Axes: horizontal labeled 'x' (range 0 to 1), vertical labeled 't' (range approx -1 to 1 with ticks at -1, 0, 1). Top-left (M=0): red fit is a flat horizontal line near t=0.4; a large solid red dot is overlaid on the right portion of the plot. Top-right (M=1): red fit is a straight line sloping downward from upper-left to lower-right. Bottom-left (M=3): red cubic curve closely follows the green sine wave. Bottom-right (M=9): red curve oscillates wildly, passing exactly through every blue data point with large spikes between and beyond points. Each subplot has a small yellow boxed label in its upper-right corner reading 'M = 0', 'M = 1', 'M = 3', 'M = 9' respectively.",
+      "colors": [
+        "#0000FF",
+        "#00FF00",
+        "#FF0000",
+        "#FFFF99",
+        "#000000"
+      ],
+      "position": "center of slide inside red-bordered box"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Thick red rectangular border surrounding the 2x2 plot grid, and a thinner red border framing the entire slide content area",
+      "colors": [
+        "#CC0000"
+      ],
+      "position": "around plot grid and around full slide"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle with dark outline containing black number '16' (slide number badge)",
+      "colors": [
+        "#FFFF88",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    },
+    {
+      "type": "other",
+      "description": "Large solid red circular dot annotation overlaid on the M=0 subplot, marking a point on the flat fit line",
+      "colors": [
+        "#FF0000"
+      ],
+      "position": "right-center of top-left subplot"
+    }
+  ],
+  "imagery": [
+    "No photographs; only the four generated curve-fitting plots (blue circle markers, green true curve, red fitted polynomial) typical of MATLAB output, plus a yellow slide-number badge."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#CC0000",
+    "body_text": "#000000",
+    "accents": [
+      "#FF0000",
+      "#00FF00",
+      "#0000FF",
+      "#FFFF99",
+      "#EEEEEE"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title is large, bold, red, centered. Body line is medium-size black regular weight. Subplot axis labels (x, t) are small italic-ish MATLAB default font. M labels are small black text inside pale yellow boxes. Slide number is small black text in a yellow circle.",
+  "animation_state": "Appears fully built; the large red dot on the M=0 panel may be a pointer/annotation from the lecture rather than a build step.",
+  "recreation_brief": "1. Set white slide background. 2. Add a light gray (#EEEEEE) header band across the top ~15% of the slide. 3. Place centered bold red (#CC0000) title text 'Data Overfit and Underfit' in the band. 4. Add a yellow (#FFFF99) circle with thin dark outline at top-right containing '16'. 5. Draw a thin red border rectangle framing the whole slide content area. 6. Below the band, left-aligned, add black text: 'The X axis is the input. The Y axis is the response.' 7. Draw a thick red-bordered rectangle in the center (~20-75% width, ~35-90% height). 8. Inside it, create a 2x2 grid of four small axes, each with x-axis labeled 'x' (0 to 1) and y-axis labeled 't' (-1 to 1). 9. In each axes plot ~10 blue open-circle markers along a sine wave, overlay a green (#00FF00) sine curve, and a red (#FF0000) polynomial fit: flat horizontal line (top-left), downward straight line (top-right), smooth cubic matching the sine (bottom-left), and a wild 9th-order curve passing through all points with large oscillations (bottom-right). 10. Add a small pale yellow boxed label in the upper-right of each subplot reading 'M = 0', 'M = 1', 'M = 3', 'M = 9'. 11. Optionally add a large solid red dot on the right side of the M=0 subplot to mimic the lecture pointer.",
+  "_meta": {
+    "frame": "slide_019.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 19,
+      "image": "slide_019.jpg",
+      "kept_frame": "frame_01574.jpg",
+      "start_sec": 1527.0,
+      "end_sec": 1573.0,
+      "frame_count": 47
+    },
+    "elapsed_s": 203.3
+  }
+}

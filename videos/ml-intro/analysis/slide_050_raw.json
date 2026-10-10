@@ -1,0 +1,109 @@
+{
+  "slide_title": "K-Nearest Neighbors (KNN) , K=20",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "50",
+      "K=20, green class",
+      "Select Nearest 20 Neighbors",
+      "Vote on 20 Nearest Neighbors"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Title centered at top inside a thin red-bordered header band; a yellow circle with '50' sits at the top-right corner of the header. Below, the slide body is split into two side-by-side panels, each a scatter-style diagram with red axis arrows: left panel shows neighbor selection around a query point, right panel shows a sorted-distance voting chart. Each panel has a red caption centered beneath it.",
+    "regions": [
+      {
+        "name": "header band",
+        "position": "top, full width, ~0-15% height",
+        "content": "Title 'K-Nearest Neighbors (KNN) , K=20' with 'K-Nearest Neighbors' in dark red and '(KNN) , K=20' in blue; yellow circle badge '50' at far right"
+      },
+      {
+        "name": "left diagram panel",
+        "position": "middle-left, ~5-48% width, ~18-88% height",
+        "content": "Scatter of colored circled points (green cluster lower-left, blue cluster upper-right, orange points bottom-center) with a red query point connected by thin lines to its 20 nearest neighbors, which are ringed with dashed magenta circles"
+      },
+      {
+        "name": "right diagram panel",
+        "position": "middle-right, ~52-95% width, ~18-88% height",
+        "content": "Ascending dot plot of 20 nearest neighbors sorted by distance; label 'K=20, green class' at top with 'green' highlighted in green; vertical blue cutoff line near the right; red dots along the x-axis baseline with dotted vertical lines up to each neighbor point"
+      },
+      {
+        "name": "captions",
+        "position": "bottom of each panel, ~88-95% height",
+        "content": "Left: 'Select Nearest 20 Neighbors'; Right: 'Vote on 20 Nearest Neighbors', both in dark red"
+      }
+    ],
+    "hierarchy": "Title dominates in large bold red/blue text; the two diagrams share equal visual weight; red captions are medium-weight; small black annotation 'K=20, green class' with green highlight is minor."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Left panel: 2D scatter with red L-shaped axes (no tick labels). A solid red query point near center-top. Thin gray/red lines radiate from the query point to 20 neighbor points. Neighbors are drawn as filled circles ringed by dashed magenta/purple circles: a green-filled cluster (~8 points) at lower-left, a blue/cyan-filled cluster (~9 points) at upper-right, and a few orange/tan points at bottom-center (some ringed, some not). One bright green point at far lower-left appears unringed.",
+      "colors": [
+        "#CC0000",
+        "#7AB648",
+        "#5BC8E8",
+        "#E8C88A",
+        "#C850C8",
+        "#999999"
+      ],
+      "position": "left half of slide body"
+    },
+    {
+      "type": "chart",
+      "description": "Right panel: dot plot of the 20 nearest neighbors sorted left-to-right by increasing distance from the query point. Each neighbor is a small colored dot (cyan/green on the left rising through green to orange/tan on the right) with a thin dotted vertical line dropping to a red dot on the x-axis baseline (~20 red dots). A vertical blue line near the right side marks the K=20 cutoff boundary. Annotation at top: 'K=20, green class' with 'green' on a green highlight. Red L-shaped axes, no tick labels.",
+      "colors": [
+        "#CC0000",
+        "#5BC8E8",
+        "#7AB648",
+        "#E8C88A",
+        "#0000CC",
+        "#00CC44"
+      ],
+      "position": "right half of slide body"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle badge containing black number '50' (slide number)",
+      "colors": [
+        "#F5E96B",
+        "#000000"
+      ],
+      "position": "top-right corner of header"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#B00000",
+    "body_text": "#B00000",
+    "accents": [
+      "#0000CC",
+      "#7AB648",
+      "#5BC8E8",
+      "#E8C88A",
+      "#C850C8",
+      "#F5E96B",
+      "#00CC44"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title is large and bold, mixed colors (dark red for 'K-Nearest Neighbors', blue for '(KNN) , K=20'). Panel captions are bold dark red, smaller than title. In-chart annotation 'K=20, green class' is small black text with 'green' bolded on a green highlight. No bullet points.",
+  "animation_state": "Fully built; no partial reveals apparent.",
+  "recreation_brief": "1. White slide background. 2. Draw a thin dark-red rectangular border around the whole slide content area, and a horizontal divider under the header band (~top 15%). 3. Header: centered bold title 'K-Nearest Neighbors (KNN) , K=20' \u2014 set 'K-Nearest Neighbors' in dark red (#B00000) and '(KNN) , K=20' in blue (#0000CC). 4. Top-right: yellow circle (#F5E96B) with black '50'. 5. Left panel: draw red L-shaped axes; scatter ~20 filled circles: green cluster lower-left, cyan/blue cluster upper-right, orange/tan points bottom-center; place a solid red query dot near center-top; draw thin lines from the query dot to 20 points; add dashed magenta rings around those 20 neighbor points. 6. Below left panel, centered dark-red bold caption 'Select Nearest 20 Neighbors'. 7. Right panel: draw red L-shaped axes; place ~20 red dots along the x-axis; above each, a dotted vertical line rising to a colored dot (cyan\u2192green\u2192orange left to right) forming an increasing curve; add a vertical blue line near the right edge; add top annotation 'K=20, green class' with 'green' highlighted green. 8. Below right panel, centered dark-red bold caption 'Vote on 20 Nearest Neighbors'.",
+  "_meta": {
+    "frame": "slide_050.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 50,
+      "image": "slide_050.jpg",
+      "kept_frame": "frame_04006.jpg",
+      "old_slide": 65,
+      "start_sec": 3951.0,
+      "end_sec": 4005.0,
+      "frame_count": 55
+    },
+    "elapsed_s": 104.8
+  }
+}

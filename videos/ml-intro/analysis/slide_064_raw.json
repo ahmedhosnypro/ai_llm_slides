@@ -1,0 +1,121 @@
+{
+  "slide_title": "[3] Visualize Reduced Features [ 4 features are reduced to three features]",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "64",
+      "PCA",
+      "Setosa",
+      "Versicolor",
+      "Virginica",
+      "Z\u2081",
+      "Z\u2082",
+      "Z\u2083",
+      "Visualize Classes as 3-D (z\u2081 vs Z \u2082 vs Z\u2083)"
+    ],
+    "equations": [
+      "( W\u2081 L\u2081 W\u2082 L\u2082 )\u1d40 --PCA\u21d2-- ( Z\u2081 Z\u2082 Z\u2083 )\u1d40"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title bar across the top with a circled slide number '64' at top-right. Below, a large red-bordered rectangular frame occupies most of the slide: inside it, a small PCA transformation diagram sits at the upper-left, a large 3-D scatter plot dominates the center, and a color-coded legend (Setosa/Versicolor/Virginica) sits at the right. A caption bar at the bottom reads 'Visualize Classes as 3-D (z\u2081 vs Z \u2082 vs Z\u2083)'.",
+    "regions": [
+      {
+        "name": "title bar",
+        "position": "top, full width, ~0-12% height",
+        "content": "Title text with mixed colors: '[3] Visualize' in dark red, 'Reduced Features' in blue, bracketed note with yellow-highlighted '4' and 'three features', circled '64' at far right"
+      },
+      {
+        "name": "PCA mini-diagram",
+        "position": "upper-left inside main frame, ~15-45% height, ~8-25% width",
+        "content": "Column vector (W\u2081 L\u2081 W\u2082 L\u2082) in blue, red 'PCA' with double arrow, resulting column vector (Z\u2081 Z\u2082 Z\u2083)"
+      },
+      {
+        "name": "3-D scatter plot",
+        "position": "center of main frame, ~15-90% height, ~25-75% width",
+        "content": "3D scatter of Iris data projected onto Z\u2081, Z\u2082, Z\u2083 axes with red, green, blue point clusters"
+      },
+      {
+        "name": "legend",
+        "position": "right side inside frame, ~35-50% height, ~80-95% width",
+        "content": "Setosa (red), Versicolor (green), Virginica (blue)"
+      },
+      {
+        "name": "caption bar",
+        "position": "bottom center, ~92-100% height",
+        "content": "'Visualize Classes as 3-D (z\u2081 vs Z \u2082 vs Z\u2083)' with 'Classes' in red, rest in blue"
+      }
+    ],
+    "hierarchy": "The 3-D scatter plot dominates; title is next in prominence (large bold multicolor text); caption bar and legend are secondary; PCA mini-diagram is smallest."
+  },
+  "visual_elements": [
+    {
+      "type": "chart",
+      "description": "3-D scatter plot of PCA-reduced Iris dataset. Axes: Z\u2081 (front-left axis, ticks -3, -2, -1, 0, 1, 2, 3, 4), Z\u2082 (front-right axis, ticks -1.0, -0.5, 0.0, 0.5, 1.0, 1.5), Z\u2083 (vertical axis, ticks -0.6, -0.4, -0.2, 0.0, 0.2, 0.4, 0.6, 0.8). Three clusters of points: red cluster (Setosa) on the left, green cluster (Versicolor) in the middle, blue cluster (Virginica) on the right. Light gray 3D grid panes.",
+      "colors": [
+        "#FF0000",
+        "#00AA00",
+        "#0000FF",
+        "#DDDDDD"
+      ],
+      "position": "center of slide inside red frame"
+    },
+    {
+      "type": "diagram",
+      "description": "PCA transformation: left column vector with entries W\u2081, L\u2081, W\u2082, L\u2082 (blue text, parenthesized), red 'PCA' label above a red double-lined right arrow (\u21d2), right column vector with entries Z\u2081, Z\u2082, Z\u2083 (dark text, parenthesized). Enclosed in a thin red-bordered box.",
+      "colors": [
+        "#0000CC",
+        "#CC0000",
+        "#000000"
+      ],
+      "position": "upper-left inside main frame"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Yellow highlight behind the '4' in '4 features' and behind the words 'three features' in the title",
+      "colors": [
+        "#FFFF00"
+      ],
+      "position": "title bar"
+    },
+    {
+      "type": "icon",
+      "description": "Circled number '64' (slide number) in a thin dark circle",
+      "colors": [
+        "#333333"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#F2F2F2",
+    "title_text": "#0000CC",
+    "body_text": "#000000",
+    "accents": [
+      "#CC0000",
+      "#0000CC",
+      "#00AA00",
+      "#FFFF00",
+      "#990000"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title is large and bold with mixed coloring: '[3] Visualize' in dark red, 'Reduced Features' in blue, bracketed portion in blue with yellow highlights. Axis labels Z\u2081, Z\u2082, Z\u2083 in red italics with subscripts. Legend words color-matched to clusters. Caption in blue with 'Classes' in red. Vector entries use subscript numerals.",
+  "animation_state": "Fully built; no partial reveals visible.",
+  "recreation_brief": "1. Set slide background to light gray (#F2F2F2). 2. Add title text box at top: '[3] Visualize ' in dark red bold, 'Reduced Features' in blue bold, then ' [ ' + yellow-highlighted '4' + ' features are reduced to ' + yellow-highlighted 'three features' + ']' in blue bold. 3. Add circled '64' at top-right. 4. Draw a large thin red-bordered rectangle covering most of the slide below the title. 5. Upper-left inside the frame: small red-bordered box containing a column vector (W\u2081, L\u2081, W\u2082, L\u2082) in blue, a red 'PCA' label over a red double arrow \u21d2, and a result column vector (Z\u2081, Z\u2082, Z\u2083). 6. Center: insert a 3-D scatter plot with axes Z\u2081 (-3 to 4), Z\u2082 (-1.0 to 1.5), Z\u2083 (-0.6 to 0.8); plot three clusters \u2014 red points left, green middle, blue right \u2014 on a light gray 3D grid; axis labels in red italics. 7. Right side inside frame: legend text 'Setosa' (red), 'Versicolor' (green), 'Virginica' (blue), stacked vertically. 8. Bottom center: caption bar 'Visualize Classes as 3-D (z\u2081 vs Z \u2082 vs Z\u2083)' in blue with 'Classes' in red.",
+  "_meta": {
+    "frame": "slide_064.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 64,
+      "image": "slide_064.jpg",
+      "kept_frame": "frame_05788.jpg",
+      "old_slide": 102,
+      "start_sec": 5785.0,
+      "end_sec": 5787.0,
+      "frame_count": 3
+    },
+    "elapsed_s": 115.0
+  }
+}

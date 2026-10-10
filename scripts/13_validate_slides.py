@@ -85,6 +85,8 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("analysis_dir")
     parser.add_argument("--slides", type=int, default=10)
+    parser.add_argument("--from", dest="from_slide", type=int, default=1)
+    parser.add_argument("--to", dest="to_slide", type=int, default=None)
     parser.add_argument("--model", default=os.environ.get("IR_TEXT_MODEL", "glm-5.3"))
     args = parser.parse_args()
 
@@ -98,9 +100,17 @@ def main() -> None:
         sys.exit("IR_API_KEY env var required (or create .analyze-image-key in the project root)")
 
     analysis_dir = os.path.abspath(args.analysis_dir)
-    raw_files = sorted(glob.glob(os.path.join(analysis_dir, "slide_*_raw.json")))[: args.slides]
+    raw_files = sorted(glob.glob(os.path.join(analysis_dir, "slide_*_raw.json")))
+    if args.from_slide > 1 or args.to_slide is not None:
+        def _slide_num(p: str) -> int:
+            m = re.match(r"slide_(\d+)_raw\.json$", os.path.basename(p))
+            return int(m.group(1)) if m else 0
+        raw_files = [p for p in raw_files
+                     if _slide_num(p) >= args.from_slide
+                     and (args.to_slide is None or _slide_num(p) <= args.to_slide)]
+    raw_files = raw_files[: args.slides]
     if not raw_files:
-        sys.exit(f"no slide_*_raw.json in {analysis_dir} — run 12_analyze_slides.py first")
+        sys.exit(f"no slide_*_raw.json in {analysis_dir} (range) — run 12_analyze_slides.py first")
 
     client = openai.OpenAI(base_url=base_url, api_key=api_key)
     finals = []
@@ -117,7 +127,7 @@ def main() -> None:
             resp = client.chat.completions.create(
                 model=args.model,
                 messages=[{"role": "user", "content": VALIDATION_PROMPT + json.dumps(raw, indent=1)}],
-                max_tokens=16000,
+                max_tokens=int(os.environ.get("IR_MAX_TOKENS", "16000")),  # raise via env when glm spends the whole budget thinking (AGENTS.md fact 2)
                 temperature=0.1,
                 stream=True,  # streaming avoids the upstream gateway's 60s non-streaming cut
             )

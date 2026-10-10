@@ -96,7 +96,10 @@ def main() -> None:
     parser.add_argument("slides_dir")
     parser.add_argument("analysis_out_dir")
     parser.add_argument("--slides", type=int, default=10)
+    parser.add_argument("--from", dest="from_slide", type=int, default=1)
+    parser.add_argument("--to", dest="to_slide", type=int, default=None)
     parser.add_argument("--model", default=os.environ.get("IR_VISION_MODEL", "images"))
+    parser.add_argument("--max-tokens", type=int, default=16000)
     args = parser.parse_args()
 
     base_url = os.environ.get("IR_BASE_URL", "http://localhost:17844/v1")
@@ -117,7 +120,16 @@ def main() -> None:
 
     slide_files = sorted(
         f for f in os.listdir(slides_dir) if f.lower().endswith((".jpg", ".jpeg"))
-    )[: args.slides]
+    )
+    # Range filter BEFORE the --slides slice (slice default 10 would eat ranges otherwise).
+    if args.from_slide > 1 or args.to_slide is not None:
+        def _slide_num(name: str) -> int:
+            m = re.match(r"slide_(\d+)\.jpe?g$", name, re.IGNORECASE)
+            return int(m.group(1)) if m else 0
+        slide_files = [f for f in slide_files
+                       if _slide_num(f) >= args.from_slide
+                       and (args.to_slide is None or _slide_num(f) <= args.to_slide)]
+    slide_files = slide_files[: args.slides]
 
     client = openai.OpenAI(base_url=base_url, api_key=api_key)
     ok, failed = 0, 0
@@ -139,7 +151,7 @@ def main() -> None:
                     {"type": "text", "text": ANALYSIS_PROMPT},
                     {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{b64}"}},
                 ]}],
-                max_tokens=16000,
+                max_tokens=args.max_tokens,
                 temperature=0.1,
                 stream=True,  # streaming avoids the upstream gateway's 60s non-streaming cut
             )

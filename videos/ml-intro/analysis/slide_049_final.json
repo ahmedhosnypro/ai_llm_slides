@@ -1,0 +1,137 @@
+{
+ "slide_title": "K-Nearest Neighbors (KNN) , K=5",
+ "subtitle_or_header": "No separate subtitle exists. The top header band (full width, ~0-15% of slide height, thin red border) contains only the centered title and a yellow circular slide-number badge '49' at the far right.",
+ "verbatim_text": {
+  "bullets": [
+   "Select Nearest 5 Neighbors",
+   "Vote on 5 Nearest Neighbors"
+  ],
+  "labels": [
+   "49",
+   "K=5, cyan class",
+   "Select Nearest 5 Neighbors",
+   "Vote on 5 Nearest Neighbors"
+  ],
+  "equations": []
+ },
+ "layout": {
+  "arrangement": "Title centered at top inside a thin red-bordered header band; slide number '49' in a yellow circle at top-right. Below, two side-by-side scatter-plot panels, each framed by red axis arrows (vertical arrow up on left, horizontal arrow right at bottom). Left panel captioned 'Select Nearest 5 Neighbors' underneath; right panel captioned 'Vote on 5 Nearest Neighbors' underneath. Entire slide enclosed in a thin red rectangular border.",
+  "regions": [
+   {
+    "name": "header",
+    "position": "top, full width, ~0-15% height",
+    "content": "Title text 'K-Nearest Neighbors (KNN) , K=5' with 'K-Nearest Neighbors' in dark red and '(KNN) , K=5' in blue; yellow circle with '49' at far right"
+   },
+   {
+    "name": "left plot",
+    "position": "middle-left, ~10-50% width, ~20-85% height",
+    "content": "Scatter plot with 1 red query point and 20 neighbor points (~8 green, ~7 cyan, ~5 beige), magenta dashed circles highlighting the 5 nearest neighbors, thin gray lines connecting query to all 20 neighbors"
+   },
+   {
+    "name": "right plot",
+    "position": "middle-right, ~52-95% width, ~20-85% height",
+    "content": "Scatter plot of the left plot's 20 neighbor points sorted by distance along x-axis, 20 red dots on the x-axis (one per neighbor point), vertical blue divider line after the 5th point, label 'K=5, cyan class' at top-left of panel"
+   },
+   {
+    "name": "captions",
+    "position": "bottom, under each plot, ~88-95% height",
+    "content": "Red bold captions: 'Select Nearest 5 Neighbors' (left), 'Vote on 5 Nearest Neighbors' (right)"
+   }
+  ],
+  "hierarchy": "Title largest and boldest (red/blue mix); the two plots dominate the slide area equally; red captions medium-bold beneath plots; small annotation 'K=5, cyan class' inside right plot; tiny slide number badge top-right."
+ },
+ "visual_elements": [
+  {
+   "type": "graph",
+   "description": "Left scatter plot: a single red (#FF0000) query point near center-right of the panel. Around it: a cluster of ~8 bright green (#7CFC00) points to the lower-left, a cluster of ~7 cyan (#00FFFF) points to the right, and a cluster of ~5 beige/tan (#F5DEB3) points below (20 neighbor points total). Thin light-gray (#CCCCCC) lines radiate from the red query point to all 20 neighbor points. The 5 nearest neighbors are highlighted with magenta (#FF00FF) dashed circles: per the analysis, the closest cyan points plus the one closest green point (i.e., 4 cyan + 1 green). Red (#B22222) axis arrows: vertical arrow pointing up on the left edge, horizontal arrow pointing right along the bottom. No axis ticks or numeric labels.",
+   "colors": [
+    "#FF0000",
+    "#7CFC00",
+    "#00FFFF",
+    "#F5DEB3",
+    "#FF00FF",
+    "#CCCCCC",
+    "#B22222"
+   ],
+   "position": "left half of slide"
+  },
+  {
+   "type": "graph",
+   "description": "Right scatter plot: the left plot's 20 neighbor points re-plotted sorted by distance to the query along the x-axis. 20 small red (#FF0000) dots sit on the horizontal axis (one per neighbor point). Above them, the colored points (green #7CFC00, cyan #00FFFF, beige #F5DEB3) rise in an increasing curve from lower-left to upper-right, each connected to its red axis dot by a thin dotted vertical line. A solid vertical blue (#0000CC) line is drawn just after the 5th point from the left, separating the 5 nearest neighbors (left of line) from the remaining 15. Text annotation at top-left of panel: 'K=5, cyan class' with the word 'cyan' highlighted on a cyan background. Red (#B22222) axis arrows: vertical up on left, horizontal right at bottom. No numeric ticks.",
+   "colors": [
+    "#FF0000",
+    "#7CFC00",
+    "#00FFFF",
+    "#F5DEB3",
+    "#0000CC",
+    "#B22222"
+   ],
+   "position": "right half of slide"
+  },
+  {
+   "type": "icon",
+   "description": "Yellow circle badge containing black number '49' (slide number)",
+   "colors": [
+    "#FFFF99",
+    "#000000"
+   ],
+   "position": "top-right corner of header"
+  }
+ ],
+ "imagery": [],
+ "colors": {
+  "background": "#FFFFFF",
+  "title_text": "#B22222 for 'K-Nearest Neighbors' plus #0000CC for '(KNN) , K=5' (two-tone title)",
+  "body_text": "#B22222 (bold red captions); #000000 (in-plot annotation 'K=5, cyan class' and badge number '49')",
+  "accents": [
+   "#0000CC",
+   "#00FFFF",
+   "#7CFC00",
+   "#FF00FF",
+   "#F5DEB3",
+   "#FFFF99",
+   "#FF0000",
+   "#CCCCCC",
+   "#000000"
+  ]
+ },
+ "typography_notes": "Sans-serif throughout. Title is large and bold, with 'K-Nearest Neighbors' in dark red (#B22222) and '(KNN) , K=5' in blue (#0000CC). Captions under plots are bold red, smaller than title. In-plot annotation 'K=5, cyan class' is small black text with 'cyan' highlighted in cyan. Slide number in small black text inside yellow circle.",
+ "animation_state": "Fully built; both panels and all annotations visible. A mouse cursor arrow is visible in the right panel near the lower-left points, suggesting a live lecture capture; this cursor is a recording artifact, not slide content, and must be excluded from recreation.",
+ "recreation_brief": "1. Slide base: set the background to white (#FFFFFF) and draw a thin dark-red (#B22222) rectangle outline around the entire slide perimeter. 2. Header band: draw a thin dark-red (#B22222) horizontal line across the full slide width at ~15% of slide height, closing off a header band spanning ~0-15% height (its top edge is the slide border from step 1). 3. Title: centered in the header band, set large bold sans-serif text 'K-Nearest Neighbors' in dark red (#B22222) immediately followed by '(KNN) , K=5' in blue (#0000CC); this is the largest text on the slide. 4. Slide-number badge: at the far right of the header band, draw a small yellow (#FFFF99) filled circle containing black (#000000) sans-serif text '49'. 5. Left panel axes: in region x~10-50% width, y~20-85% height, draw a dark-red (#B22222) vertical arrow pointing up along the panel's left edge and a dark-red horizontal arrow pointing right along its bottom edge; no ticks or numbers. 6. Left query point: place 1 red (#FF0000) dot near the center-right of the left panel. 7. Left green cluster: scatter 8 bright-green (#7CFC00) dots as a cluster to the lower-left of the query point. 8. Left cyan cluster: scatter 7 cyan (#00FFFF) dots as a cluster to the right of the query point. 9. Left beige cluster: scatter 5 beige (#F5DEB3) dots as a cluster below the query point. 10. Left connectors: draw a thin light-gray (#CCCCCC) straight line from the red query dot to each of the 20 neighbor dots (20 lines total). 11. Left highlights: draw a magenta (#FF00FF) dashed circle around each of the 5 nearest neighbors, which per the analysis are the 4 closest cyan dots and the 1 closest green dot. 12. Left caption: below the left panel (~88-95% height), center bold red (#B22222) sans-serif text 'Select Nearest 5 Neighbors'. 13. Right panel axes: in region x~52-95% width, y~20-85% height, draw the same dark-red (#B22222) axis arrows (vertical arrow up on the left edge, horizontal arrow right along the bottom); no ticks. 14. Right axis dots: place 20 small red (#FF0000) dots evenly along the horizontal axis, one per left-panel neighbor point, ordered by distance to the query (nearest leftmost). 15. Right curve points: above the axis dots, re-plot the 20 colored points at increasing heights from lower-left to upper-right forming a rising curve, keeping original colors (8 green #7CFC00, 7 cyan #00FFFF, 5 beige #F5DEB3). 16. Right dotted verticals: from each of the 20 colored points, draw a thin dotted vertical line down to its corresponding red axis dot. 17. Right divider: draw a solid vertical blue (#0000CC) line just after the 5th point from the left, spanning the plot height, separating the 5 nearest neighbors (left) from the remaining 15 points (right). 18. Right annotation: at the top-left of the right panel, set small black (#000000) sans-serif text 'K=5, cyan class' with the word 'cyan' highlighted on a cyan (#00FFFF) background. 19. Right caption: below the right panel (~88-95% height), center bold red (#B22222) sans-serif text 'Vote on 5 Nearest Neighbors'. 20. Exclusions and tolerances: do not reproduce the mouse cursor from the source frame (recording artifact); per-color point counts (8 green, 7 cyan, 5 beige = 20 neighbors) are approximate per the source extraction, so cluster shapes are freeform within the stated relative positions.",
+ "validation": {
+  "verdict": "PASS_WITH_FIXES",
+  "fixes_applied": [
+   "Filled empty verbatim_text.bullets with the slide's two caption lines ('Select Nearest 5 Neighbors', 'Vote on 5 Nearest Neighbors'), reconstructed from labels, layout.regions, and visual_elements.",
+   "Filled null subtitle_or_header: documented that no separate subtitle exists and the header band holds only the title and the '49' badge.",
+   "Corrected the right plot's axis-dot count from ~30 to 20: the right panel re-plots the left plot's points, which total 20 neighbors (8 green + 7 cyan + 5 beige), so 'one per data point' yields 20 dots.",
+   "Made left-plot totals explicit and unambiguous: 21 points = 1 red query + 20 neighbors (the original brief's '~20 points' did not account for the query point).",
+   "Made the 5 highlighted nearest neighbors explicit: 4 cyan + 1 green, derived arithmetically from the source phrase 'cyan points and one green point'.",
+   "Corrected colors.title_text to capture the two-tone title: #B22222 for 'K-Nearest Neighbors' and #0000CC for '(KNN) , K=5'.",
+   "Added missing accent colors #FF0000 (query point and axis dots), #CCCCCC (connector lines), and #000000 (black texts) to colors.accents.",
+   "Rewrote recreation_brief as a 20-step ordered checklist placing one element per step with exact text, position, color, and shape/chart type, and added an explicit exclusion of the mouse-cursor recording artifact."
+  ],
+  "uncertain_items": [
+   "Per-color point counts are approximate in the source (~8 green, ~7 cyan, ~5 beige = 20 neighbors); exact dot coordinates are unspecified, so cluster placement is freeform.",
+   "The 4-cyan + 1-green split of the 5 highlighted nearest neighbors is inferred from 'cyan points and one green point'; the source does not enumerate the individual points.",
+   "Whether the right plot's axis dots include the query point itself (distance 0) is unspecified; 20 dots (neighbors only) was assumed for consistency with 'one per data point' re-plotted from the left panel.",
+   "The 'thin red-bordered header band' was interpreted as the slide's outer border plus a horizontal red rule at ~15% height; the exact band construction is not further specified.",
+   "The mouse cursor in the right panel is a lecture-capture artifact; its position is recorded in animation_state but is not slide content."
+  ],
+  "recreatability_score_1_to_10": 8
+ },
+ "_meta": {
+  "frame": "slide_049.jpg",
+  "model": "images",
+  "source_timestamps": {
+   "slide": 49,
+   "image": "slide_049.jpg",
+   "kept_frame": "frame_03951.jpg",
+   "start_sec": 3914.0,
+   "end_sec": 3950.0,
+   "frame_count": 37
+  },
+  "elapsed_s": 41.0,
+  "validated_by": "glm-5.3",
+  "validation_elapsed_s": 730.7
+ }
+}

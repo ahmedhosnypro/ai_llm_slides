@@ -1,0 +1,122 @@
+{
+ "slide_title": "Reinforcement Learning (RL)",
+ "subtitle_or_header": null,
+ "verbatim_text": {
+  "bullets": [
+   "Unlike supervised/unsupervised learning, RL does not receive examples",
+   "Rather, it learns (gathers experience) by interacting with the world",
+   "Defined by an agent and an environment the agent acts in",
+   "Agent has a set A of actions, environment has a set S of states",
+   "Goal: Find a sequence of actions by the agent that maximizes its reward",
+   "Output: A policy which maps states to actions",
+   "RL problems always include time as a variable",
+   "Example problems: Chess, Robot control, autonomous driving"
+  ],
+  "labels": [
+   "20 (slide number in yellow circle, top-right corner)"
+  ],
+  "equations": []
+ },
+ "layout": {
+  "arrangement": "Title centered at top in red bold text. Below it, a single large content box with a thin red/maroon border containing 8 bullet points. A yellow circle with the slide number '20' sits at the top-right corner, overlapping the header area. The whole slide content is framed by a thin maroon rectangular border near the slide edges.",
+  "regions": [
+   {
+    "name": "title",
+    "position": "top-center, roughly y 10-20% of slide",
+    "content": "Red bold title 'Reinforcement Learning (RL)'"
+   },
+   {
+    "name": "slide number badge",
+    "position": "top-right corner, ~x 88-95%, y 5-15%",
+    "content": "Yellow circle with dark outline containing '20'"
+   },
+   {
+    "name": "content box",
+    "position": "middle, spanning ~x 7-93%, y 22-95%",
+    "content": "Red-bordered box with 8 bullet points in black text with colored/underlined emphasis"
+   },
+   {
+    "name": "outer frame",
+    "position": "full slide perimeter",
+    "content": "Thin maroon rectangular border framing the entire slide"
+   }
+  ],
+  "hierarchy": "Title dominates (largest, bold, red). Body bullets are medium-size black text. Emphasis within bullets via bold, underline, blue text, and green text. Slide number is small."
+ },
+ "visual_elements": [
+  {
+   "type": "highlight-box",
+   "description": "Large rectangular content box with thin red/maroon outline containing all 8 bullets",
+   "colors": [
+    "#B03040"
+   ],
+   "position": "center, below title"
+  },
+  {
+   "type": "icon",
+   "description": "Yellow circle badge with dark outline containing the number '20' (slide number)",
+   "colors": [
+    "#F5E97B",
+    "#333333"
+   ],
+   "position": "top-right corner"
+  },
+  {
+   "type": "other",
+   "description": "Thin maroon rectangular border framing the entire slide",
+   "colors": [
+    "#8B2A3A"
+   ],
+   "position": "slide perimeter"
+  }
+ ],
+ "imagery": [],
+ "colors": {
+  "background": "#FFFFFF",
+  "title_text": "#C00000",
+  "body_text": "#000000",
+  "accents": [
+   "#0000CC (blue text in bullet 2)",
+   "#00B050 (green text in bullet 8)",
+   "#B03040 (box border)",
+   "#F5E97B (slide number circle)"
+  ]
+ },
+ "typography_notes": "Sans-serif throughout. Title is large, bold, red. Bullets use round bullet markers. Mixed emphasis: 'Agent', 'environment', 'Goal', 'Output', 'Example' are bold; 'set A of actions', 'set S of states', 'Find a sequence of actions by the agent that', 'its reward' are underlined; 'maximizes' is bold; 'it learns (gathers experience) by interacting with the world' is blue; 'Chess, Robot control, autonomous driving' is green.",
+ "animation_state": "All 8 bullets fully visible; no mid-build state apparent.",
+ "recreation_brief": "1. Set the slide background to solid white (#FFFFFF). 2. Draw the outer frame: a thin maroon (#8B2A3A) rectangle outline with no fill, running along the full slide perimeter, set slightly inside the slide edges. 3. Place the title 'Reinforcement Learning (RL)' top-center (roughly y 10-20% of slide height), horizontally centered; make it the largest text on the slide, bold, red (#C00000), sans-serif. 4. Place the slide-number badge in the top-right corner (~x 88-95%, y 5-15%): a yellow (#F5E97B) filled circle with a dark (#333333) outline, overlapping the header area, containing the number '20' in small dark text. 5. Draw the content box: a large rectangle with a thin red/maroon (#B03040) border and no fill, spanning ~x 7-93% of slide width and y 22-95% of slide height, positioned below the title. 6. Inside the content box, create a left-aligned bulleted list of exactly 8 items with round bullet markers, medium-size black sans-serif text, evenly spaced vertically. 7. Bullet 1 text: 'Unlike supervised/unsupervised learning, RL does not receive examples' (all black, no emphasis). 8. Bullet 2 text: 'Rather, ' in black, followed by 'it learns (gathers experience) by interacting with the world' in blue (#0000CC). 9. Bullet 3 text: 'Defined by an agent and an environment the agent acts in' (all black, no emphasis). 10. Bullet 4 text: bold 'Agent' + ' has a ' + underlined 'set A of actions' + ', ' + bold 'environment' + ' has a ' + underlined 'set S of states' (all black). 11. Bullet 5 text: bold 'Goal' + ': ' + underlined 'Find a sequence of actions by the agent that' + ' ' + bold 'maximizes' + ' ' + underlined 'its reward' (all black). 12. Bullet 6 text: bold 'Output' + ': A policy which maps states to actions' (all black). 13. Bullet 7 text: 'RL problems always include time as a variable' (all black, no emphasis). 14. Bullet 8 text: bold 'Example' + ' problems: ' in black, followed by 'Chess, Robot control, autonomous driving' in green (#00B050). 15. Final render state: all 8 bullets visible simultaneously; no animations or build effects.",
+ "validation": {
+  "verdict": "PASS_WITH_FIXES",
+  "fixes_applied": [
+   "Verified all required schema fields are present and non-empty (slide_title, verbatim_text.bullets, layout.arrangement, layout.regions, visual_elements, colors, recreation_brief); subtitle_or_header retained as null because no subtitle exists in the source (title-only slide) and reconstructing one would invent content.",
+   "Confirmed verbatim_text.equations and imagery are genuinely absent from the slide and correctly left as empty arrays.",
+   "Rewrote recreation_brief from a 6-step prose summary into a 15-step numbered checklist with exactly one element placed per step.",
+   "Replaced vague position phrases in the brief ('near top', 'spanning most of the width', 'top-right', 'near the edges') with the exact coordinates from layout.regions: title y 10-20%; badge x 88-95%, y 5-15%; content box x 7-93%, y 22-95%; frame on full perimeter.",
+   "Replaced the vague size term 'large sans-serif' for the title with the concrete relative spec from layout.hierarchy: 'largest text on the slide'.",
+   "Added the missing list-format specification to the brief (round bullet markers, medium-size black sans-serif, left-aligned, 8 items evenly spaced) drawn from layout.hierarchy and typography_notes.",
+   "Split the single combined bullet step into 8 separate steps (one per bullet) so each bullet's exact text, emphasis (bold/underline), and color (#0000CC blue, #00B050 green) is independently actionable.",
+   "Cross-checked all 8 verbatim bullets against the brief: concatenated formatted fragments reproduce each bullet string exactly, with no invented or omitted text; title, badge label '20', and all colors agree across verbatim_text, layout, visual_elements, and colors."
+  ],
+  "uncertain_items": [
+   "typography_notes lists 'Agent' and 'environment' as bold but does not state whether the lowercase 'agent'/'environment' inside bullet 3 are also emphasized; the brief applies bold only to the leading words of bullets 4, 5, 6, and 8. [?]",
+   "Exact font point sizes and border line weights are not specified in the JSON; only relative sizes (title largest, bullets medium, borders 'thin') are available. [?]",
+   "The badge is described as 'overlapping the header area', but the title's exact horizontal extent is unknown, so the degree of overlap is approximate. [?]"
+  ],
+  "recreatability_score_1_to_10": 9
+ },
+ "_meta": {
+  "frame": "slide_020.jpg",
+  "model": "images",
+  "source_timestamps": {
+   "slide": 20,
+   "image": "slide_020.jpg",
+   "kept_frame": "frame_02058.jpg",
+   "start_sec": 2032.0,
+   "end_sec": 2057.0,
+   "frame_count": 26
+  },
+  "elapsed_s": 125.3,
+  "validated_by": "glm-5.3",
+  "validation_elapsed_s": 565.8
+ }
+}

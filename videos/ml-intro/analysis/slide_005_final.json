@@ -1,0 +1,127 @@
+{
+ "slide_title": "Machine Learning in the real-world",
+ "subtitle_or_header": null,
+ "verbatim_text": {
+  "lead_in": "Broadly applicable in many domains (e.g., finance, robotics, bio-informatics, vision, natural language, etc.). Some applications:",
+  "bullets": [
+   "Spam filtering",
+   "Machine Translation (e.g., Google Translate)",
+   "Speech/handwriting recognition",
+   "Object detection/recognition",
+   "Weather prediction",
+   "Classifying DNA sequences",
+   "Stock market analysis",
+   "Automatic vehicle navigation",
+   "Search engines (e.g, Google)",
+   "Credit-card fraud detection",
+   "Webpage clustering (e.g., Google News)",
+   ".. and many more"
+  ],
+  "labels": [
+   "5"
+  ],
+  "equations": []
+ },
+ "layout": {
+  "arrangement": "Title centered at top in large red bold text. Below it, a large white content box with a thin red border fills most of the slide, containing a bold black lead-in line followed by a single-column bulleted list of exactly 12 items in blue. A small yellow circle with the slide number '5' sits at the top-right corner, outside the content box.",
+  "regions": [
+   {
+    "name": "title",
+    "position": "top center, roughly y 10-22%, x 15-85%",
+    "content": "Red bold (#C00000) title 'Machine Learning in the real-world'"
+   },
+   {
+    "name": "slide number badge",
+    "position": "top-right corner, ~x 88-93%, y 8-15%",
+    "content": "Yellow circle (#F5E96B) with purple outline (#5B3A8E) containing black number '5'"
+   },
+   {
+    "name": "content box",
+    "position": "middle, x ~8-92%, y ~25-97%",
+    "content": "White box (#FFFFFF fill) with thin red (#B03030) border containing the lead-in sentence and 12 bullets"
+   },
+   {
+    "name": "lead-in line",
+    "position": "top of content box",
+    "content": "Bold black text 'Broadly applicable in many domains' followed by regular-weight ' (e.g., finance, robotics, bio-informatics, vision, natural language, etc.). Some applications:'"
+   },
+   {
+    "name": "bullet list",
+    "position": "below lead-in, left-aligned with indent",
+    "content": "12 blue (#0000CC) bulleted items in the exact order given in verbatim_text.bullets"
+   }
+  ],
+  "hierarchy": "Title dominates (largest, red #C00000, bold). Lead-in phrase 'Broadly applicable in many domains' is bold black #000000; the rest of the lead-in is regular-weight black. The 12 bullets are smaller blue #0000CC text with round markers. Slide-number badge is small."
+ },
+ "visual_elements": [
+  {
+   "type": "highlight-box",
+   "description": "Large rectangular content container with thin red/maroon border and white fill enclosing all body text",
+   "colors": [
+    "#FFFFFF",
+    "#B03030"
+   ],
+   "position": "center, spanning x 8-92%, y 25-97% of the slide"
+  },
+  {
+   "type": "icon",
+   "description": "Small yellow circle with purple/dark outline containing black numeral '5' (slide number badge)",
+   "colors": [
+    "#F5E96B",
+    "#5B3A8E",
+    "#000000"
+   ],
+   "position": "top-right corner, x 88-93%, y 8-15%, outside the content box"
+  }
+ ],
+ "imagery": [],
+ "colors": {
+  "background": "#E8E8E8",
+  "title_text": "#C00000",
+  "body_text": "#0000CC",
+  "lead_in_text": "#000000",
+  "accents": [
+   "#B03030",
+   "#F5E96B",
+   "#5B3A8E",
+   "#000000"
+  ]
+ },
+ "typography_notes": "Sans-serif throughout (Arial-like). Title: large, bold, red #C00000, largest text on the slide. Lead-in line: black #000000, mixing bold ('Broadly applicable in many domains') and regular weight. Bullets: blue #0000CC, moderate size (smaller than the title), small round bullet markers, no italics, no numbering.",
+ "animation_state": "Static and fully revealed: the lead-in line and all 12 bullets are visible; no mid-build or partial animation state evident.",
+ "recreation_brief": "1. Set the entire slide background to light gray #E8E8E8.\n2. Place the title text box centered at the top (spanning x 15-85%, y 10-22%) with the exact text 'Machine Learning in the real-world' set in large bold sans-serif (Arial-like) red #C00000; it must be the largest text on the slide.\n3. Draw the content container: one rectangle with white fill #FFFFFF and a thin red/maroon border #B03030 (approx. 1-2 pt), spanning x 8-92% and y 25-97% of the slide (about 84% of slide width, ending just above the bottom edge).\n4. Inside the box at its top, add the lead-in line in black #000000: render 'Broadly applicable in many domains' in bold, immediately followed in regular weight by ' (e.g., finance, robotics, bio-informatics, vision, natural language, etc.). Some applications:' with punctuation reproduced exactly.\n5. Directly below the lead-in, build a left-aligned, indented bulleted list of exactly 12 items in blue #0000CC with small round bullet markers (no numbering, no italics), in this exact order: 'Spam filtering'; 'Machine Translation (e.g., Google Translate)'; 'Speech/handwriting recognition'; 'Object detection/recognition'; 'Weather prediction'; 'Classifying DNA sequences'; 'Stock market analysis'; 'Automatic vehicle navigation'; 'Search engines (e.g, Google)' (keep the missing period after 'e.g' exactly as in the source); 'Credit-card fraud detection'; 'Webpage clustering (e.g., Google News)'; '.. and many more'.\n6. Add the slide-number badge in the top-right corner (x 88-93%, y 8-15%), outside the content box: a small circle with yellow fill #F5E96B and purple outline #5B3A8E, containing the black numeral '5' centered inside.",
+ "validation": {
+  "verdict": "PASS_WITH_FIXES",
+  "fixes_applied": [
+   "Restructured verbatim_text: moved the lead-in sentence out of the bullets array into a new verbatim_text.lead_in field, so verbatim_text.bullets now contains exactly 12 items, matching layout.regions ('12 blue bulleted items') and the recreation brief; no text was altered.",
+   "Added the purple badge-outline color #5B3A8E to colors.accents; it was specified in visual_elements and layout.regions but missing from the color palette.",
+   "Added colors.lead_in_text = #000000 so the lead-in line is explicitly black and cannot be confused with the blue body_text #0000CC.",
+   "Kept subtitle_or_header = null after verifying that no subtitle or header text exists in any region, text field, or the recreation brief (truly absent from the source, not a schema gap).",
+   "Replaced vague/approximate placement wording in recreation_brief ('spanning ~85% width', 'down to near the bottom', 'near top') with the exact percentage coordinates from layout.regions.",
+   "Rewrote recreation_brief as a 6-step numbered checklist; each step places exactly one element with its exact text, position (x/y percentages), hex colors, and shape type.",
+   "Preserved source verbatim irregularities unchanged: '(e.g, Google)' (missing period after 'e.g') and '.. and many more' (two leading dots)."
+  ],
+  "uncertain_items": [
+   "Exact font point sizes are not given; only relative sizes are specified (title largest; bullets 'moderate', smaller than the title). A builder must choose absolute pt values.",
+   "Exact border thickness of the content box is not quantified ('thin'); the approx. 1-2 pt value in the brief is an interpretation, not source data.",
+   "Exact diameter of the slide-number circle is not stated; only its bounding position (x 88-93%, y 8-15%, i.e., roughly 5-7% of slide dimensions).",
+   "No items were marked [?] in the source JSON; the [?] check found none."
+  ],
+  "recreatability_score_1_to_10": 8
+ },
+ "_meta": {
+  "frame": "slide_005.jpg",
+  "model": "images",
+  "source_timestamps": {
+   "slide": 5,
+   "image": "slide_005.jpg",
+   "kept_frame": "frame_00499.jpg",
+   "start_sec": 288.0,
+   "end_sec": 498.0,
+   "frame_count": 211
+  },
+  "elapsed_s": 29.2,
+  "validated_by": "glm-5.3",
+  "validation_elapsed_s": 378.7
+ }
+}

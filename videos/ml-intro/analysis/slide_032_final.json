@@ -1,0 +1,143 @@
+{
+ "slide_title": "Feature Extraction",
+ "subtitle_or_header": "Features Types are is Problem dependent",
+ "verbatim_text": {
+  "bullets": [
+   "Features may include:",
+   "Center of Gravity location,",
+   "Aspect Ratio,",
+   "Length and Width,",
+   "Number of intersections,",
+   "Moments,",
+   "Geometrical Features ,",
+   "Colors,",
+   "Transformations",
+   "........."
+  ],
+  "labels": [
+   "32"
+  ],
+  "equations": []
+ },
+ "layout": {
+  "arrangement": "Title in a light-blue bordered box at top-left, overlapping the top edge of a large red-bordered content frame that fills most of the slide; subtitle line directly below title inside the frame; bulleted list below subtitle, left-aligned; slide number '32' in a yellow circle at top-right corner; entire slide enclosed in a thin red outer border",
+  "regions": [
+   {
+    "name": "outer border",
+    "position": "thin line along the entire slide perimeter, slightly inset from each edge",
+    "content": "Thin red (#C00000) rectangular border enclosing the whole slide"
+   },
+   {
+    "name": "content frame",
+    "position": "fills slide from ~7% to ~93% width, ~23% to ~97% height",
+    "content": "White area enclosed by a red (#C00000) rectangular border"
+   },
+   {
+    "name": "title box",
+    "position": "top-left, roughly x 8-38%, y 15-27%, overlapping the top edge of the content frame",
+    "content": "Light blue (#CFE8EF) rectangle with dark blue (#1F3864) border containing bold black text 'Feature Extraction'"
+   },
+   {
+    "name": "subtitle line",
+    "position": "upper-left inside content frame, roughly y 29-33%",
+    "content": "'Features Types are is Problem dependent' with 'Features Types are is' in red (#C00000) bold and 'Problem dependent' in black italic underlined"
+   },
+   {
+    "name": "bullet list",
+    "position": "left side of content frame, roughly x 12-50%, y 37-92%",
+    "content": "Bold lead-in 'Features may include:' followed by exactly 9 bullet items"
+   },
+   {
+    "name": "slide number badge",
+    "position": "top-right corner, roughly x 88-94%, y 10-16%",
+    "content": "Yellow (#FFF2CC) circle with thin dark (#404040) outline containing '32'"
+   }
+  ],
+  "hierarchy": "Title dominates (largest, bold, boxed); subtitle next (colored red/black mix); bold lead-in 'Features may include:'; then regular-weight bullet items; small slide number badge"
+ },
+ "visual_elements": [
+  {
+   "type": "highlight-box",
+   "description": "Light blue filled rectangle with dark blue outline containing the title 'Feature Extraction'",
+   "colors": [
+    "#CFE8EF",
+    "#1F3864"
+   ],
+   "position": "top-left, overlapping top edge of red content frame"
+  },
+  {
+   "type": "highlight-box",
+   "description": "Large red-outlined rectangular frame enclosing all body content",
+   "colors": [
+    "#C00000"
+   ],
+   "position": "covers most of slide interior"
+  },
+  {
+   "type": "icon",
+   "description": "Yellow circle badge with dark outline containing slide number '32'",
+   "colors": [
+    "#FFF2CC",
+    "#404040"
+   ],
+   "position": "top-right corner"
+  },
+  {
+   "type": "other",
+   "description": "Thin red outer border around the entire slide edge",
+   "colors": [
+    "#C00000"
+   ],
+   "position": "slide perimeter"
+  }
+ ],
+ "imagery": [],
+ "colors": {
+  "background": "#FFFFFF",
+  "title_text": "#000000",
+  "body_text": "#000000",
+  "accents": [
+   "#C00000",
+   "#CFE8EF",
+   "#1F3864",
+   "#FFF2CC"
+  ]
+ },
+ "typography_notes": "Sans-serif throughout (Arial-like). Title bold black ~28pt in blue box. Subtitle: 'Features Types are is' in red bold, 'Problem dependent' in black italic underlined. 'Features may include:' bold black. Bullets regular weight black with round bullet markers, each ending with a comma except the last two items ('Transformations' and '.........'). Slide number small dark text in yellow circle.",
+ "animation_state": "All bullets appear fully revealed; a mouse cursor arrow is visible near the 'Geometrical Features ,' bullet, suggesting a live lecture capture. The cursor is a video artifact, not slide content.",
+ "recreation_brief": "1. Set the slide background to white (#FFFFFF) and use a sans-serif font (Arial-like) for all text. 2. Draw a thin red (#C00000) rectangle outline (no fill) around the entire slide perimeter, slightly inset from the slide edges. 3. Draw the content frame: a red (#C00000) outlined, unfilled rectangle spanning approximately x=7% to x=93% of slide width and y=23% to y=97% of slide height. 4. Place the title box: a light-blue (#CFE8EF) filled rectangle with a dark-blue (#1F3864) outline at top-left (approximately x=8-38%, y=15-27%), overlapping the top edge of the red content frame; center bold black (#000000) text 'Feature Extraction' (~28pt) inside it. 5. Place the slide-number badge at the top-right corner (approximately x=88-94%, y=10-16%): a yellow (#FFF2CC) circle with a thin dark (#404040) outline containing small dark text '32'. 6. Inside the content frame at approximately y=29-33%, left-aligned, place the subtitle line: 'Features Types are is' in bold red (#C00000) followed immediately by 'Problem dependent' in black italic underlined; keep the wording verbatim, including the duplicated 'are is'. 7. Below the subtitle (list starting around y=37%), place the bold black lead-in line 'Features may include:'. 8. Below the lead-in, place a left-aligned bulleted list with round bullet markers and regular-weight black text, exactly 9 items in this order: 'Center of Gravity location,', 'Aspect Ratio,', 'Length and Width,', 'Number of intersections,', 'Moments,', 'Geometrical Features ,' (preserve the space before the comma), 'Colors,', 'Transformations', '.........' (the last two items carry no trailing comma). 9. Add no images, charts, or mouse cursor; the cursor visible in the source video frame is a lecture-capture artifact, not slide content.",
+ "validation": {
+  "verdict": "PASS_WITH_FIXES",
+  "fixes_applied": [
+   "Added the missing layout region 'outer border' (thin red #C00000 perimeter line) so that layout.regions covers all 4 visual_elements; previously the border was described only in layout.arrangement and visual_elements.",
+   "Enriched layout.regions content descriptions with exact hex colors (#CFE8EF, #1F3864, #C00000, #FFF2CC, #404040) for precision.",
+   "Rewrote recreation_brief as a 9-step ordered checklist placing one element per step, each specifying exact verbatim text, percentage position, hex color, and shape type.",
+   "Made verbatim preservation explicit in the brief: the subtitle's 'are is' duplication, the space before the comma in 'Geometrical Features ,', and the '.........' placeholder item must be kept exactly as extracted.",
+   "Assigned #C00000 to the subtitle's red text (the only red defined in the palette) instead of an unspecified 'red'.",
+   "Added an explicit step excluding the mouse cursor from the recreation, since it is a lecture-capture artifact noted in animation_state.",
+   "Verified all counts: verbatim_text.bullets contains 10 entries (1 bold lead-in 'Features may include:' + 9 bullet items), matching the '9 bullet items' statement in layout.regions; no vague quantifiers were present in the source JSON."
+  ],
+  "uncertain_items": [
+   "Subtitle 'Features Types are is Problem dependent' contains an apparent authoring typo ('are is'); kept verbatim as extracted, verify against the source frame before any correction.",
+   "The exact red shade of the subtitle text was not sampled; #C00000 is assumed because it is the only red in the palette.",
+   "All x/y percentage positions are vision-model approximations; small deviations from the true slide geometry are possible.",
+   "Font sizes other than the title (~28pt) are unspecified in the source; only the relative hierarchy (title > subtitle > lead-in/bullets) is derivable."
+  ],
+  "recreatability_score_1_to_10": 8
+ },
+ "_meta": {
+  "frame": "slide_040.jpg",
+  "model": "images",
+  "source_timestamps": {
+   "slide": 40,
+   "image": "slide_040.jpg",
+   "kept_frame": "frame_03054.jpg",
+   "start_sec": 3041.0,
+   "end_sec": 3053.0,
+   "frame_count": 13
+  },
+  "elapsed_s": 35.7,
+  "validated_by": "glm-5.3",
+  "validation_elapsed_s": 208.8
+ }
+}

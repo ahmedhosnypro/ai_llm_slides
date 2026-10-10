@@ -1,0 +1,206 @@
+{
+  "slide_title": "Example:  Distance with Normalization",
+  "subtitle_or_header": "Feature Vector  for bars:",
+  "verbatim_text": {
+    "bullets": [
+      "Feature Vector  for bars:",
+      "Squared distance between each Normalized vector and Normalized test vector",
+      "Belongs to   Blue Class"
+    ],
+    "labels": [
+      "54",
+      "Red Class",
+      "Blue Class",
+      "Green Class",
+      "Mean",
+      "S.D",
+      "Weight (KG)",
+      "Length (cm)",
+      "Normalized Red Class",
+      "Normalized Blue Class",
+      "Normalized Green Class",
+      "Normalized Test"
+    ],
+    "equations": [
+      "Normalized X = (X - Mean) / S.D.",
+      "Weight (KG): (2  3  4) (7  8  9) (12  13  14) (8) (4.163)",
+      "Length (cm): (100  150  200) (150  200  250) (150  250  300) (194.44) (59.835)",
+      "Normalized Weight (KG): (-1.441  -1.201  -0.961) (-0.24  0  0.24) (0.961  1.201  1.441)",
+      "Normalized Length (cm): (-1.578  -0.743  0.093) (-0.743  0.093  0.928) (-0.743  0.928  1.764)",
+      "Normalized Test vector: (-0.24, -1.244)",
+      "Squared distances: (1.554  1.175  2.307) (0.251  1.845  4.948) (1.693  6.794  11.874)",
+      "Test vector: (7, 100)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top in red; slide number '54' in a yellow circle at top-right. Below, a large red-bordered box contains: a 'Feature Vector for bars' table (rows Weight/Length, columns grouped by Red/Blue/Green class plus Mean and S.D), then a normalized-values table with the same grouping plus a 'Normalized Test' column vector, then a row of squared distances, and at the bottom a formula box (bottom-left) and a conclusion box (bottom-right).",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top center, ~5-20% height",
+        "content": "Red bold title 'Example:  Distance with Normalization' with 'with' underlined"
+      },
+      {
+        "name": "slide number",
+        "position": "top-right corner",
+        "content": "Yellow circle containing '54'"
+      },
+      {
+        "name": "content border",
+        "position": "surrounds all content below the title, ~22-96% height, ~5% side margins",
+        "content": "Thin red (#CC0000) rectangle border, no fill, enclosing the feature-vector table, normalized table, squared-distance row, formula box, and conclusion box"
+      },
+      {
+        "name": "feature vector table",
+        "position": "upper-middle inside red border, ~25-45% height",
+        "content": "Header 'Feature Vector  for bars:' and grouped column vectors for Red/Blue/Green classes, Mean, S.D"
+      },
+      {
+        "name": "normalized table",
+        "position": "middle, ~50-65% height",
+        "content": "Normalized Red/Blue/Green class vectors and Normalized Test column vector"
+      },
+      {
+        "name": "squared distances",
+        "position": "lower-middle, ~68-78% height",
+        "content": "Label line plus three groups of three squared-distance values; 0.251 circled in yellow"
+      },
+      {
+        "name": "formula box",
+        "position": "bottom-left, ~82-95% height",
+        "content": "Beige box: Normalized X = (X - Mean)/S.D."
+      },
+      {
+        "name": "conclusion box",
+        "position": "bottom-right, ~82-95% height",
+        "content": "Beige box: vector (7,100) 'Belongs to   Blue Class'"
+      }
+    ],
+    "hierarchy": "Red bold title dominates; then black bold section labels; class names color-coded (red/blue/green); numeric data in matching class colors; beige highlight boxes at bottom for formula and conclusion."
+  },
+  "visual_elements": [
+    {
+      "type": "table",
+      "description": "Feature vector table. Row labels: 'Weight (KG)', 'Length (cm)'. Column groups: Red Class (2,3,4 / 100,150,200), Blue Class (7,8,9 / 150,200,250), Green Class (12,13,14 / 150,250,300), Mean (8 / 194.44), S.D (4.163 / 59.835). Each group's values shown as parenthesized column vectors. A small '+' annotation appears above the '3' in Red Class weight.",
+      "colors": [
+        "#CC0000",
+        "#0000CC",
+        "#2E8B22",
+        "#000000"
+      ],
+      "position": "upper-middle of slide"
+    },
+    {
+      "type": "table",
+      "description": "Normalized values table. Normalized Red Class: Weight (-1.441, -1.201, -0.961), Length (-1.578, -0.743, 0.093). Normalized Blue Class: Weight (-0.24, 0, 0.24), Length (-0.743, 0.093, 0.928). Normalized Green Class: Weight (0.961, 1.201, 1.441), Length (-0.743, 0.928, 1.764). Normalized Test: column vector (-0.24, -1.244).",
+      "colors": [
+        "#CC0000",
+        "#0000CC",
+        "#2E8B22",
+        "#000000"
+      ],
+      "position": "middle of slide"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Squared distance row: '(1.554   1.175   2.307)' in red, '(0.251   1.845   4.948)' in blue with 0.251 circled by a yellow hand-drawn-style ellipse, '(1.693   6.794   11.874)' in green.",
+      "colors": [
+        "#CC0000",
+        "#0000CC",
+        "#2E8B22",
+        "#DDDD00"
+      ],
+      "position": "lower-middle"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Beige/tan boxed formula: 'Normalized X = (X - Mean) / S.D.' with fraction bar.",
+      "colors": [
+        "#F5E8C8",
+        "#000000"
+      ],
+      "position": "bottom-left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Beige/tan boxed conclusion: column vector (7 over 100) followed by 'Belongs to   Blue Class' with 'Blue Class' in blue bold.",
+      "colors": [
+        "#F5E8C8",
+        "#000000",
+        "#0000CC"
+      ],
+      "position": "bottom-right"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle with dark outline containing slide number '54'.",
+      "colors": [
+        "#FFFF99",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    },
+    {
+      "type": "border",
+      "description": "Thin red rectangular border with no fill enclosing the entire content area below the title: feature-vector table, normalized table, squared-distance row, formula box, and conclusion box.",
+      "colors": [
+        "#CC0000"
+      ],
+      "position": "surrounds content from ~22% to ~96% of slide height, ~5% side margins"
+    }
+  ],
+  "imagery": [
+    "Yellow circled slide number '54' top-right",
+    "Yellow ellipse hand-circle highlighting the value 0.251"
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#CC0000",
+    "body_text": "#000000",
+    "accents": [
+      "#CC0000",
+      "#0000CC",
+      "#2E8B22",
+      "#F5E8C8",
+      "#FFFF99",
+      "#DDDD00"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title large, bold, red, with 'with' underlined. Section labels bold black. Class headers bold and color-coded (red/blue/green). Numeric values in regular weight matching their class color. Row labels 'Weight (KG)' and 'Length (cm)' bold black. Formula in italic serif-like style inside the beige box.",
+  "animation_state": "Fully built slide; the yellow circle around 0.251 appears to be a deliberate highlight annotation, not a mid-build state.",
+  "recreation_brief": "1. Set the slide background to white (#FFFFFF). 2. Place the title 'Example:  Distance with Normalization' (keep the double space after the colon) top-center at ~5-20% of slide height: large, bold, sans-serif, red #CC0000, with the word 'with' underlined. 3. Place a yellow (#FFFF99) circle with a thin black outline in the top-right corner containing the black number '54'. 4. Draw a thin red (#CC0000) rectangle border with no fill enclosing the content area below the title, from ~22% to ~96% of slide height with ~5% margins left and right. 5. Inside the border at ~25% height, left-aligned, place the bold black section label 'Feature Vector  for bars:' (keep the double space after 'Vector'). 6. Build the feature-vector table in the band ~25-45% height: left column with bold black row labels 'Weight (KG)' and 'Length (cm)'; five bold column headers 'Red Class' (#CC0000), 'Blue Class' (#0000CC), 'Green Class' (#2E8B22), 'Mean' (black), 'S.D' (black); under each header place parenthesized 3-element column vectors (values stacked vertically) in the header's color - Red: weight (2, 3, 4) and length (100, 150, 200); Blue: weight (7, 8, 9) and length (150, 200, 250); Green: weight (12, 13, 14) and length (150, 250, 300); Mean: (8) and (194.44); S.D: (4.163) and (59.835) in black; add a small black '+' above the '3' in the Red weight vector. 7. Build the normalized-values table in the band ~50-65% height: four bold column headers 'Normalized Red Class' (#CC0000), 'Normalized Blue Class' (#0000CC), 'Normalized Green Class' (#2E8B22), 'Normalized Test' (black); under each place parenthesized column vectors (values stacked vertically) in the matching color - Normalized Red: weight (-1.441, -1.201, -0.961) and length (-1.578, -0.743, 0.093); Normalized Blue: weight (-0.24, 0, 0.24) and length (-0.743, 0.093, 0.928); Normalized Green: weight (0.961, 1.201, 1.441) and length (-0.743, 0.928, 1.764); Normalized Test: single black column vector (-0.24 over -1.244). 8. At ~68% height place the bold black label line 'Squared distance between each Normalized vector and Normalized test vector'. 9. Directly below at ~72-78% height place three parenthesized horizontal triplets on one row, left to right: '(1.554   1.175   2.307)' in #CC0000, '(0.251   1.845   4.948)' in #0000CC, '(1.693   6.794   11.874)' in #2E8B22. 10. Draw a hand-drawn-style yellow (#DDDD00) ellipse around the value '0.251' in the blue triplet. 11. Bottom-left at ~82-95% height: a beige (#F5E8C8) box with a thin black border containing the formula 'Normalized X = (X - Mean) / S.D.' typeset as a fraction ('X - Mean' above a horizontal bar, 'S.D.' below) in italic black text. 12. Bottom-right at ~82-95% height: a beige (#F5E8C8) box with a thin black border containing the parenthesized black column vector (7 over 100), followed by 'Belongs to   Blue Class' with 'Belongs to' in black and 'Blue Class' in bold #0000CC.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Filled subtitle_or_header (was null) with 'Feature Vector  for bars:', the content-area header reconstructed from verbatim bullet 1 and the feature-vector-table region.",
+      "Added the red content border (described in layout.arrangement but missing from visual_elements) as a new 'border' visual element and as an 8th layout region, so layout.regions now covers every drawn element.",
+      "Rewrote recreation_brief as a 12-step ordered checklist: each step places exactly one element with verbatim text, a vertical position band taken from layout.regions, an exact hex color, and a shape type (circle, rectangle border, table, ellipse, box).",
+      "Added previously missing explicit colors/geometry to the brief: yellow ellipse #DDDD00 around 0.251, slide-number circle fill #FFFF99 with black outline, beige boxes #F5E8C8 with thin black borders, red border #CC0000 spanning ~22-96% height.",
+      "Specified vector orientation: class/test values are parenthesized column vectors (stacked vertically); squared-distance values are horizontal parenthesized triplets on one row.",
+      "Preserved verbatim character spacing in title ('Example:  Distance with Normalization'), label ('Feature Vector  for bars:'), and conclusion ('Belongs to   Blue Class').",
+      "Precision pass: no vague quantifiers found; confirmed exact counts - 3 bullets, 12 labels, 8 equations, 5 feature-table column groups, 4 normalized column groups, 3 squared-distance triplets of 3 values each, 2 beige boxes, 1 yellow circle, 1 yellow ellipse, 1 red border.",
+      "Consistency check passed: all 9 squared distances are arithmetically consistent with Normalized Test (-0.24, -1.244); the minimum 0.251 (Blue) matches the circled value and the conclusion 'Belongs to Blue Class'; no numeric changes made."
+    ],
+    "uncertain_items": [
+      "Normalized Test length value -1.244 does not equal (100 - 194.44) / 59.835 = -1.578; retained as displayed because all 9 squared-distance values are consistent with (-0.24, -1.244), indicating the discrepancy originates in the source slide, not the extraction.",
+      "The small '+' annotation above the '3' in the Red Class weight vector has no explained purpose in the JSON; it is placed exactly as described."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_054.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 54,
+      "image": "slide_054.jpg",
+      "kept_frame": "frame_04814.jpg",
+      "old_slide": 86,
+      "start_sec": 4546.0,
+      "end_sec": 4813.0,
+      "frame_count": 268
+    },
+    "elapsed_s": 90.7,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 509.8
+  }
+}

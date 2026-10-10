@@ -1,0 +1,144 @@
+{
+  "slide_title": "Example:  Distance without Normalization",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Feature Vector  of bars:",
+      "Squared distance between each vector and test vector"
+    ],
+    "labels": [
+      "Red Class",
+      "Blue Class",
+      "Green Class",
+      "Test",
+      "Weight (KG)",
+      "Length (cm)",
+      "Belongs to   Red Class",
+      "53"
+    ],
+    "equations": [
+      "Red Class vectors: (2, 100), (3, 150), (4, 200)",
+      "Blue Class vectors: (7, 150), (8, 200), (9, 250)",
+      "Green Class vectors: (12, 150), (13, 250), (14, 300)",
+      "Test vector: (7, 120)",
+      "Squared distances to Red Class: (425, 916, 6409)",
+      "Squared distances to Blue Class: (900, 6401, 16904)",
+      "Squared distances to Green Class: (925, 16936, 32449)",
+      "Result box: (7, 100) Belongs to Red Class"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title at top in dark red, with 'without' underlined; slide number '53' in a yellow circle at top-right. Below, a large thin red-bordered rectangle contains the content: 'Feature Vector of bars:' header at top-left, then a row of four column groups (Red Class, Blue Class, Green Class, Test) each showing two stacked parenthesized vectors labeled by row labels 'Weight (KG)' and 'Length (cm)' on the left; below that a line 'Squared distance between each vector and test vector' followed by three parenthesized groups of three squared-distance values color-matched to their classes; bottom-right inside the border is a pale yellow result box with a vector and 'Belongs to Red Class'.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top, spanning width, ~5-20% height",
+        "content": "Dark red bold title 'Example:  Distance without Normalization' with 'without' underlined"
+      },
+      {
+        "name": "slide number",
+        "position": "top-right corner",
+        "content": "Yellow circle with '53'"
+      },
+      {
+        "name": "content frame",
+        "position": "middle, ~25-95% height, full width with margins",
+        "content": "Thin red rectangular border enclosing all content"
+      },
+      {
+        "name": "feature vectors",
+        "position": "upper-middle inside frame",
+        "content": "Row labels Weight (KG) / Length (cm) at left; four groups of column vectors: Red Class (2/100, 3/150, 4/200), Blue Class (7/150, 8/200, 9/250), Green Class (12/150, 13/250, 14/300), Test (7/120)"
+      },
+      {
+        "name": "distances",
+        "position": "middle inside frame",
+        "content": "Label line then three groups of squared distances: red (425, 916, 6409) with 425 circled in yellow, blue (900, 6401, 16904), green (925, 16936, 32449)"
+      },
+      {
+        "name": "result box",
+        "position": "bottom-right inside frame",
+        "content": "Pale yellow box: vector (7, 100) followed by 'Belongs to   Red Class' with 'Red Class' in red"
+      }
+    ],
+    "hierarchy": "Title largest and dark red; class headers (Red/Blue/Green Class, Test) medium bold in class colors; vector numbers medium in class colors; distance numbers slightly smaller; result box text bold black with red 'Red Class'."
+  },
+  "visual_elements": [
+    {
+      "type": "table",
+      "description": "Vector grid: row labels 'Weight (KG)' and 'Length (cm)'. Red Class columns: (2 over 100), (3 over 150), (4 over 200). Blue Class: (7 over 150), (8 over 200), (9 over 250). Green Class: (12 over 150), (13 over 250), (14 over 300). Test: (7 over 120). Each vector wrapped in parentheses.",
+      "colors": [
+        "#C00000",
+        "#0000CC",
+        "#2E8B22",
+        "#000000"
+      ],
+      "position": "upper-middle of content frame"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Yellow circle highlight around the value '425' (the smallest squared distance) in the red distances group",
+      "colors": [
+        "#E8D44D"
+      ],
+      "position": "middle-left, around first red distance value"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pale yellow rounded rectangle result box containing vector (7 over 100) in parentheses and text 'Belongs to   Red Class' with 'Red Class' in red bold",
+      "colors": [
+        "#F5F5DC",
+        "#000000",
+        "#C00000"
+      ],
+      "position": "bottom-right inside content frame"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle with dark outline containing slide number '53'",
+      "colors": [
+        "#F0E68C",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    },
+    {
+      "type": "other",
+      "description": "Thin dark-red rectangular border framing the entire content area",
+      "colors": [
+        "#A00000"
+      ],
+      "position": "surrounding content region"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#B00020",
+    "body_text": "#000000",
+    "accents": [
+      "#C00000",
+      "#0000CC",
+      "#2E8B22",
+      "#F0E68C",
+      "#F5F5DC"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title large bold dark red with the word 'without' underlined. Class names bold in their respective colors (red, blue, green); 'Test' bold black. Numbers colored to match their class. Result box text bold. No bullet markers; plain lines of text.",
+  "animation_state": "Fully built; the yellow circle around '425' and the result box appear to be final annotation states, not mid-build.",
+  "recreation_brief": "1. White background slide. 2. Top: bold dark-red (#B00020) title 'Example:  Distance without Normalization', underline the word 'without'. 3. Top-right: yellow (#F0E68C) circle with black outline containing '53'. 4. Draw a thin dark-red (#A00000) rectangle framing the content area below the title. 5. Inside frame top-left: bold black text 'Feature Vector  of bars:'. 6. Left side row labels: 'Weight (KG)' and 'Length (cm)' in small bold black. 7. Create four column groups with headers: 'Red Class' (red), 'Blue Class' (blue), 'Green Class' (green), 'Test' (black). Under each header place parenthesized two-row vectors in matching colors: Red: (2/100), (3/150), (4/200); Blue: (7/150), (8/200), (9/250); Green: (12/150), (13/250), (14/300); Test: (7/120) in black. 8. Below: black text 'Squared distance between each vector and test vector'. 9. Below that, three parenthesized groups: red '(425   916   6409)', blue '(900    6401   16904)', green '(925   16936   32449)'. 10. Draw a yellow circle highlight around '425'. 11. Bottom-right inside frame: pale yellow (#F5F5DC) box containing a black parenthesized vector (7 over 100) and bold text 'Belongs to   Red Class' with 'Red Class' in red.",
+  "_meta": {
+    "frame": "slide_053.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 53,
+      "image": "slide_053.jpg",
+      "kept_frame": "frame_04503.jpg",
+      "old_slide": 84,
+      "start_sec": 4455.0,
+      "end_sec": 4502.0,
+      "frame_count": 48
+    },
+    "elapsed_s": 73.8
+  }
+}

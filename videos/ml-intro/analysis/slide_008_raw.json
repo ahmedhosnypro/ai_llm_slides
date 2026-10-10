@@ -1,0 +1,113 @@
+{
+  "slide_title": "Major Machine Learning Paradigms",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Given: N labeled training examples {(x\u2081 , y\u2081 ), . . . , (x_N , y_N )}",
+      "Goal: learn mapping f that predicts label y for a test example x",
+      "Example: Spam classification, webpage categorization",
+      "Given: a set of N unlabeled inputs {x\u2081 , . . . , x_N }",
+      "Goal: learn some intrinsic structure in the inputs (e.g., groups/clusters)",
+      "Example: Automatically grouping news stories (Google News)"
+    ],
+    "labels": [
+      "8",
+      "Nomenclature: x denotes an input, y denotes  output/label/prediction",
+      "[1]  Supervised Learning: learning with a teacher",
+      "[2]  Unsupervised Learning: learning without a teacher",
+      "[white mouse cursor arrow visible near center, just below 'webpage categorization' \u2014 a video recording artifact, not slide content]"
+    ],
+    "equations": [
+      "{(x\u2081 , y\u2081 ), . . . , (x_N , y_N )}   (LaTeX: $\\{(x_1, y_1), \\ldots, (x_N, y_N)\\}$ \u2014 N labeled training examples)",
+      "{x\u2081 , . . . , x_N }   (LaTeX: $\\{x_1, \\ldots, x_N\\}$ \u2014 N unlabeled inputs)",
+      "f   (bold-italic function symbol in 'Goal: learn mapping f that predicts label y for a test example x')"
+    ]
+  },
+  "layout": {
+    "arrangement": "Single centered red-bordered content box on a light-gray slide. Title centered at top above the box. Inside the box: one full-width nomenclature line at top, then two numbered sections ([1] Supervised Learning, [2] Unsupervised Learning), each followed by three indented round-bullet lines. Slide-number badge circle at top-right corner of the slide.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, roughly 10%\u201320% vertical, 15%\u201385% horizontal",
+        "content": "Red bold title 'Major Machine Learning Paradigms'"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, roughly 8%\u201318% vertical, 88%\u201395% horizontal",
+        "content": "Small circle, yellow fill with purple outline, containing the number 8"
+      },
+      {
+        "name": "Content box",
+        "position": "middle, roughly 25%\u201397% vertical, 7%\u201393% horizontal",
+        "content": "Thin red rectangle border containing all nomenclature text, both numbered section headers, and all six bullets"
+      },
+      {
+        "name": "Nomenclature line",
+        "position": "top of content box, roughly 28%\u201335% vertical",
+        "content": "Mixed-color line defining x (red) as input and y (blue) as output/label/prediction"
+      },
+      {
+        "name": "Section [1] block",
+        "position": "upper-middle of content box, roughly 36%\u201360% vertical",
+        "content": "Header '[1] Supervised Learning: learning with a teacher' plus three bullets (Given / Goal / Example)"
+      },
+      {
+        "name": "Section [2] block",
+        "position": "lower-middle of content box, roughly 62%\u201388% vertical",
+        "content": "Header '[2] Unsupervised Learning: learning without a teacher' plus three bullets (Given / Goal / Example)"
+      }
+    ],
+    "hierarchy": "Title dominates (largest, bold, red). Section headers next (bold, ~24pt, red keywords + black descriptors). Body bullets smallest (~18-20pt, regular black) with colored inline keywords. The red border box frames and unifies all body content; the small yellow/purple badge is visually minor."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Thin red rectangular border (approx. 1-2px stroke) enclosing all body content: the nomenclature line, both numbered section headers, and all six bullet lines. No fill or a near-transparent fill; interior slightly lighter than slide background.",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "middle of slide, spanning ~7%\u201393% horizontal and ~25%\u201397% vertical"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: small circle with yellow fill and purple/violet outline containing the numeral '8' in dark text, positioned at the top-right corner of the slide, partially overlapping the area just outside/above the red content box.",
+      "colors": [
+        "#FFFF66",
+        "#9933CC",
+        "#333333"
+      ],
+      "position": "top right corner"
+    },
+    {
+      "type": "other",
+      "description": "Round black bullet dots (small filled circles) preceding each of the six list items, indented under their section headers.",
+      "colors": [
+        "#000000"
+      ],
+      "position": "left edge of each bullet line inside the content box"
+    }
+  ],
+  "imagery": [
+    "No photos, icons, or illustrations. Only typographic content, a red border box, a numbered-circle badge, and a white mouse-pointer cursor (video artifact) floating near the center of the slide just below the 'Example: Spam classification, webpage categorization' line."
+  ],
+  "colors": {
+    "background": "#E8E8E8 (light gray slide background; outer video frame slightly whiter, ~#F5F5F5)",
+    "title_text": "#C00000 (bold red)",
+    "body_text": "#000000 (black)",
+    "accents": [
+      "#C00000 (red: 'x', 'input,', 'Supervised Learning:', 'Unsupervised Learning:', border box, title)",
+      "#2222C0 (blue: 'y', 'output/label/prediction')",
+      "#FFFF66 (yellow badge fill)",
+      "#9933CC (purple badge outline)"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout (Arial/Helvetica-like). Title: ~36-40pt bold, red, centered, title case. Section headers: ~24pt bold; bracketed numbers '[1]'/'[2]' in black bold, paradigm names in red bold, taglines ('learning with a teacher' / 'learning without a teacher') in black bold. Body bullets: ~18-20pt regular black with inline color emphasis (red for input-related tokens, blue for output-related tokens). Math set-notation uses true subscripts (x\u2081, y\u2081, x_N) with spaced ellipsis '. . .'; the mapping symbol f is a larger bold-italic glyph. No all-caps, no italics in prose. Bullets are unnumbered round dots, indented once under each header.",
+  "animation_state": "Slide appears fully built \u2014 all six bullets and both section headers are visible simultaneously. A mouse cursor is visible near the center (recording artifact), but nothing looks mid-build.",
+  "recreation_brief": "1. Set slide background to light gray (#E8E8E8). 2. Add centered title text box at top (~10% from top): 'Major Machine Learning Paradigms', Arial bold ~40pt, color #C00000. 3. Draw a rectangle with no fill (or very light fill) and a thin red (#C00000) border spanning ~7%\u201393% width and ~25%\u201397% height for the content frame. 4. Add a small circle shape at top-right (~90% horizontal, ~10% vertical): yellow fill #FFFF66, purple outline #9933CC, with text '8' (~14pt, dark gray/black). 5. Inside the box, first line (full width, ~20pt): 'Nomenclature: ' in black bold, then 'x' in red bold, ' denotes an ' in black, 'input,' in red, ' y' in blue bold, ' denotes  output/label/prediction' in blue. 6. Section header line (~24pt bold): '[1]' black, two spaces, 'Supervised Learning:' red, ' learning with a teacher' black. 7. Under it, three bulleted lines (~18-20pt, round black bullets, indented): a) 'Given: N labeled training examples {(x\u2081 , y\u2081 ), . . . , (x_N , y_N )}' with real subscripts (use PowerPoint subscript formatting for 1, 1, N); b) 'Goal: learn mapping f that predicts label y for a test example x' with 'f' as bold-italic ~22pt; c) 'Example: Spam classification, webpage categorization'. 8. Second section header (~24pt bold): '[2]' black, 'Unsupervised Learning:' red, ' learning without a teacher' black. 9. Under it, three bulleted lines: a) 'Given: a set of N unlabeled inputs {x\u2081 , . . . , x_N }' with subscripts; b) 'Goal: learn some intrinsic structure in the inputs (e.g., groups/clusters)'; c) 'Example: Automatically grouping news stories (Google News)'. 10. Keep all body text black (#000000) except the red/blue inline tokens specified; use Arial throughout; left-align all body text; do not add any images or charts.",
+  "_meta": {
+    "frame": "slide_008.jpg",
+    "model": "images",
+    "source_timestamps": {},
+    "elapsed_s": 210.8
+  }
+}

@@ -1,0 +1,252 @@
+{
+  "slide_title": "Non-Numeric Data Representation",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "What if the data has a non-numeric representation (e.g. Tennis Playing example)",
+      "Features are nominal (Low/High, Yes/No, Overcast/Rainy/Sunny, etc.)",
+      "Features with only 2 possible values can be represented as 0/1",
+      "What about features having more than 2 possible values?",
+      "Can't we just map Sunny to 0, Overcast to 1, Rainy to 2?"
+    ],
+    "labels": [
+      "27",
+      "P",
+      "N",
+      "Out",
+      "T",
+      "R",
+      "Play",
+      "No Play",
+      "Outlook",
+      "Temperature",
+      "Humidity",
+      "Y",
+      "Out",
+      "T",
+      "R",
+      "P",
+      "N",
+      "N",
+      "P",
+      "P",
+      "P",
+      "P",
+      "N",
+      "Sunny",
+      "Sunny",
+      "Sunny",
+      "Overcast",
+      "Overcast",
+      "Overcast",
+      "Rainy",
+      "Rainy",
+      "Low",
+      "High",
+      "High",
+      "Low",
+      "High",
+      "Low",
+      "Low",
+      "Low",
+      "Yes",
+      "Yes",
+      "No",
+      "Yes",
+      "No",
+      "No",
+      "Yes",
+      "No",
+      "Y",
+      "Out",
+      "T",
+      "R",
+      "1",
+      "0",
+      "0",
+      "1",
+      "1",
+      "1",
+      "0",
+      "1",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "1",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "1",
+      "1",
+      "0",
+      "0",
+      "0",
+      "1",
+      "0",
+      "1"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Title centered at top in dark red, two lines. Below it a large rounded-corner box with thin red border containing five bullets. Bottom area holds a legend table on the left and a data-table diagram on the right showing a mapping transformation with an arrow. Slide number '27' in a yellow circle at top-right corner. Entire slide content sits inside a thin red rectangular frame on a light gray background.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top center, ~5-25% height",
+        "content": "Two-line dark red bold title 'Non-Numeric Data Representation' (line 1 'Non-Numeric', line 2 'Data Representation')"
+      },
+      {
+        "name": "slide number badge",
+        "position": "top-right corner",
+        "content": "Yellow circle with '27'"
+      },
+      {
+        "name": "bullet box",
+        "position": "upper-middle, ~27-68% height, full width with margins",
+        "content": "Red-bordered rounded rectangle with 5 bullets; bullet 1 and 2 black, bullet 3 in blue, bullet 4 in red italic, bullet 5 bold with blue italic underlined portion"
+      },
+      {
+        "name": "legend table",
+        "position": "bottom-left, ~72-97% height",
+        "content": "Pale yellow two-column table (2 columns x 5 rows, no header row) mapping codes P, N, Out, T, R to Play, No Play, Outlook, Temperature, Humidity"
+      },
+      {
+        "name": "data table diagram",
+        "position": "bottom-center/right, ~70-97% height",
+        "content": "Left: color-coded table with columns Y, Out, T, R (header row) and 8 data rows of categorical values; red arrow pointing right; Right: same-sized table (header row plus 8 data rows) with Y numeric (1,0,0,1,1,1,0,1), Out column replaced by 8 '?' marks, T and R columns shown as 0/1 values"
+      },
+      {
+        "name": "slide frame",
+        "position": "outer border around the entire slide, just inside the slide edges",
+        "content": "Thin red rectangular frame enclosing all content, over the light gray background"
+      }
+    ],
+    "hierarchy": "Title dominates in large bold dark red. Bullets next in black with color-coded emphasis (blue, red italic, bold+blue underline). Bottom tables are smaller supporting visuals. Yellow slide-number badge is a minor accent."
+  },
+  "visual_elements": [
+    {
+      "type": "table",
+      "description": "Legend table, 2 columns x 5 rows (no header row). Left column: P, N, Out, T, R. Right column: Play, No Play, Outlook, Temperature, Humidity. Pale yellow fill with thin borders.",
+      "colors": [
+        "#FFFFCC",
+        "#000000"
+      ],
+      "position": "bottom-left"
+    },
+    {
+      "type": "table",
+      "description": "Categorical data table, 4 columns x 9 rows (header row Y, Out, T, R plus 8 data rows). Y column values: P, N, N, P, P, P, P, N. Out column (pink/magenta highlighted): Sunny, Sunny, Sunny, Overcast, Overcast, Overcast, Rainy, Rainy. T column (orange highlighted): Low, High, High, Low, High, Low, Low, Low. R column (green highlighted): Yes, Yes, No, Yes, No, No, Yes, No.",
+      "colors": [
+        "#FF99CC",
+        "#FFCC99",
+        "#99FF99",
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "bottom-center, left of arrow"
+    },
+    {
+      "type": "arrow",
+      "description": "Red outlined right-pointing arrow (hollow) indicating transformation from the categorical table to the numeric table",
+      "colors": [
+        "#CC3333"
+      ],
+      "position": "bottom-center, between the two tables"
+    },
+    {
+      "type": "table",
+      "description": "Numeric result table, 4 columns x 9 rows (header row Y, Out, T, R plus 8 data rows). Y column: 1, 0, 0, 1, 1, 1, 0, 1. Out column (pink highlighted): all '?' (8 question marks). T column (orange highlighted): 1, 0, 0, 0, 0, 0, 0, 0 [?]. R column (green highlighted): 1, 1, 0, 0, 0, 1, 0, 1 [?].",
+      "colors": [
+        "#FF99CC",
+        "#FFCC99",
+        "#99FF99",
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "bottom-center, right of arrow"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Rounded rectangle with thin red border enclosing the five bullets",
+      "colors": [
+        "#AA2222",
+        "#FFFFFF"
+      ],
+      "position": "upper-middle"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle badge containing slide number '27' in dark text",
+      "colors": [
+        "#FFFF99",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#E8E8E8",
+    "title_text": "#AA0000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000CC",
+      "#CC0000",
+      "#FF99CC",
+      "#FFCC99",
+      "#99FF99",
+      "#FFFF99",
+      "#AA2222",
+      "#CC3333",
+      "#FFFFCC",
+      "#FFFFFF"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title is large, bold, dark red (#AA0000), centered, on two lines ('Non-Numeric' / 'Data Representation'). Bullets use round bullet markers: bullets 1 and 2 black (#000000); bullet 3 blue (#0000CC); bullet 4 red italic (#CC0000); bullet 5 has 'Can't we just' in bold black (#000000) and the phrase 'map Sunny to 0, Overcast to 1, Rainy to 2?' in blue (#0000CC) italic underlined. Table text is small black sans-serif. Slide number '27' sits in a small yellow (#FFFF99) circle in dark text.",
+  "animation_state": "Appears fully built; the 8 '?' marks in the Out column of the right table are intentional content (unknown encoding), not a mid-build state.",
+  "recreation_brief": "1. Set the slide background to light gray #E8E8E8. 2. Draw a thin red (#AA2222) rectangular frame around the entire slide, just inside its edges, enclosing all content. 3. Place the title at top center (~5-25% of slide height): two lines of large bold sans-serif dark red #AA0000 text, line 1 'Non-Numeric', line 2 'Data Representation'. 4. Place a small yellow #FFFF99 circle at the top-right corner containing '27' in black #000000 text. 5. Draw a white #FFFFFF rounded rectangle with a thin red #AA2222 border in the upper-middle band (~27-68% of slide height, full content width with side margins) to hold the bullets. 6. Inside the box, place bullet 1 with a round bullet marker in black #000000: 'What if the data has a non-numeric representation (e.g. Tennis Playing example)'. 7. Place bullet 2 with a round marker in black #000000: 'Features are nominal (Low/High, Yes/No, Overcast/Rainy/Sunny, etc.)'. 8. Place bullet 3 with a round marker in blue #0000CC: 'Features with only 2 possible values can be represented as 0/1'. 9. Place bullet 4 with a round marker in red #CC0000 italic: 'What about features having more than 2 possible values?'. 10. Place bullet 5 with a round marker: render 'Can't we just' in bold black #000000 followed by 'map Sunny to 0, Overcast to 1, Rainy to 2?' in blue #0000CC italic, underlined. 11. Bottom-left (~72-97% of slide height): draw a legend table of 2 columns x 5 rows (no header row) with pale yellow #FFFFCC cells, thin black #000000 borders, and small black sans-serif text; the 5 rows read 'P | Play', 'N | No Play', 'Out | Outlook', 'T | Temperature', 'R | Humidity'. 12. Bottom-center, left of the arrow (~70-97% height): draw a categorical table of 4 columns x 9 rows (1 header row + 8 data rows); header cells 'Y', 'Out', 'T', 'R'; Y column cells white #FFFFFF with values P, N, N, P, P, P, P, N; Out column cells pink #FF99CC with values Sunny, Sunny, Sunny, Overcast, Overcast, Overcast, Rainy, Rainy; T column cells orange #FFCC99 with values Low, High, High, Low, High, Low, Low, Low; R column cells green #99FF99 with values Yes, Yes, No, Yes, No, No, Yes, No; all table text black #000000. 13. Bottom-center, between the two tables: draw a hollow (outline-only) right-pointing arrow in red #CC3333, indicating the transformation from the categorical table to the numeric table. 14. Bottom-center/right, right of the arrow: draw a numeric table of 4 columns x 9 rows (1 header row + 8 data rows); header cells 'Y', 'Out', 'T', 'R'; Y column cells white #FFFFFF with values 1, 0, 0, 1, 1, 1, 0, 1; Out column cells pink #FF99CC each containing '?' (8 question marks, intentional content, not an animation state); T column cells orange #FFCC99 with values 1, 0, 0, 0, 0, 0, 0, 0 [?]; R column cells green #99FF99 with values 1, 1, 0, 0, 0, 1, 0, 1 [?]; all table text black #000000.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "verbatim_text.labels: inserted the 8 missing Y-column values of the left categorical table (P, N, N, P, P, P, P, N) between the left-table header labels (Y, Out, T, R) and the Out-column values; these values were specified in visual_elements but omitted from labels, and they cross-check exactly against the right table's Y column (1,0,0,1,1,1,0,1 with P=1, N=0).",
+      "verbatim_text.labels: corrected the 3 legend right-column entries 'Out', 'T', 'R' to 'Outlook', 'Temperature', 'Humidity' to match visual_elements, layout.regions, and the recreation_brief; the extracted label version (Out->Out, T->T, R->R) would render the legend meaningless.",
+      "layout.regions: added a 'slide frame' region for the thin red rectangular frame that layout.arrangement describes but regions did not previously list.",
+      "layout.regions ('data table diagram'): replaced the ambiguous '8 rows' with 'header row plus 8 data rows' for both tables (4 columns x 9 rows each).",
+      "colors.accents: added #CC3333 (transformation arrow), #FFFFCC (legend table fill), and #FFFFFF (bullet-box and table-cell fill), all present in visual_elements but missing from the accents list.",
+      "recreation_brief: rewritten as a 14-step ordered checklist with exactly one element placed per step, verbatim text, hex colors, height-band positions, and explicit table dimensions (legend 2x5; both data tables 4 columns x 9 rows including header); bullet 4's red specified as accent #CC0000 and bullet 5's blue as #0000CC.",
+      "subtitle_or_header: verified genuinely absent from the source (no subtitle region exists; the two-line title is the only header) and left null rather than inventing content."
+    ],
+    "uncertain_items": [
+      "Right table T column values '1, 0, 0, 0, 0, 0, 0, 0 [?]' kept with the source marker: they do not correspond to any consistent Low/High -> 0/1 mapping of the left table's T column (Low, High, High, Low, High, Low, Low, Low), so these 8 digits are unverified.",
+      "Right table R column values '1, 1, 0, 0, 0, 1, 0, 1 [?]' kept with the source marker: they do not correspond to any consistent Yes/No -> 0/1 mapping of the left table's R column (Yes, Yes, No, Yes, No, No, Yes, No), so these 8 digits are unverified.",
+      "Exact hex of the thin red slide frame is not specified in the source (described only as 'thin red' / 'dark-red'); #AA2222 was assumed in the recreation_brief to match the bullet-box border.",
+      "Legend right-column wording ('Outlook', 'Temperature', 'Humidity') cannot be re-verified without the image; the correction relies on the agreement of visual_elements, layout.regions, and the original recreation_brief over the abbreviated verbatim labels."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_027.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 27,
+      "image": "slide_027.jpg",
+      "kept_frame": "frame_02845.jpg",
+      "old_slide": 35,
+      "start_sec": 2717.0,
+      "end_sec": 2844.0,
+      "frame_count": 128
+    },
+    "elapsed_s": 132.6,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 809.2
+  }
+}

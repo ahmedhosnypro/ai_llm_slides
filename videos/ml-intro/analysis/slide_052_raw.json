@@ -1,0 +1,124 @@
+{
+  "slide_title": "K-NN: Feature Normalization",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Features should be on the same scale",
+      "Example: if one feature has its values in millimeters and another has in centimeters, we would need to normalize",
+      "One way is:"
+    ],
+    "labels": [
+      "52",
+      "Replace x_im by z_im = (x_im \u2212 x\u0304_m)/\u03c3_m (make them zero mean, unit variance)",
+      "x\u0304_m = (1/N) \u03a3_{i=1}^{N} x_im : empirical mean of m^th feature",
+      "\u03c3_m^2 = (1/N) \u03a3_{i=1}^{N} (x_im \u2212 x\u0304_m)^2 : empirical variance of m^th feature"
+    ],
+    "equations": [
+      "d(x_i, x_j) = sqrt( \u03a3_{m=1}^{D} (x_im \u2212 x_jm)^2 )",
+      "z_im = (x_im \u2212 x\u0304_m) / \u03c3_m",
+      "x\u0304_m = (1/N) \u03a3_{i=1}^{N} x_im",
+      "\u03c3_m^2 = (1/N) \u03a3_{i=1}^{N} (x_im \u2212 x\u0304_m)^2"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top in red; slide number '52' in a yellow circle at top-right corner. Main content inside a large red-bordered rounded rectangle: left side has bullet text, right side has a blue-bordered box containing the Euclidean distance formula; below, a wide yellow highlight box with a blue border spans most of the width containing the normalization formulas.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top center, ~10\u201320% height",
+        "content": "Red bold title 'K-NN: Feature Normalization'"
+      },
+      {
+        "name": "slide number",
+        "position": "top-right corner",
+        "content": "Yellow circle with '52'"
+      },
+      {
+        "name": "bullet text",
+        "position": "upper-left inside red frame, ~25\u201360% height",
+        "content": "Intro line and two bullets about feature scaling"
+      },
+      {
+        "name": "distance formula box",
+        "position": "upper-right inside red frame",
+        "content": "Blue-bordered white box with Euclidean distance formula"
+      },
+      {
+        "name": "normalization highlight box",
+        "position": "bottom, spanning ~10\u201375% width",
+        "content": "Yellow box with blue border containing z-score formula, mean and variance definitions"
+      }
+    ],
+    "hierarchy": "Red bold title dominates; then black body bullets; the yellow highlight box draws attention as the key takeaway; the small blue-bordered formula box is secondary."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Yellow-filled box with thin blue border containing three lines: 'Replace x_im by z_im = (x_im \u2212 x\u0304_m)/\u03c3_m (make them zero mean, unit variance)' with 'zero mean, unit variance' in green; then definitions of empirical mean x\u0304_m and empirical variance \u03c3_m^2 of the m^th feature.",
+      "colors": [
+        "#FFFF99",
+        "#0000CC",
+        "#00AA00",
+        "#000000"
+      ],
+      "position": "bottom-center of slide"
+    },
+    {
+      "type": "highlight-box",
+      "description": "White box with thin blue border containing Euclidean distance formula d(x_i, x_j) = sqrt(\u03a3_{m=1}^{D}(x_im \u2212 x_jm)^2).",
+      "colors": [
+        "#FFFFFF",
+        "#0000CC",
+        "#000000"
+      ],
+      "position": "upper-right inside main frame"
+    },
+    {
+      "type": "other",
+      "description": "Large rounded rectangle with red/maroon border framing the main content area.",
+      "colors": [
+        "#AA3333"
+      ],
+      "position": "covers most of slide below title"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle with dark outline containing slide number '52'.",
+      "colors": [
+        "#FFEE88",
+        "#333333"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#F2F2F2",
+    "title_text": "#CC0000",
+    "body_text": "#000000",
+    "accents": [
+      "#FFFF99",
+      "#0000CC",
+      "#00AA00",
+      "#AA3333",
+      "#FFEE88"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout; title large bold red; body text medium black; 'same scale' is bold and underlined; 'zero mean, unit variance' in green; math in italic serif-like notation; standard round bullet points.",
+  "animation_state": "Fully built; no partial reveals visible.",
+  "recreation_brief": "1. Set slide background to light gray (#F2F2F2). 2. Add centered bold red title 'K-NN: Feature Normalization' near top. 3. Add yellow circle with '52' at top-right. 4. Draw a large rounded rectangle with red/maroon outline (no fill) covering the content area. 5. Inside, upper-left: add text 'Features should be on the same scale' with 'same scale' bold+underlined, then bullets: 'Example: if one feature has its values in millimeters and another has in centimeters, we would need to normalize' and 'One way is:'. 6. Upper-right: draw a white box with blue border containing d(x_i, x_j) = sqrt(\u03a3_{m=1}^{D}(x_im \u2212 x_jm)^2). 7. Bottom: draw a yellow-filled box (#FFFF99) with blue border; inside place three lines: 'Replace x_im by z_im = (x_im \u2212 x\u0304_m)/\u03c3_m (make them zero mean, unit variance)' with the phrase 'zero mean, unit variance' colored green; 'x\u0304_m = (1/N) \u03a3_{i=1}^{N} x_im : empirical mean of m^th feature'; '\u03c3_m^2 = (1/N) \u03a3_{i=1}^{N} (x_im \u2212 x\u0304_m)^2 : empirical variance of m^th feature'.",
+  "_meta": {
+    "frame": "slide_052.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 52,
+      "image": "slide_052.jpg",
+      "kept_frame": "frame_04267.jpg",
+      "old_slide": 74,
+      "start_sec": 4124.0,
+      "end_sec": 4266.0,
+      "frame_count": 143
+    },
+    "elapsed_s": 63.3
+  }
+}

@@ -1,0 +1,131 @@
+{
+ "slide_title": "K-NN: Computing the distances",
+ "subtitle_or_header": null,
+ "verbatim_text": {
+  "bullets": [
+   "The K-NN algorithm requires computing distances of the test example from each of the training examples",
+   "Several ways to compute distances",
+   "The choice depends on the type of the features in the data",
+   "Real-valued features (xi ∈ R^D ): Euclidean distance is commonly used"
+  ],
+  "labels": [
+   "42 (slide number in yellow circle, top-right)"
+  ],
+  "equations": [
+   "d(x_i, x_j) = sqrt( sum_{m=1}^{D} (x_{im} - x_{jm})^2 ) = sqrt( ||x_i||^2 + ||x_j||^2 - 2 x_i^T x_j )"
+  ]
+ },
+ "layout": {
+  "arrangement": "Title centered at top in red; below it a large red-bordered content box containing four bullets on the left; a yellow highlighted equation box with blue border spans the bottom of the content box; slide number '42' in a yellow circle at top-right corner; whole slide framed by a thin red outer border on a light gray background",
+  "regions": [
+   {
+    "name": "title",
+    "position": "top center, ~10-20% height",
+    "content": "Red bold title 'K-NN: Computing the distances'"
+   },
+   {
+    "name": "slide number",
+    "position": "top-right corner",
+    "content": "Yellow circle with '42'"
+   },
+   {
+    "name": "bullet list",
+    "position": "middle-left, ~25-70% height, left ~60% width",
+    "content": "Four black bullet points; phrases 'test example' and 'each of the training examples' highlighted in yellow; 'Euclidean' underlined"
+   },
+   {
+    "name": "equation box",
+    "position": "bottom, ~72-92% height, full width of content box",
+    "content": "Yellow-filled box with blue border containing the Euclidean distance formula"
+   }
+  ],
+  "hierarchy": "Red bold title dominates; then black body bullets; yellow highlight draws attention to key phrases; yellow equation box is the visual anchor at the bottom"
+ },
+ "visual_elements": [
+  {
+   "type": "highlight-box",
+   "description": "Yellow-filled rectangle with thin blue border containing the Euclidean distance equation: d(x_i, x_j) = sqrt( sum_{m=1}^{D} (x_{im} - x_{jm})^2 ) = sqrt( ||x_i||^2 + ||x_j||^2 - 2 x_i^T x_j )",
+   "colors": [
+    "#FFFF99",
+    "#0000CC",
+    "#000000"
+   ],
+   "position": "bottom of the content box (~72-92% of slide height), spanning the full width of the content box"
+  },
+  {
+   "type": "icon",
+   "description": "Yellow circle with dark outline containing black number '42' (slide number badge)",
+   "colors": [
+    "#FFFF66",
+    "#000000"
+   ],
+   "position": "top-right corner"
+  },
+  {
+   "type": "other",
+   "description": "Yellow text highlighting on the phrases 'test example' and 'each of the training examples' in bullet 1",
+   "colors": [
+    "#FFFF00"
+   ],
+   "position": "within first bullet"
+  },
+  {
+   "type": "text-underline",
+   "description": "Black underline on the word 'Euclidean' in bullet 4 ('Euclidean distance is commonly used')",
+   "colors": [
+    "#000000"
+   ],
+   "position": "within fourth bullet"
+  }
+ ],
+ "imagery": [],
+ "colors": {
+  "background": "#F2F2F2",
+  "title_text": "#CC0000",
+  "body_text": "#000000",
+  "accents": [
+   "#FFFF00",
+   "#FFFF99",
+   "#CC0000",
+   "#0000CC",
+   "#FFFF66"
+  ]
+ },
+ "typography_notes": "Title large, bold, red sans-serif; body bullets medium black serif (Times-like, confirmed by two vision reads of the curated slide_042.jpg frame); round bullet markers; 'Euclidean' underlined; equation in italic math serif style",
+ "animation_state": "Static slide as captured in the curated frame; no live ink annotations present (the lecturer's red ink sketch annotations belong to a later frame of the same lecture segment and are NOT part of this frame's content)",
+ "recreation_brief": "1. Set the slide background to light gray #F2F2F2.\n2. Draw a thin red (#CC0000) rectangle outline with no fill framing the entire slide edge (outer border).\n3. Place the title 'K-NN: Computing the distances' centered horizontally in the top band (~10-20% of slide height), set in large, bold, red (#CC0000) sans-serif type.\n4. In the top-right corner, draw a circle filled yellow (#FFFF66) with a dark outline, containing the black (#000000) number '42'.\n5. Below the title, draw a large rectangle with a red (#CC0000) border and no fill (the content box), spanning ~22-95% of slide height and ~5-95% of slide width.\n6. Inside the content box on the left (~60% of box width, top of the ~25-70% slide-height band), add bullet 1 with a round black bullet marker and black (#000000) text: 'The K-NN algorithm requires computing distances of the test example from each of the training examples', with the two phrases 'test example' and 'each of the training examples' highlighted in yellow (#FFFF00).\n7. Directly below bullet 1, add bullet 2 with a round marker and black text: 'Several ways to compute distances'.\n8. Directly below bullet 2, add bullet 3 with a round marker and black text: 'The choice depends on the type of the features in the data'.\n9. Directly below bullet 3, add bullet 4 with a round marker and black text: 'Real-valued features (xi ∈ R^D ): Euclidean distance is commonly used', with the word 'Euclidean' underlined.\n10. At the bottom of the content box (~72-92% of slide height, spanning the full box width), draw a rectangle filled yellow (#FFFF99) with a thin blue (#0000CC) border, containing the equation 'd(x_i, x_j) = sqrt( sum_{m=1}^{D} (x_{im} - x_{jm})^2 ) = sqrt( ||x_i||^2 + ||x_j||^2 - 2 x_i^T x_j )' in black (#000000) italic math-style serif font.",
+ "validation": {
+  "verdict": "PASS_WITH_FIXES",
+  "fixes_applied": [
+   "subtitle_or_header: verified genuinely absent (no subtitle/header text exists anywhere in the source JSON); left null per the 'truly absent' exception rather than inventing one.",
+   "colors.accents: added '#FFFF66' (slide-number circle fill) — it was specified in visual_elements.icon but missing from the color palette, an internal inconsistency.",
+   "visual_elements: added a 5th entry (black underline on 'Euclidean' in bullet 4) — the underline was described in layout.regions and typography_notes but had no visual_elements entry.",
+   "Equation-box geometry harmonized: visual_elements said 'spanning most of its width' while layout.regions said 'full width of the content box'; standardized to full content-box width at ~72-92% of slide height.",
+   "Verbatim bullet 2 'Several ways to compute distances' kept unchanged: 'Several' is quoted slide text and no exact count of distance metrics is derivable from the JSON, so replacing it would invent content; all non-verbatim descriptions already use exact counts (4 bullets, 3 arrows, 3 training nodes).",
+   "recreation_brief rewritten as an 11-step numbered checklist: one element per step with verbatim text, hex colors, positions taken from the region percentage bands, and shape types; content-box bounds (~22-95% height, ~5-95% width) derived from the enclosed region bands.",
+   "CURATION RE-VERIFICATION (slide-42 worker, 2026-10-09): two independent vision reads of the curated ground-truth frame unique_slides/slide_042.jpg (comparison judge attempt 1 + a dedicated original-frame audit, transcripts in recreated_pptx/qa/slide42/) confirmed the curated frame does NOT contain the hand-drawn red sketch ('test' node + 3 arrows + 3 nodes) that the pre-curation old-54 frame carried — the sketch was live ink added later in the lecture segment. Removed the diagram visual_element, the sketch layout region, the 'test' verbatim label, and the sketch recreation-brief step; body font corrected to serif (Times-like). The tiny red plus-mark near the highlight is a video cursor artifact and is correctly omitted."
+  ],
+  "uncertain_items": [
+   "Exact font point sizes are not specified (only relative cues: title 'large, bold', body 'medium'); the builder must choose sizes matching these cues.",
+   "Exact bounds of the red-bordered content box are derived approximations from the region bands, not stated verbatim in the source.",
+   "Content-box fill (transparent vs. light gray) is not specified; the brief defaults to no fill over the #F2F2F2 background.",
+   "Exact rendering of the sketch nodes is ambiguous in the source ('point/node'): dot vs. small circle is unverifiable."
+  ],
+  "recreatability_score_1_to_10": 9
+ },
+ "_meta": {
+  "frame": "slide_042.jpg",
+  "model": "images",
+  "source_timestamps": {
+   "slide": 42,
+   "image": "slide_042.jpg",
+   "kept_frame": "frame_03608.jpg",
+   "start_sec": 3552.0,
+   "end_sec": 3607.0,
+   "frame_count": 56
+  },
+  "elapsed_s": 47.2,
+  "validated_by": "glm-5.3",
+  "validation_elapsed_s": 574.2
+ }
+}

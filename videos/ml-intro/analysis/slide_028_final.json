@@ -1,0 +1,154 @@
+{
+  "slide_title": "Data Representation",
+  "subtitle_or_header": "No separate subtitle exists. The header is a light gray (#DDDDDD) band across the full top of the slide (~0-15% of slide height) containing only the centered bold red title 'Data Representation' and, at the top-right, a yellow circled slide number '28'.",
+  "verbatim_text": {
+    "bullets": [
+      "Well, we could map Sunny to 0, Overcast to 1, Rainy to 2..",
+      "But such a mapping may not always be appropriate",
+      "Imagine color being a feature in some data",
+      "Let's code 3 possible colors as Red=0, Blue=1, Green=2",
+      "This implies Red is more similar to Blue than to Green !",
+      "Solution: For a feature with K > 2 possible values, we usually create K binary features, one for each possible value"
+    ],
+    "labels": [
+      "28",
+      "Replace",
+      "Out",
+      "Outlook",
+      "With",
+      "S",
+      "Sunny",
+      "O",
+      "Overcast",
+      "R",
+      "Rainy",
+      "Y",
+      "Out",
+      "T",
+      "R",
+      "S?",
+      "O?",
+      "R?",
+      "T",
+      "R"
+    ],
+    "equations": [
+      "K > 2"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top in red on a light gray header band; slide number '28' in a yellow circle at top-right. Below, a large white content area framed by a thin red border contains a bulleted list of exactly 6 bullets: 3 top-level bullets and 3 nested sub-bullets. Bottom-left holds a small pale yellow legend box ('Replace ... With ...'); bottom-center/right holds a wide two-table diagram showing categorical-to-binary (one-hot) feature encoding, with a red rightward arrow between the left and right tables.",
+    "regions": [
+      {
+        "name": "header",
+        "position": "top, full width, ~0-15% height",
+        "content": "Red bold title 'Data Representation' centered; yellow circled '28' at top-right"
+      },
+      {
+        "name": "bullet area",
+        "position": "upper-middle, ~15-60% height, full width inside red border",
+        "content": "Six bullets total: three top-level bullets (the third being the 'Solution:' bullet with red emphasized text) plus three indented nested sub-bullets"
+      },
+      {
+        "name": "legend box",
+        "position": "bottom-left, ~62-88% height, ~8-28% width",
+        "content": "Pale yellow box: 'Replace / Out Outlook / With / S Sunny / O Overcast / R Rainy'"
+      },
+      {
+        "name": "encoding table diagram",
+        "position": "bottom-center to bottom-right, ~62-92% height, ~30-80% width",
+        "content": "Left table with columns Y, Out, T, R (categorical values), red arrow, right table with binary one-hot columns Y, S?, O?, R?, T, R"
+      }
+    ],
+    "hierarchy": "Red bold title dominates; then black body bullets; red bold 'Solution' emphasis and red sub-bullet text draw attention; colored words (Red/Blue/Green) in the color-coding bullet; tables at bottom are supporting detail."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Pale yellow legend box with two-column text: 'Replace' (red) / 'Out  Outlook' / 'With' (red) / 'S  Sunny' / 'O  Overcast' / 'R  Rainy'",
+      "colors": [
+        "#FFFFCC",
+        "#CC0000",
+        "#000000"
+      ],
+      "position": "bottom-left"
+    },
+    {
+      "type": "table",
+      "description": "Left table (categorical data) with column headers Y, Out, T, R. Y column values (blue): P N N P P P N P. Out column (magenta/pink highlighted): Sunny, Sunny, Sunny, Overcast, Overcast, Overcast, Rainy, Rainy. T column (orange highlighted): Low, High, High, Low, High, Low, Low, Low. R column (green highlighted): Yes, Yes, No, Yes, No, No, Yes, No. A red rightward arrow (=>) leads to the right table (binary encoding) with headers Y, S?, O?, R?, T, R. Right table Y column (blue): 1 0 0 1 1 1 0 1. S? column (magenta): 1 1 1 0 0 0 0 0. O? column (magenta/pink): 0 0 0 1 1 1 0 0. R? column (magenta): 0 0 0 0 0 0 1 1. T column (orange): 0 1 1 0 1 0 0 0. R column (green): 1 1 0 1 0 0 1 0.",
+      "colors": [
+        "#FF99FF",
+        "#FFCC99",
+        "#99FF99",
+        "#0000CC",
+        "#CC0000",
+        "#FFFFFF"
+      ],
+      "position": "bottom-center/right"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow (#FFFF99) circle with black (#000000) outline containing slide number '28' in black",
+      "colors": [
+        "#FFFF99",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [
+    "No photos; only the legend box, the two data tables with color-highlighted columns, a red transformation arrow, and the circled page number."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#CC0000",
+    "body_text": "#000000",
+    "accents": [
+      "#CC0000",
+      "#0000CC",
+      "#009900",
+      "#FF99FF",
+      "#FFCC99",
+      "#99FF99",
+      "#FFFFCC",
+      "#FFFF99",
+      "#DDDDDD"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title large, bold, red, centered. Body bullets black with round bullet markers; nested sub-bullets indented. The word 'Solution:' is bold; the phrase 'create K binary features, one for each possible value' is red and bold. In the color bullet, 'Red=0' is red, 'Blue=1' is blue, 'Green=2' is green. The implication bullet is entirely red. Table headers are bold; Y column digits are blue; table cell text is small and centered within cells.",
+  "animation_state": "Fully built; no partial reveals apparent. A mouse cursor is visible near the first bullet \u2014 a video-capture artifact, not a slide element; do not recreate it.",
+  "recreation_brief": "1. Background: set the full slide background to white (#FFFFFF). 2. Header band: place a light gray (#DDDDDD) rectangle across the full slide width, covering roughly the top 15% of slide height. 3. Content frame: draw a thin red (#CC0000) border framing the white content area that spans the full width below the header band (~15-100% of slide height). 4. Title: center the text 'Data Representation' in the header band, in large bold red (#CC0000) sans-serif. 5. Slide-number icon: at the top-right of the header band, draw a yellow (#FFFF99) circle with a black (#000000) outline containing the black number '28'. 6. Top-level bullet 1 (round black marker, black #000000 text): 'Well, we could map Sunny to 0, Overcast to 1, Rainy to 2..'. 7. Top-level bullet 2 (black text): 'But such a mapping may not always be appropriate'. 8. Nested sub-bullet 1 (indented, black text): 'Imagine color being a feature in some data'. 9. Nested sub-bullet 2 (indented): 'Let's code 3 possible colors as Red=0, Blue=1, Green=2' with 'Red=0' colored red (#CC0000), 'Blue=1' colored blue (#0000CC), and 'Green=2' colored green (#009900). 10. Nested sub-bullet 3 (indented, entirely red #CC0000 text): 'This implies Red is more similar to Blue than to Green !'. 11. Top-level bullet 3: 'Solution: For a feature with K > 2 possible values, we usually create K binary features, one for each possible value' with 'Solution:' in bold black, 'For a feature with K > 2 possible values, we usually' in regular black, and 'create K binary features, one for each possible value' in bold red (#CC0000). 12. Legend box: in the bottom-left region (~62-88% height, ~8-28% width), draw a pale yellow (#FFFFCC) rectangle containing six two-column lines: 'Replace' in red (#CC0000); 'Out  Outlook' in black; 'With' in red (#CC0000); 'S  Sunny' in black; 'O  Overcast' in black; 'R  Rainy' in black. 13. Left table: in the left portion of the bottom table region (~62-92% height, ~30-80% width), build a 4-column table with 1 bold header row (Y, Out, T, R) plus 8 data rows on white (#FFFFFF) fill: Y column text in blue (#0000CC) = P, N, N, P, P, P, N, P; Out column with magenta (#FF99FF) fill = Sunny, Sunny, Sunny, Overcast, Overcast, Overcast, Rainy, Rainy; T column with orange (#FFCC99) fill = Low, High, High, Low, High, Low, Low, Low; R column with green (#99FF99) fill = Yes, Yes, No, Yes, No, No, Yes, No. 14. Arrow: draw a red (#CC0000) rightward arrow centered between the left and right tables. 15. Right table: in the right portion of the same bottom region, build a 6-column table with 1 bold header row (Y, S?, O?, R?, T, R) plus 8 data rows on white fill: Y column text in blue (#0000CC) = 1, 0, 0, 1, 1, 1, 0, 1; S? column with magenta (#FF99FF) fill = 1, 1, 1, 0, 0, 0, 0, 0; O? column with magenta (#FF99FF) fill = 0, 0, 0, 1, 1, 1, 0, 0; R? column with magenta (#FF99FF) fill = 0, 0, 0, 0, 0, 0, 1, 1; T column with orange (#FFCC99) fill = 0, 1, 1, 0, 1, 0, 0, 0; R column with green (#99FF99) fill = 1, 1, 0, 1, 0, 0, 1, 0. 16. Typography and exclusions: use sans-serif throughout; keep table text small and centered in cells with bold headers; use round bullet markers with indented nested sub-bullets; do not recreate the mouse cursor (video-capture artifact).",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Filled the null subtitle_or_header field by reconstructing from layout.regions and visual_elements: no separate subtitle exists; the header is the light gray (#DDDDDD) top band holding only the centered red title and the circled '28'.",
+      "Added the missing accent color #FFFF99 (fill of the yellow slide-number circle, specified in visual_elements) to colors.accents, where it was absent from the palette.",
+      "Made bullet counts exact and unambiguous: layout.regions 'bullet area' now states 6 bullets total = 3 top-level (the third being the 'Solution:' bullet) + 3 nested sub-bullets, replacing the ambiguous 'Two top-level bullets ... then the Solution: bullet' phrasing; the same exact counts were mirrored in layout.arrangement.",
+      "Replaced the vague 'dark outline' on the slide-number icon with 'black (#000000) outline'.",
+      "Flagged the mouse cursor in animation_state as a video-capture artifact to be excluded from recreation.",
+      "Rewrote recreation_brief as a 16-step, one-element-per-step ordered checklist with exact verbatim texts, hex colors, region-derived positions, and all 8 data rows of both tables; verified the right table's one-hot encoding is internally consistent with the left table's categorical values (P/N to 1/0, Sunny/Overcast/Rainy to S?/O?/R?, Low/High to 0/1, Yes/No to 1/0)."
+    ],
+    "uncertain_items": [
+      "No [?] uncertainty markers exist in the source JSON; the labels 'S?', 'O?', 'R?' are literal one-hot column headers, not uncertainty flags.",
+      "Exact font point sizes are unspecified in the source (only relative terms: 'large' title, 'small' table text); the builder must scale type to fit the given region percentages.",
+      "Region geometry (~0-15%, ~62-88%, ~30-80%) consists of vision-model estimates; the internal split of the table region into left table / arrow / right table is inferred from 'red arrow in the middle' rather than measured coordinates."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_028.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 28,
+      "image": "slide_028.jpg",
+      "kept_frame": "frame_02912.jpg",
+      "old_slide": 36,
+      "start_sec": 2845.0,
+      "end_sec": 2911.0,
+      "frame_count": 67
+    },
+    "elapsed_s": 58.4,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 275.0
+  }
+}

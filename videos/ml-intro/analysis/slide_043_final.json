@@ -1,0 +1,120 @@
+{
+  "slide_title": "Nearest Neighbors (NN) Example",
+  "subtitle_or_header": "No separate subtitle exists; the light-gray header band contains only the centered two-color title and the circled '43' badge at its far right.",
+  "verbatim_text": {
+    "bullets": [
+      "Data of Three Classes   and ONE TEST sample"
+    ],
+    "labels": [
+      "43",
+      "?"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Title centered at top inside a light-gray header band; slide number '43' in a small circle at top-right corner; large white content area below framed by a thin red/maroon border, containing a scatter plot on the left half; caption line at bottom-left of the content area.",
+    "regions": [
+      {
+        "name": "header band",
+        "position": "top, full width, ~0-15% height",
+        "content": "Title 'Nearest Neighbors (NN) Example' with 'Nearest Neighbors' in dark red and '(NN) Example' in blue; circled '43' at far right"
+      },
+      {
+        "name": "plot area",
+        "position": "middle-left, ~10-55% width, ~20-85% height",
+        "content": "Scatter plot with red L-shaped axes (no tick labels), three clusters of colored dots (green, cyan, beige) and one large red test point with a red '?'"
+      },
+      {
+        "name": "caption",
+        "position": "bottom-left, ~88-95% height",
+        "content": "'Data of Three Classes   and ONE TEST sample' with 'ONE TEST' highlighted in yellow"
+      }
+    ],
+    "hierarchy": "Title dominates (large bold two-color text); scatter plot is the main visual; caption is smaller bold red text at bottom; slide number is small."
+  },
+  "visual_elements": [
+    {
+      "type": "chart",
+      "description": "Scatter plot with no axis labels or tick marks; red/maroon L-shaped axes (vertical arrow up, horizontal arrow right). Three clusters of filled circular points: a green cluster of ~10 points in the middle-left rising diagonally; a cyan cluster of ~8 points in the upper-middle/right; a beige/tan cluster of ~6 points at the bottom-center. One large red filled circle sits at the far left near the y-axis (overlapping the green cluster's left edge), and a smaller red dot with a red '?' to its right sits in the center between the green and beige clusters, representing the test sample.",
+      "colors": [
+        "#7ED957",
+        "#2FE0E0",
+        "#E8C9A0",
+        "#E02020",
+        "#8B1A1A"
+      ],
+      "position": "left half of content area"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Yellow highlight behind the words 'ONE TEST' in the bottom caption",
+      "colors": [
+        "#FFFF00"
+      ],
+      "position": "bottom-left caption"
+    },
+    {
+      "type": "icon",
+      "description": "Small circle containing the number '43' (slide number badge)",
+      "colors": [
+        "#F5E6A8",
+        "#8B1A1A"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#B00020",
+    "body_text": "#8B1A1A",
+    "accents": [
+      "#0000CC",
+      "#FFFF00",
+      "#7ED957",
+      "#2FE0E0",
+      "#E8C9A0",
+      "#E02020",
+      "#D3D3D3"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout; title is large and bold with two colors (dark red for 'Nearest Neighbors', blue for '(NN) Example'); caption is smaller bold dark-red text; '?' is bold red italic-ish; no numbered bullets.",
+  "animation_state": "Fully built; nothing appears mid-reveal.",
+  "recreation_brief": "1. Background: fill the entire slide white (#FFFFFF). 2. Header band: draw a light-gray (#D3D3D3) rectangle spanning the full slide width from 0% to ~15% of slide height. 3. Slide-number badge: in the top-right corner of the header band, draw a small circle with pale-yellow fill (#F5E6A8) and a dark-red (#8B1A1A) outline, containing the number '43' centered in dark red (#8B1A1A). 4. Title: center the text 'Nearest Neighbors (NN) Example' horizontally in the header band in large bold sans-serif, with 'Nearest Neighbors' in dark red (#B00020) and '(NN) Example' in blue (#0000CC). 5. Content frame: draw a thin maroon (#8B1A1A) rectangular border enclosing the white content area below the header band (full slide width, from just under the band to the bottom edge of the slide). 6. Axes: inside the left half of the content area (plot region ~10-55% of slide width, ~20-85% of slide height), draw an L-shaped axis pair in maroon (#8B1A1A) - a vertical line on the plot's left side ending in an upward arrowhead and a horizontal line at the plot's bottom ending in a rightward arrowhead - with no tick marks and no axis labels. 7. Green cluster: scatter ~10 small filled green (#7ED957) circles in the plot's middle-left, arranged as a diagonal band rising from lower-left to upper-right. 8. Cyan cluster: scatter ~8 small filled cyan (#2FE0E0) circles in the plot's upper-middle/right. 9. Beige cluster: scatter ~6 small filled beige (#E8C9A0) circles at the plot's bottom-center. 10. Large red circle: place one large filled red (#E02020) circle at the plot's far left near the y-axis, overlapping the green cluster's left edge. 11. Test sample: place a smaller filled red (#E02020) dot at the plot's center between the green and beige clusters, with a bold red (#E02020) '?' immediately to its right. 12. Caption: at the bottom-left inside the content area (~88-95% of slide height), set the text 'Data of Three Classes   and ONE TEST sample' in bold dark-red (#8B1A1A) sans-serif, preserving the wide space run after 'Classes', and place a yellow (#FFFF00) highlight rectangle behind the words 'ONE TEST'.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "verbatim_text.bullets was empty; populated it with the slide's only body-text line 'Data of Three Classes   and ONE TEST sample' (moved out of labels), so labels now contain only '43' and '?'.",
+      "subtitle_or_header was null; filled with a reconstruction stating no subtitle exists and that the header band holds only the centered title plus the '43' badge.",
+      "Rewrote recreation_brief as a 12-step ordered checklist in which each step places exactly one element with its exact text, percent-based position, hex color, and shape/chart type.",
+      "Removed the contradictory duplicate border instruction from the original brief (whole-slide outline in old step 2 vs. content-area border in old step 5); kept the single thin maroon (#8B1A1A) border around the content area below the header, matching layout.arrangement.",
+      "Added missing hex codes to the brief: caption text #8B1A1A, badge fill #F5E6A8 with #8B1A1A outline/number, axes #8B1A1A, test dot and '?' #E02020.",
+      "Added explicit placement coordinates from layout.regions to the brief: header band 0-15% height, plot area ~10-55% width / ~20-85% height, caption ~88-95% height."
+    ],
+    "uncertain_items": [
+      "Scatter-point counts are approximate in the source (~10 green, ~8 cyan, ~6 beige); exact counts and individual point coordinates are not derivable from the JSON.",
+      "The chart description lists BOTH a large red circle near the y-axis AND a smaller red dot with '?' identified as the test sample; whether these are two distinct markers or one test point described twice cannot be verified - both are kept as separate elements (brief steps 10 and 11).",
+      "Extent of the maroon frame: layout.arrangement places the border around the content area below the header band; if the original slide instead frames the entire slide, adjust brief step 5.",
+      "'?' color assumed #E02020 (the test-point red); the source only says 'red'.",
+      "Badge color roles assumed: pale-yellow #F5E6A8 fill with dark-red #8B1A1A outline and number; the source lists both colors without assigning roles.",
+      "No subtitle exists on the slide; subtitle_or_header was filled with a descriptive note rather than slide text."
+    ],
+    "recreatability_score_1_to_10": 7
+  },
+  "_meta": {
+    "frame": "slide_043.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 43,
+      "image": "slide_043.jpg",
+      "kept_frame": "frame_03734.jpg",
+      "old_slide": 58,
+      "start_sec": 3726.0,
+      "end_sec": 3733.0,
+      "frame_count": 8
+    },
+    "elapsed_s": 59.1,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 458.5
+  }
+}

@@ -1,0 +1,149 @@
+{
+ "slide_title": "Supervised Learning: Classification",
+ "subtitle_or_header": "",
+ "verbatim_text": {
+  "bullets": [
+   "[3] Multi-label Classification:",
+   "When y is a vector of discrete variables",
+   "Each input x has multiple labels",
+   "Each element of y is one label (individual labels can be binary/multi-class)",
+   "Example: Image annotation (each image can have multiple labels)",
+   "[4] Structured Prediction: When y is a vector with a structure",
+   "Elements of y are not independent but related to each-other",
+   "Example: Predicting parts-of-speech (POS) tags for a sentence"
+  ],
+  "labels": [
+   "13",
+   "Input",
+   "Output",
+   "The",
+   "man",
+   "ate",
+   "the",
+   "really",
+   "tasty",
+   "sandwich",
+   "DET",
+   "NOUN",
+   "VERB",
+   "DET",
+   "ADV",
+   "ADJ",
+   "NOUN"
+  ],
+  "equations": []
+ },
+ "layout": {
+  "arrangement": "Title centered at top of a light-gray (#E8E8E8) content panel that sits on a white (#FFFFFF) slide base and is framed by a thin red (#AA3333, ~1pt) outline, inset ~2-3% from the slide edges; below the title, a large white inner box with a thin red (#AA3333, ~1pt) border contains all 8 bullet lines; at the bottom of the inner box sits a small 2-row x 8-column table (Input/Output) showing the POS-tagging example; a yellow circled slide number '13' sits at the top-right corner of the gray panel.",
+  "regions": [
+   {
+    "name": "background panel",
+    "position": "full slide minus ~2-3% margin on all four edges",
+    "content": "Light-gray (#E8E8E8) panel with slightly rounded corners and a thin red (#AA3333) outline on the white slide base; contains all other elements"
+   },
+   {
+    "name": "title",
+    "position": "top-center, ~10-25% height",
+    "content": "Title 'Supervised Learning: Classification' with 'Supervised Learning:' in red-orange (#CC3300) and 'Classification' in blue (#0000CC) underlined; largest text on the slide"
+   },
+   {
+    "name": "slide number badge",
+    "position": "top-right corner of the gray panel, diameter ~5% of slide width",
+    "content": "Yellow (#FFFF99) filled circle with centered black '13'"
+   },
+   {
+    "name": "main content box",
+    "position": "middle, ~25-95% height, ~5-95% width",
+    "content": "White (#FFFFFF) box with thin red (#AA3333) border containing the 8 bullet lines of sections [3] Multi-label Classification and [4] Structured Prediction, plus the POS table"
+   },
+   {
+    "name": "POS example table",
+    "position": "bottom-center of content box, ~85-95% height",
+    "content": "2-row x 8-column table: Input row (The | man | ate | the | really | tasty | sandwich), Output row (DET | NOUN | VERB | DET | ADV | ADJ | NOUN)"
+   }
+  ],
+  "hierarchy": "Title largest and boldest (red-orange #CC3300 + blue #0000CC underlined); section headers '[3] Multi-label Classification:' and '[4] Structured Prediction:' in bold blue #0000CC; key phrases 'When y is a vector of discrete variables' and 'When y is a vector with a structure' in red #CC0000; 'Image annotation' in green #33CC33; remaining body text in black #000000; table text is the smallest on the slide."
+ },
+ "visual_elements": [
+  {
+   "type": "table",
+   "description": "Two-row, eight-column table at the bottom of the content box. Row 1 header cell 'Input' (blue #0000CC text), cells: The | man | ate | the | really | tasty | sandwich. Row 2 header cell 'Output' (blue #0000CC text), cells: DET | NOUN | VERB | DET | ADV | ADJ | NOUN (bold all-caps — corrected from title case by direct vision reads of the original, qa/slide014/judge_attempt_1.txt + _2.txt, HIGH confidence). Thin gray (#CCCCCC, ~0.5-1pt) cell borders; black cell text.",
+   "colors": [
+    "#0000CC",
+    "#000000",
+    "#CCCCCC"
+   ],
+   "position": "bottom-center of the white content box, ~85-95% height"
+  },
+  {
+   "type": "highlight-box",
+   "description": "Large white (#FFFFFF) rectangle with thin red/maroon (#AA3333, ~1pt) border enclosing all 8 bullet lines and the table",
+   "colors": [
+    "#FFFFFF",
+    "#AA3333"
+   ],
+   "position": "center, spanning ~5-95% width and ~25-95% height of the slide"
+  },
+  {
+   "type": "icon",
+   "description": "Yellow (#FFFF99) filled circle badge, diameter ~5% of slide width, containing centered black bold '13' (slide number)",
+   "colors": [
+    "#FFFF99",
+    "#000000"
+   ],
+   "position": "top-right corner of the gray panel"
+  }
+ ],
+ "imagery": [],
+ "colors": {
+  "background": "#FFFFFF",
+  "content_panel": "#E8E8E8",
+  "title_text": "#CC3300 ('Supervised Learning:') and #0000CC underlined ('Classification')",
+  "body_text": "#000000",
+  "accents": [
+   "#0000CC",
+   "#CC0000",
+   "#33CC33",
+   "#FFFF99",
+   "#AA3333"
+  ]
+ },
+ "typography_notes": "Sans-serif throughout. Title is the largest text, bold, split-colored: 'Supervised Learning:' in red-orange (#CC3300), 'Classification' in blue (#0000CC) with underline. Section header lines '[3] Multi-label Classification:' and '[4] Structured Prediction:' in bold blue (#0000CC). Inline color emphasis: red (#CC0000) for 'When y is a vector of discrete variables' and 'When y is a vector with a structure'; green (#33CC33) for 'Image annotation'. Variables x and y are italicized. Remaining body text regular-weight black (#000000). Table text is the smallest on the slide; POS tags are short all-caps words (DET, NOUN, VERB, ADV, ADJ). Exact point sizes are not specified in the source.",
+ "animation_state": "Fully built; no partial reveals or build animations. A mouse cursor arrow is visible near the '[4] Structured Prediction' line \u2014 a video-recording artifact that must not be recreated on the slide.",
+ "recreation_brief": "1. Set the slide base background to plain white (#FFFFFF).\n2. Add the content panel: a light-gray (#E8E8E8) rectangle with slightly rounded corners and a thin red (#AA3333, ~1pt) outline, inset ~2-3% from all four slide edges (covering ~95% of the slide area); every remaining element is placed on this panel.\n3. Place the title top-center on the panel (~10-25% of slide height): 'Supervised Learning: Classification', bold sans-serif, largest text on the slide (~28pt) \u2014 render 'Supervised Learning:' in red-orange #CC3300 and 'Classification' in blue #0000CC with an underline.\n4. Place the slide-number badge in the top-right corner of the panel: a yellow (#FFFF99) filled circle ~5% of slide width in diameter with centered black bold '13'.\n5. Add the main content box: a white (#FFFFFF) rectangle with a thin red/maroon (#AA3333, ~1pt) border, centered, spanning ~5-95% of slide width and ~25-95% of slide height.\n6. Inside the content box, add one left-aligned text block at the top (body size ~18pt) containing the following 8 lines stacked top-to-bottom, one line each:\n7. Line 1: '[3] Multi-label Classification:' \u2014 bold blue #0000CC.\n8. Line 2: 'When y is a vector of discrete variables' \u2014 red #CC0000, variable 'y' italic.\n9. Line 3: 'Each input x has multiple labels' \u2014 black #000000, variable 'x' italic.\n10. Line 4: 'Each element of y is one label (individual labels can be binary/multi-class)' \u2014 black #000000, 'y' italic.\n11. Line 5: 'Example: Image annotation (each image can have multiple labels)' \u2014 'Example:' bold black, 'Image annotation' green #33CC33, remainder regular black.\n12. Line 6: '[4] Structured Prediction: When y is a vector with a structure' \u2014 '[4] Structured Prediction:' bold blue #0000CC, 'When y is a vector with a structure' red #CC0000.\n13. Line 7: 'Elements of y are not independent but related to each-other' \u2014 black #000000, 'y' italic.\n14. Line 8: 'Example: Predicting parts-of-speech (POS) tags for a sentence' \u2014 'Example:' bold black, remainder regular black.\n15. At the bottom-center of the content box (~85-95% of slide height), insert a 2-row x 8-column table with thin gray (#CCCCCC, ~0.5-1pt) cell borders and the smallest text (~14pt), centered in each cell: row 1 = 'Input' (blue #0000CC) | 'The' | 'man' | 'ate' | 'the' | 'really' | 'tasty' | 'sandwich' (black); row 2 = 'Output' (blue #0000CC) | 'DET' | 'NOUN' | 'VERB' | 'DET' | 'ADV' | 'ADJ' | 'NOUN' (black, bold all-caps).\n16. Do NOT draw the mouse cursor arrow seen near the '[4] Structured Prediction' line \u2014 it is a video-recording artifact, not slide content.",
+ "validation": {
+  "verdict": "PASS_WITH_FIXES",
+  "fixes_applied": [
+   "subtitle_or_header was null: no subtitle exists on the slide (the title is the only header), so it was set to an empty string rather than inventing one.",
+   "Added a 'background panel' region to layout.regions so every element named in layout.arrangement (light-gray panel with red outline on a white base) is covered; regions previously omitted it.",
+   "Corrected colors.background from #E8E8E8 to #FFFFFF (white slide base per layout.arrangement and original brief step 1) and moved #E8E8E8 to a new colors.content_panel entry.",
+   "Made colors.title_text explicitly two-tone: #CC3300 for 'Supervised Learning:' plus #0000CC underlined for 'Classification', matching layout.hierarchy and typography_notes.",
+   "Replaced vague descriptors with concrete values: 'rounded-ish' \u2192 rectangle with slightly rounded corners; 'thin' borders \u2192 ~1pt (table cell borders ~0.5-1pt #CCCCCC); 'most of the slide' \u2192 panel inset ~2-3% from slide edges; badge diameter ~5% of slide width; bullet count stated as exactly 8 lines and the table as exactly 2 rows x 8 columns.",
+   "Harmonized typography_notes with recreation_brief: added the italic styling of variables x/y (previously only in the brief) and replaced the vague 'small caps-like styling' with 'short capitalized POS-tag words in the smallest text'.",
+   "Rewrote recreation_brief as a 16-step ordered checklist placing one element per step with exact text, position, hex color, and shape; added an explicit step excluding the mouse cursor (video artifact) from recreation.",
+   "Added approximate font sizes (title ~28pt, body ~18pt, table ~14pt) for builder actionability; the source gives no point sizes, so these are flagged as approximations in uncertain_items."
+  ],
+  "uncertain_items": [
+   "Exact font point sizes are absent from the source; the ~28pt / ~18pt / ~14pt values in the brief are suggested approximations.",
+   "Panel corner radius: source says only 'rounded-ish'; specified as 'slightly rounded corners' \u2014 exact radius unverifiable.",
+   "Italicization of variables x and y appears only in the original recreation_brief, not in typography_notes; kept and harmonized, but not independently verifiable from the JSON.",
+   "Mouse cursor near the '[4] Structured Prediction' line is a video-recording overlay; its position is not slide content and it is excluded from recreation."
+  ],
+  "recreatability_score_1_to_10": 9
+ },
+ "_meta": {
+  "frame": "slide_014.jpg",
+  "model": "images",
+  "source_timestamps": {
+   "slide": 14,
+   "image": "slide_014.jpg",
+   "kept_frame": "frame_01230.jpg",
+   "start_sec": 1114.0,
+   "end_sec": 1229.0,
+   "frame_count": 116
+  },
+  "elapsed_s": 38.2,
+  "validated_by": "glm-5.3",
+  "validation_elapsed_s": 289.2
+ }
+}

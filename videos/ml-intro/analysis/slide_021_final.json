@@ -1,0 +1,108 @@
+{
+ "slide_title": "Other Paradigms: Semi-supervised Learning",
+ "subtitle_or_header": "No subtitle; the light gray (#E8E8E8) header band contains only the red title and the yellow '21' slide-number badge",
+ "verbatim_text": {
+  "bullets": [
+   "Supervised Learning requires labeled data (the more, the better!)",
+   "Problem 1: Labeling is expensive (usually done by humans)",
+   "Problem 2: Sometimes labels are really hard to get",
+   "How can we learn well even with small amounts of labeled data?",
+   "One answer: Semi-supervised Learning",
+   "Using small amount of labeled + plenty of (freely available) unlabeled data"
+  ],
+  "labels": [
+   "21 (slide number in yellow circle, top-right corner)"
+  ],
+  "equations": []
+ },
+ "layout": {
+  "arrangement": "Title in red at top-left of a gray header band; slide number '21' in a yellow circle at top-right; below the header, a large white content box with a thin red border containing six bullet points stacked vertically; the whole slide sits on a white background with a thin red outer frame",
+  "regions": [
+   {
+    "name": "header band",
+    "position": "top, full width, ~0-15% height",
+    "content": "Red bold title text 'Other Paradigms: Semi-supervised Learning' on light gray background; yellow circle with '21' at far right"
+   },
+   {
+    "name": "content box",
+    "position": "middle, ~15-95% height, centered with margins",
+    "content": "White box with thin red border containing six black bullet points; last bullet is blue and underlined (hyperlink style)"
+   },
+   {
+    "name": "outer frame",
+    "position": "entire slide edge",
+    "content": "Thin red rectangular border framing the whole slide"
+   }
+  ],
+  "hierarchy": "Red bold title dominates at top; black body bullets are medium weight; 'Problem 1:' and 'Problem 2:' lead-ins are bolded; final bullet in blue underline draws attention as the key takeaway"
+ },
+ "visual_elements": [
+  {
+   "type": "highlight-box",
+   "description": "Large white rectangular content area with thin red/maroon border containing all six bullet texts",
+   "colors": [
+    "#FFFFFF",
+    "#B22222"
+   ],
+   "position": "center, spanning ~15-95% of slide height, centered horizontally with left/right/bottom margins (matches the content box region)"
+  },
+  {
+   "type": "icon",
+   "description": "Small yellow circle containing black number '21' (slide number badge)",
+   "colors": [
+    "#F5E96B",
+    "#000000"
+   ],
+   "position": "top-right corner of header band"
+  }
+ ],
+ "imagery": [],
+ "colors": {
+  "background": "#FFFFFF",
+  "title_text": "#CC0000",
+  "body_text": "#000000",
+  "accents": [
+   "#B22222",
+   "#0000CC",
+   "#F5E96B",
+   "#E8E8E8"
+  ]
+ },
+ "typography_notes": "Sans-serif throughout; title is large, bold, red; body bullets are black, medium size, with round bullet markers; 'Problem 1:' and 'Problem 2:' prefixes are bold; last bullet is blue and underlined like a hyperlink; no italics or numbering",
+ "animation_state": "All six bullets appear fully revealed; no mid-build state apparent",
+ "recreation_brief": "1. Set the slide background to solid white (#FFFFFF). 2. Draw the outer frame: a thin red (#B22222) rectangle outline running along the entire slide edge. 3. Add the header band: a light gray (#E8E8E8) rectangle spanning the full slide width across the top ~0-15% of slide height. 4. Place the title at the top-left of the header band: large, bold, red (#CC0000) sans-serif text reading 'Other Paradigms: Semi-supervised Learning'. 5. Place the slide-number badge at the top-right of the header band: a small yellow (#F5E96B) circle containing the black (#000000) number '21'. 6. Draw the content box: a white (#FFFFFF) rectangle with a thin red (#B22222) border, spanning ~15-95% of slide height below the header band, centered horizontally with margins on the left, right, and bottom; it will hold six bullets stacked vertically. 7. Inside the content box, place bullet 1 at the top: a round bullet marker followed by medium-size black (#000000) sans-serif text 'Supervised Learning requires labeled data (the more, the better!)'. 8. Directly below, place bullet 2: round marker + black (#000000) text 'Problem 1: Labeling is expensive (usually done by humans)', with the prefix 'Problem 1:' in bold. 9. Directly below, place bullet 3: round marker + black (#000000) text 'Problem 2: Sometimes labels are really hard to get', with the prefix 'Problem 2:' in bold. 10. Directly below, place bullet 4: round marker + black (#000000) text 'How can we learn well even with small amounts of labeled data?'. 11. Directly below, place bullet 5: round marker + black (#000000) text 'One answer: Semi-supervised Learning'. 12. At the bottom of the stack, place bullet 6: round marker + blue (#0000CC) underlined hyperlink-style text 'Using small amount of labeled + plenty of (freely available) unlabeled data', which wraps to two lines at the given box width. 13. Final state: all six bullets fully visible simultaneously (no build animation), no italics, no bullet numbering.",
+ "validation": {
+  "verdict": "PASS_WITH_FIXES",
+  "fixes_applied": [
+   "Filled the null subtitle_or_header field with a reconstruction from layout.regions: no subtitle exists; the gray header band contains only the red title and the yellow '21' badge.",
+   "Replaced the vague position 'occupying most of slide below header' in visual_elements[0] with exact bounds from layout.regions: '~15-95% of slide height, centered horizontally with margins'.",
+   "Replaced the vague phrase 'filling most of the remaining slide' in recreation_brief with the exact content-box bounds (~15-95% height, centered with left/right/bottom margins).",
+   "Changed 'containing all bullet text' to 'containing all six bullet texts' in visual_elements[0].description for an exact count.",
+   "Restructured recreation_brief from 7 steps (all six bullets lumped into one step) into a 13-step ordered checklist placing exactly one element per step, each with exact text, position, and hex color.",
+   "Verified all six bullet strings in recreation_brief match verbatim_text.bullets character-for-character; no invented or contradictory text.",
+   "Verified layout.regions cover every element: title and '21' badge -> header band; six bullets and highlight-box -> content box; red border -> outer frame; no orphan elements.",
+   "Confirmed exact counts throughout: six bullets, two visual elements, three layout regions, one label ('21'); no vague quantifiers remain."
+  ],
+  "uncertain_items": [
+   "Exact font family and point sizes are not specified in the source (only 'sans-serif', 'large' title, 'medium' body); the builder must approximate proportions.",
+   "The final bullet 'wrapping to two lines' is asserted only in the original recreation_brief; it is a rendering outcome of box width and font size, not an independently measured value.",
+   "Content-box margin widths are not quantified (only 'centered with margins'); exact inset distances must be approximated."
+  ],
+  "recreatability_score_1_to_10": 8
+ },
+ "_meta": {
+  "frame": "slide_021.jpg",
+  "model": "images",
+  "source_timestamps": {
+   "slide": 21,
+   "image": "slide_021.jpg",
+   "kept_frame": "frame_02123.jpg",
+   "start_sec": 2058.0,
+   "end_sec": 2122.0,
+   "frame_count": 65
+  },
+  "elapsed_s": 36.7,
+  "validated_by": "glm-5.3",
+  "validation_elapsed_s": 377.9
+ }
+}

@@ -1,0 +1,140 @@
+{
+  "slide_title": "K -NN: Some other distance measures",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Binary-valued features",
+      "- Use Hamming distance:",
+      "- Hamming distance counts the number of features where the two examples disagree",
+      "Mixed feature types (some real-valued and some binary-valued)?",
+      "- Can use mixed distance measures",
+      "- E.g., Euclidean for the real part, Hamming for the binary part",
+      "Can also assign weights to features:"
+    ],
+    "labels": [
+      "55",
+      "CS 2710 Foundations of AI [?]"
+    ],
+    "equations": [
+      "d(x_i, x_j) = \\sum_{m=1}^{D} \\mathbb{I}(x_{im} \\neq x_{jm})",
+      "d(x_i, x_j) = \\sum_{m=1}^{D} w_m d(x_{im}, x_{jm})"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top in dark red bold text. Below, a large rounded-corner content box with a thin dark-red border contains three bullet groups on the left and two equation boxes on the right. A small yellow circle with the slide number '55' sits at the top-right corner, overlapping the outer frame. A faint footer strip at bottom-left contains course attribution text.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top center, ~5-20% height, full width",
+        "content": "Slide title in bold dark red"
+      },
+      {
+        "name": "slide number badge",
+        "position": "top-right corner, overlapping frame",
+        "content": "Yellow circle with dark border containing '55'"
+      },
+      {
+        "name": "content box",
+        "position": "middle, ~25-95% height, ~5-95% width",
+        "content": "Rounded rectangle with dark red border containing bullets and equations"
+      },
+      {
+        "name": "left bullet column",
+        "position": "left ~60% of content box",
+        "content": "Three bullet groups with sub-bullets"
+      },
+      {
+        "name": "equation box 1",
+        "position": "right side, upper area of content box (~30-40% height)",
+        "content": "Hamming distance formula in pale yellow box with dark border"
+      },
+      {
+        "name": "equation box 2",
+        "position": "right side, lower area of content box (~80-92% height)",
+        "content": "Weighted distance formula in pale yellow box with dark border"
+      },
+      {
+        "name": "footer",
+        "position": "bottom-left, very small",
+        "content": "Faint gray course attribution text"
+      }
+    ],
+    "hierarchy": "Title dominates in large bold dark red. First-level bullet keywords ('Binary-valued features', 'Mixed feature types') are bold dark red; remaining body text is black. Equations sit in highlighted pale-yellow boxes drawing attention. Highlighted words 'Euclidean' (yellow) and 'Hamming' (cyan) stand out within body text."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Pale yellow rectangle with thin dark border containing the Hamming distance equation: d(x_i, x_j) = sum from m=1 to D of I(x_im != x_jm)",
+      "colors": [
+        "#FFFFCC",
+        "#333333"
+      ],
+      "position": "right side, upper-middle of content box"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pale yellow rectangle with thin dark border containing the weighted distance equation: d(x_i, x_j) = sum from m=1 to D of w_m d(x_im, x_jm)",
+      "colors": [
+        "#FFFFCC",
+        "#333333"
+      ],
+      "position": "right side, lower portion of content box"
+    },
+    {
+      "type": "highlight-box",
+      "description": "The word 'Euclidean' highlighted with yellow background; the word 'Hamming' highlighted with cyan background, within the line 'E.g., Euclidean for the real part, Hamming for the binary part'",
+      "colors": [
+        "#FFFF00",
+        "#00FFFF"
+      ],
+      "position": "middle-left of content box"
+    },
+    {
+      "type": "icon",
+      "description": "Small yellow circle with dark outline containing black number '55' (slide number badge)",
+      "colors": [
+        "#FFFF99",
+        "#333333"
+      ],
+      "position": "top-right corner of slide, overlapping outer frame"
+    },
+    {
+      "type": "other",
+      "description": "Outer thin dark-red rectangular frame around entire slide; inner rounded-corner dark-red border around content area",
+      "colors": [
+        "#8B0000"
+      ],
+      "position": "slide perimeter and content box border"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#8B0000",
+    "body_text": "#000000",
+    "accents": [
+      "#8B0000",
+      "#FFFFCC",
+      "#FFFF00",
+      "#00FFFF",
+      "#0000CC"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title is large, bold, dark red. First-level bullet lead-ins ('Binary-valued features', 'Mixed feature types') are bold dark red; sub-bullets use en-dash markers in regular black text. 'Hamming' in 'Use Hamming distance:' is underlined. 'assign weights to features' is blue and underlined (hyperlink style). Equations use italic serif math font. Slide number in small black text inside yellow circle.",
+  "animation_state": "No mid-build indicators; all bullets and both equations appear fully revealed.",
+  "recreation_brief": "1. White background slide. 2. Draw a thin dark-red (#8B0000) rectangular frame around the full slide perimeter. 3. Add title 'K -NN: Some other distance measures' centered near top, bold, dark red (#8B0000), large sans-serif. 4. Top-right: small yellow (#FFFF99) circle with dark outline containing '55' in black. 5. Draw a large rounded-corner rectangle with thin dark-red border occupying roughly the middle 70% of the slide. 6. Inside, left column: bullet 'Binary-valued features' (bold dark red); sub-bullet '- Use Hamming distance:' with 'Hamming' underlined; sub-bullet '- Hamming distance counts the number of features where the two examples disagree'. 7. Next bullet: 'Mixed feature types' (bold dark red) followed by ' (some real-valued and some binary-valued)?' in black; sub-bullets '- Can use mixed distance measures' and '- E.g., Euclidean for the real part, Hamming for the binary part' with 'Euclidean' highlighted yellow (#FFFF00) and 'Hamming' highlighted cyan (#00FFFF). 8. Next bullet: 'Can also assign weights to features:' with 'assign weights to features' in blue (#0000CC) underlined. 9. Right side upper: pale yellow (#FFFFCC) box with thin dark border containing equation d(x_i, x_j) = sum_{m=1}^{D} I(x_im != x_jm). 10. Right side lower: pale yellow box with thin dark border containing d(x_i, x_j) = sum_{m=1}^{D} w_m d(x_im, x_jm). 11. Bottom-left: small faint gray footer text with course attribution.",
+  "_meta": {
+    "frame": "slide_055.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 55,
+      "image": "slide_055.jpg",
+      "kept_frame": "frame_05083.jpg",
+      "old_slide": 87,
+      "start_sec": 4814.0,
+      "end_sec": 5082.0,
+      "frame_count": 269
+    },
+    "elapsed_s": 49.1
+  }
+}

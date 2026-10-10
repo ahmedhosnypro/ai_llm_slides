@@ -1,15 +1,25 @@
 # secrets & keys
 .analyze-image-key
+yt-cookies.txt
 
-# large generated artifacts
-frames/
-unique_slides/
-analysis/
+# raster media (founder: no png/jpg in the repo)
+*.png
+*.jpg
+*.jpeg
+*.gif
 
-# downloaded media
+# video files / extraction frames
 *.mp4
 *.webm
 *.mkv
+*.avi
+frames/
 
-# cookies
-yt-cookies.txt
+# environments & caches
+.venv/
+venv/
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+.zcode/

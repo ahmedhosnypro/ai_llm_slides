@@ -1,0 +1,169 @@
+{
+  "slide_title": "K-NN: Some other distance measures",
+  "subtitle_or_header": "None \u2014 no subtitle or section header is present; the slide title is the sole header text.",
+  "verbatim_text": {
+    "bullets": [
+      "Binary-valued features",
+      "- Use Hamming distance:",
+      "- Hamming distance counts the number of features where the two examples disagree",
+      "Mixed feature types (some real-valued and some binary-valued)?",
+      "- Can use mixed distance measures",
+      "- E.g., Euclidean for the real part, Hamming for the binary part",
+      "Can also assign weights to features:"
+    ],
+    "labels": [
+      "55",
+      "CS 2710 Foundations of AI [?]"
+    ],
+    "equations": [
+      "d(x_i, x_j) = \\sum_{m=1}^{D} \\mathbb{I}(x_{im} \\neq x_{jm})",
+      "d(x_i, x_j) = \\sum_{m=1}^{D} w_m d(x_{im}, x_{jm})"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top in dark red bold text. Below, a large rounded-corner content box with a thin dark-red border contains three bullet groups on the left and two equation boxes on the right. A small yellow circle with the slide number '55' sits at the top-right corner, overlapping the outer frame. A faint footer strip at bottom-left contains course attribution text.",
+    "regions": [
+      {
+        "name": "outer frame",
+        "position": "full slide perimeter, thin border line",
+        "content": "Thin dark-red (#8B0000) rectangular frame around the entire slide"
+      },
+      {
+        "name": "title",
+        "position": "top center, ~5-20% height, full width",
+        "content": "Slide title in bold dark red"
+      },
+      {
+        "name": "slide number badge",
+        "position": "top-right corner, overlapping frame",
+        "content": "Yellow circle with dark border containing '55'"
+      },
+      {
+        "name": "content box",
+        "position": "middle, ~25-95% height, ~5-95% width",
+        "content": "Rounded rectangle with dark red border containing bullets and equations"
+      },
+      {
+        "name": "left bullet column",
+        "position": "left ~60% of content box",
+        "content": "Three bullet groups with sub-bullets; contains yellow-highlighted 'Euclidean' and cyan-highlighted 'Hamming' in the mixed-measures sub-bullet"
+      },
+      {
+        "name": "equation box 1",
+        "position": "right side, upper area of content box (~30-40% height)",
+        "content": "Hamming distance formula in pale yellow box with dark border"
+      },
+      {
+        "name": "equation box 2",
+        "position": "right side, lower area of content box (~80-92% height)",
+        "content": "Weighted distance formula in pale yellow box with dark border"
+      },
+      {
+        "name": "footer",
+        "position": "bottom-left, very small",
+        "content": "Faint gray course attribution text: 'CS 2710 Foundations of AI [?]'"
+      }
+    ],
+    "hierarchy": "Title dominates in large bold dark red. First-level bullet keywords ('Binary-valued features', 'Mixed feature types') are bold dark red; remaining body text is black. Equations sit in highlighted pale-yellow boxes drawing attention. Highlighted words 'Euclidean' (yellow) and 'Hamming' (cyan) stand out within body text."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Pale yellow rectangle with thin dark border containing the Hamming distance equation: d(x_i, x_j) = sum from m=1 to D of I(x_im != x_jm)",
+      "colors": [
+        "#FFFFCC",
+        "#333333"
+      ],
+      "position": "right side, upper-middle of content box"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pale yellow rectangle with thin dark border containing the weighted distance equation: d(x_i, x_j) = sum from m=1 to D of w_m d(x_im, x_jm)",
+      "colors": [
+        "#FFFFCC",
+        "#333333"
+      ],
+      "position": "right side, lower portion of content box"
+    },
+    {
+      "type": "highlight-box",
+      "description": "The word 'Euclidean' highlighted with yellow background; the word 'Hamming' highlighted with cyan background, within the line 'E.g., Euclidean for the real part, Hamming for the binary part'",
+      "colors": [
+        "#FFFF00",
+        "#00FFFF"
+      ],
+      "position": "middle-left of content box"
+    },
+    {
+      "type": "icon",
+      "description": "Small yellow circle with dark outline containing black number '55' (slide number badge)",
+      "colors": [
+        "#FFFF99",
+        "#333333"
+      ],
+      "position": "top-right corner of slide, overlapping outer frame"
+    },
+    {
+      "type": "other",
+      "description": "Outer thin dark-red rectangular frame around entire slide; inner rounded-corner dark-red border around content area",
+      "colors": [
+        "#8B0000"
+      ],
+      "position": "slide perimeter and content box border"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#8B0000",
+    "body_text": "#000000",
+    "accents": [
+      "#8B0000",
+      "#FFFFCC",
+      "#FFFF00",
+      "#00FFFF",
+      "#0000CC",
+      "#FFFF99",
+      "#333333"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title is large, bold, dark red. First-level bullet lead-ins ('Binary-valued features', 'Mixed feature types') are bold dark red; sub-bullets use en-dash markers in regular black text. 'Hamming' in 'Use Hamming distance:' is underlined. 'assign weights to features' is blue and underlined (hyperlink style). Equations use italic serif math font. Slide number in small black text inside yellow circle. Footer attribution text is very small and faint gray.",
+  "animation_state": "No mid-build indicators; all bullets and both equations appear fully revealed.",
+  "recreation_brief": "1. Set the slide background to white (#FFFFFF). 2. Draw a thin dark-red (#8B0000) rectangular frame around the full slide perimeter (straight corners, thin line weight). 3. Place the title 'K-NN: Some other distance measures' centered horizontally across the full width in the top band (~5-20% of slide height), in large bold sans-serif, dark red (#8B0000). 4. Top-right corner, overlapping the outer frame: draw a small yellow (#FFFF99) circle with a thin dark (#333333) outline containing the number '55' in small black text. 5. Draw the content box: a large rounded-corner rectangle with a thin dark-red (#8B0000) border spanning ~5-95% of slide width and ~25-95% of slide height, centered. 6. Inside the content box, left column (~60% of the box width), place first-level bullet 'Binary-valued features' in bold dark red (#8B0000). 7. Directly below it, sub-bullet '\u2013 Use Hamming distance:' in regular black text with the word 'Hamming' underlined (en-dash marker). 8. Below that, sub-bullet '\u2013 Hamming distance counts the number of features where the two examples disagree' in regular black text. 9. Next first-level bullet: 'Mixed feature types' in bold dark red (#8B0000), followed on the same line by '(some real-valued and some binary-valued)?' in regular black. 10. Sub-bullet '\u2013 Can use mixed distance measures' in regular black. 11. Sub-bullet '\u2013 E.g., Euclidean for the real part, Hamming for the binary part' in regular black, with 'Euclidean' given a yellow (#FFFF00) highlight and 'Hamming' a cyan (#00FFFF) highlight. 12. Next first-level bullet: 'Can also assign weights to features:' in regular black, with the phrase 'assign weights to features' in blue (#0000CC) and underlined. 13. Right side of the content box, upper area (~30-40% height): pale-yellow (#FFFFCC) rectangle with a thin dark (#333333) border containing the Hamming distance equation 'd(x_i, x_j) = \\sum_{m=1}^{D} \\mathbb{I}(x_{im} \\neq x_{jm})' set in italic serif math font. 14. Right side of the content box, lower area (~80-92% height): pale-yellow (#FFFFCC) rectangle with a thin dark (#333333) border containing the weighted distance equation 'd(x_i, x_j) = \\sum_{m=1}^{D} w_m d(x_{im}, x_{jm})' set in italic serif math font. 15. Bottom-left footer: very small faint gray (e.g., #999999) text 'CS 2710 Foundations of AI [?]'.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Normalized slide_title from 'K -NN: Some other distance measures' to 'K-NN: Some other distance measures' (stray space in 'K -NN' treated as an extraction artifact).",
+      "Filled subtitle_or_header (was null) with an explicit statement that no subtitle exists and the title is the sole header.",
+      "Added missing layout.regions entry 'outer frame' so the perimeter-frame element from visual_elements is covered by a named region.",
+      "Updated layout.regions footer content to name the verbatim label text 'CS 2710 Foundations of AI [?]' and left-bullet-column content to mention the yellow 'Euclidean' / cyan 'Hamming' word highlights.",
+      "Added #FFFF99 (slide-number badge fill) and #333333 (badge outline, equation-box borders) to colors.accents; they previously appeared only inside visual_elements.",
+      "Appended footer styling (very small, faint gray) to typography_notes, reconstructed from layout.regions.",
+      "Rewrote recreation_brief as a 15-step ordered checklist placing one element per step with exact text, position, and color; replaced the vague 'roughly the middle 70% of the slide' with the exact content-box coordinates (~5-95% width, ~25-95% height) from layout.regions.",
+      "Inserted the exact footer text 'CS 2710 Foundations of AI [?]' into recreation_brief step 15 (previously only 'course attribution') and specified en-dash sub-bullet markers and equation-box border color #333333 per typography_notes and visual_elements."
+    ],
+    "uncertain_items": [
+      "Footer attribution 'CS 2710 Foundations of AI' carries the source [?] marker; exact wording is unverifiable from the JSON.",
+      "Exact hex for the faint gray footer text is unspecified; #999999 is suggested in the recreation_brief as a light gray.",
+      "Exact font point sizes are not specified anywhere; only relative sizes are available (large bold title, small badge number, very small footer).",
+      "The title normalization 'K -NN' to 'K-NN' assumes a spacing artifact in extraction; revert to the literal 'K -NN' if verbatim fidelity is required."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_055.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 55,
+      "image": "slide_055.jpg",
+      "kept_frame": "frame_05083.jpg",
+      "old_slide": 87,
+      "start_sec": 4814.0,
+      "end_sec": 5082.0,
+      "frame_count": 269
+    },
+    "elapsed_s": 49.1,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 573.2
+  }
+}
