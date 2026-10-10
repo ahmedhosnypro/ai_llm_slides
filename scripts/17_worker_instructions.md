@@ -12,6 +12,18 @@ the video; currently `ml-intro`). Your paths are therefore
 `videos/<VIDEO>/recreated_pptx/` (build + qa + pptx). Run progress-DB commands with
 `VIDEO=<VIDEO>` set, e.g. `VIDEO=ml-intro python3 scripts/15_progress.py set N field value`.
 
+## HARD STOP: human review of unique frames (founder directive 2026-10-10 — non-negotiable)
+
+For EVERY new video, after frame extraction + phash dedup produce
+`videos/<VIDEO>/unique_slides/`, the pipeline HARD-STOPS: a HUMAN must review the
+extracted unique frames and approve the set before ANY downstream processing begins —
+no script-12 analysis, no script-13 validation, no DB registration as ready, no build
+or subagent dispatch on those frames. The machine may prepare a review packet (index,
+contact sheet, new2old mapping draft) but must NEVER approve the set itself. Curation
+(duplicates, non-valid frames, numbering/badges) is human-owned. If you are dispatched
+for extraction, deliver the packet, report that the pipeline is stopped at the human
+review gate, and stop.
+
 ## Authoritative content spec
 
 `videos/<VIDEO>/analysis/slide_NNN_final.json` — contains `slide_title`, `verbatim_text`, `layout`,

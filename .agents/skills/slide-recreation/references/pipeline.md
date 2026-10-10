@@ -15,6 +15,23 @@ anonymous downloads from datacenter/rate-limited IPs are blocked.
   fully-built state; the first frame is a partial slide.
 - Local CPU, deterministic, idempotent — safe to re-run over the whole frame set.
 
+## HARD STOP — human review gate (founder directive 2026-10-10, non-negotiable)
+
+After `11_unique_slides.py` writes `<video>/unique_slides/`, **STOP THE PIPELINE**.
+No vision analysis (script 12), no text validation (script 13), no DB registration as
+ready, no build dispatch, no subagent fan-out on these frames — NOTHING downstream may
+start until a HUMAN has reviewed the extracted unique frames and approved the set.
+
+Why: curation is human-owned. The ml-intro founder review culled duplicates, non-valid
+frames ("Processing..." placeholders, number mismatches) and renumbered 104 → 64 by the
+printed badge — decisions the machine must never make for itself or mark approved.
+
+What the machine MAY do while stopped: prepare the review packet only (slides_index.json,
+a contact-sheet montage for the human, the new2old mapping draft) and register rows in
+the progress DB with analysis_status=pending. What it may NEVER do: proceed to script 12
+or anything downstream, or set any "approved/ready" marker itself. Resume only on
+explicit human approval of the frame set.
+
 ## Vision analysis (per unique slide)
 
 `python3 scripts/12_analyze_slides.py <unique_slides_dir> <analysis_dir> --slides N

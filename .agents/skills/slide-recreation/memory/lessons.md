@@ -759,3 +759,15 @@ Bézier paren sidecars are byte-identical between colors, so swapping black PNGs
 for B3B3B3 ones kept every anchor/extent (render diff confined to the 4 strokes)
 and the fix closed in one build-judge cycle (judge attempt 6 PASS, att9 C2 crop
 explicitly confirmed the gray parens; selfcheck_attempt_9 465 PASS/0 FAIL).
+
+## 2026-10-10 — HARD STOP after unique-frame extraction: human review is a pipeline gate, not a suggestion
+Context: founder directive (non-negotiable) — on every new video, after
+`11_unique_slides.py` produces `unique_slides/`, the pipeline MUST stop and a HUMAN must
+review the extracted unique frames before anything downstream runs (analysis,
+validation, builds, subagent dispatch).
+Why: curation is human-owned — on ml-intro the founder's manual review culled duplicate
+and non-valid frames (Processing placeholders, number mismatches) and renumbered 104→64
+by the printed badge. A machine-curated set poisons everything downstream.
+Rule: after dedup, prepare the review packet (index, contact sheet, mapping draft) and
+STOP. Never run script 12+ or set approved/ready markers without explicit human approval
+of the frame set. Wire this into every new video's plan BEFORE extraction starts.

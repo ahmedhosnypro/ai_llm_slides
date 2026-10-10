@@ -50,6 +50,14 @@ video ──fps 1──▶ frames ──phash dedup──▶ unique_slides ─�
 
 Non-negotiable laws (each is expanded in its reference file):
 
+- **HARD STOP after unique-frame extraction: a HUMAN must review the extracted unique
+  frames before ANY later processing.** After `11_unique_slides.py` produces
+  `unique_slides/`, STOP — no analysis (script 12), no validation, no builds, no
+  subagent dispatch on those frames until the founder (or the human reviewer) has
+  reviewed and approved the set. This is non-negotiable (founder directive
+  2026-10-10): curation decisions (duplicate/non-valid frames, numbering, badges) are
+  human-owned. The machine may prepare a review packet (contact sheet, index,
+  new2old mapping) but must never mark the set approved itself.
 - **A slide is done ONLY with a real comparison-transcript PASS from the vision model.**
   Timeouts, empty streams, and programmatic checks count as FAIL. A "looks fine" from
   yourself or a peer is not a verdict.

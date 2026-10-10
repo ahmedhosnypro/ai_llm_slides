@@ -8,6 +8,15 @@ text model, and saves PowerPoint-recreation-ready JSON. The outputs feed a later
 "generate PowerPoint slides with AI" step — **fidelity of content and visualization
 description is the whole point**.
 
+## HARD STOP: human review of unique frames (founder directive 2026-10-10 — non-negotiable)
+
+For EVERY video: after frame extraction + phash dedup produce `videos/<VIDEO>/unique_slides/`,
+the pipeline HARD-STOPS. A human must review the extracted unique frames and approve the
+set before ANY downstream processing (script 12 analysis, script 13 validation, DB
+registration as ready, build dispatch, subagent fan-out). The machine may prepare a
+review packet (index, contact sheet, new2old mapping draft) but must never approve the
+set itself. Curation (duplicates, non-valid frames, numbering/badges) is human-owned.
+
 ## Multi-video layout (founder directive 2026-10-09)
 
 The project processes **several videos in parallel**. Every video owns a namespace under
