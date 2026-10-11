@@ -1,0 +1,186 @@
+{
+  "slide_title": "Multi Head Self Attention Block",
+  "subtitle_or_header": "No separate subtitle on the slide. Header roles are filled by the navy diagram banner 'Multi Head Self Attention Block' (identical to the title) and the three info-panel section headers 'Input:', 'Output:', 'Remember:'.",
+  "verbatim_text": {
+    "bullets": [
+      "Word Embedding + Positional Information   [First Transformer Block]",
+      "Output of Previous Transformer Block      [Stacked Transformer Blocks]",
+      "Encoded Vectors of Input Sequence   [With Same Input Vectors Dimension]",
+      "Different Input Sequences should be of Same Length  (Fixed Length Sequences)",
+      "[Apply  Pad or Cut]",
+      "Output Sequence is of same Length as Input Sequence"
+    ],
+    "labels": [
+      "Input:",
+      "Output:",
+      "Remember:",
+      "Output of Self Attention",
+      "Input to Self Attention",
+      "Multi Head Self Attention Block",
+      "Word  Embedding  +  Positional  Information",
+      "36",
+      "Y_1",
+      "Y_2",
+      "Y_3",
+      "Y_4",
+      "Y_5 [?]",
+      "Y_6 [?]",
+      "Y_{N/2} [?]",
+      "Y_{N+1} [?]",
+      "X_1",
+      "X_2",
+      "X_3",
+      "X_4",
+      "X_5 [?]",
+      "X_6 [?]",
+      "X_{N/2} [?]",
+      "X_{N+1} [?]"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "White slide enclosed by a thin red rectangular frame. Title centered at top. Yellow circular slide-number badge at top-right. Below the title, a full-width cream info panel with a blue border containing three stacked labeled sections (Input: / Output: / Remember:). The bottom third of the slide (y ~64-95%) is a red-bordered white diagram panel: a left gutter holds two red labels; a top row of 8 small token boxes (Y's) with 5 blue ellipsis dots runs above a large navy banner reading 'Multi Head Self Attention Block'; a bottom row of 8 token boxes (X's) with 5 green ellipsis dots runs below the banner; 16 blue up-arrows connect X row -> banner -> Y row (8 rising from the X row into the banner's bottom edge, 8 rising from the banner's top edge into the Y row); a yellow-highlighted caption sits centered at the panel's bottom. A thin black strip at the very bottom edge is a video-player artifact.",
+    "regions": [
+      {
+        "name": "Red frame",
+        "position": "full slide, inset ~4% from all edges (x ~4-96%, y ~4-96%)",
+        "content": "Thin (~2px) #CC0000 rectangular outline, no fill, enclosing all slide content"
+      },
+      {
+        "name": "Title",
+        "position": "top center, ~y 6-14%, x 20-80%",
+        "content": "Red bold title 'Multi Head Self Attention Block'"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, ~x 89-95%, y 9-16%",
+        "content": "Yellow circle with red number '36'"
+      },
+      {
+        "name": "Info panel",
+        "position": "upper-middle, x ~10-90%, y ~20-62%",
+        "content": "Cream rectangle, blue border, three sections: Input: (2 lines), Output: (1 line), Remember: (3 lines), all blue text"
+      },
+      {
+        "name": "Diagram panel",
+        "position": "bottom, x ~7-93%, y ~64-95%",
+        "content": "Red-bordered white panel: Y token row + blue dots on top, navy banner in middle, X token row + green dots below, 16 blue up-arrows, yellow-highlighted caption at bottom center"
+      },
+      {
+        "name": "Left gutter labels",
+        "position": "left edge of diagram panel, x ~7-17%; upper label vertically centered on the Y token row (~y 66-70%); lower label vertically centered on the X token row (~y 86-90%)",
+        "content": "'Output of Self Attention' (wrapped as 'Output of Self' / 'Attention') and 'Input to Self Attention' (wrapped as 'Input to Self' / 'Attention'), red bold"
+      },
+      {
+        "name": "Video-player bar",
+        "position": "very bottom, full width, y ~96-100%",
+        "content": "Thin black strip; recording artifact, not slide content"
+      }
+    ],
+    "hierarchy": "1) Red title (largest text). 2) Navy banner (largest single color mass, white bold text). 3) Cream info panel (medium blue text block). 4) Red token labels and red gutter labels (small bold). 5) Yellow-highlighted caption (small bold)."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Info panel: light-cream rectangle with thin dark-blue border. Three stacked sections, each with a bold blue header at the left margin ('Input:', 'Output:', 'Remember:') and indented blue body lines; bracketed annotations sit on the same lines as body text, roughly column-aligned to the right of the body text.",
+      "colors": [
+        "#FFFFE6",
+        "#0000CC"
+      ],
+      "position": "upper-middle, spanning ~80% of slide width"
+    },
+    {
+      "type": "flowchart",
+      "description": "Data-flow diagram of the attention block: (a) central navy rectangle with white bold text 'Multi Head Self Attention Block'; (b) top row of 8 small token boxes labeled Y_1, Y_2, Y_3, Y_4, Y_5 [?], Y_6 [?], Y_{N/2} [?], Y_{N+1} [?], with 5 blue ellipsis dots between the 6th and 7th boxes; (c) bottom row of 8 small token boxes labeled X_1, X_2, X_3, X_4, X_5 [?], X_6 [?], X_{N/2} [?], X_{N+1} [?], with 5 green ellipsis dots between the 6th and 7th boxes; (d) 8 blue block arrows pointing UP from the X boxes into the banner's bottom edge, and 8 blue block arrows pointing UP from the banner's top edge into the Y boxes (flow: X inputs up through block to Y outputs); (e) each token box is a small rectangle with a light-yellow upper cell and a pink lower cell, with a red bold subscripted label at its top; (f) yellow-highlighted caption 'Word  Embedding  +  Positional  Information' centered beneath the X row.",
+      "colors": [
+        "#000080",
+        "#FFFFFF",
+        "#0000FF",
+        "#FFFF99",
+        "#FF99CC",
+        "#CC0000",
+        "#0000CC",
+        "#00B050",
+        "#FFFF00",
+        "#990000"
+      ],
+      "position": "bottom panel of the slide"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: yellow filled circle containing the red bold number '36'.",
+      "colors": [
+        "#FFFF00",
+        "#CC0000"
+      ],
+      "position": "top-right corner, inside the red frame"
+    },
+    {
+      "type": "other",
+      "description": "Thin red rectangular outline framing the entire slide content (approx. 2px red stroke, no fill).",
+      "colors": [
+        "#CC0000"
+      ],
+      "position": "inset ~4% from all slide edges"
+    }
+  ],
+  "imagery": [
+    "No photos or illustrations. Only a white mouse-arrow cursor with black outline hovering over the info panel near the 'Remember:' section (~x 67%, y 49%) \u2014 a screen-recording artifact, not slide content."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#CC0000",
+    "body_text": "#0000CC",
+    "accents": [
+      "#000080",
+      "#FFFFE6",
+      "#FFFF00",
+      "#FF99CC",
+      "#FFFF99",
+      "#00B050",
+      "#CC0000",
+      "#0000FF",
+      "#0000CC",
+      "#990000"
+    ]
+  },
+  "typography_notes": "All sans-serif (Arial-like). Title: bold, ~30pt, red, centered, title case. Section headers 'Input:', 'Output:', 'Remember:': bold blue, roughly same size as body (~16-18pt). Body text: blue, regular weight. Diagram banner: white bold ~18pt on navy. Token labels (X_i, Y_i): red bold ~12pt with true subscripts. Gutter labels: red bold, wrapped onto two lines each. Yellow caption: bold, dark red/maroon [?] text on yellow highlight. Slide number: red bold in yellow circle.",
+  "animation_state": "Slide appears fully built (no mid-build bullet reveal). A mouse cursor is visible over the info panel \u2014 screen-recording artifact, not an animation state.",
+  "recreation_brief": "1. Canvas: 16:9 slide (13.33in x 7.5in), solid #FFFFFF background. 2. Outer frame: no-fill rectangle with 2pt #CC0000 stroke, inset ~4% from all four edges (x 4-96%, y 4-96%). 3. Title: text box spanning x 20-80%, y 6-14%, text 'Multi Head Self Attention Block', Arial Bold ~30pt, #CC0000, centered, title case. 4. Slide-number badge: 0.45in-diameter circle centered at x 92%, y 12.5%; fill #FFFF00, thin red outline; centered text '36', Arial Bold ~14pt, #CC0000. 5. Info panel shape: rectangle x 10-90%, y 20-62%; fill #FFFFE6, 2pt #0000CC border. 6. Info panel text: one left-aligned text block inside the panel, Arial ~16pt, #0000CC, containing in order: bold header 'Input:'; indented 'Word Embedding + Positional Information   [First Transformer Block]'; indented 'Output of Previous Transformer Block      [Stacked Transformer Blocks]'; blank line; bold header 'Output:'; indented 'Encoded Vectors of Input Sequence   [With Same Input Vectors Dimension]'; blank line; bold header 'Remember:'; indented 'Different Input Sequences should be of Same Length  (Fixed Length Sequences)'; further-indented '[Apply  Pad or Cut]'; indented 'Output Sequence is of same Length as Input Sequence' \u2014 copy all six body lines character-for-character from verbatim_text.bullets, keeping each bracketed annotation on the same line as its body text, roughly right-column-aligned. 7. Diagram panel shape: rectangle x 7-93%, y 64-95%; white fill, 2pt #CC0000 border. 8. Navy banner: rectangle x 17-92%, y 74-82.5%; fill #000080, no border; centered text 'Multi Head Self Attention Block', Arial Bold ~18pt, #FFFFFF. 9. Y token row (outputs): 8 boxes, each 0.55in wide x 0.30in tall, evenly spaced across x 17-92% (~1.25in pitch), band y 65.5-69.5%; each box = two stacked cells (upper #FFFF99, lower #FF99CC) with a thin gray outline and a #CC0000 bold ~12pt label with true subscripts centered at the box's top; labels left to right: Y_1, Y_2, Y_3, Y_4, Y_5 [?], Y_6 [?], Y_{N/2} [?], Y_{N+1} [?] ([?] marks uncertain extraction \u2014 render the label without the marker). 10. X token row (inputs): identical 8-box construction in band y 87-91%; labels left to right: X_1, X_2, X_3, X_4, X_5 [?], X_6 [?], X_{N/2} [?], X_{N+1} [?]. 11. Ellipsis dots: 5 circles ~0.07in diameter, #0000CC, evenly spaced in the gap between the 6th and 7th Y boxes, vertically centered on the Y row; 5 circles #00B050, same size and spacing, between the 6th and 7th X boxes, vertically centered on the X row. 12. Lower arrow set: 8 upward-pointing block arrows, #0000FF fill, ~0.25in wide x ~0.33in tall, band y 82.5-87%, each arrow's x-center aligned with one X box's x-center, pointing from the X row up into the banner's bottom edge. 13. Upper arrow set: 8 upward-pointing block arrows, #0000FF fill, same size, band y 69.5-74%, each aligned with one Y box's x-center, pointing from the banner's top edge up into the Y row. 14. Left gutter labels: #CC0000 bold ~12pt, left-aligned at x 7-17%, two lines each: 'Output of Self' / 'Attention' vertically centered on the Y row (band y 65.5-69.5%); 'Input to Self' / 'Attention' vertically centered on the X row (band y 87-91%). 15. Caption: centered text box at x 30-70%, y 91.5-94.5%: 'Word  Embedding  +  Positional  Information' (preserve the double spaces), Arial Bold ~12pt, #990000 (uncertain \u2014 dark red/maroon [?]), with a #FFFF00 text highlight. 16. Omit recording artifacts: do not draw the thin black bottom strip (video-player bar, y 96-100%) or the mouse cursor.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Filled null subtitle_or_header with a reconstruction from existing fields: no separate subtitle exists; the navy banner 'Multi Head Self Attention Block' and the info-panel headers 'Input:', 'Output:', 'Remember:' serve as the slide's headers.",
+      "layout.arrangement: replaced the unquantified 'blue up-arrows' with the exact count 16 (8 rising from the X row into the banner's bottom edge, 8 rising from the banner's top edge into the Y row), matching layout.regions and visual_elements.",
+      "layout.regions: added the missing 'Red frame' region \u2014 the #CC0000 outer frame is described in visual_elements and arrangement but previously had no covering region.",
+      "layout.regions: re-aligned the left-gutter label bands with the token rows they annotate (upper 'Output of Self Attention' ~y 66-70% centered on the Y row; lower 'Input to Self Attention' ~y 86-90% centered on the X row); the previous lower band (~y 82-86%) fell inside the arrow band below the banner and contradicted the Input label's association with the X row.",
+      "colors.accents: added #990000 (yellow-caption text) and #0000CC (blue ellipsis dots) \u2014 both are used in visual_elements and the recreation brief but were missing from the palette.",
+      "recreation_brief: rewritten as a 16-step ordered checklist with exact y-bands (banner 74-82.5%, Y row 65.5-69.5%, upper arrows 69.5-74%, lower arrows 82.5-87%, X row 87-91%, caption 91.5-94.5%), arrow-to-box x-center alignment, vertical centering of the two 5-dot ellipsis groups, and a verbatim-copy instruction for the six info-panel body lines.",
+      "Propagated the [?] uncertainty markers for the 8 uncertain token labels (Y_5, Y_6, Y_{N/2}, Y_{N+1}, X_5, X_6, X_{N/2}, X_{N+1}) into the recreation brief, which previously listed them as confirmed, with an explicit instruction not to print the markers.",
+      "Verified cross-field consistency: 6 info-panel body lines (2 Input + 1 Output + 3 Remember) match the 6 bullets; 8 Y boxes + 5 blue dots, 8 X boxes + 5 green dots, 16 arrows, and all 24 labels are placed by the brief with no contradictions."
+    ],
+    "uncertain_items": [
+      "Y_5 [?], Y_6 [?], Y_{N/2} [?], Y_{N+1} [?] \u2014 the last four top-row token labels are uncertain; the indices 'N/2' and 'N+1' are atypical for a sequence diagram and should be verified against the source frame before final render.",
+      "X_5 [?], X_6 [?], X_{N/2} [?], X_{N+1} [?] \u2014 same uncertainty for the bottom-row token labels.",
+      "Color of the yellow-highlighted caption text is marked [?] (dark red/maroon) in typography_notes; #990000 is used as the best estimate in the brief.",
+      "Two single-sourced details appear only in the original recreation_brief and are not corroborated by visual_elements: the 'thin red outline' on the slide-number badge and the 'thin gray outline' on the token boxes \u2014 treat as low-confidence."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_036.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 36,
+      "image": "slide_036.jpg",
+      "kept_frame": "frame_02845.jpg",
+      "start_sec": 2777.0,
+      "end_sec": 2844.0,
+      "frame_count": 68,
+      "old_slide": 103
+    },
+    "elapsed_s": 328.5,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1030.3
+  }
+}

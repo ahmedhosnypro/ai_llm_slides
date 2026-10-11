@@ -1,0 +1,174 @@
+{
+  "slide_title": "Suggested Positional Encoders",
+  "subtitle_or_header": "(Use Word Index as Position Encoding)",
+  "verbatim_text": {
+    "bullets": [
+      "If N is large ( e.g. seq. Length = 1024 ) Large position Values will dominate when Combine Position Embedding to Word Embedding",
+      "If System is trained with Max seq length =256 how can the system deal with Larger sequence values",
+      "Position Encoding is scalar and Word embedding is vector (how to Combine them ?)"
+    ],
+    "labels": [
+      "22",
+      "Sequence of words with Length N",
+      "Position Embedding",
+      "Use Position Index",
+      "Word 0",
+      "Word 1",
+      "Word 2",
+      "Word 3",
+      "Word 4",
+      "Word 5",
+      "Word N-2",
+      "Word N-1",
+      "Pos 0",
+      "Pos 1",
+      "Pos 2",
+      "Pos 3",
+      "Pos 4",
+      "Pos 5",
+      "Pos N-2",
+      "Pos N-1",
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "N-2",
+      "N-1",
+      "+\u03b4",
+      "+\u03b4",
+      "+\u03b4",
+      "+\u03b4",
+      "+\u03b4",
+      "+\u03b4",
+      "Problems:",
+      "(Depends on Seq. Length)",
+      "Use \u03b4=1"
+    ],
+    "equations": [
+      "Use \u03b4=1",
+      "First position Encoding = 0",
+      "Last Position Encoding = N-1",
+      "+\u03b4 (added between each consecutive position index: 0\u21921, 1\u21922, 2\u21923, 3\u21924, 4\u21925, and N-2\u2192N-1)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Entire slide enclosed in a thin dark-red rectangular frame on white background. Title centered at top with slide-number badge '22' in a yellow circle at top-right. Below title, a large white diagram panel (thin blue border) containing three stacked horizontal rows, each with a left-side text label and a dashed rounded-rectangle container of small boxes spanning the width. Bottom third is a full-width light-cyan rounded rectangle with blue border containing a summary line, a red 'Problems:' heading, and three bullets.",
+    "regions": [
+      {
+        "name": "Title block",
+        "position": "top center, ~4-16% height, ~20-80% width",
+        "content": "Red bold title 'Suggested Positional Encoders' with blue subtitle '(Use Word Index as Position Encoding)' beneath it; 'Word Index' underlined; yellow circle badge '22' at top-right corner inside the red frame"
+      },
+      {
+        "name": "Row 1 - Sequence of words",
+        "position": "upper-middle, ~20-30% height, full width of diagram panel",
+        "content": "Left gray label 'Sequence of words with Length N' (3 lines); dashed dark-border rounded container with pale-yellow fill holding 8 red-bordered cream boxes: Word 0..Word 5, gray ellipsis dots, Word N-2, Word N-1"
+      },
+      {
+        "name": "Row 2 - Position Embedding",
+        "position": "middle, ~33-43% height, full width of diagram panel",
+        "content": "Left blue label 'Position Embedding' (2 lines); dashed blue-border rounded container with light-blue fill holding 8 blue-bordered white boxes: Pos 0..Pos 5, blue ellipsis dots, Pos N-2, Pos N-1"
+      },
+      {
+        "name": "Row 3 - Use Position Index",
+        "position": "lower-middle, ~48-62% height, full width of diagram panel",
+        "content": "Left red label 'Use Position Index' (2 lines); dashed red-border rounded container with light-pink fill holding 8 red-bordered cream boxes: 0,1,2,3,4,5, gap, N-2, N-1; orange right-pointing arrows between consecutive boxes each labeled '+\u03b4' below; a mouse cursor arrow overlaps the N-1 box (video artifact)"
+      },
+      {
+        "name": "Problems panel",
+        "position": "bottom, ~66-95% height, ~5-95% width",
+        "content": "Light-cyan rounded rectangle, blue border: line 'Use \u03b4=1  First position Encoding =0 , Last Position Encoding = N-1 (Depends on Seq. Length)', red bold 'Problems:' heading, three bullets"
+      }
+    ],
+    "hierarchy": "Red bold title dominates first, then the three diagram rows (equal visual weight, distinguished by color: yellow/blue/pink), then the cyan problems panel whose bold dark-blue phrases pop within smaller body text. Slide number badge is small but high-contrast (yellow)."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Three parallel horizontal sequences showing alignment between word tokens, learned position embeddings, and integer position indices. Row 1: dashed rounded container (pale yellow fill, dark dashed border) with 8 small rectangles labeled 'Word 0','Word 1','Word 2','Word 3','Word 4','Word 5', then 5-6 gray ellipsis dots, then 'Word N-2','Word N-1'; boxes have red borders, red italic text, cream fill. Row 2: dashed rounded container (light blue fill, blue dashed border) with 8 rectangles 'Pos 0','Pos 1','Pos 2','Pos 3','Pos 4','Pos 5', then 5-6 blue ellipsis dots, then 'Pos N-2','Pos N-1'; blue borders, blue italic text, white fill. Row 3: dashed rounded container (light pink fill, red dashed border) with 8 rectangles '0','1','2','3','4','5', a wide empty gap (no dots), 'N-2','N-1'; red borders, red italic text, cream fill. Six orange right-pointing arrows connect consecutive boxes (0\u21921, 1\u21922, 2\u21923, 3\u21924, 4\u21925, and N-2\u2192N-1), each annotated '+\u03b4' underneath in orange, indicating incremental position encoding.",
+      "colors": [
+        "#C00000",
+        "#FFFFCC",
+        "#FFFDE0",
+        "#333333",
+        "#0000CC",
+        "#CCE0FF",
+        "#FFFFFF",
+        "#FFB3B3",
+        "#FF8C00",
+        "#E36C09"
+      ],
+      "position": "middle of slide, ~20-62% height, spanning full panel width"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Rounded rectangle summary/problems panel with thin blue border and light-cyan fill. Contains one summary line and three bulleted problems (see verbatim bullets). Bold emphasis on: '\u03b4=1', '0', 'N-1', 'If N is large', 'Large position Values will dominate', 'how can the system deal with Larger sequence values', 'scalar', 'vector'. '(Depends on Seq. Length)' is underlined.",
+      "colors": [
+        "#D9F2F5",
+        "#0000CC",
+        "#C00000",
+        "#1A1A1A"
+      ],
+      "position": "bottom of slide, ~66-95% height"
+    },
+    {
+      "type": "other",
+      "description": "Slide number badge: yellow circle with thin dark outline containing the number '22' in dark text, positioned at top-right inside the red frame.",
+      "colors": [
+        "#FFFF00",
+        "#333333"
+      ],
+      "position": "top-right corner, ~90% width, ~8% height"
+    },
+    {
+      "type": "other",
+      "description": "Mouse cursor (white arrow with black outline) overlapping the 'N-1' box in Row 3 \u2014 a screen-recording artifact, not slide content.",
+      "colors": [
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "right side of Row 3, ~87% width, ~55% height"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; only schematic box-and-arrow diagrams, ellipsis dot rows (gray in Row 1, blue in Row 2), orange arrows, and a recorded mouse cursor near the N-1 box"
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#C00000",
+    "body_text": "#0000CC",
+    "accents": [
+      "#C00000",
+      "#0000CC",
+      "#FF8C00",
+      "#FFFFCC",
+      "#CCE0FF",
+      "#FFB3B3",
+      "#D9F2F5",
+      "#FFFF00",
+      "#808080"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout (Arial-like). Title: large, bold, red, centered. Subtitle: bold, blue, slightly smaller, with 'Word Index' underlined. Diagram box labels: italic, small, colored to match row theme (red for words/indices, blue for embeddings). Left row labels: small bold sans, gray/blue/red respectively. Bottom panel: medium blue text with selective bold for key terms; 'Problems:' in bold red; bullets are small round dots. Slide number in small dark text inside yellow circle.",
+  "animation_state": "Slide appears fully built (all three rows and all bullets visible). A mouse cursor rests over the 'N-1' box of Row 3, suggesting the presenter was pointing there \u2014 recording artifact, not a build state.",
+  "recreation_brief": "1. Set slide background white; add a thin dark-red (#C00000) rectangle border framing the entire slide. 2. Top center: add bold red (#C00000) ~32pt title 'Suggested Positional Encoders'; below it bold blue (#0000CC) ~22pt subtitle '(Use Word Index as Position Encoding)' with 'Word Index' underlined. 3. Top-right: yellow (#FFFF00) circle (~0.9cm) with dark outline and text '22'. 4. Add a large white rectangle with thin blue border from ~18% to ~64% height (diagram panel). 5. Row 1: left-aligned gray bold label 'Sequence of words with Length N' on three lines; to its right draw a dashed-border rounded rectangle with pale-yellow (#FFFDE0) fill; inside place 8 small rectangles (cream #FFFFCC fill, red #C00000 border, red italic text) labeled Word 0, Word 1, Word 2, Word 3, Word 4, Word 5, Word N-2, Word N-1; between Word 5 and Word N-2 place 5-6 small gray dots as ellipsis. 6. Row 2 (below, same structure): blue bold label 'Position Embedding' on two lines; dashed blue rounded container with light-blue (#CCE0FF) fill; 8 white boxes with blue (#0000CC) borders and blue italic text: Pos 0, Pos 1, Pos 2, Pos 3, Pos 4, Pos 5, Pos N-2, Pos N-1; 5-6 blue dots as ellipsis between Pos 5 and Pos N-2. 7. Row 3: red bold label 'Use Position Index' on two lines; dashed red rounded container with light-pink (#FFB3B3) fill; 8 cream boxes with red borders and red italic text: 0, 1, 2, 3, 4, 5, N-2, N-1 \u2014 leave a wide empty gap (no dots) between 5 and N-2. 8. Add six orange (#FF8C00) right-pointing block arrows between consecutive boxes (0\u21921, 1\u21922, 2\u21923, 3\u21924, 4\u21925, N-2\u2192N-1), each with orange '+\u03b4' text beneath. 9. Bottom: rounded rectangle (~5-95% width, ~66-95% height), light-cyan (#D9F2F5) fill, blue border. Inside, first line in blue: 'Use \u03b4=1' (\u03b4=1 bold) then 'First position Encoding =0 , Last Position Encoding = N-1 (Depends on Seq. Length)' with '0' and 'N-1' bold and '(Depends on Seq. Length)' underlined. 10. Add red bold 'Problems:' then three round-bulleted lines in blue ~14pt: (a) 'If N is large ( e.g. seq. Length = 1024 ) Large position Values will dominate when Combine Position Embedding to Word Embedding' with 'If N is large' and 'Large position Values will dominate' bold; (b) 'If System is trained with Max seq length =256 how can the system deal with Larger sequence values' with the trailing clause bold; (c) 'Position Encoding is scalar and Word embedding is vector (how to Combine them ?)' with 'scalar' and 'vector' bold. 11. Do not add the mouse cursor \u2014 it is a recording artifact.",
+  "_meta": {
+    "frame": "slide_022.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 22,
+      "image": "slide_022.jpg",
+      "kept_frame": "frame_01037.jpg",
+      "start_sec": 984.0,
+      "end_sec": 1232.0,
+      "frame_count": 249,
+      "old_slide": 45,
+      "founder_frame_swap": true,
+      "original_kept_frame": "frame_01233.jpg",
+      "note": "old group split with new slide 23; founder kept frame_01037.jpg (mid-group state) over the group's final kept frame"
+    },
+    "elapsed_s": 174.0
+  }
+}

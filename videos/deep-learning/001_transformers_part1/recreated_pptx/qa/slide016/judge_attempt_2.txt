@@ -1,0 +1,35 @@
+# Element-by-Element Fidelity Check â Slide 016 "Encoder â Decoder Transformer"
+
+## Pre-check per ground rules
+- IMG2 is a genuine content-bearing lecture frame (not a placeholder), so full content comparison applies. House chrome (red outer frame, #E8E8E8 bg, yellow "16" badge, title placement) is intentional and excluded from findings. No cursor artifacts in IMG2. No equations present on this slide, so rule (e) is not triggered.
+
+## Content comparison
+
+| Element | Original (IMG2) | Recreation (IMG1) | Status |
+|---|---|---|---|
+| Title "Encoder â Decoder Transformer", red bold, en-dash | â | â | Match |
+| Slide badge "16", yellow oval, top-right | â | â | Match |
+| "Decoder Block" green callout | â | â | Match |
+| "Encoder Block" pink/red callout | â | â | Match |
+| "N Cascaded Blocks / In Both Encoder and Decoder" tan callout, red "N" | â | â (N in red) | Match |
+| Yellow callout, 3 lines: "Encoder Decoder Attention" / "From **Last** Encoder Block" / "To **ALL** Decoder Cascaded Blocks", blue text with red "Last"/"ALL" | â | â verbatim, same line breaks, even line spacing | Match |
+| "Inputs to Encoder Block **(V,K,Q)** / All are from Previous Block" (cyan, red parens) | â | â verbatim, two lines, correct spacing/centering | Match |
+| "Inputs to Decoder Block **(V,K,Q)** / **(V,K)** from Attention, **(Q)** from Previous Block" | â | â verbatim | Match |
+| Grey connector lines from callouts to diagram | â (slightly curved) | â (straight) | Near match |
+| Encoder panel (peach) / Decoder panel (light green) with green outer border, italic red "Encoder" / italic green "Decoder" | â | â | Match |
+| Encoder stack: Add & Norm / Feed Forward / Add & Norm / Multi-Head Attention, bracket line, V K Q (blue/blue/red), Nx circle + entry arrow, Positional Encoding, Input Embedding, red "Inputs" arrow | â | â | Match |
+| Decoder stack: Output Probabilities + red arrow / Softmax / Linear / Add & Norm / Feed Forward / Add & Norm / Multi-Head Attention (dark olive box) / VâK with red dashed box / Add & Norm (green) / Masked Multi-Head Attention / V K Q / Output Embedding / "Outputs (shifted right)" | â | â order and labels match | Match |
+| Yellow dashed highlight + red dashed V/K box at encoder-decoder junction | â | â | Match |
+
+## Discrepancies
+
+1. **MINOR** â Encoder-side positional-encoding symbols: the recreation shows two circles (â and ~) on the encoder side; the original's encoder side appears to show a single circle (wave symbol), with the â/~ pair clearly on the decoder side only. Confidence: medium-low (low source resolution). Not a missing element â the region is populated; symbol count differs by one.
+2. **MINOR** â Connector lines from the left callouts to the diagram are straight in the recreation vs. subtly curved in the original. Confidence: high. Cosmetic only.
+3. **MINOR** â Left callout boxes have slightly different internal padding/height proportions than the original (recreation boxes are marginally taller relative to text). Confidence: medium. All text, colors, and alignment remain correct.
+
+No BLOCKER or MAJOR defects found: all text verbatim with matching line breaks, all diagram elements present in correct order, colors match (red title #C00000-family, tan/peach/green panels, blue/red K/Q circles), no frame containment violations (all callouts, diagram, labels, and the Nx circles sit inside the green panel and house frame), no clipping or collisions, vertical centering inside all boxes and circles is correct.
+
+## Visual-quality defects in recreation
+None beyond the minor items above; text is legible, nothing overflows or overlaps incorrectly.
+
+**FINAL VERDICT: PASS** for "faithful, usable recreation."

@@ -1,0 +1,184 @@
+{
+  "slide_title": "Using  FF NN  for Multiplication of Multiple Vectors by a Matrix",
+  "subtitle_or_header": "Example: Multiply Vectors of ALL Words by W\u2096 (Key) or W\u1d65 (Value)  { W\u2096, W\u1d65 is Squared Matrix}",
+  "verbatim_text": {
+    "bullets": [
+      "Design FF NN with the following Considerations:",
+      "Activation:  Linear",
+      "Bias:  Zeros",
+      "Inputs:  All Words Within Same Paragraph (X\u2081, X\u2082, X\u2083, X\u2084, X\u2085)"
+    ],
+    "labels": [
+      "14 \u2014 slide number, red bold text inside a yellow circle, top-right",
+      "X\u2083 \u2014 bold label in a small white box, top-left corner of the network diagram",
+      "X\u2084 [?]",
+      "X\u2082 [?]",
+      "X\u2081 [?] \u2014 cascading fanned labels beneath the boxed X\u2083 (a fanned 'deck' of vector cards; X\u2085 not visible/occluded)",
+      "x'\u2081, x'\u2082, x'\u2083, x'\u2084 \u2014 labels of the four small input circles in clusters 1, 2, 4 and 5 [?]",
+      "x\u2081, x\u2082, x\u2083, x\u2084 \u2014 labels of the four small input circles in cluster 3 (the X\u2083 cluster)",
+      "X\u2081 (pink input node)",
+      "X\u2082 (pink input node)",
+      "X\u2083 (pink input node)",
+      "X\u2084 (pink input node)",
+      "X\u2085 (pink input node)",
+      "W\u2081\u2081, W\u2082\u2081, W\u2083\u2081, W\u2084\u2081 \u2014 blue weight labels, top group",
+      "W\u2081\u2082, W\u2082\u2082, W\u2083\u2082, W\u2084\u2082 \u2014 blue weight labels, second group",
+      "W\u2081\u2083, W\u2082\u2083, W\u2083\u2083, W\u2084\u2083 \u2014 magenta weight labels, third group",
+      "W\u2081\u2084, W\u2082\u2084, W\u2083\u2084, W\u2084\u2084 \u2014 green weight labels, bottom group",
+      "\u03a3 \u2014 appears 3 times, one per summation neuron",
+      "y\u2081, y\u2082, y\u2083 \u2014 red bold output labels of the three \u03a3 neurons",
+      "Y\u2081, Y\u2082, Y\u2083, Y\u2084, Y\u2085 \u2014 bold row labels at the top-right corner of the five output-vector boxes (bottom diagram)",
+      "y\u2081, y\u2082, y\u2083, y\u2084 \u2014 the four element squares inside each of the five Y rows (repeated 5\u00d7)",
+      "= Linear \u2014 annotation to the right of the Y\u2083 row (red '=', blue 'Linear')",
+      "X\u2081, X\u2082, X\u2083, X\u2084, X\u2085 \u2014 bold labels of the five input-vector boxes (bottom diagram)",
+      "x\u2081, x\u2082, x\u2083, x\u2084 \u2014 the four element circles inside each of the five X vectors (repeated 5\u00d7)",
+      "W\u2081\u2081 W\u2082\u2081 W\u2083\u2081 W\u2084\u2081 \u2014 matrix row 1",
+      "W\u2081\u2082 W\u2082\u2082 W\u2083\u2082 W\u2084\u2082 \u2014 matrix row 2",
+      "W\u2081\u2083 W\u2082\u2083 W\u2083\u2083 W\u2084\u2083 \u2014 matrix row 3",
+      "W\u2081\u2084 W\u2082\u2084 W\u2083\u2084 W\u2084\u2084 \u2014 matrix row 4",
+      "+ \u2014 red bold plus sign between the matrix and the zero vector",
+      "0, 0, 0, 0 \u2014 zero-bias column vector (four stacked boxes)",
+      "} \u2014 tall blue right curly brace at the far right of the bottom diagram",
+      "{ [?] \u2014 a matching tall blue left curly brace appears to sit at the left edge of the X\u2081\u2013X\u2085 column"
+    ],
+    "equations": [
+      "[No equation is printed as text; implied by the diagram] Y\u1d62 = W \u00b7 X\u1d62 + 0, i.e. y\u2c7c = \u03a3\u1d62 W\u1d62\u2c7c\u00b7x\u1d62 + 0, with Activation = Linear and Bias = Zeros"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top with a yellow slide-number badge '14' at the top-right; a one-line blue subtitle spans the width beneath the title. Below, the slide splits into a narrow left panel (fully-connected NN sketch inside a blue rounded border, ~4\u201330% width, ~18\u201396% height) and a wide right area holding (a) a wheat 'Design Considerations' box at ~32\u201393% width, ~22\u201342% height, and (b) a large matrix-multiplication schematic inside a blue rounded border at ~32\u201396% width, ~44\u201396% height. A thin dark-maroon rule/border runs along the top edge [?]. The black strip at the very bottom of the image is video letterboxing, not slide content.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~15\u201385% width, ~4\u201312% height",
+        "content": "Red bold title 'Using  FF NN  for Multiplication of Multiple Vectors by a Matrix'"
+      },
+      {
+        "name": "Slide-number badge",
+        "position": "top right, ~90\u201397% width, ~4\u201312% height",
+        "content": "Yellow circle with red bold '14'"
+      },
+      {
+        "name": "Subtitle",
+        "position": "upper band under title, ~10\u201392% width, ~12\u201318% height",
+        "content": "Blue bold example line with red italic 'ALL Words' and the braced note about W\u2096, W\u1d65 being a squared matrix"
+      },
+      {
+        "name": "NN diagram panel",
+        "position": "left, ~4\u201330% width, ~18\u201396% height",
+        "content": "Blue-bordered rounded box containing the 5-input \u00d7 3-neuron network sketch with fanned X\u2083/X\u2084/X\u2082/X\u2081 label stack at its top-left"
+      },
+      {
+        "name": "Design considerations box",
+        "position": "right top, ~32\u201393% width, ~22\u201342% height",
+        "content": "Wheat rounded box, dark-red border, four lines: red italic prompts, blue values"
+      },
+      {
+        "name": "Matrix-multiplication schematic",
+        "position": "right bottom, ~32\u201396% width, ~44\u201396% height",
+        "content": "Blue-bordered rounded box with five Y rows, orange dotted connectors, five X vectors, 4\u00d74 W matrix, red '+', zero vector, tall blue braces"
+      }
+    ],
+    "hierarchy": "Visual dominance: (1) large red bold centered title; (2) blue bold subtitle; (3) the two large diagrams \u2014 the bottom-right schematic has the greatest area and visual mass; (4) the wheat design box; (5) small bold diagram labels. Color-coding (blue/magenta/green weights, yellow/green y-squares, pink nodes, light-blue X\u2083 highlight) is the main organizing device; all text is bold sans-serif."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Fully-connected NN sketch inside a blue rounded-rectangle border. Top-left: fanned stack of bold labels \u2014 'X\u2083' in a white box on top, with 'X\u2084', 'X\u2082', 'X\u2081' cascading diagonally beneath it toward the inputs (X\u2085 not visible) [?]. Five input clusters stacked vertically; each cluster = four small pale circles (labels x'\u2081, x'\u2082, x'\u2083, x'\u2084; cluster 3 labeled x\u2081, x\u2082, x\u2083, x\u2084) fanned diagonally and wired into a larger pink circle labeled X\u2081/X\u2082/X\u2083/X\u2084/X\u2085 (bold black text, dark outline). Thin lines (predominantly blue, with magenta and green for lower groups) fan from the X nodes to three \u03a3 neurons at roughly 25%, 50%, 75% of the panel height: each \u03a3 neuron is a red-outlined circle with green diagonal-hatch fill and a black '\u03a3', with a gray hatched semicircle beneath it. Weight labels along the lines, top to bottom: W\u2081\u2081 W\u2082\u2081 W\u2083\u2081 W\u2084\u2081 (blue), W\u2081\u2082 W\u2082\u2082 W\u2083\u2082 W\u2084\u2082 (blue), W\u2081\u2083 W\u2082\u2083 W\u2083\u2083 W\u2084\u2083 (magenta), W\u2081\u2084 W\u2082\u2084 W\u2083\u2084 W\u2084\u2084 (green). Red bold outputs y\u2081, y\u2082, y\u2083 to the right of each \u03a3 neuron.",
+      "colors": [
+        "#FFB6C1 (input node pink)",
+        "#CC0000 (\u03a3 outlines, y outputs)",
+        "#0000CC (blue weight labels/lines)",
+        "#CC00CC (magenta weights)",
+        "#009900 (green weights)",
+        "#CCFFCC (\u03a3 hatch green)",
+        "#A0A0A0 (gray hatch semicircles)"
+      ],
+      "position": "left panel, ~4\u201330% width, ~18\u201396% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Wheat/tan rounded rectangle with a thin dark-red border containing four left-aligned text lines: 'Design FF NN with the following Considerations:' (red bold italic), then 'Activation:  Linear', 'Bias:  Zeros', 'Inputs:  All Words Within Same Paragraph (X\u2081, X\u2082, X\u2083, X\u2084, X\u2085)' \u2014 prompts in red bold italic, values in blue bold, values column-aligned.",
+      "colors": [
+        "#F2DEB8 (fill)",
+        "#800000 (border)",
+        "#CC0000 (prompt text)",
+        "#0000CC (value text)"
+      ],
+      "position": "right area top, ~32\u201393% width, ~22\u201342% height"
+    },
+    {
+      "type": "diagram",
+      "description": "Matrix-multiplication schematic inside a large white rounded rectangle with blue border. Left column: five peach rounded rectangles (orange-red outline) stacked vertically with small gaps, each tagged at its top-right corner with bold Y\u2081/Y\u2082/Y\u2083/Y\u2084/Y\u2085 and containing four small squares labeled y\u2081, y\u2082, y\u2083, y\u2084 with alternating pale-yellow/pale-green fills. Beside the Y\u2083 row: red '=' + blue bold 'Linear'. Five horizontal orange dotted connector lines with tiny arrowheads join each Y row to the matching X row. Middle column: bold black labels X\u2081\u2013X\u2085, each followed by a rounded rectangle (dark-red outline; the X\u2083 row filled light blue as a highlight) containing four white circles with red outlines labeled x\u2081, x\u2082, x\u2083, x\u2084. Right: a pale-green rounded panel holding a 4\u00d74 grid of cells \u2014 row 1: W\u2081\u2081 W\u2082\u2081 W\u2083\u2081 W\u2084\u2081 (blue text on pale-blue cells); row 2: W\u2081\u2082 W\u2082\u2082 W\u2083\u2082 W\u2084\u2082 (magenta text on pale-pink cells); row 3: W\u2081\u2083 W\u2082\u2083 W\u2083\u2083 W\u2084\u2083 (magenta text on pale-pink cells); row 4: W\u2081\u2084 W\u2082\u2084 W\u2083\u2084 W\u2084\u2084 (green text on pale-green cells). Then a red bold '+' and a vertical column of four pale-green boxes each containing a bold black '0'; a tall blue right curly brace '}' spans the full height at the far right (a matching tall blue left brace appears at the left edge of the X\u2081\u2013X\u2085 column [?]).",
+      "colors": [
+        "#F5CBA7 (Y-row peach fill)",
+        "#FF8C00 (Y-row borders, dotted connectors)",
+        "#FFFF99 (pale-yellow squares)",
+        "#90EE90 (pale-green squares)",
+        "#ADD8E6 (X\u2083 highlight blue)",
+        "#800000 (X-box outlines)",
+        "#CC0000 (x-circle outlines, + sign)",
+        "#D5F5D5 (matrix panel)",
+        "#CCE0FF (matrix row 1 cells)",
+        "#FFCCE5 (matrix rows 2\u20133 cells)",
+        "#CCFFCC (matrix row 4 cells, zero boxes)",
+        "#0000CC (blue text/braces)",
+        "#CC00CC (magenta text)",
+        "#009900 (green text)"
+      ],
+      "position": "right area bottom, ~32\u201396% width, ~44\u201396% height"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: yellow circle with red bold '14'.",
+      "colors": [
+        "#FFFF00",
+        "#CC0000"
+      ],
+      "position": "top-right corner, ~90\u201397% width, ~4\u201312% height"
+    }
+  ],
+  "imagery": [
+    "No photographs or clip-art; all graphics are flat vector-style shapes.",
+    "\u03a3 neuron circles with green diagonal hatching and gray hatched semicircular shapes beneath them (left diagram).",
+    "Fanned 'deck of vector cards' motif at the network's top-left: boxed X\u2083 on top with X\u2084, X\u2082, X\u2081 cascading beneath.",
+    "Yellow circular slide-number badge '14' at top-right."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#CC0000",
+    "body_text": "#000000 (diagram labels) with #0000CC blue for subtitle and design-box values",
+    "accents": [
+      "#CC0000 (red: title, prompts, y outputs, + sign, x-circle outlines)",
+      "#0000CC (blue: subtitle, values, panel borders, braces, matrix row 1)",
+      "#CC00CC (magenta: matrix rows 2\u20133 and weight group 3)",
+      "#009900 (green: matrix row 4 and weight group 4)",
+      "#FFB6C1 (pink input nodes)",
+      "#F2DEB8 (wheat design box)",
+      "#F5CBA7 (peach Y rows)",
+      "#FFFF99 (pale-yellow squares)",
+      "#90EE90 (pale-green squares)",
+      "#D5F5D5 (matrix panel green)",
+      "#ADD8E6 (X\u2083 highlight blue)",
+      "#FFA500 (orange dotted connectors)",
+      "#FFFF00 (slide-number badge)"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Verdana-like). Title is the largest text (~26\u201328pt), bold, red, centered, with visibly widened spacing around 'FF NN'. Subtitle ~14\u201316pt bold. Design-box prompts are bold italic; their values are bold and column-aligned. All mathematical symbols (X, W, x, y) are bold with true subscripts (X\u2081, W\u2081\u2081, y\u2082). Diagram labels are small (~9\u201312pt) bold. Only all-caps text: 'ALL' and 'FF NN'. No serif fonts, no numbered bullets.",
+  "animation_state": "Slide appears fully revealed \u2014 no dimmed or partially shown bullets. The X\u2083 emphasis (white box in the network, light-blue row fill in the bottom schematic) reads as static color highlighting rather than a mid-build state.",
+  "recreation_brief": "1. Create a 4:3 slide with white (#FFFFFF) background; optionally add a thin dark-maroon border rectangle flush to the slide edges [?]. 2. Title text box top-center (~15\u201385% width): 'Using  FF NN  for Multiplication of Multiple Vectors by a Matrix', Arial bold ~26pt, #CC0000, centered. 3. Slide number: small oval top-right, fill #FFFF00, text '14' red bold ~14pt. 4. Subtitle text box (~10\u201392% width, one line, Arial bold ~14pt): 'Example: Multiply Vectors of ' (blue #0000CC) + 'ALL Words' (red #CC0000, italic) + ' by W\u2096 (Key) or W\u1d65 (Value)  ' (blue, subscripts) + '{ W\u2096, W\u1d65 is Squared Matrix}' (blue; make the two curly braces green [?]). 5. Left panel: rounded rectangle, white fill, ~2pt #0000CC border, ~4\u201330% width, ~18\u201396% height. 6. Inside it draw the network: five vertical clusters, each = four small pale-pink circles labeled x'\u2081, x'\u2082, x'\u2083, x'\u2084 (cluster 3: x\u2081, x\u2082, x\u2083, x\u2084) fanned diagonally, wired by short lines into a larger pink (#FFB6C1) circle labeled X\u2081\u2026X\u2085 (bold black ~12pt). 7. Add three \u03a3 neurons on the panel's right at ~25%/50%/75% height: red (#CC0000) outlined circles with light-green diagonal-hatch fill and bold black '\u03a3', plus a gray hatched semicircle beneath each; connect every X node to each \u03a3 with thin lines (blue for upper groups, magenta/green for lower) and place weight labels: W\u2081\u2081 W\u2082\u2081 W\u2083\u2081 W\u2084\u2081 (blue), W\u2081\u2082 W\u2082\u2082 W\u2083\u2082 W\u2084\u2082 (blue), W\u2081\u2083 W\u2082\u2083 W\u2083\u2083 W\u2084\u2083 (magenta #CC00CC), W\u2081\u2084 W\u2082\u2084 W\u2083\u2084 W\u2084\u2084 (green #009900); end each \u03a3 with red bold y\u2081, y\u2082, y\u2083. 8. Top-left of the panel: small white rectangle with bold 'X\u2083', with cascading bold 'X\u2084', 'X\u2082', 'X\u2081' beneath it (fanned-deck effect). 9. Design box: rounded rectangle ~32\u201393% width, ~22\u201342% height, fill #F2DEB8, border 1.5pt #800000; four left-aligned ~14pt lines: 'Design FF NN with the following Considerations:' (red bold italic), then 'Activation:  Linear', 'Bias:  Zeros', 'Inputs:  All Words Within Same Paragraph (X\u2081, X\u2082, X\u2083, X\u2084, X\u2085)' with red bold italic prompts and blue #0000CC bold, column-aligned values. 10. Bottom schematic container: rounded rectangle ~32\u201396% width, ~44\u201396% height, white fill, ~2pt #0000CC border. 11. Y column: five rounded rectangles (fill #F5CBA7, outline #FF8C00) stacked with small gaps; bold black Y\u2081\u2026Y\u2085 (subscript) at each box's top-right corner; inside each place four small squares y\u2081, y\u2082, y\u2083, y\u2084 with fills alternating #FFFF99 / #90EE90 / #FFFF99 / #90EE90 and thin orange outlines. 12. To the right of the Y\u2083 box add red bold '=' + blue bold 'Linear'. 13. Draw five horizontal dotted orange (#FFA500) connector lines with tiny arrowheads, one per row, from each Y box to the matching X box. 14. X column: bold black labels X\u2081\u2026X\u2085; right of each, a rounded rectangle (outline #800000, white fill \u2014 except the X\u2083 row filled #ADD8E6) containing four white circles with #CC0000 outlines labeled x\u2081, x\u2082, x\u2083, x\u2084. 15. Matrix: pale-green (#D5F5D5) rounded panel with a 4\u00d74 grid of small cells: row 1 W\u2081\u2081 W\u2082\u2081 W\u2083\u2081 W\u2084\u2081 (blue #0000CC text on #CCE0FF), row 2 W\u2081\u2082 W\u2082\u2082 W\u2083\u2082 W\u2084\u2082 (magenta #CC00CC on #FFCCE5), row 3 W\u2081\u2083 W\u2082\u2083 W\u2083\u2083 W\u2084\u2083 (magenta on #FFCCE5), row 4 W\u2081\u2084 W\u2082\u2084 W\u2083\u2084 W\u2084\u2084 (green #009900 on #CCFFCC). 16. Right of the matrix: red bold '+'; a vertical stack of four pale-green (#CCFFCC) boxes each with bold black '0'; then a tall blue (#0000CC) right curly brace '}' (Insert \u2192 Shapes \u2192 Left Brace, flipped) spanning the container height at the far right; optionally add the matching tall blue left brace at the left edge of the X column [?]. 17. Proof the color-coding: the left-diagram weight-label colors must match the matrix row colors (blue / blue / magenta / green).",
+  "_meta": {
+    "frame": "slide_014.jpg",
+    "model": "glm-5.3-flash",
+    "source_timestamps": {
+      "slide": 14,
+      "image": "slide_014.jpg",
+      "kept_frame": "frame_00498.jpg",
+      "start_sec": 491.0,
+      "end_sec": 497.0,
+      "frame_count": 7,
+      "old_slide": 20
+    },
+    "elapsed_s": 614.5
+  }
+}

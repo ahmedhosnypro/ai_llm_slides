@@ -1,0 +1,210 @@
+{
+  "slide_title": "Traditional RNN  Seq2Seq model",
+  "subtitle_or_header": "(Challenges)",
+  "verbatim_text": {
+    "bullets": [
+      "[1] Bottleneck",
+      "The meaning of the entire input sequence  is",
+      "Expected to be captured  by a single context vector",
+      "with fixed  dimensionality"
+    ],
+    "labels": [
+      "Decoder (RNN)",
+      "Encoder  (RNN)",
+      "softmax",
+      "softmax",
+      "softmax",
+      "Context Vector (of Whole Inputs)",
+      "7",
+      "o\u2081",
+      "o\u2082",
+      "o\u2083",
+      "s\u2081",
+      "s\u2082",
+      "s\u2083",
+      "h\u2081",
+      "h\u2082",
+      "embedding x\u2081",
+      "embedding x\u2082",
+      "embedding x\u2083",
+      "x\u2081",
+      "x\u2082",
+      "x\u2083"
+    ],
+    "equations": [
+      "o\u2081, o\u2082, o\u2083 (decoder outputs, italic serif with subscripts)",
+      "s\u2081, s\u2082, s\u2083 (decoder recurrent states between orange cell blocks)",
+      "h\u2081, h\u2082 (encoder hidden states passed between pink cell blocks; h\u2083 implied at the red output dot)",
+      "x\u2081, x\u2082, x\u2083 (encoder inputs at bottom)",
+      "embedding x\u2081, embedding x\u2082, embedding x\u2083 (embedding layer labels)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Entire slide enclosed in a thin red rectangular border frame. Title centered at top on two lines (line 1 red, line 2 blue). Slide number '7' in a yellow circle at top-right. Right half, upper-middle: large yellow rounded panel containing the Decoder (RNN) diagram, with the red italic label 'Decoder (RNN)' just above it. Left-middle: light-blue rounded text box with the '[1] Bottleneck' explanation. Bottom-left: large orange/peach rounded panel containing the Encoder (RNN) diagram, with red bold label 'Encoder  (RNN)' centered beneath it. Bottom center-right: pink callout box 'Context Vector (of Whole Inputs)'. A red curved arrow connects the encoder's output red dot up to the decoder's input red dot.",
+    "regions": [
+      {
+        "name": "Red border frame",
+        "position": "entire slide, ~1-2% inset from edges",
+        "content": "Thin crimson rectangle outlining the whole slide; below it a gray strip is visible (video player UI, not slide content)."
+      },
+      {
+        "name": "Title block",
+        "position": "top center, ~15-85% width, ~8-20% height",
+        "content": "Line 1: 'Traditional RNN  Seq2Seq model' in bold red; Line 2: '(Challenges)' in bold blue, centered."
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, ~91-97% width, ~9-16% height",
+        "content": "Yellow circle with red outline containing red numeral '7'."
+      },
+      {
+        "name": "Decoder label",
+        "position": "top right, ~70-86% width, ~15-20% height",
+        "content": "'Decoder (RNN)' in bold italic red, right-aligned above the yellow decoder panel."
+      },
+      {
+        "name": "Decoder panel",
+        "position": "right side, ~48-95% width, ~20-55% height",
+        "content": "Yellow rounded rectangle with full decoder RNN diagram: outputs o\u2081 o\u2082 o\u2083, softmax labels, green cell blocks, orange state blocks, s\u2081 s\u2082 s\u2083, recurrent curved arrows, red input dot."
+      },
+      {
+        "name": "Bottleneck text box",
+        "position": "left middle, ~5-47% width, ~30-50% height",
+        "content": "Light-blue rounded rectangle with blue border containing the '[1] Bottleneck' text in bold blue with underlined phrases; a mouse cursor arrow overlaps its right side."
+      },
+      {
+        "name": "Encoder panel",
+        "position": "bottom left, ~5-50% width, ~55-90% height",
+        "content": "Orange/peach rounded rectangle with full encoder RNN diagram: pink hidden-state blocks with h\u2081 h\u2082 arrows, red output dot, embedding labels, tan embedding blocks, inputs x\u2081 x\u2082 x\u2083."
+      },
+      {
+        "name": "Encoder label",
+        "position": "bottom center-left, ~22-40% width, ~92-98% height",
+        "content": "'Encoder  (RNN)' in bold red, centered under the encoder panel."
+      },
+      {
+        "name": "Context vector callout",
+        "position": "bottom center-right, ~58-87% width, ~74-82% height",
+        "content": "Pink rectangle with red border, red bold text 'Context Vector (of Whole Inputs)', with a thin leader line running up to the red context-vector arrow/dot."
+      },
+      {
+        "name": "Context vector arrow",
+        "position": "center, ~47-53% width, ~48-62% height",
+        "content": "Red curved arrow from the encoder's red output dot curving up to the decoder's red input dot."
+      }
+    ],
+    "hierarchy": "Visually dominant: the two large colored diagram panels (yellow decoder, orange encoder) occupy most of the canvas. Next: the red/blue two-line title. Then the blue bottleneck text box and the red panel labels ('Decoder (RNN)', 'Encoder  (RNN)', 'Context Vector...'). Smallest: italic serif math symbol labels (o, s, h, x, softmax) inside the diagrams."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "DECODER (RNN) panel: yellow rounded rectangle containing three repeated vertical columns. Column i (i=1,2,3), left to right: at top an italic output label o\u2081 / o\u2082 / o\u2083; below it a vertical gray arrow pointing up to the output; the word 'softmax' in italic placed to the left of each arrow; below that a light-green cell block (horizontal row of 3-4 small square cells); below that another vertical arrow; at the bottom row an orange/tan cell block (row of 3-4 small cells). Between consecutive orange blocks: rightward arrows labeled s\u2081 (between block 1 and 2) and s\u2082 (between block 2 and 3), with s\u2083 after block 3. Two dark curved arrows (dark green/black) sweep from below the row \u2014 one from the s\u2081 region curving down-right up into the bottom of the 2nd orange block, one from the s\u2082 region curving into the 3rd orange block \u2014 representing recurrent connections. A solid red dot sits at the left edge of the 1st orange block (decoder input = context vector).",
+      "colors": [
+        "#F0F080",
+        "#CCFF99",
+        "#FFCC66",
+        "#808080",
+        "#003300",
+        "#C00000",
+        "#333333"
+      ],
+      "position": "right side, upper-middle of slide"
+    },
+    {
+      "type": "diagram",
+      "description": "ENCODER (RNN) panel: orange/peach rounded rectangle. Top row: three pink cell blocks (rows of 3-4 small cells); a horizontal gray arrow enters the 1st block from the left edge; between block 1\u21922 a rightward arrow labeled h\u2081 (label above arrow), between block 2\u21923 a rightward arrow labeled h\u2082; a solid red dot at the right edge of the 3rd pink block (final hidden state / context vector output). Middle row: three tan/beige cell blocks, each connected upward by a vertical gray arrow to the pink block above; italic labels 'embedding x\u2081', 'embedding x\u2082', 'embedding x\u2083' placed to the left of each upward arrow. Bottom: italic labels x\u2081, x\u2082, x\u2083 each with a vertical gray arrow pointing up into the corresponding tan block.",
+      "colors": [
+        "#FAC090",
+        "#FFCCCC",
+        "#E8D5B5",
+        "#808080",
+        "#C00000",
+        "#333333"
+      ],
+      "position": "bottom left of slide"
+    },
+    {
+      "type": "arrow",
+      "description": "Red curved connector arrow: starts at the red dot on the right edge of the encoder's 3rd pink block, curves upward (concave-left) and ends with an arrowhead at the red dot on the left edge of the decoder's 1st orange block. This is the 'context vector' passing from encoder to decoder. Thin leader lines also link this arrow/dot region to the blue bottleneck box (from its right edge) and down to the 'Context Vector (of Whole Inputs)' callout box.",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "center of slide, between encoder and decoder panels"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Bottleneck callout: light-blue rounded rectangle with thin blue border containing four centered lines of bold blue text: '[1] Bottleneck' (underlined), 'The meaning of the entire input sequence  is', 'Expected to be captured  by a single context vector' (phrase 'by a single context vector' underlined), 'with fixed  dimensionality' (phrase 'fixed  dimensionality' underlined). A white mouse-cursor arrow overlaps the box's right-center area.",
+      "colors": [
+        "#CCF2FF",
+        "#0000CC"
+      ],
+      "position": "left middle of slide"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Context vector callout: small pink rectangle with thin red border containing red bold text 'Context Vector (of Whole Inputs)', connected by a thin leader line upward to the red context-vector arrow.",
+      "colors": [
+        "#FFC0CB",
+        "#C00000"
+      ],
+      "position": "bottom center-right, below decoder panel"
+    },
+    {
+      "type": "other",
+      "description": "Slide number badge: yellow circle with red outline and red numeral '7' at top right.",
+      "colors": [
+        "#FFFF00",
+        "#C00000"
+      ],
+      "position": "top right corner"
+    },
+    {
+      "type": "other",
+      "description": "Red rectangular border framing the entire slide content.",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "slide perimeter"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations. Only a white mouse-pointer cursor arrow rendered over the right side of the blue bottleneck text box (a video-capture artifact, not slide content)."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#C00000",
+    "body_text": "#333333",
+    "accents": [
+      "#C00000",
+      "#0000CC",
+      "#F0F080",
+      "#FAC090",
+      "#CCF2FF",
+      "#FFC0CB",
+      "#CCFF99",
+      "#FFCC66",
+      "#FFCCCC",
+      "#E8D5B5",
+      "#FFFF00"
+    ]
+  },
+  "typography_notes": "Title and subtitle: bold sans-serif (Arial/Calibri-like); title line red, subtitle '(Challenges)' blue, both larger than all other text. Panel labels 'Decoder (RNN)' (bold italic red) and 'Encoder  (RNN)' (bold red, non-italic) are medium-large sans-serif. Bottleneck box text: bold sans-serif, blue, center-aligned, with underlines on '[1] Bottleneck', 'by a single context vector', and 'fixed  dimensionality'. All math symbols (o\u2081 o\u2082 o\u2083, s\u2081 s\u2082 s\u2083, h\u2081 h\u2082, x\u2081 x\u2082 x\u2083, 'embedding x\u1d62', 'softmax') are italic serif (Times New Roman style) with true subscripts. 'Context Vector (of Whole Inputs)' is bold red sans-serif. Slide number '7' is red in a yellow circle. No numbered bullet lists; the only list-like text is the 4-line centered block in the blue box.",
+  "animation_state": "Slide appears fully built (no partial bullet reveal). A live mouse cursor is visible over the blue bottleneck box, indicating the presenter was pointing at the text during the video; the gray strip at the very bottom is video-player UI, not slide content.",
+  "recreation_brief": "1. Set slide background white; draw a red (#C00000) rectangle outline inset ~2% around the whole slide as a frame. 2. Add title text box top-center: 'Traditional RNN  Seq2Seq model' in bold red (#C00000) sans-serif ~32pt, and beneath it '(Challenges)' in bold blue (#0000CC) same size, both centered. 3. Top-right: draw a yellow (#FFFF00) circle with red outline containing red '7'. 4. Right side (~48-95% width, ~20-55% height): draw a yellow (#F0F080) rounded rectangle. Inside it build 3 columns: for each column place italic serif labels o\u2081, o\u2082, o\u2083 at top; a 'softmax' italic label; a light-green (#CCFF99) block made of 3-4 adjacent small squares; below it an orange (#FFCC66) block of 3-4 small squares; connect with thin gray up-arrows (block\u2192softmax\u2192output). Add rightward gray arrows between orange blocks labeled s\u2081, s\u2082, s\u2083 (italic serif). Draw two dark (#003300) curved arrows from below the s\u2081 and s\u2082 positions looping up into the bottoms of the 2nd and 3rd orange blocks. Place a small red (#C00000) dot at the left edge of the 1st orange block. 5. Above the yellow panel, right-aligned: 'Decoder (RNN)' in bold italic red. 6. Left-middle (~5-47% width, ~30-50% height): draw a light-blue (#CCF2FF) rounded rectangle with blue border; center inside it, bold blue (#0000CC) sans-serif, four lines: '[1] Bottleneck' (underlined), 'The meaning of the entire input sequence  is', 'Expected to be captured  by a single context vector' (underline 'by a single context vector'), 'with fixed  dimensionality' (underline 'fixed  dimensionality'). 7. Bottom-left (~5-50% width, ~55-90% height): draw an orange/peach (#FAC090) rounded rectangle. Inside: top row of three pink (#FFCCCC) cell blocks; gray arrow entering block 1 from the left; gray right-arrows between blocks labeled h\u2081 and h\u2082 (italic serif, above arrows); red dot at right edge of block 3. Middle row: three tan (#E8D5B5) cell blocks with gray up-arrows to the pink blocks, italic labels 'embedding x\u2081', 'embedding x\u2082', 'embedding x\u2083' beside the arrows. Bottom: italic x\u2081, x\u2082, x\u2083 with gray up-arrows into the tan blocks. 8. Below the orange panel, centered: 'Encoder  (RNN)' in bold red. 9. Draw a red (#C00000) curved arrow from the encoder's red dot up to the decoder's red dot (arrowhead at decoder). 10. Bottom center-right: pink (#FFC0CB) rectangle with red border and red bold text 'Context Vector (of Whole Inputs)'; add a thin leader line from this box up to the red arrow. 11. Optionally add thin gray leader lines from the blue box's right edge and from the callout box to the red context-vector dot to match the original.",
+  "_meta": {
+    "frame": "slide_007.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 7,
+      "image": "slide_007.jpg",
+      "kept_frame": "frame_00416.jpg",
+      "start_sec": 414.0,
+      "end_sec": 455.0,
+      "frame_count": 88,
+      "founder_frame_swap": true,
+      "original_kept_frame": "frame_00502.jpg",
+      "note": "old group 14 split by founder curation; founder-picked earlier state (state A)"
+    },
+    "elapsed_s": 268.1
+  }
+}

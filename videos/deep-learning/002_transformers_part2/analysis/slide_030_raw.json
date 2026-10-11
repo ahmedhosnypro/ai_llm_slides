@@ -1,0 +1,169 @@
+{
+  "slide_title": null,
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Vector of Pos \"t\"",
+      "Vector of Pos \"t+\u03b4\"",
+      "Remember:",
+      "Vector of Pos \"t+\u03b4\"",
+      "Vector of Pos \"t\"",
+      "Independent of Position \"t\"",
+      "From Computer Graphics:",
+      "Rotation Matrix of Vector at Pos \"t\" with angle \"\u03c9\u03b4\"",
+      "e.g \"\u03c9\" , \"2\u03c9\" , \"3\u03c9\" , ...",
+      "30"
+    ],
+    "equations": [
+      "[ sin(\u03c9t) ; cos(\u03c9t) ]  (2\u00d71 column vector, red brackets)",
+      "[ Sin (\u03c9(t+\u03b4)) ; cos(\u03c9(t+\u03b4)) ]  (2\u00d71 column vector, black brackets)",
+      "sin(a+b)=sin (a) cos(b) + cos(a) sin(b)",
+      "cos(a+b)=cos(a) cos(b) \u2013 sin(a) sin(b)",
+      "sin(\u03c9(t+\u03b4)) = sin(\u03c9t + \u03c9\u03b4)  = sin(\u03c9t) cos(\u03c9\u03b4) + cos(\u03c9t) sin(\u03c9\u03b4)",
+      "cos(\u03c9(t+\u03b4)) = cos(\u03c9t + \u03c9\u03b4)  = cos(\u03c9t) cos(\u03c9\u03b4) - sin(\u03c9t) sin(\u03c9\u03b4)",
+      "[ Sin (\u03c9(t+\u03b4)) ; cos(\u03c9(t+\u03b4)) ]  =  [ cos(\u03c9\u03b4)  sin(\u03c9\u03b4) ; - sin(\u03c9\u03b4)  cos(\u03c9\u03b4) ]  [ sin(\u03c9t) ; cos(\u03c9t) ]"
+    ]
+  },
+  "layout": {
+    "arrangement": "No title. A thin dark-red rectangular frame surrounds the whole content area. Four blue-bordered content boxes are arranged: vector definitions top-left, 'Remember' trig-identity callout top-right, two-line derivation across the middle band, large matrix-equation box bottom-left/center, and a green sidebar note bottom-right. Slide-number badge '30' in a yellow circle at the top-right corner.",
+    "regions": [
+      {
+        "name": "Red frame",
+        "position": "full slide, ~4\u201396% width, ~7\u201396% height",
+        "content": "Thin dark-red rectangle outline framing all content."
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top-right, ~88\u201394% width, ~10\u201317% height",
+        "content": "Yellow-orange circle with dark-red outline containing '30' in black."
+      },
+      {
+        "name": "Vector definitions box",
+        "position": "top-left, ~9\u201339% width, ~10\u201342% height",
+        "content": "Blue-bordered box with two red-labeled column vectors: [sin(\u03c9t); cos(\u03c9t)] with red brackets and [Sin (\u03c9(t+\u03b4)); cos(\u03c9(t+\u03b4))] with black brackets."
+      },
+      {
+        "name": "Remember callout",
+        "position": "top-right, ~52\u201388% width, ~18\u201335% height",
+        "content": "Pale-yellow box, blue border, underlined blue 'Remember:' header and two blue-italic trig identities."
+      },
+      {
+        "name": "Derivation box",
+        "position": "middle band, ~8\u201368% width, ~43\u201358% height",
+        "content": "Blue-bordered box with two black equations expanding sin(\u03c9(t+\u03b4)) and cos(\u03c9(t+\u03b4)), with yellow/green inline highlights on (t+\u03b4), cos(\u03c9\u03b4), sin(\u03c9\u03b4)."
+      },
+      {
+        "name": "Matrix equation box",
+        "position": "bottom-left/center, ~8\u201364% width, ~60\u201393% height",
+        "content": "Blue-bordered box with the matrix product equation, red captions 'Vector of Pos \"t+\u03b4\"' and 'Vector of Pos \"t\"', a curly brace under the 2\u00d72 matrix, and blue bold italic 'Independent of Position \"t\"'."
+      },
+      {
+        "name": "Computer Graphics note",
+        "position": "bottom-right, ~64\u201391% width, ~63\u201387% height",
+        "content": "Light-green box, green border, red bold italic header 'From Computer Graphics:' plus two blue bold italic lines about the rotation matrix."
+      }
+    ],
+    "hierarchy": "The bottom matrix equation is the visual focal point (largest box, most elements, largest black type). Black equations dominate; red labels and blue annotations are secondary; yellow/green highlights steer the eye to matching sub-expressions; the green note box acts as a sidebar callout; the slide number badge is smallest."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Blue-bordered rectangle (white fill) with two labeled column vectors. Row 1: red label 'Vector of Pos \"t\"' on the left; to its right a 2\u00d71 column vector with RED square brackets, cells 'sin(\u03c9t)' (top) and 'cos(\u03c9t)' (bottom), black text. Row 2: red label 'Vector of Pos \"t+\u03b4\"' on the left; to its right a 2\u00d71 column vector with BLACK square brackets, cells 'Sin (\u03c9(t+\u03b4))' (top) and 'cos(\u03c9(t+\u03b4))' (bottom), black text.",
+      "colors": [
+        "#0000CC",
+        "#C00000",
+        "#000000"
+      ],
+      "position": "top-left, ~9\u201339% width, ~10\u201342% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Callout box, pale-yellow fill, blue border. Header 'Remember:' in blue, underlined. Two identities in blue italic: 'sin(a+b)=sin (a) cos(b) + cos(a) sin(b)' and 'cos(a+b)=cos(a) cos(b) \u2013 sin(a) sin(b)'.",
+      "colors": [
+        "#0000CC",
+        "#FFFFCC"
+      ],
+      "position": "top-right, ~52\u201388% width, ~18\u201335% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Blue-bordered rectangle (white fill), two black equation lines. Line 1: 'sin(\u03c9(t+\u03b4)) = sin(\u03c9t + \u03c9\u03b4)  = sin(\u03c9t) cos(\u03c9\u03b4) + cos(\u03c9t) sin(\u03c9\u03b4)' \u2014 '(t+\u03b4)' highlighted YELLOW, 'cos(\u03c9\u03b4)' highlighted GREEN, final 'sin(\u03c9\u03b4)' highlighted YELLOW. Line 2: 'cos(\u03c9(t+\u03b4)) = cos(\u03c9t + \u03c9\u03b4)  = cos(\u03c9t) cos(\u03c9\u03b4) - sin(\u03c9t) sin(\u03c9\u03b4)' \u2014 '(t+\u03b4)' YELLOW, 'cos(\u03c9\u03b4)' YELLOW, final 'sin(\u03c9\u03b4)' GREEN.",
+      "colors": [
+        "#0000CC",
+        "#000000",
+        "#FFFF00",
+        "#92D050"
+      ],
+      "position": "middle band, ~8\u201368% width, ~43\u201358% height"
+    },
+    {
+      "type": "other",
+      "description": "Large blue-bordered rectangle (white fill) containing the matrix equation: left 2\u00d71 vector [Sin (\u03c9(t+\u03b4)) ; cos(\u03c9(t+\u03b4))] (black brackets, '(t+\u03b4)' highlighted yellow), bold '=', 2\u00d72 matrix [cos(\u03c9\u03b4)  sin(\u03c9\u03b4) ; - sin(\u03c9\u03b4)  cos(\u03c9\u03b4)] where top-left 'cos(\u03c9\u03b4)' is GREEN-highlighted and the other three entries are YELLOW-highlighted, then right 2\u00d71 vector [sin(\u03c9t) ; cos(\u03c9t)] with RED brackets. Red captions below: 'Vector of Pos \"t+\u03b4\"' (left) and 'Vector of Pos \"t\"' (right). A curly brace (dark red) spans beneath the 2\u00d72 matrix with blue bold italic 'Independent of Position \"t\"' centered under it.",
+      "colors": [
+        "#0000CC",
+        "#000000",
+        "#C00000",
+        "#FFFF00",
+        "#92D050"
+      ],
+      "position": "bottom-left/center, ~8\u201364% width, ~60\u201393% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Sidebar note box, light-green fill, green border. Line 1 'From Computer Graphics:' in red bold italic; line 2 'Rotation Matrix of Vector at Pos \"t\" with angle \"\u03c9\u03b4\"' in blue bold italic; line 3 'e.g \"\u03c9\" , \"2\u03c9\" , \"3\u03c9\" , ...' in blue bold italic.",
+      "colors": [
+        "#00B050",
+        "#DFF0D8",
+        "#C00000",
+        "#0000CC"
+      ],
+      "position": "bottom-right, ~64\u201391% width, ~63\u201387% height"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: small circle, yellow-orange fill, dark-red outline, containing '30' in black.",
+      "colors": [
+        "#FFC000",
+        "#C00000",
+        "#000000"
+      ],
+      "position": "top-right corner, ~88\u201394% width, ~10\u201317% height"
+    }
+  ],
+  "imagery": [
+    "No photographs, illustrations, or icons on the slide. Only video artifacts: a small pen/highlighter-shaped mouse cursor with a tiny circle hovering over the top-right of the 2\u00d72 matrix (live-annotation cursor), and a thin dark strip along the very bottom edge of the frame (video player artifact)."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": null,
+    "body_text": "#000000",
+    "accents": [
+      "#C00000 (red frame, red labels, red vector brackets, brace)",
+      "#0000CC (blue box borders and blue text)",
+      "#FFFF00 (yellow term highlights)",
+      "#92D050 (green term highlights)",
+      "#FFFFCC (Remember box fill)",
+      "#DFF0D8 (green note box fill)",
+      "#00B050 (green note box border)",
+      "#FFC000 (slide-number circle fill)"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial-like). No slide title. Red vector labels regular weight ~18\u201320pt; equations black ~22\u201324pt, the largest text on the slide; 'Remember:' blue, underlined, with the two identities in blue italic ~16pt; bottom-right note is bold italic (red header line, blue body lines); 'Independent of Position \"t\"' is blue bold italic ~18pt; emphasis is done with inline yellow/green highlighter on sub-expressions rather than whole lines; typographic quotes wrap t, t+\u03b4, \u03c9\u03b4, \u03c9, 2\u03c9, 3\u03c9; slide number '30' is small black text inside a badge.",
+  "animation_state": "Fully built \u2014 no partial bullet reveal or mid-build elements. A pen/highlighter mouse cursor rests over the top-right of the 2\u00d72 matrix, indicating the presenter was annotating live when the frame was captured.",
+  "recreation_brief": "1. Set slide background white (#FFFFFF). Draw a thin dark-red (#C00000) rectangle outline framing the content (~4\u201396% width, ~7\u201396% height).\n2. Top-right corner: add a small circle (fill #FFC000, outline #C00000) containing '30' in black as the slide number.\n3. Top-left: insert a no-fill rectangle with 2pt blue (#0000CC) border (~9\u201339% width, ~10\u201342% height). Inside, place red (#C00000) text 'Vector of Pos \"t\"' and to its right a 2\u00d71 matrix with red brackets, cells 'sin(\u03c9t)' and 'cos(\u03c9t)' in black. Below, place red text 'Vector of Pos \"t+\u03b4\"' and a 2\u00d71 matrix with black brackets, cells 'Sin (\u03c9(t+\u03b4))' and 'cos(\u03c9(t+\u03b4))' in black.\n4. Top-right: insert a rectangle filled pale yellow (#FFFFCC) with blue border (~52\u201388% width, ~18\u201335% height). Type 'Remember:' in blue underlined, then 'sin(a+b)=sin (a) cos(b) + cos(a) sin(b)' and 'cos(a+b)=cos(a) cos(b) \u2013 sin(a) sin(b)' in blue italic.\n5. Middle: insert a no-fill blue-bordered rectangle (~8\u201368% width, ~43\u201358% height). Line 1: 'sin(\u03c9(t+\u03b4)) = sin(\u03c9t + \u03c9\u03b4)  = sin(\u03c9t) cos(\u03c9\u03b4) + cos(\u03c9t) sin(\u03c9\u03b4)' \u2014 highlight '(t+\u03b4)' and final 'sin(\u03c9\u03b4)' yellow (#FFFF00), 'cos(\u03c9\u03b4)' green (#92D050). Line 2: 'cos(\u03c9(t+\u03b4)) = cos(\u03c9t + \u03c9\u03b4)  = cos(\u03c9t) cos(\u03c9\u03b4) - sin(\u03c9t) sin(\u03c9\u03b4)' \u2014 highlight '(t+\u03b4)' and 'cos(\u03c9\u03b4)' yellow, final 'sin(\u03c9\u03b4)' green.\n6. Bottom-left: insert a large no-fill blue-bordered rectangle (~8\u201364% width, ~60\u201393% height). Build the equation in black: 2\u00d71 vector ['Sin (\u03c9(t+\u03b4))', 'cos(\u03c9(t+\u03b4))'] with '(t+\u03b4)' yellow-highlighted, bold '=', 2\u00d72 matrix ['cos(\u03c9\u03b4)', 'sin(\u03c9\u03b4)', '- sin(\u03c9\u03b4)', 'cos(\u03c9\u03b4)'] with top-left cell green-highlighted and the other three yellow-highlighted, then 2\u00d71 vector ['sin(\u03c9t)', 'cos(\u03c9t)'] with red brackets. Add red captions 'Vector of Pos \"t+\u03b4\"' (bottom-left) and 'Vector of Pos \"t\"' (bottom-right). Insert a dark-red curly-brace shape under the 2\u00d72 matrix and center blue bold italic 'Independent of Position \"t\"' beneath it.\n7. Bottom-right: insert a rectangle filled light green (#DFF0D8) with green (#00B050) border (~64\u201391% width, ~63\u201387% height). Type 'From Computer Graphics:' in red bold italic; 'Rotation Matrix of Vector at Pos \"t\" with angle \"\u03c9\u03b4\"' in blue bold italic; 'e.g \"\u03c9\" , \"2\u03c9\" , \"3\u03c9\" , ...' in blue bold italic.\n8. Use a sans-serif font (Arial) throughout: equations ~24pt, red labels ~18pt, callout/note text ~16pt.",
+  "_meta": {
+    "frame": "slide_030.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 30,
+      "image": "slide_030.jpg",
+      "kept_frame": "frame_01816.jpg",
+      "start_sec": 1653.0,
+      "end_sec": 1815.0,
+      "frame_count": 163,
+      "old_slide": 61
+    },
+    "elapsed_s": 360.9
+  }
+}

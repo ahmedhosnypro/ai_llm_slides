@@ -1,0 +1,49 @@
+# Visual QA Analysis â Slide 018 delta probe (2x crop, x180â690, y85â420)
+
+## 1. Verbatim text transcription
+
+**Orange banner (top-left, left-clipped):**
+- Line 1: `coder and Decoder Blocks Contain`
+- Line 2: `lti-Head Self Attention" block` â with "lti-Head" in blue, "Self Attention" in red, followed by a closing double-quote; "block" in black.
+
+**Tan/beige banner (below orange banner, left-clipped):**
+- Line 1: `âhâ Heads` â the letter "h" in dark red within curly quotes; "Heads" in dark brown/red.
+- Line 2: `s of Heads are concatenated` â "concatenated" in bold dark red.
+
+**Left edge (red italic, clipped):** `uct` (trailing fragment of a longer word, likely "â¦uct").
+
+**Center heading (red italic):** `Multi-Head Attention`
+
+**Center diagram (inside green-outlined box):**
+- `Linear` (grey rounded box)
+- `Concat` (pale-yellow rounded box)
+- `Scaled Dot-Product Attention` (mauve/pink box with red outline, stacked over grey duplicate copies)
+- `h` (small tan circle at the right of the attention box)
+
+**Right panel:**
+- `Encoder` (red italic heading)
+- `Add &` (clipped; likely "Add & Norm")
+- `Fee` / `Forw` (two clipped lines; likely "Feed / Forward")
+- `Add` (clipped)
+- `Multi` / `Atten` (clipped, red-outlined box; likely "Multi-Head / Attention")
+- `V` (blue circle); a second blue circle is cut off at the bottom edge, letter illegible
+- `N` (brown circle to the left of the architecture block)
+- `Positional` (dark red, bottom-right, clipped at bottom)
+
+**Very top edge:** fragments of clipped red bold text â glyphs are cut by the top boundary and **illegible**.
+
+## 2. Layout
+
+- **LEFT edge:** the two clipped banners (orange, then tan) occupy the top-left. Below them, a red italic fragment `uct`, and a sliver of a white, green-bordered box with a small green corner-handle square. Red dashed callout lines radiate from this area downward.
+- **RIGHT edge:** a large cream-colored panel with a green border labeled "Encoder" (red italic). Inside it sits a brown rounded architecture block containing the clipped tan boxes listed above, the blue "V" circle, an "N" circle, and the clipped "Multi/Atten" red box. A thin yellow shape is clipped at the far-right edge (~y310â345).
+- **TOP:** clipped red text at the extreme top; the orange banner spans the top-left; the tan banner sits beneath it; "Multi-Head Attention" heading sits above the central diagram; "Encoder" label at top-right. Thin faint curved connector lines run from the banners' right ends down toward the central diagram.
+- **BOTTOM:** the central green-bordered "Multi-Head Attention" box dominates the lower center, containing the vertical flow: stacked attention boxes â `Concat` â `Linear` â upward arrow (arrow exits the box top). Below the attention stack, white rounded boxes are cut off by the bottom edge. Red dashed lines cross the lower area in X patterns and are clipped at the bottom edge. A small red arrow points down at the "h" circle, connected to the attention box by a black curved line.
+
+## 3. Visual defects
+
+- **Left-side clipping:** both banners are cut mid-word at the left edge ("coderâ¦", "lti-Headâ¦", "s of Headsâ¦"), and the left green box is almost entirely outside the crop.
+- **Right-side clipping:** the "Encoder" panel's inner boxes ("Add &", "Fee/Forw", "Add", "Multi/Atten") are cut by the right boundary, as is the second blue circle and a yellow shape.
+- **Top/bottom clipping:** a red heading is sliced at the top edge (illegible); the stacked attention sub-boxes and the "Positional" label are cut at the bottom edge.
+- **Overlapping annotation lines:** red dashed callout lines and thin curved banner-connector lines cross over the diagram, boxes, and each other; one dashed line passes near/through the Encoder panel.
+- **No obvious placeholder/garbage strings or wrong-language text**; all legible content is consistent English Transformer-architecture terminology.
+- **Image quality:** noticeable JPEG artifacts from 2x upscaling â blurring, edge ringing around text, and slight color noise in flat fills.

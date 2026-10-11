@@ -1,0 +1,28 @@
+## Element-by-Element Comparison
+
+**Text content (verbatim check):** All seven author blocks match exactly between IMG1 and IMG2:
+- Row 1: "Ashish Vaswani*" / Google Brain (highlighted) / avaswani@google.com; "Noam Shazeer*" / Google Brain / noam@google.com; "Niki Parmar*" / Google Research / nikip@google.com; "Jakob Uszkoreit*" / Google Research / usz@google.com
+- Row 2: "Llion Jones*" / Google Research (highlighted) / llion@google.com; "Aidan N. Gomez* â " / University of Toronto (unhighlighted) / aidan@cs.toronto.edu; "Åukasz Kaiser*" / Google Brain (highlighted) / lukaszkaiser@google.com
+
+All names, affiliations, emails, asterisks, and the dagger on Gomez are present and verbatim. The Å-stroke glyph on "Lukasz Kaiser" is reproduced in both.
+
+**Highlight boxes:** Pink (#EEA0EE-range) boxes behind exactly 6 affiliation lines (Google Brain Ã3, Google Research Ã3); University of Toronto correctly unhighlighted in both. Box heights and text centering inside the boxes match.
+
+**Layout/geometry:** Four columns row 1, three columns row 2; horizontal positions of the row-2 blocks (Llion left-of-center, Aidan center, Lukasz right) align with IMG2 within a few pixels at this zoom. Name-over-affiliation-over-monospace-email stacking, and the vertical gap between row 1 and row 2, match. Email row is monospace in both; names bold serif in both.
+
+**Ink spans:** Render (43,37)â(1947,437) vs original (34,35)â(1959,437) â deltas of â¤11px at 4.16Ã zoom (â3px at 1Ã), consistent with raster softness, not layout error. No element approaches a crop/frame boundary; no containment violations.
+
+**Line spacing:** Nameâaffiliationâemail separations are visually identical row-by-row; no compaction or expansion detected.
+
+## Discrepancies
+
+1. **MINOR** â Jakob Uszkoreit "Google Research" highlight box: in IMG2 the pink box extends a bit further right past the text than in IMG1, where the box hugs the text slightly more tightly (and the left edge of "G" sits marginally closer to the box edge). Confidence: medium (partly attributable to raster blur in IMG2).
+2. **MINOR** â Row-2 highlight boxes (Llion, Lukasz) show the same slight width-hugging difference as above. Confidence: low-medium.
+3. **MINOR** â Sub-pixel sharpness differences (IMG1 crisp vector text vs IMG2 soft video raster): explicitly the mandated image source per the VIEW, **not a discrepancy**.
+
+No BLOCKER or MAJOR defects: no missing elements, no text overflow/clipping, no collisions, no frame-escape, no wrong wrapping, table/author data fully verbatim.
+
+## Visual-Quality Defects in the Recreation
+None beyond the minor highlight-box width nuances noted above; all text is legible, correctly centered in its highlight boxes, and correctly ordered.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

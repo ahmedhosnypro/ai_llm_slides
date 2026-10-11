@@ -1,0 +1,47 @@
+## Element-by-Element Comparison
+
+**Slide-number badge / house frame:** Not in this crop region; per ground rule (a), house chrome is excluded. Not assessed.
+
+**Green dashed container (bottom sentence row):**
+- Present in both, rounded, light-green fill (#E2F5E0-ish), dark green dotted/dashed border. â
+- **Dash style/weight:** Original uses a fine dotted green line; recreation uses a heavier, longer-dash green line. Visibly coarser at 5x. â **MINOR** (confidence: high)
+- **Containment:** All four word widgets sit fully inside the green container in both. â No overflow. â
+
+**Four 5-cell word widgets (X1..X4):**
+- Count, ordering, 5-cell structure, and cell pastel palette (pale yellow / cream / light orange-pink / lavender-blue / lilac) match. â
+- X labels: dark-red serif "X" with subscript numeral in the 3rd cell of each widget in both. â Vertical centering of X labels inside their cells is correct in the recreation. â
+- Non-highlighted widgets X1, X3, X4: faithful. â
+
+**Magenta-highlighted widget X2:**
+- 5 cells with pinkâmagenta gradient fill: matches. â
+- **Border color:** Original highlight border is a dark RED dotted rectangle; recreation uses MAGENTA/purple dotted. Color deviation on an emphasis element. â **MINOR** (confidence: medium-high; low-res original leaves slight ambiguity, but it reads red/crimson, not magenta)
+- Dotted border geometry and padding around the widget: matches. â
+
+**Connector between X2 widget and yellow box (top of crop):**
+- **ARROW DIRECTION FLIPPED â the significant defect.** In the original, a thin red connector line rises from the top of the highlighted X2 widget and terminates in a small red arrowhead pointing UP into the bottom of the yellow box (flow: X2 â yellow q box). In the recreation, the yellow box has a red arrowhead pointing DOWN beneath it (flow: yellow box â X2). This reverses the semantic direction of the diagram's callout. â **MAJOR** (confidence: high)
+
+**Red block arrow (below-center):**
+- Present in both, red/crimson, block style, pointing up-right toward the X2 widget from below. â Position below widget 2 matches. â
+- **Size:** Recreation's block arrow is substantially larger (~2x the original's relative footprint) and its tail crosses the bottom edge of the green container in both, so containment behavior is comparable; but the oversized arrow slightly crowds the container's bottom dashed border. â **MINOR** (confidence: high)
+
+**Yellow box (top edge of crop):** Partially visible in both; recreation's yellow box is larger with a green border visible; original shows a smaller yellow region. Crop-level, can't fully adjudicate â **MINOR** at most, low confidence.
+
+**Bottom red frame line:** Present at the bottom of both crops. â
+
+## Summary of Discrepancies
+
+| # | Discrepancy | Severity | Confidence |
+|---|---|---|---|
+| 1 | Connector arrow between yellow box and X2 widget points DOWN in recreation vs UP in original â flow direction reversed | **MAJOR** | High |
+| 2 | X2 highlight border magenta vs original red dotted | MINOR | Medium-high |
+| 3 | Green container border: heavy dashes vs original fine dots | MINOR | High |
+| 4 | Red block arrow oversized ~2x vs original | MINOR | High |
+
+## Visual-Quality Defects (recreation)
+- Oversized red block arrow crowds the green container's bottom border (touching/overlapping the dashed line at its tail). MINOR.
+- No text overflow, no clipping, no illegible text; X-label subscripts legible and correctly positioned.
+
+## Assessment
+Content is fully present (no missing elements, no empty regions), text/labels match, widget structure and palette match, containment is respected. However, the flipped arrow direction on the yellow-box connector is a semantic diagram error under directive (7)/(4) â direction of a drawn arrow is part of diagram fidelity, and it reverses the depicted information flow.
+
+FINAL VERDICT: **FAIL** for 'faithful, usable recreation' â one MAJOR defect (reversed arrow direction on the X2 â yellow-box connector) must be corrected; the three MINOR deviations are cosmetic and would otherwise pass.

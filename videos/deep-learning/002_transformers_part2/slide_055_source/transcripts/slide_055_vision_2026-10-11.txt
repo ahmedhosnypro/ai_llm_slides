@@ -1,0 +1,88 @@
+1. TITLE
+"Encoder-Decoder  Attention Mechanism (In Decoder)" â with "(In Decoder)" in red, rest in black.
+Subtitle line: "(Self Attention of word Zâ w.r.t All words in Sentence ( Yâ, Yâ, Yâ, Yâ )" â with "Zâ" in red and the Y tokens in red; note the unbalanced parentheses appear exactly as shown on the slide.
+Badge numeral top-right (yellow circle with dark outline): 55
+
+2. ALL VERBATIM TEXT
+- "Encoder-Decoder  Attention Mechanism (In Decoder)"
+- "(Self Attention of word Zâ w.r.t All words in Sentence ( Yâ, Yâ, Yâ, Yâ )"
+- Badge: "55"
+- Left hatched callout box (red hatched fill, arrow pointing left off-slide edge): "From Encoder Output"
+- Right hatched callout box (red hatched fill, arrow pointing right off-slide edge): "From Encoder Output"
+- Tan/gray vertical panel label: "Dot Product"
+- Small tan pill above that panel: "Similarity"
+- Pink pill: "Probabilities"
+- Blue pill: "Weighted SUM"
+- Text next to dot-product panel: "Kâ.q" (appears as "K.q" with subscript, likely Kâ.q; rendered "Kâ.q" style â best read: "Kâ.q" [?]) â appears twice, once beside the gray panel top ("Kâ.q") and once above the pink "Scaling" bar ("Kâ.q / âd").
+- Vertical pink bar text (rotated): "Scaling by âd"
+- Vertical purple bar text (rotated): "Soft max"
+- Key labels left side (small tan boxes): "Kâ", "Kâ", "Kâ", "Kâ" (top to bottom)
+- Left weight matrices (green boxes): "W_k^(1)" four times, one per row (subscript k, superscript (1); could be (l) for layer index [?])
+- Right weight matrices (blue boxes): "W_v^(1)" four times (same uncertainty on superscript)
+- Value labels right side (small tan boxes): "Vâ", "Vâ", "Vâ", "Vâ" (top to bottom)
+- Yellow embedding column left: cells labeled "Yâ", "Yâ", "Yâ", "Yâ" (each yellow row contains a small white cell labeled Yâ / Yâ / Yâ / Yâ respectively)
+- Yellow embedding column right: cells labeled "Yâ", "Yâ", "Yâ", "Yâ"
+- Sum node label: "Î£" (large, in a light-blue rounded box at top)
+- Multiplier nodes: circled "Ã" symbols (four of them along the value lines)
+- Query at bottom: "qâ" (with a small striped/colored cell strip next to it)
+- Query weight matrix (red box): "W_q^(1)" (superscript (1) [?], possibly (2) [?])
+- Bottom decoder row (magenta-outlined pill): four embedding cells labeled "Zâ", "Zâ", "Zâ", "Zâ" â the Zâ cell is highlighted (hatched magenta/pink) with a dashed magenta outline; each cell also contains a small yellow sub-cell.
+- Purple box bottom center-right: "From Decoder Self Attention Layer" (with a left-pointing block arrow beside it)
+- Bottom-right legend box (dashed teal/green outline): a striped multi-color cell strip labeled "1Ãd" on top-left, a white box "W" with "= dÃd" beside it and "1Ãd" on its right, and caption below: "d: Embedding Length"
+- Green arrow near top center pointing up toward output "O"
+
+3. EQUATIONS
+- "Kâ.q" [?] (dot product of key Kâ with query q; superscript/subscript partially small â also appears as "K.q" pattern)
+- "Kâ.q / âd" [?] (same term over square root of d, shown above the Scaling bar; rendered as a fraction "Kâ.q" over "âd")
+- "Scaling by âd"
+- "Soft max"
+- "Î£" (weighted sum)
+- Matrix dimension relation in legend: "1Ãd" (input vector), "W" of size "= dÃd", output "1Ãd" â i.e., (1Ãd)Â·(dÃd) â 1Ãd implied.
+- Weight matrix notations: "W_k^(1)", "W_v^(1)", "W_q^(1)" (superscript could be (l) layer index [?])
+- Token symbols: "Yâ, Yâ, Yâ, Yâ" (encoder outputs), "Zâ, Zâ, Zâ, Zâ" (decoder self-attention layer outputs), "qâ", "O" (output).
+
+4. DIAGRAM TOPOLOGY
+Overall: a left-to-right data-flow diagram on a peach/cream background, framed by a thin maroon/red border; slide background white with a black bar at the very bottom edge.
+
+Left side:
+- Red hatched callout box "From Encoder Output" with a hollow arrow pointing LEFT toward the slide edge (external input).
+- Below it: a yellow rounded column (dashed green/yellow outline) containing 4 stacked yellow rows; each row contains a small white cell labeled Yâ, Yâ, Yâ, Yâ (top to bottom).
+- To the right of each yellow row: a small green box "W_k^(1)" (4 boxes stacked), each followed by a small tan cell labeled Kâ, Kâ, Kâ, Kâ (top to bottom). Arrows flow left-to-right from the yellow rows through the W_k boxes to the K cells.
+
+Center-left:
+- A tall gray/tan vertical panel labeled "Dot Product" containing 4 blue dots (nodes), one per key row. Lines (thin red/gray) connect each K cell to its dot; diagonal thin red lines connect the dots to the query qâ below â converging lines showing qâ dotted against each K.
+- The query path: from the bottom decoder row, the highlighted Zâ cell connects down/up to the red box "W_q^(1)", which produces "qâ" (with a colored cell strip). A red block arrow at the very bottom points up-left toward the highlighted Zâ cell (annotating the selected word).
+
+Center:
+- The dot-product outputs feed a tall pink vertical bar labeled (rotated) "Scaling by âd"; above it the fraction "Kâ.q / âd".
+- That feeds a tall purple/violet vertical bar labeled (rotated) "Soft max". A pill labeled "Probabilities" (pink) sits above these bars.
+
+Center-right:
+- From the Softmax bar, thin red lines fan out to 4 circled "Ã" multiplier nodes arranged diagonally (one per value row, lower-left to upper-right).
+- Right side mirrors the left: a yellow rounded column (dashed outline) with 4 rows labeled Yâ, Yâ, Yâ, Yâ; each connects left-to-right... actually right-to-left: a red hatched callout "From Encoder Output" with a hollow arrow pointing RIGHT toward the slide edge sits at top right; below it the yellow column; each yellow row connects leftward through a blue box "W_v^(1)" to a tan cell labeled Vâ, Vâ, Vâ, Vâ (top to bottom). Each V line continues left to its corresponding "Ã" multiplier node.
+- From each "Ã" node, lines go up to a wide light-blue rounded box containing "Î£" (large sigma). The Î£ box has an upward green block arrow pointing to the output.
+- Output at top center: a green dashed-outline box "O" containing a striped multi-color cell strip (the output embedding vector). Pill "Weighted SUM" (blue) sits near it.
+
+Bottom:
+- A magenta/dashed-outline rounded pill containing 4 embedding cells labeled Zâ, Zâ, Zâ, Zâ (left to right); Zâ is highlighted with a hatched magenta fill and dashed magenta border, marked by a red block arrow pointing up at it from below the slide frame.
+- A purple box "From Decoder Self Attention Layer" to its right, with a white left-pointing block arrow indicating the Z row comes from the decoder self-attention layer.
+- Bottom-right legend (dashed teal rounded rectangle): striped cell strip labeled "1Ãd", white box "W" with "= dÃd" and "1Ãd", caption "d: Embedding Length" â explaining each small W matrix is dÃd acting on a 1Ãd embedding.
+
+Flow summary: encoder outputs (Y's, from both edges) â linear projections W_k / W_v â Keys (left) and Values (right); decoder token Zâ â W_q â qâ â dot products with all K's â scale by âd â softmax â probabilities weight the V's (Ã nodes) â Î£ weighted sum â output O. Flow is predominantly left-to-right with a symmetric V-branch right-to-left; query path rises bottom-to-top.
+
+Resemblance to published figures: This closely matches the style of Jay Alammar's "The Illustrated Transformer" decoder illustrations (the "Encoder-Decoder Attention" / cross-attention picture: blue question/keys/values color coding, red-ish softmax band, weighted-sum with Î£ and Ã nodes, cell-strip vector pictograms), and also echoes the soft-attention walkthrough figures from the "Transformers from scratch" style blog diagrams (e.g., Peter Bloem / Brandon Rohrer style) with cell-strip embeddings and small weight-matrix boxes. It is NOT Vaswani et al. 2017 Figure 1 â differences: no layered Encoder/Decoder stacks, no Multi-Head Attention boxes, no Add & Norm/residuals, no masked-attention triangle; instead an expanded single-head cross-attention computation with explicit K/V projections from encoder outputs (Y tokens) and Q from a decoder token (Zâ). Matches Alammar conventions: vector cell-strips, Î£ weighted-sum node, softmax vertical band, "_scaled dot-product_" decomposition into Dot Product â Scale â Softmax â Weighted Sum.
+
+5. NUMBERS/DATA
+- Badge numeral: 55
+- Token indices: YââYâ, ZââZâ, KââKâ, VââVâ, qâ (query index 2), highlighted cell Zâ
+- Matrix dimensions: "1Ãd", "= dÃd", "1Ãd"; "d: Embedding Length"
+- Superscript (1) on W_k, W_v, W_q matrices [?] (possibly layer index l)
+- No percentages, no table of values, no numeric axis scales.
+
+6. BUILD STATE / ARTIFACTS
+- Red block arrow at bottom edge pointing up at the highlighted Zâ cell â an annotation/pointer artifact.
+- The Zâ cell has a dashed magenta selection outline and hatched fill, suggesting a highlight/mid-reveal emphasis of "word Zâ".
+- Green block arrow pointing up into output box O; hollow white block arrows on both "From Encoder Output" callouts and beside "From Decoder Self Attention Layer".
+- A small colored/striped cell strip floats next to qâ and inside the O box and legend â pictogram vectors, not artifacts.
+- No visible mouse cursor, no progress bar, no video watermark/overlay text, no partial-reveal gaps detected; all boxes appear fully drawn.
+- Thin maroon border frames the content area; a solid black horizontal bar spans the bottom of the frame (video lettering/crop artifact of the still).

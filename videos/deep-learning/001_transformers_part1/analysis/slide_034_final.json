@@ -1,0 +1,249 @@
+{
+  "slide_title": "Self Attention Mechanism",
+  "subtitle_or_header": "(Embedding Vector Dimension and Softmax Sensitivity)",
+  "verbatim_text": {
+    "bullets": [
+      "As Dimension of Embedding \"d\" Increases",
+      "the Calculated weight value \"w\" increases",
+      "High Weight Values kill the gradient, and slow down learning"
+    ],
+    "labels": [
+      "34",
+      "As Dimension of Embedding \"d\" Increases",
+      "the Calculated weight value \"w\" increases",
+      "[X_i]_{1\u00d7d}",
+      "d \u2191",
+      "[X_i]_{1\u00d7d}",
+      "SoftMax",
+      "High Weight Values kill the gradient, and slow down learning",
+      "d \u2193",
+      "1",
+      "2",
+      "3",
+      "4",
+      "SoftMax",
+      "0.0321",
+      "0.0871",
+      "0.2369",
+      "0.6439",
+      "w'_{ij}",
+      "For small \"d\"",
+      "d \u2191",
+      "5",
+      "10",
+      "15",
+      "20",
+      "SoftMax",
+      "0.0000",
+      "0.0000",
+      "0.0067",
+      "0.9933",
+      "w'_{ij}",
+      "For medium \"d\"",
+      "d \u2191\u2191",
+      "10",
+      "20",
+      "30",
+      "40",
+      "SoftMax",
+      "0.0000",
+      "0.0000",
+      "0.0000",
+      "1.0000",
+      "w'_{ij}",
+      "For large \"d\""
+    ],
+    "equations": [
+      "w'_{ij} = x_i^T x_j",
+      "w'_{ij} = x_i^T x_j",
+      "w_{ij} = \\frac{\\exp w'_{ij}}{\\sum_j \\exp w'_{ij}}"
+    ]
+  },
+  "layout": {
+    "arrangement": "Framed lecture slide: thin dark-red #990000 border (~2.5pt) around a light-gray #E9E9E9 canvas. Centered black title at top with a red/yellow-highlighted subtitle directly beneath; yellow circular slide-number badge at top-right. Upper-left quadrant: a green rounded 'concept' box holding two copies of the attention-score equation, a red 1\u00d7d embedding symbol, a green 'd \u2191' label plus a green block up-arrow, and a two-line blue takeaway annotation. A mouse cursor floats just right of this box. Bottom half (y 50\u201397%): one large peach rounded panel with a header row (red embedding symbol, red 'SoftMax' label, white softmax-equation box, blue-bordered warning strip) and three parallel worked-example columns (green d-arrow label, yellow input vector, thick red arrow labeled 'SoftMax', blue-framed output vector, caption underneath).",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, x 25\u201375%, y 6\u201312%",
+        "content": "\"Self Attention Mechanism\" in bold black sans-serif"
+      },
+      {
+        "name": "Subtitle",
+        "position": "top center, x 18\u201382%, y 12\u201317%",
+        "content": "\"(Embedding Vector Dimension and Softmax Sensitivity)\" \u2014 red text with \"Vector Dimension\" and \"Softmax Sensitivity\" highlighted in yellow"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, x 91\u201397%, y 6\u201313%",
+        "content": "Yellow circle with thin dark outline containing \"34\""
+      },
+      {
+        "name": "Concept box",
+        "position": "upper left, x 5\u201342%, y 18\u201348%",
+        "content": "Green rounded rectangle: white-framed equation w'_{ij}=x_i^T x_j (top-left), red [X_i]_{1\u00d7d} (top-right), green \"d \u2191\" (mid-left), green up-arrow plus smaller repeat of the equation (center), blue two-line annotation \"As Dimension of Embedding \\\"d\\\" Increases / the Calculated weight value \\\"w\\\" increases\" with yellow highlight on \"d\" and orange highlight + red text on \"w\\\" increases\""
+      },
+      {
+        "name": "Mouse cursor",
+        "position": "center, x 46\u201349%, y 29\u201333%",
+        "content": "Standard arrow mouse pointer (screen-recording artifact)"
+      },
+      {
+        "name": "Softmax demo panel",
+        "position": "bottom, x 4\u201396%, y 50\u201397%",
+        "content": "Peach rounded rectangle; header row: red [X_i]_{1\u00d7d} in red-framed white box (far left), red \"SoftMax\" label, white box with w_{ij}=exp w'_{ij}/\u03a3_j exp w'_{ij}, blue-framed strip \"High Weight Values kill the gradient, and slow down learning\"; below, three columns \u2014 (1) d\u2193, inputs 1,2,3,4 \u2192 0.0321,0.0871,0.2369,0.6439, caption \"For small \\\"d\\\"\"; (2) d\u2191, inputs 5,10,15,20 \u2192 0.0000,0.0000,0.0067,0.9933, caption \"For medium \\\"d\\\"\"; (3) d\u2191\u2191, inputs 10,20,30,40 \u2192 0.0000,0.0000,0.0000,1.0000, caption \"For large \\\"d\\\"\""
+      }
+    ],
+    "hierarchy": "The peach demo panel dominates (\u224843% of slide area: x 4\u201396%, y 50\u201397%; most saturated colors, only numeric data). Title is the largest single text (\u224828pt). The green concept box is the secondary focal point; the blue warning strip and red/yellow highlights pull the eye. Slide-number badge and mouse cursor are the smallest elements."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Green rounded rectangle (thin #00A651 outline, white fill) grouping the 'effect of embedding dimension' concept; contains two white equation boxes, the red matrix symbol, green arrows and a blue annotation.",
+      "colors": [
+        "#00A651",
+        "#FFFFFF",
+        "#CC0000",
+        "#00B050",
+        "#0000CC",
+        "#FFFF00",
+        "#FFA500"
+      ],
+      "position": "upper left, x 5\u201342%, y 18\u201348%"
+    },
+    {
+      "type": "other",
+      "description": "Equation boxes: white rectangles with thin gray/black borders holding math text \u2014 (a) w'_{ij}=x_i^T x_j (~20pt) top-left of concept box; (b) same equation smaller (~12pt) beside a green up-arrow; (c) w_{ij}=exp w'_{ij}/\u03a3_j exp w'_{ij} as a built-up fraction in the peach panel header.",
+      "colors": [
+        "#FFFFFF",
+        "#808080",
+        "#000000"
+      ],
+      "position": "concept box and peach panel header row"
+    },
+    {
+      "type": "other",
+      "description": "Red embedding symbol [X_i]_{1\u00d7d} (bold red X with subscript i inside square brackets, subscript 1\u00d7d), rendered twice: once in the concept box, once inside a white red-bordered box at the peach panel's top-left.",
+      "colors": [
+        "#CC0000",
+        "#FFFFFF"
+      ],
+      "position": "concept box top-right; peach panel top-left"
+    },
+    {
+      "type": "arrow",
+      "description": "Directional arrows: green 'd \u2191' in concept box; green block up-arrow preceding the small repeated equation; per demo column a green bold label with arrow(s) \u2014 'd \u2193' (col 1), 'd \u2191' (col 2), 'd \u2191\u2191' double up-arrow (col 3); three thick horizontal red block arrows pointing right, each labeled 'SoftMax' in orange bold above it.",
+      "colors": [
+        "#00B050",
+        "#C00000",
+        "#FFA500"
+      ],
+      "position": "concept box; above/between the input and output vectors of each demo column"
+    },
+    {
+      "type": "diagram",
+      "description": "Three vector-transformation columns (core diagram). Each column: 4 stacked input values in small yellow rounded boxes with red borders (col1: 1,2,3,4; col2: 5,10,15,20; col3: 10,20,30,40), stack wrapped in large thin red parentheses; thick red right-arrow labeled 'SoftMax'; 4 stacked output values in small white boxes with blue borders (col1: 0.0321,0.0871,0.2369,0.6439; col2: 0.0000,0.0000,0.0067,0.9933; col3: 0.0000,0.0000,0.0000,1.0000), stack wrapped in large thin blue parentheses; below each, math-italic w'_{ij} plus black caption 'For small \"d\"' / 'For medium \"d\"' / 'For large \"d\"'.",
+      "colors": [
+        "#FFFF00",
+        "#C00000",
+        "#FFFFFF",
+        "#0033CC",
+        "#FFA500",
+        "#000000"
+      ],
+      "position": "peach panel, three columns at x\u224812\u201332%, 40\u201360%, 68\u201388%, y\u224862\u201395%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Warning strip: white rectangle with medium blue border containing bold italic blue text 'High Weight Values kill the gradient, and slow down learning'.",
+      "colors": [
+        "#FFFFFF",
+        "#0000CC"
+      ],
+      "position": "peach panel header, right side, x\u224842\u201390%, y\u224852\u201360%"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: yellow filled circle with thin dark outline, black '34'.",
+      "colors": [
+        "#FFFF00",
+        "#333333",
+        "#000000"
+      ],
+      "position": "top right"
+    },
+    {
+      "type": "icon",
+      "description": "Mouse cursor (standard white arrow with black outline) \u2014 screen-recording artifact, not authored slide content.",
+      "colors": [
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "center, x\u224847%, y\u224831%"
+    }
+  ],
+  "imagery": [
+    "Mouse-cursor arrow icon floating mid-slide (recording artifact); no photographs or illustrations otherwise \u2014 all visuals are drawn shapes, arrows, and text/equation boxes."
+  ],
+  "colors": {
+    "background": "#E9E9E9 light-gray canvas inside a #990000 dark-red frame (~2.5pt border)",
+    "title_text": "#000000",
+    "body_text": "#000000 (numbers, captions, badge '34'); #0000CC (blue annotation and warning text)",
+    "accents": [
+      "#990000 (slide frame border)",
+      "#FF0000 (subtitle red text; panel-header 'SoftMax' label; red text of '\"w\" increases')",
+      "#CC0000 (embedding symbols [X_i]_{1\u00d7d} in concept box and panel header)",
+      "#C00000 (input-box borders, thick SoftMax block arrows, red parentheses)",
+      "#FFFF00 (yellow highlights, input value boxes, number-badge fill)",
+      "#FFA500 (orange 'SoftMax' arrow labels; orange highlight behind '\"w\" increases')",
+      "#00A651 (concept-box outline)",
+      "#00B050 (green d-labels and green block up-arrow)",
+      "#0000CC (warning-strip border; blue annotation/warning text)",
+      "#0033CC (output value-box borders, blue parentheses)",
+      "#333333 (number-badge outline)",
+      "#808080 (equation-box borders)",
+      "#FCE4D4 (peach demo-panel fill)"
+    ]
+  },
+  "typography_notes": "Sans-serif (Arial/Helvetica-like) throughout for title, subtitle, labels, numbers and captions; equations in a serif/math-italic style (Cambria Math-like) with true superscripts/subscripts and a built-up fraction. Title \u224828pt bold; subtitle \u224820pt bold; annotation and warning text \u224814pt bold (warning also italic); vector values \u224812pt bold; captions \u224812pt with math-italic w'_{ij}; concept-box equations \u224820pt (large) and \u224812pt (small repeat). Exactly 4 highlighted phrases: 'Vector Dimension' and 'Softmax Sensitivity' (yellow #FFFF00 highlight, black text), 'd' (yellow #FFFF00), '\"w\" increases' (orange #FFA500 highlight, red text). Green d-labels bold with arrow glyphs; no bullet lists anywhere on the slide.",
+  "animation_state": "Fully built \u2014 nothing mid-reveal. All three example columns and all text are visible simultaneously; a mouse cursor rests over the slide, indicating a paused lecture recording rather than a build state.",
+  "recreation_brief": "1. Canvas: 16:9 slide, background #E9E9E9; draw a no-fill rectangle with ~2.5pt #990000 border inset ~2% from all edges (dark-red frame).\n2. Title: centered text box, x 25\u201375%, y 6\u201312% \u2014 'Self Attention Mechanism', Arial bold 28pt, black #000000.\n3. Subtitle: centered text box, x 18\u201382%, y 12\u201317% \u2014 '(Embedding Vector Dimension and Softmax Sensitivity)', Arial bold 20pt; render '(Embedding ', ' and ', ')' in red #FF0000; render 'Vector Dimension' and 'Softmax Sensitivity' in black on yellow #FFFF00 highlight.\n4. Slide-number badge: circle \u22480.5 in diameter centered at x\u224894%, y\u22489.5% (region x 91\u201397%, y 6\u201313%); fill #FFFF00, thin #333333 outline, text '34' Arial bold 12pt black.\n5. Concept box: rounded rectangle x 5\u201342%, y 18\u201348%; white #FFFFFF fill, 2pt #00A651 outline.\n6. Concept-box equation (large): white rectangle with thin #808080 border at top-left inside the concept box (\u2248x 7\u201324%, y 20\u201326%) containing 'w'_{ij} = x_i^T x_j' in Cambria Math \u224820pt black.\n7. Concept-box embedding symbol: top-right inside the concept box (\u2248x 33\u201340%, y 20\u201325%): bold red #CC0000 '[X_i]_{1\u00d7d}' (bold X with subscript i inside square brackets; subscript 1\u00d7d on the bracket).\n8. Concept-box d-label: mid-left inside the concept box (\u2248x 8\u201315%, y 28\u201333%): bold green #00B050 'd \u2191'.\n9. Concept-box arrow + small equation: center of the concept box (\u2248x 18\u201338%, y 30\u201338%): green #00B050 block up-arrow with a small white rectangle (thin #808080 border) to its right containing 'w'_{ij} = x_i^T x_j' in Cambria Math \u224812pt black.\n10. Concept-box annotation: two lines at the bottom of the concept box (\u2248x 8\u201340%, y 40\u201347%), Arial bold \u224814pt: line 1 'As Dimension of Embedding \"d\" Increases' in blue #0000CC with yellow #FFFF00 highlight behind 'd'; line 2 'the Calculated weight value \"w\" increases' in blue #0000CC, with '\"w\" increases' in red #FF0000 on orange #FFA500 highlight.\n11. Optional recording artifact: standard white mouse-pointer arrow with black outline at x\u224847%, y\u224831%; omit for a clean authored slide.\n12. Demo panel: rounded rectangle x 4\u201396%, y 50\u201397%, fill peach #FCE4D4, no outline.\n13. Panel header, embedding box: white rectangle with 1.5pt #C00000 border at far left of the header row (\u2248x 6\u201314%, y 52\u201358%) containing bold red #CC0000 '[X_i]_{1\u00d7d}'.\n14. Panel header, SoftMax label: bold red #FF0000 'SoftMax' at \u2248x 16\u201324%, y 52\u201358%.\n15. Panel header, equation box: white rectangle with thin #808080 border at \u2248x 26\u201340%, y 52\u201358% containing the built-up fraction 'w_{ij} = exp w'_{ij} / \u03a3_j exp w'_{ij}' (Cambria Math, black).\n16. Panel header, warning strip: white rectangle with 1.5pt #0000CC border spanning x 42\u201390%, y 52\u201360%, containing bold italic blue #0000CC 14pt 'High Weight Values kill the gradient, and slow down learning'.\n17. Demo column 1 (x 12\u201332%, y 62\u201395%): (a) top label bold green #00B050 'd \u2193'; (b) left stack of four \u22480.35-in-tall rounded rectangles, fill #FFFF00, 1.5pt #C00000 borders, black bold \u224812pt centered values 1, 2, 3, 4 top-to-bottom, stack wrapped in large thin red #C00000 parentheses; (c) thick #C00000 right-pointing block arrow between the two stacks with bold orange #FFA500 'SoftMax' above it; (d) right stack of four white rounded rectangles with 1.5pt #0033CC borders, black bold \u224812pt values 0.0321, 0.0871, 0.2369, 0.6439 top-to-bottom, wrapped in large thin blue #0033CC parentheses; (e) caption below: math-italic 'w'_{ij}' followed by black 'For small \"d\"'.\n18. Demo column 2 (x 40\u201360%, y 62\u201395%): duplicate column 1's shapes; label 'd \u2191'; inputs 5, 10, 15, 20; outputs 0.0000, 0.0000, 0.0067, 0.9933; caption 'For medium \"d\"'.\n19. Demo column 3 (x 68\u201388%, y 62\u201395%): duplicate column 1's shapes; label 'd \u2191\u2191'; inputs 10, 20, 30, 40; outputs 0.0000, 0.0000, 0.0000, 1.0000; caption 'For large \"d\"'.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Schema: verbatim_text.bullets was empty; filled with the slide's 3 free-standing prose statements (the 2 concept-box annotation lines and the warning-strip sentence, all already present in labels) \u2014 no new text invented; the slide contains no bullet glyphs.",
+      "Consistency: labels listed 'd \u2191' once, but layout.regions places it twice (concept box mid-left AND demo column 2 header); added the missing 'd \u2191' entry \u2014 labels now have 44 items.",
+      "Consistency: colors.accents assigned #FF0000 to 'matrix symbols' while visual_elements specify #CC0000 for both [X_i]_{1\u00d7d} symbols; standardized the symbols to #CC0000 and restricted #FF0000 to subtitle text, the panel-header 'SoftMax' label, and the red '\"w\" increases' text.",
+      "Consistency: colors.accents listed #C00000 as the frame color while colors.background and the brief specify #990000; standardized the frame to #990000 and restricted #C00000 to input-box borders, block arrows, and red parentheses.",
+      "Consistency: concept-box outline conflicted (#00B050 in accents vs #00A651 in visual_elements and the brief); standardized to #00A651, reserving #00B050 for the green d-labels and block up-arrow.",
+      "Consistency: visual_elements said the concept box has a 'neutral fill' while the brief said 'no fill'; standardized to white #FFFFFF fill (assumption flagged in uncertain_items).",
+      "Precision: layout.arrangement said 'Bottom two-thirds' for the demo panel; corrected to 'bottom half (y 50\u201397%)' to match the panel region coordinates.",
+      "Precision: hierarchy claimed the peach panel is \u224845% of slide area; recomputed from its own region (92% width \u00d7 47% height) \u2248 43% and corrected.",
+      "Precision: replaced the vague typography note 'Heavy use of colored highlight' with the exact 4 highlighted phrases: 'Vector Dimension' and 'Softmax Sensitivity' (yellow #FFFF00), 'd' (yellow #FFFF00), '\"w\" increases' (orange #FFA500 with red text).",
+      "Precision: aligned the brief's slide-badge placement (x\u224893%, y\u22489%) to the region coordinates x 91\u201397%, y 6\u201313% (center \u224894%, 9.5%).",
+      "Completeness: added to colors.accents the 7 hex values used elsewhere in the JSON but missing from the palette: #990000, #CC0000, #00A651, #0000CC, #0033CC, #333333, #808080.",
+      "Recreatability: rewrote recreation_brief as a 19-step numbered checklist placing one element per step, adding explicit coordinates for every header-row element, the warning strip (x 42\u201390%, y 52\u201360%), and all three demo columns; all 44 labels, 3 equations, title, and subtitle are placed exactly once."
+    ],
+    "uncertain_items": [
+      "Concept-box fill: source JSON says only 'neutral fill'; white #FFFFFF was assumed \u2014 the original may have no fill.",
+      "Two distinct blues are specified (#0000CC for the warning strip and annotation text, #0033CC for output boxes and blue parentheses); whether the source uses one blue or two cannot be verified from the JSON.",
+      "Conflicting hex mentions were resolved by majority/specificity (frame #990000 over #C00000; concept-box outline #00A651 over #00B050; embedding symbols #CC0000 over #FF0000) \u2014 unverifiable without the image.",
+      "All font sizes are extractor estimates (\u224828pt title, \u224820pt subtitle, \u224814pt annotation/warning, \u224812pt values/captions, \u224820pt and \u224812pt equations); sub-coordinates inside the concept box and header row are \u2248 estimates derived from the region bounds."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_034.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 34,
+      "image": "slide_034.jpg",
+      "kept_frame": "frame_03064.jpg",
+      "start_sec": 3051.0,
+      "end_sec": 3063.0,
+      "frame_count": 13
+    },
+    "elapsed_s": 293.7,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 887.7
+  }
+}

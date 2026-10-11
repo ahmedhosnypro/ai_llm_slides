@@ -1,0 +1,305 @@
+{
+  "slide_title": "Self Attention Mechanism",
+  "subtitle_or_header": "(Scaling based on Square Root of Embedding Vector Dimension)",
+  "verbatim_text": {
+    "bullets": [
+      "Let Average Values of elements of V\u2081 = M",
+      "Let Average Values of elements of V\u2082 = M",
+      "Vector Length of V\u2081 (all Ms) = V\u2081\u1d40 V\u2081 = M \u221ad\u2081",
+      "Vector Length of V\u2082 (all Ms) = V\u2082\u1d40 V\u2082 = M \u221ad\u2082",
+      "\u221ad is a good choice for scaling",
+      "\u2074\u221ad Some times is used",
+      "d=100, \u221ad =10",
+      "Remember:",
+      "\"d\" is",
+      "Dimension of Embedding",
+      "Not",
+      "length of input Sequence"
+    ],
+    "labels": [
+      "36 \u2014 slide number in yellow circle, top right",
+      "V\u2081 \u2014 vector label, appears twice (above X-column and above transformed M-column)",
+      "V\u2082 \u2014 vector label, appears twice (above X-column and above transformed M-column)",
+      "X\u2081 X\u2082 X\u2083 X\u2084 X\u2085 X\u2086 X\u2087 X\u2088 X\u2089 X\u2081\u2080 X\u2081\u2081 X\u2081\u2082 \u2014 elements of first column vector",
+      "X\u2081 X\u2082 X\u2083 X\u2084 X\u2085 \u2014 elements of second column vector",
+      "M \u2014 repeated 12 times in transformed V\u2081 column",
+      "M \u2014 repeated 5 times in transformed V\u2082 column",
+      "1xd\u2081 \u2014 dimension label under first X-column and under transformed 12-M column",
+      "1xd\u2082 \u2014 dimension label at bottom of short V\u2082 X-column and under transformed 5-M column",
+      "M \u2014 x-axis label under the bell curve",
+      "SoftMax \u2014 appears 4 times (two formula boxes, one arrow label in each flowchart)",
+      "Scaled \u2014 label above the first red arrow in the right flowchart",
+      "/ \u2014 large division slash in the right flowchart",
+      "10, 20, 30, 40 \u2014 input vector values (both flowcharts)",
+      "0.0000, 0.0000, 0.0000, 1.0000 \u2014 SoftMax output values (left flowchart)",
+      "1, 2, 3, 4 \u2014 scaled vector values (right flowchart)",
+      "0.0321, 0.0871, 0.2369, 0.6439 \u2014 SoftMax output values (right flowchart)"
+    ],
+    "equations": [
+      "V_1^T V_1 = M\\sqrt{d_1}  (rendered: V\u2081\u1d40 V\u2081 = M \u221ad\u2081)",
+      "V_2^T V_2 = M\\sqrt{d_2}  (rendered: V\u2082\u1d40 V\u2082 = M \u221ad\u2082)",
+      "SoftMax\\left[ w'_{ij} \\right]  (rendered: SoftMax [w'\u1d62\u2c7c])",
+      "SoftMax\\left( \\frac{w'_{ij}}{\\sqrt{d}} \\right)  (rendered: SoftMax (w'\u1d62\u2c7c / \u221ad))",
+      "\\sqrt{d}",
+      "\\sqrt[4]{d}",
+      "d=100, \\sqrt{d}=10"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top with subtitle directly beneath and a numbered yellow badge at top-right. Below are three horizontal bands: (1) left green-bordered vector-transformation diagram + center mint equations box + right bell-curve box; (2) a middle strip with two green-bordered statement boxes, and slightly lower three red-bordered formula boxes; (3) bottom row with a red-bordered 'Remember' box at left, a black-bordered SoftMax flowchart at center, and a magenta-bordered scaled-SoftMax flowchart at right.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, x\u224830-70%, y\u22489-14%",
+        "content": "Bold black text 'Self Attention Mechanism'"
+      },
+      {
+        "name": "Subtitle",
+        "position": "top center, x\u224818-85%, y\u224814-19%",
+        "content": "Dark-red bold '(Scaling based on Square Root of Embedding Vector Dimension)' with yellow highlight covering '(Scaling'"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, x\u224890-95%, y\u224810-17%",
+        "content": "Yellow circle, red outline, black '36'"
+      },
+      {
+        "name": "Vector transformation diagram",
+        "position": "left, x\u22485-28%, y\u224818-68%",
+        "content": "Green-bordered container: before/after column vectors V\u2081 (12 elements) and V\u2082 (5 elements), X's replaced by M's, orange dashed divider, white block arrow"
+      },
+      {
+        "name": "Equations box",
+        "position": "top center, x\u224832-69%, y\u224820-42%",
+        "content": "Pale-green box, red border, four lines: two 'Let Average Values\u2026' lines and two blue bold-italic 'Vector Length\u2026' lines"
+      },
+      {
+        "name": "Bell curve box",
+        "position": "top right, x\u224871-93%, y\u224820-41%",
+        "content": "White box, red border, Gaussian curve on light grid, red axes, blue dashed line at peak, blue 'M' label under x-axis"
+      },
+      {
+        "name": "Scaling statement boxes",
+        "position": "middle band, x\u224831-93%, y\u224844-52%",
+        "content": "Green-bordered '\u221ad is a good choice for scaling' (white fill) and '\u2074\u221ad Some times is used' (pale-yellow fill)"
+      },
+      {
+        "name": "Formula boxes",
+        "position": "middle-lower band, x\u224830-87%, y\u224854-68%",
+        "content": "Three red-bordered white boxes: 'SoftMax [w'\u1d62\u2c7c]', 'SoftMax (w'\u1d62\u2c7c/\u221ad)' fraction, 'd=100, \u221ad =10'"
+      },
+      {
+        "name": "Remember box",
+        "position": "bottom left, x\u22485-24%, y\u224871-94%",
+        "content": "Red-bordered white box, five centered lines about \"d\" being the embedding dimension"
+      },
+      {
+        "name": "SoftMax flowchart (unscaled)",
+        "position": "bottom center, x\u224830-53%, y\u224869-96%",
+        "content": "Black-bordered box: [10,20,30,40] \u2192 red arrow labeled SoftMax \u2192 [0.0000,0.0000,0.0000,1.0000]"
+      },
+      {
+        "name": "Scaled SoftMax flowchart",
+        "position": "bottom right, x\u224854-94%, y\u224869-96%",
+        "content": "Magenta-bordered pink box: [10,20,30,40] / (\u221ad) \u2192 arrow labeled Scaled \u2192 [1,2,3,4] \u2192 arrow labeled SoftMax \u2192 [0.0321,0.0871,0.2369,0.6439]"
+      }
+    ],
+    "hierarchy": "Title is the largest text. Visually dominant are the three large boxed schematics (left vector diagram, bottom-center and bottom-right flowcharts). The blue bold math in the mint equations box is the densest text block. Red is the recurring accent (subtitle, borders, arrows); yellow pops as highlights \u2014 pure yellow #FFFF00 on the word 'Scaling' and the '36' badge, tan-yellow #FFE699 on the input chips in both flowcharts; green marks the two rule statements and the vector container."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Vector-transformation schematic in a green rounded-border container. Left of an orange dashed vertical divider: column vector V\u2081 = (X\u2081,X\u2082,X\u2083,X\u2084,X\u2085,X\u2086,X\u2087,X\u2088,X\u2089,X\u2081\u2080,X\u2081\u2081,X\u2081\u2082)\u1d40 labeled 1xd\u2081, and shorter column vector V\u2082 = (X\u2081,X\u2082,X\u2083,X\u2084,X\u2085)\u1d40 labeled 1xd\u2082 (label at its bottom-right). Right of the divider: V\u2081 becomes a column of twelve M's labeled 1xd\u2081 and V\u2082 becomes a column of five M's labeled 1xd\u2082. A white block arrow with blue outline points right at mid-height across the divider. Vector headers V\u2081/V\u2082 in blue bold italic; brackets and elements in blue.",
+      "colors": [
+        "#00B050",
+        "#0000CC",
+        "#FFA500",
+        "#FFFFFF",
+        "#E8E8E8"
+      ],
+      "position": "left side, x\u22485-28%, y\u224818-68%"
+    },
+    {
+      "type": "chart",
+      "description": "Small Gaussian bell-curve plot in a white red-bordered box: light-gray grid, red L-shaped x/y axes with no numeric ticks, gray-blue bell curve centered, blue dashed vertical line through the peak, blue bold-italic label 'M' centered below the x-axis.",
+      "colors": [
+        "#C00000",
+        "#9DB2C8",
+        "#D9D9D9",
+        "#4472C4",
+        "#FFFFFF"
+      ],
+      "position": "top right, x\u224871-93%, y\u224820-41%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Equations box, pale-green fill, red border, four text lines: 'Let Average Values of elements of V\u2081 = M' / 'Let Average Values of elements of V\u2082 = M' (black text, V\u2081/V\u2082 and M blue bold) and 'Vector Length of V\u2081 (all Ms) = V\u2081\u1d40 V\u2081 = M \u221ad\u2081' / 'Vector Length of V\u2082 (all Ms) = V\u2082\u1d40 V\u2082 = M \u221ad\u2082' (all blue bold italic).",
+      "colors": [
+        "#E7F0E2",
+        "#C00000",
+        "#0000CC",
+        "#1A1A1A"
+      ],
+      "position": "top center, x\u224832-69%, y\u224820-42%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "White box, thick green border: '\u221ad is a good choice for scaling' \u2014 '\u221ad' large green bold, remainder dark bold italic.",
+      "colors": [
+        "#FFFFFF",
+        "#00B050",
+        "#1F3D1F"
+      ],
+      "position": "middle band left, x\u224831-62%, y\u224844-52%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pale-yellow box, green border: '\u2074\u221ad Some times is used' \u2014 fourth-root '\u2074\u221ad' in green bold, 'Some times is used' in dark bold.",
+      "colors": [
+        "#FFFFCC",
+        "#00B050",
+        "#1A1A1A"
+      ],
+      "position": "middle band right, x\u224864-93%, y\u224844-52%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "White box, red border: 'd=100, \u221ad =10' in blue bold.",
+      "colors": [
+        "#FFFFFF",
+        "#C00000",
+        "#0000CC"
+      ],
+      "position": "middle-lower band right, x\u224871-87%, y\u224857-66%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "White box, red border: 'SoftMax [w'\u1d62\u2c7c]' \u2014 'SoftMax' red bold, w'\u1d62\u2c7c blue bold italic inside black square brackets.",
+      "colors": [
+        "#FFFFFF",
+        "#C00000",
+        "#0000CC"
+      ],
+      "position": "middle-lower band left, x\u224830-46%, y\u224856-67%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "White box, red border: 'SoftMax' red bold followed by large parentheses containing the fraction w'\u1d62\u2c7c / \u221ad in blue bold italic.",
+      "colors": [
+        "#FFFFFF",
+        "#C00000",
+        "#0000CC"
+      ],
+      "position": "middle-lower band center, x\u224852-68%, y\u224854-68%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "White box, thin red border, five centered lines: 'Remember:' (blue bold italic), '\"d\" is' (black bold), 'Dimension of Embedding' (red, underlined), 'Not' (blue bold), 'length of input Sequence' (blue italic).",
+      "colors": [
+        "#FFFFFF",
+        "#C00000",
+        "#0000CC",
+        "#1A1A1A"
+      ],
+      "position": "bottom left, x\u22485-24%, y\u224871-94%"
+    },
+    {
+      "type": "flowchart",
+      "description": "Unscaled-SoftMax flowchart in a black-bordered box. Left node: vertical stack of four tan chips with red borders containing 10, 20, 30, 40, wrapped in large maroon parentheses. Thick red arrow to the right labeled 'SoftMax' (red bold, above arrow). Right node: stack of four white chips with blue borders containing 0.0000, 0.0000, 0.0000, 1.0000, wrapped in dark navy parentheses.",
+      "colors": [
+        "#1A1A1A",
+        "#FFE699",
+        "#C00000",
+        "#FF0000",
+        "#FFFFFF",
+        "#0000CC",
+        "#990000"
+      ],
+      "position": "bottom center, x\u224830-53%, y\u224869-96%"
+    },
+    {
+      "type": "flowchart",
+      "description": "Scaled-SoftMax flowchart in a magenta-bordered box with light-pink fill. Chain left\u2192right: stack of tan red-bordered chips 10, 20, 30, 40 in maroon parentheses \u2192 large maroon '/' \u2192 maroon '( \u221ad )' with big parentheses \u2192 thick red arrow labeled 'Scaled' (maroon, above arrow) \u2192 stack of tan red-bordered chips 1, 2, 3, 4 in maroon parentheses \u2192 thick red arrow labeled 'SoftMax' (maroon, above arrow) \u2192 stack of white blue-bordered chips 0.0321, 0.0871, 0.2369, 0.6439 in blue parentheses.",
+      "colors": [
+        "#C040C0",
+        "#FBE4E4",
+        "#FFE699",
+        "#C00000",
+        "#990000",
+        "#FF0000",
+        "#FFFFFF",
+        "#0000CC"
+      ],
+      "position": "bottom right, x\u224854-94%, y\u224869-96%"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: yellow circle with red outline containing black '36'.",
+      "colors": [
+        "#FFFF00",
+        "#C00000",
+        "#1A1A1A"
+      ],
+      "position": "top right, x\u224890-95%, y\u224810-17%"
+    }
+  ],
+  "imagery": [
+    "No photographs or clip-art anywhere on the slide. The only pictorial element is the small schematic Gaussian bell-curve plot in the top-right box. All other graphics are drawn shapes: bracketed column vectors, parentheses, chip boxes, block arrows, and a dashed divider. A mouse cursor from the screen recording is visible near the bottom-left Remember box (artifact, not slide content)."
+  ],
+  "colors": {
+    "background": "#E8E8E8 (light gray) with a thin dark-red frame line at the slide edge",
+    "title_text": "#000000",
+    "body_text": "#1A1A1A black for base text; #0000CC blue for all math expressions, vector headers/elements, dimension labels (1xd\u2081, 1xd\u2082), the bell-curve 'M' label and the borders of the white output chips; #C00000 dark red for the subtitle, the emphasis words ('SoftMax' in the two formula boxes, 'Dimension of Embedding'), the tan-chip borders, and the borders of the equations box, bell-curve box, three formula boxes, Remember box and slide-number badge; #FF0000 bright red for the thick flowchart arrows.",
+    "accents": [
+      "#C00000",
+      "#FF0000",
+      "#0000CC",
+      "#00B050",
+      "#FFFF00",
+      "#FFA500",
+      "#C040C0",
+      "#FFE699",
+      "#FBE4E4",
+      "#E7F0E2",
+      "#FFFFCC"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Calibri-like). Title \u224822pt bold black, centered. Subtitle \u224816pt bold dark red with a yellow text-highlight on '(Scaling'. Math text is bold italic blue with subscripts/superscripts (V\u2081\u1d40, w'\u1d62\u2c7c, \u221ad\u2081, \u2074\u221ad). Dimension labels (1xd\u2081, 1xd\u2082) italic blue. Box headings bold; 'SoftMax' always bold red/maroon. No bulleted list \u2014 content is organized entirely in bordered boxes, bracketed vectors and flowcharts. Slide number sits in a circular yellow badge.",
+  "animation_state": "Slide appears fully built \u2014 every box, vector, formula and flowchart is visible; nothing is mid-build. A mouse cursor (video artifact) rests near the bottom-left Remember box.",
+  "recreation_brief": "1. Background and frame: set the slide background to light gray #E8E8E8 and draw a thin dark-red #C00000 rectangle outline flush to the slide edge.\n2. Title: place bold black sans-serif text 'Self Attention Mechanism' at \u224822pt, centered, spanning x\u224830-70%, y\u22489-14%.\n3. Subtitle: place bold dark-red #C00000 text '(Scaling based on Square Root of Embedding Vector Dimension)' at \u224816pt, centered, x\u224818-85%, y\u224814-19%, with a yellow #FFFF00 text highlight covering exactly '(Scaling'.\n4. Slide-number badge: draw a yellow #FFFF00 circle with a red #C00000 outline at x\u224890-95%, y\u224810-17%, with black '36' centered inside.\n5. Vector-transformation diagram: draw a rounded rectangle with a green #00B050 border at x\u22485-28%, y\u224818-68%; inside it draw an orange #FFA500 dashed vertical divider at the container's horizontal center. Left of the divider, place two blue bracketed column vectors with blue bold-italic headers: 'V\u2081' listing the 12 elements X\u2081 X\u2082 X\u2083 X\u2084 X\u2085 X\u2086 X\u2087 X\u2088 X\u2089 X\u2081\u2080 X\u2081\u2081 X\u2081\u2082 with the italic blue label '1xd\u2081' underneath, and a shorter 'V\u2082' listing the 5 elements X\u2081 X\u2082 X\u2083 X\u2084 X\u2085 with the italic blue label '1xd\u2082' at its bottom-right. At mid-height, draw a white block arrow with blue outline pointing right across the divider. Right of the divider, place two more blue bracketed column vectors with blue bold-italic headers: 'V\u2081' as a column of twelve 'M's labeled '1xd\u2081' underneath, and 'V\u2082' as a column of five 'M's labeled '1xd\u2082' underneath.\n6. Equations box: draw a pale-green #E7F0E2 rectangle with a red #C00000 border at x\u224832-69%, y\u224820-42%, containing four lines: 'Let Average Values of elements of V\u2081 = M' and 'Let Average Values of elements of V\u2082 = M' in black text with V\u2081/V\u2082 and M in blue bold, then 'Vector Length of V\u2081 (all Ms) = V\u2081\u1d40 V\u2081 = M \u221ad\u2081' and 'Vector Length of V\u2082 (all Ms) = V\u2082\u1d40 V\u2082 = M \u221ad\u2082' entirely in blue bold italic.\n7. Bell-curve chart: draw a white rectangle with a red #C00000 border at x\u224871-93%, y\u224820-41%; inside it draw a line chart with a light-gray #D9D9D9 grid, red #C00000 L-shaped x/y axes with no numeric ticks, a gray-blue #9DB2C8 Gaussian bell curve centered on the axes, a blue #4472C4 dashed vertical line through the peak, and a blue bold-italic 'M' centered below the x-axis.\n8. Statement box 1: draw a white rectangle with a thick green #00B050 border at x\u224831-62%, y\u224844-52%, containing '\u221ad is a good choice for scaling' with '\u221ad' large green bold and the remainder dark bold italic.\n9. Statement box 2: draw a pale-yellow #FFFFCC rectangle with a green #00B050 border at x\u224864-93%, y\u224844-52%, containing '\u2074\u221ad Some times is used' with '\u2074\u221ad' in green bold and 'Some times is used' in dark bold.\n10. Formula box 1: draw a white rectangle with a red #C00000 border at x\u224830-46%, y\u224856-67%, containing 'SoftMax [w'\u1d62\u2c7c]' with 'SoftMax' in red bold and w'\u1d62\u2c7c in blue bold italic inside black square brackets.\n11. Formula box 2: draw a white rectangle with a red #C00000 border at x\u224852-68%, y\u224854-68%, containing 'SoftMax' in red bold followed by large parentheses holding the blue bold-italic fraction w'\u1d62\u2c7c / \u221ad.\n12. Formula box 3: draw a white rectangle with a red #C00000 border at x\u224871-87%, y\u224857-66%, containing 'd=100, \u221ad =10' in blue bold.\n13. Remember box: draw a white rectangle with a thin red #C00000 border at x\u22485-24%, y\u224871-94%, with five centered lines: 'Remember:' (blue bold italic), '\"d\" is' (black bold), 'Dimension of Embedding' (red, underlined), 'Not' (blue bold), 'length of input Sequence' (blue italic).\n14. Unscaled-SoftMax flowchart: draw a box with a black #1A1A1A border at x\u224830-53%, y\u224869-96%; inside, left to right: a vertical stack of four tan #FFE699 chips with red #C00000 borders reading 10, 20, 30, 40, wrapped in large maroon #990000 parentheses; a thick red #FF0000 right-pointing arrow labeled 'SoftMax' in red bold above it; a vertical stack of four white chips with blue #0000CC borders reading 0.0000, 0.0000, 0.0000, 1.0000, wrapped in dark navy parentheses.\n15. Scaled-SoftMax flowchart: draw a rectangle with a magenta #C040C0 border and light-pink #FBE4E4 fill at x\u224854-94%, y\u224869-96%; inside, the left-to-right chain: tan #FFE699 red-bordered chips 10, 20, 30, 40 in maroon #990000 parentheses \u2192 a large maroon '/' \u2192 maroon '( \u221ad )' in big parentheses \u2192 a thick red #FF0000 arrow labeled 'Scaled' (maroon text above the arrow) \u2192 tan red-bordered chips 1, 2, 3, 4 in maroon parentheses \u2192 a thick red arrow labeled 'SoftMax' (maroon text above) \u2192 white chips with blue #0000CC borders reading 0.0321, 0.0871, 0.2369, 0.6439 in blue parentheses.\n16. Typography and exclusions: use one sans-serif family (Arial/Calibri-like) throughout, keep every number, label and formula verbatim as listed in verbatim_text, and do not draw the mouse cursor mentioned in imagery (video artifact, not slide content).",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Schema check passed: slide_title, verbatim_text.bullets (12 items), layout.arrangement, layout.regions (11 regions), visual_elements (12 elements), colors and recreation_brief are all present and non-empty; no field reconstruction was needed.",
+      "recreation_brief: removed the invented '2.5pt' border weight on the vector container \u2014 no border thickness is specified anywhere in the source JSON; kept the green #00B050 rounded border as the only supported specification.",
+      "recreation_brief: split the step that placed both green statement boxes into two single-element steps and the step that placed all three red formula boxes into three single-element steps, so each numbered step places exactly one element.",
+      "recreation_brief: added missing coordinates that existed in layout.regions but were absent from the brief \u2014 bell-curve box y\u224820-41%; statement boxes at x\u224831-62% and x\u224864-93%, y\u224844-52%; formula boxes at (x\u224830-46%, y\u224856-67%), (x\u224852-68%, y\u224854-68%), (x\u224871-87%, y\u224857-66%); Remember box y\u224871-94%; both flowcharts y\u224869-96%.",
+      "recreation_brief: added an explicit instruction to keep all numbers/labels verbatim and to exclude the mouse-cursor video artifact from the recreation.",
+      "colors.body_text: replaced the vague phrase 'heavy use of' with concrete, derivable assignments (#0000CC for math expressions, vector headers/elements, dimension labels, bell-curve 'M' label and output-chip borders; #C00000 for subtitle, emphasis words, tan-chip borders and the red-bordered boxes; #FF0000 for the thick flowchart arrows).",
+      "layout.hierarchy: made 'yellow pops as highlights' precise \u2014 pure yellow #FFFF00 on the '(Scaling' highlight and the '36' badge, tan-yellow #FFE699 on the input chips in both flowcharts."
+    ],
+    "uncertain_items": [
+      "No [?] markers appear anywhere in the source JSON.",
+      "Exact font family and point sizes are approximations ('Arial/Calibri-like', title \u224822pt, subtitle \u224816pt) and cannot be verified from the JSON alone.",
+      "Border thicknesses are not quantified in the source (only the qualitative 'thick' on the green border of the '\u221ad is a good choice for scaling' box); the removed '2.5pt' value cannot be replaced with a verified one.",
+      "Hex codes for the subtitle's yellow highlight and the slide-edge dark-red frame line are inferred from the palette (#FFFF00, #C00000) rather than explicitly stated.",
+      "All x/y coordinates are approximate (\u2248) vision-model estimates; final alignment should be checked against source frame slide_036.jpg."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_036.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 36,
+      "image": "slide_036.jpg",
+      "kept_frame": "frame_03603.jpg",
+      "start_sec": 3452.0,
+      "end_sec": 3602.0,
+      "frame_count": 151
+    },
+    "elapsed_s": 460.3,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1034.8
+  }
+}

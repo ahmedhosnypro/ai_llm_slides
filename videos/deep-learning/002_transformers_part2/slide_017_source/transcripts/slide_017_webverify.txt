@@ -1,0 +1,87 @@
+1. TITLE
+Exact title (top-right of slide): "Multi Head Self Attention of Word X_2" â the word "Word" is black, and "X_2" is in red with subscript 2 (X with subscript 2).
+Badge numeral (top-right circle, yellow circle with black border): 17
+
+2. ALL VERBATIM TEXT
+- Title: "Multi Head Self Attention of Word Xâ"
+- Badge: "17"
+- Top token strip label: "1Ãd"
+- Top small tokens in strip: "Yâ  Yâ  Yâ  Yâ [?]" (second token highlighted green; token glyphs small/partially unreadable [?])
+- White box: "Linear Transformation    [ T ]"
+- Label at right edge of that box (subscript-style): "dÃHÃd" (rendered as "dxHxd" with the final d subscript; reads as dÃHÃd)
+- Yellow rounded label: "Concatenated Vector" with "1ÃdH" beneath it
+- Concatenated bar segment labels (left to right): "YâÂ¹", "YâÂ¹ [?]", "YâÂ¹ [?]", "YâÂ¹ [?]", "YâÂ¹ [?]" â segments colored red, blue, yellow, green, then pale yellow; each segment labeled Y<index> with superscript 1; rightmost label "YâÂ¹" (H-th head) partially unreadable [?]
+- Small dashed token boxes below the concatenated bar (one per layer cascade, staggered): each appears to read "YâÂ¹" or "Yâ  Yâ  Yâ [?]" â glyphs too small to resolve exactly [?]
+- Layer panels (stacked rounded rectangles), badges at their top-right corners: "h=1" (red panel, front), "h=2" (yellow panel), "h=3" (green panel), "h=4" (cyan/teal panel), "h=5" (orange/tan panel, furthest back; its badge sits at the very top-right of the stack)
+- Oval labels repeated in the cascading panels: "Similarity" (appears in each layer panel: h=1 front panel and repeated above for h=2, h=3, h=4 panels: "Similarity", "Similarity", "Similarity")
+- Front red panel (h=1) internal labels:
+  - "Dot Product" (tan/beige vertical box) with label "K: q" at its upper left
+  - "K:q / âd" (label above the scaling box; written as K:q over âd, i.e. "K:q/âd")
+  - "Scaling by âd" (pink vertical box)
+  - "Soft max" (lavender/pink vertical box)
+  - "Probabilities" (white oval)
+  - "Î£" (blue box, large sigma)
+  - "Weighted SUM" (white oval)
+  - Multiplication symbols "â" (circle-X) appear on the arrows feeding the Î£/weighted-sum path, three of them stacked vertically
+  - Value-path labels: "Vâ", "Vâ", "Vâ", "Vâ" (small labels to the right of the â symbols, rendered V_1..V_4)
+  - Key-path small square labels (right of the left Wâ boxes): "Kâ [?]", "Kâ [?]", "Kâ [?]", "Kâ [?]" â tiny square tokens, glyphs unreadable [?]
+  - Left column tokens (green dashed rounded column): "Xâ", "Xâ", "Xâ", "Xâ"
+  - Left yellow boxes (three stacked, plus one lower): each labeled "Wâ" with superscript "h" â i.e. "WâÊ°" (W sub k, superscript h); small print, could be W_k^1 [?]
+  - Right yellow boxes (three stacked, plus one lower): each labeled "Wáµ¥" with superscript "h" â i.e. "Wáµ¥Ê°" (W sub v, superscript h) [?]
+  - Right column tokens (green dashed rounded column): "Xâ", "Xâ", "Xâ", "Xâ"
+  - Bottom query row (green dashed rounded row): tokens "Xâ  Xâ  Xâ  Xâ [?]" with the Xâ position overlaid by a red box "W_qÂ¹" (red box labeled W_q with superscript 1 [?]); below it a small label "q" next to small squares
+  - Red diagonal arrow label (right side, along curved arrow): "+H Heads"
+- Bottom-right inset panel (light green fill, green dashed border):
+  - Token strip: "1Ãd" (label above left token strip), then a white square box "W" with "dÃd" beneath it, then "=" then a second token strip labeled "1Ãd"
+  - Caption below: "d : Embedding Length"
+- Black horizontal bar across the very bottom of the frame (video letterbox artifact, not slide content)
+
+3. EQUATIONS
+- "Linear Transformation [ T ]" with dimension "dÃHÃd" (i.e., T is dÃHÃd)
+- Concatenated vector dimension: "1ÃdH"
+- Scaling factor: "K:q / âd" (key-query dot product divided by square root of d)
+- "Scaling by âd"
+- Soft max (softmax operation named)
+- Î£ (summation / weighted sum)
+- â (element-wise/scalar multiplication symbols on value-weighting arrows)
+- Head indexing: "h=1", "h=2", "h=3", "h=4", "h=5"; superscript h on weight matrices WâÊ°, Wáµ¥Ê°; superscript 1 on W_qÂ¹
+- Inset: "1Ãd Â· W (dÃd) = 1Ãd" â a 1Ãd vector times a dÃd matrix W yields 1Ãd; caption "d : Embedding Length"
+- Token/label sequences: Xâ Xâ Xâ Xâ (inputs), Kâ Kâ Kâ Kâ [?] (keys), Vâ Vâ Vâ Vâ (values), YâÂ¹ â¦ YâÂ¹ (per-head outputs, concatenated)
+
+4. DIAGRAM TOPOLOGY
+Overall: a hand-drawn-style, colorful "exploded" multi-head self-attention diagram. Data flows bottom-to-top within the front panel, with a left-to-right cascade of stacked layer panels (h=1 front to h=5 back), and final flow upward to the concatenation bar and linear transformation at the top.
+
+- Top of slide: a small horizontal token strip (4 small colored tokens, one highlighted green) labeled "1Ãd". A short red arrow points up from the "Linear Transformation" box to this strip.
+- "Linear Transformation [ T ]" white box with tan/orange border; label "dÃHÃd" at its right edge. Red arrow up from the concatenated vector into this box, and red arrow up from this box to the 1Ãd token strip.
+- "Concatenated Vector 1ÃdH": wide yellow/olive rounded bar containing 5 colored segments (red, blue, yellow, green, pale-yellow), each labeled Y_iÂ¹. Red arrows point up from below into this bar.
+- Below the bar: a cascade of small green-dashed token boxes (YâÂ¹ etc. [?]) staggered diagonally down-right, one per head layer, connected by thin red arrows up to the concatenated bar. Also a green-dashed box pair partway down ("YâÂ¹ YâÂ¹ [?]" ) linking the h=2/h=3 panels upward.
+- Layer stack: five large rounded-rectangle panels offset diagonally (front-left red = h=1; behind it, up-right: yellow h=2, green h=3, cyan h=4, orange h=5). Each panel is a full copy of the single-head attention computation; the front (h=1) panel is fully visible, the others mostly occluded, showing only their top edge with a "Similarity" oval and "Weighted SUM" oval peeking out.
+- h=1 (red) panel internal topology, left to right:
+  - Far left: vertical green-dashed column of 4 input tokens Xâ Xâ Xâ Xâ (green fill), with a small green up-arrow at its base.
+  - Next: a vertical stack of yellow boxes labeled WâÊ° (key weight matrices), each with a small square token to its right (Kâ..Kâ [?]); arrows from the X column into these boxes.
+  - A separate lower yellow WâÊ° box below the stack.
+  - Center-left: tan "Dot Product" box; label "K: q" at its top-left; inside, blue dots connected by thin lines (a bipartite dot-product/matching motif: column of blue dots top, column bottom, lines connecting them); receives arrows from the K tokens and from the query q (arrow entering from below).
+  - Next: pink "Scaling by âd" box (label "K:q/âd" above it); arrow from Dot Product into it.
+  - Next: lavender "Soft max" box; arrow from Scaling into it.
+  - "Probabilities" oval above the Soft max output; green arrow from softmax region toward the Î£ box; a green arrow also points to the Probabilities oval.
+  - Center-right: blue "Î£" box; below it three red vertical arrows each passing through a red "â" (multiply) circle; each â receives a horizontal arrow from the right carrying a V label (Vâ, Vâ, Vâ, Vâ); arrows continue up into Î£. "Weighted SUM" oval sits to the right of / above the Î£ outputs.
+  - Right: vertical stack of yellow boxes labeled Wáµ¥Ê° (value weight matrices), each with small square token; fed from the right-hand green-dashed column of tokens Xâ Xâ Xâ Xâ (green fill, same as left column); a separate lower Wáµ¥Ê° box below the stack.
+  - Bottom of panel: horizontal green-dashed row of tokens Xâ Xâ Xâ Xâ (the input sequence laid flat); under the Xâ position a red box "W_qÂ¹"; below it the label "q" with small gray squares (the query vector). A red arrow runs from this q up into the Dot Product box. A small red arrow at bottom-left points up into this token row (input entry point).
+  - Output: the weighted-sum result (highlighted red token Yâ position in the bottom row? â the Xâ slot in the bottom row is overlaid red/pink) flows up (red arrows) out of the h=1 panel to the concatenated vector bar.
+- "+H Heads" red curved thick arrow: starts near the bottom center-right (near the W_q box / bottom row, with a thick red hook shape), sweeps right and up along the right side of the stack, pointing at the h=2..h=5 panels, indicating the same computation replicated across H heads. Along its path sit additional small yellow boxes labeled W_qÊ° / W_kÊ° / W_vÊ° pairs (three small stacked yellow boxes near the right edge, labeled W_q, W_k, W_v with superscripts [?]), one set per head.
+- Bottom-right inset panel (light green, dashed green border): shows "1Ãd" token strip (3 tokens) â white box "W" with "dÃd" below it â "=" â "1Ãd" token strip; caption "d : Embedding Length". This is a legend explaining a token-vector times weight-matrix multiplication.
+- Well-known-figure resemblance: This is an original, elaborately decorated illustration of multi-head self-attention matching the computation of Vaswani et al. 2017 (Scaled Dot-Product Attention: MatMul(Q,K)/âd â softmax â MatMul with V, plus per-head W_q/W_k/W_v projections, concatenation, and a final linear transformation). It does NOT copy Vaswani Figure 1/2 layout, nor the Jay Alammar "Transformer" illustration, nor Peter Bloem's diagram; it is an instructor's custom "cascade" drawing (h=1..h=5 stacked panels) with the same math. Matching elements: QÂ·K/âd, softmax, weighted sum with V, per-head weight matrices, concatenation of head outputs (1ÃdH), final linear map [T] of size dÃHÃd. Differing: the stacked/cascaded colored-panel presentation, the dot-product "matching dots" motif, the inset W legend, and the "+H Heads" arrow are custom to this slide.
+
+5. NUMBERS/DATA
+- Badge: 17
+- Head indices: h = 1, 2, 3, 4, 5 (H = 5 heads implied)
+- Sequence length: 4 tokens (Xâ..Xâ)
+- Dimensions: 1Ãd, dÃHÃd, 1ÃdH, dÃd, "d : Embedding Length"
+- Values: Vâ, Vâ, Vâ, Vâ; Keys: Kâ..Kâ [?]; Outputs: YâÂ¹..YâÂ¹
+- No tables, percentages, or dataset numbers.
+
+6. BUILD STATE / ARTIFACTS
+- The slide appears fully built (no mid-reveal gaps); all panels h=1..h=5 and their badges are present.
+- A solid black horizontal bar spans the full width at the very bottom of the frame â video player letterboxing/control-bar artifact, not slide content.
+- The image is a slightly soft JPEG video still; the smallest glyphs (per-key Kâ..Kâ squares, superscripts on W boxes, the small dashed Y token boxes under the concatenation bar) are at the edge of legibility and were marked [?].
+- No cursor, pointer, or highlight animation artifacts visible; no progress bar or watermark overlays besides the bottom black bar.

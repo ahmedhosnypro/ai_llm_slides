@@ -1,0 +1,37 @@
+render (1125, 2001, 3) parent (1125, 2001, 3)
+== A. inheritance diff vs certified parent render ==
+diff>60 n=448725 bbox x[874,1879] y[135,1093]
+  PASS left half + title clean (only badge/arc-strip differ)  stray diff px=0
+  PASS badge zone differs (numeral 14->15)  n=323
+  PASS arc strip differs (parent arc removed)  n=4658
+  PASS left figure identical to parent render  mean|diff|=0.00
+== B. containment ==
+  PASS no delta ink outside gray panel (x bounds)  n=0
+  PASS panel interior ink present  n=107695
+  PASS strip between title and panel clean of delta ink  n=0
+== C. green border ==
+  PASS border cols at 572-574/893-895 pt  render cols 1192..1863 expect 1192..1865
+  PASS border rows at 104-106/523-525 pt  render rows 217..1093 expect 217..1094
+== D. shading fields ==
+  PASS peach field matches frame core  (253, 237, 221)
+  PASS mint field matches frame core  (206, 255, 225)
+  PASS peach spans y108..520 pt  render 222..1089 expect 225..1083
+  PASS mint spans y104..524 pt  render 222..1089 expect 217..1096
+== E. block arrow ==
+  PASS block arrow ink present  n=3822
+  PASS block arrow bbox within 5px of frame  render x[954,1093] y[615,661] expect x[954,1094] y[615,662]
+  PASS block arrow shape IoU vs frame >= 0.75  IoU=0.916
+  PASS arrow core red ~CC0000  (204, 0, 1)
+== F. up arrows ==
+  PASS up1 ink present  n=1000
+  PASS up1 shape IoU vs frame >= 0.5  IoU=0.779
+  PASS up2 ink present  n=806
+  PASS up2 shape IoU vs frame >= 0.5  IoU=0.840
+== G. headers ==
+  PASS Encoder ink bbox vs frame within 5px  got x[1216,1349] y[243,267] expect x[1219,1354] y[242,267]
+  PASS Decoder ink bbox vs frame within 5px  got x[1714,1847] y[241,265] expect x[1710,1848] y[242,265]
+== H. removed zones ==
+  PASS gutter strip left of arrow clean  n=0
+  PASS gutter above/below arrow clean  n=0
+
+SELFCHECK RESULT: PASS

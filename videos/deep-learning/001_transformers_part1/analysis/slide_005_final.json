@@ -1,0 +1,220 @@
+{
+  "slide_title": "1-D Convolutional Neural Network",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Convolutional Kernel",
+      "Words Vectors",
+      "1st Feature Map",
+      "2nd Feature Map",
+      "3rd Feature Map",
+      "4th Feature Map",
+      "Non Linearity",
+      "Non Linearity",
+      "Non Linearity",
+      "Non Linearity",
+      "Sequence Length",
+      "Can be Computed In Parallel",
+      "*** Not Practical for Very Long Sequences***",
+      "As Word Sequence Length Increases, we need to stack many convolution Layers.",
+      "5"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Framed full-slide schematic: thin red border frame on a white page with a light-gray canvas inside; bold red title centered at top; small yellow slide-number badge in the top-right corner; upper-left holds a small 'Convolutional Kernel' pictogram with label; a green callout box sits top-center-right; the middle band (y 30-87%) is one left-to-right pipeline of five stacked-cell columns in the order Words Vectors, 1st Feature Map, 2nd Feature Map, 3rd Feature Map, 4th Feature Map, with one vertical gray 'Non Linearity' bar after each of the four feature maps (the fourth bar at the far right) and NO bar between Words Vectors and the 1st Feature Map - that gap instead holds one solid red block arrow and two red hollow triangle (funnel) connectors, with two more funnel connectors between later columns; a vertical red 'Sequence Length' arrow runs down the left edge of the pipeline; a long red-hatched right-pointing arrow spans the bottom; a diagonal yellow warning banner overlays the bottom-right; a one-line blue caption sits at the very bottom.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, x 25-70%, y 5-13%",
+        "content": "Red bold title '1-D Convolutional Neural Network'"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, x 90-96%, y 10-18%",
+        "content": "Yellow circle with red outline containing the number 5"
+      },
+      {
+        "name": "Kernel pictogram",
+        "position": "upper left, x 5-15%, y 16-30%",
+        "content": "Three stacked pink rectangles with red outlines; label 'Convolutional Kernel' beneath in red on two lines"
+      },
+      {
+        "name": "Green callout",
+        "position": "top center-right, x 47-69%, y 20-27%",
+        "content": "Green-bordered box, text 'Can be Computed In Parallel' in green bold italic; thin green leader line runs from its lower-left down toward the '1st Feature Map' header"
+      },
+      {
+        "name": "Pipeline diagram",
+        "position": "center, x 14-91%, y 30-87%",
+        "content": "Five vertical stacks of 13 cells each (Words Vectors; 1st, 2nd, 3rd, 4th Feature Maps) with red two-line headers above; four gray vertical 'Non Linearity' bars, one after each feature map (the fourth at the far right); four red hollow triangle connectors and one red block arrow in the gaps (block arrow plus two triangles in the Words Vectors-to-1st Feature Map gap)"
+      },
+      {
+        "name": "Sequence Length arrow",
+        "position": "far left of diagram, x 14-17%, y 32-86%",
+        "content": "Vertical red downward arrow with rotated red label 'Sequence Length'"
+      },
+      {
+        "name": "Bottom hatched arrow",
+        "position": "bottom span, x 18-83%, y 87-92%",
+        "content": "Long thin right-pointing arrow filled with red diagonal hatching"
+      },
+      {
+        "name": "Warning banner",
+        "position": "bottom right, diagonal, x 60-94%, y 63-89%",
+        "content": "Yellow-highlighted, slightly rotated blue bold italic text '*** Not Practical for Very Long Sequences***' overlapping the 4th Feature Map, last Non Linearity bar and the hatched arrow"
+      },
+      {
+        "name": "Caption",
+        "position": "bottom center, x 17-86%, y 92-98%",
+        "content": "Blue one-line sentence 'As Word Sequence Length Increases, we need to stack many convolution Layers.'"
+      }
+    ],
+    "hierarchy": "1) Red title is the largest text. 2) The five-column cell diagram dominates by area. 3) Red column headers and blue rotated 'Non Linearity' labels are secondary. 4) The diagonal yellow banner is the highest-contrast overlay and pulls the eye despite smaller type. 5) Green callout. 6) Bottom blue caption. 7) Slide-number badge is smallest."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Left-to-right pipeline of five vertical stacks, each of 13 equal-sized rectangular cells (stack height identical, y 33-85%), ordered: (1) 'Words Vectors' - all 13 cells pale yellow with red outlines; (2) '1st Feature Map' - cell 2 and cells 10-13 (5 cells total) peach/orange, remaining 8 cells white with thin gray-blue outlines; (3) gray bar 'Non Linearity'; (4) '2nd Feature Map' - 3 cyan cells at middle (rows 7-9) plus 1 cyan cell near bottom (row 11), remaining 9 cells white; (5) gray bar 'Non Linearity'; (6) '3rd Feature Map' - 3 pink cells near top (rows 2-4) and 2 pink cells at middle (rows 7-8), remaining 8 cells white; (7) gray bar 'Non Linearity'; (8) '4th Feature Map' - 2 pale-green cells near top (rows 3-4) and 2 pale-green cells near bottom (rows 11-12), remaining 9 cells white; (9) gray bar 'Non Linearity' at far right. Four red hollow triangle (funnel) connectors, no fill, wide edge on the left converging to a point on the right: two between Words Vectors and 1st Feature Map (top one spanning cells 1-3, bottom one spanning cells 10-13); one between 2nd and 3rd Feature Maps at middle height spanning cyan cells 7-9; one between 3rd and 4th Feature Maps near the top spanning pink cells 2-4. The four gray 'Non Linearity' bars are full column height (y 33-85%) with blue bold text rotated to read bottom-to-top (PowerPoint rotation 270 degrees).",
+      "colors": [
+        "#FFFFCC",
+        "#C00000",
+        "#FFFFFF",
+        "#FFCC99",
+        "#99FFFF",
+        "#FFCCFF",
+        "#CCFFCC",
+        "#BFBFBF",
+        "#0000CC"
+      ],
+      "position": "center of slide, x 14-91%, y 30-87%"
+    },
+    {
+      "type": "arrow",
+      "description": "Solid red right-pointing block arrow placed between the 'Words Vectors' stack and the '1st Feature Map' stack at mid-height (~y 56-61%), indicating the convolution step.",
+      "colors": [
+        "#CC0000"
+      ],
+      "position": "x 27-32%, y 56-61%"
+    },
+    {
+      "type": "arrow",
+      "description": "Vertical red arrow to the left of the 'Words Vectors' stack, spanning the full stack height (y 32-86%), arrowhead pointing DOWN; label 'Sequence Length' in red, rotated to read bottom-to-top (PowerPoint rotation 270 degrees), sits just left of the arrow shaft.",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "x 14-17%, y 32-86%"
+    },
+    {
+      "type": "arrow",
+      "description": "Long horizontal right-pointing arrow beneath the whole pipeline (x 18-83%, y 87-92%); body is thin, filled with red diagonal hatching/stripes on white, thin red outline, open triangular arrowhead at right end.",
+      "colors": [
+        "#C00000",
+        "#FFFFFF"
+      ],
+      "position": "bottom, spanning under all columns"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Rectangular callout with white fill and green border; text 'Can be Computed In Parallel' in green bold italic ('Parallel' appears extra-emphasized bold italic); a thin green leader line runs from the box's lower-left corner diagonally down-left toward the '1st Feature Map' header.",
+      "colors": [
+        "#00A000",
+        "#FFFFFF"
+      ],
+      "position": "top center-right, x 47-69%, y 20-27%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Diagonal warning banner: text '*** Not Practical for Very Long Sequences***' in blue bold italic with a solid yellow highlight behind it, rotated approximately -8 degrees (counterclockwise; the text rises left-to-right); it overlaps the 4th Feature Map, the last 'Non Linearity' bar and the hatched bottom arrow.",
+      "colors": [
+        "#FFFF00",
+        "#0000CC"
+      ],
+      "position": "bottom right, x 60-94%, y 63-89%"
+    },
+    {
+      "type": "icon",
+      "description": "'Convolutional Kernel' pictogram: three stacked horizontal rectangles in salmon/pink with darker red outlines, one directly above another; label 'Convolutional Kernel' in red bold on two lines centered beneath.",
+      "colors": [
+        "#FF9999",
+        "#C00000"
+      ],
+      "position": "upper left, x 6-14%, y 16-28%"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: yellow circle with red outline containing the numeral 5 in dark text, top-right corner.",
+      "colors": [
+        "#FFFF99",
+        "#C00000",
+        "#333333"
+      ],
+      "position": "top right, x 90-96%, y 10-18%"
+    }
+  ],
+  "imagery": [
+    "Convolutional Kernel pictogram: flat vector style, three stacked pink/salmon rectangles with red outlines, upper-left of slide.",
+    "Small gray mouse-cursor arrow near the top of the diagram (approx x 29%, y 21%) - this is a screen-recording artifact, not intentional slide content."
+  ],
+  "colors": {
+    "background": "#F2F2F2 light-gray canvas inside a thin red frame; outer page #FFFFFF",
+    "title_text": "#C00000",
+    "body_text": "#0000CC",
+    "accents": [
+      "#C00000",
+      "#00A000",
+      "#FFFF00",
+      "#FFCC99",
+      "#99FFFF",
+      "#FFCCFF",
+      "#CCFFCC",
+      "#FFFFCC",
+      "#BFBFBF",
+      "#FF9999",
+      "#FFFF99"
+    ]
+  },
+  "typography_notes": "All text is sans-serif (Arial/Calibri-like). Title: bold, 30 pt, red #C00000, centered, title case. Column headers: bold 13 pt red, centered above each stack, broken onto two lines ('Words'/'Vectors', '1st Feature'/'Map', etc.) with ordinal suffixes st/nd/rd/th superscripted. 'Non Linearity': bold 13 pt blue #0000CC, rotated to read bottom-to-top (90 degrees counterclockwise = PowerPoint rotation 270 degrees) inside the gray bars. 'Sequence Length': red, rotated to read bottom-to-top (same convention). Green callout: bold italic green 14 pt. Warning banner: bold italic blue 16 pt on yellow highlight, with literal triple asterisks on both sides, rotated approximately -8 degrees. Bottom caption: 16 pt blue; 'As Word Sequence Length Increases,' is regular weight while 'we need to stack many convolution Layers.' is bold AND underlined. No serif fonts anywhere; no numbered bullets.",
+  "animation_state": "Fully built - no mid-build reveal. All five column stacks, all four 'Non Linearity' bars, the green callout, both red arrows, the hatched arrow, the yellow banner and the caption are visible simultaneously. The small gray cursor arrow near the top of the diagram is a recording artifact, not an animation element.",
+  "recreation_brief": "1. Slide base: set the slide background to plain white #FFFFFF.\n2. Border frame: draw a no-fill rectangle with a #C00000 outline ~2.5 pt, inset ~3% from all four slide edges.\n3. Canvas: draw a #F2F2F2-filled rectangle (no outline) filling the frame interior.\n4. Title: centered text box at x 25-70%, y 5-13% with the text '1-D Convolutional Neural Network' in Arial bold 30 pt, #C00000, title case.\n5. Slide-number badge: oval ~0.35 in at x 90-96%, y 10-18%; fill #FFFF99, outline #C00000 1.5 pt; centered numeral '5' in #333333, 12 pt.\n6. Kernel pictogram: three stacked horizontal rectangles (~0.8 in wide x 0.18 in tall, touching) at x 6-14%, y 16-28%, fill #FF9999, outline #C00000; directly beneath, a centered two-line label 'Convolutional' / 'Kernel' in #C00000 bold 12 pt.\n7. 'Words Vectors' stack: 13 rectangles (~1.1 in wide x 0.22 in tall, stacked touching) at x 17-25%, y 33-85%; every cell fill #FFFFCC with #C00000 outline; centered two-line header 'Words' / 'Vectors' in red bold 13 pt immediately above the stack (y 30-33%).\n8. '1st Feature Map' stack: 13 cells (same size) at x 32-40%, y 33-85%; white fill with thin gray-blue outline; fill cell 2 and cells 10-13 with #FFCC99 (remaining 8 cells stay white); header '1st Feature' / 'Map' with superscript 'st', red bold 13 pt, centered above.\n9. '2nd Feature Map' stack: 13 cells at x 47-55%, y 33-85%; white fill, thin gray-blue outline; fill cells 7-9 and cell 11 with #99FFFF (9 cells stay white); header '2nd Feature' / 'Map' with superscript 'nd', red bold 13 pt.\n10. '3rd Feature Map' stack: 13 cells at x 62-70%, y 33-85%; white fill, thin gray-blue outline; fill cells 2-4 and cells 7-8 with #FFCCFF (8 cells stay white); header '3rd Feature' / 'Map' with superscript 'rd', red bold 13 pt.\n11. '4th Feature Map' stack: 13 cells at x 77-85%, y 33-85%; white fill, thin gray-blue outline; fill cells 3-4 and cells 11-12 with #CCFFCC (9 cells stay white); header '4th Feature' / 'Map' with superscript 'th', red bold 13 pt.\n12. Non Linearity bar 1: vertical rectangle, fill #BFBFBF, ~0.3 in wide, slightly rounded corners, y 33-85%, centered at x ~43.5% (between the 1st and 2nd stacks); inside it, centered text 'Non Linearity' in #0000CC bold 13 pt rotated 270 degrees (reads bottom-to-top).\n13. Non Linearity bar 2: identical spec at x ~58.5% (between the 2nd and 3rd stacks).\n14. Non Linearity bar 3: identical spec at x ~73.5% (between the 3rd and 4th stacks).\n15. Non Linearity bar 4: identical spec at x ~88% (far right, after the 4th stack).\n16. Sequence Length arrow: vertical red arrow at x 14-17% (shaft at ~15.5%), y 32-86%, color #C00000, arrowhead pointing DOWN; place a red text box 'Sequence Length' rotated 270 degrees (reads bottom-to-top) immediately left of the shaft.\n17. Block arrow: PowerPoint 'Block Arrow (Right)' shape at x 27-32%, y 56-61% (in the Words Vectors-to-1st Feature Map gap, at mid-height), fill #CC0000, no outline.\n18. Funnel triangle 1: hollow triangle (no fill, #C00000 outline 1.5 pt), wide vertical edge on the left and apex pointing right, in the gap x 25-32%, spanning cells 1-3 of the stacks (y ~33-45%).\n19. Funnel triangle 2: identical spec, same gap x 25-32%, spanning cells 10-13 (y ~69-85%).\n20. Funnel triangle 3: identical spec, in the gap x 55-62% (between 2nd and 3rd Feature Maps), spanning cyan cells 7-9 (y ~57-69%).\n21. Funnel triangle 4: identical spec, in the gap x 70-77% (between 3rd and 4th Feature Maps), spanning pink cells 2-4 (y ~37-49%).\n22. Green callout: rectangle at x 47-69%, y 20-27%, white fill, #00A000 outline 1.5 pt; text 'Can be Computed In Parallel' in #00A000 bold italic 14 pt ('Parallel' extra-emphasized); thin #00A000 leader line from the box's lower-left corner down-left to the '1st Feature Map' header.\n23. Bottom hatched arrow: long right-pointing arrow at x 18-83%, y 87-92%; thin body with a pattern fill of #C00000 diagonal stripes on #FFFFFF, thin #C00000 outline, open triangular arrowhead at the right end.\n24. Warning banner: text box at x 60-94%, y 63-89%, overlapping the 4th Feature Map, bar 4 and the hatched arrow; text '*** Not Practical for Very Long Sequences***' (literal triple asterisks on both sides) in #0000CC bold italic 16 pt with a solid #FFFF00 highlight behind the text; rotate the box -8 degrees (counterclockwise, text rising left-to-right).\n25. Caption: centered text box at x 17-86%, y 92-98%: 'As Word Sequence Length Increases, we need to stack many convolution Layers.' in #0000CC 16 pt; keep 'As Word Sequence Length Increases,' regular and format 'we need to stack many convolution Layers.' as bold and underlined.\n26. Exclusion: do NOT draw the small gray mouse-cursor arrow near the top of the diagram (approx. x 29%, y 21%) - it is a screen-recording artifact, not slide content.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Corrected layout.arrangement and the 'Pipeline diagram' region: the four gray 'Non Linearity' bars follow each of the four feature maps (4th bar at far right); there is NO bar between Words Vectors and 1st Feature Map - that gap holds the block arrow and two funnel triangles. This now matches visual_elements and the bar x-positions (43.5/58.5/73.5/88%).",
+      "Replaced vague counts with exact ones: '~13 cells' -> 13 cells per stack; 'bottom 3-4 cells (rows ~10-13)' -> 4 cells (rows 10-13); '1-2 pink cells (rows ~7-8)' -> 2 cells (rows 7-8); '1-2 pale-green cells (rows ~11-12)' -> 2 cells (rows 11-12); triangle spans '~3 cells' -> cells 1-3 and '~3-4 cells' -> cells 10-13; banner tilt 'a few degrees' -> -8 degrees. The word 'many' inside the bottom caption is verbatim slide text and was preserved unchanged.",
+      "Harmonized the Sequence Length arrow span to y 32-86% (one description said 33-85%, two others said 32-86%).",
+      "Harmonized rotation wording: bottom-to-top labels = 90 degrees counterclockwise = PowerPoint rotation 270 degrees (typography_notes said '90 degrees', the original brief said '270 degrees').",
+      "Committed font sizes to single values instead of ranges: title 30 pt; column headers and 'Non Linearity' 13 pt; green callout 14 pt; warning banner and caption 16 pt; badge numeral and kernel label 12 pt.",
+      "Rewrote recreation_brief as a 26-step numbered checklist with exactly one placed element per step (exact text, x/y coordinates, hex colors, shape type); added derived geometry: header band y 30-33%, cell height ~4% (13 cells over y 33-85%), triangle y-ranges (cells 1-3 -> y 33-45%; cells 10-13 -> y 69-85%; cells 7-9 -> y 57-69%; cells 2-4 -> y 37-49%) and gap x-ranges (25-32%, 55-62%, 70-77%).",
+      "Confirmed schema gaps are genuine absences, not omissions: subtitle_or_header is null (title-only diagram slide) and verbatim_text.bullets is empty (all 15 text strings on the slide are diagram labels, all covered by layout.regions and the brief); nothing was invented to fill them.",
+      "Added explicit step 26 excluding the gray mouse-cursor recording artifact (approx. x 29%, y 21%) from the rebuild; it remains documented in imagery and animation_state."
+    ],
+    "uncertain_items": [
+      "Cell count per stack is an estimate ('~13' in the source); the rebuild commits to 13 cells (cell height ~4% over y 33-85%).",
+      "Highlighted-cell row numbers are approximate in the source (row ~2; rows ~10-13; rows ~7-9; row ~11; rows ~2-4; rows ~7-8; rows ~3-4; rows ~11-12); the rebuild commits to the stated integers.",
+      "Where the source said '1-2 cells' (3rd Feature Map middle rows 7-8; 4th Feature Map bottom rows 11-12), the rebuild commits to 2 cells each; the true on-slide count could be 1.",
+      "All font point sizes are estimates; single values were committed for the rebuild.",
+      "Warning banner rotation is 'approximately -8 degrees'.",
+      "No items were marked [?] in the source JSON; no [?] markers were introduced."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_005.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 5,
+      "image": "slide_005.jpg",
+      "kept_frame": "frame_00095.jpg",
+      "start_sec": 92.0,
+      "end_sec": 146.0,
+      "frame_count": 55,
+      "founder_frame_swap": true,
+      "original_kept_frame": "frame_00147.jpg"
+    },
+    "elapsed_s": 333.6,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 611.9
+  }
+}

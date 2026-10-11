@@ -1,0 +1,59 @@
+REPORT â DSAI 308 "Transformers Part II" slide frame (960x540 video still, slide fully built)
+
+1. TITLE
+No distinct title line; the slide is a full-bleed diagram. The dominant rotated label on the left edge is "Encoder Block". A yellow oval badge sits at the top-right corner of the slide; the numeral inside is partially occluded/cropped â only "8" is clearly visible, most likely "48" [48?, low confidence on the first digit]. The small inset at bottom-left carries its own caption "The Original Encoder Block".
+
+2. ALL VERBATIM TEXT
+- "Block Output" (red-outlined box, top-left of slide)
+- "Encoder Block" (red, rotated 90Â°, reading bottom-to-top along left edge)
+- "Layer Normalization (NOT Batch N" â orange/tan horizontal bar, upper region; text is truncated by the right inset panel; almost certainly "Layer Normalization (NOT Batch Normalization)" [truncated by overlay]
+- "Feed Forward Networks [ One Hidden wi" â purple-outlined banner in the middle region; truncated by the right inset panel; likely "Feed Forward Networks [ One Hidden wide Layer ]" or similar [truncated]
+- "Multi Head Self Attention" â dark maroon/purple full-width banner near the bottom of the diagram
+- "Block Input" (red-outlined box, bottom-left of slide)
+- Small inset (bottom-left, green border): caption "The Original Encoder Block"; inside it a tiny schematic with a small dark-red box whose label is illegible at this resolution [?]; below the tiny diagram a small word, appears to be "Sentences" or "Sentence" [?]
+- Right inset panel (white background, thick green border) contains, top to bottom: "Add & Norm" (green rounded box), "Feed Forward" (yellow-green box, text on two lines: "Feed" / "Forward"), "Add & Norm" (green rounded box), "Multi-Head Attention" (two lines: "Multi-Head" / "Attention", tan box with thick black border), and three red circles labeled "V", "K", "Q"
+- Right edge of main panel, top row tokens: "Y" with subscripts; the two rightmost are "Y_{N-1}" and "Y_N" (partially covered by badge/inset) [partially occluded]
+- Bottom-right tokens: "X_{N-1}", "X_N" (partially covered by inset panel)
+- Ellipsis dot rows: a row of five dark-blue dots between Y_4 and Y_{N-1} (top), and a row of five green dots between X_4 and X_{N-1} (bottom)
+
+3. EQUATIONS
+No mathematical equations per se; the formulaic token-index sequences are:
+- Bottom (input) row token labels: X_0, X_1, X_2, X_3, X_4, â¦ (5 green dots) â¦ X_{N-1}, X_N
+- Top (output) row token labels: Y_0, Y_1, Y_2, Y_3, Y_4, â¦ (5 dark-blue dots) â¦ Y_{N-1}, Y_N
+- Intermediate token rows between blocks: small labels of the same family, appear to be Yâ²-style tokens (Y with prime or intermediate subscript) at each residual stage; the individual subscript glyphs are too small to resolve reliably [?]. They appear as "Y" variants repeated under/above each (+) circle and above the Multi Head Self Attention banner.
+
+4. DIAGRAM TOPOLOGY
+Main panel (left, occupies ~85% of slide, pale-gray background):
+- Bottom row: 7+ white/pink token boxes labeled X_0 â¦ X_N (with ellipsis), sitting on the "Block Input" level. From each X_i, a blue/gray arrow rises vertically into the "Multi Head Self Attention" banner (dark maroon, full width). Red arrows are also visible rising from the X row on both sides of each column (residual/skip carriers).
+- "Multi Head Self Attention" banner â upward hollow/gray block arrows, one per token column, into a row of intermediate token boxes (Yâ²-style labels, pink/white small boxes).
+- Each intermediate token also has a red curved skip arrow routed around the sides of the block up to a row of red-circled "+" (residual add) nodes â one "+" per token column (6+ visible), red circle with white plus.
+- Dashed orange rounded-rectangle container encloses the attention sub-layer: the + row, the intermediate tokens, and the "Multi Head Self Attention" banner (i.e., self-attention + Add grouped as one dashed sub-block).
+- "+" nodes â upward into the "Layer Normalization (NOT Batch Nâ¦" tan bar (first LN).
+- From the first LN bar, red arrows rise (and red skip arrows run up the outer left/right margins) into the second sub-block.
+- Second sub-block: tokens enter a row of FFN cells â each cell is a pink/red small box containing a row of green dots and a tiny label that appears to read "MHA" [?, could be "MLP"; sits inside the "Feed Forward Networks [ One Hidden wiâ¦" purple banner]. A white mouse cursor arrow is visible near the third FFN cell.
+- FFN row â up through a second dashed orange container: second row of red "+" circles (one per column), each receiving a red skip arrow routed around the block edges.
+- "+" nodes â upward into a second "Layer Normalization (NOT Batch Nâ¦" tan bar.
+- Second LN â red arrows up to the top token row Y_0 â¦ Y_N (pink/green-tinted boxes) at the "Block Output" level. Data flows strictly bottom-to-top (Block Input at bottom â Block Output at top), left-to-right across token positions.
+- Small inset (bottom-left corner of the main panel): green-bordered box captioned "The Original Encoder Block", containing a miniature version of the same block (tiny stacked boxes, illegible labels [?]) and a small word underneath, apparently "Sentences"/"Sentence" [?].
+
+Right inset panel (white, thick green border, overlapping/covering the right end of the main diagram):
+- Bottom: red circle "V" (left) and red circle "K" (center); black arrows from V and K rise into the bottom of the "Multi-Head Attention" box; red circle "Q" sits at the right with a black arrow from Q into the right side of the Multi-Head Attention box.
+- "Multi-Head Attention" â black arrow straight up into the lower "Add & Norm" (green rounded box). A residual skip line: a black line exits below/around the attention box on the left, loops up the left side, and merges with the arrow into the lower "Add & Norm".
+- Lower "Add & Norm" â up into "Feed Forward" (yellow-green rounded box). Another residual skip line exits before/below Feed Forward on the left, loops up the far-left side of the panel, and merges into the upper "Add & Norm".
+- "Feed Forward" â up into the upper "Add & Norm"; a black arrow exits the top of the panel (output). Data flows bottom-to-top within the inset.
+- This inset closely matches Jay Alammar's "The Illustrated Transformer" (jalammar.github.io) zoomed encoder-layer figure: Multi-Head Attention fed by V/K/Q â Add & Norm â Feed Forward â Add & Norm, with the two residual skip loops drawn as looping lines on the left. Matches: block labels, colors (green Add & Norm, yellow-green FFN, tan attention box), V/K/Q red circles, skip-loop routing. Differs: Alammar's original labels the inputs x1/x2 with self-attention arrows between token pairs; here only the abstract V/K/Q entry points are shown, and the panel is drawn with heavier black borders (typical of Aladdin Persson's "Transformer from scratch" derivative of the Alammar figure â the styling strongly resembles the Aladdin Persson code-walkthrough slide, which itself reproduces the Alammar encoder zoom).
+- The main left diagram (Block Input/Block Output, residual red arrows, dashed sub-block outlines, Encoder Block sidebar) matches the annotated-transformer / "Transformer: Annotated" style or the "transformer-explainer" block diagram; closest well-known analogue is the "Block Input / Block Output" encoder figure used in several Transformer walkthrough videos (e.g., Umar Jamil / annotated-transformer derivatives), with per-token columns and dashed orange residual containers.
+
+5. NUMBERS/DATA
+- Token indices: 0, 1, 2, 3, 4, N-1, N (both X and Y families).
+- Ellipsis groups: 5 blue dots (top), 5 green dots (bottom).
+- Badge numeral: 48 (only "8" clearly visible) [?].
+- No tables, percentages, or dimension numbers visible.
+
+6. BUILD STATE / ARTIFACTS
+- Slide appears fully built (all layers present: attention, both LN bars, FFN, residuals, inset).
+- White mouse cursor arrow visible over the "Feed Forward Networks" region (near third FFN cell) â presenter's pointer.
+- The right inset panel (green-bordered) overlaps and truncates the right end of the main diagram's text ("â¦NOT Batch N", "â¦One Hidden wi") and the Y_{N-1}/Y_N and X_{N-1}/X_N token labels â an overlay artifact, not truncation by the slide edge.
+- Badge at top-right partially overlaps the Y_N token box.
+- Black letterbox bar across the very bottom of the video frame; white margins on left and right edges (video pillarboxing) â video artifacts, not slide content.
+- No mid-reveal animations, progress bars, watermarks, or captions detected.

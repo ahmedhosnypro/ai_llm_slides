@@ -1,0 +1,216 @@
+{
+  "slide_title": "Encoder \u2013 Decoder Transformer",
+  "subtitle_or_header": "Orientation is not the Issue",
+  "verbatim_text": {
+    "bullets": [
+      "Orientation is not the Issue",
+      "Let us focus on the  Building  blocks"
+    ],
+    "labels": [
+      "Output Probabilities",
+      "Softmax",
+      "Linear",
+      "Add & Norm",
+      "Feed Forward",
+      "Add & Norm",
+      "Multi-Head Attention",
+      "Add & Norm",
+      "Masked Multi-Head Attention",
+      "Add & Norm",
+      "Nx",
+      "Nx",
+      "Feed Forward",
+      "Add & Norm",
+      "Multi-Head Attention",
+      "Positional Encoding",
+      "Positional Encoding",
+      "Input Embedding",
+      "Output Embedding",
+      "Inputs",
+      "Outputs (shifted right)",
+      "Inputs",
+      "Input Embedding",
+      "Positional Encoding",
+      "Positional Encoding",
+      "Multi-Head Attention",
+      "Add & Norm",
+      "Feed Forward",
+      "Add & Norm",
+      "Nx",
+      "Nx",
+      "Outputs (shifted right)",
+      "Output Embedding",
+      "Masked Multi-Head Attention",
+      "Add & Norm",
+      "Multi-Head Attention",
+      "Add & Norm",
+      "Feed Forward",
+      "Add & Norm",
+      "Linear",
+      "Softmax",
+      "Output Probabilities",
+      "Orientation is not the Issue",
+      "Let us focus on the  Building  blocks",
+      "14"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Maroon rectangular frame inset on a light-gray slide. Title centered at top. Two white diagram panels side by side: left panel holds the vertical (portrait) Transformer architecture; right panel holds the same architecture rotated 90 degrees (landscape). A thick red curved rotation arrow sits in the gutter between the panels at mid-height. Red bold header 'Orientation is not the Issue' sits above the right panel; blue bold takeaway line 'Let us focus on the  Building  blocks' runs along the bottom-right. Yellow circular slide-number badge '14' at top-right corner.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~21%-79% width, ~10%-17% height",
+        "content": "Red bold title 'Encoder \u2013 Decoder Transformer'"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, ~90%-96% width, ~10%-18% height",
+        "content": "Yellow circle with maroon outline containing '14'"
+      },
+      {
+        "name": "Left diagram panel",
+        "position": "left, ~9%-43% width, ~19%-97% height",
+        "content": "White panel with vertical Transformer architecture (encoder left column, decoder right column, Linear/Softmax stack on top)"
+      },
+      {
+        "name": "Rotation arrow",
+        "position": "center, ~44%-51% width, ~48%-64% height",
+        "content": "Thick dark-red curved arrow indicating 90-degree rotation between the two diagrams"
+      },
+      {
+        "name": "Right header",
+        "position": "top of right half, ~48%-76% width, ~21%-25% height",
+        "content": "Red bold text 'Orientation is not the Issue'"
+      },
+      {
+        "name": "Right diagram panel",
+        "position": "right, ~49%-93% width, ~28%-85% height",
+        "content": "White panel with the same Transformer architecture rotated to horizontal flow (encoder strip on top, decoder strip below)"
+      },
+      {
+        "name": "Takeaway line",
+        "position": "bottom right, ~47%-93% width, ~89%-95% height",
+        "content": "Blue bold text 'Let us focus on the  Building  blocks'"
+      },
+      {
+        "name": "Decorative frame",
+        "position": "full slide perimeter, inset ~2-3% from all edges",
+        "content": "Thin dark-maroon #8B0000 rectangle border, no fill, enclosing all other content on the gray background"
+      }
+    ],
+    "hierarchy": "1) Red bold title (largest text). 2) The two white diagram panels (largest area, dense black line-art with pastel-filled boxes). 3) Red bold header and thick red arrow (strong accent, mid size). 4) Blue bold takeaway line. 5) Small black diagram labels and the small yellow slide badge."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "LEFT PANEL: vertical Transformer architecture (classic 'Attention Is All You Need' figure) on a white rectangle. Bottom-left: label 'Inputs' with arrow up into pink box 'Input Embedding'; a white circle containing a black sine-wave icon labeled 'Positional Encoding' feeds a circle-plus (\u2295) junction on the arrow rising into the encoder. Encoder = black rounded container labeled 'Nx' on its left side, containing bottom-to-top: orange box 'Multi-Head Attention' \u2192 yellow box 'Add & Norm' \u2192 blue box 'Feed Forward' \u2192 yellow box 'Add & Norm'; curved residual skip arrows on the left bypass each sublayer into its 'Add & Norm'. Bottom-right: label 'Outputs (shifted right)' with arrow up into pink box 'Output Embedding'; a second 'Positional Encoding' sine icon feeds a \u2295 junction into the decoder. Decoder = black rounded container labeled 'Nx' on its right side, containing bottom-to-top: orange 'Masked Multi-Head Attention' \u2192 yellow 'Add & Norm' \u2192 orange 'Multi-Head Attention' \u2192 yellow 'Add & Norm' \u2192 blue 'Feed Forward' \u2192 yellow 'Add & Norm', each with curved residual skip arrows on the right; an arrow from the encoder's top 'Add & Norm' feeds the decoder's 'Multi-Head Attention' (cross-connection). Above the decoder: lavender box 'Linear' \u2192 green box 'Softmax' \u2192 arrow up to label 'Output Probabilities'. All connectors are thin black lines with solid arrowheads.",
+      "colors": [
+        "#FFFFFF",
+        "#F4CCCC",
+        "#F9CB9C",
+        "#FFFF99",
+        "#9FC5E8",
+        "#D9D2E9",
+        "#B6D7A8",
+        "#000000"
+      ],
+      "position": "left half, ~9%-43% width, ~19%-97% height"
+    },
+    {
+      "type": "diagram",
+      "description": "RIGHT PANEL: identical Transformer architecture rotated 90 degrees clockwise so data flows left-to-right, on a white rectangle. Upper-left: label 'Inputs' with arrow right into pink box 'Input Embedding' (box text rotated vertical); vertical label 'Positional Encoding' with sine-wave icon feeds a \u2295 junction. Encoder strip (top) = black rounded container labeled 'Nx' above it, left-to-right: orange 'Multi-Head Attention' \u2192 yellow 'Add & Norm' \u2192 blue 'Feed Forward' \u2192 yellow 'Add & Norm', with curved residual skips below. Lower-left: vertical label 'Outputs (shifted right)' with arrow right into pink box 'Output Embedding' (vertical text); vertical 'Positional Encoding' with sine icon feeds a \u2295 junction. Decoder strip (bottom) = black rounded container labeled 'Nx' below it, left-to-right: orange 'Masked Multi-Head Attention' \u2192 yellow 'Add & Norm' \u2192 orange 'Multi-Head Attention' \u2192 yellow 'Add & Norm' \u2192 blue 'Feed Forward' \u2192 yellow 'Add & Norm' \u2192 lavender 'Linear' \u2192 green 'Softmax' \u2192 vertical label 'Output Probabilities' at far right; residual skips above; encoder output feeds the decoder's 'Multi-Head Attention'. All box texts are rotated 90 degrees (reading bottom-to-top); connectors black with arrowheads.",
+      "colors": [
+        "#FFFFFF",
+        "#F4CCCC",
+        "#F9CB9C",
+        "#FFFF99",
+        "#9FC5E8",
+        "#D9D2E9",
+        "#B6D7A8",
+        "#000000"
+      ],
+      "position": "right half, ~49%-93% width, ~28%-85% height"
+    },
+    {
+      "type": "arrow",
+      "description": "Thick dark-red curved arrow (open circular arc of roughly 270 degrees with a solid triangular arrowhead) placed in the gutter between the two panels at mid-height, visually indicating a 90-degree rotation from the vertical diagram to the horizontal diagram.",
+      "colors": [
+        "#CC0000"
+      ],
+      "position": "center of slide, ~44%-51% width, ~48%-64% height"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: yellow filled circle with dark maroon outline containing the number '14' in bold dark-red text, at the top-right corner inside the frame.",
+      "colors": [
+        "#FFFF99",
+        "#8B0000"
+      ],
+      "position": "top right, ~90%-96% width, ~10%-18% height"
+    },
+    {
+      "type": "other",
+      "description": "Decorative frame: thin dark-maroon rectangle border inset ~2-3% from all slide edges, no fill, enclosing the entire content on the gray background.",
+      "colors": [
+        "#8B0000"
+      ],
+      "position": "full slide perimeter"
+    }
+  ],
+  "imagery": [
+    "Positional-Encoding icons: small white circles containing a black sinusoidal wave symbol, one at each input (two per diagram, four total), each connected via a small circle-plus (\u2295) junction symbol into the embedding arrow.",
+    "No photographs or illustrations; all graphics are vector-style line art (boxes, arrows, rounded containers, sine icons)."
+  ],
+  "colors": {
+    "background": "#E8E8E8",
+    "title_text": "#CC0000",
+    "body_text": "#000000",
+    "accents": [
+      "#CC0000",
+      "#0000CC",
+      "#8B0000",
+      "#FFFF99",
+      "#F4CCCC",
+      "#F9CB9C",
+      "#9FC5E8",
+      "#D9D2E9",
+      "#B6D7A8"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Helvetica-like). Title: bold, ~36-40pt, red, centered, title case with en dash. Diagram labels: ~9-10pt regular black inside and beside boxes; box labels centered; 'Nx' italic-style serif-like N is actually plain sans. Right-panel box labels are rotated 90 degrees. Header 'Orientation is not the Issue': bold ~16-18pt red, sentence case. Takeaway 'Let us focus on the  Building  blocks': bold ~20-22pt blue (note visibly wide spacing around 'Building'). Slide number '14': bold ~14pt dark red inside yellow circle. No italics, no bullet lists, no numbered lists on this slide.",
+  "animation_state": "Slide appears fully built; both diagrams, header, arrow, takeaway line, and slide badge are all visible with no partial build or reveal in progress.",
+  "recreation_brief": "1. Background: set the slide background to solid light gray #E8E8E8. 2. Frame: draw a no-fill rectangle inset ~3% from all four slide edges, outline dark maroon #8B0000, line weight ~2.5pt; it must enclose every other element. 3. Title: centered text box spanning ~21%-79% width and ~10%-17% height with the text 'Encoder \u2013 Decoder Transformer' (en dash), Arial Bold ~36-40pt, color #CC0000. 4. Slide-number badge: oval ~0.55in diameter at top-right (~90%-96% width, ~10%-18% height), fill #FFFF99, outline #8B0000 1.5pt, centered text '14' in Arial Bold ~14pt, color #8B0000. 5. Left panel base: white rectangle with thin black outline on the left, spanning ~9%-43% width and ~19%-97% height. 6. Left panel encoder input: at the panel's bottom-left place the black label 'Inputs' (Arial ~9-10pt); draw a thin black up-arrow from 'Inputs' into a pink #F4CCCC box labeled 'Input Embedding'; beside it place a white circle containing a black sine-wave icon labeled 'Positional Encoding', joined to the rising arrow through a small \u2295 (circle-plus) junction. 7. Left encoder container: black-outlined rounded rectangle labeled 'Nx' on its left side, containing bottom-to-top an orange #F9CB9C box 'Multi-Head Attention', a yellow #FFFF99 box 'Add & Norm', a blue #9FC5E8 box 'Feed Forward', and a yellow #FFFF99 box 'Add & Norm'; add curved black residual skip arrows on the left that bypass each sublayer and terminate in its 'Add & Norm'. 8. Left panel decoder input: at the panel's bottom-right place the black label 'Outputs (shifted right)'; draw a thin black up-arrow into a pink #F4CCCC box 'Output Embedding'; add a second white sine-wave circle labeled 'Positional Encoding' feeding a \u2295 junction on the decoder input arrow. 9. Left decoder container: black rounded rectangle labeled 'Nx' on its right side, containing bottom-to-top an orange #F9CB9C box 'Masked Multi-Head Attention', a yellow #FFFF99 box 'Add & Norm', an orange #F9CB9C box 'Multi-Head Attention', a yellow #FFFF99 box 'Add & Norm', a blue #9FC5E8 box 'Feed Forward', and a yellow #FFFF99 box 'Add & Norm'; add curved residual skip arrows on the right of each sublayer; connect the encoder's top 'Add & Norm' output with a thin black arrow into the decoder's 'Multi-Head Attention' box (cross-connection). 10. Left output head: directly above the decoder container stack a lavender #D9D2E9 box 'Linear', above it a green #B6D7A8 box 'Softmax', then a thin black up-arrow ending at the black label 'Output Probabilities'. 11. Right panel base: white rectangle with thin black outline on the right, spanning ~49%-93% width and ~28%-85% height. 12. Right panel diagram: duplicate the finished left-panel diagram group and rotate it 90 degrees clockwise (or rebuild it horizontally) so data flows left-to-right: encoder strip on top with 'Nx' above its container, decoder strip below with 'Nx' below its container, curved residual skips below the encoder strip and above the decoder strip; place 'Inputs' at upper-left, 'Outputs (shifted right)' as vertical text at lower-left, and 'Output Probabilities' as vertical text at far right; rotate every box label 90 degrees so it reads bottom-to-top; keep all box colors identical to the left panel and all connectors thin black with solid arrowheads. 13. Rotation arrow: in the gutter between the panels at mid-height (~44%-51% width, ~48%-64% height) draw a thick curved block arrow (an open circular arc of roughly 270 degrees with a solid triangular arrowhead), fill #CC0000, no outline, indicating the 90-degree rotation from the left vertical diagram to the right horizontal diagram. 14. Right header: text box above the right panel (~48%-76% width, ~21%-25% height) with the text 'Orientation is not the Issue', Arial Bold ~16-18pt, color #CC0000. 15. Takeaway line: text box at bottom-right (~47%-93% width, ~89%-95% height) with the text 'Let us focus on the  Building  blocks' (preserve the wide double-space spacing around 'Building'), Arial Bold ~20-22pt, color #0000CC. 16. Verification: confirm 42 diagram labels (21 per panel) plus the right header, the takeaway line, and the badge '14' (45 text items total) match the verbatim list; confirm both panels use identical box colors (#F4CCCC, #F9CB9C, #FFFF99, #9FC5E8, #D9D2E9, #B6D7A8, black outlines, on #FFFFFF) and that exactly four Positional-Encoding sine icons exist (two per panel).",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "SCHEMA: verbatim_text.bullets was empty; reconstructed it with the slide's two standalone prose lines, 'Orientation is not the Issue' and 'Let us focus on the  Building  blocks' (both verbatim from the labels array). Note: typography_notes confirm the slide has no bulleted list, so these are free-standing text lines rather than list items; all 42 diagram labels remain in labels.",
+      "CONSISTENCY: added the missing 'Decorative frame' region to layout.regions (full slide perimeter, inset ~2-3% from all edges, thin dark-maroon #8B0000 no-fill border); the frame was described in layout.arrangement and visual_elements but had no corresponding region, so regions previously covered only 5 of the 6 visual elements.",
+      "PRECISION: replaced the vague quantifier '40+ diagram labels' in recreation_brief with exact counts: 42 diagram labels (21 per panel) and 45 verbatim text items in total (42 labels + right header + takeaway line + slide number '14').",
+      "PRECISION: standardized the frame specification to a single actionable value in the checklist (inset ~3%, line weight ~2.5pt within the observed 2-3pt range) instead of an open range.",
+      "RECREATABILITY: rewrote recreation_brief as a 16-step ordered checklist; each step places exactly one element (or one coherent diagram component) with its exact text, percent-based position, hex fill/outline colors, and shape type, ending with a verification step against the verbatim label list."
+    ],
+    "uncertain_items": [
+      "No items are marked [?] in the source JSON.",
+      "The rotation arrow's arc sweep is described only as 'roughly 270 degrees'; the exact angle is a visual estimate.",
+      "All font sizes are estimated ranges (title ~36-40pt, right header ~16-18pt, takeaway ~20-22pt, diagram labels ~9-10pt, badge ~14pt); exact point sizes are unverifiable from the JSON.",
+      "Exact positions of individual boxes inside the two diagram containers are not given; only stacking order is specified (bottom-to-top in the left panel, left-to-right in the right panel), so intra-panel geometry must follow the classic 'Attention Is All You Need' figure proportions."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_014.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 14,
+      "image": "slide_014.jpg",
+      "kept_frame": "frame_00827.jpg",
+      "start_sec": 793.0,
+      "end_sec": 826.0,
+      "frame_count": 34
+    },
+    "elapsed_s": 227.0,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 471.7
+  }
+}

@@ -1,0 +1,34 @@
+## Element-by-Element Fidelity Check
+
+**House chrome (per ground rule a â not scored):** White canvas, gray E9E9E7 panel with thin red C00000 border, yellow badge d36 at (893,71) with purple ring "34" â present in both. â
+
+**Title block:** "Self Attention Mechanism" bold black, centered; subtitle "(Embedding Vector Dimension and Softmax Sensitivity)" red with yellow highlights on "Vector Dimension" and "Softmax Sensitivity" â verbatim, same line break, same highlight extents in both. â
+
+**Green concept box (top-left):**
+- Large equation wâ²_ij = x_i^T x_j in bordered white box â present, professionally typeset (mandated format, rule e). â
+- [X_i] with tall red brackets â present; subscript "1Ãd" present.
+- "d" + green up arrow (left) and second green up arrow beside the small repeated equation box wâ²_ij = x_i^T x_j â both present, correct ordering. â
+- Blue two-line text "As Dimension of Embedding "d" Increases / the Calculated weight value "w" increases" with yellow highlight on ""d" Increases" and orange on ""w" increases" â verbatim, same line break, same highlight colors. â
+
+**Peach panel (bottom):**
+- Red [X_i]_{1Ãd} box top-left, "SoftMax" dark-red label, softmax fraction w_ij = exp wâ²_ij / Î£_j exp wâ²_ij in white box with horizontal bar â present and correctly stacked (rule e). â
+- "High Weight Values kill the gradient, and slow down learning" â "High" red, remainder blue, italic, blue-bordered white box. â
+- "d â", "d â", "d ââ" green arrows all present in correct positions between the three column groups. â
+- Orange "SoftMax" labels above each dark-red arrow â present, correct color/weight. â
+- Three worked-example columns, correct order: inputs 1,2,3,4 / 5,10,15,20 / 10,20,30,40; outputs 0.0321,0.0871,0.2369,0.6439 / 0.0000,0.0000,0.0067,0.9933 / 0.0000,0.0000,0.0000,1.0000 â every value exact. â
+- Delimiters: red parentheses on input stacks, blue on output stacks, span all four values, clear of the enclosed digits, curvature style matches. â
+- Captions "For small/medium/large "d"" positioned right of the caption symbol in all three columns. â
+- Values in yellow input chips and blue-bordered output chips are vertically centered; column gaps and stacking rhythm match the original. â
+- Mouse-cursor artifact in IMG2 correctly omitted (rule c). â
+
+## Discrepancies
+
+1. **MAJOR (confidence ~0.75):** Column caption symbol rendered as capital script **W_ij without the prime** in all three columns; original shows math-italic lowercase **wâ²_ij** (with prime). This is a content difference (missing prime + case), not a typeface upgrade under rule (e). Small element, repeated 3Ã.
+2. **MINOR (confidence ~0.6):** In the green concept box, the "1Ãd" subscript next to [X_i] is rendered **green** in the recreation; in the original it appears dark red/maroon like the brackets. (The peach-panel [X_i]_{1Ãd} copy has the correct dark red in both.)
+
+No BLOCKER defects: every equation region, arrow, box, and delimiter present in the original is present in the recreation; no frame containment violations (all ink sits inside the green box, peach panel, and house panel); no text clipping, collisions, or wrapping errors observed.
+
+## Visual-quality defects in the recreation
+None beyond the two items above â no overflow, no misalignment, no illegible text.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation' (one MAJOR caption-symbol defect and one MINOR color mismatch noted for correction, but all values, layout, equations, and structure are faithfully rendered).

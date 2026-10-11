@@ -1,0 +1,220 @@
+{
+  "slide_title": "Transformer",
+  "subtitle_or_header": "Attention is All You Need",
+  "verbatim_text": {
+    "bullets": [
+      "Parallelization of Encoder ,",
+      "Parallelization of Decoder ( Training Mode Only)",
+      "Very Long  Sequence length"
+    ],
+    "labels": [
+      "11",
+      "Decoder",
+      "Encoder",
+      "Encoder-Decoder Attention",
+      "Encoder-Decoder Attention",
+      "Multi Head Self Attention Blocks",
+      "Multi Head Self Attention Blocks",
+      "attention",
+      "Attention Mechanism supports:",
+      "x\u2081",
+      "x\u2082",
+      "x\u2083",
+      "o\u2081",
+      "o\u2082",
+      "o\u2083"
+    ],
+    "equations": [
+      "x_1, x_2, x_3 (LaTeX: $x_1$, $x_2$, $x_3$) \u2014 encoder input tokens, italic serif with subscripts",
+      "o_1, o_2, o_3 (LaTeX: $o_1$, $o_2$, $o_3$) \u2014 decoder output tokens, italic serif with subscripts"
+    ]
+  },
+  "layout": {
+    "arrangement": "Red-bordered white slide. Centered red title with blue subtitle at top; slide-number badge top-right. Below, a two-column architecture diagram: LEFT column = encoder stack (lavender 'attention' sub-block on top of a large orange 'Multi Head Self Attention Blocks' block, with x\u2081 x\u2082 x\u2083 inputs below and an 'Encoder' label on a gray footer strip); RIGHT column = decoder stack (large yellow 'Multi Head Self Attention Blocks' block with o\u2081 o\u2082 o\u2083 outputs above, a lavender sub-block with self-loop arrows below, labeled 'Encoder-Decoder Attention'). A thick red curved arrow and 2-3 dashed pink curves connect encoder side to decoder side. A beige bulleted note box sits bottom-right, overlapping the gray footer strip.",
+    "regions": [
+      {
+        "name": "Header",
+        "position": "top, full width, 0-22% height",
+        "content": "Title 'Transformer' (red, centered), subtitle 'Attention is All You Need' (blue, centered), yellow oval badge '11' at far right; red italic 'Decoder' label at right of subtitle line"
+      },
+      {
+        "name": "Decoder stack",
+        "position": "right, ~50-95% width, 20-67% height",
+        "content": "o\u2081/o\u2082/o\u2083 up-arrows, yellow 'Multi Head Self Attention Blocks' block, lavender sub-block with two black self-loop arrows, blue italic 'Encoder-Decoder Attention' label beneath"
+      },
+      {
+        "name": "Encoder stack",
+        "position": "left, ~4-50% width, 35-97% height",
+        "content": "Blue italic 'Encoder-Decoder Attention' label, lavender block containing white 'attention' box, fan of 3 connector lines, orange 'Multi Head Self Attention Blocks' block, x\u2081/x\u2082/x\u2083 inputs with vertical connectors, red italic 'Encoder' label on gray strip"
+      },
+      {
+        "name": "Cross-connections",
+        "position": "center, ~45-75% width, 40-65% height",
+        "content": "Thick red curved arrow (red dot on orange block to red dot/arrowhead on yellow block) plus 2-3 dashed salmon curved lines from encoder attention area to decoder lavender block"
+      },
+      {
+        "name": "Note box",
+        "position": "bottom-right, ~48-93% width, 75-97% height",
+        "content": "Beige rectangle, thin red border: red bold heading 'Attention Mechanism supports:' and three bullets with blue underlined hyperlink words"
+      },
+      {
+        "name": "Footer strip",
+        "position": "bottom, full inner width, ~93-98% height",
+        "content": "Gray horizontal strip; 'Encoder' red italic label sits on it at left-center; note box overlaps it at right"
+      },
+      {
+        "name": "Frame",
+        "position": "full perimeter, inset ~4% from all slide edges",
+        "content": "Thin dark-red (#C00000) rectangular border around the entire slide; all other elements sit inside it"
+      }
+    ],
+    "hierarchy": "1) Title 'Transformer' largest (red bold ~40pt); 2) yellow and orange blocks dominate via saturated fills with ~20pt red bold labels; 3) subtitle and note-box heading (~20pt/16pt bold); 4) italic section labels (Encoder/Decoder/Encoder-Decoder Attention, ~16pt); 5) note-box bullets (~15pt); 6) smallest: math symbols x\u2081/o\u2081 and 'attention' box text (~14pt italic)."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Encoder block: large orange rounded rectangle, centered red bold text 'Multi Head Self Attention Blocks'. Three thin black vertical input lines enter its bottom edge from x\u2081 (~15% width), x\u2082 (~29%), x\u2083 (~43%).",
+      "colors": [
+        "#F7A163",
+        "#E00000"
+      ],
+      "position": "left, ~5-51% width, ~57-83% height"
+    },
+    {
+      "type": "diagram",
+      "description": "Decoder block: large yellow rounded rectangle, centered red bold text 'Multi Head Self Attention Blocks'. Three thin black up-arrows leave its top edge to o\u2081 (~58% width), o\u2082 (~72%), o\u2083 (~86%); a small black right-pointing arrow exits its right edge at ~47% height.",
+      "colors": [
+        "#FFFF00",
+        "#E00000"
+      ],
+      "position": "right, ~50-94% width, ~30-53% height"
+    },
+    {
+      "type": "diagram",
+      "description": "Encoder attention sub-block: lavender rounded rectangle containing a small white rectangle with gray outline and italic serif text 'attention'; three thin black lines fan from the orange block's top edge up to this box (converging on the box's bottom center).",
+      "colors": [
+        "#D6D6F2",
+        "#FFFFFF",
+        "#999999"
+      ],
+      "position": "left, ~11-49% width, ~42-55% height"
+    },
+    {
+      "type": "diagram",
+      "description": "Decoder attention sub-block: lavender rounded rectangle beneath the yellow block containing two black curved self-loop arrows (each loops from top edge down and back up with an arrowhead, i.e. self-attention loops) at ~70% and ~84% width.",
+      "colors": [
+        "#D6D6F2",
+        "#333333"
+      ],
+      "position": "right, ~51-89% width, ~53-63% height"
+    },
+    {
+      "type": "arrow",
+      "description": "Thick dark-red curved connector: starts at a solid red dot on the orange block's right edge (~48% width, ~60% height), arcs clockwise upward, ends with arrowhead at a red dot on the yellow block's left edge (~53% width, ~48% height). Represents encoder\u2192decoder information flow.",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "center, between the two stacks"
+    },
+    {
+      "type": "arrow",
+      "description": "Two or three thin DASHED salmon-pink curved lines running from the encoder 'attention' box region rightward/downward into the decoder lavender sub-block (cross-attention links).",
+      "colors": [
+        "#FF9E9E"
+      ],
+      "position": "center, ~33-70% width, ~45-58% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Note box: beige rectangle with thin red outline. Line 1 (red bold): 'Attention Mechanism supports:'. Bullets: '\u2022 Parallelization of Encoder ,' / '\u2022 Parallelization of Decoder ( Training Mode Only)' / '\u2022 Very Long  Sequence length' \u2014 the words 'Parallelization' (both bullets) and 'Sequence length' are styled as blue underlined hyperlinks; remaining words black.",
+      "colors": [
+        "#F0EDE4",
+        "#C00000",
+        "#0000FF",
+        "#1A1A1A"
+      ],
+      "position": "bottom-right, ~48-93% width, ~75-97% height"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: small light-yellow oval with thin dark outline containing '11' in dark text, top-right corner.",
+      "colors": [
+        "#FFFFCC",
+        "#808000"
+      ],
+      "position": "top-right, ~90-96% width, ~9-17% height"
+    },
+    {
+      "type": "other",
+      "description": "Frame and strips: thin dark-red rectangular border inset ~4% from all slide edges; solid gray horizontal strip across the bottom inside the border; 'Encoder' red bold italic label sits on this strip at left-center.",
+      "colors": [
+        "#C00000",
+        "#BFBFBF"
+      ],
+      "position": "full perimeter / bottom strip"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations. Only a black mouse cursor with white outline visible over the note box near '( Training Mode Only)' (~77% width, ~89% height) \u2014 a screen-recording artifact, not slide content."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#E00000",
+    "body_text": "#1A1A1A",
+    "accents": [
+      "#2222CC",
+      "#F7A163",
+      "#FFFF00",
+      "#D6D6F2",
+      "#C00000",
+      "#BFBFBF",
+      "#FFFFCC",
+      "#FF9E9E",
+      "#0000FF",
+      "#F0EDE4",
+      "#999999",
+      "#808000",
+      "#333333"
+    ]
+  },
+  "typography_notes": "All text is sans-serif (Arial-like) EXCEPT the math symbols x\u2081/x\u2082/x\u2083, o\u2081/o\u2082/o\u2083 and the word 'attention', which are italic serif (Times-like) with true subscripts. Title: very large bold red (#E00000, ~40pt). Subtitle: medium bold blue (#2222CC, ~20pt). Block labels: bold red ~20pt. Section labels: bold ITALIC ~16pt \u2014 'Encoder' and 'Decoder' in red (#E00000), both 'Encoder-Decoder Attention' labels in blue (#2222CC). Note-box heading bold red ~16pt; bullets regular ~15pt with underlined blue (#0000FF) hyperlink words. No all-caps anywhere. Bullets use round '\u2022' glyphs.",
+  "animation_state": "Slide appears fully built \u2014 no bullets or shapes look mid-reveal. The dashed pink curves and red arrow are assumed static. A mouse cursor rests over the note box, indicating a paused recorded lecture.",
+  "recreation_brief": "1. Canvas: 16:9 slide, solid white #FFFFFF background. 2. Frame: no-fill rectangle with thin #C00000 outline, inset ~4% from all four edges (spans ~4-96% of both width and height). 3. Footer strip: solid #BFBFBF rectangle spanning the full inner width at ~93-98% height (~5% tall), inside the frame. 4. Title: centered text 'Transformer', Arial bold ~40pt, #E00000, in the top band (~2-12% height). 5. Subtitle: centered text 'Attention is All You Need', Arial bold ~20pt, #2222CC, directly below the title (~12-20% height). 6. 'Decoder' label: text 'Decoder', Arial bold italic ~16pt, #E00000, in the header band to the right of the centered subtitle (\u224865-85% width, ~12-20% height), above the decoder stack. 7. Slide-number badge: small oval at ~90-96% width / ~9-17% height, fill #FFFFCC, thin #808000 outline, centered text '11' at ~14pt in #808000. 8. Encoder block: rounded rectangle at ~5-51% width / ~57-83% height, fill #F7A163, centered text 'Multi Head Self Attention Blocks', Arial bold ~20pt, #E00000. 9. Encoder attention sub-block: rounded rectangle at ~11-49% width / ~42-55% height, fill #D6D6F2, no text. 10. 'attention' box: small white #FFFFFF rectangle with thin #999999 outline, centered inside the sub-block from step 9, containing 'attention' in Times New Roman italic ~14pt, #999999. 11. Encoder fan lines: three thin black lines from the top edge of the orange block (~57% height) converging upward on the bottom center of the 'attention' box. 12. Encoder inputs: three thin black vertical lines entering the bottom edge of the orange block at ~15%, ~29% and ~43% width; at the lower end of each line (~84-92% height) place 'x\u2081', 'x\u2082', 'x\u2083' respectively, Times italic ~14pt, black. 13. Decoder block: rounded rectangle at ~50-94% width / ~30-53% height, fill #FFFF00, centered text 'Multi Head Self Attention Blocks', Arial bold ~20pt, #E00000. 14. Decoder outputs: three thin black up-arrows leaving the top edge of the yellow block at ~58%, ~72% and ~86% width; label each arrow tip 'o\u2081', 'o\u2082', 'o\u2083' (Times italic ~14pt, black) at ~23% height. 15. Decoder side arrow: small black right-pointing arrow exiting the right edge of the yellow block at ~47% height. 16. Decoder attention sub-block: rounded rectangle at ~51-89% width / ~53-63% height, fill #D6D6F2, no text. 17. Self-loop arrows: two curved #333333 arrows inside the decoder sub-block at ~70% and ~84% width; each starts on the sub-block's top edge, loops downward and back up, and ends in an arrowhead (self-attention loop). 18. 'Encoder-Decoder Attention' label (encoder side): text 'Encoder-Decoder Attention', Arial bold italic ~16pt, #2222CC, centered above the encoder lavender sub-block (~36-41% height). 19. 'Encoder-Decoder Attention' label (decoder side): same text and style, centered below the decoder lavender sub-block (~64-67% height). 20. 'Encoder' label: text 'Encoder', Arial bold italic ~16pt, #E00000, sitting on the gray footer strip at left-center (~15-30% width, ~93-98% height). 21. Red cross-attention arrow: thick #C00000 curved connector starting at a solid red dot on the orange block's right edge (~48% width, ~60% height), arcing clockwise upward, ending with an arrowhead on a red dot at the yellow block's left edge (~53% width, ~48% height). 22. Dashed cross-attention links: 2-3 thin dashed #FF9E9E curved lines running from the encoder 'attention' box area (~33-49% width, ~45-55% height) rightward/downward into the decoder lavender sub-block (exact count uncertain: 2 or 3). 23. Note box: rectangle at ~48-93% width / ~75-97% height, fill #F0EDE4, thin #C00000 outline; draw it after the footer strip so it overlaps the strip at bottom-right. 24. Note box text: line 1 'Attention Mechanism supports:' in Arial bold ~16pt #E00000; below it three bulleted lines (round '\u2022' glyph, Arial ~15pt): 'Parallelization of Encoder ,' / 'Parallelization of Decoder ( Training Mode Only)' / 'Very Long  Sequence length'; format 'Parallelization' (in bullets 1 and 2) and 'Sequence length' (in bullet 3) as #0000FF underlined hyperlink-style text, all other words #1A1A1A. 25. Do not draw the mouse cursor \u2014 it is a screen-recording artifact, not slide content.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Resolved 'Decoder' label placement contradiction: layout.regions (Header) places it 'right of subtitle line' while the original recreation_brief said 'above the yellow block'; the brief now places it in the header band right of the subtitle, above the decoder stack, matching the regions.",
+      "Added a 'Frame' region to layout.regions (thin #C00000 border inset ~4% from all edges) so the border described in visual_elements is covered by a region, not only by the arrangement sentence.",
+      "Added missing accent colors to colors.accents: #F0EDE4 (note-box fill), #999999 ('attention' box outline/text), #808000 (badge outline/text), #333333 (self-loop arrows).",
+      "Clarified typography_notes section-label colors: 'Encoder' and 'Decoder' are red #E00000; both 'Encoder-Decoder Attention' labels are blue #2222CC ('red or blue respectively' was ambiguous for three labels).",
+      "Harmonized 'attention' box text size to ~14pt per layout.hierarchy (original brief said ~16pt).",
+      "Harmonized gray footer strip height to ~5% (regions: ~93-98% height; original brief said ~4%).",
+      "Harmonized badge '11' text color to #808000 per the badge's visual_elements color list (original brief said 'dark gray').",
+      "Quantified 'dashed pink curves' in layout.arrangement as '2-3 dashed pink curves' to match regions and visual_elements.",
+      "Rewrote recreation_brief as a 25-step, one-element-per-step ordered checklist and added previously missing placements: x-label heights (~84-92%), o-label heights (~23%), decoder side-exit arrow (~47% height), both 'Encoder-Decoder Attention' label heights (~36-41% / ~64-67%), 'Decoder' label header position, and note-box heading size (~16pt).",
+      "Preserved verbatim quirks exactly: trailing ' ,' in 'Parallelization of Encoder ,', the double space in 'Very Long  Sequence length', and the spacing in '( Training Mode Only)'."
+    ],
+    "uncertain_items": [
+      "Count of dashed salmon cross-attention lines: the analysis says '2-3' / 'two or three'; the exact count (2 or 3) cannot be resolved from the JSON.",
+      "Exact coordinates of the 'Decoder' label: only the qualitative 'right of subtitle line' (Header region) is given, and the original brief conflicted ('above the yellow block'); reconciled to the Header region with approximate position \u224865-85% width, ~12-20% height.",
+      "Badge '11' text color: visual_elements lists only #FFFFCC and #808000 for the badge, so the text is assumed #808000 (could be near-black).",
+      "Heights for x\u2081/x\u2082/x\u2083 labels (~84-92%), o\u2081/o\u2082/o\u2083 labels (~23%), and the two 'Encoder-Decoder Attention' labels (~36-41% / ~64-67%) are interpolations from region/block bounds, not direct measurements."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_011.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 11,
+      "image": "slide_011.jpg",
+      "kept_frame": "frame_00748.jpg",
+      "start_sec": 645.0,
+      "end_sec": 747.0,
+      "frame_count": 103
+    },
+    "elapsed_s": 284.4,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1023.6
+  }
+}

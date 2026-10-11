@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "founder_directive": "2026-10-11",
+  "notes": "Direct-parent edges, founder-provided. A child slide = its parent's composition + delta (extra blocks / removed blocks / replaced blocks). RECREATION (build) of a child is BLOCKED until its dependency is certified (gen_status=passed AND visual_check=PASS in slides_progress.db). Analysis (12) and validation (13) are NOT blocked — every slide may be analyzed in parallel. Siblings of one parent (e.g. 7/8/9/10 on 6, or 27/28/29 on 26) unblock together and run in parallel. Child builds must IMPORT the parent's certified composition as a shared component module (recreated_pptx/build/components/), never copy-paste it.",
+  "edges": {
+    "7": [6],
+    "8": [6],
+    "9": [6],
+    "10": [6],
+    "15": [14],
+    "18": [17],
+    "19": [18],
+    "27": [26],
+    "28": [26],
+    "29": [26],
+    "30": [29],
+    "35": [34],
+    "38": [37],
+    "44": [43],
+    "45": [43]
+  },
+  "shared_image_sources": {
+    "14": ["slide_18_source/"],
+    "15": ["slide_18_source/"],
+    "16": ["slide_18_source/"],
+    "17": ["slide_18_source/"],
+    "18": ["slide_18_source/"],
+    "19": ["slide_18_source/"],
+    "38": ["slide_18_source/"],
+    "44": ["slide_18_source/"]
+  },
+  "shared_image_sources_note": "Founder-declared: slides 14-19 all draw on the founder-downloaded figures in slide_18_source/ (Attention Is All You Need, arXiv 1706.03762v7 — Figure 1 full architecture, Figure 2 left Scaled Dot-Product Attention, Figure 2 right Multi-Head Attention). Slides 14 and 15 MUST use the downloaded images (founder explicit). Machine-observed (vision-verified 2026-10-11, single-route reads): slide 38 embeds the Figure 2 left topology as a course-style inset and slide 44 embeds the Figure 2 right topology as an inset — their SOURCES.md must reference this figure bank too. Per-figure use: 14/15/16/17 = Figure 1 only; 18/19 = Figure 1 + Figure 2 left + Figure 2 right; 38 = Figure 2 left (inset); 44 = Figure 2 right (inset)."
+}

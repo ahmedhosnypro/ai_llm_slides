@@ -1,0 +1,1196 @@
+[
+  {
+    "slide_title": "No slide title present (untitled slide)",
+    "subtitle_or_header": "No subtitle or header present",
+    "verbatim_text": {
+      "bullets": [],
+      "labels": [
+        "Vector of Pos \"t\"",
+        "Vector of Pos \"t+\u03b4\"",
+        "Remember:",
+        "Vector of Pos \"t+\u03b4\"",
+        "Vector of Pos \"t\"",
+        "Independent of Position \"t\"",
+        "From Computer Graphics:",
+        "Rotation Matrix of Vector at Pos \"t\" with angle \"\u03c9\u03b4\"",
+        "e.g \"\u03c9\" , \"2\u03c9\" , \"3\u03c9\" , ...",
+        "30"
+      ],
+      "equations": [
+        "[ sin(\u03c9t) ; cos(\u03c9t) ]  (2\u00d71 column vector, red brackets)",
+        "[ Sin (\u03c9(t+\u03b4)) ; cos(\u03c9(t+\u03b4)) ]  (2\u00d71 column vector, black brackets)",
+        "sin(a+b)=sin (a) cos(b) + cos(a) sin(b)",
+        "cos(a+b)=cos(a) cos(b) \u2013 sin(a) sin(b)",
+        "sin(\u03c9(t+\u03b4)) = sin(\u03c9t + \u03c9\u03b4)  = sin(\u03c9t) cos(\u03c9\u03b4) + cos(\u03c9t) sin(\u03c9\u03b4)",
+        "cos(\u03c9(t+\u03b4)) = cos(\u03c9t + \u03c9\u03b4)  = cos(\u03c9t) cos(\u03c9\u03b4) - sin(\u03c9t) sin(\u03c9\u03b4)",
+        "[ Sin (\u03c9(t+\u03b4)) ; cos(\u03c9(t+\u03b4)) ]  =  [ cos(\u03c9\u03b4)  sin(\u03c9\u03b4) ; - sin(\u03c9\u03b4)  cos(\u03c9\u03b4) ]  [ sin(\u03c9t) ; cos(\u03c9t) ]"
+      ]
+    },
+    "layout": {
+      "arrangement": "No title. A thin dark-red (#C00000) rectangular frame surrounds the whole content area. Five content boxes: four with blue (#0000CC) borders \u2014 vector definitions (top-left), 'Remember' trig-identity callout (top-right), two-line derivation (middle band), large matrix-equation box (bottom-left/center) \u2014 plus one green-bordered sidebar note (bottom-right). Slide-number badge '30' in a yellow-orange (#FFC000) circle with dark-red (#C00000) outline at the top-right corner.",
+      "regions": [
+        {
+          "name": "Red frame",
+          "position": "full slide, ~4\u201396% width, ~7\u201396% height",
+          "content": "Thin dark-red rectangle outline framing all content."
+        },
+        {
+          "name": "Slide number badge",
+          "position": "top-right, ~88\u201394% width, ~10\u201317% height",
+          "content": "Yellow-orange circle with dark-red outline containing '30' in black."
+        },
+        {
+          "name": "Vector definitions box",
+          "position": "top-left, ~9\u201339% width, ~10\u201342% height",
+          "content": "Blue-bordered box with two red-labeled column vectors: [sin(\u03c9t); cos(\u03c9t)] with red brackets and [Sin (\u03c9(t+\u03b4)); cos(\u03c9(t+\u03b4))] with black brackets."
+        },
+        {
+          "name": "Remember callout",
+          "position": "top-right, ~52\u201388% width, ~18\u201335% height",
+          "content": "Pale-yellow box, blue border, underlined blue 'Remember:' header and two blue-italic trig identities."
+        },
+        {
+          "name": "Derivation box",
+          "position": "middle band, ~8\u201368% width, ~43\u201358% height",
+          "content": "Blue-bordered box with two black equations expanding sin(\u03c9(t+\u03b4)) and cos(\u03c9(t+\u03b4)), with yellow/green inline highlights on (t+\u03b4), cos(\u03c9\u03b4), sin(\u03c9\u03b4)."
+        },
+        {
+          "name": "Matrix equation box",
+          "position": "bottom-left/center, ~8\u201364% width, ~60\u201393% height",
+          "content": "Blue-bordered box with the matrix product equation, red captions 'Vector of Pos \"t+\u03b4\"' and 'Vector of Pos \"t\"', a curly brace under the 2\u00d72 matrix, and blue bold italic 'Independent of Position \"t\"'."
+        },
+        {
+          "name": "Computer Graphics note",
+          "position": "bottom-right, ~64\u201391% width, ~63\u201387% height",
+          "content": "Light-green box, green border, red bold italic header 'From Computer Graphics:' plus two blue bold italic lines about the rotation matrix."
+        }
+      ],
+      "hierarchy": "The bottom matrix equation is the visual focal point: the largest box, containing 8 constituent parts (two 2\u00d71 column vectors, one 2\u00d72 matrix, one bold equals sign, two red captions, one curly brace, one blue annotation), with the largest black type. Black equations dominate; red labels and blue annotations are secondary; yellow/green highlights steer the eye to matching sub-expressions; the green note box acts as a sidebar callout; the slide number badge is the smallest element."
+    },
+    "visual_elements": [
+      {
+        "type": "highlight-box",
+        "description": "Blue-bordered rectangle (white fill) with two labeled column vectors. Row 1: red label 'Vector of Pos \"t\"' on the left; to its right a 2\u00d71 column vector with RED square brackets, cells 'sin(\u03c9t)' (top) and 'cos(\u03c9t)' (bottom), black text. Row 2: red label 'Vector of Pos \"t+\u03b4\"' on the left; to its right a 2\u00d71 column vector with BLACK square brackets, cells 'Sin (\u03c9(t+\u03b4))' (top) and 'cos(\u03c9(t+\u03b4))' (bottom), black text.",
+        "colors": [
+          "#0000CC",
+          "#C00000",
+          "#000000"
+        ],
+        "position": "top-left, ~9\u201339% width, ~10\u201342% height"
+      },
+      {
+        "type": "highlight-box",
+        "description": "Callout box, pale-yellow fill, blue border. Header 'Remember:' in blue, underlined. Two identities in blue italic: 'sin(a+b)=sin (a) cos(b) + cos(a) sin(b)' and 'cos(a+b)=cos(a) cos(b) \u2013 sin(a) sin(b)'.",
+        "colors": [
+          "#0000CC",
+          "#FFFFCC"
+        ],
+        "position": "top-right, ~52\u201388% width, ~18\u201335% height"
+      },
+      {
+        "type": "highlight-box",
+        "description": "Blue-bordered rectangle (white fill), two black equation lines. Line 1: 'sin(\u03c9(t+\u03b4)) = sin(\u03c9t + \u03c9\u03b4)  = sin(\u03c9t) cos(\u03c9\u03b4) + cos(\u03c9t) sin(\u03c9\u03b4)' \u2014 '(t+\u03b4)' highlighted YELLOW, 'cos(\u03c9\u03b4)' highlighted GREEN, final 'sin(\u03c9\u03b4)' highlighted YELLOW. Line 2: 'cos(\u03c9(t+\u03b4)) = cos(\u03c9t + \u03c9\u03b4)  = cos(\u03c9t) cos(\u03c9\u03b4) - sin(\u03c9t) sin(\u03c9\u03b4)' \u2014 '(t+\u03b4)' YELLOW, 'cos(\u03c9\u03b4)' YELLOW, final 'sin(\u03c9\u03b4)' GREEN.",
+        "colors": [
+          "#0000CC",
+          "#000000",
+          "#FFFF00",
+          "#92D050"
+        ],
+        "position": "middle band, ~8\u201368% width, ~43\u201358% height"
+      },
+      {
+        "type": "other",
+        "description": "Large blue-bordered rectangle (white fill) containing the matrix equation: left 2\u00d71 vector [Sin (\u03c9(t+\u03b4)) ; cos(\u03c9(t+\u03b4))] (black brackets, '(t+\u03b4)' highlighted yellow), bold '=', 2\u00d72 matrix [cos(\u03c9\u03b4)  sin(\u03c9\u03b4) ; - sin(\u03c9\u03b4)  cos(\u03c9\u03b4)] where top-left 'cos(\u03c9\u03b4)' is GREEN-highlighted and the other three entries are YELLOW-highlighted, then right 2\u00d71 vector [sin(\u03c9t) ; cos(\u03c9t)] with RED brackets. Red captions below: 'Vector of Pos \"t+\u03b4\"' (left) and 'Vector of Pos \"t\"' (right). A curly brace (dark red) spans beneath the 2\u00d72 matrix with blue bold italic 'Independent of Position \"t\"' centered under it.",
+        "colors": [
+          "#0000CC",
+          "#000000",
+          "#C00000",
+          "#FFFF00",
+          "#92D050"
+        ],
+        "position": "bottom-left/center, ~8\u201364% width, ~60\u201393% height"
+      },
+      {
+        "type": "highlight-box",
+        "description": "Sidebar note box, light-green fill, green border. Line 1 'From Computer Graphics:' in red bold italic; line 2 'Rotation Matrix of Vector at Pos \"t\" with angle \"\u03c9\u03b4\"' in blue bold italic; line 3 'e.g \"\u03c9\" , \"2\u03c9\" , \"3\u03c9\" , ...' in blue bold italic.",
+        "colors": [
+          "#00B050",
+          "#DFF0D8",
+          "#C00000",
+          "#0000CC"
+        ],
+        "position": "bottom-right, ~64\u201391% width, ~63\u201387% height"
+      },
+      {
+        "type": "icon",
+        "description": "Slide-number badge: small circle, yellow-orange fill, dark-red outline, containing '30' in black.",
+        "colors": [
+          "#FFC000",
+          "#C00000",
+          "#000000"
+        ],
+        "position": "top-right corner, ~88\u201394% width, ~10\u201317% height"
+      }
+    ],
+    "imagery": [
+      "No photographs, illustrations, or icons on the slide. Only video artifacts: a small pen/highlighter-shaped mouse cursor with a tiny circle hovering over the top-right of the 2\u00d72 matrix (live-annotation cursor), and a thin dark strip along the very bottom edge of the frame (video player artifact)."
+    ],
+    "colors": {
+      "background": "#FFFFFF",
+      "title_text": null,
+      "body_text": "#000000",
+      "accents": [
+        "#C00000 (red frame, red labels, red vector brackets, brace)",
+        "#0000CC (blue box borders and blue text)",
+        "#FFFF00 (yellow term highlights)",
+        "#92D050 (green term highlights)",
+        "#FFFFCC (Remember box fill)",
+        "#DFF0D8 (green note box fill)",
+        "#00B050 (green note box border)",
+        "#FFC000 (slide-number circle fill)"
+      ]
+    },
+    "typography_notes": "Entirely sans-serif (Arial-like). No slide title. Red vector labels regular weight ~18\u201320pt; equations black ~22\u201324pt, the largest text on the slide; 'Remember:' blue, underlined, with the two identities in blue italic ~16pt; bottom-right note is bold italic (red header line, blue body lines); 'Independent of Position \"t\"' is blue bold italic ~18pt; emphasis is done with inline yellow/green highlighter on sub-expressions rather than whole lines; typographic quotes wrap t, t+\u03b4, \u03c9\u03b4, \u03c9, 2\u03c9, 3\u03c9; slide number '30' is small black text inside a badge.",
+    "animation_state": "Fully built \u2014 no partial bullet reveal or mid-build elements. A pen/highlighter mouse cursor rests over the top-right of the 2\u00d72 matrix, indicating the presenter was annotating live when the frame was captured.",
+    "recreation_brief": "1. Set the slide background to solid white (#FFFFFF). Add no slide title and no subtitle \u2014 the source slide has neither.\n2. Draw the outer frame: a thin dark-red (#C00000) rectangle outline with no fill, spanning ~4\u201396% of the slide width and ~7\u201396% of the slide height; it encloses every other element.\n3. Slide-number badge, top-right corner (~88\u201394% width, ~10\u201317% height): draw a small circle with yellow-orange fill (#FFC000) and dark-red outline (#C00000), and center the black (#000000) text '30' inside it.\n4. Vector definitions box, top-left (~9\u201339% width, ~10\u201342% height): draw a rectangle with white fill (#FFFFFF) and a 2pt blue (#0000CC) border.\n5. Inside the Vector definitions box, upper row: place the red (#C00000) label 'Vector of Pos \"t\"' at the left, and immediately to its right a 2\u00d71 column vector with red (#C00000) square brackets and black (#000000) cells \u2014 'sin(\u03c9t)' top, 'cos(\u03c9t)' bottom.\n6. Inside the Vector definitions box, lower row: place the red (#C00000) label 'Vector of Pos \"t+\u03b4\"' at the left, and to its right a 2\u00d71 column vector with black (#000000) square brackets and black cells \u2014 'Sin (\u03c9(t+\u03b4))' top, 'cos(\u03c9(t+\u03b4))' bottom.\n7. Remember callout, top-right (~52\u201388% width, ~18\u201335% height): draw a rectangle with pale-yellow fill (#FFFFCC) and blue (#0000CC) border.\n8. Inside the Remember callout, three lines: line 1 'Remember:' in blue (#0000CC), underlined; line 2 'sin(a+b)=sin (a) cos(b) + cos(a) sin(b)' in blue italic (~16pt); line 3 'cos(a+b)=cos(a) cos(b) \u2013 sin(a) sin(b)' in blue italic (~16pt).\n9. Derivation box, middle band (~8\u201368% width, ~43\u201358% height): draw a rectangle with white fill (#FFFFFF) and blue (#0000CC) border.\n10. Inside the Derivation box, line 1 in black (~22\u201324pt): 'sin(\u03c9(t+\u03b4)) = sin(\u03c9t + \u03c9\u03b4)  = sin(\u03c9t) cos(\u03c9\u03b4) + cos(\u03c9t) sin(\u03c9\u03b4)', with inline highlights '(t+\u03b4)' yellow (#FFFF00), 'cos(\u03c9\u03b4)' green (#92D050), and the final 'sin(\u03c9\u03b4)' yellow (#FFFF00).\n11. Inside the Derivation box, line 2 in black: 'cos(\u03c9(t+\u03b4)) = cos(\u03c9t + \u03c9\u03b4)  = cos(\u03c9t) cos(\u03c9\u03b4) - sin(\u03c9t) sin(\u03c9\u03b4)', with '(t+\u03b4)' yellow (#FFFF00), 'cos(\u03c9\u03b4)' yellow (#FFFF00), and the final 'sin(\u03c9\u03b4)' green (#92D050).\n12. Matrix equation box, bottom-left/center (~8\u201364% width, ~60\u201393% height): draw a large rectangle with white fill (#FFFFFF) and blue (#0000CC) border.\n13. Inside the Matrix equation box, build the equation in black (~22\u201324pt), left to right: (a) a 2\u00d71 column vector with black square brackets, cells 'Sin (\u03c9(t+\u03b4))' top and 'cos(\u03c9(t+\u03b4))' bottom, with '(t+\u03b4)' highlighted yellow (#FFFF00); (b) a bold '='; (c) a 2\u00d72 matrix with black brackets, cells 'cos(\u03c9\u03b4)' top-left highlighted green (#92D050), 'sin(\u03c9\u03b4)' top-right yellow (#FFFF00), '- sin(\u03c9\u03b4)' bottom-left yellow (#FFFF00), 'cos(\u03c9\u03b4)' bottom-right yellow (#FFFF00); (d) a 2\u00d71 column vector with red (#C00000) square brackets, cells 'sin(\u03c9t)' top and 'cos(\u03c9t)' bottom.\n14. Inside the Matrix equation box, below the equation: place the red (#C00000) caption 'Vector of Pos \"t+\u03b4\"' under the left vector and the red (#C00000) caption 'Vector of Pos \"t\"' under the right vector.\n15. Inside the Matrix equation box: draw a dark-red (#C00000) curly-brace shape spanning beneath the 2\u00d72 matrix, and center the blue (#0000CC) bold-italic text 'Independent of Position \"t\"' (~18pt) beneath the brace.\n16. Computer Graphics note, bottom-right (~64\u201391% width, ~63\u201387% height): draw a rectangle with light-green fill (#DFF0D8) and green (#00B050) border.\n17. Inside the Computer Graphics note, three lines: line 1 'From Computer Graphics:' in red (#C00000) bold italic; line 2 'Rotation Matrix of Vector at Pos \"t\" with angle \"\u03c9\u03b4\"' in blue (#0000CC) bold italic; line 3 'e.g \"\u03c9\" , \"2\u03c9\" , \"3\u03c9\" , ...' in blue (#0000CC) bold italic.\n18. Typography and exclusions: use one sans-serif, Arial-like font throughout \u2014 equations ~22\u201324pt (largest text on the slide), red vector labels ~18\u201320pt regular weight, callout identities ~16pt; keep the typographic double quotes around t, t+\u03b4, \u03c9\u03b4, \u03c9, 2\u03c9, 3\u03c9 exactly as written; do not reproduce the video artifacts (pen-shaped mouse cursor over the 2\u00d72 matrix and thin dark strip along the bottom edge) \u2014 they are not slide content.",
+    "validation": {
+      "verdict": "PASS_WITH_FIXES",
+      "fixes_applied": [
+        "slide_title was null: layout.arrangement ('No title') and typography_notes ('No slide title') confirm the slide genuinely has no title, so none was invented; field set to the explicit non-empty marker 'No slide title present (untitled slide)', and the recreation brief instructs the builder to add no title.",
+        "subtitle_or_header was null: set to 'No subtitle or header present' \u2014 no slide-level subtitle or header exists on the slide.",
+        "verbatim_text.bullets was empty: cross-checked all 7 layout regions and 6 visual elements \u2014 the slide contains no bulleted list; all 17 verbatim items are captured as 10 labels and 7 equations, so the array is intentionally left empty rather than filled with invented bullets.",
+        "layout.arrangement count mismatch fixed: it stated 'Four blue-bordered content boxes' but then listed five boxes; reworded to four blue-bordered boxes (vector definitions, Remember callout, derivation, matrix equation) plus one green-bordered sidebar note \u2014 5 content boxes total (4 blue-bordered + 1 green-bordered).",
+        "layout.arrangement described the slide-number badge as a 'yellow circle'; harmonized with visual_elements and colors to 'yellow-orange (#FFC000) circle with dark-red (#C00000) outline'.",
+        "recreation_brief previously specified 'no-fill' rectangles for the vector definitions, derivation and matrix equation boxes while visual_elements specify white fill; all three box steps now specify white fill (#FFFFFF).",
+        "layout.hierarchy vague phrase 'most elements' replaced with the exact count: the matrix equation box contains 8 constituent parts (two 2\u00d71 column vectors, one 2\u00d72 matrix, one bold equals sign, two red captions, one curly brace, one blue annotation).",
+        "recreation_brief rewritten from 8 steps into an 18-step ordered checklist; each step places exactly one element with its exact text, position (percentage range), hex colors, and shape type; added explicit exclusions (no title/subtitle; do not reproduce the pen-cursor and bottom-strip video artifacts) and font-size guidance taken from typography_notes.",
+        "colors.title_text kept null intentionally \u2014 no title exists, so there is no title color to record; all other color fields verified non-empty and consistent with visual_elements (8 accent colors all match)."
+      ],
+      "uncertain_items": [
+        "No items were marked [?] in the source JSON.",
+        "'Sin (\u03c9(t+\u03b4))' appears with a capital 'S' and a space after 'Sin' (in both the Vector definitions box and the Matrix equation box) while all other trig functions are lowercase 'sin'/'cos'; preserved verbatim \u2014 may be a vision-model transcription artifact.",
+        "Bracket color of the central 2\u00d72 matrix is not explicitly stated (left vector: black brackets; right vector: red brackets); the checklist assumes black brackets to match the black equation text.",
+        "All element positions are approximate percentage ranges estimated by the vision model; exact pixel coordinates are unavailable.",
+        "Font sizes are approximate ranges (~16pt to ~24pt) from typography_notes; exact point sizes are not specified.",
+        "The pen/highlighter cursor and the thin dark strip at the bottom edge are video-capture artifacts (per imagery and animation_state); they are excluded from the recreation checklist on the assumption they are not slide content."
+      ],
+      "recreatability_score_1_to_10": 9
+    },
+    "_meta": {
+      "frame": "slide_030.jpg",
+      "model": "images",
+      "source_timestamps": {
+        "slide": 30,
+        "image": "slide_030.jpg",
+        "kept_frame": "frame_01816.jpg",
+        "start_sec": 1653.0,
+        "end_sec": 1815.0,
+        "frame_count": 163,
+        "old_slide": 61
+      },
+      "elapsed_s": 360.9,
+      "validated_by": "glm-5.3",
+      "validation_elapsed_s": 1186.5
+    }
+  },
+  {
+    "slide_title": "Squared Distance Between Vector of Pos \u201ct+\u03b4\u201d and Vector of Pos \u201ct\u201d",
+    "subtitle_or_header": "[ Two Consecutive Positions ]",
+    "verbatim_text": {
+      "bullets": [
+        "Squared Distance Between Vector of Pos \u201ct+\u03b4\u201d and Vector of Pos \u201ct\u201d",
+        "[ Two Consecutive Positions ]",
+        "Vector at Pos \u201ct\u201d",
+        "Vector at Pos \u201ct+\u03b4\u201d",
+        "Let \u03c9t=a , \u03c9\u03b4=b",
+        "sin\u00b2(a) + cos\u00b2(a)=1",
+        "31",
+        "Derivation line 1: [ sin(a) cos(b) + cos(a) sin(b) - sin(a) ]\u00b2 + [ -sin(a) sin(b) + cos(a) cos(b) - cos(a) ]\u00b2 =",
+        "Derivation line 2: [ sin(a) (cos(b)-1) + cos(a) sin(b) ]\u00b2 + [ -sin(a) sin(b) + cos(a) (cos(b) -1) ]\u00b2 =",
+        "Derivation line 3: [ sin(a)\u00b2 (cos(b)-1)\u00b2 + cos\u00b2(a) sin\u00b2(b) + 2 sin(a) cos(a) sin(b) (cos(b)-1) ] + [ sin\u00b2(a) sin\u00b2(b) + cos\u00b2(a) (cos(b) -1)\u00b2 - 2 sin(a) cos(a) sin(b) (cos(b)-1) ] =",
+        "Derivation line 4: sin(a)\u00b2 (cos(b)-1)\u00b2 + cos\u00b2(a) sin\u00b2(b) + sin\u00b2(a) sin\u00b2(b) + cos\u00b2(a) (cos(b) -1)\u00b2 =",
+        "Derivation line 5: [ sin(a)\u00b2 + cos\u00b2(a) ] (cos(b)-1)\u00b2 + [ sin(a)\u00b2 + cos\u00b2(a) ] (sin\u00b2(b) ) = (cos(b)-1)\u00b2 + sin\u00b2(b) =",
+        "Derivation line 6: cos\u00b2(b) -2 cos(b) +1 + sin\u00b2(b) = 2 -2 cos(b) = 2(1-cos(b) )",
+        "=2 (1-cos(\u03c9\u03b4) )",
+        "Irrespective of Position \u201ct\u201d"
+      ],
+      "labels": [
+        "Vector at Pos \u201ct\u201d",
+        "Vector at Pos \u201ct+\u03b4\u201d",
+        "Let \u03c9t=a , \u03c9\u03b4=b",
+        "sin\u00b2(a) + cos\u00b2(a)=1",
+        "31",
+        "Irrespective of Position \u201ct\u201d",
+        "=2 (1-cos(\u03c9\u03b4) )",
+        "[?] tiny stray pen/annotation mark just before the start of derivation line 4"
+      ],
+      "equations": [
+        "Left panel vector: [ sin(\u03c9t) ; cos(\u03c9t) ] --(red arrow)--> [ sin(a) ; cos(a) ]",
+        "Middle panel: [ Sin (\u03c9(t+\u03b4)) ; cos(\u03c9(t+\u03b4)) ] = [ sin(\u03c9t) cos(\u03c9\u03b4) + cos(\u03c9t) sin(\u03c9\u03b4) ; cos(\u03c9t) cos(\u03c9\u03b4) - sin(\u03c9t) sin(\u03c9\u03b4) ] --(red arrow)--> [ sin(a) cos(b) + cos(a) sin(b) ; cos(a) cos(b) - sin(a) sin(b) ]",
+        "Let \u03c9t=a , \u03c9\u03b4=b",
+        "sin\u00b2(a) + cos\u00b2(a)=1",
+        "Derivation line 1: [ sin(a) cos(b) + cos(a) sin(b) - sin(a) ]\u00b2 + [ -sin(a) sin(b) + cos(a) cos(b) - cos(a) ]\u00b2 =",
+        "Derivation line 2: [ sin(a) (cos(b)-1) + cos(a) sin(b) ]\u00b2 + [ -sin(a) sin(b) + cos(a) (cos(b) -1) ]\u00b2 =",
+        "Derivation line 3: [ sin(a)\u00b2 (cos(b)-1)\u00b2 + cos\u00b2(a) sin\u00b2(b) + 2 sin(a) cos(a) sin(b) (cos(b)-1) ] + [ sin\u00b2(a) sin\u00b2(b) + cos\u00b2(a) (cos(b) -1)\u00b2 - 2 sin(a) cos(a) sin(b) (cos(b)-1) ] =",
+        "Derivation line 4: sin(a)\u00b2 (cos(b)-1)\u00b2 + cos\u00b2(a) sin\u00b2(b) + sin\u00b2(a) sin\u00b2(b) + cos\u00b2(a) (cos(b) -1)\u00b2 =",
+        "Derivation line 5: [ sin(a)\u00b2 + cos\u00b2(a) ] (cos(b)-1)\u00b2 + [ sin(a)\u00b2 + cos\u00b2(a) ] (sin\u00b2(b) ) = (cos(b)-1)\u00b2 + sin\u00b2(b) =",
+        "Derivation line 6: cos\u00b2(b) -2 cos(b) +1 + sin\u00b2(b) = 2 -2 cos(b) = 2(1-cos(b) )",
+        "Final boxed result: =2 (1-cos(\u03c9\u03b4) )"
+      ]
+    },
+    "layout": {
+      "arrangement": "Top band (~8-40% height): a thin red-bordered container spanning ~6-73% width holds two side-by-side panels \u2014 a mint-green 'Vector at Pos t' panel on the left and a light-yellow 'Vector at Pos t+\u03b4' expansion panel in the center; to their right (~72-90% width) two small stacked white boxes with blue borders ('Let \u03c9t=a , \u03c9\u03b4=b' and 'sin\u00b2(a) + cos\u00b2(a)=1'); slide-number circle '31' at top-right corner. Below (~41-46% height) a full-width light-green title banner strip. Main body (~47-94% height): one large white panel with blue border containing a 6-line aligned equation derivation, each line ending with '=' at the right edge; a yellow result callout box sits at the bottom-center-right inside this panel; a yellow ribbon reading 'Irrespective of Position t' is rotated diagonally at the bottom-right, overlapping the panel edge. Full-width black strip at the very bottom.",
+      "regions": [
+        {
+          "name": "Top-band red container",
+          "position": "top band, ~6-73% width, ~8-40% height",
+          "content": "Thin red rectangular border (no fill) enclosing the left mint-green vector panel and the middle light-yellow expansion panel; the right definition boxes and the slide-number badge sit outside it"
+        },
+        {
+          "name": "Left vector panel",
+          "position": "top-left, ~7-20% width, ~9-39% height",
+          "content": "Header 'Vector at Pos \u201ct\u201d' in red; column vector [sin(\u03c9t); cos(\u03c9t)]; red down arrow; column vector [sin(a); cos(a)] with yellow highlights"
+        },
+        {
+          "name": "Middle expansion panel",
+          "position": "top-center, ~22-71% width, ~9-39% height",
+          "content": "Header 'Vector at Pos \u201ct+\u03b4\u201d' in red; angle-addition expansion equation with column vectors; red down arrow; substituted vector in a and b"
+        },
+        {
+          "name": "Right definition boxes",
+          "position": "top-right, ~72-90% width, ~22-37% height",
+          "content": "Two stacked white boxes with blue borders: 'Let \u03c9t=a , \u03c9\u03b4=b' and 'sin\u00b2(a) + cos\u00b2(a)=1' in blue text"
+        },
+        {
+          "name": "Slide number badge",
+          "position": "top-right corner, ~89-93% width, ~10-16% height",
+          "content": "Yellow circle with red border containing '31' in red"
+        },
+        {
+          "name": "Title banner strip",
+          "position": "full content width, ~41-46% height",
+          "content": "Red bold title 'Squared Distance Between Vector of Pos \u201ct+\u03b4\u201d and Vector of Pos \u201ct\u201d' on left/center; blue '[ Two Consecutive Positions ]' on right"
+        },
+        {
+          "name": "Derivation panel",
+          "position": "center, ~6-89% width, ~47-94% height",
+          "content": "Six aligned equation lines (white background, blue border), trailing '=' at right edge of lines 1-5; final line ends in result callout box"
+        },
+        {
+          "name": "Result callout",
+          "position": "bottom-center-right inside derivation panel, ~58-75% width, ~86-93% height",
+          "content": "'=2 (1-cos(\u03c9\u03b4) )' bold red on yellow fill with green border"
+        },
+        {
+          "name": "Rotated ribbon",
+          "position": "bottom-right, ~76-95% width, ~68-95% height, rotated ~55-65\u00b0 counterclockwise",
+          "content": "Yellow ribbon with red text 'Irrespective of Position \u201ct\u201d' reading bottom-left to top-right"
+        },
+        {
+          "name": "Footer bar",
+          "position": "bottom, full width, ~95-100% height",
+          "content": "Solid black strip"
+        }
+      ],
+      "hierarchy": "The 6-line derivation panel dominates by area and is the visual center. Next in weight: the red bold title banner strip, then the red panel headers 'Vector at Pos \u201ct\u201d' / 'Vector at Pos \u201ct+\u03b4\u201d'. Equations are medium-size with red as the dominant ink, blue as secondary, and yellow/cyan highlights drawing the eye to substituted terms and the final result. The rotated yellow ribbon and the circled '31' are small accent elements."
+    },
+    "visual_elements": [
+      {
+        "type": "highlight-box",
+        "description": "Left panel: mint-green fill, red border. Header 'Vector at Pos \u201ct\u201d' (red). 2x1 column vector with large square brackets: sin(\u03c9t) over cos(\u03c9t), red text. Thick red block arrow pointing down. Below: column vector sin(a) over cos(a), red text, each term with yellow highlight behind it.",
+        "colors": [
+          "#CCFFCC",
+          "#FF0000",
+          "#FFFF00",
+          "#000000"
+        ],
+        "position": "top-left, ~7-20% width, ~9-39% height"
+      },
+      {
+        "type": "highlight-box",
+        "description": "Middle panel: light-yellow fill, blue border. Header 'Vector at Pos \u201ct+\u03b4\u201d' (red). Equation: column vector [Sin (\u03c9(t+\u03b4)); cos(\u03c9(t+\u03b4))] = column vector [sin(\u03c9t) cos(\u03c9\u03b4) + cos(\u03c9t) sin(\u03c9\u03b4); cos(\u03c9t) cos(\u03c9\u03b4) - sin(\u03c9t) sin(\u03c9\u03b4)], where \u03c9t-terms are red and \u03c9\u03b4-terms are blue. Thick red block arrow pointing down. Resulting column vector [sin(a) cos(b) + cos(a) sin(b); cos(a) cos(b) - sin(a) sin(b)] in red.",
+        "colors": [
+          "#FFFFCC",
+          "#FF0000",
+          "#0000CC",
+          "#000000"
+        ],
+        "position": "top-center, ~22-71% width, ~9-39% height"
+      },
+      {
+        "type": "highlight-box",
+        "description": "Two small stacked white rectangles with blue borders and blue text: box 1 'Let \u03c9t=a , \u03c9\u03b4=b'; box 2 'sin\u00b2(a) + cos\u00b2(a)=1'.",
+        "colors": [
+          "#FFFFFF",
+          "#0000CC"
+        ],
+        "position": "top-right, ~72-90% width, ~22-37% height"
+      },
+      {
+        "type": "highlight-box",
+        "description": "Title banner strip: light-green fill, thin border; red bold text 'Squared Distance Between Vector of Pos \u201ct+\u03b4\u201d and Vector of Pos \u201ct\u201d' left/center; blue text '[ Two Consecutive Positions ]' right.",
+        "colors": [
+          "#CCFFCC",
+          "#FF0000",
+          "#0000CC"
+        ],
+        "position": "full content width, ~41-46% height"
+      },
+      {
+        "type": "other",
+        "description": "Main derivation panel: white fill, blue border, six left-aligned equation lines of decreasing expansion; lines 1-5 each terminate with '=' at the far right edge signaling continuation onto the next line. Color coding: sin(a)/cos(a) substituted terms highlighted yellow in lines 1-2; remaining terms alternate red (#CC0000) and blue (#0000CC) across lines 3-5; in line 6 the terms cos\u00b2(b) and sin\u00b2(b) carry cyan (#00CCFF-ish) highlights.",
+        "colors": [
+          "#FFFFFF",
+          "#0000CC",
+          "#CC0000",
+          "#FFFF00",
+          "#00CCFF"
+        ],
+        "position": "center, ~6-89% width, ~47-94% height"
+      },
+      {
+        "type": "highlight-box",
+        "description": "Result callout box: '=2 (1-cos(\u03c9\u03b4) )' in bold red on yellow fill with a green border, placed at the end of derivation line 6.",
+        "colors": [
+          "#FFFF99",
+          "#00CC00",
+          "#FF0000"
+        ],
+        "position": "bottom-center-right inside derivation panel, ~58-75% width, ~86-93% height"
+      },
+      {
+        "type": "arrow",
+        "description": "Two thick red block/down arrows used as substitution indicators: one in the left panel (from \u03c9t-vector to a-vector), one in the middle panel (from \u03c9t/\u03c9\u03b4 expansion to a/b vector).",
+        "colors": [
+          "#FF0000"
+        ],
+        "position": "inside top-left and top-center panels"
+      },
+      {
+        "type": "other",
+        "description": "Rotated ribbon/banner: elongated yellow parallelogram with red bold text 'Irrespective of Position \u201ct\u201d', rotated roughly 55-65\u00b0 counterclockwise so it reads upward from bottom-left to top-right along the right edge of the derivation panel.",
+        "colors": [
+          "#FFFF00",
+          "#FF0000"
+        ],
+        "position": "bottom-right, ~76-95% width, ~68-95% height"
+      },
+      {
+        "type": "other",
+        "description": "Slide number badge: circle filled pale yellow with red outline, red numeral '31' centered.",
+        "colors": [
+          "#FFFF99",
+          "#FF0000"
+        ],
+        "position": "top-right corner, ~89-93% width, ~10-16% height"
+      },
+      {
+        "type": "other",
+        "description": "Thin red rectangular border enclosing the top-left group (green vector panel + yellow expansion panel).",
+        "colors": [
+          "#FF0000"
+        ],
+        "position": "top band, ~6-73% width, ~8-40% height"
+      },
+      {
+        "type": "other",
+        "description": "Solid black footer strip across the bottom of the slide.",
+        "colors": [
+          "#000000"
+        ],
+        "position": "bottom, full width, ~95-100% height"
+      }
+    ],
+    "imagery": [
+      "None \u2014 the slide is purely typographic/mathematical; the only non-text shapes are brackets, arrows, highlight boxes, the rotated ribbon, the numbered circle badge, and the black footer bar."
+    ],
+    "colors": {
+      "background": "#FFFFFF",
+      "title_text": "#FF0000",
+      "body_text": "#CC0000",
+      "accents": [
+        "#0000CC",
+        "#FFFF00",
+        "#CCFFCC",
+        "#FFFFCC",
+        "#FFFF99",
+        "#00CCFF",
+        "#00CC00",
+        "#000000"
+      ]
+    },
+    "typography_notes": "Entirely sans-serif (Arial/Tahoma-like). Panel headers ('Vector at Pos \u2026') are bold red, slightly larger than equation text. The title banner line is bold red, the largest text on the slide. Equations are regular weight, medium size, using Unicode-style superscripts (\u00b2) for squares; heavy use of color-coding (red for \u03c9t/a-terms, blue for \u03c9\u03b4/b-terms) and yellow/cyan highlighter backgrounds instead of italics/bold for emphasis. The final result '=2 (1-cos(\u03c9\u03b4) )' is bold red. The rotated ribbon text is bold red. Slide number is a red numeral inside a circled badge. No serif fonts, no all-caps styling beyond normal capitalization; quotes around t and t+\u03b4 are curly quotes.",
+    "animation_state": "Slide appears fully built \u2014 all six derivation lines, both top panels, both right-hand definition boxes, the result callout, and the rotated ribbon are visible simultaneously; nothing looks mid-reveal. The tiny stray mark at the start of derivation line 4 looks like a pen/annotation artifact rather than an animation state.",
+    "recreation_brief": "1. Set the slide background to solid white (#FFFFFF). 2. Footer bar: draw a solid black (#000000) rectangle spanning the full slide width from ~95% to ~100% height. 3. Top-band container: draw a rectangle with a thin red (#FF0000) outline and no fill spanning ~6-73% width and ~8-40% height; it encloses the panels placed in steps 4 and 5. 4. Left vector panel: inside the container at ~7-20% width, ~9-39% height, draw a rectangle with mint-green (#CCFFCC) fill and red (#FF0000) border; place bold red header 'Vector at Pos \u201ct\u201d' at its top; below it a 2x1 column vector with large square brackets reading 'sin(\u03c9t)' over 'cos(\u03c9t)' in red (#FF0000); below that a thick red (#FF0000) downward block arrow; below that a second 2x1 column vector reading 'sin(a)' over 'cos(a)' in red, with a yellow (#FFFF00) highlight behind each of the two terms. 5. Middle expansion panel: inside the container at ~22-71% width, ~9-39% height, draw a rectangle with light-yellow (#FFFFCC) fill and blue (#0000CC) border; place bold red header 'Vector at Pos \u201ct+\u03b4\u201d' at its top; below it the equation '[Sin (\u03c9(t+\u03b4)); cos(\u03c9(t+\u03b4))]' = '[sin(\u03c9t) cos(\u03c9\u03b4) + cos(\u03c9t) sin(\u03c9\u03b4); cos(\u03c9t) cos(\u03c9\u03b4) - sin(\u03c9t) sin(\u03c9\u03b4)]' set as two column vectors joined by a large '=', with \u03c9t-terms in red and \u03c9\u03b4-terms in blue; below it a thick red (#FF0000) downward block arrow; below it the resulting column vector '[sin(a) cos(b) + cos(a) sin(b); cos(a) cos(b) - sin(a) sin(b)]' in red. 6. Right definition boxes: outside the container at ~72-90% width, ~22-37% height, draw two stacked white (#FFFFFF) rectangles with blue (#0000CC) borders and blue text \u2014 upper box 'Let \u03c9t=a , \u03c9\u03b4=b', lower box 'sin\u00b2(a) + cos\u00b2(a)=1'. 7. Slide number badge: at ~89-93% width, ~10-16% height, draw a circle with pale-yellow (#FFFF99) fill and red (#FF0000) outline containing the red numeral '31' centered. 8. Title banner strip: at ~41-46% height spanning the full content width, draw a rectangle with light-green (#CCFFCC) fill and a thin border; place bold red (#FF0000) text 'Squared Distance Between Vector of Pos \u201ct+\u03b4\u201d and Vector of Pos \u201ct\u201d' at left/center and blue (#0000CC) text '[ Two Consecutive Positions ]' at the right. 9. Derivation panel: at ~6-89% width, ~47-94% height, draw a large rectangle with white (#FFFFFF) fill and blue (#0000CC) border; steps 10-15 place six left-aligned equation lines inside it, one per row, in a sans-serif font, with lines 1-5 each ending in a red '=' pushed to the panel's right edge. 10. Derivation line 1 (top row): '[ sin(a) cos(b) + cos(a) sin(b) - sin(a) ]\u00b2 + [ -sin(a) sin(b) + cos(a) cos(b) - cos(a) ]\u00b2 =' with yellow (#FFFF00) highlights behind 'sin(a)', '- sin(a)' and '- cos(a)'. 11. Derivation line 2: '[ sin(a) (cos(b)-1) + cos(a) sin(b) ]\u00b2 + [ -sin(a) sin(b) + cos(a) (cos(b) -1) ]\u00b2 =' with yellow (#FFFF00) highlights behind 'sin(a)' and 'cos(a)'. 12. Derivation line 3: '[ sin(a)\u00b2 (cos(b)-1)\u00b2 + cos\u00b2(a) sin\u00b2(b) + 2 sin(a) cos(a) sin(b) (cos(b)-1) ] + [ sin\u00b2(a) sin\u00b2(b) + cos\u00b2(a) (cos(b) -1)\u00b2 - 2 sin(a) cos(a) sin(b) (cos(b)-1) ] =' with terms alternating red (#CC0000) and blue (#0000CC). 13. Derivation line 4: 'sin(a)\u00b2 (cos(b)-1)\u00b2 + cos\u00b2(a) sin\u00b2(b) + sin\u00b2(a) sin\u00b2(b) + cos\u00b2(a) (cos(b) -1)\u00b2 =' with terms alternating red (#CC0000) and blue (#0000CC); an unverified [?] tiny stray pen/annotation mark sits just before the start of this line \u2014 reproduce it only if fidelity to the source artifact is required. 14. Derivation line 5: '[ sin(a)\u00b2 + cos\u00b2(a) ] (cos(b)-1)\u00b2 + [ sin(a)\u00b2 + cos\u00b2(a) ] (sin\u00b2(b) ) = (cos(b)-1)\u00b2 + sin\u00b2(b) =' with the two bracketed sums '[ sin(a)\u00b2 + cos\u00b2(a) ]' in red and the remaining terms in blue. 15. Derivation line 6 (bottom row): 'cos\u00b2(b) -2 cos(b) +1 + sin\u00b2(b) = 2 -2 cos(b) = 2(1-cos(b) )' with cyan (#00CCFF) highlights behind 'cos\u00b2(b)' and 'sin\u00b2(b)'. 16. Result callout: at the end of derivation line 6 (~58-75% width, ~86-93% height), draw a rectangle with yellow (#FFFF99) fill and green (#00CC00) border containing bold red (#FF0000) text '=2 (1-cos(\u03c9\u03b4) )'. 17. Rotated ribbon: at ~76-95% width, ~68-95% height, draw an elongated yellow (#FFFF00) rectangle with bold red (#FF0000) text 'Irrespective of Position \u201ct\u201d', rotated ~55-65\u00b0 counterclockwise so the text reads upward from bottom-left to top-right, partially overlapping the derivation panel's right border. 18. Typography pass: use one sans-serif family (Arial/Tahoma-like) throughout; render all quotes as curly quotes (\u201ct\u201d, \u201ct+\u03b4\u201d) and all squares as superscript \u00b2; keep panel headers bold red and slightly larger than equation text; keep the title banner text the largest on the slide.",
+    "validation": {
+      "verdict": "PASS_WITH_FIXES",
+      "fixes_applied": [
+        "verbatim_text.bullets was empty (required non-empty field); reconstructed 15 bullets in slide reading order strictly from the existing labels and equations (title banner, subtitle, 2 panel headers, 2 definition boxes, slide number '31', derivation lines 1-6, final result, ribbon text) \u2014 no new content invented.",
+        "layout.regions did not cover the thin red top-band container border described in layout.arrangement and visual_elements; added region 'Top-band red container' (~6-73% width, ~8-40% height), bringing the region count to 10 so that all 11 visual_elements and all verbatim text items are now covered by a named region.",
+        "Rewrote recreation_brief from 11 multi-element steps into an 18-step ordered checklist with exactly one placed element per step, each specifying exact text, percentage position, fill/border/text hex colors, and shape type.",
+        "Preserved the '[?] tiny stray pen/annotation mark just before the start of derivation line 4' marker verbatim in verbatim_text.labels, flagged it in uncertain_items, and made its reproduction explicitly optional in recreation_brief step 13.",
+        "Verified no vague quantifiers ('several', 'some', 'many', 'a few', 'various') remain; all counts are exact: 2 top panels, 2 definition boxes, 2 red block arrows, 6 derivation lines, 8 labels, 11 equations, 15 bullets, 10 regions, 11 visual elements.",
+        "Cross-checked consistency: title/subtitle match the title banner region and brief step 8; all equation strings in the brief match verbatim_text.equations character-for-character; all hex colors in the brief match the colors fields of the corresponding visual_elements."
+      ],
+      "uncertain_items": [
+        "'[?] tiny stray pen/annotation mark just before the start of derivation line 4' \u2014 unverifiable annotation artifact; kept with its [?] marker and excluded from mandatory recreation steps.",
+        "Rotated ribbon angle is given only as a range (~55-65\u00b0 counterclockwise), not an exact value.",
+        "Font family is described only as 'Arial/Tahoma-like' sans-serif; the exact font cannot be verified from the JSON.",
+        "Cyan highlight on derivation line 6 is recorded as '#00CCFF-ish'; the exact tint is uncertain.",
+        "All element positions are percentage approximations (prefixed '~') from the vision model; exact pixel coordinates are unavailable."
+      ],
+      "recreatability_score_1_to_10": 9
+    },
+    "_meta": {
+      "frame": "slide_031.jpg",
+      "model": "images",
+      "source_timestamps": {
+        "slide": 31,
+        "image": "slide_031.jpg",
+        "kept_frame": "frame_02121.jpg",
+        "start_sec": 1817.0,
+        "end_sec": 2120.0,
+        "frame_count": 304,
+        "old_slide": 63
+      },
+      "elapsed_s": 397.0,
+      "validated_by": "glm-5.3",
+      "validation_elapsed_s": 909.0
+    }
+  },
+  {
+    "slide_title": "Sin/Cos Positional Encoder",
+    "subtitle_or_header": "Vector of Dimension \"2\" to define Position",
+    "verbatim_text": {
+      "bullets": [
+        "This vector can be used to define word position at step \"t\" , t=0,1,2,3,4,5,6,7,....",
+        "Values are between -1 and 1 (bounded values)",
+        "Distance between vectors representing positions \"t\" and \"t+1\"  is constant irrespective of \"t\"  [Distance (Pos1, Pos2) = Distance (Pos90, Pos91)]",
+        "\"t\" may take any positive value (No limitation of length of Sequence )",
+        "Position Vector Length = 2  (Cannot be combined with Word Embedding Vector) ??"
+      ],
+      "labels": [
+        "32",
+        "sin(\u03c9t)",
+        "cos(\u03c9t)",
+        "Where \"t\" is the step (position) and \u03c9 is the frequency of trigonometric function Sine/Cosine"
+      ],
+      "equations": [
+        "[ sin(\u03c9t) ; cos(\u03c9t) ]",
+        "t = 0,1,2,3,4,5,6,7,....",
+        "Distance (Pos1, Pos2) = Distance (Pos90, Pos91)",
+        "Position Vector Length = 2"
+      ]
+    },
+    "layout": {
+      "arrangement": "Centered red title at very top, centered blue subtitle directly beneath it. Below that, a left-hand red-bordered vector box [sin(\u03c9t); cos(\u03c9t)] sits beside a wide yellow definition callout box. The remaining lower portion of the slide (y 38-95%, roughly 57% of slide height) is one large pale-cyan panel with navy border containing an italic lead-in line and four bullet/continuation lines. Yellow circular slide-number badge '32' at top-right. Thin dark-red frame line runs along the slide's outer edge (visible top and left). A black letterbox strip runs along the very bottom of the video frame (not slide content).",
+      "regions": [
+        {
+          "name": "Title",
+          "position": "top center, ~y 7-13%, x 25-75%",
+          "content": "Red bold text 'Sin/Cos Positional Encoder'"
+        },
+        {
+          "name": "Subtitle",
+          "position": "top center, ~y 13-19%, x 22-78%",
+          "content": "Blue bold text 'Vector of Dimension \"2\" to define Position'"
+        },
+        {
+          "name": "Vector box",
+          "position": "upper-left, ~x 8-21%, y 18-36%",
+          "content": "Red-bordered white box containing column vector sin(\u03c9t) over cos(\u03c9t) in red with large brackets"
+        },
+        {
+          "name": "Definition callout",
+          "position": "upper center-right, ~x 22-90%, y 21-31%",
+          "content": "Yellow-filled box with orange border; black text with red 't' and red '\u03c9'"
+        },
+        {
+          "name": "Main content panel",
+          "position": "middle to bottom, ~x 8-92%, y 38-95%",
+          "content": "Pale-cyan rectangle, navy border, holding one italic lead-in line and four bullet/continuation lines, with four yellow-highlighted phrases, three green parenthetical segments, and one red closing warning"
+        },
+        {
+          "name": "Slide number badge",
+          "position": "top-right corner, ~x 88-95%, y 9-17%",
+          "content": "Yellow circle with dark outline containing '32'"
+        },
+        {
+          "name": "Frame line",
+          "position": "slide perimeter; clearly visible along top and left edges",
+          "content": "Thin dark-red/maroon (#800000) line flush to the slide's outer edge"
+        },
+        {
+          "name": "Letterbox strip",
+          "position": "bottom edge, ~y 97-100%, full width",
+          "content": "Solid black bar (video frame artifact, not slide content)"
+        }
+      ],
+      "hierarchy": "Title (red, bold, largest) > subtitle (blue, bold) > bullet body text (blue, bold, slightly smaller) > green parenthetical remarks (regular weight); yellow highlights are the strongest attention devices within the body; the final red line '(Cannot be combined with Word Embedding Vector) ??' reads as a warning/emphasis close."
+    },
+    "visual_elements": [
+      {
+        "type": "highlight-box",
+        "description": "Column-vector box: white rectangle with medium red border; inside, a 2-row, 1-column mathematical vector with large square brackets, top element 'sin(\u03c9t)', bottom element 'cos(\u03c9t)', both in red",
+        "colors": [
+          "#C00000",
+          "#FFFFFF"
+        ],
+        "position": "upper-left, left of the definition callout"
+      },
+      {
+        "type": "highlight-box",
+        "description": "Definition callout: wide rectangle filled pale yellow with orange/brown border; text 'Where \"t\" is the step (position) and \u03c9 is the frequency of trigonometric function Sine/Cosine' with 't' and '\u03c9' colored red, rest black",
+        "colors": [
+          "#FFFFCC",
+          "#CC6600",
+          "#000000",
+          "#C00000"
+        ],
+        "position": "upper center-right, to the right of the vector box"
+      },
+      {
+        "type": "highlight-box",
+        "description": "Main content panel: very large rectangle filled pale cyan with a navy/blue border; contains all five text lines (one italic lead-in line with no marker, three '>'-chevron bullet lines, one unmarked continuation line); bullet markers are small '>' chevrons in dark gray/black; exactly four phrases carry yellow highlighter ('between -1 and 1', 'Distance', '\"t\" and \"t+1\"', '\"t\" may take any positive value'); exactly three green parenthetical segments ('(bounded values)', '[Distance (Pos1, Pos2) = Distance (Pos90, Pos91)]', '(No limitation of length of Sequence )'); exactly one red closing warning ('(Cannot be combined with Word Embedding Vector) ??')",
+        "colors": [
+          "#E0F7FA",
+          "#000080",
+          "#FFFF00",
+          "#0000CC",
+          "#009900",
+          "#C00000"
+        ],
+        "position": "center, spanning almost full slide width below the header area"
+      },
+      {
+        "type": "icon",
+        "description": "Slide-number badge: yellow filled circle with thin dark outline, text '32' in dark red/maroon",
+        "colors": [
+          "#FFFF00",
+          "#808000",
+          "#800000"
+        ],
+        "position": "top-right corner"
+      },
+      {
+        "type": "other",
+        "description": "Thin dark-red/maroon frame line along the outer edge of the slide (clearly visible along top and left edges)",
+        "colors": [
+          "#800000"
+        ],
+        "position": "slide perimeter"
+      }
+    ],
+    "imagery": [
+      "No photographs or illustrations. Only a white mouse-pointer cursor arrow visible over the main panel near the text '[Distance (Pos1, Pos2) = Distance (Pos90, Pos91)]' \u2014 a video-capture artifact, not slide content."
+    ],
+    "colors": {
+      "background": "#FFFFFF",
+      "title_text": "#C00000",
+      "subtitle_text": "#0000CC",
+      "body_text": "#0000CC",
+      "accents": [
+        "#FFFF00",
+        "#009900",
+        "#C00000",
+        "#E0F7FA",
+        "#000080",
+        "#FFFFCC",
+        "#CC6600"
+      ]
+    },
+    "typography_notes": "Sans-serif throughout (Arial/Calibri-like). Title and subtitle bold; body text predominantly bold with italic used on the lead-in sentence and phrases like 'irrespective of \"t\"'. Variables 't' and '\u03c9' set in red and quoted. Yellow highlighter behind key phrases. Green used for parenthetical/secondary remarks. Bullets are '>' chevron glyphs, not standard round bullets. Slide number in a circled badge.",
+    "animation_state": "Slide appears fully built \u2014 all bullets and boxes revealed. A mouse cursor hovers over the main panel, indicating a narrated video capture rather than a mid-build state.",
+    "recreation_brief": "1. Slide setup: create a 16:9 slide with a white (#FFFFFF) background; draw a thin dark-red (#800000) rectangle outline flush to all four slide edges as a frame line (in the source it is clearly visible along the top and left edges).\n2. Title: centered text box spanning x 25-75%, y 7-13%, with 'Sin/Cos Positional Encoder' in Arial bold ~32pt, red #C00000.\n3. Subtitle: centered text box directly below, spanning x 22-78%, y 13-19%, with 'Vector of Dimension \"2\" to define Position' in Arial bold ~24pt, blue #0000CC.\n4. Vector box: white-filled rectangle with a 2pt red #C00000 border at x 8-21%, y 18-36%; inside it place a 2-row, 1-column vector with large square brackets: top element 'sin(\u03c9t)', bottom element 'cos(\u03c9t)', both in red #C00000 at ~18pt.\n5. Definition callout: rectangle filled #FFFFCC with a 1.5pt #CC6600 border at x 22-90%, y 21-31%; text 'Where \"t\" is the step (position) and \u03c9 is the frequency of trigonometric function Sine/Cosine' in black ~16pt, with the characters 't' and '\u03c9' colored red #C00000.\n6. Slide-number badge: circle filled #FFFF00 with a thin dark #808000 outline at x 88-95%, y 9-17%; centered text '32' in dark red #800000.\n7. Main content panel: rectangle filled #E0F7FA with a 1.5pt navy #000080 border at x 8-92%, y 38-95%.\n8. Inside the panel, one text frame in Arial bold ~17pt blue #0000CC with '>' chevron bullet markers. Line 1 (italic, no bullet marker): 'This vector can be used to define word position at step \"t\" , t=0,1,2,3,4,5,6,7,....'\n9. Bullet 1 ('>' chevron): 'Values are ' plain blue + 'between -1 and 1' with yellow #FFFF00 highlighter behind the text + ' (bounded values)' in green #009900.\n10. Continuation line (no bullet marker): 'Distance' with yellow #FFFF00 highlighter + ' between vectors representing positions ' plain blue + '\"t\" and \"t+1\"' with yellow #FFFF00 highlighter + '  is constant irrespective of \"t\"  ' in italic plain blue + '[Distance (Pos1, Pos2) = Distance (Pos90, Pos91)]' in green #009900.\n11. Bullet 2 ('>' chevron): '\"t\" may take any positive value' with yellow #FFFF00 highlighter + ' (No limitation of length of Sequence )' in green #009900.\n12. Bullet 3 ('>' chevron): 'Position Vector Length = 2  ' in blue #0000CC bold + '(Cannot be combined with Word Embedding Vector) ??' in red #C00000 bold.\n13. Spacing and exclusions: leave approximately one blank line of vertical spacing between the five text lines; add no photographs, no illustrations, no mouse cursor, and no bottom black letterbox strip (cursor and letterbox are video-capture artifacts, not slide content).",
+    "validation": {
+      "verdict": "PASS_WITH_FIXES",
+      "fixes_applied": [
+        "Added a missing layout.regions entry 'Frame line' (thin #800000 perimeter line, visible top and left) so that regions cover all five visual_elements; previously the frame line appeared only in layout.arrangement and visual_elements.",
+        "Standardized the subtitle color: recreation_brief specified #2222CC while colors.body_text and the Subtitle region say blue; set the subtitle to #0000CC in the brief and added colors.subtitle_text = #0000CC.",
+        "Corrected the slide-number badge dimensions in recreation_brief from '~5% wide' to the region bounds x 88-95%, y 9-17% (about 7% wide and 8% tall).",
+        "Replaced vague quantifiers: the main-panel visual_element said 'several phrases carry yellow highlighter; some text green, some red' \u2014 it now enumerates exactly four yellow-highlighted phrases ('between -1 and 1', 'Distance', '\"t\" and \"t+1\"', '\"t\" may take any positive value'), three green parenthetical segments, and one red closing warning, consistent with recreation_brief; also tightened arrangement's '~60% of the slide' to the panel bounds y 38-95%.",
+        "Cleaned verbatim_text of extractor annotations: labels[0] '32 (slide number inside yellow circle, top-right corner)' reduced to '32', and equations[0] '[ sin(\u03c9t) ; cos(\u03c9t) ]  (2-component column vector with large square brackets)' reduced to '[ sin(\u03c9t) ; cos(\u03c9t) ]'; the removed annotations remain available in layout.regions and visual_elements.",
+        "Rewrote recreation_brief as a 13-step ordered checklist; each step places exactly one element with verbatim text, percent-bound position, hex colors for fill/border/text, and shape type; explicitly specified highlighter yellow #FFFF00 and green #009900.",
+        "Made the closing spacing instruction concrete (approximately one blank line between the five text lines) and explicitly excluded the mouse cursor and the bottom black letterbox strip as video-capture artifacts, not slide content."
+      ],
+      "uncertain_items": [
+        "Font sizes (~32pt title, ~24pt subtitle, ~18pt vector, ~16pt callout, ~17pt body) are estimates; the source JSON specifies no point sizes.",
+        "Word-level highlighting inside the bullets (which exact phrases carry the yellow highlighter versus plain blue) is inferred from the original recreation_brief and typography_notes; the source visual_elements only said 'several phrases' without enumerating them.",
+        "The trailing '??' in bullet 5 is verbatim slide text (the presenter's own uncertainty marker) and was retained exactly; it is not an extraction-confidence tag.",
+        "Whether the dark-red frame line runs the full slide perimeter or only along the top and left edges cannot be confirmed from the JSON.",
+        "The subtitle is assumed to share the body-text blue #0000CC; no distinct subtitle color was extracted."
+      ],
+      "recreatability_score_1_to_10": 9
+    },
+    "_meta": {
+      "frame": "slide_032.jpg",
+      "model": "images",
+      "source_timestamps": {
+        "slide": 32,
+        "image": "slide_032.jpg",
+        "kept_frame": "frame_02168.jpg",
+        "start_sec": 2121.0,
+        "end_sec": 2167.0,
+        "frame_count": 47,
+        "old_slide": 64
+      },
+      "elapsed_s": 157.1,
+      "validated_by": "glm-5.3",
+      "validation_elapsed_s": 657.0
+    }
+  },
+  {
+    "slide_title": "[2] Position Embedding",
+    "subtitle_or_header": "(Similar to Word Embedding)",
+    "verbatim_text": {
+      "bullets": [
+        "Real valued vectors representing  positions",
+        "(Vector for each position)",
+        "Positions > N-1  can NOT be Embedded",
+        "(Must Train Embedding on Max Expected Seq. Length)",
+        "Vector Length  = Word Embedding length"
+      ],
+      "labels": [
+        "Position Information",
+        "(similar to word tokenization)",
+        "Positional Embedding",
+        "(Trained on Position Values)",
+        "Embedding Layer to Learn Position Vectors",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "N-2",
+        "N-1",
+        "Vector_P0",
+        "Vector_P1",
+        "Vector_P2",
+        "Vector_P3",
+        "Vector_P4",
+        "Vector_P5",
+        "Vector_PN-2",
+        "Vector_PN-1",
+        "34",
+        "[black strip across very bottom of frame \u2014 likely video player chrome, not slide content]"
+      ],
+      "equations": [
+        "Positions > N-1  can NOT be Embedded",
+        "Vector Length  = Word Embedding length"
+      ]
+    },
+    "layout": {
+      "arrangement": "Centered title at top with slide-number badge at top-right; below it a vertical three-stage flow diagram occupying the full width: (1) a dashed-blue container of numbered position boxes with a blue label block on the left, (2) a full-width purple bar reached via a red down-arrow, with a red/blue label block on the left, (3) a dashed-green container of pink vector boxes reached via another red down-arrow; a red curly brace under the vector row points down to a large green-outlined text box centered at the bottom",
+      "regions": [
+        {
+          "name": "Title",
+          "position": "top center, ~4-18% height, ~25-75% width",
+          "content": "Two-tone title '[2] Position Embedding' with red subtitle '(Similar to Word Embedding)' beneath it"
+        },
+        {
+          "name": "Slide number badge",
+          "position": "top right, ~5-16% height, ~89-93% width",
+          "content": "Yellow circle containing the number 34"
+        },
+        {
+          "name": "Position token row",
+          "position": "upper middle, ~24-33% height, ~18-92% width (left labels at ~6-17% width)",
+          "content": "Dashed blue rounded container holding 8 small boxes numbered 0,1,2,3,4,5,N-2,N-1 with 5 dots between '5' and 'N-2'; left labels 'Position Information' and '(similar to word tokenization)'"
+        },
+        {
+          "name": "Embedding bar",
+          "position": "middle, ~40-47% height, ~18-92% width (left labels at ~6-17% width)",
+          "content": "Solid purple bar with text 'Embedding Layer to Learn Position Vectors'; left labels 'Positional Embedding' and '(Trained on Position Values)'"
+        },
+        {
+          "name": "Red down arrows",
+          "position": "~55% horizontal; arrow 1 spans ~33-40% height (token row to embedding bar), arrow 2 spans ~47-54% height (embedding bar to vector row)",
+          "content": "Two thick red (#EE0000) block arrows pointing straight down, connecting the three flow stages"
+        },
+        {
+          "name": "Vector row",
+          "position": "lower middle, ~54-62% height, ~18-92% width",
+          "content": "Dashed green rounded container holding 8 pink boxes labeled Vector_P0 through Vector_P5 and Vector_PN-2, Vector_PN-1, with a wide gap between Vector_P5 and Vector_PN-2; small gray pointer arrow touches Vector_P3"
+        },
+        {
+          "name": "Curly brace",
+          "position": "~63-67% height, ~18-90% width",
+          "content": "Red horizontal curly brace, cusp pointing downward"
+        },
+        {
+          "name": "Green summary box",
+          "position": "bottom center, ~68-93% height, ~23-85% width",
+          "content": "Green-outlined rectangle with 5 centered bold lines of summary text"
+        }
+      ],
+      "hierarchy": "Title is largest text (~40pt bold, two-color); the solid purple bar is the highest-contrast block; the green summary box holds the next-largest body text; small box labels and left annotations are smallest; red arrows and brace guide the eye downward through the flow"
+    },
+    "visual_elements": [
+      {
+        "type": "highlight-box",
+        "description": "Dashed blue rounded-rectangle container (no fill) holding 8 small rectangles in a row: labels 0, 1, 2, 3, 4, 5, N-2, N-1 (italic, dark navy text); boxes have light blue fill and blue borders; between the '5' box and the 'N-2' box sit 5 small gray-blue dots (\u2022 \u2022 \u2022 \u2022 \u2022) indicating omitted positions",
+        "colors": [
+          "#2244CC",
+          "#C9D6EF",
+          "#3366CC",
+          "#000066",
+          "#8899BB"
+        ],
+        "position": "upper middle, spanning ~18-92% width"
+      },
+      {
+        "type": "highlight-box",
+        "description": "Full-width solid purple banner with centered bold text: 'Embedding' (yellow) + ' Layer to ' (white) + 'Learn' (yellow) + ' Position Vectors' (white)",
+        "colors": [
+          "#990099",
+          "#FFFF00",
+          "#FFFFFF"
+        ],
+        "position": "middle, spanning ~18-92% width"
+      },
+      {
+        "type": "arrow",
+        "description": "Two thick red block arrows pointing straight down: arrow 1 from the position token row into the purple bar; arrow 2 from the purple bar into the vector row; both at ~55% horizontal position",
+        "colors": [
+          "#EE0000"
+        ],
+        "position": "center of slide, between the three flow stages"
+      },
+      {
+        "type": "highlight-box",
+        "description": "Dashed green rounded-rectangle container (no fill) holding 8 small rectangles in a row: labels Vector_P0, Vector_P1, Vector_P2, Vector_P3, Vector_P4, Vector_P5, Vector_PN-2, Vector_PN-1 (with 'P0'...'PN-1' as subscripts), red bold italic text on light-pink fill with red borders; wide empty gap (dots omitted or too faint to see [?]) between Vector_P5 and Vector_PN-2; a small gray pointer/arrow annotation touches the bottom-left of the Vector_P3 box",
+        "colors": [
+          "#00AA44",
+          "#FFDDE4",
+          "#CC0000",
+          "#888888"
+        ],
+        "position": "lower middle, spanning ~18-92% width"
+      },
+      {
+        "type": "other",
+        "description": "Large red horizontal curly brace spanning the width of the vector row, opening upward with its cusp pointing down toward the green summary box",
+        "colors": [
+          "#CC0000"
+        ],
+        "position": "below vector row, ~63-67% height"
+      },
+      {
+        "type": "highlight-box",
+        "description": "Large rectangle with green border and transparent/gray fill containing 5 centered bold lines: line1 'Real valued vectors representing  positions' (black); line2 '(Vector for each position)' (black); line3 'Positions > N-1  can NOT be Embedded' (red bold italic, with 'N-1' highlighted in yellow); line4 '(Must Train Embedding on Max Expected Seq. Length)' (red bold italic, underlined); line5 'Vector Length  = Word Embedding length' (black)",
+        "colors": [
+          "#009900",
+          "#000000",
+          "#CC0000",
+          "#FFFF00"
+        ],
+        "position": "bottom center, ~23-85% width"
+      },
+      {
+        "type": "icon",
+        "description": "Slide-number badge: yellow circle with thin gray outline containing the black number '34'",
+        "colors": [
+          "#FFFF66",
+          "#808080",
+          "#000000"
+        ],
+        "position": "top right corner"
+      }
+    ],
+    "imagery": [
+      "No photographs or illustrations; the slide is built entirely from: 1 title text box, 1 subtitle text box, 4 left-annotation label blocks, 2 dashed rounded-rectangle containers (blue #2244CC, green #00AA44), 16 small labeled rectangles (8 light-blue token boxes + 8 light-pink vector boxes), 1 solid purple banner rectangle, 2 thick red block arrows, 5 gray-blue dots, 1 red curly brace, 1 green-outlined summary rectangle containing a 5-line text box, and 1 circular slide-number badge",
+      "Small gray mouse-pointer/arrow annotation near Vector_P3 (a static pointer overlay from the video, not slide content)"
+    ],
+    "colors": {
+      "background": "#E6E6E6",
+      "title_text": "#CC0000 for '[2] Position' and #0000CC for 'Embedding' (two-tone title)",
+      "subtitle_text": "#CC0000 ('(Similar to Word Embedding)')",
+      "body_text": "#000000",
+      "accents": [
+        "#CC0000",
+        "#0000CC",
+        "#990099",
+        "#FFFF00",
+        "#009900",
+        "#00AA44",
+        "#FFDDE4",
+        "#C9D6EF",
+        "#EE0000"
+      ]
+    },
+    "typography_notes": "Entirely sans-serif (Arial-like). Exact bold/italic inventory: title '[2] Position Embedding' ~40pt bold, two-color ('[2] Position' red #CC0000, 'Embedding' blue #0000CC); subtitle '(Similar to Word Embedding)' ~22pt bold red #CC0000; all 4 left-annotation labels are bold, with exactly 1 of the 4 italic ('Positional Embedding', red #CC0000, two lines) and the other 3 non-italic ('Position Information' blue #0000CC two lines; '(similar to word tokenization)' blue #0000CC; '(Trained on Position Values)' blue #0000CC); the 8 numbered token labels (0, 1, 2, 3, 4, 5, N-2, N-1) are italic dark navy #000066; the 8 vector labels (Vector_P0 through Vector_PN-1) are red #CC0000 bold italic with true subscripts; purple bar text ~20pt bold with 'Embedding' and 'Learn' in yellow #FFFF00 and 'Layer to' and 'Position Vectors' in white #FFFFFF; the 5 summary lines are ~18-20pt bold, with lines 1, 2 and 5 black #000000 and lines 3 and 4 red #CC0000 bold italic (line 4 underlined; 'N-1' in line 3 backed by a yellow #FFFF00 highlight). No numbered or bulleted lists; all text is centered or label-positioned.",
+    "animation_state": "Slide appears fully built (all three flow stages and the summary box visible simultaneously). The small gray arrow at Vector_P3 looks like a presenter's pointer/cursor overlay rather than a build element. No mid-build reveal detected.",
+    "recreation_brief": "1. Set the slide background to solid light gray #E6E6E6. Do not add the black strip seen at the very bottom of the video frame (player chrome, not slide content; add it only if replicating the video frame exactly).\n2. Place the title text box centered at ~25-75% width, ~4-15% height: text '[2] Position Embedding' in Arial bold ~40pt, with '[2] Position' colored red #CC0000 and 'Embedding' colored blue #0000CC.\n3. Place the subtitle text box centered directly below the title at ~15-18% height: '(Similar to Word Embedding)' in Arial bold ~22pt red #CC0000.\n4. Place the slide-number badge at top right (~89-93% width, ~5-16% height): a circle ~0.5 in diameter, yellow #FFFF66 fill, thin gray #808080 outline, black bold '34' centered inside.\n5. Place the token-row left label block at ~6-17% width, ~24-33% height: two stacked blue #0000CC bold labels, 'Position Information' (wrapped onto two lines) above '(similar to word tokenization)'.\n6. Place the token-row container: rounded rectangle, no fill, dashed blue #2244CC border, spanning ~18-92% width at ~24-33% height.\n7. Inside the token-row container place 8 small rectangles (fill #C9D6EF, border #3366CC) in one evenly spaced row, labeled left to right 0, 1, 2, 3, 4, 5, N-2, N-1 in italic dark-navy #000066 text, each label centered in its box.\n8. Between the '5' box and the 'N-2' box place 5 small gray-blue #8899BB dots (\u2022 \u2022 \u2022 \u2022 \u2022) indicating omitted positions.\n9. Place block arrow 1: thick red #EE0000 arrow pointing straight down at ~55% horizontal position, from the bottom of the token row (~33% height) to the top of the purple bar (~40% height).\n10. Place the embedding-bar left label block at ~6-17% width, ~40-47% height: 'Positional Embedding' in red #CC0000 bold italic (wrapped onto two lines) with '(Trained on Position Values)' in blue #0000CC bold below it.\n11. Place the embedding bar: solid purple #990099 rectangle spanning ~18-92% width at ~40-47% height, with one centered bold ~20pt line reading 'Embedding Layer to Learn Position Vectors', colored word by word: 'Embedding' yellow #FFFF00, 'Layer to' white #FFFFFF, 'Learn' yellow #FFFF00, 'Position Vectors' white #FFFFFF.\n12. Place block arrow 2: thick red #EE0000 arrow pointing straight down at ~55% horizontal position, from the bottom of the purple bar (~47% height) to the top of the vector row (~54% height).\n13. Place the vector-row container: rounded rectangle, no fill, dashed green #00AA44 border, spanning ~18-92% width at ~54-62% height (same width as the token-row container).\n14. Inside the vector-row container place 8 small rectangles (fill #FFDDE4, border #CC0000) labeled left to right Vector_P0, Vector_P1, Vector_P2, Vector_P3, Vector_P4, Vector_P5, Vector_PN-2, Vector_PN-1, with the P-codes rendered as true subscripts, text red #CC0000 bold italic, centered; leave a wide empty gap between Vector_P5 and Vector_PN-2 (no dots visible there [?]).\n15. Only if replicating the video frame exactly: add the small gray #888888 mouse-pointer/arrow annotation touching the bottom-left of the Vector_P3 box (cursor overlay, not slide content).\n16. Place the curly brace: large red #CC0000 horizontal brace spanning ~18-90% width at ~63-67% height, opening upward with its cusp pointing down toward the summary box (use a PowerPoint brace autoshape rotated so the cusp faces down).\n17. Place the summary rectangle: green #009900 border, no fill, spanning ~23-85% width at ~68-93% height, centered horizontally.\n18. Inside the summary rectangle place one text box with exactly 5 centered bold ~18-20pt lines: line 1 'Real valued vectors representing  positions' (black #000000); line 2 '(Vector for each position)' (black #000000); line 3 'Positions > N-1  can NOT be Embedded' (red #CC0000 bold italic, yellow #FFFF00 text highlight behind 'N-1'); line 4 '(Must Train Embedding on Max Expected Seq. Length)' (red #CC0000 bold italic, underlined); line 5 'Vector Length  = Word Embedding length' (black #000000). Preserve the double spaces in lines 1, 3 and 5.\n19. Apply Arial (or a matching sans-serif) throughout; keep all text inside the token boxes, vector boxes, purple bar and summary box centered, and right-align the 4 left-annotation label blocks toward the diagram.",
+    "validation": {
+      "verdict": "PASS_WITH_FIXES",
+      "fixes_applied": [
+        "Added missing layout.regions entry 'Red down arrows': the two #EE0000 block arrows were described in layout.arrangement and visual_elements but had no covering region; arrow 1 positioned at ~33-40% height and arrow 2 at ~47-54% height, both at ~55% width (derived from the adjacent region bounds 24-33%, 40-47%, 54-62%).",
+        "Replaced the vague quantifier 'some italic' in typography_notes with exact counts: exactly 1 of the 4 left-annotation labels is italic ('Positional Embedding'); the other 3 ('Position Information', '(similar to word tokenization)', '(Trained on Position Values)') are non-italic bold. Also replaced 'bold almost everywhere' with an explicit per-element bold/italic inventory.",
+        "Rewrote imagery with exact element counts (1 title text box, 1 subtitle text box, 4 left-label blocks, 2 dashed containers, 16 small rectangles, 1 purple banner, 2 block arrows, 5 dots, 1 curly brace, 1 summary rectangle, 1 badge) instead of an unquantified list.",
+        "Added colors.subtitle_text '#CC0000' (derived from typography_notes and the original recreation_brief) so the subtitle color is explicit rather than implicit.",
+        "Rewrote recreation_brief as a 19-step ordered checklist in which each step places exactly one element with exact text, percentage position, hex color, and shape type; preserved the verbatim double spaces in summary lines 1, 3 and 5; explicitly marked the black bottom strip and the gray cursor overlay at Vector_P3 as non-slide content (optional, only for exact video-frame replication).",
+        "Retained the '[?]' marker on the vector-row gap and the bracketed black-strip note in verbatim_text.labels unchanged, and surfaced both in uncertain_items."
+      ],
+      "uncertain_items": [
+        "Vector row: whether omission dots exist in the wide gap between Vector_P5 and Vector_PN-2 (source marks 'dots omitted or too faint to see [?]'); the recreation leaves this gap empty.",
+        "All font sizes are source approximations: title ~40pt, subtitle ~22pt, purple bar ~20pt, summary lines ~18-20pt.",
+        "The black strip across the very bottom of the frame is presumed video player chrome rather than slide content (bracketed note in verbatim_text.labels).",
+        "The small gray pointer touching Vector_P3 is presumed a presenter cursor overlay from the video rather than a slide element (per imagery and animation_state)."
+      ],
+      "recreatability_score_1_to_10": 9
+    },
+    "_meta": {
+      "frame": "slide_034.jpg",
+      "model": "images",
+      "source_timestamps": {
+        "slide": 34,
+        "image": "slide_034.jpg",
+        "kept_frame": "frame_02408.jpg",
+        "start_sec": 2406.0,
+        "end_sec": 2407.0,
+        "frame_count": 2,
+        "old_slide": 69
+      },
+      "elapsed_s": 271.9,
+      "validated_by": "glm-5.3",
+      "validation_elapsed_s": 844.8
+    }
+  },
+  {
+    "slide_title": "Building Transformer Block",
+    "subtitle_or_header": null,
+    "verbatim_text": {
+      "bullets": [
+        "Residual Connections",
+        "Layer Normalization",
+        "Feed Forward Network"
+      ],
+      "labels": [
+        "Adding",
+        "35"
+      ],
+      "equations": []
+    },
+    "layout": {
+      "arrangement": "White full-slide frame; light-gray canvas spanning approx 5%-95% x and 7%-95% y enclosed by a thin red rectangular border; large red bold title centered horizontally near the top of the canvas; below it and left-aligned, a blue bold lead-in word 'Adding' followed by three indented blue bold list lines stacked vertically; small yellow oval slide-number badge in the top-right corner inside the border; solid black horizontal strip along the very bottom edge of the frame (outside the red border; video letterboxing/progress strip).",
+      "regions": [
+        {
+          "name": "Outer frame",
+          "position": "full slide, 0-100% x, 0-100% y",
+          "content": "White outer margin surrounding the red-bordered slide area; black bar across the bottom ~4% of the frame."
+        },
+        {
+          "name": "Bordered slide canvas",
+          "position": "approx 5%-95% x, 7%-95% y",
+          "content": "Light gray content area with thin red/crimson outline containing all text and the badge."
+        },
+        {
+          "name": "Title",
+          "position": "top-center, approx 17%-81% x, 25%-35% y",
+          "content": "Red bold text 'Building Transformer Block', horizontally centered within the border."
+        },
+        {
+          "name": "Lead-in word",
+          "position": "middle-left, approx 12%-25% x, 51%-58% y",
+          "content": "Blue bold text 'Adding'."
+        },
+        {
+          "name": "List block",
+          "position": "middle-left, approx 21%-60% x, 61%-82% y",
+          "content": "Three stacked blue bold lines, indented right of 'Adding': 'Residual Connections', 'Layer Normalization', 'Feed Forward Network'."
+        },
+        {
+          "name": "Slide-number badge",
+          "position": "top-right, approx 89%-94% x, 9%-17% y",
+          "content": "Small yellow oval with dark purple outline containing the number '35'."
+        },
+        {
+          "name": "Bottom strip",
+          "position": "bottom, full width, approx 96%-100% y",
+          "content": "Solid black horizontal bar (video letterboxing/progress strip, not slide content)."
+        },
+        {
+          "name": "Mouse cursor overlay (recording artifact)",
+          "position": "approx 38% x, 74% y, overlapping the second list line ('Layer Normalization')",
+          "content": "Small white arrow cursor with black outline captured from the screen recording; not part of the original slide design."
+        }
+      ],
+      "hierarchy": "Title dominates: largest, boldest, red. The three blue list lines are next in size/weight, equal to each other. 'Adding' is slightly smaller than the list lines. The '35' badge is the smallest element. Red is used only for the title and border; blue for all body text."
+    },
+    "visual_elements": [
+      {
+        "type": "highlight-box",
+        "description": "Thin red rectangular border framing the entire slide content area, no fill of its own (interior is light gray).",
+        "colors": [
+          "#C00000"
+        ],
+        "position": "approx 5%-95% x, 7%-95% y, inset from slide edges"
+      },
+      {
+        "type": "icon",
+        "description": "Slide-number badge: small horizontal oval/ellipse, yellow fill, dark purple outline, centered dark text '35'.",
+        "colors": [
+          "#FDFD96",
+          "#4B0082",
+          "#333333"
+        ],
+        "position": "top-right corner inside the red border (approx 89%-94% x, 9%-17% y)"
+      },
+      {
+        "type": "other",
+        "description": "Small white mouse-cursor arrow (video capture overlay) resting over the word 'Layer Normalization', not part of the original slide design.",
+        "colors": [
+          "#FFFFFF",
+          "#000000"
+        ],
+        "position": "approx 38% x, 74% y, overlapping the second list line"
+      }
+    ],
+    "imagery": [
+      "No photographs, illustrations, charts, or diagrams. Only decorative/badge graphics: the red border rectangle and the yellow '35' oval badge; plus a captured mouse cursor overlay over 'Layer Normalization' (recording artifact, not slide design)."
+    ],
+    "colors": {
+      "background": "#E9E9E9 (inner slide canvas); #FFFFFF (outer margin)",
+      "title_text": "#C00000",
+      "body_text": "#1A1AB8",
+      "accents": [
+        "#C00000 (border + title)",
+        "#FDFD96 (badge fill)",
+        "#4B0082 (badge outline)",
+        "#333333 (badge number text)",
+        "#000000 (bottom strip)"
+      ]
+    },
+    "typography_notes": "Entirely sans-serif (Verdana/Arial-like) and bold throughout. Title is the largest (~36-40pt equivalent), red, title-case, centered. 'Adding' and the three list lines are the same blue, bold, title-case (each word capitalized); list lines are indented under 'Adding' with no bullet glyphs, numbers, or markers \u2014 plain indented text lines. Badge number is small (~12-14pt) dark text. No italics, no all-caps.",
+    "animation_state": "Slide appears fully revealed (lead-in word plus all three list items visible). A recorded mouse cursor sits over 'Layer Normalization', indicating a paused mid-lecture moment rather than a mid-build; no partially-faded or half-drawn elements detected.",
+    "recreation_brief": "1. Background: set the entire slide background to white (#FFFFFF); this forms the outer margin visible around the bordered canvas.\n2. Bordered canvas: draw one rectangle spanning x ~5%-95%, y ~7%-95%; fill it light gray (#E9E9E9) and give it a thin red (#C00000) outline (~2pt); this single shape creates both the light-gray content canvas and the red border frame.\n3. Title: add one horizontally centered text box spanning x ~17%-81%, y ~25%-35%, containing exactly 'Building Transformer Block' in bold sans-serif (Verdana/Arial-like), ~40pt (source estimate 36-40pt), red (#C00000), title case.\n4. Lead-in word: add one left-aligned text box spanning x ~12%-25%, y ~51%-58%, containing exactly 'Adding' in bold sans-serif, blue (#1A1AB8), ~26pt \u2014 slightly smaller than the list lines.\n5. List block: add one separate left-aligned text box spanning x ~21%-60%, y ~61%-82%, containing exactly three stacked lines in this order: 'Residual Connections', 'Layer Normalization', 'Feed Forward Network'; style every line as bold sans-serif, blue (#1A1AB8), ~28pt, plain text with no bullet glyphs, numbers, or markers, normal line spacing.\n6. Slide-number badge: draw one oval spanning x ~89%-94%, y ~9%-17% (top-right, inside the red border); fill yellow (#FDFD96), outline dark purple (#4B0082); center the text '35' inside it in bold dark gray (#333333), ~12pt.\n7. Bottom strip (optional \u2014 video artifact, not slide content): only if replicating the video frame, add one solid black (#000000) rectangle across the full slide width at y ~96%-100%; omit it for a clean slide recreation.\n8. Exclusions: do not draw the white mouse-cursor arrow (a screen-recording artifact at ~38% x, ~74% y, over 'Layer Normalization'); it is not part of the slide design.",
+    "_meta": {
+      "frame": "slide_035.jpg",
+      "model": "images",
+      "source_timestamps": {
+        "slide": 35,
+        "image": "slide_035.jpg",
+        "kept_frame": "frame_02777.jpg",
+        "start_sec": 2732.0,
+        "end_sec": 2776.0,
+        "frame_count": 45,
+        "old_slide": 102
+      },
+      "elapsed_s": 80.5,
+      "validated_by": "glm-5.3",
+      "validation_elapsed_s": 607.9
+    },
+    "validation": {
+      "verdict": "PASS_WITH_FIXES",
+      "fixes_applied": [
+        "layout.arrangement: rewrote the opening from 'Full-slide light-gray canvas enclosed by a thin red rectangular border' to 'White full-slide frame; light-gray canvas spanning approx 5%-95% x, 7%-95% y enclosed by a thin red rectangular border' \u2014 the original wording contradicted the 'Outer frame' region and colors.background, which both specify a white outer margin outside the gray canvas.",
+        "layout.arrangement: changed 'small yellow circular slide-number badge' to 'small yellow oval slide-number badge' to match visual_elements and the badge region ('horizontal oval/ellipse').",
+        "layout.regions: added an eighth region 'Mouse cursor overlay (recording artifact)' at approx 38% x, 74% y so that regions cover all three visual_elements; the cursor was previously described only in visual_elements.",
+        "visual_elements/imagery: replaced the vague 'on/near the word Layer Normalization' and 'near Layer Normalization' with 'over the word Layer Normalization', matching animation_state ('sits over') and the stated overlap with the second list line.",
+        "colors.accents: added '#333333 (badge number text)' \u2014 the hex appears in visual_elements but was missing from the colors palette, leaving the badge text color unspecified there.",
+        "typography_notes: changed 'sentence-case' to 'title-case (each word capitalized)' for 'Adding' and the list lines, matching the verbatim strings ('Residual Connections', 'Layer Normalization', 'Feed Forward Network').",
+        "recreation_brief: corrected the background construction \u2014 the original step 1 set the whole slide background to light gray, which would eliminate the white outer margin specified in colors/regions; replaced with a white (#FFFFFF) slide background plus one light-gray-filled (#E9E9E9) rectangle that carries the thin red (#C00000) border.",
+        "recreation_brief: resolved the font-size contradiction \u2014 layout.hierarchy states 'Adding' is slightly smaller than the list lines, but the original brief set both at ~28pt; 'Adding' is now ~26pt against ~28pt list lines.",
+        "recreation_brief: removed the ambiguous 'same or a nested text box' instruction; the list is now a separate text box at x ~21%-60%, y ~61%-82%, matching the 'List block' region.",
+        "recreation_brief: pinned badge specifics \u2014 oval shape with exact bounds x ~89%-94%, y ~9%-17%, and number color #333333 (previously just 'dark text').",
+        "recreation_brief: fully rewritten as an ordered 8-step, one-element-per-step checklist with exact text, position bounds taken from layout.regions, hex colors, and shape types.",
+        "subtitle_or_header: verified genuinely absent from the source (no subtitle or header element exists in any field); intentionally left null rather than inventing content.",
+        "Precision scan: no vague quantifiers ('several', 'some', 'many', 'a few', 'various') were present in the source; all counts (three list lines, one border, one badge, one strip) are already exact."
+      ],
+      "uncertain_items": [
+        "Exact font sizes are model estimates, not measurements: title ~36-40pt, list lines ~28pt, 'Adding' ~26pt, badge ~12-14pt; the source only asserts the relative order title > list lines > 'Adding' > badge number.",
+        "The white outer margin is described as part of the frame, but its origin (slide design vs. video letterboxing, like the explicitly flagged black bottom strip) is not stated; the recreation reproduces it as a white background either way.",
+        "Border thickness is described only as 'thin'; the ~2pt value in the brief is a chosen build parameter, not a measured fact.",
+        "The mouse cursor's exact position (approx 38% x, 74% y) comes from a paused video frame and is excluded from recreation; no [?] markers were present anywhere in the source JSON."
+      ],
+      "recreatability_score_1_to_10": 9
+    }
+  },
+  {
+    "slide_title": "Multi Head Self Attention Block",
+    "subtitle_or_header": "No separate subtitle on the slide. Header roles are filled by the navy diagram banner 'Multi Head Self Attention Block' (identical to the title) and the three info-panel section headers 'Input:', 'Output:', 'Remember:'.",
+    "verbatim_text": {
+      "bullets": [
+        "Word Embedding + Positional Information   [First Transformer Block]",
+        "Output of Previous Transformer Block      [Stacked Transformer Blocks]",
+        "Encoded Vectors of Input Sequence   [With Same Input Vectors Dimension]",
+        "Different Input Sequences should be of Same Length  (Fixed Length Sequences)",
+        "[Apply  Pad or Cut]",
+        "Output Sequence is of same Length as Input Sequence"
+      ],
+      "labels": [
+        "Input:",
+        "Output:",
+        "Remember:",
+        "Output of Self Attention",
+        "Input to Self Attention",
+        "Multi Head Self Attention Block",
+        "Word  Embedding  +  Positional  Information",
+        "36",
+        "Y_1",
+        "Y_2",
+        "Y_3",
+        "Y_4",
+        "Y_5 [?]",
+        "Y_6 [?]",
+        "Y_{N/2} [?]",
+        "Y_{N+1} [?]",
+        "X_1",
+        "X_2",
+        "X_3",
+        "X_4",
+        "X_5 [?]",
+        "X_6 [?]",
+        "X_{N/2} [?]",
+        "X_{N+1} [?]"
+      ],
+      "equations": []
+    },
+    "layout": {
+      "arrangement": "White slide enclosed by a thin red rectangular frame. Title centered at top. Yellow circular slide-number badge at top-right. Below the title, a full-width cream info panel with a blue border containing three stacked labeled sections (Input: / Output: / Remember:). The bottom third of the slide (y ~64-95%) is a red-bordered white diagram panel: a left gutter holds two red labels; a top row of 8 small token boxes (Y's) with 5 blue ellipsis dots runs above a large navy banner reading 'Multi Head Self Attention Block'; a bottom row of 8 token boxes (X's) with 5 green ellipsis dots runs below the banner; 16 blue up-arrows connect X row -> banner -> Y row (8 rising from the X row into the banner's bottom edge, 8 rising from the banner's top edge into the Y row); a yellow-highlighted caption sits centered at the panel's bottom. A thin black strip at the very bottom edge is a video-player artifact.",
+      "regions": [
+        {
+          "name": "Red frame",
+          "position": "full slide, inset ~4% from all edges (x ~4-96%, y ~4-96%)",
+          "content": "Thin (~2px) #CC0000 rectangular outline, no fill, enclosing all slide content"
+        },
+        {
+          "name": "Title",
+          "position": "top center, ~y 6-14%, x 20-80%",
+          "content": "Red bold title 'Multi Head Self Attention Block'"
+        },
+        {
+          "name": "Slide number badge",
+          "position": "top right, ~x 89-95%, y 9-16%",
+          "content": "Yellow circle with red number '36'"
+        },
+        {
+          "name": "Info panel",
+          "position": "upper-middle, x ~10-90%, y ~20-62%",
+          "content": "Cream rectangle, blue border, three sections: Input: (2 lines), Output: (1 line), Remember: (3 lines), all blue text"
+        },
+        {
+          "name": "Diagram panel",
+          "position": "bottom, x ~7-93%, y ~64-95%",
+          "content": "Red-bordered white panel: Y token row + blue dots on top, navy banner in middle, X token row + green dots below, 16 blue up-arrows, yellow-highlighted caption at bottom center"
+        },
+        {
+          "name": "Left gutter labels",
+          "position": "left edge of diagram panel, x ~7-17%; upper label vertically centered on the Y token row (~y 66-70%); lower label vertically centered on the X token row (~y 86-90%)",
+          "content": "'Output of Self Attention' (wrapped as 'Output of Self' / 'Attention') and 'Input to Self Attention' (wrapped as 'Input to Self' / 'Attention'), red bold"
+        },
+        {
+          "name": "Video-player bar",
+          "position": "very bottom, full width, y ~96-100%",
+          "content": "Thin black strip; recording artifact, not slide content"
+        }
+      ],
+      "hierarchy": "1) Red title (largest text). 2) Navy banner (largest single color mass, white bold text). 3) Cream info panel (medium blue text block). 4) Red token labels and red gutter labels (small bold). 5) Yellow-highlighted caption (small bold)."
+    },
+    "visual_elements": [
+      {
+        "type": "highlight-box",
+        "description": "Info panel: light-cream rectangle with thin dark-blue border. Three stacked sections, each with a bold blue header at the left margin ('Input:', 'Output:', 'Remember:') and indented blue body lines; bracketed annotations sit on the same lines as body text, roughly column-aligned to the right of the body text.",
+        "colors": [
+          "#FFFFE6",
+          "#0000CC"
+        ],
+        "position": "upper-middle, spanning ~80% of slide width"
+      },
+      {
+        "type": "flowchart",
+        "description": "Data-flow diagram of the attention block: (a) central navy rectangle with white bold text 'Multi Head Self Attention Block'; (b) top row of 8 small token boxes labeled Y_1, Y_2, Y_3, Y_4, Y_5 [?], Y_6 [?], Y_{N/2} [?], Y_{N+1} [?], with 5 blue ellipsis dots between the 6th and 7th boxes; (c) bottom row of 8 small token boxes labeled X_1, X_2, X_3, X_4, X_5 [?], X_6 [?], X_{N/2} [?], X_{N+1} [?], with 5 green ellipsis dots between the 6th and 7th boxes; (d) 8 blue block arrows pointing UP from the X boxes into the banner's bottom edge, and 8 blue block arrows pointing UP from the banner's top edge into the Y boxes (flow: X inputs up through block to Y outputs); (e) each token box is a small rectangle with a light-yellow upper cell and a pink lower cell, with a red bold subscripted label at its top; (f) yellow-highlighted caption 'Word  Embedding  +  Positional  Information' centered beneath the X row.",
+        "colors": [
+          "#000080",
+          "#FFFFFF",
+          "#0000FF",
+          "#FFFF99",
+          "#FF99CC",
+          "#CC0000",
+          "#0000CC",
+          "#00B050",
+          "#FFFF00",
+          "#990000"
+        ],
+        "position": "bottom panel of the slide"
+      },
+      {
+        "type": "icon",
+        "description": "Slide-number badge: yellow filled circle containing the red bold number '36'.",
+        "colors": [
+          "#FFFF00",
+          "#CC0000"
+        ],
+        "position": "top-right corner, inside the red frame"
+      },
+      {
+        "type": "other",
+        "description": "Thin red rectangular outline framing the entire slide content (approx. 2px red stroke, no fill).",
+        "colors": [
+          "#CC0000"
+        ],
+        "position": "inset ~4% from all slide edges"
+      }
+    ],
+    "imagery": [
+      "No photos or illustrations. Only a white mouse-arrow cursor with black outline hovering over the info panel near the 'Remember:' section (~x 67%, y 49%) \u2014 a screen-recording artifact, not slide content."
+    ],
+    "colors": {
+      "background": "#FFFFFF",
+      "title_text": "#CC0000",
+      "body_text": "#0000CC",
+      "accents": [
+        "#000080",
+        "#FFFFE6",
+        "#FFFF00",
+        "#FF99CC",
+        "#FFFF99",
+        "#00B050",
+        "#CC0000",
+        "#0000FF",
+        "#0000CC",
+        "#990000"
+      ]
+    },
+    "typography_notes": "All sans-serif (Arial-like). Title: bold, ~30pt, red, centered, title case. Section headers 'Input:', 'Output:', 'Remember:': bold blue, roughly same size as body (~16-18pt). Body text: blue, regular weight. Diagram banner: white bold ~18pt on navy. Token labels (X_i, Y_i): red bold ~12pt with true subscripts. Gutter labels: red bold, wrapped onto two lines each. Yellow caption: bold, dark red/maroon [?] text on yellow highlight. Slide number: red bold in yellow circle.",
+    "animation_state": "Slide appears fully built (no mid-build bullet reveal). A mouse cursor is visible over the info panel \u2014 screen-recording artifact, not an animation state.",
+    "recreation_brief": "1. Canvas: 16:9 slide (13.33in x 7.5in), solid #FFFFFF background. 2. Outer frame: no-fill rectangle with 2pt #CC0000 stroke, inset ~4% from all four edges (x 4-96%, y 4-96%). 3. Title: text box spanning x 20-80%, y 6-14%, text 'Multi Head Self Attention Block', Arial Bold ~30pt, #CC0000, centered, title case. 4. Slide-number badge: 0.45in-diameter circle centered at x 92%, y 12.5%; fill #FFFF00, thin red outline; centered text '36', Arial Bold ~14pt, #CC0000. 5. Info panel shape: rectangle x 10-90%, y 20-62%; fill #FFFFE6, 2pt #0000CC border. 6. Info panel text: one left-aligned text block inside the panel, Arial ~16pt, #0000CC, containing in order: bold header 'Input:'; indented 'Word Embedding + Positional Information   [First Transformer Block]'; indented 'Output of Previous Transformer Block      [Stacked Transformer Blocks]'; blank line; bold header 'Output:'; indented 'Encoded Vectors of Input Sequence   [With Same Input Vectors Dimension]'; blank line; bold header 'Remember:'; indented 'Different Input Sequences should be of Same Length  (Fixed Length Sequences)'; further-indented '[Apply  Pad or Cut]'; indented 'Output Sequence is of same Length as Input Sequence' \u2014 copy all six body lines character-for-character from verbatim_text.bullets, keeping each bracketed annotation on the same line as its body text, roughly right-column-aligned. 7. Diagram panel shape: rectangle x 7-93%, y 64-95%; white fill, 2pt #CC0000 border. 8. Navy banner: rectangle x 17-92%, y 74-82.5%; fill #000080, no border; centered text 'Multi Head Self Attention Block', Arial Bold ~18pt, #FFFFFF. 9. Y token row (outputs): 8 boxes, each 0.55in wide x 0.30in tall, evenly spaced across x 17-92% (~1.25in pitch), band y 65.5-69.5%; each box = two stacked cells (upper #FFFF99, lower #FF99CC) with a thin gray outline and a #CC0000 bold ~12pt label with true subscripts centered at the box's top; labels left to right: Y_1, Y_2, Y_3, Y_4, Y_5 [?], Y_6 [?], Y_{N/2} [?], Y_{N+1} [?] ([?] marks uncertain extraction \u2014 render the label without the marker). 10. X token row (inputs): identical 8-box construction in band y 87-91%; labels left to right: X_1, X_2, X_3, X_4, X_5 [?], X_6 [?], X_{N/2} [?], X_{N+1} [?]. 11. Ellipsis dots: 5 circles ~0.07in diameter, #0000CC, evenly spaced in the gap between the 6th and 7th Y boxes, vertically centered on the Y row; 5 circles #00B050, same size and spacing, between the 6th and 7th X boxes, vertically centered on the X row. 12. Lower arrow set: 8 upward-pointing block arrows, #0000FF fill, ~0.25in wide x ~0.33in tall, band y 82.5-87%, each arrow's x-center aligned with one X box's x-center, pointing from the X row up into the banner's bottom edge. 13. Upper arrow set: 8 upward-pointing block arrows, #0000FF fill, same size, band y 69.5-74%, each aligned with one Y box's x-center, pointing from the banner's top edge up into the Y row. 14. Left gutter labels: #CC0000 bold ~12pt, left-aligned at x 7-17%, two lines each: 'Output of Self' / 'Attention' vertically centered on the Y row (band y 65.5-69.5%); 'Input to Self' / 'Attention' vertically centered on the X row (band y 87-91%). 15. Caption: centered text box at x 30-70%, y 91.5-94.5%: 'Word  Embedding  +  Positional  Information' (preserve the double spaces), Arial Bold ~12pt, #990000 (uncertain \u2014 dark red/maroon [?]), with a #FFFF00 text highlight. 16. Omit recording artifacts: do not draw the thin black bottom strip (video-player bar, y 96-100%) or the mouse cursor.",
+    "validation": {
+      "verdict": "PASS_WITH_FIXES",
+      "fixes_applied": [
+        "Filled null subtitle_or_header with a reconstruction from existing fields: no separate subtitle exists; the navy banner 'Multi Head Self Attention Block' and the info-panel headers 'Input:', 'Output:', 'Remember:' serve as the slide's headers.",
+        "layout.arrangement: replaced the unquantified 'blue up-arrows' with the exact count 16 (8 rising from the X row into the banner's bottom edge, 8 rising from the banner's top edge into the Y row), matching layout.regions and visual_elements.",
+        "layout.regions: added the missing 'Red frame' region \u2014 the #CC0000 outer frame is described in visual_elements and arrangement but previously had no covering region.",
+        "layout.regions: re-aligned the left-gutter label bands with the token rows they annotate (upper 'Output of Self Attention' ~y 66-70% centered on the Y row; lower 'Input to Self Attention' ~y 86-90% centered on the X row); the previous lower band (~y 82-86%) fell inside the arrow band below the banner and contradicted the Input label's association with the X row.",
+        "colors.accents: added #990000 (yellow-caption text) and #0000CC (blue ellipsis dots) \u2014 both are used in visual_elements and the recreation brief but were missing from the palette.",
+        "recreation_brief: rewritten as a 16-step ordered checklist with exact y-bands (banner 74-82.5%, Y row 65.5-69.5%, upper arrows 69.5-74%, lower arrows 82.5-87%, X row 87-91%, caption 91.5-94.5%), arrow-to-box x-center alignment, vertical centering of the two 5-dot ellipsis groups, and a verbatim-copy instruction for the six info-panel body lines.",
+        "Propagated the [?] uncertainty markers for the 8 uncertain token labels (Y_5, Y_6, Y_{N/2}, Y_{N+1}, X_5, X_6, X_{N/2}, X_{N+1}) into the recreation brief, which previously listed them as confirmed, with an explicit instruction not to print the markers.",
+        "Verified cross-field consistency: 6 info-panel body lines (2 Input + 1 Output + 3 Remember) match the 6 bullets; 8 Y boxes + 5 blue dots, 8 X boxes + 5 green dots, 16 arrows, and all 24 labels are placed by the brief with no contradictions."
+      ],
+      "uncertain_items": [
+        "Y_5 [?], Y_6 [?], Y_{N/2} [?], Y_{N+1} [?] \u2014 the last four top-row token labels are uncertain; the indices 'N/2' and 'N+1' are atypical for a sequence diagram and should be verified against the source frame before final render.",
+        "X_5 [?], X_6 [?], X_{N/2} [?], X_{N+1} [?] \u2014 same uncertainty for the bottom-row token labels.",
+        "Color of the yellow-highlighted caption text is marked [?] (dark red/maroon) in typography_notes; #990000 is used as the best estimate in the brief.",
+        "Two single-sourced details appear only in the original recreation_brief and are not corroborated by visual_elements: the 'thin red outline' on the slide-number badge and the 'thin gray outline' on the token boxes \u2014 treat as low-confidence."
+      ],
+      "recreatability_score_1_to_10": 8
+    },
+    "_meta": {
+      "frame": "slide_036.jpg",
+      "model": "images",
+      "source_timestamps": {
+        "slide": 36,
+        "image": "slide_036.jpg",
+        "kept_frame": "frame_02845.jpg",
+        "start_sec": 2777.0,
+        "end_sec": 2844.0,
+        "frame_count": 68,
+        "old_slide": 103
+      },
+      "elapsed_s": 328.5,
+      "validated_by": "glm-5.3",
+      "validation_elapsed_s": 1030.3
+    }
+  }
+]

@@ -1,0 +1,28 @@
+## Element-by-Element Comparison
+
+**Matches (confirmed):**
+- "Input Sequence" oval: dark red, white bold text, two-line wrap â text verbatim â
+- Blue X bar: dark blue, white bold Xâ Xâ Xâ Xâ with subscripts â
+- Black caption bar with yellow text: `Split vectors into "H" chunks` â verbatim, incl. curly quotes â
+- 5 tinted rounded rows, correct color order topâbottom (peach / green / yellow / lavender / salmon) â
+- "To Head 5" â¦ "To Head 1" labels: dark red, bold, correct reverse order â
+- Background gray, red slide-border line at right edge â
+
+**Discrepancies:**
+
+| # | Discrepancy | Severity | Confidence |
+|---|---|---|---|
+| 1 | **Four red arrows** from oval down to blue bar (IMG2) are completely missing in IMG1 | MAJOR | 95% |
+| 2 | **Vertical column lines** in IMG2, running from the blue bar down through all 5 rows (aligning the X-columns), absent in IMG1 | MAJOR | 85% |
+| 3 | **Horizontal offset ~60px**: oval, blue bar, caption, and rows sit further left in IMG1; as a result the oval overlaps/hides the W_k box (IMG2 shows W_q, W_k, W_v all clear of the oval) | MAJOR | 90% |
+| 4 | **Top red banner sliver** with yellow "â¦"H" Heâ¦" text visible at IMG2 top edge is absent in IMG1 crop | MAJOR | 80% |
+| 5 | **Chunk depiction style**: IMG2 draws each chunk as a boxed white token (red X + hatched color bar); IMG1 renders bare "X," text + flat purple/lavender bars, no boxes | MAJOR | 85% |
+| 6 | **Magenta up-arrow** at left edge and thin connector curves from W-boxes (IMG2) missing in IMG1 | MINOR | 70% |
+| 7 | Blue bar: IMG1 has white vertical cell dividers; IMG2 bar appears continuous | MINOR | 60% |
+| 8 | Caption bar: IMG1 rounded dark-gray; IMG2 square-cornered black | MINOR | 75% |
+| 9 | W-box text colors: IMG2 appears q/k/v color-coded (red/green/blue); IMG1 shows dark red on visible boxes | MINOR | 55% |
+| 10 | Chunk bar colors: IMG1 uniform purple pair; IMG2 mixed green/red hatching | MINOR | 60% |
+
+**Summary:** Core text content and row/label structure are faithful, but the recreation omits the red arrows, column drop-lines, banner sliver, and left-edge connectors, and is shifted left enough to obscure the W_k box.
+
+CROP VERDICT: **MISMATCH**

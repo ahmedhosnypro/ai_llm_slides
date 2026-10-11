@@ -1,0 +1,51 @@
+{
+  "version": 2,
+  "founder_directive": "2026-10-11",
+  "notes": "v2 adds cross-video edges (qualified refs 'deep-learning/<video-dir>:<slide>') and pattern groups. BUILD gating: a dependent slide may BUILD only when every dependency is CERTIFIED (gen_status='passed' AND visual_check='PASS' — cross-video parents resolve in THEIR OWN video's slides_progress.db, read-only). Analysis (12) and validation (13) are NEVER dep-gated. Cross-video children IMPORT the parent video's certified component (recreated_pptx/build/components/slide_NNN.js) by absolute path and draw only their measured delta — identical recap slides are typically parent renderBase + own badge numeral. PATTERN GROUPS build STRICTLY SEQUENTIALLY in listed order: member k starts only after member k-1 is certified (verify the pattern, then reuse it); this gates builds only, and implies no component import. Slides referenced by ANY video's graph carry the playlist-scoped banking obligation.",
+  "edges": {
+    "4": ["deep-learning/001_transformers_part1:15", "deep-learning/001_transformers_part1:18"],
+    "8": ["deep-learning/001_transformers_part1:33"],
+    "10": [9],
+    "11": ["deep-learning/001_transformers_part1:43"],
+    "13": ["deep-learning/001_transformers_part1:33"],
+    "15": ["deep-learning/001_transformers_part1:43"],
+    "17": ["deep-learning/001_transformers_part1:43"],
+    "19": ["deep-learning/001_transformers_part1:19"],
+    "24": [23],
+    "28": [27, 26],
+    "29": [28],
+    "37": ["deep-learning/001_transformers_part1:19"],
+    "45": [28],
+    "46": [45],
+    "47": [46],
+    "48": [47],
+    "49": [26],
+    "51": ["deep-learning/001_transformers_part1:18"],
+    "57": [47],
+    "59": [38]
+  },
+  "pattern_groups": {
+    "P1": [9, 10, 12, 14, 16],
+    "P2": [20, 21, 22, 34],
+    "P3": [42, 43, 44],
+    "P4": [54, 55]
+  },
+  "pattern_groups_note": "Founder-declared common-pattern sets (2026-10-11). NOT content dependencies: members share reusable patterns; build one member, verify its pattern (certified), then build the next reusing it. Order as listed. Slide 49 shares patterns with the slide-26 family and slide 59 with the slide-38 family — encoded as their hard edges above (see assumptions).",
+  "special": {
+    "1": "PLACEHOLDER cover — frame missing from the video. Rebuilt mirroring 001 slide 1 (title 'Deep Learning', badge numeral 1, shared playlist chrome). No ground-truth frame exists: certified by founder sign-off + house_chrome_check.py, never by a visual-judge comparison. DB: analysis_status='n/a-placeholder', validation_status='ready'.",
+    "49": "Pattern-derived dependency on slide 26 ('common patterns with slide 26 and its deps — but not same as them'). ASSUMPTION pending founder veto: edge is 49<-26 only; anything 26 depends on resolves transitively.",
+    "51": "Uses 001 slide 18's SOURCE IMAGE split into left and right halves placed at different measured positions on this slide ('attention needed'). Pull halves from the banked figure, measure each half's placement on THIS frame, compose at exact size.",
+    "57": "Very complicated: encoder (from slide 47, which chains back through 46/45/28) + decoder composed professionally on one slide. MANDATORY web research for the correct decoder architecture; if a correct image is found online, download it into slide_057_source/; otherwise compose the decoder separately, then compose encoder+decoder on a single slide. First candidate to verify: 001's banked 'The Transformer - model architecture..png' (arXiv 1706.03762v7 Figure 1 IS the encoder+decoder composition).",
+    "59": "Pattern-derived dependency ('common patterns with 38 and what 38 depends on — but not same as them'). ASSUMPTION pending founder veto: 38 = video-2 slide 38 (edge 59<-38); its own deps resolve transitively."
+  },
+  "shared_image_sources": {
+    "51": ["001_transformers_part1/slide_18_source/"],
+    "57": ["001_transformers_part1/slide_18_source/"]
+  },
+  "shared_image_sources_note": "Paths relative to videos/deep-learning/. 51 splits the Figure-1-derived source from 001's slide 18 figure bank into left/right halves. 57's entry is the first-candidate bank pending the mandatory decoder web research (see special.57).",
+  "founder_assumptions_pending_veto": [
+    "slide 001 placeholder mirrors 001's certified cover (title 'Deep Learning', badge 1)",
+    "slide 49 hard-depends on 26 only (26's own deps resolve transitively)",
+    "slide 59 hard-depends on video-2 slide 38 only (its deps resolve transitively)"
+  ]
+}

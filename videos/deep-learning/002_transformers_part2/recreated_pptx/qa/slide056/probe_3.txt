@@ -1,0 +1,39 @@
+# Visual QA Report â Slide 056 ("Decoder Final Output")
+
+## 1. Verbatim Text Transcription
+
+All text is in English and legible; no text is illegible.
+
+| Location | Text (verbatim) |
+|---|---|
+| Title, top center | `Decoder Final Output` |
+| Subtitle, below title | `Probability of each word in Vocab` |
+| Left label, aligned with top circle row | `Vocab Size` |
+| Left label, aligned with magenta circle row | `Vocab Size` |
+| Dark-red bar, middle | `Softmax` |
+| Inside green box, right side | `Linear Projection` |
+| Blue bar, bottom | `Last Decoder Block` |
+| Circular badge, top right | `56` |
+
+## 2. Layout Description
+
+- **Overall frame:** A white outer margin surrounds a large light-gray panel outlined in red, inset from all four slide edges. All content sits inside this gray panel.
+- **TOP:** Centered dark-red bold title "Decoder Final Output"; below it a blue subtitle "Probability of each word in Vocab"; below that, a red horizontal curly brace (cusp pointing up toward the subtitle) spanning the width of the top circle row.
+- **LEFT edge:** White margin, then the red panel border. Inside, two bold dark-red "Vocab Size" labels stacked vertically â one beside the top row of ~16 light-blue (cyan-fill, navy-outline) circles, one beside the row of ~16 magenta circles inside the green box.
+- **RIGHT edge:** Red panel border; a circular page badge in the top-right corner (pale yellow-green fill, dark-red ring, "56" in dark red/maroon). The right ends of the red brace, the Softmax bar, the green box, and the blue bottom bar all terminate near this side.
+- **Vertical flow (top â bottom):**
+  1. Row of 16 light-blue circles (probability outputs).
+  2. 16 navy upward arrows into the dark-red **Softmax** bar (white bold text).
+  3. 16 red upward arrows from a light-green rectangle (green border) containing the magenta circle row, a fan/mesh of thin blue fully-connected lines converging down onto 4 green circles, and the green bold label "Linear Projection."
+  4. 4 green upward arrows into the dark-blue **Last Decoder Block** bar (white bold text).
+
+## 3. Visual Defects / Anomalies
+
+1. **Stray dark line at the very bottom:** A thin black/dark horizontal line runs along the extreme bottom edge of the image, spanning the **full image width** â it extends beyond both left and right edges of the red panel, so it is not the panel's border. It appears to be a stray or clipped element.
+2. **Frame clipped at bottom:** The gray panel and its red left/right borders run all the way to the bottom edge of the image with no visible red bottom border line; the frame appears cut off at the bottom of the slide render (the blue "Last Decoder Block" bar also sits very close to this edge).
+3. **Slight horizontal off-centering:** The diagram column (brace, circle rows, Softmax bar, green box, blue bar, all spanning roughly xâ318â1763) is centered slightly right (~40 px) of the gray panel's horizontal center, leaving a visibly larger gap on the left side of the panel than on the right. The title/subtitle share this slight rightward bias.
+4. **No other defects observed:**
+   - No placeholder text, garbage strings, or lorem-ipsum content.
+   - No wrong-language text.
+   - No clipped or overlapping text; "Softmax," "Linear Projection," and "Last Decoder Block" are fully contained within their shapes, and the fan lines do not intrude on the "Linear Projection" label.
+   - Element counts are consistent (16 blue circles, 16 magenta circles, 16 navy arrows, 16 red arrows, 4 green circles, 4 green arrows).

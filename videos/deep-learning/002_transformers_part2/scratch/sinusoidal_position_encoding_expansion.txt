@@ -1,0 +1,43 @@
+Sinusoidal Position Encoding Expansion using Angle Addition Identity
+==================================================================
+
+The angle addition identity for sine is:
+    sin(a + b) = sin(a)cos(b) + cos(a)sin(b)
+
+Application to Sinusoidal Position Encoding:
+-------------------------------------------
+In Transformer models, the sinusoidal position encoding for position `p` and dimension `i` is often defined as:
+    PE(p, 2i)   = sin(p / 10000^(2i/d))
+    PE(p, 2i+1) = cos(p / 10000^(2i/d))
+
+where `d` is the model dimension.
+
+To compute the encoding at position `t + δ` (i.e., a shift by δ), we can use the angle addition identity:
+
+Let ω_i = 1 / 10000^(2i/d). Then the arguments are:
+    angle = (t + δ) * ω_i = t*ω_i + δ*ω_i.
+
+Therefore:
+    sin((t+δ) * ω_i) = sin(t*ω_i) * cos(δ*ω_i) + cos(t*ω_i) * sin(δ*ω_i)
+    cos((t+δ) * ω_i) = cos(t*ω_i) * cos(δ*ω_i) - sin(t*ω_i) * sin(δ*ω_i)
+
+Thus, the position encoding vector at `t+δ` can be obtained as a linear combination of the
+encoding vectors at `t` and at `δ` (with appropriate sine/cosine mixing).
+
+Pseudo-code for computing PE(t+δ) from PE(t) and precomputed sin/cos of δ*ω_i:
+-------------------------------------------------------------------------------
+for i in range(d//2):
+    ω = 1.0 / (10000 ** (2*i / d))
+    sin_t = sin(t * ω)
+    cos_t = cos(t * ω)
+    sin_delta = sin(δ * ω)
+    cos_delta = cos(δ * ω)
+
+    PE[t+δ, 2*i]   = sin_t * cos_delta + cos_t * sin_delta   # sin((t+δ)ω)
+    PE[t+δ, 2*i+1] = cos_t * cos_delta - sin_t * sin_delta   # cos((t+δ)ω)
+
+This avoids recomputing the sinusoids from scratch and leverages the angle addition formula.
+
+References:
+- Vaswani et al., "Attention is All You Need", 2017 (Section 3.5).
+- https://kazemnejad.com/blog/transformer_architecture_positional_encoding/

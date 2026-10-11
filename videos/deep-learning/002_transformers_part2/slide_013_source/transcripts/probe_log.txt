@@ -1,0 +1,93 @@
+[info] mode analysis | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 2012033
+[info] /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/unique_slides/slide_013.jpg: transcript written (validated winner, atomic): /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/slide_013_source/transcripts/slide_013_webverify.txt (pid 2012033)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/unique_slides/slide_013.jpg ===
+[winner] images (round 1, attempt 1)
+1. TITLE
+Title text (verbatim, two lines, centered at top in blue bold):
+"Self Attention Mechanism (Linear Transformation of Inputs)"
+"(Self Attention of word X_2 w.r.t All words in Sentence (X_1, X_2, X_3, X_4)"
+Notes: In line 2 the tokens X_2, X_1, X_2, X_3, X_4 are rendered in red; the rest of the title is blue. The outer parentheses appear unbalanced in the original ("w.r.t All words in Sentence (X_1, X_2, X_3, X_4)" â closing paren of the sentence clause not visibly doubled).
+Badge numeral (top-right yellow circle with blue outline): 13
+
+2. ALL VERBATIM TEXT
+- "Self Attention Mechanism (Linear Transformation of Inputs)"
+- "(Self Attention of word X_2 w.r.t All words in Sentence (X_1, X_2, X_3, X_4)"
+- Badge: "13"
+- Green pill label: "Similarity"
+- Gray box label: "Dot Product" (on two lines: "Dot" / "Product")
+- Right of gray box, four labels top to bottom: "K_1.q", "K_2.q", "K_3.q" [? partially obscured by arrows], "K_4.q" [? partially obscured]
+- White pill label: "Probabilities"
+- Vertical bar text (rotated 90Â°, purple bar): "Soft max"
+- Yellow pill label: "Weighted SUM"
+- Cyan box symbol: "Î£"
+- Four labels left of the right-hand green column, top to bottom: "V_4", "V_3", "V_2", "V_1"
+- Four green-bordered yellow boxes (right column): each labeled "W_v^(r)" [superscript small; could be (1)...(4) but appears identical "(r)" on each â marked uncertain]
+- Red-bordered box near bottom center: "W_q^(r)" [same superscript uncertainty]
+- Label under gray box: "q_2" (q bold red, subscript 2), next to a small vector of pink/purple cells
+- Left column small teal boxes labeled "K" (one per row; subscripts 1â4 appear as tiny subscripts next to the small vector boxes, i.e., K_1, K_2, K_3, K_4 [? tiny, partially unreadable])
+- Left column of input embeddings: four small multi-cell vectors; internal cell contents are colored blocks without readable characters (X_1..X_4 implied by title; tiny subscripts on the X boxes appear to read 1, 2, 3, 4 but are [?] at this resolution)
+- Bottom-right green dashed panel:
+  - Small vector labeled "1 x d" (rendered tiny, could read "1^r d" [?])
+  - Matrix box labeled "W"
+  - "=" sign
+  - Small vector labeled "1 x d" (tiny, [?])
+  - Under the W box: "d x d" (tiny, [?])
+  - Caption line: "d: Embedding Length"
+- No visible slide footer, course code, or page footnote other than the badge.
+
+3. EQUATIONS
+- Dot-product callouts: K_1.q, K_2.q, K_3.q [?], K_4.q [?] (dot products of each key with the query q_2)
+- Query projection: q_2 = X_2 Â· W_q^(r) [implied; slide shows only the tokens "q_2" and the box "W_q^(r)", no explicit equals sign]
+- Value projections: V_i = X_i Â· W_v^(r) for i = 1..4 [implied by diagram; boxes labeled W_v^(r) produce V_1..V_4]
+- Bottom-right inset equation (plain notation): [1 x d vector] Â· W (of size d x d) = [1 x d vector]; with caption "d: Embedding Length". Exact tiny dimension strings are [?] but consistent with 1xd, dxd, 1xd.
+- Aggregation (implied by â nodes and Î£): Attention output for X_2 = Î£_i (softmax(K_i . q_2)) * V_i [no explicit equation text on slide; structural only]
+
+4. DIAGRAM TOPOLOGY
+Overall: a left-to-right dataflow self-attention computation graph on a peach/orange rounded slide body inside a dark-red outer frame; a green dashed rounded rectangle borders the whole main diagram area.
+
+Left section (input / key projections):
+- A tall blue-dashed ellipse (grouping container) encloses a vertical column of four small embedding vectors (each a horizontal strip of colored cells: yellow, red, purple; tiny subscripts suggesting X_1..X_4). Fill: multicolor cells on white.
+- A tall green solid ellipse (grouping container) encloses a column of four boxes each labeled "W_k^(r)" [superscript uncertain; green-bordered, light fill], each with a tiny green-striped vector strip beside it and a small teal box labeled "K" (K_1..K_4).
+- Short black/gray arrows go from each input embedding (left ellipse) to the corresponding W_k box (green ellipse), i.e., top-to-bottom-aligned pairs, left to right.
+- One small diagonal gray arrow/cursor-like stroke appears between the second and third W_k rows (possible cursor artifact; see section 6).
+
+Middle section (similarity / softmax):
+- A large gray rectangle labeled "Dot Product" (label in top-left of the box). Inside/along its right edge are four small circular nodes: white circles each containing a blue dot (the scalar results K_i.q). Labels K_1.q ... K_4.q sit at the box's right edge.
+- Red arrows: from each K_i (green column) into the gray Dot Product box; from q_2 (below) up into the gray box (a bundle of thin red lines from q_2 fans to the four result dots).
+- Below the gray box: a small vector strip labeled "q_2" (pink/purple cells), below which is a red-bordered box "W_q^(r)" (yellow fill), below which is the magenta/pink-highlighted X_2 embedding box. A short red arrow points from W_q^(r) up to q_2. A thick red arrow (cursor artifact) points at X_2 from below-left.
+- A tall vertical purple/lavender bar labeled vertically "Soft max" sits right of the Dot Product box. Four red arrows go from the four dot-product result circles (and from the "Similarity" pill region above the gray box) rightward into the Softmax bar.
+- Green pill "Similarity" floats above the gray Dot Product box; white pill "Probabilities" floats above the Softmax bar (zone labels, not nodes).
+
+Right section (weighted sum):
+- Cyan/light-blue rectangle containing "Î£" (large sigma). 
+- Four red circular multiplication nodes (white circle with red Ã) arranged vertically between Softmax and Î£.
+- Red arrows from the Softmax bar (its top edge / output) branch to each â node (probability weights).
+- Four labels V_4, V_3, V_2, V_1 (top to bottom) sit left of the right-hand column; red arrows carry each V_i leftward into its â node.
+- Far right: a green-dashed rounded rectangle (grouping container) enclosing four rows, each row = one small embedding vector (X_1..X_4, colored cells) + one yellow box with green border labeled "W_v^(r)". Arrows from each X_i to its W_v^(r) box; arrows from W_v^(r) boxes leftward, becoming the V_1..V_4 lines feeding the â nodes.
+- Red arrows from each â node go upward into the Î£ box (all four merge at Î£ from below).
+- From the Î£ box, a thick green arrow points up/right to a small dashed-green-bordered vector box at top containing a green-striped strip with a "V" cell label â the final weighted-sum output vector (the new representation of X_2). This is the topmost element; overall flow is left-to-right with a final bottom-to-top exit at Î£.
+
+Bottom row:
+- A green-dashed rounded rectangle along the bottom center encloses four embedding strips in sequence: X_1, X_2 (highlighted magenta/pink with a red border), X_3, X_4. This is the input sentence; X_2 is visually singled out (its embedding is recolored pink/magenta), and thin red lines connect X_2 upward to W_q^(r) â q_2, while the other X_i feed the left column and right W_v column via faint red dashed curved lines (one long dashed red curve runs from the bottom-right area up the right side toward the W_v column).
+
+Bottom-right inset panel:
+- Green-dashed rectangle containing the dimension illustration: a small 1xd vector strip, multiplication with matrix "W" (yellow box) of size dxd, equals a 1xd vector strip; caption "d: Embedding Length". This explains the linear transformation XÂ·W.
+
+Well-known-figure assessment: This is an original instructional diagram in the style of Jay Alammar's "The Illustrated Transformer" annotations, but it does not replicate Vaswani et al. 2017 Figure 1 or Figure 2, nor Peter Bloem's diagram. Matches with Alammar-style: colored cell-strip embeddings, highlighted query token, W_q/W_k/W_v projection boxes, softmax â weighted sum of V. Differs: it adds explicit â multiply nodes, an explicit Î£ box, dot-product result circles with K_i.q labels, grouping ellipses, and the dÃd W dimension inset â none of which appear in the canonical published figures. No Vaswani "Attention Is All You Need" component stack (no Multi-Head Attention / Add & Norm / FFN boxes) is present.
+
+5. NUMBERS/DATA
+- Badge numeral: 13
+- Indices: X_1, X_2, X_3, X_4; K_1..K_4; V_1..V_4; q_2
+- Dimensions in inset: 1 x d (twice), d x d (under W) [tiny, low confidence]; "d: Embedding Length"
+- No numeric table cells, percentages, layer sizes, or scalar values are shown; dot-product results are drawn as unlabeled dots.
+
+6. BUILD STATE / ARTIFACTS
+- The slide appears fully revealed (all pills, boxes, arrows present); no mid-reveal animation states detected.
+- A thick solid red arrow (classic PowerPoint laser-pointer/cursor annotation) points up-right at the magenta-highlighted X_2 box in the bottom row â a presenter pointer, not part of the diagram.
+- A second thin gray diagonal arrow-like stroke appears between the W_k column rows (roughly between rows 2 and 3 of the green ellipse), likely another cursor remnant.
+- A small white mouse-cursor arrow is visible near the left, overlapping the second/third X embedding rows at the left edge (around xâ120, yâ300 region).
+- Thin red curved dashed connector lines (long-range edges from bottom row to the left/right columns) look like hand-routed annotation lines and partially overlap other elements.
+- Video-compression blur makes the tiny subscripts (K_i subscripts, W superscripts, inset "1 x d"/"d x d" strings) partially illegible; these are marked [?] above.
+

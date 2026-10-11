@@ -771,3 +771,181 @@ by the printed badge. A machine-curated set poisons everything downstream.
 Rule: after dedup, prepare the review packet (index, contact sheet, mapping draft) and
 STOP. Never run script 12+ or set approved/ready markers without explicit human approval
 of the frame set. Wire this into every new video's plan BEFORE extraction starts.
+
+## 2026-10-11 — Script 11's --limit defaults to 10: full-deck runs MUST override it
+Context: first dedup on a new video (deep-learning/001_transformers_part1, 4479 frames → 123 slides expected).
+Mistake (caught before damage): the default `--limit 10` silently stops after 10 unique
+slides — a full-deck run without an explicit high limit produces a truncated deck that
+looks like a successful dedup.
+Fix: pass `--limit 100000` on every full-deck dedup; sanity-check the produced slide
+count against the video (duration/FPS and slide density) before the review packet.
+Rule: any pipeline script with a small default cap gets that cap stated explicitly; a
+run's output count is asserted, never assumed.
+
+## 2026-10-11 — Review-packet loops in this workspace: the interactive shell is zsh — run loops via `bash -c`
+Context: contact-sheet montage loop over 123 slides, `$files=$(printf ...)` expansion.
+Mistake: in zsh, unquoted `$var` is NOT word-split — montage received all 20 filenames
+as ONE argument and failed with "no decode delegate for this image format
+`unique_slides/slide_001.jpg unique_slides/...`".
+Fix: wrap the loop in `bash -c '...'` (bash word-splits unquoted vars) or use zsh's
+`${=files}`.
+Rule: for-loop/word-splitting constructs in one-liners run under this workspace's zsh —
+either quote-proof them for zsh or execute via `bash -c` (see also the watchdog-sweep
+zsh lesson from the ml-intro program).
+
+## 2026-10-11 — New-video directive: web-verified analysis + slide_NNN_source/SOURCES.md pattern (deep-learning playlist)
+Context: founder directive on 001_transformers_part1 ("CRUCIAL video") — every slide's
+analysis/validation/QA must be web-verified: websearch the primary source (`agy -p`),
+webfetch it, download the site's own figures when they exist.
+Pattern (codified in `videos/deep-learning/001_transformers_part1/AGENTS.md`): per-slide
+`slide_NNN_source/` dir (originals as downloaded, never renamed/deleted) + SOURCES.md
+provenance record; **no SOURCES.md = the research step did not happen**.
+Worked example: slide 18 ("Encoder – Decoder Transformer") = three redrawn panels from
+arXiv 1706.03762v7 Figure 1 + Figure 2 left/right; founder-downloaded PNGs live in
+`slide_18_source/`. Nuance that generalizes: course slides REDRAW paper figures in
+their own style — the paper confirms topology/labels/data; the frame stays ground
+truth for pixels/layout. Fidelity law binds research too: a source/slide discrepancy
+is recorded in SOURCES.md (slide wins for recreation, source wins for understanding).
+Trap: the founder's downloaded file `slide18 Multi-Head Attention\n\n.png` contains
+LITERAL newline characters — quote or copy-rename for shell work, never touch the
+original.
+
+## 2026-10-11 — Gateway window closed mid-example-validation: 2 legs then bank debt
+Context: validating the slide-18 example through the image-analysis skill (default
+route, per its law: probe short-wall → backoff 300 s → one wider-wall re-probe).
+Both legs died on upstream-shaped failures (HangError @150 s hard wall ×3 internal,
+then EmptyStreamError ×3 internal at 420 s) — classic congestion window, no transcript.
+Fix: STOP after the ladder (the no-retry-loop law owns this), bank both attempt logs
+as a debt record (`slide_18_source/transcripts/vision_debt_slide018_2026-10-11.log`),
+and write the SOURCES.md "Vision transcripts — PENDING" section labeling the mapping
+as single-session/unconfirmed rather than a transcript-certified read.
+Rule: a closed gateway window must not block the non-vision deliverable — bank the
+debt, mark the claim's certification level honestly, and re-run the vision leg when
+the window reopens (§R1). Also: RGBA paper figures with transparent backgrounds get
+white-composited WORKING COPIES (`analysis_work/`) before any vision call — black
+text on transparency renders invisible on dark-compositing backends; originals stay
+untouched.
+
+## 2026-10-11 — Founder curation can SPLIT phash groups and swap frames; renumber densely (reconciliation law)
+Context: founder curated the 123-frame deep-learning set down to 45 and supplied the
+recreation dependency graph. Reconciling index/mapping surfaced three structural facts.
+(1) Curation is not just deletion: 6/45 slides are FOUNDER-SWAPPED frames (a different
+frame picked from inside the slide's group — recorded as founder_frame_swap +
+original_kept_frame in slides_index.json), and old group 14 was TWO adjacent similar
+slides merged by threshold-8 sequential phash — the founder split it into new slides 7
+(state A, ends 455s) and 8 (state B, starts 456s). Reconciliation must therefore hash
+against ALL frames (not just each group's kept frame) and allow one old group → several
+new slides. (2) The new numbering is DENSE 1..N over survivors: new file number ≠ old
+extraction number (new 18 = old 42). Consequence: legacy names like slide_18_source are
+HISTORICAL — always resolve "slide N" through new2old_mapping.json before assuming a
+pre-curation artifact belongs to the same-numbered slide. (3) The reconciliation
+outputs (slides_index_old123.json backup, group-split boundary via anchor-phash state
+runs, ml-intro-format new2old_mapping.json with swapped/diff extensions) are the
+pattern for every future founder curation.
+
+## 2026-10-11 — Dependency-gated builds + shared components (founder directive; deep-learning deck)
+Founder rule for decks whose advanced slides re-use a previous slide's composition:
+edges live in slide_dependencies.json + DB depends_on (15_progress.py register applies
+them; new `deps` command prints root/blocked/unblocked, certified = gen_status passed
+AND visual_check PASS). Builds gate on parent certification (analysis/validation never
+blocked; siblings unblock together → parallel dispatch). Child builds IMPORT the
+parent's certified composition from recreated_pptx/build/components/ (u-components
+model: renderBase(pptx, slide, opts) + house_chrome.js primitive) and draw only their
+delta at their own measured geometry — never copy-paste a parent. Components are
+certified single-source-of-truth; editing one re-opens the descendant subtree.
+Full contract: references/dependencies.md + the DEPENDENCY-GATED section in
+scripts/17_worker_instructions.md.
+
+## 2026-10-11 — House chrome is PER-DECK: the ml-intro template values do not transfer to a new course
+Context: first builds on the deep-learning deck — the slide-2 worker measured the deck's
+own shared chrome (white canvas + gray E9E9E7 panel with red C00000 border inset
+left/right/top, bottom edge AT slide bottom, yellow FDFD96 badge with PURPLE 6A5ACD
+outline) on slides 1/2/3 and found it visibly contradicts the ml-intro house values
+(0.15in-inset frame, outline-less FFF9C4 badge) that 17_worker_instructions.md states
+as universal.
+Fix: the worker reproduced the DECK's own chrome (fidelity law: the frame is ground
+truth; the founder's house-frame directive intent is "one consistent outer template per
+deck, taken from slide 3" — per-deck, not the ml-intro pixels); judge PASSED it; the
+values are codified in the video's AGENTS.md ("House chrome — THIS deck") so all later
+builders stay consistent.
+Rule: when applying this skill to a NEW course deck, treat the house-chrome VALUES in
+the worker contract as ml-intro-specific — measure the new deck's slide 3 chrome with
+PIL first, codify it in that video's AGENTS.md, and only then dispatch builders. The
+judge ground-rules prelude must describe the deck's OWN chrome, not quote ml-intro's.
+
+## 2026-10-11 — Founder ratified + generalized: ONE house chrome per PLAYLIST, shared-patterns dir at playlist level
+Context: after the per-deck chrome finding, the founder directed that ALL slides across
+the ENTIRE videos/deep-learning/ playlist (every lecture, present and future) share the
+SAME outer frame size/position and badge position/size — measured from lecture 001's
+slide 1 — and ordered a playlist-level AGENTS.md + a shared-patterns dir.
+Implementation: `videos/deep-learning/AGENTS.md` (the binding law, overrides the
+ml-intro house values for this playlist) + `videos/deep-learning/shared_patterns/`
+(house_chrome.js = drawHouseChrome(pptx, slide, {numeral}) + CHROME constants;
+house_chrome_check.py = closed-loop PIL checker run on every 150dpi render pre-judge;
+index.json + README). Canonical values: white FFFFFF canvas, gray E9E9E7 panel x
+42..918px / y 45px to slide bottom (red C00000 border, bottom stroke half-visible at
+the slide edge), badge d≈36px at (893,71)px (FDFD96 fill, 6A5ACD ~2pt ring, bold
+333333 numeral). All in-flight builders were messaged mid-build; the watchdog cron's
+dispatch contract now includes the playlist AGENTS.md + shared pattern + checker.
+Rule: chrome law is PLAYLIST-scoped and lives in a playlist-level AGENTS.md + a
+shared-patterns dir with a runnable module and a checker — per-video AGENTS.md files
+reference it and cannot relax it. When a new playlist starts, measure its reference
+slide FIRST, bank the shared pattern, then dispatch builders.
+
+## 2026-10-11 — Curation metadata is recoverable by content hash; founder group splits are legitimate
+Context: 002's founder curation (150 extracted → 59 renamed files) left NO mapping on disk; the stale 150-entry slides_index.json disagreed with the renamed file set.
+Fix: script 11 writes byte-exact copies (shutil.copyfile), so md5-matching each surviving file recovers its exact source frame — and the frame's timestamp maps back to the old extraction group. Resolution order matters: match against the OLD GROUPS' kept_frames first (that is how the files were created), full-frame search only for founder swaps; a naive md5→frame dict silently collapses duplicate-content frames (002: 5440 frames → 5215 distinct contents — repeated identical visual states at different timestamps) and can misattribute timestamps. Founder behavior to expect and record, never second-guess: GROUP SPLITS (one phash group → two consecutive slides; 002: 22+23←45, 28+29←60, 46+47←115, exactly like 001's 7+8←14) and FRAME SWAPS (mid-group state kept over the machine's final frame; flag `founder_frame_swap` + `original_kept_frame`, phash-diff the pair). Assert: every file matched, ≤2 per old group, monotonic old sequence.
+Rule: after any founder curation, reconstruct `new2old_mapping.json` + rewritten `slides_index.json` from content hashes BEFORE rebuilding the DB; preserve the old index + DB as evidence; anomalies stop the machine and go to the founder.
+
+## 2026-10-11 — Cross-video dependencies: qualified refs + parent-DB certification + playlist-scoped banking
+Context: founder directive — video 002 slides depend on video 001 slides (recaps reusing compositions). The per-video isolation rule (own DB, own namespace) must survive.
+Design that landed (15_progress.py v2): `depends_on` tokens are bare ints (same video) or `<namespace>:<slide_id>` (cross-video, e.g. `deep-learning/001_transformers_part1:15`); the gate resolves cross-video certification by SELECT-only reads of the PARENT video's slides_progress.db (mode=ro with a plain-connect fallback for WAL-without-shm); pattern groups (`pattern_group`/`pattern_seq` columns, sequential certification gate) are a SEPARATE concept from content deps — they order builds (verify pattern, then reuse) but imply no component import. Two schema lessons: (1) get()/report() must derive column names from PRAGMA table_info — guarded ALTERs append new columns (pattern_group/pattern_seq AFTER depends_on), so the old "depends_on is always LAST column / SELECT * matches COLS" invariant is dead; (2) guarded ALTERs on a LIVE sibling DB (001's workers mid-build) are safe and invisible to v1 callers.
+Critical gap the graph exposes: a slide with NO same-video children has no banked component (banking was owed only to same-video dependents) — cross-video parents need a PLAYLIST-SCOPED banking obligation, and already-certified childless parents need additive retro-banking (derive the per-block module from the certified build script, verify 0-pixel-diff vs the certified render, never touch the certified pptx).
+Rule: encode cross-video edges in the CHILD video's slide_dependencies.json (v2) with qualified refs; never write into the parent namespace; dispatch lists come from `buildable` (content+dep+pattern gates fused); placeholder covers (missing frames) bypass 12/13, get `analysis_status='n/a-placeholder'` + `validation_status='ready'`, and certify by founder sign-off + chrome check — a judge comparison is impossible without a ground-truth frame.
+
+## 2026-10-11 — buildable has THREE exclusion causes; never delete validated work without checking the gates
+Context: 002's first dispatch sweep — slide 16 (PASS_WITH_FIXES, score 9) was absent from `buildable`; assumed a content-gate failure, deleted its raw+final per the re-run law, then read the final's verdict and found it had PASSED.
+Fact: `buildable` excludes a slide for content-gate failure, dependency gate, OR pattern gate (16 is P1#5 — its predecessor 14 was simply not certified yet). The content gate is only ONE of three causes.
+Fix: copies restored from the pre-deletion bank; 16 restored to ready.
+Rule: before deleting a raw+final for a content-gate re-run, run `15_progress.py deps` and read the final's verdict/score FIRST — a gate-passed slide missing from buildable is usually dep/pattern-gated (correct behavior), not a spec failure. If evidence must move, copy-then-delete (never bare rm) so the mistake is reversible.
+
+## 2026-10-11 — Research fleets must bank per slide to survive provider storms
+Context: 6 research subagents launched in parallel during an active provider storm (001's builders sharing the router); ALL 6 died on upstream timeouts at 13-20 min — the 51-60 worker's only survivors were its first two slides (051 + 057 with downloaded figures), the other five banked nothing after ~1-2M tokens each.
+Fix (relaunch contract): finish one slide COMPLETELY (SOURCES.md written atomically: temp name → move) before starting the next; on provider/model/vision errors sleep 120s and retry up to 3x, then mark [?] and move on — never abort the run; keep vision probes to 1/slide (the gate is shared); resume workers get an exact disk-state summary (which slides have transcripts/SOURCES.md/figures) and never redo banked slides.
+Rule: any long-range subagent whose product is per-unit files banks per unit, atomically; resume briefings are written from a disk sweep, not from the dead agent's report. Parallel fleet size vs an actively-storming provider: stagger rather than fan out all-at-once — a drowned fleet banks nothing.
+
+## 2026-10-11 — Multi-deck watchdogs: NEVER assume a slide's identity across decks — the deck's own dependency graph is canonical
+Context: resuming a stalled 002 slide-45 builder, the coordinator wrote the brief from
+001's graph memory ("45 = Narrow MHA child of 001:43") — but that's 001's OWN slide 45.
+002:45 is the "Feed Forward Neural Network" slide, dep-blocked on 002's own chain
+(45←28←27/26) per 002's slide_dependencies.json v2.
+Cost: one wasted dispatch brief; caught because the worker checked the canonical graph
+before building (DEP_BLOCKED, gen_status untouched) — exactly what the gate law is for.
+Rule: in multi-deck programs, a slide number is NOT an identity — per-deck numbering
+differs. Every builder brief must be derived from THAT deck's slide_dependencies.json +
+AGENTS.md (+ the actual raw/final), never from coordinator memory of another deck's
+families. `buildable` is the dispatch oracle; manual parent assumptions don't transfer.
+The resume worker that verifies identity before building (like this one did) is the
+correct behavior — bank the near-miss.
+
+## 2026-10-12 — Closed-loop ink checkers: measure ORIGINAL and RENDER with identical windows; watch the four trap classes
+Context: 002 slide 039 (Normalization — 19 single-line text regions), resuming a dead builder whose closed_loop_v2 reported 12 BAD lines. v2's checker had window bugs; its "BAD" list mixed artifacts with real defects.
+Mistake: (1) v2's b1/b2 x-windows started at 95pt while the target ink starts at 84.7/83.6pt — clipped measurement manufactured +21/+24px phantom dx0 errors; (2) lc_trans's y-window clipped the 'g' descender; (3) underline scans (baseline-5..+2pt) matched TEXT rows before ever reaching the underline — scan only baseline+1..+6pt; (4) a first "identical wide windows" rewrite then caught box borders (`sum<300` darkp matches pure RED 192,0,0!), adjacent lines' ascenders, underlines of the previous line, and the pen-cursor blob.
+Fix (`scratch/slide039/closed_loop_v3b.py` pattern): tight per-line windows that exclude borders/dots/neighbors/cursor; `blackish = sum<300 AND NOT redp AND NOT bluep`; underline detection only below baseline; TARGETS self-derived by running the SAME predicates/windows on the ORIGINAL frame (m5/m6 cross-checked) so JPEG-antialias bleed cancels on both sides; deltas gated at 4px @150dpi. Fix order: width (font-size interpolation between rounds — b2 needed 16.25→16.34) → then position (baseline/boxX from fresh deltas). For multi-run lines drifting as a block (inter-run gap metrics), SPLIT into per-run verbatim text boxes at measured ink x, preserving the shared baseline by compensating each box's baseline by its own ascent delta (406.0 vs 406.49 for 19pt regular vs 18.5 bold). LO honors pptxgenjs `charSpacing` (verified: covshift +0.77pt/char closed a 13pt Times-metric width gap at constant height).
+Rule: never trust a checker's BAD list until its windows are proven to contain exactly the element measured on BOTH images; identical-window self-targets beat hardcoded targets, and per-line font-size/charSpacing interpolation converges in 2-3 renders.
+
+## 2026-10-12 — Vision transcripts misread SMALL-TEXT COLORS; pixel column-profiles are the arbiter (frame wins)
+Context: 002 slide 039 flow box 2 line 2 "of each layer change" — the high-thinking vision transcript and the analysis spec both said "red"; the judge at full-slide scale ALSO read it "two red lines".
+Mistake: trusting transcript/spec color at 14pt text on a 960x540 JPEG.
+Fix: a per-column red-vs-dark pixel profile of the original (cores (1,2,0) black at cols 389–471 vs (107,16,13) red at 477–522) proved "of each layer " is BLACK and "change" RED; the build was corrected, and a 2x DENSE-REGION crop comparison through the gate then confirmed the split identical in both images (the crop scale is what makes the color legible to the model — full-slide reads are not evidence for small-text color).
+Rule: for small-text color claims, run a pixel column-profile on the original BEFORE building, and settle dense-region color/geometry with an upscaled crop comparison — never with a full-slide vision read.
+
+## 2026-10-12 — Resuming a dead builder: re-render the banked pptx and md5-compare before trusting its "corrected" state
+Context: 002 slide 039 — dead builder left build script (23:13, "closed-loop corrected") + pptx + a scratch render from 23:10, qa/ empty.
+Fix: re-rendered the CURRENT pptx and md5'd the PNG against the dead builder's last scratch render — byte-identical, proving the 23:13 "corrected" edit never changed rendered output, so the predecessor's closed-loop BAD list still applied verbatim. Also: `SOURCES.md.tmp` with fully-banked references was promoted to `SOURCES.md` after verifying every referenced artifact exists on disk (research HAD happened; only the atomic rename was missing).
+Rule: on resume, verify what the banked artifacts actually RENDER (not what their comments claim), keep the predecessor's attempt numbering when no qa evidence exists yet (attempt 1), and promote a complete `SOURCES.md.tmp` only after checking its references exist.
+
+## 2026-10-12 — render_eq.py color bugs are PER-SLIDE facts: verify against the original's ink census before "fixing" certified slides
+Context: slide 032's resume fixed a real defect (render_eq called with unhashed C00000 → matplotlib parsed it as the C0 cycle blue #1F77B4 for its red brackets) and warned that certified slide 031's equations "may carry the same bug" — 18 of its 55 equation PNGs are blue rgb(0,0,204).
+Resolution: the deck's originals mix blue (#1C1CC8-family) and red (C00000) content PER SLIDE — 031's original frame has both (7,316 blue-ish + 6,013 red-ish px), and its 18 blue + 19 red equation PNGs mirror that measured mix. 031 is correct; only 032's brackets were wrong.
+Rule: a color defect found on one slide is never assumed transferable. Before touching a CERTIFIED slide on a color suspicion, PIL-census the ORIGINAL frame's saturated ink (blue vs red dominant-px counts) and compare against the build's asset census — matching mixed palettes = correct, mismatched = fix trigger. Unhashed hex passed to matplotlib silently maps to the C0 cycle (#1F77B4) — always pass '#C00000'-style hashed hex, and PIL-probe every generated PNG's dominant ink color after generation (the output check the 032 builder added to its gen loop is now standard).

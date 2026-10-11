@@ -1,0 +1,33 @@
+## 1. Verbatim text transcription
+
+All visible text is English, consistent with the standard Transformer architecture diagram:
+
+**Left panel (encoder, tan/brown box):**
+- `Add & Norm`
+- `Feed` / `Forward` (two lines)
+
+**Right panel (decoder, clipped at right edge):**
+- `Feed` / `Forward` (top box, clipped by top edge)
+- `Add & No` â truncated at the right edge (presumably "Add & Norm")
+- `Multi-Hea` / `Attentio` â truncated at the right edge (presumably "Multi-Head Attention")
+- `V` and `K` â white letters in two dark-blue circular badges
+- `Add & Nâ¦` â purple box at bottom, truncated by the bottom/right edges
+
+## 2. Layout
+
+- **Left edge:** A thin curved line (part of a connector/residual path) enters from off-canvas at the upper left on a cream background; a small orange-brown dot is clipped at the bottom-left corner.
+- **Left-of-center:** The encoder block â a brown rounded rectangle containing the `Add & Norm` pill (yellowish fill) above the `Feed Forward` rectangle (tan fill). An upward arrow enters `Feed Forward` from below.
+- **Right edge:** The decoder column, drawn in green tones on a pale-green panel, is cut off by the image edge. From top to bottom: `Feed Forward` (clipped at top), `Add & Norm`, `Multi-Head Attention`, the `V`/`K` badges, and a purple `Add & Norm` box (clipped at bottom).
+- **Top:** Cream background on the left half; the bright yellow highlight band begins in the upper-middle region and extends rightward behind the decoder boxes.
+- **Bottom:** The encoder box's lower edge and the purple decoder box run into the bottom border; the `V`/`K` badges sit on the yellow band just above it.
+- **Center/gap:** The yellow band spans horizontally across the gap between the encoder panel and decoder panel, passing behind the decoder boxes, with the `V` and `K` circles overlaid on top of it.
+
+## 3. Visual defects
+
+- **Right-edge clipping:** Three decoder labels are cut mid-word (`Add & No`, `Multi-Hea`, `Attentio`).
+- **Top-edge clipping:** The decoder `Feed Forward` box is cut through its upper portion.
+- **Bottom-edge clipping:** The purple `Add & Norm` box and the encoder box's lower border are cut off.
+- **Left-edge clipping:** The curved connector line and the orange dot are truncated.
+- **Overlay behavior:** The yellow highlight band overlaps the panel gap and sits beneath the `V`/`K` badges; no text is obscured by it in this crop.
+- **Quality:** Noticeable blur/pixelation from the 2Ã JPEG upscale; letter edges are soft but legible.
+- **No garbage strings, placeholders, or wrong-language text** are present; all legible text matches the expected English diagram labels.

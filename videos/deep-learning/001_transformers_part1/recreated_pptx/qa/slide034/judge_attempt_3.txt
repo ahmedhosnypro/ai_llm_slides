@@ -1,0 +1,50 @@
+# Fidelity Check â Slide 034 (Attempt 3) vs Original Lecture Frame
+
+## Pre-check: founder-mandated chrome (NOT discrepancies, settled first)
+- White FFFFFF canvas, gray E9E9E7 panel with red C00000 border â present in both. â
+- Badge circle d36px at (893,71), FDFD96 fill, purple 6A5ACD ring, "34" â present and matching in both. â
+- Mouse cursor artifact visible in IMG2 (center, ~x470,y170) â correctly omitted from recreation per rule (c). â
+- Equation typeface differences (recreation serif math vs original's rendering) â mandated format upgrade per rule (e), not a discrepancy. â
+
+## Element-by-element comparison
+
+**Title block**
+- "Self Attention Mechanism" â verbatim, centered, bold black, matching size/position. â
+- Subtitle "(Embedding Vector Dimension and Softmax Sensitivity)" â verbatim; red base text with yellow highlights on exactly "Vector Dimension" and "Softmax Sensitivity" in both. â
+
+**Green concept box (top-left)**
+- Large boxed equation wâ²áµ¢â±¼ = xáµ¢áµxâ±¼ in white/black-bordered box â present, professional 2D format, correct position. â
+- [Xáµ¢]ââd in dark-red brackets with green subscript â present, correct placement. â
+- "d â" green arrow at left â present. â
+- Second green up-arrow with small boxed wâ²áµ¢â±¼ = xáµ¢áµxâ±¼ repeat â present. â
+- Two-line annotation with thin blue border (the attempt-3 fix): "As Dimension of Embedding "d" Increases / the Calculated weight value "w" increases" â verbatim, correct yellow/green and orange/red highlights, blue border now present and matches the original's box. Line spacing and vertical centering inside the annotation box match. â **Attempt-3 fix confirmed.**
+
+**Peach panel**
+- Panel color (light peach â FCE4D6), position, and containment inside the gray panel â match; no ink crosses the gray panel's red border anywhere. â
+- [Xáµ¢]ââd red-bordered box â present, matching. â
+- Dark-red "SoftMax" label + green "d â" arrow â present, correct colors/positions. â
+- Softmax equation box: wáµ¢â±¼ = exp wâ²áµ¢â±¼ / Î£â±¼ exp wâ²áµ¢â±¼ â stacked fraction with horizontal bar, all terms present. â
+- Blue-bordered callout "High Weight Values kill the gradient, and slow down learning" â verbatim; "High" red italic, "kill" red, remainder blue bold italic. â
+- Green "d â" and "d ââ" arrows before columns 2 and 3 â both present, correct arrow counts. â
+
+**Three worked-example columns**
+- Ordering and values: inputs 1,2,3,4 / 5,10,15,20 / 10,20,30,40 in yellow red-bordered pills; outputs 0.0321,0.0871,0.2369,0.6439 / 0.0000,0.0000,0.0067,0.9933 / 0.0000,0.0000,0.0000,1.0000 in blue-bordered pills â **every value exact**. â
+- Orange "SoftMax" labels + dark-red arrows between stacks â present in all three columns, correct order (inputs â arrow â outputs). â
+- Captions wâ²áµ¢â±¼ (math italic) + For small/medium/large "d" â verbatim, correctly positioned below each column. â
+- Delimiter geometry: tall parentheses on both input (dark red) and output (blue) stacks span all four values top-to-bottom, sit clear of the enclosed text, and match the original's curvature style. â
+- Vertical centering: all values are vertically centered inside their pills; stacks are centered within their delimiters. â
+
+## Discrepancy list
+
+| # | Discrepancy | Severity | Confidence |
+|---|---|---|---|
+| 1 | Peach panel's right edge terminates slightly short of the original's extent (~862 vs ~895 on the 960-wide scale), leaving marginally more gray margin at the right before the callout box; all content still fully contained | MINOR | Medium |
+| 2 | Small boxed repeat equation (next to second green up-arrow) rendered slightly wider than the original's | MINOR | Medium |
+| 3 | "For small/medium/large "d"" caption weight appears a touch lighter than the original's bold rendering | MINOR | LowâMedium |
+
+No BLOCKER defects: no missing elements, no empty equation regions, no frame-containment overflows, no delimiter failures, no value errors.
+
+## Visual-quality defects in the recreation
+- None observed: no text clipping, no wrong wrapping, no collisions between arrows/boxes/labels, all multi-line blocks correctly line-spaced and vertically centered.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

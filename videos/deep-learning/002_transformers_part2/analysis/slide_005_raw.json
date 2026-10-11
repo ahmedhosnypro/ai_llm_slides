@@ -1,0 +1,209 @@
+{
+  "slide_title": "Encoder \u2013 Decoder Transformer",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Both Encoder and Decoder Blocks Contain \"Multi-Head Self Attention\" block",
+      "\"h\" Heads",
+      "Outputs of Heads are concatenated"
+    ],
+    "labels": [
+      "5",
+      "Encoder",
+      "Decoder",
+      "Scaled Dot-Product Attention",
+      "Multi-Head Attention",
+      "MatMul",
+      "SoftMax",
+      "Mask (opt.)",
+      "Scale",
+      "Q",
+      "K",
+      "V",
+      "Linear",
+      "Concat",
+      "Scaled Dot-Product Attention",
+      "h",
+      "Inputs",
+      "Input Embedding",
+      "Positional Encoding",
+      "Add & Norm",
+      "Multi-Head Attention",
+      "Feed Forward",
+      "Multi-Head Attention [?] (decoder cross-attention box, partially obscured by orange highlight)",
+      "Masked Multi-Head Attention",
+      "Output Embedding",
+      "Outputs (shifted right)",
+      "Softmax",
+      "Probabilities",
+      "Output",
+      "N\u00d7"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Red bold title centered at top with a numbered yellow badge at top-right; two stacked peach callout boxes at top-left; below them three vertical zones: small green-bordered 'Scaled Dot-Product Attention' flowchart at far left, medium green-bordered 'Multi-Head Attention' flowchart at center, and a large two-panel Encoder\u2013Decoder architecture at right; dashed red annotation curves link the callouts to the diagrams; a thin dark-red border frames the content area and a solid black bar runs along the bottom edge.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, x ~23\u201377%, y ~9\u201317%",
+        "content": "'Encoder \u2013 Decoder Transformer' in large red bold sans-serif"
+      },
+      {
+        "name": "Slide-number badge",
+        "position": "top right, x ~89\u201393%, y ~10\u201317%",
+        "content": "yellow circle with green ring containing '5'"
+      },
+      {
+        "name": "Callout box 1",
+        "position": "top left, x ~9\u201351%, y ~19\u201326%",
+        "content": "peach box: 'Both Encoder and Decoder Blocks Contain \"Multi-Head Self Attention\" block'"
+      },
+      {
+        "name": "Callout box 2",
+        "position": "top left below callout 1, x ~13\u201344%, y ~28\u201336%",
+        "content": "peach box: '\"h\" Heads / Outputs of Heads are concatenated'"
+      },
+      {
+        "name": "Scaled Dot-Product Attention diagram",
+        "position": "left column, x ~8\u201321%, y ~41\u201388% (label above, frame y ~48\u201388%)",
+        "content": "green-bordered vertical flowchart with Q/K/V circles and MatMul/Scale/Mask/SoftMax/MatMul stack"
+      },
+      {
+        "name": "Multi-Head Attention diagram",
+        "position": "center column, x ~32\u201353%, y ~38\u201392% (label above, frame y ~44\u201392%)",
+        "content": "green-bordered vertical flowchart: V/K/Q circles \u2192 three Linear boxes \u2192 Scaled Dot-Product Attention (stacked copies) \u2192 Concat \u2192 Linear, with 'h' badge"
+      },
+      {
+        "name": "Encoder\u2013Decoder architecture",
+        "position": "right side, x ~59\u201389%, y ~19\u201393%",
+        "content": "two-panel block diagram (peach Encoder panel, green Decoder panel) with full transformer stacks, positional-encoding icons, red block arrows, highlights and N\u00d7 marker"
+      },
+      {
+        "name": "Black bottom bar",
+        "position": "bottom, x 0\u2013100%, y ~95\u2013100%",
+        "content": "solid black horizontal strip"
+      }
+    ],
+    "hierarchy": "The red bold title is the largest text; the right-hand Encoder\u2013Decoder architecture is the largest visual mass; the two green-bordered attention flowcharts are secondary; peach callouts and italic red/green diagram titles are tertiary; the smallest elements are the 8\u201310pt labels inside diagram boxes and the gray 'N\u00d7'."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "Scaled Dot-Product Attention (left): vertical pipeline inside a green (#00B050) rectangle border. Bottom row of three circles: Q (red, white letter), K (blue), V (blue). Above them, bottom-to-top stack of small rounded boxes joined by thin black up-arrows: 'MatMul' (lavender), 'Scale' (pale yellow), 'Mask (opt.)' (pale pink), 'SoftMax' (pale green), 'MatMul' (lavender, top). A vertical bypass line runs along the left inner edge from the frame bottom up into the top 'MatMul' [?]. A short arrow exits the top 'MatMul' upward. Tiny green square handles appear at the border corners (likely selection handles in the source screenshot).",
+      "colors": [
+        "#00B050",
+        "#C5B8D9",
+        "#FFE699",
+        "#F8CBAD",
+        "#C6E0B4",
+        "#C00000",
+        "#1F1FD4",
+        "#000000"
+      ],
+      "position": "left column, x ~8\u201321%, y ~48\u201388%"
+    },
+    {
+      "type": "flowchart",
+      "description": "Multi-Head Attention (center): vertical pipeline inside a green (#00B050) rectangle border. Bottom row: circles V (blue), K (blue), Q (red); each feeds up into its own white 'Linear' box (three in a row, each with gray offset copies behind suggesting stacked layers). All three converge into one wide pink box 'Scaled Dot-Product Attention' (two text lines) that also has gray offset copies behind it (h parallel heads). A small tan circle labeled 'h' sits to the right of the stack with a short pointer arrow. Above: yellow 'Concat' box, then a white 'Linear' box, with a black arrow exiting the top. All connectors are thin black up-arrows.",
+      "colors": [
+        "#00B050",
+        "#E891C8",
+        "#FFE699",
+        "#FFFFFF",
+        "#D9D9D9",
+        "#1F1FD4",
+        "#C00000",
+        "#D2A26E",
+        "#000000"
+      ],
+      "position": "center column, x ~32\u201353%, y ~44\u201392%"
+    },
+    {
+      "type": "diagram",
+      "description": "Encoder\u2013Decoder architecture (right): two abutting panels \u2014 Encoder panel (light peach fill, italic red label 'Encoder' at its top-left) and Decoder panel (light green fill, italic green label 'Decoder' at its top-right). Encoder column bottom\u2192top: text 'Inputs'; thick red block up-arrow; box 'Input Embedding' (tan); small tan circle icon (clock/sine glyph) with two-line label 'Positional Encoding' at its left; box 'Add & Norm' (cream); box 'Multi-Head Attention' under translucent orange highlight, with circles V (blue), K (blue), Q (red) just beneath it; box 'Add & Norm'; box 'Feed Forward' (olive, two lines); box 'Add & Norm' (top). Decoder column bottom\u2192top: text 'Outputs (shifted right)' with 'Outputs' yellow-highlighted; box 'Output Embedding' (maroon); tan circle icon with two-line label 'Positional Encoding' at its right; box 'Add & Norm'; purple box 'Masked Multi-Head Attention' with circles V (blue), K (blue), Q (red) at its base; box 'Add & Norm'; box 'Multi-Head Attention' [?] under translucent orange highlight (cross-attention, text partly obscured); box 'Add & Norm'; box 'Feed Forward' (olive); box 'Add & Norm'; green box 'Linear'; green box 'Softmax'; small text 'Probabilities'; thick red block up-arrow to bold label 'Output' at top. Gray 'N\u00d7' sits just outside the decoder's right edge at attention-block height. Thin dark connectors join all boxes vertically.",
+      "colors": [
+        "#F8DCC4",
+        "#D9F2D9",
+        "#EDE3CD",
+        "#CCC9A4",
+        "#D2A26E",
+        "#B05A5A",
+        "#A995E0",
+        "#B5DDB5",
+        "#C00000",
+        "#1F1FD4",
+        "#808080",
+        "#FFFF00",
+        "#ED7D31"
+      ],
+      "position": "right side, x ~59\u201389%, y ~19\u201393%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Instructor annotation overlays on the architecture: (a) translucent yellow rectangle spanning both panels' upper 'Feed Forward / Add & Norm' zone; (b) translucent orange rectangle over the encoder's 'Multi-Head Attention' box, extending left to/past the encoder panel edge; (c) translucent orange rectangle over the decoder's attention area, extending right past the decoder panel edge; box text under (b) and (c) is partially obscured.",
+      "colors": [
+        "#FFFF00",
+        "#ED7D31"
+      ],
+      "position": "over the right-hand architecture, x ~60\u201388%, y ~44\u201372%"
+    },
+    {
+      "type": "arrow",
+      "description": "Three dashed dark-red curved arrows with arrowheads: (1) from the right edge of callout box 1 curving down-right to the encoder's orange-highlighted 'Multi-Head Attention'; (2) from the right edge of callout box 2 curving down-right to the 'h' badge beside the center Multi-Head Attention diagram; (3) an autoregressive loop on the decoder's right edge from the top 'Output' arrow curving down to 'Outputs (shifted right)'. Additionally two thick solid red block up-arrows: 'Inputs' \u2192 'Input Embedding' (encoder bottom) and 'Softmax'/'Probabilities' \u2192 'Output' (decoder top).",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "upper-middle area and right edge of slide"
+    },
+    {
+      "type": "other",
+      "description": "Thin dark-red rectangular border framing the whole content area (visible along top and sides); solid black horizontal bar across the very bottom edge; slide-number badge top-right (yellow circle, green ring, '5').",
+      "colors": [
+        "#C00000",
+        "#000000",
+        "#FFD966",
+        "#00B050"
+      ],
+      "position": "slide perimeter; bar at y ~95\u2013100%; badge at x ~89\u201393%, y ~10\u201317%"
+    }
+  ],
+  "imagery": [
+    "Two small 'Positional Encoding' icons: flat tan circles containing a dark clock/sine-wave glyph \u2014 one beside the encoder's Input Embedding arrow (label to its left), one beside the decoder's Output Embedding arrow (label to its right); simple flat vector style.",
+    "No photographs or clip-art; every graphic is a flat vector diagram shape."
+  ],
+  "colors": {
+    "background": "#F2F2F2",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#C00000",
+      "#00B050",
+      "#0020C9",
+      "#FCD5B4",
+      "#ED7D31",
+      "#FFFF00",
+      "#A995E0",
+      "#B05A5A",
+      "#FFD966",
+      "#808080"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Calibri-like). Title ~32\u201334pt bold, red, title case with a spaced en dash. Diagram/panel titles ('Encoder', 'Decoder', 'Scaled Dot-Product Attention', 'Multi-Head Attention') ~14\u201316pt bold italic. Callout text ~13\u201315pt bold with key phrases recolored (blue for 'Multi-Head Self Attention', red for 'concatenated') rather than bulleted. Flowchart and architecture box labels ~8\u201310pt regular black, centered. 'N\u00d7' ~12pt gray. No numbered or bulleted lists on the slide; emphasis is purely color and weight.",
+  "animation_state": "Slide reads as fully built. The translucent yellow/orange rectangles and the dashed red curves appear to be instructor annotations drawn over the static base figure; no bullet build or partial reveal is evident.",
+  "recreation_brief": "1. Set a 16:9 slide, background #F2F2F2. Draw a no-fill rectangle border (1.25pt, #C00000) inset ~4% from left/right/top, ending at the bottom bar; add a full-width solid black (#000000) rectangle along the bottom edge (~4.5% of slide height). 2. Centered title text box at top (y ~9\u201317%): 'Encoder \u2013 Decoder Transformer', Arial bold 32pt, #C00000. 3. Top-right badge: oval (~0.5in) at x ~89%, y ~10%; fill #FFD966, 1.5pt #00B050 outline; centered black bold '5' (14pt). 4. Callout 1: rounded rectangle x 9\u201351%, y 19\u201326%, fill #FCD5B4, 1pt #C00000 outline; centered bold 14pt \u2014 line 1 'Both Encoder and Decoder Blocks Contain' (black); line 2 '\"Multi-Head Self Attention\" block' with 'Multi-Head Self Attention' in #0020C9. 5. Callout 2: rounded rectangle x 13\u201344%, y 28\u201336%, same fill; line 1 '\"h\" Heads' (bold, dark maroon #7B2D26); line 2 'Outputs of Heads are ' (dark maroon) + 'concatenated' (bold #C00000). 6. Left flowchart: no-fill rectangle, 2pt #00B050, x 8\u201321%, y 48\u201388%. Inside, bottom\u2192top: circles Q (#C00000), K (#1F1FD4), V (#1F1FD4) (~0.25in, white letters); boxes ~0.9in \u00d7 0.28in, 9pt black text, thin black outline: 'MatMul' #C5B8D9, 'Scale' #FFE699, 'Mask (opt.)' #F8CBAD, 'SoftMax' #C6E0B4, 'MatMul' #C5B8D9; join with thin black up-arrows; add a vertical line along the left inner edge from frame bottom to the top MatMul [?]; short arrow out of the top MatMul. 7. Label above it (x ~7\u201322%, y ~41\u201347%): 'Scaled Dot-Product Attention' on two lines, Arial bold italic 14pt #C00000. 8. Center flowchart: no-fill rectangle, 2pt #00B050, x 32\u201353%, y 44\u201392%. Bottom\u2192top: circles V, K (#1F1FD4) and Q (#C00000); three white 'Linear' boxes in a row (each with 1\u20132 gray #D9D9D9 offset copies behind); wide pink box 'Scaled Dot-Product Attention' (#E891C8, two lines, gray offset copies behind); tan circle 'h' (#D2A26E, dark-red letter) at right with a pointer arrow to the stack; yellow 'Concat' (#FFE699); white 'Linear'; thin black up-arrows throughout; arrow exits the top. 9. Label above center frame (y ~38\u201342%): 'Multi-Head Attention', Arial bold italic 14pt #C00000. 10. Architecture: Encoder rectangle x 59\u201374%, y 19\u201393%, fill #F8DCC4; Decoder rectangle x 74\u201389%, y 19\u201393%, fill #D9F2D9; thin outlines; italic bold labels 'Encoder' (#C00000) top-left of encoder panel, 'Decoder' (#00B050) top-right of decoder panel. 11. Encoder stack (centered column, bottom\u2192top, boxes ~0.85in wide, 8\u20139pt black text, thin dark outlines, thin dark up-arrow connectors): 'Inputs' (plain text) \u2192 thick red #C00000 block up-arrow \u2192 'Input Embedding' (#D2A26E) \u2192 tan circle icon (#C9A876 with dark clock/sine glyph) with two-line label 'Positional Encoding' at its left \u2192 'Add & Norm' (#EDE3CD) \u2192 'Multi-Head Attention' (#E8C8A0) with circles V (#1F1FD4), K (#1F1FD4), Q (#C00000) just below \u2192 'Add & Norm' \u2192 'Feed Forward' (#CCC9A4, two lines) \u2192 'Add & Norm'. 12. Decoder stack (bottom\u2192top): 'Outputs' (apply yellow text highlight) with '(shifted right)' beneath \u2192 'Output Embedding' (#B05A5A) \u2192 tan circle icon with two-line label 'Positional Encoding' at its right \u2192 'Add & Norm' \u2192 'Masked Multi-Head Attention' (#A995E0, two-three lines) with V/K/Q circles at its base \u2192 'Add & Norm' \u2192 'Multi-Head Attention' \u2192 'Add & Norm' \u2192 'Feed Forward' (two lines) \u2192 'Add & Norm' \u2192 'Linear' (#B5DDB5) \u2192 'Softmax' (#B5DDB5) \u2192 small text 'Probabilities' \u2192 thick red block up-arrow \u2192 bold 'Output' at top; place gray 'N\u00d7' (12pt, #808080) just outside the decoder's right edge at attention height. 13. Annotation overlays: (a) yellow #FFFF00 rectangle ~40% transparent over the upper 'Feed Forward / Add & Norm' zone of both panels; (b) orange #ED7D31 ~50% transparent rectangle over the encoder 'Multi-Head Attention' extending left past the panel edge; (c) same orange over the decoder 'Multi-Head Attention' extending right past the panel edge. 14. Dashed #C00000 curved connectors (1.5pt, dashed, arrowheads): callout 1 \u2192 encoder orange zone; callout 2 \u2192 the 'h' badge; decoder 'Output' \u2192 down the right edge \u2192 'Outputs (shifted right)'. 15. Proofread every string against the label list, preserving the spelling difference 'SoftMax' (small diagram) vs 'Softmax' (decoder).",
+  "_meta": {
+    "frame": "slide_005.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 5,
+      "image": "slide_005.jpg",
+      "kept_frame": "frame_00058.jpg",
+      "start_sec": 30.0,
+      "end_sec": 57.0,
+      "frame_count": 28,
+      "old_slide": 4
+    },
+    "elapsed_s": 811.1
+  }
+}

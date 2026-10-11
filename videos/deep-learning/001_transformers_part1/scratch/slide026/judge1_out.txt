@@ -1,0 +1,51 @@
+[info] context header injected: VIEW: Slide 026 recreation — fidelity check vs original lecture frame. WORKER CONTEXT: dependency ROOT (children 27/28/29 import its component); PLAYLIST house chrome (videos/deep-learning/AGENTS.md, founder 2026-10-11) SUPERSEDES the ml-intro chrome values quoted in ground rule (a): both images carry the deck-native chrome (white FFFFFF canvas, gray E9E9E7 panel x42..918px with thin red C00000 border, yellow FDFD96 badge with purple 6A5ACD ring and bold 333333 numeral 26 at top-right (893,71)px). Chrome findings quoting the ml-intro values of (a) are overridden; chrome mismatches vs IMG2's own chrome are real. | CAPTURE: IMG1=150dpi PNG render of a 13.33x7.5in PPTX; IMG2=original lecture video frame
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 4093405
+[info] videos/deep-learning/001_transformers_part1/recreated_pptx/qa/slide026/render_1.png, videos/deep-learning/001_transformers_part1/unique_slides/slide_026.jpg: transcript written (validated winner, atomic): videos/deep-learning/001_transformers_part1/recreated_pptx/qa/slide026/judge_attempt_1.txt (pid 4093405)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== videos/deep-learning/001_transformers_part1/recreated_pptx/qa/slide026/render_1.png, videos/deep-learning/001_transformers_part1/unique_slides/slide_026.jpg ===
+[winner] images (round 1, attempt 1)
+# Fidelity Check â Slide 026 (Self Attention Mechanism, Fundamental Operation)
+
+## Chrome (per house-template override)
+- White canvas, red C00000 outer frame, gray panel with red border, yellow badge with purple ring and bold "26" at top-right (~893,71): **matches IMG2's own chrome**. â
+- Yellow highlight on "(Fundamental Operation)" in title: present in both. â
+
+## Element-by-element comparison
+
+| Element | IMG1 (recreation) | IMG2 (original) | Status |
+|---|---|---|---|
+| Title line 1 + yellow highlight | Present, verbatim | Present | â Match |
+| Subtitle with red XââXâ subscripts | Present, verbatim, subscripts aligned | Present | â Match |
+| Left green dashed box, 4 embedding rows (XââXâ, yellow/pink/lavender blocks) | Present | Present | â Match |
+| "Similarity" pale-yellow oval, blue text | Present | Present | â Match |
+| Tan "Dot Product" box, 2-line brown label, blue dots on rows | Present, text vertically centered | Present | â Match |
+| Four horizontal red lines w/ arrowheads into Soft max | Present | Present | â Match |
+| Purple vertical "Soft max" box (rotated text, centered) | Present | Present | â Match |
+| "Probabilities" oval | Present | Present | â Match |
+| Wââ, Wââ, Wââ, Wââ labels | Present, positioned left of each multiplier, matching rows | Present | â Match |
+| Four multiplier circles with converging horizontal arrows + vertical output arrows up to Î£ | Present | Present | â  Symbol styling (below) |
+| Cyan Î£ box, four red arrows entering from below | Present, arrowheads land just below box edge | Present | â Match |
+| "Weighted SUM" oval | Present | Present | â Match |
+| Green Y output bar + green arrow + red up-arrow | Present, Y label centered | Present | â Match |
+| Right green dashed box, 4 rows | Present | Present | â Match |
+| Bottom sentence box w/ Xâ highlighted (magenta dotted outline) + red pointer arrow | Present | Present | â Match |
+| Dashed gray curved connectors (bottom box â left box and â right box) | Present | Present | â Match |
+| Red arrow from Xâ up into Dot Product box | Present | Present | â Match |
+
+## Discrepancies
+
+1. **MINOR â Multiplier symbol style.** IMG1 draws the four multiply operators as circled-X (â); IMG2 shows a circled asterisk/star (â/â³-in-circle). Same position, size, and arrow topology; only glyph style differs. Confidence: high that a difference exists, low impact.
+2. **MINOR â Possible missing diagonal arrows in Dot Product box.** IMG2 appears to show faint short diagonal red arrow segments linking the blue dots (similarity-flow indication); IMG1 shows only horizontal lines with plain dots. At IMG2's resolution this may be compression artifact, so confidence is medium. No other diagram connectivity is affected.
+3. **MINOR â Relative scale/spacing.** IMG1's diagram elements are slightly larger/more spread out than IMG2's (e.g., Î£ box and ovals a bit wider). Within normal rendering tolerance; no wrapping, collision, or hierarchy change.
+
+## Visual-quality inspection of the recreation
+- **Frame containment:** All elements sit fully inside the tan panel â Y bar, badge, bottom red arrow (clears panel bottom), dashed connectors, W labels. No ink crosses the inner panel or house frame. â
+- **Vertical centering:** "Dot Product," rotated "Soft max," "Y," and oval labels are all vertically centered in their enclosures. â
+- **Delimiter geometry:** Parentheses in the subtitle span the X-subscript tokens correctly with no stroke/text overlap. â
+- **No clipping, no wrong wrapping, no collisions, no illegible text** observed.
+
+## FINAL VERDICT: **PASS**
+
+The recreation is a faithful, usable match: all text verbatim (including highlighted title span and subscripted X tokens), full diagram topology (4 rows, dot-product stage, softmax, W-weighted multipliers, Î£, weighted SUM, Y output, sentence strip with highlighted Xâ) reproduced with correct colors, arrow directions, and containment. Remaining deltas are cosmetic glyph style and one low-confidence micro-detail â well below the defect threshold.
+

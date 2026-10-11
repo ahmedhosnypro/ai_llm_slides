@@ -1,0 +1,31 @@
+[info] context header injected: VIEW: Dense-region zoom check: slide 035 badge — both crops 558x588 SAME scale (render crop 6x from 150dpi; original 6x Lanczos to same size). Pixel facts: circle d≈36px@orig centered (893,71) both; fill FDFD96, ring 6A5ACD ~2pt both (house chrome, ratified); numeral ink cap-h 11px@orig in the original, 18pt-ratified chrome in the render (deck-wide chrome constant, identical on certified slides 2/3/34). | CAPTURE: IMG1=6x upscale of the 150dpi render's badge region; IMG2=6x Lanczos upscale of the original frame's same region (same scale)
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 965196
+[info] videos/deep-learning/001_transformers_part1/recreated_pptx/qa/slide035/crops/badge_render.png, videos/deep-learning/001_transformers_part1/recreated_pptx/qa/slide035/crops/badge_original.png: transcript written (validated winner, atomic): videos/deep-learning/001_transformers_part1/recreated_pptx/qa/slide035/cropcompare_badge_1.txt (pid 965196)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== videos/deep-learning/001_transformers_part1/recreated_pptx/qa/slide035/crops/badge_render.png, videos/deep-learning/001_transformers_part1/recreated_pptx/qa/slide035/crops/badge_original.png ===
+[winner] images (round 1, attempt 1)
+## Q1: Numeral identification
+
+**IMG1:** "35" â clearly legible, bold sans-serif, high contrast against the yellow fill.
+**IMG2:** "35" â softer due to JPEG/upscale, but the glyphs are unambiguous: "3" followed by "5". Same digits, same order, same weight class.
+
+No digit ambiguity in either image (it is not "36", "85", or "3S").
+
+## Q2: Ring, fill, and numeral color comparison
+
+| Element | IMG1 (render) | IMG2 (original) | Match? |
+|---|---|---|---|
+| Ring | Slate blue (6A5ACD), crisp edge | Purplish-blue, soft/haloed | â hue is the same family; IMG2's blur and slight violet shift are JPEG compression + Lanczos artifacts |
+| Fill | FDFD96 pale yellow | Pale yellow (marginally duller) â compression desaturation only |
+| Numeral | Dark charcoal gray | Dark charcoal gray â same ink color, no color flip or inversion |
+
+**Discrepancy list:**
+- Edge softness / halo on ring and numerals in IMG2 â **not a discrepancy** per Ground Rule (b) (video-compression artifact).
+- Size/position differences are ratified house chrome per Ground Rule (a) â excluded.
+
+**No design-level discrepancies found.** Ring color family, fill color, and numeral ink all correspond within the tolerance implied by the ground rules.
+
+## FINAL VERDICT: **PASS** for 'faithful, usable recreation' of this region.
+
+EXIT=0

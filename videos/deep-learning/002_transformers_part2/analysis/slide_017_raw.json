@@ -1,0 +1,243 @@
+{
+  "slide_title": "Multi Head Self Attention of Word X\u2082",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "17",
+      "1\u00d71d",
+      "Y\u2082",
+      "Linear Transformation    [ T ]",
+      "d\u00d7H\u00b7d",
+      "Concatenated Vector",
+      "1\u00d7dH",
+      "Y\u2081\u1d34",
+      "Y\u2082\u1d34",
+      "Y\u2083\u1d34",
+      "Y\u2084\u1d34",
+      "Y\u2085\u1d34",
+      "h=1",
+      "h=2",
+      "h=3",
+      "h=4",
+      "h=5",
+      "Similarity",
+      "Probabilities",
+      "Weighted SUM",
+      "Dot Product",
+      "K\u2081\u00b7q",
+      "K\u2082\u00b7q",
+      "K\u2083\u00b7q",
+      "Scaling by \u221ad",
+      "Soft max",
+      "\u03a3",
+      "\u2297",
+      "K\u2081",
+      "K\u2082",
+      "K\u2083",
+      "V\u2081",
+      "V\u2082",
+      "V\u2083",
+      "X\u2081",
+      "X\u2082",
+      "X\u2083",
+      "X\u2084",
+      "W\u2096\u1d34",
+      "W\u1d65\u1d34",
+      "W_q\u1d34",
+      "q",
+      "+H* Heads",
+      "W",
+      "=",
+      "1\u00d7d\u00b7d",
+      "d: Embedding Length"
+    ],
+    "equations": [
+      "K\u2081\u00b7q/\u221ad",
+      "K\u2082\u00b7q/\u221ad",
+      "K\u2083\u00b7q/\u221ad",
+      "Linear Transformation [ T ]  \u2192  d\u00d7H\u00b7d",
+      "1\u00d71d  [W]  =  1\u00d7d\u00b7d",
+      "\u03a3  (weighted sum of \u2297-scaled V\u2081, V\u2082, V\u2083)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Entire slide enclosed in a dark-red rectangular border on a light-gray background. Title and yellow slide-number circle sit top-right. A vertical pipeline runs down the top-center: small word-embedding strip (Y\u2082) \u2192 'Linear Transformation [T]' box \u2192 long 5-segment 'Concatenated Vector' strip. Below, five overlapping rounded-rectangle 'head' layers cascade from front-bottom-left (h=1, red, fully detailed) to back-top-right (h=5, peach, mostly occluded). A thick red curved arrow labeled '+H* Heads' climbs the right side from the h=1 output back up toward the concatenated vector. A green dashed legend box (W matrix dimensions) sits bottom-right; a red arrow bottom-left points at the highlighted Y\u2082 cell in the bottom input strip.",
+    "regions": [
+      {
+        "name": "Border frame",
+        "position": "full slide, ~1-2% inset",
+        "content": "Dark red/maroon rectangle outline framing everything"
+      },
+      {
+        "name": "Title",
+        "position": "top-right, x\u224854-88%, y\u22487-14%",
+        "content": "'Multi Head Self Attention of Word X\u2082' \u2014 bold black, 'X\u2082' in red with subscript"
+      },
+      {
+        "name": "Slide number",
+        "position": "top-right corner, x\u224889-95%, y\u22487-15%",
+        "content": "Yellow circle with black '17'"
+      },
+      {
+        "name": "Word embedding strip",
+        "position": "top-center, x\u224841-50%, y\u22486-12%",
+        "content": "Small multicolor cell strip with 'Y\u2082' in yellow cell, label '1\u00d71d' at right"
+      },
+      {
+        "name": "Linear Transformation box",
+        "position": "top-center, x\u224833-58%, y\u224814-20%",
+        "content": "White box 'Linear Transformation [ T ]' with red 'd\u00d7H\u00b7d' at its bottom-right; arrows connect it to strip above and concatenated vector below"
+      },
+      {
+        "name": "Concatenated vector",
+        "position": "upper-middle band, x\u224819-72%, y\u224821-27%",
+        "content": "Red label 'Concatenated Vector' + '1\u00d7dH'; long strip of 5 dashed segments Y\u2081\u1d34\u2013Y\u2085\u1d34; dashed gray drop-lines to head layers"
+      },
+      {
+        "name": "Head layer stack",
+        "position": "center-left to mid-right, x\u22487-82%, y\u224830-95%",
+        "content": "Five cascading rounded rectangles h=1(red)\u2192h=5(peach), each with black pill label and partial attention-mechanism content"
+      },
+      {
+        "name": "h=1 detail layer",
+        "position": "front, x\u22487-63%, y\u224845-95%",
+        "content": "Full self-attention mechanism: X strips, W\u2096\u1d34/K, Dot Product, Scaling by \u221ad, Soft max, \u03a3 with \u2297, W\u1d65\u1d34/V, Weighted SUM, output X strips, bottom sequence strip with Y\u2082 highlighted, W_q\u1d34 \u2192 q"
+      },
+      {
+        "name": "Red arrow + label",
+        "position": "right side, x\u224856-83%, y\u224855-85%",
+        "content": "Thick red curved arrow, blue text '+H* Heads'"
+      },
+      {
+        "name": "W dimension legend",
+        "position": "bottom-right, x\u224874-93%, y\u224881-96%",
+        "content": "Green dashed box: strip '1\u00d71d' [W] = strip '1\u00d7d\u00b7d', red caption 'd: Embedding Length'"
+      },
+      {
+        "name": "Video progress bar",
+        "position": "very bottom, y\u224897-100%",
+        "content": "Dark gray horizontal strip \u2014 video-player UI artifact, not slide content"
+      }
+    ],
+    "hierarchy": "The 5-layer cascade dominates (~65% of canvas); the front red h=1 layer is the visual focal point (largest, most detailed). Title is bold but secondary. Highest-contrast accents: black h=n pills, thick red arrow, gold W boxes, red X\u2082/d\u00d7H\u00b7d/Concatenated Vector text. Dozens of tiny multicolor cell strips give fine texture."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Top pipeline: small embedding strip (~4 cells, green/yellow/pink; 'Y\u2082' in the yellow cell; label '1\u00d71d' right) \u2192 black arrow down \u2192 white bordered box 'Linear Transformation [ T ]' with red 'd\u00d7H\u00b7d' at bottom-right corner \u2192 black arrow down \u2192 long 'Concatenated Vector' strip (red label, '1\u00d7dH' beneath) made of 5 dashed-border segments: Y\u2081\u1d34 (orange-red fill), Y\u2082\u1d34 (dark gray fill), Y\u2083\u1d34 (yellow fill), Y\u2084\u1d34 (green fill), Y\u2085\u1d34 (pale-yellow fill); thin dashed gray lines drop from the segments toward the head layers below",
+      "colors": [
+        "#FFFFFF",
+        "#000000",
+        "#C00000",
+        "#B6D7A8",
+        "#FFE066",
+        "#F4CCCC",
+        "#E06666",
+        "#595959",
+        "#93C47D",
+        "#FFF2CC"
+      ],
+      "position": "top-center band, x\u224819-72%, y\u22486-27%"
+    },
+    {
+      "type": "diagram",
+      "description": "Five overlapping rounded-rectangle head layers cascading front-bottom-left \u2192 back-top-right, each tagged with a black pill (white text): h=1 salmon-red (front, x\u22487-63%, y\u224845-95%), h=2 lavender, h=3 yellow, h=4 green, h=5 peach (back, x\u224825-82%, y\u224831-62%), each rear layer offset ~3-4% up-right. Every rear layer shows a white 'Similarity' pill (green outline), a white 'Weighted SUM' pill (green outline), green-dashed input/output vector strips labeled X\u2081\u2013X\u2084 on its right edge, and (visible on h=2 and h=3 bottom edges) gold 'W\u2096\u1d34' and 'W\u1d65\u1d34' boxes plus a red 'W_q\u1d34' box",
+      "colors": [
+        "#F08A8A",
+        "#C9B8E8",
+        "#F6E96B",
+        "#A8E4A0",
+        "#F8D0A0",
+        "#000000",
+        "#FFFFFF",
+        "#00B050",
+        "#F5C242",
+        "#C00000"
+      ],
+      "position": "main canvas, x\u22487-82%, y\u224830-95%"
+    },
+    {
+      "type": "flowchart",
+      "description": "h=1 (front red layer) detailed mechanism, left\u2192right: (a) four green-dashed input strips stacked vertically labeled X\u2081, X\u2082, X\u2083, X\u2084 (top\u2192bottom), each a row of green/yellow/pink cells; (b) three gold boxes 'W\u2096\u1d34' each emitting a tiny strip labeled K\u2081, K\u2082, K\u2083; (c) tan vertical box 'Dot Product' containing a mini node-link graph (blue dots joined by thin gray lines) with labels K\u2081\u00b7q, K\u2082\u00b7q, K\u2083\u00b7q on its left edge; (d) pink vertical box 'Scaling by \u221ad' with stacked fractions K\u2081\u00b7q/\u221ad, K\u2082\u00b7q/\u221ad, K\u2083\u00b7q/\u221ad just above it; (e) lilac vertical box 'Soft max'; (f) white pill 'Similarity' (green outline) above Dot Product, white pill 'Probabilities' above Soft max, white pill 'Weighted SUM' above the \u03a3 block; (g) white box '\u03a3' (blue sigma) with three red \u2297 symbols below, joined by red lines to labels V\u2081, V\u2082, V\u2083; (h) three gold boxes 'W\u1d65\u1d34' producing V\u2081, V\u2082, V\u2083; (i) four green-dashed output strips X\u2081, X\u2082, X\u2083, X\u2084 at right; (j) bottom: green-dashed 4-cell strip labeled X\u2081, Y\u2082 (magenta highlighted cell), X\u2083, X\u2084, feeding red box 'W_q\u1d34' whose output is a small strip labeled 'q' routed up into Dot Product; (k) thick red arrow at bottom-left pointing at the highlighted Y\u2082 cell",
+      "colors": [
+        "#F08A8A",
+        "#F5C242",
+        "#D2B48C",
+        "#F2B8C6",
+        "#C9A0DC",
+        "#FFFFFF",
+        "#00B050",
+        "#C00000",
+        "#1F4E9C",
+        "#FF69B4",
+        "#B6D7A8",
+        "#FFE066",
+        "#F4CCCC"
+      ],
+      "position": "front layer, x\u22487-63%, y\u224845-95%"
+    },
+    {
+      "type": "arrow",
+      "description": "Thick red curved arrow rising from the h=1 output region (bottom center-right) up the right side toward the Concatenated Vector strip, annotated in blue text '+H* Heads' (indicating the H head outputs are concatenated)",
+      "colors": [
+        "#C00000",
+        "#0070C0"
+      ],
+      "position": "right side, x\u224856-83%, y\u224855-85%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Bottom-right legend in a green dashed rounded rectangle: small vector strip labeled '1\u00d71d' (label above), white square box 'W', '=' sign, second vector strip labeled '1\u00d7d\u00b7d' (label beneath), red caption 'd: Embedding Length' at bottom \u2014 expressing the projection-matrix dimensionality",
+      "colors": [
+        "#00B050",
+        "#FFFFFF",
+        "#000000",
+        "#C00000",
+        "#FFE066"
+      ],
+      "position": "bottom-right, x\u224874-93%, y\u224881-96%"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations \u2014 the slide is 100% vector diagram art. Recurring icon-like motifs: multicolor cell strips (green/yellow/pink rectangles representing embedding vectors), gold rectangles for weight matrices, black pills for head labels, white pills with green outlines for operation labels, red \u2297 operators, and a blue-dot node-link sketch inside the Dot Product box."
+  ],
+  "colors": {
+    "background": "#EAEAEA",
+    "title_text": "#1A1A1A",
+    "body_text": "#1A1A1A",
+    "accents": [
+      "#C00000",
+      "#8B1A1A",
+      "#F5C242",
+      "#00B050",
+      "#F08A8A",
+      "#C9B8E8",
+      "#F6E96B",
+      "#A8E4A0",
+      "#F8D0A0",
+      "#0070C0",
+      "#D2B48C",
+      "#F2B8C6",
+      "#C9A0DC",
+      "#FF69B4"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Calibri-like). Title bold, ~24-28pt, black, with red 'X\u2082' (subscript 2). Box/pill labels bold, ~9-12pt. Red used for emphasis text ('Concatenated Vector', '1\u00d7dH', 'd\u00d7H\u00b7d', 'd: Embedding Length', X\u2082). Heavy use of subscripts (X\u2081\u2026X\u2084, K\u2081\u2026K\u2083, V\u2081\u2026V\u2083, Y\u2081\u2026Y\u2085) and superscript \u1d34 for head index; 'W_q\u1d34' combines subscript q and superscript H. Mixed case throughout; only 'SUM' in 'Weighted SUM' is capitalized. No numbered bullets; no italics.",
+  "animation_state": "Slide appears fully built \u2014 all five heads (h=1\u2026h=5), all pills, strips and labels are visible; no mid-build reveal detected. The dark strip at the very bottom edge is the video player's progress bar, not slide content.",
+  "recreation_brief": "1. Set slide background to light gray #EAEAEA; draw a dark-red (#8B1A1A) rectangle outline inset ~2% as a frame. 2. Top-right: add bold black text 'Multi Head Self Attention of Word X\u2082' (~26pt), coloring 'X' red with red subscript '2'; at far top-right add a yellow (#F2CF63) circle containing black '17'. 3. Top-center: draw a small 4-cell strip (green #B6D7A8, yellow #FFE066, pink #F4CCCC, green) with 'Y\u2082' in the yellow cell; label '1\u00d71d' in black to its right. 4. Below it, draw a white black-bordered box with bold text 'Linear Transformation    [ T ]' and red 'd\u00d7H\u00b7d' at its bottom-right corner; connect strip\u2192box\u2192next element with short black down-arrows. 5. Below that, add red bold label 'Concatenated Vector' with red '1\u00d7dH' under it; to its right draw a long strip of 5 dashed-border segments colored orange-red, dark gray, yellow, green, pale yellow, labeled Y\u2081\u1d34, Y\u2082\u1d34, Y\u2083\u1d34, Y\u2084\u1d34, Y\u2085\u1d34; add thin dashed gray connector lines from the segments down toward the layers. 6. Draw five rounded rectangles cascading from front-bottom-left to back-top-right (each offset ~3-4% up and right): h=1 fill #F08A8A (front), h=2 #C9B8E8, h=3 #F6E96B, h=4 #A8E4A0, h=5 #F8D0A0 (back); on each, place a black pill with white text 'h=1'\u2026'h=5' along its upper-right edge. 7. In the front red h=1 rectangle, build left\u2192right: (a) four green-dashed vector strips labeled X\u2081, X\u2082, X\u2083, X\u2084 stacked vertically; (b) three gold (#F5C242) boxes 'W\u2096\u1d34' with tiny output strips labeled K\u2081, K\u2082, K\u2083; (c) tan (#D2B48C) vertical box 'Dot Product' containing 4-5 blue dots joined by thin gray lines, with labels K\u2081\u00b7q, K\u2082\u00b7q, K\u2083\u00b7q on its left; (d) pink (#F2B8C6) vertical box 'Scaling by \u221ad' with fractions K\u2081\u00b7q/\u221ad, K\u2082\u00b7q/\u221ad, K\u2083\u00b7q/\u221ad stacked just above it; (e) lilac (#C9A0DC) vertical box 'Soft max'; (f) white pills with green outlines: 'Similarity' (above Dot Product), 'Probabilities' (above Soft max), 'Weighted SUM' (above \u03a3 block); (g) white box with blue '\u03a3' and three red \u2297 symbols below it wired by red lines to labels V\u2081, V\u2082, V\u2083; (h) three gold boxes 'W\u1d65\u1d34' feeding V\u2081, V\u2082, V\u2083; (i) four green-dashed output strips X\u2081, X\u2082, X\u2083, X\u2084 at the right edge. 8. Along h=1's bottom: green-dashed 4-cell strip labeled X\u2081, Y\u2082, X\u2083, X\u2084 with the Y\u2082 cell filled magenta (#FF69B4); below it a red box 'W_q\u1d34' whose output is a small strip labeled 'q' with an arrow up into Dot Product; add a thick red arrow from bottom-left pointing at the Y\u2082 cell. 9. In each rear layer (h=2\u2026h=5), add the partially visible repeats: 'Similarity' and 'Weighted SUM' pills near each layer's top edge, green-dashed X\u2081\u2013X\u2084 strips on each right edge, and on h=2/h=3 bottom edges gold 'W\u2096\u1d34', 'W\u1d65\u1d34' boxes plus a red 'W_q\u1d34' box (let front layers occlude the rest). 10. Draw a thick red (#C00000) curved arrow from the h=1 output area up the right side toward the Concatenated Vector strip; place blue (#0070C0) text '+H* Heads' along it. 11. Bottom-right: draw a green dashed rounded rectangle containing a small strip labeled '1\u00d71d', a white square box 'W', an '=' sign, a second strip labeled '1\u00d7d\u00b7d' (label beneath), and red caption 'd: Embedding Length' at the bottom. 12. Use one sans-serif family throughout (Arial/Calibri), bold for title and box labels, ~9-12pt for diagram labels; keep all subscripts/superscripts as in the original.",
+  "_meta": {
+    "frame": "slide_017.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 17,
+      "image": "slide_017.jpg",
+      "kept_frame": "frame_00638.jpg",
+      "start_sec": 632.0,
+      "end_sec": 637.0,
+      "frame_count": 6,
+      "old_slide": 28
+    },
+    "elapsed_s": 525.3
+  }
+}

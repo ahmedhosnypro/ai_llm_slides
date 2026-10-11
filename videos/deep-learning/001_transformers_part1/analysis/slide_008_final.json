@@ -1,0 +1,218 @@
+{
+  "slide_title": "Traditional RNN  Seq2Seq model",
+  "subtitle_or_header": "(Challenges)",
+  "verbatim_text": {
+    "bullets": [
+      "[2] Sequential Processing",
+      "Can NOT do processing in Parallel"
+    ],
+    "labels": [
+      "Decoder (RNN)",
+      "Encoder (RNN)",
+      "softmax",
+      "softmax",
+      "softmax",
+      "o\u2081",
+      "o\u2082",
+      "o\u2083",
+      "s\u2081",
+      "s\u2082",
+      "s\u2083",
+      "h\u2081",
+      "h\u2082",
+      "embedding x\u2081",
+      "embedding x\u2082",
+      "embedding x\u2083",
+      "x\u2081",
+      "x\u2082",
+      "x\u2083",
+      "Context Vector (of Whole Inputs)",
+      "[2] Sequential Processing",
+      "Can NOT do processing in Parallel",
+      "Wait\nTill Processing X\u2081",
+      "Wait\nTill Processing X\u2082",
+      "8"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Entire content framed by a thin red rectangle outline. Two-line centered title at top (red line 1, blue line 2). Yellow slide-number circle in the top-right corner. Right half: red italic label 'Decoder (RNN)' above a large yellow rounded box containing the unrolled decoder RNN. Lower-left: large peach rounded box containing the unrolled encoder RNN with red italic label 'Encoder (RNN)' beneath it. Middle-left: a light-blue callout box with two smaller light-blue 'Wait...' boxes below it, connected by thin blue leader lines down into the encoder. Bottom-right: pink 'Context Vector (of Whole Inputs)' box linked by a thin red line to the encoder's output dot, with a red curved arrow carrying the context vector up into the decoder's first cell.",
+    "regions": [
+      {
+        "name": "Red content frame",
+        "position": "Full-slide border; inset ~4% from left/right edges, top edge at ~8% vertical, extending to the bottom edge",
+        "content": "Thin red #C00000 rectangle outline (no fill) framing all other content."
+      },
+      {
+        "name": "Title block",
+        "position": "top center, ~10%\u201321% vertical, centered horizontally",
+        "content": "Line 1 'Traditional RNN  Seq2Seq model' in bold red; line 2 '(Challenges)' in bold blue, directly below."
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, ~91%\u201394% horizontal, ~11%\u201317% vertical",
+        "content": "Yellow circle with olive outline containing the number 8."
+      },
+      {
+        "name": "Decoder label",
+        "position": "top right, ~71%\u201386% horizontal, ~16%\u201320% vertical",
+        "content": "Red bold italic text 'Decoder (RNN)' just above the yellow decoder box."
+      },
+      {
+        "name": "Decoder diagram",
+        "position": "upper right, ~50%\u201394% horizontal, ~21%\u201353% vertical",
+        "content": "Yellow rounded rectangle with three columns of green output bars, orange hidden-state bars, softmax arrows, o/s labels, recurrent loop arrows, and a red input dot on the first column's orange bar."
+      },
+      {
+        "name": "Sequential-processing callout",
+        "position": "left middle, ~5%\u201334% horizontal, ~32%\u201342% vertical",
+        "content": "Light-blue box with two lines of bold blue text; blue leader line exits its right edge toward the encoder."
+      },
+      {
+        "name": "Wait boxes",
+        "position": "left middle-lower, ~6%\u201336% horizontal, ~47%\u201354% vertical",
+        "content": "Two small light-blue boxes 'Wait / Till Processing X\u2081' and 'Wait / Till Processing X\u2082' with blue leader lines down to the h\u2081 and h\u2082 arrows."
+      },
+      {
+        "name": "Encoder diagram",
+        "position": "bottom left, ~5%\u201351% horizontal, ~56%\u201392% vertical",
+        "content": "Peach rounded rectangle with pink hidden-state bars (top row), tan input bars (bottom row), 'embedding x\u2081/x\u2082/x\u2083' labels with arrows, h\u2081/h\u2082 arrows, italic x\u2081/x\u2082/x\u2083 input labels at the bottom, red output dot."
+      },
+      {
+        "name": "Encoder label",
+        "position": "bottom center-left, ~23%\u201339% horizontal, ~94%\u201398% vertical",
+        "content": "Red bold italic text 'Encoder (RNN)' below the peach box."
+      },
+      {
+        "name": "Context vector box + connectors",
+        "position": "bottom right, ~58%\u201388% horizontal, ~75%\u201381% vertical; connector lines cross the slide middle",
+        "content": "Pink box with bold red text; thin red line to encoder output dot; red curved arrow from encoder dot up to decoder input dot."
+      }
+    ],
+    "hierarchy": "Title is the largest text (red over blue). The two large colored containers (yellow decoder, peach encoder) are the biggest visual masses and dominate the composition. Red italic region labels come next, then blue callout boxes, then small olive italic math labels; thin red/blue connector lines are the least prominent."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Unrolled DECODER RNN inside a yellow rounded rectangle, three columns left-to-right. Each column bottom-to-top: orange/tan cell-bar split into 3 segments (hidden state); upward olive arrow with italic olive 'softmax' label to its left; light-green cell-bar split into 3 segments (output distribution); upward olive arrow to italic olive output label o\u2081 / o\u2082 / o\u2083. Italic olive labels s\u2081, s\u2082, s\u2083 sit immediately right of the 1st, 2nd, 3rd orange bars. Dark-olive curved recurrent arrows loop from beneath orange bar 1 into the bottom of orange bar 2, and from beneath bar 2 into the bottom of bar 3. A red dot marks the left edge of orange bar 1 (context-vector input) receiving a red curved arrow from below-left.",
+      "colors": [
+        "#EEEE00",
+        "#99FF99",
+        "#FFCC66",
+        "#808000",
+        "#FF0000"
+      ],
+      "position": "Upper right; ~50%\u201394% horizontal, ~21%\u201353% vertical."
+    },
+    {
+      "type": "diagram",
+      "description": "Unrolled ENCODER RNN inside a peach rounded rectangle. Top row: three pink/salmon cell-bars (each split into 3\u20134 segments) = hidden states; a horizontal olive arrow enters bar 1 from the left; olive right-arrows connect bar 1\u21922 and bar 2\u21923, labeled h\u2081 and h\u2082 (italic, above arrows); a red dot marks the right end of bar 3 (final hidden state / context vector). Middle band: italic olive labels 'embedding x\u2081', 'embedding x\u2082', 'embedding x\u2083' with upward olive arrows from the bottom row into the pink bars. Bottom row: three tan cell-bars (each split into 3 segments) with upward olive arrows rising from italic olive input labels x\u2081, x\u2082, x\u2083 at the very bottom.",
+      "colors": [
+        "#FFCC99",
+        "#FFB0B0",
+        "#FFCC80",
+        "#808000",
+        "#FF0000"
+      ],
+      "position": "Lower left; ~5%\u201351% horizontal, ~56%\u201392% vertical."
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pink rectangle with bold red text 'Context Vector (of Whole Inputs)'. A thin straight red line runs from the encoder's red output dot down-right to this box; a separate red curved arrow runs from just below that dot up to the red dot at the decoder's first orange cell \u2014 depicting the whole-input context vector being handed from encoder to decoder.",
+      "colors": [
+        "#FFC0CE",
+        "#CC0000",
+        "#FF0000"
+      ],
+      "position": "Bottom right; ~58%\u201388% horizontal, ~75%\u201381% vertical (connectors span the slide middle)."
+    },
+    {
+      "type": "highlight-box",
+      "description": "Three light-blue rectangles with bold blue text: (a) large callout, line 1 '[2] Sequential Processing' (underlined), line 2 'Can NOT do processing in Parallel'; (b) small box 'Wait / Till Processing X\u2081'; (c) small box 'Wait / Till Processing X\u2082'. Thin blue leader lines: from (a)'s right edge down-right to the encoder's top-right near the red output dot; from (b) down to the h\u2081 arrow; from (c) down to the h\u2082 arrow \u2014 indicating each step must wait for the previous one.",
+      "colors": [
+        "#CFE2FF",
+        "#0000CC"
+      ],
+      "position": "Left middle; (a) ~5%\u201334% horizontal, ~32%\u201342% vertical; (b) ~6%\u201319%, ~48%\u201354%; (c) ~22%\u201336%, ~47%\u201354%."
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: small yellow circle with dark-olive outline containing '8' in dark text.",
+      "colors": [
+        "#FFFF66",
+        "#808000",
+        "#333300"
+      ],
+      "position": "Top-right corner, ~91%\u201394% horizontal, ~11%\u201317% vertical."
+    },
+    {
+      "type": "other",
+      "description": "Red rectangle outline framing the entire slide content (no fill), inset ~4% from left/right, starting ~8% from the top and running to the bottom edge.",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "Full-slide border."
+    }
+  ],
+  "imagery": [
+    "Small scissors-shaped cursor icon (thin black/gray outline) touching the right edge of the '[2] Sequential Processing' callout box \u2014 almost certainly a screen-recording mouse/cursor overlay from the video, not actual slide content."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#C00000 (line 1 'Traditional RNN  Seq2Seq model'); #0000CC (line 2 '(Challenges)')",
+    "body_text": "#0000CC (blue callout boxes); #808000 (olive math/diagram labels)",
+    "accents": [
+      "#C00000 (frame outline, 'Decoder (RNN)'/'Encoder (RNN)' region labels)",
+      "#CC0000 (context-vector box text)",
+      "#EEEE00 (decoder container)",
+      "#FFCC99 (encoder container)",
+      "#99FF99 (decoder output cells)",
+      "#FFCC66 (decoder hidden cells)",
+      "#FFB0B0 (encoder hidden cells)",
+      "#FFCC80 (encoder input cells)",
+      "#FFC0CE (context-vector box)",
+      "#FF0000 (context-vector dots/arrows)",
+      "#CFE2FF (callout boxes)",
+      "#FFFF66 (slide-number circle)"
+    ]
+  },
+  "typography_notes": "Sans-serif (Arial-like) bold throughout for title and box texts. Title ~24pt, two centered lines (red then blue). Region labels 'Decoder (RNN)' / 'Encoder (RNN)' bold italic red ~18pt. Callout text bold blue ~13\u201314pt, with '[2] Sequential Processing' underlined. All math symbols (o, s, h, x, softmax, embedding) are italic (serif-style) in olive #808000 with numeric subscripts. 'Context Vector (of Whole Inputs)' is bold red #CC0000 on pink #FFC0CE. No bulleted-list formatting appears on this slide \u2014 the two body statements ('[2] Sequential Processing', 'Can NOT do processing in Parallel') render as centered lines inside the light-blue callout box, and the 'Wait' boxes use two-line centered text.",
+  "animation_state": "Slide appears fully revealed (no partial build visible). The small scissors-shaped glyph at the callout box edge is a recording cursor overlay, not an animation artifact.",
+  "recreation_brief": "1) Canvas: 16:9 widescreen slide (aspect ratio assumed \u2014 see validation.uncertain_items), white #FFFFFF background, sans-serif Arial-like font throughout. 2) Red content frame: #C00000 rectangle outline only (no fill), thin ~2.5pt stroke, inset ~4% from the left and right edges, top edge at ~8% of slide height, bottom edge at the slide bottom. 3) Title block \u2014 top center, ~10%\u201321% vertical, horizontally centered, two lines: line 1 'Traditional RNN  Seq2Seq model' bold #C00000 ~24pt; line 2 '(Challenges)' bold #0000CC ~24pt. 4) Slide-number badge \u2014 top right, ~91%\u201394% horizontal, ~11%\u201317% vertical: yellow #FFFF66 circle with olive #808000 outline, centered numeral '8' in dark #333300. 5) Decoder label \u2014 ~71%\u201386% horizontal, ~16%\u201320% vertical: bold italic #C00000 text 'Decoder (RNN)' ~18pt. 6) Decoder container \u2014 yellow #EEEE00 rounded rectangle spanning ~50%\u201394% horizontal, ~21%\u201353% vertical. 7) Decoder columns \u2014 inside the container, build 3 identical columns (centers ~x 57%, 72%, 86%), each from bottom to top: orange #FFCC66 horizontal cell-bar split into 3 segments; upward olive #808000 arrow with italic olive 'softmax' label to its left; light-green #99FF99 horizontal cell-bar split into 3 segments; upward olive #808000 arrow ending at the italic olive output label o\u2081 / o\u2082 / o\u2083 for columns 1 / 2 / 3. 8) Decoder annotations \u2014 italic olive s\u2081, s\u2082, s\u2083 placed immediately right of orange bars 1, 2, 3; dark-olive curved recurrent arrows from beneath orange bar 1 into the bottom of bar 2 and from beneath bar 2 into the bottom of bar 3; small red #FF0000 dot on the left edge of orange bar 1 (context-vector input). 9) Encoder label \u2014 ~23%\u201339% horizontal, ~94%\u201398% vertical: bold italic #C00000 text 'Encoder (RNN)' ~18pt. 10) Encoder container \u2014 peach #FFCC99 rounded rectangle spanning ~5%\u201351% horizontal, ~56%\u201392% vertical. 11) Encoder top row \u2014 at y ~61%: 3 pink #FFB0B0 horizontal cell-bars (3\u20134 segments each), centers ~x 16%, 30%, 43%; a horizontal olive #808000 arrow entering bar 1 from the left; olive right-arrows from bar 1 to bar 2 and from bar 2 to bar 3, labeled above with italic olive h\u2081 and h\u2082; small red #FF0000 dot at the right end of bar 3 (final hidden state / context vector). 12) Encoder middle band \u2014 italic olive labels 'embedding x\u2081', 'embedding x\u2082', 'embedding x\u2083', each with an upward olive arrow into the pink bar above it. 13) Encoder bottom row \u2014 at y ~78%: 3 tan #FFCC80 horizontal cell-bars (3 segments each), each fed by an upward olive arrow from an italic olive input label x\u2081, x\u2082, x\u2083 placed at y ~88%. 14) Sequential-processing callout \u2014 ~5%\u201334% horizontal, ~32%\u201342% vertical: light-blue #CFE2FF rectangle with 2 centered lines of bold #0000CC ~13\u201314pt text \u2014 line 1 '[2] Sequential Processing' (underlined), line 2 'Can NOT do processing in Parallel'; thin blue leader line from the box's right edge down-right to the encoder's top-right near the red output dot. 15) Wait box 1 \u2014 ~6%\u201319% horizontal, ~48%\u201354% vertical: light-blue #CFE2FF rectangle with 2-line centered bold #0000CC text ('Wait' on line 1, 'Till Processing X\u2081' on line 2); thin blue leader line from the box down to the h\u2081 arrow. 16) Wait box 2 \u2014 ~22%\u201336% horizontal, ~47%\u201354% vertical: light-blue #CFE2FF rectangle with 2-line centered bold #0000CC text ('Wait' on line 1, 'Till Processing X\u2082' on line 2); thin blue leader line from the box down to the h\u2082 arrow. 17) Context-vector box \u2014 ~58%\u201388% horizontal, ~75%\u201381% vertical: pink #FFC0CE rectangle with bold #CC0000 text 'Context Vector (of Whole Inputs)'; thin straight red #FF0000 line from the encoder's red output dot down-right to this box; separate red #FF0000 curved arrow from just below the encoder dot sweeping up to the red dot at the decoder's first orange cell. 18) Exclusion: do NOT draw the scissors-shaped cursor glyph touching the callout box's right edge \u2014 it is a video-recording overlay, not slide content.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "verbatim_text.bullets was empty; filled with the slide's only sentence-level body text, '[2] Sequential Processing' and 'Can NOT do processing in Parallel', reconstructed verbatim from labels/visual_elements. These strings render inside the light-blue callout box (brief step 14), not as a separate bulleted list.",
+      "Added the missing layout.regions entry 'Red content frame' so that regions cover the full-slide red #C00000 outline declared in visual_elements.",
+      "Expanded region contents for full element coverage: 'Decoder diagram' region now explicitly names the red input dot on the first orange bar; 'Encoder diagram' region now explicitly names the x\u2081/x\u2082/x\u2083 input labels (previously only implied).",
+      "Resolved color conflict: the context-vector text was listed as #CC0000 in its visual_element but as #C00000 in colors.accents; standardized to #CC0000 (element-level spec) and split colors.accents into '#C00000 (frame outline, region labels)' and '#CC0000 (context-vector box text)'.",
+      "Rewrote recreation_brief from a 12-step paragraph-style list into an 18-step ordered checklist; each step places exactly one element with exact text, hex color, percent-bounds position, and shape type; added explicit font guidance and the callout font size (~13\u201314pt).",
+      "Clarified typography_notes to state that no bulleted-list formatting exists on the slide and that the two body statements live inside the callout box, removing the apparent contradiction with the populated bullets field; also pinned the context-vector text color to #CC0000."
+    ],
+    "uncertain_items": [
+      "Slide aspect ratio is not stated anywhere in the source JSON; 16:9 is an assumption used in the brief.",
+      "Encoder pink cell-bars: source gives a 3\u20134 segment range per bar; the exact count per bar is unverifiable without the image.",
+      "Context-vector text red was ambiguously given as both #CC0000 and #C00000 (near-identical dark reds); harmonized to #CC0000.",
+      "Scissors-shaped glyph at the callout box edge is assumed to be a video cursor overlay (per imagery/animation_state) and is excluded from recreation; if it were actual slide content it would sit at the right edge of the '[2] Sequential Processing' box.",
+      "Exact center coordinates for the 3 decoder columns (~x 57%/72%/86%) and 3 encoder bars (~x 16%/30%/43%) are placement estimates derived from the stated bounding boxes, not source-verified coordinates.",
+      "No items were explicitly marked [?] in the source JSON."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_008.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 8,
+      "image": "slide_008.jpg",
+      "kept_frame": "frame_00502.jpg",
+      "start_sec": 456.0,
+      "end_sec": 501.0,
+      "frame_count": 88,
+      "note": "old group 14 split by founder curation; this is the group's final state (state B)"
+    },
+    "elapsed_s": 233.3,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 821.9
+  }
+}

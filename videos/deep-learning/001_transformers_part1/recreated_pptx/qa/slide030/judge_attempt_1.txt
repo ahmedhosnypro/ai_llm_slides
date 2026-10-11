@@ -1,0 +1,42 @@
+# Element-by-Element Fidelity Check â Slide 030
+
+## Ground-rule screening (settled first, not raised as discrepancies)
+- Red outer frame, #E8E8E8 bg, yellow "30" oval badge, title box position â house chrome, ignored.
+- Image 2 is a real content-bearing lecture frame, so rule (b) does not apply; content comparison proceeds.
+- No cursor artifacts in IMG2 to exempt.
+- No equations on this slide â directive (e) not invoked.
+
+## Content comparison
+
+| Element | Original (IMG2) | Recreation (IMG1) | Verdict |
+|---|---|---|---|
+| Title line 1 "Self Attention Mechanism (Input Word plays Different Roles)" w/ yellow highlight | Present | Present, verbatim, highlight spans same phrase | Match |
+| Title line 2 "(Query using Xâ All Keys in Dictionary and retrieve Corresponding Values" | Present (no closing paren in original) | Present, verbatim incl. missing closing paren, Xâ subscript | Match |
+| KEYs / Values tan pills, left/right | Present | Present, same text, same positions | Match |
+| Green dashed embedding boxes (4 rows) w/ Xââ¦Xâ, yellow ellipse on row 3 | Present both sides | Present both sides, same cell coloring | Match |
+| K / V red circles | Present | Present, same placement | Match |
+| Dot Product gray panel, label, blue dots + red triangle arrows | Present | Present, same 4 dots / 4 triangles | Match |
+| "Matched KEYS with Relevance Percentage" cyan dashed box (magenta italic) | Present | Present, verbatim | Match |
+| "Retrieve VALUES Weighted by their Relevance" cyan dashed box | Present | Present, verbatim | Match |
+| Y output box (green dashed, cells, green arrow) | Present | Present | Match |
+| Î£ box + 4 vertical red arrows up into it | Present | Present | Match |
+| Soft max vertical pill | Present | Present, verbatim rotated text | Match |
+| Wââ, Wââ, Wââ, Wââ blue labels w/ subscripts | Present | Present, correct order topâbottom | Match |
+| "Xâ is used as / Key", "â¦/ Value", "â¦/ Query" white red-border callouts, two-line layout | Present | Present, verbatim, same 2-line wrap | Match |
+| Query pill ("ALL Keys with Xâ") + Q circle + dashed red curved arrows | Present | Present | Match |
+| Bottom embedding strip w/ dotted Xâ rectangle, yellow ellipse, dark-red arrow | Present | Present | Match |
+| "Should we use SAME Xâ Vector for the three Roles ?" blue italic box | Present | Present, verbatim, same 2-line wrap | Match |
+
+## Discrepancy list
+
+1. **MINOR â Multiplier glyph style.** Original shows red circles containing an asterisk/star (â³-like); recreation shows red circles with a bold Ã (â style). Same count (4), same positions on the same line junctions. Confidence: high that they differ cosmetically; low functional impact.
+2. **MINOR â Missing leader lines from callout boxes.** The original shows thin red leader/pointer lines from "Xâ is used as Key" toward the keys Xâ, from "Xâ is used as Value" toward the values Xâ, and from "Xâ is used as Query" toward the dotted Xâ rectangle; the recreation omits these leader strokes (the callouts are still positionally adjacent to the correct rows). Confidence: medium (lines are faint at 150dpi in IMG2).
+3. **MINOR â Green arrow under Y box.** Recreation's arrow is somewhat larger/blockier than the original's small arrow. Confidence: high, cosmetic only.
+4. **MINOR â Î£ box fill.** Original reads as near-white with blue Î£; recreation uses a pale-cyan fill. Within color-tolerance, cosmetic. Confidence: medium.
+
+No BLOCKER or MAJOR defects found: all text is verbatim, all regions present, no missing rows/elements, frame containment holds (nothing touches or crosses the red house frame or the peach panel edges), vertical centering inside callouts and pills matches, title line spacing matches, and W-label ordering/arrow topology matches the original.
+
+## Visual-quality check of the recreation
+- No text overflow, clipping, or collisions observed; "Key"/"Value"/"Query" second lines centered under their first lines; subscripts correctly dropped below baseline; bottom strip and blue question box fully inside the peach panel.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

@@ -1,0 +1,266 @@
+{
+  "slide_title": "Self Attention Mechanism (Adding Scaling)",
+  "subtitle_or_header": "(Self Attention of word X\u2082 w.r.t All words in Sentence ( X\u2081, X\u2082, X\u2083, X\u2084 )",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "38 (slide number, yellow circle, top-right)",
+      "Similarity (pale-yellow pill above Dot Product box)",
+      "Dot Product (title inside tan box)",
+      "K.q (red, numerator of fraction)",
+      "\u221ad (red, denominator of fraction)",
+      "Scaling by \u221ad (rotated vertical text, red, inside yellow box)",
+      "Probabilities (pale-yellow pill above Softmax box)",
+      "Soft max (rotated vertical text, black, inside plum box)",
+      "Weighted SUM (pale-yellow pill above \u03a3 box)",
+      "\u03a3 (large blue letter in light-blue box)",
+      "K\u2084 (top)",
+      "K\u2083",
+      "K\u2082",
+      "K\u2081 (bottom)",
+      "V\u2084 (top)",
+      "V\u2083",
+      "V\u2082",
+      "V\u2081 (bottom)",
+      "W_k^(1) (4 identical white red-bordered boxes, left column)",
+      "W_v^(1) (4 identical white blue-bordered boxes, right column)",
+      "q\u2082 (striped query vector bar)",
+      "W_q^(1) (white red-bordered box below Dot Product box)",
+      "X\u2081, X\u2082, X\u2083, X\u2084 (left input-embedding stack, four dashed-green containers; per-block top\u2192bottom order [?] hard to read at this resolution \u2014 K bars are labeled K\u2084\u2192K\u2081 top\u2192bottom, so stack likely aligns X\u2084\u2192X\u2081 top\u2192bottom)",
+      "X\u2081, X\u2082, X\u2083, X\u2084 (right input-embedding stack, four dashed-green containers; same [?] order caveat, aligns with V\u2084\u2192V\u2081 top\u2192bottom)",
+      "X\u2081, X\u2082, X\u2083, X\u2084 (bottom sentence row, left\u2192right; X\u2082 highlighted magenta)",
+      "Y\u2082 (green label on output striped bar)",
+      "MatMul (top box of inset panel)",
+      "SoftMax (inset panel)",
+      "Mask (opt.) (inset panel)",
+      "Scale (inset panel)",
+      "MatMul (bottom box of inset panel)",
+      "Q (inset panel, bottom-left)",
+      "K (inset panel, bottom-left)",
+      "V (inset panel, bottom-right)",
+      "1\u00d7d (red label on striped bar, bottom-right box)",
+      "W (bold, yellow box, bottom-right box)",
+      "= (bottom-right box)",
+      "d\u00d71 (red label on striped bar, bottom-right box)",
+      "d: Embedding Length (blue bold caption, bottom-right box)"
+    ],
+    "equations": [
+      "K.q / \u221ad  (rendered as a red stacked fraction: K.q over \u221ad, i.e. \\frac{K.q}{\\sqrt{d}})",
+      "Scaling by \u221ad  (vertical text, \\sqrt{d})",
+      "1\u00d7d \u00b7 W = d\u00d71  (striped row-vector bar labeled 1\u00d7d, multiplied by yellow box W, equals striped column-vector bar labeled d\u00d71; caption: d: Embedding Length)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Bold centered title + subtitle at top on white background; yellow slide-number badge '38' at top-right; below, one large light-peach rounded-rectangle canvas (~4\u201396% width, ~20\u201397% height) contains a single wide left-to-right flowchart: left embedding stack \u2192 W_k^(1) boxes \u2192 K bars \u2192 tan 'Dot Product' box ('Similarity' pill above) \u2192 red fraction K.q/\u221ad \u2192 yellow vertical 'Scaling by \u221ad' box \u2192 plum vertical 'Soft max' box ('Probabilities' pill above) \u2192 four red \u2297 multiply nodes fed from the right by V bars / W_v^(1) boxes / right embedding stack \u2192 light-blue \u03a3 box ('Weighted SUM' pill above) \u2192 thick green arrow up to Y\u2082 output bar; a query path runs from highlighted X\u2082 in a bottom sentence row up through W_q^(1) and q\u2082 into the Dot Product box; bottom-right light-green callout shows '1\u00d7d W = d\u00d71, d: Embedding Length'; far-right white inset panel with green border shows the canonical MatMul/SoftMax/Mask (opt.)/Scale/MatMul block diagram with Q, K, V inputs.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, x 15\u201385%, y 6\u201313%",
+        "content": "'Self Attention Mechanism (Adding Scaling)' \u2014 black bold with red '(Adding Scaling)'"
+      },
+      {
+        "name": "Subtitle",
+        "position": "top center, x 12\u201388%, y 13\u201319%",
+        "content": "'(Self Attention of word X\u2082 w.r.t All words in Sentence ( X\u2081, X\u2082, X\u2083, X\u2084 )' \u2014 black bold, token symbols red, X\u2082 enlarged"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, x 91\u201396%, y 10\u201316%",
+        "content": "yellow circle with bold black '38'"
+      },
+      {
+        "name": "Main canvas",
+        "position": "full width below title, x 4\u201396%, y 20\u201397%",
+        "content": "light-peach rounded rectangle holding the entire self-attention flowchart"
+      },
+      {
+        "name": "Left input stack + key path",
+        "position": "left, x 6\u201326%, y 40\u201373%",
+        "content": "four dashed-green embedding containers (X tokens), four red-bordered W_k^(1) boxes, striped bars labeled K\u2084\u2026K\u2081 top\u2192bottom, thin red arrows into the Dot Product box"
+      },
+      {
+        "name": "Dot Product stage",
+        "position": "center-left, x 26\u201335%, y 28\u201386%",
+        "content": "'Similarity' pill on top; tan 'Dot Product' box containing 4 blue dots joined by red arrowed lines; below the box: q\u2082 striped bar and W_q^(1) box fed by a thick red arrow rising from bottom-row X\u2082"
+      },
+      {
+        "name": "Scaling stage",
+        "position": "center, x 36\u201345%, y 28\u201375%",
+        "content": "red stacked fraction K.q/\u221ad and bright-yellow vertical rectangle with rotated red text 'Scaling by \u221ad'"
+      },
+      {
+        "name": "Softmax stage",
+        "position": "center, x 45\u201354%, y 28\u201373%",
+        "content": "'Probabilities' pill and plum vertical rectangle with rotated black text 'Soft max'"
+      },
+      {
+        "name": "Weighted sum & output",
+        "position": "center-right, x 53\u201371%, y 21\u201371%",
+        "content": "'Weighted SUM' pill, light-blue \u03a3 box, four red \u2297 nodes stacked vertically, red arrows \u2297\u2192\u03a3, thick green arrow \u03a3\u2192Y\u2082 output bar"
+      },
+      {
+        "name": "Right value path",
+        "position": "right, x 66\u201387%, y 40\u201373%",
+        "content": "striped bars labeled V\u2084\u2026V\u2081 top\u2192bottom, four blue-bordered W_v^(1) boxes, right embedding stack of four dashed-green containers"
+      },
+      {
+        "name": "Inset panel",
+        "position": "far right, x 83\u201395%, y 20\u201357%",
+        "content": "white green-bordered panel: vertical stack MatMul / SoftMax / Mask (opt.) / Scale / MatMul with Q, K, V inputs and upward black arrows"
+      },
+      {
+        "name": "Bottom sentence row",
+        "position": "bottom center-left, x 18\u201351%, y 86\u201395%",
+        "content": "dashed-green rounded container with four embedding bars X\u2081\u2013X\u2084; X\u2082 highlighted magenta; fat red block arrow starting at X\u2082 rising straight up toward W_q^(1); dashed green connectors to left/right stacks"
+      },
+      {
+        "name": "Dimension callout",
+        "position": "bottom right, x 76\u201393%, y 84\u201397%",
+        "content": "light-green rounded box: striped bar '1\u00d7d', yellow 'W' box, '=', striped bar 'd\u00d71', blue caption 'd: Embedding Length'"
+      }
+    ],
+    "hierarchy": "The peach canvas + flowchart dominates (~90% of slide area). Visual weight order: (1) black bold title/subtitle with red highlights; (2) the two saturated vertical stage boxes \u2014 yellow 'Scaling by \u221ad' and plum 'Soft max' \u2014 are the strongest color blocks; (3) red arrows/labels trace the computation left\u2192right and guide the eye; (4) pale-yellow pills name the three stages; (5) green elements (dashed containers, Y\u2082, green arrow) mark embeddings/output; (6) inset panel, bottom sentence row and dimension callout are secondary with smaller text."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "Main scaled self-attention dataflow diagram for token X\u2082. Nodes and connections: (a) LEFT INPUT STACK: four dashed-green rounded containers (x\u22486\u201314%, y\u224840\u201373%), each holding a 3-segment bar (yellow|pink|purple) with token label X\u2081/X\u2082/X\u2083/X\u2084 on the pink segment; (b) each container connects right to a white red-bordered box 'W_k^(1)' (x\u224815\u201321%), then to a small striped vector bar labeled K\u2084, K\u2083, K\u2082, K\u2081 (top\u2192bottom, x\u224821\u201326%); thin red arrows run from each K bar into the left edge of the Dot Product box; (c) DOT PRODUCT box: tan/brown vertical rectangle (x\u224826\u201335%, y\u224833\u201374%) titled 'Dot Product' (bold dark-maroon, top-left inside); inside are 4 blue dots arranged on a diagonal (bottom-left \u2192 top-right) connected sequentially by thin red lines with arrowheads; each incoming K arrow terminates at one dot; (d) QUERY PATH: from highlighted X\u2082 in the bottom sentence row a thick red arrow rises into white red-bordered box 'W_q^(1)' (x\u224828\u201334%, y\u224878\u201383%), continues to striped bar 'q\u2082' (y\u224874\u201377%), then into the bottom edge of the Dot Product box ending at the lowest blue dot; (e) red stacked fraction 'K.q/\u221ad' (x\u224836\u201340%, y\u224832\u201340%); (f) SCALING: bright-yellow vertical rectangle, orange border (x\u224840\u201345%, y\u224833\u201375%), rotated red bold text 'Scaling by \u221ad'; (g) SOFTMAX: plum vertical rectangle (x\u224847\u201352%, y\u224834\u201373%), rotated black text 'Soft max'; (h) four red \u2297 nodes (red circle outline + asterisk, \u22480.25\" dia.) at x\u224855%, y\u224842/51/60/69%; red arrows from Softmax right edge to each \u2297; (i) \u03a3 box: light-blue rectangle (x\u224853\u201367%, y\u224833\u201338%) with large blue '\u03a3'; red arrows from each \u2297 up into its bottom edge; (j) OUTPUT: thick green block arrow from \u03a3 top edge up to a striped bar with green dashed border labeled 'Y\u2082' in green (x\u224856\u201367%, y\u224821\u201327%); (k) RIGHT VALUE PATH (mirror): four dashed-green containers with X\u2081\u2013X\u2084 bars (x\u224879\u201383%), four white blue-bordered boxes 'W_v^(1)' (x\u224872\u201378%), striped bars labeled V\u2084, V\u2083, V\u2082, V\u2081 top\u2192bottom (x\u224866\u201371%), thin red arrows from each V bar leftward into its matching \u2297 node; (l) BOTTOM SENTENCE ROW: dashed-green rounded container (x\u224818\u201351%, y\u224886\u201395%) holding four embedding bars X\u2081, X\u2082, X\u2083, X\u2084 left\u2192right, X\u2082 solid magenta/highlighted; fat red block arrow rises from X\u2082 straight up toward W_q^(1); thin dashed green connector lines run from this row up to the left and right embedding stacks (same embeddings reused).",
+      "colors": [
+        "#FCE6CC",
+        "#C8A165",
+        "#FFFF00",
+        "#DDA0DD",
+        "#ADD8E6",
+        "#FF0000",
+        "#00B050",
+        "#00A050",
+        "#FFFF99",
+        "#FF99CC",
+        "#C9A0DC",
+        "#0000CC",
+        "#000000"
+      ],
+      "position": "center of slide, spanning the peach canvas x 4\u201396%, y 20\u201397%"
+    },
+    {
+      "type": "diagram",
+      "description": "Inset panel (white fill, ~2pt solid green border, x\u224883\u201395%, y\u224820\u201357%) showing canonical scaled dot-product attention. Rounded boxes stacked vertically top\u2192bottom: 'MatMul' (lavender), 'SoftMax' (light green), 'Mask (opt.)' (lavender), 'Scale' (pale yellow), 'MatMul' (lavender); black ~10pt text. Thin black arrows point upward: labels Q and K at bottom-left \u2192 bottom MatMul \u2192 Scale \u2192 Mask (opt.) \u2192 SoftMax \u2192 top MatMul; label V at bottom-right \u2192 long arrow up the right side into the top MatMul.",
+      "colors": [
+        "#FFFFFF",
+        "#00A050",
+        "#B39DDB",
+        "#C5E1A5",
+        "#D1C4E9",
+        "#FFF59D",
+        "#000000"
+      ],
+      "position": "far right, upper area of the peach canvas"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Three pale-yellow rounded pill labels with thin outlines and black ~11pt text, aligned in a row at y\u224828\u201332%: 'Similarity' (above Dot Product box, x\u224827\u201335%), 'Probabilities' (above Softmax box, x\u224845\u201354%), 'Weighted SUM' (above \u03a3 box, x\u224861\u201371%).",
+      "colors": [
+        "#FFFFCC",
+        "#000000"
+      ],
+      "position": "horizontal band above the three main pipeline stages"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Bottom-right dimension callout: light-green rounded rectangle (x\u224876\u201393%, y\u224884\u201397%) containing a striped vector bar annotated '1\u00d7d' in red (label at its top-right), a yellow square box with bold black 'W', a black '=' sign, a second striped bar annotated 'd\u00d71' in red (label below), and a bold blue caption underneath: 'd: Embedding Length'.",
+      "colors": [
+        "#D6F0D6",
+        "#FFFF00",
+        "#FF0000",
+        "#0000CC",
+        "#000000"
+      ],
+      "position": "bottom-right corner of the canvas"
+    },
+    {
+      "type": "arrow",
+      "description": "Two thick emphasis arrows: (1) fat red block arrow starting at highlighted X\u2082 in the bottom sentence row and rising straight up into the W_q^(1) box (query path); (2) thick green block arrow from the \u03a3 box up to the Y\u2082 output bar. All other connectors in the diagram are thin red or thin black arrows.",
+      "colors": [
+        "#FF0000",
+        "#00B050"
+      ],
+      "position": "bottom-center (red) and upper-center (green)"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: yellow circle with thin black outline containing bold black '38'.",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top-right, x\u224891\u201396%, y\u224810\u201316%"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations anywhere on the slide; everything is vector shapes. The only pictorial elements are: (1) small striped 'vector' bars \u2014 narrow rectangles filled with fine vertical stripes [?pale green / gray / white] \u2014 used to denote vectors K\u2081\u2013K\u2084, V\u2081\u2013V\u2084, q\u2082, Y\u2082, and the 1\u00d7d / d\u00d71 bars; (2) 3-segment colored bars (yellow #FFFF99 | pink #FF99CC | purple #C9A0DC) denoting token embeddings X\u2081\u2013X\u2084, repeated in the left stack, right stack and bottom sentence row; (3) a mouse cursor captured near the lowest W_v^(1) box (video artifact, not slide content)."
+  ],
+  "colors": {
+    "background": "#FFFFFF outer slide; main content area is a light-peach (#FCE6CC) rounded rectangle",
+    "title_text": "#000000, with #FF0000 emphasis on '(Adding Scaling)' and on token symbols in the subtitle",
+    "body_text": "#000000",
+    "accents": [
+      "#FF0000",
+      "#FFFF00",
+      "#FFC000",
+      "#DDA0DD",
+      "#ADD8E6",
+      "#00B050",
+      "#00A050",
+      "#C8A165",
+      "#FFFFCC",
+      "#FFFF99",
+      "#FF99CC",
+      "#C9A0DC",
+      "#0000CC",
+      "#D6F0D6"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Calibri-like). Title: bold, ~28pt, centered, black with a red span '(Adding Scaling)'. Subtitle: bold, ~20pt, centered; token symbols X\u2082 and ( X\u2081, X\u2082, X\u2083, X\u2084 ) in red, X\u2082 rendered larger. Diagram labels ~10\u201312pt regular; stage title 'Dot Product' bold dark-maroon inside the tan box. Two pieces of rotated (90\u00b0, bottom-to-top) text: 'Scaling by \u221ad' in bold red inside the yellow box and 'Soft max' in bold black inside the plum box. Subscripts used for token indices (X\u2081\u2026X\u2084, K\u2081\u2026K\u2084, V\u2081\u2026V\u2084, q\u2082, Y\u2082); superscript (1) on weight matrices W_k, W_v, W_q. No bullet lists \u2014 the slide is fully diagrammatic. Slide number in a yellow circular badge.",
+  "animation_state": "Slide appears fully built (final state); nothing looks mid-build. A small mouse cursor is visible near the lowest W_v^(1) box (~x 75%, y 72%) \u2014 a video-capture artifact, not slide content.",
+  "recreation_brief": "1) Set the slide background to plain white #FFFFFF; use a sans-serif font (Arial/Calibri-like) throughout. 2) Main canvas: insert a rounded rectangle spanning x 4\u201396%, y 20\u201397% of the slide, fill light-peach #FCE6CC, no/subtle outline; every element from step 6 onward sits on this canvas. 3) Title: centered text box at x 15\u201385%, y 6\u201313% with the exact text 'Self Attention Mechanism (Adding Scaling)' \u2014 bold ~28pt black #000000, with the span '(Adding Scaling)' colored red #FF0000. 4) Subtitle: centered text box at x 12\u201388%, y 13\u201319% with the exact text '(Self Attention of word X\u2082 w.r.t All words in Sentence ( X\u2081, X\u2082, X\u2083, X\u2084 )' \u2014 bold ~20pt black; render X\u2082 slightly larger and in red #FF0000 and the list 'X\u2081, X\u2082, X\u2083, X\u2084' in red #FF0000; keep the unbalanced parentheses exactly as written. 5) Slide-number badge: yellow #FFFF00 circle ~0.55 inch in diameter with a thin black outline, centered at x\u224893%, y\u224813% (spans x 91\u201396%, y 10\u201316%), containing bold black '38'. 6) Embedding-bar master shape: a rectangle split into three vertical side-by-side segments colored left\u2192right #FFFF99 (yellow), #FF99CC (pink), #C9A0DC (purple), with the token label (X\u2081/X\u2082/X\u2083/X\u2084) in bold black centered on the pink middle segment; duplicate it for all 12 token depictions (4 left stack + 4 right stack + 4 bottom row). 7) Vector-bar master shape: a small rectangle ~0.5 \u00d7 0.25 inch filled with fine vertical stripes [? pale green/gray/white \u2014 exact colors not captured]; reuse it for all 12 vector bars (K\u2081\u2013K\u2084, V\u2081\u2013V\u2084, q\u2082, Y\u2082, 1\u00d7d, d\u00d71). 8) Left input stack: four dashed-green (#00A050 outline) rounded containers stacked vertically at x 6\u201314%, y 40\u201373%, each holding one embedding bar; label them X\u2084, X\u2083, X\u2082, X\u2081 from top\u2192bottom [? exact order unreadable at source resolution; chosen to align with the K\u2084\u2192K\u2081 bar order in step 10]. 9) W_k boxes: four identical white boxes with red #FF0000 borders labeled 'W_k^(1)' (subscript k, superscript (1)), placed at x 15\u201321%, one per row aligned with the left stack (y 40\u201373%); connect each container \u2192 its W_k box \u2192 its K bar with thin red arrows. 10) K bars: one vector bar per row at x 21\u201326%, labeled 'K\u2084', 'K\u2083', 'K\u2082', 'K\u2081' top\u2192bottom; draw a thin red arrow from each K bar into the left edge of the Dot Product box (step 12). 11) 'Similarity' pill: pale-yellow #FFFFCC rounded pill with thin outline and black ~11pt text 'Similarity' at x 27\u201335%, y 28\u201332%, directly above the Dot Product box. 12) Dot Product box: tan #C8A165 vertical rectangle at x 26\u201335%, y 33\u201374%; place bold dark-maroon 'Dot Product' at its top-left inside; draw 4 blue #0000CC dots (~0.12 inch diameter) inside on a diagonal from lower-left to upper-right, joined sequentially from lowest to highest by thin red lines with arrowheads; each of the 4 incoming K arrows terminates at the dot nearest its entry height. 13) Query path: below the Dot Product box place the vector bar 'q\u2082' at y 74\u201377% on the vertical query path (horizontally aligned with W_q^(1)) and a white red-bordered box 'W_q^(1)' at x 28\u201334%, y 78\u201383%; draw a fat red #FF0000 block arrow starting at the highlighted X\u2082 bar in the bottom sentence row (step 22) rising straight up into W_q^(1); continue with a thin red arrow from W_q^(1) through q\u2082 into the bottom edge of the Dot Product box, ending at the lowest blue dot. 14) Fraction: at x 36\u201340%, y 32\u201340% draw a red bold stacked fraction \u2014 'K.q' above a short red horizontal rule, '\u221ad' below; connect the Dot Product box right edge \u2192 fraction \u2192 Scaling box (step 15) with thin red arrows. 15) Scaling stage: bright-yellow #FFFF00 vertical rectangle with an orange #FFC000 border at x 40\u201345%, y 33\u201375%; inside, rotated 90\u00b0 bottom-to-top, bold red text 'Scaling by \u221ad'. 16) 'Probabilities' pill: pale-yellow #FFFFCC pill with black ~11pt text 'Probabilities' at x 45\u201354%, y 28\u201332%, directly above the Softmax box. 17) Softmax stage: plum #DDA0DD vertical rectangle at x 47\u201352%, y 34\u201373% with rotated 90\u00b0 bottom-to-top bold black text 'Soft max'; connect the Scaling box \u2192 Softmax box with a thin red arrow. 18) Multiply nodes: four red \u2297 nodes (red circle outline ~0.25 inch in diameter with an asterisk inside \u2014 asterisk color not captured, render red or black) at x\u224855%, y\u224842%, 51%, 60%, 69%; draw four thin red arrows from the Softmax box right edge, one to each \u2297 node. 19) Weighted-sum stage: light-blue #ADD8E6 rectangle at x 53\u201367%, y 33\u201338% containing a large blue #0000CC '\u03a3' (~28pt); pale-yellow #FFFFCC pill with black ~11pt text 'Weighted SUM' at x 61\u201371%, y 28\u201332% above it; draw four thin red arrows, one from each \u2297 node up into the bottom edge of the \u03a3 box. 20) Right value path: four white boxes with blue #0000CC borders labeled 'W_v^(1)' at x 72\u201378% (one per row, y 40\u201373%); vector bars labeled 'V\u2084', 'V\u2083', 'V\u2082', 'V\u2081' top\u2192bottom at x 66\u201371%; four dashed-green (#00A050) rounded containers with embedding bars labeled X\u2084, X\u2083, X\u2082, X\u2081 top\u2192bottom [? same order caveat as step 8] at x 79\u201383% (right edge abutting the inset panel of step 24); connect stack \u2192 W_v box \u2192 V bar with thin red arrows, and draw one thin red arrow from each V bar leftward into the \u2297 node at the same height (V\u2084\u2192top \u2297, V\u2083\u2192second, V\u2082\u2192third, V\u2081\u2192bottom). 21) Output: thick green #00B050 block arrow from the top edge of the \u03a3 box straight up to a vector bar with a green dashed border labeled 'Y\u2082' in bold green at x 56\u201367%, y 21\u201327%. 22) Bottom sentence row: dashed-green rounded container at x 18\u201351%, y 86\u201395% holding four embedding bars labeled 'X\u2081', 'X\u2082', 'X\u2083', 'X\u2084' left\u2192right; fill X\u2082's bar solid magenta (exact hex not captured [?]) and give it a heavier border to highlight it; add thin dashed green connector lines from this container up to the left stack (step 8) and up to the right stack (step 20) \u2014 the same embeddings are reused. 23) Dimension callout: light-green #D6F0D6 rounded rectangle at x 76\u201393%, y 84\u201397% containing, left\u2192right: a horizontal striped row-vector bar with red label '1\u00d7d' at its top-right, a yellow #FFFF00 square box with bold black 'W', a black '=' sign, and a vertical striped column-vector bar with red label 'd\u00d71' below it; underneath add the bold blue #0000CC caption 'd: Embedding Length'. 24) Inset panel: white rectangle with a ~2pt solid green #00A050 border at x 83\u201395%, y 20\u201357%; stack five rounded boxes (~1.1 \u00d7 0.28 inch, horizontally centered, black ~10pt text) top\u2192bottom: 'MatMul' (#B39DDB), 'SoftMax' (#C5E1A5), 'Mask (opt.)' (#D1C4E9), 'Scale' (#FFF59D), 'MatMul' (#B39DDB); add thin black arrows pointing upward: labels 'Q' and 'K' at bottom-left with arrows up into the bottom MatMul, then bottom MatMul \u2192 Scale \u2192 Mask (opt.) \u2192 SoftMax \u2192 top MatMul; label 'V' at bottom-right with a long thin black arrow up the right side into the top MatMul. 25) Do NOT draw the mouse cursor visible near the lowest W_v^(1) box (~x 75%, y 72%) \u2014 it is a video-capture artifact, not slide content.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Schema: all required fields present and non-empty. verbatim_text.bullets kept as an empty array because the slide is fully diagrammatic (typography_notes: 'No bullet lists \u2014 the slide is fully diagrammatic'); all 39 text items are in labels and 3 in equations, so no bullets were invented.",
+      "Removed invented hex #FF7AC8 for the highlighted X\u2082 bar (that hex appears in no source color list); the brief now says 'solid magenta (exact hex not captured [?])'.",
+      "Removed unsupported 'black' color for the asterisk inside the four \u2297 nodes (source specifies only 'red circle outline + asterisk'); the brief now leaves the asterisk color open (red or black) and flags it as uncertain.",
+      "Reconciled the two conflicting descriptions of the single fat red arrow ('pointing straight up at X\u2082' in the arrow element and bottom-row region vs 'rises from X\u2082 into W_q^(1)' in the flowchart element and Dot Product region): adopted the explicit dataflow reading \u2014 tail at highlighted X\u2082, head at W_q^(1), with the continuation W_q^(1) \u2192 q\u2082 \u2192 Dot Product drawn thin red per 'all other connectors are thin' \u2014 and reworded the arrow element, flowchart part (l) and the bottom-row region to match.",
+      "Resolved the approximate-range collision between the right embedding stack (x\u224879\u201387%) and the inset panel (x\u224883\u201395%, y 20\u201357%): set the right stack to x\u224879\u201383% (exactly the gap between the W_v boxes ending at x\u224878% and the inset panel starting at x\u224883%); visual_elements updated to match.",
+      "Made the stage-to-stage pipeline connectors explicit in the brief \u2014 thin red arrows Dot Product \u2192 K.q/\u221ad fraction \u2192 Scaling box \u2192 Softmax box, in addition to the already-specified Softmax \u2192 \u2297 and \u2297 \u2192 \u03a3 arrows \u2014 derived from the arrangement's left-to-right chain and the hierarchy note that red arrows trace the computation left\u2192right.",
+      "Specified the dimension-callout bar orientations from the equations field: '1\u00d7d' as a horizontal row-vector bar (label at top-right) and 'd\u00d71' as a vertical column-vector bar (label below).",
+      "Precision audit: no vague quantifiers were present; all counts verified exact \u2014 4 dashed-green containers per stack, 4 W_k^(1) boxes, 4 K bars, 4 W_v^(1) boxes, 4 V bars, 4 \u2297 nodes, 4 blue dots, 3 pale-yellow pills, 2 thick block arrows, 5 inset boxes, 12 embedding-bar depictions, 12 vector bars, 39 labels, 3 equations.",
+      "Rewrote recreation_brief as a 25-step ordered checklist; every step places named elements with exact text, percent-based position, hex color, and shape type, with explicit cross-references between dependent steps (query-path arrow \u2194 bottom-row X\u2082; right stack \u2194 inset panel)."
+    ],
+    "uncertain_items": [
+      "Top\u2192bottom label order of the left and right embedding stacks [?]: unreadable at source resolution; both most likely run X\u2084\u2192X\u2081 top\u2192bottom to align with the K\u2084\u2192K\u2081 and V\u2084\u2192V\u2081 bars \u2014 the brief instructs this alignment.",
+      "Stripe fill colors of the vector bars [? pale green / gray / white] \u2014 not conclusively captured.",
+      "Exact magenta shade of the highlighted X\u2082 bar in the bottom sentence row (source says only 'magenta').",
+      "Asterisk color inside the four red \u2297 nodes (unspecified in source).",
+      "Exact x-boundary between the right embedding stack and the inset panel (source approximate ranges overlapped by ~4% width; fixed at x=83%).",
+      "Termination point of the fat red block arrow (adopted X\u2082 \u2192 W_q^(1) per the flowchart element; the arrow element's 'pointing up at X\u2082' phrasing alone would imply an emphasis arrow ending at X\u2082).",
+      "Which green applies to the Y\u2082 bar border/label and the dashed-green containers/connectors \u2014 both #00B050 and #00A050 appear in the palette; the brief uses #00A050 for dashed containers/connectors and #00B050 for the block arrow (assignments inherited from the source brief, not independently verified)."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_038.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 38,
+      "image": "slide_038.jpg",
+      "kept_frame": "frame_03724.jpg",
+      "start_sec": 3643.0,
+      "end_sec": 3723.0,
+      "frame_count": 81
+    },
+    "elapsed_s": 508.0,
+    "note": "raw recovered from a one-off response capture after 3 script-12 parse failures (flaky emission, content identical class); captured text parse-verified before writing",
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 2586.7
+  }
+}

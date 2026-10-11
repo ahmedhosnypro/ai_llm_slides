@@ -1,0 +1,68 @@
+1. TITLE
+Title text: "Feed Forward Neural Network" (large red text, centered at top).
+Badge numeral (top-right yellow circle): 45
+
+2. ALL VERBATIM TEXT
+- "Feed Forward Neural Network" (red title)
+- Yellow banner box, first line (dark blue bold, with red parenthetical): "Feed Forward Network for each Vector (After applying Normalization)"
+- Second line (blue): "One Hidden Layer with RELU Activation," followed on the right: "[Size: at least double Input dimension]" (with "Size:" bold)
+- Third line (blue bold): "Linear" then " Activation Output Layer" followed on the right: "[Size: same Input Vector dimension]"
+- Blue-outlined container label (dark blue, italic serif): "Feed Forward Networks [ One Hidden with RELU Activation]" â the "RELU" token is in small red pill/label at each sub-network; each small sub-network box also contains tiny label "RELU" (pink/magenta text at right of green dots) [?] â small text, best read as "RELU".
+- Gray wide bar label: "Layer Normalization" ("Layer" in red italic serif, "Normalization" in black bold)
+- Left-side blue label (two lines): "Output of Self / Attention"
+- Left-side orange label (two lines): "Residual / Connections"
+- Left-side red label (two lines): "Input to Self / Attention"
+- Large dark-blue block text (white): "Multi Head Self Attention Block"
+- Bottom yellow-highlighted caption: "Word Embedding + Positional Information" ("Word Embedding" red text, "+" , "Positional Information" blue text)
+- Row labels on tokens: Y_1, Y_2, Y_3, Y_4, ..., Y_N-1 [?] (appears "Y_N-1"), Y_N (top row after FFN); X_1, X_2, X_3, X_4, X_5, X_N-1 [?] ("X_N-1"), X_N (bottom row); middle row (input to FFN): Y_1, Y_2, Y_3, Y_4, ..., Y_N-1 [?], Y_N; lower row (output of residual add): Y_1, Y_2, Y_3, Y_4, Y_5, Y_6 [?], ..., Y_N-1 [?], Y_N
+- Ellipsis dots: black dots "â¢ â¢ â¢ â¢ â¢" in top and FFN rows between Y_4 and Y_N-1; blue dots in Layer-Norm output row; green dots in bottom input row between X_5 and X_N-1.
+
+3. EQUATIONS
+Token sequences (subscript notation):
+- Top output row: Y_1, Y_2, Y_3, Y_4, ..., Y_(N-1), Y_N
+- FFN input row: Y_1, Y_2, Y_3, Y_4, ..., Y_(N-1), Y_N
+- Residual-add output row: Y_1, Y_2, Y_3, Y_4, Y_5, Y_6(?), ..., Y_(N-1), Y_N
+- Bottom input row: X_1, X_2, X_3, X_4, X_5, ..., X_(N-1), X_N
+Implied relation (pictorial, not written as a formula): Y_i = LayerNorm( Y_i + FFN(Y_i) ), and FFN input Y_i derived from Multi-Head Self-Attention over X_i. No explicit written equation appears on the slide.
+
+4. DIAGRAM TOPOLOGY
+Overall: a large white panel with thin blue border contains the whole dataflow diagram, bottom-to-top flow.
+
+Bottom row (input layer): a horizontal strip of token blocks, each a small rectangle composed of colored sub-cells (green, yellow, pink/violet segments), labeled beneath/inside: X_1, X_2, X_3, X_4, X_5, then green ellipsis dots, then X_(N-1), X_N. Each token block has a small white/blue upward-pointing block arrow (double-stem arrow) rising from it.
+
+Middle band: a large solid dark-navy blue rectangle spanning nearly full width, labeled in white: "Multi Head Self Attention Block". Each upward arrow from the X tokens enters this block from below.
+
+Above the attention block: another row of token blocks, each labeled Y_1, Y_2, Y_3, Y_4, Y_5, Y_6(?) ..., then blue ellipsis dots, then Y_(N-1), Y_N (output of Self Attention). Small blue upward block arrows rise from these.
+
+Residual connections: curved orange arrows leave the bottom X-token row (from the region just above each X token / from the attention block sides), arc outward left and right, and travel up to red circular "+" (plus) nodes. There are red filled circles with white "+" signs â approximately 8 visible plus nodes: about 6 clustered left/center plus 2 at right side above Y_(N-1) and Y_N. Each red "+" node receives (a) a green upward arrow from the Y_i token below it and (b) an orange curved residual arrow from the corresponding X_i at the bottom.
+
+Residuals container: a light-green (pale mint) rounded-rectangle panel with dashed dark-green border encloses the red "+" nodes, the green arrows, and the gray "Layer Normalization" bar â i.e., the Add & Norm region.
+
+Layer Normalization bar: a long horizontal gray/silver rectangle spanning nearly the full width, labeled "Layer Normalization". Green upward arrows go from each "+" node into this bar (the green arrows are actually from Y_i tokens up through/behind the plus nodes to the bar; plus nodes sit on these green arrow paths).
+
+Above Layer Norm bar: another row of token blocks labeled Y_1, Y_2, Y_3, Y_4, then black ellipsis dots, then Y_(N-1), Y_N. Small blue upward block arrows rise from this row into the FFN container.
+
+FFN container: a white rectangle with a thick dark-blue border, labeled at top inside: "Feed Forward Networks [ One Hidden with RELU Activation]". Inside, along its lower edge, a row of small sub-network icons: each is a small rounded box (white/pink fill, thin orange/yellow border) containing green dots (neurons, input layer), magenta/pink curved lines (connections) fanning up to a smaller set of output dots, and a tiny red pill labeled "RELU" at the upper right of each box. Approximately 8 such sub-network icons visible (6 left/center + 2 at right). The count of sub-networks matches the token columns they serve.
+
+Top output row: a row of token blocks labeled Y_1, Y_2, Y_3, Y_4, then black ellipsis dots, then Y_(N-1), Y_N. Small blue upward block arrows rise from the FFN container's sub-network icons to this top row.
+
+Left-side annotation arrows/labels (outside the white panel, left margin):
+- "Output of Self Attention" (blue) points at the Y_i row just above the Multi Head Self Attention Block.
+- "Residual Connections" (orange) points at the curved orange arrows.
+- "Input to Self Attention" (red) points at the bottom X_i row.
+Each label has a small pointer/underline toward the relevant element.
+
+Resemblance to published figures: This does NOT match Vaswani et al. 2017 Figure 1 exactly, but it is clearly an expanded/annotated rendering of the Vaswani Transformer encoder sub-layer: "Multi Head Self Attention Block" corresponds to the "Multi-Head Attention" box, the red "+" nodes and gray "Layer Normalization" bar inside the dashed green panel correspond to Vaswani's "Add & Norm", and the row of small RELU networks corresponds to the "Feed Forward" box, drawn per-token (one small network per position) rather than as a single block. The per-token token-strip depiction (X_1..X_N with colored sub-cells and residual curved arrows) is stylistically similar to custom course illustrations (reminiscent of Jay Alammar's "The Illustrated Transformer" token/residual style, but drawn in a different, more schematic color scheme). Not a Peter Bloem diagram.
+
+5. NUMBERS/DATA
+- Slide/badge number: 45
+- Textual size specs: hidden layer "[Size: at least double Input dimension]"; output layer "[Size: same Input Vector dimension]" (no numeric values given).
+- Token indices: 1, 2, 3, 4, 5(?), N-1, N; sequence length symbol N.
+- Approximate element counts (not printed on slide): ~8 red "+" nodes, ~8 FFN sub-network icons, ~8 token blocks per row, 5 black/blue/green ellipsis dots per gap.
+
+6. BUILD STATE / ARTIFACTS
+- Slide appears fully built (final state); no partial-reveal gaps.
+- A tiny cursor/pointer artifact: a small dark arrow/pen-like mark inside the leftmost FFN sub-network icon (near its top-left), likely the presenter's mouse cursor.
+- Black horizontal band across the very bottom edge of the frame (video letterboxing/cropping artifact, not slide content).
+- Slight white margin strips at extreme left and right edges of the frame (video scaling artifact).
+- Small text inside each FFN sub-network ("RELU" pill) is at the limit of legibility at this resolution; read as "RELU" with low uncertainty. Some mid-row token subscripts (e.g., Y_6, N-1 positions) are small; transcribed with best effort as Y_(N-1)/X_(N-1).

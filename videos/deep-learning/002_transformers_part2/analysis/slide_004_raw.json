@@ -1,0 +1,166 @@
+{
+  "slide_title": "Encoder \u2013 Decoder Transformer",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "4 (slide number inside yellow circle, top-right)",
+      "Encoder (red bold-italic label, top-left of right diagram)",
+      "Decoder (green bold-italic label, top-right of right diagram)",
+      "Output Probabilities (above Softmax, in BOTH diagrams)",
+      "Softmax (x2, one per diagram)",
+      "Linear (x2, one per diagram)",
+      "Add & Norm (x5 per diagram: 2 in encoder stack, 3 in decoder stack; x10 total)",
+      "Feed Forward (x2 per diagram; x4 total)",
+      "Multi-Head Attention (x1 per diagram, encoder column; x2 total)",
+      "Masked Multi-Head Attention (x1 per diagram, decoder column; x2 total)",
+      "Nx (x2 per diagram, one beside each stack; x4 total)",
+      "Positional Encoding (x2 per diagram, bottom-left and bottom-right; x4 total)",
+      "Input Embedding (x1 per diagram)",
+      "Output Embedding (x1 per diagram)",
+      "Inputs (x1 per diagram, bottom-left)",
+      "Outputs (shifted right) (x1 per diagram, bottom-right)"
+    ],
+    "equations": [
+      "Nx (stack-repetition notation, i.e., the block repeats N times)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Black letterbox bars at very top and very bottom (video capture). Red bold title centered at top. Below, two side-by-side diagram panels: left panel is the classic black-and-white Transformer architecture in a white bordered box; a large solid red right-pointing block arrow sits in the middle gap; right panel is the same architecture re-drawn in color inside a green-bordered rectangle split into an Encoder zone (peach) and Decoder zone (pale green). Yellow circular slide-number badge at top-right.",
+    "regions": [
+      {
+        "name": "Top letterbox bar",
+        "position": "full width, 0%-7% height",
+        "content": "solid black bar (video letterbox)"
+      },
+      {
+        "name": "Title",
+        "position": "top center, ~8%-16% height, ~22%-78% width",
+        "content": "red bold text 'Encoder \u2013 Decoder Transformer'"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, ~89%-94% width, ~9%-15% height",
+        "content": "yellow circle, black outline, black numeral 4"
+      },
+      {
+        "name": "Left diagram panel",
+        "position": "left, ~10%-45% width, ~18%-93% height",
+        "content": "white box with thin black border containing the original monochrome-with-color-blocks Transformer flowchart"
+      },
+      {
+        "name": "Transition arrow",
+        "position": "center, ~47%-56% width, ~50%-58% height",
+        "content": "large solid red right-pointing block arrow"
+      },
+      {
+        "name": "Right diagram panel",
+        "position": "right, ~57%-92% width, ~18%-93% height",
+        "content": "green-bordered rectangle, peach Encoder zone + pale-green Decoder zone, colored Transformer flowchart with red up-arrows and orange highlight rectangles"
+      },
+      {
+        "name": "Bottom letterbox bar",
+        "position": "full width, ~96%-100% height",
+        "content": "solid black bar (video letterbox)"
+      }
+    ],
+    "hierarchy": "Title dominates (largest text, bold, red). The two diagrams are equal in visual weight and larger than everything else; the red transition arrow and red Encoder label / red arrows are the strongest accent color; diagram node text is smallest (black)."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "LEFT PANEL: classic Transformer architecture diagram (Attention Is All You Need style) in a white rectangle with thin black border. Two vertical stacks. RIGHT (decoder) stack top-to-bottom: text 'Output Probabilities'; pale-green rounded box 'Softmax'; lavender rounded box 'Linear'; white box 'Add & Norm'; light-blue box 'Feed Forward'; white box 'Add & Norm'; pale-yellow box 'Masked Multi-Head Attention'; white box 'Add & Norm'. LEFT (encoder) stack, positioned lower, top-to-bottom: white box 'Add & Norm'; light-blue box 'Feed Forward'; white box 'Add & Norm'; pale-yellow box 'Multi-Head Attention'. Label 'Nx' to the left of the encoder stack and to the right of the decoder stack. Curved black connector lines with arrowheads: encoder top output curves right and down into the decoder's 'Masked Multi-Head Attention'; residual skip connections loop around each sub-block; vertical arrows flow upward from bottom to top. Bottom row on both sides: label 'Positional Encoding' next to a circle containing a sine-wave symbol, feeding a circle-plus (\u2295) junction; pink box 'Input Embedding' (left) and pink box 'Output Embedding' (right); bottom-most captions 'Inputs' (left) and 'Outputs (shifted right)' (right).",
+      "colors": [
+        "#FFFFFF (panel bg)",
+        "#000000 (borders/text)",
+        "#C9E7C0 (Softmax green)",
+        "#C5C0E8 (Linear lavender)",
+        "#9DC3E6 (Feed Forward blue)",
+        "#F5E6A8 (attention yellow)",
+        "#F2C1CE (embedding pink)"
+      ],
+      "position": "left panel, ~10%-45% width, ~18%-93% height"
+    },
+    {
+      "type": "flowchart",
+      "description": "RIGHT PANEL: same Transformer flowchart redrawn in color inside a rectangle with a thick green border. Background split into two zones: left zone pale peach labeled 'Encoder' (red bold italic, top-left corner), right zone pale green labeled 'Decoder' (green bold italic, top-right corner). Identical node sequence to left panel: 'Output Probabilities' text; 'Softmax' (pale green); 'Linear' (lavender); decoder stack 'Add & Norm' / 'Feed Forward' (blue) / 'Add & Norm' / 'Masked Multi-Head Attention' (yellow) / 'Add & Norm'; encoder stack 'Add & Norm' / 'Feed Forward' (blue) / 'Add & Norm' / 'Multi-Head Attention' (yellow); 'Nx' beside both stacks; 'Positional Encoding' with sine-wave circle icon and \u2295 junction on both bottom sides; pink 'Input Embedding' and 'Output Embedding'; captions 'Inputs' and 'Outputs (shifted right)'. Two thick red upward arrows: one at bottom below 'Inputs' pointing up into the encoder, one at top just left of 'Output Probabilities' pointing up. Two semi-transparent orange highlight rectangles: one over the encoder's 'Multi-Head Attention' block extending to the left edge of the Encoder zone; one over the decoder's 'Multi-Head Attention' / 'Masked Multi-Head Attention' blocks extending to the right edge of the Decoder zone. A small white mouse cursor [?] is visible over the encoder's Multi-Head Attention block (video artifact).",
+      "colors": [
+        "#FBE5D6 (Encoder zone peach)",
+        "#C8E6C9 (Decoder zone green)",
+        "#00A651 (border + 'Decoder' label)",
+        "#C00000 ('Encoder' label + red arrows)",
+        "#F7A94F (orange highlights, semi-transparent)",
+        "#9DC3E6 (Feed Forward)",
+        "#F5E6A8 (attention)",
+        "#C9E7C0 (Softmax)",
+        "#C5C0E8 (Linear)",
+        "#F2C1CE (embeddings)",
+        "#000000 (text)"
+      ],
+      "position": "right panel, ~57%-92% width, ~18%-93% height"
+    },
+    {
+      "type": "arrow",
+      "description": "Large solid red right-pointing block arrow (thick rectangular shaft + triangular head) centered in the gap between the two diagram panels at mid-height, indicating transformation from the plain diagram to the color-coded Encoder/Decoder diagram.",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "center, ~47%-56% width, ~50%-58% height"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: yellow circle with thin black outline containing the black numeral '4'.",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top-right corner, ~89%-94% width, ~9%-15% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Two semi-transparent orange rectangles overlaid on the right diagram: one spanning the encoder 'Multi-Head Attention' block out to the Encoder zone's left edge; one spanning the decoder 'Multi-Head Attention' and 'Masked Multi-Head Attention' blocks out to the Decoder zone's right edge.",
+      "colors": [
+        "#F7A94F (approx, ~50% transparency)"
+      ],
+      "position": "middle band of right diagram, ~55%-92% width, ~45%-70% height"
+    }
+  ],
+  "imagery": [
+    "No photographs. Two schematic vector diagrams (Transformer architecture flowcharts). Small sine-wave-in-circle icons and circle-plus (\u2295) junction symbols represent Positional Encoding in both diagrams. Small white mouse cursor [?] captured over the right diagram's encoder attention block."
+  ],
+  "colors": {
+    "background": "#E6E6E6",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#C00000 (title, transition arrow, red up-arrows, 'Encoder' label)",
+      "#00A651 (green panel border, 'Decoder' label)",
+      "#FFFF00 (slide-number circle)",
+      "#FBE5D6 (Encoder zone)",
+      "#C8E6C9 (Decoder zone)",
+      "#F7A94F (orange highlight rectangles)",
+      "#9DC3E6 (Feed Forward boxes)",
+      "#F5E6A8 (attention boxes)",
+      "#C9E7C0 (Softmax boxes)",
+      "#C5C0E8 (Linear boxes)",
+      "#F2C1CE (embedding boxes)"
+    ]
+  },
+  "typography_notes": "All text is sans-serif (Arial/Calibri-like). Title is very large, bold, red, centered, with an en dash in 'Encoder \u2013 Decoder'. Diagram node labels are small (~9-11pt) black sans-serif, mostly centered in their boxes; 'Feed Forward' and attention names wrap to two lines. 'Encoder' and 'Decoder' are bold italic. Slide number is bold black in a yellow circle. No serif fonts, no all-caps, no italics in body labels except the Encoder/Decoder zone names.",
+  "animation_state": "Slide appears fully built; no partial bullet reveals. The semi-transparent orange rectangles on the right diagram look like static highlight overlays (likely drawn during the video to emphasize the attention blocks) rather than an unfinished build; a captured mouse cursor [?] sits over the encoder's Multi-Head Attention block.",
+  "recreation_brief": "1. Set slide background to light gray #E6E6E6; add full-width black rectangles at the very top (~7% height) and very bottom (~4% height) to mimic the video letterbox. 2. Add a centered title text box near the top: 'Encoder \u2013 Decoder Transformer', Arial bold ~40pt, color #C00000. 3. Top-right: insert an oval (~1.2cm diameter), fill #FFFF00, 1pt black outline, text '4' in black bold. 4. LEFT PANEL: draw a white rectangle with 1pt black border spanning ~10%-45% width, ~18%-93% height. Inside, build the Transformer flowchart with rounded rectangles: right (decoder) column top-to-bottom: caption text 'Output Probabilities'; 'Softmax' (fill #C9E7C0); 'Linear' (fill #C5C0E8); 'Add & Norm' (white, black border); 'Feed Forward' (fill #9DC3E6); 'Add & Norm'; 'Masked Multi-Head Attention' (fill #F5E6A8); 'Add & Norm'. Left (encoder) column, offset lower: 'Add & Norm'; 'Feed Forward' (#9DC3E6); 'Add & Norm'; 'Multi-Head Attention' (#F5E6A8). All node text black ~10pt centered. 5. Add 'Nx' text labels left of the encoder stack and right of the decoder stack. 6. Bottom of left panel: on both left and right sides add 'Positional Encoding' labels with a small circle containing a sine-wave icon and a \u2295 junction symbol; below them pink boxes (#F2C1CE) 'Input Embedding' (left) and 'Output Embedding' (right); bottom captions 'Inputs' (left) and 'Outputs (shifted right)' (right). 7. Connect nodes with black elbow/curved connectors and arrowheads flowing upward; add residual skip-connection loops around each sub-block; draw a curved arrow from the encoder stack top into the decoder's 'Masked Multi-Head Attention'. 8. CENTER: insert a PowerPoint 'Right Arrow' block shape, fill #C00000, no outline, ~9% width, placed at ~50%-58% height between panels. 9. RIGHT PANEL: draw a rectangle spanning ~57%-92% width, ~18%-93% height with a thick (~3pt) green #00A651 border; fill its left half with peach #FBE5D6 and right half with pale green #C8E6C9 (two abutting rectangles behind the border). 10. Add bold-italic labels: 'Encoder' in #C00000 at the zone's top-left, 'Decoder' in #00A651 at the zone's top-right. 11. Rebuild the identical node stack from steps 4-7 inside this panel using the same fills (Softmax #C9E7C0, Linear #C5C0E8, Feed Forward #9DC3E6, attention #F5E6A8, embeddings #F2C1CE, Add & Norm white), including 'Nx' labels, Positional Encoding icons, and captions 'Inputs' / 'Outputs (shifted right)'. 12. Add two thick red (#C00000) 'Up Arrow' shapes: one below 'Inputs' pointing up into the encoder, one just left of 'Output Probabilities' at the top. 13. Add two semi-transparent orange rectangles (fill #F7A94F, ~50% transparency, no outline): one over the encoder 'Multi-Head Attention' block extending to the Encoder zone's left edge; one over the decoder 'Multi-Head Attention' + 'Masked Multi-Head Attention' blocks extending to the Decoder zone's right edge. 14. Verify all verbatim strings match exactly, including the en dash in the title, the ampersands in 'Add & Norm', and the parenthetical '(shifted right)'.",
+  "_meta": {
+    "frame": "slide_004.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 4,
+      "image": "slide_004.jpg",
+      "kept_frame": "frame_00030.jpg",
+      "start_sec": 15.0,
+      "end_sec": 29.0,
+      "frame_count": 15,
+      "old_slide": 3
+    },
+    "elapsed_s": 216.7
+  }
+}

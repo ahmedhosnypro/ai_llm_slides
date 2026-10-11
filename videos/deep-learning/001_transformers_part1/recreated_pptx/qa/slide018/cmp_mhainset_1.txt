@@ -1,0 +1,48 @@
+# Visual QA Comparison â Slide 018 "Multi-Head Attention" inset crop
+
+## 1. Verbatim Text Transcription
+
+**IMG1 (recreation render):**
+- Title: `Multi-Head Attention` (red, bold italic)
+- Top box: `Linear`
+- Yellow box: `Concat`
+- Central box (2 lines): `Scaled Dot-Product` / `Attention`
+- Bottom boxes: `Linear` (Ã3)
+- Bottom circles (italic lowercase): `v`, `k`, `q`
+- Right circle (italic): `h`
+
+**IMG2 (original frame):**
+- Title: `Multi-Head Attention` (red, bold italic)
+- Top box: `Linear`
+- Yellow box: `Concat`
+- Central box (2 lines): `Scaled Dot-Product` / `Attention`
+- Bottom boxes: `Linear` (Ã3)
+- Bottom circles (uppercase): `V`, `K`, `Q`
+- Right circle: `h` â visually reads as `âh` because a stray dash/line segment (the connector) crosses the circle's left edge
+
+## 2. Similarities
+
+- **Same diagram content and flow:** three inputs (colored circles) â three `Linear` boxes â central red-bordered mauve `Scaled Dot-Product Attention` block â `Concat` (pale yellow) â top `Linear` â exit arrow pointing up.
+- **Shared layout regions:** red italic title at top; green outer frame with square corner handles; red dashed accent lines exiting at top-right corner and mid-left edge; `h` circle on the right side connected to the attention block; a thin faint line descending from the top of the crop toward the `h` circle in both.
+- **Multi-head stacking cue:** both show offset "ghost" duplicate boxes behind the top `Linear`, the attention block, and each bottom `Linear`.
+- **Shared palette:** red title, green frame, gray `Linear` boxes, yellow `Concat`, mauve attention fill with thick red border, blue/blue/red input circles, black arrows.
+
+## 3. Differences
+
+**Content / fidelity:**
+- **Circle labels:** IMG1 uses lowercase italic serif `v`, `k`, `q`, `h`; IMG2 uses uppercase sans `V`, `K`, `Q`. Case/style mismatch with the source.
+- **Ghost arrows:** IMG2 shows a cluster of stacked black + gray arrows from the attention block up to `Concat`, and multiple ghost arrows from each bottom `Linear` into the attention block. IMG1 has only single arrows in both positions â the multi-head arrow repetition is lost.
+- **`h` circle:** IMG1 = small white circle, thin dark border, italic `h`, entered by a **red** arrow with solid red arrowhead from above. IMG2 = larger **tan/beige** circle, with a gray ghost circle offset behind it, entered by a faint tan/gray line, and a curved black arrow from the attention block (IMG1's connector is a straight thin line).
+- **Shadows:** IMG2 boxes have drop shadows (3D look); IMG1 is entirely flat.
+
+**Quality / rendering:**
+- IMG2 is a soft, blurry video-frame crop with washed-out contrast and compression noise; text edges are fuzzy. IMG1 is crisp with clean anti-aliased text and uniform light-gray background (IMG2's background is near-white).
+- **Defect only in IMG2:** the `âh` artifact (stray dash overlapping the circle) and the doubled/ghosted circle.
+- **Deviations only in IMG1:** red arrow into `h` (vs. faint tan in original), white `h` circle (vs. tan), missing stacked arrows, missing drop shadows, lowercase italic labels, and darker input-circle colors (navy/maroon vs. brighter blue/red in IMG2).
+- Frame styling: IMG1 thin dark-green frame with solid dark corner squares; IMG2 thicker frame with lighter/hollow corner squares. Font weight of `Linear`/`Concat`/attention text is bold in IMG1, regular in IMG2.
+
+## 4. Verdict
+
+**IMG1 (recreation) is better as a rendering.** Concrete evidence: all labels (`Multi-Head Attention`, `Linear`, `Concat`, `Scaled Dot-Product Attention`, `v/k/q/h`) are sharp and fully legible, arrows are single clean vectors, the red attention border is a consistent rectangle, and there are no overlap artifacts â whereas IMG2 exhibits blur, low contrast, the `âh` collision, and a doubled `h` circle.
+
+**However**, if the goal is faithful reproduction of the original, IMG1 has fidelity gaps that should be fixed: uppercase `V/K/Q` (IMG2), the tan `h` circle with faint tan top-arrow, the stacked multi-head ghost arrows between AttentionâConcat and LinearâAttention, drop shadows, and the curved connector into `h`. IMG2 remains the authoritative reference; IMG1 is the cleaner deliverable with minor source-matching corrections outstanding.

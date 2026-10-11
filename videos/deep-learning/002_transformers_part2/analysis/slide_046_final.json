@@ -1,0 +1,273 @@
+{
+  "slide_title": "Transformer Encoder Block (reconstructed \u2014 original slide has no title)",
+  "subtitle_or_header": "None \u2014 no subtitle or header on the original slide; the pink 'Final Output' callout at top-left is a diagram label, not a header",
+  "verbatim_text": {
+    "bullets": [
+      "(No bullet text \u2014 the slide is one full-slide diagram; all verbatim text is captured under labels and equations.)"
+    ],
+    "labels": [
+      "Final Output",
+      "Layer Normalization (appears twice; 'Layer' in red bold italic, 'Normalization' in black bold)",
+      "Multi Head Self Attention Block",
+      "Feed Forward Networks [ One Hidden with  RELU Activation]",
+      "RELU (tiny red tag repeated in each of the 8 feed-forward mini-diagrams)",
+      "Input  to Self Attention (two lines: 'Input  to Self' / 'Attention')",
+      "Residual Connections (appears twice; two lines: 'Residual' / 'Connections')",
+      "Output of Self Attention (two lines: 'Output of Self' / 'Attention')",
+      "Word Embedding  +  Positional Information [? partially clipped by black bar at bottom edge; words may be joined by underscores]",
+      "Token labels, bottom input row: X_0, X_1, X_2, X_3, X_4, X_5 [?], X_N3 [?], X_N4 [?]",
+      "Token labels, each of the three upper rows (identical): Y_0, Y_1, Y_2, Y_3, Y_4, Y_5 [?], Y_N3 [?], Y_N4 [?]",
+      "No slide number, no watermark, no course logo, no date visible"
+    ],
+    "equations": [
+      "X_0, X_1, X_2, X_3, X_4, X_5 [?], \u2026, X_{N3} [?], X_{N4} [?]  (input token sequence; rightmost subscripts read as 'N3'/'N4', possibly 'N\u22123'/'N\u22124')",
+      "Y_0, Y_1, Y_2, Y_3, Y_4, Y_5 [?], \u2026, Y_{N3} [?], Y_{N4} [?]  (token sequence repeated after attention, after feed-forward, and as final output)",
+      "\u2295 = element-wise addition (dark-red residual summation circles)",
+      "RELU (activation named in the Feed Forward box title and mini-diagram tags)"
+    ]
+  },
+  "layout": {
+    "arrangement": "No title anywhere. The entire slide is one large bottom-to-top architecture diagram (a Transformer encoder block) drawn inside a dark-blue bordered rectangle (\u22485.5\u201394.5% width, \u22487.5\u201393.5% height) on a white background. A pink 'Final Output' callout sits at the top-left inside the frame, with the final token row running to its right along the top. Four small colored annotation labels stack up the left margin. A black letterbox strip covers the bottom \u22486% of the frame, clipping a caption at the diagram's bottom edge.",
+    "regions": [
+      {
+        "name": "Outer frame",
+        "position": "full slide; \u22485.5\u201394.5% width, \u22487.5\u201393.5% height",
+        "content": "Dark-blue rectangular border enclosing the whole diagram; white interior."
+      },
+      {
+        "name": "Final Output callout",
+        "position": "top-left; \u22487\u201317% width, \u224810\u201319% height",
+        "content": "Pink box with red border and red bold italic two-line text 'Final / Output' tagging the final token row."
+      },
+      {
+        "name": "Final token row",
+        "position": "top; \u224818\u201388% width, \u224811\u201317% height",
+        "content": "8 token boxes Y_0\u2026Y_N4 with 5 blue dots between 6th and 7th box; fed by 8 thin red up-arrows from the top Layer Normalization bar."
+      },
+      {
+        "name": "Top LayerNorm unit",
+        "position": "upper-middle; \u224815\u201393% width, \u224818\u201331% height",
+        "content": "Light-green dashed rounded rectangle containing 8 dark-red \u2295 circles (y\u224828%) with thin green up-arrows, and a gray 'Layer Normalization' bar (y\u224819\u201324%); orange residual curves enter the \u2295 circles from below, rising from the post-LayerNorm token row (\u224853\u201357% height) along the frame edges."
+      },
+      {
+        "name": "Post-FFN token row",
+        "position": "\u224818\u201388% width, \u224831\u201337% height",
+        "content": "8 token boxes Y_0\u2026Y_N4 with 5 blue dots."
+      },
+      {
+        "name": "Feed Forward Networks box",
+        "position": "middle; \u224816\u201393% width, \u224837\u201349% height",
+        "content": "Light-blue rectangle titled 'Feed Forward Networks [ One Hidden with  RELU Activation]' containing 8 mini FFN icons (magenta up-arrows into green dots, each tagged 'RELU') along its lower half."
+      },
+      {
+        "name": "Post-LayerNorm token row",
+        "position": "\u224818\u201388% width, \u224853\u201357% height",
+        "content": "8 token boxes Y_0\u2026Y_N4 with 5 blue dots; receives green arrows from the bottom LayerNorm bar and sends blue block arrows up into the FFN box."
+      },
+      {
+        "name": "Bottom LayerNorm unit",
+        "position": "\u224815\u201393% width, \u224856\u201369% height",
+        "content": "Green dashed rounded rectangle with gray 'Layer Normalization' bar (y\u224857\u201362%) above 8 \u2295 circles (y\u224866%); green arrows run from the output-of-attention row up through the \u2295 circles into the bar; orange residual curves arrive from below, rising from the input X row (\u224889\u201394% height)."
+      },
+      {
+        "name": "Output-of-attention token row",
+        "position": "\u224818\u201388% width, \u224869\u201374% height",
+        "content": "8 token boxes Y_0\u2026Y_N4 with 5 blue dots, fed by thick blue block arrows from the attention bar."
+      },
+      {
+        "name": "Multi Head Self Attention Block",
+        "position": "lower-middle; \u224817\u201392% width, \u224878\u201386% height",
+        "content": "Dark-blue full-width bar with white bold centered text 'Multi Head Self Attention Block'."
+      },
+      {
+        "name": "Input token row + caption",
+        "position": "bottom; \u224818\u201388% width, \u224889\u201394% height",
+        "content": "8 token boxes X_0\u2026X_N4 with 4 green dots between 6th and 7th box; caption 'Word Embedding + Positional Information' beneath, clipped by the black strip."
+      },
+      {
+        "name": "Left annotation column",
+        "position": "left margin; \u22487\u201317% width, \u224838\u201392% height",
+        "content": "Top to bottom: 'Residual Connections' (orange, y\u224838\u201344%), 'Output of Self Attention' (blue, y\u224870\u201375%), 'Residual Connections' (orange, y\u224879\u201384%), 'Input  to Self Attention' (red, y\u224887\u201392%)."
+      },
+      {
+        "name": "Letterbox strip",
+        "position": "bottom; full width, \u224893.5\u2013100% height",
+        "content": "Solid black bar (video letterbox) that clips the bottom caption."
+      }
+    ],
+    "hierarchy": "The diagram dominates everything. Most visually heavy: the dark-blue 'Multi Head Self Attention Block' bar, then the two gray 'Layer Normalization' bars and the light-blue FFN box. Token rows, arrows and \u2295 circles are small and dense. Left annotations and the 'Final Output' box are the smallest text. No title competes for attention."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Transformer-encoder-block schematic, data flowing bottom\u2192top inside the blue frame. Stack bottom\u2192top: (a) row of 8 input token boxes labeled X_0\u2026X_4, X_5[?], X_N3[?], X_N4[?], with 4 green dots between the 6th and 7th box; (b) 8 thick 3-D blue block up-arrows into the dark-blue bar 'Multi Head Self Attention Block'; (c) 8 thick blue block up-arrows into a token row Y_0\u2026Y_N4 ('Output of Self Attention', 5 blue dots); (d) 8 thin green up-arrows passing through 8 dark-red \u2295 circles into a gray 'Layer Normalization' bar, both enclosed in a light-green dashed rounded rectangle; orange curved residual arrows rise from the X-row sides into the \u2295 circles; (e) 8 thin green up-arrows into token row Y_0\u2026Y_N4; (f) 8 thick blue block up-arrows into the light-blue box 'Feed Forward Networks [ One Hidden with  RELU Activation]' holding 8 mini FFN icons; (g) 8 thick blue block up-arrows into token row Y_0\u2026Y_N4; (h) 8 thin green up-arrows through 8 \u2295 circles into a second gray 'Layer Normalization' bar (green dashed container), with orange residual curves rising from the post-LayerNorm token row (\u224853\u201357% height, the row feeding the FFN box) into the \u2295 circles; (i) 8 thin red up-arrows into the final token row Y_0\u2026Y_N4, tagged by the pink 'Final Output' box at top-left.",
+      "colors": [
+        "#00008B",
+        "#CC0000",
+        "#00A651",
+        "#E8A33D",
+        "#D6E4F7",
+        "#C9C9C9",
+        "#8B0000",
+        "#3B3BE0"
+      ],
+      "position": "entire slide inside the outer blue frame"
+    },
+    {
+      "type": "highlight-box",
+      "description": "'Multi Head Self Attention Block': near-full-width dark-blue rectangle with white bold centered sans-serif text.",
+      "colors": [
+        "#00008B",
+        "#FFFFFF"
+      ],
+      "position": "lower-middle, \u224817\u201392% width, \u224878\u201386% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "'Feed Forward Networks [ One Hidden with  RELU Activation]': light-blue rectangle, blue bold title centered near its top, and 8 identical mini feed-forward icons along its lower half \u2014 each a small thin dark-red-bordered box containing 4\u20135 magenta upward arrows feeding a horizontal row of 4\u20135 green dots, with a tiny red 'RELU' tag at the top-right.",
+      "colors": [
+        "#D6E4F7",
+        "#0000CC",
+        "#CC00CC",
+        "#00A651",
+        "#B03030"
+      ],
+      "position": "middle, \u224816\u201393% width, \u224837\u201349% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "2\u00d7 'Layer Normalization' units: gray horizontal bar with centered text 'Layer' (red bold italic) + 'Normalization' (black bold); the bar plus the \u2295 summation row beneath it are enclosed by a light-green dashed rounded rectangle.",
+      "colors": [
+        "#C9C9C9",
+        "#CC0000",
+        "#000000",
+        "#EAF6EA",
+        "#00A651",
+        "#8B0000"
+      ],
+      "position": "one unit at \u224818\u201331% height, one at \u224856\u201369% height, each spanning \u224815\u201393% width"
+    },
+    {
+      "type": "other",
+      "description": "Token boxes: 4 rows \u00d7 8 small rectangles (32 total), each divided into 4 vertical color segments (pink, yellow, pale green, lavender) with a thin gray outline; a dark-navy token label (X_/Y_ with subscript) is overlaid at the top-center of each box. Ellipsis dots between the 6th and 7th box: 4 green dots in the bottom row, 5 dark-blue dots in each of the three upper rows (19 dots total).",
+      "colors": [
+        "#FFB6C1",
+        "#FFFF99",
+        "#C1E1C1",
+        "#D8BFD8",
+        "#00008B",
+        "#00CC00"
+      ],
+      "position": "rows at \u224814%, \u224833.5%, \u224855%, \u224891.5% height"
+    },
+    {
+      "type": "arrow",
+      "description": "Arrow system: (a) 8 thick 3-D blue block up-arrows in each of 4 gaps (X row\u2192attention bar, attention bar\u2192Y row, Y row\u2192FFN box, FFN box\u2192Y row), 32 block arrows total; (b) thin green up-arrows through the \u2295 circles (output-of-attention row\u2192bottom bar; post-FFN row\u2192top bar) and from the bottom LayerNorm bar to the post-LayerNorm token row; (c) thin red up-arrows from the top LayerNorm bar to the final Y row (8 arrows per set; 24 green + 8 red thin arrows); (d) orange curved arrows on the left/right edges routing skip connections from the input X row into the bottom \u2295 row and from the post-LayerNorm token row into the top \u2295 row (the 'Residual Connections'), drawn one per side per set (4 curves total).",
+      "colors": [
+        "#3B3BE0",
+        "#00A651",
+        "#CC0000",
+        "#E8A33D"
+      ],
+      "position": "throughout the diagram, aligned to the 8 token columns"
+    },
+    {
+      "type": "other",
+      "description": "16 dark-red filled circles with a white bold '+' (\u2295 residual summation nodes), 8 per LayerNorm unit, one per token column.",
+      "colors": [
+        "#8B0000",
+        "#FFFFFF"
+      ],
+      "position": "rows at \u224828% and \u224866% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "'Final Output' callout: small pink rectangle with red border and red bold italic two-line text 'Final' / 'Output', labeling the final token row.",
+      "colors": [
+        "#FFCCCC",
+        "#CC0000"
+      ],
+      "position": "top-left, \u22487\u201317% width, \u224810\u201319% height"
+    }
+  ],
+  "imagery": [
+    "No photographs, illustrations or icons; all graphics are schematic vector shapes (boxes, arrows, dots, circles). A small black mouse cursor (video artifact, not slide content) is visible at \u224820% width, \u224840% height, near the left edge of the Feed Forward box."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "N/A \u2014 no title text on the original slide",
+    "body_text": "#1A1A1A",
+    "accents": [
+      "#00008B",
+      "#0000CC",
+      "#CC0000",
+      "#00A651",
+      "#E8A33D",
+      "#8B0000",
+      "#CC00CC",
+      "#FFCCCC",
+      "#D6E4F7",
+      "#3B3BE0",
+      "#C9C9C9",
+      "#EAF6EA",
+      "#FFB6C1",
+      "#FFFF99",
+      "#C1E1C1",
+      "#D8BFD8",
+      "#00CC00",
+      "#B03030",
+      "#800000",
+      "#E8E8E8",
+      "#C0C0C0",
+      "#000000"
+    ]
+  },
+  "typography_notes": "No title. Mixed serif-italic and bold-sans styling: 'Layer' in red bold italic (Times-like serif) beside 'Normalization' in black bold sans; 'Final Output' in red bold italic serif; 'Multi Head Self Attention Block' in white bold sans (Arial-like, \u224818pt); 'Feed Forward Networks [ One Hidden with  RELU Activation]' in blue bold \u224814pt; left-side annotations in small (\u224811pt) bold italic sans, color-coded red/orange/blue; token labels \u22489pt dark navy with numeric subscripts; bottom caption bold dark red (#800000) and clipped. No all-caps blocks, no numbered bullets, no italics-only emphasis beyond those noted.",
+  "animation_state": "No mid-build state \u2014 the full diagram is visible in one frame. A small black mouse cursor near the FFN box (\u224820% width, \u224840% height) indicates this is a frame from a narrated video; nothing is partially revealed.",
+  "recreation_brief": "1. Slide setup: 16:9, white #FFFFFF background. Add NO title, subtitle, slide number, watermark, logo, or date \u2014 none exist on the original. 2. Outer frame: no-fill rectangle with \u22482.5pt #00008B border spanning x \u22485.5\u201394.5%, y \u22487.5\u201393.5%. 3. Token-box template: rectangle \u22484.2% wide \u00d7 4% tall, thin gray outline, split into 4 equal vertical segments colored left\u2192right #FFB6C1, #FFFF99, #C1E1C1, #D8BFD8; overlay the token label at top-center in #00008B \u22489pt with a numeric subscript. 4. Place 4 token rows (32 boxes) at y-centers \u224814% (final output row), \u224833.5% (post-FFN), \u224855% (post-LayerNorm), \u224891.5% (input); in each row put 8 boxes at x-centers \u224820.5%, 27%, 33.5%, 42%, 49.5%, 57%, 77.5%, 84.5%. Between the 6th and 7th boxes place ellipsis dots: 5 dark-blue #00008B dots in each of the three upper rows and 4 green #00CC00 dots in the bottom row (19 dots total). Labels: bottom row X_0, X_1, X_2, X_3, X_4, X_5[?], X_N3[?], X_N4[?]; the three upper rows (identical) Y_0, Y_1, Y_2, Y_3, Y_4, Y_5[?], Y_N3[?], Y_N4[?]. 5. Attention bar: solid #00008B rectangle spanning x \u224817\u201392%, y \u224878\u201386%, with centered white #FFFFFF bold sans \u224818pt text 'Multi Head Self Attention Block'. 6. Thick arrows: 32 3-D blue #3B3BE0 block up-arrows (8 per set, aligned to the token columns) in 4 sets: input X row \u2192 attention bar; attention bar \u2192 token row at y \u224869\u201374%; token row at y \u224853\u201357% \u2192 FFN box; FFN box \u2192 token row at y \u224831\u201337%. 7. FFN box: #D6E4F7-filled rectangle with \u22481.5pt #0000CC border, x \u224816\u201393%, y \u224837\u201349%; blue #0000CC bold \u224814pt title centered near the top: 'Feed Forward Networks [ One Hidden with  RELU Activation]'. Along its lower half place 8 mini FFN icons aligned to the token columns: each a small thin #B03030-bordered box containing 4\u20135 magenta #CC00CC up-arrows feeding a horizontal row of 4\u20135 green #00A651 dots, with a tiny red 'RELU' tag at its top-right. 8. LayerNorm units (build twice): light-green #EAF6EA dashed rounded rectangle (\u22481.5pt dashed #00A651 border) spanning x \u224815\u201393% \u2014 top unit y \u224818\u201331%, bottom unit y \u224856\u201369%. Inside each: gray bar (gradient #E8E8E8\u2192#C0C0C0, reads as #C9C9C9) spanning x \u224817\u201390% (top unit y \u224819\u201324%, bottom unit y \u224857\u201362%) with centered \u224816pt rich text 'Layer' (red #CC0000 bold italic serif) + 'Normalization' (black #000000 bold sans); below the bar a row of 8 dark-red #8B0000 filled circles (\u22481.6% wide), each with a white bold '+' (top unit y \u224828%, bottom unit y \u224866%), one per token column. 9. Thin arrows (32 total, 8 per set): green #00A651 up-arrows in 3 sets \u2014 token row at y \u224869\u201374% up through the bottom \u2295 circles into the bottom bar; bottom bar up into the token row at y \u224853\u201357%; token row at y \u224831\u201337% up through the top \u2295 circles into the top bar; red #CC0000 up-arrows in 1 set \u2014 top bar up into the final token row at y \u224811\u201317%. 10. Residual connections: 4 orange #E8A33D curved connectors (\u22482pt), one per side per set: 2 rising from the input X row (y \u224889\u201394%) along the left and right frame edges into the bottom \u2295 row (y \u224866%), and 2 rising from the post-LayerNorm row (y \u224853\u201357%) along the left and right edges into the top \u2295 row (y \u224828%). 11. Left annotation column (x \u22487\u201317%): four two-line bold italic \u224811pt labels, top\u2192bottom: 'Residual' / 'Connections' in orange #E8A33D at y \u224838\u201344%; 'Output of Self' / 'Attention' in blue #0000CC at y \u224870\u201375%; 'Residual' / 'Connections' in orange #E8A33D at y \u224879\u201384%; 'Input  to Self' / 'Attention' in red #CC0000 at y \u224887\u201392%. 12. Final Output callout: #FFCCCC-filled rectangle with \u22481.5pt #CC0000 border, x \u22487\u201317%, y \u224810\u201319%, with centered red #CC0000 bold italic \u224814pt two-line text 'Final' / 'Output'. 13. Bottom caption: 'Word Embedding  +  Positional Information' (keep the double spaces; source may show underscore joins [?]) in bold \u224811pt #800000, centered around x \u224828\u201358% at y \u224893% at the frame's bottom edge. 14. Optional letterbox: to mimic the video frame, add a solid black #000000 bar across the full width at y \u224893.5\u2013100% so it clips the bottom caption; this is a video artifact, not slide content. Also do NOT draw the small black mouse cursor visible at \u224820% width, \u224840% height \u2014 it is a video artifact.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "slide_title was null: reconstructed as 'Transformer Encoder Block (reconstructed \u2014 original slide has no title)' from the visual_elements diagram description; the brief still forbids rendering any on-slide title.",
+      "subtitle_or_header was null: set to an explicit 'None' note clarifying that the pink 'Final Output' callout is a diagram label, not a header.",
+      "verbatim_text.bullets was empty: inserted one explicit note that the slide contains no bullet text (all text lives in labels/equations).",
+      "colors.title_text was null: set to 'N/A \u2014 no title text on the original slide'.",
+      "Resolved the upper-residual contradiction: visual_elements[0](h) said orange curves come 'from row (g)' (post-FFN row) while recreation_brief said from the row at \u224853\u201357% (post-LayerNorm); standardized to the post-LayerNorm row (the FFN input), matching the brief's coordinates, the 'Residual Connections' annotation at y\u224838\u201344%, and standard encoder-block wiring; updated visual_elements[0](h), visual_elements[5](d), and both LayerNorm region descriptions.",
+      "Fixed visual_elements[5](b): 'from each LayerNorm bar to the next token row' \u2192 'from the bottom LayerNorm bar to the post-LayerNorm token row' (the top bar's arrows to the final row are red per item (c) and the 'Final token row' region).",
+      "Standardized the orange annotation color from #E8960C to #E8A33D to match colors.accents and the residual-connector color.",
+      "Harmonized FFN box height in the brief from \u224837.5\u201348.5% to \u224837\u201349% to match layout.regions and visual_elements.",
+      "Expanded colors.accents to include every color referenced elsewhere: #C9C9C9, #EAF6EA, #FFB6C1, #FFFF99, #C1E1C1, #D8BFD8, #00CC00, #B03030, #800000, #E8E8E8, #C0C0C0, #000000.",
+      "Harmonized the 'Layer' style note in verbatim_text.labels to 'red bold italic' (was 'red italic') to match typography_notes and the LayerNorm visual element.",
+      "Added exact counts throughout: 32 token boxes (4 rows \u00d7 8), 19 ellipsis dots (15 dark-blue + 4 green), 32 block arrows, 32 thin arrows (24 green + 8 red), 16 \u2295 circles, 8 FFN mini-icons, 4 orange residual curves (2 per set), 4 left annotations (8 lines).",
+      "Added explicit exclusions to the brief: no mouse cursor (video artifact at \u224820% width, \u224840% height) and no title/slide number/logo/watermark/date."
+    ],
+    "uncertain_items": [
+      "Token labels X_5 [?], X_N3 [?], X_N4 [?] (input row) and Y_5 [?], Y_N3 [?], Y_N4 [?] (three upper rows): rightmost subscripts read as 'N3'/'N4' but may be 'N\u22123'/'N\u22124'; [?] markers kept.",
+      "Bottom caption 'Word Embedding  +  Positional Information [?]': partially clipped by the black letterbox; words may be underscore-joined; [?] kept.",
+      "FFN mini-icons: exact count of magenta arrows and green dots per icon is a 4\u20135 range in the source; exact per-icon count unverifiable.",
+      "Orange residual curves: source specifies left/right edge curves but no exact count; brief assumes 1 per side (2 per set, 4 total).",
+      "Origin row of the upper residual connection could not be verified against the image (contradiction resolved via internal evidence \u2014 see fixes_applied).",
+      "Mouse cursor position (\u224820% width, \u224840% height) is approximate; it is a video artifact and excluded from recreation."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_046.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 46,
+      "image": "slide_046.jpg",
+      "kept_frame": "frame_03828.jpg",
+      "start_sec": 3827.0,
+      "end_sec": 3899.0,
+      "frame_count": 73,
+      "old_slide": 115,
+      "founder_frame_swap": true,
+      "original_kept_frame": "frame_03900.jpg",
+      "note": "old group split with new slide 47; founder kept frame_03828.jpg (mid-group state) over the group's final kept frame"
+    },
+    "elapsed_s": 670.9,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 893.1
+  }
+}

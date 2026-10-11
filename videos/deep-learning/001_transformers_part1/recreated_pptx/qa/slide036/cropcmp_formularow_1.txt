@@ -1,0 +1,32 @@
+## Element-by-element comparison
+
+**Left box ("SoftMax [wâ²áµ¢â±¼]"):**
+- "SoftMax" label: present, dark red, bold, vertically centered in box. Matches original position/size. â
+- Brackets: present, dark red, square-bracket style matching original. **However, in the recreation the brackets are dramatically oversized relative to their contents** â they span roughly 3Ã the height of the enclosed wâ²áµ¢â±¼, leaving large empty space above and below the ink, whereas in the original the brackets hug the expression much more closely (~1.3â1.5Ã the text height). The enclosed wâ²áµ¢â±¼ is vertically centered (rule 2 satisfied), and the bracket strokes do not overlap the text (rule 7 satisfied), but the size/proportion of the delimiter vs. its content is a visible deviation from the original. **MAJOR, confidence: high** (easily measured: bracket height â 3Ã glyph height in IMG1 vs â 1.4Ã in IMG2).
+
+**Middle box ("SoftMax (wâ²áµ¢â±¼ / âd)"):**
+- Label and box: match.
+- Fraction rendered in professional 2D format: wâ²áµ¢â±¼ over a horizontal bar over âd â matches the original's 2D stacked layout (original is also 2D here, so no format-upgrade question arises). â
+- Parentheses: span the full fraction top-to-bottom, no overlap with ink, curvature style consistent with original. The recreation's parentheses extend slightly further below the âd than the original's, but within acceptable tolerance. MINOR at most. **MINOR, confidence: medium.**
+- Vertical centering of fraction within parentheses: centered. â
+
+**Right box ("d=100, âd =10"):**
+- Text verbatim, blue color matches, â radical rendered as in original. â
+- Spacing: recreation shows a slightly wider gap between "âd" and "=10" than the original. **MINOR, confidence: medium.**
+
+**Chrome/geometry:**
+- Three red-bordered boxes at matching relative positions, middle box taller than side boxes â matches original layout. â
+- Bottom-edge purple/black strip artifacts present in both crops (video-capture artifact; correctly mirrored/omitted, not a content element). Not a discrepancy.
+- Background tint difference (grey vs. beige) is house-template chrome per rule (a). Not a discrepancy.
+
+## Discrepancy list
+1. **MAJOR** â Left box: bracket delimiters oversized ~2Ã relative to enclosed wâ²áµ¢â±¼ vs. original proportions (confidence: high).
+2. **MINOR** â Middle box: parentheses extend slightly below âd further than original (confidence: medium).
+3. **MINOR** â Right box: gap between "âd" and "=10" slightly wider than original (confidence: medium).
+
+No BLOCKERs: no missing elements, no frame overflow (all three boxes' ink fully contained), no table data, no clipping, no collisions, all text verbatim.
+
+## Visual-quality defects in the recreation
+- The oversized left-box brackets read visually as a mostly-empty bracket pair; the small wâ²áµ¢â±¼ floating in the middle looks slightly unbalanced compared to the original, though legible and non-overlapping.
+
+FINAL VERDICT: **PASS** for 'faithful, usable recreation' (the oversized-bracket proportion is the one notable deviation; all content, text, geometry, and colors are faithful).

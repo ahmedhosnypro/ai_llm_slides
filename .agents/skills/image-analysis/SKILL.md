@@ -1,6 +1,6 @@
 ---
 name: image-analysis
-version: 1.3.1
+version: 1.4.0
 description: Harsh multi-model UI/UX screenshot auditing through the local vision gateway. Use whenever the user asks to analyze, audit, critique, or verify any screenshot, capture, or rendered view (app, Storybook, design comps) — including "find visual defects", "score this view", "compare captures", "verify the fix visually", "run the visual gate", or any multi-model/differential image analysis. Also use when a subagent needs vision evidence for a UI task. Covers capture discipline (agent-browser under the RAM lock), per-image vision analysis via scripts/analyze_image.py, cross-model differential adjudication (DOM-verify before believing), severity-ranked defect registers, and the self-improving shared prompt vocabulary.
 ---
 
@@ -32,7 +32,7 @@ frozen and carries only the model-facing rules.
 
 Key flags and their reasons:
 
-- `--view "Name — purpose"` and `--capture "WxH CSS px, scale, app|storybook"":
+- `--view "Name — purpose"` and `--capture "WxH CSS px, scale, app|storybook"`:
   context injection, built into the script. ALWAYS pass both — the original
   round-1 lane that skipped them produced transcripts whose models explicitly
   complained the context was missing, degrading every judgment downstream.
@@ -146,7 +146,9 @@ the authoritative reliability inventory (`ai/plans/view-audit/wave5/route-census
 ## The workflow (five stages)
 
 1. **CAPTURE** — all agent-browser work under the RAM lock
-   (`python3 scripts/agent-browser-lock.py run -- agent-browser --session <unique> <args>`),
+   (`python3 scripts/agent-browser-lock.py run -- agent-browser --session <unique> <args>`)
+   [2026-10-11: superseded — that lock script does not exist in this project; see the
+   2026-10-11 amendment below.],
    explicit viewport numbers (zsh does not word-split unquoted variables), settle
    ≥4s after navigation, and pass `--hide-scrollbars false` whenever scrollbar
    evidence matters (headless Chromium hides native scrollbars by default —
@@ -359,3 +361,27 @@ founder's 2026-09-30 post-migration truth:
   It existed to reach 17844 while the committed route 401'd the then-banked
   key; the migration + key rotation removed its reason. Never revive it —
   no endpoint overrides, in-memory or otherwise.
+
+## AMENDMENT 2026-10-11 — transplant repairs (location + missing capture lock)
+
+Appended by the skill-creator gate in `ai_llm_slides` after this skill was
+found unloadable by agents. Version 1.3.2 → 1.4.0. Two repairs; no other
+doctrine above changes.
+
+- **Location.** The skill sat at `.agents/image-analysis/` — one level too
+  shallow for the project skill loader, which scans `.agents/skills/`. It now
+  lives at `.agents/skills/image-analysis/` (moved with `git mv`, history
+  kept). The body's references to
+  `.agents/skills/image-analysis/assets/…` are correct at this location.
+- **Capture lock script.** `scripts/agent-browser-lock.py` does not exist in
+  this project and is not in this skill's `scripts/` dir — the CAPTURE stage's
+  lock-wrapped invocation cannot run here. [2026-10-11: superseded — capture
+  with agent-browser directly under a unique `--session` name, keeping the
+  rest of the CAPTURE rules: explicit viewport numbers, ≥4s settle,
+  PIL-check every PNG, verify story ids against `index.json`. If the RAM-lock
+  discipline is wanted here, port the lock script into this skill's
+  `scripts/` dir; do not improvise one mid-lane.]
+
+Historical note: evidence paths under `ai/plans/view-audit/wave5/…` cite the
+origin project's outcome tree, which does not exist in this repo — they are
+provenance for the rules above, not local records to consult.

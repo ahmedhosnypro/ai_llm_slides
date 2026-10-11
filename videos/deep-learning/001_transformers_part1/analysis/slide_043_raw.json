@@ -1,0 +1,242 @@
+{
+  "slide_title": "Multi Head Self Attention of Word X\u2082",
+  "subtitle_or_header": "\"Wide\" Architecture",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "43",
+      "1\u00d7d",
+      "Linear Transformation    [ T ] dH\u00d7d",
+      "Concatenated Vector",
+      "1\u00d7dH",
+      "Similarity",
+      "Weighted SUM",
+      "h=1",
+      "h=2",
+      "h=3",
+      "h=4",
+      "h=5",
+      "Probabilities",
+      "Dot Product",
+      "K,q",
+      "Scaling by \u221ad",
+      "K,q / \u221ad",
+      "Soft max",
+      "\u03a3",
+      "K",
+      "V\u2081",
+      "V\u2082",
+      "V\u2083",
+      "V\u2084",
+      "X\u2081",
+      "X\u2082",
+      "X\u2083",
+      "X\u2084",
+      "q\u2081",
+      "W_k^0",
+      "W_k^1",
+      "W_k^2",
+      "W_k^3",
+      "W_v^0",
+      "W_v^1",
+      "W_v^2",
+      "W_v^3",
+      "H^th Heads",
+      "W_q^0",
+      "W_q^1",
+      "W_q^2",
+      "W_q^3",
+      "W",
+      "d\u00d7d",
+      "d: Embedding Length",
+      "\u2297",
+      "Y",
+      "Y\u2081 Y\u2082 Y\u2083 Y\u2084 Y\u2085 [?] (tiny labels inside concatenated-vector segments)"
+    ],
+    "equations": [
+      "Linear Transformation [T]_{dH\u00d7d}",
+      "K,q / \u221ad",
+      "Scaling by \u221ad",
+      "Soft max",
+      "\u03a3 (Weighted SUM)",
+      "Concatenated Vector 1\u00d7dH",
+      "Dot Product",
+      "H^th Heads",
+      "1\u00d7d",
+      "d\u00d7d"
+    ]
+  },
+  "layout": {
+    "arrangement": "Full-bleed diagram slide inside a dark-red rectangular frame on a light-gray background: title block top-right with yellow slide-number circle at the far corner; a vertical output pipeline (small Y vector \u2192 'Linear Transformation [T] dH\u00d7d' box \u2192 long 'Concatenated Vector 1\u00d7dH' bar) runs down the top-center; five perspective-stacked rounded 'cards' (h=1 front \u2026 h=5 back) fill the center and left; the front salmon card contains the detailed single-head computation (inputs \u2192 W_k \u2192 Dot Product \u2192 Scaling \u2192 Soft max \u2192 \u03a3/Weighted SUM \u2192 \u2297 \u2192 W_v \u2192 outputs); bottom-left shows the input word row with X\u2082 highlighted; right side holds a thick red curved 'H^th Heads' arrow plus a staggered cluster of blue W_q/W_k/W_v chips; pale-green legend box bottom-right.",
+    "regions": [
+      {
+        "name": "Title block",
+        "position": "top-right, x\u224855\u201395%, y\u22488\u201318%",
+        "content": "Two-line bold title with red X\u2082 and yellow-highlighted \"Wide\"; yellow '43' circle at x\u224896%."
+      },
+      {
+        "name": "Output pipeline",
+        "position": "top-center, x\u224818\u201377%, y\u22488\u201330%",
+        "content": "Small segmented output vector labeled 1\u00d7d, down-arrow to white 'Linear Transformation [T] dH\u00d7d' box, down-arrow to 5-segment concatenated vector bar with red label 'Concatenated Vector 1\u00d7dH' on its left."
+      },
+      {
+        "name": "Stacked head layers",
+        "position": "center-left, x\u22485\u201385%, y\u224830\u201398%",
+        "content": "Five overlapping rounded cards h=1(salmon, front)\u2192h=5(peach, back), each with 'Similarity' and 'Weighted SUM' ovals, a dark segmented head-output vector, and an h=N tag; front card contains the full attention flowchart."
+      },
+      {
+        "name": "Query row",
+        "position": "bottom-left/center, x\u224813\u201360%, y\u224888\u2013100%",
+        "content": "Red q\u2081 vector bar and row of X\u2081 X\u2082 X\u2083 X\u2084 chips with X\u2082 filled magenta and a small red arrow pointing into it; thin red curve running right along the bottom."
+      },
+      {
+        "name": "Heads arrow + weight chips",
+        "position": "right, x\u224858\u201395%, y\u224855\u201395%",
+        "content": "Thick dark-red curved arrow labeled 'H^th Heads' (blue italic) and ~12 small blue W_q/W_k/W_v chips in staggered columns."
+      },
+      {
+        "name": "Legend",
+        "position": "bottom-right, x\u224879\u201398%, y\u224886\u201399%",
+        "content": "Pale-green dashed-border box: 1\u00d7d vector icon, yellow 'W' square, '=', d\u00d7d grid icon, red caption 'd: Embedding Length'."
+      }
+    ],
+    "hierarchy": "The salmon h=1 layer with its dense internal flowchart dominates visually; second-level anchors are the orange-bordered concatenated vector bar and the thick red curved arrow; the title is secondary (top-right, bold but small relative to diagram); smallest elements are the white oval stage labels, blue W chips, and tiny vector cells."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Output pipeline (top): (a) small rounded vector box of ~4 cells \u2014 green cell labeled 'Y' plus pink cells \u2014 captioned '1\u00d7d' to its right; (b) black down-arrow into white rectangle 'Linear Transformation    [ T ] dH\u00d7d' (H subscripted); (c) black down-arrow into (d) a wide rounded 'Concatenated Vector' bar, orange border, divided into 5 colored segments left\u2192right: dark red, dark gray, yellow, green, pink, each containing a tiny white vector chip labeled Y with subscript [?]; red bold two-line label 'Concatenated Vector' / '1\u00d7dH' sits left of the bar; five thin red arrows rise from the five head-output vectors into the bar's five segments.",
+      "colors": [
+        "#FFFFFF",
+        "#000000",
+        "#FFA500",
+        "#8B0000",
+        "#404040",
+        "#FFD700",
+        "#6DBB5A",
+        "#F8B8D8",
+        "#CC0000",
+        "#90EE90"
+      ],
+      "position": "top-center, x\u224818\u201377%, y\u22488\u201330%"
+    },
+    {
+      "type": "diagram",
+      "description": "Five large rounded-rectangle layer cards stacked with perspective offset (each card behind shifts right ~4% and up ~5%): front h=1 salmon-red, h=2 lavender, h=3 pale yellow, h=4 pale green, h=5 peach. Each card has a dark rounded tag on its right edge with white text: 'h=1' (dark red fill), 'h=2','h=3','h=4','h=5' (dark charcoal fill). Along/near each card's top edge: white oval 'Similarity' (left) and white oval 'Weighted SUM' (right), 5 occurrences each on a diagonal; between them that head's output vector \u2014 a small dark segmented box (h=1 dark red/charcoal with red+green cells, h=2 dark charcoal, h=3 yellow, h=4 green, h=5 pink).",
+      "colors": [
+        "#F08080",
+        "#C8C8F0",
+        "#FCFCB0",
+        "#CCFFCC",
+        "#FFE4C4",
+        "#8B0000",
+        "#2F2F2F",
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "center, x\u22485\u201385%, y\u224830\u201395%"
+    },
+    {
+      "type": "flowchart",
+      "description": "Front (h=1) layer internal detail, left\u2192right: four green-dashed input chips labeled X\u2081,X\u2082,X\u2083,X\u2084 (pale fill, pink inner cells) \u2192 four royal-blue weight chips W_k^0,W_k^1,W_k^2,W_k^3, each with a tiny 'K' output label \u2192 tan 'Dot Product' box containing ~4 blue dots joined by thin lines (q\u00b7k products), fed from below by red query vector q\u2081 \u2192 label 'K,q' \u2192 vertical pink rounded box with rotated text 'Scaling by \u221ad', label 'K,q / \u221ad' above it \u2192 vertical pink rounded box 'Soft max' \u2192 label 'Probabilities' with a thick green arrow \u2192 white box with large '\u03a3' beside white oval 'Weighted SUM' \u2192 vertical column of four red \u2297 (circled-X) symbols labeled V\u2081,V\u2082,V\u2083,V\u2084 \u2192 four royal-blue chips W_v^0,W_v^1,W_v^2,W_v^3 fed from four green-dashed chips X\u2081,X\u2082,X\u2083,X\u2084 on the layer's right side; red arrows carry products up to \u03a3 and onward to h=1's dark output vector.",
+      "colors": [
+        "#F08080",
+        "#90EE90",
+        "#3366CC",
+        "#DEB887",
+        "#EE82EE",
+        "#CC0000",
+        "#00AA00",
+        "#FFFFFF",
+        "#FFB6C1"
+      ],
+      "position": "inside front layer, x\u22485\u201362%, y\u224850\u2013100%"
+    },
+    {
+      "type": "diagram",
+      "description": "Query row: red horizontal vector bar labeled 'q\u2081' with arrow up into the Dot Product box; below the layer, a row of four green-dashed chips X\u2081 X\u2082 X\u2083 X\u2084 where X\u2082 is filled magenta/pink (the word being attended); a small red arrow points up-right into X\u2082 from lower-left; a long thin red curve runs from this row rightward along the slide bottom to the tail of the large heads arrow.",
+      "colors": [
+        "#CC0000",
+        "#90EE90",
+        "#FF69B4"
+      ],
+      "position": "bottom-left/center, x\u224813\u201360%, y\u224888\u2013100%"
+    },
+    {
+      "type": "arrow",
+      "description": "Thick dark-red curved 'swoosh' arrow starting near bottom-center (x\u224855%, y\u224884%) sweeping right and up to (x\u224887%, y\u224860%), annotated 'H^th Heads' in blue italic (th superscript) along its upper end; indicates the query flows to all H heads. To its left stand ~12 small royal-blue chips with white labels in staggered columns: W_q^0,W_q^1,W_q^2,W_q^3; W_k^0,W_k^1,W_k^2,W_k^3; W_v^0,W_v^1,W_v^2,W_v^3 (per-head query/key/value projection matrices; a few labels partially overlapped [?]).",
+      "colors": [
+        "#8B0000",
+        "#0033CC",
+        "#3366CC"
+      ],
+      "position": "right side, x\u224858\u201395%, y\u224855\u201395%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Legend box, pale-green fill with dashed green border: small segmented vector icon captioned '1\u00d7d'; yellow square containing 'W'; '=' sign; small grid/matrix icon captioned 'd\u00d7d'; red bold caption underneath: 'd: Embedding Length'.",
+      "colors": [
+        "#E8FFE8",
+        "#00AA00",
+        "#FFD700",
+        "#CC0000",
+        "#000000"
+      ],
+      "position": "bottom-right, x\u224879\u201398%, y\u224886\u201399%"
+    },
+    {
+      "type": "other",
+      "description": "Slide number badge: yellow circle with black '43' and thin dark outline at top-right corner.",
+      "colors": [
+        "#FFD700",
+        "#000000"
+      ],
+      "position": "top-right corner, x\u224895\u201399%, y\u224810\u201317%"
+    },
+    {
+      "type": "other",
+      "description": "Dark-red rectangular frame bordering the entire slide content (gray fill inside, white canvas outside).",
+      "colors": [
+        "#C00000",
+        "#E0E0E0",
+        "#FFFFFF"
+      ],
+      "position": "full-slide perimeter"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; the slide is entirely flat vector-diagram style (rounded layer cards, segmented vector boxes, blue weight-matrix chips, ovals, dotted dot-product box, curved red arrow), typical of hand-built PowerPoint lecture diagrams."
+  ],
+  "colors": {
+    "background": "#E0E0E0 (light gray inside the red frame; outer canvas white #FFFFFF)",
+    "title_text": "#000000 (with 'X\u2082' in red #CC0000)",
+    "body_text": "#000000",
+    "accents": [
+      "#CC0000",
+      "#FFFF00",
+      "#3366CC",
+      "#F08080",
+      "#00AA00",
+      "#FF69B4",
+      "#FFA500",
+      "#8B0000"
+    ]
+  },
+  "typography_notes": "All sans-serif (Arial/Verdana-like). Title and subtitle bold, ~18\u201320pt, black; 'Wide' carries a yellow highlight; X\u2082 rendered red with true subscript. Diagram labels are very small (~7\u20139pt). 'Scaling by \u221ad' and 'Soft max' are rotated 90\u00b0 (vertical text) inside tall pink pills. White bold text on dark h=N tags and blue W chips. Red bold used for 'Concatenated Vector', '1\u00d7dH', 'd: Embedding Length'; blue italic for 'H^th Heads'. Subscripts used throughout (X\u2081\u2026X\u2084, V\u2081\u2026V\u2084, q\u2081, dH). No bullet list, no numbered items.",
+  "animation_state": "Slide appears fully built \u2014 all five head layers, all labels, arrows, and the legend are visible; no mid-build reveal detected.",
+  "recreation_brief": "1. Slide setup: light-gray (#E0E0E0) background; draw a dark-red (#C00000) rectangle outline inset ~4% from every edge as a frame. 2. Title top-right (right-aligned text box, x\u224855\u201395%, y\u22489\u201316%): line 1 'Multi Head Self Attention of Word X\u2082' \u2014 Arial Bold 18pt black, with 'X' and subscript '2' in red #CC0000; line 2 '\"Wide\" Architecture' \u2014 Arial Bold 18pt, yellow (#FFFF00) highlight on '\"Wide\"' including the quotes. At x\u224896%, y\u224811% add a yellow (#FFD700) circle (~0.5\") with black bold '43'. 3. Output pipeline top-center: small rounded vector box (green #90EE90 cell labeled 'Y' + pink #F8B8D8 cells) at x\u224843\u201352%, y\u22489\u201314%, caption '1\u00d7d' (Arial 9pt) at its right; black down-arrow into a white rectangle (black outline) at x\u224835\u201360%, y\u224816\u201321% containing 'Linear Transformation    [ T ] dH\u00d7d' (Arial 12pt, H subscripted); black down-arrow to step 4. 4. Concatenated bar: rounded rectangle x\u224834\u201377%, y\u224824\u201329%, orange #FFA500 border, split into 5 segments filled dark red #8B0000, dark gray #404040, yellow #FFD700, green #6DBB5A, pink #F8B8D8, each holding a tiny white vector chip labeled Y\u2081\u2026Y\u2085; to its left, red #CC0000 bold 10pt two lines: 'Concatenated Vector' / '1\u00d7dH' (H subscript). 5. Layer cards: five rounded rectangles ~62% wide \u00d7 48% tall, stacked so each back card offsets +5% x / \u22125% y: h=1 #F08080, h=2 #C8C8F0, h=3 #FCFCB0, h=4 #CCFFCC, h=5 #FFE4C4; on each right edge a dark rounded tag (h=1 #8B0000, h=2\u20135 #2F2F2F) with white bold 9pt 'h=1'\u2026'h=5'. 6. Head outputs: above each card's top edge a small dark segmented vector box (h=1 dark red/charcoal with red+green cells, h=2 #3A3A3A, h=3 #FFD700, h=4 #6DBB5A, h=5 #F8B8D8), flanked by white ovals (thin black outline, 8pt): 'Similarity' left, 'Weighted SUM' right; draw five thin red #CC0000 arrows from the five output boxes up into the bar's five matching segments. 7. h=1 detail (front card), left\u2192right: four dashed-green-border (#00AA00) input chips labeled X\u2081\u2013X\u2084 (pale #FFFFE0 fill, pink #FFB6C1 cells); arrows to four blue #3366CC chips 'W_k^0'\u2013'W_k^3' (white 8pt, k subscript, 0\u20133 superscript) each with tiny 'K' at output; tan #DEB887 rounded box 'Dot Product' containing 4 blue dots joined by thin lines; label 'K,q'; tall pink #EE82EE pill with rotated text 'Scaling by \u221ad' and label 'K,q / \u221ad' above; second tall pink pill 'Soft max'; label 'Probabilities' with thick green #00AA00 arrow; white box with large '\u03a3' (24pt) beside white oval 'Weighted SUM'; column of four red \u2297 symbols labeled V\u2081\u2013V\u2084; four blue chips 'W_v^0'\u2013'W_v^3'; four dashed-green chips X\u2081\u2013X\u2084 on the card's right side; red arrows: right X's \u2192 W_v chips \u2192 V labels \u2192 \u2297 column \u2192 up to \u03a3 \u2192 up to h=1 output vector. 8. Query row: red #CC0000 bar labeled 'q\u2081' with arrow up into Dot Product; below the card, four dashed-green chips X\u2081\u2013X\u2084 with X\u2082 filled magenta #FF69B4 and a small red arrow pointing into it from lower-left. 9. Heads arrow: thick (~8pt) dark-red #8B0000 curved arrow from x\u224855%, y\u224884% sweeping to x\u224887%, y\u224860%; blue #0033CC italic 10pt 'H^th Heads' (th superscript) along its end; thin red curve from the X\u2082 row (x\u224825%, y\u224897%) rightward to the arrow's tail. 10. Weight chips: right of the cards place 12 small blue #3366CC chips (white 7pt) in three staggered columns: W_q^0\u2013W_q^3, W_k^0\u2013W_k^3, W_v^0\u2013W_v^3. 11. Legend bottom-right (x\u224879\u201398%, y\u224886\u201399%): pale-green #E8FFE8 rectangle, dashed green border; inside: small segmented vector chip captioned '1\u00d7d'; yellow #FFD700 square with 'W'; '='; small 4\u00d74 grid icon captioned 'd\u00d7d'; red bold 9pt 'd: Embedding Length' centered at bottom. 12. Use Arial everywhere; title/subtitle bold 18pt, diagram labels 7\u20139pt, and make all subscripts (X\u2081\u2026, V\u2081\u2026, q\u2081, dH) true subscripts.",
+  "_meta": {
+    "frame": "slide_043.jpg",
+    "model": "glm-5.3-flash",
+    "source_timestamps": {
+      "slide": 43,
+      "image": "slide_043.jpg",
+      "kept_frame": "frame_04114.jpg",
+      "start_sec": 4044.0,
+      "end_sec": 4113.0,
+      "frame_count": 70
+    },
+    "elapsed_s": 639.0,
+    "note": "recovered via the documented fallback model after 7 default-route failures (empty streams/502s) and one 32k reasoning burn; 65536 max_tokens landed; capture parse-verified before writing"
+  }
+}

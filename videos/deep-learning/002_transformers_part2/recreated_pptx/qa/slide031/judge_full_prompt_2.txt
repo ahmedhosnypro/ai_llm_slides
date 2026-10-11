@@ -1,0 +1,67 @@
+You are the visual acceptance gate for slide 031 of /home/ahmed/Projects/ai_llm_slides.
+The session model cannot see images; ALL vision analysis must go through the image-analysis
+skill's script. First read /home/ahmed/Projects/ai_llm_slides/.agents/image-analysis/SKILL.md
+and follow its routing and dispatch law.
+- Render being judged (attempt 2): /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide031/render_2.png
+- Original frame (ground truth): /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/unique_slides/slide_031.jpg
+- Content spec: /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/analysis/slide_031_final.json
+
+Worker --view context for this attempt: attempt 2 of 6. Resumed after the attempt-1 worker
+died mid-fix; attempt 1 was never judged. Attempt-2 changes vs attempt 1: (i) the title
+banner strip is now five separate left-aligned phrases at the frame-measured ink anchors
+(the 29px gap before "[ Two Consecutive Positions ]" that attempt 1 lacked is reproduced),
+with per-phrase font sizes fitted to the original's measured ink widths; (ii) the middle
+panel's vector-A equation rows were re-rendered with tight '+' spacing matching the
+original's printed "Sin (ω(t+δ))" / "cos (ω(t+δ))". The 002 deck's own inset red template
+frame (measured x57..902 y42..517 on the original) is intentionally superseded by the
+playlist house chrome per the founder chrome directive 2026-10-11 — findings about the
+outer frame/badge geometry are overridden by that directive. The solid black footer bar
+y518..539 is the 002 deck template's bottom band (byte-identical on every checked 002
+frame) and is intentionally kept. The derivation panel prints SEVEN rows (the spec's
+"line 3" wraps after "…(cos(b)-1) ] +" in the original) — the frame is ground truth.
+PIL closed-loop facts (banked selfcheck_attempt_2_output.txt): all 24 content regions
+match the original within ±4 render-px at 150 dpi.
+
+Method (mandatory, in order):
+1. Probe the gateway window (NO --models flag — the default route IS the images model):
+   cd /home/ahmed/Projects/ai_llm_slides && scripts/16_vision_gate.sh timeout 150 python3 \
+     .agents/image-analysis/scripts/analyze_image.py analysis \
+     videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide031/render_2.png \
+     --view "Slide 031 recreation attempt 2 — probe" \
+     --capture "150dpi PNG render of a 13.33x7.5in PPTX" \
+     --timeout 120 --rounds 1 --tries 1 \
+     --transcript videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide031/probe_2.txt
+   A valid body opens the window; a hang means sleep 300 and re-probe ONCE.
+2. Comparison (gate wraps timeout, so queue wait never burns the wall).
+   MANDATORY judge parameters (user directive 2026-10-09): `--thinking high`
+   (maximum reasoning effort) and `--max-tokens 65536`.
+   MEASURED FACT (slide-008 worker, 2026-10-09): with `--thinking high`, the
+   comparison RELIABLY exceeds the 240s wall — use the W4 wide wall from the start, do NOT start at 240s:
+   cd /home/ahmed/Projects/ai_llm_slides && scripts/16_vision_gate.sh timeout 540 python3 \
+     .agents/image-analysis/scripts/analyze_image.py comparison \
+     videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide031/render_2.png videos/deep-learning/002_transformers_part2/unique_slides/slide_031.jpg \
+     --view "Slide 031 recreation — fidelity check vs original lecture frame" \
+     --capture "IMG1=150dpi PNG render of a 13.33x7.5in PPTX; IMG2=original lecture video frame" \
+     --thinking high --max-tokens 65536 \
+     --timeout 420 --rounds 1 --tries 1 \
+     --transcript videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide031/judge_attempt_2.txt \
+     -p "<the verbatim banked -p template in judge_prompt_2.txt>"
+   On a hard-wall HangError, retry ONCE at the same wide wall (skill amendment W4).
+   Never wrap analyze_image.py in any other retry loop.
+2b. DEGENERATE GARBAGE RETRY (user directive): if the comparison call aborts with
+   GarbageError, or the winner body you read is degenerate garbage (word salad,
+   looping repetition, no coherent FINAL VERDICT line), the check has NO evidentiary
+   value — re-invoke the comparison (same parameters, new attempt count) up to 3
+   garbage retries before treating it as a failed judge attempt. NEVER certify a
+   pass from a degenerate body; a degenerate body is a FAIL and must be retried.
+3. Read the banked transcript (never Read PNG bytes with the Read tool). The verdict must
+   come from a real comparison winner body — a check without vision evidence is a FAILURE
+   by law; if the comparison never lands, your verdict is fail with issue "no vision evidence".
+4. Standard: fidelity recreation of a plain lecture slide — do not penalize the plain/retro
+   look. Mouse cursors or video-capture artifacts in the original must NOT be recreated;
+   don't flag their absence. Label the certificate: single-read, default route (images),
+   glm leg DEFERRED/BLOCKED.
+
+FINAL MESSAGE (mandatory): line 1 exactly:
+{"page": 1, "verdict": "pass"|"fail", "issues": ["..."]}
+then a short evidence section (transcript paths, findings). You are read-only: fix nothing.

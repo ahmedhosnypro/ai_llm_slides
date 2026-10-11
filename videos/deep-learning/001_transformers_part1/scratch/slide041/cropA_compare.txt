@@ -1,0 +1,63 @@
+# Slide 041 â Center Zoom Crop Pair Analysis (Multi-Head Attention region)
+
+## Element-by-Element Comparison
+
+### 1. Title "Multi-Head Attention"
+- **IMG1:** Red, bold italic, centered, ~y 45â75.
+- **IMG2:** Orange-red, bold italic, ~y 45â70.
+- **Discrepancy:** Hue differs (pure red vs orange-red). **MINOR**, confidence high.
+
+### 2. Top "Linear" box (center, ~x 190â285)
+- Both present, verbatim "Linear", tan fill, brown border, up-arrow above. IMG1's box is noticeably taller (~85px vs ~40px in original scale). **MINOR**, confidence high.
+
+### 3. "Concat" box (~x 190â285)
+- **IMG1:** Dark brown fill, **white** text, y ~210â297.
+- **IMG2:** Light tan fill, **dark** text, y ~228â268.
+- **Discrepancy:** Fill/text color inverted. **MAJOR**, confidence high.
+
+### 4. Arrows from Attention stack â Concat
+- **IMG1:** Single black/red arrow at ~x 237.
+- **IMG2:** Three small up-arrows (~x 240â265), one per head.
+- **Discrepancy:** Missing multi-head arrows. **MAJOR**, confidence medium-high.
+
+### 5. Stacked "Scaled Dot-Product Attention" boxes (~x 65â420)
+- Main red-bordered box with two-line black text present in both. â
+- **IMG1:** Offset copies stack **down-right**; **IMG2:** gray stacked copies offset **up-right** (visible above/right of red box, extending to ~x 460).
+- **Discrepancy:** Stacking offset direction wrong. **MAJOR**, confidence high.
+- **IMG1:** "x h" label at ~x 430; **IMG2:** "â h" at ~x 445 with red bracket stroke. Symbol rendering differs. **MINOR**, confidence medium.
+
+### 6. Green rectangle frame with corner handle squares (IMG2 only)
+- **IMG2:** Thin green rectangle surrounding the whole diagram (~x 55â470, y 95â635) with small corner squares and a dotted leader at top-right.
+- **IMG1:** Absent (only house-template corner brackets, which are chrome).
+- **Discrepancy:** If this annotation rectangle is slide content, it's missing. **MAJOR**, confidence medium (could be a presentation overlay).
+
+### 7. Bottom three "Linear" boxes (~y 450â585)
+- **IMG1:** Plain single boxes at y ~505â585, larger, no stacked copies.
+- **IMG2:** Each Linear box has stacked shadow copies offset up-right behind it; boxes at y ~450â497.
+- **Discrepancies:** (a) Missing stacked copies behind each Linear box â **MAJOR**, confidence high; (b) vertical position/size offset â **MINOR**, confidence high.
+
+### 8. Connectors between stack and Linear boxes
+- **IMG1:** Three short dashed vertical segments (~x 178, 293, 410, y 490â505), no arrowheads.
+- **IMG2:** Solid brown **arrows pointing up** from each Linear stack into the attention box.
+- **Discrepancy:** Wrong connector style and direction. **MAJOR**, confidence high.
+
+### 9. V / K / Q circles (~y 580â620)
+- **IMG1:** Purple "V", purple "K", red "**q**" (lowercase); circles **overlap the bottoms of the Linear boxes** (collision).
+- **IMG2:** Purple "V", purple "K", dark-red "**Q**" (uppercase); circles sit below boxes connected by short vertical lines.
+- **Discrepancies:** (a) "q" vs "Q" capitalization â **MAJOR** (verbatim rule), confidence high; (b) missing connector stems + circle/box collision â **MAJOR**, confidence high; (c) Q circle hue slightly darker in original â **MINOR**.
+
+### 10. Dotted red leader lines
+- Left pair (~y 300, ~y 390) present in both. Right dotted line present in both (~y 400). Top-right dotted leader (IMG2, from green corner square) missing in IMG1 â covered under item 6. **MINOR** otherwise.
+
+### 11. Bottom red bar (IMG2 only, y ~685â690)
+- Thin red horizontal strip at crop bottom, absent in IMG1. **MINOR**, confidence medium (may be slide-edge chrome).
+
+## Visual-Quality Defects (IMG1)
+- V/K/q circles collide with and overlap the bottom edges of the Linear boxes â **collision defect**.
+- Top Linear and Concat boxes oversized relative to original, compressing vertical rhythm.
+- No overflow or clipping of text; all labels legible.
+
+## Summary
+Recurring structural errors: wrong stacking direction of the attention copies, missing stacked copies behind the Linear boxes, missing multi-head arrows, wrong connector style/direction, inverted Concat fill, "q" vs "Q", and a possible missing green annotation rectangle.
+
+**FINAL VERDICT: FAIL** for 'this region faithfully recreated'.

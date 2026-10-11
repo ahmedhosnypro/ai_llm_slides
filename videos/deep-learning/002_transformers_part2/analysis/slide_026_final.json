@@ -1,0 +1,200 @@
+{
+  "slide_title": "Sin/Cos Encoders",
+  "subtitle_or_header": "(an industrial application of Motor Control System)",
+  "verbatim_text": {
+    "bullets": [
+      "Fine Angle: atan(A/B)\n\u2192 Option 1: 16 bit",
+      "Fine Angle: atan(A/B)\n\u2192 Option 2: 12-bit",
+      "Coarse Angle\nIncremental count"
+    ],
+    "labels": [
+      "26",
+      "TIDA-00176",
+      "Position (Angle)",
+      "SPI",
+      "12-bit ADC",
+      "eQEP",
+      "Host MCU Interface",
+      "A, B",
+      "Analog",
+      "A, B,",
+      "TTL",
+      "16-bit high-res path",
+      "Dual ADC",
+      "Analog path",
+      "A+, A-, B+, B-",
+      "R+, R-",
+      "Comparators",
+      "Power Supplies",
+      "24 V",
+      "5 V",
+      "3.3 V",
+      "Encoder Supply: 5.25 V",
+      "Encoder connector",
+      "Differential Sine and Cosine A+, A-, B+, B-, and Marker R+, R-",
+      "Shielded twisted pairs cable, up to 50...150m",
+      "A+, A-, B+, B-, R+, R-",
+      "AC Motor",
+      "Sin/Cos Encoder",
+      "EMC-compliant interface to Sin/Cos incremental position encoder switch",
+      "1-VPP  Differential analog output signals"
+    ],
+    "equations": [
+      "atan(A/B)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Thin dark-red (#800000) border frames the entire slide. Title centered at top in red, subtitle directly below in blue, yellow slide-number circle at top-right. One large white diagram panel occupies the center (~22%-90% width, ~28%-87% height) containing a single left-to-right block diagram. A thick red (#C00000) left-pointing block arrow labeled 'Position (Angle)' sits to the LEFT of the panel (x ~15-22%, y ~55-65%). Red two-line caption centered beneath the diagram. Solid black strip across the very bottom edge.",
+    "regions": [
+      {
+        "name": "Outer frame",
+        "position": "perimeter, ~1.5% inset on all sides",
+        "content": "thin dark-red (#800000) rectangular border around the whole slide"
+      },
+      {
+        "name": "Title",
+        "position": "top-center, y ~8-14%, x ~20-80%",
+        "content": "red bold text 'Sin/Cos Encoders'"
+      },
+      {
+        "name": "Subtitle",
+        "position": "top-center, y ~14-20%, x ~15-85%",
+        "content": "blue bold text '(an industrial application of Motor Control System)'"
+      },
+      {
+        "name": "Slide number",
+        "position": "top-right, x ~88-94%, y ~9-16%",
+        "content": "yellow circle with dark outline containing '26'"
+      },
+      {
+        "name": "Diagram panel",
+        "position": "center, x ~22-90%, y ~28-87%",
+        "content": "white panel with the full TIDA-00176 Sin/Cos encoder interface block diagram (blue MCU box, Host MCU Interface, green dashed TIDA-00176 container, Encoder connector, green-bordered encoder/motor box)"
+      },
+      {
+        "name": "Position arrow",
+        "position": "left of the diagram panel, x ~15-22%, y ~55-65%",
+        "content": "thick red (#C00000) block arrow pointing left, with red bold label 'Position (Angle)' beneath it"
+      },
+      {
+        "name": "Caption",
+        "position": "bottom-center, x ~25-85%, y ~88-94%",
+        "content": "two lines of red bold text: 'EMC-compliant interface to Sin/Cos incremental position encoder switch' and '1-VPP  Differential analog output signals'"
+      },
+      {
+        "name": "Black strip",
+        "position": "bottom edge, full width, y ~96-100%",
+        "content": "solid black horizontal bar"
+      }
+    ],
+    "hierarchy": "The block diagram dominates by area. Largest text is the red title, then the blue subtitle, then the red caption; all diagram labels are small (~8-10pt). The red Position arrow (left of the panel) and the orange/green blocks are the strongest color accents in the diagram area."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "Left-to-right block diagram of the TI TIDA-00176 Sin/Cos encoder interface. (1) Far left: cyan-blue rectangle (MCU peripherals) containing three stacked white sub-blocks: 'Fine Angle: atan(A/B) / \u2192 Option 1: 16 bit', 'Fine Angle: atan(A/B) / \u2192 Option 2: 12-bit', 'Coarse Angle / Incremental count'; on its right edge, small labels 'SPI' (with a tiny chip icon), '12-bit ADC', 'eQEP'. (2) Vertical gray box 'Host MCU Interface' with three labeled connections entering from the blue box: 'SPI' (top), 'A, B / Analog' (middle), 'A, B, / TTL' (bottom). (3) Large light-green container with dashed green border, white tag 'TIDA-00176' at its top-right, containing: white box '16-bit high-res path' above an orange 'Dual ADC' block followed by a green triangle amplifier, outputs labeled 'A+, A-, B+, B-'; white box 'Analog path' with green triangle amplifier, outputs 'A+, A-, B+, B-'; a green comparator block with hysteresis symbol feeding the label 'Comparators', outputs 'R+, R-'; at the bottom an orange 'Power Supplies' block fed from the left by a small gray box '24 V', with output arrows '5 V' and '3.3 V' to the right and the note 'Encoder Supply: 5.25 V' below. (4) Vertical gray box 'Encoder connector' collecting the A+, A-, B+, B-, R+, R- signal lines. (5) White rounded rectangle with thick green border containing: orange box 'Differential Sine and Cosine A+, A-, B+, B-, and Marker R+, R-' at top; curved twisted-pair wires labeled 'A+, A-, B+, B-, R+, R-' with note 'Shielded twisted pairs cable, up to 50...150m'; gray 'AC Motor' illustration at top-right; orange box 'Sin/Cos Encoder' at bottom coupled to the motor. Arrows flow left-to-right from the MCU interface through the three signal paths to the Encoder connector and out to the Sin/Cos Encoder on the motor.",
+      "colors": [
+        "#00A9E0",
+        "#BFBFBF",
+        "#DFEECD",
+        "#92D050",
+        "#F79646",
+        "#00B050",
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "center of slide, inside the white panel"
+    },
+    {
+      "type": "arrow",
+      "description": "Thick red block arrow pointing LEFT, positioned to the left of the blue MCU box and outside the white diagram panel, with red bold label 'Position (Angle)' beneath it (the system output).",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "left of the diagram panel (outside it), x ~15-22%, y ~55-65%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Yellow circle with thin dark outline containing the slide number '26' in bold dark text.",
+      "colors": [
+        "#FFFF00",
+        "#333333"
+      ],
+      "position": "top-right corner"
+    },
+    {
+      "type": "image",
+      "description": "Small gray industrial AC motor illustration (body with cooling fins and connection box) inside the green-bordered rounded rectangle, labeled 'AC Motor'.",
+      "colors": [
+        "#808080",
+        "#BFBFBF",
+        "#000000"
+      ],
+      "position": "top-right of the rightmost green rounded rectangle"
+    },
+    {
+      "type": "icon",
+      "description": "Tiny integrated-circuit/chip glyph next to the 'SPI' label on the right edge of the blue box.",
+      "colors": [
+        "#333333"
+      ],
+      "position": "right edge of blue MCU box, top sub-block"
+    }
+  ],
+  "imagery": [
+    "Gray AC motor clip-art/illustration with fins, inside the green rounded rectangle at the right of the diagram",
+    "Tiny chip/IC icon beside the SPI label on the blue box",
+    "Curved black twisted-pair wire lines drawn between the Encoder connector and the Sin/Cos Encoder box"
+  ],
+  "colors": {
+    "background": "#EAEAEA",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000CC",
+      "#00A9E0",
+      "#F79646",
+      "#00B050",
+      "#92D050",
+      "#FFFF00",
+      "#C00000",
+      "#800000",
+      "#000000"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Helvetica-like). Title ~28pt bold red, centered. Subtitle ~22pt bold blue, centered. Diagram labels ~8-10pt; key terms bold ('Fine Angle:', 'Coarse Angle', 'TIDA-00176', 'Power Supplies', 'Comparators'). Caption ~13pt bold red, centered, two lines. Slide number bold inside yellow circle. No italics; arrows rendered as '\u2192' glyphs.",
+  "animation_state": "Complete static slide; no mid-build elements, all diagram blocks and labels fully revealed.",
+  "recreation_brief": "1. Set the slide background to light gray #EAEAEA and draw a thin dark-red (#800000) rectangle outline inset ~1.5% (~0.15 in) from all four slide edges as the outer frame.\n2. Add a solid black (#000000) rectangle strip across the full slide width at the very bottom edge, spanning y ~96-100% of slide height.\n3. Place the title text box top-center (x ~20-80%, y ~8-14%): text 'Sin/Cos Encoders', Arial bold ~28pt, red #C00000, centered.\n4. Place the subtitle text box directly below (x ~15-85%, y ~14-20%): text '(an industrial application of Motor Control System)', Arial bold ~22pt, blue #0000CC, centered.\n5. Place the slide-number badge top-right (x ~88-94%, y ~9-16%): a yellow (#FFFF00) circle ~0.5 in diameter with a thin dark #333333 outline, containing '26' in bold dark ~14pt text, centered.\n6. Place the diagram canvas: a white (#FFFFFF) rectangle panel spanning x ~22-90%, y ~28-87% of the slide; steps 7-12 all go inside this panel, arranged left-to-right.\n7. Far left inside the panel, place a cyan-blue (#00A9E0) rectangle (MCU peripherals) containing three stacked white sub-blocks with black text: 'Fine Angle: atan(A/B)' / '\u2192 Option 1: 16 bit'; 'Fine Angle: atan(A/B)' / '\u2192 Option 2: 12-bit'; 'Coarse Angle' / 'Incremental count'. On the rectangle's right edge add three small labels top-to-bottom: 'SPI' (with a tiny dark #333333 chip/IC icon), '12-bit ADC', 'eQEP'.\n8. Right of the blue rectangle, place a vertical gray (#BFBFBF) box labeled 'Host MCU Interface' with three connection lines entering from the blue rectangle, labeled top 'SPI', middle 'A, B' / 'Analog', bottom 'A, B,' / 'TTL'.\n9. Right of the interface box, place a large light-green (#DFEECD) container with a dashed green (#92D050) border and a white tag 'TIDA-00176' at its top-right; inside it place four elements: (a) top: a white box '16-bit high-res path' above an orange (#F79646) 'Dual ADC' block feeding a green (#00B050) triangle amplifier with outputs labeled 'A+, A-, B+, B-'; (b) middle: a white box 'Analog path' feeding a green (#00B050) triangle amplifier with outputs labeled 'A+, A-, B+, B-'; (c) below: a green comparator block with a hysteresis symbol labeled 'Comparators' with outputs 'R+, R-'; (d) bottom: an orange (#F79646) 'Power Supplies' block fed from the left by a small gray (#BFBFBF) box '24 V', with output arrows labeled '5 V' and '3.3 V' to the right and the note 'Encoder Supply: 5.25 V' below it.\n10. Right of the container, place a vertical gray (#BFBFBF) box labeled 'Encoder connector' collecting the six signal lines A+, A-, B+, B-, R+, R- from the three paths of step 9.\n11. Far right, place a white rounded rectangle with a thick green (#00B050) border containing: an orange (#F79646) box 'Differential Sine and Cosine A+, A-, B+, B-, and Marker R+, R-' at the top; curved black twisted-pair wire lines labeled 'A+, A-, B+, B-, R+, R-' with the note 'Shielded twisted pairs cable, up to 50...150m'; a gray (#808080/#BFBFBF) AC motor illustration (body with cooling fins and connection box) labeled 'AC Motor' at the top-right; and an orange (#F79646) box 'Sin/Cos Encoder' at the bottom coupled to the motor.\n12. Draw left-to-right signal-flow arrows from the Host MCU Interface (step 8) through the three signal paths (step 9) to the Encoder connector (step 10) and onward to the Sin/Cos Encoder box (step 11).\n13. Outside the white panel, to its left (slide x ~15-22%, y ~55-65%), place a thick red (#C00000) block arrow pointing LEFT with a red bold label 'Position (Angle)' directly beneath it.\n14. Below the diagram panel (x ~25-85%, y ~88-94%), place a centered two-line caption in red (#C00000) bold ~13pt: line 1 'EMC-compliant interface to Sin/Cos incremental position encoder switch'; line 2 '1-VPP  Differential analog output signals'.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "CONSISTENCY (layout.regions vs visual_elements): the red 'Position (Angle)' arrow was listed inside the Diagram panel region (x 22-90%) but its stated position is x ~15-22%, outside the panel; removed 'red Position arrow' from the Diagram panel region content and added a dedicated 'Position arrow' region (x ~15-22%, y ~55-65%) so regions cover all 5 visual_elements.",
+      "CONSISTENCY (layout.arrangement): added the previously omitted mention of the thick red left-pointing 'Position (Angle)' block arrow to the left of the white diagram panel.",
+      "CONSISTENCY (layout.hierarchy): reworded 'red arrow ... inside the diagram' to 'red Position arrow (left of the panel)' to remove the inside/outside contradiction.",
+      "CONSISTENCY (visual_elements[1]): clarified the arrow description and position as 'left of the diagram panel (outside it), x ~15-22%, y ~55-65%'.",
+      "PRECISION: expanded the Caption region content from the vague 'describing the EMC-compliant interface' to the exact two caption lines; confirmed exact counts throughout (3 MCU sub-blocks, 3 Host MCU Interface connections, 4 elements inside the TIDA-00176 container, 6 encoder signal lines, 30 verbatim labels, 3 bullets, 1 equation); no vague quantifiers ('several/some/many/a few/various') were present in the source.",
+      "RECREATABILITY: rewrote recreation_brief as a 14-step numbered checklist; each step places one element with exact text, percent position, hex color, and shape type; step 13 explicitly places the Position arrow outside the white panel, resolving the original brief's ambiguous 'far left of the diagram'.",
+      "SCHEMA: all required fields (slide_title, verbatim_text.bullets, layout.arrangement, layout.regions, visual_elements, colors, recreation_brief) present and non-empty; nothing required reconstruction."
+    ],
+    "uncertain_items": [
+      "No items were marked [?] in the source. Point sizes (28/22/13/8-10pt) and the ~0.5 in circle diameter are model estimates; exact intra-panel coordinates of diagram sub-blocks are not provided, so a builder must follow the described left-to-right / top-to-bottom ordering within the white panel."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_026.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 26,
+      "image": "slide_026.jpg",
+      "kept_frame": "frame_01509.jpg",
+      "start_sec": 1459.0,
+      "end_sec": 1508.0,
+      "frame_count": 50,
+      "old_slide": 57
+    },
+    "elapsed_s": 205.4,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 549.0
+  }
+}

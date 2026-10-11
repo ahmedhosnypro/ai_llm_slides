@@ -1,0 +1,37 @@
+== sizes ==
+  component_full-1.png: (2001, 1125)
+  smoke_skip_blockarrow-1.png: (2001, 1125)
+  smoke_only_equivalence-1.png: (2001, 1125)
+  smoke_numeral99-1.png: (2001, 1125)
+  smoke_nochrome-1.png: (2001, 1125)
+  smoke_chromeonly_15-1.png: (2001, 1125)
+  smoke_chromeonly_99-1.png: (2001, 1125)
+  slide_015_recreated-1.png: (2001, 1125)
+  qa reference render_1.png: (2001, 1125)
+== GATE: component render vs CERTIFIED reference (must be 0) ==
+  component_full vs qa/slide015/render_1.png: n=0 (pixel-identical)
+  PASS GATE 0-pixel-diff vs certified render  diff px=0
+== sanity: certified pptx re-rendered this session vs banked reference ==
+  slide_015_recreated.pptx (re-rendered) vs qa/slide015/render_1.png: n=0 (pixel-identical)
+  PASS render pipeline reproduces banked reference  diff px=0
+== component vs certified pptx, both rendered this session ==
+  component_full vs slide_015_recreated (same-session renders): n=0 (pixel-identical)
+  PASS component draw == certified pptx draw  diff px=0
+== smoke: opts.skip of one delta block (block_arrow) ==
+  full vs skip_blockarrow (diff confined to arrow zone): n=4281 bbox x[954,1094] y[614,663]; outside-arrow-zone stray px=0
+  PASS skip removes exactly the block arrow  diff px=4281
+== smoke: opts.only equivalence (only=all-but-block_arrow == skip=[block_arrow]) ==
+  only_equivalence vs skip_blockarrow: n=0 (pixel-identical)
+  PASS opts.only == opts.skip complement  diff px=0
+== smoke: opts.numeral override (badge glyph proof, renderer-neutral) ==
+  PASS default badge == chrome-only(15)  |diff|=0
+  PASS numeral-override badge == chrome-only(99)  |diff|=0
+  PASS badge 15 != badge 99 (check not vacuous)  |diff|=209002
+  full vs numeral99 (diff confined to badge): n=668 bbox x[1840,1879] y[135,162]; outside-badge-zone stray px=0
+  PASS numeral override touches only the badge  diff px=668
+== smoke: opts.chrome=false ==
+  PASS badge center is canvas-white with chrome off  px=(np.int64(255), np.int64(255), np.int64(255))
+  PASS gray panel absent with chrome off  px=(np.int64(255), np.int64(255), np.int64(255))
+  PASS same points ARE chrome on the full build  panel px=(np.int64(233), np.int64(233), np.int64(231)), badge px=(np.int64(253), np.int64(253), np.int64(150))
+
+ALL CHECKS PASS

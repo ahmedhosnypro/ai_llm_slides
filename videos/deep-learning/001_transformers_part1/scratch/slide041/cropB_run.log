@@ -1,0 +1,79 @@
+[info] context header injected: VIEW: Slide 041 RIGHT PANEL crop pair — dense-region verification (IMG1=recreation render crop, IMG2=original frame crop; same region, both 2x-upscaled) | CAPTURE: Both 720x890 PNGs: 2x upscales of the 360x445 frame-px region (555,95)-(915,540); IMG1 from a 150dpi PPTX render, IMG2 the lecture frame
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 2294993
+[info] /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_transformers_part1/scratch/slide041/cropB_right_panel_render.png, /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_transformers_part1/scratch/slide041/cropB_right_panel.png: transcript written (validated winner, atomic): /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_transformers_part1/scratch/slide041/cropB_compare.txt (pid 2294993)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_transformers_part1/scratch/slide041/cropB_right_panel_render.png, /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_transformers_part1/scratch/slide041/cropB_right_panel.png ===
+[winner] images (round 1, attempt 1)
+# Slide 041 RIGHT PANEL â Element-by-Element Verification
+
+## Region content: full Transformer encoder/decoder architecture diagram
+
+---
+
+## A. Discrepancies (renderable content)
+
+### 1. Missing sublayer grouping containers (BLOCKER â confidence 0.95)
+- **IMG2:** Both the encoder stack (âx150â340, y350â620) and decoder stack (âx380â570, y210â630) are wrapped in large rounded-corner containers with thick olive/dark-yellow borders that group [Add & Norm â Feed Forward â Add & Norm â Attention].
+- **IMG1:** These outer grouping containers are entirely absent in both columns. Content floats ungrouped.
+- This is a structural omission, not template chrome.
+
+### 2. Missing green residual/skip-connection loops (BLOCKER â confidence 0.95)
+- **IMG2:** Green curved loop arrows wrap around each sublayer in both encoder and decoder containers (clearly visible at âx160â340, y365â600 and âx385â560, y220â620).
+- **IMG1:** No green feedback loops anywhere. Only straight vertical black arrows remain.
+
+### 3. "Softmax" and "Linear" rendered as bare text, boxes missing (MAJOR â confidence 0.95)
+- **IMG2:** "Softmax" (âx445, y125) and "Linear" (âx445, y178) each sit inside a light-filled, green-outlined rounded box.
+- **IMG1 (âx455, y128 and y176):** plain text labels with only a small dash/line between them. Bordered shapes are missing.
+
+### 4. V/K/Q token circles: fills and labels wrong (MAJOR â confidence 0.9)
+- **IMG2:** Solid filled circles with white letter labels â blue "V", blue "K", red "Q" (encoder ây610; decoder ây440 and ây590).
+- **IMG1 (encoder ây615; decoder ây348 and y482):** hollow white circles with thin green/blue/red outlines; the **V, K, Q letters are missing entirely**.
+
+### 5. Missing sine-wave icon at Positional Encoding (MAJOR â confidence 0.85)
+- **IMG2:** Each â (encoder âx265, y663; decoder âx462, y672) is fed by a separate small circle containing a sine-wave glyph (âx218, y663 and âx510, y672).
+- **IMG1:** â circles present, but the sine-wave source circles are absent at both positions.
+
+### 6. Decoder top block structure collapsed (MAJOR â confidence 0.85)
+- **IMG2:** Decoder "Add & Norm" (blue box) and "Feed Forward" (dark gray box) are separate stacked boxes with an arrow between them.
+- **IMG1 (âx385â525, y210â260):** a single green-outlined rounded box labeled "Add & Norm" **overlapping/colliding** with the gray "Feed Forward" box â two shapes merged into one collision.
+
+### 7. Add & Norm box color mismatch (MINOR â confidence 0.9)
+- **IMG2:** blue-filled boxes with dark text (5 instances). **IMG1:** white boxes with green outline (top pair) and plain gray boxes (middle pair). Fill/border treatment differs throughout.
+
+### 8. Dashed red arc arrowhead at wrong end (MINOR â confidence 0.8)
+- **IMG1:** arrowhead at the **top** of the arc (âx580, y18), pointing up/out.
+- **IMG2:** arc terminates at the bottom near the "Outputs" yellow box (âx530, y800) â arrow points into the decoder output.
+
+### 9. Red "Output Probabilities" arrow placement (MINOR â confidence 0.75)
+- **IMG2:** red up-arrow sits **left of** the yellow box, crossing the panel edge (âx380, y40â85).
+- **IMG1:** red arrow sits **above** the yellow box (âx463, y12â38).
+
+### 10. Yellow "Outputs (shifted right)" / "Output Probabilities" line-break (MINOR â confidence 0.8)
+- IMG2 wraps both yellow labels to two lines ("Output" / "Probabilities"; "Outputs" / "(shifted right)" â with "(shifted right)" partly outside the box). IMG1 renders each on one line. Text verbatim matches otherwise.
+
+### 11. Encoder Multi-Head Attention fill color (MINOR â confidence 0.7)
+- IMG2: tan/orange fill inside red border; IMG1: gray fill inside red border. Same for the decoder MHA (gray vs tan). Masked MHA purple matches well in both.
+
+### 12. Vertical connector style (MINOR â confidence 0.6)
+- IMG1 uses short dashed segments between attention boxes and the token-circle rows (e.g., âx463, y365â385); IMG2 uses continuous solid lines.
+
+---
+
+## B. Visual-quality defects in IMG1
+
+1. **Collision:** gray "Feed Forward" box overlaps the green "Add & Norm" rounded box in the decoder (and encoder, âx175â350, y318â445) â appears as an accidental overlap rather than the original's clean stack. (MAJOR defect)
+2. Yellow highlight rectangle behind encoder Add & Norm extends past the right edge of the green box into empty panel space; in IMG2 the highlight hugs the container. (MINOR)
+3. Top red arrow tip is clipped at the crop top edge in IMG1. (MINOR)
+
+---
+
+## C. Matches confirmed
+Encoder/Decoder titles (red italic), panel fills and green borders, NÃ labels, red-bordered Multi-Head Attention and Masked Multi-Head Attention boxes, Input/Output Embedding boxes (brown / dark red), â symbols, "Positional Encoding" labels (correct left/right placement), two red dotted entry lines on the left, thick red Inputs arrow, yellow highlight region, vertical arrow chain.
+
+---
+
+## FINAL VERDICT: **FAIL**
+
+The recreation omits the sublayer grouping containers, green residual-connection loops, Softmax/Linear boxes, V/K/Q token labels, and positional-encoding sine icons, and introduces a shape collision in both Add & Norm / Feed Forward stacks. Too many MAJOR/BLOCKER omissions for this region to be considered faithfully recreated.
+

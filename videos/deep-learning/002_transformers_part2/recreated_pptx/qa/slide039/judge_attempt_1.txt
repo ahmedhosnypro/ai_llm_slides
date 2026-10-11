@@ -1,0 +1,53 @@
+## Element-by-Element Fidelity Check
+
+**House chrome (rule a):** Red outer frame, #E8E8E8 bg, yellow "39" badge, title placement â present in recreation as mandated. Not assessed as discrepancies.
+
+**Video artifacts (rule c):** IMG2 shows a black letterbox bar at the bottom and a mouse cursor over "Accelerate the training" â both are capture artifacts, correctly absent from the recreation. Not discrepancies.
+
+### Title
+- "Normalization" â verbatim, red bold, centered. Matches IMG2 (IMG2's title is also essentially centered). â
+
+### Quote box
+- "The behavior of machine learning algorithms  changes when the input distribution changes." â verbatim, italic, blue, single line. Note the recreation preserves the original's double space between "algorithms" and "changes". â
+- "{Covariate shift }" â red bold, right-aligned, second line, with space before closing brace preserved. â
+- Red border box geometry matches. â
+
+### Three-box flow diagram
+- Box 1: "layer weights changes" (red) / "during training steps" (black bold) â verbatim, yellow fill, red border. â
+- Box 2: "Outputs of Activation functions" / "of each layer change" â verbatim, two red lines. â
+- Box 3: "Inputs to the next layer," (black) / "(With different Input distribution)" (red) â verbatim. â
+- Arrows: two red arrows connecting box 1â2 and 2â3, correct positions and direction. â
+- Vertical centering of text within all three boxes: text sits centered within the yellow boxes in the recreation, matching the original. â
+- **MINOR** (confidence ~0.5): In the recreation, the inter-line gap between the two lines in Box 1 ("layer weights changes" â "during training steps") is slightly larger than in the original, where the two lines sit closer together. Text remains vertically centered, so this is cosmetic only.
+
+### Body text (white panel)
+- "Conclusion:" (red bold) â
+- "Input distribution of each layer changes with each step ." (blue bold, indented, trailing space before period preserved) â
+- "The basic idea behind Normalization is to:" (red bold) â
+- "Limit covariate shift by normalizing the activations of each layer" (blue bold, "covariate shift" underlined) â
+- "Normalization:  Transforming the inputs to be Zero mean and unit variance." (red bold label, black regular, blue bold emphasis) â
+- Indentation of the two continuation lines matches the original's hierarchy. â
+- Line spacing and blank-line gaps between paragraphs match the original's rhythm. â
+
+### Bottom cyan panel
+- "Normalization allows each layer to:" (red bold) â
+- Bullet 1: "learn on a more stable distribution of inputs," with underline on "stable distribution of inputs," â
+- Bullet 2: "Accelerate the training of the network (don't stick with very small learning rates)." with underline on "Accelerate the training" â
+- Bullet ordering, sizes, and indentation match. â
+- Cyan fill and navy border match. â
+
+### Frame containment (rule 5)
+- All content sits fully inside the white/red body panel and the cyan panel in the recreation. The bullet-2 line ends comfortably inside the cyan box's right border. No ink crosses any inner frame or the house frame. â
+
+### Missing elements (rule 6)
+- None. Every text block, box, arrow, and label in IMG2 is present in IMG1.
+
+### Discrepancy Summary
+| # | Item | Severity | Confidence |
+|---|------|----------|------------|
+| 1 | Slightly larger inter-line gap in Box 1 ("layer weights changes"/"during training steps") vs original's tighter spacing | MINOR | 0.5 |
+
+### Visual-quality defects in recreation
+- None observed: no clipping, no overflow, no collisions, no misalignment; all text legible; underlines and bold/italic/color styling rendered cleanly.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

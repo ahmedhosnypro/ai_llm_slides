@@ -1,0 +1,30 @@
+## Element-by-Element Comparison (rows 1â3, x60..800 / y258..362)
+
+**Row 1 (y265..288):**
+- Text content: `[ sin(a) cos(b) + cos(a) sin(b) â sin(a) ]Â² + [ âsin(a) sin(b) + cos(a) cos(b) â cos(a) ]Â² =` â **verbatim match**, including the detached blue `=` at the right margin (~x767..777 in both).
+- Color coding: blue brackets/operators/cos(b)/sin(b), red sin(a)/cos(a) terms â **matches** the original's scheme exactly, including red-on-yellow for the highlighted `sin(a)` and `cos(a)`.
+- Yellow highlight rects behind 3rd `sin(a)` and trailing `cos(a)` â **present in both**, same span relative to the terms.
+- Deviation: the original has a noticeably **wider horizontal gap** between the two bracket groups (after `]Â² +` before `[-`) than the recreation, which keeps the two groups closer together. Also, the original uses a tight `-` in `cos(b)-1` style contexts while the recreation spaces the minus. **MINOR**, high confidence (spacing only, all tokens and colors correct).
+
+**Row 2 (y299..318):**
+- Text: `[ sin(a) (cos(b) â 1) + cos(a) sin(b) ]Â² + [ âsin(a) sin(b) + cos(a) (cos(b) â 1) ]Â² =` â **verbatim match**, all black, detached `=` present at right in both.
+- Deviation: original inserts a **large mid-row gap** between the two bracketed groups (roughly a 4â6 character-wide blank); recreation uses a normal single space. **MINOR**, high confidence.
+- Line height and baseline alignment of `]Â²` superscripts against the bracket tops match well; no vertical-centering problems inside the brackets.
+
+**Row 3 (y338..356):**
+- Text: `[ sin(a)Â²(cos(b) â 1)Â² + cosÂ²(a) sinÂ²(b) + 2 sin(a) cos(a) sin(b) (cos(b) â 1) ] +` â **verbatim match**; the trailing `+` is attached in both (recreation x687..696), superscript Â² placement on `sin(a)Â²`, `(cos(b) â 1)Â²`, `cosÂ²(a)`, `sinÂ²(b)` matches.
+- Deviation: same compressed inter-term gaps as above (`sinÂ²(b) +  2 sin(a)` gap slightly wider in original; gap before `(cos(b)-1)` wider in original). **MINOR**, high confidence.
+
+**Row 4 (bottom edge):**
+- IMG2 shows the clipped top edge of a 4th continuation line at the very bottom of the crop (~y358+). IMG1 shows nothing there within the measured region. Since the crop cuts at y362 and the original's 4th line is itself cut off by the crop boundary, the recreation's 4th line likely begins just below the measured region rather than being absent â but this cannot be confirmed from the given view. **MINOR (potential continuation-line offset), low confidence.**
+
+**Frame containment:** No ink touches the crop/frame edges in either image; the detached `=` signs sit fully inside. No clipping, collisions, or overflow in the recreation. Delimiter brackets in all rows span their enclosed content correctly with no stroke-on-text overlap.
+
+## Discrepancy List
+1. Compressed horizontal gaps between bracket groups in rows 1â3 vs the original's wider spacing â **MINOR**, high confidence.
+2. `cos(b) â 1` spaced-minus vs original's tight `cos(b)-1` â **MINOR**, high confidence (cosmetic typography).
+3. Possible vertical offset of the 4th (clipped) continuation line â **MINOR**, low confidence, unverifiable in this crop.
+
+No BLOCKER or MAJOR defects found: all text is verbatim, color coding (blue/red/yellow-highlight) matches precisely, the detached blue `=` signs, attached row-3 `+`, superscript geometry, and line heights all correspond.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

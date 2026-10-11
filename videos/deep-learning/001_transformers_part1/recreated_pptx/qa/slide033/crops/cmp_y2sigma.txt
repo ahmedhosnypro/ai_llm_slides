@@ -1,0 +1,46 @@
+# Element-by-Element Fidelity Review â Slide 33 dense-region crop
+
+## Renderable-content discrepancies
+
+**1. Green block arrow orientation â MAJOR (confidence: high)**
+- IMG2 (original): the block arrow is **diagonal**, tilted roughly 40â45Â°, pointing up-and-to-the-right into the lower-left corner of the Y2 widget.
+- IMG1 (recreation): the arrow is **vertical**, pointing straight up, with its tip touching the bottom edge of cell 2 of the widget.
+- Same color/fill, same general size class, but the direction/geometry of the shape is materially different. This is a diagram-shape deviation, not a styling nuance.
+
+**2. Y2 label oversized and breaching the widget frame â MAJOR (confidence: high)**
+- IMG2: the "Y" and its subscript "2" are compact and sit **fully inside the third (green) cell**; nothing crosses the dotted green border or the internal cell dividers.
+- IMG1: the "Y" is drawn so large that its apex sits **on/over the top dotted border** of the widget (ink touching the enclosing frame boundary â rule 5), and the "2" is displaced down-right so that it **straddles the vertical divider between cell 3 (green) and cell 4 (gray)**, overlapping the cell boundary instead of staying within cell 3. Per rules (5) and (4), label-vs-enclosing-mark alignment is wrong.
+
+**3. Y2 widget cell fill colors â MINOR (confidence: medium)**
+- IMG2: first three cells are a noticeably **saturated mid-green** (â #A8D5A2 / #8FBC8F range); last two gray-blue.
+- IMG1: first three cells are a much **paler green** (â #DFF0D8 range). Hue family correct, saturation clearly lower. Approx-hex deviation within tolerance but visible.
+
+**4. Red triangle above the gray line â MINOR (confidence: high)**
+- Present in both, correctly placed at the top of the vertical gray connector under the widget. In IMG1 it is proportionally **larger** (base width roughly 2Ã the original's relative size) than the small red triangle in IMG2.
+
+**5. Sigma box proportions / Î£ glyph â MINOR (confidence: medium)**
+- Both show a pale-cyan box with navy Î£. IMG1's box is somewhat taller relative to its width and the Î£ glyph is larger/bolder than the original's more modest Î£. Fill (#E0F7F7-ish) and border match acceptably.
+
+**6. Bottom red stems â MINOR (confidence: high)**
+- Four red stems/arrowheads present in both, correctly ordered and spaced under the Sigma box. IMG1's arrowheads are chunkier/larger than IMG2's slim arrowheads.
+
+**7. "Weighted SUâ¦" callout and left "s" oval â MATCH**
+- Both present with pale-yellow fill, dotted green border, navy blue bold text, same relative position and crop truncation. Text size slightly larger in IMG1 but within tolerance.
+
+**8. Widget geometry, 5-cell structure, gray connector line â MATCH**
+- 5 vertical cells with dotted green border in both; internal dividers at the same relative positions; green/gray split (3 green / 2 gray) correct; gray line runs from triangle down to Sigma box top in both.
+
+## Missing elements
+- None. Every element listed in the VIEW (widget, block arrow, red triangle + gray line, Sigma box, four red stems, callout, left oval fragment) is present in the recreation.
+
+## Visual-quality defects in the recreation (independent of the original)
+- The "2" subscript collides with the cell-3/cell-4 divider (legibility slightly affected at the boundary).
+- The green arrow tip touches/overlaps the widget's bottom dotted border â a small collision that also doesn't occur in the original.
+- No text overflow, clipping, or wrapping issues elsewhere.
+
+## Summary
+- BLOCKER: none.
+- MAJOR: (1) block arrow vertical instead of diagonal; (2) Y2 label oversized, crossing the widget's top border and straddling a cell divider.
+- MINOR: cell fill saturation, red triangle size, Î£ box proportions, stem arrowhead weight.
+
+FINAL VERDICT: **FAIL** for 'faithful, usable recreation' â two MAJOR geometry defects (arrow orientation; Y2 overflow/straddle) must be corrected: rotate the green block arrow ~45Â° to point up-right, and shrink/reposition Y2 to sit wholly inside the third cell without touching the dotted border or the cell divider.

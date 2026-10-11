@@ -1,0 +1,31 @@
+# Visual QA Analysis â Crop of Transformer Decoder Figure (Positional Encoding region)
+
+**Image data:** ~775Ã310 displayed px (155Ã62 source px at 5Ã upscale), heavy JPEG softening and chroma noise throughout.
+
+---
+
+## 1. Text Transcription (verbatim)
+
+| Text | Location | Condition |
+|---|---|---|
+| `Positional` | Right side, line 1 | Legible; the final "l" sits at/against the right crop edge and appears slightly cut |
+| `Encoding` | Right side, line 2 | Legible, dark gray/black sans-serif |
+| `Output` | Inside the maroon block's inner box, bottom center | Heavily blurred by upscaling; reads consistently with "Output" but letters are soft; bottom of the word is clipped by the image edge |
+
+No other complete strings are visible. At the very top edge there are 2â3 tiny dark-red glyph fragments above the purple box â almost certainly the clipped bottom tips of text from the row above, **illegible**.
+
+## 2. Layout
+
+- **LEFT edge:** A dark-maroon triangular arrowhead enters from the left at lower-left, pointing right toward the maroon block; it is cut off by the left crop edge. Upper-left is occupied by the purple box running off-frame.
+- **TOP edge:** The bottom portion of a light-purple/lavender rounded rectangle with a dark outline (its top is clipped). Just above/around it, a thin dark rounded-corner outline (bottom-right corner of a separate shape) is partially visible, plus the red fragments noted above. A thin dark **vertical connector line** drops from the purple box's bottom edge down the left-center of the frame.
+- **CENTER:** On the vertical connector sits a small circle containing a **plus sign (â)** (residual-add node). To its right, joined by a short horizontal stroke, is a slightly larger circle containing an **S-shaped/sinusoidal curve** (the positional-encoding "swirl" icon). Both are dark-outlined on the green background.
+- **BOTTOM edge:** The top edge of a large brick-maroon rounded block spans most of the lower frame; inside it near the top is a thin-outlined rounded sub-box containing the word "Output" (clipped at the bottom of the crop).
+- **RIGHT edge:** The two-line label "Positional / Encoding" on the pale-green panel; below/right of it, a **dark-red dashed diagonal line** runs from the upper-right corner down toward the lower-right, clipped by the right edge. A faint darker-green vertical strip at the extreme right suggests the panel border.
+- **Background:** Uniform pale mint-green panel.
+
+## 3. Visual Defects / Anomalies
+
+- **Clipping (crop-induced):** top of the purple box; the "Output" label and maroon block are cut at the bottom; the arrowhead is cut at the left; the dashed red line and possibly the final "l" of "Positional" are cut at the right; red text fragments at top are truncated.
+- **Legibility:** "Output" is the only ambiguous string â blur prevents 100% certainty of letterforms.
+- **Artifacts:** pronounced JPEG blockiness, color fringing around dark outlines, and edge ringing from the 5Ã upscale; no placeholder/garbage strings and no wrong-language text detected.
+- **No overlapping-content errors:** the â, swirl icon, connector, and label are cleanly separated; geometry is consistent with a residual-add + positional-encoding junction feeding the output embedding block.

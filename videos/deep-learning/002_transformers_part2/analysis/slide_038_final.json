@@ -1,0 +1,171 @@
+{
+  "slide_title": "Residual Connections and Normalization",
+  "subtitle_or_header": "Adding Residual Connection: / Adding \u201cLAYER\u201d Normalization",
+  "verbatim_text": {
+    "bullets": [
+      "Adding Residual Connection:",
+      "Word Embedding + Positional Information   [First Transformer Block]",
+      "Output of Previous Transformer Block      [Stacked Transformer Blocks]",
+      "Adding \u201cLAYER\u201d Normalization",
+      "Encoded Vectors of Input Sequence   [With Same Input Vectors Dimension"
+    ],
+    "labels": [
+      "38",
+      "Layer Normalization  (NOT Batch Normalization)",
+      "Multi Head Self Attention Block",
+      "Output of Self Attention",
+      "Residual Connections",
+      "Input to Self Attention",
+      "Word Embedding + Positional Information",
+      "Y_1",
+      "Y_2",
+      "Y_3",
+      "Y_4",
+      "[Y_5?]",
+      "[Y_6?]",
+      "[Y_N3? \u2014 likely Y_{N-3}]",
+      "[Y_N2? \u2014 likely Y_{N-2}]",
+      "X_1",
+      "X_2",
+      "X_3",
+      "X_4",
+      "[X_5?]",
+      "[X_6?]",
+      "[X_N3? \u2014 likely X_{N-3}]",
+      "[X_N2? \u2014 likely X_{N-2}]",
+      "\u2022 \u2022 \u2022 \u2022 \u2022 (five blue ellipsis dots between 6th and 7th columns in both Y rows)",
+      "\u2022 \u2022 \u2022 \u2022 \u2022 (five green ellipsis dots between 6th and 7th columns in the X row)",
+      "[thin black strip across the very bottom edge \u2014 likely video-player progress bar, not slide content]",
+      "[small mouse-cursor arrow near top-right of diagram above the Layer Normalization bar \u2014 video artifact]"
+    ],
+    "equations": [
+      "Word Embedding + Positional Information"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top with a yellow slide-number badge '38' at top-right; below the title a full-width white text box with blue border containing two blue definition blocks; the bottom ~55% of the slide is one large white diagram panel with a thin red border containing the transformer residual+normalization flow diagram; a thin black strip (video progress bar) runs along the very bottom edge.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~2\u201312% vertical, ~20\u201380% horizontal",
+        "content": "Red bold title 'Residual Connections and Normalization'"
+      },
+      {
+        "name": "Slide-number badge",
+        "position": "top right, ~5\u201315% vertical, ~88\u201395% horizontal",
+        "content": "Yellow circle with red outline containing red '38'"
+      },
+      {
+        "name": "Definition text box",
+        "position": "upper middle, ~14\u201342% vertical, ~10\u201390% horizontal",
+        "content": "White box, blue border, two blue text blocks: 'Adding Residual Connection:' with two indented lines, and 'Adding \u201cLAYER\u201d Normalization' with one indented line"
+      },
+      {
+        "name": "Architecture diagram panel",
+        "position": "bottom, ~45\u201397% vertical, ~6\u201394% horizontal",
+        "content": "White panel with thin red border containing the full flow diagram: three vector rows, Layer Normalization bar in a green dashed container, plus-sign row, navy attention block, colored arrows, left-side annotations, yellow-highlighted caption"
+      },
+      {
+        "name": "Video progress strip",
+        "position": "very bottom edge, ~98\u2013100% vertical",
+        "content": "Thin black strip (video player artifact, not slide content)"
+      }
+    ],
+    "hierarchy": "The diagram panel dominates by area, and within it the navy 'Multi Head Self Attention Block' is the largest single colored shape. The title is the largest text (red, bold). Definition-box text is medium-sized blue. Smallest text: vector subscript labels and the two-line left-side annotations. Color coding (red title, blue theory text, color-coded diagram labels) guides reading order top-to-bottom."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "White rectangle with medium-blue border holding two stacked definition blocks. Block 1: bold blue header 'Adding Residual Connection:' followed by two indented blue lines 'Word Embedding + Positional Information   [First Transformer Block]' and 'Output of Previous Transformer Block      [Stacked Transformer Blocks]'. Block 2: bold blue header 'Adding \u201cLAYER\u201d Normalization' followed by indented line 'Encoded Vectors of Input Sequence   [With Same Input Vectors Dimension' (closing bracket missing on the slide \u2014 reproduce verbatim).",
+      "colors": [
+        "#FFFFFF",
+        "#0000CC"
+      ],
+      "position": "upper middle, directly under the title"
+    },
+    {
+      "type": "flowchart",
+      "description": "Transformer residual-flow diagram inside a white panel with thin red border, read top to bottom: (1) Output row of 8 embedding vectors drawn as small bars each split into 4 colored sub-cells, labeled Y_1, Y_2, Y_3, Y_4, [Y_5?], [Y_6?], then 5 blue ellipsis dots, then [Y_N3?], [Y_N2?]; (2) full-width light-gray bar labeled 'Layer Normalization  (NOT Batch Normalization)' \u2014 'Layer Normalization' in red bold italic, '(NOT Batch Normalization)' in black bold italic; (3) row of 8 red circle-plus (\u2295) symbols aligned one per vector column; (4) row annotated 'Output of Self Attention': 8 vectors labeled Y_1\u2026[Y_6?], blue ellipsis dots, [Y_N3?], [Y_N2?]; (5) full-width dark-navy rectangle 'Multi Head Self Attention Block' in white bold text; (6) row annotated 'Input to Self Attention': 8 vectors labeled X_1\u2026[X_6?], 5 green ellipsis dots, [X_N3?], [X_N2?]; (7) bottom-center caption 'Word Embedding + Positional Information' in red text on yellow highlight. A light-green rounded rectangle with green dashed border encloses the Layer Normalization bar and the \u2295 row. Connections: short green up-arrows from each \u2295 into the Layer Normalization bar (output row sits implicitly on top of the bar); blue up-arrows from each X vector into the navy block and from the block top into each Y vector of the 'Output of Self Attention' row; orange curved residual arrows tap the input (X-to-block) arrows, loop outward and upward, and enter each \u2295 from the side. Left-margin annotations, two lines each: 'Output of Self Attention' (blue), 'Residual Connections' (orange), 'Input to Self Attention' (red).",
+      "colors": [
+        "#C00000",
+        "#0000CC",
+        "#00008B",
+        "#00B050",
+        "#E36C09",
+        "#D9D9D9",
+        "#E2EFDA",
+        "#FFFF00",
+        "#92D050",
+        "#FF9999",
+        "#FFFFFF"
+      ],
+      "position": "bottom ~55% of the slide"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: yellow circle with red outline containing the number '38' in red.",
+      "colors": [
+        "#FFFF00",
+        "#C00000"
+      ],
+      "position": "top right corner"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; all graphics are flat vector shapes (colored bars, arrows, circles, rectangles). A small mouse-cursor arrow (video artifact) floats near the top-right of the diagram, just above the Layer Normalization bar."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#C00000",
+    "body_text": "#0000CC",
+    "accents": [
+      "#C00000",
+      "#00008B",
+      "#00B050",
+      "#E36C09",
+      "#FFFF00",
+      "#D9D9D9",
+      "#E2EFDA",
+      "#92D050",
+      "#FF9999"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Calibri-like). Title ~32\u201336 pt bold, red, sentence case. Definition-box text ~18\u201320 pt blue; the two 'Adding \u2026' headers are bold, detail lines regular with wide gaps before bracketed notes. Diagram labels ~14\u201316 pt; 'Layer Normalization (NOT Batch Normalization)' is bold italic; 'Multi Head Self Attention Block' is bold white ~20 pt on navy; left-side annotations are two-line and color-coded (blue/orange/red). Vector labels use subscript numerals. All-caps appears only inside quoted \u201cLAYER\u201d and in 'NOT'. Numbered/bulleted list markers are absent \u2014 definition lines are plain indented text.",
+  "animation_state": "Slide appears fully built \u2014 all vector rows, arrows, containers and labels are present simultaneously; nothing is mid-build. A mouse cursor is visible over the diagram, indicating live narration.",
+  "recreation_brief": "1. Slide setup: create a 16:9 slide with a plain white (#FFFFFF) background. Do NOT draw the thin black strip along the very bottom edge or the mouse-cursor arrow near the top-right of the diagram \u2014 both are video-frame artifacts, not slide content.\n2. Title: one centered text box spanning ~20\u201380% of slide width in the top ~2\u201312% vertical band; text 'Residual Connections and Normalization', sans-serif bold ~32\u201336 pt, red #C00000.\n3. Slide-number badge: one circle ~0.5 in diameter at top-right (~88\u201395% horizontal, ~5\u201315% vertical); fill yellow #FFFF00, outline red #C00000 ~1.5 pt; centered text '38' in red #C00000 bold ~14 pt.\n4. Definition box: one rectangle directly under the title spanning ~10\u201390% of slide width and ~14\u201342% vertical; white fill, blue #0000CC border ~2 pt. Inside, all text blue #0000CC sans-serif ~18\u201320 pt, as exactly six lines: (1) bold 'Adding Residual Connection:'; (2) indented 'Word Embedding + Positional Information   [First Transformer Block]'; (3) indented 'Output of Previous Transformer Block      [Stacked Transformer Blocks]'; (4) blank line; (5) bold 'Adding \u201cLAYER\u201d Normalization'; (6) indented 'Encoded Vectors of Input Sequence   [With Same Input Vectors Dimension' \u2014 the closing bracket is missing on the source slide, reproduce verbatim.\n5. Diagram panel: one rectangle covering ~6\u201394% horizontal and ~45\u201397% vertical (bottom ~55% of the slide); white fill, thin red #C00000 border ~1 pt. Steps 6\u201317 place elements inside this panel, stacked top-to-bottom: top Y vector row \u2192 Layer Normalization bar \u2192 \u2295 row \u2192 middle Y vector row \u2192 navy block \u2192 X vector row \u2192 bottom caption.\n6. Top vector row: 8 small bars in one horizontal line across the top of the panel; each bar is a rectangle split into 4 sub-cells colored #FFFF00, #92D050, #FF9999, #D9D9D9 with thin dark outlines. Label the 8 bars left-to-right: Y_1, Y_2, Y_3, Y_4, [Y_5?], [Y_6?], [Y_N3? \u2014 likely Y_{N-3}], [Y_N2? \u2014 likely Y_{N-2}] (subscript numerals; [?] flags uncertain readings \u2014 render the most likely values Y_5, Y_6, Y_{N-3}, Y_{N-2}). Between the 6th and 7th bars place 5 small blue #0000CC dots as an ellipsis (\u2022 \u2022 \u2022 \u2022 \u2022).\n7. Layer Normalization bar: one full-width light-gray #D9D9D9 rectangle with a dark-gray border directly below the top vector row (the top row sits directly on this bar \u2014 no arrows between them). Bar text on one line: 'Layer Normalization' in red #C00000 bold italic + '  (NOT Batch Normalization)' in black bold italic, ~14\u201316 pt.\n8. \u2295 row: 8 red #C00000 circles, each with a centered white '+', in one horizontal line directly below the Layer Normalization bar, one circle aligned to each of the 8 vector columns.\n9. Green dashed container: one rounded rectangle, light-green #E2EFDA fill, dashed #00B050 border, enclosing both the Layer Normalization bar and the entire \u2295 row.\n10. Green arrows: 8 short #00B050 up-arrows, one from the top of each \u2295 circle into the bottom edge of the Layer Normalization bar.\n11. Middle vector row: 8 bars identical in style to step 6, placed below the \u2295 row; labels left-to-right Y_1, Y_2, Y_3, Y_4, [Y_5?], [Y_6?], [Y_N3? \u2014 likely Y_{N-3}], [Y_N2? \u2014 likely Y_{N-2}]; 5 blue #0000CC ellipsis dots between the 6th and 7th bars.\n12. Navy block: one full-width dark-navy #00008B rectangle between the middle row and the bottom row; centered text 'Multi Head Self Attention Block' in white bold ~20 pt.\n13. Bottom vector row: 8 bars identical in style to step 6, placed below the navy block; labels left-to-right X_1, X_2, X_3, X_4, [X_5?], [X_6?], [X_N3? \u2014 likely X_{N-3}], [X_N2? \u2014 likely X_{N-2}]; 5 green #00B050 ellipsis dots between the 6th and 7th bars.\n14. Blue arrows: 8 #0000CC up-arrows from the top of each bottom-row X bar into the bottom edge of the navy block, and 8 #0000CC up-arrows from the top edge of the navy block into the bottom of each middle-row Y bar (16 blue arrows total).\n15. Orange residual arrows: 8 curved #E36C09 arrows, one per column; each taps the blue X\u2192block arrow of its column near the navy block, swings outward and upward, and enters the corresponding \u2295 circle from the side.\n16. Left-margin annotations inside the panel (left edge, each wrapped on two lines): 'Output of Self Attention' in blue #0000CC aligned with the middle Y row; 'Residual Connections' in orange #E36C09 aligned with the navy block; 'Input to Self Attention' in red #C00000 aligned with the bottom X row.\n17. Bottom caption: centered text at the bottom of the panel, 'Word Embedding + Positional Information', red #C00000 ~14 pt, with a yellow #FFFF00 highlight behind it.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Filled the null subtitle_or_header with the definition-box headers 'Adding Residual Connection:' / 'Adding \u201cLAYER\u201d Normalization' (the text block directly under the title; matches verbatim_text.bullets items 1 and 4).",
+      "Rebuilt recreation_brief as a 17-step ordered placement checklist; restored the [?] uncertainty markers on the vector labels (Y_5, Y_6, Y_N3/Y_{N-3}, Y_N2/Y_{N-2}, X_5, X_6, X_N3/X_{N-3}, X_N2/X_{N-2}) that the previous brief silently resolved into clean subscripts.",
+      "Enumerated every row's full label sequence (previous brief used ranges like 'Y_1\u2026Y_6') and made all arrow counts explicit: 8 green \u2295\u2192LayerNorm arrows, 8 blue X\u2192block arrows, 8 blue block\u2192Y arrows, 8 orange residual arrows (16 blue arrows total).",
+      "Pinned the exact top-to-bottom stacking order inside the diagram panel (top Y row \u2192 Layer Normalization bar \u2192 \u2295 row \u2192 middle Y row \u2192 navy block \u2192 X row \u2192 caption) and stated that the top row sits directly on the Layer Normalization bar with no arrows between them.",
+      "Assigned concrete hex values to the ellipsis dots (#0000CC blue in both Y rows, #00B050 green in the X row) and preserved the verbatim missing closing bracket in 'Encoded Vectors of Input Sequence   [With Same Input Vectors Dimension'.",
+      "Schema and consistency audit passed with no further changes: all required fields present and non-empty; all 5 layout.regions cover every verbatim_text label and visual_element; title/bullets/labels/diagram agree; no vague quantifiers found (all counts already explicit: 8 vectors per row, 5 ellipsis dots, 8 \u2295 symbols, 3 vector rows, 2 definition blocks); verbatim_text, layout, visual_elements, colors, typography_notes and animation_state carried over unchanged."
+    ],
+    "uncertain_items": [
+      "Vector-label readings marked [?] in the source: [Y_5?], [Y_6?], [Y_N3? \u2014 likely Y_{N-3}], [Y_N2? \u2014 likely Y_{N-2}] (both Y rows) and [X_5?], [X_6?], [X_N3? \u2014 likely X_{N-3}], [X_N2? \u2014 likely X_{N-2}] (X row).",
+      "Order of the 4 sub-cell colors (#FFFF00, #92D050, #FF9999, #D9D9D9) within each vector bar is not specified; the 4-sub-cell split is explicitly described only for the top row and is assumed identical for the middle Y row and the X row.",
+      "Placement of the subscript labels relative to their bars (above vs. below the bars) is not specified in the source JSON.",
+      "All font sizes are approximations from typography_notes (title ~32\u201336 pt, definition text ~18\u201320 pt, diagram labels ~14\u201316 pt, navy-block text ~20 pt).",
+      "The thin black bottom strip is marked 'likely' a video-player progress bar and the mouse cursor is marked a video artifact; both are excluded from recreation on that identification."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_038.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 38,
+      "image": "slide_038.jpg",
+      "kept_frame": "frame_02995.jpg",
+      "start_sec": 2910.0,
+      "end_sec": 2994.0,
+      "frame_count": 85,
+      "old_slide": 106
+    },
+    "elapsed_s": 363.1,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 633.6
+  }
+}

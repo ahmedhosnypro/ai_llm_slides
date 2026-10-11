@@ -1,0 +1,201 @@
+{
+  "slide_title": "Encoder Block",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Block Output",
+      "Encoder Block",
+      "Block Input",
+      "Layer Normalization (NOT Batch N[?orm)]",
+      "Feed Forward Networks [ One Hidden wi[?th...]]",
+      "MLP",
+      "MLP",
+      "MLP",
+      "MLP",
+      "MLP",
+      "MLP",
+      "Multi Head Self Attention",
+      "Y\u2081",
+      "Y\u2082",
+      "Y\u2083",
+      "Y\u2084",
+      "Y\u2096",
+      "Y_{N-1}",
+      "Y_N",
+      "X\u2081",
+      "X\u2082",
+      "X\u2083",
+      "X\u2084",
+      "X\u2096",
+      "X_{N-1}",
+      "X_N",
+      "Add & Norm",
+      "Feed Forward",
+      "Add & Norm",
+      "Multi-Head Attention",
+      "V",
+      "K",
+      "Q",
+      "Transformer Encoder",
+      "Encoder",
+      "Inputs",
+      "49"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Full-bleed architecture diagram slide with no bullet text: red-bordered tag 'Block Output' at top-left, large vertical red title 'Encoder Block' running up the left edge, red-bordered tag 'Block Input' at bottom-left; a large light-orange panel (~8%-95% width, ~8%-97% height, thin red border) contains the bottom-to-top encoder flowchart; a white inset panel with thick green border overlaps the right third (~62%-93% width, ~12%-90% height) showing a simplified encoder sub-block; a tiny green-bordered thumbnail inset labeled 'Transformer Encoder' sits at bottom-left overlapping the main panel; a yellow circular slide-number badge '49' at top-right corner.",
+    "regions": [
+      {
+        "name": "Block Output tag",
+        "position": "top-left, ~1%-18% width, ~8%-14% height",
+        "content": "White rectangle, red border, bold red text 'Block Output'"
+      },
+      {
+        "name": "Vertical title",
+        "position": "left edge, ~3%-9% width, ~20%-80% height",
+        "content": "Large bold red text 'Encoder Block' rotated 90\u00b0 (reads bottom-to-top)"
+      },
+      {
+        "name": "Main encoder diagram",
+        "position": "center, ~8%-95% width, ~8%-97% height",
+        "content": "Light-orange panel with 13 stacked layers from X input tokens at bottom to Y output tokens at top, orange arrows, dashed residual-skip outlines, red plus circles, tan Layer-Normalization bars, maroon attention bar, pink MLP boxes"
+      },
+      {
+        "name": "Right inset panel",
+        "position": "right, ~62%-93% width, ~12%-90% height",
+        "content": "White rounded panel, thick green border: V/K/Q red circles -> Multi-Head Attention -> Add & Norm -> Feed Forward -> Add & Norm, black arrows plus a black residual loop on the left"
+      },
+      {
+        "name": "Thumbnail inset",
+        "position": "bottom-left, ~6%-16% width, ~77%-90% height",
+        "content": "Miniature 'Transformer Encoder' diagram: gray 'Encoder' box, up arrow, 'Inputs' label"
+      },
+      {
+        "name": "Slide number",
+        "position": "top-right, ~91%-98% width, ~10%-17% height",
+        "content": "Yellow circle with red bold '49'"
+      },
+      {
+        "name": "Ellipsis dots",
+        "position": "top-right (~55%-62% width, ~11% height) and bottom-right (~55%-62% width, ~92% height)",
+        "content": "Five blue dots (top) and five green dots (bottom) indicating token-sequence continuation"
+      }
+    ],
+    "hierarchy": "The orange encoder diagram dominates by area; the bright green/yellow right inset is the second focal point; the large red vertical 'Encoder Block' title is third; red tag labels and small token labels are subordinate. Yellow 'Multi Head Self Attention' on maroon and the green 'Add & Norm' boxes are the highest-contrast text elements."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "Main Encoder Block diagram, data flows bottom-to-top. From bottom: (1) row of input token boxes labeled X\u2081 (blue), X\u2082 (yellow), X\u2083 (pink), X\u2084 (blue), ..., X\u2096, ..., X_{N-1}, X_N \u2014 each a small rectangle of colored segments with red letter+subscript; (2) full-width maroon bar with bold yellow text 'Multi Head Self Attention'; (3) row of small Y token boxes; (4) row of ~7 red circles containing white plus signs (\u2295), wrapped by a dashed orange rounded outline (residual skip connection looping from the X row below); (5) full-width tan bar with italic dark-red text 'Layer Normalization (NOT Batch N[?orm)]'; (6) row of small Y token boxes; (7) italic dark-red label 'Feed Forward Networks [ One Hidden wi[?th...]]' above a purple-bordered row of 6 visible pink MLP boxes, each containing ~8 green dots (neurons) and the tiny text 'MLP' (a 7th may be hidden behind the inset); (8) row of small Y token boxes; (9) second row of ~7 red \u2295 circles with dashed orange residual outline; (10) second tan bar 'Layer Normalization (NOT Batch N[?orm)]'; (11) top row of output token boxes Y\u2081, Y\u2082, Y\u2083, Y\u2084, ..., Y\u2096, ..., Y_{N-1}, Y_N. Orange upward arrows connect every pair of adjacent layers; dashed orange lines carry residual connections around the \u2295 rows. Five blue ellipsis dots sit between Y\u2096 and Y_{N-1} at top; five green ellipsis dots between X\u2096 and X_{N-1} at bottom.",
+      "colors": [
+        "#FBE3C6",
+        "#CC0000",
+        "#FFFFFF",
+        "#E87722",
+        "#7E2D5B",
+        "#FFE94A",
+        "#D9B779",
+        "#8B0000",
+        "#FF9FC5",
+        "#00A651",
+        "#9B2D86",
+        "#2E75B6",
+        "#FFE135",
+        "#0033CC",
+        "#00CC66"
+      ],
+      "position": "center of slide, occupying almost the entire canvas"
+    },
+    {
+      "type": "flowchart",
+      "description": "Right inset: simplified encoder sub-block on a white rounded panel with thick green border. From bottom to top: three red circles with white letters V (left), K (center), Q (right); K has a vertical line running down to the panel's bottom edge; black arrows from V and Q curve up into the bottom of a tan two-line box 'Multi-Head Attention'; black arrow up into a light-green rounded box 'Add & Norm'; black arrow up into a yellow two-line box 'Feed Forward'; black arrow up into a second light-green rounded box 'Add & Norm'; a line exits from the top 'Add & Norm' through the panel top. A thick black rounded-rectangle residual path runs up the left side of the panel from below 'Multi-Head Attention' into the top 'Add & Norm' (skip connection).",
+      "colors": [
+        "#FFFFFF",
+        "#00A000",
+        "#CC0000",
+        "#DEC28B",
+        "#90EE90",
+        "#2E7D32",
+        "#E3EF3F",
+        "#808080",
+        "#000000"
+      ],
+      "position": "right third of slide, overlapping and truncating the main diagram's right side"
+    },
+    {
+      "type": "diagram",
+      "description": "Tiny thumbnail inset: white box with green border, small dark-green title 'Transformer Encoder'; inside, a small gray rounded box labeled 'Encoder' with a short black arrow pointing up out of it, the word 'Inputs' in tiny text below the box, and a small curved connector arrow on the left.",
+      "colors": [
+        "#FFFFFF",
+        "#00A000",
+        "#BFBFBF",
+        "#000000"
+      ],
+      "position": "bottom-left, overlapping the main orange panel above the 'Block Input' tag"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: yellow filled circle with bold red number '49', outlined thinly.",
+      "colors": [
+        "#FFFF00",
+        "#CC0000"
+      ],
+      "position": "top-right corner, partially overlapping the main panel's top-right"
+    },
+    {
+      "type": "other",
+      "description": "Two rows of five small filled circular dots used as ellipses/continuation markers: blue dots on top row, green dots on bottom row.",
+      "colors": [
+        "#0033CC",
+        "#00CC66"
+      ],
+      "position": "top-right and bottom-right of the main diagram, just left of the inset panel"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; all visuals are flat vector shapes (rounded rectangles, circles, arrows, dots) in a hand-styled lecture-diagram aesthetic.",
+    "MLP neuron clusters: each pink Feed-Forward box contains a row of ~8 small green filled circles representing neurons, with tiny 'MLP' caption."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#CC0000",
+    "body_text": "#7E2D5B",
+    "accents": [
+      "#FBE3C6",
+      "#E87722",
+      "#7E2D5B",
+      "#FFE94A",
+      "#D9B779",
+      "#FF9FC5",
+      "#00A651",
+      "#90EE90",
+      "#E3EF3F",
+      "#DEC28B",
+      "#CC0000",
+      "#2E75B6",
+      "#FFE135",
+      "#0033CC",
+      "#00CC66",
+      "#FFFF00"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Verdana-like). Vertical slide title 'Encoder Block' is the largest text (~36-40pt bold, red, rotated 90\u00b0 counterclockwise). 'Block Output'/'Block Input' tags: ~14pt bold red inside red-outlined white boxes. Layer bar labels ('Layer Normalization...', 'Feed Forward Networks...') are bold-italic dark red/maroon (~15-16pt). 'Multi Head Self Attention' is bold ~20pt yellow on maroon. Token letters (X, Y) are bold red with numeric subscripts. Right-inset box labels ~18-20pt: 'Add & Norm' dark green on light green, 'Feed Forward' gray on yellow-green, 'Multi-Head Attention' black on tan; V/K/Q white bold on red circles. Slide number '49' bold red in yellow circle.",
+  "animation_state": "Slide appears fully built \u2014 no mid-build reveal detected. Apparent text truncations ('Layer Normalization (NOT Batch N\u2026', 'Feed Forward Networks [ One Hidden wi\u2026') are caused by the overlapping right inset panel, not by animation.",
+  "recreation_brief": "1. Set a white 16:9 slide. 2. Draw a large rounded rectangle from ~8% to ~95% width and ~8% to ~97% height, fill #FBE3C6, border 2pt #CC0000. 3. Top-left on the panel border: white rectangle, 2pt red border, bold red 14pt text 'Block Output'; duplicate at bottom-left with 'Block Input'. 4. Left edge: text box with bold red 40pt 'Encoder Block', rotated 270\u00b0 so it reads bottom-to-top. 5. Bottom of panel: 8 small token rectangles labeled X\u2081, X\u2082, X\u2083, X\u2084, [gap], X\u2096, [gap], X_{N-1}, X_N with alternating fills #2E75B6/#FFE135/#FF9FC5 and bold red letters; add 5 green dots (#00CC66) in the gaps. 6. Above it: full-width bar fill #7E2D5B with bold yellow 20pt 'Multi Head Self Attention'. 7. Stack upward, connecting each layer with thin orange (#E87722) up-arrows: row of small Y token boxes (same styling as X row); dashed orange rounded outline containing 7 red circles (#CC0000) with white '+'; full-width tan bar (#D9B779) with bold-italic dark-red 15pt 'Layer Normalization (NOT Batch Norm)'; row of Y token boxes; bold-italic dark-red label 'Feed Forward Networks [ One Hidden wi\u2026' above a purple-bordered (#9B2D86) row of 6 pink boxes (#FF9FC5), each holding 8 green dots (#00A651) and tiny 'MLP' text; row of Y token boxes; second dashed-outline \u2295 row; second tan 'Layer Normalization (NOT Batch Norm)' bar; top row of Y token boxes Y\u2081\u2026Y_N with 5 blue dots (#0033CC) in the gaps. 8. Draw dashed orange skip-connection lines from the X row and mid-stack up the sides into each \u2295 row. 9. Right side: white rounded rectangle ~62%-93% width with 4pt green (#00A000) border; inside, bottom to top: three red circles with white bold V, K, Q (K connected by a black line to the panel bottom); tan box (#DEC28B) 'Multi-Head Attention' (two lines); light-green rounded box (#90EE90, dark-green text) 'Add & Norm'; yellow box (#E3EF3F, gray text) 'Feed Forward' (two lines); second 'Add & Norm' rounded box; connect with 3pt black arrows; add a black rounded residual path from below Multi-Head Attention up the left side into the top Add & Norm, and an exit line through the panel top. 10. Bottom-left over the orange panel: small white box, green border, tiny dark-green title 'Transformer Encoder', gray rounded 'Encoder' box with black up-arrow and tiny 'Inputs' text below. 11. Top-right: yellow (#FFFF00) circle with bold red '49'.",
+  "_meta": {
+    "frame": "slide_048.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 48,
+      "image": "slide_048.jpg",
+      "kept_frame": "frame_03981.jpg",
+      "start_sec": 3900.0,
+      "end_sec": 3980.0,
+      "frame_count": 81,
+      "old_slide": 116
+    },
+    "elapsed_s": 285.9
+  }
+}

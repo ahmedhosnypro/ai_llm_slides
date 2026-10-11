@@ -1,0 +1,34 @@
+# Visual QA Comparison â Encoder Multi-Head Attention Block Crop
+
+## 1. Verbatim Transcription
+
+**IMG1 (recreation render):**
+- `N x` (inside tan circle, upper-left)
+- `Add & Norm` (bold dark text, no box)
+- `Multi-Head Attention` (two lines, inside red-bordered box)
+- `V` (blue circle), `K` (navy circle), `Q` (red circle, partially clipped at right edge)
+
+**IMG2 (original frame):**
+- `N x` (inside pale circle, slightly blurry but legible)
+- `Add & Norm` (inside a tan bordered box)
+- `Multi-Head Attention` (two lines, inside red-bordered box)
+- `V` (blue circle), `K` (blue circle), `Q` (red circle, partially clipped at right edge)
+
+## 2. Similarities
+- **Same subject:** both crops show the encoder sub-layer of a transformer diagram: the "Add & Norm" label above a red-bordered "Multi-Head Attention" module, the "N x" repetition circle at upper-left, and the V/K/Q input circles along the bottom.
+- **Shared layout order:** NÃ circle â Add & Norm â Multi-Head Attention box â V/K/Q row, arranged vertically in both.
+- **Shared styling language:** beige/tan background, brown module fills, red borders/accents, red dashed diagonal line entering from the top-left, blue/navy/red circles with white letters.
+- Both crops clip the right side and bottom, cutting the Q circle at the frame edge.
+
+## 3. Differences
+- **"Add & Norm" treatment:** IMG1 renders it as plain bold dark text on the background; IMG2 encloses it in a bordered tan box with a small red downward-pointing triangle (arrow) beneath it â this box and triangle are absent in IMG1.
+- **Connector lines:** IMG2 shows red orthogonal flow lines (vertical red line left of/into the block, red line entering the Multi-Head Attention box's left edge); IMG1 instead shows only a plain dark vertical line stub at top-left and the dashed red line, omitting the red flow plumbing.
+- **Typography:** IMG1 text is crisp, bold, and dark brown with high contrast; IMG2 text is lighter (the "Multi-Head Attention" label is low-contrast grayish-tan) and visibly blurry with video/JPEG compression artifacts.
+- **Box geometry:** IMG1's red box is larger with thicker border and generous padding; IMG2's box is more compact with thinner border and slightly rounded corners.
+- **Right-edge neighbors:** IMG1 shows a thin gray/purple vertical strip; IMG2 shows yellow and purple strips plus a small blue patch at the top-right corner â adjacent elements differ between the two.
+- **Image quality:** IMG1 is a clean vector-like render; IMG2 has motion blur, softness, and compression noise throughout (letters still legible).
+
+## 4. Verdict
+**IMG1 is better** as a visual artifact: it is sharply rendered, with high-contrast bold text ("Add & Norm", "Multi-Head Attention") and clean flat fills, whereas IMG2 suffers from blur and low-contrast text throughout.
+
+However, as a **faithful recreation**, IMG1 has two concrete fidelity gaps versus IMG2: (a) the boxed "Add & Norm" with its red downward triangle is simplified to plain text, and (b) the red connector/flow lines feeding the block are missing. If the goal is legibility, IMG1 wins; if exact diagram fidelity is required, those two omissions should be added to it.

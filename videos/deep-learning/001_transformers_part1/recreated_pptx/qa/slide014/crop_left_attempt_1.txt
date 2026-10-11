@@ -1,0 +1,33 @@
+# Element-by-Element Fidelity Check
+
+## Box Labels (verbatim, casing, spelling)
+| Element | IMG1 (recreation) | IMG2 (original) | Match |
+|---|---|---|---|
+| Output Probabilities | â two lines | â two lines | â |
+| Softmax | â | â | â |
+| Linear | â | â | â |
+| Add & Norm (Ã5) | â | â | â |
+| Feed Forward (Ã2) | â | â | â |
+| Multi-Head Attention | â | â | â |
+| Masked Multi-Head Attention (3 lines) | â | â | â |
+| Nx (Ã2) | â | â | â |
+| Positional Encoding (Ã2) | â | â | â |
+| Input Embedding / Output Embedding | â | â | â |
+| Inputs / Outputs (shifted right) | â | â | â |
+
+## Structure, Colors, Topology
+- **Stacking order**: Softmax â Linear â decoder block (Add&Norm / FF / Add&Norm / MHA / Add&Norm / Masked MHA); encoder block (Add&Norm / FF / Add&Norm / MHA) â identical in both. â
+- **Box colors**: green Softmax, lavender Linear, yellow-green Add&Norm, blue Feed Forward, orange attention blocks, pink embeddings â all match in hue and placement. â
+- **Container outlines**: gray rounded rectangles around encoder and decoder stacks, both present with same proportions. â
+- **Arrows**: upward main-flow arrows, all curved residual skip arrows (encoder bottom skip, encoder top skip, decoder three skip loops), the cross-connection from encoder output into decoder Multi-Head Attention, and the three fan-in arrows into each attention block â all present, same directions, same entry points. â
+- **Circle-plus junctions**: both present, left of the encoder path and right of the decoder path, each connected to a sine-wave-in-circle positional encoding icon. Wave orientation (mirrored yin-yang style) matches on both sides. â
+- **Bottom arrows** up from Inputs / Outputs labels: present in both. â
+
+## Differences Noted
+1. **MINOR (confidence: high)** â IMG2 contains a handwritten pen/cursor stroke over the arrow between the encoder's lower "Add & Norm" and "Feed Forward" (a live-lecture annotation artifact from the screen capture, not part of the slide's renderable content). The recreation correctly omits it; this is not a content discrepancy.
+2. **MINOR (confidence: high)** â IMG2 is softer/lower-resolution with slight compression blur; IMG1 is crisper. This is a capture-quality difference in the source frame, not a recreation defect. Per founder mandate, the recreation's use of the clean embedded original figure is the mandated image source.
+
+## Visual-Quality Defects in the Recreation
+- No text overflow, clipping, misalignment, collisions, or wrapping errors observed. All labels legible at 2x; line breaks ("Feed / Forward", "Masked / Multi-Head / Attention", "Output / Probabilities", "Outputs / (shifted right)") match the original exactly. Arrowheads and curves render cleanly.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

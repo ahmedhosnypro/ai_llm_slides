@@ -1,0 +1,55 @@
+1. TITLE
+Title: "Batch Normalization" (large dark-red text, top center).
+Badge numeral: "43" inside a yellow circle at top-right corner.
+
+2. ALL VERBATIM TEXT
+- Title: Batch Normalization
+- Badge: 43
+- Center inset panel (light yellow box with red border), text:
+  "Batch Normalization" (red, bold)
+  "Calculate (then Normalize) Î¼, Ï" (black; Î¼ and Ï in black italic/bold)
+  "for ALL Samples in the batch" ("ALL Samples" in blue bold, rest black)
+  "(for each channel)" (green, parenthesized, smaller)
+  A small pen/marker icon appears just below-left inside this box.
+- Left 3D block diagram: no text labels.
+- Right 3D block diagram labels:
+  "Feature Vector" (red, rotated vertically, left side of right block, with a double-headed red arrow alongside)
+  "Batch size" (red, rotated diagonally, lower-right of right block, alongside a red double-headed arrow)
+  "Channels" (red, horizontal, beneath the right block, alongside a red double-headed arrow)
+- Bottom bordered panel (green border):
+  Line 1 (blue bold): "Batch Normalization Calculate Mean and Variance of Each Mini-Batch instead of Calculating Mean and Variance of the Whole Data."
+  Line 2 (blue bold): "The mean and variance will differ from mini-batch to another (Source of Error)." â "(Source of Error)" in black.
+  Line 3 (red bold): "Mini Batch Size should be large enough to minimize âbatchingâ effect. (Constrain)" â "(Constrain)" in black.
+- No footer, caption, or footnote text visible. No unreadable strings [?] â all text legible.
+
+3. EQUATIONS
+- Only symbolic tokens: "Î¼, Ï" in the center inset box ("Calculate (then Normalize) Î¼, Ï").
+- No other equations, token sequences (e.g., X_0..X_N), or formulaic expressions on the slide.
+
+4. DIAGRAM TOPOLOGY
+Two 3D isometric voxel/cube-stack illustrations (not a node-and-arrow graph; no arrows connecting boxes â only red double-headed measurement arrows on the right diagram):
+
+LEFT DIAGRAM:
+- A 3D block of stacked cubes representing an activation tensor. Front faces of the left portion are magenta/purple; the rightmost vertical slab is orange; top faces alternate colors in a checker pattern (dark blue/navy, green, orange, olive/brown, magenta) representing different channels/feature maps stacked. Roughly 5 layers deep along one axis and about 5 cubes tall; width of several cubes. No labels, no arrows, no containers. The right orange slab appears to highlight a single channel being selected/normalized.
+
+CENTER INSET PANEL:
+- Rectangular light-yellow (cream) box with thin red border, placed between the two diagrams. Contains the descriptive text quoted in section 2 plus a small pen icon. It is a callout/annotation box, not connected by any arrow.
+
+RIGHT DIAGRAM:
+- A similar 3D block of stacked cubes, colored differently: front-left faces magenta/purple, a bright-green vertical slab, and a yellow vertical slab; top faces show a checker of colors (dark navy, orange, yellow-green, green, magenta, blue) representing stacked channels.
+- Red double-headed (up-down) vertical arrow on the left side of the right block, labeled "Feature Vector" â indicating the vertical dimension is the feature vector.
+- Red double-headed arrow along the bottom of the right block, labeled "Channels" â indicating the horizontal/front dimension is channels.
+- Red double-headed diagonal arrow along the depth axis (lower right receding edge), labeled "Batch size" â indicating the depth dimension is batch samples.
+- No grouping containers or dashed outlines. No inset panels other than the yellow callout box.
+
+WELL-KNOWN FIGURE RESEMBLANCE:
+- This does NOT match Vaswani et al. 2017 Figure 1/2, Peter Bloem's self-attention diagram, or any specific Alammar illustration. It is a generic "tensor as stack of feature maps" illustration of the style commonly used to contrast Batch Normalization vs Layer Normalization (each colored slab = one channel; the highlighted slab is the channel whose Î¼ and Ï are computed across ALL samples in the batch). It resembles the widely circulated BN-vs-LN cube diagrams (e.g., from batch/layer-norm tutorial blog posts), but no exact published source match can be asserted; it appears to be an instructor-made or adapted illustration.
+
+5. NUMBERS/DATA
+- Badge numeral: 43 (slide number).
+- No table cells, percentages, tensor dimensions, or other numeric values on the slide.
+
+6. BUILD STATE / ARTIFACTS
+- Slide appears fully built; no partial-reveal animation state, no cursor pointer visible, no video player overlays, progress bar, or watermarks.
+- Minor rendering artifacts only: JPEG compression noise and slight edge fringing around colored cubes; a small pen/marker icon inside the yellow callout box (appears to be an intentional annotation graphic, not an artifact).
+- Black horizontal bar at the very bottom edge of the frame (letterboxing/video frame edge, not slide content).

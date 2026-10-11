@@ -1,0 +1,268 @@
+{
+  "slide_title": "Self Attention Mechanism (Input Word plays Different Roles)",
+  "subtitle_or_header": "(Query using X\u2082 All Keys in Dictionary and retrieve Corresponding Values",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "30",
+      "KEYS",
+      "K",
+      "Dot Product",
+      "Matched KEYS with Relevance Percentage",
+      "Soft max",
+      "W\u2082\u2081",
+      "W\u2082\u2082",
+      "W\u2082\u2083",
+      "W\u2082\u2084",
+      "\u03a3",
+      "Retrieve VALUES Weighted by their Relevance",
+      "Values",
+      "V",
+      "X\u2082 is used as Key",
+      "X\u2082 is used as Value",
+      "X\u2082 is used as Query",
+      "Query",
+      "ALL Keys with X\u2082",
+      "Q",
+      "Should we use SAME X\u2082 Vector for the three Roles ?",
+      "X\u2081",
+      "X\u2082",
+      "X\u2083",
+      "X\u2084"
+    ],
+    "equations": [
+      "W\u2082\u2081, W\u2082\u2082, W\u2082\u2083, W\u2082\u2084 (attention-weight labels; LaTeX: W_{21}, W_{22}, W_{23}, W_{24})",
+      "\u03a3 (weighted-sum / summation operator)",
+      "\u2297 (multiplication operator nodes, 4x)",
+      "X\u2081, X\u2082, X\u2083, X\u2084 (input embedding vector labels; LaTeX: X_1, X_2, X_3, X_4)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Two-line bold title centered at top with yellow-highlighted parenthetical; slide-number badge '30' in yellow circle at top-right corner. Below, one large light-peach rounded rectangle (thin dark-red border) fills ~92% of the slide width (~4-96% width, ~21-99% height) as a canvas for a single left-to-right dataflow diagram: KEYS vector stack (far left) -> Dot Product box -> Soft max vertical bar -> four \u2297 multiply nodes with W\u2082\u2081-W\u2082\u2084 labels -> \u03a3 box (top center-right) -> output X\u2082 chip (top center). Values vector stack (far right) feeds the \u2297 nodes from the right. A horizontal Query chip row runs along the bottom with a tan 'Query / ALL Keys with X\u2082' label and red 'Q' at bottom-left. Three white annotation boxes with red borders ('X\u2082 is used as Key/Value/Query') float over the diagram with red leader lines; two light-blue callouts with magenta italic text sit in the upper band; a blue question box sits bottom-right.",
+    "regions": [
+      {
+        "name": "Title block",
+        "position": "top center, ~8-90% width, ~4-13% height",
+        "content": "Bold black title, second line is the subtitle with color-coded words"
+      },
+      {
+        "name": "Slide number",
+        "position": "top right, ~91-97% width, ~7-14% height",
+        "content": "'30' in yellow circle with olive outline"
+      },
+      {
+        "name": "Diagram canvas",
+        "position": "~4-96% width, ~21-99% height",
+        "content": "Peach rounded rectangle containing the entire self-attention flow diagram"
+      },
+      {
+        "name": "KEYS stack",
+        "position": "middle left, ~6-15% width, ~40-71% height",
+        "content": "Tan 'KEYS' pill above a dashed-green-bordered vertical stack of 4 vector chips X\u2081-X\u2084, X\u2082 highlighted with translucent yellow circle; red bold 'K' to the right"
+      },
+      {
+        "name": "Key-role annotation box",
+        "position": "center-left of canvas, between the KEYS stack (~15% width) and the Dot Product box (~26% width)",
+        "content": "White box with thin red border and red leader line to the highlighted key X\u2082 chip; two-line centered text 'X\u2082 is used as Key' with 'Key' in red, rest black"
+      },
+      {
+        "name": "Dot Product box",
+        "position": "center-left, ~26-36% width, ~34-73% height",
+        "content": "Tan vertical rectangle labeled 'Dot Product' containing 4 blue dot nodes and red fan-out/fan-in arrows"
+      },
+      {
+        "name": "Matched KEYS callout",
+        "position": "top center-left, ~33-50% width, ~26-32% height",
+        "content": "Light-blue rounded box, magenta italic bold text 'Matched KEYS with Relevance Percentage'"
+      },
+      {
+        "name": "Soft max bar",
+        "position": "center, ~48-52% width, ~35-73% height",
+        "content": "Pale-pink vertical rounded bar with vertical text 'Soft max'"
+      },
+      {
+        "name": "Weighted-sum column",
+        "position": "center-right, ~52-62% width, ~40-70% height",
+        "content": "Blue labels W\u2082\u2081-W\u2082\u2084 on red arrows from Soft max to four red \u2297 nodes; red lines from Values stack enter \u2297 from right; red arrows rise from \u2297 to \u03a3"
+      },
+      {
+        "name": "\u03a3 box and output",
+        "position": "top center-right, ~54-68% width, ~22-38% height",
+        "content": "Light-blue \u03a3 rectangle; thick green arrow pointing up-left to output chip labeled X\u2082 inside dashed green rectangle"
+      },
+      {
+        "name": "Retrieve VALUES callout",
+        "position": "top right, ~66-88% width, ~26-32% height",
+        "content": "Light-blue rounded box, magenta italic bold text 'Retrieve VALUES Weighted by their Relevance'"
+      },
+      {
+        "name": "Values stack",
+        "position": "middle right, ~80-89% width, ~40-71% height",
+        "content": "Tan 'Values' pill above dashed-green-bordered vertical stack of 4 vector chips X\u2081-X\u2084, X\u2082 highlighted with yellow circle; red bold 'V' to the left"
+      },
+      {
+        "name": "Value-role annotation box",
+        "position": "center-right of canvas, between the \u2297 column (~62% width) and the Values stack (~80% width)",
+        "content": "White box with thin red border and red leader line to the highlighted value X\u2082 chip; two-line centered text 'X\u2082 is used as Value' with 'Value' in red, rest black"
+      },
+      {
+        "name": "Query area",
+        "position": "bottom left/center, ~12-52% width, ~76-96% height",
+        "content": "Tan box 'Query / ALL Keys with X\u2082', red 'Q' in circle, horizontal row of 4 vector chips X\u2081-X\u2084 with X\u2082 highlighted (yellow circle + small red arrow), dashed green border around row; dashed red curved arrow rising to KEYS stack"
+      },
+      {
+        "name": "Query-role annotation box",
+        "position": "bottom-center of canvas, above the Query row",
+        "content": "White box with thin red border and red leader line pointing down to the highlighted query X\u2082 chip; two-line centered text 'X\u2082 is used as Query' with 'Query' in red, rest black"
+      },
+      {
+        "name": "Question box",
+        "position": "bottom right, ~60-87% width, ~81-92% height",
+        "content": "White rectangle, blue bold text 'Should we use SAME X\u2082 Vector for the three Roles ?' with X\u2082 in red"
+      }
+    ],
+    "hierarchy": "Title is largest and boldest (black with yellow highlight) followed by the subtitle; the diagram dominates the slide area, with red arrows, yellow highlight circles, and the green output arrow drawing the eye along the left-to-right dataflow; callouts/annotations are small (~12-14pt); slide number is smallest."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "Self-attention dataflow for one query word (X\u2082): (1) KEYS stack of 4 embedding chips X\u2081-X\u2084 (vertical, dashed green border); red connector lines run right into a tan 'Dot Product' box containing 4 blue dot nodes; the highlighted X\u2082 chip fans out with red arrows to all 4 dots (dot products of query with every key), and each dot sends a red arrow rightward. (2) Arrows enter a vertical pale-pink 'Soft max' bar. (3) Four red arrows exit Soft max left-to-right, labeled W\u2082\u2081, W\u2082\u2082, W\u2082\u2083, W\u2082\u2084 (blue), each terminating in a red \u2297 (multiply) node. (4) Red lines from the Values stack (4 chips X\u2081-X\u2084, vertical, dashed green border, X\u2082 highlighted) enter each \u2297 node from the right. (5) Each \u2297 sends a red arrow upward into a light-blue \u03a3 box. (6) A thick green block arrow points up-left from \u03a3 to an output chip labeled X\u2082 (green-highlighted label) enclosed in a dashed green rectangle \u2014 the attention output for word 2. (7) A dashed red curved arrow runs from the bottom Query row / Q label up to the bottom of the KEYS stack, showing the query being compared with ALL keys. Magenta callouts annotate stage 1-2 ('Matched KEYS with Relevance Percentage') and stage 5-6 ('Retrieve VALUES Weighted by their Relevance').",
+      "colors": [
+        "#C00000",
+        "#0070C0",
+        "#00B050",
+        "#D9BF9B",
+        "#F5C9D4",
+        "#CCE4F7",
+        "#FFFF00"
+      ],
+      "position": "entire diagram canvas, ~4-96% width, ~21-99% height"
+    },
+    {
+      "type": "diagram",
+      "description": "Embedding-vector chips: each chip is a small white rectangle split into cells \u2014 leftmost cell holds the label X\u2081/X\u2082/X\u2083/X\u2084 (colored subscript), remaining cells colored green, yellow, lavender. Chips appear in 4 groups: KEYS stack (vertical, 4 chips), Values stack (vertical, 4 chips), Query row (horizontal, 4 chips, bottom), and single output chip (top). In every group the X\u2082 chip is emphasized with a large translucent yellow circle; the Query row's X\u2082 additionally has a short red arrow pointing at it from lower-left.",
+      "colors": [
+        "#FFFFFF",
+        "#A9D18E",
+        "#FFD966",
+        "#C9A7E8",
+        "#FFFF00",
+        "#00B050"
+      ],
+      "position": "left edge, right edge, bottom center, top center of canvas"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Three white annotation boxes with thin red borders and red leader lines: 'X\u2082 is used as Key' (right of KEYS stack, pointing to highlighted key X\u2082), 'X\u2082 is used as Value' (center-right, pointing to highlighted value X\u2082), 'X\u2082 is used as Query' (bottom center, pointing down to highlighted query X\u2082). Second word of each ('Key'/'Value'/'Query') is red, rest black.",
+      "colors": [
+        "#FFFFFF",
+        "#C00000",
+        "#000000"
+      ],
+      "position": "center-left, center-right, bottom-center of canvas"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Two light-blue rounded callout boxes with magenta italic bold text: 'Matched KEYS with Relevance Percentage' (upper center-left) and 'Retrieve VALUES Weighted by their Relevance' (upper right).",
+      "colors": [
+        "#D6EAF8",
+        "#CC00CC"
+      ],
+      "position": "top band of canvas"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Question box: white rectangle with blue bold two-line text 'Should we use SAME X\u2082 Vector / for the three Roles ?' where 'X\u2082' is red.",
+      "colors": [
+        "#FFFFFF",
+        "#0070C0",
+        "#C00000"
+      ],
+      "position": "bottom right of canvas"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: yellow circle with olive/dark-yellow outline containing black bold '30'.",
+      "colors": [
+        "#FFD966",
+        "#808000",
+        "#000000"
+      ],
+      "position": "top-right corner of slide, outside the peach canvas"
+    },
+    {
+      "type": "arrow",
+      "description": "Arrow inventory (exact counts): 4 red connector lines from the 4 KEYS chips into the Dot Product box; 4 red fan-out arrows from the highlighted X\u2082 key chip to the 4 blue dots inside the box; 4 red arrows from the 4 dots to the Soft max bar; 4 red arrows from Soft max to the 4 \u2297 nodes (labeled W\u2082\u2081-W\u2082\u2084); 4 red lines from the Values stack into the \u2297 nodes from the right (one per node); 4 red arrows from the 4 \u2297 nodes up into the \u03a3 box \u2014 24 solid red straight arrows/lines in total; 1 thick green block arrow (\u03a3 to output chip); 1 dashed red curved arrow (Query row up to the KEYS stack); 1 small solid red arrow pointing at the query X\u2082 chip; 3 thin red leader lines from the role-annotation boxes.",
+      "colors": [
+        "#C00000",
+        "#00B050"
+      ],
+      "position": "throughout the diagram canvas"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; all graphics are vector shapes: embedding chips (colored segmented rectangles), tan label pills, blue dot nodes, red \u2297 operator circles, \u03a3 box, block arrow, highlight circles, and dashed-border containers."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#000000",
+    "body_text": "#000000",
+    "accents": [
+      "#FFFF00",
+      "#C00000",
+      "#0070C0",
+      "#CC00CC",
+      "#00B050",
+      "#FFD966",
+      "#FBE5D6",
+      "#E8CFA0",
+      "#D9BF9B",
+      "#F5C9D4",
+      "#CCE4F7",
+      "#D6EAF8",
+      "#A9D18E",
+      "#C9A7E8",
+      "#808000"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Calibri-like). Title: bold, ~26-28pt, black, with yellow text-highlight on the parenthetical. Subtitle: bold, ~18-20pt, color-coded keywords (red Query/Keys/Values, blue X\u2082). Diagram labels: bold ~12-14pt; magenta callouts are bold italic; 'Soft max' is rotated 90\u00b0 (vertical) inside its bar; subscripts on all vector and weight labels (X\u2081, X\u2082, X\u2083, X\u2084; W\u2082\u2081, W\u2082\u2082, W\u2082\u2083, W\u2082\u2084); annotation boxes use two-line centered text; question box text is bold blue with a space before the question mark.",
+  "animation_state": "Slide appears fully built \u2014 all labels/annotations/callouts visible, no mid-build reveal; the yellow circles and highlights are static emphasis, not animation artifacts.",
+  "recreation_brief": "1. Slide size 16:9, white background #FFFFFF; use bold sans-serif ~12-14pt for all diagram labels unless a step specifies otherwise. 2. Title block, centered at top (~4-13% height): line 1 'Self Attention Mechanism (Input Word plays Different Roles)', Arial bold ~28pt black #000000, with a yellow #FFFF00 text-highlight on the parenthetical '(Input Word plays Different Roles)'. 3. Title line 2 (subtitle), centered directly below line 1: '(Query using X\u2082 All Keys in Dictionary and retrieve Corresponding Values' \u2014 bold ~18-20pt, verbatim with NO closing parenthesis; color 'Query', 'Keys', 'Values' red #C00000 and 'X\u2082' blue #0070C0, remaining words black. 4. Slide-number badge, top-right (~91-97% width, ~7-14% height): circle filled #FFD966 with olive #808000 outline, black bold '30' centered. 5. Diagram canvas: rounded rectangle spanning ~4-96% width and ~21-99% height, fill #FBE5D6, thin #C00000 border. 6. Vector-chip template: small white rectangle split into cells \u2014 leftmost cell holds the label X\u2081/X\u2082/X\u2083/X\u2084 (colored subscript), remaining cells green #A9D18E, yellow #FFD966, lavender #C9A7E8. Place 4 groups: (a) KEYS stack, 4 chips X\u2081-X\u2084 vertical at ~6-15% width, ~40-71% height; (b) Values stack, 4 chips X\u2081-X\u2084 vertical at ~80-89% width, ~40-71% height; (c) Query row, 4 chips X\u2081-X\u2084 horizontal at ~18-52% width within the ~76-96% height band; (d) output chip, single X\u2082 chip at ~56-65% width in the ~22-38% height band. 7. Emphasis: wrap the KEYS stack, Values stack and Query row each in a dashed #00B050 rounded rectangle; enclose the output chip in a dashed #00B050 rectangle; overlay a ~50%-transparent #FFFF00 circle on the X\u2082 chip in each of the 4 groups; render the output chip's X\u2082 label in green. 8. Tan pills (#E8CFA0 fill, dark-red text): 'KEYS' above the left stack, 'Values' above the right stack, and a two-line pill 'Query' / 'ALL Keys with X\u2082' at the left end of the bottom Query area (~12-18% width); add bold red #C00000 letters 'K' right of the KEYS stack, 'V' left of the Values stack, and 'Q' in a circle right of the Query pill. 9. Dot Product box: tan #D9BF9B vertical rectangle at ~26-36% width, ~34-73% height, 'Dot Product' label at its top; place 4 dark-blue dots vertically inside; draw 4 red #C00000 connector lines from the 4 KEYS chips into the box, 4 red fan-out arrows from the highlighted X\u2082 key chip to the 4 dots, and 4 red arrows from the dots to the box's right edge toward Soft max. 10. Soft max bar: pale-pink #F5C9D4 vertical rounded bar at ~48-52% width, ~35-73% height, with 'Soft max' rotated 90\u00b0 in magenta. 11. Weighted-sum column: 4 red arrows from the Soft max bar to 4 red \u2297 circle nodes at ~56-60% width, evenly spaced across ~40-70% height; label the arrows W\u2082\u2081, W\u2082\u2082, W\u2082\u2083, W\u2082\u2084 in blue #0070C0; draw 4 red lines from the Values stack into the \u2297 nodes from the right (one per node); draw 4 red arrows from the \u2297 nodes upward into the \u03a3 box \u2014 a light-blue #CCE4F7 rectangle at ~54-68% width, ~22-38% height containing a large dark-navy '\u03a3'. 12. Output arrow: thick green #00B050 block arrow from the \u03a3 box pointing up-left to the output chip. 13. Callout 1: light-blue #D6EAF8 rounded box at ~33-50% width, ~26-32% height, magenta #CC00CC bold italic text 'Matched KEYS with Relevance Percentage'. 14. Callout 2: light-blue #D6EAF8 rounded box at ~66-88% width, ~26-32% height, magenta #CC00CC bold italic text 'Retrieve VALUES Weighted by their Relevance'. 15. Role annotations, 3 white boxes with thin red #C00000 borders, two-line centered text and red leader lines: 'X\u2082 is used as Key' ('Key' in red) at center-left between the KEYS stack and the Dot Product box, leader line to the highlighted key X\u2082; 'X\u2082 is used as Value' ('Value' in red) at center-right between the \u2297 column and the Values stack, leader line to the highlighted value X\u2082; 'X\u2082 is used as Query' ('Query' in red) at bottom-center above the Query row, leader line pointing down to the highlighted query X\u2082. 16. Query-flow arrows: 1 dashed red #C00000 curved arrow from the Q / Query-row area rising to the bottom of the KEYS stack, and 1 small solid red arrow pointing at the Query row's X\u2082 chip from lower-left. 17. Question box: white rectangle at ~60-87% width, ~81-92% height, bold blue #0070C0 two-line text 'Should we use SAME X\u2082 Vector / for the three Roles ?' with 'X\u2082' in red #C00000, preserving the space before '?'.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Added 3 missing layout.regions ('Key-role annotation box', 'Value-role annotation box', 'Query-role annotation box') so that regions cover the three white annotation boxes described in visual_elements and layout.arrangement but previously uncovered.",
+      "visual_elements arrow inventory: replaced the vague, internally inconsistent '~8 solid red straight arrows' with exact per-stage counts derived from the flowchart description \u2014 4 KEYS\u2192Dot Product lines, 4 X\u2082 fan-out arrows, 4 dots\u2192Soft max arrows, 4 Soft max\u2192\u2297 arrows, 4 Values\u2192\u2297 lines, 4 \u2297\u2192\u03a3 arrows (24 total) \u2014 plus exact counts for the 1 green block arrow, 1 dashed red curved arrow, 1 small red arrow, and 3 red leader lines.",
+      "colors.accents: added #D6EAF8 (callout fill) and #808000 (badge outline), both used in visual_elements and the brief but missing from the original palette.",
+      "recreation_brief: replaced the non-actionable 'positioned as on the slide' with concrete placements and leader-line targets for the 3 role-annotation boxes.",
+      "recreation_brief: added the dashed green #00B050 rectangle around the output chip, specified in layout.regions and visual_elements but omitted from the original brief.",
+      "recreation_brief: added exact coordinates from layout.regions for the two callouts (~33-50% and ~66-88% width, both ~26-32% height) and the \u03a3 box (~54-68% width, ~22-38% height).",
+      "typography_notes: replaced the vague 'heavy use of subscripts' with the exact subscripted labels (X\u2081, X\u2082, X\u2083, X\u2084; W\u2082\u2081, W\u2082\u2082, W\u2082\u2083, W\u2082\u2084).",
+      "layout.arrangement: clarified that the peach canvas fills ~92% of the slide WIDTH (~4-96% width, ~21-99% height), matching the region coordinates.",
+      "animation_state: changed 'all bullets/annotations/callouts visible' to 'all labels/annotations/callouts visible' since the slide contains no bullet list.",
+      "verbatim_text.bullets kept empty deliberately: this is a diagram-only slide with no bullet list; all 25 text items are captured in verbatim_text.labels. No content was invented to fill the field."
+    ],
+    "uncertain_items": [
+      "Exact red connector counts (4 KEYS\u2192Dot Product lines; 4 Values\u2192\u2297 lines assumed one-to-one rather than all-to-all) are derived from the flowchart description; the original '~8' total was inconsistent and cannot be verified without the image.",
+      "The subtitle lacks a closing parenthesis ('(Query using X\u2082 All Keys in Dictionary and retrieve Corresponding Values'); kept verbatim \u2014 the JSON cannot show whether this is on-slide text or extraction truncation.",
+      "Text colors stated only in the original brief \u2014 'Soft max' magenta, '\u03a3' dark-navy, tan-pill text dark-red \u2014 cannot be cross-verified against any other field.",
+      "Exact coordinates of the 3 role-annotation boxes are not in the source; only qualitative placements (right of KEYS stack / center-right / bottom-center) were available and were converted into relative positions between neighboring fixed elements."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_030.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 30,
+      "image": "slide_030.jpg",
+      "kept_frame": "frame_02815.jpg",
+      "start_sec": 2668.0,
+      "end_sec": 2814.0,
+      "frame_count": 147
+    },
+    "elapsed_s": 172.2,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1087.6
+  }
+}

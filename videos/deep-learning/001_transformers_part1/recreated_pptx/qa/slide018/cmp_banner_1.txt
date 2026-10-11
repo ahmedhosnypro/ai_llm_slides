@@ -1,0 +1,33 @@
+# Visual QA â Slide 018 attempt 1, banner-callouts crop (IMG1 = recreation render, IMG2 = original frame)
+
+## 1. Verbatim transcription
+
+**IMG1 (recreation):**
+- Banner box: "**Both Encoder and Decoder Blocks Contain**" / "**âMulti-Head Self Attentionâ block**" â âMulti-Headâ in blue, âSelf Attentionâ in red, rest black.
+- Callout box: "**âhâ Heads**â / "**Outputs of Heads are concatenated**" â all in dark red/maroon; the âhâ is red.
+- Bottom right (red italic): "Multi-Head Attention"
+
+**IMG2 (original):**
+- Banner box: "**Both Encoder and Decoder Blocks Contain**" / "**âMulti-Head Self Attentionâ block**" â same blue/red color coding.
+- Callout box: "**âhâ Heads**" / "**Outputs of Heads are concatenated**" â âHeadsâ and âOutputs of Heads areâ in orange-brown; âconcatenatedâ in red.
+- Bottom right (red italic): "Multi-Head Attention" (partially clipped by the crop)
+
+Text content is identical in both images; no garbage strings, wrong-language text, or placeholders in either.
+
+## 2. Similarities
+- Same purpose and layout: orange title banner at top, tan sub-callout box below-left, red italic label âMulti-Head Attentionâ at bottom right, red vertical rule at far left, light-gray background.
+- Same two-line banner text with identical color emphasis: black headline, blue âMulti-Headâ, red âSelf Attentionâ.
+- Both boxes are horizontally centered with the callout box indented left of center; both captions are centered within their boxes.
+- Same bottom-right red italic caption and left-edge red rule concept.
+
+## 3. Differences
+- **Border colors:** IMG1 uses brown/dark-tan borders on both boxes; IMG2 uses red borders on both â a clear recreation deviation.
+- **Fill shades:** IMG1's callout box is a darker tan; IMG2's is a lighter beige. IMG1's banner fill is slightly more saturated peach than IMG2's.
+- **Missing color emphasis in IMG1:** In IMG2, the word âconcatenatedâ is highlighted red against orange-brown text; in IMG1 the entire line is uniform maroon â the emphasis is lost. âHeadsâ is also more orange in IMG2 vs maroon in IMG1.
+- **Connector lines:** IMG1 shows a thin, straight, gray diagonal line from the banner's right edge; IMG2 shows thin pink/red curved connectors (one from the banner, one from the callout box). Wrong color and geometry in IMG1.
+- **Left red rule:** thin in IMG1, noticeably thicker in IMG2.
+- **Typography:** Both are bold sans-serif, but IMG1's glyphs are heavier/crisper; IMG2's strokes look slightly lighter and softer (consistent with video-frame scaling/compression, so partly an artifact, but the apparent weight differs).
+- **Defects/clipping:** IMG2's bottom caption âMulti-Head Attentionâ is clipped at the bottom edge (descenders cut by the crop); IMG1 shows it complete. IMG2 exhibits mild blur/compression artifacts; IMG1 is clean but was rendered with the wrong styling noted above.
+
+## 4. Verdict
+**IMG2 (original) is better as the reference/ground truth.** Despite slight blur and the bottom-edge clipping of the caption, it preserves the slide's meaningful design details that IMG1 gets wrong: red box borders (vs brown), the red emphasis on âconcatenatedâ (vs uniform maroon), pink/red curved connector lines (vs a gray straight line), and the heavier left red rule. IMG1 is sharper and shows the full caption, but as a recreation it misrepresents several semantic color cues, so fidelity favors IMG2. If the criterion were standalone legibility only, IMG1 would win â but for a faithfulness check, IMG2 is the better image.

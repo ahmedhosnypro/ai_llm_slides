@@ -1,0 +1,206 @@
+{
+  "slide_title": "Layer , Group, and Instance Normalization",
+  "subtitle_or_header": "Sample Based Normalization",
+  "verbatim_text": {
+    "bullets": [
+      "Group Normalization (Group of Channels) General Case",
+      "Instance Normalization Calculate (then Normalize) \u03bc, \u03c3 for ONE Channel in ONE Sample (Output of ONE Filter)",
+      "Layer Normalization Calculate (then Normalize) \u03bc, \u03c3 for ALL Channels in the Same Sample (Input to Same Layer)"
+    ],
+    "labels": [
+      "Sample Based Normalization",
+      "Samples",
+      "Channels",
+      "Feature Vector",
+      "Channels",
+      "Batch size",
+      "Group Normalization",
+      "(Group of Channels)",
+      "General Case",
+      "Instance Normalization",
+      "Layer Normalization",
+      "Transformer choice",
+      "44"
+    ],
+    "equations": [
+      "Calculate (then Normalize) \u03bc, \u03c3 for ONE Channel in ONE Sample (Output of ONE Filter)",
+      "Calculate (then Normalize) \u03bc, \u03c3 for ALL Channels in the Same Sample (Input to Same Layer)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Thin red frame borders the whole slide. A light-gray title bar spans the top with a centered red title and a yellow '44' badge at its right end. Below and top-left sits a blue italic two-line header. The middle band contains four isometric 3D voxel-block diagrams left-to-right: input tensor (far left), Group Normalization cube (center-left), Instance Normalization cube (center-right), and a dimension-labeled tensor enclosed in a thin red rectangle (far right). Two bordered text boxes sit under the middle cubes (Group Normalization left, Instance Normalization right), and a full-width bordered text box for Layer Normalization runs along the bottom, with a black 'Transformer choice' oval overlapping its right end.",
+    "regions": [
+      {
+        "name": "Title bar",
+        "position": "top, full width, ~3-13% vertical",
+        "content": "Gray bar, red bold centered title 'Layer , Group, and Instance Normalization'; yellow circle badge '44' at right (~89-93% x)"
+      },
+      {
+        "name": "Header",
+        "position": "top-left, ~5-28% x, ~17-30% y",
+        "content": "Blue bold italic text on two lines: 'Sample Based' / 'Normalization'"
+      },
+      {
+        "name": "Input tensor cube",
+        "position": "left, ~4-30% x, ~30-82% y",
+        "content": "Large salmon/red isometric voxel block with 'Samples' diagonal arrow (top-left) and 'Channels' horizontal arrow (bottom); small white mouse cursor on front face"
+      },
+      {
+        "name": "Group Normalization cube",
+        "position": "center-left, ~28-50% x, ~15-65% y",
+        "content": "Isometric voxel block, front face split magenta (left) and orange/salmon (right) showing channel groups; multicolor top and side faces"
+      },
+      {
+        "name": "Instance Normalization cube",
+        "position": "center-right, ~46-68% x, ~20-68% y",
+        "content": "Isometric voxel block, front face magenta with one orange column at right (single channel highlighted)"
+      },
+      {
+        "name": "Dimension-labeled tensor in red box",
+        "position": "right, ~66-95% x, ~15-70% y",
+        "content": "Magenta isometric voxel block inside a thin red rectangle; red double-headed arrows labeled 'Feature Vector' (vertical, left), 'Channels' (horizontal, bottom), 'Batch size' (diagonal, right)"
+      },
+      {
+        "name": "Group Normalization text box",
+        "position": "bottom center-left, ~27-46% x, ~68-82% y",
+        "content": "Three-line bordered box: red title, blue bold '(Group of Channels)', green 'General Case'"
+      },
+      {
+        "name": "Instance Normalization text box",
+        "position": "bottom center-right, ~47-90% x, ~68-82% y",
+        "content": "Bordered box: red title plus black sentence with red '\u03bc, \u03c3' and bold blue emphasis phrases"
+      },
+      {
+        "name": "Layer Normalization text box",
+        "position": "bottom, full width, ~6-95% x, ~83-96% y",
+        "content": "Full-width bordered box: red title plus black sentence with red '\u03bc, \u03c3', bold blue phrases, green underlined '(Input to Same Layer)'"
+      },
+      {
+        "name": "Transformer choice oval",
+        "position": "bottom-right, ~76-93% x, ~84-92% y",
+        "content": "Solid black ellipse with yellow bold text 'Transformer choice', overlapping the Layer Normalization box's right end"
+      }
+    ],
+    "hierarchy": "The four colorful cube diagrams dominate visually (largest, most saturated elements). Text size/weight order: red slide title (largest, bold) > blue italic header > red bold text-box titles > black body sentences with bold blue/green emphasis > small black diagram labels. Red is the dominant accent (frame, arrows, titles); blue and green mark emphasis; yellow appears only in the badge and the Transformer oval."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Input tensor: isometric 3D block of small cubes. Front face ~4 columns x 5 rows of salmon/coral cells. Top face: receding banded rows of green, yellow, orange. Right side face: vertical strips of yellow, orange, blue-gray. Red double-headed arrow along the upper-left depth edge labeled 'Samples' (text rotated along arrow); red double-headed horizontal arrow beneath the front face labeled 'Channels'. A small white mouse-cursor arrow rests on the front face (~11% x, ~55% y).",
+      "colors": [
+        "#F07060",
+        "#40C040",
+        "#E8E040",
+        "#E08030",
+        "#7090B0",
+        "#CC0000"
+      ],
+      "position": "left, ~4-30% x, ~30-82% y"
+    },
+    {
+      "type": "diagram",
+      "description": "Group Normalization illustration: isometric voxel block. Front face: left ~three-quarters magenta/purple cells, right ~quarter orange/salmon cells (two highlighted channel groups). Top face: banded rows dark navy-blue (back), green, yellow, orange (front). Right side face: vertical strips yellow, orange, blue-gray. No arrows or labels; pairs with the 'Group Normalization' text box below.",
+      "colors": [
+        "#CC44CC",
+        "#F07060",
+        "#3050A0",
+        "#40C040",
+        "#E8E040",
+        "#E08030",
+        "#7090B0"
+      ],
+      "position": "center-left, ~28-50% x, ~15-65% y"
+    },
+    {
+      "type": "diagram",
+      "description": "Instance Normalization illustration: isometric voxel block. Front face: magenta/purple cells with a single orange column at the right edge (one channel highlighted). Top face: banded rows dark navy-blue, green, yellow, orange. Right side face: yellow/orange strips. Pairs with the 'Instance Normalization' text box below.",
+      "colors": [
+        "#CC44CC",
+        "#E08030",
+        "#3050A0",
+        "#40C040",
+        "#E8E040",
+        "#7090B0"
+      ],
+      "position": "center-right, ~46-68% x, ~20-68% y"
+    },
+    {
+      "type": "diagram",
+      "description": "Dimension-labeled tensor enclosed in a thin red rectangle (highlight container ~66-95% x, ~15-70% y). Isometric voxel block: front face ~4x5 magenta/purple cells; top face banded rows green, yellow, orange; right side face vertical strips yellow, orange, blue-gray. Three red double-headed arrows with labels: vertical arrow at left labeled 'Feature Vector' (text rotated 90\u00b0, reading upward); horizontal arrow under the front face labeled 'Channels'; diagonal arrow along the right depth edge labeled 'Batch size' (text rotated ~45\u00b0).",
+      "colors": [
+        "#CC44CC",
+        "#40C040",
+        "#E8E040",
+        "#E08030",
+        "#7090B0",
+        "#FF0000"
+      ],
+      "position": "right, ~66-95% x, ~15-70% y"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Three thin-bordered rectangular text boxes on white: (1) 'Group Normalization' bold red / '(Group of Channels)' bold blue / 'General Case' bold green; (2) 'Instance Normalization' bold red / 'Calculate (then Normalize) \u03bc, \u03c3 for ONE Channel in ONE Sample (Output of ONE Filter)' black with '\u03bc, \u03c3' red and 'ONE Channel', 'ONE Sample', '(Output of ONE Filter)' bold blue; (3) full-width 'Layer Normalization' bold red / 'Calculate (then Normalize) \u03bc, \u03c3 for ALL Channels in the Same Sample (Input to Same Layer)' black with '\u03bc, \u03c3' red, 'ALL Channels' and 'Same Sample' bold blue, '(Input to Same Layer)' bold green underlined.",
+      "colors": [
+        "#CC0000",
+        "#0000CC",
+        "#008000",
+        "#000000",
+        "#FFFFFF"
+      ],
+      "position": "bottom band of slide, ~68-96% y"
+    },
+    {
+      "type": "other",
+      "description": "Callout oval: solid black filled ellipse with bold yellow text 'Transformer choice', overlapping the right end of the Layer Normalization box.",
+      "colors": [
+        "#000000",
+        "#FFFF00"
+      ],
+      "position": "bottom-right, ~76-93% x, ~84-92% y"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: yellow circle with red outline containing black text '44', at the right end of the gray title bar.",
+      "colors": [
+        "#FFFF00",
+        "#CC0000",
+        "#000000"
+      ],
+      "position": "top-right, ~89-93% x, ~9-16% y"
+    }
+  ],
+  "imagery": [
+    "No photographs or clip-art; all graphics are vector-style isometric voxel-block (3D cube grid) illustrations in saturated flat colors with darker edge shading.",
+    "A small white mouse-pointer cursor icon overlays the front face of the left salmon cube (live-recording artifact)."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#CC0000",
+    "body_text": "#000000",
+    "accents": [
+      "#CC0000",
+      "#0000CC",
+      "#008000",
+      "#FFFF00",
+      "#E0E0E0",
+      "#FF0000"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout (Arial-like). Slide title: bold, ~32-36pt, red, centered on gray bar, with an unusual space before the comma in 'Layer ,'. Header: bold italic, ~22-24pt, blue, title-case, wrapped on two lines. Text-box headings: bold ~16pt red; body ~14pt black sentence case with bold blue and bold green emphasis phrases; \u03bc, \u03c3 symbols in red; '(Input to Same Layer)' bold green and underlined. Diagram labels: bold ~10-12pt black, some rotated to match arrow direction ('Samples', 'Feature Vector', 'Batch size'). 'Transformer choice' is bold yellow on a black oval. Slide number plain black in a yellow badge. No numbered or bulleted lists \u2014 content is in bordered text boxes.",
+  "animation_state": "Slide appears fully built (no mid-build reveal). A live mouse cursor is visible on the left cube's front face. A thin black strip runs along the very bottom edge of the frame \u2014 likely video letterboxing, not slide content.",
+  "recreation_brief": "1. Set slide background white; draw a red (#CC0000) rectangle outline (~3pt) inset slightly from the slide edges as the outer frame. 2. Add a full-width light-gray (#E0E0E0) bar across the top (~10% of slide height); center bold red Arial ~32pt text: 'Layer , Group, and Instance Normalization' (keep the space before the comma). 3. At the bar's right end, add a yellow circle with red outline containing black '44'. 4. Top-left below the bar, add blue (#0000CC) bold italic ~24pt text on two lines: 'Sample Based' / 'Normalization'. 5. Build four isometric voxel blocks (use a grid of small cube shapes or freeform parallelograms with top/left/right shading): (a) far-left block, front face ~4x5 salmon (#F07060) cells, top bands green/yellow/orange, side strips yellow/orange/blue-gray (#7090B0); (b) center-left block, front face magenta (#CC44CC) left portion and orange/salmon right portion, top bands navy (#3050A0)/green/yellow/orange; (c) center-right block, front face magenta with one orange right-hand column, same top/side scheme; (d) far-right block, front face ~4x5 magenta, top bands green/yellow/orange, side strips yellow/orange/blue-gray. 6. Draw a thin red (#FF0000) rectangle around block (d). 7. Add red double-headed arrows with bold black labels: 'Samples' diagonal at block (a)'s top-left edge; 'Channels' horizontal under block (a); 'Feature Vector' vertical at block (d)'s left (rotate label 90\u00b0); 'Channels' horizontal under block (d); 'Batch size' diagonal along block (d)'s right depth edge (rotate label ~45\u00b0). 8. Add three white, thin-bordered text boxes: bottom center-left with 'Group Normalization' (bold red) / '(Group of Channels)' (bold blue) / 'General Case' (bold green); bottom center-right with 'Instance Normalization' (bold red) / 'Calculate (then Normalize) \u03bc, \u03c3 for ONE Channel in ONE Sample (Output of ONE Filter)' (black, '\u03bc, \u03c3' red, blue-bold phrases as listed); full-width bottom box with 'Layer Normalization' (bold red) / 'Calculate (then Normalize) \u03bc, \u03c3 for ALL Channels in the Same Sample (Input to Same Layer)' (black, '\u03bc, \u03c3' red, 'ALL Channels' and 'Same Sample' bold blue, '(Input to Same Layer)' bold green underlined). 9. Add a solid black oval with bold yellow text 'Transformer choice' overlapping the bottom box's right end. 10. Optionally place a small white arrow-cursor icon on the left cube's front face for full fidelity.",
+  "_meta": {
+    "frame": "slide_044.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 44,
+      "image": "slide_044.jpg",
+      "kept_frame": "frame_03679.jpg",
+      "start_sec": 3541.0,
+      "end_sec": 3678.0,
+      "frame_count": 138,
+      "old_slide": 113
+    },
+    "elapsed_s": 232.1
+  }
+}

@@ -1,0 +1,46 @@
+# Region Comparison: "After Normalization" box (aftnorm region)
+
+## Element-by-element analysis
+
+**1. Text content (verbatim)**
+- IMG1: "After Normalization" / |*a*| = |*b*| = 1
+- IMG2: "After Normalization" / |*a*| = |*b*| = 1
+batim match, including bold-italic vector letters with underbars.
+
+**2. Heading font & character**
+- Both render "After Normalization" in a serif face (Times-like), roman (non-italic), matching letterforms in "A", "f", "N", "z". Size relative to box width is comparable (~85% of inner width in both Match.
+
+**3. Equation typography**
+- Bold italic **a** and **b** between vertical bars, serif "1", serif equals â present in both. IMG1's professionally-rendered 2D bars/italics are per ground rule (c).
+.
+
+**4. Underbar placement/weight â DISCREPANCY**
+- IMG2 (original): the underline sits tight under the letter bowl, thin, contained between the vertical bars.
+- IMG1 (recreation): the underbar is noticeably **thicker** and sits **lower**, nearly detached from the letters, visually reading like a standalone dash below the |a| / |b| groups rather than an underbar accent.
+- Severity: **MINOR** (styling of the underbar, content and meaning unchanged). Confidence: HIGH.
+
+**5. Equation spacing**
+- IMG2 shows tighter math spacing â the gap before the final "1" is very small ("=1" nearly touching).
+- IMG1 shows generous, even spacing around both "=" signs and before the "1".
+- Severity: **MINOR**. Confidence: MEDIUM-HIGH (partly attributable to LANCZOS upscale of IMG2 compressing apparent gaps).
+
+**6. Vertical layout / padding**
+- IMG1 has more whitespace below the equation (content block sits slightly higher within the box); IMG2's content is more vertically centered/tight.
+- Severity: **MINOR**. Confidence: MEDIUM.
+
+**7. Border**
+- Blue rectangular border in both. IMG1's border renders somewhat thicker/heavier than IMG2's thin border; consistent with 150-dpi render weight vs. original, and chrome per house template.
+- Severity: **MINOR** at most. Confidence: LOW-MEDIUM.
+
+**8. Colors**
+- White interior, blue border, black text in both. Discrepancy summary
+| # | Issue | Severity | Confidence |
+|---|-------|----------|------------|
+| 1 | Underbar too thick / too low / detached in recreation | MINOR | HIGH |
+| 2 | Equation inter-glyph spacing wider (esp. before "1") | MINOR | MED-HIGH |
+| 3 | Extra bottom padding / vertical centering shift | MINOR | MEDIUM |
+| 4 | Border stroke weight heavier | MINOR | LOW-MED |
+
+No BLOCKER or MAJOR issues. Text, fonts, math structure, colors, and containment all match; the noted badge numeral 23 top-edge artifact in the treq_eq crop is per instructions excluded from consideration.
+
+CROP VERDICT: MATCH

@@ -1,0 +1,27 @@
+# Visual QA Analysis
+
+## 1. Verbatim Text Transcription
+
+All text is in English:
+
+- **"1\*d"** â red bold label, appears twice (below-left of the left strip, and below-right of the right strip). The separator is an **asterisk/star glyph (`*`)**, not a superscript "d" and not a middle dot (Â·). The "d" sits on the same baseline as the "1".
+- **"W"** â large black bold letter inside the central box.
+- **"="** â equals sign between the W box and the right strip, rendered in **dark red/crimson** (not black).
+- **"d\*d"** â red bold label centered below the W box; again an asterisk separator, not a middle dot.
+- **"d: Embedding Length"** â bottom caption in **bold dark blue**, with a colon after "d".
+
+## 2. Layout
+
+- **LEFT edge:** A horizontal strip of ~5 pastel-colored cells (pale yellow, pink, lavender tones) sits at the top-left, with the red "1\*d" label below its right end. The dark-green dashed rounded-rectangle border runs along the left edge.
+- **RIGHT edge:** The red "=" sign, then a second ~5-cell pastel strip (yellow, pink, lavender), with red "1\*d" beneath its right end. Dashed green border along the right edge.
+- **TOP:** A sliver of the surrounding tan/peach background is visible above the green legend box, plus a small **clipped white rectangle fragment** at the top-right â remnants of content outside this crop.
+- **BOTTOM:** The red "d\*d" label sits below the W box; the blue "d: Embedding Length" caption runs along the bottom inside the dashed border.
+- **CENTER:** A pale-yellow square with an orange/brown border containing the black "W". The whole legend is a pale mint-green panel enclosed by a dark-green dashed rounded border.
+
+## 3. Visual Defects
+
+- **Crop artifacts:** The legend is clearly cut from a larger diagram â foreign tan background and a clipped white shape intrude at the top edge. No legend text itself is clipped.
+- **Separator ambiguity (low risk):** Due to blur, the asterisk glyphs in "1\*d" and "d\*d" are small; at this resolution they read as asterisks, but a middle dot cannot be 100% excluded. Baseline alignment supports the asterisk reading over "1^d".
+- **Strip cell counts:** Blur makes the exact cell count per strip slightly uncertain; approximately five cells each, with soft internal boundaries.
+- **Compression/upscale artifacts:** Soft edges and mild color bleeding throughout, consistent with a 6x upscale of a 169x72px source.
+- **No garbage strings, placeholder text, or wrong-language content** detected; no overlapping elements within the legend.

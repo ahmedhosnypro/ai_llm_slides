@@ -1,0 +1,78 @@
+1. TITLE
+The exact title text at the bottom of the slide reads verbatim:
+"Multi Head Self Attention of Word X_2"
+("Multi Head" is in red, "Self Attention of Word" in black, and "X_2" in red with subscript 2.)
+Badge numeral: "15" inside a yellow circle with a dark outline, top-right corner.
+
+2. ALL VERBATIM TEXT
+- Badge: "15"
+- Repeated panel labels (each of the 5 stacked head panels carries these three labels, ascending from back to front): "Similarity" (appears 4 times visible on stacked back panels), "Probabilities" (appears twice visible, small yellow tag), "Weighted SUM" (appears 5 times, once per panel)
+- Head badges (black filled ellipses, yellow/white text): "h=1", "h=2", "h=3", "h=4", "h=5"
+- Box label in detail panel: "Dot Product"
+- Small label above dot-product box: "K.q" (appears twice: once as "K.q" near the box, once as "K.q / âd" above it)
+- Vertical pink box: "Scaling by âd"
+- Vertical pink box: "Soft max"
+- Blue summation box: "Î£"
+- Blue matrix boxes: "W^o" (several, one per panel; small blue boxes labeled W^o)
+- Small green boxes along the left/keys: "W_k" (repeated ~6 times)
+- Red small box under the query token: "W_q"
+- Value labels: "v_1", "v_2", "v_3"
+- Stacked small weight boxes at right/bottom (label reading partially uncertain): "W_1^Q" [?], "W_2^Q" [?], "W_3^Q" [?] (red-outlined boxes), "W_1^K" [?] or "W^k" variants, "W_1^V" [?], "W_2^V" [?], "W_3^V" [?], "W_4^V" [?], "W_5^V" [?] (blue-outlined boxes) â exact subscript/superscript combinations are too small to read with certainty; pattern is W with head index 1â5 and type Q/K/V [?]
+- Token row (bottom, inside rounded green-dashed container): "X_1  X_2  X_3  X_4" (X_2 highlighted red/pink; a red cursor/arrow points at it)
+- Left stacked token boxes: "X" repeated (rows of X tokens inside orange ellipse)
+- Red annotation along the curved red arrow: "*H* Heads"
+- No visible footnotes, captions, axis labels, or inset-panel titles beyond the above. Some tiny box labels unreadable: [?], [?].
+
+3. EQUATIONS
+- "K.q" (keys times query)
+- "K.q / âd" (scaled dot product; âd with square-root symbol over d)
+- "Scaling by âd"
+- "Soft max"
+- "Î£" (summation)
+- "X_2" (token with subscript 2, in title and in token row)
+- "h=1" through "h=5" (head indices)
+- "*H* Heads" (H as number-of-heads symbol)
+- Weight-matrix notation: W_q, W_k, W^o, W_i^Q / W_i^K / W_i^V pattern (head-index sub/superscripts uncertain [?])
+
+4. DIAGRAM TOPOLOGY
+Overall: a hand-drawn/custom illustration of multi-head self-attention computed for word X_2, showing one head (h=1) expanded in detail in front and four more heads stacked behind it in perspective. NOT a match to Vaswani et al. 2017 Fig. 1/2, Bloem, or any single Alammar figure, though the overall flavor (stacked translucent head layers, similarity â probabilities â weighted sum per head) is reminiscent of Jay Alammar-style annotated transformer illustrations; the stacked-layers-in-perspective treatment and the "H Heads" red arrow appear original to the lecturer.
+
+Front panel (h=1), large salmon/red rounded rectangle occupying the left ~60% of the slide:
+- Orange ellipse (far left): contains 4 rows of small boxes, each row an "X" token (orange/pink fill) paired with a small green "W_k" box â these represent input tokens with their key projections. A green ellipse overlaps it to the right (green fill, semi-transparent), representing key vectors K feeding rightward.
+- A row of small green squares (vector strip) between the green ellipse and the Dot Product box.
+- Beige/gray box "Dot Product" with label "K.q" on its right edge; above it the expression "K.q / âd". Dots (blue dots) connect from the green ellipse into this box.
+- Tall vertical pink box "Scaling by âd" receiving the dot-product output.
+- Tall vertical pink box "Soft max" to its right.
+- To the right of softmax, a column of â (multiply) nodes (small circles with red Ã), each paired with a value label "v_1", "v_2", "v_3" and a small vector strip, feeding a small blue "W^o" box per row, then into output rows of small X-colored boxes.
+- Blue box "Î£" (summation) at the top of the multiply column, receiving inputs; arrows flow upward (bottom-to-top) through Similarity â Probabilities â Weighted SUM along the top of the panel: "Similarity" tag â "Probabilities" tag â "Weighted SUM" tag.
+- Bottom of front panel: a green-dashed rounded container holding the token row "X_1 X_2 X_3 X_4" (X_2 red-highlighted) with small red box "W_q" attached below X_2 (the query projection); a red arrow/cursor points at X_2. Curved thin arrows connect this row up into the orange ellipse / query path.
+- Right edge of front panel: a column of stacked small weight boxes (red-outlined and blue-outlined, W_i^Q / W_i^K / W_i^V pattern [?]) with additional "W^o" boxes; these continue under the stacked back panels.
+
+Back panels (stacked in perspective behind h=1, each shifted up and to the right):
+- h=2 (light purple/lavender panel), h=3 (light yellow panel), h=4 (light green panel), h=5 (light peach/tan panel, rearmost/top).
+- Each back panel repeats: a "Weighted SUM" tag, a row of small "W^o" blue boxes, an output strip of small X-token boxes, and its own black ellipse badge "h=2" â¦ "h=5". The rearmost panels show "Similarity" tags peeking above each layer.
+- Data flows bottom-to-top / back-to-front: tokens enter at bottom-left, each head computes Similarity â Probabilities (softmax) â Weighted SUM, then W^o output strips.
+
+Global arrow:
+- A large thick red curved arrow labeled "*H* Heads" starts near the bottom-center/right (near the h=1 output / weight boxes), sweeps right and up across the stacked panels to the top-right, indicating the H parallel heads being concatenated/collected. Direction: from bottom-left to top-right.
+
+Containers:
+- Green dashed rounded rectangle around the X_1..X_4 token row (bottom).
+- Green dashed rounded rectangle around the h=1 output token strip.
+- Black filled ellipses as head-index badges h=1..h=5.
+- The whole slide is framed by a red rectangle nested inside a blue rectangle (decorative slide border).
+
+5. NUMBERS/DATA
+- Badge number: 15
+- Head indices: h=1, h=2, h=3, h=4, h=5 (i.e., H = 5 heads depicted)
+- Token count: 4 tokens (X_1..X_4); target word X_2
+- Value labels: v_1, v_2, v_3 (at least 3 visible â rows)
+- Scaling constant: âd (dimension d, numeric value not given)
+- No tables, percentages, or other numerics.
+
+6. BUILD STATE / ARTIFACTS
+- A mouse cursor (white arrow with black outline) is visible at approximately upper-middle area, overlapping the "Similarity" tags of the stacked back panels (~x 310, y 150).
+- A second red arrow/cursor artifact at bottom-left pointing at the highlighted token X_2 (~x 245, y 420) â appears to be a drawn pointer, part of the annotation.
+- The stacked back panels appear progressively more transparent/faded toward the rear (h=5 faintest), consistent with a perspective "ghosting" effect rather than mid-reveal animation; no visible partial-reveal truncation of the front panel.
+- Bottom of frame: solid black horizontal bar (video letterboxing), not slide content.
+- Top edge: thin black bar also present (letterbox). Slide otherwise fully built; no transition blur or overlay text.

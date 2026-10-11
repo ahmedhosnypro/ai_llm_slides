@@ -1,0 +1,217 @@
+{
+  "slide_title": "Traditional RNN  Seq2Seq model",
+  "subtitle_or_header": "None - the slide has no subtitle; the two section sub-headers are 'Decoder (RNN)' (upper right, above the yellow decoder container) and 'Encoder  (RNN)' (bottom, below the peach encoder container).",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "6",
+      "Decoder (RNN)",
+      "softmax",
+      "softmax",
+      "softmax",
+      "o\u2081",
+      "o\u2082",
+      "o\u2083",
+      "s\u2081",
+      "s\u2082",
+      "s\u2083",
+      "h\u2081",
+      "h\u2082",
+      "embedding x\u2081",
+      "embedding x\u2082",
+      "embedding x\u2083",
+      "x\u2081",
+      "x\u2082",
+      "x\u2083",
+      "Context Vector (of Whole Inputs)",
+      "Encoder  (RNN)"
+    ],
+    "equations": [
+      "o_1, o_2, o_3 (decoder output symbols, italic serif with numeric subscripts)",
+      "s_1, s_2, s_3 (decoder state symbols on horizontal arrows)",
+      "h_1, h_2 (encoder state symbols on horizontal arrows)",
+      "x_1, x_2, x_3 (input symbols at bottom of encoder)",
+      "softmax (operation label only, no formula shown)",
+      "embedding x_i (operation label only, no formula shown)"
+    ]
+  },
+  "layout": {
+    "arrangement": "White slide enclosed by a large thin dark-red rounded-rectangle frame. Title centered at top inside the frame; small yellow numbered badge top-right corner. Two rounded colored diagram containers: yellow Decoder container upper-right, peach Encoder container lower-left. A thin red curved arrow carries the context vector from a red dot on the encoder's right side up to a red dot on the decoder's left side. A pink callout box labeled 'Context Vector (of Whole Inputs)' sits lower-right-of-center, tied to the encoder by a thin red leader line. Caption 'Encoder  (RNN)' centered at the very bottom.",
+    "regions": [
+      {
+        "name": "Outer frame",
+        "position": "full slide; approx left 4%, top 8%, right 96%, bottom 99%",
+        "content": "Rounded rectangle border, dark red, thin stroke, white fill"
+      },
+      {
+        "name": "Title",
+        "position": "top center; x 27%-66%, y 10%-17%",
+        "content": "Red bold text 'Traditional RNN  Seq2Seq model'"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right; x 90%-95%, y 10%-17%",
+        "content": "Yellow circle with dark blue outline containing the numeral 6"
+      },
+      {
+        "name": "Decoder caption",
+        "position": "top right, above decoder box; x 71%-87%, y 16%-20%",
+        "content": "Red bold italic 'Decoder (RNN)', right-aligned over the yellow box"
+      },
+      {
+        "name": "Decoder diagram container",
+        "position": "upper right; x 50%-94%, y 21%-54%",
+        "content": "Light-yellow rounded rectangle holding the 3-step decoder RNN diagram"
+      },
+      {
+        "name": "Encoder diagram container",
+        "position": "lower left; x 5%-50%, y 56%-92%",
+        "content": "Peach rounded rectangle holding the 3-step encoder RNN diagram"
+      },
+      {
+        "name": "Encoder caption",
+        "position": "bottom center-left; x 22%-39%, y 93%-99%",
+        "content": "Red bold italic 'Encoder  (RNN)' centered under the peach box"
+      },
+      {
+        "name": "Context-vector arrow",
+        "position": "center; x 47%-54%, y 47%-61%",
+        "content": "Thin red curved arrow from encoder red dot up to decoder red dot"
+      },
+      {
+        "name": "Callout box",
+        "position": "lower right of center; x 58%-87%, y 75%-82%",
+        "content": "Pink rectangle, red border, red bold text 'Context Vector (of Whole Inputs)'; thin red leader line runs up-left to the encoder's red-dot area"
+      }
+    ],
+    "hierarchy": "Title is the largest and boldest element (red). The two large colored containers (yellow decoder, peach encoder) dominate the body area. Section captions are medium bold italic red. The finest text is the small italic serif math labels (softmax, embedding, o/s/h/x with subscripts) in dark olive-brown. The callout text is small bold red."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "DECODER (inside yellow rounded rectangle). Three identical time-step columns, left to right. Each column, top to bottom: output label o\u2081 / o\u2082 / o\u2083 (italic serif, dark olive) at top; black upward arrow from a green cell to the label with italic 'softmax' label placed to the left of the arrow; a light-green rectangle divided into 3 equal segments (softmax/output layer); black downward arrow; a light-orange rectangle divided into 3 equal segments (RNN hidden cell). Horizontal black right-arrows connect the orange cells: first connector labeled s\u2081, second labeled s\u2082, and a third arrow exits the right edge of the third orange cell labeled s\u2083. Two thin black curved arrows swoop from beneath the s\u2081 and s\u2082 connectors, dip downward and curve up into the bottom edges of the second and third orange cells (recurrent feedback). A small solid red dot sits at the left edge of the first orange cell (context-vector entry point).",
+      "colors": [
+        "#F2F25C",
+        "#9CE05C",
+        "#F7C683",
+        "#000000",
+        "#7F6000",
+        "#C00000"
+      ],
+      "position": "upper right; x 50%-94%, y 21%-54%"
+    },
+    {
+      "type": "diagram",
+      "description": "ENCODER (inside peach rounded rectangle). Top row: three pink/salmon rectangles each divided into 3 equal segments (RNN hidden cells), connected left to right by black arrows; first connector labeled h\u2081, second labeled h\u2082; a black arrow enters the first pink cell horizontally from the left edge of the container (unlabeled initial state); a small solid red dot sits at the right edge of the third pink cell. Bottom row: three tan rectangles each divided into 3 equal segments (input cells), one beneath each pink cell. Black upward arrows run from each tan cell to the pink cell above, each labeled to its left in italic dark-olive text: 'embedding x\u2081', 'embedding x\u2082', 'embedding x\u2083'. At the very bottom, black upward arrows rise from the labels x\u2081, x\u2082, x\u2083 into each tan cell.",
+      "colors": [
+        "#FAC090",
+        "#F2A396",
+        "#E6C49C",
+        "#000000",
+        "#7F6000",
+        "#C00000"
+      ],
+      "position": "lower left; x 5%-50%, y 56%-92%"
+    },
+    {
+      "type": "arrow",
+      "description": "Context-vector connector: thin red curved arrow starting at the red dot on the right edge of the encoder's third pink cell, arcing upward and to the right, terminating with an arrowhead at the red dot on the left edge of the decoder's first orange cell.",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "center of slide, bridging the two containers; x 47%-54%, y 47%-61%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Callout rectangle with light-pink fill and thin red border containing centered red bold text 'Context Vector (of Whole Inputs)'. A thin straight red leader line connects the encoder's right side (near the red dot) diagonally down to the callout's top-left corner.",
+      "colors": [
+        "#FFC0CB",
+        "#FF0000"
+      ],
+      "position": "lower right of center; x 58%-87%, y 75%-82%"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: small circle, yellow fill, dark navy outline, containing the numeral 6 (dark red/maroon).",
+      "colors": [
+        "#FFFF00",
+        "#1F3864",
+        "#8B0000"
+      ],
+      "position": "top right corner; x 90%-95%, y 10%-17%"
+    },
+    {
+      "type": "other",
+      "description": "Outer decorative frame: large rounded rectangle, white fill, thin dark-red/maroon border enclosing all slide content.",
+      "colors": [
+        "#FFFFFF",
+        "#C0504D"
+      ],
+      "position": "full slide; left 4%, top 8%, right 96%, bottom 99%"
+    }
+  ],
+  "imagery": [
+    "No photographs, icons, or illustrations. Only vector diagram shapes. A screen-recording artifact is present: a white mouse cursor with black outline floats just below the title text (around x 45%, y 15%); it is not slide content and should be omitted on recreation."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#E0301E",
+    "body_text": "#7F6000",
+    "accents": [
+      "#C0504D",
+      "#F2F25C",
+      "#FAC090",
+      "#9CE05C",
+      "#F7C683",
+      "#F2A396",
+      "#E6C49C",
+      "#FFC0CB",
+      "#C00000",
+      "#FF0000",
+      "#000000",
+      "#7F6000",
+      "#FFFF00",
+      "#1F3864",
+      "#8B0000"
+    ]
+  },
+  "typography_notes": "All text is sans-serif except the math symbols. Title: bold sans-serif (Arial/Calibri-like), red, roughly 28pt, title case, contains a double space between 'RNN' and 'Seq2Seq'. Section captions 'Decoder (RNN)' and 'Encoder  (RNN)': bold italic sans-serif, red, roughly 18pt; the encoder caption also contains a double space between 'Encoder' and '(RNN)'. Math labels (softmax, embedding, o, s, h, x with numeric subscripts): italic serif (Times New Roman / Cambria Math style), dark olive-brown (#7F6000), roughly 12-14pt, subscripts rendered as true subscripts. Callout text: bold sans-serif, red, roughly 14pt. Slide number: plain sans-serif numeral in a badge. There is no bullet list; the slide is entirely diagrammatic.",
+  "animation_state": "Slide appears fully built with every element visible; nothing is mid-build. The presence of a resting mouse cursor below the title indicates this is a paused video frame, not an animation state.",
+  "recreation_brief": "1. Create a 16:9 slide with a solid white (#FFFFFF) background.\n2. Outer frame: draw a rounded rectangle spanning left 4%, top 8%, right 96%, bottom 99% of the slide; fill #FFFFFF, thin (~2pt) solid dark-red/maroon border #C0504D.\n3. Title: centered text box at x 27%-66%, y 10%-17%; exact text 'Traditional RNN  Seq2Seq model' (preserve the double space between 'RNN' and 'Seq2Seq'); Arial bold ~28pt, color #E0301E.\n4. Slide-number badge: circle ~0.45in diameter at x 90%-95%, y 10%-17%; fill #FFFF00, 1.5pt outline #1F3864; centered numeral '6', sans-serif ~14pt, color #8B0000.\n5. Decoder caption: right-aligned text box at x 71%-87%, y 16%-20%; exact text 'Decoder (RNN)'; Arial bold italic ~18pt, color #E0301E.\n6. Decoder container: rounded rectangle at x 50%-94%, y 21%-54%; fill light yellow #F2F25C, no border.\n7. Decoder green bars: inside the container's upper half, place 3 light-green rectangles (fill #9CE05C, ~0.9in x 0.28in each), evenly spaced left to right; divide each into 3 equal cells with 2 thin vertical lines (softmax/output layer).\n8. Decoder orange bars: directly below each green bar, place a light-orange rectangle (fill #F7C683, ~0.9in x 0.28in) divided into 3 equal cells (RNN hidden cell); draw a short black (#000000) down-arrow between each green bar and the orange bar below it.\n9. Decoder output labels: above each green bar, draw a black up-arrow from the bar's top edge to a label at the top of that column - 'o\u2081' over column 1, 'o\u2082' over column 2, 'o\u2083' over column 3 (italic serif, ~12-14pt, #7F6000, true subscripts); place the italic word 'softmax' (#7F6000) to the left of each up-arrow.\n10. Decoder state arrows: draw black right-arrows connecting orange bar 1 to orange bar 2 and orange bar 2 to orange bar 3, plus a third black right-arrow exiting the right edge of orange bar 3; label them 's\u2081', 's\u2082', 's\u2083' respectively (italic serif, #7F6000).\n11. Decoder feedback arrows: draw 2 thin black curved arrows - one starting beneath the 's\u2081' connector, dipping downward and curving up into the bottom edge of orange bar 2; one starting beneath the 's\u2082' connector, dipping downward and curving up into the bottom edge of orange bar 3.\n12. Decoder context dot: place a small solid red (#C00000) dot on the left edge of orange bar 1.\n13. Encoder container: rounded rectangle at x 5%-50%, y 56%-92%; fill peach #FAC090, no border.\n14. Encoder caption: centered text box at x 22%-39%, y 93%-99%; exact text 'Encoder  (RNN)' (preserve the double space between 'Encoder' and '(RNN)'); Arial bold italic ~18pt, color #E0301E.\n15. Encoder pink bars: in the container's top row, place 3 pink/salmon rectangles (fill #F2A396, ~0.9in x 0.3in each), evenly spaced; divide each into 3 equal cells (RNN hidden cells).\n16. Encoder state arrows: draw a black right-arrow entering pink bar 1 horizontally from the container's left edge (unlabeled); connect pink bar 1 to pink bar 2 and pink bar 2 to pink bar 3 with black right-arrows labeled 'h\u2081' and 'h\u2082' (italic serif, #7F6000).\n17. Encoder context dot: place a small solid red (#C00000) dot on the right edge of pink bar 3.\n18. Encoder tan bars: directly below each pink bar, place a tan rectangle (fill #E6C49C, ~0.9in x 0.3in) divided into 3 equal cells (input cells).\n19. Encoder embedding arrows: draw a black up-arrow from each tan bar to the pink bar above; label each arrow to its left in italic serif #7F6000: 'embedding x\u2081' (column 1), 'embedding x\u2082' (column 2), 'embedding x\u2083' (column 3).\n20. Encoder input labels: below the tan bars, place italic serif labels 'x\u2081', 'x\u2082', 'x\u2083' (#7F6000, true subscripts) and draw a black up-arrow from each label into the bottom edge of its tan bar.\n21. Context-vector arrow: draw a thin red (#C00000) curved arrow starting at the encoder's red dot (right edge of pink bar 3), arcing upward and to the right (bounding area approx x 47%-54%, y 47%-61%), terminating with an arrowhead at the decoder's red dot (left edge of orange bar 1).\n22. Callout box: rectangle at x 58%-87%, y 75%-82%; fill light pink #FFC0CB, 1.5pt border #FF0000; centered text 'Context Vector (of Whole Inputs)', Arial bold ~14pt, color #FF0000.\n23. Leader line: thin straight red (#FF0000) line from the encoder's right side near its red dot, running diagonally down to the callout box's top-left corner.\n24. Typography check: all math labels (o/s/h/x symbols, 'softmax', 'embedding x\u2081/x\u2082/x\u2083') use an italic serif font (Times New Roman or Cambria Math), color #7F6000, with true subscript formatting; all remaining text is sans-serif (Arial/Calibri-like).\n25. Do NOT draw the mouse-cursor artifact visible at approx x 45%, y 15% in the source frame - it is a screen-recording artifact, not slide content.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Filled subtitle_or_header (was null) with a factual statement: the slide has no subtitle; 'Decoder (RNN)' and 'Encoder  (RNN)' are section sub-headers - no subtitle text was invented.",
+      "Kept verbatim_text.bullets as an empty array and confirmed it is truly absent from the source (typography_notes: 'There is no bullet list; the slide is entirely diagrammatic'); all 21 text items are diagram labels, so no bullets were fabricated.",
+      "Corrected the recreation_brief outer-frame spec: changed 'no fill' to fill #FFFFFF to match layout.regions and visual_elements, which both state 'white fill'.",
+      "Added exact coordinates from layout.regions to the brief for elements that lacked them: title (x 27%-66%, y 10%-17%), badge (x 90%-95%, y 10%-17%), decoder caption (x 71%-87%, y 16%-20%), encoder caption (x 22%-39%, y 93%-99%), context-vector arrow (x 47%-54%, y 47%-61%).",
+      "Pinned exact hex values in the brief where the source said only 'red': callout border #FF0000, callout text #FF0000, leader line #FF0000 (all derived from the callout element's color list).",
+      "Added an explicit instruction to preserve the double space inside 'Encoder  (RNN)' (previously only the title's double space was flagged) and documented it in typography_notes.",
+      "Added #8B0000 (badge numeral color defined in visual_elements) to colors.accents, where it was missing.",
+      "Added a final brief step to explicitly omit the mouse-cursor recording artifact noted in imagery.",
+      "Rewrote recreation_brief as a 25-step ordered checklist with one placement action per step, each specifying exact text, position, color, and shape."
+    ],
+    "uncertain_items": [
+      "No items in the source JSON are marked [?].",
+      "Exact hex of the red caption text 'Decoder (RNN)' / 'Encoder  (RNN)' is not explicitly stated; #E0301E (the title_text red) was assigned as the most consistent choice.",
+      "The leader line's exact red is not hexed in the source; #FF0000 was assigned to match the callout border/text colors.",
+      "All point sizes (28pt title, 18pt captions, 14pt callout and badge numeral, 12-14pt math labels) and bar dimensions (~0.9in x 0.28in/0.3in) are visual estimates, not measured values."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_006.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 6,
+      "image": "slide_006.jpg",
+      "kept_frame": "frame_00282.jpg",
+      "start_sec": 270.0,
+      "end_sec": 281.0,
+      "frame_count": 12
+    },
+    "elapsed_s": 238.5,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 712.0
+  }
+}

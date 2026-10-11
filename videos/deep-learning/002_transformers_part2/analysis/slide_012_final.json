@@ -1,0 +1,251 @@
+{
+  "slide_title": "Using  FF NN  for Multiplication of Vector by a Multiple Matrices",
+  "subtitle_or_header": "Example: Multiply Vector of Current Word by Multiple  (different) W_q   (Queries of Multiple Heads)",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Embedding Vector of",
+      "Current Word X_2",
+      "W_Q of Head 1",
+      "W_Q of Head 2",
+      "W_Q of Head 3",
+      "X_1",
+      "X_2",
+      "X_3",
+      "X_4",
+      "X_2 (magenta annotation below Head 2 matrix, small arrow pointing up to cell W_43)",
+      "y_1",
+      "y_2",
+      "y_3",
+      "y_4 (these four labels repeat in each of the three output groups)",
+      "Corresponding Projection at Head 1",
+      "Corresponding Projection at Head 2",
+      "Corresponding Projection at Head 3",
+      "= (large red equals sign left of the output row)",
+      "12 (slide number inside yellow circle, top-right corner)"
+    ],
+    "equations": [
+      "Implicit pictorial equation (no explicit formula printed): Y_2^(h) = W_Q (of Head h) x X_2, for h = 1, 2, 3",
+      "Weight-matrix cell labels (identical 4x4 pattern in all three heads) - Row 1: W_11, W_21, W_31, W_41; Row 2: W_12, W_22, W_32, W_42; Row 3: W_13, W_23, W_33, W_43; Row 4: W_14, W_24, W_34, W_44 (subscript reads column,row; all subscripts)",
+      "Output vector components per head: y_1, y_2, y_3, y_4",
+      "Final result symbols: Y_2^(1), Y_2^(2), Y_2^(3) (Y with subscript 2 and superscript (1)/(2)/(3))"
+    ],
+    "notes": "The slide contains no bulleted or numbered list; every text item is a label inside the diagram (confirmed by typography_notes: 'No numbered or bulleted lists'). bullets is therefore empty by design, not by omission."
+  },
+  "layout": {
+    "arrangement": "Red-bordered light-gray slide; bold red title centered at top, bold blue subtitle centered beneath it, yellow circular slide number '12' at top-right. Below, one large white rounded-rectangle canvas holds the entire schematic: on its left a pink 'Embedding Vector' box with four X circles; to its right three side-by-side 4x4 weight-matrix panels (green, orange, lavender) each with a red right curly brace; beneath them a red '=' followed by three small output-vector strips aligned under each matrix, each labeled 'Corresponding Projection at Head N' and a blue Y_2^(N) symbol. A black bar (video-player chrome) spans the very bottom.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, x 12-85%, y 8-14%",
+        "content": "Red bold title with 'Multiple Matrices' underlined"
+      },
+      {
+        "name": "Subtitle",
+        "position": "top center, x 8-88%, y 14-19%",
+        "content": "Blue bold example line with W_q and underlined 'Queries of Multiple Heads'"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, x 88-95%, y 9-17%",
+        "content": "Yellow circle, red outline, red '12'"
+      },
+      {
+        "name": "Diagram canvas",
+        "position": "middle, x 9-80%, y 21-88%",
+        "content": "White rounded rectangle containing the whole vector-by-matrices schematic"
+      },
+      {
+        "name": "Embedding vector block",
+        "position": "canvas left, x 10-24%, y 22-37%",
+        "content": "Red two-line label 'Embedding Vector of / Current Word X_2' above a pink rounded box holding four red-outlined circles X_1..X_4"
+      },
+      {
+        "name": "Head 1 matrix panel",
+        "position": "x 25-42%, y 24-63%",
+        "content": "Light-green rounded panel, header 'W_Q of Head 1', 4x4 grid of small white squares W_11..W_44, red right curly brace"
+      },
+      {
+        "name": "Head 2 matrix panel",
+        "position": "x 43-59%, y 24-63%",
+        "content": "Light-orange rounded panel, header 'W_Q of Head 2', same 4x4 grid, magenta X_2 annotation with arrow to W_43, red right curly brace"
+      },
+      {
+        "name": "Head 3 matrix panel",
+        "position": "x 60-77%, y 24-63%",
+        "content": "Light-lavender rounded panel, header 'W_Q of Head 3', same 4x4 grid, red right curly brace"
+      },
+      {
+        "name": "Equals sign",
+        "position": "x 20-23%, y 66-72%",
+        "content": "Large red bold '='"
+      },
+      {
+        "name": "Output strips row",
+        "position": "x 24-77%, y 65-74%",
+        "content": "Three groups of four small squares (y_1..y_4) on green/orange/lavender strips; red right curly brace after the Head 3 group"
+      },
+      {
+        "name": "Projection labels",
+        "position": "x 24-77%, y 74-81%",
+        "content": "Red two-line captions 'Corresponding Projection at Head 1/2/3'"
+      },
+      {
+        "name": "Result symbols",
+        "position": "x 27-75%, y 81-87%",
+        "content": "Blue bold Y_2^(1), Y_2^(2), Y_2^(3) centered under each group"
+      },
+      {
+        "name": "Red slide frame",
+        "position": "full-slide inset border, x 3-97%, y 7-93%",
+        "content": "Thin red (#C00000) rectangular outline framing the entire content area; sits behind all other elements"
+      },
+      {
+        "name": "Bottom black bar",
+        "position": "bottom full width, y 96-100%",
+        "content": "Solid black strip - video-player progress/control bar, not slide content"
+      }
+    ],
+    "hierarchy": "Title is the largest and heaviest element (red bold). Subtitle is second (blue bold). The three pastel matrix panels visually dominate the body due to size and color. Cell labels, y labels and captions are small bold text. Red braces and the red '=' act as visual connectors; blue is reserved for variable symbols (X, y, Y)."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Schematic of one embedding vector multiplied by three weight matrices. LEFT NODE: pink rounded rectangle containing four white circles with red outlines labeled X_1, X_2, X_3, X_4 (blue italic X with numeric subscripts); red label above: 'Embedding Vector of / Current Word X_2' (X_2 in blue). CENTER: three 4x4 matrices, each a rounded panel with 16 small white squares (thin colored borders) each holding a bold W with two-digit subscript. Head 1 (light green, header 'W_Q of Head 1'): Row1 W_11 W_21 W_31 W_41 (blue), Row2 W_12 W_22 W_32 W_42 (purple), Row3 W_13 W_23 W_33 W_43 (orange), Row4 W_14 W_24 W_34 W_44 (green). Head 2 (light orange, header 'W_Q of Head 2'): identical 16 cells plus a magenta 'X_2' label with a thin arrow pointing up to cell W_43. Head 3 (light lavender, header 'W_Q of Head 3'): identical 16 cells. Each matrix is closed on its right by a tall red right-curly brace. BOTTOM ROW: red '=' then three output groups aligned under the matrices, each a light head-colored strip of four small squares labeled y_1 y_2 y_3 y_4 (first square saturated head color - green / orange / purple respectively; y_2..y_4 white with blue text); a short red right-curly brace closes the Head 3 group. Under each group: red caption 'Corresponding Projection at Head 1/2/3' and blue result 'Y_2^(1)', 'Y_2^(2)', 'Y_2^(3)'.",
+      "colors": [
+        "#C9EFC9",
+        "#F5DFC0",
+        "#C9C9F2",
+        "#F8D7E8",
+        "#C00000",
+        "#0000CC",
+        "#9900CC",
+        "#E08000",
+        "#00A000",
+        "#800000",
+        "#CC00CC",
+        "#7B68EE"
+      ],
+      "position": "center of slide inside white rounded canvas, x 9-80%, y 21-88%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pink rounded rectangle enclosing the four embedding circles X_1..X_4; circles are white-filled with red borders",
+      "colors": [
+        "#F8D7E8",
+        "#C00000",
+        "#0000CC"
+      ],
+      "position": "upper-left of the white canvas"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Three pastel rounded panel backgrounds (green / orange / lavender) each containing a 4x4 grid of small white squares with colored borders and a dark-red bold header above",
+      "colors": [
+        "#C9EFC9",
+        "#F5DFC0",
+        "#C9C9F2",
+        "#800000"
+      ],
+      "position": "middle band of the canvas, three columns"
+    },
+    {
+      "type": "arrow",
+      "description": "Small thin arrow from the magenta 'X_2' annotation pointing up/right into cell W_43 of the Head 2 matrix",
+      "colors": [
+        "#CC00CC"
+      ],
+      "position": "bottom-right area of Head 2 panel"
+    },
+    {
+      "type": "other",
+      "description": "Four red right-curly braces: one tall brace to the right of each of the three matrices, plus one short brace to the right of the Head 3 output strip; one large red '=' glyph left of the output row",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "right edges of matrices (y 24-63%) and right end of output row (y 65-74%)"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: yellow filled circle with red outline containing red bold '12'",
+      "colors": [
+        "#FFFF00",
+        "#C00000"
+      ],
+      "position": "top-right corner of slide"
+    },
+    {
+      "type": "other",
+      "description": "Thin red rectangular frame inset from all four slide edges, framing the entire content area",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "inset border around whole slide, x 3-97%, y 7-93%"
+    }
+  ],
+  "imagery": [
+    "No photographs, clip-art or illustrations anywhere; the slide is built entirely from vector shapes (rounded rectangles, circles, small squares, curly braces, arrows) and text.",
+    "A black mouse-pointer cursor (screen-recording artifact) floats over the Head 1 matrix near cells W_12/W_22 - not part of the slide design."
+  ],
+  "colors": {
+    "background": "#E8E8E8",
+    "title_text": "#C00000",
+    "body_text": "#0000CC",
+    "accents": [
+      "#C00000 (red frame, title, braces, '=', projection captions)",
+      "#0000CC (blue subtitle, X/y/Y variable text)",
+      "#800000 (dark-red panel headers 'W_Q of Head N')",
+      "#C9EFC9 (Head 1 light-green panel)",
+      "#F5DFC0 (Head 2 light-orange panel)",
+      "#C9C9F2 (Head 3 light-lavender panel)",
+      "#F8D7E8 (pink embedding-vector box)",
+      "#FFFF00 (yellow slide-number badge)",
+      "#9900CC (purple row-2 cell text/borders)",
+      "#E08000 (orange row-3 cell text, Head 2 y_1 fill)",
+      "#00A000 (green row-4 cell text, Head 1 y_1 fill)",
+      "#CC00CC (magenta X_2 annotation)",
+      "#7B68EE (Head 3 y_1 fill, approx)"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Tahoma-like), bold used almost everywhere. Title largest (~28-30pt) red bold with underline on 'Multiple Matrices'; subtitle ~18-20pt blue bold with underline on 'Queries of Multiple Heads'. Math variables (W, X, x, y, Y) appear bold italic with frequent subscripts (W_11, X_2, y_1) and combined sub+superscripts (Y_2^(1)). Panel headers ~14pt dark red; matrix cell labels ~10-11pt color-coded by row; captions ~11pt red; result symbols ~16pt blue. No numbered or bulleted lists - all text is labels within a diagram.",
+  "animation_state": "Slide appears fully revealed (no partial bullet build). A live mouse cursor rests over the Head 1 matrix near W_12/W_22, indicating this frame was captured during narration. The solid black bar across the very bottom is video-player chrome, not slide content.",
+  "recreation_brief": "1. Set the full-slide background to light gray #E8E8E8. 2. Draw the slide frame: a thin red #C00000 rectangle OUTLINE (no fill) inset from all edges, spanning x 3-97% and y 7-93%, placed behind all other elements. 3. Title text box, top center (x 12-85%, y 8-14%): 'Using  FF NN  for Multiplication of Vector by a Multiple Matrices' - Arial bold ~28-30pt, red #C00000, centered; underline ONLY the words 'Multiple Matrices'; keep the double spaces and the source wording verbatim (do not correct 'a Multiple Matrices'). 4. Subtitle text box beneath it (x 8-88%, y 14-19%): 'Example: Multiply Vector of Current Word by Multiple  (different) W_q   (Queries of Multiple Heads)' - Arial bold ~18-20pt, blue #0000CC, centered; render the q in W_q as a subscript; underline 'Queries of Multiple Heads'; keep the double spaces verbatim. 5. Slide-number badge, top right (x 88-95%, y 9-17%): yellow #FFFF00 filled circle with a red #C00000 outline and a red bold '12' centered inside. 6. Diagram canvas: a white filled rounded rectangle spanning x 9-80%, y 21-88%. 7. At the top of the canvas's left block (x 10-24%, y 22-37%), add a red #C00000 bold two-line label: line 1 'Embedding Vector of', line 2 'Current Word X_2' with X_2 in blue #0000CC (2 as subscript). 8. Below that label inside the same block, draw a pink #F8D7E8 filled rounded rectangle containing four white-filled circles with red #C00000 outlines arranged in a horizontal row, labeled left to right X_1, X_2, X_3, X_4 in blue #0000CC bold italic with numeric subscripts. 9. Head 1 matrix panel: light-green #C9EFC9 filled rounded rectangle at x 25-42%, y 24-63%; dark-red #800000 bold ~14pt header 'W_Q of Head 1' (Q as subscript) at its top; inside, a 4x4 grid of 16 small white squares with thin colored borders labeled row by row - Row 1: W_11, W_21, W_31, W_41 (blue #0000CC); Row 2: W_12, W_22, W_32, W_42 (purple #9900CC); Row 3: W_13, W_23, W_33, W_43 (orange #E08000); Row 4: W_14, W_24, W_34, W_44 (green #00A000) - all bold ~10-11pt with two-digit subscripts. 10. Head 2 matrix panel: identical construction at x 43-59%, y 24-63%, but filled light-orange #F5DFC0 with header 'W_Q of Head 2' (dark red #800000) and the same 16 cell labels in the same row colors; additionally add a magenta #CC00CC 'X_2' annotation in the bottom-right area of the panel below the grid near column 4, with a thin magenta arrow pointing up into cell W_43 (row 3, column 4). 11. Head 3 matrix panel: identical construction at x 60-77%, y 24-63%, but filled light-lavender #C9C9F2 with header 'W_Q of Head 3' (dark red #800000) and the same 16 cell labels in the same row colors. 12. Place three tall red #C00000 right-curly braces ('}' shapes), one along the right edge of each matrix grid (at x ~42%, ~59% and ~77%), each spanning y 24-63%. 13. Place a large red #C00000 bold '=' glyph at x 20-23%, y 66-72%, left of the output row. 14. Output row (y 65-74%): three horizontal strips aligned one under each panel (together spanning x 24-77%), each strip filled with its head's pastel color (#C9EFC9, #F5DFC0, #C9C9F2) and holding four small squares labeled y_1, y_2, y_3, y_4 in blue #0000CC bold; fill each strip's first square (y_1) with the saturated head color (green #00A000, orange #E08000, purple #7B68EE respectively) and leave y_2, y_3, y_4 white with blue text. 15. Add a short red #C00000 right-curly brace immediately to the right of the Head 3 output strip. 16. Under each strip (x 24-77%, y 74-81%), add a red #C00000 bold ~11pt two-line caption: line 1 'Corresponding', line 2 'Projection at Head 1' (then 'Projection at Head 2', then 'Projection at Head 3'). 17. Under each caption (band x 27-75%, y 81-87%), add blue #0000CC bold ~16pt result symbols 'Y_2^(1)', 'Y_2^(2)', 'Y_2^(3)' centered under each output group, with 2 as a subscript and (1)/(2)/(3) as superscripts. 18. Do NOT add the black mouse-pointer cursor or the bottom black bar - both are video-frame artifacts (player chrome), not slide content - and add no bullet lists, since the slide has none.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Added missing layout.regions entry 'Red slide frame' (thin red #C00000 rectangle outline, x 3-97%, y 7-93%): the frame was described in layout.arrangement ('Red-bordered light-gray slide') and in visual_elements but had no covering region.",
+      "Confirmed verbatim_text.bullets is legitimately empty - the slide has no bulleted/numbered list (typography_notes: 'No numbered or bulleted lists'); kept it empty and added an explanatory verbatim_text.notes rather than inventing bullets.",
+      "Added the missing color #7B68EE to the diagram visual_element's colors array: it is the Head 3 y_1 square fill (listed in colors.accents) but was absent from that element's own color list.",
+      "Replaced the non-actionable panel sizing '~150px wide each' with exact region coordinates: Head 1 x 25-42%, Head 2 x 43-59%, Head 3 x 60-77%, all y 24-63%.",
+      "Harmonized three conflicting placements of the magenta X_2 annotation ('below Head 2 matrix' in labels, 'bottom-right area of Head 2 panel' in visual_elements, 'below row 3 near column 4' in the old brief) into one instruction: bottom-right of the Head 2 panel below the grid near column 4, thin magenta arrow pointing up into cell W_43.",
+      "Specified the orientation of the four embedding circles as a horizontal row (previously unstated), inferred from the block's aspect ratio (x 10-24% width vs. y 22-37% height minus the two-line label).",
+      "Rewrote recreation_brief as an 18-step ordered checklist; every step now states exact text, percentage position, hex color, shape type and estimated font size for one element.",
+      "Preserved title and subtitle verbatim (double spaces and the source grammatical slip 'a Multiple Matrices') and added an explicit instruction not to correct them.",
+      "Verified all quantities are exact and no vague quantifiers ('several', 'some', 'many', 'a few', 'various') appear in any field: 3 panels x 16 cells = 48 cell labels, 4 red curly braces (3 tall + 1 short), 1 equals sign, 3 output strips x 4 squares = 12 y-squares, 3 captions, 3 result symbols, 4 embedding circles."
+    ],
+    "uncertain_items": [
+      "#7B68EE (Head 3 y_1 square fill) is marked 'approx' in the source JSON; confirm against the original frame.",
+      "Orientation of the four embedding circles (horizontal row) is an inference from the block's aspect ratio, not explicitly stated in the source.",
+      "The equation 'Y_2^(h) = W_Q (of Head h) x X_2' is an implicit reading of the schematic; no formula is printed on the slide (already flagged in verbatim_text.equations).",
+      "All font sizes are estimates from typography_notes (~28-30pt title, ~18-20pt subtitle, ~14pt headers, ~10-11pt cells, ~11pt captions, ~16pt results); exact point sizes are not recoverable from the JSON.",
+      "Whether each tall curly brace sits just inside or just outside its panel edge is unspecified; the brief places them at the right edge of each 4x4 grid (x ~42%, ~59%, ~77%)."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_012.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 12,
+      "image": "slide_012.jpg",
+      "kept_frame": "frame_00461.jpg",
+      "start_sec": 387.0,
+      "end_sec": 460.0,
+      "frame_count": 74,
+      "old_slide": 17
+    },
+    "elapsed_s": 335.9,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 927.2
+  }
+}

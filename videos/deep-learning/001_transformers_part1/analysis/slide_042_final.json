@@ -1,0 +1,167 @@
+{
+  "slide_title": "Multi-Head Self Attention",
+  "subtitle_or_header": "Combining several self attention mechanisms  give the self attention greater power of discrimination",
+  "verbatim_text": {
+    "bullets": [
+      "Each Head is indexed with \u201cr\u201d",
+      "Each head has its own matrices Wq^r , Wk^r ,Wv^r .",
+      "For input X each attention head produces a different output vector Y^r.",
+      "All Output vectors are concatenated , and pass through a linear transformation to reduce the dimension back to original X dimension."
+    ],
+    "labels": [
+      "42"
+    ],
+    "equations": [
+      "\\mathbf{W}_q^r , \\mathbf{W}_k^r , \\mathbf{W}_v^r  (plain text: W^r_q , W^r_k , W^r_v \u2014 bold W, red superscript r, green subscripts q, k, v)",
+      "\\mathbf{Y}^r  (plain text: Y^r \u2014 bold red Y with red superscript r)",
+      "\\mathbf{X}  (plain text: X \u2014 bold red, appears twice: as input and as 'original X dimension')"
+    ]
+  },
+  "layout": {
+    "arrangement": "Single centered column layout: red title centered at top; small yellow slide-number circle at top-right corner; two-line red subtitle centered below title; one large dark-red-bordered rectangular box occupying the lower two-thirds of the slide containing four left-aligned blue text lines (the bullet content); no footer. A small white mouse-cursor arrow (screen-recording overlay, not slide content) overlaps the first body line at ~28% width, ~45% height.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~5\u201320% height, ~25\u201375% width",
+        "content": "Red bold title 'Multi-Head Self Attention'"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, ~10\u201320% height, ~89\u201396% width",
+        "content": "Yellow circle with purple outline containing the number 42"
+      },
+      {
+        "name": "Subtitle",
+        "position": "upper middle, ~25\u201334% height, ~10\u201390% width, centered",
+        "content": "Two-line red bold subtitle about combining self attention mechanisms"
+      },
+      {
+        "name": "Content box",
+        "position": "middle-to-bottom, ~35\u201390% height, ~7\u201393% width",
+        "content": "Rectangle with dark red border, gray fill, containing four blue statement lines with inline math notation"
+      },
+      {
+        "name": "Bullet line 1",
+        "position": "inside box, ~41\u201347% height, left-aligned at ~9% width",
+        "content": "'Each Head is indexed with \u201cr\u201d' with red bold quoted r"
+      },
+      {
+        "name": "Bullet line 2",
+        "position": "inside box, ~51\u201357% height, left-aligned at ~9% width",
+        "content": "Matrices line with bold W symbols, red superscripts, green subscripts"
+      },
+      {
+        "name": "Bullet line 3",
+        "position": "inside box, ~61\u201367% height, left-aligned at ~9% width",
+        "content": "Input X / output vector Y^r line with bold red math symbols"
+      },
+      {
+        "name": "Bullet line 4",
+        "position": "inside box, ~71\u201383% height, left-aligned at ~9% width, wraps to two lines",
+        "content": "Concatenation + linear transformation line, 'linear transformation' bold, final X bold red"
+      },
+      {
+        "name": "Mouse cursor artifact (recording overlay \u2014 exclude from recreation)",
+        "position": "over bullet line 1, ~28% width, ~45% height",
+        "content": "Small white mouse-pointer arrow with black outline; screen-recording artifact, not slide content"
+      }
+    ],
+    "hierarchy": "Title is visually dominant (largest, bold, red). Subtitle is second (bold red, ~60% of title size). The dark-red box border frames and emphasizes the body area. Body text is blue, medium weight, smaller than subtitle; bold and red runs inside body text create local emphasis. Slide number badge is the smallest element."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Large rectangle with a thin dark-red solid border (~2px), fill matching the slide's gray background, enclosing all four body text lines. No corner rounding visible.",
+      "colors": [
+        "#990000 (border)",
+        "#E8E8E8 (fill)"
+      ],
+      "position": "center of slide, ~7\u201393% width, ~35\u201390% height"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: small circle filled yellow with a purple/blue outline, containing the number '42' in dark text, positioned at the top-right corner of the slide.",
+      "colors": [
+        "#FFFF00 (fill)",
+        "#6633CC (outline)",
+        "#333333 (number)"
+      ],
+      "position": "top right corner"
+    },
+    {
+      "type": "other",
+      "description": "Inline math typography within body text: bold 'W' glyphs with superscript 'r' (red) and subscript letters 'q', 'k', 'v' (green); bold red 'X' and bold red 'Y' with superscript 'r'; bold blue phrase 'linear transformation'; bold red quoted \u201cr\u201d in line 1.",
+      "colors": [
+        "#0000CC (base blue)",
+        "#C00000 (red math)",
+        "#00A000 (green subscripts)"
+      ],
+      "position": "within content box lines 1, 2, 3, 4"
+    },
+    {
+      "type": "other",
+      "description": "Small white mouse-cursor arrow overlapping the text near 'Each Head is indexed' \u2014 a screen-recording artifact, not slide content.",
+      "colors": [
+        "#FFFFFF (cursor with black outline)"
+      ],
+      "position": "over bullet line 1, ~28% width, ~45% height"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations. Only decorative/graphic elements: the yellow '42' slide-number circle (top right) and a small mouse-pointer cursor artifact over the first body line (recording overlay, exclude from recreation)."
+  ],
+  "colors": {
+    "background": "#E8E8E8 (light gray slide area, with a thin white outer frame/margin around the slide edge)",
+    "title_text": "#C00000",
+    "body_text": "#0000CC",
+    "accents": [
+      "#C00000 (title, subtitle, red math symbols, quoted r)",
+      "#990000 (box border)",
+      "#00A000 (green subscripts q, k, v)",
+      "#FFFF00 (slide-number circle fill)",
+      "#6633CC (slide-number circle outline)"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial-like). Title: bold, largest (~32\u201336pt), red, centered, title case. Subtitle: bold, ~18\u201320pt, red, centered, sentence case, wraps to two lines. Body: ~20pt, blue, regular weight, left-aligned, sentence case with inconsistent capitalization ('Each Head' vs 'Each head', 'All Output vectors'); emphasis via bold ('linear transformation') and bold red math letters; true superscript/subscript formatting on W and Y; spacing quirks preserved (space before commas, double space in subtitle). Slide number in small dark text inside yellow circle.",
+  "animation_state": "No mid-build state detected \u2014 all four body lines are fully visible. A mouse cursor is frozen over bullet line 1, indicating this is a frame from a recorded lecture; the cursor is an overlay, not slide content.",
+  "recreation_brief": "1. Background: set the slide background to light gray #E8E8E8 and add a thin white outer frame/margin around the slide edge.\n2. Title: place a centered text box spanning ~25\u201375% of slide width and ~5\u201320% of slide height with the exact text 'Multi-Head Self Attention' \u2014 sans-serif (Arial-like) bold, ~34pt, color #C00000, title case.\n3. Slide-number badge: draw a circle occupying ~89\u201396% of slide width and ~10\u201320% of slide height in the top-right corner; fill #FFFF00, outline #6633CC at ~1.5pt; center the exact text '42' inside it in color #333333 at ~12pt, sans-serif.\n4. Subtitle: place a centered text box spanning ~10\u201390% of slide width and ~25\u201334% of slide height with the exact two-line text 'Combining several self attention mechanisms  give the self attention greater' / 'power of discrimination' \u2014 sans-serif bold, ~18pt, color #C00000; preserve the double space after 'mechanisms' and the verbatim wording ('give', not 'gives').\n5. Content box: draw a rectangle with square corners (no rounding) spanning ~7\u201393% of slide width and ~35\u201390% of slide height; fill #E8E8E8 (identical to the background); solid #990000 border at ~2pt.\n6. Bullet line 1: place a left-aligned text box with left edge at ~9% width, occupying ~41\u201347% of slide height, exact text 'Each Head is indexed with \u201cr\u201d' \u2014 base text sans-serif ~20pt in #0000CC; the quoted letter r is bold #C00000 wrapped in curly double quotes (\u201c \u201d).\n7. Bullet line 2: place a left-aligned text box with left edge at ~9% width, occupying ~51\u201357% of slide height, exact text 'Each head has its own matrices Wq^r , Wk^r ,Wv^r .' \u2014 base text sans-serif ~20pt in #0000CC; each W is bold with a true superscript r in #C00000 and a true subscript q, k or v in #00A000; reproduce spacing exactly: one space after 'matrices', a space before each comma, a space after the first comma but none after the second, and a space before the final period.\n8. Bullet line 3: place a left-aligned text box with left edge at ~9% width, occupying ~61\u201367% of slide height, exact text 'For input X each attention head produces a different output vector Y^r.' \u2014 base text sans-serif ~20pt in #0000CC; the X is bold #C00000; the Y is bold #C00000 with a true superscript r in #C00000.\n9. Bullet line 4: place a left-aligned text box with left edge at ~9% width, spanning ~71\u201383% of slide height so the text wraps to two lines, exact text 'All Output vectors are concatenated , and pass through a linear transformation to reduce the dimension back to original X dimension.' \u2014 base text sans-serif ~20pt in #0000CC; 'linear transformation' is bold #0000CC; the final X is bold #C00000; keep the space before the comma after 'concatenated'.\n10. Final verification: confirm the four body-line tops sit at ~41%, ~51%, ~61% and ~71% of slide height (\u22484% of slide height between blocks); confirm all verbatim quirks (spaces before commas, double space in the subtitle, inconsistent capitalization 'Each Head' / 'Each head' / 'All Output vectors'); confirm NO mouse-cursor arrow, footer, photograph or illustration is present \u2014 the white cursor at ~28% width, ~45% height in the source frame is a recording overlay, not slide content.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Added a ninth layout.regions entry 'Mouse cursor artifact (recording overlay \u2014 exclude from recreation)' at ~28% width, ~45% height over bullet line 1, so that regions cover all four visual_elements; the region is explicitly marked as excluded from recreation.",
+      "Appended the cursor-overlay mention to layout.arrangement so the arrangement string also covers every visual_element.",
+      "Added the '~9% width' left-edge position to bullet-line regions 2, 3 and 4 (previously specified only for line 1), consistent with the arrangement's 'four left-aligned blue text lines'.",
+      "Made the content-box fill definite as #E8E8E8 \u2014 the old brief's 'no fill (or gray #E8E8E8)' was ambiguous and visual_elements specify a gray fill matching the background.",
+      "Made the thin white outer frame mandatory instead of 'optionally' \u2014 colors.background explicitly describes a thin white outer frame/margin around the slide edge.",
+      "Replaced the vague 'generous paragraph spacing' with exact geometry from layout.regions: body-line tops at ~41%, ~51%, ~61% and ~71% of slide height (\u22484% slide-height gaps).",
+      "Resolved the ambiguous quote instruction 'straight/smart double quotes' to curly double quotes (\u201c \u201d), matching the verbatim U+201C/U+201D characters in bullet 1.",
+      "Pinned the slide-number text color to #333333 (old brief said 'dark gray/black'; visual_elements give #333333).",
+      "Replaced the vague 'small circle (~0.5in diameter)' with the exact badge bounds from layout.regions: ~89\u201396% width, ~10\u201320% height.",
+      "Standardized the content-box border weight to ~2pt (visual_elements said ~2px, old brief ~2pt; the difference is negligible).",
+      "Retained 'several' in the subtitle because it is verbatim slide text; the number of attention heads is not numerically stated anywhere in the JSON, so substituting an exact count would invent content."
+    ],
+    "uncertain_items": [
+      "Exact break point of the two-line subtitle: the split '\u2026self attention greater' / 'power of discrimination' is inferred; the source only states the subtitle wraps to two lines.",
+      "Exact thickness of the thin white outer frame/margin is not specified in the source.",
+      "Absolute diameter of the slide-number circle is approximate (~0.5 in in the old brief vs. ~7% width \u00d7 ~10% height region bounds); only the percentage bounds are authoritative.",
+      "The number of attention heads implied by 'several' in the subtitle is not numerically specified on the slide.",
+      "No items in the source JSON were marked [?]."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_042.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 42,
+      "image": "slide_042.jpg",
+      "kept_frame": "frame_03987.jpg",
+      "start_sec": 3980.0,
+      "end_sec": 3986.0,
+      "frame_count": 7
+    },
+    "elapsed_s": 102.3,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 517.9
+  }
+}

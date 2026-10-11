@@ -1,0 +1,67 @@
+# Visual QA Comparison â Decoder MHA + Yellow Band Crop
+
+## 1. Text Transcription (verbatim)
+
+**IMG1 (recreation render crop):**
+- "Forward" â top edge, partially clipped by crop
+- "Add & Norm" â dark olive box, upper right
+- "Add & Norm" â tan rounded box, left side (box clipped at left crop edge)
+- "Feed Forward" â two lines ("Feed" / "Forward") inside tan box
+- "Multi-Head Attention" â two lines ("Multi-Head" / "Attention"), white text on rust/brown box, red **dashed** border
+- "V" â blue circle
+- "K" â dark blue circle
+- "Q" â red circle
+- "N x" â green circle, clipped at right crop edge
+- "Add & Norm" â purple box, bottom edge, clipped
+
+**IMG2 (original frame crop):**
+- "Forward" â top edge, clipped, blurry
+- "Add & Norm" â green box, upper right, with a small red pointer/cursor triangle overlapping near "Norm"
+- "Add & Norm" â tan box, left side (clipped at left crop edge)
+- "Feed Forward" â two lines ("Feed" / "Forward")
+- "Multi-Head Attention" â two lines, dark text on tan box, red **solid** border (blurry; reads as "Multi-Head Attention")
+- "V" â blue circle
+- "K" â blue circle
+- "Q" â red circle
+- "N x" â circle clipped at right edge
+- "Add & Norm" â purple box, bottom, clipped
+- A pen/pencil cursor icon overlapping the area left of the "V" circle
+
+## 2. Similarities
+
+- **Same diagram region and purpose:** both show the decoder block â Feed-Forward / Add & Norm stack at left, Multi-Head Attention highlighted in the center, V/K/Q input circles beneath it, an "N x" repetition indicator at right, and a purple "Add & Norm" box at the bottom.
+- **Yellow highlight band** behind the Multi-Head Attention area is present in both.
+- **Layout regions match:** green "Forward" box top-right; "Add & Norm" beneath it; MHA box centered; VâKâQ row below the box; "N x" at right edge.
+- **Identical crop boundaries:** left edge cuts the tan "Add & Norm" box, top edge clips "Forward," right edge clips the "N x" circle, bottom edge clips the purple box â so both crops frame the same region.
+- **Shared styling elements:** rounded rectangles, dark-outlined circles for V/K/Q (blue/blue/red), cream/green background bands, connector lines from the circles up into the yellow region.
+
+## 3. Differences
+
+**Content/annotation artifacts (IMG2 only):**
+- IMG2 contains a **red pointer-arrow cursor** overlapping the top "Add & Norm" text and a **pen/pencil cursor icon** left of the "V" circle â video-overlay artifacts absent in IMG1.
+
+**Border style mismatch:**
+- IMG1: MHA box outlined with a red **dashed** border (rounded corners).
+- IMG2: MHA box outlined with a red **solid** border (sharper corners). This is a fidelity deviation in the recreation.
+
+**Color/typography:**
+- IMG1 MHA fill is a saturated rust/brown with **white** text; IMG2's is a lighter tan with **dark red/brown** text.
+- IMG1 top "Add & Norm" is dark olive with white text; IMG2's is lighter green with dark text.
+- IMG1's yellow band is vivid; IMG2's is pale/washed out.
+- IMG1's "K" circle is darker navy; IMG2's is medium blue.
+
+**Image quality:**
+- IMG1 is crisp with clean anti-aliased type (150 dpi render).
+- IMG2 is soft/blurry with visible compression artifacts; "Forward," "Multi-Head Attention," and the bottom purple text are noticeably fuzzy but still legible.
+
+**Geometry:**
+- Minor vertical/horizontal offsets between elements (e.g., V/K/Q row sits slightly differently relative to the MHA box), consistent with the recreation being re-drawn rather than traced; nothing misaligned enough to constitute a defect.
+
+## 4. Verdict
+
+**IMG1 (recreation render) is the better image.** Concrete evidence:
+- Text is crisp and uniformly styled, whereas IMG2 suffers blur and compression noise across every label ("Forward," "Multi-Head Attention," "Add & Norm" bottom).
+- IMG1 is free of the two cursor overlays (red pointer triangle, pen icon) that contaminate IMG2's content area.
+- Colors in IMG1 are cleaner and higher-contrast (white-on-rust MHA label vs. the washed-out tan-on-tan in IMG2).
+
+**Caveat for fidelity purposes:** IMG1 deviates from the original in two visible ways â a *dashed* red border where the original uses a *solid* red border, and a darker/saturated fill with white text where the original uses tan fill with dark text. If the goal were pixel-faithful reproduction, those two points would need correcting; as a standalone visual, however, IMG1 is clearly superior.

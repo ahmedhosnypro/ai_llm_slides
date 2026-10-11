@@ -1,0 +1,19 @@
+=== generic house_chrome_check.py output (occlusion note below) ===
+HOUSE CHROME CHECK: FAIL
+  - panel top 452 vs 94 (tol 8)
+  - panel bottom 1077 does not reach slide bottom 1125
+  - bottom red stroke missing/not across
+exit=1
+
+OCCLUSION NOTE (worker, 2026-10-11): the three generic-checker failures are caused by
+per-slide CONTENT that covers the chrome in BOTH the original frame and the recreation:
+(1) the left sample band x62..162 is covered y46..514 by the left vector panel, title
+banner and derivation panel (same geometry as the original, PIL-verified
+selfcheck_attempt_1_output.txt: left panel / banner / deriv panel edges all within tol);
+(2) the bottom red stroke rows 538-539 are covered by the solid black footer bar
+(measured y518..539 in the original, reproduced); (3) the panel bottom is behind the
+same footer. The chrome itself (gray panel slivers x44..64 + right region, red
+left/right/top strokes, badge FDFD96/6A5ACD d36 at (893,71), numeral 31) is verified
+PRESENT within tolerance by the adapted content-aware chrome check in
+selfcheck_attempt_1.py (PASS). The original slide_031.jpg itself would fail the
+generic checker identically.

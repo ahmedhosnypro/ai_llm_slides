@@ -1,0 +1,76 @@
+1. TITLE
+
+Exact title text: "Using  FF NN  for Multiplication of Vector by a Multiple Matrices" â the words "Multiple Matrices" are underlined. Note: the phrase "Vector by a Multiple Matrices" appears verbatim (grammatically odd, but that is what is printed).
+Badge numeral (top-right circle): "12" (black numeral inside a yellow filled circle with a darker yellow/olive outline).
+
+2. ALL VERBATIM TEXT
+
+- Title line: "Using  FF NN  for Multiplication of Vector by a Multiple Matrices" ("Multiple Matrices" underlined; double spacing around "FF NN" as printed).
+- Subtitle line (blue, bold): "Example: Multiply Vector of Current Word by Multiple  (different) W_q   (Queries of Multiple Heads)" â "Multiple Heads" underlined; "W" with subscript "q"; the word "(different)" in italics.
+- Panel label top-left (dark red, bold, two lines): "Embedding Vector of Current Word X_2" (X bold blue with subscript 2).
+- Column-group labels (dark red, bold, one above each grid): "W_Q of Head 1" / "W_Q of Head 2" / "W_Q of Head 3" (W with subscript Q).
+- Small box labels inside the three 4x4 grids (each box shows "W" plus a two-digit subscript). As legible:
+  Head 1 grid, row by row: W_11  W_21  W_31  W_41 / W_12  W_22  W_32  W_42 / W_13  W_23  W_33  W_43 / W_14  W_24  W_34  W_44
+  Head 2 grid: identical labels W_11 â¦ W_44 (same arrangement)
+  Head 3 grid: identical labels W_11 â¦ W_44 (same arrangement)
+  (Note the subscript convention as printed: the second digit increments per row, the first per column, i.e. the grids read W_11 W_21 W_31 W_41 across the top row. Some small subscripts are at the edge of legibility on the JPEG; any not resolvable would be [?], but the repeated 4x4 pattern above is consistent across all three grids.)
+- Token boxes at top-left: "X_1"  "X_2"  "X_3"  "X_4" (bold blue X with subscripts 1â4).
+- Single token label inside Head 2 grid area: "X_j" (purple italic X with subscript j), placed at the right edge of the grid near the W_43/W_44 cells (row 3â4 boundary, column 4).
+- Large red "=" sign to the left of the bottom result row.
+- Result vector box labels, Head 1: "y_1  y_2  y_3  y_4" (bold, subscripted).
+- Result vector box labels, Head 2: "y_1  y_2  y_3  y_4".
+- Result vector box labels, Head 3: "y_1  y_2  y_3  y_4".
+- Captions under the result vectors (dark red, bold, two lines each):
+  "Corresponding Projection at Head 1"
+  "Corresponding Projection at Head 2"
+  "Corresponding Projection at Head 3"
+- Final result symbols (blue, bold, one under each caption): "Y_2^(1)"   "Y_2^(2)"   "Y_2^(3)" (Y with subscript 2 and superscript (1)/(2)/(3)).
+
+3. EQUATIONS
+
+- X_2 (embedding vector of current word; also the token row X_1, X_2, X_3, X_4)
+- W_q (subtitle); W_Q (group labels)
+- W_ij for i,j â {1,â¦,4}, printed as W_11, W_21, W_31, W_41, W_12, W_22, W_32, W_42, W_13, W_23, W_33, W_43, W_14, W_24, W_34, W_44 per grid (subscript order as printed)
+- X_j (a generic/selected input token placed inside the Head 2 grid)
+- y_1, y_2, y_3, y_4 (per-head output components)
+- Implicit operation shown: X_2 Â· W_Q^(head) = [y_1 y_2 y_3 y_4] = Y_2^(1), Y_2^(2), Y_2^(3) â the "=" sign is drawn but no explicit matrix equation text is printed.
+
+4. DIAGRAM TOPOLOGY
+
+Overall layout: one large white rounded-rectangle panel (with thin red outline) containing the whole diagram; slide itself has a thin dark-red border frame. Data flows left-to-right (input token row at top-left â three weight-matrix grids â three output vectors at bottom) and implicitly top-to-bottom within each column group.
+
+Nodes/boxes:
+- Top-left: four small white squares with red borders, labeled X_1, X_2, X_3, X_4 (bold blue letters). These sit under the label "Embedding Vector of Current Word X_2".
+- Three 4x4 grids of small square weight-boxes, each grid sitting on a colored rounded-rectangle background panel and enclosed (visually) by a large red curved brace/parenthesis on its left and right sides:
+  - Head 1 grid: background panel light green (pale mint). Weight boxes: pale yellow fill with dark red borders; the third row (W_13â¦W_43) appears slightly darker orange-yellow; W_11 box appears green-tinted (highlighted).
+  - Head 2 grid: background panel light tan/peach (pale orange). Same box styling; W_11 highlighted green; X_j (purple) placed at the grid's right edge beside the W_43/W_44 row, appearing to mark the input vector multiplying the matrix.
+  - Head 3 grid: background panel light purple/lavender. Same box styling; W_11 highlighted green.
+- A small cursor arrow (mouse pointer) graphic is drawn inside the Head 1 grid, near the W_12/W_22 cells (see section 6).
+- Large red "=" symbol between the grids area and the bottom result row (left of the Head 1 result vector).
+- Bottom result row: three groups of four small boxes each:
+  - Head 1 result: light-green rounded background strip; boxes labeled y_1 y_2 y_3 y_4 (bold, green/teal tones; y_1 box highlighted red-bordered/red text).
+  - Head 2 result: light tan rounded strip; boxes y_1 y_2 y_3 y_4 (y_1 highlighted red).
+  - Head 3 result: light purple rounded strip; boxes y_1 y_2 y_3 y_4 (y_1 highlighted red).
+- Under each result group: two-line red caption ("Corresponding Projection at Head n") and a large blue result symbol Y_2^(n).
+
+Arrows/connectors: No explicit arrowheads are visible. Connections are implied by (a) the red brace-like parentheses bracketing each 4x4 grid (suggesting a matrix), (b) spatial alignment of each input token row with each grid column, and (c) the "=" sign leading to the output vectors. The X_j marker inside Head 2 plays the role of the multiplying vector.
+
+Grouping containers: three colored rounded panels (green / tan / purple) group each head's weight matrix, and matching colored strips group each head's output vector â a deliberate color-coding of Head 1 / Head 2 / Head 3.
+
+Resemblance to published figures: This is NOT a direct copy of Vaswani et al. 2017 Figure 1/2 or Peter Bloem's self-attention diagram. Its style (multi-colored grid of small squares representing weight matrices, per-head color coding, cute colored boxes for vectors) strongly evokes Jay Alammar's "The Illustrated Transformer" multi-head attention illustrations, but the content â an explicit element-by-element 4x4 W matrix per head with individually labeled W_ij entries and a vector-times-matrix expansion â is a custom instructor-drawn teaching figure (typical of this course's hand-built slides). Matching elements: multi-head color coding and box-grid aesthetics (Alammar-like). Differing: Vaswani/Alammar show QÂ·K^T scaled and softmax; here only the learned projection XÂ·W_Q per head is shown, with no attention-score or softmax machinery.
+
+5. NUMBERS/DATA
+
+- Badge numeral: 12 (slide number).
+- Grid dimensions: 4x4 weight matrices per head (16 labeled W entries per head, 48 total across three heads).
+- Input vector length: 4 (X_1â¦X_4); output vector length: 4 (y_1â¦y_4) per head; 3 heads shown.
+- Subscript/superscript indices used: 1, 2, 3, 4; j; q; Q; superscripts (1), (2), (3).
+- No percentages, table values, or other numeric data.
+
+6. BUILD STATE / ARTIFACTS
+
+- A black mouse-cursor arrow graphic is drawn inside the Head 1 grid (near the W_12/W_22 cells), likely a presenter's pointer or an inserted cursor image â a video/screen-recording artifact.
+- Slide appears fully built (no mid-reveal elements; all three heads and all captions present simultaneously).
+- Black letterbox bars: a solid black horizontal bar along the very bottom of the frame (video letterboxing), and the area outside the red slide border is white/gray video background.
+- The yellow "12" badge is a slide-number overlay in the top-right corner.
+- No other video overlays, watermarks, or timestamps visible.

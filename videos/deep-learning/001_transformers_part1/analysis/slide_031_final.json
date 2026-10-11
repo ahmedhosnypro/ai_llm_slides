@@ -1,0 +1,251 @@
+{
+  "slide_title": "Self Attention Mechanism (Linear Transformation of Inputs)",
+  "subtitle_or_header": "(Query using X\u2082 All Keys in Dictionary and retrieve Corresponding Values",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "31 (slide number, inside yellow circle, top-right)",
+      "Self Attention Mechanism (Linear Transformation of Inputs) \u2014 title; the parenthetical '(Linear Transformation of Inputs)' has a yellow highlight behind it",
+      "(Query using X\u2082 All Keys in Dictionary and retrieve Corresponding Values \u2014 subtitle; 'Query', 'Keys', 'Values' in red, 'X\u2082' in blue; opening parenthesis left unclosed in original",
+      "X\u2082 (panel label, bold red italic, below input capsule, repeated in all three panels)",
+      "1xd (small black dimension label under input capsule, repeated in all three panels)",
+      "dxd (small black dimension label at matrix bottom-right, repeated in all three panels)",
+      "W_Q (bold red italic label at matrix bottom-left, Q panel)",
+      "W_V (bold red italic label at matrix bottom-left, V panel)",
+      "W_K (bold red italic label at matrix bottom-left, K panel)",
+      "Q (bold red role letter above output vector, Q panel)",
+      "V (bold blue role letter above output vector, V panel)",
+      "K (bold green role letter above output vector, K panel)",
+      "x\u2082\u2081 x\u2082\u2082 x\u2082\u2083 x\u2082\u2084 (input capsule cell labels, left-to-right, identical in all three panels)",
+      "x\u2082\u2081 x\u2082\u2082 x\u2082\u2083 x\u2082\u2084 (output vector cell labels, top-to-bottom, identical in all three panels)",
+      "W\u2081\u2081 W\u2082\u2081 W\u2083\u2081 W\u2084\u2081 / W\u2081\u2082 W\u2082\u2082 W\u2083\u2082 W\u2084\u2082 / W\u2081\u2083 W\u2082\u2083 W\u2083\u2083 W\u2084\u2083 / W\u2081\u2084 W\u2082\u2084 W\u2083\u2084 W\u2084\u2084 (4x4 matrix cell labels, identical in W_Q, W_V and W_K)",
+      "X\u2082 variant to QUERY with (dashed green callout; 'X\u2082' bold red, 'QUERY' bold italic blue)",
+      "X\u2082 variant used as Value (dashed blue callout; 'X\u2082' bold red, 'Value' bold italic blue)",
+      "X\u2082 variant used as KEY (dashed green callout; 'X\u2082' bold red, 'KEY' bold italic blue)",
+      "Generate Three Variants of X\u2082 (Based on its Role) (yellow highlight box, red bold italic, two lines: 'Generate Three Variants' / 'of X\u2082 (Based on its Role)')",
+      "W_Q W_K W_V are controllable parameters (Trainable), allows to modify the incoming vectors to suit the three roles they must play (white note box, bottom-right; 'W_Q W_K W_V' blue bold, '(Trainable),' red bold, remainder blue)"
+    ],
+    "equations": [
+      "X\u2082 (1xd) \u00b7 W_Q (dxd) = Q (1xd) \u2014 printed explicitly is only '='; rendered as [x\u2082\u2081 x\u2082\u2082 x\u2082\u2083 x\u2082\u2084] \u00b7 [[W\u2081\u2081 W\u2082\u2081 W\u2083\u2081 W\u2084\u2081], [W\u2081\u2082 W\u2082\u2082 W\u2083\u2082 W\u2084\u2082], [W\u2081\u2083 W\u2082\u2083 W\u2083\u2083 W\u2084\u2083], [W\u2081\u2084 W\u2082\u2084 W\u2083\u2084 W\u2084\u2084]] = [x\u2082\u2081; x\u2082\u2082; x\u2082\u2083; x\u2082\u2084]",
+      "X\u2082 (1xd) \u00b7 W_V (dxd) = V (1xd) \u2014 same structure and same matrix entries as W_Q: [[W\u2081\u2081 W\u2082\u2081 W\u2083\u2081 W\u2084\u2081], [W\u2081\u2082 W\u2082\u2082 W\u2083\u2082 W\u2084\u2082], [W\u2081\u2083 W\u2082\u2083 W\u2083\u2083 W\u2084\u2083], [W\u2081\u2084 W\u2082\u2084 W\u2083\u2084 W\u2084\u2084]] = [x\u2082\u2081; x\u2082\u2082; x\u2082\u2083; x\u2082\u2084]",
+      "X\u2082 (1xd) \u00b7 W_K (dxd) = K (1xd) \u2014 same structure and same matrix entries as W_Q: [[W\u2081\u2081 W\u2082\u2081 W\u2083\u2081 W\u2084\u2081], [W\u2081\u2082 W\u2082\u2082 W\u2083\u2082 W\u2084\u2082], [W\u2081\u2083 W\u2082\u2083 W\u2083\u2083 W\u2084\u2083], [W\u2081\u2084 W\u2082\u2084 W\u2083\u2084 W\u2084\u2084]] = [x\u2082\u2081; x\u2082\u2082; x\u2082\u2083; x\u2082\u2084]"
+    ]
+  },
+  "layout": {
+    "arrangement": "Peach rounded-rectangle background on white slide edge; bold title line top-center with yellow-highlighted parenthetical; subtitle line directly beneath; yellow circular slide-number badge '31' at top-right; a large white rounded-rectangle canvas fills everything below the subtitle; inside it, three structurally identical 'input capsule \u2192 4x4 weight matrix = output vector' panels: red-bordered Q panel top-left, blue-bordered V panel top-right, green-bordered K panel bottom-left; three dashed callout labels occupy the middle/right gap between panels; a yellow highlight box and a white justified note box fill the bottom-right quadrant.",
+    "regions": [
+      {
+        "name": "Title band",
+        "position": "top center, x 18-78%, y 8-14%",
+        "content": "Bold black title 'Self Attention Mechanism (Linear Transformation of Inputs)' with yellow highlight on the parenthetical"
+      },
+      {
+        "name": "Subtitle band",
+        "position": "top center, x 10-87%, y 13-18%",
+        "content": "Bold subtitle '(Query using X\u2082 All Keys in Dictionary and retrieve Corresponding Values' with red/blue keyword coloring"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, x 91-97%, y 10-18%",
+        "content": "Yellow circle with black '31'"
+      },
+      {
+        "name": "White content canvas",
+        "position": "x 4-96%, y 17-100% (runs off bottom edge)",
+        "content": "White rounded rectangle containing all three panels, callouts, highlight box and note box"
+      },
+      {
+        "name": "Q panel (QUERY)",
+        "position": "top-left, x 6-48%, y 19-55%",
+        "content": "Red-bordered rounded panel: X\u2082 input capsule, W_Q 4x4 matrix, '=', Q output vector"
+      },
+      {
+        "name": "V panel (VALUE)",
+        "position": "top-right, x 50-93%, y 19-55%",
+        "content": "Blue-bordered rounded panel: X\u2082 input capsule, W_V 4x4 matrix, '=', V output vector"
+      },
+      {
+        "name": "K panel (KEY)",
+        "position": "bottom-left, x 6-48%, y 57-98%",
+        "content": "Green-bordered rounded panel: X\u2082 input capsule, W_K 4x4 matrix, '=', K output vector"
+      },
+      {
+        "name": "Callout cluster",
+        "position": "middle, x 47-93%, y 52-69%",
+        "content": "Three dashed rounded callouts: 'X\u2082 variant to QUERY with' (green, straddles panel gap), 'X\u2082 variant used as Value' (blue, right), 'X\u2082 variant used as KEY' (green, center)"
+      },
+      {
+        "name": "Highlight box",
+        "position": "right, x 66-93%, y 71-82%",
+        "content": "Yellow box, red bold italic two-line statement 'Generate Three Variants of X\u2082 (Based on its Role)'"
+      },
+      {
+        "name": "Note box",
+        "position": "bottom right, x 51-93%, y 83-97%",
+        "content": "White box with justified blue paragraph about W_Q, W_K, W_V being trainable controllable parameters"
+      }
+    ],
+    "hierarchy": "Title is largest and boldest; the three color-coded panels dominate the body, with the dense 4x4 matrices as the visual center of gravity; bold red italic math labels (X\u2082, W_Q, W_V, W_K) and role letters (Q/V/K) are the next tier; callouts and the yellow highlight box form an annotation tier; subtitle slightly smaller than title; '1xd'/'dxd' dimension labels are the smallest text. Color coding (red=Query, blue=Value, green=Key) is the primary organizing device; the yellow highlight box is the strongest accent block."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Q panel: rounded rectangle outlined red (~2px), white fill. Left-to-right flow: (a) horizontal pink capsule (rounded rect, pink fill) containing four small pink squares outlined red labeled x\u2082\u2081, x\u2082\u2082, x\u2082\u2083, x\u2082\u2084; small black '1xd' below it and large bold red italic 'X\u2082' beneath; (b) 4x4 matrix on a pink rounded-rect background \u2014 each cell a small cream box with thin red border and red text; row1: W\u2081\u2081 W\u2082\u2081 W\u2083\u2081 W\u2084\u2081; row2: W\u2081\u2082 W\u2082\u2082 W\u2083\u2082 W\u2084\u2082; row3: W\u2081\u2083 W\u2082\u2083 W\u2083\u2083 W\u2084\u2083; row4: W\u2081\u2084 W\u2082\u2084 W\u2083\u2084 W\u2084\u2084; small black 'dxd' at matrix bottom-right; large bold red italic 'W_Q' at matrix bottom-left; (c) large black '=' sign; (d) vertical output capsule: red rounded-rect outline containing four pink squares outlined red labeled x\u2082\u2081, x\u2082\u2082, x\u2082\u2083, x\u2082\u2084 top-to-bottom, with bold red 'Q' above. A small black mouse cursor (video artifact) overlaps the matrix bottom-right corner.",
+      "colors": [
+        "#FF0000",
+        "#F5B8D0",
+        "#F2B9C6",
+        "#FDF3D9",
+        "#E00000",
+        "#000000"
+      ],
+      "position": "top-left inside white canvas, x 6-48%, y 19-55%"
+    },
+    {
+      "type": "diagram",
+      "description": "V panel: identical structure to Q panel but outlined blue. Input capsule identical (pink, red-outlined cells x\u2082\u2081-x\u2082\u2084, '1xd', red 'X\u2082'). 4x4 matrix on periwinkle/lavender rounded-rect background; each cell a small white box with thin blue border and blue text; row1: W\u2081\u2081 W\u2082\u2081 W\u2083\u2081 W\u2084\u2081; row2: W\u2081\u2082 W\u2082\u2082 W\u2083\u2082 W\u2084\u2082; row3: W\u2081\u2083 W\u2082\u2083 W\u2083\u2083 W\u2084\u2083; row4: W\u2081\u2084 W\u2082\u2084 W\u2083\u2084 W\u2084\u2084; 'dxd' black at bottom-right; bold red italic 'W_V' at bottom-left; black '='; vertical output capsule with blue rounded-rect outline and four pink squares outlined blue labeled x\u2082\u2081-x\u2082\u2084, bold blue 'V' above.",
+      "colors": [
+        "#0000FF",
+        "#F5B8D0",
+        "#B9C2F2",
+        "#FFFFFF",
+        "#1F1FBE",
+        "#E00000",
+        "#000000"
+      ],
+      "position": "top-right inside white canvas, x 50-93%, y 19-55%"
+    },
+    {
+      "type": "diagram",
+      "description": "K panel: identical structure to Q panel but outlined green. Input capsule identical (pink, red-outlined cells x\u2082\u2081-x\u2082\u2084, '1xd', red 'X\u2082'). 4x4 matrix on light-green rounded-rect background; each cell a small white box with thin green border and green text; row1: W\u2081\u2081 W\u2082\u2081 W\u2083\u2081 W\u2084\u2081; row2: W\u2081\u2082 W\u2082\u2082 W\u2083\u2082 W\u2084\u2082; row3: W\u2081\u2083 W\u2082\u2083 W\u2083\u2083 W\u2084\u2083; row4: W\u2081\u2084 W\u2082\u2084 W\u2083\u2084 W\u2084\u2084; 'dxd' black at bottom-right; bold red italic 'W_K' at bottom-left; black '='; vertical output capsule with green rounded-rect outline and four pink squares outlined green labeled x\u2082\u2081-x\u2082\u2084, bold green 'K' above.",
+      "colors": [
+        "#00A651",
+        "#F5B8D0",
+        "#C7E8C7",
+        "#FFFFFF",
+        "#00A040",
+        "#E00000",
+        "#000000"
+      ],
+      "position": "bottom-left inside white canvas, x 6-48%, y 57-98%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Callout 1: rounded rectangle with dashed green border, white fill; text 'X\u2082 variant to QUERY with' \u2014 'X\u2082' bold red, 'variant to' black, 'QUERY' bold italic blue, 'with' black. Straddles the vertical gap between the Q and V panels, pointing at the Q-panel output.",
+      "colors": [
+        "#00A651",
+        "#E00000",
+        "#000000",
+        "#1F1FBE"
+      ],
+      "position": "x 47-66%, y 52-57%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Callout 2: rounded rectangle with dashed blue border, white fill; text 'X\u2082 variant used as Value' \u2014 'X\u2082' bold red, 'variant used as' black, 'Value' bold italic blue. Sits just below the V panel's right end.",
+      "colors": [
+        "#0000FF",
+        "#E00000",
+        "#000000",
+        "#1F1FBE"
+      ],
+      "position": "x 74-93%, y 58-63%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Callout 3: rounded rectangle with dashed green border, white fill; text 'X\u2082 variant used as KEY' \u2014 'X\u2082' bold red, 'variant used as' black, 'KEY' bold italic blue. Sits in the center gap between the K panel and the right-side boxes.",
+      "colors": [
+        "#00A651",
+        "#E00000",
+        "#000000",
+        "#1F1FBE"
+      ],
+      "position": "x 47-66%, y 63-68%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Yellow emphasis box (solid #FFFF00 fill, no visible border) with two lines of red bold italic text: 'Generate Three Variants' / 'of X\u2082 (Based on its Role)'.",
+      "colors": [
+        "#FFFF00",
+        "#FF0000"
+      ],
+      "position": "x 66-93%, y 71-82%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "White note box (thin light border) with a justified three-line paragraph: line1 'W_Q  W_K  W_V  are controllable parameters' (W-terms blue bold), line2 '(Trainable), allows to modify the incoming' ('(Trainable),' red bold, rest blue), line3 'vectors to suit the three roles they must play' (blue).",
+      "colors": [
+        "#FFFFFF",
+        "#1F1FBE",
+        "#FF0000"
+      ],
+      "position": "x 51-93%, y 83-97%"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: yellow filled circle with black text '31', thin darker outline.",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top right, x 91-97%, y 10-18%"
+    }
+  ],
+  "imagery": [
+    "No photographs, icons or illustrations anywhere on the slide; all visuals are vector shapes (rounded panels, capsules, matrix grids, callouts, badge).",
+    "Small black mouse-pointer cursor (video-capture artifact) resting near the bottom-right corner of the W_Q matrix, overlapping the 'dxd' label area of the Q panel."
+  ],
+  "colors": {
+    "background": "#FCE4CF (peach rounded rectangle; white #FFFFFF outer slide edge and white inner content canvas)",
+    "title_text": "#000000",
+    "body_text": "#000000 (labels/callouts); #1F1FBE for blue text; #E00000-#FF0000 for red text",
+    "accents": [
+      "#FFFF00",
+      "#FF0000",
+      "#0000FF",
+      "#00A651",
+      "#F5B8D0",
+      "#F2B9C6",
+      "#B9C2F2",
+      "#C7E8C7",
+      "#FDF3D9"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Calibri-like). Title bold, largest (~24-26pt), sentence case with yellow-highlighted parenthetical. Subtitle bold, slightly smaller (~18pt), with inline color-coded keywords. Math symbols (X\u2082, W_Q, W_V, W_K, Q, V, K) are bold italic with true subscripts, red except role letters Q/V/K which match their panel colors. Matrix cell text very small (~9-10pt). Dimension labels '1xd'/'dxd' tiny black. Callout keywords 'QUERY' and 'KEY' are ALL-CAPS bold italic blue; 'Value' is title-case bold italic blue. Note-box paragraph is justified with bold lead-in. Highlight-box text is bold italic red. No numbered or bulleted lists on the slide.",
+  "animation_state": "Slide appears fully built \u2014 all three panels, all three callouts, the highlight box and the note box are visible simultaneously; no mid-build reveal detected. The parked mouse cursor near the W_Q matrix indicates this frame comes from a narrated screen recording.",
+  "recreation_brief": "1. Slide setup: 16:9 aspect ratio, white (#FFFFFF) background; draw a peach (#FCE4CF) rounded rectangle covering ~98% of the slide so a thin white edge remains visible on all sides.\n2. Title: text box top-center at x 18-78%, y 8-14% \u2014 bold black sans-serif (Arial/Calibri-like) ~24-26pt 'Self Attention Mechanism (Linear Transformation of Inputs)' with a yellow (#FFFF00) highlight behind only the parenthetical '(Linear Transformation of Inputs)'.\n3. Subtitle: text box directly beneath at x 10-87%, y 13-18% \u2014 bold ~18pt rich-text run: '(' black + 'Query' red (#FF0000) + ' using ' black + 'X\u2082' blue (true subscript 2) + ' All ' black + 'Keys' red (#FF0000) + ' in Dictionary and retrieve Corresponding ' black + 'Values' red (#FF0000); keep the opening parenthesis unclosed exactly as in the source.\n4. Slide-number badge: yellow (#FFFF00) filled circle ~3% of slide width with a thin darker outline and centered black bold '31', at x 91-97%, y 10-18%.\n5. White content canvas: white (#FFFFFF) rounded rectangle at x 4-96%, y 17-100% (runs off the bottom edge); place all remaining elements inside it.\n6. Q panel frame: rounded rectangle, white fill, red (#FF0000) ~2pt border, x 6-48%, y 19-55%.\n7. V panel frame: rounded rectangle, white fill, blue (#0000FF) ~2pt border, x 50-93%, y 19-55%.\n8. K panel frame: rounded rectangle, white fill, green (#00A651) ~2pt border, x 6-48%, y 57-98%.\n9. Q input capsule: horizontal pink (#F5B8D0) rounded capsule in the left third of the Q panel containing four small pink (#F5B8D0) squares outlined red (#FF0000), labeled left-to-right x\u2082\u2081, x\u2082\u2082, x\u2082\u2083, x\u2082\u2084 (true subscripts).\n10. Q '1xd' label: tiny black '1xd' directly below the input capsule.\n11. Q 'X\u2082' label: large bold red italic (#E00000) 'X\u2082' below the '1xd'.\n12. Q matrix background: rounded rectangle filled rose (#F2B9C6) in the center of the Q panel.\n13. Q matrix grid: inside the step-12 background, one 4x4 grid of 16 small cream (#FDF3D9) cells with thin red (#FF0000) borders and red (#E00000) text, filled row-wise: W\u2081\u2081 W\u2082\u2081 W\u2083\u2081 W\u2084\u2081 / W\u2081\u2082 W\u2082\u2082 W\u2083\u2082 W\u2084\u2082 / W\u2081\u2083 W\u2082\u2083 W\u2083\u2083 W\u2084\u2083 / W\u2081\u2084 W\u2082\u2084 W\u2083\u2084 W\u2084\u2084 (true subscripts).\n14. Q 'dxd' label: tiny black 'dxd' at the matrix bottom-right.\n15. Q 'W_Q' label: large bold red italic (#E00000) 'W_Q' at the matrix bottom-left.\n16. Q equals sign: one large black bold '=' between the matrix and the output capsule.\n17. Q output capsule: vertical rounded-rectangle outline in red (#FF0000) containing four pink (#F5B8D0) squares outlined red (#FF0000) labeled top-to-bottom x\u2082\u2081, x\u2082\u2082, x\u2082\u2083, x\u2082\u2084.\n18. Q role letter: bold red (#FF0000) 'Q' above the output capsule.\n19. V panel interior: replicate steps 9-18 inside the V panel with exactly these substitutions \u2014 output-capsule outline and its four cell outlines blue (#0000FF); matrix background periwinkle (#B9C2F2); 16 matrix cells white (#FFFFFF) with thin blue (#0000FF) borders and blue (#1F1FBE) text (same 16 W entries as step 13); matrix label 'W_V' bold red italic (#E00000); role letter 'V' bold blue (#0000FF). Input capsule (pink with red-outlined cells), '1xd', 'X\u2082', 'dxd' and '=' stay identical to the Q panel.\n20. K panel interior: replicate steps 9-18 inside the K panel with exactly these substitutions \u2014 output-capsule outline and its four cell outlines green (#00A651); matrix background light green (#C7E8C7); 16 matrix cells white (#FFFFFF) with thin green (#00A651) borders and green (#00A040) text (same 16 W entries as step 13); matrix label 'W_K' bold red italic (#E00000); role letter 'K' bold green (#00A651). Input capsule (pink with red-outlined cells), '1xd', 'X\u2082', 'dxd' and '=' stay identical to the Q panel.\n21. Callout 1: rounded rectangle with dashed green (#00A651) border and white fill at x 47-66%, y 52-57% (straddles the gap between the Q and V panels) \u2014 text 'X\u2082 variant to QUERY with': 'X\u2082' bold red (#E00000), 'variant to' black, 'QUERY' bold italic blue (#1F1FBE), 'with' black.\n22. Callout 2: rounded rectangle with dashed blue (#0000FF) border and white fill at x 74-93%, y 58-63% (just below the right end of the V panel) \u2014 text 'X\u2082 variant used as Value': 'X\u2082' bold red (#E00000), 'variant used as' black, 'Value' bold italic blue (#1F1FBE).\n23. Callout 3: rounded rectangle with dashed green (#00A651) border and white fill at x 47-66%, y 63-68% (center gap to the right of the K panel) \u2014 text 'X\u2082 variant used as KEY': 'X\u2082' bold red (#E00000), 'variant used as' black, 'KEY' bold italic blue (#1F1FBE).\n24. Yellow emphasis box: solid yellow (#FFFF00) rectangle with no border at x 66-93%, y 71-82% \u2014 two lines of bold italic red (#FF0000) text: line 1 'Generate Three Variants', line 2 'of X\u2082 (Based on its Role)'.\n25. Note box: white rectangle with a thin light border at x 51-93%, y 83-97% \u2014 one justified ~14pt three-line paragraph: 'W_Q  W_K  W_V are controllable parameters (Trainable), allows to modify the incoming vectors to suit the three roles they must play' with 'W_Q', 'W_K', 'W_V' bold blue (#1F1FBE), '(Trainable),' bold red (#FF0000), and all remaining words blue (#1F1FBE).\n26. Optional fidelity artifact: small black mouse-cursor arrow overlapping the bottom-right corner of the W_Q matrix (video-capture artifact); omit for a clean deck.\n27. Final verification: color-role mapping red = Query (Q), blue = Value (V), green = Key (K); all three weight matrices carry the identical 16 entry labels; the slide contains no bulleted or numbered lists.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Confirmed verbatim_text.bullets is genuinely empty rather than missing: the slide contains no bulleted or numbered list (typography_notes states 'No numbered or bulleted lists on the slide'); left as [] instead of inventing bullets \u2014 all slide text is fully captured in the 20 verbatim_text.labels and 3 verbatim_text.equations.",
+      "Rewrote recreation_brief from 14 multi-element steps into a 27-step ordered checklist in which each step places exactly one element (or one panel interior via an exhaustive substitution list), with exact text, percentage position, hex color and shape type for every placement.",
+      "Fixed the '1xd' position in the brief from 'below-right of the capsule' to 'below the capsule' to match verbatim_text.labels ('under input capsule') and visual_elements ('below it').",
+      "Pinned exact hex values previously left unnamed in the brief: role letters Q #FF0000 / V #0000FF / K #00A651 (per typography_notes 'role letters match their panel colors'), red math labels #E00000, blue callout/note text #1F1FBE, matrix cell text colors drawn from each panel's color array.",
+      "Verified region coverage: all 10 layout.regions cover every one of the 9 visual_elements and all 20 labels + 3 equations (title, subtitle, badge, canvas, 3 panels, 3 callouts, highlight box, note box) \u2014 no orphan elements and no region without content; title, subtitle, panel labels and brief text are mutually consistent.",
+      "Verified exact counts and found no vague quantifiers ('several/some/many/a few/various') in any field: 3 panels, 3 dashed callouts, 4 cells per capsule, 16 matrix cells per panel, 2-line highlight text, 3-line note paragraph, 1 badge, 1 equals sign per panel."
+    ],
+    "uncertain_items": [
+      "Callout 1 ('X\u2082 variant to QUERY with') is extracted with a dashed GREEN (#00A651) border even though the slide's role-color mapping assigns red to Query (Callout 2 Value=blue and Callout 3 KEY=green both match their roles); kept as extracted because the JSON is the source of truth \u2014 recheck frame slide_031.jpg if border-color fidelity matters.",
+      "Font sizes are estimates not verifiable from the JSON: title ~24-26pt, subtitle ~18pt, matrix cell text ~9-10pt, note text ~14pt.",
+      "Assignment of the two reds (#FF0000 borders vs #E00000 text) and two blues (#0000FF borders vs #1F1FBE text) within each panel is inferred from the ordering of each element's color array; the JSON does not explicitly bind each hex to border vs text.",
+      "Subtitle opens with an unclosed parenthesis ('(Query using X\u2082 All Keys in Dictionary and retrieve Corresponding Values') \u2014 kept verbatim; may be a typo on the original slide or an extraction artifact.",
+      "Mouse cursor overlapping the W_Q matrix bottom-right is a video-capture artifact with only approximate placement; excluded from the required rebuild (optional step 26)."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_031.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 31,
+      "image": "slide_031.jpg",
+      "kept_frame": "frame_02948.jpg",
+      "start_sec": 2815.0,
+      "end_sec": 2947.0,
+      "frame_count": 133
+    },
+    "elapsed_s": 562.8,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 712.4
+  }
+}

@@ -1,0 +1,39 @@
+## Element-by-Element Comparison (Slide 004 badge crop only)
+
+**Scope note:** Per founder ground rules (a), the house-template red frame and yellow badge oval (#FFF9C4) themselves are intentional chrome and not scored. This crop contains only: badge oval + outline, numeral "4", and the panel's red right border strip.
+
+### 1. Badge oval geometry
+- Ellipse bbox x872..914 y54..89 matches in both images (stated measured fact; visually consistent â same relative position and size in both crops).
+- Fill core ~(254,255,156) #FFFF99-family yellow in both. Match.
+- Badge offset from panel's red right border: ~5px in both. Match.
+- **No discrepancy.**
+
+### 2. Badge outline (purple ring)
+- IMG1: purple/violet ring, appears thicker with a soft lighter halo (upscaled render anti-aliasing).
+- IMG2: darker, thinner purple ring with compression blur.
+- Stroke weight difference is consistent with dpi/upscaling differences between a 150dpi render and a video frame, not a content deviation. **MINOR at most â I do not score it as a defect** given both represent the same specified purple outline.
+
+### 3. Numeral "4"
+- Ink height ~11px@72dpi in BOTH (stated measured fact; consistent with visual inspection).
+- Color: black in both. Match.
+- Weight: IMG1's "4" is clearly **bold/heavy**; IMG2's "4" appears **thinner/lighter**. However, IMG2 is a compressed video frame upscaled Ã6 â stroke thinning at this resolution is an artifact of the medium, and a single-glyph weight difference at ~11px ink height is at most a cosmetic variance. **MINOR, high confidence it is artifact-driven.**
+- Horizontal centering: IMG1's "4" sits visually centered in the oval. IMG2's "4" sits slightly **left of the oval's horizontal center** (roughly 40â45% of oval width) and marginally below optical center. Given the ~42px-wide badge at source resolution (~7px of left bias), this is within one to two source pixels. **MINOR, medium confidence.**
+- Vertical centering: both show the digit essentially vertically centered within the oval; no top-hugging or empty-space imbalance in either. Match.
+
+### 4. Panel red border strip (right edge of crop)
+- Present in both, same vertical strip at the crop's right edge, same dark-red hue. The badge's ~5px clearance from it is preserved in both. Match.
+
+### 5. Frame containment
+- All ink in both crops sits fully inside the panel; no element touches or crosses the red border in either image. Match.
+
+### 6. Missing elements
+- None. The original shows exactly: badge oval, purple outline, numeral 4, red border. Recreation shows all four. No omissions.
+
+## Discrepancy List
+1. **MINOR** â Numeral "4" horizontal position: slightly left-of-center in IMG2 vs. centered in IMG1 (~1â2px at source scale). Confidence: medium. Likely attributable to video-frame blur/hand-render variance rather than a layout error.
+2. **MINOR** â Numeral stroke weight appears bolder in IMG1 than IMG2. Confidence: high that the difference is visible, high that it is an upscaling/compression artifact of IMG2, not a recreation defect.
+3. (Not scored) Purple outline stroke appearance differs slightly (thicker/haloed vs. thin/blurred) â dpi and compression artifact, same hue family and geometry.
+
+No MAJOR defects. No BLOCKER defects. No visual-quality defects in the recreation (no clipping, no overflow, no collision, no misalignment beyond the sub-2px note above).
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

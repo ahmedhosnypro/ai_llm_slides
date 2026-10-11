@@ -1,0 +1,54 @@
+1. TITLE â exact title text verbatim; also the badge numeral (top-right circle) if present.
+Title: "Pre-processing of Input Sequence"
+Badge: yellow circle top-right containing the numeral "20"
+
+2. ALL VERBATIM TEXT â every visible string on the slide:
+- "Pre-processing of Input Sequence" (red heading, centered top)
+- "20" (badge)
+- Left margin label (gray italic): "Sequence of words with Length N"
+- Left margin label (green bold italic): "Word Embedding e.g. word2vec"
+- Left margin label (blue bold italic): "Position Information"
+- Left margin label (red bold italic): "Final Embedding"
+- Row 1 box labels: "Word 0", "Word 1", "Word 2", "Word 3", "Word 4", "Word 5", then a row of small gray circles (ellipsis/omitted words), then "Word N-2", "Word N-1"
+- Row 2 box labels (embedding cells): "X_0", "X_1", "X_2", "X_3", "X_4", "X_5", then green filled-circle ellipsis, then "X_{N-2}" [glyph slightly small, possibly X_N-2] , "X_{N-1}" [similarly uncertain, possibly X_N-1]. Each labeled token box is followed by a small stack of empty cells (unlabeled).
+- Row 3 box labels: "Pos 0", "Pos 1", "Pos 2", "Pos 3", "Pos 4", "Pos 5", then blue filled-circle ellipsis, then "Pos N-2", "Pos N-1"
+- Below row 3, plus signs: "+Î´" (delta) appearing under/between: "+Î´" after Pos 0 area, "+Î´" after Pos 1/2 area, "+Î´" after Pos 3 area, "+Î´" after Pos 4 area, "+Î´" after Pos 5 area, "+Î´" near the right end after Pos N-2/N-1 area. Small orange arrow glyphs (curved) appear attached to the right edge of several Pos boxes (Pos 1, Pos 2, Pos 3, Pos 4, Pos 5, and Pos N-1 area) suggesting rotation/transformation.
+- Red banner: "Combine Word Encoding and Position Information (for Each Word)" â the word "Combine" is in yellow; the rest in white; banner background dark red.
+- Row 4 box labels (light pink boxes): "I/P 0", "I/P 1", "I/P 2", "I/P 3", "I/P 4", "I/P 5", then (no ellipsis visible â a gap), then "I/P N-2", "I/P N-1"
+- Caption below: "Input to first Self Attention Layer in Transformer" (blue bold italic)
+- Inset panel bottom-left label inside panel: "Positional Encoding" (next to a small circular icon); box below icon labeled "Input[?]Embedding" (small text, reads "Input Embedding" [possibly "Inputs Embedding"]); bottom arrow label: "inputs"
+- Green label right of inset panel: "Input to Encoder"
+
+3. EQUATIONS â formulaic sequences:
+- X_0, X_1, X_2, X_3, X_4, X_5, ..., X_{N-2} [?], X_{N-1} [?] (word embedding vectors, subscripts as written)
+- Pos 0 ... Pos N-1 (positional encoding indices)
+- I/P 0 ... I/P N-1 (final input tokens)
+- "+Î´" â addition of delta (positional encoding added to word embedding), repeated 6 times across the row
+- Word N-2, Word N-1 (token indices, N-2/N-1 as subscripts)
+
+4. DIAGRAM TOPOLOGY:
+Overall: a large light-gray rounded panel fills most of the slide (white margin around it). Content flows top-to-bottom with four horizontal rows plus a red banner; left-margin italic labels annotate each row via large curly braces.
+
+- Row 1 (white/light dotted rounded container with red dotted border): red-bordered boxes "Word 0" â¦ "Word 5", gray circle ellipsis, "Word N-2", "Word N-1". Annotated at left by gray italic text "Sequence of words with Length N" with a large gray/red curly brace spanning the row height.
+- Row 2 (light green dotted rounded container): for each word, a labeled box (e.g. "X_0" with red X) followed by 3â4 small empty yellowish/pinkish cell rectangles (depicting an embedding vector). Green solid circles form the ellipsis between X_5 and X_{N-2}. Annotated left in green: "Word Embedding e.g. word2vec" with a green curly brace.
+- Two thick dark-red vertical arrows point downward from Row 2 and Row 3 into the red banner â one under the X_5 area (around xâ610), one under the X_{N-2} area (around xâ715). These indicate the word-embedding stream and position stream being combined.
+- Row 3 (light blue/lavender dotted rounded container): blue boxes "Pos 0" â¦ "Pos 5", blue circle ellipsis, "Pos N-2", "Pos N-1". Each Pos box has a small orange curved arrow at its right edge (suggesting rotation/encoding). Below the row: "+Î´" symbols (6 of them) marking element-wise addition. Annotated left in blue: "Position Information" with a blue curly brace. A large curly brace also spans the right edge of rows 2â3 (red/blue), tying embeddings and positions together.
+- Red banner (dark red fill, spanning most of width): "Combine Word Encoding and Position Information (for Each Word)" â this is the merge/sum step (the +Î´).
+- One thick dark-red downward arrow from the banner to Row 4 (centered, ~xâ520).
+- Row 4 (very light pink dotted rounded container): light pink boxes "I/P 0" â¦ "I/P 5", wide empty gap (no explicit ellipsis circles drawn), "I/P N-2", "I/P N-1" â the final embeddings after combination.
+- One thick dark-red downward arrow from Row 4 (center, ~xâ520) pointing to the caption text.
+- Caption: "Input to first Self Attention Layer in Transformer".
+- Inset panel bottom-left: white rectangle with green border. Contains: label "Positional Encoding" beside a small circular clock/wave icon; a downward arrow into a pink box labeled "Input[?]Embedding"; a downward arrow from that box to the word "inputs" at the bottom. Green label outside to the right: "Input to Encoder". This inset is a miniature of the classic Vaswani et al. 2017 Figure 1 left-side input path (inputs â Input Embedding â + Positional Encoding), redrawn top-to-bottom.
+- Similarity note: the whole slide is an expanded/annotated rendition of the input-embedding + positional-encoding portion of the Transformer architecture (Vaswani et al. 2017, "Attention Is All You Need", Figure 1 left half â the "inputs â Input Embedding â + Positional Encoding" path feeding the encoder). It does not match any single published figure verbatim; it is an instructional expansion showing per-token vectors X_i being combined (+Î´) with positional encodings Pos i to yield I/P i. The inset explicitly quotes the Vaswani Figure 1 input stack.
+
+5. NUMBERS/DATA:
+- Badge numeral: 20
+- Index values: 0, 1, 2, 3, 4, 5, N-2, N-1 (for Word, X, Pos, I/P rows)
+- "+Î´" appears 6 times
+- No table cells, percentages, or other numeric values.
+
+6. BUILD STATE / ARTIFACTS:
+- Slide appears fully revealed (no partial build evident); all four rows, banner, arrows, and caption are present simultaneously.
+- Black bar artifacts at the very bottom edge of the frame (video letterbox/crop artifact), roughly full-width strips at bottom-left and bottom-right.
+- Slight JPEG/video compression softness; small text in the inset ("Input Embedding", "inputs") is low-resolution but legible-ish.
+- No cursor, pointer highlight, or progress-bar overlay visible. The row-2 token boxes each show a few tiny empty cells whose contents are indistinct at this resolution [cells appear empty/unlabeled].

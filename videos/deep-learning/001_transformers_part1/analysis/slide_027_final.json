@@ -1,0 +1,166 @@
+{
+  "slide_title": "Self Attention Mechanism (Fundamental Operation)",
+  "subtitle_or_header": "Self Attention of word X_2 w.r.t All words in Sentence ( X_1, X_2, X_3, X_4 )",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Similarity",
+      "Dot Product",
+      "Probabilities",
+      "Weighted SUM",
+      "Soft max",
+      "X_1",
+      "X_i = X_2",
+      "Remember",
+      "y_i",
+      "Output layer",
+      "Softmax activation function",
+      "Probabilities",
+      "w_{21}",
+      "w_{22}",
+      "w_{23}",
+      "w_{24}",
+      "\u03a3",
+      "\u00d7",
+      "27"
+    ],
+    "equations": [
+      "y_i = \\sum_j w_{ij} x_j",
+      "w'_{ij} = x_i^T x_j",
+      "w_{ij} = \\frac{\\exp w'_{ij}}{\\sum_j \\exp w'_{ij}}",
+      "\\frac{e^{z_i}}{\\sum_{j=1}^K e^{z_j}}"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title and subtitle centered at top (~0-15% height). Slide number '27' in a yellow circle at top right (~5% from top, ~5% from right). Main flowchart occupies the center (~15-85% height, ~5-95% width): bottom input group (green dashed rounded rectangle with four pink boxes X1-X4 and blue box 'X_i = X_2'), left key group (green dashed rounded rectangle with four pink/yellow rows and blue box 'X_1'), right value group (green dashed rounded rectangle with four pink/yellow rows), center-left gray 'Dot Product' block with four blue dots, center vertical pink 'Soft max' block, center-right four multiplication circles labeled w_{21}-w_{24} feeding a blue '\u03a3' block, and a green 'y_i' output box at top center. Stage labels 'Similarity', 'Probabilities', 'Weighted SUM' sit above the dot-product, softmax, and multiplication/sum stages respectively. Blue equation boxes at top right and bottom center. Red 'Remember' text near bottom right. Three-column table at bottom right (~70-95% width, ~75-95% height).",
+    "regions": [
+      {
+        "name": "Title area",
+        "position": "top center, ~0-15% height",
+        "content": "Title 'Self Attention Mechanism (Fundamental Operation)' with yellow (#FFFF00) highlight on '(Fundamental Operation)' and subtitle 'Self Attention of word X_2 w.r.t All words in Sentence ( X_1, X_2, X_3, X_4 )'"
+      },
+      {
+        "name": "Slide number",
+        "position": "top right, ~5% from top, ~5% from right",
+        "content": "Yellow circle (#FFD966) with black number '27'"
+      },
+      {
+        "name": "Main diagram",
+        "position": "center, ~15-85% height, ~5-95% width",
+        "content": "Self-attention flowchart: bottom input group (pink boxes X1, X2, X3, X4 in green dashed rectangle, blue box 'X_i = X_2', red arrow from X2 to Dot Product), left key group (four pink/yellow rows in green dashed rectangle, blue box 'X_1', red lines to the dot-product dots), right value group (four pink/yellow rows in green dashed rectangle, red lines to the multiplication circles), gray 'Dot Product' block with four blue dots, vertical pink 'Soft max' block, four multiplication circles labeled w_{21}, w_{22}, w_{23}, w_{24}, blue '\u03a3' block, green 'y_i' output box, stage labels 'Similarity', 'Probabilities', 'Weighted SUM', red 'Remember' text"
+      },
+      {
+        "name": "Bottom right table",
+        "position": "bottom right, ~75-95% height, ~70-95% width",
+        "content": "Three-column table: 'Output layer' (1.3, 5.1, 2.2, 0.7, 1.1), 'Softmax activation function' (softmax equation), 'Probabilities' (0.02, 0.90, 0.05, 0.01, 0.02), with arrows from left column to middle column to right column"
+      },
+      {
+        "name": "Equations",
+        "position": "top right and bottom center",
+        "content": "Blue equation boxes: 'y_i = \\sum_j w_{ij} x_j' (top right); 'w'_{ij} = x_i^T x_j' and 'w_{ij} = \\frac{\\exp w'_{ij}}{\\sum_j \\exp w'_{ij}}' (bottom center)"
+      }
+    ],
+    "hierarchy": "Title largest and boldest; subtitle bold and smaller. Diagram dominates visually with colored boxes and red arrows. Stage labels, equation boxes, and table are smaller; the three table headers are bold."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Flowchart of self-attention. Bottom: green dashed rounded rectangle containing four pink boxes labeled X1, X2, X3, X4; blue box above labeled 'X_i = X_2'; red arrow from X2 up to dot product. Left: green dashed rounded rectangle with four rows, each row has pink and yellow squares with 'X'; blue box above labeled 'X_1'; red lines from each row to four blue dots in dot product. Right: green dashed rounded rectangle with four rows, each row has pink and yellow squares with 'X'; red lines from each row to four multiplication circles. Center-left: gray rectangle labeled 'Dot Product' containing four blue dots; red lines from left rows to dots; red lines from dots to softmax. Center: vertical pink rectangle labeled 'Soft max'; red lines from softmax to multiplication circles. Center-right: four multiplication circles (\u00d7) with labels w_{21}, w_{22}, w_{23}, w_{24}; red lines from right rows to circles; red lines from circles up to blue rectangle with '\u03a3'. Top center: green box 'y_i'; arrow from \u03a3 to y_i. Stage labels 'Similarity', 'Probabilities', 'Weighted SUM' in light blue rounded rectangles above the dot-product, softmax, and weighted-sum stages. Top right: blue box with equation y_i = sum_j w_{ij} x_j. Bottom center: two blue boxes with equations w'_{ij} = x_i^T x_j and w_{ij} = exp(w'_{ij}) / sum_j exp(w'_{ij}). Red text 'Remember' near bottom right.",
+      "colors": [
+        "#00B050",
+        "#F4B6C2",
+        "#FFF2CC",
+        "#D9D9D9",
+        "#F8CBAD",
+        "#DDEBF7",
+        "#FF0000",
+        "#0070C0",
+        "#000000"
+      ],
+      "position": "center, ~15-85% height, ~5-95% width"
+    },
+    {
+      "type": "table",
+      "description": "Table with three columns: 'Output layer', 'Softmax activation function', 'Probabilities'. Left column values: 1.3, 5.1, 2.2, 0.7, 1.1. Middle column equation: e^{z_i} / sum_{j=1}^K e^{z_j}. Right column values: 0.02, 0.90, 0.05, 0.01, 0.02. Arrows from left to middle to right.",
+      "colors": [
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "bottom right, ~70-95% width, ~75-95% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Yellow highlight on '(Fundamental Operation)' in title.",
+      "colors": [
+        "#FFFF00"
+      ],
+      "position": "top center"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Yellow circle with slide number 27.",
+      "colors": [
+        "#FFD966",
+        "#000000"
+      ],
+      "position": "top right, ~5% from top, ~5% from right"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#000000",
+    "body_text": "#000000",
+    "accents": [
+      "#FFFF00",
+      "#FFD966",
+      "#00B050",
+      "#F4B6C2",
+      "#FFF2CC",
+      "#D9D9D9",
+      "#F8CBAD",
+      "#DDEBF7",
+      "#FF0000",
+      "#0070C0"
+    ]
+  },
+  "typography_notes": "Sans-serif font (likely Calibri or Arial). Title bold and largest. Subtitle bold, slightly smaller. Diagram labels small; the source does not specify which diagram labels are bold, so render all 14 diagram labels in regular weight. Equations in a serif math font. Table text small; the three headers ('Output layer', 'Softmax activation function', 'Probabilities') bold.",
+  "animation_state": "Static, no mid-build.",
+  "recreation_brief": "1. Set the slide background to white (#FFFFFF). 2. Place the title 'Self Attention Mechanism (Fundamental Operation)' centered at the top (~0-8% height): bold, black (#000000), sans-serif, the largest text on the slide, with a yellow (#FFFF00) highlight on the substring '(Fundamental Operation)'. 3. Place the subtitle 'Self Attention of word X_2 w.r.t All words in Sentence ( X_1, X_2, X_3, X_4 )' centered directly below the title (~8-15% height): bold, black (#000000), smaller than the title. 4. Place a yellow circle (#FFD966) at the top right (~5% from the top edge, ~5% from the right edge) with the black (#000000) number '27' centered inside. 5. Draw the bottom input group: a green dashed rounded rectangle (#00B050 outline) in the lower center of the diagram area containing four pink boxes (#F4B6C2) labeled 'X1', 'X2', 'X3', 'X4' in one horizontal row; place a blue box (#DDEBF7 fill, #0070C0 text) above the group labeled 'X_i = X_2'; draw a red arrow (#FF0000) from the 'X2' box up to the 'Dot Product' block. 6. Draw the left key group: a green dashed rounded rectangle (#00B050 outline) on the left side containing four rows, each row one pink square (#F4B6C2) plus one yellow square (#FFF2CC), each square containing 'X'; place a blue box (#DDEBF7 fill, #0070C0 text) above the group labeled 'X_1'; draw four red lines (#FF0000), one from each of the four rows to one of the four blue dots in the 'Dot Product' block. 7. Draw the right value group: a green dashed rounded rectangle (#00B050 outline) on the right side containing four rows, each row one pink square (#F4B6C2) plus one yellow square (#FFF2CC), each square containing 'X'; draw four red lines (#FF0000), one from each of the four rows to one of the four multiplication circles. 8. Draw the 'Dot Product' block at center-left: a gray rectangle (#D9D9D9) labeled 'Dot Product' containing four blue dots (#0070C0); draw red lines (#FF0000) from the four dots to the 'Soft max' block. 9. Draw the 'Soft max' block at center: a vertical pink rectangle (#F4B6C2) labeled 'Soft max'; draw red lines (#FF0000) from it to each of the four multiplication circles. 10. Draw four multiplication circles at center-right, each labeled '\u00d7' (white fill #FFFFFF with black outline #000000; outline color not specified in source), annotated with the labels 'w_{21}', 'w_{22}', 'w_{23}', 'w_{24}'; draw red lines (#FF0000) from the four circles up to the '\u03a3' block. 11. Draw the '\u03a3' block above the multiplication circles: a blue rectangle (#DDEBF7 fill, #0070C0 text) containing '\u03a3'; draw an arrow from the '\u03a3' block to the 'y_i' output box. 12. Draw the output box at the top center of the diagram: a green box (#00B050) labeled 'y_i' with black (#000000) text. 13. Place three stage labels as light blue rounded rectangles (#DDEBF7 fill, black #000000 text): 'Similarity' above the 'Dot Product' block, 'Probabilities' above the 'Soft max' block, 'Weighted SUM' above the multiplication-circles/\u03a3 area. 14. Place a blue equation box (#DDEBF7 fill, #0070C0 text) at the top right containing 'y_i = \\sum_j w_{ij} x_j'. 15. Place two blue equation boxes (#DDEBF7 fill, #0070C0 text) at the bottom center containing 'w'_{ij} = x_i^T x_j' and 'w_{ij} = \\frac{\\exp w'_{ij}}{\\sum_j \\exp w'_{ij}}'. 16. Place the red (#FF0000) text 'Remember' in the bottom-right area of the slide, near but not overlapping the table. 17. Build the table at the bottom right (~70-95% width, ~75-95% height): three columns with bold black (#000000) headers 'Output layer', 'Softmax activation function', 'Probabilities'; left column values 1.3, 5.1, 2.2, 0.7, 1.1; middle column the equation e^{z_i} / \\sum_{j=1}^K e^{z_j}; right column values 0.02, 0.90, 0.05, 0.01, 0.02; white (#FFFFFF) background, black (#000000) text; draw arrows from the left column to the middle column and from the middle column to the right column. 18. Draw every connecting arrow and line in the diagram in red (#FF0000); the source specifies no arrows or lines in any other color.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "verbatim_text.bullets left empty intentionally: the source slide is a diagram-only slide with no bullet list; all on-slide text is captured in the 19 labels and 4 equations, and inventing bullets would add content not in the source.",
+      "Removed the invented element 'main rounded rectangle light beige (#F5E6D3)' from recreation_brief: color #F5E6D3 is not in the colors palette and no such element exists in visual_elements or layout.regions.",
+      "Deleted the vague clause 'except green arrows from bottom sequence to left green box (if any)' from the brief; the source specifies only red (#FF0000) arrows and lines.",
+      "Replaced the vague stage-label placement 'above respective regions' with an explicit mapping: 'Similarity' above the Dot Product block, 'Probabilities' above the Soft max block, 'Weighted SUM' above the multiplication/\u03a3 area (mapping derivable from the equations each stage computes).",
+      "Replaced the vague typography note 'some bold' with an explicit rule: all diagram labels regular weight; bold reserved for title, subtitle, and the three table headers.",
+      "Expanded the 'Main diagram' region content and the diagram visual_element description so every verbatim label is covered: stage labels ('Similarity', 'Probabilities', 'Weighted SUM'), red 'Remember' text, and green 'y_i' output box are now explicitly listed.",
+      "Injected exact positions from layout.regions into the recreation_brief steps (title area ~0-15% height; diagram ~15-85% height and ~5-95% width; table ~70-95% width and ~75-95% height; slide number ~5% from top and right).",
+      "Assigned concrete palette colors to previously unspecified brief items: blue boxes = #DDEBF7 fill with #0070C0 text; multiplication circles = #FFFFFF fill with #000000 outline; 'y_i' box text = #000000; stage labels = #DDEBF7 fill with #000000 text (from the original brief's 'light blue rounded rectangles')."
+    ],
+    "uncertain_items": [
+      "Fill-versus-text color split for 'blue' boxes is not specified; both #DDEBF7 and #0070C0 are in the palette, so the brief assumes #DDEBF7 fill with #0070C0 text.",
+      "Outline/fill colors of the four multiplication (\u00d7) circles and the text color of the green 'y_i' box are not specified; the brief defaults to #000000 outline/text and #FFFFFF fill.",
+      "Which diagram labels are bold is not specified in the source.",
+      "Exact position of the red 'Remember' text is given only as 'near bottom right'.",
+      "Table numeric values (1.3, 5.1, 2.2, 0.7, 1.1 and 0.02, 0.90, 0.05, 0.01, 0.02) appear only in visual_elements, not in verbatim_text; they are treated as on-slide text."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_027.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 27,
+      "image": "slide_027.jpg",
+      "kept_frame": "frame_02487.jpg",
+      "start_sec": 2307.0,
+      "end_sec": 2486.0,
+      "frame_count": 180
+    },
+    "elapsed_s": 212.2,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 443.3
+  }
+}

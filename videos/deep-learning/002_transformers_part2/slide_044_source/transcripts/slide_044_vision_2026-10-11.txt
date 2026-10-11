@@ -1,0 +1,62 @@
+1. TITLE
+Title text (verbatim, preserving spacing): "Layer , Group, and Instance Normalization"
+â Note: there is an anomalous space between "Layer" and the comma ("Layer ,"), then "Group, and Instance Normalization".
+Badge numeral (top-right circle): 44 (white circle with blue border, blue numeral).
+
+2. ALL VERBATIM TEXT
+- Title bar: "Layer , Group, and Instance Normalization"
+- Slide body, top-left, blue bold italic: "Sample Based Normalization"
+- Label with double-headed red arrow beneath the leftmost cube stack: "Channels"
+- Label along the top-left edge of the leftmost cube stack (rotated along the arrow): "Samples"
+- Caption box 1 (pink/pale background, red border), three lines:
+  "Group Normalization"
+  "(Group of Channels)"
+  "General Case"
+- Caption box 2 (pale yellow/cream background, red border), two lines:
+  "Instance Normalization"
+  "Calculate (then Normalize) Î¼, Ï for ONE Channel in ONE Sample (Output of ONE Filter)"
+- Caption box 3 (pale yellow/cream background, red border), two lines:
+  "Layer Normalization"
+  "Calculate (then Normalize) Î¼, Ï for ALL Channels in the Same Sample (Input to  Same Layer)"
+- Black oval callout (bottom right, yellow bold text): "Transformer choice"
+- Arrows labeling the rightmost (Layer Normalization) cube stack: "Feature Vector" (vertical double-headed arrow, left side, rotated text), "Channels" (horizontal double-headed arrow below the magenta front face), "Batch size" (diagonal double-headed arrow along the depth axis, rotated text, right side)
+No unreadable strings observed; no [?] items.
+
+3. EQUATIONS
+- "Î¼, Ï" appears twice, once in the Instance Normalization box and once in the Layer Normalization box (mu and sigma, bold red in both).
+- "Calculate (then Normalize) Î¼, Ï for ..." â the parenthetical phrase "(then Normalize)" is itself formulaic sequencing of the computation order; transcribed verbatim above.
+- No other mathematical notation on the slide.
+
+4. DIAGRAM TOPOLOGY
+Overall: four isometric 3D cube-stack illustrations arranged left to right, illustrating which elements of a (Samples Ã Channels Ã feature-map) tensor are normalized together. Data/axis convention: cubes are NCHW-style feature volumes; front face = Channels (width) Ã vertical (spatial), depth = batch/samples. The figure resembles the well-known normalization-comparison illustration used in the Group Normalization paper (Wu & He, ECCV 2018, Figure 1 style) and in many deep-learning courses: blue = Group Norm, magenta/purple = Instance Norm, red/salmon = Layer Norm highlighting. Matches: same idea of colored highlighted regions per normalization type over stacked feature-map cubes; Differs: this slide adds "Sample Based Normalization" heading, explicit "Transformer choice" callout, and the Layer Norm box with Î¼,Ï text.
+
+Leftmost reference cube stack (no caption box):
+- A 3D stack of cubes, front face colored red/salmon, with several vertical channel slabs behind it in yellow/green/blue and gray top cubes.
+- Double-headed red arrow under the front face labeled "Channels"; double-headed red arrow along the upper-left depth edge labeled "Samples".
+- A small white mouse cursor arrow artifact sits on the front red face.
+
+Second stack (Group Normalization, above caption box 1):
+- 3D cube stack; front face mostly red/salmon with one blue/cyan channel group on the left; top cubes gray/dark; behind slabs in yellow, green, blue.
+- Highlight pattern: a contiguous group of channels highlighted (blue group + red group), i.e., channel-group highlighting typical of Group Norm.
+
+Third stack (Instance Normalization, above caption box 2):
+- 3D cube stack; front face purple/magenta cubes with one orange/red channel column region on the right; top cubes gray; behind slabs yellow, green, blue.
+- Highlight pattern: single-channel slabs highlighted per sample, typical of Instance Norm.
+
+Fourth stack (Layer Normalization, enclosed in a red rectangular outline box, above caption box 3):
+- 3D cube stack; entire front face magenta/purple (all channels highlighted together); behind slabs yellow, green, blue, orange; gray cubes on top/right depth.
+- Labeled axes with double-headed arrows: vertical arrow "Feature Vector" (left), horizontal arrow "Channels" (below front face), diagonal arrow "Batch size" (along depth, right side).
+- The red rectangle border groups this stack and its axis labels as the emphasized case (Layer Norm = the Transformer choice).
+
+Arrow/flow semantics: no directed data-flow arrows between the four stacks; all arrows are double-headed axis indicators (Channels, Samples, Feature Vector, Batch size). Reading order is left to right: reference volume â Group Norm â Instance Norm â Layer Norm, with caption boxes beneath stacks 2, 3, 4 respectively.
+
+5. NUMBERS/DATA
+- Badge numeral: 44.
+- No tables, percentages, dimensions, or other numeric values on the slide.
+
+6. BUILD STATE / ARTIFACTS
+- Slide appears fully built (all caption boxes, arrows, and the "Transformer choice" oval present simultaneously).
+- A white mouse-cursor arrow is visible on the front red face of the leftmost cube stack (video-capture artifact).
+- Slight black edge strips at the very top and bottom of the frame (video letterboxing/rendering edges of the 960x540 still).
+- Red rectangle around the Layer Normalization stack is a static emphasis border, not a mid-reveal animation.
+- No other overlays, watermarks, or progress indicators visible.

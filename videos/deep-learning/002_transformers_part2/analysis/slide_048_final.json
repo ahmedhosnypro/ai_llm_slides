@@ -1,0 +1,245 @@
+{
+  "slide_title": "Encoder Block",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Block Output",
+      "Encoder Block",
+      "Block Input",
+      "Layer Normalization (NOT Batch N[?orm)]",
+      "Layer Normalization (NOT Batch N[?orm)]",
+      "Feed Forward Networks [ One Hidden wi[?th...]]",
+      "MLP",
+      "MLP",
+      "MLP",
+      "MLP",
+      "MLP",
+      "MLP",
+      "Multi Head Self Attention",
+      "Y\u2081",
+      "Y\u2082",
+      "Y\u2083",
+      "Y\u2084",
+      "Y\u2086",
+      "Y_{N-1}",
+      "Y_N",
+      "X\u2081",
+      "X\u2082",
+      "X\u2083",
+      "X\u2084",
+      "X\u2086",
+      "X_{N-1}",
+      "X_N",
+      "Add & Norm",
+      "Feed Forward",
+      "Add & Norm",
+      "Multi-Head Attention",
+      "V",
+      "K",
+      "Q",
+      "Transformer Encoder",
+      "Encoder",
+      "Inputs",
+      "49"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Full-bleed architecture diagram slide with no bullet text: red-bordered tag 'Block Output' at top-left, large vertical red title 'Encoder Block' running up the left edge, red-bordered tag 'Block Input' at bottom-left; a large light-orange panel (~8%-95% width, ~8%-97% height, thin red border) contains the bottom-to-top encoder flowchart of 11 stacked layers; a white inset panel with thick green border overlaps the right third (~62%-93% width, ~12%-90% height) showing a simplified encoder sub-block; a tiny green-bordered thumbnail inset labeled 'Transformer Encoder' sits at bottom-left overlapping the main panel; a yellow circular slide-number badge '49' at top-right corner.",
+    "regions": [
+      {
+        "name": "Block Output tag",
+        "position": "top-left, ~1%-18% width, ~8%-14% height",
+        "content": "White rectangle, red border, bold red text 'Block Output'"
+      },
+      {
+        "name": "Block Input tag",
+        "position": "bottom-left, ~1%-18% width, ~91%-97% height (reconstructed by symmetry with the Block Output tag)",
+        "content": "White rectangle, red border, bold red text 'Block Input'"
+      },
+      {
+        "name": "Vertical title",
+        "position": "left edge, ~3%-9% width, ~20%-80% height",
+        "content": "Large bold red text 'Encoder Block' rotated 90\u00b0 counterclockwise (reads bottom-to-top)"
+      },
+      {
+        "name": "Main encoder diagram",
+        "position": "center, ~8%-95% width, ~8%-97% height",
+        "content": "Light-orange panel with 11 stacked layers from X input tokens at bottom to Y output tokens at top, orange arrows, dashed residual-skip outlines, red plus circles, tan Layer-Normalization bars, maroon attention bar, pink MLP boxes"
+      },
+      {
+        "name": "Right inset panel",
+        "position": "right, ~62%-93% width, ~12%-90% height",
+        "content": "White rounded panel, thick green border: V/K/Q red circles -> Multi-Head Attention -> Add & Norm -> Feed Forward -> Add & Norm, black arrows plus a black residual loop on the left"
+      },
+      {
+        "name": "Thumbnail inset",
+        "position": "bottom-left, ~6%-16% width, ~77%-90% height",
+        "content": "Miniature 'Transformer Encoder' diagram: gray 'Encoder' box, up arrow, 'Inputs' label"
+      },
+      {
+        "name": "Slide number",
+        "position": "top-right, ~91%-98% width, ~10%-17% height",
+        "content": "Yellow circle with red bold '49'"
+      },
+      {
+        "name": "Ellipsis dots",
+        "position": "top-right (~55%-62% width, ~11% height) and bottom-right (~55%-62% width, ~92% height)",
+        "content": "Five blue dots (top) and five green dots (bottom) indicating token-sequence continuation"
+      }
+    ],
+    "hierarchy": "The orange encoder diagram dominates by area; the bright green/yellow right inset is the second focal point; the large red vertical 'Encoder Block' title is third; red tag labels and small token labels are subordinate. Yellow 'Multi Head Self Attention' on maroon and the green 'Add & Norm' boxes are the highest-contrast text elements."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "Main Encoder Block diagram, data flows bottom-to-top. From bottom: (1) row of input token boxes labeled X\u2081 (blue), X\u2082 (yellow), X\u2083 (pink), X\u2084 (blue), ..., X\u2086, ..., X_{N-1}, X_N \u2014 each a small rectangle of colored segments with red letter+subscript; (2) full-width maroon bar with bold yellow text 'Multi Head Self Attention'; (3) row of small Y token boxes; (4) row of ~7 red circles containing white plus signs (\u2295), wrapped by a dashed orange rounded outline (residual skip connection looping from the X row below); (5) full-width tan bar with italic dark-red text 'Layer Normalization (NOT Batch N[?orm)]'; (6) row of small Y token boxes; (7) italic dark-red label 'Feed Forward Networks [ One Hidden wi[?th...]]' above a purple-bordered row of 6 visible pink MLP boxes, each containing ~8 green dots (neurons) and the tiny text 'MLP' (a 7th may be hidden behind the inset); (8) row of small Y token boxes; (9) second row of ~7 red \u2295 circles with dashed orange residual outline; (10) second tan bar 'Layer Normalization (NOT Batch N[?orm)]'; (11) top row of output token boxes Y\u2081, Y\u2082, Y\u2083, Y\u2084, ..., Y\u2086, ..., Y_{N-1}, Y_N. Orange upward arrows connect every pair of adjacent layers; dashed orange lines carry residual connections around the \u2295 rows. Five blue ellipsis dots sit between Y\u2086 and Y_{N-1} at top; five green ellipsis dots between X\u2086 and X_{N-1} at bottom.",
+      "colors": [
+        "#FBE3C6",
+        "#CC0000",
+        "#FFFFFF",
+        "#E87722",
+        "#7E2D5B",
+        "#FFE94A",
+        "#D9B779",
+        "#8B0000",
+        "#FF9FC5",
+        "#00A651",
+        "#9B2D86",
+        "#2E75B6",
+        "#FFE135",
+        "#0033CC",
+        "#00CC66"
+      ],
+      "position": "center of slide, occupying almost the entire canvas"
+    },
+    {
+      "type": "flowchart",
+      "description": "Right inset: simplified encoder sub-block on a white rounded panel with thick green border. From bottom to top: three red circles with white letters V (left), K (center), Q (right); K has a vertical line running down to the panel's bottom edge; black arrows from V and Q curve up into the bottom of a tan two-line box 'Multi-Head Attention'; black arrow up into a light-green rounded box 'Add & Norm'; black arrow up into a yellow two-line box 'Feed Forward'; black arrow up into a second light-green rounded box 'Add & Norm'; a line exits from the top 'Add & Norm' through the panel top. A thick black rounded-rectangle residual path runs up the left side of the panel from below 'Multi-Head Attention' into the top 'Add & Norm' (skip connection).",
+      "colors": [
+        "#FFFFFF",
+        "#00A000",
+        "#CC0000",
+        "#DEC28B",
+        "#90EE90",
+        "#2E7D32",
+        "#E3EF3F",
+        "#808080",
+        "#000000"
+      ],
+      "position": "right third of slide, overlapping and truncating the main diagram's right side"
+    },
+    {
+      "type": "diagram",
+      "description": "Tiny thumbnail inset: white box with green border, small dark-green title 'Transformer Encoder'; inside, a small gray rounded box labeled 'Encoder' with a short black arrow pointing up out of it, the word 'Inputs' in tiny text below the box, and a small curved connector arrow on the left.",
+      "colors": [
+        "#FFFFFF",
+        "#00A000",
+        "#BFBFBF",
+        "#000000"
+      ],
+      "position": "bottom-left, overlapping the main orange panel above the 'Block Input' tag"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: yellow filled circle with bold red number '49', outlined thinly.",
+      "colors": [
+        "#FFFF00",
+        "#CC0000"
+      ],
+      "position": "top-right corner, partially overlapping the main panel's top-right"
+    },
+    {
+      "type": "other",
+      "description": "Two rows of five small filled circular dots used as ellipses/continuation markers: blue dots on top row, green dots on bottom row.",
+      "colors": [
+        "#0033CC",
+        "#00CC66"
+      ],
+      "position": "top-right and bottom-right of the main diagram, just left of the inset panel"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; all visuals are flat vector shapes (rounded rectangles, circles, arrows, dots) in a hand-styled lecture-diagram aesthetic.",
+    "MLP neuron clusters: each pink Feed-Forward box contains a row of ~8 small green filled circles representing neurons, with tiny 'MLP' caption."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#CC0000",
+    "body_text": "#7E2D5B",
+    "accents": [
+      "#FBE3C6",
+      "#E87722",
+      "#7E2D5B",
+      "#FFE94A",
+      "#D9B779",
+      "#FF9FC5",
+      "#00A651",
+      "#90EE90",
+      "#E3EF3F",
+      "#DEC28B",
+      "#CC0000",
+      "#2E75B6",
+      "#FFE135",
+      "#0033CC",
+      "#00CC66",
+      "#FFFF00",
+      "#8B0000",
+      "#9B2D86",
+      "#00A000",
+      "#2E7D32",
+      "#808080",
+      "#BFBFBF",
+      "#000000"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Verdana-like). Vertical slide title 'Encoder Block' is the largest text (~36-40pt bold, red, rotated 90\u00b0 counterclockwise \u2014 PowerPoint 'Rotate all text 270\u00b0' \u2014 reading bottom-to-top). 'Block Output'/'Block Input' tags: ~14pt bold red inside red-outlined white boxes. Layer bar labels ('Layer Normalization\u2026', 'Feed Forward Networks\u2026') are bold-italic dark red (#8B0000) ~15-16pt. 'Multi Head Self Attention' is bold ~20pt yellow (#FFE94A) on maroon (#7E2D5B). Token letters (X, Y) are bold red with numeric subscripts. Right-inset box labels ~18-20pt: 'Add & Norm' dark green (#2E7D32) on light green (#90EE90), 'Feed Forward' gray (#808080) on yellow-green (#E3EF3F), 'Multi-Head Attention' black on tan (#DEC28B); V/K/Q white bold on red circles. Slide number '49' bold red in yellow circle.",
+  "animation_state": "Slide appears fully built \u2014 no mid-build reveal detected. Apparent text truncations ('Layer Normalization (NOT Batch N\u2026', 'Feed Forward Networks [ One Hidden wi\u2026') are caused by the overlapping right inset panel, not by animation.",
+  "recreation_brief": "1. Create a 16:9 slide with a white (#FFFFFF) background.\n2. Main panel: rounded rectangle spanning ~8%-95% width and ~8%-97% height; fill #FBE3C6; thin 2pt red (#CC0000) border.\n3. 'Block Output' tag: white rectangle with 2pt #CC0000 border and bold red (#CC0000) ~14pt text 'Block Output', placed top-left at ~1%-18% width, ~8%-14% height, overlapping the panel's top-left corner.\n4. 'Block Input' tag: identical style with text 'Block Input', placed bottom-left at ~1%-18% width, ~91%-97% height, overlapping the panel's bottom-left corner.\n5. Vertical title: bold red (#CC0000) ~40pt text 'Encoder Block' in a text box at ~3%-9% width, ~20%-80% height, rotated 270\u00b0 (PowerPoint 'Rotate all text 270\u00b0', i.e. 90\u00b0 counterclockwise) so it reads bottom-to-top; layer it above the panel.\n6. Inside the panel, stack 11 layers bottom-to-top with roughly equal vertical spacing and connect every pair of adjacent layers with a thin orange (#E87722) upward arrow (10 arrow gaps total).\n7. Layer 1 (bottom): 7 small token rectangles left-to-right labeled X\u2081, X\u2082, X\u2083, X\u2084, X\u2086, X_{N-1}, X_N (bold red #CC0000 letters with numeric subscripts); fills: X\u2081 #2E75B6, X\u2082 #FFE135, X\u2083 #FF9FC5, X\u2084 #2E75B6, then continue the same blue/yellow/pink cycle for X\u2086, X_{N-1}, X_N; between X\u2086 and X_{N-1} add a horizontal cluster of 5 green (#00CC66) dots at ~55%-62% width, ~92% height.\n8. Layer 2: full-width maroon (#7E2D5B) bar with bold yellow (#FFE94A) ~20pt text 'Multi Head Self Attention'.\n9. Layer 3: row of 7 small token boxes matching the X-row size, spacing and color cycle (source describes them as 'small Y token boxes'; no individual labels specified).\n10. Layer 4: row of 7 red (#CC0000) circles, each containing a white '+' (\u2295), wrapped in a dashed orange (#E87722) rounded outline.\n11. Layer 5: full-width tan (#D9B779) bar with bold-italic dark-red (#8B0000) ~15pt text 'Layer Normalization (NOT Batch Norm)'; the source shows it truncated to 'Layer Normalization (NOT Batch N\u2026' where the right inset (step 20) occludes it \u2014 write the full string and let the inset cover the right end.\n12. Layer 6: row of 7 small token boxes as in step 9.\n13. Layer 7 label: bold-italic dark-red (#8B0000) text 'Feed Forward Networks [ One Hidden wi\u2026' placed above the MLP row; the source string is cut off after 'wi' by the inset panel (step 20) \u2014 write at least 'Feed Forward Networks [ One Hidden wi' and let the inset cover the remainder (continuation uncertain, see validation.uncertain_items).\n14. Layer 7 boxes: row of 6 pink (#FF9FC5) boxes with purple (#9B2D86) borders, each containing a row of 8 small green (#00A651) filled dots and tiny 'MLP' text; optionally continue a 7th box behind the inset.\n15. Layer 8: row of 7 small token boxes as in step 9.\n16. Layer 9: second row of 7 red (#CC0000) \u2295 circles wrapped in a dashed orange (#E87722) rounded outline.\n17. Layer 10: second full-width tan (#D9B779) bar with the same bold-italic #8B0000 text 'Layer Normalization (NOT Batch Norm)' (right end occluded by the inset as in step 11).\n18. Layer 11 (top): 7 output token boxes labeled Y\u2081, Y\u2082, Y\u2083, Y\u2084, Y\u2086, Y_{N-1}, Y_N in the X-row style; between Y\u2086 and Y_{N-1} add a horizontal cluster of 5 blue (#0033CC) dots at ~55%-62% width, ~11% height.\n19. Residual skip connections: dashed orange (#E87722) lines from the X row (layer 1) up the side into the layer-4 \u2295 outline, and from the layer-6 token row (the Feed-Forward input row) up the side into the layer-9 \u2295 outline.\n20. Right inset panel, drawn ON TOP of the main panel: white rounded rectangle at ~62%-93% width, ~12%-90% height with a thick green (#00A000) ~4pt border; it must occlude the right ends of the full-width bars, the layer-7 label after 'wi', and any 7th MLP box.\n21. Inside the inset, bottom: three red (#CC0000) circles with bold white letters V (left), K (center), Q (right); draw a black vertical line from K down to the panel's bottom edge.\n22. Black curved arrows from the V and Q circles up into the bottom of a tan (#DEC28B) box labeled 'Multi-Head Attention' (black ~18pt, two lines).\n23. Black arrow up from 'Multi-Head Attention' into a light-green (#90EE90) rounded box with dark-green (#2E7D32) text 'Add & Norm'.\n24. Black arrow up into a yellow (#E3EF3F) box with gray (#808080) text 'Feed Forward' (two lines).\n25. Black arrow up into a second light-green (#90EE90) rounded box with dark-green (#2E7D32) text 'Add & Norm'.\n26. Black line from the top 'Add & Norm' exiting upward through the panel's top edge.\n27. Thick black rounded residual path up the inset's left side, from below 'Multi-Head Attention' into the top 'Add & Norm'.\n28. Thumbnail inset, drawn above the main panel: small white box with green (#00A000) border at ~6%-16% width, ~77%-90% height; tiny dark-green title 'Transformer Encoder'; inside: gray (#BFBFBF) rounded box labeled 'Encoder', a short black arrow pointing up out of it, tiny 'Inputs' text below the box, and a small curved black connector arrow on the left.\n29. Slide-number badge, topmost: yellow (#FFFF00) filled circle with a thin outline (outline color unspecified in source) and bold red (#CC0000) '49', at ~91%-98% width, ~10%-17% height, overlapping the main panel's top-right corner.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Added the missing layout.regions entry 'Block Input tag' (bottom-left, ~1%-18% width, ~91%-97% height; white rectangle, red border, bold red text 'Block Input') \u2014 the tag was described in layout.arrangement and recreation_brief but had no regions entry.",
+      "Corrected the 'Main encoder diagram' region from '13 stacked layers' to '11 stacked layers' to match the 11 layers enumerated in visual_elements (X row; Multi Head Self Attention bar; Y row; \u2295 row; Layer Normalization bar; Y row; Feed-Forward label + MLP row; Y row; \u2295 row; Layer Normalization bar; Y output row).",
+      "Fixed the recreation_brief token-row count from '8 small token rectangles' to 7, matching the 7 extracted X labels (X\u2081, X\u2082, X\u2083, X\u2084, X\u2086, X_{N-1}, X_N).",
+      "Disambiguated the ellipsis dots: exactly one cluster of 5 green (#00CC66) dots between X\u2086 and X_{N-1} (bottom, ~55%-62% width, ~92% height) and one cluster of 5 blue (#0033CC) dots between Y\u2086 and Y_{N-1} (top, ~55%-62% width, ~11% height), replacing the ambiguous 'dots in the gaps'.",
+      "Added the second occurrence of 'Layer Normalization (NOT Batch N[?orm)]' to verbatim_text.labels \u2014 visual_elements states both tan bars carry this label (labels count 37 \u2192 38).",
+      "Expanded colors.accents with the 7 hex values used in visual_elements but missing from the palette: #8B0000, #9B2D86, #00A000, #2E7D32, #808080, #BFBFBF, #000000.",
+      "Kept the [?] markers on the two occluded labels and listed their reconstructed completions in validation.uncertain_items; the rewritten recreation_brief reproduces the truncation by layering the right inset panel over the text ends instead of silently inventing hidden wording.",
+      "verbatim_text.bullets intentionally left empty: layout.arrangement explicitly states 'no bullet text' \u2014 this diagram-only slide genuinely has no bullets (not a schema gap).",
+      "subtitle_or_header kept null: no subtitle or header text exists on the slide (truly absent from the source).",
+      "Rewrote recreation_brief as a 29-step ordered checklist placing one element per step, adding previously missing details: the curved black arrows from V and Q into 'Multi-Head Attention', the K stem line to the panel bottom, the thumbnail's curved connector arrow, the badge's thin outline, explicit z-order (inset/thumbnail/badge above the main panel), the 10 inter-layer orange arrows, and the two dashed residual paths.",
+      "Specified the 3 intermediate Y-token rows as 7 boxes each, matching the X-row styling and spacing (count inferred from the X row; flagged in uncertain_items).",
+      "Harmonized the title-rotation wording: typography_notes' 'rotated 90\u00b0 counterclockwise' and the brief's 'rotated 270\u00b0' describe the same bottom-to-top reading; both now reference PowerPoint 'Rotate all text 270\u00b0'."
+    ],
+    "uncertain_items": [
+      "'Layer Normalization (NOT Batch N[?orm)]': the right end is occluded by the right inset panel; completion reconstructed as '(NOT Batch Norm)' \u2014 the characters after 'N' are marked [?] in the source.",
+      "'Feed Forward Networks [ One Hidden wi[?th...]]': the right end is occluded by the right inset panel; continuation beyond 'wi' (likely 'th \u2026') is unverifiable.",
+      "Count of red \u2295 circles per residual row is approximate in the source ('~7'); the brief uses 7.",
+      "Count of green neuron dots per MLP box is approximate ('~8'); the brief uses 8.",
+      "A 7th pink MLP box may be hidden behind the right inset panel (6 boxes and 6 'MLP' labels are visible).",
+      "X\u2085 and Y\u2085 are absent from the extracted labels; whether those boxes are occluded by the inset or simply skipped in the token sequence is unverifiable.",
+      "The 3 intermediate Y-token rows are described only as 'small Y token boxes'; their individual labels and exact box counts are not extractable (7 per row assumed from the X row).",
+      "Vertical bounds of the 'Block Input' tag (~91%-97% height) were reconstructed by symmetry with the 'Block Output' tag.",
+      "Outline color of the slide-number badge is unspecified in the source ('outlined thinly')."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_048.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 48,
+      "image": "slide_048.jpg",
+      "kept_frame": "frame_03981.jpg",
+      "start_sec": 3900.0,
+      "end_sec": 3980.0,
+      "frame_count": 81,
+      "old_slide": 116
+    },
+    "elapsed_s": 285.9,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1072.1
+  }
+}

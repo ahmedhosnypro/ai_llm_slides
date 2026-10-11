@@ -1,0 +1,162 @@
+{
+  "slide_title": "Self Attention Look Ahead Mask",
+  "subtitle_or_header": "(Used in  Decoder first Block )",
+  "verbatim_text": {
+    "bullets": [
+      "Mask Values are ADDED to Masked (Scaled) Values",
+      "Addition of \"0\" does not change the original values, consequently no effect on Softmax output",
+      "Addition of \"-inf\" gets \"Zero\" output of Softmax, leaving zero attention scores for future Words."
+    ],
+    "labels": [
+      "53",
+      "Softmax",
+      "SOS",
+      "Je",
+      "me",
+      "sens",
+      "malade",
+      "SOS (column header, tilted)",
+      "Je (column header, tilted)",
+      "me (column header, tilted)",
+      "sens (column header, tilted)",
+      "malade (column header, tilted)"
+    ],
+    "equations": [
+      "\u03c3(x_j) = e^{x_j} / \u03a3_i e^{x_i}   (LaTeX: \\sigma(x_j) = \\frac{e^{x_j}}{\\sum_i e^{x_i}})",
+      "Mask matrix (rows = query words, columns = key words): SOS: [0, -\u221e, -\u221e, -\u221e, -\u221e]; Je: [0, 0, -\u221e, -\u221e, -\u221e]; me: [0, 0, 0, -\u221e, -\u221e]; sens: [0, 0, 0, 0, -\u221e]; malade: [0, 0, 0, 0, 0]"
+    ]
+  },
+  "layout": {
+    "arrangement": "White slide with a thin red rectangular border frame inset from the gray video background. Two-line red/blue title top-center. Yellow circular slide-number badge top-right corner. Softmax label + boxed equation top-right below the badge. Large blue-bordered diagram container in the center holding a 5x5 look-ahead-mask matrix with tilted column headers above and green row-label chips at its left; a dark-blue block arrow points at the matrix from the left margin. Full-width blue-bordered statement box near the bottom, followed by two lines of explanatory text below it. Thin black strip along the very bottom edge (video player chrome).",
+    "regions": [
+      {
+        "name": "Title block",
+        "position": "top-center, ~25%-65% width, ~10%-20% height",
+        "content": "Line 1: 'Self Attention Look Ahead Mask' in bold red; Line 2: '(Used in  Decoder first Block )' with red parentheses/'Used in' and blue 'Decoder first Block'"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top-right, ~89%-93% width, ~10%-16% height",
+        "content": "Yellow circle with red outline containing '53' in red"
+      },
+      {
+        "name": "Softmax callout",
+        "position": "top-right, ~75%-93% width, ~19%-36% height",
+        "content": "Red 'Softmax' text above a white black-bordered box containing the softmax equation \u03c3(x_j) = e^{x_j} / \u03a3_i e^{x_i}"
+      },
+      {
+        "name": "Mask matrix diagram",
+        "position": "center, ~34%-74% width, ~20%-76% height",
+        "content": "Blue-bordered white container: five 45\u00b0-tilted light-green column-header tags (SOS, Je, me, sens, malade), five light-green rounded row-label chips (SOS, Je, me, sens, malade), and a red-bordered 5x5 matrix split by a diagonal into a green lower-left triangle of 0s and a brown upper-right triangle of -\u221e values"
+      },
+      {
+        "name": "Blue block arrow",
+        "position": "left-center, ~31%-35% width, ~52%-57% height",
+        "content": "Solid dark-blue right-pointing block arrow aimed at the row labels/matrix"
+      },
+      {
+        "name": "Key statement box",
+        "position": "bottom, ~7%-92% width, ~77%-85% height",
+        "content": "White box with blue border: 'Mask Values are ADDED to Masked (Scaled) Values' in bold blue with 'ADDED' underlined"
+      },
+      {
+        "name": "Explanatory lines",
+        "position": "bottom, ~7%-92% width, ~85%-94% height",
+        "content": "Two bold lines explaining the effect of adding 0 vs -inf before Softmax"
+      },
+      {
+        "name": "Bottom black strip",
+        "position": "very bottom edge, 0-100% width, ~95%-100% height",
+        "content": "Solid black bar (video player chrome, plus small black square at bottom-left corner) \u2014 not slide content"
+      }
+    ],
+    "hierarchy": "The 5x5 mask matrix diagram dominates the slide visually (largest area, center). The red bold title is the largest text. The softmax equation box and blue statement box are secondary anchors (top-right and bottom). Explanatory lines are smaller bold text. Row/column word labels are smallest."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Blue-bordered white rectangular container (~37% slide width) enclosing the whole mask diagram. Above the matrix: five light-green parallelogram tags rotated ~45\u00b0 reading (left to right) 'SOS', 'Je', 'me', 'sens', 'malade' in red bold text. Left of the matrix: five light-green rounded-rectangle chips stacked vertically reading (top to bottom) 'SOS', 'Je', 'me', 'sens', 'malade' in red bold text.",
+      "colors": [
+        "#0000CC",
+        "#FFFFFF",
+        "#DCF5DC",
+        "#C00000"
+      ],
+      "position": "center of slide, ~34%-74% width, ~20%-76% height"
+    },
+    {
+      "type": "table",
+      "description": "5x5 look-ahead mask matrix inside a red-bordered rounded rectangle. Columns (left\u2192right): SOS, Je, me, sens, malade. Rows (top\u2192bottom): SOS, Je, me, sens, malade. Cell values: Row SOS = [0, -\u221e, -\u221e, -\u221e, -\u221e]; Row Je = [0, 0, -\u221e, -\u221e, -\u221e]; Row me = [0, 0, 0, -\u221e, -\u221e]; Row sens = [0, 0, 0, 0, -\u221e]; Row malade = [0, 0, 0, 0, 0]. Lower-left triangle (including diagonal) filled mint green with each value in a small light-yellow box, value '0' in dark navy bold. Upper-right triangle filled muted brown/mauve with each '-\u221e' in a small light-yellow box, value in red bold. A thin dark diagonal line runs from the matrix's top-left corner to bottom-right corner separating the two triangles.",
+      "colors": [
+        "#C00000",
+        "#DCF5DC",
+        "#A87C7C",
+        "#FFFFCC",
+        "#1F1F1F",
+        "#C00000"
+      ],
+      "position": "center, right half of the diagram container, ~46%-71% width, ~37%-73% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Softmax formula box: white rectangle with ~2pt black border containing the equation \u03c3(x_j) = e^{x_j} / \u03a3_i e^{x_i} in black italic serif (equation-editor style), with red 'Softmax' label text just above the box.",
+      "colors": [
+        "#FFFFFF",
+        "#000000",
+        "#C00000"
+      ],
+      "position": "top-right, ~75%-93% width, ~19%-36% height"
+    },
+    {
+      "type": "arrow",
+      "description": "Solid dark-blue right-pointing block arrow pointing at the matrix row labels.",
+      "colors": [
+        "#0000CC"
+      ],
+      "position": "left of the diagram container, vertically centered on the matrix (~54% height)"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Bottom statement box: wide white rectangle with ~2.5pt blue border containing 'Mask Values are ADDED to Masked (Scaled) Values' in bold blue, with the word 'ADDED' underlined.",
+      "colors": [
+        "#FFFFFF",
+        "#0000CC"
+      ],
+      "position": "bottom, ~7%-92% width, ~77%-85% height"
+    }
+  ],
+  "imagery": [
+    "No photos or illustrations. Only a mouse-cursor arrow (white with black outline, screen-recording overlay) sitting on the right edge of the matrix at roughly 70% width / 52% height.",
+    "Black horizontal strip across the very bottom edge plus a small black square at the bottom-left corner \u2014 video player chrome, not slide artwork."
+  ],
+  "colors": {
+    "background": "#E6E6E6 (outer video letterbox); slide face #FFFFFF",
+    "title_text": "#C00000",
+    "body_text": "#1F1F1F (dark navy-black); blue text #0000CC",
+    "accents": [
+      "#C00000 (red titles/borders/-\u221e values)",
+      "#0000CC (blue subtitle words, arrow, box border)",
+      "#DCF5DC (mint green labels/lower triangle)",
+      "#A87C7C (mauve upper triangle)",
+      "#FFFFCC (yellow value chips)",
+      "#FFFF99 (yellow slide-number badge)"
+    ]
+  },
+  "typography_notes": "Sans-serif (Arial/Calibri-like) throughout, except the softmax equation which is italic serif (Cambria Math style). Title ~28pt bold red; subtitle ~22-24pt bold, two-color (red parentheses/'Used in', blue 'Decoder first Block'). Bottom box text ~18pt bold blue with 'ADDED' underlined. Explanatory lines ~15-16pt bold, mixed red and dark navy with 'future' underlined in red. Matrix values ~12-14pt bold; '0' dark navy, '-\u221e' red. Word labels all bold red; 'SOS' and 'ADDED' are all-caps. Column headers rotated ~45\u00b0.",
+  "animation_state": "Slide appears fully built \u2014 no mid-build bullets or revealed layers. A mouse cursor overlays the matrix's right edge (screen-recording artifact), and the bottom black strip is video player chrome.",
+  "recreation_brief": "1. Set the slide background white; place a light-gray (#E6E6E6) rectangle behind everything if mimicking the video frame, and draw a thin red (#C00000) rectangle border inset ~6% from all slide edges. 2. Insert a top-center text box with two lines: 'Self Attention Look Ahead Mask' (Arial ~28pt bold, #C00000) and '(Used in  Decoder first Block )' (~22pt bold: parentheses and 'Used in' in #C00000, 'Decoder first Block' in #0000CC). 3. Top-right corner: draw a ~0.9cm yellow (#FFFF99) circle with red outline containing '53' in red bold. 4. Below it, type 'Softmax' in red bold; beneath it draw a white rectangle with a 2pt black border and insert the equation \u03c3(x_j) = e^{x_j} / \u03a3_i e^{x_i} using PowerPoint's equation editor (italic serif, black). 5. Center: draw a large white rectangle with a 2pt blue (#0000CC) border (~37% slide width, ~55% height) as the diagram container. 6. Inside, above the matrix area, add five light-green (#DCF5DC) parallelogram shapes rotated 45\u00b0 labeled left-to-right 'SOS', 'Je', 'me', 'sens', 'malade' (red bold text). 7. Left of the matrix area, stack five light-green rounded rectangles labeled top-to-bottom 'SOS', 'Je', 'me', 'sens', 'malade' (red bold). 8. Draw the matrix: a rounded rectangle with a red (#C00000) border; fill its lower-left triangle mint green (#DCF5DC) and upper-right triangle mauve (#A87C7C); draw a thin dark diagonal line from its top-left to bottom-right corner. 9. Overlay a 5x5 grid of 25 small light-yellow (#FFFFCC) squares with thin dark outlines. Type '0' (dark navy bold) in the 15 lower-triangle cells (including the diagonal) and '-\u221e' (red bold) in the 10 upper-triangle cells so the rows read: SOS [0,-\u221e,-\u221e,-\u221e,-\u221e]; Je [0,0,-\u221e,-\u221e,-\u221e]; me [0,0,0,-\u221e,-\u221e]; sens [0,0,0,0,-\u221e]; malade [0,0,0,0,0]. 10. Left of the container, add a solid dark-blue (#0000CC) right-pointing block arrow at mid-height. 11. Bottom: draw a full-width white rectangle with a 2.5pt blue border containing 'Mask Values are ADDED to Masked (Scaled) Values' (bold blue #0000CC, 'ADDED' underlined). 12. Directly below, add two bold text lines: 'Addition of \"0\" does not change the original values, consequently no effect on Softmax output' (with 'Addition of \"0\"' and 'no effect on Softmax output' in red, remainder dark navy) and 'Addition of \"-inf\" gets \"Zero\" output of Softmax, leaving zero attention scores for future Words.' (with 'Addition of \"-inf\"' in red bold and 'future' in red underlined, remainder dark navy). 13. Omit the bottom black strip and mouse cursor \u2014 they are video-recording artifacts, not slide content.",
+  "_meta": {
+    "frame": "slide_053.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 53,
+      "image": "slide_053.jpg",
+      "kept_frame": "frame_04681.jpg",
+      "start_sec": 4555.0,
+      "end_sec": 4680.0,
+      "frame_count": 126,
+      "old_slide": 133
+    },
+    "elapsed_s": 298.4
+  }
+}

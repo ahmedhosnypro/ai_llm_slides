@@ -1,0 +1,36 @@
+PASS A1 inheritance diff confined to delta zones — 0 diff px outside blue-box+badge zones
+PASS A2 delta zones actually differ — 32514 diff px inside delta zones (blue box + numeral 35)
+PASS A3 blue-box diff bbox ≈ measured box — diff bbox x 838..1911 y 252..509 (expect ~840..1910 / 254..507)
+PASS B1 content inside house panel — content ink x 97..1906 y 109..1079; panel x 87..1913 y 93..
+PASS E1 exactly 4 text bands in callout — 4 text bands [(275, 310), (323, 358), (415, 450), (460, 495)]; corner-arc bands [(260, 264), (498, 500)]
+FAIL B2 delta text inside blue box — text x 844..1906 y 275..495 vs border path x 840..1909 y 254..507
+FAIL B3 text clearance to blue box border >= 8px@150 (≈4pt) — clearances L 4 R 3 T 21 B 12 px@150 (1px=0.48pt)
+PASS C eq/concept_eq_large ink present — 1084 dark px in region
+PASS C eq/concept_eq_small ink present — 421 dark px in region
+PASS C eq/header_eq ink present — 2198 dark px in region
+PASS C eq/xi_matrix ink present — 2069 dark px in region
+PASS C eq/header_xi ink present — 1246 dark px in region
+PASS C eq/concept_eq_large identical to parent — 0 differing px
+PASS C eq/concept_eq_small identical to parent — 0 differing px
+PASS C eq/header_eq identical to parent — 0 differing px
+PASS C eq/xi_matrix identical to parent — 0 differing px
+PASS C eq/header_xi identical to parent — 0 differing px
+PASS D paren in_l ink present spanning stack — 591 dark px in col band y361..481
+PASS D paren in_r ink present spanning stack — 469 dark px in col band y361..481
+PASS D paren out_l ink present spanning stack — 530 dark px in col band y361..481
+PASS D paren out_r ink present spanning stack — 525 dark px in col band y361..481
+PASS D paren1 spans stack — stack y 769..994 vs paren y 752..1009 (@150)
+PASS E2 band0 y vs original ±8px — band y 275..310 vs expected 273..306
+FAIL E3 band0 ink x vs original ±8px — render x 1099..1621 vs orig 1067..1649
+PASS E2 band1 y vs original ±8px — band y 323..358 vs expected 319..354
+FAIL E3 band1 ink x vs original ±8px — render x 1159..1561 vs orig 1142..1586
+PASS E2 band2 y vs original ±8px — band y 415..450 vs expected 413..446
+FAIL E3 band2 ink x vs original ±8px — render x 1064..1657 vs orig 1030..1688
+PASS E2 band3 y vs original ±8px — band y 460..495 vs expected 459..490
+FAIL E3 band3 ink x vs original ±8px — render x 844..1906 vs orig 1126..1605
+PASS F1 callout fill ≈ D4E4FB — sample (212, 228, 251) vs (212,228,251)
+PASS F2 callout border navy — sample (0, 0, 128)
+FAIL G badge numeral ink bbox vs original ±8px — mine (18, 25, 56, 51, 491) vs orig (0, 1, 36, 36, 179) -> @150 (0, 2, 75, 75)
+FAIL G3 numeral shape matches original's '35' (IoU > 0.55) — IoU 0.16 (a wrong numeral like 34 would fall well below)
+PASS G2 numeral differs from parent's 34 — 323 differing px in badge zone
+SELFCHECK-1 OVERALL: FAIL

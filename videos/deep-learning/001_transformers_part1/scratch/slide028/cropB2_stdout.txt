@@ -1,0 +1,52 @@
+[info] context header injected: VIEW: Slide 028 self-check crop B (attempt 2, italic+mint fixes applied) — two new bottom callout boxes — render vs original | CAPTURE: IMG1=crop of 150dpi PPTX render; IMG2=same region of original lecture frame (both upscaled x2)
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 161439
+[warn] comparison :: images :: attempt 1: ABORT EmptyStreamError: empty content: no deltas — abort+retry 1/3
+[info] scratch/slide028/crops/B_boxes_render2.png, scratch/slide028/crops/B_boxes_orig.png: transcript written (validated winner, atomic): recreated_pptx/qa/slide028/crop_compare_B2.txt (pid 161439)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== scratch/slide028/crops/B_boxes_render2.png, scratch/slide028/crops/B_boxes_orig.png ===
+[winner] images (round 1, attempt 2)
+# Visual QA: Slide 028 crop B â attempt 2 render (IMG1) vs original lecture frame (IMG2)
+
+## 1. Verbatim text transcription
+
+**IMG1 (PPTX render crop):**
+- Top callout (white pill, green dashed border, green bold italic): `Sequential nature of the input is IGNORED`
+- Bottom-left callout (mint, green dashed border): token strip â a dark-red `X` with subscript at the far-left edge (subscript digit clipped/illegible, likely `Xâ`), and `Xâ` (dark red, subscript 3) on the third cell of the second token group
+- Bottom-right callout (mint, green dashed border): `Mitigated Later with` (dark-red bold, roman) / `Positional Encoder` (blue bold **italic**)
+- No other legible text; connectors are unlabeled dashed lines
+
+**IMG2 (original frame crop):**
+- Top callout: `Sequential nature of the input is IGNORED`
+- Bottom-left callout: clipped dark-red `X` with subscript at left edge (digit cut off), and `Xâ` (dark red) on the third cell of the second group
+- Bottom-right callout: `Mitigated Later with` / `Positional Encoder` (blue bold italic)
+- Identical wording, language, punctuation (no trailing periods anywhere in either image)
+
+## 2. Similarities
+
+- **Same three-region layout:** wide white pill top-center; small mint token-strip box bottom-left; mint two-line callout bottom-right; same relative positions.
+- **Same color semantics:** green bold-italic annotation text; dark-red bold line 1 + blue bold-italic line 2 in the right callout; dark-red X labels on pastel tokens.
+- **Mint fix confirmed:** both bottom callouts have the pale-mint fill with green dashed rounded borders â IMG1 now matches IMG2 (no leftover white/gray fills).
+- **Italic fix confirmed:** "Positional Encoder" is italic in IMG1, matching IMG2; "Mitigated Later with" is roman bold in both.
+- **Token strip structure:** two groups of small pastel cells (pale yellow, lavender, pink) with X-labels; the leftmost X is clipped by the crop edge in **both** images (crop artifact, not a render defect).
+- **Connectors:** both show a gray dashed curve entering from the top edge arcing down-right, plus a short dashed segment linking the token box toward the right callout.
+- **Background:** peach/cream slide surface with a gray off-slide band along the bottom in both.
+
+## 3. Differences
+
+- **Scale/alignment:** IMG1 content renders ~10â15% larger; IMG1 includes a wide gray vertical off-slide band along the right edge and a thicker bottom gray band, while IMG2 shows almost no gray on the right. The crop registration between the two differs slightly.
+- **Sharpness/weight:** IMG1 text and dashed borders are crisper and slightly heavier (vector render); IMG2 is softer with thinner dashed strokes and fainter connector lines (video-frame source).
+- **Token cell styling (most substantive mismatch):**
+  - IMG2 cells have thin dark outlines (pink/red) making cell boundaries explicit; IMG1 cells appear as flat borderless fills.
+  - The cell carrying `Xâ` is **white/very pale in IMG2** (dark-red label on light ground, high contrast) but appears **filled magenta/pink in IMG1** (label on similar-hued fill, lower contrast). This is a fidelity gap in the render.
+  - Cell widths/boundaries differ slightly between the two groups (IMG2's groups look marginally narrower with an extra visible division in the left group).
+- **Connector rendering:** IMG1's dashed curve is darker/thicker and exits through the right gray band; IMG2's curve is fainter and arcs down just left of the bottom-right callout. The short horizontal dashed segment from the token box fades out earlier in IMG1 than in IMG2.
+- **Defects:** No garbage strings, placeholders, wrong-language text, or text overlap in either image. The only clipping (left-edge X and left edge of the token box) is shared and caused by the crop, not the render.
+
+## 4. Verdict
+
+**IMG1 (the attempt-2 render) is better overall.** Concrete evidence: it is measurably sharper (clean vector text vs. soft video frame), both targeted fixes are verified â "Positional Encoder" is now italic and both bottom callouts now carry the mint fill with green dashed borders matching the original â and the layout, wording, and color coding reproduce IMG2 faithfully with no new defects.
+
+Two residual fidelity nits should be flagged for a potential attempt 3, both visible only in the token strip: (a) the `Xâ` cell is magenta-filled in IMG1 where the original shows a pale/white outlined cell, and (b) IMG1's token cells lack the thin outlines present in IMG2. Neither affects the callout boxes under review, so they are minor, but they are the only true render-vs-original mismatches in this crop.
+
+CROPB2_RC=0

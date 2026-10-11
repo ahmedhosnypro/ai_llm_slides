@@ -1,0 +1,31 @@
+# Visual QA Analysis
+
+## 1. Verbatim Text Transcription
+
+| Location | Text (as visible) |
+|---|---|
+| Top-right heading, line 1 | `Multi Head Self Attention of W` â **clipped mid-word at the right edge** |
+| Top-right heading, line 2 | `"Wide" Architecture` â with "Wide" highlighted in yellow; line runs to the right edge |
+| Center box | `Linear Transformation    [ T ]` with a blue subscript `dH` and a red superscript `d` on the closing bracket |
+| Small top box label (right of box) | `1*d` (red) |
+| Small top box interior | `Y` with subscript `2` (dark green/teal) |
+| Bottom pill, left side | `Concatenated Vector` (red), with `1*dH` below it (`1*` red, `dH` blue) |
+| Inside the five colored segments | Faint text resembling `Y` with subscript/superscript labels â **illegible due to very low contrast** |
+
+## 2. Layout
+
+- **Top edge:** A thin dark-red horizontal rule spans the full width of the crop. Below it, centered-left, is a small pale box with a blue border containing "Yâ", flanked by a red "1*d" label; a red arrow points up into this box from below. The top-right holds the two-line bold heading.
+- **Left edge:** The left end of the wide pill-shaped container sits near the left margin, containing the red "Concatenated Vector / 1*dH" labels.
+- **Right edge:** The heading text is cut off by the crop boundary; the right end of the pill container is close to (but appears within) the right edge.
+- **Center:** A tan rectangular box with a dark border reading "Linear Transformation [T]âdHâ^d". A red arrow runs upward from it to the small Yâ box.
+- **Bottom:** The wide pill container with a dark-red border and pale-yellow fill holds five side-by-side segments (left to right): dark orange/brown, dark gray/olive, bright yellow, light green, pale cream â each with dotted outlines and faint internal text. A red arrow points up from the pill to the Linear Transformation box. Several small red upward-pointing arrows sit below the pill, one under each segment, with their tails extending past the bottom edge.
+
+## 3. Visual Defects
+
+1. **Right-edge clipping:** The heading is cut mid-word after "of W" (presumably continuing beyond the crop). The second line `"Wide" Architecture` ends flush at the edge and may also be truncated.
+2. **Bottom-edge clipping:** The small red arrows beneath the pill are cut off â only their heads/upper shafts are visible.
+3. **Low-contrast/illegible text:** The labels inside all five colored segments of the concatenated vector are extremely faint (dark text on dark segments such as the orange and gray ones); they cannot be read reliably.
+4. **Cursor artifact:** A mouse-pointer icon (white arrow with dark outline) overlaps the left portion of the "Linear Transformation" box, partially covering the area near the "L".
+5. **No obvious placeholder/garbage strings or wrong-language text** is present; all legible text is in English with consistent mathematical notation.
+
+Note: the `*` in `1*d` and `1*dH` appears to be a multiplication/asterisk character as rendered; transcribed as seen.

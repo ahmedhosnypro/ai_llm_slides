@@ -1,0 +1,40 @@
+## Element-by-element comparison
+
+**Text content (verbatim):**
+- IMG1: "Vectors must be **normalized** / before calculate similarity / Their Lengths = 1"
+- IMG2: "Vectors must be **normalized** / before calculate similarity / Their Lengths = 1"
+- Match, including the preserved source typo "before calculate" (correctly not "fixed").Text color â lines 2 and 3:**
+- IMG1: "before calculate similarity" and "Their Lengths = 1" are rendered in **black/dark gray**; only "Vectors must be normalized" is blue.
+- IMG2: the **entire paragraph is blue/navy** â lines 2 and 3 are clearly the same dark-blue ink as line 1, not black. The bluish cast is uniform across all three lines and cannot be explained by chroma bleed from the border alone (the glyph interiors read navy at this scale, and the ink-band centers align with line 1's blue).
+- **Discrepancy: MAJOR, confidence high (~85%).** Lines 2â3 should be dark blue, not black.
+
+**Bold emphasis:**
+- "normalized" is bold + blue in both, same position at end of line 
+
+**Alignment & line pitch:**
+- All three lines center-aligned in both; line spacing proportions match; the earlier-measured ink-band centers align within ~2
+
+**Font/glyph shapes:**
+- Same humanist sans-serif in both; matching letterforms ("g", "y" descenders, "=" spacing). IMG1 glyphs are slightly crisper/heavier due to the 150dpi render, consistent with upscale of IMG2. size / containment:**
+- Text block occupies similar fraction of the box in both; comfortable padding from all borders; no overflow or clipping in
+
+**Border:**
+- IMG1: thick, saturated pure-blue (â0000FF) rectangle border.
+- IMG2: noticeably **thinner and lighter/muted blue** border.
+- Some of this is upscaling/rendering, but the thickness difference (~2Ã at matched scale) reads as real. **Discrepancy: MINOR-to-MAJOR, confidence medium (~65%).** Recommend checking the border weight/color token against the original.
+
+**Background:**
+- White in both.House-template chrome not applicable inside this callout region.)
+
+## Discrepancy list
+
+1. **MAJOR** â Lines 2â3 text color: black in IMG1 vs dark blue in IMG2. Confidence: high.
+2. **MINOR/MAJOR** â Border weight & hue: IMG1 border thicker and more saturated blue than IMG2. Confidence: medium.
+
+## Impact assessment
+
+The verbatim text, layout, alignment, and emphasis all match, but the body-text color difference is an element-level color error visible at a glance (two of three lines are the wrong ink color), and the border weight deviation compounds it.
+
+**CROP VERDICT: MISMATCH** for 'this region faithfully recreates the original'.
+
+Recommended fix: set lines 2â3 to the same dark blue as line 1, and verify/reduce the border stroke weight and blue tone to match the original callout.

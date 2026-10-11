@@ -1,0 +1,123 @@
+{
+  "slide_title": "Transformer Building Blocks",
+  "subtitle_or_header": "None - no subtitle or header text present on this slide",
+  "verbatim_text": {
+    "title": "Transformer Building Blocks",
+    "bullets": [],
+    "labels": [
+      "13"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Minimal section-title slide: a large light-gray content rectangle with a thin dark-red border sits inset on a white page background, occupying roughly 4%-96% horizontally and 8%-98% vertically. A single large bold red title is centered horizontally and slightly above vertical center inside the gray rectangle. A small yellow circular slide-number badge with purple outline sits in the top-right corner of the gray rectangle.",
+    "regions": [
+      {
+        "name": "Outer page margin",
+        "position": "full slide, thin white frame (~4% left/right, ~8% top, ~2% bottom)",
+        "content": "empty white background surrounding the gray content rectangle"
+      },
+      {
+        "name": "Content rectangle",
+        "position": "middle/center, ~4%-96% width, ~8%-98% height",
+        "content": "light gray panel with thin dark-red border; contains the title and the slide-number badge"
+      },
+      {
+        "name": "Title",
+        "position": "center, horizontally centered at ~50%, vertically at ~45-50% of slide",
+        "content": "large bold red text 'Transformer Building Blocks'"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top-right of gray rectangle, ~90-95% width, ~10-16% height",
+        "content": "yellow ellipse with purple border containing the number 13"
+      },
+      {
+        "name": "Cursor artifact",
+        "position": "just below the end of the title word 'Blocks', ~67% width, ~53% height",
+        "content": "small gray mouse-pointer arrow (screen-recording artifact, not slide content)"
+      }
+    ],
+    "hierarchy": "The red title overwhelmingly dominates (largest, boldest, most saturated element). The yellow number badge is the only other element, tiny by comparison. Everything else is empty gray space."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Large light-gray rectangle forming the slide's content panel, outlined with a thin (1-2px) dark-red/maroon border. No fill texture or gradient.",
+      "colors": [
+        "#E6E6E6",
+        "#990000"
+      ],
+      "position": "center, spanning nearly the full slide with a white margin around it"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: small ellipse/circle filled pale yellow with a purple outline, containing the dark number '13' centered inside.",
+      "colors": [
+        "#FFFF99",
+        "#9933CC",
+        "#333333"
+      ],
+      "position": "top-right corner inside the gray rectangle"
+    },
+    {
+      "type": "other",
+      "description": "Small gray mouse-cursor arrow overlapping just below the tail of the title text (recording artifact, not part of the slide design).",
+      "colors": [
+        "#888888"
+      ],
+      "position": "immediately below the 'ks' of 'Blocks'"
+    }
+  ],
+  "imagery": [
+    "No photos, illustrations, or decorative icons besides the small yellow slide-number badge; a stray mouse cursor appears near the title from the screen capture."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#CC0000",
+    "body_text": "#333333",
+    "accents": [
+      "#990000",
+      "#E6E6E6",
+      "#FFFF99",
+      "#9933CC"
+    ]
+  },
+  "typography_notes": "Title is a bold sans-serif (Arial/Helvetica-like), very large (~54-60pt range; use ~56pt), sentence case with capitalized words, colored bright red (#CC0000). The slide number '13' is a small dark sans-serif numeral (#333333). No italics, no all-caps, no bullet lists anywhere on the slide.",
+  "animation_state": "No mid-build state; this is a static section-divider/title slide with only the title and slide number visible. The mouse cursor near the title is a capture artifact, not an animation element.",
+  "recreation_brief": "1. Set the slide background to pure white (#FFFFFF); place nothing else on the background layer.\n2. Place the content panel: draw ONE rectangle at x=0.53in, y=0.60in, width=12.27in, height=6.75in on a 13.33in x 7.5in (16:9) slide - equivalent to spanning ~4%-96% of slide width and ~8%-98% of slide height; fill light gray #E6E6E6, outline dark red #990000 at ~1.5pt (thin, 1-2px), no shadow, no gradient, no texture.\n3. Place the title: ONE text box containing exactly 'Transformer Building Blocks' (sentence case), horizontally centered on the slide with its vertical center at ~45-50% of slide height; font Arial Bold ~56pt (within the source-stated 54-60pt range), color bright red #CC0000, single line, no bullets, no italics, no all-caps.\n4. Place the slide-number badge: ONE ellipse ~0.5in in diameter, centered at ~92% slide width and ~13% slide height (top-right inside the gray rectangle); fill pale yellow #FFFF99, outline purple #9933CC at ~1pt; center the text '13' inside it in Arial ~12pt, dark gray #333333.\n5. Add nothing else: no subtitle, no bullets, no labels other than '13', no photos, no icons, no equations, no decorative imagery.\n6. Do NOT draw the small gray (#888888) mouse-cursor arrow noted at ~67% width / ~53% height (just below the 'ks' of 'Blocks') - it is a screen-recording artifact, not slide content.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "subtitle_or_header was null; replaced with the explicit absence statement 'None - no subtitle or header text present on this slide' (subtitle is genuinely absent from the source; nothing was invented).",
+      "verbatim_text.bullets was empty; confirmed the slide genuinely contains no bullet text (title-only divider slide) and left it empty rather than inventing bullets.",
+      "Added verbatim_text.title = 'Transformer Building Blocks' so the verbatim-text block captures the slide's only body text, matching layout.regions[2] and the recreation brief.",
+      "Rewrote recreation_brief as a 6-step ordered checklist placing exactly one element per step (background, content rectangle, title, number badge) plus two explicit exclusion steps; added concrete inch coordinates (x=0.53in, y=0.60in, w=12.27in, h=6.75in on a 13.33in x 7.5in / 16:9 slide) derived arithmetically from the JSON's percentage geometry.",
+      "Replaced the open-ended font-size range with an actionable single value (~56pt) chosen inside the source-stated 54-60pt range.",
+      "Audited all text for vague quantifiers ('several', 'some', 'many', 'a few', 'various') - none present; all quantities were already exact counts or explicitly bounded ranges.",
+      "Verified 1:1 consistency: all 3 visual_elements and both verbatim strings ('Transformer Building Blocks', '13') map to layout.regions (Content rectangle, Title, Slide number badge); the cursor artifact is consistently flagged as non-slide content in layout, visual_elements, imagery, animation_state, and the brief."
+    ],
+    "uncertain_items": [
+      "Exact title font size: source states only a 54-60pt range; the brief pins ~56pt as a mid-range choice.",
+      "Exact badge diameter (~0.5in) and border weights (~1.5pt rectangle border, ~1pt badge outline) are estimates; the source gives only 'thin (1-2px)' and 'small'.",
+      "All hex colors (#FFFFFF, #CC0000, #990000, #E6E6E6, #FFFF99, #9933CC, #333333, #888888) are vision-model approximations of on-screen colors and cannot be verified exactly.",
+      "Inch conversions assume a 16:9 slide (13.33in x 7.5in); the source JSON specifies positions only as percentages."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_013.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 13,
+      "image": "slide_013.jpg",
+      "kept_frame": "frame_00793.jpg",
+      "start_sec": 786.0,
+      "end_sec": 792.0,
+      "frame_count": 7
+    },
+    "elapsed_s": 43.5,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 324.4
+  }
+}

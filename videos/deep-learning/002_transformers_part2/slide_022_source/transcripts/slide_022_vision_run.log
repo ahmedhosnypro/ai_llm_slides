@@ -1,0 +1,81 @@
+[info] context header injected: VIEW: Slide 022 frame — Transformers Part II lecture slide (Deep Learning DSAI 308); purpose: capture verbatim text, equations, and diagram topology for web-source verification | CAPTURE: 960x540 px lecture video frame, scale 1, video still (slide fully built)
+[info] mode analysis | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 1987397
+[info] /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/unique_slides/slide_022.jpg: transcript written (validated winner, atomic): /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/slide_022_source/transcripts/slide_022_vision_2026-10-11.txt (pid 1987397)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/unique_slides/slide_022.jpg ===
+[winner] images (round 1, attempt 1)
+1. TITLE â exact title text verbatim; also the badge numeral (top-right circle) if present.
+
+Title: "Suggested Positional Encoders" (dark red/maroon text, centered at top of slide)
+Subtitle (directly below title, in dark blue, bold): "(Use Word Index as Position Encoding)" â the words "Word Index" are underlined.
+Badge numeral: "22" in a light-yellow circle at the top-right corner, with a dark border.
+
+2. ALL VERBATIM TEXT â every visible string on the slide.
+
+Left-side row labels (bold dark red):
+- "Sequence of words with Length N" (three lines: "Sequence of", "words with", "Length N")
+- "Position Embedding"
+- "Use Position Index"
+
+Row content labels (italic red text inside small boxes, each row):
+- Row 1 (top, inside black dashed rounded rectangle): "Word 0", "Word 1", "Word 2", "Word 3", "Word 4", "Word 5", then a gap of gray dots, then "Word N-2", "Word N-1"
+- Row 2 (inside blue dashed rounded rectangle): "Pos 0", "Pos 1", "Pos 2", "Pos 3", "Pos 4", "Pos 5", then a gap of teal/blue dots, then "Pos N-2", "Pos N-1"
+- Row 3 (inside red/pink dashed rounded rectangle): "0", "1", "2", "3", "4", "5", then a gap, then "N-2", "N-1" (the "N-1" box shows a mouse-cursor arrow overlapping it)
+
+Annotation between rows 2 and 3 (blue "+Î´" symbols repeated): "+Î´", "+Î´", "+Î´", "+Î´", "+Î´", and "+Î´" (last one under the right end of row 3, near "N-2"/"N-1")
+
+Bottom inset panel (light blue fill, dark blue border, rounded rectangle):
+- First line: "Use Î´=1" then "First position Encoding = 0 , Last Position Encoding = N-1" then "(Depends on Seq. Length)" (the parenthetical is underlined; "0" and "N-1" are bold)
+- "Problems:" (red bold)
+- Bullet 1: "If N is large ( e.g. seq. Length = 1024 ) Large position Values will dominate when Combine Position Embedding to Word Embedding" ("If N is large" and "Large position Values will dominate" in bold; "N", "1024", "N-1" style values bold)
+- Bullet 2: "If System is trained with Max seq length =256 how can the system deal with Larger sequence values" (bold portion: "how can the system deal with Larger sequence values")
+- Bullet 3: "Position Encoding is scalar and Word embedding is vector (how to Combine them ?)" ("scalar" and "vector" in bold)
+
+3. EQUATIONS â every formula/formulaic sequence.
+
+- Token/index sequences: Word 0, Word 1, Word 2, Word 3, Word 4, Word 5, Word N-2, Word N-1
+- Pos 0, Pos 1, Pos 2, Pos 3, Pos 4, Pos 5, Pos N-2, Pos N-1
+- Bare index sequence: 0, 1, 2, 3, 4, 5, ..., N-2, N-1
+- Recurrence implied by arrows: Pos(i+1) = Pos(i) + Î´ (shown as "+Î´" under curved arrows between consecutive index boxes)
+- "Î´=1"
+- "First position Encoding = 0"
+- "Last Position Encoding = N-1"
+- "seq. Length = 1024"
+- "Max seq length =256"
+
+4. DIAGRAM TOPOLOGY â exhaustive.
+
+Overall layout: a large outer container (light gray fill, thin blue border) spanning most of the slide width, containing three horizontal rows plus labels; below it a separate light-blue rounded inset panel with text. Outer slide background is white with a dark red/maroon border frame around the whole slide.
+
+Row 1 (top): left label "Sequence of words with Length N" (dark red bold, outside container edge). Content: a black dashed rounded rectangle containing 8 visible small boxes (light yellow/cream fill, red border, red italic text): "Word 0", "Word 1", "Word 2", "Word 3", "Word 4", "Word 5", then a run of 6 small gray filled circles (ellipsis dots), then "Word N-2", "Word N-1". Data flows left-to-right.
+
+Row 2 (middle): left label "Position Embedding" (dark red bold). Content: a blue dashed rounded rectangle containing 8 small boxes (light blue fill, blue border, blue italic text): "Pos 0", "Pos 1", "Pos 2", "Pos 3", "Pos 4", "Pos 5", then a run of ~6 teal/blue filled circles (ellipsis dots), then "Pos N-2", "Pos N-1". Left-to-right, aligned under Row 1 boxes.
+
+Row 3 (bottom of container): left label "Use Position Index" (dark red bold, two lines). Content: a red/pink dashed rounded rectangle with a very light pink fill containing 8 small boxes (light yellow/cream fill, red border, red italic text): "0", "1", "2", "3", "4", "5", then a gap (no dots visible in this row â the ellipsis region is empty/light pink), then "N-2", "N-1".
+
+Arrows: between rows 2 and 3 there are 5 short curved arrows (orange/red, with solid arrowheads) pointing from each "Pos i" box down to the corresponding index box "i" beneath it (Pos 0â0, Pos 1â1, Pos 2â2, Pos 3â3, Pos 4â4, Pos 5â5 â five visible curved arrows). Between consecutive index boxes in Row 3 there are also curved orange arrows (one-way, left-to-right) with "+Î´" labels beneath each, indicating each successive index is obtained by adding Î´ to the previous: 0â1 (+Î´), 1â2 (+Î´), 2â3 (+Î´), 3â4 (+Î´), 4â5 (+Î´), and one more "+Î´" under the gap region before "N-2"/"N-1". The last "+Î´" sits under the right end near the "N-2"/"N-1" boxes.
+
+Semantic mapping conveyed: Row 2 (Position Embedding values) are aligned element-wise with Row 3 (raw position indices), which increment by Î´; Row 1 words are aligned with Row 2 positions (same column positions).
+
+Inset panel: light blue rounded rectangle, dark blue border, containing the "Use Î´=1 ..." line, "Problems:" heading, and 3 bullet points (text fully given in Section 2). No diagram inside.
+
+Resemblance to published figures: This is NOT a copy of Vaswani et al. 2017 Figure 1/2 (no encoder/decoder stack, no attention blocks, no sinusoidal formula plot). It also does not match the Alammar positional-encoding heatmap or the Peter Bloem self-attention diagram. It is a custom didactic diagram illustrating "use the word index as position encoding" (i.e., the naive positional encoding approach that Vaswani et al. rejected in favor of sinusoids/learned embeddings), followed by a critique panel listing its problems (large values dominating, fixed max length, scalar vs. vector mismatch). The three-row aligned-sequence structure with ellipsis dots is instructor-authored.
+
+5. NUMBERS/DATA.
+
+- Slide/badge number: 22
+- Î´ = 1
+- First position Encoding = 0
+- Last Position Encoding = N-1
+- seq. Length = 1024 (example)
+- Max seq length = 256 (example)
+- Indices: 0, 1, 2, 3, 4, 5, N-2, N-1
+
+6. BUILD STATE / ARTIFACTS.
+
+- The slide appears fully built (all rows, arrows, and inset panel present; no mid-reveal gaps).
+- A black mouse-cursor arrow is visible overlapping the "N-1" box in Row 3 (right end of the "Use Position Index" row).
+- The frame has black letterbox bars at the very bottom edge (video still artifact) and a thin dark red border frame around the slide.
+- No other video overlays, watermarks, or progress indicators visible.
+

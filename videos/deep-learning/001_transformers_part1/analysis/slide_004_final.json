@@ -1,0 +1,130 @@
+{
+  "slide_title": "Processing Sequential Data",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "1-D Convolutional Neural Network   (1-D CNN)",
+      "Recurrent Neural Network  (RNN)"
+    ],
+    "labels": [
+      "4 (slide number inside yellow oval badge, top-right)",
+      "mouse cursor arrow (screen-recording artifact, not slide content, near center between the two blue lines)"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "White outer background with a large light-gray content panel outlined by a thin red border filling almost the whole slide; slide-number badge top-right inside the panel; single red title centered horizontally in the upper-middle; two left-aligned blue bold lines stacked in the lower-middle; no footer, no logo.",
+    "regions": [
+      {
+        "name": "Outer margin",
+        "position": "full slide edges, ~4% left/right, ~7% top, ~2% bottom",
+        "content": "plain white background surrounding the framed panel"
+      },
+      {
+        "name": "Content panel",
+        "position": "left ~4% to right ~96%, top ~7% to bottom ~98%",
+        "content": "light gray rectangle with thin red border containing all slide content"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top-right of panel, ~90-96% width, ~10-17% height",
+        "content": "yellow horizontal oval with purple outline containing the black numeral 4"
+      },
+      {
+        "name": "Title",
+        "position": "centered horizontally, ~33-45% vertical",
+        "content": "large bold red title 'Processing Sequential Data'"
+      },
+      {
+        "name": "Topic list",
+        "position": "left-aligned starting ~9% of slide width, ~62-84% vertical",
+        "content": "two bold blue lines listing the two network types; a white mouse-cursor arrow artifact (screen-recording overlay, not slide content) floats between the two lines at ~54% width, ~74% height"
+      }
+    ],
+    "hierarchy": "Title dominates: largest, bold, red. The two blue topic lines are secondary: bold, ~70% of title size. Slide badge is smallest. Red is used for title + frame border; blue for body; gray/white neutral background."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Full-slide content panel: light gray fill with a thin solid dark-red rectangular border, leaving a white margin visible on all sides (wider at top).",
+      "colors": [
+        "#E8E8E8",
+        "#C00000",
+        "#FFFFFF"
+      ],
+      "position": "covers ~92% of slide width and ~91% of height"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: small horizontal ellipse/oval, yellow fill, thin purple/violet outline, containing the black numeral '4' centered.",
+      "colors": [
+        "#FFFF99",
+        "#9932CC",
+        "#000000"
+      ],
+      "position": "top-right corner inside the gray panel"
+    },
+    {
+      "type": "other",
+      "description": "Small white mouse-pointer/cursor arrow with black outline floating between the two blue text lines (screen-capture artifact, should NOT be recreated).",
+      "colors": [
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "~54% width, ~74% height"
+    }
+  ],
+  "imagery": [
+    "No photos, illustrations, charts, or diagrams. Only decorative elements: red-bordered gray panel and yellow oval slide-number badge. A recorded mouse cursor is visible as an artifact near the center."
+  ],
+  "colors": {
+    "background": "#E8E8E8 inner panel on #FFFFFF outer background",
+    "title_text": "#C00000",
+    "body_text": "#0F0FC8",
+    "badge_numeral": "#000000",
+    "accents": [
+      "#C00000 (panel border, matches title red)",
+      "#FFFF99 (badge fill)",
+      "#9932CC (badge outline)"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout (Arial/Helvetica-like). Title: bold, very large (~40pt equivalent), red, title case, horizontally centered. Body lines: bold, medium-large (~28pt equivalent, ~70% of title size), blue, each major word capitalized, acronym in parentheses, left-aligned, no bullet glyphs, no numbering, no italics. Extra spacing before each parenthesized acronym: three spaces in line 1 ('Network   (1-D CNN)'), two spaces in line 2 ('Network  (RNN)'). Badge numeral: black, sans-serif, ~12pt, centered inside the oval.",
+  "animation_state": "Slide appears fully built; no mid-build reveal. Both topic lines are completely visible. The only overlay is a static mouse cursor from screen recording.",
+  "recreation_brief": "1. Set the full slide background to white (#FFFFFF); the white outer margin will remain visible at ~4% left, ~4% right, ~7% top, ~2% bottom. 2. Draw one rectangle (the content panel) spanning ~4%-96% of slide width and ~7%-98% of slide height; fill light gray (#E8E8E8); border thin solid dark red (#C00000, ~1 pt); no shadow, no gradient. 3. Draw one horizontal oval (slide-number badge) spanning ~90%-96% of slide width and ~10%-17% of slide height (~2.0 cm wide x ~1.3 cm tall on a 33.9 x 19.1 cm 16:9 slide), tucked into the top-right of the panel; fill yellow (#FFFF99); outline thin purple (#9932CC); centered text '4' in black (#000000), sans-serif, ~12pt. 4. Add one text box centered horizontally, occupying ~33%-45% of slide height, containing exactly 'Processing Sequential Data'; bold, red (#C00000), sans-serif (Arial-like), ~40pt, title case. 5. Add one left-aligned text box with its left edge at ~9% of slide width and its two-line block spanning ~62%-84% of slide height; both lines bold blue (#0F0FC8), ~28pt, no bullet glyphs, no numbering: line 1 exactly '1-D Convolutional Neural Network   (1-D CNN)' (three spaces before the parenthesis), line 2 exactly 'Recurrent Neural Network  (RNN)' (two spaces before the parenthesis); increase line spacing so the two lines fill the ~62%-84% vertical span. 6. Add nothing else: no footer, no logo, no photos, illustrations, charts, or diagrams. 7. Do NOT recreate the mouse-cursor arrow (white fill, black outline, at ~54% width / ~74% height between the two blue lines); it is a screen-recording artifact, not slide content.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Confirmed subtitle_or_header is genuinely absent (no subtitle/header text exists anywhere in the source JSON); retained null rather than inventing one.",
+      "Fixed layout.regions coverage gap: the mouse-cursor artifact listed in visual_elements and verbatim_text.labels was not covered by any region; the 'Topic list' region content now records the cursor overlay at ~54% width, ~74% height, explicitly marked as non-slide-content.",
+      "Corrected typography_notes inconsistency: 'sentence case' replaced with 'each major word capitalized' to match the verbatim bullets ('1-D Convolutional Neural Network', 'Recurrent Neural Network'); also quantified the pre-parenthesis gaps (three spaces line 1, two spaces line 2) and added the badge-numeral spec (black, sans-serif, ~12pt, centered).",
+      "Resolved position conflict: old recreation_brief said the topic list starts at '~9% panel width' while layout.regions specifies '~9% width' in slide coordinates; both now consistently use ~9% of slide width.",
+      "Precision fix: vague badge size 'small oval (~1.2cm tall)' replaced with exact geometry from layout.regions (~90%-96% width x ~10%-17% height, i.e., ~2.0 x 1.3 cm).",
+      "Precision fix: vague 'line spacing generous' replaced with the measurable constraint that the two-line block spans ~62%-84% of slide height.",
+      "Precision fix: 'thin' panel border quantified as ~1 pt (estimate; flagged in uncertain_items).",
+      "Completed colors object: added badge_numeral '#000000' (already specified in visual_elements) so every color needed for recreation is in one place."
+    ],
+    "uncertain_items": [
+      "No items in the source are marked [?]; the entries below are unverifiable estimates rather than flagged uncertainties.",
+      "All font sizes are 'equivalent' estimates (~40pt title, ~28pt body, ~12pt badge numeral); true original point sizes are not derivable from the JSON.",
+      "Panel border weight is described only as 'thin'; ~1 pt is an interpretation.",
+      "The gap before each parenthesized acronym is transcribed as three spaces (line 1) and two spaces (line 2); whether the original used spaces or a tab is unverifiable.",
+      "The badge's right edge (~96% width) coincides with the panel's right border (~96%); whether the badge touches the border or is slightly inset cannot be determined from the JSON."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_004.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 4,
+      "image": "slide_004.jpg",
+      "kept_frame": "frame_00092.jpg",
+      "start_sec": 65.0,
+      "end_sec": 91.0,
+      "frame_count": 27
+    },
+    "elapsed_s": 85.3,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 569.3
+  }
+}

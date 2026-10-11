@@ -1,0 +1,65 @@
+1. TITLE
+Title (red, centered at top): "Suggested Positional Encoders"
+Subtitle (blue bold, highlighted line, directly below title): "(Rules Controlling Good Positional Encoder)"
+Badge numeral: yellow circle at top-right containing the number "24" (red/dark text).
+
+2. ALL VERBATIM TEXT
+- "Suggested Positional Encoders"
+- "(Rules Controlling Good Positional Encoder)"
+- "24" (badge)
+- Left row label 1 (gray italic, 3 lines): "Sequence of / words with / Length N"
+- Left row label 2 (blue bold, 2 lines): "Position / Embedding"
+- Left row label 3 (red, 2 lines): "Use Position / Index"
+- Row 1 box labels (italic, red text in white boxes): "Word 0", "Word 1", "Word 2", "Word 3", "Word 4", "Word 5", then a gap containing gray dots (ellipsis), then "Word N-2", "Word N-1"
+- Row 2 box labels (italic, dark blue text in light-blue boxes): "Pos 0", "Pos 1", "Pos 2", "Pos 3", "Pos 4", "Pos 5", then teal dots (ellipsis), then "Pos N-2", "Pos N-1"
+- Row 3 box labels (italic, red/orange text in white boxes with red border): "0", "Î´", "2Î´", "3Î´", "4Î´", "5Î´", then a gap (with small red dots below, indicating omitted positions), then "1-Î´", "1"
+- Curved-arrow labels between row-3 boxes (red bold): "+Î´", "+Î´", "+Î´", "+Î´", "+Î´", and one more "+Î´" under the gap region (before the "1-Î´" box)
+- Bottom blue rule box:
+  - "[1] Î´ value should be same for Long sequence and short sequence"
+  - "(same positions will be encoded with same values irrespective of the length of the sequence)" â the words "same positions" and "same values" are underlined
+  - "[2] Range of position encoded values should NOT depend on sequence length"
+  - "(predefined fixed range e.g. from 0 to 1 , form -1 to 1, ...)" â note: "form" appears to be a typo for "from"; transcribed as shown
+  - "[3] Position Encoding should be a VECTOR (not scalar) and of same dimension as Word Embedding"
+  - "(in order to easily combine Position Encoding and Word Encoding vectors)"
+
+3. EQUATIONS
+- Position-index sequence tokens: 0, Î´, 2Î´, 3Î´, 4Î´, 5Î´, [ellipsis], 1-Î´, 1 (i.e., position i encoded as iÂ·Î´, normalized to the range [0, 1], with last-but-one = 1-Î´)
+- Recurrence labels under arrows: "+Î´" (each successive position = previous + Î´)
+- Token labels with subscripts: Word_0, Word_1, Word_2, Word_3, Word_4, Word_5, Word_(N-2), Word_(N-1); Pos_0, Pos_1, Pos_2, Pos_3, Pos_4, Pos_5, Pos_(N-2), Pos_(N-1) â all rendered with hyphenated subscripts "N-2", "N-1"
+- Rule [1] formulaic token: "Î´ value"
+- No other equations on this slide (no sinusoidal PE formulas present).
+
+4. DIAGRAM TOPOLOGY
+Overall layout: three horizontal rows of box-chains, top to bottom, each row with a left-side text label, all inside an outer red-bordered rectangle (the slide frame). Content flows left-to-right within each row; rows are stacked top-to-bottom but are conceptually parallel (three alternative/related representations), not connected by inter-row arrows.
+
+Row 1 â "Sequence of words with Length N":
+- Container: large rounded rectangle with dark (black/gray) DASHED border, light/white fill, spanning nearly full width.
+- Nodes inside (left to right): 6 white boxes with red borders, red italic labels: "Word 0", "Word 1", "Word 2", "Word 3", "Word 4", "Word 5"; then 5 small gray filled circles (ellipsis); then 2 more white/red boxes: "Word N-2", "Word N-1". No arrows within this row; boxes are simply adjacent.
+
+Row 2 â "Position Embedding":
+- Container: large rounded rectangle with BLUE DASHED border, very light blue fill.
+- Nodes: 6 light-blue boxes with darker blue borders, dark blue italic labels: "Pos 0" through "Pos 5"; then 5 small teal/cyan filled circles (ellipsis); then "Pos N-2", "Pos N-1" (same light-blue box style). No arrows; adjacency only. Row is aligned vertically beneath Row 1, implying element-wise correspondence Word_i â Pos_i.
+
+Row 3 â "Use Position Index":
+- Container: large rounded rectangle with RED/PINK DASHED border, very light pink fill.
+- Nodes: 6 white boxes with red-orange borders, red italic labels: "0", "Î´", "2Î´", "3Î´", "4Î´", "5Î´"; then a gap in the middle containing a few small red dots (ellipsis, indicating omitted positions); then 2 more boxes: "1-Î´", "1".
+- Arrows: curved (arc) orange/red arrows connecting each box to the next one to its right, drawn below the box line, each labeled with red bold text "+Î´". Arrows: 0 â Î´, Î´ â 2Î´, 2Î´ â 3Î´, 3Î´ â 4Î´, 4Î´ â 5Î´, and one more curved arrow spanning the ellipsis gap toward "1-Î´" (labeled "+Î´"), plus visual continuation to "1". Direction: left to right. Arrowheads are small orange/red triangles at the target boxes.
+
+Bottom rule box:
+- Large rounded rectangle with solid BLUE border, white fill, containing the three numbered rules [1], [2], [3] with red/blue two-color emphasis (see section 2). The "[N]" markers are in dark red; main rule text is blue bold; parenthetical explanatory lines are in red/dark-red smaller text.
+
+Resemblance to published figures: This is NOT a copy of Vaswani et al. 2017 Figure 1/2 or Alammar/Bloem diagrams. It is an original instructor-designed illustration of positional-encoding design constraints, in the visual style of Jay Alammar-style box-chain token illustrations (rows of token boxes with ellipsis for truncation), but the content (Î´-increment position index rules) is lecture-specific. Matches Alammar-style conventions: dashed rounded containers, token boxes with ellipsis dots, left label column. Differs: no transformer block architecture, no attention arrows, no multi-head structure.
+
+5. NUMBERS/DATA
+- Badge number: 24
+- Indices: 0, 1, 2, 3, 4, 5, N-2, N-1 (sequence length N)
+- Position values: 0, Î´, 2Î´, 3Î´, 4Î´, 5Î´, 1-Î´, 1
+- Rule [2] example ranges: "0 to 1", "-1 to 1"
+- Increment: +Î´ (appears 6 times)
+- Rule numbering: [1], [2], [3]
+
+6. BUILD STATE / ARTIFACTS
+- Slide appears fully built (all three rows, ellipses, arrows, and rule box present); no mid-reveal animation state visible.
+- A mouse cursor arrow is visible near the bottom-left area of the rule box, over/near the text "(same positions will be encoded..." region (approx. under "be same" in rule [1]).
+- A solid black horizontal bar spans the bottom edge of the frame (video player letterboxing / lower-third crop artifact), partially clipping the bottom of the outer red slide border.
+- Outer red rectangular border around the whole slide is slightly cut at the left/right edges of the frame; slide content otherwise fully legible. No watermarks, timestamps, or other overlays detected.

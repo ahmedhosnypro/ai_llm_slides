@@ -1,0 +1,161 @@
+{
+  "slide_title": "Continuous bag-of-words (CBOW)   vs Skip-Gram Models",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "22",
+      "INPUT",
+      "PROJECTION",
+      "OUTPUT",
+      "SUM",
+      "w(t-2)",
+      "w(t-1)",
+      "w(t+1)",
+      "w(t+2)",
+      "w(t)",
+      "INPUT",
+      "PROJECTION",
+      "OUTPUT",
+      "w(t)",
+      "w(t-2)",
+      "w(t-1)",
+      "w(t+1)",
+      "w(t+2)",
+      "CBOW",
+      "Skip-gram"
+    ],
+    "equations": [
+      "w(t-2)",
+      "w(t-1)",
+      "w(t)",
+      "w(t+1)",
+      "w(t+2)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top in red bold text with slide-number oval at top-right; below, two side-by-side blue-bordered panels each containing a three-column neural-network architecture diagram (INPUT | PROJECTION | OUTPUT); each panel has a yellow rounded label box centered at its bottom ('CBOW' left, 'Skip-gram' right); entire inner slide framed by a dark-red border on a light-gray outer background",
+    "regions": [
+      {
+        "name": "Title bar",
+        "position": "top, spanning ~10%-90% width, ~8%-20% height",
+        "content": "Red bold title 'Continuous bag-of-words (CBOW)   vs Skip-Gram Models'"
+      },
+      {
+        "name": "Slide number",
+        "position": "top-right corner, ~90%-97% width, ~8%-16% height",
+        "content": "Yellow oval with dark outline containing the number 22"
+      },
+      {
+        "name": "Left panel (CBOW diagram)",
+        "position": "middle-left, ~12%-50% width, ~22%-97% height",
+        "content": "Blue-bordered rectangle containing INPUT/PROJECTION/OUTPUT columns, converging arrows into SUM, output arrow to w(t), and yellow 'CBOW' label box at bottom"
+      },
+      {
+        "name": "Right panel (Skip-gram diagram)",
+        "position": "middle-right, ~50%-88% width, ~22%-97% height",
+        "content": "Blue-bordered rectangle containing INPUT/PROJECTION/OUTPUT columns, single input w(t), fanning arrows to four outputs, and yellow 'Skip-gram' label box at bottom"
+      },
+      {
+        "name": "Outer margin",
+        "position": "full slide edges, ~0%-8% on all sides",
+        "content": "Light-gray background strip surrounding the white red-bordered slide area"
+      }
+    ],
+    "hierarchy": "Red bold title is visually dominant; the two blue-framed diagrams are equal in weight and dominate the body; column headers (INPUT/PROJECTION/OUTPUT) are small uppercase gray; word labels (w(t-2) etc.) are smallest; yellow CBOW/Skip-gram tags draw the eye at the bottom of each panel"
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "CBOW architecture diagram inside a blue-bordered rectangle. Three vertical containers: (1) INPUT \u2014 dark-red-bordered tall rectangle with header 'INPUT' at top, containing 4 small white squares stacked vertically labeled from top to bottom: w(t-2), w(t-1), w(t+1), w(t+2); (2) PROJECTION \u2014 orange-bordered tall rectangle with peach/tan fill and header 'PROJECTION', containing one small white square with the label 'SUM' above it; (3) OUTPUT \u2014 green-bordered tall rectangle with header 'OUTPUT', containing one small white square labeled w(t) to its right. Four black arrows converge diagonally from each of the four input squares into the SUM square; one horizontal black arrow goes from the SUM square rightward to the w(t) output square.",
+      "colors": [
+        "#0000CC",
+        "#8B0000",
+        "#E8940A",
+        "#F5C99B",
+        "#008000",
+        "#000000",
+        "#FFFFFF",
+        "#D9D9D9"
+      ],
+      "position": "left panel, middle of slide, ~12%-50% width"
+    },
+    {
+      "type": "diagram",
+      "description": "Skip-gram architecture diagram inside a blue-bordered rectangle (mirror of CBOW). Three vertical containers: (1) INPUT \u2014 dark-red-bordered tall rectangle with header 'INPUT', containing one small white square labeled w(t); (2) PROJECTION \u2014 orange-bordered tall rectangle with peach/tan fill and header 'PROJECTION', containing one small white square (unlabeled); (3) OUTPUT \u2014 green-bordered tall rectangle with header 'OUTPUT', containing 4 small white squares stacked vertically labeled from top to bottom: w(t-2), w(t-1), w(t+1), w(t+2). One horizontal black arrow from w(t) input square to the projection square; four black arrows fan out diagonally from the projection square to each of the four output squares. A mouse cursor (video artifact) is visible near w(t-1).",
+      "colors": [
+        "#0000CC",
+        "#8B0000",
+        "#E8940A",
+        "#F5C99B",
+        "#008000",
+        "#000000",
+        "#FFFFFF",
+        "#D9D9D9"
+      ],
+      "position": "right panel, middle of slide, ~50%-88% width"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Two yellow rounded-rectangle tag boxes with dark-red borders: left one contains the text 'CBOW', right one contains the text 'Skip-gram', both in red bold text, centered horizontally under their respective diagrams",
+      "colors": [
+        "#FFFF99",
+        "#C00000"
+      ],
+      "position": "bottom of each blue panel, ~88%-95% height"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: small yellow oval/ellipse with dark olive/black outline containing the number '22' in dark text",
+      "colors": [
+        "#FFFF99",
+        "#4A4A00",
+        "#000000"
+      ],
+      "position": "top-right corner of slide"
+    },
+    {
+      "type": "other",
+      "description": "Decorative frame: thin dark-red rectangle border around the entire white slide content area, sitting on a light-gray outer background",
+      "colors": [
+        "#C00000",
+        "#FFFFFF",
+        "#E5E5E5"
+      ],
+      "position": "inset ~3-5% from all slide edges"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; all visuals are vector-style diagram shapes (rectangles, squares, arrows, oval badge). A black mouse-pointer cursor appears over the right diagram near w(t-1) \u2014 a screen-recording artifact, not slide content."
+  ],
+  "colors": {
+    "background": "#E5E5E5 (outer) / #FFFFFF (inner slide area)",
+    "title_text": "#C00000",
+    "body_text": "#404040 (labels) / #000000 (arrows, w(t) labels)",
+    "accents": [
+      "#C00000 (title, borders, tag text)",
+      "#0000CC (panel borders)",
+      "#E8940A (PROJECTION borders)",
+      "#F5C99B (PROJECTION fill)",
+      "#008000 (OUTPUT borders)",
+      "#8B0000 (INPUT borders)",
+      "#FFFF99 (tag/badge fill)"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout (Arial/Helvetica-like). Title is bold, roughly 2x body size, red, title-case with extra spacing around 'vs'. Column headers INPUT/PROJECTION/OUTPUT are uppercase, small, gray, letter-spaced. Context-word labels use parenthesized math notation w(t-2) etc., small dark text. CBOW and Skip-gram tags are bold red on yellow. Slide number is small dark text in a yellow oval.",
+  "animation_state": "Slide appears fully built (both diagrams complete). A mouse cursor rests near w(t-1) in the Skip-gram diagram, indicating the presenter was pointing at it during the recording; no partial-build state evident.",
+  "recreation_brief": "1. Set slide background to light gray (#E5E5E5); add a white rectangle inset ~4% on all sides with a 2pt dark-red (#C00000) outline to form the inner slide frame. 2. Add title text box at top center: 'Continuous bag-of-words (CBOW)   vs Skip-Gram Models' in bold red (#C00000) sans-serif ~28pt (keep the double space around 'vs'). 3. Top-right: insert a small yellow (#FFFF99) oval with dark outline, text '22' in dark gray ~12pt. 4. Draw two large rectangles side by side (each ~38% slide width, ~75% height) with 2.5pt blue (#0000CC) outlines, no fill. 5. In EACH panel build three tall vertical rectangles: left one outlined dark red (#8B0000) with uppercase gray header 'INPUT' at its top; middle one outlined orange (#E8940A) with peach fill (#F5C99B) and header 'PROJECTION'; right one outlined green (#008000) with header 'OUTPUT'. 6. LEFT panel (CBOW): place 4 small white squares (light gray outline) inside INPUT, labeled left of each: w(t-2), w(t-1), w(t+1), w(t+2) top to bottom; place one small white square in PROJECTION with label 'SUM' above it; place one small white square in OUTPUT with label 'w(t)' to its right. Draw 4 black thin arrows converging from each input square into the SUM square, and 1 horizontal black arrow from SUM to w(t). 7. RIGHT panel (Skip-gram): place 1 small white square in INPUT labeled 'w(t)'; 1 unlabeled small white square in PROJECTION; 4 small white squares in OUTPUT labeled to their right: w(t-2), w(t-1), w(t+1), w(t+2) top to bottom. Draw 1 horizontal black arrow from w(t) to the projection square, and 4 black arrows fanning from the projection square to each output square. 8. Bottom-center of each panel: yellow (#FFFF99) rounded rectangle with dark-red outline; left text 'CBOW', right text 'Skip-gram', both bold red ~16pt. 9. Do NOT add the mouse cursor (recording artifact).",
+  "_meta": {
+    "frame": "slide_022.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 22,
+      "image": "slide_022.jpg",
+      "kept_frame": "frame_01620.jpg",
+      "start_sec": 1583.0,
+      "end_sec": 1619.0,
+      "frame_count": 37
+    },
+    "elapsed_s": 71.0
+  }
+}

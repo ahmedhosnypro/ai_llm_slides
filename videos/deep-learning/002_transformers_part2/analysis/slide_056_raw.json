@@ -1,0 +1,135 @@
+{
+  "slide_title": "Decoder Final Output",
+  "subtitle_or_header": "Probability of each word in Vocab",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Vocab Size",
+      "Softmax",
+      "Vocab Size",
+      "Linear Projection",
+      "Last Decoder Block",
+      "56"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "White outer frame with a light-gray slide panel filling ~93% of the canvas. Title centered at top; yellow slide-number badge top-right; blue subtitle centered under title. Below, a single centered vertical stack diagram (bottom-to-top flow): dark-blue 'Last Decoder Block' bar at bottom, green 'Linear Projection' box in lower-middle, dark-red 'Softmax' bar in upper-middle, and a row of 16 pale circles at top spanned by a red curly brace connected to the subtitle. Red 'Vocab Size' labels sit at the far left, aligned with the top circle row and the magenta circle row. A thin black strip runs along the very bottom edge (likely video letterbox, not slide content).",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~2%-15% height",
+        "content": "'Decoder Final Output' in large bold red text"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, ~88%-95% width, ~8%-16% height",
+        "content": "yellow circle with red outline containing '56' in red"
+      },
+      {
+        "name": "Subtitle + brace",
+        "position": "top center, ~18%-25% height",
+        "content": "'Probability of each word in Vocab' in blue above a wide red curly brace spanning the top circle row"
+      },
+      {
+        "name": "Output circle row",
+        "position": "upper area, ~15%-85% width, ~24%-32% height",
+        "content": "16 pale-blue empty circles in one row; 'Vocab Size' label at left"
+      },
+      {
+        "name": "Softmax bar",
+        "position": "middle, ~17%-86% width, ~41%-49% height",
+        "content": "dark-red horizontal bar with white bold 'Softmax' text; blue up-arrows above it to the circles, red up-arrows below it from the green box"
+      },
+      {
+        "name": "Linear Projection box",
+        "position": "lower-middle, ~17%-86% width, ~55%-80% height",
+        "content": "light-green rectangle with green border containing 16 magenta circles (top row), 4 green circles (bottom center), 64 thin blue fully-connected lines between them, and green 'Linear Projection' label at right; 'Vocab Size' label at left outside"
+      },
+      {
+        "name": "Last Decoder Block bar",
+        "position": "bottom, ~17%-86% width, ~85%-93% height",
+        "content": "dark-blue horizontal bar with white bold 'Last Decoder Block' text; 4 green up-arrows rise from it to the green circles"
+      },
+      {
+        "name": "Bottom strip",
+        "position": "bottom edge, full width, ~97%-100% height",
+        "content": "thin black bar (video frame artifact)"
+      }
+    ],
+    "hierarchy": "Title dominates (largest, bold, red). The stacked diagram dominates spatially. Bar labels (white on saturated red/blue) are next most prominent; subtitle, side labels, and badge are smallest but high-contrast."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Vertical neural-network data-flow diagram, read bottom-to-top. (1) Bottom: dark-blue rectangle labeled 'Last Decoder Block' (white bold text). (2) Four green up-arrows rise from this bar to 4 solid green circles. (3) These circles sit inside a light-green rectangle (green border) labeled 'Linear Projection' (green bold text, right side); the box also contains a row of 16 solid magenta circles above the green circles; every green circle connects to every magenta circle with thin straight blue lines (4x16 = 64 lines, fully-connected bipartite, no arrowheads). (4) Sixteen red up-arrows rise from the top edge of the green box to the dark-red 'Softmax' bar (white bold text). (5) Sixteen blue up-arrows rise from the Softmax bar to a row of 16 pale-blue circles with thin blue-gray outlines (empty/unfilled nodes = vocabulary logits/probabilities). (6) A red curly brace arches over the 16 pale circles, apex pointing up toward the subtitle 'Probability of each word in Vocab'. Red 'Vocab Size' labels appear at left of the pale-circle row and at left of the magenta-circle row, indicating both rows have vocabulary-sized dimension.",
+      "colors": [
+        "#B00000",
+        "#1010B0",
+        "#E2FFE3",
+        "#00A000",
+        "#EE00EE",
+        "#22C022",
+        "#EAF5FF",
+        "#7A9CC4",
+        "#CC0000",
+        "#2222AA",
+        "#00AA00",
+        "#3366CC"
+      ],
+      "position": "center of slide, spanning ~17%-86% width, ~24%-93% height"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: yellow filled circle with thin red outline containing the number '56' in red bold text.",
+      "colors": [
+        "#FFFF00",
+        "#C00000"
+      ],
+      "position": "top-right corner of the gray panel"
+    },
+    {
+      "type": "other",
+      "description": "Red curly brace (horizontal, opening downward, apex up) spanning the full width of the 16 pale output circles, visually tying that row to the subtitle text above it.",
+      "colors": [
+        "#CC0000"
+      ],
+      "position": "top center, between subtitle and pale circle row"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; the slide is entirely composed of vector shapes (bars, circles, arrows, connector lines, brace) plus text. A thin black strip at the very bottom edge appears to be video-player letterbox rather than slide content."
+  ],
+  "colors": {
+    "background": "#E9E9E9 (light gray panel) on #FFFFFF (outer margin)",
+    "title_text": "#C00000",
+    "body_text": "#C00000 (red 'Vocab Size' labels), #00A000 (green 'Linear Projection'), #FFFFFF (bar labels), #2222CC (subtitle)",
+    "accents": [
+      "#B00000",
+      "#1010B0",
+      "#EE00EE",
+      "#22C022",
+      "#E2FFE3",
+      "#FFFF00",
+      "#EAF5FF",
+      "#3366CC"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Helvetica-like), bold used everywhere. Title is the largest (~32-36pt equivalent), red, title-case. Subtitle is ~16pt bold blue, sentence case. Bar labels ('Softmax', 'Last Decoder Block') are ~20pt bold white on saturated bars. Side labels ('Vocab Size', 'Linear Projection') are ~13-14pt bold. Slide number is small bold red in a yellow badge. No italics, no bullet lists, no numbered lists.",
+  "animation_state": "Slide appears fully built; no mid-build state, no dimmed/partial bullets, all diagram elements and labels visible.",
+  "recreation_brief": "1. Create a 16:9 slide with white background; insert a light-gray (#E9E9E9) rectangle covering ~93% of the slide (centered, small white margin on all sides). 2. Add title text box centered at top: 'Decoder Final Output', Arial Bold ~32pt, color #C00000. 3. Top-right: insert an oval (~0.9cm), fill #FFFF00, outline #C00000, text '56' in red bold ~12pt. 4. Add subtitle text box centered below title: 'Probability of each word in Vocab', Arial Bold ~16pt, color #2222CC. 5. Bottom of diagram area: insert dark-blue (#1010B0) rectangle ~70% slide width, ~5% height, centered text 'Last Decoder Block' in white Arial Bold ~20pt. 6. Above it: insert light-green (#E2FFE3) rectangle with 1.5pt #00A000 border, same width, ~25% height; right-align green (#00A000) bold text 'Linear Projection' inside its right side. 7. Above the green box: insert dark-red (#B00000) rectangle, same width, ~5% height, centered white bold text 'Softmax'. 8. Top of diagram: draw 16 circles (~1.1cm diameter) in one evenly spaced row: fill #EAF5FF, outline #7A9CC4. 9. Inside the green box top: draw 16 circles same size, fill #EE00EE, no outline, aligned directly under the pale circles. 10. Inside the green box bottom-center: draw 4 circles, fill #22C022, evenly spaced under the middle of the magenta row. 11. Draw 64 thin (0.5pt) #3366CC straight lines connecting each of the 4 green circles to each of the 16 magenta circles (use connectors, send behind circles). 12. Insert 16 blue (#2222AA) up-arrows from the Softmax bar top to each pale circle; 16 red (#CC0000) up-arrows from the green box top to the Softmax bar; 4 green (#00AA00) up-arrows from the blue bar top to the 4 green circles. 13. Insert a red curly-brace shape (or draw one) above the pale circle row spanning its full width, apex up, color #CC0000; keep the subtitle directly above it. 14. Add two red (#C00000) bold ~13pt labels 'Vocab Size' at the far left: one aligned with the pale circle row, one aligned with the magenta circle row. 15. Optionally add a thin black rectangle along the very bottom edge only if replicating the video frame; omit it for the clean slide.",
+  "_meta": {
+    "frame": "slide_056.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 56,
+      "image": "slide_056.jpg",
+      "kept_frame": "frame_04854.jpg",
+      "start_sec": 4852.0,
+      "end_sec": 4853.0,
+      "frame_count": 2,
+      "old_slide": 139
+    },
+    "elapsed_s": 164.2
+  }
+}

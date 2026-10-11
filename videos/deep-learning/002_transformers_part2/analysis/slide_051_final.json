@@ -1,0 +1,205 @@
+{
+  "slide_title": "Encoder \u2013 Decoder Transformer",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "51",
+      "Encoder",
+      "Decoder",
+      "Add & Norm",
+      "Feed Forward",
+      "Multi-Head Attention",
+      "Masked Multi-Head Attention",
+      "Softmax",
+      "Linear",
+      "Output",
+      "Probabilities",
+      "Positional Encoding",
+      "Output Embedding",
+      "Inputs",
+      "Outputs (shifted right)",
+      "Nx",
+      "Q",
+      "K",
+      "V",
+      "Decoder Only",
+      "Decoder Only",
+      "Encoder \u2013 Decoder Attention",
+      "Adding Mask",
+      "\u2248"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Red bold title centered at top; yellow circular slide-number badge '51' at top-right; two large side-by-side rounded panels below (left = Encoder diagram on peach #FBE5D6 with a solid bright-green #00E100 rectangle filling its right ~60%; right = Decoder diagram on orange #ED7D31 with a light-green #CCFFCC rectangle covering its right ~55%); solid black bar spanning the full slide width at the very bottom.",
+    "regions": [
+      {
+        "name": "Title band",
+        "position": "top center, x 20\u201380%, y 6\u201316%",
+        "content": "Red bold title 'Encoder \u2013 Decoder Transformer'"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, x 88\u201394%, y 8\u201316%",
+        "content": "Yellow circle with black bold '51'"
+      },
+      {
+        "name": "Encoder panel",
+        "position": "left, x 13\u201346%, y 17\u201393%",
+        "content": "Peach rounded panel, green border, red italic 'Encoder' label top-left; transformer-encoder stack (Add & Norm / Feed Forward / Add & Norm / Multi-Head Attention / Q K V), Nx checkmark, Positional Encoding icon+label, Output Embedding box, red up-arrow with 'Inputs'; solid bright-green rectangle occupies right ~60% of panel"
+      },
+      {
+        "name": "Decoder panel",
+        "position": "right, x 58\u201392%, y 17\u201393%",
+        "content": "Orange rounded panel, green border, green italic 'Decoder' label top-right; from top: Output (yellow) + Probabilities, Softmax, Linear, then container with Add & Norm / Feed Forward / Add & Norm / Multi-Head Attention / Add & Norm / Masked Multi-Head Attention / Q K V; Nx checkmark, Positional Encoding icon+label, Output Embedding, red up-arrow with 'Outputs (shifted right)'; four white callout labels with red block arrows (three of the four with red dashed ellipses) on the orange left portion; light-green rectangle behind the stack on the right (~55% of panel width)"
+      },
+      {
+        "name": "Footer bar",
+        "position": "bottom full width, y 96\u2013100%",
+        "content": "Solid black rectangle"
+      }
+    ],
+    "hierarchy": "Title is the largest text (red, bold). The two colored panels dominate the body; the decoder panel is visually busier due to its 4 white callout boxes, 3 red dashed ellipses and 6 red block arrows (4 right-pointing callout arrows plus 2 upward arrows). Diagram box labels are small bold white/dark text; callout labels are small bold red on white. Black footer bar anchors the base."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "ENCODER BLOCK DIAGRAM. Peach (#FBE5D6) rounded panel with green (#00B050) border; label 'Encoder' in red bold italic at top-left. A solid bright-green (#00E100) rectangle with no border fills the right ~60% of the panel, full height. In the peach left portion, bottom-to-top: red upward block arrow with black label 'Inputs'; brown (#A0622D) box 'Output Embedding' (white bold text) with a green \u2713 at its lower-left; brown circle icon containing a white sine-wave/loop glyph beside black two-line label 'Positional Encoding'; a green \u2713 above black label 'Nx' (x subscript) at mid-left; and a rounded light-gray container (thin border) holding, top-to-bottom: blue (#4472C4) box 'Add & Norm' with green \u2713 at top-right; gray (#7F7F7F) box 'Feed Forward' with black \u2713 at left; blue box 'Add & Norm' with blue \u2713 at right; pink (#FFC7CE) box with red border 'Multi-Head Attention' (dark-red text) with red \u2713 at right; three small circles at bottom labeled Q (red), K (blue), V (green). Thin yellow highlight lines form a partial rectangle around the top of the stack and extend right across the green rectangle. Thin vertical connectors join stack to embedding box.",
+      "colors": [
+        "#FBE5D6",
+        "#00B050",
+        "#00E100",
+        "#4472C4",
+        "#7F7F7F",
+        "#FFC7CE",
+        "#FF0000",
+        "#A0622D",
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "left panel, x 13\u201346%, y 17\u201393%"
+    },
+    {
+      "type": "diagram",
+      "description": "DECODER BLOCK DIAGRAM. Orange (#ED7D31) rounded panel with green (#00B050) border; label 'Decoder' in green bold italic at top-right. Light-green (#CCFFCC) rectangle covers the right ~55% of the panel where the stack sits. Top-to-bottom: yellow (#FFFF00) box 'Output' (black text) with red upward block arrow at its left and black label 'Probabilities' at its right; teal (#66CCCC) box 'Softmax' encircled by a red dashed ellipse; teal box 'Linear' encircled by a red dashed ellipse; large rounded container (light fill, thin border, thin yellow accent line on right edge) holding top-to-bottom: blue 'Add & Norm' (green \u2713 at left), gray 'Feed Forward' (black \u2713 at left), blue 'Add & Norm', pink red-bordered 'Multi-Head Attention' (red \u2713 at right) encircled by red dashed ellipse, blue 'Add & Norm' (blue \u2713 at right), purple (#C9A0DC) 'Masked Multi-Head Attention' (green \u2713 at right) with red '\u2248' symbol at its left, and three small circles Q (red), K (blue), V (green) at bottom; below container: green \u2713 with black 'Nx' at right side; brown circle icon with white sine-wave glyph and black two-line label 'Positional Encoding' at right; brown 'Output Embedding' box (white text) with dark-brown \u2713 at its left; red upward block arrow at bottom with black label 'Outputs (shifted right)'. Small colored connector dots (red/blue/green) and short arrows join the stacked boxes.",
+      "colors": [
+        "#ED7D31",
+        "#00B050",
+        "#CCFFCC",
+        "#FFFF00",
+        "#66CCCC",
+        "#4472C4",
+        "#7F7F7F",
+        "#FFC7CE",
+        "#C9A0DC",
+        "#FF0000",
+        "#A0622D",
+        "#000000"
+      ],
+      "position": "right panel, x 58\u201392%, y 17\u201393%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Four white rectangular callout labels with red bold text, each paired with a red right-pointing block arrow and (for the top two and the attention one) a red dashed ellipse around the target: 'Decoder Only' \u2192 dashed ellipse around 'Softmax'; 'Decoder Only' \u2192 dashed ellipse around 'Linear'; 'Encoder \u2013 Decoder Attention' (stacked 3 lines) \u2192 dashed ellipse around 'Multi-Head Attention'; 'Adding Mask' \u2192 points at 'Masked Multi-Head Attention' (no ellipse). All sit in the orange left portion of the decoder panel.",
+      "colors": [
+        "#FFFFFF",
+        "#FF0000"
+      ],
+      "position": "decoder panel, left half, x 59\u201370%, y 25\u201367%"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: yellow circle with thin dark outline containing black bold '51'.",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top right, x 88\u201394%, y 8\u201316%"
+    },
+    {
+      "type": "arrow",
+      "description": "Red block arrows: two right-pointing block arrows from 'Decoder Only' callouts, one right-pointing block arrow from 'Encoder \u2013 Decoder Attention' callout, one right-pointing block arrow from 'Adding Mask' callout; three upward red block arrows (below 'Inputs' in encoder, below 'Outputs (shifted right)' in decoder, and beside 'Output' at decoder top).",
+      "colors": [
+        "#FF0000"
+      ],
+      "position": "decoder panel left half and bottoms of both panels"
+    },
+    {
+      "type": "other",
+      "description": "Solid black rectangle spanning the entire slide width at the very bottom edge.",
+      "colors": [
+        "#000000"
+      ],
+      "position": "bottom, y 96\u2013100%, full width"
+    }
+  ],
+  "imagery": [
+    "Two identical positional-encoding icons: brown filled circles containing a white sine-wave/loop glyph, one in each panel next to the 'Positional Encoding' labels",
+    "13 checkmark glyphs (\u2713) used as status markers beside diagram boxes: 6 green, 2 black, 2 blue, 2 red, 1 dark brown",
+    "No photographs or illustrations; all graphics are flat vector shapes"
+  ],
+  "colors": {
+    "background": "#E8E8E8 (light gray) with a white outer frame",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#FF0000",
+      "#00B050",
+      "#FFFF00",
+      "#4472C4",
+      "#7F7F7F",
+      "#FFC7CE",
+      "#C9A0DC",
+      "#66CCCC",
+      "#A0622D",
+      "#ED7D31",
+      "#FBE5D6",
+      "#00E100",
+      "#CCFFCC"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Calibri-like). Title: bold, ~36\u201340 pt, red, title case with spaced en dash. Panel labels 'Encoder'/'Decoder': bold italic ~16\u201318 pt (red / green). Diagram box labels: bold ~10\u201311 pt, white on dark fills, dark red on pink, black on yellow/teal. Callout labels: bold red ~10\u201311 pt on white rectangles. 'Nx' rendered as N with subscript-style x. Multi-word box labels wrap onto 2\u20133 lines (e.g., 'Feed Forward', 'Masked / Multi-Head / Attention'). No serif fonts, no all-caps styling.",
+  "animation_state": "Slide appears fully built; no partial reveal detected. The bright-green rectangle covering the encoder's right ~60% looks like a static annotation/masking shape rather than a mid-build state.",
+  "recreation_brief": "1. Slide setup: create a 16:9 slide, fill the background light gray #E8E8E8, and add a thin white rectangle frame near the slide edges (white outer frame).\n2. Footer bar: add a solid black #000000 rectangle spanning the full slide width at the very bottom edge (y 96\u2013100% of slide height).\n3. Title: add a centered text box (x 20\u201380%, y 6\u201316%) with the text 'Encoder \u2013 Decoder Transformer' in sans-serif bold ~36\u201340 pt, dark red #C00000, title case with a spaced en dash.\n4. Slide-number badge: add a yellow #FFFF00 circle with a thin dark outline at top-right (x 88\u201394%, y 8\u201316%) containing bold black '51' (~14 pt, sized to fit the circle).\n5. Encoder panel: add a rounded rectangle at x 13\u201346%, y 17\u201393% (w 33%, h 76% of slide); fill peach #FBE5D6; thin green #00B050 border.\n6. Encoder label: add 'Encoder' in red #FF0000, bold italic, ~16\u201318 pt, at the panel's top-left.\n7. Encoder overlay: add a borderless solid bright-green #00E100 rectangle covering the right ~60% of the encoder panel at full panel height (drawn above the panel fill; the stack and labels sit in the left peach portion and must not be covered).\n8. Encoder stack container: add a rounded rectangle with light-gray fill and thin border in the upper part of the peach left portion (left ~40% of panel width), tall enough to hold 4 stacked boxes plus a Q/K/V row.\n9. Encoder stack box 1 (top of container): blue #4472C4 box labeled 'Add & Norm' in white bold ~10\u201311 pt, with a green \u2713 at its top-right.\n10. Encoder stack box 2: gray #7F7F7F box labeled 'Feed Forward' in white bold text, with a black \u2713 at its left.\n11. Encoder stack box 3: blue #4472C4 box labeled 'Add & Norm' in white bold text, with a blue \u2713 at its right.\n12. Encoder stack box 4: pink #FFC7CE box with a thin red border labeled 'Multi-Head Attention' in dark-red bold text, with a red \u2713 at its right.\n13. Encoder Q/K/V: add three small circles (~0.25 in, estimated) at the container's bottom labeled Q (red), K (blue), V (green).\n14. Encoder yellow highlight: draw thin #FFFF00 lines forming a partial rectangle around the top of the stack that extends right across the green rectangle (drawn on top of it).\n15. Encoder 'Nx': add a green \u2713 above the black label 'Nx' (N with subscript x) at mid-left of the peach portion, below the stack container.\n16. Encoder Positional Encoding: add a brown #A0622D filled circle containing a white sine-wave/loop glyph, with a black two-line label 'Positional Encoding' beside it, below the 'Nx' item.\n17. Encoder Output Embedding: add a brown #A0622D box labeled 'Output Embedding' in white bold ~10\u201311 pt with a green \u2713 at its lower-left, below the Positional Encoding icon.\n18. Encoder Inputs arrow: add a red #FF0000 upward block arrow at the bottom of the peach portion with the black label 'Inputs', pointing up toward the Output Embedding box.\n19. Encoder connectors: add thin vertical connector line(s) joining the stack container to the Output Embedding box (exact count not specified in source).\n20. Decoder panel: add a rounded rectangle at x 58\u201392%, y 17\u201393% (w 34%, h 76% of slide); fill orange #ED7D31; thin green #00B050 border.\n21. Decoder label: add 'Decoder' in green #00B050, bold italic, ~16\u201318 pt, at the panel's top-right.\n22. Decoder overlay: add a borderless light-green #CCFFCC rectangle covering the right ~55% of the panel, behind the stack.\n23. Decoder Output: add a yellow #FFFF00 box labeled 'Output' (black text) at the top of the decoder column, with a red #FF0000 upward block arrow at its left and the black label 'Probabilities' at its right.\n24. Softmax: add a teal #66CCCC box labeled 'Softmax' (black text) below 'Output', encircled by a red dashed ellipse.\n25. Linear: add a teal #66CCCC box labeled 'Linear' (black text) below 'Softmax', encircled by a red dashed ellipse.\n26. Decoder stack container: add a large rounded rectangle with light fill and thin border below 'Linear', sitting over the light-green rectangle, with a thin yellow accent line on its right edge.\n27. Decoder stack box 1 (top of container): blue #4472C4 box 'Add & Norm', white bold text, green \u2713 at its left.\n28. Decoder stack box 2: gray #7F7F7F box 'Feed Forward', white bold text, black \u2713 at its left.\n29. Decoder stack box 3: blue #4472C4 box 'Add & Norm', white bold text (no check mark specified in the source).\n30. Decoder stack box 4: pink #FFC7CE box with thin red border, 'Multi-Head Attention' in dark-red bold text, red \u2713 at its right, encircled by a red dashed ellipse.\n31. Decoder stack box 5: blue #4472C4 box 'Add & Norm', white bold text, blue \u2713 at its right.\n32. Decoder stack box 6: purple #C9A0DC box 'Masked Multi-Head Attention' (white bold text wrapping to 2\u20133 lines), green \u2713 at its right, red '\u2248' symbol at its left.\n33. Decoder Q/K/V: add three small circles (~0.25 in, estimated) at the container's bottom labeled Q (red), K (blue), V (green).\n34. Decoder 'Nx': below the container, add a green \u2713 with the black label 'Nx' at the right side.\n35. Decoder Positional Encoding: add a brown #A0622D circle with a white sine-wave glyph and a black two-line label 'Positional Encoding' at the right side, below 'Nx'.\n36. Decoder Output Embedding: add a brown #A0622D box labeled 'Output Embedding' in white bold text with a dark-brown \u2713 at its left.\n37. Decoder Outputs arrow: add a red #FF0000 upward block arrow at the bottom of the decoder column with the black label 'Outputs (shifted right)'.\n38. Decoder connectors: add short thin arrows joining the stacked boxes, with small red/blue/green dots on the connectors (exact counts not specified in source).\n39. Callout 1 (topmost): add a white rectangle with red #FF0000 bold ~10\u201311 pt text 'Decoder Only' in the decoder panel's left portion (callout band x 59\u201370%, y 25\u201367%), plus a red right-pointing block arrow from it to a red dashed ellipse around 'Softmax'.\n40. Callout 2: add a white rectangle with red bold text 'Decoder Only' below callout 1, plus a red right-pointing block arrow to a red dashed ellipse around 'Linear'.\n41. Callout 3: add a white rectangle with red bold text 'Encoder \u2013 Decoder Attention' stacked on 3 lines, plus a red right-pointing block arrow to a red dashed ellipse around the decoder's 'Multi-Head Attention' box.\n42. Callout 4 (bottommost): add a white rectangle with red bold text 'Adding Mask', plus a red right-pointing block arrow pointing at 'Masked Multi-Head Attention' (no ellipse).",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Schema check passed for slide_title, verbatim_text.bullets, layout.arrangement, layout.regions, visual_elements, colors, recreation_brief; verbatim_text.bullets is intentionally empty and subtitle_or_header is intentionally null because both are truly absent from the source (diagram-only slide: 24 label strings, no bullet text, no subtitle) \u2014 nothing was invented to fill them.",
+      "Replaced the vague quantifier in imagery ('Multiple checkmark glyphs') with the exact count derived from the diagram descriptions: 13 checkmarks \u2014 6 green, 2 black, 2 blue, 2 red, 1 dark brown.",
+      "Fixed a palette inconsistency in recreation_brief: the 'Decoder' label color was #00A050, which appears nowhere in the JSON; changed to #00B050, the green used for panel borders and check marks.",
+      "Harmonized overlay coverage wording in layout.arrangement and animation_state with visual_elements: encoder overlay = bright-green #00E100 rectangle over the right ~60% of the panel; decoder overlay = light-green #CCFFCC rectangle over the right ~55% (both previously 'right half').",
+      "Made the dashed-ellipse count explicit in layout.regions (Decoder panel) and recreation_brief: 3 of the 4 callouts carry red dashed ellipses (Softmax, Linear, Multi-Head Attention); 'Adding Mask' points at its target without an ellipse.",
+      "Added exact counts to layout.hierarchy: the decoder panel contains 4 white callout boxes, 3 red dashed ellipses and 6 red block arrows (4 right-pointing + 2 upward); the encoder contains 1 upward red block arrow (7 red block arrows slide-wide).",
+      "Removed non-derivable specifics from recreation_brief: the '~1.9 in' container width (replaced with panel-relative placement in the left ~40% peach portion), the '2 pt'/'1.5 pt' border weights (replaced with 'thin'), the over-general 'join all stacked boxes' instruction (the source only describes encoder connectors between the stack and the embedding box), and the non-actionable phrase 'as in the original'.",
+      "Deduplicated the encoder diagram's colors array (#00B050 was listed twice).",
+      "Documented label multiplicities for the builder: 'Add & Norm' appears 5\u00d7 (2 encoder, 3 decoder); 'Decoder Only', 'Feed Forward', 'Multi-Head Attention', 'Output Embedding', 'Positional Encoding', 'Nx', 'Q', 'K', 'V' each appear 2\u00d7; the remaining 13 label strings appear once.",
+      "Rewrote recreation_brief from 12 multi-element steps into a 42-step ordered checklist that places exactly one element per step with its exact text, position, color and shape type."
+    ],
+    "uncertain_items": [
+      "Exact counts of connector lines/dots are not specified in the source: the encoder has 'thin vertical connectors' from the stack to the embedding box; the decoder has 'short arrows' plus small red/blue/green dots between the stacked boxes.",
+      "Exact border weights (panel borders, the pink box's red border, container borders) are not specified; 'thin' is used throughout.",
+      "The source gives only qualitative sizes for the Q/K/V circles ('small') and the '51' badge text; the brief uses estimates (~0.25 in circles, ~14 pt badge text).",
+      "The exact red shade of the 'Encoder' panel label is not specified (source says only 'red'); #FF0000 is assumed to match the slide's red accents \u2014 note the title uses a different red, #C00000.",
+      "Slide aspect ratio is assumed 16:9 (not stated in the source JSON).",
+      "The solid bright-green #00E100 rectangle covering the encoder's right ~60% has no explained purpose; per animation_state it is treated as a static annotation/masking shape, not a mid-build reveal state."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_051.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 51,
+      "image": "slide_051.jpg",
+      "kept_frame": "frame_04173.jpg",
+      "start_sec": 4129.0,
+      "end_sec": 4172.0,
+      "frame_count": 44,
+      "old_slide": 122
+    },
+    "elapsed_s": 353.8,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1015.7
+  }
+}

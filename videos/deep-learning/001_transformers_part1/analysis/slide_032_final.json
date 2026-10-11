@@ -1,0 +1,216 @@
+{
+  "slide_title": "Linear Transformation",
+  "subtitle_or_header": "(= Fully connected Layer)",
+  "verbatim_text": {
+    "bullets": [
+      "X_2 \u00b7 W_Q = X_Q",
+      "X_2 = [X_21  X_22  X_23  X_24]  (dimension 1xd)",
+      "W_Q = [[W_11, W_21, W_31, W_41], [W_12, W_22, W_32, W_42], [W_13, W_23, W_33, W_43], [W_14, W_24, W_34, W_44]]  (dimension dxd)",
+      "X_Q = [X_Q21, X_Q22, X_Q23, X_Q24]  (result column, 1xd)"
+    ],
+    "labels": [
+      "32",
+      "X_2",
+      "1xd",
+      "W_Q",
+      "dxd",
+      "=",
+      "X_21",
+      "X_22",
+      "X_23",
+      "X_24",
+      "X_Q21",
+      "X_Q22",
+      "X_Q23",
+      "X_Q24",
+      "W_11",
+      "W_21",
+      "W_31",
+      "W_41",
+      "W_12",
+      "W_22",
+      "W_32",
+      "W_42",
+      "W_13",
+      "W_23",
+      "W_33",
+      "W_43",
+      "W_14",
+      "W_24",
+      "W_34",
+      "W_44",
+      "W_11 (network, red)",
+      "W_12 (network, red)",
+      "W_13 (network, red)",
+      "W_14 (network, red)",
+      "W_21 (network, blue)",
+      "W_22 (network, blue)",
+      "W_21 (network, blue, second instance at right; possibly W_23) [?]",
+      "W_41 (network, green)",
+      "W_42 (network, green)",
+      "W_43 (network, green)",
+      "W_44 (network, green)"
+    ],
+    "equations": [
+      "X_2 \u00b7 W_Q = X_Q",
+      "X_2 = [X_21  X_22  X_23  X_24]  (dimension 1xd)",
+      "W_Q = [[W_11, W_21, W_31, W_41], [W_12, W_22, W_32, W_42], [W_13, W_23, W_33, W_43], [W_14, W_24, W_34, W_44]]  (dimension dxd)",
+      "X_Q = [X_Q21, X_Q22, X_Q23, X_Q24]  (result column, 1xd)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Thin dark-red rectangular frame insets the whole slide. Top-right: yellow slide-number circle (32). Top-left: white rounded panel with red border containing the vector-matrix equation (input pill, 4x4 weight matrix, equals sign, output column). Top-right-center: red title with blue italic subtitle. Center: large red-outlined elbow block arrow pointing from the title down into the diagram. Bottom-right: large blue-bordered rounded panel containing a fully-connected-network diagram (4 output circles on top, gray weight-label band in the middle, 4 input circles on bottom).",
+    "regions": [
+      {
+        "name": "Red frame border",
+        "position": "inset outline spanning ~4%-96% width, ~8%-98% height",
+        "content": "Thin dark-red rectangle framing all content; no fill; bottom edge sits very close to the slide bottom."
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top-right, ~91%-95% width, ~11%-17% height",
+        "content": "Yellow circle with black number 32."
+      },
+      {
+        "name": "Equation panel",
+        "position": "top-left, ~5.5%-48.5% width, ~13%-50% height",
+        "content": "White rounded panel, red border: pink pill with X_21..X_24 circles, labels X_2 / 1xd / W_Q / dxd, 4x4 yellow matrix, red equals sign, pink 4x1 output column X_Q21..X_Q24."
+      },
+      {
+        "name": "Title block",
+        "position": "top-right-center, ~60%-87% width, ~21%-32% height",
+        "content": "Red bold 'Linear Transformation' over blue bold-italic '(= Fully connected Layer)', both centered on the same axis."
+      },
+      {
+        "name": "Elbow block arrow",
+        "position": "center, ~50.5%-60% width, ~26.5%-44.5% height",
+        "content": "Large white block arrow with red outline; horizontal tail below the subtitle bending 90 degrees downward, arrowhead pointing down at the network panel."
+      },
+      {
+        "name": "Network diagram panel",
+        "position": "bottom-right, ~50%-94.5% width, ~45.5%-93.5% height",
+        "content": "Blue-bordered rounded panel: top row of 4 blue-bordered output circles X_Q21..X_Q24, middle light-gray band with red 'W_Q' and 11 weight labels (4 red W_1x, 3 blue W_2x including 1 uncertain, 4 green W_4x), bottom row of 4 red-bordered gray input circles X_21..X_24, with 16 thin color-coded connection lines fanning between rows behind the band (red from X_21, blue from X_22, green from X_24, faint from X_23)."
+      }
+    ],
+    "hierarchy": "1) Network diagram dominates by area and its blue border draws the eye; 2) equation panel (white box, red border) anchors top-left; 3) title is the largest text (red) with blue subtitle second; 4) elbow arrow is a large connective glyph; 5) smallest: dimension labels 1xd/dxd and the 32 badge. Red is the dominant accent color, blue secondary, yellow only on the badge."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Equation panel: rounded rectangle, white fill, dark-red ~2.5pt border, corner radius ~15px. Contents left to right: (a) pale pink-lavender rounded pill containing four small white circles with red borders labeled X_21, X_22, X_23, X_24 (black bold, subscripts); (b) red bold 'X_2' (subscript 2) below the pill, tiny red '1xd' at the pill's lower right; (c) red bold 'W_Q' (subscript Q) below X_2; (d) the 4x4 matrix (separate element); (e) tiny red 'dxd' at the matrix bottom-right; (f) red bold '=' sign; (g) vertical 4x1 output vector of four pink rounded cells with dark-maroon text X_Q21, X_Q22, X_Q23, X_Q24.",
+      "colors": [
+        "#FFFFFF",
+        "#C00000",
+        "#EFD9EF",
+        "#F9C9D4",
+        "#8B1A1A"
+      ],
+      "position": "top-left, ~5.5%-48.5% width, ~13%-50% height"
+    },
+    {
+      "type": "table",
+      "description": "4x4 matrix of ~38x42px cells, pale-yellow fill, 1pt orange borders. Cell texts (bold, subscripted) with font colors - Row 1: W_11 (blue), W_21 (magenta), W_31 (orange), W_41 (green). Row 2: W_12, W_22, W_32, W_42 (all magenta/purple). Row 3: W_13, W_23, W_33, W_43 (all orange). Row 4: W_14, W_24, W_34, W_44 (all green). Subscript convention: first digit = input index (varies across columns), second digit = output index (varies down rows).",
+      "colors": [
+        "#FDF3C0",
+        "#E0A048",
+        "#2020C0",
+        "#B020B0",
+        "#E07020",
+        "#1A8A1A"
+      ],
+      "position": "inside equation panel, ~23%-39% width, ~16%-47.5% height"
+    },
+    {
+      "type": "arrow",
+      "description": "Large elbow/bent block arrow, white fill, dark-red ~2.5pt outline. Horizontal tail segment directly below the subtitle; shaft bends 90 degrees downward and terminates in a broad triangular arrowhead pointing straight down at the network panel.",
+      "colors": [
+        "#C00000",
+        "#FFFFFF"
+      ],
+      "position": "center, ~50.5%-60% width, ~26.5%-44.5% height"
+    },
+    {
+      "type": "network",
+      "description": "Fully-connected layer diagram inside a blue-bordered rounded rectangle (no fill). TOP ROW (outputs): four ~44px circles, white fill, blue 2pt borders, black bold subscripted labels X_Q21, X_Q22, X_Q23, X_Q24 at x ~56%, 67.5%, 78.6%, 88.8% width, y ~52%; small colored arc marks hug the bottom edge of X_Q21 (red), X_Q22 (blue), X_Q24 (green). MIDDLE: light-gray rounded band (#D9D9D9, no border) spanning ~51%-93% width, ~56.5%-79% height, containing red bold 'W_Q' at its left edge plus weight labels: red W_11, W_12, W_13, W_14 stepping down-right; blue W_21, W_22, plus a second blue label read as W_21 (possibly W_23) [?]; green W_41, W_42, W_43, W_44 stepping down-right; a small dark-navy arrowhead sits mid-diagram (~72% width, ~64% height) on a blue line pointing down-left. BOTTOM ROW (inputs): four ~44px circles, gray fill #C0C0C0, red 2pt borders, black bold labels X_21, X_22, X_23, X_24 at the same x positions, y ~85.5%. CONNECTIONS: thin ~1pt lines from every input circle to every output circle (16 total) passing behind the gray band; lines from X_21 are red, from X_22 blue, from X_24 green; lines from X_23 are faint/unlabeled (no W_31-W_34 labels shown).",
+      "colors": [
+        "#2020C0",
+        "#FFFFFF",
+        "#C0C0C0",
+        "#C00000",
+        "#D9D9D9",
+        "#1A8A1A",
+        "#E07020"
+      ],
+      "position": "bottom-right, ~50%-94.5% width, ~45.5%-93.5% height"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: yellow circle ~36px diameter with black '32' centered.",
+      "colors": [
+        "#FFD500",
+        "#000000"
+      ],
+      "position": "top-right, ~91%-95% width, ~11%-17% height"
+    }
+  ],
+  "imagery": [
+    "No photographs, icons, or illustrations; all visuals are flat vector shapes (circles, rounded rectangles/pills, matrix grid cells, one block arrow, connector lines)."
+  ],
+  "colors": {
+    "background": "#E8E8E8",
+    "title_text": "#CC0000",
+    "body_text": "#1A1A1A",
+    "accents": [
+      "#C00000 (frame, panel borders, red labels/lines)",
+      "#2020C0 (blue subtitle, network border, W_2x labels)",
+      "#FFD500 (slide badge)",
+      "#F9C9D4 (pink output cells)",
+      "#EFD9EF (pink-lavender pill)",
+      "#FDF3C0 (pale-yellow matrix cells)",
+      "#E0A048 (orange matrix cell borders)",
+      "#B020B0 (magenta matrix text)",
+      "#E07020 (orange matrix text)",
+      "#1A8A1A (green labels/lines)",
+      "#D9D9D9 (gray weight band)",
+      "#C0C0C0 (gray input circles)"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Calibri-like). Title ~22pt bold red; subtitle ~20pt bold italic blue; all math tokens (X, W) bold with numeric/letter subscripts (e.g., X_21, W_Q, X_Q21); dimension labels 1xd and dxd are tiny (~9pt) red; slide number plain black. No serif fonts, no all-caps, no numbered bullets; heavy reliance on subscript formatting and color-coded math text.",
+  "animation_state": "No dimmed or ghosted placeholder elements; slide appears fully revealed. Caveat: the network diagram labels weights for inputs 1, 2 and 4 (red W_1x, blue W_2x, green W_4x) but shows no W_31-W_34 labels for input X_23 - either a deliberate omission or a paused build step.",
+  "recreation_brief": "1. Slide setup: 16:9 canvas, light-gray background #E8E8E8. Frame: a no-fill rectangle with 2.5pt dark-red #C00000 outline inset to ~4%-96% width and ~8%-98% height (bottom edge ~2% from the slide bottom).\n2. Slide-number badge (top-right, ~91%-95% width, ~11%-17% height): yellow #FFD500 circle ~36px (~0.9in) diameter with centered black plain-weight '32' (Arial, ~14pt).\n3. Equation panel (top-left, ~5.5%-48.5% width, ~13%-50% height): rounded rectangle, white #FFFFFF fill, corner radius ~15px, 2.5pt dark-red #C00000 border.\n4. Input pill (left side inside the equation panel): pale pink-lavender #EFD9EF rounded pill holding four small white circles with thin (~1.5pt) red borders, labeled left-to-right X_21, X_22, X_23, X_24 (black bold, subscripted).\n5. Pill captions: red bold 'X_2' (subscript 2, ~18pt) below the pill; tiny red '1xd' (~9pt) at the pill's lower right; red bold 'W_Q' (subscript Q) below 'X_2'.\n6. Weight matrix (inside the equation panel, right of the pill, ~23%-39% width, ~16%-47.5% height): 4x4 grid of ~38x42px (~0.4in) cells, pale-yellow #FDF3C0 fill, 1pt orange #E0A048 borders. Bold subscripted cell text colored per row - Row 1: W_11 #2020C0, W_21 #B020B0, W_31 #E07020, W_41 #1A8A1A; Row 2: W_12, W_22, W_32, W_42 all #B020B0; Row 3: W_13, W_23, W_33, W_43 all #E07020; Row 4: W_14, W_24, W_34, W_44 all #1A8A1A. Add tiny red 'dxd' (~9pt) at the matrix bottom-right.\n7. Equals sign: red bold '=' (~20pt) to the right of the matrix.\n8. Output vector (right of the '='): vertical 4x1 stack of four pink #F9C9D4 rounded cells with dark-maroon #8B1A1A bold text X_Q21, X_Q22, X_Q23, X_Q24 (top to bottom).\n9. Title block (top-right-center, ~60%-87% width, ~21%-32% height): 'Linear Transformation' in bold red #CC0000 ~22pt centered at ~73.5% width, ~26% height; directly below on the same center axis, '(= Fully connected Layer)' in bold italic blue #2020C0 ~20pt.\n10. Elbow block arrow (center, ~50.5%-60% width, ~26.5%-44.5% height): white fill, 2.5pt dark-red #C00000 outline; horizontal tail directly below the subtitle, shaft bending 90 degrees downward, broad triangular arrowhead pointing straight down at the network panel.\n11. Network panel (bottom-right, ~50%-94.5% width, ~45.5%-93.5% height): rounded rectangle, no fill, 2.5pt blue #2020C0 border.\n12. Output circles (top row inside the network panel, y ~52%): four ~44px (~0.45in) circles, white fill, 2pt blue #2020C0 borders, black bold subscripted labels X_Q21, X_Q22, X_Q23, X_Q24 at x ~56%, 67.5%, 78.6%, 88.8% width. Add small arc marks hugging the bottom edge of X_Q21 (red #C00000), X_Q22 (blue #2020C0), and X_Q24 (green #1A8A1A).\n13. Gray weight band (middle of the network panel, ~51%-93% width, ~56.5%-79% height): rounded rectangle, #D9D9D9 fill, no border. Place red bold 'W_Q' (subscript Q) at its left edge, then bold subscripted weight labels stepping down-right: red #C00000 W_11, W_12, W_13, W_14; blue #2020C0 W_21, W_22, plus a third blue label read as W_21, possibly W_23 [?]; green #1A8A1A W_41, W_42, W_43, W_44. Do not add W_31-W_34 labels (none appear on the slide).\n14. Input circles (bottom row, y ~85.5%): four ~44px (~0.45in) circles, gray #C0C0C0 fill, 2pt red #C00000 borders, black bold subscripted labels X_21, X_22, X_23, X_24 at the same x positions as the output circles.\n15. Connections: 16 thin ~1pt lines, one from every input circle to every output circle, sent behind the gray band - red #C00000 lines from X_21, blue #2020C0 from X_22, green #1A8A1A from X_24, and faint low-contrast lines from X_23 (color unspecified in source; no labels). Add a small dark-navy arrowhead on a blue line at ~72% width, ~64% height, pointing down-left.\n16. Typography: Arial/Calibri-like sans-serif throughout; apply subscript formatting to every numeric/letter subscript (X_2, W_Q, X_21..X_24, X_Q21..X_Q24, W_11..W_44); keep red the dominant accent, blue secondary, yellow only on the badge.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Schema: verbatim_text.bullets was empty; populated with the 4 equation lines from verbatim_text.equations (the slide's only line-form text - it contains no traditional bullet list).",
+      "recreation_brief: removed the unsupported 'orange' color for X_23's connection lines (source states only 'faint/unlabeled'); now specified as faint low-contrast lines with color explicitly marked as unspecified.",
+      "recreation_brief: changed the badge '32' from bold to plain weight to match typography_notes ('slide number plain black').",
+      "recreation_brief: corrected elbow-arrow span from ~51%-60% width / ~27%-44.5% height to ~50.5%-60% width / ~26.5%-44.5% height to match visual_elements.",
+      "recreation_brief: corrected title center from ~24% to ~26% height (center of the Title block region ~21%-32% height) and pinned the width to ~73.5%.",
+      "recreation_brief: restored the '[?]' marker on the third blue network weight label ('read as W_21, possibly W_23 [?]'), replacing the previously asserted 'likely intended W_23'.",
+      "layout.regions (Network diagram panel): replaced the vague 'thin colored connection lines' with the exact count and colors: 16 lines - red from X_21, blue from X_22, green from X_24, faint from X_23.",
+      "recreation_brief: added the equation panel corner radius (~15px) and the output cells' dark-maroon #8B1A1A text color from visual_elements, both previously missing from the brief."
+    ],
+    "uncertain_items": [
+      "Third blue weight label in the network gray band reads as W_21 (second instance at right) but is possibly W_23 [?]; kept with the marker.",
+      "Color of the 4 connection lines from input X_23 is not specified (source says only 'faint', with no W_31-W_34 labels); the original brief's 'orange' was an unverifiable inference and was removed.",
+      "Matrix cell text colors do not match the network label colors for the same weights (e.g., W_11 blue #2020C0 in the matrix vs red #C00000 in the network; W_21 magenta #B020B0 in the matrix vs blue in the network); both descriptions retained as extracted - may be genuine dual color-coding or a vision-model reading artifact.",
+      "Missing W_31-W_34 labels for input X_23: cannot determine whether this is a deliberate omission or a paused build step (see animation_state)."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_032.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 32,
+      "image": "slide_032.jpg",
+      "kept_frame": "frame_02987.jpg",
+      "start_sec": 2948.0,
+      "end_sec": 2986.0,
+      "frame_count": 39
+    },
+    "elapsed_s": 617.7,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1241.0
+  }
+}

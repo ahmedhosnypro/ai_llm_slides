@@ -1,0 +1,113 @@
+1. TITLE
+
+Exact title text, top-center of slide, large dark-red bold font: "Encoder â Decoder Transformer" (with an en dash / hyphen between "Encoder" and "Decoder").
+
+Badge numeral top-right: a yellow circle with a purple/dark outline containing the numeral "5".
+
+2. ALL VERBATIM TEXT
+
+Title block:
+- "Encoder â Decoder Transformer"
+- Badge circle: "5"
+
+Top callout banner 1 (peach/orange filled rectangle, black bold text with colored emphasis):
+- "Both Encoder and Decoder Blocks Contain"
+- ""Multi-Head Self Attention" block" â the phrase Multi-Head Self Attention is in bold blue; the surrounding quote marks are present. Note: the word "Self" appears slightly lower-set than the rest of the line (baseline artifact in the original slide); it reads "Self Attention".
+
+Top callout banner 2 (light gray/beige filled rectangle, brown bold text):
+- ""h" Heads"
+- "Outputs of Heads are concatenated" â the word "concatenated" is in red.
+
+Left inset panel heading (red italic, two lines): "Scaled Dot-Product Attention"
+
+Middle inset panel heading (red italic, one line): "Multi-Head Attention"
+
+Left panel box labels (bottom to top):
+- Circle "Q" (red circle)
+- Circle "K" (blue circle)
+- Circle "V" (blue circle)
+- Rectangle "MatMul" (lavender/purple fill)
+- Rectangle "Scale" (yellow fill)
+- Rectangle "Mask (opt.)" (pink fill)
+- Rectangle "SoftMax" (light green fill)
+- Rectangle "MatMul" (lavender/purple fill)
+
+Middle panel box labels (bottom to top):
+- Circle "V" (blue)
+- Circle "K" (blue)
+- Circle "Q" (red)
+- Three rectangles each labeled "Linear" (white fill)
+- Large rectangle "Scaled Dot-Product Attention" (pink/magenta fill)
+- Small brown circle labeled "h" to the right of the attention box
+- Rectangle "Concat" (yellow fill)
+- Rectangle "Linear" (white fill)
+
+Right panel labels:
+- "Encoder" (red italic, top-left of the right panel)
+- "Decoder" (red italic, top-right of the right panel)
+- "NÃ" (dark text, right edge of decoder stack, indicating repetition)
+- Encoder column, bottom to top: "Inputs" (bottom label), "Positional Encoding" (two-line label left of a brown box), box "Input Embedding" (dark red/maroon fill), a small clock/timer icon next to the positional encoding block, "Add & Norm" (bottom one), orange highlighted block "Attention" (partially legible; consistent with "Multi-Head Attention"), "Add & Norm", "Feed Forward", "Add & Norm" (top). Small circles labeled "V", "K", "Q" (K appears on a blue circle, Q on a red circle) at the input side of the encoder attention block.
+- Decoder column, bottom to top: "Outputs (shifted right)" (bottom label, with "(shifted right)" beneath), box "Output Embedding" (dark red/maroon fill), "Positional Encoding" (two-line label right of a brown box with clock icon), "Masked Multi-Head Attention" (purple/violet block, three lines: "Masked / Multi-Head / Attention") with circles "V" (blue), "K" (blue), "Q" (red), "Add & Norm", orange/red highlighted block "Multi-Head Attention" (two lines) with circles "V" (blue), "K" (blue), "Q" (red), "Add & Norm", "Feed Forward", "Add & Norm", "Linear" (white box), "Softmax" (light green box), top label "Output Probabilities" with a thick red upward arrow labeled/near "Output".
+- A yellow translucent highlight rectangle overlays the top of the decoder stack (around the upper Add & Norm / Feed Forward region); an orange translucent highlight rectangle overlays the decoder "Multi-Head Attention" block region; another orange translucent highlight overlays the encoder "Attention" block region.
+
+3. EQUATIONS
+
+No mathematical equations appear on this slide. The only formulaic tokens are:
+- "h" (head-count symbol, appears in the callout banner ""h" Heads" and as a small circle labeled "h" beside the Scaled Dot-Product Attention box in the Multi-Head panel)
+- "NÃ" (stack-repetition notation, right of the decoder stack)
+- "Mask (opt.)" (optional-masking layer label)
+
+4. DIAGRAM TOPOLOGY
+
+Overall layout: three regions. Left inset = Scaled Dot-Product Attention panel; center inset = Multi-Head Attention panel; right = full EncoderâDecoder architecture. Data flow in all three panels is bottom-to-top. The left and center insets sit on the white/gray slide background; the right panel is a large container with a green border on a light background, subdivided into a peach/orange-tinted Encoder region (left half) and a light-green-tinted Decoder region (right half).
+
+Red dashed connector lines: two red dashed lines run from the left "Scaled Dot-Product Attention" panel's green-bordered box toward the central "Scaled Dot-Product Attention" block of the Multi-Head panel (indicating the left panel is expanded detail of that block). This is a zoom/expansion relationship, not data flow.
+
+LEFT PANEL â "Scaled Dot-Product Attention" (green solid border, white fill; contents bottomâtop):
+- Three circles at bottom: Q (red), K (blue), V (blue). Three short arrows rise from these into the first block. (Order left-to-right: Q, K, V.)
+- Block "MatMul" (lavender) â arrows from Q/K/V converge here.
+- Arrow up to block "Scale" (yellow).
+- Arrow up to block "Mask (opt.)" (pink).
+- Arrow up to block "SoftMax" (light green).
+- Arrow up to second block "MatMul" (lavender).
+- Arrow up and out of the top of the green box (output).
+- A small dark arrowhead/pen cursor artifact overlaps the right edge of the top MatMul area (see section 6).
+
+MIDDLE PANEL â "Multi-Head Attention" (green solid border, white fill; contents bottomâtop):
+- Three circles at bottom, left-to-right: V (blue), K (blue), Q (red).
+- Each circle has an upward arrow into its own "Linear" box (white) â three parallel Linear boxes.
+- Three arrows rise from the three Linear boxes into the single large block "Scaled Dot-Product Attention" (pink/magenta). Stacked/shadowed duplicates of the attention box are drawn behind it (layered-card effect suggesting h parallel copies). A small brown circle labeled "h" sits at the right edge of the attention block with a short arrow, indicating h heads.
+- Arrow up from the attention block to "Concat" (yellow).
+- Arrow up to "Linear" (white).
+- Arrow up and out of the top of the green box (output).
+
+RIGHT PANEL â full architecture (green outer border). Two vertical columns:
+
+ENCODER column (peach/orange region, label "Encoder"; data flows bottomâtop):
+- Bottom label "Inputs" with a thick red upward arrow entering the stack.
+- Brown box "Input Embedding"; a clock/timer icon beside it inside a brown "Positional Encoding" container (label "Positional Encoding" to the left).
+- Residual connections are drawn as lines that bypass blocks on the left side and merge back (the classic Vaswani residual skip lines). Bottom-up: block "Attention" (orange highlighted) receiving V, K, Q circles (blue, blue, red) at its input; "Add & Norm" (white box) â sum/join node where the residual merges; then "Feed Forward"; then top "Add & Norm".
+- The encoder output exits the top and is routed via a curved red dashed line to the right, crossing into the Decoder column and feeding the decoder's "Multi-Head Attention" block (cross-attention K/V source). A second dashed curved red line also appears near the top-right, arcing from around the encoder/decoder boundary up toward the decoder top (decorative flow indicating encoderâdecoder connection).
+
+DECODER column (light-green region, label "Decoder"; data flows bottomâtop):
+- Bottom label "Outputs (shifted right)".
+- Dark red/maroon box "Output Embedding"; a brown "Positional Encoding" container with clock icon to its right (label "Positional Encoding" on the right side).
+- Bottom-up: block "Masked Multi-Head Attention" (purple/violet) with input circles V (blue), K (blue), Q (red); "Add & Norm"; block "Multi-Head Attention" (orange highlighted) with input circles V (blue), K (blue), Q (red) â this block also receives the dashed red encoder output connection; "Add & Norm"; "Feed Forward"; "Add & Norm" (top, inside the yellow translucent highlight); "Linear" (white); "Softmax" (light green); thick red upward arrow exiting the top toward the label "Output", with the caption "Output Probabilities" just below the top edge.
+- "NÃ" label with a small red marker on the right edge of the decoder stack, indicating the block repeats N times.
+
+Resemblance to published figures: The right panel is a redrawn version of Vaswani et al. 2017, "Attention Is All You Need", Figure 1 (the Transformer model architecture): same two-column encoder/decoder layout, same bottom-to-top flow, same block sequence (Embedding â Positional Encoding â [Masked] Multi-Head Attention â Add & Norm â Multi-Head Attention â Add & Norm â Feed Forward â Add & Norm â Linear â Softmax), same "Outputs (shifted right)", "Input Embedding", "Positional Encoding", "NÃ", and red upward output arrow. Differences from the original: colored fills added (orange highlights on the attention blocks, yellow highlight near decoder top, translucent overlay bands), clock icons added beside positional encoding, V/K/Q circles explicitly drawn at attention-block inputs, and red dashed curved encoderâdecoder connection lines instead of the original's plain gray arrow. The left panel reproduces Vaswani et al. Figure 2 (left): "Scaled Dot-Product Attention" with the identical layer stack MatMul â Scale â Mask (opt.) â SoftMax â MatMul fed by V, K, Q. The middle panel reproduces Vaswani et al. Figure 2 (right): "Multi-Head Attention" with h parallel Scaled Dot-Product Attention units, Concat, and final Linear. Differences from Figure 2: the h parallel copies are drawn as stacked shadow duplicates rather than h repeated boxes, and an "h" bubble with an arrow denotes the head count. The two callout banners ("Both Encoder and Decoder Blocks Contain "Multi-Head Self Attention" block"; ""h" Heads / Outputs of Heads are concatenated") are instructor-added annotations, not part of the Vaswani figures.
+
+5. NUMBERS/DATA
+
+- Badge numeral: 5
+- "NÃ" (decoder stack repetition)
+- "h" (number of heads, symbolic; no numeric value given)
+- "Mask (opt.)" â no numeric values, tables, percentages, or dataset sizes appear anywhere on the slide.
+
+6. BUILD STATE / ARTIFACTS
+
+- A dark mouse-cursor / pen-pointer arrowhead artifact overlaps the right edge of the top "MatMul" block in the left Scaled Dot-Product Attention panel.
+- Translucent highlight overlays (yellow band over the decoder's upper Add & Norm / Feed Forward area; orange bands over the decoder Multi-Head Attention block and the encoder Attention block) suggest the frame was captured mid-lecture with emphasis highlighting active â these look like static slide design elements / live annotation rather than transient build states.
+- A small red "Ã"-like marker accompanies the "NÃ" label at the decoder's right edge.
+- No partial-reveal animation states, no video watermark, no progress bar, no closed-caption overlay, and no timestamp overlay are visible. The slide appears fully built (all three panels and both callouts present simultaneously).
+- Black horizontal bar at the very bottom of the frame (video letterboxing, not slide content).

@@ -1,0 +1,157 @@
+{
+  "slide_title": "Objective of Self attention",
+  "subtitle_or_header": "The boy climbs the tree in the garden",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "24",
+      "in",
+      "garden",
+      "the",
+      "Boy",
+      "tree",
+      "climbs",
+      "The boy climbs the tree in the garden",
+      "Boy",
+      "Boy"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "White slide margin surrounding a full-size light-gray panel outlined with a thin dark-red border. Title sits top center-right with a small yellow numbered badge '24' in the top-right corner. Directly below the title on the right is a white dashed-blue-bordered box containing the example sentence. The left ~55% of the panel is filled by one very large pale-cyan circle with a dashed blue border containing a fully-connected word-attention graph (6 word nodes, red arrows, small blue vector icons). The right side shows the output of the operation: a large hatched block arrow pointing right, a green 'Boy' node with an orange vector icon (top right), and a second green 'Boy' node with a blue vector icon (bottom center-right) linked to the orange vector by a red dashed line.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center-right, roughly x 40-82%, y 8-15%",
+        "content": "Bold black text 'Objective of Self attention'"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right corner, roughly x 89-96%, y 8-16%",
+        "content": "Yellow circle with orange border containing '24'"
+      },
+      {
+        "name": "Example sentence box",
+        "position": "top right, roughly x 50-93%, y 18-26%",
+        "content": "White rectangle, dashed blue border, sentence 'The boy climbs the tree in the garden' with 'boy' in bold"
+      },
+      {
+        "name": "Attention graph circle",
+        "position": "left half, roughly x 4-54%, y 9-98%",
+        "content": "Large dashed-border pale-cyan circle containing 6 word nodes (in, garden, the, Boy, tree, climbs), red double-headed attention arrows of varying thickness, and 5 small blue embedding-vector icons"
+      },
+      {
+        "name": "Block arrow",
+        "position": "center-right, roughly x 52-68%, y 50-60%",
+        "content": "Large right-pointing block arrow, pink hatched fill with red outline"
+      },
+      {
+        "name": "Output Boy + orange vector",
+        "position": "right, roughly x 68-90%, y 42-78%",
+        "content": "Green 'Boy' circle with a small orange rounded-rectangle vector icon (4 orange bars) at its lower right"
+      },
+      {
+        "name": "Input Boy + blue vector + dashed link",
+        "position": "bottom center-right, roughly x 55-75%, y 72-98%",
+        "content": "Green 'Boy' circle with a small blue rounded-rectangle vector icon (4 light-blue bars) at its lower right; red dashed line runs from this blue vector up-right to the orange vector"
+      }
+    ],
+    "hierarchy": "The title is the largest text. The left attention circle dominates by area. Most visually salient colors are the red arrows, the green 'Boy' nodes, and the dashed blue borders. Node labels are bold and larger than the sentence text; the '24' badge is small. The right-side result graphic is sparser and reads as the 'conclusion' of the left diagram."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Self-attention word graph inside one huge pale-cyan circle with dashed dark-blue border. Six circular word nodes: 'in' (top-left), 'garden' (top-right), 'the' (mid-left), 'Boy' (center, the only green node), 'tree' (mid-right), 'climbs' (bottom). Red arrows (mostly double-headed, thickness varies ~2-4pt, suggesting attention weights) connect: in<->garden; in<->the; in<->Boy [?]; the<->garden [?]; the<->Boy; the<->tree (long diagonal crossing the circle); Boy<->garden (THICK); Boy<->tree (thick); Boy<->climbs (thick, near-vertical); climbs<->tree [?]; garden<->tree (THICK, along right edge). Next to five of the nodes are small 'embedding vector' icons: rounded rectangles with blue outlines containing 4 stacked short horizontal light-blue bars, placed beside 'in' (left, outside circle edge), 'the' (lower-left), 'Boy' (right, inside circle), 'climbs' (right), 'tree' (below); 'garden' has no visible vector icon [?].",
+      "colors": [
+        "#E4F7F7",
+        "#2233CC",
+        "#FBF9CF",
+        "#C9F29B",
+        "#4C9A2A",
+        "#EE0000",
+        "#4472C4",
+        "#8FBCE6"
+      ],
+      "position": "left half of slide, x ~4-54%, y ~9-98%"
+    },
+    {
+      "type": "arrow",
+      "description": "Large right-pointing block arrow (PowerPoint 'Block Arrow: Right' style) with red outline and pink diagonal-hatch pattern fill, indicating transformation of the left graph into the right-side result.",
+      "colors": [
+        "#EE0000",
+        "#F2B8B8"
+      ],
+      "position": "center-right, x ~52-68%, y ~50-60%"
+    },
+    {
+      "type": "diagram",
+      "description": "Output/result graphic: (a) top-right green circle labeled 'Boy' (light green fill, darker green border) with an orange vector icon at its lower right \u2014 a rounded rectangle with orange-red outline containing 4 stacked horizontal orange bars (the new contextual embedding); (b) bottom green circle labeled 'Boy' (same style) with a blue vector icon at its lower right (rounded rectangle, blue outline, 4 light-blue bars \u2014 the original input embedding); (c) a thin red DASHED line connecting the bottom Boy's blue vector diagonally up-right to the orange vector, showing the input embedding being mapped to the output embedding.",
+      "colors": [
+        "#C9F29B",
+        "#4C9A2A",
+        "#FF6600",
+        "#FF4000",
+        "#4472C4",
+        "#8FBCE6",
+        "#EE0000"
+      ],
+      "position": "right portion, x ~55-90%, y ~42-98%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Example-sentence callout: white rectangle with dashed dark-blue border containing the sentence 'The boy climbs the tree in the garden', with the word 'boy' bolded.",
+      "colors": [
+        "#FFFFFF",
+        "#2233CC",
+        "#000000"
+      ],
+      "position": "top right, below title, x ~50-93%, y ~18-26%"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: small circle, yellow fill, orange border, black text '24'.",
+      "colors": [
+        "#FDFD96",
+        "#E8A33D",
+        "#000000"
+      ],
+      "position": "top-right corner, x ~89-96%, y ~8-16%"
+    }
+  ],
+  "imagery": [
+    "Small pen/annotation cursor icon visible on the garden<->tree arrow near the center-right of the big circle (~x 41%, y ~50%) \u2014 an artifact of live annotation in the video, not slide content per se.",
+    "Five blue 'embedding vector' pictograms (rounded rect + 4 light-blue horizontal bars) attached to word nodes in the left circle.",
+    "One orange 'contextual vector' pictogram (rounded rect + 4 orange horizontal bars) next to the top-right 'Boy' node.",
+    "One blue 'embedding vector' pictogram next to the bottom 'Boy' node."
+  ],
+  "colors": {
+    "background": "#E9E9E9 light-gray panel with #FFFFFF outer margin and #C00000 thin red panel border",
+    "title_text": "#000000",
+    "body_text": "#000000",
+    "accents": [
+      "#EE0000 (red arrows, dashed link, block-arrow outline)",
+      "#C9F29B / #4C9A2A (green Boy nodes)",
+      "#FBF9CF (pale-yellow word nodes)",
+      "#E4F7F7 / #2233CC (big dashed circle)",
+      "#4472C4 / #8FBCE6 (blue vector icons)",
+      "#FF6600 / #FF4000 (orange vector icon)",
+      "#FDFD96 / #E8A33D (slide-number badge)"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Calibri-like). Title: bold, ~28-30pt, black, mixed case. Node labels: bold, ~16-18pt. Example sentence: regular weight ~16-18pt with the single word 'boy' bolded for emphasis. Slide number: ~14-16pt regular. No italics, no bullet lists, no all-caps. Emphasis is achieved via bolding, color fills, and line thickness rather than font changes.",
+  "animation_state": "Slide appears fully built \u2014 no partial bullet/element reveal. The small pen icon resting on the garden<->tree arrow indicates the presenter was live-annotating when the frame was captured; it is not a build state.",
+  "recreation_brief": "1. Set slide background white; insert a rectangle from ~3% to ~97% width and ~7% to ~98% height, fill light gray #E9E9E9, border 2pt dark red #C00000. 2. Add a text box top center-right (centered ~x 60%, y 11%) with 'Objective of Self attention', Arial bold 28pt black. 3. Top-right corner: insert a small oval (~2.5% slide width) at ~x 92%, y 12%, fill #FDFD96, border 1.5pt #E8A33D, text '24' black 14pt centered. 4. Below the title add a rectangle x 50-93%, y 18-26%: white fill, 1.5pt DASHED blue #2233CC border, text 'The boy climbs the tree in the garden' 18pt black with the word 'boy' bold. 5. Left half: insert a large oval x 4-54%, y 9-98%, fill pale cyan #E4F7F7, 2pt DASHED blue #2233CC border. 6. Inside it place six circles (~9-10% slide width each): pale yellow #FBF9CF with thin gray border for 'in' (20%,26%), 'garden' (37%,29%), 'the' (12%,53%), 'tree' (44%,66%), 'climbs' (26%,81%); and green #C9F29B with 2pt #4C9A2A border for 'Boy' (27%,52%). Labels bold 18pt black, centered. 7. Draw red #EE0000 double-headed connectors: in<->garden; in<->the; in<->Boy; the<->garden; the<->Boy; the<->tree (long diagonal); climbs<->tree \u2014 all ~2pt; and thicker 4pt connectors Boy<->garden, Boy<->tree, Boy<->climbs, garden<->tree. 8. Add five 'embedding vector' icons: small rounded rectangles (~3% x 6% slide size), 1.5pt blue #4472C4 outline, white fill, each containing 4 stacked horizontal bars #8FBCE6; place beside 'in' (14%,31%), 'the' (10%,68%), 'Boy' (32%,62%), 'climbs' (32%,86%), 'tree' (40%,78%). 9. Center-right: insert PowerPoint 'Block Arrow: Right' shape x 52-68%, y 50-60%, outline 2pt #EE0000, fill #F2B8B8 with diagonal-hatch pattern. 10. Right side top: green circle 'Boy' (#C9F29B fill, #4C9A2A 2pt border) at ~x 73%, y 52%; at its lower right (~80%, 67%) add an orange vector icon: rounded rectangle, 1.5pt #FF4000 outline, containing 4 stacked horizontal bars #FF6600. 11. Bottom center-right: second green 'Boy' circle at ~x 59%, y 81%; at its lower right (~65%, 91%) add a blue vector icon as in step 8. 12. Connect the bottom blue vector to the orange vector with a thin RED DASHED line (#EE0000, 1.5pt, dash style). 13. Optionally add a tiny pen icon on the garden<->tree arrow only if replicating the video frame exactly.",
+  "_meta": {
+    "frame": "slide_024.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 24,
+      "image": "slide_024.jpg",
+      "kept_frame": "frame_02032.jpg",
+      "start_sec": 1828.0,
+      "end_sec": 2031.0,
+      "frame_count": 204
+    },
+    "elapsed_s": 169.8
+  }
+}

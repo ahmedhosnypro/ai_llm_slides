@@ -1,0 +1,223 @@
+{
+  "slide_title": "Self Attention Mechanism (Fundamental Operation)",
+  "subtitle_or_header": "(Self Attention of word X\u2082 w.r.t All words in Sentence ( X\u2081, X\u2082, X\u2083, X\u2084 )",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Similarity",
+      "Probabilities",
+      "Weighted SUM",
+      "Dot Product",
+      "Soft max",
+      "W\u2082\u2081",
+      "W\u2082\u2082",
+      "W\u2082\u2083",
+      "W\u2082\u2084",
+      "\u03a3",
+      "X\u2081",
+      "X\u2082",
+      "X\u2083",
+      "X\u2084",
+      "Y",
+      "26"
+    ],
+    "equations": [
+      "X\u2081, X\u2082, X\u2083, X\u2084 (subscripted tokens; appear in subtitle and as red labels on the embedding vectors \u2014 each of X\u2081\u2013X\u2084 appears three times: left stack, right stack, bottom sentence strip)",
+      "W\u2082\u2081, W\u2082\u2082, W\u2082\u2083, W\u2082\u2084 (subscripted weight labels on the four arrows leaving Soft max)",
+      "\u03a3 (large summation symbol inside the light-blue box)",
+      "Y (label on the green output vector at top)",
+      "[implicit, depicted graphically but NOT printed as text]: Y = \u03a3\u2c7c ( W\u2082\u2c7c \u00d7 X\u2c7c ) \u2014 softmax similarity weights of word X\u2082 applied to all sentence embeddings and summed"
+    ]
+  },
+  "layout": {
+    "arrangement": "White slide framed by a thin dark-red rectangular border. Top-center: two-line bold black title (line 1 has a yellow highlight behind '(Fundamental Operation)'; line 2 is the subtitle with red subscripted X tokens). Top-right: yellow circle with slide number 26. Below the title, one large peach rounded-rectangle canvas contains the entire self-attention diagram: input embedding stack (4 vectors in a green dashed container) at the left edge; 'Similarity' pill above a tan 'Dot Product' box at center-left; 'Probabilities' pill above a tall pink 'Soft max' bar at center; 'Weighted SUM' pill above a light-blue \u03a3 box at top center-right, with a thick green up-arrow to a green dashed 'Y' output box above it; four red arrows labeled W\u2082\u2081\u2013W\u2082\u2084 run from Soft max through four \u2297 multiplication nodes to a second embedding stack (4 vectors, green dashed container) at the right edge; along the bottom runs a green dashed sentence strip with vectors X\u2081\u2013X\u2084 (X\u2082 highlighted pink/magenta), a thin red arrow rising from X\u2082 into the Dot Product box, a chunky red block arrow pointing at X\u2082, and two dashed light-green curves feeding the bottom strip up into the left and right stacks.",
+    "regions": [
+      {
+        "name": "Title block",
+        "position": "top center, x\u224815\u201385%, y\u22488\u201320%",
+        "content": "Line 1: 'Self Attention Mechanism (Fundamental Operation)' \u2014 black bold, yellow highlight on the parenthetical. Line 2: subtitle with black bold text and red bold subscripted X\u2081\u2013X\u2084 tokens."
+      },
+      {
+        "name": "Slide number",
+        "position": "top right, x\u224890\u201395%, y\u224810\u201317%",
+        "content": "Yellow circle, thin black outline, black bold '26'."
+      },
+      {
+        "name": "Diagram canvas",
+        "position": "middle, x\u22484\u201396%, y\u224821\u201397%",
+        "content": "Peach rounded rectangle (no border) holding every diagram element."
+      },
+      {
+        "name": "Input embedding stack",
+        "position": "middle left, x\u22486\u201315%, y\u224842\u201374%",
+        "content": "Green dashed rounded container, light-green fill, four 3-block vectors labeled X\u2081\u2013X\u2084 top-to-bottom."
+      },
+      {
+        "name": "Similarity / Dot Product group",
+        "position": "center-left, x\u224826\u201336%; pill y\u224830\u201334%, box y\u224836\u201375%",
+        "content": "Yellow pill 'Similarity' above tan 'Dot Product' box containing four blue dots and red diagonal converging arrows."
+      },
+      {
+        "name": "Probabilities / Soft max group",
+        "position": "center, x\u224845\u201353%; pill y\u224830\u201334%, bar y\u224836\u201375%",
+        "content": "Yellow pill 'Probabilities' above tall narrow pink 'Soft max' bar with purple label rotated 90\u00b0 (reads bottom-to-top)."
+      },
+      {
+        "name": "Weighted SUM group",
+        "position": "top center-right, x\u224854\u201372%, y\u224822\u201340%",
+        "content": "'Weighted SUM' pill; wide short light-blue \u03a3 box; thick green block arrow pointing up; small green dashed box containing green 3-block vector labeled 'Y'."
+      },
+      {
+        "name": "Weighting arithmetic",
+        "position": "center-right, x\u224852\u201378%, y\u224842\u201370%",
+        "content": "Four horizontal red arrows from Soft max labeled W\u2082\u2081\u2013W\u2082\u2084 (top-to-bottom), each passing through a white \u2297 node (red ring, red asterisk) placed on a diagonal stepping down-to-the-right; vertical red lines rise from the nodes into the \u03a3 box; lines continue right into the right stack rows."
+      },
+      {
+        "name": "Right embedding stack",
+        "position": "middle right, x\u224879\u201388%, y\u224842\u201374%",
+        "content": "Green dashed rounded container with four 3-block vectors labeled X\u2081\u2013X\u2084 (tiny red type; mirrors the input stack)."
+      },
+      {
+        "name": "Sentence strip",
+        "position": "bottom center, x\u224818\u201351%, y\u224887\u201396%",
+        "content": "Green dashed rounded container with four vectors X\u2081\u2013X\u2084 left-to-right; second vector (X\u2082) highlighted with pink fill and magenta dashed border; chunky red block arrow at its lower-left points up-right at X\u2082; thin red arrow rises from X\u2082 to the Dot Product box."
+      },
+      {
+        "name": "Dashed feed connectors",
+        "position": "bottom-left and bottom-right sweeps, y\u224874\u201395%",
+        "content": "Two long dashed light-green curved connectors: strip's left end \u2192 left then up into the left stack's bottom (arrowhead up); strip's right end \u2192 right then up into the right stack's bottom (arrowhead up)."
+      }
+    ],
+    "hierarchy": "Visually dominant: the peach canvas filled with thin red connector arrows. Largest text: the two-line black bold centered title (with the single yellow highlight and red subscripts grabbing the eye first). Next tier: the large colored blocks \u2014 tan Dot Product box, pink Soft max bar, light-blue \u03a3 box \u2014 and the three yellow label pills. Finest tier: the small 3-block embedding vectors, blue W\u2082\u1d62 labels, \u2297 nodes and blue dots. The chunky green and red block arrows are small but high-salience accents."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "Self-attention dataflow for query word X\u2082, left-to-right. NODES: (1) Input stack \u2014 green dashed rounded container (light-green fill) holding four horizontal 3-block vectors labeled X\u2081, X\u2082, X\u2083, X\u2084 top-to-bottom (each vector = yellow block + pink block carrying a red subscripted label + lavender block). (2) 'Dot Product' box \u2014 large tan rectangle; inside are four solid dark-blue dots with thin dark outlines, one on each incoming horizontal line, staggered so the top dot is farthest right and the bottom dot farthest left; red arrows slant up-and-right from each dot, converging toward the box's right edge. (3) 'Soft max' bar \u2014 tall narrow plum rounded rectangle, purple rotated label. (4) '\u03a3' box \u2014 wide short light-blue rectangle with large blue \u03a3. (5) Output box \u2014 small green dashed rounded container holding a 3-block green vector labeled 'Y' (middle block). (6) Four multiplication nodes \u2014 white circles with red rings and red asterisks (\u2297-style), one on each weighted-sum line, staggered stepping down-to-the-right. (7) Right stack \u2014 green dashed container with four 3-block vectors labeled X\u2081\u2013X\u2084 (tiny type; mirrors input stack). (8) Sentence strip \u2014 green dashed container at bottom with four vectors X\u2081\u2013X\u2084 left-to-right; the second (X\u2082) emphasized with pink fill and magenta dashed border. ARROWS (thin red unless noted): each input-stack row feeds horizontally right into the Dot Product box ending at a blue dot; from the dots the converging red arrows exit the box's right side and continue as horizontal arrows into the left side of the Soft max bar (four entry lines in the bar's upper half); a long thin red arrow rises vertically from highlighted X\u2082 in the sentence strip into the bottom edge of the Dot Product box (the query); Soft max emits four horizontal red arrows rightward labeled W\u2082\u2081, W\u2082\u2082, W\u2082\u2083, W\u2082\u2084 top-to-bottom, each passing through its \u2297 node; from each \u2297 node a vertical red line runs up into the \u03a3 box (arrowhead at \u03a3) and the horizontal line continues right into the matching row of the right stack; a thick green block arrow points up from the \u03a3 box to the Y output box; two long dashed light-green curves connect the sentence strip to the bottoms of the left and right stacks (arrowheads pointing up into the stacks); a chunky red block arrow at the strip's lower-left points up-right at the highlighted X\u2082 block.",
+      "colors": [
+        "#FF0000",
+        "#0033CC",
+        "#C8B39C",
+        "#DFA6DF",
+        "#C5E0F5",
+        "#00B050",
+        "#92D050",
+        "#E2EFDA",
+        "#FFFF99",
+        "#FF99CC",
+        "#D9B3FF",
+        "#FF00FF"
+      ],
+      "position": "fills the peach canvas, x\u22485\u201395%, y\u224822\u201397% of the slide"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Three yellow rounded-pill labels with bold blue text floating above the diagram: 'Similarity' (above the Dot Product box), 'Probabilities' (above the Soft max bar), 'Weighted SUM' (above-right of the \u03a3 box).",
+      "colors": [
+        "#FFFF99 fill",
+        "#0033CC text"
+      ],
+      "position": "upper band of the canvas, y\u224830\u201334%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "'Dot Product' box: large tan rectangle, label 'Dot Product' in brown bold on two lines at its top-center; contains the four blue dots and the red converging diagonal arrows; its bottom edge receives the vertical red query arrow from X\u2082.",
+      "colors": [
+        "#C8B39C fill",
+        "#8B4513 text",
+        "#0033CC dots",
+        "#FF0000 arrows"
+      ],
+      "position": "center-left, x\u224827\u201336%, y\u224836\u201375%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "'Soft max' bar: tall narrow vertical rounded rectangle, plum/orchid fill, label 'Soft max' (two words) in purple bold rotated 90\u00b0 so it reads bottom-to-top; four red arrows enter its left side and four exit its right side.",
+      "colors": [
+        "#DFA6DF fill",
+        "#7030A0 text"
+      ],
+      "position": "center, x\u224848\u201351%, y\u224836\u201375%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "\u03a3 box: wide short light-blue rectangle with a large bold blue '\u03a3' centered; four thin red lines drop from its underside to the four \u2297 multiplication nodes.",
+      "colors": [
+        "#C5E0F5 fill",
+        "#0033CC text"
+      ],
+      "position": "top center-right, x\u224854\u201368%, y\u224836\u201340%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Y output box: small rounded rectangle with dashed green outline containing a 3-block vector in green tones (light green / medium green with bold 'Y' label / pale grey-green); receives the thick green up-arrow from the \u03a3 box.",
+      "colors": [
+        "#00B050 dashed border",
+        "#C6E0B4",
+        "#92D050",
+        "#A9D08E"
+      ],
+      "position": "top center-right, x\u224857\u201365%, y\u224822\u201327%"
+    },
+    {
+      "type": "other",
+      "description": "Repeating 'embedding vector' glyph used 12 times: a small horizontal bar of three adjacent rounded blocks \u2014 yellow, pink (carries the red bold subscripted label X\u1d62), lavender. Instances: 4 in the left stack (X\u2081\u2013X\u2084 top-to-bottom), 4 in the right stack (X\u2081\u2013X\u2084), 4 in the bottom sentence strip (X\u2081\u2013X\u2084 left-to-right). In the strip, the X\u2082 instance is emphasized: pink fill and a magenta dashed border around it. Left, right and bottom groups are each enclosed in a green dashed rounded container with light-green fill.",
+      "colors": [
+        "#FFFF99",
+        "#FF99CC",
+        "#D9B3FF",
+        "#FF0000 labels",
+        "#00B050 dashed containers",
+        "#E2EFDA fills",
+        "#FF00FF highlight border"
+      ],
+      "position": "left edge, right edge, and bottom-center of the canvas"
+    },
+    {
+      "type": "arrow",
+      "description": "Accent arrows: (a) thick green block arrow (classic PowerPoint block-arrow shape) pointing UP from the \u03a3 box to the Y output box; (b) chunky red block arrow at the sentence strip's lower-left pointing up-right at the highlighted X\u2082 block; (c) long thin red vertical arrow from X\u2082 up into the Dot Product box's bottom edge; (d) two long dashed light-green curved connectors from the sentence strip to the bottoms of the left and right stacks, arrowheads pointing up.",
+      "colors": [
+        "#00B050 (green block arrow)",
+        "#FF0000 (red block arrow and vertical arrow)",
+        "#92D050 (dashed curves)"
+      ],
+      "position": "green arrow top center-right (y\u224827\u201336%); red block arrow bottom-left of strip (x\u224827\u201331%, y\u224892\u201398%); vertical arrow x\u224831%, y\u224875\u201388%; dashed curves sweep y\u224874\u201395%"
+    }
+  ],
+  "imagery": [
+    "No photographs, clip-art or illustrations anywhere on the slide; all graphics are flat PowerPoint-style vector shapes (rounded rectangles, pills, circles, block arrows, dashed connectors).",
+    "Icon-like 'embedding vector' glyphs (3-block colored bars with a red letter label) repeated 12 times, plus one green variant labeled 'Y' \u2014 the only pictorial motifs."
+  ],
+  "colors": {
+    "background": "#FFFFFF (with a thin dark-red #C00000 rectangular border framing the whole slide)",
+    "title_text": "#000000 (subtitle X tokens in #FF0000; yellow #FFFF00 highlight behind '(Fundamental Operation)')",
+    "body_text": "#000000 general; diagram labels: #0033CC blue (pills, W\u2082\u1d62, \u03a3), #8B4513 brown (Dot Product), #7030A0 purple (Soft max), #FF0000 red (X\u1d62 vector labels)",
+    "accents": [
+      "#FFFF00 (title highlight, slide-number circle)",
+      "#FBE5D6 (peach canvas)",
+      "#FF0000 (arrows, red border, X labels)",
+      "#00B050 / #92D050 / #E2EFDA (greens)",
+      "#C8B39C (tan box)",
+      "#DFA6DF (softmax bar)",
+      "#C5E0F5 (\u03a3 box)",
+      "#FF00FF (magenta highlight border)",
+      "#FFFF99 / #FF99CC / #D9B3FF (vector blocks)"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Calibri-like), no italics, no serif. Title: two centered lines, bold, ~24\u201328pt black; the parenthetical '(Fundamental Operation)' carries a yellow text-highlight; subtitle line bold ~18\u201320pt with the four X tokens in bold red using true subscripts (X\u2081\u2013X\u2084). Diagram labels are small bold (~11\u201313pt): blue in the yellow pills and for W\u2082\u2081\u2013W\u2082\u2084 and \u03a3; brown two-line 'Dot Product'; purple 'Soft max' rotated 90\u00b0 (reads bottom-to-top); red subscripted X\u1d62 on every vector's pink block; 'Weighted SUM' uses all-caps 'SUM'. Slide number '26' bold black inside a yellow circle. Subscripts are used consistently for all indices.",
+  "animation_state": "Slide appears fully built \u2014 all four similarity paths, all weights W\u2082\u2081\u2013W\u2082\u2084, all \u2297 nodes, the \u03a3, the Y output and both side stacks are visible simultaneously; no mid-build reveal detected. The magenta/pink emphasis on X\u2082 in the sentence strip is a static design highlight, not an animation artifact.",
+  "recreation_brief": "1) Slide setup: 16:9, white background; add an unfilled rectangle with a thin (~1pt) dark-red #C00000 outline inset ~0.15in from every edge as a frame. 2) Title text box centered at top: line 1 'Self Attention Mechanism (Fundamental Operation)' \u2014 Arial bold 24pt black, with yellow highlight applied only to '(Fundamental Operation)'; line 2 '(Self Attention of word X\u2082 w.r.t All words in Sentence ( X\u2081, X\u2082, X\u2083, X\u2084 )' \u2014 Arial bold 18pt black, with X\u2081/X\u2082/X\u2083/X\u2084 formatted bold red (#FF0000) using subscript characters; keep the parenthesis pattern exactly as written (opening '(' before 'Self' and before 'X\u2081', closing ')' after 'X\u2084'). 3) Slide number: 0.45in oval at top-right (~91% x, ~12% y), fill #FFFF00, 1pt black outline, bold black '12pt' text '26'. 4) Canvas: rounded rectangle from ~4% to ~96% width and ~21% to ~97% height, fill #FBE5D6, no outline; send behind diagram shapes. 5) Build the vector glyph once and duplicate: group of three adjacent small rounded blocks \u2014 #FFFF99 yellow, #FF99CC pink, #D9B3FF lavender \u2014 with a bold red subscripted label (X\u2081\u2026X\u2084) on the pink block. 6) Left stack: rounded rectangle (~1.6in \u00d7 3.4in) at the canvas' left, fill #E2EFDA, dashed #00B050 outline; place four vector glyphs stacked vertically labeled X\u2081, X\u2082, X\u2083, X\u2084 top-to-bottom. 7) Dot Product box: rectangle ~1.7in \u00d7 4.0in at center-left, fill #C8B39C; text 'Dot Product' in #8B4513 bold 14pt on two lines at top-center; place four 0.12in dark-blue #0033CC circles inside, one per incoming line, staggered (top dot rightmost, bottom dot leftmost). 8) 'Similarity' pill above it: rounded pill, fill #FFFF99, bold blue #0033CC 12pt text. 9) Soft max bar: rounded rectangle ~0.6in \u00d7 4.0in at center, fill #DFA6DF; separate text box 'Soft max' in #7030A0 bold 14pt rotated 270\u00b0 (reads bottom-to-top); place 'Probabilities' pill (same pill style) above it. 10) \u03a3 assembly top center-right: light-blue #C5E0F5 rectangle ~2.6in \u00d7 0.45in with bold blue 22pt '\u03a3' centered; 'Weighted SUM' pill above-right of it; above the \u03a3 box place a small rounded rectangle with dashed #00B050 outline containing a 3-block green vector (#C6E0B4 / #92D050 with bold 'Y' label / #A9D08E); connect \u03a3 top to this box with a thick green #00B050 block arrow pointing up. 11) Right stack: duplicate of the left stack (vectors X\u2081\u2013X\u2084 in a green dashed container) at the canvas' right edge. 12) Weighted-sum wiring: draw four thin red #FF0000 horizontal arrows from the Soft max bar's right edge to the right stack's four rows; label them W\u2082\u2081, W\u2082\u2082, W\u2082\u2083, W\u2082\u2084 (blue #0033CC bold, subscripted) just right of the bar above each line; on each line place a white circle with red outline and a red asterisk inside (\u2297 node), the four nodes stepping down-to-the-right; from each node draw a thin red vertical line up into the \u03a3 box with the arrowhead at \u03a3. 13) Dot-product wiring: draw four thin red lines from the left stack's rows horizontally into the Dot Product box ending at the blue dots; from each dot draw a red arrow slanting up-right so the four converge and exit the box's right edge, continuing as horizontal red arrows into the Soft max bar's left side (upper half). 14) Sentence strip: green dashed rounded container (~5.5in \u00d7 0.8in) bottom-center; place four vector glyphs left-to-right labeled X\u2081\u2013X\u2084; give the second (X\u2082) pink fill and a magenta #FF00FF dashed border; from X\u2082's top draw a long thin red vertical arrow up into the Dot Product box's bottom edge; at the strip's lower-left add a chunky red block arrow pointing up-right at the X\u2082 block. 15) Dashed feeders: two #92D050 dashed curved connectors with arrowheads \u2014 one from the strip's left end curving left then up into the left stack's bottom, one from the strip's right end curving right then up into the right stack's bottom (both arrowheads pointing up). 16) Final fidelity check: all thin arrows red with small red heads except the green \u03a3\u2192Y arrow and green dashed curves; 'Soft max' is two words; 'Weighted SUM' has all-caps SUM; every X\u1d62 label red and subscripted; title parenthesis pattern and yellow highlight exactly as in step 2.",
+  "_meta": {
+    "frame": "slide_026.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 26,
+      "image": "slide_026.jpg",
+      "kept_frame": "frame_02127.jpg",
+      "start_sec": 2052.0,
+      "end_sec": 2126.0,
+      "frame_count": 75
+    },
+    "elapsed_s": 675.0
+  }
+}

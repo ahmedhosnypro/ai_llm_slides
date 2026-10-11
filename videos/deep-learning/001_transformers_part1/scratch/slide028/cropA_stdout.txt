@@ -1,0 +1,51 @@
+[info] context header injected: VIEW: Slide 028 self-check crop A — bottom token row labels (shuffled order) — render vs original | CAPTURE: IMG1=crop of 150dpi PPTX render; IMG2=same region of original lecture frame (both upscaled x3)
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 84035
+[info] scratch/slide028/crops/A_strip_render.png, scratch/slide028/crops/A_strip_orig.png: transcript written (validated winner, atomic): recreated_pptx/qa/slide028/crop_compare_A.txt (pid 84035)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== scratch/slide028/crops/A_strip_render.png, scratch/slide028/crops/A_strip_orig.png ===
+[winner] images (round 1, attempt 1)
+# Visual QA Report â Slide 028, crop A (bottom token row labels)
+
+## 1. Verbatim transcription
+
+**IMG1 (150dpi PPTX render):**
+- Left token group: **Xâ** (dark-red "X" with subscript "4", on the magenta token)
+- Center highlighted group: **X** (large, floating above the row) with subscript **2** inside the dark-magenta token â reads as **Xâ** but broken across the token boundary
+- Third group: **Xâ**
+- Fourth group: **Xâ**
+- No other legible text (arrow, connector line, and dashed borders carry no text).
+
+**IMG2 (original lecture frame):**
+- Left group: **Xâ**
+- Center highlighted group: **Xâ** (contained within the darker token; subscript "2" is very small)
+- Third group: **Xâ**
+- Fourth group: **Xâ** (subscript "3" is small and slightly blurred by video compression, but consistent with IMG1)
+- No other legible text.
+
+Label order leftâright is **Xâ, Xâ, Xâ, Xâ** in both images â the shuffled order matches.
+
+## 2. Similarities
+
+- **Purpose/layout:** Both show the same bottom token row: a light-green rounded container with a dashed dark-green border on a peach background, holding four groups of five pastel tokens (pale yellow, pale yellow, labeled magenta token, lavender, pink).
+- **Highlight:** The center group is singled out in both with a dark-magenta dotted rounded outline, and its tokens are recolored pink/magenta/purple, with Xâ on the darker third token.
+- **Callouts:** Both have a red vertical connector from the top edge down to the highlight box, and a dark-red arrow at bottom pointing up-right at the highlighted group.
+- **Styling:** Labels are bold dark-red "X" with a smaller subscript digit; green dashed fragment at top-right corner and a small grey dash at the left edge appear in both; both have a light strip along the bottom edge.
+
+## 3. Differences
+
+- **Xâ label placement (key defect in IMG1):** In IMG1 the "X" is enlarged and floats **above** the token row, overlapping the second token and the dotted highlight border, with only the subscript "2" landing inside the dark token. In IMG2 the Xâ sits properly **inside** its token, matching Xâ/Xâ/Xâ.
+- **Label consistency:** In IMG1 the highlighted Xâ is noticeably larger/bolder than the other three labels; in IMG2 all four labels are uniform in size.
+- **Token outlines:** IMG2 tokens have thin dark outlines around each square; IMG1 tokens are flat fills with no visible outlines (outlines lost in render).
+- **Highlight fill:** In IMG2 the interior of the dotted box is tinted pink across the gaps between tokens; in IMG1 the gaps show the green background â the translucent pink highlight fill is missing/not visible.
+- **Highlight saturation:** IMG1's highlighted tokens are strongly saturated (pink â dark magenta â purple â orchid); IMG2's are muted mauve tones (typical video washout).
+- **Arrow & connector:** IMG1's arrow is larger and the top connector thicker; IMG2's arrow is smaller, tip closer to the box's bottom-left, connector thinner.
+- **Highlight box proportions:** IMG1's dotted box is larger with more padding around the group; IMG2's is tighter.
+- **Bottom strip color:** lavender-tinted in IMG1 vs grey in IMG2.
+- **Sharpness:** IMG1 has clean vector-like edges; IMG2 is blurrier with compression artifacts and chunkier dashes (inherent to the video source, not a content defect).
+
+## 4. Verdict
+
+**IMG2 (original) is better as the faithful reference.** The crop's whole purpose is checking the token labels, and IMG1 fails on exactly that element: the Xâ label overflows its token â the "X" floats above the row overlapping the highlight border while the "2" sits orphaned inside the square â and it is rendered larger than the matching Xâ/Xâ/Xâ. IMG1 additionally loses the per-token outlines and the pink tint inside the highlight box. IMG2, despite being softer and compression-blurred (e.g., the small "3" subscript), shows the correct inline label placement, uniform label sizing, token outlines, and highlight fill, i.e., the intended design. IMG1 wins only on crispness, but its label displacement is a genuine render defect, not a sharpness artifact.
+
+CROPA_RC=0

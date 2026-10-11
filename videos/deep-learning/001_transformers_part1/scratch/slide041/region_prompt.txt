@@ -1,0 +1,8 @@
+You are analyzing a 2x-upscaled crop of ONE region of a 960x540 lecture-video frame (Deep Learning course, slide "Encoder – Decoder Transformer"). The crop's origin in the original frame is at ORIGINAL-PIXEL (X0,Y0) stated in the view context. On the recreated 13.33x7.5in PowerPoint slide, 1 original px = 1 pt = 1/72 inch.
+
+Produce a COMPLETE, structured inventory of every visible diagram element in this crop, for a pixel-faithful PowerPoint recreation. For EACH element give:
+1. type: rect | rounded-rect | circle | arrow | dotted-line | solid-line | text | corner-bracket | highlight-band | plus-symbol
+2. bbox in CROP pixel coordinates as (x_left, y_top, x_right, y_bottom) — measure precisely, do not guess
+3. fill color as approx hex; 4. border color and approx width in crop px; 5. verbatim text EXACTLY as printed (preserve capitalization exactly: 'SoftMax' vs 'Softmax', lowercase 'q', '(opt.)', 'N×', '× h'); 6. approx font size: state cap-height in crop px (crop px / 2 = original px = points); 7. for arrows/lines: start point and end point in crop px, and whether solid/dotted/dashed, with arrowhead location.
+
+Order elements top-to-bottom then left-to-right, numbered. Explicitly report: any STACKED/OFFSET shapes (how many visible copies, the offset direction and step in crop px); any semi-transparent yellow highlight bands (full extents); any ⊕ circle-plus symbols (position + the label text near them and its side); any dashed curved lines (endpoints); any small gray text ('N×', 'Positional Encoding') and where it sits relative to its symbol. Do not omit ANY element, however small. Be precise about which box is directly above/below which. End with a short paragraph: the exact top-to-bottom stack order of the blocks in this crop.

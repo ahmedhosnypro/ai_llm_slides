@@ -1,0 +1,42 @@
+## ZOOM CHECK 6 â Agenda text block, slide 003
+
+### Scope
+IMG1 = render crop (agenda block, Ã4); IMG2 = original frame, same region (Ã4). Only the agenda text block is in scope here; the title "Transformers â Part I" and slide-number badge visible in IMG2's full frame are outside this crop region and are checked in the full-frame pass.
+
+### Element-by-element comparison
+
+**1. Line inventory and verbatim text**
+- Line 1: "Processing Sequential Data" â present in both, verbatim. â
+- Line 2: "Transformer Building Blocks" â present in both, verbatim. â
+- Line 3: "Self Attention Mechanism" â present in both, verbatim. â
+- Line 4: "Multi-Head  Attention" â present in both, verbatim, **including the double space** between "Multi-Head" and "Attention" (render word gap 25px @150dpi vs 5â7px single spaces elsewhere â the double space is faithfully reproduced). â
+- Count: exactly 4 lines in both. No missing or extra lines. â
+
+**2. Line metrics**
+- Line pitch: pinned at 41.33pt in the recreation, matching the original's measured pitch. Inter-line separation is visually identical in the two crops. â
+- Ink widths (render/original @150dpi-equiv): 544/539.6 (+0.8%), 566/562.5 (+0.6%), 504/497.9 (+1.2%), 412/412.5 (â0.1%). All within ~1.2% â this is font-metric noise, not a scaling or wrap discrepancy. â
+
+**3. Styling**
+- Bold weight: both. â
+- Blue color: same saturated blue (â #2222CC / #1F1FCC range) in both. â
+- Font: same sans-serif face, same apparent x-height and cap height at equal zoom. â
+- Left alignment: all four lines share a common left edge in both crops; left margins align to within a few pixels. â
+
+**4. Background and containment**
+- Background of the block region is the same light gray (#E8E8E8-equivalent) in both. â
+- No line touches or crosses any frame boundary within this crop; generous clearance on all sides in both images. â
+
+**5. Artifact handling (ground rule c)**
+- The black mouse-cursor artifact in IMG2 above line 2 is a video-capture artifact and is correctly absent from the recreation. Not a discrepancy. â
+
+### Discrepancy list
+| # | Item | Severity | Confidence |
+|---|------|----------|------------|
+| â | None. No text, metric, alignment, spacing, color, or containment deviations found in this crop. | â | â |
+
+### Visual-quality defects in the recreation
+- None. No clipping, overflow, wrapping errors, collisions, or illegibility. The ~1% wider ink on lines 1â3 is imperceptible and within font-rendering tolerance.
+
+### FINAL VERDICT: **PASS** for 'faithful, usable recreation'
+
+The agenda block is a pixel-faithful reproduction: all 4 lines verbatim (including the double-space quirk in "Multi-Head  Attention"), identical line pitch, ink widths within 1.2%, matching bold blue styling and left alignment, and correct omission of the video-capture cursor artifact per ground rule (c).

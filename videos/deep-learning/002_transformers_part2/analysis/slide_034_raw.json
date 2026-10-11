@@ -1,0 +1,192 @@
+{
+  "slide_title": "[2] Position Embedding",
+  "subtitle_or_header": "(Similar to Word Embedding)",
+  "verbatim_text": {
+    "bullets": [
+      "Real valued vectors representing  positions",
+      "(Vector for each position)",
+      "Positions > N-1  can NOT be Embedded",
+      "(Must Train Embedding on Max Expected Seq. Length)",
+      "Vector Length  = Word Embedding length"
+    ],
+    "labels": [
+      "Position Information",
+      "(similar to word tokenization)",
+      "Positional Embedding",
+      "(Trained on Position Values)",
+      "Embedding Layer to Learn Position Vectors",
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "N-2",
+      "N-1",
+      "Vector_P0",
+      "Vector_P1",
+      "Vector_P2",
+      "Vector_P3",
+      "Vector_P4",
+      "Vector_P5",
+      "Vector_PN-2",
+      "Vector_PN-1",
+      "34",
+      "[black strip across very bottom of frame \u2014 likely video player chrome, not slide content]"
+    ],
+    "equations": [
+      "Positions > N-1  can NOT be Embedded",
+      "Vector Length  = Word Embedding length"
+    ]
+  },
+  "layout": {
+    "arrangement": "Centered title at top with slide-number badge at top-right; below it a vertical three-stage flow diagram occupying the full width: (1) a dashed-blue container of numbered position boxes with a blue label block on the left, (2) a full-width purple bar reached via a red down-arrow, with a red/blue label block on the left, (3) a dashed-green container of pink vector boxes reached via another red down-arrow; a red curly brace under the vector row points down to a large green-outlined text box centered at the bottom",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~4-18% height, ~25-75% width",
+        "content": "Two-tone title '[2] Position Embedding' with red subtitle '(Similar to Word Embedding)' beneath it"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, ~5-16% height, ~89-93% width",
+        "content": "Yellow circle containing the number 34"
+      },
+      {
+        "name": "Position token row",
+        "position": "upper middle, ~24-33% height, ~18-92% width (left labels at ~6-17% width)",
+        "content": "Dashed blue rounded container holding 8 small boxes numbered 0,1,2,3,4,5,N-2,N-1 with 5 dots between '5' and 'N-2'; left labels 'Position Information' and '(similar to word tokenization)'"
+      },
+      {
+        "name": "Embedding bar",
+        "position": "middle, ~40-47% height, ~18-92% width (left labels at ~6-17% width)",
+        "content": "Solid purple bar with text 'Embedding Layer to Learn Position Vectors'; left labels 'Positional Embedding' and '(Trained on Position Values)'"
+      },
+      {
+        "name": "Vector row",
+        "position": "lower middle, ~54-62% height, ~18-92% width",
+        "content": "Dashed green rounded container holding 8 pink boxes labeled Vector_P0 through Vector_P5 and Vector_PN-2, Vector_PN-1, with a wide gap between Vector_P5 and Vector_PN-2; small gray pointer arrow touches Vector_P3"
+      },
+      {
+        "name": "Curly brace",
+        "position": "~63-67% height, ~18-90% width",
+        "content": "Red horizontal curly brace, cusp pointing downward"
+      },
+      {
+        "name": "Green summary box",
+        "position": "bottom center, ~68-93% height, ~23-85% width",
+        "content": "Green-outlined rectangle with 5 centered bold lines of summary text"
+      }
+    ],
+    "hierarchy": "Title is largest text (~40pt bold, two-color); the solid purple bar is the highest-contrast block; the green summary box holds the next-largest body text; small box labels and left annotations are smallest; red arrows and brace guide the eye downward through the flow"
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Dashed blue rounded-rectangle container (no fill) holding 8 small rectangles in a row: labels 0, 1, 2, 3, 4, 5, N-2, N-1 (italic, dark navy text); boxes have light blue fill and blue borders; between the '5' box and the 'N-2' box sit 5 small gray-blue dots (\u2022 \u2022 \u2022 \u2022 \u2022) indicating omitted positions",
+      "colors": [
+        "#2244CC",
+        "#C9D6EF",
+        "#3366CC",
+        "#000066",
+        "#8899BB"
+      ],
+      "position": "upper middle, spanning ~18-92% width"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Full-width solid purple banner with centered bold text: 'Embedding' (yellow) + ' Layer to ' (white) + 'Learn' (yellow) + ' Position Vectors' (white)",
+      "colors": [
+        "#990099",
+        "#FFFF00",
+        "#FFFFFF"
+      ],
+      "position": "middle, spanning ~18-92% width"
+    },
+    {
+      "type": "arrow",
+      "description": "Two thick red block arrows pointing straight down: arrow 1 from the position token row into the purple bar; arrow 2 from the purple bar into the vector row; both at ~55% horizontal position",
+      "colors": [
+        "#EE0000"
+      ],
+      "position": "center of slide, between the three flow stages"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Dashed green rounded-rectangle container (no fill) holding 8 small rectangles in a row: labels Vector_P0, Vector_P1, Vector_P2, Vector_P3, Vector_P4, Vector_P5, Vector_PN-2, Vector_PN-1 (with 'P0'...'PN-1' as subscripts), red bold italic text on light-pink fill with red borders; wide empty gap (dots omitted or too faint to see [?]) between Vector_P5 and Vector_PN-2; a small gray pointer/arrow annotation touches the bottom-left of the Vector_P3 box",
+      "colors": [
+        "#00AA44",
+        "#FFDDE4",
+        "#CC0000",
+        "#888888"
+      ],
+      "position": "lower middle, spanning ~18-92% width"
+    },
+    {
+      "type": "other",
+      "description": "Large red horizontal curly brace spanning the width of the vector row, opening upward with its cusp pointing down toward the green summary box",
+      "colors": [
+        "#CC0000"
+      ],
+      "position": "below vector row, ~63-67% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Large rectangle with green border and transparent/gray fill containing 5 centered bold lines: line1 'Real valued vectors representing  positions' (black); line2 '(Vector for each position)' (black); line3 'Positions > N-1  can NOT be Embedded' (red bold italic, with 'N-1' highlighted in yellow); line4 '(Must Train Embedding on Max Expected Seq. Length)' (red bold italic, underlined); line5 'Vector Length  = Word Embedding length' (black)",
+      "colors": [
+        "#009900",
+        "#000000",
+        "#CC0000",
+        "#FFFF00"
+      ],
+      "position": "bottom center, ~23-85% width"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: yellow circle with thin gray outline containing the black number '34'",
+      "colors": [
+        "#FFFF66",
+        "#808080",
+        "#000000"
+      ],
+      "position": "top right corner"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; the slide is built entirely from text boxes, colored rectangles, dashed containers, block arrows, dots, a curly brace, and one circular slide-number badge",
+    "Small gray mouse-pointer/arrow annotation near Vector_P3 (appears to be a static pointer overlay from the video, not slide content)"
+  ],
+  "colors": {
+    "background": "#E6E6E6",
+    "title_text": "#CC0000 for '[2] Position' and #0000CC for 'Embedding' (two-tone title)",
+    "body_text": "#000000",
+    "accents": [
+      "#CC0000",
+      "#0000CC",
+      "#990099",
+      "#FFFF00",
+      "#009900",
+      "#00AA44",
+      "#FFDDE4",
+      "#C9D6EF",
+      "#EE0000"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial-like), bold almost everywhere. Title ~40pt bold two-color (red + blue); subtitle ~22pt bold red. Left annotation labels are bold, some italic ('Positional Embedding' red italic; 'Position Information' blue). Numbered token labels are italic; vector labels are red bold italic with true subscripts (P0, P1, ... PN-1). Purple bar text ~20pt bold with yellow/white word-level coloring. Green box lines ~18-20pt bold; red lines are italic, one underlined, with a yellow highlight behind 'N-1'. No numbered or bulleted lists; all text is centered or label-positioned.",
+  "animation_state": "Slide appears fully built (all three flow stages and the summary box visible simultaneously). The small gray arrow at Vector_P3 looks like a presenter's pointer/cursor overlay rather than a build element. No mid-build reveal detected.",
+  "recreation_brief": "1. Set slide background to light gray #E6E6E6 (optionally add a black rectangle strip across the very bottom only if replicating the video frame). 2. Add a centered title text box at top: '[2] Position Embedding', Arial bold ~40pt, coloring '[2] Position' red #CC0000 and 'Embedding' blue #0000CC. 3. Directly below, add centered subtitle '(Similar to Word Embedding)', Arial bold ~22pt, red #CC0000. 4. Top-right corner: insert a yellow (#FFFF66) circle ~0.5in with thin gray outline and black bold '34' centered inside. 5. Build the token row at ~25% height: draw a rounded rectangle ~74% of slide width with no fill and a dashed blue (#2244CC) border; inside it place 8 small rectangles (fill #C9D6EF, border #3366CC) labeled 0, 1, 2, 3, 4, 5, N-2, N-1 in italic dark-navy text, evenly spaced, with 5 small gray-blue dots drawn between the '5' box and the 'N-2' box. 6. To the left of this row add two blue (#0000CC) bold labels stacked: 'Position Information' (two lines) and '(similar to word tokenization)'. 7. Insert a thick red (#EE0000) down block arrow at ~55% horizontal from the token row to the next stage. 8. Draw a full-width solid purple (#990099) bar (~18-92% width, ~7% height) with centered bold ~20pt text: 'Embedding' in yellow #FFFF00, 'Layer to' in white, 'Learn' in yellow, 'Position Vectors' in white. 9. Left of the bar add red (#CC0000) bold italic 'Positional Embedding' (two lines) and below it blue '(Trained on Position Values)'. 10. Add a second red down block arrow from the bar to the vector row. 11. Build the vector row at ~56% height: rounded rectangle same width as the token row, no fill, dashed green (#00AA44) border; inside place 8 small rectangles (fill #FFDDE4, border #CC0000) labeled Vector_P0, Vector_P1, Vector_P2, Vector_P3, Vector_P4, Vector_P5, Vector_PN-2, Vector_PN-1 with the P-codes as subscripts, red bold italic; leave a wide gap between Vector_P5 and Vector_PN-2; add a small gray arrow annotation touching Vector_P3. 12. Below the vector row draw a large red curly brace (PowerPoint shape 'Left Brace' rotated, or a brace autoshape) spanning the row's width with the cusp pointing down. 13. At bottom center draw a rectangle (~23-85% width, ~68-93% height) with a green (#009900) border and no fill; inside add 5 centered bold ~18-20pt lines exactly: 'Real valued vectors representing  positions' (black); '(Vector for each position)' (black); 'Positions > N-1  can NOT be Embedded' (red #CC0000 bold italic, apply yellow #FFFF00 text highlight to 'N-1'); '(Must Train Embedding on Max Expected Seq. Length)' (red bold italic, underlined); 'Vector Length  = Word Embedding length' (black). 14. Use Arial (or matching sans-serif) bold throughout; keep all box text centered and all left annotations right-aligned toward the diagram.",
+  "_meta": {
+    "frame": "slide_034.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 34,
+      "image": "slide_034.jpg",
+      "kept_frame": "frame_02408.jpg",
+      "start_sec": 2406.0,
+      "end_sec": 2407.0,
+      "frame_count": 2,
+      "old_slide": 69
+    },
+    "elapsed_s": 271.9
+  }
+}

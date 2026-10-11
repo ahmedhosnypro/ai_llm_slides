@@ -1,0 +1,40 @@
+# Visual QA: Slide 010 Attention-Region Crop Comparison
+
+## 1. Verbatim Text Transcription
+
+**IMG1 (recreated render crop):**
+- `Sâ` `Sâ` `Sâ` â italic serif labels (uppercase S, subscript numerals) under the horizontal arrows
+- `hâ` â italic serif label, bottom-left
+- `Attention` â bold italic dark blue, bottom-right
+- A clipped text fragment at the very bottom-left corner (cut off by the crop; illegible)
+
+**IMG2 (original frame crop):**
+- `sâ` `sâ` `sâ` â italic serif labels (lowercase s, subscript numerals)
+- `hâ` â italic serif label, bottom-left
+- `Attention` â bold italic dark blue, bottom-right
+
+## 2. Similarities
+
+- **Same diagram region and purpose:** attention-mechanism illustration; element positions match within a few pixels at 2Ã scale.
+- **Yellow encoder band** across the top containing three 4-cell yellow state strips, with downward arrows from the top edge into each strip and rightward flow arrows between strips, exiting right.
+- **Peach/orange box** bottom-left with `hâ` label, right-pointing arrow into a 4-cell orange strip, and an upward arrow from below.
+- **Pale lavender rounded band** across the middle (empty container).
+- **Rose/pink dashed attention curves** looping from the top-left lavender box down through the central band.
+- **Thick dark-red curved arrow** with a round dot on the orange box's right edge, curving up to an arrowhead plus red dot at the top-left of the yellow band â present and near-identical in both.
+- **Blue bold-italic "Attention"** caption in the same bottom-right position, size, and color in both.
+- Overall palette (yellow band, olive arrows, peach box, lavender bands, rose dashes, navy caption) matches closely.
+
+## 3. Differences
+
+1. **State label case:** IMG1 uses uppercase italic `Sâ/Sâ/Sâ`; IMG2 uses lowercase italic `sâ/sâ/sâ`. IMG1's labels are also slightly larger/bolder.
+2. **Context connector curves:** IMG1 renders all top connectors as olive/dark-yellow straight diagonals and olive up-arrowheads. IMG2 has **mixed dark-green and dark-gray/black curved lines** sweeping down into strips 2â3, plus orange up-arrowheads â the recreation simplifies/omits these dark curves.
+3. **Right-edge artifact:** IMG1 has a **dark-red vertical stripe** running the full height at the far right edge; IMG2 has no such stripe (the exit arrowhead simply reaches the crop edge).
+4. **Dashed-loop geometry:** IMG2's dashed loop extends farther right (~x1010) and includes a **broad translucent lavender curved stroke** overlapping the top-left box; IMG1 lacks this wide stroke and its loop terminates earlier.
+5. **Teal line, top-left:** longer in IMG2 (extends down ~y75) vs. only a short segment at the very top in IMG1.
+6. **Stroke weights:** IMG1's horizontal arrows and heads are slightly thicker/larger; IMG2's are thinner (partly due to video softness).
+7. **Bottom-edge clipping:** IMG1 shows an illegible clipped text fragment bottom-left; IMG2 instead shows a faint dark-red line/shape at bottom center. Both crops cut content at edges (expected for a region crop).
+8. **Sharpness:** IMG1 is crisp vector-quality rendering; IMG2 is softer with compression noise (inherent to a lecture frame).
+
+## 4. Verdict
+
+**IMG2 (original) is better as the authoritative version.** Concrete evidence: it carries the correct lowercase `sâ/sâ/sâ` labels, includes the dark-green/gray attention context curves and the wide lavender stroke that give the diagram its layered look, and has no right-edge red stripe. IMG1 is a high-fidelity, sharper recreation â layout, colors, and the red arrow are matched almost pixel-for-pixel â but it deviates on label case, omits/simplifies the dark connector curves, and introduces the stray dark-red vertical stripe at the right edge, which is a clear rendering defect not present in the source.

@@ -1,0 +1,151 @@
+[info] mode analysis | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 2028485
+[info] /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/unique_slides/slide_014.jpg: transcript written (validated winner, atomic): /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/slide_014_source/transcripts/slide_014_webverify.txt (pid 2028485)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/unique_slides/slide_014.jpg ===
+[winner] images (round 1, attempt 1)
+1. TITLE
+
+Exact title text (verbatim): "Using  FF NN  for Multiplication of Multiple Vectors by a Matrix"
+(Note: there appear to be double spaces around "FF NN".)
+
+Badge numeral (top-right circle): "14" â a yellow/green circular badge in the top-right corner.
+
+2. ALL VERBATIM TEXT
+
+Subtitle line (dark blue, italic bold), directly under the title:
+"Example: Multiply Vectors of ALL Words by W_k (Key) or W_v (Value)  { W_k, W_v is Squared Matrix}"
+- "ALL Words" appears underlined.
+- "W_k" and "W_v" are subscripted (W with subscript k, W with subscript v); "{ W_k, W_v is Squared Matrix}" is in green text.
+- A small box containing "X_5" overlaps the start of this subtitle near the top-left (see artifacts below).
+
+Left panel (beige/tan box, inside a large rounded blue-bordered white container):
+"Design FF NN with the following Considerations:"
+"Activation:   Linear"
+"Bias:         Zeros"
+"Inputs:       All Words Within Same Paragraph (X_1, X_2, X_3, X_4, X_5)"
+- "Design FF NN with the following Considerations:" is in dark red italic bold.
+- "Activation:", "Bias:", "Inputs:" in dark red; values "Linear", "Zeros" in dark blue; the long "Inputs" value in dark blue italic bold, with X subscripts 1â5.
+
+Left diagram labels:
+- Four neural-network unit diagrams (pink circles), each with a small circle labeled "Î£" (summation) inside a larger pink circle, followed by an output label:
+  - "y_1" (subscript 1)
+  - "y_2"
+  - "y_3"
+  - "y_4"
+- Weight labels along connection lines, in blue text (top group, connected to input node X1): "W_11, W_21, W_31, W_41, W_21, W_22, W_32, W_42" (reading the column of small blue labels; exact order top-to-bottom appears: W_11, W_21, W_31, W_41 then W_21, W_22, W_32, W_42) [some subscripts hard to resolve â marked uncertain where noted]
+- Middle/lower weight labels in magenta/pink text (connected to X2): "W_13, W_23, W_33, W_43" (column appears as W_13, W_23, W_33, W_43, W_12, W_22, W_32, W_42) [?]
+- Lower weight labels in orange text (connected to X3): "W_13, W_23, W_33, W_43, W_14, W_24, W_34, W_44" [?] (orange labels reading W_13, W_23, W_33, W_43, W_14, W_24, W_34, W_44)
+- Input node labels on the pink circles (with small "x"-labels above): "X1", "X2", "X3", "X4" (small light-blue "x"-tokens appear above/behind each pink circle, e.g. "x' x' x'" pattern â small stacked x tokens behind each main node). The fourth node "X4" is partially cut off at the bottom edge.
+- Note: only four Î£ units visible (y_1..y_4); a fifth may be cut off below [?].
+
+Right panel â middle column (output vectors), top-to-bottom labels above each row of small boxes:
+- "Y_1" with row of four small boxes: "y_1, y_2, y_3, y_4"
+- "Y_2" with row: "y_1, y_2, y_3, y_4"
+- "Y_3" with row: "y_1, y_2, y_3, y_4" (row highlighted/boxed)
+- "Y_4" with row: "y_1, y_2, y_3, y_4"
+- "Y_5" with row: "y_1, y_2, y_3, y_4"
+- Each row sits on a colored rounded-rectangle strip (Y_1 blue-ish, Y_2 yellow, Y_3 beige/tan, Y_4 tan, Y_5 tan) with alternating red/yellow small squares inside.
+
+Between middle and right columns:
+- Red text: "â¡Linear" (an equals sign with "Linear", i.e., "â¡ Linear" or "= Linear")
+
+Right panel â right column (input vectors), top-to-bottom labels:
+- "X_1" with row of four circles, each containing "x": circles labeled "x_1, x_2, x_3, x_4" (each circle contains an "x" with subscript 1..4)
+- "X_2" with row: "x_1, x_2, x_3, x_4"
+- "X_3" with row: "x_1, x_2, x_3, x_4" (highlighted row, red outline)
+- "X_4" with row: "x_1, x_2, x_3, x_4"
+- "X_5" with row: "x_1, x_2, x_3, x_4"
+
+Matrix block (green rounded panel, right side), a 4x4 grid of yellow cells with blue bold labels:
+Row 1: "W_11, W_21, W_31, W_41"
+Row 2: "W_12, W_22, W_32, W_42"
+Row 3: "W_13, W_23, W_33, W_43" [row 3 partially overlapped by red highlight/box artifact â cells read W_13, W_23, W_33, W_43 with the row outlined in red]
+Row 4: "W_14, W_24, W_34, W_44"
+(All W's have subscripts; row/col indices 1â4.)
+
+Right of matrix:
+- Red "+" sign
+- A tall light-blue rounded box (bias vector) containing four "0" cells stacked vertically: "0, 0, 0, 0"
+- A large blue curly brace "}" to the right of the bias vector (closing brace, spanning the height of the X-column block).
+
+3. EQUATIONS / FORMULAIC SEQUENCES
+
+- W_k, W_v (subtitle: "Multiply Vectors of ALL Words by W_k (Key) or W_v (Value)")
+- "{ W_k, W_v is Squared Matrix}"
+- (X_1, X_2, X_3, X_4, X_5)
+- X_1, X_2, X_3, X_4, X_5 (row labels, right column)
+- x_1, x_2, x_3, x_4 (elements inside each X row's circles)
+- Y_1, Y_2, Y_3, Y_4, Y_5 (row labels, middle column)
+- y_1, y_2, y_3, y_4 (elements inside each Y row's boxes)
+- Matrix W with entries W_11 â¦ W_44 (4x4: W_11, W_21, W_31, W_41 / W_12, W_22, W_32, W_42 / W_13, W_23, W_33, W_43 / W_14, W_24, W_34, W_44)
+- Bias vector: 0, 0, 0, 0
+- Weight labels on the left diagram: W_11, W_21, W_31, W_41, W_12, W_22, W_32, W_42, W_13, W_23, W_33, W_43, W_14, W_24, W_34, W_44 [exact per-line assignment uncertain; some appear duplicated, e.g., "W_21" appears twice â marked ?]
+- Implicit equation conveyed by layout: Y_i = W Â· X_i + 0, with "â¡Linear" annotation indicating the FF NN with linear activation â¡ linear transformation (matrix multiply plus bias).
+- Implied correspondence: y_1..y_4 outputs vs X_1..X_5 inputs suggest a 4-output representation (the slide shows y rows of length 4 and x rows of length 4, with the W matrix 4x4; the mismatch of 5 words vs 4-dim vectors is as-drawn).
+
+4. DIAGRAM TOPOLOGY
+
+Overall layout: one large rounded rectangle with a dark blue border spanning nearly the whole slide (white fill), containing two main sub-panels side by side: a left panel (beige design box + NN diagram below it, enclosed in its own blue rounded border) and a right panel (enclosed in its own blue rounded border) containing three vertical columns. Data flows left-to-right: input vectors (X rows) â matrix W and bias â output vectors (Y rows); plus an illustrative NN diagram on the far left.
+
+LEFT PANEL (blue rounded border, white fill):
+- Top: beige/tan rounded rectangle with the "Design FF NNâ¦" text (see section 2).
+- Below: four stacked neuron units. Each unit consists of:
+  - A large pink/magenta circle with a smaller white circle inside labeled "Î£" (sum symbol, dark blue), and hatched/striped shading on the right side of the big circle (gray diagonal hatching).
+  - An output arrow from the Î£ circle pointing right to a label y_i (y_1, y_2, y_3, y_4). Arrows are thin gray/black with small arrowheads.
+  - A faint gray honeycomb/hexagon pattern circle below/right of each Î£ unit (decorative hatching, possibly indicating a clipped/hidden element) [?].
+- Input side (left edge): stacked small light-blue circles labeled "x" tokens (several small x-circles behind/above each main node), converging into a pink circle labeled X1 (top), X2, X3, X4 (bottom, partially cut off). Each pink node has small "x'"-labeled satellite circles (light blue) fanning to its upper-left, suggesting multiple input tokens.
+- Connections: many thin colored lines (blue, magenta/pink, orange, green, gray) run from each X node fan across to each Î£ unit â fully connected (each X connects to each Î£). Line colors per group: blue lines from X1, magenta/pink from X2, orange from X3, green/gray from X4 [assignment approximate; colors: blue, magenta, orange, green visible].
+- Weight labels (W_ij) placed along these lines in matching colors (blue, magenta, orange, green).
+
+RIGHT PANEL (blue rounded border, white fill), three columns plus matrix:
+
+Middle column (outputs) â five horizontal rounded-rectangle strips stacked vertically, top to bottom, labeled Y_1..Y_5 (labels above-right of each strip):
+- Strip colors: Y_1 light blue/lavender, Y_2 yellow, Y_3 beige with red outline, Y_4 tan/orange, Y_5 tan/orange.
+- Each strip contains 4 small squares: alternating red-bordered squares with yellow fill; each square contains "y_i" (y_1, y_2, y_3, y_4) in red/dark text.
+- Y_3 strip is emphasized with a red/dark outline (highlight of the third row).
+
+Right column (inputs) â five horizontal rounded-rectangle strips, labeled X_1..X_5 (labels above-left of each strip; labels are dark blue bold with subscripts):
+- Strip colors: X_1 pink/magenta, X_2 pink/magenta, X_3 pink with red outline (highlighted), X_4 pink, X_5 pink/light.
+- Each strip contains 4 circles with red borders, each circle containing "x" with subscript (x_1, x_2, x_3, x_4) in red.
+
+Between the Y column and X column:
+- Orange dashed/dotted horizontal double-headed arrows (â style, orange with arrowheads both ends) connect each Y_i strip to the corresponding X_i strip? Actually the orange dashed arrows connect each Y row to the X column region at the same height â they appear as short orange dashed lines with arrowheads pointing left (toward the Y rows) at each of the five row heights, linking the X strips to the Y strips. (Direction: arrowheads visible near the Y side; likely indicating Y_i derived from X_i.)
+- Red text "â¡Linear" sits between Y_3 row and the X column, at mid-height, indicating the mapping equivalence.
+
+Far-right matrix block:
+- A green/mint rounded rectangle containing a 4x4 grid of yellow square cells separated by thin blue gridlines; cells labeled W_11..W_44 in bold blue (row-major as listed in section 3). Row 3 (W_13â¦W_43) is overlaid with a red rectangle outline (highlight artifact).
+- A blue vertical gridline separates columns; the grid reads column-wise as W_11, W_21, W_31, W_41 across the top row (i.e., transposed-looking labeling as drawn).
+
+Right of matrix:
+- Red bold "+" sign.
+- Tall light-blue rounded rectangle (bias column) containing 4 stacked yellow/white cells each with "0" (bold, dark). 
+- Large dark-blue closing curly brace "}" spanning the full height of the X-column block, to the right of the bias box â grouping the whole expression {X rows + matrix, + bias} as one bracketed unit.
+
+Grouping containers:
+- Outer slide border: dark blue rounded rectangle (full slide).
+- Left sub-panel border: blue rounded rectangle around design box + NN diagram.
+- Right sub-panel border: blue rounded rectangle around Y/X columns + matrix + bias + brace.
+- The beige design box inside left panel.
+- Green matrix panel inside right panel.
+
+Resemblance to published figures: This is NOT a copy of Vaswani et al. 2017 Figure 1/2, nor the Peter Bloem self-attention diagram, nor Alammar illustrations. It is an original instructor-drawn illustration (custom PowerPoint-style artwork) explaining that a feed-forward NN with linear activation and zero bias is equivalent to multiplying all word vectors by a matrix (W_k or W_v) plus bias â i.e., motivating the key/value projections in attention. The 4x4 W matrix with W_ij labels and stacked x-circles resemble generic textbook NN diagrams; no direct published-figure match. The only stylistic echo is Alammar-style colored token circles/blocks (colored rounded strips with small token squares), but the composition (design-considerations box, Î£ neurons with hatched bodies, curly brace, bias column) is custom.
+
+5. NUMBERS / DATA
+
+- Badge numeral: 14
+- Subscript indices: 1â5 for X and Y (X_1..X_5, Y_1..Y_5); 1â4 for vector components (x_1..x_4, y_1..y_4) and matrix indices (W_11..W_44).
+- Matrix dimensions as drawn: 4 columns x 4 rows = 16 W cells.
+- Bias vector: four zeros (0, 0, 0, 0).
+- Five Y rows and five X rows; four Î£ neurons visible on the left (y_1..y_4) [a fifth may be cut off at slide bottom â ?].
+- No percentages, table data values, or sizes beyond the above.
+
+6. BUILD STATE / ARTIFACTS
+
+- A small white box containing "X_5" (blue bold) overlaps the subtitle text at the top-left ("...by W_k (Key)..." region), partially obscuring the subtitle â looks like a floating label/callout box placed over text, possibly a leftover or drag artifact.
+- Red rectangle outline overlaid on matrix row 3 (W_13, W_23, W_33, W_43) â highlight box, slightly offset/misaligned with the row.
+- Y_3 output row and X_3 input row are emphasized with darker/red outlines â deliberate highlight of the third word (consistent with a mid-explanation state focusing on X_3/Y_3).
+- The bottom edge of the slide cuts off the fourth neuron (X4/y_4 group) and possibly a fifth â content appears clipped by the slide boundary.
+- Faint gray honeycomb/hatched circular pattern under each Î£ unit (decorative or residual shadow shapes).
+- No visible mouse cursor, no video player overlays, no progress bar, no watermarks. No half-faded build elements detected; highlights (red boxes) suggest an annotated final state rather than an in-progress reveal.
+

@@ -1,0 +1,237 @@
+{
+  "slide_title": "Sin/Cos Positional Encoder",
+  "subtitle_or_header": "Positional Vector with Same dimension as Embedding dimension",
+  "verbatim_text": {
+    "bullets": [
+      "Word Embedding Dimension \"d\" [Even Num]",
+      "Position Encoding Dimension \"d\"",
+      "Number of Vector Pairs \"K\"=d/2  [0, 1, 2, ... d/2-1]",
+      "Elements Index \"i\"   [0, 1, 2, ..., d-1]",
+      "Even Index \"i\" is Sine Term ,   i=2*k",
+      "Odd  Index \"i\" is Cosine Term,  i=2*k+1",
+      "Use different \"\u03c9\" values for different \"Pairs\"",
+      "Select \"\u03c9\" Value Based on \"Pair\" index \"k\"",
+      "Largest  \"\u03c9\" value = 1     (Used in First Pair)",
+      "Smallest  \"\u03c9\" value \u2248  1/10000    (Used in Last Pair)",
+      "Note:",
+      "\"\u03c9\" Value depends on Embedding Dimension \"d\" ONLY",
+      "\"\u03c9\" Value does NOT depend on Sequence Length",
+      "Sin/Cos pairs Vector Represents Position \"t\"",
+      "Any \"\u03c9\" is accepted",
+      "Example:",
+      "d=100",
+      "K=[0 ..49]",
+      "i=[0 .. 99]",
+      "Sin [0,2,4,...]",
+      "Cos [1,3,5,...]"
+    ],
+    "labels": [
+      "33 (slide number in yellow circle, top-right)",
+      "Vector Pairs 'K' (blue label, wraps as \"Vector\" / \"Pairs 'K'\", above green column)",
+      "Index 'i' (red label above cream index column)",
+      "'i' (red header at top of cream index column)",
+      "0",
+      "1",
+      "2",
+      "...",
+      "K",
+      "[d/2]-1",
+      "2k",
+      "2k+1",
+      "d-1-1",
+      "d-1",
+      "dx1 (red, bottom-right of sin/cos terms column)"
+    ],
+    "equations": [
+      "sin(\u03c9t)",
+      "cos(\u03c9t)",
+      "sin(\u03c9\u2080t)",
+      "cos(\u03c9\u2080t)",
+      "sin(\u03c9\u2081t)",
+      "cos(\u03c9\u2081t)",
+      "Sin(\u03c9\u2082t)",
+      "cos(\u03c9\u2082t)",
+      "sin(\u03c9\u2096t)",
+      "cos(\u03c9\u2096t)",
+      "sin(\u03c9_{d/2}t)",
+      "cos(\u03c9_{d/2}t)",
+      "K = d/2",
+      "i = 2*k",
+      "i = 2*k+1",
+      "\u03c9_K = 1 / 10,000^{2k/d}"
+    ]
+  },
+  "layout": {
+    "arrangement": "Thin dark-red frame borders the whole slide. Title centered at top in red; subtitle centered directly below in blue; small yellow slide-number circle at top-right. Body splits into a LEFT diagram (~45% width) of four side-by-side vertical stacks \u2014 (a) general sin/cos box above a green info box, (b) green 'Vector Pairs K' numbered column, (c) cream 'Index i' numbered column, (d) column of five sin/cos pair boxes with red 'dx1' at its bottom-right \u2014 and a RIGHT text area: two cream boxes side-by-side on top (wide definitions box ~2/3 + narrow Example box ~1/3) and one wide light-blue box across the bottom-right containing the \u03c9 equation in a white sub-box.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, x 25-75%, y 5-12%",
+        "content": "\"Sin/Cos Positional Encoder\" in bold red"
+      },
+      {
+        "name": "Subtitle",
+        "position": "top center, x 12-88%, y 12-17%",
+        "content": "\"Positional Vector with Same dimension as Embedding dimension\" in bold blue"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, x 88-94%, y 10-17%",
+        "content": "Yellow circle with \"33\""
+      },
+      {
+        "name": "General pair box",
+        "position": "upper left, x 10-20%, y 23-38%",
+        "content": "Maroon-bordered rounded box with red \"sin(\u03c9t)\" / \"cos(\u03c9t)\""
+      },
+      {
+        "name": "Sin/Cos info box",
+        "position": "left, x 7-23%, y 42-60%",
+        "content": "Green box: \"Sin/Cos pairs Vector Represents Position 't'\" / \"Any '\u03c9' is accepted\""
+      },
+      {
+        "name": "Vector Pairs column",
+        "position": "left-center, x 22-27%, y 20-93%",
+        "content": "Blue label \"Vector Pairs 'K'\" above green rounded boxes: 0, 1, 2, ..., K, ..., [d/2]-1"
+      },
+      {
+        "name": "Index column",
+        "position": "center-left, x 27-32%, y 20-94%",
+        "content": "Red label \"Index 'i'\" above cream strip with red numbers: 'i', 0, 1, 2, 3, 4, 5, (gap) 2k, 2k+1, (gap) d-1-1, d-1"
+      },
+      {
+        "name": "Sin/Cos terms column",
+        "position": "center, x 33-43%, y 21-95%",
+        "content": "Five rounded pair-boxes alternating green/orange with sin/cos terms; red \"dx1\" at bottom right"
+      },
+      {
+        "name": "Definitions box",
+        "position": "right, x 45-80%, y 18-55%",
+        "content": "Cream box, red border, six color-coded definition lines about d, K, i, Even/Odd index"
+      },
+      {
+        "name": "Example box",
+        "position": "far right, x 81-93%, y 18-55%",
+        "content": "Cream box, red border: \"Example:\" d=100, K=[0 ..49], i=[0 .. 99], Sin [0,2,4,...], Cos [1,3,5,...]"
+      },
+      {
+        "name": "\u03c9 selection box",
+        "position": "bottom right, x 48-93%, y 56-95%",
+        "content": "Light-blue box, blue border: \u03c9-selection rules, white equation sub-box with \u03c9_K = 1/10,000^(2k/d), Largest/Smallest lines, Note lines"
+      }
+    ],
+    "hierarchy": "Red bold title is largest; blue bold subtitle second. Right-side definition box (large multi-colored text) and the blue \u03c9 box dominate the body; the left diagram columns are mid-weight; tiny red index numbers and 12pt labels are finest. Color (red/blue/green/purple) carries emphasis more than size."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Positional-encoder vector structure, read left to right as four vertical stacks. (1) Rounded box, maroon border, white fill, two red lines: \"sin(\u03c9t)\" and \"cos(\u03c9t)\" (the general pair). Below it a green rectangle: \"Sin/Cos pairs Vector Represents Position 't'\" (Sin/Cos pairs bold; Position bold with red t) and \"Any '\u03c9' is accepted\" (\u03c9 red). (2) Column of small green rounded boxes labeled 'Vector Pairs K' containing black bold values top to bottom: 0, 1, 2, then vertical ellipsis dots, K, ellipsis dots, [d/2]-1. (3) Cream vertical strip labeled 'Index i' with red values top to bottom: 'i', 0, 1, 2, 3, 4, 5, (blank gap), 2k, 2k+1, (blank gap), d-1-1, d-1. (4) Column of five rounded pair-boxes, each holding two stacked lines, alternating fill green/orange: green[sin(\u03c9\u2080t), cos(\u03c9\u2080t)], orange[sin(\u03c9\u2081t), cos(\u03c9\u2081t)], green[Sin(\u03c9\u2082t), cos(\u03c9\u2082t)] \u2014 capital S verbatim, orange[sin(\u03c9\u2096t), cos(\u03c9\u2096t)], green[sin(\u03c9_{d/2}t), cos(\u03c9_{d/2}t)]; small gaps/faint ellipsis dots between boxes; red text \"dx1\" at the column's bottom-right indicating output dimension.",
+      "colors": [
+        "#C6E0B4",
+        "#00B050",
+        "#F8CBAD",
+        "#ED7D31",
+        "#FFF2CC",
+        "#C00000",
+        "#8B0000",
+        "#000000",
+        "#D6E8CE"
+      ],
+      "position": "left ~7-45% width, y ~20-96%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Definitions box: cream fill, thin red border, six lines with color runs \u2014 line1 \"Word Embedding Dimension \"d\" [Even Num]\" (label red, d blue, [Even Num] green italic); line2 \"Position Encoding Dimension \"d\"\" (Position red, d blue, rest black); line3 \"Number of Vector Pairs \"K\"=d/2  [0, 1, 2, ... d/2-1]\" (label purple, K blue, rest black); line4 \"Elements Index \"i\"   [0, 1, 2, ..., d-1]\" (label blue, i red, range black); line5 \"Even Index \"i\" is Sine Term ,   i=2*k\" (Even Index blue, i red, Sine Term green, i=2*k red); line6 \"Odd  Index \"i\" is Cosine Term,  i=2*k+1\" (Odd Index blue, i red, Cosine Term green, i=2*k+1 red).",
+      "colors": [
+        "#FFF2CC",
+        "#C00000",
+        "#0000CC",
+        "#00B050",
+        "#7030A0",
+        "#000000"
+      ],
+      "position": "right, x 45-80%, y 18-55%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Example box: cream fill, thin red border. \"Example:\" red italic underlined; \"d=100\" black; \"K=[0 ..49]\" (K= blue, range black); \"i=[0 .. 99]\" (i= red, range black); \"Sin [0,2,4,...]\" (Sin green); \"Cos [1,3,5,...]\" (Cos green).",
+      "colors": [
+        "#FFF2CC",
+        "#C00000",
+        "#0000CC",
+        "#00B050",
+        "#000000"
+      ],
+      "position": "far right, x 81-93%, y 18-55%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "\u03c9-selection box: light-blue fill, blue border. Lines: \"Use different \"\u03c9\" values for different \"Pairs\"\" and \"Select \"\u03c9\" Value Based on \"Pair\" index \"k\"\" (black text; \u03c9, Pairs, Pair, k in red). White rounded sub-box with red border at right containing the equation \u03c9_K = 1/10,000^{2k/d} \u2014 \u03c9 large red with blue subscript K, black fraction bar, numerator 1, denominator 10,000 with red superscript 2k/d. Below: \"Largest  \"\u03c9\" value = 1\" (Largest blue bold, \u03c9 red) with \"(Used in First Pair)\" black to its right; \"Smallest  \"\u03c9\" value \u2248  1/10000\" (Smallest blue bold, \u03c9 red) with \"(Used in Last Pair)\" black; \"Note:\" blue italic underlined; \"\"\u03c9\" Value depends on Embedding Dimension \"d\" ONLY\" (\u03c9 and d red); \"\"\u03c9\" Value does NOT depend on Sequence Length\" (\u03c9 red, NOT bold).",
+      "colors": [
+        "#DAEEF3",
+        "#0070C0",
+        "#FFFFFF",
+        "#C00000",
+        "#0000CC",
+        "#000000"
+      ],
+      "position": "bottom right, x 48-93%, y 56-95%"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: small yellow circle with thin dark outline containing \"33\" in black, top-right corner.",
+      "colors": [
+        "#FFD966",
+        "#000000"
+      ],
+      "position": "top right, x ~88-94%, y ~10-17%"
+    },
+    {
+      "type": "other",
+      "description": "Thin dark-red rectangular frame (no fill) inset around the entire slide content.",
+      "colors": [
+        "#990000"
+      ],
+      "position": "full slide perimeter, inset ~5%"
+    }
+  ],
+  "imagery": [
+    "No photographs, icons, or illustrations on the slide. Only artifact: a black mouse-arrow cursor captured near the sin(\u03c9\u2096t)/cos(\u03c9\u2096t) box (video overlay, not slide content), and a black horizontal strip along the very bottom edge which is the video player progress bar, not slide content."
+  ],
+  "colors": {
+    "background": "#F2F2F2",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000CC",
+      "#00B050",
+      "#ED7D31",
+      "#7030A0",
+      "#C00000",
+      "#8B0000",
+      "#FFD966",
+      "#FFF2CC",
+      "#C6E0B4",
+      "#F8CBAD",
+      "#DAEEF3",
+      "#0070C0"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Calibri-like). Title ~26-28pt bold red; subtitle ~20pt bold blue; body 12-16pt regular with extensive color-coded runs (red for \u03c9/i/formulas, blue for K/d/Even-Odd labels, green for Sine/Cosine terms, purple for 'Number of Vector Pairs'). Italics on 'Example:', 'Note:', '[Even Num]'. Bold on 'Sin/Cos pairs', 'Position', 'Largest', 'Smallest', 'NOT'. Literal double quotes wrap variables (\"d\", \"K\", \"i\", \"\u03c9\", \"Pairs\", \"Pair\", \"t\"). No bullet glyphs \u2014 lines are plain colored text; diagram numbers are centered in small rounded boxes.",
+  "animation_state": "Slide appears fully built \u2014 no partial bullet reveal. A black mouse cursor (video artifact) sits near the K-th sin/cos pair; black bar at very bottom is the video scrubber, not slide content.",
+  "recreation_brief": "1. Slide 16:9, background #F2F2F2; add no-fill rectangle with ~2pt #990000 outline inset ~5% from every edge as the frame. 2. Centered title text box (y 5-12%): 'Sin/Cos Positional Encoder', Arial bold 28pt, #C00000. 3. Centered subtitle (y 12-17%): 'Positional Vector with Same dimension as Embedding dimension', Arial bold 20pt, #0000CC. 4. Top-right: 0.45\" oval, fill #FFD966, thin dark outline, black bold '33'. 5. Left diagram, stack (a): rounded rectangle x 10-20% y 23-38%, white fill, 2.5pt #8B0000 border, drop shadow; two red 16pt lines 'sin(\u03c9t)' and 'cos(\u03c9t)'. Below it (y 42-60%) green rectangle fill #D6E8CE, 1.5pt #00B050 border, 12pt black text: 'Sin/Cos pairs' (bold), 'Vector Represents', 'Position \"t\"' (Position bold, t red bold), blank line, 'Any \"\u03c9\" is accepted' (\u03c9 red). 6. Blue 12pt label 'Vector' / 'Pairs K' (as 'Vector Pairs 'K'') above column at x 22-27%; red 12pt label 'Index 'i'' above column at x 27-32%. 7. Column (b): seven small rounded boxes (fill #C6E0B4, 1pt #00B050 border) stacked y 22-93% with black bold centered values 0, 1, 2, then plain-text '...', K, '...', '[d/2]-1'. 8. Column (c): tall cream rectangle x 27-32% y 20-94%, fill #FFF2CC, thin #C00000 outline; red centered values top-to-bottom: 'i', 0, 1, 2, 3, 4, 5, (gap) 2k, 2k+1, (gap) d-1-1, d-1. 9. Column (d) x 33-43% y 21-95%: five rounded two-line boxes alternating green (fill #C6E0B4, border #00B050, dark-green text) and orange (fill #F8CBAD, border #ED7D31, dark-orange text) containing exactly: sin(\u03c9\u2080t)/cos(\u03c9\u2080t); sin(\u03c9\u2081t)/cos(\u03c9\u2081t); Sin(\u03c9\u2082t)/cos(\u03c9\u2082t) (capital S); sin(\u03c9\u2096t)/cos(\u03c9\u2096t); sin(\u03c9_{d/2}t)/cos(\u03c9_{d/2}t); leave small gaps between boxes; add red 'dx1' at bottom-right of the column. 10. Definitions box: rectangle x 45-80% y 18-55%, fill #FFF2CC, 1.5pt #C00000 border; enter the six definition lines verbatim with the color runs listed in visual_elements (14pt). 11. Example box: rectangle x 81-93% y 18-55%, same fill/border; lines 'Example:' (red italic underlined), 'd=100', 'K=[0 ..49]' (K= blue), 'i=[0 .. 99]' (i= red), 'Sin [0,2,4,...]' (Sin green), 'Cos [1,3,5,...]' (Cos green). 12. Blue box: rectangle x 48-93% y 56-95%, fill #DAEEF3, 2pt #0070C0 border; add the two \u03c9-selection lines (red tokens \u03c9/Pairs/Pair/k), a white rounded sub-box with red border on the right holding \u03c9_K = 1/10,000^(2k/d) (\u03c9 red ~24pt, blue subscript K, black '1' over black '10,000', red superscript '2k/d'), then 'Largest \"\u03c9\" value = 1' + '(Used in First Pair)' and 'Smallest \"\u03c9\" value \u2248 1/10000' + '(Used in Last Pair)' (lead words blue bold, \u03c9 red, parentheticals black right-aligned), then 'Note:' (blue italic underlined) and the two \u03c9-dependence lines (\u03c9 and d red, NOT bold). 13. Proofread every string against the transcription \u2014 preserve exact capitalization ('Sin(\u03c9\u2082t)', 'ONLY', 'NOT'), spacing, and quoted variables; do not let autocorrect change them.",
+  "_meta": {
+    "frame": "slide_033.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 33,
+      "image": "slide_033.jpg",
+      "kept_frame": "frame_02406.jpg",
+      "start_sec": 2182.0,
+      "end_sec": 2405.0,
+      "frame_count": 224,
+      "old_slide": 68
+    },
+    "elapsed_s": 547.4
+  }
+}

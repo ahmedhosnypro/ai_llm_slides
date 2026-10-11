@@ -1,0 +1,36 @@
+# Element-by-Element Comparison
+
+**Box geometry / fill / border**
+- Rounded-corner rectangle, light blue fill (D4E4FB), navy (#000080) border â matches in both crops. Corner radius visually equivalent. â
+- No clipping or overflow in either crop; the callout is fully contained. â
+
+**Line 1 â `Scale down "Weights" Values`**
+- Verbatim text identical. Bold italic weight matches. Centering matches.
+- **MINOR â quote glyph style:** IMG1 uses straight ASCII double quotes (`"Weights"`); IMG2 uses curly typographic quotes (`"Weights"`). The founder rule requires literal double quotes â the render does have literal double quotes, only the glyph style differs. MINOR.
+
+**Line 2 â `before applying SoftMax`**
+- Verbatim identical, italic (non-bold), centered. Line pitch 22â23px consistent in both. No discrepancy. â
+
+**Line 3 â `Scaling Factor should be related to`**
+- Mixed weight correct in both: "Scaling Factor" bold italic, remainder italic. Centering and ink extent match within the stated 6px tolerance. â
+
+**Line 4 â `Embedding Dimension "d"`**
+- Verbatim identical, italic. Blank gap above this line preserved in both. Centering matches.
+- **MINOR â weight of "d":** In IMG2 the `d` inside the quotes reads visibly heavier (bold-italic); in IMG1 it is regular italic, matching the rest of the line. Typed-vs-handwritten rule doesn't cover this; it's a sub-glyph weight nuance at the smallest scale in the box â MINOR.
+
+**Line spacing / blank gap**
+- 4 lines, pitch 22â23px both; the blank gap between lines 2 and 3 present in both. â
+
+**Artifacts**
+- Mouse cursor over "Embedding" in IMG2 is a video-capture artifact; per ground rule (b) its omission in IMG1 is CORRECT, not a discrepancy. â
+
+# Discrepancy Summary
+
+| # | Item | Severity |
+|---|------|----------|
+| 1 | Quote glyphs straight (`"`) in IMG1 vs curly (`" "`) in IMG2, lines 1 and 4 | MINOR |
+| 2 | `d` in line 4: bold-italic in IMG2 vs regular italic in IMG1 | MINOR |
+
+No BLOCKER or MAJOR issues. Text is verbatim (including the double quotes), line breaks, weights, colors, fill, border, spacing, and centering all match within tolerance.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation' of this region.

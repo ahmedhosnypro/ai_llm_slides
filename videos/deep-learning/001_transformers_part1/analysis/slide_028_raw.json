@@ -1,0 +1,209 @@
+{
+  "slide_title": "Self Attention Mechanism (Not Sensitive to Words Order)",
+  "subtitle_or_header": "(Self Attention of word X\u2082 w.r.t All words in Sentence ( X\u2084, X\u2082, X\u2081, X\u2083 )",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "28",
+      "Similarity",
+      "Dot Product",
+      "Probabilities",
+      "Soft max",
+      "Weighted SUM",
+      "\u03a3",
+      "Y",
+      "X\u2084",
+      "X\u2083",
+      "X\u2082",
+      "X\u2081",
+      "W\u2082\u2081",
+      "W\u2082\u2082",
+      "W\u2082\u2083",
+      "W\u2082\u2084",
+      "Sequential nature of the input is IGNORED",
+      "Mitigated Later with",
+      "Positional Encoder"
+    ],
+    "equations": [
+      "X\u2082 (query word; red bold with subscript, appears in subtitle and as highlighted pink token)",
+      "X\u2084, X\u2082, X\u2081, X\u2083 (all sentence words; red bold with subscripts)",
+      "W\u2082\u2081, W\u2082\u2082, W\u2082\u2083, W\u2082\u2084 (attention weights; dark blue bold with subscripts)",
+      "\u03a3 (summation symbol in light-blue box)",
+      "Soft max (rotated label on pink bar)",
+      "Y (output representation label)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Thin dark-red border frame around the whole white slide. Two-line bold centered title at top (line 1 has yellow highlight on the parenthetical; line 2 has red subscripted X symbols); yellow '28' circle badge at top-right. Below, one large peach rounded panel (~4-94% width, ~19-98% height) contains the entire self-attention flow diagram, reading left to right: left embedding stack (4 blocks) -> tan 'Dot Product' box (yellow 'Similarity' oval above) -> tall pink 'Soft max' bar (yellow 'Probabilities' oval above) -> four red \u2297 multiply nodes labeled W\u2082\u2081-W\u2082\u2084 -> light-blue '\u03a3' box (yellow 'Weighted SUM' oval above) -> thick green arrow up to output 'Y' block; right embedding stack (4 blocks) feeds the \u2297 nodes from the right; bottom row of four token blocks (X\u2084, X\u2082 highlighted, X\u2081, X\u2083) sends a red arrow up into the Dot Product box; green annotation box bottom-center; red/blue 'Positional Encoder' box bottom-right.",
+    "regions": [
+      {
+        "name": "Title block",
+        "position": "top center, 0-100% width, 4-19% height",
+        "content": "Line 1: 'Self Attention Mechanism (Not Sensitive to Words Order)' bold black, parenthetical yellow-highlighted. Line 2: '(Self Attention of word X\u2082 w.r.t All words in Sentence ( X\u2084, X\u2082, X\u2081, X\u2083 )' bold black with red bold subscripted X symbols."
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, ~90-96% width, 9-17% height",
+        "content": "Yellow circle with dark outline containing '28' in black."
+      },
+      {
+        "name": "Diagram canvas",
+        "position": "middle, 4-94% width, 19-98% height",
+        "content": "Peach/apricot rounded rectangle holding the whole self-attention diagram."
+      },
+      {
+        "name": "Left embedding stack",
+        "position": "middle-left, 6-15% width, 42-73% height",
+        "content": "Four green-dashed rounded blocks labeled X\u2084, X\u2083, X\u2082, X\u2081 (top to bottom), each a 4-cell colored strip; red horizontal arrows exit right toward the Dot Product box."
+      },
+      {
+        "name": "Similarity callout",
+        "position": "upper middle-left, 28-36% width, 30-34% height",
+        "content": "Yellow oval labeled 'Similarity' above the Dot Product box."
+      },
+      {
+        "name": "Dot Product box",
+        "position": "middle-left, 26-36% width, 36-74% height",
+        "content": "Tan rectangle, text 'Dot Product' (wrapped as 'Dot' / 'Product') at top; 4 dark-blue dots with light-blue centers in a descending diagonal; thin red fan lines from the incoming bottom arrow reach each dot."
+      },
+      {
+        "name": "Probabilities callout",
+        "position": "upper center, 45-53% width, 30-34% height",
+        "content": "Yellow oval labeled 'Probabilities' above the Softmax bar."
+      },
+      {
+        "name": "Softmax bar",
+        "position": "middle center, 48-51% width, 36-74% height",
+        "content": "Tall pink/violet vertical bar with rotated (90\u00b0, bottom-to-top) text 'Soft max'."
+      },
+      {
+        "name": "Weight labels and multiply nodes",
+        "position": "middle center-right, 51-60% width, 40-70% height",
+        "content": "Dark-blue bold labels W\u2082\u2081, W\u2082\u2082, W\u2082\u2083, W\u2082\u2084 (top to bottom) beside four red \u2297 circles arranged vertically; red lines connect Softmax to each \u2297 and each \u2297 upward to \u03a3."
+      },
+      {
+        "name": "Summation box",
+        "position": "upper center-right, 54-68% width, 36-41% height",
+        "content": "Light-blue rectangle with large black bold '\u03a3'; yellow oval 'Weighted SUM' above it at 62-72% width, 30-34% height."
+      },
+      {
+        "name": "Output block",
+        "position": "top center-right, 57-67% width, 22-27% height",
+        "content": "Green-dashed rounded block containing a colored strip labeled 'Y'; thick green arrow points up into it from the \u03a3 box."
+      },
+      {
+        "name": "Right embedding stack",
+        "position": "middle-right, 80-88% width, 42-73% height",
+        "content": "Four green-dashed blocks labeled X\u2084, X\u2083, X\u2082, X\u2081 (top to bottom); red horizontal arrows run left from them into the \u2297 nodes."
+      },
+      {
+        "name": "Bottom token row",
+        "position": "bottom left-center, 19-51% width, 88-95% height",
+        "content": "Row of four green-dashed blocks labeled X\u2084, X\u2082 (pink-highlighted), X\u2081, X\u2083; red vertical arrow rises from X\u2082 to the Dot Product box; dark-red 3D block arrow points at X\u2082 from bottom-left; dashed green curved arrows leave the row's two ends upward to the left and right embedding stacks."
+      },
+      {
+        "name": "Green annotation",
+        "position": "bottom center, 40-75% width, 79-85% height",
+        "content": "White rounded box with green bold text 'Sequential nature of the input is IGNORED'."
+      },
+      {
+        "name": "Positional Encoder note",
+        "position": "bottom right, 76-93% width, 85-96% height",
+        "content": "White box: red bold 'Mitigated Later with' on line 1, blue bold italic 'Positional Encoder' on line 2."
+      }
+    ],
+    "hierarchy": "The peach diagram panel dominates (~90% of slide). Largest colored masses: tan 'Dot Product' box and pink 'Soft max' bar. Strongest accents: red arrows/\u2297/X labels and the yellow-highlighted title phrase. Medium: green-dashed embedding blocks, light-blue \u03a3 box. Smallest: yellow stage ovals, W labels, slide badge. Bottom annotation boxes are secondary supporting text."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "Self-attention dataflow for query X\u2082. NODES: (a) Left embedding stack: 4 rounded blocks with dashed green borders, each containing a horizontal 4-cell strip [yellow | pink cell with red label | green | yellow]; labels top->bottom X\u2084, X\u2083, X\u2082, X\u2081. (b) Tan 'Dot Product' rectangle with 4 dark-blue dots (light-blue centers) in a descending diagonal. (c) Tall pink vertical bar with rotated text 'Soft max'. (d) Four red \u2297 (circled-multiply) nodes stacked vertically, labeled at their left W\u2082\u2081, W\u2082\u2082, W\u2082\u2083, W\u2082\u2084 in dark blue. (e) Light-blue rectangle with black '\u03a3'. (f) Output block: dashed-green rounded block with strip labeled 'Y'. (g) Right embedding stack: same 4 strip-blocks labeled X\u2084, X\u2083, X\u2082, X\u2081. (h) Bottom token row: 4 dashed-green strip-blocks labeled X\u2084, X\u2082 (pink-highlighted), X\u2081, X\u2083. ARROWS: 4 red horizontal arrows left-stack -> blue dots (arrowheads at dots); thin red fan lines inside the tan box from the base of the vertical red arrow up to each dot; thin red lines dots -> Softmax bar; red lines Softmax -> each \u2297; 4 red horizontal arrows right-stack -> \u2297 nodes (arrowheads pointing left); 4 red vertical arrows \u2297 -> \u03a3 (arrowheads up into \u03a3); thick green block arrow \u03a3 -> Y output block (pointing up); red vertical arrow bottom-row X\u2082 -> Dot Product box (arrowhead up); dark-red 3D block arrow at bottom-left pointing at the X\u2082 token; two dashed green curved arrows from the ends of the bottom token row curving up to the bottoms of the left and right embedding stacks (arrowheads up).",
+      "colors": [
+        "#CC0000",
+        "#00A000",
+        "#FFFF99",
+        "#FF99CC",
+        "#90EE90",
+        "#C8A165",
+        "#00008B",
+        "#87CEEB",
+        "#EE82EE",
+        "#ADD8E6",
+        "#FCE3C3"
+      ],
+      "position": "entire peach panel, 4-94% width, 19-98% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Three yellow ovals (black outline, black bold text) naming the pipeline stages: 'Similarity' (above Dot Product box), 'Probabilities' (above Softmax bar), 'Weighted SUM' (above \u03a3 box).",
+      "colors": [
+        "#FFFF99",
+        "#000000"
+      ],
+      "position": "upper band of the panel, ~30-34% height, at ~28-36%, ~45-53%, and ~62-72% width"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Yellow text-highlight behind '(Not Sensitive to Words Order)' in title line 1.",
+      "colors": [
+        "#FFFF00"
+      ],
+      "position": "top center, title line 1"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Two annotation boxes: (1) white rounded rectangle with green bold text 'Sequential nature of the input is IGNORED'; (2) white rectangle with red bold 'Mitigated Later with' and blue bold italic 'Positional Encoder'.",
+      "colors": [
+        "#FFFFFF",
+        "#008000",
+        "#CC0000",
+        "#0000FF"
+      ],
+      "position": "bottom center and bottom right of the panel"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: yellow circle, dark outline, black text '28'.",
+      "colors": [
+        "#FFFF99",
+        "#000000"
+      ],
+      "position": "top right, ~90-96% width, 9-17% height"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations. Pictorial items are all diagrammatic: colored embedding-strip blocks (yellow/pink/green cells in dashed-green rounded containers), red \u2297 circled-multiply icons, a large black \u03a3 glyph, a chunky dark-red 3D block arrow with black outline at bottom-left pointing at the X\u2082 token, and a small white mouse cursor with black outline floating near the W\u2082\u2083 label (screen-recording artifact, not slide content)."
+  ],
+  "colors": {
+    "background": "#FFFFFF outer slide with a thin dark-red (#C00000) border frame; main diagram panel peach/apricot #FCE3C3",
+    "title_text": "#000000 (parenthetical on #FFFF00 highlight; X symbols in red #CC0000)",
+    "body_text": "#000000",
+    "accents": [
+      "#CC0000 (red arrows, \u2297 nodes, X labels, 'Mitigated Later with')",
+      "#FFFF00 / #FFFF99 (title highlight and yellow stage ovals / badge)",
+      "#00008B (W labels and dot-product dots) with #87CEEB dot centers",
+      "#FF99CC (pink embedding cells) and #EE82EE (Softmax bar)",
+      "#90EE90 (green cells) with #00A000 dashed green borders/arrows",
+      "#ADD8E6 (\u03a3 box)",
+      "#C8A165 (Dot Product box)",
+      "#008000 (green annotation text)",
+      "#0000FF (blue 'Positional Encoder')"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Calibri-like). Title and subtitle bold, ~20-22pt, centered; title line 1 carries a yellow highlight on the parenthetical; X symbols are red bold with true subscripts. Diagram labels bold ~10-12pt. 'Soft max' is rotated 90\u00b0 (reads bottom-to-top) on the pink bar in a dark color. 'IGNORED' and 'SUM' are all-caps. 'Positional Encoder' is bold italic blue. 'w.r.t' is abbreviated. Slide number sits in a yellow circle. No serif fonts anywhere; no numbered bullets.",
+  "animation_state": "Slide appears fully built \u2014 all four attention branches, all labels, blocks and arrows are present; nothing looks mid-reveal. A mouse cursor is visible near the W\u2082\u2083 label, an artifact of the recorded lecture rather than slide content.",
+  "recreation_brief": "1. Slide setup: white background; draw a no-fill rectangle with ~2.5pt dark-red (#C00000) outline inset ~0.3cm around the entire slide as a frame.\n2. Title text box (centered, full width, top ~4-12%): line 1 'Self Attention Mechanism ' bold black ~22pt Arial + '(Not Sensitive to Words Order)' bold black with yellow (#FFFF00) highlight. Line 2 ~20pt bold: '(Self Attention of word ' black + 'X' red with subscript '2' + ' w.r.t All words in Sentence ( ' black + 'X' red sub '4' + ', ' + 'X' red sub '2' + ', ' + 'X' red sub '1' + ', ' + 'X' red sub '3' + ' )'.\n3. Slide badge: 1.2cm yellow (#FFFF99) circle, dark outline, at ~93% width / 13% height, text '28' black bold 12pt.\n4. Diagram canvas: peach (#FCE3C3) rounded rectangle from 4%-94% width, 19%-98% height; send to back.\n5. Build one 'embedding block' group: rounded rectangle, white fill, 1.5pt dashed green (#00A000) border, containing 4 adjacent small cells colored yellow (#FFFF99), pink (#FF99CC), green (#90EE90), yellow; put a red bold subscripted label in the pink cell. Duplicate for: left stack (labels X\u2084, X\u2083, X\u2082, X\u2081 top->bottom; 6-15% w, 42-73% h), right stack (same labels; 80-88% w, 42-73% h), output block labeled 'Y' (57-67% w, 22-27% h), and bottom row (labels X\u2084, X\u2082, X\u2081, X\u2083; 19-51% w, 88-95% h \u2014 fill the X\u2082 block's cells with stronger pink and a red outline to highlight it).\n6. Dot Product box: tan (#C8A165) rectangle 26-36% w, 36-74% h; bold dark text 'Dot' / 'Product' (two lines) at top; place 4 circles (dark-blue #00008B ring, light-blue #87CEEB center) in a descending diagonal inside.\n7. Softmax bar: pink-violet (#EE82EE) vertical rectangle 48-51% w, 36-74% h; add text box 'Soft max' rotated 270\u00b0 (reads bottom-to-top), dark bold.\n8. Three yellow ovals (#FFFF99 fill, black outline, black bold ~11pt): 'Similarity' above the Dot Product box; 'Probabilities' above the Softmax bar; 'Weighted SUM' above the \u03a3 box.\n9. \u03a3 box: light-blue (#ADD8E6) rectangle 54-68% w, 36-41% h with large black bold '\u03a3' centered.\n10. Multiply nodes: four red (#CC0000) circles (~0.5cm) each containing a bold '\u00d7' (or the \u2297 character), stacked at ~57% width at ~44/52/59/66% height; to each left, dark-blue (#00008B) bold label with subscript: W\u2082\u2081, W\u2082\u2082, W\u2082\u2083, W\u2082\u2084.\n11. Arrows (all #CC0000, ~1.25pt): four horizontal arrows left-stack -> the four blue dots; thin lines from the base point of step 12's arrow fanning up to each dot; thin lines dots -> Softmax bar; lines Softmax right edge -> each \u2297; four horizontal arrows right-stack -> \u2297 nodes (arrowheads pointing left); four vertical arrows \u2297 -> \u03a3 bottom edge (arrowheads up).\n12. Red vertical arrow from top of bottom-row X\u2082 block (~29% width) up to the Dot Product box bottom (arrowhead up). Add a dark-red 3D 'Block Arrow' shape (black outline) at ~27-31% w, ~93-98% h pointing up-right at the X\u2082 token.\n13. Thick green (#00A000) block arrow from \u03a3 box top pointing up into the 'Y' output block.\n14. Two dashed green (#00A000) curved connectors: from the left end of the bottom token row curving up to the bottom of the left stack, and from the right end curving up to the bottom of the right stack (arrowheads up).\n15. Annotation boxes: white rounded rectangle at 40-75% w, 79-85% h with green (#008000) bold text 'Sequential nature of the input is IGNORED'; white rectangle at 76-93% w, 85-96% h with line 1 red bold 'Mitigated Later with' and line 2 blue (#0000FF) bold italic 'Positional Encoder'.\n16. Optional (only for pixel-faithful screenshot match): add a small mouse-cursor icon near W\u2082\u2083; it is a recording artifact, not part of the original slide.",
+  "_meta": {
+    "frame": "slide_028.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 28,
+      "image": "slide_028.jpg",
+      "kept_frame": "frame_02595.jpg",
+      "start_sec": 2498.0,
+      "end_sec": 2594.0,
+      "frame_count": 97
+    },
+    "elapsed_s": 384.6
+  }
+}

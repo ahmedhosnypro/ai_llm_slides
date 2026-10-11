@@ -1,0 +1,187 @@
+{
+  "slide_title": "Transformer Stacked Encoder Blocks",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Encoder Output",
+      "Transformer Encoder",
+      "Encoder Input",
+      "Embedding Words & Pos.",
+      "Input Seq",
+      "Encoder Block M",
+      "Encoder Block 2",
+      "Encoder Block 1",
+      "Encoder Block 0",
+      "Word Embedding",
+      "Positional Encoding / Embedding",
+      "Word 0",
+      "Word 1",
+      "Word 2",
+      "Word 3",
+      "Word 4",
+      "Word 5",
+      "Word N-2",
+      "Word N-1",
+      "Y_0",
+      "Y_1",
+      "Y_2",
+      "Y_3",
+      "Y_4",
+      "Y_5",
+      "Y_{N-2}",
+      "Y_{N-1}",
+      "X_0",
+      "X_1",
+      "X_2",
+      "X_3",
+      "X_4",
+      "X_5",
+      "X_{N-2}",
+      "X_{N-3} [likely X_{N-1}, subscript slightly blurry]",
+      "49"
+    ],
+    "equations": [
+      "Y_0, Y_1, Y_2, Y_3, Y_4, Y_5, ..., Y_{N-2}, Y_{N-1} (encoder output token sequence)",
+      "X_0, X_1, X_2, X_3, X_4, X_5, ..., X_{N-2}, X_{N-1} (encoder input token sequence; last token appears printed as X_{N-3} [?])"
+    ]
+  },
+  "layout": {
+    "arrangement": "Full-slide architecture diagram inside a thin dark-red border frame on white. Title centered at top; yellow circular slide-number badge '49' at top-right. Narrow left label column (~12% width) with five stacked labels. Main diagram fills the remaining width as a bottom-to-top data flow: row of Word boxes -> gray up-arrows -> two stacked full-width embedding bars (cyan 'Positional Encoding / Embedding' below tan 'Word Embedding') -> blue up-arrows -> row of X token boxes -> large light-blue container holding four dark-blue 'Encoder Block' bars separated by red up-arrows and blue dot columns -> green up-arrows -> row of Y token boxes. Thin black strip along the very bottom edge (likely video-player artifact, not slide content).",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~2%-10% height, ~20%-80% width",
+        "content": "Red bold text 'Transformer Stacked Encoder Blocks'"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, ~5%-13% height, ~88%-96% width",
+        "content": "Yellow circle with black number '49'"
+      },
+      {
+        "name": "Left label column",
+        "position": "left edge, ~12%-96% height, ~1%-13% width",
+        "content": "Red-bordered box 'Encoder Output' (top); large vertical blue bold-italic 'Transformer Encoder' (middle, spanning encoder-stack height); red-bordered box 'Encoder Input'; red bold-italic two-line text 'Embedding Words & Pos.'; red-bordered box 'Input Seq' (bottom)"
+      },
+      {
+        "name": "Output token row",
+        "position": "top of diagram area, ~14%-20% height, ~15%-97% width",
+        "content": "8 segmented token boxes labeled Y_0...Y_5, Y_{N-2}, Y_{N-1} with 5 blue ellipsis dots between Y_5 and Y_{N-2}; 8 green up-arrows beneath them"
+      },
+      {
+        "name": "Encoder stack container",
+        "position": "middle, ~22%-64% height, ~15%-97% width",
+        "content": "Light-blue rectangle with dark-blue border containing four full-width dark-blue bars labeled (top to bottom) Encoder Block M, Encoder Block 2, Encoder Block 1, Encoder Block 0; 8 columns of red up-arrows between bars; 8 columns of 3-4 blue vertical dots between Block 2 and Block M"
+      },
+      {
+        "name": "Input token row",
+        "position": "~66%-73% height, ~15%-97% width",
+        "content": "8 segmented token boxes labeled X_0...X_5, X_{N-2}, X_{N-3}[?] with 5 green ellipsis dots between X_5 and X_{N-2}; 8 blue up-arrows beneath them"
+      },
+      {
+        "name": "Embedding bars",
+        "position": "~75%-87% height, ~15%-97% width",
+        "content": "Full-width tan bar 'Word Embedding' (orange text) stacked directly above full-width light-cyan bar 'Positional Encoding / Embedding' (two-tone blue text)"
+      },
+      {
+        "name": "Word row",
+        "position": "bottom, ~88%-96% height, ~15%-97% width",
+        "content": "8 white red-bordered boxes with red italic labels Word 0, Word 1, Word 2, Word 3, Word 4, Word 5, Word N-2, Word N-1; 5 gray ellipsis dots between Word 5 and Word N-2; 8 gray up-arrows above the boxes into the cyan bar"
+      },
+      {
+        "name": "Bottom black strip",
+        "position": "very bottom, ~97%-100% height, full width",
+        "content": "Thin solid black bar (probable video-player progress artifact, not slide content)"
+      }
+    ],
+    "hierarchy": "Visually dominant: the four dark-blue 'Encoder Block' bars (largest solid-color mass) and the large red title. Secondary: light-blue encoder container, token rows, embedding bars, vertical blue 'Transformer Encoder' text. Tertiary: small colored arrows, ellipsis dots, left-edge red labels. Title is the largest typeface; block labels are medium bold white; token/word labels are the smallest."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "Vertical bottom-to-top Transformer-encoder data-flow diagram. Nodes bottom to top: (1) 8 white boxes with thin red borders and red italic serif labels: Word 0, Word 1, Word 2, Word 3, Word 4, Word 5, [5 gray dots], Word N-2, Word N-1. (2) 8 short gray upward arrows into a full-width light-cyan rectangle with dark border labeled 'Positional Encoding / Embedding' ('Positional' in medium blue, 'Encoding / Embedding' in dark navy). (3) Directly above, a full-width tan/peach rectangle with dark border labeled 'Word Embedding' in orange. (4) 8 medium-blue upward arrows to a row of 8 small token boxes, each a horizontal rectangle segmented into pastel green / yellow / pink cells, labeled in red italic with subscripts: X_0, X_1, X_2, X_3, X_4, X_5, [5 green dots], X_{N-2}, X_{N-3}[?]. (5) Large light-blue container with dark-blue border holding four full-width dark-blue bars with white bold centered text, bottom to top: 'Encoder Block 0', 'Encoder Block 1', 'Encoder Block 2', 'Encoder Block M'; between consecutive bars run 8 columns of small dark-red upward arrows; between Block 2 and Block M, 8 columns of 3-4 dark-blue vertical dots indicate omitted stacked blocks. (6) 8 bright-green upward arrows from the top of Encoder Block M to a row of 8 token boxes identical in style to the X row, labeled Y_0, Y_1, Y_2, Y_3, Y_4, Y_5, [5 blue dots], Y_{N-2}, Y_{N-1}.",
+      "colors": [
+        "#2E3192",
+        "#C9DFF0",
+        "#C00000",
+        "#00B050",
+        "#3355BB",
+        "#A6A6A6",
+        "#FDE9D9",
+        "#CCFFFF",
+        "#E36C0A",
+        "#92D050",
+        "#FFE699",
+        "#F4B8C8"
+      ],
+      "position": "right of the left label column, spanning ~15%-97% width and ~12%-96% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Left label column: three white rectangles with red borders containing red bold sans text - 'Encoder Output' (two lines, top), 'Encoder Input' (two lines), 'Input Seq' (one line, bottom); between the first two sits very large blue bold-italic text 'Transformer Encoder' rotated 90 degrees (reading bottom-to-top) spanning the encoder-stack height; below 'Encoder Input' is unboxed red bold-italic two-line text 'Embedding Words & Pos.'",
+      "colors": [
+        "#C00000",
+        "#FFFFFF",
+        "#333399"
+      ],
+      "position": "left edge, ~1%-13% width, full diagram height"
+    },
+    {
+      "type": "arrow",
+      "description": "Arrow color legend implied by position: bright green up-arrows = flow from Encoder Block M to output tokens Y; dark-red up-arrows = flow between stacked encoder blocks; medium-blue up-arrows = flow from embedding bars to input tokens X; gray up-arrows = flow from word boxes into positional-encoding bar. All arrows point upward; 8 parallel arrow columns per level, aligned under each token/word position.",
+      "colors": [
+        "#00B050",
+        "#C00000",
+        "#3355BB",
+        "#A6A6A6"
+      ],
+      "position": "throughout the central diagram column"
+    },
+    {
+      "type": "icon",
+      "description": "Circular slide-number badge: yellow filled circle with thin outline, black sans-serif number '49' centered",
+      "colors": [
+        "#FFE97F",
+        "#000000"
+      ],
+      "position": "top-right corner of slide"
+    }
+  ],
+  "imagery": [
+    "No photographs, illustrations, or logos anywhere on the slide; all visuals are flat vector diagram shapes (rectangles, segmented token chips, arrows, ellipsis dots). The only non-diagram element is the yellow circular page-number badge '49' at top right."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#C00000",
+    "body_text": "#1A1A1A",
+    "accents": [
+      "#2E3192",
+      "#C00000",
+      "#00B050",
+      "#E36C0A",
+      "#CCFFFF",
+      "#FDE9D9",
+      "#FFE97F",
+      "#A6A6A6",
+      "#990000"
+    ]
+  },
+  "typography_notes": "Predominantly sans-serif (Arial-like). Title: large bold red sans-serif, title case. 'Transformer Encoder': very large blue bold italic, rotated 90 degrees vertical. Encoder block labels: bold white sans-serif on dark-blue bars. Left-edge boxed labels: bold red sans-serif; 'Embedding Words & Pos.' is bold italic red. Word labels ('Word 0'...'Word N-1'): red italic, serif-like (Times-ish). Token labels (X_i, Y_i): red italic with subscript indices. 'Word Embedding': orange, mixed bold. 'Positional': bold blue; 'Encoding / Embedding': dark navy. Slide number: plain black sans-serif in yellow circle. No all-caps styling; emphasis achieved via color and weight.",
+  "animation_state": "Slide appears fully built; no mid-build or partially revealed elements detected.",
+  "recreation_brief": "1. Set slide background to white (#FFFFFF) and draw a thin (~3pt) dark-red (#990000) rectangle border around the entire slide; optionally add a thin black strip along the very bottom edge only if matching the source video frame. 2. Centered at top, add title text 'Transformer Stacked Encoder Blocks' in Arial Bold ~32pt, color #C00000. 3. Top-right corner: draw a ~0.5-inch yellow (#FFE97F) circle with black text '49'. 4. Left column, top: white rectangle with red border, red bold text on two lines 'Encoder' / 'Output'. 5. Left column middle: insert text box 'Transformer Encoder' in #333399 Arial Bold Italic ~28pt, rotated 90 degrees (bottom-to-top), spanning the encoder-stack height. 6. Left column, lower: white rectangle with red border, red bold text 'Encoder' / 'Input'; directly below it, unboxed red bold italic text on two lines 'Embedding' / 'Words & Pos.'; at bottom, white rectangle with red border, red bold text 'Input Seq'. 7. Bottom row of diagram: create 8 white rectangles with thin red borders and red italic serif labels Word 0, Word 1, Word 2, Word 3, Word 4, Word 5, Word N-2, Word N-1; place 5 small gray dots between Word 5 and Word N-2. 8. Above the word row, draw 8 short gray up-arrows, then a full-width light-cyan (#CCFFFF) rectangle with dark border containing centered text 'Positional Encoding / Embedding' with the word 'Positional' in bold #3355BB and the rest in dark navy. 9. Directly above the cyan bar, add a full-width tan (#FDE9D9) rectangle with dark border and centered orange (#E36C0A) text 'Word Embedding'. 10. Draw 8 medium-blue (#3355BB) up-arrows from the tan bar to the input token row: 8 small horizontal rectangles each divided into three pastel cells (green #92D050, yellow #FFE699, pink #F4B8C8), each labeled in red italic with subscripts X_0, X_1, X_2, X_3, X_4, X_5, X_{N-2}, X_{N-1}; place 5 small green dots between X_5 and X_{N-2}. 11. Above the X row, draw a large light-blue (#C9DFF0) rectangle with a dark-blue (#2E3192) border. Inside it, stack four full-width dark-blue (#2E3192) bars with white bold centered text, bottom to top: 'Encoder Block 0', 'Encoder Block 1', 'Encoder Block 2', 'Encoder Block M'. 12. Between each pair of consecutive bars, draw 8 columns of small dark-red (#C00000) up-arrows aligned with the token columns; between 'Encoder Block 2' and 'Encoder Block M', replace arrows with 8 columns of 3-4 small dark-blue vertical dots. 13. From the top of 'Encoder Block M', draw 8 bright-green (#00B050) up-arrows to the output token row: 8 segmented token boxes identical to step 10, labeled Y_0, Y_1, Y_2, Y_3, Y_4, Y_5, Y_{N-2}, Y_{N-1}; place 5 small blue dots between Y_5 and Y_{N-2}. 14. Verify all 8 arrow columns and token positions are vertically aligned from bottom word row to top token row.",
+  "_meta": {
+    "frame": "slide_049.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 49,
+      "image": "slide_049.jpg",
+      "kept_frame": "frame_03994.jpg",
+      "start_sec": 3981.0,
+      "end_sec": 3993.0,
+      "frame_count": 13,
+      "old_slide": 117
+    },
+    "elapsed_s": 293.0
+  }
+}

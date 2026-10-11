@@ -1,0 +1,191 @@
+{
+  "slide_title": "Attention Is All You Need",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the"
+    ],
+    "labels": [
+      "Abstract",
+      "12",
+      "706.03762v5  [cs.CL]  6 Dec 2017",
+      "Ashish Vaswani*",
+      "Google Brain",
+      "avaswani@google.com",
+      "Noam Shazeer*",
+      "Google Brain",
+      "noam@google.com",
+      "Niki Parmar*",
+      "Google Research",
+      "nikip@google.com",
+      "Jakob Uszkoreit*",
+      "Google Research",
+      "usz@google.com",
+      "Llion Jones*",
+      "Google Research",
+      "llion@google.com",
+      "Aidan N. Gomez* \u2020",
+      "University of Toronto",
+      "aidan@cs.toronto.edu",
+      "Łukasz Kaiser*",
+      "Google Brain",
+      "lukaszkaiser@google.com",
+      "Illia Polosukhin* \u2021",
+      "illia.polosukhin@gmail.com"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "A single centered screenshot of an academic paper's first page fills the slide, enclosed in a thin dark-red rectangular border (approx. 10%-83% width, 8%-98% height). Inside it, top-to-bottom: paper title in a tan highlight box (top-center), a thin horizontal rule, a 3-row author block (4 authors / 3 authors / 1 author, each column = name over affiliation over email), then a centered 'Abstract' heading and a justified abstract paragraph that is cropped mid-sentence at the bottom edge. A vertical (90\u00b0-rotated, bottom-to-top) gray arXiv watermark runs along the left inner edge of the red border. Outside the border, top-right: a yellow circular slide-number badge '12'. A mouse cursor sits near the bottom-right inside the border.",
+    "regions": [
+      {
+        "name": "Slide number badge",
+        "position": "top-right, ~90-95% width, ~10-17% height",
+        "content": "Yellow circle with blue outline containing the number '12'"
+      },
+      {
+        "name": "Paper container",
+        "position": "center, ~10-83% width, ~8-98% height",
+        "content": "White page screenshot framed by a thin dark-red rectangle border"
+      },
+      {
+        "name": "Paper title",
+        "position": "top-center inside container, ~35-62% width, ~10-15% height",
+        "content": "'Attention Is All You Need' in bold serif on a tan/peach highlight box"
+      },
+      {
+        "name": "Horizontal rule",
+        "position": "under title, ~24-74% width, ~17% height",
+        "content": "Thin black horizontal line"
+      },
+      {
+        "name": "arXiv sidebar watermark",
+        "position": "left edge inside container, ~11-14% width, ~34-96% height, rotated 90\u00b0 CCW",
+        "content": "Gray vertical text '706.03762v5  [cs.CL]  6 Dec 2017' (leading '1' of 1706.03762v5 cropped off); the '6 Dec 2017' segment sits on a tan highlight box"
+      },
+      {
+        "name": "Author block",
+        "position": "upper-middle, ~22-75% width, ~28-56% height",
+        "content": "Row 1 (4 columns): Ashish Vaswani* / Google Brain / avaswani@google.com; Noam Shazeer* / Google Brain / noam@google.com; Niki Parmar* / Google Research / nikip@google.com; Jakob Uszkoreit* / Google Research / usz@google.com. Row 2 (3 columns): Llion Jones* / Google Research / llion@google.com; Aidan N. Gomez* \u2020 / University of Toronto / aidan@cs.toronto.edu; Łukasz Kaiser* / Google Brain / lukaszkaiser@google.com. Row 3 (1 centered column): Illia Polosukhin* \u2021 / illia.polosukhin@gmail.com"
+      },
+      {
+        "name": "Abstract section",
+        "position": "center-to-bottom, ~27-70% width, ~62-98% height",
+        "content": "Centered bold 'Abstract' heading above a fully justified black paragraph, cut off at the bottom slide edge mid-sentence ('...training costs of the')"
+      },
+      {
+        "name": "Mouse cursor",
+        "position": "bottom-right inside container, ~76-79% width, ~88-91% height",
+        "content": "Standard white arrow pointer with black outline; a second tiny cursor-like artifact appears at the top-left inner corner of the red border [?]"
+      }
+    ],
+    "hierarchy": "Visually dominant: the bold tan-boxed paper title. Second tier: bold black author names (with pink-highlighted affiliations drawing the eye). Third tier: the abstract paragraph \u2014 largest area but smallest type. Accents: red border, yellow/blue slide badge, tan highlight boxes. Gray watermark is the least prominent."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Tan/peach rectangular highlight behind the paper title 'Attention Is All You Need'; box slightly larger than the text",
+      "colors": [
+        "#F7D5A8",
+        "#3B2A1A"
+      ],
+      "position": "top-center, ~35-62% width, ~10-15% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Seven bright-pink highlight boxes behind the affiliation lines 'Google Brain' (x3) and 'Google Research' (x4); the affiliation text inside reads dark maroon. 'University of Toronto' is NOT highlighted",
+      "colors": [
+        "#FF9BE8",
+        "#7A3030"
+      ],
+      "position": "within author block, under each author name"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Small tan highlight box behind the '6 Dec 2017' segment of the rotated arXiv sidebar watermark",
+      "colors": [
+        "#F7D5A8",
+        "#8C8C8C"
+      ],
+      "position": "left edge, ~55-70% height"
+    },
+    {
+      "type": "other",
+      "description": "Thin dark-red rectangular border (no fill, ~2px stroke) framing the entire paper screenshot",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "~10-83% width, ~8-98% height"
+    },
+    {
+      "type": "other",
+      "description": "Thin black horizontal rule separating title from author block",
+      "colors": [
+        "#000000"
+      ],
+      "position": "under title, ~24-74% width"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: yellow filled circle with blue ring outline, black serif numeral '12'",
+      "colors": [
+        "#FDFD96",
+        "#3F3FCB",
+        "#000000"
+      ],
+      "position": "top-right corner, outside red border"
+    },
+    {
+      "type": "other",
+      "description": "Vertical rotated (90\u00b0 counterclockwise, reads bottom-to-top) gray arXiv watermark text '706.03762v5  [cs.CL]  6 Dec 2017'",
+      "colors": [
+        "#8C8C8C"
+      ],
+      "position": "left inner edge of red border"
+    },
+    {
+      "type": "icon",
+      "description": "Mouse cursor arrow (white fill, black outline), plus a second smaller cursor-like mark at the top-left inner corner of the red border [?]",
+      "colors": [
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "bottom-right ~77% width / ~89% height; second at ~10% width / ~11% height"
+    }
+  ],
+  "imagery": [
+    "No photographs, charts, or illustrations. The slide is a screenshot of the arXiv paper 1706.03762v5 first page; the only pictorial items are the mouse-cursor arrow(s) and colored text-highlight boxes."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#3B2A1A",
+    "body_text": "#1A1A1A",
+    "accents": [
+      "#C00000",
+      "#F7D5A8",
+      "#FF9BE8",
+      "#7A3030",
+      "#FDFD96",
+      "#3F3FCB",
+      "#8C8C8C"
+    ]
+  },
+  "typography_notes": "Entire paper screenshot uses a serif face (Times New Roman-like). Paper title: bold, largest text on slide, dark brown, on tan box. Author names: bold black serif with superscript markers (* \u2020 \u2021). Affiliations: regular weight; highlighted ones appear dark maroon on pink. Emails: monospace (Courier-like). Abstract heading: bold, centered, same size as author names. Abstract body: regular serif, fully justified with hyphenation (e.g., 'English-' / 'to-German' broken across lines). arXiv watermark: gray, rotated 90\u00b0 CCW. Slide number '12': serif numeral in a circle. No all-caps, no italics, no numbered bullets anywhere.",
+  "animation_state": "Static screenshot; no mid-build state (no partially revealed bullets or progressive-disclosure cues). Note: the abstract paragraph is cropped mid-sentence at the bottom slide edge \u2014 a cropping artifact, not animation. A mouse cursor is visible near bottom-right.",
+  "recreation_brief": "1. Slide setup: 16:9, white (#FFFFFF) background. 2. Draw a rectangle from ~10% left / 8% top to ~83% right / 98% bottom: no fill, #C00000 outline ~2pt \u2014 this frames the 'paper page'. 3. Title: centered text box at ~35-62% width / 10-15% height; fill a rectangle behind it with #F7D5A8; type 'Attention Is All You Need' in bold serif ~28pt, color #3B2A1A, centered. 4. Below it, draw a ~1pt black horizontal line from 24% to 74% width at ~17% height. 5. Left sidebar: insert a vertical text box (rotate 90\u00b0 counterclockwise, text reads bottom-to-top) at ~11-14% width spanning ~34-96% height; gray (#8C8C8C) text '706.03762v5  [cs.CL]  6 Dec 2017'; place a small #F7D5A8 rectangle behind the '6 Dec 2017' portion. 6. Author block \u2014 three centered rows, each column stacked as name (bold black serif, superscript markers) / affiliation / email (Courier): Row 1: 'Ashish Vaswani*' + 'Google Brain' + 'avaswani@google.com'; 'Noam Shazeer*' + 'Google Brain' + 'noam@google.com'; 'Niki Parmar*' + 'Google Research' + 'nikip@google.com'; 'Jakob Uszkoreit*' + 'Google Research' + 'usz@google.com'. Row 2: 'Llion Jones*' + 'Google Research' + 'llion@google.com'; 'Aidan N. Gomez* \u2020' + 'University of Toronto' + 'aidan@cs.toronto.edu'; 'Łukasz Kaiser*' + 'Google Brain' + 'lukaszkaiser@google.com'. Row 3 (centered): 'Illia Polosukhin* \u2021' + 'illia.polosukhin@gmail.com'. 7. Behind every 'Google Brain' and 'Google Research' affiliation, draw a #FF9BE8 highlight rectangle; set that affiliation text color to dark maroon #7A3030. Leave 'University of Toronto' plain black with no highlight. 8. Centered bold serif heading 'Abstract' at ~62% height. 9. Below it, a justified serif ~12pt black paragraph, width ~27-70%, containing the abstract text verbatim (see verbatim_text.bullets); intentionally let the final line '...a small fraction of the training costs of the' run to the bottom edge of the slide, cropped, with no closing period. 10. Top-right outside the red border (~93% width / 13% height): oval ~4% wide, fill #FDFD96, outline #3F3FCB ~2pt, black serif text '12'. 11. Optional fidelity touches: paste a white arrow mouse-cursor icon at ~77% width / ~89% height and a tiny one at the top-left inner corner of the red border.",
+  "_meta": {
+    "frame": "slide_012.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 12,
+      "image": "slide_012.jpg",
+      "kept_frame": "frame_00750.jpg",
+      "start_sec": 749.0,
+      "end_sec": 772.0,
+      "frame_count": 24,
+      "founder_frame_swap": true,
+      "original_kept_frame": "frame_00773.jpg"
+    },
+    "elapsed_s": 312.5
+  }
+}

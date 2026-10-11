@@ -1,0 +1,41 @@
+[info] context header injected: VIEW: Slide 030 self-check crop: three white role-annotation boxes (Key/Value/Query) stacked — recreation crop vs original frame crop | CAPTURE: IMG1=LibreOffice 150dpi render crop; IMG2=original lecture frame crop (same regions, same scale)
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 1002376
+[info] videos/deep-learning/001_transformers_part1/scratch/slide030/crop_annboxes_render.png, videos/deep-learning/001_transformers_part1/scratch/slide030/crop_annboxes_orig.png: transcript written (validated winner, atomic): videos/deep-learning/001_transformers_part1/recreated_pptx/qa/slide030/crop_annboxes_check.txt (pid 1002376)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== videos/deep-learning/001_transformers_part1/scratch/slide030/crop_annboxes_render.png, videos/deep-learning/001_transformers_part1/scratch/slide030/crop_annboxes_orig.png ===
+[winner] images (round 1, attempt 1)
+## 1. Verbatim Transcription
+
+**Image 1 (LibreOffice 150dpi render crop)** â three stacked boxes:
+- Box 1: "Xâ is used as" / "Key" (second line in red)
+- Box 2: "Xâ is used as" / "Value" (second line in red)
+- Box 3: "Xâ is used as" / "Query" (second line in red)
+
+**Image 2 (original lecture frame crop)** â same three boxes:
+- Box 1: "Xâ is used as" / "Key" â with a dark diagonal stroke/scribble marring the word "used" (text still decipherable underneath)
+- Box 2: "Xâ is used as" / "Value"
+- Box 3: "Xâ is used as" / "Query"
+
+(In both images, "X" carries a subscript "2"; nothing else in either image is illegible.)
+
+## 2. Similarities
+
+- **Purpose/content:** Both are role-annotation callouts for an attention/QKV diagram, labeling Xâ as Key, Value, and Query, in the same top-to-bottom order.
+- **Layout:** Three white rectangular boxes stacked vertically, each with two centered lines: black bold "Xâ is used as" over a red bold role word.
+- **Styling:** White fill, thin red/dark-red borders, bold sans-serif typography, red second-line words, peach/cream slide background.
+- **Shared context elements:** Gray horizontal separator bands between the boxes, and short red connector-line stubs crossing the left box borders in both images.
+
+## 3. Differences
+
+- **Defect (IMG2 only):** A stray dark diagonal mark/scribble cuts across "is used" in the top (Key) box of Image 2 â a scratch, pen stroke, or compression artifact entirely absent from Image 1.
+- **Top-right background:** Image 1 shows a tan/olive vertical strip behind and to the right of the Key box; in Image 2 that region is mostly white/very light, with no comparable strip.
+- **Background hue:** Image 1 skews beige/tan; Image 2 skews pinker peach â consistent with video-frame color rendering vs. a native render.
+- **Spacing/separators:** Image 1's boxes are tightly stacked with darker, thinner gray gap bands; Image 2's boxes sit with slightly wider, lighter gray gaps (a bit more vertical breathing room).
+- **Typography:** Image 1's "is used as" appears slightly heavier/crisper; Image 2's text is marginally softer (video anti-aliasing), with slightly different subscript size/position on the "2".
+- **Connector stubs:** The red line fragments at the left borders appear in both, but at slightly different heights relative to each box.
+
+## 4. Verdict
+
+**Image 1 (LibreOffice render) is better.** It reproduces the identical text, box structure, and color scheme, but does so cleanly: the "is used as" line in every box is fully intact and crisply rendered. Image 2 is degraded by the dark diagonal artifact slashing through "used" in the Key box â the only content-level defect in either image â plus slightly softer text and less consistent background coloring. Since the recreation matches the original's content and layout while eliminating the visible flaw, Image 1 is the superior crop.
+

@@ -1,0 +1,30 @@
+## Element-by-Element Comparison (fc2 dense region, slide 036)
+
+**Content inventory (both images):**
+- Vector 1: yellow boxes 10 / 20 / 30 / 40, red borders, wrapped in tall dark-red delimiters â (values verbatim, order correct)
+- Division slash "/" between vector 1 and the âd group â (both mid-height)
+- âd group inside its own pair of dark-red delimiters â
+- Red bold label "Scaled" above a red right-arrow â
+- Vector 2: yellow boxes 1 / 2 / 3 / 4, red borders, in dark-red delimiters â (values verbatim)
+- Red bold label "SoftMax" above a red right-arrow â
+- Vector 3: yellow boxes 0.0321 / 0.0871 / 0.2369 / 0.6439, blue borders, in blue delimiters â (values verbatim, correct softmax of 1,2,3,4)
+- Purple/magenta rounded inner frame around the whole region â (present in both; the red line at the very top of IMG1 is house chrome per ground rule (a), not a defect)
+
+**Measured checks:**
+1. **Line spacing inside value stacks:** In IMG2 the four boxes occupy roughly the same fraction of the inner frame height (~75â80%) as in IMG1, and the gap-to-box-height ratio is proportionally consistent. No deviation worth flagging beyond MINOR.
+2. **Vertical centering:** Every numeral sits vertically centered in its box in both images; "Scaled"/"SoftMax" labels sit above their arrows identically in both. No top-hugging.
+3. **Delimiter geometry (rule 7):** In both images each delimiter pair spans the full top-to-bottom extent of its enclosed boxes, with strokes clear of the text. IMG1's delimiters are slightly straighter/less curved than IMG2's hand-drawn parentheses â inherent medium/handwriting difference (rule d), MINOR at most.
+4. **Frame containment (rule 5):** All boxes, delimiters, arrows, and labels sit fully inside the purple inner frame in IMG1; nothing crosses or touches the purple boundary or the house frame. The rightmost blue delimiter sits close to the frame but does not touch it.
+5. **Table/data values (rule 8):** All twelve numeric values match exactly. No missing elements (rule 6) â every region of the original is present.
+
+## Discrepancy List
+
+| # | Item | Severity | Confidence |
+|---|------|----------|------------|
+| 1 | âd rendered in larger professional 2D radical with italic *d* vs. the original's small inline "âd" | MINOR (mandated format upgrade, rule e) | High |
+| 2 | Delimiters slightly straighter/thicker than the original's curved parentheses | MINOR (medium/handwriting difference, rule d) | High |
+| 3 | Value boxes slightly larger with proportionally slightly larger gaps than original | MINOR | Medium |
+
+No BLOCKER or MAJOR defects. No text overflow, clipping, collisions, wrapping errors, or illegibility in the recreation.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

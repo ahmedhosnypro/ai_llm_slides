@@ -1,0 +1,104 @@
+1. TITLE â exact title text verbatim; also the badge numeral (top-right circle) if present.
+
+Title: "Transformer Stacked Encoder Blocks" (red text, top center of slide, inside the outer red-bordered frame).
+Badge: a yellow circle in the top-right corner containing the numeral "49".
+
+2. ALL VERBATIM TEXT â every visible string on the slide.
+
+Left side (vertical/rotated text, blue): "Transformer Encoder" (rotated 90Â°, reading bottom-to-top, spanning the left margin).
+
+Left red-bordered boxes (top to bottom):
+- "Encoder Output"
+- "Encoder Input"
+- "Embedding Words & Pos." (red text, appears to be two lines: "Embedding" / "Words & Pos.")
+- "Input Seq"
+
+Main diagram, top row of token boxes (encoder output row): individual token labels on colored blocks:
+- "Y_0", "Y_1", "Y_2", "Y_3", "Y_4", "Y_5" [the subscript digits are small; Y_2 through Y_5 subscripts appear as small digits, plausibly 2,3,4,5 â marked [?] for the exact digits], then a blue ellipsis (â¢ â¢ â¢ â¢ â¢), then "Y_N-2" and "Y_N-1" [subscripts read as "N-2" and "N-1"; possibly "N-3"; marked [?]].
+
+Blue horizontal bars (top to bottom):
+- "Encoder Block M"
+- "Encoder Block 2"
+- "Encoder Block 1"
+- "Encoder Block 0"
+
+Between "Encoder Block M" and "Encoder Block 2": vertical blue dot-columns (ellipsis) in each token lane.
+
+Bottom token row (encoder input row): token labels:
+- "X_0", "X_1", "X_2", "X_3", "X_4", "X_5" [subscript digits small; plausibly 2,3,4,5 â [?]], then a green ellipsis (â¢ â¢ â¢ â¢ â¢), then "X_N-2" [possibly "X_N-3", [?]] and "X_N-1".
+
+Two stacked wide bars below the input tokens:
+- Top bar (tan/beige fill): "Word Embedding"
+- Bottom bar (light cyan fill): "Positional  Encoding / Embedding" (note: appears to have extra spacing between "Positional" and "Encoding").
+
+Bottom row of italic word boxes:
+- "Word 0", "Word 1", "Word 2", "Word 3", "Word 4", "Word 5", then a gray dot ellipsis (six gray dots "â¢ â¢ â¢ â¢ â¢ â¢" rendered as small circles), then "Word N-2", "Word N-1".
+
+No other visible caption, footnote, axis label, or callout text. No unreadable strings other than the small subscript digits noted above.
+
+3. EQUATIONS â every formula/formulaic sequence.
+
+Token sequence labels (subscripted variables):
+- Output row: Y_0, Y_1, Y_2 [?], Y_3 [?], Y_4 [?], Y_5 [?], â¦ , Y_N-2 [?] (or Y_N-3 [?]), Y_N-1.
+- Input row: X_0, X_1, X_2 [?], X_3 [?], X_4 [?], X_5 [?], â¦ , X_N-2 [?] (or X_N-3 [?]), X_N-1.
+- Word sequence: Word 0, Word 1, Word 2, Word 3, Word 4, Word 5, â¦ , Word N-2, Word N-1.
+- Block index sequence: Encoder Block 0, Encoder Block 1, Encoder Block 2, â¦ , Encoder Block M (implying blocks indexed 0..M, i.e., M+1 blocks).
+
+No other mathematical expressions, formulas, or equations appear on the slide (no softmax, attention, or layer-norm formulas).
+
+4. DIAGRAM TOPOLOGY â exhaustive.
+
+Overall layout: a large outer rectangle with a dark-red border containing the whole slide content; white background with a thin red inner frame. Data flows bottom-to-top.
+
+Containers (left column, each a small red-bordered box with light fill):
+- "Encoder Output" (top-left; light pinkish fill).
+- "Encoder Input" (middle-left; light pinkish fill).
+- "Embedding Words & Pos." (plain red text label, no fill box visible â sits just above "Input Seq").
+- "Input Seq" (bottom-left; light pinkish fill).
+
+Main diagram structure, bottom to top:
+
+(a) Bottom row â input words: 8 visible bordered boxes with white fill and red italic text: "Word 0", "Word 1", "Word 2", "Word 3", "Word 4", "Word 5", [gray dot ellipsis], "Word N-2", "Word N-1".
+
+(b) Upward arrows from each Word box into the "Positional Encoding / Embedding" bar: short dark-blue/red upward arrows (one per lane).
+
+(c) Two full-width stacked bars inside a black-outlined container:
+- Lower bar: "Positional  Encoding / Embedding" â light cyan fill.
+- Upper bar: "Word Embedding" â tan/beige fill.
+(The black rectangle encloses both bars together.)
+
+(d) Upward arrows from the embedding bars to the input token row: dark-blue upward block arrows, one per lane.
+
+(e) Input token row: 8 colored token boxes, each drawn as a small segmented block (yellow center cell with the label "X_i" in red, flanked by thin pink/magenta and light-cyan side cells â resembling a multi-channel/embedding stripe). Labels: X_0 â¦ X_5, green-dot ellipsis, X_N-2, X_N-1. This row sits inside a thin-bordered horizontal container.
+
+(f) A large light-blue (pale steel-blue) rectangle (with darker blue border) containing the encoder stack:
+- Bottom bar: "Encoder Block 0" â solid medium-blue fill, white text.
+- Upward red/maroon block arrows from Block 0 to Block 1, one per token lane (8 visible lanes).
+- Bar: "Encoder Block 1" â solid medium-blue fill, white text.
+- Upward red/maroon block arrows from Block 1 to Block 2.
+- Bar: "Encoder Block 2" â solid medium-blue fill, white text.
+- Between Block 2 and Block M: vertical columns of blue dots (ellipsis, one column per lane, ~8 columns) indicating omitted intermediate blocks.
+- Top bar: "Encoder Block M" â solid medium-blue fill, white text.
+
+(g) Upward arrows from "Encoder Block M" to the output token row: green upward block arrows, one per lane (8 visible).
+
+(h) Output token row: 8 colored token boxes of the same segmented style as the input row (yellow center cell with red label "Y_i", pink/magenta and cyan side cells). Labels: Y_0 â¦ Y_5, blue-dot ellipsis, Y_N-2, Y_N-1. This row also sits in a thin-bordered horizontal container.
+
+Arrow color scheme: dark-blue arrows below the embedding stack (Word â Positional/Embedding bars â X tokens); red/maroon block arrows between encoder blocks (Block k â Block k+1); green block arrows from Encoder Block M to the Y output tokens.
+
+Ellipses: blue dots for omitted Y tokens, green dots for omitted X tokens, gray dots for omitted Words, blue dot-columns for omitted intermediate encoder blocks.
+
+Resemblance to published figures: This diagram closely matches Jay Alammar's "The Illustrated Transformer" style of showing stacked encoder blocks with tokens flowing bottom-to-top, but it is NOT a copy of Vaswani et al. 2017 Figure 1 (there is no left/right encoder-decoder split, no multi-head attention / add & norm sub-layer boxes, no residual connections drawn) and not the Vaswani Figure 2 (no key/value/query arrows). It also does not match Peter Bloem's self-attention diagram. It appears to be an original custom schematic emphasizing the stack of M+1 encoder blocks (indexed 0..M) and the embedding/positional-encoding layer, using segmented colored token cells reminiscent of tensor-slice illustrations. Differences from Alammar: block bars are simple solid blue slabs rather than detailed sub-layer stacks, and explicit index labels (Block 0, 1, 2, M; X_0..X_N-1; Y_0..Y_N-1; Word 0..Word N-1) are shown.
+
+5. NUMBERS/DATA.
+
+- Badge numeral: 49 (slide number).
+- Indices: 0, 1, 2, 3 [?], 4 [?], 5 [?] for X/Y tokens and Words; N-2, N-1 as final indices; M as top block index; blocks 0, 1, 2, M shown.
+- No table cells, percentages, dimensions, or other numeric data.
+
+6. BUILD STATE / ARTIFACTS.
+
+- The slide appears fully built (all bars, tokens, and labels present); no partial-reveal artifacts.
+- No visible cursor, pointer, highlight pen marks, or presenter overlays.
+- The frame is a 960x540 video still; the bottom edge shows a thin dark strip (video letterbox/crop artifact) along the very bottom of the frame; slight JPEG compression softness around small subscript digits (source of the [?] marks on subscript glyphs).
+- No animation states, pop-ups, or watermarks detected.

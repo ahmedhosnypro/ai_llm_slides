@@ -1,0 +1,287 @@
+{
+  "slide_title": "RNN  Seq2Seq model [with Attention]",
+  "subtitle_or_header": "[ To overcome Bottleneck challenge]",
+  "verbatim_text": {
+    "bullets": [
+      "Decoder Utilizes:",
+      "Context Vector",
+      "Weighted sum of hidden states"
+    ],
+    "labels": [
+      "10",
+      "Decoder",
+      "Encoder",
+      "Attention",
+      "Attention",
+      "attention",
+      "weighted sum of the hidden states",
+      "Context Vector (of Whole Inputs)",
+      "Decoder Utilizes:",
+      "embedding x\u2081",
+      "embedding x\u2082",
+      "embedding x\u2083",
+      "h\u2081",
+      "h\u2082",
+      "x\u2081",
+      "x\u2082",
+      "x\u2083",
+      "o\u2081",
+      "o\u2082",
+      "o\u2083",
+      "softmax",
+      "softmax",
+      "softmax",
+      "s\u2081",
+      "s\u2082",
+      "s\u2083",
+      "+"
+    ],
+    "equations": [
+      "No display equations; symbolic math labels only: x\u2081, x\u2082, x\u2083, h\u2081, h\u2082, o\u2081, o\u2082, o\u2083, s\u2081, s\u2082, s\u2083, plus the function name 'softmax' (written 3 times) and a '+' glyph"
+    ]
+  },
+  "layout": {
+    "arrangement": "Serif title centered at top with a two-line red/blue heading and a gold slide-number circle in the top-right corner. Below, a large architecture diagram fills the canvas: yellow Decoder container top-right, orange Encoder container bottom-left, two lavender 'attention' rounded boxes in the middle band (one above the encoder, one below the decoder), a green callout box top-left, a pink callout box mid-right, and a gray bulleted summary box bottom-right. A thick dark-red curved arrow (the context vector) runs from the encoder's right edge up to the decoder's first tan cell, and 2-3 dashed pink curves fan from the left attention box into the right attention box, with one further dashed curve continuing up toward the decoder's cells. A solid gray strip runs along the very bottom edge; a faint thin gray rule crosses the very top edge.",
+    "regions": [
+      {
+        "name": "Title block",
+        "position": "top-center, x 20-75%, y 10-20%",
+        "content": "Line 1: 'RNN  Seq2Seq model [with Attention]' (red, 'Attention' blue); Line 2: '[ To overcome Bottleneck challenge]' (red, 'Bottleneck challenge' blue + underlined)"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top-right, x 90-94%, y 10-16%",
+        "content": "Gold circle with dark border containing '10'"
+      },
+      {
+        "name": "Green callout",
+        "position": "top-left, x 7-36%, y 28-34%",
+        "content": "Light-green rectangle, blue bold-italic text 'weighted sum of the hidden states'; thin green connector line runs down-right from its right edge to the top-right corner area of the left attention box (~45% left, 43% top)"
+      },
+      {
+        "name": "Attention caption (left)",
+        "position": "x 25-35%, y 36-41%",
+        "content": "Blue bold-italic 'Attention' above the left lavender box"
+      },
+      {
+        "name": "Decoder container",
+        "position": "top-right, x 50-94%, y 21-54% (red bold-italic caption 'Decoder' above it at x 69-77%, y 16-20%)",
+        "content": "Yellow rounded box with 2x3 grid of RNN cells, softmax arrows, outputs o\u2081 o\u2082 o\u2083, state arrows s\u2081 s\u2082 s\u2083"
+      },
+      {
+        "name": "Attention box 1 (encoder-side)",
+        "position": "mid-left, x 11-49%, y 43-56%",
+        "content": "Lavender rounded box containing small white node labeled 'attention'; 3 thin lines converge into it from the encoder's top cells; dashed pink curves exit its right side"
+      },
+      {
+        "name": "Encoder container",
+        "position": "bottom-left, x 5-51%, y 56-92% (red bold-italic caption 'Encoder' below it at x 23-31%, y 94-98%)",
+        "content": "Light-orange rounded box with 2x3 grid of RNN cells, inputs x\u2081 x\u2082 x\u2083, hidden-state arrows h\u2081 h\u2082, embedding labels, '+' glyph"
+      },
+      {
+        "name": "Attention box 2 (decoder-side)",
+        "position": "mid-right, x 51-89%, y 53-63% (blue bold-italic caption 'Attention' below it at x 75-83%, y 64-67%)",
+        "content": "Lavender rounded box directly beneath the decoder's state cells, receiving the dashed pink attention curves"
+      },
+      {
+        "name": "Context-vector arrow",
+        "position": "center of slide; arcs from (~48% left, 60% top) to (~54% left, 49% top)",
+        "content": "Thick solid dark-red (#C00000) curved arrow with filled circular red endpoints, running from a red dot at the right edge of the encoder's third top-row cell to a red dot on the left side of the decoder's first tan cell; the pink callout's connector attaches near its midpoint (~51% left, 63% top)"
+      },
+      {
+        "name": "Pink callout",
+        "position": "mid-right, x 58-87%, y 69-75%",
+        "content": "Light-pink rectangle, red bold text 'Context Vector (of Whole Inputs)'; thin pink connector line runs up-left to the red context-vector arrow"
+      },
+      {
+        "name": "Gray summary box",
+        "position": "bottom-right, x 54-94%, y 80-96%",
+        "content": "Light-gray rectangle: red bold header 'Decoder Utilizes:' with two round black bullets"
+      },
+      {
+        "name": "Footer strip",
+        "position": "bottom full-width, y 98-100%",
+        "content": "Solid gray horizontal band"
+      },
+      {
+        "name": "Top edge rule",
+        "position": "top full-width, y 0-1%",
+        "content": "Faint thin gray (#C8C8C8) horizontal rule"
+      }
+    ],
+    "hierarchy": "The architecture diagram dominates ~80% of the slide. Largest type: the two-line title (bold serif ~28pt/16pt). Most eye-catching fills: saturated yellow (decoder) and orange (encoder) containers, then lavender attention boxes. Captions 'Encoder'/'Decoder' (red bold italic) and 'Attention' (blue bold italic) are mid-size; per-cell math labels (x\u2081, h\u2081, softmax, embedding\u2026) are the smallest text in italic serif. Callout boxes are small but high-contrast (green/blue, pink/red, gray/red+black)."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "ENCODER BLOCK: light-orange rounded-corner container holding a 2-row x 3-column chain of RNN cells; every cell is a rectangle subdivided into 3 small vertical segments. Bottom row (y~77-81%): three cells receiving up-arrows from italic input labels x\u2081, x\u2082, x\u2083 sitting below the container's bottom edge (y~90%). Up-arrows connect each bottom cell to the cell above it (top row, y~59-64%). Top-row cells are chained left-to-right by arrows labeled h\u2081 and h\u2082 (italic, above the arrows); from the third top cell an unlabeled arrow (implicitly h\u2083) exits right and terminates in a filled red dot at the container's right edge (~48% left, 60% top). Italic labels 'embedding x\u2081', 'embedding x\u2082', 'embedding x\u2083' sit between the two rows (y~69%); a small '+' glyph sits at ~22% left, ~74% top, between the first two embedding labels. Three thin dark lines run from the tops of the three top-row cells, converging upward into the 'attention' node of the left lavender box.",
+      "colors": [
+        "#F8CBAD",
+        "#F7BE81",
+        "#E67E22",
+        "#404040",
+        "#C00000"
+      ],
+      "position": "bottom-left quadrant"
+    },
+    {
+      "type": "flowchart",
+      "description": "DECODER BLOCK: bright-yellow rounded-corner container holding 2 rows x 3 columns of cells. Bottom row (y~47-52%): three tan/khaki 3-segment cells chained left-to-right by arrows labeled s\u2081 and s\u2082; a third arrow exits the container's right edge labeled s\u2083 (x~92%, y~49%). Top row (y~36-41%): three light-green 3-segment cells. Up-arrows run tan cell -> green cell -> output; italic output labels o\u2081, o\u2082, o\u2083 sit above the container's top edge (y~22-24%), each with the italic word 'softmax' written beside its vertical arrow (y~31-32%). The left side of the first tan cell receives the red context-vector arrow, tipped with a red dot.",
+      "colors": [
+        "#F7F75A",
+        "#F5D76E",
+        "#D68910",
+        "#B8F0B8",
+        "#27AE60",
+        "#404040"
+      ],
+      "position": "top-right quadrant"
+    },
+    {
+      "type": "diagram",
+      "description": "ATTENTION MECHANISM: two lavender rounded rectangles. LEFT box (x 11-49%, y 43-56%) contains a small white rectangle with gray border holding italic text 'attention'; 3 thin lines connect it down to all three encoder top cells. RIGHT box (x 51-89%, y 53-63%) sits directly beneath the decoder's tan state cells. 2-3 DASHED pink/magenta curved arrows (exact count unverifiable from the source; see validation.uncertain_items) leave the right side of the left box and fan right/down into the right box (representing per-step attention weights), with 1 further dashed curve continuing up toward the decoder cells. Blue bold-italic captions 'Attention' appear above the left box and below the right box.",
+      "colors": [
+        "#D9D9F3",
+        "#FFFFFF",
+        "#808080",
+        "#FF80C0",
+        "#2222CC"
+      ],
+      "position": "middle band of the slide"
+    },
+    {
+      "type": "arrow",
+      "description": "CONTEXT-VECTOR ARROW: one thick solid dark-red curved arrow with filled circular endpoints. Starts at a red dot on the right side of the encoder's third top-row cell (~48% left, 60% top), arcs upward and rightward, and ends at a red dot on the left side of the decoder's first tan cell (~54% left, 49% top).",
+      "colors": [
+        "#C00000",
+        "#8B0000"
+      ],
+      "position": "center of slide, encoder-to-decoder"
+    },
+    {
+      "type": "highlight-box",
+      "description": "GREEN CALLOUT: rectangle with light-green fill and green border, text 'weighted sum of the hidden states' in blue bold italic; a thin green connector line runs from its right edge down-right to the top-right corner area of the left attention box (~45% left, 43% top).",
+      "colors": [
+        "#C9F7C9",
+        "#00B050",
+        "#2222CC"
+      ],
+      "position": "top-left, x 7-36%, y 28-34%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "PINK CALLOUT: rectangle with light-pink fill and pink/magenta border, text 'Context Vector (of Whole Inputs)' in red bold; a thin pink connector line runs from its left edge up-left to the midpoint of the red context-vector arrow (~51% left, 63% top).",
+      "colors": [
+        "#F9C9D4",
+        "#F06090",
+        "#C00000"
+      ],
+      "position": "mid-right, x 58-87%, y 69-75%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "GRAY SUMMARY BOX: rectangle with light-gray fill and thin gray border. Header line 'Decoder Utilizes:' in red bold, followed by two round-bulleted items in black serif: 'Context Vector' and 'Weighted sum of hidden states'.",
+      "colors": [
+        "#EAEAEA",
+        "#808080",
+        "#C00000",
+        "#1A1A1A"
+      ],
+      "position": "bottom-right, x 54-94%, y 80-96%"
+    },
+    {
+      "type": "other",
+      "description": "SLIDE-NUMBER BADGE: circle (~4% of slide width) with gold fill and dark brown/maroon outline, containing the number '10' in dark bold serif.",
+      "colors": [
+        "#F7D358",
+        "#7E5109",
+        "#333300"
+      ],
+      "position": "top-right corner, x 90-94%, y 10-16%"
+    },
+    {
+      "type": "other",
+      "description": "FOOTER STRIP: solid gray horizontal band spanning the full slide width at the very bottom (~2% tall); a faint thin gray rule also spans the very top edge.",
+      "colors": [
+        "#C8C8C8"
+      ],
+      "position": "bottom edge (and top edge rule)"
+    }
+  ],
+  "imagery": [
+    "White mouse-pointer cursor (screen-recording artifact, not native slide content) frozen just above the 'Decoder Utilizes:' box, tip at ~58% left, ~80% top.",
+    "No photographs or illustrations; all graphics are vector shapes (rounded containers, segmented cell rectangles, arrows, callout boxes, one circular badge)."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#C00000 (with 'Attention' and underlined 'Bottleneck challenge' in #2222CC)",
+    "body_text": "#1A1A1A",
+    "accents": [
+      "#F8CBAD",
+      "#F7BE81",
+      "#E67E22",
+      "#F7F75A",
+      "#F5D76E",
+      "#B8F0B8",
+      "#27AE60",
+      "#D9D9F3",
+      "#C9F7C9",
+      "#F9C9D4",
+      "#C00000",
+      "#FF80C0",
+      "#2222CC",
+      "#F7D358",
+      "#C8C8C8",
+      "#EAEAEA",
+      "#404040",
+      "#D68910",
+      "#808080",
+      "#00B050",
+      "#F06090",
+      "#7E5109",
+      "#333300",
+      "#8B0000"
+    ]
+  },
+  "typography_notes": "Serif (Times New Roman-like) throughout. Title ~28pt bold; subtitle ~16pt bold with underline applied only to 'Bottleneck challenge'. Container captions 'Encoder'/'Decoder' ~18pt bold italic red; 'Attention' captions ~15pt bold italic blue. All diagram math labels (x\u2081, h\u2081, o\u2081, s\u2081, softmax, embedding x\u2081, attention) are italic ~13-14pt. Callout text is bold italic ~13pt (green box) and bold ~13pt (pink box). Summary box: red bold header ~15pt, black regular ~14pt bullets with round bullet glyphs. Slide number bold serif. No all-caps anywhere.",
+  "animation_state": "Slide appears fully built \u2014 every diagram element, callout, and bullet is visible; no mid-build/incremental-reveal state detected. The only live-lecture trace is the frozen mouse cursor hovering above the 'Decoder Utilizes:' box.",
+  "recreation_brief": "1. Canvas: 16:9 slide, white background #FFFFFF.\n2. Footer strip: full-width rectangle, x 0-100%, y 98-100%, fill #C8C8C8, no border.\n3. Top edge rule: full-width thin line, x 0-100%, y 0-1%, color #C8C8C8 (faint).\n4. Title line 1: centered text box, x 20-75%, y 10-15%, text 'RNN  Seq2Seq model [with Attention]', Times New Roman bold 28pt, red #C00000, with only the word 'Attention' colored blue #2222CC.\n5. Title line 2: centered text box, x 20-75%, y 15-20%, text '[ To overcome Bottleneck challenge]', bold 16pt, red #C00000, with 'Bottleneck challenge' in blue #2222CC and underlined.\n6. Slide-number badge: oval about 4% of slide width (~0.5 in), x 90-94%, y 10-16%, fill #F7D358, outline #7E5109 ~1.5pt, centered text '10' in bold dark serif #333300.\n7. Encoder container: rounded rectangle, x 5-51%, y 56-92%, fill #F8CBAD, thin border #E67E22.\n8. Encoder caption: text 'Encoder', red #C00000 bold italic 18pt, centered at x 23-31%, y 94-98%, just below the container.\n9. Encoder cells: 6 rectangles in 2 rows x 3 columns inside the container, fill #F7BE81, border #E67E22, each divided by 2 internal vertical lines into 3 segments; top row at y 59-64%, bottom row at y 77-81%; column centers at ~15%, ~30%, ~44% left.\n10. Encoder inputs: 3 italic labels 'x\u2081', 'x\u2082', 'x\u2083' at y~90%, aligned under the 3 column centers, each with 1 thin dark #404040 up-arrow into the bottom-row cell above it.\n11. Encoder vertical arrows: 3 thin dark #404040 up-arrows, one from each bottom-row cell to the top-row cell directly above.\n12. Encoder chain arrows: 2 thin dark #404040 right-arrows between top-row cells 1-2 and 2-3, labeled 'h\u2081' and 'h\u2082' in italic placed above the arrows.\n13. Encoder exit arrow: 1 thin right-arrow from the third top-row cell to the container's right edge, unlabeled, ending in a filled red #C00000 dot at ~48% left, 60% top.\n14. Embedding labels: 3 italic labels 'embedding x\u2081', 'embedding x\u2082', 'embedding x\u2083' between the two rows at y~69%, aligned under the 3 columns.\n15. Plus glyph: '+' at ~22% left, ~74% top, between the first two embedding labels.\n16. Left attention box: rounded rectangle, x 11-49%, y 43-56%, fill #D9D9F3, thin blue-gray border.\n17. Attention node: 1 small white rectangle with gray #808080 border inside the left attention box near top-center, containing italic text 'attention'.\n18. Encoder-to-attention lines: 3 thin dark lines from the tops of the 3 encoder top-row cells converging into the 'attention' node.\n19. Left attention caption: text 'Attention', blue #2222CC bold italic 15pt, centered at x 25-35%, y 36-41%, above the left attention box.\n20. Green callout: rectangle, x 7-36%, y 28-34%, fill #C9F7C9, border #00B050, text 'weighted sum of the hidden states' in blue #2222CC bold italic ~13pt.\n21. Green connector: 1 thin #00B050 line from the green callout's right edge down-right to the top-right corner area of the left attention box (~45% left, 43% top).\n22. Decoder container: rounded rectangle, x 50-94%, y 21-54%, fill #F7F75A, thin olive #D68910 border.\n23. Decoder caption: text 'Decoder', red #C00000 bold italic 18pt, centered at x 69-77%, y 16-20%, above the container.\n24. Decoder cells: 6 rectangles in 2 rows x 3 columns inside the container, column centers ~59%, ~73%, ~87% left; bottom row y 47-52%, fill #F5D76E, border #D68910; top row y 36-41%, fill #B8F0B8, border #27AE60; each cell divided into 3 vertical segments.\n25. Decoder vertical arrows: 6 thin dark #404040 up-arrows (3 from tan cells to the green cells above, 3 from green cells up toward the outputs); italic 'softmax' beside each of the 3 green-to-output arrows at y~31-32%.\n26. Output labels: 3 italic labels 'o\u2081', 'o\u2082', 'o\u2083' above the container at y 22-24%, aligned with the 3 column centers.\n27. Decoder chain arrows: 2 thin dark #404040 right-arrows between tan cells 1-2 and 2-3 labeled italic 's\u2081' and 's\u2082', plus 1 exit arrow at the container's right edge (x~92%, y~49%) labeled italic 's\u2083'.\n28. Right attention box: rounded rectangle, x 51-89%, y 53-63%, fill #D9D9F3, thin blue-gray border, directly beneath the decoder's tan cells.\n29. Right attention caption: text 'Attention', blue #2222CC bold italic 15pt, centered at x 75-83%, y 64-67%, below the right attention box.\n30. Context-vector arrow: 1 thick solid dark-red #C00000 curved arrow from the filled red dot at ~48% left, 60% top (encoder's right edge) arcing up-right to a filled red dot on the left side of the decoder's first tan cell at ~54% left, 49% top; filled circular endpoints at both ends.\n31. Dashed attention curves: 2-3 dashed pink #FF80C0 curved arrows from the right side of the left attention box fanning right/down into the right attention box, plus 1 further dashed pink curve continuing up from the right attention box toward the decoder's tan cells (exact fan-arrow count uncertain; see validation.uncertain_items).\n32. Pink callout: rectangle, x 58-87%, y 69-75%, fill #F9C9D4, border #F06090, text 'Context Vector (of Whole Inputs)' in red #C00000 bold ~13pt.\n33. Pink connector: 1 thin #F06090 line from the pink callout's left edge up-left to the midpoint of the red context-vector arrow (~51% left, 63% top).\n34. Gray summary box: rectangle, x 54-94%, y 80-96%, fill #EAEAEA, thin gray #808080 border; line 1 'Decoder Utilizes:' in red #C00000 bold 15pt; lines 2-3 with round black bullet glyphs in black #1A1A1A 14pt: 'Context Vector' and 'Weighted sum of hidden states'.\n35. Global typography: Times New Roman for every text element; italicize all diagram math labels as specified; do NOT recreate the white mouse-pointer cursor (screen-recording artifact, not slide content).",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Added missing layout region 'Context-vector arrow' (arcing ~48% left/60% top to ~54% left/49% top): the dark-red curved arrow existed in visual_elements and was referenced by the pink callout connector but had no region.",
+      "Added missing layout region 'Top edge rule' (top full-width, y 0-1%): the faint gray rule was described in layout.arrangement and in the footer-strip visual element but had no region; also changed it from 'optional' to a mandatory step (step 3) in the recreation brief.",
+      "Added the omitted dashed pink curve that continues from the right attention box up toward the decoder's tan cells to recreation_brief step 31 (present in the attention-mechanism visual element, missing from the original brief).",
+      "Expanded colors.accents with the 8 hex values used in visual_elements but absent from the list: #404040, #D68910, #808080, #00B050, #F06090, #7E5109, #333300, #8B0000.",
+      "Pinned the green callout connector endpoint to ~45% left / 43% top in both the region and the brief, reconciling the region wording ('top-right of the left attention box') with the visual-element coordinates.",
+      "Corrected Encoder/Decoder caption styling in layout.regions from 'red italic' to 'red bold italic' to match typography_notes (~18pt bold italic red).",
+      "Extended layout.arrangement with the dark-red context-vector arrow and the dashed pink attention curves, both of which appear in visual_elements but were previously unmentioned in the arrangement.",
+      "Replaced the imprecise count 'thin lines connect it down to all three encoder top cells' with the exact count '3 thin lines' (per the encoder visual element).",
+      "Standardized the vague range 'two-to-three' dashed pink fan arrows to '2-3' and recorded the exact count as uncertain instead of inventing a fixed number.",
+      "Rewrote recreation_brief as a 35-step numbered checklist with exactly one element (or one uniform element group) per step, each specifying exact text, percent-based position, hex fill/border colors, and shape or arrow type; verified all 27 verbatim labels and all 3 bullets are placed by the checklist.",
+      "Added explicit instruction (step 35) to exclude the white mouse-pointer cursor, which imagery identifies as a screen-recording artifact rather than slide content."
+    ],
+    "uncertain_items": [
+      "Exact count of dashed pink attention curves fanning from the left attention box into the right attention box: source states 'two-to-three' (2-3); a single exact number is not derivable from the JSON.",
+      "The arrow exiting the encoder's third top-row cell is unlabeled on the slide; interpreting it as 'h\u2083' is implicit and it must not be drawn as a visible text label.",
+      "Decoder container border is described only as 'olive' with no hex code; #D68910 (the olive tone in the decoder's color list) is assumed in the brief.",
+      "Square brackets in 'RNN  Seq2Seq model [with Attention]' and '[ To overcome Bottleneck challenge]' are kept as literal slide text per the extraction; they are not uncertainty markers, but the JSON provides no way to confirm they were not extraction artifacts."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_010.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 10,
+      "image": "slide_010.jpg",
+      "kept_frame": "frame_00645.jpg",
+      "start_sec": 570.0,
+      "end_sec": 644.0,
+      "frame_count": 75
+    },
+    "elapsed_s": 443.8,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 945.6
+  }
+}

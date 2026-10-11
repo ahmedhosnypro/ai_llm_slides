@@ -1,0 +1,243 @@
+{
+  "slide_title": "Encoder \u2013 Decoder Transformer",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Decoder Block",
+      "Encoder Block",
+      "N Cascaded Blocks",
+      "In Both Encoder and Decoder",
+      "Encoder Decoder Attention",
+      "From Last Encoder Block",
+      "To ALL Decoder Cascaded Blocks",
+      "Inputs to Encoder Block (V,K,Q)",
+      "All are from Previous Block",
+      "Inputs to Decoder Block (V,K,Q)",
+      "(V,K) from Attention, (Q) from Previous Block"
+    ],
+    "labels": [
+      "16",
+      "Encoder",
+      "Decoder",
+      "Output Probabilities",
+      "Softmax",
+      "Linear",
+      "Add & Norm",
+      "Feed Forward",
+      "Multi-Head Attention",
+      "Masked Multi-Head Attention",
+      "V",
+      "K",
+      "Q",
+      "Nx",
+      "Positional Encoding",
+      "Input Embedding",
+      "Output Embedding",
+      "Inputs",
+      "Outputs (shifted right)"
+    ],
+    "equations": [
+      "(V,K,Q)",
+      "(V,K) from Attention, (Q) from Previous Block",
+      "Nx"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top in red; slide number '16' in a yellow circle at top-right corner. Below, the slide splits into two zones: a LEFT column (~5%-55% width) of six stacked annotation/callout boxes with fills in this top-to-bottom order \u2014 light green, light pink, tan, yellow, light blue, light blue \u2014 each connected by a thin gray leader line to its target in the diagram; and a RIGHT zone (~58%-97% width) containing the full Transformer architecture diagram inside two adjacent rounded panels (Encoder left, Decoder right), plus a semi-transparent yellow highlight rectangle with a red dashed border straddling the panel boundary at ~45%-60% height.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~2%-12% height, ~15%-85% width",
+        "content": "Red bold title 'Encoder \u2013 Decoder Transformer'"
+      },
+      {
+        "name": "Slide number",
+        "position": "top right, ~8%-16% height, ~90%-96% width",
+        "content": "Yellow circle with dark border containing '16'"
+      },
+      {
+        "name": "Callout: Decoder Block",
+        "position": "upper-left, ~19%-25% height, ~30%-47% width",
+        "content": "Light green box, dark green text 'Decoder Block', leader line to decoder block in diagram"
+      },
+      {
+        "name": "Callout: Encoder Block",
+        "position": "upper-left, ~27%-33% height, ~38%-55% width",
+        "content": "Light pink box, red text 'Encoder Block', leader line to encoder block in diagram"
+      },
+      {
+        "name": "Callout: N Cascaded Blocks",
+        "position": "upper-left-middle, ~37%-46% height, ~17%-51% width",
+        "content": "Tan box, dark red two-line text 'N Cascaded Blocks / In Both Encoder and Decoder', leader lines to Nx circles"
+      },
+      {
+        "name": "Callout: Encoder Decoder Attention",
+        "position": "middle-left, ~53%-66% height, ~6%-55% width",
+        "content": "Yellow box, blue text with red highlighted words 'Last' and 'ALL', leader line to yellow dashed highlight region in diagram"
+      },
+      {
+        "name": "Callout: Inputs to Encoder Block",
+        "position": "lower-left, ~74%-83% height, ~9%-46% width",
+        "content": "Light blue box, dark text with blue '(V,K,Q)', leader line to encoder input path"
+      },
+      {
+        "name": "Callout: Inputs to Decoder Block",
+        "position": "bottom-left, ~86%-96% height, ~7%-48% width",
+        "content": "Light blue box, dark text with blue '(V,K,Q)', '(V,K)', '(Q)', leader line to decoder input path"
+      },
+      {
+        "name": "Transformer diagram",
+        "position": "right, ~18%-98% height, ~58%-97% width",
+        "content": "Two-panel Encoder/Decoder architecture flowchart with all blocks, arrows, V/K/Q circles, Nx loops, positional-encoding icons"
+      },
+      {
+        "name": "Cross-attention highlight",
+        "position": "center of diagram, straddling the Encoder/Decoder panel boundary, ~45%-60% height",
+        "content": "Semi-transparent yellow (#FFFF00) rectangle with red (#FF0000) dashed border covering the encoder block's top output and the V,K,Q circles feeding the decoder's second 'Multi-Head Attention'"
+      }
+    ],
+    "hierarchy": "Title is largest and boldest (red). The two-panel diagram is the visual dominant due to size and color density. Callout boxes are medium-weight bold text in colored fills; diagram-internal labels are the smallest text. Red is used for emphasis (title, arrows, Q circles, highlighted words)."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "Transformer architecture in two side-by-side rounded panels. LEFT PANEL 'Encoder' (peach fill, green border, red italic label top-left), bottom-to-top: text 'Inputs' with a thick red up-arrow beneath; arrow to pink rounded box 'Input Embedding'; arrow to a \u2295 circle fed by a sine-wave circle icon, labeled 'Positional Encoding' (label to the left); arrow into a large brown rounded container (encoder block) holding bottom-to-top: orange box 'Multi-Head Attention' with three small circles below it \u2014 V (blue), K (blue), Q (red); tan box 'Add & Norm'; darker tan box 'Feed Forward'; tan box 'Add & Norm'. Gray circle 'Nx' with loop arrow sits at the left of the container. Output arrow exits the container top and routes right into the decoder panel. RIGHT PANEL 'Decoder' (light green fill, green border, green italic label top-right), bottom-to-top: text 'Outputs (shifted right)'; arrow to green box 'Output Embedding'; \u2295 circle with sine-wave icon labeled 'Positional Encoding' (label to the right); arrow into a large light-green rounded container (decoder block) holding bottom-to-top: green box 'Masked Multi-Head Attention' with V (blue), K (blue), Q (red) circles; tan box 'Add & Norm'; orange box 'Multi-Head Attention' with V (blue), K (blue), Q (red) circles \u2014 the V and K here receive arrows from the encoder output; tan box 'Add & Norm'; darker green box 'Feed Forward'; tan box 'Add & Norm'. Gray circle 'Nx' with loop arrow at the right of the container. Arrow up to tan box 'Linear', then tan box 'Softmax', then text 'Output Probabilities' at the very top; a thick red up-arrow stands at the top-left inside the decoder panel.",
+      "colors": [
+        "#FBE5D6",
+        "#D9F2D9",
+        "#00A651",
+        "#C69C6D",
+        "#A9D18E",
+        "#E8A33D",
+        "#D9A05B",
+        "#C00000",
+        "#4472C4",
+        "#BFBFBF",
+        "#F2C6C6",
+        "#C8E6C9"
+      ],
+      "position": "right zone, ~58%-97% width, ~18%-98% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Semi-transparent yellow rectangle with a red dashed border highlighting the encoder-output-to-decoder cross-attention region: it spans the gap between the two panels, covering the top of the encoder block output and the V,K,Q circles feeding the decoder's second 'Multi-Head Attention'.",
+      "colors": [
+        "#FFFF00",
+        "#FF0000"
+      ],
+      "position": "center of diagram, straddling the Encoder/Decoder panel boundary at ~45%-60% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Six annotation callout boxes on the left, each a filled rounded/plain rectangle with bold centered text and a thin gray leader line to its target in the diagram: (1) 'Decoder Block' light-green fill/dark-green text; (2) 'Encoder Block' light-pink fill/red text; (3) 'N Cascaded Blocks / In Both Encoder and Decoder' tan fill/dark-red text; (4) 'Encoder Decoder Attention / From Last Encoder Block / To ALL Decoder Cascaded Blocks' yellow fill/blue text with 'Last' and 'ALL' in red; (5) 'Inputs to Encoder Block (V,K,Q) / All are from Previous Block' light-blue fill/dark text with '(V,K,Q)' in blue; (6) 'Inputs to Decoder Block (V,K,Q) / (V,K) from Attention, (Q) from Previous Block' light-blue fill/dark text with '(V,K,Q)', '(V,K)', '(Q)' in blue.",
+      "colors": [
+        "#C8E6C9",
+        "#006400",
+        "#F2C6C6",
+        "#CC0000",
+        "#D2A679",
+        "#8B0000",
+        "#FFFF99",
+        "#0000CC",
+        "#D6E8F8",
+        "#003366"
+      ],
+      "position": "left column, stacked from ~19% to ~96% height"
+    },
+    {
+      "type": "arrow",
+      "description": "Two thick red #CC0000 block up-arrows: one below 'Inputs' at the bottom of the Encoder panel, and one at the top-left inside the Decoder panel below 'Output Probabilities' (the source count said 'three', but only these two positions are described anywhere in the analysis; treated as a count discrepancy [?]). Plus 19 thin dark #333333 connector arrows linking consecutive blocks with upward flow (8 on the Encoder path, the last crossing into the Decoder panel to feed the V and K circles of its second 'Multi-Head Attention'; 11 on the Decoder path), and 2 gray Nx loop arrows.",
+      "colors": [
+        "#CC0000",
+        "#333333"
+      ],
+      "position": "bottom of Encoder panel, top-left of Decoder panel, throughout diagram"
+    },
+    {
+      "type": "icon",
+      "description": "Two positional-encoding icons: small circles containing a sine-wave curve, each paired with a small \u2295 (plus-in-circle) addition node where the sine wave joins the embedding arrow.",
+      "colors": [
+        "#333333",
+        "#FFFFFF"
+      ],
+      "position": "one left of 'Input Embedding' output (Encoder), one right of 'Output Embedding' output (Decoder)"
+    }
+  ],
+  "imagery": [
+    "No photographs. Only schematic icons: two sine-wave-in-circle positional encoding symbols and two \u2295 addition circles, drawn in thin dark outline style within the diagram panels."
+  ],
+  "colors": {
+    "background": "#E8E8E8",
+    "title_text": "#CC0000",
+    "body_text": "#1A1A1A",
+    "accents": [
+      "#CC0000",
+      "#00A651",
+      "#0000CC",
+      "#FFFF99",
+      "#C69C6D",
+      "#A9D18E",
+      "#F2C6C6",
+      "#C8E6C9",
+      "#D6E8F8",
+      "#D2A679",
+      "#E8A33D",
+      "#4472C4",
+      "#C00000",
+      "#BFBFBF",
+      "#FBE5D6",
+      "#D9F2D9",
+      "#D9A05B",
+      "#FFFF00",
+      "#FF0000",
+      "#333333",
+      "#FFFFFF",
+      "#006400",
+      "#8B0000",
+      "#003366"
+    ]
+  },
+  "typography_notes": "All text is sans-serif (Arial/Helvetica-like). Title is bold, ~36-40pt, red, title-case with en dash. Callout box text is bold, ~14-18pt, centered; exactly two emphasis color rules apply: the words 'Last' and 'ALL' are red, and the tuples '(V,K,Q)', '(V,K)', '(Q)' are blue. 'Encoder' and 'Decoder' panel labels are bold italic. Diagram-internal labels are small (~8-10pt), regular weight, dark gray/black. Slide number is bold inside a yellow circle. No all-caps except 'ALL', which is emphasized uppercase.",
+  "animation_state": "Slide appears fully built; all six callouts, the complete diagram, and the highlight region are visible simultaneously. No mid-build state detected.",
+  "recreation_brief": "1. Set the slide background to solid light gray #E8E8E8; use a sans-serif font (Arial/Helvetica-like) throughout, with default body/diagram text color #1A1A1A. 2. Place the title 'Encoder \u2013 Decoder Transformer' top-center (~15%-85% width, ~2%-12% height): bold, ~36-40pt, red #CC0000. 3. Place the slide number: a yellow #FFFF99 circle with a dark outline at top-right (~90%-96% width, ~8%-16% height) containing bold dark text '16'. 4. Draw the Encoder panel: rounded rectangle, peach fill #FBE5D6, green #00A651 border, occupying the left half of the right zone (~58%-77% width, ~18%-98% height); add a bold italic red label 'Encoder' at its top-left. 5. Draw the Decoder panel: rounded rectangle, light green fill #D9F2D9, green #00A651 border, occupying the right half of the right zone (~78%-97% width, ~18%-98% height); add a bold italic green #00A651 label 'Decoder' at its top-right. 6. At the bottom of the Encoder panel, place small text 'Inputs'. 7. Directly beneath 'Inputs', place a thick red #CC0000 block up-arrow. 8. Above 'Inputs', place a pink #F2C6C6 rounded box labeled 'Input Embedding'. 9. Above 'Input Embedding', place a \u2295 (plus-in-circle) addition node on the flow line, with a small sine-wave-in-circle icon to its left (thin #333333 outline, #FFFFFF fill) feeding into the \u2295 node, and the label 'Positional Encoding' to the left of the icon. 10. Place the Encoder block: a large brown #C69C6D rounded container in the upper half of the Encoder panel. 11. Inside the Encoder block (bottom-to-top), place an orange #E8A33D box 'Multi-Head Attention'. 12. Beneath that box, place three small circles labeled 'V' (blue #4472C4), 'K' (blue #4472C4), 'Q' (red #C00000). 13. Above the attention box, place a tan #D9A05B box 'Add & Norm'. 14. Above it, place a darker tan box 'Feed Forward' (darker shade of #D9A05B; exact hex not captured). 15. Above it, place a tan #D9A05B box 'Add & Norm'. 16. At the left side of the Encoder block, place a gray #BFBFBF circle 'Nx' with a loop arrow. 17. At the bottom of the Decoder panel, place small text 'Outputs (shifted right)'. 18. Above it, place a light green #C8E6C9 box 'Output Embedding'. 19. Above 'Output Embedding', place a \u2295 addition node with a sine-wave-in-circle icon to its right feeding into it, and the label 'Positional Encoding' to the right of the icon. 20. Place the Decoder block: a large light green #A9D18E rounded container in the middle of the Decoder panel. 21. Inside the Decoder block (bottom-to-top), place a green box 'Masked Multi-Head Attention' (exact hex not captured). 22. Beneath it, place three small circles 'V' (#4472C4), 'K' (#4472C4), 'Q' (#C00000). 23. Above it, place a tan #D9A05B box 'Add & Norm'. 24. Above it, place an orange #E8A33D box 'Multi-Head Attention'. 25. Beneath it, place three small circles 'V' (#4472C4), 'K' (#4472C4), 'Q' (#C00000); the V and K circles receive the encoder output arrow. 26. Above it, place a tan #D9A05B box 'Add & Norm'. 27. Above it, place a darker green box 'Feed Forward' (exact hex not captured). 28. Above it, place a tan #D9A05B box 'Add & Norm'. 29. At the right side of the Decoder block, place a gray #BFBFBF circle 'Nx' with a loop arrow. 30. Above the Decoder block, place a tan #D9A05B box 'Linear'. 31. Above it, place a tan #D9A05B box 'Softmax'. 32. At the very top of the Decoder panel, place small text 'Output Probabilities'. 33. At the panel's top-left, below 'Output Probabilities', place a thick red #CC0000 block up-arrow. 34. Draw 8 thin dark #333333 connector arrows on the Encoder path: Inputs\u2192Input Embedding, Input Embedding\u2192\u2295, \u2295\u2192Multi-Head Attention, Multi-Head Attention\u2192Add & Norm, Add & Norm\u2192Feed Forward, Feed Forward\u2192Add & Norm, top Add & Norm\u2192container top, container top\u2192Decoder's second 'Multi-Head Attention' (feeding its V and K circles). 35. Draw 11 thin dark #333333 connector arrows on the Decoder path: Outputs (shifted right)\u2192Output Embedding, Output Embedding\u2192\u2295, \u2295\u2192Masked Multi-Head Attention, Masked Multi-Head Attention\u2192Add & Norm, Add & Norm\u2192Multi-Head Attention, Multi-Head Attention\u2192Add & Norm, Add & Norm\u2192Feed Forward, Feed Forward\u2192Add & Norm, Add & Norm\u2192Linear, Linear\u2192Softmax, Softmax\u2192Output Probabilities. 36. Place the cross-attention highlight: a semi-transparent yellow #FFFF00 rectangle with a red #FF0000 dashed border, straddling the Encoder/Decoder panel boundary at ~45%-60% height, covering the encoder block's top output and the V,K,Q circles feeding the decoder's second 'Multi-Head Attention'. 37. Place callout 1 at ~30%-47% width, ~19%-25% height: light green #C8E6C9 box with bold centered dark green #006400 text 'Decoder Block'; draw a thin gray #BFBFBF leader line from it to the Decoder block. 38. Place callout 2 at ~38%-55% width, ~27%-33% height: light pink #F2C6C6 box with bold centered red #CC0000 text 'Encoder Block'; thin gray leader line to the Encoder block. 39. Place callout 3 at ~17%-51% width, ~37%-46% height: tan #D2A679 box with bold centered dark red #8B0000 two-line text 'N Cascaded Blocks' / 'In Both Encoder and Decoder'; thin gray leader lines to both 'Nx' circles. 40. Place callout 4 at ~6%-55% width, ~53%-66% height: yellow #FFFF99 box with bold centered blue #0000CC three-line text 'Encoder Decoder Attention' / 'From Last Encoder Block' / 'To ALL Decoder Cascaded Blocks', with 'Last' and 'ALL' in red #CC0000; thin gray leader line to the yellow dashed highlight region. 41. Place callout 5 at ~9%-46% width, ~74%-83% height: light blue #D6E8F8 box with bold centered dark #003366 two-line text 'Inputs to Encoder Block (V,K,Q)' / 'All are from Previous Block', with '(V,K,Q)' in blue #0000CC; thin gray leader line to the encoder input path. 42. Place callout 6 at ~7%-48% width, ~86%-96% height: light blue #D6E8F8 box with bold centered dark #003366 two-line text 'Inputs to Decoder Block (V,K,Q)' / '(V,K) from Attention, (Q) from Previous Block', with '(V,K,Q)', '(V,K)', '(Q)' in blue #0000CC; thin gray leader line to the decoder input path.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Verified subtitle_or_header is genuinely absent (no subtitle text exists in any region, verbatim field, or the original brief); kept null and documented instead of inventing content.",
+      "Added a 10th layout region 'Cross-attention highlight' so layout.regions covers the highlight-box visual element (semi-transparent #FFFF00 rectangle, #FF0000 dashed border, straddling the panel boundary at ~45%-60% height), which previously had no region.",
+      "Replaced the vague quantifier 'many thin black connector arrows' with the exact derived count: 19 thin #333333 connectors (8 on the Encoder path including the cross-panel feed to the Decoder's V,K; 11 on the Decoder path), plus 2 gray Nx loop arrows.",
+      "Replaced 'varying colors' in layout.arrangement with the exact six callout fills in top-to-bottom order: light green, light pink, tan, yellow, light blue, light blue.",
+      "Replaced 'some words colored for emphasis' in typography_notes with the exact emphasis set: 'Last' and 'ALL' in red; '(V,K,Q)', '(V,K)', '(Q)' tuples in blue.",
+      "Corrected the invented 'dark olive outline' on the slide-number circle to 'dark outline' (hex not captured in the source).",
+      "Resolved the arrow element's internal contradiction (claimed 'three' thick red up-arrows but described only two positions): kept the two positions, which are corroborated by both the flowchart description and the original brief, and flagged the third as an unverified count [?].",
+      "Mapped palette hexes to previously unhexed items where derivable: tan boxes ('Add & Norm', 'Linear', 'Softmax') = #D9A05B; dark text of the two light-blue callouts = #003366; gray leader lines and Nx circles = #BFBFBF; Decoder label green = #00A651.",
+      "Extended colors.accents with 10 hex values used by elements but missing from the list (#FBE5D6, #D9F2D9, #D9A05B, #FFFF00, #FF0000, #333333, #FFFFFF, #006400, #8B0000, #003366).",
+      "Rewrote recreation_brief as a 42-step ordered checklist placing one element per step, adding exact positions (from layout.regions), fills, text colors, shape types, and a full connector-by-connector arrow list."
+    ],
+    "uncertain_items": [
+      "Thick red up-arrow count: source says 'three' but only two positions are described (below 'Inputs' in the Encoder panel; top-left of the Decoder panel below 'Output Probabilities'); the third arrow's existence/position is unverified [?].",
+      "Exact hex of the Encoder 'Feed Forward' box ('darker tan') is not captured; a darker shade of #D9A05B is suggested.",
+      "Exact hex of the Decoder 'Feed Forward' box ('darker green') is not captured.",
+      "Exact hex of the Decoder 'Masked Multi-Head Attention' box (described only as 'green') is not captured.",
+      "Outline color of the slide-number circle is described only as 'dark'; hex not captured.",
+      "The ~58%-77% / ~78%-97% width split of the two panels is an assumption; the source says only 'two adjacent rounded panels' within the ~58%-97% right zone.",
+      "The connector arrow count of 19 is derived from the described block sequence, not directly observed in the source."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_016.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 16,
+      "image": "slide_016.jpg",
+      "kept_frame": "frame_01019.jpg",
+      "start_sec": 853.0,
+      "end_sec": 1018.0,
+      "frame_count": 166
+    },
+    "elapsed_s": 211.9,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1486.6
+  }
+}

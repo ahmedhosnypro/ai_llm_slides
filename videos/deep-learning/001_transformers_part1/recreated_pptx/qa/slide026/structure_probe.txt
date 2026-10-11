@@ -1,0 +1,43 @@
+# Visual QA Analysis: 8-Panel Crop Composite
+
+## 1. Verbatim Text Transcription
+
+**Caption strips (the lavender label bars, one per panel):**
+- "A left stack glyphs x152-148 y320-400"
+- "B nodes+W labels x488-700 y220-300"
+- "C bbox+arrow+Sigma x480-700 y10-230"
+- "D strp glyphs+X2 x170-350 y462-525"
+- "E bottom-left curve x50-200 y380-500"
+- "F bottom-right curve x480-870 y380-512"
+- "G box-to-bar zone x335-470 y190-410"
+- "H red block arrow x250-320 y495-540"
+
+**Text inside the crops:**
+- **Panel A:** Four red "X" glyphs, each with a tiny red subscript digit. The subscripts are too small to read with certainty; they appear to be approximately 4, 2, 2, 1 from top to bottom, but I cannot confirm each digit.
+- **Panel B:** "W" with subscript "21" (upper left) and "W" with subscript "22" (lower left), both in blue.
+- **Panel C:** A left-clipped ellipse showing only "...lities" (end of a longer word â possibly "Utilities" or "Probabilities", but the beginning is outside the crop); an ellipse reading "Weighted SUM" in blue; a large blue "Î£" (sigma) in a light-blue rectangle; a partial "W" at bottom-left (clipped); a green "Y" with a tiny subscript digit (illegible) inside the top cell strip.
+- **Panel D:** A red "X" with a small subscript (not legible) among the yellow/lavender/pink cells, and a second red "X" inside the magenta-dotted box (subscript not legible; the caption's "+X2" suggests it is Xâ).
+- **Panel E:** No legible text.
+- **Panel F:** No legible text.
+- **Panel G:** Rotated (vertical) blue letters on the lavender bar at right; the word is clipped and not fully legible (it may begin with "outâ¦", but I cannot confirm).
+- **Panel H:** No legible text.
+
+## 2. Layout
+
+**Overall:** A single tall vertical column of 8 stacked horizontal bands on a white page. Each band consists of (a) a thin light-lavender caption bar spanning the full width with small dark text at the far left, and (b) below it, the crop image aligned flush to the left edge. Every crop occupies only the left portion of its band; the remainder of each band is blank white.
+
+- **LEFT edge:** Caption text sits at the far left of each lavender bar. Crops are flush with the left edge, and several crops contain diagram elements sliced by this edge (Panel C's ellipse and purple rectangle, Panel F's purple rectangle and dashed green ellipse, Panel G's gray vertical strip and small blue circle).
+- **RIGHT edge:** All 8 bands end in blank white space. Each crop's right boundary cuts through content (A's connector lines, B's horizontal red lines, D's rightmost yellow cell, F's gray vertical band, G's lavender bar and rotated text).
+- **TOP:** Panel A's caption bar is the very first element; Panel A's stack diagram begins immediately below it.
+- **BOTTOM:** Panel H is last; at its bottom there is a light-gray horizontal band and a dark-red horizontal line, both truncated by the image's bottom edge.
+
+**Content summary per crop:** A â four stacked rows of colored cell strips (yellow, yellow, X-cell, lavender, pink) inside a green dashed rounded rectangle, with lines exiting right and a green dashed arrow at bottom. B â blue Wââ/Wââ labels with red circled-asterisk (Ã) nodes, short red arrows feeding them, horizontal red lines, and vertical red lines with upward arrowheads. C â a green dashed cell strip labeled Y, a thick green arrow, "Weighted SUM" ellipse, and a Î£ box receiving red up-arrows. D â one cell strip inside a green dashed box plus a magenta-dotted highlighted cell group, a dark-red block arrow, and a vertical red line. E/F â thin gray curved connector lines ending in small green arrows pointing up into fragments of green dashed boxes. G â four horizontal lines with red right-pointing arrowheads aimed at a vertical lavender bar with rotated blue text. H â bottom fragment of the magenta-dotted cells with cursor, dark-red block arrow, gray band, red line.
+
+## 3. Visual Defects and Anomalies
+
+1. **Edge clipping (systematic, inherent to the crop format):** Nearly every crop slices through diagram elements at its borders â e.g., A's right-exiting connector lines, C's "...lities" ellipse, purple rectangle, and clipped "W", D's top red line and right yellow cell, E's box fragments, F's left-edge shapes, G's rotated label, H's bottom line. These are consistent with intentional probe crops, not rendering errors.
+2. **Caption anomaly in Panel A:** The range "x152-148" is reversed (start value greater than end value), unlike all other captions where the start is less than the end. This looks like a typo in the label metadata.
+3. **Mouse cursor contamination:** A mouse-pointer arrow overlaps the red "X" glyph inside the magenta-dotted cell group in Panel D, and the same cursor appears again in Panel H's fragment of the same region â i.e., the original frame captured the pointer over slide content.
+4. **Truncated bottom element:** The dark-red horizontal line at the very bottom of Panel H is cut mid-stroke by the image boundary.
+5. **Illegible small text:** Subscript digits on the X and Y glyphs (A, C, D) and the rotated bar label (G) are below legible resolution or clipped; no confident reading is possible.
+6. **No placeholder/garbage strings detected,** and no wrong-language text: all legible text is English ("Weighted SUM", caption labels) or standard math notation (Î£, W, X, Y, digits).

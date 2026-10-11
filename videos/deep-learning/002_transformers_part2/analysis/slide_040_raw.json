@@ -1,0 +1,137 @@
+{
+  "slide_title": "Normalization Parameters",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Instead of restricting the Activations of each layer to be strictly Zero mean and unit variance, Normalization allows the network to learn parameters \u03b3 and \u03b2 that can convert the mean and variance to any value that Minimizes Loss."
+    ],
+    "labels": [
+      "40",
+      "Input: Values of x over a mini-batch: \ud835\udcd1 = {x_{1...m}};",
+      "Parameters to be learned: \u03b3, \u03b2",
+      "Output: {y_i = BN_{\u03b3,\u03b2}(x_i)}",
+      "// mini-batch mean",
+      "// mini-batch variance",
+      "// normalize",
+      "// scale and shift"
+    ],
+    "equations": [
+      "\u03bc_\ud835\udcd1 \u2190 (1/m) \u2211_{i=1}^{m} x_i   [LaTeX: \\mu_{\\mathcal{B}} \\leftarrow \\frac{1}{m}\\sum_{i=1}^{m} x_i]",
+      "\u03c3\u00b2_\ud835\udcd1 \u2190 (1/m) \u2211_{i=1}^{m} (x_i \u2212 \u03bc_\ud835\udcd1)\u00b2   [LaTeX: \\sigma_{\\mathcal{B}}^2 \\leftarrow \\frac{1}{m}\\sum_{i=1}^{m} (x_i - \\mu_{\\mathcal{B}})^2]",
+      "x\u0302_i \u2190 (x_i \u2212 \u03bc_\ud835\udcd1) / \u221a(\u03c3\u00b2_\ud835\udcd1 + \u03b5)   [LaTeX: \\widehat{x}_i \\leftarrow \\frac{x_i - \\mu_{\\mathcal{B}}}{\\sqrt{\\sigma_{\\mathcal{B}}^2 + \\epsilon}}]",
+      "y_i \u2190 \u03b3 x\u0302_i + \u03b2 \u2261 BN_{\u03b3,\u03b2}(x_i)   [LaTeX: y_i \\leftarrow \\gamma\\,\\widehat{x}_i + \\beta \\equiv \\mathrm{BN}_{\\gamma,\\beta}(x_i)]"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top with a circular slide-number badge at top-right; below the title a full-width red-bordered paragraph box; below that a single white algorithm/pseudocode panel positioned left-of-center (the right half of the lower slide is empty white space); a solid black bar runs across the very bottom edge (video letterbox artifact).",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~10-18% vertical, ~25-72% horizontal",
+        "content": "'Normalization Parameters' in large bold red serif"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, ~10-17% vertical, ~88-93% horizontal",
+        "content": "Yellow circle with dark-red ring containing the red numeral '40'"
+      },
+      {
+        "name": "Intro paragraph box",
+        "position": "upper middle, ~19-35% vertical, ~9-91% horizontal",
+        "content": "Three-line serif paragraph with multi-color inline emphasis (blue, green-highlighted, red underlined) inside a thin red rectangle"
+      },
+      {
+        "name": "Algorithm panel",
+        "position": "middle-to-bottom, left-of-center, ~38-92% vertical, ~15-58% horizontal",
+        "content": "White black-bordered pseudocode box: Input/Output header lines, then four display equations each with a right-aligned '// comment' and colored highlights on key symbols"
+      },
+      {
+        "name": "Bottom black bar",
+        "position": "bottom, ~95-100% vertical, full width",
+        "content": "Solid black rectangle (video letterbox artifact, not authored slide content)"
+      }
+    ],
+    "hierarchy": "1) Red bold title dominates; 2) red-bordered intro paragraph next (medium serif, heavy multi-color emphasis); 3) algorithm panel equations in LaTeX-style serif with small sans-serif comments; colored highlights (green, lavender, pink, blue, orange) guide the eye to learnable parameters and per-equation roles; slide-number badge is small."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Thin red rectangular border (white fill) enclosing the 3-line intro paragraph; no other decoration inside.",
+      "colors": [
+        "#C00000",
+        "#FFFFFF"
+      ],
+      "position": "Upper middle, ~9%-91% of slide width, ~19%-35% of height"
+    },
+    {
+      "type": "other",
+      "description": "Algorithm/pseudocode panel reproducing the 'Batch Normalizing Transform' algorithm box from the Batch Normalization paper. White fill, thin black border. Top-to-bottom: line 1: bold 'Input:' + 'Values of x over a mini-batch: \ud835\udcd1 = {x_{1...m}};' (x italic, \ud835\udcd1 calligraphic); line 2 indented and fully covered by a light-green highlight: 'Parameters to be learned: \u03b3, \u03b2'; line 3: bold 'Output:' + '{y_i = BN_{\u03b3,\u03b2}(x_i)}'. Then four display equations, each with a right-aligned sans-serif comment: (1) \u03bc_\ud835\udcd1 \u2190 (1/m)\u2211_{i=1}^{m} x_i, \u03bc_\ud835\udcd1 on lavender highlight, comment '// mini-batch mean'; (2) \u03c3\u00b2_\ud835\udcd1 \u2190 (1/m)\u2211_{i=1}^{m}(x_i \u2212 \u03bc_\ud835\udcd1)\u00b2, \u03c3\u00b2_\ud835\udcd1 on lavender highlight, comment '// mini-batch variance'; (3) x\u0302_i \u2190 (x_i \u2212 \u03bc_\ud835\udcd1)/\u221a(\u03c3\u00b2_\ud835\udcd1 + \u03b5), left-hand x\u0302_i on pink highlight, numerator 'x_i \u2212 \u03bc_\ud835\udcd1' and denominator '\u221a(\u03c3\u00b2_\ud835\udcd1 + \u03b5)' each on light-blue highlights, comment '// normalize' on pink highlight; (4) y_i \u2190 \u03b3x\u0302_i + \u03b2 \u2261 BN_{\u03b3,\u03b2}(x_i), y_i encircled by an orange ellipse outline, \u03b3 and \u03b2 on green highlights, x\u0302_i on pink highlight, comment '// scale and shift' on orange highlight.",
+      "colors": [
+        "#FFFFFF",
+        "#000000",
+        "#90EE90",
+        "#9999CC",
+        "#FF9C9C",
+        "#A6D0F2",
+        "#FFA64D",
+        "#FF8C00"
+      ],
+      "position": "~15%-58% width, ~38%-92% height (left-of-center)"
+    },
+    {
+      "type": "icon",
+      "description": "Circular slide-number badge: yellow fill, dark-red/maroon ring border, red numeral '40' centered inside.",
+      "colors": [
+        "#FFFF99",
+        "#8B0000",
+        "#C00000"
+      ],
+      "position": "Top right corner, ~88-93% horizontal, ~10-17% vertical"
+    },
+    {
+      "type": "other",
+      "description": "Solid black horizontal bar spanning the entire slide width at the very bottom edge (letterbox artifact of the video capture, not authored slide content).",
+      "colors": [
+        "#000000"
+      ],
+      "position": "Bottom edge, full width, ~4-5% of slide height"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations on the slide; the only icon-like element is the circular yellow '40' slide-number badge at top-right."
+  ],
+  "colors": {
+    "background": "#F2F2F2 (very light gray slide surface, near-white)",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#C00000 (title, red box border, red underlined emphasis)",
+      "#2222CC (blue emphasis words 'strictly Zero mean and unit variance')",
+      "#008000 (green \u03b3 / \u03b2 text and 'learn parameters')",
+      "#90EE90 (light-green highlight behind 'Parameters to be learned: \u03b3, \u03b2', \u03b3, \u03b2)",
+      "#9999CC (lavender highlight behind \u03bc_\ud835\udcd1 and \u03c3\u00b2_\ud835\udcd1)",
+      "#FF9C9C (pink highlight behind x\u0302_i and '// normalize')",
+      "#A6D0F2 (light-blue highlight behind normalize fraction numerator and denominator)",
+      "#FFA64D (orange highlight behind '// scale and shift')",
+      "#FF8C00 (orange ellipse outline around y_i)",
+      "#FFFF99 (yellow slide-number badge)"
+    ]
+  },
+  "typography_notes": "All text is serif except the small '// comment' annotations, which are sans-serif. Title: large bold serif (~34-36pt), red, title case. Intro paragraph: serif (~16-17pt) with heavy inline styling \u2014 blue italic 'strictly', blue bold 'Zero' and 'unit', blue 'mean and ... variance', bold green on light-green highlight 'learn parameters', green '\u03b3' and bold green '\u03b2', red italic underlined 'convert the mean and variance to any value that', red bold italic underlined 'Minimizes Loss.' Algorithm panel set in LaTeX Computer Modern style: bold upright 'Input:'/'Output:' labels, italic math variables, calligraphic \ud835\udcd1, summation with limits above/below, wide hat over x\u0302_i, radical with overbar; comments in small sans-serif (~12pt). Slide number is a red numeral in a small yellow circle.",
+  "animation_state": "Slide appears fully built; no partial reveal or mid-build state. The black strip at the bottom is a video letterbox artifact, not an animated element.",
+  "recreation_brief": "1. Slide setup: 16:9, background very light gray #F2F2F2 (near-white); add a solid black rectangle across the full bottom edge (~5% height) to mimic the video letterbox.\n2. Title: text box centered at top (~10% from top), text 'Normalization Parameters', bold serif (Times New Roman/Georgia), ~36pt, color #C00000.\n3. Slide number: draw an oval (~36px diameter) at top-right (~90% horizontal, ~13% vertical), fill #FFFF99, border 2pt #8B0000; add text '40' in bold red #C00000 ~14pt centered inside.\n4. Intro box: draw a rectangle from ~9% to ~91% width, ~19% to ~35% height; white/no fill, border 2pt #C00000. Inside, serif ~16pt paragraph, wrapped as three lines, exact text: 'Instead of restricting the Activations of each layer to be strictly Zero mean and unit variance, Normalization allows the network to learn parameters \u03b3 and \u03b2 that can convert the mean and variance to any value that Minimizes Loss.' Inline formatting: 'strictly' = #2222CC italic; 'Zero' and 'unit' = #2222CC bold; 'mean and' and 'variance' = #2222CC; 'learn parameters' = bold #008000 on #90EE90 highlight; '\u03b3' and '\u03b2' = #008000 (\u03b2 bold); 'convert the mean and variance to any value that' = #C00000 italic underlined; 'Minimizes Loss.' = #C00000 bold italic underlined.\n5. Algorithm panel: white rectangle with 1.5pt black border from ~15% to ~58% width, ~38% to ~92% height; leave the right half of the lower slide empty.\n6. Panel header (LaTeX-style serif, e.g. Cambria Math/STIX): line 1: bold 'Input:' then 'Values of x over a mini-batch: \ud835\udcd1 = {x_{1...m}};' with x italic and \ud835\udcd1 calligraphic; line 2 indented with the whole phrase on a #90EE90 highlight: 'Parameters to be learned: \u03b3, \u03b2' (\u03b3, \u03b2 italic); line 3: bold 'Output:' then '{y_i = BN_{\u03b3,\u03b2}(x_i)}'.\n7. Equation 1 via equation editor (LaTeX: \\mu_{\\mathcal{B}} \\leftarrow \\frac{1}{m}\\sum_{i=1}^{m} x_i): place a #9999CC highlight behind '\u03bc_\ud835\udcd1'; right-aligned sans-serif comment '// mini-batch mean' in dark gray/black.\n8. Equation 2 (LaTeX: \\sigma_{\\mathcal{B}}^2 \\leftarrow \\frac{1}{m}\\sum_{i=1}^{m}(x_i - \\mu_{\\mathcal{B}})^2): #9999CC highlight behind '\u03c3\u00b2_\ud835\udcd1'; comment '// mini-batch variance'.\n9. Equation 3 (LaTeX: \\widehat{x}_i \\leftarrow \\frac{x_i - \\mu_{\\mathcal{B}}}{\\sqrt{\\sigma_{\\mathcal{B}}^2 + \\epsilon}}): #FF9C9C highlight behind left-hand 'x\u0302_i'; #A6D0F2 highlights behind numerator 'x_i \u2212 \u03bc_\ud835\udcd1' and denominator '\u221a(\u03c3\u00b2_\ud835\udcd1 + \u03b5)'; comment '// normalize' on a #FF9C9C highlight.\n10. Equation 4 (LaTeX: y_i \\leftarrow \\gamma \\widehat{x}_i + \\beta \\equiv \\mathrm{BN}_{\\gamma,\\beta}(x_i)): draw an unfilled ellipse with #FF8C00 outline around 'y_i'; #90EE90 highlights behind '\u03b3' and '\u03b2'; #FF9C9C highlight behind 'x\u0302_i'; comment '// scale and shift' on a #FFA64D highlight.\n11. Set all four '// comments' in a small sans-serif font (~12pt), one per equation row, right-aligned within the panel.",
+  "_meta": {
+    "frame": "slide_040.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 40,
+      "image": "slide_040.jpg",
+      "kept_frame": "frame_03257.jpg",
+      "start_sec": 3162.0,
+      "end_sec": 3256.0,
+      "frame_count": 95,
+      "old_slide": 108
+    },
+    "elapsed_s": 469.5
+  }
+}

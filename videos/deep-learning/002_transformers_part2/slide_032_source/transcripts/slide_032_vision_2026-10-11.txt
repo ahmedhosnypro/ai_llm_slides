@@ -1,0 +1,48 @@
+1. TITLE
+Title (red, top center): "Sin/Cos Positional Encoder"
+Subtitle (blue, below title): "Vector of Dimension "2" to define Position"
+Badge numeral: circled "32" (top-right, yellow circle with dark outline)
+
+2. ALL VERBATIM TEXT
+- "Sin/Cos Positional Encoder"
+- "Vector of Dimension "2" to define Position"
+- "32" (badge)
+- Box labels (left, inside a white box with red border, containing a stacked red vector): "sin(Ït)" over "cos(Ït)"
+- Yellow callout box (dark border): "Where "t" is the step (position) and Ï is the frequency of trigonometric function Sine/Cosine" â the "t" is red bold, the "Ï" is red bold italic.
+- Large light-blue panel text (dark blue bold): "This vector can be used to define word position at step "t" , t=0,1,2,3,4,5,6,7,â¦."
+- Bullet 1 (green text, arrow bullet "âº"): "Values are between -1 and 1 (bounded values)" â "between -1 and 1" is bold with yellow highlight; "(bounded values)" is green.
+- Second line (blue bold, indented under bullet 1): "Distance between vectors representing positions "t" and "t+1"  is constant irrespective of "t" [Distance (Pos1, Pos2) = Distance (Pos90, Pos91)]" â "constant" is yellow-highlighted; the bracketed example is green.
+- Bullet 2 (green text, arrow bullet "âº"): ""t" may take any positive value (No limitation of length of Sequence )" â ""t" may take any positive value" is bold with yellow highlight.
+- Bullet 3 (green text, arrow bullet "âº"): "Position Vector Length = 2  (Cannot be combined with Word Embedding Vector) ??" â "Position Vector Length = 2" is blue bold with yellow highlight; the parenthetical is red bold; ends with blue "??".
+- No axis labels, captions, or footnotes beyond the above.
+
+3. EQUATIONS
+- Vector formula (left box, stacked 2-row column vector): [ sin(Ït) ; cos(Ït) ] â i.e., a 2-dimensional positional encoding vector with components sin(Ït) (top) and cos(Ït) (bottom).
+- "t=0,1,2,3,4,5,6,7,â¦." (sequence of valid step indices for t)
+- "t" and "t+1" (adjacent position indices)
+- "Distance (Pos1, Pos2) = Distance (Pos90, Pos91)" (claim of constant pairwise distance)
+- "Position Vector Length = 2"
+- "between -1 and 1" (range of sin/cos values)
+No other mathematical expressions; no X_0..X_N tokens present on this slide.
+
+4. DIAGRAM TOPOLOGY
+This slide has no flow diagram / neural-network architecture drawing. Structural elements instead:
+- Left small box: white fill, red/maroon border, rounded rectangle, containing the 2-row column vector "sin(Ït)" / "cos(Ït)" in red text with red bracket glyphs suggesting matrix/vector brackets.
+- Yellow callout box: pale yellow fill, dark brown/black border, positioned to the right of the vector box at the top; it defines the variables "t" and Ï. It sits directly beside (reads as an annotation to) the vector box; no arrow connects them.
+- Main content panel: large rectangle, very light blue (cyan-tinted) fill, dark blue border, containing the title sentence "This vector can be used to define word position at step "t"..." plus three bulleted points. Data flow conceptually: vector (top-left) â definition callout â properties panel; left-to-right / top-to-bottom reading order.
+- Slide background: white inner area with a thin red frame line just inside the slide edge; bottom strip of the slide is a solid black bar (video letterbox/artifact, see section 6).
+Resemblance to published figures: none â this is an instructor-made explanatory slide (Zewail DSAI 308 lecture), not a reproduction of Vaswani et al. 2017 Fig. 1/2, Bloem, or Alammar artwork. The sin/cos content relates conceptually to Vaswani et al. 2017 Â§3.5 equations (PE(pos,2i)=sin(pos/10000^(2i/d_model)), PE(pos,2i+1)=cos(...)), but those equations do not appear verbatim here; only sin(Ït)/cos(Ït) in dimension-2 form is shown.
+
+5. NUMBERS/DATA
+- Badge: 32 (slide number)
+- Dimension: "2" (vector of dimension 2; "Position Vector Length = 2")
+- Value range: "-1" and "1"
+- t sequence values: 0,1,2,3,4,5,6,7,â¦.
+- Distance example positions: Pos1, Pos2, Pos90, Pos91
+- t+1 (adjacency relation)
+
+6. BUILD STATE / ARTIFACTS
+- Slide appears fully built (all bullets and highlights present); no mid-reveal animation visible.
+- A mouse cursor (small white/black arrow pointer) is visible in the middle of the panel, near the text "[Distance (Pos90, Pos91)]" â video-capture artifact.
+- Bottom of frame: a solid black horizontal band across the full width (video player letterbox/control strip covering the lower edge of the slide); the red frame line of the slide is cut off at the very bottom.
+- No other overlays, watermarks, or timestamps visible.

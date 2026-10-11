@@ -24,6 +24,66 @@ contact sheet, new2old mapping draft) but must NEVER approve the set itself. Cur
 for extraction, deliver the packet, report that the pipeline is stopped at the human
 review gate, and stop.
 
+## DEPENDENCY-GATED BUILDS & SHARED COMPONENTS (founder directive 2026-10-11)
+
+Some decks (first: `deep-learning/001_transformers_part1`) carry a founder-provided
+dependency graph: a dependent slide is its parent's composition + a delta (extra /
+removed / replaced blocks). Canonical edges: `videos/<VIDEO>/slide_dependencies.json`
+(applied to the DB's `depends_on` on register). Full law:
+`.agents/skills/slide-recreation/references/dependencies.md`. Worker rules:
+
+1. **Before building**, run `VIDEO=<VIDEO> python3 scripts/15_progress.py deps`
+   (dispatchers: `buildable` prints the exact dispatch list):
+   - `root` or `unblocked` → you may build.
+   - `blocked` → you may NOT build. Do NOT touch the parent's files or wait on it —
+     record `last_error="dep-gated: waiting on <ids>"` in the DB and end your run
+     reporting DEP_BLOCKED (the orchestrator re-dispatches when the parent
+     certifies). Analysis/validation work is never dep-gated. Blocked-by entries
+     may be **cross-video qualified refs** (`deep-learning/001_transformers_part1:15`
+     = slide 15 of ANOTHER lecture — it certifies in ITS video's DB) or **pattern
+     gates** (`pattern P1#3 (slide 12)` = your pattern-group predecessor is not
+     certified yet). Same rules: do not build, report DEP_BLOCKED.
+2. **If your slide HAS dependents** (children wait on you): after your PASS, bank
+   your composition as a component so children can import it — export your slide's
+   full draw as `recreated_pptx/build/components/slide_NNN.js`
+   (`renderBase(pptx, slide, opts)`; house chrome via the shared
+   `components/house_chrome.js` primitive — see `references/dependencies.md`), and
+   note the component path in your final report. **The obligation is
+   PLAYLIST-SCOPED**: bank your component even if no slide in YOUR video depends on
+   you — another lecture may (deep-learning 001:15/19/33 are parents for 002).
+3. **If your slide IS a child**: `require` the parent's certified component and call
+   its render — NEVER re-derive or copy-paste the parent's geometry; draw only your
+   slide's own delta at ITS measured geometry (PIL-measure YOUR frame; the delta is
+   the difference between your frame and the parent's, and your frame is ground
+   truth for every element, inherited ones included). Your delta may REMOVE or
+   REPLACE parent blocks (verified: children 9, 10, 15, 18, 19, 45 on the
+   deep-learning deck do) — compose from the parent's per-block functions
+   (`opts.skip`/selective calls), never draw the full base and try to erase.
+   **Cross-video children** (parent in another lecture): `require` the parent
+   video's component by ABSOLUTE path
+   (`/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/<video>/recreated_pptx/build/components/slide_NNN.js`);
+   identical recap slides are typically parent `renderBase` + YOUR badge numeral +
+   a tiny measured delta. Always pass your own numeral (badge = number printed on
+   YOUR original frame).
+4. **Pattern-group members** (your row shows `P<group>#<seq>`): members build
+   STRICTLY sequentially — `deps` gates you on the previous member's certification.
+   After building, VERIFY the pattern against the group's earlier members' builds
+   (shared blocks should be pixel-consistent) and bank any group-shared pattern
+   asset under your `qa/` evidence for the next member to reuse. Do NOT clone the
+   previous member's composition wholesale — pattern reuse ≠ content dependency.
+5. **Judge**: keep the frozen `-p` template VERBATIM; carry the shared-base fact in
+   the worker-editable `--view` field (e.g. "base composition = slide 6's certified
+   component, imported; expected difference = this slide's delta only"). Findings on
+   regions pixel-identical to the certified parent are judge variance — document and
+   override per the inheritance law; findings on YOUR delta are fix triggers.
+6. **Never edit a certified component** — copy-then-modify into a NEW module; changing
+   a certified component re-opens every descendant (cascade law).
+7. **Placeholder slides** (`analysis_status='n/a-placeholder'`, e.g. 002 slide 001 —
+   cover missing from the video): there is NO ground-truth frame and NO analysis
+   spec. Build from the playlist chrome + the declared placeholder layout
+   (002 AGENTS.md), run `house_chrome_check.py`, and STOP at founder sign-off —
+   never dispatch a visual judge (nothing to compare against).
+
 ## Authoritative content spec
 
 `videos/<VIDEO>/analysis/slide_NNN_final.json` — contains `slide_title`, `verbatim_text`, `layout`,

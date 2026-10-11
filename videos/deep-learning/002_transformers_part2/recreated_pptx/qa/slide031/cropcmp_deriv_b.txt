@@ -1,0 +1,49 @@
+## Element-by-Element Comparison (DERIVATION ROWS 4â7 + CALLOUT + RIBBON)
+
+**Row 4 (y360..381):**
+- Text: IMG1 "[ sinÂ²(a) sinÂ²(b) + cosÂ²(a) (cos(b) â 1)Â² â 2 sin(a) cos(a) sin(b) (cos(b) â 1) ]" â verbatim match with IMG2, including the trailing "]" and the detached "=" at right. â
+- Detached "=" x772..781 vertically centered against the row â matches IMG2's "=" placement. â
+- **No discrepancy.**
+
+**Row 5 (y394..419):**
+- Text: "sin(a)Â² (cos(b) â 1)Â² + cosÂ²(a) sinÂ²(b) + sinÂ²(a) sinÂ²(b) + cosÂ²(a) (cos(b) â 1)Â²" â verbatim match. â
+- Mouse-cursor artifact at the start of IMG2's row is correctly omitted (Rule c). â
+- **MINOR (confidence: high):** IMG2 shows an extra-wide gap around the middle "+" ("+   sinÂ²(a) sinÂ²(b)"); IMG1 renders a normal single-space "+". All tokens present and in order; spacing only.
+
+**Row 6 (y428..452):**
+- Text: "[ sin(a)Â² + cosÂ²(a) ] (cos(b) â 1)Â² + [ sin(a)Â² + cosÂ²(a) ] (sinÂ²(b) ) = (cos(b) â 1)Â² + sinÂ²(b)" â verbatim match, including the original's idiosyncratic space in "(sinÂ²(b) )". â
+- Brackets span their content fully, strokes clear of the text (Rule 7 satisfied). â
+- Detached "=" x775..783 matches. â
+- **No discrepancy.**
+
+**Row 7 (y470..496):**
+- Text: "cosÂ²(b) â 2 cos(b) + 1 + sinÂ²(b) = 2 â 2 cos(b) = 2(1 â cos(b) )" â verbatim match. â
+- CYAN highlight rects x77..131 (cosÂ²(b)) and x250..301 (sinÂ²(b)) match IMG2's cyan highlights in position and coverage; highlight boxes hug the terms the same way in both. â
+- **MINOR (confidence: medium):** IMG1 renders "+ sinÂ²(b)" with the "+" tighter against the cyan box than IMG2's "+ sinÂ²(b)". Cosmetic spacing only.
+
+**Result callout (x574..735, y469..502):**
+- Pale-green fill, GREEN border, NAVY bold "= 2 (1 â cos(ÏÎ´))" â matches IMG2's "=2 (1-cos(ÏÎ´) )" in content, color scheme, border, and box position/scale. â
+- **MINOR (confidence: high):** spacing/parenthesis placement differs slightly ("= 2 (1 â cos(ÏÎ´))" vs "=2 (1-cos(ÏÎ´) )") â mandated professional-typesetting spacing; content identical.
+
+**Rotated ribbon (bbox ~x737..851, y400..511):**
+- Pale-yellow rotated ribbon, red bold "Irrespective of Position" with small quoted "t" beneath â present in both, same axis (~48Â°), same lower-right placement, same colors. â
+- **MINOR (confidence: medium):** In IMG2 the ribbon is slightly larger and its upper tip is clipped by the crop/extends higher; in IMG1 the ribbon is fully contained and marginally smaller. Position and angle match; scale differs slightly.
+- Ribbon bottom tip in IMG1 approaches the blue inner frame but does not visibly cross it â no containment violation (Rule 5).
+
+**Frame containment / alignment / vertical centering:**
+- All four rows, the detached "=" column, callout, and ribbon sit fully inside the blue inner frame in IMG1. â
+- "=" marks vertically centered per row in both. â
+- No clipping, collisions, overflow, or misalignment detected in IMG1. â
+
+## Discrepancy Summary
+
+| # | Item | Severity | Confidence |
+|---|------|----------|------------|
+| 1 | Row 5: original's extra-wide gap around middle "+" compressed to single space | MINOR | High |
+| 2 | Row 7: "+" spacing tight against cyan highlight for sinÂ²(b) | MINOR | Medium |
+| 3 | Callout text micro-spacing "= 2 (1 â cos(ÏÎ´))" vs "=2 (1-cos(ÏÎ´) )" | MINOR | High |
+| 4 | Ribbon marginally smaller / fully contained vs slightly larger, clipped-at-top in original | MINOR | Medium |
+
+No BLOCKER or MAJOR defects. All equation text verbatim, all four rows present, detached "=" column preserved, cyan highlights correct, callout and ribbon present with matching colors/geometry, no missing elements, no frame overflow, mouse artifact correctly omitted.
+
+**FINAL VERDICT: PASS**

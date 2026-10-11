@@ -1,0 +1,35 @@
+# Fidelity Check â Slide 035 "Building Transformer Block"
+
+## Ground-rule settlements (not counted as discrepancies)
+- (a) Red house frame, #E8E8E8 background, yellow "35" badge oval top-right, centered title box â all present in the recreation as house chrome. â Not discrepancies.
+- (b) Image 2 is a real content frame (title + 4-line body), and the recreation carries the same content. Contentlessness rule not triggered.
+- (c) The small gray arrow cursor near "Layer Normalization" in IMG2 (~x:365, y:410) is a video-capture artifact â correctly omitted from the recreation. Not a discrepancy.
+- (d) Black letterbox bar at the bottom of IMG2 is a video-frame artifact â correctly omitted. Not a discrepancy.
+- (e/f) No equations, tables, charts, or diagrams on this slide, so rules (e), (7), (8) are not applicable.
+
+## Element-by-element comparison
+
+| Element | Original (IMG2) | Recreation (IMG1) | Verdict |
+|---|---|---|---|
+| Title text | "Building Transformer Block", bold red (#C00000-ish), one line, horizontally centered, center-y â 0.32 of slide height | Identical text, same color/weight, centered, center-y â 0.33 | MATCH |
+| Title span | ~0.18â0.82 of width | ~0.165â0.825 of width | MATCH (Â±1â2%) |
+| Body line 1 | "Adding", dark blue (#0000C0-ish), bold, left at ~0.125 W, y â 0.565 H | Same text/color/weight, left at ~0.107 W, y â 0.587 H | MATCH (slight offset, see MINOR #1) |
+| Body lines 2â4 | "Residual Connections" / "Layer Normalization" / "Feed Forward Network", indented to ~0.22 W, three lines, inter-line pitch â 0.072 H | Same three lines verbatim, same indent (~0.207 W), inter-line pitch â 0.075 H | MATCH (pitch within ~5%) |
+| Indentation relationship | Lines 2â4 indented right of "Adding" by ~0.09 W | Same relationship, ~0.10 W | MATCH |
+| Slide-number badge | Yellow oval, "35", top-right, inside frame | Yellow oval, "35", same position/scale | MATCH |
+| Frame containment | All text inside red frame | All text comfortably inside red frame; nothing touches or crosses any edge | PASS |
+| Colors | Red title, blue body, gray bg, yellow badge | Same approx hex values | MATCH |
+| Missing elements | None â original has only title + 4 text lines | Nothing omitted | PASS |
+
+## Discrepancies
+
+1. **MINOR** (confidence: medium) â Body text block sits ~0.02 slide-heights lower and ~0.02 W further left than the original ("Adding" at 0.107 W / 0.587 H vs 0.125 W / 0.565 H). Visually negligible; layout relationship preserved.
+2. **MINOR** (confidence: low) â Inter-line pitch of the three list lines is ~0.075 H vs ~0.072 H in the original (~4% larger). Within acceptable tolerance; the block reads identically.
+3. **MINOR** (confidence: low) â Body font renders marginally larger/bolder than the original's apparent weight. No wrapping, clipping, or collision results from this.
+
+No MAJOR or BLOCKER defects. Vertical centering in the badge is correct; title centering is correct; no overflow; no missing elements; no delimiter/table/equation issues (none exist on this slide).
+
+## Visual-quality defects in the recreation
+- None observed. No text overflow, no clipping, no bad wrapping, no collisions, all text legible and fully contained within the house frame.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

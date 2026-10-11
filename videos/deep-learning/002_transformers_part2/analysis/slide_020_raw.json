@@ -1,0 +1,259 @@
+{
+  "slide_title": "Pre-processing of Input Sequence",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Combine Word Encoding and Position Information (for Each Word)",
+      "Input to first Self Attention Layer in Transformer"
+    ],
+    "labels": [
+      "20",
+      "Sequence of words with Length N",
+      "Word Embedding e.g. word2vec",
+      "Position Information",
+      "Final Embedding",
+      "Word 0",
+      "Word 1",
+      "Word 2",
+      "Word 3",
+      "Word 4",
+      "Word 5",
+      "Word N-2",
+      "Word N-1",
+      "Pos 0",
+      "Pos 1",
+      "Pos 2",
+      "Pos 3",
+      "Pos 4",
+      "Pos 5",
+      "Pos N-2",
+      "Pos N-1",
+      "I/P 0",
+      "I/P 1",
+      "I/P 2",
+      "I/P 3",
+      "I/P 4",
+      "I/P 5",
+      "I/P N-2",
+      "I/P N-1",
+      "Positional Encoding",
+      "Input Embedding",
+      "inputs",
+      "Input to Encoder",
+      "+\u03b4 (repeated 6 times in a row beneath the Position Information row: five spread under the Pos 0\u2013Pos 5 region, one under Pos N-1)"
+    ],
+    "equations": [
+      "X_0",
+      "X_1",
+      "X_2",
+      "X_3",
+      "X_4",
+      "X_5",
+      "X_{N-2}",
+      "X_{N-1}",
+      "+\u03b4"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top with slide-number badge at top-right. Below, four full-width horizontal stacked rows (each a dashed-border container spanning ~17%\u201392% of width): Word sequence row, Word Embedding row, Position Information row, then a dark-red full-width banner, then the I/P (Final Embedding) row. A red underbrace spans beneath the I/P row leading down via an arrow to a centered blue caption. A small green-bordered inset schematic sits bottom-left with a green label to its right. Row labels are stacked in a narrow left column (~5%\u201316% width). A solid black strip runs along the very bottom edge (video letterbox artifact).",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, x 30\u201370%, y 2\u20139%",
+        "content": "'Pre-processing of Input Sequence' in bold red text"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, x 89\u201396%, y 3\u201311%",
+        "content": "yellow circle containing the number 20"
+      },
+      {
+        "name": "Left label column",
+        "position": "middle left, x 5\u201316%, y 15\u201362%",
+        "content": "four stacked multi-line row labels: gray italic 'Sequence of words with Length N'; green 'Word Embedding e.g. word2vec'; blue bold 'Position Information'; red bold italic 'Final Embedding'"
+      },
+      {
+        "name": "Word sequence row",
+        "position": "upper center, x 17\u201392%, y 16\u201325%",
+        "content": "dashed red container with 8 red-bordered boxes labeled Word 0 \u2026 Word 5, Word N-2, Word N-1, plus a gray-dot ellipsis between Word 5 and Word N-2"
+      },
+      {
+        "name": "Word embedding row",
+        "position": "upper center, x 17\u201392%, y 27\u201336%",
+        "content": "dashed green container with 8 green boxes, each containing a strip of small colored cells with one pink cell holding a red X_i symbol; green-dot ellipsis in the middle"
+      },
+      {
+        "name": "Position information row",
+        "position": "middle, x 17\u201392%, y 38\u201347%",
+        "content": "dashed blue container with 8 blue boxes labeled Pos 0 \u2026 Pos 5, Pos N-2, Pos N-1, blue-dot ellipsis, and small orange lightning bolts under alternating boxes"
+      },
+      {
+        "name": "Delta annotations",
+        "position": "middle, x 22\u201385%, y 47\u201351%",
+        "content": "six red '+\u03b4' symbols in a horizontal line"
+      },
+      {
+        "name": "Combine banner",
+        "position": "middle, x 17\u201392%, y 54\u201362%",
+        "content": "solid dark-red rectangle with centered bold sentence, word 'Combine' in yellow, remainder in white"
+      },
+      {
+        "name": "Final embedding (I/P) row",
+        "position": "lower center, x 17\u201392%, y 66\u201374%",
+        "content": "dashed red container with 8 red-bordered boxes labeled I/P 0 \u2026 I/P 5, I/P N-2, I/P N-1 (no dots in the gap)"
+      },
+      {
+        "name": "Brace, arrow and caption",
+        "position": "bottom center, x 17\u201375%, y 74\u201388%",
+        "content": "large red curly underbrace beneath the I/P row, a red downward block arrow, and the blue bold-italic caption 'Input to first Self Attention Layer in Transformer'"
+      },
+      {
+        "name": "Inset schematic",
+        "position": "bottom left, x 7\u201321%, y 76\u201395%",
+        "content": "green-bordered box with miniature positional-encoding + input-embedding diagram"
+      },
+      {
+        "name": "Input to Encoder label",
+        "position": "bottom left, x 21\u201330%, y 85\u201392%",
+        "content": "green bold two-line text 'Input to Encoder' outside the inset box"
+      },
+      {
+        "name": "Black strip",
+        "position": "bottom edge, x 0\u2013100%, y 96\u2013100%",
+        "content": "solid black bar, likely a video-player letterbox artifact rather than slide content"
+      }
+    ],
+    "hierarchy": "The dark-red banner and the red title are the highest-contrast, heaviest elements; the four dashed-container diagram rows dominate the canvas area; box labels are small italic text; left-column labels and the blue caption are small supporting text; the yellow '20' badge is a small accent."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Row 1 \u2014 Word sequence container: light-pink rectangle with dashed red border holding 8 white-pink rectangles with solid red borders and italic red labels: Word 0, Word 1, Word 2, Word 3, Word 4, Word 5, Word N-2, Word N-1. Between Word 5 and Word N-2 sits a horizontal ellipsis of 5\u20136 small gray dots.",
+      "colors": [
+        "#C00000",
+        "#FBEAEA",
+        "#8C8C8C"
+      ],
+      "position": "upper center, x 17\u201392%, y 16\u201325%"
+    },
+    {
+      "type": "diagram",
+      "description": "Row 2 \u2014 Word Embedding container: very light green rectangle with dashed green border holding 8 green-outlined boxes. Each box contains a horizontal strip of ~5\u20136 small cells, most light yellow, one pink/magenta cell containing a red italic symbol with subscript: X_0, X_1, X_2, X_3, X_4, X_5, X_{N-2}, X_{N-1}. Between the 6th and 7th box is an ellipsis of 5 small green dots.",
+      "colors": [
+        "#00A550",
+        "#E8F5E9",
+        "#F5E6A3",
+        "#F2A7C3",
+        "#C00000"
+      ],
+      "position": "upper center, x 17\u201392%, y 27\u201336%"
+    },
+    {
+      "type": "diagram",
+      "description": "Row 3 \u2014 Position Information container: light lavender rectangle with dashed blue border holding 8 blue-outlined boxes with italic blue labels: Pos 0, Pos 1, Pos 2, Pos 3, Pos 4, Pos 5, Pos N-2, Pos N-1. Blue-dot ellipsis (5\u20136 dots) between Pos 5 and Pos N-2. Small orange lightning-bolt icons sit beneath alternating boxes (under Pos 1, Pos 3, Pos 5). Directly below the container: six red '+\u03b4' symbols \u2014 five spread under the Pos 0\u2013Pos 5 region and one under Pos N-1 \u2014 indicating addition of position information.",
+      "colors": [
+        "#3333CC",
+        "#CCCCF2",
+        "#FFA500",
+        "#C00000"
+      ],
+      "position": "middle, x 17\u201392%, y 38\u201351%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Full-width dark-red banner rectangle with centered bold text: 'Combine' in yellow followed by 'Word Encoding and Position Information (for Each Word)' in white.",
+      "colors": [
+        "#990000",
+        "#FFD700",
+        "#FFFFFF"
+      ],
+      "position": "middle, x 17\u201392%, y 54\u201362%"
+    },
+    {
+      "type": "diagram",
+      "description": "Row 4 \u2014 Final Embedding (I/P) container: light-pink rectangle with dashed red border holding 8 red-outlined rectangles with italic red labels: I/P 0, I/P 1, I/P 2, I/P 3, I/P 4, I/P 5, I/P N-2, I/P N-1. Empty pink gap (no dots) between I/P 5 and I/P N-2.",
+      "colors": [
+        "#C00000",
+        "#FBEAEA"
+      ],
+      "position": "lower center, x 17\u201392%, y 66\u201374%"
+    },
+    {
+      "type": "arrow",
+      "description": "Four thick red block arrows: (1) from the Word Embedding row straight down into the banner at x\u224864%; (2) from the Position Information row straight down into the banner at x\u224874%; (3) from the banner straight down into the I/P row at x\u224854%; (4) from the underbrace straight down to the blue caption at x\u224854%.",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "vertical connectors between rows as listed"
+    },
+    {
+      "type": "other",
+      "description": "Large red curly brace rotated 90\u00b0 to act as an underbrace, spanning nearly the full width beneath the I/P row, its point facing down toward the arrow and caption, grouping all I/P elements as one unit.",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "bottom center, x 17\u201392%, y 74\u201378%"
+    },
+    {
+      "type": "diagram",
+      "description": "Bottom-left inset schematic inside a green-bordered rectangle: black text 'Positional Encoding' at top-left; a white circle containing a black sine-wave glyph; a small circle node with connector lines; a pink rectangle labeled 'Input Embedding' with a small orange lightning bolt on it; below it gray text 'inputs' with a black upward arrow into the pink box; lines convey the positional-encoding wave being added to the embedding. This is a miniature of the classic Transformer input block.",
+      "colors": [
+        "#008000",
+        "#000000",
+        "#F4B8D0",
+        "#FFA500",
+        "#8C8C8C"
+      ],
+      "position": "bottom left, x 7\u201321%, y 76\u201395%"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: yellow circle with thin outline containing the number 20 in dark text, top-right corner.",
+      "colors": [
+        "#FFEB99",
+        "#4D4D00"
+      ],
+      "position": "top right, x 89\u201396%, y 3\u201311%"
+    }
+  ],
+  "imagery": [
+    "Miniature Transformer-input line-drawing schematic (circle with sine-wave glyph, node circles, pink 'Input Embedding' box with orange lightning bolt, 'inputs' up-arrow) inside a green-bordered box at bottom-left",
+    "Three small orange lightning-bolt icons beneath the Position Information row (under Pos 1, Pos 3, Pos 5) plus one on the inset's Input Embedding box",
+    "Yellow circular slide-number badge '20' at top-right",
+    "No photographs or clip-art images; the slide is entirely vector diagram + text"
+  ],
+  "colors": {
+    "background": "#E9E9E9",
+    "title_text": "#C00000",
+    "body_text": "#404040",
+    "accents": [
+      "#C00000",
+      "#990000",
+      "#00A550",
+      "#3333CC",
+      "#FFD700",
+      "#FFA500",
+      "#F2A7C3",
+      "#F5E6A3",
+      "#FFEB99",
+      "#2222CC"
+    ]
+  },
+  "typography_notes": "Sans-serif family (Arial/Calibri-like) throughout. Title: bold, ~28pt, red. Box labels (Word 0, Pos 0, I/P 0, X_i) are italic, appearing slightly serif-italic (Times-Italic-like), ~14pt. Left row labels: gray italic for 'Sequence of words with Length N'; bold green for 'Word Embedding' with regular 'e.g. word2vec'; bold blue 'Position Information'; bold red italic 'Final Embedding'. Banner text bold ~18pt with two-color treatment (yellow 'Combine', white rest). Bottom caption bold italic blue ~14pt. '+\u03b4' bold red. Slide number plain dark text in a yellow circle. No all-caps styling; multi-line left labels wrap onto 2\u20133 lines.",
+  "animation_state": "Slide appears fully built: all four rows, all arrows, the banner, the brace, the caption and the inset are visible simultaneously; no mid-build state detected.",
+  "recreation_brief": "1. Set a 16:9 slide with light-gray background #E9E9E9. 2. Add centered bold red (#C00000) title 'Pre-processing of Input Sequence' at top (~y 2\u20139%). 3. Add a small yellow (#FFEB99) circle at top-right containing '20' in dark text. 4. Draw four full-width container rectangles (x 17\u201392%): (a) y 16\u201325% fill #FBEAEA with dashed red border; (b) y 27\u201336% fill #E8F5E9 with dashed green #00A550 border; (c) y 38\u201347% fill #CCCCF2 with dashed blue #3333CC border; (d) y 66\u201374% fill #FBEAEA with dashed red border. 5. In container (a) place 8 red-bordered rectangles with italic red text: Word 0, Word 1, Word 2, Word 3, Word 4, Word 5, Word N-2, Word N-1; put 5\u20136 small gray dots between Word 5 and Word N-2. 6. In container (b) place 8 green-outlined boxes; inside each draw a strip of ~6 small light-yellow (#F5E6A3) cells with one pink (#F2A7C3) cell containing red italic X with subscripts 0, 1, 2, 3, 4, 5, N-2, N-1 respectively; add 5 green dots in the middle gap. 7. In container (c) place 8 blue-outlined boxes with italic blue text Pos 0 \u2026 Pos 5, Pos N-2, Pos N-1; add 5\u20136 blue dots in the middle gap; add small orange lightning-bolt shapes under Pos 1, Pos 3 and Pos 5. 8. Below container (c) add six bold red '+\u03b4' text boxes: five under the Pos 0\u2013Pos 5 region, one under Pos N-1. 9. Add a dark-red (#990000) banner rectangle at y 54\u201362% with centered bold text: 'Combine' in yellow (#FFD700) followed by ' Word Encoding and Position Information (for Each Word)' in white. 10. Add three thick red block arrows: embedding row \u2192 banner (x\u224864%), position row \u2192 banner (x\u224874%), banner \u2192 I/P row (x\u224854%). 11. In container (d) place 8 red-bordered rectangles with italic red text: I/P 0, I/P 1, I/P 2, I/P 3, I/P 4, I/P 5, I/P N-2, I/P N-1 (leave the middle gap empty). 12. Insert a red curly-brace shape rotated 90\u00b0 as an underbrace spanning beneath container (d); below its center add a red block arrow and the caption 'Input to first Self Attention Layer in Transformer' in bold italic blue (#2222CC). 13. Add left-column labels aligned to each row: gray italic 3-line 'Sequence of / words with / Length N'; green bold 'Word / Embedding' with regular 'e.g. word2vec'; blue bold 'Position / Information'; red bold italic 'Final / Embedding'. 14. Bottom-left: draw a green-bordered rectangle containing the mini schematic \u2014 black text 'Positional Encoding', a circle with a sine-wave glyph, connector lines and a small node circle, a pink box labeled 'Input Embedding' with an orange lightning bolt, gray 'inputs' text with an upward arrow into the box; outside the box to the right add green bold 2-line text 'Input to / Encoder'. 15. Optionally add a solid black rectangle strip along the very bottom edge to match the source video frame.",
+  "_meta": {
+    "frame": "slide_020.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 20,
+      "image": "slide_020.jpg",
+      "kept_frame": "frame_00885.jpg",
+      "start_sec": 776.0,
+      "end_sec": 884.0,
+      "frame_count": 109,
+      "old_slide": 40
+    },
+    "elapsed_s": 461.7
+  }
+}

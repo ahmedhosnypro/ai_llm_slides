@@ -1,0 +1,109 @@
+[info] context header injected: VIEW: Lecture slide 11 (multi-head self-attention 'Wide' architecture recap, follows slides 8-10 of Part II), Deep Learning DSAI 308 — purpose: verbatim transcription for web-source verification | CAPTURE: 960x540 CSS px, 1.0, app
+[info] mode analysis | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 2096428
+[info] videos/deep-learning/002_transformers_part2/unique_slides/slide_011.jpg: transcript written (validated winner, atomic): videos/deep-learning/002_transformers_part2/slide_011_source/transcripts/slide011_vision_2026-10-11.txt (pid 2096428)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== videos/deep-learning/002_transformers_part2/unique_slides/slide_011.jpg ===
+[winner] images (round 1, attempt 1)
+1. TITLE â exact title text verbatim; also the badge numeral (top-right circle) if present.
+================================================================
+Caption text at bottom center of the slide:
+"Multi Head Self Attention of Word X_2"
+- "Multi Head" is in bold red; "Self Attention of Word" is in bold black; the final token is a bold red "X" with a subscript "2" (i.e., Xâ), also in red.
+Badge numeral: top-right corner has a yellow circle with black text "11" (slide number badge), sitting on the outer white/black slide frame.
+
+2. ALL VERBATIM TEXT
+================================================================
+- Badge: "11"
+- Caption (bottom): "Multi Head Self Attention of Word X_2" (with subscript 2 on the X)
+- On the front (pink, h=1) panel:
+  - White oval label: "Similarity"
+  - White oval label: "Probabilities"
+  - White oval label: "Weighted SUM"
+  - Tan/beige box, two lines: "Dot" / "Product"
+  - Tan/beige vertical box: "Scaling by âd" (written vertically, reading top-to-bottom)
+  - Pink/lavender vertical box: "Soft max" (written vertically)
+  - Blue rectangular box with white text: "Î£" (capital sigma)
+  - Small annotation near arrows entering the Dot Product box: "k_iÂ·q" (appears twice, once near each of two arrow groups; subscript i, dot operator, q) [subscript small, could be k_iÂ·q on both]
+  - Small annotation near the Scaling box input: "k_iÂ·q / âd" (a fraction: numerator k_iÂ·q, denominator âd)
+  - Matrix boxes on the left inputs (three small white boxes with colored strip contents): labeled "W_v^01" (W with subscript v [small/uncertain, could be another letter] and superscript 01); there appear to be three of these, one per input group
+  - Matrix boxes on the right of the Î£ / weighted-sum stage (three small boxes): labeled "W_0^11" [uncertain: could be W_0^{11} or W_v^{11}; the superscript reads 11]
+  - Stacked small boxes at bottom-right inside the front panel (red labels): "W_1^11", "W_1^12", "W_1^13" [subscripts/superscripts small; pattern is W_1^{11/12/13}, could alternatively be W_1^{21} etc.]
+  - Column of small tan boxes on the left of Dot Product labeled top-to-bottom: "K_1", "K_2", "K_3", "K_4"
+  - Column of small boxes right of the â circles labeled top-to-bottom: "V_1", "V_2", "V_3", "V_4"
+  - Input rows on the left (dashed green outline container) with four row labels: "X_1", "X_2", "X_3", "X_4" (each row is a multi-cell strip, pinkish/red cells)
+  - Output rows (dashed green outline container) similarly labeled "X_1", "X_2", "X_3", "X_4" (red X labels on row strips)
+  - Black oval badge on the front panel: "h=1"
+- On the second panel (purple), badge: "h=2"; ovals: "Similarity", "Weighted SUM"; dashed output rows labeled X_1..X_4; right-side boxes labeled [?]: "W_0^21", "W_0^22", "W_0^23" (pattern matches W_0^{2x}); bottom stacked red labels [?]: "W_1^21", "W_1^22", "W_1^23"
+- On the third panel (yellow), badge: "h=3"; ovals: "Similarity", "Weighted SUM"; dashed rows; right-side boxes [?]: "W_0^31", "W_0^32", "W_0^33"
+- On the fourth panel (green), badge: "h=4"; ovals: "Similarity", "Weighted SUM"; dashed rows; right-side boxes [?]: "W_0^41", "W_0^42", "W_0^43"
+- On the fifth/back panel (orange/tan), badge: "h=5"; ovals: "Similarity", "Weighted SUM"; dashed rows; right-side boxes [?]
+- Along the large red curved arrow (italic dark-blue text): "1st Heads" [uncertain: could read "h Heads" or "1st Heads"; glyphs small and italic]
+- Far right/bottom-right cluster of small red-labeled boxes stacked vertically: "W_1^21", "W_1^22", "W_1^23", "W_1^31", and possibly "W_1^32"/"W_1^33" [partially obscured/small; pattern is W_1^{2x}, W_1^{3x} per head]
+- Bottom strip: a long dashed green-outline container holding a row of small box tokens: "X_1", "X_2", "X_3", "X_4", then a small white box labeled [?] "W^v" (or "W_1^v") beneath/next to the X_2 token, then further token boxes trailing right (some blank/small, ends unreadable [?])
+- No axis labels, no table, no footnote text visible.
+
+3. EQUATIONS
+================================================================
+- "k_iÂ·q" â appears twice near arrows feeding the Dot Product box (k subscript i, middle dot, q).
+- "k_iÂ·q / âd" â fraction annotation next to "Scaling by âd" box: numerator k_iÂ·q, horizontal fraction bar, denominator âd (square root of d).
+- "Î£" â summation symbol in the blue box (weighted sum stage).
+- "âd" â also appears in the vertical "Scaling by âd" box label.
+- Index tokens: X_1, X_2, X_3, X_4; K_1, K_2, K_3, K_4; V_1, V_2, V_3, V_4; h=1 â¦ h=5.
+- Weight-matrix labels: W_v^01 (Ã3, left inputs) [subscript possibly not "v" â small]; W_0^11 (Ã3, right of Î£) [uncertain]; W_1^11, W_1^12, W_1^13; W_1^21, W_1^22, W_1^23; W_1^31 â¦ ; W_0^21â¦W_0^23; W_0^31â¦W_0^33; W_0^41â¦W_0^43 [superscripts/subscripts small, patterns as noted].
+No other equations present.
+
+4. DIAGRAM TOPOLOGY
+================================================================
+Overall: a "cascaded deck" of five overlapping rounded panels (like stacked sheets fanned toward the upper right), each panel = one attention head. Front panel fully detailed (h=1); panels behind successively simplified. Flow within a panel is left-to-right. The caption word X_2 is illustrated.
+
+Panel stack (front to back), each a large rounded rectangle:
+1. Pink/salmon panel â badge "h=1" (black oval, white text), fully detailed.
+2. Purple/lavender panel â badge "h=2".
+3. Yellow panel â badge "h=3".
+4. Green panel â badge "h=4".
+5. Orange/tan panel â badge "h=5", mostly hidden at back.
+
+FRONT PANEL (h=1) contents, left to right:
+- Left: dashed green-outline container with 4 horizontal token strips, rows labeled X_1, X_2, X_3, X_4 (each strip = small colored cells, red/pink). Small green arrow(s) from this container up/right.
+- Three small white matrix boxes labeled W_v^01, each containing a short colored strip; arrows from the X rows through/into these; small multi-cell output strips to their right feeding a vertical column of small tan boxes labeled K_1..K_4.
+- "Dot Product" box (tan, black text): receives arrows labeled "k_iÂ·q" from the K column; inside/around it, blue filled dots connected by thin red lines to other blue dots (a bipartite all-to-all dot-product mesh, q rows to k rows). A dark blue dot near the lower right of the box is enlarged/highlighted (the qÂ·k pair for X_2 emphasized).
+- "Scaling by âd" tan vertical box; input arrow annotated "k_iÂ·q / âd".
+- "Soft max" lavender/pink vertical box; arrow from Scaling box into it.
+- Output of Soft max: a horizontal white strip of small cells under a white oval "Probabilities"; from this strip, red arrows fan out downward/right to four â (circled-times, red circle with red Ã) multiply nodes arranged vertically.
+- Right of the multipliers: vertical column of small boxes labeled V_1, V_2, V_3, V_4, each with a small colored strip; arrows from V boxes into the â nodes (values multiplied by probabilities).
+- Above the â column: blue box "Î£"; red arrows from all four â nodes up into Î£.
+- Right of Î£: white oval "Weighted SUM"; output strip of small cells; three small white boxes labeled W_0^11 with colored strips; arrows into a dashed green-outline output container with 4 token strips labeled X_1..X_4 (the head's updated representations).
+- Bottom-right inside the panel: a vertical stack of three small boxes labeled W_1^11, W_1^12, W_1^13 (red text).
+- Black oval badge "h=1" at panel's top-right area.
+- White oval "Similarity" sits above the Dot Product/Scaling region.
+
+BACK PANELS (h=2..h=5): each shows (partially visible, left edges occluded by the panel in front): a "Similarity" oval, a "Weighted SUM" oval, dashed-outline X token strips (X_1..X_4 labels visible on h=2, h=3; smaller/occluded on h=4, h=5), a blue Î£-like box on h=2 [?], right-side small boxes labeled W_0^2x / W_0^3x / W_0^4x / [?], and each has its own black oval badge (h=2 purple panel, h=3 yellow, h=4 green, h=5 orange). Arrows on back panels are mostly occluded; visible red vertical arrow segments connect stages within each.
+
+LARGE RED CURVED ARROW: thick dark-red arrow starting near the bottom-right of the front (h=1) panel's output area, sweeping right and up in a big arc across the right side, ending with an arrowhead at the top-right near the h=5 panel's X outputs / dashed red rectangle. Italic blue label along the arc: "1st Heads" [or "h Heads", uncertain]. It conveys that each head's output feeds the stacked/next stage (residual/concat direction) â i.e., heads h=1..h=5 processed in sequence.
+
+BOTTOM STRIP: long dashed green-outline container with a row of token boxes "X_1 | X_2 | X_3 | X_4 | â¦" (further small boxes trailing right, partially blurred). Beneath the X_2 token: a small white box labeled [?] "W^v" with a small colored strip (the value-projection for the focused word), and a tiny blurred label next to it [?]. Overlapping this area are four large translucent colored ellipses/circles (blue, purple/violet, yellow, green) fanned around X_2 â visually "zooming"/grouping the word that self-attention focuses on (matching the caption "of Word X_2").
+
+TOP OVERLAY: a large translucent yellow parallelogram sweeps diagonally from lower-left (near the front panel's Probabilities/Weighted-SUM area) up to the upper right, covering the top portions of panels h=2..h=5; at its far end, near the top, is a dashed red rectangle enclosing a small dashed X-token strip (top output of the last head), plus a small orange/tan box strip [label unreadable, ?]. This looks like a presenter's highlight/beam indicating the flow being traced.
+
+RESEMBLANCE TO PUBLISHED FIGURES: This is NOT a copy of Vaswani et al. 2017 Figure 1/2 (no NÃ encoder/decoder blocks, no multi-head split-and-concatenate side-by-side heads, no positional encoding, no Feed-Forward or Add&Norm sub-boxes). It is an original, elaborated "cascaded heads" illustration in the style of Jay Alammar's "The Illustrated Transformer" (annotated matrices W, colored token strips, â and Î£ ops, "Soft max"/"Weighted SUM" stage labels reminiscent of Alammar's self-attention diagrams), extended to show five heads as stacked translucent panels (h=1..h=5) processed sequentially via the big red arrow. Matches with Alammar-style: per-token colored embeddings, labeled weight matrices, Dot Product â Scale (âd) â Softmax â multiply by V â Sum pipeline. Differs: heads drawn as sequential overlapping layers rather than parallel; explicit K/V per-row boxes; "Similarity"/"Probabilities" ovals; the yellow highlight beam.
+
+5. NUMBERS/DATA
+================================================================
+- Slide/badge number: 11
+- Head indices: h=1, h=2, h=3, h=4, h=5 (five heads)
+- Token/row indices: 1, 2, 3, 4 (X_1..X_4; K_1..K_4; V_1..V_4)
+- Scalar in scaling: d under a square root (âd); no numeric value of d given
+- Weight superscripts: 01, 11, 12, 13, 21, 22, 23, 31, â¦ (two-digit layer/head codes; exact reading of some is uncertain as noted)
+- No tables, percentages, or dataset sizes.
+
+6. BUILD STATE / ARTIFACTS
+================================================================
+- Translucent yellow parallelogram "beam" overlay across the top of panels h=2..h=5 â presenter highlight, mid-explanation state; at its upper end a dashed red rectangle encloses the final head's top X-token strip.
+- Four large translucent colored ellipses (blue, purple, yellow, green) overlapping at bottom center around the X_2 token â spotlight/zoom grouping, also a presentational overlay.
+- A magnifying-glass-style cursor/pointer artifact (small circle with handle, grey/white) over the X_2 token in the bottom strip.
+- One blue dot inside/near the Dot Product box is enlarged (highlighted qÂ·k pair for X_2), and the corresponding output path (row 2) appears emphasized â consistent with "attention of word X_2".
+- Red curved arrow partially overlaps panels h=2..h=5 on the right; the front panel fully occludes the left portions of all back panels (back panels are cropped by design of the stack).
+- Some small text (individual W-matrix superscripts, tiny token cells, labels in the yellow-highlighted zone) is blurred/low-contrast in the video still; those are marked [?] above.
+- No visible progress bar, watermark, or video player UI beyond the black outer letterbox strips at top/bottom of the frame.
+

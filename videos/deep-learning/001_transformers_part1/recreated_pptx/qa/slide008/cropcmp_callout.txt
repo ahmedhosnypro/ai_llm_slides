@@ -1,0 +1,34 @@
+## Comparison â Slide 008 dense-region crop A (light-blue callout box, two bold blue lines, line 1 underlined)
+
+**IMG1** = PPTX recreation render crop Â· **IMG2** = original lecture frame crop (upscaled)
+
+### Element-by-element
+
+| Element | IMG1 (recreation) | IMG2 (original) | Assessment |
+|---|---|---|---|
+| Line 1 text | `[2] Sequential Processing` | `[2] Sequential Processing` | Verbatim match, incl. `[2]` bracket |
+| Line 1 underline | Full-width underline under entire line | Full-width underline | Match |
+| Line 2 text | `Can NOT do processing in Parallel` | `Can NOT do processing in Parallel` | Verbatim match, incl. capitalized `NOT` |
+| Callout box fill | Pale cyan (~#D9F6F6) | Pale cyan (~#D8F5F5) | Match |
+| Box border | Thin medium-blue stroke, square corners | Thin medium-blue stroke, square corners | Match |
+| Text color | Dark navy blue (~#00008B) | Dark navy blue | Match |
+| Layout | Line 1 centered, line 2 wider starting further left; both lines inside box with clearance top/bottom | Same arrangement, same two-line stack, same relative indents | Match |
+| Line spacing | Two lines, tight stack, gap proportional to original | Same | Match |
+| Vertical centering | Text block sits centered in box, no top-hugging, no clipping at any border | Same | Match |
+| Frame containment | Box and all text fully inside crop/house frame; red house frame line at left is chrome | n/a | OK |
+
+### Discrepancies
+
+1. **MINOR â Font slant (italic vs upright).** IMG2's two lines are bold *italic* (visible forward slant on "Sequential Processing" and "Parallel"); IMG1 renders bold *upright*. Text remains verbatim, same weight, same relative size. Confidence: 0.65 (video compression in the upscale adds some uncertainty, but the slant is consistent across both lines).
+2. **MINOR â Slight text-to-box proportion shift.** IMG1's line 2 spans a marginally smaller fraction of the box width than IMG2's (a few percent). No wrap, no overflow, no alignment change. Confidence: 0.5.
+
+### Correctly excluded (not discrepancies)
+- Small dark artifact at the right edge of IMG2 (mid-height) = video-capture/cursor artifact â correctly omitted from the recreation (ground rule c).
+- Red outer frame line (left edge) and #E8E8E8 gray band (right edge) in IMG1 = intentional house chrome (ground rule a).
+
+### Visual-quality defects in the recreation
+- None. No clipping, no overflow, no collision, no misalignment; underline sits at the correct baseline offset; both lines fully contained within the callout box border.
+
+**Certificate:** single-read, default route (images), glm leg DEFERRED/BLOCKED.
+
+FINAL VERDICT: **PASS**

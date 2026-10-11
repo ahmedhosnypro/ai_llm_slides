@@ -1,0 +1,52 @@
+1. TITLE
+Title: Normalization
+Badge numeral: 39 (yellow circle, top-right)
+
+2. ALL VERBATIM TEXT
+- Normalization (title, red, top center)
+- 39 (badge)
+- Italic quote line (blue, boxed in blue): "The behavior of machine learning algorithms  changes when the input distribution changes." (note: appears to be a double space between "algorithms" and "changes")
+- Right-aligned below the quote (red bold): {Covariate shift }
+- Flow box 1 (two lines): "layer weights changes" (red) / "during training steps" (black bold)
+- Flow box 2 (two lines): "Outputs of Activation functions" (red) / "of each layer change" (red)
+- Flow box 3 (two lines): "Inputs to the next layer," (black bold) / "(With different Input distribution)" (red)
+- "Conclusion:" (red bold)
+- "Input distribution of each layer changes with each step ." (dark blue bold; note space before the period)
+- "The basic idea behind Normalization is to:" (red bold)
+- "Limit covariate shift by normalizing the activations of each layer" (dark blue bold; "covariate shift" is underlined)
+- "Normalization:" (red bold) followed by "Transforming the inputs to be" (black) "Zero mean and unit variance" (dark blue bold) "." (black)
+- Blue-bordered bottom panel heading: "Normalization allows each layer to:" (red bold)
+- Bullet 1: "learn on a more stable distribution of inputs," (black; "learn on a more stable distribution of inputs" underlined)
+- Bullet 2: "Accelerate the training of the network (don't stick with very small learning rates)." ("Accelerate the training" underlined, black; rest black)
+
+3. EQUATIONS
+None. No mathematical formulas, token sequences (X_0..X_N), or equations appear on this slide. The only quasi-technical notation is the inline phrase "{Covariate shift }" which is text, not an equation.
+
+4. DIAGRAM TOPOLOGY
+Layout: vertical stack of containers, white slide background; thin red/dark outer border around the whole slide content.
+
+- Outer thin border: dark red/maroon rectangle framing the entire slide content area (with a small black strip at the very bottom edge of the frame, likely a video letterbox artifact).
+- Container A (top): light gray/beige band containing the title "Normalization" and the yellow "39" badge at top right.
+- Container B: white rectangle with thin blue border, spanning full width, containing the italic quote and "{Covariate shift }" beneath it (right-aligned, red).
+- Container C (main body): large white rectangle with thin blue border containing:
+  - A left-to-right horizontal 3-node flow diagram (yellow/pale-yellow filled boxes, thin orange/tan borders), placed near the top:
+    - Node 1 (leftmost): fill pale yellow; label "layer weights changes / during training steps".
+    - Node 2 (center): fill pale yellow; label "Outputs of Activation functions / of each layer change".
+    - Node 3 (rightmost): fill pale yellow; label "Inputs to the next layer, / (With different Input distribution)".
+  - Arrow 1: red solid arrow, source = right edge of Node 1, target = left edge of Node 2, direction left to right.
+  - Arrow 2: red solid arrow, source = right edge of Node 2, target = left edge of Node 3, direction left to right.
+  - Data flow: left-to-right across the three boxes (causal chain: weight updates -> activation output drift -> next-layer input distribution shift).
+  - Below the flow: text blocks "Conclusion:", "Input distribution of each layer changes with each step .", "The basic idea behind Normalization is to:", "Limit covariate shift by normalizing the activations of each layer", "Normalization: Transforming the inputs to be Zero mean and unit variance."
+- Container D (bottom): light cyan/pale blue filled rectangle with a thicker blue border, containing the bulleted list under heading "Normalization allows each layer to:".
+
+Resemblance to published figures: This is NOT a reproduction of any well-known published figure. It does not match Vaswani et al. 2017 Figure 1/Figure 2, Peter Bloem's self-attention diagram, or any Alammar illustration. It is a simple original 3-box causal-chain schematic illustrating covariate shift (concept similar to the motivation discussion in the Batch Normalization paper, Ioffe & Szegedy 2015, but not copied as a figure).
+
+5. NUMBERS/DATA
+- 39 (slide number badge)
+- No other numeric values, tables, percentages, or sizes appear.
+
+6. BUILD STATE / ARTIFACTS
+- The slide appears fully built (all elements present); no mid-reveal animation state visible.
+- A black horizontal strip runs along the very bottom edge of the frame (video letterboxing/rendering artifact, not slide content).
+- No visible mouse cursor, progress bar, watermark, or other video overlays.
+- Minor typographic artifacts in the source slide itself: a double space in "algorithms  changes", a space before the period in "with each step .", and a space before the closing brace in "{Covariate shift }".

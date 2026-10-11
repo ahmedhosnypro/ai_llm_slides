@@ -1,0 +1,343 @@
+{
+  "slide_title": "Self Attention Mechanism (Adding Scaling)",
+  "subtitle_or_header": "(Self Attention of word X\u2082 w.r.t All words in Sentence ( X\u2081, X\u2082, X\u2083, X\u2084 )",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "37",
+      "Similarity",
+      "Dot Product",
+      "K.q",
+      "Scaling by \u221ad",
+      "Probabilities",
+      "Soft max",
+      "Weighted SUM",
+      "\u03a3",
+      "K\u2084",
+      "K\u2083",
+      "K\u2082",
+      "K\u2081",
+      "V\u2084",
+      "V\u2083",
+      "V\u2082",
+      "V\u2081",
+      "q\u2082",
+      "Y\u2082",
+      "X\u2081 (appears 3\u00d7: left group row, right group row, sentence strip)",
+      "X\u2082 (appears 3\u00d7; highlighted pink in sentence strip)",
+      "X\u2083 (appears 3\u00d7)",
+      "X\u2084 (appears 3\u00d7)",
+      "W_k^(1) (\u00d74, one per left-group row)",
+      "W_v^(1) (\u00d74, one per right-group row)",
+      "W_q^(1)",
+      "W",
+      "=",
+      "1\u00d7d [?] (small red label, raw glyphs read approximately '1'd')",
+      "d\u00d7d [?] (small red label, raw glyphs read approximately 'd*1'd')",
+      "d: Embedding Length"
+    ],
+    "equations": [
+      "K.q",
+      "K.q / \u221ad (rendered as a stacked fraction: numerator 'K.q', horizontal line, denominator '\u221ad')",
+      "1'd  W  =  d*1'd [?]  (bottom-right dimension annotation; best interpretation: [1\u00d7d] \u00b7 W = [d\u00d7d], with d = Embedding Length)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Two-line bold centered title at top (line 2 is a parenthetical subtitle) with a yellow circular slide-number badge '37' at top-right. Below, one large peach rounded-rectangle canvas spanning ~x 4\u201396%, y 20\u201399% (\u224885% of slide area) contains a single wide left-to-right self-attention flowchart: left column (X blocks \u2192 W_k boxes \u2192 K blocks) feeding a tan 'Dot Product' box, then a tall yellow 'Scaling by \u221ad' column, then a tall purple 'Soft max' column, then four red \u2297 multiply nodes that combine with V blocks coming from a mirrored right column (X \u2192 W_v \u2192 V), all summing into a blue \u03a3 box whose result (green arrow) points to a 'Y\u2082' output block at top-center. A green dashed 'input sentence' strip (X\u2081 X\u2082 X\u2083 X\u2084, X\u2082 highlighted pink) runs along the bottom-center and feeds a W_q box \u2192 q\u2082 block \u2192 Dot Product box. A small mint dimension-annotation box ([1\u00d7d] W = [d\u00d7d], 'd: Embedding Length') sits at bottom-right.",
+    "regions": [
+      {
+        "name": "Title block",
+        "position": "top center, ~x 15\u201385%, y 8\u201320%",
+        "content": "Line 1: 'Self Attention Mechanism (Adding Scaling)' with red parenthetical; Line 2: subtitle with red X\u2082 and red X\u2081, X\u2082, X\u2083, X\u2084; a mouse cursor artifact floats at ~x 70%, y 17%"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, ~x 90\u201395%, y 10\u201317%",
+        "content": "Yellow circle with dark outline containing black bold '37'"
+      },
+      {
+        "name": "Diagram canvas",
+        "position": "full width, ~x 4\u201396%, y 20\u201399%",
+        "content": "Peach rounded rectangle containing the entire attention flowchart"
+      },
+      {
+        "name": "Y\u2082 output block",
+        "position": "top-center of canvas, ~x 57\u201364%, y 22\u201327%",
+        "content": "Striped vector block labeled Y\u2082 (red) with green dashed border; thick green arrow points up-right into it from the \u03a3 region"
+      },
+      {
+        "name": "Stage callout pills row",
+        "position": "~y 30\u201334%, at x 28\u201336% (Similarity), x 45\u201353% (Probabilities), x 62\u201372% (Weighted SUM)",
+        "content": "Three yellow pill labels with blue text, one above each pipeline stage"
+      },
+      {
+        "name": "Left input group",
+        "position": "left, ~x 6\u201327%, y 41\u201375%",
+        "content": "Green dashed container: 4 rows of X blocks \u2192 green W_k^(1) boxes \u2192 striped K\u2084/K\u2083/K\u2082/K\u2081 blocks"
+      },
+      {
+        "name": "Dot Product box",
+        "position": "center-left, ~x 26\u201336%, y 36\u201374%",
+        "content": "Tan box, maroon 'Dot Product' header, 4 blue dots with red arrows inside; red 'K.q' label at its top-right"
+      },
+      {
+        "name": "Scaling column",
+        "position": "center, ~x 38\u201344%, y 35\u201376%",
+        "content": "Yellow vertical box 'Scaling by \u221ad' with red fraction K.q/\u221ad above"
+      },
+      {
+        "name": "Softmax column",
+        "position": "center, ~x 47\u201351%, y 36\u201375%",
+        "content": "Purple vertical box 'Soft max'"
+      },
+      {
+        "name": "Multiply nodes and \u03a3",
+        "position": "center-right, \u2297 nodes ~x 55\u201357% y 44\u201370%; \u03a3 box ~x 54\u201368% y 36\u201341%",
+        "content": "Four red \u2297 symbols feeding the blue \u03a3 summation box"
+      },
+      {
+        "name": "Right input group",
+        "position": "right, ~x 66\u201393%, y 41\u201375%",
+        "content": "Green dashed container: 4 rows of X blocks \u2192 green W_v^(1) boxes \u2192 striped V\u2084/V\u2083/V\u2082/V\u2081 blocks; arrows point leftward"
+      },
+      {
+        "name": "Input sentence strip",
+        "position": "bottom center, ~x 18\u201351%, y 87\u201396%",
+        "content": "Green dashed container with X\u2081 X\u2082 X\u2083 X\u2084 blocks (X\u2082 pink/highlighted), thick red arrow pointing at X\u2082; W_q^(1) box and q\u2082 block just above it at ~x 28\u201333%, y 74\u201386%"
+      },
+      {
+        "name": "Dimension annotation box",
+        "position": "bottom right, ~x 76\u201393%, y 86\u201399%",
+        "content": "Mint rounded rect: striped block '1\u00d7d' [?] \u2192 W \u2192 '=' \u2192 striped block 'd\u00d7d' [?]; blue caption 'd: Embedding Length'"
+      }
+    ],
+    "hierarchy": "The peach diagram canvas dominates (~85% of slide area). Visual weight order: (1) bold black+red two-line title; (2) large saturated stage blocks \u2014 tan Dot Product, yellow Scaling, purple Soft max, blue \u03a3; (3) bright red arrows and red vector labels (K, V, q, Y, X) that steer the eye left-to-right; (4) medium-green W matrix boxes and striped vector blocks; (5) yellow pill callouts (Similarity, Probabilities, Weighted SUM) naming the stages; (6) small mint annotation box bottom-right and small yellow '37' badge."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Diagram canvas: very large rounded rectangle, peach fill, no/subtle border, holding every diagram element.",
+      "colors": [
+        "#FCE3D0"
+      ],
+      "position": "~x 4\u201396%, y 20\u201399%"
+    },
+    {
+      "type": "diagram",
+      "description": "Left input group: light-green rounded rectangle with dashed green border containing 4 stacked rows. Each row, left to right: small 4-cell embedding block (cells colored yellow #FFFF00 / pink #FF66CC [?] / white #FFFFFF / green #92D050) with red label X\u2081, X\u2082, X\u2083, X\u2084 (top-to-bottom; subscripts very small, possibly ordered X\u2084\u2013X\u2081 to match outputs) [?] \u2192 red arrow \u2192 medium-green rectangle 'W_k^(1)' (black bold) \u2192 red arrow \u2192 striped yellow/gray block with red label K\u2084, K\u2083, K\u2082, K\u2081 (top-to-bottom). A thin dashed green curve links this group's bottom to the input-sentence strip.",
+      "colors": [
+        "#EAF5E4",
+        "#00B050",
+        "#92D050",
+        "#FF0000",
+        "#FFFF00",
+        "#FF66CC",
+        "#FFFFFF",
+        "#BFBFBF"
+      ],
+      "position": "~x 6\u201327%, y 41\u201375%"
+    },
+    {
+      "type": "diagram",
+      "description": "Right input group (mirror of left): 4 rows of 4-cell embedding blocks labeled X\u2081\u2013X\u2084 [?] (same cell colors as left group) \u2192 green 'W_v^(1)' boxes \u2192 striped blocks labeled V\u2084, V\u2083, V\u2082, V\u2081 (top-to-bottom); arrows point LEFTWARD (flow X \u2192 W_v \u2192 V \u2192 multiply nodes).",
+      "colors": [
+        "#EAF5E4",
+        "#00B050",
+        "#92D050",
+        "#FF0000",
+        "#FFFF00",
+        "#FF66CC",
+        "#FFFFFF",
+        "#BFBFBF"
+      ],
+      "position": "~x 66\u201393%, y 41\u201375%"
+    },
+    {
+      "type": "diagram",
+      "description": "Dot Product box: tan/brown rectangle with header 'Dot Product' in dark maroon bold (wraps as 'Dot' / 'Product') at top; inside, four small dark-blue filled circles arranged on a diagonal from bottom-left to top-right, connected by thin red arrows \u2014 a stylized depiction of the four dot products q\u2082\u00b7K\u2081\u2026q\u2082\u00b7K\u2084; red arrows enter from K\u2081\u2013K\u2084 (left edge, 4 arrows) and from q\u2082 (bottom edge, 1 arrow).",
+      "colors": [
+        "#D2A870",
+        "#7F0000",
+        "#0000CC",
+        "#FF0000"
+      ],
+      "position": "~x 26\u201336%, y 36\u201374%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Yellow pill (rounded rectangle) with blue bold text 'Similarity', sitting above the Dot Product box.",
+      "colors": [
+        "#FFEE58",
+        "#0033CC"
+      ],
+      "position": "~x 28\u201336%, y 30\u201334%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Tall yellow rectangle with vertical (rotated 90\u00b0) orange-red bold text 'Scaling by \u221ad'; directly above it, a red stacked fraction 'K.q / \u221ad'.",
+      "colors": [
+        "#FFFF00",
+        "#FF8000",
+        "#FF0000"
+      ],
+      "position": "~x 38\u201344%, y 35\u201376%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Tall light-purple rectangle with vertical (rotated 90\u00b0) dark bold text 'Soft max' (with space).",
+      "colors": [
+        "#CC99FF",
+        "#464646"
+      ],
+      "position": "~x 47\u201351%, y 36\u201375%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Yellow pill with blue bold text 'Probabilities' above the Softmax box.",
+      "colors": [
+        "#FFEE58",
+        "#0033CC"
+      ],
+      "position": "~x 45\u201353%, y 30\u201334%"
+    },
+    {
+      "type": "icon",
+      "description": "Four red circled-X multiplication nodes (\u2297) stacked vertically; each receives a red arrow from the Softmax box (left) and a red arrow from its V block (right), and emits a red arrow upward into the \u03a3 box.",
+      "colors": [
+        "#FF0000"
+      ],
+      "position": "~x 55\u201357%, y 44\u201370%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Summation box: light-blue rectangle with one large dark-blue bold '\u03a3' centered; yellow pill with blue bold 'Weighted SUM' above it.",
+      "colors": [
+        "#BDD7EE",
+        "#1F3864",
+        "#FFEE58",
+        "#0033CC"
+      ],
+      "position": "\u03a3 ~x 54\u201368%, y 36\u201341%; pill ~x 62\u201372%, y 30\u201334%"
+    },
+    {
+      "type": "arrow",
+      "description": "Thick green block arrow pointing up-right from just below the \u03a3 box to the Y\u2082 output block.",
+      "colors": [
+        "#00B050"
+      ],
+      "position": "~x 57\u201360%, y 26\u201332%"
+    },
+    {
+      "type": "diagram",
+      "description": "Output block: small striped vector block labeled 'Y\u2082' (red) surrounded by a green dashed border \u2014 the final attention output for word X\u2082.",
+      "colors": [
+        "#00B050",
+        "#FF0000",
+        "#FFFF00",
+        "#BFBFBF"
+      ],
+      "position": "~x 57\u201364%, y 22\u201327%"
+    },
+    {
+      "type": "diagram",
+      "description": "Input sentence strip: light-green dashed rounded rectangle containing four embedding blocks labeled X\u2081, X\u2082, X\u2083, X\u2084 (red labels, left to right); X\u2082's cells are filled pink/magenta #FF66CC (highlighted). A thick red block-arrow points up-right at X\u2082 from below-left. From X\u2082 a red arrow goes up to a white box with red border containing red 'W_q^(1)', then up to a striped block labeled 'q\u2082' (red), then into the Dot Product box's bottom edge. Thin dashed connectors run from the strip's ends toward the left and right X groups.",
+      "colors": [
+        "#EAF5E4",
+        "#00B050",
+        "#FF66CC",
+        "#FF0000",
+        "#FFFFFF"
+      ],
+      "position": "~x 18\u201351%, y 87\u201396% (W_q/q\u2082 at ~x 28\u201333%, y 74\u201386%)"
+    },
+    {
+      "type": "other",
+      "description": "Dimension annotation box: mint-green rounded rectangle containing, left to right: small striped block with dark-red #943634 label '1\u00d7d' [?] \u2192 short arrow \u2192 yellow square with black bold 'W' \u2192 '=' \u2192 striped block with dark-red #943634 label 'd\u00d7d' [?] (raw glyphs \u2248 '1'd' and 'd*1'd'); below, blue text 'd: Embedding Length'.",
+      "colors": [
+        "#D9F2D9",
+        "#FFFF00",
+        "#943634",
+        "#0070C0"
+      ],
+      "position": "~x 76\u201393%, y 86\u201399%"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: yellow circle with dark outline and black bold '37'.",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top right, ~x 90\u201395%, y 10\u201317%"
+    },
+    {
+      "type": "arrow",
+      "description": "Connector system of thin red arrows with exact counts: left-to-right flow \u2014 8 arrows inside the left group (4 rows \u00d7 X\u2192W_k\u2192K) plus 4 arrows from K\u2081\u2013K\u2084 into the Dot Product box; right-to-left flow \u2014 8 arrows inside the right group (4 rows \u00d7 X\u2192W_v\u2192V) plus 4 arrows from V\u2081\u2013V\u2084 into the \u2297 nodes; upward flow \u2014 4 arrows Softmax\u2192\u2297, 4 arrows \u2297\u2192\u03a3, and 3 arrows on the q\u2082 path (X\u2082\u2192W_q^(1)\u2192q\u2082\u2192Dot Product).",
+      "colors": [
+        "#FF0000"
+      ],
+      "position": "throughout the canvas"
+    }
+  ],
+  "imagery": [
+    "No photographs or clip-art illustrations \u2014 the slide is built entirely from simple vector shapes (colored rectangles, striped vector blocks, pills, circles, block arrows); the two elements typed 'icon' in visual_elements (the \u2297 multiply nodes and the '37' badge) are plain geometric shapes, not icon imagery.",
+    "A black mouse-pointer cursor (video-capture artifact) floats over the subtitle line at ~x 70%, y 17%."
+  ],
+  "colors": {
+    "background": "#FFFFFF white slide with a thin dark-red (#9E1B1B) rectangular frame inset at the slide edge; diagram sits on a peach (#FCE3D0) rounded rectangle",
+    "title_text": "#000000 black, with red (#FF0000) emphasis spans",
+    "body_text": "#000000 black (W boxes, \u03a3 area text), #FF0000 red (all vector labels K/V/q/Y/X and arrows), #0033CC blue (pill callouts), #0070C0 blue ('d: Embedding Length'), #7F0000 maroon ('Dot Product'), #943634 dark red ('1\u00d7d'/'d\u00d7d' labels in the annotation box)",
+    "accents": [
+      "#FF0000",
+      "#FFFF00",
+      "#FFEE58",
+      "#92D050",
+      "#00B050",
+      "#D2A870",
+      "#CC99FF",
+      "#BDD7EE",
+      "#FF66CC",
+      "#0000CC",
+      "#FF8000"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Calibri-like). Title and subtitle are bold, ~24\u201328pt, two centered lines, with red used inline for emphasis; the subtitle keeps an unbalanced-parentheses typo verbatim. Diagram labels are bold ~10\u201314pt with true subscripts (X\u2081, K\u2084, V\u2083, q\u2082, Y\u2082) and a superscript '(1)' on the W matrices. 'Scaling by \u221ad' and 'Soft max' are rotated 90\u00b0 (vertical reading). Yellow pill callouts use blue bold text. Mixed casing preserved: 'Weighted SUM' (SUM all-caps), 'Soft max' (with space), 'Dot Product'. No serif or italic text anywhere.",
+  "animation_state": "Slide appears fully built \u2014 every diagram element, arrow, and label is present simultaneously; there are no bullets and no partial-build state. A live mouse cursor is visible over the subtitle (video artifact).",
+  "recreation_brief": "1. Slide setup: 16:9, white #FFFFFF background; draw a thin (~2pt) dark-red #9E1B1B rectangle outline inset ~0.15in from all four edges as the slide frame.\n2. Title line 1 \u2014 centered text box at ~y 8\u201314%, Arial bold ~26pt: 'Self Attention Mechanism ' in black #000000 followed by '(Adding Scaling)' in red #FF0000.\n3. Title line 2 (subtitle) \u2014 centered text box at ~y 14\u201320%, Arial bold ~24pt: '(Self Attention of word X\u2082 w.r.t All words in Sentence ( X\u2081, X\u2082, X\u2083, X\u2084 )' with 'X\u2082' and 'X\u2081, X\u2082, X\u2083, X\u2084' in red #FF0000; use true subscripts and keep the unbalanced parentheses exactly as written.\n4. Slide-number badge \u2014 yellow #FFFF00 circle (~0.45in diameter, dark outline) at ~x 90\u201395%, y 10\u201317%, with black bold '37' centered.\n5. Diagram canvas \u2014 rounded rectangle, fill #FCE3D0, no border, spanning ~x 4\u201396%, y 20\u201399%.\n6. Left input group container \u2014 rounded rectangle, fill #EAF5E4, dashed #00B050 border, ~x 6\u201327%, y 41\u201375%.\n7. Left group rows \u2014 inside the container place 4 identical rows top-to-bottom; each row left-to-right: (a) small 4-cell embedding block with cells #FFFF00 / #FF66CC [?] / #FFFFFF / #92D050 and red bold label X\u2081, X\u2082, X\u2083, X\u2084 top-to-bottom [? \u2014 may be X\u2084\u2013X\u2081 to align with K outputs]; (b) red #FF0000 arrow; (c) medium-green #92D050 rectangle with black bold 'W_k^(1)' (superscript (1)); (d) red arrow; (e) striped block alternating #FFFF00/#BFBFBF cells with red bold label K\u2084, K\u2083, K\u2082, K\u2081 top-to-bottom.\n8. Dot Product box \u2014 rectangle, fill #D2A870, ~x 26\u201336%, y 36\u201374%; header 'Dot Product' in maroon #7F0000 bold, wrapped as 'Dot' / 'Product' at the top.\n9. Dot Product interior \u2014 four small dark-blue #0000CC filled circles on a bottom-left\u2192top-right diagonal chained by thin red arrows; red arrows enter from the left edge (one per K block, 4 total) and from the bottom edge (from q\u2082, 1 arrow).\n10. 'K.q' label \u2014 red bold text at the Dot Product box's top-right (~x 36%, y 37%).\n11. 'Similarity' pill \u2014 rounded rectangle #FFEE58 with blue #0033CC bold text 'Similarity', ~x 28\u201336%, y 30\u201334%.\n12. Scaling box \u2014 tall yellow #FFFF00 rectangle ~x 38\u201344%, y 42\u201376%, with text 'Scaling by \u221ad' rotated 90\u00b0 in orange-red #FF8000 bold.\n13. Scaling fraction \u2014 red #FF0000 stacked fraction above the Scaling box (~x 38\u201344%, y 35\u201342%): numerator 'K.q', horizontal line, denominator '\u221ad'.\n14. Softmax box \u2014 tall light-purple #CC99FF rectangle ~x 47\u201351%, y 36\u201375%, with text 'Soft max' (keep the space) rotated 90\u00b0 in dark #464646 bold.\n15. 'Probabilities' pill \u2014 #FFEE58 rounded rectangle with blue #0033CC bold 'Probabilities', ~x 45\u201353%, y 30\u201334%.\n16. Right input group container \u2014 rounded rectangle, fill #EAF5E4, dashed #00B050 border, ~x 66\u201393%, y 41\u201375%.\n17. Right group rows \u2014 4 rows mirroring step 7: 4-cell embedding block labeled X\u2081\u2013X\u2084 [? ordering] \u2192 red arrow pointing LEFT \u2192 green #92D050 rectangle 'W_v^(1)' (black bold) \u2192 red arrow pointing LEFT \u2192 striped #FFFF00/#BFBFBF block with red bold label V\u2084, V\u2083, V\u2082, V\u2081 top-to-bottom.\n18. Multiply nodes \u2014 four red #FF0000 circled-X (\u2297) nodes stacked vertically at ~x 55\u201357%, y 44\u201370%; red arrow from the Softmax box into each \u2297 from the left (4 arrows), red arrow from each V block into its \u2297 from the right (4 arrows), red arrow from each \u2297 upward into the \u03a3 box (4 arrows).\n19. \u03a3 box \u2014 light-blue #BDD7EE rectangle ~x 54\u201368%, y 36\u201341% with one large dark-blue #1F3864 bold '\u03a3' centered.\n20. 'Weighted SUM' pill \u2014 #FFEE58 rounded rectangle with blue #0033CC bold 'Weighted SUM' (SUM all-caps), ~x 62\u201372%, y 30\u201334%.\n21. Output arrow \u2014 thick green #00B050 block arrow pointing up-right from just below the \u03a3 box (~x 57\u201360%, y 26\u201332%) to the Y\u2082 block.\n22. Y\u2082 output block \u2014 small striped vector block (alternating #FFFF00/#BFBFBF cells) with red bold label 'Y\u2082', wrapped in a green #00B050 dashed border, ~x 57\u201364%, y 22\u201327%.\n23. Input sentence strip \u2014 rounded rectangle, fill #EAF5E4, dashed #00B050 border, ~x 18\u201351%, y 87\u201396%; inside, four embedding blocks left-to-right labeled X\u2081, X\u2082, X\u2083, X\u2084 (red bold); fill X\u2082's cells pink/magenta #FF66CC to highlight; add a thick red #FF0000 block arrow pointing up-right at X\u2082 from below-left.\n24. q\u2082 path \u2014 red arrow from X\u2082 up to a white #FFFFFF box with red border containing red bold 'W_q^(1)' (~x 29\u201332%, y 80\u201386%); red arrow up to a striped block with red bold label 'q\u2082' (~x 28\u201333%, y 74\u201380%); red arrow into the Dot Product box's bottom edge.\n25. Dashed connectors \u2014 thin dashed green curves: one from the sentence strip's left end to the left input group, one from the strip's right end to the right input group.\n26. Dimension annotation box \u2014 mint #D9F2D9 rounded rectangle ~x 76\u201393%, y 86\u201399%; inside, left-to-right: small striped block with dark-red #943634 label '1\u00d7d' [?] \u2192 short arrow \u2192 yellow #FFFF00 square with black bold 'W' \u2192 '=' \u2192 striped block with dark-red #943634 label 'd\u00d7d' [?]; below, blue #0070C0 text 'd: Embedding Length'.\n27. Final style pass \u2014 all text sans-serif (Arial), all diagram text bold, all vector labels (K, V, q, Y, X) red #FF0000, exact spellings 'Soft max' (with space) and 'Weighted SUM' (all-caps SUM) preserved; do NOT recreate the black mouse cursor at ~x 70%, y 17% \u2014 it is a video-capture artifact, not slide content.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Confirmed verbatim_text.bullets is legitimately empty \u2014 animation_state explicitly states 'there are no bullets' and this is a diagram-only slide; documented instead of fabricating bullet text (all verbatim text lives in labels/equations).",
+      "Replaced the vague quantifier 'numerous thin red arrows' (connector-system visual element) with the exact derivable inventory: 8 arrows in the left group (4 rows \u00d7 X\u2192W_k\u2192K), 4 arrows K\u2081\u2013K\u2084\u2192Dot Product, 8 arrows in the right group (4 rows \u00d7 X\u2192W_v\u2192V), 4 arrows V\u2081\u2013V\u2084\u2192\u2297 nodes, 4 arrows Softmax\u2192\u2297, 4 arrows \u2297\u2192\u03a3, and 3 arrows on the q\u2082 path (X\u2082\u2192W_q^(1)\u2192q\u2082\u2192Dot Product).",
+      "Replaced 'fills almost the entire slide' in layout.arrangement with exact canvas extents: ~x 4\u201396%, y 20\u201399% (\u224885% of slide area).",
+      "Replaced the non-derivable pink hex #FF99CC (old brief step 5) with #FF66CC \u2014 the only pink defined anywhere in the JSON \u2014 and added #FF66CC and #FFFFFF to the left/right input-group color lists so the lists match their 'yellow/pink/white/green cells' descriptions.",
+      "Restored the [?] uncertainty marker on X-label row ordering inside the left and right input groups; the old brief asserted 'X\u2081\u2013X\u2084 top-to-bottom' as fact while visual_elements flags a possible X\u2084\u2013X\u2081 ordering to match the K\u2084\u2013K\u2081 / V\u2084\u2013V\u2081 outputs.",
+      "Assigned the previously unexplained #943634 in the dimension-annotation element to the dark-red labels of the '1\u00d7d'/'d\u00d7d' striped blocks (verbatim_text calls them 'small red label'); brief step 26 now specifies these labels in #943634, and #943634 was added to colors.body_text.",
+      "Resolved the wording conflict between imagery ('no icons') and the two visual_elements typed 'icon' (\u2297 multiply nodes, '37' badge): clarified both are plain geometric vector shapes, not icon imagery.",
+      "Added an explicit exclusion note for the black mouse cursor at ~x 70%, y 17% (video-capture artifact, not slide content to recreate).",
+      "Rewrote recreation_brief as a 27-step ordered checklist \u2014 one element (or one repeated 4-row group) per step, each specifying exact text, position, fill color, and shape type."
+    ],
+    "uncertain_items": [
+      "Bottom-right dimension labels: raw glyphs '1'd' / 'd*1'd' interpreted as '1\u00d7d' and 'd\u00d7d' [?]; the equation is best-read as [1\u00d7d] \u00b7 W = [d\u00d7d] with d = Embedding Length.",
+      "Row ordering of X labels inside the left and right input groups [?]: possibly X\u2084\u2013X\u2081 top-to-bottom to align with the K\u2084\u2013K\u2081 / V\u2084\u2013V\u2081 outputs.",
+      "Exact hex of the pink cell inside the embedding blocks [?]: standardized to #FF66CC, the only pink defined in the JSON.",
+      "Number of thin red arrows inside the Dot Product box chaining the 4 blue dots [?]: source only says 'connected by thin red arrows'."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_037.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 37,
+      "image": "slide_037.jpg",
+      "kept_frame": "frame_03643.jpg",
+      "start_sec": 3604.0,
+      "end_sec": 3642.0,
+      "frame_count": 39
+    },
+    "elapsed_s": 506.5,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1016.0
+  }
+}

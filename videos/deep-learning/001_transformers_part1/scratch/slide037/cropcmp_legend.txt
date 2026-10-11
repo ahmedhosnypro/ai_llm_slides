@@ -1,0 +1,38 @@
+# Element-by-Element Comparison
+
+## Structure inventory (both images)
+Both crops contain the same element set:
+1. Green dashed rounded-rectangle border enclosing a light-green panel
+2. Top-left: horizontal strip of small colored cells (the "input token" row)
+3. "1Ãd" (IMG1) / "1*d" (IMG2) label to the lower-right of the left strip
+4. Large pale-yellow square with bold "W"
+5. Red "=" sign to the right of W
+6. Horizontal strip of small colored cells (the "output" row) right of the equals sign
+7. "1Ãd" / "1*d" label below the right strip
+8. "dÃd" / "d*d" label below, between W and the right strip
+9. Blue bold caption "d: Embedding Length" at bottom
+
+## Geometry & fidelity
+- **Dashed border**: Present in both, green dashed, rounded corners. IMG1's dashes are longer/coarser than IMG2's finer dashes. MINOR (cosmetic, low impact). Confidence: high.
+- **W box**: Correct position (center-left-of-middle), correct pale-yellow fill, bold black "W". Size ratio relative to panel is very close. Match.
+- **"=" sign**: Red, positioned at vertical midline of W box in both. Match.
+- **Left cell strip**: Position (upper-left, inside border) matches. IMG1 shows 4 cells (yellow, yellow, lavender, lavender); IMG2 is soft but appears to show possibly 5 cells with a pinkish tint in one. Possible cell-count/color deviation. MINOR (soft source, low confidence).
+- **Right cell strip**: Present in both at matching position. IMG1 shows 5 cells (2 yellow, 2 lavender/pale, 1 pink); IMG2 appears ~5 cells with yellow/pink alternation. Approximate match; possible color-tint deviation. MINOR, low confidence.
+- **"1Ãd" labels**: Both placed below-right of the left strip and below the right strip. Position fidelity good. **Text difference: "Ã" (multiplication sign) in IMG1 vs "*" (asterisk) in IMG2.** MINOR â semantically identical, typographic normalization only. Confidence: high.
+- **"dÃd" vs "d*d"**: Same situation â position matches (below, between W and right strip); symbol differs ("Ã" vs "*"). MINOR. Confidence: high.
+- **Caption**: "d: Embedding Length" â verbatim match, blue bold, centered at bottom of panel in both. Match.
+- **Vertical rhythm**: Labels sit slightly lower in IMG1 relative to the strips than in IMG2, but well within tolerance for a soft 3x-upscaled comparison. Negligible.
+
+## Visual-quality defects in the recreation
+- No overflow, clipping, collisions, or misalignments observed. All labels clear their neighboring shapes. Dashed border fully contains all content with healthy padding on all sides.
+
+## Discrepancy summary
+| # | Discrepancy | Severity | Confidence |
+|---|---|---|---|
+| 1 | "Ã" used instead of "*" in "1Ãd" and "dÃd" labels | MINOR | High |
+| 2 | Dash length/coarseness of green dashed border differs | MINOR | High |
+| 3 | Possible cell-count/color tint deviation in left and right cell strips | MINOR | Low (source softness) |
+
+No BLOCKER or MAJOR discrepancies.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation of this crop'.

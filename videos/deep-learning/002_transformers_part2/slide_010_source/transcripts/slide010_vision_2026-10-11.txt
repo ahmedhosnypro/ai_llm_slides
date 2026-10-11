@@ -1,0 +1,54 @@
+1. TITLE
+Exact title (red, bold, centered at top of slide): "Using  FF NN  for Multiplication of ONE Vector by a Matrix"
+Badge: yellow/gold circle at top-right containing the numeral "10".
+Subtitle line beneath title (blue italic bold, with red and green parts): "Example: Multiply Vector of Current Word  X  by W_q (Query)   {Remember: W_q is Squared Matrix}"
+- "X" and "W_q" are in red; the "{Remember: W_q is Squared Matrix}" portion is in green; "W" is subscripted as W_q.
+
+2. ALL VERBATIM TEXT
+- Title: "Using  FF NN  for Multiplication of ONE Vector by a Matrix"
+- Badge: "10"
+- Subtitle: "Example: Multiply Vector of Current Word X by Wq (Query) {Remember: Wq is Squared Matrix}"
+- Left panel heading: "Input Word X" (X in red)
+- Left panel node labels: "x1", "x2", "x3", "x4" (small pink circles)
+- Left panel output labels: "y1", "y2", "y3", "y4" (green text, one per sum node)
+- Left panel sum-node glyphs: "Î£" (four occurrences)
+- Left panel weight labels (colored text along edges; exact values as legible, uncertain ones marked): "W11" (repeated multiple times), "W12" (repeated), "W13" (repeated) [?], "W14" (repeated) [?], "W22" [?], "W23" (repeated), "W24" [?], "W33" [?], "W34" (repeated) [?], "W44", "W42" [?], "W41" [?]. (These run down the left edge in small colored text: blue, purple, magenta, orange, green hues; some glyphs too small to read with certainty.)
+- Upper-middle panel: "Y^T" (red, large); box strip labeled "y1  y2  y3  y4"; "= Sigmoid" (black bold italic, after equals sign)
+- Upper-right panel: "X" (red, large); row of pink circles labeled "x1  x2  x3  x4"
+- Upper-right matrix cell labels (4x4, row by row): Row 1: "W11  W21  W31  W41"; Row 2: "W12 [?]  W22  W32 [?]  W42 [?]"; Row 3: "W13 [?]  W23 [?]  W33 [?]  W43 [?]"; Row 4: "W14 [?]  W24 [?]  W34 [?]  W44 [?]" (each cell label preceded by a small colored square swatch)
+- Upper-right bias column: "b1  b2  b3  b4"
+- Lower-middle panel: "Y^T" (red, large); box strip labeled "y1  y2  y3  y4"; "= Linear" (black bold italic)
+- Lower-right panel: "X" (red, large); row of pink circles labeled "x1  x2  x3  x4"
+- Lower-right matrix cell labels (4x4, row by row): Row 1: "W11  W21  W31  W41"; Row 2: "W12  W22  W32  W42" (some glyphs uncertain [?]); Row 3: "W13  W23 [?]  W33 [?]  W43 [?]"; Row 4: "W14  W24 [?]  W34  W44"
+- Lower-right bias column: "0  0  0  0" (four zero boxes)
+- Plus signs: "+" (large black plus between matrix and bias column in both right panels)
+- Black oval callouts: "IF No Non-linearity" (upper-middle, between the two Y^T panels); "IF No Bias" (right side, between the two bias columns)
+
+3. EQUATIONS / FORMULAIC SEQUENCES
+- Implied computation: Y = Sigmoid( W_q Â· X + b )  â rendered graphically, not as one inline formula.
+- Token sequences present: "Y^T" (twice), "X" (twice as vector labels), "x1 x2 x3 x4", "y1 y2 y3 y4", "b1 b2 b3 b4", "0 0 0 0".
+- Weight-matrix index sequences: W11 W21 W31 W41 / W12 W22 W32 W42 / W13 W23 W33 W43 / W14 W24 W34 W44 (subscript notation; individual subscript digits partially uncertain in the lower rows [?]).
+- Conditional annotations: "= Sigmoid", "= Linear", "IF No Non-linearity", "IF No Bias".
+
+4. DIAGRAM TOPOLOGY
+Overall layout: slide framed by a thin red border on white, sitting atop a dark/black page background strip visible at the very bottom. Four main regions: left neural-net panel, two middle stacked panels (Y^T strips), two right stacked panels (X vector + weight matrix + bias column). Flow is left-to-right: input word â FF network â transposed output; and separately vector Ã matrix + bias on the right.
+
+LEFT PANEL â "Input Word X":
+- Container: white rounded rectangle with blue border, labeled top-left "Input Word X".
+- Input nodes: four pink circles labeled x1 (top), x2, x3, x4 (bottom), stacked vertically along the left edge.
+- Output/sum nodes: four circles (white fill, red border) each containing "Î£" and a small multicolored pie/cursor-like wedge (green/red/yellow segments), arranged vertically; each has a green output arrow to the right labeled y1, y2, y3, y4 respectively. Below/beneath each Î£ node is a faint dashed gray circle (ghost/shadow node artifact of the drawing style).
+- Connections: fully connected bipartite fan-out â each xi connects to each Î£j (4x4 = 16 edges, thin colored lines: blue, purple, magenta, green, orange). Weight labels along edges read W11, W12, W13, W14 (from x1), W21/W22/W23/W24 [partially uncertain], W31..W34 [uncertain], W41, W42, W44 [partially uncertain] â i.e., a 4x4 weight matrix W applied to the 4-dim input vector.
+
+MIDDLE PANELS (two stacked, rounded rectangles, light blue-gray fill):
+- Top: "Y^T" label (red) at left; a pink-outlined rounded container holding four small yellow boxes labeled y1 y2 y3 y4; then "=" and bold italic "Sigmoid". This represents the output of the top network path with sigmoid activation.
+- Bottom: identical structure â "Y^T", pink-outlined container with y1 y2 y3 y4 boxes, "=" and "Linear". Represents output if the activation is removed.
+- Between the two middle panels: a black rounded oval (callout) with white text "IF No Non-linearity", and a thick red vertical arrow pointing downward from the top (Sigmoid) panel to the bottom (Linear) panel â indicating the bottom case results from removing non-linearity.
+
+RIGHT PANELS (two stacked, rounded rectangles, light blue-gray fill):
+- Top panel: (a) a pink-outlined rounded container holding four pink circles labeled x1 x2 x3 x4, with large red "X" label beneath â the input vector; (b) to its right, a 4x4 grid of light-green square cells, each cell containing a small colored square swatch plus a weight label (W11 W21 W31 W41 / W12 W22 W32 W42 / W13 W23 W33 W43 / W14 W24 W34 W44 â i.e., W with first index = row, second = column as drawn); (c) a large black "+" sign; (d) a column of four yellow-green boxes labeled b1 b2 b3 b4 (bias vector).
+- Bottom panel: identical layout â pink-outlined x1 x2 x3 x4 with red "X", the same 4x4 W matrix, a "+", and a column of four yellow-green boxes each containing "0" (zero bias).
+- Between the top and bottom bias columns: black rounded oval callout with white text "IF No Bias", and a thick red vertical arrow pointing downward from b1..b4 to the zero column â indicating the bottom case results from setting bias to zero.
+
+Grouping/dashed elements: pink rounded outlines around the y1ây4 strips (middle) and around the x1âx4 circles (right); blue border container on left panel; dashed gray circles under each Î£ node.
+
+Resemblance to published figures: This does NOT match Vaswani et al. 2017 Figure 1/2, Peter Bloem's self-attention diagram, or Alammar illustrations. It is an instructor-drawn didactic figure illustrating a feed-forward layer computing

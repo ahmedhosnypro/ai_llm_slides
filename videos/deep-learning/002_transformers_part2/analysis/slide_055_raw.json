@@ -1,0 +1,261 @@
+{
+  "slide_title": "Encoder-Decoder Attention Mechanism (In Decoder)",
+  "subtitle_or_header": "(Self Attention of word Z\u2082 w.r.t All words in Sentence ( Y\u2081, Y\u2082, Y\u2083, Y\u2084 )",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "55 (slide number in yellow circle, top-right)",
+      "From Encoder Output (left hatched box, two lines: 'From Encoder' / 'Output')",
+      "From Encoder Output (right hatched box, two lines: 'From Encoder' / 'Output')",
+      "Similarity (yellow pill above Dot Product box)",
+      "Dot Product (header inside gray-tan box)",
+      "K.q (red label at top-right exit of Dot Product box)",
+      "Scaling by \u221ad (vertical text, pink column)",
+      "Soft max (vertical text, violet column)",
+      "Probabilities (yellow pill above Soft max column)",
+      "Weighted SUM (yellow pill above \u03a3 box)",
+      "\u03a3 (large black sigma in light-blue box)",
+      "O (green output box at top)",
+      "K\u2084 (striped box, left column, top row)",
+      "K\u2083 (striped box, left column, row 2)",
+      "K\u2082 (striped box, left column, row 3)",
+      "K\u2081 (striped box, left column, bottom row)",
+      "V\u2084 (red label on line, right side, top row)",
+      "V\u2083 (red label on line, right side, row 2)",
+      "V\u2082 (red label on line, right side, row 3)",
+      "V\u2081 (red label on line, right side, bottom row)",
+      "W_k^(r)[?] (green box, left, row 1; small superscript, possibly (r))",
+      "W_k^(r)[?] (green box, left, row 2)",
+      "W_k^(r)[?] (green box, left, row 3)",
+      "W_k^(r)[?] (green box, left, row 4)",
+      "W_v^(r)[?] (blue box, right, row 1; small superscript, possibly (r))",
+      "W_v^(r)[?] (blue box, right, row 2)",
+      "W_v^(r)[?] (blue box, right, row 3)",
+      "W_v^(r)[?] (blue box, right, row 4)",
+      "Y\u2084 (left yellow container, row 1)",
+      "Y\u2083 (left yellow container, row 2)",
+      "Y\u2082 (left yellow container, row 3)",
+      "Y\u2081 (left yellow container, row 4)",
+      "Y\u2084 (right yellow container, row 1)",
+      "Y\u2083 (right yellow container, row 2)",
+      "Y\u2082 (right yellow container, row 3)",
+      "Y\u2081 (right yellow container, row 4)",
+      "q\u2082 (red label above W_q box, bottom center)",
+      "W_q^(r)[?] (white box below q\u2082)",
+      "Z\u2081 (bottom pink container, cell 1)",
+      "Z\u2082 (bottom pink container, cell 2, highlighted with red dashed border)",
+      "Z\u2083 (bottom pink container, cell 3)",
+      "Z\u2084 (bottom pink container, cell 4)",
+      "From Decoder Self Attention Layer (magenta caption, two lines: 'From Decoder' / 'Self Attention Layer')",
+      "1\u00d7d (legend, beneath striped vector glyph)",
+      "W (legend, white box)",
+      "= d\u00d7d (legend, right of W box)",
+      "1\u00d7d (legend, rotated/vertical, far right)",
+      "d: Embedding Length (legend, blue text, bottom)"
+    ],
+    "equations": [
+      "K.q",
+      "K.q/\u221ad (rendered as a red fraction: K.q over \u221ad with horizontal bar)",
+      "W = d\u00d7d (rendered as white box 'W' with '= d\u00d7d' beside it)",
+      "1\u00d7d",
+      "1\u00d7d",
+      "d: Embedding Length"
+    ]
+  },
+  "layout": {
+    "arrangement": "Two-line bold title centered at top with red-highlighted math tokens; yellow slide-number badge at top-right. Below, ONE large peach rounded panel fills almost the whole slide and contains a single wide left-to-right dataflow diagram: far-left encoder-output group (hatched box + yellow Y-container + green W_k boxes + striped K boxes), center-left gray 'Dot Product' box with blue dots and red mesh, center pink 'Scaling by \u221ad' column and violet 'Soft max' column (both with vertical text), center-right column of red \u00d7 multiplier nodes feeding a light-blue \u03a3 box with green 'O' output box above, far-right mirrored encoder-output group (yellow Y-container + blue W_v boxes + V labels + hatched box). Bottom strip: pink container with Z\u2081\u2013Z\u2084 (Z\u2082 highlighted) with a thick red up-arrow, W_q/q\u2082 query below it, magenta caption 'From Decoder Self Attention Layer' with white left-pointing 3D arrow, and a pale-green matrix-dimension legend at bottom-right.",
+    "regions": [
+      {
+        "name": "Title block",
+        "position": "top center, x 15\u201385%, y 4\u201313%",
+        "content": "Two bold lines: main title with red '(In Decoder)'; subtitle line with red Z\u2082, Y\u2081, Y\u2082, Y\u2083, Y\u2084"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, x 89\u201395%, y 6\u201314%",
+        "content": "Yellow circle with dark outline containing '55'"
+      },
+      {
+        "name": "Main peach panel",
+        "position": "x 5\u201395%, y 15\u201396%",
+        "content": "Rounded peach rectangle containing the entire attention diagram"
+      },
+      {
+        "name": "Left input column",
+        "position": "left, x 7\u201330%, y 28\u201370%",
+        "content": "Red 3D arrow, hatched 'From Encoder Output' box, yellow dashed Y-container (Y\u2084\u2026Y\u2081 rows), green W_k boxes, striped K\u2084\u2026K\u2081 boxes with connecting arrows"
+      },
+      {
+        "name": "Dot Product column",
+        "position": "center-left, x 30\u201340%, y 27\u201370%",
+        "content": "'Similarity' pill, gray-tan 'Dot Product' box with 4 blue dots and red connecting-line mesh, red 'K.q' exit label; query line entering from below"
+      },
+      {
+        "name": "Scaling column",
+        "position": "center, x 42\u201348%, y 30\u201370%",
+        "content": "Red fraction K.q/\u221ad on top; tall pink column with vertical text 'Scaling by \u221ad'"
+      },
+      {
+        "name": "Softmax column",
+        "position": "center, x 48\u201354%, y 27\u201370%",
+        "content": "'Probabilities' pill; tall violet column with vertical text 'Soft max'"
+      },
+      {
+        "name": "Weighted-sum column",
+        "position": "center-right, x 54\u201372%, y 20\u201370%",
+        "content": "Four red \u00d7 multiplier circles; light-blue \u03a3 box; 'Weighted SUM' pill; thick green arrow up to green 'O' output box with striped vector cells"
+      },
+      {
+        "name": "Right input column",
+        "position": "right, x 70\u201394%, y 28\u201370%",
+        "content": "V\u2084\u2026V\u2081 line labels, blue W_v boxes with left-pointing arrows, yellow dashed Y-container (Y\u2084\u2026Y\u2081), hatched 'From Encoder Output' box, red 3D arrow at slide edge"
+      },
+      {
+        "name": "Decoder query",
+        "position": "bottom center, x 29\u201336%, y 74\u201384%",
+        "content": "Red 'q\u2082' label with small striped vector glyph; white 'W_q^(r)' box; thin line up into Dot Product dots"
+      },
+      {
+        "name": "Z-row container",
+        "position": "bottom center, x 21\u201352%, y 85\u201395%",
+        "content": "Pink rounded container with cells Z\u2081, Z\u2082 (red-dashed highlight), Z\u2083, Z\u2084; thick red 3D arrow pointing up at Z\u2082 from below"
+      },
+      {
+        "name": "Decoder caption",
+        "position": "bottom center-right, x 53\u201372%, y 85\u201394%",
+        "content": "Magenta two-line caption 'From Decoder Self Attention Layer' with white 3D arrow pointing left toward Z-row"
+      },
+      {
+        "name": "Legend box",
+        "position": "bottom right, x 73\u201390%, y 81\u201395%",
+        "content": "Pale-green dashed box: striped vector glyph with '1\u00d7d', white 'W' box, '= d\u00d7d', rotated '1\u00d7d', blue 'd: Embedding Length'"
+      }
+    ],
+    "hierarchy": "The peach diagram panel dominates the slide. Title is the largest/boldest text (black with red spans). Red is the attention-grabbing color: all math-entity labels (K, V, Y, q, Z), arrows, fraction, and highlights are red. Yellow containers/pills act as secondary anchors; small black bold text inside colored boxes is tertiary; vertical column captions are mid-weight."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "Encoder-decoder cross-attention dataflow, left to right. (1) LEFT INPUT: red 3D block arrow at slide edge (pointing outward-left); hatched rectangle 'From Encoder Output' (red bold text, white center, red diagonal-hatch side panels); below it a yellow rounded container with dashed green border holding 4 rows (top\u2192bottom Y\u2084, Y\u2083, Y\u2082, Y\u2081), each row a yellow strip of ~4 small white cells with the red Y-label in the first cell; black right-arrows from each row into green boxes 'W_k^(r)'; black right-arrows into small vertically-striped (white/pale-yellow) boxes labeled K\u2084, K\u2083, K\u2082, K\u2081 in red. (2) DOT PRODUCT: thin lines from all K boxes converge into a tall gray-tan box titled 'Dot Product' containing 4 blue dots joined by a mesh of thin red lines; a thin line also enters from below from q\u2082; yellow pill 'Similarity' floats above-left; red 'K.q' label at top-right exit. (3) SCALING: red fraction K.q over \u221ad above a tall pink column with bottom-to-top vertical text 'Scaling by \u221ad'. (4) SOFTMAX: adjacent tall violet column with vertical text 'Soft max'; yellow pill 'Probabilities' above. (5) WEIGHTED SUM: four small circles with red '\u00d7' stacked vertically receive lines from Soft max on the left and lines labeled V\u2084, V\u2083, V\u2082, V\u2081 from the right; those V lines originate at blue boxes 'W_v^(r)' which receive black left-arrows from a mirrored yellow Y-container (Y\u2084\u2026Y\u2081) fed by a second hatched 'From Encoder Output' box with a red 3D block arrow pointing outward-right at the slide edge; each \u00d7 output rises into a light-blue rectangle with a large black '\u03a3'; yellow pill 'Weighted SUM' above; thick green arrow points up from \u03a3 to a green box 'O' flanked by small striped vector cells. (6) DECODER QUERY (bottom): pink rounded container with four striped cells Z\u2081, Z\u2082, Z\u2083, Z\u2084 (Z\u2082 highlighted with red dashed border); thick red 3D arrow points up at Z\u2082; below it red 'q\u2082' with a small striped vector glyph and a white box 'W_q^(r)'; magenta caption 'From Decoder Self Attention Layer' with a white 3D arrow pointing left toward the Z-row.",
+      "colors": [
+        "#FCE5C6",
+        "#FF0000",
+        "#FFFF00",
+        "#00CC00",
+        "#00B050",
+        "#0033CC",
+        "#A99E8C",
+        "#FF9C9C",
+        "#CC99FF",
+        "#BFDCEF",
+        "#FF99CC",
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "entire area inside the peach panel, x ~6\u201394%, y ~20\u201398%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Left yellow container: rounded rectangle, bright yellow fill, dashed green border, 4 internal rows of small white vector cells with red labels Y\u2084/Y\u2083/Y\u2082/Y\u2081 (top to bottom).",
+      "colors": [
+        "#FFFF00",
+        "#00B050",
+        "#FFFFFF",
+        "#FF0000"
+      ],
+      "position": "left side, x ~10\u201319%, y ~38\u201370%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Right yellow container: identical mirrored rounded rectangle, yellow fill, dashed green border, rows labeled Y\u2084/Y\u2083/Y\u2082/Y\u2081 (top to bottom).",
+      "colors": [
+        "#FFFF00",
+        "#00B050",
+        "#FFFFFF",
+        "#FF0000"
+      ],
+      "position": "right side, x ~79\u201388%, y ~38\u201370%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Z\u2082 emphasis: the second cell in the bottom pink Z-container gets a red dashed outline and stronger pink fill, with a thick red 3D block arrow pointing up at it from below the container.",
+      "colors": [
+        "#FF99CC",
+        "#FF0000"
+      ],
+      "position": "bottom center, x ~29\u201333%, y ~85\u201398%"
+    },
+    {
+      "type": "arrow",
+      "description": "Arrow inventory: 2 red 3D block arrows at extreme left/right edges beside the 'From Encoder Output' boxes (pointing outward toward the edges); 1 thick red 3D arrow pointing up at Z\u2082; 1 thick green block arrow pointing up from \u03a3 to the 'O' box; 1 white/light-gray 3D arrow pointing left next to 'From Decoder Self Attention Layer'; numerous thin black straight arrows (Y rows\u2192W boxes, W boxes\u2192K boxes on left; Y rows\u2192W_v boxes pointing left on right side); thin red lines (K\u2192dots, dot mesh, q\u2082\u2192dots, softmax\u2192\u00d7 nodes, \u00d7\u2192\u03a3).",
+      "colors": [
+        "#FF0000",
+        "#00B050",
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "throughout the diagram"
+    },
+    {
+      "type": "other",
+      "description": "Matrix-dimension legend (bottom-right): pale-green rectangle with dashed dark border containing a small striped row-vector glyph labeled '1\u00d7d' below it, a white square 'W' with '= d\u00d7d' to its right, a rotated '1\u00d7d' at far right, and blue text 'd: Embedding Length' at the bottom.",
+      "colors": [
+        "#CCFFCC",
+        "#FFFFFF",
+        "#000000",
+        "#0000CC"
+      ],
+      "position": "bottom right, x ~73\u201390%, y ~81\u201395%"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: circle, pale yellow fill, dark outline, bold black '55'.",
+      "colors": [
+        "#FFFF99",
+        "#000000"
+      ],
+      "position": "top-right corner, x ~89\u201395%, y ~6\u201314%"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; the slide is entirely schematic vector art. Recurring iconography: small vertically-striped rectangles (white/pale-yellow stripes) used to depict vectors (K boxes, q\u2082 glyph, cells beside 'O', Z cells, legend vector); hatched-edge rectangles for 'From Encoder Output'; colored rounded containers with dashed borders for groups."
+  ],
+  "colors": {
+    "background": "#FFFFFF outer slide; large rounded panel #FCE5C6 (peach/cream)",
+    "title_text": "#000000, with red spans #FF0000 for '(In Decoder)', Z\u2082, Y\u2081, Y\u2082, Y\u2083, Y\u2084",
+    "body_text": "#000000 (labels inside colored boxes); red #FF0000 for math-entity labels (K, V, Y, q, Z, K.q, fraction)",
+    "accents": [
+      "#FF0000",
+      "#FFFF00",
+      "#00CC00",
+      "#00B050",
+      "#0033CC",
+      "#CC99FF",
+      "#FF9C9C",
+      "#FF99CC",
+      "#BFDCEF",
+      "#A99E8C",
+      "#CCFFCC",
+      "#CC00CC",
+      "#FFFF99",
+      "#0000CC"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Tahoma-like). Title: bold, ~24pt, centered, two-tone black/red. Subtitle line: bold, slightly smaller (~16\u201318pt), also black with red math tokens. Diagram labels: bold, small (~9\u201312pt); 'Scaling by \u221ad' and 'Soft max' are rotated 90\u00b0 (bottom-to-top vertical text) inside their tall columns. Subscripts used for indices (K\u2084\u2026K\u2081, V\u2084\u2026V\u2081, Y\u2081\u2026Y\u2084, Z\u2081\u2026Z\u2084, q\u2082) and small superscripts '(r)' on weight matrices W_k, W_v, W_q. Yellow pill callouts (Similarity, Probabilities, Weighted SUM) use bold black text. 'Weighted SUM' uses all-caps 'SUM'. No numbered bullets anywhere; this is a full-slide diagram.",
+  "animation_state": "Slide appears fully revealed \u2014 no dimmed or partially built elements. The red dashed outline on Z\u2082 and the thick red up-arrow beneath it are static emphasis annotations, not build states.",
+  "recreation_brief": "1. Blank 16:9 slide, white background. Draw a rounded rectangle covering ~x5\u201395%, y15\u201396%, fill #FCE5C6, no/subtle outline. 2. Title text box top-center (y~4%), Arial bold ~24pt black: 'Encoder-Decoder Attention Mechanism ' with '(In Decoder)' as a red (#FF0000) run. 3. Second line (y~10%), Arial bold ~16pt: '(Self Attention of word ' + red 'Z\u2082' + ' w.r.t All words in Sentence ( ' + red 'Y\u2081, Y\u2082, Y\u2083, Y\u2084' + ' )' \u2014 keep the unbalanced closing parenthesis exactly as in the original. 4. Top-right: oval ~0.55in, fill #FFFF99, 1.5pt dark outline, bold black '55'. 5. LEFT INPUT GROUP: (a) red 3D block arrow at far-left edge pointing left; (b) rectangle with red diagonal-hatch side strips and white center, red bold two-line text 'From Encoder' / 'Output'; (c) below it a rounded rectangle fill #FFFF00 with dashed #00B050 outline containing 4 stacked yellow strips; each strip holds 4 small white squares, first square carrying a red bold label \u2014 Y\u2084 (top), Y\u2083, Y\u2082, Y\u2081 (bottom). 6. Right of each strip: thin black right-arrow \u2192 green (#00CC00) square with black bold 'W' + subscript 'k' + superscript '(r)' \u2192 thin black right-arrow \u2192 small vertically-striped (white/#FFE699) rectangle labeled in red K\u2084, K\u2083, K\u2082, K\u2081 (top\u2192bottom). 7. DOT PRODUCT: tall gray-tan (#A99E8C) rectangle ~x30\u201339%, y33\u201370%; black bold 'Dot Product' at its top; place 4 blue (#0033CC) dots down its middle; connect every K box to the dots and interconnect the dots with thin red (#FF0000) lines (all-to-all mesh); add yellow pill (rounded rect #FFFF00, black bold text) 'Similarity' above-left; red 'K.q' label at the box's top-right exit line. 8. QUERY: below the panel center, white square with black 'W' + subscript 'q' + superscript '(r)'; above it red 'q\u2082' plus a small striped vector glyph; thin line from q\u2082 up into the Dot Product dots. 9. SCALING COLUMN: tall pink (#FF9C9C) rectangle ~x43\u201347%, y36\u201370% with bottom-to-top vertical black bold text 'Scaling by \u221ad'; above it a red fraction \u2014 'K.q' over a horizontal bar over '\u221ad'. 10. SOFTMAX COLUMN: adjacent tall violet (#CC99FF) rectangle with vertical text 'Soft max'; yellow pill 'Probabilities' above it. 11. MULTIPLY & SUM: four small circles (white fill, red outline, red '\u00d7') stacked at ~x55% aligned with the four rows; thin lines from the Soft max column to each \u00d7; thin lines from the right-side group labeled red V\u2084, V\u2083, V\u2082, V\u2081 into each \u00d7 from the right; from each \u00d7 a thin line up into a light-blue (#BFDCEF) rectangle ~x54\u201367%, y35\u201341% containing a very large black '\u03a3'; yellow pill 'Weighted SUM' above-right of the \u03a3 box. 12. OUTPUT: thick green (#00B050) block arrow from the \u03a3 box pointing up to a green (#00CC00) box labeled 'O' flanked by small striped vector cells (~y22\u201327%). 13. RIGHT INPUT GROUP (mirror of steps 5\u20136): yellow dashed container with Y\u2084\u2026Y\u2081 rows at far right; black left-arrows into blue (#0033CC) squares with white 'W' + subscript 'v' + superscript '(r)'; lines from these boxes run left carrying red V\u2084\u2026V\u2081 labels to the \u00d7 nodes; hatched 'From Encoder' / 'Output' box above with a red 3D block arrow pointing right at the slide edge. 14. DECODER ROW: pink (#FF99CC) rounded container ~x21\u201352%, y85\u201395% holding four striped cells labeled Z\u2081, Z\u2082, Z\u2083, Z\u2084; give Z\u2082 a red dashed outline and slightly deeper pink fill; add a thick red 3D arrow pointing up at Z\u2082 from below the container. 15. CAPTION: magenta (#CC00CC) bold two-line text 'From Decoder' / 'Self Attention Layer' at ~x53\u201367%, y86\u201393%; place a white 3D arrow to its right pointing left toward the Z-row. 16. LEGEND: pale-green (#CCFFCC) rectangle with dashed dark outline at ~x73\u201390%, y82\u201395%; inside place a small striped vector glyph with black '1\u00d7d' beneath it, a white square 'W', black '= d\u00d7d' beside it, a rotated black '1\u00d7d' at the right, and blue bold 'd: Embedding Length' along the bottom. 17. Ignore the thin black strip at the very bottom edge of the source image \u2014 it is video letterboxing, not slide content.",
+  "_meta": {
+    "frame": "slide_055.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 55,
+      "image": "slide_055.jpg",
+      "kept_frame": "frame_04852.jpg",
+      "start_sec": 4821.0,
+      "end_sec": 4851.0,
+      "frame_count": 31,
+      "old_slide": 138
+    },
+    "elapsed_s": 553.5
+  }
+}

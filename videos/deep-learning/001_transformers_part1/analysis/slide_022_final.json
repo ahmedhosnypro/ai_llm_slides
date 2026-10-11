@@ -1,0 +1,185 @@
+{
+  "slide_title": "Continuous bag-of-words (CBOW)   vs Skip-Gram Models",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "22",
+      "INPUT",
+      "PROJECTION",
+      "OUTPUT",
+      "SUM",
+      "w(t-2)",
+      "w(t-1)",
+      "w(t+1)",
+      "w(t+2)",
+      "w(t)",
+      "INPUT",
+      "PROJECTION",
+      "OUTPUT",
+      "w(t)",
+      "w(t-2)",
+      "w(t-1)",
+      "w(t+1)",
+      "w(t+2)",
+      "CBOW",
+      "Skip-gram"
+    ],
+    "equations": [
+      "w(t-2)",
+      "w(t-1)",
+      "w(t)",
+      "w(t+1)",
+      "w(t+2)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top in red bold text with slide-number oval at top-right; below, two side-by-side blue-bordered panels each containing a three-column neural-network architecture diagram (INPUT | PROJECTION | OUTPUT); each panel has a yellow rounded label box centered at its bottom ('CBOW' left, 'Skip-gram' right); entire inner slide framed by a dark-red border on a light-gray outer background",
+    "regions": [
+      {
+        "name": "Title bar",
+        "position": "top, spanning ~10%-90% width, ~8%-20% height",
+        "content": "Red bold title 'Continuous bag-of-words (CBOW)   vs Skip-Gram Models'"
+      },
+      {
+        "name": "Slide number",
+        "position": "top-right corner, ~90%-97% width, ~8%-16% height",
+        "content": "Yellow oval with dark outline containing the number 22"
+      },
+      {
+        "name": "Left panel (CBOW diagram)",
+        "position": "middle-left, ~12%-50% width, ~22%-97% height",
+        "content": "Blue-bordered rectangle containing INPUT/PROJECTION/OUTPUT columns, converging arrows into SUM, output arrow to w(t), and yellow 'CBOW' label box at bottom"
+      },
+      {
+        "name": "Right panel (Skip-gram diagram)",
+        "position": "middle-right, ~50%-88% width, ~22%-97% height",
+        "content": "Blue-bordered rectangle containing INPUT/PROJECTION/OUTPUT columns, single input w(t), fanning arrows to four outputs, and yellow 'Skip-gram' label box at bottom"
+      },
+      {
+        "name": "Outer margin",
+        "position": "full slide edges, ~0%-8% on all sides",
+        "content": "Light-gray background strip surrounding the white red-bordered slide area"
+      }
+    ],
+    "hierarchy": "Red bold title is visually dominant; the two blue-framed diagrams are equal in weight and dominate the body; column headers (INPUT/PROJECTION/OUTPUT) are small uppercase gray; word labels (w(t-2) etc.) are smallest; yellow CBOW/Skip-gram tags draw the eye at the bottom of each panel"
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "CBOW architecture diagram inside a blue-bordered rectangle. Three vertical containers: (1) INPUT \u2014 dark-red-bordered tall rectangle with header 'INPUT' at top, containing 4 small white squares stacked vertically labeled from top to bottom: w(t-2), w(t-1), w(t+1), w(t+2); (2) PROJECTION \u2014 orange-bordered tall rectangle with peach/tan fill and header 'PROJECTION', containing one small white square with the label 'SUM' above it; (3) OUTPUT \u2014 green-bordered tall rectangle with header 'OUTPUT', containing one small white square labeled w(t) to its right. Four black arrows converge diagonally from each of the four input squares into the SUM square; one horizontal black arrow goes from the SUM square rightward to the w(t) output square.",
+      "colors": [
+        "#0000CC",
+        "#8B0000",
+        "#E8940A",
+        "#F5C99B",
+        "#008000",
+        "#000000",
+        "#FFFFFF",
+        "#D9D9D9"
+      ],
+      "position": "left panel, middle of slide, ~12%-50% width"
+    },
+    {
+      "type": "diagram",
+      "description": "Skip-gram architecture diagram inside a blue-bordered rectangle (mirror of CBOW). Three vertical containers: (1) INPUT \u2014 dark-red-bordered tall rectangle with header 'INPUT', containing one small white square labeled w(t); (2) PROJECTION \u2014 orange-bordered tall rectangle with peach/tan fill and header 'PROJECTION', containing one small white square (unlabeled); (3) OUTPUT \u2014 green-bordered tall rectangle with header 'OUTPUT', containing 4 small white squares stacked vertically labeled from top to bottom: w(t-2), w(t-1), w(t+1), w(t+2). One horizontal black arrow from w(t) input square to the projection square; four black arrows fan out diagonally from the projection square to each of the four output squares. A mouse cursor (video artifact) is visible near w(t-1).",
+      "colors": [
+        "#0000CC",
+        "#8B0000",
+        "#E8940A",
+        "#F5C99B",
+        "#008000",
+        "#000000",
+        "#FFFFFF",
+        "#D9D9D9"
+      ],
+      "position": "right panel, middle of slide, ~50%-88% width"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Two yellow rounded-rectangle tag boxes with dark-red borders: left one contains the text 'CBOW', right one contains the text 'Skip-gram', both in red bold text, centered horizontally under their respective diagrams",
+      "colors": [
+        "#FFFF99",
+        "#C00000"
+      ],
+      "position": "bottom of each blue panel, ~88%-95% height"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: small yellow oval/ellipse with dark olive/black outline containing the number '22' in dark text",
+      "colors": [
+        "#FFFF99",
+        "#4A4A00",
+        "#000000"
+      ],
+      "position": "top-right corner of slide"
+    },
+    {
+      "type": "other",
+      "description": "Decorative frame: thin dark-red rectangle border around the entire white slide content area, sitting on a light-gray outer background",
+      "colors": [
+        "#C00000",
+        "#FFFFFF",
+        "#E5E5E5"
+      ],
+      "position": "inset ~3-5% from all slide edges"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; all visuals are vector-style diagram shapes (rectangles, squares, arrows, oval badge). A black mouse-pointer cursor appears over the right diagram near w(t-1) \u2014 a screen-recording artifact, not slide content."
+  ],
+  "colors": {
+    "background": "#E5E5E5 (outer) / #FFFFFF (inner slide area)",
+    "title_text": "#C00000",
+    "body_text": "#404040 (labels) / #000000 (arrows, w(t) labels)",
+    "accents": [
+      "#C00000 (title, borders, tag text)",
+      "#0000CC (panel borders)",
+      "#E8940A (PROJECTION borders)",
+      "#F5C99B (PROJECTION fill)",
+      "#008000 (OUTPUT borders)",
+      "#8B0000 (INPUT borders)",
+      "#FFFF99 (tag/badge fill)"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout (Arial/Helvetica-like). Title is bold, roughly 2x body size, red (#C00000), title-case, with three spaces between '(CBOW)' and 'vs' and a single space after 'vs'. Column headers INPUT/PROJECTION/OUTPUT are uppercase, small, gray, letter-spaced. Context-word labels use parenthesized math notation w(t-2) etc., in small dark text. CBOW and Skip-gram tags are bold red on yellow. Slide number is small dark text in a yellow oval.",
+  "animation_state": "Slide appears fully built (both diagrams complete). A mouse cursor rests near w(t-1) in the Skip-gram diagram, indicating the presenter was pointing at it during the recording; no partial-build state evident.",
+  "recreation_brief": "1. Set the slide background to light gray #E5E5E5; this bare strip forms the outer margin (~0%-8% on all sides) and holds no elements.\n2. Place the inner slide frame: one white (#FFFFFF) rectangle inset ~4% from all four edges with a thin 2pt dark-red #C00000 outline.\n3. Place the title text box centered at the top (~10%-90% width, ~8%-20% height): exact text 'Continuous bag-of-words (CBOW)   vs Skip-Gram Models', bold, red #C00000, sans-serif, ~28pt (about 2x body size); preserve the three spaces between '(CBOW)' and 'vs' and the single space after 'vs'.\n4. Place the slide-number badge in the top-right corner (~90%-97% width, ~8%-16% height): one small yellow #FFFF99 oval with a dark-olive #4A4A00 outline containing the text '22' in black #000000, ~12pt.\n5. Place the left panel frame: one no-fill rectangle with a 2.5pt blue #0000CC outline spanning ~12%-50% width and ~22%-97% height.\n6. Place the right panel frame: one no-fill rectangle with a 2.5pt blue #0000CC outline spanning ~50%-88% width and ~22%-97% height.\n7. In the left panel, left third: place the INPUT container \u2014 one tall rectangle with a dark-red #8B0000 outline and the small, uppercase, gray (#404040), letter-spaced header 'INPUT' at its top.\n8. Inside the left INPUT container: stack 4 small white squares with light-gray #D9D9D9 outlines vertically, each labeled to its left in small dark text, top to bottom: 'w(t-2)', 'w(t-1)', 'w(t+1)', 'w(t+2)'.\n9. In the left panel, middle third: place the PROJECTION container \u2014 one tall rectangle with an orange #E8940A outline, peach #F5C99B fill, and the header 'PROJECTION' (same header style as step 7).\n10. Inside the left PROJECTION container: place 1 small white square (#D9D9D9 outline) with the label 'SUM' above it.\n11. In the left panel, right third: place the OUTPUT container \u2014 one tall rectangle with a green #008000 outline and the header 'OUTPUT' (same header style as step 7).\n12. Inside the left OUTPUT container: place 1 small white square (#D9D9D9 outline) labeled 'w(t)' to its right.\n13. In the left panel: draw 4 thin black (#000000) arrows converging diagonally from each of the 4 INPUT squares into the SUM square.\n14. In the left panel: draw 1 horizontal black (#000000) arrow from the SUM square to the 'w(t)' OUTPUT square.\n15. At the bottom-center of the left panel (~88%-95% slide height): place 1 yellow #FFFF99 rounded rectangle with a dark-red #C00000 outline containing the text 'CBOW' in bold red #C00000, ~16pt.\n16. In the right panel, left third: place the INPUT container \u2014 one tall rectangle with a dark-red #8B0000 outline and the header 'INPUT' (same header style as step 7).\n17. Inside the right INPUT container: place 1 small white square (#D9D9D9 outline) labeled 'w(t)'.\n18. In the right panel, middle third: place the PROJECTION container \u2014 one tall rectangle with an orange #E8940A outline, peach #F5C99B fill, and the header 'PROJECTION' (same header style as step 7).\n19. Inside the right PROJECTION container: place 1 small white square (#D9D9D9 outline) with no label.\n20. In the right panel, right third: place the OUTPUT container \u2014 one tall rectangle with a green #008000 outline and the header 'OUTPUT' (same header style as step 7).\n21. Inside the right OUTPUT container: stack 4 small white squares (#D9D9D9 outlines) vertically, each labeled to its right in small dark text, top to bottom: 'w(t-2)', 'w(t-1)', 'w(t+1)', 'w(t+2)'.\n22. In the right panel: draw 1 horizontal black (#000000) arrow from the 'w(t)' INPUT square to the PROJECTION square.\n23. In the right panel: draw 4 black (#000000) arrows fanning out diagonally from the PROJECTION square to each of the 4 OUTPUT squares.\n24. At the bottom-center of the right panel (~88%-95% slide height): place 1 yellow #FFFF99 rounded rectangle with a dark-red #C00000 outline containing the text 'Skip-gram' in bold red #C00000, ~16pt.\n25. Do NOT draw the black mouse-pointer cursor visible near 'w(t-1)' in the right panel \u2014 it is a screen-recording artifact, not slide content.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "subtitle_or_header: kept null after verification \u2014 truly absent from the source; the only header text on the slide is the title itself (Title bar region), so filling it would have invented content.",
+      "verbatim_text.bullets: kept empty after verification \u2014 truly absent; the slide is diagram-only with zero bullet text. All 20 verbatim strings are captured in verbatim_text.labels (9 CBOW-diagram labels: INPUT, PROJECTION, OUTPUT, SUM, w(t-2), w(t-1), w(t+1), w(t+2), w(t); 8 Skip-gram-diagram labels: INPUT, PROJECTION, OUTPUT, w(t), w(t-2), w(t-1), w(t+1), w(t+2); plus tags 'CBOW', 'Skip-gram' and badge '22'), and the 5 word tokens are duplicated in verbatim_text.equations.",
+      "Corrected the title-spacing error: the original recreation_brief said 'double space around vs', but slide_title (and the Title bar region) contains three spaces between '(CBOW)' and 'vs' and one space after 'vs'; the rewritten brief and typography_notes now state the exact spacing.",
+      "Precision pass on colors in the brief: replaced the vague 'dark outline' on the slide-number badge with #4A4A00, 'dark gray' badge text with #000000 (both from the badge element's color list), 'light gray' square outlines with #D9D9D9 (from both diagrams' color lists), and 'gray' column headers with #404040 (from colors.body_text).",
+      "Rewrote recreation_brief from 9 multi-element steps into a 25-step ordered checklist; every step places exactly one shape (or one uniform group of identical shapes) with exact text, position, hex color, and shape type.",
+      "Verified one-to-one element coverage: all 5 visual_elements map to layout.regions (CBOW diagram -> Left panel, Skip-gram diagram -> Right panel, 2 highlight-box tags -> panel bottoms, badge -> Slide number region, decorative frame -> Outer margin), and all 20 labels appear in the checklist \u2014 no orphan or missing elements.",
+      "Harmonized the frame inset discrepancy: visual_elements states ~3-5% inset, the original brief used ~4%; the rewritten brief uses ~4% (within the stated range).",
+      "Confirmed no vague quantifiers ('several', 'some', 'many', 'a few', 'various') exist in the source; all counts are exact: 2 panels, 3 containers per panel, 4 input squares (CBOW), 4 output squares (Skip-gram), 5 arrows per diagram, 2 tags, 1 badge, 1 frame."
+    ],
+    "uncertain_items": [
+      "Exact font sizes (title ~28pt, tags ~16pt, badge ~12pt) and stroke weights (frame 2pt, panels 2.5pt) are estimates; the source JSON provides no exact typographic values.",
+      "The side of the CBOW input labels ('to its left') and of the Skip-gram output labels ('to its right') is stated only in the original recreation_brief; the visual_elements descriptions give top-to-bottom order but not the label side.",
+      "Inner-frame inset is approximate: visual_elements says ~3-5% from all edges; ~4% is used in the brief.",
+      "colors.body_text splits label colors ambiguously ('#404040 (labels) / #000000 (arrows, w(t) labels)'); the brief renders column headers gray #404040 (per layout.hierarchy) and word labels as 'small dark text' (per typography_notes) rather than forcing one hex per label.",
+      "Fill of the INPUT and OUTPUT containers is unspecified in the source (only PROJECTION has an explicit fill, #F5C99B); white or no fill both match the JSON.",
+      "No items were marked [?] in the source JSON; the entries above are estimate-level gaps only."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_022.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 22,
+      "image": "slide_022.jpg",
+      "kept_frame": "frame_01620.jpg",
+      "start_sec": 1583.0,
+      "end_sec": 1619.0,
+      "frame_count": 37
+    },
+    "elapsed_s": 71.0,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 908.0
+  }
+}

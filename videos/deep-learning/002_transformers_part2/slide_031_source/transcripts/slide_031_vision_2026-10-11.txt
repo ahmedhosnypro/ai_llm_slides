@@ -1,0 +1,60 @@
+1. TITLE
+No main slide title text is visible on this frame. The only title-like identifiers are the boxed headers "Vector at Pos âtâ" (top-left, red text) and "Vector at Pos ât+Î´â" (top-middle, red text), plus the yellow banner "Squared Distance Between Vector of Pos ât+Î´â and Vector of Pos âtâ". The slide topic is the sinusoidal positional-encoding rotation identity / squared distance between consecutive positions.
+Badge numeral (top-right yellow circle): 31
+
+2. ALL VERBATIM TEXT
+- "Vector at Pos âtâ" (red text, top-left box header)
+- "Vector at Pos ât+Î´â" (red text, top-middle box header)
+- "Let Ït=a , ÏÎ´=b" (black text, green-bordered white box, right side)
+- "sinÂ²(a) + cosÂ²(a)=1" (black text, blue-bordered white box, right side)
+- "Squared Distance" (red text) " Between " (black) "Vector of Pos ât+Î´â" (red) " and " (black) "Vector of Pos âtâ" (red) â yellow banner
+- "[ Two Consecutive Positions ]" (black text, right end of yellow banner)
+- "Irrespective of Position âtâ" (red text, rotated ~45Â°, on a yellow diagonal ribbon at right edge of the derivation panel)
+- "=2 (1-cos(ÏÎ´) )" (blue bold text, inside green-bordered result box at bottom right of derivation panel)
+- No axis labels, captions, or footnotes present.
+No unreadable strings; all text legible.
+
+3. EQUATIONS
+Top-left vector (mint background box):
+[ sin(Ït) ; cos(Ït) ]  (column vector, red text)
+With yellow-highlighted substitution terms below: "sin(a)" and "cos(a)"
+
+Top-middle derivation:
+[ Sin (Ï(t+Î´)) ; cos(Ï(t+Î´)) ] = [ sin(Ït) cos(ÏÎ´) + cos(Ït) sin(ÏÎ´) ; cos(Ït) cos(ÏÎ´) - sin(Ït) sin(ÏÎ´) ]
+(Note: first component written "Sin (Ï(t+Î´))" with capital S; red arrow points down to the substituted form:)
+[ sin(a) cos(b) + cos(a) sin(b) ; cos(a) cos(b) - sin(a) sin(b) ]
+IdentitÃ¤t box: sinÂ²(a) + cosÂ²(a)=1
+
+Main derivation panel (6 lines, each ending with "=" at right margin except the last, which resolves into the result box):
+Line 1: [ sin(a) cos(b) + cos(a) sin(b) - sin(a) ]Â² + [ - sin(a) sin(b) + cos(a) cos(b) - cos(a) ]Â² =
+Line 2: [ sin(a) (cos(b)-1) + cos(a) sin(b) ]Â² + [ - sin(a) sin(b) + cos(a) (cos(b) -1) ]Â² =
+Line 3: [ sin(a)Â² (cos(b)-1)Â² + cosÂ²(a) sinÂ²(b) + 2 sin(a) cos(a) sin(b) (cos(b)-1) ] + [ sinÂ²(a) sinÂ²(b) + cosÂ²(a) (cos(b) -1)Â² - 2 sin(a) cos(a) sin(b) (cos(b)-1) ] =
+Line 4: sin(a)Â² (cos(b)-1)Â² + cosÂ²(a) sinÂ²(b) + sinÂ²(a) sinÂ²(b) + cosÂ²(a) (cos(b) -1)Â² =   (a small stray tick/mark precedes the leading "sin(a)Â²" here)
+Line 5: [ sin(a)Â² + cosÂ²(a) ] (cos(b)-1)Â² + [ sin(a)Â² + cosÂ²(a) ] (sinÂ²(b) ) = (cos(b)-1)Â² + sinÂ²(b) =
+Line 6: cosÂ²(b) -2 cos(b) +1 + sinÂ²(b) = 2 -2 cos(b) = 2(1-cos(b) )
+Result box: =2 (1-cos(ÏÎ´) )
+
+Color coding within equations: terms/boxes highlighted â "sin(a)" and "cos(a)" in yellow highlight (line 1), final expression "2(1-cos(ÏÎ´) )" blue bold in green box.
+
+4. DIAGRAM TOPOLOGY
+This is not a node/arrow network diagram; it is an annotated mathematical derivation layout. Structure:
+- Container 1 (top-left): red-bordered box, header "Vector at Pos âtâ", containing a mint/light-cyan filled panel with the red column vector [sin(Ït); cos(Ït)], and below it two yellow-highlighted chips "sin(a)" and "cos(a)".
+- Arrow 1: short red downward arrow from the vector [sin(Ït); cos(Ït)] to the yellow chips sin(a)/cos(a) (substitution annotation Ït=a).
+- Container 2 (top-middle): dark-blue-bordered box, header "Vector at Pos ât+Î´â", containing the expanded rotation-formula column vector equal to the product form, then a red downward arrow to a second column vector with sin(a)/cos(a) substituted (yellow-highlighted inner terms "cos(ÏÎ´)"â"cos(b)" style substitutions).
+- Container 3 (right): green-bordered box "Let Ït=a , ÏÎ´=b"; below it a blue-bordered box "sinÂ²(a) + cosÂ²(a)=1".
+- Banner: full-width yellow strip separating top boxes from the derivation.
+- Container 4 (main): large blue-bordered white panel containing the 6-line derivation; a diagonal yellow ribbon at its right edge carries the rotated red caption "Irrespective of Position âtâ"; a green-bordered result box "=2 (1-cos(ÏÎ´) )" sits at the bottom-right inside/overlapping the panel.
+Data flow: top-to-bottom (definition â substitution â squared-distance expansion â simplification â result).
+Resemblance to published figures: Not a reproduction of Vaswani et al. 2017 Figure 1/2, Bloem, or Alammar illustrations. It is a hand-built instructor derivation of the property that the squared distance between sinusoidal positional encodings at positions t and t+Î´ depends only on Î´ (here shown as 2(1âcos(ÏÎ´))), which corresponds to the relative-position property of sinusoidal PE described in Vaswani et al. 2017 Â§3.5 ("we suspected that it would allow the model to easily attend by relative position, since for any fixed offset k, PE_pos+k can be represented as a linear function of PE_pos"). Content matches that claim; the visual layout is original to the lecture.
+
+5. NUMBERS/DATA
+- Badge numeral: 31
+- Exponents/constants in equations: squares (Â²), coefficients 2 and -2, constants 1, "-1" inside (cos(b)-1); final scalar result 2 (i.e., 2(1âcos(ÏÎ´))).
+- No tables, percentages, or dataset sizes.
+
+6. BUILD STATE / ARTIFACTS
+- Slide appears fully built; no reveal animation mid-state.
+- Small stray mark/tick before the leading "sin(a)Â²" in line 4 of the derivation (likely a cursor artifact or pen stroke).
+- Thick black bar along the very bottom edge of the frame (video letterboxing/crop artifact).
+- Slight red fringe on left/top borders of outer boxes (JPEG/video compression chroma artifact).
+- No cursor pointer, progress bar, watermark, or caption overlay visible.

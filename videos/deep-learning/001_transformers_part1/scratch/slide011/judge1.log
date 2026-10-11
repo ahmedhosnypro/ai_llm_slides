@@ -1,0 +1,11 @@
+[info] context header injected: VIEW: Slide 011 recreation — fidelity check vs original lecture frame | CAPTURE: IMG1=150dpi PNG render of a 13.33x7.5in PPTX; IMG2=original lecture video frame
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 4170877
+[warn] comparison :: images :: attempt 1: ABORT GarbageError: garbage: echo-class response (prompt-echo: 1 verbatim prompt span(s) >= 10 words (first: "home ahmed projects ai llm slides agents image analysis skill md"; copied-prompt coverage 214% of the response)) — abort+retry 1/3
+[warn] comparison :: images :: attempt 2: ABORT GarbageError: garbage: echo-class response (prompt-echo: 7 verbatim prompt span(s) >= 10 words (first: "home ahmed projects ai llm slides agents image analysis skill md"; copied-prompt coverage 175% of the response)) — abort+retry 2/3
+[warn] comparison :: images :: attempt 3: ABORT GarbageError: garbage: echo-class response (prompt-echo: 9 verbatim prompt span(s) >= 10 words (first: "read home ahmed projects ai llm slides agents image analysis skill md"; copied-prompt coverage 42% of the response)) — giving up
+[error] None: every model failed:
+  images: attempt 1: ABORT GarbageError: garbage: echo-class response (prompt-echo: 1 verbatim prompt span(s) >= 10 words (first: "home ahmed projects ai llm slides agents image analysis skill md"; copied-prompt coverage 214% of the response)) — abort+retry 1/3
+  images: attempt 2: ABORT GarbageError: garbage: echo-class response (prompt-echo: 7 verbatim prompt span(s) >= 10 words (first: "home ahmed projects ai llm slides agents image analysis skill md"; copied-prompt coverage 175% of the response)) — abort+retry 2/3
+  images: attempt 3: ABORT GarbageError: garbage: echo-class response (prompt-echo: 9 verbatim prompt span(s) >= 10 words (first: "read home ahmed projects ai llm slides agents image analysis skill md"; copied-prompt coverage 42% of the response)) — giving up
+[info] degenerate events: 3 (full-page tier: 0)
+[info] 0/1 result(s) analyzed successfully

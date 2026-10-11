@@ -1,0 +1,196 @@
+{
+  "slide_title": "Suggested Positional Encoders",
+  "subtitle_or_header": "(Rules Controlling Good Positional Encoder)",
+  "verbatim_text": {
+    "bullets": [
+      "[1] \u03b4 value should be same for Long sequence and short sequence",
+      "(same positions will be encoded with same values irrespective of the length of the sequence)",
+      "[2] Range of position encoded values should NOT depend on sequence length",
+      "(predefined fixed range  e.g. from 0 to 1 , form -1 to 1 , ...)",
+      "[3] Position Encoding  should be a  VECTOR (not scalar) and of same dimension as Word Embedding",
+      "(in order to easily  combine Position Encoding and Word Encoding vectors)"
+    ],
+    "labels": [
+      "Sequence of words with Length N",
+      "Position Embedding",
+      "Use Position Index",
+      "Word 0",
+      "Word 1",
+      "Word 2",
+      "Word 3",
+      "Word 4",
+      "Word 5",
+      "Word N-2",
+      "Word N-1",
+      "Pos 0",
+      "Pos 1",
+      "Pos 2",
+      "Pos 3",
+      "Pos 4",
+      "Pos 5",
+      "Pos N-2",
+      "Pos N-1",
+      "0",
+      "\u03b4",
+      "2\u03b4",
+      "3\u03b4",
+      "4\u03b4",
+      "5\u03b4",
+      "1-\u03b4",
+      "1",
+      "+\u03b4 (appears 6 times, one beneath each orange arrow)",
+      "24 (slide number in yellow circle, top-right)",
+      "black horizontal strip along the very bottom edge (video-player progress bar, not slide content)"
+    ],
+    "equations": [
+      "0",
+      "\u03b4",
+      "2\u03b4",
+      "3\u03b4",
+      "4\u03b4",
+      "5\u03b4",
+      "1-\u03b4",
+      "1",
+      "+\u03b4"
+    ]
+  },
+  "layout": {
+    "arrangement": "Centered red title at top with a yellow-highlighted blue subtitle directly beneath it; slide-number badge top-right; three stacked horizontal diagram rows in the upper-middle (each row = small text label on the left + one long dashed container of small boxes spanning the width); one large yellow rounded rules box across the bottom; thin black video-player bar at the very bottom edge.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, y ~5-12%, x ~25-75%",
+        "content": "Red bold title 'Suggested Positional Encoders'"
+      },
+      {
+        "name": "Subtitle",
+        "position": "top center, y ~12-17%, x ~28-72%",
+        "content": "Blue bold '(Rules Controlling Good Positional Encoder)' on a yellow highlight strip"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, x ~89-94%, y ~8-15%",
+        "content": "Yellow circle with dark outline containing '24'"
+      },
+      {
+        "name": "Row 1 - Word sequence",
+        "position": "upper area, y ~20-29%; label x ~5-15%, container x ~16-92%",
+        "content": "Gray italic label 'Sequence of words with Length N' + dashed dark-gray rounded container holding 8 red-outlined boxes (Word 0 ... Word 5, Word N-2, Word N-1) with 5 gray dots between Word 5 and Word N-2"
+      },
+      {
+        "name": "Row 2 - Position Embedding",
+        "position": "middle area, y ~33-42%; label x ~5-15%, container x ~16-92%",
+        "content": "Blue bold label 'Position Embedding' + dashed blue rounded container holding 8 blue-outlined light-blue boxes (Pos 0 ... Pos 5, Pos N-2, Pos N-1) with 5 blue dots between Pos 5 and Pos N-2"
+      },
+      {
+        "name": "Row 3 - Use Position Index",
+        "position": "lower-middle, y ~47-62%; label x ~5-15%, container x ~16-92%",
+        "content": "Red bold label 'Use Position Index' + dashed red rounded container holding 8 white red-outlined boxes (0, \u03b4, 2\u03b4, 3\u03b4, 4\u03b4, 5\u03b4, 1-\u03b4, 1) with a dotless gap between 5\u03b4 and 1-\u03b4, plus 6 orange '+\u03b4' arrows curving beneath the boxes"
+      },
+      {
+        "name": "Rules box",
+        "position": "bottom, y ~65-95%, x ~7-93%",
+        "content": "Light-yellow rounded rectangle with blue border containing the three numbered rules [1][2][3] in blue text with bold/underline emphasis"
+      },
+      {
+        "name": "Video bar",
+        "position": "very bottom, y ~97-100%, full width",
+        "content": "Solid black strip (video player progress bar, not slide content)"
+      }
+    ],
+    "hierarchy": "The red title dominates first (largest, boldest), followed by the blue-on-yellow subtitle; the three diagram rows read as equal parallel bands with the light-blue Pos boxes being the most color-saturated elements; the large pale-yellow rules box occupies the greatest area and anchors the bottom; smallest elements are the box labels, dots, and slide-number badge."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Row 1: a long dashed rounded-rectangle container (dark-gray dashed outline, no fill) holding 8 small rectangles with solid red borders and very light pink fill, labeled in red italic serif: Word 0, Word 1, Word 2, Word 3, Word 4, Word 5, Word N-2, Word N-1 (the 'N-2'/'N-1' set slightly low, subscript-like). Between Word 5 and Word N-2 sit 5 small solid gray dots indicating omitted middle words. To the left, outside the container, the gray italic three-line label 'Sequence of words with Length N'.",
+      "colors": [
+        "#CC0000",
+        "#FDECEC",
+        "#555555",
+        "#999999"
+      ],
+      "position": "upper band, y ~20-29%, spanning x ~5-92%"
+    },
+    {
+      "type": "diagram",
+      "description": "Row 2: identical structure to Row 1 but blue-themed: dashed blue rounded container holding 8 rectangles with solid blue borders and light periwinkle-blue fill, labeled in blue italic serif: Pos 0, Pos 1, Pos 2, Pos 3, Pos 4, Pos 5, Pos N-2, Pos N-1 (subscript-style N-2/N-1). Between Pos 5 and Pos N-2 sit 5 small solid steel-blue dots. Left label in blue bold: 'Position Embedding' (two lines).",
+      "colors": [
+        "#0000CC",
+        "#C9D6F2",
+        "#4A7EBB"
+      ],
+      "position": "middle band, y ~33-42%, spanning x ~5-92%"
+    },
+    {
+      "type": "diagram",
+      "description": "Row 3: dashed muted-red rounded container holding 8 white rectangles with solid red borders, labeled in red italic serif: 0, \u03b4, 2\u03b4, 3\u03b4, 4\u03b4, 5\u03b4, 1-\u03b4, 1. There is a wide empty gap (no dots) between the 5\u03b4 box and the 1-\u03b4 box. Beneath the boxes, 6 short orange curved arrows point rightward connecting consecutive boxes: 0\u2192\u03b4, \u03b4\u21922\u03b4, 2\u03b4\u21923\u03b4, 3\u03b4\u21924\u03b4, 4\u03b4\u21925\u03b4, and 1-\u03b4\u21921; each arrow carries the orange bold label '+\u03b4' underneath. Left label in red bold: 'Use Position Index' (two lines).",
+      "colors": [
+        "#CC0000",
+        "#FFFFFF",
+        "#CC6666",
+        "#E08000"
+      ],
+      "position": "lower-middle band, y ~47-62%, spanning x ~5-92%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Large rounded rectangle, pale-yellow fill, medium blue border, containing three numbered rules in blue sans-serif text. Rule [1]: '\u03b4 value should be same for Long sequence and short sequence' ('\u03b4 value should be same' bold) with sub-line '(same positions will be encoded with same values irrespective of the length of the sequence)' ('same positions' underlined). Rule [2]: 'Range of position encoded values should NOT depend on sequence length' (both halves bold) with sub-line '(predefined fixed range  e.g. from 0 to 1 , form -1 to 1 , ...)'. Rule [3]: 'Position Encoding  should be a  VECTOR (not scalar) and of same dimension as Word Embedding' ('Position Encoding should be a VECTOR' bold; 'same dimension' bold+underlined; 'Word Embedding' appears underlined [?]) with sub-line '(in order to easily  combine Position Encoding and Word Encoding vectors)'.",
+      "colors": [
+        "#FFFFCC",
+        "#0000CC"
+      ],
+      "position": "bottom band, y ~65-95%, x ~7-93%"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: small circle filled yellow with a thin dark outline, containing the number '24' in dark bold text.",
+      "colors": [
+        "#FFFF00",
+        "#333333"
+      ],
+      "position": "top-right corner, x ~89-94%, y ~8-15%"
+    },
+    {
+      "type": "arrow",
+      "description": "Six small curved orange arrows with arrowheads pointing right, one under each adjacent pair of position-index boxes, each labeled '+\u03b4' in orange bold sans-serif.",
+      "colors": [
+        "#E08000"
+      ],
+      "position": "beneath Row 3 boxes, y ~55-62%"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations on the slide. Only a white mouse-arrow cursor with black outline floating over the rules box area (~46% x, ~70% y), an artifact of the screen-recorded lecture."
+  ],
+  "colors": {
+    "background": "#E8E8E8",
+    "title_text": "#C00000",
+    "body_text": "#0000CC",
+    "accents": [
+      "#FFFF00 (subtitle highlight and slide-number badge)",
+      "#FFFFCC (rules box fill)",
+      "#E08000 (arrows and +\u03b4 labels)",
+      "#C9D6F2 (Pos box fill)",
+      "#FDECEC (Word box fill)",
+      "#999999 (gray dots / gray row-1 label)"
+    ]
+  },
+  "typography_notes": "Title and subtitle: bold sans-serif (Arial-like), title ~2x subtitle size, title red and subtitle blue-on-yellow-highlight, both centered. Diagram box labels: italic serif (Times New Roman Italic-like) with N-2/N-1 as subscript-style suffixes. Left row labels: sans-serif; Row 1 gray italic, Row 2 blue bold, Row 3 red bold. Rules text: sans-serif, blue, with bold key phrases, underlines on 'same positions' and 'same dimension' (and apparently 'Word Embedding' [?]), and bracketed numeric markers [1] [2] [3]. Slide number in a yellow circle. No all-caps except emphasis words like 'NOT' and 'VECTOR' which are capitalized in the source text.",
+  "animation_state": "Slide appears fully built: all three diagram rows and all three rules are visible simultaneously; no mid-build reveal. A mouse cursor is visible over the rules box, indicating live narration; the black strip at the very bottom is the video player's progress bar, not slide content.",
+  "recreation_brief": "1. Create a 16:9 slide with light-gray background #E8E8E8. 2. Top center (y ~5%): text box with 'Suggested Positional Encoders', Arial Bold ~32pt, red #C00000, centered. 3. Directly below: '(Rules Controlling Good Positional Encoder)', Arial Bold ~22pt, blue #0000CC, centered, with yellow #FFFF00 text highlight. 4. Top-right (x ~90%, y ~9%): 0.5-inch yellow #FFFF00 circle, thin dark outline, containing '24' in dark bold ~14pt. 5. Row 1 (y ~22%): left-aligned gray #808080 italic label 'Sequence of words with Length N' broken as 'Sequence of / words with / Length N'; draw a dashed dark-gray rounded rectangle from x ~16% to ~92%; inside it place 8 small rectangles (red #CC0000 1pt outline, fill #FDECEC) labeled in red italic serif ~14pt: Word 0, Word 1, Word 2, Word 3, Word 4, Word 5, Word N-2, Word N-1 (format N-2/N-1 as subscripts); between Word 5 and Word N-2 place 5 small gray #999999 dots in a horizontal line. 6. Row 2 (y ~37%): blue #0000CC bold label 'Position / Embedding'; dashed blue rounded container; 8 rectangles with blue outline and light-blue #C9D6F2 fill labeled in blue italic serif: Pos 0, Pos 1, Pos 2, Pos 3, Pos 4, Pos 5, Pos N-2, Pos N-1; 5 steel-blue #4A7EBB dots between Pos 5 and Pos N-2. 7. Row 3 (y ~50%): red #C00000 bold label 'Use Position / Index'; dashed muted-red #CC6666 rounded container; 8 white rectangles with red outline labeled in red italic serif: 0, \u03b4, 2\u03b4, 3\u03b4, 4\u03b4, 5\u03b4, 1-\u03b4, 1; leave a wide empty gap (no dots) between 5\u03b4 and 1-\u03b4; beneath the boxes draw 6 small orange #E08000 curved arrows pointing right (0\u2192\u03b4, \u03b4\u21922\u03b4, 2\u03b4\u21923\u03b4, 3\u03b4\u21924\u03b4, 4\u03b4\u21925\u03b4, 1-\u03b4\u21921), each with orange bold '+\u03b4' label underneath. 8. Bottom (y ~66-95%, x ~7-93%): rounded rectangle, fill #FFFFCC, blue #0000CC ~2pt border; inside, blue #0000CC Arial ~16pt text with three rules exactly as transcribed: '[1] \u03b4 value should be same for Long sequence and short sequence' (bold: '\u03b4 value should be same') then indented '(same positions will be encoded with same values irrespective of the length of the sequence)' (underline 'same positions'); '[2] Range of position encoded values should NOT depend on sequence length' (bold both clauses) then '(predefined fixed range  e.g. from 0 to 1 , form -1 to 1 , ...)' (keep the typo 'form'); '[3] Position Encoding  should be a  VECTOR (not scalar) and of same dimension as Word Embedding' (bold 'Position Encoding should be a VECTOR', bold+underline 'same dimension', underline 'Word Embedding' [?]) then '(in order to easily  combine Position Encoding and Word Encoding vectors)'. 9. Do not reproduce the mouse cursor or the black bottom strip; both are video-recording artifacts.",
+  "_meta": {
+    "frame": "slide_024.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 24,
+      "image": "slide_024.jpg",
+      "kept_frame": "frame_01289.jpg",
+      "start_sec": 1233.0,
+      "end_sec": 1288.0,
+      "frame_count": 56,
+      "old_slide": 46
+    },
+    "elapsed_s": 384.9
+  }
+}

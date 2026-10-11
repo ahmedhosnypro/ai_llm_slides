@@ -1,0 +1,216 @@
+{
+  "slide_title": "Multi Head Self Attention of Word X\u2082",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "15 (slide number, red text in yellow circle, top-right)",
+      "Similarity (gray pill; appears 5\u00d7, once on each head layer h=1\u2026h=5)",
+      "Weighted SUM (gray pill; appears 5\u00d7, once on each head layer)",
+      "Probabilities (gray pill, above Soft max)",
+      "Dot Product (gray box; may wrap as 'Dot' / 'Product')",
+      "K\u00b7q (small label with arrow, input to scaling box)",
+      "K\u00b7q/\u221ad (stacked fraction label between Scaling and Soft max)",
+      "Scaling by \u221ad (vertical text in pink box)",
+      "Soft max (vertical text in pink box)",
+      "\u03a3 (large blue sigma in white box)",
+      "h=1 (white text on black oval)",
+      "h=2 (white text on black oval)",
+      "h=3 (white text on black oval)",
+      "h=4 (white text on black oval)",
+      "h=5 (white text on black oval)",
+      "q\u2081 [?] (small label with subscript; subscript tiny, may be q\u2082)",
+      "W^q (white text on red box)",
+      "W^V (white text on green boxes; repeated ~4\u00d7 in orange ellipse rows)",
+      "W^U (white text on blue boxes; repeated, one column per head layer)",
+      "W^(1) (white text on small red box) [? superscript formatting]",
+      "W^(2) (white text on small red box) [? superscript formatting]",
+      "W^(3) (white text on small red box) [? superscript formatting]",
+      "W^(4) (white text on small red box) [? superscript formatting]",
+      "V\u2081 [?] (label beside first \u2297 multiply node; subscript tiny)",
+      "V\u2082 [?] (label beside second \u2297 node)",
+      "V\u2083 [?] (label beside third \u2297 node)",
+      "V\u2084 [?] (label beside fourth \u2297 node)",
+      "X (red letter repeated in many white input/output boxes)",
+      "K [?] (presumed letter inside green key boxes; too small to read)",
+      "*H* Heads (blue italic label along red curved arrow, literal asterisks)"
+    ],
+    "equations": [
+      "K\u00b7q / \u221ad (scaled dot-product: key\u00b7query divided by square root of d)",
+      "\u03a3 (weighted summation of probability-weighted values V\u2081\u2026V\u2084)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Full-bleed diagram slide with no bullet text: thin dark-red rectangular border frames the slide; a thinner blue rectangular border sits inside it; a huge multi-layer attention architecture diagram fills ~85% of the canvas; a yellow circular slide-number badge '15' overlaps the red border at top-right; the two-tone bold title line sits bottom-center inside the blue border; a thick red curved arrow with blue label '*H* Heads' sweeps up the right side; four small red W^(1)\u2013W^(4) boxes sit at bottom-right of the front layer.",
+    "regions": [
+      {
+        "name": "Frame + slide number",
+        "position": "edges of slide; badge at ~89\u201393% width, 10\u201318% height",
+        "content": "Dark-red outer rectangle border, blue inner rectangle border, yellow circle with red '15' overlapping the red border top-right."
+      },
+      {
+        "name": "Front head layer h=1",
+        "position": "center-left, ~12\u201366% width, 30\u201380% height",
+        "content": "Salmon/red rounded rectangle containing the full attention data-flow: orange ellipse of [X][W^V] rows, green key ellipse, Dot Product box, blue-dotted score lines, 'Scaling by \u221ad' and 'Soft max' pink vertical boxes, 'Probabilities' pill, \u03a3 box, four red \u2297 nodes with V\u2081\u2013V\u2084 labels, blue W^U boxes, green-dashed output container of X boxes; 'Similarity' and 'Weighted SUM' pills and black 'h=1' oval on its top edge."
+      },
+      {
+        "name": "Query row",
+        "position": "bottom-left of h=1, ~19\u201341% width, 71\u201378% height",
+        "content": "'q\u2081' label with tiny hatched box, red 'W^q' box, green-dashed container of four X boxes with the 2nd highlighted magenta (word X\u2082), small red arrow pointing at it."
+      },
+      {
+        "name": "Receding head layers h=2\u2013h=5",
+        "position": "diagonal band center \u2192 top-right, ~25\u201388% width, 12\u201365% height",
+        "content": "Lavender (h=2), yellow (h=3), light-green (h=4), peach (h=5) rounded rectangles, each offset up-right, each showing only its top-edge 'Similarity' + 'Weighted SUM' pills, black 'h=N' oval, and right-edge columns of white X boxes and blue W^U boxes; small partially occluded boxes (green dashed X box, solid green box, dark maroon box) peek out at the very top."
+      },
+      {
+        "name": "Gray translucent plane",
+        "position": "upper-left, ~14\u201345% width, 14\u201338% height",
+        "content": "Semi-transparent gray parallelogram laid over the back layers' left portions, with a faint circular arc [?] and a mouse cursor artifact near its lower edge."
+      },
+      {
+        "name": "Red '*H* Heads' arrow",
+        "position": "right side, ~60\u201385% width, 42\u201382% height",
+        "content": "Thick red curved arrow from bottom-center sweeping clockwise up the right side, arrowhead pointing up toward h=5; blue italic label '*H* Heads' along it."
+      },
+      {
+        "name": "W^(1)\u2013W^(4) boxes",
+        "position": "~62\u201366% width, 65\u201378% height",
+        "content": "Four small red rectangles with white labels stacked vertically at the arrow's tail."
+      },
+      {
+        "name": "Title",
+        "position": "bottom-center, ~34\u201369% width, 84\u201390% height",
+        "content": "'Multi Head Self Attention of Word X\u2082' in bold two-color text."
+      }
+    ],
+    "hierarchy": "The salmon h=1 layer with its dense internal flowchart dominates; the receding pastel layers (h=2\u2013h=5) create visual depth behind it; the thick red arrow is the strongest single accent; the title is bold but much smaller than the diagram; pills, ovals and box labels are the smallest elements."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "3-D stacked 'multi-head' metaphor: five identical attention-layer rounded rectangles receding diagonally up-right. Front layer tagged 'h=1' (black oval, white text) is salmon; behind it h=2 lavender, h=3 yellow, h=4 light green, h=5 peach. Each visible top edge carries a gray 'Similarity' pill (left) and gray 'Weighted SUM' pill (right); each right edge shows a green-dashed container of white boxes with red 'X' letters plus a column of blue 'W^U' boxes. Partially occluded inner boxes of back layers peek out at top: a green-dashed [X] box (topmost, h=5 output), a solid green box below-left of it, and a dark maroon box (likely an inner W^q) [?].",
+      "colors": [
+        "#EE8A8A",
+        "#C9A8D8",
+        "#EDE87F",
+        "#C8E6B8",
+        "#F5CE9A",
+        "#D9D9D9",
+        "#3333CC",
+        "#00B050",
+        "#000000"
+      ],
+      "position": "diagonal band from center-left to top-right"
+    },
+    {
+      "type": "flowchart",
+      "description": "h=1 internal data-flow, left\u2192right: (a) large orange ellipse holding 4 stacked rows of [white box with red 'X'] + [green box 'W^V']; (b) green ellipse with 4 small green key boxes [K?]; (c) gray box 'Dot Product'; (d) four vertical connector lines studded with blue dots (similarity-score matrix); (e) label 'K\u00b7q' with small arrow feeding a pink vertical rounded box 'Scaling by \u221ad' (text rotated 90\u00b0, maroon); (f) stacked-fraction label 'K\u00b7q/\u221ad'; (g) pink vertical rounded box 'Soft max' (rotated 90\u00b0); (h) gray pill 'Probabilities' above with a small green arrow; (i) white box with blue border containing large blue '\u03a3'; (j) four red \u2297 (circle-X multiply) nodes cascading diagonally below \u03a3, each with a label V\u2081/V\u2082/V\u2083/V\u2084 [?] and a small beige hatched vector box; (k) four blue 'W^U' boxes stacked at right; (l) green-dashed rounded container with 4 white 'X' boxes (layer output). Thin red connector lines wire Soft max \u2192 \u2297 nodes \u2192 \u03a3 \u2192 W^U \u2192 outputs.",
+      "colors": [
+        "#F5A050",
+        "#6ABF6A",
+        "#D9D9D9",
+        "#DDA0DD",
+        "#8B0000",
+        "#0000FF",
+        "#CC0000",
+        "#3333CC",
+        "#00B050",
+        "#E8D8B0"
+      ],
+      "position": "inside front salmon layer h=1"
+    },
+    {
+      "type": "arrow",
+      "description": "Thick red curved block arrow: tail near bottom-center (~60% width, 82% height) beside the W^(1)\u2013W^(4) boxes, sweeping clockwise up the right side, arrowhead near ~83% width, 43% height pointing up toward the h=5 layer; blue italic label '*H* Heads' runs along its upper stretch, slightly rotated.",
+      "colors": [
+        "#CC0000",
+        "#0000CC"
+      ],
+      "position": "right side of slide"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Query construction at bottom of h=1: small label 'q\u2081 [?]' with a tiny hatched box sits above a red box 'W^q'; below them a green-dashed rounded container holds four white 'X' boxes, the 2nd filled magenta/pink with dashed magenta border (= the attended word X\u2082); a small red arrow points up at the highlighted box from lower-left.",
+      "colors": [
+        "#CC0000",
+        "#FF66CC",
+        "#00B050",
+        "#FFFFFF"
+      ],
+      "position": "bottom-left of h=1 layer"
+    },
+    {
+      "type": "other",
+      "description": "Four small red rectangles stacked vertically labeled W^(1), W^(2), W^(3), W^(4) in white text \u2014 per-head projection matrices at the tail of the big red arrow.",
+      "colors": [
+        "#CC0000",
+        "#FFFFFF"
+      ],
+      "position": "~62\u201366% width, 65\u201378% height"
+    },
+    {
+      "type": "other",
+      "description": "Semi-transparent gray parallelogram 'plane' over the upper-left of the stack, overlapping the h=3\u2013h=5 'Similarity' pills; a faint circular arc is visible inside it [?]; a small white mouse-pointer cursor (recording artifact) sits near its lower edge at ~31% width, ~28% height.",
+      "colors": [
+        "#999999 (\u224840% transparency)"
+      ],
+      "position": "upper-left, ~14\u201345% width, 14\u201338% height"
+    },
+    {
+      "type": "other",
+      "description": "Frame + badge: thin dark-red rectangle border around the content area; thinner blue rectangle border inside it; yellow circle with red outline at top-right containing bold red '15'.",
+      "colors": [
+        "#C00000",
+        "#0000CC",
+        "#FFFF99"
+      ],
+      "position": "slide edges; badge at ~89\u201393% width, 10\u201318% height"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations \u2014 the slide is 100% vector shapes, boxes, ellipses, arrows and text.",
+    "Small white mouse-pointer cursor near ~31% width, ~28% height \u2014 screen-recording artifact, not slide content.",
+    "Black horizontal bar across the very bottom ~5% of the video frame \u2014 video-player artifact, not slide content."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#1F3864 (dark navy for 'Self Attention of Word') with #CC0000 (red for 'Multi Head' and 'X\u2082')",
+    "body_text": "#333333 (dark gray/black diagram labels)",
+    "accents": [
+      "#C00000/#CC0000 (red frame, big arrow, W^q and W^(1\u20134) boxes, 'Multi Head', X letters)",
+      "#0000CC (blue inner border, \u03a3, '*H* Heads', blue score dots)",
+      "#3333CC (W^U boxes)",
+      "#F08080/#EE8A8A (h=1 salmon layer)",
+      "#C9A8D8 (h=2 lavender layer)",
+      "#EDE87F (h=3 yellow layer)",
+      "#C8E6B8 (h=4 light-green layer)",
+      "#F5CE9A (h=5 peach layer)",
+      "#F5A050 (orange input ellipse)",
+      "#6ABF6A (green key ellipse)",
+      "#DDA0DD (pink Scaling/Soft max boxes)",
+      "#00B050 (W^V boxes, dashed green containers)",
+      "#FF66CC (magenta highlighted X\u2082 box)",
+      "#FFFF99 (slide-number badge)",
+      "#D9D9D9 (gray pills/boxes)",
+      "#000000 (h=N ovals)"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Helvetica-like). Title: bold, ~26\u201330 px, two-color (red + dark navy) with a red subscript '2' on X. Diagram labels: ~9\u201313 px bold; pill texts ('Similarity', 'Weighted SUM', 'Probabilities') small bold dark-gray on light-gray pills. 'Scaling by \u221ad' and 'Soft max' are rotated 90\u00b0 (reading bottom-to-top) in maroon on pink boxes. 'h=1'\u2013'h=5' are white bold on black ovals. 'K\u00b7q/\u221ad' is rendered as a stacked vertical fraction. '*H* Heads' is blue italic with literal asterisks around H. Slide number '15' is bold red on yellow. Box letters 'X' are red serif-less capitals; W-labels are white on colored boxes with superscripts.",
+  "animation_state": "Slide appears fully built \u2014 all five head layers (h=1\u2026h=5) are visible simultaneously, no mid-reveal bullets or builds. A live mouse cursor is visible near the upper 'Similarity' pills, indicating pointer movement during recording.",
+  "recreation_brief": "1. White 16:9 slide. Draw a no-fill rectangle border, 2.25 pt, #C00000, inset ~6% from all edges; inside it a second no-fill rectangle border, 1.5 pt, #0000CC, inset ~8%.\n2. Top-right, overlapping the red border (~91% width, 14% height): 0.9 cm oval, fill #FFFF99, outline #C00000 1.5 pt, text '15' bold red ~14 pt.\n3. Front layer h=1: rounded rectangle spanning ~12\u201366% width, ~30\u201380% height, fill #F08080, no line. On its top edge place gray (#D9D9D9) pills 'Similarity' (~27% width) and 'Weighted SUM' (~50% width), and a black oval 'h=1' with white bold text (~63% width).\n4. Inside h=1, left\u2192right: (a) orange #F5A050 ellipse (~12\u201319% width) with 4 rows of [white box, red 'X'] + [green #00B050 box, white 'W^V']; (b) green #6ABF6A ellipse with 4 small green key boxes; (c) gray rectangle 'Dot Product'; (d) four vertical thin lines with blue dots at crossings; (e) pink #DDA0DD vertical rounded rectangle with rotated maroon text 'Scaling by \u221ad', plus label 'K\u00b7q' with a small arrow above it; (f) stacked fraction text 'K\u00b7q/\u221ad'; (g) pink vertical rounded rectangle with rotated maroon text 'Soft max'; (h) gray pill 'Probabilities' above with a small green arrow; (i) white box, blue 1.5 pt outline, large blue '\u03a3'; (j) four red \u2297 nodes (circle with X) cascading diagonally below \u03a3, each labeled V\u2081, V\u2082, V\u2083, V\u2084 with a small beige hatched box; (k) four blue #3333CC boxes 'W^U' (white text); (l) green-dashed rounded container with four white boxes bearing red 'X'. Connect with thin red lines: Soft max \u2192 each \u2297, \u2297 row \u2192 \u03a3 \u2192 W^U \u2192 output X boxes.\n5. Bottom of h=1: small text 'q\u2081' with a tiny hatched box; red #CC0000 box with white 'W^q'; below, a green-dashed rounded container with four white 'X' boxes, the 2nd filled #FF66CC with magenta dashed outline; small red arrow from lower-left pointing to the highlighted box.\n6. Back layers: duplicate the h=1 group 4\u00d7; recolor fills h=2 #C9A8D8, h=3 #EDE87F, h=4 #C8E6B8, h=5 #F5CE9A; offset each copy ~4% width right and ~4% height up; send backward in z-order (h=5 deepest). On each copy keep only: 'Similarity' pill, 'Weighted SUM' pill, black oval 'h=2'\u2026'h=5', and the right-edge columns of white 'X' boxes and blue 'W^U' boxes; delete occluded internals.\n7. At the very top of the stack add small partially visible boxes: green-dashed [X] box (~63% width, 13% height), a solid green box just below-left, and a dark maroon box (~52% width, 24% height).\n8. Gray plane: freeform parallelogram over the upper-left of the stack (~24\u201345% width, 14\u201338% height), fill #999999 at ~40% transparency, no outline.\n9. Big arrow: thick curved block arrow #C00000 (~10 pt): tail at ~60% width/82% height, curving clockwise up the right side, head at ~83% width/43% height pointing up toward h=5. Add rotated text box along it: '*H* Heads', #0000CC, bold italic ~12 pt.\n10. Four rectangles (~3% \u00d7 3.5% each), fill #CC0000, white bold text 'W^(1)', 'W^(2)', 'W^(3)', 'W^(4)', stacked vertically at ~63% width, 65\u201378% height.\n11. Title bottom-center (~86% height), one bold line ~26 px: 'Multi Head ' in #CC0000 + 'Self Attention of Word ' in #1F3864 + 'X' in #CC0000 + '2' as a red subscript.\n12. No photos anywhere; ignore the mouse cursor and the bottom black bar (both are video-recording artifacts, not slide content).",
+  "_meta": {
+    "frame": "slide_015.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 15,
+      "image": "slide_015.jpg",
+      "kept_frame": "frame_00561.jpg",
+      "start_sec": 549.0,
+      "end_sec": 560.0,
+      "frame_count": 12,
+      "old_slide": 24
+    },
+    "elapsed_s": 663.0
+  }
+}

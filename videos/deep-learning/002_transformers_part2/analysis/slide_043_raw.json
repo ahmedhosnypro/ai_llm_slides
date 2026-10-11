@@ -1,0 +1,183 @@
+{
+  "slide_title": "Batch Normalization",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Batch Normalization Calculate Mean and Variance of Each Mini-Batch instead of Calculating Mean and Variance of the Whole Data.",
+      "The mean and variance will differ from mini-batch to another  (Source of Error).",
+      "Mini Batch Size should be large enough to minimize \"batching\" effect.  (Constrain)"
+    ],
+    "labels": [
+      "43",
+      "Batch Normalization",
+      "Calculate (then Normalize) \u03bc, \u03c3",
+      "for ALL Samples in the batch",
+      "(for each channel)",
+      "Feature Vector",
+      "Channels",
+      "Batch size"
+    ],
+    "equations": [
+      "Calculate (then Normalize) \u03bc, \u03c3"
+    ]
+  },
+  "layout": {
+    "arrangement": "Red-framed white slide. Large red title centered at top. Slide number badge (yellow circle '43') at top-right corner. Middle band has three elements side by side: 3D cube-stack diagram on the left, cream-colored callout text box in the center, second 3D cube-stack diagram with red dimension arrows/labels on the right. Full-width green-bordered summary box with three text lines spans the bottom. Thin black bar at the very bottom edge of the frame.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~20-80% width, ~5-15% height",
+        "content": "'Batch Normalization' in large bold red text"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, ~90-97% width, ~7-14% height",
+        "content": "Yellow circle with red outline containing '43' in red"
+      },
+      {
+        "name": "Left cube diagram",
+        "position": "middle left, ~8-35% width, ~15-65% height",
+        "content": "Isometric 3D stack of colored cubes representing a batch of feature maps (no labels)"
+      },
+      {
+        "name": "Center callout box",
+        "position": "middle center, ~34-66% width, ~30-55% height",
+        "content": "Cream box with red border: definition of Batch Normalization with \u03bc, \u03c3, plus small pencil icon"
+      },
+      {
+        "name": "Right cube diagram",
+        "position": "middle right, ~63-95% width, ~8-65% height",
+        "content": "Isometric 3D cube stack annotated with red double-headed arrows labeled 'Feature Vector' (vertical, left), 'Channels' (horizontal, bottom), 'Batch size' (diagonal, right)"
+      },
+      {
+        "name": "Bottom summary box",
+        "position": "bottom, ~7-93% width, ~65-95% height",
+        "content": "White box with green border containing three bold statements (blue, blue, red)"
+      },
+      {
+        "name": "Bottom black bar",
+        "position": "very bottom edge, full width, ~97-100% height",
+        "content": "Thin solid black strip (likely video frame edge)"
+      }
+    ],
+    "hierarchy": "Title dominates (largest, bold, red). The two colorful 3D cube diagrams are the next most visually dominant elements. The cream callout box draws the eye in the center. Bottom summary text is medium-sized bold; the blue lines read first, then the red line. Slide number badge is small."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Left 3D isometric cube stack: a block built of small cubes. Front-left face is a 4x4 grid of magenta/purple cubes; the right-side face shows an orange column slice; the top face shows stacked rows of layers in dark navy, yellow, green, and orange, suggesting a batch of multi-channel feature-map volumes. No text labels on this one.",
+      "colors": [
+        "#CC00CC",
+        "#FF8000",
+        "#FFFF00",
+        "#00CC00",
+        "#223355",
+        "#333344"
+      ],
+      "position": "middle left of slide"
+    },
+    {
+      "type": "diagram",
+      "description": "Right 3D isometric cube stack (same style): front face is a 4x4 grid of magenta/purple cubes; behind it, parallel slices in green, orange, yellow, light blue, and dark navy recede to the upper right, representing batch samples/channels. Annotated with three red double-headed arrows: vertical arrow on the left side labeled 'Feature Vector' (text rotated 90\u00b0, reading bottom-to-top), horizontal arrow under the front bottom edge labeled 'Channels', and diagonal arrow along the right receding edge labeled 'Batch size' (text rotated along the diagonal).",
+      "colors": [
+        "#CC00CC",
+        "#00CC00",
+        "#FF8000",
+        "#FFFF00",
+        "#6699CC",
+        "#223355",
+        "#CC0000"
+      ],
+      "position": "middle right of slide"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Center callout box: cream/light-yellow fill, thin red border, slight drop shadow. Text lines: 'Batch Normalization' (red bold), 'Calculate (then Normalize) \u03bc, \u03c3' (black, with \u03bc and \u03c3 in red), 'for ALL Samples in the batch' ('ALL Samples' in bold blue), '(for each channel)' (green, underlined). A small pencil/cursor icon sits at the bottom-left inside the box.",
+      "colors": [
+        "#FFFDE0",
+        "#CC0000",
+        "#000000",
+        "#0000CC",
+        "#009900"
+      ],
+      "position": "middle center of slide"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Bottom summary box: white fill, medium green border. Three left-aligned bold paragraphs: line 1 blue ('Batch Normalization Calculate Mean and Variance of Each Mini-Batch instead of Calculating Mean and Variance of the Whole Data.'), line 2 blue with trailing '(Source of Error).' in black ('The mean and variance will differ from mini-batch to another  (Source of Error).'), line 3 red ('Mini Batch Size should be large enough to minimize \"batching\" effect.  (Constrain)').",
+      "colors": [
+        "#FFFFFF",
+        "#00AA00",
+        "#0000CC",
+        "#000000",
+        "#CC0000"
+      ],
+      "position": "bottom of slide, nearly full width"
+    },
+    {
+      "type": "icon",
+      "description": "Slide number badge: yellow filled circle with red outline containing the number '43' in red.",
+      "colors": [
+        "#FFFF00",
+        "#CC0000"
+      ],
+      "position": "top-right corner"
+    },
+    {
+      "type": "other",
+      "description": "Decorative red rectangular frame border running just inside the slide edges on all four sides.",
+      "colors": [
+        "#990000"
+      ],
+      "position": "perimeter of slide"
+    },
+    {
+      "type": "arrow",
+      "description": "Three red double-headed dimension arrows on the right cube diagram (vertical, horizontal, diagonal) as described above; no other arrows on the slide.",
+      "colors": [
+        "#CC0000"
+      ],
+      "position": "around right cube diagram"
+    }
+  ],
+  "imagery": [
+    "Left isometric 3D cube-stack illustration depicting a batch of multi-channel feature maps; glossy colored cubes (magenta front, orange side, multicolored layered top); middle-left of slide.",
+    "Right isometric 3D cube-stack illustration, same style, with magenta front face and green/orange/yellow/blue/dark slices behind; annotated with red dimension arrows; middle-right of slide.",
+    "Small pencil/cursor icon inside the center callout box, bottom-left of the box."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#CC0000",
+    "body_text": "#0000CC",
+    "accents": [
+      "#990000",
+      "#CC0000",
+      "#0000CC",
+      "#009900",
+      "#00AA00",
+      "#FFFDE0",
+      "#FFFF00",
+      "#CC00CC",
+      "#FF8000",
+      "#00CC00",
+      "#223355"
+    ]
+  },
+  "typography_notes": "All text is sans-serif (Arial-like). Title is very large, bold, red, title-case. Callout box and bottom-box text are bold; bottom box uses sentence case with emphasized color switches (blue for main statements, black for parentheticals in line 2, red for line 3). '(for each channel)' is green, bold, and underlined. 'ALL Samples' is bold blue within a black sentence. \u03bc and \u03c3 are red Greek letters inline. Diagram labels ('Feature Vector', 'Channels', 'Batch size') are small bold red, rotated to align with their arrows. Slide number is red inside a yellow circle. No numbered bullet markers; paragraphs are separated by blank lines.",
+  "animation_state": "Slide appears fully built/static; no mid-build elements, all text and diagrams revealed.",
+  "recreation_brief": "1. Create a 16:9 slide with white background; draw a dark-red (#990000) rectangle outline inset ~0.15\" from all edges as a frame. 2. Add title text box top-center: 'Batch Normalization', Arial bold ~40pt, red #CC0000. 3. Top-right corner: draw a ~0.5\" circle, yellow #FFFF00 fill, red outline, with text '43' in red bold ~14pt. 4. Middle-left: insert an isometric 3D cube-stack graphic (build from small cubes: front face 4x4 magenta #CC00CC cubes, right face orange #FF8000 column, top rows in dark navy #223355, yellow #FFFF00, green #00CC00, orange #FF8000); no labels. 5. Middle-center: draw a rectangle ~1/3 slide width, fill cream #FFFDE0, thin red border, subtle shadow; add four left-aligned lines: 'Batch Normalization' (red bold), 'Calculate (then Normalize) \u03bc, \u03c3' (black, \u03bc and \u03c3 red), 'for ALL Samples in the batch' (black with 'ALL Samples' bold blue #0000CC), '(for each channel)' (green #009900, bold, underlined); place a small pencil icon at the box's bottom-left. 6. Middle-right: duplicate the cube-stack graphic but add receding slices in green, orange, yellow, light blue #6699CC, and dark navy behind the magenta front face; add three red #CC0000 double-headed arrows with bold red labels: vertical arrow left of the block labeled 'Feature Vector' (rotated 90\u00b0), horizontal arrow below the front edge labeled 'Channels', diagonal arrow along the right receding edge labeled 'Batch size' (rotated to match the diagonal). 7. Bottom: draw a full-width rectangle, white fill, green #00AA00 border; inside, three bold ~18pt paragraphs with spacing between: (a) blue #0000CC: 'Batch Normalization Calculate Mean and Variance of Each Mini-Batch instead of Calculating Mean and Variance of the Whole Data.' (b) blue #0000CC: 'The mean and variance will differ from mini-batch to another' followed by black '(Source of Error).' (c) red #CC0000: 'Mini Batch Size should be large enough to minimize \"batching\" effect.' followed by '(Constrain)'. 8. Optionally add a thin black strip along the very bottom edge to match the source frame.",
+  "_meta": {
+    "frame": "slide_043.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 43,
+      "image": "slide_043.jpg",
+      "kept_frame": "frame_03541.jpg",
+      "start_sec": 3392.0,
+      "end_sec": 3540.0,
+      "frame_count": 149,
+      "old_slide": 112
+    },
+    "elapsed_s": 183.4
+  }
+}

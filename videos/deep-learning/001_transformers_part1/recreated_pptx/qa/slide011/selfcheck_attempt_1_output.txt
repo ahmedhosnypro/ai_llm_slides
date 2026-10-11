@@ -1,0 +1,50 @@
+render 2001x1125, k=2.08438
+--- house_chrome_check on RENDER: rc=1
+HOUSE CHROME CHECK: FAIL
+  - panel: no gray columns found
+  - left red border stroke missing at mid-height
+  - right red border stroke missing at mid-height
+--- house_chrome_check on ORIGINAL: rc=1
+HOUSE CHROME CHECK: FAIL
+  - panel: no gray columns found
+  - panel bottom 535 does not reach slide bottom 540
+  - left red border stroke missing at mid-height
+  - right red border stroke missing at mid-height
+  OK   chrome: panel visible above white box (y 55..108)
+  OK   chrome: panel visible below white box (y 505..530)
+  OK   chrome: left border stroke at y 60..110
+  OK   chrome: right border stroke at y 60..110
+  OK   chrome: bottom border stroke across (row ~538-540)
+  OK   chrome: top border stroke across (row ~43-45)
+  OK   chrome: badge center (1860,148) vs (1861,148)
+  OK   chrome: badge diameter 70 vs 75
+  OK   chrome: badge purple ring present
+containment: canvas-margin ink L0 R0 T0; inner-ring ink bottom=0 right=0 left=0 top=0
+yellow bbox render: (np.int64(998), np.int64(337), np.int64(1884), np.int64(591)) ref: (998, 337, 1884, 589)
+orange bbox render: (np.int64(96), np.int64(638), np.int64(1016), np.int64(941)) ref: (95, 637, 1015, 940)
+notebox bbox render: (np.int64(955), np.int64(853), np.int64(1854), np.int64(1092)) ref: (956, 854, 1853, 1090)
+EQ x1: render(frame-px) (np.float64(144.2), np.float64(470.0), np.float64(158.1), np.float64(491.6)) vs orig (np.int64(145), np.int64(470), np.int64(157), np.int64(491))  maxdev=1.1px
+EQ x2: render(frame-px) (np.float64(279.7), np.float64(470.0), np.float64(293.1), np.float64(491.6)) vs orig (np.int64(279), np.int64(470), np.int64(293), np.int64(491))  maxdev=0.7px
+EQ x3: render(frame-px) (np.float64(413.7), np.float64(470.0), np.float64(427.1), np.float64(491.6)) vs orig (np.int64(414), np.int64(470), np.int64(427), np.int64(491))  maxdev=0.6px
+EQ o1: render(frame-px) (np.float64(548.0), np.float64(123.6), np.float64(560.9), np.float64(134.1)) vs orig (np.int64(549), np.int64(123), np.int64(559), np.int64(131))  maxdev=3.1px
+EQ o2: render(frame-px) (np.float64(682.5), np.float64(123.6), np.float64(695.9), np.float64(134.1)) vs orig (np.int64(683), np.int64(123), np.int64(695), np.int64(132))  maxdev=2.1px
+EQ o3: render(frame-px) (np.float64(816.6), np.float64(123.6), np.float64(829.5), np.float64(134.1)) vs orig (np.int64(817), np.int64(123), np.int64(830), np.int64(131))  maxdev=3.1px
+BAND title: ink px=9509
+BAND subtitle: ink px=5927
+BAND Decoder: ink px=1958
+BAND enc-label: ink px=4134
+BAND dec-label: ink px=4137
+BAND Encoder: ink px=1934
+BAND yellow-text: ink px=33672
+BAND orange-text: ink px=37960
+BAND heading: ink px=5853
+BAND b1: ink px=3935
+BAND b2: ink px=7126
+BAND b3: ink px=4383
+BAND attention: ink px=482
+note text line tops (frame px): [447, 474, 499]
+pitches: [27, 25] (orig: 25.5, 26, 26)
+
+==== SUMMARY ====
+FAILS: 0
+OK: 32

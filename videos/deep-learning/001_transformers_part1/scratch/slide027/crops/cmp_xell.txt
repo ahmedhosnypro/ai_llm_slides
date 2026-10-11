@@ -1,0 +1,27 @@
+# QA Comparison â Slide 027, dense-region crop (xell)
+
+## 1. Verbatim Text Transcription
+
+**IMG1 (render crop):**
+- Large blue "X" with a subscript cursive "â" (script lowercase ell) â reads as **X_â**
+- No other legible text.
+
+**IMG2 (original crop):**
+- Blue "X" with a very small subscript glyph that appears to be "j" or possibly a tiny "â" â the glyph is blurred at this resolution; reads as **X?** where the subscript is not clearly legible.
+- No other legible text.
+
+## 2. Similarities
+- **Purpose/structure:** Both show the same diagram element â a white square box with a thin purple/blue border, centered on a cream/peach background, containing a bold blue "X" with a subscript character positioned at the lower right of the X.
+- **Color palette:** Identical scheme â cream background, white box fill, purple-blue border, dark blue glyph.
+- **Composition:** Same framing region (single boxed symbol); both crops are 2x upscaled from the same slide region.
+- **Glyph styling:** The "X" in both is a bold serif-style capital X in the same dark blue.
+
+## 3. Differences
+- **Subscript glyph:** IMG1 shows a clearly legible cursive "â". IMG2's subscript is smaller, blurred, and shaped more like a "j" (with a hook/descender) â it does not clearly read as "â". This is the key discrepancy between the two.
+- **Box size/proportion:** In IMG1 the white box occupies a larger fraction of the crop and the "X_â" fills the box more fully. In IMG2 the box is smaller within the frame with more cream margin around it, and the glyph is smaller relative to the box.
+- **Border weight:** IMG1's border appears slightly thicker/more saturated; IMG2's border is thinner and lighter (consistent with low-res source blur).
+- **Sharpness:** IMG1 is crisper (vector-render origin); IMG2 shows compression blur and softer edges throughout.
+- **Defects:** No clipping, overlap, placeholders, or garbage strings in either image.
+
+## 4. Verdict
+**IMG1 is better.** Concrete evidence: the subscript glyph is unambiguously a cursive "â" matching the expected "xell" content, whereas IMG2's subscript is a blurred, ambiguous mark that reads more like "j". IMG1 also has cleaner edges, better contrast on the border, and stronger glyph-to-box scaling. The only caveat: if strict fidelity to the original frame is the goal, IMG2's smaller box-in-frame proportions and lighter border reflect the source; but for legibility and correct glyph rendering, IMG1 is superior.

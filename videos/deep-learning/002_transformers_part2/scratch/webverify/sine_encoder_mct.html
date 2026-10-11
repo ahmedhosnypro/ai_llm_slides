@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head >
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+			<style type="text/css">
+				.slide-excerpt { width: 100%; }
+				.slide-excerpt { top: 0; }
+				.slide-excerpt { left: 0; }
+				.flexslider { max-width: 737px; max-height: 400px; }
+				.slide-image { max-height: 400px; }
+			</style>
+			<style type="text/css">
+				@media only screen
+				and (min-device-width : 320px)
+				and (max-device-width : 480px) {
+					.slide-excerpt { display: none !important; }
+				}
+			</style> 
+	<!-- This site is optimized with the Yoast SEO plugin v28.6 - https://yoast.com/product/yoast-seo-wordpress/ -->
+	<title>What is a sine encoder (aka sine-cosine encoder)?</title>
+	<meta name="description" content="A sine encoder is very similar to an incremental encoder, but sine encoders provide position information in the form of analog sinusoidal signals." />
+	<link rel="canonical" href="https://www.motioncontroltips.com/what-is-a-sine-encoder-aka-sine-cosine-encoder/" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="What is a sine encoder (aka sine-cosine encoder)?" />
+	<meta name="twitter:description" content="A sine encoder is very similar to an incremental encoder, but sine encoders provide position information in the form of analog sinusoidal signals." />
+	<meta name="twitter:image" content="https://www.motioncontroltips.com/wp-content/uploads/2019/10/Sine-Cosine-Signals-Feature.jpg" />
+	<meta name="twitter:creator" content="@Motion_Control" />
+	<meta name="twitter:site" content="@Motion_Control" />
+	<meta name="twitter:label1" content="Written by" />
+	<meta name="twitter:data1" content="Danielle Collins" />
+	<meta name="twitter:label2" content="Est. reading time" />
+	<meta name="twitter:data2" content="3 minutes" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"Article","@id":"https:\/\/www.motioncontroltips.com\/what-is-a-sine-encoder-aka-sine-cosine-encoder\/#article","isPartOf":{"@id":"https:\/\/www.motioncontroltips.com\/what-is-a-sine-encoder-aka-sine-cosine-encoder\/"},"author":{"name":"Danielle Collins","@id":"https:\/\/www.motioncontroltips.com\/#\/schema\/person\/d0f96342387fe85ab6bcf4be38efc0e7"},"headline":"What is a sine encoder (aka sine-cosine encoder)?","datePublished":"2019-10-16T18:13:10+00:00","dateModified":"2022-10-17T10:08:08+00:00","mainEntityOfPage":{"@id":"https:\/\/www.motioncontroltips.com\/what-is-a-sine-encoder-aka-sine-cosine-encoder\/"},"wordCount":656,"commentCount":0,"image":{"@id":"https:\/\/www.motioncontroltips.com\/what-is-a-sine-encoder-aka-sine-cosine-encoder\/#primaryimage"},"thumbnailUrl":"https:\/\/www.motioncontroltips.com\/wp-content\/uploads\/2019\/10\/Sine-Cosine-Signals-Feature.jpg","articleSection":["Encoders","FAQs + basics","Featured","Incremental Encoders"],"inLanguage":"en-US","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["https:\/\/www.motioncontroltips.com\/what-is-a-sine-encoder-aka-sine-cosine-encoder\/#respond"]}]},{"@type":"WebPage","@id":"https:\/\/www.motioncontroltips.com\/what-is-a-sine-encoder-aka-sine-cosine-encoder\/","url":"https:\/\/www.motioncontroltips.com\/what-is-a-sine-encoder-aka-sine-cosine-encoder\/","name":"What is a sine encoder (aka sine-cosine encoder)?","isPartOf":{"@id":"https:\/\/www.motioncontroltips.com\/#website"},"primaryImageOfPage":{"@id":"https:\/\/www.motioncontroltips.com\/what-is-a-sine-encoder-aka-sine-cosine-encoder\/#primaryimage"},"image":{"@id":"https:\/\/www.motioncontroltips.com\/what-is-a-sine-encoder-aka-sine-cosine-encoder\/#primaryimage"},"thumbnailUrl":"https:\/\/www.motioncontroltips.com\/wp-content\/uploads\/2019\/10\/Sine-Cosine-Signals-Feature.jpg","datePublished":"2019-10-16T18:13:10+00:00","dateModified":"2022-10-17T10:08:08+00:00","author":{"@id":"https:\/\/www.motioncontroltips.com\/#\/schema\/person\/d0f96342387fe85ab6bcf4be38efc0e7"},"description":"A sine encoder is very similar to an incremental encoder, but sine encoders provide position information in the form of analog sinusoidal signals.","breadcrumb":{"@id":"https:\/\/www.motioncontroltips.com\/what-is-a-sine-encoder-aka-sine-cosine-encoder\/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https:\/\/www.motioncontroltips.com\/what-is-a-sine-encoder-aka-sine-cosine-encoder\/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https:\/\/www.motioncontroltips.com\/what-is-a-sine-encoder-aka-sine-cosine-encoder\/#primaryimage","url":"https:\/\/www.motioncontroltips.com\/wp-content\/uploads\/2019\/10\/Sine-Cosine-Signals-Feature.jpg","contentUrl":"https:\/\/www.motioncontroltips.com\/wp-content\/uploads\/2019\/10\/Sine-Cosine-Signals-Feature.jpg","width":740,"height":400,"caption":"sine encoder"},{"@type":"BreadcrumbList","@id":"https:\/\/www.motioncontroltips.com\/what-is-a-sine-encoder-aka-sine-cosine-encoder\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https:\/\/www.motioncontroltips.com\/"},{"@type":"ListItem","position":2,"name":"What is a sine encoder (aka sine-cosine encoder)?"}]},{"@type":"WebSite","@id":"https:\/\/www.motioncontroltips.com\/#website","url":"https:\/\/www.motioncontroltips.com\/","name":"Motion Control Tips","description":"Automation • Motion Control • Power Transmission","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https:\/\/www.motioncontroltips.com\/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":"Person","@id":"https:\/\/www.motioncontroltips.com\/#\/schema\/person\/d0f96342387fe85ab6bcf4be38efc0e7","name":"Danielle Collins","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https:\/\/secure.gravatar.com\/avatar\/65685c48aa5a601fffd59fd7ce3c5c473c9f8a2d9cdb607055e9975bbf390556?s=96&d=mm&r=g","url":"https:\/\/secure.gravatar.com\/avatar\/65685c48aa5a601fffd59fd7ce3c5c473c9f8a2d9cdb607055e9975bbf390556?s=96&d=mm&r=g","contentUrl":"https:\/\/secure.gravatar.com\/avatar\/65685c48aa5a601fffd59fd7ce3c5c473c9f8a2d9cdb607055e9975bbf390556?s=96&d=mm&r=g","caption":"Danielle Collins"},"sameAs":["https:\/\/www.motioncontroltips.com"],"url":"https:\/\/www.motioncontroltips.com\/author\/dcollins2\/"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//scripts.wtwhmedia.com' />
+<link rel='dns-prefetch' href='//static.addtoany.com' />
+<link rel='dns-prefetch' href='//kit.fontawesome.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel="alternate" type="application/rss+xml" title="Motion Control Tips &raquo; Feed" href="https://www.motioncontroltips.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Motion Control Tips &raquo; Comments Feed" href="https://www.motioncontroltips.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Motion Control Tips &raquo; What is a sine encoder (aka sine-cosine encoder)? Comments Feed" href="https://www.motioncontroltips.com/what-is-a-sine-encoder-aka-sine-cosine-encoder/feed/" />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://www.motioncontroltips.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.motioncontroltips.com%2Fwhat-is-a-sine-encoder-aka-sine-cosine-encoder%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://www.motioncontroltips.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.motioncontroltips.com%2Fwhat-is-a-sine-encoder-aka-sine-cosine-encoder%2F&#038;format=xml" />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link rel='stylesheet' id='news-pro-css' href='https://www.motioncontroltips.com/wp-content/themes/news-pro/style.css?ver=3.2.3' media='all' />
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-break:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style^=border-color],[style*=";border-color"],[style*="; border-color"]){border-style:solid}html :where([style^=border-top-color],[style*=";border-top-color"],[style*="; border-top-color"]){border-top-style:solid}html :where([style^=border-right-color],[style*=";border-right-color"],[style*="; border-right-color"]){border-right-style:solid}html :where([style^=border-bottom-color],[style*=";border-bottom-color"],[style*="; border-bottom-color"]){border-bottom-style:solid}html :where([style^=border-left-color],[style*=";border-left-color"],[style*="; border-left-color"]){border-left-style:solid}html :where([style^=border-width],[style*=";border-width"],[style*="; border-width"]){border-style:solid}html :where([style^=border-top-width],[style*=";border-top-width"],[style*="; border-top-width"]){border-top-style:solid}html :where([style^=border-right-width],[style*=";border-right-width"],[style*="; border-right-width"]){border-right-style:solid}html :where([style^=border-bottom-width],[style*=";border-bottom-width"],[style*="; border-bottom-width"]){border-bottom-style:solid}html :where([style^=border-left-width],[style*=";border-left-width"],[style*="; border-left-width"]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='stylesheet' id='bcct_style-css' href='https://www.motioncontroltips.com/wp-content/plugins/better-click-to-tweet/assets/css/styles.css?ver=3.0' media='all' />
+<link rel='stylesheet' id='wp-pagenavi-css' href='https://www.motioncontroltips.com/wp-content/plugins/wp-pagenavi/css/wp-pagenavi.css?ver=3.0.1' media='all' />
+<link rel='stylesheet' id='dashicons-css' href='https://www.motioncontroltips.com/wp-includes/css/dashicons.min.css?ver=7.1.3' media='all' />
+<link rel='stylesheet' id='google-fonts-css' href='//fonts.googleapis.com/css?family=Raleway:400,700&#038;ver=3.2.3' media='all' />
+<link rel='stylesheet' id='addtoany-css' href='https://www.motioncontroltips.com/wp-content/plugins/add-to-any/addtoany.min.css?ver=1.16' media='all' />
+<link rel='stylesheet' id='wtwh-uni-gam-prestitial-style-css' href='https://www.motioncontroltips.com/wp-content/plugins/wtwh-universal-gam/assets/css/frontend/prestitial/prestitial.css?ver=1791744225' media='all' />
+<link rel='stylesheet' id='slider_styles-css' href='https://www.motioncontroltips.com/wp-content/plugins/genesis-responsive-slider/assets/style.css?ver=1.0.1' media='all' />
+<script id="addtoany-core-js-before">
+window.a2a_config=window.a2a_config||{};a2a_config.callbacks=[];a2a_config.overlays=[];a2a_config.templates={};
+a2a_config.track_links = 'bitly';
+a2a_config.track_links_key = 'addtoany|R_cc6a4017b0274d1d86f2397771b70136'; // username|API key delimited by |
+a2a_config.templates = {
+    twitter: "${title} ${link} @Motion_Control"
+};
+
+//# sourceURL=addtoany-core-js-before
+</script>
+<script id="addtoany-core-js" defer src="https://static.addtoany.com/menu/page.js"></script>
+<script id="jquery-core-js" src="https://www.motioncontroltips.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"></script>
+<script id="jquery-migrate-js" src="https://www.motioncontroltips.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"></script>
+<script id="addtoany-jquery-js" defer src="https://www.motioncontroltips.com/wp-content/plugins/add-to-any/addtoany.min.js?ver=1.1"></script>
+<script id="wtwh-uni-gam-unified-ad-logic-js-extra">
+var wtwh_gam_ad_config = {"slots":[{"account_id":"5272491","network_code":"dw_network","ad_unit_code":"mct_header","div_id":"div-gpt-mct-header","desktop_sizes":["728x90"],"mobile_sizes":["300x250"],"targeting":{"articletitle":"what-is-a-sine-encoder-aka-sine-cosine-encoder","cat_target":"344ec9c100e3e1c4a4ed9688c8ccd631,encoders,basics-and-faqs,featured,incremental-encoders,ros","contentHash":"344ec9c100e3e1c4a4ed9688c8ccd631","category":"FAQs  basics","ParentCategory":"FAQs  basics","ad-keywords":["motors"]},"skip_ads":false,"ad_type":"display"},{"account_id":"5272491","network_code":"dw_network","ad_unit_code":"mct_sidebar1","div_id":"div-gpt-mct_sidebar1","desktop_sizes":["300x250","300x600"],"mobile_sizes":["300x250"],"targeting":{"articletitle":"what-is-a-sine-encoder-aka-sine-cosine-encoder","cat_target":"344ec9c100e3e1c4a4ed9688c8ccd631,encoders,basics-and-faqs,featured,incremental-encoders,ros","contentHash":"344ec9c100e3e1c4a4ed9688c8ccd631","category":"FAQs  basics","ParentCategory":"FAQs  basics","ad-keywords":["motors"]},"skip_ads":false,"ad_type":"display"},{"account_id":"5272491","network_code":"dw_network","ad_unit_code":"mct_sidebarbottom","div_id":"div-gpt-mct_sidebarbottom","desktop_sizes":["300x250","300x600"],"mobile_sizes":["300x250"],"targeting":{"articletitle":"what-is-a-sine-encoder-aka-sine-cosine-encoder","cat_target":"344ec9c100e3e1c4a4ed9688c8ccd631,encoders,basics-and-faqs,featured,incremental-encoders,ros","contentHash":"344ec9c100e3e1c4a4ed9688c8ccd631","category":"FAQs  basics","ParentCategory":"FAQs  basics","ad-keywords":["motors"]},"skip_ads":false,"ad_type":"display"},{"account_id":"5272491","network_code":"dw_network","ad_unit_code":"mct_largeleader","div_id":"jumbo-banner-ad-container","desktop_sizes":["970x90","970x250"],"mobile_sizes":["0x0"],"targeting":{"articletitle":"what-is-a-sine-encoder-aka-sine-cosine-encoder","cat_target":"344ec9c100e3e1c4a4ed9688c8ccd631,encoders,basics-and-faqs,featured,incremental-encoders,ros","contentHash":"344ec9c100e3e1c4a4ed9688c8ccd631","category":"FAQs  basics","ParentCategory":"FAQs  basics","ad-keywords":["motors"]},"skip_ads":false,"ad_type":"display"},{"account_id":"5272491","network_code":"dw_network","ad_unit_code":"mct_mlt_keyword_ad","div_id":"mlt-keyword-ad-container","desktop_sizes":["240x350"],"mobile_sizes":["240x350"],"targeting":{"ad-keywords":["motors"]},"skip_ads":false,"ad_type":"keyword_related"},{"account_id":"5272491","network_code":"dw_network","ad_unit_code":"mct_wallpaper","div_id":"div-gpt-wallpaper","desktop_sizes":["1x1"],"mobile_sizes":["1x1"],"targeting":{"articletitle":"what-is-a-sine-encoder-aka-sine-cosine-encoder","cat_target":"344ec9c100e3e1c4a4ed9688c8ccd631,encoders,basics-and-faqs,featured,incremental-encoders,ros","contentHash":"344ec9c100e3e1c4a4ed9688c8ccd631","category":"FAQs  basics","ParentCategory":"FAQs  basics","ad-keywords":["motors"]},"skip_ads":false,"ad_type":"wallpaper"},{"account_id":"5272491","network_code":"dw_network","ad_unit_code":"mct_allstreamflex","div_id":"div-gpt-allstreamflex","desktop_sizes":["1x1"],"mobile_sizes":["1x1"],"targeting":{"articletitle":"what-is-a-sine-encoder-aka-sine-cosine-encoder","cat_target":"344ec9c100e3e1c4a4ed9688c8ccd631,encoders,basics-and-faqs,featured,incremental-encoders,ros","contentHash":"344ec9c100e3e1c4a4ed9688c8ccd631","category":"FAQs  basics","ParentCategory":"FAQs  basics","ad-keywords":["motors"]},"skip_ads":false,"ad_type":"spotible"},{"account_id":"5272491","network_code":"dw_network","ad_unit_code":"mct_allstreamprelude","div_id":"div-gpt-allstreamprelude","desktop_sizes":["1x1"],"mobile_sizes":["1x1"],"targeting":{"articletitle":"what-is-a-sine-encoder-aka-sine-cosine-encoder","cat_target":"344ec9c100e3e1c4a4ed9688c8ccd631,encoders,basics-and-faqs,featured,incremental-encoders,ros","contentHash":"344ec9c100e3e1c4a4ed9688c8ccd631","category":"FAQs  basics","ParentCategory":"FAQs  basics","ad-keywords":["motors"]},"skip_ads":false,"ad_type":"spotible"},{"account_id":"5272491","network_code":"dw_network","ad_unit_code":"mct_keyword_ad","div_id":"content-keyword-ad-container","desktop_sizes":["728x90","300x600","600x300","300x250"],"mobile_sizes":["300x175","300x250"],"targeting":{"ad-keywords":["motors"]},"skip_ads":false,"ad_type":"keyword_content"}],"prestitial":{"account_id":"5272491","network_code":"dw_network","ad_unit_code":"mct_prestitial","div_id":"gam-holder-prestitial-banner","desktop_sizes":["640x480"],"mobile_sizes":["300x225"],"targeting":{"articletitle":"what-is-a-sine-encoder-aka-sine-cosine-encoder","cat_target":"344ec9c100e3e1c4a4ed9688c8ccd631,encoders,basics-and-faqs,featured,incremental-encoders,ros","contentHash":"344ec9c100e3e1c4a4ed9688c8ccd631","category":"FAQs  basics","ParentCategory":"FAQs  basics","ad-keywords":["motors"]},"skip_ads":false,"ad_type":"prestitial"},"enable_single_request":"","collapse_empty_divs":"1","page_url":"https://www.motioncontroltips.com/what-is-a-sine-encoder-aka-sine-cosine-encoder/","default_page_targeting":{"articletitle":"what-is-a-sine-encoder-aka-sine-cosine-encoder","cat_target":"344ec9c100e3e1c4a4ed9688c8ccd631,encoders,basics-and-faqs,featured,incremental-encoders,ros","contentHash":"344ec9c100e3e1c4a4ed9688c8ccd631","category":"FAQs  basics","ParentCategory":"FAQs  basics","ad-keywords":["motors"]},"auto_display_ads":"1","lazy_load_ads":"","load_gpt_library":"","has_keyword_ads":"1"};
+var wtwh_gam_ga4_targeting_values = {"ga4_targeting_values":{"articletitle":"what-is-a-sine-encoder-aka-sine-cosine-encoder","cat_target":"344ec9c100e3e1c4a4ed9688c8ccd631,encoders,basics-and-faqs,featured,incremental-encoders,ros","contentHash":"344ec9c100e3e1c4a4ed9688c8ccd631","category":"FAQs  basics","ParentCategory":"FAQs  basics","ad-keywords":["motors"]}};
+var PRESTITIALINFO = {"divId":"gam-holder-prestitial-banner","logoHeight":"100","logoWidth":"100","backgroundColor":"clear","siteUrl":"https://www.motioncontroltips.com","siteName":"Motion Control Tips","siteLogo":"svg","mainCss":"https://www.motioncontroltips.com/wp-content/plugins/wtwh-universal-gam/assets/css/frontend/prestitial/main.css?=2.0.0","prestitialCss":"https://www.motioncontroltips.com/wp-content/plugins/wtwh-universal-gam/assets/css/frontend/prestitial/prestitial.css?=2.0.0"};
+//# sourceURL=wtwh-uni-gam-unified-ad-logic-js-extra
+</script>
+<script id="wtwh-uni-gam-unified-ad-logic-js" src="https://www.motioncontroltips.com/wp-content/plugins/wtwh-universal-gam/assets/js/frontend/ad-config/unified-ad-logic.js?ver=1791744225"></script>
+<script id="wtwh-uni-gam-prestitial-font-awesome-js" src="https://kit.fontawesome.com/371676a4da.js?ver=1791744225"></script>
+<link rel="https://api.w.org/" href="https://www.motioncontroltips.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://www.motioncontroltips.com/wp-json/wp/v2/posts/20214" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.motioncontroltips.com/xmlrpc.php?rsd" />
+<link rel='shortlink' href='https://www.motioncontroltips.com/?p=20214' />
+<!-- Google Tag Manager for Global Container-->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MMC9PJ9');</script>
+<!-- End Google Tag Manager -->
+ 
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TXBWLZ9');</script>
+<!-- End Google Tag Manager -->
+ 
+
+
+
+<script type='text/javascript' src='https://sorgalla.com/jcarousel/dist/jquery.jcarousel.min.js'></script> 
+
+
+
+<meta name="google-site-verification" content="PE888JZEju948FdvDDPSZPB8HBIdL-D9cq2g2qEgLc0" />
+
+
+<meta name="google-site-verification" content="OJ6noIRpF9lWdx3JldGrZxXxJQwc81pR-cNjvhPfM7Q" />
+
+<script type='text/javascript'>
+jQuery(function() {
+  jQuery('.jcarousel')
+    .jcarousel({
+        // Core configuration goes here
+        wrap: 'both'
+    })
+    jQuery('.jcarousel-prev').jcarouselControl({
+        target: '-=1'
+    });
+    jQuery('.jcarousel-next').jcarouselControl({
+        target: '+=1'
+    });
+});
+</script>
+
+<style type="text/css">
+/*
+This is the visible area of you carousel.
+Set a width here to define how much items are visible.
+The width can be either fixed in px or flexible in %.
+Position must be relative!
+*/
+.jcarouselcontainer {
+    margin: 20px 28px;
+    padding: 0 30px;
+    position: relative;
+}
+.jcarousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+/*
+This is the container of the carousel items.
+You must ensure that the position is relative or absolute and
+that the width is big enough to contain all items.
+*/
+.jcarousel ul {
+    width: 20000em;
+    position: relative;
+
+    /* Optional, required in this case since it's a <ul> element */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+These are the item elements. jCarousel works best, if the items
+have a fixed width and height (but it's not required).
+*/
+.jcarousel li {
+    /* Required only for block elements like <li>'s */
+    float: left;
+    width: 200px;
+    margin: 0 30px 0 0 !important;
+    border-bottom: none !important;
+}
+/* removes ">" before list item */
+.jcarousel li::before {
+    content: none !important;
+}
+
+/* Author name */
+.jcarousel li a.authorname {
+    color: #000000;
+    font-weight: bold;
+}
+
+/* Author post title */
+.jcarousel li a.authorpost {
+    font-size: 13px;
+}
+
+/* JCarousel Arrows */
+.jcarousel-prev {
+    color: #000 !important;
+    display: block;
+    font-size: 30px;
+    font-weight: bold;
+    left: 0;
+    position: absolute;
+    top: 40px;
+}
+.jcarousel-next{
+    color: #000 !important;
+    display: block;
+    font-size: 30px;
+    font-weight: bold;
+    right: 0;
+    position: absolute;
+    top: 40px;
+}
+
+/* THREE FOOTERS */
+.footer-widgets-1, .footer-widgets-2, .footer-widgets-3 {
+  width: 330px;
+}
+ 
+
+
+</style>
+
+
+
+<style type="text/css">.site-title a { background: url(/wp-content/uploads/2016/07/motion-control-tips.png) no-repeat !important; }</style>
+<link rel="icon" href="https://www.motioncontroltips.com/wp-content/uploads/2021/05/cropped-Motion-favicon-PMDC-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://www.motioncontroltips.com/wp-content/uploads/2021/05/cropped-Motion-favicon-PMDC-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.motioncontroltips.com/wp-content/uploads/2021/05/cropped-Motion-favicon-PMDC-180x180.png" />
+<meta name="msapplication-TileImage" content="https://www.motioncontroltips.com/wp-content/uploads/2021/05/cropped-Motion-favicon-PMDC-270x270.png" />
+<style id="wp-custom-css">
+/*** MOBILE SLIDER TITLE ***/
+
+@media only screen and (max-width: 600px) {
+	.slide-excerpt {
+	display: block !important;
+}
+}
+
+@media only screen and (max-width: 600px) {
+h2 {
+  font-size: 18px;
+}
+}
+
+/*Design Guide Drop Down Menu*/
+
+
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+.motion-design-guides {
+  font-size: 14px;
+  font-family: Raleway, sans-serif;
+  width: 270px;
+  height: 50px;
+  text-align: center;
+  text-align-last: center;
+  -moz-text-align-last: center;
+  border-radius: 0px;
+  background-color: white;
+  color: #000;
+  border-top: 3px solid #000;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #e3e3e3;
+  text-transform: uppercase;
+  white-space: wrap;
+}
+
+.motion-design-guide-option {
+  text-align: center;
+  text-align-last: center;
+  -moz-text-align-last: center;
+  text-transform: uppercase;
+  width: 270px;
+  white-space: wrap;
+
+}
+
+.motion-design-guides:after {
+    content: "";
+    border: solid #000;
+    border-width: 0 1px 1px 0;
+    margin-left: 10px;
+    display: inline-block;
+    padding: 4px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.dropdown-content {
+	max-height: 400px;
+	overflow-y: scroll;
+}
+
+/* THREE FOOTERS */
+.footer-widgets-1, .footer-widgets-2, .footer-widgets-3 {
+  width: 330px !important;
+}
+
+@media only screen and (min-width: 970px) {
+#genesis-footer-widgets > div {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between !important;
+}
+}
+
+/* Search Page */
+body.search .site-inner {
+    padding-left: unset;
+    padding-right: unset;
+}
+ 
+/*Before header menu*/
+
+#menu-before-header-menu{display: flex;
+  justify-content: end;}
+
+#menu-before-header-menu li{margin-right: 15px !important;
+margin-top:15px;}
+
+#menu-before-header-menu li a{
+border: none !important;
+	padding: 15px 22.2px !important;
+}
+
+.nav-secondary{border-bottom: none !important;}
+.nav-secondary:focus{border-bottom: none !important;}
+
+.nav-secondary .menu-item a{
+	color: white !important;
+}
+
+#menu-item-27010 {
+  background-color: #6F6F70;
+  margin:
+		5px;align-content}
+
+#menu-item-27011 {
+  background-color: #00ABE9;
+  margin:
+		5px;align-content}
+
+.nav-secondary .current-menu-item > a:hover, .nav-secondary .genesis-nav-menu a:hover, .nav-secondary .genesis-nav-menu a:focus{
+	background-color: transparent !important;
+	color: white !important;
+	cursor: pointer !important;
+	outline: none !important;
+}
+
+</style>
+    <script id="wtwh-uni-gam-content-hash-variables">
+        var contentHash = "344ec9c100e3e1c4a4ed9688c8ccd631"; 
+        var cat_target  = "344ec9c100e3e1c4a4ed9688c8ccd631,encoders,basics-and-faqs,featured,incremental-encoders,ros";
+    </script>
+    <script>
+  (function () {
+    'use strict';
+
+    // ─── Globals ────────────────────────────────────────────────────────────────
+    window.dataLayer  = window.dataLayer  || [];
+    window.gtag       = window.gtag       || function () { dataLayer.push(arguments); };
+    window.googletag  = window.googletag  || { cmd: [] };
+
+    window.__cmpRegion = {
+      country:   "NL",
+      regulated: true
+    };
+
+    window.__wtwhConsentDebug = {
+      consentEvents: [],
+      gptMode: null
+    };
+
+    // ─── Helpers ────────────────────────────────────────────────────────────────
+    function log() {
+      try {
+        var args = Array.prototype.slice.call(arguments);
+        args.unshift('[WTWH Consent/GPT]');
+        console.log.apply(console, args);
+      } catch (e) {}
+    }
+
+    function dispatchWindowEvent(eventName, detail) {
+      try {
+        window.dispatchEvent(new CustomEvent(eventName, { detail: detail || {} }));
+      } catch (e) {
+        try {
+          var ev = document.createEvent('CustomEvent');
+          ev.initCustomEvent(eventName, false, false, detail || {});
+          window.dispatchEvent(ev);
+        } catch (err) {}
+      }
+    }
+
+    function getCookie(name) {
+      var nameEQ = name + '=';
+      var parts  = document.cookie.split(';');
+      for (var i = 0; i < parts.length; i++) {
+        var c = parts[i];
+        while (c.charAt(0) === ' ') c = c.substring(1);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length);
+      }
+      return null;
+    }
+
+    function hasKlaroCookie() {
+      return !!getCookie('klaro-consent');
+    }
+
+    function getKlaroManager() {
+      try {
+        if (!window.klaro || typeof window.klaro.getManager !== 'function') return null;
+        return window.klaro.getManager();
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function getStoredConsents() {
+      try {
+        var manager = getKlaroManager();
+        if (!manager || !manager.consents) return null;
+        return {
+          analytics: !!manager.consents.analytics,
+          marketing: !!manager.consents.marketing
+        };
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function getMarketingConsentState() {
+      var c = getStoredConsents();
+      return c ? c.marketing : null;
+    }
+
+    // ─── Consent state tracker ───────────────────────────────────────────────────
+    var consentState = {
+      initialized:          false,
+      lastAppliedSignature: null
+    };
+
+    function consentSignature(consents) {
+      return (consents.analytics ? '1' : '0') + '|' + (consents.marketing ? '1' : '0');
+    }
+
+    // ─── Core consent application ────────────────────────────────────────────────
+    function pushConsentEvent(eventName, analyticsGranted, marketingGranted) {
+      var detail = {
+        consent_analytics:        analyticsGranted ? 'granted' : 'denied',
+        consent_marketing:        marketingGranted ? 'granted' : 'denied',
+        consent_country:          window.__cmpRegion.country,
+        consent_regulated_region: window.__cmpRegion.regulated ? 'true' : 'false'
+      };
+
+      window.dataLayer.push({
+        event:                    eventName,
+        consent_analytics:        detail.consent_analytics,
+        consent_marketing:        detail.consent_marketing,
+        consent_country:          detail.consent_country,
+        consent_regulated_region: detail.consent_regulated_region
+      });
+
+      window.__wtwhConsentDebug.consentEvents.push({ event: eventName, detail: detail, ts: Date.now() });
+      dispatchWindowEvent(eventName, detail);
+      log('Consent event fired:', eventName, detail);
+    }
+
+    function updateGoogleConsent(consents) {
+      gtag('consent', 'update', {
+        analytics_storage:     consents.analytics ? 'granted' : 'denied',
+        ad_storage:            consents.marketing ? 'granted' : 'denied',
+        ad_user_data:          consents.marketing ? 'granted' : 'denied',
+        ad_personalization:    consents.marketing ? 'granted' : 'denied',
+        functionality_storage: 'granted',
+        security_storage:      'granted'
+      });
+    }
+
+    function applyInitialConsent(consents) {
+      if (!consents) return;
+      var sig = consentSignature(consents);
+      if (consentState.initialized) {
+        log('applyInitialConsent called after already initialized — skipping');
+        return;
+      }
+      updateGoogleConsent(consents);
+      pushConsentEvent('consent_initialized', consents.analytics, consents.marketing);
+      consentState.initialized          = true;
+      consentState.lastAppliedSignature = sig;
+    }
+
+    function applyUpdatedConsent(consents) {
+      if (!consents) return;
+      var sig = consentSignature(consents);
+      if (sig === consentState.lastAppliedSignature) {
+        log('Consent unchanged — skipping duplicate consent_updated');
+        return;
+      }
+      updateGoogleConsent(consents);
+      pushConsentEvent('consent_updated', consents.analytics, consents.marketing);
+      consentState.initialized          = true;
+      consentState.lastAppliedSignature = sig;
+    }
+
+    // ─── Step 1: gtag default ────────────────────────────────────────────────────
+    gtag('consent', 'default', {
+      ad_storage:            window.__cmpRegion.regulated ? 'denied' : 'granted',
+      ad_user_data:          window.__cmpRegion.regulated ? 'denied' : 'granted',
+      ad_personalization:    window.__cmpRegion.regulated ? 'denied' : 'granted',
+      analytics_storage:     window.__cmpRegion.regulated ? 'denied' : 'granted',
+      functionality_storage: 'granted',
+      security_storage:      'granted'
+    });
+
+    // ─── Step 2: Non-regulated — initialize immediately as fully granted ─────────
+    if (!window.__cmpRegion.regulated) {
+      var openConsents = { analytics: true, marketing: true };
+      consentState.initialized          = true;
+      consentState.lastAppliedSignature = consentSignature(openConsents);
+      pushConsentEvent('consent_initialized', true, true);
+    }
+
+    // ─── Klaro config ────────────────────────────────────────────────────────────
+    window.klaroConfig = {
+      version:               1,
+      elementID:             'klaro',
+      storageMethod:         'cookie',
+      storageName:           'klaro-consent',
+      cookieExpiresAfterDays: 365,
+      default:               false,
+      mustConsent:           true,
+      acceptAll:             true,
+      hideDeclineAll:        false,
+      htmlTexts:             true,
+      lang:                  'en',
+      translations: {
+        en: {
+          consentNotice: {
+            description: 'We use cookies for analytics and marketing. You can manage your preferences at any time.',
+            learnMore:   'Manage preferences'
+          },
+          consentModal: {
+            title:       'This website uses cookies',
+            description: 'We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you\u2019ve provided to them or that they\u2019ve collected from your use of their services.'
+          },
+          ok:      'Accept all',
+          decline: 'Reject all',
+          save:    'Save preferences',
+          close:   'Close'
+        }
+      },
+      services: [
+        { name: 'analytics', title: 'Analytics', purposes: ['analytics'], required: false, default: false },
+        { name: 'marketing', title: 'Marketing', purposes: ['marketing'], required: false, default: false }
+      ],
+      callback: function (consent, service) {
+        try {
+          var manager = getKlaroManager();
+          if (!manager || !manager.consents) return;
+
+          var currentConsents = {
+            analytics: !!manager.consents.analytics,
+            marketing: !!manager.consents.marketing
+          };
+
+          if (!consentState.initialized && hasKlaroCookie()) {
+            applyInitialConsent(currentConsents);
+            return;
+          }
+
+          applyUpdatedConsent(currentConsents);
+        } catch (e) {
+          console.error('Klaro callback error', e);
+        }
+      }
+    };
+
+    // ─── Open consent modal ──────────────────────────────────────────────────────
+    window.openConsentSettings = function () {
+      try {
+        if (window.klaro && typeof window.klaro.show === 'function') {
+          window.klaro.show(window.klaroConfig, true);
+          return;
+        }
+        var manager = getKlaroManager();
+        if (manager && typeof manager.showConsentModal === 'function') {
+          manager.showConsentModal();
+        }
+      } catch (e) {
+        console.warn('Unable to open Klaro consent settings', e);
+      }
+    };
+
+    // ─── Klaro onload handler ────────────────────────────────────────────────────
+    window.__applyKlaroInitialConsent = function () {
+      try {
+        if (!window.__cmpRegion.regulated) return;
+        if (!hasKlaroCookie()) return;
+        var manager = getKlaroManager();
+        if (!manager || !manager.consents) return;
+        applyInitialConsent({
+          analytics: !!manager.consents.analytics,
+          marketing: !!manager.consents.marketing
+        });
+      } catch (e) {
+        console.warn('Klaro consent initialization failed', e);
+      }
+    };
+
+    // ─── GPT bootstrap ───────────────────────────────────────────────────────────
+    // Always uses securepubads (standard GPT).
+    // For denied-consent users, applies nonPersonalizedAds instead of switching
+    // to the limited GPT URL — this preserves pubads() availability and gives
+    // access to the standard demand pool (contextual only, no user signals).
+    (function () {
+      if (window.__wtwhGptBootstrapInitialized) return;
+      window.__wtwhGptBootstrapInitialized = true;
+
+      var GPT_MODE_FULL    = 'full';
+      var GPT_MODE_NPA     = 'npa';   // non-personalized ads — replaces "limited"
+
+      // Single GPT URL for all cases
+      var GPT_URL = 'https://securepubads.g.doubleclick.net/tag/js/gpt.js';
+
+      var gptScriptRequested   = false;
+      var gptScriptLoaded      = false;
+      var gptDecisionFinalized = false;
+
+      function redactUrl(rawUrl) {
+        if (!rawUrl) return '';
+        try {
+          var url = new URL(rawUrl, window.location.origin);
+          ['s', 'loc'].forEach(function (key) {
+            if (url.searchParams.has(key)) url.searchParams.set(key, 'REDACTED');
+          });
+          return url.href;
+        } catch (e) {
+          return rawUrl;
+        }
+      }
+
+      // Returns null when consent state is not yet known (regulated, Klaro not loaded yet).
+      // Returning null defers GPT loading until a consent signal arrives.
+      function selectGptMode() {
+        if (!window.__cmpRegion.regulated) return GPT_MODE_FULL;
+
+        var marketingConsent = getMarketingConsentState();
+        if (marketingConsent === true)  return GPT_MODE_FULL;
+        if (marketingConsent === false) return GPT_MODE_NPA;
+
+        // null = Klaro hasn't restored consent yet — wait
+        return null;
+      }
+
+      function dispatchGptReady(mode) {
+        window.__gptMode  = mode;
+        window.__gptReady = true;
+        window.__wtwhConsentDebug.gptMode = mode;
+
+        window.dataLayer.push({ event: 'gpt_ready', gpt_mode: mode });
+        dispatchWindowEvent('gpt_ready', { gpt_mode: mode });
+        log('gpt_ready dispatched with mode:', mode);
+      }
+
+      function configureGptAfterLoad(mode) {
+        window.googletag.cmd.push(function () {
+          try {
+            if (typeof googletag.pubads !== 'function') {
+              log('pubads() unavailable after GPT load');
+              return;
+            }
+
+            if (mode === GPT_MODE_NPA) {
+              // Consent denied: serve non-personalized ads.
+              // Uses standard GPT pipeline with no user signals.
+              // Better fill rate than limited ads URL; compliant with
+              // ad_storage: denied + nonPersonalizedAds: true.
+              try {
+                googletag.pubads().setPrivacySettings({
+                  nonPersonalizedAds: true
+                });
+                log('Configured GPT for non-personalized ads (consent denied)');
+              } catch (e) {
+                log('Failed to set nonPersonalizedAds', e);
+              }
+            } else {
+              log('Configured GPT for full personalized ads');
+            }
+
+            var cleanPage = redactUrl(window.location.href);
+            var cleanRef  = redactUrl(document.referrer);
+
+            try { googletag.pubads().set('page_url', cleanPage); } catch (e) {}
+            if (cleanRef) {
+              try { googletag.pubads().set('referrer_url', cleanRef); } catch (e) {}
+            }
+            try {
+              googletag.pubads().setTargeting('s',   'REDACTED');
+              googletag.pubads().setTargeting('loc', 'REDACTED');
+            } catch (e) {}
+
+            dispatchGptReady(mode);
+          } catch (e) {
+            log('Error during GPT configuration', e);
+          }
+        });
+      }
+
+      function loadGptScript(mode) {
+        if (gptScriptRequested || gptScriptLoaded || gptDecisionFinalized) {
+          log('GPT already requested/loaded — skipping');
+          return;
+        }
+
+        gptDecisionFinalized = true;
+        gptScriptRequested   = true;
+
+        var script   = document.createElement('script');
+        script.async = true;
+        script.src   = GPT_URL;
+
+        script.onload = function () {
+          gptScriptLoaded = true;
+          log('GPT script loaded, mode:', mode);
+          configureGptAfterLoad(mode);
+        };
+
+        script.onerror = function () {
+          gptScriptRequested   = false;
+          gptScriptLoaded      = false;
+          gptDecisionFinalized = false;
+          log('Failed to load GPT script');
+        };
+
+        document.head.appendChild(script);
+        log('Requested GPT script, mode:', mode);
+      }
+
+      function tryLoadGpt() {
+        if (gptDecisionFinalized) return true;
+        var mode = selectGptMode();
+        if (mode === null) return false;
+        loadGptScript(mode);
+        return true;
+      }
+
+      // Non-regulated: load immediately
+      if (!window.__cmpRegion.regulated) {
+        tryLoadGpt();
+        return;
+      }
+
+      // Regulated: wait for a consent signal before loading GPT
+      window.addEventListener('consent_initialized', tryLoadGpt);
+      window.addEventListener('consent_updated',     tryLoadGpt);
+
+      // Poll briefly in case Klaro resolves before listeners fire
+      var pollCount    = 0;
+      var maxPolls     = 3;
+      var pollInterval = setInterval(function () {
+        pollCount++;
+        if (tryLoadGpt() || pollCount >= maxPolls) {
+          clearInterval(pollInterval);
+        }
+      }, 100);
+
+      // Hard fallback: no consent signal after a short bootstrap grace period → load NPA
+      setTimeout(function () {
+        if (!gptDecisionFinalized) {
+          log('Consent timeout — falling back to non-personalized GPT');
+          loadGptScript(GPT_MODE_NPA);
+        }
+      }, 300);
+    })();
+  })();
+</script>
+<link rel="stylesheet" href="https://cdn.kiprotect.com/klaro/v0.7.22/klaro.css">
+
+<style>
+  :is(#cookieScreen, #klaro).cookie-modal {
+	position: fixed !important;
+	inset: 0 !important;
+	z-index: 100000 !important;
+	pointer-events: none !important;
+}
+
+:is(#cookieScreen, #klaro) .cm-btn.cm-btn-success.cm-btn-info.cm-btn-accept {
+	background: #166534 !important;
+	border-color: #166534 !important;
+	color: #ffffff !important;
+}
+
+:is(#cookieScreen, #klaro) .cm-btn.cm-btn-success.cm-btn-accept-all {
+	background: #166534 !important;
+	border-color: #166534 !important;
+	color: #ffffff !important;
+}
+
+:is(#cookieScreen, #klaro) .cm-bg {
+	background: transparent !important;
+	pointer-events: none !important;
+}
+
+:is(#cookieScreen, #klaro) .cm-list-title {
+	color: #000000 !important;
+}
+
+:is(#cookieScreen, #klaro) .cm-modal.cm-klaro {
+	position: absolute !important;
+	left: 20px !important;
+	right: 20px !important;
+	bottom: 12px !important;
+	top: auto !important;
+	transform: none !important;
+	width: auto !important;
+	max-width: 1100px !important;
+	margin: 0 auto !important;
+	max-height: 75vh !important;
+	overflow: auto !important;
+	pointer-events: auto !important;
+	background: #ffffff !important;
+	color: #1f2937 !important;
+	border: 1px solid #d1d5db !important;
+	border-radius: 10px !important;
+	box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16) !important;
+}
+
+:is(#cookieScreen, #klaro) .cm-header {
+	padding: 18px 20px 10px 20px !important;
+	border-bottom: 1px solid #e5e7eb !important;
+}
+
+:is(#cookieScreen, #klaro) .cm-header .title,
+:is(#cookieScreen, #klaro) .cm-header h1 {
+	margin: 0 0 6px 0 !important;
+	font-size: 24px !important;
+	line-height: 1.2 !important;
+	color: #111827 !important;
+}
+
+:is(#cookieScreen, #klaro) .cm-header p {
+	margin: 0 !important;
+	font-size: 14px !important;
+	line-height: 1.5 !important;
+	color: #4b5563 !important;
+}
+
+:is(#cookieScreen, #klaro) .cm-body {
+	padding: 16px 20px !important;
+}
+
+:is(#cookieScreen, #klaro) .cm-footer {
+	padding: 14px 20px 18px 20px !important;
+	border-top: 1px solid #e5e7eb !important;
+}
+
+:is(#cookieScreen, #klaro) .cm-footer-buttons {
+	display: flex !important;
+	gap: 10px !important;
+	flex-wrap: wrap !important;
+	justify-content: flex-end !important;
+}
+
+:is(#cookieScreen, #klaro) .cm-btn {
+	border-radius: 6px !important;
+	padding: 10px 16px !important;
+	font-size: 14px !important;
+	font-weight: 600 !important;
+}
+
+:is(#cookieScreen, #klaro) .cm-powered-by {
+	margin-top: 10px !important;
+	text-align: right !important;
+	font-size: 12px !important;
+	color: #6b7280 !important;
+}
+
+:is(#cookieScreen, #klaro) .cm-powered-by a {
+	color: #6b7280 !important;
+}
+
+@media (max-width: 768px) {
+	:is(#cookieScreen, #klaro) .cm-modal.cm-klaro {
+		left: 12px !important;
+		right: 12px !important;
+		bottom: 12px !important;
+		max-width: none !important;
+		max-height: 80vh !important;
+		border-radius: 10px !important;
+	}
+
+	:is(#cookieScreen, #klaro) .cm-header {
+		padding: 16px 16px 10px 16px !important;
+	}
+
+	:is(#cookieScreen, #klaro) .cm-body {
+		padding: 14px 16px !important;
+	}
+
+	:is(#cookieScreen, #klaro) .cm-footer {
+		padding: 14px 16px 16px 16px !important;
+	}
+
+	:is(#cookieScreen, #klaro) .cm-footer-buttons {
+		justify-content: stretch !important;
+	}
+
+	:is(#cookieScreen, #klaro) .cm-btn {
+		width: 100% !important;
+	}
+}
+
+</style>
+
+<script
+  defer
+  src="https://cdn.kiprotect.com/klaro/v0.7.22/klaro.js"
+  onload="window.__applyKlaroInitialConsent && window.__applyKlaroInitialConsent()">
+</script>
+<script data-wtwh-analytics-loader>(function(w,d){'use strict';
+var cfg={"scriptUrl":"https://scripts.wtwhmedia.com/developer/wtwh_analytics/env/prod/index.js","source":"www.motioncontroltips.com","embedOrigins":["https://embeds.wtwhmedia.com","https://embeds.dev.wtwhmedia.com"],"props":{"traffic_channel":"direct_or_unknown","traffic_channel_group":"direct_or_unknown","traffic_type":"human_or_unknown","bot_category":""},"endpoint":"https://collect.arrowfly.com/v1/events","site":"www.motioncontroltips.com","pageUrl":"https://www.motioncontroltips.com/what-is-a-sine-encoder-aka-sine-cosine-encoder/","country":"NL","consentDenied":true};
+var consentMessageType="arrowfly:analytics-consent";
+if(w.__wtwhAnalyticsEdgeLoaderInstalled)return;
+w.__wtwhAnalyticsEdgeLoaderInstalled=true;
+var analytics=null;
+var pageTracker=null;
+var consentGranted=!cfg.consentDenied;
+function browserConsent(){
+  var n=w.navigator||{};
+  return n.globalPrivacyControl!==true&&n.doNotTrack!=='1';
+}
+function canTrack(){return consentGranted&&browserConsent();}
+function embedFrames(){
+  return Array.prototype.filter.call(d.querySelectorAll('iframe[src]'),function(frame){try{return cfg.embedOrigins.indexOf(new URL(frame.src,w.location.href).origin)!==-1;}catch(_){return false;}});
+}
+function broadcastEmbedConsent(){
+  var msg={type:consentMessageType,granted:canTrack()};
+  if(canTrack()&&pageTracker&&pageTracker.context)msg.context=pageTracker.context();
+  var frames=embedFrames();
+  for(var i=0;i<frames.length;i++){
+    try{
+      var frame=frames[i];
+      var targetOrigin=new URL(frame.src,w.location.href).origin;
+      if(frame.contentWindow)frame.contentWindow.postMessage(msg,targetOrigin);
+    }catch(_){}
+  }
+}
+function startPageTracking(){
+  if(!analytics||pageTracker||!canTrack())return;
+  var api=w.wtwh&&w.wtwh.analytics;
+  if(api&&typeof api.trackPage==='function'){
+    pageTracker=api.trackPage(analytics,{props:Object.assign({source:'edge-router',analytics_surface:'web',country:cfg.country},cfg.props),onContext:function(){broadcastEmbedConsent();}});
+    return;
+  }
+  analytics.track('page_view',Object.assign({source:'edge-router',analytics_surface:'web',country:cfg.country,navigation_type:'initial'},cfg.props),{page_url:cfg.pageUrl,referer:d.referrer||''});
+  analytics.flush();
+  pageTracker={destroy:function(){}};
+}
+function stopPageTracking(){
+  if(!pageTracker)return;
+  pageTracker.destroy();
+  pageTracker=null;
+}
+function setConsent(granted){
+  consentGranted=!!granted;
+  if(consentGranted)startPageTracking();
+  else {stopPageTracking();if(analytics)analytics.reset();}
+  broadcastEmbedConsent();
+}
+function applyConsentEvent(event){
+  var value=event&&event.detail&&event.detail.consent_analytics;
+  if(value==='granted')setConsent(true);
+  else if(value==='denied')setConsent(false);
+}
+function readKlaroConsent(){
+  try{
+    var manager=w.klaro&&typeof w.klaro.getManager==='function'&&w.klaro.getManager();
+    if(manager&&manager.consents&&typeof manager.consents.analytics==='boolean'){
+      setConsent(manager.consents.analytics);
+      return true;
+    }
+  }catch(_){}
+  return false;
+}
+function pollKlaroConsent(){
+
+  var attempts=0;
+  var timer=w.setInterval(function(){
+    attempts++;
+    if(readKlaroConsent()||attempts>=20)w.clearInterval(timer);
+  },500);
+}
+function start(){
+  var api=w.wtwh&&w.wtwh.analytics;
+  if(!api||typeof api.create!=='function')return;
+  analytics=api.create({
+    source:String(cfg.source),
+    site:String(cfg.site||w.location.hostname),
+    endpoint:String(cfg.endpoint),
+    context:{
+      page_url:String(cfg.pageUrl||w.location.href),
+      page_host:w.location.hostname,
+      page_path:w.location.pathname,
+      referer:d.referrer||''
+    },
+    consent:canTrack
+  });
+  w.wtwh.analytics.client=analytics;
+  readKlaroConsent();
+  startPageTracking();
+  broadcastEmbedConsent();
+}
+w.addEventListener('message',function(event){
+  if(!event.data||event.data.type!=='arrowfly:analytics-context-request')return;
+  var frames=embedFrames();
+  for(var i=0;i<frames.length;i++){
+    try{if(event.source===frames[i].contentWindow&&event.origin===new URL(frames[i].src,w.location.href).origin){broadcastEmbedConsent();return;}}catch(_){}
+  }
+});
+w.addEventListener('consent_initialized',applyConsentEvent);
+w.addEventListener('consent_updated',applyConsentEvent);
+w.addEventListener('load',broadcastEmbedConsent);
+d.addEventListener('load',function(event){
+  if(event.target&&event.target.tagName==='IFRAME')broadcastEmbedConsent();
+},true);
+if(w.wtwh&&w.wtwh.analytics)start();
+else{
+  var script=d.createElement('script');
+  script.async=true;
+  script.src=String(cfg.scriptUrl);
+  script.onload=start;
+  (d.head||d.documentElement).appendChild(script);
+}
+pollKlaroConsent();
+})(window,document);</script><script data-wtwh-ad-info>window.dataLayer=window.dataLayer||[];window.dataLayer.push({"wtwhAdInfo":{"request":"unrestricted","verified_bot_category":"","traffic_channel":"direct_or_unknown","traffic_channel_group":"direct_or_unknown"}});</script></head>
+<body class="wp-singular post-template-default single single-post postid-20214 single-format-standard wp-theme-genesis wp-child-theme-news-pro custom-header header-image content-sidebar genesis-breadcrumbs-visible genesis-footer-widgets-visible news-pro-blue">        <div id="div-gpt-wallpaper"></div>
+                    <div id="spotible-wallpaper-ad-container"></div>
+                        <div id="div-gpt-allstreamflex"></div>
+                    <div id="spotible-allstreamflex-ad-container"></div>
+                        <div id="div-gpt-allstreamprelude"></div>
+                    <div id="spotible-allstreamprelude-ad-container"></div>
+                <div class="site-container"><ul class="genesis-skip-link"><li><a href="#genesis-nav-primary" class="screen-reader-shortcut"> Skip to primary navigation</a></li><li><a href="#genesis-content" class="screen-reader-shortcut"> Skip to main content</a></li><li><a href="#genesis-sidebar-primary" class="screen-reader-shortcut"> Skip to primary sidebar</a></li><li><a href="#genesis-footer-widgets" class="screen-reader-shortcut"> Skip to footer</a></li></ul><div class="site-container-wrap"><nav class="nav-secondary" aria-label="Secondary"><div class="wrap"><ul id="menu-before-header-menu" class="menu genesis-nav-menu menu-secondary js-superfish"><li id="menu-item-27010" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-27010"><a target="_blank" href="https://www.mediakit.designworldonline.com/"><span >Advertise</span></a></li>
+<li id="menu-item-27011" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-27011"><a href="https://www.motioncontroltips.com/newsletter-subscription-form/"><span >Subscribe</span></a></li>
+</ul></div></nav><header class="site-header"><div class="wrap"><div class="title-area"><p class="site-title"><a href="https://www.motioncontroltips.com/">Motion Control Tips</a></p><p class="site-description">Automation • Motion Control • Power Transmission</p></div><div class="widget-area header-widget-area"><section id="custom_html-4" class="widget_text widget widget_custom_html"><div class="widget_text widget-wrap"><div class="textwidget custom-html-widget"><div id='div-gpt-mct-header'>
+	<script>
+    googletag.cmd.push(function() { googletag.display('div-gpt-mct-header'); });
+  </script>
+</div>
+</div></div></section>
+</div></div></header><nav class="nav-primary" aria-label="Main" id="genesis-nav-primary"><div class="wrap"><ul id="menu-new-2016-menu" class="menu genesis-nav-menu menu-primary js-superfish"><li id="menu-item-13988" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-13988"><a href="https://www.motioncontroltips.com/category/featured/"><span >News</span></a>
+<ul class="sub-menu">
+	<li id="menu-item-13991" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13991"><a href="https://www.motioncontroltips.com/category/industry-news/"><span >Industry News</span></a></li>
+	<li id="menu-item-13990" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13990"><a href="https://www.motioncontroltips.com/category/featured/blog/"><span >Editor Blogs</span></a></li>
+</ul>
+</li>
+<li id="menu-item-13975" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-13975"><a href="https://www.motioncontroltips.com/category/controllers/"><span >Controls</span></a>
+<ul class="sub-menu">
+	<li id="menu-item-13976" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13976"><a href="https://www.motioncontroltips.com/category/controllers/hmis/"><span >HMIs</span></a></li>
+	<li id="menu-item-13977" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13977"><a href="https://www.motioncontroltips.com/category/controllers/pc-controllers/"><span >PC-Based Controllers</span></a></li>
+	<li id="menu-item-13978" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13978"><a href="https://www.motioncontroltips.com/category/controllers/plc-pac/"><span >PLCs + PACs</span></a></li>
+	<li id="menu-item-13980" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13980"><a href="https://www.motioncontroltips.com/category/controllers/sa-controllers/"><span >Stand-Alone Controllers</span></a></li>
+	<li id="menu-item-13979" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13979"><a href="https://www.motioncontroltips.com/category/controllers/software/"><span >Software</span></a></li>
+</ul>
+</li>
+<li id="menu-item-13981" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-13981"><a href="https://www.motioncontroltips.com/category/drives/"><span >Drives</span></a>
+<ul class="sub-menu">
+	<li id="menu-item-13982" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13982"><a href="https://www.motioncontroltips.com/category/drives/servo-drives/"><span >Servo Drives</span></a></li>
+	<li id="menu-item-14023" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14023"><a href="https://www.motioncontroltips.com/category/drives/stepper-drives/"><span >Stepper Drives</span></a></li>
+</ul>
+</li>
+<li id="menu-item-13983" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-13983"><a href="https://www.motioncontroltips.com/category/encoders/"><span >Encoders</span></a>
+<ul class="sub-menu">
+	<li id="menu-item-13984" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13984"><a href="https://www.motioncontroltips.com/category/encoders/absolute-encoders/"><span >Absolute Encoders</span></a></li>
+	<li id="menu-item-13985" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-13985"><a href="https://www.motioncontroltips.com/category/encoders/incremental-encoders/"><span >Incremental Encoders</span></a></li>
+	<li id="menu-item-13987" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13987"><a href="https://www.motioncontroltips.com/category/encoders/rotary-encoders/"><span >Rotary Encoders</span></a></li>
+</ul>
+</li>
+<li id="menu-item-14001" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-14001"><a href="https://www.motioncontroltips.com/category/mechanical/"><span >Mechanical</span></a>
+<ul class="sub-menu">
+	<li id="menu-item-14002" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14002"><a href="https://www.motioncontroltips.com/category/mechanical/bearings/"><span >Bearings</span></a></li>
+	<li id="menu-item-14003" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14003"><a href="https://www.motioncontroltips.com/category/mechanical/brakes-clutches/"><span >Brakes + Clutches</span></a></li>
+	<li id="menu-item-14004" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14004"><a href="https://www.motioncontroltips.com/category/mechanical/belt-chain/"><span >Belt + chain</span></a></li>
+	<li id="menu-item-14005" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14005"><a href="https://www.motioncontroltips.com/category/mechanical/couplings/"><span >Couplings</span></a></li>
+	<li id="menu-item-14006" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14006"><a href="https://www.motioncontroltips.com/category/mechanical/gears-gearing/"><span >Gears + Gearing</span></a></li>
+	<li id="menu-item-14007" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14007"><a href="https://www.motioncontroltips.com/category/mechanical/lubrication/"><span >Lubrication</span></a></li>
+	<li id="menu-item-14008" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14008"><a href="https://www.motioncontroltips.com/category/mechanical/shock-vibration-mitigation/"><span >Shock + Vibration Mitigation</span></a></li>
+	<li id="menu-item-14009" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14009"><a href="https://www.motioncontroltips.com/category/mechanical/springs-retaining-rings-seals/"><span >Springs + Rings + Seals</span></a></li>
+</ul>
+</li>
+<li id="menu-item-14026" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-14026"><a href="https://www.motioncontroltips.com/category/linear/"><span >Linear</span></a>
+<ul class="sub-menu">
+	<li id="menu-item-14027" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14027"><a href="https://www.motioncontroltips.com/category/linear/actuators/"><span >Actuators</span></a></li>
+	<li id="menu-item-14028" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14028"><a href="https://www.motioncontroltips.com/category/linear/linear-motors/"><span >Linear Motors</span></a></li>
+	<li id="menu-item-14029" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14029"><a href="https://www.motioncontroltips.com/category/linear/linear-encoders/"><span >Linear Encoders</span></a></li>
+</ul>
+</li>
+<li id="menu-item-14010" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-14010"><a href="https://www.motioncontroltips.com/category/motors/"><span >Motors</span></a>
+<ul class="sub-menu">
+	<li id="menu-item-14011" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14011"><a href="https://www.motioncontroltips.com/category/motors/ac/"><span >AC Motors</span></a></li>
+	<li id="menu-item-14013" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14013"><a href="https://www.motioncontroltips.com/category/motors/dc-motors/"><span >DC Motors</span></a></li>
+	<li id="menu-item-14012" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14012"><a href="https://www.motioncontroltips.com/category/motors/brushless/"><span >Brushless Motors</span></a></li>
+	<li id="menu-item-14014" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14014"><a href="https://www.motioncontroltips.com/category/motors/gearmotors/"><span >Gearmotors</span></a></li>
+	<li id="menu-item-14015" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14015"><a href="https://www.motioncontroltips.com/category/motors/piezo-motors/"><span >Piezo Motors</span></a></li>
+	<li id="menu-item-14016" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14016"><a href="https://www.motioncontroltips.com/category/motors/servo-motors/"><span >Servo Motors</span></a></li>
+	<li id="menu-item-14024" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14024"><a href="https://www.motioncontroltips.com/category/motors/stepper-motors/"><span >Stepper Motors</span></a></li>
+</ul>
+</li>
+<li id="menu-item-13992" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-13992"><a href="https://www.motioncontroltips.com/category/integrated-motion-systems/"><span >Systems</span></a>
+<ul class="sub-menu">
+	<li id="menu-item-13993" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13993"><a href="https://www.motioncontroltips.com/category/integrated-motion-systems/conveyors-and-linear-transport-systems/"><span >Conveyors + linear transport systems</span></a></li>
+	<li id="menu-item-13994" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13994"><a href="https://www.motioncontroltips.com/category/integrated-motion-systems/gantries-stages/"><span >Gantries + Stages</span></a></li>
+	<li id="menu-item-13997" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13997"><a href="https://www.motioncontroltips.com/category/integrated-motion-systems/rotary-tables/"><span >Rotary Tables</span></a></li>
+	<li id="menu-item-13995" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13995"><a href="https://www.motioncontroltips.com/category/integrated-motion-systems/grippers-end-effectors/"><span >Grippers + End Effectors</span></a></li>
+	<li id="menu-item-13996" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13996"><a href="https://www.motioncontroltips.com/category/integrated-motion-systems/robotics/"><span >Robotics</span></a></li>
+</ul>
+</li>
+<li id="menu-item-14017" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-14017"><a href="https://www.motioncontroltips.com/category/networking-iot/"><span >Networks</span></a>
+<ul class="sub-menu">
+	<li id="menu-item-14018" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14018"><a href="https://www.motioncontroltips.com/category/networking-iot/cables-connectors-slip-rings/"><span >Connections + Sliprings</span></a></li>
+	<li id="menu-item-14019" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14019"><a href="https://www.motioncontroltips.com/category/networking-iot/fieldbuses/"><span >Fieldbuses</span></a></li>
+	<li id="menu-item-14020" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14020"><a href="https://www.motioncontroltips.com/category/networking-iot/io/"><span >I/O</span></a></li>
+	<li id="menu-item-14021" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14021"><a href="https://www.motioncontroltips.com/category/networking-iot/sensors/"><span >Sensors + Vision</span></a></li>
+</ul>
+</li>
+<li id="menu-item-25009" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-25009"><a><span >Resources</span></a>
+<ul class="sub-menu">
+	<li id="menu-item-13972" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-13972"><a href="https://www.motioncontroltips.com/category/basics-and-faqs/"><span >FAQs</span></a>
+	<ul class="sub-menu">
+		<li id="menu-item-13973" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13973"><a href="https://www.motioncontroltips.com/category/basics-and-faqs/motion-application-examples/"><span >Motion Casebook</span></a></li>
+		<li id="menu-item-13974" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13974"><a href="https://www.motioncontroltips.com/category/basics-and-faqs/selection-guide/"><span >Motion Selection Guides</span></a></li>
+	</ul>
+</li>
+	<li id="menu-item-14039" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14039"><a href="http://www.designworldonline.com/supplier-category/motion-control/"><span >Suppliers</span></a></li>
+	<li id="menu-item-17898" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17898"><a href="https://www.motioncontroltips.com/video/"><span >Video</span></a></li>
+</ul>
+</li>
+</ul></div></nav>    <div style="padding-top:10px;text-align:center">
+        <div id="jumbo-banner-ad-container" style="min-width: 970px; min-height: 90px;"></div>
+    </div>
+    <div class="site-inner"><div class="content-sidebar-wrap"><main class="content" id="genesis-content"><div class="breadcrumb">You are here: <span class="breadcrumb-link-wrap"><a class="breadcrumb-link" href="https://www.motioncontroltips.com/"><span class="breadcrumb-link-text-wrap">Home</span></a><meta ></span> <span aria-label="breadcrumb separator">/</span> <span class="breadcrumb-link-wrap"><a class="breadcrumb-link" href="https://www.motioncontroltips.com/category/basics-and-faqs/"><span class="breadcrumb-link-text-wrap">FAQs + basics</span></a><meta ></span> <span aria-label="breadcrumb separator">/</span> What is a sine encoder (aka sine-cosine encoder)?</div><article class="post-20214 post type-post status-publish format-standard has-post-thumbnail category-encoders category-basics-and-faqs category-featured category-incremental-encoders entry" aria-label="What is a sine encoder (aka sine-cosine encoder)?"><header class="entry-header"><h1 class="entry-title">What is a sine encoder (aka sine-cosine encoder)?</h1>
+<p class="entry-meta"><time class="entry-time">★</time> By <span class="entry-author"><a href="https://www.motioncontroltips.com/author/dcollins2/" class="entry-author-link" rel="author"><span class="entry-author-name">Danielle Collins</span></a></span> <span class="entry-comments-link"><a href="https://www.motioncontroltips.com/what-is-a-sine-encoder-aka-sine-cosine-encoder/#respond">Leave a Comment</a></span> </p></header><div class="entry-content"><div class="addtoany_share_save_container addtoany_content addtoany_content_top"><div class="a2a_kit a2a_kit_size_16 addtoany_list" data-a2a-url="https://www.motioncontroltips.com/what-is-a-sine-encoder-aka-sine-cosine-encoder/" data-a2a-title="What is a sine encoder (aka sine-cosine encoder)?"><a class="a2a_button_facebook" href="https://www.addtoany.com/add_to/facebook?linkurl=https%3A%2F%2Fwww.motioncontroltips.com%2Fwhat-is-a-sine-encoder-aka-sine-cosine-encoder%2F&amp;linkname=What%20is%20a%20sine%20encoder%20%28aka%20sine-cosine%20encoder%29%3F" title="Facebook" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_x" href="https://www.addtoany.com/add_to/x?linkurl=https%3A%2F%2Fwww.motioncontroltips.com%2Fwhat-is-a-sine-encoder-aka-sine-cosine-encoder%2F&amp;linkname=What%20is%20a%20sine%20encoder%20%28aka%20sine-cosine%20encoder%29%3F" title="X" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_linkedin" href="https://www.addtoany.com/add_to/linkedin?linkurl=https%3A%2F%2Fwww.motioncontroltips.com%2Fwhat-is-a-sine-encoder-aka-sine-cosine-encoder%2F&amp;linkname=What%20is%20a%20sine%20encoder%20%28aka%20sine-cosine%20encoder%29%3F" title="LinkedIn" rel="nofollow noopener" target="_blank"></a><a class="a2a_dd addtoany_share_save addtoany_share" href="https://www.addtoany.com/share"></a></div></div><p>A sine encoder is similar to an incremental encoder in design and function. Both devices measure either rotary or linear position changes and direction, and both are available with either <a href="https://www.linearmotiontips.com/how-do-magnetic-linear-encoders-differ-from-optical-versions/" target="_blank" rel="noopener noreferrer">optical or magnetic sensing</a> technology.</p>
+<p>The primary difference between the two is that sine encoders supply position and direction information as 1 Volt peak-to-peak (1 Vpp) <em>analog sine waves</em> — typically termed &#8220;A&#8221; and &#8220;B&#8221; — in quadrature. Incremental encoders, on the other hand, provide position and direction information as a pair of quadrature <em>digital square waves.</em> This difference in output waveform allows sine encoders to supply significantly higher resolution than incremental encoders can achieve.</p>
+<hr />
+<p><em>When two sine waves are in quadrature, one is actually a cosine. This is why sine encoders are also referred to as &#8220;sine-cosine&#8221; encoders.</em></p>
+<hr />
+<figure id="attachment_20220" aria-describedby="caption-attachment-20220" style="width: 388px" class="wp-caption aligncenter"><img decoding="async" class="wp-image-20220" src="https://www.motioncontroltips.com/wp-content/uploads/2019/10/Encoder-Signals-Sine-vs-Incrmental.jpg" alt="" width="388" height="443" srcset="https://www.motioncontroltips.com/wp-content/uploads/2019/10/Encoder-Signals-Sine-vs-Incrmental.jpg 603w, https://www.motioncontroltips.com/wp-content/uploads/2019/10/Encoder-Signals-Sine-vs-Incrmental-263x300.jpg 263w" sizes="(max-width: 388px) 100vw, 388px" /><figcaption id="caption-attachment-20220" class="wp-caption-text">Signals from a sine encoder (top) versus an incremental encoder (bottom).<br /><em>Image credit: Texas Instruments</em></figcaption></figure>
+<p>Both incremental and sine encoders can use X4 encoding for a fourfold increase in <a href="https://www.motioncontroltips.com/encoder-resolution-and-accuracy-whats-the-difference/" target="_blank" rel="noopener noreferrer">resolution</a>. For sine encoders, this is done by counting the number of zero crossing of the waveform per period. For incremental encoders, this requires <a href="https://www.motioncontroltips.com/faq-what-do-x1-x2-and-x4-position-encoding-mean-for-incremental-encoders/" target="_blank" rel="noopener noreferrer">counting both the rising and falling edges</a> of both square waves per period. But because the sine encoder&#8217;s analog sine waves are continuous — not step functions, like the digital square waves of incremental encoders — the signals themselves can be broken down, or interpolated, into very fine counts to provide extremely high position resolution.</p><div id="content-keyword-ad-container"></div>
+<p>To mitigate the effects of noise, sine encoders can use a technique referred to as differential signaling, in which two <a href="https://www.motioncontroltips.com/how-are-complementary-signals-used-to-mitigate-encoder-noise/" target="_blank" rel="noopener noreferrer">complementary signals</a> are transmitted on each channel. This technique is also used to mitigate noise in incremental encoders, although the analog signals of sine encoders are more susceptible to noise than the digital signals of incremental versions.</p>
+<figure id="attachment_20219" aria-describedby="caption-attachment-20219" style="width: 449px" class="wp-caption aligncenter"><img decoding="async" class=" wp-image-20219" src="https://www.motioncontroltips.com/wp-content/uploads/2019/10/Sine-Encoder-Signals.jpg" alt="" width="449" height="359" srcset="https://www.motioncontroltips.com/wp-content/uploads/2019/10/Sine-Encoder-Signals.jpg 400w, https://www.motioncontroltips.com/wp-content/uploads/2019/10/Sine-Encoder-Signals-300x240.jpg 300w" sizes="(max-width: 449px) 100vw, 449px" /><figcaption id="caption-attachment-20219" class="wp-caption-text">The analog signals produced by sine encoders are sensitive to noise, but complementary signals (Sin-, Cos-, and Ref-) can provide some immunity to common mode noise.<br /><em>Image credit: Ingenia</em></figcaption></figure>
+<p>These complementary signals — often termed &#8220;A-,&#8221; B-,&#8221; and &#8220;R-&#8221; — are the same as the primary signals, but with a 180 degree phase shift. Because any noise on the signals is the same (referred to as &#8220;common mode&#8221; noise), taking the <em>difference </em>of the two signals eliminates the noise but preserves the signal waveform.</p>
+<h4>Incremental or absolute?</h4>
+<p>Like incremental encoders, sine encoder output can include a reference signal — often termed &#8220;R&#8221; or &#8220;Z.&#8221; The reference signal has a slightly lower amplitude than the A and B signals, and its peak occurs only once per encoder revolution. Some manufacturers tout sine encoders with a reference signal as &#8220;absolute&#8221; encoders, but in fact, they can only provide absolute position information within one shaft revolution. The reference signal, however, is beneficial during startup and, in some cases, for commutation purposes.</p>
+<h4>High resolution for better servo control</h4>
+<p>Sine encoders are often used on servo motors, where higher feedback resolution is a benefit for the position and velocity <a href="https://www.motioncontroltips.com/faq-servo-motor-current-velocity-position-loops-bandwidths/" target="_blank" rel="noopener noreferrer">control loops</a>. In the velocity loop, high resolution improves velocity control and allows higher gains to be used in the control loop with lower noise. Higher gains also provide better system stiffness and better resistance to disturbances. In the position loop, higher feedback resolution provides better repeatability and reduces noise.</p>
+<p>One limitation in the application of sine encoders is the frequency of the encoder output versus the bandwidth that the receiving electronics can process. The output frequency is determined by the encoder&#8217;s line count and mechanical speed, and when a sine encoder with a very high line count is operated at high speed, the output frequency of the encoder may exceed the bandwidth that the drive or controller can process.</p>
+<figure id="attachment_20222" aria-describedby="caption-attachment-20222" style="width: 474px" class="wp-caption aligncenter"><img loading="lazy" decoding="async" class=" wp-image-20222" src="https://www.motioncontroltips.com/wp-content/uploads/2019/10/Sine-Encoder-Frequency.jpg" alt="sine encoder" width="474" height="339" srcset="https://www.motioncontroltips.com/wp-content/uploads/2019/10/Sine-Encoder-Frequency.jpg 782w, https://www.motioncontroltips.com/wp-content/uploads/2019/10/Sine-Encoder-Frequency-300x215.jpg 300w, https://www.motioncontroltips.com/wp-content/uploads/2019/10/Sine-Encoder-Frequency-768x550.jpg 768w" sizes="auto, (max-width: 474px) 100vw, 474px" /><figcaption id="caption-attachment-20222" class="wp-caption-text">If an encoder with a high line count is operated at high speed, its frequency could exceed the bandwidth of the receiving electronics.<br /><em>Image credit: Texas Instruments</em></figcaption></figure>
+<div id="single-related-posts"><h2>You might also like</h2><div id="mlt-articles-container" class="articles-container"></div></div></div><footer class="entry-footer"><p class="entry-meta"><span class="entry-categories">Filed Under: <a href="https://www.motioncontroltips.com/category/encoders/" rel="category tag">Encoders</a>, <a href="https://www.motioncontroltips.com/category/basics-and-faqs/" rel="category tag">FAQs + basics</a>, <a href="https://www.motioncontroltips.com/category/featured/" rel="category tag">Featured</a>, <a href="https://www.motioncontroltips.com/category/encoders/incremental-encoders/" rel="category tag">Incremental Encoders</a></span> </p></footer></article><h2 class="screen-reader-text">Reader Interactions</h2>	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply</h3><p class="must-log-in">You must be <a href="https://www.motioncontroltips.com/wp-login.php?redirect_to=https%3A%2F%2Fwww.motioncontroltips.com%2Fwhat-is-a-sine-encoder-aka-sine-cosine-encoder%2F">logged in</a> to post a comment.</p>	</div><!-- #respond -->
+	</main><aside class="sidebar sidebar-primary widget-area" role="complementary" aria-label="Primary Sidebar" id="genesis-sidebar-primary"><h2 class="genesis-sidebar-title screen-reader-text">Primary Sidebar</h2><section id="search-3" class="widget widget_search"><div class="widget-wrap"><form class="search-form" method="get" action="https://www.motioncontroltips.com/" role="search"><label class="search-form-label screen-reader-text" for="searchform-1">Search this website</label><input class="search-form-input" type="search" name="s" id="searchform-1" placeholder="Search this website"><input class="search-form-submit" type="submit" value="Search"><meta content="https://www.motioncontroltips.com/?s={s}"></form></div></section>
+<section id="custom_html-6" class="widget_text widget widget_custom_html"><div class="widget_text widget-wrap"><h3 class="widgettitle widget-title">LEARNING CENTER</h3>
+<div class="textwidget custom-html-widget"><center><div style="display: flex; flex-direction: column; width: 270px;"><a href="https://www.designworldonline.com/learning-center" target="_blank" rel="noopener"><img src="https://www.motioncontroltips.com/wp-content/uploads/2023/05/MotionControlTips-LearningCtr.jpg" alt="Design World Learning Center" style="max-width: 270px;" /></a>
+</div>
+</center></div></div></section>
+<section id="text-24" class="widget widget_text"><div class="widget-wrap">			<div class="textwidget"><center>				
+<div id='div-gpt-mct_sidebar1'>
+	<script>
+    googletag.cmd.push(function() { googletag.display('div-gpt-mct_sidebar1'); });
+  </script>
+</div></center></div>
+		</div></section>
+<section id="custom_html-2" class="widget_text widget widget_custom_html"><div class="widget_text widget-wrap"><h3 class="widgettitle widget-title">Motion Control Handbook</h3>
+<div class="textwidget custom-html-widget"><iframe allowfullscreen allow="fullscreen" style="border:none;width:100%;height:326px;" src="https://e.issuu.com/embed.html?d=issu_mc_hb_08-23&hideIssuuLogo=true&u=wtwhmedia"></iframe></div></div></section>
+<section id="custom_html-5" class="widget_text widget widget_custom_html"><div class="widget_text widget-wrap"><div class="textwidget custom-html-widget"><center>
+<div style="display: flex; flex-direction: column; justify-content: center; width: 300px;">
+<div align="center"><a href="https://www.motioncontroltips.com/newsletter-subscription-form/" target="_blank"><img src="https://www.motioncontroltips.com/wp-content/uploads/2023/04/MotionControlTips-300x100-1.jpg" alt=“mct newsletter”></a></div>
+<div align="center" style="width: 300px; line-height: 20px; padding-top: 10px;"><span style="font-weight: bold; color: #0c506d; text-align: center; font-size: 20px;">EXPAND YOUR KNOWLEDGE AND STAY CONNECTED</span></div>
+<div align="center" style="line-height: 16px; padding-top: 5px;"><span style="text-align: center; font-size: 16px;">Get the latest info on technologies, tools and strategies for Design Engineering Professionals. </span></div>
+<div align="center" style="padding-top: 10px;"><a href="https://www.motioncontroltips.com/newsletter-subscription-form/" target="_blank"><button style="background-color: #06adef; color: white; font-weight: bold; border: none; padding: 10px; font-size: 16px; cursor: pointer;">GET THE ENEWSLETTER</button></a></div>
+</div>
+</center></div></div></section>
+<section id="rss-335099442" class="widget widget_rss"><div class="widget-wrap"><h3 class="widgettitle widget-title"><a class="rsswidget rss-widget-feed" href="http://www.engineeringwhitepapers.com/category/motion-control/feed/"><img class="rss-widget-icon" style="border:0" width="14" height="14" src="https://www.motioncontroltips.com/wp-includes/images/rss.png" alt="RSS feed: Featured White Papers" loading="lazy" /></a> <a class="rsswidget rss-widget-title" href="https://www.engineeringwhitepapers.com/">Featured White Papers</a></h3>
+<ul><li><a class='rsswidget' href='https://www.engineeringwhitepapers.com/new-white-papers/robotic-automation-is-indispensable-for-the-logistics-industrys-continued-growth-and-success/'>Robotic Automation is Indispensable for the Logistics Industry’s Continued Growth and Success</a></li><li><a class='rsswidget' href='https://www.engineeringwhitepapers.com/new-white-papers/reliable-linear-motion-for-packaging-machines/'>Reliable Linear Motion For Packaging Machines</a></li><li><a class='rsswidget' href='https://www.engineeringwhitepapers.com/advanced-materials/polymers-outperform-metals-precision-gearing/'>Polymers Outperform Metals In Precision Gearing</a></li></ul></div></section>
+<section id="text-12" class="widget widget_text"><div class="widget-wrap">			<div class="textwidget"><center>
+<div id='div-gpt-mct_sidebarbottom'>
+	<script>
+    googletag.cmd.push(function() { googletag.display('div-gpt-mct_sidebarbottom'); });
+  </script>
+</div>
+</center></div>
+		</div></section>
+<section id="custom_html-7" class="widget_text widget widget_custom_html"><div class="widget_text widget-wrap"><div class="textwidget custom-html-widget"><center><a href="http://www.couplingtips.com/" target="_blank"><img src="https://www.motioncontroltips.com/wp-content/uploads/2024/01/300x250-Couplings.jpg" alt=""></a></center></div></div></section>
+</aside></div></div><div class="footer-widgets" id="genesis-footer-widgets"><h2 class="genesis-sidebar-title screen-reader-text">Footer</h2><div class="wrap"><div class="widget-area footer-widgets-1 footer-widget-area"><section id="text-29" class="widget widget_text"><div class="widget-wrap">			<div class="textwidget"><img src="/wp-content/uploads/2023/03/Motion-Control-Tips-Logo-rv.png" width="260" height="82" alt="Motion Control Tips" border="0" /></div>
+		</div></section>
+</div><div class="widget-area footer-widgets-2 footer-widget-area"><section id="text-30" class="widget widget_text"><div class="widget-wrap"><h3 class="widgettitle widget-title">DESIGN WORLD NETWORK</h3>
+			<div class="textwidget"><a href="http://www.designworldonline.com/" target="_blank">Design World Online</a><br />
+<a href="https://www.therobotreport.com/" target="_blank">The Robot Report</a><br />
+<a href="http://www.couplingtips.com/" target="_blank">Coupling Tips</a><br />
+<a href="http://www.linearmotiontips.com/" target="_blank">Linear Motion Tips</a><br />
+<a href="http://www.bearingtips.com/" target="_blank">Bearing Tips</a><br />
+<a href="https://fastenerengineering.com/" target="_blank">Fastener Engineering.</a><br />
+<a href="https://www.wireandcabletips.com/" target="_blank" rel="noopener">Wire and Cable Tips</a></div>
+		</div></section>
+</div><div class="widget-area footer-widgets-3 footer-widget-area"><section id="text-31" class="widget widget_text"><div class="widget-wrap"><h3 class="widgettitle widget-title">MOTION CONTROL TIPS</h3>
+			<div class="textwidget"><a href="/newsletter-subscription-form/">Subscribe to our newsletter</a><br />
+<a href="https://www.mediakit.designworldonline.com/" target="_blank">Advertise with us</a><br />
+<a href="/contact-us/">Contact us</a><br />
+<a href="/about-motion-control/">About us</a></div>
+		</div></section>
+<section id="a2a_follow_widget-3" class="widget widget_a2a_follow_widget"><div class="widget-wrap"><div class="a2a_kit a2a_kit_size_34 a2a_follow addtoany_list"><a class="a2a_button_facebook" href="https://www.facebook.com/DesignWorldNetwork" title="Facebook" rel="noopener" target="_blank"></a><a class="a2a_button_instagram" href="https://www.instagram.com/designworldnetwork" title="Instagram" rel="noopener" target="_blank"></a><a class="a2a_button_linkedin_company" href="https://www.linkedin.com/company/design-world-online" title="LinkedIn Company" rel="noopener" target="_blank"></a><a class="a2a_button_twitter" href="https://x.com/motion_control" title="Twitter" rel="noopener" target="_blank"></a><a class="a2a_button_youtube" href="https://www.youtube.com/user/DesignWorldVideo" title="YouTube" rel="noopener" target="_blank"></a></div></div></section>
+</div></div></div><footer class="site-footer"><div class="wrap"><p>Copyright &#xA9;&nbsp;2026 &middot; Arrowfly LLC and its licensors. All rights reserved.  <br>The material on this site may not be reproduced, distributed, transmitted, cached or otherwise used, except with the prior written permission of Arrowfly.</p>
+<p><a href="http://www.arrowfly.com/privacy">Privacy Policy </a> | <a href="/feed" target="_blank">RSS</a></p></div></footer></div></div><script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/news-pro/*","/wp-content/themes/genesis/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+ 
+ 
+<!-- Google Tag Manager (noscript) Global -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MMC9PJ9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TXBWLZ9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+ 
+				
+
+<script type='text/javascript'>jQuery(document).ready(function($) {$(".flexslider").flexslider({controlsContainer: "#genesis-responsive-slider",animation: "slide",directionNav: 0,controlNav: 1,animationDuration: 800,slideshowSpeed: 4000    });  });</script><script id="wtwh-ai-search-script-js" src="https://scripts.wtwhmedia.com/developer/ai_search/env/prod/index.js?ver=1791744225"></script>
+<script id="hoverIntent-js" src="https://www.motioncontroltips.com/wp-includes/js/hoverIntent.min.js?ver=1.10.2"></script>
+<script id="superfish-js" src="https://www.motioncontroltips.com/wp-content/themes/genesis/lib/js/menu/superfish.min.js?ver=1.7.10"></script>
+<script id="superfish-args-js" src="https://www.motioncontroltips.com/wp-content/themes/genesis/lib/js/menu/superfish.args.min.js?ver=3.6.2"></script>
+<script id="skip-links-js" src="https://www.motioncontroltips.com/wp-content/themes/genesis/lib/js/skip-links.min.js?ver=3.6.2"></script>
+<script id="news-match-height-js" src="https://www.motioncontroltips.com/wp-content/themes/news-pro/js/jquery.matchHeight.min.js?ver=3.2.3"></script>
+<script id="news-global-js-js" src="https://www.motioncontroltips.com/wp-content/themes/news-pro/js/global.js?ver=3.2.3"></script>
+<script id="news-responsive-menus-js-extra">
+var genesis_responsive_menu = {"mainMenu":"Menu","subMenu":"Submenu","menuClasses":{"combine":[".nav-secondary",".nav-primary",".nav-header"]}};
+//# sourceURL=news-responsive-menus-js-extra
+</script>
+<script id="news-responsive-menus-js" src="https://www.motioncontroltips.com/wp-content/themes/news-pro/js/responsive-menus.min.js?ver=3.2.3"></script>
+<script id="flexslider-js" src="https://www.motioncontroltips.com/wp-content/plugins/genesis-responsive-slider/assets/js/jquery.flexslider.js?ver=1.0.1"></script>
+<script id="q2w3_fixed_widget-js-extra">
+var q2w3_sidebar_options = [{"use_sticky_position":false,"margin_top":0,"margin_bottom":0,"stop_elements_selectors":"","screen_max_width":0,"screen_max_height":0,"widgets":[]}];
+//# sourceURL=q2w3_fixed_widget-js-extra
+</script>
+<script id="q2w3_fixed_widget-js" src="https://www.motioncontroltips.com/wp-content/plugins/q2w3-fixed-widget/js/frontend.min.js?ver=6.2.3"></script>
+<script id="wtwh-mlt-frontend-script-js-extra">
+var MLTVARS = {"articleLimit":"6"};
+var KEYWORDADS = {"hasKeywordAds":"1"};
+//# sourceURL=wtwh-mlt-frontend-script-js-extra
+</script>
+<script id="wtwh-mlt-frontend-script-js" src="https://scripts.wtwhmedia.com/wordpress-event-hub/more_like_this/env/prod/index.js?ver=1791744225"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://www.motioncontroltips.com/wp-includes/js/wp-emoji-release.min.js?ver=7.1.3"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error("Element missing: "+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,"wpEmojiSettingsSupports"),o=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!r(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,r){let a;const s=(a="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),o=(s.textBaseline="top",s.font="600 32px Arial",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"});const a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],"flag"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))});
+//# sourceURL=https://www.motioncontroltips.com/wp-includes/js/wp-emoji-loader.min.js
+</script>
+    <!-- xyzzy top -->    
+    <div id="prestitial" style="opacity: 0;">
+        <div id="prestitial-overlay"></div>
+        <div id="prestitial-grid"></div>
+    </div>
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4901ec47cf7c200',t:'MTc5MTc0NTM1Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><style>
+  #cf-consent-fab {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 99999;
+    padding: 10px 14px;
+    border: 0;
+    border-radius: 999px;
+    background: #1f2937;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  #cf-consent-fab:hover {
+    background: #111827;
+  }
+  #cf-consent-fab:focus {
+    outline: 2px solid #93c5fd;
+    outline-offset: 2px;
+  }
+  @media (max-width: 768px) {
+    #cf-consent-fab {
+      bottom: 16px;
+      left: 16px;
+      padding: 9px 12px;
+      font-size: 13px;
+    }
+  }
+</style>
+
+<button
+  id="cf-consent-fab"
+  type="button"
+  aria-label="Open cookie settings"
+  onclick="window.openConsentSettings && window.openConsentSettings()"
+>
+  Cookie Settings
+</button>
+</body></html>

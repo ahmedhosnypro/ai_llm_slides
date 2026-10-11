@@ -1,0 +1,51 @@
+[info] context header injected: VIEW: Slide 006 recreation — fidelity check vs original lecture frame. CHROME NOTE (founder directive 2026-10-11, videos/deep-learning/AGENTS.md): this playlist's house chrome IS the original course chrome itself — white canvas, gray E9E9E7 panel spanning x 42..918px y 45px..bottom with thin C00000 border, badge circle d36px centered (893,71) with FDFD96 fill + 6A5ACD ring + bold numeral — so chrome SHOULD match image 2; ground-rule (a)'s ml-intro values are superseded for this playlist and any rule-(a)-style chrome complaint is not a defect. | CAPTURE: IMG1=150dpi PNG render of a 13.33x7.5in PPTX; IMG2=original lecture video frame
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 3740181
+[info] videos/deep-learning/001_transformers_part1/recreated_pptx/qa/slide006/render_1.png, videos/deep-learning/001_transformers_part1/unique_slides/slide_006.jpg: transcript written (validated winner, atomic): videos/deep-learning/001_transformers_part1/recreated_pptx/qa/slide006/judge_attempt_1.txt (pid 3740181)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== videos/deep-learning/001_transformers_part1/recreated_pptx/qa/slide006/render_1.png, videos/deep-learning/001_transformers_part1/unique_slides/slide_006.jpg ===
+[winner] images (round 1, attempt 1)
+# Visual QA Report â Slide 006 "Traditional RNN Seq2Seq model"
+
+## 1. Verbatim Transcription
+
+**IMG1 (recreation render):**
+- Title: `Traditional RNN  Seq2Seq model`
+- Badge numeral: `6`
+- `Decoder (RNN)` (italic, red, above yellow panel)
+- Yellow decoder panel: `softmax` Ã3, outputs `oâ oâ oâ`, states `sâ sâ sâ` (subscripted italics)
+- Orange encoder panel: `hâ hâ`, `embedding xâ`, `embedding xâ`, `embedding xâ`, inputs `xâ xâ xâ`
+- Pink callout: `Context Vector (of Whole Inputs)` (bold, upright, dark red)
+- `Encoder  (RNN)` (italic, red, below orange panel)
+
+**IMG2 (original frame):**
+- Identical text set: `Traditional RNN  Seq2Seq model`, badge `6`, `Decoder (RNN)`, `softmax` Ã3, `oâ oâ oâ`, `sâ sâ sâ`, `hâ hâ`, `embedding xâ/xâ/xâ`, `xâ xâ xâ`, `Context Vector (of Whole Inputs)` (italic red), `Encoder  (RNN)`.
+
+No language errors, garbage strings, or missing labels in either image. All mathematical subscripts legible in both.
+
+## 2. Similarities
+
+- **Purpose:** Both diagram the same encoderâdecoder Seq2Seq RNN: 3-step encoder (embeddings â hidden states) feeding a context vector into a 3-step decoder (states â softmax â outputs).
+- **Layout regions:** Title top-center; badge top-right; yellow decoder panel upper-right; orange encoder panel lower-left; pink context-vector callout right-of-center; "Encoder (RNN)" caption bottom-left, "Decoder (RNN)" caption top-right of the yellow panel.
+- **Components & styling:** Same color coding (yellow decoder, orange/salmon encoder with 4-cell strips, pink callout, olive-green arrows, red connector line with dot at the encoder's hâ output, curved olive feedback arcs in the decoder). Same bold red serif/sans title treatment and italic red panel captions.
+
+## 3. Differences
+
+| # | Item | IMG1 | IMG2 |
+|---|------|------|------|
+| 1 | Context Vector label | **Bold, upright** dark red | *Italic*, lighter-weight red |
+| 2 | Callout box | Larger, wider, positioned lower-right, rectangular with even padding | Smaller box, sits slightly higher-left |
+| 3 | Connector from encoder hâ | Straight diagonal red line from dot to callout | Bent/polyline connector with a kink mid-path |
+| 4 | Decoder feedback arcs | Curves arc **upward over** the softmax strips into the next state cell | Curves dip **downward below** the state row before rising into the next cell |
+| 5 | Stray artifacts | None | Mouse cursor arrow visible under the title (recording artifact) |
+| 6 | Image quality | Crisp vector-sharp render | Video-compression softness; haloing on red text |
+| 7 | Chrome (gray panel + C00000 border + badge) | Full gray panel with red border per house chrome | Gray bands top/bottom with white mid-region |
+
+On item 7: per the founder directive (2026-10-11, videos/deep-learning/AGENTS.md), this playlist's chrome is the gray E9E9E7 panel with thin C00000 border and the FDFD96/slate-ring badge â i.e., IMG1's chrome is the intended house chrome and the divergence from IMG2's gray-band appearance is **not a defect**. No rule-(a)-style chrome complaint is recorded.
+
+Items 1â6 are minor. No clipping, overlap, placeholder text, or missing elements in either image; the small olive slash marks near sâ/sâ in IMG1 correspond to the curve tails visible in IMG2, so they are faithful, not artifacts.
+
+## 4. Verdict
+
+**IMG1 (recreation) is better.** It reproduces every label, subscript, color region, and structural connection of the original with no omissions, while rendering at vector sharpness versus IMG2's compression blur. It also removes the mouse-cursor artifact present in IMG2 and presents the "Context Vector (of Whole Inputs)" callout with cleaner bold emphasis and a tidier straight connector. The only fidelity deviations are cosmetic: the label's bold-vs-italic styling and the decoder feedback curves arcing above rather than below the state row â neither affects legibility or meaning. Chrome differences are explicitly out of scope as defects per the 2026-10-11 founder directive.
+

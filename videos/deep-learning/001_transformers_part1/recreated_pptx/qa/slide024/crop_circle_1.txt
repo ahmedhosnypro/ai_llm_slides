@@ -1,0 +1,44 @@
+# CROP COMPARISON â Slide 024, word-attention graph circle
+
+## Systematic check
+
+**(1) Node positions/sizes/labels**
+- Six nodes present in both: `in` (top-left), `garden` (top-right), `the` (left), `Boy` (center, green fill + darker green border), `tree` (right), `climbs` (bottom).
+- Relative positions, sizes, and pale-yellow fills match; `Boy` green fill matches. Label text, font weight, and relative size match.
+- â No discrepancy.
+
+**(2) Edge set + thickness class**
+IMG1 edges vs IMG2 edges:
+| Edge | IMG2 | IMG1 | Match |
+|---|---|---|---|
+| in â garden | thin, double-headed | thin, double-headed | â |
+| the â garden | thin, double-headed | thin, double-headed | â |
+| in â the | thin, double-headed (faint in IMG2) | thin, double-headed | â |
+| the â Boy | thin, double-headed | thin, double-headed | â |
+| the â tree | thin, single head at tree end | thin, single head at tree end | â |
+| Boy â garden | thick (~4pt), double-headed | thick, double-headed | â |
+| Boy â tree | thick, double-headed | thick, double-headed | â |
+| garden â tree | thick, double-headed | thick, double-headed | â |
+| Boy â climbs | thick, double-headed | thick, double-headed | â |
+
+- Thick/thin classification matches on every edge; no missing or extra edge in either direction. â
+
+**(3) Arrowheads** â Double-headed vs single-headed pattern matches on all nine edges, including the single-headed `the â tree`. Endpoint angles/attachment points on the node circumferences are visually consistent (Boyâgarden steep; gardenâtree diagonal; Boyâclimbs near-vertical). â
+
+**(4) Embedding-vector icons** â 5 icons in both, beside the same 5 nodes (none beside `garden`); 4 horizontal light-blue bars per icon in both. Positions relative to their nodes match (left of `in`, below-left of `the`, right-below of `Boy`, below `tree`, right of `climbs`). One shape difference noted below.
+
+**(5) Circle border** â Blue dashed border, similar dash length/weight in both. Partial dashed blue rectangle at top-right edge present in both (crop boundary artifact). â
+
+**(6) Fills/colors** â Pale cyan circle interior, pale yellow nodes, green `Boy`, red arrows, blue icons â all match. â
+
+**(7) Missing/extra elements** â Pen/cursor artifact on the gardenâtree arrow in IMG2 is correctly absent in IMG1 (per instructions, not a discrepancy). No other extra or missing elements.
+
+## Discrepancies
+
+1. **MINOR** â Embedding-icon container: IMG2 renders the blue outline as vertical bracket-like bars flanking the stack ( `[ â¡ â¡ â¡ â¡ ]` style, likely a low-res artifact of a rounded rect); IMG1 renders a clean rounded rectangle. Same footprint, bar count, and color â acceptable stylization.
+2. **MINOR** â The icon beside `in` sits slightly higher (more above-left of the node) in IMG2 than in IMG1; a few pixels of offset, no semantic impact.
+3. **MINOR** â Red arrow endpoints/curvature differ by a few pixels on `the â garden` and `the â tree` (slightly steeper angle in IMG1); thickness class and head configuration preserved.
+
+No BLOCKER or MAJOR discrepancies. All 9 edges, thickness classes, arrowhead configurations, node layout, and icon placement match.
+
+**CROP VERDICT: PASS**

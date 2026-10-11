@@ -1,0 +1,247 @@
+{
+  "slide_title": "Parallel Processing",
+  "subtitle_or_header": "Transform Sequence Elements in Parallel\n[Calculation of Self Attention of words ( X\u2081, X\u2082, X\u2083, X\u2084)]",
+  "verbatim_text": {
+    "bullets": [
+      "Parallel Processing",
+      "Transform Sequence Elements in Parallel",
+      "[Calculation of Self Attention of words ( X\u2081, X\u2082, X\u2083, X\u2084)]",
+      "*** Run in Parallel ***"
+    ],
+    "labels": [
+      "39",
+      "Similarity (cream pill, blue text; repeated once per panel, 4x total)",
+      "Probabilities (cream pill, blue text; 4x total)",
+      "Weighted SUM (cream pill, blue text; 4x total)",
+      "Dot Product (two-line label 'Dot' / 'Product' on tan box)",
+      "K,q (annotation with tiny arrow pointing into the Dot Product box)",
+      "K,q / \u221ad (fraction annotation above the Scaling box)",
+      "Scaling by \u221ad (vertical text inside pink box)",
+      "Soft max (vertical text inside pink box)",
+      "\u03a3 (inside pale-blue box)",
+      "W^q (small red-bordered box at bottom of front panel)",
+      "q\u2081 [?] (output label of the bottom W^q box)",
+      "W^k [?] (blue box label, 4x per panel; tiny blurry superscript, could read W^q)",
+      "K\u2081 [?]",
+      "K\u2082 [?]",
+      "K\u2083 [?]",
+      "K\u2084 [?]",
+      "V\u2081",
+      "V\u2082",
+      "V\u2083",
+      "V\u2084",
+      "W^V (blue box label, 4x per panel)",
+      "X (green cell letter inside every green dashed input box; 12 cells per panel \u00d7 4 panels = 48 instances)",
+      "Y (green cell letter inside every green dashed output box; 4 cells per box \u00d7 4 output boxes = 16 instances)",
+      "X\u2081",
+      "X\u2082",
+      "X\u2083",
+      "X\u2084",
+      "Y\u2081",
+      "Y\u2082",
+      "Y\u2083",
+      "Y\u2084",
+      "*** Run in Parallel ***"
+    ],
+    "equations": [
+      "K,q / \u221ad  (rendered as a fraction: 'K,q' over '\u221ad')",
+      "\u03a3 (summation symbol in the pale-blue weighted-sum box)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Full-bleed light-gray slide enclosed by a thin dark-red rectangular frame with a thicker dark-red strip along the bottom edge. Three-line bold title block sits top-left-of-center. Yellow '39' ellipse at top-right. One large cascading diagram dominates the center: four identical peach rounded-rectangle panels overlapping in a diagonal stack from front-bottom-left to back-top-right, each panel containing the same self-attention pipeline. Four thick red up-arrows labeled X\u2081\u2013X\u2084 enter from bottom-center; green dashed Y\u2081\u2013Y\u2084 output boxes with red up-arrows exit along a rising diagonal at the panels' tops; a rotated yellow '*** Run in Parallel ***' sticker sits bottom-right.",
+    "regions": [
+      {
+        "name": "Title block",
+        "position": "top, left-of-center; x 7%-58%, y 8%-20%",
+        "content": "Three bold centered lines: 'Parallel Processing' / 'Transform Sequence Elements in Parallel' / '[Calculation of Self Attention of words ( X\u2081, X\u2082, X\u2083, X\u2084)]' with the X symbols in red"
+      },
+      {
+        "name": "Slide number",
+        "position": "top-right; x 90%-95%, y 11%-16%",
+        "content": "Yellow ellipse, dark-red outline, bold dark-red '39'"
+      },
+      {
+        "name": "Panel stack (parallel computations)",
+        "position": "center; x 12%-95%, y 20%-91%",
+        "content": "Four overlapping peach rounded panels, each an identical self-attention pipeline \u2014 green dashed 'X' input box (4 cells), 4 W^k\u2192K rows, tan 'Dot Product' box with 8-dot scatter, pink 'Scaling by \u221ad' and 'Soft max' boxes, pale-blue '\u03a3' box, 4 red \u2297 nodes with V\u2081\u2013V\u2084 / 'W^V' inputs, 'W^q'\u2192'q\u2081' branch, bottom 4-cell 'X' row, 3 cream pills; front panel fully visible, rear panels progressively clipped (only right-hand 'X' boxes, W^V boxes, top pills and top output areas showing)"
+      },
+      {
+        "name": "Output diagonal Y\u2081\u2013Y\u2084",
+        "position": "upper area over the panels; x 47%-78%, y 18%-40%",
+        "content": "Four green dashed boxes of four 'Y' cells each, red up-arrow to a large red subscripted label Y\u2081 (lowest/leftmost) through Y\u2084 (highest/rightmost)"
+      },
+      {
+        "name": "Input arrows",
+        "position": "bottom-center; x 29%-62%, y 86%-98%",
+        "content": "Four thick red vertical up-arrows labeled below in bold red: X\u2081, X\u2082, X\u2083, X\u2084"
+      },
+      {
+        "name": "Parallel-distribution connectors",
+        "position": "bottom-left of the panel stack, curving right along the bottom and sweeping up the right side (to \u2248 x 95%)",
+        "content": "Dashed light-green (#A5D6A7) curved connectors with small green arrowheads: one from the front panel's bottom highlighted input row curving up its left side into the left 'X' box; one long curve distributing the input sequence to the rear panels' right-hand 'X' boxes"
+      },
+      {
+        "name": "Sticker",
+        "position": "bottom-right; x 72%-92%, y 81%-92%",
+        "content": "Yellow rectangle rotated \u2248 -8\u00b0 with bold red text '*** Run in Parallel ***'"
+      },
+      {
+        "name": "Frame",
+        "position": "all edges",
+        "content": "Thin dark-red rectangular frame inset ~4% from slide edges; thicker dark-red band across the very bottom"
+      }
+    ],
+    "hierarchy": "The peach panel stack dominates (~75% of canvas). Second in salience are the saturated red elements (X/Y labels, arrows, sticker text, \u2297 nodes). Title is bold but visually secondary to the diagram; the smallest text (\u22487-9pt) is the pipeline labels inside panels. Yellow sticker and '39' ellipse are small but very high-contrast accents."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "Front-panel self-attention pipeline (identical on all 4 panels). Left to right: (a) green dashed rounded box with 4 stacked pale-pink cells each holding a green letter 'X'; (b) four rows, each = small white box with blue border labeled 'W^k [?]' \u2192 3 tiny pale-yellow cells (vector components; source count 2-3) \u2192 label 'K\u2081 [?]'\u2026'K\u2084 [?]'; (c) tan vertical rectangle 'Dot Product' containing 8 blue dots of varying size (approximate count) linked by thin lines; label 'K,q' with a tiny arrow points into it; (d) fraction annotation 'K,q / \u221ad'; (e) pink vertical rounded box with rotated text 'Scaling by \u221ad'; (f) pink vertical rounded box with rotated text 'Soft max'; (g) pale-blue horizontal box '\u03a3' at top right; (h) four red \u2297 (circle-cross) nodes in a vertical column below \u03a3, each fed from the right by labels 'V\u2081'\u2026'V\u2084' and blue 'W^V' boxes that take input from a second green dashed box of four 'X' cells at the panel's right edge; thin red probability lines fan from 'Soft max' to each \u2297; each \u2297 feeds up into '\u03a3'; (i) below the Dot Product box: small red-bordered box 'W^q' producing a cell labeled 'q\u2081 [?]' with a thin line up into the Dot Product box; (j) bottom of panel: horizontal green dashed box of 4 'X' cells with the first cell highlighted (pink fill, red border); dashed green arrow from this row up the left edge into the input 'X' box. Along the panel's top edge sit three cream pills with blue text: 'Similarity' (above Dot Product), 'Probabilities' (above Soft max), 'Weighted SUM' (above \u03a3).",
+      "colors": [
+        "#FCE4C8",
+        "#00A651",
+        "#F9D5E5",
+        "#FFF6BF",
+        "#1F3FBF",
+        "#D2A26A",
+        "#F7C9D4",
+        "#C9DFF5",
+        "#CC0000",
+        "#333333"
+      ],
+      "position": "center; front panel approx x 13%-71%, y 43%-91%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Four identical peach rounded-rectangle panels in a cascading stack; each panel behind is offset \u2248 +7% right and \u2248 -5% up relative to the one in front, representing the same computation run for X\u2081 (front) through X\u2084 (back). Rear panels are clipped by the panels in front; visible parts are their right-hand green 'X' boxes, W^V boxes, top pills ('Similarity', 'Probabilities', 'Weighted SUM') and top output areas.",
+      "colors": [
+        "#FCE4C8",
+        "#E0B080"
+      ],
+      "position": "center, diagonally staggered from x 12% to x 95%"
+    },
+    {
+      "type": "diagram",
+      "description": "Four output groups along a rising diagonal at the panels' tops: each is a green dashed rounded box containing 4 pale cells with green 'Y' letters, with a thick red block up-arrow to a large red subscripted label. Order from lowest/leftmost to highest/rightmost: Y\u2081 (\u2248x 47-55%, y 33-40%), Y\u2082 (\u2248x 55-62%, y 28-34%), Y\u2083 (\u2248x 62-70%, y 22-29%), Y\u2084 (\u2248x 70-78%, y 18-25%).",
+      "colors": [
+        "#00A651",
+        "#F9D5E5",
+        "#CC0000"
+      ],
+      "position": "top-center to top-right diagonal"
+    },
+    {
+      "type": "arrow",
+      "description": "Four thick red vertical block up-arrows along the bottom (x \u2248 31%, 40%, 50%, 59%), each labeled beneath in bold red with subscript: X\u2081, X\u2082, X\u2083, X\u2084; they feed the input row / panels from below.",
+      "colors": [
+        "#CC0000"
+      ],
+      "position": "bottom-center, y 86%-98%"
+    },
+    {
+      "type": "graph",
+      "description": "Dot-product scatter inside the tan 'Dot Product' box: 8 blue dots of varying diameters (approximate count) connected by thin gray lines (small mesh/network look), receiving lines from the K-vector cells and from q\u2081 below.",
+      "colors": [
+        "#1F3FBF",
+        "#D2A26A",
+        "#888888"
+      ],
+      "position": "center-left of front panel, x \u2248 27%-33%, y \u2248 49%-75%"
+    },
+    {
+      "type": "arrow",
+      "description": "Dashed light-green connector curves: one from the bottom highlighted input row curving up the left side into the front panel's green 'X' box; a long dashed curve sweeping right and up with small green arrowheads entering the rear panels' right-hand 'X' boxes \u2014 indicating the same input sequence is distributed to all four parallel computations.",
+      "colors": [
+        "#A5D6A7",
+        "#00A651"
+      ],
+      "position": "bottom-left curving across bottom and up the right side"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Yellow sticker/banner rotated \u2248 -8\u00b0 (tilted up to the right) with bold red text '*** Run in Parallel ***'.",
+      "colors": [
+        "#FFFF00",
+        "#CC0000"
+      ],
+      "position": "bottom-right, x 72%-92%, y 81%-92%, overlapping the panels' lower-right corner"
+    },
+    {
+      "type": "other",
+      "description": "Slide number badge: yellow ellipse with dark-red outline containing bold dark-red '39'.",
+      "colors": [
+        "#FFFF00",
+        "#8B0000"
+      ],
+      "position": "top-right, x 90%-95%, y 11%-16%"
+    }
+  ],
+  "imagery": [
+    "No photographs, clip-art or illustrations; all visuals are flat vector-style schematic shapes (rounded panels, dashed boxes, small cells, block arrows, pills, dots, \u2297 symbols) in a hand-diagram lecture style."
+  ],
+  "colors": {
+    "background": "#EBEBEB (light gray; margin outside the frame slightly darker gray, hex not sampled)",
+    "title_text": "#000000",
+    "body_text": "#333333 (diagram labels; blue #1F3FBF for W-box and pill text; dark red #A02040 for vertical pink-box text; dark red #8B0000 for the slide-number badge)",
+    "accents": [
+      "#CC0000 (red arrows, X/Y labels, \u2297 nodes, sticker text)",
+      "#00A651 (green dashed boxes and X/Y cell letters)",
+      "#FFFF00 (sticker and slide-number ellipse)",
+      "#FCE4C8 (peach panels)",
+      "#F7C9D4 (pink Scaling/Softmax boxes)",
+      "#C9DFF5 (\u03a3 box)",
+      "#D2A26A (Dot Product box)",
+      "#9E3D3D (dark-red frame)",
+      "#FFFDE7 (cream pills; approximate hex carried from original brief)",
+      "#888888 (thin gray dot-connector lines)"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Helvetica-like). Title lines are bold with decreasing size (~20pt \u2192 17pt \u2192 15pt), center-aligned as a block; in line 3 the four X symbols are red with subscript digits. Diagram text is very small (\u22487-9pt). 'Scaling by \u221ad' and 'Soft max' are rotated 90\u00b0 (reading bottom-to-top) inside vertical pink boxes; 'Dot Product' is stacked on two lines. Heavy use of subscripts (X\u2081\u2026X\u2084, Y\u2081\u2026Y\u2084, K\u2081\u2026K\u2084, V\u2081\u2026V\u2084, q\u2081). Pill labels ('Similarity', 'Probabilities', 'Weighted SUM') in blue; 'SUM' in capitals. '*** Run in Parallel ***' is bold red on yellow, rotated \u2248 -8\u00b0. Slide number bold dark red.",
+  "animation_state": "No mid-build state: all four panels, all outputs Y\u2081\u2013Y\u2084, all pills and all labels are fully visible simultaneously \u2014 a static figure deliberately showing everything at once (parallelism).",
+  "recreation_brief": "1. Create a 16:9 slide; fill the background light gray #EBEBEB.\n2. Draw the frame: a #9E3D3D rectangle outline (~2pt) inset ~4% from all four edges, plus a solid #9E3D3D band ~3% of slide height across the full bottom edge.\n3. Place title line 1 'Parallel Processing' \u2014 Arial Bold 20pt, black #000000, centered at x\u224833% (block spans x 7%-58%), top edge at y\u22488%.\n4. Place title line 2 'Transform Sequence Elements in Parallel' \u2014 Arial Bold 17pt, black, centered directly below line 1.\n5. Place title line 3 '[Calculation of Self Attention of words ( X\u2081, X\u2082, X\u2083, X\u2084)]' \u2014 Arial Bold 15pt, black, with the four X's in red #CC0000 and subscripted digits.\n6. Place the slide-number badge: yellow #FFFF00 ellipse ~0.55\"\u00d70.35\" at x 90%-95%, y 11%-16%, with a #8B0000 1.5pt outline and bold '39' in #8B0000 14pt.\n7. Place the FRONT PANEL: rounded rectangle spanning x 13%-71%, y 43%-91% (\u22487.7\"\u00d73.6\" on a 13.33\"\u00d77.5\" canvas), fill peach #FCE4C8, outline tan #E0B080 1pt.\n8. Inside the panel's left edge place the input box: green dashed rounded box (#00A651, dashed 1.5pt) ~0.5\"\u00d71.2\" holding 4 stacked cells (fill #F9D5E5, thin gray outline), each with bold green 'X' 8pt.\n9. To the right of the input box place 4 identical K-rows stacked vertically: each row = white box 0.35\"\u00d70.22\" with #1F3FBF 1pt outline and blue 7pt text 'W^k' (superscript k; source blurry, may read W^q \u2014 render as W^k), followed by 3 tiny cells filled #FFF6BF, followed by blue 7pt label 'K\u2081'/'K\u2082'/'K\u2083'/'K\u2084' (source blurry; render as listed).\n10. Place the Dot Product box: vertical tan #D2A26A rectangle ~0.55\"\u00d71.5\" at x\u224827%-33%, y\u224849%-75%, with dark 8pt text 'Dot' / 'Product' stacked on two lines at its top.\n11. Inside the Dot Product box place the scatter: 8 blue #1F3FBF dots (3-5pt, varying diameters) connected by thin gray #888888 lines (mesh/network look).\n12. Place the annotation 'K,q' (7pt) with a tiny arrow pointing into the Dot Product box.\n13. Place the fraction annotation 'K,q' over '\u221ad' (7pt, with fraction bar) above the Scaling box.\n14. Place the Scaling box: vertical pink #F7C9D4 rounded box ~0.3\"\u00d71.1\" with 'Scaling by \u221ad' rotated 90\u00b0 (reading bottom-to-top), dark red #A02040, 8pt.\n15. Place the Soft max box: vertical pink #F7C9D4 rounded box ~0.3\"\u00d71.1\" with 'Soft max' rotated 90\u00b0, dark red #A02040, 8pt.\n16. Place the \u03a3 box: pale-blue #C9DFF5 horizontal rectangle ~0.9\"\u00d70.25\" at the panel's top-right with black '\u03a3' 12pt.\n17. Below \u03a3 place 4 red #CC0000 \u2297 (circle-cross) symbols ~0.15\" in a vertical column; connect each \u2297 up into \u03a3 with a thin line (color unspecified in source; use thin red).\n18. To the right of each \u2297 place the pair: label 'V\u2081'\u2026'V\u2084' (7pt) and a white box with #1F3FBF 1pt outline and blue 7pt text 'W^V'.\n19. At the panel's right edge place a second green dashed rounded box (#00A651, dashed 1.5pt) with 4 cells (fill #F9D5E5) each holding bold green 'X' 8pt; draw lines from these cells into the four W^V boxes.\n20. Fan thin red #CC0000 lines from the Soft max box to each of the 4 \u2297 symbols.\n21. Below the Dot Product box place the query branch: small white box with red 1pt outline and red 7pt text 'W^q', followed by a tiny #FFF6BF cell labeled 'q\u2081' 7pt; draw a thin line from the q\u2081 cell up into the Dot Product box.\n22. At the panel bottom place the input row: horizontal green dashed box (#00A651) ~2.2\"\u00d70.3\" with 4 cells \u2014 cell 1 fill #F9D5E5 with red 1.5pt outline and green 'X' (highlighted), cells 2-4 white with green 'X'.\n23. Draw a dashed light-green #A5D6A7 curved arrow from the input row's left end curving up the panel's left side into the left 'X' box, ending in a small green arrowhead.\n24. Along the panel's top edge place 3 cream #FFFDE7 pills ~0.55\"\u00d70.18\" with blue #1F3FBF 7pt text: 'Similarity' above the Dot Product box, 'Probabilities' above the Soft max box, 'Weighted SUM' above the \u03a3 box.\n25. Group the whole front panel, duplicate it 3 times, and offset each copy \u2248+7% of slide width rightward and \u22485% of slide height upward (\u2248+0.93\"/\u22120.38\"); set z-order panel 1 (X\u2081) frontmost to panel 4 (X\u2084) rearmost, so rear panels are clipped by those in front.\n26. Place 4 output groups along the rising diagonal above the panels: each = green dashed rounded box with 4 cells (fill #F9D5E5) holding bold green 'Y' 8pt (16 Y cells total) + a thick red #CC0000 block up-arrow + bold red 14pt subscripted label \u2014 Y\u2081 at x 47%-55%, y 33%-40% (label \u224850%, 33%); Y\u2082 at x 55%-62%, y 28%-34% (\u224857%, 28%); Y\u2083 at x 62%-70%, y 22%-29% (\u224865%, 23%); Y\u2084 at x 70%-78%, y 18%-25% (\u224873%, 18%).\n27. Place 4 thick red #CC0000 block up-arrows ~0.25\"\u00d70.5\" at x\u224831%, 40%, 50%, 59% (y 88%-93%); beneath each place a bold red 14pt subscripted label 'X\u2081', 'X\u2082', 'X\u2083', 'X\u2084'.\n28. Draw the distribution connector: a dashed light-green #A5D6A7 curve sweeping from the bottom input area rightward along the bottom and up the right side, with small green #00A651 arrowheads entering the rear panels' right-hand 'X' boxes.\n29. Place the sticker: yellow #FFFF00 rectangle ~2\"\u00d70.45\" at x 72%-92%, y 81%-92%, rotated \u22128\u00b0, with bold red #CC0000 14pt text '*** Run in Parallel ***'.\n30. Verify every text string matches verbatim_text exactly (apply subscripts via PowerPoint subscript formatting) and every fill/outline color matches the hex values in colors.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "verbatim_text.bullets was empty (required non-empty); reconstructed with the slide's 4 free-standing text lines: the 3 title-block lines and '*** Run in Parallel ***' (all derivable from slide_title, subtitle_or_header and labels).",
+      "Added missing layout.regions entry 'Parallel-distribution connectors' to cover the dashed light-green connector arrows listed in visual_elements but mapped to no region.",
+      "Expanded the 'Panel stack' region content so it explicitly enumerates every pipeline sub-element (X input box, W^k/K rows, Dot Product scatter, Scaling/Soft max boxes, \u03a3, \u2297 nodes, V/W^V column, W^q/q\u2081 branch, bottom X row, 3 pills).",
+      "Replaced the vague quantifier 'many instances' (label 'X') with the exact count 48 (12 X cells per panel \u00d7 4 panels) and quantified label 'Y' as 16 instances (4 cells \u00d7 4 output boxes).",
+      "Standardized the conflicting blue hex codes #1F3FBF (flowchart, colors.body_text) vs #1F4FBF (graph) to #1F3FBF everywhere.",
+      "Reconciled front-panel size: the brief said 5.6\"\u00d72.5\" but the flowchart position gives x 13%-71%, y 43%-91% (\u22487.7\"\u00d73.6\" on 16:9); standardized the brief to the percentage extents.",
+      "Reconciled panel-stack offset: the brief said +0.65\"/\u22120.25\" but the highlight-box element gives \u2248+7% right / \u22485% up (\u2248+0.93\"/\u22120.38\" on 16:9); standardized the brief to the percentages.",
+      "Standardized '2-3 tiny pale-yellow cells' per K-row to 3 cells (matching the original brief); count flagged as uncertain.",
+      "Replaced color-name-only specs in the brief with explicit hexes: badge outline/text #8B0000, pink-box vertical text #A02040, dot-connector lines #888888, cream pills #FFFDE7 (approximate).",
+      "Changed 'roughly 8 blue dots' to '8 blue dots' (approximate count noted in uncertain_items).",
+      "Rewrote recreation_brief as a 30-step ordered checklist; each step places one element (or an exactly counted repeated set) with exact text, position, color and shape."
+    ],
+    "uncertain_items": [
+      "W^k [?]: the superscript of the 4 blue W-boxes per panel (16 total) is blurry and could read W^q.",
+      "K\u2081 [?]\u2013K\u2084 [?]: the K-vector output labels are not clearly legible.",
+      "q\u2081 [?]: the output label of the bottom W^q box is not clearly legible.",
+      "Cream pill fill #FFFDE7 is an approximation carried from the original brief, not a sampled palette value.",
+      "The dot count in the Dot Product scatter is approximate (source: ~8).",
+      "The number of pale-yellow vector cells per K-row is 2-3 in the source; standardized to 3.",
+      "The color of the \u2297\u2192\u03a3 connector lines is unspecified in the source; the brief defaults to thin red.",
+      "Sticker rotation (\u2248\u22128\u00b0) and panel offsets (\u2248+7%/\u22125%) are approximations.",
+      "The 16:9 aspect ratio is assumed from the original brief; source metadata does not state the aspect ratio.",
+      "The margin outside the dark-red frame is described only as 'slightly darker gray' with no hex value."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_039.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 39,
+      "image": "slide_039.jpg",
+      "kept_frame": "frame_03769.jpg",
+      "start_sec": 3724.0,
+      "end_sec": 3768.0,
+      "frame_count": 45
+    },
+    "elapsed_s": 439.2,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 560.0
+  }
+}

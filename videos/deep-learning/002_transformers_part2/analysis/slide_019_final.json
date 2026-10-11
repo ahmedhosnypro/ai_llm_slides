@@ -1,0 +1,231 @@
+{
+  "slide_title": "Encoder \u2013 Decoder Transformer",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "19",
+      "Scaled Dot-Product Attention",
+      "Multi-Head Attention",
+      "Encoder",
+      "Decoder",
+      "Output Probabilities",
+      "Softmax",
+      "Linear",
+      "Add & Norm",
+      "Feed Forward",
+      "Multi-Head Attention",
+      "Masked Multi-Head Attention",
+      "Positional Encoding",
+      "Input Embedding [?]",
+      "Output Embedding [?]",
+      "Inputs",
+      "Outputs (shifted right)",
+      "N\u00d7",
+      "WE ARE HERE",
+      "h",
+      "MatMul",
+      "Scale",
+      "Mask (opt.)",
+      "SoftMax",
+      "Concat",
+      "Q",
+      "K",
+      "V",
+      "[solid black strip across the very bottom of the frame \u2014 video-player progress/control bar, not slide content]"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Red-framed light-gray slide. Title centered at top with yellow slide-number circle at top-right. Three diagram zones left-to-right: small vertical flowchart (Scaled Dot-Product Attention), medium vertical flowchart (Multi-Head Attention), and a large full Transformer architecture panel on the right. A red 'WE ARE HERE' map-pin overlay sits between the middle and right diagrams, pointing into the bottom of the right panel. Black video-player bar across the very bottom edge.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, x 20-78%, y 4-13%",
+        "content": "Red bold title 'Encoder \u2013 Decoder Transformer'"
+      },
+      {
+        "name": "Slide number",
+        "position": "top right, x 88-95%, y 5-14%",
+        "content": "Yellow circle with red '19'"
+      },
+      {
+        "name": "Scaled Dot-Product Attention panel",
+        "position": "middle-left, x 6-23%, y 38-90%",
+        "content": "Red italic two-line header above a green-framed vertical flowchart (Q/K/V circles up through MatMul, Scale, Mask (opt.), SoftMax, MatMul)"
+      },
+      {
+        "name": "Multi-Head Attention panel",
+        "position": "center, x 30-54%, y 36-93%",
+        "content": "Red italic header above a green-framed vertical flowchart (V/K/Q circles, three Linear boxes, Scaled Dot-Product Attention box with 'h', Concat, Linear)"
+      },
+      {
+        "name": "Full Transformer panel",
+        "position": "right, x 56-93%, y 17-96%",
+        "content": "Green-framed diagram with peach Encoder panel and light-green Decoder panel, full block stacks, red dashed encoder-to-decoder arrow, N\u00d7 badge, yellow highlight band, Output Probabilities on top"
+      },
+      {
+        "name": "WE ARE HERE pin",
+        "position": "center-right overlay, x 54-63%, y 57-80%",
+        "content": "Red map-pin with white bold text, tip pointing at encoder Positional Encoding area"
+      },
+      {
+        "name": "Video-player bar",
+        "position": "bottom full-width, y 97-100%",
+        "content": "Solid black strip (player artifact, not slide content)"
+      }
+    ],
+    "hierarchy": "Red title is the largest text. The right-hand Transformer panel is the dominant visual (largest area, most color). Attention is steered by the bright yellow highlight band, the yellow connector line, the red dashed arrow, and the red WE ARE HERE pin. The left and middle flowcharts are secondary reference diagrams. Smallest elements are the ~9-11pt block labels inside diagrams."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "LEFT PANEL \u2014 'Scaled Dot-Product Attention'. Header in red bold italic on two lines: 'Scaled Dot-Product' / 'Attention'. Below it a vertical green-stroked rectangle containing a bottom-to-top flowchart: bottom row of three circles Q (red), K (blue), V (blue); black arrows upward \u2014 Q and K feed a lavender box 'MatMul'; chain continues up through lavender box 'Scale', pink box 'Mask (opt.)', pale-green box 'SoftMax', then a second lavender box 'MatMul'; V's arrow runs up the right side as a bypass line into the top 'MatMul'; a final black arrow exits through the top of the green frame.",
+      "colors": [
+        "#00A651",
+        "#CCC0DA",
+        "#F2D8F0",
+        "#D5E8D4",
+        "#C00000",
+        "#2E5FA3",
+        "#000000"
+      ],
+      "position": "left, x 6-23%, y 38-90%"
+    },
+    {
+      "type": "flowchart",
+      "description": "MIDDLE PANEL \u2014 'Multi-Head Attention'. Header in red bold italic. Green-stroked rectangle (tiny green/white square handles visible at its corners \u2014 selection-handle artifact). Bottom-to-top: circles V (blue), K (blue), Q (red); each feeds one of three side-by-side white 'Linear' boxes, each with gray stacked offset copies behind it (suggesting h parallel heads); arrows converge into a wide pink box 'Scaled Dot-Product Attention' (also with stacked copies), with a small italic label 'h' and a tiny pointer/brace at its right edge; arrow up to yellow box 'Concat'; arrow up to white box 'Linear'; black arrow exits through the top of the green frame.",
+      "colors": [
+        "#00A651",
+        "#E6B8D7",
+        "#FFE699",
+        "#FFFFFF",
+        "#2E5FA3",
+        "#C00000",
+        "#808080",
+        "#000000"
+      ],
+      "position": "center, x 30-54%, y 36-93%"
+    },
+    {
+      "type": "diagram",
+      "description": "RIGHT PANEL \u2014 full Transformer architecture inside a green-stroked rectangle split into two vertical panels: LEFT panel peach fill labeled 'Encoder' (red bold italic, top-left); RIGHT panel light-green fill labeled 'Decoder' (green bold italic, top-right). Encoder stack bottom-to-top: thick red up-arrow + black label 'Inputs'; orange box 'Input Embedding' [partly under highlight]; box 'Positional Encoding' (under yellow highlight); thin black up-arrow; orange box 'Multi-Head Attention' with three small circles at its lower edge V (blue), K (blue), Q (red); gray box 'Add & Norm'; gray box 'Feed Forward'; gray box 'Add & Norm'. Decoder stack bottom-to-top: black label 'Outputs' with '(shifted right)' beneath; orange box 'Output Embedding' [partly obscured]; box 'Positional Encoding' (under yellow highlight); black up-arrow; orange box 'Masked Multi-Head Attention' with V (blue), K (blue), Q (red) circles; gray 'Add & Norm'; orange box 'Multi-Head Attention' with V (blue), K (blue), Q (red) circles; gray 'Add & Norm'; gray 'Feed Forward'; gray 'Add & Norm'; white box 'Linear'; white box 'Softmax'; thick red up-arrow into yellow box 'Output Probabilities' at the very top. A red DASHED curved arrow arcs from the top of the encoder/output area (near x 73%, y 21%) rightward and downward, arrowhead landing on the decoder's 'Multi-Head Attention' block (encoder-output \u2192 cross-attention). A small tan circle labeled 'N\u00d7' sits right of the decoder stack (~x 86%, y 55%) indicating block repetition. Two small black circular-arrow (clock-like) doodles sit on the yellow band above each 'Positional Encoding' box.",
+      "colors": [
+        "#00A651",
+        "#FBE5D6",
+        "#E2EFDA",
+        "#ED7D31",
+        "#F4B183",
+        "#A6A6A6",
+        "#FFFFFF",
+        "#FFD966",
+        "#C00000",
+        "#2E5FA3",
+        "#D9CFC0",
+        "#000000"
+      ],
+      "position": "right, x 56-93%, y 17-96%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Translucent yellow rounded-rectangle band across the bottom of BOTH encoder and decoder panels (x ~55-90%, y ~72-86%), covering the two 'Positional Encoding' boxes and the Input/Output Embedding boxes; plus a yellow polyline/connector traced from the encoder's 'Multi-Head Attention' output up, right, and down into the V/K inputs of the decoder's 'Multi-Head Attention'.",
+      "colors": [
+        "#FFFF00",
+        "#FDF3B0"
+      ],
+      "position": "bottom of right panel"
+    },
+    {
+      "type": "arrow",
+      "description": "Red dashed curved arrow (encoder\u2192decoder attention connection) as described in the right panel; additionally two thick solid red up-arrows: one at 'Inputs' (bottom of encoder) and one between 'Softmax' and 'Output Probabilities' (top of decoder). All other inter-block connectors are thin solid black up-arrows.",
+      "colors": [
+        "#C00000",
+        "#000000"
+      ],
+      "position": "right panel; red arrows at encoder bottom and decoder top"
+    },
+    {
+      "type": "icon",
+      "description": "Red map-pin / teardrop balloon containing white bold uppercase text on two lines: 'WE ARE' / 'HERE', with its tip pointing down-left into the encoder's highlighted 'Positional Encoding' / 'Input Embedding' area.",
+      "colors": [
+        "#C00000",
+        "#FFFFFF"
+      ],
+      "position": "overlay at x 54-63%, y 57-80%"
+    },
+    {
+      "type": "other",
+      "description": "Solid black horizontal strip across the entire bottom edge of the frame (video-player progress/control bar captured with the slide, not slide content). Also: tiny green/white square selection handles at corners of the middle diagram's green frame (screenshot artifact of a selected object).",
+      "colors": [
+        "#000000",
+        "#00A651"
+      ],
+      "position": "bottom edge; corners of middle green frame"
+    }
+  ],
+  "imagery": [
+    "Red 'WE ARE HERE' map-pin icon (flat vector style, white bold text) overlaying the area between the middle and right diagrams",
+    "Small black circular-arrow / clock-like doodles (hand-annotation style) on the yellow highlight band above each 'Positional Encoding' box in the right panel",
+    "No photographs or clip-art; all visuals are vector flowchart/diagram shapes"
+  ],
+  "colors": {
+    "background": "#EAEAEA (light gray inside the red frame; white margin outside the frame)",
+    "title_text": "#C00000",
+    "body_text": "#000000 (diagram labels dark gray/black #404040-#000000)",
+    "accents": [
+      "#C00000 (red: title, frame, Q circles, arrows, pin)",
+      "#00A651 (green: diagram frames, 'Decoder', SoftMax box)",
+      "#FFD966 (yellow: slide-number circle, Concat, Output Probabilities)",
+      "#FFFF00 (translucent highlight)",
+      "#ED7D31 / #F4B183 (orange: attention and embedding blocks)",
+      "#2E5FA3 (blue: K and V circles)",
+      "#A6A6A6 (gray: Add & Norm, Feed Forward)",
+      "#CCC0DA (lavender: MatMul/Scale)",
+      "#E6B8D7 (pink: attention boxes)",
+      "#D9CFC0 (tan: N\u00d7 circle)"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Calibri/Arial-like). Title: bold, ~36-40pt, red, title case with en dash. Panel headers ('Scaled Dot-Product Attention', 'Multi-Head Attention', 'Encoder', 'Decoder'): bold italic, ~14-16pt, red or green. Diagram block labels: regular, ~9-11pt, sentence case as written ('Add & Norm', 'Feed Forward', 'Mask (opt.)', 'SoftMax' in left diagram vs 'Softmax' in right diagram \u2014 preserve this inconsistency). 'WE ARE HERE' is bold all-caps white on the red pin. Slide number '19' red on yellow circle. No serif fonts, no body bullet list on this slide.",
+  "animation_state": "Slide appears fully built (no partial bullet reveal). The yellow translucent highlight band, yellow connector polyline, red dashed encoder\u2192decoder arrow, and the 'WE ARE HERE' pin are lecture overlay annotations marking the current topic (positional encoding / encoder-decoder attention path). Tiny green corner handles on the middle green frame indicate the object was selected when the frame was grabbed (screenshot artifact, not an animation state).",
+  "recreation_brief": "1. Slide setup (16:9): white background; draw a light-gray #EAEAEA filled rectangle inset ~2% from all four edges; stroke its border #C00000 at ~2.5pt (this is the red slide frame; the margin outside stays white).\n2. Title: centered text box spanning x 20-78%, y 4-13%; text exactly 'Encoder \u2013 Decoder Transformer' (en dash); Calibri/Arial bold ~40pt; color #C00000.\n3. Slide number: ~0.45-inch oval at top-right (x 88-95%, y 5-14%); fill #FFD966; thin #C00000 outline; centered bold red ~14pt text '19'.\n4. Left panel header: text box at x 6-23%, y 38-44%; text 'Scaled Dot-Product Attention' in bold italic #C00000 ~14-16pt, wrapped on two lines as 'Scaled Dot-Product' / 'Attention'.\n5. Left panel frame: no-fill rectangle with #00A651 stroke at x 6-23%, y 45-90%.\n6. Left flowchart inputs: three ~0.3-inch circles side by side at the bottom inside the frame \u2014 'Q' fill #C00000, 'K' fill #2E5FA3, 'V' fill #2E5FA3 \u2014 each with a white letter.\n7. Left flowchart lower box: rounded rectangle 'MatMul', fill #CCC0DA, above the circles; thin black up-arrows from Q and K into it.\n8. Left flowchart box 'Scale': rounded rectangle, fill #CCC0DA, directly above; thin black up-arrow from the lower MatMul.\n9. Left flowchart box 'Mask (opt.)': rounded rectangle, fill #F2D8F0; thin black up-arrow from Scale.\n10. Left flowchart box 'SoftMax' (capital M): rounded rectangle, fill #D5E8D4; thin black up-arrow from Mask (opt.).\n11. Left flowchart upper box: rounded rectangle 'MatMul', fill #CCC0DA; thin black up-arrow from SoftMax; black elbow connector from V running up the right side of the frame into this box; final black arrow from this box exiting through the top of the green frame.\n12. Middle panel header: text box at x 30-54%, y 36-42%; text 'Multi-Head Attention' in bold italic #C00000 ~14-16pt.\n13. Middle panel frame: no-fill rectangle with #00A651 stroke at x 30-54%, y 43-93% (do NOT draw the tiny green corner selection handles \u2014 screenshot artifact).\n14. Middle flowchart inputs: three ~0.3-inch circles at the frame bottom \u2014 'V' fill #2E5FA3, 'K' fill #2E5FA3, 'Q' fill #C00000 \u2014 white letters.\n15. Middle flowchart Linear row: three white-filled 'Linear' boxes side by side above the circles, one per circle, with a thin black up-arrow from each circle into its box; behind each box draw 2 gray #808080 offset duplicate copies as a stack (suggesting h parallel heads; exact copy count not specified in source).\n16. Middle flowchart attention box: wide box 'Scaled Dot-Product Attention', fill #E6B8D7, with gray #808080 stacked offset copies behind it; thin black up-arrows from the three Linear boxes converging into it; small italic 'h' with a tiny pointer/brace at its right edge.\n17. Middle flowchart box 'Concat': fill #FFE699, above the attention box; thin black up-arrow.\n18. Middle flowchart upper box: white-filled 'Linear' above Concat; thin black up-arrow; final black arrow exiting through the top of the green frame.\n19. Right panel frame: no-fill rectangle with #00A651 stroke at x 56-93%, y 17-96%; fill its interior with two side-by-side sub-panels of roughly equal width \u2014 left sub-panel fill #FBE5D6 (Encoder), right sub-panel fill #E2EFDA (Decoder).\n20. Sub-panel labels: 'Encoder' bold italic #C00000 at the top-left of the peach sub-panel; 'Decoder' bold italic #00A651 at the top-right of the light-green sub-panel.\n21. Encoder stack, centered ~x 66%, placed bottom-to-top with thin black up-arrows between consecutive elements: thick solid red #C00000 up-arrow with black label 'Inputs'; orange box 'Input Embedding' (fill #F4B183, border #ED7D31; label reading marked [?] in source \u2014 box partly under the yellow highlight); box 'Positional Encoding' (fill unspecified in source; default white); orange box 'Multi-Head Attention' (fill #F4B183, border #ED7D31) with three small circles at its lower edge \u2014 V #2E5FA3, K #2E5FA3, Q #C00000; gray #A6A6A6 box 'Add & Norm'; gray #A6A6A6 box 'Feed Forward'; gray #A6A6A6 box 'Add & Norm'.\n22. Decoder stack, centered ~x 80%, placed bottom-to-top with thin black up-arrows between consecutive elements: black label 'Outputs' with '(shifted right)' on the line beneath; orange box 'Output Embedding' (fill #F4B183, border #ED7D31; label reading marked [?] \u2014 box partly obscured); box 'Positional Encoding' (fill unspecified; default white); orange box 'Masked Multi-Head Attention' with V #2E5FA3, K #2E5FA3, Q #C00000 circles at its lower edge; gray #A6A6A6 box 'Add & Norm'; orange box 'Multi-Head Attention' (fill #F4B183, border #ED7D31) with V/K/Q circles at its lower edge; gray #A6A6A6 box 'Add & Norm'; gray #A6A6A6 box 'Feed Forward'; gray #A6A6A6 box 'Add & Norm'; white box 'Linear'; white box 'Softmax' (lowercase m here, unlike the left diagram's 'SoftMax'); thick solid red #C00000 up-arrow; yellow box 'Output Probabilities' (fill #FFD966) at the very top of the panel.\n23. N\u00d7 badge: small circle, fill #D9CFC0, text 'N\u00d7', placed right of the decoder stack (~x 86%, y 55%).\n24. Encoder-to-decoder arrow: red #C00000 dashed curved connector starting at the top of the encoder/output area (~x 73%, y 21%), arcing right and down, arrowhead landing on the decoder's 'Multi-Head Attention' box.\n25. Yellow highlight band: rounded rectangle, fill #FFFF00 at ~50% transparency, no outline, across the bottom of both sub-panels (x ~55-90%, y ~72-86%), covering the two 'Positional Encoding' boxes and the 'Input Embedding'/'Output Embedding' boxes.\n26. Yellow connector: #FDF3B0 polyline traced from the encoder 'Multi-Head Attention' output up, right, and down into the V/K inputs of the decoder 'Multi-Head Attention'.\n27. Annotation doodles: two small black circular-arrow (clock-like) doodles drawn on the yellow band, one above each 'Positional Encoding' box.\n28. WE ARE HERE pin: red #C00000 map-pin/teardrop balloon at x 54-63%, y 57-80%, containing white bold all-caps text on two lines 'WE ARE' / 'HERE', tip pointing down-left at the encoder's highlighted 'Positional Encoding' area (~x 59%, y 78%).\n29. Do NOT draw: the solid black strip across the bottom edge (video-player bar, y 97-100%) or the green corner selection handles on the middle frame \u2014 both are capture artifacts, not slide content.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Confirmed verbatim_text.bullets [] and subtitle_or_header null are genuinely absent from the source (diagram-only slide; typography_notes states 'no body bullet list on this slide') \u2014 left empty per the schema rule rather than inventing filler content.",
+      "Harmonized layout.hierarchy smallest-label size from '~9-10pt' to '~9-11pt' to match typography_notes.",
+      "Removed invented border color #604A7B from the left 'MatMul' boxes in recreation_brief (that hex appears nowhere in the JSON palettes); boxes are now specified as #CCC0DA fill only.",
+      "Removed the vague 'darker pink border' from the middle 'Scaled Dot-Product Attention' box; it is now specified as #E6B8D7 fill only.",
+      "Corrected the yellow connector polyline color in recreation_brief from #FFD966 to #FDF3B0, the pale yellow actually listed in the highlight-box element's palette.",
+      "Changed 'optionally two small black circular-arrow doodles' into a mandatory step \u2014 visual_elements and imagery both confirm the two doodles are present on the slide.",
+      "Added explicit instruction to omit the green corner selection handles (screenshot artifact) alongside the black video-player bar in the final brief step, matching the 'other' visual element.",
+      "Aligned brief coordinates with layout.regions: title x 20-78% y 4-13%; slide number x 88-95% y 5-14%; left header/frame within x 6-23% y 38-90%; middle header/frame within x 30-54% y 36-93%.",
+      "Preserved the [?] markers on 'Input Embedding [?]' and 'Output Embedding [?]' and noted the occlusion cause inside the corresponding brief steps.",
+      "Rewrote recreation_brief as a 29-step ordered checklist placing one element per step with exact text, position, color, and shape type; verified every string in verbatim_text.labels appears in the brief."
+    ],
+    "uncertain_items": [
+      "'Input Embedding [?]' \u2014 label partly covered by the yellow highlight band; exact reading uncertain.",
+      "'Output Embedding [?]' \u2014 label partly obscured; exact reading uncertain.",
+      "Exact number of gray stacked offset copies behind the three 'Linear' boxes and the 'Scaled Dot-Product Attention' box in the middle panel \u2014 source says only 'stacked copies'; the brief instructs 2 copies as a builder approximation.",
+      "Transparency level of the yellow highlight band \u2014 source says 'translucent'; the brief uses ~50% as an approximation.",
+      "Fill color of the two 'Positional Encoding' boxes is not specified in the source; the brief defaults them to white.",
+      "Exact x-split between the Encoder and Decoder sub-panels and the stack center positions (~x 66% and ~x 80%) are approximations; the source gives only the overall right-panel bounds (x 56-93%, y 17-96%)."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_019.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 19,
+      "image": "slide_019.jpg",
+      "kept_frame": "frame_00763.jpg",
+      "start_sec": 746.0,
+      "end_sec": 762.0,
+      "frame_count": 17,
+      "old_slide": 37
+    },
+    "elapsed_s": 437.4,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1041.7
+  }
+}

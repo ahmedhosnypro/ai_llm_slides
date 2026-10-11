@@ -1,0 +1,26 @@
+# Visual QA Analysis â Slide 044 Title Zone Crop (3x upscaled)
+
+## 1. Verbatim Text Transcription
+
+| Location | Text (as visible) | Styling |
+|---|---|---|
+| Main title, line 1 | `Multi Head Self Attention of Word Xâ` | Bold black; the "X" and its subscript "2" are in dark red/maroon |
+| Slide number badge | `44` | Dark blue/black numeral inside a yellow circle with a dark blue outline |
+| Title line 2 | `âWideâ Archite` | Bold black; "Wide" is blue bold text on a yellow highlight, wrapped in curly double quotes; the following word is truncated (see defects) |
+| Left-edge box | Partially visible characters, best approximated as `d H]` (or possibly `d 1]`) | **Illegible** â clipped by the left crop edge and blurred; only the tail end of the string is shown |
+
+## 2. Layout Description
+
+- **TOP:** A thin, darker gray horizontal strip runs across the very top edge (appears to be the boundary of a header band or slide edge). Below it, on the light-gray slide background, is the first title line: "Multi Head Self Attention of Word Xâ".
+- **LEFT EDGE:** A small rectangular box with an orange/brown border sits at the left edge, clipped by the crop boundary; it contains the partially visible text noted above. At the very bottom-left corner, a sliver of another white/light element is just visible.
+- **RIGHT EDGE:** 
+  - Top-right: the yellow circular badge with blue outline containing "44".
+  - Below/right of that: a white rectangle with a thick green border, containing a black upward-pointing arrow (â) and the top portion of a rounded-rectangle shape beneath the arrow. This box runs off the right and bottom edges of the crop.
+- **BOTTOM:** The second title line "âWideâ Architeâ¦" sits at the bottom-left/center, with the green-bordered box occupying the bottom-right region and overlapping the line's right end. The crop cuts through the middle of these lower elements.
+
+## 3. Visual Defects
+
+1. **Truncated/occluded text:** The second title word is cut off mid-word â only "Archite" is visible (presumably "Architecture"). The truncation is caused by the **white box with a thick green border overlapping and covering the rest of the word**. This is an element-overlap issue on the slide itself, not just a crop artifact.
+2. **Clipped elements at crop boundaries (expected given the crop, but noted):** the left-edge orange-bordered box (text cut mid-string, partially illegible), the green-bordered diagram box (cut at right and bottom), and the small white element at the bottom-left corner.
+3. **Badge/box proximity:** the top border of the green box passes very close to (and appears to slightly touch or run beneath) the bottom of the yellow "44" badge â they are adjacent, with possible minor overlap.
+4. **No garbage strings, placeholder text, or wrong-language content** is visible. The only legibility problem is the clipped left-edge box text, which cannot be confidently transcribed.

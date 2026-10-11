@@ -1,0 +1,83 @@
+1. TITLE
+"Self Attention Mechanism (Linear Transformation of Inputs)"
+- "(Linear Transformation of Inputs)" is rendered in red; the rest in black.
+- Second title line: "(Self Attention of word X2 w.r.t All words in Sentence (X1, X2, X3, X4))" â "X2", "X3", "X4" appear in red; "X1" in black.
+- Badge numeral: a yellow circle at top-right containing the black numeral "8".
+
+2. ALL VERBATIM TEXT
+- "Self Attention Mechanism (Linear Transformation of Inputs)"
+- "(Self Attention of word X2 w.r.t All words in Sentence (X1, X2, X3, X4))"
+- "Similarity" (yellow pill, blue text, above the Dot Product box)
+- "Probabilities" (yellow pill, blue text, above the Softmax bar)
+- "Weighted SUM" (yellow pill, blue text, right of the Î£ box)
+- "Dot Product" (inside the tall gray box, two lines: "Dot" / "Product")
+- "K..q" (red text, top-right corner of the gray Dot Product box)
+- "K4", "K3", "K2", "K1" (red labels next to small colored bar strips on the left outputs)
+- "q1" (red label with blue bar strip, bottom-center inside the blue circle)
+- "Soft max" (vertical text on the tall pink/violet bar)
+- "Î£" (inside light-blue box)
+- "V4", "V3", "V2", "V1" (black labels on the right-side multiply-accumulate inputs)
+- "Wk(1)" x4 (blue boxes on the left; subscript k, superscript (1))
+- "Wv(1)" x4 (blue boxes on the right; subscript v, superscript (1))
+- "Wq(1)" (green box inside the blue circle at bottom-center; subscript q, superscript (1))
+- "X1", "X2", "X3", "X4" (pink cells in the four left rows, the bottom row, and the four right rows)
+- "Y" (green cell in the top output bar)
+- Inset panel (bottom-right): "1*d", "W", "=", "1*d", "d*d", and caption "d: Embedding Length"
+- No footnote/slide-footer text otherwise visible. No [?] unreadable strings.
+
+3. EQUATIONS / TOKEN SEQUENCES
+- X1, X2, X3, X4 (input token embeddings, repeated in left, bottom, and right dashed containers)
+- Wk(1), Wk(1), Wk(1), Wk(1) â key projection matrices, superscript (1)
+- Wv(1), Wv(1), Wv(1), Wv(1) â value projection matrices, superscript (1)
+- Wq(1) â query projection matrix, superscript (1)
+- K4, K3, K2, K1 â key vectors
+- q1 â query vector
+- V4, V3, V2, V1 â value vectors
+- Y â output
+- Soft max (operation label), Î£ (summation), â (elementwise multiply nodes)
+- Dimension relation in inset: [bar glyph] 1*d Â· W (d*d) = [bar glyph] 1*d, i.e. (1Ãd) times (dÃd) equals (1Ãd); "d: Embedding Length"
+
+4. DIAGRAM TOPOLOGY
+Overall layout: left-to-right dataflow for computing self-attention output Y for word X2.
+
+Containers (dashed green rounded rectangles):
+- LEFT container: 4 stacked rows (top to bottom). Each row: pink cell labeled X4/X3/X2/X1 (topâbottom), a yellow cell to its right, then an arrow â blue box "Wk(1)", then arrow â a small strip of colored bars labeled (red) K4, K3, K2, K1 respectively, then arrow continues right into the gray "Dot Product" box.
+- BOTTOM container (bottom-center): horizontal sequence X1, X2, X3, X4 (pink cells with yellow cells between); the X2 cell is highlighted with a magenta/pink fill and magenta dashed border. Green dashed curved lines run from this bottom container up-left to the LEFT container and up-right to the RIGHT container, indicating X2 (and the sentence) feeds both branches.
+- RIGHT container: 4 stacked rows, mirroring the left: pink cells X4/X3/X2/X1 (topâbottom) with yellow cells, arrows â blue boxes "Wv(1)" â outputs V4, V3, V2, V1 (labels V4 top, V1 bottom) feeding leftward toward the multiply nodes.
+
+Gray "Dot Product" box (tall, center-left):
+- Label "Dot Product" at top; "K..q" in red at its top-right corner.
+- Contains 4 blue filled circles (dots) arranged vertically (top dot aligned with K4 line, bottom with K1 line).
+- Below/outside the box, inside a large translucent blue circle: "q1" with blue bar strip, and beneath it the green box "Wq(1)".
+- Thin red lines connect the K4..K1 inputs to the dots; dashed red lines go from q1 up to each dot (query compared against every key). A small white mouse-cursor artifact sits over the second dot from top.
+
+Vertical pink/violet bar labeled "Soft max" (text rotated 90Â°) center of slide:
+- Four thin red horizontal lines enter it from the dots in the Dot Product box (left) and four lines exit on the right toward the multiply nodes.
+
+Î£ box (light blue, center-right, above the multiply column):
+- Receives a green thick arrow from below/left area? Actually: the Î£ box receives three upward red arrows from the three â nodes below it, and its output goes up via a thick green arrow to the top output bar.
+
+Multiply nodes: three (possibly four) red circles containing "Ã" (â), arranged vertically between Softmax and Î£:
+- Each â receives a horizontal red line from Softmax (attention probability) on the left and a horizontal line labeled V4/V3/V2/V1 from the right Wv branch.
+- Their outputs (red arrows) go up into the Î£ box. The bottom-most â (V1 row) output also routes up to Î£. (Only 3 â nodes are clearly drawn; the V4 line at top passes to a â above the visible three â top row appears to route V4 to Î£ region as well [?].)
+
+Top output: a horizontal bar of green cells labeled "Y" enclosed in a dashed green rounded rectangle; the thick green arrow from Î£ points up into it.
+
+Inset panel (bottom-right, white rounded box with red border):
+- Small colored bar strip, "1*d", then yellow box "W", then "=", then small bar strip, "1*d"; beneath the second strip "d*d"; caption below: "d: Embedding Length".
+
+Similarity â the resemblance: this diagram is an extended/annotated version of the style of Peter Bloem's self-attention blog diagram / the "annotated transformer"-style self-attention walkthrough (input embeddings â W_k/W_q/W_v projections â dot products â softmax â weighted sum via Î£). It is NOT Vaswani et al. 2017 Figure 1 or 2 (no multi-head, no feed-forward/residual blocks, no encoder-decoder stack). Matches: qÂ·k dot products, softmax, weighted sum of values. Differs: single attention "head" for one query word (X2), explicit W(1) superscripts, embedding-length inset, drawn with clip-art-style colored bars.
+
+5. NUMBERS / DATA
+- Badge numeral: 8
+- Indices: 1, 2, 3, 4 (token/row labels X1âX4, K1âK4, V1âV4, q1)
+- Matrix superscript: (1)
+- Dimensions: 1*d, d*d; caption "d: Embedding Length"
+- No other numeric values, tables, or percentages.
+
+6. BUILD STATE / ARTIFACTS
+- Slide appears fully revealed (no mid-animation ghost elements).
+- A red presentation-pointer (laser/arrow cursor) is visible at bottom-center-left, just below/left of the highlighted X2 cell in the bottom dashed container, pointing up-right toward X2.
+- A white mouse-cursor artifact overlaps the second blue dot from the top inside the "Dot Product" gray box.
+- The large translucent blue circle around q1 / Wq(1) appears to be a highlight/callout overlay (annotation emphasizing the query), not necessarily a permanent slide element.
+- Top-left corner of the frame shows a sliver of white background outside the slide border (video letterboxing/crop artifact); thin red slide border surrounds the whole slide.

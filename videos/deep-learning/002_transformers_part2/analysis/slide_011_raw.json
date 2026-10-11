@@ -1,0 +1,241 @@
+{
+  "slide_title": "Multi Head Self Attention of Word X\u2082",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "11",
+      "Similarity (small white oval label, repeated 5\u00d7 \u2014 one per head)",
+      "Probabilities (small white oval label, on h=1 head only)",
+      "Weighted SUM (small white oval label, repeated 5\u00d7 \u2014 one per head)",
+      "Dot Product",
+      "K\u00b7q",
+      "K\u00b7q/\u221ad (rendered as a stacked fraction: K\u00b7q over \u221ad)",
+      "Scaling by \u221ad (vertical text inside tall pink box)",
+      "Soft max (vertical text inside tall pink box)",
+      "\u03a3",
+      "h=1",
+      "h=2",
+      "h=3",
+      "h=4",
+      "h=5",
+      "*h* Heads",
+      "X\u2081 X\u2082 X\u2083 X\u2084 (left input column of h=1, dashed boxes; X\u2082 possibly highlighted [?])",
+      "X\u2081 X\u2082 X\u2083 X\u2084 (right output column of h=1, dashed boxes [?])",
+      "K\u2081 [?], K\u2082 [?], K\u2083 [?], K\u2084 [?] (tiny boxes between left W boxes and Dot Product)",
+      "V\u2081, V\u2082, V\u2083, V\u2084",
+      "W_v^0, W_v^1, W_v^2, W_v^3 (left of Dot Product; subscript possibly k [?])",
+      "W_v^0, W_v^1, W_v^2, W_v^3 (right of the \u2297 nodes)",
+      "W_q^{<1>}, W_k^{<1>}, W_v^{<1>}",
+      "W_q^{<2>}, W_k^{<2>}, W_v^{<2>}",
+      "W_q^{<3>}, W_k^{<3>}, W_v^{<3>}",
+      "W_q^{<4>}, W_k^{<4>}, W_v^{<4>}",
+      "W_q^{<5>}, W_k^{<5>}, W_v^{<5>}",
+      "Y\u2081 [?], Y\u2082 [?], Y\u2083 [?], Y\u2084 [?] (top dashed output boxes)",
+      "W_v [?] (small white box just above bottom input row; possibly W^O)",
+      "X\u2081 X\u2082 X\u2083 X\u2084 (bottom input row; X\u2082 in red, encircled by black dashed ellipse)"
+    ],
+    "equations": [
+      "K\u00b7q",
+      "K\u00b7q / \u221ad",
+      "\u221ad",
+      "Soft max",
+      "\u03a3 (summation / weighted-sum operator)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Framed schematic slide: white background; thin red border rectangle inset ~2% from edges; thin blue border rectangle inset ~5% containing all content. One large composite diagram fills the middle (~8-88% x, ~8-80% y): five stacked rounded-rectangle 'heads' offset diagonally from front-left (h=1, red, largest, fully detailed) to back-right (h=5, pink), each badged h=1..h=5 in black ovals at its top-right corner. A translucent yellow-green parallelogram beam rises from the front head's top edge to a cluster of Y output boxes at top-center-right. A thick red curved arrow labeled '*h* Heads' (blue italic) sweeps along the right side. Five vertical W_q/W_k/W_v triplets form a diagonal band along the heads' lower-right. Bottom-center: dashed input row X\u2081 X\u2082 X\u2083 X\u2084 (X\u2082 red, dashed-circled) overlapped by five translucent colored ellipses. Title line centered at the bottom inside the blue frame; yellow '11' badge at top-right; solid black strip across the very bottom (video-player artifact).",
+    "regions": [
+      {
+        "name": "Double frame + slide number",
+        "position": "full slide; badge at top-right (~89-93% x, ~10-17% y)",
+        "content": "White background, thin red border rectangle, thin blue inner border rectangle; yellow circle badge with black '11' overlapping the frame lines at top-right"
+      },
+      {
+        "name": "Head stack h=1-h=5",
+        "position": "middle, ~10-84% x, ~8-78% y",
+        "content": "Five overlapping rounded rectangles offset diagonally; front red head contains the full attention pipeline; rear heads show simplified copies (Similarity / Weighted SUM ovals, dashed X columns, small W boxes)"
+      },
+      {
+        "name": "h=1 pipeline",
+        "position": "left-center, ~11-65% x, ~33-78% y",
+        "content": "Left dashed X column \u2192 W_v boxes \u2192 K boxes \u2192 tan 'Dot Product' box with blue dot network \u2192 pink 'Scaling by \u221ad' \u2192 pink 'Soft max' \u2192 'Probabilities' oval \u2192 white \u03a3 box \u2192 four red \u2297 nodes with V\u2081-V\u2084 \u2192 W_v boxes \u2192 right dashed X column"
+      },
+      {
+        "name": "Output beam + Y boxes",
+        "position": "top-center-right, ~38-75% x, ~5-32% y",
+        "content": "Translucent yellow-green parallelogram from h=1 top edge to 4 dashed Y boxes (Y\u2081-Y\u2084) with a row of 4 pale-yellow boxes beneath"
+      },
+      {
+        "name": "'*h* Heads' arrow",
+        "position": "right, ~57-85% x, ~40-68% y",
+        "content": "Thick red curved arrow with blue italic label '*h* Heads'"
+      },
+      {
+        "name": "W triplets",
+        "position": "bottom-right diagonal band, ~60-83% x, ~48-78% y",
+        "content": "Five stacked triplets W_q^{<h>} (red), W_k^{<h>} (green), W_v^{<h>} (blue) for h=1..5"
+      },
+      {
+        "name": "Input row + attention ellipses",
+        "position": "bottom-center, ~18-41% x, ~64-84% y",
+        "content": "Dashed box with X\u2081 X\u2082 X\u2083 X\u2084 (X\u2082 red, black dashed ellipse), five translucent colored ellipses (blue, purple, violet, yellow, green), small W box above, pencil cursor icon"
+      },
+      {
+        "name": "Title",
+        "position": "bottom-center, ~34-69% x, ~84-90% y",
+        "content": "'Multi Head Self Attention of Word X\u2082'"
+      },
+      {
+        "name": "Video player strip",
+        "position": "very bottom, 0-100% x, ~97-100% y",
+        "content": "Solid black bar \u2014 video-player progress bar artifact, not slide content"
+      }
+    ],
+    "hierarchy": "The five-head stack dominates; the front red h=1 head with its dense left-to-right pipeline is the focal point. Secondary anchors: yellow-green beam with Y boxes (top), heavy red '*h* Heads' arrow (right), five colored W triplets (bottom-right). The title is the largest type; oval and box labels are smallest. Red is the loudest accent (arrow, \u2297 nodes, title word, X\u2082)."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Multi-head self-attention concept map: five overlapping rounded rectangles (heads) offset diagonally (~55px right, ~25px up per step in a 960x540 frame). Front-to-back: h=1 red (fully detailed pipeline), h=2 lavender, h=3 yellow, h=4 green, h=5 pink \u2014 each rear head shows a simplified copy of the pipeline (dashed X columns left and right, small red/green/blue W boxes, 'Similarity' oval top-left, 'Weighted SUM' oval top-right) with progressively more hidden behind the head in front. Each head carries a black oval badge with bold white text (h=1..h=5) at its top-right corner.",
+      "colors": [
+        "#F28B8B",
+        "#B9AEE3",
+        "#EDE87E",
+        "#8FE0A0",
+        "#F5B8B8",
+        "#000000",
+        "#FFFFFF"
+      ],
+      "position": "center of slide, ~10-84% x, ~8-78% y"
+    },
+    {
+      "type": "flowchart",
+      "description": "h=1 attention pipeline, left to right: (a) column of 4 dashed green-border boxes X\u2081-X\u2084; (b) 4 small white boxes with red text W_v^0-W_v^3 [possibly W_k]; (c) 4 tiny boxes K\u2081-K\u2084 [?]; (d) tall tan rectangle 'Dot Product' (label at top) with small box 'K\u00b7q' at its top-right; (e) tall pink rectangle with vertical dark-red text 'Scaling by \u221ad', fraction K\u00b7q/\u221ad in a small box above; (f) tall pink rectangle with vertical text 'Soft max', white oval 'Probabilities' above; (g) wide white box with large blue '\u03a3'; (h) four red \u2297 (multiply) nodes in a descending diagonal below-right of \u03a3, each joined to \u03a3 by thin red lines and fed by thin red arrows from the Softmax/Probabilities area; (i) right of each \u2297: tiny box V\u2081/V\u2082/V\u2083/V\u2084, then white box W_v^0-W_v^3 (red text), then a column of 4 dashed green boxes X\u2081-X\u2084 (outputs). Thin black/blue arrows connect stages left-to-right.",
+      "colors": [
+        "#22AA44",
+        "#CC2222",
+        "#D8C8A0",
+        "#D890C8",
+        "#8B0000",
+        "#2244CC",
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "inside front red head, ~11-65% x, ~33-78% y"
+    },
+    {
+      "type": "network",
+      "description": "Similarity dot-graph inside the 'Dot Product' box: ~8 small blue dots (keys/queries, one per token) arranged in two loose columns, connected by many thin straight criss-crossing lines (all-pairs similarities); mostly blue with at least one red highlighted link corresponding to query X\u2082 [?].",
+      "colors": [
+        "#2244CC",
+        "#CC2222"
+      ],
+      "position": "inside tan 'Dot Product' rectangle, ~25-31% x, ~38-60% y"
+    },
+    {
+      "type": "arrow",
+      "description": "Thick red curved arrow (C-shape, stroke ~8-10px): lower end near the h=1 head's right edge / W_q^{<1>} triplet at ~60% x, ~66% y (arrowhead appears to be at this lower end [?]), sweeping right and up to ~83% x, ~43% y beside the h=5 head. Blue italic label '*h* Heads' runs along the upper part at ~80-85% x, ~47-52% y.",
+      "colors": [
+        "#DD0000",
+        "#2244CC"
+      ],
+      "position": "right side of diagram, ~57-85% x, ~40-68% y"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Translucent yellow-green parallelogram 'beam' from the top edge of the h=1 head (~40% x, ~31% y) rising diagonally to ~72% x, ~10% y; at its top end: a row of 4 dashed green-border boxes with green text Y\u2081-Y\u2084 [?] and, just below/in front, a row of 4 solid pale-yellow boxes (per-head outputs being gathered) [?].",
+      "colors": [
+        "#D8E830 at ~50% opacity (appears ~#EFF7A0)",
+        "#F0E060",
+        "#22AA44"
+      ],
+      "position": "top-center-right, ~38-75% x, ~5-32% y"
+    },
+    {
+      "type": "other",
+      "description": "Five vertical triplets of small rectangles along a diagonal band (one triplet per head): top box W_q^{<h>} red fill, middle W_k^{<h>} green fill, bottom W_v^{<h>} blue fill, white bold text, h=1..5; h=1 triplet lowest-left (~62% x, ~65-77% y), h=5 triplet highest-right (~78-83% x, ~50-62% y).",
+      "colors": [
+        "#CC3333",
+        "#33AA33",
+        "#3366CC",
+        "#FFFFFF"
+      ],
+      "position": "bottom-right diagonal band, ~60-83% x, ~48-78% y"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Bottom input row: long dashed-border rounded box containing four small boxes X\u2081, X\u2082, X\u2083, X\u2084; X\u2082 in red text encircled by a black dashed ellipse; five overlapping ~50%-transparent ellipses fan rightward over the row \u2014 blue (largest), purple, violet, yellow, green (smallest) \u2014 suggesting each head's attention from X\u2082; a small white box labeled 'W_v [?]' (possibly W^O) sits just above the row; a thin connector with a small green arrow runs from the row up to the h=1 X column.",
+      "colors": [
+        "#7B9FE8",
+        "#9B7FE0",
+        "#B08FE8",
+        "#E8D87B",
+        "#8FD98F",
+        "#CC0000",
+        "#000000",
+        "#22AA44"
+      ],
+      "position": "bottom-center, ~18-41% x, ~64-84% y"
+    },
+    {
+      "type": "icon",
+      "description": "Small white pencil/cursor icon angled ~45\u00b0, dark outline, tip pointing down-left toward the input row \u2014 the presenter's live-annotation pointer.",
+      "colors": [
+        "#FFFFFF",
+        "#333333"
+      ],
+      "position": "~34% x, ~65% y"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: yellow circle with thin dark outline, bold black '11'.",
+      "colors": [
+        "#FFE135",
+        "#000000"
+      ],
+      "position": "top-right, ~89-93% x, ~10-17% y, overlapping the frame lines"
+    }
+  ],
+  "imagery": [
+    "Pencil/cursor annotation icon (white pencil, dark outline, angled 45\u00b0) at ~34% x, ~65% y over the bottom input row \u2014 presenter's pointer, not diagram content.",
+    "No photographs or illustrations anywhere; the slide is entirely vector-style schematic shapes and text.",
+    "Solid black horizontal strip across the very bottom (~97-100% y) \u2014 video-player progress bar artifact, not slide content."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#CC0000 for 'Multi Head' and 'X\u2082'; #000000 for 'Self Attention of Word'",
+    "body_text": "#1A1A1A (diagram labels; some labels red #CC2222, blue #2244CC, green #22AA44, dark-red #8B0000)",
+    "accents": [
+      "#DD0000 (red arrow, \u2297 nodes, red border, title accent)",
+      "#2244CC (\u03a3, blue dots, '*h* Heads', blue frame)",
+      "#22AA44 (dashed X-box borders, W_k boxes)",
+      "#D8E830 (yellow-green beam)",
+      "#F28B8B (h=1 head)",
+      "#B9AEE3 (h=2 head)",
+      "#EDE87E (h=3 head)",
+      "#8FE0A0 (h=4 head)",
+      "#F5B8B8 (h=5 head)",
+      "#D8C8A0 (Dot Product box)",
+      "#D890C8 (Scaling/Softmax boxes)",
+      "#FFE135 (slide-number badge)"
+    ]
+  },
+  "typography_notes": "Title: bold serif (Times New Roman-like), ~28pt equivalent, mixed red/black color, with a true subscript '2' in X\u2082. All diagram text is small sans-serif (Arial-like, ~7-10pt equivalent). 'Scaling by \u221ad' and 'Soft max' are rotated 90\u00b0 (vertical, reading bottom-to-top) inside tall pink rectangles. Head badges h=1-h=5: bold white sans on black ovals. '*h* Heads' is blue italic. Matrix labels use subscript-letter + superscript-index notation (W_v^0, W_q^{<1>}). No bullet lists or numbered items \u2014 the slide is a single schematic with a caption-style title at the bottom.",
+  "animation_state": "Slide appears fully built \u2014 all five heads, all labels, beam, arrow and title visible simultaneously; no mid-build reveal detected. The white pencil cursor overlapping the bottom input row indicates the presenter was annotating live at capture time. The black strip at the very bottom is the video player's progress bar, not slide content.",
+  "recreation_brief": "1. Slide 16:9, white background. Draw a red (#DD0000, ~1.5pt) unfilled rectangle inset ~2% from every edge; inside it a blue (#2222CC, ~1.5pt) unfilled rectangle inset ~5%. All content goes inside the blue frame.\n2. Top-right (~93% x, ~9% y): yellow (#FFE135) circle ~0.45in diameter, thin dark outline, bold black '11' centered.\n3. Heads: draw five rounded rectangles ~5.6in x 2.6in, stacked back-to-front, each ~0.55in right / ~0.28in up from the previous: h=5 pink #F5B8B8 (back), h=4 green #8FE0A0, h=3 yellow #EDE87E, h=2 lavender #B9AEE3, h=1 red #F28B8B (front, leftmost; spans ~10-67% x, ~31-78% y).\n4. Black oval badge (~0.55in x 0.28in, bold white text) at each head's top-right corner: h=1, h=2, h=3, h=4, h=5.\n5. On each head's top edge: white oval 'Similarity' (left) and white oval 'Weighted SUM' (right), small dark text; add a 'Probabilities' oval only on h=1 (above the Softmax box).\n6. Inside h=1 (left to right): (a) 4 dashed green-border (#22AA44) boxes X\u2081-X\u2084 stacked vertically; (b) white boxes with red text W_v^0-W_v^3; (c) tiny boxes K\u2081-K\u2084; (d) tall tan #D8C8A0 rectangle labeled 'Dot Product' with ~8 blue #2244CC dots joined by thin lines inside, plus small box 'K\u00b7q' at its top-right; (e) tall pink #D890C8 rectangle with vertical dark-red text 'Scaling by \u221ad', and a small box above showing the fraction K\u00b7q/\u221ad; (f) tall pink rectangle with vertical text 'Soft max'; (g) white box with large blue '\u03a3'; (h) four red \u2297 nodes in a descending diagonal below-right of \u03a3, thin red lines joining them to \u03a3 and red arrows from the Softmax area into each; (i) tiny boxes V\u2081-V\u2084, then white boxes W_v^0-W_v^3 (red text), then a second dashed green column X\u2081-X\u2084; connect stages with thin arrows.\n7. On heads h=2-h=5 add simplified copies (dashed X columns, small red/green/blue W boxes, Similarity/Weighted SUM ovals), each partially hidden behind the head in front.\n8. Diagonal band at the heads' lower-right, from (~62% x, ~65-77% y) to (~80% x, ~50-62% y): five vertical triplets W_q^{<h>} (red #CC3333), W_k^{<h>} (green #33AA33), W_v^{<h>} (blue #3366CC), white bold text, h=1..5.\n9. Beam: translucent (~50% transparency) yellow-green #D8E830 parallelogram from h=1's top edge (~40% x, ~31% y) up to (~72% x, ~10% y); at its top place 4 dashed green-border boxes with green text Y\u2081-Y\u2084, and just below them a row of 4 pale-yellow #F0E060 boxes.\n10. Thick red #DD0000 curved arrow (~4pt) from (~60% x, ~66% y) beside h=1's right edge sweeping up-right to (~83% x, ~43% y) beside h=5; blue #2244CC italic text '*h* Heads' along its upper part.\n11. Bottom-center (~19-41% x, ~71-76% y): long dashed-border rounded box containing X\u2081, X\u2082 (red text), X\u2083, X\u2084; black dashed ellipse around X\u2082; thin connector with small green arrow up to h=1's X column.\n12. Over the input row: five overlapping ~50%-transparent ellipses, largest to smallest: #7B9FE8, #9B7FE0, #B08FE8, #E8D87B, #8FD98F.\n13. Small white box labeled 'W_v' just above the input row; optionally a white pencil icon angled 45\u00b0 at ~34% x, ~65% y (presenter's cursor \u2014 omit for a clean slide).\n14. Title centered at ~89% y inside the blue frame, bold Times New Roman ~28pt: 'Multi Head ' in #CC0000, 'Self Attention of Word ' in black, 'X' in #CC0000 with red subscript '2'.\n15. Omit the solid black strip at the very bottom of the source image (video-player progress bar, not slide content).",
+  "_meta": {
+    "frame": "slide_011.jpg",
+    "model": "glm-5.3-flash",
+    "source_timestamps": {
+      "slide": 11,
+      "image": "slide_011.jpg",
+      "kept_frame": "frame_00387.jpg",
+      "start_sec": 364.0,
+      "end_sec": 386.0,
+      "frame_count": 23,
+      "old_slide": 16
+    },
+    "elapsed_s": 1382.0
+  }
+}

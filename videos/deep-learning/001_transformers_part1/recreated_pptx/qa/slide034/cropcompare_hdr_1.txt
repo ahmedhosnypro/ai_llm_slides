@@ -1,0 +1,44 @@
+# Element-by-Element Comparison
+
+## (1) [X_i] embedding symbol box
+- **Presence/position**: Present at far left in both, same size and placement. â
+- **Red border**: Both have a red/dark-red border. â
+- **Red brackets + X with subscript i**: Present in both. In IMG1 the subscript *i* renders noticeably smaller and lighter than in IMG2 (where it is a bolder red). â **MINOR**, confidence 0.7.
+- **Green 1Ãd subscript**: Present in both, green, bottom-right of the box. IMG1 uses a true multiplication sign (1**Ã**d) vs the original's letter x (1**x**d). â **MINOR**, confidence 0.8 (cosmetic; arguably an upgrade).
+
+## (2) Red SoftMax label
+- Text "SoftMax", bold, red, same position between the box and the fraction. â
+- Font is slightly cleaner/different weight in IMG1 â within tolerance for a recreation. No discrepancy.
+
+## (3) Softmax fraction
+- **LHS w_ij =**: Present in both with proper ij subscript. â
+- **Fraction structure**: numerator exp wâ²_ij, horizontal bar, denominator Î£_j exp wâ²_ij â all present, correct hierarchy, correct subscripts (including the prime on w). STIX serif math is a permitted upgrade. â
+- **â  Ink containment / box integrity â DISCREPANCY**: In IMG1 the white fraction box's right side is overlapped by the warning strip: the strip's left blue border sits *on top of* the fraction box's right edge, hiding the box's right border and the right terminus of the fraction bar. In IMG2 there is a clean white gap between the fraction box's right border and the strip's left border. The numerator/denominator glyphs themselves remain readable, but the equation box's ink region collides with the neighboring strip â exactly the containment failure mode this check targets. â **MAJOR**, confidence 0.65.
+
+## (4) Warning strip
+- **Blue border**: Present in both. â
+- **Single line, bold italic**: Yes in both. â
+- **Wording**: "High Weight Values kill the gradient, and slow down learning" â verbatim match. â
+- **â  Color**: IMG1 renders the entire line in uniform blue. IMG2 (original) uses mixed coloring (several words in red: e.g., "High", "kill", "gradient", "slow down"). Note the capture spec calls for blue text, so IMG1 matches its spec, but it diverges from the original frame. â **MINOR**, confidence 0.55.
+- **Position/centering**: Centered within the strip in both; strip is vertically aligned with the fraction box in both. â
+
+## (5) Peach panel edges
+- Peach panel background present in both; edges and gray chrome band above are consistent. House chrome â not judged. â
+
+## Other in-crop items (context only)
+- Green "d â", "d â", "d ââ" arrows all present and correctly placed in both. â
+
+---
+
+# Discrepancy Summary
+
+| # | Discrepancy | Severity | Confidence |
+|---|---|---|---|
+| 1 | Warning strip's left edge overlaps the fraction white box in IMG1, hiding the box's right border and the right end of the fraction bar (clean gap in original) | **MAJOR** | 0.65 |
+| 2 | Warning text all-blue in IMG1 vs mixed blue/red word coloring in the original (IMG1 conforms to the stated spec) | MINOR | 0.55 |
+| 3 | Subscript *i* in X_i smaller/lighter than original | MINOR | 0.7 |
+| 4 | "1Ãd" multiplication sign vs original "1xd" letter x | MINOR | 0.8 |
+
+The single MAJOR item is the collision between the warning strip and the fraction box â the equation content itself remains fully legible and correct, but the layout violates the explicit containment requirement for the fraction box and differs visibly from the original's clean separation.
+
+**FINAL VERDICT: FAIL** for 'this header row is a faithful, usable recreation' â the warning strip overlapping/clipping the fraction box's right edge is a real layout defect that must be fixed (shift the strip right or narrow it to restore the gap seen in the original); all other differences are minor.

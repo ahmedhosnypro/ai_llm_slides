@@ -1,0 +1,238 @@
+{
+  "slide_title": "Suggested Positional Encoders",
+  "subtitle_or_header": "(Normalize Seq. Length to \u201c1\u201d)",
+  "verbatim_text": {
+    "bullets": [
+      "\u03b4 Value depends on Seq. Length  ( \u03b4 is small for long seq and large for short sequence )",
+      "In other words, Encoding value of  position # 4  in  short  seq  will  differ  from  position #4  in  long  seq (though they are same position)",
+      "Position Encoding is  scalar  and Word embedding is  vector   (how to Combine them ?)"
+    ],
+    "labels": [
+      "23",
+      "Sequence of words with Length N",
+      "Position Embedding",
+      "Use Position Index",
+      "Word 0",
+      "Word 1",
+      "Word 2",
+      "Word 3",
+      "Word 4",
+      "Word 5",
+      "Word N-2",
+      "Word N-1",
+      "Pos 0",
+      "Pos 1",
+      "Pos 2",
+      "Pos 3",
+      "Pos 4",
+      "Pos 5",
+      "Pos N-2",
+      "Pos N-1",
+      "0",
+      "\u03b4",
+      "2\u03b4",
+      "3\u03b4",
+      "4\u03b4",
+      "5\u03b4",
+      "1-\u03b4",
+      "1",
+      "+\u03b4",
+      "Use \u03b4=1/Seq. Length  First position Encoding=0, Last Position Encoding= 1  (Independent of Seq. Length)",
+      "Problems:"
+    ],
+    "equations": [
+      "\u03b4 = 1/Seq. Length",
+      "First position Encoding = 0",
+      "Last Position Encoding = 1",
+      "Position index sequence: 0, \u03b4, 2\u03b4, 3\u03b4, 4\u03b4, 5\u03b4, ... , 1-\u03b4, 1  (each step increments by +\u03b4)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Red rectangular frame borders the whole slide. Title + subtitle centered at top, yellow slide-number circle top-right. Below, three full-width horizontal 'sequence strips' stacked vertically, each with a small text label on the far left and a dashed rounded-rectangle container of 8 small boxes filling the rest of the width. Under the third strip: a row of six curved orange arrows, each labeled '+\u03b4'. Bottom ~30% of slide: one large light-blue rounded highlight box containing a lead sentence, the word 'Problems:', and three bullets.",
+    "regions": [
+      {
+        "name": "Red border frame",
+        "position": "whole slide, inset ~2-4% from all edges",
+        "content": "Thin dark-red (#C00000) rectangular frame, no fill, outlining the entire content area"
+      },
+      {
+        "name": "Title block",
+        "position": "top center, ~5-15% height, ~20-80% width",
+        "content": "Red bold title 'Suggested Positional Encoders' with blue bold subtitle '(Normalize Seq. Length to \u201c1\u201d)' beneath it"
+      },
+      {
+        "name": "Slide number",
+        "position": "top right, ~8-16% height, ~90-96% width",
+        "content": "Yellow circle with red '23'"
+      },
+      {
+        "name": "Row 1 - Words strip",
+        "position": "upper middle, ~20-29% height, full width",
+        "content": "Left gray italic label 'Sequence of words with Length N'; black dashed rounded container holding 8 red-bordered boxes Word 0...Word 5, Word N-2, Word N-1 with 5 gray dots as ellipsis between Word 5 and Word N-2"
+      },
+      {
+        "name": "Row 2 - Position Embedding strip",
+        "position": "middle, ~33-42% height, full width",
+        "content": "Left blue bold label 'Position Embedding'; blue dashed rounded container with lavender fill holding 8 blue-bordered boxes Pos 0...Pos 5, Pos N-2, Pos N-1 with 5 blue dots between Pos 5 and Pos N-2"
+      },
+      {
+        "name": "Row 3 - Position Index strip",
+        "position": "lower middle, ~48-57% height, full width",
+        "content": "Left red bold label 'Use Position Index'; red dashed rounded container with pink fill holding 8 red-bordered boxes 0, \u03b4, 2\u03b4, 3\u03b4, 4\u03b4, 5\u03b4, 1-\u03b4, 1 (empty gap between 5\u03b4 and 1-\u03b4, no dots)"
+      },
+      {
+        "name": "Arrow row",
+        "position": "~57-63% height, centered under Row 3 boxes",
+        "content": "Six curved orange arrows linking consecutive Row 3 boxes (0\u2192\u03b4, \u03b4\u21922\u03b4, 2\u03b4\u21923\u03b4, 3\u03b4\u21924\u03b4, 4\u03b4\u21925\u03b4, 1-\u03b4\u21921; none across the gap between 5\u03b4 and 1-\u03b4), each labeled '+\u03b4' in red bold (6 labels)"
+      },
+      {
+        "name": "Highlight box",
+        "position": "bottom, ~65-95% height, ~7-93% width",
+        "content": "Light-blue rounded rectangle with blue border containing lead line 'Use \u03b4=1/Seq. Length  First position Encoding=0, Last Position Encoding= 1  (Independent of Seq. Length)', then bold 'Problems:', then the three round-bulleted lines from verbatim_text.bullets"
+      },
+      {
+        "name": "Bottom black strip",
+        "position": "very bottom edge, ~97-100% height, full width",
+        "content": "Solid black horizontal bar \u2014 likely a video-player letterbox artifact, not slide content"
+      }
+    ],
+    "hierarchy": "Title (largest, red, bold) dominates, followed by subtitle in blue. The three box strips are the visual core, equal in size, differentiated by color (black/red, blue, red/pink). The bottom highlight box is the largest single container but its text is smaller. Left strip labels are small; '+\u03b4' labels smaller still."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Thin dark-red rectangular frame outlining the entire slide content area, no fill",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "inset ~2-4% from all slide edges"
+    },
+    {
+      "type": "diagram",
+      "description": "Row 1: black dashed rounded-rectangle container. Inside, left-to-right: 8 small white rectangles with thin red borders and red italic text reading 'Word 0', 'Word 1', 'Word 2', 'Word 3', 'Word 4', 'Word 5', then 5 small solid gray dots (ellipsis) at mid-height, then 'Word N-2', 'Word N-1'",
+      "colors": [
+        "#000000",
+        "#FFFFFF",
+        "#CC0000",
+        "#999999"
+      ],
+      "position": "upper middle strip, ~20-29% height"
+    },
+    {
+      "type": "diagram",
+      "description": "Row 2: blue dashed rounded-rectangle container filled light lavender. Inside: 8 small white rectangles with thin blue borders and blue italic text reading 'Pos 0', 'Pos 1', 'Pos 2', 'Pos 3', 'Pos 4', 'Pos 5', then 5 small solid blue dots (ellipsis), then 'Pos N-2', 'Pos N-1'",
+      "colors": [
+        "#3333CC",
+        "#CCCCFF",
+        "#FFFFFF"
+      ],
+      "position": "middle strip, ~33-42% height"
+    },
+    {
+      "type": "diagram",
+      "description": "Row 3: red dashed rounded-rectangle container filled light pink. Inside: 8 small white rectangles with thin red borders and red italic text reading '0', '\u03b4', '2\u03b4', '3\u03b4', '4\u03b4', '5\u03b4', then an empty gap (no dots), then '1-\u03b4', '1'",
+      "colors": [
+        "#CC0000",
+        "#FFE0E0",
+        "#FFFFFF"
+      ],
+      "position": "lower middle strip, ~48-57% height"
+    },
+    {
+      "type": "arrow",
+      "description": "Six thin curved orange arcs below Row 3, each arcing downward from the bottom of one box to the bottom of the next with an arrowhead at the destination: 0\u2192\u03b4, \u03b4\u21922\u03b4, 2\u03b4\u21923\u03b4, 3\u03b4\u21924\u03b4, 4\u03b4\u21925\u03b4, and 1-\u03b4\u21921; no arc spans the gap between 5\u03b4 and 1-\u03b4. Each arc has a red bold '+\u03b4' label centered beneath it (6 labels)",
+      "colors": [
+        "#FF9900",
+        "#CC0000"
+      ],
+      "position": "~57-63% height, spanning the width of Row 3's boxes"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Large light-blue rounded rectangle with medium-blue border containing the lead sentence, the word 'Problems:', and three round-bulleted lines of blue text with bold/underline/magenta emphasis",
+      "colors": [
+        "#D6EAF8",
+        "#0066CC",
+        "#0000CC",
+        "#CC00CC"
+      ],
+      "position": "bottom, ~65-95% height"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: yellow filled circle with darker gold outline containing red text '23'",
+      "colors": [
+        "#FFFF99",
+        "#E0A000",
+        "#CC0000"
+      ],
+      "position": "top-right corner inside red frame"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; all graphics are schematic boxes, dots, dashed containers, and curved arrows",
+    "A small white mouse-cursor arrow is visible overlapping the arrow area near the '3\u03b4' box (~40% width, ~62% height) \u2014 a live-presentation artifact, not slide content"
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#D40000",
+    "body_text": "#0000CC",
+    "accents": [
+      "#C00000",
+      "#CC0000",
+      "#3333CC",
+      "#CCCCFF",
+      "#FFE0E0",
+      "#FF9900",
+      "#FFFF99",
+      "#CC00CC",
+      "#D6EAF8",
+      "#0066CC",
+      "#999999",
+      "#7F7F7F",
+      "#E0A000",
+      "#000000"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Helvetica-like). Title: bold, ~28-30pt, red, centered, title case. Subtitle: bold, ~20-22pt, blue, centered, in parentheses with curly double quotes around 1. Box labels: italic, ~13-14pt. Left strip labels: small ~12-13pt; first is gray italic on three lines, other two are bold (blue, red) on two lines. Bottom box: ~15-16pt blue text, round bullets, emphasis via bold (\u03b4, Seq. Length, long, short, differ, scalar, vector, 0, 1), underline ('(Independent of Seq. Length)', 'position # 4', 'position #4'), and magenta bold ('same position)'). '+\u03b4' labels: small red bold.",
+  "animation_state": "Slide appears fully built (all three strips, all six arrows, all bullets visible). A mouse cursor is parked near the third arrow, indicating a live-recorded lecture, but no mid-build reveal is in progress.",
+  "recreation_brief": "1. Slide canvas: white background (#FFFFFF). Draw a no-fill rectangle with a dark-red (#C00000) border ~2pt thick, inset ~2-4% (\u22480.15-0.3in) from all four slide edges, framing the entire content area.\n2. Title: centered text at ~5-15% height: 'Suggested Positional Encoders' \u2014 Arial bold ~28-30pt, red #D40000, title case.\n3. Subtitle: centered directly below the title: '(Normalize Seq. Length to \u201c1\u201d)' \u2014 Arial bold ~20-22pt, blue #0000CC, curly double quotes around 1.\n4. Slide-number badge: at ~90-96% width / ~8-16% height (top-right, inside the red frame), draw a ~0.5in-diameter circle filled #FFFF99 with a gold #E0A000 outline and center red (#CC0000) bold text '23' inside it.\n5. Row 1 left label: at ~20-29% height, far left: gray (#7F7F7F) italic ~12-13pt text 'Sequence of words with Length N' wrapped across 3 lines (suggested split: 'Sequence of / words with / Length N').\n6. Row 1 container: rounded rectangle in the same vertical band, spanning ~15-90% width: no fill, black (#000000) dashed border.\n7. Row 1 boxes: inside the container, left to right, 8 small white rectangles with thin red (#CC0000) borders and red italic ~13pt text: 'Word 0', 'Word 1', 'Word 2', 'Word 3', 'Word 4', 'Word 5', 'Word N-2', 'Word N-1'; between 'Word 5' and 'Word N-2' place 5 small solid gray (#999999) dots at mid-height as an ellipsis.\n8. Row 2 left label: at ~33-42% height, far left: blue (#3333CC) bold ~12-13pt text 'Position Embedding' wrapped on 2 lines ('Position / Embedding').\n9. Row 2 container: rounded rectangle with the same footprint as step 6: blue (#3333CC) dashed border, lavender (#CCCCFF) fill.\n10. Row 2 boxes: 8 small white rectangles with thin blue (#3333CC) borders and blue italic ~13pt text: 'Pos 0', 'Pos 1', 'Pos 2', 'Pos 3', 'Pos 4', 'Pos 5', 'Pos N-2', 'Pos N-1'; 5 small solid blue (#3333CC) dots between 'Pos 5' and 'Pos N-2'.\n11. Row 3 left label: at ~48-57% height, far left: red (#CC0000) bold ~12-13pt text 'Use Position Index' wrapped on 2 lines ('Use Position / Index').\n12. Row 3 container: rounded rectangle with the same footprint as step 6: red (#CC0000) dashed border, pink (#FFE0E0) fill.\n13. Row 3 boxes: 8 small white rectangles with thin red (#CC0000) borders and red italic ~13pt text: '0', '\u03b4', '2\u03b4', '3\u03b4', '4\u03b4', '5\u03b4', '1-\u03b4', '1'; leave an empty gap (no dots) between '5\u03b4' and '1-\u03b4'.\n14. Arrows: at ~57-63% height, below Row 3, draw 6 thin curved orange (#FF9900) arcs, each starting at the bottom of one box, arcing downward, and ending with an arrowhead at the bottom of the next box: 0\u2192\u03b4, \u03b4\u21922\u03b4, 2\u03b4\u21923\u03b4, 3\u03b4\u21924\u03b4, 4\u03b4\u21925\u03b4, 1-\u03b4\u21921 (no arc across the gap between 5\u03b4 and 1-\u03b4). Center one red (#CC0000) bold '+\u03b4' label under each arc (6 labels total).\n15. Highlight box: rounded rectangle at ~65-95% height and ~7-93% width: fill #D6EAF8, border #0066CC ~1.5pt.\n16. Lead line inside the highlight box (top line): blue #0000CC ~15-16pt text 'Use \u03b4=1/Seq. Length  First position Encoding=0, Last Position Encoding= 1  (Independent of Seq. Length)' with '\u03b4=1/Seq. Length', '0' and '1' in bold and '(Independent of Seq. Length)' underlined.\n17. Next line inside the box: bold blue #0000CC text 'Problems:'.\n18. Bullet 1 (round bullet, blue #0000CC ~15-16pt): '\u03b4 Value depends on Seq. Length  ( \u03b4 is small for long seq and large for short sequence )' with bold on '\u03b4', 'Seq. Length', 'long', 'short'.\n19. Bullet 2: 'In other words, Encoding value of  position # 4  in  short  seq  will  differ  from  position #4  in  long  seq (though they are same position)' with bold on 'short', 'differ', 'long'; underline on 'position # 4' and 'position #4'; magenta (#CC00CC) bold on 'same position)'.\n20. Bullet 3: 'Position Encoding is  scalar  and Word embedding is  vector   (how to Combine them ?)' with bold on 'scalar' and 'vector'.\n21. Do NOT recreate: the solid black bar along the bottom edge (~97-100% height, a video letterbox artifact) or the white mouse-cursor arrow near the '3\u03b4' box (~40% width, ~62% height) \u2014 both are recording artifacts, not slide content.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Added missing layout region 'Red border frame' (whole slide, inset ~2-4%) so layout.regions covers the #C00000 frame declared in visual_elements.",
+      "Cleaned verbatim label '+\u03b4 (repeated 6 times, one under each curved arrow)' to '+\u03b4' \u2014 the parenthetical was an extractor annotation, not on-slide text; the count of 6 is retained in the Arrow row region, the arrow visual element, and recreation brief step 14.",
+      "Normalized subtitle quotes to curly double quotes around 1 \u2014 '(Normalize Seq. Length to \u201c1\u201d)' \u2014 matching typography_notes.",
+      "Split the Highlight box region content into its exact three parts: lead line 'Use \u03b4=1/Seq. Length  First position Encoding=0, Last Position Encoding= 1  (Independent of Seq. Length)', bold 'Problems:', and the 3 bullets (previously merged into one quoted string).",
+      "Clarified arrow coverage everywhere (arrangement, Arrow row region, arrow element, brief step 14): exactly 6 arcs \u2014 0\u2192\u03b4, \u03b4\u21922\u03b4, 2\u03b4\u21923\u03b4, 3\u03b4\u21924\u03b4, 4\u03b4\u21925\u03b4, 1-\u03b4\u21921 \u2014 with no arc across the gap between 5\u03b4 and 1-\u03b4.",
+      "Replaced unquantified plurals with exact counts: 'a row of curved orange arrows' \u2192 six arrows and 'container of small boxes' \u2192 8 boxes per strip (layout.arrangement); 'all arrows' \u2192 all six arrows (animation_state).",
+      "Fixed Row 1 label wrap: the original brief claimed a '3-line label' but showed a 2-line split; the rewritten brief instructs a 3-line wrap per typography_notes, with break points marked as approximate.",
+      "Added #E0A000 (badge outline) and #000000 (Row 1 dashed container border) to colors.accents; both were already specified in visual_elements but missing from the palette.",
+      "Rewrote recreation_brief as a 21-step ordered checklist \u2014 each step places one element with verbatim text, position band, hex color, and shape \u2014 and harmonized the frame inset (~2-4% \u2248 0.15-0.3in)."
+    ],
+    "uncertain_items": [
+      "Exact line breaks of the 3-line 'Sequence of words with Length N' label are not specified; 'Sequence of / words with / Length N' is a suggested split only.",
+      "#7F7F7F as the Row 1 left-label gray is inferred: it is the only unassigned gray in colors.accents and no element explicitly maps it.",
+      "Size approximations not stated in the source: badge diameter ~0.5in, frame border ~2pt, highlight-box border ~1.5pt, box-label text ~13pt.",
+      "The absence of a 7th arc across the 5\u03b4\u21921-\u03b4 gap rests solely on the extractor's explicit 6-arc enumeration and the '+\u03b4' \u00d76 annotation; not independently verifiable without the image."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_023.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 23,
+      "image": "slide_023.jpg",
+      "kept_frame": "frame_01233.jpg",
+      "start_sec": 984.0,
+      "end_sec": 1232.0,
+      "frame_count": 249,
+      "old_slide": 45,
+      "note": "old group split with new slide 22"
+    },
+    "elapsed_s": 219.4,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 940.4
+  }
+}

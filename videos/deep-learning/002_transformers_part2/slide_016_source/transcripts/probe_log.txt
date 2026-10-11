@@ -1,0 +1,128 @@
+[info] mode analysis | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 2059609
+[info] /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/unique_slides/slide_016.jpg: transcript written (validated winner, atomic): /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/slide_016_source/transcripts/slide_016_webverify.txt (pid 2059609)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/unique_slides/slide_016.jpg ===
+[winner] images (round 1, attempt 1)
+PLAIN-TEXT REPORT â DSAI 308 Transformers Part II, slide frame transcription
+
+1. TITLE
+
+Exact title text (verbatim, spacing approximated as shown):
+"Using  FF NN  for Multiplication of Multiple Vectors by  Multiple Matrices"
+
+Badge numeral (top-right, inside a yellow/gold circle with dark outline): 16
+
+Subtitle line directly beneath the title (blue bold text):
+"Usage: Multiply Vectors of All Words by Multiple  (different) W_k   (Keys of Multiple Heads)"
+
+2. ALL VERBATIM TEXT
+
+Title: "Using  FF NN  for Multiplication of Multiple Vectors by  Multiple Matrices"
+Subtitle: "Usage: Multiply Vectors of All Words by Multiple  (different) W_k   (Keys of Multiple Heads)"
+
+Left column labels (red/magenta text, one per row):
+"Embedding Vector of Word #1 X_1"
+"Embedding Vector of Word #2 X_2"
+"Embedding Vector of Word #3 X_3"
+"Embedding Vector of Word #4 X_4"
+"Embedding Vector of Word #5 X_5"
+
+Matrix-group headers (red text, one above each 4x4 grid):
+"W_k of Head 1"
+"W_k of Head 2"
+"W_k of Head 3"
+
+Bottom-left blue-bordered callout box (blue text, bulleted):
+"â¢  Sequence of   5 Words
+â¢  Network with  3 Heads
+â¢  Embedding Dimension=4"
+
+Large "=" symbol between the matrices section and the bottom results section.
+
+Right-side caption column (red/pink text, one label per output row):
+"Corresponding Projection of Word #1"
+"Corresponding Projection of Word #2"
+"Corresponding Projection of Word #3"
+"Corresponding Projection of Word #4"
+"Corresponding Projection of Word #5"
+
+Bottom captions (red text, one under each output grid):
+"Corresponding Projections at Head 1"
+"Corresponding Projections at Head 2"
+"Corresponding Projections at Head 3"
+
+All cell labels inside the three weight matrices and three output grids are listed in Sections 3â4. No other captions, footnotes, or axis labels are visible. The slide is enclosed in a thin dark-red rectangular border frame; outside the frame the video shows black letterbox strips at the very top and bottom edges of the still.
+
+3. EQUATIONS / SYMBOLIC SEQUENCES
+
+- Subtitle token: W_k  (W with subscript k)
+- Embedding vector labels: X_1, X_2, X_3, X_4, X_5  (X with subscripts 1â5)
+- Scalar components inside each embedding: x_1, x_2, x_3, x_4  (lowercase x with subscripts 1â4; repeated identically in all five rows)
+- Weight matrix entries (all three Head grids use the same index pattern, W with two subscripts, first index = row, second = column):
+  Row 1: W_11, W_21, W_31, W_41
+  Row 2: W_12, W_22, W_32, W_42
+  Row 3: W_13, W_23, W_33, W_43
+  Row 4: W_14, W_24, W_34, W_44
+  (In the Head 1 grid, some first-row subscripts are hard to resolve at this resolution; they appear as W_?1 W_21 W_31 W_41 and are assumed to follow the same W_rowcol pattern as Heads 2 and 3. A subscript [?] is flagged where genuinely unreadable: Head 1 row 1, first cell reads W_?1 possibly W_11.)
+- Output component tokens (all three output grids, five identical rows each): y_1, y_2, y_3, y_4  (y with subscripts 1â4)
+- Implicit relation depicted: y rows = X_i x W_k(Head j), i.e., each embedding vector multiplied by each head's key weight matrix; the "=" conveys [X_1..X_5 stacked] times {W_k Head1, W_k Head2, W_k Head3} gives three stacked sets of five y-vectors.
+
+4. DIAGRAM TOPOLOGY
+
+Overall layout: a single wide schematic arranged left-to-right, with a vertical stack of 5 embedding vectors on the left, three 4x4 weight-matrix grids in the middle band, an "=" sign, and three 5-row output grids in the bottom band. Data flow is left-to-right (embeddings â weight matrices) and top-to-bottom (matrices â "=" â output projections). This is NOT a copy of a famous published figure; it is a custom pedagogical illustration (style resembles the instructor's own series of "FF NN for multiplication by matrices" slides, thematically related to Jay Alammar-style colored-box matrix decompositions but not matching any specific Vaswani/Bloem/Alammar figure).
+
+Containers and groups:
+- Outer slide frame: thin dark-red rectangle around all content.
+- Left group container: a large rounded-rectangle outline (light pink/blue-tinted) enclosing the five embedding-vector rows.
+- Each Head matrix grid is enclosed in its own rounded-rectangle outline:
+  Head 1 grid: light-green rounded outline.
+  Head 2 grid: light-orange/tan rounded outline.
+  Head 3 grid: light-purple/lavender rounded outline.
+- Each Head output grid is enclosed in its own rounded-rectangle outline:
+  Head 1 output: light-green rounded outline.
+  Head 2 output: light-orange rounded outline.
+  Head 3 output: light-purple rounded outline.
+
+Nodes and fills:
+LEFT â five embedding rows, each a horizontal group of 4 circles (light-green fill, darker green outline, each circle labeled x_1, x_2, x_3, x_4 left-to-right):
+  Row 1 (Word #1, X_1): circles enclosed in a pink rounded-rectangle outline.
+  Row 2 (Word #2, X_2): pink rounded outline.
+  Row 3 (Word #3, X_3): pink rounded outline.
+  Row 4 (Word #4, X_4): pink rounded outline.
+  Row 5 (Word #5, X_5): blue rounded outline (visually distinct from rows 1â4).
+
+MIDDLE â three 4x4 grids of small squares (Head 1, Head 2, Head 3), each cell a rounded square with the W_ij label. Cell fill colors, by row (consistent across the three grids):
+  Row 1 cells: orange/amber fill (yellow-ish squares).
+  Row 2 cells: pink fill.
+  Row 3 cells: orange/amber fill.
+  Row 4 cells: light-green fill.
+  Head 1 entries: W_?1, W_21, W_31, W_41 / W_12, W_22, W_32, W_42 / W_13, W_23, W_33, W_43 / W_14, W_24, W_34, W_44.
+  Head 2 entries: W_11, W_21, W_31, W_41 / W_12, W_22, W_32, W_42 / W_13, W_23, W_33, W_43 / W_14, W_24, W_34, W_44.
+  Head 3 entries: W_11, W_21, W_31, W_41 / W_12, W_22, W_32, W_42 / W_13, W_23, W_33, W_43 / W_14, W_24, W_34, W_44.
+
+"=" sign: large dark-blue equals symbol, centered between the matrix band and the output band, horizontally aligned under the Head 1/Head 2 gap area.
+
+BOTTOM â three 5-row x 4-column output grids of small squares, each cell labeled y_1 y_2 y_3 y_4 left-to-right. Text color per grid: Head 1 green, Head 2 orange, Head 3 purple. Row background alternation: in Head 1 grid the rows alternate light-green/white; Head 2 rows alternate light-orange/white; Head 3 rows appear white/pale with purple text (row tinting less distinct at this resolution).
+  All 15 output rows are identical in content: y_1, y_2, y_3, y_4.
+
+Arrows/connectors: No explicit arrowheads are drawn. Implied flow is conveyed by layout only (embeddings â matrices â "=" â output grids). There are no dashed outlines, no inset panels, no legend boxes other than the bottom-left bulleted callout box.
+
+5. NUMBERS / DATA
+
+- Slide/badge number: 16
+- "5 Words" (sequence length)
+- "3 Heads" (number of attention heads)
+- "Embedding Dimension=4" (d = 4)
+- Derived sizes shown graphically: 5 embedding vectors of dimension 4; three 4x4 weight matrices (one per head); three output stacks of 5 vectors each of dimension 4; total 3 x 16 = 48 weight cells and 3 x 20 = 60 output cells drawn.
+- Word indices #1â#5; row/column indices 1â4 in all W and y tokens.
+
+6. BUILD STATE / ARTIFACTS
+
+- A mouse cursor (small white/gray pointer with dark outline) is visible inside the Head 1 weight grid, over/near the third-row, third-column cell W_33. This indicates the frame was captured mid-lecture with the pointer hovering there; no reveal animation appears to be in progress (all elements fully drawn).
+- Black letterbox bars at the very top and very bottom of the still (video framing artifact, not slide content).
+- Slight JPEG blur on small subscript glyphs, notably in Head 1 row 1 and in the pale purple output grid, but no text is fully illegible except the flagged W_?1 cell noted in Section 3.
+- No progress bar, watermark, timestamp, or other video overlay is visible.
+
+End of report.
+

@@ -1,0 +1,23 @@
+[PASS] 2a containment: agenda ink inside house frame: 0 px outside; agenda bbox x=[231,796] y=[359,647]
+[PASS] 2b containment: title ink inside house frame: title band ink present: 18456 px (band y40-210 well inside frame)
+[PASS] 2c bottom line present at measured geometry: band y=[1119,1124] (target [1118.8,1125])
+[PASS] 6a agenda: exactly 4 line bands: bands at [359, 445, 531, 617]
+[PASS] 6b agenda: vertical alignment vs original <=4px: top deltas ['+0.7', '-0.8', '-0.3', '+0.3'] px @150dpi
+[PASS] 6c agenda: band pitch == pinned 41.33pt: pitches [86, 86, 86] (pinned 86.10px)
+[PASS] 6d agenda: left ink alignment <=4px: left=231 target 231.25
+[PASS] 6e agenda: line widths vs original <=8px: widths [544, 566, 504, 412] vs [539.6, 562.5, 497.9, 412.5] (JPEG smear ~2px @960 scale)
+[PASS] 7a wrap: no blue ink below agenda block: 0 blue px in y[700,1050]
+[PASS] 7b wrap: no blue ink above line 1: 0 blue px above band1
+[PASS] 8a XML: agenda lnSpc spcPts=4133 pinned: 4 occurrence(s) = one per agenda paragraph (4 lines, correct)
+[PASS] 8b XML: no '#' in any color value: scan of slide1.xml
+[PASS] 8c XML: fontFace everywhere = Arial only: typefaces ['Arial']
+[PASS] 8d XML: double space preserved in a:t: 'Multi-Head  Attention' found verbatim
+[PASS] 8e XML: en dash title verbatim: 'Transformers – Part I' found
+[PASS] 8f XML: all 4 agenda lines verbatim: 4/4 found
+[PASS] 8g XML: title sz=4000 (40pt): sz="4000" present
+[PASS] 8h XML: badge numeral 3: text run '3' present
+
+N/A checks: 3 EQUATIONS (none on slide — probe_original.txt + masks), 4 DELIMITERS (none), 5 TABLE DATA (none).
+House-mandated differences (NOT defects, per 17 + judge GR): title box y:0.28 x:0.6 w:12.13 centered (original title ink center x=5.85in vs house 6.67in); badge FFF9C4 at 12.48/0.30/0.5/0.5 (original 12.17-12.67in, purple outline); house frame 0.15in inset (original frame 0.54in inset, no top edge).
+
+OVERALL: ALL CHECKS PASS

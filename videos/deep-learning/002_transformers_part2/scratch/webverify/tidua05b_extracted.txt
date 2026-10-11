@@ -1,0 +1,8207 @@
+www.ti.com
+
+Description
+
+Design Guide: TIDA-00176
+
+Interface to Sin/Cos Encoders With High-Resolution
+Position Interpolation
+
+Description
+
+Features
+
+This reference design is an EMC compliant industrial
+interface to Sin/Cos position encoders. Applications
+include industrial drives, which require accurate speed
+and position control. The design uses a 16-bit
+dual sample ADC with drop-in compatible 14- or
+12-bit versions available, allowing for optimization of
+performance and cost. TIDA-00176 is also provides a
+simple to connection to external processors using SPI
+and QEP interfaces and allows for the use of optional,
+embedded ADCs. For quick evaluation an example
+firmware for Piccolo™ F28069M MCU LaunchPad™ is
+provided, which outputs the measured angle from the
+Sin/Cos encoder with up to 28-bit resolution through
+the MCU’s USB virtual COM port.
+
+•
+•
+•
+
+•
+
+•
+
+Resources
+TIDA-00176
+
+Design Folder
+
+ADS8354, THS4531A
+
+Product Folder
+
+TLV3202, OPA2365
+
+Product Folder
+
+REF2033, TPS54040A
+
+Product Folder
+
+TIPD117
+
+Tool Folder
+
+Piccolo F28069M MCU LaunchPad
+
+Tool Folder
+
+•
+
+EMC-Compliant Industrial Interface Design for
+Sin/Cos Encoders With 1-VPP Differential Output
+at 2.5-V Offset, Input Frequencies up to 500 kHz
+High-Resolution Interpolated Position, up to 28-bit
+Resolution, Cable Length Tested up to 70 m
+Dual Analog Signal Chain for Simultaneous Use
+of 16-bit Dual SAR ADC and MCU Embedded
+ADCs Allows for Evaluation of Both Paths and
+Optimization of One Path for Increased Noise
+Immunity With Reduced Bandwidth
+Easy to Connect to MCU With SPI and QEP
+Interface and Option for Cost Optimization
+Pending Resolution Requirements, Thanks to
+Drop-in Compatible 14- or 12-bit ADC
+Example Firmware for C2000™ MCU With HighResolution Angle Calculated at 16-kHz and Angle
+Data Send Through USB Virtual COM Port for
+Easy Performance Evaluation
+Tested for IEC61000-4-2, 4-4, and 4-5 (ESD, EFT,
+and Surge EMC Immunity Requirements)
+
+Applications
+•
+•
+•
+
+AC Drives
+Precision Speed-Variable Drives
+Servo Drives
+
+Ask our TI E2E™ support experts
+
+TIDA-00176
+
+Print total angle
+16-bit high-resolution path
+
+USB virtual
+COM port
+
+ADS8354
+
+THS4531A
+
+UART
+SPI (A, B)
+
+ADC
+
+B+
+
+ADC
+
+12-bit
+ADC
+
+@12-bit
+
+Coarse Angle
+Incremental count
+
+Host processor connector
+
+@16-bit
+
+Æ Option 2
+
+A-
+
+/CS
+
+Æ Option 1
+
+Fine Angle
+atan(A/B)
+
+A+
+
+SPI
+B-
+
+Analog path
+
+A (analog
+
+B (analog)
+
+R+
+
+VREF
+
+A (TTL)
+
+eQEP
+
+B (TTL)
+
+R-
+
+Comparator
+block
+
+R (TTL)
+
+Encoder connector
+
+Fine Angle
+atan(A/B)
+
+Sin/Cos
+Encoder
+GND
+
+Piccolo MCU
+TLV3201
+
+VENC
+
+LDO
+LDO 5 V
+24-V
+Input
+
+DC/DC
+Buck
+
+6V
+
+LDO
+LDO
+
+3.3 V
+5.25 V
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+1
+
+System Description
+
+www.ti.com
+
+1 System Description
+1.1 Design Overview
+This TI design implements an industrial temperature, EMC-compliant interface to Sin/Cos incremental position
+encoders with 1-VPP differential analog output signals, frequencies up to 500 kHz, and a 5-V supply voltage.
+The major building blocks of this TI design are the dual path analog signal chain, the high-speed comparator
+block, the power management block, and the interfaces to the Sin/Cos encoder as well as the interface to a host
+microcontroller for digital signal processing and high-resolution position calculation. A simplified system block
+diagram is shown in Figure 1-1, with the TI hardware design represented by the box in light green.
+To allow for an easy evaluation of this design guide, an example firmware is provided for the TMS320F28069M
+InstaSPIN™-MOTION LaunchPad. The TMS320F28069M calculates the high-resolution angle position for both
+analog signal paths. One path is leveraging the external 16-bit dual ADC through SPI. The other path is using
+the F28069M embedded dual S/H 12-bit ADC. The angle is calculated with up to 28-bit resolution and output for
+evaluation through USB virtual COM port.
+PC Terminal Menu
+Print Interpolated Angle
+[Fine + Coarse]
+
+TIDA-00176
+
+USB virtual
+COM port
+
+eQEP
+
+Host MCU interface
+
+Coarse Angle
+Incremental count
+
+12-bit
+ADC
+
+SPI
+
+Analog path
+
+A, B
+
+A+,A-,B+,B-,
+R+,R-
+
+Analog
+
+A, B, R
+TTL
+
+Differential Sine and Cosine
+A+, A-, B+,B- and Marker R+/R-
+
+A+
+AB+
+BR+
+RUp
+Un
+
+Shielded twisted
+pairs cable, up to
+50...150m
+
+AC Motor
+
+Comparators
+
+TMS320F28069M
+LaunchPad
+
+24 V
+
+A+,A-,B+,B-
+
+Encoder connector
+
+SPI
+
+Æ Option 1: 16-bit
+
+Æ Option 2: 12-bit
+
+Dual
+ADC
+
+A, B
+
+Fine Angle: atan(A/B)
+
+Fine Angle: atan(A/B)
+
+16-bit high-res path
+
+5V
+3.3 V
+
+Power
+Supplies
+
+Sin/Cos
+Encoder
+
+Encoder Supply: 5.25 V
+
+Figure 1-1. Simplified System Block Diagram of TIDA-00176 With Piccolo F28069M LaunchPad
+The analog signal chain provides 120-Ω termination with EMC protection. The differential 1 VPP sine and cosine
+input signals are amplified and level-shifted, respectively. A dual signal path option is provided with an onboard
+high-speed, high-resolution dual 16-bit simultaneous sampling ADC with SPI and dual analog single-ended
+outputs with a 1.65-V bias voltage to interface to a microcontroller with embedded dual S/H ADC like the
+C2000™ Piccolo Real-time MCU family.
+The comparator block features high-speed, low propagation delay and adjustable hysteresis for better noise
+immunity and converts the analog signals A, B, and the marker R into digital signals with a 3.3-V TTL-level to
+interface to a quadrature encoder pulse module like the QEP module on the C2000 Piccolo MCU.
+The onboard wide-input range 24-V power supply provides the necessary voltages for analog signal chain as
+well as the 5.25-V supply voltage for the Sin/Cos encoder.
+The Sin/Cos encoder can be either connected to a 15-pin shielded Sub-D connector or an 8-pin header. The
+interface to the host processor provides the analog single-ended signals A and B scaled from 0 to 3.3 V with a
+1.65-V bias voltage, the digital signals for SPI and A, B, and R with a 3.3-V I/O. The digital output signals A, B,
+and R are often referred to as ABZ signals.
+
+2
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+System Description
+
+The design is tested for IEC61000-4-2, 4-4, and 4-5 (ESD, EFT, and Surge) as specified in the IEC 61800-3
+standard for EMC immunity requirements and specific test methods applicable in adjustable speed, electricalpower drive systems.
+
+1.2 Analog Sin/Cos Incremental Encoder
+Incremental rotary or linear position encoders are used in many applications to measure angular or linear
+position and speed. Depending on the application, encoders with TTL/HTL-output signals or analog sinusoidal
+output signals are used. The latter is often referred as Sin/Cos encoder. Analog Sin/Cos incremental encoders
+enable high-resolution position measurement. The high quality of the sinusoidal incremental signals permits high
+interpolation factors for digital speed control. Application areas include electrical motors, machine tools, printing
+machines, woodworking machines, textile machines, robots, and handling devices, as well as various types of
+measuring, testing, and inspection devices.
+1.2.1 Sin/Cos Encoder Output Signals
+There are typically two sensing methods implemented with encoders, either based on optical or inductive
+sensing. With optical rotary encoder, the encoder disc modulates a light beam whose intensity is sensed by
+photo-electrical cells. These produce two 90-degree phase shifted sinusoidal incremental signals A and B. B
+lags A with clockwise rotating viewed from the shaft of the encoder. The number of periods of the signals A and
+B over one mechanical revolution equals the line count N of the encoder. A further track carries the reference
+marker R, which occurs once per mechanical revolution. The reference marker allows for an absolute angle
+position measurement.
+
+Rotation direction
+CCW/CW
+
+cos
+sin
+
+Sin/Cos signal period
+Line count =16
+(16 signal periods per
+revolution)
+
+Figure 1-2. Simplified Sine and Cosine Signals for a Sin/Cos Encoder Over One Mechanical Revolution
+for a Line Count of 16
+Sin/Cos encoders with a 1-VPP interface provide the differential analog output signals A (A+, A–) and B (B+, B–)
+with 1 VPP and typically a 2.5-V DC-offset. The differential reference mark signal R (R+, R-) is typically slightly
+lower amplitude and the peak occurs only once per revolution. Figure 1-3 shows the differential output signals A,
+B, and R. Note that A, B, and R represent the differential signal of A+ minus A–, B+ minus B–, and R+ minus R–,
+respectively.
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+3
+
+System Description
+
+www.ti.com
+
+Quadrant
+
+Signal Period
+1st
+
+360 deg. electrical
+
+2nd
+
+3rd
+
+4th
+1Vpp
+
+A
+
+B
+
+R
+
+4N-4
+N-1
+
+0
+0
+
+1
+
+2
+
+3
+
+4
+1
+
+Incremental Count
+Line Count
+
+Figure 1-3. Output Voltage Signals A, B, and Marker R of Sin/Cos-Encoders With N Line Counts per
+Revolution
+The frequency of the of the Sin/Cos encoder’s differential output signal depends on the line count of the encoder
+as well as the mechanical speed, as outlined in Equation 1:
+f A,B [Hz ] = N ´ v[rpm] ´
+
+1
+60
+
+(1)
+
+N represents the Sin/Cos encoder line count and v the encoder shaft mechanical speed in rpm.
+Figure 1-4 provides an overview on the output frequency for encoders with line counts N = 100, 1000, and 2000
+versus the mechanical speed.
+
+Electrical Signal Frequency (kHz)
+
+600
+Linecount = 100
+Linecount = 500
+Linecount = 2000
+
+500
+400
+300
+200
+100
+0
+0
+
+3000
+
+6000
+9000
+12000
+Mechanical speed (RPM)
+
+15000
+
+18000
+D001
+
+Figure 1-4. Electrical Frequency of SinCos Encoder Output Signals A and B versus Mechanical Speed
+and Line Count
+For example, a Sin/Cos encoder with a line count of N=2000 running at a mechanical speed of
+12000 rpm, outputs the signals A and B with a frequency of 400 KHz.
+
+4
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+System Description
+
+1.2.2 Sin/Cos Encoder Electrical Parameter Examples
+To understand the requirements for an electrical interface module to Sin/Cos encoders, some example industrial
+Sin/Cos encoder models have been analyzed. The corresponding parameters are listed in Table 1-1.
+Table 1-1. Encoders Supply Voltage Example
+SIN/COS ENCODER MODEL
+
+SUPPLY VOLTAGE
+
+CURRENT CONSUMPTION
+
+1
+
+5-V ± 0.5-V DC
+
+< 120 mA
+
+2
+
+5 V ± 10%
+
+150 mA
+
+3
+
+5 V ± 5%
+
+70 mA (min)
+
+The power supply of the Sin/Cos encoder needs to be within this specification.
+The analog signal chain need to be specified to at least meet the requirements listed in Table 1-2 with respect to
+signal amplitudes, offset, and maximum frequency.
+Table 1-2. Encoder Output Signals A, B Example
+SIN/COS ENCODER
+MODEL
+
+SIGNAL LEVEL A, B
+
+DC OFFSET
+
+LINE COUNT N
+
+LIMIT FREQUENCY
+(–3 dB)
+
+1
+
+0.6 to 1.2 VPP, 1 VPP typical
+
+2.5 V ±0.5 V
+
+50 to 5000
+
+≥180 kHz
+
+2
+
+1 VPP (+20%,-40%)
+
+2.5 V ±0.5 V
+
+3
+
+1 VPP (±10%)
+
+2.5 V ±100 mV
+
+120 kHz
+1024 or 2048
+
+400 kHz
+
+Table 1-3. Encoder Output Signals Marker R Example
+SIN/COS ENCODER MODEL
+
+USABLE COMPONENT G AT
+REFERENCE MARK
+
+QUIESCENT VALUE H OUTSIDE REFERENCE
+MARK
+
+DC OFFSET
+
+1
+
+0.5 VPP typical, 0.2 VPP min
+
+–1.7 V
+
+2.5 V
+
+Table 1-4. Encoder Mechanical Parameter Example
+SIN/COS ENCODER MODEL
+
+SYSTEM ACCURACY
+
+SHAFT MECHANICAL SPEED
+
+1
+
+1/20 of grating period
+
+< 16000 rpm
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+5
+
+System Description
+
+www.ti.com
+
+1.3 Method to Calculate High-Resolution Position With Sin/Cos Encoders
+1.3.1 Theoretical Approach
+1.3.1.1 Overview
+
+From a hardware perspective typically two approaches can be realized, which impact mainly the requirements
+for the A/D converter.
+With the "over-sampling method", both sine and cosine signal would be sampled at least four times higher than
+the maximum sine and cosine frequency. The incremental count as well as the phase calculation would be done
+by subsequent digital signal processing on a host processor. That method would not need comparators, but
+rather high-speed dual sampling ADCs.
+The typically used "under-sampling" method uses separate hardware blocks to calculate the incremental count
+and the interpolated incremental phase. The advantage of that method is that the sampling frequency and
+bandwidth of the ADC can be lower compared to the first method, as it does not impact the incremental count
+but only the interpolated phase. However, the under-sampling method requires a comparator each, for sine and
+the cosine, to generate the digital quadrature encoded signals A and B, which drive a directional up and down
+counter, often referred to as quadrature encoded pulse counter. The analog bandwidth of the dual sampling ADC
+needs to be at least equal to the maximum sine/cosine frequency. The under-sampling method is outlined in
+Figure 1-5.
+ADC
+
+A (sin)
+
+ADC
+
+B (cos)
+
+A (sin)
+
+Phase
+atan(sin/cos)
+Interpolated Angle
+Position
+Linecount Phase
+
+B (cos)
+
++
+
+Linecount
+
+Quadrature
+encoder
+pulse counter
+
+sign(A)
+
+sign(B)
+
+Figure 1-5. Signal Processing Block Diagram for Interpolated Angle Calculation
+The total interpolated angular position is composed of coarse and fine angle. The interpolated angle is
+determined by the actual incremental line count and the phase within this incremental line. The phase within
+the incremental line is derived from the analog sine and cosine signals A and B at any specific time instant. Both
+the actual incremental count and the actual analog sine and cosine signals have to be latched at the same time,
+hence synchronously. The incremental line count provides the coarse angle, while the phase within of the sine
+and cosine within that incremental line provides the fine angle. The total interpolated angle is a compound of the
+coarse and fine angle, as shown with a simplified block diagram in Figure 1-5. The corresponding Equation 2 to
+Equation 4 are explained in the next paragraph.
+
+6
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+System Description
+
+1.3.1.2 Coarse Resolution Angle Calculation
+
+The incremental count and hence the incremental coarse angle can be determined by a counter, that counts up
+when A is the leading sequence and counts down when B is the leading sequence. When digitized, both edges
+of A and B are counted. Hence one incremental count is equivalent to a 90° phase shift of both signals A and B,
+see Figure 1-3. The incremental count starts from 0 with the maximum incremental count incrMAX per Equation 2,
+where N is the line count:
+incr MAX = (4 ´ N) - 1
+
+(2)
+
+The incremental position Φincr can be calculated as:
+F incr [deg] =
+
+360
+´ incr + F 0
+4´N
+
+(3)
+
+Where incr is the actual incremental count, N is the total line count and Φ0 the zero angle, determined by the
+reference marker R, if used.
+1.3.1.3 Fine Resolution Angle Calculation
+
+The phase ϕA,B of the sinusoidal signals A and B is used to interpolate the angle between two consecutive line
+counts, or four incremental steps, which are equivalent to each other. The phase ϕA,B can be calculated with
+Equation 4:
+
+f A,B [deg] =
+
+æBö
+90° + tan-1 ç ÷
+èAø
+æBö
+270° + tan-1 ç ÷
+èAø
+
+if
+
+A³0
+
+if
+
+A<0
+
+(4)
+
+Since only the ratio of the amplitudes of A and B is used, which are a common function of the encoder’s rotation
+speed and supply voltage, this result does not affect the result.
+1.3.1.4 Interpolated High-Resolution Angle Calculation
+
+When the incremental count incr is matched to the phase ϕA,B according to Table 1-5, the total interpolated angle
+ΦTOTAL is calculated with line count N as:
+F TOTAL [deg] =
+
+æ f A,B ö ö
+360° æ
+ç (incr >> 2 ) + çç ´
+÷÷ ÷÷ + F 0
+ç
+N è
+è 360° ø ø
+
+(5)
+
+CAUTION
+The sinusoidal signals A and B and the incremental count incr must be latched simultaneously.
+Table 1-5. Example for Relation between Incremental Count to Phase and Phase Quadrant
+INCREMENTAL COUNT
+
+PHASE
+
+QUADRANT
+
+0
+
+0 ≤ Phase < 90
+
+1
+
+1
+
+90 ≤ Phase < 180
+
+2
+
+2
+
+180 ≤ Phase < 270
+
+3
+
+3
+
+270 ≤ Phase < 360
+
+4
+
+4
+
+0 ≤ Phase < 90
+
+1
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+7
+
+System Description
+
+www.ti.com
+
+1.3.1.5 Practical Implementaion for Non-Ideal Synchronization
+
+Practically, the digitized signals ATTL and BTTL, which are input to the quadrature encoder pulse counter, typically
+have a phase shift compared to the analog signals. This is mainly due to hysteresis and propagation delay of the
+comparators, as well as due to non-ideal synchronization between latching the incremental count and sampling
+the analog inputs A and B.
+The impact of the hysteresis on the phase shift is almost independent of the signal frequency, but almost
+inverse proportional to the signal amplitude. The impact of a propagation delay and a non-ideal synchronization
+between sampling the analog signal and latching the incremental count is almost independent of the amplitude,
+but proportional to the frequency. Therefore, the maximum phase shift occurs at maximum Sin/Cos encoder
+frequency with minimum amplitude.
+This means that at each transition to the next quadrant, the incremental counter is not updated immediately
+because of the phase lag, for example, as shown for the first quadrant in Figure 1-6.
+Quadrant
+th
+
+1st
+
+4
+
+2nd
+
+Signal A
+
+Phase shift due to
+hysteresis, etc.
+Signal sign(A)
+after comparator
+3
+0
+
+4
+1
+
+5
+1
+
+6
+1
+
+Incremental Count
+Line Count
+
+Latched analog signal A (quadrant 1)
+and (lagging) incremental count (still
+previous quadrant 4
+
+Figure 1-6. Phase Shift of ATTL versus the Analog Signal A, due to Phase Lag
+The factors outlined cannot be omitted and hence a method needs to be applied to detect and correct these
+corner cases. Due to the ambiguity or the lower two bits of incremental line count and the analog phase, a
+correction method as outlines in Table 1-6 can be applied, as long as the phase shift remains less than ±90°.
+Since only the phase information is used to identify the quadrant, there are only two exceptions to consider,
+which occur during the transition from quadrant 4 to quadrant 1, or quadrant 1 to quadrant 4, depending on the
+rotation direction.
+Table 1-6. Correction Method
+
+8
+
+INCREMENTAL COUNT [incr]
+
+PHASE φA,B
+
+incr%4 = 3
+
+0 ≤ Phase < 90
+
+incr = incr+1
+if incr > 4 × N – 1 then incr = 0
+
+Incr%4 = 0
+
+270 ≤ Phase < 360
+
+incr = incr-1
+if incr < 0 then incr = 4 × N – 1
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+CORRECTION METHOD
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+System Description
+
+CAUTION
+The correction method only works if the phase shift between the analog A and B and the digital
+signal ATTL and BTTL is less than ±90°.
+A worst case calculation for this design is outlined in Section 1.4.
+1.3.1.6 Resolution, Accuracy, and Speed Considerations
+
+The ideal interpolated angle resolution is a function of the Sin/Cos encoder’s line count and the resolution of the
+dual ADC. The equivalent interpolated angle resolution can be calculated as:
+F RESOLUTION [bit ] = log2 (2 ´ N) + ADC RESOLUTION [bit]
+
+(6)
+
+Figure 1-7 illustrates the achievable interpolated angle resolution as a function of the line count for no
+interpolation, interpolation with an ideal 12-bit, and a 16-bit dual ADC.
+30
+
+Angle Resolution (bit)
+
+25
+
+20
+
+15
+
+10
+
+No Interpolation
+Ideal 12-bit ADC
+Ideal 16-bit ADC
+
+5
+0
+
+512
+1024
+1536
+Sin / Cos Encoder Linecount
+
+2048
+D002
+
+Figure 1-7. Ideal Interpolated Angle Resolution versus Line Count versus ADC Resolution
+The ideal resolution with a Sin/Cos encoder with 2048 line counts using a 16-bit dual ADC equals 28-bit, if the
+ADC’s full-scale input range is used.
+This high resolution is typically not required for position control, but for very precise speed control, especially
+at lower mechanical speed. Figure 1-8 outlines the ideal speed resolution derived at a sample rate of 1.6 kHz
+without low-pass filtering. This assumes the industrial drive’s speed closed-loop control runs 10 times lower than
+the current closed-loop control and PWM at 16 kHz.
+25
+
+Speed Resolution (bit)
+
+20
+
+No Interpolation
+Ideal 12-bit ADC
+Ideal 16-bit ADC
+
+15
+
+10
+
+5
+
+0
+0.1
+
+1
+
+10
+Speed (RPM)
+
+100
+
+1000
+D003
+
+Figure 1-8. Ideal Speed Resolution versus Mechanical Speed at 1.6-kHz Sample Rate and Encoder With
+1000 Line Count
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+9
+
+System Description
+
+www.ti.com
+
+Practically, low-pass filtering will be applied and improves resolution and immunity to noise, but with a filter
+specific propagation (group) delay or latency.
+Following the ideal resolution, Table 1-7, Figure 1-9, and Figure 1-10 outline the impact of a quantization, offset,
+gain, or phase error to the interpolated angle.
+Table 1-7. Phase Error Examples Analysis
+ERROR SOURCE
+
+EXAMPLE
+
+PHASE ERROR [MAX]
+
+Quantization of signals A and B
+
+12-bit
+
+0.012% [0.045°]
+
+Offset error of signals A and B
+
+0.1%
+
+0.05% [0.18°]
+
+Gain error of signals A and B
+
+0.1%
+
+0.04% [0.15°]
+
+90 + 0.36° [0.1%]
+
+0.1% [0.36°]
+
+0.2
+
+0.4
+
+0.15
+
+0.35
+
+0.1
+
+0.3
+
+Phase Error (°)
+
+Phase Error (°)
+
+Phase shift between input signals A and B
+
+0.05
+0
+-0.05
+
+0.25
+0.2
+0.15
+
+-0.1
+
+0.1
+
+-0.15
+
+0.05
+
+-0.2
+
+0
+0
+
+30
+
+60
+
+90 120 150 180 210 240 270 300 330 360
+Phase (°)
+D004
+
+Figure 1-9. Phase Error With +0.1% Offset With
+Signals A and B
+
+0
+
+30
+
+60
+
+90 120 150 180 210 240 270 300 330 360
+Phase (°)
+D005
+
+Figure 1-10. Phase Error With (90 + 0.36°) Phase
+Shift Between Signals A and B
+
+Note that the phase error introduced due to a phase shift between the input signals A and B exhibits the double
+period. This signature can be leveraged for detection and correction of a constant phase shift using signal
+processing algorithms. However, these are beyond the scope of this design guide.
+
+1.4 Sin/Cos Encoder Parameters Impact on Analog Circuit Specification
+To specify the analog circuit, as outlined in Section 4, the following Sin/Cos encoder signal parameters (including
+support for longer cables) have been considered.
+• Sin/Cos minimum and maximum peak-to-peak amplitude: Differential 0.3 to 1.2 VPP, full-scale input range
+with at least 50% headroom (1.8 VPP)
+• Sin/Cos offset voltage range: 2.5 V ±1V
+• Sin/Cos maximum frequency: 500 kHz
+• Sin/Cos maximum slew rate: >2 V/µs
+• Sin/Cos line termination: 120-Ω ±1%
+• Encoder supply voltage and current: 5 V ±5%, 200 mA
+
+10
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+System Description
+
+1.4.1 Analog Signal Chain Design Consideration for Phase Interpolation
+The high-resolution analog signal chain shall support 16-bit resolution to provide a high interpolated angle
+resolution, especially for precision speed control.
+The differential analog amplifier’s AC noise floor and distortions should match 16-bit resolution. With respect to a
+1-VPP input, this equals around 15 µV.
+• Input voltage noise: 15 µV/SQRT(1 MHz) = 15 nV/SQRT(Hz)
+• Input current noise: 15 µV/SQRT(1 MHz)/RINPUT, for RINPUT = 1k equals 15 pA/SQRT(Hz)
+Gain and offset are rather DC parameters and their drift is typically very slow as mainly related to temperature
+or aging. Initial offset and gain can be calibrated during initialization, with specific algorithms even during
+run-time. Therefore, the requirements for these parameters can be slightly relaxed. The gain and offset drift over
+temperature shall be each in the range of 10 LSB. With respect to a 1-VPP input signal, this equals around 150
+µV.
+• Offset drift [0 to 85°C]: 150 µV/85°C ~ 2 µV/°C
+• Gain drift: [0 to 85°C]: 160 ppm/85°C ~ 2 ppm/°C
+For the gain setting, matched resistors (same package) are recommended.
+1.4.2 Comparator Function System Design for Incremental Count
+Referring back to Figure 1-5: The total propagation delay between the analog signal and the digital signals ATTL
+and BTTL at 500 kHz should be less than 90°, equivalent to 500 ns. The hardware should not contribute more
+than around 50 to 70%; equivalent to 250 to 350 ns to leave headroom for example hardware related offset
+and temperature drift, phase shift due to analog low-pass/decoupling filters and non-ideal synchronization in the
+subsequent host processor.
+The hysteresis contribution to the delay with a 160-mV hysteresis (±80 mV) at a minimum 0.3-VPP input to the
+comparator is around 32 degree, or 180 ns at a 500-kHz signal frequency.
+The comparator’s propagation delay adds on top. The lower the comparator’s propagation delay the more
+headroom is available to increase the hysteresis or apply other means to increase the system’s noise immunity.
+
+Comparator
+hysteresis
+Signal A (analog sine)
+
+1
+2
+
+1
+2
+
+Total propagation delay
+Hysteresis (1)
+and comparator
+propagation delay (2)
+
+ATTL
+
+Figure 1-11. Signal Delay on Comparator With Hysteresis
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+11
+
+Design Features
+
+www.ti.com
+
+2 Design Features
+As outlined in Section 1, this TI design realizes an industrial temperature range, EMC-compliant interface to
+Sin/Cos incremental position encoders with differential 1-VPP analog output signals A, B, and index marker R
+with input frequencies up to 500 kHz and a 5-V supply voltage. The major building blocks of this TI design
+are the dual path analog signal chain, the high-speed comparator block, the power management block and the
+interfaces to the Sin/Cos encoder as well as the interface to a host microcontroller for digital signal processing
+and high-resolution position calculation.
+To allow for easy evaluation of this TI design, an example firmware is provided for the TMS320F28069M
+InstaSPIN-MOTION LaunchPad. The TMS320F28069M calculates the high-resolution angle position for both
+signal paths, using the external 16-bit ADC through SPI and the analog channel with the internal dual S/H 12-bit
+ADC and outputs the angle position data with up to 28-bit resolution through a USB virtual COM port.
+TIDA-00176 Features Overview
+• Wide input voltage range: 24-V (17 to 36 V) with reverse polarity protection provides the necessary voltages
+for analog signal chain as well as the 5.25 V for the Sin/Cos encoder.
+• Encoder interface: Sub-D15 or 8-pin header interface to 5-V Sin/Cos encoders with differential output signals
+A, B, and marker R from 0.3 V to 1.2 VPP at 2.5-V ±1-V offset, input bandwidth up to 500 kHz.
+• Dual path analog signal processing: Dual path option with an onboard high-speed, high-resolution dual
+16-bit simultaneous sampling ADC with SPI and dual analog outputs with a 1.65-V bias voltage to interface
+to an external dual S/H ADC. High-speed, low propagation delay comparators with an adjustable 160-mV
+hysteresis for better noise immunity to convert the analog signals A, B, and
+R to 3.3-V TTL signals often referred as ABZ signals.
+• High-resolution interpolated angle position, up to 28-bits resolution, cable length tested up to 70 m.
+• EMC immunity: The design is tested for tested for IEC61000-4-2, 4-4, and 4-5 (ESD, EFT, and Surge) as
+specified in the standard IEC 61800-3 EMC immunity requirements and specific test methods applicable in
+adjustable speed, electrical-power drive systems.
+• Interface to host processor with 3.3-V digital interface signals to MCU QEP and SPI and optional singleended analog 0 to 3.3-V outputs for MCU embedded dual S/H ADC.
+• Evaluation firmware: Example firmware for Piccolo F28069M MCU with high-resolution dual angle position
+calculation at 16 kHz. The user interface is through USB virtual COM port for easy performance evaluation.
+
+2.1 Sin/Cos Encoder Interface
+The design offers either a shielded Sub-D15 female connector compatible to HEIDENHAIN encoder test
+equipment or an 8-pin header connector to interface to 5-V Sin/Cos encoders with differential output signals
+A, B, and marker R.
+Table 2-1. Sin/Cos Encoder Interface
+PARAMETER
+
+TYPICAL VALUE
+
+COMMENT
+
+Encoder supply voltage
+
+5.25 V [±5%], 200 mA
+
+5.25 V was chosen for an additional 0.25-V
+margin to compensate for voltage drop over
+longer cables.
+Adjustable to, for example, 5 V through
+feedback resistor change
+
+Input signals
+
+A+, A–, B+, B–, R+, R–
+
+120-Ω differential line termination
+
+Input level and common mode voltage range
+for A+, A–, B+, B–
+
+0.3-V – 1.2 VPP, 2.5 V ±1.0 V common mode
+
+Input level and common mode voltage range
+for R+, R–
+
+0.2-V – 0.85 VPP, 2.5 V ±1.0 V common
+mode
+
+12
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Design Features
+
+2.2 Host Processor Interface
+The high-resolution path for signals A+, A– and B+, B– features a high-speed, high-resolution dual 16-bit
+simultaneous sampling ADC with differential input and SPI output. The main features of this functional block are
+outlined in Table 2-2.
+Table 2-2. 16-Bit High-Resolution Channel With ADC and SPI Output
+PARAMETER
+
+TYPICAL VALUE
+
+COMMENT
+
+Gain A, B
+
+5.0 (0.1%)
+
+Matched single package gain setting
+registers (0.1%)
+
+Gain drift A, B
+
+2 ppm//°C
+
+Matched single package resistors
+
+Offset, A, B
+
+< 10 LSB (@ 16-bit)
+
+Uncalibrated
+
+Offset drift, A, B
+
+< 0.15 LSB/°C
+
+Bandwidth (–3 dB)
+
+≥500 kHz
+
+Quantization
+
+16-bit
+
+Sampling frequency
+
+Up to 700 kSPS
+
+Data output format A, B
+
+16-bit two’s complementary
+
+Serial interface (SPI slave)
+
+3.3 V, up to 24-Mhz SPI clock
+
+FSR = ±5 V (ADS8354)
+Drop-in compatible 14- or 12-bit versions
+available
+
+Dual 16-bit data per SPI frame
+
+The parallel, second path for the signals A+, A– and B+ offers a single-ended analog output for A and B with a
+1.65-V bias voltage to interface to an external dual S/H ADC, which is for example embedded in microcontrollers
+like a C2000 Piccolo.
+Table 2-3. Analog Channel With Single-Ended Analog Output
+PARAMETER
+
+TYPICAL VALUE
+
+COMMENT
+
+Single ended analog output A and B
+
+0-3.3 V, 1.65-V bias voltage [50 ppm/K]
+
+Drop-in compatible 1.5-V reference available
+to match ADC with 0-3-V input and 1.5-V
+bias.
+
+Gain (A,B)
+
+1.66 (0.1%)
+
+Adjustable, 0.1% resistors recommended
+
+Offset (A,B)
+
+< 1 mV
+
+Uncalibrated
+
+Offset drift (A,B)
+
+< 2 µV/°C
+
+Bandwidth (–3 dB)
+
+~ 500 kHz
+
+Adjustable LP filter for bandwidth adjustment
+
+The comparator block features high-speed, low-propagation delay comparators with an adjustable 100-mV
+hysteresis for better noise immunity to converts the analog signals A, B, and R to 3.3-V TTL.
+Table 2-4. Comparators
+PARAMETER
+
+TYPICAL VALUE
+
+COMMENT
+
+Digital output signals A, B, and R
+
+3.3-V TTL
+
+Hysteresis
+
+~160 mV (±80 mV)
+
+For increased noise immunity, adjustable
+through feedback resistor change
+
+Propagation delay
+
+~ 40 ns
+
+Low propagation delay
+
+Maximum phase delay (propagation delay
+and hysteresis)
+
+< 60°
+
+at 0.3 VPP, 500-kHz input
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+13
+
+Design Features
+
+www.ti.com
+
+2.3 Evaluation Firmware
+To allow for quick evaluation of the TIDA-00176 design an example firmware for Piccolo F28069M MCU is
+provided, where the interpolated high-resolution angle is calculated for both the 16-bit dual ADC ADS8354 and
+the F28069M MCU’s embedded dual S/H 12-bit ADC. A user interface through USB virtual COM port at 115000
+baud allows for easy performance evaluation.
+The user interface through virtual COM port at 115000 baud supports the following features:
+• Selection of Sin/Cos encoder line count: up to 32000
+• Hardware and software synchronized sampling of the external dual sampling 16-bit ADC through SPI, the
+internal 12-bit dual S/H ADC and the incremental counter with a synchronization delay of less than 100 ns
+• High resolution angle in 32-bit, fractional Q28 format. Angle scaled per unit from 0 to 0.9999999, up to 28-bit
+interpolated angle resolution
+• Automatic absolute position initialization after first occurrence of index marker R
+• Menu to support display mode at 10 Hz or data dump mode at a 200-Hz update rate for total angle,
+incremental angle and phase with both, the 16-bit dual ADC (ADS8354) on the TIDA-00176 design, and the
+C2000 on-chip 12-bit dual S/H ADC
+• Diagnostic error message when encoder not connected or when differential input voltage below 0.3 VPP
+
+2.4 Power Management
+The TI design features a 24-V DC input with wide input voltage range from 17 to 36 V and reverse polarity
+protection. The onboard power management is split into a DC/DC buck that generates an intermediate 6-V rail
+and three LDOs, which generate the corresponding 3.3-V, 5-V, and 5.25-V rails.
+The 5.25-V encoder supply features a LDO with very low noise and an enable pin. Therefore, the Sin/Cos
+encoder supply voltage can be turned off through the host processor if desired.
+Table 2-5. TIDA-00176 Voltage Rails
+
+14
+
+PARAMETER
+
+VOLTAGE
+
+CURRENT
+
+Input
+
+24 V [17 to 36 V]
+
+150 mA
+
+Wide input voltage with reverse polarity protect
+
+COMMENT
+
+Intermediate rail
+
+6 V [±5%]
+
+500 mA
+
+Intermediate rail. High-efficiency (>80%) DC/DC buck power
+supply
+
+Encoder supply
+
+5 V [±5%]
+
+250 mA
+
+5.25 V was chosen for an additional 0.25V margin to
+compensate for voltage drop over longer cables. Adjustable
+to, for example, 5 V through feedback resistor change
+
+5-V supply rail
+
+5 V [±5%]
+
+100 mA
+
+High precision signal chain supply
+
+3.3-V supply rail
+
+3.3 V [±5%]
+
+100 mA
+
+Low precision signal chain supply
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Design Features
+
+2.5 EMC Immunity
+The design meets ESD, EFT, and Surge requirements per IEC61000-4-2, 4-4, and 4-5 with levels specified in
+the IEC 61800-3 standard "EMC immunity requirements for adjustable speed, electrical-power drive systems". It
+is assumed only the subD-15 connector to the position encoder can be accessed and shielded encoder cables
+are used to connect to the encoder. Because the encoder cable can exceed
+30 m, ESD, EFT, and Surge apply per Table 2-6 for use in Environment 2.
+Table 2-6. EMC Immunity Requirements
+EMC STANDARD
+
+LEVEL
+
+PERFORMANCE
+(ACCEPTANCE)
+CRITERION
+
+ESD
+
+IEC61000-4-2
+
+±4-kV CD or 8-kV AD, if
+CD not possible
+
+B
+
+Fast transient burst (EFT)
+
+IEC61000-4-4
+
+±2 kV/5 kHz, capacitive
+clamp
+
+B
+
+IEC61000-4-5
+
+±1 kV. Since shielded
+cable >20 m, direct
+coupling to shield (2-Ω
+source impedance)
+
+B
+
+PORT
+
+EMC TEST
+
+Sin/Cos Encoder Interface
+Connecter
+
+Surge 1.2/50 µs, 8/20 µs
+
+The performance (acceptance) criterion is defined, as follows:
+Table 2-7. Performance Criterion
+PERFORMANCE
+(ACCEPTANCE)
+CRITERION
+
+DESCRIPTION
+
+A
+
+The module shall continue to operate as intended. No loss of function or performance even during the test
+
+B
+
+Temporary degradation of performance is accepted. After the test, the module shall continue to operate as intended
+without manual intervention.
+
+C
+
+During the test, loss of functions accepted, but no destruction of hardware or software. After the test, the module
+shall continue to operate as intended automatically, after manual restart, or power off, or power on.
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+15
+
+Block Diagram
+
+www.ti.com
+
+3 Block Diagram
+The system block diagram of this design is shown in Figure 3-1. The major building blocks of this TI design
+are a dual path for the analog signal chain, a high-speed comparator block, the power management and the
+interfaces to the Sin/Cos encoder and host microcontroller for digital signal processing and high-resolution
+position calculation. To allow for easy evaluation of the TIDA-00176 design, an example firmware is provided for
+the F28069M Piccolo LaunchPad, which outputs the angle position through virtual COM port.
+Print total
+angle
+
+TIDA-00176
+16-bit high-resolution path
+
+USB virtual
+COM port
+
+ADS8354
+
+THS4531A
+
+UART
+SPI (A, B)
+
+ADC
+
+/CS
+
+B+
+
+Æ Option 1
+
+ADC
+
+Æ Option 2
+
+12-bit
+ADC
+
+@12-bit
+
+Coarse Angle
+Incremental count
+
+eQEP
+
+Host processor connector
+
+@16-bit
+
+Fine Angle
+atan(A/B)
+
+A-
+
+SPI
+B-
+
+Analog path
+
+A (analog
+
+B (analog)
+
+R+
+
+VREF
+
+A (TTL)
+
+R-
+
+Comparator
+block
+
+B (TTL)
+R (TTL)
+
+Piccolo MCU
+
+Encoder connector
+
+Fine Angle
+atan(A/B)
+
+A+
+
+Sin/Cos
+Encoder
+GND
+
+TLV3201
+
+VENC
+
+LDO
+LDO 5 V
+
+24-V
+Input
+
+DC/DC
+Buck
+
+6V
+
+LDO
+LDO
+
+3.3 V
+5.25 V
+
+Figure 3-1. System Block Diagram of TIDA-00176 With Piccolo F28069M LaunchPad
+The analog signal chain provides 120-Ω termination with EMC protection and amplifies and level shifts the
+differential 1-VPP sine and cosine input signals, respectively. A dual signal path option is provided with an
+onboard ADS8354 high-speed, dual 16-bit simultaneous sampling ADC with SPI and an analog path with dual
+analog outputs with a 1.65-V bias voltage to interface to an external dual S/H ADC, which is for example
+embedded on MCUs like C2000 Piccolo.
+The high-speed, low propagation delay comparator block features adjustable hysteresis for better noise
+immunity and converts the analog signals A, B, and the marker R into digital signals with 3.3-V TTL-level to
+interface to a quadrature encoder pulse module like the QEP module on the C2000™ Piccolo MCU.
+The onboard wide-input range 24-V power supply provides the necessary voltages for analog signal chain as
+well as the 5.25 V for the Sin/Cos encoder.
+The Sin/Cos encoder interface offers either a 15-pin shielded Sub-D connector or an 8-pin header. The interface
+to the host MCU offers digital 3.3-V TTL compliant signals for SPI and A, B, and R as well as analog signals A
+and B scaled from 0 to 3.3 V with a 1.65-V bias voltage.
+
+16
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Circuit Design and Component Selection
+
+4 Circuit Design and Component Selection
+4.1 Analog Signal Chain
+Figure 4-1 provides and overview on the analog signal chain sub-system and the comparator subsystem. For the
+analog signal chain, two paths are implemented:
+• A high resolution signal path with increased common mode noise immunity featuring fully differential
+amplifiers and fully differential dual 16-bit ADC with an SPI output
+• An analog path with differential input to single-ended analog output to drive the comparator and additionally
+for interface to a host processor with embedded ADC
+The dual analog path offers the option to either test the design with the onboard 16-bit dual ADC as part of
+the high-resolution path, or use the analog differential to single-ended path with an MCU with embedded ADC.
+Additionally the analog path, since decoupled through a buffer from the high-resolution path, ensures an ideal
+decoupling of the comparator path. This avoids x-talk into the high-resolution analog path when switching the
+output level during sine and cosine zero crossing.
+Another use case would use both paths. One path would have improved noise immunity with a reduced
+bandwidth to filter out HF noise, while the other path would have offer standard bandwidth up to maximum
+speed. The lower bandwidth with improved noise immunity would be dedicated to the high-resolution
+16-bit ADC, while the other path with standard bandwidth would be connected to the MCU with embedded ADC.
+The interpolated phase (arc tangent) would then be taken from the high-resolution path when the motor speed
+is low (below the configured cut-off frequency), while at higher speed the interpolated phase from the other path
+would be used. The host processor will decide which angle to use pending motor speed.
+The comparator sub-system will generate TTL level outputs for signals A, B, and R, at a very low-propagation
+delay. Each sub-system is explained in the following sections.
+16-bit High-Resolution Path
+
+ADS8354
+
+THS4531A
+
+A-
+
+ADC
+
+SPI (A, B)
+/CS
+
+A+
+
+B+
+
+ADC
+
+B-
+
+Analog Path
+A (analog
+
+B (analog)
+
+R+
+
+Comparator
+Block
+A (TTL)
+
+R-
+
+VREF
+
+B (TTL)
+R (TTL)
+
+TLV3201
+
+Figure 4-1. Analog Signal Chain
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+17
+
+Circuit Design and Component Selection
+
+www.ti.com
+
+4.1.1 High-Resolution Signal Path With 16-Bit Dual Sampling ADC
+4.1.1.1 Component Selection
+
+A high-precision dual channel ADC is required to fulfill the design requirements. The ADS8354 has been
+selected for the following reasons:
+• High resolution (16-bit) with high precision (superb THD and SNR performance of –93 dB SNR,
+–100 dB THD)
+• Drop-in pin-compatible 14-bit and 12-bit versions for flexibility pending required resolution versus cost
+optimization
+• High speed (700 kSPS) and bandwidth to support at least 500-kHz analog input signals
+• Dual channel with true differential inputs and dual/independent reference voltages to improve immunity
+against common mode noise
+• Dual channel, simultaneous sampling of two channels to ensure zero phase shift between the sin and cos
+input signals A and B
+• Sample point triggered by hardware (falling edge of /CS) allows host processor to precise synchronize the
+sample point with the incremental counter latch.
+• Sample-and-hold circuit returns to sample mode after completing the conversion process, hence relative long
+sample times to settle to 16-bit accuracy
+• Dual, programmable, and buffered 2.5-V internal reference to provide common mode bias voltage to amplifier
+to almost cancel offset and offset drift related errors.
+• Serial interface to host processor (dual data) with up to 24-MHz clock frequency to minimize latency
+• Fully-specified over the extended industrial temperature range: –40°C to 125°C
+• Small package
+
+Figure 4-2. ADS8354 Block Diagram
+
+18
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Circuit Design and Component Selection
+
+To leverage the ADS8354 performance, a fully differential high-speed amplifier with configurable output common
+mode voltage, like the THS45xx family, is required.
+
+Figure 4-3. Differential Input to Differential Output Amplifier
+The signal remains fully differential, the gain and optional filtering is defined by the input and feedback resistors
+and capacitors. The gain is set by the ration of RF/RG and the output common mode voltage is set by the input
+signal VOCM.
+The THS4531A was chosen as it meets the topology, can drive the ADS8354, and meets the AC and DC
+requirements specified in Section 1.4. A single amplifier topology per package was used instead of the dual
+differential amplifier per package like the THS4532 for flexibility and easier PCB routing.
+The key parameters of the THS4531A for use in this design are:
+• Fully differential architecture with adjustable output common mode voltage
+• High gain bandwidth: 27 MHz (6 MHz at G = 5)
+• Low distortions, THD –120 dBc at 1 kHz (1 VRMS, RL= 2 kΩ)
+• Low input voltage noise: 10 nV/√Hz (f = 1 kHz)
+• Very low offset, VOS: ±100 μV
+• Very low offset drift, VOS Drift: ±2 μV/°C (Industrial temperature range)
+• Single 5-V supply to leverage same supply than the ADS8354
+• Rail-to-rail output (RRO) and negative rail input (NRI) to maximize input and output signal swing
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+19
+
+Circuit Design and Component Selection
+
+www.ti.com
+
+4.1.1.2 Input Signal Termination and Protection
+
+The differential input signals are terminated with 120-Ω resistors each. COG capacitors are added for differential
+and common mode HF noise rejection. The differential low-pass filter’s cut-off frequency
+(–3 dB) is around 6 MHz. The 10-Ω (1%) pulse-proof resistor in conjunction with Schottky-diodes clamp to the
+5-V rail or GND, for ESD protection with input current limitation. Figure 4-4 shows the TIDA-00176 schematics of
+the input stage for the encoder’s differential signals A+ (sine) and A– (cosine).
+
+Figure 4-4. Termination for Analog Inputs
+Looking at the encoder signals A+/A– (named "A_P – A_M" in the schematic) signal conditioning block
+schematic from left to right we can distinguish the following parts/functions:
+• The HF noise suppression COG capacitors: C35, C38, and C41. For higher common mode rejection, an
+additional 2-nF COG capacitor might be placed in parallel to the 220-pF capacitor from each differential input
+to GND. The low-pass cut-off frequency (–3 dB) is around 6 MHz.
+• The impedance matching/termination resistor 120 Ω: R32
+• Current limiting resistors with pulse proof current: R31, R34
+• Clamping diodes / op-amp input protections (D9 to D12) to the 5-V rail and GND
+The LP filters are designed to guarantee the proper functionality and performance at the speed provided in the
+system specifications.
+
+20
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Circuit Design and Component Selection
+
+4.1.1.3 Differential Amplifier THS4531A and 16-Bit ADC ADS8354
+
+The two primary circuits, required to maximize the performance of a high-precision, successive approximation
+register (SAR) ADCs, are the input driver and the reference driver circuits. For details on selecting the amplifier,
+refer to the ADS8354 datasheet, Section 9.1.
+The THS4531A has been minded to work in combination with the ADS8354. Indeed, the common mode or
+DC-level of the input signal (2.5 V nominal) is provided to the THS4531A directly from the reference output of the
+ADS8354 itself to minimize potential offset and drift errors.
+The differential input full scale range of the ADS8354 was configured to ±2 × VREF. With the reference voltage
+of VREF = 2.5 V, this yields a FSR of ±5 V. The maximum Sin/Cos encoder’s differential input voltage is 1.2
+VPP. A voltage of higher than 1.35 VPP should still be detected as failure. A safety margin of 50% is added to
+the maximum peak-to-peak voltage, which is then 1.8 VPP. To match the ADC full-scale input range, the gain of
+the THS4531A should be 5.5. However, to remain in the linear output voltage range of the THS4531A at a 5-V
+supply, which is at least 0.25 to 4.8 V, the gain should be reduced by around 10%, hence the ideal differential
+amplifier gain would be 5.
+To ensure the minimum gain error and especially drift between the channels, high-precision, matched resistors
+with 0.1% accuracy and 2-ppm/K temperature drift are required. To minimize noise, the feedback resistors
+should be chosen in the lower kΩ range (see Section 1.4).
+A precision matching resistor divider is used to keep potential gain errors as small as possible. Refer to the
+MPMT10015001AT1 datasheet for details.
+Due to the gain of 5, a typical 1-VPP input signal leverages around 50% of the ADC full-scale range (FSR), which
+results in a loss of 1-bit of precision, therefore yielding an equivalent 15-bit resolution. The lower input voltage of
+0.6 VPP will leverage around 25% of the FSR, which equals typically 14-bit resolution.
+Figure 4-5 shows the schematics of the high-precision analog signal path; the matched gain setting resistors are
+R18, R27, R30, and R37.
+The series 10-Ω resistors R21, R25 and the 2.2-nF capacitor C29 (R33, R36, and C39 for ADS8354 channel
+B) from the anti-aliasing filter. The filter capacitor C29 (C39), connected across the ADC inputs, filters the
+noise from the front end drive circuitry, reduces the sampling charge injection and provides a charge bucket to
+quickly charge the internal sample-and-hold capacitors during the acquisition process. As a rule of thumb, the
+value of this capacitor should be at least 10 times the specified value of the ADC sampling capacitance. For
+these devices, the input sampling capacitance is equal to 40 pF. The capacitor should be a COG- or NPO-type
+because these capacitor types have a high-Q, low-temperature coefficient, and stable electrical characteristics
+under varying voltages, frequency, and time. To avoid amplifier stability issues, 10-Ω series isolation resistors
+R21, R25 (R31, R39) are used at the output of the amplifiers. For details, refer to the Section 9.1 of the
+ADS8354 datasheet.
+To minimize the impact of an offset drift of the ADC reference REFIO_A and REFIO_B, the ADC references are
+used to bias the common mode output voltage of the THS4531A. To buffer and decouple the VOCM signal at the
+THS4531A, small RC filters R24/C32 and R35/C42 R28, R29, C36, and C37 are added close to each pin.
+The ADS8354 reference voltages REFIO_A and REFIO_B are decoupled with a 10-uF capacitor C36 and C37,
+respectively and a 0.22-Ω resistor is added in series to avoid high-frequency oscillations.
+To optimize the layout for cross-talk with minimum use of via for the critical signals A+, A– and B+, B–, the
+following connections have been made.
+1. The differential input signal A (A+, A–) has been inverted at the input of the THS4531A and fed into the
+ADS8354 input channel B.
+2. The differential output signal of the THS4531A, B+ and B– have been connected inverted to the ADS8354
+input pins AINP_A to B– and AINM_A to B+
+This results in the following hardware relationship: The ADS8354 channel B equals the inverted Sin/Cos encoder
+signal A; the ADS8354 channel A equals the inverted Sin/Cos encoder signal B.
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+21
+
+Circuit Design and Component Selection
+
+www.ti.com
+
+Figure 4-5. Sin and Cos Signal Chain With Dual THS4531A and ADS8354
+Note
+Channels are inverted and swapped for optimum performance layout and minimize the numbers of
+vias.
+To achieve a higher noise immunity with reduced bandwidth, a capacitor of 10 pF (1% or better) or higher,
+pending desired bandwidth is recommend in the feedback path in parallel to the 5 kΩ. See Section 4.5.
+The configuration of the ADS8354 registers through serial interface is explained in Section 4.3.
+4.1.2 Analog Signal Path With Single-Ended Output for MCU With Embedded ADC
+The parallel analog signal path should not impact the high-resolution path and especially the differential
+amplifier. Therefore, the differential signals A+, A–, B+, and B– are tapped off after the input termination and
+protection and are buffered using unity gain amplifiers with very low offset and especially offset drift. The
+following amplifier should convert the differential signals into a single-ended signal. The minimum bandwidth
+should be least 500 kHz, ideally higher to support incremental encoders with higher than
+500-kHz output signals. The phase delay for the path to the comparator should be similar than the highresolution path to ensure minimum analog signal phase shift.
+The supply voltage should be a single supply 5 V.
+
+22
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Circuit Design and Component Selection
+
+To match the high-resolution channel, the sum of the offset drift of both op-amps should be at least 12-bit
+equivalent accuracy, ideally match the analog performance of the high-resolution channel. For the input buffer
+and the differential to single-ended conversion, the OPA2365 has been selected due to:
+• 2.2-V TO 5.5-V operation to leverage 5-V rail
+• Rail-to-rail I/O
+• Very low offset and offset drift: 200 µV (max) and 1 µV/K (typically)
+• Low voltage and current noise: 4.5 nV/SQRT(Hz) and 0.004 pA/SQRT(Hz)
+• Excellent THD+N: 0.0004%
+• High common mode rejection, CMRR: 100 dB (min)
+• Slew rate: 25 V/μs
+• Fast settling: 300 ns to 0.01% to drive external ADC
+Another option is the OPA2322, which is a lower cost alternative, with 2-mV offset voltage and slightly reduced
+AC and DC performance.
+The analog output voltage should be scaled from 0 to 3.3 V with a 1.65-V common mode. Applying the same
+criteria in Section 4.1.1 with a maximum 1.8-VPP input voltage, and a 10% margin with regards to the 3.3-V FSR,
+the gain yields 1.66.
+Figure 4-6 shows the analog signal chain for channel A. The channel B is identical.
+
+Figure 4-6. Analog Signal Path With Differential Input to Single-Ended Output for Signal A (sin), Signal B
+(cos) Not Shown
+The differential signals A_P and A_N are connected through a 220-Ω resistor to the non-inverting input of the
+OPA2365 (U8A and U8B). The OPA2365 (U8A and U8B) are configured as unity-gain buffer to avoid loading
+the source and introducing distortions. The 220-Ω series resistor limits the current into the non-inverting input of
+the OPA2365 in case of an over- or undervoltage event. The output of each buffer employs a small, adjustable
+RC-filter with, for example, R46 and C53 in above picture with f-3dB ~ 5 MHz for high-frequency noise reduction.
+The following OPA2365 (U10A) is configured as differential to single-ended amplifier and level shifter. The gain
+is set to 1.66 and the output common mode voltage to 1.65 V through a low-drift voltage reference REF2033. An
+adjustable 5.6-pF feedback capacitor is added in parallel to the feedback resistor for HF noise filtering (f-3dB ~
+3.5 MHz), ideally matched to the THS4531A bandwidth. See Section 4.5.
+Since the OPA2365 is supplied with 5 V, the output of the amplifier is clamped to 3.3 V (D17) with a series 10-Ω
+current limiting resistor (R48). This is to protect the following comparator (TLV3202/1) and an external ADC,
+which typically are 3.3-V I/O.
+An anti-aliasing and decoupling RC network (R41/C48) is added to drive an external ADC. The filter was
+optimized for use with the embedded 12-bit dual S/H ADC in the C2000 Piccolo MCU family. For other ADCs,
+the filter has to be adjusted accordingly.
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+23
+
+Circuit Design and Component Selection
+
+www.ti.com
+
+The 1.65-V bias voltage is decoupled with a 100-n capacitor (C57). Furthermore, LP RC filters have been added
+to reduce more and more HF noise components, in particular the one potentially coming from the switcher
+TPS54040A.
+4.1.3 Comparator Subsystem for Digital Signals A, B, and R
+The comparators are required to detect the zero-crossing of the analog signals A and B, as well as the zero
+index pulse with the marker R and generate the corresponding digital 3.3-V TTL-compatible signals ATTL, BTTL,
+and RTTL, often referred to as ABZ. As outlined in Section 1.4 a low propagation delay comparator offers
+additional margin to the system.
+The comparators selected are the TLV3201 (single) and TLV3202 (dual), 40 ns, microPOWER, push-pull output
+comparators, with the following main characteristics:
+• Low propagation delay of typical 40 ns
+• Low input offset voltage of typical 1 mV, to ensure minimum drift of switching threshold
+• Push-pull outputs, to drive the input of a 3.3-V I/O host processor
+• Industrial temperature range
+The TLC372 dual comparator with 250-ns propagation delay is a lower cost option, depending overall system
+propagation delay and maximum frequency. The advantage of the TLV320x family is that it allows other
+components to add more delay while still keep the required 500-ns maximum delay at 500 kHz. For example, a
+larger hysteresis would increase the propagation delay while improve immunity against noise.
+4.1.3.1 Non-Inverting Comparator With Hysteresis
+
+The input signals to all comparators are derived from the output of the single-ended to differential amplifier. The
+output signal is clamped to 3.3 V, as described earlier, and decoupled with a RC network (like R49, C54 in figure
+19 for signal A) to avoid cross-talk to the analog single-ended signals A and B respectively.
+The match the phase between the high-resolution path and this path, the RC decoupling network at the input to
+the comparator matches the RC filter (2×10 Ω and 2.2 nF) at the THS4531A output.
+The TLV370x is configured as non-inverting comparator to detect the zero-crossing of the analog sin and cosine
+signals A and B as well as the index pulse R. Figure 4-7 shows the corresponding schematics for the signal A.
+The switching threshold is set by the reference voltage VREF = 1.65 V (REF2033), which is also used to bias the
+single-ended analog signals for the differential to single-ended amplifiers. For each comparator, the reference
+input is taken from the REF2033 and decoupled with a 10-Ω series resistor and a 100-n capacitor.
+A hysteresis is added for better noise immunity. The hysteresis (VTH+ – VTH–) of a non-inverting comparator can
+be calculated per Equation 7:
+
+(
+
+R
+
+) RG
+
+V Hysteresis = V Out _ High - V Out _L ow ´
+
+(7)
+
+F
+
+with VOut_High the high-level and VOut_Low the low level comparator output voltage, RF the feedback and RG the
+input resistor into the non-inverting comparator input.
+For the configuration of this design as outlined in Figure 4-7, the hysteresis has been set to around 160 mV per
+Equation 8. Since R49 and R48 are magnitudes lower than R50, they can be neglected.
+V Hysteresis = 3.3 V ´
+
+24
+
+R 50
+~ 160 mV
+R 51
+
+(8)
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Circuit Design and Component Selection
+
+The upper and lower switching thresholds VTH+ and VTH– are defined per Equation 9 and Equation 10 with the
+reference voltage VREF = 1.65 V.
+R50 ö
+æ
+V TH+ = 1.65 V ´ ç 1 +
+= 1.73 V
+R51 ÷ø
+è
+
+(9)
+
+R50 ö
+æ
+V TH- = (3.3 V - 1.65 V ) ´ ç 1 = 1.57 V
+R51 ÷ø
+è
+
+(10)
+CAUTION
+
+The lower threshold is a function of the supply voltage. However, the supply voltage tolerance of this
+design 5%, as typical with most designs. A ±5% tolerance with the 3.3-V supply voltage would affect
+the lower threshold by only by ±16 mV, resulting VTH– range from approximately 1.56 to 1.59-V,
+hence still acceptable.
+
+Figure 4-7. Signal A Comparator With Hysteresis
+The 3.3-V supply of each comparator is decoupled with a 1-Ω series resistors and 100-nF capacitor to minimize
+cross-talk through the 3.3-V rail to other comparators. The RC low pass comprised of R49 and C54 is added to
+decouple the comparators switching node from the analog signal A/sin, which will be connected to an external
+ADC.
+The hysteresis allows for a clean digital signal, which means it avoids fast switching due to noise around the
+zero crossing point. The hysteresis however introduces an additional propagation delay, which is depending on
+the analog signal amplitude VIN_PEAK-PEAK at the comparator input.
+æ
+ö
+160 mV
+f Hysteresis ~ sin-1 ç ±
+÷
+ç VIN _ PEAK -PEAK ÷
+è
+ø
+
+(11)
+
+Assuming minimum input voltage of 0.3 VPP: The output of the differential- to single-ended amplifier (gain =
+1.66) will have an amplitude of 0.5 VPP (0 to 100 kHz) and around 0.32 VPP at 500 kHz due to low-pass filter
+attenuation. The hysteresis corresponding phase delay of the digital signals A, B, and R will be around 30
+degrees for a 0.32 VPP input at the comparator. At 500 kHz, this would translate into a total propagation delay of
+the comparator of around 170 ns + 40 ns = 210 ns.
+Due to the low propagation delay of the TLV3201 with 40 ns only, the overall delay of the comparator block
+remains below 45 degrees up to 500 kHz.
+The comparators for the signals B and R have the same settings. Also the buffering and gain stage for the index
+marker R is identical to the signals A and B. This is to ensure the phase of the index marker R is exactly in
+sync with the signal A and B up to a 500-kHz signal frequency. This ensures the zero Index Marker R will occur
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+25
+
+Circuit Design and Component Selection
+
+www.ti.com
+
+as specified, slightly before the rising edge of signals A and B. The index marker R defines the absolute zero
+position, and hence exact relation to signals A and B is required to avoid any position offset.
+
+4.2 Power Management
+The power management consists DC/DC buck to generate a 6-V intermediate rail from the 24-V input voltage.
+The encoder supply voltage and the 5-V and 3.3-V rails are derived from the intermediate voltage, as shown in
+Figure 4-8.
+24-V DC
+(17 V ± 36 V)
+
+Input
+filter
+
+DC/DC Buck
+TPS54040A
+
+6V
+400 mA
+
+LDO
+TPS71701
+
+LDO
+TPS79933
+
+5V
+100 mA
+3.3 V
+100 mA
+
+5.25 V @ 250 mA
+LDO
+TPS79901
+
+Encoder Voltage
+5.25 V (default)
+
+External supply
+(optional)
+
+Figure 4-8. Power Management Solution
+Because of the high performance required by the system and solution, most of the power rails are provided by
+low-noise LDOs. The drawback is the limited efficiency and low output current capability. The maximum output
+current is limited by the thermal performance, due to the high power losses.
+To reduce the voltage drop across the LDO a high-efficiency DC/DC switching converter to generate a
+6-V intermediate rail from the 24-V input is us. Pay attention to minimize the noise introduced by the switcher
+solution by proper layout and component selection.
+4.2.1 24-V Input to 6-V Intermediate Rail
+A switching DC-DC converter is provided to achieve the intermediate voltage rail of 6 V that supplied the three
+LDOs. This is a basically mandatory choice since the high VIN / VOUT ratio makes any LDO unsuitable for
+the power conversion. Indeed the efficiency of any LDO could be simply calculated as VOUT / VIN that, in the
+worst case (maximum VIN) would lead to 5.25 V / 36 V ≈ 14%. The remaining 86% of the power consumption
+is dissipated by the LDO package: having indeed a maximum current of 200 mA would lead to 36 V × 200 mA
+× 86% = 6.2-W power dissipated on the LDO package that would simply and quickly blow up any reasonable
+package.
+Starting with the input filter, it is widely known that conducted EMI are generated by the normal operation of
+switching circuits. Large discontinuous currents are generated by the power switches turn on and off very fast. In
+a buck topology, large discontinuous currents (high di/dt) are present at the input of the converter. The selected
+values for the input filter are shown in Figure 4-9.
+
+26
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Circuit Design and Component Selection
+
+For more details about how to design an input EMI filter, please refer to the application report, AN-2162 Simple
+Success With Conducted EMI From DC/DC Converters (SNVA489).
+
+Figure 4-9. Input Filter Including Reverse Polarity Protection
+The DC/DC buck converter has been designed to meet the following specifications:
+• Input voltage: VIN = 17 to 36 V, 24 V nominal
+• Output voltage: 6 V @ 500 mA
+• Switching frequency: 500 kHz nominal
+• Output voltage ripple: 25 mVPP max
+• Efficiency: > 80% at full load
+• Non-isolated topology
+The TPS54040A is selected for the purpose: this is a buck converter with an integrated FET, 3.5 to 42-V input
+voltage, and 0.8 to 39-V output voltage at a 500-mA output current. Its frequency can be adjusted from 100 kHz
+to 2.5 MHz or can be synchronized with an external clock. It can also be enabled and disabled. These features
+make the TPS54040A a very good fit to the requirements/specifications listed above.
+Note that the TPS54040A is pin-to-pin compatible with the TPS5401, which is a lower cost version of the
+TPS54040A with similar performance but a less accurate output voltage and enabled threshold.
+Also note that the TPS54040A is pin-to-pin compatible also with the TPS54140A, TPS54240, TPS54340, and
+TPS54540: this widens the part selection and offers the possibility to modulate costs and power level (in case of
+future system upgrades).
+
+Figure 4-10. Schematic of 24-V to 6-V DC-DC Buck Converter With TPS54040A
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+27
+
+Circuit Design and Component Selection
+
+www.ti.com
+
+For a detailed explanation of the design process, refer to the TPS54040A datasheet or the TI Design
+TIDA-00180.
+On a typical application the output voltage is set thanks to a simple resistor divider network. Equation 12 gives
+the value of the upper resistor according to the output voltage, the reference voltage (0.8 V for the TPS54040A)
+and the lower resistor (with R10 usually fixed to 10 kΩ).
+R7 = R10 ´
+
+V OUT - 0.8 V
+
+(12)
+
+0.8 V
+
+With VOUT = 6 V and R10 = 10 kΩ, R7 yields 65 kΩ.
+The tolerance of the 6-V output voltage will be 6 V ±4%. This assumes feedback resistors with a 1% tolerance
+and the internal bandgap tolerance from the TPS54040A of ±2%.
+The switching frequency is set with R8 = 237 kΩ to 500 kHz.
+On the TPS54040A schematics, some components are marked as do not populate (DNP). This is the case of the
+snubber network formed by R4 and C11. The snubber network is not needed with the TPS540040A design. A
+snubber network is a solution to reduce the ringing on the switch node and overshoot of the MOSFET if needed.
+For more details of other option, refer to the application note Ringing Reduction Techniques for NexFETTM High
+Performance MOSFETs (SLPA010) on how to use and calculate the snubber network.
+4.2.2 Encoder Supply
+A 5.25-V supply for the encoder has been selected in order to meet a typical 5-V (±5%) encoder supply
+specification and have a 0.25-V additional margin to compensate for voltage drop across longer cables used to
+connect the encoder.
+The LDO that provides the 5.25 V to the encoder has to provide also an enable pin. In this way, it is possible
+to power-cycle the turn-off or power-cycle the encoder supply from a host processor, if desired to for example
+turn-off the voltage at the encoder connector in case no encoder is connected.
+The LDOs do not need specific description, except for the allowed range of output cap/ESR for stability purpose;
+while the main design involves the SMPS, as this affects all the main performances (noise, EMI, efficiency, cost,
+and board space).
+The TPS79901 has been designed to provide a little higher voltage than the nominal 5 V (5.25 V), using part
+of the greater accuracy of the LDO to reduce the thermal stress on it. In brief 5.25 V ±2% is within the allowed
+supply range of the encoder (5 V ±5%). In this way, the power it has to dissipate is
+
+(
+
+)
+
+PLDO,MAX = V LDO,IN - V LDO,OUT ´ i LDO,MAX = (6 V - 5.25 V )´ 250 mA = 187 mW
+
+(13)
+
+With a 5-V encoder voltage, the maximum power dissipation would increase to 250 mW.
+Indeed with a Rthja ≈ 180°C/W it means that the TPS79901 junction temperature will increase less than 34°C
+versus ambient temperature when working at maximum load current of 250 mA. For example at 85°C ambient,
+the junction will be 120°C.
+The output voltage of the TPS79901 LDO is set with 1% feedback resistors R11 and R13 according to according
+to the Equation 13, where 1.193 V is the nominal value of the TPS79901 reference voltage:
+R11 ö
+340k ö
+æ
+æ
+V ENC _ VCC = 1.193 V ´ ç 1 +
+÷ = 1.193 ´ ç 1 + 100k ÷ = 5.25 V
+R13
+è
+ø
+è
+ø
+
+28
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+(14)
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Circuit Design and Component Selection
+
+Figure 4-11. Schematic of 5.25-V LDO for Encoder Supply
+A jumper selects between the 5.25-V LDO output and an optional external supply, if desired. The signal
+PWR_EN is default pull-up, but can be asserted to low from a host microcontroller to disable or power-cycle
+the encoder supply voltage (see Section 4.3).
+4.2.3 Signal Chain Power Supply 5 V and 3.3 V
+Because of the low current demanded by the analog signal chain, as described in Section 4.1, and to achieve
+high-performance with very low noise, the LDO is again a mandatory choice. Indeed, because of the high PSRR
+featured by TI LDOs, the AC noise generated by the switcher is blocked and does not affect the noise sensitive
+analog parts, like the ADCs and the input buffers and amplifiers.
+The 5-V rail is dedicated to the analog buffers and amplifiers as well as to the analog supply voltage of the
+ADS8354 ADC. The 3.3 V is dedicated to the digital supply of the ADS8354 and the comparators to ensure
+a 3.3-V interface to the host processor without the need for I/O level-shifters. Because of the low power
+consumptions of the selected components, an LDO each was selected for the 3.3-V and 5-V rail with a nominal
+output current of 100 mA.
+A fixed 3.3-V LDO TPS79933 was used for the 3.3-V rail, the TPS71701 was used for the 5-V rail. The
+schematic is shown in Figure 4-12. The 5-V output voltage is set by the feedback resistors R15 and R16 with the
+TPS71701 VREF = 0.8 V, according to Equation 15.
+R15 ö
+845k ö
+æ
+æ
+V 5V = V REF ´ ç 1 +
+÷ = 0.8 V ´ ç 1 + 160k ÷ = 5.02 V
+R16
+è
+ø
+è
+ø
+
+(15)
+
+Figure 4-12. Schematic for 5-V and 3.3-V PoL for Signal Chain
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+29
+
+Circuit Design and Component Selection
+
+www.ti.com
+
+4.3 Host Processor Interface
+4.3.1 Signal Description
+A 10-pin header interface is available to connect to a host processor. The header provides the necessary signals
+to calculate the high-resolution interpolated angle for both signal paths, using the ADS8354 dual 16-bit ADC and
+an embedded dual S/H ADC, if available.
+The interface is compliant to 3.3-V I/O systems. To have a solid GND connection, all odd pins are assigned to
+GND. The signals available are listed in Table 4-1.
+Table 4-1. TIDA-00176 Interface Connector to Host MCU
+FUNCTION
+
+SIGNALS
+
+I/O (3.3 V)
+Digital input
+
+/CS (I)
+
+Digital input
+
+Chip-select signal; active low. Falling
+edge of /CS latches the analog input
+(Hold) and initiates a new conversion.
+Use falling edge of /CS to latch
+QEP counter on host processor
+synchronously, like on Piccolo MCU
+
+SCLK (I)
+
+Digital input, up to 24 MHz
+
+Clock for serial communication
+
+SDO_A (O)
+
+Digital output
+
+Data output for serial communication,
+channel A and channel B. 16-bit 2’s
+complementary data on each channel
+A and channel B. Input to output signal
+gain = 5.
+
+SDO_B (O)
+
+Digital output
+
+Data output for serial communication
+channel B
+
+ATTL (O)
+
+Digital output
+
+160mV hysteresis for A, B, and R,
+configurable
+
+BTTL (O)
+
+Digital output
+
+RTTL (O)
+
+Digital output
+
+A/sin (O)
+
+Analog output: 0 to 3.3 V,
+1.65-V bias (single-ended)
+
+Nominal output range:
+0.82 V – 2.48 V (1.65 ±0.83 V) for 1
+VPP, gain = 1.66, bias voltage = 1.65 V
+
+B/cos (O)
+
+Analog output: 0 to 3.3 V,
+1.65-V bias (single-ended)
+
+Nominal output range:
+0.82 V – 2.48 V (1.65 ±0.83 V) for 1
+VPP, gain = 1.66, bias voltage = 1.65 V
+
+SDI (I)
+
+16-bit high-resolution output channel for A, B
+with ADS8354 and SPI (Slave)
+
+Digital quadrature encoded signals A, B and
+index Marker R
+
+COMMENT
+Data input for serial communication.
+Used for configuration of dual sampling
+mode
+
+Analog single-ended output channel for A and
+B
+
+For details on the connector pin assignment, refer to Section 6.
+CAUTION
+To synchronize the analog input sample of the ADS8354 16-bit dual sampling ADC with a QEP
+incremental counter module, use the /CS signal to the ADS8354 to latch the QEP counter as well.
+For an MCU like Piccolo, the /CS need to be connected to the eQEP Strobe input pin EPEPxS,
+where x is the module number. The Piccolo eQEPx module can be configured to latch the QEP
+counter on a falling edge of the EQEPxS pin.
+
+30
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Circuit Design and Component Selection
+
+4.3.2 High-Resolution Path Using 16-Bit Dual ADC ADS8354 With Serial Output
+This section outlines the configuration of the ADS8354 through the serial interface. This is split into programming
+the full-scale input voltage range with the internal ADS8354 reference as well as the serial data transfer.
+4.3.2.1 ADS8354 Input Full Scale Range Output Data Format
+
+For use in this design, the ADS8354 is intended to be configured for ±2 × VREF input range. The internal
+reference voltage VREF should be set to 2.5 V, to yield a ±5-V FSR.
+Table 4-2. ADS8354 Transfer Characteristic for TIDA-00176
+INPUT VOLTAGE:
+AINP_x – AINM_x
+
+INPUT VOLTAGE
+
+OUTPUT CODE (HEX)
+
+< –5 V
+
+NFSC
+
+8000
+
+–5 V + 1 LSB
+
+NFSR
+
+8001
+
+–1 LSB
+
+MODE
+
+–1 LSB
+
+FFFF
+
+0
+
+0
+
+0000
+
+> 5 V – 1 LSB
+
+PFSR – 1 LSB
+
+7FFF
+
+±2 × VREF RANGE
+
+The output date format for each channel A and B is 16-bit signed integer output (2’s complementary).
+4.3.2.2 ADS8354 Serial Interface
+
+The ADS8354 uses the serial clock (SCLK) for synchronizing data transfers in and out of the device. The CS
+signal defines one conversion and serial transfer frame. A frame starts with a CS falling edge and ends with a
+CS rising edge. Between the start and end of the frame, a minimum of N SCLK falling edges must be provided
+to validate the read or write operation. As shown in Table 4-3, N depends upon the interface mode used to read
+the conversion result. When N SCLK falling edges are provided, the write operation attempted in the frame is
+validated and the internal user-programmable registers are updated on the subsequent CS rising edge. This CS
+rising edge also ends the frame. If CS is brought high before providing N SCLK falling edges, the write operation
+attempted in the frame is not valid.
+Table 4-3. ADS8354 SCLK Falling Edges for a Valid Write Operation
+INTERFACE MODE
+
+MINIMUM SCLK FALLING EDGES REQUIRED TO VALIDATE
+WRITE OPERATION N
+
+32-CLK, dual-SDO mode (default)
+
+32
+
+32-CLK, single-SDO mode
+
+48
+
+16-CLK, dual-SDO mode
+
+16
+
+16-CLK, single-SDO mode
+
+32
+
+The example firmware on the F28069M Piccolo MCU initializes the ADS8354 in the 32-CLK, single SDO mode.
+For more details on the serial interface mode and read and write operations, refer to the ADxx54 data sheet.
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+31
+
+Circuit Design and Component Selection
+
+www.ti.com
+
+4.3.2.3 ADS8354 Conversion Data Read
+
+As outlined in Table 4-3, the device provides four different interface modes to the user. These are applicable for
+reading the conversion result too. These modes offer flexible hardware connections and firmware programming.
+In the 32-CLK interface modes, the device uses an internal clock to convert the sampled analog signal. The
+conversion is completed during the first 16 periods of SCLK and the conversion result can be read on the
+subsequent SCLK falling edges. All devices in the family (that is, ADS8354, ADS7854, and ADS7254) support
+the 32-CLK interface modes. In addition to the 32-CLK interface modes, the ADS7854 and ADS7254 also
+support the 16-CLK interface modes. By using the
+16-CLK interface modes, the same throughput can be achieved at much lower SCLK speeds.
+The example firmware on the F28069M Piccolo MCU initializes the ADS8354 in the 32-CLK, single SDO mode.
+The 32-CLK, single-SDO mode provides the option of using only one SDO pin (SDO_A) to read conversion
+results from both ADCs (ADC_A and ADC_B). SDO_B remains in 3-state and can be treated as a no connect
+(NC) pin. Figure 4-13 shows a detailed timing diagram for this mode.
+
+Figure 4-13. 32-CLK, Single-SDO Mode Timing Diagram
+A CS falling edge brings the serial data bus out of 3-state and also outputs a 0 on the SDO_A pin. The
+device converts the sampled analog input during the conversion time (tCONV). SDO_A reads 0 during this period.
+After completing the conversion process, the sample-and-hold circuit goes back into sample mode. The device
+outputs the MSB of ADC_A on the SDO_A pin on the 16th SCLK falling edge. The subsequent SCLK falling
+edges are used to shift out the conversion result of ADC_A followed by the conversion result of ADC_B on the
+SDO_A pin. In this mode, at least 48 SCLK falling edges must be given to validate the read or write frame. A CS
+rising edge ends the frame and puts the serial bus into 3-state.
+Refer to the ADSxx54 datasheet for more details.
+
+32
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Circuit Design and Component Selection
+
+4.3.2.4 ADS8354 Register Configuration
+
+To select the modes as outlined in the previous sections, the ADS8354 registers REFDAC_A, REFDAC_B, and
+CFR are programmed as follows.
+REFDAC_X and CFR are 16-bit registers and are programmed as shown in Table 4-4, with the upper
+4 bits selecting write/read mode and its corresponding register.
+Table 4-4. ADS8354 Register Configuration
+REGISTER
+
+DATA (HEX)
+
+COMMENT
+
+REFDAC_A
+
+9FF8
+
+Write mode to REFDAC_A, selects VREF_A
+= 2.5 V
+
+REFDAC_B
+
+AFF8
+
+Write mode to REFDAC_B, selects VREF_B
+= 2.5 V
+
+CFR
+
+8640
+
+Write mode to CFR, selects 32-CLK dual
+SDO mode with A and B on SDO_A, FSR
+= ±2 × VREF, select internal VREF
+
+Refer to the ADSxx54 datasheet for more details.
+
+4.4 Encoder Connector
+Two connector options are available for interface to Sin/Cos encoders. The default connector is a shielded
+SubD-15 female connector. The other option is an 8-pin header. For details on the connector assignment, refer
+to Section 6.
+
+4.5 Design Upgrades
+High-resolution path: To further increase the noise immunity of the high-resolution channel, a first order low-pass
+filter is recommended with the differential amplifier THS4531A. To use the high-resolution channel up to 500
+kHz, a 33-pF, 1% NPO/COG capacitor each is recommended in the THS4531A feedback path in parallel to the
+5-kΩ matched resistor. For lower cut-off frequencies, the capacitor value should be higher, respectively.
+The 5.25-V LDO with output enable through signal PWR_EN: Although a connector J-7, pin 4 is available to
+ensure the input to the LDO is always terminated with either pulled-up (Jumper: J7 4-6) or pulled-down (Jumper:
+J7 4-3) an additional pull-up of 10k from U2, pin 4 to 3.3 V (V3_3_dc) is recommended.
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+33
+
+Software Design
+
+www.ti.com
+
+5 Software Design
+5.1 Overview
+Any embedded processor or microcontroller with an embedded quadrature encoded pulse counter and SPI can
+be used in conjunction with the TIDA-00176 hardware design.
+However, to allow for easy evaluation of the TIDA-00176 hardware reference design, an example firmware is
+provided for the C2000 F28069M Piccolo LaunchPad, which allows for evaluating TIDA-00176 with Sin/Cos
+incremental position encoders. A user menu through USB virtual COM port is provided to initialize the line count
+of selected Sin/Cos encoder and print the calculated high-resolution angle information along with other user
+selectable data.
+The main peripherals leveraged on the F28069M are the SPI-A peripheral to read the dual high-resolution 16-bit
+data signals A16-bit and B16-bit. The embedded dual S/H ADC is used to convert the single-ended analog signals
+A12-bit and B12-bit. The quadrature encoder pulse (eQEP2) module is used for directional
+up-down incremental count based on the signals ATTL and BTTL and the zero index marker RTTL for absolute
+position initialization. The ePWM1 timer is used to generate periodic interrupts to trigger a new angle
+measurement. A 16-kHz period was chosen. The SCI-A peripheral was used to implement the UART-based
+user interface at 115000 baud through virtual COM port.
+
+PC terminal
+Menu and print angle
+UART
+
+ePWM1
+
+C28x
+CPU
+
+16-bit high-res channel
+
+SPISIMOA
+
+SDI
+
+SPISTEA
+
+/CS
+
+SPICLKA
+
+SCLK
+
+SPI-A
+
+SPISOMIA
+
+SDO_A
+
+Dual S/H
+ADC
+
+ADCINA0
+
+A
+
+ADCINB0
+
+B
+
+EQEP2S
+
+/CS
+
+EQEP2A
+
+A(TTL)
+
+EQEP2B
+
+B(TTL)
+
+EQEPI
+
+R(TTL)
+
+eQEP2
+
+TMS320F28069M
+
+A, B
+
+Host processor interface
+
+SCI-A
+
+SPI
+
+A, B
+
+Dual
+ADC
+
+Analog channel
+
+Analog
+
+A, B, R
+TTL
+
+Comparators
+
+TIDA-00176 host processor interface (simplified view)
+
+Figure 5-1. TMS320F28069M Peripheral Module and Pin Assignment to TIDA-00176 Host Processor
+Interface
+
+34
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Software Design
+
+5.2 C2000 Piccolo Firmware
+The example firmware is developed and compiled for the Piccolo TMS320F28069M and leverages the peripheral
+modules outlined in Figure 5-1.
+The firmware leverages C2000 controlSUITE™. The firmware basically consists of three functional blocks. The
+F28069M framework, as outlined in Figure 5-2, the algorithm to synchronously sample the required data and
+calculate the interpolated angle, as well as the UART terminal based user interface.
+Start
+Init F28069 clocks, 16
+kHz timer and
+peripherals
+
+Init ADS8354
+Init F28069 ADC
+
+Init global structures
+SinCosInput,
+SinCosOutput, UartData
+
+UART user
+interface
+
+Periodic
+interrupt?
+
+Yes
+
+ISR
+
+No
+
+No
+
+Terminate
+program
+Yes
+End
+
+Figure 5-2. Flowchart of Sin/Cos Encoder Framework
+The TMS320F28069M framework initializes the TMS320F26069M CPU clock to 80 MHz, the GPIO multiplexers,
+the peripherals like SPI-A, SCI-A (UART), the ePWM1-based periodic timer and interrupt, the embedded 12-bit
+dual S/H ADC. It also configures the external 16-bit dual ADC ADS8354 through SPI-A as outlined in Section
+4.3.2.4. The SPI-A is configured as SPI Master with the serial clock of 10 MHz. This is the maximum SPI clock
+for the Piccolo F28069M. For other processors like Sitara AM437x or Delfino F287x, the SPI clock can be up to
+24 MHz.
+After initialization the program invokes the UART-based user interface and serves the period interrupt service
+routine (ISR). The period ISR implements the synchronized data capture, calculation of intermediate phase, and
+total interpolated angle based on both the external 16-bit ADC ADS8354 and the internal 12-bit ADC. It follows
+the algorithms outlined in Section 1. The code is written with 32-bit integer fractional Q28 numbers using TI’s
+IQmath library. The advantage of 32-bit fractional numbers versus
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+35
+
+Software Design
+
+www.ti.com
+
+32-bit IEEE floating point is that the resolution remains constant independent of the data range. Since the data
+range is limited from 0 to 1.0 for the angle (per unit), as well as for the ADC input data, which is scaled to
+maximum of ±5 (V), Q28 numbers with an integer range ±8.0 provide enough headroom, while accuracy remains
+constant for all data.
+The flowchart of the ISR is shown in Figure 5-3.
+START
+Falling /CS of SPI automatically triggers:
+- ADS8354 conversion
+- Latches eQEP2 counter
+The embedded dual S/H 12-bit ADC is automatically triggered by ePWM1 timer
+
+Write to SPI-A FIFO
+
+Read data:
+- ADS8354 16-bit dual ADC channel A and B
+- F28069 12-bit ADC channel A0 and B0
+- eQEP2 latched counter
+
+Raw data read
+
+Scale data with gain and
+offset correction
+
+- Invert and swap ADS8354 channels
+- Scale data for gain and offset
+
+Calculate phase using
+inverse tangent
+
+Calculate phase for:
+- High-resolution 16-bit path (ADS8354)
+- 12-bit path (F28069 ADC)
+
+Zero Index
+occurred first
+time?
+
+Yes
+
+Reset QEP counter to 0
+Set Zero Index flag
+
+The interpolated angle will be
+absolute
+
+No
+
+Calculate total
+interpolated angle
+
+Calculate total angle according to
+equations in Section 1
+
+Diagnostics and error
+analysis
+
+Update UART data
+buffer
+
+RETURN
+
+Figure 5-3. Flowchart of Sin/Cos Encoder Main ISR With Interpolated Angle Calculation
+
+36
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Software Design
+
+5.3 User Interface
+To allow for quick evaluation a virtual COM port based user interface was implemented. Any terminal interface at
+115000 baud like Tera Term can be used.
+The user interface allows the user to enter the line count of the connect Sin/Cos encoder before the program
+reaches the main menu. The menu provides menu item options for the user to select either a basic display mode
+with just the high-resolution angle printed or an expert display mode, both with a
+10-Hz update rate. Further menu items are data dump modes at a 200-Hz update rate, intended write to a file for
+post analysis.
+The flowchart of the user interface is shown in Figure 5-4.
+Start
+
+Print Header
+
+Enter Sin/Cos Encoder
+Linecount
+
+No
+
+Linecount
+entered?
+Yes
+
+Initialize eQEP2 module
+Enable 16kHz periodic
+interrupt
+
+Print Menu
+
+Enter menu item
+
+No
+
+Z [?
+
+Yes
+
+Yes
+
+Basic display at 10Hz:
+angle
+
+Return to
+Menu?
+
+No
+
+Z [?
+
+Yes
+
+Return to
+Menu?
+Yes
+
+No
+
+Yes
+
+Print angle, increment,
+phase at 200Hz
+
+Return to
+Menu?
+
+No
+
+ZŒ[?
+
+Yes
+
+Expert display at 10Hz:
+angle, increment, phase
+
+No
+
+No
+
+Z [?
+
+Print raw data sin, cos,
+QEP at 200Hz
+
+No
+
+Yes
+
+Return to
+Menu?
+
+No
+
+Yes
+
+Figure 5-4. Flowchart of UART Terminal User Interface
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+37
+
+Software Design
+
+www.ti.com
+
+Table 5-1 through Table 5-4 outlines the data output format for each of the four menu items. In data dump mode,
+a "tab" is included as delimiter between the data in each row.
+Table 5-1. Basic Display Mode Output Format and Data Scaling
+MENU
+
+COLUMN 1
+
+COLUMN 2
+
+COLUMN 3
+
+COLUMN 4
+
+COLUMN 5
+
+"b" basic display
+
+Total angle with
+ADS8354 (Scale)
+
+—
+
+—
+
+—
+
+—
+
+Data format
+
+Float (0 to 360
+degrees)
+
+—
+
+—
+
+—
+
+—
+
+Table 5-2. Expert Display Mode Output Format and Data Scaling
+MENU
+
+COLUMN 1
+
+COLUMN 2
+
+COLUMN 3
+
+COLUMN 4
+
+COLUMN 5
+
+"e" expert display
+
+Total angle with
+ADS8354 (Scale)
+
+Marker index R
+occurred
+
+Incremental count
+
+Phase ADS8354
+(scale)
+
+Phase
+F28069M ADC
+(scale)
+
+Data format
+
+float (0 to 360
+degrees)
+
+Flag (Yes/No)
+
+Integer
+
+Float (0 to 1.0)
+
+Float (0 to 1.0)
+
+Table 5-3. Angle Data Dump Menu Format and Scaling
+MENU
+
+COLUMN 1
+
+COLUMN 2
+
+"d" angle dump
+
+Total angle with
+ADS8354 (scale)
+
+Total angle with
+F28069 ADC
+(scale)
+
+Data format
+
+Float (0 to 360
+degrees)
+
+Float (0 to 360
+degrees)
+
+COLUMN 3
+
+COLUMN 4
+
+COLUMN 5
+
+Incremental count
+
+Phase ADS8354
+(scale)
+
+Phase
+F28069M ADC
+(scale)
+
+COLUMN 6
+Periodic tick
+(scale)
+
+Integer
+
+Float (0 to 1.0)
+
+Float (0 to 1.0)
+
+Integer (66 µs)
+
+Table 5-4. Raw Data Dump Menu Format and Scaling
+MENU
+"r" raw data
+
+38
+
+COLUMN 1
+
+COLUMN 2
+
+COLUMN 3
+
+COLUMN 4
+
+COLUMN 5
+
+COLUMN 6
+
+COLUMN 7
+
+Incremental
+count (SW)
+
+Incremental
+count (Latch
+on /CS)
+
+Input A+/A–,
+ADS8354
+(scale)
+
+Input B+/B–,
+ADS8354
+(scale)
+
+Input A+/A–,
+F28069
+(scale)
+
+Input A+/A–,
+F28069
+(scale)
+
+Periodic tick
+(scale)
+
+Integer
+
+Integer
+
+Float (VPP)
+
+Float (VPP)
+
+Float (VPP)
+
+Float (VPP)
+
+Integer (66 µs)
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Getting Started
+
+6 Getting Started
+6.1 TIDA-00176 PCB Overview
+Figure 6-1 shows a photo of the top side of the TIDA-00176 PCB. The headers and default jumper settings are
+explained in Section 6.2.
+16-bit dual ADC
+ADS8354
+
+Differential amplifiers
+THS4531A
+
+Interface to host
+processor (J6)
+
+8-pin encoder connector (J9)
+SubD-15 encoder
+connector (J8)
+
+J3 jumper
+J4 jumper (internal
+or external
+encoder P/S)
+
+J7 header:
+Enable encoder P/S
+
+24-V input (DC jack)
+
+24-V input (terminal)
+24-V to 6-V
+DC/DC buck
+
+External encoder P/S (opt.)
+
+Figure 6-1. TIDA-00176 Board Picture
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+39
+
+Getting Started
+
+www.ti.com
+
+6.2 Connectors and Jumper Settings
+6.2.1 Connector and Jumpers Overview
+The connector assignment and jumper settings are outlined in Table 6-1 through Table 6-4.
+The 24-V nominal input voltage can be supplied through either connector J1 or J2.
+Table 6-1. Connector Assignment and Jumper Settings (J1 to J4)
+CONNECTOR AND PIN ASSIGNMENT
+
+DESCRIPTION
+
+24-V INPUT (TERMINAL; J1)
+1
+
+24-V input voltage (17 to 36 V)
+
+2
+
+GND
+
+24-V INPUT (DC JACK; J2)
+Internal
+
+24-V input voltage (17 to 36 V)
+
+External
+
+GND
+
+1
+
+Output of TPS54040A (default 6 V)
+
+2
+
+6-V supply rail
+
+J3
+
+J4
+1
+
+5.25-V supply (default)
+
+2
+
+V_ENC (encoder supply voltage)
+
+3
+
+External supply
+
+If desired, an external supply voltage other than the 5.25-V encoder supply voltage can be applied through
+connector J5.
+Table 6-2. External Encoder Supply Connector (J5)
+PIN
+
+DESCRIPTION
+
+1
+
+Encoder supply VCC
+
+2
+
+Encoder supply GND
+
+Table 6-3. Host Processor Interface (J6)
+
+40
+
+PIN
+
+DESCRIPTION
+
+PIN
+
+DESCRIPTION (3.3-V I/O)
+
+1
+
+GND
+
+2
+
+SDI (ADS8354)
+
+3
+
+GND
+
+4
+
+/CS (ADS8354)
+
+5
+
+GND
+
+6
+
+SCLK (ADS8354)
+
+7
+
+GND
+
+8
+
+SDO_A (ADS8354)
+
+9
+
+GND
+
+10
+
+SDO_B (ADS8354)
+
+11
+
+GND
+
+12
+
+A (TTL)
+
+13
+
+GND
+
+14
+
+B (TTL)
+
+15
+
+GND
+
+16
+
+R (TTL)
+
+17
+
+GND
+
+18
+
+A (single ended analog 0 to 3.3 V)
+
+19
+
+GND
+
+20
+
+B (single ended analog 0 to 3.3 V)
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Getting Started
+
+For detailed signal descriptions on the host processor interface, refer to Section 4.3.
+Table 6-4. Connector Assignment and Jumper Settings (J7 to J9)
+PIN
+
+DESCRIPTION
+
+PIN
+
+DESCRIPTION
+
+HEADER J7 WITH ENCODER SUPPLY ENABLE (J7)
+1
+
+GND
+
+2
+
+REFIO (1.65 V)
+
+3
+
+GND
+
+4
+
+ENABLE encoder supply voltage (5.25 V)
+
+5
+
+GND
+
+6
+
+3.3 V
+
+A+
+
+2
+
+Encoder supply GND
+
+3
+
+B+
+
+4
+
+Encoder supply VCC (default 5.25 V)
+
+5
+
+NC
+
+6
+
+NC
+
+7
+
+R–
+
+8
+
+NC
+
+9
+
+A–
+
+10
+
+Reserved
+
+ENCODER DSUB15 CONNECTOR (J8)
+1
+
+11
+
+B–
+
+12
+
+Reserved
+
+13
+
+NC
+
+14
+
+R+
+
+15
+
+NC
+
+—
+
+—
+
+ENCODER 8SIL100 CONNECTOR (J9)
+1
+
+A+
+
+2
+
+A–
+
+3
+
+Encoder Supply GND
+
+4
+
+B–
+
+5
+
+B+
+
+6
+
+Encoder supply VCC (default 5.25 V)
+
+7
+
+R–
+
+8
+
+R+
+
+6.2.2 Default Jumper Configuration
+Prior to working with the TIDA-00176 board, ensure the below default jumper settings are applied. Refer to the
+board picture Figure 6-1.
+Table 6-5. Default Jumpers Settings
+HEADER
+
+JUMPER SETTING
+
+J3
+
+Insert a jumper between J3 pins 1-2 to enable the 6-V intermediate rail connected the three LDOs
+
+J4
+
+Insert a jumper between J4 pins 1-2 to route the onboard 5.25-V encoder supply to the encoder connectors
+
+J7
+
+Insert a jumper between J7 pins 4-6 to enable the 5.25-V encoder supply.
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+41
+
+Getting Started
+
+www.ti.com
+
+6.3 Design Evaluation
+6.3.1 Prerequisites
+The following hardware equipment and software are required to allow an evaluation of the TIDA-00176
+TI design.
+Table 6-6. Prerequisites
+EQUIPMENT
+
+COMMENT
+
+24-V power supply
+
+24-V output power brick with at least 250-mA output current
+Output connector 2.1-mm I.D. × 5.5-mm O.D. × 9.5-mm female
+
+TIDA-00176 hardware
+
+For default jumper settings per Section 6.2.
+
+Three jumpers for board settings
+
+2 pins, 100 mil
+
+TIDA-00176 firmware
+
+Download from TIDA-00176 design folder
+
+InstaSPIN-MOTION F28069M LaunchPad
+
+Available through TI eStore
+
+USB cable
+
+Mini USB type A to USB type A cable
+
+TIDA-00176 to LaunchPad adapter
+
+Internal TI (optional)
+
+Code Composer Studio 6
+
+Download from www.ti.com
+
+PC terminal program
+
+Any terminal program, like for example Tera Term
+
+Sin/Cos encoder with 1-VPP output signals
+
+For example, ROD480
+
+6.3.2 Hardware Setup
+The following connections are required between the TIDA-00176 and the InstaSPIN-MOTION LaunchPad.
+Table 6-7. TIDA-00176 Host Processor Interface (J6) to InstaSPIN-LaunchPad
+TIDA-00176 HOST PROCESSOR INTERFACE (J6)
+J6-PIN
+
+42
+
+DESCRIPTION
+
+CONNECTS TO
+→
+
+InstaSPIN-MOTION LAUNCHPAD
+HEADER-PIN
+
+DESCRIPTION (3.3-V I/O)
+
+1
+
+GND
+
+J3-Pin 22
+
+GND
+
+19
+
+GND
+
+J2-Pin 20
+
+GND
+
+2
+
+SDI (ADS8354)
+
+J2-Pin 15
+
+GPIO16/SPISIMOA
+
+4
+
+/CS (ADS8354)
+
+J2-Pin 19
+J6-Pin 59
+
+GPIO27/eQEP2S and
+GPIO19/SPISTEA
+
+6
+
+SCLK (ADS8354)
+
+J1-Pin 7
+
+GPIO18/SPICLKA
+
+J2-Pin 14
+
+GPIO17/SPISOMIA
+
+8
+
+SDO_A (ADS8354)
+
+10
+
+SDO_B (ADS8354)
+
+12
+
+A (TTL)
+
+J6-Pin 55
+
+GPIO24/eQEP2A
+
+14
+
+B (TTL)
+
+J6-Pin 54
+
+GPIO25/eQEP2B
+
+16
+
+R (TTL)
+
+J6-Pin 58
+
+GPIO26/eQEP2I
+
+18
+
+A (single ended analog 0 to 3.3 V)
+
+J3-Pin 27
+
+ADCIN_A0
+
+20
+
+B (single ended analog 0 to 3.3 V)
+
+J3-Pin 28
+
+ADCIN_B0
+
+NC
+
+NC
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+NC
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Getting Started
+
+Follow these steps to setup the hardware:
+1. Connect the TIDA-00176 board with the InstaSPIN-MOTION LaunchPad using the proper connector or
+adapter.
+Note
+For the internal testing an adapter board has been designed to interface between the
+TIDA-00176 and the InstaSPIN-MOTION LaunchPad as shown in Figure 6-2.
+2. Verify the TIDA-00176 is configured with the default three jumper settings per Section 6.2.2.
+3. Connect a Sin/Cos encoder to the board, by using either the SubD-15 connector (J8) or the SIL-8 connector
+(J9).
+4. Insert the 24-V input from the power brick in the J1 connector or use J2 connector in case of an external
+power supply (17 to 36 V) is preferred.
+5. Connect the USB mini cable from the InstaSPIN-MOTION LaunchPad to the PC.
+
+Figure 6-2. TIDA-00176 Board Mounted on InstaSPIN-MOTION LaunchPad
+Also refer to the InstaSPIN-MOTION LaunchPad prerequisites at: http://www.ti.com/tool/launchxl-f28069m
+Ensure the following jumpers on the F28069 LaunchPad are set: JP1, JP2, JP3 and JP7. Do not set JP4, JP5
+and JP6; these have to be not connected.
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+43
+
+Getting Started
+
+www.ti.com
+
+6.3.3 Software Setup
+Follow these steps to setup the software:
+1. If not done yet, download the TIDA-00176 SinCosEncoder Firmware from the TIDA-00176 design folder and
+extract to a folder such as c:\ti\tida-00176\bin.
+2. Invoke a Terminal program, like Tera Term, that can connect to the virtual COM port.
+3. Setup the Terminal program in Serial Console mode and set the parameters to:
+• Baud Rate = 115200, Data = 8-bit, Parity = None, Stop = 1-bit, Flow Control = None
+4. Launch Code Composer Studio (CCS).
+5. In CCS, setup the XDS100 JTAG target with the InstaSPIN-MOTION F28069M LaunchPad.
+6. In CCS, connect to the TMS320F28069M and download TIDA-00176 binary output file. Run → Load
+Program → TIDA-00176_SinCosEncoder_Firmware_rev1_0.out
+7. In CCS, run the target.
+The terminal program should display the start screen of TIDA-00176 as shown in Figure 6-3.
+Note
+After the binary file has been loaded to the F28069M, Steps 4 through 7 are not required anymore.
+Simply reset the LaunchPad to restart the program. Ensure the F28069M is configured to boot from
+internal flash. Refer to the InstaSPIN-MOTION LaunchPad documentation.
+Trouble-shooting: If no connection gets established, the VCP driver of the USB virtual Com port TI XDS100
+Channel B needed to be enabled under Windows® 7 Device Manager. For more details, refer to the InstaSPINMOTION LaunchPad documentation.
+
+Figure 6-3. TIDA-00176 User Interface at Startup
+
+44
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Getting Started
+
+6.3.4 User Interface
+After startup, the user interface requires the user to enter the Sin/Cos encoder line count in decimal. After the
+line count is entered, the main menu is available, as shown in Figure 6-4.
+
+Figure 6-4. TIDA-00176 User Interface Main Menu
+Four menus are available. Each can be selected by pressing the characters b, e, r, or a. The menu item x is
+reserved for internal test modes during software development.
+Press "b" or "e" to select the basic or expert display mode, which will print the interpolated angle in degrees or
+additional information. Note that initially the total angle is not absolute since the index has not occurred. This
+can be recognized by the Increments Marker set to "No" in the expert display mode. Slowly turn the encoder in
+clockwise direction until the Increments marker changes to "Yes". Now the interpolated angle is absolute with
+respect to the index marker position. To return to the main menu, press any key.
+
+Figure 6-5. Basic Angle Display and Expert Display Mode
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+45
+
+Getting Started
+
+www.ti.com
+
+Press "a" to start an angle data dump at a 200-Hz update rate. The data format is as outlined in Section 5. A
+screenshot is shown in Figure 6-6. Press any key to stop and return to the main menu.
+
+Figure 6-6. Angle Dump Mode at 200-Hz Update Rate
+Press "r" to start a raw data dump at a 200-Hz update rate. The data format is as outlined in Section 5. A
+screenshot is shown in Figure 6-7. Press any key to stop and return to the main menu.
+
+Figure 6-7. Raw Data Dump Mode at 200-Hz Update Rate
+
+46
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Test Results
+
+7 Test Results
+Tests were done to characterize each individual functional block as well as the entire board. In particular, the
+following tests were conducted.
+• Analog signal chain
+• Power management
+• Full system with Sin/Cos encoder signal emulation and Sin/Cos encoder
+• EMC immunity (ED, EFT, and Surge)
+Tests were done at room temperature around 22 to 23 degrees, or at 75 or 85 degrees. If not mentioned
+specifically, room temperature does apply.
+The following equipment has been used for the TIDA-00176 testing session:
+Table 7-1. Test Equipment for TIDA-00176 Performance Tests
+TEST EQUIPMENT
+
+PART NUMBER
+
+Programmable 16-bit waveform generator
+
+Keysight (Agilent) 33600A
+
+Low speed oscilloscope (suitable for power supply tests)
+
+Tektronix TDS2024B
+
+High speed oscilloscope (suitable for analog signal tests)
+
+Tektronix TDS784C
+
+Adjustable SMPS
+
+Knuerr-Heinzinger Polaris 125-5
+
+24 V @ 2.5-A SMPS (power brick)
+
+V-infinity 3A-621DN24
+
+True RMS multimeter
+
+Fluke 179
+
+Differential probes
+
+Tektronix P6630
+
+Single ended probes
+
+Tektronix P6139A
+
+Programmable thermal chamber
+
+Voetsch VT 4002
+
+Programmable electronic load module
+
+Chroma 63103
+
+Control module for electronic load module
+
+Chroma 6314
+
+Thermal camera
+
+Fluke TI40
+
+Control system loop analyzer
+
+Venable 3120
+
+HEIDENHAIN shielded cables, PUR M23 male/female (4 × 2 × 0.14
+mm; 4 × 0.5 mm), 10 m, 20 m, 50 m
+
+298399-10,-20,-50
+
+HEIDENHAIN M23/Sub-D15 Male Adapter Cable, 1m
+
+310196-01
+
+HEIDENHAIN Sin/Cos Encoders
+
+ROD480-2000, ROD480-1024, ROD486-2048
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+47
+
+Test Results
+
+www.ti.com
+
+7.1 Analog Performance Tests
+Figure 7-1 shows a picture of the TIDA-00176 analog signal chain tests.
+
+Figure 7-1. Test Setup for TIDA-00176 Analog Signal Chain Performance Tests
+The high-resolution 16-bit signal path featuring fully differential amplifiers THS4531A and the dual 16-bit ADC
+ADS8353, as well as the differential to single-ended analog signal path have been tested. For the purpose, a
+dual output programmable function generator has been used. The inputs signals are applied at the connector J8
+(differential inputs A, B, and R). The output waveforms have been collected at different probe points, depending
+on the signal path that was analyzed.
+
+48
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Test Results
+
+7.1.1 High-Resolution Signal Path
+The measurements have been taken on the high-precision, high-resolution signal path. A sinusoidal signal with 1
+VPP was injected at the encoder connector J8 inputs A+, A– and B+, B– and the differential analog signals was
+measured at the ADS8354 differential inputs. Figure 7-2 outlines the input and output signals measured for the
+test.
+Test signal input
+
+Test point 1 (analog)
+
+Test point 2 (digital)
+
+ADS8354
+
+THS4531A
+A+
+
+ADC
+
+A-
+
+SPI (A, B)
+
+B+
+ADC
+
+B-
+
+Host processor
+interface (J6)
+
+Encoder
+connector (J9)
+
+Figure 7-2. High-Resolution Signal Chain Measurement Points
+7.1.1.1 Bode Plot of Analog Path from Encoder Connector to ADS8354 Input
+
+20
+
+0
+
+18
+
+-3
+
+16
+
+-6
+
+14
+
+-9
+
+12
+
+-12
+
+10
+
+-15
+
+8
+
+-18
+
+6
+
+-21
+
+4
+
+Phase (°)
+
+Gain (dB)
+
+Figure 7-3 shows the magnitude and phase response, which is mainly defined by the THS4531A gain setting of
+2 and the passive first order low-pass filter comprised of two 10-Ω series resistors and the
+2.2-nF parallel capacitor.
+
+-24
+Gain
+Phase
+
+2
+
+-27
+
+0
+1 2 3 5 10 20
+
+100
+
+1000
+10000
+Frequency (Hz)
+
+-30
+100000 1000000
+D006
+
+Figure 7-3. Bode Plot for High-Resolution Analog from the Encoder Differential Input to ADS8354
+Differential Input
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+49
+
+Test Results
+
+www.ti.com
+
+7.1.1.2 Performance Plots (DFT) for Entire High-Resulation Signal Path
+
+For the following tests, the entire high-resolution signal chain, featuring the differential amplifier THS4531A
+connected through an RC filter to the dual 16-bit ADC ADS8354 has been tested. A sinusoidal test signal has
+been injected at the encoder differential input pins and the 16-bit digital data has been analyzed.
+The analysis has been done in the frequency domain to evaluate the performance on signal-to-noise ratio
+(SNR), total harmonic distortions (THD), signal-to-noise and distortion (SINAD), and effective number of bits
+(ENOB). Essentially, all these parameters are different ways of quantifying the noise and distortion performance
+of an ADC based on a fast-fourier transform (FFT) analysis. A brief introduction on the theory of signal-to-noise
+measurement with ADCs is provided at the end of this section.
+For the test, two types of input signals were used:
+• A ultra-low noise DC source at 1.8 V
+• A 1-kHz sine wave, at an amplitude of 0.6 VPP, which represents low output of Sin/Cos encoders
+The input signal is applied to one of the input channels A+, A– or B+, B– at a time, while the other channel while
+the other channel is unconnected. The purpose is to measure and highlight the ultra-low cross-talk level among
+the two channels A and B (or sine and cosine, respectively).
+The DC input is used to ensure the best noise performance (since no noise comes from the input/source). The
+1-kHz sine wave is used to measure the effective number of bits on the two parallel channels.
+Both channels A and B were sampled at 32 kHz and 8192 consecutive 16-bit samples were acquired for each
+channel A and B. The DFT has been calculated for the collected data to measure the SNR and THD.
+
+0
+
+0
+
+-20
+
+-20
+
+-40
+
+-40
+Signal Power (dB)
+
+Signal Power (dB)
+
+The results are presented in the following figures.
+
+-60
+-80
+-100
+
+-80
+-100
+
+-120
+
+-120
+
+-140
+
+-140
+
+-160
+
+-160
+0
+
+2000
+
+4000
+
+6000 8000 10000 12000 14000 16000
+Frequency (Hz)
+D007
+
+Figure 7-4. DFT of 16-Bit Channel A Output With
+1.8-V DC at Input A
+
+50
+
+-60
+
+0
+
+2000
+
+4000
+
+6000 8000 10000 12000 14000 16000
+Frequency (Hz)
+D008
+
+Figure 7-5. DFT of 16-Bit Channel B Output With
+1.8-V DC at Input B
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Test Results
+
+In the previous figures, the measured noise floor is below 120 dB, meaning this is the best performance that
+could be achieved. Also note that the plots are referred to the full scale input range, that is the maximum
+amplitude. 0 dB correspond to the maximum input possible for the ADS8354, which in this configuration would
+be 2 VPP.
+The following figures show the DFT of the entire high-resolution channel with a sinusoidal input voltage of
+0.6-VPP amplitude and 1 KHz. This equals around –6-dB input level versus the theoretical full scale range input.
+
+0
+
+0
+
+-20
+
+-20
+
+-40
+
+-40
+Signal Power (dB)
+
+Signal Power (dB)
+
+The input signal was applied either to the channel A or channel B. The other channel was left open in order to
+measured cross-talk as well.
+
+-60
+-80
+-100
+
+-60
+-80
+-100
+
+-120
+
+-120
+
+-140
+
+-140
+
+-160
+
+-160
+0
+
+2000
+
+4000
+
+6000 8000 10000 12000 14000 16000
+Frequency (Hz)
+D009
+
+0
+
+2000
+
+4000
+
+6000 8000 10000 12000 14000 16000
+Frequency (Hz)
+D010
+
+0
+
+0
+
+-20
+
+-20
+
+-40
+
+-40
+Signal Power (dB)
+
+Signal Power (dB)
+
+Figure 7-6. DFT of 16-Bit Channel A Output With
+Figure 7-7. DFT of 16-Bit Channel B Output With
+600-mVPP, 1-KHz Sine Wave Input Applied on Input 600-mVPP, 1-KHz Sine Wave Input Applied on Input
+A
+A
+
+-60
+-80
+-100
+
+-60
+-80
+-100
+
+-120
+
+-120
+
+-140
+
+-140
+-160
+
+-160
+0
+
+2000
+
+4000
+
+6000 8000 10000 12000 14000 16000
+Frequency (Hz)
+D011
+
+0
+
+2000
+
+4000
+
+6000 8000 10000 12000 14000 16000
+Frequency (Hz)
+D012
+
+Figure 7-9. DFT of 16-bit Channel A Output With
+Figure 7-8. DFT of 16-Bit Channel B Output With
+600-mVPP, 1-KHz Sine Wave Input Applied on Input 600-mVPP, 1-KHz Sine Wave Input Applied on Input
+B
+B
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+51
+
+Test Results
+
+www.ti.com
+
+These figures are referred to the theoretical full scale input range. Note that the first and second harmonics of
+the 1-kHz sinusoidal signal are due to the signal source itself, (normally a very aggressive notch filter is used to
+isolate the frequency of the test signal; refer also to SLAU515 for example).
+Also note that the 1-kHz signal has a slight spread in frequency. This is not due to the TIDA-00176 hardware
+but due to a jitter in the F28069 software implementation, which triggered the SPI transfer to start the ADS8354
+conversion (hold-mode) with a jitter of one CPU clock cycle equivalent to 12.5 ns.
+The previous pictures also highlighted that there is basically no cross-talk between the two analog channels
+for sine (signal A+, A–) and cosine (B+, B–). The spectrum (DFT) is half the sampling frequency (the second
+half of the spectrum is a specular copy of the first half, so it is not shown in the plots). The Hann function (http://
+en.wikipedia.org/wiki/Hann_function) is used for windowing the data to obtain cleaner plots in the frequency
+domain.
+THD, SNR and ENOB versus the full-scale signal can then be calculated for this design and are listed in Table
+7-2.
+Table 7-2. High-Resolution Signal Path (THS4531A and ADS8354) Typical Performance
+
+52
+
+PARAMETER
+
+VALUE (MEASURED)
+
+SNR
+
+89.1 dB
+
+SINAD
+
+88.5 dB
+
+ENOB
+
+14.4 bit
+
+Cross-Talk
+
+–107 to –109 dB
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Test Results
+
+7.1.1.3 Background on AC Performance Definitions With ADCs
+
+A typical FFT plot for an ADC is shown in Figure 7-10.
+
+Figure 7-10. Performance Definitions
+The SNR provides insight into the total noise of the system. The total noise of the data acquisition system
+is the root-sum-square (rss) of the front-end amplifier noise and the ADC noise. The ADC noise includes the
+quantization noise as well as the noise contributed by ADC internal circuitry. The total noise contributions from
+all these sources, denoted as Vn_TOT_RMS are referred to the input of the ADC for calculating total SNR of the
+system:
+SNR =
+
+V SIGNAL _ RMS
+V NOISE _ RMS
+
+(16)
+
+THD is defined as the ratio of the rss of all harmonic components (generally, nine harmonics are used) to the
+power of the fundamental signal frequency. It is generally specified with an input signal near full-scale (FS), but
+in this design the input is kept 0.5 dB below FS to prevent clipping.
+If the root-mean-square (rms) value of input signal is denoted as VSIGNAL_RMS and the power of the total first nine
+harmonics (except the fundamental) is denoted as VHARMONICS_RMS, the THD can be calculated as:
+THD =
+
+V SIGNAL _ RMS
+V HARMONICS _ RMS
+
+(17)
+
+SINAD combines the effect of distortion and noise to provide a cumulative measure of the overall dynamic
+performance of the system.
+SINAD =
+
+V SIGNAL _ RMS
+2
+2
+V NOISE
+_ RMS + V HARMONICS _ RMS
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+(18)
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+53
+
+Test Results
+
+www.ti.com
+
+Last but not least, the ENOB is an effective measurement of the quality of a digitized signal from an ADC, since
+it specifies the number of bits above the noise floor. It is calculated (starting from the SINAD expressed in dB)
+as:
+ENOB =
+
+SINAD dB - 1.76 dB
+
+(19)
+
+6.02 dB
+
+Refer to SLAU515 for more details about how the parameters have been calculated.
+7.1.2 Differential to Single-Ended Analog Signal Path
+Using the dual channel signal generator two coupled sine waves (same amplitude, same frequency, with a
+90-degree phase shift among them) are generated and applied to the analog differential signals A+, A– and B+,
+B– using the J9 connector. Two differential probes are used to acquire the differential signals applied in input,
+while two single-ended probes are connected to the single-ended analog outputs A and B of the analog path, on
+connector J6, pin 18 and pin 20, respectively.
+
+20
+
+50
+
+15
+
+25
+
+10
+
+0
+
+5
+
+-25
+
+0
+
+-50
+
+-5
+
+-75
+
+-10
+
+-100
+
+-15
+
+-125
+Gain
+Phase
+-150
+100000 1000000
+
+-20
+1
+
+10
+
+100
+1000
+10000
+Analog Input Frequency (Hz)
+
+Phase (°)
+
+Gain (dB)
+
+The amplitude of the outputs versus the inputs are measured in this way; at the same time, the phase shift
+between the differential inputs and the respective single ended output are measured. In this way, a Bode plot of
+the analog signal conditioning path could be calculated.
+
+D013
+
+Figure 7-11. Transfer Function of Differential to Single-Ended Analog Signal Path — Channel A and B
+
+20
+
+50
+
+15
+
+25
+
+10
+
+0
+
+5
+
+-25
+
+0
+
+-50
+
+-5
+
+-75
+
+-10
+
+-100
+
+-15
+
+-125
+Gain
+Phase
+-150
+100000 1000000
+
+-20
+1 2 3 5 10 20
+
+100
+1000
+10000
+Analog Input Frequency (Hz)
+
+Phase (°)
+
+Gain (dB)
+
+The same measurements have been performed on the marker signal (R+/R–). Note that the phase of the R
+signal is less than the equivalent for A and B since the output has been measured at the input to the comparator.
+The decoupling filter here has a five times higher cut-off frequency (R = 20 Ω, C = 2.2 nF) versus the output filter
+for A and B (R = 100 Ω, C = 2.2 nF).
+
+D014
+
+Figure 7-12. Transfer Function of Differential to Single-Ended Index Marker R
+
+54
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Test Results
+
+7.1.3 Comparator Subsystem With Digital Output Signals ATTL, BTTL, and RTTL
+In this section, the performance of the comparator with hysteresis that converts the single-ended analog signals
+A, B, and R into digital signals was tested.
+The focus was on the propagation delay of the comparator output signals ATTL, BTTL, and RTTL at the host
+connector J6 versus the analog input at the ADS8354 for the high-resolution path as well as the single-ended
+analog signals for the analog path.
+The aim of the test was to measure the overall signal delay of the comparator path versus the analog path,
+considering the delays introduced by hysteresis, phase shift due to low-pass filtering and the propagation delay
+of the comparator itself.
+Since all three channels A, B, and R were done absolutely symmetrical with regards to the comparator output,
+measurements have only been conducted with channel A.
+The analog signals were both measured with a single-ended probe, hence on the differential input of the
+ADS8354 only the positive differential signal was measured versus GND.
+For the test sinusoidal input signals were injected at the encoder connector J9, A_P, A_M (sine) and B_P, B_M
+(cosine) as well as P_M and R_P.
+For the high-resolution path, the amplitude was set to 1.0 VPP (typical) and 0.3 VPP (minimum) with 100
+Hz and 500 kHz (maximum) to test the worst case scenario for the propagation delay. For analog path, the
+measurement was conducted at 0.3 VPP with 100 Hz and 500 kHz, as corner cases.
+Test results are shown in the following figures. Note that both, the high-resolution path (at the differential input of
+the ADS8354) and the single-ended analog path (at connector J6.Pin 12) are compared versus the comparator
+output (at connector J6.Pin 18).
+
+A+/A- at
+ADS8354 Input
+
+A+/A- at
+ADS8354 Input
+
+Analog A Out
+(J6-12)
+
+A (TTL)
+Analog A Out
+(J6-12)
+
+Figure 7-13. Comparator Output ATTL versus
+Differential Input to ADS8354 and Analog Output
+A (J6-12) With Input 1.0 VPP, 100 Hz at Encoder
+Connector J9-1, J9-2
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+A (TTL)
+
+Figure 7-14. Comparator Output ATTL versus
+Differential Input to ADS8354 and Analog Output
+A (J6-12) With Input 0.3 VPP, 100 Hz at Encoder
+Connector J9-1, J9-2
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+55
+
+Test Results
+
+www.ti.com
+
+Analog A Out
+(J6-12)
+
+Analog A Out
+(J6-12)
+
+A+/A- at
+ADS8354 Input
+
+A+/A- at
+ADS8354 Input
+
+A (TTL)
+
+A (TTL)
+
+Figure 7-15. Comparator Output ATTL versus
+Differential Input to ADS8354 and Analog Output
+A (J6-12) With Input 1.0 VPP, 500-kHz Encoder
+Connector J9-1, J9-2
+
+Figure 7-16. Comparator Output ATTL versus
+Differential Input to ADS8354 and Analog Output
+A (J6-12) With Input 0.3 VPP, 500 kHz at Encoder
+Connector J9-1, J9-2
+
+As expected, the maximum overall phase shift including RC filter decoupling networks occurs at 500 kHz with
+the lowest input amplitude and is total around 320 ns, equal to 57 degrees, which is well below 90 degree
+and within the 60 degree the specification per Section 2. The very low propagation delay of the TLV3201 with
+typically 40 ns has a major impact on this low number. This also gives a major margin to compensate all the
+possible spreads in the parameters influencing the amount of phase delay like due to low-pass filters, and so on.
+The propagation delay at 100 Hz is almost the same than for the high-resolution channel because the delay at
+lower frequencies is dominated by the amplitude-dependent hysteresis.
+On the single-ended analog path, there’s almost no delay at 500 kHz despite a 250-ns propagation delay of the
+comparator with hysteresis itself. This is due to the strong low-pass filter at the single-ended analog output (R
+= 100 Ω, C = 4.7 nF) to drive an embedded switched capacitor ADC like in the Piccolo MCU. This frequency
+depended phase delay slightly compensates the delay from the comparator at higher frequencies.
+In a second step, only the delay related to the comparator with hysteresis was measured. The delay was
+specified as the input to the comparator (analog signal at R50) and the output of the comparator. Note that 0.3
+VPP at the encoder input equals around 0.5 VPP at the comparator input due to the previous amplifier stage with
+gain of 1.66.
+The delay introduced by the comparator block only (hysteresis and comparator propagation delay) has been
+measured and is listed in Table 7-3.
+Table 7-3. Hysteresis Comparator Subsystem Delay
+INPUT AT ENCODER
+CONNECTOR
+
+VOLTAGE AT COMPARATOR INPUT (FOR
+EXAMPLE, R50)
+
+PROPAGATION DELAY
+
+1.0 VPP, 100 Hz
+
+1.66 V
+
+170 µs
+
+6.1 degrees
+
+0.3 VPP, 100 Hz
+
+0.5 V
+
+560 µs
+
+20.1 degrees
+
+1.0 VPP, 500 kHz
+
+1.52 V
+
+120 ns
+
+21 degrees
+
+0.3 VPP, 500 kHz
+
+0.46 V
+
+200 ns
+
+36 degrees
+
+PHASE DELAY
+
+The difference to the overall delay in Figure 7-13 to Figure 7-16 is to the low-pass noise filter in the analog path,
+which contributes to around further 22 degrees at 500 kHz for the high-resolution signal path. However, the delay
+is still well below 90 degrees.
+If an ideal phase matching is desired, a corresponding low-pass filter can be implemented with the THS4531A as
+outlined in Section 4.5.
+
+56
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Test Results
+
+7.2 Power Supply Tests
+7.2.1 24-V DC/DC Input Supply
+The following tests were performed to characterize the DC/DC buck converter, which converts the 24-V to a 6-V
+intermediate rail.
+7.2.1.1 Load-Line Regulation
+6.002
+
+Output Voltage (V)
+
+6
+5.998
+No Load at 23 C° Ambient
+Full Load at 23 C° Ambient
+No Load at 85 C° Ambient
+Full Load at 85 C° Ambient
+
+5.996
+5.994
+5.992
+5.99
+5.988
+18
+
+20
+
+22
+
+24
+
+26
+28
+30
+Input Voltage (V)
+
+32
+
+34
+
+36
+D015
+
+Figure 7-17. Load-Line Regulation
+Comments: line-load regulation is within the ±10-mV range over the full working conditions. VOUT is the expected
+6 V ±2% (regulator’s accuracy) plus the accuracy of the resistor divider R7/R10.
+7.2.1.2 Output Voltage Ripple
+
+Figure 7-18. Output Voltage Ripple at 24-V Input, No Load, @ 22°C Ambient Temperature
+Comments: VOUT ripple is much lower than required 20 mVPP.
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+57
+
+Test Results
+
+www.ti.com
+
+7.2.1.3 Switching Node and Switching Frequency
+
+Figure 7-19. Switching Frequency Measurement, Full Load, 24-V Input, Troom
+Comments: The switching frequency is in the expected range (500 KHz ±23%). The SMPS is stable, no jitter, no
+irregular switching, no voltage spike.
+7.2.1.4 Efficiency
+100%
+90%
+80%
+
+Efficiency
+
+70%
+60%
+50%
+40%
+30%
+20%
+
+Vin = 18 V
+Vin = 24 V
+Vin = 36 V
+
+10%
+0
+0
+
+0.05
+
+0.1
+
+0.15
+
+0.2
+0.25
+Load (A)
+
+0.3
+
+0.35
+
+0.4
+D016
+
+Figure 7-20. Efficiency at 22°C With Reverse Polarity Protection Diode
+Comments: The effect of the diode for reverse polarity protection on the DC-DC converter efficiency is negligible.
+The 80% efficiency target at full load has fully met at any specified input voltage.
+
+58
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Test Results
+
+7.2.1.5 Bode Plot
+
+Figure 7-21. Bode Plot at 24-V Input, Full Load
+Table 7-4. Phase and Gain Margin
+INPUT VOLTAGE
+
+PHASE MARGIN
+
+FREQUENCY CROSS-OVER
+
+36 V
+
+78 degrees
+
+10.3 KHz
+
+24 V
+
+76 degrees
+
+10.3 KHz
+
+17 V
+
+74 degrees
+
+10.2 KHz
+
+Comments: Gain-loop analysis shows a 10-kHz system bandwidth with very good phase margin
+(> 60 degrees) at any working conditions.
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+59
+
+Test Results
+
+www.ti.com
+
+7.2.1.6 Thermal Plot
+
+A thermal picture has been grabbed to determine the hot-spot on the board at the maximum load conditions.
+
+Max. temp. detected
+
+Inductor L1
+
+Diode D2
+
+Figure 7-22. Thermal Images, 24-V Input, Full Load, 22°C Ambient Temperature
+Comments: The detected hot-spot on the board corresponds to the non-synchronous rectifier or diode of the
+TPS54040A circuit. It shows a temperature increase of 11°C at Troom tests, depending on input voltage and
+output current. The maximum detected temperature on this part is 34°C.
+Tests at 85°C did not show significant drifts in performances (refer to Figure 7-17, load-line regulation
+@ 85°C).
+
+60
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Test Results
+
+7.2.2 Encoder Power Supply Output Voltage
+
+Encoder Power Supply Output Voltage (V)
+
+The output voltage of the LDO providing the supply for the encoder is well regulated and meets the spec
+requirements, as for the following measurements.
+5.3
+5.29
+5.28
+5.27
+5.26
+5.25
+5.24
+5.23
+5.22
+5.21
+5.2
+0
+
+20
+
+40
+60
+80 100 120 140 160
+Encoder Current Consumption (mA)
+
+180
+
+200
+D017
+
+Figure 7-23. Encoder Power Supply Output Voltage versus Load Current (0 to 200 mA)
+7.2.3 5-V and 3.3-V Point-of-Load
+The output voltages of the two LDO to generate the point-of-load providing the supply for the signal chain block
+are well regulated and meet the spec requirements. Measurements are shown in Table 7-5. The nominal current
+consumption on the 3.3-V and the 5-V rails was measured with a Sin/Cos encoder connected and the F28069M
+LaunchPad triggering a new measurement at 16 kHz.
+Table 7-5. Measured Output Voltage
+SPECIFIED OUTPUT VOLTAGE
+
+MEASURED VOLTAGE AT NOMINAL LOAD
+
+NOMINAL CURRENT
+
+5V
+
+5.02 V
+
+49.9 mA
+
+3.3 V
+
+3.34 V
+
+0.2 mA
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+61
+
+Test Results
+
+www.ti.com
+
+7.3 System Performance
+7.3.1 Sin/Cos Encoder Output Signal Emulation
+For this purpose the encoder output signals have been emulated using a 16-bit programmable dual-output signal
+generator Keysight (Agilent) 33600A. Sinusoidal test signals from DC up to 500 kHz were injected into the
+differential inputs A+/A– and B+/B–.
+In this section, the system level performance have been measured. In particular:
+• Accuracy over one electrical period (phase)
+• Accuracy over one revolution at maximum input frequency 500 kHz. Here, the encoder emulation was based
+on a 2000-signal period equal to one emulated revolution
+The tests were done at room temperature and have been repeated at 70 degrees to check the error drift versus
+temperature.
+
+A0.5 k
+B+
+B-
+
+TIDA-00176
+
+0.5 k
+
+³(QFRGHU HPXODWRU´
+
+Piccolo LaunchPad
+
+Signal
+Generator
+
+Host processor
+connector
+
+A+
+
+Encoder connector
+
+0.5 k
+
+Capture
+data
+
+Figure 7-24. Test Setup for Encoder Signal Emulation
+7.3.1.1 One Period (Incremental Phase) Test
+
+The first tests showed that the error injected by the dual output signal generator was much worse than the
+TIDA-00176 accuracy, spoiling completely the purpose of the tests. Noise and error sources for could be "briefly"
+summarized as:
+• Gain error (amplitude of A not equal to the amplitude of B)
+• Phase shift error (not exactly 90 degrees constant as expected)
+• Offset error (average of A or B signal is not equal to 0)
+• HF noise due to the quantization error of the function generator
+• Frequency error (frequency of A not equal to the B one, even if the signal are "coupled")
+CAUTION
+To reduce the quantization error and noise introduced by the function generator a 1-K to 1-µF LP
+filter is inserted between the signal generator and the
+TIDA-00176 inputs (the 1-K resistor is actually a series of two 500-Ω resistors to keep the network
+balanced) on the input.
+To eliminate gain, offset, phase shift and frequency error between the two channels the following setup was
+applied: Only one output signal, filtered as described above was applied to both inputs A and B at the encoder
+connector J8 of the TIDA-00176, hence feeding with the same signal. This will eliminate the limitation of the
+function generator. Furthermore, any mismatch amongst the two channels of the ADS8354 (and their respective
+signal conditioning paths) can be better evaluated.
+Indeed, the data acquired from the ADS8354 should show (in ideal world) two streams of raw identical data,
+while any mismatch at this level comes from the mismatch of the two channels, and not from the input itself.
+
+62
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Test Results
+
+This can be also used to calibrate the system, since offset and gain error corrections could be performed to
+completely balance the A and B channels.
+The data has been acquired at a 32-kHz sample rate using the F28069M LaunchPad connected to the
+TIDA-00176, as outlined in Section 6.
+After the ADS8354 channel A and B data has been acquired by the F28069M, the 16-bit raw data has been
+dumped into an Excel file. Then the raw data for channel B has been exactly phase shifted by
+90 degrees. After that the phase has been calculated using the inverse tangent of the raw data A and 90-degree
+phase shifted raw data B.
+This test has been repeated for the 1.0-VPP amplitude and frequencies of 10 Hz up to 500 Hz. The result is
+shown in the following figures.
+
+Phase Error Over One Period (°)
+
+0.06
+0.04
+0.02
+0
+-0.02
+-0.04
+-0.06
+0
+
+45
+
+90
+
+135
+180
+225
+One Period (°)
+
+270
+
+315
+
+360
+D018
+
+Figure 7-25. Phase Error over One Signal Period when 1.0-VPP 10-Hz Input is Applied
+Within one incremental line (one signal period = 360 degrees), the phase error remains well within ±0.02
+degrees. This corresponds to an error ±0.02/360 = 0.0055%. With respect to 16-bit resolution, this equals
+around ±3 LSB only.
+The noise distribution is even within ±0.01 (±1.5 LSB). The phase error with the double period is due to a
+non-ideal 90-degree phase shift between the two signals A and B, as outlined in Section 1.
+Note that an error of ±0.02 degrees over one signal period will correspond to a total error of ±10 micro-degrees
+(0.036 arc seconds) for an encoder with 2000 line counts.
+The same tests have been performed in the thermal chamber at nominal 70°C to evaluate the system
+performance drift and, in particular, the absolute error on the angular position.
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+63
+
+Test Results
+
+www.ti.com
+
+Again the double frequency modulation comes from the non-perfect matching (90-degree phase shift, and so on)
+of the two-input signal.
+
+Phase Error Over One Period (°)
+
+0.06
+0.04
+0.02
+0
+-0.02
+-0.04
+-0.06
+0
+
+45
+
+90
+
+135
+180
+225
+One Period (°)
+
+270
+
+315
+
+360
+D019
+
+Figure 7-26. Phase Error at 70°C Over One Signal Period When 1.0-VPP 10-Hz Input is Applied
+The same test was applied with a 0.6-VPP input in which the higher noise / lower SNR conditions are visible:
+0.06
+
+Phase Error Over One Period (°)
+
+Phase Error Over One Period (°)
+
+0.06
+0.04
+0.02
+0
+-0.02
+-0.04
+-0.06
+
+0.04
+0.02
+0
+-0.02
+-0.04
+-0.06
+
+0
+
+45
+
+90
+
+135
+180
+225
+One Period (°)
+
+270
+
+315
+
+360
+
+0
+
+45
+
+D020
+
+90
+
+135
+180
+225
+One Period (°)
+
+270
+
+315
+
+360
+D021
+
+Figure 7-27. Phase Error at 23°C Ambient Over One Figure 7-28. Phase Error at 70°C Ambient Over One
+Signal Period When 0.6-VPP 10-Hz Input is Applied Signal Period (One Revolution/2000) When 0.6-VPP
+10-Hz Input is Applied
+The ultra-low drift versus temperature is aligned to the expectation, also because of the characteristics of the
+selected op-amps and matched resistors used for the analog signal conditioning.
+7.3.1.2 One Mechanical Revolution Test at Maximum Speed
+
+For this test, the high-resolution interpolated angle over one mechanical revolution was calculated within
+TIDA-00176 connected to the Piccolo F28069M LaunchPad. The sample rate was set to 32 kHz at
+80-MHz CPU clock.
+The aim of the test is to verify the interpolation algorithm works at maximum input signal frequency of
+500 kHz, without missing any incremental count or mismatching the interpolated phase (arc tangent) and the
+corresponding line count (QEP) for example, due to mismatch of latching the analog samples and the QEP
+counter. This would translate into a larger error then the quantization noise measured in Section 7.3.1.1.
+For that purpose, a 360-degree spin of the encoder has been emulated using the dual signal generator. The
+test is performed with the dual output signal generator in the following way: The two output signals are coupled
+in amplitude and frequency, with a 90-degrees phase shift. The two signals are then applied as input at the
+TIDA-00176 encoder connector J9 A+/A– and B+/B– pins.
+The total interpolated angle was stored in the F28069M RAM and read through CCS memory dump.
+
+64
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Test Results
+
+The calculated high-resolution angle is compared with an ideal phase assuming an encoder with 2000 line
+counts. Therefore, 2000 signal periods at 500K kHz equal one emulated revolution. The total angular phase
+ramps at a rate of 360 degrees × 500 kHz/2000 = 90,000deg/s. Table 7-6 provides the timings for
+1 µs and for 100 ns, which equals one F28069M CPU clock at 80 MHz.
+Table 7-6. Angular Speed for Sin/Cos Encoder With Line Count 2000 Running at 15000 rpm
+IDEAL ANGULAR SPEED
+
+ANGLE CHANGE IN 1 µs
+
+ANGLE CHANGE IN 12.5 (CPU CLOCK)
+
+90,000 deg/s
+
+0.09
+
+0.0011
+
+A jitter on the signal generator as well as on the processor clock or even a CPU clock jitter of the host
+processor sampling the analog signal through SPI /CS cannot be avoided. Assuming an ideal ramp (due to a
+lack of reference) the measured angle will have a corresponding phase lag or lead, which translates into a
+velocity-dependent angle error.
+Figure 7-29 shows the interpolated angle error assuming an ideal ramp (500 kHz, 2000 signal periods per
+revolution) measured at 32 khz, which yields 128 consecutive samples per revolution.
+0.002
+0.0015
+
+Angle Error (°)
+
+0.001
+0.0005
+0
+-0.0005
+-0.001
+-0.0015
+-0.002
+0
+
+60
+
+120
+
+180
+Angle (°)
+
+240
+
+300
+
+360
+D022
+
+Figure 7-29. Error of Interpolated Angle Over One Revolution With Encoder Emulation (1 VPP, 500-kHz
+Input @ 32-kHz Sampling)
+As previously mentioned, the aim was not to test for accuracy, but to verify that no increment was lost. With a
+2000-line count emulation, one incremental line count would correspond 360/2000 = 0.18 degrees. The angle
+error (difference) to an ideal straight line remains within ±0.001 degree; therefore, interpolation still works well at
+500 kHz and no increment is lost.
+As can be seen in figure the error is within ±0.0015 degrees. This is due to the CPU clock jitter as well as other
+jitter like from the signal generator source with the CPU clock jitter determining the minimum accuracy.
+The reason for this distribution is due to jitter with the F28069 software to trigger the SPI transfer /CS of one or
+two CPU clock cycles. Falling edge of /CS latches the analog input. Just a jitter of 12.5 ns translates into a phase
+difference of around 12.5 ns/2000 ns × 360/2000 degrees ~ 0.0011 degrees. Therefore, the angle difference is
+actually a speed depended angle error (velocity) lag.
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+65
+
+Test Results
+
+www.ti.com
+
+7.4 Sin/Cos Encoder System Tests
+Systems tests are done with Sin/Cos encoders ROD480-2000 and ROD480-1024 with a cable length of
+1 m and 71 m, respectively.
+7.4.1 Zero Index Marker R
+The first test is to verify the synchronization or skew between the digital output signals A, B, and R available at
+the TIDA-00176 host processor interface connector J6, pin 12 (ATTL), pin 14 (BTTL), and pin 16 (RTTL). This test
+is to verify the proper configuration of the TIDA-00176 comparator subsystem.
+
+Figure 7-30. Measured TTL Signals A, B, and R at TIDA-00176 Comparators Output J6-12, 14, and 18
+The transitions on the comparator output signal R occur only when both A and B are low, as expected. This
+result means the sequence between A, B, and R signals depends on the rotation direction of the Sin/Cos
+encoder shaft. In Figure 7-30, the encoder is turned clockwise as the rising edge of B occurs after the rising
+edge of A.
+A closer look to the skew between A, B, and R has been done at a higher speed of around 400 rpm and for the
+rising and falling edge of R.. The rising and falling edge of R still occurs when both signals A and B are low.
+Note that the rotation direction of Figure 7-31 and Figure 7-32 is counter clockwise (CCW).
+
+Figure 7-31. Falling Index Signal R versus A and B
+in CCW Direction
+
+66
+
+Figure 7-32. Rising Index Signal R versus A and B
+in CCW Direction
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Test Results
+
+7.4.2 Functional System Tests
+The following static angle tests have been done with a ROD480-1024 Sin/Cos Encoder at 1-m and 71-m cable
+length. Total accuracy measurements with a precision better than 0.003 degrees (10 arc seconds) were not
+possible due to a lack of a mechanical precise enough encoder test bench. A picture of the test setup is shown
+in Figure 7-33.
+
+Figure 7-33. TIDA-00176 Test Setup with 70-m Cable (20 m + 50 m) and ROD4800-1024 Sin/Cos Encoder
+Figure 7-34 and Figure 7-35 show the measured angle with the ROD480-1024 (1024 line count) over time for a
+static angle at the 1-m and 70-m cable lengths accordingly. The shaft was not fixed.
+Note that the absolute angle for the 1-m and 71-m measurement slightly changed due mechanical vibrations
+when unscrewing the 1-m cable from the encoder and mounting the 70-m cable instead.
+28.6577
+
+28.6536
+
+Measured Angle (°)
+
+Measured Angle (°)
+
+28.6537
+
+28.6535
+
+28.6576
+
+28.6575
+
+28.6534
+
+28.6533
+
+28.6574
+0
+
+0.5
+
+1
+Time (s)
+
+1.5
+
+2
+
+0
+
+D023
+
+Figure 7-34. System Test, Measured Angle
+Distribution With ROD480-1024 at 1-m Cable
+Length
+
+0.5
+
+1
+Time (s)
+
+1.5
+
+2
+D023
+
+Figure 7-35. System Test, Measured Angle
+Distribution With ROD480-1024 at 71-m Cable
+Length
+
+The measured angle with the ROD480-1024 has a noise distribution of ±0.0001 degree (0.36 arc seconds).
+There is no significant difference between the 1-m and 70-m measurements because the attenuation of the
+cable was around –1.5 dB at 0 Hz.
+To verify the basic accuracy and repeatability of the TIDA-00176 design with a Sin/Cos encoder, the
+ROD480-1024 Sin/Cos encoder is mechanically coupled with an EnDat 2.2 encoder ROQ437. The
+ROD480-1024 is connected through a 70-m cable. A picture of the test setup is shown in Figure 7-37.
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+67
+
+Test Results
+
+www.ti.com
+
+Figure 7-36 shows the angle difference between the TIDA-00176 connected to a ROD480-1024 Sin/Cos
+encoder and a ROQ437 EnDat 2.2 absolute encoder, where the absolute angle is read through a Sitara AM437x
+EnDat 2.2 Master. The absolute angle exhibits a cosine-shape error, which is due to a non-ideal, non-centric
+coupling of the two shafts with a small run-out.
+The encoder was turned multiple times and the angle was captured accordingly to check repeatability too.
+As expected, however, the mechanical setup was not accurate and precise enough to draw conclusions on the
+overall absolute system accuracy. Therefore, the tests conducted in Section 7.3 based on Encoder emulation are
+more representative to the performance to be expected from the TIDA-00176 reference design.
+
+Angle Difference vs ROQ437 (°)
+
+0.003
+0.002
+0.001
+0
+-0.001
+-0.002
+-0.003
+-0.004
+0
+
+30
+
+60
+
+90 120 150 180 210 240 270 300 330 360
+Mechanical Angle (°)
+D025
+
+Figure 7-36. Basic System Accuracy Test With Sin/Cos Encoder at 70-m Cable Length
+
+68
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Test Results
+
+7.5 EMC Test Result
+The TIDA-00176 TI design has been tested for tested for IEC61000-4-2, 4-4, and 4-5 (ESD, EFT, and Surge)
+with test levels and performance criterion specified in the standard IEC 61800-3 "EMC immunity requirements
+and specific test methods applicable in adjustable speed, electrical-power drive systems".
+The design is compliant to these standards and exceeds the voltage requirements according to
+IEC61800-3 EMC immunity requirements. A summary is shown in the below tables and more details in the
+following chapters.
+The performance criterion A is often customer specific and the expected accuracy is depending system
+requirements. Refer to Section 7.5.1 for details on test specification details.
+Table 7-7. IEC618000-3 EMC Immunity Requirements for Second Environment and Measured Voltage
+Levels and Class
+REQUIREMENTS
+
+TIDA-00176 MEASUREMENTS
+
+PORT
+
+PHENOMENON
+
+BASIC
+STANDARD
+
+LEVEL
+
+PERFORMANCE
+(ACCEPTANCE)
+CRITERION
+
+Enclosure ports
+
+ESD
+
+IEC61000-4-2
+
+±4-kV CD or 8kV AD, if CD not
+possible
+
+B
+
+±8-kV CD
+
+B
+
+PASS
+(EXCEED)
+
+Fast transient
+Burst (EFT)
+
+IEC61000-4-4
+
+±2-kV/5-kHz
+capacitive clamp
+
+B
+
+±4 kV
+
+B
+
+PASS
+(EXCEED)
+
+IEC61000-4-5
+
+±1 kV. Since
+shielded cable
+>20 m, direct
+coupling to shield
+(2 Ω/500 A)
+
+B
+
+±1 kV
+
+B
+
+PASS
+
+Ports for control
+lines and DC
+auxiliary supplies
+<60 V
+
+(1)
+
+Surge 1,2/50 µs,
+8/20 µs
+
+LEVEL
+
+PERFORMANCE
+(ACHIEVED)
+CRITERION(1)
+
+TEST
+
+Class A is considered when the difference between the measured angle and the initial mechanical reference position during the EMC
+event was always less than the incremental angle accuracy. The incremental line accuracy is 360/N degrees. For test a Sin/Cos
+encoder with 2000 line counts was used (HEIDENHAIN ROD480), where the incremental resolution equals
+0.18 degrees.
+
+The performance (acceptance) criterion is defined, as follows:
+Table 7-8. Performance Criterion
+PERFORMANCE
+(ACCEPTANCE)
+CRITERION
+
+DESCRIPTION
+
+A
+
+The module shall continue to operate as intended. No loss of function or performance even during the test.
+
+B
+
+Temporary degradation of performance is accepted. After the test, the module shall continue to operate as intended
+without manual intervention.
+
+C
+
+During the test, loss of functions accepted, but no destruction of hardware or software. After the test, the module
+shall continue to operate as intended automatically, after manual restart, or power off, or power on.
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+69
+
+Test Results
+
+www.ti.com
+
+7.5.1 Test Setup
+The TIDA-00176 TI design has been tested at the testing laboratory of CSA Group Bayern in Strasskirchen,
+Germany. A picture of the basic setup for the TIDA-00176 design is shown in Figure 7-37.
+
+Monitor data or log data to file
+
+EMC Test Signal
+Generator
+
+TMS320F28069M
+LaunchPad
+
+Angle Reference
+Measured Angle [16kHz]
+Angle Error Counters 1-5 for EMC Test
+5ms Tick Counter
+
+Laptop
+
+Earth
+
+Test signal insertion:
+Galvanic or capacitive
+coupling, depending
+EMC test
+
+Device under Test
+(DuT)
+
+Single shield twisted
+pairs cable, 1m or 30m
+
+TIDA-00176
+SubD-15
+connector
+with Shield
+Earth (pending test)
+
+SinCos
+Rotary
+Encoder
+Earth
+
+Figure 7-37. Simplified System Block Diagram of TIDA-00176 With Piccolo F2069M LaunchPad
+To verify the interpolated angle signal integrity during and after the EMC test, the Sin/Cos encoder initial angle
+position (standstill) was used as a reference during the EMC tests and the encoder was not turned.
+The interpolated angle was measured every 16 kHz and the result was compared to the initial reference angle
+position. Due to the very high resolution and analog input signals, the angular error was divided into six ranges
+listed in Table 7-9. Every time an error occurred in a specific range, the corresponding error counter was
+increased by 1.
+Table 7-9. TIDA-00176 High-Resolution Angle Error Range Definitions
+ERROR COUNTER
+
+ANGULAR ERROR RANGE
+(DEGREE)
+
+Error range 1
+
+>1.0
+
+Error range 2
+
+0.18 ≤ Error < 1.0
+
+Error range 3
+
+0.1 ≤ Error < 0.18
+
+Error range 4
+
+0.01 ≤ Error < 0.1
+
+ANGULAR ERROR RANGE
+(ARC SEC)
+
+COMMENT
+
+Still no incremental line count
+errors
+
+Error range 5
+
+0.001 ≤ Error < 0.01
+
+3.6 ≤ Error < 36
+
+Error range 6
+
+0.0001 ≤ Error < 0.001
+
+< 3.6
+
+Not considered
+
+The error ranges where selected according to the line count of the encoder. For this test a Sin/Cos encoder with
+2000 line counts was used (HEIDENHAIN ROD480-2000), where the line count resolution equals 0.18 degrees.
+Note that the error range 6 counter is counting differences below 1/1000 of a degree (3.6 arc seconds), which
+was within the standard angle measurement distribution of the TI design and thus not considered during the
+EMC test.
+
+70
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Test Results
+
+The firmware used was the TIDA-00176_SinCosEncoder_Example_Firmware_rev1_0.out, as provided with this
+design. The firmware runs on the TMS320F28069M Piccolo MCU.
+A specific EMC test interface mode was entered by typing "9999" as line count to initialize the Sin/Cos encoder
+and reference angle position and start the data dump at 200 Hz. The EMC test menu initializes with a fixed line
+count of 2000, and will not leave this test mode again. This was done to ensure fixed program flow, as the USB
+port on the laptop (not part of the design) turned out to be quite sensitive to EMC.
+A picture of the specific test setup for ESD, EFT, and Surge is shown in the corresponding following chapters.
+7.5.2 IEC-61000-4-2 ESD Test Results
+Figure 7-38 shows the ESD test setup. The ESD strike was applied to the SubD-15 female connector’s shield.
+The shield was also connected to Earth and the Sin/Cos encoder was connected through a 1-m shielded twisted
+pairs cable.
+
+Figure 7-38. IEC61000-4-2 ESD Test Setup for TIDA-00176
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+71
+
+Test Results
+
+www.ti.com
+
+Table 7-10 shows the complete ESD test results for contact and air discharge at voltage levels, which also
+exceed the requirements per IEC618000-3. This is marked accordingly.
+Table 7-10. IEC-61000-4-2 ESD Test Results for TIDA-00176
+
+(1)
+
+PHENOMENON
+
+BASIC STANDARD
+
+LEVEL
+
+TIDA-00176
+CONNECTOR
+
+ACHIEVED
+PERFORMANCE
+CRITERION(1)
+
+ESD
+
+IEC61000-4-2
+
+±4-kV contact
+discharge
+
+SubD-15
+
+B
+
+ESD
+
+IEC61000-4-2
+
+±6-kV contact
+discharge
+
+SubD-15
+
+B
+
+Not required per
+IEC61800-3
+
+ESD
+
+IEC61000-4-2
+
+±8-kV contact
+discharge
+
+SubD-15
+
+B
+
+Not required per
+IEC61800-3
+
+ESD
+
+IEC61000-4-2
+
+±8-kV air discharge
+
+SubD-15
+
+B
+
+ESD
+
+IEC61000-4-2
+
+±15-kV air discharge
+
+SubD-15
+
+B
+
+COMMENT
+
+Not required per
+IEC61800-3
+
+At least Class B was achieved because any angle measured during the ESD test did not deviate more than 0.1 degrees from the
+reference angle. This was smaller than the incremental line count resolution. The angle errors within each range are listed in Table 7-9.
+For class A, see Table 7-7, note 1.
+
+Table 7-11. IEC-61000-4-2 ESD Angle Error Distribution During Entire Test
+ERROR COUNTER
+
+ANGULAR ERROR
+RANGE (DEGREE)
+
+OCCURRENCE
+@ 4-kV CD
+
+OCCURRENCE
+@ 6-kV CD
+
+OCCURRENCE
+@ 8-kV CD
+
+Error Range 1
+
+>1.0
+
+0
+
+0
+
+0
+
+Error Range 2
+
+0.18 ≤ Error < 1.0
+
+0
+
+0
+
+0
+
+Error Range 3
+
+0.1 ≤ Error < 0.18
+
+0
+
+0
+
+0
+
+Error Range 4
+
+0.01 ≤ Error < 0.1
+
+1
+
+2
+
+3
+
+Error Range 5
+
+0.001 ≤ Error < 0.01
+
+0
+
+1
+
+31878
+
+The angle before and after the ESD tests did not differ more than 0.0005 degrees, which was within normal
+distribution at a fixed angle. For example, the angle was 80.0272 degree prior to the 6-kV CD ESD test and
+80.0274 degrees after the ESD test, which was within standard distribution at fixed angle.
+
+72
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Test Results
+
+7.5.3 IEC-61000-4-4 EFT Test Results
+A picture of the EFT test setup for TIDA-00176 is shown in Figure 7-39. During the EFT test, the SubD-15
+female connector was connected to a 30-m (10 m + 20 m) twisted pair shielded cable with a ROD480 Sin/Cos
+encoder at the far end.
+
+Figure 7-39. IEC61000-4-4 EFT Test Setup for TIDA-00176 (Right Side on Top, Left Side on Bottom)
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+73
+
+Test Results
+
+www.ti.com
+
+Table 7-12. IEC-61000-4-4 EFT Test Results for TIDA-00176
+
+(1)
+
+PHENOMENON
+
+BASIC STANDARD
+
+LEVEL
+
+TIDA-00176
+CONNECTOR
+
+ACHIEVED
+PERFORMANCE
+CRITERION(1)
+
+EFT
+
+IEC61000-4-4
+
+±2 kV/5 kHz,
+capacitive clamp
+
+SubD-15
+
+B
+
+EFT
+
+IEC61000-4-4
+
+±2 kV/5 kHz,
+capacitive clamp
+
+SubD-15
+
+B
+
+EFT
+
+IEC61000-4-4
+
+±4 kV/5 kHz,
+capacitive clamp
+
+SubD-15
+
+B
+
+Not required per
+IEC61800-3
+
+EFT
+
+IEC61000-4-4
+
+±4 kV/5 kHz,
+capacitive clamp
+
+SubD-15
+
+B
+
+Not required per
+IEC61800-3
+
+COMMENT
+
+At least Class B was achieved because any angle measured during the ESD test did not deviate more than 0.045 degrees from the
+reference angle. For class A, see Table 7-7, note 1).
+
+Table 7-13. IEC-61000-4-4 EFT Angle Error Distribution During Entire Test
+ERROR COUNTER
+
+ANGULAR ERROR RANGE
+(DEGREE)
+
+Error Range 1
+
+>1.0
+
+0
+
+0
+
+Error Range 2
+
+0.18 ≤ Error < 1.0
+
+0
+
+0
+
+Error Range 3
+
+0.1 ≤ Error < 0.18
+
+0
+
+0
+
+OCCURRENCE @ 2-kV EFT
+
+OCCURRENCE @ 4-kV EFT
+
+Error Range 4
+
+0.01 ≤ Error < 0.1
+
+254
+
+1302
+
+Error Range 5
+
+0.001 ≤ Error < 0.01
+
+1658
+
+3413
+
+46.008
+46.0075
+
+Measured Angle (°)
+
+46.007
+46.0065
+46.006
+46.0055
+46.005
+46.0045
+46.004
+46.0035
+0
+
+20
+
+40
+
+60
+80
+Time (s)
+
+100
+
+120
+
+140
+D026
+
+Figure 7-40. Measured Angle During ±2-kV EFT Test Period at 10-Hz Update Rate
+The angle remains constant prior, during, and after the EFT test at 2 kV. The maximum error on the plot is
+0.003 degrees. As the update rate is only 10 Hz (due to 115000-baud UART), the angle is higher than the
+0.001-degree error that likely occurred in between and were not printed. Note that the error counters are updated
+at 16 kHz.
+
+74
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Test Results
+
+7.5.4 IEC-61000-4-5 Surge Test Results
+Figure 7-41 shows a picture of the surge test setup for TIDA-00176. During the EFT test, the SubD-15 female
+connector was connected to a 30-m (10 m + 20 m) twisted pair shielded cable with a ROD480 Sin/Cos encoder
+at the far end.
+
+Surge injection at TIDA-00176
+SubD-15 Connector/Shield
+
+Surge return path at 30-m far end
+of cable (shield)
+Figure 7-41. IEC61000-4-5 Surge Test Setup for TIDA-00176
+Table 7-14. IEC-61000-4-5 Surge Test Results for TIDA-00176
+
+(1)
+
+PHENOMENON
+
+BASIC STANDARD
+
+LEVEL
+
+TIDA-00176
+CONNECTOR
+
+ACHIEVED
+PERFORMANCE
+CRITERION(1)
+
+Surge
+
+IEC61000-4-4
+
+±0.5 kV/2 Ω
+(10-m + 20-m
+shielded cable)
+
+SubD-15
+
+B
+
+Surge
+
+IEC61000-4-4
+
+±1 kV/2 Ω
+(10-m + 20-m
+shielded cable)
+
+SubD-15
+
+B
+
+COMMENT
+
+At least Class B was achieved because any angle measured during the ESD test did not deviate more than 0.045 degrees from the
+reference angle. For class A, see Table 7-7, note 1).
+
+Table 7-15. IEC-61000-4-5 Surge Angle Error Distribution During Entire Test
+ERROR COUNTER
+
+ANGULAR ERROR RANGE
+[DEGREE]
+
+Error Range 1
+
+>1.0
+
+0
+
+0
+
+Error Range 2
+
+0.18 ≤ Error < 1.0
+
+0
+
+0
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+OCCURRENCE @ 0.5 kV
+
+OCCURRENCE @ 1 kV
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+75
+
+Test Results
+
+www.ti.com
+
+Table 7-15. IEC-61000-4-5 Surge Angle Error Distribution During Entire Test (continued)
+ERROR COUNTER
+
+ANGULAR ERROR RANGE
+[DEGREE]
+
+Error Range 3
+
+0.1 ≤ Error < 0.18
+
+OCCURRENCE @ 0.5 kV
+
+OCCURRENCE @ 1 kV
+1
+
+5
+
+Error Range 4
+
+0.01 ≤ Error < 0.1
+
+1
+
+4
+
+Error Range 5
+
+0.001 ≤ Error < 0.01
+
+204
+
+5669
+
+7.0729
+7.0728
+7.0727
+7.0726
+Angle (°)
+
+7.0725
+7.0724
+7.0723
+7.0722
+7.0721
+7.072
+7.0719
+7.0718
+0
+
+60
+
+120 180 240 300 360 420 480 540 600 660
+Time (s)
+D027
+
+Figure 7-42. Measured Angle During ±1-kV Surge Test Period at 10-Hz Update Rate
+The angle remains constant prior and after the surge test at 1-kV. The maximum error on the plot was just
+0.0009 degrees. As the update rate is only 10 Hz, the angle with the higher error as listed in Figure 7-8 is not
+printed through the UART.
+The mechanical M23 connectors between the three cables did not allow for a mechanical robust continuous
+connection of the shield due to a lack of screws. A proper electrical connection is made with copper and verified
+by the operator from CSA Group through a measured surge current. Once tests at
+±2 kV have been conducted with a cable with appropriate mechanical connectors, the design guide will be
+updated accordingly.
+
+76
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Design Files
+
+8 Design Files
+8.1 Schematics
+To download the schematics, see the design files at TIDA-00176.
+NOTE
+
+V5_dc
+
+C23
+
+This was done to optimize layout for best performance minimizing vias and signal crossings.
+
+GND
+D5
+ZHCS350TA
+
+B
+B_M
+
+V5_dc
+V5_dc
+
+B_P1
+
+R19
+
+U5
+R18
+MPMT10015001AT1 GND
+
+10.0
+R20
+120
+R23
+
+0.1µF
+GND
+
+B_P1
+
+U6
+THS4531AIDGK
+R21
+
+7
+
+3
+
+C28
+220pF
+
+0.1µF
+C24
+
+C25
+
+D6
+ZHCS350TA
+
+8
+B_M1
+
+10.0
+
+REFIO_A
+
+C31
+220pF
+
+B_M1
+
+D7
+ZHCS350TA
+
+R24
+
+R27
+MPMT10015001AT1
+
+D8
+ZHCS350TA
+V5_dc
+
+GND
+
+2
+
+10
+
+C32
+0.1µF
+
+1
+
+5
+
+V+
+VOCM
+V-
+
+10µF V3_3_dc
+C27
+10µF
+
+10.0
+
+4
+
+R25
+
+C29 DNPC30
+2200pF 1000pF
+
+REFIO_A
+
+6
+
+GND
+C26
+220pF
+B_P
+
+The differential inputs A+,A- are swapped and connected to ADS8354 AINM_B and AINP_B
+The differential inputs B+,B- are swapped and connected to ADS8354 AINM_A and AINP_A
+Since both signals are sampled simultaneously there's no impact.
+Adjust in software by invertring and swapping the results.
+
+10.0
+
+GND
+
+REFIO_B
+
+GND
+
+SCLK
+
+GND
+
+SDI
+
+16
+
+AVDD
+
+9
+
+DVDD
+
+1
+2
+
+AINP_A
+AINM_A
+
+3
+
+REFIO_A
+
+8
+7
+
+AINP_B
+AINM_B
+
+CS
+
+11
+
+SDO_A
+
+13
+
+14
+
+GND
+
+15
+
+SCLK
+
+REFGND_A
+
+4
+
+SDI
+
+REFGND_B
+
+5
+
+REFIO_B
+
+12
+10
+
+1
+3
+5
+7
+9
+11
+13
+15
+17
+19
+
+R22
+SDO_A
+
+22
+
+SDO_B
+
+6
+
+J6
+
+CSn
+
+R26
+SDO_B
+
+22
+
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+
+SDI
+CSn
+SCLK
+SDO_A
+SDO_B
+A
+B
+R
+SIN
+COS
+
+PEC10DAAN
+GND
+
+GND
+
+ADS8354IPWR
+GND
+V5_dc
+GND
+D9
+ZHCS350TA
+
+A_M
+
+R31
+A_P1
+
+10.0
+R32
+120
+R34
+
+U7
+THS4531AIDGK
+R33
+
+7
+
+A_M1
+
+10.0
+
+REFIO_B
+A_P1
+
+D11
+ZHCS350TA
+D12
+ZHCS350TA
+V5_dc
+
+GND
+
+R35
+
+2
+
+10
+
+R37
+MPMT10015001AT1
+
+C42
+0.1µF
+
+R28
+0.22
+
+R29
+0.22
+
+C36
+10µF
+
+C37
+10µF
+
+GND
+
+J7
+GND
+
+0.1µF
+
+8
+
+C41
+220pF
+
+REFIO_B
+
+REFIO
+PWR_EN
+
+1
+
+V+
+VOCM
+V-
+
+5
+
+17
+
+C38
+220pF
+
+R30
+MPMT10015001AT1 GND
+
+3
+
+A
+
+A_M1
+
+REFIO_A
+
+V5_dc
+
+J8
+D-Sub-15_2rows_Female
+
+10.0
+
+4
+
+R36
+
+C39 DNPC40
+2200pF 1000pF
+
+6
+
+A_P
+
+D10
+ZHCS350TA
+
+0.1µF
+C34
+
+2
+4
+6
+
+V3_3_dc
+
+TP4
+
+10.0
+
+GND
+A_P
+ENC_GND
+
+GND
+
+GND
+
+GND
+C35
+220pF
+
+1
+3
+5
+
+C33
+
+GND
+GND
+
+B_P
+ENC_Vcc
+R_M
+
+9
+10
+11
+12
+13
+14
+15
+
+A_M
+SENSOR_GND
+B_M
+SENSOR_UP
+R_P
+
+16
+
+GND
+
+1
+2
+3
+4
+5
+7
+6
+8
+
+V5_dc
+GND
+D13
+ZHCS350TA
+GND
+C43
+220pF
+R_M
+
+R
+
+C44
+220pF
+
+R_P
+
+D14
+ZHCS350TA
+R38
+R_M1
+
+10.0
+R39
+120
+R40
+
+A_P
+A_M
+ENC_GND
+B_M
+B_P
+ENC_Vcc
+R_M
+R_P
+
+R_P1
+
+10.0
+C45
+220pF
+
+D15
+ZHCS350TA
+
+1
+2
+3
+4
+5
+6
+7
+8
+
+J9
+D16
+ZHCS350TA
+V5_dc
+
+GND
+GND
+
+Figure 8-1. Schematic of High-Resolution Analog Path with 16-bit ADC
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+77
+
+Design Files
+
+www.ti.com
+C46
+R41
+
+V5_dc
+4.7pF
+
+8
+
+U8A
+GND OPA2365AIDR
+
+R44
+D17
+ZHCS350TA
+
+C50
+0.1µF
+
+DNPC52
+47pF
+
+GND
+
+GND
+
+R47
+C53
+100pF
+
+4.75k
+
+GND U10A
+OPA2365AIDR
+
+2
+
+1
+3
+
+R48
+
+R49
+
+10.0
+
+20.0
+
+R52
+
+R53
+
+332
+
+4.75k
+
+C55
+100pF
+
+GND
+
+V5_dc
+4
+
+REFIO
+
+8.45k
+C57
+0.1µF
+
+C58
+
+GND
+
+3
+
+4.7pF
+
+GND
+
+C62
+0.1µF
+8
+
+8.45k
+
+R61
+GND
+
+332
+
+C66
+100pF
+
+4.75k
+
+GND
+
+7
+5
+
+REFIO
+
+5
+
+R63
+
+R64
+
+10.0
+
+20.0
+
+U9B
+TLV3202AID
+
+6
+
+B
+
+V+
+V-
+
+7
+
+B
+
+GND
+
+R65
+26.7k
+C67
+2200pF
+
+GND
+
+R68
+C68
+100pF
+
+GND
+
+R66
+
+GND
+V5_dc
+
+R70
+
+4.75k
+
+REFIO
+
+8.45k
+
+R71
+
+C70
+0.1µF
+
+C71
+
+GND
+
+0
+C60
+0.1µF
+
+549k
+
+R67
+332
+
+R56
+
+8
+
+8
+
+1
+3
+
+DNPC69
+47pF
+
+U10B
+OPA2365AIDR
+
+4
+
+220
+
+C64
+0.1µF
+
+GND
+U12A
+OPA2365AIDR
+
+2
+
+R69
+B_P1
+
+R59
+
+GND
+
+10.0
+
+6
+
+V5_dc
+
+TP5
+
+GND
+
+D18
+ZHCS350TA
+
+4
+
+GND
+
+R62
+
+GND
+
+2
+
+V_dc1
+
+8
+
+DNPC65
+47pF
+
+5
+1
+
+REFIO
+
+V3_3_dc
+
+V5_dc
+
+5
+
+EN
+
+VREF
+VBIAS
+
+C63
+2200pF
+
+R58
+
+4
+
+220
+
+VIN
+
+REF2033AIDDCR
+
+COS
+
+100
+
+4.7pF
+
+U12B
+GND OPA2365AIDR
+7
+
+R60
+B_M1
+
+C59
+0.1µF
+
+R57
+GND
+
+C61
+V5_dc
+
+6
+
+U11
+
+GND
+
+R55
+
+4
+
+GND
+
+GND
+
+R51
+549k
+
+4
+
+DNPC56
+47pF
+
+A
+
+26.7k
+C54
+2200pF
+
+4
+8
+
+7
+5
+
+U9A
+TLV3202AID
+
+1
+
+V+
+V-
+
+GND
+
+R50
+
+GND
+U8B
+OPA2365AIDR
+
+A
+
+8
+
+332
+
+6
+
+220
+
+2
+3
+
+V5_dc
+
+R54
+
+C51
+0.1µF
+
+4
+
+R46
+
+A_P1
+
+GND
+
+10.0
+
+GND
+
+8
+
+220
+
+8.45k
+V5_dc
+
+1
+3
+
+4
+
+A_M1
+
+V3_3_dc
+R42
+1.0
+C49
+0.1µF
+
+C48
+2200pF REFIO
+
+V3_3_dc
+
+1.00k
+R72
+
+4.7pF
+
+GND
+
+1.00k
+
+GND
+
+C72
+
+U13B
+OPA2365AIDR
+
+6
+7
+5
+
+4
+
+2
+
+R45
+
+V_dc1
+
+SIN
+
+100
+
+R43
+
+8
+
+C47
+0.1µF
+
+V5_dc
+V_dc2
+
+8
+
+4.75k
+
+332
+
+U13A
+GND OPA2365AIDR
+
+2
+
+1
+3
+
+C78
+100pF
+
+7
+5
+
+R85
+
+4
+
+332
+
+DNPC81
+47pF
+
+GND
+
+GND
+
+8
+V+
+V-
+
+1
+
+U15A
+TLV3202AID
+
+R80
+
+R81
+
+R
+
+10.0
+
+TP6 20.0
+
+26.7k
+C79
+2200pF
+
+GND
+R82
+R83
+
+1.00k
+
+GND
+
+R84
+1.00k
+
+549k
+R86
+
+C80
+100pF
+
+A
+
+V_dc2
+R79
+
+4
+
+8
+6
+
+GND
+
+2
+3
+
+GND
+U14B
+OPA2365AIDR
+
+C76
+0.1µF
+
+8
+
+GND
+
+R78
+
+V5_dc
+
+220
+
+D19
+ZHCS350TA
+
+4
+
+8
+
+GND
+
+R87
+
+10.0
+
+C75
+0.1µF
+
+DNPC77
+47pF
+
+R75
+
+V5_dc
+
+R77
+
+R_P1
+
+V3_3_dc
+
+8.45k
+
+1
+3
+
+GND
+
+1.0
+C74
+0.1µF
+
+REFIO
+
+4
+
+220
+
+R74
+
+U14A
+GND OPA2365AIDR
+
+2
+
+R76
+R_M1
+
+V3_3_dc
+R73
+
+4.7pF
+
+4.75k
+
+GND
+
+GND
+
+5
+
+B
+
+V+
+V-
+
+7
+
+GND
+
+R88
+
+GND
+
+REFIO
+
+8.45k
+C83
+
+U15B
+TLV3202AID
+
+6
+
+4
+
+C73
+0.1µF
+
+C82
+0.1µF
+
+4.7pF
+GND
+
+Figure 8-2. Schematic of Differential to Single-Ended Analog Path and Comparators
+
+78
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+Copyright © 2025 Texas Instruments Incorporated
+
+www.ti.com
+
+Design Files
+
+J1
+2
+1
+
+R1
+
+OSTTC022162
+GND
+
+10
+
+LPS3010-102MLB
+
+MBRA160T3G
+
+1
+
+PH
+
+10
+
+C7
+0.1µF
+
+C9
+2.2µF
+
+C8
+0.1µF
+
+VSENSE
+
+7
+
+GND
+PWR_PAD
+
+9
+11
+
+R5
+63.4k
+
+C10
+2.2µF
+
+R4
+DNP
+10k
+
+4
+
+C12
+2200pF
+
+DNPC11
+4.7µF
+
+SS/TR
+
+5
+
+RT/CLK
+
+8
+
+COMP
+
+GND
+
+D2
+MBRA160T3G
+
+0.1µF
+
+R2
+1.0k
+C2
+10µF
+
+C3 DNPC4
+10µF
+10µF
+
+J3
+PEC02SAAN
+D3
+Green
+TP1
+
+GND
+
+R6
+TP2 51
+
+2
+1
+
+BOOT
+EN
+
+V6_dc
+
+744065101
+C1
+
+3
+
+C6
+0.01µF
+
+6
+
+R3
+681k
+
+RAPC722X
+C5
+1µF
+
+PWRGD
+
+VIN
+
+1
+
+2
+
+2
+
+1
+3
+2
+
+L1
+
+U1
+
+L2
+
+D1
+
+J2
+
+GND
+
+GND
+
+TP3
+
+R7
+64.9k
+
+TPS54040ADGQ
+R8
+237k
+R9
+46.4k
+C13
+16pF
+
+GND
+C14
+4700pF
+
+5.25V Out
+- Enable with adding a jumper at J7 pins 4-6
+- Disable with adding a jumper at J7 pins 4-3
+- Control w/ host through J7 pin 4
+
+GND
+J4
+
+V6_dc
+
+PWR_EN
+
+4
+
+IN
+
+OUT
+
+EN
+
+FB
+NC
+
+C17
+2.2µF
+
+1
+
+ENC_Vcc
+
+C15
+16pF
+
+R12
+1.0k
+C16
+10µF
+
+2
+5
+
+R13
+100k
+
+PEC03SAAN
+J5
+
+OSTTC022162
+
+2
+
+TPS79901DRVR
+
+GND
+
+GND
+
+R14
+U3
+1
+3
+
+IN
+
+OUT
+
+EN
+
+FB
+
+5
+
+0
+
+R15
+845k
+
+V5_dc
+
+GND
+
+C18
+10µF
+
+4
+
+GND
+
+R16
+160k
+
+2
+
+C19
+2.2µF
+
+GND
+
+1
+2
+
+D4
+Green
+
+7
+
+GND
+3
+
+R11
+340k
+
+1
+2
+3
+
+1
+
+U2
+6
+
+R10
+10.0k
+
+TPS71701DCKR
+GND
+U4
+6
+
+IN
+
+OUT
+
+1
+
+4
+
+EN
+
+NR
+
+2
+
+NC
+
+5
+
+C21
+2.2µF
+
+0
+
+V3_3_dc
+
+C20
+10µF
+C22
+0.01µF
+
+7
+
+3
+
+GND
+
+R17
+
+TPS79933DRVR
+GND
+
+Figure 8-3. Schematic of Power Management
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+79
+
+Design Files
+
+www.ti.com
+
+8.2 Bill of Materials
+To download the bill of materials (BOM), see the design files at TIDA-00176.
+
+8.3 PCB Layout Guidelines
+Device specific layout guidelines for each individual TI part used in this design can be found in the corresponding
+datasheet.
+The following pictures provide layout guidelines specific to the TIDA-00176 design.
+Because of the sensitivity of the analog signal conditioning parts, the design of a four-layers PCB with at least
+one complete ground plane is highly recommended; this will improve the noise immunity of the system.
+Particular attention is also necessary when routing the two sine/cosine signals (to avoid cross-talk problems/
+interferences); also the power management section (the switcher TPS54040A, in particular) should be properly
+routed and well separated from the sensitive part of the board to avoid the latter catching noise from the
+switcher.
+
+Ground plane to shield the
+reference/bias voltage trace
+
+Decoupling capacitor placed close to
+the device with good connection to
+the Vin+ and Vin- pins
+
+RC filter for decoupling, placed
+closed to THS4531A input
+
+No via used in all signal path. Direct
+connections, as short as possible.
+
+Matched resistors, placed close
+to THS4531A to minimize trace
+length
+
+Figure 8-4. THS4531A Layout
+
+80
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Design Files
+
+Decoupling capacitors placed
+close to the device with good
+connection to the AVDD,
+DVDD and GND pins
+
+Termination Resistors placed
+close to the device, as SDO_A
+and SDO_B are outouts
+
+Gnd cutout to separate the
+Reference ground from the
+board ground
+
+RC filter placed close to the
+device, as AINP_A, AINM_A,
+AINP_B and AINM_B are inputs
+
+Figure 8-5. ADS8354, 16-Bit ADC Layout
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+81
+
+Design Files
+
+www.ti.com
+
+Decoupling capacitor placed
+close to the device with good
+connection to the V+ and Vpins
+
+Differential pair routed close
+to each other
+
+Traces from OPA2365 input pins
+IN+ and IN- to resistor kept very
+short
+Figure 8-6. OPA2365 Input Buffer Layout Hint
+
+82
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Design Files
+
+Keep traces from +INx and INx as short as possible
+
+Place feedback caps
+close to op-amp
+
+Decoupling capacitor placed close
+to the device with good connection
+to the V+ and V- pins
+
+Figure 8-7. OPA2365 Differential to Single-Ended Amplifier Layout Hint
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+83
+
+Design Files
+
+Decoupling capacitor placed
+close to the device with good
+connection to the VCC and
+GND pins
+
+www.ti.com
+
+Keep signal trace from
+output to input via R51
+as short as possible.
+
+Decoupling R44, C51 close to noninverting input of TLV3202.
+
+Figure 8-8. TLV3202 Layout
+
+84
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Components placement to
+optimize the high dI/dT
+return path
+
+Design Files
+
+The inductor is a noisy
+component, a cutout of
+the ground plane
+minimize the coupling
+
+The RT/CLK pin is sensitive to noise. Therefore,
+the RT resistor should be located as close as
+possible to the IC and routed with minimal
+lengths of trace.
+
+Since the PH-pin connection is the switching
+node, the catch diode and output inductor
+should be located close to the PH pins. The
+area of the PCB conductor should be
+minimized to prevent excessive capacitive
+coupling.
+
+The GND pin should be tied directly to the power
+pad under the IC. The power pad should be
+connected to any internal PCB ground planes
+using multiple vias directly under the IC.
+
+Figure 8-9. TPS54040A Layout
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+85
+
+Design Files
+
+www.ti.com
+
+Solid GND plane to minimize
+inductance and ensure
+shortest current return path
+
+No GND plane on any layer
+below the Dsub-15 connector.
+
+Cutout to ensure a star connection of the
+different ground
+Figure 8-10. GND Layer
+
+86
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+Design Files
+
+3.3-V supply plane
+
+1.65-V reference trace placed
+like this to limit the impact of
+the cutout of the 5V plane
+
+5-V plane
+
+6-V intermediate rail plane
+Figure 8-11. Supply Layer
+8.3.1 PCB Layer Plots
+To download the layer plots, see the design files at TIDA-00176.
+
+8.4 Altium Project
+To download the Altium project files, see the design files at TIDA-00176.
+
+8.5 Gerber Files
+To download the Gerber files, see the design files at TIDA-00176.
+
+8.6 Software Files
+To download the software files, see the design files at TIDA-00176.
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+87
+
+References
+
+www.ti.com
+
+9 References
+Note
+Also refer to the technical documents of the Design Resources.
+1. Texas Instruments, Power Supply with Programmable Output Voltage and Protection for Position Encoder
+Interfaces, TIDA-00180 Design Guide (TIDU533)
+2. Texas Instruments, 18-Bit, 1MSPS Data Acquisition Block (DAQ) Optimized for Lowest Distortion and Noise,
+TI Precision Designs (SLAU515)
+3. Texas Instruments, TPS799 200-mA, Low-Quiescent Current, Ultralow Noise, High-PSRR Low-Dropout
+Linear Regulator, TPS799 Datasheet (SBVS056)
+4. Texas Instruments, TPS717xx Low-Noise, High-Bandwidth PSRR, Low-Dropout, 150-mA Linear Regulator,
+TPS717 Datasheet (SBVS068)
+5. Texas Instruments, AN-2162 Simple Success With Conducted EMI From DC-DC Converters, Application
+Report (SNVA489)
+6. Texas Instruments, TMS320F240 DSP-Solution for High-Resolution Position with Sin/Cos-Encoders,
+Application Report, (SPRA496)
+7. IEC 61800-3 ed2.0 (2004-08), Adjustable speed electrical power drive systems - Part 3: EMC requirements
+and specific test methods, [IEC 61800-3 ed2.0 (2004-08)].
+8. IEC 61800-3-am1 ed2.0 (2011-11), Amendment 1 - Adjustable speed electrical power drive systems - Part 3:
+EMC requirements and specific test methods, [IEC 61800-3-am1 ed2.0 (2011-11)].
+9. Interfaces of HEIDENHAIN Encoders, March 2015, Brochure #1078628-21, www.heidenhain.com
+10. Rotary Encoders, November 2014, Brochure #349529-2E, www.heidenhain.com
+
+88
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+www.ti.com
+
+About the Author
+
+10 About the Author
+VINCENZO PIZZOLANTE is a System Engineer in the Industrial Systems-Motor Drive team at Texas
+Instruments, responsible for developing reference designs for industrial drives.
+MARTIN STAEBLER is a System Engineer in the Industrial Systems-Motor Drive team at Texas Instruments,
+responsible for developing reference designs for industrial drives.
+KEVIN STAUDER is a System Engineer in the Industrial Systems-Motor Drive team at Texas Instruments,
+responsible for developing reference designs for industrial drives.
+
+Recognition
+The authors would like to give special recognition to the excellent contribution from FERDINAND von MOLO,
+who has conducted his Bachelor Thesis at Texas Instruments on an Interface to Sin/Cos Encoders with Piccolo
+MCU based on TIDA-00176.
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+89
+
+Revision History
+
+www.ti.com
+
+11 Revision History
+Changes from Revision A (July 2015) to Revision B (March 2025)
+Page
+• Updated the numbering format for tables, figures, and cross-references throughout the document................. 1
+
+Changes from Revision * (June 2015) to Revision A (July 2015)
+Page
+• Changed from preview page.............................................................................................................................. 1
+
+90
+
+Interface to Sin/Cos Encoders With High-Resolution Position Interpolation
+Copyright © 2025 Texas Instruments Incorporated
+
+TIDUA05B – JUNE 2015 – REVISED MARCH 2025
+Submit Document Feedback
+
+IMPORTANT NOTICE AND DISCLAIMER
+TI PROVIDES TECHNICAL AND RELIABILITY DATA (INCLUDING DATA SHEETS), DESIGN RESOURCES (INCLUDING REFERENCE
+DESIGNS), APPLICATION OR OTHER DESIGN ADVICE, WEB TOOLS, SAFETY INFORMATION, AND OTHER RESOURCES “AS IS”
+AND WITH ALL FAULTS, AND DISCLAIMS ALL WARRANTIES, EXPRESS AND IMPLIED, INCLUDING WITHOUT LIMITATION ANY
+IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT OF THIRD
+PARTY INTELLECTUAL PROPERTY RIGHTS.
+These resources are intended for skilled developers designing with TI products. You are solely responsible for (1) selecting the appropriate
+TI products for your application, (2) designing, validating and testing your application, and (3) ensuring your application meets applicable
+standards, and any other safety, security, regulatory or other requirements.
+These resources are subject to change without notice. TI grants you permission to use these resources only for development of an
+application that uses the TI products described in the resource. Other reproduction and display of these resources is prohibited. No license
+is granted to any other TI intellectual property right or to any third party intellectual property right. TI disclaims responsibility for, and you
+will fully indemnify TI and its representatives against, any claims, damages, costs, losses, and liabilities arising out of your use of these
+resources.
+TI’s products are provided subject to TI’s Terms of Sale or other applicable terms available either on ti.com or provided in conjunction with
+such TI products. TI’s provision of these resources does not expand or otherwise alter TI’s applicable warranties or warranty disclaimers for
+TI products.
+TI objects to and rejects any additional or different terms you may have proposed. IMPORTANT NOTICE
+Mailing Address: Texas Instruments, Post Office Box 655303, Dallas, Texas 75265
+Copyright © 2025, Texas Instruments Incorporated
+
+

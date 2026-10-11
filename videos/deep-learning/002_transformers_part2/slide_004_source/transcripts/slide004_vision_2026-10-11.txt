@@ -1,0 +1,104 @@
+1. TITLE â
+"Encoder â Decoder Transformer" (rendered in large red serif text at the top of the slide). Badge numeral in a yellow circle at top-right: "4".
+
+2. ALL VERBATIM TEXT â
+- Title: "Encoder â Decoder Transformer"
+- Badge: "4"
+- Left diagram (white panel), top to bottom:
+  - "Output Probabilities"
+  - "Softmax"
+  - "Linear"
+  - "Add & Norm" (upper right block)
+  - "Feed Forward"
+  - "Add & Norm" (right block above attention)
+  - "Multi-Head Attention" (yellow block)
+  - "Nx" (right side, next to right stack)
+  - "Add & Norm" (left block above feed forward)
+  - "Feed Forward" (blue block)
+  - "Nx" (left side, next to left stack)
+  - "Add & Norm" (left lower block)
+  - "Multiheaded Attention" (yellow block â note this left-block spelling differs from "Multi-Head Attention" on the right stack)
+  - "Add & Norm" (right lower block)
+  - "Masked Multi-Head Attention" (yellow block)
+  - "Positional Encoding" (left, two lines) with sinusoid icon and â circle
+  - "Positional Encoding" (right, two lines) with sinusoid icon and â circle
+  - "Input Embedding" (pink block)
+  - "Output Embedding" (pink block)
+  - "Inputs" (bottom left)
+  - "Outputs (shifted right)" (bottom right, two lines)
+- Large red block arrow between the two diagrams (no text).
+- Right diagram (colored panel):
+  - "Encoder" (red italic bold, top-left of the orange-tinted panel)
+  - "Decoder" (green italic bold, top-right of the green-tinted panel)
+  - Red upward block arrow (small) near "Output Probabilities"
+  - "Output Probabilities"
+  - "Softmax"
+  - "Linear"
+  - "Add & Norm"
+  - "Feed Forward"
+  - "Add & Norm" (above multi-head attention)
+  - "Multi-Head Attention" (inside a semi-transparent orange highlight rectangle)
+  - "Nx" (right side)
+  - "Add & Norm"
+  - "Feed Forward" (blue block)
+  - "Nx" (left side)
+  - "Add & Norm"
+  - "Multiheaded Attention" (inside a semi-transparent orange highlight rectangle)
+  - "Add & Norm"
+  - "Masked Multi-Head Attention"
+  - "Positional Encoding" (left, two lines) with sinusoid icon and â
+  - "Positional Encoding" (right, two lines) with sinusoid icon and â
+  - "Input Embedding" (pink block)
+  - "Output Embedding" (pink block)
+  - Red upward block arrow (small) below "Inputs"
+  - "Inputs"
+  - "Outputs (shifted right)" (two lines)
+- No footer, slide number strip, or course-name text visible on this frame (no "DSAI 308" string visible).
+
+3. EQUATIONS â
+No mathematical equations on this slide. Formulaic/token sequences present:
+- "Nx" (repeat count, appears twice in left diagram, twice in right diagram)
+- "X_0 â¦ X_N"-style sequences: not present.
+No softmax/attention equations (e.g., softmax(QK^T/âd_k)V) are shown.
+
+4. DIAGRAM TOPOLOGY â
+Two side-by-side architecture diagrams with a large red block arrow (pointing right, with black outline) between them; left-to-right reading: plain architecture â color-coded/labeled version.
+
+LEFT DIAGRAM (contained in a white panel with thin black border, gray slide background around it):
+This is the classic Transformer encoderâdecoder stack, two vertical columns, data flows bottom-to-top.
+- Encoder column (left):
+  - "Inputs" (bottom) â up arrow â "Input Embedding" (pink fill)
+  - â junction combining embedding with positional encoding: sinusoid icon + â; "Positional Encoding" label with sinusoidal-wave icon feeds into the â.
+  - â â up arrow â block "Multiheaded Attention" (yellow) wrapped with "Add & Norm" (white rounded rect above it); residual skip line curves around from below the attention block up to the Add & Norm.
+  - â "Feed Forward" (light blue) wrapped with "Add & Norm" (white rounded rect); residual skip around it.
+  - "Nx" label to the left of this stacked group (repeat ÃN bracket-ish vertical line).
+- Decoder column (right):
+  - "Outputs (shifted right)" (bottom) â "Output Embedding" (pink)
+  - â with "Positional Encoding" (sinusoid icon + â)
+  - â "Masked Multi-Head Attention" (yellow) with "Add & Norm" above; residual skip.
+  - â "Multi-Head Attention" (yellow) with "Add & Norm" above; residual skip; this block also receives an arrow from the encoder output (encoderâdecoder cross-connection, line curves from the encoder stack top region into this block).
+  - â "Feed Forward" (light blue) with "Add & Norm" above; residual skip.
+  - "Nx" label to the right of the decoder stack.
+  - Top of decoder â "Linear" (light blue/lavender rect) â "Softmax" (green rect) â "Output Probabilities" at top.
+- Cross-connection arrow: from encoder stack (top of encoder Feed Forward / Add & Norm region) rightward into the decoder's "Multi-Head Attention" block (the K/V inputs), consistent with Vaswani et al. Figure 1.
+
+RIGHT DIAGRAM (same topology, re-colored/labeled; container is a rounded rectangle with thick green border):
+- Two overlapping tinted panels: an orange/peach-tinted panel labeled "Encoder" (red italic text) covering the left column, and a green-tinted panel labeled "Decoder" (green italic text) covering the right column; they overlap slightly in the middle.
+- All blocks, arrows, skips, â positional-encoding junctions, "Nx" labels identical to the left diagram.
+- Same cross-connection from encoder into decoder "Multi-Head Attention".
+- Additional red block arrows (presentation annotations indicating data flow direction): one small red up-arrow just below/beside "Inputs" at the bottom, and one small red up-arrow beside "Output Probabilities" at the top.
+- Two semi-transparent orange highlight rectangles (speaker annotations): one over the encoder's "Multiheaded Attention" block area, one over the decoder's "Multi-Head Attention" block area.
+- Block colors: Input/Output Embedding pink; attention blocks yellow; Feed Forward light blue; Softmax green; Linear light lavender/blue; Add & Norm white with black outline.
+- Overall flow: bottom-to-top, encoder output feeding laterally into the decoder mid-stack.
+
+Resemblance to published figures: This is a redrawn but essentially identical copy of the Transformer architecture in Vaswani et al. 2017, "Attention Is All You Need," Figure 1 (the full encoderâdecoder diagram), including the same labels ("Input Embedding", "Positional Encoding", "Multi-Head Attention", "Masked Multi-Head Attention", "Add & Norm", "Feed Forward", "Linear", "Softmax", "Nx", "Outputs (shifted right)"), same colors, and same left/right encoder-decoder layout. The only notable deviation: the left encoder block is labeled "Multiheaded Attention" (one word) whereas Vaswani Figure 1 uses "Multi-Head Attention" consistently; also the sinusoid icons next to Positional Encoding and the â symbols match the common redrawn versions of this figure (e.g., the widely circulated colored redraw used in many blog posts/courses). The right diagram adds an encoder/decoder color-panel overlay not present in the original paper figure.
+
+5. NUMBERS/DATA â
+- "Nx" (repeat count, Ã2 per diagram = 4 occurrences total)
+- Badge numeral "4" (slide number)
+- No other numeric values, tables, percentages, or tensor sizes.
+
+6. BUILD STATE / ARTIFACTS â
+- The right diagram appears mid-annotation: two semi-transparent orange highlight rectangles (over the encoder "Multiheaded Attention" and decoder "Multi-Head Attention" blocks) and three red block arrows (large arrow between diagrams, small up-arrow at "Inputs", small up-arrow at "Output Probabilities") look like PowerPoint-style overlay annotations added during the lecture.
+- A mouse cursor (small white/gray pointer) is visible inside the orange-highlighted "Multiheaded Attention" block in the right diagram's encoder panel.
+- No reveal/partial-build of blocks observed; both diagrams fully drawn. No video progress bar, captions, or watermark overlays visible. Slide sits on a gray background with a thin red border line around the slide edge; a black strip runs along the very bottom of the frame (video letterboxing/background edge).

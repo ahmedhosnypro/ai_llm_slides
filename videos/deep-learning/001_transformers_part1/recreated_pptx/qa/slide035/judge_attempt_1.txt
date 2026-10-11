@@ -1,0 +1,33 @@
+# Visual QA Comparison: Slide 035 â "Self Attention Mechanism"
+
+## 1. Verbatim Text Transcription
+
+**IMG1 (PPTX render, 150 dpi):**
+- Header: "Self Attention Mechanism"
+- Subtitle: "(Embedding Vector Dimension and Softmax Sensitivity)" â "Embedding" in red, "Vector Dimension" highlighted yellow, "and" red, "Softmax Sensitivity" highlighted yellow
+- Slide number badge: "35"
+- Green panel: "wâ²áµ¢â±¼ = xáµ¢áµxâ±¼" (large, boxed); "[Xáµ¢] 1Ãd" (dark red bracket); small box "wâ²áµ¢â±¼ = xáµ¢áµxâ±¼"; "d" + green up arrow
+- Callout: "As Dimension of Embedding "d" Increases the Calculated weight value "w" increases" ("d" Increases" blue-on-yellow; ""w" increases" blue-on-orange)
+- Blue rounded box: "Scale down "Weights" Values before applying SoftMax" / "Scaling Factor should be related to Embedding Dimension "d""
+- Pink band: "[Xáµ¢] 1Ãd"; "SoftMax"; formula "wáµ¢â±¼ = exp wâ²áµ¢â±¼ / Î£â±¼ exp wâ²áµ¢â±¼"; banner "High Weight Values kill the gradient, and slow down learning"
+- Columns: "1, 2, 3, 4" â SoftMax â "0.0321, 0.0871, 0.2369, 0.6439"; "5, 10, 15, 20" â SoftMax â "0.0000, 0.0000, 0.0067, 0.9933"; "10, 20, 30, 40" â SoftMax â "0.0000, 0.0000, 0.0000, 1.0000"
+- Captions: "wâ²áµ¢â±¼ For small "d"", "wâ²áµ¢â±¼ For medium "d"", "wâ²áµ¢â±¼ For large "d""; "d â" and "d ââ" labels
+
+**IMG2 (original video frame):** Identical text content throughout â same title, subtitle, "35" badge, equations, callout text, blue box text, formula, banner, all numeric columns (1/2/3/4, 5/10/15/20, 10/20/30/40 with identical softmax outputs), and the three "For small/medium/large "d"" captions. No text is illegible even at lower resolution.
+
+## 2. Similarities
+- Identical information architecture: header + subtitle + "35" badge top-right; green panel top-left; blue rounded "Scale down" box top-right; full-width pink softmax band below.
+- All colors match: red border frame, green panel outline, blue rounded box, pink/salmon band, dark-red bracket vectors, orange "SoftMax" labels, dark-red arrows, green arrows, yellow/orange text highlights.
+- All mathematical content identical, including the exact softmax output values (0.0321/0.0871/0.2369/0.6439; 0.0000/0.0067/0.9933; 1.0000).
+- Same component styling: individual outlined number chips, side bars flanking each column, arrow + "SoftMax" label between input and output columns.
+- Same typographic treatment: bold black title, red+highlighted subtitle, blue italic text in the blue box.
+
+## 3. Differences
+- **Overlap defect (IMG1 only):** In the green panel, the small white equation box "wâ²áµ¢â±¼ = xáµ¢áµxâ±¼" overlaps/collides with the "1Ãd" subscript of the "[Xáµ¢]" bracket vector â the "1" is partially hidden behind the box. In IMG2, these elements are cleanly separated ("1xd" fully visible).
+- **Internal arrangement of green panel:** In IMG1, the second equation box sits to the *right* of the green up-arrow; in IMG2 the up-arrow points directly up toward the large boxed equation with the small box beside it. Minor layout deviation.
+- **Resolution/sharpness:** IMG1 is crisp and fully legible at 150 dpi; IMG2 is a low-resolution compressed video frame with visible blur/JPEG artifacts (e.g., fuzzy equations and column numbers).
+- **Cursor artifact (IMG2 only):** A faint mouse pointer appears near "Embedding Dimension "d"" in the blue box â an artifact of the video capture, not the slide design.
+- **Proportions:** IMG2's frame includes more surrounding margin; internal element spacing is otherwise proportionally consistent.
+
+## 4. Verdict
+**IMG1 (the recreation) is better overall.** It is sharper, every character is legible, it faithfully reproduces all content, colors, and layout of the original, and it eliminates the video-capture cursor artifact. However, it is not a perfect match: it introduces one defect absent from the original â the small equation box clipping the "1Ãd" subscript in the green panel â and slightly repositions the up-arrow/second equation. Fixing that overlap would make IMG1 strictly superior; as it stands, IMG1 wins on quality and completeness, with IMG2 (the ground-truth frame) remaining the reference for that one spacing correction.

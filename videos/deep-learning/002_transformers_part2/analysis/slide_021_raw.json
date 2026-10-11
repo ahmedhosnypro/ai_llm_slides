@@ -1,0 +1,176 @@
+{
+  "slide_title": "[1] Position Encoding",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "[1] Function with Fixed Parameters",
+      "[2] Function with TRAINABLE Parameters"
+    ],
+    "labels": [
+      "21",
+      "Position Information",
+      "Positional Encoder",
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "N-2",
+      "N-1",
+      "Vector_P0",
+      "Vector_P1",
+      "Vector_P2",
+      "Vector_P3",
+      "Vector_P4",
+      "Vector_P5",
+      "Vector_PN-2",
+      "Vector_PN-1",
+      "Real valued vectors representing  positions",
+      "(Vector for each position)",
+      "Vector Length  = Word Embedding length"
+    ],
+    "equations": [
+      "function to map the positions to real valued vectors",
+      "Vector Length = Word Embedding length",
+      "Vector_Pi for i in {0, 1, 2, 3, 4, 5, ..., N-2, N-1} (rendered as 'Vector' with red italic subscripts P0, P1, P2, P3, P4, P5, PN-2, PN-1)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Centered two-color title at top with a yellow circular slide-number badge at top-right; a large blue-bordered diagram box occupies the middle band containing three stacked rows (positions row, navy encoder bar, vectors row) linked by red down-arrows, with left-side row labels; a red curly brace sits under the vectors row; bottom band has a yellow note box at bottom-left and a green-bordered note box at bottom-center/right; thin black strip across the very bottom edge",
+    "regions": [
+      {
+        "name": "Title bar",
+        "position": "top center, ~2%-15% height, ~15%-85% width",
+        "content": "'[1] Position Encoding' with '[1] Position' in red and 'Encoding' in blue; yellow circle badge with '21' at top-right corner"
+      },
+      {
+        "name": "Main diagram box",
+        "position": "middle, ~20%-65% height, ~8%-92% width",
+        "content": "Blue-outlined rectangle containing the Position Information row, red down arrow, navy 'function' bar, second red down arrow, and the Vector row inside a dashed green container"
+      },
+      {
+        "name": "Row label column",
+        "position": "middle left, inside diagram box left edge, ~22%-60% height",
+        "content": "'Position Information' (blue italic, two lines) and 'Positional Encoder' (red italic, two lines)"
+      },
+      {
+        "name": "Yellow note box",
+        "position": "bottom left, ~70%-90% height, ~8%-28% width",
+        "content": "Two numbered lines about Fixed vs TRAINABLE parameters, connected by a thin tan line up to the word 'function'"
+      },
+      {
+        "name": "Green note box",
+        "position": "bottom center-right, ~68%-90% height, ~33%-78% width",
+        "content": "Three centered black lines explaining real valued vectors and vector length"
+      },
+      {
+        "name": "Bottom strip",
+        "position": "very bottom, ~96%-100% height, full width",
+        "content": "Solid black horizontal bar (video frame edge)"
+      }
+    ],
+    "hierarchy": "Title is largest and boldest; the navy encoder bar with yellow 'function' is the highest-contrast focal element inside the diagram; the numbered position/vector boxes are medium weight; the two bottom note boxes are smaller supporting text; slide number badge is small"
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "Vertical 3-stage pipeline inside a blue-bordered rectangle. Stage 1: dashed blue rounded container holding 8 small light-blue boxes labeled 0, 1, 2, 3, 4, 5, N-2, N-1 (italic blue text) with 5 small solid blue dots as ellipsis between '5' and 'N-2'; a gray mouse cursor overlaps below box '0'. Red block arrow pointing down from this row to Stage 2. Stage 2: solid navy rectangle with centered text 'function to map the positions to real valued vectors' ('function' in yellow, remainder in white). Second red block arrow pointing down to Stage 3. Stage 3: dashed green rounded container holding 8 small light-green boxes labeled Vector_P0, Vector_P1, Vector_P2, Vector_P3, Vector_P4, Vector_P5, Vector_PN-2, Vector_PN-1 ('Vector' in dark blue bold, subscripts in red italic), with an empty gap between Vector_P5 and Vector_PN-2. Below Stage 3: a wide red horizontal curly brace (opening upward, point at bottom center) spanning roughly Vector_P0 to Vector_PN-1. A thin tan connector line runs from the word 'function' in the navy bar down/left to the yellow note box.",
+      "colors": [
+        "#0000CC",
+        "#C9D7F0",
+        "#E00000",
+        "#000080",
+        "#FFFF00",
+        "#FFFFFF",
+        "#00A000",
+        "#D5EED5",
+        "#000080",
+        "#C00000"
+      ],
+      "position": "middle band of slide, ~8%-92% width, ~20%-65% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Light-yellow rectangle with thin tan/orange border containing two numbered lines: '[1] Function with' / 'Fixed Parameters' and '[2] Function with' / 'TRAINABLE Parameters'. '[1]' and '[2]' in red; 'Function with' and 'Parameters' in blue; 'Fixed' and 'TRAINABLE' in bold blue.",
+      "colors": [
+        "#FFFFE0",
+        "#E6C896",
+        "#C00000",
+        "#0000CC"
+      ],
+      "position": "bottom left, ~8%-28% width, ~70%-90% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "White rectangle with green border containing three centered black bold lines: 'Real valued vectors representing  positions', '(Vector for each position)', 'Vector Length  = Word Embedding length'.",
+      "colors": [
+        "#FFFFFF",
+        "#00A000",
+        "#000000"
+      ],
+      "position": "bottom center-right, ~33%-78% width, ~68%-90% height"
+    },
+    {
+      "type": "arrow",
+      "description": "Two thick red block/down arrows: first from the positions row down into the navy encoder bar, second from the navy bar down into the vectors row; both vertically centered on the diagram.",
+      "colors": [
+        "#E00000"
+      ],
+      "position": "center of diagram, ~35% and ~50% height"
+    },
+    {
+      "type": "other",
+      "description": "Yellow circular slide-number badge with red outline and red text '21' at top-right.",
+      "colors": [
+        "#FFFF66",
+        "#C00000"
+      ],
+      "position": "top right corner, ~90% width, ~8% height"
+    },
+    {
+      "type": "other",
+      "description": "Red rectangular border framing the entire gray slide canvas, with a thin white margin outside it.",
+      "colors": [
+        "#C00000",
+        "#E8E8E8"
+      ],
+      "position": "full slide inset ~2%"
+    }
+  ],
+  "imagery": [
+    "Gray mouse-pointer cursor (screen-recording artifact) overlapping the lower edge of position box '0' in the top row of the diagram",
+    "No photographs or illustrations; all graphics are vector shapes (boxes, arrows, brace, dots)"
+  ],
+  "colors": {
+    "background": "#E8E8E8",
+    "title_text": "#C00000 (for '[1] Position') and #0000CC (for 'Encoding')",
+    "body_text": "#000000 (note boxes), #0000CC (blue labels/box numbers), #C00000 (red labels/subscripts)",
+    "accents": [
+      "#000080",
+      "#FFFF00",
+      "#00A000",
+      "#E00000",
+      "#C9D7F0",
+      "#D5EED5",
+      "#FFFFE0"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout (Arial-like). Title is very large and bold, two-colored (red + blue). Row labels ('Position Information', 'Positional Encoder') are bold italic, blue and red respectively. Numbers in position boxes are italic blue; 'Vector' text is bold dark-blue with red italic subscripts. Navy bar text is bold, mixed yellow/white. Note-box text is bold with selective bolding of 'Fixed' and 'TRAINABLE'. No all-caps except 'TRAINABLE'. Numbered list items use bracketed '[1]' and '[2]' rather than bullet glyphs.",
+  "animation_state": "Slide appears fully built (all three diagram rows and both note boxes visible). A mouse cursor rests near position box '0' and a connector line to the yellow note box is drawn, indicating live annotation during recording; no mid-build reveal detected.",
+  "recreation_brief": "1. Set slide background to light gray #E8E8E8; draw a red #C00000 rectangle outline inset ~2% from all edges (white margin outside). 2. Add centered title at top: '[1] Position ' in bold red #C00000 Arial ~40pt followed by 'Encoding' in bold blue #0000CC. 3. Top-right: yellow #FFFF66 circle with red outline, red bold text '21'. 4. Draw a large rectangle with 2pt blue #0000CC outline, no fill, spanning ~8%-92% width and ~20%-65% height. 5. Inside its left edge add two bold italic labels: 'Position' / 'Information' (blue, two lines) at the top row level, and 'Positional' / 'Encoder' (red, two lines) at the middle row level. 6. Top row: dashed blue rounded rectangle; inside it place 8 small rectangles (fill #C9D7F0, blue outline) with italic blue centered text 0, 1, 2, 3, 4, 5, N-2, N-1; between '5' and 'N-2' place 5 small solid blue dots as an ellipsis. 7. Insert a thick red #E00000 down block-arrow from the positions row to the middle row. 8. Middle row: solid navy #000080 rectangle with centered bold text: 'function' in yellow #FFFF00 + ' to map the positions to real valued vectors' in white. 9. Insert a second red down block-arrow to the bottom row. 10. Bottom row: dashed green #00A000 rounded rectangle; inside place 8 small rectangles (fill #D5EED5, green outline) with text 'Vector' in bold dark blue plus red italic subscripts P0, P1, P2, P3, P4, P5, PN-2, PN-1; leave an empty gap between Vector_P5 and Vector_PN-2 matching the ellipsis gap above. 11. Below the green container, draw a wide red curly brace (opening upward, center point down) spanning the vector row width. 12. Draw a thin tan connector line from the word 'function' in the navy bar down to the yellow note box. 13. Bottom-left: light-yellow #FFFFE0 rectangle with tan #E6C896 border containing, in bold: '[1] Function with' (line break) 'Fixed Parameters' ('[1]' red, rest blue, 'Fixed' extra bold), blank line, '[2] Function with' (line break) 'TRAINABLE Parameters' ('[2]' red, rest blue, 'TRAINABLE' extra bold). 14. Bottom center-right: white rectangle with green #00A000 border containing three centered bold black lines: 'Real valued vectors representing  positions', '(Vector for each position)', 'Vector Length  = Word Embedding length'. 15. Add a solid black rectangle strip across the very bottom edge of the slide (~4% height) to match the video frame.",
+  "_meta": {
+    "frame": "slide_021.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 21,
+      "image": "slide_021.jpg",
+      "kept_frame": "frame_00956.jpg",
+      "start_sec": 885.0,
+      "end_sec": 955.0,
+      "frame_count": 71,
+      "old_slide": 41
+    },
+    "elapsed_s": 147.4
+  }
+}

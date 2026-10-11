@@ -1,0 +1,55 @@
+## Element-by-Element Comparison
+
+**Title label ("Multi-Head Attention")**
+- Present in both, orange-red italic bold, positioned top-center above the container at matching height. IMG2's ink has a darker JPEG-crunched edge; per rule (f)/(d) not penalized. â No discrepancy.
+
+**Tan container + inner light panel (olive border + L corner brackets)**
+- Both render the tan container with rounded corners, the inner lighter panel, olive border, and four L-brackets at the corners. Panel extents match the pixel-measured region in both. â No discrepancy.
+
+**Stacked SDPA cards**
+- Front card: red border, 2-line dark text "Scaled Dot-Product / Attention" â present and correctly positioned in IMG1 (matches frame-px x302..481 y353..396 footprint). â
+- Plain tan copies peeking ABOVE the front card, extending slightly right (up-right stacking) â present in IMG1, offset direction and magnitude match. â
+- IMG2's extra blurriness/ghosting on the copies is capture artifact, not penalized.
+
+**"Ã h" annotation**
+- IMG1: "Ã h" in red at the right edge of the stack â correct position/color.
+- IMG2 additionally shows a small curved hook/arrow stroke curling from the "h" annotation down toward the stack; IMG1 renders only the text. **MINOR** (confidence ~70%) â small decorative annotation stroke omitted.
+
+**Concat + top Linear**
+- Concat: light tan fill, dark text, brown border, correct position. â
+- Top Linear: correct fill/border/position. â
+- Arrow ConcatâLinear and output arrow from top Linear terminating at the panel top edge (~y248 frame) â both present in IMG1 with arrowheads. â
+
+**Three bottom Linears + shadow copies**
+- Three boxes at correct L positions, each with an up-right shadow copy, correct size. â
+- Stems from V/K/q circles up to the boxes: present in IMG1 (thin dark stems for V/K; thick red stem for q). â
+- **Possible omission:** IMG2 shows faint arrowheads where the bottom Linears feed up into the SDPA stack; in IMG1 this connector zone is largely clean/obscured by the shadow copies. **MINOR** (confidence ~55%) â may be intentionally omitted or hidden; low visual impact.
+
+**Red circle-with-tail / red up-arrow near rightmost Linear**
+- IMG1 renders the thick red up-arrow head (~x426..449 y421..449 frame-equivalent) plus the thick red stem from the q circle â matches ground truth. â
+- IMG2's red blob overlapping the rightmost "Linear" text is a video-capture annotation; correctly omitted per rule (b). â
+
+**Circles V / K / q**
+- V and K purple, q RED and lowercase, at cy~497 frame-equivalent, correct diameters and labels. â
+
+**Red dotted zoom lines**
+- Left-side dotted lines entering toward the stack: present in both. â
+- IMG1 also places a short dotted segment at mid-right (at "Ã h" level); IMG2's right-side dotted lines sit near the top/bottom corner brackets. **MINOR** (confidence ~60%) â decorative zoom-line anchor points differ.
+
+**Red wedge top-left**
+- Present in both; IMG1's is a cleaner solid triangle vs IMG2's folded look. Frame/badge chrome per rule (a) â not a discrepancy.
+
+## Discrepancy Summary
+1. MINOR â Curved hook stroke of the "Ã h" annotation omitted (conf. 70%).
+2. MINOR â Faint arrows from bottom Linears into SDPA stack not clearly rendered (conf. 55%).
+3. MINOR â Right-side red dotted zoom-line anchor position differs (conf. 60%).
+
+No BLOCKER or MAJOR discrepancies. All pixel-measured ground-truth facts (card extents, stacking direction, fills, border colors, lowercase q, arrowhead position, panel/bracket geometry, output-arrow terminus) are honored.
+
+## Visual-Quality Defects
+- The "Ã h" text slightly crowds the stack's right red border; acceptable.
+- Red arrowhead/stem junction from q is clean; no defects.
+- Thin olive panel border reads softer than IMG2's crunched ink â expected per rule (f), not a defect.
+- No text truncation, overflow, or misalignment detected.
+
+FINAL VERDICT: PASS

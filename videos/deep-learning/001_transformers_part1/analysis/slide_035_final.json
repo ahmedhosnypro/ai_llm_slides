@@ -1,0 +1,267 @@
+{
+  "slide_title": "Self Attention Mechanism",
+  "subtitle_or_header": "(Embedding Vector Dimension and Softmax Sensitivity)",
+  "verbatim_text": {
+    "bullets": [
+      "Scale down \"Weights\" Values",
+      "before applying SoftMax",
+      "Scaling Factor should be related to",
+      "Embedding Dimension \"d\"",
+      "As Dimension of Embedding \"d\" Increases",
+      "the Calculated weight value \"w\" increases",
+      "High Weight Values kill the gradient, and slow down learning"
+    ],
+    "labels": [
+      "35 (slide number, yellow circle, top-right)",
+      "SoftMax (red bold label beside X_i matrix, bottom-panel header)",
+      "SoftMax (red label above left red arrow)",
+      "SoftMax (red label above middle red arrow)",
+      "SoftMax (red label above right red arrow)",
+      "X_i 1xd (red bracketed matrix symbol, top-left box)",
+      "X_i 1xd (red bracketed matrix symbol, bottom-panel far left)",
+      "d \u2191 (green, top-left box, left side)",
+      "d \u2193 (green, bottom panel, left of first example)",
+      "d \u2191 (green, above middle example)",
+      "d \u2191\u2191 (green double arrow, above right example)",
+      "For small \"d\"",
+      "For medium \"d\"",
+      "For large \"d\"",
+      "w'_ij (script-font caption, bottom left)",
+      "w'_ij (script-font caption, bottom middle)",
+      "w'_ij (script-font caption, bottom right)",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "10",
+      "15",
+      "20",
+      "10",
+      "20",
+      "30",
+      "40",
+      "0.0321",
+      "0.0871",
+      "0.2369",
+      "0.6439",
+      "0.0000",
+      "0.0000",
+      "0.0067",
+      "0.9933",
+      "0.0000",
+      "0.0000",
+      "0.0000",
+      "1.0000"
+    ],
+    "equations": [
+      "w'_ij = x_i^T x_j   (LaTeX: w'_{ij} = x_i^{\\mathsf{T}} x_j)",
+      "w'_{ij} = x_i^T x_j   (LaTeX: w'_{ij} = x_i^{\\mathsf{T}} x_j)",
+      "w_ij = exp w'_ij / \u03a3_j exp w'_ij   (LaTeX: w_{ij} = \\frac{\\exp w'_{ij}}{\\sum_j \\exp w'_{ij}})"
+    ]
+  },
+  "layout": {
+    "arrangement": "Light-gray slide inside a dark-maroon border frame. Title centered at top with a red, yellow-highlighted subtitle beneath; slide-number badge '35' at top-right. Middle band split into two rounded boxes: left white box with green border (equations + trend statement), right light-blue box with navy border (scaling callout). Bottom half is one full-width peach rounded panel with red border containing a header row (red X_i matrix box, red 'SoftMax' label, boxed softmax equation, red bold italic warning note) and three side-by-side input\u2192SoftMax\u2192output vector examples, each with a caption underneath.",
+    "regions": [
+      {
+        "name": "Title block",
+        "position": "top center, ~x 20-80%, y 8-18%",
+        "content": "'Self Attention Mechanism' in bold black; subtitle line in red with yellow highlight behind 'Vector Dimension' and 'Softmax Sensitivity'"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, ~x 90-96%, y 10-18%",
+        "content": "'35' in a yellow circle with orange-red ring"
+      },
+      {
+        "name": "Left concept box",
+        "position": "upper left, ~x 5-41%, y 19-49%",
+        "content": "White rounded box, green border: boxed equation w'_ij = x_i^T x_j (top-left), red bracketed matrix X_i 1xd (top-right), green 'd \u2191' (mid-left), green up arrow + boxed equation w'_{ij} = x_i^T x_j (mid-right), two-line trend statement with 'd' yellow-highlighted and 'w' orange-highlighted (bottom)"
+      },
+      {
+        "name": "Scaling callout box",
+        "position": "upper right, ~x 42-96%, y 22-45%",
+        "content": "Light-blue rounded box, navy border, centered navy italic text: 'Scale down \"Weights\" Values / before applying SoftMax' then 'Scaling Factor should be related to / Embedding Dimension \"d\"'; mouse cursor overlaps 'Embedding'"
+      },
+      {
+        "name": "Bottom peach panel (container)",
+        "position": "~x 4-96%, y 51-98%",
+        "content": "Full-width rounded peach #FCE4C4 panel with red #CC0000 border; contains the header row and the three example columns"
+      },
+      {
+        "name": "Bottom panel header row",
+        "position": "~x 5-95%, y 52-62%",
+        "content": "Far left: white box with red border containing red X_i 1xd matrix; red bold 'SoftMax' label; center-left: white bordered box with fraction equation w_ij = exp w'_ij / \u03a3_j exp w'_ij; right: white box with navy border containing red bold italic 'High Weight Values kill the gradient, and slow down learning'"
+      },
+      {
+        "name": "Example 1 (small d)",
+        "position": "bottom panel left, ~x 12-33%, y 60-96%",
+        "content": "Green 'd \u2193'; input column 1,2,3,4 (yellow boxes, red borders, red curly braces); thick red arrow labeled 'SoftMax'; output column 0.0321, 0.0871, 0.2369, 0.6439 (white boxes, navy borders, navy curly braces); caption w'_ij For small \"d\""
+      },
+      {
+        "name": "Example 2 (medium d)",
+        "position": "bottom panel center, ~x 39-61%, y 60-96%",
+        "content": "Green 'd \u2191'; input 5,10,15,20; red 'SoftMax' arrow; output 0.0000, 0.0000, 0.0067, 0.9933; caption w'_ij For medium \"d\""
+      },
+      {
+        "name": "Example 3 (large d)",
+        "position": "bottom panel right, ~x 66-89%, y 60-96%",
+        "content": "Green 'd \u2191\u2191'; input 10,20,30,40; red 'SoftMax' arrow; output 0.0000, 0.0000, 0.0000, 1.0000; caption w'_ij For large \"d\""
+      }
+    ],
+    "hierarchy": "Title is the largest text; the peach bottom panel dominates by area and carries the main visual (three vector transformations). Strongest color accents are the navy bold-italic callout, red/yellow highlighted subtitle, bright-green d-arrows, and red SoftMax arrows; reading order is top-down then left-to-right across the three examples."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Rounded white box with green border. Contents: small thin-bordered equation box 'w'_ij = x_i^T x_j' (top-left); red bracketed matrix symbol 'X_i' with '1xd' subscript (top-right); green bold 'd' with green block up-arrow (mid-left); green up-arrow plus small thin-bordered equation box 'w'_{ij} = x_i^T x_j' (mid-right); bottom two-line black statement 'As Dimension of Embedding \"d\" Increases / the Calculated weight value \"w\" increases' with 'd' yellow-highlighted and 'w' orange-highlighted",
+      "colors": [
+        "#FFFFFF",
+        "#00B050",
+        "#CC0000",
+        "#00CC00",
+        "#FFFF00",
+        "#FFA500",
+        "#000000"
+      ],
+      "position": "upper left, ~x 5-41%, y 19-49%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Rounded light-blue callout with navy border, centered navy text: 'Scale down \"Weights\" Values' (bold italic), 'before applying SoftMax' (italic), blank line, 'Scaling Factor should be related to' ('Scaling Factor' bold italic), 'Embedding Dimension \"d\"' (italic). A white mouse-cursor arrow overlaps the word 'Embedding'",
+      "colors": [
+        "#CCE0F5",
+        "#000080",
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "upper right, ~x 42-96%, y 22-45%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Full-width rounded peach panel with red border framing the header row and all three SoftMax examples",
+      "colors": [
+        "#FCE4C4",
+        "#CC0000"
+      ],
+      "position": "bottom, ~x 4-96%, y 51-98%"
+    },
+    {
+      "type": "other",
+      "description": "Red bracketed matrix symbol 'X_i' with '1xd' subscript inside a small white box with red border (bottom-panel far left); an identical red matrix symbol sits inside the top-left green-bordered box",
+      "colors": [
+        "#CC0000",
+        "#FFFFFF"
+      ],
+      "position": "top-left box and bottom-panel far left"
+    },
+    {
+      "type": "other",
+      "description": "Boxed softmax equation rendered as a fraction: numerator 'exp w'_ij', horizontal bar, denominator '\u03a3_j exp w'_ij', preceded by 'w_ij =', in a white box with thin gray border",
+      "colors": [
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "bottom-panel header, center-left (~x 26-40%, y 52-62%)"
+    },
+    {
+      "type": "highlight-box",
+      "description": "White box with navy border containing red bold italic text 'High Weight Values kill the gradient, and slow down learning'",
+      "colors": [
+        "#FFFFFF",
+        "#000080",
+        "#CC0000"
+      ],
+      "position": "bottom-panel header, right (~x 41-95%, y 52-62%)"
+    },
+    {
+      "type": "flowchart",
+      "description": "Three parallel vector-transformation examples. Each: vertical input vector of 4 stacked yellow rectangles with red borders (wrapped in large red curly braces) \u2192 thick red right-arrow labeled 'SoftMax' in red above \u2192 vertical output vector of 4 stacked white rectangles with navy borders (wrapped in large navy curly braces). Data \u2014 Example 1: [1,2,3,4] \u2192 [0.0321, 0.0871, 0.2369, 0.6439]; Example 2: [5,10,15,20] \u2192 [0.0000, 0.0000, 0.0067, 0.9933]; Example 3: [10,20,30,40] \u2192 [0.0000, 0.0000, 0.0000, 1.0000]. Green annotations: 'd \u2193' left of Example 1, 'd \u2191' above Example 2, 'd \u2191\u2191' (double arrow) above Example 3. Captions beneath each: script 'w'_ij' followed by 'For small \"d\"' / 'For medium \"d\"' / 'For large \"d\"'",
+      "colors": [
+        "#FFFF99",
+        "#CC0000",
+        "#FFFFFF",
+        "#000080",
+        "#00CC00",
+        "#000000"
+      ],
+      "position": "bottom panel, three columns at ~x 12-33%, 39-61%, 66-89%"
+    },
+    {
+      "type": "arrow",
+      "description": "Bright-green block arrows: single up-arrows (beside 'd' in top-left box, and left of the boxed w'_{ij} equation), single down-arrow (left of Example 1), single up-arrow (above Example 2), double up-arrow (above Example 3). Thick red right-arrows (x3) labeled 'SoftMax' between input and output vectors",
+      "colors": [
+        "#00CC00",
+        "#CC0000"
+      ],
+      "position": "top-left box and across the bottom panel"
+    },
+    {
+      "type": "icon",
+      "description": "Mouse cursor (white arrow, black outline) hovering over the blue callout near 'Embedding Dimension' \u2014 a screen-recording artifact",
+      "colors": [
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "upper-right box, ~x 58%, y 42%"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; all graphics are drawn shapes (rounded boxes, arrows, curly braces, circles) and text. Only pictorial element is the mouse-cursor arrow over the blue callout box (recording artifact, not slide content)."
+  ],
+  "colors": {
+    "background": "#F2F2F2",
+    "title_text": "#000000",
+    "body_text": "#000000",
+    "accents": [
+      "#CC0000",
+      "#FFFF00",
+      "#FFA500",
+      "#00B050",
+      "#00CC00",
+      "#000080",
+      "#CCE0F5",
+      "#FCE4C4",
+      "#FFFF99",
+      "#800000",
+      "#FF6600"
+    ]
+  },
+  "typography_notes": "Sans-serif (Arial-like) for title, subtitle, labels, and vector numbers; equations set in a serif math-italic face (Times/Cambria-Math-like) with true subscripts/superscripts; bottom captions 'w'_ij' use a script/calligraphic math font. Title ~28pt bold black; subtitle ~20pt bold red with yellow highlighter behind 'Vector Dimension' and 'Softmax Sensitivity'; callout text ~18pt navy, mixed bold-italic/italic; warning note red bold italic; vector cell numbers ~12-14pt bold; double quotes around d, w, and Weights are literal characters in the text.",
+  "animation_state": "Slide appears fully built \u2014 no partially revealed bullets or mid-build elements. A mouse cursor is visible over the blue callout box, indicating a live-recorded lecture rather than an animation state.",
+  "recreation_brief": "1. Canvas: set slide background to light gray #F2F2F2; draw a dark-maroon #800000 rectangular border frame around the entire slide edge.\n2. Title: place text 'Self Attention Mechanism' (Arial bold, ~28pt, black #000000) centered at top, ~x 20-80%, y 8-18%.\n3. Subtitle: place '(Embedding Vector Dimension and Softmax Sensitivity)' (Arial bold, ~20pt, red #CC0000) centered directly below the title; apply yellow #FFFF00 highlight behind the words 'Vector Dimension' and 'Softmax Sensitivity'.\n4. Badge: draw a ~0.6-inch circle at top-right (~x 90-96%, y 10-18%), yellow #FFFF00 fill, orange-red #FF6600 ring, black bold '35' centered.\n5. Left concept box: rounded rectangle, white #FFFFFF fill, green #00B050 border, ~x 5-41%, y 19-49%.\n6. Left box, top-left: small thin-bordered box containing equation w'_ij = x_i^T x_j in serif math-italic (Cambria Math), black.\n7. Left box, top-right: red #CC0000 bracketed matrix symbol X_i with subscript 1xd.\n8. Left box, mid-left: green bold 'd' with a bright-green #00CC00 block up-arrow beside it.\n9. Left box, mid-right: bright-green #00CC00 block up-arrow plus a small thin-bordered box containing equation w'_{ij} = x_i^T x_j (same formula as step 6), Cambria Math, black.\n10. Left box, bottom: two black text lines 'As Dimension of Embedding \"d\" Increases' / 'the Calculated weight value \"w\" increases', with 'd' highlighted yellow #FFFF00 and 'w' highlighted orange #FFA500.\n11. Scaling callout: rounded rectangle ~x 42-96%, y 22-45%, light-blue #CCE0F5 fill, navy #000080 border.\n12. Callout text: centered navy #000080, four text lines with a blank line after the second \u2014 line 1 'Scale down \"Weights\" Values' (bold italic); line 2 'before applying SoftMax' (italic); line 3 'Scaling Factor should be related to' ('Scaling Factor' bold italic); line 4 'Embedding Dimension \"d\"' (italic).\n13. Bottom panel: rounded rectangle ~x 4-96%, y 51-98%, peach #FCE4C4 fill, red #CC0000 border.\n14. Header row, far left (~y 52-62%): small white box with red #CC0000 border containing red bracketed matrix X_i with 1xd subscript.\n15. Header row: red bold 'SoftMax' label immediately to the right of the X_i box.\n16. Header row, center-left (~x 26-40%): white box with thin gray border containing the fraction equation w_ij = exp w'_ij / \u03a3_j exp w'_ij \u2014 numerator 'exp w'_ij' above a horizontal bar, denominator '\u03a3_j exp w'_ij' below, preceded by 'w_ij =', Cambria Math, black.\n17. Header row, right (~x 41-95%): white box with navy #000080 border containing red #CC0000 bold italic text 'High Weight Values kill the gradient, and slow down learning'.\n18. Example 1 annotation: green 'd \u2193' (green bold 'd' + bright-green #00CC00 down-arrow) at the left of the Example 1 column (~x 12-33%, y 60-96%).\n19. Example 1 input: vertical vector of 4 stacked yellow #FFFF99 rectangles with red #CC0000 borders holding 1, 2, 3, 4 top-to-bottom, wrapped in a large red #CC0000 curly brace.\n20. Example 1 arrow: thick red #CC0000 right-arrow between input and output, with red 'SoftMax' label above it.\n21. Example 1 output: vertical vector of 4 stacked white #FFFFFF rectangles with navy #000080 borders holding 0.0321, 0.0871, 0.2369, 0.6439, wrapped in a large navy #000080 curly brace.\n22. Example 1 caption: script-font 'w'_ij' followed by bold 'For small \"d\"' beneath the vectors.\n23. Example 2 annotation: green 'd \u2191' (bright-green #00CC00 up-arrow) above the Example 2 column (~x 39-61%, y 60-96%).\n24. Example 2 input: 4 stacked yellow #FFFF99 rectangles with red #CC0000 borders holding 5, 10, 15, 20, wrapped in a red #CC0000 curly brace.\n25. Example 2 arrow: thick red #CC0000 right-arrow labeled 'SoftMax' in red above.\n26. Example 2 output: 4 stacked white #FFFFFF rectangles with navy #000080 borders holding 0.0000, 0.0000, 0.0067, 0.9933, wrapped in a navy #000080 curly brace.\n27. Example 2 caption: script-font 'w'_ij' followed by bold 'For medium \"d\"'.\n28. Example 3 annotation: green 'd \u2191\u2191' (bright-green #00CC00 double up-arrow) above the Example 3 column (~x 66-89%, y 60-96%).\n29. Example 3 input: 4 stacked yellow #FFFF99 rectangles with red #CC0000 borders holding 10, 20, 30, 40, wrapped in a red #CC0000 curly brace.\n30. Example 3 arrow: thick red #CC0000 right-arrow labeled 'SoftMax' in red above.\n31. Example 3 output: 4 stacked white #FFFFFF rectangles with navy #000080 borders holding 0.0000, 0.0000, 0.0000, 1.0000, wrapped in a navy #000080 curly brace.\n32. Example 3 caption: script-font 'w'_ij' followed by bold 'For large \"d\"'.\n33. Do NOT draw the mouse cursor \u2014 it is a screen-recording artifact, not slide content.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Added missing layout region 'Bottom peach panel (container)' (~x 4-96%, y 51-98%) so layout.regions now covers the full-width peach panel declared in visual_elements (previously only its child regions were listed).",
+      "Rewrote recreation_brief from 10 compound steps into 33 single-element numbered steps; each step now places exactly one element with exact text, position, hex color, and shape type.",
+      "Added explicit hex color codes to brief steps that previously named colors without codes: #CC0000 (red borders, arrows, braces, matrix symbols, warning text), #000080 (navy borders, braces, callout text), #00CC00 (green block arrows), #FFFF99 (input cells), #FCE4C4 (peach panel), #CCE0F5 (callout fill).",
+      "Harmonized the warning-note description in layout.arrangement from 'red italic' to 'red bold italic' to match visual_elements and the recreation_brief.",
+      "Verified coverage: all 7 bullets, 41 labels, and 3 equations in verbatim_text map to layout.regions and to brief steps; confirmed the two w' equation entries are two separate visual instances of the same formula in the left concept box (retained both, not merged as a duplicate).",
+      "Precision audit: no vague quantifiers ('several', 'some', 'many', 'a few', 'various') were present; all counts verified exact \u2014 3 examples, 4 input cells and 4 output cells per example (24 numeric values total), 3 red SoftMax arrows, 4 SoftMax labels total, 5 green arrow instances, 2 boxed equations, 2 X_i matrix symbols.",
+      "Retained the mouse-cursor exclusion as the final brief step, consistent with imagery and animation_state marking it a recording artifact."
+    ],
+    "uncertain_items": [
+      "Exact green shade of the 'd' letter glyphs: the JSON lists both #00B050 (left-box border) and #00CC00 (arrows) in the left concept box; the arrows are #00CC00 but the 'd' text color is not disambiguated.",
+      "All font sizes are approximations (~28pt title, ~20pt subtitle, ~18pt callout, ~12-14pt vector numbers); no measured values are provided.",
+      "Bold weight of the 'For small/medium/large \"d\"' caption text is asserted in the original recreation_brief but not confirmed in typography_notes.",
+      "All x/y position ranges are approximate vision-model estimates, not measured coordinates; the header row (y 52-62%) and example columns (y 60-96%) overlap by ~2%."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_035.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 35,
+      "image": "slide_035.jpg",
+      "kept_frame": "frame_03430.jpg",
+      "start_sec": 3385.0,
+      "end_sec": 3429.0,
+      "frame_count": 45
+    },
+    "elapsed_s": 387.7,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 611.8
+  }
+}

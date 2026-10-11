@@ -1,0 +1,271 @@
+{
+  "slide_title": "Review: Cosine Similarity",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Vectors must be normalized\nbefore calculate similarity\nTheir Lengths = 1",
+      "After Normalization\n|a| = |b| = 1",
+      "Cosine Similarity is between -1 , +1",
+      "It is a dot product between two Normalized vectors a and b",
+      "Maximize [Similarity] = Minimize -[Similarity]",
+      "Loss = -[Similarity]"
+    ],
+    "labels": [
+      "23 (slide number, black text in yellow oval, top-right corner)",
+      "Normalize (red italic text inside the block arrow between the two circles)",
+      "b (blue vector label, left diagram)",
+      "a (red vector label, left diagram)",
+      "\u03b8 (green angle label, left diagram)",
+      "b (blue vector label, right diagram)",
+      "a (red vector label, right diagram)",
+      "\u03b8 (green angle label, right diagram)"
+    ],
+    "equations": [
+      "\\text{Normalized } \\underline{\\boldsymbol{a}} = \\dfrac{\\boldsymbol{a}}{|\\boldsymbol{a}|}   (plain text: Normalized a = a/|a|)",
+      "\\text{Normalized } \\underline{\\boldsymbol{b}} = \\dfrac{\\boldsymbol{b}}{|\\boldsymbol{b}|}   (plain text: Normalized b = b/|b|)",
+      "\\boldsymbol{a} . \\boldsymbol{b} = \\boldsymbol{a}^T \\boldsymbol{b} = |\\boldsymbol{a}|\\,|\\boldsymbol{b}|\\cos(\\theta)   (plain text: a . b = a^T b = |a| |b| cos(\u03b8))",
+      "\\cos(\\theta) = \\dfrac{\\boldsymbol{a}^T \\boldsymbol{b}}{|\\boldsymbol{a}|\\,|\\boldsymbol{b}|} = \\boldsymbol{a}^T \\boldsymbol{b}   (plain text: cos(\u03b8) = (a^T b)/(|a| |b|) = a^T b, with cos(\u03b8) in red bold)",
+      "|\\boldsymbol{a}| = |\\boldsymbol{b}| = 1   (plain text: |a| = |b| = 1)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Light-gray slide with a dark-red border frame. Red bold title centered at top; small yellow slide-number oval '23' in the top-right corner. Two large pale-yellow circle diagrams (vector geometry) sit side by side at mid-height: left diagram at far left, right diagram at right-center. A red-outlined block arrow labeled 'Normalize' points right between them at mid-height. A white blue-bordered callout box sits top-center (between title and right circle); a white blue-bordered equations box sits top-right; another white blue-bordered equations box sits bottom-center; a white blue-bordered 'After Normalization' box sits bottom-right. A full-width light-cyan summary bar spans the bottom, and below it two small boxes: yellow 'Maximize...' (left) and pink 'Loss = -[Similarity]' (right).",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~25%-63% width, ~8%-17% height",
+        "content": "Red bold text 'Review: Cosine Similarity'"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, ~91%-96% width, ~8%-16% height",
+        "content": "Yellow oval with '23'"
+      },
+      {
+        "name": "Left vector diagram",
+        "position": "left, ~4%-38% width, ~18%-75% height",
+        "content": "Pale-yellow circle, black double-headed axes, blue vector b, red vector a, green angle \u03b8"
+      },
+      {
+        "name": "Normalization callout box",
+        "position": "top center, ~30%-56% width, ~18%-33% height",
+        "content": "White box, blue border, three-line sentence about normalization"
+      },
+      {
+        "name": "Right vector diagram",
+        "position": "right-center, ~51%-85% width, ~18%-75% height",
+        "content": "Near-identical circle diagram (blue vector b at ~55-60 degrees, red vector a at ~12-15 degrees above horizontal, green angle \u03b8) plus a small gray pencil annotation cursor at its lower-right (presenter artifact, not slide content)"
+      },
+      {
+        "name": "Normalize arrow",
+        "position": "center, ~40%-50% width, ~42%-53% height",
+        "content": "Red-outlined block arrow pointing right with red italic 'Normalize'"
+      },
+      {
+        "name": "Normalized equations box",
+        "position": "top right, ~77%-97% width, ~14%-32% height",
+        "content": "White box, blue border, two 'Normalized' fraction equations"
+      },
+      {
+        "name": "Dot-product equations box",
+        "position": "bottom center, ~30%-56% width, ~60%-79% height",
+        "content": "White box, blue border, dot product and cosine formula, cos(\u03b8) in red"
+      },
+      {
+        "name": "After Normalization box",
+        "position": "bottom right, ~77%-96% width, ~58%-71% height",
+        "content": "White box, blue border, 'After Normalization |a| = |b| = 1'"
+      },
+      {
+        "name": "Summary bar",
+        "position": "bottom, full width ~5%-95%, ~80%-91% height",
+        "content": "Light-cyan bar, blue border, two lines of blue text about cosine similarity range and dot product"
+      },
+      {
+        "name": "Maximize box",
+        "position": "bottom left, ~11%-55% width, ~92%-100% height",
+        "content": "Yellow box, red border, black text 'Maximize [Similarity] = Minimize -[Similarity]'"
+      },
+      {
+        "name": "Loss box",
+        "position": "bottom right, ~58%-79% width, ~92%-100% height",
+        "content": "Pink box, red border, red bold text 'Loss = -[Similarity]'"
+      }
+    ],
+    "hierarchy": "Visually dominant: (1) the two large pale-yellow circle diagrams occupying the middle band; (2) the red bold title at top; (3) the full-width cyan summary bar as a strong color block at bottom; (4) medium-weight white bordered boxes with equations/callouts; (5) smallest: vector labels a/b/\u03b8, the 'Normalize' arrow text, and the '23' badge."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Left vector-geometry diagram: pale-yellow filled circle centered on black coordinate axes (horizontal and vertical lines with arrowheads on both ends, extending past the circle). Blue vector labeled 'b' (bold italic) starts at origin and points up-right at roughly 60-65 degrees above horizontal, reaching ~60% of the circle radius. Red vector labeled 'a' (bold italic) starts at origin and points right, ~15-18 degrees above horizontal, reaching ~85% of the radius. A small green arc near the origin between the vectors is labeled '\u03b8' (green bold italic).",
+      "colors": [
+        "#FFFFCC",
+        "#000000",
+        "#0000CC",
+        "#CC0000",
+        "#009900"
+      ],
+      "position": "left side, ~4%-38% width, ~18%-75% height"
+    },
+    {
+      "type": "diagram",
+      "description": "Right vector-geometry diagram: identical pale-yellow circle with black double-headed axes; blue vector 'b' at ~55-60 degrees, red vector 'a' at ~12-15 degrees, green angle arc '\u03b8' near origin. A small gray pencil/pen annotation cursor icon rests at the lower-right inside the circle (~4-5 o'clock position); it is a presenter annotation, not slide content.",
+      "colors": [
+        "#FFFFCC",
+        "#000000",
+        "#0000CC",
+        "#CC0000",
+        "#009900",
+        "#808080"
+      ],
+      "position": "right-center, ~51%-85% width, ~18%-75% height"
+    },
+    {
+      "type": "arrow",
+      "description": "Horizontal block arrow (PowerPoint 'Right Block Arrow' shape) pointing right, white/very light fill with red outline, containing the red italic word 'Normalize'. It visually transforms the left (unnormalized) diagram into the right (normalized) diagram.",
+      "colors": [
+        "#FFFFFF",
+        "#CC0000"
+      ],
+      "position": "center between the two circles, ~40%-50% width, ~42%-53% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Top-center callout: white rectangle with ~2pt blue border, three centered lines: 'Vectors must be normalized' (word 'normalized' bold blue), 'before calculate similarity', 'Their Lengths = 1'.",
+      "colors": [
+        "#FFFFFF",
+        "#0000CC",
+        "#000000"
+      ],
+      "position": "top center, ~30%-56% width, ~18%-33% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Top-right equations box: white rectangle with blue border containing two italic-serif equations with stacked fractions: 'Normalized a = a/|a|' and 'Normalized b = b/|b|', where a and b are bold-italic and underlined.",
+      "colors": [
+        "#FFFFFF",
+        "#0000CC",
+        "#000000"
+      ],
+      "position": "top right, ~77%-97% width, ~14%-32% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Bottom-center equations box: white rectangle with blue border, two lines: 'a . b = a^T b = |a| |b| cos(\u03b8)' (bold-italic vectors, black cos) and 'cos(\u03b8) = (a^T b)/(|a| |b|) = a^T b' with 'cos(\u03b8)' in bold red and a stacked fraction in the middle.",
+      "colors": [
+        "#FFFFFF",
+        "#0000CC",
+        "#CC0000",
+        "#000000"
+      ],
+      "position": "bottom center, ~30%-56% width, ~60%-79% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Bottom-right box: white rectangle with blue border, two lines: 'After Normalization' and '|a| = |b| = 1' (bold-italic a and b).",
+      "colors": [
+        "#FFFFFF",
+        "#0000CC",
+        "#000000"
+      ],
+      "position": "bottom right, ~77%-96% width, ~58%-71% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Full-width summary bar: light-cyan rectangle with blue border; line 1 bold blue larger text 'Cosine Similarity is between -1 , +1'; line 2 blue text 'It is a dot product between two Normalized vectors a and b' with 'dot' underlined and 'a', 'b' bold.",
+      "colors": [
+        "#CCFFFF",
+        "#0000CC"
+      ],
+      "position": "bottom strip, ~5%-95% width, ~80%-91% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Bottom-left yellow rectangle with red border, black sans-serif text: 'Maximize [Similarity] = Minimize -[Similarity]'.",
+      "colors": [
+        "#FFFFCC",
+        "#CC0000",
+        "#000000"
+      ],
+      "position": "bottom left, ~11%-55% width, ~92%-100% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Bottom-right pink rectangle with red border, red bold text: 'Loss = -[Similarity]'.",
+      "colors": [
+        "#FFCCCC",
+        "#CC0000"
+      ],
+      "position": "bottom right, ~58%-79% width, ~92%-100% height"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: small yellow filled oval with thin outline containing the number '23' in black.",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top-right corner, ~91%-96% width, ~8%-16% height"
+    }
+  ],
+  "imagery": [
+    "Small gray pencil/pen annotation cursor icon at the lower-right inside the right circle diagram (~4-5 o'clock position), pointing down-left; it is a presenter pen annotation, not content.",
+    "No photographs or illustrations otherwise; all visuals are vector shapes, arrows, and text boxes."
+  ],
+  "colors": {
+    "background": "#D9D9D9 (light gray slide fill, framed by a dark-red #C00000 border; area outside the border in the video frame is white)",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000CC (blue borders, blue text, blue vector b)",
+      "#CC0000 (red title-adjacent accents, red vector a, red borders, red cos(\u03b8), red Loss text)",
+      "#009900 (green \u03b8 labels and arcs)",
+      "#FFFFCC (pale-yellow circles and Maximize box)",
+      "#CCFFFF (cyan summary bar)",
+      "#FFCCCC (pink Loss box)",
+      "#FFFF00 (slide-number oval)"
+    ]
+  },
+  "typography_notes": "Title: bold sans-serif (Arial-like), ~32-36pt, red, title case with colon. Body/callout text: sans-serif ~16-18pt; key words bold ('normalized', 'Cosine Similarity is between -1 , +1'); 'dot' underlined; 'a' and 'b' bold in the cyan bar. Equations: italic serif (Times/Cambria-Math style) with bold-italic vector letters; 'a' and 'b' in the top-right box are underlined; stacked fractions with horizontal bars; superscript T for transpose. 'Normalize' in the arrow is red italic. 'Loss = -[Similarity]' is red bold. No traditional bullet glyphs anywhere \u2014 all content lives in bordered text boxes. Vector labels a, b, \u03b8 are bold italic.",
+  "animation_state": "No mid-build state; every element is fully visible. The gray pencil icon on the right circle is a presenter pen/cursor annotation, not a build artifact.",
+  "recreation_brief": "1. Canvas: create a 16:9 slide with a solid light-gray #D9D9D9 background.\n2. Border frame: add a no-fill rectangle with a dark-red #C00000 outline (~2.5pt) inset ~2% from all four edges, spanning the full slide.\n3. Title: text box at x 25-63%, y 8-17% (top center): 'Review: Cosine Similarity' in bold sans-serif (Arial-like) ~32pt, color #C00000, centered.\n4. Slide-number badge: oval at x 91-96%, y 8-16% (top-right corner), ~0.5in, fill #FFFF00, thin black outline, containing '23' in black ~14pt, centered.\n5. Left vector diagram at x 4-38%, y 18-75% (center ~x 21%, y 46%): (a) circle ~2.8in diameter, fill #FFFFCC, no outline; (b) black #000000 ~1.5pt horizontal and vertical axis lines through the circle center, arrowheads on both ends, extending past the circle edge; (c) blue #0000CC ~2.5pt vector arrow from the center pointing up-right at ~60-65 degrees above horizontal, length ~60% of the circle radius, labeled 'b' in blue bold italic ~18pt near the arrow; (d) red #CC0000 ~2.5pt vector arrow from the center pointing right at ~15-18 degrees above horizontal, length ~85% of the radius, labeled 'a' in red bold italic ~18pt near the arrow; (e) small green #009900 arc near the origin between the two vectors, labeled '\u03b8' in green bold italic ~18pt.\n6. Right vector diagram at x 51-85%, y 18-75% (center ~x 68%, y 46%): build exactly as step 5 except the blue vector 'b' points at ~55-60 degrees and the red vector 'a' at ~12-15 degrees above horizontal; include the same green '\u03b8' arc and the same labels. Do NOT draw the gray pencil cursor seen in the source video \u2014 it is a presenter pen annotation, not slide content.\n7. Normalize arrow: PowerPoint 'Right Block Arrow' shape at x 40-50%, y 42-53% (between the two circles), ~1.1in wide x ~0.45in tall, pointing right, fill #FFFFFF, outline #CC0000, containing 'Normalize' in red italic ~16pt.\n8. Normalization callout: rectangle at x 30-56%, y 18-33%, fill #FFFFFF, border #0000CC ~2pt; three centered lines in black ~16pt sans-serif: line 1 'Vectors must be normalized' with the word 'normalized' in bold #0000CC; line 2 'before calculate similarity'; line 3 'Their Lengths = 1'.\n9. Top-right equations box: rectangle at x 77-97%, y 14-32%, fill #FFFFFF, border #0000CC ~2pt; two equation lines in italic serif ~18pt with stacked fractions: 'Normalized a = a/|a|' and 'Normalized b = b/|b|', vector letters a and b bold-italic and underlined.\n10. Bottom-center equations box: rectangle at x 30-56%, y 60-79%, fill #FFFFFF, border #0000CC ~2pt; two equation lines in italic serif: line 1 'a . b = a^T b = |a| |b| cos(\u03b8)' with bold-italic vector letters and black cos(\u03b8); line 2 'cos(\u03b8) = (a^T b)/(|a| |b|) = a^T b' with a stacked middle fraction and 'cos(\u03b8)' in bold red #CC0000.\n11. After Normalization box: rectangle at x 77-96%, y 58-71%, fill #FFFFFF, border #0000CC ~2pt; two lines in black ~16pt: 'After Normalization' then '|a| = |b| = 1' with bold-italic a and b.\n12. Summary bar: rectangle at x 5-95%, y 80-91%, fill #CCFFFF, border #0000CC ~2pt; line 1 'Cosine Similarity is between -1 , +1' in bold #0000CC ~20pt; line 2 'It is a dot product between two Normalized vectors a and b' in #0000CC ~16pt with 'dot' underlined and 'a', 'b' bold.\n13. Maximize box: rectangle at x 11-55%, y 92-100%, fill #FFFFCC, border #CC0000 ~2pt; text 'Maximize [Similarity] = Minimize -[Similarity]' in black sans-serif ~18pt.\n14. Loss box: rectangle at x 58-79%, y 92-100%, fill #FFCCCC, border #CC0000 ~2pt; text 'Loss = -[Similarity]' in red bold ~18pt.\n15. QA pass: verify every verbatim string matches exactly (including the spacing in 'between -1 , +1' and the wording 'before calculate similarity'), the Normalize arrow points left-to-right from the left circle toward the right circle, all four white boxes (callout, top-right equations, bottom-center equations, After Normalization) use #0000CC borders, and the Maximize and Loss boxes use #CC0000 borders.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Confirmed subtitle_or_header is genuinely absent (the title is the only header; no region defines a subtitle) and kept it null rather than inventing one.",
+      "Fixed contradiction in layout.regions 'Right vector diagram': content said 'Identical circle diagram' while visual_elements specifies different vector angles; region content now reads near-identical with blue b at ~55-60 degrees and red a at ~12-15 degrees above horizontal.",
+      "Clarified in visual_elements and layout.regions that the gray pencil cursor on the right diagram is a presenter pen annotation (per imagery and animation_state) and excluded it from the recreation checklist so the rebuilt slide contains only authored content.",
+      "Replaced the recreation_brief instruction 'Duplicate the entire diagram group' with explicit right-diagram angles so the builder constructs each diagram with its own specified angles instead of an exact copy.",
+      "Rewrote recreation_brief as a 15-step ordered checklist; each step places exactly one element with verbatim text, x/y position ranges, hex fill/border/text colors, shape type, and font size/style.",
+      "Verified full coverage: all 12 layout.regions map to the 11 visual_elements and to all 6 bullets, 8 labels, and 5 equations in verbatim_text; no orphan or missing elements.",
+      "Verified no vague quantifiers ('several', 'some', 'many', 'a few', 'various') exist; all counts are exact (6 bullets, 8 labels, 5 equations, 12 regions, 11 visual elements, 2 circle diagrams, 4 white blue-bordered boxes, 2 bottom accent boxes, 3 callout lines, 2 summary-bar lines)."
+    ],
+    "uncertain_items": [
+      "No [?] markers appear in the source JSON.",
+      "Font family and point sizes are estimates from typography_notes (Arial-like bold ~32-36pt title, ~16-18pt body, italic serif ~18pt equations); the checklist uses mid-range values.",
+      "Vector angles are ranges, not exact degrees (left diagram: b ~60-65, a ~15-18; right diagram: b ~55-60, a ~12-15 above horizontal).",
+      "The outline color of the yellow slide-number oval is not explicitly stated; black #000000 is assumed from its color list.",
+      "The gray pencil cursor is classified as a presenter annotation and excluded from recreation; re-add it only if video-frame artifact fidelity is required.",
+      "Frame border width (~2.5pt), circle diameter (~2.8in), block-arrow size (~1.1in x 0.45in), and oval size (~0.5in) are estimates, not measured values.",
+      "All x/y position ranges are vision-model estimates and may overlap slightly (e.g., callout box x 30-56% vs left diagram x 4-38%; badge y 8-16% vs top-right equations box y 14-32%); treat them as approximate placement guides."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_023.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 23,
+      "image": "slide_023.jpg",
+      "kept_frame": "frame_01621.jpg",
+      "start_sec": 1620.0,
+      "end_sec": 1827.0,
+      "frame_count": 208,
+      "founder_frame_swap": true,
+      "original_kept_frame": "frame_01828.jpg"
+    },
+    "elapsed_s": 279.3,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 722.6
+  }
+}

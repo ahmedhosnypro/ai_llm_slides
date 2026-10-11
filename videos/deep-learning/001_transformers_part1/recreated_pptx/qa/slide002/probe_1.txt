@@ -1,0 +1,31 @@
+# Visual QA Analysis â Slide 002 Recreation Probe
+
+## 1. Verbatim Text Transcription
+
+| Location | Text (exact) | Style |
+|---|---|---|
+| Top-right circle | `2` | Black, sans-serif, small |
+| Main title (line 1) | `Transformers` | Very large, bold, dark red, sans-serif |
+| Main title (line 2) | `Part I` | Medium-large, bold, dark red, sans-serif |
+| Subtitle | `Aug. 2020` | Small, bold, *italic*, dark red, sans-serif |
+
+No other text is present. All text is in English; no garbage strings, placeholders, or foreign-language text detected. Nothing is illegible.
+
+## 2. Layout Description
+
+- **Overall frame:** A light-gray (â gainsboro, #D9D9D9) filled rectangle with a thin dark-red border occupies most of the slide. A white margin is visible around it on the left, right, and top.
+- **TOP:** White margin strip (~4â5% of slide height), then the red border, then empty gray. At the top-right, inside the gray area, sits a **yellow circle with a purple/indigo outline containing the number "2"** (a slide-number badge). It is fully inside the frame and does not touch the border.
+- **CENTER:** A vertically stacked, horizontally centered text block:
+  - `Transformers` â dominant title, spanning roughly the middle third of the width.
+  - `Part I` â centered beneath it, noticeably smaller.
+  - `Aug. 2020` â smaller still, bold italic, centered beneath "Part I".
+  - The block sits slightly above the vertical midpoint of the gray area.
+- **LEFT EDGE:** White margin â red border â empty gray; no content.
+- **RIGHT EDGE:** White margin â red border â empty gray, except the "2" badge at the top-right corner.
+- **BOTTOM:** The red bottom border line runs across the full width at the very bottom of the image; the lower ~40% of the gray area is otherwise completely empty.
+
+## 3. Visual Defects / Anomalies
+
+1. **Asymmetric vertical margins / bottom-border clipping risk:** The top white margin is substantial (~90 px at this resolution), but the bottom red border sits nearly flush with the bottom edge of the image, with little to no white margin below it. The background rectangle appears shifted downward (or oversized), so the frame is very close to being cut off at the bottom.
+2. **Large empty region:** The bottom half of the slide is entirely blank. Not a rendering error per se, but the content block is top-weighted relative to the frame.
+3. **No other defects found:** No clipped or overlapping text, no truncation, no placeholder strings, no missing glyphs. The "2" badge is fully rendered and unobstructed.

@@ -1,0 +1,193 @@
+{
+  "slide_title": "Encoder \u2013 Decoder Transformer",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Decoder Output (at step \u201ct-1\u201d)\nIs supplied as Decoder Input (at step \u201ct\u201d)",
+      "First Decoder Block\nNo Input from Encoder Attention",
+      "Input Positional Encoder\n(Position of Input Word within the Input Sequence)",
+      "Output Positional Encoder\n(Position of Output Word within the Output Sequence)"
+    ],
+    "labels": [
+      "17",
+      "Encoder",
+      "Decoder",
+      "Output Probabilities",
+      "Softmax",
+      "Linear",
+      "Add & Norm",
+      "Feed Forward",
+      "Multi-Head Attention",
+      "Masked Multi-Head Attention",
+      "N x",
+      "V",
+      "K",
+      "Q",
+      "Positional Encoding",
+      "Input Embedding",
+      "Output Embedding",
+      "Inputs",
+      "Outputs",
+      "(shifted right)"
+    ],
+    "equations": [
+      "N x",
+      "\u201ct-1\u201d",
+      "\u201ct\u201d"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top with a yellow slide-number badge at top-right; below, two columns: left column (~45% width) stacks four colored annotation callout boxes vertically; right column (~40% width) holds a full-height Transformer architecture flowchart inside a green-bordered frame subdivided into an Encoder panel (left) and Decoder panel (right).",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~15%-80% width, ~6%-17% height",
+        "content": "Red bold title 'Encoder \u2013 Decoder Transformer'"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, ~89%-97% width, ~8%-17% height",
+        "content": "Yellow circle containing the number 17"
+      },
+      {
+        "name": "Callout column",
+        "position": "left, ~8%-56% width, ~20%-97% height",
+        "content": "Four stacked annotation boxes: yellow (decoder input rule), pink (first decoder block note), tan (input positional encoder), tan (output positional encoder)"
+      },
+      {
+        "name": "Transformer diagram",
+        "position": "right, ~59%-97% width, ~17%-98% height",
+        "content": "Green-framed Encoder/Decoder architecture flowchart with embedding, positional encoding, attention, Add & Norm, feed-forward, linear, softmax nodes and red arrows"
+      }
+    ],
+    "hierarchy": "The red title is the largest/boldest text; the diagram dominates by area (right half, full height); callout boxes are medium bold text; diagram node labels are the smallest; yellow highlights, red block arrows and the red dashed feedback loop are the strongest attention cues inside the diagram."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "Transformer architecture diagram in a green-bordered rounded frame split into two panels: LEFT panel labeled 'Encoder' (red italic, top-left) with pale peach fill; RIGHT panel labeled 'Decoder' (green italic, top-right) with pale green fill. ENCODER STACK (bottom to top): bold text 'Inputs' with a thick red up block-arrow into tan box 'Input Embedding'; thin black arrow up to a circle containing a \u2295-style symbol labeled 'Positional Encoding' (two-line label at its left); arrow up into tan box 'Multi-Head Attention' whose bottom receives three small letter-circles V (blue), K (blue), Q (red) all fed from the positional-encoding output (self-attention); arrow up to tan box 'Add & Norm'; arrow up to tan box 'Feed Forward'; arrow up to tan box 'Add & Norm'. A gray circle 'N x' sits at mid-height left of this stack (repeat notation). From the top 'Add & Norm', V (blue) and K (blue) branch rightward into the decoder \u2014 these crossing paths are emphasized with a yellow highlight band. DECODER STACK (bottom to top): bold text 'Outputs' (yellow-highlighted) with '(shifted right)' beneath it; thick red up block-arrow into dark-red box 'Output Embedding'; arrow up to a \u2295 circle labeled 'Positional Encoding' (two-line label at its right); arrow up into purple box 'Masked Multi-Head Attention' with V (blue), K (blue), Q (red) circles at its bottom; arrow up to tan 'Add & Norm'; arrow up to tan 'Multi-Head Attention' receiving V (blue) and K (blue) from the encoder (yellow-highlighted paths) and Q (red) from below; arrow up to tan 'Add & Norm'; arrow up to tan 'Feed Forward'; arrow up to tan 'Add & Norm'; gray circle 'N x' at right of the stack; arrow up to light-green box 'Linear'; arrow up to light-green box 'Softmax'; arrow up to bold text 'Output Probabilities' with a thick red up block-arrow. A red DASHED curved arrow runs from 'Output Probabilities' down the right edge to 'Outputs (shifted right)' (autoregressive feedback loop). 'Add & Norm' appears 5 times total (2 in encoder, 3 in decoder); 'Feed Forward' 2 times; 'Multi-Head Attention' 2 times; 'N x' 2 times; 'Positional Encoding' 2 times.",
+      "colors": [
+        "#00B050",
+        "#FBE5D6",
+        "#D8F0D8",
+        "#C7A17A",
+        "#7B4B2A",
+        "#B28FCE",
+        "#C0504D",
+        "#C5E0B4",
+        "#548235",
+        "#0000FF",
+        "#FF0000",
+        "#BFBFBF",
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "right half of slide, ~59%-97% width, ~17%-98% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Yellow rectangle callout, two centered bold dark-blue lines: 'Decoder Output (at step \u201ct-1\u201d)' / 'Is supplied as Decoder Input (at step \u201ct\u201d)'. Annotates the autoregressive decoder input rule.",
+      "colors": [
+        "#FFFF00",
+        "#00008B"
+      ],
+      "position": "left column, first box, ~8%-56% width, ~21%-33% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pink rectangle callout, two centered bold lines: 'First Decoder Block' (purple) / 'No Input from Encoder Attention' (red).",
+      "colors": [
+        "#F9A8F0",
+        "#9900CC",
+        "#C00000"
+      ],
+      "position": "left column, second box, ~17%-51% width, ~39%-50% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Tan rectangle callout, two centered bold dark-red lines: 'Input Positional Encoder' / '(Position of Input Word within the Input Sequence)'.",
+      "colors": [
+        "#C7A17A",
+        "#943634"
+      ],
+      "position": "left column, third box, ~8%-56% width, ~62%-73% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Tan rectangle callout, two centered bold dark-red lines: 'Output Positional Encoder' / '(Position of Output Word within the Output Sequence)'.",
+      "colors": [
+        "#C7A17A",
+        "#943634"
+      ],
+      "position": "left column, fourth (bottom) box, ~8%-56% width, ~86%-96% height"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: yellow circle with thin dark outline containing bold '17'.",
+      "colors": [
+        "#FFFF00",
+        "#333333"
+      ],
+      "position": "top right corner"
+    },
+    {
+      "type": "arrow",
+      "description": "Thick red block arrows pointing up at 'Inputs' (bottom of encoder) and at 'Output Probabilities' (top of decoder) and above 'Inputs'/'Outputs'; plus a long red dashed curved arrow from 'Output Probabilities' down the right edge to 'Outputs (shifted right)'. Thin black arrows connect all stacked nodes.",
+      "colors": [
+        "#C00000",
+        "#FF0000",
+        "#000000"
+      ],
+      "position": "within the diagram: bottom left, top right, right edge"
+    },
+    {
+      "type": "other",
+      "description": "Yellow highlight overlays: an L-shaped/band highlight running from the encoder's top output area along the V and K paths into the decoder's second 'Multi-Head Attention', and a rectangular highlight behind the 'Outputs (shifted right)' label at the diagram's bottom.",
+      "colors": [
+        "#FFFF00"
+      ],
+      "position": "diagram middle (encoder-to-decoder crossing) and diagram bottom right"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations. Icon-like elements only: two circles containing \u2295-style positional-encoding addition symbols (one per panel); nine small colored letter-circles labeled V (blue), K (blue), Q (red); two gray 'N x' repeat badges; thick red block arrows; red dashed curved feedback arrow."
+  ],
+  "colors": {
+    "background": "#E7E7E7",
+    "title_text": "#C00000",
+    "body_text": "#1A1A1A",
+    "accents": [
+      "#FFFF00",
+      "#00008B",
+      "#9900CC",
+      "#F9A8F0",
+      "#C7A17A",
+      "#943634",
+      "#00B050",
+      "#FBE5D6",
+      "#D8F0D8",
+      "#B28FCE",
+      "#C0504D",
+      "#C5E0B4",
+      "#0000FF",
+      "#FF0000",
+      "#BFBFBF"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Calibri-like). Title ~36-40pt bold, red, centered, with spaced en dash. Callout text ~16-18pt bold, centered, two lines per box. Diagram node labels ~9-11pt regular black; panel labels 'Encoder' and 'Decoder' bold italic; 'Inputs', 'Outputs', 'Output Probabilities' bold. Slide number bold. No all-caps styling, no italics in body callouts, no numbered bullets \u2014 the left column uses colored filled rectangles instead of bulleted text.",
+  "animation_state": "Slide appears fully built \u2014 all four callouts and the complete diagram (including the dashed feedback arrow and yellow highlights) are visible; no mid-build state detected. [?] Very faint thin gray leader lines may run from the yellow and pink callouts toward the decoder panel, but they are barely visible.",
+  "recreation_brief": "1. Set a 16:9 slide with background #E7E7E7 and add a thin (2pt) dark-gray rectangle border around the slide edge. 2. Add a centered text box at top (~y 6%-17%): 'Encoder \u2013 Decoder Transformer', Arial bold 40pt, color #C00000. 3. Add a 0.6-inch yellow (#FFFF00) circle with thin gray outline at top right containing bold '17' (#333333, 14pt). 4. Callout 1: rectangle at x 8%-56%, y 21%-33%, fill #FFFF00, centered bold 18pt #00008B text on two lines: 'Decoder Output (at step \u201ct-1\u201d)' / 'Is supplied as Decoder Input (at step \u201ct\u201d)'. 5. Callout 2: rectangle at x 17%-51%, y 39%-50%, fill #F9A8F0; line 1 'First Decoder Block' bold 18pt #9900CC; line 2 'No Input from Encoder Attention' bold 16pt #C00000. 6. Callout 3: rectangle at x 8%-56%, y 62%-73%, fill #C7A17A; line 1 'Input Positional Encoder' bold 18pt #943634; line 2 '(Position of Input Word within the Input Sequence)' bold 14pt #943634. 7. Callout 4: identical style at y 86%-96% with 'Output Positional Encoder' / '(Position of Output Word within the Output Sequence)'. 8. Diagram frame: rounded rectangle x 59%-97%, y 17%-98%, 2.5pt #00B050 border; inside it place a left panel rectangle (fill #FBE5D6) and right panel rectangle (fill #D8F0D8); add bold italic labels 'Encoder' (#C00000) at the left panel's top-left and 'Decoder' (#00B050) at the right panel's top-right. 9. Build the ENCODER stack bottom-to-top with thin black connectors: bold 'Inputs' + thick red up block-arrow \u2192 tan (#C7A17A, border #7B4B2A) box 'Input Embedding' \u2192 small circle with \u2295 symbol, two-line label 'Positional Encoding' at its left \u2192 tan box 'Multi-Head Attention' with three 0.25-inch circles beneath it fed from the \u2295 circle: V (#0000FF), K (#0000FF), Q (#FF0000), white bold letters \u2192 tan 'Add & Norm' \u2192 tan 'Feed Forward' \u2192 tan 'Add & Norm'. Place a gray (#BFBFBF) circle 'N x' left of the stack at mid-height. 10. Build the DECODER stack bottom-to-top: bold 'Outputs' with a yellow (#FFFF00) highlight rectangle behind it and '(shifted right)' below \u2192 thick red up block-arrow \u2192 dark-red (#C0504D) box 'Output Embedding' \u2192 \u2295 circle with 'Positional Encoding' label at its right \u2192 purple (#B28FCE) box 'Masked Multi-Head Attention' with V/K/Q circles below \u2192 tan 'Add & Norm' \u2192 tan 'Multi-Head Attention' \u2192 tan 'Add & Norm' \u2192 tan 'Feed Forward' \u2192 tan 'Add & Norm'; gray 'N x' circle at the stack's right; then light-green (#C5E0B4, border #548235) boxes 'Linear' \u2192 'Softmax' \u2192 bold 'Output Probabilities' with a thick red up block-arrow. 11. Cross-connections: from the encoder's top 'Add & Norm' output draw two thin black lines rightward into the decoder 'Multi-Head Attention' bottom, ending in blue V and blue K circles; place a yellow L-shaped highlight rectangle behind these paths (send to back); feed that box's red Q circle from the decoder's own lower stream. 12. Feedback loop: draw a red (#C00000) dashed curved connector from 'Output Probabilities' down outside the right edge to 'Outputs (shifted right)', arrowhead at the bottom. 13. Optionally add faint gray leader lines from callouts 1 and 2 toward the decoder panel.",
+  "_meta": {
+    "frame": "slide_017.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 17,
+      "image": "slide_017.jpg",
+      "kept_frame": "frame_01034.jpg",
+      "start_sec": 1020.0,
+      "end_sec": 1033.0,
+      "frame_count": 14
+    },
+    "elapsed_s": 230.6
+  }
+}

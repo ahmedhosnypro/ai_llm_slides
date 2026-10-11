@@ -1,0 +1,153 @@
+{
+  "slide_title": "Sin/Cos Positional Encoder",
+  "subtitle_or_header": "Vector of Dimension \"2\" to define Position",
+  "verbatim_text": {
+    "bullets": [
+      "This vector can be used to define word position at step \"t\" , t=0,1,2,3,4,5,6,7,....",
+      "Values are between -1 and 1 (bounded values)",
+      "Distance between vectors representing positions \"t\" and \"t+1\"  is constant irrespective of \"t\"  [Distance (Pos1, Pos2) = Distance (Pos90, Pos91)]",
+      "\"t\" may take any positive value (No limitation of length of Sequence )",
+      "Position Vector Length = 2  (Cannot be combined with Word Embedding Vector) ??"
+    ],
+    "labels": [
+      "32 (slide number inside yellow circle, top-right corner)",
+      "sin(\u03c9t)",
+      "cos(\u03c9t)",
+      "Where \"t\" is the step (position) and \u03c9 is the frequency of trigonometric function Sine/Cosine"
+    ],
+    "equations": [
+      "[ sin(\u03c9t) ; cos(\u03c9t) ]  (2-component column vector with large square brackets)",
+      "t = 0,1,2,3,4,5,6,7,....",
+      "Distance (Pos1, Pos2) = Distance (Pos90, Pos91)",
+      "Position Vector Length = 2"
+    ]
+  },
+  "layout": {
+    "arrangement": "Centered red title at very top, centered blue subtitle directly beneath it. Below that, a left-hand red-bordered vector box [sin(\u03c9t); cos(\u03c9t)] sits beside a wide yellow definition callout box. The remaining ~60% of the slide is one large pale-cyan panel with navy border containing an italic lead-in line and four bullet/continuation lines. Yellow circular slide-number badge '32' at top-right. Thin dark-red frame line runs along the slide's outer edge (visible top and left). A black letterbox strip runs along the very bottom of the video frame (not slide content).",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~y 7-13%, x 25-75%",
+        "content": "Red bold text 'Sin/Cos Positional Encoder'"
+      },
+      {
+        "name": "Subtitle",
+        "position": "top center, ~y 13-19%, x 22-78%",
+        "content": "Blue bold text 'Vector of Dimension \"2\" to define Position'"
+      },
+      {
+        "name": "Vector box",
+        "position": "upper-left, ~x 8-21%, y 18-36%",
+        "content": "Red-bordered white box containing column vector sin(\u03c9t) over cos(\u03c9t) in red with large brackets"
+      },
+      {
+        "name": "Definition callout",
+        "position": "upper center-right, ~x 22-90%, y 21-31%",
+        "content": "Yellow-filled box with orange border; black text with red 't' and red '\u03c9'"
+      },
+      {
+        "name": "Main content panel",
+        "position": "middle to bottom, ~x 8-92%, y 38-95%",
+        "content": "Pale-cyan rectangle, navy border, holding the italic lead-in sentence and all bullets with yellow highlights, green parentheticals, and red closing warning"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top-right corner, ~x 88-95%, y 9-17%",
+        "content": "Yellow circle with dark outline containing '32'"
+      },
+      {
+        "name": "Letterbox strip",
+        "position": "bottom edge, ~y 97-100%, full width",
+        "content": "Solid black bar (video frame artifact, not slide content)"
+      }
+    ],
+    "hierarchy": "Title (red, bold, largest) > subtitle (blue, bold) > bullet body text (blue, bold, slightly smaller) > green parenthetical remarks (regular weight) ; yellow highlights are the strongest attention devices within the body; the final red line '(Cannot be combined with Word Embedding Vector) ??' reads as a warning/emphasis close."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Column-vector box: white rectangle with medium red border; inside, a 2x1 mathematical vector with large square brackets, top element 'sin(\u03c9t)', bottom element 'cos(\u03c9t)', both in red",
+      "colors": [
+        "#C00000",
+        "#FFFFFF"
+      ],
+      "position": "upper-left, left of the definition callout"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Definition callout: wide rectangle filled pale yellow with orange/brown border; text 'Where \"t\" is the step (position) and \u03c9 is the frequency of trigonometric function Sine/Cosine' with 't' and '\u03c9' colored red, rest black",
+      "colors": [
+        "#FFFFCC",
+        "#CC6600",
+        "#000000",
+        "#C00000"
+      ],
+      "position": "upper center-right, to the right of the vector box"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Main content panel: very large rectangle filled pale cyan with a navy/blue border; contains all bullets; bullet markers are small '>' chevrons in dark gray/black; several phrases carry yellow highlighter; some text green, some red",
+      "colors": [
+        "#E0F7FA",
+        "#000080",
+        "#FFFF00",
+        "#0000CC",
+        "#009900",
+        "#C00000"
+      ],
+      "position": "center, spanning almost full slide width below the header area"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: yellow filled circle with thin dark outline, text '32' in dark red/maroon",
+      "colors": [
+        "#FFFF00",
+        "#808000",
+        "#800000"
+      ],
+      "position": "top-right corner"
+    },
+    {
+      "type": "other",
+      "description": "Thin dark-red/maroon frame line along the outer edge of the slide (clearly visible along top and left edges)",
+      "colors": [
+        "#800000"
+      ],
+      "position": "slide perimeter"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations. Only a white mouse-pointer cursor arrow visible over the main panel near the text '[Distance (Pos1, Pos2) = Distance (Pos90, Pos91)]' \u2014 a video-capture artifact, not slide content."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#C00000",
+    "body_text": "#0000CC",
+    "accents": [
+      "#FFFF00",
+      "#009900",
+      "#C00000",
+      "#E0F7FA",
+      "#000080",
+      "#FFFFCC",
+      "#CC6600"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout (Arial/Calibri-like). Title and subtitle bold; body text predominantly bold with italic used on the lead-in sentence and phrases like 'irrespective of \"t\"'. Variables 't' and '\u03c9' set in red and quoted. Yellow highlighter behind key phrases. Green used for parenthetical/secondary remarks. Bullets are '>' chevron glyphs, not standard round bullets. Slide number in a circled badge.",
+  "animation_state": "Slide appears fully built \u2014 all bullets and boxes revealed. A mouse cursor hovers over the main panel, indicating a narrated video capture rather than a mid-build state.",
+  "recreation_brief": "1. Create a 16:9 slide with white background; add a thin dark-red (#800000) rectangle outline flush to the slide edges as a frame. 2. Top center: text box with 'Sin/Cos Positional Encoder', Arial bold ~32pt, red #C00000. 3. Directly below: 'Vector of Dimension \"2\" to define Position', Arial bold ~24pt, blue #2222CC, centered. 4. Upper-left (~8% from left, 18% from top): insert a white rectangle with 2pt red #C00000 border (~13% wide, 18% tall); inside, place a 2-row column vector using large bracket characters or an equation object: sin(\u03c9t) on top, cos(\u03c9t) below, red #C00000, ~18pt. 5. To its right (~22%-90% width, 21%-31% height): rectangle filled #FFFFCC with 1.5pt #CC6600 border; text 'Where \"t\" is the step (position) and \u03c9 is the frequency of trigonometric function Sine/Cosine' in black ~16pt, coloring 't' and '\u03c9' red #C00000. 6. Top-right corner: oval ~5% wide filled #FFFF00 with thin dark outline, text '32' in dark red #800000. 7. Main area (~8%-92% width, 38%-95% height): rectangle filled #E0F7FA with 1.5pt navy #000080 border. 8. Inside the panel, one text frame with chevron '>' bullets, blue #0000CC bold ~17pt: line 1 (italic, no bullet): 'This vector can be used to define word position at step \"t\" , t=0,1,2,3,4,5,6,7,....' 9. Bullet 1: 'Values are ' + highlighted-yellow 'between -1 and 1' + green ' (bounded values)'. 10. Continuation line (no marker): 'Distance' (yellow-highlighted) + ' between vectors representing positions ' + yellow-highlighted '\"t\" and \"t+1\"' + '  is constant irrespective of \"t\"  ' (italic) + green '[Distance (Pos1, Pos2) = Distance (Pos90, Pos91)]'. 11. Bullet 2: yellow-highlighted '\"t\" may take any positive value' + green ' (No limitation of length of Sequence )'. 12. Bullet 3: 'Position Vector Length = 2  ' in blue bold + '(Cannot be combined with Word Embedding Vector) ??' in red #C00000 bold. 13. Leave generous spacing between bullet groups as in the original; do not add images.",
+  "_meta": {
+    "frame": "slide_032.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 32,
+      "image": "slide_032.jpg",
+      "kept_frame": "frame_02168.jpg",
+      "start_sec": 2121.0,
+      "end_sec": 2167.0,
+      "frame_count": 47,
+      "old_slide": 64
+    },
+    "elapsed_s": 157.1
+  }
+}

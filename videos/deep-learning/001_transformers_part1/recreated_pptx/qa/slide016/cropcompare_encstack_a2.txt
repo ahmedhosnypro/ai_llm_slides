@@ -1,0 +1,32 @@
+## Pre-flight: settling the ground rules
+
+(a) House chrome (red frame, yellow badge, title boxes) â out of scope; the yellow region and red-dashed annotation visible at the top/right of both crops are present in BOTH images and are not scored. (b) No mouse-cursor artifacts affected the comparison. (c) Typed-vs-handwritten rendering: both crops use typed labels, so no medium penalty. (d) Verdict covers renderable content only.
+
+## Element-by-element comparison
+
+**1. Outer container** â Large brown/tan rounded rectangle present in both, similar proportions, similar border weight and corner radius, spine entering from the top edge and exiting the bottom edge in both.**2. Two sub-block units (the previous-attempt defect check)** â Previously everything was merged into one rectangle with divider lines only. In this attempt:
+- Upper unit: "Add & Norm" rounded box + rule + "Feed Forward" rounded box, all at the same width, reading as one distinct grouped unit. Lower unit: "Add & Norm" rounded box + thin double rule + "Multi-Head Attention" rounded box, same width, clearly separated from the upper unit by a generous gap of container fill. two units are now structurally distinct with their own outlines around the Add & Norm sections and the layer boxes â the merged-rectangle defect is FIXED. The box/rule/box rendering matches the original's visual pattern (same-width stacked rounded boxes with a rule between).**3. Text verbatim and line breaks** â "Add & Norm" (one line) Ã2; "Feed Forward" broken as "Feed" / "Forward" (two lines); "Multi-Head" / "Attention" (two lines). All verbatim, all line breaks correct. (MINOR: recreation labels are slightly larger/bolder relative to their boxes than the original â confidence medium.)
+
+**4. Fills** â Container tan; Feed Forward box gray-toned (recreation runs slightly warmer/tanner than the original's cooler gray-green â MINOR, confidence medium); Multi-Head Attention box gold/tan, correctly darker than the container; Add & Norm boxes tan/g MATCH with one MINOR.
+
+**5. Residual line + spine** â Vertical residual line on the left present; center spine segments present (topâupper unit, between units, lower unitâbottom). Elbow takeoff between the units joining the residual line to the spine is present at the correct relative height (~45â48% down.
+- MINOR: original shows small arrowheads where the residual feeds the "Add & Norm" boxes (and on the spine); the recreation's straight residual line and elbow carry no arrowheads (confidence medium-high).
+- MINOR: recreation's residual line terminates beside the upper "Add & Norm" without the elbow/arrow connection into it (confidence medium).
+
+**6. V/K/Q circles** â Three circles at the bottom: V blue, K blue, Q dark red. Relative x-positions within the container match closely (V â36%, K â67%, Q â86% of container width in both.
+
+**7. Nx oval + arrow** â Tan oval with brown border at the left edge, vertically at ~54% height in both, with a small gray/dark arrow pointing into it from the left. (MINOR: recreation's arrow is gray and slightly heavier than the original's small dark arrow â confidence medium.)
+
+## Discrepancy summary
+
+| # | Discrepancy | Severity | Confidence |
+|---|---|---|---|
+| 1 | Missing arrowheads on residual/spine connections | MINOR | medium-high |
+| 2 | Residual line doesn't elbow/arrow into upper "Add & Norm" | MINOR | medium |
+| 3 | Feed Forward fill slightly warmer than original's gray-green | MINOR | medium |
+| 4 | Label text slightly larger/bolder relative to boxes | MINOR | medium |
+| 5 | Nx arrow gray/heavier than original's small dark arrow | MINOR | medium |
+
+No BLOCKER or MAJOR discrepancies. All structural elements, text, line breaks, fills, colors, and positions correspond; the previously flagged merged-rectangle defect is resolved.
+
+FINAL VERDICT: PASS

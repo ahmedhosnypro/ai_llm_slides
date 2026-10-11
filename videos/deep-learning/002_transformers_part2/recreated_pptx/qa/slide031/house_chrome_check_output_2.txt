@@ -1,0 +1,24 @@
+HOUSE CHROME CHECK: FAIL
+  - panel top 452 vs 94 (tol 8)
+  - panel bottom 1077 does not reach slide bottom 1125
+  - bottom red stroke missing/not across
+HOUSE CHROME CHECK: FAIL
+  - panel left 54 vs 42 (tol 8)
+  - panel right 906 vs 918 (tol 8)
+  - panel top 217 vs 45 (tol 8)
+  - panel bottom 252 does not reach slide bottom 540
+  - bottom red stroke missing/not across
+  - left red border stroke missing at mid-height
+  - right red border stroke missing at mid-height
+  - badge center (876,71) vs (893,71) (tol 8)
+
+=== OCCLUSION NOTE (attempt 2, worker 2026-10-11) ===
+The three generic-checker failures above appear IDENTICALLY when the checker runs on
+the ORIGINAL frame itself (second block above): the left sample band x44..64 px is
+covered by per-slide content (left vector panel x66..204, banner strip, derivation
+panel x62..857) in both images, and the solid black footer bar y518..539 (002 deck
+template band, KEPT per slide_031_source/SOURCES.md addendum #1) covers the panel
+bottom and the bottom red stroke. The chrome itself (gray panel slivers, red
+left/right/top strokes, badge FDFD96/6A5ACD d36 at (893,71), numeral 31) is verified
+PRESENT within tolerance by the content-aware adapted chrome section of
+selfcheck_attempt_2.py (ALL PASS). Build fix is not indicated; proceeding to judge.

@@ -1,0 +1,255 @@
+{
+  "slide_title": "Feed Forward Neural Network",
+  "subtitle_or_header": "Feed Forward Network for each Vector (After applying Normalization)",
+  "verbatim_text": {
+    "bullets": [
+      "Feed Forward Network for each Vector (After applying Normalization)",
+      "One Hidden Layer with RELU Activation,        [Size: at least double Input dimension]",
+      "Linear Activation Output Layer        [Size: same Input Vector dimension]"
+    ],
+    "labels": [
+      "45",
+      "Feed Forward Networks [ One Hidden with  RELU Activation]",
+      "RELU (small red label repeated on each of the 8 mini-network icons)",
+      "Layer Normalization",
+      "Multi Head Self Attention Block",
+      "Output of Self Attention",
+      "Residual Connections",
+      "Input to Self Attention",
+      "Y_1, Y_2, Y_3, Y_4, Y_5, Y_6, [5 blue ellipsis dots], Y_{N-1}, Y_N  (top output row)",
+      "Y_1, Y_2, Y_3, Y_4, Y_5, Y_6, [5 blue ellipsis dots], Y_{N-1}, Y_N  (middle row, input to FFN)",
+      "Y_1, Y_2, Y_3, Y_4, Y_5, Y_6, [5 blue ellipsis dots], Y_{N-1}, Y_N  (row inside green dashed box, output of self attention)",
+      "X_1, X_2, X_3, X_4, X_5, X_6, [5 green ellipsis dots], X_{N-1}, X_N  (bottom input row)",
+      "Word_Embedding + Positional_Information"
+    ],
+    "equations": [
+      "Word_Embedding + Positional_Information",
+      "[Size: at least double Input dimension]",
+      "[Size: same Input Vector dimension]"
+    ]
+  },
+  "layout": {
+    "arrangement": "Red serif title centered at top with a yellow circular slide-number badge '45' at the top-right corner. Below the title, a full-width pale-yellow highlight box with blue border holds three lines of blue/red annotation text. The remaining ~65% of the slide is one large blue-bordered architecture diagram read bottom-to-top: X vector row at bottom, yellow caption strip under it, a dark-blue 'Multi Head Self Attention Block' bar, blue up-arrows, a Y vector row inside a green dashed container that also holds red '+' circles and a gray 'Layer Normalization' bar, a second Y vector row, a blue-bordered 'Feed Forward Networks' box containing 8 mini network icons, and a final top Y vector row. Three two-line text labels ('Output of Self Attention' blue, 'Residual Connections' orange, 'Input to Self Attention' red) run down the left margin outside the diagram, each aligned with its corresponding diagram feature. A thin black strip spans the very bottom edge (likely captured video-player progress bar).",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~25%-75% width, ~2%-12% height",
+        "content": "'Feed Forward Neural Network' in large bold red serif text"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, ~89%-96% width, ~4%-12% height",
+        "content": "yellow circle with black border containing '45'"
+      },
+      {
+        "name": "Annotation box",
+        "position": "top, ~9%-91% width, ~13%-28% height",
+        "content": "pale-yellow box, blue border, three lines of bold blue text with red parenthetical/bracketed emphasis"
+      },
+      {
+        "name": "Main diagram frame",
+        "position": "middle/bottom, ~6%-94% width, ~28%-96% height",
+        "content": "blue-bordered white panel containing the entire transformer-block flowchart"
+      },
+      {
+        "name": "Top Y row (FFN outputs)",
+        "position": "~30%-36% height, spanning diagram width",
+        "content": "8 labeled colored vector stacks Y_1..Y_6, Y_{N-1}, Y_N with 5 blue ellipsis dots between Y_6 and Y_{N-1}"
+      },
+      {
+        "name": "Feed Forward Networks box",
+        "position": "~36%-48% height, ~16%-93% width",
+        "content": "blue-bordered box titled 'Feed Forward Networks [ One Hidden with  RELU Activation]' containing 8 small fan-shaped network icons (6 left, 5 blue dots, 2 right), each tagged 'RELU' in red"
+      },
+      {
+        "name": "Middle Y row (FFN inputs)",
+        "position": "~48%-53% height",
+        "content": "same 8 vector stacks Y_1..Y_N with blue ellipsis dots"
+      },
+      {
+        "name": "Green dashed normalization group",
+        "position": "~53%-72% height, ~15%-93% width",
+        "content": "green dashed rounded rectangle enclosing, top to bottom: wide gray 'Layer Normalization' bar; row of 8 dark-red '+' circles; Y_1..Y_N vector row with blue ellipsis dots; thin green up-arrows connect Y row to '+' circles and '+' circles to the Layer Norm bar"
+      },
+      {
+        "name": "Left margin labels",
+        "position": "left edge, ~6%-16% width, ~68%-91% height",
+        "content": "three stacked two-line bold labels: 'Output of Self Attention' (blue), 'Residual Connections' (orange), 'Input to Self Attention' (red)"
+      },
+      {
+        "name": "Multi Head Self Attention Block",
+        "position": "~77%-85% height, ~16%-93% width",
+        "content": "solid dark-blue horizontal bar with centered white bold text 'Multi Head Self Attention Block'"
+      },
+      {
+        "name": "X input row",
+        "position": "~88%-93% height",
+        "content": "8 labeled vector stacks X_1..X_6, X_{N-1}, X_N with 5 green ellipsis dots between X_6 and X_{N-1}"
+      },
+      {
+        "name": "Bottom caption",
+        "position": "bottom center of diagram, ~27%-58% width, ~93%-96% height",
+        "content": "red bold italic text 'Word_Embedding + Positional_Information' on yellow highlight"
+      },
+      {
+        "name": "Black bottom strip",
+        "position": "full width, ~96%-100% height",
+        "content": "solid black bar (video-player scrubber artifact)"
+      }
+    ],
+    "hierarchy": "The red serif title is the largest text. The dark-blue attention bar is the heaviest single color mass and anchors the diagram. The pale-yellow annotation box is the secondary reading block. Diagram labels are small bold serif; vector-stack labels are smallest. Red is used for emphasis (title, X labels, '+', 'Layer', RELU tags), blue for structure (borders, attention block, arrows), green and orange only for flow/residual cues."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Pale-yellow rectangle with ~2px dark-blue border containing three text lines: line 1 'Feed Forward Network for each Vector' (blue bold) + '(After applying Normalization)' (red bold); line 2 'One Hidden Layer with RELU Activation,' (blue bold, RELU larger) + '[Size: at least double Input dimension]' (red brackets/'Size', blue body); line 3 'Linear Activation Output Layer' (blue, 'Linear' bold) + '[Size: same Input Vector dimension]' (red brackets/'Size', blue body)",
+      "colors": [
+        "#FFFFCC",
+        "#0000CC",
+        "#C00000"
+      ],
+      "position": "top, spanning most of slide width below title"
+    },
+    {
+      "type": "flowchart",
+      "description": "Bottom-to-top transformer encoder block: (1) bottom row of 8 input vector stacks X_1..X_N; (2) 8 blue block arrows pointing up into (3) solid dark-blue bar 'Multi Head Self Attention Block'; (4) 8 blue block arrows up to (5) Y_1..Y_N vector row; (6) 8 thin green up-arrows to (7) 8 dark-red circles each containing a white '+' (residual add nodes); (8) 8 orange curved arrows bowing outward from the Y row up to each '+' circle (skip connections); (9) green up-arrows from '+' circles into (10) full-width gray bar labeled 'Layer Normalization' ('Layer' red italic, 'Normalization' black bold); (11) resulting Y_1..Y_N row above the dashed container feeds (12) blue-bordered box 'Feed Forward Networks [ One Hidden with  RELU Activation]' holding 8 mini fan diagrams; (13) top output row Y_1..Y_N. Ellipsis dots (blue for Y rows/FFN box, green for X row) indicate N vectors total.",
+      "colors": [
+        "#00008B",
+        "#00B050",
+        "#990000",
+        "#E8A020",
+        "#D9D9D9",
+        "#C00000",
+        "#FFFFFF"
+      ],
+      "position": "entire lower ~65% of slide inside blue-bordered frame"
+    },
+    {
+      "type": "icon",
+      "description": "Vector stacks (32 total across 4 rows): each is a small vertical stack of 4 colored rectangles (top-to-bottom: pink, yellow, green, light blue) with a bold dark-red subscripted label beneath (Y_1...Y_N or X_1...X_N)",
+      "colors": [
+        "#F4B8C4",
+        "#FFE699",
+        "#C6E0B4",
+        "#BDD7EE",
+        "#990000"
+      ],
+      "position": "four horizontal rows within the diagram"
+    },
+    {
+      "type": "diagram",
+      "description": "8 identical mini feed-forward-network icons inside the FFN box: each a small white tile showing ~6 green dots along the bottom joined by thin black lines fanning/converging upward to a point, with tiny red text 'RELU' at the upper right; 5 blue ellipsis dots separate the 6th and 7th icons",
+      "colors": [
+        "#00B050",
+        "#C00000",
+        "#00008B",
+        "#FFFFFF"
+      ],
+      "position": "inside blue-bordered FFN box, ~36%-48% height"
+    },
+    {
+      "type": "bar",
+      "description": "'Layer Normalization' bar: long light-gray rounded rectangle spanning nearly the full diagram width, centered text 'Layer' (red, bold italic) + 'Normalization' (black bold)",
+      "colors": [
+        "#D9D9D9",
+        "#C00000",
+        "#000000"
+      ],
+      "position": "top of green dashed group, ~55%-60% height"
+    },
+    {
+      "type": "icon",
+      "description": "8 residual-add nodes: dark-red filled circles with white bold '+' centered, one above each vector column",
+      "colors": [
+        "#990000",
+        "#FFFFFF"
+      ],
+      "position": "row between Y row and Layer Normalization bar, ~61%-67% height"
+    },
+    {
+      "type": "arrow",
+      "description": "Three arrow families: (a) 16 stubby dark-blue block arrows pointing up (8 from X row into attention bar, 8 from attention bar into Y row); (b) 16 thin green up-arrows (8 from Y row to '+' circles, 8 from '+' circles to Layer Norm bar); (c) 8 semi-transparent orange curved arrows bowing outward from the output-of-self-attention Y row up to each '+' circle",
+      "colors": [
+        "#00008B",
+        "#00B050",
+        "#E8A020"
+      ],
+      "position": "throughout diagram connecting rows"
+    },
+    {
+      "type": "bar",
+      "description": "'Multi Head Self Attention Block': solid dark-navy-blue rectangle spanning diagram width with centered white bold serif text",
+      "colors": [
+        "#00008B",
+        "#FFFFFF"
+      ],
+      "position": "~77%-85% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Yellow-highlighted caption strip: red bold italic text 'Word_Embedding + Positional_Information' on bright yellow background, centered under the X row",
+      "colors": [
+        "#FFFF00",
+        "#C00000"
+      ],
+      "position": "bottom center of diagram"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: yellow circle, thin black outline, black serif numeral '45'",
+      "colors": [
+        "#FFD966",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    },
+    {
+      "type": "other",
+      "description": "Solid black horizontal strip across the entire bottom edge (video-player progress-bar artifact, not slide content)",
+      "colors": [
+        "#000000"
+      ],
+      "position": "very bottom, full width"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; all graphics are flat vector shapes: 32 colored vector-stack icons, 8 mini neural-network fan icons with green input dots, 8 red '+' circles, one gray normalization bar, one navy attention bar, colored arrows, and ellipsis dot rows"
+  ],
+  "colors": {
+    "background": "#F2F2F2",
+    "title_text": "#C00000",
+    "body_text": "#0000CC",
+    "accents": [
+      "#C00000",
+      "#00008B",
+      "#00B050",
+      "#E8A020",
+      "#990000",
+      "#FFFFCC",
+      "#FFFF00",
+      "#FFD966",
+      "#D9D9D9",
+      "#F4B8C4",
+      "#FFE699",
+      "#C6E0B4",
+      "#BDD7EE"
+    ]
+  },
+  "typography_notes": "Entirely serif (Times New Roman-like). Title: bold, ~36-40pt, red, title case. Annotation box: bold ~18-20pt; mixed intra-line color emphasis (blue base, red for '(After applying Normalization)' and '[Size: ...]' brackets); 'RELU' rendered larger/bold; 'Linear' bold. Diagram labels: bold ~12-14pt; 'Layer' is bold italic red; left-margin labels are two-line bold in blue/orange/red respectively; vector labels use subscripts (Y_1, X_N); bottom caption is bold italic red on yellow highlight; slide number is plain black serif in a badge.",
+  "animation_state": "Slide appears fully built; no bullets or diagram pieces are mid-reveal. The black strip at the very bottom is a video-player progress bar captured with the frame, not an animation state.",
+  "recreation_brief": "1. Set slide background to light gray (#F2F2F2), 16:9. 2. Add centered bold red (#C00000) serif title 'Feed Forward Neural Network' (~40pt) at top. 3. Top-right: insert a yellow (#FFD966) circle (~0.9in) with black outline and black serif text '45'. 4. Below title, insert a full-width (approx 9in x 1.1in) rectangle filled #FFFFCC with 2pt #0000CC border; inside place three left-aligned bold serif lines (~18pt): line 1 'Feed Forward Network for each Vector ' in #0000CC + '(After applying Normalization)' in #C00000; line 2 'One Hidden Layer with RELU Activation,' in #0000CC (make 'RELU' ~22pt) + tab/space + '[Size: at least double Input dimension]' with '[Size:' and ']' in #C00000 and inner text #0000CC; line 3 'Linear Activation Output Layer' in #0000CC ('Linear' bold) + '[Size: same Input Vector dimension]' colored as line 2. 5. Insert a large white rectangle (~12in x 5.8in) with 2.5pt #0000CC border as the diagram frame covering the lower two-thirds. 6. Build a 'vector stack' group: four stacked small rectangles colored top-to-bottom #F4B8C4, #FFE699, #C6E0B4, #BDD7EE, with a bold dark-red (#990000) subscripted label below; duplicate 8x per row for four rows (labels Y_1..Y_6, Y_{N-1}, Y_N on the three upper rows; X_1..X_6, X_{N-1}, X_N on the bottom row, labels in #C00000). Between the 6th and 7th stack of each row place 5 small dots (dark blue #00008B for Y rows, green #00B050 for the X row). 7. Bottom of frame: add the X row; beneath/overlapping it add a yellow (#FFFF00) highlighted text box with bold italic red (#C00000) text 'Word_Embedding + Positional_Information'. 8. Above the X row place a full-width navy (#00008B) rectangle with centered white bold serif text 'Multi Head Self Attention Block'. 9. Add 8 blue up block-arrows from the X row to the bar and 8 from the bar to the Y row above. 10. Insert a green dashed rounded rectangle (#00B050 dashed border) enclosing the upper diagram section; inside it, top to bottom: a light-gray (#D9D9D9) full-width bar with centered text 'Layer' (red bold italic) + 'Normalization' (black bold); below it a row of 8 dark-red (#990000) circles with white bold '+'; below those the third Y vector row. 11. Draw 8 thin green up-arrows from the Y row to the '+' circles and 8 from the '+' circles into the gray bar. 12. Draw 8 semi-transparent orange (#E8A020) curved arrows bowing outward from the Y row up to each '+' circle (residual skip connections). 13. Above the dashed container place the second Y vector row, then a white rectangle with 2pt #0000CC border titled in blue bold 'Feed Forward Networks [ One Hidden with  RELU Activation]'; inside, place 8 small white tiles each containing ~6 green dots with thin black lines fanning up to a point and tiny red 'RELU' text, separated after the 6th tile by 5 blue dots. 14. Place the top Y vector row above the FFN box. 15. In the left margin outside the frame, stack three two-line bold serif labels aligned to their features: 'Output of Self Attention' (#0000CC), 'Residual Connections' (#E8A020), 'Input to Self Attention' (#C00000). 16. Optionally add a thin black rectangle across the very bottom edge only if replicating the captured video frame; omit if recreating the slide alone.",
+  "_meta": {
+    "frame": "slide_045.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 45,
+      "image": "slide_045.jpg",
+      "kept_frame": "frame_03827.jpg",
+      "start_sec": 3679.0,
+      "end_sec": 3826.0,
+      "frame_count": 148,
+      "old_slide": 114
+    },
+    "elapsed_s": 180.8
+  }
+}

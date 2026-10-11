@@ -1,0 +1,47 @@
+# Element-by-Element Comparison
+
+## 1. Top tan/beige bar
+- Both crops show the tan header bar at top. Recreation's bar has a defined dark bottom edge; original is soft. **No discrepancy** (consistent with house chrome / crop alignment).
+
+## 2. "qâ" label (left of upper arrow)
+- IMG1: bold red "q" with subscript "2", positioned left of the vertical red arrow. â
+- IMG2: same bold red "qâ", same relative placement. â
+- **Match.**
+
+## 3. Upper red arrow
+- Both: vertical red arrow pointing UP, originating at the box top, terminating near swatch-strip height. Direction, alignment (roughly centered over box, slightly right of the qâ label), and proportions are consistent. â
+
+## 4. Color swatch strip (right of arrow)
+- IMG1: **5 cells** â pale yellow, pale yellow, pale green, lavender/blue, pink â with dark outline.
+- IMG2: appears to be **4 cells** â yellow, green, lavender, pink (first yellow cell not doubled).
+- Also, in IMG1 the strip is roughly as wide as the box below it; in IMG2 it is noticeably narrower than the box (~60% of box width).
+- **Discrepancy: cell count and relative width** â severity MINOR-to-MAJOR (confidence ~65%; the original is very soft at this size, but 4 vs 5 cells is the most plausible reading). I'll log it as **MAJOR, confidence 60%**.
+
+## 5. White box with "W" label
+- IMG1: white fill, thick red border, label "**W**" with subscript "q" and superscript "**(1)**".
+- IMG2: same box, same label layout, but superscript clearly reads "**(r)**".
+- **Discrepancy: superscript text "(1)" vs "(r)"** â this is a verbatim content error in a mathematically meaningful label (layer index). None of the founder ground rules cover it (not a format upgrade, not medium difference). Severity: **BLOCKER, confidence 90%** â "(r)" is clearly legible in IMG2 despite softness.
+- Box position (centered, mid-crop), border weight, and fill color otherwise match. Box fill in IMG2 may be very faintly pink rather than pure white â within approximation tolerance, MINOR at most (confidence low).
+
+## 6. Lower red arrow
+- Both: short red arrow pointing UP from the dashed line into the box bottom. â Match.
+
+## 7. Green dashed line + pale strip (bottom)
+- Both: green dashed horizontal line with pale green band below. Dash density/color consistent. â Match.
+
+## 8. Background
+- Cream/tan field color matches in both. â
+
+---
+
+## Discrepancy List
+1. **BLOCKER** â Box label superscript reads "(1)" in recreation but "(r)" in original. Confidence: 90%.
+2. **MAJOR** â Swatch strip cell count: 5 cells (yellow doubled) in recreation vs apparent 4 cells (yellow, green, lavender, pink) in original; strip also relatively wider than original. Confidence: 60%.
+3. **MINOR** â Box fill may be faintly pink in original vs pure white in recreation. Confidence: 40% (likely just softness).
+
+## Visual-Quality Defects in Recreation
+- None significant: no overflow, no clipping, no collisions. All elements well-spaced and aligned.
+
+---
+
+**FINAL VERDICT: FAIL** for 'faithful, usable recreation of this crop' â the superscript "(1)" vs "(r)" is a verbatim text error in the central labeled quantity, and the swatch-strip cell count likely differs. Fix the superscript (and verify swatch cell count) and re-render.

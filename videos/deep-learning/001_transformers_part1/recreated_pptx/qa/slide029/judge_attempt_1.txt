@@ -1,0 +1,37 @@
+# Fidelity Check â Slide 029 Recreation vs Original Lecture Frame
+
+## Ground-rule dispositions (settled first, not raised again)
+- House chrome (outer red frame, #E8E8E8 bg, yellow "29" badge, title box geometry): present and correct â **not discrepancies**.
+- No contentless placeholder, no cursor artifacts in IMG2 â rules (b)/(c) not triggered.
+- No equation linear-vs-2D issue on this slide â rule (e) not triggered.
+
+## Element-by-element comparison
+
+**Title / Subtitle**
+- Title "Self Attention Mechanism (as Query and {Key-Value} Dictionary)" with yellow highlight span â verbatim match, highlight extent matches (starts at "(as", ends "Dictionary)"). â
+- Subtitle "(Query using Xâ All Keys in Dictionary and retrieve Corresponding Values" â verbatim match including the unclosed parenthesis (original is also unclosed), with dark-red *Query/Keys/Values* and subscript Xâ. â Line spacing between title and subtitle consistent. â
+
+**Q/K/V re-annotation delta (the expected difference)**
+- K badge (red circle, line 3), Q badge (beside Query box), V badge (line 3 right side) â present, correctly placed, correct fill/size. â
+- Two cyan dashed callouts ("Matched KEYS with Relevance Percentage" / "Retrieve VALUES Weighted by their Relevance") â verbatim, correct 2-line breaks, correct positions. â
+- Orange Query box ("Query / ALL Keys with Xâ"), red dashed feed curve to the left KEys panel â present and correctly routed. â
+- Blue-bordered result box ("Values of Matched Keys / are returned / when Running Query") â verbatim, 3-line break structure matches. â
+
+**Base composition (imported)**
+- KEys/Values header pills, green dashed panels with 4 rows (XââXâ), "Dot Product" tan column, Soft max lavender bar (rotated text), WâââWââ labels, four â nodes, Î£ box, Y token strip with green arrow, bottom dashed token strip with magenta-dotted Xâ highlight and red up-arrow â all present with matching colors and geometry. â
+
+## Discrepancies
+
+1. **BLOCKER (confidence ~0.9) â Missing diagonal matching lines in the Dot Product region.** The original shows red diagonal lines fanning from the bottom of the Dot Product column (where the query Xâ feeds in) up to each of the four blue dots, with arrowheads â the visual encoding of "query matched against all keys." The recreation's Dot Product box contains only the four horizontal lines with plain blue dots; the diagonals and their arrowheads are omitted entirely. Per rule (6), a diagram element present in the original and absent in the recreation is a BLOCKER.
+
+2. **MINOR (confidence ~0.6) â Row-4 Values feed line termination.** In the recreation, the horizontal line feeding ââ from the right stops in mid-air (~short of the Values panel edge), whereas rows 1â3 connect to the panel; in the original the row-4 feed appears to originate at/near the panel like the others. Floating line end.
+
+3. **MINOR (confidence ~0.7) â Dot styling and in-line arrowheads.** Original blue dots have a lighter/white inner ring and small red arrowheads on the horizontal lines just after each dot; recreation dots are plain solid blue and the horizontal segments between dot and Soft max are unadorned (arrowheads only at the Soft max edge).
+
+4. **MINOR (confidence ~0.5) â Î£âY connector weight.** Recreation draws a heavier dark-red arrow from Î£ to Y than the original's thinner red line (green arrow matches in both).
+
+## Visual-quality defects in the recreation
+- No text overflow, clipping, or collisions; all content contained within the inner tan panel and house frame. â
+- Vertical centering of text in pills/callouts/result box is correct; line spacing inside the two-line callouts and three-line result box matches the original. â
+
+**FINAL VERDICT: FAIL** for 'faithful, usable recreation' â driven solely by the BLOCKER omission of the query-to-key diagonal matching lines inside the Dot Product region; everything else (title/subtitle, Q/K/V delta, callouts, Query box, result box, feed curve, base diagram) is a faithful match. Restoring the four diagonal red connectors (with arrowheads) from the box bottom to the dots would bring this to PASS.

@@ -1,0 +1,46 @@
+1. TITLE â No title text on this slide. Top-right badge: a yellow circle containing the numeral 30 (slide number 30). The slide content concerns sinusoidal positional encoding / rotation matrices in Transformers.
+
+2. ALL VERBATIM TEXT â
+- "Vector of Pos "t"" (red text, left of top vector)
+- "Vector of Pos "t+Î´"" (red text, left of second vector)
+- "Remember:" (underlined, inside yellow callout box)
+- "sin(a+b)=sin (a) cos(b) + cos(a) sin(b)"
+- "cos(a+b)=cos(a) cos(b) â sin(a) sin(b)"
+- "Vector of Pos "t+Î´"" (red text, below left vector in bottom equation box)
+- "Vector of Pos "t"" (red text, below right vector in bottom equation box)
+- "Independent of Position "t"" (blue bold italic, under a curly brace beneath the matrix)
+- "From Computer Graphics:" (dark red bold italic, heading of green box)
+- "Rotation Matrix of Vector at Pos "t" with angle "ÏÎ´" e.g "Ï" , "2Ï" , "3Ï" , â¦" (blue bold italic inside green box)
+- "30" (badge numeral)
+
+3. EQUATIONS â
+- Vector: [ sin(Ït) ; cos(Ït) ] (top box; rendered with large square brackets)
+- Vector: [ Sin (Ï(t+Î´)) ; cos(Ï(t+Î´)) ] (note capital "Sin" in first row exactly as shown)
+- Identity box:
+  sin(Ï(t+Î´)) = sin(Ït + ÏÎ´) = sin(Ït) cos(ÏÎ´) + cos(Ït) sin(ÏÎ´)
+  cos(Ï(t+Î´)) = cos(Ït + ÏÎ´) = cos(Ït) cos(ÏÎ´) - sin(Ït) sin(ÏÎ´)
+- Matrix equation:
+  [ Sin (Ï(t+Î´)) ; cos(Ï(t+Î´)) ] = [ cos(ÏÎ´)  sin(ÏÎ´) ; - sin(ÏÎ´)  cos(ÏÎ´) ] Ã [ sin(Ït) ; cos(Ït) ]
+  (2x2 matrix shown with square brackets; the minus sign precedes the lower-left matrix entry)
+- Trig identities: sin(a+b)=sin (a) cos(b) + cos(a) sin(b) ; cos(a+b)=cos(a) cos(b) â sin(a) sin(b)
+
+4. DIAGRAM TOPOLOGY â
+This is not a node/arrow diagram; it is an equation-derivation layout with boxed groups:
+- Top-left red-bordered rectangle (white fill) containing two labeled column vectors: "Vector of Pos "t"" â [sin(Ït); cos(Ït)] (entries in red), and "Vector of Pos "t+Î´"" â [Sin (Ï(t+Î´)); cos(Ï(t+Î´))] (entries in red).
+- Top-right yellow-filled rectangle with blue border containing the "Remember:" trig identity reminder (blue italic text).
+- Middle blue-bordered rectangle (white fill) containing the two-line expansion of sin and cos of Ï(t+Î´); the (t+Î´) and ÏÎ´ terms are highlighted yellow; cos(ÏÎ´) in the first line is highlighted teal/green, sin(Ït) and sin(ÏÎ´) terms highlighted yellow/olive.
+- Bottom-left large blue-bordered rectangle containing the full matrix equation: left vector (black, "Vector of Pos "t+Î´"" label beneath in red), equals sign, 2x2 rotation matrix (entries green/teal, with yellow highlight on cos(ÏÎ´) top-left, sin(ÏÎ´) top-right, and cos(ÏÎ´) bottom-right; bottom-left sin(ÏÎ´) has a teal/green highlight), then the right vector (red entries, "Vector of Pos "t"" label beneath). A curly brace spans under the 2x2 matrix with the caption "Independent of Position "t"".
+- Bottom-right light-green rectangle with red border: "From Computer Graphics:" note.
+- Reading flow: top-to-bottom derivation (definitions â identities â expansion â matrix form), supporting annotation boxes on the right.
+- Resemblance to published figures: this is NOT a reproduction of Vaswani et al. 2017 Figure 1/2, Bloem, or Alammar illustrations. It is a custom derivation slide explaining the rotation-matrix interpretation of sinusoidal positional encodings (relating to Su et al. RoPE-style intuition / "Computer Graphics" rotation analogy). It matches no standard figure; it is instructor-authored math derivation.
+
+5. NUMBERS/DATA â
+- Badge numeral: 30
+- In "From Computer Graphics" box: examples "Ï", "2Ï", "3Ï" (frequencies at multiples of Ï); Î´ and t appear as symbolic variables throughout.
+- No tables, percentages, or dataset sizes.
+
+6. BUILD STATE / ARTIFACTS â
+- Slide appears fully built (all boxes and equations present).
+- Mouse cursor artifact visible near the top edge of the 2x2 matrix, overlapping the area just above the sin(ÏÎ´) entry (small white circular highlight with pointer) â a video-capture cursor, not slide content.
+- Black horizontal bar across the very bottom of the 960x540 frame (video letterboxing/player chrome, not slide content).
+- Thin red border frames the slide content area; a thin white/blue margin visible at frame edges from video encoding.

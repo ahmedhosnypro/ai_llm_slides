@@ -1,0 +1,47 @@
+[info] context header injected: VIEW: Slide 028 self-check crop B — two new bottom callout boxes — render vs original | CAPTURE: IMG1=crop of 150dpi PPTX render; IMG2=same region of original lecture frame (both upscaled x2)
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 141065
+[info] scratch/slide028/crops/B_boxes_render.png, scratch/slide028/crops/B_boxes_orig.png: transcript written (validated winner, atomic): recreated_pptx/qa/slide028/crop_compare_B.txt (pid 141065)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== scratch/slide028/crops/B_boxes_render.png, scratch/slide028/crops/B_boxes_orig.png ===
+[winner] images (round 1, attempt 1)
+# Visual QA â Slide 028, crop B (bottom callout boxes): Render (IMG1) vs Original (IMG2)
+
+## 1. Verbatim Transcription
+
+**IMG1 (PPTX render):**
+- Top callout: **"Sequential nature of the input is IGNORED"** â green, bold, *upright*
+- Token strip (left, clipped at crop edge): red labels **"xâ"** (leftmost square, partially cut) and **"xâ"** (on a pink square); remaining squares unlabeled
+- Bottom-right callout: **"Mitigated Later with"** (dark red, bold) / **"Positional Encoder"** (blue, bold italic)
+
+**IMG2 (original frame):**
+- Top callout: **"Sequential nature of the input is IGNORED"** â green, bold, *italic*
+- Token strip: red labels **"xâ"** (clipped at crop edge) and **"xâ"**; other squares unlabeled
+- Bottom-right callout: **"Mitigated Later with"** / **"Positional Encoder"**
+
+Text content is identical in both; nothing is illegible except that the leftmost "xâ" is partially cut in both (crop artifact).
+
+## 2. Similarities
+
+- **Same three components, same positions:** dashed-border green caption callout (top), light-green token-strip box with colored squares (bottom-left), and the red/blue "Positional Encoder" callout (bottom-right).
+- **Identical wording, line breaks, and text colors:** green caption with "IGNORED" capitalized; dark-red line 1 and blue italic line 2 in the right callout.
+- **Shared styling language:** dashed dark-green rounded borders on all boxes; peach/cream slide background with a light-gray bottom strip that both callouts overlap; dashed gray leader lines (one curving from top edge, one from the token strip toward the right callout); same token sequence (purple/pink pair â gap â yellow, yellow, pink xâ, purple, pink).
+
+## 3. Differences
+
+| Aspect | IMG1 (render) | IMG2 (original) |
+|---|---|---|
+| Green caption style | Bold, **upright** â italics lost (likely font fallback/substitution; glyphs look wider, e.g., "Sequential", "IGNORED") | Bold **italic** |
+| "Positional Encoder" callout fill | **White** | **Pale mint green** (matches the token-box fill) |
+| Token squares | Flat pastel fills, **no outlines** | Pastel fills with **thin light outlines**, slightly deeper saturation |
+| Leader lines (dashed gray) | Darker, heavier, more prominent | Fainter/thinner |
+| Overall sharpness | Crisp, vector-clean | Softer; mild upscale blur/compression (video source) |
+| Left edge | Both clip the xâ token/box at the crop boundary â shared crop artifact, not a defect of either |
+
+No garbage strings, placeholders, overlap, or wrong-language text appear in either image.
+
+## 4. Verdict
+
+**IMG2 (original) is better as a faithful representation of the slide.** Concrete evidence: it preserves the **italic emphasis** on "Sequential nature of the input is IGNORED," the **mint-green fill** of the "Mitigated Later with / Positional Encoder" callout (consistent with the token-box fill), and the **outlined token squares**. IMG1, while noticeably sharper and cleaner, introduces three styling regressions: dropped italics (upright substituted font), a white fill where the original is mint, and borderless flat tokens â plus over-prominent leader lines. If judged purely on legibility IMG1 wins, but on content/styling fidelity the original is superior.
+
+CROPB_RC=0

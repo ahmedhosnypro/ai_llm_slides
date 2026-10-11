@@ -1,0 +1,30 @@
+# Header-Row Re-Check: Slide 034 Peach Demo Panel
+
+## Element-by-Element Comparison
+
+**(1) [X_i] box** â Red border box present in both. Red square brackets, red X with red sub i, green "1Ãd" at lower right. Recreation renders the sub i smaller/cleaner (STIX rendering); original's "1xd" is slightly bolder/blurrier at video resolution. The green 1Ãd sits inside the box in both. â Match (MINOR: multiplication glyph "Ã" vs "x" â typeface upgrade, not a discrepancy).
+
+**(2) SoftMax label** â Red bold "SoftMax", same position between the embedding box and fraction box, same relative size and vertical centering in both. â Match.
+
+**(3) Softmax fraction** â Structure correct in both: w_ij = exp w'_ij over Î£_j exp w'_ij, professional 2D serif math, fraction bar, prime marks on w'. The equation is fully contained INSIDE the white bordered box with healthy padding on all sides (no clipping, no overflow). Box size proportionate to the original. â Match.
+
+**(4) Gap between fraction box and warning strip** â **The previous blocker is fixed.** A clean white gap now separates the fraction box's right edge from the warning strip's left border in IMG1, closely matching the gap in IMG2. No overlap, no touching. â Fixed.
+
+**(5) Warning strip** â Blue border present. Bold italic text: "High" red, "Weight Values" blue, "kill" red, "the gradient, and" blue, "slow down" red, "learning" blue â the red/blue word mix matches the original exactly. Text fits fully inside the strip in both. â Match.
+
+**(6) Green arrows + "d" labels** â "d â" right of the embedding box, "d â" below the strip's left region, "d ââ" toward the right side â all present in both, same style and direction. Minor positional drift (~1â2% of width) on the right-hand pair. â Match.
+
+**(7) Peach panel edges** â Peach background with red left border strip visible at the crop's left edge in both. â Match.
+
+## Discrepancy List
+
+| # | Discrepancy | Severity | Confidence |
+|---|---|---|---|
+| 1 | Right-hand "d ââ" arrow pair sits slightly further left than in the original (~15â20pt shift) | MINOR | Medium |
+| 2 | Warning strip's right edge extends marginally closer to the crop edge; interior right padding around "learning" slightly tighter than original | MINOR | Medium |
+| 3 | "1Ãd" uses typographic Ã vs the original's x glyph, and STIX letterforms differ slightly in the fraction | MINOR (mandated typeface upgrade) | High |
+| 4 | [X_i] box border marginally thicker in recreation | MINOR | Low-Medium |
+
+No BLOCKER or MAJOR issues. The previously failing warning-strip overlap is resolved with a clean gap restored.
+
+**FINAL VERDICT: PASS** â this header row is a faithful, usable recreation.

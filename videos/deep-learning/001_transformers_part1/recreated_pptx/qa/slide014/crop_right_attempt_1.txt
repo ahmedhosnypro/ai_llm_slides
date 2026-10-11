@@ -1,0 +1,22 @@
+# Element-by-Element Fidelity Check â Slide 014, Right Rotated Figure Panel
+
+## Preliminary: Ground Rules Applied
+- House chrome (red frame, yellow badge, panel chrome): N/A in this crop region â not assessed.
+- Both images contain the **same embedded pre-rotated (90Â° CW) Figure 1 asset** from arXiv 1706.03762. Per founder mandate, raster sharpness/stroke differences between the recreation's embedded image and the original frame's rendering of it are the mandated image source, NOT discrepancies.
+
+## Topology Comparison
+| Element | IMG1 (recreation) | IMG2 (original) | Match? |
+|---|---|---|---|
+| "Inputs" label + arrow into Input Embedding | Present, rotated, verbatim | Present | Embedding (pink box, rotated label) | Present | Present |al Encoding label + sine-in-circle icon | Present (top, above â) | Present| â junction + horizontal flow line | Present | |
+| Encoder gray rounded container + "Nx" label (top) | Present | Present |-Head Attention (orange) | Present, verbatim "Multi-Head Attention" | Present | Add & Norm (pale green, narrow) Ã2 in encoder | Present, verbatim | Present| Feed Forward (blue) | Present, verbatim | Present |ved residual skips in encoder (from input line up over MHA into Add & Norm top; from post-MHA line over FF into Add & Norm top) | Both present, correct curvature/direction | Both present| Encoder-to-decoder cross-connection (exits right of encoder, curves down into decoder Multi-Head Attention) | Present, correct routing | Present | gray container + "Nx" label (bottom) | Present | Present| Masked Multi-Head Attention (orange) | Present, verbatim | Present | & Norm Ã3 in decoder (pale green) | Present, verbatim | Present | Second Multi-Head Attention (orange) | Present | |
+| Feed Forward (blue) | Present | |
+| Residual curves into second MHA (from cross-connection) and into final Add & Norm from below | Present | Present | (lavender) â Softmax (green) tail | Present, verbatim, correct order | Present | "Output Probabilities" label | Present | |
+| "Outputs (shifted right)" label + Output Embedding (pink) + sine icon + â | Present | |
+| Strip order (attention blocks top, Add & Norm strips adjacent, FF in sequence) | Correct | Correct || Color palette (pink/orange/blue/pale-green/lavender/green, gray containers) | Match | Match |crepancy List
+1. **MINOR** (confidence: high) â IMG1 text edges are crisper; IMG2 shows compression blur on rotated labels (e.g., "Multi-Head Attention," "Add & Norm"). This is the mandated embedded-image/raster source difference, not a content discrepancy.
+2. No spelling, casing, ordering, arrow-direction, or topology discrepancies found. Zero BLOCKER or MAJOR issues.
+
+## Visual-Quality Defects in Recreation
+- None observed. All rotated labels are legible at 2x crop; no clipping, overflow, collision, or misalignment. The bottom-most "Positional Encoding" label is cropped by the panel edge identically in both images (crop boundary, not a recreation defect).
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

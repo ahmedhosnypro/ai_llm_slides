@@ -1,0 +1,35 @@
+render 2001x1125, k=2.0844
+A) inheritance diff vs certified parent render:
+  [PASS] A1 all diff bands inside delta zones band y135-162 x1850-1868:badge; band y181-233 x776-1107:subtitle; band y353-580 x90-994:callout+connector
+   (3 diff bands, 183754 px)
+B) subtitle '(Challenges)':
+  [PASS] B1 subtitle ink present bbox x776..1107 y181..233 n=6052
+  [PASS] B2 width ~329±40 w=331
+  [PASS] B3 center ~947±12 cx=942
+  [PASS] B4 v-center ~206±12 cy=207
+C) callout box (x92..949 y354..557):
+   fill sample @ (500,368): [223, 255, 252]
+  [PASS] C1 fill ~DFFFFC(223,255,252) [223, 255, 252]
+  [PASS] C2 left+right border strokes on mid row x 89..996
+  [PASS] C3 top+bottom border strokes on mid col y 340..579
+D) 4 text lines (target centers y399/438/475/514, pitch 37.5):
+   bands: [(385, 418), (426, 455), (464, 493), (501, 531)]
+  [PASS] D1 exactly 4 line bands 
+  [PASS] D2 line centers within ±9 ['402', '440', '478', '516']
+  [PASS] D3 pitch ~37.5±3 38.2
+   widths: [np.int64(240), np.int64(679), np.int64(785), np.int64(391)] targets [242, 680, 790, 396]
+  [PASS] D4 ink widths within ±12% [np.int64(240), np.int64(679), np.int64(785), np.int64(391)]
+  [PASS] D5 L1 underline row below band1 (241, 415, 400, 640)
+  [PASS] D6 L3 underline (right-shifted, center ~742) (396, 491, 519, 914)
+  [PASS] D7 L4 underline (center ~556) (319, 528, 398, 716)
+  [PASS] D8 L2 no underline None
+E) containment:
+  [PASS] E1 no non-chrome ink left of box / none right of box left=0 right=0
+  [PASS] E1b no ink above/below box (border rows +4px) n=0
+  [PASS] E2 box inside house frame 
+F) connector (965,392)->(994,582):
+  [PASS] F1 ink along connector path (12 samples) hits=12 miss=[]
+G) ink color:
+  [PASS] G1 text ink dark blue ~ (0,0,102)±60 [0.0, 0.0, 102.0]
+
+ALL SELF-CHECKS PASS

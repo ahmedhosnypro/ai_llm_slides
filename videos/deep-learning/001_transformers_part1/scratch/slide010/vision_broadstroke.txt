@@ -1,0 +1,37 @@
+# Visual QA Analysis â 6x Upscaled Crop (frame x350â520, y230â345)
+
+## 1. Visible Text
+
+- **No fully legible text is present anywhere in this crop.**
+- The only text-like element is a **partially clipped dark-gray glyph at the extreme left edge** (~y 545â575), sitting just above the start of the small horizontal arrow. It appears to be a single character (possibly a digit such as "2"), but it is cut off by the crop edge and too blurry (upscaled) to identify. **Treat as illegible.**
+
+## 2. Layout
+
+**Top-left / left:**
+- A large **pale-lavender rounded rectangle** with a thin blue outline dominates the upper-left, clipped at the top and left edges.
+- Inside it runs a **pink/magenta dashed curve**: dashes enter at the top-left, descend diagonally, execute a tight hairpin/loop turn near the center (~x300â430, y200â260), then sweep down-right and exit through the box's right border (~x700, y360).
+- A **thin teal/green leader line** descends from the top edge (~x440) into the lavender box, terminating near the dashed loop (~x480, y250); it touches nothing.
+
+**Top-right:**
+- A **yellow rounded rectangle** with an orange/tan outline, clipped at top and right; its rounded bottom-left corner is visible (~x770, y330).
+- Inside, near its right edge: a **solid dark-red dot** (~x985, y205) and a **partially visible small yellow rectangle** clipped by the right edge.
+
+**Center-right (the queried feature):**
+- A **broad translucent lavender/periwinkle curved band** is clearly present. It emerges from the right border of the large lavender box (~x690â700, y330), widens to roughly 50â60 px, and sweeps diagonally down-right to the right edge (~x1024, y470), passing beneath the yellow box's bottom corner and behind the red arrow. It continues into the lower-right box. This matches the "broad translucent curved stroke" being searched for.
+- Separately, an **opaque dark-red curved arrow** (not translucent) runs from a solid dark-red dot (~x680, y612) up and over (~x755, y300) to a filled arrowhead pointing right (~x935, y205), aimed at the red dot in the yellow box.
+
+**Bottom-right:**
+- A **second lavender rounded rectangle** (blue outline) clipped at the right edge (visible from ~x865); more pink dashes continue inside it (~x930â1024, y380â460), merging with the translucent band.
+- A **thin red diagonal line** descends from the peach box's top-right corner region (~x755, y515) to the bottom edge (~x845, y690) â it reads as the continuation of the peach box's right border or a separate red line; the exact attribution is ambiguous at this resolution.
+
+**Bottom-left:**
+- A **peach/orange rounded rectangle** with a red-orange outline spans from the left edge to ~x790, clipped at the bottom.
+- A **thin dark-gray leader line** enters at the left edge (~y400) and runs diagonally down-right to ~x430, y520, ending just above the cell row.
+- Inside the peach box: a **small horizontal arrow** pointing right (from ~x25 to ~x165 at y~610) leading into a **row of four outlined square cells** (~x195â660, y545â665, three internal dividers). The row's right end sits adjacent to the dark-red dot at ~x680, y612.
+
+## 3. Defects / Anomalies
+
+- **Clipping on all four edges** (expected for a crop, but noted): lavender box (top/left), teal line (top), yellow box and its inner rectangle (top/right), lower-right lavender box (right), peach box (left/bottom), gray leader line (left).
+- **Clipped, illegible glyph** at the left edge above the small arrow â the only candidate text, incomplete.
+- **Heavy softness/blur and compression artifacts** consistent with 6x upscaling; line edges and dashes lack crispness.
+- The translucent band **underlaps** the yellow box corner and the red arrow (layering, not a defect). No overlapping text, placeholder strings, or wrong-language content observed.

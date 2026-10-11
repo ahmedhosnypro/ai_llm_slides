@@ -1,0 +1,37 @@
+# Fidelity Check â Slide 017 "Encoder â Decoder Transformer"
+
+## Chrome (per dependency law â not assessed as discrepancies)
+White canvas, gray panel with #C00000 red border, yellow oval badge with "17" at top-right, red centered title â all present and consistent with the playlist chrome. Not counted.
+
+## Element-by-element comparison
+
+**Title:** "Encoder â Decoder Transformer" â verbatim match, red, centered, en-dash preserved. â
+
+**Callout 1 (yellow):** "Decoder Output (at step "t-1") / Is supplied as Decoder Input (at step "t")" â verbatim, two lines, curly quotes preserved, correct line breaks. â
+
+**Callout 2 (violet):** "First Decoder Block / No Input from Encoder Attention" â verbatim, two lines, red second line. â
+
+**Callouts 3 & 4 (tan):** "Input Positional Encoder / (Position of Input Word within the Input Sequence)" and "Output Positional Encoder / (Position of Output Word within the Output Sequence)" â verbatim, line breaks match, connector lines to the diagram present in both. â
+
+**Diagram structure:** Encoder panel (orange fill, green border, italic red "Encoder" label) and Decoder panel (green fill, italic green "Decoder" label) both present with correct relative positions. Encoder stack: Add & Norm â Feed Forward â Add & Norm â Multi-Head Attention, with V/K/Q circles, "N x" circle, Positional Encoding box, Input Embedding, red "Inputs" arrow. Decoder stack: Output/Probabilities â Softmax â Linear â Add & Norm â Feed Forward â Add & Norm â Multi-Head Attention (with yellow cross-attention highlight, V/K blue + Q red circles) â Add & Norm â Masked Multi-Head Attention (purple, V/K/Q) â Positional Encoding â Output Embedding â "Outputs (shifted right)". All present. â
+
+**Dashed feedback arrow** from Output down to Outputs (shifted right) â present in both. **Loop arcs** above Output Embedding â present in both. â
+
+## Discrepancies found
+
+1. **MINOR** (confidence 0.8): Decoder sub-blocks (Add & Norm / Feed Forward / Add & Norm / Multi-Head Attention) are rendered as segments inside one large rounded rectangle with divider rules, whereas the original shows them as visually distinct stacked boxes. Content and order identical; styling nuance only.
+
+2. **MINOR** (confidence 0.7): Positional-encoding icon glyph differs â original shows a small circle-with-tail plus sine wave; recreation shows â plus a sharper "M"-shaped sine. Same semantic element, slightly different glyph.
+
+3. **MINOR** (confidence 0.7): The dashed feedback arrow in the recreation is a darker maroon-red vs the original's brighter red; also its curve hugs slightly closer to the panel edge (still fully contained inside the green border).
+
+4. **MINOR** (confidence 0.6): "Outputs" label color on the yellow highlight â original appears dark-red; recreation renders it near-black. "(shifted right)" is green italic in both.
+
+5. **MINOR** (confidence 0.6): Recreation diagram is scaled slightly larger relative to the panel than the original, compressing whitespace between the encoder stack and the panel's left edge. No containment violation results.
+
+**No BLOCKER or MAJOR defects found.** All text is verbatim with matching line breaks; callout line spacing is visually consistent; text inside boxes/arcs is vertically centered; V/K/Q circle ordering and gaps match; no element crosses the green panel border or the house frame; no missing elements â every region in the original (including the QK/V yellow cross-attention rectangle, the NÃ recurrence circles, and both positional-encoding blocks) is present in the recreation.
+
+## Visual-quality defects in the recreation
+- None observed: no clipping, no collisions, no illegible text, no frame overflow.
+
+**FINAL VERDICT: PASS**

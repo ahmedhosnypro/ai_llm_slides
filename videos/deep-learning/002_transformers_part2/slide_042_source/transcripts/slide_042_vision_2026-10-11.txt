@@ -1,0 +1,54 @@
+1. TITLE
+Exact title text (verbatim): Batch Data (Feature Vectors)
+Title color: dark red, centered at top of slide.
+Badge numeral (top-right circle): 42 (yellow/cream circle with dark outline, dark text).
+
+2. ALL VERBATIM TEXT
+- Batch Data (Feature Vectors)
+- 42 (badge)
+- Feature Vector of One Input Sample (Using one filter) â left box header; "One" in green, "one filter" in green, rest red/blue mix: "Feature Vector of" red, "One" green, "Input Sample" red, "(Using" blue, "one filter)" green. Verbatim string: Feature Vector of One Input Sample (Using one filter)
+- Feature Vectors of One Input Sample (Using 4 filters)   [ 4 Channels] â middle box header; "One" green, "4 filters" green, "[ 4 Channels]" blue, rest red. Verbatim string: Feature Vectors of One Input Sample (Using 4 filters)   [ 4 Channels]
+- Feature Vectors of : â right box header line 1 (red)
+- FIVE  Input  Samples  [mini-Batch] â right box header line 2; "FIVE" green, "Input Samples" green, "[mini-Batch]" magenta/pink
+- Using 4 filters [ 4 Channels] â right box header line 3; "4 filters" and "4 Channels" blue, "Using" black
+- Feature Vector â vertical axis label (red) along left side of right 3D diagram, reading bottom-to-top
+- Channels (4 Filters) â horizontal axis label (red) below right 3D diagram, with double-headed arrow
+- Batch size (5 samples) â diagonal axis label (red) along right side of right 3D diagram, with double-headed arrow, reading bottom-left to top-right
+- No footnote, caption, or callout text visible. No unreadable strings; no [?] items.
+
+3. EQUATIONS
+No mathematical equations or formulaic token sequences appear on this slide. No X_0..X_N tokens, no summations, no matrix formulas. The only quasi-numeric notation is embedded in prose labels (see sections 2 and 5): "(Using one filter)", "(Using 4 filters) [ 4 Channels]", "[mini-Batch]", "(5 samples)".
+
+4. DIAGRAM TOPOLOGY
+Overall layout: white slide content area enclosed by a thin blue rectangular border inset within the slide; the slide itself has a thin red outer border on a white/gray background. Three separate illustrations arranged left-to-right (data-flow reading direction: left to right, increasing tensor rank):
+
+(a) LEFT GROUP â thin rectangular outline box (red/dark border), positioned upper-left area:
+- Label above the drawing: Feature Vector of One Input Sample (Using one filter)
+- Drawing: a single vertical 1-D column of 5 stacked 3D cubes (voxels), bright green/lime fill with darker green top faces and darker green shading, arranged bottom-to-top. Represents a 1 x 5 feature vector (one filter/channel).
+
+(b) MIDDLE GROUP â thin rectangular outline box (red/dark border), center:
+- Label above the drawing: Feature Vectors of One Input Sample (Using 4 filters)   [ 4 Channels]
+- Drawing: a 2-D flat grid of 3D cubes, 5 columns wide x 5 rows tall (25 green cubes), same lime-green fill with darker tops/shading. Represents a 5 x 5 plane of feature vectors (channels laid side by side). No arrows within this group.
+
+(c) RIGHT GROUP â thin rectangular outline box (red/dark border), right side, contains its own three-line text header block at the top plus a large 3-D tensor illustration:
+- Text header (inside the box, above the drawing): Feature Vectors of : / FIVE  Input  Samples  [mini-Batch] / Using 4 filters [ 4 Channels]
+- Drawing: a 3-D block (cuboid) composed of 5 parallel 5x5 slabs/layers stacked front-to-back (depth = batch dimension). The front-most slab is bright magenta/violet (5x5 grid of magenta cubes); behind it, going back, successive slabs in orange, then yellow, then blue/gray (the rearmost visible slabs are blue-gray). Each slab is a 5x5 grid of cubes with darker top-face shading; a white/light diagonal sliver appears between the magenta and orange slabs (edge highlight of the front slab). Data dimension mapping shown by three double-headed red arrows:
+  - Vertical double-headed red arrow on the left edge of the cuboid, spanning its height, labeled (rotated 90 degrees, reading bottom-to-top): Feature Vector â corresponds to the 5-element vector dimension.
+  - Horizontal double-headed red arrow beneath the cuboid, spanning its width, labeled: Channels (4 Filters) â corresponds to the 5 columns (labeled as 4 filters/channels plus bias-style framing; the label text says 4 while 5 columns are drawn).
+  - Diagonal double-headed red arrow along the lower-right edge, spanning the depth direction, labeled (rotated, reading along the diagonal): Batch size (5 samples) â corresponds to the 5 stacked slabs.
+- No internal arrows between slabs; no inset panels beyond the described labeled boxes; no dashed outlines; no grouping container joining the three boxes other than the single blue outer rectangle enclosing all three groups.
+
+Resemblance to known published figures: This is NOT a Transformer architecture figure (it does not match Vaswani et al. 2017 Figure 1/2, the Peter Bloem self-attention diagram, or Alammar illustrations). It matches the style of popular CNN tutorial illustrations of batched feature maps (cuboid tensor diagrams with labeled axes "Feature Vector / Channels (Filters) / Batch size"), of the kind found in freelance/tutorial slide decks explaining CNN input tensors. Note for verification: despite the lecture being "Transformers Part II", this particular slide (42) is CNN background material on batched feature vectors, not a Transformer diagram.
+
+5. NUMBERS/DATA
+- Badge numeral: 42
+- "one filter" (left box) â 1 filter / 1 channel
+- "4 filters" and "[ 4 Channels]" (middle and right boxes) â 4 filters / 4 channels
+- "FIVE Input Samples" / "[mini-Batch]" / "(5 samples)" â batch size 5
+- Drawn quantities: left drawing = 5 stacked cubes (1 column); middle drawing = 5x5 = 25 cubes; right drawing = 5 slabs each of 5x5 cubes = 125 cubes (5 columns drawn vs. "4 filters" stated in the label â a count/label discrepancy worth flagging during verification).
+
+6. BUILD STATE / ARTIFACTS
+- The slide appears fully built (all three groups, labels, and arrows present); no mid-reveal animation state observed.
+- A black horizontal band/bar runs along the very bottom edge of the frame (full width, below the red slide border) â likely a video-letterbox or presentation-player artifact, not slide content.
+- A small dark vertical mark at the far bottom-left corner of that black band (possible video artifact/cursor remnant).
+- No visible mouse cursor on the slide body, no progress bar, no timestamp/watermark overlays, no highlighted or partially revealed elements.

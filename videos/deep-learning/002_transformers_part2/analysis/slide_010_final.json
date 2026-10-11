@@ -1,0 +1,349 @@
+{
+  "slide_title": "Using  FF NN  for Multiplication of ONE Vector by a Matrix",
+  "subtitle_or_header": "Example: Multiply Vector of Current Word X by W_q (Query) {Remember: W_q is Squared Matrix}",
+  "verbatim_text": {
+    "bullets": [
+      "Example: Multiply Vector of Current Word X by W_q (Query) {Remember: W_q is Squared Matrix}",
+      "Input Word X",
+      "Y^T [y1 y2 y3 y4] = Sigmoid",
+      "IF No Non-linearity",
+      "Y^T [y1 y2 y3 y4] = Linear",
+      "IF No Bias"
+    ],
+    "labels": [
+      "10 (slide number in yellow circle, top-right)",
+      "Input Word X (left panel header; 'Input Word' black, 'X' red)",
+      "x1 (left panel input node)",
+      "x2 (left panel input node)",
+      "x3 (left panel input node)",
+      "x4 (left panel input node)",
+      "y1 (left panel output label, green)",
+      "y2 (left panel output label, green)",
+      "y3 (left panel output label, green)",
+      "y4 (left panel output label, green)",
+      "W_11 (blue weight label, left panel)",
+      "W_21 (blue weight label, left panel)",
+      "W_31 (blue weight label, left panel)",
+      "W_41 (blue weight label, left panel)",
+      "W_12 (magenta weight label, left panel)",
+      "W_22 (magenta weight label, left panel)",
+      "W_32 (magenta weight label, left panel)",
+      "W_42 (magenta weight label, left panel)",
+      "W_13 (orange weight label, left panel)",
+      "W_23 (orange weight label, left panel)",
+      "W_33 (orange weight label, left panel)",
+      "W_43 (orange weight label, left panel)",
+      "W_14 (green weight label, left panel)",
+      "W_24 (green weight label, left panel)",
+      "W_34 (green weight label, left panel)",
+      "W_44 (green weight label, left panel)",
+      "\u03a3 (summation symbol inside each of the 4 neurons, left panel)",
+      "Y^T (top-middle panel, red, T is superscript)",
+      "y1 (yellow box, top-middle panel)",
+      "y2 (yellow box, top-middle panel)",
+      "y3 (yellow box, top-middle panel)",
+      "y4 (yellow box, top-middle panel)",
+      "= Sigmoid (top-middle panel, blue bold italic)",
+      "IF No Non-linearity (black callout, rendered on two lines: 'IF No' / 'Non-linearity')",
+      "Y^T (bottom-middle panel, red, T is superscript)",
+      "y1 (yellow box, bottom-middle panel)",
+      "y2 (yellow box, bottom-middle panel)",
+      "y3 (yellow box, bottom-middle panel)",
+      "y4 (yellow box, bottom-middle panel)",
+      "= Linear (bottom-middle panel, blue bold italic)",
+      "X (top-right panel, red, label under the x-circle row)",
+      "x1 (top-right panel vector circle)",
+      "x2 (top-right panel vector circle)",
+      "x3 (top-right panel vector circle)",
+      "x4 (top-right panel vector circle)",
+      "W_11 (top-right matrix, row 1 col 1, blue)",
+      "W_21 (top-right matrix, row 1 col 2, blue)",
+      "W_31 (top-right matrix, row 1 col 3, blue)",
+      "W_41 (top-right matrix, row 1 col 4, blue)",
+      "W_12 (top-right matrix, row 2 col 1, magenta)",
+      "W_22 (top-right matrix, row 2 col 2, magenta)",
+      "W_32 (top-right matrix, row 2 col 3, magenta)",
+      "W_42 (top-right matrix, row 2 col 4, magenta)",
+      "W_13 (top-right matrix, row 3 col 1, orange)",
+      "W_23 (top-right matrix, row 3 col 2, orange)",
+      "W_33 (top-right matrix, row 3 col 3, orange)",
+      "W_43 (top-right matrix, row 3 col 4, orange)",
+      "W_14 (top-right matrix, row 4 col 1, green)",
+      "W_24 (top-right matrix, row 4 col 2, green)",
+      "W_34 (top-right matrix, row 4 col 3, green)",
+      "W_44 (top-right matrix, row 4 col 4, green)",
+      "b1 (top-right bias column, yellow box)",
+      "b2 (top-right bias column, yellow box)",
+      "b3 (top-right bias column, yellow box)",
+      "b4 (top-right bias column, yellow box)",
+      "+ (plus sign between curly brace and bias column, both right panels)",
+      "X (bottom-right panel, red, label under the x-circle row)",
+      "x1 (bottom-right panel vector circle)",
+      "x2 (bottom-right panel vector circle)",
+      "x3 (bottom-right panel vector circle)",
+      "x4 (bottom-right panel vector circle)",
+      "W_11 (bottom-right matrix, row 1 col 1, blue)",
+      "W_21 (bottom-right matrix, row 1 col 2, blue)",
+      "W_31 (bottom-right matrix, row 1 col 3, blue)",
+      "W_41 (bottom-right matrix, row 1 col 4, blue)",
+      "W_12 (bottom-right matrix, row 2 col 1, magenta)",
+      "W_22 (bottom-right matrix, row 2 col 2, magenta)",
+      "W_32 (bottom-right matrix, row 2 col 3, magenta)",
+      "W_42 (bottom-right matrix, row 2 col 4, magenta)",
+      "W_13 (bottom-right matrix, row 3 col 1, orange)",
+      "W_23 (bottom-right matrix, row 3 col 2, orange)",
+      "W_33 (bottom-right matrix, row 3 col 3, orange)",
+      "W_43 (bottom-right matrix, row 3 col 4, orange)",
+      "W_14 (bottom-right matrix, row 4 col 1, green)",
+      "W_24 (bottom-right matrix, row 4 col 2, green)",
+      "W_34 (bottom-right matrix, row 4 col 3, green)",
+      "W_44 (bottom-right matrix, row 4 col 4, green)",
+      "0 (bottom-right bias column, yellow box, 1st)",
+      "0 (bottom-right bias column, yellow box, 2nd)",
+      "0 (bottom-right bias column, yellow box, 3rd)",
+      "0 (bottom-right bias column, yellow box, 4th)",
+      "IF No Bias (black callout between the two right panels)",
+      "} (large blue right-curly brace right of each matrix, both right panels)"
+    ],
+    "equations": [
+      "Y^T [y1 y2 y3 y4] = Sigmoid   (top-middle panel: red 'Y^T' + row of four yellow boxes y1..y4 + blue '= Sigmoid')",
+      "Y^T [y1 y2 y3 y4] = Linear   (bottom-middle panel: red 'Y^T' + row of four yellow boxes y1..y4 + blue '= Linear')",
+      "Y = W_q \u00b7 X + b   [implied by the diagram (X vector \u00d7 W_q matrix, then + bias column); not explicitly written as text on the slide]"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top with a yellow slide-number badge '10' at the top-right corner; a one-line subtitle spans the width beneath the title. Below, three vertical zones: LEFT panel (~5-28% width) is a white blue-bordered rounded box containing a 4-input to 4-neuron fully-connected network labeled 'Input Word X'; CENTER column (~30-53% width) holds two stacked gray rounded panels (top: 'Y^T [y1 y2 y3 y4] = Sigmoid', bottom: 'Y^T [y1 y2 y3 y4] = Linear') with a black 'IF No Non-linearity' callout straddling the gap between them and a thick red arrow running down through it; RIGHT zone (~54-94% width) holds two stacked panels, each showing a horizontal X vector of pink circles, a 4x4 W_q matrix (yellow cells on green), a blue curly brace, a '+' sign and a vertical bias column (b1..b4 in the top panel; 0,0,0,0 in the bottom panel), with a black 'IF No Bias' callout and red down-arrow between the two panels at the far right. A solid black bar runs across the very bottom edge of the frame.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~8-90% width, ~7-14% height",
+        "content": "Red bold title 'Using  FF NN  for Multiplication of ONE Vector by a Matrix'"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, ~89-95% width, ~9-16% height",
+        "content": "Yellow circle with orange border containing '10'"
+      },
+      {
+        "name": "Subtitle",
+        "position": "top center, ~8-90% width, ~14-19% height",
+        "content": "Blue bold-italic example line with red 'X', blue 'W_q (Query)', green italic '{Remember: W_q is Squared Matrix}'"
+      },
+      {
+        "name": "Left panel: Input Word X",
+        "position": "left, ~5-28% width, ~19-95% height",
+        "content": "Fully-connected 4x4 neural network: pink input circles x1-x4, four \u03a3 neurons, 16 gray connection lines, 16 color-coded weight labels, green output arrows to y1-y4"
+      },
+      {
+        "name": "Top-middle panel",
+        "position": "center-left, ~30-53% width, ~19-54% height",
+        "content": "Gray rounded panel: red 'Y^T', row of yellow boxes y1-y4 outlined in pink, blue '= Sigmoid', thick red down-arrow"
+      },
+      {
+        "name": "Bottom-middle panel",
+        "position": "center-left, ~30-53% width, ~58-93% height",
+        "content": "Gray rounded panel: red 'Y^T', row of yellow boxes y1-y4 outlined in pink, blue '= Linear', red arrow entering from above"
+      },
+      {
+        "name": "Callout: IF No Non-linearity",
+        "position": "center, ~43-54% width, ~51-60% height (straddles the two middle panels)",
+        "content": "Black rounded rectangle, white bold text on two lines"
+      },
+      {
+        "name": "Top-right panel",
+        "position": "right, ~54-94% width (main content to ~87%, bias column to ~94%), ~19-54% height",
+        "content": "X vector (4 pink circles + red 'X' label), 4x4 W_q matrix on green, blue curly brace, '+', vertical bias column b1-b4"
+      },
+      {
+        "name": "Bottom-right panel",
+        "position": "right, ~54-94% width (main content to ~87%, zero column to ~94%), ~58-93% height",
+        "content": "X vector (4 pink circles + red 'X' label), 4x4 W_q matrix on green, blue curly brace, '+', vertical column of four '0' boxes"
+      },
+      {
+        "name": "Callout: IF No Bias",
+        "position": "right, ~81-93% width, ~52-59% height (between the two right panels)",
+        "content": "Black rounded rectangle, white bold text, with thick red arrow pointing down to the 0-column"
+      },
+      {
+        "name": "Bottom black bar",
+        "position": "bottom, 0-100% width, ~95-100% height",
+        "content": "Solid black strip (likely the video player progress/control bar overlapping the slide)"
+      }
+    ],
+    "hierarchy": "The red bold title dominates, followed by the blue bold-italic subtitle. Inside the panels, the largest items are the red 'Y^T' labels and red 'X' labels. The black callout boxes ('IF No Non-linearity', 'IF No Bias') are small but maximum-contrast focal points, reinforced by thick red arrows. Matrix cells, bias boxes and node labels are mid-size bold; the 16 weight labels in the left panel are the smallest text. A consistent color code (blue/magenta/orange/green) links the left-panel weight labels to the corresponding matrix rows."
+  },
+  "visual_elements": [
+    {
+      "type": "network",
+      "description": "Fully-connected feedforward network, 4 inputs to 4 outputs, inside the left panel. Inputs: four pink circles (fill #FF9CEE, border #CC00CC) labeled x1, x2, x3, x4 stacked vertically. Outputs: four circles (white fill, red #CC0000 border) each containing '\u03a3', aligned with the inputs. All 16 input-to-neuron connections drawn as thin gray lines. A vertical column of 16 weight labels sits between inputs and neurons, color-coded by source input: W_11, W_21, W_31, W_41 (blue, from x1); W_12, W_22, W_32, W_42 (magenta, from x2); W_13, W_23, W_33, W_43 (orange, from x3); W_14, W_24, W_34, W_44 (green, from x4). Each \u03a3 neuron has a small multicolored pie/wheel icon at its upper-left and a gray halftone (dotted) circle beneath it, and emits a short green arrow to a green bold label y1/y2/y3/y4.",
+      "colors": [
+        "#FF9CEE",
+        "#CC00CC",
+        "#CC0000",
+        "#A0A0A0",
+        "#0000CC",
+        "#FF6600",
+        "#009900",
+        "#FFFFFF"
+      ],
+      "position": "left panel, ~5-28% width, ~19-95% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Two identical output-vector rows (one per middle panel): red bold 'Y^T' (superscript T) followed by a horizontal group of four small pale-yellow boxes labeled y1, y2, y3, y4 (black bold text), the group wrapped in a pink/magenta rounded-rectangle outline; to the right, '= Sigmoid' (top panel) or '= Linear' (bottom panel) in blue bold italic.",
+      "colors": [
+        "#CC0000",
+        "#FFFFCC",
+        "#B8860B",
+        "#FF9CEE",
+        "#0000CC",
+        "#E8E8E8"
+      ],
+      "position": "center column, two stacked gray rounded panels (~30-53% width)"
+    },
+    {
+      "type": "arrow",
+      "description": "Thick red vertical arrow starting below the top-middle panel's y-boxes, pointing down through/past the black 'IF No Non-linearity' callout into the bottom-middle panel toward '= Linear'. A second thick red arrow points down from the 'IF No Bias' callout to the top of the bottom-right panel's 0-column.",
+      "colors": [
+        "#CC0000"
+      ],
+      "position": "center column and far right, in the gaps between stacked panels"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Two black rounded-rectangle callouts with white bold text: 'IF No Non-linearity' (two lines: 'IF No' / 'Non-linearity') between the middle panels, and 'IF No Bias' (one line) between the right panels. They act as conditional annotations: bottom row = same computation without non-linearity / with zero bias.",
+      "colors": [
+        "#000000",
+        "#FFFFFF"
+      ],
+      "position": "one at ~43-54% width and ~51-60% height; other at ~81-93% width and ~52-59% height"
+    },
+    {
+      "type": "diagram",
+      "description": "Two identical 'X vector' graphics (one per right panel): a horizontal row of four pink circles (fill #FF9CEE, border #CC00CC) labeled x1, x2, x3, x4, enclosed in a pink rounded-rectangle outline, with a large red bold 'X' label centered directly below the row.",
+      "colors": [
+        "#FF9CEE",
+        "#CC00CC",
+        "#CC0000",
+        "#000000"
+      ],
+      "position": "top-left area of each right panel (~55-68% width)"
+    },
+    {
+      "type": "table",
+      "description": "Two identical 4x4 weight matrices W_q (one per right panel): a green background block containing 16 yellow cells with thin borders. Row 1: W_11, W_21, W_31, W_41 (all blue text). Row 2: W_12, W_22, W_32, W_42 (all magenta text). Row 3: W_13, W_23, W_33, W_43 (all orange text). Row 4: W_14, W_24, W_34, W_44 (all green text). Row color-coding matches the left panel's weight-label groups.",
+      "colors": [
+        "#CCFFCC",
+        "#FFFF66",
+        "#999999",
+        "#0000CC",
+        "#CC00CC",
+        "#FF6600",
+        "#009900"
+      ],
+      "position": "right side of each right panel (~69-84% width)"
+    },
+    {
+      "type": "other",
+      "description": "In each right panel, to the right of the matrix: a large blue right-curly brace '}' spanning the matrix height, then a bold '+' sign, then a vertical column of four yellow rounded boxes with red borders. Top panel column contains b1, b2, b3, b4; bottom panel column contains 0, 0, 0, 0 (black bold text).",
+      "colors": [
+        "#0000CC",
+        "#FFFF99",
+        "#CC0000",
+        "#000000"
+      ],
+      "position": "far right of each right panel (~85-94% width)"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: yellow circle with orange/red border containing the number '10' in dark red bold.",
+      "colors": [
+        "#FFFF00",
+        "#CC6600",
+        "#990000"
+      ],
+      "position": "top-right corner"
+    },
+    {
+      "type": "other",
+      "description": "Solid black horizontal bar spanning the entire bottom edge of the frame (most likely the video player's progress/control bar captured with the slide, not slide content).",
+      "colors": [
+        "#000000"
+      ],
+      "position": "bottom edge, 0-100% width, ~95-100% height"
+    }
+  ],
+  "imagery": [
+    "Small multicolored pie/wheel icons (green, blue, red segments) attached at the upper-left of each of the four \u03a3 neurons in the left panel",
+    "Gray halftone/dotted circles (faded 'shadow' neurons) rendered just below each \u03a3 neuron in the left panel",
+    "Yellow circular slide-number badge '10' at top right",
+    "No photographs or clip-art; all graphics are flat vector-style shapes typical of an academic slide deck"
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#CC0000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000CC",
+      "#CC0000",
+      "#009900",
+      "#CC00CC",
+      "#FF6600",
+      "#FF9CEE",
+      "#FFFF66",
+      "#FFFFCC",
+      "#FFFF99",
+      "#CCFFCC",
+      "#E8E8E8",
+      "#000000",
+      "#CC6600",
+      "#FFFF00",
+      "#990000",
+      "#A0A0A0",
+      "#999999",
+      "#B8860B",
+      "#F0F0F0"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Tahoma-like). Title: bold, ~28pt, red, title case with emphasized 'FF NN' and 'ONE' (extra spacing around 'FF NN'). Subtitle: bold italic ~16pt blue, with a larger red 'X' and a green italic brace note; subscripts used (W_q). Panel headers and node labels are bold; all weight/matrix labels use subscripted indices (W_11 ... W_44) at ~9-11pt and are color-coded. '= Sigmoid' and '= Linear' are blue bold italic. Callout text is white bold on black. 'Y^T' uses a superscript T. No serif fonts, no all-caps blocks beyond natural capitalization.",
+  "animation_state": "Slide appears fully built \u2014 all four panels, both black callouts, all arrows, matrices and labels are visible; no mid-build reveal detected. The solid black bar across the bottom edge is almost certainly the video player's progress/control bar overlapping the slide rather than slide content.",
+  "recreation_brief": "1. Canvas: create a 16:9 slide with a solid white background (#FFFFFF); draw no slide frame or border (none exists in the source analysis).\n2. Title: centered text box spanning ~8-90% width at ~7-14% height with the exact text 'Using  FF NN  for Multiplication of ONE Vector by a Matrix' (preserve the double spaces around 'FF NN'), Arial bold 28pt, red #CC0000.\n3. Slide-number badge: circle at ~89-95% width, ~9-16% height (top-right corner), fill #FFFF00, border #CC6600, containing '10' in bold 14pt dark red #990000.\n4. Subtitle: centered text box spanning ~8-90% width at ~14-19% height, built as rich-text runs in this order: 'Example: Multiply Vector of Current Word ' (blue #0000CC bold italic 16pt) + 'X' (red #CC0000 bold 20pt) + ' by ' (blue #0000CC bold italic 16pt) + 'W' (blue #0000CC bold italic) with subscript 'q' + ' (Query) ' (blue #0000CC bold italic) + '{Remember: W' (green #009900 bold italic) with subscript 'q' + ' is Squared Matrix}' (green #009900 bold italic).\n5. Left panel container: rounded rectangle from ~5% to ~28% width and ~19% to ~95% height, white fill, blue #0000CC border 2pt; header at its top-left: 'Input Word ' (black bold 16pt) + 'X' (red #CC0000 bold 18pt).\n6. Left-panel inputs: four circles ~0.9 cm in diameter at x\u22488%, y\u224827/47/66/85%, fill #FF9CEE, border #CC00CC, labeled x1, x2, x3, x4 (black bold 11pt).\n7. Left-panel neurons: four circles at x\u224823% on the same four y positions as the inputs, white fill, red #CC0000 border 2pt, each containing '\u03a3' (black bold 14pt); at each neuron's upper-left add a ~0.5 cm pie icon with green/blue/red segments, and just below each neuron a gray semi-transparent dotted/halftone circle ~0.9 cm.\n8. Left-panel connections: draw all 16 input-to-neuron connections as 0.75pt gray #A0A0A0 straight lines (4 inputs \u00d7 4 neurons).\n9. Left-panel weight labels: 16 bold 9pt labels with subscripted indices stacked vertically at x\u224813-15%, evenly spaced from ~25% to ~88% height in this top-to-bottom order: W_11, W_21, W_31, W_41 (blue #0000CC); W_12, W_22, W_32, W_42 (magenta #CC00CC); W_13, W_23, W_33, W_43 (orange #FF6600); W_14, W_24, W_34, W_44 (green #009900).\n10. Left-panel outputs: from each neuron a short green #009900 arrow pointing right to a green #009900 bold label y1/y2/y3/y4 placed at x\u224826%, vertically aligned with its neuron.\n11. Top-middle panel: rounded rectangle ~30-53% width, ~19-54% height, fill #E8E8E8, blue #0000CC border 1.5pt; inside, one horizontal row: 'Y' in red bold 26pt with superscript 'T', then four small boxes (~1.0\u00d70.7 cm, fill #FFFFCC, border #B8860B) labeled y1, y2, y3, y4 (black bold 10pt) with the four-box group wrapped in a pink #FF9CEE rounded-rectangle outline, then '= Sigmoid' in blue #0000CC bold italic 16pt.\n12. Bottom-middle panel: identical rounded rectangle at ~30-53% width, ~58-93% height, fill #E8E8E8, blue #0000CC border 1.5pt; same row of red 'Y^T' + pink-outlined group of four yellow boxes y1-y4, ending with '= Linear' in blue #0000CC bold italic 16pt.\n13. Callout 'IF No Non-linearity': black #000000 rounded rectangle at ~43-54% width, ~51-60% height, straddling the gap between the two middle panels; white bold 12pt text on two lines: 'IF No' / 'Non-linearity'.\n14. Center red arrow: thick red #CC0000 downward arrow starting below the top-middle panel's y-boxes, passing through the step-13 callout, ending inside the bottom-middle panel at '= Linear'.\n15. Top-right panel container: rounded rectangle ~54-94% width, ~19-54% height, fill #F0F0F0, blue #0000CC border 1.5pt.\n16. Top-right X vector: at the panel's top-left (~55-68% width), a horizontal row of four pink circles (fill #FF9CEE, border #CC00CC) labeled x1, x2, x3, x4, the row wrapped in a pink #FF9CEE rounded-rectangle outline, with 'X' in red #CC0000 bold 20pt centered directly below the row.\n17. Top-right W_q matrix: green #CCFFCC background block ~15% wide and ~28% high at ~69-84% width, holding a 4\u00d74 grid of 16 yellow #FFFF66 cells with thin #999999 borders; bold 10pt subscripted cell text \u2014 row 1: W_11, W_21, W_31, W_41 (blue #0000CC); row 2: W_12, W_22, W_32, W_42 (magenta #CC00CC); row 3: W_13, W_23, W_33, W_43 (orange #FF6600); row 4: W_14, W_24, W_34, W_44 (green #009900).\n18. Top-right brace/plus/bias: right of the matrix, a large blue #0000CC right-curly brace '}' at ~85-87% width spanning the matrix height, then a bold '+' (~18pt) at ~87-88% width, then a vertical column of four yellow #FFFF99 rounded boxes with red #CC0000 borders at ~88-94% width, labeled top-to-bottom b1, b2, b3, b4 (black bold).\n19. Bottom-right panel: repeat steps 15-18 at ~54-94% width, ~58-93% height, with exactly one change: the four bias-column boxes read 0, 0, 0, 0 (black bold) instead of b1-b4.\n20. Callout 'IF No Bias': black #000000 rounded rectangle at ~81-93% width, ~52-59% height, between the two right panels; white bold 12pt text 'IF No Bias' on one line; beneath it a thick red #CC0000 downward arrow pointing to the top of the bottom-right panel's 0-column.\n21. Bottom black bar: do not add it for slide recreation \u2014 the solid black strip (0-100% width, ~95-100% height) is identified as the video player's progress/control bar captured over the slide; add a plain black rectangle there only if the goal is to reproduce the captured video frame exactly.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Schema: verbatim_text.bullets was empty; filled it with the 6 standalone text lines that exist on the slide (subtitle line, 'Input Word X' header, 'Y^T [y1 y2 y3 y4] = Sigmoid', 'IF No Non-linearity', 'Y^T [y1 y2 y3 y4] = Linear', 'IF No Bias'), all copied verbatim from labels/equations \u2014 the slide is a diagram slide with no traditional bullet list.",
+      "Consistency: recreation_brief specified #0000FF for the left/middle/right panel borders while visual_elements and colors use #0000CC for all blue elements; changed all three panel border specs to #0000CC.",
+      "Consistency: added 6 colors referenced in visual_elements/recreation_brief but missing from colors.accents: #FFFF00, #990000, #A0A0A0, #999999, #B8860B, #F0F0F0.",
+      "Consistency: removed the duplicate #CC00CC entry from the network element's colors array (was listed twice).",
+      "No-invention: deleted the 'optional thin dark-red rectangle outline' slide frame from recreation_brief step 1 \u2014 no frame is described in layout.regions or visual_elements.",
+      "Consistency: made the bottom black bar decisive \u2014 recreation_brief now instructs to omit it for slide recreation (animation_state identifies it as the video player's progress bar), keeping it only as an option for exact video-frame reproduction.",
+      "Consistency: harmonized right-panel geometry \u2014 panel rectangles now span ~54-94% width so the curly-brace/plus/bias column (~85-94%) lies inside them; the regions' '~54-87% width (bias column to ~94%)' and the brief's '~54-87%' rectangles contradicted each other.",
+      "Precision/recreatability: added missing placements to recreation_brief \u2014 x-position for the left-panel y1-y4 output labels (x\u224826%, aligned with their neurons) and the vertical span/order of the 16 weight labels (~25-88% height, blue\u2192magenta\u2192orange\u2192green top-to-bottom).",
+      "Recreatability: rewrote recreation_brief as a 21-step ordered checklist (callouts now placed before the arrows that pass through them) with exact text, position, color and shape for every element; verified all 11 layout.regions cover every visual_element and all 93 verbatim labels."
+    ],
+    "uncertain_items": [
+      "Equation 'Y = W_q \u00b7 X + b' is inferred from the diagram (X vector \u00d7 W_q matrix, then + bias column) and is not written as text on the slide; kept in equations with its 'implied' annotation.",
+      "Right-panel fill #F0F0F0 appears only in the recreation brief; no region or visual_element states the right-panel fill (middle panels are #E8E8E8), so the exact shade is unverified.",
+      "The bottom black strip (~95-100% height) is judged to be the video player's progress bar rather than slide content; if it is actually part of the slide, add a solid black rectangle across the full bottom edge.",
+      "Subtitle wording '{Remember: W_q is Squared Matrix}' is consistent across all fields but reads unusually ('Square Matrix' would be expected); verify against the original slide before final build.",
+      "Small-text font sizes (9-11pt weight/matrix labels, 10pt box labels, 12pt callouts, 14pt badge text) and the exact positions of the 16 left-panel weight labels and the pie/halftone neuron decorations are estimates from the analysis, not measured values."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_010.jpg",
+    "model": "glm-5.3-flash",
+    "source_timestamps": {
+      "slide": 10,
+      "image": "slide_010.jpg",
+      "kept_frame": "frame_00309.jpg",
+      "start_sec": 275.0,
+      "end_sec": 308.0,
+      "frame_count": 34,
+      "old_slide": 10
+    },
+    "elapsed_s": 550.0,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 993.6
+  }
+}

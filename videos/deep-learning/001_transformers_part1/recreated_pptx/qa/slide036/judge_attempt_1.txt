@@ -1,0 +1,34 @@
+# Fidelity Check â Slide 036 "Self Attention Mechanism (Scaling based on Square Root of Embedding Vector Dimension)"
+
+## Ground-rule dispositions (settled first)
+- House frame, #E8E8E8 bg, yellow "36" badge, centered title box â house chrome, **not** assessed.
+- IMG2 cursor artifact (small pointer near "length of input Sequence") â video artifact, correctly absent in recreation.
+- Typed-vs-rendered equation styling (âdâ, âdâ, wâ²áµ¢â±¼/âd rendered as 2D radicals/stacked fraction) â present in BOTH images in equivalent 2D radical form; no format conflict to adjudicate.
+- Both images contain identical full content; IMG2 is a real content-bearing frame, so contentlessness rule (b) is not triggered.
+
+## Element-by-element comparison
+
+| Element | Original (IMG2) | Recreation (IMG1) | Verdict |
+|---|---|---|---|
+| Title "Self Attention Mechanism" + subtitle with yellow-highlighted "Scaling" | Present | Present, verbatim, same line break, highlight present | Match (see MINOR #2) |
+| Green panel: Vâ/Vâ headers, X-column (Xââ¦Xââ), M-columns, tall delimiters, dashed orange divider, arrow, 1xdâ Ã2, 1xdâ Ã2 | Present | Present; parentheses span full column height, no text/delimiter overlap, labels inside panel | Match (see MINOR #1) |
+| "Let Average Valuesâ¦Vâ = M / Vâ = M" box (2 lines, blue bold values) | Present | Present, verbatim, same 2-line break | Match |
+| "Vector Length of Vâ/Vâ (all Ms) = VâáµVâ = M âdâ/âdâ" | Present | Present, verbatim, radicals rendered | Match |
+| Bell-curve box (blue border, red axes, gray grid, dashed blue center line, "M" below axis) | Present | Present, all features reproduced | Match |
+| "âd is a good choice for scaling" box; "â´âd Some times is used" box (yellow fill) | Present | Present, verbatim, colors approximated correctly | Match |
+| SoftMax [wâ²áµ¢â±¼] box; SoftMax (wâ²áµ¢â±¼/âd) box with stacked fraction + spanning parens | Present | Present; fraction bar present, wâ²áµ¢â±¼ vertically centered, parens span both numerator and denominator | Match |
+| "d=100, âd =10" box | Present | Present, verbatim | Match |
+| Black-outline SoftMax demo: 10/20/30/40 â SoftMax â 0.0000/0.0000/0.0000/1.0000 | Present | Present, all 8 values exact, same order | Match |
+| Purple demo: 10/20/30/40, /, âd, Scaled, 1/2/3/4, SoftMax, 0.0321/0.0871/0.2369/0.6439 | Present | Present, all values exact, parens span full 4-row columns, arrows correct | Match |
+| Remember box: "Remember: / "d" is / Dimension of Embedding / Not / length of input Sequence" | Present | Present, verbatim, underline on "Dimension of Embedding", same line structure and spacing | Match |
+
+**Frame containment:** All boxes, vectors, labels, and the two bottom demo panels sit fully inside the green/black/purple outlines and inside the house frame. The tightest items â "1xdâ" labels at the green panel's bottom edge and the 0.0321/0.6439 column at the purple panel's right edge â are contained with margin in both axes. No ink crosses any boundary.crepancy list
+
+1. **MINOR** â X-column in left green panel appears to contain a duplicated "Xâ" row (13 labels vs. original's 12, Xââ¦Xââ). Confidence: medium (small glyph size at 150 dpi). Does not change the mathematical illustration.
+2. **MINOR** â Yellow highlight behind "Scaling" appears to extend ~1 character-width left, partially covering the "(" that the original leaves unhighlighted. Confidence: medium.
+3. **MINOR** â "âd is a good choiceâ¦" box fill is a pale green tint vs. the original's near-white; within approximate-color tolerance. Confidence: high.
+4. **MINOR** â SoftMax [wâ²áµ¢â±¼] brackets rendered heavier/darker than the original's thinner brackets; shape style (square, full-span) preserved. Confidence: high.
+
+No MAJOR or BLOCKER defects found. No text overflow, clipping, collisions, wrapping errors, or misalignments observed; enclosed values sit vertically centered in their cells/brackets; line spacing in the multi-line Remember box and the two-line "Let Average Values" block matches the original.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

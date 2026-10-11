@@ -1,0 +1,40 @@
+# Visual QA Report â Slide 010 crop (attention dashed curves, 3x)
+
+**Canvas:** ~1400 Ã 315 px, a 3x upscaled crop of a seq2seq/attention diagram. Rendering is soft, with mild interpolation blur and aliasing on thin strokes and text.
+
+## 1. Text transcription (verbatim, complete)
+
+| Text | Location | Appearance |
+|---|---|---|
+| `sâ` | Below arrow between 1st and 2nd cell arrays (~x515, y75) | Dark green/olive italic serif "s" with subscript "1" |
+| `sâ` | Below arrow between 2nd and 3rd cell arrays (~x915, y75) | Same style, subscript "2" |
+| `sâ` | Below arrow after 3rd cell array, near right edge (~x1330, y75) | Same style, subscript "3" |
+| `Attention` | Bottom center-right (~x855â1065, y285â318) | Large bold italic navy-blue sans-serif |
+
+No other text, numbers, or labels are visible. Nothing illegible beyond upscale blur; all four strings are readable.
+
+## 2. Layout
+
+- **LEFT edge (top to bottom):**
+  - Corner of a white rounded box (clipped, x0â65, y0â95).
+  - A light-lavender rounded box, clipped by the left edge (~y90â175), with a soft purple gradient shadow/wedge offset below-left of it.
+  - A peach/orange rounded box, clipped left and bottom (~y190â318), containing a small yellow cell (clipped at left) and a dark-red filled dot (~x30, y245).
+  - A thick dark-red curved arrow arcs from that dot up-right to a dark-red dot at the left end of the first cell array (~x180, y45). A thin red diagonal line runs from the orange box toward the bottom edge.
+  - The three pink/crimson **dashed curves** fan out from behind the lavender box at the left.
+
+- **RIGHT edge:** The yellow band runs off the right edge, cut by the crop. The third cell array ends ~x1225; a gray arrow with a black arrowhead exits at the top right (~x1390, y40), touching the frame edge. The lavender band ends earlier, with a rounded right cap at ~x1235; the rightmost dashed curve hooks up at xâ1150â1230. White background below.
+
+- **TOP:** A yellow rounded band spans nearly the full width (top edge cut off by the crop). It contains three arrays of 5 yellow cells each (~x185â425, 585â825, 985â1225), separated by gray arrows labeled `sâ`, `sâ`. Three thin dark vertical stems rise from the array tops to the top edge (cut off). Two dark-gray solid hook-shaped curves descend from the top edge and end in upward arrowheads at the bottoms of the 2nd and 3rd arrays.
+
+- **BOTTOM:** A large light-periwinkle rounded band spans ~x120â1235, y120â270. The three pink dashed curves sweep through/around it; the topmost rises to an orange upward arrowhead under the 1st array (~x310), the middle and bottom curves terminate in orange upward arrowheads under the 2nd (~x730) and 3rd (~x1130) arrays. Below the band, the word "Attention" is clipped by the bottom edge.
+
+## 3. Defects / anomalies
+
+- **Clipping (crop artifacts, not slide errors):**
+  - "Attention" is cut mid-glyph at the bottom â only the upper ~2/3 of the letters is visible.
+  - The yellow band's top edge, the three vertical stems, the two hook curves, and the right-exiting arrow are all cut by the frame.
+  - The white, lavender, and orange boxes on the left are partially out of frame.
+- **Overlapping elements (appear intentional to the diagram, but noted):** the dashed pink curves cross the lavender band's borders and pass over the purple shadow of the left lavender box; the topmost dashed curve grazes the yellow band's bottom-left corner. The dark hook arrowheads and the orange dashed arrowheads land nearly coincident under the 2nd and 3rd arrays, stacking slightly.
+- **Placeholder/garbage strings:** none.
+- **Wrong-language text:** none.
+- **Quality:** mild upscale softness/aliasing on dashes, arrowheads, and subscripts; no broken strokes or misaligned dashes observed.

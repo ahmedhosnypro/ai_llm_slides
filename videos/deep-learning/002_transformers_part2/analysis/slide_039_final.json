@@ -1,0 +1,183 @@
+{
+  "slide_title": "Normalization",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "learn on a more stable distribution of inputs,",
+      "Accelerate the training of the network (don't stick with very small learning rates)."
+    ],
+    "labels": [
+      "Normalization",
+      "39",
+      "The behavior of machine learning algorithms  changes when the input distribution changes.",
+      "{Covariate shift }",
+      "layer weights changes",
+      "during training steps",
+      "Outputs of Activation functions",
+      "of each layer change",
+      "Inputs to the next layer,",
+      "(With different Input distribution)",
+      "Conclusion:",
+      "Input distribution of each layer changes with each step .",
+      "The basic idea behind Normalization is to:",
+      "Limit covariate shift by normalizing the activations of each layer",
+      "Normalization:  Transforming the inputs to be Zero mean and unit variance.",
+      "Normalization allows each layer to:"
+    ],
+    "equations": [
+      "Zero mean and unit variance (stated in words only; no symbolic formula is shown on the slide)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Single-column lecture slide framed by a thin red border. Title centered at top with a circular slide-number badge at top-right. Below: a full-width red-bordered quote box; then a horizontal 3-box flowchart with left-to-right arrows; then a left-aligned text block with three red lead-in headers, each followed by a blue indented statement; finally a full-width light-blue summary box with two bullets at the bottom. A black horizontal bar (video letterbox artifact) runs along the very bottom edge.",
+    "regions": [
+      {
+        "name": "Title bar",
+        "position": "top center, ~2-15% height, ~20-80% width",
+        "content": "Red bold serif title 'Normalization' centered"
+      },
+      {
+        "name": "Slide-number badge",
+        "position": "top-right corner, ~92% width, ~8% height",
+        "content": "Yellow circular badge with red outline containing the red number '39'"
+      },
+      {
+        "name": "Quote box",
+        "position": "top, full width ~5-95%, ~17-28% height",
+        "content": "Red-bordered white box: italic blue serif sentence, with red right-aligned '{Covariate shift }' beneath it"
+      },
+      {
+        "name": "Flowchart",
+        "position": "upper-middle, ~8-92% width, ~30-45% height",
+        "content": "Three light-yellow rectangular boxes connected by two red right-pointing arrows"
+      },
+      {
+        "name": "Conclusion / idea text block",
+        "position": "middle-lower, left-aligned, ~8-90% width, ~46-72% height",
+        "content": "Three red bold lead-ins ('Conclusion:', 'The basic idea behind Normalization is to:', 'Normalization:') each followed by an indented blue bold statement; key phrases underlined"
+      },
+      {
+        "name": "Summary box",
+        "position": "bottom, full width ~5-95%, ~75-93% height",
+        "content": "Light-blue box with blue border: red bold header 'Normalization allows each layer to:' and two blue bullet lines with underlined phrases"
+      },
+      {
+        "name": "Content frame",
+        "position": "perimeter of the slide content area",
+        "content": "Thin red (#CC0000) rectangular outline framing all slide content"
+      },
+      {
+        "name": "Bottom black bar",
+        "position": "very bottom edge, full width, ~97-100% height",
+        "content": "Solid black strip (video player letterbox artifact, not slide content)"
+      }
+    ],
+    "hierarchy": "Dominant: red title 'Normalization' (largest, bold serif). Second: the three red bold section lead-ins and the three flowchart boxes. Third: blue bold body statements (slightly smaller than red headers). Smallest: flowchart box sub-lines and the slide-number badge. Red is used for headers/emphasis, blue for content statements, black for two neutral phrases ('during training steps', 'Inputs to the next layer,')."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "Three rectangular nodes arranged horizontally, connected by two straight red arrows pointing left-to-right. Node 1 (left): line 1 'layer weights changes' in red, line 2 'during training steps' in black bold. Arrow 1: red, horizontal, from right edge of Node 1 to left edge of Node 2. Node 2 (center): line 1 'Outputs of Activation functions' in red, line 2 'of each layer change' in red. Arrow 2: red, horizontal, from right edge of Node 2 to left edge of Node 3. Node 3 (right): line 1 'Inputs to the next layer,' in black bold, line 2 '(With different Input distribution)' in red. All boxes have thin red/dark-red borders and pale-yellow fill.",
+      "colors": [
+        "#FFFFCC",
+        "#CC0000",
+        "#000000",
+        "#B22222"
+      ],
+      "position": "upper-middle band of slide, ~30-45% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Quote box: white fill, thin red border, full width; contains italic blue sentence and right-aligned red '{Covariate shift }'.",
+      "colors": [
+        "#FFFFFF",
+        "#CC0000",
+        "#0000CC"
+      ],
+      "position": "top, under title"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Summary box: pale-blue fill, medium blue border, full width; contains red header and two bulleted blue lines with underlined phrases.",
+      "colors": [
+        "#E8F2FF",
+        "#0000CC",
+        "#CC0000"
+      ],
+      "position": "bottom of slide"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: yellow filled circle with red outline containing the number '39' in red.",
+      "colors": [
+        "#FFFF00",
+        "#CC0000"
+      ],
+      "position": "top-right corner"
+    },
+    {
+      "type": "other",
+      "description": "Thin red rectangular frame bordering the entire slide content area.",
+      "colors": [
+        "#CC0000"
+      ],
+      "position": "perimeter of slide"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations. Only geometric elements: a thin red rectangular frame around the content area, three pale-yellow flowchart boxes, two red arrows, a yellow circular slide-number badge, and two bordered highlight boxes (the white quote box and the pale-blue summary box)."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#CC0000",
+    "body_text": "#0000CC",
+    "accents": [
+      "#CC0000",
+      "#0000CC",
+      "#FFFFCC",
+      "#E8F2FF",
+      "#FFFF00",
+      "#000000"
+    ]
+  },
+  "typography_notes": "Title 'Normalization' is a large bold serif (Times/Bookman-like), red, centered, title case. The quote is italic serif (Times New Roman italic style), blue. All body text and flowchart text is bold sans-serif (Verdana/Tahoma-like). Red bold is used for headers/lead-ins; blue bold for statements; black bold for two neutral phrases ('during training steps', 'Inputs to the next layer,'). Underlines appear on 'covariate shift', 'stable distribution of inputs', and 'Accelerate the training'. Bullets are small round dots. Slide number in a badge, not a footer.",
+  "animation_state": "Slide appears fully built; all boxes, arrows, bullets, and text are visible with no mid-build reveal.",
+  "recreation_brief": "1. Canvas: create a 16:9 slide with a white (#FFFFFF) background.\n2. Frame: draw a thin red (#CC0000) rectangle outline along the perimeter of the content area so it frames every element placed in steps 3-19.\n3. Title: place red (#CC0000) bold serif text 'Normalization' (title case, ~40pt, Times/Bookman-like) centered at the top (~2-15% height, ~20-80% width).\n4. Badge: at the top-right corner (~92% width, ~8% height), draw a yellow (#FFFF00) filled circle with a red (#CC0000) outline containing the red number '39'.\n5. Quote box: insert a full-width rectangle (~5-95% width, ~17-28% height) with white (#FFFFFF) fill and a thin red (#CC0000) border; line 1 inside it: blue (#0000CC) italic serif sentence 'The behavior of machine learning algorithms  changes when the input distribution changes.' (preserve the double space after 'algorithms'); line 2: right-aligned red bold '{Covariate shift }' (preserve the space before '}').\n6. Flowchart Box 1 (left third of the ~8-92% width band, ~30-45% height): rectangle with pale-yellow (#FFFFCC) fill and thin red/dark-red (#CC0000/#B22222) border; line 1 'layer weights changes' in red bold, line 2 'during training steps' in black bold.\n7. Arrow 1: straight horizontal red (#CC0000) right-pointing block arrow from the right edge of Box 1 to the left edge of Box 2.\n8. Flowchart Box 2 (center third): same pale-yellow (#FFFFCC) fill and red border as Box 1; line 1 'Outputs of Activation functions' in red bold, line 2 'of each layer change' in red bold.\n9. Arrow 2: straight horizontal red (#CC0000) right-pointing block arrow from the right edge of Box 2 to the left edge of Box 3.\n10. Flowchart Box 3 (right third): same pale-yellow (#FFFFCC) fill and red border; line 1 'Inputs to the next layer,' in black bold, line 2 '(With different Input distribution)' in red bold.\n11. Lead-in 1: left-aligned red (#CC0000) bold 'Conclusion:' at ~46% height with ~8% left margin.\n12. Statement 1: indented blue (#0000CC) bold 'Input distribution of each layer changes with each step .' (preserve the space before the period).\n13. Lead-in 2: red (#CC0000) bold 'The basic idea behind Normalization is to:'.\n14. Statement 2: indented blue (#0000CC) bold 'Limit covariate shift by normalizing the activations of each layer' with 'covariate shift' underlined.\n15. Lead-in 3: red (#CC0000) bold 'Normalization:' (the verbatim label reads 'Normalization:  Transforming...' with a double space after the colon).\n16. Statement 3: indented blue (#0000CC) bold 'Transforming the inputs to be Zero mean and unit variance.'\n17. Summary box: full-width rectangle (~5-95% width, ~75-93% height) with pale-blue (#E8F2FF) fill and a medium blue (#0000CC) border; inside it place the red (#CC0000) bold header 'Normalization allows each layer to:'.\n18. Summary bullet 1: small round dot bullet with blue (#0000CC) bold text 'learn on a more stable distribution of inputs,' underlining 'stable distribution of inputs'.\n19. Summary bullet 2: small round dot bullet with blue (#0000CC) bold text 'Accelerate the training of the network (don't stick with very small learning rates).' underlining 'Accelerate the training'.\n20. Typography: title in bold serif ~40pt; quote line 1 in italic serif (Times New Roman italic style); all remaining text in bold sans-serif (Verdana/Tahoma-like) at ~16-18pt for body text and ~14pt inside the flowchart boxes.\n21. Exclusion: do NOT draw the solid black strip along the very bottom edge (~97-100% height); it is a video-player letterbox artifact, not slide content.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "layout.regions did not cover the 'other' visual element (thin red frame): added a dedicated region 'Content frame' (perimeter of content area, thin red #CC0000 rectangle outline) and added the frame to imagery, so all 5 visual elements are now covered by regions.",
+      "Split the slide-number badge out of the 'Title bar' region into its own region 'Slide-number badge' (top-right, ~92% width, ~8% height) for a one-element-per-region mapping.",
+      "Fixed internal color contradiction for the statement after 'Normalization:': the original recreation_brief rendered 'Transforming the inputs to be' in black, contradicting layout.regions ('each followed by an indented blue bold statement') and typography_notes (black bold limited to exactly 'during training steps' and 'Inputs to the next layer,'); the full statement 'Transforming the inputs to be Zero mean and unit variance.' is now uniformly blue bold in the brief.",
+      "Replaced vague quantifiers with exact counts from the JSON: typography_notes 'black bold for a few neutral phrases' changed to 'two neutral phrases'; layout.hierarchy 'black for a few neutral words' changed to 'black for two neutral phrases (...)'; layout.arrangement and hierarchy now state the exact counts 'three red lead-in headers' and 'three flowchart boxes'.",
+      "Preserved and explicitly flagged verbatim spacing in the rewritten brief: double space after 'algorithms' in the quote, double space after the colon in 'Normalization:  Transforming the inputs to be Zero mean and unit variance.', space before '}' in '{Covariate shift }', and space before the period in 'Input distribution of each layer changes with each step .'.",
+      "Rewrote recreation_brief as a 21-step numbered checklist placing exactly one element per step, each with exact text, position (percentage bands), color hex, and shape/arrow type.",
+      "subtitle_or_header verified as correctly null: no subtitle exists on this slide; the element directly below the title is the bordered quote box, which is fully specified in layout.regions, visual_elements, and brief step 5.",
+      "Coverage audit passed with no orphan content: all 16 labels, 2 bullets, and 5 visual elements map to layout.regions; verbatim_text, visual_elements, colors, and animation_state were internally consistent and left unchanged."
+    ],
+    "uncertain_items": [
+      "No items were marked [?] in the source JSON.",
+      "Exact font sizes are approximations from the source (~40pt title, ~16-18pt body, ~14pt flowchart text); no exact point sizes are given.",
+      "Horizontal alignment of the quote sentence (line 1) inside the quote box is not specified in the source; only line 2 is specified as right-aligned.",
+      "Whether each red lead-in and its blue statement share one line or the statement sits on an indented new line is not explicit; the brief places each statement indented after its lead-in.",
+      "The color of 'Transforming the inputs to be' cannot be verified against the image; it was unified to blue bold based on layout.regions and typography_notes (the two most specific descriptions)."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_039.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 39,
+      "image": "slide_039.jpg",
+      "kept_frame": "frame_03162.jpg",
+      "start_sec": 2995.0,
+      "end_sec": 3161.0,
+      "frame_count": 167,
+      "old_slide": 107
+    },
+    "elapsed_s": 123.0,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 856.4
+  }
+}

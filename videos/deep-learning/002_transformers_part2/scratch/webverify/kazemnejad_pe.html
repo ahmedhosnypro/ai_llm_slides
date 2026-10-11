@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    Transformer Architecture: The Positional Encoding - Amirhossein Kazemnejad&#39;s Blog
+    
+  </title>
+
+  <meta name="description" content="Let&#39;s use sinusoidal functions to inject the order of words in our model">
+
+  <!-- Google Analytics -->
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-147454932-1', 'auto');
+
+ga('require', 'eventTracker');
+ga('require', 'maxScrollTracker');
+ga('require', 'mediaQueryTracker');
+ga('require', 'pageVisibilityTracker');
+
+ga('require','outboundLinkTracker', {
+    shouldTrackOutboundLink: function (link, parseUrl) {
+      var href = link.getAttribute('href') || link.getAttribute('xlink:href');
+      var url = parseUrl(href);
+      var isExternal = (url.hostname != location.hostname && url.protocol.slice(0, 4) == 'http');
+
+      // treat downloads as external links
+      var exts =  'doc*|xls*|ppt*|pdf|key|zip|rar|exe|mp3' ;
+      var regExt = new RegExp(".*\\.(" + exts + ")(\\?.*)?$");
+      var isDownload = url.pathname.match(regExt);
+
+      return isDownload || isExternal;
+    }
+  });
+
+ga('require', 'impressionTracker', {
+  elements: ['tab-edu', 'tab-exp', 'tab-inter', 'tab-pres', 'tab-proj', 'tab-pub', 'tab-ski']
+});
+
+ga('send', 'pageview');
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha256-vOtzmT0JTEyCHHVxkhEDvcjAXpCCxPxRPSRDWNU1k9s=" crossorigin="anonymous"></script>
+<!-- End Google Analytics -->
+
+  <!-- <link href="https://fonts.googleapis.com/css?family=Cabin|Lora&display=swap" rel="stylesheet"> -->
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Cabin:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://kazemnejad.com/blog/transformer_architecture_positional_encoding/">
+  <link rel="alternate" type="application/rss+xml" title="Amirhossein Kazemnejad&#39;s Blog" href="/feed.xml">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">Amirhossein Kazemnejad&#39;s Blog</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+
+<header class="masthead" style="background-image: url('/img/transformer_architecture_positional_encoding/susan-yin-2JIvboGLeho-unsplash.jpg')">
+  
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Transformer Architecture: The Positional Encoding</h1>
+            
+            <h2 class="subheading">Let's use sinusoidal functions to inject the order of words in our model</h2>
+            
+            <span class="meta">Posted by
+              September 20, 2019 &middot; <span class="reading-time" title="Estimated read time">
+  
+   17 mins  read </span>
+
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div id="toc">
+    <span style="margin-left: 1.5em;"><strong>Table of Content</strong></span>
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#what-is-positional-encoding-and-why-do-we-need-it-in-the-first-place">What is positional encoding and Why do we need it in the first place?</a></li>
+<li class="toc-entry toc-h2"><a href="#proposed-method">Proposed method</a></li>
+<li class="toc-entry toc-h2"><a href="#the-intuition">The intuition</a></li>
+<li class="toc-entry toc-h2"><a href="#other-details">Other details</a></li>
+<li class="toc-entry toc-h2"><a href="#relative-positioning">Relative Positioning</a></li>
+<li class="toc-entry toc-h2"><a href="#faq">FAQ</a></li>
+<li class="toc-entry toc-h2"><a href="#summary">Summary</a></li>
+<li class="toc-entry toc-h2"><a href="#references">References</a></li>
+</ul>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto post">
+
+        <p>Transformer architecture was introduced as a novel pure attention-only sequence-to-sequence architecture by Vaswani et al. Its ability for parallelizable training and its general performance improvement made it a popular option among NLP (and recently CV) researchers.</p>
+
+<p>Thanks to the several implementations in common deep learning frameworks, it became an easy option to experiment with for many students (including myself). Even though making it more accessible is a great thing, but on the downside it may cause the details of the model to be ignored.</p>
+
+<p>In this article, I don’t plan to explain its architecture in depth as there are currently several great tutorials on this topic (<a href="http://nlp.seas.harvard.edu/2018/04/03/attention.html">here</a>, 
+<a href="http://vandergoten.ai/2018-09-18-attention-is-all-you-need/">here</a>,
+and <a href="http://jalammar.github.io/illustrated-transformer/">here</a>), but alternatively, I want to discuss one specific part of the transformer’s architecture - the positional encoding.</p>
+
+<p>When I read this part of the paper, it raised some questions in my head, which unfortunately the author had not provided sufficient information to answer them. So in this article, I want to try to break this module apart and look at how it works.</p>
+
+<p><strong>NOTE:</strong>
+To understand the rest of this post, I highly suggest you read one those tutorials to get familiar with the transformer architecture.</p>
+
+<p><img class="img-fluid" src="/img/transformer_architecture_positional_encoding/model_arc.jpg" alt="Transformer architecure" />
+<span class="caption text-muted">Figure 1 - The Transformer Architecture</span></p>
+
+<p><span style="color: gray; font-size: 0.7em">Header Photo by <a href="https://unsplash.com/@syinq?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Susan Yin</a> on <a href="https://unsplash.com/s/photos/library?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span></p>
+<h2 id="what-is-positional-encoding-and-why-do-we-need-it-in-the-first-place">What is positional encoding and Why do we need it in the first place?</h2>
+<p>Position and order of words are the essential parts of any language. They define the grammar and thus the actual semantics of a sentence.  Recurrent Neural Networks (RNNs) inherently take the order of word into account; They parse a sentence word by word in a sequential manner. This will integrate the words’ order in the backbone of RNNs.</p>
+
+<p>But the Transformer architecture ditched the recurrence mechanism in favor of multi-head self-attention mechanism. Avoiding the RNNs’ method of recurrence will result in massive speed-up in the training time. And theoretically, it can capture longer dependencies in a sentence.</p>
+
+<p>As each word in a sentence simultaneously flows through the Transformer’s encoder/decoder stack, The model itself  doesn’t have any sense of position/order for each word. Consequently, there’s still the need for a way to incorporate the order of the words into our model.</p>
+
+<p>One possible solution to give the model some sense of order is to add a piece of information to each word about its position in the sentence. We call this “piece of information”, the positional encoding.</p>
+
+<p>The first idea that might come to mind is to assign a number to each time-step within the [0, 1] range in which 0 means the first word and 1 is the last time-step. Could you figure out what kind of issues it would cause?  One of the problems it will introduce is that you can’t figure out how many words are present within a specific range. In other words, time-step delta doesn’t have consistent meaning across different sentences.</p>
+
+<p>Another idea is to assign a number to each time-step linearly. That is, the first word is given “1”, the second word is given “2”, and so on. The problem with this approach is that not only the values could get quite large, but also our model can face sentences longer than the ones in training. In addition, our model may not see any sample with one specific length which would hurt generalization of our model.</p>
+
+<p>Ideally, the following criteria should be satisfied:</p>
+
+<ul>
+  <li>It should output a unique encoding for each time-step (word’s position in a sentence)</li>
+  <li>Distance between any two time-steps should be consistent across sentences with different lengths.</li>
+  <li>Our model should generalize to longer sentences without any efforts. Its values should be bounded.</li>
+  <li>It must be deterministic.</li>
+</ul>
+
+<h2 id="proposed-method">Proposed method</h2>
+<p>The encoding proposed by the authors is a simple yet genius technique which satisfies all of those criteria. First of all, it isn’t a single number. Instead, it’s a \(d\)-dimensional vector that contains information about a specific position in a sentence. And secondly, this encoding is not integrated into the model itself. Instead, this vector is used to equip each word with information about its position in a sentence. In other words, we enhance the model’s input to inject the order of words.</p>
+
+<p>Let \(t\) be the desired position in an input sentence, \(\vec{p_t} \in \mathbb{R}^d\) be its corresponding encoding, and \(d\) be the encoding dimension (where \(d \equiv_2 0\)) Then \(f : \mathbb{N} \rightarrow \mathbb{R}^d\) will be the function that produces the output vector \(\vec{p_t}\) and it is defined as follows:</p>
+
+\[\begin{align}
+  \vec{p_t}^{(i)} = f(t)^{(i)} &amp; := 
+  \begin{cases}
+      \sin({\omega_k} . t),  &amp; \text{if}\  i = 2k \\
+      \cos({\omega_k} . t),  &amp; \text{if}\  i = 2k + 1
+  \end{cases}
+\end{align}\]
+
+<p>where</p>
+
+\[\omega_k = \frac{1}{10000^{2k / d}}\]
+
+<p>As it can be derived from the function definition, the frequencies are decreasing along the vector dimension. Thus it forms a geometric progression from \(2\pi\) to \(10000 · 2\pi\) on the wavelengths.</p>
+
+<p>You can also imagine the positional embedding \(\vec{p_t}\) as a vector containing pairs of sines and cosines for each frequency (Note that \(d\) is divisble by 2):</p>
+
+\[\vec{p_t} = \begin{bmatrix} 
+\sin({\omega_1}.t)\\ 
+\cos({\omega_1}.t)\\ 
+\\
+\sin({\omega_2}.t)\\ 
+\cos({\omega_2}.t)\\ 
+\\
+\vdots\\ 
+\\
+\sin({\omega_{d/2}}.t)\\ 
+\cos({\omega_{d/2}}.t) 
+\end{bmatrix}_{d \times 1}\]
+
+<h2 id="the-intuition">The intuition</h2>
+<p>You may wonder how this combination of sines and cosines could ever represent a position/order? It is actually quite simple, Suppose you want to represent a number in binary format, how will that be?</p>
+
+\[\begin{align}
+  0: \ \ \ \ \color{orange}{\texttt{0}} \ \ \color{green}{\texttt{0}} \ \ \color{blue}{\texttt{0}} \ \ \color{red}{\texttt{0}} &amp; &amp; 
+  8: \ \ \ \ \color{orange}{\texttt{1}} \ \ \color{green}{\texttt{0}} \ \ \color{blue}{\texttt{0}} \ \ \color{red}{\texttt{0}} \\
+  1: \ \ \ \ \color{orange}{\texttt{0}} \ \ \color{green}{\texttt{0}} \ \ \color{blue}{\texttt{0}} \ \ \color{red}{\texttt{1}} &amp; &amp; 
+  9: \ \ \ \ \color{orange}{\texttt{1}} \ \ \color{green}{\texttt{0}} \ \ \color{blue}{\texttt{0}} \ \ \color{red}{\texttt{1}} \\ 
+  2: \ \ \ \ \color{orange}{\texttt{0}} \ \ \color{green}{\texttt{0}} \ \ \color{blue}{\texttt{1}} \ \ \color{red}{\texttt{0}} &amp; &amp; 
+  10: \ \ \ \ \color{orange}{\texttt{1}} \ \ \color{green}{\texttt{0}} \ \ \color{blue}{\texttt{1}} \ \ \color{red}{\texttt{0}} \\ 
+  3: \ \ \ \ \color{orange}{\texttt{0}} \ \ \color{green}{\texttt{0}} \ \ \color{blue}{\texttt{1}} \ \ \color{red}{\texttt{1}} &amp; &amp; 
+  11: \ \ \ \ \color{orange}{\texttt{1}} \ \ \color{green}{\texttt{0}} \ \ \color{blue}{\texttt{1}} \ \ \color{red}{\texttt{1}} \\ 
+  4: \ \ \ \ \color{orange}{\texttt{0}} \ \ \color{green}{\texttt{1}} \ \ \color{blue}{\texttt{0}} \ \ \color{red}{\texttt{0}} &amp; &amp; 
+  12: \ \ \ \ \color{orange}{\texttt{1}} \ \ \color{green}{\texttt{1}} \ \ \color{blue}{\texttt{0}} \ \ \color{red}{\texttt{0}} \\
+  5: \ \ \ \ \color{orange}{\texttt{0}} \ \ \color{green}{\texttt{1}} \ \ \color{blue}{\texttt{0}} \ \ \color{red}{\texttt{1}} &amp; &amp; 
+  13: \ \ \ \ \color{orange}{\texttt{1}} \ \ \color{green}{\texttt{1}} \ \ \color{blue}{\texttt{0}} \ \ \color{red}{\texttt{1}} \\
+  6: \ \ \ \ \color{orange}{\texttt{0}} \ \ \color{green}{\texttt{1}} \ \ \color{blue}{\texttt{1}} \ \ \color{red}{\texttt{0}} &amp; &amp; 
+  14: \ \ \ \ \color{orange}{\texttt{1}} \ \ \color{green}{\texttt{1}} \ \ \color{blue}{\texttt{1}} \ \ \color{red}{\texttt{0}} \\
+  7: \ \ \ \ \color{orange}{\texttt{0}} \ \ \color{green}{\texttt{1}} \ \ \color{blue}{\texttt{1}} \ \ \color{red}{\texttt{1}} &amp; &amp; 
+  15: \ \ \ \ \color{orange}{\texttt{1}} \ \ \color{green}{\texttt{1}} \ \ \color{blue}{\texttt{1}} \ \ \color{red}{\texttt{1}} \\
+\end{align}\]
+
+<p>You can spot the rate of change between different bits. The LSB bit is alternating on every number, the second-lowest bit is rotating on every two numbers, and so on.</p>
+
+<p>But using binary values would be a waste of space in the world of floats. So instead, we can use their float continous counterparts - Sinusoidal functions. Indeed, they are the equivalent to alternating bits. Moreover, By decreasing their frequencies, we can go from red bits to orange ones.</p>
+
+<p><img class="img-fluid" src="/img/transformer_architecture_positional_encoding/positional_encoding.png" alt="Sinusoidal position encoding" />
+<span class="caption text-muted">Figure 2 - The 128-dimensional positonal encoding for a sentence with the maximum lenght of 50. Each row represents the embedding vector \(\vec{p_t}\)</span></p>
+
+<h2 id="other-details">Other details</h2>
+<p>Earlier in this post, I mentioned that positional embeddings are used to equip the input words with their positional information. But how is it done? In fact, the original paper added the positional encoding on top of the actual embeddings. That is for every word \(w_t\) in a sentence \([w_1,...w_n]\), Calculating the correspondent embedding which is fed to the model is as follows:</p>
+
+\[\begin{align}
+\psi^\prime(w_t) = \psi(w_t) + \vec{p_t}
+\end{align}\]
+
+<p>To make this summation possible, we keep the positional embedding’s dimension equal to the word embeddings’ dimension i.e. \(d_\text{word embedding} = d_\text{postional embedding}\)</p>
+
+<h2 id="relative-positioning">Relative Positioning</h2>
+
+<p>Another characteristic of sinusoidal positional encoding is that it allows the model to attend relative positions effortlessly. Here is a quote from the original paper:</p>
+
+<blockquote class="blockquote"> We chose this function because we hypothesized it would allow the model to easily learn to attend by relative positions, since for any fixed offset k, PE<sub>pos+k</sub> can be represented as a linear function of PE<sub>pos</sub>.</blockquote>
+
+<p>But why does this statement hold? To fully understand why, please refer to this great <a href="https://timodenk.com/blog/linear-relationships-in-the-transformers-positional-encoding/">article</a> to read the detailed proof. However I’ve prepared a shorter version here.</p>
+
+<p>For every sine-cosine pair corresponding to frequency \(\omega_k\), there is a linear transformation \(M \in \mathbb{R}^{2\times2}\) (independent of \(t\)) where the following equation holds:</p>
+
+\[M.\begin{bmatrix}
+	    \sin(\omega_k . t) \\
+	    \cos(\omega_k . t)
+	\end{bmatrix} = \begin{bmatrix}
+	    \sin(\omega_k . (t + \phi)) \\
+	    \cos(\omega_k . (t + \phi))
+	\end{bmatrix}\]
+
+<p><strong>Proof:</strong></p>
+
+<p>Let \(M\) be a \(2 \times 2\) matrix, we want to find \(u_1, v_1, u_2\) and \(v_2\) so that:</p>
+
+\[\begin{bmatrix}
+	    u_1 &amp; v_1 \\
+	    u_2 &amp; v_2
+	\end{bmatrix} .\begin{bmatrix}
+	    \sin(\omega_k . t) \\
+	    \cos(\omega_k . t)
+	\end{bmatrix} = \begin{bmatrix}
+	    \sin(\omega_k . (t + \phi)) \\
+	    \cos(\omega_k . (t + \phi))
+	\end{bmatrix}\]
+
+<p>By applying the <a href="https://timodenk.com/blog/trigonometric-functions-formulary/">addition theorem</a>, we can expand the right hand side as follows:</p>
+
+\[\begin{bmatrix}
+	    u_1 &amp; v_1 \\
+	    u_2 &amp; v_2
+	\end{bmatrix} .\begin{bmatrix}
+	    \sin(\omega_k . t) \\
+	    \cos(\omega_k . t)
+	\end{bmatrix} = \begin{bmatrix}
+	    \sin(\omega_k . t)\cos(\omega_k .\phi) + \cos(\omega_k . t)\sin(\omega_k .\phi) \\
+	    \cos(\omega_k . t)\cos(\omega_k .\phi) - \sin(\omega_k . t)\sin(\omega_k . \phi)
+	\end{bmatrix}\]
+
+<p>Which result in the following two equations:</p>
+
+\[\small
+    \begin{align}
+        u_1 \sin(\omega_k . t) + v_1 \cos(\omega_k . t) = &amp; \ \ \ \ \cos(\omega_k .\phi)\sin(\omega_k . t) + \sin(\omega_k .\phi)\cos(\omega_k . t) \tag{1}\\
+        u_2 \sin(\omega_k . t) + v_2 \cos(\omega_k . t) = &amp; - \sin(\omega_k . \phi)\sin(\omega_k . t) + \cos(\omega_k .\phi)\cos(\omega_k . t) \tag{2}
+    \end{align}\]
+
+<p>By solving above equations, we get:</p>
+
+\[\begin{align} 
+        u_1 = \ \ \ \cos(\omega_k .\phi) &amp; \ \ \ v_1 = \sin(\omega_k .\phi) \\
+        u_2 = - \sin(\omega_k . \phi) &amp;  \ \ \ v_2 = \cos(\omega_k .\phi)
+    \end{align}\]
+
+<p>So the final transformation matrix \(M\) is:</p>
+
+\[M_{\phi,k} = \begin{bmatrix}
+        \cos(\omega_k .\phi) &amp; \sin(\omega_k .\phi) \\
+        - \sin(\omega_k . \phi) &amp; \cos(\omega_k .\phi)
+    \end{bmatrix}\]
+
+<p>As you can see, the final transformation does not depend on \(t\). Note that one can find the matrix \(M\) very similar to the <a href="https://en.wikipedia.org/wiki/Rotation_matrix">rotation matrix</a>.</p>
+
+<p>Similarly, we can find \(M\) for other sine-cosine pairs, which eventually allows us to represent \(\vec{p_{t+\phi}}\) as a linear function of \(\vec{p_t}\) for any fixed offset \(\phi\). This property, makes it easy for the model to learn to attend by relative positions.</p>
+
+<p>Another property of sinusoidal position encoding is that the distance between neighboring time-steps are symmetrical and decays nicely with time.</p>
+
+<p><img class="img-fluid" src="/img/transformer_architecture_positional_encoding/time-steps_dot_product.png" alt="Sinusoidal position encoding" />
+<span class="caption text-muted">Figure 3 - Dot product of position embeddings for all time-steps</span></p>
+
+<h2 id="faq">FAQ</h2>
+<!-- ### Why positional embeddings are summed with the word embeddings instead of concatenation? -->
+<h3 class="no_toc">Why positional embeddings are summed with word embeddings instead of concatenation?</h3>
+<p>I couldn’t find any theoretical reason for this question. Since summation (in contrast to concatenation) saves the model’s parameters, it is reasonable to reform the initial question to “Does adding the positional embeddings to words have any disadvantages?”. I would say, not necessarily!</p>
+
+<p>Initially, if we pay attention to the figure 2, we will find out that only the first few dimensions of the whole embedding are used to store the information about the positions (Note that the reported embedding dimension is 512 despite our small toy example). And since the embeddings in the Transfomer are trained from scratch, the parameters are probably set in a way that the semantic of words does not get stored in the first few dimensions to avoid interfering with the positional encoding.</p>
+
+<p>With the same reason, I think the final Transformer can separate the semantic of words from their positional information. Moreover, there is no reason to consider the separability as an advantage. Maybe the summation provides a good source of feature for the model to learn from.</p>
+
+<p>For more information, I recommend you to check these links: <a href="https://github.com/tensorflow/tensor2tensor/issues/1591">link 1</a>, <a href="https://www.reddit.com/r/MachineLearning/comments/cttefo/d_positional_encoding_in_transformer/exs7d08/">link 2</a>.</p>
+
+<!-- ### Doesn't the position information get vanished once it reaches the upper layers? -->
+<h3 class="no_toc">Doesn't the position information get vanished once it reaches the upper layers?</h3>
+<p>Fortunately, the Transformer architecture is equipped with residual connections. Therefore the information from the input of the model (which contains positional embeddings) can efficiently propagate to further layers where the more complex interactions are handled.</p>
+
+<!-- ### Why do both sine and cosine were used? -->
+<h3 class="no_toc">Why are both sine and cosine used?</h3>
+<p>Personally, I think, only by using both sine and cosine, we can express the sine(x+k) and cosine(x+k) as a linear transformation of sin(x) and cos(x). It seems that you can’t do the same thing with the single sine or cosine. If you can find a linear transformation for a single sine/cosine, please let me know in the comments section.</p>
+
+<h2 id="summary">Summary</h2>
+<p>Thank you for staying with me until the end of this article. I hope you’ve found this useful for answering your question. Please feel free to provide any corrections or feedbacks, the comment section is at your disposal.</p>
+
+<hf />
+
+<p>Cited as</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@article{kazemnejad2019:pencoding,
+  title   = "Transformer Architecture: The Positional Encoding",
+  author  = "Kazemnejad, Amirhossein",
+  journal = "kazemnejad.com",
+  year    = "2019",
+  url     = "https://kazemnejad.com/blog/transformer_architecture_positional_encoding/"
+}
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+<ul>
+  <li><a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></li>
+  <li><a href="http://vandergoten.ai/2018-09-18-attention-is-all-you-need/">Attention Is All You Need - The Transformer</a></li>
+  <li><a href="https://timodenk.com/blog/linear-relationships-in-the-transformers-positional-encoding/">Linear Relationships in the Transformer’s Positional Encoding</a></li>
+  <li><a href="https://github.com/tensorflow/examples/blob/master/community/en/position_encoding.ipynb">position_encoding.ipynb</a></li>
+  <li><a href="https://github.com/tensorflow/tensor2tensor/issues/1591">Tensor2Tensor Github issue #1591</a></li>
+  <li><a href="https://www.reddit.com/r/MachineLearning/comments/cttefo/d_positional_encoding_in_transformer/">Reddit thread - Positional Encoding in Transformer</a></li>
+  <li><a href="https://www.reddit.com/r/learnmachinelearning/comments/9e4j4q/positional_encoding_in_transformer_model/">Reddit thread - Positional Encoding in Transformer model</a></li>
+</ul>
+
+
+        <!-- <hr> -->
+
+        <!-- <div class="clearfix">
+
+          
+          <a class="btn btn-primary float-left" href="/blog/how_to_do_deep_learning_research_with_absolutely_no_gpus_part_2/" data-toggle="tooltip" data-placement="top" title="How to do Deep Learning research with absolutely no GPUs - Part 2">&larr; Previous<span class="d-none d-md-inline">
+              Post</span></a>
+          
+          
+          <a class="btn btn-primary float-right" href="/blog/open-source-tensorflow-2-tutorial/" data-toggle="tooltip" data-placement="top" title="An Open source TensorFlow 2 Tutorial">Next<span class="d-none d-md-inline">
+              Post</span> &rarr;</a>
+          
+
+        </div> -->
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto post">
+      <section class="comment-area">
+  <div class="comment-wrapper">
+    
+    <br/>
+    <br/>
+    <br/>
+    <hr>
+    <div id="disqus_thread" class="article-comments"></div>
+    <script>
+      (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//kazemnejad-com.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+  </div>
+</section> <!-- End Comment Area -->
+
+      </div>
+    </div>
+
+  </div>
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  
+
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="https://mailhide.io/e/dRylQoHN">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://twitter.com/a_kazemnejad">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="https://www.linkedin.com/in/kazemnejad">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://github.com/kazemnejad">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="copyright" style="color: gray; font-size: 0.6em">Header Photo by <a href="https://unsplash.com/@francesco_ungaro?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Francesco Ungaro</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a> • Theme by <a href="https://startbootstrap.com/template-overviews/clean-blog-jekyll/">Clean Blog</a></p>
+        <p class="copyright text-muted">Copyright &copy; Amirhossein Kazemnejad 2025</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/startbootstrap-clean-blog/js/clean-blog.min.js"></script>
+
+<script src="/assets/scripts.js"></script>
+
+
+
+  
+</body>
+
+</html>

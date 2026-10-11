@@ -1,0 +1,41 @@
+## Element-by-Element Comparison
+
+**Context acknowledged per ground rules:** partial blue "b" glyph + underline cut at top edge = crop artifact in both images â not assessed. No cursor/video artifacts present in IMG2. House-template chrome n/a here.
+
+### 1. Î¸ glyph (focal element of this crop)
+- **Shape/aspect:** IMG1's Î¸ is a tall, narrow Computer Modern-style italic theta (aspect ratio roughly 0.55 W:H; ~80Ã145 px in a 720Ã520 crop â ~28% of crop height). IMG2's Î¸ is visibly **squatter and rounder** (~55Ã60 px in a 370Ã250 crop â ~24% of crop height, aspect near 0.9). The recreation's theta is proportionally taller and larger than the original's.
+- **Weight:** stroke weight relative to glyph size looks comparable, but the aspect/proportion difference suggests a glyph-size or font-variant mismatch, not just resolution.
+- **Severity: MAJOR** â confidence: medium-high. This is the focal label of the region and the proportional difference exceeds what 4x Lanczos smoothing explains.
+
+### 2. Î¸ position
+- IMG1: Î¸ sits lower and further right, with a clear gap between its left edge and the blue line (line passes ~5% of crop width left of the glyph at the glyph's top).
+- IMG2: Î¸ is tucked up against the blue line â its upper-left nearly touches/abuts the line.
+- Net effect: recreation has Î¸ shifted down-and-right relative to the angle vertex and blue ray.
+- **Severity: MAJOR** â confidence: medium. Placement relative to the angle rays is part of what this dense-region check is verifying.
+
+### 3. Blue diagonal line
+- Same color, same weight ratio, same origin at the axes intersection. Top-edge intercept: IMG1 ~40% of crop width; IMG2 ~43% â within estimation tolerance.
+- **Severity: none / MINOR at most** â confidence: low (likely crop/estimation noise).
+
+### 4. Red line
+- Same color, same shallow rise, exits right edge at comparable normalized height (~0.36 vs ~0.38), similar weight ratio.
+- **Severity: none.**
+
+### 5. Axes
+- Black axes intersect at the same relative point (~13â15% from left, ~70â72% down), same colors. IMG2's axes read slightly thinner relative to frame, but this is consistent with low-res source + Lanczos fattening in IMG1.
+- **Severity: MINOR** â confidence: low (likely rendering artifact, not a real weight mismatch).
+
+### 6. Colors / background
+- Pale-yellow background, blue ray, green Î¸, dark-red ray all match hue-for-hue.
+- **Severity: none.**
+
+## Summary of Discrepancies
+| # | Item | Severity | Confidence |
+|---|------|----------|------------|
+| 1 | Î¸ glyph proportions/size (taller & larger in recreation vs. rounder & smaller in original) | MAJOR | medium-high |
+| 2 | Î¸ position (recreation shifted down-right; original nearly touches blue line) | MAJOR | medium |
+| 3 | Axis line weight (recreation marginally heavier) | MINOR | low |
+
+The geometry (rays, vertex, colors, axes) is faithful, but the focal Î¸ label â the entire reason for this dense-region check â differs in both proportion and placement beyond what upscaling artifacts can account for.
+
+**CROP VERDICT: MISMATCH**

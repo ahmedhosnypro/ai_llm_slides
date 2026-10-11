@@ -1,0 +1,73 @@
+1. TITLE
+Title text (top-left, dark red bold, three lines):
+"Sequence of 5 words
+Positions are defined
+as angles"
+(the second and third lines are indented; "as angles" is centered under "Positions are defined")
+Badge numeral: yes â top-right corner, a yellow circle with dark blue/purple outline containing the number "27".
+
+2. ALL VERBATIM TEXT
+- "Sequence of 5 words" (title line 1)
+- "Positions are defined" (title line 2)
+- "as angles" (title line 3)
+- Inset box (pale yellow rectangle, left side, approx. x=85-215, y=180-245), three lines:
+  - "Sin(Ï t)" â "Sin(" in blue bold, "Ï" in red, " t)" in blue
+  - "Cos(Ï t)" â "Cos(" in blue bold, "Ï" in red, " t)" in blue
+  - "t=0,1,2,3,...." â in dark red/maroon
+- Bar/chip labels (green boxes with italic green text, each rotated to align with its radial direction):
+  - "Word 0"
+  - "Word 1"
+  - "Word 2"
+  - "Word 3"
+  - "Word 4"
+- Arc annotations (dark red, bold, one per curved arrow):
+  - "+Ï" (upper left, on arc from Word 3 to Word 4)
+  - "+Ï" (top center, on arc from Word 2 to Word 3)
+  - "+Ï" (upper right, on arc from Word 1 to Word 2)
+  - "+Ï" (right, on arc from Word 0 to Word 1)
+- Badge: "27"
+- No footer, no caption, no axis labels, no other visible strings. No [?] unreadable strings.
+
+3. EQUATIONS
+- Sin(Ï t)
+- Cos(Ï t)
+- t = 0,1,2,3,....
+- Repeated increment symbol on arcs: "+Ï" (omega; the Ï glyphs are rendered in an italic/script style consistent with Greek omega; the sub-glyph is legible, no [?] needed)
+
+4. DIAGRAM TOPOLOGY
+Overall: a "clock-face" / unit-circle diagram illustrating positional encoding as rotation angles. Drawing occupies the right ~two-thirds of the slide inside a thin dark-red rectangular border framing the whole slide content.
+
+Nodes:
+- Large pale-yellow filled circle centered roughly at (575, 285), radius ~135 px, with a thin gray/blue outline. Acts as the central hub (no text label inside).
+- Five green chip/box nodes (light green fill, thin darker green border, italic dark-green text), each rotated to be tangent/aligned with its radius, positioned just outside the circle's upper edge:
+  - "Word 0" â at far right, approx. (755, 285), horizontal (angle 0Â°), unrotated.
+  - "Word 1" â upper right, approx. (730, 200), rotated ~-30Â° (angled up-right).
+  - "Word 2" â approx. (680, 130), rotated ~-60Â°.
+  - "Word 3" â top center, approx. (577, 105), rotated 90Â° (text reads bottom-to-top, vertical).
+  - "Word 4" â upper left, approx. (490, 130), rotated ~+60Â°/-120Â° (text reads top-to-bottom slant).
+- Inset panel: pale yellow rectangle with thin border at left (contents listed in section 2), overlapping the gray background; not part of the circular diagram's data flow.
+
+Radial spokes (dotted red lines):
+- 12 dotted red rays emanating from the circle center to beyond the circle edge, spaced 30Â° apart (like clock hour marks). Word chips sit on/next to spokes at 0Â°, 30Â°, 60Â°, 90Â°, and 120Â° (measuring counterclockwise from the rightward horizontal). The remaining 7 spokes (150Â° through 330Â°) have no chips. A solid thin gray horizontal line also extends left and right from the center beyond the dotted red ray at 0Â°/180Â°.
+
+Arrows (curved, thin orange/red lines with small solid orange arrowheads), each annotated "+Ï", showing counterclockwise angular increments from one word position to the next:
+- Word 0 â Word 1: curved arrow starting near "Word 0" chip (right side), arcs clockwise up and over (sweeping rightward/outward then counterclockwise) to arrowhead at "Word 1"; label "+Ï" to its right at approx. (825, 225).
+- Word 1 â Word 2: curved arc from near "Word 1" to arrowhead at "Word 2"; label "+Ï" at approx. (630, 70).
+- Word 2 â Word 3: curved arc from near "Word 2" to arrowhead at "Word 3" (pointing down into the top of the "Word 3" chip); label "+Ï" at approx. (517, 70).
+- Word 3 â Word 4: curved arc from near "Word 3" leftward to arrowhead at "Word 4"; label "+Ï" at approx. (517, 70)... correction: this label sits left of top center at approx. (515, 70); the Word 2âWord 3 label is at approx. (630, 70). (Two "+Ï" labels flank the top; the leftmost one at ~(515,70) belongs to the Word 3âWord 4 arc; a fourth "+Ï" at ~(825, 225) belongs to Word 0âWord 1.)
+
+Data flow: sequential, counterclockwise around the circle, starting at Word 0 at the 3-o'clock (0Â°) position and progressing Word 0 â Word 1 â Word 2 â Word 3 â Word 4, each step a +Ï rotation. This matches the classic "positional encoding as clock hands / rotation by Ï per token" illustration (the concept underlying sinusoidal positional encoding in Vaswani et al. 2017, Section 3.5, and frequently drawn as a circle/clock analogy in lecture slides, e.g., similar to illustrations in "positional encoding as rotation" explainers). It does NOT match Vaswani Figure 1/Figure 2 (no encoder/decoder blocks, no multi-head attention boxes); it is a custom clock/angle analogy diagram, not a verbatim copy of a well-known published figure. The inset "Sin(Ï t), Cos(Ï t)" panel ties each position angle to the sine/cosine sinusoidal PE formula.
+
+5. NUMBERS/DATA
+- Badge numeral: 27
+- Sequence length: 5 (five Word chips, Word 0 through Word 4; "Sequence of 5 words")
+- t values: 0, 1, 2, 3, .... (open-ended list in inset)
+- Increment per step: +Ï (symbolic, no numeric value)
+- 12 radial spokes visible (implied 30Â° spacing)
+
+6. BUILD STATE / ARTIFACTS
+- Slide appears fully built: all five word chips, all four arcs and +Ï labels, and the inset box are present; no partial-reveal gaps.
+- Mouse cursor artifact: a small white/black arrow-style cursor visible inside the yellow circle at approx. (585, 230) â a screen-recording pointer captured in the frame, not slide content.
+- Black horizontal bar across the very bottom of the frame (approx. full width, ~25 px tall, yâ515-540) â video player letterboxing/control-bar artifact, not slide content.
+- Slide content sits inside a thin dark-red rectangular border on a light gray background; a small strip of the background is visible above the border at top (y<40), also part of the video frame rather than the slide.
+- No transitions, no highlight animations mid-frame, no watermarks or timestamps visible.

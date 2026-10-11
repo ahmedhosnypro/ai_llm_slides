@@ -1,0 +1,275 @@
+{
+  "slide_title": "Multi Head Self Attention of Word X\u2082",
+  "subtitle_or_header": "\"Narrow\" Architecture",
+  "verbatim_text": {
+    "bullets": [
+      "Multi Head Self Attention of Word X\u2082",
+      "\"Narrow\" Architecture",
+      "Split vectors into \"H\" chunks",
+      "d : Embedding Length"
+    ],
+    "labels": [
+      "45 (slide number in circle, top-right corner)",
+      "Multi Head Self Attention of Word X\u2082 (title; X\u2082 in red)",
+      "\"Narrow\" Architecture (subtitle; 'Narrow' in blue bold italic inside quotes)",
+      "1\u00b7d [?] \u2014 label right of the top output vector (low-res glyphs read like '1\u00b7rd')",
+      "Concatenated Vector 1\u00b7d [?] \u2014 red two-line label at left end of top bar",
+      "Similarity (white pill label, appears 5\u00d7 \u2014 once per head layer)",
+      "Probabilities (white pill label, 2\u00d7 visible \u2014 h=1 and h=2 layers)",
+      "Weighted SUM (white pill label, 5\u00d7 \u2014 once per head layer)",
+      "Dot Product (text inside tan box, h=1 layer)",
+      "K\u00b7q (label at output of Dot Product and above Scaling box, 2 occurrences)",
+      "\u221ad [?] (denominator label under K\u00b7q; low-res could read 'V\u00b7d')",
+      "Scaling by \u221ad (vertical text in pink box)",
+      "Soft max (vertical text in pink box)",
+      "\u03a3 (light-blue summation box, one per layer \u2014 5 total)",
+      "K\u2081, K\u2082, K\u2083, K\u2084 [?] (key vector labels, h=1 layer left side)",
+      "V\u2081, V\u2082, V\u2083, V\u2084 [?] (value vector labels, h=1 layer right side)",
+      "q\u2081 [?] (query vector label, bottom of h=1 layer)",
+      "W^q (blue matrix boxes \u2014 query weights; bottom of h=1 and bottom-right columns)",
+      "W^k [?] (blue matrix boxes left of h=1 producing K\u2081\u2013K\u2084; superscript uncertain at this resolution)",
+      "W^v (blue matrix boxes right of h=1 producing V\u2081\u2013V\u2084)",
+      "W\u2081^q, W\u2081^k, W\u2081^v \u2026 W\u2085^q, W\u2085^k, W\u2085^v [?] (per-head matrix columns, bottom-center-right; subscripts tiny)",
+      "h=1",
+      "h=2",
+      "h=3",
+      "h=4",
+      "h=5 (each in a black oval with white text on the right edge of its layer)",
+      "1\u00b7d/H (blue dimension labels, 4 total: 2 beside the two upper head-output Y vectors, 2 inside the top-right equation box beneath its two vector strips)",
+      "W (bold, inside top-right equation box)",
+      "= (inside top-right equation box)",
+      "d : Embedding Length (blue caption under equation box)",
+      "\"H\" Heads (red label rotated ~90\u00b0 along the big red curved arrow)",
+      "Input Sequence (white text in red oval, bottom-right)",
+      "X\u2081 X\u2082 X\u2083 X\u2084 (four small dark-blue boxes under Input Sequence; also word labels throughout diagram)",
+      "Split vectors into \"H\" chunks (bold black caption above chunk table)",
+      "To Head 5",
+      "To Head 4",
+      "To Head 3",
+      "To Head 2",
+      "To Head 1 (chunk-table row labels, top to bottom)",
+      "[?] tiny red mark at extreme top-left corner (possibly clipped logo or video overlay)",
+      "[?] thin red strip along the very bottom edge (likely video-player progress bar, not slide content)"
+    ],
+    "equations": [
+      "[vector strip 1\u00b7d/H]  W  =  [vector strip 1\u00b7d/H]  \u2014 projection depicted in the top-right box (left strip is presumably the 1\u00b7d input [?]; right strip the 1\u00b7d/H output)",
+      "K\u00b7q / \u221ad \u2014 implied fraction shown as 'K\u00b7q' over '\u221ad [?]' feeding the 'Scaling by \u221ad' box",
+      "Per-head flow (h=1): Similarity \u2192 Dot Product \u2192 K\u00b7q \u2192 Scaling by \u221ad \u2192 Soft max \u2192 Probabilities \u2192 (\u2297 V\u2081..V\u2084) \u2192 \u03a3 (Weighted SUM) \u2192 Y (1\u00b7d/H) \u2192 Concatenated Vector (1\u00b7d)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title block top-right with circled slide number '45' at the far corner; a small output vector and a long 5-segment 'Concatenated Vector' pill bar run across the top-center; the left/center ~70% of the slide is dominated by five diagonally stacked rounded-rectangle layers (heads h=1 front to h=5 back) containing the self-attention flow; top-right below the title sits a small 'vector \u00b7 W = vector' projection box with 'd : Embedding Length' caption; the right edge carries a thick red curved arrow labeled '\"H\" Heads'; bottom-right holds the red 'Input Sequence' oval, blue X\u2081\u2013X\u2084 boxes, the caption 'Split vectors into \"H\" chunks', a 5-row chunk table ('To Head 5'\u2026'To Head 1'), and five diagonal groups (one per head [?]) of blue W^q/W^k/W^v matrix boxes between the layers and the table.",
+    "regions": [
+      {
+        "name": "Title block",
+        "position": "top-right, x 55%\u201395%, y 5%\u201316%",
+        "content": "Line 1: 'Multi Head Self Attention of Word X\u2082' (black bold, X\u2082 red); Line 2 right-aligned: '\"Narrow\" Architecture' ('Narrow' blue bold italic); circled '45' at far top-right."
+      },
+      {
+        "name": "Final output vector",
+        "position": "top-center, x 40%\u201352%, y 5%\u201313%",
+        "content": "Small vector box (~6 cells) with one green highlighted cell (output Y), label '1\u00b7d [?]' at its right; short red arrow to/from the bar below [?]."
+      },
+      {
+        "name": "Concatenated vector bar",
+        "position": "top-center, x 18%\u201372%, y 14%\u201323%",
+        "content": "Pill-shaped bar, red outline, 5 colored segments (brown, dark gray, yellow, green, light green) each containing a mini vector with a highlighted cell; red label 'Concatenated Vector 1\u00b7d' at left; five small head-output Y vectors (brown, dark gray, yellow, green, light green) between bar and layers, joined by thin red arrows; '1\u00b7d/H' labels beside the two upper Y vectors."
+      },
+      {
+        "name": "Stacked head layers",
+        "position": "left-center, x 5%\u201375%, y 25%\u201395%",
+        "content": "Five overlapping rounded rectangles offset diagonally (h=5 cream at back-top-right \u2192 h=1 salmon at front-bottom-left); front layer shows full attention flow (inputs, W^k, Dot Product, Scaling by \u221ad, Soft max, W^v, \u2297, \u03a3, q\u2081 from X\u2082); black ovals h=1\u2026h=5 on right edges; white pills on visible top edges: 'Similarity' and 'Weighted SUM' on all 5 layers, 'Probabilities' on h=1 and h=2 only."
+      },
+      {
+        "name": "Projection equation box",
+        "position": "top-right, x 78%\u201396%, y 20%\u201333%",
+        "content": "White box with green dashed border: small vector strip, bold 'W', '=', second vector strip; blue '1\u00b7d/H' dimension labels; blue caption 'd : Embedding Length' below; black oval 'h=5' at its left (this is the h=5 layer's right-edge oval)."
+      },
+      {
+        "name": "Heads arrow",
+        "position": "right edge, x 70%\u201385%, y 50%\u201382%",
+        "content": "Thick red curved arrow sweeping from lower-right toward the layer stack, arrowhead pointing left into the layers near h=2/h=3; red rotated label '\"H\" Heads'."
+      },
+      {
+        "name": "Weight-matrix columns",
+        "position": "bottom-center-right, x 55%\u201378%, y 55%\u201395%",
+        "content": "Five diagonal groups (one per head [?]) of three small royal-blue matrix boxes labeled W^q, W^k, W^v with head subscripts (3 groups fully visible, 2 partially occluded [?]); thin colored (green/yellow/purple/pink/red) arrows run from the chunk table to these boxes and into the layer edges."
+      },
+      {
+        "name": "Input sequence & chunk table",
+        "position": "bottom-right, x 78%\u201398%, y 60%\u201398%",
+        "content": "Red oval 'Input Sequence'; four dark-blue boxes 'X\u2081 X\u2082 X\u2083 X\u2084'; bold caption 'Split vectors into \"H\" chunks'; 5 rows of word boxes X\u2081\u2013X\u2084 each split into colored sub-chunks, labeled right: 'To Head 5', 'To Head 4', 'To Head 3', 'To Head 2', 'To Head 1'."
+      }
+    ],
+    "hierarchy": "Visually dominant: the large salmon h=1 layer with its dense multi-color attention flow. Second: the black bold title and the red-accented concatenated vector bar. Third: black h=1\u2026h=5 ovals, white pills, red arrows. Smallest: micro-labels on vectors/matrices (~8pt). Red is the strongest accent color (arrows, X\u2082, labels, Input Sequence); royal blue marks all weight matrices; pastel fills distinguish the five head layers."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Stacked multi-head self-attention diagram: five overlapping rounded rectangles offset diagonally (each successive layer up and to the right), representing heads h=1 (front, salmon pink, largest, fully detailed) through h=5 (back, cream, mostly occluded). FRONT LAYER (h=1) contents: (a) left column \u2014 four green-dashed input vector boxes X\u2081\u2013X\u2084 (each ~5\u20136 cells, one cell pink-highlighted) \u2192 royal-blue matrix boxes labeled W^k [?] \u2192 small green vectors labeled K\u2081\u2013K\u2084 [?] \u2192 tan 'Dot Product' box containing blue dot glyphs joined by thin lines (q\u2081\u00b7K\u1d62 computations); white pill 'Similarity' above; (b) center \u2014 labels 'K\u00b7q' over '\u221ad [?]' feed a vertical pink box 'Scaling by \u221ad' (vertical text), then a vertical pink box 'Soft max' (vertical text); white pill 'Probabilities' above; (c) right \u2014 four green-dashed boxes X\u2081\u2013X\u2084 \u2192 blue 'W^v' boxes \u2192 small vectors V\u2081\u2013V\u2084 [?]; four red arrows from the softmax outputs each pass through a red \u2297 (circled multiply) symbol into a light-blue '\u03a3' box; white pill 'Weighted SUM' above \u03a3; red output arrow exits the layer top; (d) bottom \u2014 row of four green-dashed boxes X\u2081\u2013X\u2084 with X\u2082 filled pink; red arrow from X\u2082 up to a blue 'W^q' box producing vector 'q\u2081 [?]' that feeds the Dot Product box; a small thick red arrow outside the layer points at X\u2082. HIDDEN LAYERS (h=2\u2013h=5): each shows its top edge with a 'Similarity' pill, all show a 'Weighted SUM' pill (h=2 also 'Probabilities'), a \u03a3 box, and a red arrow rising to its colored Y output vector. Black ovals with white text h=1, h=2, h=3, h=4, h=5 descend diagonally along the layers' right edges.",
+      "colors": [
+        "#EE7B7B",
+        "#CDA9E6",
+        "#EFE68C",
+        "#C8E6C0",
+        "#F2EAD3",
+        "#2244CC",
+        "#CC0000",
+        "#B8D8F0",
+        "#E8D5B0",
+        "#F4B8D8",
+        "#00AA00",
+        "#FF8ACF",
+        "#000000",
+        "#FFFFFF"
+      ],
+      "position": "left-center, x 5%\u201375%, y 25%\u201395%"
+    },
+    {
+      "type": "diagram",
+      "description": "Concatenation result at top: (1) small output vector box (~6 cells, one green highlighted cell = Y) labeled '1\u00b7d [?]' at top-center; (2) below it a wide pill-shaped bar with red outline divided into 5 segments \u2014 brown, dark gray, yellow, green, light green \u2014 each segment containing a mini multi-cell vector with one highlighted cell; red two-line label at the bar's left end: 'Concatenated Vector / 1\u00b7d [?]'; (3) five small head-output vectors (brown, dark gray, yellow, green, light green) stacked between the layers and the bar, each connected upward by a thin red arrow to its bar segment; the two upper ones carry blue '1\u00b7d/H' labels.",
+      "colors": [
+        "#A0522D",
+        "#555555",
+        "#E6E65C",
+        "#7CC47C",
+        "#A8D8A8",
+        "#CC0000",
+        "#00CC66",
+        "#0000CC"
+      ],
+      "position": "top-center, x 18%\u201372%, y 5%\u201325%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Projection equation box (top-right): white rounded rectangle with green dashed border containing, left-to-right: a small vertical vector strip, bold black 'W', an '=' sign, and a small horizontal vector strip; blue dimension labels '1\u00b7d/H' beneath the strips (2 labels); below the box, blue caption 'd : Embedding Length'; a black oval 'h=5' (white text) sits immediately left of the box (the h=5 layer's right-edge oval).",
+      "colors": [
+        "#FFFFFF",
+        "#00AA00",
+        "#000000",
+        "#0000CC"
+      ],
+      "position": "top-right, x 78%\u201396%, y 20%\u201333%"
+    },
+    {
+      "type": "table",
+      "description": "Chunk-split table (bottom-right), introduced by bold black caption 'Split vectors into \"H\" chunks': five rows, one per head, top to bottom labeled 'To Head 5', 'To Head 4', 'To Head 3', 'To Head 2', 'To Head 1'. Each row contains four word boxes X\u2081 X\u2082 X\u2083 X\u2084, each word box partitioned into 5 colored sub-chunks [?] (one per head: green, yellow, purple, pink, red), with the sub-chunk belonging to that row's head emphasized in the row's color (row 1 green, row 2 yellow, row 3 purple, row 4 pink, row 5 red). Thin colored curved arrows lead from the rows leftward to the W-matrix columns and into the head layers.",
+      "colors": [
+        "#7CC47C",
+        "#E6E65C",
+        "#B57EDC",
+        "#F0A0B0",
+        "#E07070",
+        "#000000",
+        "#FFFFFF"
+      ],
+      "position": "bottom-right, x 78%\u201398%, y 78%\u201398%"
+    },
+    {
+      "type": "arrow",
+      "description": "Thick red curved arrow on the right side: tail near the lower-right (chunk-table / W-matrix region), sweeping up and left with a large arrowhead pointing into the right edge of the stacked layers near h=2/h=3; the red label '\"H\" Heads' is rotated ~90\u00b0 along the arrow's upper portion. Additional thin colored (green/yellow/purple/pink/red) arrows connect the chunk rows and W-matrix columns to each layer's right edge.",
+      "colors": [
+        "#CC0000"
+      ],
+      "position": "right edge, x 70%\u201385%, y 50%\u201382%"
+    },
+    {
+      "type": "diagram",
+      "description": "Per-head weight-matrix columns (bottom-center-right): five diagonal groups (one per head [?]) of three small royal-blue matrix boxes labeled W^q, W^k, W^v with tiny head subscripts (W\u2081^q\u2026W\u2085^v [?]); 3 groups fully visible, 2 partially occluded [?]; thin colored arrows run from these boxes into the corresponding layers.",
+      "colors": [
+        "#2244CC",
+        "#FFFFFF",
+        "#CC0000"
+      ],
+      "position": "bottom-center-right, x 55%\u201378%, y 55%\u201395%"
+    },
+    {
+      "type": "icon",
+      "description": "'Input Sequence' badge: red filled oval with white bold text, above four small dark-blue rectangular boxes containing 'X\u2081 X\u2082 X\u2083 X\u2084' in white; sits directly above the chunk-table caption.",
+      "colors": [
+        "#CC0000",
+        "#1F3FBF",
+        "#FFFFFF"
+      ],
+      "position": "bottom-right, x 78%\u201392%, y 62%\u201372%"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations \u2014 the slide is entirely vector diagram graphics (vector cell-boxes, matrix boxes, pills, ovals, arrows).",
+    "[?] Tiny red mark at the extreme top-left corner \u2014 possibly a clipped logo or video overlay artifact.",
+    "[?] Thin red horizontal strip along the very bottom edge \u2014 most likely the video player's progress bar rather than slide content."
+  ],
+  "colors": {
+    "background": "#EAEAEA",
+    "title_text": "#000000",
+    "body_text": "#000000",
+    "accents": [
+      "#CC0000 (red arrows, X\u2082 in title, 'Concatenated Vector' label, 'Input Sequence' oval, '\"H\" Heads')",
+      "#0000CC ('Narrow' in subtitle, 'd : Embedding Length', '1\u00b7d/H' dimension labels)",
+      "#2244CC (royal-blue W^q/W^k/W^v matrix boxes)",
+      "#1F3FBF (dark-blue X\u2081\u2013X\u2084 chips under 'Input Sequence')",
+      "#00AA00 (green dashed vector-box borders)",
+      "#EE7B7B (h=1 layer fill)",
+      "#CDA9E6 (h=2 layer fill)",
+      "#EFE68C (h=3 layer fill)",
+      "#C8E6C0 (h=4 layer fill)",
+      "#F2EAD3 (h=5 layer fill)",
+      "#FF8ACF (pink highlighted cells / X\u2082 emphasis)",
+      "#B8D8F0 (\u03a3 summation box)",
+      "#E8D5B0 (Dot Product tan box)",
+      "#F4B8D8 (Scaling / Soft max pink boxes)",
+      "#A0522D / #555555 / #E6E65C / #7CC47C / #A8D8A8 (concatenated-bar and Y-vector segment colors)"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Calibri-like). Title bold, ~28\u201332pt, black, with 'X\u2082' in red using a true subscript; subtitle '\"Narrow\" Architecture' bold with 'Narrow' in blue bold italic inside straight quotes. Diagram labels are very small (~8\u201312pt). Two boxes use vertical (rotated 90\u00b0) text: 'Scaling by \u221ad' and 'Soft max'. Black ovals (h=1\u2026h=5) use bold white text; white pills use small black text. Heavy use of subscripts (X\u2082, K\u2081, V\u2081, q\u2081, h=1) and superscripts (W^q, W^k, W^v). Red is reserved for arrows and emphasis; blue for matrices and dimension annotations; middle-dot '\u00b7' used in dimension labels (1\u00b7d, 1\u00b7d/H, K\u00b7q).",
+  "animation_state": "Static, fully revealed: all five head layers, all pills, the chunk table, and the equation box are visible simultaneously; no mid-build indicators detected.",
+  "recreation_brief": "1. Set the canvas: 16:9, background light gray #EAEAEA.\n2. Place the title 'Multi Head Self Attention of Word X\u2082' top-right (x 55%\u201395%, y 5%\u201311%): bold black sans-serif ~28\u201332pt; render 'X\u2082' in red #CC0000 with a true subscript 2.\n3. Place the subtitle '\"Narrow\" Architecture' right-aligned directly below the title (y 11%\u201316%): bold; 'Narrow' in blue #0000CC bold italic inside straight double quotes, 'Architecture' in black.\n4. Place the slide number: a small circle (white fill, red outline) at the far top-right corner (x ~95%, y ~5%) containing black text '45'.\n5. Place the final output vector top-center (x 40%\u201352%, y 5%\u201313%): a small rectangle divided into ~6 cells with exactly one green-highlighted cell (output Y); place the black label '1\u00b7d [?]' immediately to its right.\n6. Place a short red #CC0000 arrow connecting the output vector and the concatenated bar below it (direction to/from uncertain [?]).\n7. Place the concatenated vector bar top-center (x 18%\u201372%, y 14%\u201323%): a pill-shaped rounded rectangle, white fill, red #CC0000 outline, divided into 5 segments colored left-to-right brown #A0522D, dark gray #555555, yellow #E6E65C, green #7CC47C, light green #A8D8A8; inside each segment place a mini 5-cell vector with one highlighted cell.\n8. Place the red two-line label 'Concatenated Vector / 1\u00b7d [?]' at the left end of the bar (x ~18%).\n9. Place five small head-output Y vectors between the bar and the layer stack, colored brown #A0522D, dark gray #555555, yellow #E6E65C, green #7CC47C, light green #A8D8A8; draw a thin red arrow from each Y vector upward to its same-colored bar segment.\n10. Place the blue #0000CC label '1\u00b7d/H' beside each of the two upper Y vectors (2 labels).\n11. Place five rounded-rectangle head layers stacked with a diagonal offset, each successive layer up and to the right (overall x 5%\u201375%, y 25%\u201395%): h=1 front salmon #EE7B7B (largest, ~55% of slide width), h=2 lavender #CDA9E6, h=3 khaki #EFE68C, h=4 light green #C8E6C0, h=5 cream #F2EAD3 at the back (mostly occluded).\n12. Place one black filled oval with white bold text on each layer's right edge, descending diagonally from top-right to bottom-left: 'h=5' (immediately left of the projection equation box), 'h=4', 'h=3', 'h=2', 'h=1' \u2014 5 ovals total.\n13. Place a white pill labeled 'Similarity' (small black text) on the visible top edge of each of the 5 layers (5 pills).\n14. Place a white pill labeled 'Weighted SUM' (small black text) on each of the 5 layers, above its \u03a3 box (5 pills).\n15. Place a white pill labeled 'Probabilities' (small black text) on exactly 2 layers: h=1 and h=2.\n16. Inside h=1, left side: place four input vector boxes X\u2081\u2013X\u2084 (green dashed #00AA00 borders, ~5\u20136 cells each, one pink #FF8ACF highlighted cell per box).\n17. To their right: place four royal-blue #2244CC matrix boxes labeled 'W^k [?]' (one per input, matching the four K outputs), each followed by a small green vector labeled 'K\u2081', 'K\u2082', 'K\u2083', 'K\u2084' [?].\n18. Place the tan #E8D5B0 'Dot Product' box center-left in h=1, containing blue dot glyphs joined by thin lines (q\u2081\u00b7K\u1d62 computations); the 'Similarity' pill from step 13 sits above it.\n19. Place the label 'K\u00b7q' at 2 locations \u2014 at the Dot Product output and above the Scaling box \u2014 and the label '\u221ad [?]' directly under the upper 'K\u00b7q' (forming the fraction K\u00b7q/\u221ad).\n20. Place a vertical pink #F4B8D8 box with 90\u00b0-rotated text 'Scaling by \u221ad' at h=1 center.\n21. Place a vertical pink #F4B8D8 box with 90\u00b0-rotated text 'Soft max' to the right of the Scaling box; the 'Probabilities' pill from step 15 sits above this area on h=1.\n22. Inside h=1, right side: place four green-dashed input boxes X\u2081\u2013X\u2084, then four royal-blue #2244CC 'W^v' matrix boxes, then four small vectors labeled 'V\u2081', 'V\u2082', 'V\u2083', 'V\u2084' [?].\n23. Place four red arrows from the Softmax outputs, each passing through a red circled-multiply \u2297 symbol, all converging into one light-blue #B8D8F0 '\u03a3' box inside h=1.\n24. Place one light-blue #B8D8F0 '\u03a3' box on each hidden layer h=2\u2013h=5 (4 boxes; 5 \u03a3 boxes slide-wide), each with a red arrow rising from it to that layer's colored Y output vector.\n25. Place a red output arrow from the h=1 \u03a3 box exiting the top of the h=1 layer toward the brown Y vector.\n26. Inside h=1, bottom: place four green-dashed boxes X\u2081\u2013X\u2084 in a row with X\u2082 filled pink #FF8ACF; draw a red arrow from X\u2082 up to a royal-blue #2244CC 'W^q' box that outputs a small vector labeled 'q\u2081 [?]' feeding the Dot Product box; add a small thick red arrow outside the layer pointing at X\u2082.\n27. Place the projection equation box top-right (x 78%\u201396%, y 20%\u201333%): a white rounded rectangle with green #00AA00 dashed border containing, left-to-right, a small vertical vector strip, bold black 'W', black '=', and a small horizontal vector strip; place blue #0000CC '1\u00b7d/H' labels beneath the two strips (2 labels); place the blue caption 'd : Embedding Length' below the box.\n28. Place a thick red #CC0000 curved arrow along the right edge (x 70%\u201385%, y 50%\u201382%): tail at lower-right near the chunk-table/W-matrix region, sweeping up and left, arrowhead pointing into the layer stack near h=2/h=3.\n29. Place the red label '\"H\" Heads' rotated ~90\u00b0 along the upper portion of the curved arrow.\n30. Place the 'Input Sequence' badge bottom-right (x 78%\u201392%, y 62%\u201372%): a red #CC0000 filled oval with white bold text.\n31. Place four dark-blue #1F3FBF rectangular chips with white text 'X\u2081', 'X\u2082', 'X\u2083', 'X\u2084' directly below the Input Sequence oval.\n32. Place the bold black caption 'Split vectors into \"H\" chunks' below the chips, above the chunk table.\n33. Place the 5-row chunk table bottom-right (x 78%\u201398%, y 78%\u201398%): each row contains four word boxes X\u2081\u2013X\u2084, each word box partitioned into 5 colored sub-chunks [?] (green #7CC47C, yellow #E6E65C, purple #B57EDC, pink #F0A0B0, red #E07070) with the sub-chunk for that row's head emphasized in the row's color; place the row labels on the right, top-to-bottom: 'To Head 5', 'To Head 4', 'To Head 3', 'To Head 2', 'To Head 1' (row colors top-to-bottom: green, yellow, purple, pink, red).\n34. Place five diagonal groups of three royal-blue #2244CC matrix boxes (one group per head [?]) between the layers and the chunk table (x 55%\u201378%, y 55%\u201395%), labeled 'W^q', 'W^k', 'W^v' with head subscripts W\u2081^q\u2026W\u2085^v [?]; send 2 of the 5 groups behind the layer stack so they are partially occluded [?] (3 fully visible).\n35. Place thin colored arrows (green, yellow, purple, pink, red \u2014 one color per head) running from each chunk-table row to its W-matrix group and onward into the corresponding layer's right edge.\n36. Do NOT add the tiny red mark at the extreme top-left corner or the thin red strip along the bottom edge \u2014 both are video-player artifacts, not slide content [?].",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Schema: verbatim_text.bullets was empty \u2014 reconstructed with the 4 standalone text lines found verbatim in labels (title, subtitle, 'Split vectors into \"H\" chunks', 'd : Embedding Length'); the labels array remains the authoritative verbatim record (this is a diagram slide with no true bullet list).",
+      "Precision: replaced 'most show Weighted SUM pill' with exact counts from labels \u2014 'Similarity' 5\u00d7, 'Weighted SUM' 5\u00d7 (all layers), 'Probabilities' 2\u00d7 (h=1, h=2); updated the layout region and visual_elements accordingly.",
+      "Consistency: resolved the W-matrix group-count conflict ('at least three' in visual_elements vs 'three' in the old brief vs 'one group per head' in layout/labels) \u2014 standardized to 5 groups of three W^q/W^k/W^v boxes (one per head, per labels W\u2081^q\u2026W\u2085^v [?]), 3 fully visible, 2 partially occluded [?].",
+      "Precision: replaced '2\u20134 occurrences' of the blue '1\u00b7d/H' labels with the exact count 4 (2 beside the two upper Y vectors + 2 beneath the equation-box strips); changed 'the upper ones' to 'the two upper ones'.",
+      "Consistency: harmonized chunk-table sub-chunk count '~4\u20135 [?]' (visual_elements) with '5' (old brief) \u2014 fixed to 5 sub-chunks per word box, one per head color [? retained].",
+      "Consistency: reconciled the 'h=5' black oval \u2014 the oval left of the projection equation box is the h=5 layer's right-edge oval (5 ovals total, not 6).",
+      "Consistency: split the #2244CC accent entry \u2014 W^q/W^k/W^v matrix boxes are #2244CC; the X\u2081\u2013X\u2084 chips under 'Input Sequence' are dark blue #1F3FBF (per the icon element and old brief).",
+      "Precision: harmonized h=1 input-box cell count ('~5 cells' in old brief vs '~5\u20136 cells' in visual_elements) to ~5\u20136 cells; specified ~6 cells for the final output vector in its layout region.",
+      "Recreation brief rewritten as a 36-step ordered checklist \u2014 one element (or one uniform set with exact counts) per step with exact text, position, color, and shape; added the previously omitted short red arrow between the output vector and the bar, and explicit z-order for the 2 occluded matrix groups.",
+      "Retained every [?] marker and excluded the two video-artifact items from the recreation steps."
+    ],
+    "uncertain_items": [
+      "'1\u00b7d [?]' \u2014 dimension label on the output vector and Concatenated Vector bar (low-res glyphs could read '1\u00b7rd')",
+      "'\u221ad [?]' \u2014 denominator under K\u00b7q (could read 'V\u00b7d'); also inside 'Scaling by \u221ad'",
+      "'K\u2081, K\u2082, K\u2083, K\u2084 [?]' \u2014 key vector labels (h=1)",
+      "'V\u2081, V\u2082, V\u2083, V\u2084 [?]' \u2014 value vector labels (h=1)",
+      "'q\u2081 [?]' \u2014 query vector label (bottom of h=1)",
+      "'W^k [?]' \u2014 superscript on the h=1 key-weight matrices",
+      "'W\u2081^q, W\u2081^k, W\u2081^v \u2026 W\u2085^q, W\u2085^k, W\u2085^v [?]' \u2014 per-head subscripts on the matrix columns (tiny at this resolution)",
+      "5 W-matrix groups (one per head) [?] \u2014 only 3 fully visible; 2 partially occluded",
+      "5 sub-chunks per chunk-table word box [?] \u2014 source read 4\u20135",
+      "Left strip of the projection equation presumed to be the 1\u00b7d input [?]",
+      "Direction of the short red arrow between the output vector and the concatenated bar [?] ('to/from')",
+      "Tiny red mark at the extreme top-left [?] \u2014 likely clipped logo/video overlay; excluded from recreation",
+      "Thin red strip along the bottom edge [?] \u2014 likely video-player progress bar; excluded from recreation",
+      "h=1's output Y vector is brown \u2014 asserted in the source brief; the head\u2192Y-color mapping is not stated elsewhere in the JSON",
+      "Count of four W^k and four W^v boxes inside h=1 \u2014 inferred one-per-input from the 4 inputs \u2192 K\u2081\u2013K\u2084 / V\u2081\u2013V\u2084 mapping; box count not explicitly stated"
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_045.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 45,
+      "image": "slide_045.jpg",
+      "kept_frame": "frame_04432.jpg",
+      "start_sec": 4334.0,
+      "end_sec": 4431.0,
+      "frame_count": 98
+    },
+    "elapsed_s": 758.8,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1273.8
+  }
+}

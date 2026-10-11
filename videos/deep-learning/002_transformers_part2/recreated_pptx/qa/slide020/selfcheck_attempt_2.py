@@ -1,0 +1,150 @@
+#!/usr/bin/env python3
+"""selfcheck_attempt_2 — closed-loop PIL check of render_2.png vs the original's
+measured element positions (windows tightened after attempt 1's false alarms).
+"""
+from PIL import Image
+import json, sys
+
+RENDER = "/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide020/render_2.png"
+img = Image.open(RENDER).convert("RGB")
+W, H = img.size
+px = img.load()
+out = {"size": [W, H]}
+fails = []
+
+
+def is_red(p):
+    r, g, b = p
+    return r > 130 and (r - g) > 45 and (r - b) > 45
+
+
+def is_green(p):
+    r, g, b = p
+    return g > 100 and (g - r) > 40 and (g - b) > 20
+
+
+def is_blue(p):
+    r, g, b = p
+    return b > 120 and (b - r) > 40 and (b - g) > 40
+
+
+def is_orange(p):
+    r, g, b = p
+    return r > 180 and 100 < g < 210 and b < 150 and (r - b) > 50
+
+
+def bbox(pred, x0, x1, y0, y1):
+    pts = [(x, y) for y in range(y0, min(y1, H)) for x in range(x0, min(x1, W)) if pred(px[x, y])]
+    if not pts:
+        return None
+    return [min(p[0] for p in pts), min(p[1] for p in pts), max(p[0] for p in pts), max(p[1] for p in pts)]
+
+
+def r2f_x(rx): return rx * 0.48 * 0.961231 + 18.628
+def r2f_y(ry): return ry * 0.48 * 0.955556
+
+
+def cmp(name, got, want, tol=6.0):
+    if got is None:
+        fails.append(f"{name}: NO INK FOUND (want frame {want})")
+        return
+    gf = [r2f_x(got[0]), r2f_y(got[1]), r2f_x(got[2]), r2f_y(got[3])]
+    d = max(abs(gf[i] - want[i]) for i in range(4))
+    status = "OK" if d <= tol else "OFF"
+    if d > tol:
+        fails.append(f"{name}: render->frame {['%.1f' % v for v in gf]} vs target {want} (maxd {d:.1f} > {tol})")
+    out[name] = {"frame_equiv": [round(v, 1) for v in gf], "target_frame": want, "maxd_px_frame": round(d, 1), "status": status}
+
+
+# 1. title ink
+cmp("title", bbox(is_red, 550, 1550, 110, 210), [316, 60, 693, 82])
+
+# 2. row1: boxes+labels band
+cmp("row1_band", bbox(is_red, 300, 1900, 195, 290), [180, 106, 875, 127.5])
+# label-only band (window excludes box top/bottom borders)
+cmp("row1_labels", bbox(is_red, 340, 1880, 236, 274), [191, 108, 869, 124])
+
+# 3. row2 lane (green dashed) + yellow cells
+cmp("lane2_green", bbox(is_green, 280, 1950, 300, 430), [164, 154.5, 883, 192.5])
+def is_yel(p):
+    r, g, b = p
+    return r > 215 and 195 < g < 245 and 110 < b < 200
+cmp("row2_cells_yellow", bbox(is_yel, 280, 1950, 320, 425), [156, 164, 850, 182])
+
+# 4. row3 lane + labels (lane extent)
+cmp("lane3_blue", bbox(is_blue, 280, 1950, 440, 560), [164, 217, 883, 256])
+
+# 5. bolts
+cmp("bolts", bbox(is_orange, 480, 1900, 505, 560), [272, 249, 837, 257])
+
+# 6. +delta (below bolts, excluding arrow2 shaft x 1480-1560)
+pts = [(x, y) for y in range(575, 625) for x in range(430, 1900)
+       if is_red(px[x, y]) and not (1480 <= x <= 1560)]
+bb = [min(p[0] for p in pts), min(p[1] for p in pts), max(p[0] for p in pts), max(p[1] for p in pts)] if pts else None
+cmp("deltas", bb, [228, 267, 808, 285])
+
+# 7. banner rect + Combine + white text (windows inside the banner)
+def is_darkred(p):
+    r, g, b = p
+    return 100 < r < 190 and g < 60 and b < 60
+cmp("banner", bbox(is_darkred, 280, 1950, 590, 720), [165, 294, 882, 331])
+def is_yel_txt(p):
+    r, g, b = p
+    return r > 200 and g > 160 and b < 120
+cmp("banner_combine", bbox(is_yel_txt, 430, 700, 645, 682), [217, 305, 303, 319])
+def is_white(p):
+    r, g, b = p
+    return r > 235 and g > 235 and b > 235
+cmp("banner_white", bbox(is_white, 700, 1860, 645, 682), [315, 305, 822, 321])
+
+# 8. arrows (full-length windows)
+cmp("arrow1", bbox(is_red, 1250, 1330, 545, 645), [611, 264, 618, 292])
+cmp("arrow2", bbox(is_red, 1495, 1545, 390, 640), [717, 196, 723, 294])
+cmp("arrow3", bbox(is_red, 1075, 1120, 695, 795), [516, 331, 523, 360])
+cmp("arrow4", bbox(is_red, 1075, 1120, 855, 955), [516, 419, 523, 446])
+
+# 9. row4 lane+boxes band
+cmp("row4_band", bbox(is_red, 280, 1900, 735, 865), [162, 358, 875, 398])
+
+# 10. brace (window below row4)
+cmp("brace", bbox(is_red, 420, 1800, 830, 905), [176, 400, 863, 421])
+
+# 11. caption
+def is_capblue(p):
+    r, g, b = p
+    return b > 140 and (b - r) > 40 and (b - g) > 40
+cmp("caption", bbox(is_capblue, 700, 1500, 940, 1030), [362, 457, 676, 467])
+
+# 12. inset (window excludes lab5)
+def is_ingreen(p):
+    r, g, b = p
+    return g > 80 and (g - r) > 25 and (g - b) > 10
+cmp("inset_green", bbox(is_ingreen, 80, 390, 850, 1120), [66, 415, 200, 513])
+cmp("inset_pinkbox", bbox(lambda p: p[0] > 215 and 140 < p[1] < 210 and 160 < p[2] < 225, 100, 400, 950, 1080), [80, 480, 165, 505])
+cmp("lab5_green", bbox(is_ingreen, 400, 640, 950, 1060), [196, 469, 262, 495])
+
+# 13. left labels (windows exclude lanes/banner)
+cmp("lab1_gray", bbox(lambda p: abs(p[0] - p[1]) < 25 and abs(p[1] - p[2]) < 25 and 60 < p[0] < 170, 80, 300, 180, 300), [69, 93, 151, 136])
+cmp("lab2_green", bbox(is_green, 80, 300, 300, 420), [67, 156, 151, 193])
+cmp("lab3_blue", bbox(is_blue, 80, 300, 450, 530), [69, 225, 142, 247])
+cmp("lab4_red", bbox(is_red, 80, 300, 600, 700), [68, 301, 142, 326])
+
+# 14. containment: no green/blue content ink outside the house frame
+cont = []
+for x0, x1, y0, y1, tag in ((0, 80, 100, 1060, "left"), (1930, 2001, 100, 1060, "right"), (100, 1900, 0, 88, "top"), (100, 1900, 1075, 1125, "bottom")):
+    bad = [(x, y) for y in range(y0, min(y1, H)) for x in range(x0, min(x1, W))
+           if is_green(px[x, y]) or is_blue(px[x, y])]
+    if bad:
+        cont.append(f"{tag}: {len(bad)} ink px (e.g. {bad[:3]})")
+out["containment"] = cont
+if cont:
+    fails.append(f"containment: {cont}")
+
+print(json.dumps(out, indent=1))
+print()
+if fails:
+    print("SELFCHECK: FAIL")
+    for f in fails:
+        print("  -", f)
+    sys.exit(1)
+print("SELFCHECK: ALL OK")

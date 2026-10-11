@@ -1,0 +1,38 @@
+# Fidelity Check: Slide 016 â EncoderâDecoder Transformer
+
+## Element-by-Element Comparison
+
+**Title:** "Encoder â Decoder Transformer" â verbatim match, red bold, centered. â (slide-number badge is house chrome, not assessed)
+
+**Left callout column (all verbatim, colors match):**
+- "Decoder Block" (green box, green text) â
+- "Encoder Block" (red/pink box, red text) â
+- "N Cascaded Blocks / In Both Encoder and Decoder" (tan box) â
+- "Encoder Decoder Attention / From Last Encoder Block / To ALL Decoder Cascaded Blocks" (yellow box, red "Last"/"ALL") â â line spacing and centering match
+- "Inputs to Encoder Block (V,K,Q) / All are from Previous Block" (light blue) â
+- "Inputs to Decoder Block (V,K,Q) / (V,K) from Attention, (Q) from Previous Block" (light blue) â
+- Leader/connector lines present in both, approximate routing â
+
+**Right diagram:** Regions (peach Encoder / green Decoder), green outer frame, Softmax, Linear, Add & Norm, Feed Forward, Multi-Head Attention, Masked Multi-Head Attention, V/K/Q circles, both Nx ovals, â Positional Encoding symbols, Input/Output Embedding, "Inputs" arrow, "Outputs (shifted right)" â all present. â
+
+## Discrepancies
+
+1. **MAJOR (high confidence) â Text collision, top-right:** In the recreation, "Output Probabilities" and the "Decoder" label occupy the same position and overprint each other, producing garbled text ("Outpuâ¡Decoder"). In the original, "Output Probabilities" sits cleanly above/left of the italic green "Decoder" with no overlap. Two labels are made illegible/illegibly garbled in the recreation.
+
+2. **MAJOR (medium confidence) â Encoder block structure:** In the original, the encoder column is two distinct rounded sub-blocks (one enclosing "Add & Norm / Feed Forward", a second enclosing "Add & Norm / Multi-Head Attention", each with its own rounded outline). The recreation merges these into one large tan rectangle with "Feed Forward" as a small inner box only. Diagram shape/structure deviates from the original.
+
+3. **MINOR (high confidence) â Positional-encoding glyph:** Original shows â plus a curved/sine-like symbol; recreation uses â plus a zigzag "â§â§". Approximate but not identical.
+
+4. **MINOR (medium confidence) â Left Nx pointer arrow:** The original shows a small gray arrow pointing into the left "Nx" oval; the recreation omits this arrow.
+
+5. **MINOR (low confidence) â Crossover highlight styling:** The yellow dashed K/V crossover region is rendered as a stepped yellow-filled connector plus dashed boxes in the recreation; the original's highlighting is simpler (dashed box + connector). Stylistic deviation only; the VâK flow is conveyed in both.
+
+No missing-element blockers: every text block, box, circle, arrow, and label in the original appears somewhere in the recreation. No equation/table content on this slide, so directives (e)/(8) are not implicated. No frame-containment violations: all diagram content sits inside the green diagram frame and the red house frame.
+
+## Visual-Quality Defects (recreation)
+
+- "Output" / "Decoder" overprint at top-right â illegible garble (covered in #1 above).
+- The stepped yellow filled shape near the encoder/decoder boundary partially obscures the yellow dashed rectangle behind it â mild visual clutter.
+- Everything else is legible, non-clipping, and reasonably aligned.
+
+FINAL VERDICT: **FAIL** for 'faithful, usable recreation' â the "Output Probabilities"/"Decoder" collision garbles two labels (MAJOR), and the encoder block structure deviates from the original's two-sub-block layout (MAJOR). Both are fixable; with those corrected the slide would pass.

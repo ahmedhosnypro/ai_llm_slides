@@ -1,0 +1,235 @@
+{
+  "slide_title": "Self Attention Mechanism (as Query and {Key-Value} Dictionary)",
+  "subtitle_or_header": "(Query using X\u2082 All Keys in Dictionary and retrieve Corresponding Values",
+  "verbatim_text": {
+    "bullets": [
+      "Matched KEYS with Relevance Percentage",
+      "Retrieve VALUES Weighted by their Relevance",
+      "Values of Matched Keys are returned when Running Query",
+      "Query ALL Keys with X\u2082 (rendered on two lines: 'Query' / 'ALL Keys with X\u2082')"
+    ],
+    "labels": [
+      "KEYs",
+      "Values",
+      "Dot Product (two lines: 'Dot' / 'Product')",
+      "Soft max (written vertically)",
+      "\u03a3",
+      "W\u2082\u2081",
+      "W\u2082\u2082",
+      "W\u2082\u2083",
+      "W\u2082\u2084",
+      "K",
+      "Q",
+      "V",
+      "X\u2082 (red subscripted label on the 2nd segment of every key/value/query vector; magenta on the magenta-highlighted query bar)",
+      "Y (green label on output vector)",
+      "29 (slide number in yellow circle, top-right)"
+    ],
+    "equations": [
+      "W\u2082\u2081, W\u2082\u2082, W\u2082\u2083, W\u2082\u2084 (softmax weight labels with subscripted numerals)",
+      "X\u2082 (query/key index with subscript 2)",
+      "\u03a3 (summation node)",
+      "Y (output vector label)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Dark-red rounded-rectangle border frames the whole slide on white. Title (2 centered lines) at top with yellow-circle slide number '29' at top-right. Below, one large peach rounded panel contains the entire self-attention diagram: KEYs vector stack far left, Dot Product box center-left, vertical Soft max box center, column of 4 multiply nodes (W\u2082\u2081-W\u2082\u2084) center-right, \u03a3 box above them, green output vector at top-center-right, Values vector stack far right, Query label + query vector row bottom-left, blue result text box bottom-right, two cyan callout boxes across the top of the panel.",
+    "regions": [
+      {
+        "name": "Title block",
+        "position": "top center, ~8-19% height, ~10-90% width",
+        "content": "Two bold centered lines; parenthetical of line 1 highlighted yellow; red emphasis words in line 2"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, ~90-95% width, ~10-17% height",
+        "content": "Yellow circle with '29'"
+      },
+      {
+        "name": "Main diagram panel",
+        "position": "middle/bottom, ~4-96% width, ~21-99% height",
+        "content": "Peach rounded rectangle containing the full Query/Key/Value attention flow diagram"
+      },
+      {
+        "name": "KEYs stack",
+        "position": "left, ~6-15% width, ~36-73% height",
+        "content": "Tan 'KEYs' label box over 4 stacked vector bars; red 'K' badge at right of stack"
+      },
+      {
+        "name": "Dot Product box",
+        "position": "center-left, ~26-36% width, ~35-74% height",
+        "content": "Gray-tan vertical box, 4 blue nodes, red connecting arrows with exact top-to-bottom weights: thin (~1.5pt), medium (~3pt), thickest (~4.5pt), thin (~1.5pt)"
+      },
+      {
+        "name": "Soft max box",
+        "position": "center, ~48-53% width, ~35-74% height",
+        "content": "Orchid vertical rounded box with vertical 'Soft max' text"
+      },
+      {
+        "name": "Callout 1",
+        "position": "top of panel, ~33-51% width, ~27-34% height",
+        "content": "Cyan box: Matched KEYS with Relevance Percentage"
+      },
+      {
+        "name": "Callout 2",
+        "position": "top right of panel, ~66-88% width, ~27-34% height",
+        "content": "Cyan box: Retrieve VALUES Weighted by their Relevance"
+      },
+      {
+        "name": "Output vector + \u03a3",
+        "position": "top center-right, ~54-68% width, ~22-40% height",
+        "content": "Green dashed output bar labeled Y; pale-blue \u03a3 box below it; green arrow between"
+      },
+      {
+        "name": "Multiply nodes",
+        "position": "center-right, ~52-62% width, ~42-70% height",
+        "content": "4 red asterisk-in-circle nodes with W\u2082\u2081-W\u2082\u2084 labels, red arrows to/from Softmax, Values and \u03a3"
+      },
+      {
+        "name": "Values stack",
+        "position": "right, ~77-89% width, ~36-73% height",
+        "content": "Tan 'Values' label box over 4 stacked vector bars; red 'V' badge at left of stack"
+      },
+      {
+        "name": "Query area",
+        "position": "bottom left, ~12-51% width, ~77-98% height",
+        "content": "Orange 'Query / ALL Keys with X\u2082' box with red Q badge; horizontal row of 4 vector bars (2nd magenta-highlighted); thick red arrow into highlighted bar; red dashed curved arrow up to KEYs stack"
+      },
+      {
+        "name": "Result box",
+        "position": "bottom right, ~58-86% width, ~80-93% height",
+        "content": "White box, blue border, 3 lines of blue text"
+      }
+    ],
+    "hierarchy": "Title is largest/boldest (black, yellow highlight accent). The peach diagram panel dominates by area. Secondary visual weight: red arrows/badges and green vector bars; then cyan callouts and blue result box; smallest are W-labels, X\u2082/Y tags and the slide number."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Self-attention data-flow diagram inside one peach rounded container. LEFT: tan label 'KEYs' above a vertical stack of 4 identical vector bars \u2014 each a green dashed rounded rectangle split into 4 abutting segments (pale yellow, pink, pale green, pale violet) with a red subscripted 'X\u2082' on the 2nd segment; red circle badge 'K' to the right of the stack. CENTER-LEFT: vertical gray-tan rectangle titled 'Dot Product' (dark red, two lines) containing 4 blue circular nodes (dark-blue ring, light-blue center) on a slight diagonal; red arrows run from each of the 4 KEY bars to its node and from each node rightward into the Softmax box; line weights vary \u2014 3rd arrow thickest, 2nd medium, 1st and 4th thin \u2014 encoding relevance percentage (no numeric percentages printed). CENTER: vertical orchid-pink rounded rectangle with 'Soft max' rotated 90\u00b0. CENTER-RIGHT: vertical column of 4 small red-outlined circles each containing an asterisk (multiply nodes), black labels W\u2082\u2081, W\u2082\u2082, W\u2082\u2083, W\u2082\u2084 at their left; red arrows from the Softmax right edge to each node, horizontal red arrows from each of the 4 Value bars leftward into each node, and red arrows rising from each node into the \u03a3 box. TOP-CENTER-RIGHT: pale-blue rectangle with large black '\u03a3'; thick green arrow from \u03a3 top up into the output vector \u2014 a green dashed bar with segments pale yellow, pink, pale green labeled 'Y' (green bold), pale gray-green. RIGHT: tan label 'Values' above a stack of 4 vector bars identical to the KEYs; red circle badge 'V' at left of stack. BOTTOM-LEFT: orange rounded box 'Query / ALL Keys with X\u2082' with red circle badge 'Q' at its right; below it a horizontal row of 4 vector bars where the 2nd bar is filled magenta with magenta 'X\u2082'; a thick red arrow points up into that highlighted bar; a red dashed curved arrow runs from the row's left end up to the bottom of the KEYs stack (query matched against all keys).",
+      "colors": [
+        "#FBDFBD",
+        "#990000",
+        "#00A651",
+        "#FFFF99",
+        "#FF99CC",
+        "#99FF66",
+        "#E6C8E6",
+        "#C00000",
+        "#003399",
+        "#6699FF",
+        "#DFA0DF",
+        "#CDBBA8",
+        "#CCE4FF",
+        "#000000",
+        "#FF7CCE",
+        "#E8C79A",
+        "#FAC090"
+      ],
+      "position": "entire area below the title, ~4-96% width, ~21-99% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Cyan rounded callout, magenta bold italic text on two lines: 'Matched KEYS with / Relevance Percentage'",
+      "colors": [
+        "#CCFFFF",
+        "#CC00CC"
+      ],
+      "position": "top of panel, left-of-center (~33-51% width, ~27-34% height), above Dot Product box"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Cyan rounded callout, magenta bold italic text on two lines: 'Retrieve VALUES / Weighted by their Relevance'",
+      "colors": [
+        "#CCFFFF",
+        "#CC00CC"
+      ],
+      "position": "top-right of panel (~66-88% width, ~27-34% height), above the Values stack and right of the \u03a3/output area"
+    },
+    {
+      "type": "highlight-box",
+      "description": "White rectangle with ~2pt blue border, three centered lines of blue text: 'Values of Matched Keys' (with 'Values' and 'Matched Keys' bold italic), 'are returned', 'when Running Query'",
+      "colors": [
+        "#FFFFFF",
+        "#0000CC"
+      ],
+      "position": "bottom right of panel (~58-86% width, ~80-93% height)"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: yellow circle with thin dark outline containing '29' in dark text",
+      "colors": [
+        "#FFFF00",
+        "#333333"
+      ],
+      "position": "top-right corner (~90-95% width, ~10-17% height), outside the peach panel, inside the red border"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; all graphics are flat PowerPoint-style vector shapes: colored segment bars (key/value/query vectors), dashed green containers, blue node circles, red asterisk-in-circle multiply nodes, block/line arrows, rounded label boxes, and circular K/Q/V badges"
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#000000",
+    "body_text": "#000000",
+    "accents": [
+      "#FFFF00 (title parenthetical highlight, slide-number circle)",
+      "#D40000 (red emphasis words in subtitle line 2 only)",
+      "#990000 (outer border; dark-red label text 'Dot / Product', 'Soft max', 'KEYs', 'Values', 'Query')",
+      "#C00000 (all in-diagram red arrows, K/Q/V circle badges, red X\u2082 labels)",
+      "#FBDFBD (diagram panel fill)",
+      "#E8C79A (tan KEYs/Values label boxes)",
+      "#CDBBA8 (Dot Product box)",
+      "#DFA0DF (Soft max box)",
+      "#FAC090 (Query box)",
+      "#CCE4FF (\u03a3 box)",
+      "#00A651 (vector dashed borders, green arrow, 'Y' label)",
+      "#FFFF99 / #FF99CC / #99FF66 / #E6C8E6 (vector bar segments 1-4)",
+      "#FF7CCE (magenta fill of highlighted query bar)",
+      "#003399 / #6699FF (Dot Product node ring / center)",
+      "#CCFFFF (cyan callout fills)",
+      "#CC00CC (magenta callout text)",
+      "#0000CC (result box border and text)",
+      "#333333 (slide-number outline and text)"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Calibri-like). Title bold ~26-28pt on line 1, second line slightly smaller (~18-20pt) and also bold; yellow highlight behind the title's parenthetical; selected words in the subtitle colored red with a true subscript 2 in X\u2082. All diagram labels bold ~12-14pt; callout text bold italic; 'Soft max' rotated 90\u00b0 to read vertically; W\u2082\u2081-W\u2082\u2084 and X\u2082 use subscripted numerals; result-box text mixes bold-italic emphasis words with regular blue text; slide number is small plain text in a circle. No serif fonts, no all-caps styling beyond what is transcribed (KEYs, VALUES, ALL as written).",
+  "animation_state": "Slide appears fully built and static: all four key/value pairs, all arrows, both callouts, the result box and all labels are visible simultaneously; no mid-build (partial bullet reveal) state detected.",
+  "recreation_brief": "1. Slide setup: create a 16:9 slide with white (#FFFFFF) background; draw a dark-red (#990000) rounded-rectangle border, ~3pt line, inset ~0.15in from every edge, framing the whole slide.\n2. Title line 1: one centered text box at ~10-90% width, ~8-14% height; bold sans-serif ~26-28pt black (#000000): 'Self Attention Mechanism (as Query and {Key-Value} Dictionary)' with a yellow (#FFFF00) text-highlight behind the parenthetical '(as Query and {Key-Value} Dictionary)'.\n3. Title line 2 (subtitle): second centered text box at ~10-90% width, ~14-19% height; bold ~18-20pt: '(Query using X\u2082 All Keys in Dictionary and retrieve Corresponding Values' (verbatim, unclosed parenthesis); color the words 'Query', 'X\u2082', 'All Keys' and 'Values' red (#D40000), remaining text black; render the 2 in X\u2082 as a true subscript.\n4. Slide-number badge: yellow (#FFFF00) circle ~0.45in diameter with thin dark (#333333) outline at ~90-95% width, ~10-17% height; small plain dark (#333333) text '29' centered in it.\n5. Main diagram panel: peach (#FBDFBD) rounded rectangle with thin dark-red outline covering ~4-96% width and ~21-99% height (from just below the subtitle to the bottom border); place all remaining elements inside it.\n6. Vector-bar master shape (reused 12 times for key/value/query bars): green (#00A651) dashed rounded rectangle ~1.7in x 0.38in split into 4 abutting segments colored left-to-right #FFFF99, #FF99CC, #99FF66, #E6C8E6, with a red (#C00000) subscripted 'X\u2082' on segment 2.\n7. KEYs stack: 4 master bars stacked vertically at ~6-15% width, ~36-73% height; tan (#E8C79A) rounded label box with dark-red (#990000) bold 'KEYs' at the top of the stack; red (#C00000) circle badge with bold red 'K' to the right of the stack.\n8. Values stack: 4 master bars stacked vertically at ~77-89% width, ~36-73% height; tan (#E8C79A) label box with dark-red (#990000) bold 'Values' at the top; red (#C00000) circle badge with bold red 'V' to the left of the stack.\n9. Dot Product box: gray-tan (#CDBBA8) vertical rectangle ~1.1in x 3.6in at ~26-36% width, ~35-74% height; dark-red (#990000) bold two-line title 'Dot / Product' at its top; 4 blue circular nodes (~0.18in, #003399 ring, #6699FF center) inside on a slight diagonal.\n10. Arrows, KEYs to Dot-Product nodes: 4 red (#C00000) arrows from each KEY bar to its node; top-to-bottom line weights ~1.5pt, ~3pt, ~4.5pt, ~1.5pt (3rd thickest, encoding relevance; no numbers printed).\n11. Arrows, nodes to Softmax: 4 red (#C00000) arrows from each node rightward into the Softmax box, same top-to-bottom weights (~1.5pt, ~3pt, ~4.5pt, ~1.5pt).\n12. Softmax box: orchid (#DFA0DF) vertical rounded rectangle ~0.5in x 3.6in at ~48-53% width, ~35-74% height; dark-red (#990000) bold 'Soft max' rotated 90\u00b0 to read vertically.\n13. Multiply nodes: 4 circles ~0.22in with red (#C00000) outlines, each containing a red (#C00000) asterisk, stacked vertically at ~52-62% width, ~42-70% height; black bold subscripted labels 'W\u2082\u2081', 'W\u2082\u2082', 'W\u2082\u2083', 'W\u2082\u2084' immediately left of each circle.\n14. Arrows, Softmax to multiply nodes: 4 red (#C00000) arrows from the Softmax right edge to each multiply node.\n15. Arrows, Values to multiply nodes: 4 horizontal red (#C00000) arrows from the left end of each Value bar into its multiply node.\n16. Arrows, multiply nodes to \u03a3: 4 red (#C00000) arrows rising from each multiply node into the \u03a3 box.\n17. \u03a3 box: pale-blue (#CCE4FF) rectangle ~1.5in x 0.35in at ~54-68% width, ~30-40% height (directly above the multiply column); black bold '\u03a3' ~24pt centered.\n18. Output vector: 1 master-bar copy at ~54-68% width, ~22-28% height (directly above the \u03a3 box); keep segments 1-3 (#FFFF99, #FF99CC, #99FF66), recolor segment 4 from #E6C8E6 to pale gray-green (hex not captured; use a muted gray-green, e.g. #C8D8C8); place bold green (#00A651) 'Y' on segment 3; no X\u2082 label on this bar.\n19. Green arrow: thick green (#00A651) arrow from the top edge of the \u03a3 box up into the output vector.\n20. Callout 1: light-cyan (#CCFFFF) rounded rectangle at ~33-51% width, ~27-34% height (above the Dot Product box); magenta (#CC00CC) bold italic ~12pt text on two lines: 'Matched KEYS with / Relevance Percentage'.\n21. Callout 2: light-cyan (#CCFFFF) rounded rectangle at ~66-88% width, ~27-34% height (top-right of panel); magenta (#CC00CC) bold italic ~12pt text on two lines: 'Retrieve VALUES / Weighted by their Relevance'.\n22. Query box: orange (#FAC090) rounded rectangle at ~12-51% width, ~77-84% height; dark-red (#990000) bold two-line text 'Query' (larger) / 'ALL Keys with X\u2082' (smaller, subscripted 2); red (#C00000) circle badge with bold red 'Q' at the box's right.\n23. Query bar row: 4 master bars in a horizontal row below the Query box at ~12-51% width, ~85-98% height; fill the entire 2nd bar magenta (#FF7CCE) and set its 'X\u2082' label magenta (#CC00CC); bars 1, 3, 4 keep standard colors with red X\u2082 on segment 2.\n24. Query highlight arrow: thick red (#C00000) arrow pointing up into the magenta 2nd bar of the query row.\n25. Query-to-KEYs arrow: red (#C00000) dashed curved arrow from the left end of the query row up to the bottom of the KEYs stack.\n26. Result box: white (#FFFFFF) rectangle ~2.9in x 0.75in with ~2pt blue (#0000CC) border at ~58-86% width, ~80-93% height; 3 centered lines of blue (#0000CC) text: 'Values of Matched Keys' ('Values' and 'Matched Keys' bold italic), 'are returned', 'when Running Query'.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Resolved red-hex conflict: colors.accents attributed 'arrows, badges, X\u2082 labels' to #D40000 while the diagram element lists #C00000 for those items; accents now assign #D40000 to the subtitle emphasis words only and #C00000 to all in-diagram arrows, K/Q/V badges and red X\u2082 labels.",
+      "Added missing accent swatches used by the diagram: #E8C79A (tan KEYs/Values label boxes), #003399/#6699FF (Dot Product node ring/center), #FFFF99/#FF99CC/#99FF66/#E6C8E6 (vector segments), #333333 (slide-number outline/text).",
+      "Corrected the output-vector step of recreation_brief: 'recolor its 3rd segment green' was wrong because the template's 3rd segment is already #99FF66; per the diagram description the output bar keeps segments 1-3 and changes segment 4 from #E6C8E6 to pale gray-green, with bold green 'Y' on segment 3.",
+      "Replaced the vague 'red connecting arrows of varying thickness' in the Dot Product region with the exact top-to-bottom weight pattern: thin (~1.5pt), medium (~3pt), thickest (~4.5pt), thin (~1.5pt).",
+      "Added explicit hexes missing from the brief: #C00000 for K/Q/V badge outlines and letters; #CC00CC for the magenta X\u2082 on the highlighted query bar.",
+      "Harmonized Callout 2's position with layout.regions percentages: ~66-88% width, ~27-34% height (above the Values stack, right of the \u03a3/output area) instead of the looser 'above \u03a3/output area'.",
+      "Amended the X\u2082 label note for consistency: red on the 2nd segment of every key/value/query vector except the magenta-highlighted query bar, where it is magenta.",
+      "Rewrote recreation_brief as a 26-step ordered checklist placing exactly one element per step, each with verbatim text, position (from region percentages), hex color and shape type."
+    ],
+    "uncertain_items": [
+      "Subtitle line 2 is transcribed with an opening '(' but no closing ')' \u2014 kept verbatim; confirm punctuation against the source if it matters.",
+      "Output vector's 4th segment is described only as 'pale gray-green' with no captured hex; #C8D8C8 is suggested for recreation.",
+      "Magenta 'X\u2082' text on the highlighted query bar has no captured hex (bar fill is #FF7CCE); #CC00CC suggested (the only other magenta on the slide).",
+      "Arrow line weights (~1.5/3/4.5pt) are estimates of the captured relative thickness (3rd thickest, 2nd medium, 1st and 4th thin); no numeric relevance percentages are printed on the slide.",
+      "Font sizes are approximations from typography_notes (~26-28pt title, ~18-20pt subtitle, ~12-14pt labels); exact point sizes were not captured."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_029.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 29,
+      "image": "slide_029.jpg",
+      "kept_frame": "frame_02667.jpg",
+      "start_sec": 2595.0,
+      "end_sec": 2666.0,
+      "frame_count": 72
+    },
+    "elapsed_s": 291.7,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 691.7
+  }
+}

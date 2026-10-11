@@ -1,0 +1,35 @@
+# Element-by-Element Fidelity Check â Slide 007
+
+## Setup per ground rules
+House chrome (red frame, #E8E8E8 bg, yellow "7" badge, title box position) â per rule (a), not assessed. White mouse cursor in the original over the callout box â per rule (c), correctly omitted. Base decoder/encoder composition is the imported slide-6 certified component; only the slide-7 delta ([1] Bottleneck callout, thin connector, title line 2) is the judged difference, though I checked the full composition anyway.
+
+## Slide-7 delta elements (the judged difference)
+
+| Element | Original | Recreation | Verdict |
+|---|---|---|---|
+| Title line 2 "(Challenges)" | Dark navy, bold, centered under line 1 | Present, same color/weight/centering | â Match |
+| "[1] Bottleneck" callout | Light cyan/blue box, ~x:5%â47% width, below title-left | Present, same fill, same position/size ratio | â Match |
+| Callout text | 3 lines, centered: "The meaning of the entire input sequence is / Expected to be captured by a single context vector / with fixed dimensionality"; underlines on "[1] Bottleneck", "by a single context vector", "fixed dimensionality" | Verbatim, same 3-line breaks, same underline spans, comparable line spacing, text vertically centered in box | â Match |
+| Thin connector callout â red arc | Thin gray line from box's right edge slanting down to the red arc | Present, same origin, same slant, reaches the red arc | â Match |
+
+## Base composition (imported, spot-checked)
+
+- **Decoder (RNN)** yellow region: three softmax columns, oâ/oâ/oâ up-arrows, green output cells, orange state cells, sâ/sâ/sâ labels, right-exit arrow â all present and positioned as in the original. â
+- **Encoder (RNN)** peach region: hâ/hâ arrows, embedding xâ/xâ/xâ, input arrows xâ/xâ/xâ, three cell rows â all present, aligned, contained. â
+- **Red context-vector arc**: dot on last encoder state, arc up to dot left of first decoder state â present, same curvature and endpoints. â
+- **"Context Vector (of Whole Inputs)"** pink box, red bold text â present, same position/size. â
+- "Decoder (RNN)" / "Encoder (RNN)" italic red labels â present, correct positions. â
+
+## Discrepancy list
+
+1. **MINOR** (confidence: medium-high) â Below the decoder state row near sâ and sâ, the original shows small curved hook/loop strokes; the recreation renders these as short straight diagonal tick lines. Same location, simplified geometry.
+2. **MINOR** (confidence: medium) â The large feedback arcs from output cells down to the next state cells are slightly thicker and more olive-toned in the recreation than the original's thinner, darker arcs. Same paths and endpoints.
+3. **MINOR** (confidence: low-medium) â The thin callout connector in the recreation is slightly lighter/bluer in tint than the original's gray line. Same geometry.
+4. **MINOR** (confidence: low) â Cell-group proportions inside the decoder boxes (cells per group, internal gaps) differ by a few pixels from the original; structure and count match.
+
+No BLOCKER or MAJOR defects found. All renderable content present, all text verbatim with correct line breaks, all elements frame-contained, no clipping, no collisions, no missing elements.
+
+## Visual-quality defects in the recreation
+None beyond the minor geometry notes above. Text is legible, nothing overflows the red frame or its containing region boxes, no wrapping errors.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

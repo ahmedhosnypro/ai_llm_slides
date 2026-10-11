@@ -1,0 +1,46 @@
+# Slide 009 â Visual QA Report
+
+## 1. Verbatim Text Transcription
+
+**Title block (top center):**
+- "Traditional RNN  Seq2Seq model" â bold, dark red (note: appears to have a double space between "RNN" and "Seq2Seq")
+- "(Challenges)" â bold, dark navy, on a second line
+
+**Page number (top-right circle):**
+- "9" â black text in a yellow circle with a purple outline
+
+**Right-side label:** "Decoder (RNN)" â dark red, bold italic
+
+**Blue callout box (upper left), both lines dark navy, bold, underlined:**
+- "[3] Very Long Sequence"
+- "Vanishing Gradient"
+
+**Gray info box (mid left):**
+- "Short Sequence:   RNN" â "Short Sequence:" navy, "RNN" green (extra spacing after the colon)
+- "Long Sequence: LSTM, GRU" â navy + green
+- "Very Long Sequence: FAIL" â navy + "FAIL" in red
+
+**Yellow decoder panel:** "softmax" (Ã3, olive italic); output labels "oâ", "oâ", "oâ"; state labels "sâ", "sâ", "sâ" (italic with small subscripts)
+
+**Orange encoder panel:** "embedding xâ", "embedding xâ", "embedding xâ" (brown italic); step labels "hâ", "hâ"; input labels "xâ", "xâ", "xâ"
+
+**Bottom-left caption:** "Encoder  (RNN)" â dark red, bold italic (appears to have a double space before "(RNN)")
+
+**Bottom-right gray panel:** "Back Propagation" â red, bold italic; sequence labels "Xâ Xâ Xâ Xâ X Xâ Xâ Xâ Xâ Xââ" â green, with subscripts 0â10
+
+## 2. Layout Description
+
+- A thin **red rectangle border** frames the entire slide, inset from the edges.
+- **Top:** two-line centered title; "9" circle at the top-right inside the border; "Decoder (RNN)" label sits to the right, level with "(Challenges)".
+- **Left edge:** blue callout box at upper left; gray "Short/Long/Very Long Sequence" box at mid-left; large orange rounded panel at lower-left containing the unrolled encoder (three cell groups with input arrows, embedding labels, and hâ/hâ arrows between groups); "Encoder (RNN)" caption at the bottom-left below the orange panel.
+- **Right edge:** large yellow rounded panel at upper right containing the decoder (three cell groups, three upward output arrows labeled oââoâ, three "softmax" labels, horizontal arrows labeled sââsâ, plus an unlabeled exit arrow at its far right); gray rounded panel at bottom-right containing the backpropagation diagram: a long red left-pointing arrow (red dot at its right end, a curved hump over the "Back Propagation" label), a row of 11 pink boxes containing â (nabla) symbols that grow larger leftâright, a row of 11 small unlabeled lavender boxes, and a row of 11 green XââXââ boxes fed by upward green arrows.
+- **Connectors:** a thin blue curve runs from the blue callout box down to the yellow decoder panel; another thin blue curve runs from the decoder's bottom (near sâ) down to the backprop panel; a red curved arrow with a red dot originates at the encoder's final cell and points into the yellow decoder panel.
+
+## 3. Visual Defects / Anomalies
+
+- **No clipping or cut-off content** is visible; all boxes, labels, and the border are fully within the slide.
+- **Spacing inconsistencies:** double space in the title ("Traditional RNN  Seq2Seq model"), in "Encoder  (RNN)", and extra spaces after the colon in "Short Sequence:".
+- **Unlabeled elements:** the middle row of lavender boxes in the backprop panel has no text labels; the exit arrow on the decoder's far right is unlabeled.
+- **Stray-looking marks:** two short diagonal olive tick/slash lines appear in the yellow panel near sâ and sâ, detached from any arrow.
+- **Small type:** all subscripts (oââoâ, sââsâ, hââhâ, xââxâ, XââXââ) are rendered very small relative to surrounding text, though still legible.
+- **No wrong-language text, no placeholder/garbage strings** detected; the â symbols and "[3]" reference marker appear intentional. "FAIL" in red is evidently deliberate emphasis.

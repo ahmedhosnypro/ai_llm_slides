@@ -1,0 +1,239 @@
+{
+  "slide_title": "Multi Head Self Attention of Word X\u2082",
+  "subtitle_or_header": "\"Wide\" Architecture [right portion obscured by the inset panel; visible text reads \"Wide\" Architec...]",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "44",
+      "\"Wide\" Architec... [?]",
+      "Linear Transformation   [ T ]  dH\u00d7d",
+      "1\u00d7d",
+      "Concatenated Vector 1\u00d7dH",
+      "Y\u00b9 [?] (repeated segment labels in concatenated vector: Y\u00b9Y\u00b9Y\u00b9 | Y\u00b2Y\u00b2Y\u00b2 | Y\u00b3Y\u00b3Y\u00b3 | Y\u2074Y\u2074Y\u2074)",
+      "Similarity",
+      "Probability",
+      "Probabilities",
+      "Weighted SUM",
+      "h=1",
+      "h=2",
+      "h=3",
+      "h=4",
+      "h=5 (backmost layer, largely hidden behind the green-bordered inset panel; its badge partially occluded by the inset)",
+      "X\u2081",
+      "X\u2082",
+      "X\u2083",
+      "X\u2084",
+      "K\u2081",
+      "K\u2082",
+      "K\u2083",
+      "K\u2084",
+      "Dot Product",
+      "K,q",
+      "Scaling by \u221ad",
+      "Soft max",
+      "\u03a3",
+      "V\u2081",
+      "V\u2082",
+      "V\u2083",
+      "V\u2084",
+      "Linear",
+      "Concat",
+      "Scaled Dot-Product Attention",
+      "h",
+      "V",
+      "K",
+      "Q",
+      "H\u00b9 Heads [?]",
+      "W",
+      "d: Embedding Length",
+      "Y\u2081"
+    ],
+    "equations": [
+      "Linear Transformation [T] dH\u00d7d",
+      "K,q / \u221ad",
+      "Scaling by \u221ad",
+      "Concatenated Vector 1\u00d7dH",
+      "1\u00d7d (output vector, top and legend)",
+      "d\u00d7d (weight matrix dimension, legend)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Full-slide diagram with dark-red frame border. Title block top-right with yellow slide-number circle in the corner; subtitle below title. Output vector + 'Linear Transformation' box top-center; long 'Concatenated Vector' pill below it spanning the upper-middle. Five overlapping rounded-rectangle layers (h=5 backmost, largely hidden behind the green-bordered inset panel; then h=4 back to h=1 front) occupy the center-left two-thirds. Inset block-diagram panel (green border) on the right side. 3\u00d73 grid of blue weight matrices bottom-center-right; dimension legend bottom-right corner; input word vectors bottom-left; thick red curved arrow sweeping from bottom-left up to the right.",
+    "regions": [
+      {
+        "name": "Title + slide number",
+        "position": "top, right-of-center to corner, x\u224850\u201397%, y\u22487\u201315%",
+        "content": "Bold black title 'Multi Head Self Attention of Word X\u2082' (X\u2082 red); yellow circle badge '44' at far top-right"
+      },
+      {
+        "name": "Subtitle",
+        "position": "top, x\u224855\u201378%, y\u224815\u201321%",
+        "content": "'\"Wide\" Architecture' \u2014 'Wide' in blue bold quotes; partially hidden behind inset panel"
+      },
+      {
+        "name": "Output vector + Linear Transformation",
+        "position": "top-center, x\u224838\u201358%, y\u22485\u201322%",
+        "content": "Small segmented vector labeled Y\u2081 / 1\u00d7d above a white red-bordered box 'Linear Transformation [T] dH\u00d7d'"
+      },
+      {
+        "name": "Concatenated Vector bar",
+        "position": "upper-middle, x\u224818\u201373%, y\u224823\u201329%",
+        "content": "Pill-shaped container, left label 'Concatenated Vector 1\u00d7dH', containing 4 color-grouped segments Y\u00b9(orange), Y\u00b2(dark gray), Y\u00b3(yellow), Y\u2074(green)"
+      },
+      {
+        "name": "Stacked head layers h=5\u2192h=1",
+        "position": "center-left, x\u22485\u201380%, y\u224833\u201398%",
+        "content": "Five overlapping rounded rectangles (h=5 backmost, largely hidden behind the inset panel which partially occludes its h=5 badge; then light green \u2192 yellow \u2192 purple \u2192 red front), each with Similarity/Probability/Weighted SUM pills and dark circular h=N badge; front red layer contains the full attention pipeline"
+      },
+      {
+        "name": "Inset block diagram",
+        "position": "right, x\u224877\u201396%, y\u224815\u201355%",
+        "content": "Green-bordered white panel: Linear \u2192 Concat \u2192 stacked Scaled Dot-Product Attention (\u00d7h) \u2192 three Linear boxes \u2192 V, K, Q"
+      },
+      {
+        "name": "Weight matrices grid",
+        "position": "bottom-center-right, x\u224867\u201381%, y\u224855\u201395%",
+        "content": "3\u00d73 grid of blue boxes W_q\u00b9 W_k\u00b9 W_v\u00b9 / W_q\u00b2 W_k\u00b2 W_v\u00b2 / W_q\u00b3 W_k\u00b3 W_v\u00b3"
+      },
+      {
+        "name": "Dimension legend",
+        "position": "bottom-right corner, x\u224876\u201396%, y\u224885\u201398%",
+        "content": "Green dashed box: 1\u00d7d vector, orange W box, =, d\u00d7d grid, 1\u00d7d; caption 'd: Embedding Length'"
+      },
+      {
+        "name": "Input word vectors",
+        "position": "bottom-left, x\u224814\u201338%, y\u224889\u201398%",
+        "content": "Green dashed box with X\u2081, X\u2082 (pink-highlighted), X\u2083, X\u2084; red arrow pointing up to X\u2082"
+      },
+      {
+        "name": "Red curved arrow",
+        "position": "bottom-center sweeping to right, x\u224855\u201385%, y\u224855\u201385%",
+        "content": "Thick dark-red curved arrow labeled 'H\u00b9 Heads' linking input X\u2082 region to the per-head weight matrices/layers"
+      }
+    ],
+    "hierarchy": "The layered attention diagram dominates (largest area, saturated red front layer draws the eye). Title is the largest text (bold black ~28pt). Secondary: inset panel, concatenated vector bar, blue weight boxes. Smallest: pill labels (Similarity, Weighted SUM) and dimension annotations (~9\u201311pt)."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "MAIN DIAGRAM \u2014 multi-head self-attention dataflow for one word (X\u2082). Top: small segmented output vector labeled Y\u2081 with dimension tag '1\u00d7d'. Arrow down to white red-bordered box 'Linear Transformation [T] dH\u00d7d'. Arrow down to pill container labeled 'Concatenated Vector 1\u00d7dH' holding 12 cells in 4 color groups: Y\u00b9 (orange, ~3 cells), Y\u00b2 (dark gray, ~3), Y\u00b3 (yellow, ~3), Y\u2074 (green, ~3) [cell counts approximate]. Below, five overlapping rounded-rectangle 'head layers' stacked with diagonal offset, back-to-front: h=5 (backmost, largely hidden behind the green-bordered inset panel \u2014 its fill color and full extent not clearly visible [?]; its h=5 badge partially occluded by the inset), h=4 (light green), h=3 (light yellow), h=2 (light purple), h=1 (salmon red, front, fully detailed). Each layer carries white pill labels 'Similarity' (all layers), 'Probability'/'Probabilities' (h=2, h=1), 'Weighted SUM' (all layers), and a dark circular badge top-right of the layer reading h=5 (partially occluded by the inset), h=4, h=3, h=2, h=1 (white bold text). Small green-dashed output vectors sit at each layer's top edge feeding the concatenation bar. FRONT LAYER (h=1) internals, left\u2192right: (1) column of four green-dashed input vectors labeled X\u2081, X\u2082, X\u2083, X\u2084 (each ~4\u20135 cells); (2) column of four blue boxes 'W_k^0' with adjacent labels K\u2081, K\u2082, K\u2083, K\u2084; (3) tan/beige 'Dot Product' box containing a bipartite dot-and-line graph (blue dots connected by thin lines), annotated 'K,q' at its top-right; (4) tall pink box 'Scaling by \u221ad' with 'K,q / \u221ad' written above it; (5) tall pink box 'Soft max'; (6) label 'Probabilities' with a small green arrow; (7) white box with blue '\u03a3' and label 'Weighted SUM' above; (8) column of labels V\u2081, V\u2082, V\u2083, V\u2084 each with a red \u2297 (circled-times) multiply symbol and a blue box 'W_v^0'; (9) column of four green-dashed output vectors on the layer's right edge.",
+      "colors": [
+        "#F08080",
+        "#C9A0DC",
+        "#EDEDA8",
+        "#C8E6C0",
+        "#4472C4",
+        "#EAD9B0",
+        "#E79FE0",
+        "#00AA00",
+        "#CC0000",
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "center-left, occupying ~70% of slide width and ~65% of height"
+    },
+    {
+      "type": "diagram",
+      "description": "INSET BLOCK DIAGRAM (right side, white panel with thick green border) \u2014 canonical transformer attention block: top white box 'Linear' \u2192 down arrow \u2192 white box 'Concat' \u2192 three down arrows into a stack of ~4 overlapping purple boxes labeled 'Scaled Dot-Product Attention' (stack conveys h parallel copies; a small arrow and italic 'h' annotate the stack) \u2192 three up arrows from three white boxes each labeled 'Linear' \u2192 bottom labels 'V', 'K', 'Q' under the three Linear boxes.",
+      "colors": [
+        "#00AA00",
+        "#B399D5",
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "right side, x\u224877\u201396%, y\u224815\u201355%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "DIMENSION LEGEND (bottom-right corner, green dashed border): a small horizontal vector of ~4 yellow cells tagged '1\u00d7d', then an orange box 'W', then '=', then a small orange grid tagged 'd\u00d7d', then '=' result vector tagged '1\u00d7d'. Blue caption below: 'd: Embedding Length'.",
+      "colors": [
+        "#00AA00",
+        "#FFA500",
+        "#FFD966",
+        "#0000CC"
+      ],
+      "position": "bottom-right corner"
+    },
+    {
+      "type": "arrow",
+      "description": "Thick dark-red curved arrow starting near the highlighted input X\u2082 (bottom-left), sweeping right and upward to the per-head weight-matrix grid / stacked layers; red bold label along it reads 'H\u00b9 Heads' [?]. A second short solid red arrow points from below into the pink-highlighted X\u2082 cell of the bottom-left input box.",
+      "colors": [
+        "#990000",
+        "#CC0000"
+      ],
+      "position": "bottom-center to right"
+    },
+    {
+      "type": "other",
+      "description": "3\u00d73 GRID OF WEIGHT MATRICES: nine blue rounded boxes with white text, rows: W_q\u00b9 W_k\u00b9 W_v\u00b9 / W_q\u00b2 W_k\u00b2 W_v\u00b2 / W_q\u00b3 W_k\u00b3 W_v\u00b3 (superscripts 1,2,3 = heads; subscripts q,k,v = projection type).",
+      "colors": [
+        "#4472C4",
+        "#FFFFFF"
+      ],
+      "position": "bottom-center-right, x\u224867\u201381%, y\u224855\u201395%"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: yellow circle with black bold '44' at top-right corner.",
+      "colors": [
+        "#FFD700",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; the slide is entirely composed of vector shapes: rounded layer rectangles, dashed-border vector boxes, colored cell strips, circular badges, arrows, and one green-framed inset panel."
+  ],
+  "colors": {
+    "background": "#E6E6E6",
+    "title_text": "#000000",
+    "body_text": "#000000",
+    "accents": [
+      "#990000",
+      "#CC0000",
+      "#0000CC",
+      "#FFA500",
+      "#F08080",
+      "#C9A0DC",
+      "#EDEDA8",
+      "#C8E6C0",
+      "#4472C4",
+      "#EAD9B0",
+      "#E79FE0",
+      "#00AA00",
+      "#FFD700"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Helvetica-like). Title bold, ~26\u201330pt, black, with red 'X\u2082' subscript. Subtitle bold with blue quoted 'Wide'. All diagram labels small (~9\u201312pt); layer pill labels and box labels regular weight; badges (h=1..h=4) and '44' bold white/black respectively; 'Dot Product', 'Scaling by \u221ad', 'Soft max' set vertically (rotated 90\u00b0) inside tall boxes; 'd: Embedding Length' bold blue; weight-matrix text white on blue. Heavy use of subscripts/superscripts throughout (X\u2081..X\u2084, K\u2081..K\u2084, V\u2081..V\u2084, W_k^0, W_v^0, W_q^1..3).",
+  "animation_state": "Slide appears fully built \u2014 all four head layers, labels, inset panel, legend, and arrows are visible simultaneously; no mid-build reveal detected.",
+  "recreation_brief": [
+    "Set slide background to light gray #E6E6E6 and add a dark-red (#990000) rectangle frame ~8\u201310 pt thick around the entire slide edge.",
+    "Top-right: add title text 'Multi Head Self Attention of Word X\u2082' in bold black Arial ~28 pt, right-of-center (x\u224850\u201390%); color the 'X\u2082' red (#CC0000) with subscript 2. Place a yellow (#FFD700) circle (~0.9 cm) at the very top-right corner containing bold black '44'.",
+    "Directly under the title add subtitle '\"Wide\" Architecture' \u2014 bold, with 'Wide' in blue (#0000CC) inside quotation marks. Draw the FULL text: in the original frame the green-bordered inset panel is drawn ON TOP and occludes the subtitle's right tail (visible glyphs read '\"Wide\" Architec...') \u2014 reproduce that occlusion by layering the inset over the subtitle rather than truncating the text.",
+    "Top-center: draw a small horizontal vector of ~5 cells (one cell yellow-highlighted, labeled Y\u2081) with tag '1\u00d7d' beside it.",
+    "Below it: white rectangle with red border containing text 'Linear Transformation   [ T ]  dH\u00d7d' (bold, ~14 pt).",
+    "Below that: a full-width rounded pill (white fill, thin border). Left-inside label two lines: 'Concatenated Vector' / '1\u00d7dH'. Inside the pill draw 12 cells in 4 color groups of 3: orange (#E8A33D) cells labeled Y\u00b9, dark-gray (#595959) cells labeled Y\u00b2, yellow (#E8D44D) cells labeled Y\u00b3, green (#8FCE8F) cells labeled Y\u2074.",
+    "Draw five rounded rectangles stacked with a diagonal offset (each ~15% smaller and shifted up-right going back): backmost = h=5 (largely hidden behind the inset panel \u2014 draw it BEFORE the inset so the inset occludes its right portion and its h=5 badge, as in the original frame; fill color not clearly visible in the analysis \u2014 by the slide-45 family pattern likely cream #F2EAD3, verify against the frame at build time), then light green #C8E6C0 ('h=4'), light yellow #EDEDA8 ('h=3'), light purple #C9A0DC ('h=2'), front salmon #F08080 ('h=1'). Badges: dark circles (matching darker shade of each layer) with bold white text, placed at each layer's top-right; the h=5 badge is partially covered by the inset panel (real frame content \u2014 reproduce the occlusion).",
+    "On layers h=2\u2013h=4 add small white pill labels 'Similarity' and 'Weighted SUM' (add 'Probability' on h=2); add a few small green-dashed output-vector boxes at each layer's top edge with thin red connector arrows up to the concatenation pill.",
+    "Build the front (h=1) layer pipeline left\u2192right: (a) four green-dashed vector boxes labeled X\u2081\u2013X\u2084; (b) four blue (#4472C4) boxes 'W_k^0' with white text, labeled K\u2081\u2013K\u2084; (c) tan (#EAD9B0) box 'Dot Product' containing ~6 blue dots joined by thin lines (bipartite graph), tag 'K,q'; (d) tall pink (#E79FE0) box with rotated text 'Scaling by \u221ad' and 'K,q / \u221ad' above it; (e) tall pink box with rotated 'Soft max'; (f) label 'Probabilities' with a small green arrow; (g) white box with large blue '\u03a3', label 'Weighted SUM' above; (h) four rows each with label V\u2081/V\u2082/V\u2083/V\u2084, a red \u2297 symbol, and a blue box 'W_v^0'; (i) four green-dashed output vectors at the right edge. Connect all stages with thin red arrows left\u2192right.",
+    "Right side: draw a white panel with thick green (#00AA00) border (x\u224877\u201396%, y\u224815\u201355%). Inside, top-to-bottom: white box 'Linear' \u2192 arrow \u2192 white box 'Concat' \u2192 three arrows \u2192 stack of 4 overlapping purple (#B399D5) boxes labeled 'Scaled Dot-Product Attention' with small italic 'h' + arrow annotation \u2192 three arrows up from three white boxes each labeled 'Linear' \u2192 bottom labels 'V', 'K', 'Q'.",
+    "Bottom-center-right: create a 3\u00d73 grid of blue (#4472C4) rounded boxes with white bold text: row1 W_q\u00b9 W_k\u00b9 W_v\u00b9; row2 W_q\u00b2 W_k\u00b2 W_v\u00b2; row3 W_q\u00b3 W_k\u00b3 W_v\u00b3.",
+    "Draw a thick dark-red (#990000) curved arrow (block arc or curved connector, ~8 pt) from the bottom-left input area sweeping right and up to the weight-matrix grid; add red bold label 'H\u00b9 Heads' along the curve.",
+    "Bottom-right corner: green dashed-border legend containing a small 4-cell yellow vector tagged '1\u00d7d', an orange (#FFA500) box 'W', '=', a small orange 4\u00d74-ish grid tagged 'd\u00d7d', '=' and a result vector tagged '1\u00d7d'; below the box add blue bold caption 'd: Embedding Length'.",
+    "Bottom-left: green dashed-border box containing four small vectors labeled X\u2081, X\u2082, X\u2083, X\u2084 \u2014 fill X\u2082's cells pink (#FF9ECF) to highlight it; add a short solid red arrow pointing up into X\u2082 from below."
+  ],
+  "_meta": {
+    "frame": "slide_044.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 44,
+      "image": "slide_044.jpg",
+      "kept_frame": "frame_04334.jpg",
+      "start_sec": 4316.0,
+      "end_sec": 4333.0,
+      "frame_count": 18
+    },
+    "elapsed_s": 210.5
+  }
+}

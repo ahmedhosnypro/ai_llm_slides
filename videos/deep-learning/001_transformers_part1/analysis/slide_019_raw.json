@@ -1,0 +1,220 @@
+{
+  "slide_title": "Encoder \u2013 Decoder Transformer",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "19 (slide number in yellow circle, top right)",
+      "Normalization Layer (legend box 1)",
+      "Feed Forward Layer (legend box 2)",
+      "Residual Connections (legend box 3)",
+      "Scaled Dot-Product Attention (red italic label, left column, on two lines)",
+      "Multi-Head Attention (red italic label, center column)",
+      "MatMul (small diagram, top box)",
+      "SoftMax (small diagram)",
+      "Mask (opt.) (small diagram)",
+      "Scale (small diagram)",
+      "MatMul (small diagram, lower box)",
+      "Q (red circle, small diagram)",
+      "K (blue circle, small diagram)",
+      "V (blue circle, small diagram)",
+      "Linear (large diagram, top box)",
+      "Concat (large diagram)",
+      "Scaled Dot-Product Attention (large mauve box in center diagram)",
+      "h (annotation beside stacked attention copies, with cursor arrow)",
+      "Linear (large diagram, bottom-left box)",
+      "Linear (large diagram, bottom-middle box)",
+      "Linear (large diagram, bottom-right box)",
+      "V (blue circle, large diagram)",
+      "K (blue circle, large diagram)",
+      "q (red circle, large diagram, lowercase)",
+      "Encoder (red italic, top-left of architecture diagram)",
+      "Decoder (red italic, top-right of architecture diagram)",
+      "Output Probabilities (top of decoder)",
+      "Softmax (decoder box)",
+      "Linear (decoder box)",
+      "Add & Norm (\u00d75: two in encoder stack, three in decoder stack)",
+      "Feed Forward (\u00d72: one in encoder, one in decoder)",
+      "Multi-Head Attention (\u00d72 in architecture: encoder block and decoder cross-attention block)",
+      "Masked Multi-Head Attention (decoder bottom block)",
+      "N x (gray annotation, right of encoder stack, meaning repeated N times)",
+      "Positional Encoding (label left of encoder bottom)",
+      "Input Embedding (brown box, encoder bottom)",
+      "Positional Encoding (label right of decoder bottom)",
+      "Output Embedding (brown box, decoder bottom)",
+      "Inputs (bottom of encoder, with red up arrow)",
+      "Outputs (shifted right) (bottom of decoder, with red up arrow)",
+      "V, K, Q (circle labels under encoder Multi-Head Attention; V green [?], K blue, Q red)",
+      "V, K, Q (circle labels under decoder Multi-Head Attention; V blue [?], K blue, Q red)",
+      "V, K, Q (circle labels under decoder Masked Multi-Head Attention; V green [?], K blue, Q red)",
+      "mouse cursor arrows \u00d72 (screen-capture artifacts: one at right edge of small diagram, one near the 'h' annotation)"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Thin red rectangular frame insets the whole slide. Title centered at top. Slide-number badge top-right. Upper-left-center holds a stack of three color-coded legend boxes. Left column: red italic label 'Scaled Dot-Product Attention' above a small green-bordered vertical flowchart. Center column: red italic label 'Multi-Head Attention' above a larger green-bordered vertical flowchart. Right ~40% of slide: full encoder-decoder architecture diagram (green border) spanning nearly full height. Thin curved leader lines run from the legend boxes and labels to matching blocks in the architecture; red dashed 'zoom' lines connect the small diagram to the large diagram and the large diagram to the architecture's attention blocks.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~15-85% width, ~6-14% height",
+        "content": "'Encoder \u2013 Decoder Transformer' in large bold red text"
+      },
+      {
+        "name": "Slide number",
+        "position": "top right, ~90-97% width, ~8-16% height",
+        "content": "yellow circle containing '19'"
+      },
+      {
+        "name": "Legend stack",
+        "position": "upper left-center, ~15-52% width, ~17-38% height",
+        "content": "three stacked rounded boxes: Normalization Layer (blue), Feed Forward Layer (gray), Residual Connections (green)"
+      },
+      {
+        "name": "Scaled Dot-Product Attention panel",
+        "position": "left, ~4-20% width, ~42-93% height",
+        "content": "red italic two-line label above a small vertical flowchart (MatMul/SoftMax/Mask (opt.)/Scale/MatMul over Q,K,V circles) inside a green border"
+      },
+      {
+        "name": "Multi-Head Attention panel",
+        "position": "center, ~29-55% width, ~40-96% height",
+        "content": "red italic label above a larger vertical flowchart (Linear / Concat / stacked Scaled Dot-Product Attention blocks with 'h' / three Linear boxes over V,K,q circles) inside a green border"
+      },
+      {
+        "name": "Architecture diagram",
+        "position": "right, ~58-96% width, ~18-98% height",
+        "content": "full Transformer encoder-decoder diagram: peach encoder panel and green decoder panel, embedding/positional-encoding inputs at bottom, stacked attention and feed-forward blocks, softmax output at top, yellow highlight on the cross-attention connection, red dashed curved arrow on the right edge"
+      }
+    ],
+    "hierarchy": "Title dominates by size/weight (largest, bold, red). The right-hand architecture diagram dominates by area. The center Multi-Head Attention diagram is next; the small Scaled Dot-Product Attention diagram and the three legend boxes are smallest. Red is the recurring emphasis color (title, labels, arrows, key block borders); green borders group the three diagrams."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "Scaled Dot-Product Attention (small, left). Vertical pipeline inside a green rounded border. Bottom: three circles Q (red), K (blue), V (blue). Arrows from Q and K converge up into 'MatMul' (lavender box); arrow up to 'Scale' (light green); up to 'Mask (opt.)' (pink); up to 'SoftMax' (light green); up to a second 'MatMul' (lavender) at top. V sends a long straight arrow up the right side directly into the top MatMul. Thin black arrows; a mouse cursor overlaps the right border.",
+      "colors": [
+        "#38761D",
+        "#CCCCFF",
+        "#D9EAD3",
+        "#F4CCCC",
+        "#CC0000",
+        "#0033CC",
+        "#000000"
+      ],
+      "position": "left column, middle-to-bottom"
+    },
+    {
+      "type": "flowchart",
+      "description": "Multi-Head Attention (large, center). Vertical pipeline inside a green border. Bottom: three circles V (blue), K (blue), q (red), each feeding up into its own white 'Linear' box (three side by side). Each Linear feeds a stack of ~4 offset copies of a mauve box labeled 'Scaled Dot-Product Attention' with a thick red border (stacking conveys h parallel heads); annotation 'h' with a cursor arrow sits at the right of the stack. Stack outputs converge into 'Concat' (light yellow box), then up into a single white 'Linear' box at top. Red dashed lines connect this panel to the small left diagram and to the attention blocks in the right-hand architecture.",
+      "colors": [
+        "#38761D",
+        "#CC99CC",
+        "#C00000",
+        "#FFF2CC",
+        "#FFFFFF",
+        "#0033CC",
+        "#CC0000",
+        "#000000"
+      ],
+      "position": "center column, middle-to-bottom"
+    },
+    {
+      "type": "diagram",
+      "description": "Encoder\u2013Decoder Transformer architecture (right). Bounded by a thick green rectangle; left panel light peach = Encoder, right panel light green = Decoder. Encoder bottom-to-top: red block up-arrow labeled 'Inputs' \u2192 brown 'Input Embedding' box; to its left a 'Positional Encoding' label with an icon of two circles containing sine waves, joined via a \u2295 (circle-plus) node into the embedding output; then 'Multi-Head Attention' (orange, thick red border) with V/K/Q circles beneath and 'Add & Norm' (orange) above, plus a curved residual bypass arrow on the left; then 'Feed Forward' (gray) with 'Add & Norm' above and residual bypass; gray 'N x' annotation at the right of the stack. Decoder bottom-to-top: red block up-arrow labeled 'Outputs (shifted right)' \u2192 brown 'Output Embedding'; 'Positional Encoding' label with sine-circle icon on the right joined via \u2295; 'Masked Multi-Head Attention' (purple, thick red border) with V/K/Q circles and 'Add & Norm' above + residual; 'Multi-Head Attention' (orange, thick red border) with V/K/Q circles and 'Add & Norm' above + residual \u2014 its K and V inputs come from the encoder output, and this cross-connection is emphasized by a semi-transparent yellow rectangle; 'Feed Forward' (gray) with 'Add & Norm' above + residual; then 'Linear' (green) \u2192 'Softmax' (green) \u2192 red block up-arrow to the label 'Output Probabilities' at top. Red italic labels 'Encoder' (top-left) and 'Decoder' (top-right). A large red dashed curved arrow sweeps from the 'Decoder' label down the right edge to 'Outputs (shifted right)'. Thin curved leader lines enter this diagram from the three legend boxes and from the red 'Multi-Head Attention' label on the left half of the slide.",
+      "colors": [
+        "#38761D",
+        "#FCE5CD",
+        "#D9EAD3",
+        "#F6B26B",
+        "#C00000",
+        "#BDBDBD",
+        "#CC99FF",
+        "#A0522D",
+        "#CC0000",
+        "#0033CC",
+        "#6AA84F",
+        "#FFFF00",
+        "#666666"
+      ],
+      "position": "right ~40% of slide, nearly full height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Semi-transparent yellow rectangle highlighting the encoder-output \u2192 decoder Multi-Head Attention (cross-attention K/V) connection region.",
+      "colors": [
+        "#FFFF00"
+      ],
+      "position": "upper-middle of the architecture diagram, straddling encoder/decoder panels"
+    },
+    {
+      "type": "arrow",
+      "description": "Three solid red block up-arrows (below 'Inputs', below 'Outputs (shifted right)', and above 'Softmax' toward 'Output Probabilities'); one large red dashed curved arrow along the right edge; red dashed straight zoom lines linking the two left diagrams to the architecture; thin dark curved leader lines from legend boxes to matching blocks.",
+      "colors": [
+        "#C00000",
+        "#333333"
+      ],
+      "position": "throughout, as described"
+    },
+    {
+      "type": "icon",
+      "description": "Positional-encoding icons: two small overlapping circles containing sinusoidal wave curves, drawn in brown, placed beside each 'Positional Encoding' label and connected to a \u2295 join node.",
+      "colors": [
+        "#8B4513"
+      ],
+      "position": "bottom-left of encoder panel and bottom-right of decoder panel"
+    },
+    {
+      "type": "other",
+      "description": "Legend boxes: three rounded rectangles with colored fills and bold colored text acting as a color key for the architecture (blue = Normalization Layer, gray = Feed Forward Layer, green = Residual Connections).",
+      "colors": [
+        "#CFE2F3",
+        "#1155CC",
+        "#BFBFBF",
+        "#000000",
+        "#D9EAD3",
+        "#38761D"
+      ],
+      "position": "upper left-center"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; the only pictorial elements are the two small sine-wave positional-encoding circle icons (hand-drawn style, brown) and two captured mouse-cursor arrows (screen-recording artifacts, one at the small diagram's right edge, one near the 'h' annotation)."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#C00000",
+      "#38761D",
+      "#1155CC",
+      "#FFD966",
+      "#FFFF00",
+      "#F6B26B",
+      "#CC99FF",
+      "#A0522D",
+      "#BDBDBD",
+      "#CCCCFF",
+      "#F4CCCC",
+      "#FFF2CC",
+      "#FCE5CD",
+      "#D9EAD3",
+      "#666666"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Calibri-like). Title: very large, bold, red. Legend and red diagram labels: bold (labels also bold italic), noticeably smaller than title. Diagram block text: small (~8-10pt), regular weight, black. Slide number: small, dark red on yellow. No all-caps styling except natural capitalization; 'Multi-Head Attention' and 'Scaled Dot-Product Attention' labels are italic red; 'q' in the center diagram is lowercase while other Q/K/V labels are uppercase.",
+  "animation_state": "Slide appears fully built (all legend boxes, both left diagrams, and the full architecture are visible simultaneously). Two mouse cursors are frozen in the frame from screen capture; no mid-build reveal detected.",
+  "recreation_brief": "1. Set slide background to white and draw a thin red (#C00000) rectangle border inset ~2% from all edges. 2. Add title text box top-center: 'Encoder \u2013 Decoder Transformer', bold sans-serif ~36pt, color #C00000. 3. Top-right: yellow (#FFD966) circle (~0.5in) containing '19' in dark red ~14pt. 4. Build the legend stack upper-left-center as three rounded rectangles: (a) fill #CFE2F3, bold blue #1155CC text 'Normalization Layer'; (b) fill #BFBFBF, bold black text 'Feed Forward Layer'; (c) fill #D9EAD3, bold green #38761D text 'Residual Connections'. 5. Left column: red bold-italic two-line label 'Scaled Dot-Product Attention'; below it draw a green (#38761D) bordered panel with a vertical flowchart: bottom circles Q (#CC0000), K (#0033CC), V (#0033CC); Q+K arrows into 'MatMul' (#CCCCFF) \u2192 'Scale' (#D9EAD3) \u2192 'Mask (opt.)' (#F4CCCC) \u2192 'SoftMax' (#D9EAD3) \u2192 'MatMul' (#CCCCFF); V bypasses via a long arrow into the top MatMul; thin black arrows, ~9pt text. 6. Center column: red bold-italic label 'Multi-Head Attention'; below it a larger green-bordered panel: bottom circles V (#0033CC), K (#0033CC), q (#CC0000) \u2192 three white 'Linear' boxes \u2192 a stack of 4 offset copies of a mauve (#CC99CC) box with thick red border labeled 'Scaled Dot-Product Attention', with annotation 'h' at right \u2192 'Concat' (#FFF2CC) \u2192 single white 'Linear' at top. 7. Right 40%: draw a thick green-bordered rectangle split into a peach (#FCE5CD) encoder panel and light-green (#D9EAD3) decoder panel. Encoder bottom-up: red block arrow + 'Inputs' \u2192 brown (#A0522D) 'Input Embedding'; left of it 'Positional Encoding' label + sine-circle icon joined by \u2295; 'Multi-Head Attention' (#F6B26B, red border) with V/K/Q circles \u2192 'Add & Norm' (#F6B26B) with residual bypass curve \u2192 'Feed Forward' (#BDBDBD) \u2192 'Add & Norm' with residual bypass; gray 'N x' at right. Decoder bottom-up: red block arrow + 'Outputs (shifted right)' \u2192 'Output Embedding' (brown) with 'Positional Encoding' + sine icon on right joined by \u2295 \u2192 'Masked Multi-Head Attention' (#CC99FF, red border) with V/K/Q circles \u2192 'Add & Norm' + residual \u2192 'Multi-Head Attention' (#F6B26B, red border) with V/K/Q circles \u2192 'Add & Norm' + residual \u2192 'Feed Forward' (#BDBDBD) \u2192 'Add & Norm' + residual \u2192 'Linear' (green) \u2192 'Softmax' (green) \u2192 red block arrow \u2192 'Output Probabilities'. Add red italic 'Encoder' and 'Decoder' labels at the top corners of the panels. 8. Overlay a semi-transparent yellow (#FFFF00, ~40% transparency) rectangle over the encoder-output \u2192 decoder 'Multi-Head Attention' K/V connection. 9. Draw a large red dashed curved arrow from the 'Decoder' label down the right edge to 'Outputs (shifted right)'. 10. Draw thin dark curved leader lines: from 'Normalization Layer' to all five 'Add & Norm' blocks; from 'Feed Forward Layer' to both 'Feed Forward' blocks; from 'Residual Connections' to the residual bypass curves; from the red 'Multi-Head Attention' label to the architecture's attention blocks. 11. Draw red dashed zoom lines: small SDA panel \u2194 large MHA panel, and large MHA panel \u2194 the MHA blocks in the architecture. 12. Use one sans-serif family throughout; title bold ~36pt, labels bold italic ~14-16pt, diagram text ~8-10pt.",
+  "_meta": {
+    "frame": "slide_019.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 19,
+      "image": "slide_019.jpg",
+      "kept_frame": "frame_01454.jpg",
+      "start_sec": 1354.0,
+      "end_sec": 1453.0,
+      "frame_count": 100
+    },
+    "elapsed_s": 511.1
+  }
+}

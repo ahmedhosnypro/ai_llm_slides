@@ -1,0 +1,37 @@
+## Element-by-element comparison (both crops: 266Ã1474, x5 zoom of x[84,148] y[173,527], rotated 90Â° CCW)
+
+**1. Stamp text content (verbatim)**
+- IMG1 (recreation): reads bottom-to-top `706.03762v5  [cs.CL]  6 Dec 2017` â leading `arXiv:1` cropped at the bottom edge, per the stated design artifact present in BOTH images. â
+- IMG2 (original): identical string, identical cropping of the leading `arXiv:1`. â
+- No missing or extra characters; digit forms, bracket glyphs, and the double-space before `[cs.CL]` are reproduced.
+
+**2. Ink extents**
+- IMG1 ink span (36,0)â(265,1467) vs IMG2 (34,0)â(265,1471): a 2 px left-edge and 4 px bottom-edge delta at 5Ã zoom = â¤0.8 px at native render scale. Below any meaningful threshold â not a defect.
+
+**3. Tan highlight box behind "6 Dec 2017"**
+- Present in both, same peach/tan fill (~#F8CEA8 / #F5CBA7 range), same width band covering the full date segment including both flanking margins.
+- **Minor:** vertical distribution of the date text inside the highlight differs slightly. In IMG2 the highlight has a noticeably larger empty margin above "2017" and a tighter margin below the "6"; in IMG1 the text sits more nearly centered in the box. This is a vertical-centering nuance per rule (2), but it is a small offset (a few native pixels) and does not cause collision, clipping, or delimiter issues. Severity: **MINOR**, confidence: medium.
+
+**4. Baseline/spacing along the strip**
+- Gap between `â¦v5` and `[cs.CL]`, gap between `]` and `6 Dec 2017`, and inter-character spacing within each segment visually match. No stretch, compression, or re-wrapping of the rotated line.
+- Character rotation orientation (90Â° CCW, reading bottom-to-top) matches exactly.
+
+**5. Frame containment**
+- The stamp ink runs to the crop edge in both images identically (the designed crop of `arXiv:1`); no ink crosses the red frame line on the left in either image. The red inner-frame rule sits to the left of all stamp ink in both. â (Frame weight difference, if any, is house chrome under rule (a) and not scored.)
+
+**6. Missing elements**
+- None. Every element visible in IMG2 (stamp text, highlight box, frame rule) is present in IMG1.
+
+**7. Colors**
+- Gray stamp ink (~#8C8C8Câ#999), tan highlight (~#F6CDA5), red frame rule â all match within approximation tolerance.
+
+## Discrepancy list
+| # | Item | Severity | Confidence |
+|---|------|----------|------------|
+| 1 | Date text slightly more top-biased in original's highlight box vs. near-centered in recreation | MINOR | Medium |
+| 2 | Ink-span delta (2â4 px at 5Ã zoom) | Negligible / not a defect | High |
+
+## Visual-quality defects in the recreation
+- None observed: no clipping beyond the designed crop, no collisions, no illegible glyphs, no wrapping errors.
+
+FINAL VERDICT: **PASS** for 'faithful, usable recreation'.

@@ -1,0 +1,55 @@
+# Fidelity Check â Slide 028 (Self Attention, Not Sensitive to Words Order)
+
+## Element-by-element comparison
+
+**Title block**
+- Title "Self Attention Mechanism (Not Sensitive to Words Order)" â verbatim match, yellow highlight on the parenthetical matches. â
+- Subtitle "(Self Attention of word Xâ w.r.t All words in Sentence ( Xâ, Xâ, Xâ, Xâ )" â verbatim, red X tokens with subscripts match, line break matches. â
+- Slide badge "28" â present (house chrome, not scored). â
+
+**Left token stack (green dashed box)**
+- 4 token blocks, each yellow + pink(X) + lavender cell, green dashed enclosure â structure and colors match. Row order XââXâ top-to-bottom reads consistently with the original's stack and with the bottom strip sequence; no clear ordering conflict resolvable at video resolution. â
+
+**Dot Product region**
+- Gray box, "Dot Product" two-line brown label, "Similarity" yellow oval â match. â
+- Four horizontal red lines with blue dots â present. â
+- **DISCREPANCY 1 (MAJOR, confidence ~80%):** The original shows red diagonal connector arrows in this region â the dots on the upper rows are linked by red diagonal lines converging down toward the lower dot (the fan-in showing similarity accumulation onto the attended word's row). The recreation renders the four blue dots in isolation with **no diagonal connectors**. This is a missing visual element, not a styling difference.
+- Red vertical arrow from the bottom-strip highlighted Xâ token up into the Dot Product box â present in both. â
+
+**Softmax column**
+- Pink vertical box, purple rotated "Soft max" label, "Probabilities" oval, incoming arrows â match. â
+
+**Weighting / Î£ region**
+- Wââ, Wââ, Wââ, Wââ blue labels in correct top-to-bottom order â match. â
+- Four multiply nodes at the same diagonal stagger, fed by double-headed horizontal arrows from softmax and from the right token stack â present in both. **MINOR (confidence ~85%):** glyph mismatch â original uses a star-in-circle (â) node; recreation uses a circled-X (â). Same semantic node, different symbol.
+- Four vertical red arrows from the multiply nodes up to the Î£ bar â match. â
+- Î£ box (light cyan, large Î£), "Weighted SUM" oval, thick green arrow, Y output block with green cells â all match in position and styling. â
+
+**Right token stack** â 4 blocks in dashed green box, structure/colors match. â
+
+**Bottom strip**
+- Token sequence Xâ, Xâ (highlighted, magenta dashed), Xâ, Xâ â verbatim match in both order and highlight. â
+- Thick red pointer arrow beneath the highlighted token â match. â
+- Gray dashed curved connectors: left stack â strip, strip â right stack â both present. â
+
+**Callouts**
+- "Sequential nature of the input is IGNORED" green dashed rounded box, green italic text â verbatim, correctly positioned right-of-center. â
+- "Mitigated Later with / Positional Encoder" (red line 1, blue italic line 2) â verbatim and colors match. **DISCREPANCY 2 (MAJOR, confidence ~60%):** in the recreation this box's right edge appears to extend past the beige inner panel's right boundary (~x 1805 in the render), so a sliver of the box sits on the outer gray background; in the original the box sits fully inside the beige panel. If the panel edge is where it appears, this is a frame-containment overflow.
+- **Video artifact (correctly omitted):** mouse cursor near the Wââ row in the original â per ground rule (c), not a discrepancy.
+
+**No equation content on this slide**, so rule (e) does not apply.
+
+## Discrepancy summary
+
+| # | Issue | Severity | Confidence |
+|---|-------|----------|------------|
+| 1 | Missing red diagonal fan-in connector arrows in the Dot Product region (dots rendered isolated) | MAJOR | ~80% |
+| 2 | "Mitigated Later with Positional Encoder" box appears to cross the beige inner panel's right edge | MAJOR | ~60% |
+| 3 | Multiply-node glyph â (recreation) vs â (original) | MINOR | ~85% |
+
+## Visual-quality defects in the recreation
+- No text overflow, clipping, wrapping errors, collisions, or illegibility observed. Vertical centering inside token cells, ovals, and callout boxes is correct; inter-line spacing in the two-line title block and the "Dot Product" label matches the original's proportions.
+
+## FINAL VERDICT: FAIL for 'faithful, usable recreation'
+
+The layout, text, and the large majority of the diagram reproduce the original faithfully, but the Dot Product region is missing its diagonal connector arrows entirely (MAJOR missing element), and the bottom-right callout likely breaches the beige panel boundary (MAJOR containment). Both are correctable; with those two fixes this slide would pass.

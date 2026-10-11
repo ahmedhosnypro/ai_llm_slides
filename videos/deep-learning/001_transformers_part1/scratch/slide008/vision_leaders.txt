@@ -1,0 +1,38 @@
+# Visual QA Report â Slide 008, delta crop C (encoder diagram, callout leader lines)
+
+**Image nature:** 3Ã Lanczos upscale of a 305Ã85 px crop (shown at ~915Ã255 px). Content is soft/blurry with mild ringing around dark lines on light backgrounds â consistent with the stated zoom, not a content defect.
+
+---
+
+## 1. Verbatim text transcription
+
+| Location | Text |
+|---|---|
+| Main callout box (top center), line 1 | `Wait` â bold dark-blue, **underlined** |
+| Main callout box (top center), line 2 | `Till Processing Xâ` â bold dark-blue, "X" carries a true subscript "2" |
+| Label above first (left) arrow | `hâ` â smaller, gray-brown, serif-style, with subscript "1" |
+| Label above second (right) arrow | `hâ` â same style, subscript "2" |
+
+- All text is English; no digits other than the subscripts 1 and 2; no punctuation marks.
+- The partially visible cyan box at the top-left edge contains **no legible text** â its text area lies entirely outside the crop.
+- No other strings appear anywhere in the crop.
+
+## 2. Layout
+
+- **LEFT edge:** (a) the clipped right portion of a second light-cyan callout box (blue border, cyan fill) at top-left, ~top quarter of the frame; (b) a thin dark-blue elbow leader line descending from its lower-right area; (c) at bottom, a single tan/outlined cell of the diagram row, clipped by the left edge.
+- **TOP edge:** the main callout box ("Wait / Till Processing Xâ"), fully visible with blue border, spanning roughly the left-center third. A thin blue leader line enters through the top edge right of the box (its source shape is above/outside the crop). White background elsewhere.
+- **RIGHT edge:** (a) a narrow bright-yellow vertical strip at the very top-right corner, clipped â identity indeterminate (could be the edge of another callout/shape); (b) a long straight thin blue leader line descending toward the diagram; (c) a dark-red filled dot at the right end of the cell row, with a red curve/line running from it up-right, clipped by the right edge.
+- **BOTTOM edge:** a wide light-peach/orange rounded band spanning nearly the full width (thin white strip below it), containing a left-to-right sequence: [partial cell] â rightward arrow labeled **hâ** â a group of **4 adjacent tan cells** (brown outlines) â rightward arrow labeled **hâ** â a second group of **4 tan cells** â the red dot.
+
+## 3. Leader-line traces (per the view request)
+
+1. **Line A (left):** originates at the lower-right of the clipped left cyan box â short diagonal down-right â bends to a near-vertical drop â terminates in the whitespace just above the cell row, essentially over the **hâ label / left end of the first arrow**. It does not visibly touch any cell or arrow outline.
+2. **Line B (from main box):** originates at the bottom-right corner of the "Wait / Till Processing Xâ" box â short diagonal down-right â elbow â straight vertical drop â terminates just above and slightly right of the **hâ label**, over the start of the second arrow (right end of the first 4-cell group).
+3. **Line C (from top):** enters clipped at the top edge (source callout outside the crop) â long, straight diagonal down-right, crossing the band's top border about two-thirds across â terminates at the **top-right corner of the rightmost cell group** (last cell of the right-hand 4-cell block).
+
+## 4. Defects / anomalies
+
+- **Clipping (crop-related, all four edges):** left callout box's text is outside the frame; leftmost diagram cell is cut; Line C's origin shape is missing; the yellow top-right strip and the red curve are cut by the right edge. These are consequences of the crop, not slide errors, but the left box's content and Line C's source **cannot be verified** from this view.
+- **No** garbage/placeholder strings, no overlapping text, no wrong-language text detected.
+- Subscripts (Xâ, hâ, hâ) render correctly; the underline on "Wait" is intact.
+- Minor upsample blur/ringing only; no pixelation blocks or banding artifacts.

@@ -1,0 +1,46 @@
+[info] context header injected: VIEW: Slide 030 self-check crop: title line 1 band with yellow highlight — recreation crop vs original frame crop | CAPTURE: IMG1=LibreOffice 150dpi render crop; IMG2=original lecture frame crop (same region, same scale)
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 1002388
+[info] videos/deep-learning/001_transformers_part1/scratch/slide030/crop_title_render.png, videos/deep-learning/001_transformers_part1/scratch/slide030/crop_title_orig.png: transcript written (validated winner, atomic): videos/deep-learning/001_transformers_part1/recreated_pptx/qa/slide030/crop_title_check.txt (pid 1002388)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== videos/deep-learning/001_transformers_part1/scratch/slide030/crop_title_render.png, videos/deep-learning/001_transformers_part1/scratch/slide030/crop_title_orig.png ===
+[winner] images (round 1, attempt 1)
+# Visual QA Comparison â Slide 030 Title Band Crop
+
+## 1. Verbatim Transcription
+
+**IMG1 (LibreOffice recreation, 150 dpi render):**
+- Title line: `Self Attention Mechanism (Input Word plays Different Roles)` â text in black; `(Input Word plays Different Roles)` sits on a solid yellow highlight, parentheses included.
+- Bottom edge: a single clipped red capital glyph at far left (possibly "D" â illegible), followed by clipped dark letter tops (illegible).
+- Full-width dark red/maroon rule visible across the very top.
+
+**IMG2 (original lecture frame):**
+- Title line: `Self Attention Mechanism (Input Word plays Different Roles)` â text in dark navy/blue; `(Input Word plays Different Roles)` in blue on a yellow highlight, parentheses included.
+- Bottom edge: clipped top halves of a second line, predominantly red glyphs at several positions, possibly with some blue segments (illegible due to clipping).
+- The maroon rule is absent or reduced to a hairline sliver at the extreme top edge.
+
+## 2. Similarities
+
+- **Purpose/content:** Both show the same title band with identical wording, capitalization, and parentheses.
+- **Layout:** Same region â horizontal rule (or its position) at top, bold centered title line, and the next line partially clipped at the bottom at roughly the same height.
+- **Typography:** Both use a bold sans-serif face of near-identical size; letterforms and word spacing match closely (within a few pixels of horizontal extent).
+- **Highlight styling:** Yellow highlight covers exactly the parenthetical `(Input Word plays Different Roles)`, including both parentheses, in both images.
+
+## 3. Differences
+
+| Aspect | IMG1 (recreation) | IMG2 (original) |
+|---|---|---|
+| Title text color | Black | Dark navy/blue (both highlighted and unhighlighted portions) |
+| Second-line fragment | Mostly dark letters; only one red leading glyph | Red coloring at multiple positions across the fragment |
+| Top red rule | Fully visible, full thickness | Absent or only a hairline sliver â indicates a small vertical offset (a few pixels) between the two crops |
+| Background | Pure white | Cream/off-white (video-compression tint) |
+| Highlight tone | Saturated pure yellow | Slightly duller/darker yellow |
+| Sharpness | Crisp, clean anti-aliasing | Softer, with JPEG blur and mild color fringing at highlight edges |
+
+- **Defects unique to IMG1:** text-color mismatch (black vs. navy), second-line fragment largely black instead of red, and the vertical shift that fully reveals the rule.
+- **Defects unique to IMG2:** compression softness/artifacts only â no clipping, overlap, placeholders, or garbage strings in either image. The bottom-line wording is illegible in both.
+
+## 4. Verdict
+
+**IMG2 (original) is the better/fidelity-correct image.** Although IMG1 is noticeably sharper and cleaner, this is a recreation self-check, and IMG1 fails on concrete fidelity points: the title renders **black** where the original is clearly **navy/blue**, the clipped second line is mostly **dark** where the original shows **red**, and the crop alignment is off by a few pixels (full red rule visible vs. sliver). IMG2 exhibits the correct text coloring, highlight placement, and band structure; IMG1 matches layout and wording but needs its text colors and vertical positioning corrected before it can pass.
+

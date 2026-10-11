@@ -1,0 +1,216 @@
+{
+  "slide_title": "Self Attention Mechanism (Linear Transformation of Inputs)",
+  "subtitle_or_header": "(Self Attention of word X\u2082 w.r.t All words in Sentence (X\u2081, X\u2082, X\u2083, X\u2084)",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "8 (slide number, inside yellow circle, top-right)",
+      "Similarity (white chip above Dot Product box)",
+      "Dot Product (two lines: 'Dot' / 'Product', inside gray box)",
+      "K.q (red text at top-right of Dot Product box)",
+      "K\u2084 (key strip label, top row)",
+      "K\u2083 (key strip label)",
+      "K\u2082 (key strip label)",
+      "K\u2081 (key strip label, bottom row)",
+      "W_k^(0) (green box label, appears 4\u00d7, once per key path; superscript is tiny, best read as (0))",
+      "q\u2082 (query label, bottom-center)",
+      "W_q^(0) (purple box label; superscript tiny, best read as (0))",
+      "Probabilities (white chip above Soft max box)",
+      "Soft max (vertical text inside lavender column)",
+      "\u03a3 (large red symbol inside light-blue box)",
+      "Weighted SUM (white chip above/right of \u03a3 box)",
+      "V\u2084 (value strip label, top row)",
+      "V\u2083 (value strip label)",
+      "V\u2082 (value strip label)",
+      "V\u2081 (value strip label, bottom row)",
+      "W_v^(0) (blue box label, appears 4\u00d7, once per value path; superscript tiny, best read as (0))",
+      "X\u2084 (left input container, top row)",
+      "X\u2083 (left input container)",
+      "X\u2082 (left input container)",
+      "X\u2081 (left input container, bottom row)",
+      "X\u2081 (bottom sentence row, leftmost)",
+      "X\u2082 (bottom sentence row, highlighted magenta)",
+      "X\u2083 (bottom sentence row)",
+      "X\u2084 (bottom sentence row, rightmost)",
+      "X\u2084 (right input container, top row)",
+      "X\u2083 (right input container)",
+      "X\u2082 (right input container)",
+      "X\u2081 (right input container, bottom row)",
+      "Y (green bold label on output strip, top)",
+      "1\u00d7d (legend, input dimension)",
+      "W (legend, yellow square)",
+      "= (legend, red)",
+      "d\u00d7d (legend, beneath W)",
+      "1\u00d7d (legend, output dimension)",
+      "d: Embedding Length (red bold caption inside legend box)"
+    ],
+    "equations": [
+      "K.q (dot product of each key K\u1d62 with query q\u2082, producing similarity scores)",
+      "Soft max (softmax normalization of the 4 similarity scores into probabilities)",
+      "\u03a3 (weighted sum of probability \u00d7 V\u1d62 terms)",
+      "1\u00d7d \u00b7 W(d\u00d7d) = 1\u00d7d (legend: a 1\u00d7d vector times a d\u00d7d weight matrix W yields a 1\u00d7d vector)",
+      "d: Embedding Length"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top with slide-number circle '8' at top-right; bold subtitle line beneath the title; one large diagram panel (peach fill, red border) fills the rest of the slide. Inside the panel the dataflow runs left to right: left column = input embeddings (green dashed container) feeding green W_k boxes producing key strips K\u2084\u2013K\u2081 into a gray 'Dot Product' box; bottom-center = query path (sentence row X\u2081\u2013X\u2084 with X\u2082 highlighted magenta \u2192 purple W_q box \u2192 q\u2082) with a large translucent blue annotation circle; center = tall lavender 'Soft max' column with 'Probabilities' chip above; right-of-center = four red \u2297 multiply nodes combining softmax outputs with value strips V\u2084\u2013V\u2081 produced by blue W_v boxes from a right-side green dashed embedding container; top-center = light-blue \u03a3 box with 'Weighted SUM' chip emitting (thick green arrow) a green-bordered output strip labeled Y; bottom-right = green dashed legend box explaining W dimensions.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, x 20\u201380%, y 6\u201313%",
+        "content": "'Self Attention Mechanism (Linear Transformation of Inputs)' \u2014 black bold with blue parenthetical"
+      },
+      {
+        "name": "Subtitle",
+        "position": "top center, x 15\u201385%, y 13\u201319%",
+        "content": "'(Self Attention of word X\u2082 w.r.t All words in Sentence (X\u2081, X\u2082, X\u2083, X\u2084)' \u2014 black bold, X symbols red"
+      },
+      {
+        "name": "Slide number",
+        "position": "top right, x 88\u201393%, y 8\u201316%",
+        "content": "'8' in yellow circle with red outline"
+      },
+      {
+        "name": "Diagram panel",
+        "position": "middle, x 6\u201394%, y 19\u201396%",
+        "content": "peach rounded panel with red border containing the entire self-attention flow diagram"
+      },
+      {
+        "name": "Key path (left)",
+        "position": "left, x 7\u201339%, y 27\u201370%",
+        "content": "green dashed container with strips X\u2084,X\u2083,X\u2082,X\u2081; green W_k^(0) boxes; key strips K\u2084,K\u2083,K\u2082,K\u2081; white 'Similarity' chip; gray 'Dot Product' box with 4 blue dots; red 'K.q' label"
+      },
+      {
+        "name": "Query path (bottom-center)",
+        "position": "bottom center, x 19\u201351%, y 68\u201395%",
+        "content": "horizontal sentence row X\u2081,X\u2082,X\u2083,X\u2084 with X\u2082 highlighted (magenta dashed border, pink fill); thick red block arrow pointing at X\u2082; purple W_q^(0) box; q\u2082 label with small strip; large semi-transparent blue circle"
+      },
+      {
+        "name": "Softmax column (center)",
+        "position": "center, x 45\u201353%, y 27\u201370%",
+        "content": "white 'Probabilities' chip above tall lavender box with vertical text 'Soft max'"
+      },
+      {
+        "name": "Value path (right)",
+        "position": "right, x 58\u201387%, y 33\u201370%",
+        "content": "four red \u2297 multiply nodes; value strips V\u2084,V\u2083,V\u2082,V\u2081; blue W_v^(0) boxes; green dashed container with strips X\u2084,X\u2083,X\u2082,X\u2081"
+      },
+      {
+        "name": "Summation and output (top-center)",
+        "position": "top-center of panel, x 54\u201371%, y 22\u201340%",
+        "content": "white 'Weighted SUM' chip; light-blue \u03a3 box; thick green block arrow; green-bordered output strip labeled Y"
+      },
+      {
+        "name": "Legend",
+        "position": "bottom right, x 75\u201392%, y 83\u201396%",
+        "content": "green dashed box: '1\u00d7d' strip, yellow 'W' square with 'd\u00d7d' beneath, red '=', '1\u00d7d' strip, caption 'd: Embedding Length'"
+      }
+    ],
+    "hierarchy": "The diagram panel dominates (~85% of slide area). Next in weight: the bold black/blue title, then the red-accented subtitle. Within the diagram, the largest shapes are the gray Dot Product box, the lavender Soft max column, and the blue \u03a3 box; the eye is pulled by red arrows/labels, the magenta-highlighted X\u2082, and the big translucent blue circle. Smallest elements: vector cell strips, weight-box text, chips, and legend text."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "End-to-end self-attention dataflow for query word X\u2082. LEFT: green dashed rounded container holds 4 embedding strips labeled X\u2084, X\u2083, X\u2082, X\u2081 (top\u2192bottom); each strip is a row of ~5 small squares (yellow, then a square bearing red 'X\u1d62', then pink/lavender squares). Each row arrows right into a green box 'W_k^(0)', which arrows into a small key strip labeled K\u2084/K\u2083/K\u2082/K\u2081 (yellow+pink cells, dark-red label), which arrows into a gray 'Dot Product' box containing 4 small blue dots along its right edge aligned with the incoming arrows; white rounded chip 'Similarity' sits above the box and red text 'K.q' at its top-right. BOTTOM-CENTER: horizontal green dashed container holds sentence embeddings X\u2081, X\u2082, X\u2083, X\u2084 (left\u2192right) with X\u2082 highlighted (pink fill, magenta dashed border); a thick red block arrow points up-right at X\u2082; above it a purple box 'W_q^(0)' (magenta dashed outline) produces 'q\u2082' (label plus small yellow/pink strip); dotted red lines run from q\u2082 up into the blue dots of the Dot Product box; a large semi-transparent blue circle highlights the q\u2082/W_q region and reaches up into the Dot Product box. CENTER: tall lavender rectangle with vertical text 'Soft max'; white chip 'Probabilities' above; thin red arrows carry the 4 scores from the Dot Product box into Soft max and out to 4 red \u2297 (multiply) nodes stacked vertically. RIGHT: mirror of the left \u2014 green dashed container with strips X\u2084\u2026X\u2081 feeding blue boxes 'W_v^(0)' producing value strips labeled V\u2084/V\u2083/V\u2082/V\u2081, each arming leftward into a \u2297 node. TOP: all four \u2297 outputs arrow up into a light-blue box containing a large red '\u03a3'; white chip 'Weighted SUM' above-right; a thick green block arrow points from \u03a3 up to the output: a green-bordered strip of cells labeled 'Y' (green bold). Faint green dashed curves connect the bottom sentence row around the far left and far right edges up to the left and right embedding containers (same inputs feed both K and V paths). BOTTOM-RIGHT: green dashed legend box: small strip labeled '1\u00d7d', yellow square 'W' with 'd\u00d7d' beneath it, red '=', small strip labeled '1\u00d7d'; red bold caption 'd: Embedding Length'.",
+      "colors": [
+        "#FBE2C1",
+        "#C00000",
+        "#00A651",
+        "#FFFF99",
+        "#FFCCFF",
+        "#E6B8E6",
+        "#8FBC8F",
+        "#B8D8F0",
+        "#C9A0DC",
+        "#D8BFD8",
+        "#ADD8E6",
+        "#A9A29B",
+        "#0000FF",
+        "#4169E1",
+        "#FF00FF",
+        "#CC0000",
+        "#000000",
+        "#FFFFFF"
+      ],
+      "position": "entire slide below the subtitle, x 6\u201394%, y 19\u201396%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Emphasis on the query source: the X\u2082 cell in the bottom sentence-embedding row has a magenta dashed border and brighter pink fill; the W_q^(0) box above it also carries a magenta dashed outline; a thick red block arrow points at X\u2082 from the lower-left.",
+      "colors": [
+        "#FF00FF",
+        "#FF99CC",
+        "#E00000"
+      ],
+      "position": "bottom-center of diagram, x ~28\u201335%, y ~77\u201395%"
+    },
+    {
+      "type": "other",
+      "description": "Large semi-transparent blue circle (presenter/video-annotation style) centered on q\u2082/W_q, overlapping the lower part of the Dot Product box, visually grouping the query with the keys it is compared against.",
+      "colors": [
+        "#4169E1"
+      ],
+      "position": "bottom-center, x ~23\u201339%, y ~68\u201392%"
+    },
+    {
+      "type": "arrow",
+      "description": "Two thick block arrows: red one at bottom-left pointing up-right at the highlighted X\u2082; green one at top pointing up-right from the \u03a3 box to the Y output strip. All other connectors are thin red arrows (X\u1d62\u2192W_k\u2192K\u1d62\u2192Dot Product; Dot Product\u2192Soft max; Soft max\u2192\u2297; V\u1d62\u2192\u2297; \u2297\u2192\u03a3) plus dotted red lines from q\u2082 to the blue dots inside the Dot Product box.",
+      "colors": [
+        "#E00000",
+        "#00A651",
+        "#FF0000"
+      ],
+      "position": "throughout the diagram panel"
+    },
+    {
+      "type": "other",
+      "description": "Dimension legend: green dashed rounded rectangle containing a small vector strip labeled '1\u00d7d', a yellow square labeled 'W' with 'd\u00d7d' written beneath it, a red '=' sign, and a small output strip labeled '1\u00d7d'; red bold caption 'd: Embedding Length' at the bottom of the box.",
+      "colors": [
+        "#00A651",
+        "#FFFF99",
+        "#CC0000",
+        "#000000"
+      ],
+      "position": "bottom-right corner of diagram, x ~75\u201392%, y ~83\u201396%"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; all graphics are flat vector-style schematic shapes: embedding vectors drawn as strips of small yellow/pink squares, colored weight-matrix boxes (green W_k, blue W_v, purple W_q), a gray Dot Product box with blue dots, a lavender Soft max column, a light-blue \u03a3 box, red/green arrows, dashed green containers, and a yellow slide-number circle."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#000000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000CC (blue title parenthetical)",
+      "#CC0000 (red X labels, K.q, arrows, panel border)",
+      "#00A651 (green containers, Y label, block arrow)",
+      "#FF00FF (magenta highlight of X\u2082 / W_q)",
+      "#4169E1 (translucent blue annotation circle)",
+      "#FFFF99 (yellow cells and slide-number circle)",
+      "#D8BFD8 (Soft max column)",
+      "#ADD8E6 (\u03a3 box)",
+      "#A9A29B (Dot Product box)"
+    ]
+  },
+  "typography_notes": "All sans-serif (Arial/Calibri-like). Title ~28pt bold; the parenthetical '(Linear Transformation of Inputs)' is the same size in blue. Subtitle ~18\u201320pt bold with red subscripted X symbols (X\u2081\u2013X\u2084); note the subtitle's unbalanced parentheses are verbatim. Diagram labels ~9\u201313pt; 'Dot Product' is stacked on two lines; 'Soft max' is rotated 90\u00b0 (reads bottom-to-top); \u03a3 is large and red; weight labels 'W_k^(0)', 'W_q^(0)', 'W_v^(0)' are bold with subscripts and a tiny superscript best read as (0) (possibly (1)). White rounded chips (Similarity, Probabilities, Weighted SUM) use black ~11pt text. Slide number '8' is black bold inside a yellow circle. Vector cell labels (X\u1d62, K\u1d62, V\u1d62) are red/dark-red bold with subscripts.",
+  "animation_state": "Slide appears fully built \u2014 no hidden or partially revealed bullets. The semi-transparent blue circle and the thick red block arrow look like live-video annotation overlays emphasizing the query-formation step rather than native slide build elements.",
+  "recreation_brief": "1. Slide 16:9, white background. 2. Title text box centered (y\u22486\u201313%): 'Self Attention Mechanism (Linear Transformation of Inputs)' \u2014 Arial bold 28pt; color '(Linear Transformation of Inputs)' blue #0000CC, rest black. 3. Subtitle centered beneath (y\u224813\u201319%): '(Self Attention of word X\u2082 w.r.t All words in Sentence (X\u2081, X\u2082, X\u2083, X\u2084)' \u2014 Arial bold 18pt black; render every X with red #CC0000 subscripts \u2081\u2013\u2084; keep the unbalanced parentheses exactly. 4. Top-right: oval ~0.9cm, fill #FFFFCC, outline #C00000 1.5pt, text '8' black bold 14pt. 5. Main panel: rounded rectangle x 6\u201394%, y 19\u201396%, fill #FBE2C1, line #C00000 2.5pt. 6. Left input container: rounded rect x 7\u201315%, y 39\u201370%, no fill, dashed outline #00A651 1.5pt; inside, 4 horizontal vector strips (top\u2192bottom X\u2084, X\u2083, X\u2082, X\u2081): each = 5 adjacent ~0.5cm squares, first #FFFF99, second contains red bold 'X\u1d62', rest #FFCCFF/#E6B8E6. 7. Per row add green rectangle 'W_k^(0)' (fill #8FBC8F, black bold 10pt) at x\u224817\u201322%, then a 3-cell yellow/pink strip labeled K\u2084/K\u2083/K\u2082/K\u2081 (dark red) at x\u224823\u201327%; connect X\u2192W_k\u2192K\u2192Dot Product with thin red #FF0000 arrows. 8. Dot Product box: rect x 27\u201336%, y 33\u201370%, fill #A9A29B; text 'Dot'/'Product' (two lines) dark maroon bold 12pt; place 4 small blue #0000FF dots (~0.25cm) along its right edge aligned with the K arrows; white rounded chip 'Similarity' (black 11pt) above; red bold 'K.q' at its top-right. 9. Bottom sentence row: dashed green rounded rect x 19\u201351%, y 84\u201391% containing one horizontal strip of cells labeled X\u2081, X\u2082, X\u2083, X\u2084 (red bold); give X\u2082 fill #FF99CC and dashed #FF00FF border; add thick red block arrow (#E00000) at x\u224827\u201331%, y\u224891\u201395% pointing up-right at X\u2082. 10. Query path: above X\u2082 place purple rect 'W_q^(0)' (fill #C9A0DC, dashed #FF00FF outline) at x\u224829\u201334%, y\u224877\u201384%; above it 'q\u2082' (black bold, red 2) with a small 3-cell yellow/pink strip; draw dotted red lines from q\u2082 up to each blue dot in the Dot Product box; overlay semi-transparent blue circle (fill #4169E1, ~55% transparency, no line) centered \u2248 x31%/y78%, diameter \u224816% of slide width, touching the Dot Product box. 11. Softmax: tall rect x 48\u201352%, y 33\u201370%, fill #D8BFD8, vertical text 'Soft max' (black 12pt, bottom-to-top); white chip 'Probabilities' above; red arrows Dot Product\u2192Soft max (4) and Soft max\u2192each \u2297 node. 12. Right value path (mirror of steps 6\u20137): dashed green container x 79\u201387%, y 39\u201370% with strips X\u2084\u2026X\u2081; blue rects 'W_v^(0)' (fill #B8D8F0) at x\u224872\u201377%; strips labeled V\u2084/V\u2083/V\u2082/V\u2081 (dark red) at x\u224865\u201370%; arrows from strips leftward into the \u2297 nodes. 13. Multiply nodes: 4 circles (~0.35cm) at x\u224858%, y\u224841/50/58/66%, white fill, red 1.5pt outline, red '\u00d7' inside; thin red arrow up from each to the \u03a3 box. 14. Summation/output: light-blue rect x 54\u201367%, y 35\u201340%, fill #ADD8E6, large red bold '\u03a3' (24pt) centered; white chip 'Weighted SUM' above-right (x\u224861\u201371%, y\u224828\u201332%); thick green block arrow (#00A651) from \u03a3 up to output strip at x\u224857\u201364%, y\u224822\u201326%: green-outlined strip of ~5 cells with bold green 'Y' label. 15. Legend: dashed green rounded rect x 75\u201392%, y 83\u201396%: small strip labeled '1\u00d7d' (black 9pt), yellow square 'W' (black bold) with 'd\u00d7d' beneath, red bold '=', small strip '1\u00d7d'; below inside, red bold 10pt 'd: Embedding Length'. 16. Optional fidelity detail: faint green dashed curved connectors from the bottom sentence row around the far left/right edges up to the left/right containers (shared inputs). Use Arial throughout; all diagram labels 9\u201312pt.",
+  "_meta": {
+    "frame": "slide_008.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 8,
+      "image": "slide_008.jpg",
+      "kept_frame": "frame_00097.jpg",
+      "start_sec": 96.0,
+      "end_sec": 127.0,
+      "frame_count": 32,
+      "old_slide": 8,
+      "founder_frame_swap": true,
+      "original_kept_frame": "frame_00128.jpg",
+      "note": "founder kept frame_00097.jpg (mid-group state) over the group's final kept frame"
+    },
+    "elapsed_s": 621.2
+  }
+}

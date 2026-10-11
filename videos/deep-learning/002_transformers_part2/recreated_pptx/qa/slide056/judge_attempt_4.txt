@@ -1,0 +1,41 @@
+# Element-by-Element Fidelity Check â Slide 056 "Decoder Final Output"
+
+## Ground rules applied first
+- House deep-learning chrome (white canvas, gray E9E9E7 panel, thin red C00000 frame, yellow/purple-ring badge "56" top-right) â present in IMG1, matches the mandated template. Not a discrepancy.
+- Black letterbox strip at bottom of IMG2 and the small pen/arrow cursor near "Last Decoder Block" in IMG2 â capture artifacts, correctly omitted (rule c).
+
+## Content comparison
+
+| Element | IMG2 (original) | IMG1 (recreation) | Verdict |
+|---|---|---|---|
+| Title "Decoder Final Output" (dark red, bold, centered) | Present | Present, verbatim, centered | Match |
+| Subtitle "Probability of each word in Vocab" (blue, bold) | Present, above brace | Present, verbatim, above brace | Match |
+| Red curly brace spanning top circle row, center bump | Present | Present, same span (row width), same shape style | Match |
+| "Vocab Size" label (red, bold) top-left, aligned to light-blue row | Present | Present, vertically centered on circle row | Match |
+| Top row of light-blue circles, blue outline | 16 circles | 16 circles, evenly spaced, same fill/outline | Match |
+| Upward arrows (blue) circles â Softmax | Present, short | Present, slightly longer (see minors) | Match w/ minor |
+| Red "Softmax" bar, white bold text centered | Present | Present, full-width, text vertically centered | Match |
+| Red upward arrows Softmax â magenta row | Present | Present, same count (one per column) | Match |
+| "Vocab Size" label #2 aligned to magenta row | Present | Present | Match |
+| Green box (light-green fill, green border) enclosing projection layer | Present | Present; magenta row and green circles fully contained; no ink crosses the green border except the intentional green feed-through arrows (also present in IMG2) | Match |
+| Magenta circles row | 16 | 16, same spacing, nearly touching | Match |
+| Blue fan lines magenta â green circles | Present, converge on green cluster | Present, same convergence pattern, contained in box | Match |
+| 4 green circles | Present | Present, same position/size ratio | Match |
+| "Linear Projection" (green bold, right side of box) | Present | Present, same position | Match |
+| Green arrows green circles â through box bottom â blue bar | Present | Present, same feed-through geometry | Match |
+| Blue "Last Decoder Block" bar, white bold text centered | Present | Present, text vertically centered | Match |
+| Badge "56" top-right | Yellow oval | Yellow oval, purple ring, "56" â per house chrome directive | Not a discrepancy |
+
+No missing elements. No text diffs. No frame-containment violations: all bars, boxes, rows and labels sit fully inside the red house frame; the green box contains all its ink except the deliberate arrow pass-throughs that the original also shows.
+
+## Discrepancy list
+1. **MINOR** â Vertical gaps around the Softmax bar (arrow lengths) are slightly larger in IMG1 than IMG2; the recreation is a touch more vertically airy. Confidence: high.
+2. **MINOR** â Circle diameters (light-blue and magenta rows) are marginally larger relative to slide width in IMG1, making rows slightly wider than the original's rows. Confidence: medium.
+3. **MINOR** â Blue fan-line styling: IMG1's lines are slightly more numerous/darker in the convergence zone than IMG2's finer web. Same topology, cosmetic difference only. Confidence: medium.
+
+No BLOCKER or MAJOR defects found.
+
+## Visual-quality defects in the recreation
+- None observed: no clipping, no overflow, no collisions, no misaligned labels; "Last Decoder Block" and "Softmax" text sit vertically centered in their bars; both "Vocab Size" labels align with their rows.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

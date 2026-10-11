@@ -46,6 +46,10 @@ Rules:
   videos' vision calls together through the shared localhost:17844 gateway.
 - Never write one video's artifacts into another video's directory or into the project
   root; never delete banked evidence (builds, QA transcripts, archived runs).
+- **Per-video directives:** a video namespace may carry its own `AGENTS.md` with binding
+  video-specific rules (first: `videos/deep-learning/001_transformers_part1/AGENTS.md` —
+  mandatory web-source verification for every slide's analysis). Read it before working
+  in that namespace.
 
 ## Model & Endpoint
 

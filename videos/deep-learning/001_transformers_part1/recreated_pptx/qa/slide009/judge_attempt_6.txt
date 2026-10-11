@@ -1,0 +1,39 @@
+# Fidelity Check: Slide 009 Recreation (IMG1) vs Original Lecture Frame (IMG2)
+
+## 1. Verbatim Text Transcription
+
+**IMG1 (150dpi PPTX render):**
+- Title: "Traditional RNN  Seq2Seq model" / "(Challenges)"
+- Slide number badge: "9" (yellow circle, purple ring)
+- "Decoder (RNN)" (dark red, bold italic, top right)
+- Blue callout: "[3] Very Long Sequence" / "Vanishing Gradient" (underlined)
+- Gray box: "Short Sequence:  RNN" / "Long Sequence: LSTM, GRU" / "Very Long Sequence:  FAIL"
+- Decoder panel labels: "softmax", "softmax", "softmax"; "oâ", "oâ", "oâ"; "sâ", "sâ", "sâ"
+- Encoder panel labels: "hâ", "hâ"; "embedding xâ", "embedding xâ", "embedding xâ"; "xâ", "xâ", "xâ"
+- "Back Propagation" (dark red, bold italic)
+- Gradient row: "xâ xâ xâ xâ x xâ xâ xâ xâ xââ"
+- "Encoder  (RNN)" (dark red, bold italic, bottom left)
+
+**IMG2 (original video frame):**
+- Identical text throughout: "Traditional RNN  Seq2Seq model" / "(Challenges)", badge "9", "Decoder (RNN)", "[3] Very Long Sequence / Vanishing Gradient", "Short Sequence: RNN / Long Sequence: LSTM, GRU / Very Long Sequence: FAIL", three "softmax" labels, oââoâ, sââsâ, hââhâ, "embedding xâ / xâ / xâ", xââxâ, "Back Propagation", xââxââ, "Encoder (RNN)".
+
+No language mismatches; all visible strings match verbatim (subscripts in IMG2 are blurry but consistent with IMG1).
+
+## 2. Similarities
+- **Purpose & content:** Both depict the Traditional RNN Seq2Seq challenges slide: encoder (orange panel, bottom left), decoder (yellow panel, top right), back-propagation panel (bottom right), and three annotation blocks (blue callout, gray sequence-length list, backprop strip).
+- **Layout regions:** Same quadrant arrangement â title centered top, badge "9" top-right corner, decoder upper-right, encoder lower-left, backpropagation lower-right, "Encoder (RNN)" caption bottom-left.
+- **Components:** Cell-strip RNNs in both encoder and decoder; softmax outputs oââoâ; state arrows sââsâ; embedding arrows with xââxâ inputs; red backprop arrow with large terminal dot; nabla gradient row (11 cells, sizes growing left-to-right); pink state row with red left arrows; xââxââ input row with green up-arrows; red connector from encoder's last hidden state dot to the decoder's first state cell; thin blue connector from the blue callout to the decoder; curly brace above "Back Propagation"; red inset border frame around the whole slide.
+- **Styling:** Same palette (yellow decoder, orange/peach encoder, blue callout, gray list box, dark-red accents, green text for RNN/LSTM/GRU, red for "FAIL"), same bold serif-ish title treatment, italic red panel captions.
+- **Expected deltas confirmed:** No context-vector label appears in either image; the three annotation blocks (callout, list, backprop strip) are present in both; encoder/decoder placement matches.
+
+## 3. Differences
+- **Resolution/sharpness:** IMG1 is crisp at 150dpi; IMG2 is a low-resolution compressed video frame â subscripts (oâ, sâ, xâ¦) are soft/illegible at glyph level, edges are fuzzy.
+- **Decoder panel proportions:** In IMG1 the yellow panel is taller, with longer vertical arrows to oââoâ and more vertical whitespace; IMG2's decoder is more compact.
+- **Green skip-connection curves:** In IMG1, the olive/green curve from the third softmax region crosses the bottom edge of the yellow panel (a stray diagonal segment extends below the panel near sâ/sâ); in IMG2 the curves appear contained within the panel. Minor defect in IMG1.
+- **Curly brace:** IMG1 uses a large orange-red arc with a pronounced central hump; IMG2's brace is smaller and thinner.
+- **Connector curves:** The blue line from the callout and the red curve from the encoder dot are smoother/thicker in IMG1; in IMG2 they are thin and pixelated. Arrowhead shapes differ slightly (rendering artifact).
+- **Color saturation:** IMG2 shows compression artifacts (slightly banded yellows/muted reds); IMG1 has clean flat fills.
+- **Spacing:** IMG1's gray list box and blue callout occupy slightly more vertical space, pushing the encoder panel lower relative to the decoder than in IMG2.
+
+## 4. Verdict
+**IMG1 (recreation) is better.** It reproduces the original's full content and layout faithfully â every text string, panel, arrow, and the three delta blocks are present and correctly placed â while adding the resolution the original lacks: crisp subscripted labels (sâ, embedding xâ, xââ), clean vector curves, and accurate flat colors. The original (IMG2) suffers from video compression blur that makes small labels barely legible. IMG1's only flaws are cosmetic: the green skip-connection curve clipping slightly below the yellow decoder panel and a slightly oversized backprop brace â neither affects fidelity of content.

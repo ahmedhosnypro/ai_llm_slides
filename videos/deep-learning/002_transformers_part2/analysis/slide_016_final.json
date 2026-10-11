@@ -1,0 +1,232 @@
+{
+  "slide_title": "Using FF NN for Multiplication of Multiple Vectors by Multiple Matrices",
+  "subtitle_or_header": "Usage: Multiply Vectors of All Words by Multiple (different) W\u2096 (Keys of Multiple Heads)",
+  "verbatim_text": {
+    "bullets": [
+      "Sequence of 5 Words",
+      "Network with 3 Heads",
+      "Embedding Dimension=4"
+    ],
+    "labels": [
+      "16",
+      "Embedding Vector of Word #1",
+      "Embedding Vector of Word #2",
+      "Embedding Vector of Word #3",
+      "Embedding Vector of Word #4",
+      "Embedding Vector of Word #5",
+      "X\u2081 X\u2082 X\u2083 X\u2084 (circle labels, repeated on each of the 5 embedding rows)",
+      "W\u2096 of Head 1",
+      "W\u2096 of Head 2",
+      "W\u2096 of Head 3",
+      "Corresponding Projections at Head 1",
+      "Corresponding Projections at Head 2",
+      "Corresponding Projections at Head 3",
+      "Corresponding Projection of Word #1",
+      "Corresponding Projection of Word #2",
+      "Corresponding Projection of Word #3",
+      "Corresponding Projection of Word #4",
+      "Corresponding Projection of Word #5",
+      "y\u2081 y\u2082 y\u2083 y\u2084 (circle labels, repeated on each of the 15 projection rows)",
+      "= (single large red equals sign between the matrix block and the projections block)"
+    ],
+    "equations": [
+      "= (the only printed mathematical symbol; it asserts: Output Projections = Embeddings \u00d7 W\u2096, computed once per head)",
+      "[implied, not printed] For each head h and each word i (i = 1..5): row [y\u2081 y\u2082 y\u2083 y\u2084] of Word #i = X\u1d62 (1\u00d74 embedding) \u00b7 W\u2096 of Head h (4\u00d74 matrix)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top with a circled slide number at top-right; two-tone subtitle centered beneath it. A large light rounded panel in the upper-middle holds five labeled embedding-vector rows stacked on the left and three 4x4 weight matrices (Head 1, Head 2, Head 3) side by side to their right, each with a header above; a thin red brace-like arc [?] hugs the panel's right inner edge, apparently grouping the three matrices. Below and slightly left, at the left edge of the lower panel, sits a large red equals sign. A second rounded panel in the lower-middle holds three column groups of five 4-circle projection rows aligned under each matrix, with captions beneath each group. Five red annotation lines are stacked at the far right edge, one per word (#1-#5), each vertically aligned with one of the five projection rows. A blue-outlined bullet box sits at the bottom-left.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~2-12% of slide height, ~8-86% width",
+        "content": "Red bold title: 'Using FF NN for Multiplication of Multiple Vectors by Multiple Matrices'"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, ~4-12% height, ~88-97% width",
+        "content": "Yellow circle, red outline, red bold '16'"
+      },
+      {
+        "name": "Subtitle",
+        "position": "top, ~13-19% height, centered ~10-90% width",
+        "content": "Blue/red bold line: 'Usage: Multiply Vectors of All Words by Multiple (different) W\u2096 (Keys of Multiple Heads)'"
+      },
+      {
+        "name": "Input panel (embeddings + weight matrices)",
+        "position": "upper-middle, ~21-60% height, ~5-95% width",
+        "content": "Large near-white rounded rectangle containing, on the left, 5 rows each labeled 'Embedding Vector of Word #N' + X_N with a pill of 4 circles X\u2081-X\u2084; on the right, three 4x4 W\u2096 matrices in green/orange/purple tinted containers with headers 'W\u2096 of Head 1/2/3'"
+      },
+      {
+        "name": "Matrix grouping brace [?]",
+        "position": "right inner edge of upper panel, ~84-86% width, ~25-58% height",
+        "content": "Thin red curved line / right-brace-like arc appearing to group the three W\u2096 matrices [?]"
+      },
+      {
+        "name": "Equals sign",
+        "position": "middle-left, ~70-77% height, ~27-31% width",
+        "content": "Large bold red '='"
+      },
+      {
+        "name": "Output panel (projections)",
+        "position": "bottom-middle, ~60-92% height, ~27-85% width",
+        "content": "Rounded rectangle with three column groups; each group has 5 stacked pills of 4 circles y\u2081-y\u2084; captions 'Corresponding Projections at Head 1/2/3' below the groups"
+      },
+      {
+        "name": "Word-projection annotations",
+        "position": "right edge, ~62-92% height, ~86-99% width",
+        "content": "Five stacked red bold lines 'Corresponding Projection of Word #1' through '#5', each vertically aligned with one of the five projection rows"
+      },
+      {
+        "name": "Summary box",
+        "position": "bottom-left, ~78-95% height, ~5-27% width",
+        "content": "Blue-outlined rounded box with 3 bullets: Sequence of 5 Words / Network with 3 Heads / Embedding Dimension=4"
+      }
+    ],
+    "hierarchy": "Red bold title is the largest text; subtitle is second (bold, blue+red, smaller); matrix headers and left embedding labels are small bold red/blue; circle and cell glyphs are smallest. Visually the three pastel matrices and the 80 red-ringed circles (20 in the five embedding pills + 60 in the fifteen projection pills) dominate the canvas; the light panels let the colored cells/pills carry the visual weight."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Five horizontal embedding rows, one per word. Each row: a red bold two-line label ('Embedding Vector' / 'of Word #N', N = 1..5) followed by a larger italic red vector name X\u2081, X\u2082, X\u2083, X\u2084, X\u2085 (numeric subscript); to the right a pill-shaped rounded rectangle (light pink fill, pink-red outline) containing 4 equally spaced circles \u2014 white fill, red ~1.5pt outline \u2014 labeled X\u2081 X\u2082 X\u2083 X\u2084 (italic X, dark text, numeric subscripts). All five rows are identical except the label number.",
+      "colors": [
+        "#F9E4EF (pill fill)",
+        "#E56B8C (pill outline)",
+        "#FFFFFF (circle fill)",
+        "#C00000 (circle outline)",
+        "#C00000 (label text)",
+        "#333333 (circle glyph text)"
+      ],
+      "position": "left side of upper panel, ~6-30% width, ~23-58% height"
+    },
+    {
+      "type": "table",
+      "description": "Three 4x4 weight matrices, one per head, each drawn as 16 small squares with thin dark borders inside a rounded-rectangle container. Header above each: italic bold 'W\u2096' (dark blue) + ' of Head N' (red). Cell entries are identical across all three matrices \u2014 row 1: w\u2081\u2081 w\u2082\u2081 w\u2083\u2081 w\u2084\u2081; row 2: w\u2081\u2082 w\u2082\u2082 w\u2083\u2082 w\u2084\u2082; row 3: w\u2081\u2083 w\u2082\u2083 w\u2083\u2083 w\u2084\u2083; row 4: w\u2081\u2084 w\u2082\u2084 w\u2083\u2084 w\u2084\u2084 (italic lowercase w, dark navy text, two-digit subscripts). Row fill colors (same in all three matrices): row 1 yellow, row 2 pink, row 3 orange, row 4 green. Container tints: Head 1 light green, Head 2 light orange, Head 3 light purple.",
+      "colors": [
+        "#E2EFDA (Head 1 container)",
+        "#FCE4D6 (Head 2 container)",
+        "#E4DFEC (Head 3 container)",
+        "#FFD966 (row-1 cells)",
+        "#F8BBD0 (row-2 cells)",
+        "#FFCC80 (row-3 cells)",
+        "#C6E0B4 (row-4 cells)",
+        "#333333 (cell borders)",
+        "#1F3864 (cell text)"
+      ],
+      "position": "center-right of upper panel; three columns at ~31-48%, ~49-66%, ~67-84% width; headers ~22-26% height, grids ~26-58% height"
+    },
+    {
+      "type": "diagram",
+      "description": "Three column groups of output projections, aligned under the three matrices. Each group = five stacked pill-shaped rounded rectangles, each holding 4 white circles with red outlines labeled y\u2081 y\u2082 y\u2083 y\u2084 (italic y, dark red/maroon text, numeric subscripts). Pill fills top-to-bottom cycle: green, orange, purple, green, orange (same cycle in all three groups). Caption centered under each group: 'Corresponding Projections at Head 1' / '...Head 2' / '...Head 3' (red bold; the words 'at Head N' appear possibly blue [?]).",
+      "colors": [
+        "#C8E6C9 (green pills)",
+        "#FFE0B2 (orange pills)",
+        "#D1C4E9 (purple pills)",
+        "#FFFFFF (circles)",
+        "#C00000 (circle outlines)",
+        "#8B1A1A (y glyph text)",
+        "#C00000 (caption text)"
+      ],
+      "position": "bottom panel; three columns at ~30-48%, ~48-66%, ~66-84% width; rows ~61-89% height, captions ~89-94% height"
+    },
+    {
+      "type": "other",
+      "description": "Single large bold red '=' character asserting the matrix-multiplication relation between the upper block (5 embeddings x W\u2096) and the lower block (3 groups of projections).",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "~27-31% width, ~70-77% height, at the left edge of the lower panel"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Rounded rectangle, white fill, blue ~2pt outline, containing three bulleted lines (round bullets, blue bold text with red keyword highlights): 'Sequence of 5 Words' ('5 Words' in red); 'Network with 3 Heads' ('3 Heads' in red); 'Embedding Dimension=4' ('4' in red).",
+      "colors": [
+        "#FFFFFF (fill)",
+        "#0000CC (border and base text)",
+        "#C00000 (highlight text)"
+      ],
+      "position": "bottom-left, ~5-27% width, ~78-95% height"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: circle with yellow fill and red outline, red bold '16' centered inside.",
+      "colors": [
+        "#FFD966 (fill)",
+        "#C00000 (outline and text)"
+      ],
+      "position": "top-right corner, ~88-97% width, ~4-12% height"
+    },
+    {
+      "type": "other",
+      "description": "[?] Thin red curved line / right-brace-like arc hugging the right inner edge of the upper panel, spanning roughly the height of the matrices \u2014 appears to group the three W\u2096 matrices together.",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "right inner edge of upper panel, ~84-86% width, ~25-58% height"
+    }
+  ],
+  "imagery": [
+    "No photographs, clip-art, or illustrations; the slide is built entirely from vector shapes (circles, pills/rounded rectangles, small squares) and text.",
+    "Small gray rectangle artifact (likely the captured mouse cursor or a selection handle) overlaps Head 1's matrix around row 3, near cells w\u2082\u2083/w\u2083\u2083 \u2014 a recording artifact, not slide content; do not recreate."
+  ],
+  "colors": {
+    "background": "#F2F2F2 (light gray slide; panels slightly whiter ~#FAFAFA; black bars at very top/bottom of the video frame are letterboxing, not the slide)",
+    "title_text": "#C00000",
+    "body_text": "#333333 for embedding-circle glyphs (X\u2081-X\u2084); #1F3864 dark navy for matrix cell text (w glyphs); #8B1A1A dark red/maroon for projection-circle glyphs (y\u2081-y\u2084); label text alternates #C00000 (red) and #0000CC (blue)",
+    "accents": [
+      "#C00000 (red)",
+      "#0000CC (blue)",
+      "#FFD966 (yellow badge / row-1 cells)",
+      "#E2EFDA (Head 1 tint)",
+      "#FCE4D6 (Head 2 tint)",
+      "#E4DFEC (Head 3 tint)",
+      "#F8BBD0 (row-2 cells)",
+      "#FFCC80 (row-3 cells)",
+      "#C6E0B4 (row-4 cells)",
+      "#C8E6C9 (green pills)",
+      "#FFE0B2 (orange pills)",
+      "#D1C4E9 (purple pills)",
+      "#F9E4EF (embedding pill fill)",
+      "#E56B8C (embedding pill outline)",
+      "#8B1A1A (y glyph text)"
+    ]
+  },
+  "typography_notes": "Entirely bold sans-serif (Arial/Calibri family). Title largest (~28-32pt equivalent), bold, red. Subtitle ~16-18pt bold, two-tone blue/red with italic 'W\u2096'. Panel labels ~10-12pt bold; variable letters (X, W, w, y) are italic; subscripts are numeric except the letter subscript 'k' on W; matrix/circle glyphs ~10-12pt. Summary-box text ~12-14pt bold with round bullets. No all-caps except the acronym 'FF NN'. Color-coding convention: red for primary/emphasized text, blue for secondary/connector phrases.",
+  "animation_state": "Slide appears fully built \u2014 no partial bullet reveal or hidden builds detected. Only artifact: a small gray rectangle over Head 1's matrix row 3 (likely the mouse cursor captured during recording). Video frame has black letterbox bars at top and bottom that are not part of the slide.",
+  "recreation_brief": "1. Set the slide background to solid light gray #F2F2F2; do not add the black letterbox bars visible in the video frame. 2. Place the title text box top-center (~8-86% width, ~2-12% height): 'Using FF NN for Multiplication of Multiple Vectors by Multiple Matrices', Arial bold ~28-32pt, #C00000, centered. 3. Place the slide-number badge top-right (~88-97% width, ~4-12% height): circle ~0.5in diameter, fill #FFD966, outline #C00000, with bold red '16' centered inside. 4. Place the subtitle centered below the title (~10-90% width, ~13-19% height), Arial bold ~16-18pt, as color runs: 'Usage: ' (#0000CC) + 'Multiply Vectors of All Words by Multiple ' (#C00000) + '(different) ' (#0000CC) + italic 'W' with subscript 'k' (#0000CC) + ' (Keys of Multiple Heads)' (#C00000). 5. Draw the input panel: rounded rectangle at ~5-95% width, ~21-60% height, fill #FAFAFA, thin light-gray outline. 6. Inside the input panel's left side (~6-30% width, ~23-58% height), place embedding row 1: a two-line bold red (#C00000) ~10-12pt label 'Embedding Vector' / 'of Word #1'; to its right a larger italic red 'X' with numeric subscript '1'; then a pill-shaped rounded rectangle (fill #F9E4EF, outline #E56B8C) containing 4 equally spaced circles (fill #FFFFFF, ~1.5pt #C00000 outline) labeled X\u2081 X\u2082 X\u2083 X\u2084 (italic X, #333333, ~10-12pt, numeric subscripts). 7. Duplicate step 6 four times stacked directly below, changing only the label number and vector subscript: 'of Word #2' with X\u2082, 'of Word #3' with X\u2083, 'of Word #4' with X\u2084, 'of Word #5' with X\u2085 (5 rows total). 8. Place matrix container 1 at ~31-48% width (header band ~22-26% height, grid area ~26-58% height): rounded rectangle tinted #E2EFDA with header text 'W' italic bold with subscript 'k' in dark blue #1F3864 followed by ' of Head 1' in red #C00000 (~10-12pt). 9. Inside container 1's grid area draw a 4x4 grid of small squares (~0.35in each) with thin #333333 borders; fill every cell of row 1 #FFD966, row 2 #F8BBD0, row 3 #FFCC80, row 4 #C6E0B4; set cell text to italic lowercase 'w' in #1F3864 (~10-12pt) with two-digit subscripts \u2014 row 1: w\u2081\u2081 w\u2082\u2081 w\u2083\u2081 w\u2084\u2081; row 2: w\u2081\u2082 w\u2082\u2082 w\u2083\u2082 w\u2084\u2082; row 3: w\u2081\u2083 w\u2082\u2083 w\u2083\u2083 w\u2084\u2083; row 4: w\u2081\u2084 w\u2082\u2084 w\u2083\u2084 w\u2084\u2084. 10. Duplicate steps 8-9 twice to the right, at ~49-66% width and ~67-84% width, changing only the container tint (#FCE4D6 for Head 2, #E4DFEC for Head 3) and the header suffix (' of Head 2', ' of Head 3'); the 4x4 grid fills and cell texts are identical in all three matrices. 11. [?] Optional: draw a thin red (#C00000) right-brace-like curved arc along the input panel's right inner edge (~84-86% width, ~25-58% height), spanning the height of the three matrices to group them. 12. Draw the output panel: rounded rectangle at ~27-85% width, ~60-92% height, fill #FAFAFA, thin light-gray outline. 13. On the output panel's left edge place a single large bold red '=' (~40pt, #C00000) at ~27-31% width, ~70-77% height. 14. Place projection group 1 at ~30-48% width, ~61-89% height: five stacked pill-shaped rounded rectangles with fills top-to-bottom #C8E6C9, #FFE0B2, #D1C4E9, #C8E6C9, #FFE0B2; each pill contains 4 white circles (#C00000 outline) labeled y\u2081 y\u2082 y\u2083 y\u2084 (italic y, #8B1A1A, numeric subscripts). 15. Duplicate step 14 twice at ~48-66% width and ~66-84% width with identical pill fills and circle labels, aligned under matrix containers 2 and 3 (15 pills, 60 circles total). 16. Under each of the three groups (~89-94% height) place a centered bold ~10-12pt caption: 'Corresponding Projections ' in #C00000 followed by 'at Head 1' / 'at Head 2' / 'at Head 3' in #0000CC [?]. 17. At the far right edge (~86-99% width, ~62-92% height) place five stacked bold ~10-12pt red (#C00000) annotation lines: 'Corresponding Projection of Word #1', 'Corresponding Projection of Word #2', 'Corresponding Projection of Word #3', 'Corresponding Projection of Word #4', 'Corresponding Projection of Word #5' \u2014 each vertically aligned with one of the five projection rows. 18. Place the summary box bottom-left (~5-27% width, ~78-95% height): rounded rectangle, white fill, ~2pt #0000CC outline, holding three round-bulleted bold ~12-14pt lines with color runs: 'Sequence of ' (#0000CC) + '5 Words' (#C00000); 'Network with ' (#0000CC) + '3 Heads' (#C00000); 'Embedding Dimension=' (#0000CC) + '4' (#C00000). 19. Do NOT recreate the small gray rectangle cursor artifact over Head 1's matrix row 3 (recording artifact, not slide content).",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "layout.regions did not cover the [?] red brace/arc listed in visual_elements: added region 'Matrix grouping brace [?]' (~84-86% width, ~25-58% height) and mentioned the brace in layout.arrangement, preserving the [?] marker.",
+      "Corrected layout.hierarchy circle count from '~40 red-ringed circles' to 80 (5 embedding pills \u00d7 4 circles = 20, plus 15 projection pills \u00d7 4 circles = 60), matching the counts stated in verbatim_text.labels and visual_elements.",
+      "Fixed imprecise arrangement phrase 'one per projection row' (there are 5 annotation lines but 15 projection rows) to 'one per word (#1-#5), each vertically aligned with one of the five projection rows'.",
+      "Fixed colors.body_text, which wrongly described circle AND cell glyphs as dark charcoal #333333/#1F1F1F; rewrote it to match element-level data: #333333 for embedding-circle glyphs, #1F3864 (dark navy) for matrix cell text, #8B1A1A for projection-circle glyphs.",
+      "Added three colors missing from colors.accents but used in visual_elements: #F9E4EF (embedding pill fill), #E56B8C (embedding pill outline), #8B1A1A (y glyph text).",
+      "Corrected typography_notes: subscripts are numeric except the letter subscript 'k' on W (the old note claimed all subscripts were numeric).",
+      "Rewrote recreation_brief as a 19-step ordered checklist with one placement action per step (exact text runs, percentage positions, hex colors, shape types, explicit duplication counts); reordered so the output panel (step 12) is drawn before the equals sign (step 13) that sits on its left edge; kept [?] markers on the optional brace (step 11) and the caption color (step 16)."
+    ],
+    "uncertain_items": [
+      "Thin red curved line / right-brace-like arc at the right inner edge of the upper panel (~84-86% width, ~25-58% height) \u2014 marked [?] in the source; included only as optional step 11.",
+      "Color of the caption words 'at Head 1/2/3' \u2014 source says 'possibly blue [?]' (#0000CC vs #C00000); step 16 keeps the [?] marker.",
+      "The exact two-tone color-run split of the subtitle is stated only in the source recreation_brief and cannot be cross-checked against other fields; carried over unchanged into step 4.",
+      "The second entry in verbatim_text.equations is explicitly labeled '[implied, not printed]' \u2014 it is an interpretation (per-head projection = embedding \u00d7 W\u2096), not text visible on the slide."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_016.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 16,
+      "image": "slide_016.jpg",
+      "kept_frame": "frame_00631.jpg",
+      "start_sec": 562.0,
+      "end_sec": 630.0,
+      "frame_count": 69,
+      "old_slide": 26
+    },
+    "elapsed_s": 424.1,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1213.0
+  }
+}

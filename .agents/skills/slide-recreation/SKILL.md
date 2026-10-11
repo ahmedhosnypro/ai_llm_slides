@@ -32,6 +32,7 @@ ML course deck; every rule below was paid for by a real failure.
 |---|---|
 | `patterns/index.json` + `references/patterns.md` | **FIRST, before every build** — the reusable example-script library (`../patterns/`, one runnable script per pattern; laws in the comments). Read the index, use the applicable patterns, run their companion checkers. `references/patterns.md` is the pointer doc. Each recreation MUST also run the pre-judge checks in `scripts/17_worker_instructions.md` |
 | `references/pipeline.md` | Extracting frames, deduping slides, analyzing + validating specs |
+| `references/dependencies.md` | Decks whose slides build on each other (founder dependency graph): build gating on parent certification, shared component imports (u-components model), DB `depends_on` tracking |
 | `references/building.md` | Writing the pptxgenjs build, rendering, house template law |
 | `references/judging.md` | The visual judge — verdict law, walls, ground rules |
 | `references/equations.md` | Any slide containing math — 2D format rule + alignment law + OMML |
@@ -58,6 +59,14 @@ Non-negotiable laws (each is expanded in its reference file):
   2026-10-10): curation decisions (duplicate/non-valid frames, numbering, badges) are
   human-owned. The machine may prepare a review packet (contact sheet, index,
   new2old mapping) but must never mark the set approved itself.
+- **Dependent slides gate builds on parent certification and share components**
+  (founder directive 2026-10-11, `references/dependencies.md`). When a deck's
+  founder-supplied dependency graph says slide B builds on slide A, B's BUILD is
+  blocked until A is judge-certified (analysis/validation stay unblocked, and
+  siblings unblock together). B's build must IMPORT A's certified composition as a
+  shared component module (`build/components/`, u-components model) and draw only
+  its own delta — never copy-paste the parent. Components are certified
+  single-source-of-truth: editing one re-opens its whole descendant subtree.
 - **A slide is done ONLY with a real comparison-transcript PASS from the vision model.**
   Timeouts, empty streams, and programmatic checks count as FAIL. A "looks fine" from
   yourself or a peer is not a verdict.

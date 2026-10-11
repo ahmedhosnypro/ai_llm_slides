@@ -1,0 +1,162 @@
+{
+  "slide_title": "Encoder \u2013 Decoder Transformer",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "15",
+      "Encoder",
+      "Decoder",
+      "Output Probabilities",
+      "Softmax",
+      "Linear",
+      "Add & Norm",
+      "Feed Forward",
+      "Multi-Head Attention",
+      "Masked Multi-Head Attention",
+      "Nx",
+      "Positional Encoding",
+      "Input Embedding",
+      "Output Embedding",
+      "Inputs",
+      "Outputs (shifted right)"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Title centered at top in large red bold text; small yellow slide-number badge in top-right corner. Body is split into two side-by-side flowchart panels of nearly equal size: LEFT panel = classic Transformer architecture diagram on a white card; RIGHT panel = the same architecture with colored Encoder/Decoder highlight regions and a green border. A large solid red right-pointing block arrow sits in the vertical gap between the panels at mid-height. A thin dark-red frame runs around the slide perimeter.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, x ~20-80%, y ~7-16%",
+        "content": "Red bold title 'Encoder \u2013 Decoder Transformer'"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, x ~90-96%, y ~8-16%",
+        "content": "Yellow circle with red outline containing '15'"
+      },
+      {
+        "name": "Left diagram panel",
+        "position": "left, x ~8-43%, y ~18-97%",
+        "content": "White card with thin black border containing the classic Transformer flowchart (encoder stack left, decoder stack right, embeddings and positional-encoding icons at bottom, Softmax/Linear at top)"
+      },
+      {
+        "name": "Red transition arrow",
+        "position": "center, x ~46-55%, y ~52-62%",
+        "content": "Large solid red block arrow pointing right"
+      },
+      {
+        "name": "Right diagram panel",
+        "position": "right, x ~58-96%, y ~18-97%",
+        "content": "Same Transformer flowchart with peach 'Encoder' region and light-green 'Decoder' region, green outer border, red italic 'Encoder' and green italic 'Decoder' headers, and two small red up-arrows (beside 'Inputs' and beside 'Output Probabilities')"
+      }
+    ],
+    "hierarchy": "Title dominates by size/weight/color (largest, bold, red). The two diagrams dominate by area. The red block arrow is the strongest accent, forcing a left-to-right reading order. 'Encoder'/'Decoder' headers are mid-size bold italics. Diagram box labels are the smallest text (black, ~9-10pt equivalent)."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "LEFT PANEL: classic Transformer architecture (Vaswani et al. style) on a white card with thin black border. Two vertical stacks connected by thin black lines with small arrowheads; curved elbow connectors run along both sides of each sublayer into its 'Add & Norm' box. ENCODER STACK (left column), bottom to top: plain-text label 'Inputs' -> pink box 'Input Embedding' -> small circle with plus sign (sum node) fed from the left by a small circle containing a black sine-wave icon labeled 'Positional Encoding' (two lines) -> orange box 'Multi-Head Attention' (two lines) -> yellow box 'Add & Norm' -> blue box 'Feed Forward' (two lines) -> yellow box 'Add & Norm'; repetition label 'Nx' sits to the LEFT of the stack at the Feed-Forward level. DECODER STACK (right column), bottom to top: plain-text label 'Outputs (shifted right)' (two lines) -> pink box 'Output Embedding' -> plus-sum circle fed from the right by a sine-wave circle labeled 'Positional Encoding' -> orange box 'Masked Multi-Head Attention' (three lines) -> yellow box 'Add & Norm' -> orange box 'Multi-Head Attention' (two lines; receives an elbow connector from the encoder stack's top 'Add & Norm') -> yellow box 'Add & Norm' -> blue box 'Feed Forward' -> yellow box 'Add & Norm' -> lavender box 'Linear' -> green box 'Softmax' -> plain-text label 'Output Probabilities' (two lines) at top; repetition label 'Nx' sits to the RIGHT of the stack at the Feed-Forward level. Box label texts appear 2x 'Feed Forward', 5x 'Add & Norm', 2x 'Multi-Head Attention', 1x 'Masked Multi-Head Attention' within this panel.",
+      "colors": [
+        "#FFFFFF",
+        "#000000",
+        "#F8C9D4",
+        "#FCE3A2",
+        "#FFFFA6",
+        "#BDD7EE",
+        "#C9C9E9",
+        "#C6E0B4"
+      ],
+      "position": "left half of slide, x ~8-43%, y ~18-97%"
+    },
+    {
+      "type": "flowchart",
+      "description": "RIGHT PANEL: identical Transformer flowchart structure and identical verbatim box/label texts as the left panel, but color-coded: the whole panel is a white card with a ~2pt GREEN border; a peach rectangle behind the left (encoder) column is headed 'Encoder' in red bold italic at its top-left; a light-green rectangle behind the right (decoder) column is headed 'Decoder' in green bold italic at its top-right. Encoder-side boxes are slightly muted/tinted (grayish-blue 'Feed Forward', tan/orange 'Multi-Head Attention'); decoder-side boxes have a greenish tint (pale-green 'Feed Forward', pale yellow-green attention boxes); 'Add & Norm' pale yellow, embeddings pink, 'Linear' lavender, 'Softmax' green, same as left. Two small solid RED upward block arrows are added: one beside 'Inputs' at bottom-left of the encoder region, one beside 'Output Probabilities' at top of the decoder region. Same 'Nx', 'Positional Encoding', sine-wave circle icons, plus-sum circles and curved side connectors as the left panel.",
+      "colors": [
+        "#FFFFFF",
+        "#00B050",
+        "#FBE5D6",
+        "#D6EFD6",
+        "#C00000",
+        "#00A651",
+        "#F8C9D4",
+        "#F0D5A0",
+        "#B7C9CC",
+        "#FFFFA6",
+        "#D5E8C8",
+        "#C9C9E9",
+        "#C6E0B4",
+        "#CC0000",
+        "#000000"
+      ],
+      "position": "right half of slide, x ~58-96%, y ~18-97%"
+    },
+    {
+      "type": "arrow",
+      "description": "Large solid right-pointing block arrow (classic PowerPoint block-arrow shape), no outline, horizontally centered in the gap between the two diagram panels at roughly mid-height, indicating the generic diagram (left) corresponds to the Encoder/Decoder-annotated diagram (right).",
+      "colors": [
+        "#CC0000"
+      ],
+      "position": "center of slide, x ~46-55%, y ~52-62%"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: yellow circle with a thin red outline containing the number '15' in red bold text, positioned at the top-right corner of the slide.",
+      "colors": [
+        "#FFFF00",
+        "#C00000"
+      ],
+      "position": "top right, x ~90-96%, y ~8-16%"
+    },
+    {
+      "type": "icon",
+      "description": "Four small circular icons (two per diagram) each containing a black sine-wave/harmonic-curve symbol, representing sinusoidal positional encoding; each sits beside a plus-sum circle next to an embedding box, with the label 'Positional Encoding' adjacent (left side for encoder, right side for decoder).",
+      "colors": [
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "bottom area of both diagram panels, flanking the Input/Output Embedding boxes"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; the only pictorial elements are the sine-wave positional-encoding circle icons (flat, black line-art on white), the large red block arrow between panels, the two small red up-arrows in the right panel, and the yellow circular slide-number badge.",
+    "A small black mouse-cursor arrow is visible near the red up-arrow beside 'Output Probabilities' in the right diagram \u2014 a video-recording artifact, not slide content."
+  ],
+  "colors": {
+    "background": "#E5E5E5",
+    "title_text": "#CC0000",
+    "body_text": "#000000",
+    "accents": [
+      "#CC0000",
+      "#8B0000",
+      "#FFFF00",
+      "#00B050",
+      "#00A651",
+      "#FBE5D6",
+      "#D6EFD6",
+      "#FCE3A2",
+      "#FFFFA6",
+      "#BDD7EE",
+      "#C9C9E9",
+      "#C6E0B4",
+      "#F8C9D4"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial-like). Title: very large, bold, red, title case with an en dash ('Encoder \u2013 Decoder Transformer'). Diagram labels: small black sans-serif, centered inside boxes, wrapped over 1-3 lines (e.g., 'Masked' / 'Multi-Head' / 'Attention'; 'Outputs' / '(shifted right)'). 'Encoder' is bold italic red; 'Decoder' is bold italic green \u2014 the only italics on the slide. Slide number '15' is bold red inside a yellow circle. No bullet lists, no numbered lists; the slide is fully diagrammatic. Outer frame is a thin dark-red rule inset from the slide edge.",
+  "animation_state": "Slide appears fully built \u2014 both diagrams, the arrow, title and badge are all completely visible. The small black mouse pointer near the top red arrow in the right diagram is a recording artifact, not a build state.",
+  "recreation_brief": "1. Slide setup: 16:9, background light gray #E5E5E5; draw a thin (~2pt) dark-red #8B0000 rectangle outline inset ~2% from all slide edges. 2. Title: centered text box at y ~7-16%, text exactly 'Encoder \u2013 Decoder Transformer', Arial Bold ~40pt, color #CC0000. 3. Badge: oval ~4.5% slide-width at top-right (x ~90%, y ~8%), fill #FFFF00, outline #C00000 ~1.5pt, text '15' red bold ~16pt centered. 4. LEFT PANEL: white rectangle with thin black border at x 8-43%, y 18-97%. Inside, build two vertical stacks of rectangles (~0.5in tall, centered 9-10pt Arial black text) joined by thin black arrows, with curved elbow connectors from each sublayer output up its sides into the 'Add & Norm' box above it. Encoder stack (bottom to top): text 'Inputs'; pink #F8C9D4 'Input Embedding'; plus-circle; orange #FCE3A2 'Multi-Head Attention'; yellow #FFFFA6 'Add & Norm'; blue #BDD7EE 'Feed Forward'; yellow 'Add & Norm'; put 'Nx' to the left of the stack at Feed-Forward level. Decoder stack (bottom to top): text 'Outputs (shifted right)'; pink 'Output Embedding'; plus-circle; orange 'Masked Multi-Head Attention'; yellow 'Add & Norm'; orange 'Multi-Head Attention'; yellow 'Add & Norm'; blue 'Feed Forward'; yellow 'Add & Norm'; lavender #C9C9E9 'Linear'; green #C6E0B4 'Softmax'; top text 'Output Probabilities'; put 'Nx' to the right at Feed-Forward level. Add a small white circle with a black sine-wave icon plus label 'Positional Encoding' feeding each plus-circle (icon left of encoder's, right of decoder's). Draw elbow connectors from the encoder's top 'Add & Norm' into the decoder's 'Multi-Head Attention'. 5. Red arrow: insert PowerPoint block arrow 'Right', fill #CC0000, no line, ~9% wide x ~8% tall, centered at x ~50%, y ~57%. 6. RIGHT PANEL: white rectangle with ~2pt green #00B050 border at x 58-96%, y 18-97%. Behind the left column place a peach #FBE5D6 rectangle with 'Encoder' at its top-left in red #C00000 bold italic ~16pt; behind the right column a light-green #D6EFD6 rectangle with 'Decoder' at its top-right in green #00A651 bold italic ~16pt. 7. Rebuild the exact same two stacks with the exact same verbatim texts inside this panel, using tinted fills: encoder 'Feed Forward' grayish-blue #B7C9CC and attention tan #F0D5A0; decoder 'Feed Forward' pale green #D5E8C8 and attention boxes pale yellow-green; keep 'Add & Norm' #FFFFA6, embeddings #F8C9D4, 'Linear' #C9C9E9, 'Softmax' #C6E0B4; repeat sine-wave icons, plus-circles, 'Nx' labels and curved connectors identically. 8. Add two small solid red #CC0000 up-arrows: one right of 'Inputs' (bottom-left of encoder region), one left of 'Output Probabilities' (top of decoder region). 9. Use Arial throughout; all text verbatim as listed in verbatim_text; no bullets, no footer text.",
+  "_meta": {
+    "frame": "slide_015.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 15,
+      "image": "slide_015.jpg",
+      "kept_frame": "frame_00853.jpg",
+      "start_sec": 827.0,
+      "end_sec": 852.0,
+      "frame_count": 26
+    },
+    "elapsed_s": 233.2
+  }
+}

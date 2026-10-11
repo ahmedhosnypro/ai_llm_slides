@@ -1,0 +1,37 @@
+## Element-by-element comparison (equation region, bceq_eq)
+
+**Border/frame:**
+- IMG1: blue border (~#0000C0), uniform thickness ~8â10px at render scale. IMG2: blue border ~4px at 479px width â ~8â9px equivalent. Thickness and hue align within measurement tolerance. â
+
+**Line 1: `a.b = aáµb = |a| |b| cos(Î¸)`**
+- Verbatim text identical in both, including the period-style dot in `a.b` (not a centered `\cdot`) and the superscript T placement on `a`.
+- Glyph style: both are serif italic (Computer Modernâstyle) for variables, upright for `cos`, thin parentheses around Î¸. IMG2's faint underline-like marks under `a`, `b` are low-res antialiasing artifacts, not glyph features.
+- Extent: line 1 spans nearly the full inner width and ends close to the right border in both â horizontal fill matches (~95% of inner width).
+- Vertical position: line 1 baseline sits at ~28% of crop height in both. â
+
+**Line 2: red `cos(Î¸)` = fraction = `aáµb`**
+- Red `cos(` with bold red Î¸, black `) =`, matches in both. Red hue comparable (bright pure red in both).
+- Stacked fraction `aáµb / |a| |b|`: numerator superscript T, horizontal bar, denominator `|a| |b|` with spacing between the two norm groups â present and identically structured in both (mandated 2D format, confirmed present in the original too).
+- Fraction bar length: slightly wider than numerator in both; ratio to numerator width comparable.
+- Right-hand `= aáµb` with superscript T: matches in position and style.
+- Vertical centering: line 2 block centered slightly below middle in both; baseline offsets within a few px equivalent. â
+
+**Spacing/pitch:**
+- Gap between line 1 and the fraction numerator is tight in both (numerator nearly touches line 1's descender zone). Line pitch matches within ~2px at 1x per prior band measurements, confirmed visually here. â
+
+**Colors:**
+- White background both; black ink both; red only on the leading `cos(Î¸)` of line 2 in both. No stray color. â
+
+**Chrome (per ground rules, not discrepancies):**
+- No badge/panel visible in this crop region in either image; no cursor artifacts in IMG2 to omit.
+
+## Discrepancy list
+
+| # | Item | Severity | Confidence |
+|---|------|----------|------------|
+| 1 | IMG1 fraction bar marginally longer relative to numerator than IMG2 (~1â2px equivalent) | MINOR | Medium |
+| 2 | IMG1 `Î¸` in red `cos(Î¸)` fractionally bolder than IMG2's rendering | MINOR | Low (likely upscaling softness in IMG2) |
+
+No BLOCKER or MAJOR discrepancies. Text verbatim, glyph style, two-line structure, stacked fraction, red-highlight scope, alignment, and border all correspond.
+
+CROP VERDICT: **MATCH**

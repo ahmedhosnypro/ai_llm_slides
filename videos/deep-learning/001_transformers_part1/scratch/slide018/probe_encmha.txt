@@ -1,0 +1,31 @@
+# Visual QA Analysis â Slide 018 crop (encoder Multi-Head Attention zone, 2x)
+
+## 1. Verbatim text transcription
+
+All visible text, top to bottom, left to right:
+
+- **`Nx`** â inside a tan/brown circle at the left edge
+- **`Add & Norm`** â inside a cream/beige rounded-rectangle label box
+- **`Multi-Head`** / **`Attention`** â two-line label inside the central box
+- **`V`**, **`K`**, **`Q`** â single letters in small circular nodes along the bottom edge (partially cut off)
+
+All text is in English and appears linguistically correct for a Transformer architecture diagram. No digits or other strings are visible.
+
+## 2. Layout
+
+- **LEFT edge:** The tan circular badge containing "Nx" sits near the upper-left, slightly clipped. Two red dashed lines run diagonally through this area, crossing near/over the circle â these are the corner of a larger red dashed annotation rectangle, not diagram content.
+- **RIGHT edge:** Clipped fragments of adjacent elements â thin vertical black lines (borders of neighboring boxes) and narrow green and yellow vertical slivers at the far right, cut mid-element by the crop boundary.
+- **TOP:** A vertical connector line with an upward-pointing arrowhead at the very top edge, indicating output flow upward from the "Add & Norm" box. The arrow is partially clipped at the frame's top.
+- **BOTTOM:** Three small circles containing "V", "K", "Q" (left to right), representing the Q/K/V inputs feeding the attention block. They are cut off roughly at their midline by the bottom edge.
+- **CENTER:** Stacked vertically: "Add & Norm" label box on top, connected by a short line down to a larger salmon/orange rectangle containing "Multi-Head Attention". This central box is outlined with a **solid red rectangle** â an intentional highlight/annotation.
+
+## 3. Visual defects
+
+- **Heavy compression/blur:** The crop is visibly degraded with JPEG blocking artifacts; "Multi-Head Attention" text is soft but legible.
+- **Clipping on all four sides:**
+  - Bottom: the V/K/Q circles are cut in half; the "V" circle appears to have a red ring, but this may be the red dashed annotation line passing over it rather than the circle's own border â cannot be confirmed at this resolution.
+  - Top: arrowhead and connector clipped.
+  - Left: "Nx" circle slightly cut.
+  - Right: foreign slivers (green/yellow strips, black lines) from neighboring slide content intrude into the frame.
+- **Overlapping annotation:** Red dashed lines cross diagonally over the diagram content near the left side; a solid red rectangle overlaps the Multi-Head Attention box. Both appear to be deliberate annotation layers from the source slide, but within this tight crop they read as lines crossing over content.
+- **No placeholder text, garbage strings, or wrong-language text** detected.
