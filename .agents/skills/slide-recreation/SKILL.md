@@ -30,7 +30,7 @@ ML course deck; every rule below was paid for by a real failure.
 
 | Read this | When |
 |---|---|
-| `references/patterns.md` | **FIRST, before every build** — confirmed-working reusable patterns (house chrome, inner-frame budget, delimiters, equations, highlight boxes, canonical datasets, judge budgets, OMML, merge). Each recreation MUST use these and run the pre-judge checks in `scripts/17_worker_instructions.md` |
+| `patterns/index.json` + `references/patterns.md` | **FIRST, before every build** — the reusable example-script library (`../patterns/`, one runnable script per pattern; laws in the comments). Read the index, use the applicable patterns, run their companion checkers. `references/patterns.md` is the pointer doc. Each recreation MUST also run the pre-judge checks in `scripts/17_worker_instructions.md` |
 | `references/pipeline.md` | Extracting frames, deduping slides, analyzing + validating specs |
 | `references/building.md` | Writing the pptxgenjs build, rendering, house template law |
 | `references/judging.md` | The visual judge — verdict law, walls, ground rules |
