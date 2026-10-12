@@ -1070,3 +1070,133 @@ Context: 001_introduction slide 033 — exposed handwritten labels ("Grayscale",
 Root cause: Comic Sans Bold's stroke weight (~0.3 of cap height) is ~2x the original's thin pen hand (~0.15). At tiny label sizes adjacent letters MERGED into blobs, so the vision model read the blobs as fewer/fatter letters and reported truncation. Baking the downscale into the asset and letting LO upscale amplified it.
 Fix (certified attempt 3): crop the three label words directly from the original frame at their measured boxes and embed as PNGs (original pixels = zero font-fidelity risk).
 Rule: at small label sizes, a substituted font's stroke weight must match the original's MEASURED stroke weight (ratio of stroke thickness to cap height), or the handwriting is cropped outright from the frame. A bold marker font reads as truncated text to the vision judge even when every glyph is present. When a judge's truncation claim contradicts a PIL full-span proof, stop re-wording the text — measure stroke weight and check for letter-merging (dense-region crop comparison is the arbiter). Evidence: 001_introduction/recreated_pptx/qa/slide033/worker_report.md (attempts 1-2 FAIL → crop fix → attempt 3 PASS).
+
+## 2026-10-12 — Shared certified equation assets: mint the sibling manifest after md5+size proof (slide 055 pattern)
+Context: 002_transformers_part2 OMML wrap pass — slide 055 (still plain, no eq sidecar of
+its own) embeds `eq_Kcdotq_over_sqrtd.png`, the SAME certified asset as already-wrapped
+slide 054.
+Mistake (avoided): two failure modes when a plain slide has no manifest: (a) declaring it
+"non-equation" because no eq_055_* sidecar exists (it IS an equation slide), or (b)
+re-rendering the mathtext to "re-prove" it and tripping on a false "no size match"
+(the banked provenance entry probed `\frac` while the asset was generated with `\dfrac`
+@ fs 12.0 — a textstyle-vs-displaystyle probe artifact, NOT a blocker: the OMML is
+generated from the mathtext string, never by re-rendering the PNG).
+Fix: (1) md5 the embedded `ppt/media/image-1-1.png` against `build/assets/<asset>.png`
+(byte-identical, e8ebd6d4...); (2) confirm the embed box equals the sibling's
+(px/600 @600 dpi, 215x275 -> 215/600 x 275/600 in); (3) mint
+`qa/slide055/eq_055_omml_manifest.json` with the sibling's PROVEN manifest values
+(mathtext `\dfrac{K\cdot q}{\sqrt{d}}`, 12.0 pt, #C00000), rel_id re-derived from the
+current pptx (single image rel rId1; the pic descr names the source asset). Then the full
+gate battery: baseline pre-flight 0-diff, wrap, idempotence wrapped=0/skipped=1, md5
+only-slide1.xml, structure counts == sibling reference, promoted deliverable 0-diff.
+Rule: a plain slide embedding a byte-identical copy of another slide's certified equation
+asset inherits that asset's proven manifest values — prove identity by md5 + embed-box
+geometry, never by re-rendering the PNG; and a "no size match" in a font-size provenance
+scan can be a `\frac`-vs-`\dfrac` probe artifact, not a provenance failure.
+
+## 2026-10-12 — Identify the certified render by MEASUREMENT, not by judge-attempt numbering
+Context: 002 OMML wrap pass — pixel-gating 8 wrapped decks needed each slide's certified
+(judge-PASS) render, but judge files don't name their render and judge attempts/renders
+are independently numbered.
+Mistake (avoided): pairing "render_N = judge_attempt_N" (false for 011: render_2 ↔ judge
+attempt 3) or trusting a judge_prompt's stale render reference (slide 030's prompt named
+render_2 while the PASS judge ran after render_3).
+Fix: render the CURRENT deliverable through the LO route and PIL-diff against ALL
+numbered candidates — the certified render is the one with diff_px=0 (030: render_4=0 vs
+render_2=102/render_3=58 earlier builds; 053: render_6=0 vs render_5=2366). mtime pairing
+(render made minutes before the PASS judge) then CONFIRMS the pick. A 0-diff match also
+simultaneously proves the on-disk deck still serves the certified pixels.
+Rule: when certification history is ambiguous, the 0-diff render comparison IS the
+identifier: exactly one render_N matches the deliverable pixel-for-pixel; treat multiple
+matches as "any of these is the certified base" and the match itself as the gate.
+
+## 2026-10-12 — Attachment-probe ink predicates must cover EVERY connector palette, or they report false FAILs on correct renders
+Context: 002_transformers_part2 slide 005 founder-directed arrow-attachment fix; closed-loop
+check m40_verify5.py probed connect_tan's endpoint with a `redink` predicate (r>120, g<110,
+r-g>45) tuned for C00000 strokes.
+Mistake: connect_tan is drawn in pinkConn C47070, which renders (196,112,112) — g=112 fails
+`g<110`, so the probe could NEVER pass a pixel-perfect attachment; m40 reported 11/12 with a
+lone "connect_tan end on inset border FAIL" on a render whose connector ink (rows 505-514)
+physically overlapped the green border band (rows 510-514) at the probe column.
+Fix: before rebuilding on a failed probe, dump the actual pixel neighborhood (PIL, ±6 px) and
+check the palette: the corrected m41_verify5b.py used a pink-family predicate (r>130,
+r-g>20, r-b>20) plus a structural assert (connector ink row-range OVERLAPS the target
+border's row-range at the endpoint column) → 13/13 PASS with zero build changes.
+Rule: a failed attachment probe is a claim about pixels, not a verdict — dump the probe
+neighborhood first; an ink predicate written for one hex silently excludes every other
+connector color (and antialiased blends keep r leading g/b only by a margin, so exact-hex
+tests fail on the stroke's own edge pixels).
+
+## 2026-10-12 — analyze_image.py's internal abort+retry is trapped inside the outer `timeout` window: a 450s HangError leaves the retry ~90s, then everything dies silently
+Context: 002:005 attempt-6 fix-judge, comparison with --thinking high through
+`16_vision_gate.sh timeout 540 analyze_image.py ... --timeout 420`.
+Facts: the model leg hung ("stuck thinking stream"); analyze_image.py's per-attempt hard wall
+(450s) fired at 450s and logged "abort+retry 1/3", but the retry started INSIDE the same
+outer `timeout 540` and was killed at 540s — no second warn line, no transcript, and the
+process's true exit (124) was masked to 0 by a `| tail` pipe, mimicking success.
+Fix: treat "internal retry announced + no transcript" as a dead call: re-invoke the WHOLE
+gate command (W4: same wide wall) after the 120s storm-discipline sleep; drop `| tail` (or
+use `PIPESTATUS`) so the gate's exit code is visible. Retry 2 landed first-try with a
+validated winner transcript in ~7 min.
+Rule: with `timeout 540` outside and a 450s internal wall inside, an internal retry can
+never complete — a HangError at the internal wall means re-dispatch the full command, never
+trust the in-process retry, and never pipe the gate without preserving its exit code.
+
+## 2026-10-12 — full re-style children: forking the mechanism without the parent's blocks is legitimate, but document it in the component header
+Context: slide 047 (Encoder Block) child of 046; banked m18_ffdiff proved frames 046/047
+share ONLY the outer margins (cols 0-56/903-959, rows 0-46/518-539) — 047's diagram is a
+full tan re-style of 046's white/green/navy one.
+Mistake (avoided): blindly composing 47 = parent renderBase + delta would have skipped
+nearly every parent block anyway, producing a vacuous import; alternatively re-deriving
+everything silently would hide the break in the dependency chain from the 48/57 builders.
+Fix: the certified slide_047.js requires only house_chrome.js, forks the 045/046
+strip/unit MECHANISMS (label-subscript-fork precedent) with 047's measured colors/geometry,
+and its header states WHY it does not call 046's block functions (m18 evidence, paths).
+Verdict: judge PASS attempt 1 with 4 MINOR proportion findings.
+Rule: a child whose frame shares only margins with its parent may skip the parent's block
+calls, but MUST document the frame-diff evidence in its banked component header — children
+of children (48, 57) read that header to know what they inherit.
+
+## 2026-10-12 — raster polyline assets carry joint wobble: the de-twist is "convert the asset's OWN spline to a custGeom Bezier", and 600dpi edge signflips — not 150dpi centerline maxdev — are the discriminator
+Context: 002_transformers_part2 slide 046 founder defect ("dark orange arrows have small
+twists around the path — path itself is correct"); the arrows were a raster asset
+(s038_orangearrow.png, PIL ImageDraw.line joint="curve" over a uniform endpoint-duplicated
+Catmull-Rom, 16 placements), certified attempt 1.
+Mistake (the defect): a polyline stroked with joint="curve" leaves per-segment joint bumps
+that are invisible at 150dpi but founder-visible at native asset scale / PowerPoint zoom
+(measured: 11-17 edge signflips@1px per edge at 600dpi; asset-native bumps = "the twists").
+Fix (qa/slide046/ + components/slide_046.js): one custGeom shape per arrow — the SAME
+Catmull-Rom over the SAME measured knots converted C1-exactly to cubic Beziers
+(B1=P1+(P2-P0)/6, B2=P2-(P3-P1)/6 with endpoint duplication), stroked natively
+(E36C09 1.33pt), PLUS a custGeom head triangle reproducing the asset's exact head
+(tip=end+0.8pt, base 5.2pt back along the end tangent at +/-0.45rad); LO's built-in
+`triangle` tailEnd measured ~1.25x the certified head and was rejected. Path, curvature,
+endpoints, arrowheads unchanged by construction; draw order unchanged.
+Verification numbers (afix_verify_4.txt): 150dpi centerline maxdev is AA-dominated in BOTH
+states (before 2.10px worst / after 2.07px worst) and signflips@0.4px barely move (98->82) —
+NOT a usable discriminator; the 600dpi edge trace collapsed 11-17 flips/edge -> 2 TOTAL over
+32 edges, and before-vs-after path agreement (common rows, 1pt end inset) was worst 0.82pt
+full-path / 0.69pt mid-path vs 1.33pt stroke width, endpoints <=0.54pt.
+Rule: never diagnose stroke wobble from a 150dpi centerline trace alone (AA masks or fakes
+it) — trace the render at 600dpi and count edge signflips@1px; and when a founder says
+"keep the path, fix the twist", re-render the asset's own knot data as a native smooth
+stroke rather than re-tracing anything. (Promote candidate: reusable pattern for every
+certified raster-curve asset that later needs smoothness-only repair.)
+
+## 2026-10-12 — DB worker-liveness contract: file-mtime inference over-counted the fleet 6 vs 4
+Context: post-storm fleet recovery across three decks. The coordinator inferred
+"alive" from (a) recent file writes in a lane and (b) "no completion notification
+received", and reported 6 live workers; the founder's direct subagent view said FOUR.
+Ground truth: 12/57/25/45 alive; 002:8 gen-2 (silent 34 min after analysis crops) and
+002:48 (20 min, zero writes since dispatch) were dead — completion notifications can
+be lost, so "no notification" proves nothing, and a worker's OWN last writes prove
+nothing about it still running.
+Fix (shipped in scripts/15_progress.py + references/operations.md): worker_id +
+worker_heartbeat_at columns; `claim` (refuses fresh foreign claims = collision
+prevention in the tool), `heartbeat` (ONLY liveness writer, never touched by
+set/sync), `release`, `sweep` (live/ZOMBIE/unclaimed classification = the
+DB-vs-reality answer), and a `set` ownership guard. First live user: the P1-cascade
+builder for 002:14 claimed with a fresh heartbeat within minutes of the update.
+Rule: "is this worker alive?" is answered from the DB heartbeat, never from mtimes,
+absence of notifications, or DB gen_status alone; a bulk sync's updated_at is a
+content-write timestamp, not a liveness signal.

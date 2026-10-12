@@ -5,8 +5,9 @@ vision analysis → glm validation → content gate → dependency-gated builds 
 closed-loop PIL → vision-judge certification).
 Deck: 49 curated slides (founder curation 80 extraction groups → 49, renumbered;
 metadata rebuilt from content hashes — `unique_slides/new2old_mapping.json`).
-Status at close-out: **47/49 certified PASS** + slides 25 and 45 in final
-certification loop (this report is finalized after both land — see §6).
+Status at close-out: **49/49 CERTIFIED PASS** (judge attempts 1–4 across the deck;
+DB snapshot: `closeout_db_report_2026-10-12.txt`; the report's "50th row" is the
+quarantined fabricated-artifact placeholder, blocked, not a slide).
 
 ## 1. Deliverables (single-version law: one pptx per slide, plain names)
 
@@ -68,23 +69,42 @@ proof), 45 attempt-1 D-findings in fix-loop.
 3. **Badge-numeral assumption** (deck-wide): originals have no printed numbers; badge
    numeral = file number. VETO window stays open — a veto is a mechanical re-badge.
 
-## 6. Final two slides (in flight at draft time)
+## 6. Final two slides
 
-- **Slide 45** ("Apply Convolution as a NEW MODULE"): attempt 1 judge FAIL — D1 MAJOR
-  starburst occludes top-box line 1 (original merely clips), D2 arrowhead too thick
-  (shaft-band red cols 18 vs original 8), D3-D5 minor; plus a badge regression
-  introduced by rebuild cycle ~5 (chrome check FAIL) — all being fixed for judge
-  attempt 2. DB: building.
-- **Slide 25** (next annotation state of the Neural Network Model diagram): parent
-  component `components/slide_024.js` imported; 4 converged measurement rounds banked
-  (`qa/slide025/measure2-5`); build → render → closed-loop → judge in flight. DB: building.
+- **Slide 25** (next annotation state of the Neural Network Model diagram): **CERTIFIED
+  2026-10-12 23:15** — judge attempt 1 PASS (`qa/slide025/judge_attempt_1.txt`), 3 MINORs
+  only (Net_j pointer arrow inside the green Σ/∫ node vs entering from the label above;
+  w_ji label marginally high; subscripts slightly large). Built on the certified parent
+  component `components/slide_024.js` (title block reused verbatim, chrome via
+  shared_patterns, numeral 25); equations in professional 2D format (STIX mathtext 600dpi
+  PNGs, ≤3 frame px ink-anchored); independent second builder's chrome check PASS before
+  judging (dual-build race converged per protocol; its measure6-9 probes banked as
+  evidence). DB: passed / PASS / 1 attempt.
+- **Slide 45** ("Apply Convolution as a NEW MODULE"): **CERTIFIED 2026-10-12 23:43,
+  judge attempt 3 PASS** (`qa/slide045/judge_attempt_3.txt`; 0 MAJOR/BLOCKER, 6 MINOR
+  cosmetics). Attempt chain: 1 FAIL (D1 MAJOR starburst occluded defbox line 1, D2
+  arrowhead) → 2 FAIL (D1/D2 verified resolved; new MAJOR: both callout connector lines
+  missing) → 3 PASS (both connectors rebuilt as the original's faint-gray 1pt BFBBB8
+  lines at PIL-measured org geometry — the prior worker's "Input arrow absent" refutation
+  was overturned: its r−g>5 threshold is blind to neutral gray; `region` subscript
+  regenerated 9.3pt; badge chrome regression root-caused to checker-yellow AA dust where
+  the F0F6CE star fill meets its red outline, fixed with a white-moat triple-stack star
+  so `house_chrome_check.py` PASSES canonically — no supplement workaround). md5
+  ef17c433d1bc57a18cd9381f0fbc8e1c. A concurrent third actor's attempt-3 chain
+  (~23:01) was superseded by the takeover chain certifying the current bytes; takeover
+  documented in `qa/slide045/worker_report.md` addendum. DB: passed / PASS / 3 attempts.
 
 ## 7. Incidents logged (skill memory incidents.md)
 
-Dual-dispatch races (1, 40, 31, 30, 17, 41 — converged via stand-down/verify, pin
-`gen_status=building` at dispatch now law), global provider storms with zero lost work,
-fabricated-artifact defense (phantom slide_050 quarantined, DB blocked), /tmp quota
-crisis (TMPDIR redirect), judge `-p` payload misfires (byte-for-byte sourcing law).
+Dual-dispatch races (1, 40, 31, 30, 17, 41, and slide 25's two-builder race — converged
+via stand-down/verify; pin `gen_status=building` at dispatch is law), global provider
+storms with zero lost work, fabricated-artifact defense (phantom slide_050 quarantined,
+DB blocked), /tmp quota crisis (TMPDIR redirect), judge `-p` payload misfires
+(byte-for-byte sourcing law), compaction self-amnesia (a solo worker re-discovered its
+own certification chain as "peer writes" — attribute fresh writes by enumerating every
+candidate writer INCLUDING the observer; slide 025), slide-045 third-actor attempt-3
+takeover superseded by the chain certifying current bytes (documented in the
+worker_report addendum).
 
 ## 8. Skill memory updates this deck
 

@@ -1,0 +1,60 @@
+## 1. Verbatim text transcription
+
+**Title (top center):**
+> Apply **Convolution** as a <u>NEW MODULE</u>
+> ("Apply", "as a", "NEW MODULE" in red; "Convolution" in blue; underline only under "NEW MODULE")
+
+**Page badge (top-right circle):**
+> 45
+
+**Starburst shape (top-right, italic red text):**
+> Important
+
+**Blue-bordered text box (upper area, 3 lines):**
+> Since Convolution is a DOT product (between filter values and corresponding image values),
+> It can be applied as if it is a NN Layer
+> **Input**: image values, **Weights** : filter values, **Activation**: Linear, **Bias**:0
+
+**Red-bordered text box (below it, italic red):**
+> **Remember**: for training, it is required to have the gradient of Output w.r.t both Input and
+> weights
+
+**Legend box (left side, light-blue fill, red border):**
+> Î¸_**ij** â Filter weights
+> **r**, **c** â row, column
+> **a**_**rc** â Activation value = Î£
+> **Î¸** â Vevtor of all weights *(sic â "Vevtor")*
+
+**Center white box (red border), three bullet items:**
+> â Activation function
+> (equation) a_r,c = Î£[i=âaâa] Î£[j=âbâb] x_râi, câj Â· Î¸_ij
+>
+> â Essentially a dot product, similar to linear layer
+> (equation) a_r,c ~ x^T_r e g i o n Â· Î¸  *(subscript rendered as spread letters "r e g i o n")*
+>
+> â Gradient w.r.t. the parameters
+> (equation) âa_r,c / âÎ¸_i,j = Î£[r=0âNâ2a] Î£[c=0âNâ2b] x^râi, câj  *(exponent appears as superscript)*
+
+**Right-side callout boxes (blue borders):**
+> **Weights**: filter values
+> **Input**: pixel values
+
+## 2. Layout
+
+- **Top:** The title spans from roughly the left quarter to the right side. At the far top-right is a red zigzag starburst containing the italic word "Important," and immediately at the top-right corner a light-blue circle badge containing "45." The starburst and badge touch/slightly overlap each other.
+- **Left edge:** A light-blue legend box (red border) with the four "â" definitions sits at the mid-left/lower-left. Above it is empty white space. At the very bottom-left edge of the image there is a short stray red vertical line.
+- **Center:** A large white box with a red border holds the three bulleted items and their equations, with the equations indented to the right of each bullet.
+- **Right edge:** Two blue-bordered callout boxes, "Weights: filter values" (upper) and "Input: pixel values" (lower). A straight red diagonal line connects the "Weights" callout back to the Î¸_ij term of the first equation.
+- **Bottom:** The lower border of the center white box and empty white background; no other content.
+
+## 3. Visual defects
+
+- **Mouse cursor captured in render:** A red arrow pointer overlaps the first equation's subscript "x_râi, câj", partially obscuring those subscript characters.
+- **Stray mark:** A small black/gray diagonal tick sits immediately after the word "parameters" in the third bullet, resembling a cursor or pen artifact.
+- **Overlap/clipping:** The "Important" starburst overlaps the top-right corner of the blue-bordered text box; the end of the first line â "values)," â is partially covered/cut by the starburst outline and fill (partially legible).
+- **Typo:** "Vevtor of all weights" (should presumably be "Vector").
+- **Notation inconsistency:** In the gradient equation, "x" carries "râi, câj" as a superscript, whereas the same indices appear as a subscript in the first equation.
+- **Stray element:** A short red vertical line at the extreme bottom-left edge of the slide, unattached to any visible box (the legend box border ends higher up).
+- **Wrap:** The red "Remember" box wraps so that only the word "weights" sits on its second line.
+
+No other illegible or wrong-language text observed.

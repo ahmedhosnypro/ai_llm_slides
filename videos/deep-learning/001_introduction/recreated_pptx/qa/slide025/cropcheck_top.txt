@@ -1,0 +1,35 @@
+# Visual QA Comparison â Slide 025 Top Strip Crop
+
+## 1. Verbatim Text Transcription
+
+**Image 1 (PPTX render, 2x crop):**
+- `Input Samples` (two lines, in left pink box)
+- `Sample Label` (two lines, in right pink box)
+- `Neural Network Model` (large red title, partially visible/clipped at top edge of crop)
+
+**Image 2 (original lecture frame, 2x crop):**
+- `Input Samples` (two lines, in left pink box)
+- `Sample Label` (two lines, in right pink box)
+- `Neural Network Model` (large red title, partially visible/clipped at top edge of crop)
+
+## 2. Similarities
+
+- **Same content:** Both show the identical diagram strip â left pink box labeled "Input Samples," right pink box labeled "Sample Label," connected by a horizontal dotted magenta line with double-headed (left- and right-pointing) arrowheads.
+- **Same layout regions:** Boxes at far left and far right edges, connector spanning the full width, red title text centered at the top.
+- **Same styling language:** Pink/violet box fills with darker magenta borders, bold dark text, magenta dotted connector, red title.
+- **Same clipping condition:** In both images the title "Neural Network Model" is cut off at the top of the crop (upper portion of glyphs missing), consistent with the crop being taken at the strip boundary.
+- **Text content matches verbatim** in both â no wrong-language text, no garbage strings, no placeholders in either.
+
+## 3. Differences
+
+- **Sharpness / rendering quality:** Image 1 is crisp with clean vector-like edges; Image 2 is noticeably blurry/soft, with compression artifacts (likely from video-frame capture and rescaling), fuzzy text edges, and slightly muddy colors.
+- **Arrowhead size:** Image 1 has large, bold solid purple triangular arrowheads; Image 2's arrowheads are much smaller and thinner.
+- **Dotted line:** Image 1's connector is a uniform, clearly dotted line; Image 2's is fainter, thinner, and reads as a broken/dashed texture due to blur.
+- **Box proportions:** In Image 1 the boxes are larger relative to the strip and occupy more vertical space; in Image 2 the boxes are smaller/flatter, and the strip has more empty gray space at bottom relative to content.
+- **Left-edge artifact:** Image 2 shows a dark red vertical bar at the far-left edge (remnant of adjacent slide content / frame edge) not present in Image 1.
+- **Title visibility:** Image 2's title is also clipped at top, but its blurred rendering makes the glyphs less legible than in Image 1.
+- **Color fidelity:** Image 1's magenta/purple tones are saturated and distinct; Image 2's appear washed out and blended.
+
+## 4. Verdict
+
+**Image 1 (PPTX render) is better.** Concrete evidence: it renders the same content with sharp text ("Input Samples," "Sample Label" fully legible), clean uniform dotted connector, prominent well-formed arrowheads, and accurate saturated colors. Image 2 conveys the same structure but suffers from blur, compression artifacts, undersized arrowheads, a faint connector, and a stray red edge artifact â all degradation consistent with capturing from an original lecture frame rather than a native render. Both share the same top clipping of the title, but Image 1's overall fidelity is clearly superior.

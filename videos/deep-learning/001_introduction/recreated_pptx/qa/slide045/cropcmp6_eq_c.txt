@@ -1,0 +1,78 @@
+# SLIDE 045 EQUATION (c) CROP COMPARISON
+
+---
+
+## ELEMENT-BY-ELEMENT ANALYSIS
+
+### 1. Left-Hand Side: Partial Derivative Fraction
+
+**IMG1 (Recreation):**
+$$\frac{\partial a_{r,c}}{\partial \theta_{i,j}}$$
+
+- Stacked fraction with horizontal bar â
+- Subscript on $a$: displays $r,c$ with **visible comma** between $r$ and $c$
+- Subscript on $\theta$: displays $i,j$ with **visible comma** between $i$ and $j$
+
+**IMG2 (Original):**
+$$\frac{\partial a_{rc}}{\partial \theta_{ij}}$$
+
+- Stacked fraction with horizontal bar â
+- Subscript on $a$: displays $rc$ â **no visible comma**
+- Subscript on $\theta$: displays $ij$ â **no visible comma**
+
+| Element | IMG1 | IMG2 | Match? | Severity | Confidence |
+|---------|------|------|--------|----------|------------|
+| Comma in $a$ subscript ($r,c$ vs $rc$) | comma present | comma absent | â | **MAJOR** | High â even accounting for 2Ã upscale blur, the comma in $r,c$ is clearly visible in IMG1 and clearly absent in IMG2 |
+| Comma in $\theta$ subscript ($i,j$ vs $ij$) | comma present | comma absent | â | **MAJOR** | High â same reasoning; $ij$ in IMG2 is tightly spaced with no comma artifact |
+
+> **Note:** The resolution difference is acknowledged, but a comma glyph would still render as a discernible mark even in the upscaled original. Both commas appear to be editorial additions in the recreation.
+
+---
+
+### 2. Summation Limits
+
+| Limit | IMG1 | IMG2 | Match? | Severity | Confidence |
+|-------|------|------|--------|----------|------------|
+| Upper limit, 1st Î£ | $N - 2a$ | $N-2a$ | â (content identical; spacing difference is typographic) | â | High |
+| Lower limit, 1st Î£ | $r = 0$ | $r=0$ | â | â | High |
+| Upper limit, 2nd Î£ | $N - 2b$ | $N-2b$ | â (content identical) | â | High |
+| Lower limit, 2nd Î£ | $c = 0$ | $c=0$ | â | â | High |
+
+All limit values match verbatim. â
+
+---
+
+### 3. Summand Subscript
+
+| Element | IMG1 | IMG2 | Match? | Severity | Confidence |
+|---------|------|------|--------|----------|------------|
+| $x$ subscript | $r-i,\ c-j$ (with comma) | $r-i,c-j$ (comma present) | â | â | High |
+
+The comma in the $x$ subscript is present in both versions. â
+
+---
+
+### 4. Structural / Layout Comparison
+
+| Feature | IMG1 | IMG2 | Assessment |
+|---------|------|------|------------|
+| Horizontal fraction bar | Present | Present | â |
+| Large Î£ symbols with limits above/below | Present | Present (smaller due to resolution) | â â format upgrade per directive |
+| Baseline alignment of LHS/RHS | $=$ aligned to fraction bar | Same | â |
+| Double summation side-by-side | Yes | Yes | â |
+| Overall spacing between Î£ symbols | Slightly wider | Tighter | MINOR â typographic difference, not content discrepancy |
+
+---
+
+## DISCREPANCY SUMMARY
+
+| # | Description | Severity | Confidence |
+|---|-------------|----------|------------|
+| 1 | **Added comma in $a_{r,c}$** â original writes $a_{rc}$ (no comma) | MAJOR | High |
+| 2 | **Added comma in $\theta_{i,j}$** â original writes $\theta_{ij}$ (no comma) | MAJOR | High |
+
+---
+
+## FINAL VERDICT: **FAIL** for "faithful crop"
+
+**Rationale:** While the equation structure, summation limits, operators, and overall layout are faithfully reproduced, the recreation inserts **two commas** into subscripts that do not exist in the original ($a_{r,c}$ vs $a_{rc}$ and $\theta_{i,j}$ vs $\theta_{ij}$). These are content-level discrepancies in the mathematical notation â they alter the written form of the equation and cannot be attributed to resolution, anti-aliasing, or the mandated professional 2D formatting upgrade. The recreation must remove both commas to match the original verbatim.

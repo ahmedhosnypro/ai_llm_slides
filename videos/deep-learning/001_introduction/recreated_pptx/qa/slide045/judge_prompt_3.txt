@@ -1,0 +1,65 @@
+DECK CHROME GROUND RULES (playlist founder directive 2026-10-11 — settle these FIRST and never raise them as discrepancies): The recreation (IMG1) uses the Deep Learning DSAI 308 playlist house chrome measured from this deck's reference frame: white FFFFFF canvas; gray E9E9E7 panel spanning x 42..918 px, y 45 px down to the slide bottom (1px = 1pt on the 960x540 original), with a thin red C00000 border on the panel's left/right/top edges; a slide-number badge circle d~36 px centered at (893,71) px with fill FDFD96, purple 6A5ACD ring ~2pt, bold 333333 numeral "45" (Arial 18pt). These deck-specific chrome values replace the generic frame values quoted in ground rule (a) below for THIS deck and are INTENTIONAL house chrome, NOT discrepancies. NOTE: the original frames of THIS lecture carry no yellow badge and no printed slide numbers (badge numeral = the slide's file number, assumption pending founder veto) — the badge is drawn on the recreation by mandate, so its presence in IMG1 alone is NOT a discrepancy. Video-capture artifacts in IMG2 (black bottom bar, mouse cursor) are omitted per ground rule (c) — their absence in IMG1 is NOT a discrepancy.
+
+You are the visual acceptance gate for slide 045 of /home/ahmed/Projects/ai_llm_slides.
+The session model cannot see images; ALL vision analysis must go through the image-analysis
+skill's script. First read /home/ahmed/Projects/ai_llm_slides/.agents/skills/image-analysis/SKILL.md
+and follow its routing and dispatch law.
+- Render being judged (attempt 2): /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_introduction/recreated_pptx/qa/slide045/render_6.png
+- Original frame (ground truth): /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_introduction/unique_slides/slide_045.jpg
+- Content spec: /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_introduction/analysis/slide_045_final.json
+
+Method (mandatory, in order):
+1. Probe the gateway window (NO --models flag — the default route IS the images model):
+   cd /home/ahmed/Projects/ai_llm_slides && scripts/16_vision_gate.sh timeout 150 python3 \
+     .agents/skills/image-analysis/scripts/analyze_image.py analysis \
+     videos/deep-learning/001_introduction/recreated_pptx/qa/slide045/render_6.png \
+     --view "Slide 045 recreation attempt 2 — probe" \
+     --capture "150dpi PNG render of a 13.33x7.5in PPTX" \
+     --timeout 120 --rounds 1 --tries 1 \
+     --transcript videos/deep-learning/001_introduction/recreated_pptx/qa/slide045/probe_6.txt
+   A valid body opens the window; a hang means sleep 300 and re-probe ONCE.
+2. Comparison (gate wraps timeout, so queue wait never burns the wall).
+   MANDATORY judge parameters (user directive 2026-10-09): `--thinking high`
+   (maximum reasoning effort) and `--max-tokens 65536`.
+   MEASURED FACT (slide-008 worker, 2026-10-09): with `--thinking high`, the
+   comparison RELIABLY exceeds the 240s wall — use the W4 wide wall from the
+   start, do NOT start at 240s. RESUME DISPATCH AMENDMENT (2026-10-12, slide 045):
+   dispatch walls are timeout 1700 outer wrapper around the gate, --timeout 280
+   --rounds 1 --tries 1 inside (the script's internal abort+retry ladder runs under
+   the 1700s wall; never abandon mid-ladder; on hard-wall HangError retry ONCE
+   at the same wall, skill amendment W4):
+   cd /home/ahmed/Projects/ai_llm_slides && timeout 1700 scripts/16_vision_gate.sh python3 \
+     .agents/skills/image-analysis/scripts/analyze_image.py comparison \
+     videos/deep-learning/001_introduction/recreated_pptx/qa/slide045/render_6.png videos/deep-learning/001_introduction/unique_slides/slide_045.jpg \
+     --view "Slide 045 recreation — fidelity check vs original lecture frame. JUDGE ATTEMPT 2 (resume after attempt 1 FAIL, D1-D5 all addressed and PIL-verified on this render, banked qa/slide045/verify6_out.txt + d1_test_out.txt): D1 the definition-box text now draws ON TOP of the starburst's descending fill exactly as the original (the original's own fill reaches y145-147 at x800-820 with every glyph legible over it; zero glyph ink covered in IMG1; the spikes thread the text gaps in both images); D2 the red arrow wedge is retargeted to the original's measured geometry (x607..623, y343..358) threading the x_{r-i,c-j} gaps with 1px clearance identical to the original — the subscript is fully legible; D3 lowercase x^T_region fixed; D4 the small hand-drawn pointer below the Gradient label tail (left of the N-2a limit) is reproduced at its measured position and measured color (dark graphite per pixel measurement, original x522..534 y435..448); D5 dot glyphs re-rendered thin. Subscript commas (a_{r,c}, theta_{i,j}) follow the validated verbatim spec and match the original's measured subscript widths (14-15px = 'r,c' pattern, dimensionally identical across equations a/b/c; the x_{r-i,c-j} comma is visible in the original)." \
+     --capture "IMG1=150dpi PNG render of a 13.33x7.5in PPTX; IMG2=original lecture video frame" \
+     --thinking high --max-tokens 65536 \
+     --timeout 280 --rounds 1 --tries 1 \
+     --transcript videos/deep-learning/001_introduction/recreated_pptx/qa/slide045/judge_attempt_2.txt \
+     -p "$(cat videos/deep-learning/001_introduction/recreated_pptx/qa/slide045/judge_p_payload_2.txt)"
+   On a hard-wall HangError, retry ONCE at the same wide wall (skill amendment W4).
+   Never wrap analyze_image.py in any other retry loop.
+2b. DEGENERATE GARBAGE RETRY (user directive): if the comparison call aborts with
+   GarbageError, or the winner body you read is degenerate garbage (word salad,
+   looping repetition, no coherent FINAL VERDICT line), the check has NO evidentiary
+   value — re-invoke the comparison (same parameters, new attempt count) up to 3
+   garbage retries before treating it as a failed judge attempt. NEVER certify a
+   pass from a degenerate body; a degenerate body is a FAIL and must be retried.
+3. Read the banked transcript (never Read PNG bytes with the Read tool). The verdict must
+   come from a real comparison winner body — a check without vision evidence is a FAILURE
+   by law; if the comparison never lands, your verdict is fail with issue "no vision evidence".
+4. Standard: fidelity recreation of a plain lecture slide — do not penalize the plain/retro
+   look. Mouse cursors or video-capture artifacts in the original must NOT be recreated;
+   don't flag their absence. Label the certificate: single-read, default route (images),
+   glm leg DEFERRED/BLOCKED.
+
+FINAL MESSAGE (mandatory): line 1 exactly:
+{"page": 1, "verdict": "pass"|"fail", "issues": ["..."]}
+then a short evidence section (transcript paths, findings). You are read-only: fix nothing.
+
+WORKER-FALLBACK NOTE: judge procedure executed by the slide-045 worker itself via Bash
+(no Agent/Task spawn tool in this environment; orchestrator-approved fallback per
+scripts/17_worker_instructions.md §Judge step 7). Resume context: attempt 1 (render_4)
+FAILed with D1-D5; the builder died in a provider storm mid fix-loop; this run rebuilt
+(try 6 render), re-verified every finding with closed-loop PIL checks, and dispatches
+judge attempt 2 on render_6.png.

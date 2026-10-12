@@ -1,0 +1,62 @@
+# Slide 045 â Visual QA Description
+
+## 1. Verbatim Text Transcription
+
+**Title (top, centered):**
+> Apply Convolution as a NEW MODULE
+- "Apply" and "as a" in dark red; "Convolution" in blue; "NEW MODULE" in red with underline.
+
+**Upper blue-bordered text box (dark blue text):**
+> Since Convolution is a DOT product (between filter values and corresponding image values).
+> It can be applied as if it is a NN Layer
+> **Input**: image values, **Weights** : filter values, **Activation**: Linear, **Bias**:0
+
+**Red-bordered box below it (red italic text):**
+> ***Remember***: for training, it is required to have the gradient of Output w.r.t both Input and
+> weights
+
+**Center red-bordered box (black text, circle bullets "â"):**
+> â Activation function
+>
+> Equation: a_{r,c} = Î£_{i=âa}^{a} Î£_{j=âb}^{b} x_{râi, câj} Â· Î¸_{ij}
+>
+> â Essentially a dot product, similar to linear layer
+>
+> Equation: a_{r,c} ~ x^T_{region} Â· Î¸
+>
+> â Gradient w.r.t. the parameters
+>
+> Equation: âa_{r,c} / âÎ¸_{i,j} = Î£_{r=0}^{Nâ2a} Î£_{c=0}^{Nâ2b} x_{râi, câj}
+
+**Left box (pale cyan fill, blue border; symbols in dark red, labels in black):**
+> Î¸_ij â Filter weights
+> r, c â row, column
+> a_rc â Activation value = Î£
+> Î¸ â Vevtor of all weights
+
+**Right-side callout boxes (blue borders):**
+> **Weights**: filter values
+> **Input**: pixel values
+
+**Top-right badge graphics:**
+> Important (italic red, inside a pale-yellow starburst with red jagged outline)
+> 45 (dark navy, inside a small pale-yellow circle with purple ring, overlapping the starburst)
+
+## 2. Layout
+
+- **Overall:** White background with a thin dark-red rectangular frame inset from all four slide edges.
+- **LEFT edge:** Only the red frame line. The pale-cyan definition box ("Î¸_ij â Filter weightsâ¦") sits in the lower-left/mid-left area, ending well short of the frame. Large empty white space below it.
+- **RIGHT edge:** The red frame line; the "45" circle at the extreme top-right corner; the "Important" starburst just left of it; two callout boxes ("Weights: filter values" upper, "Input: pixel values" lower) near the right edge at mid-height, connected by thin gray diagonal connector lines to the center box.
+- **TOP:** Centered title line; starburst badge and "45" circle at top right.
+- **BOTTOM:** The center red-bordered box (with equations) extends lowest, ending above a wide empty white band along the bottom; only the red frame line marks the bottom edge.
+
+## 3. Visual Defects
+
+1. **Badge overlaps text box:** The starburst "Important" badge overlaps the top-right corner of the first blue-bordered box; its red spikes cross through the end of the first line, partially obscuring "â¦image values)." (the closing characters sit under the badge outline). The badge also crosses the slide's red frame, and the "45" circle overlaps the starburst.
+2. **Typo:** "Vevtor of all weights" â should read "Vector".
+3. **Stray red arrow graphic:** A solid red arrow/cursor shape overlaps the first equation, covering part of the subscript in "x_{râi, câj}".
+4. **Stray red mark:** A small red diagonal stroke appears immediately after "parameters" in "Gradient w.r.t. the parameters," touching the text area.
+5. **Inconsistent punctuation spacing:** "Weights : filter values" (space before colon) vs. "Bias:0" (no space after colon).
+6. **Awkward wrap:** The red "Rememberâ¦" box wraps so that only the single word "weights" sits on the second line.
+7. **Layout imbalance:** Considerable unused white space in the lower-left region and along the bottom band, while content clusters in the center/right.
+8. Nothing appears cut off at the slide edges; all box borders and the frame are fully within the canvas. No placeholder/garbage strings or wrong-language text observed.

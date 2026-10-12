@@ -171,3 +171,91 @@ dispatch — buildable gets cross-checked against the deck's real slide set.
 Context: the 002:37 duplicate took over its slide after observing the peer's "zero live processes" (plus 11 min file silence), on coordinator advice that process-verified death beats file silence. The peer then wrote build/slide_037.js at 08:16:55 — it had been in an invisible model-thinking phase (agents between model calls hold NO process at all) for the entire window.
 Facts: (1) for session-scoped subagents, an empty ps is AMBIGUOUS — it covers both dead and mid-thinking; only file-artifact movement + DB row age distinguish them; (2) the duplicate's own long-timeout probe runner may have contributed to the vision-gate saturation that kept the peer's calls blocked — a duplicate's gate load can prolong the very silence that looks like death; (3) recovery was clean: Write hit the file-exists guard, duplicate stood down read-only, killed its probe runner, amended the report append-only, and banked its forensics as non-conflicting f*.py files (which independently discovered the lecture-2 frame's recoloring of the 019-parent stack sub-boxes).
 Rule: RETRACTED — "process-verified death" is valid ONLY for process-bound workers (soffice, script-12/13 lanes, long-running shells). For agent workers the ONLY death test is the dual condition: ≥40 min with zero file-artifact movement anywhere in the slide's namespace AND the DB row still mid-state. When a takeover is voided by a file-exists guard, stand down immediately, kill your own gate-consuming helpers, and reclassify your findings as verification-only contributions.
+
+## 2026-10-12 — Dead worker's handoff state was BEHIND its own disk: measure the invariant, don't trust the journal
+Context: resumed the 002_transformers_part2 OMML wrap pass from a dead worker's banked
+state (scratch/omml_wrap/). The handoff said wrapped = {011,015,031,040,054}, still-plain
+= {010,020,021,025,032}, and flagged 030 as "may have been missed by the original pass".
+Facts: disk truth was 7 already-wrapped slides — 030 (76 mc:AlternateContent) and 053
+(2 AC) had been wrapped AFTER the last provenance_results.json write (15:53 vs pptx/qa
+mtimes 16:35–17:56); the worker died before updating the journal or writing their
+qa/slide030,qa/slide053 omml_wrap_reports. Conversely the "still-plain" five were all
+correctly plain (025/032 with documented skip reports).
+Fix: on resume, (1) measure the invariant directly — count `mc:AlternateContent`/`oMathPara`
+occurrences (grep -o, NOT grep -c: slide XML is one line, so -c returns 1 for any hit and
+hides multi-equation slides) across the WHOLE deck; (2) cross-check journal mtime vs
+artifact mtimes to detect post-journal work; (3) re-verify the undocumented wraps instead
+of re-wrapping (idempotence probes + LO pixel gates) and backfill the missing qa reports.
+Rule: a dead worker's provenance journal is a LOWER BOUND on completed work written some
+time before death — always re-measure the deck-wide invariant from the artifacts before
+acting on the handoff lists, and treat "may have been missed" flags as unverified either way.
+
+## 2026-10-12 — Resumed a founder-fix program the watchdog had "repaired" against a STALE PASS transcript
+Context: 002_transformers_part2 slide 005: attempt-3 PASS (09:14) predated the founder's
+2026-10-12 arrow-attachment defect; the attempt-4/5 fix worker died on an upstream provider
+timeout at the very end of attempt 5 (build 18:33, render 18:37, verification m40 run 19:09,
+never reported). DB row left `gen_status=building`, `visual_check=PASS` (attempt-3, stale).
+Facts: resuming per the resume rule (banked m40 + crop legs + component header) was enough to
+finish without any rebuild — m40's lone FAIL pixel-adjudicated as a predicate artifact
+(m41 13/13), the attempt-4 crop legs bound to the current render via m40's own diff
+confinement (d1/d2/d3/connect_tan pixels identical 4→5), and one fresh full judge
+(judge_attempt_6) certified the fix. Meanwhile the watchdog examined the mid-program row at
+21:45 and appended a `last_error` note that it had "repaired from disk evidence only" using
+the STALE attempt-3 transcript — a state that briefly coexisted with the live fix program
+(row was `judging` at the time).
+Fix: certified with the fresh transcript, then cleared the watchdog's stale last_error note
+(it described a state that no longer existed and would have misled the next dispatcher);
+kept heartbeats in qa/slide005/ throughout so the watchdog could distinguish a live fix
+program from a zombie.
+Rule: on a resume, the DB's visual_check can be a PRE-DEFECT PASS — the founder defect
+report, not the DB, is the state of record; a watchdog repair note in last_error referencing
+a superseded transcript is stale the moment a fresh judge lands, and should be cleared at
+certification. Heartbeat files in the qa dir are what keep the watchdog from re-dispatching
+over a long (judge-wait) silence.
+
+## 2026-10-12 — dual-builder collision on slide 047 resolved by claim/watch/provenance contract
+Context: videos/deep-learning/002_transformers_part2 slide 047; the watchdog dispatched a
+second builder into a unit that already had a resumed builder (me) waiting on the 046-fix
+marker. Coordinator issued a claim (.claim_<agent>) / watch (.watch_<agent>) / provenance
+contract. I claimed first → SENIOR; senior + other builder alive → WATCH MODE (no build
+writes; poll 10 min; 60-min-silence takeover rule; _b suffix rule).
+Mistake avoided: two builders building the same slide concurrently (wasted judge calls,
+clobbered attempts, double DB writes).
+Fix: watched while the other builder certified 047 (attempt 1, PASS, judge 22:24). Ran the
+contract's provenance verification at certification: its build (22:16–22:27) required NO
+046 component bytes at all (header documents m18_ffdiff: frames 046/047 share only outer
+margins → full re-style, fork of the 045/046 mechanisms) and ran AFTER the fixed 046 bytes
+landed (22:03) — so the taint condition ("used the OLD wobbly component") was doubly unmet;
+accepted the certification, stood down, no duplicate build.
+Rule: when a contested certification lands, verify WHAT BYTES the build actually consumed
+(require lines + mtimes + component header rationale) against the defect timeline — not
+just whether a marker file exists; a self-contained build that consumed no tainted bytes
+is clean even without the marker.
+
+## 2026-10-12 — dead-fixer handoff: completing a fix that died between "build done" and "judged/certified/marked"
+Context: 002_transformers_part2 slide 046 arrow de-twist. The afix worker completed the
+fixed build (deliverable pptx 22:28, render_2.png 22:28, component re-banked 22:28, a
+4-file measurement series afix_trace_3/edges_3/native_3/600dpi_3) and died on an upstream
+provider timeout ~22:25-22:28 — before any judge, before DB certification, before the
+.slide046_fixed marker. DB row still `visual_attempts=1` bound to the PRE-FIX
+judge_attempt_1.txt; the marker a slide-47 builder's provenance check keys on was missing.
+Fix (finisher sequence, ~40 min, zero rebuilds): (1) reconstruct the fix from the banked
+measurement files + scratch/slide046_afix/ (before_rebuild/ preserved the superseded
+attempt-1 component, canon_before.npy the traced centerline); (2) independent PIL verify
+(afix_verify_4.py -> afix_verify_4.txt) with fresh 600dpi edge numbers; (3) fresh LO render
+of the delivered pptx -> 0/2,251,125 px vs render_2.png (proves the banked render IS the
+deliverable, per the 0-diff identifier law); (4) rebuild from the re-banked component ->
+0/2,251,125 px again (component = judged pixels) + chrome check; (5) fresh judge at the W4
+wall with the founder-directed-fix GROUND RULES clause -> judge_attempt_2.txt PASS; (6)
+certify with visual_attempts=2 + the fresh transcript; (7) write the marker; (8) report
+addendum in worker_report.md. Attempt-1 evidence untouched throughout.
+Rule: a dead fixer's banked measurements are the resume point, not a reason to re-derive —
+verify (0-diff render bindings + one independent metric pass), judge fresh, certify, THEN
+write the marker; the marker is the LAST artifact, written only after the transcript that
+justifies it exists.
+
+## 2026-10-12 — Compaction self-amnesia: a SOLO worker re-discovered its own certification chain as "peer writes"
+Context: 001_introduction slide 025. Two builders had raced (21:05 + 21:24 dispatches); #2 stood down clean at ~22:58 (verified: no writes). #1 then reported "the peer kept writing" — script edit 23:03, rebuild 23:04, render, judge payload 23:08, judge transcript 23:15, DB pass 23:15:48 — and set out to "adopt the peer's build".
+Facts: #2 had already exited with a zero-writes report; the watchdog does not judge; #1 was the ONLY live agent in the window and stayed alive through 23:26. Conclusion: #1 executed the whole certification chain itself across turns whose details were compacted out of its context, then misattributed its own artifacts to a phantom peer.
+Why nothing was lost: (1) the coordinator messaged #1 the concrete on-disk facts with mtimes, so it READ before writing (banking law) instead of overwriting; (2) banked-PASS-terminal meant once the transcript+DB were found it stood down instead of re-judging; (3) the certificate's validity never depended on authorship — only on the real gate transcript + DB row, both verified independently by the coordinator.
+Rule: an agent's "who wrote this" attributions are UNRELIABLE after long runs — before treating observed fresh writes as a peer's, enumerate every candidate writer INCLUDING the observer itself (duration/mtime math: if only you were alive, it was you). Coordinators: when relaying state to a long-running worker, include absolute mtimes and the full write-chain; workers: re-stat + read-first is what saved this — never rebuild over artifacts you cannot attribute.
