@@ -372,12 +372,16 @@ def release(sid, wid):
 
 
 def sweep(stale_min):
-    """The DB-vs-reality check: every 'building' row classified by claim freshness.
-    Zombies (stale/missing heartbeat) are the re-dispatch list; fresh claims are
-    live workers. This is what 'is anything actually running?' is answered FROM."""
+    """The DB-vs-reality check: every 'building'/'judging' row classified by claim
+    freshness. Zombies (stale/missing heartbeat) are the re-dispatch list; fresh
+    claims are live workers. This is what 'is anything actually running?' is
+    answered FROM. Judging rows are included — a judge attempt through the gate can
+    outlive the 40-min threshold while the worker is mid-call, so a zombie verdict
+    here means VERIFY via fresh writes before re-dispatching, never auto-kill."""
     with conn() as c:
         rows = c.execute("SELECT slide_id, worker_id, worker_heartbeat_at FROM slides "
-                         "WHERE gen_status='building' ORDER BY slide_id").fetchall()
+                         "WHERE gen_status IN ('building','judging') "
+                         "ORDER BY slide_id").fetchall()
     live, zombie, unclaimed = [], [], []
     for sid, wid, hb in rows:
         age = _hb_age_minutes(hb)
