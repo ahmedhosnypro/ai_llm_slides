@@ -47,6 +47,7 @@ video ──fps 1──▶ frames ──phash dedup──▶ unique_slides ─�
       ──render (LO headless→pdftoppm 150dpi)──▶ closed-loop PIL checks
       ──visual judge (render vs original)──▶ PASS = done | FAIL = fix loop
       ──post-passes──▶ equations (2D + OMML) / graphs (generated images)
+      ──all slides PASS──▶ final-deck merge (byte-verbatim OPC) ──0/N pixel gate──▶ deck closed
 ```
 
 Non-negotiable laws (each is expanded in its reference file):
@@ -79,6 +80,14 @@ Non-negotiable laws (each is expanded in its reference file):
   placement defects.
 - **Never delete banked evidence** — per-attempt builds, transcripts, renders, pre-fix
   backups, archived runs. Overwrite nothing certified; copy-then-modify.
+- **Every deck closes with a combined all-in-one deck** (founder directive 2026-10-12).
+  When the last slide certifies, merge the certified per-slide decks via
+  `patterns/final-deck-merge/` (byte-verbatim OPC merge — never re-encode certified
+  content), gate it at 0/N mismatched pages (merged render vs every source render, one
+  LO session), and deliver `<video>_final.pptx` + md5 + banked gate report. The
+  per-slide certifications are NOT the end of the program: a deck is closed only when
+  the combined deck passes the merge gate. Certified working precedent:
+  `videos/deep-learning/002_transformers_part2/scratch/merge_final_002_RUNBOOK.md`.
 - **Always stream** vision-model requests; non-streaming dies at the upstream gateway's
   ~60s cut.
 
@@ -99,8 +108,10 @@ One slide = one worker, end to end. Per-slide instructions live in
 `scripts/17_worker_instructions.md` (the binding contract — build pattern, judge
 template, alignment law, DB updates). The DB (`scripts/15_progress.py`, `VIDEO=<id>`)
 tracks every milestone; update it after every step, and a watchdog re-reads it to
-recover dead workers. Copy that worker-instruction pattern when applying this skill to
-a new project rather than re-deriving it.
+recover dead workers. Workers MUST use the claim/heartbeat liveness contract
+(`claim`/`heartbeat`/`release` on 15_progress.py; liveness is read via `sweep` — never
+inferred from file mtimes; see `references/operations.md`). Copy that worker-instruction
+pattern when applying this skill to a new project rather than re-deriving it.
 
 ## After every task
 

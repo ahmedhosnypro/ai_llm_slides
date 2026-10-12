@@ -11,6 +11,14 @@ quarantined fabricated-artifact placeholder, blocked, not a slide).
 
 ## 1. Deliverables (single-version law: one pptx per slide, plain names)
 
+- **`recreated_pptx/001_introduction_final.pptx`** — the combined all-in-one deck
+  (founder directive 2026-10-12): byte-verbatim OPC merge of the 49 certified
+  per-slide decks (LIVE DB certified set, slide order = slide_id), merge gate
+  **PASS — 0/49 mismatched pages** (`scratch/merge_gate_001i/gate_report.txt` +
+  `merged_render.pdf`; md5 `recreated_pptx/001_introduction_final.pptx.md5`,
+  80653224e75683dbf5e13159dee2fbd3). Merger: `scratch/merge_final_001i.py`
+  (certified 002 pattern; skeleton byte-checked identical across all 49 sources;
+  every slide XML / media / notes part byte-verified vs source after writing).
 - `recreated_pptx/slide_NNN_recreated.pptx` × 49 (no suffixes; graph/OMML baked in
   where applicable; no `_graphed`/`_omml` variants anywhere).
 - `recreated_pptx/build/slide_NNN.js` × 49 — full rebuild chain.
