@@ -1,0 +1,47 @@
+# Visual QA Report â Slide 031, V-panel crop (870Ã420, 2Ã upscale)
+
+## 1. Verbatim text transcription
+
+**Large panel labels (dark red):**
+- `Xâ` â large, below the left pill (X with subscript 2)
+- `1xd` â small, to the right of the pill
+- `Wáµ¥` â large, mid-left area (W with a lowercase-appearing subscript "v")
+- `dxd` â small, below the bottom-right corner of the grid
+- `=` â between the grid and the output column
+
+**Left pill (row-vector tokens, each inside a circle, wrapped in dark-red square brackets `[ â¦ ]`):**
+- `Xââ`  `Xââ`  `Xââ`  `Xââ`
+
+**Matrix tiles (4Ã4 grid; each tile is a pale-yellow rectangle with "W" + numeric subscript). Row-major:**
+
+| | col 1 | col 2 | col 3 | col 4 |
+|---|---|---|---|---|
+| Row 1 | Wââ (blue) | Wââ (blue) | Wââ (blue) | Wââ (blue) |
+| Row 2 | Wââ (magenta) | Wââ (magenta) | Wââ (magenta) | Wââ (magenta) |
+| Row 3 | Wââ (orange) | Wââ (orange) | Wââ (orange) | Wââ (orange) |
+| Row 4 | Wââ (green) | Wââ (green) | Wââ (green) | Wââ (green) |
+
+**Output column (top to bottom, dark-red "X" with subscript):**
+- `X_V21`, `X_V22`, `X_V23`, `X_V24` (subscript reads as capital "V" followed by two digits)
+
+**Bottom callout (clipped):** visible fragment reads approximately `â¦â variant to QUERY withâ¦` â "variant" is italic serif; "to", "QUERY" (bold, underlined), "with" are sans-serif. The leading token is cut off at the left edge; only a subscript "2" and a partial glyph (shaped like "z" or possibly "X") are visible â not fully legible. The sentence clearly continues beyond the crop on both sides.
+
+No garbage/placeholder strings and no wrong-language text are present; all text is Latin letters and digits.
+
+## 2. Layout
+
+- **Overall:** A white rounded panel with a blue border; the border is visible along the top, right, and bottom edges. The panel's left border is outside the crop.
+- **LEFT edge:** A thin dark-red vertical strip runs down the extreme left edge (a clipped foreign element from outside the crop). Moving inward: the pink pill with the four circled XâââXââ tokens in the upper-left; `Xâ` below it; `Wáµ¥` further right and lower (left of the grid). Bottom-left corner: the clipped pink callout box.
+- **TOP:** The blue panel border along the top; the matrix grid and output column begin close to it. A tiny clipped pink shape intrudes at the very top-left corner of the image, outside/above the panel border.
+- **CENTER:** The 4Ã4 grid â sixteen rounded lavender cells separated by white gutters, enclosed in a larger rounded lavender container; each cell holds a centered pale-yellow mini-rectangle with its W label.
+- **RIGHT:** `1xd` sits right of the pill (upper area); `=` at mid-height; then the output column â a vertical lavender rounded rectangle holding the four stacked pale-yellow X_V2x tiles, wrapped by a dark-red rounded-rectangle outline; the blue border closes the right edge.
+- **BOTTOM:** `dxd` at the grid's bottom-right; the clipped pink callout across the bottom-left; blue border along the bottom.
+
+## 3. Visual defects / anomalies
+
+1. **Clipping (crop-related):** Content is cut at every edge â the left dark-red strip, the top-left pink sliver, the bottom callout (box and text descenders cut by the bottom edge; leading token cut by the left edge), and the panel's left border is absent from frame.
+2. **Outline/fill misalignment (output column):** The dark-red rounded outline is larger than the lavender fill and offset, protruding beyond the fill at both the top and bottom, so the two shapes do not align cleanly.
+3. **Labeling inconsistency (observation):** Matrix tiles use purely numeric subscripts (Wâââ¦Wââ) with the *first* index incrementing left-to-right within each row (i.e., transposed-looking relative to conventional row-major Wáµ¢â±¼), while output tiles prefix a "V" in the subscript (X_V21â¦X_V24). The row-vector tokens (Xâââ¦Xââ) and output tokens (X_V21â¦) use different subscript conventions. Possibly intentional, but noteworthy given the view's focus.
+4. **Color inconsistency (possibly intentional):** Matrix "W" letters are color-coded by row (blue / magenta / orange / green) while all "X" labels are uniformly dark red; no legend explaining the row colors appears within the crop.
+5. **Mixed typography in callout:** "variant" is italic serif while the neighboring words are bold sans-serif.
+6. **Image quality:** Consistent with a 2Ã upscale â soft edges, mild compression blocking, and slight color fringing. The smallest subscript digits (in matrix tiles and output tiles) are slightly blurry but readable; their exact hue (near-black vs. dark navy) cannot be determined confidently.

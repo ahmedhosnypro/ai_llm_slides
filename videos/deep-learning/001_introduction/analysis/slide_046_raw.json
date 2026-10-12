@@ -1,0 +1,152 @@
+{
+  "slide_title": "POOLING",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Aggregate multiple values into a single value",
+      "Invariance to small transformations",
+      "Reduces the size of the layer output/input to next layer \u2192 Faster computations",
+      "Keeps most important information for the next layer",
+      "Max pooling",
+      "Average pooling"
+    ],
+    "labels": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "z",
+      "Pool",
+      "(",
+      ")",
+      "==",
+      "Size is reduced",
+      "[thin red frame line along top edge and left edge of slide]",
+      "[solid black strip across the very bottom of the frame \u2014 likely the video-player control bar, not slide content]"
+    ],
+    "equations": [
+      "Pool ( <photo of leaping tiger> ) == <smaller photo of same tiger>",
+      "[a b; c d] \u2192 z   (2x2 green matrix with cells a, b, c, d reduced via a right-pointing block arrow to a single green cell labeled z)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title 'POOLING' centered at top; below it one large light-gray panel with a thin red border containing all content: a bullet list in the upper-left, two blue-outlined option boxes ('Max pooling', 'Average pooling') stacked mid-left, and a horizontal equation-style diagram across the bottom running left-to-right (2x2 green matrix \u2192 hollow block arrow \u2192 green 'z' square \u2192 italic 'Pool (' \u2192 large tiger photo \u2192 ')' \u2192 '==' \u2192 small tiger photo with blue underlined caption 'Size is reduced' beneath it). Thin red frame lines at the slide's top and left edges; black strip at the very bottom of the frame.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~30-70% width, ~12-20% height",
+        "content": "The word 'POOLING' in large bold red all-caps sans-serif"
+      },
+      {
+        "name": "Content panel",
+        "position": "middle, ~9-91% width, ~25-85% height",
+        "content": "Large rectangle with thin red border and very light background holding bullets, option boxes, and diagram"
+      },
+      {
+        "name": "Bullet list",
+        "position": "top-left of panel, ~12-80% width, ~27-44% height",
+        "content": "One main hollow-circle bullet with three indented smaller hollow-circle sub-bullets"
+      },
+      {
+        "name": "Option boxes",
+        "position": "middle-left, ~11-31% width, ~45-57% height",
+        "content": "Two stacked blue-outlined rectangles: 'Max pooling' above 'Average pooling'; a mouse cursor hovers at the lower-right of the second box"
+      },
+      {
+        "name": "Pooling diagram",
+        "position": "bottom of panel, ~15-82% width, ~58-78% height",
+        "content": "Horizontal flow: 2x2 green grid (a,b,c,d) \u2192 block arrow \u2192 green 'z' square \u2192 'Pool (' \u2192 large tiger photo \u2192 ')' \u2192 '==' \u2192 small tiger photo with 'Size is reduced' caption"
+      },
+      {
+        "name": "Bottom strip",
+        "position": "bottom full-width, ~96-100% height",
+        "content": "Solid black bar (video-player controls)"
+      }
+    ],
+    "hierarchy": "The red all-caps title dominates by size/weight/color; the tiger photographs are the next strongest visual magnets; the bullet list is the primary reading content (medium dark-gray text); the blue-outlined boxes and blue caption act as accents; the green matrix cells provide a strong color pop at small size."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Large content panel with a thin red border enclosing the bullets, option boxes, and diagram",
+      "colors": [
+        "#C00000",
+        "#F7F7F7"
+      ],
+      "position": "center of slide, ~9-91% width, ~25-85% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Two rectangles with thin blue outlines and white/transparent fill, each containing a hollow-circle bullet and text: box 1 'Max pooling', box 2 'Average pooling'",
+      "colors": [
+        "#3333CC",
+        "#3B3B3B"
+      ],
+      "position": "middle-left, stacked vertically"
+    },
+    {
+      "type": "diagram",
+      "description": "Pooling equation diagram, left to right: (1) 2x2 grid of bright green square cells with thin black borders, labeled bold lowercase 'a' (top-left), 'b' (top-right), 'c' (bottom-left), 'd' (bottom-right); (2) hollow block arrow (white fill, black outline) pointing right; (3) single green square with black border labeled bold 'z'; (4) italic text 'Pool' followed by '('; (5) large photo of a tiger leaping over water; (6) closing ')'; (7) '==' sign; (8) the same tiger photo at roughly 40-45% scale; (9) below the small photo, blue bold underlined caption 'Size is reduced'",
+      "colors": [
+        "#3CB43C",
+        "#000000",
+        "#3B3B3B",
+        "#3333CC"
+      ],
+      "position": "bottom band of the content panel"
+    },
+    {
+      "type": "arrow",
+      "description": "One right-pointing block arrow, unfilled (white) with black outline, between the 2x2 matrix and the 'z' square",
+      "colors": [
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "bottom band, ~27-32% width"
+    },
+    {
+      "type": "image",
+      "description": "Photograph of a tiger mid-leap over water, side view, used twice at two scales to demonstrate size reduction from pooling",
+      "colors": [
+        "#D97B1F",
+        "#000000",
+        "#5B7A4A",
+        "#3E5C3E"
+      ],
+      "position": "large version center-bottom; small version right-bottom"
+    }
+  ],
+  "imagery": [
+    "Large photo (~200x100 px) of a tiger leaping over water, realistic photograph, placed between 'Pool (' and ')' in the diagram",
+    "Small photo (~90x45 px) of the identical tiger image, placed after '==' with the blue underlined caption 'Size is reduced' directly beneath it"
+  ],
+  "colors": {
+    "background": "#EFEFEF (light-gray panel) on #FFFFFF outer slide",
+    "title_text": "#C00000",
+    "body_text": "#3B3B3B",
+    "accents": [
+      "#C00000 (red frame and panel border)",
+      "#3333CC (blue option-box outlines and 'Size is reduced' hyperlink)",
+      "#3CB43C (green matrix/square cells)",
+      "#000000 (cell borders, diagram symbols, bottom bar)"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout (Calibri-like). Title: bold, ALL CAPS, ~40pt, red. Body bullets: regular weight, ~18-20pt, dark gray, hollow-circle (open round) markers; sub-bullets indented with smaller hollow circles. 'Max pooling' and 'Average pooling' sit in blue-outlined boxes with hollow-circle bullets. 'Pool' is italic (serif/math-like appearance); matrix letters and 'z' are bold lowercase. 'Size is reduced' is blue, bold, underlined \u2014 hyperlink styling. The '\u2192' arrow glyph appears inline in the third sub-bullet.",
+  "animation_state": "Slide appears fully built (all bullets, boxes, and diagram visible). A mouse cursor is visible hovering at the lower-right corner of the 'Average pooling' box, indicating live presentation; no partially revealed content.",
+  "recreation_brief": "1. Set slide background to white; draw a thin red (#C00000) frame line across the top edge and down the left edge. 2. Add a large light-gray (#EFEFEF) rectangle with a thin red border from ~9% to ~91% width and ~25% to ~85% height as the content panel. 3. Insert a centered text box at top with 'POOLING' \u2014 Calibri bold, ~40pt, #C00000, all caps. 4. Inside the panel's upper-left, add a bullet list: main hollow-circle bullet 'Aggregate multiple values into a single value' (~20pt, #3B3B3B), then three indented smaller hollow-circle sub-bullets: 'Invariance to small transformations'; 'Reduces the size of the layer output/input to next layer \u2192 Faster computations'; 'Keeps most important information for the next layer'. 5. Below the list, draw two stacked rectangles (~200 px wide, thin #3333CC outline, no fill): first contains hollow-circle bullet 'Max pooling', second contains hollow-circle bullet 'Average pooling' (~18pt, #3B3B3B). 6. Build the bottom diagram left-to-right: (a) a 2x2 table with bright green (#3CB43C) cells and thin black borders, cells labeled bold lowercase a, b (top row) and c, d (bottom row); (b) a hollow block arrow (white fill, black outline) pointing right; (c) one green (#3CB43C) square with black border labeled bold 'z'; (d) italic text 'Pool' + '('; (e) a photo of a tiger leaping over water (~2:1 aspect); (f) ')'; (g) '=='; (h) the same tiger photo resized to ~40-45%; (i) beneath it a blue (#3333CC), bold, underlined caption 'Size is reduced'. 7. Do not add the bottom black strip \u2014 it is the video player's control bar, not slide content.",
+  "_meta": {
+    "frame": "slide_046.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 46,
+      "image": "slide_046.jpg",
+      "kept_frame": "frame_04534.jpg",
+      "start_sec": 4299.0,
+      "end_sec": 4533.0,
+      "frame_count": 235,
+      "old_group": 74,
+      "founder_frame_swap": false
+    },
+    "elapsed_s": 105.8
+  }
+}

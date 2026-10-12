@@ -1,0 +1,43 @@
+**Note on the crop file:** I cannot open `/home/ahmed/.../crop_pairs.png` â I only have access to the two images embedded in this conversation (the 960Ã540 lecture frame and the 150 dpi PPTX render). Since crop pairs R1âR7 are region-by-region crops of these same two images, I've performed the equivalent region-by-region comparison directly on the full frames below, covering the seven regions such a composite would contain (header, left Z/Wâ stack, Dot Product block, Scaling/Mask column, Softmax/â column, Weighted-SUM/right V path, bottom embedding strip + W box). If the crop file contains regions not represented in these full frames, I cannot speak to them.
+
+---
+
+## 1. Verbatim text transcription
+
+**Image 1 (original lecture frame, 960Ã540):**
+- Title: `Self Attention Mechanism for Decoder  (Adding Mask)`
+- Header widgets: `-â` Â· `(*)` Â· (blank yellow box) Â· `54`
+- Callouts: `Similarity` Â· `Probabilities` Â· `Weighted SUM`
+- Diagram text: `Dot Product` Â· `K,q` Â· `K,q / âd` Â· `Scaling by âd` (rotated, red) Â· `Mask` (rotated) Â· `-â -â 0 0` (mask column values) Â· `Softmax` (rotated, purple) Â· `Î£` Â· `0`
+- Node labels: `Zâ Zâ Zâ Zâ` (both sides) Â· `Wââ½Ê³â¾` Ã4 Â· `Kâ Kâ Kâ Kâ` Â· `Vâ Vâ Vâ Vâ` Â· `Wáµ¥â½Ê³â¾` Ã4 Â· `qâ` Â· `Wqâ½Ê³â¾`
+- `Look Ahead Mask` (black oval, yellow text)
+- Bottom-right: `1Ãd` Â· `W` Â· `dÃd` Â· `=` Â· `1Ãd` Â· `d: Embedding Length`
+
+**Image 2 (PPTX recreation render, 150 dpi):**
+- Identical text set: title, `-â`, `(*)`, blank yellow box, `54`, `Similarity`, `Probabilities`, `Weighted SUM`, `Dot Product`, `K,q`, `K,q/âd`, `Scaling by âd` (rotated), `Mask` (rotated), `-â -â 0 0`, `Softmax` (rotated), `Î£`, `0`, plus a large `S` in the softmax bar not clearly present in IMG1
+- Same node labels: `Zââ¦Zâ`, `Wââ½Ê³â¾`, `Kââ¦Kâ`, `Vââ¦Vâ`, `Wáµ¥â½Ê³â¾`, `qâ`, `Wqâ½Ê³â¾`, `Look Ahead Mask`, `1Ãd`, `W`, `dÃd`, `1Ãd`, `d: Embedding Length`
+
+No garbage strings, no wrong-language text, and no placeholders in either image.
+
+## 2. Similarities
+
+- **Purpose & content:** Both depict the identical masked self-attention decoder diagram; every conceptual element (Z stacks, Wâ/Wáµ¥ projections, K/V vectors, dot-product block, âd scaling, causal mask values `-â -â 0 0`, softmax, weighted Î£, look-ahead mask, W-matrix dimension box) is present in both.
+- **Layout regions:** Same overall structure â title bar with `-â / (*) / blank / 54` widgets top-right; light-gray outer frame; pink canvas; left dashed ZââZâ stack; central tan "Dot Product" column; pink scaling bar; green mask column; pale softmax bar; Î£ bar; right dashed Z stack; bottom embedding strip with highlighted Zâ (magenta) and red up-arrow; bottom-right dashed W box with green arrow to the top z-output block.
+- **Styling:** Matching color language â red title and arrows, green mask column, tan dot-product block, black oval "Look Ahead Mask", magenta highlight on Zâ, dashed green container boxes, yellow chips, purple "Softmax".
+
+## 3. Differences
+
+- **Resolution/sharpness:** IMG1 is a soft, low-resolution video frame (960Ã540) with compression artifacts; IMG2 is crisp with clean vector-like edges.
+- **"Softmax" overlap (IMG2-only defect):** In IMG2 the rotated `Softmax` label is drawn **on top of the red â circle** near the Zâ row, making both hard to read. In IMG1 the rotated "Softmax" sits along the pale bar with only minor collision. IMG2 also adds a large `S` glyph inside the softmax bar that is not legible in IMG1.
+- **"Scaling by âd" placement:** In IMG1 it is a standalone red rotated label beside the pink bar, clearly separated. In IMG2 it is rendered in black, rotated, wedged between the green mask column and the pink bar, reading as part of the column rather than an annotation.
+- **"K,q / âd" label:** IMG1 shows it in red next to the pink bar; IMG2 shows it in red italics above the mask column, slightly separated from the bar it describes.
+- **â/â node styling:** IMG1 uses small orange/red â marks with `0` beside the top one; IMG2 uses larger red â circles; the Vâ label in IMG2 sits very tight against the bottom â node (near-collision).
+- **Green output arrow:** IMG2's arrow from Î£ to the z block is much larger/bolder than IMG1's modest green arrow.
+- **Proportions:** IMG2 spreads the mask/softmax columns slightly wider and the right-hand V-path boxes are larger relative to the canvas; IMG1 is more compressed horizontally.
+- **Header widgets:** Both have the same four widgets; IMG2 renders them larger and cleaner (the blank yellow box and `(*)` circle are more prominent).
+
+## 4. Verdict
+
+**Image 2 (the PPTX recreation) is better overall.** Concrete evidence: it is sharply rendered at high resolution where IMG1 is blurry and artifact-laden; every label (subscripts on Z/W/K/V, `-â` mask values, `d: Embedding Length`) is legible in IMG2 but only partly legible in IMG1; and it faithfully reproduces all regions and colors of the original at correct relative positions.
+
+Its one real defect is the **rotated "Softmax" label overlapping the red â circle at the Zâ row**, plus the awkwardly wedged black "Scaling by âd" label and the tight Vâ/â spacing. If those overlaps were fixed, IMG2 would be strictly superior; even as-is, its legibility and fidelity outweigh IMG1's advantage of having no severe overlaps but suffering from very low resolution.

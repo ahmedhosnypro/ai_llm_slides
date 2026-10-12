@@ -1,0 +1,64 @@
+== containers ==
+FAIL upper container: render (np.int64(630), np.int64(159), np.int64(1843), np.int64(579)) vs expected (649.2, 157.0, 1846.1, 582.1) d=(-19.2,+2.0,-3.1,-3.1)
+OK  lower container: render (np.int64(639), np.int64(642), np.int64(1839), np.int64(1123)) vs expected (638.3, 641.0, 1841.8, 1125.0) d=(+0.7,+1.0,-2.8,-2.0)
+== bars ==
+OK  bar1 residual: render (np.int64(692), np.int64(183), np.int64(1766), np.int64(234)) vs expected (692.5, 183.1, 1768.1, 233.3) d=(-0.5,-0.1,-2.1,+0.7)
+OK  bar FFN: render (np.int64(692), np.int64(253), np.int64(1766), np.int64(300)) vs expected (692.5, 252.9, 1768.1, 298.7) d=(-0.5,+0.1,-2.1,+1.3)
+OK  bar2 residual: render (np.int64(692), np.int64(318), np.int64(1766), np.int64(365)) vs expected (692.5, 318.3, 1768.1, 364.1) d=(-0.5,-0.3,-2.1,+0.9)
+OK  bar lower residual: render (np.int64(692), np.int64(680), np.int64(1766), np.int64(727)) vs expected (692.5, 680.2, 1768.1, 726.0) d=(-0.5,-0.2,-2.1,+1.0)
+OK  bar purple: render (np.int64(705), np.int64(990), np.int64(1761), np.int64(1036)) vs expected (705.5, 989.8, 1763.7, 1035.6) d=(-0.5,+0.2,-2.7,+0.4)
+== upper 3D boxes (fronts) ==
+OK  upper box1: render (np.int64(684), np.int64(409), np.int64(859), np.int64(528)) vs expected (683.9, 409.9, 859.5, 527.6) d=(+0.1,-0.9,-0.5,+0.4)
+OK  upper box2: render (np.int64(907), np.int64(411), np.int64(1083), np.int64(528)) vs expected (907.2, 409.9, 1085.0, 527.6) d=(-0.2,+1.1,-2.0,+0.4)
+OK  upper box3: render (np.int64(1142), np.int64(411), np.int64(1315), np.int64(528)) vs expected (1141.4, 409.9, 1317.0, 527.6) d=(+0.6,+1.1,-2.0,+0.4)
+OK  upper box4: render (np.int64(1391), np.int64(411), np.int64(1566), np.int64(528)) vs expected (1390.8, 409.9, 1568.6, 527.6) d=(+0.2,+1.1,-2.6,+0.4)
+OK  upper box5: render (np.int64(1614), np.int64(411), np.int64(1787), np.int64(528)) vs expected (1614.1, 409.9, 1789.8, 527.6) d=(-0.1,+1.1,-2.8,+0.4)
+== lower masked 3D boxes ==
+OK  masked box1: render (np.int64(673), np.int64(757), np.int64(846), np.int64(835)) vs expected (673.0, 756.5, 848.7, 835.0) d=(-0.0,+0.5,-2.7,-0.0)
+OK  masked box2: render (np.int64(907), np.int64(757), np.int64(1080), np.int64(835)) vs expected (907.2, 756.5, 1082.9, 835.0) d=(-0.2,+0.5,-2.9,-0.0)
+OK  masked box3: render (np.int64(1142), np.int64(757), np.int64(1315), np.int64(835)) vs expected (1141.4, 756.5, 1317.0, 835.0) d=(+0.6,+0.5,-2.0,-0.0)
+OK  masked box4: render (np.int64(1391), np.int64(757), np.int64(1566), np.int64(835)) vs expected (1390.8, 756.5, 1568.6, 835.0) d=(+0.2,+0.5,-2.6,-0.0)
+OK  masked box5: render (np.int64(1614), np.int64(757), np.int64(1787), np.int64(835)) vs expected (1614.1, 756.5, 1789.8, 835.0) d=(-0.1,+0.5,-2.8,-0.0)
+== encoder box ==
+OK  encoder box: render (np.int64(127), np.int64(666), np.int64(580), np.int64(925)) vs expected (126.6, 665.0, 581.9, 926.6) d=(+0.4,+1.0,-1.9,-1.6)
+== circles ==
+OK  K circle: render (np.int64(630), np.int64(393), np.int64(661), np.int64(426)) vs expected (629.7, 392.4, 662.2, 427.3) d=(+0.3,+0.6,-1.2,-1.3)
+OK  V circle: render (np.int64(632), np.int64(504), np.int64(663), np.int64(537)) vs expected (631.8, 503.6, 664.3, 538.5) d=(+0.2,+0.4,-1.3,-1.5)
+FAIL Q circle 1: render (np.int64(739), np.int64(498), np.int64(807), np.int64(567)) vs expected (779.3, 538.5, 809.6, 569.0) d=(-40.3,-40.5,-2.6,-2.0)
+FAIL Q circle 5: render (np.int64(1667), np.int64(496), np.int64(1745), np.int64(565)) vs expected (1707.4, 536.3, 1737.7, 566.9) d=(-40.4,-40.3,+7.3,-1.9)
+== word boxes ==
+FAIL wordbox1: render (np.int64(656), np.int64(999), np.int64(892), np.int64(1111)) vs expected (673.0, 1040.0, 853.0, 1109.7) d=(-17.0,-41.0,+39.0,+1.3)
+FAIL wordbox2: render (np.int64(890), np.int64(1038), np.int64(1098), np.int64(1111)) vs expected (905.0, 1040.0, 1085.0, 1109.7) d=(-15.0,-2.0,+13.0,+1.3)
+FAIL wordbox3: render (np.int64(1126), np.int64(1038), np.int64(1335), np.int64(1111)) vs expected (1141.4, 1040.0, 1321.4, 1109.7) d=(-15.4,-2.0,+13.6,+1.3)
+FAIL wordbox4: render (np.int64(1369), np.int64(1038), np.int64(1575), np.int64(1111)) vs expected (1386.4, 1040.0, 1562.1, 1109.7) d=(-17.4,-2.0,+12.9,+1.3)
+FAIL wordbox5: render (np.int64(1609), np.int64(999), np.int64(1800), np.int64(1111)) vs expected (1622.8, 1040.0, 1802.8, 1109.7) d=(-13.8,-41.0,-2.8,+1.3)
+== callouts (red borders) ==
+FAIL callout1 border: render (np.int64(86), np.int64(95), np.int64(628), np.int64(272)) vs expected (98.4, 135.2, 601.5, 233.3) d=(-12.4,-40.2,+26.5,+38.7)
+FAIL callout2 border: render (np.int64(86), np.int64(236), np.int64(634), np.int64(427)) vs expected (98.4, 276.9, 601.5, 388.1) d=(-12.4,-40.9,+32.5,+38.9)
+== legend ==
+OK  legend box: render (np.int64(99), np.int64(1058), np.int64(489), np.int64(1112)) vs expected (98.4, 1057.4, 490.9, 1114.1) d=(+0.6,+0.6,-1.9,-2.1)
+== text-fit checks ==
+OK  bar1 caption single line: 1 ink bands (expect 1) at rel rows [(np.int64(13), np.int64(38))]
+OK  FFN caption single line: 1 ink bands (expect 1) at rel rows [(np.int64(13), np.int64(32))]
+OK  purple caption single line: 1 ink bands (expect 1) at rel rows [(np.int64(11), np.int64(34))]
+OK  upper box1 3-line label: 3 ink bands (expect 3) at rel rows [(np.int64(23), np.int64(37)), (np.int64(50), np.int64(64)), (np.int64(77), np.int64(91))]
+FAIL masked box1 3-line label: 2 ink bands (expect 3) at rel rows [(np.int64(32), np.int64(41)), (np.int64(50), np.int64(59))]
+FAIL callout1 2-line text: 1 ink bands (expect 2) at rel rows [(np.int64(0), np.int64(88))]
+FAIL callout2 2-line text: 1 ink bands (expect 2) at rel rows [(np.int64(0), np.int64(101))]
+OK  upper box line pitch 27.0px vs pinned 27.1px
+OK  containment scan: ink outside panel columns L=0 R=0 px (border AA allowed small)
+
+SELF-CHECK: 13 FAIL, 0 WARN
+  - FAIL upper container: render (np.int64(630), np.int64(159), np.int64(1843), np.int64(579)) vs expected (649.2, 157.0, 1846.1, 582.1) d=(-19.2,+2.0,-3.1,-3.1)
+  - FAIL Q circle 1: render (np.int64(739), np.int64(498), np.int64(807), np.int64(567)) vs expected (779.3, 538.5, 809.6, 569.0) d=(-40.3,-40.5,-2.6,-2.0)
+  - FAIL Q circle 5: render (np.int64(1667), np.int64(496), np.int64(1745), np.int64(565)) vs expected (1707.4, 536.3, 1737.7, 566.9) d=(-40.4,-40.3,+7.3,-1.9)
+  - FAIL wordbox1: render (np.int64(656), np.int64(999), np.int64(892), np.int64(1111)) vs expected (673.0, 1040.0, 853.0, 1109.7) d=(-17.0,-41.0,+39.0,+1.3)
+  - FAIL wordbox2: render (np.int64(890), np.int64(1038), np.int64(1098), np.int64(1111)) vs expected (905.0, 1040.0, 1085.0, 1109.7) d=(-15.0,-2.0,+13.0,+1.3)
+  - FAIL wordbox3: render (np.int64(1126), np.int64(1038), np.int64(1335), np.int64(1111)) vs expected (1141.4, 1040.0, 1321.4, 1109.7) d=(-15.4,-2.0,+13.6,+1.3)
+  - FAIL wordbox4: render (np.int64(1369), np.int64(1038), np.int64(1575), np.int64(1111)) vs expected (1386.4, 1040.0, 1562.1, 1109.7) d=(-17.4,-2.0,+12.9,+1.3)
+  - FAIL wordbox5: render (np.int64(1609), np.int64(999), np.int64(1800), np.int64(1111)) vs expected (1622.8, 1040.0, 1802.8, 1109.7) d=(-13.8,-41.0,-2.8,+1.3)
+  - FAIL callout1 border: render (np.int64(86), np.int64(95), np.int64(628), np.int64(272)) vs expected (98.4, 135.2, 601.5, 233.3) d=(-12.4,-40.2,+26.5,+38.7)
+  - FAIL callout2 border: render (np.int64(86), np.int64(236), np.int64(634), np.int64(427)) vs expected (98.4, 276.9, 601.5, 388.1) d=(-12.4,-40.9,+32.5,+38.9)
+  - masked box1 3-line label: 2 bands vs 3
+  - callout1 2-line text: 1 bands vs 2
+  - callout2 2-line text: 1 bands vs 2

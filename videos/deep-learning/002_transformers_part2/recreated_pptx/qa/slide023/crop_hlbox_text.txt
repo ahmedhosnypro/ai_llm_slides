@@ -1,0 +1,35 @@
+# Element-by-Element Comparison: hlbox_text region, Slide 023
+
+## Text Verbatim & Line Structure
+- **Line 1:** "Use Î´=1/Seq. Length  First position Encoding=0, Last Position Encoding= 1 (Independent of Seq. Length)" â verbatim match, same spacing around "=" and gap after "Length". â
+- **Line 2:** "Problems:" â match. â
+- **Bullet 1:** "Î´ Value depends on Seq. Length ( Î´ is small for long seq and large for short sequence )" â verbatim match. â
+- **Bullet 2 + wrap:** "In other words, Encoding value of position # 4 in short seq will differ from position #4 in long seq / (though they are same position)" â verbatim match, including "# 4" vs "#4" asymmetry and the wrap point. â
+- **Bullet 3:** "Position Encoding is scalar and Word embedding is vector (how to Combine them ?)" â verbatim match. â
+
+## Discrepancies
+
+1. **Global font style â italic vs upright:** IMG2's text is consistently slanted (italic/oblique) across all lines, including the header and "(though they are same position)". IMG1 renders everything upright. This is a shape/style difference, not a JPEG artifact. â **MAJOR** (confidence: medium-high)
+
+2. **Bullet 1 emphasis treatment on "small for long seq and large for short sequence":** In IMG2 these phrases are **underlined** (plain weight, underline extends across "small for long seq" and "large for short sequence"). In IMG1, only "long" and "short" are **bolded**, with no underline. Different emphasis mechanism (underline vs bold) and different extent. â **MAJOR** (confidence: high)
+
+3. **Bullet glyphs:** IMG1 uses large filled blue circular bullets (â, ~blue #1440C8); IMG2 uses small dark dots (â¢). Size and color of the bullet marker differ. â **MINOR** (confidence: medium; partly recoverable from blur, but size gap is real)
+
+4. **"Seq. Length" in bullet 1:** Bold in IMG1; appears regular-weight in IMG2. â **MINOR** (confidence: low-medium; JPEG blur could soften bold)
+
+5. **Bullet 2 underline extent:** In IMG2 the underline after "position # 4" and "position #4" appears to extend slightly into the following "seq" ("short seq", "long seq" underlined segments); in IMG1 the underline stops at "# 4"/"#4" and "short"/"long" carry bold instead. Partially covered by item 2's pattern. â **MINOR** (confidence: low)
+
+6. **Background tint:** IMG1 light cyan (~#E4F7F5); IMG2 near-white (~#F4F8F6). Likely amplified by JPEG, but a slight tint difference exists. â **MINOR** (confidence: medium)
+
+7. **Border hue:** IMG1 border medium blue (~#2B6CB8); IMG2 border reads violet/blue (~#5540B8). Possibly JPEG chroma shift. â **MINOR** (confidence: low; per ground rule (b))
+
+## What Matches
+- All text verbatim, line breaks, and wrap points â
+- Color coding: dark-red bold header phrase + red bold underlined "(Independent of Seq. Length)"; red "Problems:"; dark blue body; bold blue "0"/"1"/"short"/"differ"/"long"/"scalar"/"vector"; red underlined "position # 4"/"position #4"; magenta "(though they are same position)" with bold underlined "same position" â
+- Left alignment, indentation of wrapped line, spacing/gaps, and overall geometry â
+
+---
+
+**CROP VERDICT: MISMATCH**
+
+(Driven by item 1 â italic vs upright body font â and item 2 â underline-vs-bold emphasis swap in bullet 1. All other differences are minor.)

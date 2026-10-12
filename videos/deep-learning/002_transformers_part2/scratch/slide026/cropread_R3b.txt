@@ -1,0 +1,46 @@
+# Visual QA Analysis â Slide 026, crop R3b (Comparators block)
+
+## 1. Verbatim text transcription
+
+| Location | Text | Condition |
+|---|---|---|
+| White label box, lower center | **`Comparators`** | Fully legible, black sans-serif on white |
+| Top-left edge, above input wire | **`â¦R`** (italic serif "R", preceded by a tiny clipped fragment that looks like a period or the edge of a preceding letter) | Clipped at left edge; preceding character illegible |
+| Top-right gray box, rotated 90Â° (reading top-to-bottom) | **`En`** followed by a third letter resembling **`c`** or **`o`** | Clipped at right edge; only the first ~3 letters of the word are visible. Consistent with the start of a word such as "Encoder", but the remainder is not visible â I cannot confirm the full word |
+
+No other text, digits, or punctuation are present.
+
+## 2. Layout
+
+**LEFT edge:**
+- A vertical boundary at ~x=35 separates a slightly different-shade light-green strip (edge of an adjacent slide panel) from the main background.
+- The clipped italic "â¦R" label sits near the top-left (~y=40â60).
+- A solid black horizontal signal wire enters at mid-height (~y=70) and runs right, crossing the dashed border of the block, to the flat base of the triangle.
+
+**CENTER:**
+- A **medium-green right-pointing triangle** (black outline) containing the black **hysteresis glyph** â a vertical stroke with short horizontal crossbars at top and bottom (resembling a serif "I" / double-T relay symbol).
+- The triangle sits inside a large **light-lavender rectangle with a gray dashed border** (roughly x=55â455, y=10â135).
+- A black line descends from the **top edge** at ~x=270 down to ~y=65, turns left, and terminates in a solid **arrowhead pointing left into the apex** of the triangle (feedback-style arrow).
+- A **white rectangular label box** (~x=200â420, y=95â135) containing "Comparators" sits inside the dashed rectangle, below/right of the triangle.
+
+**TOP:**
+- The dashed top border of the lavender rectangle runs along the top edge.
+- The vertical feedback line is cut by the top edge.
+- Toward the top right, a horizontal line with a **right-pointing arrowhead** (~x=635, y=10) enters the gray box.
+
+**RIGHT edge:**
+- A **gray rectangle** (~x=615â675, y=0â55), clipped by the right border, containing the rotated "Enâ¦" text.
+- A **solid vertical black line** at ~x=520 spanning the full crop height (a wire or border).
+- Faint short **dashed vertical segments** near the right edge in the lower half (~x=655, yâ100â150) â likely the clipped dashed border of a neighboring block.
+
+**BOTTOM:**
+- The dashed bottom border of the lavender rectangle, with the white "Comparators" box sitting just above it; otherwise plain light-green background.
+
+## 3. Visual defects
+
+- **Left clipping:** the label text is cut mid-word; only "R" (plus a fragment) survives.
+- **Right clipping:** the gray box and its rotated label are cut off by the image edge; the word is incomplete.
+- **Top/bottom clipping:** the vertical feedback line (top) and the solid vertical line at ~x=520 (both edges) run off-frame; the gray box is also cut at the top edge.
+- **Routing overlaps (normal, not defects):** the input wire crosses the dashed left border, and the feedback line crosses the dashed top border â standard diagram behavior.
+- **No garbage/placeholder strings, no wrong-language text** detected; all visible text is English and consistent with a block diagram.
+- **Legibility:** "Comparators" is crisp; the clipped "R" and "Enâ¦" are legible as far as they go. Mild pixelation/softness from the 3Ã upscale is visible around diagonal edges and the arrowhead, but no content is obscured by it.

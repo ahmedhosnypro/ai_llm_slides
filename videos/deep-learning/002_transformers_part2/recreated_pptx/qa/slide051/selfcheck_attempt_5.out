@@ -1,0 +1,23 @@
+  norm box1 text ink: render (230, 270, 259, 272, 26)  orig (217, 263, 276, 277, 129)
+[FAIL] norm1-text-present (npx render 26)
+[FAIL] norm1-ink-bbox render(230, 270, 259, 272) vs orig(217, 263, 276, 277) (tol 8 fr.px ~ 17 rpx incl. glyph-diff margin)
+  norm box2 text ink: render (230, 334, 258, 336, 26)  orig (214, 327, 275, 341, 181)
+[FAIL] norm2-text-present 
+  stub1 bbox: (196, 268, 210, 276, 99)  stub3 bbox: (196, 331, 210, 341, 105)
+[PASS] stub1-short (right edge 210 <= 214)
+[PASS] stub3-short (right edge 210 <= 214)
+[PASS] navy-disc-whitecheck (white npx 20)
+  dec tan circle: render (830, 289, 847, 310, 265)  orig (824, 284, 851, 313, 310)
+  dec green badge: render (844, 281, 862, 299, 270)  orig (843, 281, 861, 299, 244)
+[PASS] dec-nx-tan-circle 
+[PASS] dec-nx-green-badge 
+[FAIL] dec-nx-tan-pos render tl(830, 289) vs orig tl(824, 284)
+[PASS] dec-nx-badge-pos render tl(844, 281) vs orig tl(843, 281)
+  dec dkbrown check: render (726, 424, 738, 451, 75)  orig (725, 428, 741, 451, 233)
+[PASS] dec-embed-check-present 
+[PASS] dec-embed-check-pos render tl(726, 424) vs orig tl(725, 428)
+[PASS] containment-dec-nx 
+[PASS] containment-dec-check 
+[PASS] containment-house 
+
+SELFCHECK-5: FAILURES: ['norm1-text-present', 'norm1-ink-bbox', 'norm2-text-present', 'dec-nx-tan-pos']

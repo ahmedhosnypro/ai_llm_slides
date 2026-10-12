@@ -97,11 +97,17 @@ function drawScalingDelta(pptx, slide) {
     x: px(377), y: px(191), w: px(38), h: px(217),
     fill: { color: "FFF069" }, line: { color: parent.C.scalingInner, width: 1 },
   });
-  // rotated text — parent's certified placement (unshifted; m9: text bands identical)
+  // rotated text — child-frame measured rendering (m11): the frame shows ONE unwrapped
+  // vertical line reading top-to-bottom, ink y[240..359] x[386..401] (~120px long, ~16px
+  // column => ~16pt), whereas the certified parent's render wraps it into two short
+  // columns at y[272..309]. The frame is ground truth for this child delta: text box
+  // pre-rotation w130 x h16 centered at (393.5, 299.5); rotate 90 (CW) => reads
+  // top-to-bottom, 'S' at top, wrap width 130px (no wrap).
   slide.addText("Scaling by √d", {
-    x: px(372), y: px(177), w: px(48), h: px(228),
+    x: px(331.25), y: px(291.5), w: px(130), h: px(16),
     rotate: 90, align: "center", valign: "middle",
-    fontSize: 11, bold: true, color: parent.C.scalingText, fontFace: "Arial", margin: 0,
+    fontSize: 16, bold: true, color: parent.C.scalingText, fontFace: "Arial", margin: 0,
+    charSpacing: 1.5,
   });
   // fraction K.q / √d — parent's certified placement verbatim (m8: identical bbox in
   // both frames): num PNG (431,198), red bar x[418..449] y206, den PNG (436,217)

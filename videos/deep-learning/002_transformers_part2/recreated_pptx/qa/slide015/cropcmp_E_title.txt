@@ -1,0 +1,26 @@
+## Element-by-Element Comparison â Zone E_title (3x zoom)
+
+**Region compared:** Title band, "Multi Head Self Attention of Word Xâ"
+
+| Element | IMG1 (recreation) | IMG2 (original) | Verdict |
+|---|---|---|---|
+| Text content | "Multi Head Self Attention of Word X" + subscript "2" | Identical verbatim text | |
+| Line breaks | Single line | Single line | "Multi Head" color | Red (#C00000-range) | Red, same hue family |
+| Remainder of title color | Dark near-black | Dark near-black | Bold weight | Bold throughout | Bold throughout || Horizontal centering | Centered in band | Centered in band || Vertical centering | Text vertically centered in the title strip | Same |
+| Subscript "2" size/position | Small, attached at lower-right of X | Same, slightly lower baseline offset (within tolerance) |
+
+## Discrepancies
+
+1. **Color of the character "X"** â In IMG2 (original) the "X" itself is rendered in red, matching its red subscript "2" (the whole token "Xâ" is red). In IMG1 (recreation) the "X" is dark/black and only the subscript "2" is red. â **MINOR**, confidence high. Verbatim text and position are correct; this is a single-glyph fill color difference, not a layout or content defect.
+
+2. **Subscript baseline offset** â In IMG2 the subscript "2" hangs slightly lower relative to the X than in IMG1, where it hugs a bit tighter. The difference is at the resampling tolerance level. â **MINOR**, confidence low-to-medium (could be an artifact of the 3x Lanczos interpolation vs. video resample).
+
+No MISSING elements (rule 6): the entire title region renders with content in both images. No frame containment issues (rule 5): the title sits well inside the band in both. No delimiter geometry, table, or legend items in this zone.
+
+## Visual-Quality Defects in the Recreation
+
+- None observed. No clipping, no overflow, no collisions, no wrapping errors, no illegibility at 3x zoom.
+
+## FINAL VERDICT: **PASS**
+
+Faithful, usable recreation â the only deviation is a single-character fill color ("X" black vs. red), which is minor and does not affect fidelity of content, layout, or geometry.

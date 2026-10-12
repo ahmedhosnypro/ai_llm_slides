@@ -1,0 +1,17 @@
+{"page": 1, "verdict": "fail", "issues": ["MAJOR: pink 'Xâ variant to QUERY with' dashed callout is positioned too high/left in the recreation â it collides with and partially covers the 4th query box (X_Q24) in the red Q panel; in the original all four X_Q boxes (XQ21âXQ24) are fully visible with the callout sitting below them", "MINOR: bottom explanatory text box color scheme differs â original renders all three lines in blue, recreation renders line 1 and most of line 2 in black with only the last line blue", "MINOR (low confidence): last cell of row 4 in the weight matrices may read Wââ in the original vs Wââ in the recreation â resolution too low to be certain; all other 15 cells per matrix match"]}
+
+**Evidence (single-read, default route/images, glm leg DEFERRED/BLOCKED):**
+
+Compared element-by-element:
+
+- **Title/subtitle**: verbatim match, including yellow highlight on "(Linear Transformation of Inputs)", red "Query/Keys/Values", Xâ subscript, and missing closing parenthesis â faithful. Slide-number oval "31" present (house chrome, not flagged).
+- **Panels**: red Q panel (top-left), blue V panel (top-right), green K panel (bottom-left) all present with correct borders, tinted matrix backgrounds (pink/green/purple), xâ input lozenges with brackets, "1xd", "Xâ", "W_Q/W_V/W_K" labels, "dxd" labels â all match placement.
+- **Matrix data**: 4Ã4 weight grids match cell-for-cell (Wâââ¦Wââ layout with transposed first subscript), except the low-confidence row-4 col-4 item noted above.
+- **BLOCKER check (missing elements)**: none â all three X-variant columns present (X_Q, X_V, X_K with 4 boxes each), all callouts, "Generate Three Variants of Xâ (Based on its Role)" highlight box, and the W_Q/W_K/W_V explanation box are present.
+- **Delimiter geometry**: brackets on the xâ lozenges span all four circles, vertically centered â match.
+- **Frame containment**: the green "used as KEY" callout slightly overlaps the green panel's right border (original sits just outside) â borderline MINOR; the pink QUERY callout overlap (issue #1) is the clear violation, hiding part of X_Q24's enclosing rounded rectangle and its label.
+- **Video artifacts**: mouse cursor near the Q panel in the original correctly omitted.
+
+The X_Q24 collision is a real content-obscuring deviation (founder directive 2026-10-10: alignment/collision deviations are MAJOR even with verbatim text), so the slide cannot certify as faithful.
+
+**Transcript**: banked comparison winner body read from this session's transcript; no vision-evidence failure; no GarbageError retries needed. Read-only â nothing fixed.

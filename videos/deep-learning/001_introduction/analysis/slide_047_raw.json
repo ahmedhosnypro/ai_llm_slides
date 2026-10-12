@@ -1,0 +1,199 @@
+{
+  "slide_title": "AVERAGE POOLING Layer (Take Average Value)",
+  "subtitle_or_header": "It is a new Module (Average-POOLING module)",
+  "verbatim_text": {
+    "bullets": [
+      "Run a sliding window of size [h_f , w_f]",
+      "At each location keep the average value",
+      "Activation function:  a_{r,c} = (1/(r\u00b7c)) \u03a3_{i,j\u2208\u03a9(r,c)} x_{ij}",
+      "Gradient w.r.t. input  \u2202a_{r,c}/\u2202x_{ij} = 1/(r\u00b7c)"
+    ],
+    "labels": [
+      "Where:",
+      "r   Row",
+      "c   Column",
+      "f   filter",
+      "h   Height",
+      "w   width",
+      "4x4 input grid values (row-major): 1, 4, 1, 6, 2, 3, 0, 9, 1, 2, 7, 1, 4, 1, 0, 2",
+      "\u21d2 (black rightward double arrow)",
+      "1/2 (red stacked fraction left of output grid)",
+      "2x2 output grid values: 5, 8, 4, 5",
+      "[black horizontal strip across the very bottom of the frame \u2014 likely the video player progress/control bar, not slide content]"
+    ],
+    "equations": [
+      "Output = 1/r c * Summation (each_input_pixel * 1)",
+      "a_{r,c} = \\frac{1}{r \\cdot c} \\sum_{i,j \\in \\Omega(r,c)} x_{ij}",
+      "\\frac{\\partial a_{r,c}}{\\partial x_{ij}} = \\frac{1}{r \\cdot c}"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top; three bold-italic intro lines left-aligned beneath it; below that one large white rounded rectangle with a red border spanning almost the full slide width; inside it, four circle-bulleted lines run down the left side (lines 3 and 4 have blue-boxed labels followed by math equations); bottom-right area inside the box holds a light-blue 'Where:' legend box, then a 4x4 colored number grid, then a black \u21d2 arrow, a red 1/2 fraction, and a 2x2 colored output grid; thin black strip at the very bottom of the frame (video player bar).",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~y 8-16%, x 10-90%",
+        "content": "AVERAGE POOLING Layer (Take Average Value) in large bold serif, red with 'Layer' in blue"
+      },
+      {
+        "name": "Intro lines",
+        "position": "upper-left, ~y 20-32%, x 8-80%",
+        "content": "Three bold italic lines: dark blue, red, dark blue"
+      },
+      {
+        "name": "White content box",
+        "position": "middle, ~y 38-90%, x 8-92%",
+        "content": "White rectangle with red border containing all bullets, equations and the pooling diagram"
+      },
+      {
+        "name": "Bullet list",
+        "position": "left half of white box, ~x 10-55%, y 40-66%",
+        "content": "Four open-circle bullets; last two have blue-outlined label boxes plus equations"
+      },
+      {
+        "name": "Where legend box",
+        "position": "bottom center-right inside white box, ~x 47-58%, y 63-88%",
+        "content": "Light-blue box, red border, 'Where:' header and r/c/f/h/w definitions"
+      },
+      {
+        "name": "4x4 input grid",
+        "position": "bottom right, ~x 59-77%, y 66-88%",
+        "content": "Colored 4x4 table of numbers (green/yellow/red/cyan quadrants)"
+      },
+      {
+        "name": "Arrow + fraction + 2x2 output grid",
+        "position": "far right, ~x 77-92%, y 68-85%",
+        "content": "Black \u21d2, red 1/2 fraction, 2x2 colored result grid"
+      },
+      {
+        "name": "Bottom black strip",
+        "position": "very bottom, full width, ~y 96-100%",
+        "content": "Black bar (video player control/progress bar, not slide content)"
+      }
+    ],
+    "hierarchy": "Title dominates (largest, bold, two-color red/blue); intro italic lines are next in weight; bullet text is smaller regular dark-gray; equations are medium serif italic; the colored grids draw the eye via saturated green/yellow/red/cyan fills with bold black numerals; the red-bordered white box frames everything below the intro."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Large white rectangle with a thin red border enclosing the entire bullet list and pooling diagram",
+      "colors": [
+        "#FFFFFF",
+        "#CC0000"
+      ],
+      "position": "middle of slide, ~x 8-92%, y 38-90%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Small rectangle with thin blue border around the label text 'Activation function:' (blue text inside)",
+      "colors": [
+        "#0000CC",
+        "#FFFFFF"
+      ],
+      "position": "left, third bullet line"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Small rectangle with thin blue border around the label text 'Gradient w.r.t. input' (blue text inside)",
+      "colors": [
+        "#0000CC",
+        "#FFFFFF"
+      ],
+      "position": "left, fourth bullet line"
+    },
+    {
+      "type": "table",
+      "description": "'Where:' legend box: light-blue fill, red border; header 'Where:' in red bold italic; five rows pairing a red bold-italic letter with a dark-blue bold-italic word: r=Row, c=Column, f=filter, h=Height, w=width",
+      "colors": [
+        "#CCE4FF",
+        "#CC0000",
+        "#00008B"
+      ],
+      "position": "bottom center-right inside white box"
+    },
+    {
+      "type": "table",
+      "description": "4x4 input grid, each cell a colored square with a bold black number. Row 1: 1 (green), 4 (green), 1 (yellow), 6 (yellow). Row 2: 2 (green), 3 (green), 0 (yellow), 9 (yellow). Row 3: 1 (red), 2 (red), 7 (cyan), 1 (cyan). Row 4: 4 (red), 1 (red), 0 (cyan), 2 (cyan). Colors mark the four 2x2 pooling quadrants: top-left green, top-right yellow, bottom-left red, bottom-right cyan.",
+      "colors": [
+        "#00A651",
+        "#FFFF00",
+        "#FF0000",
+        "#00B0F0",
+        "#000000"
+      ],
+      "position": "bottom right, right of the Where box"
+    },
+    {
+      "type": "arrow",
+      "description": "Black double-line rightward arrow '\u21d2' between the 4x4 grid and the 2x2 output grid",
+      "colors": [
+        "#000000"
+      ],
+      "position": "between grids, ~x 77-80%, y ~75%"
+    },
+    {
+      "type": "other",
+      "description": "Stacked fraction '1/2' in red placed immediately left of the 2x2 output grid (the scaling factor applied to each 2x2 sum)",
+      "colors": [
+        "#CC0000"
+      ],
+      "position": "~x 80-83%, y ~72-80%"
+    },
+    {
+      "type": "table",
+      "description": "2x2 output grid: 5 (green, top-left), 8 (yellow, top-right), 4 (red, bottom-left), 5 (cyan, bottom-right); bold black numerals; cell colors match the corresponding input quadrants",
+      "colors": [
+        "#00A651",
+        "#FFFF00",
+        "#FF0000",
+        "#00B0F0",
+        "#000000"
+      ],
+      "position": "far right, ~x 83-91%, y 68-85%"
+    },
+    {
+      "type": "other",
+      "description": "Small open-circle (ring) bullet markers in orange/red at the start of each of the four bullet lines",
+      "colors": [
+        "#E36C0A"
+      ],
+      "position": "left edge of bullet list"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; the only graphics are the colored number grids, the \u21d2 arrow, the red 1/2 fraction, the legend box, and the bordered highlight boxes."
+  ],
+  "colors": {
+    "background": "#E6E6E6",
+    "title_text": "#CC0000 (with 'Layer' in #0000CC)",
+    "body_text": "#333333 (bullets), #00008B (dark-blue intro/legend words), #CC0000 (red intro line/legend letters)",
+    "accents": [
+      "#CC0000",
+      "#0000CC",
+      "#00A651",
+      "#FFFF00",
+      "#FF0000",
+      "#00B0F0",
+      "#CCE4FF",
+      "#E36C0A"
+    ]
+  },
+  "typography_notes": "Serif (Times New Roman-like) throughout. Title is large and bold; 'AVERAGE POOLING' and '(Take Average Value)' in red caps/mixed case, 'Layer' in blue. Intro lines are bold italic, medium size. Bullet text is regular weight, dark gray, sentence case; the word 'average' is bold and underlined. Math (h_f, w_f, a_{r,c}, x_{ij}, fractions, summation) is italic serif via equation rendering. Legend letters and definitions are bold italic. Grid numerals are bold sans/serif black, centered in cells. Blue-boxed labels ('Activation function:', 'Gradient w.r.t. input') are regular weight blue text.",
+  "animation_state": "Slide appears fully built \u2014 all four bullets, both equations, the legend, and both grids are visible; no mid-build state detected.",
+  "recreation_brief": "1. Set slide background to light gray #E6E6E6. 2. Center a bold serif title at top (~36-40 pt): 'AVERAGE POOLING ' in #CC0000, 'Layer' in #0000CC, ' (Take Average Value)' in #CC0000. 3. Below, left-aligned, add three bold italic serif lines (~20 pt): line 1 dark blue #00008B 'It is a new Module (Average-POOLING module)'; line 2 red #CC0000 'Output = 1/r c * Summation (each_input_pixel * 1)'; line 3 dark blue 'Required to define its input, its output , and Gradient of Output w.r.t input'. 4. Insert a white rectangle with a 1.5-2 pt red (#CC0000) border spanning ~x 8-92%, y 38-90%. 5. Inside, create four bullets with small open-circle orange markers: (a) 'Run a sliding window of size [h_f , w_f]' with h_f, w_f as italic serif subscripts; (b) 'At each location keep the average value' with 'average' bold and underlined; (c) 'Activation function:' \u2014 draw a thin blue-bordered rectangle around this label with blue text, and to its right insert the equation a_{r,c} = (1/(r\u00b7c)) \u03a3_{i,j\u2208\u03a9(r,c)} x_{ij} using the equation editor; (d) 'Gradient w.r.t. input' \u2014 blue-bordered box around the label, followed by the equation \u2202a_{r,c}/\u2202x_{ij} = 1/(r\u00b7c). 6. Build the 'Where:' legend: rectangle with #CCE4FF fill and red border; 'Where:' in red bold italic; five rows 'r Row', 'c Column', 'f filter', 'h Height', 'w width' with letters red bold italic and words dark-blue bold italic. 7. To its right, build a 4x4 table of equal squares with bold black centered numbers and these fills \u2014 Row 1: 1 green #00A651, 4 green, 1 yellow #FFFF00, 6 yellow; Row 2: 2 green, 3 green, 0 yellow, 9 yellow; Row 3: 1 red #FF0000, 2 red, 7 cyan #00B0F0, 1 cyan; Row 4: 4 red, 1 red, 0 cyan, 2 cyan. 8. Place a black '\u21d2' arrow to the right of the 4x4 grid. 9. Add a red stacked fraction '1/2' and then a 2x2 table: 5 on green, 8 on yellow, 4 on red, 5 on cyan (bold black numerals). 10. Do not reproduce the thin black strip at the very bottom \u2014 it is the video player bar, not slide content.",
+  "_meta": {
+    "frame": "slide_047.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 47,
+      "image": "slide_047.jpg",
+      "kept_frame": "frame_04765.jpg",
+      "start_sec": 4534.0,
+      "end_sec": 4764.0,
+      "frame_count": 231,
+      "old_group": 75,
+      "founder_frame_swap": false
+    },
+    "elapsed_s": 113.1
+  }
+}

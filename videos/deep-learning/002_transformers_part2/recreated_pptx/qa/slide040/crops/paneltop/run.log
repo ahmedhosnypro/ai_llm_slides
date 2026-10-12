@@ -1,0 +1,44 @@
+[info] context header injected: VIEW: Slide 040 dense-region check [paneltop]: render crop vs original crop — algorithm panel top: Input/Parameters(green highlight)/Output header lines, eq1 mu_B sum, eq2 sigma_B^2 sum, lavender/pink/green highlights, comments | CAPTURE: IMG1=upscaled crop of 150dpi PPTX render; IMG2=upscaled crop of 960x540 lecture frame (same region)
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 3946790
+[info] videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide040/crops/paneltop/crop_render.png, videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide040/crops/paneltop/crop_original.png: transcript written (validated winner, atomic): videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide040/crops/paneltop/cropcmp.txt (pid 3946790)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide040/crops/paneltop/crop_render.png, videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide040/crops/paneltop/crop_original.png ===
+[winner] images (round 1, attempt 1)
+## Element-by-Element Comparison (algorithm panel, top region)
+
+**Header lines**
+- "Input :" â present in both, bold serif. Recreation renders "Input :" with a thin space before the colon and "mini â batch :" with spaced hyphen and spaced colon; original shows "Input:", "mini-batch:", no spaces. **MINOR** (punctuation spacing, consistent style throughout, high confidence).
+- Green highlight "Parameters to be learned : Î³, Î²" â present in both, dark-green serif text on green highlight, same extent (starts at left edge of "Parameters", ends just after Î²). Recreation's highlight green is slightly more saturated/brighter than the original's paler green. **MINOR** (color approximation, high confidence).
+- "Output : {y_i = BN_{Î³,Î²}(x_i)}" â verbatim match, same structure, same position under the Input line. Match.
+
+**Equation 1 (Î¼_B â 1/m Î£ x_i)**
+- Lavender/purple highlight box around Î¼_B: present in both, similar fill color and size; Î¼_B sits vertically centered in the box in both. Match.
+- Fraction 1/m, large Î£ with m above and i=1 below, x_i to the right: both in professional 2D display format. Structure matches. Recreation's Î£ and limits are noticeably taller/larger relative to the surrounding text than the original's. **MINOR** (equation scale, moderate confidence â partly inherent to the mandated 2D display format, rule (e)).
+- Left arrow â from equation to the Î¼_B box: present in both, correct direction and attachment. Match.
+
+**Comment**
+- "// mini-batch mean" â present in both, sans-serif, right side, vertically aligned with the equation/arrow row. Recreation matches font choice and placement. Match.
+
+**Bottom of region (eq2 onset)**
+- IMG2 (original) shows the top of equation 2 at the crop bottom: ÏÂ² lavender box, start of 1/m Î£ (x_i â Î¼_B)Â², and the partially cut "// mini-batch variance" comment. IMG1 (recreation) at the same crop depth shows only a lone italic "m" (the denominator of eq2's fraction beginning to enter the region). The recreation's equation rows occupy more vertical height (large display Î£ with above/below limits), so eq2 begins lower than in the original. This is a vertical-spacing/pagination deviation of the second equation's start position. **MINOR-to-MAJOR** â I rate it **MINOR** because the increased vertical footprint is a direct consequence of the founder-mandated professional 2D equation format (rule (e)) and the visible portion of eq2 (its "m") is present, not missing. Confidence: moderate (crop cutoffs make exact offset measurement imprecise).
+
+**Missing elements**
+- No element visible in the original's region is absent from the recreation within the comparable area; eq2 is present in both, just starting at a slightly different depth. No BLOCKER under rule (6).
+
+**Artifacts**
+- The faint cursor/pen mark over "batch" in IMG2 is a video-capture artifact â correctly omitted per rule (c). Not a discrepancy.
+
+**Frame containment**
+- All visible ink in the recreation sits inside the panel; nothing crosses the black panel border at the top or the crop edges. Match.
+
+## Visual-Quality Defects in the Recreation
+- None observed: no clipping, no collisions, no wrapping errors, no illegible text. The lone "m" at the bottom is cut by the crop, not by the panel.
+
+## Discrepancy Summary
+1. MINOR â Spaced punctuation style ("Input :", "mini â batch :", "Output :") vs original compact punctuation. High confidence.
+2. MINOR â Green highlight slightly more saturated than original's paler green. High confidence.
+3. MINOR â Display equations render larger/taller than original, pushing eq2's start lower in the region (mandated 2D format consequence). Moderate confidence.
+
+FINAL VERDICT: **PASS** for 'faithful, usable recreation'.
+

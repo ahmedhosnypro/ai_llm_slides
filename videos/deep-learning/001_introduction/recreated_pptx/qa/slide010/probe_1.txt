@@ -1,0 +1,42 @@
+# Visual QA Analysis â Slide 010
+
+## 1. Verbatim Text Transcription
+
+**Title box (top left):**
+- `Pre processing`
+
+**Top-right badge (inside a circle):**
+- `10`
+
+**Main content box:**
+- `Preprocessing is Problem dependent and data dependent` (the word "Preprocessing" is in red bold; the rest of the line is black)
+- `It may include:` (bold)
+- Bulleted list:
+  - `Gap filling`
+  - `Thinning`
+  - `Contour`
+  - `Binarization`
+  - `Noise Removal`
+  - `Color to Gray`
+  - `Opening touched points`
+  - `Resizing`
+  - `Normalization`
+  - `â¦â¦` (a bullet consisting only of a horizontal run of dots â appears to be a six-dot ellipsis)
+
+All text is in English. No digits other than the "10" in the circle badge.
+
+## 2. Layout Description
+
+- **Overall background:** light gray, with a thin **red rectangle outline** running around the perimeter of the slide, inset slightly from the image edges (visible on left, top, right, and partially at bottom).
+- **LEFT edge:** the red vertical border line with gray fill to its right; the title box and content box both start well inside, indented from the left.
+- **TOP:** a pale-yellow rectangle with a dark blue border containing the bold black title "Pre processing", positioned at the upper left. At the upper right, a circular badge with a purple/violet ring and yellow-green fill containing the number "10".
+- **CENTER/RIGHT:** a large white content box with a navy-blue border occupies most of the slide. All body text is left-aligned; the right half of this box is empty white space.
+- **BOTTOM:** a **solid black horizontal bar** spans nearly the full width of the slide at the very bottom, overlapping the red border rectangle. No footer text is visible on or around it.
+
+## 3. Visual Defects Observed
+
+1. **Clipped last bullet:** The final bullet item "â¦â¦" sits directly on the bottom border of the navy content box â the dots are cut through by the box's border line, indicating text overflow beyond the box boundary.
+2. **Black bar at bottom:** A large opaque black rectangle covers the bottom strip of the slide, extending to (and apparently cut off by) the bottom edge of the image. It overlaps and interrupts the red border rectangle. Any content beneath it is not visible.
+3. **Inconsistent title/body spelling:** The title reads "Pre processing" (two words, with a space), while the body text reads "Preprocessing" (one word). This is a factual inconsistency within the slide.
+4. **Placeholder-like string:** The final bullet containing only "â¦â¦" reads as an ellipsis/placeholder rather than meaningful content.
+5. **Minor observations (not necessarily defects):** the "Pre processing" title uses two separate words in a bold sans-serif font that differs in weight from the body; the content box has substantial unused white space on its right half. No overlapping text, no garbage strings, and no wrong-language text were found.

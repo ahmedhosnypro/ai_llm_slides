@@ -1,0 +1,55 @@
+render 2001x1125
+PASS containment: top/side canvas margin white  [top=255 side=255]
+PASS containment: nothing left of panel border  [min=255]
+PASS navy block fill 00008B  [[  0.   0. 139.]]
+PASS gray bar D9D9D9  [[217. 217. 217.]]
+PASS container fill E2EFDA  [[226. 239. 218.]]
+PASS annot fill FFFFCC  [[255. 255. 204.]]
+PASS panel fill white  [[255. 255. 255.]]
+PASS FFN box fill DDEBF7  [[221. 235. 247.]]
+PASS tile fill FFE699  [[255. 230. 153.]]
+PASS plus disc 990000  [[156.   9.   9.]]
+PASS caption hl FFFF00  [[255. 255.   0.]]
+PASS title red ink present
+PASS plus white + glyph present  [75]
+PASS plus dark-red disc dominant  [732]
+PASS annot line1 blue ink  [7046]
+PASS annot line1 red part  [5446]
+PASS annot line2 blue ink  [13944]
+PASS annot line3 blue ink  [11488]
+PASS FFN title blue ink  [8258]
+PASS graybar text ink
+PASS navy text white
+PASS caption red ink  [4545]
+PASS ann blue label ink  [2327]
+PASS ann orange label ink  [1551]
+PASS ann red label ink  [1851]
+PASS strip top label ink (col1)
+PASS red thin arrows (midrow->graybar)  [1433]
+PASS green thin arrows (plus->graybar)  [934]
+PASS navy thin arrows (contY->plus)  [996]
+PASS blue arrows (topRow->FFN)  [989]
+PASS blue arrows (FFN->midrow)  [924]
+PASS block arrows zone1
+PASS block arrows zone2
+PASS orange curves present
+PASS topRow band position  [got 175.2..191.5 exp (175.0, 192.5)]
+PASS midRow band position  [got 286.6..301.9 exp (286.0, 302.7)]
+PASS contRow band position  [got 395.0..411.8 exp (394.8, 412.8)]
+PASS xRow band position  [got 503.0..518.9 exp (502.6, 519.8)]
+PASS FFN tile band position  [got 234.7..263.0]
+PASS annot ink stays in box  [min=231]
+PASS annot 3 line bands  [[(np.float64(92.2), np.float64(104.6)), (np.float64(113.8), np.float64(130.1)), (np.float64(135.8), np.float64(152.2))]]
+PASS annot line pitch 22pt  [21.6,22.1]
+-- inheritance crop-diff (045 render vs 038 render @ per-block shift) --
+PASS inherit navy block (mean|d|<10)  [mean=2.9 dy=12.6 dx38=0]
+PASS inherit xRow strip col1 (mean|d|<10)  [mean=2.3 dy=11.8 dx38=0]
+PASS inherit blk arrow col1 zone2 (mean|d|<10)  [mean=7.0 dy=12.1 dx38=0]
+PASS inherit container fill right (borders excluded) (mean|d|<10)  [mean=4.0 dy=13.7 dx38=0]
+PASS inherit xRow dots (mean|d|<10)  [mean=1.7 dy=12.6 dx38=0]
+PASS inherit midRow strip col1 (038 top row) (mean|d|<10)  [mean=1.2 dy=13.9 dx38=0]
+PASS ann blue band vs frame  [got 398.4..423.4 exp (398.7, 421.8)]
+PASS ann orange band vs frame  [got 447.8..472.8 exp (447.9, 473.5)]
+PASS ann red band vs frame  [got 489.6..513.6 exp (489.8, 512.8)]
+
+SELFCHECK RESULT: ALL PASS

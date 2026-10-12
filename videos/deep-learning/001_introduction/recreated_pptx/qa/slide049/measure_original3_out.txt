@@ -1,0 +1,49 @@
+/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_introduction/recreated_pptx/qa/slide049/measure_original3.py:74: RuntimeWarning: Mean of empty slice
+  print(f"  {tag}: darkest-{n} mean #{'%02X%02X%02X'%tuple(sel.mean(axis=0).astype(int))}  min {sel[lum[idx].argmin()]}")
+/usr/lib/python3.14/site-packages/numpy/_core/_methods.py:134: RuntimeWarning: invalid value encountered in divide
+  ret = um.true_divide(
+/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_introduction/recreated_pptx/qa/slide049/measure_original3.py:74: RuntimeWarning: invalid value encountered in cast
+  print(f"  {tag}: darkest-{n} mean #{'%02X%02X%02X'%tuple(sel.mean(axis=0).astype(int))}  min {sel[lum[idx].argmin()]}")
+== per-band profile: cap-top / baseline / descender ==
+band0: cap-top 160  x-top 166  baseline ~177  band 160..182
+band1: cap-top 200  x-top 200  baseline ~219  band 199..222
+band2: cap-top 230  x-top 234  baseline ~245  band 228..251
+band3: cap-top 268  x-top 269  baseline ~290  band 268..290
+band4: cap-top 308  x-top 309  baseline ~328  band 308..330
+band5: cap-top 344  x-top 344  baseline ~360  band 343..366
+band6: cap-top 379  x-top 380  baseline ~396  band 378..401
+band7: cap-top 414  x-top 415  baseline ~431  band 414..431
+
+== dots ==
+band0 dot: x 112..117 y 165..171 (d 7x6) modal #1B1D1C darkest [0 1 0]
+band1 dot: x 112..117 y 205..211 (d 7x6) modal #222421 darkest [0 1 0]
+band3 dot: x 112..117 y 273..279 (d 7x6) modal #20221F darkest [0 1 0]
+band4 dot: x 112..117 y 313..319 (d 7x6) modal #242623 darkest [0 1 0]
+band5 dot: x 195..201 y 349..354 (d 6x7) modal #181818 darkest [0 0 0]
+band6 dot: x 195..201 y 384..390 (d 7x7) modal #1D1F1C darkest [0 1 0]
+band7 dot: x 195..201 y 419..425 (d 7x7) modal #1E1F1D darkest [0 1 0]
+
+== sensitive underline scan (sum<560, runs>=15px) ==
+  band1 mid y=219: run x 480..621 len 142 n=142
+  band1 mid y=220: run x 480..621 len 142 n=142
+  band4  y=328: run x 147..458 len 312 n=312
+  band1 full y=219: run x 463..621 len 159 n=164
+  band1 full y=220: run x 463..621 len 159 n=165
+  band4 full y=328: run x 147..458 len 312 n=312
+
+== darkest colors ==
+  border top: darkest-12 mean #231778  min [ 35  21 118]
+  border left: darkest-12 mean #22196F  min [ 34  26 111]
+  border right: darkest-12 mean #22187A  min [ 34  24 123]
+  border bottom: darkest-12 mean #1F177A  min [ 31  23 122]
+  band0 ink: darkest-12 mean #06016A  min [ 0  0 98]
+  band1 ink: darkest-12 mean #040060  min [ 0  0 53]
+  band2 ReLU red: darkest-12 mean #0A0263  min [10  3 83]
+Traceback (most recent call last):
+  File "/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_introduction/recreated_pptx/qa/slide049/measure_original3.py", line 82, in <module>
+    darkest(679,806, 675,810, "band3 maxpooling red")
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_introduction/recreated_pptx/qa/slide049/measure_original3.py", line 74, in darkest
+    print(f"  {tag}: darkest-{n} mean #{'%02X%02X%02X'%tuple(sel.mean(axis=0).astype(int))}  min {sel[lum[idx].argmin()]}")
+                                                                                                      ~~~~~~~~~~~~~~~^^
+ValueError: attempt to get argmin of an empty sequence

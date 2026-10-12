@@ -1,0 +1,40 @@
+# Fidelity Check â Slide 046 "POOLING"
+
+## Pre-flight: ground-rule dispositions
+- **(a) House chrome:** Yellow "46" badge at top-right, gray #E9E9E7 panel, red panel border position, panel bottom stroke at slide edge â all present in IMG1 and all treated as canonical, NOT discrepancies, even though the original frame's own chrome sits slightly differently. â Excluded from findings.
+- **(b)** IMG2 is a real content slide (not a placeholder), so content matching is required â and is present.
+- **(c)** Full-width black strip at the bottom of IMG2 (video progress-bar artifact) and the small mouse cursor near "Average pooling" in IMG2 â both correctly absent from IMG1. â Not discrepancies.
+- **(e)** Equation `Pool ( â¦ ) ==` is rendered in the same italic-serif professional style in both; no linear-vs-2D conflict arises on this slide.
+
+## Element-by-element comparison
+
+| Element | IMG1 (recreation) | IMG2 (original) | Verdict |
+|---|---|---|---|
+| Title "POOLING" | Red bold, centered, ~same relative size/position | Same | Match |
+| L1 bullet "Aggregate multiple values into a single value" | Verbatim, open-circle marker | Same | Match |
+| Sub-bullets Ã3 ("Invarianceâ¦", "Reduces the sizeâ¦ â Faster computations", "Keeps most important informationâ¦") | Verbatim incl. "â" glyph; same order and indent | Same | Match |
+| "Max pooling" / "Average pooling" blue boxes | Two stacked rounded-corner-less rectangles, blue stroke, text vertically centered | Same structure | Match |
+| 2Ã2 green grid a/b/c/d | Bold black letters, black gridlines | Same | Match |
+| Arrow â z box | Green box with bold "z" | Same | Minor size diff (below) |
+| Equation "Pool ( tiger ) ==" | Italic serif "Pool", parens, "==", tiger photo between parens | Same | Match |
+| Tiger images | Same photo, large + small pair | Same | Match |
+| "Size is reduced" | Blue underlined, under small tiger | Same position | Minor styling diff (below) |
+| Inner red content box | All content contained; nothing touches/crosses box or panel edges | Same | Pass containment |
+
+**Frame containment audit:** closest-to-edge items are "Size is reduced" (right side, ~80 px clearance from inner box right edge in IMG1 â clear), the sub-bullet line "Reduces the sizeâ¦ Faster computations" (ends well inside), and the diagram bottom (~150 px above inner box bottom). No ink crosses the inner red box, the gray panel, or the slide edge. â
+
+**Vertical centering audit:** "Max pooling" and "Average pooling" sit vertically centered in their boxes; "z" centered in its green cell; a/b/c/d centered in their cells. â
+
+## Discrepancy list
+
+1. **MINOR** â Arrow between the 2Ã2 grid and the z box is noticeably larger/wider in IMG1 than the small arrow in IMG2 (confidence: high).
+2. **MINOR** â "Size is reduced" is rendered bold in IMG1; original is italic, underlined, non-bold (confidence: high).
+3. **MINOR** â In IMG2 the closing ")" slightly overlaps the right edge of the large tiger image; in IMG1 there is a small clean gap between the image and ")". Geometric nicety only; all delimiters in IMG1 span their content and do not collide with text (confidence: medium).
+4. **MINOR** â Sub-bullet marker-to-text gap is marginally tighter in IMG1 ("â¦Invariance") than IMG2 ("â¦ Invariance"); sub-bullet line spacing also reads a touch looser in IMG1 (confidence: medium).
+
+No BLOCKER or MAJOR defects found. All text is verbatim, all elements present (nothing missing), table/diagram data (a, b, c, d, z) exact, colors match (red title, blue box strokes, green cells, blue caption).
+
+## Visual-quality defects in the recreation
+- None observed: no clipping, no overflow, no collisions, no misalignment, no illegible text.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

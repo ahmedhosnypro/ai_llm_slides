@@ -1,0 +1,44 @@
+# Fidelity Check â Slide 042 "Batch Data (Feature Vectors)"
+
+## Element-by-element comparison
+
+**House chrome (per ground rules, not discrepancies):** red outer frame, playlist badge "42", white canvas â all present, all excluded from judgment.
+
+**Title:** "Batch Data (Feature Vectors)" â verbatim match, red bold, centered, correct proportion and position. â
+
+**Inner blue content frame:** present in both. Recreation's border is slightly thicker/darker navy than the original's thin blue line â MINOR (0.7).
+
+**Label boxes (3):**
+- Left: "Feature Vector of One Input Sample (Using one filter)" â verbatim, correct red/green/blue color mapping, two lines, correct wrap. â
+- Middle: "Feature Vectors of One Input Sample (Using 4 filters) [ 4 Channels]" â verbatim, two lines, correct colors. â
+- Right: "Feature Vectors of : / FIVE Input Samples [mini-Batch] / Using 4 filters [ 4 Channels]" â verbatim, three lines, correct colors, correct box size. â
+- Text vertically centered in all three boxes; box positions/proportions match. â
+
+**Diagrams:**
+- Left 1Ã5 green stack: 5 cubes, bright green with dark top faces, white gaps â matches. â
+- Middle 4Ã5 green grid: 4 columns Ã 5 rows, dark tops, gaps â matches. â
+- Right five-layer block: front-to-back magenta â green â orange â yellow â blue-gray, dark top faces, white inter-layer gaps, small white stacking arrow near block top â all match. â
+
+**Arrows:**
+- Vertical "Feature Vector" double arrow left of block â position and thin-shaft/large-head style match. â
+- Horizontal "Channels (4 Filters)" double arrow â shaft passes between the two label lines as in the original. â
+- Diagonal "Batch size (5 samples)" rotated label with double arrow â position matches, overlaps layers as in original. â
+
+## Discrepancy list
+
+| # | Issue | Severity | Confidence |
+|---|---|---|---|
+| 1 | **Frame containment, bottom edge:** the "(4 Filters)" line (and its descenders) sits so low that the inner blue frame's bottom border passes through/touches the text; in the original there is clear margin below this label inside the frame | **MAJOR** | 0.6 |
+| 2 | Inner blue frame stroke noticeably heavier than the original's thin blue rule | MINOR | 0.7 |
+| 3 | Recreation's cubes/diagrams are marginally larger in scale (~5â8%) relative to the frame than the original | MINOR | 0.6 |
+
+**Video artifacts in IMG2 correctly omitted (not discrepancies):** black letterbox strip at bottom, soft video blur.
+
+**Missing elements:** none â every label, arrow, diagram, and text block from the original is present.
+
+**Recreation visual-quality defects:** only #1 above â the "Channels (4 Filters)" group is packed against the bottom frame edge; no other clipping, wrapping, collision, or legibility issues observed.
+
+## Summary
+Content fidelity is essentially complete: all text verbatim, all three cube diagrams structurally correct with correct layer ordering and counts, all three dimension arrows present in correct style/position. The single significant defect is the bottom-edge crowding where "(4 Filters)" collides with the inner frame border â a real containment violation, but a trivially fixable one (shift the Channels group up ~15 px).
+
+FINAL VERDICT: **FAIL** for 'faithful, usable recreation' â solely due to the MAJOR frame-containment defect at the bottom edge; with that one fix (and optionally the frame stroke weight), this would pass.

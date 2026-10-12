@@ -1,0 +1,70 @@
+size 960x540
+
+-- chrome --
+row y=200: red-x 0..0 count 6
+row y=300: red-x 0..0 count 6
+row y=400: red-x 0..0 count 6
+col x=100: red-y runs [(np.int64(132), np.int64(134)), (np.int64(456), np.int64(457))]
+col x=480: red-y runs [(np.int64(132), np.int64(134)), (np.int64(348), np.int64(358)), (np.int64(456), np.int64(457))]
+col x=860: red-y runs [(np.int64(132), np.int64(134)), (np.int64(456), np.int64(457))]
+top edge rows 30..60 red col-extent:
+  y=44: x 0..0 n=1
+  y=48: x 0..0 n=2
+  y=50: x 0..0 n=2
+  y=52: x 0..0 n=2
+  y=54: x 0..0 n=2
+  y=56: x 0..0 n=2
+  y=58: x 0..0 n=2
+  y=60: x 0..0 n=2
+panel fill samples: [217, 219, 216] [254, 255, 253] [254, 255, 253]
+outside-left fill sample x=20: [254, 255, 253]  above panel y=20: [254, 255, 253]
+
+-- title --
+title POOLING ink            x 404..561  y 81..105  (w 158 h 25)
+  (bbox again)               x 404..561  y 81..105  (w 158 h 25)
+
+-- bullet lines: horizontal ink profiles in x 100..780, y 130..240 --
+line y 133..249 (open)
+
+bullet markers (scan x 98..140):
+  main: x 116..139 y 157..165
+  sub1: x 132..132 y 183..183
+  sub2: none
+  sub3: x 130..132 y 229..231
+bullet text color sample: [165, 167, 164]
+
+-- option boxes --
+box1 blue-ink x 106..294 y 249..284
+box2 blue-ink x 106..294 y 283..310
+box border color sample: [85, 79, 151]
+box1 text 'Max pooling'      x 120..293  y 250..274  (w 174 h 25)
+box2 text 'Average pooling'  x 120..293  y 285..309  (w 174 h 25)
+
+-- diagram band y 320..430 --
+2x2 matrix (all green)       x 172..242  y 336..399  (w 71 h 64)
+  matrix bbox                x 172..242  y 336..399  (w 71 h 64)
+  cell a                     x 172..208  y 336..368  (w 37 h 33)
+  cell b                     x 205..242  y 336..368  (w 38 h 33)
+  cell c                     x 172..208  y 365..399  (w 37 h 35)
+  cell d                     x 205..242  y 365..399  (w 38 h 35)
+green fill sample: [18, 200, 79]
+block arrow ink              x 256..319  y 352..382  (w 64 h 31)
+z square                     x 314..348  y 352..383  (w 35 h 32)
+Pool ( ink                   x 371..429  y 345..399  (w 59 h 55)
+large tiger (warm ink)       x 436..607  y 330..410  (w 172 h 81)
+)( == ink                    x 600..649  y 345..394  (w 50 h 50)
+small tiger (warm ink)       x 681..767  y 348..386  (w 87 h 39)
+caption 'Size is reduced'    x 677..772  y 398..409  (w 96 h 12)
+caption color sample:
+  [171, 163, 222]
+
+-- bottom strip --
+  y=520: dark n=884 (np.int64(38), np.int64(921))
+  y=525: dark n=884 (np.int64(38), np.int64(921))
+  y=530: dark n=884 (np.int64(38), np.int64(921))
+  y=535: dark n=884 (np.int64(38), np.int64(921))
+  y=538: dark n=884 (np.int64(38), np.int64(921))
+
+-- badge region in ORIGINAL (x 860..930, y 40..105) --
+yellow px: 0
+purple px: 0

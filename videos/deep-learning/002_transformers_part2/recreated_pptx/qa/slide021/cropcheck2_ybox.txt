@@ -1,0 +1,39 @@
+## Discrepancy Review â 'ybox' (Slide 21 note box)
+
+### Fidelity discrepancies
+
+**1. Weight pattern, item [1] second line â MAJOR (confidence: very high)**
+- IMG2 (original): "**Fixed** Parameters" â only the word "Fixed" is bold; "Parameters" is regular weight.
+- IMG1 (render): "**Fixed Parameters**" â the entire line is bold.
+- This is exactly the kind of emphasis detail the crop check exists to catch. The bold span is over-extended in the render.
+
+**2. Weight pattern, item [2] second line â MAJOR (confidence: very high)**
+- IMG2 (original): "**TRAINABLE** Parameters" â "TRAINABLE" bold, "Parameters" regular.
+- IMG1 (render): "**TRAINABLE Parameters**" â entire line bold, including "Parameters".
+- Same failure mode as #1; two lines in a four-line box have the wrong bold span.
+
+**3. Weight of bracketed prefixes â MINOR (confidence: medium)**
+- IMG2: "[1]" and "[2]" appear slightly heavier than the following "Function with" (bold prefix + regular remainder).
+- IMG1: "[1]" / "[2]" are the same weight as the rest of the line (all regular).
+- Lower confidence due to JPEG softening in IMG2, but the original prefixes do look bolder than the render's.
+
+**4. Font family â MAJOR (confidence: high)**
+- IMG2 text shows clear serif letterforms (Times/serif family â visible on "F", "d", "b" terminals).
+- IMG1 uses a sans-serif face (Arial/Helvetica-like). This changes the typographic character of the whole box, not just one glyph.
+
+### Verified matches (no action)
+- Box fill (light yellow) and thin tan border: match.
+- Four lines verbatim, correct text and line breaks: match.
+- Inter-item gap (larger space between [1] and [2] blocks): proportionally correct.
+- Left alignment of all lines: match.
+- Dark-blue text color: match (IMG2 slightly more saturated, within JPEG tolerance).
+- Tan connector line arriving at top-right of box: present in both, correct arrival point.
+- Relative text size: match.
+
+### Visual-quality defects
+- None beyond the above; no clipping, no misalignment, no anti-aliasing artifacts in IMG1.
+
+### Summary
+2 MAJOR (bold-span over-extension on both key lines), 1 MAJOR (font family serif vs sans), 1 MINOR (prefix weight). Content, layout, geometry, and color are all correct â the failures are typographic emphasis and typeface.
+
+**CROP VERDICT: FAIL for 'ybox'**

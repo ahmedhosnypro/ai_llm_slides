@@ -1,0 +1,38 @@
+## Element-by-Element Fidelity Check
+
+**Pre-check of ground rules:**
+- (b) Image 2 is NOT a placeholder â it shows the same title content, so content parity must be verified (it is).
+- (c) The small mouse cursor visible in IMG2 near "Mechanism" (between "Mecha" and "nism") is a video-capture artifact â correctly omitted from the recreation. Not a discrepancy.
+- (a) Red house frame, gray bg, yellow badge, frame geometry â intentional house chrome, not assessed as discrepancies.
+
+| Element | IMG1 (recreation) | IMG2 (original) | Verdict |
+|---|---|---|---|
+| Title text | "Self Attention Mechanism" â verbatim, single line, no wrap | Identical | MATCH |
+| Title font/weight | Bold sans-serif, red (~#C00000) | Identical bold red sans-serif | MATCH |
+| Title size | Spans â62% of slide width (xâ380â1620 of 1995) | Spans â62% of width (xâ180â775 of 960) | MATCH |
+| Title vertical position | Center â52% of slide height (yâ585/1125) | Center â52% (yâ283/540) | MATCH |
+| Title horizontal centering | Centered on slide axis | Centered on slide axis | MATCH |
+| Background | Light gray (~#E8E8E8) inside frame | Same light gray inside frame | MATCH |
+| Red frame | Present, ~1.5pt red (#C00000), fully contains all content | Present (house chrome) | MATCH / chrome |
+| Slide-number badge | Yellow oval, "20", dark text, purple ring, top-right | Identical element, same position | MATCH |
+| Badge containment | Badge fully inside frame, no edge contact | Same | MATCH |
+| Other content | None â slide is title-only | None â title-only in original | MATCH |
+| Bottom gradient band in IMG2 | Absent | Present (video compression/banding artifact) | Correctly omitted â video artifact |
+
+**Defect scan on the recreation:**
+- No text overflow, clipping, wrapping, collision, or alignment errors observed.
+- Title sits comfortably inside the red frame with large margins on all sides â no frame containment issues.
+- Badge number "20" is vertically centered in the oval â no hugging-top defect.
+
+## Discrepancy List
+
+None found.
+
+- **BLOCKER:** none
+- **MAJOR:** none
+- **MINOR:** none
+  - (Non-defects, per ground rules: omitted mouse cursor in IMG2 [rule c]; bottom gradient banding in IMG2 is a video artifact; frame/badge/geometry are house chrome [rule a].)
+
+## FINAL VERDICT: **PASS**
+
+The recreation is a faithful, usable recreation. All renderable content (title text, badge, background, frame containment, centering, relative sizing) matches the original exactly; the only differences between the two images are video-capture artifacts in the original, which are correctly absent from the recreation.

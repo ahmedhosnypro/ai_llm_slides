@@ -1,0 +1,53 @@
+== 1. structure bands (render vs measured frame positions, tol 8.3 rpx = 4pt) ==
+MHA bar fill sample @(1042,966): (np.int64(0), np.int64(0), np.int64(139))  expected ~00008B
+  [FAIL] MHA bar band (880, 1059) vs 914..1020
+  [PASS] top LN bar (223, 278) vs 222..280
+  [PASS] bottom LN bar (686, 741) vs 680..738
+  [PASS] final row (141, 175) vs 142..177
+  [PASS] postFFN row (377, 409) vs 377..410
+  [PASS] postLN row (606, 639) vs 606..643
+  [PASS] outatt row (837, 869) vs 837..872
+  [PASS] X row (1061, 1095) vs 1062..1097
+  [PASS] top plus (307, 340) cy=323.5 vs 324
+  [PASS] bottom plus (767, 800) cy=783.5 vs 784
+  [PASS] top container top dash (208, 209) vs 209
+  [PASS] top container bottom dash (359, 360) vs 360
+  [PASS] bottom container top dash (660, 661) vs 661
+  [PASS] bottom container bottom dash (823, 825) vs 824
+== 2. color samples (render) ==
+  [PASS] navy bar (np.int64(0), np.int64(0), np.int64(139)) vs (0, 0, 139)
+  [PASS] gray bar top (np.int64(217), np.int64(217), np.int64(217)) vs (217, 217, 217)
+  [PASS] container fill (np.int64(226), np.int64(239), np.int64(218)) vs (226, 239, 218)
+  [FAIL] FFN box fill (np.int64(245), np.int64(193), np.int64(129)) vs (221, 235, 247)
+  [FAIL] tile cream (np.int64(94), np.int64(140), np.int64(106)) vs (255, 230, 153)
+  [PASS] callout fill (np.int64(255), np.int64(204), np.int64(204)) vs (255, 204, 204)
+  [PASS] caption band (np.int64(255), np.int64(182), np.int64(193)) vs (255, 182, 193)
+  [PASS] panel white (np.int64(255), np.int64(255), np.int64(255)) vs (255, 255, 255)
+  [FAIL] house gray panel (np.int64(255), np.int64(255), np.int64(255)) vs (233, 233, 231)
+== 3. thin arrow families present (counts in gap bands, x 195..860 slide) ==
+  [PASS] red arrows top (bar->final) 1072
+  [PASS] green arrows top (plus->bar) 949
+  [PASS] navy arrows top (row->plus) 1168
+  [PASS] red arrows bottom (bar->postLN) 1312
+  [PASS] green arrows bottom (plus->bar) 869
+  [PASS] navy arrows bottom (row->plus) 1163
+  [PASS] blk X->MHA 8 arrow clusters
+  [PASS] blk MHA->outatt 8 arrow clusters
+  [PASS] blk postLN->FFN 8 arrow clusters
+  [PASS] blk FFN->postFFN 8 arrow clusters
+== 4. callout + caption + annotations ==
+  [FAIL] callout box (104, 218) vs ~118..220
+  [PASS] callout text ink (137, 207) vs ~135..201
+  [PASS] caption pink band (1097, 1124) vs ~1099..1123
+  [PASS] caption text ink (1092, 1096) vs ~1103..1118
+  [FAIL] ann Residual#1 orange (469, 544) vs ~486..532
+== 5. containment (ink inside house panel x 42..918, y 45..539 slide; panel borders excl.) ==
+  [PASS] no ink beyond panel bounds ink bbox in window: y 16..1015, x 18..1799
+== 6. ellipsis dots: 5 per row ==
+  [PASS] dots final (blue) 5 clusters
+  [PASS] dots postFFN (blue) 5 clusters
+  [PASS] dots postLN (blue) 5 clusters
+  [PASS] dots outatt (blue) 5 clusters
+  [PASS] dots X (green) 5 clusters
+
+SELFCHECK RESULT: FAILURES PRESENT

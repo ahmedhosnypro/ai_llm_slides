@@ -1,0 +1,48 @@
+# Slide 021 â row3 vectors lane: element-by-element comparison
+
+## Element-by-element check
+
+**Lane (dashed rounded container)**
+- Dash style: IMG1 uses short uniform dashes; IMG2 shows slightly finer, denser dashes. Very close; the dash/gap rhythm in IMG1 reads marginally longer. â **MINOR** (confidence: 0.7)
+- Border color: teal/green dashed border in both. Match.
+- Corner radius: rounded left/right ends in both. Match.
+- Lane fill: light yellow-green interior in both; IMG1 reads a touch more yellow, IMG2 a touch greener â within JPEG/scale tolerance. No discrepancy worth flagging beyond noting it. â **MINOR** (confidence: 0.5)
+- Lane height vs box height ratio: boxes fill slightly more of the lane vertically in IMG1 (~0.60) than IMG2 (~0.53), i.e., IMG1 boxes are a bit taller relative to the lane. â **MINOR** (confidence: 0.6)
+
+**Boxes (8 total: P0âP5, PN-2, PN-1)**
+- Count and order: 8 boxes, correct labels and sequence in both. Match.
+- Border color: thin khaki/tan border in both (IMG2 reads slightly more orange-tan, IMG2 being JPEG-warm â within tolerance). Match.
+- X-positions: P0âP5 evenly spaced left cluster, large empty gap, then PN-2, PN-1 right cluster â spacing pattern matches well in both. Match.
+- Box shape: sharp/very-slightly-rounded rectangles in both. Match.
+
+**'Vector' text**
+- Font: bold dark-navy serif italic in both. Match.
+- Size: comparable relative to box width; IMG1 text fills the box width very slightly more. Negligible.
+- Left-of-center offset: label sits left of box center in both, with subscript filling the right side. Match.
+
+**Subscripts (P0â¦PN-1)**
+- Color: red italic serif in both. Match.
+- Size: smaller than 'Vector' in both. Match.
+- Vertical placement: in IMG1 subscripts sit essentially baseline-aligned (bottom of 'Vector'); in IMG2 they hang a touch lower, slightly below the baseline. Given the spec calls for baseline alignment, IMG1 conforms; the IMG2 drop is small and partly an upscaling artifact. â **MINOR** (confidence: 0.5)
+
+**Empty gap between P5 and PN-2**
+- Empty in both â no dots, no extra elements. Match.
+
+**Adjacent renderable content in crop**
+- Red down-arrow at top center: present in both. Match.
+- Tan diagonal line crossing near left (through/between P0âP1 area): present in both. Match.
+- Dark-red curve fragment at bottom-right and bottom-left: present in both. Match.
+- Blue/red vertical border lines at right edge: present in both (house chrome anyway). Match.
+
+## Discrepancy list
+1. **MINOR** â Lane dash pattern slightly longer/sparser in IMG1 vs finer dashes in IMG2 (confidence 0.7).
+2. **MINOR** â Box height relative to lane height slightly larger in IMG1 (confidence 0.6).
+3. **MINOR** â Subscript baseline position: slightly higher in IMG1 than IMG2's dropped subscripts (confidence 0.5).
+4. **MINOR** â Lane fill hue marginally more yellow in IMG1 (confidence 0.5; likely JPEG/scale).
+
+No BLOCKER or MAJOR discrepancies. All structural content â 8 boxes, labels, subscripts, colors, ordering, empty gap â is faithfully reproduced.
+
+## Visual-quality defects
+- None significant; IMG1 text and strokes are crisp at 150 dpi, antialiasing clean.
+
+**CROP VERDICT: PASS** for 'row3'

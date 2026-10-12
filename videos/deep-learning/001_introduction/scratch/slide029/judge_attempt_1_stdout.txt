@@ -1,0 +1,44 @@
+[info] context header injected: VIEW: Slide 029 recreation — fidelity check vs original lecture frame | CAPTURE: IMG1=150dpi PNG render of a 13.33x7.5in PPTX; IMG2=original lecture video frame
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 296202
+[info] videos/deep-learning/001_introduction/recreated_pptx/qa/slide029/render_1.png, videos/deep-learning/001_introduction/unique_slides/slide_029.jpg: transcript written (validated winner, atomic): videos/deep-learning/001_introduction/recreated_pptx/qa/slide029/judge_attempt_1.txt (pid 296202)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== videos/deep-learning/001_introduction/recreated_pptx/qa/slide029/render_1.png, videos/deep-learning/001_introduction/unique_slides/slide_029.jpg ===
+[winner] images (round 1, attempt 1)
+# Fidelity Check: Slide 029 â "Spatial Structure of Image"
+
+## Preliminary rulings (per founder-mandated ground rules â settled first, not raised as discrepancies)
+
+- **House chrome (rule a):** Gray #E9E9E7 panel with red border, yellow "29" badge at top-right with purple ring â present and per spec. The original frame's panel border sits slightly inset; per directive, canonical chrome position governs. **Not a discrepancy.**
+- **Black full-width strip at ~95â100% height in IMG2 (rule c):** video-player progress-bar artifact. Correctly omitted from the recreation. **Not a discrepancy.**
+- The original's RGB-stack image is slightly clipped at the bottom by the black strip in IMG2; the recreation shows the full image. This is a video-capture clipping artifact, so the recreation showing the *uncropped* image is correct. **Not a discrepancy.**
+
+## Element-by-element comparison
+
+| Element | Original (IMG2) | Recreation (IMG1) | Verdict |
+|---|---|---|---|
+| Title "Spatial Structure of Image" | Red bold, centered near top of panel | Red bold, centered, same text, same approx. size/color (#C00000-range) | |
+| Bullet 1 (level-1) "Images are 2-D" | Hollow orange circle marker | Same marker, same text, letter-spacing slightly wider but visually equivalent |
+| Sub-bullet "k-D if you also count the extra channels" | Indented, hollow marker | Same, correct indent hierarchy |
+| Sub-bullet "RGB, hyperspectral, etc." | Indented | Same || Bullet 2 "What does a 2-D input really mean?" | Level-1 hollow marker | Same || Sub-bullet "Neighboring variables are locally correlated" | Indented | Same | Inner content box (white, thin red border) | Present, spans most of slide width, upper-middle area | Present, same proportions and position relative to panel |
+| Grumpy cat "I LOVE MATH / IT MAKES PEOPLE CRY!" meme with red box around nose | Top-right of inner box | Same image, same position, same aspect ratio |
+| RGB channel stack (red/green/blue offset rectangles of same meme) | Right side, below meme | Same stack, same ordering (red back, green middle, blue front), same offsets |
+| Cat eye close-up with colored arrows (yellow, tan, cyan, red, green) | Lower-left of inner box | Same image, same position, arrows preserved |
+| Line spacing in bullet block | Two sub-bullets evenly spaced under level-1 items | Inter-line spacing matches; no top-hugging in any text run |
+| Frame containment | All content inside inner red box and gray panel | All images and text fully inside the inner box; RGB stack and meme clear the right border; eye image and text clear bottom border |
+| Missing elements | â | None; every region of the original is represented |## Discrepancy list
+
+**BLOCKER:** none.
+
+**MAJOR:** none.
+
+**MINOR:**
+1. Letter-spacing in the recreation's body text is slightly wider (tracking) than the original's condensed rendering â inherent font-rendering/medium difference (rule d territory). Confidence: high that it's within tolerance.
+2. The RGB-stack image in the recreation appears very slightly larger relative to the inner box than in the original frame (the original's version is partially occluded by the video progress-bar strip, so exact size comparison is degraded by the artifact). Confidence: medium. Not a content defect.
+
+## Visual-quality defects in the recreation
+
+- None observed: no text overflow, no clipping, no collisions, no wrapping errors, all images legible and fully contained within the inner red-bordered box and the house panel.
+
+FINAL VERDICT: **PASS** for 'faithful, usable recreation'.
+

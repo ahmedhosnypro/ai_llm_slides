@@ -1,0 +1,38 @@
+# Fidelity Check â Slide 036
+
+## Ground-rule settlements (per directives, not counted)
+- Gray panel, red panel border, yellow "36" badge, panel red bottom stroke at slide edge: house chrome per directive 2026-10-11 â **not assessed**. (The original frame shows no badge and a slightly inset panel border; both differences fall under rule (a).)
+- Black full-width strip at bottom of IMG2 (~rows 519â539): video progress-bar artifact per rule (c) â correctly omitted from recreation.
+- Handwritten-style labels ("RGB", "3 dims", "How many weightsâ¦") rendered as typed handwriting-imitation fonts: medium difference, at most MINOR per rule (d). Equation "7 Â· 7 Â· 3 = 147" is linear in BOTH images, so rule (e) is not triggered.
+
+## Element-by-element comparison
+
+| Element | Original (IMG2) | Recreation (IMG1) | Verdict |
+|---|---|---|---|
+| Title, line 1 | "How many Parameters are  in the  RGB", red bold, centered | Identical text, same double-spacing after "are"/"the", red bold, centered | Match |
+| Title, line 2 | "Image filter  ( K=3 )" | Identical, centered under line 1 | Match |
+| Title color/size | Dark red â #C00000, ~2-line block occupying ~12% of height | Same hue, same relative size, same line separation | Match |
+| Inner white panel, red border | Present, holds all diagram + caption content | Present, same relative position (top ~28%, bottom ~92%) | Match |
+| "RGB" handwritten label above slab | Present | Present, same position | Match |
+| Orange/brown input slab (3D parallelepiped) | Present | Present, same geometry and hue | Match |
+| "3 dims" label + double arrow into slab | Present, left side | Present, same placement | Match |
+| Cyan dashed projection lines (3 layers) | Present | Present, same count/spread | Match |
+| Cyan "Ã" operator | Present above filter | Present, same spot | Match |
+| Small blue 3D filter with "7" (top-right), "7" (bottom-right), "3" (below) | Present | Present, all three numerals placed identically | Match |
+| "=", gray "+", orange-ringed cyan neuron circle | Present in sequence | Present, same order/positions | Match |
+| Two black annotation arrows (â "3", â neuron circle) | Present | Present, same origins/targets | Match |
+| "How many weights for this neuron?" | Handwritten black, one line, near panel bottom | Same text, one line, same relative width/position | Match (medium diff â¤ MINOR) |
+| "7 Â· 7 Â· 3 = 147" | Red, centered under caption | Red, centered, same relative size | Match |
+
+## Discrepancies found
+
+1. **MINOR** (confidence high): The diagram group (slab, filter, dashed lines) is rendered ~8â10% larger relative to the inner panel than in the original; the left edge of the slab sits slightly closer to the panel's left border. No containment violation â all ink remains inside the red inner frame with clearance.
+2. **MINOR** (confidence medium): The "7 Â· 7 Â· 3 = 147" line sits slightly closer to the inner panel's bottom border than in the original (smaller bottom margin), but it does not touch or cross the border â inside frame containment rule (5) is satisfied.
+3. **MINOR** (confidence high): Handwritten labels use a handwriting-imitation font vs. actual ink in the original â inherent medium difference per rule (d), listed for completeness only.
+
+No BLOCKER or MAJOR defects: no missing elements (rule 6 clean), no frame overflows (rule 5 clean), no delimiter geometry (rule 7 not applicable), no table data (rule 8 not applicable), all text verbatim with matching line breaks, all diagram shapes/arrows/annotations present and correctly placed.
+
+## Visual-quality defects in the recreation
+- None observed: no clipping, no collisions, no wrapping errors, no illegible text. Vertical centering of "3" under the filter and of "7" labels against the filter body is correct.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

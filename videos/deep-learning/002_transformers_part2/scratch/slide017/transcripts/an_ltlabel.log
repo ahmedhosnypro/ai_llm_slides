@@ -1,0 +1,41 @@
+[info] context header injected: VIEW: Slide 017 build-time zoom: Linear Transformation box edge label — resolve exact glyphs (dHxd vs dxHxd vs dHxd), colors | CAPTURE: 5x LANCZOS zoom of original lecture frame crop (frame px 480,82..570,118), 960x540 source
+[info] mode analysis | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 3075751
+[info] crops/micro_ltlabel.png: transcript written (validated winner, atomic): transcripts/an_ltlabel.txt (pid 3075751)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== crops/micro_ltlabel.png ===
+[winner] images (round 1, attempt 1)
+# Visual QA Description â Slide 017, "Linear Transformation" box edge label (5x zoom)
+
+## 1. Verbatim text transcription
+
+Two text elements are visible:
+
+- **Main label (large, black):** `[ T ]` â left square bracket, capital "T", right square bracket, with visible spacing between the glyphs.
+- **Subscript label (small, multicolored, positioned at the lower right of the closing bracket, baseline-aligned like a subscript):** `dHâ¢d`
+
+Regarding the requested glyph resolution: the character between "H" and the final "d" appears as a **single small round dot (interpunct/bullet "â¢" or "Â·")**, positioned at roughly mid-to-lower x-height. **No crossing diagonal strokes are visible**, so it does **not** read as an "x". There is also **no leading glyph before the first "d"** â the subscript begins directly with "d". Most likely reading: **`dHÂ·d`** (caveat: at this zoom the dot is ~2â3 source pixels and slightly fuzzy; an "x" cannot be 100% excluded, but the evidence favors a dot).
+
+Approximate colors of the subscript glyphs:
+- First "d": orange/amber
+- "H": royal blue
+- Dot "â¢": small, dark (dark blue or black; too small to color-resolve definitively)
+- Final "d": red/crimson
+
+## 2. Layout
+
+- **LEFT edge:** The pale-yellow rounded rectangle (the box/label) begins essentially at the left boundary; its left rounded corner is at or just inside the crop edge, with little to no gray margin visible on the left.
+- **RIGHT edge:** A vertical strip of flat light-gray background (~10â15% of image width). The box's right rounded corner and its thin orange border are fully contained before this strip â the box ends short of the right edge.
+- **TOP:** A thin horizontal band of light-gray background above the box's top border.
+- **BOTTOM:** A slightly thicker band of light-gray background below the box's bottom border.
+- Inside the box: `[ T ]` is centered-left/center; the colored subscript `dHâ¢d` hugs the bottom-right of the closing bracket, sitting low, partially below the bracket's midline.
+
+Box styling: pale cream/light-yellow fill, thin orange/amber border, rounded corners. Background: uniform light gray (#E5E5E5-ish).
+
+## 3. Visual defects / anomalies
+
+- **Zoom artifacts:** The entire image is soft/pixelated with visible antialiasing blur from the 5x upscale of a low-resolution source (box interior ~75Ã25 source px). Glyph edges are not crisp.
+- **Smallest-glyph uncertainty:** The subscript's middle dot is the least-resolved element (dot vs. tiny "x"); it is legible but fuzzy. All other glyphs ("[", "T", "]", "d", "H", "d") are legible despite blur.
+- **No clipping of content:** Both the box, its border, and all text glyphs appear fully inside the crop; nothing textual is cut off. The box's left corner may be grazing the left crop boundary, but no visible text loss results.
+- **No overlaps, placeholders, garbage strings, or wrong-language text** detected. Colors are consistent with an intentional multicolor subscript convention (orange/blue/red), not rendering corruption.
+

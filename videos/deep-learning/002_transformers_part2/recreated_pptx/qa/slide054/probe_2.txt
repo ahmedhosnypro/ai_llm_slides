@@ -1,0 +1,63 @@
+# Visual QA Report â Slide 054
+
+## 1. Verbatim Text Transcription
+
+**Header area:**
+- `Self Attention Mechanism for Decoder  (Adding Mask)` â dark-red bold title, top-left (note: appears to be a double space between "Decoder" and "(Adding Mask)")
+- `54` â slide number in a yellow circle with thick blue/purple ring, top-right
+- `-â` â black bold text in a small yellow box, top-right
+- `*` â red asterisk inside a red-outlined oval, top-right
+
+**Section labels (cream rounded rectangles, dark-blue bold text):**
+- `Similarity`
+- `Probabilities`
+- `Weighted SUM`
+
+**Main diagram text:**
+- `Dot Product` (inside tan box)
+- `K,q` (red, at top-right of the Dot Product box)
+- Fraction formula: `K, q` over a horizontal bar over `âd` (italic serif, above the Scaling box)
+- `Scaling by âd` (vertical text in pink box)
+- `Mask` (vertical green text on green box)
+- Mask cell values, top to bottom: `-â`, `-â`, `0`, `0` (black text on yellow cells)
+- `Look Ahead` / `Mask` (two lines, yellow bold on black oval)
+- `Soft max` (vertical purple text) and a large `S` lower in the same purple box
+- `0` (red, above the topmost Ã circle)
+- `Î£` (large dark-blue Greek sigma in light-blue box)
+- `z` (red, in the top dashed output box)
+- `Wââ½Ê³â¾` (Ã4, on green boxes)
+- `Kâ`, `Kâ`, `Kâ`, `Kâ` (red labels)
+- `qâ` (red label, bottom center)
+- `W_qâ½Ê³â¾` (pink box, bottom center)
+- `Zâ`, `Zâ`, `Zâ`, `Zâ` (left dashed box, top to bottom)
+- `Zâ`, `Zâ`, `Zâ`, `Zâ` (bottom dashed box, left to right)
+- `Vâ`, `Vâ`, `Vâ`, `Vâ` (red labels, right side)
+- `Wáµ¥â½Ê³â¾` (Ã4, on blue boxes)
+- `Zâ`, `Zâ`, `Zâ`, `Zâ` (right dashed box, top to bottom)
+
+**Bottom-right legend box:**
+- `1Ãd` (above a row of four small yellow squares)
+- `W` (bold, in yellow box)
+- `=`
+- `dÃd` (below the W box)
+- `1Ãd` (below a row of small squares to the right of "=")
+- `d: Embedding Length` (dark-blue bold, bottom of the box)
+
+## 2. Layout
+
+- **LEFT edge:** A green dashed rounded box containing four rows (top to bottom: `Zâ`, `Zâ`, `Zâ`, `Zâ`), each row = one yellow square + label + two pale-gray squares. Arrows run right into the four green `Wââ½Ê³â¾` boxes.
+- **RIGHT edge:** A mirrored green dashed rounded box with rows `Zâ`â¦`Zâ` feeding leftward through blue `Wáµ¥â½Ê³â¾` boxes to `Vâ`â¦`Vâ` labels and vector cells. Below it, in the bottom-right corner, sits the dashed legend box (`1Ãd`, `W`, `=`, `dÃd`, `1Ãd`, `d: Embedding Length`).
+- **TOP:** Red-outlined slide border on gray background; red title at top-left; at top-right the small `-â` yellow box, the red `*` oval, and an empty yellow rectangle, then the `54` badge. Inside the pink panel's top: the dashed green output box with `z` (a thick green arrow points up into it from the Î£ area), plus the three stage labels.
+- **BOTTOM:** A wide green dashed box spanning the bottom-center containing, left to right: yellow square + `Zâ`; two purple dashed-border cells (label `Zâ` on/next to them); yellow square + `Zâ`; `Zâ`. A thick red arrow points up into this box from below it. Above it: the pink `W_qâ½Ê³â¾` box and the red `qâ` label with yellow squares, feeding upward into the Dot Product box. A black oval `Look Ahead Mask` sits below the Mask/Softmax columns. Dashed gray curved connectors run from the left Z-box down to the bottom box, and from the bottom box up to the right Z-box.
+- **CENTER FLOW (leftâright):** Z-rows â `Wââ½Ê³â¾` â small yellow/tan cells â `KââKâ` arrows into the tan **Dot Product** box (dark-blue dots joined by thin diagonal lines) â pink **Scaling by âd** box â green **Mask** column (`-â, -â, 0, 0`) â purple **Soft max** column â four red **Ã** circles (multiplying the V rows) â light-blue **Î£** box â green arrow up to the `z` output box.
+
+## 3. Defects / Observations
+
+- **Empty shape:** The plain yellow rectangle at top-right (between the `*` oval and the `54` badge) contains no text â it reads as a stray or placeholder element.
+- **Stray annotation candidates:** The standalone `-â` box and the red `*` oval at top-right sit outside the diagram flow and appear to be leftover markup rather than content.
+- **Unlabeled cells:** The three green cells in the top dashed output box (after `z`) are blank colored rectangles; similarly the small yellow/gray squares throughout (vector depictions) carry no text. This appears stylistic, but they are empty of labels.
+- **Tight spacing (not overlapping):** The red `0` label sits immediately above the topmost Ã circle, and `Vâ` sits immediately right of the bottommost Ã circle â close but legible.
+- **Title spacing:** Possible double space in `Decoder  (Adding Mask)`.
+- **No clipping:** The red border, pink panel, and all boxes/labels appear fully inside the slide; nothing is cut off at any edge.
+- **No wrong-language text:** All strings are English or standard mathematical notation (Î£, â, â, Ã, =); no garbage or placeholder strings detected.
+- All text is legible at this resolution; nothing is too small or blurred to transcribe.

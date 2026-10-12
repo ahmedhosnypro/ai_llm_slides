@@ -1,0 +1,36 @@
+# Fidelity Check â Slide 041 "The Convolution Process"
+
+## Ground-rule settle-up (per mandate)
+- House chrome (white canvas, gray panel, red border, yellow "41" badge with purple ring, title placement) â INTENTIONAL per amendment (a2). **Not discrepancies.**
+- The black arrow overlapping the "4" in the original's Result cell and the cursor tick near the title in IMG2 â video-capture artifacts per (c); their omission in the recreation is **correct**.
+- Original is a full-content slide, so (b) does not apply; content must be (and largely is) present.
+
+## Element-by-element comparison
+
+| Element | Original (IMG2) | Recreation (IMG1) | Verdict |
+|---|---|---|---|
+| Title "The Convolution Process", red bold, centered | â | â verbatim, same color/weight | Match |
+| "Original image" handwritten label + green-tinted photo with 5Ã5 overlay (1 1 1 0 0 / 0 1 1 1 0 / 0 0 1 1 1 / 0 0 1 1 0 / 0 1 1 0 0) | â | â same values, same overlay style | Match (see scale note below) |
+| "Convolutional filter 1" label | â | â verbatim | Match |
+| 3Ã3 yellow filter (1 0 1 / 0 1 0 / 1 0 1) with "a=1, b=1" | â | â same values, a=1/b=1 to the right | Match |
+| "Image: I (x,y)" / "Filter: h (-a:a , -b:b) (odd dimension)" â red math symbols, italic red "(odd dimension)" | â | â verbatim, styling matches | Match |
+| "Convolving the image" 5Ã5 grid: yellow 3Ã3 upper-left block with x1/x0/x1 multiplier subscripts, green remainder; values row-by-row identical | â | â all 25 cell values and all 9 subscript multipliers match, correct yellow/green partition | Match |
+| Black arrow from grid top â Result cell | â | â present, same trajectory | Match |
+| "Result" 3Ã3 grid, first cell olive-filled with "4", rest empty cream cells | â | â matches (cursor-over-4 artifact correctly omitted) | Match |
+| "Inner product" red handwritten label + red curly brace | â | â present, brace spans beneath label | Match |
+| Equation I(x,y) â h = Î£áµ¢âââáµ Î£â±¼ââáµ¦áµ I(xâi, yâj)Â·h(i,j), 2D format with limits above/below sums | â | â professional 2D rendering, limits correct | Match |
+| Bottom blue-bordered box: "Scan the original image using the 3x3 filter / Move the filter ONE pixel  (Right, Left, Up, Down) and Re-Calculate" | â | â verbatim, two lines, same break, blue border | Match |
+
+## Discrepancy list
+
+1. **MINOR** â Left "Original image" graphic is scaled noticeably larger relative to the panel than in the original (original leaves more white margin around it; recreation's image nearly touches the "Convolutional filter 1" label). Confidence: high.
+2. **MINOR** â A clipped sliver of caption/text from the source photo is visible along the bottom edge of the "Original image" graphic in the recreation (bottom-cropped text fragment inside the image asset). Not present as a distinct element in the original. Confidence: medium.
+3. **MINOR** â Faint stray tick/mark above the "v" in "Convolution" in the recreation title (appears to be an inherited stray stroke; the original's corresponding mark is a cursor artifact that should have been omitted). Confidence: medium.
+
+No BLOCKER or MAJOR defects found: all text is verbatim, all table/matrix data (5Ã5 overlay, 3Ã3 filter, 5Ã5 convolution grid, multipliers, result "4") matches exactly, no missing elements, no frame-containment violations (equation, grids, and bottom box all sit fully inside their panels), delimiters and the brace render correctly, and cell numbers are vertically centered in their cells.
+
+## Visual-quality notes (recreation only)
+- The "4" glyph in the olive Result cell is slightly small relative to the cell compared to the original's handwriting, but legible and centered â cosmetic only.
+- The x1/x0 multiplier subscripts sit slightly lower in their yellow cells than the original's baseline placement â barely perceptible, cosmetic only.
+
+FINAL VERDICT: **PASS** for 'faithful, usable recreation'.

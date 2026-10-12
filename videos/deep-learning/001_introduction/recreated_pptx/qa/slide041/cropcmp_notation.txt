@@ -1,0 +1,27 @@
+## Element-by-Element Comparison
+
+**Text content:**
+- Line 1: "Image:" + red "I (x,y)" â verbatim match in both crops. â
+- Line 2: "Filter:" + red "h (-a:a , -b:b)" + italic "(odd dimension)" â verbatim match. â
+
+**Layout/geometry:**
+- Two-line block, same line order, same left origin, similar line spacing (line 2 baseline sits at comparable offset in both). â
+- Both crops sit within a panel with a red bottom rule; containment is fine â no ink touches or crosses the frame edge in either image. â
+- The yellow sliver at top of both crops is consistent (chrome, excluded per rules).
+
+## Discrepancy List
+
+1. **MINOR** (confidence ~0.7): Weight of the parenthesized arguments. In the original, "(x,y)" and "(-a:a , -b:b)" render lighter/regular-weight relative to the bold letters **I** and **h**; in the recreation both the letters *and* their parenthesized arguments are uniformly bold. Text is verbatim; weight contrast between symbol and arguments is slightly flattened.
+
+2. **MINOR** (confidence ~0.65): "(odd dimension)" in the original is regular-weight italic; in the recreation it is bold-italic. Slightly heavier than the original.
+
+3. **MINOR** (confidence ~0.5): Horizontal gap after "Filter:" â the original shows a slightly wider gap between the colon and "h" (value starts a bit further right, roughly aligned under "(x,y)"); the recreation's gap is marginally tighter. Value-vs-label alignment is still clearly readable and close.
+
+4. **MINOR** (confidence ~0.4): Font family nuance â the original's "(odd dimension)" appears in a slightly narrower italic face; recreation's italic is a touch wider. Within acceptable medium-difference tolerance.
+
+No BLOCKER or MAJOR defects found: no missing elements, no overflow/clipping, no delimiter problems, no table/chart content, line spacing and vertical centering match, colors (red C00000-range ink on light panel) match.
+
+## Visual-Quality Defects in the Recreation
+- None beyond the weight/gap nuances listed above; no clipping, no collisions, no misalignment of values against enclosing marks.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

@@ -1,0 +1,25 @@
+## Discrepancy List â red underbrace, slide 021
+
+**1. Central cusp â depth and shape â BLOCKER (confidence: high)**
+IMG2 shows a pronounced V-shaped cusp: two strokes leave the spine region and descend to a sharp bottom apex, forming a clearly visible notch in the lower edge of the brace. IMG1's cusp is reduced to a very shallow, almost cosmetic dip â the apex barely drops below the spine line, and the two inward-sweeping strokes are nearly indistinguishable from a small jog in the rule. The measured geometry (strokes starting ~76px apart, sweeping to a sharp apex at x~521, y 351.5) is not reproduced; the cusp depth is maybe 25â30% of the original's. This is the defining feature of the glyph.
+
+**2. End arm curls â continuity and form â MAJOR (confidence: high)**
+In IMG2 both ends terminate in smooth, continuous upward-curling arms that flow organically out of the spine (typical LaTeX-style brace terminals). In IMG1 the terminal hooks render as small, disconnected curl fragments: there are visible gaps between the horizontal spine and the hooks at BOTH ends (left hook sits slightly above/offset from the spine end; right hook is clearly separated), and the hooks curl over more tightly/abruptly than the original's gentle sweep. The brace reads as "line + stuck-on ticks" instead of one continuous stroke.
+
+**3. Spine curvature â MAJORâMINOR (confidence: medium)**
+IMG2's spine has a gentle organic bow/taper along its length (thinner mid-span, thickening toward the terminals). IMG1's spine is essentially a uniform straight rule. Given the cusp dominates, I rate this MINOR-to-MAJOR; flagging as MINOR leaning MAJOR since it contributes to the "raster-stamped line" look.
+
+**4. Stroke thickness / taper â MINOR (confidence: medium)**
+IMG1's strokes are noticeably heavier and more uniform (~1.5â2x apparent weight in the mid-span) than IMG2's finer, tapered strokes. Some of this could be upscaled-JPEG thinning in IMG2, but the render side looks consistently too bold, especially in the cusp strokes.
+
+**5. Color â MINOR (confidence: low-medium)**
+IMG1 is a darker brick/maroon red; IMG2 reads as a brighter red. Likely partly JPEG/scale artifact in IMG2, but the render appears desaturated/darkened relative to source. Worth a palette check but not a fidelity blocker under ground rule (b).
+
+## Visual-quality defects
+- The disconnected end hooks in IMG1 are a rendering artifact (anti-aliased fragments not fused with the spine) â visually untidy at any zoom.
+- The shallow cusp makes the brace read as a wavy rule rather than an underbrace, weakening its semantic role of grouping the formula above.
+
+## Summary
+Two structural failures (cusp depth, terminal continuity) mean the certified-size raster is not faithfully representing the original brace geometry.
+
+CROP VERDICT: FAIL for 'brace'

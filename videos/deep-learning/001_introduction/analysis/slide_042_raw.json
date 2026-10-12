@@ -1,0 +1,174 @@
+{
+  "slide_title": "Output dimensions of Convolution?",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "w_in (rendered as w with subscript 'in', italic serif, above top edge of input slab)",
+      "h_in (rendered as h with subscript 'in', italic serif, left of input slab)",
+      "d_in (rendered as d with subscript 'in', italic serif, below front-bottom edge of input slab)",
+      "s (small italic label on curved arrow drawn on the face of the input slab)",
+      "w_f (rendered as w with subscript 'f', italic serif, upper-left of filter stack)",
+      "n_f (rendered as n with subscript 'f', italic serif, above filter stack)",
+      "h_f (rendered as h with subscript 'f', italic serif, left of filter stack)",
+      "d_f (rendered as d with subscript 'f', italic serif, below filter stack)",
+      "= (large equals sign between filter stack and output box)",
+      "w_out (rendered as w with subscript 'out', italic serif, upper-left of output box)",
+      "h_out (rendered as h with subscript 'out', italic serif, left of output box)",
+      "d_out (rendered as d with subscript 'out', italic serif, below output box)",
+      "h  hight",
+      "w  Width",
+      "d  Depth",
+      "f  Filter",
+      "n  Filters Count",
+      "S  Stride",
+      "[black horizontal strip across the very bottom edge of the image \u2014 likely a video-player letterbox artifact, not slide content]"
+    ],
+    "equations": [
+      "h_{out} = \\frac{h_{in} - h_f}{s} + 1",
+      "w_{out} = \\frac{w_{in} - w_f}{s} + 1",
+      "d_{out} = n_f",
+      "d_f = d_{in}"
+    ]
+  },
+  "layout": {
+    "arrangement": "Red title centered at top on white band; below it a large white panel outlined with a thin red border fills most of the slide. Inside the panel: input volume diagram on the left (~10-30% width), stack of colored filter slices in the center-left (~30-48%), a large '=' sign at center (~52%), large output volume on the right (~58-92%). A black-bordered equation box sits bottom-center (~35-55% width, ~60-85% height). A two-column variable legend (blue symbol + black word per line) sits bottom-left (~10-25% width, ~68-92% height).",
+    "regions": [
+      {
+        "name": "Title band",
+        "position": "top, full width, 0-15% height",
+        "content": "Red bold title 'Output dimensions of Convolution?' centered"
+      },
+      {
+        "name": "Input volume",
+        "position": "middle-left, ~8-30% width, ~30-65% height",
+        "content": "Orange/brown 3D slab labeled w_in, h_in, d_in with small stride arrow 's' on its face"
+      },
+      {
+        "name": "Filter stack",
+        "position": "center-left, ~28-48% width, ~35-60% height",
+        "content": "Five thin colored parallelogram slices (cyan, green, red, yellow, purple) labeled w_f, n_f, h_f, d_f"
+      },
+      {
+        "name": "Equals sign",
+        "position": "center, ~50-55% width, ~45-52% height",
+        "content": "Large black '=' character"
+      },
+      {
+        "name": "Output volume",
+        "position": "right, ~58-92% width, ~25-65% height",
+        "content": "Large tan/beige 3D box labeled w_out, h_out, d_out"
+      },
+      {
+        "name": "Equation box",
+        "position": "bottom-center, ~35-55% width, ~60-85% height",
+        "content": "White rectangle with thin black border containing the four output-dimension formulas"
+      },
+      {
+        "name": "Variable legend",
+        "position": "bottom-left, ~10-25% width, ~68-92% height",
+        "content": "Six lines: blue bold symbol + black term (h hight, w Width, d Depth, f Filter, n Filters Count, S Stride)"
+      }
+    ],
+    "hierarchy": "The red title dominates first by color and weight; visually the large tan output box is the biggest element, followed by the orange input slab, then the colorful filter stack which draws the eye via saturated hues; equations and legend are small supporting text."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Input volume: a 3D rectangular slab drawn in perspective (front face plus top and right-side faces) in orange/brown. Labels: 'w_in' above the top-back edge, 'h_in' to the left of the front face, 'd_in' below the front-bottom edge (indicating slab thickness/depth). On the front face there are two small black dots connected by a small curved arrow annotated 's', suggesting the stride movement of the filter window.",
+      "colors": [
+        "#C87137",
+        "#A85B28",
+        "#E09050",
+        "#000000"
+      ],
+      "position": "left side of panel, ~8-30% width"
+    },
+    {
+      "type": "diagram",
+      "description": "Filter stack: five thin parallelogram slices standing side by side in perspective, each a different color, representing n_f filters of size w_f x h_f x d_f. Left to right: light cyan, green, red, yellow, lavender/purple. Labels: 'w_f' at upper-left of the first slice, 'n_f' centered above the stack, 'h_f' at left of the slices, 'd_f' centered below the stack.",
+      "colors": [
+        "#8FD4E8",
+        "#3CB46E",
+        "#E8434A",
+        "#F5E663",
+        "#B9A6D9"
+      ],
+      "position": "center-left, between input volume and equals sign"
+    },
+    {
+      "type": "other",
+      "description": "Large black equals sign '=' separating the (input x filters) expression from the output volume.",
+      "colors": [
+        "#000000"
+      ],
+      "position": "horizontal center of panel, vertically middle"
+    },
+    {
+      "type": "diagram",
+      "description": "Output volume: a large 3D rectangular box drawn in perspective (front face, top face, right face) in tan/wheat color. Labels: 'w_out' above the top-left edge, 'h_out' to the left of the front face, 'd_out' below the front-bottom edge.",
+      "colors": [
+        "#F0DCA8",
+        "#E3C98A",
+        "#D9B96E",
+        "#000000"
+      ],
+      "position": "right side of panel, ~58-92% width"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Equation box: white rectangle with a thin black border containing four stacked, centered equations: (1) h_out = (h_in - h_f)/s + 1, (2) w_out = (w_in - w_f)/s + 1, (3) d_out = n_f, (4) d_f = d_in. Fractions rendered with horizontal fraction bars; variables italic serif with subscripts.",
+      "colors": [
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "bottom-center of panel"
+    },
+    {
+      "type": "other",
+      "description": "Variable legend: six short lines, each with a bold blue italic symbol followed by a black term: 'h hight', 'w Width', 'd Depth', 'f Filter', 'n Filters Count', 'S Stride'. Note: 'hight' is misspelled on the slide and must be preserved verbatim.",
+      "colors": [
+        "#0000CC",
+        "#000000"
+      ],
+      "position": "bottom-left of panel"
+    }
+  ],
+  "imagery": [
+    "No photographs or icons; all graphics are vector-style 3D geometric illustrations (slab, filter slices, box) drawn in a flat-shaded perspective style typical of lecture slides."
+  ],
+  "colors": {
+    "background": "#FFFFFF (slide body); outermost frame ~#F2F2F2 light gray",
+    "title_text": "#CC0000",
+    "body_text": "#000000",
+    "accents": [
+      "#CC0000 (title + panel border)",
+      "#0000CC (legend symbols)",
+      "#C87137 (input slab orange)",
+      "#F0DCA8 (output box tan)",
+      "#8FD4E8 (cyan filter)",
+      "#3CB46E (green filter)",
+      "#E8434A (red filter)",
+      "#F5E663 (yellow filter)",
+      "#B9A6D9 (purple filter)"
+    ]
+  },
+  "typography_notes": "Title: bold sans-serif (Verdana/Tahoma-like), all-lowercase except capitalized words, red, roughly 28-32pt, centered. Diagram labels (w_in, h_in, etc.): italic serif (Times New Roman-like) with subscripts, black, small (~14-16pt). Equations: italic serif with true fraction bars, black. Legend: left column bold blue italic single letters, right column regular black sans/serif words; no bullet markers, plain line list. Panel border is a thin red rectangle inset from slide edges.",
+  "animation_state": "Slide appears fully built; no mid-build state, no dimmed/partial bullets, no visible animation remnants.",
+  "recreation_brief": "1. Create a 16:9 slide with white background; optionally add a very light gray (#F2F2F2) outer frame effect by insetting a white rectangle. 2. Add title text box, top-center: 'Output dimensions of Convolution?' in bold red (#CC0000) sans-serif (Verdana), ~30pt. 3. Draw a thin red (#CC0000) rectangle border inset ~4% from slide edges (no fill) to form the content panel. 4. Build the input volume: insert a 3D 'Cube'/rectangle shape, recolor front face orange-brown (#C87137) with darker (#A85B28) top/side faces; place at left (~10-30% width). Add italic serif labels: 'w_in' above top edge, 'h_in' at left, 'd_in' below front-bottom edge (subscripts via PowerPoint font subscript). Add two small black dots joined by a curved black arrow on the face with tiny italic label 's'. 5. Build the filter stack: draw five thin parallelogram shapes (Insert > Shapes > Parallelogram, skewed) side by side at center-left, colored left-to-right cyan #8FD4E8, green #3CB46E, red #E8434A, yellow #F5E663, purple #B9A6D9, each with thin darker outline. Label 'w_f' upper-left, 'n_f' above stack, 'h_f' at left, 'd_f' below. 6. Place a large black '=' text (~40pt) at horizontal center between filters and output box. 7. Build the output volume: large 3D box shape with tan front (#F0DCA8), darker top/side (#E3C98A / #D9B96E), at right (~58-92% width). Label 'w_out' above top-left edge, 'h_out' at left, 'd_out' below front-bottom edge. 8. Create the equation box: white rectangle with thin black border at bottom-center (~35-55% width). Inside, four centered lines using PowerPoint equation editor (LaTeX): h_{out} = \\frac{h_{in}-h_f}{s} + 1 ; w_{out} = \\frac{w_{in}-w_f}{s} + 1 ; d_{out} = n_f ; d_f = d_{in}. Black italic serif, ~16-18pt. 9. Create the legend at bottom-left as six lines, each with a bold blue (#0000CC) italic symbol then black term, exactly: 'h  hight' (keep the misspelling), 'w  Width', 'd  Depth', 'f  Filter', 'n  Filters Count', 'S  Stride'. 10. Do not add any footer, slide number, or logo; leave the bottom edge plain (any black strip in the source is a video artifact, not slide content).",
+  "_meta": {
+    "frame": "slide_042.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 42,
+      "image": "slide_042.jpg",
+      "kept_frame": "frame_03337.jpg",
+      "start_sec": 3238.0,
+      "end_sec": 3336.0,
+      "frame_count": 99,
+      "old_group": 60,
+      "founder_frame_swap": false
+    },
+    "elapsed_s": 72.4
+  }
+}

@@ -1,0 +1,49 @@
+# Slide 054, Crop C1 (Scaling fraction region) â Element-by-Element Recheck
+
+## Content element comparison
+
+**1. Red stacked fraction "KÂ·q / âd"**
+- Present in both, stacked with horizontal bar, red ink, positioned left of the Mask column at roughly the same relative height (vertical center ~53% of crop in original vs ~56% in recreation). â
+- **SIZE MISMATCH (MAJOR, confidence 0.8):** The recreation's fraction is dramatically larger than the original's. In original coordinates the fraction block spans roughly 27â30 px tall; the recreation's spans roughly 65â70 px â approximately 2.2â2.5Ã the original's height. The professional-2D-format directive (rule e) covers *notation style*, not a ~2.5Ã scale inflation. At this zoom the fraction dominates the gap between the pink column and the Mask column in a way the original does not.
+- Notation "K.q" vs "KÂ·q" â equivalent (dot operator), not a discrepancy.
+- Fraction bar width and glyph alignment ("KÂ·q" centered over bar, "âd" centered under bar): acceptable in both.
+
+**2. Arrowhead between pink Scaling column and green Mask column**
+- **ARROW DIRECTION REVERSED (MAJOR, confidence 0.9):** In the original, the red arrowhead in the gap points **right** (apex toward the Mask column, consistent with scaling output flowing into the Mask stage). In the recreation, the red triangle points **left** (apex away from Mask, toward the fraction). This is a directional/semantic error, not a styling nuance.
+- **ARROW SHAFT MISSING / REDUCED (MAJOR, confidence 0.6):** The original shows a horizontal red shaft line at the arrow's height crossing the gap (traceable back toward the pink column); the recreation shows only an isolated arrowhead plus a small detached red dash sitting above it near the Mask border. The detached dash reads as a stray artifact at this zoom.
+
+**3. Rotated "Scaling by sqrt(d)" label â visible top portion**
+- **VISIBLE GLYPHS DO NOT MATCH (MAJOR, confidence 0.75):** Per the crop context, the label strip spans y220â360 and the crop ends at y245, so only the topmost sliver of the rotated label is in-window â absence of most of the label is expected. However, within that sliver the two images show **different glyphs**: the original shows the letterform "S" (start of "Scaling") at the top of the strip, while the recreation shows "âd" at the same vertical position. This indicates the recreation's rotated label either runs in the opposite rotation direction or is vertically offset by roughly the label's own length, placing the wrong characters in this window. Since the visible window content differs, this is judgeable and is a discrepancy, not an out-of-window issue.
+- **FONT SIZE (MAJOR, confidence 0.7, subsumed by above):** The visible rotated glyphs in the recreation are far larger than the original's (the "âd" glyphs are ~2Ã the cap height of the original's "S"). If the root cause is the vertical offset, the size difference may partly resolve; still, the visible ink does not match.
+
+**4. Green Mask column**
+- Green bordered column with dark-green rotated "Mask" heading: present in both, similar width, similar position, dark-green text. â
+- **Top-of-column position (MINOR, confidence 0.5):** The column top edge sits at a very similar relative height in both; no action needed.
+
+**5. Pale-yellow "-â" cell**
+- Present in both, inside the Mask column, bordered pale-yellow fill with red/dark "-â". â
+- **Cell size/text scale (MINOR, confidence 0.6):** The recreation's "-â" cell and its glyph are noticeably larger than the original's, consistent with the global scale inflation seen in the fraction. Text appears vertically centered within the cell in both. â
+
+**6. "Proâ¦" badge (top-right sliver)**
+- Present in both: rounded pale-yellow box with dark-blue "Pro" text and yellow-green border, cropped at the right edge in both. Relative position and crop point match. â (Sliver of house chrome â treated per rule (a).)
+
+**7. Pink column (left edge, Scaling strip background)**
+- Present in both at the left edge. 
+- **VERTICAL START OFFSET (MINOR, confidence 0.55):** The recreation's pink column top begins slightly lower (~43% of crop height) than the original's (~33%), and the recreation's column is slightly wider relative to the crop. Same element, small geometry drift.
+
+## Visual-quality defects in the recreation
+- Stray detached red dash floating above the arrowhead near the Mask border (collision-adjacent, reads as an artifact) â MINOR.
+- No text clipping or frame-containment violations observed in this window; the fraction, Mask column, and -â cell all sit inside their enclosing regions.
+
+## Discrepancy summary
+| # | Issue | Severity | Confidence |
+|---|-------|----------|------------|
+| 1 | Fraction "KÂ·q/âd" ~2.2â2.5Ã larger than original | MAJOR | 0.8 |
+| 2 | Arrowhead points left instead of right (direction reversed) | MAJOR | 0.9 |
+| 3 | Arrow shaft line missing; replaced by detached dash | MAJOR | 0.6 |
+| 4 | Rotated-label visible glyphs differ ("S" vs "âd") â rotation direction/vertical offset wrong | MAJOR | 0.75 |
+| 5 | Rotated-label glyphs oversized vs original | MAJOR | 0.7 |
+| 6 | Pink column top edge lower / slightly wider | MINOR | 0.55 |
+| 7 | "-â" cell and glyph oversized | MINOR | 0.6 |
+
+**FINAL VERDICT: FAIL** for 'faithful, usable recreation' â the reversed arrow direction and the mismatched visible glyphs of the rotated Scaling label are content-level errors in this region, and the fraction is rendered at roughly 2.5Ã the original's scale.

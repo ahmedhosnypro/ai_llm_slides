@@ -122,7 +122,7 @@ const G = {
   brace: { x: FX(176), y: FY(400), w: FX(863) - FX(176), h: FY(421) - FY(400) },
   caption: { inkCx: (FX(362) + FX(676)) / 2, capTop: FY(457), inkW: FX(676) - FX(362), em: 14 },
   inset: { x: FX(66), y: FY(415), w: FX(200) - FX(66), h: FY(513) - FY(415) },
-  lab5: { x: FX(196), y: FY(469), w: FX(262) - FX(196), linePitch: FY(484) - FY(469), em: 15.5 },
+  lab5: { x: FX(196), y: FY(469), w: FX(262) - FX(196), linePitch: FY(484) - FY(469), em: 16.3 },
 };
 
 // ---------- P2 shared helpers (the convention group members mirror) ----------

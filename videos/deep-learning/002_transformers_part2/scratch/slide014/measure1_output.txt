@@ -1,0 +1,48 @@
+size 960 540
+
+--- LETTERBOX (bottom black strip) ---
+first fully-black row at fy 518 (x=480: (58, 0, 0))
+black rows at x=480: (518, 539)
+
+--- CHROME RED BORDER (vertical scan, row y=250 far from content) ---
+fy 250: red-dominant cols [] ... 
+fy 300: red-dominant cols [] ... 
+fy 500: red-dominant cols [] ... 
+
+--- CHROME panel gray edges ---
+fy 60: gray panel x-span (61, 898)
+fy 250: gray panel x-span (61, 898)
+fy 510: gray panel x-span (61, 898)
+fx 50: gray panel y-span (43, 43)
+fx 300: gray panel y-span (46, 513)
+fx 900: gray panel y-span None
+
+--- chrome border columns detail (fy=300, x 40..70 and 900..925) ---
+left : [(50, (255, 254, 255)), (51, (255, 253, 255)), (52, (252, 250, 251)), (53, (244, 242, 243)), (54, (242, 241, 246)), (55, (248, 244, 245)), (56, (255, 242, 236)), (57, (186, 151, 147)), (58, (115, 38, 46)), (59, (235, 159, 171)), (60, (255, 222, 230)), (61, (238, 227, 231)), (62, (233, 233, 233)), (63, (230, 236, 234)), (64, (232, 237, 240)), (65, (232, 234, 255)), (66, (178, 175, 232)), (67, (38, 31, 111))]
+right: [(910, (253, 254, 255)), (911, (254, 255, 255)), (912, (254, 255, 255)), (913, (254, 255, 253)), (914, (254, 255, 253)), (915, (254, 255, 253)), (916, (254, 255, 253)), (917, (254, 255, 253)), (918, (254, 255, 253)), (919, (254, 255, 253)), (920, (254, 255, 253)), (921, (254, 255, 253)), (922, (254, 255, 253)), (923, (254, 255, 253))]
+
+--- top border row detail (fx=300, fy 40..58) ---
+[(40, (255, 252, 252)), (41, (255, 248, 250)), (42, (252, 201, 208)), (43, (108, 48, 56)), (44, (185, 140, 145)), (45, (251, 225, 226)), (46, (238, 234, 233)), (47, (226, 237, 233)), (48, (224, 236, 232)), (49, (223, 235, 231)), (50, (221, 233, 231)), (51, (226, 236, 235)), (52, (225, 234, 233)), (53, (235, 235, 235)), (54, (238, 222, 225)), (55, (216, 176, 184)), (56, (154, 91, 102)), (57, (167, 89, 102)), (58, (173, 90, 100)), (59, (175, 89, 100))]
+
+--- BADGE (yellow circle scan, region fx 860..930, fy 40..105) ---
+yellow bbox fx 860..892 fy 56..85  center (876.0, 70.5)  d=(33,30)
+ring-ish histogram (quantized 32): [((np.int64(192), np.int64(160), np.int64(224)), 10), ((np.int64(128), np.int64(96), np.int64(160)), 5), ((np.int64(96), np.int64(64), np.int64(128)), 3), ((np.int64(160), np.int64(96), np.int64(192)), 2), ((np.int64(192), np.int64(128), np.int64(224)), 1)]
+numeral ink bbox fx 860..892 fy 56..85  n=120
+numeral darkest-ink median: (80, 80, 55)
+
+--- TITLE band (fy 50..95) ---
+title row-spans fy: [(48, 143)]
+title ink fx 58..879 nspans=5 caps fy 48..143
+title red median: (175, 63, 74) n= 2320
+
+--- SUBTITLE band (fy 95..135) ---
+subtitle row-spans fy: [(96, 230)]
+subtitle ink fx 58..901 nspans=6
+subtitle blue median: (109, 94, 189) n= 2096
+subtitle green (braces?) median: (68, 145, 91) n= 45
+
+--- MAPPING cross-check ---
+chrome-left-border: fx 58.5 -> sx 42.5 (house 42)
+panel-gray-left: fx 60 -> sx 44.1 (house 42)
+title caps fy 68..87 (if measured above) -> sy 50.2..149.7
+badge yellow center (876.0,70.5) -> sx 893.0 sy 73.8 (house 893,71)

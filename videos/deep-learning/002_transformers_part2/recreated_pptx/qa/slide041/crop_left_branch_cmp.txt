@@ -1,0 +1,38 @@
+# Element-by-Element Comparison
+
+## GROUND RULES APPLIED FIRST
+- Mouse cursor over "Batch" in IMG2 â video-capture artifact, correctly absent from IMG1 (Rule c). **Not a discrepancy.**
+- House chrome (red frame, background) not in play in this crop region beyond the neutral gray backdrop, which matches in both.
+
+## 1. Navy "Activations / Outputs" Box
+- Two-line white bold text on navy (#1F1E8C-ish) fill: matches in both. Line break after "Activations" identical; line spacing between the two lines visually equivalent; text vertically centered in the box in both.
+- Box position, width, and height align within a few pixels across the two crops.
+- **No discrepancy.**
+
+## 2. Red Spine + Arrows
+- Vertical red spine descends from the navy box center, with four right-pointing arrows (top arrowhead above the box visible in both; two lateral arrows into the Batch and Instance boxes visible in this crop).
+- Arrow vertical positions align with box centers in both images. Arrowhead size and shape match.
+- **Minor** (confidence: medium): the recreation's spine stroke appears very slightly heavier/darker red than the original's, and the top red arrowhead sits a touch larger. Sub-2px-class difference at this zoom; no positional error.
+- **Minor** (confidence: medium): the third (bottom, mostly cropped) box's visible top edge sits ~4â6px higher in IMG1 than in IMG2, indicating a hair-different vertical gap below the Instance box. Immaterial at slide scale.
+
+## 3. Cyan "Batch Normalization" / "Instance Normalization" Boxes
+- Fill (pale cyan #E0FFFF-class), thin blue-gray border, size, and horizontal placement: match.
+- Text: "Batch" bold + "Normali zation" regular, "Instance" bold + "Normalization" regular â verbatim, correct bold/regular split, matching navy-blue text color in both.
+- Vertical centering of text inside both boxes: centered in both images, no top-hugging.
+- Text baseline alignment with arrowheads: arrows point at box left edges at the correct heights in both.
+- **No discrepancy.**
+
+## 4. Text Metrics
+- Font family/weight appearance, letter spacing, and two-line break inside the navy box are indistinguishable. No overflow, clipping, or wrapping differences.
+
+## 5. Frame Containment / Missing Elements
+- All elements fully within their regions; nothing clipped at crop edges beyond the intentional partial third box, which is present in **both** images (so the crop mapping is consistent).
+- No missing elements; no equation/table content in this region.
+
+## Discrepancy List
+1. **MINOR** â Spine stroke marginally heavier in recreation (confidence: medium).
+2. **MINOR** â Third-box visible strip offset by a few px vertically vs original (confidence: medium).
+
+No BLOCKER or MAJOR defects. No visual-quality defects (no overflow, collision, misalignment, or illegibility) in the recreation.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

@@ -1,0 +1,42 @@
+# Fidelity Check â Slide 041 "The Convolution Process"
+
+## Ground-rule dispositions (settled first, not raised as discrepancies)
+- House/playlist chrome (white canvas, gray panel, thin red border, yellow "41" badge with purple ring, title placement): per (a)/(a2) â INTENTIONAL, not flagged.
+- Black letterbox bar at the bottom of IMG2: video-player artifact per (c) â correctly omitted from the recreation.
+- Black color of "(x,y)" and "(-a:a , -b:b)" spans with red "I"/"h"/"(odd dimension)": matches banked measured fact (g) â correct in the recreation, not flagged.
+- Professional 2D equation rendering (stacked â with limits above/below): present in BOTH images here, so no (e) issue arises.
+
+## Element-by-element comparison
+
+| Element | Original (IMG2) | Recreation (IMG1) | Verdict |
+|---|---|---|---|
+| Title "The Convolution Process" | Red bold serif, centered | Same text, red bold, centered | Match |
+| Inner red panel | Thin red border enclosing main content | Present, same extent | Match (chrome) |
+| "Original image" label + photo w/ green 5Ã5 grid | 1 1 1 0 0 / 0 1 1 1 0 / 0 0 1 1 1 / 0 0 1 1 0 / 0 1 1 0 0 | Identical values, same layout | Match |
+| "Convolutional filter 1" label | Handwritten-style, black | Same | Match |
+| 3Ã3 filter (1 0 1 / 0 1 0 / 1 0 1), yellow cells | Yellow cells, black digits | Same, bordered yellow cells | Match |
+| "a=1, b=1" | Red, two lines, right of filter | Same | Match |
+| "Image: I (x,y)" | "Image:" black bold, "I" red, "(x,y)" black | Same | Match |
+| "Filter: h (-a:a , -b:b) (odd dimension)" | "h" red, span black, "(odd dimension)" red italic | Same | Match |
+| "Convolving the image" heading | Handwritten, black, over grid | Same | Match |
+| 5Ã5 convolution grid | 3 yellow cols w/ x1/x0/x1 subscripts + 2 green cols; values 1 1 1 0 0 / 0 1 1 1 0 / 0 0 1 1 1 / 0 0 1 1 0 / 0 1 1 0 0 | Identical values, identical yellow/green split, identical subscript pattern (x1,x0,x1 / x0,x1,x0 / x1,x0,x1) | Match |
+| Arrow from grid to Result | Curved black arrow to first result cell | Present, same path | Match |
+| Result 3Ã3 grid | First cell dark-filled with "4", rest empty beige | Same | Match |
+| "Inner product" + brace | Red handwritten label with curly brace beneath, reaching toward equation | Label + brace present; brace slightly smaller and does not extend as far down toward the equation | MINOR deviation |
+| Equation I(x,y)âh = Î£Î£ I(xâi, yâj)Â·h(i,j) | 2D format, limits a/b above, i=âa / j=âb below | Identical 2D rendering, same limits, same layout | Match |
+| Bottom blue-bordered text box, 2 lines | "Scan the original image using the 3x3 filter" / "Move the filter ONE pixel (Right, Left, Up, Down) and Re-Calculate" | Verbatim, same line breaks, same blue styling | Match |
+| Frame containment | All ink inside panel | All content inside red panel and house frame; bottom box fully inside slide; no clipping detected | Match |
+
+## Discrepancy list
+
+1. **MINOR â "Inner product" brace geometry** (confidence: high). In the original, the red curly brace under "Inner product" is wider and its tails sweep down toward the equation line, visually linking label to equation. In the recreation the brace is more compact and sits entirely under the label without reaching toward the equation. Cosmetic only; all text present.
+2. **MINOR â Subscript color in the yellow grid cells** (confidence: medium). The x1/x0 subscripts in the recreation render in a warm reddish-orange; in the original they appear darker (near-black/dark red). Small text, negligible impact.
+3. **MINOR â Title metrics** (confidence: medium). The recreation's title is set slightly larger and sits marginally lower within its band than the original's proportional title height. Same font family impression, color, and centering; well within tolerance.
+4. **MINOR â "Original image" thumbnail rendering** (confidence: low). The recreation's grid overlay is slightly crisper/larger-celled than the original's blurred composite. All 25 values are correct; purely a rendering-fidelity nuance of an embedded bitmap.
+
+## Visual-quality defects in the recreation
+- None blocking: no text overflow, no clipping, no collisions, no wrapping errors; parentheses in "(x,y)" and "(-a:a , -b:b)" vertically center their content correctly; the â limits align properly above/below the operators; the bottom two-line box has correct line separation and left alignment; all regions sit fully inside their enclosing frames.
+
+No BLOCKER or MAJOR defects found. All text is verbatim, all matrix/table values match, all regions and arrows are present and correctly placed.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

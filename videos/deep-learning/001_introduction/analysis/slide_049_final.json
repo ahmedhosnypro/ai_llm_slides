@@ -1,0 +1,153 @@
+{
+  "slide_title": "Convnets in practice",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Several convolutional layers ( 5 or more)",
+      "After the convolutional layers non-linearities are added (The most popular one is the ReLU)",
+      "After the ReLU usually some pooling ( Most often max pooling)",
+      "After 5 rounds of cascading:",
+      "Vectorize the last convolutional layer (Flatten)",
+      "Use as Input to the first fully connected layer (FC)",
+      "Proceed as in a traditional classification neural network"
+    ],
+    "labels": [
+      "(no visible labels, captions, footnotes, slide numbers, or watermarks; a small black mouse-cursor arrow appears near the right edge as a video-capture artifact)"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Thin white margin strip along the very top edge; thin red horizontal rule just below it; large red bold title centered beneath the rule; one large blue-bordered white box occupying the middle of the slide containing a single-column bulleted list (4 top-level bullets, the 4th having 3 indented sub-bullets); solid black bar along the bottom edge; small mouse cursor near right edge",
+    "regions": [
+      {
+        "name": "top margin strip",
+        "position": "top edge, ~0% to ~6% height, full slide width (above the red rule)",
+        "content": "thin white strip (#FFFFFF) between the slide top edge and the red rule"
+      },
+      {
+        "name": "top rule",
+        "position": "top, ~7% height, spanning ~4% to ~95% width",
+        "content": "thin solid red horizontal line"
+      },
+      {
+        "name": "title",
+        "position": "top-center, ~12% to ~24% height, horizontally centered",
+        "content": "title text 'Convnets in practice' in large bold red"
+      },
+      {
+        "name": "content box",
+        "position": "middle, ~28% to ~91% height, ~10% to ~90% width",
+        "content": "white rectangle with thin blue border containing all bullets; bullets are dark blue serif text with red keyword highlights"
+      },
+      {
+        "name": "bottom bar",
+        "position": "bottom, ~95% to ~100% height, ~4% to ~95% width",
+        "content": "solid black horizontal strip (video player/letterbox artifact)"
+      },
+      {
+        "name": "cursor",
+        "position": "right side, ~93% width, ~79% height",
+        "content": "small black arrow mouse pointer with white outline"
+      }
+    ],
+    "hierarchy": "Title dominates: largest, boldest, red. Content-box border frames the body. Body bullets are medium-size dark blue serif; inline keywords in red or bold+underlined draw the eye next. Sub-bullets are same size as top-level bullets but indented. Bottom black bar is visually heavy but is a video artifact, not slide content."
+  },
+  "visual_elements": [
+    {
+      "type": "other",
+      "description": "Thin white margin strip between the slide's top edge and the red top rule (background treatment noted in colors.background).",
+      "colors": [
+        "#FFFFFF"
+      ],
+      "position": "top edge, ~0% to ~6% height, full slide width"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Large rectangle with thin solid blue border and white fill that encloses the entire bulleted list. No fill pattern, no shadow. All 4 top-level bullets and 3 sub-bullets sit inside it. Bullet 2 wraps onto a second line ('popular one is the ReLU)') aligned under the text, not the bullet.",
+      "colors": [
+        "#0000CC (border)",
+        "#FFFFFF (fill)"
+      ],
+      "position": "center of slide, ~10%-90% width, ~28%-91% height"
+    },
+    {
+      "type": "other",
+      "description": "Thin horizontal red rule (divider line) running almost the full slide width near the top, above the title.",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "top, ~7% height, ~4% to ~95% width"
+    },
+    {
+      "type": "other",
+      "description": "Solid black horizontal bar across the bottom of the frame (likely video-player control strip / letterboxing from the screen recording, not original slide design).",
+      "colors": [
+        "#000000"
+      ],
+      "position": "bottom edge, ~95%-100% height, ~4%-95% width"
+    },
+    {
+      "type": "icon",
+      "description": "Standard black mouse-pointer arrow with white outline (live-cursor artifact from lecture capture).",
+      "colors": [
+        "#000000",
+        "#FFFFFF"
+      ],
+      "position": "right side, ~93% width, ~79% height"
+    }
+  ],
+  "imagery": [
+    "No photographs, illustrations, charts, or decorative icons. Only graphic elements are the white top-margin strip, the red top rule, the blue-bordered content box, the black bottom bar, and the captured mouse cursor (5 graphic elements total)."
+  ],
+  "colors": {
+    "background": "#EAEAEA (light gray slide background; thin white margin strip above the red top rule)",
+    "title_text": "#C00000",
+    "body_text": "#00008B (dark navy blue)",
+    "accents": [
+      "#C00000 (title, top rule, inline words 'ReLU' and 'max pooling')",
+      "#990000 (dark red for bold underlined 'After 5 rounds of cascading:')",
+      "#0000CC (blue box border)",
+      "#000000 (bottom bar)"
+    ]
+  },
+  "typography_notes": "Body text is a classic serif (Times New Roman-like), regular weight, roughly 22-24pt, dark navy blue, with round '\u2022' bullets; sub-bullets use the same round bullet indented one level. Title is much larger (~40pt), bold, red, and appears to be a bold serif matching the body; sentence case (only 'C' capitalized). Emphasis within bullets: 'non-linearities' is bold and underlined (dark blue); 'ReLU' is red; 'max pooling' is red; the lead-in 'After 5 rounds of cascading:' is bold, underlined, and dark red. No all-caps, no italics. Note the source's spacing quirks: '( 5 or more)' and '( Most often max pooling)' have a space after the opening parenthesis.",
+  "animation_state": "Slide appears fully built: all 4 top-level bullets and all 3 sub-bullets are visible simultaneously; nothing is mid-reveal. The visible mouse cursor indicates a paused moment in a lecture video, not a build state.",
+  "recreation_brief": "1. Background: set the entire slide background to light gray #EAEAEA.\n2. Top margin strip: draw a white #FFFFFF rectangle across the full slide width from the top edge (0%) down to ~6% height; it sits directly above the red rule.\n3. Top rule: draw a thin (~1.5pt) solid horizontal line in red #C00000 at ~7% height, spanning ~4% to ~95% of slide width.\n4. Title: add a horizontally centered text box at ~12% to ~24% height containing the exact text 'Convnets in practice' in bold serif (Times New Roman), ~40pt, red #C00000, sentence case.\n5. Content box: draw a rectangle spanning ~10% to ~90% width and ~28% to ~91% height with white #FFFFFF fill, thin (~1.5pt) solid blue #0000CC border, no shadow, no fill pattern.\n6. List container: inside the rectangle, create a single-column bulleted list with round '\u2022' bullets, serif font (Times New Roman) at ~22-24pt, dark navy #00008B, using hanging indents so wrapped lines align under the text, not under the bullet.\n7. Top-level bullet 1: type 'Several convolutional layers ( 5 or more)' in plain dark navy #00008B; keep the space after '(' exactly as written.\n8. Top-level bullet 2: type 'After the convolutional layers non-linearities are added (The most popular one is the ReLU)'; format 'non-linearities' as bold + underlined in dark navy #00008B and 'ReLU' in red #C00000; break the line so the second line reads 'popular one is the ReLU)' aligned under the text start (insert a manual line break before 'popular' if automatic wrap differs).\n9. Top-level bullet 3: type 'After the ReLU usually some pooling ( Most often max pooling)'; format 'max pooling' in red #C00000; keep the space after '(' exactly as written.\n10. Top-level bullet 4: type 'After 5 rounds of cascading:' with the entire line bold + underlined in dark red #990000.\n11. Sub-bullet 1, indented one level under bullet 4 with the same round bullet, font, size, and color: 'Vectorize the last convolutional layer (Flatten)'.\n12. Sub-bullet 2, indented one level: 'Use as Input to the first fully connected layer (FC)' (capital 'I' in 'Input').\n13. Sub-bullet 3, indented one level: 'Proceed as in a traditional classification neural network'.\n14. Add no labels, captions, footnotes, slide numbers, watermarks, or equations.\n15. Omit both video-capture artifacts - the solid black #000000 bottom bar (~95% to ~100% height, ~4% to ~95% width) and the black mouse-pointer arrow with white outline (~93% width, ~79% height) - unless an exact match to the captured video frame is required.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Promoted the white top-margin strip (previously mentioned only in colors.background) to a full element: added it to layout.arrangement, a new layout.regions entry ('top margin strip', ~0%-6% height, full width), visual_elements, and imagery (now 5 graphic elements), plus an explicit placement step (step 2) in the recreation brief.",
+      "Rewrote recreation_brief as a 15-step ordered checklist placing exactly one element per step, each specifying exact text, position in % of slide, hex color, and shape/type.",
+      "Replaced the non-deterministic instruction 'let this bullet wrap naturally' with an explicit instruction to force bullet 2's second line to read 'popular one is the ReLU)' (manual line break before 'popular' if needed), matching the visual_elements wrap description.",
+      "Made artifact handling decisive: the black bottom bar and mouse cursor are video-capture artifacts omitted from the PowerPoint recreation, with their exact positions retained for an optional exact-video-frame match.",
+      "Added the exact bottom-bar position (~95%-100% height, ~4%-95% width) to its visual_elements entry, which previously said only 'bottom edge'.",
+      "Verified counts and cross-references: 7 verbatim lines = 4 top-level bullets + 3 sub-bullets (consistent across verbatim_text, layout.arrangement, animation_state, and the brief); 6 layout regions cover the title text and all 5 visual elements; all 7 hex colors (#EAEAEA, #FFFFFF, #C00000, #990000, #0000CC, #00008B, #000000) are used consistently across fields.",
+      "Preserved all verbatim text exactly, including 'Several' in bullet 1 and the spacing quirks '( 5 or more)' and '( Most often max pooling)'; no vague count quantifiers remain in any descriptive field (the slide's own parenthetical '( 5 or more)' supplies the exact count)."
+    ],
+    "uncertain_items": [
+      "Exact font family: typography_notes says 'Times New Roman-like' serif; Times New Roman is the assumed concrete choice in the brief.",
+      "Point sizes (~40pt title, ~22-24pt body) and line weights (~1.5pt) are estimates marked '~', not measured values.",
+      "The black bottom bar is described as 'likely' a video-player/letterbox artifact; its exclusion from the original slide design is probable but unverified.",
+      "The exact height of the white top-margin strip is not specified in the source; ~0%-6% (above the red rule at ~7% height) is an estimate.",
+      "No '[?]' markers were present in the source JSON."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_049.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 49,
+      "image": "slide_049.jpg",
+      "kept_frame": "frame_05426.jpg",
+      "start_sec": 5259.0,
+      "end_sec": 5425.0,
+      "frame_count": 167,
+      "old_group": 80,
+      "founder_frame_swap": false
+    },
+    "elapsed_s": 108.0,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 655.0
+  }
+}

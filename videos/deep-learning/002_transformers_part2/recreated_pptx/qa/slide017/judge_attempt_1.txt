@@ -1,0 +1,45 @@
+# Visual QA Comparison: Slide 017 Recreation vs Original Lecture Frame
+
+## 1. Verbatim Text Transcription
+
+**IMG1 (recreation render, 150 dpi):**
+- Title: "Multi Head Self Attention of Word Xâ" + circled page number "17"
+- "Linear Transformation [ T ]" with subscript "dH Ã d"
+- "1Ãd" (label next to top output vector containing "Yâ")
+- "Concatenated Vector" / "1ÃdH" â segment chips "Yâ" (brown), "Yâ" (dark), "Yâ" (yellow), "Yâ" (green)," (tan)
+- Floating dashed Y chips: "Y" (green), "Yâ" (dark), "Yâ" (brown), "Yâ" (purple, next to "Probabilities" with green arrow), "Yâ"
+- Five stacked layers labeled "h=1" â¦ "h=5", each with ovals "Similarity" and "Weighted SUM"; one oval "Probabilities"
+- Inside h=1 (red) layer: "Dot Product", "K,q", "K, q / âd", "Scaling by âd", "Soft max", "Î£", red â circles, "Vâ Vâ Vâ Vâ", chips "Wââ½Â¹â¾ Wââ½Â²â¾ Wââ½Â³â¾ Wââ½â´â¾", "W_vâ½Â¹â¾ â¦ W_vâ½â´â¾", inputs "Xâ Xâ Xâ Xâ", "qâ", "W_qâ½Â¹â¾", bottom token strip "Xâ Xâ Xâ Xâ" with Xâ highlighted
+- Right-side matrix columns "Xâ â¦ Xâ" per head; W chip grid "W_qâ½Â¹â¾, W_kâ½Â¹â¾, W_vâ½Â¹â¾, â¦ W_vâ½Â³â¾"
+- Rotated blue label: "á´´1Ë¢áµ Heads" (reads "1st Heads" with leading H)
+- Legend box (bottom right): "1Ãd", "W", "=", grid icon, "dÃd", "d : Embedding Length"
+
+**IMG2 (original video frame, low-res):**
+- Same title: "Multi Head Self Attention of Word Xâ" + "17"
+- "Linear Transformation [T]" with "dHÃd" subscript; "1Ãd" label
+- "Concatenated Vector" / "1ÃdH" with YââY- Same structure: "Similarity", "Probabilities", "Weighted SUM" ovals; "h=1"â¦"h=5" pills; "Dot Product", "K,q", "K,q/âd", "Scaling by âd", "Soft max", "Î£", red â marks, X and V labels, W chips, bottom token strip with highlighted Xâ
+- Rotated label "1Ë¢áµ Heads" with leading H â **rendered in red/magenta**
+- Legend box: "1Ãd  W  =  1Ãd" with "dÃd" beneath (small annotation under the "=" area is illegible at this resolution â possibly "dÃHÂ·d" per the brief, but I cannot confirm it visually)
+- "d : Embedding Length"
+
+## 2. Similarities
+
+- **Purpose and content**: Both depict the identical multi-head self-attention diagram: input tokens â per-head W_q/W_k/W_v â Dot Product â Scaling by âd â Softmax â Î£ â Weighted SUM â per-head Y â Concatenated Vector (1ÃdH) â Linear Transformation [T] â output vector (1Ãd) for word Xâ.
+- **Layout regions**: Title top-right with "17" badge; top output vector and Linear Transformation bar; Concatenated Vector bar with 5 Y-segments; cascade of 5 stacked pastel head layers (red h=1 front, then purple, yellow, green, peach h=5); h=1 layer contains the full Dot Product/Scaling/Softmax/Î£ pipeline; legend box bottom-right with "d: Embedding Length".
+- **Styling**: Matching color coding â red/pink h=1 layer, gold/yellow W chips, red-outlined W_q, green-outlined W_k, blue-outlined W_v, dashed green input card outlines, dashed teal Y chips, red curved annotation arrow, black pills for h=1âh=5, highlighted Xâ (pink) with red arrow in bottom token strip.
+- Both include the "1Ë¢áµ Heads" rotated annotation and the á´´-style superscripts on W chips.
+
+## 3. Differences
+
+- **Resolution/sharpness**: IMG1 is crisp 150 dpi; IMG2 is a soft, compressed video frame â small labels (W chip subscripts, K/q labels, per-segment Y labels, legend annotation) are illegible or blurry in IMG2.
+- **"á´´1Ë¢áµ Heads" annotation color**: blue in IMG1; red/magenta in IMG2.
+- **Red curved arrow path**: IMG1 draws one long sweep from the bottom-left token strip diagonally up to the far-right W-chip grid. IMG2's red arrow loops down the right side and points at the W chips near bottom-center â a noticeably different trajectory.
+- **Right-side W-chip grid placement**: IMG1 spreads the per-head X-matrix columns across the far right with the W_q/W_k/W_v chip stack below them; IMG2 keeps the W chips in a tighter cluster below the stacked layers (right-of-center), with the X-matrix columns overlapping the layer stack more.
+- **Legend box content**: IMG1 shows "1Ãd W = [grid icon] dÃd". IMG2 shows "1Ãd W = 1Ãd" with "dÃd" below; the expected "dÃHÂ·d" annotation cannot be verified in IMG2 at this resolution (illegible). The right side of the "=" differs between the two.
+- **Vertical spacing**: IMG1 is wider/shorter proportionally; head layers and the Y-chip cascade are spread further apart. IMG2 is more vertically compressed; the Y-chip cascade and "Weighted SUM" ovals are tighter and partially overlapping.
+- **h=1 internal details**: IMG1 renders larger, separated elements (qâ red bar, W_qâ½Â¹â¾ box, dashed K lines). IMG2's equivalents are tiny and crowded; some connector lines merge visually.
+- **No defects in IMG1**: no clipping, overlap of text, or placeholder text detected; IMG2's flaws are resolution-related (blur, color bleed), not content defects.
+
+## 4. Verdict
+
+**IMG1 (the recreation) is better.** It renders every label legibly and faithfully reproduces the original's structure, color scheme, and component inventory (5 head layers, gold W chips, Y-chip cascade, á´´ superscripts, highlighted Yâ and Xâ, dÃd legend). IMG2 suffers from severe low resolution that makes most small annotations (chip subscripts, legend text) unreadable. Two fidelity deviations exist in IMG1 â the "á´´1Ë¢áµ Heads" label is blue instead of red, and the red annotation arrow takes a different path â but these are minor compared to IMG2's pervasive illegibility.

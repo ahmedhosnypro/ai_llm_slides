@@ -1,0 +1,35 @@
+# Element-by-Element Comparison
+
+## Row 12 â Top row (Word boxes, black dashed container)
+
+| Element | IMG1 (recreation) | IMG2 (original) | Assessment |
+|---|---|---|---|
+| Container | Black dashed rounded rectangle, full width | Same, dashed rounded rectangle | Match (dash segments read slightly longer/denser in IMG1; in IMG2 the dashes read finer/dottier â consistent with 0.96x zoom + JPEG softening) â **MINOR**, conf 60% |
+| Labels | "Word 0" â¦ "Word 5", "Word N-2", "Word N-1" â italic serif, red (~#C00000) | Identical text, same order, same italic serif, red | Match verbatim + order |
+| Word boxes | White fill, thin red stroke | Same (slight cream cast = JPEG) | Match |
+| Gaps/alignment | Even gaps, boxes on common baseline, N-2/N-1 at right edge | Same | Match |
+| Ellipsis dots (top) | 5 solid gray dots (~#9E9E9E), medium size | 5 gray dots, slightly smaller/fainter | **MINOR**, conf 65% (size/alpha within JPEG tolerance) |
+| Partial blue title sliver at top | Present (cut off at crop edge) | Present | Match â correctly cropped identically |
+
+## Row 12 â Bottom row (Pos boxes, blue dashed container)
+
+| Element | IMG1 (recreation) | IMG2 (original) | Assessment |
+|---|---|---|---|
+| Container fill | Light periwinkle (~#C5CAE9) | Light lavender (~#C8C8F0) | Match within JPEG tolerance |
+| Container border | Blue dashed rounded rect | Same | Match (same dash-pattern note as top row â **MINOR**) |
+| Labels | "Pos 0" â¦ "Pos 5", "Pos N-2", "Pos N-1" â italic serif, medium blue (~#3949AB) | Same text/order; ink reads slightly darker navy (~#1A237E) | **MINOR**, conf 60% |
+| Pos boxes | Transparent fill, thin blue stroke | Same | Match |
+| **Ellipsis dots (bottom)** | **5 large solid dark-navy circles (~#1A237E), visibly larger than the top row's gray dots** | **5 small muted teal/gray-blue dots (~#5F8A8A-ish), roughly the SAME small size as the top row's dots** | **MAJOR** â both size and hue deviate; conf 75% (size difference is unambiguous even under JPEG blur; hue could be partly chroma-subsampling, but a navyâteal shift is too large to dismiss entirely) |
+
+## Discrepancy List
+
+1. **MAJOR â Bottom-row ellipsis dot geometry + color** (conf 75%): IMG1 renders the Pos-row dots as large dark-navy filled circles, noticeably bigger than the Word-row dots. In the original, the Pos-row dots are the same small size as the Word-row dots and read as muted teal/gray, not navy. Fix: shrink bottom dots to match top-row dot size and shift fill toward a desaturated gray-teal.
+2. **MINOR â Pos text shade** (conf 60%): recreation's "Pos" ink is a lighter/medium blue vs. the original's darker navy.
+3. **MINOR â Dash pattern rendering** (conf 60%): recreation dashes are longer/more widely spaced; original reads as a finer, denser dash/dot on both containers. Partially attributable to the 0.96x zoom + JPEG softening, so kept MINOR per ground rule (d).
+4. **MINOR â Top-row gray dots** (conf 65%): slightly smaller/lighter in the original; within medium tolerance.
+
+No text, ordering, count, alignment, box-geometry, or cropping discrepancies. Medium artifacts (blur/noise, cursor absence) not raised per ground rules (b) and (c).
+
+**CROP VERDICT: MISMATCH**
+
+(Driven solely by discrepancy #1 â the bottom-row ellipsis dots' size and color. Everything else is a faithful match; correcting the dot size/color should flip this to MATCH on the next attempt.)

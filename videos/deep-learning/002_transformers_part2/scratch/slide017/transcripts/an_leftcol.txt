@@ -1,0 +1,32 @@
+# Visual QA Report â Slide 017 crop (left column: input strips, gold W boxes, K zone)
+
+## 1. Verbatim text transcription
+
+All text in this crop is mathematical label styling (bold red italic letters with sub/superscripts). No words, sentences, or digits appear.
+
+| Label | Occurrences | Appearance / confidence |
+|---|---|---|
+| **X** with small red subscript (reads as **Xâ** / "X_k") | 4 full (one per input strip) + 1 partial (bottom-right strip) | Subscript glyph is tiny and fuzzy at this zoom; most consistent with "k", but "h" cannot be fully excluded |
+| **W** with small red subscript **h** plus a raised superscript glyph (**Wâ** + superscript) | 4 (one per gold box) | Subscript "h" legible. The superscript is 1 tiny character, roundish in shape â most consistent with **"Ï"** (sigma) or **"o"/"0"**; it cannot be definitively resolved at this resolution. No parentheses are clearly visible around it |
+| **K** with small red subscript (**Kâ** / "K_h") | 4 (one per segment strip) | Subscript glyph tiny/fuzzy; consistent with "h" (matching the W labels); "k" possible |
+
+## 2. Layout
+
+**Overall:** A large salmon/pink rounded-rectangle panel with a dark-red outline fills almost the entire crop; white background is visible only as thin margins at the top, bottom, and far left.
+
+- **LEFT edge:** A thin dark-maroon vertical rule runs the full height at the extreme left (partially cut by the crop). Next to it, white background, then the dark-red rounded left border of the pink panel. Inside the panel, near the left, sits a pale-mint rounded container with a **dark-green dashed border** holding the four horizontal input strips, stacked vertically.
+- **CENTER:** A large gold/amber rectangle (slightly darker gold border) containing **four smaller gold boxes** stacked vertically, each labeled **Wâ** + superscript in red. Red arrows run from the right end of each input strip to the left edge of the corresponding W box (arrowheads at the W boxes). Short red connectors/arrowheads also run from each W box's right edge toward its K strip.
+- **RIGHT edge:** Four horizontal **K strips** (rows of ~8â12 tiny adjacent segments, pale gray/white alternating with pale yellow; too small to fully resolve), each with a red **Kâ** label to its right. The pink panel fill continues past these to the crop's right edge â the panel's right border is outside the crop.
+- **TOP:** White margin, then the pink panel's dark-red top border with a rounded top-left corner. At the very top-right corner there is a **clipped dark-green triangular shape** (likely an arrowhead) cut by the top edge.
+- **BOTTOM:** White margin below the panel's dark-red bottom border (rounded bottom-left corner visible). Inside the panel's lower area, a **dark-green dashed curved line** sweeps from the lower-center/right up to the bottom edge of the mint input container, terminating in a solid dark-green arrowhead pointing up into it (feedback-loop style). At the bottom-right, a **second mint dashed-border container is partially visible**, containing one more input strip (yellow cells, red **Xâ**, white cells, lavender cell) â cut off by the right edge.
+
+**Row count (resolved):** exactly **4 aligned rows** in the left column â input strip â W box â K strip per row, evenly spaced. The bottom-right partial strip is a 5th instance but belongs to a separate dashed container, not this column.
+
+**Cell colors (resolved):** Each input strip, leftâright: white/cream cell, yellow cell, orange cell, then the red Xâ label overlaid on the middle, then 2â3 white cells, ending in one **lavender/violet** cell. W boxes: gold/amber fill, darker gold border, red text. K strips: white/gray + yellow mini-segments (any red segment is unresolvable).
+
+## 3. Visual defects / anomalies
+
+- **Clipping (crop-boundary, not slide bugs):** bottom-right mint container + its input strip cut by the right edge; dark-green arrowhead cut at top-right; maroon left rule cut at left edge; the pink panel's right and bottom borders fall outside the crop.
+- **Legibility:** All subscripts and the W superscript are soft/fuzzy blobs â an artifact of the low-resolution source frame plus 2Ã Lanczos upscale. The superscript is the least resolvable glyph in the crop. No text resolves to garbage or placeholder strings.
+- **Overlap:** The red Xâ labels intentionally overlay the middle cells of each strip, obscuring ~1â2 cells each; this appears to be design, not a rendering fault.
+- **No wrong-language text, no lorem-ipsum/placeholder strings, no misaligned rows.** The four rows are cleanly parallel and evenly spaced.

@@ -1,0 +1,35 @@
+# Visual QA Description â Slide 031 callout-row crop (2x)
+
+## 1. Verbatim text transcription
+
+**Three annotation callouts (the main subject of the crop):**
+
+| # | Position | Text (verbatim) | Styling |
+|---|----------|-----------------|---------|
+| 1 | Upper-left | `Xâ variant to QUERY with` | "Xâ variant" bold red (2 is a true subscript); "to QUERY with" bold blue, underlined (hyperlink style) |
+| 2 | Center-right | `Xâ variant used as Value` | "Xâ variant" bold red; "used as Value" bold blue, underlined |
+| 3 | Lower-left | `Xâ variant used as KEY` | "Xâ variant" bold red; "used as KEY" bold blue, underlined |
+
+**Diagram fragments at the top of the crop:**
+- Four small yellow chips inside lavender tiles, reading left to right: `Wââ`, `Wââ`, `Wââ`, `Wââ` (green "W" letters with small dark subscripts). *The subscript of the second chip is small and ambiguous â it could be "24" or "26"; I cannot resolve it with certainty at this resolution.*
+- Red text label `dxd` sitting between the W-tiles and the rightmost tile.
+- Rightmost tile: a yellow chip with a large red `X` and tiny dark-red subscript text that appears to read `Yââ` (very small; the "Y" is legible, the digits are near the legibility limit).
+- Top-left corner, clipped: small dark-red digits `â¦26` (likely the tail of a subscripted label such as "Xââ"; the preceding characters are cut off).
+- Lower-left corner, clipped: a yellow chip with dark text ending in `â¦21` (possibly "Xââ"; the leading characters are cut off).
+
+## 2. Layout
+
+- **Top band:** A white rounded-rectangle diagram area with a **blue outline** spans most of the width. Inside it: a row of four **lavender/periwinkle rounded tiles** (each holding a yellow `Wââ`-style chip), then the red `dxd` label, then a fifth lavender tile holding the red `X Yââ` chip. The enclosing blue border's top edge is cut by the crop.
+- **LEFT edge (top to bottom):** a clipped pink rounded shape containing the `â¦26` digits; below it a white shape with a thick **green rounded-corner outline** (no legible text); a short **red vertical line** fragment at the very edge; then a light-green region containing the clipped `â¦21` yellow chip.
+- **Callout band (middle):** Callout 1 (pink) sits upper-left; Callout 2 (lavender) sits center-right, slightly higher than Callout 3; Callout 3 (green) sits lower-left. All three are rounded pill shapes with **dashed dark-green borders** but **different fills** (salmon-pink, lavender, light green). They straddle the boundary between the white diagram area above and a large **peach/tan rounded rectangle** that fills the lower-right background.
+- **RIGHT edge:** a dark red/maroon vertical rule runs the full height near the right border, with a sliver of white to its right.
+- **BOTTOM edge:** the top edge of another white rounded rectangle with a thin dark outline enters from the lower-left/center and is cut off by the crop; peach background continues to its right.
+
+## 3. Visual defects and anomalies
+
+- **Clipping on all four edges** (expected for a crop, but noted): the top-left `â¦26` shape, the left-edge shapes, the bottom rectangle, and the top border of the blue diagram frame are all cut mid-element.
+- **Stray/fragmentary text:** `dxd` floats freely between the tiles. It may be intentional (e.g., a math fragment like "dx/dâ¦"), but in isolation it reads as a leftover/garbage string and is worth flagging.
+- **Illegible micro-text:** the second `W` chip's subscript and the `Yââ` subscript on the `X` chip are at/below the legibility threshold at this scale.
+- **Inconsistent callout fills:** the three callouts share the same dashed green border but have three different fill colors (pink, lavender, green). This may be deliberate color-coding, but it is a styling inconsistency within one annotation row.
+- **Slight overlap:** the pink callout's left tip sits on top of the clipped red-outlined shape at the left edge, and the callouts overlap the white-to-peach background boundary â layering looks intentional but tight.
+- **No wrong-language text detected**; all legible strings are English plus mathematical labels. No obvious placeholder strings (e.g., "Lorem", "TODO") other than the ambiguous `dxd` noted above.

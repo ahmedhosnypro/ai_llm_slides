@@ -127,3 +127,24 @@ may be referenced; do not re-download.
   black bottom strip — both recording artifacts, omit from recreation.
 - No corrections; the cube-pixel-origin [?] stands (course redraw; scopes confirmed via
   Wu & He Fig 2 + Ba et al. + Ulyanov + Vaswani §3.1 — all previously live-verified).
+
+## Build-phase frame-over-spec corrections (builder, 2026-10-12 — PIL census, scratch/slide044/measure1..9)
+
+1. GN front-face split measured magenta x277..336 | salmon x337..410 (≈45%/55%) — the
+   spec's "left ~three-quarters magenta" guess overridden (fidelity law).
+2. "(Output of ONE Filter)" (Instance box line 3) is GREEN in the frame (G 578..741) —
+   the spec's "bold blue" guess overridden.
+3. The three bottom boxes have TINTED fills (measured): Group #FAFBEB cream, Instance
+   #F5FEE3 pale green, Layer #FED6CA pale pink; borders read washed pale-pink/red
+   (drawn D89F9B). The spec's "white fill, thin black border" guess overridden.
+4. The left input-tensor front face is a SOLID salmon block (no visible 4x5 cell seams
+   in the frame); GN/Instance/RT fronts show 5 black row seams (pitch ~31).
+5. The red outline rect around the right tensor: x658..897, y92..363 (top/bottom red
+   y92..93/y362..364, left x658..660; right border washed dark in the video).
+6. Callout oval measured x743..877, y454..477 (flattened ellipse), yellow bold text
+   em ~13 — smaller than the spec's ~76-93%x / 84-92%y guess.
+7. "Samples" label + diagonal red arrow (79,229)..(135,185) confirmed by sparse reddish
+   streak (measure8); the spec's "upper-left depth edge" reading is the block's top-left
+   depth edge, label rotated ~322.
+8. Omitted artifacts (GROUND RULES (c)): bottom letterbox (rows 517..539), the white
+   mouse cursor on the left front face (spec imagery: live-recording artifact).

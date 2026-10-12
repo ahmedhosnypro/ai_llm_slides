@@ -1,0 +1,44 @@
+## Element-by-Element Fidelity Check
+
+**Frame/house chrome (per ground rule a):** Gray panel, red-bordered frame, yellow "5" badge â present in IMG1, correctly treated as intentional house chrome. Original's gray backdrop margins and black bottom capture bar correctly not required.
+
+**Video artifacts (rule c):** IMG2 shows a pen/mouse cursor near "the machine learns" â correctly omitted from IMG1.
+
+**Title**
+- Text: "What is Machine Learning?" â verbatim match in both. â
+- Color: dark red (#C00000-ish) in both. â
+- Alignment: centered horizontally in both. â
+- **Font family: IMG1 renders the title in a bold SERIF face (Times/Liberation Serif-like); IMG2's original title is a bold SANS-SERIF face (Arial/Calibri-like).** The body text in both is sans-serif, so this is an isolated title-font mismatch, not a global template difference. Severity: **MINOR** (content, color, size, and position all match; only glyph style differs). Confidence: high.
+
+**"Machine Learning:" header**
+- Red, bold, sans-serif in both. Verbatim. â Position: top-left inside inner box in both. â No discrepancy.
+
+**Bullet 1**
+- "Designing algorithms that can learn patterns from data (and exploit them)" â verbatim in both, same line break after "(and", with "learn patterns from data" in blue in both. â
+- Two-line wrap identical; inter-line spacing comparable (line 2 "exploit them)" sits at normal leading, no cramping). â
+- Bullet dot size/indent alignment matches. â
+
+**Bullet 2**
+- "Approach: human supplies training examples, the machine learns" â verbatim; "Approach:" red bold, rest black, wrap after "machine", "learns" on line 2. Matches IMG2 exactly. â
+- Vertical centering/leading of the two lines consistent. â
+
+**Bullet 3**
+- "Example: Show the machine a bunch of spam and legitimate emails and let it learn to predict if a new email is spam or not" â verbatim; "Example:" red bold, "let it learn to predict if a new email is spam or not" blue in both. â
+- Line break after "legitimate" matches. â
+
+**Layout/regions**
+- Inner red-bordered white box: present in both, same relative placement, thin red stroke, contains all content with comfortable margins. No ink touches or crosses the inner box border or the house frame in IMG1 â frame containment satisfied (rule 5). â
+- Vertical rhythm: three bullets evenly spaced in both; recreation's content block ends slightly higher within the box than the original, but the original also leaves substantial empty space below bullet 3 â the proportion of trailing whitespace is comparable, not a defect. â
+- Colors: red â #C00000, blue â #0000CC/#1F1FB4, black text, white inner panel â all match within tolerance. â
+
+**Tables / charts / equations / imagery:** None present in the original (rule b) â none present in the recreation. Contentlessness matches. â
+
+## Discrepancy List
+
+1. **MINOR â Title font family mismatch** (IMG1 serif vs IMG2 sans-serif title). Text, color, size, and centering all match; only the typeface differs. Confidence: high.
+
+No BLOCKER or MAJOR defects found. No text overflow, clipping, collisions, wrapping errors, or illegibility in the recreation.
+
+**Note (non-defect):** IMG1's render includes a dark strip at the very bottom edge; since the original's black capture bar is declared recording chrome and its presence/absence in the recreation is not a fidelity criterion under rule (a), this is not scored.
+
+FINAL VERDICT: **PASS** for 'faithful, usable recreation'.

@@ -1,0 +1,36 @@
+## Element-by-Element Comparison
+
+**Container / chrome**
+- Green rounded dashed border present in both. IMG1 uses round **dots** (medium green ~#2AA05A); IMG2 uses short **dashes** (darker teal-green ~#1E7D5A). Pattern and hue differ slightly. â **MINOR** (confidence: high)
+- Red outer frame visible at IMG2 left edge, absent in IMG1 crop â house chrome / crop offset, excluded per rule (a).
+
+**"g" label (left margin)**
+- Large bold green "g" present in IMG1; IMG2 shows only a partial green glyph sliver at the extreme left edge, apparently cut by the crop. â **MINOR** (confidence: low; likely crop offset, but within the shown region the label is not verifiably present in IMG2)
+
+**Array groups (8 total: Xââ¦ X_{Nâ2}, X_{Nâ1})**
+- Count, x-order, and relative sizing of the 8 arrays match well; vertical alignment matches.
+- Cell count per array: 6 in both. â
+- Highlighted (pink, ~#F2A2C4 / ~#F0A8B8) cell is at position 3 in every array in both images. â
+- Labels Xââ¦X_{Nâ2}, X_{Nâ1} in red italic serif with small baseline-aligned subscripts â matches; subscripts are genuinely small and baseline-dropped, not caret/underscore text. â
+- **Non-highlighted cell fill color: IMG1 renders ALL non-highlight cells cream/pale yellow (~#FBE7B5). IMG2 clearly shows cells 4â6 of each array (and some position-1/2 cells) as pale LAVENDER/violet (~#E4DDF2), distinct from the yellow cells.** This is a consistent, systematic color-class difference across all 8 arrays, not explainable by JPEG chroma smear (it appears in cells far from any pink ink). â **MAJOR** (confidence: high)
+- IMG2's yellow cells read paler than IMG1's â partly JPEG washout, within tolerance. â **MINOR** (confidence: medium)
+
+**Green dots (5)**
+- Count = 5 in both, horizontally centered between array 6 and array 7. â
+- IMG1 dots darker green (~#1E9E4E), slightly larger; IMG2 dots brighter/lighter green (~#3FCE6A), slightly smaller with wider even spacing. â **MINOR** (confidence: high)
+
+**Bottom red badge**
+- Partial red badge/sliver appears below the border in both, at roughly the same x (~60â63%); in IMG1 it is larger/rectangular, in IMG2 a thin red tick. Consistent with the same element cropped differently. â **MINOR** (confidence: medium; partially house chrome)
+
+## Visual-Quality Defects (IMG1 render)
+- Subscripts (Xâ, Xâ, â¦ are rendered extremely small â near-illegible even after upscaling, smaller than the corresponding subscripts in IMG2. â **MINOR**
+- No overflow, clipping, collisions, or misalignment detected; geometry within IMG1 is clean.
+
+## Discrepancy Summary
+1. **MAJOR** â Non-highlighted array cells rendered cream in IMG1 but lavender/violet in IMG2 (systematic across all 8 arrays). Confidence: high.
+2. MINOR â Border style dotted vs dashed, hue lighter. Confidence: high.
+3. MINOR â Dot color/size/spacing slightly off. Confidence: high.
+4. MINOR â "g" label not verifiable in IMG2 crop. Confidence: low.
+5. MINOR â Subscript legibility poorer in render. Confidence: medium.
+
+FINAL VERDICT: **FAIL** for 'faithful recreation of this region' â driven by the systematic cream-vs-lavender cell fill mismatch across every array group.

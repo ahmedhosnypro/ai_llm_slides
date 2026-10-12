@@ -1,0 +1,53 @@
+render 2001x1125; scale frame->render x2.0833
+== content frame ==
+PASS frame-left col extent y 93..1124 (chrome border shares col; frame top exp 282)
+FAIL(dev 29px) frame top border: x 125..1853 y 250..311 n=7913 exp=(120.83333333333334, 1862.5000000000002, 279.1666666666667, 285.4166666666667)
+FAIL(dev 24px) frame bottom border: x 125..1853 y 917..962 n=6984 exp=(120.83333333333334, 1862.5000000000002, 931.2500000000001, 937.5000000000001)
+PASS inner-left line x65 ink n=1824
+== title ==
+FAIL(dev 26px) title line1: x 290..1710 y 134..190 n=23600 exp=(270.83333333333337, 1735.4166666666667, 131.25, 185.41666666666669)
+FAIL(dev 18px) title line2: x 550..1452 y 192..265 n=16172 exp=(537.5, 1470.8333333333335, 200.0, 256.25)
+== label boxes ==
+PASS NN label box border: x 502..790 y 322..380 n=2672 exp=(504.1666666666667, 789.5833333333334, 322.9166666666667, 379.1666666666667)
+PASS CNN label box border: x 502..1001 y 578..636 n=3920 exp=(504.1666666666667, 1000.0000000000001, 579.1666666666667, 635.4166666666667)
+FAIL(dev 17px) NN label text: x 540..754 y 338..361 n=1255 exp=(522.9166666666667, 760.4166666666667, 341.6666666666667, 362.5)
+FAIL(dev 33px) CNN label text: x 552..952 y 596..618 n=2402 exp=(518.75, 981.2500000000001, 595.8333333333334, 616.6666666666667)
+== meme photo ==
+PASS meme photo: x 518..753 y 398..527 n=30115 exp=(516.6666666666667, 750.0, 397.9166666666667, 525.0)
+== flatten tag ==
+PASS tag yellow: x 807..882 y 328..384 n=3658 exp=(806.2500000000001, 879.1666666666667, 327.08333333333337, 381.25)
+PASS tag red text: x 814..873 y 338..382 n=501 exp=(812.5000000000001, 875.0000000000001, 331.25, 379.1666666666667)
+== dot column ==
+dot runs (render y rel): [(15, 28), (34, 47), (50, 64), (67, 81), (86, 99), (102, 116)]
+expected centers rel: ['22', '39', '57', '74', '91', '109', '126']
+FAIL dot column: 6 dots at expected pitch
+== NN blocks ==
+PASS NN blocks band: x 937..1479 y 386..533 n=43185 exp=(937.5000000000001, 1483.3333333333335, 387.5, 531.25)
+FAIL NN block columns at y220: 11 groups [('449', '460'), ('465', '473'), ('496', '507'), ('512', '520'), ('543', '554'), ('559', '567'), ('590', '601'), ('606', '614'), ('638', '649'), ('654', '662'), ('685', '709')]
+== NN block text ==
+PASS block1 white text: x 956..974 y 431..493 n=161 exp=(954.1666666666667, 972.9166666666667, 427.08333333333337, 500.00000000000006)
+== overlines ==
+FAIL(dev 7px) NN overlines band: x 949..1378 y 352..371 n=1372 exp=(941.6666666666667, 1381.25, 350.0, 368.75)
+FAIL(dev 11px) CNN FC/OP band: x 1542..1678 y 658..677 n=616 exp=(1531.25, 1679.1666666666667, 654.1666666666667, 675.0)
+== divider ==
+FAIL(dev 12px) divider: x 138..1864 y 546..575 n=2331 exp=(137.5, 1860.4166666666667, 558.3333333333334, 562.5)
+== CNN imagery ==
+FAIL(dev 18px) siamese photo: x 267..469 y 663..871 n=16261 exp=(268.75, 472.9166666666667, 664.5833333333334, 889.5833333333334)
+PASS CNN slabs band: x 477..1443 y 656..886 n=66423 exp=(477.08333333333337, 1439.5833333333335, 656.25, 885.4166666666667)
+FAIL(dev 10px) CNN blocks 7-9: x 1521..1782 y 694..841 n=24679 exp=(1531.25, 1779.1666666666667, 693.75, 839.5833333333334)
+== bottom arrow/caption ==
+PASS red arrow: x 352..1730 y 958..970 n=4187 exp=(352.08333333333337, 1731.2500000000002, 950.0000000000001, 968.7500000000001)
+FAIL(dev 41px) caption: x 778..1200 y 978..1003 n=2960 exp=(737.5, 1241.6666666666667, 970.8333333333334, 997.9166666666667)
+== exclusions ==
+PASS no black player strip (max black px/row below y515: 0)
+PASS no gray + mark near (710,475) (ink 0)
+== containment (house panel) ==
+FAIL ink outside panel: left 3095 right 2063 top 0
+== title pitch ==
+FAIL title cap-top pitch 57.1px render (exp 73, frame 35)
+
+SELF-CHECK RESULT: 4 FAIL(S)
+ - FAIL dot column: 6 dots at expected pitch
+ - FAIL NN block columns at y220: 11 groups [('449', '460'), ('465', '473'), ('496', '507'), ('512', '520'), ('543', '554'), ('559', '567'), ('590', '601'), ('606', '614'), ('638', '649'), ('654', '662'), ('685', '709')]
+ - FAIL ink outside panel: left 3095 right 2063 top 0
+ - FAIL title cap-top pitch 57.1px render (exp 73, frame 35)

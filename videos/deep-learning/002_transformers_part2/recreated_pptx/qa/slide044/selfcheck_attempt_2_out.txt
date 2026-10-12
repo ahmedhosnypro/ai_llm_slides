@@ -1,0 +1,48 @@
+title ink                    orig=(160, 55, 750, 81) rend=(163, 55, 745, 81) -> OK
+hdr L1                       orig=(90, 113, 264, 137) rend=(89, 114, 259, 137) -> OK
+hdr L2                       orig=(90, 142, 257, 161) rend=(89, 143, 252, 161) -> OK
+group L1                     orig=(270, 380, 422, 389) rend=(268, 380, 421, 393) -> OK
+group L2                     orig=(269, 396, 421, 410) rend=(267, 398, 418, 412) -> OK
+group L3                     orig=(269, 414, 370, 426) rend=(267, 414, 367, 425) -> OK
+inst title                   orig=(478, 382, 650, 392) rend=(477, 381, 649, 392) -> OK
+inst L1                      orig=(478, 399, 845, 413) rend=(477, 399, 840, 413) -> OK
+inst L2                      orig=(478, 416, 741, 431) rend=(476, 416, 739, 431) -> OK
+layer title                  orig=(86, 464, 234, 477) rend=(85, 462, 233, 476) -> OK
+layer body txt               orig=(75, 481, 798, 496) rend=(73, 480, 797, 495) -> OK
+layer green                  orig=(622, 482, 798, 495) rend=(624, 480, 797, 495) -> OK
+chL label                    orig=(96, 433, 151, 440) rend=(95, 431, 152, 440) -> OK
+oval dark                    orig=(734, 458, 885, 476) rend=(734, 458, 884, 477) -> OK
+oval yellow                  orig=(752, 461, 867, 468) rend=(755, 462, 865, 469) -> OK
+layer single-line ymax<=497  orig=(75, 481, 798, 496) rend=None -> OK
+layer single-line rend ymax<=497 orig=(73, 480, 797, 495) rend=None -> OK
+inst L1 within box xmax<=866 orig=(478, 399, 845, 413) rend=None -> OK
+inst L1 within box rend xmax<=866 orig=(477, 399, 840, 413) rend=None -> OK
+GN face top                  orig=183 rend=182 -> OK
+INST face top                orig=203 rend=203 -> OK
+RT face top                  orig=181 rend=180 -> OK
+LEFT face top                orig=-1 rend=254 -> DIFF255
+GN front                     orig=(275, 169, 336, 332) rend=(277, 169, 335, 331) -> OK
+GN salmon right              orig=(340, 167, 410, 333) rend=(340, 169, 419, 331) -> DIFF9
+GN bands dark                orig=(280, 98, 469, 181) rend=(284, 100, 469, 181) -> OK
+GN strips                    orig=(412, 170, 425, 314) rend=(412, 172, 469, 314) -> DIFF44
+Inst front                   orig=(456, 190, 548, 353) rend=(456, 188, 547, 352) -> OK
+Inst salmon col              orig=(548, 190, 587, 354) rend=(549, 190, 597, 352) -> DIFF10
+Inst strips                  orig=(591, 190, 607, 335) rend=(589, 196, 607, 334) -> DIFF6
+RT front                     orig=(687, 168, 820, 331) rend=(689, 167, 818, 331) -> OK
+RT bands dark                orig=(700, 92, 874, 180) rend=(700, 98, 874, 179) -> DIFF6
+RT strips                    orig=(818, 155, 837, 314) rend=(818, 160, 839, 314) -> OK
+LEFT front                   orig=(66, 223, 234, 421) rend=(66, 221, 237, 420) -> OK
+LEFT bands dark              orig=(110, 180, 279, 254) rend=(110, 182, 279, 254) -> OK
+LEFT green band              orig=(111, 239, 217, 254) rend=(87, 238, 237, 254) -> DIFF24
+samples region               orig=(79, 183, 164, 247) rend=(79, 185, 164, 247) -> OK
+FV region                    orig=(596, 138, 691, 364) rend=(596, 138, 691, 360) -> OK
+RT channels                  orig=(659, 322, 893, 366) rend=(658, 322, 817, 360) -> DIFF76
+batchsize region             orig=(770, 235, 893, 366) rend=(770, 235, 869, 342) -> DIFF24
+GN band orange part          orig=(346, 168, 439, 181) rend=(346, 169, 439, 181) -> OK
+INST band orange part        orig=(558, 187, 588, 200) rend=(558, 188, 591, 199) -> OK
+group fill                   orig=(250, 251, 235) rend=(250, 251, 235) -> OK
+inst fill                    orig=(245, 254, 227) rend=(245, 254, 227) -> OK
+layer fill                   orig=(250, 251, 235) rend=(254, 214, 202) -> OK
+containment lr rend          orig=0 rend=0 -> OK
+containment tb rend          orig=0 rend=0 -> INFO lr-only
+TOTAL 47 checks, 9 flagged

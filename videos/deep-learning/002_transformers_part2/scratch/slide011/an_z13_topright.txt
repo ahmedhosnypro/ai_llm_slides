@@ -1,0 +1,34 @@
+# Visual QA Analysis: Slide 011, zoom z13_topright crop
+
+## 1. Verbatim Text Transcription
+
+All legible text in the crop:
+
+- **"Weighted SUM"** â blue text on a white rounded pill/capsule, upper-left area
+- **"â¦ed SUM"** â partial blue text on a second white pill at the left edge (left portion occluded; almost certainly the same string "Weighted SUM", but only the tail is visible)
+- **"h=5"** â yellow bold text on a black ellipse, top-right peach box
+- **"h=4"** â yellow bold text on a black ellipse, green box
+- **"h=3"** â yellow bold text on a black ellipse, yellow box
+- **"h=2"** â yellow bold text on a black ellipse, purple/lavender box
+- Several small red **"X"** glyphs (one at the extreme top-left crop edge, others inside small table graphics). The X's appear to have tiny red subscript marks that are **illegible at this resolution**.
+
+No other readable strings appear in the crop.
+
+## 2. Layout Description
+
+This is a cascaded stack of rounded rectangles, layered front-to-back from bottom-left (h=2) to top-right (h=5):
+
+- **LEFT edge:** A small red "X" glyph at the very top-left corner (partially clipped). Below it, a pale-yellow vertical bar/strip at the edge, then a large pale-yellow triangular wedge pointing down-right that covers the upper-left corner. Beneath the wedge are the two white "Weighted SUM" pills. The lower-left is occupied by the purple **h=2** box; at the bottom-left corner a red/pink rounded shape is partially visible.
+- **RIGHT edge:** The large peach/salmon rounded rectangle (**h=5**) fills the right side. Its rounded top-right corner is fully visible. Inside it, right-of-center, are dashed green rounded rectangles containing small table graphics (red "X" in the first cell, followed by white/pink shaded cells). One such table sits mid-right, another at the bottom-right.
+- **TOP:** The peach box's top edge with its "h=5" badge; to its left the green box's top edge with "h=4"; the "Weighted SUM" pill and yellow wedge occupy the top-left.
+- **BOTTOM:** The purple **h=2** box with its badge; a partial dashed green rounded rectangle inside the yellow **h=3** box at bottom-center; a partial dashed rectangle with a table at bottom-right inside the peach box.
+
+**Layering order (back to front):** peach h=5 â green h=4 â yellow h=3 â purple h=2. Each box overlaps the one behind it, and each "h=N" badge sits near the upper-right corner of its own box. The yellow wedge and purple box also overlap the second "â¦ed SUM" pill.
+
+## 3. Visual Defects and Notes
+
+- **Occluded text:** The second "Weighted SUM" pill is clipped on its left (hidden behind the yellow wedge/upper shapes) and overlapped from below by the purple box, so only "â¦ed SUM" is legible.
+- **Crop-edge clipping:** The red "X" at top-left, the yellow bar, the pills, the red/pink shape at bottom-left, and all four colored boxes are cut by the crop boundaries â consistent with the stated crop window, not necessarily a slide defect.
+- **Small/illegible content:** The tables inside the dashed green outlines are too small to resolve; only the red "X" marks and pink/white cell shading are discernible. The subscript characters attached to the X's are illegible.
+- **Overlap of dashed containers:** The dashed green rectangles in the peach (h=5) box are partially covered by the green (h=4) box in front of them â this appears to be intentional diagram layering rather than a rendering error.
+- No placeholder strings, garbage characters, or wrong-language text were observed; all legible text is English and consistent with an attention-head diagram (h=2â¦h=5, "Weighted SUM").

@@ -1,0 +1,21 @@
+render 2001x1125, scale 2.0833
+FAIL title ink [x0,y0,x1,y1]r: got [np.int64(693), np.int64(136), np.int64(1328), np.int64(180)] exp [683, 125, 1340, 198]
+  title width 635r = 304.8f (exp 315f); center 485.0f (exp 485.5)
+OK  beige panel: got [np.int64(132), np.int64(343), np.int64(1638), np.int64(871)] exp [133, 344, 1635, 869]
+OK  outbox out1: got [np.int64(1505), np.int64(428), np.int64(1627), np.int64(456)] exp [1506, 429, 1627, 456]
+OK  outbox out2: got [np.int64(1505), np.int64(578), np.int64(1627), np.int64(606)] exp [1506, 579, 1627, 606]
+OK  outbox out3: got [np.int64(1505), np.int64(749), np.int64(1627), np.int64(777)] exp [1506, 750, 1627, 777]
+OK  error bar: got [np.int64(1659), np.int64(374), np.int64(1704), np.int64(819)] exp [1660, 375, 1704, 819]
+OK  class class1: got [np.int64(1718), np.int64(420), np.int64(1856), np.int64(460)] exp [1719, 421, 1856, 460]
+OK  class class2: got [np.int64(1718), np.int64(572), np.int64(1856), np.int64(610)] exp [1719, 573, 1856, 610]
+OK  class class3: got [np.int64(1718), np.int64(743), np.int64(1856), np.int64(779)] exp [1719, 744, 1856, 779]
+FAIL callout prev: got [np.int64(438), np.int64(871), np.int64(659), np.int64(978)] exp [458, 892, 640, 960]
+OK  callout cur: got [np.int64(801), np.int64(892), np.int64(979), np.int64(959)] exp [800, 892, 981, 960]
+Traceback (most recent call last):
+  File "/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_introduction/recreated_pptx/qa/slide024/selfcheck_1.py", line 52, in <module>
+    ok(f"callout {tag}", b, [f2r(v) for v in exp], 9)
+    ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_introduction/recreated_pptx/qa/slide024/selfcheck_1.py", line 10, in <lambda>
+    ok = lambda name, got, exp, tol=4: print(f"{'OK ' if all(abs(g-e)<=tol for g,e in zip(got,exp)) else 'FAIL'} {name}: got {got} exp {exp}")
+                                                                                      ~~~^^^^^^^^^
+TypeError: 'NoneType' object is not iterable

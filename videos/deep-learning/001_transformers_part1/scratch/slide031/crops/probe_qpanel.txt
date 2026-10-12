@@ -1,0 +1,43 @@
+# Visual QA Report â Slide 031 Q-panel crop (2x)
+
+## 1. Verbatim text transcription
+
+**Left group (input vector):**
+- Inside four circles on a lavender capsule: `Xââ` `Xââ` `Xââ` `Xââ` (bold black "X"; the small subscript digits are dark and slightly soft at this resolution, but read consistently as 21, 22, 23, 24)
+- Below the capsule, large red serif label: `Xâ` (X with subscript 2)
+- Right of/below the capsule, small red text: `1xd`
+
+**Center group (weight matrix, 4Ã4 grid of yellow tiles):**
+- Row 1: `Wââ` `Wââ` `Wââ` `Wââ` (blue)
+- Row 2: `Wââ` `Wââ` `Wââ` `Wââ` (purple/magenta)
+- Row 3: `Wââ` `Wââ` `Wââ` `Wââ` (orange)
+- Row 4: `Wââ` `Wââ` `Wââ` `Wââ` (green)
+- Bottom-left of grid, large red label: `W` with subscript `Q` (reads as `W_Q`)
+- Bottom-right of grid, small red text: `dxd`
+
+**Right group (result column):**
+- Large red equals sign: `=`
+- Four stacked yellow tiles: `X_Q21` `X_Q22` `X_Q23` `X_Q24` â the "X" is dark red; the subscripts ("Q2" plus a trailing digit) are small orange/red text and are **partially illegible** at this resolution; the fourth tile's subscript is additionally clipped (see Â§3)
+
+**Bottom-right corner:**
+- A partially visible circular pink badge containing what appears to be `Xâ` â clipped by the image edge.
+
+No placeholder strings, no lorem-ipsum, and no wrong-language text detected.
+
+## 2. Layout
+
+- **Overall:** Cream/tan slide background with a dark-red rounded slide border visible along the top and left edges. The diagram reads left â center â right as an equation.
+- **LEFT edge:** The lavender rounded capsule holding the four red-outlined circles (XâââXââ), flanked by red bracket marks suggesting a grouped row vector; `1xd` sits at its lower right; the large `Xâ` label sits below it.
+- **CENTER:** A large pink rounded panel divided into a 4Ã4 grid of pink cells; each cell contains a yellow sticky-note-style tile with a colored "W" label. `W_Q` is at the grid's lower left, `dxd` at its lower right.
+- **RIGHT edge:** The red `=` sign, then a tall narrow pink rounded column containing four stacked yellow tiles (X_Q2x series), forming the result vector.
+- **TOP:** Mostly empty white/cream area; the tops of the grid panel and right column begin just below the slide border.
+- **BOTTOM:** The `W_Q` label (left of center), a white mouse-cursor arrow overlapping the grid's bottom-right corner near `dxd`, and the clipped circular badge at the far bottom-right.
+
+## 3. Visual defects / anomalies
+
+1. **Clipped tile (right column):** The bottom yellow tile (`X_Q24`) is cut off â its lower portion is truncated by the bottom of the pink column / image edge, and its subscript is only partially visible.
+2. **Clipped badge (bottom-right):** The circular pink badge with `Xâ` is cut off by the bottom/right image boundary; only part of the circle and text is visible. (Possibly a cropped-out decorative element from the full slide.)
+3. **Captured cursor:** A mouse pointer arrow overlaps the grid near the `dxd` label â a screenshot artifact, not slide content.
+4. **Very small subscripts:** The "Q2x" subscripts in the right column are rendered tiny with low contrast (orange on yellow); exact digits are not fully legible at 2x, though the pattern Q21âQ24 is consistent.
+5. **Notation as drawn:** The dimension labels use letter forms â `1xd` and `dxd` (letter "x", not a multiplication sign). Reported as seen; flagged only as a possible typographic intent question, not a rendering defect.
+6. **No overlaps of text elements, no garbage strings, no cut-off content** elsewhere in the crop; all W-grid tiles are fully contained within their cells.

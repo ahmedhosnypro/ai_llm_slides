@@ -1,0 +1,55 @@
+[info] context header injected: VIEW: Slide 039 self-check crop LEFT (X box, K rows, Dot Product, Wq branch, bottom row) — recreation vs original | CAPTURE: IMG1=150dpi crop of a 13.33x7.5in PPTX recreation; IMG2=the same region of the original lecture frame (960x540), resolution-matched
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 3832485
+[info] videos/deep-learning/001_transformers_part1/scratch/slide039/rc_p_left.png, videos/deep-learning/001_transformers_part1/scratch/slide039/oc_p_left.png: transcript written (validated winner, atomic): videos/deep-learning/001_transformers_part1/scratch/slide039/cropcmp_p_left.txt (pid 3832485)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== videos/deep-learning/001_transformers_part1/scratch/slide039/rc_p_left.png, videos/deep-learning/001_transformers_part1/scratch/slide039/oc_p_left.png ===
+[winner] images (round 1, attempt 1)
+# Element-by-Element Comparison
+
+**Similarity badge (top)**
+- Present in both. Original: ellipse/oval shape with tan border. Recreation: rounded rectangle. Text "Similarity" matches (blue, bold). â **MINOR** (shape mismatch on a content element).
+
+**Left X stack (green dashed container, 4 boxes)**
+- Container and 4 stacked boxes match in position/size/color.
+- **Original:** each X box contains a strip of colored cells (yellow/pink/green segments) plus the "X" glyph (Xâ etc.).
+- **Recreation:** boxes are plain light green with only a green "X" â the internal colored cell strips are missing entirely (Ã4). â **MAJOR** (repeated missing element).
+
+**W boxes (middle column, 4 boxes)**
+- Position, size, red-bordered green boxes match.
+- **Original text:** W with subscript *k* and superscript *(r)* â "Wââ½Ê³â¾".
+- **Recreation text:** plain "W" â subscript and superscript missing (Ã4). â **MAJOR** (wrong/missing text, repeated).
+
+**Yellow cell strips after W boxes** â present in both, aligned per row. OK.
+
+**K labels** â present in both with small subscripts, at matching row positions. OK.
+
+**Red horizontal arrows (4 rows)**
+- Original arrows terminate in arrowheads at the blue dots and continue with arrowheads to the right edge. Recreation lines pass through/stop without arrowheads. â **MINOR**.
+
+**Dot Product panel**
+- Tan panel, "Dot Product" title, blue dots with connecting web, single lower-left dot â all match in position. OK.
+
+**"K, q" label (top right)** â present in both, dark red text. OK.
+
+**q_z / Wq branch (bottom middle)**
+- Original: label "q_z" (with subscript) sits **above** the W box, next to a yellow cell strip; W box reads "W_qâ½Ê³â¾".
+- Recreation: small yellow box present but the "q" label sits **below** the W box (position off by more than the tolerance), and the W box reads "W_q" â superscript â½Ê³â¾ and the z subscript missing. â **MAJOR** (wrong label position + missing sub/superscript).
+
+**Bottom X row (pink box, dashed green border, adjacent X cells)** â positions, colors, dashed borders match; pink X box and neighboring strip present in both. OK.
+
+**Dashed green feedback curve** â present in both with arrowhead toward the X stack. OK.
+
+**Red up-arrow (bottom)** â present in both. OK.
+
+---
+
+**Summary of discrepancies:**
+1. MAJOR â Colored cell strips missing inside all 4 left X boxes.
+2. MAJOR â W box labels reduced from "Wââ½Ê³â¾" to "W" (Ã4).
+3. MAJOR â "q_z" label misplaced (below instead of above W box) and "W_qâ½Ê³â¾" missing its superscript â½Ê³â¾.
+4. MINOR â Missing arrowheads on the four red horizontal arrows.
+5. MINOR â "Similarity" badge rendered as rounded rectangle instead of ellipse.
+
+CROP VERDICT: MISMATCH â multiple textual elements lost their sub/superscripts (Wââ½Ê³â¾, W_qâ½Ê³â¾, q_z), a label is misplaced, and a repeated visual element (cell strips in the X boxes) is missing.
+

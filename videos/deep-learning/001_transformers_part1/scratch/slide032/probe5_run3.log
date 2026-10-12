@@ -1,0 +1,58 @@
+[info] context header injected: VIEW: Slide 032 recreation attempt 5 — probe | CAPTURE: 150dpi PNG render of a 13.33x7.5in PPTX
+[info] mode analysis | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 564230
+[info] videos/deep-learning/001_transformers_part1/recreated_pptx/qa/slide032/render_5.png: transcript written (validated winner, atomic): videos/deep-learning/001_transformers_part1/recreated_pptx/qa/slide032/probe_5.txt (pid 564230)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== videos/deep-learning/001_transformers_part1/recreated_pptx/qa/slide032/render_5.png ===
+[winner] images (round 1, attempt 1)
+## 1. Verbatim Text Transcription
+
+All text is in English; no other languages appear. Subscripts are rendered as small lowered characters; I show them with underscore/Unicode subscript notation.
+
+**Page number badge (top-right corner):**
+- `32`
+
+**Title (upper middle-right area, two lines):**
+- `Linear Transformation` (dark red, bold)
+- `(= Fully connected Layer)` (dark blue, bold italic)
+
+**Left panel (white rounded rectangle, dark-red outline) â matrix equation:**
+- Input row: `[ Xââ Xââ Xââ Xââ ]` (each X inside a small circle; brackets `[` and `]` in dark red)
+- `1xd` (red dimension label under the input row)
+- `Xâ` (large dark red)
+- `W_Q` (dark red, Q subscript)
+- 4Ã4 grid of yellow tags, one per pink cell:
+  - Row 1: `Wââ` `Wââ` `Wââ` `Wââ`
+  - Row 2: `Wââ` `Wââ` `Wââ` `Wââ`
+  - Row 3: `Wââ` `Wââ` `Wââ` `Wââ`
+  - Row 4: `Wââ` `Wââ` `Wââ` `Wââ`
+- `dxd` (red dimension label at lower-right of the grid)
+- `=` (dark red, between grid and result column)
+- Result column (tall pink rounded box), four yellow tags top to bottom: `X_Q21`, `X_Q22`, `X_Q23`, `X_Q24`
+
+**Right panel (white rounded rectangle, dark-blue outline) â network diagram:**
+- Top row of circles (pale yellow): `X_Q21`, `X_Q22`, `X_Q23`, `X_Q24`
+- `W_Q` (large dark red, left side of panel)
+- Weight labels along the connecting lines: `Wââ`, `Wââ`, `Wââ`, `Wââ` (red), `Wââ` appearing **three times** (blue), `Wââ`, `Wââ`, `Wââ`, `Wââ` (green)
+- Bottom row of circles (light blue): `Xââ`, `Xââ`, `Xââ`, `Xââ`
+
+## 2. Layout
+
+- **Overall:** Light-gray slide with a thin red rectangular border inset from all four edges. Two white rounded-rectangle panels sit on the gray background.
+- **LEFT edge:** The red border line runs down the left side. The upper-left ~45% of the slide is occupied by the dark-red-outlined equation panel (input vector, 4Ã4 weight matrix, `=`, result column). Below it is empty gray space.
+- **RIGHT edge:** Red border line; the yellow `32` badge circle sits just inside the top-right corner. The lower-right ~half is occupied by the blue-outlined network panel.
+- **TOP:** Red border across the top; the two-line title sits in the upper middle-right; the equation panel's top edge is near the top-left; `32` badge top-right. Between the title and the network panel is a large white arrow with a red outline pointing downward.
+- **BOTTOM:** The bottom row of the network (circles `Xââ`â`Xââ`, light blue with dark-red rings) with red/blue/green connecting lines fanning up to the four top circles; the blue panel's lower border; red border along the very bottom; empty gray band at bottom-left.
+- **Network interior:** A light-gray rounded rectangle sits behind the line fan. Small colored ellipses (red under `X_Q21`, dark blue under `X_Q22`, green under `X_Q24`) peek out beneath the top circles.
+
+## 3. Visual Defects / Anomalies
+
+1. **Duplicate weight label:** `Wââ` appears three times in the network (blue). The `Wââ`, `Wââ`, `Wââ` labels expected for that series are absent.
+2. **Missing weight series:** The matrix contains a `Wâx` series (`Wââ`â`Wââ`), but no `Wâx` labels appear anywhere in the network diagram. Lines apparently originating from `Xââ` are visible but appear in a much lighter/faded pink tone, and some carry no legible label.
+3. **Cursor-like artifact:** A small white arrow shape with a dark outline, resembling a mouse pointer, overlaps the area right next to the middle `Wââ` label (~center of the network). It does not appear to be an intentional diagram element.
+4. **Malformed arrow shape:** The large red-outlined white arrow between the title and the network panel has an irregular, stepped/notched left edge rather than a clean block-arrow silhouette â it looks misshapen or like two overlapping shapes.
+5. **Possibly missing marker:** Under the top circle `X_Q23` there is no clearly visible colored ellipse, unlike `X_Q21` (red), `X_Q22` (blue), and `X_Q24` (green). It may simply be occluded by the converging lines.
+6. **Minor spacing quirk:** The closing bracket `]` of the input vector sits at/just outside the right edge of the pink input box rather than enclosing the circles symmetrically.
+
+No clipped or cut-off content was observed: all panels, the title, the `32` badge, and the red slide border are fully within the frame, and all transcribed text is legible.
+

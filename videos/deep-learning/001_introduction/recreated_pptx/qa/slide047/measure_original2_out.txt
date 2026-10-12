@@ -1,0 +1,100 @@
+-- top area y 40..70 --
+  y=43: dark-notred n=844 (58, 901)
+  y=50: dark-notred n=0 
+  y=60: dark-notred n=0 
+  y=65: dark-notred n=0 
+
+-- title --
+title red runs                       x 140..825  y 71..98  (w 686 h 28)
+title blue runs                      x 448..542  y 67..100  (w 95 h 34)
+title red x-segments (w>3): [(140, 177), (180, 196), (201, 219), (222, 242), (245, 264), (269, 285), (297, 312), (315, 335), (338, 359), (363, 380), (384, 391), (395, 413), (417, 436), (552, 591), (595, 609), (612, 623), (632, 664), (666, 677), (681, 706), (708, 722), (724, 735), (745, 776), (780, 785), (788, 801), (804, 816), (819, 825)]
+title blue x-segments (w>3): [(448, 470), (473, 490), (492, 525), (528, 542)]
+title red px sample: [243, 225, 225] [224, 142, 144]
+title blue px sample: [236, 233, 255]
+red y-extent: 71 98  blue y-extent: 67 100
+
+-- intro lines y 120..215 x 60..900 --
+line y 130..149 h=20 x 81..502 (no red) DBLUE x 82..502 (n=2027)
+line y 157..176 h=20 x 81..525 RED x 82..526 (n=2151) (no dblue)
+line y 184..203 h=20 x 81..724 (no red) DBLUE x 82..723 (n=3163)
+line1 sample (y=140,x=100): [214, 216, 237]
+line2 sample (y=166,x=100): [249, 178, 182]
+line3 sample (y=192,x=100): [133, 124, 217]
+
+-- content box border strokes --
+  red row y=219: count 792
+  red row y=220: count 793
+  red row y=221: count 794
+  red row y=486: count 796
+  red row y=487: count 794
+  red col x=58: count 290
+  red col x=59: count 290
+  red col x=82: count 267
+  red col x=83: count 263
+  red col x=874: count 268
+  red col x=875: count 267
+box border color sample: [140, 35, 49] [175, 58, 74]
+
+-- bullet markers x 88..118, y 220..360 --
+  marker y 220..220 x 88..117 n=30
+  marker y 226..238 x 91..117 n=49
+  marker y 260..268 x 91..117 n=34
+  marker y 287..314 x 91..117 n=129
+  marker y 323..350 x 91..117 n=136
+  marker px sample: [254, 255, 251]
+
+-- bullet lines 1-2 --
+line1 dark-notred ink                x 116..475  y 226..242  (w 360 h 17)
+line2 dark-notred ink                x 116..529  y 258..268  (w 414 h 11)
+line1 text sample: [250, 252, 249]
+line2 text sample: [195, 197, 194]
+  line2 underline row y=268: dark count 73
+
+-- bullet 3 label box (blue border) --
+  blue ink x 109..311 y 287..314
+  blue border px: [254, 252, 255] [128, 124, 185]
+  blue border cols: (np.int64(109), np.int64(311)) [109, 110, 111, 310, 311]
+  blue border rows: (np.int64(287), np.int64(314)) [287, 288, 312, 313, 314]
+eq3 ink (x>315)                      x 317..536  y 285..311  (w 220 h 27)
+eq3 red ink                          EMPTY
+  eq3 px sample: [252, 254, 251]
+  eq3 y-bands: [(np.int64(284), np.int64(312))]
+
+-- bullet 4 label box --
+  blue ink x 109..311 y 323..351
+eq4 ink (x>315)                      x 320..483  y 323..357  (w 164 h 35)
+eq4 red ink                          EMPTY
+  eq4 px sample: [237, 237, 237]
+  eq4 y-bands: [(np.int64(321), np.int64(339)), (np.int64(342), np.int64(357))]
+
+-- legend box --
+  legend red border rows: [486, 487]
+  legend red border cols: [573, 574, 575, 576, 577, 578, 579, 580, 581, 582, 583, 595, 596, 597, 598, 599, 600, 601, 602, 603, 604, 605, 606, 607]
+  legend text bands: [(357, 394), (396, 482), (486, 487)]
+  header sample (Where:): [156, 51, 65]
+  row1 letter sample: [135, 149, 196]  word sample: [238, 255, 253]
+  fill sample: [233, 252, 255]
+  red ink in legend body: n= 1458  blue ink: n= 1931
+   red x-range: 571 .. 599
+   blue x-range: 465 .. 599
+
+-- 4x4 grid cells --
+  grid overall x 571..726 y 365..487
+  x-gap runs (grid coords): [(0, 10), (49, 50), (88, 90), (127, 129), (167, 179)]
+  y-gap runs (grid coords): [(424, 425), (454, 454)]
+  numeral ink x 584..712 y 374..475 n=1190
+
+-- arrow --
+arrow dark-notred ink                x 739..788  y 423..436  (w 50 h 14)
+  arrow px sample: [254, 255, 253]
+fraction red ink                     x 795..832  y 425..453  (w 38 h 29)
+  fraction y-bands: [(425, 453)]
+
+-- 2x2 output grid --
+  out grid overall x 796..871 y 396..453
+  x-gaps: [832, 833, 834]
+  y-gaps: [424, 425]
+  numerals ink n=337
+
+-- bottom strip --
+  strip starts y=519 (n=884)

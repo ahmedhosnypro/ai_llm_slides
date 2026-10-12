@@ -1,0 +1,36 @@
+## Element-by-Element Comparison
+
+**Ground-rule dispositions first (not counted as discrepancies):**
+- White canvas, gray panel with red border, yellow "33" badge at top-right â intentional house chrome (rule a) â OK.
+- Handwritten-style labels rendered in a marker font vs. true handwriting â medium difference, at most MINOR (rule d).
+- "3Ê³áµ" superscript rendered as raised text â mandated format (rule e) â OK.
+- Both images show the same real content; no placeholder conditions apply (rule b), no capture artifacts involved (rule c).
+
+### Title
+- "Where to Get Filters for Recognition" â verbatim match, red ~#C00000, centered, correct relative size and position. â
+
+### Text box
+- Border: light blue/lavender thin border in both â matches.
+- Line 1: "Similarly, if **images** are k-D, **parameters** should also be k-D" â verbatim, bold, red keywords, underlines on "images"/"parameters" present. â
+- Line 2: "For K=3 (RGB), use K-D filter (third dim >> K=3)" â verbatim. â
+- Line 3: "For K=9 (Satellite images) use 9-D filter (3Ê³áµ dim = 9)" â verbatim; superscript "rd" raised, correct (rule e). â
+- Line 4: "...etc" â present. â
+- Line spacing and vertical distribution of the four lines match the original closely. â
+
+### Diagram panel (red-bordered box)
+- Three tan/brown planes with cyan filter slabs, "RGB" handwritten label with leader stroke, "3 dims" and "k dims" labels with arrows, red leader lines from the "Filter(s)" label to the middle and right filters â all present and geometrically faithful to the original. â
+- **DISCREPANCY 1 (MAJOR, confidence high):** The grayscale label is clipped. Original reads "Grayscale" in full; the recreation shows only "Graysâ¦" â the text block is cut off at the right (letters "cale" missing/truncated). This is both a text-fidelity error and a clipping defect.
+- **DISCREPANCY 2 (MAJOR, confidence high):** The right-hand label is clipped. Original reads "Multiple channels"; the recreation shows "Multipâ¦" with a stray vertical stroke fragment ("l") â the rest of the phrase is cut off. Missing text content.
+- **DISCREPANCY 3 (MAJOR, confidence high):** Diagram label text mismatch: recreation says "Filter" (singular); original says "Filters" (plural). Verbatim text error.
+- **DISCREPANCY 4 (MINOR, confidence high):** Clipped labels appear to run into/behind the diagram's red border region rather than being cleanly contained â related frame-containment concern for the label text boxes (the clipping itself is the visible defect; flagged under discrepancies 1â2).
+
+### Visual-quality defects in the recreation
+- Text clipping/truncation of "Grayscale" and "Multiple channels" labels (MAJOR) â the label text boxes are too narrow or the text overflows and is cut.
+- No other overflow, collision, or illegibility issues; the body text box, title, and diagram geometry are otherwise clean.
+
+## Summary
+- BLOCKER: none (no entirely missing element; all equations/regions render).
+- MAJOR: (1) "Grayscale" clipped to "Graysâ¦"; (2) "Multiple channels" clipped to "Multipâ¦"; (3) "Filter" vs. original "Filters".
+- MINOR: marker-font substitution for handwriting (permitted, rule d); superscript styling (permitted, rule e).
+
+FINAL VERDICT: **FAIL** for 'faithful, usable recreation' â the two clipped diagram labels lose real content ("cale", "le channels") and the "Filters" label is wrong, which together make the recreation not faithful to the original slide.

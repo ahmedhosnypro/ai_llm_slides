@@ -1,0 +1,148 @@
+{
+  "slide_title": "How many filter can we apply on the image",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "We can Apply **multiple filters** on the **same location** (e.g. 5 different filters on the same location.  For Example:",
+      "[ one to **detect edges**, one to **detect lines**, one to **detect curves**, ...etc)"
+    ],
+    "labels": [
+      "RGB",
+      "3 dims",
+      "X (small hand-drawn circle-with-X target mark on the input slab)",
+      "7",
+      "7",
+      "5",
+      "3",
+      "=",
+      "Depth=5 dims",
+      "How many weights for these 5 neurons?",
+      "[thin solid black strip across the very bottom of the frame is the video-player progress bar, not slide content]"
+    ],
+    "equations": [
+      "5 \u00b7 7 \u00b7 7 \u00b7 3 = 735"
+    ]
+  },
+  "layout": {
+    "arrangement": "Horizontal stacked bands: a light-gray title band across the very top with a centered dark-red bold title; a full-width pale-yellow text box directly below holding a two-line paragraph; a large white panel with a thin red border fills the lower ~55% of the slide and contains one wide hand-drawn CNN diagram (orange input slab on the left, stack of colored filter slabs in the center, tan output cube on the right) with handwritten annotations and a red equation at the bottom-left; a thin black video-player bar sits at the very bottom edge.",
+    "regions": [
+      {
+        "name": "Title band",
+        "position": "top, full width, ~0-22% height",
+        "content": "Centered bold dark-red title 'How many filter can we apply on the image' on a light-gray background"
+      },
+      {
+        "name": "Explanation text box",
+        "position": "upper-middle, full width with ~2% side margins, ~24-45% height",
+        "content": "Pale-yellow box with a black serif paragraph; 'multiple filters' bold black, 'same location' bold dark-red, 'detect edges/lines/curves' bold black"
+      },
+      {
+        "name": "Diagram panel",
+        "position": "bottom, full width, ~46-95% height",
+        "content": "White area with thin red border containing the hand-drawn convolution-depth diagram, handwritten labels (RGB, 3 dims, 7, 7, 5, 3, =, Depth=5 dims), the question 'How many weights for these 5 neurons?' and the red equation '5 \u00b7 7 \u00b7 7 \u00b7 3 = 735'"
+      },
+      {
+        "name": "Video-player bar",
+        "position": "very bottom, full width, ~95-100% height",
+        "content": "Solid black strip (player progress bar, not slide content)"
+      }
+    ],
+    "hierarchy": "The title dominates as the largest/heaviest text (bold, dark red, ~32pt, centered). The body paragraph is secondary (~20pt black with red bold highlights). The diagram occupies the most area but its handwritten labels are small; the red equation at bottom-left is a strong focal accent."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Input image slab: a hand-drawn 3D rectangular slab (the RGB input image) in perspective, orange/brown fill with darker orange edges; handwritten label 'RGB' above it; '3 dims' to its left with a tiny arrow pointing at the slab; a small hand-drawn circle containing an 'X' marks a pixel on the slab face; two handwritten '7' labels with small arrows mark the 7x7 patch extent (one at the left edge of the dashed region, one below-left); several horizontal dashed black lines run from the slab rightward toward the filter stack representing the receptive-field column.",
+      "colors": [
+        "#D2691E",
+        "#8B4513",
+        "#000000"
+      ],
+      "position": "left side of diagram panel, ~15-30% x, ~50-80% y"
+    },
+    {
+      "type": "diagram",
+      "description": "Filter stack: a cluster of overlapping hand-drawn 3D slabs (the 5 filters) arranged left-to-right; front row of five slabs colored cyan-blue, green, red, yellow, purple; additional partially hidden slabs peek out behind them in tan, light gray and dark navy; handwritten '5' with a small pointer sits above the stack and handwritten '3' below it (each filter is 7x7x3); dashed lines connect the stack back to the input slab.",
+      "colors": [
+        "#30A0D0",
+        "#40B050",
+        "#E02020",
+        "#F0E020",
+        "#8040C0",
+        "#C8A870",
+        "#B0B0B0",
+        "#203860",
+        "#000000"
+      ],
+      "position": "center of diagram panel, ~30-55% x, ~50-78% y"
+    },
+    {
+      "type": "diagram",
+      "description": "Output volume: a large hand-drawn 3D cube in tan/burlywood with slightly darker top and side faces; a row of 5 circles is drawn along its top face (left to right: tan, tan, tan, dark brown, green) and 5 circles on its front face (left to right: teal, green, red, yellow, purple), one per filter output; handwritten label 'Depth=5 dims' at its upper right; a plain black horizontal arrow at the cube's upper left points rightward into the cube.",
+      "colors": [
+        "#E8C890",
+        "#D9A85E",
+        "#D2B48C",
+        "#5C3A21",
+        "#40B050",
+        "#20B0A0",
+        "#E02020",
+        "#F0E020",
+        "#8040C0",
+        "#000000"
+      ],
+      "position": "right side of diagram panel, ~54-82% x, ~50-85% y"
+    },
+    {
+      "type": "other",
+      "description": "A large '=' sign placed between the filter stack and the output cube, indicating the 5 filters produce the depth-5 output volume.",
+      "colors": [
+        "#202060"
+      ],
+      "position": "between filter stack and cube, ~51-54% x, ~63-68% y"
+    },
+    {
+      "type": "other",
+      "description": "Handwritten-style black question 'How many weights for these 5 neurons?' with the answer directly below in red: '5 \u00b7 7 \u00b7 7 \u00b7 3 = 735' (5 filters times 7x7 spatial size times 3 input channels equals 735 weights).",
+      "colors": [
+        "#000000",
+        "#E02020"
+      ],
+      "position": "bottom-left of diagram panel, ~7-45% x, ~83-95% y"
+    }
+  ],
+  "imagery": [
+    "No photographs or clip-art; the only imagery is the sketch/hand-drawn marker-style 3D diagram (orange input slab, colored filter slabs, tan output cube with colored circles) inside the red-bordered panel, resembling a whiteboard illustration."
+  ],
+  "colors": {
+    "background": "#FFFFFF (white slide; top band #E8E8E8; text box #FFFFE1)",
+    "title_text": "#990000",
+    "body_text": "#000000",
+    "accents": [
+      "#990000 (dark-red title and bold 'same location')",
+      "#CC0000 (thin red border of diagram panel)",
+      "#E02020 (red equation)",
+      "#D2691E (orange input slab)",
+      "#30A0D0 / #40B050 / #E02020 / #F0E020 / #8040C0 (five filter colors)",
+      "#E8C890 (tan output cube)"
+    ]
+  },
+  "typography_notes": "Title: bold sans-serif (Arial/Calibri-like), ~32-34pt, dark red, centered, sentence case (no all-caps; note the verbatim singular 'filter'). Body: serif (Times/Georgia-like), ~20pt, black, left-aligned wrapped paragraph with bold emphasis; 'same location' is bold AND dark red. In the bullets above, **...** marks bold. Diagram annotations use a handwriting-style font (Comic Sans/Segoe Print-like), black, ~16-18pt; the equation is in red in the same handwritten style using middle dots '\u00b7'. No numbered or bulleted lists; the paragraph is plain wrapped text.",
+  "animation_state": "Slide appears fully revealed with no mid-build elements. The black strip at the very bottom is the video player's progress bar, not an animated slide element.",
+  "recreation_brief": "1. Create a 16:9 slide with a white background. 2. Draw a full-width rectangle across the top (~0-22% height), fill #E8E8E8, no outline. 3. Centered inside it, place the title 'How many filter can we apply on the image' in Arial Bold ~32pt, color #990000 (keep the singular 'filter' verbatim). 4. Below, draw a full-width rectangle (~24-45% height, ~2% side margins), fill #FFFFE1 with a thin black outline. 5. Inside it, Times New Roman ~20pt black, left-aligned, two lines: 'We can Apply multiple filters on the same location (e.g. 5 different filters on the same location.  For Example:' with 'multiple filters' bold black and 'same location' bold #990000; then '[ one to detect edges, one to detect lines, one to detect curves, ...etc)' with 'detect edges', 'detect lines', 'detect curves' bold black. 6. Draw a large rectangle covering ~46-95% of the slide height, white fill, 2pt #CC0000 border. 7. Inside-left, build the input image: a perspective parallelogram slab filled #D2691E with #8B4513 edges; add handwritten-style (Comic Sans/Segoe Print, black, ~16-18pt) labels 'RGB' above and '3 dims' at the left with a tiny arrow; draw a small circle containing 'X' on the slab; add two '7' labels with small arrows marking the patch extent; draw 4-5 horizontal dashed black lines from the slab toward the center. 8. In the center, draw five overlapping perspective slabs (front-row colors #30A0D0, #40B050, #E02020, #F0E020, #8040C0, with tan/gray/navy slabs partially visible behind); place handwritten '5' above with a small pointer and '3' below. 9. Place a large '=' between the stack and the cube. 10. On the right, draw a 3D cube (~2.2in) filled #E8C890 with darker #D9A85E top/side faces; place 5 circles along the top face (tan, tan, tan, dark brown, green) and 5 circles on the front face (#20B0A0, #40B050, #E02020, #F0E020, #8040C0); add handwritten 'Depth=5 dims' at its upper right and a plain black right-arrow pointing into the cube's upper-left. 11. At the bottom-left of the panel add handwritten-style black text 'How many weights for these 5 neurons?' (~20pt) and beneath it, in red #E02020, '5 \u00b7 7 \u00b7 7 \u00b7 3 = 735'. 12. Leave the bottom ~5% of the frame empty/black only if mimicking the video frame; the slide itself ends at the red-bordered panel.",
+  "_meta": {
+    "frame": "slide_037.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 37,
+      "image": "slide_037.jpg",
+      "kept_frame": "frame_02753.jpg",
+      "start_sec": 2388.0,
+      "end_sec": 2752.0,
+      "frame_count": 365,
+      "old_group": 49,
+      "founder_frame_swap": false
+    },
+    "elapsed_s": 217.7
+  }
+}

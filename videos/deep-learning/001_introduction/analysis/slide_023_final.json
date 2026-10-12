@@ -1,0 +1,194 @@
+{
+  "slide_title": "Visualization of Single Layer Perceptron",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Multi-Class Classification",
+      "x\u2081",
+      "x\u2082",
+      "x\u2083",
+      "...",
+      "...",
+      "x\u2099",
+      "1",
+      "w\u2081\u2081",
+      "w\u2081\u2082",
+      "w\u2081\u2083",
+      "w\u2081\u2099",
+      "b\u2081",
+      "w\u2082\u2081",
+      "w\u2082\u2082",
+      "w\u2082\u2083",
+      "w\u2082\u2099",
+      "b\u2082",
+      "w\u2098\u2081",
+      "w\u2098\u2082",
+      "w\u2098\u2083",
+      "w\u2098\u2099",
+      "b\u2098",
+      "\u03a3",
+      "\u03a3",
+      "\u03a3",
+      ">0 Class I",
+      "<0 Not Class I",
+      ">0 Class II",
+      "<0 Not Class II",
+      ">0 Class m",
+      "<0 Not Class m"
+    ],
+    "equations": [
+      "d\u2081(X) = W\u2081\u1d40 X = w\u2081\u2081x\u2081+w\u2081\u2082x\u2082+....+w\u2081\u2099x\u2099+b\u2081*1",
+      "d\u2082(X) = W\u2082\u1d40 X = w\u2082\u2081x\u2081+w\u2082\u2082x\u2082+....+w\u2082\u2099x\u2099+b\u2082*1",
+      "d\u2098(X) = W\u2098\u1d40 X = w\u2098\u2081x\u2081+w\u2098\u2082x\u2082+....+w\u2098\u2099x\u2099+b\u2098*1"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered across the top. Left column below title: cream equation box (upper-left) with three red equations, and further down a small tan label box reading 'Multi-Class Classification'. Right half of the slide (x \u2248 44-93%): one large white bordered panel containing the full neural-network diagram. Thin dark-red vertical line near the left edge running almost the full slide height (y \u2248 7-95%, ending at the black bar); solid black strip across the very bottom of the slide.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, approx x 15-80%, y 8-16%",
+        "content": "Two-color bold title 'Visualization of Single Layer Perceptron'"
+      },
+      {
+        "name": "Equation box",
+        "position": "upper left, approx x 7-48%, y 18-42%",
+        "content": "Cream box with red border holding three stacked red equations d\u2081, d\u2082, d\u2098"
+      },
+      {
+        "name": "Multi-Class Classification box",
+        "position": "middle left, approx x 14-34%, y 66-75%",
+        "content": "Small tan rectangle with dark-red bold italic two-line label"
+      },
+      {
+        "name": "Network diagram panel",
+        "position": "right, approx x 44-93%, y 28-92%",
+        "content": "White panel with thin blue border containing the single-layer perceptron diagram: inputs, weights, three \u03a3 neurons, activation boxes, class outputs"
+      },
+      {
+        "name": "Red vertical rule",
+        "position": "left edge, approx x 6%, y 7-95% (terminates at the black footer bar)",
+        "content": "Thin dark-red vertical decorative line"
+      },
+      {
+        "name": "Black footer bar",
+        "position": "bottom, approx x 4-100%, y 95-100%",
+        "content": "Solid black horizontal strip; no slide number visible"
+      }
+    ],
+    "hierarchy": "Title is the largest and boldest element (two-color). The network diagram dominates by area on the right. The red equation block is the secondary focal point upper-left. The tan 'Multi-Class Classification' box is a small tertiary label. Black bar and red rule are decorative framing with lowest visual weight."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Rectangle with thin red border and cream fill containing three left-aligned equations, one per line: 'd\u2081(X) = W\u2081\u1d40 X = w\u2081\u2081x\u2081+w\u2081\u2082x\u2082+....+w\u2081\u2099x\u2099+b\u2081*1', 'd\u2082(X) = W\u2082\u1d40 X = w\u2082\u2081x\u2081+w\u2082\u2082x\u2082+....+w\u2082\u2099x\u2099+b\u2082*1', 'd\u2098(X) = W\u2098\u1d40 X = w\u2098\u2081x\u2081+w\u2098\u2082x\u2082+....+w\u2098\u2099x\u2099+b\u2098*1'. Each W carries an underline beneath it and its subscript; the trailing term is bias b times the constant input 1 ('*1').",
+      "colors": [
+        "#FFFFCC",
+        "#C00000"
+      ],
+      "position": "upper left, x ~7-48%, y ~18-42%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Small tan/beige rectangle containing the centered two-line text 'Multi-Class Classification' in bold italic dark red.",
+      "colors": [
+        "#D9D9A6",
+        "#8B0000"
+      ],
+      "position": "middle left, x ~14-34%, y ~66-75%"
+    },
+    {
+      "type": "diagram",
+      "description": "Fully-connected single-layer perceptron for multi-class classification, enclosed in a white rectangle with a thin blue border. LEFT: vertical input column labeled top-to-bottom x\u2081, x\u2082, x\u2083, '...', '...', x\u2099, 1 (the '1' is the bias input; two ellipsis rows indicate omitted inputs). CENTER-RIGHT: three summation neurons drawn as circles with light-cyan fill, teal ring, each containing '\u03a3' \u2014 top \u03a3 (~y 33%), middle \u03a3 (~y 57%), bottom \u03a3 (~y 80%). CONNECTIONS: thin straight lines fan from every input to every \u03a3, color-coded per output neuron \u2014 red bundle to top \u03a3, blue bundle to middle \u03a3, green bundle to bottom \u03a3. Weight labels placed along the lines: red w\u2081\u2081, w\u2081\u2082, w\u2081\u2083, w\u2081\u2099 and red b\u2081 (b\u2081 sits just above the bias input '1'); blue w\u2082\u2081, w\u2082\u2082, w\u2082\u2083, w\u2082\u2099 and blue b\u2082; green w\u2098\u2081, w\u2098\u2082, w\u2098\u2083, w\u2098\u2099 and green b\u2098. Between middle and bottom \u03a3, three small hollow circles stacked vertically act as a vertical ellipsis for omitted neurons. Each \u03a3 emits a short red arrow right into a small activation box: white/pink-filled rectangle with magenta border containing a blue step/threshold-function glyph (vertical bar with horizontal strokes). From each activation box a red arrow points to a two-line black bold output: top '>0 Class I' / '<0 Not Class I'; middle '>0 Class II' / '<0 Not Class II'; bottom '>0 Class m' / '<0 Not Class m' (each second line wraps, e.g. '<0 Not Class' + 'I').",
+      "colors": [
+        "#FFFFFF",
+        "#0000FF",
+        "#FF0000",
+        "#008000",
+        "#CCFFFF",
+        "#339999",
+        "#FF99CC",
+        "#0000CC",
+        "#000000"
+      ],
+      "position": "right panel, x ~44-93%, y ~28-92%"
+    },
+    {
+      "type": "other",
+      "description": "Solid black horizontal strip across the bottom of the slide (footer band, no text).",
+      "colors": [
+        "#000000"
+      ],
+      "position": "bottom edge, y ~95-100%"
+    },
+    {
+      "type": "other",
+      "description": "Thin dark-red vertical rule near the left edge, running from just below the top edge (y \u2248 7%) down to the bottom black bar (y \u2248 95%).",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "left edge, x ~6%, y ~7-95%"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations. Icon-style vector glyphs only: three light-cyan '\u03a3' summation circles with teal rings inside the diagram, and three small pink-bordered boxes each containing a blue step/threshold activation-function glyph (vertical bar with horizontal strokes)."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#C00000 (words 'Visualization of Single' and 'Perceptron'), #0000CC (word 'Layer')",
+    "body_text": "#000000 (diagram output labels), #C00000 (equations)",
+    "accents": [
+      "#C00000",
+      "#0000CC",
+      "#FF0000",
+      "#008000",
+      "#FFFFCC",
+      "#D9D9A6",
+      "#CCFFFF",
+      "#FF99CC",
+      "#000000"
+    ]
+  },
+  "typography_notes": "Title: large bold sans-serif (Arial/Verdana-like), ~36-40pt, two-color (red with the single word 'Layer' in blue). Equations: italic serif/math-style font, red, with bold-italic d and X, underlined W with subscripts, and subscripted w and b terms. 'Multi-Class Classification': bold italic sans-serif, dark red, centered on two lines. Diagram labels: small sans-serif; weight labels italic; output decision texts bold black sans-serif. No all-caps styling; no numbered bullets anywhere on the slide.",
+  "animation_state": "Slide appears fully built and static; all three equations, all diagram elements and all three output labels are visible simultaneously. No mid-build state detected.",
+  "recreation_brief": "1) Set the slide background to solid white (#FFFFFF). 2) Draw a solid black (#000000) rectangle across the bottom: x 4-100%, y 95-100%; leave it completely empty (no slide number, no text). 3) Draw a thin dark-red (#C00000) vertical rule at x \u2248 6% of slide width, spanning y \u2248 7% down to y \u2248 95% so it terminates at the black bar. 4) Add the title text box, top center (x 15-80%, y 8-16%): 'Visualization of Single Layer Perceptron', bold sans-serif ~36-40pt, with 'Visualization of Single' and 'Perceptron' in dark red (#C00000) and the word 'Layer' in blue (#0000CC). 5) Upper left (x 7-48%, y 18-42%): draw a rectangle with cream fill (#FFFFCC) and thin red (#C00000) border; place three left-aligned lines of red italic serif text inside, one per line: 'd\u2081(X) = W\u2081\u1d40 X = w\u2081\u2081x\u2081+w\u2081\u2082x\u2082+....+w\u2081\u2099x\u2099+b\u2081*1', 'd\u2082(X) = W\u2082\u1d40 X = w\u2082\u2081x\u2081+w\u2082\u2082x\u2082+....+w\u2082\u2099x\u2099+b\u2082*1', 'd\u2098(X) = W\u2098\u1d40 X = w\u2098\u2081x\u2081+w\u2098\u2082x\u2082+....+w\u2098\u2099x\u2099+b\u2098*1'; render d and X bold-italic, the transpose as superscript \u1d40, and underline each W together with its subscript. 6) Middle left (x 14-34%, y 66-75%): draw a small tan (#D9D9A6) rectangle with centered bold-italic dark-red (#8B0000) text 'Multi-Class Classification' wrapped on two lines ('Multi-Class' / 'Classification'). 7) Right side (x 44-93%, y 28-92%): draw a large white (#FFFFFF) rectangle with a thin blue (#0000FF) border \u2014 the network panel. 8) Inside the panel along its left edge (x \u2248 47-51%), stack seven small black sans-serif input labels top-to-bottom: x\u2081, x\u2082, x\u2083, '...', '...', x\u2099, 1 (the final '1' is the bias input; the two '...' rows stand for omitted inputs). 9) Place three summation circles (fill #CCFFFF, ring #339999, '\u03a3' centered in each) at slide-relative centers \u2248 (x 66%, y 33%) top, (x 66%, y 57%) middle, (x 66%, y 80%) bottom. 10) Draw 21 thin straight connector lines fanning from all 7 inputs to all 3 \u03a3 circles: every line into the top \u03a3 red (#FF0000), every line into the middle \u03a3 blue (#0000FF), every line into the bottom \u03a3 green (#008000). 11) Place 15 italic weight labels along the lines, color-matched per bundle: red w\u2081\u2081, w\u2081\u2082, w\u2081\u2083, w\u2081\u2099 and b\u2081 (b\u2081 just above the '1' bias input); blue w\u2082\u2081, w\u2082\u2082, w\u2082\u2083, w\u2082\u2099 and b\u2082; green w\u2098\u2081, w\u2098\u2082, w\u2098\u2083, w\u2098\u2099 and b\u2098. 12) Between the middle and bottom \u03a3 (\u2248 x 66%, y 65-72%), stack three small hollow circles vertically as an ellipsis for omitted neurons. 13) From each \u03a3, draw a short red (#FF0000) arrow to the right ending at a small activation rectangle (white/pink fill, #FF99CC border) containing a blue (#0000CC) step/threshold-function glyph (vertical bar with horizontal strokes). 14) From each activation box, draw a red (#FF0000) arrow to bold black (#000000) two-line output text at the panel's right edge: top '>0 Class I' / '<0 Not Class I'; middle '>0 Class II' / '<0 Not Class II'; bottom '>0 Class m' / '<0 Not Class m' (second lines may wrap, e.g. '<0 Not Class' + 'I'). 15) Final check: no slide number, no footer text, and no bullet list anywhere; the slide renders fully built and static.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "verbatim_text.bullets kept as [] and documented: the slide genuinely contains no bulleted list \u2014 all text content is carried by 32 labels and 3 equations; populating bullets would duplicate content and risk double-rendering.",
+      "subtitle_or_header kept null and documented: no subtitle or section header exists on this slide; builders must not render one.",
+      "Removed the duplicate '#0000FF' entry from the diagram visual element's colors array (blue was listed twice).",
+      "Harmonized the red vertical rule's extent: layout.regions said 'y 7-100%' while visual_elements said it runs 'to the bottom black bar'; both now state y \u2248 7-95%, terminating at the black footer bar.",
+      "Corrected layout.arrangement 'Right two-thirds' to 'right half (x \u2248 44-93%)' to match the Network diagram panel region coordinates.",
+      "Rewrote recreation_brief as a 15-step ordered checklist, adding exact region coordinates for every placed element (title x 15-80%/y 8-16%; equation box x 7-48%/y 18-42%; tan box x 14-34%/y 66-75%; panel x 44-93%/y 28-92%; rule x \u2248 6%/y 7-95%; bar x 4-100%/y 95-100%) and exact counts (7 input labels, 3 \u03a3 circles, 21 connector lines, 15 weight labels, 3 activation boxes, 6 output text lines).",
+      "Removed the unverifiable specific 'two horizontal strokes' from the activation-glyph step; the source specifies only 'vertical bar with horizontal strokes'."
+    ],
+    "uncertain_items": [
+      "No '[?]' markers are present anywhere in the source JSON.",
+      "Exact title typeface is unverifiable \u2014 described only as 'Arial/Verdana-like' bold sans-serif at ~36-40pt.",
+      "Activation-box fill is ambiguous in the source ('white/pink-filled'); only the border color (#FF99CC) is specified.",
+      "The activation step-function glyph's exact stroke count is unspecified ('vertical bar with horizontal strokes').",
+      "All diagram-internal coordinates (\u03a3 centers at y \u2248 33/57/80%, input column at x \u2248 47-51%, ellipsis-circle placement) are vision-model approximations, not measured values."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_023.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 23,
+      "image": "slide_023.jpg",
+      "kept_frame": "frame_01199.jpg",
+      "start_sec": 1198,
+      "end_sec": 1226.0,
+      "frame_count": 29,
+      "old_group": 28,
+      "founder_frame_swap": true,
+      "original_kept_frame": "frame_01227.jpg"
+    },
+    "elapsed_s": 231.1,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 629.5
+  }
+}

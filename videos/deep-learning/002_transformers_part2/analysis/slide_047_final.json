@@ -1,0 +1,237 @@
+{
+  "slide_title": "Encoder Block",
+  "subtitle_or_header": "None \u2014 no subtitle or horizontal header exists; the slide is one full-bleed architecture diagram titled 'Encoder Block' (rendered vertically, bottom-to-top, on the left edge), flanked only by the 'Block Output' (top-left) and 'Block Input' (bottom-left) label boxes.",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Block Output",
+      "Block Input",
+      "Encoder Block",
+      "Layer Normalization",
+      "Layer Normalization",
+      "Feed Forward Networks [ One Hidden with  RELU Activation]",
+      "Multi Head Self Attention Block",
+      "RELU",
+      "47",
+      "Output row (top), left to right: \u1ef8\u2081 Y\u2081 \u1ef8\u2082 Y\u2082 \u1ef8\u2083 Y\u2083 \u1ef8\u2084 Y\u2084 \u1ef8\u2085 Y\u2085 \u1ef8\u2086 Y\u2086 \u2022\u2022\u2022\u2022\u2022 (5 blue dots) \u1ef8_{N\u22122} Y_{N\u22122} \u1ef8_{N\u22121} Y_{N\u22121} [? tilde/subscript reading]",
+      "Internal Y rows (three identical rows inside the container): \u1ef8\u2081 Y\u2081 \u1ef8\u2082 Y\u2082 \u1ef8\u2083 Y\u2083 \u1ef8\u2084 Y\u2084 \u1ef8\u2085 Y\u2085 \u1ef8\u2086 Y\u2086 \u2022\u2022\u2022\u2022\u2022 (5 purple dots) \u1ef8_{N\u22122} Y_{N\u22122} \u1ef8_{N\u22121} Y_{N\u22121} [?]",
+      "Input row (bottom), left to right: X\u2081 X\u2081\u2032 X\u2082 X\u2082\u2032 X\u2083 X\u2083\u2032 X\u2084 X\u2084\u2032 X\u2085 X\u2085\u2032 X\u2086 X\u2086\u2032 \u2022\u2022\u2022\u2022\u2022 (5 green dots) X_{N\u22122} X_{N\u22122}\u2032 X_{N\u22121} X_{N\u22121}\u2032 [? prime marks]"
+    ],
+    "equations": [
+      "\u1ef8\u1d62, Y\u1d62 for i = 1, 2, 3, 4, 5, 6, N\u22122, N\u22121 (output / intermediate token symbols) [?]",
+      "X\u1d62, X\u2032\u1d62 for i = 1, 2, 3, 4, 5, 6, N\u22122, N\u22121 (input token symbols) [?]",
+      "\u2295 \u2014 element-wise residual-add operator drawn as red circles with white plus (8 per add stage, 2 stages)"
+    ]
+  },
+  "layout": {
+    "arrangement": "No horizontal title: the slide is one full-bleed architecture diagram. A thin dark-red frame is inset around all four edges on a white background. Vertical red 'Encoder Block' text runs up the left edge; 'Block Output' box at top-left and 'Block Input' box at bottom-left, both outside the main container. A large orange rounded container (\u224812.5%\u201392% width, \u224817.5%\u201387% height) holds the bottom-to-top encoder pipeline: Multi Head Self Attention Block (dark purple bar) at its bottom, then three rows of small Y boxes interspersed with two orange 'Layer Normalization' bars, two rows of red \u2295 add-circles wrapped in green dashed group boxes, and a purple-bordered Feed-Forward container with 8 RELU unit boxes. A row of output Y boxes sits above the container, a row of input X boxes below it; a yellow '47' badge sits at top-right.",
+    "regions": [
+      {
+        "name": "Outer frame",
+        "position": "inset ~4% from all slide edges (full slide)",
+        "content": "Thin dark-red rectangular border framing the entire diagram"
+      },
+      {
+        "name": "Vertical title",
+        "position": "left edge, x\u22489\u201312%, y\u224821\u201378%",
+        "content": "'Encoder Block' in large bold red type, rotated 90\u00b0 counter-clockwise (PowerPoint text rotation 270\u00b0) so it reads bottom-to-top"
+      },
+      {
+        "name": "Block Output box",
+        "position": "top-left, x\u22486\u201318%, y\u22489\u201314%",
+        "content": "Small white rectangle, red border, red bold text 'Block Output'"
+      },
+      {
+        "name": "Output Y row",
+        "position": "top, x\u224819\u201388%, y\u224810\u201315%",
+        "content": "16 pale-yellow boxes with red Y labels (\u1ef8/Y pairs, subscripts 1\u20136, N\u22122, N\u22121) plus 5 blue ellipsis dots between Y\u2086 and \u1ef8_{N\u22122}"
+      },
+      {
+        "name": "Slide-number badge",
+        "position": "top-right, x\u224889\u201393%, y\u224810\u201317%",
+        "content": "Yellow circle with bold dark '47'"
+      },
+      {
+        "name": "Encoder container",
+        "position": "center, x\u224812.5\u201392%, y\u224817.5\u201387%",
+        "content": "Orange rounded rectangle holding, bottom to top: 'Multi Head Self Attention Block' bar \u2192 Y row \u2192 \u2295 row + 'Layer Normalization' bar (grouped by green dashed rounded rectangle) \u2192 Y row \u2192 Feed-Forward container (header text + 8 RELU unit boxes) \u2192 Y row \u2192 second \u2295 row + second 'Layer Normalization' bar (second green dashed group)"
+      },
+      {
+        "name": "Input X row",
+        "position": "bottom, x\u224819\u201388%, y\u224889\u201394%",
+        "content": "16 pale-yellow boxes with dark X labels + 5 green ellipsis dots; hollow white 3D up-arrows feed the container"
+      },
+      {
+        "name": "Block Input box",
+        "position": "bottom-left, x\u22486\u201318%, y\u224890\u201395%",
+        "content": "Small white rectangle, red border, red bold text 'Block Input'"
+      },
+      {
+        "name": "Video-player strip (artifact)",
+        "position": "very bottom, y\u224896\u2013100%, full width",
+        "content": "Solid black bar \u2014 the video player's progress/control bar, not slide content"
+      }
+    ],
+    "hierarchy": "Visual dominance: (1) the orange container with its two strongest bars \u2014 dark-plum 'Multi Head Self Attention Block' (white text) and the two orange 'Layer Normalization' bars; (2) the very large red vertical 'Encoder Block' title; (3) the purple-bordered Feed-Forward container; (4) the fine repeating Y/X boxes, \u2295 circles, dots and arrows. Text size order: Encoder Block \u226b bar headings > Block Output/Input \u2248 '47' > X/Y box labels > tiny 'RELU' microlabels. Eye flow follows the arrows bottom\u2192top."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Transformer encoder-block pipeline drawn bottom-to-top. BOTTOM: 16 pale-yellow boxes labeled X\u2081, X\u2081\u2032, X\u2082, X\u2082\u2032, X\u2083, X\u2083\u2032, X\u2084, X\u2084\u2032, X\u2085, X\u2085\u2032, X\u2086, X\u2086\u2032, then 5 green dots (ellipsis), then X_{N\u22122}, X_{N\u22122}\u2032, X_{N\u22121}, X_{N\u22121}\u2032 [?]. ~8 hollow white 3D block arrows point up into a full-width dark-purple bar 'Multi Head Self Attention Block' (white bold text). ~8 more white 3D arrows feed a row of 16 pale-yellow boxes labeled \u1ef8\u2081, Y\u2081, \u1ef8\u2082, Y\u2082, \u1ef8\u2083, Y\u2083, \u1ef8\u2084, Y\u2084, \u1ef8\u2085, Y\u2085, \u1ef8\u2086, Y\u2086, then 5 purple dots, then \u1ef8_{N\u22122}, Y_{N\u22122}, \u1ef8_{N\u22121}, Y_{N\u22121}. Short green up-arrows feed 8 red-orange \u2295 circles (white plus signs); orange curved skip-connection arrows rise from the Y row and enter each \u2295 from the left. A green dashed rounded rectangle groups this \u2295 row with the 'Layer Normalization' bar above it (orange bar; 'Layer' in red, 'Normalization' in dark brown). Green arrows continue up into a second identical 16-box Y row (5 purple dots). White 3D arrows rise into the Feed-Forward container (purple border, light-lavender fill) containing the header 'Feed Forward Networks [ One Hidden with  RELU Activation]' and 8 orange-bordered unit boxes, each depicting ~6 green neuron dots connected by thin lines to ~6 pink neuron dots with a tiny red 'RELU' label. Green arrows rise into a third identical 16-box Y row (5 purple dots), then green arrows feed a second row of 8 \u2295 circles with orange curved residual arrows, grouped by a second green dashed rounded rectangle with a second identical 'Layer Normalization' bar. Finally 8 red up-arrows cross the container's top edge into the OUTPUT row of 16 pale-yellow boxes labeled \u1ef8\u2081, Y\u2081, \u1ef8\u2082, Y\u2082, \u1ef8\u2083, Y\u2083, \u1ef8\u2084, Y\u2084, \u1ef8\u2085, Y\u2085, \u1ef8\u2086, Y\u2086, then 5 blue dots, then \u1ef8_{N\u22122}, Y_{N\u22122}, \u1ef8_{N\u22121}, Y_{N\u22121} [?].",
+      "colors": [
+        "#F5B36E",
+        "#CC0000",
+        "#CC4125",
+        "#00B050",
+        "#ED7D31",
+        "#7B2A5E",
+        "#7030A0",
+        "#FFFDE7",
+        "#4472C4",
+        "#FF80BF",
+        "#FFFFFF"
+      ],
+      "position": "center-right; container spans x\u224812.5\u201392% of slide width and y\u224817.5\u201387% of slide height; including the external input/output rows the diagram occupies ~9\u201394% of slide height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "'Multi Head Self Attention Block' \u2014 full-width bar inside the orange container near its bottom; dark plum fill, white bold centered text.",
+      "colors": [
+        "#7B2A5E",
+        "#FFFFFF"
+      ],
+      "position": "bottom of orange container, ~y 77\u201386%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Two identical 'Layer Normalization' bars: orange fill, thin darker-orange border, centered bold text with 'Layer' in red and 'Normalization' in dark brown; each enclosed (together with its row of 8 \u2295 circles) in a green dashed rounded rectangle.",
+      "colors": [
+        "#F0A030",
+        "#CC2200",
+        "#5C3317",
+        "#00B050"
+      ],
+      "position": "upper third and lower-middle of the orange container"
+    },
+    {
+      "type": "diagram",
+      "description": "Feed-Forward container: rounded rectangle with purple border and light-lavender fill; header strip with dark-purple bold text 'Feed Forward Networks [ One Hidden with  RELU Activation]'; below it 8 equally spaced orange-bordered unit boxes, each showing a mini fully-connected layer: ~6 green dots (input neurons) joined by thin gray lines to ~6 pink dots (output neurons), with a tiny red 'RELU' label in the box.",
+      "colors": [
+        "#7030A0",
+        "#F2E2F2",
+        "#5B2C6F",
+        "#ED7D31",
+        "#00B050",
+        "#FF80BF"
+      ],
+      "position": "middle of orange container, ~y 38\u201349%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "'Block Output' (top-left) and 'Block Input' (bottom-left): small white rectangles with ~2pt red borders and red bold text.",
+      "colors": [
+        "#FFFFFF",
+        "#CC0000"
+      ],
+      "position": "top-left and bottom-left corners, left of the orange container"
+    },
+    {
+      "type": "arrow",
+      "description": "Arrow system: (a) 8 solid red up-arrows from the container top edge to the output Y row; (b) ~8 hollow white 3D block up-arrows at each of three gaps (X row\u2192attention bar, attention bar\u2192Y row, Y row\u2192FFN units); (c) short thin green up-arrows linking Y rows, \u2295 circles and Layer-Normalization bars \u2014 16 feeding the \u2295 circles (8 per add stage \u00d7 2 stages) and 8 per connection from each \u2295 row to its Layer Normalization bar and from each bar to the next Y row (inferred from the slide's 8-wide row pattern); (d) orange curved residual/skip arrows bowing leftward into the left side of each \u2295 circle (8 per add stage, 16 total).",
+      "colors": [
+        "#CC0000",
+        "#FFFFFF",
+        "#00B050",
+        "#ED7D31"
+      ],
+      "position": "throughout, vertical flow bottom\u2192top"
+    },
+    {
+      "type": "other",
+      "description": "Ellipsis dot groups marking omitted sequence positions: 5 blue dots in the output row, 5 purple dots in each of the three internal Y rows, 5 green dots in the input row.",
+      "colors": [
+        "#4472C4",
+        "#7030A0",
+        "#00B050"
+      ],
+      "position": "between the 6th and the (N\u22122)th box of each row"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: yellow circle with bold dark '47'.",
+      "colors": [
+        "#FFD966",
+        "#333333"
+      ],
+      "position": "top-right corner, level with the output Y row"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; the only pictorial elements are the 8 schematic mini-neural-network icons (green input-neuron dots connected to pink output-neuron dots) inside the FFN unit boxes, drawn in a flat vector style.",
+    "White mouse cursor with black outline hovering over the top 'Layer Normalization' bar (video artifact).",
+    "Solid black strip across the very bottom edge of the frame \u2014 the video player's progress/control bar, not slide content."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#CC0000",
+    "body_text": "#5B2C6F",
+    "accents": [
+      "#F5B36E",
+      "#F0A030",
+      "#7B2A5E",
+      "#CC4125",
+      "#00B050",
+      "#ED7D31",
+      "#7030A0",
+      "#4472C4",
+      "#FF80BF",
+      "#FFD966",
+      "#FFFDE7",
+      "#C00000"
+    ]
+  },
+  "typography_notes": "Bold sans-serif (Calibri/Arial-like) for the vertical title, all bar headings, 'Block Output'/'Block Input' and the slide number. The X/Y tensor labels use an italic math serif (Cambria Math/Times-like) with true subscripts (\u2081\u2026\u2086, N\u22122, N\u22121) and tildes/primes [?]. 'Encoder Block' is the largest text (~36\u201340pt equivalent), red, rotated 90\u00b0 CCW (= PowerPoint 270\u00b0 text rotation, reads bottom-to-top). Bar headings ~16\u201320pt bold; within 'Layer Normalization' the word 'Layer' is red and 'Normalization' dark brown. 'RELU' is the only all-caps styling (plus 'RELU Activation' inside the FFN header). No italics in bar text; everything is heavy/bold.",
+  "animation_state": "Slide appears fully built \u2014 no mid-build/bullet-reveal state. A mouse cursor rests on the top 'Layer Normalization' bar (live-narration artifact); the black strip at the very bottom is the video player's progress bar, not slide content.",
+  "recreation_brief": "1) Canvas: 16:9 slide, white #FFFFFF background. Draw the outer frame: a thin (~1.5pt) dark-red #C00000 rectangle (no fill) inset ~4% from all four slide edges.\n2) Vertical title: text box 'Encoder Block' \u2014 bold sans-serif (Calibri/Arial-like), ~36\u201340pt, red #CC0000, rotated 90\u00b0 counter-clockwise (PowerPoint 'Rotate all text 270\u00b0') so it reads bottom-to-top; place on the left edge at x\u22489\u201312%, y\u224821\u201378%.\n3) 'Block Output' box: small white rectangle, ~2pt red #CC0000 border, red bold ~13pt text 'Block Output', top-left at x\u22486\u201318%, y\u22489\u201314%.\n4) 'Block Input' box: small white rectangle, ~2pt red #CC0000 border, red bold ~13pt text 'Block Input', bottom-left at x\u22486\u201318%, y\u224890\u201395%.\n5) Encoder container: rounded rectangle, fill #F5B36E, ~3pt darker-orange #E06A10 border, spanning x\u224812.5\u201392%, y\u224817.5\u201387% (steps 7\u201329 build its bottom-to-top pipeline).\n6) Input X row (below the container): 16 pale-yellow #FFFDE7 boxes (~44\u00d722px, thin gray borders) at x\u224819\u201388%, y\u224889\u201394%, labeled left-to-right in dark bold italic math serif (Cambria Math): X\u2081, X\u2081\u2032, X\u2082, X\u2082\u2032, X\u2083, X\u2083\u2032, X\u2084, X\u2084\u2032, X\u2085, X\u2085\u2032, X\u2086, X\u2086\u2032, then 5 green #00B050 ellipsis dots (~6px), then X_{N\u22122}, X_{N\u22122}\u2032, X_{N\u22121}, X_{N\u22121}\u2032 [? prime marks].\n7) Attention bar: full-width bar at the container's bottom (~y 77\u201386%), fill dark plum #7B2A5E, white bold ~16\u201320pt centered text 'Multi Head Self Attention Block'.\n8) Arrows X row \u2192 attention bar: 8 hollow white 3D block up-arrows (white fill, gray outline).\n9) Y row C (directly above the attention bar): 16 pale-yellow #FFFDE7 boxes as in step 6, red #CC0000 labels: \u1ef8\u2081, Y\u2081, \u1ef8\u2082, Y\u2082, \u1ef8\u2083, Y\u2083, \u1ef8\u2084, Y\u2084, \u1ef8\u2085, Y\u2085, \u1ef8\u2086, Y\u2086, then 5 purple #7030A0 dots, then \u1ef8_{N\u22122}, Y_{N\u22122}, \u1ef8_{N\u22121}, Y_{N\u22121} [? tilde/subscript reading].\n10) Arrows attention bar \u2192 Y row C: 8 hollow white 3D block up-arrows.\n11) Add-stage-1 circles: 8 circles (~20px, fill #CC4125) with centered bold white '+', evenly spaced above Y row C.\n12) Green arrows Y row C \u2192 circles: 8 short thin green #00B050 up-arrows, one into each circle.\n13) Residual skips (stage 1): 8 orange #ED7D31 curved arrows rising from Y row C and entering each circle from its left side.\n14) 'Layer Normalization' bar 1: full-width rectangle directly above the stage-1 circles, fill #F0A030, thin darker-orange border, centered bold ~16\u201320pt text 'Layer Normalization' with 'Layer' in #CC2200 and 'Normalization' in #5C3317.\n15) Green arrows circles \u2192 bar 1: 8 green #00B050 up-arrows.\n16) Green dashed group 1: no-fill rounded rectangle, ~2pt dashed #00B050 border, enclosing the stage-1 circle row (steps 11\u201313) together with 'Layer Normalization' bar 1 (step 14).\n17) Y row B: 16 boxes identical to step 9 (including the 5 purple #7030A0 dots), directly above bar 1.\n18) Green arrows bar 1 \u2192 Y row B: 8 green #00B050 up-arrows.\n19) Feed-Forward container: rounded rectangle, ~2pt purple #7030A0 border, light-lavender #F2E2F2 fill, centered in the container's middle band (~y 38\u201349%); header strip with dark-purple #5B2C6F bold text 'Feed Forward Networks [ One Hidden with  RELU Activation]' (double space before 'RELU' is verbatim).\n20) FFN unit boxes: 8 equally spaced boxes with orange #ED7D31 borders inside the Feed-Forward container, each showing 6 green #00B050 input-neuron dots on top connected by thin gray lines to 6 pink #FF80BF output-neuron dots below, plus a tiny red 'RELU' label.\n21) Arrows Y row B \u2192 FFN units: 8 hollow white 3D block up-arrows from Y row B into the 8 unit boxes.\n22) Y row A: 16 boxes identical to step 9 (including the 5 purple #7030A0 dots), directly above the Feed-Forward container.\n23) Green arrows FFN \u2192 Y row A: 8 green #00B050 up-arrows.\n24) Add-stage-2 circles: 8 circles (~20px, fill #CC4125, white '+') evenly spaced above Y row A.\n25) Green arrows Y row A \u2192 stage-2 circles: 8 short green #00B050 up-arrows.\n26) Residual skips (stage 2): 8 orange #ED7D31 curved arrows from Y row A entering each stage-2 circle from the left.\n27) 'Layer Normalization' bar 2: identical to step 14, directly above the stage-2 circles.\n28) Green arrows stage-2 circles \u2192 bar 2: 8 green #00B050 up-arrows.\n29) Green dashed group 2: no-fill rounded rectangle, ~2pt dashed #00B050 border, enclosing the stage-2 circle row (steps 24\u201326) together with bar 2 (step 27).\n30) Output Y row (above the container): 16 pale-yellow #FFFDE7 boxes at x\u224819\u201388%, y\u224810\u201315%, red #CC0000 labels: \u1ef8\u2081, Y\u2081, \u1ef8\u2082, Y\u2082, \u1ef8\u2083, Y\u2083, \u1ef8\u2084, Y\u2084, \u1ef8\u2085, Y\u2085, \u1ef8\u2086, Y\u2086, then 5 blue #4472C4 dots, then \u1ef8_{N\u22122}, Y_{N\u22122}, \u1ef8_{N\u22121}, Y_{N\u22121} [? tilde/subscript reading].\n31) Output arrows: 8 solid red #CC0000 up-arrows rising from above bar 2, crossing the container's top edge into the output Y row.\n32) Slide-number badge: yellow #FFD966 circle (~30px) at top-right (x\u224889\u201393%, y\u224810\u201317%) with bold dark #333333 text '47'.\n33) Optional, video-frame fidelity only (NOT slide content): white mouse cursor with black outline over the top 'Layer Normalization' bar, and a solid black strip across the very bottom edge (y\u224896\u2013100%).",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "subtitle_or_header was null \u2014 replaced with an explicit note reconstructed from layout: no subtitle/horizontal header exists; the only title text is the vertical 'Encoder Block' on the left edge, flanked by 'Block Output' (top-left) and 'Block Input' (bottom-left).",
+      "verbatim_text.bullets confirmed legitimately empty (diagram-only slide; all 12 text items are captured in labels/equations) \u2014 left as [] rather than inventing bullet content.",
+      "Replaced the vague quantifier 'many' in the arrow visual_element with exact counts: 16 green arrows feeding the \u2295 circles (8 per add stage \u00d7 2 stages) plus 8-arrow links from each \u2295 row to its Layer Normalization bar and from each bar to the next Y row (inferred from the slide's consistent 8-wide pattern); also made the orange skip arrows explicit as 8 per stage (16 total).",
+      "Harmonized the vertical-title rotation wording across layout.regions, typography_notes and recreation_brief: 90\u00b0 counter-clockwise = PowerPoint 270\u00b0 text rotation, reading bottom-to-top (the region previously said only 'rotated 90\u00b0').",
+      "Aligned the main diagram's bounding description with layout.regions: container x\u224812.5\u201392%, y\u224817.5\u201387%; with external input/output rows the diagram spans y\u22489\u201394% (visual_elements previously said '~12%\u201393% width').",
+      "Normalized approximate counts in the recreation_brief to exact numbers matching the slide's 8-wide pattern: 8 white 3D arrows per gap (source '~8') and 6 green + 6 pink neuron dots per FFN unit (source '~6'); source approximations flagged in uncertain_items.",
+      "Rewrote recreation_brief as a 33-step ordered checklist with one placement action per step, each specifying exact text, hex color, shape type and position (percent coordinates where the JSON provides them, relative placement elsewhere).",
+      "Preserved all source [?] markers (\u1ef8 tilde reading, X\u2032 prime marks, N\u22122/N\u22121 subscripts) in verbatim_text, visual_elements and the brief, and enumerated them in uncertain_items.",
+      "Kept video-frame artifacts (mouse cursor on the top Layer Normalization bar; black progress strip at y\u224896\u2013100%) explicitly labeled as non-slide content in imagery, animation_state and brief step 33."
+    ],
+    "uncertain_items": [
+      "Reading of the Y-row symbol transcribed '\u1ef8' (U+1EF8, Y-with-tilde) and its subscripts \u2014 source marker '[? tilde/subscript reading]'.",
+      "Prime marks on the input labels (X\u2081\u2032 \u2026 X_{N\u22121}\u2032) \u2014 source marker '[? prime marks]'.",
+      "Trailing subscripts N\u22122 and N\u22121 on the last box pair of every row \u2014 source markers '[?]'.",
+      "Hollow white 3D arrow count per gap is approximate in the source ('~8'); the brief specifies 8. FFN mini-neuron dot counts are approximate ('~6 green', '~6 pink'); the brief specifies 6+6.",
+      "Green inter-stage arrow counts were not stated exactly (source: 'many'); the brief's 8-per-connection is inferred from the 8-wide row pattern (8 \u2295 circles per stage, 8 FFN units, 8 red output arrows).",
+      "Container border #E06A10, the gray outlines/borders (3D arrows, X/Y boxes, FFN connection lines) and the exact hex of the 'dark' X-row labels appear only in prose, not in the extracted hex palette.",
+      "Pixel sizes (~44\u00d722px boxes, ~20px \u2295 circles, ~30px badge, ~6px dots) are brief-side estimates, not source-measured values."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_047.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 47,
+      "image": "slide_047.jpg",
+      "kept_frame": "frame_03900.jpg",
+      "start_sec": 3827.0,
+      "end_sec": 3899.0,
+      "frame_count": 73,
+      "old_slide": 115,
+      "note": "old group split with new slide 46"
+    },
+    "elapsed_s": 908.8,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1517.1
+  }
+}

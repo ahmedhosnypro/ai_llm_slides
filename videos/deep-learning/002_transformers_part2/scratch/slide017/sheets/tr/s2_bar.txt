@@ -1,0 +1,34 @@
+# Visual QA Analysis
+
+## 1. Verbatim Text Transcription
+
+The image contains two nearly identical stacked crops. Each crop contains the same text:
+
+**Both crops (TOP and BOTTOM):**
+- `Concatenated Vector` â bold red/dark-orange label inside the left end of the yellow container
+- `1*dH` â bold label directly beneath the above text, right-aligned under it (appears dark blue/navy; exact glyph coloring is ambiguous at this resolution)
+- Inside each of the five colored bar segments, a small italic math-style label reading approximately `Yââ°` â i.e., an italic "Y" with a subscript character (looks like "2") and a superscript character (looks like "0" or "9"). **The subscripts/superscripts are too small and low-resolution to read definitively**, and all five labels appear effectively identical at this scale, so per-segment differences (e.g., 0 vs 1 vs 2) cannot be confirmed.
+
+No other text is visible.
+
+## 2. Layout
+
+**Overall:** Light-gray background. A bright magenta full-width horizontal band runs across the middle (~45â53% of image height), separating the TOP crop (reference) from the BOTTOM crop (variant). This magenta band is a montage divider, not slide content.
+
+**TOP crop:**
+- *Top edge:* a red/maroon vertical arrow at roughly center-left (~47% width) pointing **upward**, its shaft clipped by the top edge. A faint thin dark sliver of clipped content appears at the very top edge right-of-center (~63â72% width).
+- *Left edge:* the rounded left cap of a pale-yellow pill-shaped container (thick brown/dark-orange border) nearly touches the left edge; "Concatenated Vector / 1*dH" sits inside it.
+- *Right edge:* the pill's rounded right cap closes at ~98% width, leaving a narrow gray margin.
+- *Center/right:* a horizontal concatenated bar of five equal-width colored segments â dark orange/red, olive/gray, bright yellow, light green, light pink/tan â each subdivided by thin vertical cell lines and outlined with dashed/dotted borders (green dashes visible around the yellow, green, and pink segments; darker dots around the first two).
+- *Bottom of crop:* five red/maroon upward-pointing arrowheads (short shafts) spaced beneath the bar, pointing up into it.
+
+**BOTTOM crop:** structurally identical â same pill, same label placement, same five-segment bar with the same colors and dashed outlines, and five red upward arrowheads below the bar. One above-bar arrow is present at the top of this crop (~49% width); it **appears to point downward** (toward the pill), though the low resolution makes the direction somewhat uncertain.
+
+## 3. Visual Defects / Observations
+
+1. **Vertical clipping (crop artifact):** the upward arrow above the TOP bar is cut off at the image top; the shafts of the five below-bar arrows in the BOTTOM crop run to (and appear cut by) the image bottom edge. This is expected for a stacked-crop comparison but means surrounding context is missing.
+2. **Clipped sliver at top edge:** a thin dark horizontal fragment at the very top of the TOP crop (right-of-center) â the bottom edge of an element outside the capture window.
+3. **Illegible small text:** the five segment labels (`Yââ°`-like) are below legible resolution; superscripts/subscripts cannot be transcribed with certainty.
+4. **Possible variant discrepancy:** the above-bar arrow in the TOP crop points upward, while the corresponding arrow in the BOTTOM crop appears to point downward and sits slightly further right (~767 px vs ~735 px). This may be a real difference between reference and variant, or a resolution artifact â flagging for verification.
+5. **No garbage strings, placeholder text, overlapping text, or wrong-language content** is visible. All text is English/mathematical notation and consistent between the two crops.
+6. The magenta divider is clean, full-width, and does not overlap any slide content.

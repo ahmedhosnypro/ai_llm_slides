@@ -1,0 +1,183 @@
+{
+  "slide_title": "The Complete Deep Learning Model",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Update Model Parameters in order to MINIMIZE error",
+      "(difference between model prediction and Actual labels"
+    ],
+    "labels": [
+      "Training Data",
+      "Input Samples",
+      "Pre processing",
+      "Feature Extraction",
+      "Feature Selection",
+      "Classification",
+      "Predicted Labels",
+      "Prediction Error (Loss Function)",
+      "Samples Labels"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "White slide with a thin gray strip across the very top and a gray band plus black rectangle at the bottom edge. A large red-outlined rectangular frame contains everything. Title centered at top inside the frame. Below it, a single-row horizontal flowchart spanning almost the full frame width (approx 8%-93% of slide width): tan ellipse 'Training Data' sits above the center of the pipeline; boxes run left to right (Input Samples, Pre processing, Feature Extraction, Feature Selection, Classification, Predicted Labels, vertical Prediction Error (Loss Function), Samples Labels). A pale-green annotation box sits bottom-center below the flowchart.",
+    "regions": [
+      {
+        "name": "Top gray strip",
+        "position": "top, full width, 0-4% height",
+        "content": "thin light-gray horizontal band (video/slide edge artifact)"
+      },
+      {
+        "name": "Red frame",
+        "position": "top-left to bottom-right, approx 5%-95% width, 7%-88% height",
+        "content": "empty rectangle outline in red enclosing all content"
+      },
+      {
+        "name": "Title",
+        "position": "top-center, approx 20%-70% width, 11%-17% height",
+        "content": "red bold title text"
+      },
+      {
+        "name": "Training Data ellipse",
+        "position": "top-center of diagram, approx 40%-50% width, 19%-27% height",
+        "content": "tan ellipse labeled Training Data, source of two blue curved arrows"
+      },
+      {
+        "name": "Pipeline flowchart",
+        "position": "middle, approx 8%-93% width, 31%-56% height",
+        "content": "eight nodes connected left-to-right by red arrows, plus dashed red group container around the four middle stages"
+      },
+      {
+        "name": "Annotation box",
+        "position": "bottom-center, approx 27%-77% width, 63%-71% height",
+        "content": "pale-green rounded rectangle with two-line green instruction text"
+      },
+      {
+        "name": "Bottom gray band",
+        "position": "bottom, full width, 88%-97% height",
+        "content": "light-gray horizontal band"
+      },
+      {
+        "name": "Bottom-left black bar",
+        "position": "bottom-left, 0%-35% width, 95%-100% height",
+        "content": "solid black rectangle overlapping the gray band"
+      }
+    ],
+    "hierarchy": "Title dominates (largest text, bold, red). Flowchart node labels are next (bold black ~12-14pt). The green annotation text is slightly larger than node labels but lighter in visual weight. Arrows and the red frame are thin supporting strokes; the dark-red Classification box and pink Prediction Error box are the strongest color blocks after the title."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "Left-to-right pipeline of 8 nodes. Node 1: rectangle 'Input Samples' (tan fill, dark-brown border, black bold text on two lines). Red arrow to Node 2: rectangle 'Pre processing' (pale-yellow fill, black border, black bold text on two lines, small pencil icon in top-right corner). Red arrow to Node 3: rectangle 'Feature Extraction' (light-blue fill, blue border, black bold text on two lines). Red arrow to Node 4: rectangle 'Feature Selection' (light-green fill, green border, black bold text on two lines). Red arrow to Node 5: rectangle 'Classification' (dark-red fill, white bold text, one line). Red arrow to Node 6: rectangle 'Predicted Labels' (pale-pink fill, magenta border, black bold text on two lines). Red arrow to Node 7: tall vertical rectangle 'Prediction Error (Loss Function)' (pink fill, red border, red bold text rotated 90 degrees, reading bottom-to-top). Node 8: rectangle 'Samples Labels' (tan fill, dark-brown border, black bold text on two lines) with a red arrow pointing LEFT from Samples Labels into the Prediction Error box. Nodes 2-5 are enclosed by a rounded rectangle with a red DASHED border and very pale peach fill (grouping the learnable pipeline stages). Above the pipeline: tan ellipse 'Training Data' (black border, black bold text on two lines) with (a) a solid dark-blue curved arrow leaving its left side, arcing left and down, arrowhead pointing down into the top of Input Samples, and (b) a dark-blue DASHED curved arrow leaving its right side, arcing right and down, arrowhead pointing down into the top of Samples Labels. Below the pipeline: four green DASHED curved arrows fan out from the bottom of the Prediction Error box, arcing left and up, with arrowheads pointing up into the bottoms of Pre processing, Feature Extraction, Feature Selection, and Classification respectively (feedback/update loops).",
+      "colors": [
+        "#D2A26E",
+        "#8B5A2B",
+        "#FFFFCC",
+        "#99CCFF",
+        "#0066CC",
+        "#CCFFCC",
+        "#009900",
+        "#990000",
+        "#FFCCFF",
+        "#CC66CC",
+        "#FF99CC",
+        "#CC0000",
+        "#E6C79C",
+        "#0000CC",
+        "#008000",
+        "#FDEBD9"
+      ],
+      "position": "middle band of slide, approx 8%-93% width, 19%-56% height (including Training Data ellipse)"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Rounded rectangle with pale-green fill and thin green border, containing two centered lines of dark-green text: line 1 'Update Model Parameters in order to MINIMIZE error' (word MINIMIZE in bold), line 2 '(difference between model prediction and Actual labels' (note: opening parenthesis with no closing parenthesis, exactly as shown).",
+      "colors": [
+        "#E8F5E9",
+        "#4C9A4C",
+        "#1F5C1F"
+      ],
+      "position": "bottom-center, approx 27%-77% width, 63%-71% height"
+    },
+    {
+      "type": "other",
+      "description": "Large empty rectangular frame with a thin red outline surrounding all slide content; thin light-gray strip across the very top of the slide; light-gray band across the bottom; solid black rectangle overlapping the bottom-left corner.",
+      "colors": [
+        "#CC0000",
+        "#CCCCCC",
+        "#000000"
+      ],
+      "position": "frame approx 5%-95% width, 7%-88% height; strips at slide edges"
+    }
+  ],
+  "imagery": [
+    "Small black pencil glyph (\u270e) icon in the top-right corner of the 'Pre processing' box, suggesting an editable/preprocessing step; the only pictorial element on the slide"
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#CC0000",
+    "body_text": "#000000",
+    "accents": [
+      "#CC0000",
+      "#990000",
+      "#0000CC",
+      "#008000",
+      "#D2A26E",
+      "#E6C79C",
+      "#FFFFCC",
+      "#99CCFF",
+      "#CCFFCC",
+      "#FFCCFF",
+      "#FF99CC",
+      "#E8F5E9",
+      "#CCCCCC",
+      "#8B5A2B",
+      "#0066CC",
+      "#009900",
+      "#CC66CC",
+      "#4C9A4C",
+      "#1F5C1F",
+      "#FDEBD9"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Calibri-like). Title is bold, roughly 2x the body size, colored red, centered, title case. Node labels are bold black, small (~12-14pt), center-aligned, wrapped to two lines except 'Classification' (one line, white bold on dark red). 'Prediction Error (Loss Function)' is red bold text rotated 90 degrees (reads bottom-to-top). 'MINIMIZE' is bold within the green annotation text. No italics, no numbered bullets, no all-caps except the emphasized word MINIMIZE.",
+  "animation_state": "Slide appears fully built; all nodes, arrows, and the annotation box are present with no partial reveal.",
+  "recreation_brief": "1. Create a 16:9 slide with a solid white (#FFFFFF) background.\n2. Add a thin light-gray (#CCCCCC) rectangle strip, no border, across the full slide width at the very top (0%-4% height).\n3. Add a light-gray (#CCCCCC) rectangle band, no border, across the full slide width at the bottom (88%-97% height).\n4. Add a solid black (#000000) rectangle at the bottom-left corner (0%-35% width, 95%-100% height) overlapping the gray band.\n5. Draw the content frame: a no-fill rectangle with a ~2pt red (#CC0000) outline spanning ~5%-95% width and ~7%-88% height.\n6. Place the title text box at ~20%-70% width, ~11%-17% height, text centered: 'The Complete Deep Learning Model', Arial bold ~32pt, color #CC0000.\n7. Place an ellipse at ~40%-50% width, ~19%-27% height: fill #E6C79C, ~1.5pt black (#000000) outline, centered bold black text 'Training Data' wrapped onto two lines.\n8. Place node 1, rectangle 'Input Samples': fill #D2A26E, border #8B5A2B, centered bold black text 'Input Samples' on two lines; leftmost node of the pipeline row (row band ~37%-49% height; the 8 nodes run left-to-right across the ~8%-93% width band, with node 7 fixed at ~77%-83% width and node 8 at the far right).\n9. Place node 2, rectangle 'Pre processing': fill #FFFFCC, black (#000000) border, centered bold black text 'Pre processing' on two lines, plus a small black pencil glyph (\u270e) in its top-right corner.\n10. Place node 3, rectangle 'Feature Extraction': fill #99CCFF, border #0066CC, centered bold black text 'Feature Extraction' on two lines.\n11. Place node 4, rectangle 'Feature Selection': fill #CCFFCC, border #009900, centered bold black text 'Feature Selection' on two lines.\n12. Place node 5, rectangle 'Classification': fill #990000, centered bold white (#FFFFFF) text 'Classification' on one line.\n13. Place node 6, rectangle 'Predicted Labels': fill #FFCCFF, border #CC66CC, centered bold black text 'Predicted Labels' on two lines.\n14. Place node 7, tall narrow vertical rectangle 'Prediction Error (Loss Function)': ~77%-83% width, ~31%-56% height, fill #FF99CC, red (#CC0000) border, bold red (#CC0000) text rotated 90 degrees so it reads bottom-to-top.\n15. Place node 8, rectangle 'Samples Labels': fill #D2A26E, border #8B5A2B, centered bold black text 'Samples Labels' on two lines, at the far right end of the row.\n16. Draw a rounded rectangle with very pale peach (#FDEBD9) fill and a ~2pt red (#CC0000) DASHED outline enclosing exactly nodes 2-5 ('Pre processing', 'Feature Extraction', 'Feature Selection', 'Classification').\n17. Draw a solid ~2pt red (#CC0000) straight arrow with an arrowhead from the right edge of 'Input Samples' to the left edge of 'Pre processing'.\n18. Draw the same solid red arrow from 'Pre processing' to 'Feature Extraction'.\n19. Draw the same solid red arrow from 'Feature Extraction' to 'Feature Selection'.\n20. Draw the same solid red arrow from 'Feature Selection' to 'Classification'.\n21. Draw the same solid red arrow from 'Classification' to 'Predicted Labels'.\n22. Draw the same solid red arrow from 'Predicted Labels' to 'Prediction Error (Loss Function)'.\n23. Draw one solid ~2pt red (#CC0000) arrow pointing LEFT from the left edge of 'Samples Labels' into the 'Prediction Error (Loss Function)' box.\n24. Draw a solid dark-blue (#0000CC) curved arrow leaving the left side of the 'Training Data' ellipse, arcing left and down, with the arrowhead pointing down into the top of 'Input Samples'.\n25. Draw a dark-blue (#0000CC) DASHED curved arrow leaving the right side of the 'Training Data' ellipse, arcing right and down, with the arrowhead pointing down into the top of 'Samples Labels'.\n26. Draw a green (#008000) DASHED curved arrow starting at the bottom of 'Prediction Error (Loss Function)', arcing left and up, with the arrowhead pointing up into the bottom of 'Pre processing'.\n27. Draw the same green DASHED curved arrow from the bottom of 'Prediction Error (Loss Function)' into the bottom of 'Feature Extraction'.\n28. Draw the same green DASHED curved arrow from the bottom of 'Prediction Error (Loss Function)' into the bottom of 'Feature Selection'.\n29. Draw the same green DASHED curved arrow from the bottom of 'Prediction Error (Loss Function)' into the bottom of 'Classification'.\n30. Place a rounded rectangle at ~27%-77% width, ~63%-71% height: fill #E8F5E9, ~1.5pt green (#4C9A4C) border, containing two centered lines of ~14pt dark-green (#1F5C1F) text: line 1 'Update Model Parameters in order to MINIMIZE error' with the word MINIMIZE in bold; line 2 '(difference between model prediction and Actual labels' keeping the unclosed opening parenthesis exactly as in the source.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Confirmed subtitle_or_header is genuinely absent from the slide (no subtitle/header text appears in layout.regions, visual_elements, or verbatim_text); retained null rather than inventing content.",
+      "Tightened layout.arrangement: replaced 'spanning the full frame width' with 'spanning almost the full frame width (approx 8%-93% of slide width)' to match the Pipeline flowchart region exactly.",
+      "Expanded colors.accents with the 7 hex codes used in visual_elements but missing from the summary palette (#8B5A2B, #0066CC, #009900, #CC66CC, #4C9A4C, #1F5C1F, #FDEBD9) so the full palette is available in one field.",
+      "Rewrote recreation_brief from 11 grouped steps into 30 single-element numbered steps; each step now places exactly one element with its exact text, position, hex color, and shape type.",
+      "Added explicit pipeline-row placement guidance (row band ~37%-49% height, 8 nodes left-to-right across ~8%-93% width, node 7 fixed at ~77%-83% width) because individual node x-positions were absent from the source.",
+      "Preserved verbatim source artifacts unchanged: the unclosed parenthesis in '(difference between model prediction and Actual labels' and the label 'Samples Labels' (sic).",
+      "Removed the _meta block from the validated output because it is not part of the required schema."
+    ],
+    "uncertain_items": [
+      "Exact horizontal positions of pipeline nodes 1-6 and 8: the source specifies only the overall 8%-93% width band and node 7's ~77%-83% width; even left-to-right distribution of the remaining nodes is a reconstruction assumption.",
+      "Font sizes are source estimates: title ~32pt, node labels ~12-14pt, annotation text ~14pt.",
+      "Stroke weights are estimates: ~2pt for red arrows, the frame, and the dashed group outline; ~1.5pt for the ellipse and annotation-box borders.",
+      "The pencil glyph (\u270e) is font-dependent and may render slightly differently than in the original.",
+      "No items were marked [?] in the source analysis."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_019.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 19,
+      "image": "slide_019.jpg",
+      "kept_frame": "frame_00904.jpg",
+      "start_sec": 736.0,
+      "end_sec": 903.0,
+      "frame_count": 168,
+      "old_group": 21,
+      "founder_frame_swap": false
+    },
+    "elapsed_s": 138.0,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 607.6
+  }
+}

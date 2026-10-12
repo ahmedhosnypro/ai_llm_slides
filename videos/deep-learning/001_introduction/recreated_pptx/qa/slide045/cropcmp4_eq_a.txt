@@ -1,0 +1,30 @@
+# Element-by-Element Comparison â Equation (a), red panel
+
+## Content verification
+
+| Element | IMG2 (ground truth) | IMG1 (recreation) | Match? |
+|---|---|---|---|
+| LHS | $a_{r,c}$ | $a_{r,c}$ | â |
+| Equals sign | = | = | â |
+| Sigma 1 limits | top **a**, bottom **i = âa** | top **a**, bottom **i = âa** | â |
+| Sigma 2 limits | top **b**, bottom **j = âb** | top **b**, bottom **j = âb** | â |
+| x operand subscript | **râi, câj** | partially occluded by arrow (per rule (c), occlusion ignored); visible fragments consistent | â (with caveat) |
+| Dot operator | small centered **Â·** at mid-line height between x and Î¸ | **large filled bullet "â¢"**, sitting low near the baseline | â |
+| Î¸ subscript | **Î¸_{ij}** | appears as **Î¸_{jj}** â the first subscript glyph reads as "j", not "i" | â (suspected) |
+| Red arrow | short diagonal arrowhead pointing up-left into the x-subscript from lower right, thin trailing line | thick horizontal arrow crossing the entire subscript region and extending right, past Î¸, to the crop edge | â (partially excusable) |
+
+## Discrepancy list
+
+1. **Dot operator rendered as oversized low bullet â MAJOR** (confidence: high). IMG2 uses a small centered interpunct "Â·" at roughly x-height/mid-line. IMG1 uses a large solid "â¢" dropped toward the baseline. Wrong glyph choice and wrong vertical position; visually reads as a bullet separator, not a multiplication dot.
+
+2. **Î¸ subscript appears to read "jj" instead of "ij" â BLOCKER** (confidence: ~70%). In IMG1 the subscript after Î¸ shows two glyphs that both resemble italic "j" (dot-descender shapes); IMG2 clearly shows "i" then "j". If confirmed, this is a wrong-variable error in equation content, which rule (b) does not permit. Flagged at <100% confidence because 150dpi italic rendering can blur "i", but the glyph in IMG1 has a visible descender/dot pattern matching "j".
+
+3. **Red arrow geometry differs â MINOR** (confidence: medium). Beyond the occlusion we are told to ignore, the recreated arrow is a heavy horizontal stroke at baseline height extending past Î¸ to the right edge, while the original arrow is a short diagonal arrowhead with a thin tail. The occluded text is excused per rules, but the arrow's own visible path/thickness is not faithful.
+
+4. **Spacing after second Sigma â MINOR** (confidence: medium). IMG1 inserts a wider gap between Î£ and x than IMG2; also the LHS-to-Sigma gap is slightly wider. Cosmetic only.
+
+## Assessment
+
+Sigma limits, stacked 2D summation format, sub/superscript structure, and the x operand are all faithful, and the professional 2D rendering is a mandated upgrade (rule b). However, the dot-operator glyph is objectively wrong (size + position), and the Î¸ subscript is a suspected content error ("jj" vs "ij") â equation content must match exactly per rule (b). Either issue alone would be borderline; the suspected subscript error is disqualifying.
+
+FINAL VERDICT: **FAIL** for "faithful crop"

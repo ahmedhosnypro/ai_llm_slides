@@ -1,0 +1,46 @@
+# Slide 053 â Softmax Equation Box Crop Comparison (Attempt 4)
+
+## Scope
+IMG1 is the recreation cropped to the top-right equation region ("Softmax" label + boxed equation). IMG2 is the original frame; the matching region is the red "Softmax" label + white black-bordered box in the top-right of slide 53. All other slide-53 content (mask matrix, title, bottom text) is outside the crop and out of scope. House chrome (red outer frame, yellow "53" badge, gray bg) is out of scope per ground rule (a).
+
+## Element-by-element
+
+**1. "Softmax" label**
+- Present in both, red (#C00000-range), bold, sans-serif, positioned above/left-of the box in both. Proportion of label width to box width is close (~33% recreation vs ~37% original). Position (left-of-center over the box) matches. â No discrepancy.
+
+**2. Equation box**
+- White fill, black rectangular border, same aspect/position in both. Border stroke in the recreation is somewhat heavier relative to box size (~0.7% of crop width vs ~0.2% in original) â **MINOR**, confidence medium (partly an upscale/anti-aliasing artifact of the 3x render).
+
+**3. Equation content**
+- Content matches verbatim: Ï(xâ±¼) = e^(xâ±¼) / Î£áµ¢ e^(xáµ¢). Summation index placement (i below Î£ in recreation vs subscript-right Î£áµ¢ in original) and the stacked fraction with horizontal bar vs the original's compact linear fraction are the **mandated professional-2D-format upgrade per rule (e) â NOT a discrepancy**. Numerator e^(xâ±¼) and denominator e^(xáµ¢) superscripts/subscripts are correctly formed and spatially aligned in the recreation. â
+
+**4. Equation placement inside box â DEFECT**
+- Original: the equation is both horizontally and **vertically centered** in the box; it fills the box with roughly equal margins on all four sides.
+- Recreation: the equation block sits **high in the box** â top gap â 15â18% of box height, but the bottom ~28â30% of the box interior is completely empty. The stacked 2D rendering is taller than the original's linear form (expected), but the block was not re-centered to compensate, so the composition reads top-hugging with a large dead zone below the Î£'s subscript *i*. Per founder directive 2026-10-10, a visible vertical-centering deviation inside an enclosing box is a **MAJOR** defect. Confidence: high.
+- Horizontal centering is acceptable (slightly left of true center, comparable to the original's own slight left bias). No discrepancy horizontally.
+
+**5. Frame containment**
+- All equation ink, the box border, and the label sit fully inside the crop and inside their enclosing frames. No ink crosses the box border or the house frame. â
+
+**6. Missing elements**
+- Nothing present in the original's equation region is absent from the recreation: label â, box â, full equation â. No BLOCKER under rule (6).
+
+**7. Delimiter geometry**
+- Parentheses around xâ±¼ span the full token height, are wide enough not to overlap the xâ±¼ glyphs, and vertically center the enclosed content. â No rule-(7) issue.
+
+## Discrepancy summary
+| # | Item | Severity | Confidence |
+|---|------|----------|------------|
+| 1 | Equation block not vertically centered in box â top-hugging, bottom ~30% of box empty vs original's centered composition | **MAJOR** | High |
+| 2 | Box border stroke heavier relative to box size than original | MINOR | Medium |
+| 3 | Equation font style (sans-italic vs original's serif-ish italic) | MINOR (medium-inherent typed-vs-render difference, rule (d)) | Medium |
+
+*(Fraction stacking, Î£ limit placement, and overall equation scale are mandated format upgrades â not discrepancies.)*
+
+## Visual-quality defects in the recreation
+- No text overflow, clipping, collisions, or wrapping errors. All glyphs legible at crop resolution. The only quality issue is the vertical balance of the equation within the box (item 1 above).
+
+## Fix
+Vertically center the equation group (Ï(xâ±¼) = fraction + Î£-with-limits) within the white box, or nudge the whole equation block down so top and bottom interior gaps are equal. One-line geometry change.
+
+**FINAL VERDICT: FAIL** for "faithful, usable recreation" â content is verbatim-complete and correctly rendered, but the MAJOR vertical-centering deviation inside the equation box (top-hugging equation with ~30% empty bottom region vs the original's centered composition) fails the founder's 2026-10-10 centering directive. The fix is trivial; re-render after re-centering should pass.

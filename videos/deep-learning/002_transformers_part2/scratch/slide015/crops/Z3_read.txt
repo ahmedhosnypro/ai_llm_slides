@@ -1,0 +1,33 @@
+## Z3 Analysis â Slide 15, title line at 3Ã (crop 1095Ã120, source band (315,472)â(680,512))
+
+**Note on clipping:** the top of the glyph row is cut by the top edge of the crop â only the lower ~60â70% of the letterforms is visible. Ascenders/cap tops are truncated, but cores and boundaries are readable.
+
+### (1) Verbatim text
+**`Multi-Head Self-Attention of Word Xâ`**
+- Capital M, capital H in "Multi-Head", capital S-A in "Self-Attention", capital W in "Word", capital X, subscript 2.
+- Hyphenated "Multi-Head" with a normal hyphen; single spaces between words.
+
+### (2) Colored segments (core stroke pixels)
+| Segment | Words | Color (core px) |
+|---|---|---|
+| 1 | "Multi-Head Self-Attention of Word X" (entire phrase incl. X) | **red â #CC0000** (bright saturated red; cores consistent with pure-ish red, not brick/dark red, not black/navy/gray) |
+| 2 | "2" (subscript) | **dark red â #C00000** (visibly a step darker than segment 1 at the cores, though the small stroke size means some darkness is anti-aliasing; not black) |
+| rule | horizontal line under the text, full crop width | **royal/navy blue â #2E4EB5** (~6â8 px thick at 3Ã) |
+
+### (3) X and its subscript 2
+Yes â a **true subscript**: the 2 is roughly 50â60% of the cap height and is **lowered** so its top sits at/near the baseline of X (its own baseline drops below X's). It is clearly separated to the lower-right of X, not a full-height character. Color: **dark red â #C00000** (same red family as the text; slightly darker at core).
+
+### (4) Geometry (crop px, 3Ã scale)
+- **Cap height:** top clipped; visible ~42â48 px, estimated full cap height **â 60â66 px** (â20â22 px at 1Ã â consistent with a ~28 pt title font on the 540 p frame).
+- **Whole line:** x-start â **12**, x-end â **1048** (the subscript 2 is the last ink; X itself ends â 1008).
+- **Red segment 1:** â **x 12 â 1008**.
+- **Subscript 2:** â **x 1020 â 1048**, baseline â y 55â58 (below X's baseline).
+- **Blue rule:** full width of crop (x 0 â 1095), y â 60â70.
+
+### (5) Font
+**Bold sans-serif** â thick uniform strokes, no serifs anywhere (clean terminal cuts on M, H, A, X). Consistent with Calibri Bold / Arial Bold class. No serif traces even at 3Ã.
+
+### (6) Centering
+Crop covers slide x â 315â680 (crop center = slide x â 497). Text spans slide x â **319 â 664**, midpoint â **slide x 491** vs slide center 480 â the line is **approximately centered but shifted ~10 px right of true center**. Within tolerance it reads as a centered title line; the right-shift is partly because the small subscript "2" is the terminal ink while the optical mass ends at X.
+
+**Z3 DONE**

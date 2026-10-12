@@ -1,0 +1,21 @@
+== band alpha B-channel (target: render ~ frame) ==
+  b/peachPanel   frame RGB(246,179,110)  render RGB(242,165,111)  dB=+1
+  b/panel2       frame RGB(246,179,111)  render RGB(242,165,111)  dB=+0
+  c/mintPanel    frame RGB(225,189,115)  render RGB(223,170,113)  dB=-2
+  c/mint2        frame RGB(225,189,112)  render RGB(223,170,113)  dB=+1
+== band edges (render profile transitions) ==
+  b_left  y380 R: none  F: 575.5,380.0 576.6,380.0 582.8,380.0
+  b_top   x660 R: 660.0,353.8  F: 660.0,355.1
+  c_top   x800 R: none  F: none
+  c_right y300 R: 889.7,300.0 894.0,300.0 895.0,300.0  F: 886.7,300.0 888.7,300.0 889.7,300.0 891.7,300.0 892.7,300.0 895.0,300.0 896.0,300.0
+== global strong-diff rate 18.2% (baseline 15.4%)
+== b_left direct samples at y380 (build x576..592) ==
+  x576: R(np.int64(233), np.int64(233), np.int64(231)) F(np.int64(178), np.int64(243), np.int64(159))
+  x578: R(np.int64(251), np.int64(236), np.int64(219)) F(np.int64(246), np.int64(240), np.int64(216))
+  x580: R(np.int64(251), np.int64(236), np.int64(219)) F(np.int64(253), np.int64(235), np.int64(223))
+  x582: R(np.int64(251), np.int64(236), np.int64(219)) F(np.int64(255), np.int64(231), np.int64(213))
+  x584: R(np.int64(242), np.int64(165), np.int64(111)) F(np.int64(193), np.int64(130), np.int64(89))
+  x586: R(np.int64(242), np.int64(165), np.int64(111)) F(np.int64(251), np.int64(177), np.int64(116))
+  x588: R(np.int64(242), np.int64(165), np.int64(111)) F(np.int64(244), np.int64(177), np.int64(107))
+  x590: R(np.int64(242), np.int64(165), np.int64(111)) F(np.int64(246), np.int64(178), np.int64(113))
+  x592: R(np.int64(242), np.int64(165), np.int64(111)) F(np.int64(246), np.int64(179), np.int64(111))

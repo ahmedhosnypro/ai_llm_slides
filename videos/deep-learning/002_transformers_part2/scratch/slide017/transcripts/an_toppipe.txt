@@ -1,0 +1,35 @@
+# Visual QA Description
+
+## 1. Verbatim text transcription
+
+Fully legible text:
+- **"Multi Head Self Attenti"** â large bold black heading, top right. *Clipped at the right edge; almost certainly reads "Attention" on the full slide, but the final letters are outside the crop.*
+- **"1\*d"** â small red label to the right of the top-center box.
+- **"Yâ"** â green subscripted symbol inside the top-center box (rendered with a dark outline).
+- **"Linear Transformation [ T ]"** â bold dark-red text inside the cream-colored box. The bracketed "[ T ]" sits on the same line, right of center.
+- **"dH\*d"** â red annotation at the bottom-right corner of the Linear Transformation box ("dH" in dark red, "\*d" in brighter red, subscripted).
+- **"Concatenated Vector"** â bold red text, left end of the horizontal capsule.
+- **"1\*dH"** â red text directly beneath "Concatenated Vector".
+- **"Similarity"** â green text in an oval, bottom left-center (bottom of oval clipped).
+- **"Weighted SUM"** â blue text in an oval, bottom right.
+
+Partially legible (small, low-contrast, and blurry):
+- Each colored segment of the concatenated bar carries a small label of the form **Y<sub>n</sub><sup>(k)</sup>** (a "Y" with a subscript digit and a parenthesized superscript). Best-effort readings suggest approximately "Yââ½â°â¾" (brown segment), "Yââ½â°â¾" (dark gray), "Yââ½Â²â¾" (yellow), "Yââ½â°â¾" (green),â½â°â¾" (pale) â but the exact digits are **not reliably legible** at this resolution.
+- Similar Y-notation labels appear in the dashed salmon box (right, below the bar), in the green box (bottom center-right), and in the yellow box (bottom center). These are also only partially legible; the superscript/subscript digits cannot be confirmed.
+
+## 2. Layout
+
+- **LEFT edge:** The left terminus of the long horizontal "Concatenated Vector" capsule, containing the red label text. At the very bottom-left is a clipped peach/tan rounded rectangle. At the very top-left, a small red angular shape is clipped by the frame edge.
+- **RIGHT edge:** The bold black heading "Multi Head Self Attenti" (cut off). The right end of the capsule reaches near the right edge, and the "Weighted SUM" oval sits near the bottom right.
+- **TOP:** A thin red strip runs along the very top edge. Centered near the top is a small blue-bordered box divided into 4â5 pale vertical segments (white, pale yellow, green-outlined cell containing "Yâ", lavender, pale green), with the red "1\*d" label at its right.
+- **BOTTOM:** A row of partially cropped upstream diagram elements: the "Similarity" oval, a yellow box with a Y-label, a green box with a Y-label (with a **mouse cursor arrow overlapping it**), a salmon **dashed-border** box with a Y-label, and the "Weighted SUM" oval â all cut by the bottom edge.
+- **CENTER (main pipeline):** A vertical chain connected by thin **red arrows**: the small "Yâ" box â arrow up from Linear Transformation box â arrow up from the Concatenated Vector capsule. Multiple additional red arrows rise from the bottom elements into the capsule's colored segments. The capsule contains a segmented horizontal bar (dark orange/brown, dark gray, yellow, green, pale cream, left to right), each segment internally subdivided by thin lighter vertical lines into small cells, suggesting vector dimensions.
+
+## 3. Visual defects
+
+- **Right-edge clipping:** The slide title is cut mid-word ("Attenti").
+- **Bottom-edge clipping:** All bottom-row elements (Similarity oval, yellow/green boxes, dashed box, Weighted SUM oval, peach rectangle) are truncated by the crop â expected for a partial crop, but they are incomplete as shown.
+- **Top-left clipping:** A small red shape is cut by the top-left corner.
+- **Low-contrast/illegible text:** Labels on the dark brown and dark gray bar segments have poor contrast against their backgrounds and are effectively unreadable; all small Y-notation superscripts are too blurry to confirm.
+- **Cursor artifact:** A mouse pointer overlaps the green box near bottom center â a capture artifact, not slide content.
+- **No placeholder/garbage strings and no wrong-language text** were observed; all text is English plus mathematical notation, consistent with a machine-learning lecture on multi-head self-attention.

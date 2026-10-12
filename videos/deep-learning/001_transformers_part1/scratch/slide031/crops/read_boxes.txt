@@ -1,0 +1,39 @@
+# Visual QA Report â Slide 031 crop (emphasis box + note box)
+
+## 1. Verbatim text transcription
+
+**Yellow emphasis box (top-right, white box with yellow-highlighted title):**
+
+> **Generate Three Variants**
+> **of Xâ (Based on its Role)**
+
+- Line 1 "Generate Three Variants" is fully covered by a yellow highlight; the highlight continues onto line 2 covering "of Xâ" only.
+- "2" is a true subscript after the italic "X".
+- All text is bold italic in a dark red/maroon color.
+
+**White note box (bottom, bordered box):**
+
+> **W_Q   W_K   W_v   are   controllable   parameters**
+> **(Trainable),  allows  to  modify  the  incoming**
+> **vectors to suit the three roles they must play**
+
+- "W" carries subscript letters: "Q", "K", and "v" (see defect note below on the last one).
+- "(Trainable)" appears in a slightly different hue (violet/purple tint) compared to the dark red of the surrounding text â low confidence due to 2x upscaling softness.
+- The very wide gaps between words (e.g., "are   controllable   parameters") are visible on the page; they are consistent with justified alignment, not extra typed spaces.
+
+## 2. Layout
+
+- **LEFT edge:** Empty peach/cream slide background at top-left, with a tiny clipped red diagonal mark at the extreme top-left corner (~pixel 0, 10). Lower down, the white note box begins at roughly x â 35 with a thin gray/blue border; a narrow peach margin separates it from the crop's left edge.
+- **RIGHT edge:** A white vertical band (~x 860â910) runs the full height, containing a thin solid red vertical line at ~x 895 â likely the slide's right border/margin strip. Both boxes end before this band (emphasis box ~x 855, note box ~x 830).
+- **TOP:** The emphasis box occupies the top-right quadrant (roughly x 310â855, y 10â130). The top-left quadrant is plain peach background.
+- **BOTTOM:** The note box spans nearly the full width (y â 145â285); below it remains a strip of plain peach background (~25 px) before the crop's bottom edge.
+
+## 3. Visual defects / observations
+
+- **Subscript case inconsistency:** The note box reads "W_Q  W_K  W_v" â the third subscript renders as lowercase "v" while the first two are uppercase ("Q", "K"). If the source intends W_Q/W_K/W_V (Query/Key/Value), the last subscript is mismatched.
+- **Justification gaps:** The first line of the note box shows large inter-word spacing gaps caused by justified text; visually prominent but not a rendering error.
+- **Grammar oddity (verbatim, not a rendering fault):** "allows to modify the incoming vectors" is missing an object (e.g., "allows one/us to modifyâ¦"). Transcribed as shown.
+- **Highlight coverage:** The yellow highlight covers "Generate Three Variants of Xâ" but excludes "(Based on its Role)"; on line 2 the yellow block extends slightly past the "Xâ" subscript. This may be intentional emphasis or slight over-extension of the highlight rectangle.
+- **Crop-edge artifacts:** The small red mark at the top-left corner is cut off by the crop; the red vertical line/white band at the right is included but its content is not identifiable from this crop. No box borders or text inside either box appear clipped.
+- **Image quality:** Text edges are soft with mild jaggedness, consistent with the stated 2x upscale; nothing is illegible.
+- **No placeholder strings, garbage characters, or wrong-language text detected.** All text is English and legible.

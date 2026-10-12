@@ -1,0 +1,69 @@
+== A. red-dominant underline scan (mask r-g>35 & r>140 — catches muted red (184,118,125)) ==
+-- L2 red run 'convert the mean and' (text band ~143..156) rows 150..164 x 660..832
+   y=150: n=82 span 663..827 gaps>2px:17 med [248. 200. 204.]
+   y=151: n=74 span 663..827 gaps>2px:21 med [251. 199. 205.]
+   y=152: n=65 span 663..827 gaps>2px:22 med [253. 216. 218.]
+   y=153: n=68 span 663..826 gaps>2px:18 med [248. 208. 210.]
+   y=154: n=93 span 663..826 gaps>2px:16 med [228. 166. 170.]
+   y=155: n=90 span 664..827 gaps>2px:21 med [255. 206. 211.]
+   y=156: n=165 span 664..828 gaps>2px:0 med [255. 187. 195.]
+   y=157: n=164 span 664..828 gaps>2px:0 med [152.  91.  99.]
+   y=158: n=44 span 666..827 gaps>2px:16 med [238. 206. 207.]
+-- L3 red 'variance...Loss.' (text band ~167..183) rows 170..190 x 100..440
+   y=170: n=86 span 118..430 gaps>2px:35 med [253. 225. 228.]
+   y=171: n=178 span 106..430 gaps>2px:27 med [216. 170. 174.]
+   y=172: n=157 span 106..430 gaps>2px:37 med [241. 187. 192.]
+   y=173: n=151 span 106..428 gaps>2px:38 med [251. 206. 210.]
+   y=174: n=152 span 105..429 gaps>2px:39 med [253. 204. 211.]
+   y=175: n=144 span 105..430 gaps>2px:36 med [253. 205. 208.]
+   y=176: n=139 span 105..431 gaps>2px:42 med [255. 216. 219.]
+   y=177: n=145 span 105..431 gaps>2px:40 med [254. 211. 214.]
+   y=178: n=191 span 106..435 gaps>2px:25 med [239. 183. 188.]
+   y=179: n=210 span 106..435 gaps>2px:28 med [240. 182. 186.]
+   y=180: n=263 span 105..434 gaps>2px:13 med [255. 212. 216.]
+   y=181: n=326 span 105..435 gaps>2px:1 med [182. 135. 139.]
+   y=182: n=283 span 105..436 gaps>2px:18 med [232. 191. 192.]
+   y=183: n=5 span 212..216 gaps>2px:0 med [241. 145. 159.]
+   y=184: n=340 span 100..439 gaps>2px:0 med [240. 134. 148.]
+   y=185: n=17 span 111..284 gaps>2px:3 med [136.  30.  44.]
+   y=186: n=340 span 100..439 gaps>2px:0 med [222. 163. 165.]
+
+== B. green underline scan under 'learn parameters' (mask g-r>25 & g>100 & g<200) ==
+   y=150: n=71 span 391..528 gaps>2px:18 med [122. 194. 119.]
+   y=151: n=58 span 391..529 gaps>2px:21 med [141. 220. 139.]
+   y=152: n=54 span 391..530 gaps>2px:21 med [158. 230. 159.]
+   y=153: n=58 span 391..530 gaps>2px:21 med [150. 220. 154.]
+   y=154: n=78 span 391..529 gaps>2px:18 med [119. 186. 120.]
+   y=155: n=7 span 439..497 gaps>2px:3 med [147. 227. 142.]
+   y=157: n=141 span 390..530 gaps>2px:0 med [ 97. 165.  94.]
+
+== C. control-anchored italic slant (column-profile cross-correlation) ==
+  L1 (band 117..135):
+   blue 'strictly' (italic control) shift(top vs bot) = +1px  (top LEFT = backslant)
+   blue 'Zero' (bold, should be 0) shift(top vs bot) = +1px  (top LEFT = backslant)
+   blue 'mean' (disputed)       shift(top vs bot) = +1px  (top LEFT = backslant)
+   blue 'and' (disputed)        shift(top vs bot) = +1px  (top LEFT = backslant)
+   blue 'variance,' (disputed)  shift(top vs bot) = +1px  (top LEFT = backslant)
+   black L1 words (control)     shift(top vs bot) = +0px  (vertical = upright)
+  L2 (band 142..160):
+   black L2 'Normalization...to' (control) shift(top vs bot) = +0px  (vertical = upright)
+   green 'learn parameters' (disputed) shift(top vs bot) = +0px  (vertical = upright)
+   gamma (red, disputed)        shift(top vs bot) = -2px  (TOP RIGHT of bottom = italic lean)
+   red 'conv' (disputed)        shift(top vs bot) = +4px  (top LEFT = backslant)
+   red 'mean and' (disputed)    shift(top vs bot) = +1px  (top LEFT = backslant)
+  L3 (band 167..185):
+   red 'variance to' (disputed) shift(top vs bot) = +1px  (top LEFT = backslant)
+   red 'Minimizes' (disputed bold) shift(top vs bot) = +1px  (top LEFT = backslant)
+   red 'Loss.' (disputed bold)  shift(top vs bot) = -4px  (TOP RIGHT of bottom = italic lean)
+
+== D. eq3 rect edge weights (w1: bottom 2px (131,128,165) vs top 1px (191,189,211)) ==
+   y=399: n=124 med [193. 192. 210.]
+   y=400: n=124 med [212. 211. 227.]
+   y=445: n=120 med [225. 223. 242.]
+   y=446: n=124 med [144. 141. 171.]
+
+== E. highlight fill MODES (w1: panel B0E8B0, intro D8F8D8) ==
+   panel params green fill: top modes [180 238 179] x72 | [179 237 178] x63 | [181 239 180] x59
+   intro learn-params green fill: top modes [221 255 209] x2 | [224 255 227] x2 | [147 236 156] x1
+   eq4 gamma green fill: top modes [175 236 176] x3 | [179 237 176] x3 | [178 240 177] x3
+   eq4 beta green fill: top modes [179 234 176] x3 | [177 235 174] x3 | [179 235 174] x3

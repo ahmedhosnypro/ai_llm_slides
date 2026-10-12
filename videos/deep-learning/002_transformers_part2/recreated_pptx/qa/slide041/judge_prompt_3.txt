@@ -1,0 +1,51 @@
+You are the visual acceptance gate for slide 041 of /home/ahmed/Projects/ai_llm_slides.
+The session model cannot see images; ALL vision analysis must go through the image-analysis
+skill's script. First read /home/ahmed/Projects/ai_llm_slides/.agents/skills/image-analysis/SKILL.md
+and follow its routing and dispatch law.
+- Render being judged (attempt 3): /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide041/render_3.png
+- Original frame (ground truth): /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/unique_slides/slide_041.jpg
+- Content spec: /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/analysis/slide_041_final.json
+
+Method (mandatory, in order):
+1. Probe the gateway window (NO --models flag — the default route IS the images model):
+   cd /home/ahmed/Projects/ai_llm_slides && scripts/16_vision_gate.sh timeout 150 python3 \
+     .agents/skills/image-analysis/scripts/analyze_image.py analysis \
+     videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide041/render_3.png \
+     --view "Slide 041 recreation attempt 3 — probe" \
+     --capture "150dpi PNG render of a 13.33x7.5in PPTX" \
+     --timeout 120 --rounds 1 --tries 1 \
+     --transcript videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide041/probe_3.txt
+   A valid body opens the window; a hang means sleep 300 and re-probe ONCE.
+2. Comparison (gate wraps timeout, so queue wait never burns the wall).
+   MANDATORY judge parameters (user directive 2026-10-09): `--thinking high`
+   (maximum reasoning effort) and `--max-tokens 65536`.
+   MEASURED FACT (slide-008 worker, 2026-10-09): with `--thinking high`, the
+   comparison RELIABLY exceeds the 240s wall — use the W4 wide wall from the start, do NOT start at 240s:
+   cd /home/ahmed/Projects/ai_llm_slides && scripts/16_vision_gate.sh timeout 540 python3 \
+     .agents/skills/image-analysis/scripts/analyze_image.py comparison \
+     videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide041/render_3.png videos/deep-learning/002_transformers_part2/unique_slides/slide_041.jpg \
+     --view "Slide 041 recreation — fidelity check vs original lecture frame" \
+     --capture "IMG1=150dpi PNG render of a 13.33x7.5in PPTX; IMG2=original lecture video frame" \
+     --thinking high --max-tokens 65536 \
+     --timeout 420 --rounds 1 --tries 1 \
+     --transcript videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide041/judge_attempt_3.txt \
+     -p "<GROUND RULES block banked in judge_prompt_2.txt>"
+   On a hard-wall HangError, retry ONCE at the same wide wall (skill amendment W4).
+   Never wrap analyze_image.py in any other retry loop.
+2b. DEGENERATE GARBAGE RETRY (user directive): if the comparison call aborts with
+   GarbageError, or the winner body you read is degenerate garbage (word salad,
+   looping repetition, no coherent FINAL VERDICT line), the check has NO evidentiary
+   value — re-invoke the comparison (same parameters, new attempt count) up to 3
+   garbage retries before treating it as a failed judge attempt. NEVER certify a
+   pass from a degenerate body; a degenerate body is a FAIL and must be retried.
+3. Read the banked transcript (never Read PNG bytes with the Read tool). The verdict must
+   come from a real comparison winner body — a check without vision evidence is a FAILURE
+   by law; if the comparison never lands, your verdict is fail with issue "no vision evidence".
+4. Standard: fidelity recreation of a plain lecture slide — do not penalize the plain/retro
+   look. Mouse cursors or video-capture artifacts in the original must NOT be recreated;
+   don't flag their absence. Label the certificate: single-read, default route (images),
+   glm leg DEFERRED/BLOCKED.
+
+FINAL MESSAGE (mandatory): line 1 exactly:
+{"page": 1, "verdict": "pass"|"fail", "issues": ["..."]}
+then a short evidence section (transcript paths, findings). You are read-only: fix nothing.

@@ -1,0 +1,30 @@
+## Element-by-Element Comparison
+
+**Box / frame geometry**
+- Both crops show a single horizontal instruction box spanning nearly the full crop width, with two lines of text inside.
+- IMG1 border: thin, grayish-lavender (#9A9AB8-ish). IMG2 border: thin blue-violet (#8888CC-ish). Same weight (1px-class hairline), same inset from crop edges. **Minor** color difference only.
+- Frame containment: all ink in both images sits fully inside the box border with comfortable margins left/right/top/bottom. No overflow in either. â
+
+**Text content (verbatim)**
+- Line 1: "Scan the original image using the 3x3 filter" â identical in both, including "3x3" (lowercase x, no space). â
+- Line 2: "Move the filter ONE pixel  (Right, Left, Up, Down) and Re-Calculate" â identical in both, including the wide (double) space between "pixel" and "(Right", and the capitalization pattern "ONE" / "Re-Calculate". â
+
+**Typography & metrics**
+- Font: both render a serif face (Times/Book-Antiqua class) in the same dark navy-blue (~#1F3864 / #2E3192 range). IMG1's face is marginally rounder/more slabbed than IMG2's, consistent with a render-vs-video-capture difference â at most MINOR.
+- Text size: IMG1 text is very slightly larger (line 2 terminates ~3â4% further right relative to box width), but glyph heights and relative proportions match well. MINOR at most.
+- Line separation: the gap between line 1 and line 2 is visually equivalent in both crops â no leading inflation or collapse. â
+- Vertical centering: in both images the two-line block sits slightly high of vertical center, leaving more whitespace below line 2 than above line 1. The recreation reproduces the original's slight top-bias, so this matches rather than deviates. â
+- Horizontal alignment: both lines left-aligned at the same left margin in both images. â
+
+**Missing elements**
+- None. The original shows exactly two text lines in a bordered box; the recreation shows exactly that. Nothing omitted.
+
+## Discrepancy List
+
+1. **MINOR** â Border color: recreation's box border is gray-lavender vs original's bluer violet (confidence: high, but both are thin hairline borders of similar tone; founder chrome-adjacent, negligible).
+2. **MINOR** â Typeface rendering: slightly rounder serif in recreation vs original's capture-compressed serif (inherent medium/render difference, per ground rule (d) spirit â at most MINOR).
+3. **MINOR** â Text scale ~3% larger in recreation (confidence: medium; within normal render tolerance).
+
+No BLOCKER or MAJOR defects. No text overflow, clipping, wrapping, collision, or legibility issues in the recreation.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

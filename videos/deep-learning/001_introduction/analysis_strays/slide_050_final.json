@@ -1,0 +1,183 @@
+{
+  "slide_title": "Standard Neural Network vs Convolutional Neural Network for Image Classification",
+  "subtitle_or_header": "",
+  "verbatim_text": {
+    "bullets": [
+      "Parameter sharing reduces parameters by 98%+",
+      "Preserves spatial hierarchy in image",
+      "Translation invariance through pooling",
+      "Scales to larger images (224x224x3 feasible)",
+      "Learns local \u2192 hierarchical features (edges \u2192 textures \u2192 parts \u2192 objects)"
+    ],
+    "labels": [
+      "Standard NN Approach",
+      "Input Image (32x32x3 RGB)",
+      "Flatten to 1-D Vector (3072 elements)",
+      "Fully Connected Layer 1: 3072 \u00d7 1000 = 3,072,000 parameters",
+      "Fully Connected Layer 2: 1000 \u00d7 500 = 500,000 parameters",
+      "Output Layer: 500 \u00d7 10 = 5,000 parameters",
+      "Total Parameters: ~3.6 Million",
+      "",
+      "CNN Approach",
+      "Input Image (32x32x3 RGB)",
+      "Conv1: 5x5x3 filter, 6 filters \u2192 6 feature maps (28x28x6)",
+      "Parameters: (5\u00d75\u00d73\u00d76) + 6 bias = 456",
+      "ReLU Activation",
+      "Max Pool 2x2 \u2192 6 feature maps (14x14x6)",
+      "",
+      "Conv2: 5x5x6 filter, 16 filters \u2192 16 feature maps (10x10x16)",
+      "Parameters: (5\u00d75\u00d76\u00d716) + 16 bias = 2,416",
+      "ReLU Activation",
+      "Max Pool 2x2 \u2192 16 feature maps (5x5x16)",
+      "",
+      "Flatten \u2192 FC Layers",
+      "FC1: 400 \u00d7 120 = 48,000 parameters",
+      "FC2: 120 \u00d7 84 = 10,080 parameters",
+      "Output: 84 \u00d7 10 = 840 parameters",
+      "Total Parameters: ~62,000",
+      "",
+      "Key Advantages of CNN:",
+      "\u2022 Parameter sharing reduces parameters by 98%+",
+      "\u2022 Preserves spatial hierarchy in image",
+      "\u2022 Translation invariance through pooling",
+      "\u2022 Scales to larger images (224x224x3 feasible)",
+      "\u2022 Learns local \u2192 hierarchical features (edges \u2192 textures \u2192 parts \u2192 objects)"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Two-column comparison layout: left column shows Standard NN approach with flattening and dense connections, right column shows CNN approach with convolutional layers, ReLU, and max pooling. Title centered at top. Comparison metrics and key advantages listed below the diagrams.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, x 25-75%, y 5-12%",
+        "content": "Bold red title 'Standard Neural Network vs Convolutional Neural Network for Image Classification'"
+      },
+      {
+        "name": "Standard NN Diagram",
+        "position": "left column, x 8-45%, y 15-55%",
+        "content": "Column header 'Standard NN Approach' above a diagram showing image \u2192 flatten \u2192 fully connected layers (FC1, FC2, Output) with parameter counts on the connections, ending with 'Total Parameters: ~3.6 Million'"
+      },
+      {
+        "name": "CNN Diagram",
+        "position": "right column, x 55-92%, y 15-55%",
+        "content": "Column header 'CNN Approach' above a diagram showing image \u2192 conv+ReLU+pool \u2192 conv+ReLU+pool \u2192 flatten \u2192 FC layers with parameter counts, ending with 'Total Parameters: ~62,000'"
+      },
+      {
+        "name": "Comparison Metrics",
+        "position": "full width, x 10-90%, y 60-75%",
+        "content": "Parameter comparison table (4 rows \u00d7 3 columns) and scalability metrics"
+      },
+      {
+        "name": "Key Advantages",
+        "position": "full width, x 10-90%, y 78-90%",
+        "content": "Header 'Key Advantages of CNN:' followed by a bullet list of exactly 5 CNN advantages over standard NN"
+      }
+    ],
+    "hierarchy": "1) Title is largest and boldest. 2) The two main diagrams are visually dominant and equal in size. 3) Parameter counts and labels within diagrams are secondary. 4) Comparison metrics section. 5) Key advantages bullet list."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Standard Neural Network diagram: Input image (32x32x3) shown as color cube, arrow to flattened vector (3072 elements), then three layers labeled FC1, FC2, Output with parameter counts shown on connections.",
+      "colors": [
+        "#E8E8E8",
+        "#C00000",
+        "#FFFFFF",
+        "#0F0FC8",
+        "#FFCC99",
+        "#99FFFF",
+        "#FFCCFF",
+        "#CCFFCC",
+        "#BFBFBF"
+      ],
+      "position": "x 8-45%, y 15-55%"
+    },
+    {
+      "type": "diagram",
+      "description": "CNN diagram: Input image (32x32x3) \u2192 Conv1+ReLU+Pool \u2192 Conv2+ReLU+Pool \u2192 Flatten \u2192 FC1 \u2192 FC2 \u2192 Output. Each stage shows feature map dimensions and parameter counts.",
+      "colors": [
+        "#E8E8E8",
+        "#C00000",
+        "#FFFFFF",
+        "#0F0FC8",
+        "#FFCC99",
+        "#99FFFF",
+        "#FFCCFF",
+        "#CCFFCC",
+        "#BFBFBF"
+      ],
+      "position": "x 55-92%, y 15-55%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Parameter comparison table showing: Standard NN ~3.6M params vs CNN ~62K params (98% reduction); Max feasible image size: Standard NN ~64x64 vs CNN 224x224+; Feature learning: global vs hierarchical.",
+      "colors": [
+        "#FFFFFF",
+        "#8B1A3A"
+      ],
+      "position": "x 10-90%, y 60-75%"
+    }
+  ],
+  "imagery": [
+    "Input cat image shown as RGB color cube (32x32x3) in both diagrams",
+    "Feature maps visualized as stacked arrays showing depth dimension"
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#C00000",
+    "body_text": "#0F0FC8",
+    "accents": [
+      "#C00000",
+      "#0F0FC8",
+      "#FFCC99",
+      "#99FFFF",
+      "#FFCCFF",
+      "#CCFFCC",
+      "#BFBFBF",
+      "#FFFFFF",
+      "#E8E8E8",
+      "#8B1A3A"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout (Arial/Helvetica). Title: bold, 36pt, dark red #C00000. Diagram labels: bold, 20-24pt. Parameter counts: regular, 18pt, dark blue #0F0FC8. Comparison table: bold headers 20pt, regular body 18pt. Advantages list: bullet points, 18pt regular text. All text left-aligned within regions unless specified.",
+  "animation_state": "Fully built - all elements visible simultaneously. No progressive reveal.",
+  "recreation_brief": "1. Slide setup: background white #FFFFFF; all text sans-serif (Arial/Helvetica); static slide, no animations or progressive reveals.\n2. Place the title text box centered at top, x 25-75%, y 5-12%: exact text 'Standard Neural Network vs Convolutional Neural Network for Image Classification'; Arial bold 36pt; color #C00000; center-aligned.\n3. Place the left column header at the top of the left column, x 8-45%, y 15-18%: exact text 'Standard NN Approach'; Arial bold 20-24pt; color #C00000; left-aligned.\n4. Place the Standard NN diagram in the remainder of the left column, x 8-45%, y 18-55%: (a) a 3D RGB color cube (faces in pastels #FFCC99, #99FFFF, #FFCCFF, #CCFFCC) labeled 'Input Image (32x32x3 RGB)' in bold 20-24pt; (b) a right arrow to a flat 1-D vector bar labeled 'Flatten to 1-D Vector (3072 elements)'; (c) three vertically stacked layer boxes (fill #E8E8E8, border #BFBFBF) labeled 'FC1', 'FC2', 'Output' top to bottom, joined by downward arrows, each with its parameter text on the connection in dark blue #0F0FC8, regular 18pt: 'Fully Connected Layer 1: 3072 \u00d7 1000 = 3,072,000 parameters', then 'Fully Connected Layer 2: 1000 \u00d7 500 = 500,000 parameters', then 'Output Layer: 500 \u00d7 10 = 5,000 parameters'; (d) below the stack, the text 'Total Parameters: ~3.6 Million' in dark blue #0F0FC8, 18pt.\n5. Place the right column header at the top of the right column, x 55-92%, y 15-18%: exact text 'CNN Approach'; Arial bold 20-24pt; color #C00000; left-aligned.\n6. Place the CNN diagram in the remainder of the right column, x 55-92%, y 18-55%, flowing left-to-right then downward: (a) the same 3D RGB color cube labeled 'Input Image (32x32x3 RGB)'; (b) right arrow to a stack of 6 feature-map arrays (28x28x6) labeled 'Conv1: 5x5x3 filter, 6 filters \u2192 6 feature maps (28x28x6)' with parameter text 'Parameters: (5\u00d75\u00d73\u00d76) + 6 bias = 456' in dark blue #0F0FC8, 18pt; (c) the label 'ReLU Activation' immediately after Conv1; (d) down arrow to a stack of 6 arrays labeled 'Max Pool 2x2 \u2192 6 feature maps (14x14x6)'; (e) right arrow to a stack of 16 feature-map arrays (10x10x16) labeled 'Conv2: 5x5x6 filter, 16 filters \u2192 16 feature maps (10x10x16)' with parameter text 'Parameters: (5\u00d75\u00d76\u00d716) + 16 bias = 2,416'; (f) the label 'ReLU Activation' immediately after Conv2; (g) down arrow to a stack of 16 arrays labeled 'Max Pool 2x2 \u2192 16 feature maps (5x5x16)'; (h) right arrow to a flat vector labeled 'Flatten \u2192 FC Layers'; (i) three stacked boxes (fill #E8E8E8, border #BFBFBF) joined by downward arrows, labeled top to bottom 'FC1: 400 \u00d7 120 = 48,000 parameters', 'FC2: 120 \u00d7 84 = 10,080 parameters', 'Output: 84 \u00d7 10 = 840 parameters' (parameter values in dark blue #0F0FC8, 18pt); (j) below the stack, the text 'Total Parameters: ~62,000' in dark blue #0F0FC8, 18pt. Render every feature-map stack as arrays stacked along the depth dimension using the pastel palette (#FFCC99, #99FFFF, #FFCCFF, #CCFFCC) with #BFBFBF outlines.\n7. Place the comparison highlight box full width, x 10-90%, y 60-75%: a 4-row \u00d7 3-column table (1 header row + 3 data rows) with white #FFFFFF fill and dark red #8B1A3A borders; header row bold 20pt: 'Metric' | 'Standard NN' | 'CNN'; data rows regular 18pt: 'Total Parameters' | '~3.6 Million' | '~62 Thousand (98% reduction)'; 'Max Feasible Image Size' | '~64x64' | '224x224+'; 'Feature Learning' | 'Global' | 'Hierarchical (edges \u2192 textures \u2192 parts \u2192 objects)'.\n8. Place the Key Advantages block full width, x 10-90%, y 78-90%: section header 'Key Advantages of CNN:' in bold 20pt #C00000, followed by exactly 5 bullet points in regular 18pt dark blue #0F0FC8: 'Parameter sharing reduces parameters by 98%+', 'Preserves spatial hierarchy in image', 'Translation invariance through pooling', 'Scales to larger images (224x224x3 feasible)', 'Learns local \u2192 hierarchical features (edges \u2192 textures \u2192 parts \u2192 objects)'.\n9. Global styling rules: dark red #C00000 for the title, column headers and diagram stage labels (bold 20-24pt); dark blue #0F0FC8 for every parameter count/value (regular 18pt); light gray #E8E8E8 fills for layer boxes; all text left-aligned within its region except the centered title.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Populated verbatim_text.bullets (was an empty array, violating the required-field schema) with the 5 'Key Advantages of CNN' items copied verbatim from verbatim_text.labels, stripping the redundant '\u2022' prefix since the bullets field already implies bullet formatting.",
+      "subtitle_or_header was null; no subtitle text exists anywhere in the source JSON, so it was set to an empty string rather than invented (flagged in uncertain_items).",
+      "Corrected the recreation_brief table specification: it said '3-row table' while listing 4 rows (header + 3 data rows); now explicitly a 4-row \u00d7 3-column table.",
+      "Reconciled comparison-table styling with visual_elements: the highlight box lists colors #FFFFFF and #8B1A3A, so the table now uses white #FFFFFF fill with dark red #8B1A3A borders (the brief previously specified #E8E8E8 fill, which belongs to the diagram palette).",
+      "Added the column headers 'Standard NN Approach' and 'CNN Approach' to the recreation_brief and to the content of the two diagram layout.regions \u2014 they appear in verbatim_text.labels but were absent from the original brief and region descriptions.",
+      "Added the per-column totals 'Total Parameters: ~3.6 Million' (left diagram) and 'Total Parameters: ~62,000' (right diagram) to the brief and regions; previously these verbatim labels were only surfaced inside the comparison table.",
+      "Replaced all paraphrased diagram texts in the brief ('FC1: 1000 neurons', '3072 elements', '456 params', 'ReLU', 'Flatten \u2192 400 elements', 'Input Image (32x32x3)') with the exact verbatim strings from verbatim_text.labels.",
+      "Enumerated the 5 Key Advantages bullets explicitly in the brief (quantified as exactly 5 items), replacing the non-actionable cross-reference 'as specified in labels'; also quantified the Key Advantages region content as a 5-item list.",
+      "Aligned comparison-table wording with the highlight-box description: 'Max Practical Image Size' \u2192 'Max Feasible Image Size', 'Global patterns only' \u2192 'Global' (removing unsupported wording), and added '(98% reduction)' to the CNN Total Parameters cell per the same description."
+    ],
+    "uncertain_items": [
+      "No subtitle/header text exists in the source; subtitle_or_header is intentionally left empty.",
+      "Exact verbatim wording of the comparison-table cells is not captured in verbatim_text.labels; cell contents ('~64x64', '224x224+', 'Global', '(98% reduction)') are reconstructed from the visual_elements highlight-box description.",
+      "Intra-diagram coordinates are unspecified in the source; elements are placed by flow (right/down arrows) within the region bounds (x 8-45% and x 55-92%, y 15-55%), so absolute sub-positions (e.g., header at y 15-18%) are approximate reconstructions.",
+      "The mapping of individual pastel accents (#FFCC99, #99FFFF, #FFCCFF, #CCFFCC) to specific cube faces or feature-map stacks is not specified; the palette is given per diagram as a whole.",
+      "Diagram label font size is specified only as a range (20-24pt); the exact point size is unverifiable.",
+      "imagery describes the input cube as a 'cat image', but no cat content appears in verbatim_text; the brief renders a generic RGB color cube, which may diverge from the original photo."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_050.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 50,
+      "image": "slide_050.jpg",
+      "kept_frame": "frame_00000.jpg",
+      "start_sec": 0.0,
+      "end_sec": 10.0,
+      "frame_count": 1
+    },
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 799.7
+  }
+}

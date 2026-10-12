@@ -1,0 +1,280 @@
+{
+  "slide_title": "Self Attention Mechanism for Decoder  (Adding Mask)",
+  "subtitle_or_header": "",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Self Attention Mechanism for Decoder  (Adding Mask)",
+      "-\u221e",
+      "\u229b",
+      "54",
+      "Similarity",
+      "Dot Product",
+      "K,q",
+      "K,q / \u221ad",
+      "Scaling by -\u221ad [?]",
+      "Mask",
+      "-\u221e",
+      "-\u221e",
+      "0",
+      "0",
+      "Look Ahead Mask",
+      "Soft max",
+      "\u03c2 [?]",
+      "0",
+      "\u03a3",
+      "Probabilities",
+      "Weighted SUM",
+      "W_k^(r) [?]",
+      "W_k^(r) [?]",
+      "W_k^(r) [?]",
+      "W_k^(r) [?]",
+      "K\u2081",
+      "K\u2082",
+      "K\u2083",
+      "K\u2084",
+      "Z\u2081",
+      "Z\u2082",
+      "Z\u2083",
+      "Z\u2084",
+      "W_v^(r) [?]",
+      "W_v^(r) [?]",
+      "W_v^(r) [?]",
+      "W_v^(r) [?]",
+      "V\u2081",
+      "V\u2082",
+      "V\u2083",
+      "V\u2084",
+      "Z\u2081",
+      "Z\u2082",
+      "Z\u2083",
+      "Z\u2084",
+      "Z\u2081",
+      "Z\u2082",
+      "Z\u2083",
+      "Z\u2084",
+      "q\u2082",
+      "W_q^(r) [?]",
+      "Z",
+      "1\u00d7d",
+      "W",
+      "=",
+      "d\u00d7d",
+      "1\u00d7d",
+      "d: Embedding Length"
+    ],
+    "equations": [
+      "K,q / \u221ad  (scaling fraction shown above the Scaling box)",
+      "Mask cells, top to bottom: -\u221e , -\u221e , 0 , 0",
+      "1\u00d7d \u00b7 W(d\u00d7d) = 1\u00d7d  (bottom-right weight-matrix legend)"
+    ]
+  },
+  "layout": {
+    "arrangement": "White slide with a thin dark-red rectangular frame. Title top-left in red bold. Top-right legend row: small yellow chip with '-\u221e', red circled-asterisk '\u229b', empty yellow rectangle, yellow circle with slide number '54'. Below, one large light-pink rounded panel spans almost the whole slide (~88% width \u00d7 ~77% height) and contains a single left-to-right flowchart: [Z\u2081-Z\u2084 embedding stack] \u2192 [W_k boxes \u2192 K\u2081-K\u2084] \u2192 [tan Dot Product box with 4 blue dots] \u2192 [pale-pink 'Scaling by -\u221ad' box (text marked [?]), fraction K,q/\u221ad above] \u2192 [green Mask box with cells -\u221e,-\u221e,0,0] \u2192 [near-white Soft max box] \u2192 [four red \u2297 nodes fed from the right by V\u2081-V\u2084 coming from W_v boxes and a second Z\u2081-Z\u2084 stack] \u2192 [pale-blue \u03a3 box] \u2192 [green arrow up to output Z box at top]. Bottom strip: dashed green container with input embeddings Z\u2081-Z\u2084 (Z\u2082 highlighted magenta, red arrow pointing up at it) feeding W_q \u2192 q\u2082 into the Dot Product box; dashed green curved connectors tie this bottom container to the left and right Z stacks. Bottom-right dashed green box shows the 1\u00d7d \u00b7 W(d\u00d7d) = 1\u00d7d legend with caption 'd: Embedding Length'. Tiny solid black rectangle at the extreme bottom-left corner outside the frame.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top-left, ~8%-62% width, ~9%-16% height",
+        "content": "Red bold title text on white background"
+      },
+      {
+        "name": "Top-right legend / slide number",
+        "position": "top-right, ~74%-94% width, ~9%-16% height",
+        "content": "Yellow chip with red '-\u221e', red '\u229b' symbol, empty yellow rectangle, yellow circle with '54'"
+      },
+      {
+        "name": "Main diagram panel",
+        "position": "center, ~6%-94% width, ~18%-95% height",
+        "content": "Light-pink rounded rectangle containing the entire masked self-attention flowchart"
+      },
+      {
+        "name": "Left input embedding stack",
+        "position": "middle-left, ~7%-16% width, ~37%-71% height",
+        "content": "Dashed green container with 4 rows Z\u2081-Z\u2084 (yellow label cell + green cells)"
+      },
+      {
+        "name": "Key projection column",
+        "position": "middle-left, ~16%-27% width, ~37%-70% height",
+        "content": "Four green W_k^(r) boxes with K\u2081-K\u2084 cell strips to their right"
+      },
+      {
+        "name": "Dot Product box",
+        "position": "middle-left-center, ~27%-37% width, ~27%-73% height",
+        "content": "Tan box with 'Dot Product' text, 4 blue dots, red connecting arrows; 'Similarity' yellow label above; 'K,q' red label at top-right"
+      },
+      {
+        "name": "Scaling column",
+        "position": "middle-center, ~39%-48% width, ~30%-73% height",
+        "content": "Pale-pink vertical box 'Scaling by -\u221ad' [?] with red fraction K,q/\u221ad above-right"
+      },
+      {
+        "name": "Mask column",
+        "position": "middle-center, ~45%-54% width, ~30%-81% height",
+        "content": "Green vertical 'Mask' box with cells -\u221e,-\u221e,0,0; black ellipse 'Look Ahead Mask' below"
+      },
+      {
+        "name": "Softmax column",
+        "position": "middle-center-right, ~50%-58% width, ~27%-73% height",
+        "content": "Near-white vertical box with rotated 'Soft max' and '\u03c2' glyph; 'Probabilities' yellow label above"
+      },
+      {
+        "name": "Weighted-sum section",
+        "position": "middle-right, ~55%-72% width, ~19%-70% height",
+        "content": "Four red \u2297 multiply nodes (top Soft max\u2192node arrow carries a red '0' label), pale-blue \u03a3 box, 'Weighted SUM' label, thick green arrow up to dashed output box containing Z strip"
+      },
+      {
+        "name": "Value projection column",
+        "position": "middle-right, ~68%-79% width, ~37%-70% height",
+        "content": "V\u2081-V\u2084 strips and four green W_v^(r) boxes"
+      },
+      {
+        "name": "Right output embedding stack",
+        "position": "middle-far-right, ~78%-88% width, ~37%-71% height",
+        "content": "Dashed green container with 4 rows Z\u2081-Z\u2084"
+      },
+      {
+        "name": "Bottom input embeddings + query path",
+        "position": "bottom-left-center, ~18%-51% width, ~71%-97% height",
+        "content": "Dashed green container with Z\u2081-Z\u2084 strips (Z\u2082 magenta-highlighted, red arrow below), red arrow up to pink W_q^(r) box, q\u2082 strip, red arrow into Dot Product box"
+      },
+      {
+        "name": "Weight-matrix legend",
+        "position": "bottom-right, ~74%-93% width, ~82%-96% height",
+        "content": "Dashed green box: yellow strip '1\u00d7d', yellow 'W' box with 'd\u00d7d', red '=', yellow strip '1\u00d7d', red caption 'd: Embedding Length'"
+      },
+      {
+        "name": "Black corner bar",
+        "position": "bottom-left corner, ~4%-9% width, ~95%-100% height",
+        "content": "Small solid black rectangle outside/below the red frame (likely video artifact)"
+      }
+    ],
+    "hierarchy": "The pink panel dominates (~68% of slide area: ~88% width \u00d7 ~77% height). Prominence order: (1) red bold title; (2) large colored flow boxes \u2014 tan Dot Product, green Mask, pale-blue \u03a3, green W boxes; (3) the dense red arrow network; (4) small bold black/red annotation labels; (5) tiny top-right legend chips and the yellow '54' slide-number circle."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "Masked self-attention data-flow diagram, left to right inside the pink panel. GROUP 1 (far left): dashed green rounded container holding four embedding rows, each a yellow cell labeled Z\u2081/Z\u2082/Z\u2083/Z\u2084 followed by three green cells; red arrows exit right. GROUP 2: four solid light-green rectangles labeled W_k^(r), each followed by a small yellow+green strip labeled K\u2081, K\u2082, K\u2083, K\u2084 (red text); red arrows continue right. GROUP 3: tan vertical rectangle titled 'Dot Product' (two lines) containing four blue dots stacked vertically; red arrows from each K strip meet the dots; thin red diagonal arrows interconnect the dots (pairwise similarity); red arrows exit the upper right toward the next stage; red label 'K,q' at the box top-right; yellow rounded label 'Similarity' floats above. GROUP 4: pale-pink vertical rectangle with rotated black text 'Scaling by -\u221ad' [?] (a small dash precedes \u221ad in the source); red fraction 'K,q' over '\u221ad' above-right; red arrow from Dot Product into it. GROUP 5: green vertical rectangle labeled 'Mask' (black bold, top) containing four white cells stacked top-to-bottom: '-\u221e', '-\u221e', '0', '0'; red arrow from Scaling; below the box a black ellipse with yellow bold text 'Look Ahead Mask'. GROUP 6: near-white vertical rectangle with rotated black text 'Soft max' plus a large '\u03c2' glyph; red arrow from Mask; yellow rounded label 'Probabilities' above. GROUP 7: four red circled-times (\u2297) nodes stacked vertically; red arrows fan from Soft max to all four, the top arrow labeled '0' in red; red arrows also arrive from the right from value strips V\u2081, V\u2082, V\u2083, V\u2084. GROUP 8 (right mirror): dashed green container with rows Z\u2081-Z\u2084 \u2192 red arrows \u2192 four green boxes W_v^(r) \u2192 strips labeled V\u2081-V\u2084 \u2192 red arrows leftward into the \u2297 nodes. GROUP 9: red arrows rise from each \u2297 node into a pale-blue rectangle containing a large black '\u03a3'; yellow rounded label 'Weighted SUM' above; thick green arrow points up from \u03a3. GROUP 10: dashed green box at top containing a yellow cell 'Z' plus green cells (output embedding) receiving the green arrow. GROUP 11 (bottom): dashed green container with four strips Z\u2081-Z\u2084; dashed green curved connectors run from its left end up to Group 1 and from its right end up to Group 8 (same embeddings); red arrow rises from the highlighted Z\u2082 strip to a pink rectangle 'W_q^(r)', then to a strip labeled 'q\u2082' (red text, yellow+green cells), then a red arrow enters the Dot Product box from below.",
+      "colors": [
+        "#FF9EC7",
+        "#92D050",
+        "#FFFF00",
+        "#C9A26B",
+        "#FFC4D6",
+        "#F0ECFA",
+        "#ADD8E6",
+        "#0070C0",
+        "#FF0000",
+        "#C00000",
+        "#000000",
+        "#00B050"
+      ],
+      "position": "center, ~6%-94% width, ~18%-95% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Emphasis highlight: the second strip (Z\u2082) in the bottom input-embedding container is filled magenta/orchid with a dashed magenta border, and a thick red arrow points up at it from just below the container.",
+      "colors": [
+        "#DA70D6",
+        "#FF0000"
+      ],
+      "position": "bottom-left-center, ~26%-33% width, ~84%-97% height"
+    },
+    {
+      "type": "other",
+      "description": "Top-right legend/slide-number row on white: (a) small yellow rectangle containing red '-\u221e'; (b) red circled-asterisk '\u229b' symbol; (c) empty yellow rectangle; (d) yellow circle with black bold '54' (slide number).",
+      "colors": [
+        "#FFFF00",
+        "#C00000",
+        "#000000"
+      ],
+      "position": "top-right, ~74%-94% width, ~9%-16% height"
+    },
+    {
+      "type": "other",
+      "description": "Bottom-right weight-matrix legend inside a dashed green rounded box: strip of yellow cells annotated '1\u00d7d' (red), yellow rectangle 'W' with 'd\u00d7d' (red) beneath it, red '=' sign, second strip of yellow cells annotated '1\u00d7d'; red caption 'd: Embedding Length' at the bottom.",
+      "colors": [
+        "#FFFF00",
+        "#C00000",
+        "#92D050"
+      ],
+      "position": "bottom-right, ~74%-93% width, ~82%-96% height"
+    },
+    {
+      "type": "other",
+      "description": "Small solid black rectangle at the extreme bottom-left corner of the slide, outside/below the red frame (likely a video-player artifact).",
+      "colors": [
+        "#000000"
+      ],
+      "position": "bottom-left corner, ~4%-9% width, ~95%-100% height"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations. Iconography consists of: embedding-vector strips drawn as rows of small yellow + green squares; four red \u2297 (multiply-in-circle) nodes; one large black \u03a3 glyph; one red \u229b glyph top-right; a thick green up block-arrow; a thick red up block-arrow; and a black ellipse callout with yellow text."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#FF9EC7 (pink diagram panel)",
+      "#92D050 (green boxes / dashed green containers)",
+      "#FFFF00 (yellow cells, chips, label pills)",
+      "#C9A26B (tan Dot Product box)",
+      "#FFC4D6 (pale-pink Scaling box)",
+      "#F0ECFA (near-white Softmax box)",
+      "#ADD8E6 (pale-blue \u03a3 box)",
+      "#0070C0 (blue dots)",
+      "#FF0000 (red arrows and red labels)",
+      "#DA70D6 (magenta Z\u2082 highlight)",
+      "#00B050 (green output arrow)",
+      "#000000 (Look Ahead Mask ellipse)",
+      "#FF99CC (pink W_q^(r) query-weight box)"
+    ]
+  },
+  "typography_notes": "Entirely sans-serif (Arial/Calibri-like). Title: bold, ~24-26pt, dark red. Box and step labels: bold ~10-12pt black. Annotation labels (K,q; K\u2081-K\u2084; V\u2081-V\u2084; q\u2082; fractions; 'd: Embedding Length'; '-\u221e' chip) in red. Two labels are rotated 90\u00b0 (reading bottom-to-top): 'Scaling by -\u221ad' and 'Soft max'; 'Mask' sits horizontally at the top of its box. Subscript indices used throughout (Z\u2081...Z\u2084, K\u2081...K\u2084, V\u2081...V\u2084, q\u2082); weight matrices carry a tiny superscript in parentheses (reads as (r), possibly (1) \u2014 marked [?]). Slide number '54' sits in a yellow circle. No bullet list \u2014 the slide is a full-bleed diagram.",
+  "animation_state": "Slide appears fully rendered; no mid-build or partial state; all elements are visible. (No bullet list exists on this slide.)",
+  "recreation_brief": "1. Slide setup: create a 16:9 slide with a white (#FFFFFF) background; draw the outer frame as a no-fill rectangle with a ~1.5pt #C00000 outline, inset ~4% from the left/right edges, ~7% from the top, ~2% from the bottom.\n2. Title: text box at ~8%-62% width, ~9%-16% height (top-left, inside the frame) reading 'Self Attention Mechanism for Decoder  (Adding Mask)' (preserve the double space after 'Decoder'), Arial Bold ~24pt, #C00000, left-aligned.\n3. Legend chip 1 (start of the top-right legend row, ~74% width, ~9%-16% height): small yellow (#FFFF00) rectangle containing red bold '-\u221e'.\n4. Legend chip 2: red (#C00000) circled-asterisk glyph '\u229b' placed to the right of chip 1.\n5. Legend chip 3: empty yellow (#FFFF00) rectangle ~1.4cm \u00d7 0.5cm to the right of the '\u229b'.\n6. Legend chip 4: yellow (#FFFF00) circle at ~94% width containing black bold '54' (slide number).\n7. Main panel: rounded rectangle filled #FF9EC7 (light pink), no outline, spanning ~6%-94% width and ~18%-95% height; place all elements from step 8 onward inside it.\n8. Left input container: rounded rectangle, white fill, dashed #92D050 green border, at ~7%-16% width, ~37%-71% height; inside place 4 rows, each row = one yellow (#FFFF00) square labeled Z\u2081 / Z\u2082 / Z\u2083 / Z\u2084 (black bold, one label per row) followed by three #92D050 green squares.\n9. Key weight boxes: four solid #92D050 green rectangles stacked vertically at ~17%-22% width, ~37%-70% height, each labeled 'W_k^(r)' in black bold (superscript uncertain \u2014 marked [?] in verbatim).\n10. K strips: to the right of each W_k box (~22%-27% width), one mini strip of yellow+green cells labeled K\u2081, K\u2082, K\u2083 or K\u2084 in red bold (top-to-bottom K\u2081\u2192K\u2084).\n11. Key-path arrows: red (#FF0000) arrows from each of the 4 left-container rows into its W_k box, and from each W_k box into its K strip.\n12. Dot Product box: #C9A26B tan rectangle at ~28%-36% width, ~33%-72% height with black bold two-line text 'Dot Product'.\n13. Blue dots: four #0070C0 blue dots stacked vertically inside the Dot Product box.\n14. Dot Product wiring: red arrows from each of the 4 K strips into its corresponding dot; thin red diagonal arrows interconnecting the dots (pairwise similarity; exact count unspecified in source).\n15. Dot Product annotations: red bold 'K,q' just outside the box's top-right corner; above the box, a yellow (#FFFF00) rounded pill with black bold 'Similarity'.\n16. Scaling box: #FFC4D6 pale-pink vertical rectangle at ~40%-44% width, ~33%-72% height with 90\u00b0-rotated (bottom-to-top) black bold text 'Scaling by -\u221ad' (dash uncertain \u2014 keep the [?] from verbatim).\n17. Scaling fraction: above-right of the Scaling box, a red fraction with 'K,q' stacked over a red divider line over '\u221ad'.\n18. Scaling arrow: red arrow from the Dot Product box's upper-right exit into the Scaling box.\n19. Mask box: #92D050 green vertical rectangle at ~47%-51% width, ~33%-72% height; black bold 'Mask' horizontal at the top; four white cells stacked inside labeled top-to-bottom '-\u221e', '-\u221e', '0', '0' in black bold; red arrow from the Scaling box into it.\n20. Look Ahead Mask callout: black (#000000) filled ellipse below the Mask box with yellow (#FFFF00) bold two-line text 'Look Ahead Mask'.\n21. Softmax box: #F0ECFA near-white vertical rectangle at ~52%-56% width, ~33%-72% height with 90\u00b0-rotated (bottom-to-top) black bold 'Soft max' plus a large '\u03c2' glyph (glyph uncertain \u2014 [?]); red arrow from the Mask box into it.\n22. Probabilities label: yellow (#FFFF00) rounded pill with black bold 'Probabilities' above the Softmax box.\n23. Multiply nodes: four circles with red (#FF0000) outlines, each containing a '\u00d7' (\u2297 look), stacked vertically at ~57%-61% width, ~40%-68% height.\n24. Softmax-to-node arrows: red arrows fanning from the Softmax box to all four \u2297 nodes; write red bold '0' on the top arrow.\n25. Right input container: rounded rectangle, white fill, dashed #92D050 green border, at ~79%-88% width, ~37%-71% height; 4 rows, each = one yellow square labeled Z\u2081 / Z\u2082 / Z\u2083 / Z\u2084 (black bold) + three green squares.\n26. Value weight boxes: four solid #92D050 green rectangles at ~73%-78% width, ~37%-70% height, each labeled 'W_v^(r)' in black bold ([?] superscript).\n27. V strips: mini yellow+green strips to the left of the W_v boxes, labeled V\u2081, V\u2082, V\u2083, V\u2084 in red bold.\n28. Value-path arrows: red arrows from the right-container rows into the W_v boxes, from the W_v boxes into the V strips, and from the V strips leftward into the four \u2297 nodes.\n29. Sum box: #ADD8E6 pale-blue rectangle at ~56%-70% width, ~33%-38% height with a large black '\u03a3' centered.\n30. Node-to-sum arrows: red arrows rising from each of the four \u2297 nodes up into the \u03a3 box.\n31. Weighted SUM label: yellow rounded pill with black bold 'Weighted SUM' above the \u03a3 box.\n32. Output arrow: thick #00B050 green block arrow pointing up from the \u03a3 box.\n33. Output box: dashed #92D050 green rounded box at ~59%-67% width, ~20%-25% height containing one yellow cell labeled 'Z' plus green cells; the step-32 arrow points into it.\n34. Bottom input container: dashed #92D050 green rounded rectangle at ~19%-50% width, ~84%-92% height holding four strips labeled Z\u2081-Z\u2084 (each strip: yellow label cell + green cells).\n35. Z\u2082 highlight: fill the second strip (Z\u2082) of the bottom container with #DA70D6 magenta and give it a dashed magenta border.\n36. Highlight arrow: thick red block arrow just below the container pointing up at the highlighted Z\u2082 strip.\n37. Query weight box: #FF99CC pink rectangle labeled 'W_q^(r)' (black bold, [?] superscript) at ~29%-33% width, ~77%-83% height; red arrow from the Z\u2082 strip up into it.\n38. q\u2082 strip: mini strip labeled 'q\u2082' (red bold, yellow+green cells) above the W_q box; red arrow from the W_q box into the q\u2082 strip, then a red arrow from the q\u2082 strip into the bottom of the Dot Product box.\n39. Curved connectors: two dashed #92D050 green curved connectors \u2014 one from the bottom container's left end up to the left input container (step 8), one from its right end up to the right input container (step 25).\n40. Weight-matrix legend: dashed #92D050 green rounded box at ~74%-93% width, ~82%-96% height containing, left to right: a strip of yellow cells with red '1\u00d7d' above it; a yellow rectangle 'W' with red 'd\u00d7d' below it; a red '=' sign; a second strip of yellow cells with red '1\u00d7d' above it; and a red bold caption 'd: Embedding Length' at the bottom.\n41. Corner artifact (optional): small solid black (#000000) rectangle at ~4%-9% width, ~95%-100% height, outside/below the red frame \u2014 present in the source but likely a video-player artifact; omit for a clean slide.\n42. Global style: Arial throughout; box/step labels bold 10-12pt black; annotation labels (K,q; K\u2081-K\u2084; V\u2081-V\u2084; q\u2082; both fractions; 'd: Embedding Length'; the '-\u221e' legend chip) in red; keep 'Scaling by -\u221ad' and 'Soft max' rotated 90\u00b0 bottom-to-top and 'Mask' horizontal.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "subtitle_or_header was null \u2014 no subtitle exists on this title-only diagram slide, so it is left as an empty string (truly absent from source) rather than inventing one.",
+      "verbatim_text.bullets kept as [] \u2014 legitimately empty: the slide is a full-bleed diagram with no bullet list (typography_notes confirms 'No bullet list').",
+      "Added the missing third Z\u2081/Z\u2082/Z\u2083/Z\u2084 label set for the bottom input-embedding container: layout.regions ('Bottom input embeddings + query path') and visual_elements GROUP 11 explicitly describe Z\u2081-Z\u2084 strips there (Z\u2082 magenta-highlighted), but verbatim_text.labels contained only two Z sets (left and right stacks).",
+      "Harmonized the Scaling box text to 'Scaling by -\u221ad' in layout.arrangement, the Scaling region, and visual_elements GROUP 4 (previously 'Scaling by \u221ad' there while verbatim reads 'Scaling by -\u221ad [?]'); the [?] marker is retained.",
+      "Added the red '0' arrow label (on the top Soft max \u2192 \u2297 arrow) to the 'Weighted-sum section' region content \u2014 it appears in verbatim_text.labels and visual_elements GROUP 7 but was missing from the region description.",
+      "Corrected layout.hierarchy: the pink panel covers ~68% of the slide (region bounds 88% width \u00d7 77% height), not '~85%' as claimed.",
+      "Resolved the 'Mask' rotation conflict: typography_notes claimed three rotated labels including 'Mask', but visual_elements GROUP 5 and the original brief both place 'Mask' horizontal at the top of its box; typography_notes corrected to two rotated labels ('Scaling by -\u221ad', 'Soft max') and the brief made explicit.",
+      "Added '#FF99CC (pink W_q^(r) query-weight box)' to colors.accents \u2014 the shade was referenced in the original recreation_brief but missing from the extracted palette.",
+      "Changed 'white Soft max box' to 'near-white Soft max box' in layout.arrangement to match the extracted #F0ECFA fill.",
+      "Rephrased animation_state to remove the reference to 'bullets' (none exist on this slide).",
+      "Rewrote recreation_brief as a 42-step ordered checklist \u2014 one element per step with exact verbatim text, percentage position, hex color, and shape type; legend position harmonized to the region bounds (~74%-93% width, ~82%-96% height); all [?] markers preserved."
+    ],
+    "uncertain_items": [
+      "'Scaling by -\u221ad [?]' \u2014 whether the small dash before \u221ad is genuinely part of the Scaling box text.",
+      "'\u03c2 [?]' \u2014 identity of the large glyph in the Soft max box (reads as final sigma \u03c2; possibly intended as \u03c3).",
+      "'W_k^(r) [?]' (\u00d74), 'W_v^(r) [?]' (\u00d74), 'W_q^(r) [?]' (\u00d71) \u2014 the parenthesized superscript reads as (r) but may be (1).",
+      "'Mask' label orientation \u2014 the source JSON was self-contradictory (typography_notes: rotated 90\u00b0; visual_elements/brief: horizontal at box top); harmonized to horizontal, unverifiable without the image.",
+      "Exact count of the thin red diagonal connectors between the four blue dots inside the Dot Product box is not specified in the source.",
+      "Exact pink shade of the W_q^(r) box (#FF99CC) is taken from the original recreation_brief and was absent from the extracted color list.",
+      "The solid black rectangle at the bottom-left corner is flagged as a likely video-player artifact; it may not belong to the actual slide.",
+      "Assignment of the two originally extracted Z\u2081-Z\u2084 label sets to specific stacks (left/right/bottom) is ambiguous; all three stacks carry identical labels, so the added third set completes the verbatim record."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_054.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 54,
+      "image": "slide_054.jpg",
+      "kept_frame": "frame_04756.jpg",
+      "start_sec": 4681.0,
+      "end_sec": 4755.0,
+      "frame_count": 75,
+      "old_slide": 134
+    },
+    "elapsed_s": 691.5,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 823.2
+  }
+}

@@ -1,0 +1,37 @@
+# Fidelity Check â Slide 051 "Encoder â Decoder Transformer"
+
+## Element-by-Element Comparison
+
+**House chrome (per ground rule a):** red outer frame, #E8E8E8 bg, yellow "51" badge, centered red title â all present and excluded from judgment. Title text "Encoder â Decoder Transformer" verbatim match, red bold, centered. â
+
+**Split-halves layout:** Two green-framed panels, Encoder left / Decoder right, each with the peach+green (encoder) and orange+light-green (decoder) split backgrounds â matches the original's structure. Panel proportions: original left panel is slightly narrower than right (~310 vs ~340 px); recreation renders them equal width. MINOR.
+
+## Discrepancies
+
+1. **BLOCKER â Missing decoder-side "Positional Encoding" cluster.** The original shows, at the right edge of the decoder panel (next to Output Embedding), a clock icon, the label "Positional Encoding", and an adjacent dark â badge. The recreation omits this entire cluster. Per rule (6), a visual element present in the original and absent entirely is a BLOCKER. Confidence: HIGH.
+
+2. **BLOCKER â Missing decoder-side "Nx" circle.** The original shows a green-ringed "Nx" circle at the far right of the decoder panel (right of the Multi-Head Attention / Add & Norm block). The recreation has no counterpart anywhere in the decoder panel. BLOCKER per rule (6). Confidence: HIGH.
+
+3. **MAJOR â Encoder norm labels truncated.** Both blue norm boxes in the encoder stack read "Norm" in the recreation, whereas the original reads "Add & Norm" in both positions (top of Feed Forward, above Multi-Head Attention). Text is not verbatim; the first instance is additionally partially obscured. Confidence: HIGH.
+
+4. **MINOR â First encoder "Norm" box legibility.** The gray residual square and box text collide slightly; the label's left edge appears partially covered. The box text is also not vertically centered as cleanly as the original's "Add & Norm" boxes. Confidence: MEDIUM.
+
+5. **MINOR â K/V/Q dot cluster arrangement (encoder).** Original shows the small K/Q (and V) circles tightly grouped at the stack base; recreation spreads V, K, Q slightly differently with the V dot sitting above the K/Q pair. Confidence: MEDIUM.
+
+6. **MINOR â Encoder yellow residual bar position.** The vertical yellow residual bar at the right of the encoder stack crosses into the bright-green half of the panel; in the original it terminates at the color boundary. Does not cross the panel frame, so containment is not violated. Confidence: MEDIUM.
+
+7. **MINOR â Decoder â-badge placement.** Dark-navy check badges are present in both, but several are offset (e.g., the badge at the second Add & Norm sits on the box's right end in the recreation vs. left/above in the original; two plain blue dots near Multi-Head Attention are placed slightly differently). Confidence: MEDIUM.
+
+**Checked and matching:** Output/Probabilities/Softmax/Linear chain with two red dashed ellipses; two "Decoder Only" label boxes with outlined arrows; "Encoder â Decoder Attention" and "Adding Mask" label boxes with arrows; â symbol left of purple Masked Multi-Head Attention; dashed red ellipse around decoder Multi-Head Attention; red up-arrow at decoder top; "Outputs (shifted right)"; Output Embedding colors (brown encoder / maroon decoder); "Inputs" red arrow; encoder "N x" circle with green check; encoder/decoder panel titles in italic; all box colors (blue norm, gray-green Feed Forward, purple masked attention) approximate the original.
+
+## Visual-Quality Defects (recreation)
+
+- Encoder stack is drawn small within its panel, leaving a large empty peach region â but this mirrors the original's composition; not charged.
+- Slight overlap of check badges on box edges (encoder second "Norm", decoder Add & Norm boxes) â cosmetic, MINOR.
+- No text clipping at panel or house-frame boundaries detected; "(shifted right)" and "Positional Encoding" (encoder side) sit fully inside their frames. â
+
+## Summary
+
+Two entire visual elements from the decoder panel (Positional Encoding cluster with clock, and the Nx circle) are absent â both BLOCKERs under rule (6) â plus a verbatim-text failure on both encoder norm labels (MAJOR). Everything else is a faithful reproduction.
+
+FINAL VERDICT: FAIL for 'faithful, usable recreation'.

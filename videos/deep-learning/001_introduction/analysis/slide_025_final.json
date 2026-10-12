@@ -1,0 +1,256 @@
+{
+  "slide_title": "Neural Network Model",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Input Samples",
+      "Sample Label",
+      "Net_i",
+      "Net_j",
+      "O_i",
+      "O_j",
+      "w_ji",
+      "\u03a3",
+      "S",
+      "Output 1",
+      "Output 2",
+      "Output m",
+      "Error",
+      "Class 1",
+      "Class 2",
+      "Class m",
+      "i",
+      "j",
+      "Previous Layer Layer (i)",
+      "Current Layer (You are here)"
+    ],
+    "equations": [
+      "Net_j = \u03a3 ( w_ji O_i )   [LaTeX: Net_j = \\sum ( w_{ji} O_i )]",
+      "O_j = f ( Net_j ) = 1 / (1 + e^{-Net_j})   [LaTeX: O_j = f(Net_j) = \\frac{1}{1+e^{-Net_j}}]",
+      "E = (1/2) \u03a3_j ( t_j - O_j )\u00b2   [LaTeX: E = \\frac{1}{2} \\sum_j ( t_j - O_j )^2]"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top. Below it a thin strip: pink 'Input Samples' box at far left joined by a dotted magenta arrow-line running right to a pink 'Sample Label' box right-of-center. The central-left ~52% of the slide (x ~7-59%) is one large beige panel containing a 3-row neural-network diagram (white \u03a3-S neurons with ellipsis dots on the left, green \u03a3-S neurons on the right, red connecting arrows labeled w_ji); the three white 'Output' boxes sit at the panel's right edge (x ~52-59%). Further right: a tall vertical red (#CC0000) 'Error' bar, then three green 'Class' boxes. Below the panel: two upward block arrows labeled 'i' and 'j', each sitting directly above its label box and pointing up into the panel \u2014 a lavender 'Previous Layer / Layer (i)' box under the 'i' arrow and a green 'Current Layer (You are here)' box under the 'j' arrow. Bottom strip: three cream equation boxes side by side. Thin dark-red (#8B0000) rule across the very top edge; solid black bar across the very bottom edge (video-player scrubber artifact).",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~33-67% width, ~9-17% height",
+        "content": "'Neural Network Model' in large bold red text"
+      },
+      {
+        "name": "Top connector strip",
+        "position": "top, ~6-71% width, ~17-23% height",
+        "content": "pink 'Input Samples' box (left), dotted magenta arrow line, pink 'Sample Label' box (right)"
+      },
+      {
+        "name": "Network panel",
+        "position": "middle left-center, ~7-59% width, ~24-71% height",
+        "content": "beige rectangle containing 3 rows of neurons: magenta input dots (one per row, 3 total) with thin gray fan-in lines, white \u03a3-S circle, three small gray ellipsis circles, white \u03a3-S circle tagged O_i, red weighted arrows (w_ji) to a green \u03a3-S circle tagged O_j; red italic 'Net_i' and 'Net_j' labels above the two columns"
+      },
+      {
+        "name": "Output column",
+        "position": "middle right, ~52-59% width (at the right edge of the beige panel), rows at ~31-35%, ~45-49%, ~59-63% height",
+        "content": "white boxes 'Output 1', 'Output 2', 'Output m' fed by red arrows from the green neurons"
+      },
+      {
+        "name": "Error bar",
+        "position": "middle right, ~61-64% width, ~28-66% height",
+        "content": "vertical red (#CC0000) rectangle with white bold 'Error' stacked three times"
+      },
+      {
+        "name": "Class column",
+        "position": "right, ~65-72% width, rows aligned with outputs",
+        "content": "light-green boxes 'Class 1', 'Class 2', 'Class m'"
+      },
+      {
+        "name": "Layer labels",
+        "position": "below panel, ~22-50% width, ~69-81% height",
+        "content": "up-arrow 'i' above lavender box 'Previous Layer / Layer (i)'; up-arrow 'j' above green box 'Current Layer / (You are here)'; both arrows point up into the network panel"
+      },
+      {
+        "name": "Equation strip",
+        "position": "bottom, ~8-78% width, ~85-94% height",
+        "content": "three cream boxes with the three math formulas"
+      },
+      {
+        "name": "Top rule",
+        "position": "very top, full width, ~2-3% height",
+        "content": "thin dark-red (#8B0000) horizontal line"
+      },
+      {
+        "name": "Bottom bar",
+        "position": "very bottom, full width, ~96-100% height",
+        "content": "solid black strip (video-player scrubber artifact)"
+      }
+    ],
+    "hierarchy": "The red title is the largest text; the beige network diagram dominates by area; the three cream equation boxes anchor the bottom; red is the dominant accent (title, arrows, O_i/O_j/Net labels, Error bar), with blue w_ji labels, green neurons/Class boxes and pink sample boxes as secondary accents; all annotation text is small and bold."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Neural-network schematic inside a beige rounded rectangle. Three horizontal rows (one per class). Each row, left to right: (1) small filled magenta dot (input) with thin gray fan-in lines; (2) white circle with black outline containing bold '\u03a3 S' [? second glyph resembles an S / sigmoid-step symbol]; (3) three small gray outline circles in a row (ellipsis meaning 'more neurons'); (4) second white '\u03a3 S' circle with red italic bold label 'O_i' at its upper right; (5) light-green circle with black outline containing '\u03a3 S' with red italic bold label 'O_j' at its upper right. The three O_i neurons are fully connected to the three O_j neurons by 9 crossing red arrows with red triangular arrowheads; blue italic bold 'w_ji' labels sit on the three roughly-horizontal arrows (one per row). Red arrows also leave each green neuron toward its Output box. Near the top of the panel, red italic bold 'Net_i' (over the O_i column) and 'Net_j' (over the O_j column), each with a small pointer angling down toward its column.",
+      "colors": [
+        "#D6C3A3",
+        "#FFFFFF",
+        "#99FF66",
+        "#CC0000",
+        "#0000CC",
+        "#CC00CC",
+        "#000000",
+        "#999999"
+      ],
+      "position": "center-left, ~7-59% width, ~24-71% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "'Input Samples' box: small pink/magenta rectangle, thin dark border, black bold text on two lines ('Input' / 'Samples'). A dotted magenta line exits its right edge, runs horizontally across the top of the diagram, and terminates in a right-pointing arrowhead at the 'Sample Label' box.",
+      "colors": [
+        "#FF99CC",
+        "#000000",
+        "#CC00CC"
+      ],
+      "position": "top-left, ~6.5-13.5% width, ~17-23% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "'Sample Label' box: small pink/magenta rectangle matching 'Input Samples', black bold text on two lines ('Sample' / 'Label'), receiving the dotted magenta arrow.",
+      "colors": [
+        "#FF99CC",
+        "#000000"
+      ],
+      "position": "top right-of-center, ~63.5-70.5% width, ~17-23% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Three white output boxes with thin black borders, black bold text: 'Output 1' (top row), 'Output 2' (middle row), 'Output m' (bottom row). Each receives a red arrow from the green neuron of its row.",
+      "colors": [
+        "#FFFFFF",
+        "#000000",
+        "#CC0000"
+      ],
+      "position": "at the right edge of the network panel, ~52-59% width, three rows"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Vertical 'Error' bar: tall narrow red (#CC0000) rectangle; the word 'Error' in white bold sans-serif is stacked vertically three times (one per output row), reading 'Error / Error / Error' top to bottom.",
+      "colors": [
+        "#CC0000",
+        "#FFFFFF"
+      ],
+      "position": "~61-64% width, ~28-66% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Three light-green class boxes with thin black borders, black bold text: 'Class 1', 'Class 2', 'Class m', each aligned with one Output/Error row.",
+      "colors": [
+        "#99FF99",
+        "#000000"
+      ],
+      "position": "far right, ~65-72% width, three rows"
+    },
+    {
+      "type": "arrow",
+      "description": "Two upward-pointing block arrows below the panel: left arrow is white with black outline and contains black bold 'i'; right arrow is light green and contains black bold 'j'. Each points up into the network panel, indicating the previous layer (i) and current layer (j).",
+      "colors": [
+        "#FFFFFF",
+        "#99FF66",
+        "#000000"
+      ],
+      "position": "below panel, ~25-28% and ~42-45% width, ~69-75% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "'Previous Layer Layer (i)' box: lavender/light-blue rectangle, thin dark border, black bold text on two lines: 'Previous Layer' / 'Layer (i)'. Sits directly under the white 'i' arrow.",
+      "colors": [
+        "#CCCCFF",
+        "#000000"
+      ],
+      "position": "~22-32% width, ~75-81% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "'Current Layer (You are here)' box: light-green rectangle, thin dark border, black bold text on two lines: 'Current Layer' / '(You are here)'. Sits directly under the green 'j' arrow.",
+      "colors": [
+        "#99FF66",
+        "#000000"
+      ],
+      "position": "~40-50% width, ~75-81% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Three cream equation boxes with thin black borders, each containing one formula in italic serif math with true subscripts/superscripts: (1) 'Net_j = \u03a3 ( w_ji O_i )'; (2) 'O_j = f ( Net_j ) = 1/(1+e^{-Net_j})' with the last term shown as a vertical fraction; (3) 'E = (1/2) \u03a3_j ( t_j - O_j )\u00b2' with \u00bd as a fraction and a large summation sign with subscript j.",
+      "colors": [
+        "#FFFFCC",
+        "#000000"
+      ],
+      "position": "bottom strip, ~8-27%, ~30-52%, ~55-78% width, ~85-94% height"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; the slide is entirely vector shapes and text. Notable graphic motifs: three filled magenta input dots with gray fan-in connector lines at the left edge of the network panel; small gray ellipsis circles between neuron pairs; red triangular arrowheads clustered where arrows converge on the green neurons; a tiny mouse-pointer/cursor artifact at the top edge of the middle equation box (video artifact, not slide content)."
+  ],
+  "colors": {
+    "background": "#E8E8E8",
+    "title_text": "#CC0000",
+    "body_text": "#000000",
+    "top_rule": "#8B0000",
+    "accents": [
+      "#CC0000",
+      "#0000CC",
+      "#99FF66",
+      "#99FF99",
+      "#FF99CC",
+      "#CC00CC",
+      "#D6C3A3",
+      "#FFFFCC",
+      "#CCCCFF",
+      "#8B0000"
+    ]
+  },
+  "typography_notes": "All UI text is sans-serif (Arial-like). Title is bold, ~36-40pt, red, title-case. Box labels and annotations are bold, small (~10-12pt), black; 'Error' is white bold on red. Math (equations, Net_i, Net_j, O_i, O_j, w_ji) is italic serif (Times/Computer-Modern-like) with true subscripts; w_ji is blue while Net/O labels are red. 'Input Samples' and 'Sample Label' wrap onto two lines; 'Previous Layer Layer (i)' and 'Current Layer (You are here)' each wrap onto two lines. No all-caps styling, no numbered bullets.",
+  "animation_state": "Slide appears fully built (all three rows, all labels, and all three equations visible simultaneously); no mid-build state. Only artifact is a small mouse cursor near the middle equation box.",
+  "recreation_brief": "1) Set the slide background to light gray #E8E8E8. 2) Draw a thin dark-red (#8B0000) horizontal rule across the full slide width at the very top edge (~2-3% height). 3) Place the title 'Neural Network Model' centered at top (~33-67% width, ~9-17% height) in Arial bold ~36-40pt, colored #CC0000. 4) Draw a pink (#FF99CC) rectangle with a thin black border at ~6.5-13.5% width, ~17-23% height, containing bold black two-line text 'Input' / 'Samples'. 5) Draw a matching pink (#FF99CC) rectangle with a thin black border at ~63.5-70.5% width, ~17-23% height, containing bold black two-line text 'Sample' / 'Label'. 6) Connect the right edge of the 'Input Samples' box to the left edge of the 'Sample Label' box with a dotted magenta (#CC00CC) horizontal line that terminates in a right-pointing arrowhead at 'Sample Label'. 7) Draw the beige (#D6C3A3) network panel rectangle from ~7% to ~59% width and ~24% to ~71% height. 8) Inside the panel build 3 identical neuron rows with vertical centers at ~33%, ~47% and ~61% height; steps 9-13 place the five elements of each row. 9) Per row: a small filled magenta (#CC00CC) input dot at ~8% width with thin gray (#999999) fan-in connector lines entering it from the panel's left edge (line count not specified in source). 10) Per row: a white circle with black outline at ~13-17% width (interpolated position) containing bold '\u03a3 S' [second glyph uncertain - see validation.uncertain_items]. 11) Per row: three small gray (#999999) outline circles in a row at ~21-24% width (ellipsis meaning 'more neurons'). 12) Per row: a second white circle with black outline at ~25-29% width containing bold '\u03a3 S', with red (#CC0000) italic bold 'O_i' at its upper right. 13) Per row: a light-green (#99FF66) circle with black outline at ~42-46% width containing '\u03a3 S', with red (#CC0000) italic bold 'O_j' at its upper right. 14) Draw 9 red (#CC0000) arrows with red triangular arrowheads fully connecting the three O_i circles to the three O_j circles (3x3 crossing pattern). 15) Place a blue (#0000CC) italic bold 'w_ji' label on each of the three roughly-horizontal arrows (one per row). 16) Draw one red (#CC0000) arrow from each green O_j circle pointing right toward its Output box (3 arrows total). 17) Inside the top of the panel, above the O_i column (~27% width), place red (#CC0000) italic bold 'Net_i' with a small pointer angling down toward that column. 18) Inside the top of the panel, above the O_j column (~44% width), place red (#CC0000) italic bold 'Net_j' with a small pointer angling down toward that column. 19) At the right edge of the beige panel (~52-59% width), place three white rectangles with thin black borders at ~31-35%, ~45-49% and ~59-63% height containing bold black 'Output 1', 'Output 2' and 'Output m' respectively; the three arrows from step 16 terminate at these boxes. 20) Right of the outputs, draw a tall narrow vertical red (#CC0000) rectangle at ~61-64% width, ~28-66% height, with white bold 'Error' stacked three times top to bottom (one per output row). 21) Right of the Error bar, place three light-green (#99FF99) rectangles with thin black borders at ~65-72% width, vertically aligned with the three output rows, containing bold black 'Class 1', 'Class 2' and 'Class m'. 22) Below the panel, draw a white block arrow with black outline containing bold black 'i' at ~25-28% width, ~69-75% height, pointing up into the panel. 23) Directly below the 'i' arrow, draw a lavender (#CCCCFF) rectangle with a thin dark border at ~22-32% width, ~75-81% height, containing two-line bold black 'Previous Layer' / 'Layer (i)'. 24) Draw a light-green (#99FF66) block arrow containing bold black 'j' at ~42-45% width, ~69-75% height, pointing up into the panel. 25) Directly below the 'j' arrow, draw a light-green rectangle with a thin dark border at ~40-50% width, ~75-81% height, containing two-line bold black 'Current Layer' / '(You are here)'. 26) In the bottom strip (~85-94% height), draw three cream (#FFFFCC) rectangles with thin black borders at ~8-27%, ~30-52% and ~55-78% width, each containing one formula in italic serif (Times/Cambria-like) with true subscripts and superscripts: left box 'Net_j = \u03a3 ( w_ji O_i )'; middle box 'O_j = f ( Net_j ) = 1/(1+e^{-Net_j})' with the final term as a stacked vertical fraction; right box 'E = \u00bd \u03a3_j ( t_j \u2212 O_j )\u00b2' with \u00bd shown as a fraction and a large summation sign with subscript j. 27) Do NOT add the solid black bottom strip (~96-100% height, a video-player scrubber artifact) or the small mouse-cursor artifact near the middle equation box; both are video artifacts, not slide content.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "verbatim_text.bullets intentionally left empty: this is a diagram-only slide with no bulleted list text; all 20 text items are captured in labels and 3 in equations, and no bullets were invented.",
+      "subtitle_or_header kept null: no subtitle exists on the slide (truly absent from the source).",
+      "layout.arrangement: corrected the network panel width from '~55%' to '~52%' (x ~7-59% per the regions and the diagram element).",
+      "Reconciled Output-column placement: source wording said 'to the right of the panel', but the given coordinates (panel 7-59% width; Output boxes 52-59% width) overlap; updated arrangement, the Output-column region, and the Output-boxes visual element to place the three boxes at the panel's right edge.",
+      "Standardized the Error bar color to red #CC0000 in arrangement, regions, and visual_elements (the source called it 'dark-red' while its own swatch is #CC0000; #8B0000 dark red is reserved for the top rule).",
+      "Network panel region: corrected singular 'magenta input dot' to 'magenta input dots, one per row (3 total)' to match the diagram element and imagery ('three filled magenta input dots').",
+      "Harmonized Net_i/Net_j label placement: the diagram element said 'above the panel' while the region said 'above the two columns'; unified to 'near the top of the panel, above the columns' (the band above the panel is occupied by the dotted connector strip at 17-23% height).",
+      "Clarified the layer-label arrows in arrangement: the 'i'/'j' block arrows sit above their label boxes and point up into the panel (source wording implied they point to the boxes).",
+      "Bound the top rule explicitly to #8B0000 (added the hex to the Top rule region content and a colors.top_rule key).",
+      "recreation_brief: aligned the 'Sample Label' box to ~63.5-70.5% width (source brief said ~64-71%) and the three row centers to ~33/47/61% height (derived from the Output-column region rows 31-35/45-49/59-63%).",
+      "Rewrote recreation_brief as a 27-step ordered checklist; every step specifies exact text, position, hex color and shape type, with exact counts throughout (3 rows, 9 cross-connection arrows, 3 w_ji labels, 3 output arrows, 3 Output boxes, 3 Class boxes, 3 equation boxes).",
+      "Retained the source [?] marker on the second glyph of the '\u03a3 S' neuron symbol and surfaced it in uncertain_items."
+    ],
+    "uncertain_items": [
+      "Second glyph inside every neuron circle: transcribed as '\u03a3 S' but marked [?] in the source (resembles an S / sigmoid-step symbol); the exact symbol cannot be verified from the JSON.",
+      "Exact x-position of the first (leftmost) white '\u03a3 S' circle in each row is not stated in the source; ~13-17% width is an interpolation between the input dot (~8%) and the ellipsis circles (~21-24%).",
+      "The number of thin gray fan-in lines entering each magenta input dot is not specified in the source; it is left unquantified rather than invented.",
+      "Whether the three Output boxes sit just inside or just outside the beige panel's right edge is ambiguous from the coordinates (panel 7-59% width vs outputs 52-59% width); the checklist places them within the panel's right portion."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_025.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 25,
+      "image": "slide_025.jpg",
+      "kept_frame": "frame_01295.jpg",
+      "start_sec": 1256.0,
+      "end_sec": 1294.0,
+      "frame_count": 39,
+      "old_group": 30,
+      "founder_frame_swap": false
+    },
+    "elapsed_s": 273.3,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1281.8
+  }
+}

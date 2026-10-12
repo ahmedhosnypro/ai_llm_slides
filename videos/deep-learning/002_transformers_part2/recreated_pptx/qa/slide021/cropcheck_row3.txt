@@ -1,0 +1,51 @@
+# Slide 021 â row3 vectors lane: element-by-element comparison
+
+## Element-by-element analysis
+
+**1. Lane border (dashed green rounded rectangle)**
+- IMG1: green dashed border, rounded corners, correct dash rhythm. â
+- IMG2: same. **MATCH** (dash length/spacing within tolerance at this zoom).
+
+**2. Lane fill (light green)**
+- IMG1: light-green fill throughout the lane, including the empty gap region. â
+- IMG2: same. **MATCH**.
+
+**3. Lane geometry**
+- Both: full-width lane, similar height, similar corner radius. **MATCH**.
+
+**4. The 8 boxes themselves â â  CRITICAL**
+- IMG2: each "Vector" label sits inside a **visible thin khaki/tan-bordered rectangle** (slightly lighter interior than the lane). All 8 boxes are clearly delineated.
+- IMG1: **there are NO box outlines at all.** Only the "Vector" text floats directly on the lane fill. Zero of the 8 khaki/tan borders are rendered.
+- **BLOCKER** (confidence: very high). This is the defining visual feature of the row per the spec ("8 boxes with THIN KHAKI/TAN borders"). The row reads as bare text, not a row of vector chips.
+
+**5. Box positions / spacing**
+- IMG1: 8 labels positioned with even spacing and a large empty gap between P5 and PN-2 â placement matches IMG2 well. â (Positionally correct; the boxes just lack their outlines.)
+- **MATCH** on placement (MODERATEâHIGH confidence).
+
+**6. 'Vector' text**
+- IMG1: bold, upright, dark navy sans-serif. â per spec.
+- IMG2: appears slightly more italic/serif-flavored and bluer (JPEG softening at 2x upscale contributes). Given the spec mandates bold dark navy and medium artifacts blur the distinction, I treat this as **MINOR** (confidence: lowâmoderate) â the strokes in IMG2 do lean italic, so worth a look at full resolution, but not actionable from this crop alone.
+
+**7. Subscripts (red italic, smaller, baseline-aligned)**
+- IMG1: P0, P1, P2, P3, P4, P5, PN-2, PN-1 all present, red, italic, smaller, dropped to baseline. â
+- IMG2: same set, same styling. **MATCH** (HIGH confidence). PN-2/PN-1 rendering with hyphen is consistent in both.
+
+**8. Empty gap between P5 and PN-2**
+- IMG1: empty light-green lane, no dots, no ellipsis. â
+- IMG2: identical empty gap. **MATCH** (spec: measured, confirmed).
+
+**9. Out-of-scope items (not counted):** red arrow at top, dark-red curved strokes at bottom edge, vertical divider line at right, faint tan diagonal at left â chrome/neighbors, correctly present or omitted per ground rules.
+
+## Discrepancy list
+
+| # | Discrepancy | Severity | Confidence |
+|---|---|---|---|
+| 1 | All 8 khaki/tan box borders missing â labels render as bare text on lane fill | **BLOCKER** | Very high |
+| 2 | 'Vector' wordmark slightly more italic/serif-blue in IMG2 vs upright navy in IMG1 | MINOR | Lowâmoderate (JPEG blur confound) |
+
+## Visual-quality defects (IMG1)
+- None intrinsic; text is crisp, lane dash is clean, spacing is even. The only defect is the missing borders (#1).
+
+---
+
+**CROP VERDICT: FAIL** for 'row3' â the 8 thin khaki/tan vector-box outlines are entirely absent from the render; only the labels were drawn. Add the bordered rectangles around each Vector label (interior â lane's light green, thin tan stroke) and re-render.

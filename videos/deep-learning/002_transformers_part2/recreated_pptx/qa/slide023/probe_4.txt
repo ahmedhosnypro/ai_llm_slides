@@ -1,0 +1,46 @@
+# Visual QA Report â Slide 023 Recreation (attempt 4 probe)
+
+## 1. Verbatim Text Transcription
+
+**Title block (centered top):**
+- "Suggested Positional Encoders" (red, bold)
+- "(Normalize Seq. Length to â1â)" (blue, bold â curly quotes around 1)
+
+**Slide number badge (top-right, pale-yellow circle, blue outline):**
+- "23" (dark red)
+
+**Left-margin row labels (stacked vertically):**
+- "Sequence of words with Length N" (gray italic, wrapped over 3 lines)
+- "Position Embedding" (blue bold, 2 lines)
+- "Use Position Index" (dark red bold, 2 lines)
+
+**Row 1 (black dashed rounded rectangle):** Word 0 | Word 1 | Word 2 | Word 3 | Word 4 | Word 5 | [5 gray dots] | Word N-2 | Word N-1
+
+**Row 2 (blue dashed rounded rectangle, light periwinkle fill):** Pos 0 | Pos 1 | Pos 2 | Pos 3 | Pos 4 | Pos 5 | [5 slate-blue dots] | Pos N-2 | Pos N-1
+
+**Row 3 (dark-red dashed rounded rectangle, light pink fill):** 0 | Î´ | 2Î´ | 3Î´ | 4Î´ | 5Î´ | [empty gap â no dots] | 1-Î´ | 1
+
+**Below row 3:** six orange upward-pointing triangles (under Î´, 2Î´, 3Î´, 4Î´, 5Î´, and 1) with six red "+Î´" labels.
+
+**Bottom callout box (light cyan fill, blue rounded border):**
+- "Use Î´=1/Seq. Length  First position Encoding=0, Last Position Encoding= 1  (Independent of Seq. Length)" (mixed blue italic / dark-red bold; "(Independent of Seq. Length)" is underlined)
+- "Problems:" (dark red bold italic)
+- "â¢ Î´ Value depends on Seq. Length  ( Î´ is small for long seq and large for short sequence )" ("long" and "short" bold/underlined; "seq", "sequence" underlined)
+- "â¢ In other words, Encoding value of position # 4 in short seq will differ from position #4 in long seq (though they are same position)" ("position # 4" and "position #4" red underlined; "(though they are same position)" magenta bold italic)
+- "â¢ Position Encoding is  scalar  and Word embedding is  vector   (how to Combine them ?)" ("scalar" and "vector" bold)
+
+## 2. Layout
+
+- **Top:** Centered two-line title; white margin strip above a thin red-stroked light-gray panel that begins ~8% down. Slide-number circle "23" sits in the panel's top-right corner.
+- **Left edge:** White margin, then the three stacked row labels ("Sequence of words with Length N", "Position Embedding", "Use Position Index") aligned with the three dashed rows.
+- **Right edge:** The three dashed rows and the callout box all terminate at a common right margin (~x 1866/2000); the "23" badge is the rightmost element at top.
+- **Bottom:** Full-width rounded cyan notes box containing the formula line and three bulleted "Problems:" lines; a thin strip of gray panel remains below it. No bottom border of the outer red-stroked panel is visible before the image edge.
+
+## 3. Visual Defects / Anomalies
+
+1. **Missing ellipsis in row 3:** Rows 1 and 2 each contain 5 ellipsis dots mid-row; the pink "Use Position Index" row has a large empty gap between "5Î´" and "1-Î´" with no dots â inconsistent with the other two rows.
+2. **Bottom clipping:** The outer red-bordered gray panel shows left, top, and right borders but no bottom border â it appears to run off the bottom edge of the slide/image.
+3. **Inconsistent text spacing:** "position # 4" (space before 4, first occurrence) vs "position #4" (no space, second occurrence). The red underline under "position # 4" also extends past the "4" (trailing-space underline).
+4. **Triangle/border overlap:** The orange triangles sit on/slightly overlap the bottom dashed red line of the pink row.
+5. **Minor spacing irregularities in callout box:** "Encoding= 1" (space after =), double spaces in "Seq. Length  (", "is  scalar  and", "is  vector   (how", and a space before the question mark ("them ?").
+6. **No wrong-language or garbage text:** All content is English plus the Greek Î´ used symbolically; nothing is illegible; no placeholder/lorem strings detected.

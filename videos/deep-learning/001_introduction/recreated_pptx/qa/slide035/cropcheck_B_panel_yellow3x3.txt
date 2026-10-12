@@ -1,0 +1,37 @@
+## Element-by-Element Comparison
+
+**Grid structure (3Ã3 yellow cells + partial green column right + partial green row bottom):** Present in both. Same white gutters between cells, same thin dark cell borders, same partial green column at the right edge and partial green strips along the bottom.**Table data (cell values + multiplier labels):**
+| Cell | IMG1 (recreation) | IMG2 (original) | Match |
+|---|---|---|---|
+| R1C1 | 1 / x1 | 1 / x1 |1C2 | 1 / x0 | 1 / x0 | R1C3 | 1 / x1 | 1 / x1| R2C1 | 0 / x0 | 0 / x0| R2C2 | 1 / x1 | 1 / x |
+| R2C3 | 1 / x0 | 1 / x0 | R3C1 | 0 / x1 | 0 / x1| R3C2 | 0 / x0 | 0 / x |
+| R3C3 | 1 / x1 | 1 / x1 | digit/label pairs are verbatim, including the "x0" glyph rendered as a round O-form in both. Per ground rule (e), judged as small labels â both render them as red-orange small bold text at bottom-right of each cell**Digit typography & placement:** Both use heavy black slab-serif digits, left-of-center horizontally, vertically centered, with the multiplier label anchored bottom-right. Label-to-digit alignment and label offsets match**Black annotation line (pointer across top row):** Present in both, originating above the R1C2 digit and rising to the right. Geometry matches (start point â same relative position in the cell, same trajectory).
+
+**Yellow fill:** Both â #FFFF00. **Green cells:** both â #00B050-class bright green.one shade nuance below).
+
+**Ground-rule items confirmed:** No missing content regions (rule f/6 â nothing absent); no delimiter geometry in scope (rule 7); no table truncation (rule 8); no house chrome in either crop, so no chrome dispute; typed-vs-handwritten not applicable.
+
+---
+
+## Discrepancy List
+
+1. **MINOR â Black line stroke weight.** The annotation line in IMG1 is noticeably thicker (~2Ã the stroke weight of IMG2's line, which is thinner and slightly tapered). Same path, heavier ink. Confidence: high.
+
+2. **MINOR â Line terminus vs. green column.** In IMG2 the line exits at the top-right corner passing just *above* the top green cell; in IMG1 the heavier stroke dips slightly lower and grazes/crosses the top edge of the right green cell. Given the line is a free-spanning annotation (not a contained element), this is a cosmetic graze rather than a true frame-containment violation, but it is a visible geometry deviation. Confidence: medium.
+
+3. **MINOR â Bottom-right green cell shade.** In IMG2 the third-row right green cell reads slightly darker/more teal than the two green cells above it; IMG1 renders all three right-column green cells in the identical bright green. Confidence: medium (could be JPEG chroma fade in the original).
+
+4. **MINOR â Row proportions.** Recreation rows are fractionally shorter relative to crop width (â0.22 vs â0.24 height/width ratio); cell gaps and ordering are otherwise identical. Confidence: lowâmedium.
+
+No BLOCKER or MAJOR defects found. All cell data exact, no missing elements, no text clipping or collisions, no vertical-centering faults (digits and labels sit correctly within cells), labels do not overlap cell borders.
+
+---
+
+## Visual-Quality Defects in the Recreation
+
+- The over-weight annotation line (item 1) is the only visual-quality nit; it is fully legible and does not obscure any digit or label.
+- No text overflow, wrong wrapping, or illegible content.
+
+---
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

@@ -1,0 +1,40 @@
+## Element-by-Element Comparison (equal scale, same region x384-500, y150-245)
+
+**1. Red stacked fraction "KÂ·q / âd" (Scaling column, top)**
+- Present in both, stacked 2D format with horizontal bar and radical over *d* â matches (and matches the mandated professional 2D format).
+- IMG1 fraction block sits slightly HIGHER relative to the Mask column top than IMG2 (bar at ~y118 vs ~y133 in crop coords; ~5 slide-px offset). **MINOR** (confidence 70%).
+- Numerator dot: IMG2 reads "K.q" with the dot sitting near the baseline (period-like); IMG1 uses a centered middle dot "KÂ·q". **MINOR** (confidence 50% â blur makes the dot's exact vertical position ambiguous).
+- Radical/overbar geometry and red color (#C00000-ish) match well.
+
+**2. Rotated red "Scalingâ¦" label (top glyph(s))**
+- IMG2 shows only the single topmost "S" near the bottom of the crop (top of S â y230/285). IMG1 shows "S-c-a" â three glyphs, starting at â y150/285. The recreation's rotated label begins roughly ONE FULL GLYPH (~13 slide-px) higher than the original, so substantially more of the label is visible inside the identical crop window. Glyph heights are comparable (~40 crop-px), so this is primarily a vertical-anchor/offset difference of the rotated text along the pink column, not merely a font-size difference (though IMG1 glyphs also read ~10â15% wider/bolder).
+- This is a real, visible alignment deviation on the label against its column at equal scale. **MAJOR** (confidence 65% â JPEG blur prevents fully ruling out washed-out glyphs above the S in IMG2, but bold red-on-pink ink should survive blur, so the offset is most likely genuine).
+
+**3. Green Mask column top + header**
+- Green column with dark-green rotated "Mask" header matches in position, orientation (top-to-bottom), and color family in both. **Match.**
+
+**4. Pale-yellow first cell with red "ââ"**
+- Present in both: pale-yellow fill, thin red/orange border, red "ââ". The minus sign in IMG2 reads as a short dash; IMG1's is similar. Vertical centering of "ââ" within the cell looks correct in both. **Match.**
+
+**5. Red arrow in the gap (pointing right toward Mask)**
+- Present in both, shaft continuous into a right-pointing head, at approximately the same height. IMG1's arrowhead is noticeably larger/solid-heavier than IMG2's smaller head. **MINOR** (confidence 70%).
+
+**6. "Proâ¦" pill sliver (top right)**
+- Both show the pale yellow-green pill with dark bold text entering from the right edge. IMG2 reveals "Prob"; IMG1 reveals only "Pro" â the pill/text is shifted a few px right (or the text is a touch narrower) in the recreation. **MINOR** (confidence 60%).
+
+**7. Backgrounds / house chrome**
+- Pink/lavender column strip, purple slide background, and strip edges align within a few px in both crops. **Match.** House-frame chrome not implicated in this crop.
+
+**Missing elements:** none â every element visible in IMG2 (fraction, label sliver, Mask header, ââ cell, arrow, pill sliver) is present in IMG1. No frame-containment violations visible in this crop; no clipping or collisions beyond the expected crop cut-offs.
+
+## Discrepancy Summary
+1. **MAJOR** â Rotated red "Scalingâ¦" label starts ~one glyph higher in the recreation (three glyphs visible in crop vs one in original at equal scale), indicating a vertical anchor/size mismatch of the rotated label. Confidence: moderate (65%).
+2. **MINOR** â Fraction block sits ~5 slide-px higher relative to the Mask column than in the original. Confidence 70%.
+3. **MINOR** â Numerator dot rendered as centered "Â·" vs original's lower/period-like dot. Confidence 50%.
+4. **MINOR** â Arrowhead larger/heavier than original. Confidence 70%.
+5. **MINOR** â Pill sliver offset: "Pro" visible vs "Prob" in original. Confidence 60%.
+
+## Visual-Quality Defects (recreation)
+- None beyond the above; no overflow, clipping, wrapping, or legibility problems. Fraction, cell text, and header are clean and correctly contained.
+
+FINAL VERDICT: **FAIL** for 'faithful, usable recreation' â driven solely by the MAJOR vertical offset of the rotated "Scaling" label (one-glyph misalignment at equal scale); all other deviations are MINOR and the content set is otherwise complete and verbatim.

@@ -1,0 +1,51 @@
+# Visual QA Comparison â Slide 059 (Transformer Encoder / Classification Head)
+
+## 1. Verbatim Text Transcription
+
+**Image 1 (recreation render):**
+- "Output Classes" â Câ, Câ, Câ (blue, with subscripts)
+- "Softmax Layer" (orange banner label)
+- "Softmax Î£" (Ã3, inside dark-blue circles)
+- "Single vector representing the whole sequence" (red italic, two lines)
+- "Global Average Pooling" (black, bold, in white box)
+- "Output Sequence" (red bold, left margin)
+- Token labels: Yâ, Yâ, Yâ, Yâ, Yâ, Y Y_{N-2}, Y_{N-1} (red italic subscripts)
+- "Transformer Block" (Ã3, white on dark red)
+- "Transformer Encoder" (large white bold)
+- "Input Sequence" (red bold)
+- "Word Embedding Vectors" (green bold, three lines)
+- Token labels: Xâ, Xâ, Xâ, Xâ, Xâ, X_{N-2}, X_{N-1}
+- "+" (white on red circle)
+- "Position Information Vectors" (blue bold, three lines)
+- "Vector_{P0}", "Vector_{P1}", "Vector_{P2}", "Vector_{P3}", "Vector_{P4}", "Vector_{P5}" â¦ "Vector_{PN-2}", "Vector_{PN-1}"
+- Slide badge: "59" (in yellow circle, purple rim, top right)
+
+**Image 2 (original video frame):**
+- Identical text content: "Output Classes"; Câ, Câ, Câ; "Softmax Layer"; "Softmax Î£" Ã3; "Single vector representing the whole sequence"; "Global Average Pooling"; "Output Sequence"; Y-series tokens (subscripts tiny but consistent with Yââ¦Y_{N-1}); "Transformer Block" Ã3; "Transformer Encoder"; "Input Sequence"; "Word Embedding Vectors"; X-series tokens; "+"; "Position Information Vectors"; "Vector_{P0}" â¦ "Vector_{PN-1}"; badge "59".
+- No garbage strings, placeholders, or wrong-language text in either image. Some subscripts in Image 2 (e.g., Y and X indices, Vector P-subscripts) are too small/compressed to read with certainty, but their shape is consistent with the same labels.
+
+## 2. Similarities
+
+- **Same content and structure, top to bottom:** Output Classes â Softmax Layer (peach band with three Î£ circles fanning down to a pastel token strip) â Global Average Pooling (white boxed bar) â Output Sequence token row (blue dashed capsule) â Transformer Encoder (red block with three "Transformer Block" bars, dotted vertical ellipsis columns, center title) â Input Sequence pink panel containing Word Embedding row (green dashed capsule), red "+" node, and Position Information Vectors row (orange dashed capsule).
+- **Same color coding:** red left annotations for Output/Input Sequence, green for Word Embedding, blue for Position Information, peach softmax band, dark-red encoder block, pink input panel, blue upward block arrows between layers.
+- **Same ellipsis convention:** 5-dot horizontal ellipsis groups in the Output row (dark blue), Word-Embedding row (green), and Position-Vector row (green); vertical 3-dot columns flanking "Transformer Encoder."
+- **Same first/last token pattern:** sequences run Y/X/Vector P0âP5, then ellipsis, then N-2 and N-1.
+- **Same slide chrome:** thin red frame, light slide background, yellow "59" badge with purple rim at top right.
+- Same red fan-out connection lines from the pastel vector strip to the three softmax circles, and same white block arrows.
+
+## 3. Differences
+
+- **Token cell styling:** Image 1 renders each token as a **5-cell outlined strip** (cream cells + red label cell + lavender/blue end cells) â the certified 038-family grammar. Image 2's tokens are **simpler, more compact boxes** (fewer visible cells, less pronounced outlines). This is a stylistic divergence from the original frame.
+- **Slide number color:** "59" is dark/black in Image 1; reddish-pink in Image 2.
+- **Artifacts in Image 2 only:** a white **mouse cursor** is visible over the second softmax circle; visible **video compression blur**, especially on small subscripts; black letterbox wedges at the bottom corners of the video frame.
+- **Image 1 only:** a thin black strip along the very bottom edge of the canvas (present, though smaller than Image 2's letterboxing); white margin surrounding the red slide frame.
+- **Proportions/spacing:** Image 1 is larger and airier â taller token cells, wider gaps between dashed capsules and panel edges; Image 2 is denser with the encoder block and input panel occupying proportionally more vertical space.
+- **Typography:** Image 1 uses cleaner, heavier label rendering (e.g., "Vector_{P0}" italic serif clearly legible); Image 2's equivalents are smaller and partially blurred by compression. Subscript styling (italic red letters with numeric subscripts) matches.
+- **Softmax circles:** Image 2 shows a stronger red crescent/hemisphere at the base of each Î£ circle and denser fan lines; Image 1's fan lines are lighter/thinner.
+- **Border thickness:** Image 1's red outer frame is noticeably thicker than Image 2's.
+
+## 4. Verdict
+
+**Image 1 (the recreation) is better as a visual artifact.** Concrete evidence: every text element â including the small subscripts (Y_{N-2}, X_{N-1}, Vector_{PN-2}) â is crisp and fully legible, whereas Image 2 suffers from compression blur and an intruding mouse cursor over the middle softmax circle. Image 1 also preserves all structural elements (arrows, ellipses, dashed capsules, color-coded annotations, badge) with consistent alignment.
+
+**Caveat on fidelity:** Image 1 is not a pixel-for-pixel clone. Its most notable deviations are the 5-cell outlined token treatment (vs. Image 2's simpler compact boxes), the black "59" instead of red, and the thicker red frame. If the goal is strict faithfulness to the original lecture frame, those token-cell and badge-color details would need adjustment; if the goal is a clean, legible recreation in the certified family grammar, Image 1 succeeds.

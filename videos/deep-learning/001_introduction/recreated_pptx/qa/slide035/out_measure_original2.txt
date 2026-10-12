@@ -1,0 +1,179 @@
+=== A. RED TOP RULE rescan (loose reddish) y0..70 ===
+=== B. CHROME ZONES in original frame ===
+panel left border col candidates (reddish cols x30..60, y100..400):
+  col x=58: 300
+  col x=59: 258
+panel top border row candidates (reddish rows y38..52, x100..800):
+  (20,20) rgb=(254,255,253) #FEFFFD top-left canvas
+  (480,20) rgb=(254,255,253) #FEFFFD top-center canvas
+  (20,250) rgb=(254,255,253) #FEFFFD left margin
+  (500,460) rgb=(37,32,90) #25205A between caption?
+=== C. TITLE fine metrics ===
+title ink bbox x58..713 y55..109
+column-top percentiles: p5=70 p25=76 p50=76
+column-bottom percentiles: p75=93 p95=99 max=109
+word gaps (end,start,width): [(59, 266, 207), (333, 344, 11), (372, 384, 12), (471, 483, 12), (561, 572, 11), (609, 623, 14)]
+word extents: [(58, 59), (266, 333), (344, 372), (384, 471), (483, 561), (572, 609), (623, 713)] total ink width 656
+first-14-col ink rows: 55 109
+=== D. LEFT GRID: red border exact rect ===
+vertical scan x60..320 at y=270 (looking for red border cols):
+  x=78: (138,26,40)
+  x=79: (138,10,23)
+  x=80: (208,109,112)
+  x=81: (220,166,156)
+  x=240: (144,65,68)
+  x=241: (216,135,141)
+horizontal scan y190..350 at x=150 (red border rows):
+  y=208: (236,148,160)
+  y=209: (132,34,47)
+  y=210: (198,133,141)
+  y=334: (202,103,108)
+  y=335: (137,23,33)
+  y=336: (202,127,132)
+scan y190..350 at x=280:
+=== E. LEFT GRID: green numerals per cell (need grid lines) ===
+green ink bbox x83..319 y215..332 n=4467
+green col runs: [(83, 84), (91, 103), (111, 116), (123, 134), (142, 147), (158, 164), (174, 181), (186, 203), (206, 212), (218, 229), (236, 237)]
+green row runs: [(215, 217), (219, 332)]
+sample colors inside left grid:
+  (100,225) rgb=(178,224,196) #B2E0C4 r1c1 area
+  (200,270) rgb=(240,220,211) #F0DCD3 mid cell
+  (160,320) rgb=(82,171,117) #52AB75 bottom cell
+  (85,270) rgb=(213,224,208) #D5E0D0 left border area
+  (245,270) rgb=(203,203,201) #CBCBC9 right-of-green area
+=== F. FILTER GRID exact ===
+filter yellow col profile nonzero runs:
+  x271..299
+  x302..331
+  x334..363
+filter yellow row profile nonzero runs:
+  y220..290
+filter numeral ink bbox x275..352 y200..284 n=310
+=== G. PANEL GRID exact (yellow 3x3 + green cells + numerals + multipliers) ===
+panel yellow col runs:
+  x405..518
+  x520..576
+  x699..699
+panel yellow row runs:
+  y201..241
+  y243..284
+  y287..328
+panel green col runs:
+  x404..459
+  x463..517
+  x520..575
+  x578..633
+  x637..691
+panel green row runs:
+  y200..241
+  y243..284
+  y288..328
+  y331..372
+  y375..416
+=== H. RED MULTIPLIERS per yellow cell ===
+multiplier red ink total n=407 bbox x438..574 y229..323
+=== I. OUTPUT GRID exact (tan borders) ===
+output tan col runs (count>8):
+  x697..702
+  x704..740
+  x748..803
+  x810..811
+  x813..821
+  x825..863
+  x870..871
+output tan row runs (count>8):
+  y189..232
+  y234..319
+  y330..330
+  y374..374
+output cell fill samples:
+  (720,210) rgb=(0,4,0) #000400 out r1c1 upper
+  (720,225) rgb=(146,162,136) #92A288 out r1c1 lower
+  (790,210) rgb=(246,245,240) #F6F5F0 out r1c2
+  (850,210) rgb=(246,245,240) #F6F5F0 out r1c3
+  (720,260) rgb=(246,245,240) #F6F5F0 out r2c1
+  (850,350) rgb=(255,255,255) #FFFFFF out r3c3
+'4' dark ink bbox x692..732 y201..216 n=263
+  '4' ink median color: (np.int64(20), np.int64(28), np.int64(13))
+=== J. ARROW trace (black ink between/over grids) ===
+black ink in x688..760: n=241
+  bbox x688..733 y198..376
+  y=198: x688..689 n=2
+  y=199: x688..690 n=3
+  y=200: x688..690 n=3
+  y=201: x690..693 n=4
+  y=202: x691..698 n=7
+  y=203: x694..729 n=12
+  y=204: x697..730 n=14
+  y=205: x698..730 n=16
+  y=206: x701..729 n=18
+  y=207: x703..729 n=19
+  y=208: x706..729 n=19
+  y=209: x708..730 n=21
+  y=210: x711..730 n=18
+  y=211: x714..730 n=15
+  y=212: x715..731 n=17
+  y=213: x712..731 n=20
+  y=214: x712..730 n=19
+  y=215: x726..729 n=4
+  y=216: x727..729 n=3
+  y=373: x731..731 n=1
+  y=374: x731..733 n=3
+  y=375: x731..732 n=2
+  y=376: x732..732 n=1
+black ink above yellow block y150..204 x395..640: n=206
+  bbox x536..639 y195..204
+  y=195: x628..639 n=12
+  y=196: x611..639 n=29
+  y=197: x600..627 n=28
+  y=198: x588..609 n=22
+  y=199: x579..600 n=22
+  y=200: x566..592 n=27
+  y=201: x560..580 n=21
+  y=202: x553..568 n=16
+  y=203: x546..559 n=14
+  y=204: x536..550 n=15
+=== K. CAPTION BOX exact ===
+caption fill row runs (count>200):
+  y449..457
+  y472..504
+caption fill col runs (count>30):
+  x72..83
+  x99..99
+  x117..119
+  x125..125
+  x131..142
+  x151..154
+  x166..172
+  x178..178
+  x186..187
+  x192..202
+  x207..209
+  x214..214
+  x228..235
+  x253..255
+  x261..262
+  x270..281
+  x300..306
+  x311..316
+  x323..330
+  x344..348
+  x373..373
+  x388..390
+  x411..414
+  x424..427
+  x453..453
+  x472..475
+  x480..485
+  x495..888
+caption border scan rows y425..525 (blue count>300):
+caption border scan cols x50..900 (blue count>25):
+caption blue text ink x80..877 y456..498 n=1331
+blue text row runs (count>3):
+  y456..472
+caption red text ink: n=1915 x94..479 y481..502
+=== L. LABELS 'Image'/'Filter' search y150..205 ===
+Image-zone: ink x105..319 y181..204 n=1081
+  col runs: [(105, 108), (114, 134), (138, 152), (154, 167), (171, 183), (275, 288), (292, 294), (300, 303), (306, 314)]
+Filter-zone: ink x275..340 y181..201 n=539
+  col runs: [(275, 288), (292, 294), (300, 303), (306, 314), (316, 328), (332, 340)]

@@ -1,0 +1,175 @@
+{
+  "slide_title": "How many filter can we apply on the image",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "We can Apply **multiple filters** on the **same location** (e.g. 5 different filters on the same location.  For Example:",
+      "[ one to **detect edges**, one to **detect lines**, one to **detect curves**, ...etc)"
+    ],
+    "labels": [
+      "RGB",
+      "3 dims",
+      "X (small hand-drawn circle-with-X target mark on the input slab)",
+      "7",
+      "7",
+      "5",
+      "3",
+      "=",
+      "Depth=5 dims",
+      "How many weights for these 5 neurons?",
+      "[thin solid black strip across the very bottom of the frame is the video-player progress bar, not slide content]"
+    ],
+    "equations": [
+      "5 \u00b7 7 \u00b7 7 \u00b7 3 = 735"
+    ]
+  },
+  "layout": {
+    "arrangement": "Horizontal stacked bands: a light-gray title band across the very top (y ~0-22%) with a centered dark-red bold title; a full-width pale-yellow text box directly below (y ~24-45%) holding a two-line paragraph; a large white panel with a thin red border fills the lower ~50% of the slide (y ~46-95%) and contains one wide hand-drawn CNN diagram (orange input slab on the left, stack of colored filter slabs in the center, tan output cube on the right) with handwritten annotations and a red equation at the bottom-left; a thin black video-player bar (not slide content) sits at the very bottom edge (y ~95-100%).",
+    "regions": [
+      {
+        "name": "Title band",
+        "position": "top, full width, ~0-22% height",
+        "content": "Centered bold dark-red title 'How many filter can we apply on the image' on a light-gray background"
+      },
+      {
+        "name": "Explanation text box",
+        "position": "upper-middle, full width with ~2% side margins, ~24-45% height",
+        "content": "Pale-yellow box with a black serif paragraph; 'multiple filters' bold black, the FIRST 'same location' bold dark-red (second occurrence regular), 'detect edges/lines/curves' bold black"
+      },
+      {
+        "name": "Diagram panel",
+        "position": "bottom, full width, ~46-95% height",
+        "content": "White area with thin red border containing the hand-drawn convolution-depth diagram: handwritten labels (RGB, 3 dims, 7, 7, 5, 3, =, Depth=5 dims), a small circle-with-'X' pixel mark on the input slab, the question 'How many weights for these 5 neurons?' and the red equation '5 \u00b7 7 \u00b7 7 \u00b7 3 = 735'"
+      },
+      {
+        "name": "Video-player bar",
+        "position": "very bottom, full width, ~95-100% height",
+        "content": "Solid black strip (player progress bar, not slide content)"
+      }
+    ],
+    "hierarchy": "The title dominates as the largest/heaviest text (bold, dark red, ~32pt, centered). The body paragraph is secondary (~20pt black with red bold highlights). The diagram occupies the most area but its handwritten labels are small; the red equation at bottom-left is a strong focal accent."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Input image slab: a hand-drawn 3D rectangular slab (the RGB input image) in perspective, orange/brown fill with darker orange edges; handwritten label 'RGB' above it; '3 dims' to its left with a tiny arrow pointing at the slab; a small hand-drawn circle containing an 'X' marks a pixel on the slab face; two handwritten '7' labels with small arrows mark the 7x7 patch extent (one at the left edge of the dashed region, one below-left); several horizontal dashed black lines (exact count not specified in source) run from the slab rightward toward the filter stack representing the receptive-field column.",
+      "colors": [
+        "#D2691E",
+        "#8B4513",
+        "#000000"
+      ],
+      "position": "left side of diagram panel, ~15-30% x, ~50-80% y"
+    },
+    {
+      "type": "diagram",
+      "description": "Filter stack: a cluster of overlapping hand-drawn 3D slabs (the 5 filters) arranged left-to-right; front row of five slabs colored cyan-blue, green, red, yellow, purple; three partially hidden slabs peek out behind them in tan #C8A870, light gray #B0B0B0 and dark navy #203860; handwritten '5' with a small pointer sits above the stack and handwritten '3' below it (each filter is 7x7x3); dashed lines connect the stack back to the input slab.",
+      "colors": [
+        "#30A0D0",
+        "#40B050",
+        "#E02020",
+        "#F0E020",
+        "#8040C0",
+        "#C8A870",
+        "#B0B0B0",
+        "#203860",
+        "#000000"
+      ],
+      "position": "center of diagram panel, ~30-55% x, ~50-78% y"
+    },
+    {
+      "type": "diagram",
+      "description": "Output volume: a large hand-drawn 3D cube in tan/burlywood with slightly darker top and side faces; a row of 5 circles is drawn along its top face (left to right: tan, tan, tan, dark brown, green) and 5 circles on its front face (left to right: teal, green, red, yellow, purple), one per filter output; handwritten label 'Depth=5 dims' at its upper right; a plain black horizontal arrow at the cube's upper left points rightward into the cube.",
+      "colors": [
+        "#E8C890",
+        "#D9A85E",
+        "#D2B48C",
+        "#5C3A21",
+        "#40B050",
+        "#20B0A0",
+        "#E02020",
+        "#F0E020",
+        "#8040C0",
+        "#000000"
+      ],
+      "position": "right side of diagram panel, ~54-82% x, ~50-85% y"
+    },
+    {
+      "type": "other",
+      "description": "A large '=' sign placed between the filter stack and the output cube, indicating the 5 filters produce the depth-5 output volume.",
+      "colors": [
+        "#202060"
+      ],
+      "position": "between filter stack and cube, ~51-54% x, ~63-68% y"
+    },
+    {
+      "type": "other",
+      "description": "Handwritten-style black question 'How many weights for these 5 neurons?' with the answer directly below in red: '5 \u00b7 7 \u00b7 7 \u00b7 3 = 735' (5 filters times 7x7 spatial size times 3 input channels equals 735 weights).",
+      "colors": [
+        "#000000",
+        "#E02020"
+      ],
+      "position": "bottom-left of diagram panel, ~7-45% x, ~83-95% y"
+    }
+  ],
+  "imagery": [
+    "No photographs or clip-art; the only imagery is the sketch/hand-drawn marker-style 3D diagram (orange input slab, colored filter slabs, tan output cube with colored circles) inside the red-bordered panel, resembling a whiteboard illustration."
+  ],
+  "colors": {
+    "background": "#FFFFFF (white slide; top band #E8E8E8; text box #FFFFE1)",
+    "title_text": "#990000",
+    "body_text": "#000000",
+    "accents": [
+      "#990000 (dark-red title and bold 'same location')",
+      "#CC0000 (thin red border of diagram panel)",
+      "#E02020 (red equation)",
+      "#D2691E (orange input slab)",
+      "#30A0D0 / #40B050 / #E02020 / #F0E020 / #8040C0 (five filter colors)",
+      "#E8C890 (tan output cube)"
+    ]
+  },
+  "typography_notes": "Title: bold sans-serif (Arial/Calibri-like), ~32-34pt, dark red, centered, sentence case (no all-caps; note the verbatim singular 'filter'). Body: serif (Times/Georgia-like), ~20pt, black, left-aligned wrapped paragraph with bold emphasis; the first 'same location' is bold AND dark red (the second occurrence in the same line is regular). In the bullets above, **...** marks bold. Diagram annotations use a handwriting-style font (Comic Sans/Segoe Print-like), black, ~16-18pt; the question and the red equation are in the same handwritten style, the equation using middle dots '\u00b7'. No numbered or bulleted lists; the paragraph is plain wrapped text.",
+  "animation_state": "Slide appears fully revealed with no mid-build elements. The black strip at the very bottom is the video player's progress bar, not an animated slide element.",
+  "recreation_brief": "1. Slide setup: create a 16:9 slide with a white #FFFFFF background; all x/y positions below are percentages of full slide width/height.\n2. Title band: draw a full-width rectangle from y 0% to 22%, fill #E8E8E8, no outline.\n3. Title: place the exact text 'How many filter can we apply on the image' (keep the verbatim singular 'filter') centered in the title band, Arial Bold ~32-34pt, color #990000.\n4. Explanation box: draw a rectangle from x 2% to 98%, y 24% to 45%, fill #FFFFE1, no outline (none specified in source).\n5. Paragraph line 1: inside the explanation box, left-aligned Times New Roman ~20pt black, type exactly 'We can Apply multiple filters on the same location (e.g. 5 different filters on the same location.  For Example:' (capital 'A' in 'Apply' and the double space after 'location.' are verbatim); bold 'multiple filters' in black; bold the FIRST 'same location' in #990000; leave the second 'same location' regular black.\n6. Paragraph line 2: same font, size and color directly below line 1, type exactly '[ one to detect edges, one to detect lines, one to detect curves, ...etc)' with 'detect edges', 'detect lines' and 'detect curves' bold black.\n7. Diagram panel: draw a full-width rectangle from y 46% to 95%, white fill, thin red border #CC0000 (~2pt).\n8. Input slab: at x ~15-30%, y ~50-80% (inside the panel), draw a hand-drawn-style 3D rectangular slab in perspective, fill #D2691E with darker #8B4513 edges.\n9. Label 'RGB': handwriting-style font (Comic Sans/Segoe Print-like), black, ~16-18pt, placed above the input slab.\n10. Label '3 dims': same handwriting style, black, placed to the left of the slab with a tiny arrow pointing at the slab.\n11. Pixel mark: draw a small hand-drawn circle containing an 'X' on the front face of the input slab.\n12. First '7' label: handwritten '7' with a small arrow at the left edge of the dashed region, marking the 7x7 patch extent.\n13. Second '7' label: handwritten '7' with a small arrow below-left of the slab, completing the 7x7 patch extent marking.\n14. Receptive-field lines: draw several horizontal dashed black lines (exact count not given in source; use ~5 evenly spaced) running from the right edge of the input slab toward the filter stack.\n15. Filter stack: at x ~30-55%, y ~50-78%, draw five overlapping hand-drawn 3D slabs arranged left-to-right, front-row fills #30A0D0, #40B050, #E02020, #F0E020, #8040C0, with three partially hidden slabs behind them in #C8A870, #B0B0B0 and #203860.\n16. Label '5': handwritten '5' with a small pointer above the filter stack.\n17. Label '3': handwritten '3' below the filter stack (each filter is 7x7x3).\n18. Equals sign: place a large '=' in color #202060 between the filter stack and the output cube (x ~51-54%, y ~63-68%).\n19. Output cube: at x ~54-82%, y ~50-85%, draw a large hand-drawn 3D cube, fill #E8C890 with slightly darker top/side faces #D9A85E.\n20. Top-face circles: along the cube's top face, left to right, draw 5 circles colored #D2B48C, #D2B48C, #D2B48C, #5C3A21, #40B050 (tan, tan, tan, dark brown, green).\n21. Front-face circles: along the cube's front face, left to right, draw 5 circles colored #20B0A0, #40B050, #E02020, #F0E020, #8040C0 (teal, green, red, yellow, purple; one per filter output).\n22. Label 'Depth=5 dims': handwriting style, black, at the upper right of the cube.\n23. Arrow: draw a plain black horizontal arrow at the cube's upper left pointing rightward into the cube.\n24. Question: at x ~7-45%, y ~83-95% (bottom-left of the panel), place handwriting-style black text ~16-18pt: 'How many weights for these 5 neurons?'.\n25. Equation: directly below the question, same handwriting style, red #E02020, with middle dots: '5 \u00b7 7 \u00b7 7 \u00b7 3 = 735'.\n26. Exclusion: do NOT draw the black strip at y 95-100% - it is the video-player progress bar, not slide content; the slide ends at the red-bordered panel.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Kept subtitle_or_header = null: no subtitle or secondary header exists in the source (only title band, explanation paragraph, diagram panel and video bar); the pale-yellow box is body text, not a subtitle.",
+      "layout.arrangement: corrected 'fills the lower ~55% of the slide' to 'fills the lower ~50% (y ~46-95%)' to match the percentages in layout.regions.",
+      "layout.regions: added the circle-with-'X' pixel mark to the Diagram panel region content so every verbatim label and visual element is covered by a region.",
+      "visual_elements (filter stack): replaced the vague 'additional partially hidden slabs' with the exact count 'three' (one each in #C8A870, #B0B0B0, #203860, matching the element's color list).",
+      "visual_elements (input slab): annotated 'several' dashed lines with '(exact count not specified in source)' since no exact count is derivable.",
+      "recreation_brief: removed the invented 'thin black outline' on the pale-yellow explanation box (no outline is specified in the source).",
+      "recreation_brief: replaced the unsupported '~2.2in' cube size with the source's coordinate bounds (x ~54-82%, y ~50-85%).",
+      "recreation_brief: corrected the question text size from ~20pt to ~16-18pt to match typography_notes for diagram annotations.",
+      "recreation_brief and layout.regions: specified that only the FIRST 'same location' is bold dark-red #990000 while the second occurrence stays regular black, matching the verbatim ** markers.",
+      "recreation_brief: added the missing color for the '=' sign (#202060).",
+      "recreation_brief: replaced the unsupported exact '4-5' dashed lines with 'several (~5 suggested)', consistent with the source wording.",
+      "recreation_brief: rewritten as a 26-step ordered checklist with one placement per step, each giving exact verbatim text, slide-coordinate position, hex color, font/size and shape type."
+    ],
+    "uncertain_items": [
+      "Exact number of horizontal dashed receptive-field lines: source says only 'several' (~5 used as a rendering suggestion).",
+      "Per-circle hex for the three 'tan' circles on the cube's top face: source lists tans #E8C890, #D9A85E and #D2B48C without mapping them to individual circles; #D2B48C assumed.",
+      "Whether the pale-yellow explanation box has any border/outline is not specified in the source (treated as none).",
+      "Hand-drawn geometry details (perspective angles of the slabs, overlap offsets, arrow lengths, sketch stroke style) are not quantified in the source; only approximate percentage ranges are given.",
+      "No items were marked [?] in the source JSON."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_037.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 37,
+      "image": "slide_037.jpg",
+      "kept_frame": "frame_02753.jpg",
+      "start_sec": 2388.0,
+      "end_sec": 2752.0,
+      "frame_count": 365,
+      "old_group": 49,
+      "founder_frame_swap": false
+    },
+    "elapsed_s": 217.7,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1027.6
+  }
+}

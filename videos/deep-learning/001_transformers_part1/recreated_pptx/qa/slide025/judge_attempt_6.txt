@@ -1,0 +1,27 @@
+# Fidelity Check â Slide 025 "Encoder â Decoder Transformer"
+
+## Ground-truth confirmation
+Image 2 is a genuine content-bearing lecture frame (full transformer architecture slide), so full content comparison applies. House chrome (red outer frame, #E8E8E8 bg, yellow "25" badge, title box) is per founder mandate and excluded from the verdict.
+
+## Element-by-element comparison
+
+**Title:** "Encoder â Decoder Transformer" â verbatim match, red bold, centered, en dash correct. ARE HERE callout:** Present in both, same position (~19â26% x, ~24â40% y) and same target (points toward Scaled Dot-Product Attention panel). See discrepancy #1.
+
+**Scaled Dot-Product Attention panel (left):** Orange rounded panel, red italic two-line title, inner darker-orange frame with corner marks, vertical stack MatMul â SoftMax â Mask (opt.) â Scale â MatMul, all verbatim with matching order, arrows up, side feedback line from V up to the top MatMul â all present. Q (red) / K (purple) / V (purple) circles match original colors and
+
+**Multi-Head Attention panel (center):** Green-frame box, red italic title, top Linear with stacked gray shadow boxes, yellow Concat, purple "Scaled Dot-Product Attention" box with red outline, *h* annotation at right, three Linear boxes with stacked shadows, V (blue) / K (blue) / q (red) circles â all present, correct order and
+
+**Encoder/Decoder diagram (right):** Green outer frame, peach Encoder region / light-green Decoder region, "Encoder" (red italic) / "Decoder" (green italic) labels, Output (yellow) / Probabilities / Softmax / Linear / Add & Norm / Feed Forward / Add & Norm / Multi-Head Attention (red outline) / Add & Norm / Masked Multi-Head Attention (purple, 3-line wrap identical) / V-K-Q circles, two "Nx" ovals, both "Positional Encoding" labels, â + sine positional-encoding symbols, Input Embedding (brown) / Output Embedding (dark red), red Inputs arrow, "Outputs (shifted right)" with yellow highlight, yellow residual highlight block, red dashed connectors from both detail panels into the architecture â all present and correctly placed. Discrepancies
+
+1. **WE ARE HERE marker shape/color** â Original is a bright-red rounded balloon callout with an integral tail; recreation is a dark-maroon circle with a separate detached triangle pointer. Same message, position, and target. **MINOR**, confidence high.
+2. **Right red dashed arrow routing** â Original curves outside/along the right edge of the decoder frame down toward Outputs; recreation runs the dashed line inside the frame edge, ending near Outputs. Same start/end points, slightly different path. **MINOR**, confidence medium.
+3. ***h* annotation styling** â Original shows *h* as a plain italic label beside the arrow into the purple box; recreation encloses it in a small white circle. **MINOR**, confidence high.
+4. **Render crispness / slight proportion drift** â Recreation is sharper and the center panel is marginally wider (~31â53% vs ~32â51.5% of slide width); within tolerance for a video-frame source. **MINOR**, confidence medium.
+
+No BLOCKER or MAJOR defects: no missing elements, no text overflow or clipping, no frame-containment violations (all content sits inside the green diagram frame, the orange panel, and the house frame), all table-like/stacked content verbatim, all region colors approximate-match, all line wraps ("Masked / Multi-Head / Attention", "Feed / Forward", "Input / Embedding", "(shifted right)") identical to the original.
+
+## Visual-quality defects in the recreation
+- Detached triangle pointer on the WE ARE HERE marker reads slightly disjointed from the circle (cosmetic).
+- No overflow, clipping, collision, or illegibility detected anywhere.
+
+**FINAL VERDICT: PASS** for "faithful, usable recreation".

@@ -1,0 +1,63 @@
+== def box border rows (x100..850 full-width count) ==
+  y=114 n=750
+  y=115 n=750
+  y=208 n=750
+  y=209 n=750
+  defbox-left x=70 n=87
+  defbox-right x=890 n=87
+  defbox-right x=891 n=87
+
+== Remember box border rows (full-width) ==
+  y=275 n=750
+  remember-left x=70 n=35
+  remember-left x=82 n=21
+  remember-right x=882 n=35
+  remember-right x=883 n=35
+  remember bottom-border modal: [((np.int64(192), np.int64(160), np.int64(160)), 650)]
+  remember top-border modal: [((np.int64(224), np.int64(192), np.int64(192)), 8), ((np.int64(208), np.int64(160), np.int64(176)), 6), ((np.int64(224), np.int64(160), np.int64(176)), 6), ((np.int64(144), np.int64(96), np.int64(96)), 5)]
+
+== starburst ==
+  yellow bbox x800..886 y56..144 n=41
+  red-outline bbox x750..895 y44..134 n=1994
+
+== title band ==
+== bands title (x60..940) (y50..105, x60..940) ==
+  band y50..104 h=55 x197..895
+
+== def box text lines ==
+== bands defbox (y117..206, x80..885) ==
+  band y117..172 h=56 x80..868
+  band y179..199 h=21 x80..688
+  line1 modal: [((np.int64(16), np.int64(16), np.int64(80)), 213), ((np.int64(192), np.int64(192), np.int64(240)), 187), ((np.int64(176), np.int64(176), np.int64(224)), 171), ((np.int64(176), np.int64(176), np.int64(208)), 156)]
+  line3 modal: [((np.int64(0), np.int64(0), np.int64(80)), 211), ((np.int64(192), np.int64(192), np.int64(240)), 208), ((np.int64(16), np.int64(16), np.int64(80)), 118), ((np.int64(192), np.int64(192), np.int64(224)), 108)]
+
+== remember box text lines ==
+== bands remember (y233..274, x85..878) ==
+  band y233..248 h=16 x85..835
+  band y252..271 h=20 x85..143
+  remember text modal: [((np.int64(240), np.int64(192), np.int64(192)), 170), ((np.int64(240), np.int64(176), np.int64(192)), 142), ((np.int64(112), np.int64(32), np.int64(48)), 134), ((np.int64(240), np.int64(192), np.int64(208)), 131)]
+
+== legend box text lines ==
+== bands legend (y356..432, x73..260) ==
+  band y357..374 h=18 x76..219
+  band y379..392 h=14 x75..212
+  band y398..412 h=15 x75..258
+  band y418..431 h=14 x76..258
+  legend fill modal (bright): [((np.int64(240), np.int64(240), np.int64(240)), 1388), ((np.int64(224), np.int64(240), np.int64(240)), 940), ((np.int64(208), np.int64(224), np.int64(224)), 73), ((np.int64(176), np.int64(192), np.int64(192)), 67)]
+  legend border modal y354: [((np.int64(176), np.int64(192), np.int64(224)), 67), ((np.int64(160), np.int64(160), np.int64(208)), 63), ((np.int64(160), np.int64(176), np.int64(208)), 48), ((np.int64(176), np.int64(176), np.int64(208)), 46)]
+
+== equation panel text/bullets ==
+== bands eqpanel (x293..699) (y292..500, x293..699) ==
+  band y292..293 h=2 x293..698
+  band y298..308 h=11 x293..453
+  band y312..320 h=9 x293..576
+  band y323..366 h=44 x293..698
+  band y376..389 h=14 x293..662
+  band y393..413 h=21 x293..637
+  band y424..490 h=67 x293..677
+
+== callout text lines ==
+== bands weights-callout (y365..390, x736..894) ==
+  band y365..389 h=25 x736..893
+== bands input-callout (y422..447, x736..878) ==
+  band y422..446 h=25 x736..877

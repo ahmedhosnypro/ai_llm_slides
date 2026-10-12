@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "founder_directive": "2026-10-12",
+  "notes": "Direct-parent edges, founder-provided at curation (80 extracted groups -> 49 slides, dense renumbering; see unique_slides/new2old_mapping.json). A child slide = its parent's composition + delta. RECREATION (build) of a child is BLOCKED until its parent is certified (gen_status=passed AND visual_check=PASS in slides_progress.db). Analysis (12) and validation (13) are NOT blocked. Siblings of one parent unblock together. Child builds must IMPORT the parent's certified composition from recreated_pptx/build/components/ (u-components model), never copy-paste it. NOTE from founder on slide 37: the ORIGINAL slide 37 has a content-crowding issue — handle deliberately at build time (do not blindly clone the crowding; the founder flagged it, so the child delta must resolve crowding per the founder's intent, and any intentional layout deviation goes into the build report + judge ground rules).",
+  "edges": {
+    "16": [9],
+    "17": [16],
+    "18": [9],
+    "19": [9],
+    "25": [24],
+    "37": [36],
+    "41": [35]
+  },
+  "founder_slide_notes": {
+    "37": "Original slide 37 (old group 49, 'How many filter can we apply on the image') has a content-crowded issue (founder, 2026-10-12)."
+  }
+}

@@ -1,0 +1,34 @@
+render 2001x1125
+  FAIL title: got(86,21)..(1915,385) want(536,209)..(2199,323) d=(-450,-188,-284,62)
+  FAIL blue-frame: got(107,377)..(1890,1113) want(143,387)..(2523,1488) d=(-36,-10,-633,-375)
+  FAIL Lbox_top: None
+  FAIL Mbox_top: None
+  FAIL Rbox_top: None
+  FAIL Lbox_bot: None
+  FAIL Mbox_bot: None
+  FAIL Rbox_bot: None
+  FAIL left-stack: got(380,727)..(417,929) want(432,762)..(556,1247) d=(-52,-35,-139,-318)
+  FAIL mid-grid: got(987,712)..(1080,912) want(1042,738)..(1444,1218) d=(-55,-26,-364,-306)
+  FAIL right-block-magenta: NO INK
+  FAIL right-block-yellow: got(1699,640)..(1804,950) want(1999,727)..(2375,1279) d=(-300,-87,-571,-329)
+  FAIL vertical-arrow: got(1681,930)..(1854,1124) want(1797,945)..(1814,1358) d=(-116,-15,40,-234)
+  FAIL horizontal-arrow: NO INK
+  containment: ink px left-of-frame=2509, right-of-frame=0, below-frame=0
+  bottom rows black frac: 0.1667 (expect 0)
+
+ISSUES:
+ - title: d=(-450,-188,-284,62)
+ - blue-frame: d=(-36,-10,-633,-375)
+ - Lbox_top: border run missing
+ - Mbox_top: border run missing
+ - Rbox_top: border run missing
+ - Lbox_bot: border run missing
+ - Mbox_bot: border run missing
+ - Rbox_bot: border run missing
+ - left-stack: d=(-52,-35,-139,-318)
+ - mid-grid: d=(-55,-26,-364,-306)
+ - right-block-magenta: no ink
+ - right-block-yellow: d=(-300,-87,-571,-329)
+ - vertical-arrow: d=(-116,-15,40,-234)
+ - horizontal-arrow: no ink
+ - containment: ink outside blue frame sides

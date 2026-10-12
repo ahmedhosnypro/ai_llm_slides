@@ -1,0 +1,47 @@
+# Fidelity Check â Slide 033 "Where to Get Filters for Recognition"
+
+## Setup per ground rules
+- House chrome (white canvas, gray panel with red border, yellow "33" badge) is present in IMG1 and is **excluded** from comparison per rule (a).
+- IMG2 is a genuine content slide (not a placeholder), so full content comparison applies.
+- The superscript "rd" in "(3^rd dim = 9)" is rendered as spatially raised text in IMG1 â per rule (e) this is **not** a discrepancy (and it matches the original's superscript style, including the purple tint).
+- Handwritten-look diagram labels use a marker-style font per rule (d) â glyph-shape differences alone would be MINOR. However, rule (d) does not excuse **missing** words.
+
+## Element-by-element comparison
+
+**Title:** "Where to Get Filters for Recognition" â verbatim match, red bold, centered, correct position. â
+
+**Text box (lavender-bordered):**
+- "Similarly, if images are k-D, parameters should also be k-D" â verbatim, bold, underlines on "images"/"parameters", red on "k-D" both occurrences. â
+- "For K=3 (RGB), use  K-D filter (third dim >> K=3)" â verbatim, red "K=3". â
+- "For K=9 (Satellite  images)  use 9-D filter (3^rd dim = 9)" â verbatim, red "K=9", superscript "rd" correct. â
+- "...etc" â present. â
+- Line breaks, blank-line gap after the first sentence, line spacing, and left alignment all match the original closely. â
+
+**Diagram (red-bordered box):**
+- Brown slanted plane with small cyan filter square â present, correct shape/colors. â
+- Middle tan slab with cyan block, handwritten "RGB" callout, "3 dims" label with horizontal arrows â present, correct. â
+- Right tan slab with cyan cube, "k dims" label with arrow â present, correct. â
+- Red arrow fan from the label to the three cyan filter regions â present, correct topology. â
+- Red label near bottom-left: recreation reads **"Filter"**, original reads **"Filters"** â verbatim mismatch (missing "s"). **MAJOR** (confidence: high).
+- Top-left label: recreation reads **"Graysc"** â the original reads **"Grayscale"**. The word is truncated (text box too narrow / clipping); the "ale" is absent. **MAJOR** (confidence: high â this is missing content, not a handwriting-style difference).
+- Top-right label: recreation reads **"Multiple"** â the original reads **"Multiple channels"**. The word "channels" is entirely absent. **MAJOR** (confidence: high).
+
+**Frame containment:** All diagram elements, text box, and title sit inside their frames; no ink crosses the red diagram border or the house panel edge. The truncated labels do *not* overflow â they stop short, confirming clipping/omission rather than overflow. â
+
+**Colors:** Title red, body navy, "k-D"/"K=3"/"K=9" red, diagram browns/tans/cyans, red arrows â all match within tolerance. â
+
+## Visual-quality defects in the recreation
+- "Graysc" label appears hard-clipped at its text-box boundary (illegible as "Grayscale").
+- "Multiple" occupies only ~60% of the width the original's "Multiple channels" occupies, leaving the top-right of the diagram box visibly emptier than the original.
+- No overflow, collision, or misalignment otherwise observed.
+
+## Discrepancy summary
+| # | Discrepancy | Severity | Confidence |
+|---|---|---|---|
+| 1 | Diagram label "Grayscale" truncated to "Graysc" | MAJOR | High |
+| 2 | Diagram label "Multiple channels" missing "channels" | MAJOR | High |
+| 3 | Red arrow label "Filters" rendered as "Filter" | MAJOR | High |
+
+## FINAL VERDICT: FAIL for 'faithful, usable recreation'
+
+All slide text outside the diagram is verbatim and correctly laid out, but three of the six diagram labels are truncated or missing words ("Graysc" / "Multiple" / "Filter"), which is a content-fidelity failure in the diagram region. Fixing the three label strings (widen the label boxes so "Grayscale" and "Multiple channels" render in full, and correct "Filters") would bring this to PASS.

@@ -1,0 +1,52 @@
+# Element-by-Element Comparison â Right Architecture Panel Crop
+
+## Discrepancies
+
+**1. MISSING: red dash-dot curved skip arrow on the right side â BLOCKER (confidence: high)**
+The original shows a long red dash-dot curved arrow running from the "Output Probabilities" region, arcing along the right edge of the Decoder panel, and terminating with an arrowhead at the "Outputs (shifted right)" label. The recreation has **no trace of this curve** â the right side of the Decoder panel instead shows only a solid thick green vertical band. This is a fully omitted visual element (rule 6), not a styling difference.
+
+**2. Decoder middle "Add & Norm" box wrong fill color â MAJOR (confidence: high)**
+In the original, the third decoder "Add & Norm" (between Multi-Head Attention and Masked Multi-Head Attention) is the same light blue as all other Add & Norm boxes, with light text. In the recreation it is filled magenta/pink with dark text, matching the Masked-Attention color family instead. Wrong color family for a labeled box.
+
+**3. "Output Probabilities" highlight footprint â MAJOR (confidence: high)**
+Original: only the word "Output" carries a yellow highlight; "Probabilities" sits on the plain (green/white) background. Recreation: the yellow highlight band covers **both** lines ("Output" and "Probabilities"). Per rule 8, the highlight band's visible footprint deviates from the original.
+
+**4. Embedding containers split into two boxes â MAJOR (confidence: medium-high)**
+In the original, the â + sine symbol row and the "Input Embedding" text sit inside **one** continuous brown rounded container (same for Output Embedding). The recreation renders this as **two separate stacked rounded boxes** (symbol box, then label box). Container geometry does not match the original's single wrapping container (rule 7).
+
+**5. Encoder "V" circle letter missing/illegible â MAJOR (confidence: medium)**
+Original bottom row of the encoder block: green circle labeled "V", blue "K", red "Q". Recreation: the leftmost green circle appears to contain **no visible "V" glyph** (green-on-green or absent). K and Q are present and correctly colored. If the letter is truly absent, this is missing text content.
+
+**6. Arrow style throughout â MINOR (confidence: high)**
+Original uses thin black connector lines with small arrowheads (LinearâSoftmax, block-to-block, OutputsâEmbedding). Recreation substitutes solid black triangles. Elements are present and correctly placed; styling only.
+
+**7. "N x" vs "Nx" â MINOR (confidence: high)**
+Recreation renders the tan repetition badge as "N x" (with space); original reads "Nx". Both badges present, same position/color.
+
+**8. Decoder container fill tint â MINOR (confidence: medium)**
+Original decoder rounded container has a gray-olive/green tint; recreation is neutral gray. Same family (gray container, gray-green vs gray) â approximate color only.
+
+**9. K/Q circle placement at encoder bottom edge â MINOR (confidence: medium)**
+In the original, the K and Q circles straddle the encoder container's bottom edge (half in/half out); in the recreation they sit fully inside. Same ordering (V, K, Q leftâright) and sizes.
+
+## Verified as matching
+- Encoder/Decoder red italic titles; panel background split (cream encoder / mint decoder) with green divider.
+- Encoder stack (Add & Norm / Feed Forward / Add & Norm / red-bordered Multi-Head Attention) â text verbatim, two-line breaks correct, vertical centering inside boxes looks correct.
+- Decoder stack order and text (Add & Norm, Feed Forward, Add & Norm, Multi-Head Attention, Add & Norm, Masked Multi-Head Attention) all verbatim with correct line breaks.
+- Red highlight borders on both Multi-Head Attention boxes; K/V/Q circle colors and ordering at decoder.
+- Yellow cross-attention band footprint (between encoder top and decoder attention region) roughly matches.
+- Green residual elbows present in both containers; Nx badges; Positional Encoding labels (both sides, two lines); Inputs arrow; "Outputs (shifted right)" with yellow highlight on "Outputs".
+- Red dashed positional-encoding pointer line crossing from left edge through the encoder block â present in both.
+- No frame-containment overflow of text/boxes in the recreation beyond what the original itself shows.
+
+## Visual-quality defects in the recreation
+- The solid green vertical band at the decoder's right inner edge is noticeably thicker/more prominent than the corresponding original residual line, and it visually substitutes for the missing dash-dot arrow (related to #1).
+- The split embedding boxes create a visible horizontal seam absent in the original (related to #4).
+- No text clipping, wrapping errors, or collisions detected; all text legible.
+
+## Defect tally
+- BLOCKER: 1 (#1)
+- MAJOR: 4 (#2, #3, #4, #5)
+- MINOR: 4 (#6, #7, #8, #9)
+
+**FINAL VERDICT: FAIL** for 'faithful, usable recreation' of THIS CROP â driven primarily by the entirely missing red dash-dot skip-connection arrow on the right side (BLOCKER), the mis-colored decoder Add & Norm box, the over-extended yellow "Output Probabilities" highlight, and the split embedding containers.

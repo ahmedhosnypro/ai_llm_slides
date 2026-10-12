@@ -1,0 +1,40 @@
+# Visual QA Analysis â Slide 035 Recreation Probe
+
+## 1. Verbatim Text Transcription
+
+- **Title (red, bold, top center):** `How to Apply Filter on image`
+- **Slide number badge (top right, circle):** `35`
+- **Left label (black, bold):** `Image`
+- **Middle label (black, bold):** `Filter`
+- **"Image" grid digits (5Ã5, light green over faint photo):**
+  - Row 1: `1 1 1 0 0`
+  - Row 2: `0 1 1 1 0`
+  - Row 3: `0 0 1 1 1`
+  - Row 4: `0 0 1 1 0`
+  - Row 5: `0 1 1 0 0`
+- **"Filter" grid digits (3Ã3, yellow cells, black digits):**
+  - Row 1: `1 0 1`
+  - Row 2: `0 1 0`
+  - Row 3: `1 0 1`
+- **Large 5Ã5 grid (right panel):** same binary values as the Image grid (`1 1 1 0 0 / 0 1 1 1 0 / 0 0 1 1 1 / 0 0 1 1 0 / 0 1 1 0 0`), with small dark-red multiplication subscripts on the top-left 3Ã3 (yellow) cells: row 1 `x1 x0 x1`, row 2 `x0 x1 x0`, row 3 `x1 x0 x1`
+- **Output cell (3Ã3 output grid, top-left dark cell):** `4`
+- **Bottom text box, line 1 (blue italic):** `Apply Filter on Image is a Dot product between image values and filter values`
+- **Bottom text box, line 2 (red bold italic, "PERCEPTRON" underlined):** `(can be modeled  by PERCEPTRON )` â note: there is a **double space** between "modeled" and "by", and a **space before the closing parenthesis**.
+
+## 2. Layout
+
+- **Overall:** A thin red rectangle frames the slide content on all four sides (bottom edge runs very close to the slide's bottom edge).
+- **Top:** Red bold title centered horizontally. Top-right corner (inside the red frame) holds the circular `35` badge â yellow-green fill with a purple border.
+- **Left edge:** The word "Image" in large black bold text, above a 5Ã5 grid with a dark red/maroon border. The digits sit over a faint photographic background (low-contrast; subject not clearly identifiable).
+- **Center-left:** The word "Filter" in large black bold text, above a 3Ã3 yellow grid with black digits.
+- **Right/center-right:** A large white panel (thin gray border) containing (a) the 5Ã5 grid â top-left 3Ã3 cells yellow with multiplication subscripts, remaining cells green with plain black digits; and (b) to its right, a 3Ã3 output grid of empty cream/tan-bordered cells, whose top-left cell is dark olive and contains the handwritten-style `4`. A black curved arrow runs from the top of the 5Ã5 grid's first row to the `4` cell.
+- **Bottom:** A light-yellow text box with a thin blue border spanning nearly the full width, containing the two-line explanatory sentence (blue italic first line, red bold italic second line).
+
+## 3. Visual Defects / Anomalies
+
+- **Arrow overlaps the "4":** The black curved arrow's arrowhead crosses directly through the handwritten `4` in the output cell, partially obscuring the digit (the "4" remains identifiable).
+- **Arrow path:** The arrow originates from the top of the second cell of row 1 (`1 x0`) â i.e., a cell multiplied by `x0` â and arcs over the top of the row-1 green cells; this is factually as drawn (intent not assessed).
+- **Typography inconsistencies in bottom caption:** double space in "modeled  by" and a stray space before the closing parenthesis "PERCEPTRON )".
+- **Low contrast in "Image" grid:** The light-green digits overlay a faint photo texture, reducing legibility relative to the other grids; digits are still readable.
+- **Red frame bottom edge** sits very close to the bottom of the slide but appears fully rendered (no visible clipping).
+- No placeholder strings, no garbage characters, and no wrong-language text observed. All grids, labels, the badge, the title, and the caption box appear fully within the frame with no cut-off content.

@@ -1,0 +1,32 @@
+# QA Description â Slide 011, title zone crop
+
+**Frame context:** crop covers approximately the band yâ460â540 of the original 960Ã540 frame (crop shown at 2Ã, so ~960Ã270 crop px; all coordinates below are approximate crop pixels).
+
+## 1. Verbatim text transcription
+
+Single title line, one text run with mixed coloring:
+
+> **Multi Head Self Attention of Word Xâ**
+
+- "Multi Head" â bold, dark red (â crimson/#C00000)
+- "Self Attention of Word" â bold, black/near-black
+- "X" â bold, dark red, immediately followed by a subscript "2", also dark red
+- No other text, digits, or punctuation appears anywhere in the crop. All text is English; nothing illegible.
+
+## 2. Layout
+
+- **Top-left corner:** a cluster of decorative filled circles â one lavender/purple, one yellow-green â overlapping each other, occupying roughly the region (0,0) to (~115, ~35). Both are clipped by the top edge and the left edge of the crop.
+- **Center / upper-middle:** the title line, spanning roughly xâ100 â xâ845, with its baseline at roughly yâ90. Bold sans-serif face. Roughly horizontally centered within the crop (â100 px left margin, â115 px right margin).
+- **Right edge:** no content touches the right edge except the divider line(s); the title ends well short of it with clean whitespace after "Xâ".
+- **Mid-lower area:** a solid horizontal rule in medium blue/indigo, spanning the full width from left edge to right edge, at approximately yâ150â160, thickness ~6â8 crop px. This reads as the underline/divider belonging to the title zone.
+- **Bottom edge:** a second, fainter/thinner horizontal line (grayish-blue) at approximately yâ250â260, again spanning the full width, visibly cut by the bottom edge of the crop â likely the top edge of the next slide element or a footer rule.
+- Background elsewhere: plain white.
+
+## 3. Visual defects / anomalies
+
+- **Clipped decorative graphics (top-left):** the purple and yellow circles are cut off on both their top and left sides. Given the crop origin, this is consistent with the crop boundary rather than a slide error, but within this view they appear truncated.
+- **Clipped element at bottom:** the second (lower) horizontal rule is only partially visible; the crop cuts through it, so its full thickness and what lies below it cannot be assessed.
+- **Title completeness:** the line ends cleanly with "Xâ" and there is free space to the right â no truncation, ellipsis, or clipped glyphs are evident. No trailing content is visibly cut off.
+- **No overlapping text elements:** the subscript "2" is small and sits low relative to the "X" baseline (normal subscript placement); it does not collide with neighboring glyphs, though it is noticeably small relative to the title's cap height.
+- **Resampling artifacts:** consistent with the stated 2Ã upscale of a compressed video frame â text edges are slightly soft, with mild ringing/haloing around the dark glyphs and slight chroma noise in the colored circles and red text. No blockiness severe enough to impede reading.
+- **No garbage strings, placeholder text, or wrong-language content** detected; the red/black two-color title styling and the full-width blue rule appear intentional.

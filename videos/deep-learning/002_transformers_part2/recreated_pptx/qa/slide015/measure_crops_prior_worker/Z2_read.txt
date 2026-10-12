@@ -1,0 +1,56 @@
+# Z2 Analysis â 370x420 crop (source region (505,230)â(690,440) of frame)
+
+## (1) Gold/white striped vector strips (left edge, beside red V labels)
+Four thin striped strips hugging the left crop edge, each ~44px wide, ~16â18px tall:
+- Strip A: bbox â (0, 40)â(44, 58)
+- Strip B: bbox â (0, 90)â(44, 108)
+- Strip C: bbox â (0, 150)â(44, 168)
+- Strip D: bbox â (0, 176)â(44, 194)
+
+Cell colors leftâright: alternating **gold/orange, white, gold, white** (start gold; a 5th cell possible at this resolution [?]).
+Labels: small **red** text immediately right of each strip (xâ45â56); glyph appears to be a single letter with a subscript digit, best guess "vâ / vâ / vâ / vâ" â **too small to confirm verbatim [?]**. Color: red.
+
+## (2) Four W_v boxes (salmon panel, xâ55â101)
+White fill, **dark-blue border ~2px (crop) / 1px source**, black bold "W", **blue subscript "v"**, red superscript. Each has a short red arrow â exiting right.
+- Box 1: (55, 0)â(101, 28) â top edge cut by crop; text "W_v^(0)" [?]
+- Box 2: (55, 45)â(101, 73) â "W_v^(0)" [?]
+- Box 3: (55, 100)â(101, 128) â "W_v^(0)" [?]
+- Box 4: (55, 165)â(101, 193) â "W_v^(0)" [?]
+
+All four superscripts look identical, a red parenthesized digit best read as **(0)**; at 2x the digit is at the edge of legibility, so (0) vs (1) cannot be fully excluded [?]. They do **not** read as (2) or (3).
+
+## (3) Chip columns
+**Salmon panel (superscript (1)):**
+- W_q^(1): bbox â (196, 252)â(241, 282) â **red border**, white fill; "W" black, subscript "q" red, superscript "(1)" red
+- W_k^(1): bbox â (196, 300)â(241, 328) â **green border**; subscript "k" green, "(1)" red
+- W_v^(1): bbox â (196, 338)â(241, 366) â **blue border**; subscript "v" blue, "(1)" red
+
+**Lavender panel (superscript (2)):**
+- W_q^(2): bbox â (287, 218)â(332, 248) â **red border**, subscript "q" red, "(2)" red
+- W_k^(2): bbox â (287, 258)â(332, 286) â **green border**, subscript "k" green, "(2)" red
+- W_v^(2): bbox â (287, 296)â(332, 324) â **blue border**, subscript "v" blue, "(2)" red
+
+## (4) Green dashed output container (salmon panel)
+- Container bbox â (128, 0)â(246, 205); green dashed border ~1â2px; top edge at/above y=0 (cut by crop) [?]. Fill: very pale green.
+- 4 strips inside (each â 92x22), leftâright cells: **gold, white, gold, white, pale-pink/white**:
+  - R1: (140, 8)â(232, 30) â red **X** with subscript over the 4th (pale) cell, reads "Xâ" [?]
+  - R2: (140, 56)â(232, 78) â "Xâ" [?]
+  - R3: (140, 106)â(232, 128) â "Xâ" [?]
+  - R4: (140, 166)â(232, 188) â "Xâ" [?]
+  - Red X color: red; subscript digits small, best read 1â4 topâbottom [?]
+- Green arrowhead at container bottom: â (178, 196)â(200, 218), pointing **up** into the container.
+
+## (5) Thin red lines/arrows
+- Four short horizontal red arrows, each from a W_v box right edge to the corresponding strip (multiply node) left edge, arrowhead at right end:
+  - (102, 14) â (127, 18)
+  - (102, 59) â (127, 66)
+  - (102, 114) â (127, 117)
+  - (102, 179) â (127, 177)
+- Any red lines from the softmax node are **above/outside this crop** [?]. No separate thin vertical red lines from the nodes are resolvable [?].
+- Also present (not thin): a **thick red curved arrow** entering from the right (~(360,160)) sweeping down-left through ~(250,235) to ~(160,245), arrowhead near (145,220) pointing up/left toward the container's bottom-left.
+
+## (6) Panel edges (crop x)
+- Salmon panel right edge: **x â 266** (vertical boundary where lavender background becomes visible) [?]
+- Lavender panel left edge: **not directly visible** â occluded behind the salmon panel; lavender is visible from x â 266 rightward, so its true left edge is â¤ 266 [?]. (Lavender panel's right edge â x 350, rounded bottom-right corner visible near (300â350, 300â345); yellow panel begins x â 355.)
+
+Z2 DONE

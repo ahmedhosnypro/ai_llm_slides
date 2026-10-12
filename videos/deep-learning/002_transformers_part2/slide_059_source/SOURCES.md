@@ -103,3 +103,63 @@ HTML already banked this session.
 The ORIGINAL VIDEO FRAME is ground truth for what each slide shows; web
 sources confirm/correct data and provenance, never license inventing content.
 `[?]` markers are removed only with a confirming URL recorded here.
+
+## Script-12 raw cross-check (2026-10-11, web-research verification worker)
+
+Cross-checked against `analysis/slide_059_raw.json` (script-12 raw landed
+after this record was written from the banked vision transcript).
+
+- CONFIRMED by raw: the full bottom→top pipeline — Input Sequence band
+  (green-dashed Word Embedding Vectors row X₁…X₅, 5 dots, X_{N-2},
+  X_{N-1} ⊕ red '+' circle ⊕ orange-dashed Position Information Vectors
+  row Vector_{P0}…Vector_{P5}, 5 dots, Vector_{P_{N-2}}, Vector_{P_{N-1}});
+  muted-red Transformer Encoder container with dark-red "Transformer Block"
+  bars + vertical ellipsis columns and bold white "Transformer Encoder"
+  overlay; Output Sequence row Y₁…Y₅, dots, Y_{N-2}, Y_{N-1}; white
+  "Global Average Pooling" box with the red italic "Single vector
+  representing / the whole sequence" annotation; tan "Softmax Layer" bar
+  with three navy Softmax+Σ circles (red base nodes), red fan-in lines from
+  the pooled-vector row; C₁/C₂/C₃ under blue "Output Classes". The raw
+  explicitly pins the record's noted indexing quirk: position cells start
+  at Vector_{P0} while embedding cells start at X₁, both sequences ending
+  at N−1 (1-based X, 0-based P) — kept verbatim for recreation, as
+  recorded. Identity metadata matches (old extraction slide 149, kept
+  frame_05128, shown 5007–5127 s, 121 frames); badge "59". No source
+  claims in this record are contradicted; the keras.io GAP-tail mechanism
+  verification stands untouched.
+- New raw details (no conflicts, build-level): a white mouse cursor
+  overlaps the MIDDLE Softmax circle (screen-recording artifact — omit in
+  recreation; the original record did not mention it); the raw counts
+  THREE labeled "Transformer Block" bars with the ellipsis columns placed
+  between the middle and bottom bars (frame-level cosmetic check at build
+  time); pooled-vector row read as ~30 yellow/green/pink alternating cells.
+- Open questions untouched: 1 (course-authored cartoon) — raw surfaces no
+  external figure, stays `[?]`; 2 (verbal BERT-[CLS] alternative) — not
+  decidable from the frame, stays `[?]`; 3 (softmax-node cosmetics + exact
+  fan-line count) — raw narrows the node design (navy circle, yellow
+  "Softmax", Σ, red base node) but the exact fan count stays `[?]`.
+- PROVENANCE note: this raw's `_meta.model` reads `glm-5.3-flash` (the
+  documented fallback), whereas the banked transcript for this slide ran
+  the default `images` route. Content agrees between the two independent
+  machine readings, so no re-run is flagged; noted for completeness.
+- No new published-figure claims; nothing to fetch. Corrections needed:
+  none.
+
+## Build-time frame-read corrections (2026-10-12, slide-059 build worker)
+
+PIL scans (scratch/slide059 v1..v4) + three independent zoomed vision reads (2x
+input-row crop, 2x render-vs-original comparison, 3x output-row crop — transcripts
+banked in `../scratch/slide059/gate_*.txt`, `cropcmp_inputrows_1.txt`) correct the
+record/raw on token-row details. The frame wins:
+
+1. **SIX head columns per token row, all three rows** — X, Y, and Vector_P each show
+   6 labeled columns + 5 ellipsis dots + 2 tail columns (record/raw said five X/Y
+   labels; the record's own "Vector_P0 … Vector_P5" was already six).
+2. **Subscripts are 0-indexed on ALL rows**: X₀…X₅, Y₀…Y₅, Vector_P0…P5 (the record's
+   "X_1…X_5" + "indexing-offset quirk" note was a full-frame misread of the tiny
+   subscripts; two independent 2x reads and one 3x read agree on 0-indexing). Tail
+   subscripts remain N-2 / N-1 on all rows.
+3. **Vector tail labels read "Vector_PN-2 / Vector_PN-1"** (no parentheses).
+4. Y-row labels are dark red (same as X), not blue as the raw said.
+5. Left-annotation ink widths ≈ 13–14 pt bold italic (pooled note ≈ 13.5 pt italic
+   serif).

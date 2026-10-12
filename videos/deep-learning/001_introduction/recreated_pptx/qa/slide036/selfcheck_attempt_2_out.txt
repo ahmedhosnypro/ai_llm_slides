@@ -1,0 +1,43 @@
+render 2001x1125, scale 2.0844x2.0833
+== TITLE ==
+  L1: y 63.9..96.1 (exp 62..92), x 58..700
+  FAIL L1 vertical within 4px
+  L2: y 102.8..135.0 (exp 101..131), x 225..534
+  PASS L2 vertical within 4px
+  PASS L1 advance 642 vs 643 (+-13)
+== CONTENT BOX (exp rows 156/501, cols 110/839) ==
+  PASS top border row [324] vs 156
+  PASS bottom border row [1045] vs 501
+  PASS left border col [228] vs 110
+  PASS right border col [1749] vs 839
+== CROP TILE PROBES (render vs original, same frame px) ==
+  slab_top @(260,190): render (np.int64(254), np.int64(254), np.int64(252)) vs orig (np.int64(254), np.int64(255), np.int64(253)) maxd=1
+  slab_body @(300,300): render (np.int64(173), np.int64(104), np.int64(21)) vs orig (np.int64(176), np.int64(106), np.int64(18)) maxd=3
+  filter_unit @(440,300): render (np.int64(31), np.int64(147), np.int64(163)) vs orig (np.int64(32), np.int64(148), np.int64(163)) maxd=1
+  PASS tile probe pixels match (JPEG noise <=30)
+== '=' BARS (exp x506..535, y290..293 / 298..301) ==
+  bbox x 505.7..535.4 y 289.9..301.9
+  PASS = x extent
+  PASS = y extent
+== '+' (exp x554..563, y312..319) ==
+  bbox x 553.6..563.7 y 312.0..319.7
+  PASS + extent
+== NEURON (ring exp 573..611 x 282..310) ==
+  ring bbox x 572.4..611.2 y 281.8..310.6
+  PASS neuron ring extent
+  core bbox x 579.6..605.5 y 287.0..304.8
+  PASS neuron core extent
+== ARROW-TO-NEURON (exp tip (611,325) tail (660,408)) ==
+  bbox x 611.2..660.1 y 325.0..407.5
+  PASS arrow extent
+== QUESTION ==
+  bbox x 159.3..790.6 y 399.8..461.3
+  PASS question x extent (adv 638)
+  FAIL question y band
+== EQUATION (red ink, exp x339..592 y458..479) ==
+  bbox x 339.2..592.0 y 458.4..481.9
+  PASS equation x extent (adv 254)
+  PASS equation y band
+== CONTAINMENT (box 110..839 x 156..501; panel 42..918 x 45..540) ==
+  FAIL box interior ink x 41..919 within 111..838
+  FAIL title ink top 44.6 below panel top 45

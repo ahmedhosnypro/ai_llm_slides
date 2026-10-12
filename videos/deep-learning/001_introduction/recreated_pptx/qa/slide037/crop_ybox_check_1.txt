@@ -1,0 +1,37 @@
+# Visual QA Analysis â Slide 037 attempt 2, explanation-box crop
+
+## 1. Verbatim Transcription
+
+**IMG1 (recreation, 2x):**
+> We can Apply **multiple filters** on the **same location** (e.g. 5 different filters on
+> the same location.  For Example:
+> [ one to **detect edges**, one to **detect lines**, one to **detect curves**, ...etc)
+
+**IMG2 (original, 2x):**
+> We can Apply **multiple filters** on the **same location** (e.g. 5 different filters on
+> the same location.  For Example:
+> [ one to **detect edges**, one to **detect lines**, one to **detect curves**, ...etc)
+
+Text content is **identical**, including the capital "Apply"/"Example", the double space after "location.", the bracket/paren pair "[ â¦ )", and "...etc)".
+
+## 2. Similarities
+
+- **Purpose & content:** Both are the pale-yellow explanation box describing applying multiple filters at the same location.
+- **Layout:** Same 3 visual lines with **identical wrap points** â line 1 breaks after "filters on", line 2 after "For Example:", line 3 is the bracketed list. No re-wrapping in either image.
+- **Bold runs:** Identical bold segments â "multiple filters", "detect edges", "detect lines", "detect curves" â all in serif bold.
+- **Dark-red emphasis:** "same location" is bold dark-red (crimson/maroon) in both, positioned mid-line-1 in both.
+- **Typography:** Serif face (Times-like) in both; mixed regular/bold runs match run-for-run.
+- **Box styling:** Pale-yellow/cream fill with a thin border surrounding the text in both; text starts near the left edge with modest padding.
+- **Punctuation details:** "(e.g. 5", "...etc)", and the asymmetric "[ â¦ )" bracket are reproduced exactly.
+
+## 3. Differences
+
+- **Border color/weight:** IMG1's box border is a thicker olive/khaki tone; IMG2's border is a thinner, neutral gray. Minor.
+- **Stroke weight / rendering:** IMG1's glyphs render slightly heavier/darker overall (bolder appearance even in non-bold runs), consistent with the PPTX render's rasterization at 2x; IMG2's strokes are slightly lighter. This is a rendering-weight difference, not a font-substitution or layout defect.
+- **Line pitch:** Both images show the pinned 33px (66px at 2x) pitch; the three baselines sit at visually equivalent spacing. No measurable pitch deviation visible.
+- **Background around box:** IMG1's outer background is a very light gray; IMG2's outer background is a slightly darker gray â likely a crop/exposure difference of the host frame, not the box itself.
+- **No defects in either:** no clipping, no overlap, no placeholders, no garbage strings, no wrong-language text. The bottom of line 3's descenders ("detect curves" comma) fits fully inside the box in both.
+
+## 4. Verdict
+
+**IMG1 (recreation) is a faithful match and effectively equivalent in quality to the original.** All checks in the spec pass: identical text, identical bold runs, the dark-red bold "same location" matches in color and position, the 3 lines wrap at the same points, and line pitch appears consistent in both. The only deviations are cosmetic â a slightly thicker olive-tinted border and marginally heavier glyph rendering in IMG1 versus the original's thinner gray border and lighter strokes. Neither difference affects content, wrapping, or emphasis fidelity. No fixes required.

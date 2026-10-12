@@ -1,0 +1,34 @@
+# Visual QA Analysis â Slide 017 zoom crop (pills / climbing-chip zone)
+
+## 1. Verbatim text transcription
+
+| Location | Text | Condition |
+|---|---|---|
+| Top-left pill (pale yellow band) | `Similarity` | Top edge clipped |
+| Left-edge pill (lavender band) | `ilarity` | Left-clipped remainder of "Similarity" |
+| Center pill (lavender band) | `Probabilities` | Fully legible, dark navy text |
+| Right-edge pill (lavender band) | `Weighted S` | Right-clipped (almost certainly "Weighted SUM", but the final letters are not visible) |
+| Left pill (pink band) | `Probabilities` | Fully legible |
+| Right pill (pink band) | `Weighted SUM` | Fully legible |
+| Orange chip (upper center-right) | `Y` followed by 1â2 small glyphs | **Partially illegible** â could be "Y0", "Yâ", or "Î³â¦"; resolution is too low to resolve |
+| Bottom-left, red text | `q` | Clipped at left/bottom; may be the tail of a longer expression |
+| Bottom, red text | `K.q` | Legible; sits above a red horizontal fraction bar |
+| Below `K.q` bar | (denominator) | **Cut off by the bottom edge** â only a sliver of red pixels is visible, illegible |
+| Bottom center-right box | `Î£` | Dark blue capital sigma in a light-blue rectangle, fully legible |
+
+## 2. Layout
+
+- **Overall structure:** Three horizontal color bands stack the frame â pale yellow-green (top), lavender/purple (middle), salmon-pink (bottom). Cream/white stadium-shaped "pills" with thin borders and navy text sit inside the bands.
+- **LEFT edge:** Top-clipped "Similarity" pill (yellow band); left-clipped "ilarity" pill (lavender band); at bottom-left a red "q" glyph and a pale pink rectangle, both clipped.
+- **RIGHT edge:** Right-clipped "Weighted S" pill (lavender band); fully visible "Weighted SUM" pill (pink band); a faint thin vertical line near the top-right corner.
+- **TOP:** A segmented orange/brown chip with a dashed black border straddles the yellow/lavender band boundary in the upper center-right. It is divided into roughly 4â5 cells by vertical dividers, with the "Yâ¦" text in one of the middle-left cells. A tiny green mark is visible at the chip's right end (possibly the edge of an adjacent clipped element).
+- **Markings:** A small solid red downward-pointing triangle sits just below the chip's left-center; a thin dark vertical line runs from it down through the lavender and pink bands toward the Î£ box, suggesting an alignment/pointer connector.
+- **Annotation arrow:** A thick green arrow overlaps the lower-left of the "Probabilities" pill in the lavender band, pointing up-and-to-the-right at it.
+- **BOTTOM:** A row of clipped math elements left-to-right: red "q" â pale pink rectangle â red "K.q" fraction (bar visible, denominator cut off) â pale lavender rectangle â wide pale blue rectangle containing "Î£". All are truncated by the bottom edge of the crop.
+
+## 3. Defects / anomalies
+
+- **Clipping (crop-edge, expected for a zoom crop):** "Similarity" (top), "ilarity" (left), "Weighted S" (right), and the entire bottom row (q, K.q fraction, rectangles, Î£ box) are cut off by frame edges. The fraction denominator under "K.q" is fully lost.
+- **Illegibility:** The chip label ("Y" + small glyphs) cannot be read definitively at this resolution; this is the main ambiguity in the frame.
+- **No wrong-language text, placeholder strings, or obvious garbage characters** â all legible text is consistent with an English-language algorithm/math diagram (Similarity, Probabilities, Weighted SUM, K.q, Î£).
+- **Rendering quality:** Heavy pixelation and LANCZOS smoothing artifacts throughout; dashed chip border and pill edges are soft/blurry. The red triangle and vertical line are small but appear to be intentional diagram markers, not defects.

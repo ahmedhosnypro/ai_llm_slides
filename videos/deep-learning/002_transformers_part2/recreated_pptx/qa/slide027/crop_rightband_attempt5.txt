@@ -1,0 +1,46 @@
+## Element-by-element comparison
+
+**Yellow circle edge (left band):**
+- Present in both, same pale-yellow fill with gray outline arc entering from left edge. Position and curvature match. â
+
+**Word 0 box:**
+- Green fill, darker green border, bold italic green "Word 0" text â matches original in color, proportions (box â 0.37 of crop width vs â 0.35 in original â within tolerance), and horizontal placement. Text sits vertically centered in the box in both. â
+- Dashed/dotted horizontal rule passes through the box at the same relative height (y â 0.75 of crop in both) and extends to the right edge in both. â
+
+**Word 1 box (rotated):**
+- Rotated at essentially the same angle (~â30Â°), same green fill/border, bold italic label vertically centered within the rotated box. Position relative to circle edge and arc matches. â
+
+**W0âW1 arc + arrowhead:**
+- Arc present, curving from lower region up to Word 1's upper-right corner with an orange arrowhead â topology and endpoint at Word 1 match.
+- **MINOR (high confidence):** arrowhead in the recreation is noticeably larger than the original's small arrowhead (roughly 2Ã the relative size).
+- **MINOR (medium confidence):** the arc's lower terminus ends in empty space at ~0.50 of crop height, whereas in the original the arc's faint lower end reaches down toward ~0.70â0.75 (closer to the Word 0 / dashed-line level). The connection is looser in the recreation.
+- **MINOR (medium confidence):** arc color â the restyle renders pale peach/salmon; the original arc is a faint neutral gray. Given the view title declares this a deliberate "restyled pale" attempt, this is a stylistic choice, not a fidelity failure, but it is a visible color deviation from the original.
+
+**"+Ï" label:**
+- Red bold "+Ï" present in both at matching relative position (x â 0.78â0.79, y â 0.40â0.42), matching size and weight. â
+
+**Dotted diagonal guides near Word 1:**
+- Original shows a pink dotted line crossing the Word 1 region on both sides of the box; the recreation shows the dotted segments above-right (past the arrowhead) and below-left of the box. Both sides present; the recreation's segments are slightly paler but legible. **MINOR** (low confidence) for paler dotted-line color.
+
+**Dashed horizontal rule color:**
+- **MINOR (medium confidence):** the recreation's dashed rule is paler/washier than the original's more saturated pink-red dotted rule; the original's is more visible at the same relative position.
+
+**Frame containment:** No ink crosses any crop boundary inappropriately; all elements are fully inside the visible region in both images. â
+
+**Missing elements:** None â every element in the original (both word boxes, arc, arrowhead, +Ï label, circle edge, dotted/dashed guides) is present in the recreation. â
+
+**Text rendering:** "Word 0" and "Word 1" verbatim, correct bold-italic styling, no clipping, no collisions, no wrapping errors.
+
+## Discrepancy summary
+
+| # | Issue | Severity | Confidence |
+|---|-------|----------|------------|
+| 1 | Arrowhead oversized (~2Ã original) | MINOR | High |
+| 2 | Arc lower endpoint stops mid-air, shorter reach toward Word 0 level than original | MINOR | Medium |
+| 3 | Arc color pale peach vs original faint gray (declared intentional restyle) | MINOR | Medium |
+| 4 | Dashed horizontal rule paler than original's pink-red dotted rule | MINOR | Medium |
+| 5 | Dotted diagonal guides slightly paler | MINOR | Low |
+
+No MAJOR or BLOCKER defects. All content is present, verbatim, correctly positioned, vertically centered in its containers, and fully frame-contained.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

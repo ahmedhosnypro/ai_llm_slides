@@ -110,6 +110,32 @@ downloaded into this dir — no source-hosted figure is plausibly reused here.
   the numpy grid-placement result (SOURCES.md-side correction, not a raw
   patch).
 
+## Build-time frame re-check (2026-10-12, gated crop reads at 3x/8x — scratch/slide032/crops/)
+
+The two [?] items above were re-checked against the frame at build time with upscaled
+crop reads through the vision gate (transcripts banked as
+`../scratch/slide032/crops/read_c*.txt`):
+
+- **Blue band labels RESOLVED**: the gray band's blue staircase has **FOUR labels and
+  every one reads `W_21`** (the subscript "21" is repeated 4x on the slide — confirmed
+  independently by a 3x band crop and an 8x sub-crop). The raw's "W_21, W_22, W_21
+  [possibly W_23]" was a partial misread; there is no W_22/W_23. Frame wins: the
+  recreation draws `W_21` four times. Both [?] items in this file are thereby closed
+  (frame evidence, no URL involved).
+- **Matrix cells are PINK** (#F7C7CB core) each holding a small **pale-yellow text chip**
+  (#F6F7C1, thin brown border) — the raw's "pale-yellow cells with orange borders" was a
+  misread of chips vs cells. Matrix text colors are UNIFORM PER ROW: row 1 blue, row 2
+  magenta, row 3 orange, row 4 green (raw's mixed row-1 reading corrected).
+- **Red square brackets `[ ]` flank the pill's four circles** (vector notation) —
+  confirmed by the eq-panel crop read; the raw called it only a "pill".
+- **The "small dark-navy arrowhead" on the blue line mid-diagram reads as a tiny
+  pencil/cursor-like mark** (gray body, dark tip, angled up-left) at ~(691, 352).
+  Recreated per the validated spec as a small dark arrowhead; if it is a capture
+  artifact, judge ground rule (c) applies.
+- Red staircase = W_11..W_14, green = W_41..W_44, W_Q large red at band left, output
+  circles X_Q21..X_Q24, input circles X_21..X_24 (light-blue filled, red rings) — all
+  confirmed verbatim.
+
 ## Law reminder
 
 The ORIGINAL VIDEO FRAME is ground truth for what the slide shows (layout,

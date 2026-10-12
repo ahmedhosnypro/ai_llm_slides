@@ -1,0 +1,43 @@
+You are the visual acceptance gate for slide 039 of /home/ahmed/Projects/ai_llm_slides (video: deep-learning/001_introduction).
+The session model cannot see images; ALL vision analysis must go through the image-analysis
+skill's script (.agents/skills/image-analysis/scripts/analyze_image.py), and every invocation
+goes through scripts/16_vision_gate.sh.
+
+Files:
+- Render being judged (attempt 1): videos/deep-learning/001_introduction/recreated_pptx/qa/slide039/render_1.png
+- Original frame (ground truth): videos/deep-learning/001_introduction/unique_slides/slide_039.jpg
+- Content spec: videos/deep-learning/001_introduction/analysis/slide_039_final.json
+
+Method (mandatory, in order):
+1. Probe the gateway window (NO --models flag — the default route IS the images model):
+   cd /home/ahmed/Projects/ai_llm_slides && scripts/16_vision_gate.sh timeout 150 python3 \
+     .agents/skills/image-analysis/scripts/analyze_image.py analysis \
+     videos/deep-learning/001_introduction/recreated_pptx/qa/slide039/render_1.png \
+     --view "Slide 039 recreation attempt 1 — probe" \
+     --capture "150dpi PNG render of a 13.33x7.5in PPTX" \
+     --timeout 120 --rounds 1 --tries 1 \
+     --transcript videos/deep-learning/001_introduction/recreated_pptx/qa/slide039/probe_1.txt
+   A valid body opens the window; a hang means sleep 300 and re-probe ONCE.
+2. Comparison — mandatory parameters --thinking high --max-tokens 65536; dispatch wall per
+   directive: --timeout 280 inside `timeout 1700` outer (gate-wrapped):
+   cd /home/ahmed/Projects/ai_llm_slides && scripts/16_vision_gate.sh timeout 1700 python3 \
+     .agents/skills/image-analysis/scripts/analyze_image.py comparison \
+     videos/deep-learning/001_introduction/recreated_pptx/qa/slide039/render_1.png videos/deep-learning/001_introduction/unique_slides/slide_039.jpg \
+     --view "Slide 039 recreation — fidelity check vs original lecture frame" \
+     --capture "IMG1=150dpi PNG render of a 13.33x7.5in PPTX; IMG2=original lecture video frame" \
+     --thinking high --max-tokens 65536 \
+     --timeout 280 --rounds 1 --tries 1 \
+     --transcript videos/deep-learning/001_introduction/recreated_pptx/qa/slide039/judge_attempt_1.txt \
+     -p "<THE PAYLOAD BELOW, byte-for-byte>"
+   On a hard-wall HangError, retry ONCE at the same wide wall (skill amendment W4).
+   Never wrap analyze_image.py in any other retry loop.
+2b. Degenerate-garbage retry: a degenerate winner body has NO evidentiary value — re-invoke
+   (same parameters) up to 3 times before counting the attempt as failed; never certify
+   from a degenerate body.
+3. The verdict must come from a real comparison winner body in the banked transcript; a
+   check without vision evidence is a FAILURE by law.
+4. Standard: fidelity recreation of a plain lecture slide — do not penalize the plain/retro
+   look. Label the certificate: single-read, default route (images), glm leg DEFERRED/BLOCKED.
+
+==================== PAYLOAD (the -p argument, byte-for-byte) ====================
+GROUND RULES (founder-mandated, settle these FIRST and never raise them as discrepancies): (a) The recreation uses a house template — white FFFFFF canvas, gray E9E9E7 panel spanning x 42..918 px from y 45 px to the slide bottom (its bottom stroke half-visible at the slide edge), thin red C00000 border on the panel's left/right/top, yellow slide-number badge circle (fill FDFD96, purple 6A5ACD ring ~2pt, bold 333333 numeral 39, Arial 18pt) centered at (893,71) px with diameter ~36 px. These are INTENTIONAL house chrome (founder directive 2026-10-11, playlist-wide) and are NOT discrepancies — the original lecture frame's own panel inset differs slightly and that difference is intentional. (b) If image 2 (the original) is a contentless placeholder/Processing slide, then matching contentlessness IS a match — do not demand content the original does not have. (c) Any mouse cursor / video-capture artifact visible in image 2 is a video artifact and is CORRECTLY omitted from the recreation — in particular the white arrow cursor at the right edge of the left (cat) photo in image 2 is intentionally absent from image 1, and the solid black bar along the very bottom of image 2 is the video-player bar and is intentionally absent from image 1. (d) Typed-vs-handwritten ink is an inherent medium difference — at most MINOR. (e) Equations in the recreation are rendered in PROFESSIONAL 2D FORMAT (stacked fractions with a horizontal bar, large ∑ with limits above/below, spatially aligned sub/superscripts) per founder directive 2026-10-09 — if image 2 (the original) shows the same equation in LINEAR/typed notation, that difference is a mandated format upgrade and is NOT a discrepancy. (f) Your verdict is about fidelity of renderable content ONLY. Image 1 is a PowerPoint recreation; image 2 is the original lecture slide. Compare them element by element for fidelity: title and all text (verbatim, line breaks), layout/regions, table contents and structure, chart types and data values, diagram shapes/arrows, colors (approx hex), imagery. Be PRECISE about text metrics and geometry — measure with your eyes, not vibes: (1) line height / line separation inside multi-line text blocks (e.g. a two-line value listed under a '(weight (kg), length (cm))' header must have the same inter-line spacing as the original); (2) vertical centering of enclosed content — text inside brackets, parentheses, or cells must sit vertically CENTERED within the delimiters, not hugging the top while the delimiter's lower section wraps empty space; (3) sizes, gaps and ordering of legend items (e.g. 'red class / blue class / green class') must match the original's sizes and gaps; (4) horizontal AND vertical alignment of every label against its value, every value against its enclosing marks, and every region against the original. (5) FRAME CONTAINMENT — every content element (text, box, table, graph, image) must sit fully INSIDE its enclosing frame/panel: any ink that crosses or touches the boundary of the inner frame it belongs to (top/bottom/left/right), or of the house frame, is an overflow and a MAJOR defect; scrutinize the items closest to every frame edge. (6) MISSING ELEMENTS — if the original shows an equation, graph, image, table row, or any visual element that the recreation omits ENTIRELY (absent, not just styled differently), that is a BLOCKER defect; an equation region that renders empty is a BLOCKER even if everything else matches. (7) DELIMITER GEOMETRY — parentheses/brackets/braces that span multiple lines in the original must (i) span ALL the lines they enclose (topmost to bottommost), (ii) be wide enough that their strokes do not sit ON or overlap the enclosed text, (iii) match the original's curvature/shape style; a delimiter covering only some of its lines, drawn over the text between it, clipped, or invisible is a MAJOR defect. (8) TABLE DATA — every table cell value must match the original exactly (or the real dataset the original displays, when it is a known dataset such as IRIS); missing rows, truncated tables, or wrong values are MAJOR-to-BLOCKER. A visible deviation in line spacing, vertical centering, gap, size, alignment, frame containment, delimiter geometry, or table data vs the original is a MAJOR defect even when all text is verbatim (founder directives 2026-10-10). List EVERY discrepancy with severity (BLOCKER/MAJOR/MINOR) and confidence, then any visual-quality defects in the recreation (text overflow/clipping, wrong wrapping, misalignment, collisions, illegibility). End with: FINAL VERDICT: PASS or FAIL for 'faithful, usable recreation'.

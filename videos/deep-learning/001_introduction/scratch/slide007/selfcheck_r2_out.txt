@@ -1,0 +1,32 @@
+scale render->frame = 2.0844
+[OK ] L top line y-span: measured(frame-px) ['41.7', '45.1'] vs expected [42, 44.5] (tol 3)
+[OK ] L top line x-span: measured(frame-px) ['56.6', '902.4'] vs expected [57, 903] (tol 4.5)
+[OK ] L left line x-span: measured(frame-px) ['56.6', '58.5'] vs expected [57, 59.5] (tol 3)
+[OK ] L left line y-span: measured(frame-px) ['41.7', '516.2'] vs expected [42, 517] (tol 5)
+[OK ] inner frame left stroke x: measured(frame-px) ['69.6', '70.0'] vs expected [70, 70.5] (tol 2.5)
+[OK ] inner frame right stroke x: measured(frame-px) ['893.3', '894.3'] vs expected [894, 895.5] (tol 2.5)
+[OK ] inner frame top stroke y: measured(frame-px) ['118.5', '119.0'] vs expected [119, 119.5] (tol 2.5)
+[OK ] inner frame bottom stroke y: measured(frame-px) ['482.6', '483.1'] vs expected [483, 483.5] (tol 2.5)
+[OK ] black strip y-span: measured(frame-px) ['518.1', '539.3'] vs expected [519, 539] (tol 4)
+[OK ] black strip x-span: measured(frame-px) ['37.4', '921.1'] vs expected [38, 921] (tol 4)
+[OK ] title box y/y/x/x: measured(frame-px) ['135.8', '249.0', '295.5', '676.9'] vs expected [136, 249, 296, 677] (tol 4)
+title lines found: 3 (expect 3)
+[OK ] title line 1 y-span: measured(frame-px) ['155.4', '178.0'] vs expected [155, 177] (tol 4.5)
+[OK ] title line 2 y-span: measured(frame-px) ['183.3', '201.0'] vs expected [184, 200] (tol 4.5)
+[OK ] title line 3 y-span: measured(frame-px) ['212.1', '235.1'] vs expected [212, 235] (tol 4.5)
+[OK ] blue box x-span: measured(frame-px) ['89.7', '269.6'] vs expected [90, 270] (tol 3)
+[OK ] green box x-span: measured(frame-px) ['298.4', '473.5'] vs expected [299, 474] (tol 3)
+[OK ] brown box x-span: measured(frame-px) ['503.3', '678.4'] vs expected [504, 679] (tol 3)
+[OK ] darkred box x-span: measured(frame-px) ['708.6', '882.3'] vs expected [709, 883] (tol 3)
+[OK ] blue box y-span: measured(frame-px) ['329.6', '441.4'] vs expected [330, 441] (tol 3)
+TS runs: [(np.float64(376.6), np.float64(394.4))] expect [(376,393)]
+CV runs: [(np.float64(362.2), np.float64(384.8)), (np.float64(391.5), np.float64(408.8))] expect [(363,384),(391,407)]
+NLP runs: [(np.float64(348.8), np.float64(366.1)), (np.float64(377.1), np.float64(399.6)), (np.float64(405.4), np.float64(427.9))] expect [(348,364),(377,398)*,(405,427)] (*cursor-free)
+[OK ] TS cap top: measured(frame-px) ['376.6'] vs expected [376] (tol 4)
+[OK ] CV cap tops: measured(frame-px) ['362.2', '391.5'] vs expected [363, 391] (tol 4.5)
+[OK ] NLP cap tops (1st,3rd): measured(frame-px) ['348.8', '405.4'] vs expected [348, 405] (tol 4.5)
+arrow band red px (render): 7888
+head-tip column groups (frame x): [np.float64(179.7), np.float64(386.2), np.float64(589.6), np.float64(794.0)] expect near [180, 386.5, 590, 795]
+[OK ] head tips x: measured(frame-px) ['179.7', '386.2', '589.6', '794.0'] vs expected [180, 386.5, 590, 795] (tol 5)
+
+CLOSED-LOOP RESULT: PASS (all measured elements within tolerance)

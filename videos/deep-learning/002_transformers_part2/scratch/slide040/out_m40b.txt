@@ -1,0 +1,24 @@
+== 1. eq3 lavender rect: top edge y~870 (frame 399), left x~315, right x~582 ==
+  [PASS] eq3 rect top edge: rows y868..872 x315..582 dark=684
+  [PASS] eq3 rect left edge: cols x313..317 y870..972 dark=212
+  [PASS] eq3 rect right edge: cols x580..584 dark=206
+     top-edge stroke mean RGB: [153. 153. 204.] (target lavender-lightened ~190,190,215)
+== 2. eq4 pink rect: top y~983 (frame 451), bottom y~1036 (frame 475), right x~764 (frame 371) ==
+  [PASS] eq4 rect top edge: y981..985 x315..764 dark=1114
+  [PASS] eq4 rect bottom edge: dark=1349
+     top-edge stroke mean RGB: [255. 156. 156.] (target pink-lightened ~225,205,205)
+== 3. y_i ellipse tan fill ==
+  [PASS] ellipse interior tan: mean RGB [239. 183. 128.] (target ~(240,190,130) lightened)
+== 4. underlines in render ==
+  [PASS] L2 red underline (frame y157 x664..826): y~342 x1399..1750 coverage 1.00 n=1053
+  [PASS] learn-params underline (frame y157 x391..540): y~342 x807..1130 coverage 1.00 n=991
+  [PASS] L3 red underline (frame y181 x106..434): y~395 x189..900 coverage 1.00 n=2141
+  [PASS] L1 has NO underline: dark px in band y~290: 19
+== 5. gamma/beta still RED in render (judge-override preserved) ==
+  [PASS] intro gamma red: red=109 green=33 of n=144
+  [PASS] intro beta red: red=384 green=0 of n=387
+== 6. highlight green fills ==
+  [PASS] intro hl ~D8F8D8(+text mix): mean RGB (209, 244, 209) vs target (200, 240, 200)
+  [PASS] panel hl ~B0E8B0(+text mix): mean RGB (174, 230, 175) vs target (170, 225, 170)
+
+ATTEMPT-4 NEW-ELEMENT CHECK: PASS

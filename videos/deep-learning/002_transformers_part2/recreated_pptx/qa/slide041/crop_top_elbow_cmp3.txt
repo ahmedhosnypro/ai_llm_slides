@@ -1,0 +1,33 @@
+# Slide 041 â Element-by-Element Comparison
+
+## Context
+Both images show the root node of an organizational/tree diagram: a peach-filled box with two-line red bold text ("Normalization" / "of"), a vertical drop connector to a thin horizontal rail, with elbow drops ending in solid red arrowheads over a blue child box (bottom-left, showing partial white text "â¦vations") and a green child box (bottom-right). The crop cuts both bottom boxes at the same point â this is a crop artifact of the comparison, not a slide defect.
+
+## Fidelity Findings
+
+| # | Element | Original (IMG2) | Recreation (IMG1) | Verdict |
+|---|---------|-----------------|-------------------|---------|
+| 1 | Root box fill | Light peach (~#FCE3C8) | Slightly more saturated peach (~#F8D2AC) | **MINOR** (conf. 0.6) â small saturation difference, possibly upscaling exaggeration |
+| 2 | Root box border | Thin light gray hairline | Thin gray hairline, marginally darker | **MINOR** (conf. 0.5) |
+| 3 | Title text | "Normalization" / "of", bold dark red (~#B01E23), two lines, both centered, tight line spacing | Same text, same 2-line break, both lines centered, matching line spacing; red slightly brighter (~#C00000) | Text content/breaks match. Color **MINOR** (conf. 0.6) |
+| 4 | Vertical drop connector | Thin light hairline from box bottom-center to rail | Same geometry, same thin light hairline | **MATCH** |
+| 5 | Horizontal rail | Thin light hairline spanning nearly full width, at yâ207 | Same span and height, hairline weight matches | **MATCH** â the re-checked shaft fix (thin light hairline, 1pt) is correctly applied; the previous thick red shafts are gone |
+| 6 | Arrowheads | Two small solid red triangles pointing down, left (~x38) and right (~x930) rail ends | Two small solid red triangles at matching positions, matching size | **MATCH** |
+| 7 | Elbow geometry | Rail ends drop down to child boxes; arrowheads land on child box tops | Same elbow arrangement; arrowheads land on/near child box tops | **MATCH** |
+| 8 | Blue child box | Top edge yâ242, blue (#0000A0-ish), white bold text fragment "yations" | Top edge yâ248, matching blue, matching white bold text fragment | **MINOR** (conf. 0.5) â blue box top sits ~5â6px lower at this 2x scale (~2â3px at native), within tolerance |
+| 9 | Green child box | Top edge yâ242, saturated green | Top edge yâ238, matching green | **MINOR** (conf. 0.5) â ~4px offset, negligible |
+| 10 | Frame containment | Root box, connectors, arrowheads all inside frame; bottom boxes cropped by the comparison crop only | Same; no ink crosses the house frame within the visible crop | **MATCH** |
+| 11 | Missing elements | None â both images show the same visible element set for this crop region | Nothing omitted | **MATCH** |
+
+## Visual-Quality Defects in the Recreation
+- None significant. No clipping, no collisions, no text overflow in the visible region. The root box text is cleanly vertically centered within the box, matching the original.
+- The connector shafts are correctly rendered as thin light hairlines with red arrowheads only â consistent with the stated fix.
+
+## Discrepancy Summary
+- **MINOR** â Root box fill slightly more saturated than original (conf. 0.6)
+- **MINOR** â Title red slightly brighter than original's darker red (conf. 0.6)
+- **MINOR** â Blue/green child box top edges offset by a few pixels vertically (conf. 0.5)
+
+No MAJOR or BLOCKER defects. The previously flagged connector-shaft defect (thick red shafts) has been correctly remediated: shafts now render as thin light hairlines with solid red arrowheads only, matching the original.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'

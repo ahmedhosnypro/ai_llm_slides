@@ -98,3 +98,71 @@ understanding).
 The ORIGINAL VIDEO FRAME is ground truth for what each slide shows; web sources
 confirm/correct data and provenance, never license inventing content. `[?]`
 markers are removed only with a confirming URL recorded here.
+
+## Script-12 raw cross-check (2026-10-11, web-research verification worker)
+
+Cross-checked against `analysis/slide_057_raw.json` (raw landed after this
+record was written from the founder directive + dependencies only — this
+section fills the `[pending raw]` placeholders).
+
+- RESOLVED (frame ground truth, script-12 raw):
+  1. Figure identity (open question 1): the raw's string inventory proves a
+     **course-authored composition**, NOT a reuse of the banked paper
+     Figure 1 or the downloaded Alammar figures — the slide spells out
+     "Residual Connection and Layer Normalization" (Fig 1 says "Add & Norm"),
+     "Encoder Decoder Attention" (Fig 1: "Multi-Head Attention"), "Word and
+     Position Embedding", uses yellow token chips / colored bars / six-box
+     attention rows (the deck's redraw family, cf. slide 47's chain), and
+     contains none of Fig 1's "N×", "Outputs (shifted right)",
+     "Output Probabilities", "Linear", "Softmax" strings. Banked Fig 1 +
+     the two Alammar downloads stay reference-only for the composition.
+  2. Output tail (open question 2): the slide does NOT include the final
+     Linear/Softmax/"Output Probabilities" tail nor an "Outputs (shifted
+     right)" label — the decoder stack tops out at three token-circle rows
+     (white / magenta / green) under a small red "Tokens" label. Recorded as
+     a slide-vs-source difference (paper §3.1/Fig 1 have the tail): slide
+     wins for recreation.
+  3. Title (open question 3): the slide has NO title text — only vertical
+     panel labels "Encoder" (red, left edge) / "Decoder" (green, right
+     edge) and the tri-color bottom caption "Encoder / Decoder / Attention"
+     (red/green/blue bold-italic). The record's working title remains a
+     descriptor, not a verbatim banner.
+- CONFIRMED by raw: badge "57"; identity metadata (old extraction slide
+  147, kept frame_04998, shown 4934–4997 s, 64 frames). Encoder panel:
+  Word 0…Word N-1 → "Positional Encoding / Embedding" + "Word Embedding"
+  bars → X₀…X_N → Encoder Blocks 0/1/2/M (four bars, dot columns + red
+  up-arrows between) → Y₀…Y_N. Central blue-striped encoder-output column
+  feeding the decoder via yellow-badged red K arrow (~30% height) and V
+  arrow (~50% height) + hatched striped arrows + two solid blue arrows;
+  K/V tags sit at the decoder's cross-attention row. Decoder bottom→top:
+  token row → purple "Word and Position Embedding" (end labels POS /
+  m-t-de) → blue "Masked Multi-Headed Attention" row (yellow Q badge
+  entering from bottom-right) → red "Residual Connection and Layer
+  Normalization" bars and green "Feed Forward Networks - One Hidden with
+  RELU Activation" bars interleaved with blue attention-box rows. The
+  paper §3.1 topology in this record (masked MHA → encoder-decoder MHA →
+  FFN, residual+LN each, N=6) remains the mechanism ground truth; the
+  record's §3.1 quote stands confirmed as the underlying architecture.
+- RAISED — new `[?]` items for the build pass (frame-level reads):
+  1. Decoder stack row composition as read: the raw enumerates THREE rows
+     of six blue "Encoder Decoder Attention" boxes vs ONE row of "Masked
+     Multi-Headed Attention" (top→bottom), plus a row of six small gray
+     squares between rows 2 and 3 of the attention rows. That is NOT the
+     canonical per-layer pattern (1 masked MHA + 1 cross-attn + 1 FFN per
+     layer, ×N) — either the slide genuinely draws an expanded/unusual
+     structure or the box labels are misread on some rows (e.g. rows the
+     raw calls "Encoder Decoder Attention" may read differently on the
+     frame). Must be verified against `unique_slides/slide_057.jpg` before
+     the build; the encoder half follows slide 47's certified chain.
+  2. K/V entry point: the raw places the K/V tags on the TOPMOST
+     Encoder-Decoder-Attention row (arrows at ~30%/~50% panel heights) —
+     confirm on the frame which cross-attention row(s) actually receive
+     K/V (paper: every decoder layer's cross-attention does).
+  3. Tiny end-label on the purple embedding bar read as "m/t/de" `[?]`
+     (raw-uncertain); and a tiny "Multi-Head" sub-label inside each blue
+     attention box `[?]` (raw-uncertain).
+- No new published-figure claim appears in the raw; nothing to fetch.
+- Corrections needed: none to the record's source claims — the three
+  `[pending raw]` placeholders above are now filled; open questions 1–3
+  are resolved as stated (1 and 3 by frame ground truth, 2 as a recorded
+  slide-vs-source difference).

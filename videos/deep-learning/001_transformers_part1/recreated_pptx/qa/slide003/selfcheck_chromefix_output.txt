@@ -1,0 +1,35 @@
+[PASS] 2a containment: agenda ink inside panel: 0 px outside panel x=[88,1915] y>=94; agenda bbox x=[231,1899] y=[108,647]
+[PASS] 2b containment: title ink inside panel: title band ink present: 22050 px (band y93-210 well inside panel)
+[PASS] 2d0 title: no ink above panel top border (D1 fixed): 0 px above border
+[PASS] 2d1 title: ink band vs original y=[69,99] <=4px: render rows [144,205] -> frame [69.1,98.4]
+[PASS] 2d2 title: center x vs original 421.5 <=4px: render cols [463,1288] -> center 420.2 frame px
+[PASS] 2d3 title: width vs original 397px <=10px: width 396.0 frame px (LO Arial ~2% narrow)
+[PASS] 2c bottom chrome stroke present: band y=[1124,1124] (canonical chrome stroke rows 538-539 -> [1120.8,1125])
+[PASS] 2c2 bottom stroke spans panel width: span x=[86,1915] vs panel [87,1915]
+[PASS] 6a agenda: exactly 4 line bands: bands at [359, 445, 531, 617]
+[PASS] 6b agenda: vertical alignment vs original <=4px: top deltas ['+0.7', '-0.8', '-0.3', '+0.3'] px @150dpi
+[PASS] 6c agenda: band pitch == pinned 41.33pt: pitches [86, 86, 86] (pinned 86.10px)
+[PASS] 6d agenda: left ink alignment <=4px: left=231 target 231.25
+[PASS] 6e agenda: line widths vs original <=8px: widths [544, 566, 504, 412] vs [539.6, 562.5, 497.9, 412.5] (JPEG smear ~2px @960 scale)
+[PASS] 7a wrap: no blue ink below agenda block: 0 blue px in y[700,1050]
+[PASS] 7b wrap: no blue ink above line 1: 0 blue px above band1
+[PASS] 8a XML: agenda lnSpc spcPts=4133 pinned: 4 occurrence(s) = one per agenda paragraph
+[PASS] 8b XML: no '#' in any color value: scan of slide1.xml
+[PASS] 8c XML: fontFace everywhere = Arial only: typefaces ['Arial']
+[PASS] 8d XML: double space preserved in a:t: 'Multi-Head  Attention' verbatim
+[PASS] 8e XML: en dash title verbatim: 'Transformers – Part I' found
+[PASS] 8f XML: all 4 agenda lines verbatim: 4/4 found
+[PASS] 8g XML: title sz=4000 (40pt): sz="4000" present
+[PASS] 8h XML: badge numeral 3: text run '3' present
+[PASS] 8i XML: slide bg FFFFFF (canvas): bg FFFFFF
+[PASS] 8j XML: panel fill E9E9E7: panel rect fill present
+[PASS] 8k XML: chrome border C00000: border color present
+[PASS] 8l XML: badge fill FDFD96 + ring 6A5ACD: badge colors present
+[PASS] 8m XML: old ml-intro chrome absent (E8E8E8 bg / FFF9C4 badge): superseded chrome colors not in XML
+[PASS] 8n build: imports shared_patterns/house_chrome.js: module import + call present
+[PASS] 8o build: no inline chrome re-draw (no E8E8E8/FFF9C4/12.48 frame/badge literals in CODE): no superseded chrome literals in executable code
+
+N/A checks: 3 EQUATIONS (none on slide), 4 DELIMITERS (none), 5 TABLE DATA (none).
+Ratified-chrome differences vs original frame (NOT defects, founder directive 2026-10-11, deep-learning/AGENTS.md): panel/badge geometry from the shared module (canon measured off slide_001); bottom line = chrome panel bottom stroke (original measured 537-539 vs canon 538-539, 1px JPEG smear).
+
+OVERALL: ALL CHECKS PASS

@@ -1,0 +1,97 @@
+== A. token-row cell outline rows (top/bottom edges), per row ==
+OUTPUT: edge runs [(58, 59), (74, 74)]
+X: edge runs [(493, 493), (508, 509)]
+
+== B. LN bars: edge rows + x extent ==
+LN1: edge rows (measured) top 101..103 bottom 128..130  h=30px=31.4pt
+   bar x extent (at edge y=102): 171..899  -> slide x 159.4..915.9
+   fill sample (left of text) median: [235. 176. 118.]
+   text rows n>30: 112..128 (cap h=17px = 17.8pt)
+   "Layer" reddish darkest mean: [220. 125.  69.] n=523
+   "Normalization" brown darkest mean: [129.  70.  14.] n=452
+   text ink x extent: 423..605 (cx 514)
+LN2: edge rows (measured) top 312..314 bottom 339..341  h=30px=31.4pt
+   bar x extent (at edge y=313): 171..899  -> slide x 159.4..915.9
+   fill sample (left of text) median: [235. 176. 118.]
+   text rows n>30: 322..339 (cap h=18px = 18.8pt)
+   "Layer" reddish darkest mean: [221. 128.  73.] n=565
+   "Normalization" brown darkest mean: [129.  70.  13.] n=458
+   text ink x extent: 423..604 (cx 514)
+
+== C. MHA bar: edges, fill, white-text cap ==
+   top edge first plum y=415 (np.int64(166), np.int64(106), np.int64(82))
+   bottom edge last plum y=471 (np.int64(152), np.int64(92), np.int64(82))
+   bar fill median: [133.  70.  89.]
+   white text rows n>30: 438..449 (cap h=12px = 12.6pt)
+   text ink x extent: 385..663 (cx 524)
+   text stem brightest mean: [242. 183. 160.] (white blurred on plum)
+   text ink x extent: 385..663 (cx 524)
+
+== D. FFN box: borders, fill, header, tiles ==
+   side border cols (>30 dark rows): [156, 157, 163, 164, 165, 318, 349, 403, 427, 482, 514, 515, 529, 560, 561, 609, 610, 721, 745, 746, 762, 766, 767, 768, 884, 885, 886, 896, 897, 898, 899]
+   top/bottom border rows (>200 dark cols): [205, 206, 207, 208, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 230, 231, 249, 250, 256, 257, 263, 264, 265]
+   box: x 156..899 y 205..265 -> slide x 143.8..915.9 y 214.5..277.3
+   border color sample: (np.int64(234), np.int64(167), np.int64(99))
+   interior fill median: [238.  180.5 102. ]
+   tile1 border cols: [163, 164, 165, 168, 169, 175, 183, 184, 186, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 229, 230, 231, 232, 233, 234, 235, 236, 239, 240, 241, 246, 247]
+   tile1 fill median (200..230,236..246): [211. 161.  88.]
+   tile1 pink  dots: 1 clusters x=[(190, 225)] cy~255
+      pink  color mean: [242. 173. 127.]
+
+== E. plus discs (both units): centers, diameter, fill ==
+   unit-1: 9 discs
+      cx=205 cy=151.5 d=22 fill=(np.float64(202.0), np.float64(96.0), np.float64(45.0)) -> slide cy 158.5
+      cx=279 cy=151.5 d=22 fill=(np.float64(203.0), np.float64(101.0), np.float64(48.0)) -> slide cy 158.5
+      cx=352 cy=151.5 d=22 fill=(np.float64(200.0), np.float64(91.0), np.float64(42.0)) -> slide cy 158.5
+      cx=424 cy=151.5 d=22 fill=(np.float64(206.0), np.float64(96.0), np.float64(42.0)) -> slide cy 158.5
+      cx=498 cy=151.5 d=22 fill=(np.float64(201.0), np.float64(96.0), np.float64(41.0)) -> slide cy 158.5
+      cx=571 cy=151.5 d=22 fill=(np.float64(198.0), np.float64(91.0), np.float64(39.0)) -> slide cy 158.5
+      cx=760 cy=151.5 d=22 fill=(np.float64(212.0), np.float64(97.0), np.float64(47.0)) -> slide cy 158.5
+      cx=833 cy=152.0 d=23 fill=(np.float64(211.0), np.float64(102.0), np.float64(48.0)) -> slide cy 159.1
+      cx=897 cy=149.5 d=28 fill=(np.float64(185.0), np.float64(101.0), np.float64(28.0)) -> slide cy 156.5
+   unit-2: 9 discs
+      cx=205 cy=363.5 d=24 fill=(np.float64(205.0), np.float64(97.0), np.float64(45.0)) -> slide cy 380.4
+      cx=278 cy=363.0 d=23 fill=(np.float64(208.0), np.float64(100.0), np.float64(48.0)) -> slide cy 379.9
+      cx=351 cy=363.5 d=24 fill=(np.float64(208.0), np.float64(100.0), np.float64(49.0)) -> slide cy 380.4
+      cx=424 cy=363.5 d=24 fill=(np.float64(209.0), np.float64(95.0), np.float64(44.0)) -> slide cy 380.4
+      cx=497 cy=363.5 d=24 fill=(np.float64(208.0), np.float64(99.0), np.float64(47.0)) -> slide cy 380.4
+      cx=570 cy=363.5 d=24 fill=(np.float64(209.0), np.float64(97.0), np.float64(48.0)) -> slide cy 380.4
+      cx=760 cy=363.5 d=24 fill=(np.float64(207.0), np.float64(98.0), np.float64(46.0)) -> slide cy 380.4
+      cx=833 cy=363.5 d=24 fill=(np.float64(199.0), np.float64(90.0), np.float64(38.0)) -> slide cy 380.4
+      cx=898 cy=361.5 d=28 fill=(np.float64(187.0), np.float64(103.0), np.float64(32.0)) -> slide cy 378.3
+
+== F. ellipsis dots per row: color + count at x 615..665 ==
+   output: 3 dot clusters at x=[625, 643, 661] color(dark)=[  7.   7. 153.]
+   post-FFN: 1 dot clusters at x=[610] color(dark)=[130.  69.  76.]
+   post-LN: 1 dot clusters at x=[610] color(dark)=[130.  67.  78.]
+   out-attn: 1 dot clusters at x=[610] color(dark)=[129.  66.  80.]
+   X: 3 dot clusters at x=[624, 642, 660] color(dark)=[ 67. 238. 136.]
+
+== G. red output arrows + green arrows + house arrows census ==
+   red arrows output zone: 13 clusters [141, 148, 156, 160, 203, 275, 348, 422, 494, 568, 754, 760, 832]
+   MHA->X red?: 23 clusters [140, 153, 194, 227, 269, 306, 312, 337, 378, 384, 417, 427, 435, 451, 490, 499, 511, 563, 593, 680, 744, 825, 897]
+   green Y->plus unit1 y128-146: 0 clusters
+   green rowA->FFN? y236-256: 0 clusters
+   green Y->plus unit2 y340-360: 0 clusters
+   green LN1->rowB y296-312: 0 clusters
+   house arrows FFN-gap-up: 0 clusters widths []
+   house arrows FFN-gap-down: 0 clusters widths []
+   zone1: 0 clusters widths []
+   zone2: 8 clusters widths [15, 15, 9, 14, 15, 15, 14, 18]
+
+== H. container (tan panel) borders + fill ==
+   left x120..135 @y250: [(120, (np.int64(227), np.int64(231), np.int64(230))), (121, (np.int64(230), np.int64(232), np.int64(231))), (122, (np.int64(237), np.int64(236), np.int64(232))), (123, (np.int64(235), np.int64(219), np.int64(206))), (124, (np.int64(197), np.int64(158), np.int64(129))), (125, (np.int64(155), np.int64(97), np.int64(49))), (126, (np.int64(169), np.int64(94), np.int64(26))), (127, (np.int64(208), np.int64(130), np.int64(56))), (128, (np.int64(243), np.int64(173), np.int64(111))), (129, (np.int64(240), np.int64(173), np.int64(118))), (130, (np.int64(239), np.int64(174), np.int64(118))), (131, (np.int64(237), np.int64(175), np.int64(118))), (132, (np.int64(237), np.int64(175), np.int64(118))), (133, (np.int64(236), np.int64(175), np.int64(118))), (134, (np.int64(235), np.int64(176), np.int64(118))), (135, (np.int64(235), np.int64(176), np.int64(118)))]
+   right x888..902 @y250: [(888, (np.int64(235), np.int64(174), np.int64(127))), (889, (np.int64(235), np.int64(176), np.int64(120))), (890, (np.int64(236), np.int64(175), np.int64(120))), (891, (np.int64(236), np.int64(175), np.int64(120))), (892, (np.int64(236), np.int64(175), np.int64(118))), (893, (np.int64(236), np.int64(175), np.int64(118))), (894, (np.int64(237), np.int64(174), np.int64(120))), (895, (np.int64(240), np.int64(174), np.int64(116))), (896, (np.int64(232), np.int64(161), np.int64(95))), (897, (np.int64(174), np.int64(96), np.int64(24))), (898, (np.int64(178), np.int64(93), np.int64(13))), (899, (np.int64(202), np.int64(115), np.int64(46))), (900, (np.int64(227), np.int64(145), np.int64(107))), (901, (np.int64(121), np.int64(48), np.int64(29))), (902, (np.int64(215), np.int64(152), np.int64(145)))]
+   top y84..92 @x500: [(84, (np.int64(255), np.int64(166), np.int64(169))), (85, (np.int64(255), np.int64(187), np.int64(166))), (86, (np.int64(197), np.int64(111), np.int64(52))), (87, (np.int64(179), np.int64(89), np.int64(11))), (88, (np.int64(186), np.int64(96), np.int64(18))), (89, (np.int64(233), np.int64(149), np.int64(77))), (90, (np.int64(255), np.int64(177), np.int64(118))), (91, (np.int64(255), np.int64(178), np.int64(124))), (92, (np.int64(255), np.int64(172), np.int64(118)))]
+   bottom y474..482 @x300: [(474, (np.int64(235), np.int64(175), np.int64(115))), (475, (np.int64(240), np.int64(175), np.int64(111))), (476, (np.int64(236), np.int64(160), np.int64(85))), (477, (np.int64(187), np.int64(104), np.int64(24))), (478, (np.int64(174), np.int64(89), np.int64(8))), (479, (np.int64(171), np.int64(106), np.int64(42))), (480, (np.int64(242), np.int64(216), np.int64(191))), (481, (np.int64(238), np.int64(235), np.int64(230))), (482, (np.int64(228), np.int64(230), np.int64(229)))]
+   container fill median (300..310,430..470): [229. 185. 112.]
+
+== I. vertical title metrics ==
+   glyph cap extent x 72..149 (cap h=78px = 81.1pt wide)
+   letter bands (y): [(122, 133), (144, 155), (172, 185), (196, 198), (209, 224), (270, 277), (288, 299), (309, 323), (332, 344), (362, 373), (383, 395), (406, 419), (472, 479), (492, 501)]
+   letter pitch (cap-top deltas): [np.int64(22), np.int64(28), np.int64(24), np.int64(13), np.int64(61), np.int64(18), np.int64(21), np.int64(23), np.int64(30), np.int64(21), np.int64(23), np.int64(66), np.int64(20)] mean=28.5px = 29.8pt
+Traceback (most recent call last):
+  File "/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/scratch/slide047/m14_ink_fonts_census.py", line 232, in <module>
+    ink = A[95:515, 70:150][tm]
+          ~~~~~~~~~~~~~~~~~^^^^
+IndexError: boolean index did not match indexed array along axis 0; size of axis is 420 but size of corresponding boolean axis is 540

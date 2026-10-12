@@ -1,0 +1,59 @@
+# Visual QA Analysis: Slide 017 Recreation (IMG1) vs Original Lecture Frame (IMG2)
+
+## 1. Verbatim Text Transcription
+
+**IMG1 (Recreation render):**
+- Title: "Multi Head Self Attention of Word Xâ" (Xâ in red, subscript 2)
+- Badge: "17" in a yellow circle with blue border
+- Top diagram: "Yâ" labeled strip; "1Ãd" in red
+- Box: "Linear Transformation [ T ]" with subscripts "dH, d" and superscript/dimension marks "Ã"
+- Concatenation bar: "Concatenated Vector" / "1ÃdH" (red/blue text), followed by segments labeled Yâ (orange), Yâ (dark olive), Yâ (yellow), Yâ (green),tan)
+- Layer bands (5 stacked, back to front): "Similarity" ovals, "Weighted SUM" ovals, "Probabilities" oval, head badges "h=1", "h=2", "h=3", "h=4", "h=5"
+- Y-strips: Yâ through dashed boxes of varying colors
+- Main panel: "Dot Product" box with Kâ, Kâ, Kâ, Kâ labels and "K,q" annotation; "Scaling by âd" (vertical text); "K, q / âd" annotation; "Soft max" (vertical text); blue "Î£" box
+- Left inputs: Xâ, Xâ, Xâ, Xâ with gold column panels labeled W_k^(0), W_k^(1), W_k^(2), W_k^(3)
+- Right side: â (circled Ã) symbols; Vâ, Vâ, Vâ, Vâ inputs; yellow-green panels W_v^(0), W_v^(1), W_v^(2), W_v^(3)
+- Right column of stacked panels: W_k^(4), W_v^(4), W_k^(5)... etc. (small subscripted W labels, partly legible)
+- Bottom: "qâ" label, red bar, box "W_k^(0)", bottom strip Xâ Xâ Xâ Xâ with red arrow on Xâ
+- Arrow label (blue, rotated): Â«"H" HeadsÂ»
+- Bottom-right box: "1Ãd" / "W" / "=" / grid / "dÃd" / "d: Embedding Length"
+
+**IMG2 (Original video frame):**
+- Title: "Multi Head Self Attention of Word Xâ" with badge "17" â matches
+- "Linear Transformation [ T ]" with subscripts â matches
+- "Concatenated Vector" / "1ÃdH" â matches
+- "Similarity", "Weighted SUM", "Probabilities", "h=1"â¦"h=5" â matches (small but legible)
+- "Dot Product", "K, q / âd", "Scaling by âd", "Soft max", "Î£" â matches
+- "W" annotation labels on left/right column panels (mostly illegible at video resolution, but the panel structure is visible)
+- "qâ" near the bottom red element; bottom strip of X cells
+- Â«"H" HeadsÂ» label near the arrow â visible in blue
+- Bottom-right box: "1Ãd", "W", "=", "dÃd", "d: Embedding Length" â matches
+- "1Ãd" label near top strip â matches
+
+Much of the small text in IMG2 (W subscripts, KââKâ, VââVâ, XââXâ inside cells) is **illegible due to video compression/low resolution**; the structural placement, however, is consistent with IMG1.
+
+## 2. Similarities
+
+- **Purpose and content:** Both depict the identical Multi Head Self Attention diagram for slide 17, same title, same badge numeral 17.
+- **Layout regions:** Top Yâ strip â Linear Transformation box â Concatenated Vector bar with YââY stacked cascaded layer bands (peach, mint, yellow, lavender, red) with Similarity/Weighted SUM ovals and h=1â¦h=5 badges â main red attention panel with Dot Product â Scaling â Softmax â Î£ â â/Weighted-SUM path â right-side stacked W panels â swoosh arrow with Â«"H" HeadsÂ» label â bottom-right W = grid legend box.
+- **Styling:** Same color coding â gold W_k column panels with yellow-green W^(0) boxes on the left, yellow-green W_v panels on the right, dashed green X-column containers, red K/V strips offset between rows, red/pink main panel, stacked pastel bands, black h-badges.
+- **V subscripts:** In both, the V inputs (VââVâ) descend down the right side of the main panel next to â symbols.
+- **Swoosh arrow:** Both have a red swoosh arc from bottom-center rising to the upper right with a triangular head and the blue Â«"H" HeadsÂ» label near the arrowhead.
+- **Badge numeral 17:** present top-right in both.
+
+## 3. Differences
+
+- **Resolution/sharpness:** IMG1 is a crisp 150-dpi render; IMG2 is a low-resolution, slightly compressed video frame with soft text, some JPEG-ish blur, and a thin white/black edge margin artifact at frame borders (bottom black strip in IMG2).
+- **Swoosh arrow weight:** IMG1's red swoosh is drawn noticeably **thicker and brighter red with a longer, larger triangular arrowhead** near the top right; IMG2's swoosh is thinner and darker crimson with a proportionally smaller head. This matches the stated intent ("longer head") but is a visible delta from the original.
+- **"H" Heads label placement:** In IMG1 the label sits slightly further along the shaft, just below the arrowhead, in bold blue italic; in IMG2 it sits more directly at the arrowhead and appears smaller.
+- **Right column panels:** IMG1 renders each stacked W panel as discrete bordered boxes with visible subscript labels (W_k^(4), W_v^(4), W_v^(5), W^(6)â¦); in IMG2 these merge into more continuous pastel strips with W tags â the recreation's panel separation is crisper/more atomic than the original.
+- **Concatenated vector bar:** In IMG1 the YââY (bright orange, olive, yellow, green, tan) with clearly outlined Y-cells; in IMG2 the same segments appear more muted/washed out by video compression.
+- **Bottom strip:** IMG1 shows the XââXâ strip with the red highlight arrow on Xâ clearly; IMG2 shows the same but blurred, with a red mark at bottom-left that is less defined.
+- **Legend box (bottom right):** Substantially matches; IMG1's grid and labels are sharp while IMG2's are blurry. Colors of the "W" tile appear the same tan/gold.
+- **Minor geometry:** IMG1's cascaded bands appear slightly more expanded/larger overall (the render occupies more canvas height); the original's bands sit marginally tighter. Hard to quantify due to resolution, but visible.
+
+No garbage strings, wrong-language text, clipping, or placeholder defects are visible in either image. IMG2's defects are resolution-driven, not content-driven.
+
+## 4. Verdict
+
+**IMG1 is better.** It is a high-fidelity, sharp recreation that preserves all structural and textual content of the original: identical title, badge "17", all labeled components (Similarity, Weighted SUM, Dot Product, Scaling by âd, Soft max, Î£, W panels, "d: Embedding Length" legend), correct color scheme, and correct VââVâ descending placement. Its only intentional deviations â the brighter, thicker red swoosh with a longer arrowhead and the slightly repositioned Â«"H" HeadsÂ» label â are explicit design deltas, not errors. IMG2, while it is the ground truth, suffers from low video resolution that renders small labels (W subscripts, K/V indices, cell contents) illegible; it cannot serve as a visually superior artifact, only as the reference target.

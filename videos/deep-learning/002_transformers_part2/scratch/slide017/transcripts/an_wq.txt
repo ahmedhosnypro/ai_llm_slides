@@ -1,0 +1,28 @@
+# Visual QA Analysis â Slide 017 build-time zoom (query row, left segment)
+
+## 1. Verbatim text transcription
+
+All text present in the image:
+
+- **"W"** â large black glyph inside the white box at top, with a smaller black **"q"** set as a subscript immediately after/below it (i.e., "W_q").
+- **Red superscript in the top-right corner of the W box** â a short red mark resembling **"(7)"** or possibly "â¨7â©" (two characters; the second looks like a "7"). At this resolution it is **blurry and not fully legible**; I cannot confirm the exact characters.
+- **Small red "x"** (appears lowercase or a small uppercase X) sitting inside one of the left strip cells, followed by a **tiny subscript glyph that is illegible** at this zoom.
+- **Large red "X"** centered in the highlighted cell group, also followed by a **tiny subscript glyph that is illegible** (a faint mark at the X's lower right, roughly one glyph wide).
+
+No other readable text appears anywhere in the crop.
+
+## 2. Layout
+
+- **LEFT edge:** Pink/salmon background above and below; the mint-green strip is clipped mid-cell at the left. The first fully-ish visible content is a pale cream/yellow cell containing the small red "x" with its subscript, followed by several pale cells (light blue, lavender, whitish) separated by thin dividers.
+- **RIGHT edge:** The highlighted cell group ends just before the edge; after a short stretch of mint strip, a **cream/pale-yellow cell is clipped roughly in half by the right border**. Pink background above and below the strip.
+- **TOP:** Pink background across the full width. The **white box with a dark-red border containing "W_q" and the red superscript** sits top-center-right. Directly beneath it is a **small solid red triangle/arrowhead** (appears to point downward) bridging the box and the strip; due to blur its exact direction is slightly ambiguous.
+- **BOTTOM:** Pink background. A **large dark-red arrow pointing up-and-to-the-right** occupies bottom-center, its tail cut off by the bottom edge; its tip aims toward the highlighted group.
+- **Middle:** A horizontal mint/pale-green strip with darker **green dashed border lines** top and bottom runs across the frame. Inside it, a group of ~4 cells (pink, lavender, purple fills) is enclosed by a **thick dark-red dotted/hatched highlight rectangle**, with the large red "X" spanning its middle cells.
+
+## 3. Visual defects / anomalies
+
+- **Clipping (expected from the crop, but noted):** leftmost strip cells are cut mid-cell at the left edge; the rightmost cream cell is cut at the right edge; the large bottom arrow is cut at the bottom edge. The W_q box itself appears fully within frame, though close to the top.
+- **Severe pixelation/blur:** consistent with a 5Ã LANCZOS upscale of a ~100Ã57 px region. Cell borders, the dotted highlight, and all small glyphs show mosaic artifacts and color fringing.
+- **Illegible micro-text:** the red superscript on the W box and both subscripts after the "x"/"X" glyphs cannot be read; they are genuine glyph shapes, not garbage strings, but the characters cannot be recovered at this resolution.
+- **No wrong-language text, no placeholder strings, no obvious element overlaps** are visible. The only near-touch is the red superscript sitting tight against the box's top-right inner corner, which reads as slide styling rather than a defect.
+- A subtle darker-pink tonal patch in the extreme top-left corner appears to be the edge/shadow of an element cropped out of frame; it is not identifiable.

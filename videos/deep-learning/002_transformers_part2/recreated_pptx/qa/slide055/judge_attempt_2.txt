@@ -1,0 +1,51 @@
+# Fidelity Check â Slide 055 (Encoder-Decoder Attention Mechanism)
+
+## Element-by-element comparison
+
+**Title block**
+- Line 1 "Encoder-Decoder  Attention Mechanism  (In Decoder)" â verbatim match, "(In Decoder)" in red in both. â
+- Line 2 "(Self Attention of word Zâ w.r.t All words in Sentence ( Yâ, Yâ, Yâ, Yâ )" â verbatim, red Zâ and red Y-subscripts in both, same line break. â
+- Slide badge "55" yellow with purple ring top-right â matches per PLAYLIST CHROME LAW (a2), not a discrepancy. â
+
+**Left encoder side**
+- "From Encoder Output" hatched red box present both sides. â
+- Yellow dashed rounded box with rows Yâ/Yâ/Yâ/Yâ top-to-bottom â order matches original. â
+- Green Wââ½Ê³â¾ boxes and small K-vector strips with labels Kââ¦Kâ top-to-bottom â match. â
+- Red block arrow pointing left: recreation uses a SOLID red arrow; original uses a hollow (white-filled, red-outlined) arrow. Same on the right side. â **MINOR** (arrow fill style), confidence high.
+
+**Dot Product panel**
+- Gray panel with "Dot Product" (two lines) and red "K.q" at top-right â match. â
+- Blue dots at each K-row with red connecting arrow ascending bottomâtop â match. â
+- qâ label with small vector strip below panel, W_qâ½Ê³â¾ box beneath â match. â
+
+**Scaling / Softmax**
+- Pink vertical bar with rotated "Scaling by âd" â match. â
+- KÂ·q / âd stacked fraction with horizontal bar â present (mandated 2D format per rule (e), original shows same fraction; not a discrepancy). â
+- Softmax: original has "Soft max" written vertically INSIDE the purple bar; recreation puts a large "S" inside the bar and the rotated "Soft max" text at/just outside the bar's left edge rather than inside it. â **MAJOR** (label-vs-region alignment deviation per directive 2026-10-10), confidence medium â content is present and legible, but its placement relative to the enclosing bar differs visibly from the original.
+
+**Weighted SUM section**
+- "Probabilities" and "Weighted SUM" pills, cyan Î£ bar, red arrows up into Î£, staggered â (Ã-in-circle) nodes, VââVâ labels with vector strips feeding from the right â all present, ordering Vâ top â Vâ bottom matches, stagger geometry matches. â
+- Green output bar "O" with green arrow â match. â
+
+**Right encoder side**
+- W_vâ½Ê³â¾ blue boxes, yellow dashed Yââ¦Yâ box, "From Encoder Output" hatched box â match. â
+
+**Bottom region**
+- ZââZâ embedding strip in pink dashed rounded box, Zâ highlighted with magenta dashed outline, red arrow at Zâ â match. â
+- "From Decoder Self Attention Layer" box with left hollow arrow â match. â
+- Bottom-right green dashed legend: 1Ãd, W, =, 1Ãd, dÃd, "d: Embedding Length" â all present and correctly placed. â
+
+**Frame containment**
+- All content sits inside the tan panel and the red house frame; the bottom green dashed box approaches the frame but does not cross it. The solid left/right arrows stop short of the frame edge. No overflow detected. â
+
+## Discrepancy list
+1. **MAJOR** â "Soft max" vertical label rendered outside (left edge of) the purple bar instead of inside it as in the original; large decorative "S" added inside the bar (confidence: medium).
+2. **MINOR** â Left/right "From Encoder Output" arrows are solid red instead of hollow white-with-red-outline (confidence: high).
+3. **MINOR** â Red connector in Dot Product panel uses slightly different arrowhead placement (multiple small heads vs. one long arrow) (confidence: medium).
+
+No BLOCKERs: all equations, vectors, boxes, labels, and diagram elements from the original are present; no missing elements, no table/chart data, no frame overflow.
+
+## Visual-quality defects in the recreation
+- None observed: no text clipping, no collisions, no illegible text; subscripts (Zâ, Yââ¦Yâ, Kââ¦Kâ, Vââ¦Vâ) render cleanly.
+
+FINAL VERDICT: **PASS** for 'faithful, usable recreation'.

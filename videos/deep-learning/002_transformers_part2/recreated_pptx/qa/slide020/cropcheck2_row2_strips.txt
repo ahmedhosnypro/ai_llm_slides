@@ -1,0 +1,40 @@
+# Element-by-Element Comparison â Slide 020, row 2 ("g" array row)
+
+## Inventory (per image)
+
+| Element | IMG1 (render) | IMG2 (original) | Match? |
+|---|---|---|---|
+| Green "g" label, far left | â present, green serif | â present (partially cropped) | â |
+| Green dashed/dotted enclosing box | â present | â present | â (shape differs â see below) |
+| Number of red-framed strip groups | 8 | 8 | â |
+| Labels on strips | Xâ, Xâ, Xâ, Xâ, Xâ, XN-2}, X_{N-1} | same | â |
+| Ellipsis dots | 5 green filled circles | 5 green filled circles | â |
+| Small red tick below box, bottom center | â present | â present | â |
+| Pink highlight cell in each strip | â one per strip | â one per strip | â (position differs â see below) |
+
+## Discrepancies
+
+1. **MAJOR (confidence: high) â Cell count per strip.** Render strips contain **7 cells** each (1 yellow + pink + 5 yellow). Original strips contain **~6 cells** each (2 yellow + pink + 2â3 yellow). Element count inside every group differs; this changes the visual rhythm of the whole row.
+
+2. **MAJOR (confidence: high) â Position of the pink highlighted cell within each strip.** In the render, the pink cell is the **2nd of 7** (one cell left of it, five right). In the original it sits roughly in the **middle** of the strip (~3rd of ~6, two cells left, 2â3 right). Relative geometry within each group is wrong.
+
+3. **MINOR (confidence: medium) â Enclosing box style.** Render uses a green **dashed rectangle with square corners**; original uses a green **dotted rounded rectangle**. Color class and extent match; stroke pattern/corner treatment differ.
+
+4. **MINOR (confidence: medium) â Red frame registration.** In the render, the red frame around each strip is visibly offset â it extends well below the cell row (bottom margin â« top margin), reading as a dropped frame. In the original the red frame hugs the strip more symmetrically.
+
+5. **MINOR (confidence: low) â Ellipsis dot size.** Green dots in the render are slightly larger relative to strip height than in the original. Same count, color, and vertical centering.
+
+## Confirmed-fidelity items (no action)
+
+- **Subscripts**: Xââ¦XN-2}, X_{N-1} all rendered as true small baseline-aligned subscripts in red serif â no caret/underscore text. â
+- **Colors**: cells ~#F2D488 yellow, highlight ~#F7B8CE pink, frames ~#C00000 red, box/dots ~#1E9E4F green â color classes match. â
+- Strip group count (8), left-to-right ordering, spacing rhythm between groups, ellipsis placement between X_{N-2}, and the small red tick at bottom center all match. â
+- House chrome, JPEG blur, and typed-vs-handwritten ink differences are excluded per ground rules.
+
+## Visual-quality defects (render only)
+
+- None blocking: no clipping, overflow, collisions, or illegible text. The red-frame drop (item 4) is the only alignment blemish.
+
+---
+
+**FINAL VERDICT: FAIL** for "faithful recreation of this region" â the per-strip cell count and the position of the pink highlighted cell inside each strip are structurally wrong (two MAJOR items), even though group count, labels, subscripts, ellipsis, and colors are faithful.

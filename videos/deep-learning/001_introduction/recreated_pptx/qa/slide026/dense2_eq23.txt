@@ -1,0 +1,27 @@
+## Region Check: Slide 026 dense-region 2/4 (sigmoid + error equations)
+
+**Content verification (IMG2 â IMG1):**
+
+| Element | IMG2 (original) | IMG1 (recreation) | Status |
+|---|---|---|---|
+| O_j = f(Net_j) = 1/(1+e^(âNet_j)) | Present, stacked fraction with bar | Present, stacked fraction with real bar, numerator "1" above, "1 + e^(âNet_j)" below | â Match |
+| Superscript âNet_j on e | Present | Present with subscript j inside superscript | â Match |
+| "(For Sigmoid Function)" red | Present | Present, red | â Match |
+| E = Â½ Î£_j (t_j â O_j)Â² | Present, 1/2 stacked, j below Î£ | Present, 1/2 stacked with bar, j below Î£ | â Match |
+| "(Error at Output layer ONLY)" blue, ONLY underlined | Present | Present, blue, ONLY underlined | â Match |
+
+Per ground rule (b), the professional 2D rendering in IMG1 (large Î£ glyph with limit below, true fraction bars) is the mandated format â the typeface difference (DejaVu-style vs. Equation-3.0 serif) is not a discrepancy.
+
+## Discrepancy List
+
+1. **MINOR** â Horizontal spacing inside "(t_j â O_j)Â²" is wider in the recreation (gaps around the minus sign are larger than in IMG2). No overlap or collision. Confidence: high.
+2. **MINOR** â Slight font-metric differences (glyph width, ~2px subscript placement on the j indices and the "Â²" superscript). Inherent per rule (b). Confidence: high.
+3. **MINOR** â "E=" has slightly tighter spacing before "=" in the recreation than in IMG2. Confidence: high.
+
+No MAJOR or BLOCKER discrepancies. All symbols, subscripts, operators, fraction bars, the summation limit, colors, and the underline on "ONLY" match verbatim and in reading order.
+
+## Visual-Quality Defects (recreation)
+
+- None significant. Fraction bars are correctly positioned under numerators; summation limit "j" sits directly below Î£; no clipping, no collisions, no elements crossing the region boundary; all text legible at 2x zoom.
+
+**FINAL VERDICT: PASS**

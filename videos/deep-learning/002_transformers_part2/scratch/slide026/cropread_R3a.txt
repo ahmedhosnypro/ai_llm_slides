@@ -1,0 +1,30 @@
+# Visual QA Report â Slide 026 crop R3a (TIDA-00176 analog path)
+
+## 1. Verbatim text transcription
+
+| Location | Text |
+|---|---|
+| White label box (upper-left) | `Analog path` |
+| Left edge (clipped) | `og` â a fragment only; the start of the word is cut off by the crop boundary |
+| Right of triangle, line 1 | `A+,A-,B+,B-,` |
+| Right of triangle, line 2 | `R+,R-` |
+| Right edge vertical band (rotated 90Â°, white text) | `oder connecto` â clipped at both ends; text reads bottom-to-top |
+
+All text is in English/technical notation; no wrong-language strings are visible. The signal labels use ASCII commas and hyphen-minus characters (e.g., `A-` rather than a typographic minus).
+
+## 2. Layout description
+
+- **Overall:** A light-green schematic region, 675Ã171 px, slightly soft from 3Ã upscaling. A large dashed dark-green rectangle occupies the center-left of the frame; its top border runs near the top edge and its bottom border near the bottom edge.
+- **LEFT edge:** A clipped text fragment `og` sits at mid-height, with a short black horizontal line segment directly above it (likely the tail of an arrow or line associated with the cut-off label). A vertical segment of the dashed border also runs near the left edge below the label area.
+- **RIGHT edge:** A vertical band of slightly darker green runs the full height, containing the rotated white text `oder connecto`. At the bottom right, a short black arrow points rightward, entering this band.
+- **TOP:** The dashed rectangle's top border spans the frame. Inside, at upper left, sits a white rectangular label box with black text reading `Analog path`. The upper portion of the green triangle appears at center-right.
+- **BOTTOM:** The dashed rectangle's bottom border is visible; a solid vertical black line descends from the horizontal signal line, crosses the dashed border, and reaches the bottom edge at roughly center-left.
+- **CENTER:** A medium-green triangle with a darker green outline points **left** (flat side at right), consistent with a buffer/amp symbol. A solid black horizontal signal line runs from the left edge to the triangle's left vertex, passing beneath the white label box. A black arrow enters the triangle's flat right side pointing left; the labels `A+,A-,B+,B-,` / `R+,R-` sit above this arrow, **outside** the dashed rectangle to the right.
+
+## 3. Visual defects and clipping
+
+- **Left-edge clipping:** The word fragment `og` is cut off â the beginning of the label is missing from the crop (most plausibly part of a word like "â¦alog", but only `og` is verifiably visible).
+- **Right-edge clipping:** The rotated band text is cut at both ends: `oder connecto` is clearly incomplete (a leading character/word and the ending, e.g. final "r(s)", are lost to the crop). Full wording cannot be confirmed.
+- **Overlap/tangency:** The white `Analog path` box nearly touches / appears to slightly overlap the dashed top border at the upper-left corner of the dashed rectangle. The incoming arrow and its `A+,A-,B+,B-, R+,R-` labels cross the dashed rectangle's right border region.
+- **Crossing elements:** The vertical line below center-left intersects and continues past the dashed bottom border â consistent with normal schematic wiring, not a rendering error.
+- **Image quality:** Mild blur/pixelation from upscaling; no garbled placeholder text, no obviously corrupted glyphs. Everything other than the two clipped fragments noted above is legible.

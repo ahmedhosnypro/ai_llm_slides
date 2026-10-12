@@ -1,0 +1,250 @@
+{
+  "slide_title": "Neural Network Model",
+  "subtitle_or_header": "No subtitle text; directly below the title is a header strip: magenta 'Input Samples' box at far left (x ~6-13%) connected by a long horizontal magenta dashed line to a magenta 'Sample Label' box at far right (x ~86-94%), at y ~22-28%.",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Input Samples",
+      "Sample Label",
+      "Net_i",
+      "Net_j",
+      "Net_k",
+      "O_i",
+      "O_i",
+      "O_i",
+      "O_j",
+      "O_j",
+      "O_j",
+      "O_k",
+      "O_k",
+      "O_k",
+      "w_ji",
+      "w_ji",
+      "w_kj",
+      "w_ki",
+      "w_ki",
+      "Output 1",
+      "Output 2",
+      "Output m",
+      "Error",
+      "Error",
+      "Error",
+      "Class 1",
+      "Class 2",
+      "Class m",
+      "i",
+      "j",
+      "k",
+      "Previous Layer / Layer (i)",
+      "Current Layer / (You are here)",
+      "Next Layer / Layer (K)",
+      "\u03a3 S (split-circle symbol repeated inside every neuron)",
+      "[small white mouse-cursor arrow near middle green neuron, screen-recording artifact]"
+    ],
+    "equations": [
+      "Net_i , Net_j , Net_k (red italic net-input labels with small red arrows pointing to the top neuron of layers i, j, k)",
+      "O_i , O_j , O_k (red italic activation-output labels, one at the upper-right of each colored neuron)",
+      "w_ji (blue italic weight label on layer i\u2192j connections, appears twice)",
+      "w_kj (blue italic weight label on layer j\u2192k connection)",
+      "w_ki (blue italic weight label on skip connection i\u2192k, appears twice, one instance rotated ~90\u00b0)",
+      "\u03a3 | S (each neuron drawn as a circle bisected by a vertical line: \u03a3 = summation on left half, S = sigmoid activation on right half)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top. A header strip below it: magenta 'Input Samples' box at far left connected by a long horizontal magenta dashed line to magenta 'Sample Label' box at far right. The dominant center is one large beige panel containing a 3-row x 5-column neural-network diagram. Immediately right of the panel is a vertical dark-red bar with 'Error' written three times vertically; far right is a column of three green 'Class' boxes aligned with the three network rows. Bottom strip: three colored callout boxes ('Previous Layer / Layer (i)', 'Current Layer / (You are here)', 'Next Layer / Layer (K)') each with a colored upward arrow (labeled i, j, k) pointing into the panel. Thin dark-red frame border around the whole slide; black bar across the very bottom edge.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~x 30-70%, y 8-16%",
+        "content": "'Neural Network Model' in large bold red text"
+      },
+      {
+        "name": "Header connector strip",
+        "position": "top, ~y 22-28%; Input Samples box x 6-13%, Sample Label box x 86-94%, dashed line between",
+        "content": "Two magenta boxes joined by a magenta dashed horizontal line"
+      },
+      {
+        "name": "Network panel",
+        "position": "center, ~x 6-82%, y 29-77%",
+        "content": "Beige rounded rectangle containing 15 neuron circles in 3 rows x 5 columns, connection lines, Net/weight/O labels, small hollow circles, 4 magenta input dots at its left edge, and 3 black Output boxes ('Output 1', 'Output 2', 'Output m') at its right edge receiving black arrows from the column-5 neurons (the small white mouse-cursor arrow near the row-2 green neuron is a screen-recording artifact, not slide content)"
+      },
+      {
+        "name": "Error bar",
+        "position": "right, ~x 82-86%, y 30-72%",
+        "content": "Vertical dark-red bar with 'Error' repeated 3 times, rotated 90\u00b0 (reading bottom-to-top), one per network row"
+      },
+      {
+        "name": "Class column",
+        "position": "far right, ~x 86-95%, y 33-70%",
+        "content": "Three light-green boxes: Class 1, Class 2, Class m, each aligned with one network row"
+      },
+      {
+        "name": "Bottom callouts",
+        "position": "bottom, ~y 79-88%; three boxes at ~x 22-32%, 39-49%, 56-66%",
+        "content": "Blue/green/orange two-line label boxes with matching upward arrows labeled i, j, k"
+      },
+      {
+        "name": "Slide chrome",
+        "position": "slide perimeter: thin dark-red frame inset along all four edges; solid black bar flush with the very bottom edge (~3% of slide height)",
+        "content": "Thin dark-red (#990000) rectangular frame border around the entire slide; solid black (#000000) horizontal bar across the very bottom edge"
+      }
+    ],
+    "hierarchy": "1) Red bold title (largest text). 2) The beige network panel dominates by area. 3) Red accents (title, Net/O labels, connection lines, Error bar) are the strongest color signal. 4) Blue italic weight labels and colored neuron fills next. 5) Smallest: bottom callout boxes, Class boxes, Output boxes (~10-12pt)."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Feed-forward neural-network schematic, 3 rows (top/middle/bottom) x 5 columns of neuron circles inside the beige panel. Col 1: three gray circles, each split by a vertical line into '\u03a3' (left) and 'S' (right); each is followed by three small hollow circles 'o o o'; four magenta dots stacked vertically at the far left (outside/edge of panel) feed thin gray lines into these three neurons. Col 2: three light-blue \u03a3|S neurons, each labeled 'O_i' (red italic) at its upper right. Col 3: three light-green \u03a3|S neurons labeled 'O_j'. Col 4: three light-orange \u03a3|S neurons labeled 'O_k'. Col 5: three gray \u03a3|S neurons, each preceded by two small hollow circles 'o o', each followed by a short black arrow to a black output box. Thin red lines fully mesh col2\u2192col3, col3\u2192col4, and col2\u2192col4 (skip connections). Above the columns, red italic 'Net_i', 'Net_j', 'Net_k' each have a small red arrow pointing down-right onto the top neuron of cols 2/3/4. Blue italic weight labels sit on the lines: 'w_ji' (between cols 2-3, rows 1 and 2), 'w_kj' (between cols 3-4, row 1), 'w_ki' (row 1 area and a second instance rotated ~90\u00b0 on the col2\u2192col4 skip line, row 2).",
+      "colors": [
+        "#CCCCCC",
+        "#99CCFF",
+        "#99FF66",
+        "#FFCC66",
+        "#CC0000",
+        "#0000CC",
+        "#000000",
+        "#CC00CC",
+        "#D6C6B6"
+      ],
+      "position": "center panel, ~x 6-82%, y 29-77%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Two magenta callout boxes with thin magenta borders and bold black two-line text: left box 'Input Samples' (with a small left-pointing arrow on its left edge), right box 'Sample Label'. A horizontal magenta dashed line runs from the Input Samples box across almost the full slide width to the Sample Label box.",
+      "colors": [
+        "#FF99FF",
+        "#000000",
+        "#CC66CC"
+      ],
+      "position": "top strip, y ~22-28%, far left and far right"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Three black rectangles with white text, one per network row, receiving a black arrow from each col-5 gray neuron: 'Output 1' (row 1), 'Output 2' (row 2), 'Output m' (row 3).",
+      "colors": [
+        "#000000",
+        "#FFFFFF"
+      ],
+      "position": "inside right edge of network panel, ~x 74-81%, aligned with each row"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Three light-green (yellow-green) rectangles with black text, vertically stacked and row-aligned: 'Class 1', 'Class 2', 'Class m'.",
+      "colors": [
+        "#99FF33",
+        "#000000"
+      ],
+      "position": "far right column, ~x 86-95%, y 33-70%"
+    },
+    {
+      "type": "other",
+      "description": "Vertical dark-red bar to the right of the network panel containing the word 'Error' three times in bright red bold text rotated 90\u00b0 (reading bottom-to-top), one instance aligned with each network row.",
+      "colors": [
+        "#990000",
+        "#FF0000"
+      ],
+      "position": "right of panel, ~x 82-86%, y 30-72%"
+    },
+    {
+      "type": "arrow",
+      "description": "Three thick upward-pointing block arrows rising from the bottom callout boxes into the network panel, each with a single white letter inside the shaft: blue arrow 'i' (under col 2), green arrow 'j' (under col 3), orange arrow 'k' (under col 4).",
+      "colors": [
+        "#3366CC",
+        "#33CC33",
+        "#FF9933",
+        "#FFFFFF"
+      ],
+      "position": "bottom strip, y ~72-82%, at x ~27%, ~44%, ~61%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Three two-line callout boxes at bottom: light-blue box 'Previous Layer' / 'Layer (i)'; light-green box 'Current Layer' / '(You are here)'; light-orange box 'Next Layer' / 'Layer (K)'. Black small text, thin matching-color borders.",
+      "colors": [
+        "#99CCFF",
+        "#99FF66",
+        "#FFCC66",
+        "#000000"
+      ],
+      "position": "bottom, y ~82-88%"
+    },
+    {
+      "type": "other",
+      "description": "Slide chrome: thin dark-red rectangular frame border inset around the entire slide (clearly visible along top and left edges) and a solid black horizontal bar across the very bottom edge of the slide.",
+      "colors": [
+        "#990000",
+        "#000000"
+      ],
+      "position": "slide perimeter"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; the slide is entirely vector shapes and text. A small white mouse-pointer cursor is visible near the middle green neuron (O_j, row 2), indicating this is a frame from a live screen recording."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#CC0000",
+    "body_text": "#000000",
+    "accents": [
+      "#CC0000",
+      "#FF99FF",
+      "#99CCFF",
+      "#99FF66",
+      "#FFCC66",
+      "#990000",
+      "#D6C6B6",
+      "#CC00CC",
+      "#0000CC",
+      "#99FF33",
+      "#CCCCCC",
+      "#FF0000",
+      "#CC66CC",
+      "#3366CC",
+      "#33CC33",
+      "#FF9933"
+    ]
+  },
+  "typography_notes": "All text appears sans-serif (Arial/Tahoma-like). Title: bold, ~32-36pt, red, centered, title case. Diagram math labels (Net_i, O_i/O_j/O_k, w_ji/w_kj/w_ki) are italic; Net/O labels red, weight labels blue, with underscore-style subscripts. Box labels (Input Samples, Sample Label, Output n, Class n, bottom callouts) are small (~10-12pt), bold in the magenta boxes, regular elsewhere; two-line stacking used in all callout boxes. 'Error' is bold, rotated 90\u00b0 counterclockwise. Letters i, j, k are white inside colored arrows. No all-caps styling; no numbered bullets; slide contains no bullet list at all.",
+  "animation_state": "No mid-build state: every element (all three rows, all labels, all callouts) is fully visible. The presence of a mouse cursor near the middle green neuron suggests a paused live demonstration, but nothing is partially revealed.",
+  "recreation_brief": "1. Canvas: create a white (#FFFFFF) slide; set the default font to a sans-serif face (Arial/Tahoma-like) for all text.\n2. Frame: draw a thin dark-red (#990000) rectangle outline (~2pt line, no fill) inset ~2% from all four slide edges.\n3. Bottom bar: draw a solid black (#000000) rectangle spanning the full slide width, ~3% of slide height, flush with the very bottom edge.\n4. Title: add a centered text box at top (x 30-70%, y 8-16%) reading 'Neural Network Model' in bold ~36pt red #CC0000, title case.\n5. Input Samples box: draw a magenta rectangle (fill #FF99FF, thin #CC66CC border) at x 6-13%, y 22-28%, with bold black ~11pt text 'Input Samples' stacked on two lines ('Input' / 'Samples'); attach a small left-pointing arrow to its left edge (arrow color not specified in source).\n6. Sample Label box: draw an identical magenta rectangle at x 86-94%, y 22-28%, with bold black ~11pt two-line text 'Sample' / 'Label'.\n7. Header connector: draw a horizontal magenta dashed line at y \u224825% from the right edge of the Input Samples box to the left edge of the Sample Label box.\n8. Network panel: draw a rounded rectangle, fill beige #D6C6B6, no border, from x 6-82%, y 29-77%.\n9. Neurons: place 15 circles (diameter \u22484% of slide width) in 3 rows x 5 columns inside the panel; column centers x \u224815%, 26%, 44%, 61%, 72%; row centers y \u224837%, 53%, 69%; fills: column 1 #CCCCCC, column 2 #99CCFF, column 3 #99FF66, column 4 #FFCC66, column 5 #CCCCCC.\n10. Neuron internals: in each of the 15 circles draw a vertical black divider line and place black ~10pt '\u03a3' in the left half and 'S' in the right half.\n11. Hollow circles after column 1: place three small hollow circles ('o o o') immediately right of each column-1 neuron (9 circles total).\n12. Hollow circles before column 5: place two small hollow circles ('o o') immediately left of each column-5 neuron (6 circles total).\n13. Input dots: stack 4 small magenta (#CC00CC) dots vertically at the far-left edge of the panel and draw thin gray lines fanning from these dots into the 3 column-1 neurons.\n14. Connections 2\u21923: draw thin red (#CC0000) lines fully meshing all 3 column-2 neurons to all 3 column-3 neurons (9 lines).\n15. Connections 3\u21924: draw thin red (#CC0000) lines fully meshing all 3 column-3 neurons to all 3 column-4 neurons (9 lines).\n16. Skip connections 2\u21924: draw thin red (#CC0000) lines fully meshing all 3 column-2 neurons to all 3 column-4 neurons (9 lines).\n17. Net labels: add red italic 'Net_i', 'Net_j', 'Net_k' above columns 2, 3, 4 respectively, each with a small red arrow pointing down-right onto the top neuron of its column.\n18. Activation labels: add red italic 'O_i' at the upper right of each of the 3 blue (column-2) neurons, 'O_j' at each of the 3 green (column-3) neurons, and 'O_k' at each of the 3 orange (column-4) neurons (9 labels).\n19. Weight labels: add blue (#0000CC) italic 'w_ji' twice on the column-2\u21923 lines (rows 1 and 2), 'w_kj' once on the column-3\u21924 line (row 1), and 'w_ki' once in the row-1 area plus once rotated ~90\u00b0 on the column-2\u21924 skip line (row 2) (5 labels total).\n20. Output 1: from the row-1 column-5 neuron draw a short black arrow to a black (#000000) rectangle with white ~10pt text 'Output 1', at x \u224874-81%, aligned with row 1.\n21. Output 2: same black arrow into a black rectangle with white text 'Output 2', aligned with row 2.\n22. Output m: same black arrow into a black rectangle with white text 'Output m', aligned with row 3.\n23. Error bar: draw a tall dark-red (#990000) rectangle at x 82-86%, y 30-72%.\n24. Error text: inside the bar place 'Error' 3 times in bold red (#FF0000) ~14pt, each rotated 270\u00b0 (i.e., 90\u00b0 counterclockwise, reading bottom-to-top), one aligned with each network row.\n25. Class 1: draw a light-green (#99FF33) rectangle with black ~11pt text 'Class 1' at x 86-95%, aligned with network row 1.\n26. Class 2: same #99FF33 rectangle with black text 'Class 2', aligned with network row 2.\n27. Class m: same #99FF33 rectangle with black text 'Class m', aligned with network row 3.\n28. Arrow i: draw a thick blue (#3366CC) upward block arrow at x \u224827%, y 72-82%, tip entering the panel under column 2, with white letter 'i' inside the shaft.\n29. Arrow j: thick green (#33CC33) upward block arrow at x \u224844%, y 72-82%, tip under column 3, white letter 'j'.\n30. Arrow k: thick orange (#FF9933) upward block arrow at x \u224861%, y 72-82%, tip under column 4, white letter 'k'.\n31. Callout 'Previous Layer': light-blue (#99CCFF) rectangle with thin blue border at x 22-32%, y 82-88%, two-line black ~10pt text 'Previous Layer' / 'Layer (i)'.\n32. Callout 'Current Layer': light-green (#99FF66) rectangle with thin green border at x 39-49%, y 82-88%, two-line black text 'Current Layer' / '(You are here)'.\n33. Callout 'Next Layer': light-orange (#FFCC66) rectangle with thin orange border at x 56-66%, y 82-88%, two-line black text 'Next Layer' / 'Layer (K)'.\n34. Do NOT draw the small white mouse-cursor arrow near the middle green neuron (row 2) \u2014 it is a screen-recording artifact, not slide content.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "subtitle_or_header was null: filled with a reconstruction from layout.arrangement and the 'Header connector strip' region (magenta 'Input Samples' box far left + magenta dashed line + magenta 'Sample Label' box far right at y ~22-28%); the slide has no separate subtitle text.",
+      "verbatim_text.bullets kept empty: verified genuinely absent per the exception rule (typography_notes states 'slide contains no bullet list at all'); all slide text lives in labels/equations, so nothing was invented to fill it.",
+      "layout.regions 'Network panel' content now explicitly lists the 3 black Output boxes ('Output 1', 'Output 2', 'Output m') at the panel's right edge (previously described only in visual_elements) and notes the mouse-cursor artifact for full label coverage.",
+      "Added a 7th layout region 'Slide chrome' (thin dark-red #990000 frame inset around the slide + solid black bottom bar) so that regions cover all 8 visual_elements.",
+      "colors.accents was missing 6 colors used by visual_elements: added #CCCCCC (gray neurons), #FF0000 (Error text), #CC66CC (magenta box borders), #3366CC (blue arrow), #33CC33 (green arrow), #FF9933 (orange arrow).",
+      "Normalized the 3 bottom-callout labels to explicit two-line form ('Previous Layer / Layer (i)', 'Current Layer / (You are here)', 'Next Layer / Layer (K)') to match visual_elements; intentional per-instance duplicates (O_i/O_j/O_k x3, Error x3, w_ji x2, w_ki x2) retained.",
+      "recreation_brief rewritten as a 34-step ordered checklist: one element per step with exact text, position, color, and shape; exact counts everywhere (15 neurons, 9+9+9 red connections, 9+6 hollow circles, 4 magenta dots, 5 weight labels, 9 activation labels, 3 Net labels, 3 Output boxes, 3 Error instances, 3 Class boxes, 3 arrows, 3 callouts); mouse-cursor artifact explicitly excluded from recreation.",
+      "Precision scan: no vague quantifiers ('several', 'some', 'many', 'a few', 'various') were found in the source; all counts were cross-checked and verified exact against verbatim_text.labels and visual_elements."
+    ],
+    "uncertain_items": [
+      "Column x-positions of the 5 neuron columns (x \u224815/26/44/61/72%) are the vision model's estimates and are unevenly spaced; unverifiable without the image.",
+      "Row y-positions (y \u224837/53/69%) are derived by evenly spacing 3 rows inside the panel bounds (source gives only panel y 29-77%).",
+      "Color of the small left-pointing arrow on the 'Input Samples' box is not specified in the source.",
+      "Exact number of thin gray lines fanning from the 4 magenta dots into the 3 column-1 neurons is not specified (one per dot or one per dot-neuron pair).",
+      "The two-line breaks of the magenta box texts ('Input'/'Samples', 'Sample'/'Label') are inferred from 'bold black two-line text' in visual_elements.",
+      "'Layer (K)' is reported with a capital K while every other k-reference is lowercase (Net_k, O_k, w_kj, w_ki, arrow 'k'); kept as reported since two independent fields agree.",
+      "All font sizes (~36pt title, ~14pt Error, ~11pt box labels, ~10pt diagram text) are approximations from the source analysis.",
+      "The white mouse cursor near the row-2 green neuron is a screen-recording artifact; its exact position is approximate and it is excluded from the recreation brief."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_024.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 24,
+      "image": "slide_024.jpg",
+      "kept_frame": "frame_01256.jpg",
+      "start_sec": 1227.0,
+      "end_sec": 1255.0,
+      "frame_count": 29,
+      "old_group": 29,
+      "founder_frame_swap": false
+    },
+    "elapsed_s": 183.3,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1346.4
+  }
+}

@@ -1,0 +1,33 @@
+render 2001x1125
+title: ink x 628..1498 y 170..213 expect x 623..1503 y 166..216 OK
+info panel blue border bbox: x 164.52559513096577..1828.5255951309657 y 238.8254698486187..729.8254698486187 (expect 166..1828, 240..728)
+info panel cream fill fraction: 0.92 (expect >0.8)
+line cap119 x105: ink left 188.1991921470143 (expect 187+-9) band y 255.4475537453239..284.4475537453239 OK
+line cap137 x181: ink left 351.9185294689831 (expect 352+-9) band y 294.6917215387342..323.6917215387342 OK
+line cap156 x182: ink left 354.0858891705879 (expect 354+-9) band y 336.11612087622285..365.11612087622285 OK
+line cap196 x105: ink left 187.1991921470143 (expect 187+-9) band y 423.3253826393569..452.3253826393569 OK
+line cap215 x182: ink left 355.0858891705879 (expect 354+-9) band y 464.74978197684567..493.74978197684567 OK
+line cap256 x105: ink left 188.1991921470143 (expect 187+-9) band y 554.1392752840582..583.1392752840582 OK
+line cap274 x146: ink left 277.06093991281324 (expect 276+-9) band y 593.3834430774684..622.3834430774684 OK
+line cap293 x227: ink left 452.61707574280626 (expect 452+-9) band y 634.807842414957..663.807842414957 OK
+line cap312 x144: ink left 272.7262205096035 (expect 272+-9) band y 676.2322417524457..705.2322417524457 OK
+diagram red border bbox: x 99.5048040828202..1893.50480408282 y 757.7205773392664..1115.7205773392664 (expect 101..1893, 759..1114)
+banner navy bbox: x 317.24077424330545..1874.2407742433054 y 853.0112283668707..973.0112283668707 (expect 317..1876, 859..968)
+banner white-text px: 5016 (expect >200)
+strips: 16 units checked for slot tint + label ink
+dots: 5 blue + 5 green checked
+upper arrows: 8 column groups (expect 8): [386, 542, 700, 858, 1017, 1175, 1584, 1740]
+lower arrows: 8 column groups (expect 8): [387, 544, 702, 860, 1018, 1176, 1586, 1742]
+gutter-up(blue): ink x 121..337 y 791..860 expect x 120..300 y 787..855 OFF
+gutter-dn(red): ink x 99..280 y 959..1049 expect x 116..291 y 972..1044 OFF
+caption-highlight: ink x 593..1200 y 1064..1091 expect x 592..1202 y 1064..1092 OK
+containment vs chrome: ink x 86..1915 y 93..1124 inside (88..1915, 94..) OK
+diagram interior ink extent: x 121.5048040828202..1874.50480408282 y 785.7205773392664..1092.7205773392664 (panel interior 105..1889, 763..1110)
+wrap gaps checked
+
+SELF-CHECK FAILURES:
+  - gutter-up(blue): ink bbox off (got 121,337,791,860 expect (120.01104139726387, 299.90189663046664, 787.063587412285, 854.6507652787138))
+  - gutter-dn(red): ink bbox off (got 99,280,959,1049 expect (115.67632199405416, 291.2324578240472, 972.383268658945, 1044.3309096135304))
+  - caption-text: NO ink in region
+  - panel gap1: unexpected blue ink (33px)
+  - panel gap3: unexpected blue ink (72px)

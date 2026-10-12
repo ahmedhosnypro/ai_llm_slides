@@ -1,0 +1,201 @@
+{
+  "slide_title": "The Convolution Process",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Scan the original image using the 3x3 filter",
+      "Move the filter ONE pixel  (Right, Left, Up, Down) and Re-Calculate"
+    ],
+    "labels": [
+      "Original image",
+      "Convolutional filter 1",
+      "a=1,",
+      "b=1",
+      "Image:",
+      "I (x,y)",
+      "Filter:",
+      "h (-a:a , -b:b)",
+      "(odd dimension)",
+      "Convolving the image",
+      "Result",
+      "Inner product",
+      "4",
+      "x1",
+      "x0"
+    ],
+    "equations": [
+      "I(x, y) \u2217 h = \u03a3_{i=\u2212a}^{a} \u03a3_{j=\u2212b}^{b} I(x \u2212 i, y \u2212 j) \u2218 h(i, j)",
+      "LaTeX: I(x,y) \\ast h = \\sum_{i=-a}^{a} \\sum_{j=-b}^{b} I(x-i,\\ y-j) \\circ h(i,j)   [the operator between I(...) and h(i,j) is a small raised circle/dot, \u2218 or \\cdot]"
+    ]
+  },
+  "layout": {
+    "arrangement": "Video-frame slide with black letterbox bars at very top and bottom. White slide outlined by a thin dark-red frame. Title centered at top. Below, one large red-outlined panel spans nearly the full width and is organized in three columns: LEFT column = 'Original image' photo with 5x5 numeric overlay, then 'Convolutional filter 1' 3x3 yellow grid with 'a=1, b=1' annotation, then two notation lines ('Image: I (x,y)' / 'Filter: h (-a:a , -b:b) (odd dimension)'). CENTER column = 'Convolving the image' 5x5 grid (top-left 3x3 highlighted yellow, rest green) with the convolution equation and red 'Inner product' brace label beneath it. RIGHT column = 'Result' 3x3 mostly-empty grid whose top-left cell contains '4', reached by a curved black arrow from the center grid. Bottom: a blue-outlined box with two instruction lines.",
+    "regions": [
+      {
+        "name": "Letterbox bars",
+        "position": "top 0\u20138% and bottom 95\u2013100%, full width",
+        "content": "solid black bars from the video capture"
+      },
+      {
+        "name": "Title",
+        "position": "top center, ~30\u201370% width, 10\u201321% height",
+        "content": "red bold serif title 'The Convolution Process'; a small black pen/pointer icon touches the top of the word 'Convolution'"
+      },
+      {
+        "name": "Main framed panel",
+        "position": "middle, ~5\u201395% width, 22\u201382% height",
+        "content": "white panel with thin dark-red border containing all three content columns"
+      },
+      {
+        "name": "Left column",
+        "position": "middle left, ~8\u201332% width, 24\u201381% height",
+        "content": "'Original image' label, photo thumbnail with 5x5 grid of 0/1 values, 'Convolutional filter 1' label, 3x3 yellow filter grid with red 'a=1, b=1', notation lines 'Image: I (x,y)' and 'Filter: h (-a:a , -b:b) (odd dimension)'"
+      },
+      {
+        "name": "Center column",
+        "position": "middle center, ~38\u201366% width, 24\u201366% height",
+        "content": "'Convolving the image' label and 5x5 grid: top-left 3x3 cells yellow with tiny x1/x0 subscript multipliers, remaining cells green"
+      },
+      {
+        "name": "Right column",
+        "position": "middle right, ~68\u201388% width, 24\u201352% height",
+        "content": "'Result' label and 3x3 cream-colored grid, top-left cell grey-olive containing bold '4', all other cells empty"
+      },
+      {
+        "name": "Equation + Inner product",
+        "position": "lower center-right, ~45\u201390% width, 62\u201380% height",
+        "content": "red handwritten-style 'Inner product' label with a curly brace underneath it, sitting above the black serif double-sum convolution equation"
+      },
+      {
+        "name": "Instruction box",
+        "position": "bottom, ~8\u201392% width, 84\u201395% height",
+        "content": "rectangle with blue border, white fill, two navy serif instruction lines"
+      }
+    ],
+    "hierarchy": "Title dominates (largest, bold, red serif). Next most dominant are the three colored grids (large yellow/green/cream blocks). Then the handwritten-style section labels, then the equation, then the small notation lines, and finally the bottom instruction text (small navy serif)."
+  },
+  "visual_elements": [
+    {
+      "type": "image",
+      "description": "Small photo thumbnail (appears to be a classical painting/scene with greenish tones) overlaid with a 5x5 grid of numbers connected by green grid lines. Grid values row by row: [1, 1, 1, 0, 0]; [0, 1, 1, 1, 0]; [0, 0, 1, 1, 1]; [0, 0, 1, 1, 0]; [0, 1, 1, 0, 0].",
+      "colors": [
+        "#7FA97F",
+        "#4E6B45",
+        "#3CB054",
+        "#1F4F1F"
+      ],
+      "position": "left column, upper area (~10\u201328% width, 28\u201350% height)"
+    },
+    {
+      "type": "table",
+      "description": "Convolutional filter: 3x3 grid of yellow cells with thin red-orange borders. Values: row1 = 1, 0, 1; row2 = 0, 1, 0; row3 = 1, 0, 1. Digits bold black. To the right of the grid, red text on two lines: 'a=1,' and 'b=1'.",
+      "colors": [
+        "#FFFF00",
+        "#E36C0A",
+        "#000000",
+        "#C00000"
+      ],
+      "position": "left column, middle-lower (~14\u201330% width, 58\u201370% height)"
+    },
+    {
+      "type": "table",
+      "description": "Convolving grid: 5x5 grid. Top-left 3x3 cells are YELLOW (the filter's current position); the remaining 14 cells are GREEN. Values row by row: [1, 1, 1, 0, 0]; [0, 1, 1, 1, 0]; [0, 0, 1, 1, 1]; [0, 0, 1, 1, 0]; [0, 1, 1, 0, 0]. Digits bold black. Each yellow cell carries a tiny subscript multiplier matching the filter weight: row1 = x1, x0, x1; row2 = x0, x1, x0; row3 = x1, x0, x1.",
+      "colors": [
+        "#FFFF00",
+        "#00B050",
+        "#000000"
+      ],
+      "position": "center column (~38\u201366% width, 28\u201366% height)"
+    },
+    {
+      "type": "table",
+      "description": "Result grid: 3x3 grid of empty cream/beige cells with tan borders. Only the top-left cell is filled: grey-olive background containing the bold black value '4' (result of the first 3x3 inner product). All other 8 cells are blank.",
+      "colors": [
+        "#F2EDDA",
+        "#C9B26B",
+        "#9C9C8E",
+        "#000000"
+      ],
+      "position": "right column (~70\u201386% width, 28\u201352% height)"
+    },
+    {
+      "type": "arrow",
+      "description": "Black curved arrow starting above the top edge of the center convolving grid (near the yellow region) arcing right and downward, with the arrowhead pointing into the '4' cell of the Result grid.",
+      "colors": [
+        "#000000"
+      ],
+      "position": "between center and right columns, upper area (~60\u201375% width, 26\u201334% height)"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Red handwritten-style label 'Inner product' with a large red curly brace directly beneath it; the brace spans the double-summation term of the equation below.",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "lower right-center (~70\u201388% width, 62\u201370% height)"
+    },
+    {
+      "type": "other",
+      "description": "Thin dark-red rectangular outline framing the entire main content area; separate blue-outlined rectangle framing the bottom instruction text.",
+      "colors": [
+        "#C00000",
+        "#2E4B9B"
+      ],
+      "position": "main panel outline ~5\u201395% width / 22\u201382% height; instruction box ~8\u201392% width / 84\u201395% height"
+    },
+    {
+      "type": "other",
+      "description": "Equation rendered in black serif math type with two large sigma summations (limits: upper 'a', lower 'i=\u2212a'; upper 'b', lower 'j=\u2212b') acting on I(x \u2212 i, y \u2212 j) \u2218 h(i, j).",
+      "colors": [
+        "#000000"
+      ],
+      "position": "below the convolving grid, spanning center-right (~45\u201390% width, 68\u201380% height)"
+    },
+    {
+      "type": "icon",
+      "description": "Small black pen/pointer icon overlapping the top edge of the title near the letters 'olut' of 'Convolution' (likely a live-recording pen annotation).",
+      "colors": [
+        "#000000"
+      ],
+      "position": "top center, touching title (~48\u201352% width, 10\u201314% height)"
+    }
+  ],
+  "imagery": [
+    "One photographic thumbnail in the left column: a small classical painting/scene (greenish tint, figures/landscape not clearly resolvable) used as the 'Original image', overlaid with a 5x5 numeric grid with green lines.",
+    "Small black pen/cursor-style icon at the top of the title word 'Convolution'."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#C00000",
+      "#FFFF00",
+      "#00B050",
+      "#1F3864",
+      "#2E4B9B",
+      "#F2EDDA",
+      "#C9B26B",
+      "#9C9C8E",
+      "#E36C0A"
+    ]
+  },
+  "typography_notes": "Title: bold serif (Times New Roman-like), red, title case, largest element. Section labels ('Original image', 'Convolving the image', 'Result', 'Convolutional filter 1', 'Inner product'): casual handwritten/comic-style sans font, black except 'Inner product' in red. Grid digits: bold black sans-serif, with very small subscript 'x1'/'x0' multipliers inside yellow cells. Notation lines ('Image:', 'Filter:'): bold black sans-serif with red math symbols (I, h) and red italic '(odd dimension)'. Equation: black serif math italic with large summation signs. Bottom instructions: navy serif, sentence case, with 'ONE' in caps and 'Re-Calculate' hyphenated for emphasis.",
+  "animation_state": "Slide appears fully built \u2014 no partial bullet reveal. The Result grid intentionally shows only the first computed cell ('4') as part of the static explanation of the first convolution step; the other eight result cells are empty by design, not mid-animation.",
+  "recreation_brief": "1. Set slide background white; optionally add full-width black rectangles at top (0\u20138% height) and bottom (95\u2013100%) to mimic the video letterboxing. 2. Draw a thin dark-red (#C00000) rectangle outline framing the content area (~5\u201395% width, ~22\u201382% height). 3. Add title text box top-center: 'The Convolution Process', Times New Roman bold ~40pt, color #C00000, centered; optionally place a small black pen icon overlapping its top edge. 4. LEFT COLUMN: add label 'Original image' (Comic Sans MS ~20pt, black) at ~10% width, 24% height; below it insert a small photo (~18% wide) and overlay a 5x5 table with green grid lines and dark digits: rows 1 1 1 0 0 / 0 1 1 1 0 / 0 0 1 1 1 / 0 0 1 1 0 / 0 1 1 0 0. 5. Add label 'Convolutional filter 1' (Comic Sans, black); below it draw a 3x3 grid of yellow (#FFFF00) squares with red-orange (#E36C0A) borders containing bold black digits 1 0 1 / 0 1 0 / 1 0 1; to the right add red text 'a=1,' and 'b=1'. 6. Below, add two bold black sans-serif lines: 'Image:  I (x,y)' with the 'I' in red, and 'Filter:  h (-a:a , -b:b)' with the 'h' in red, followed by red italic '(odd dimension)'. 7. CENTER COLUMN: add label 'Convolving the image' (Comic Sans, black); build a 5x5 grid (~27% wide): top-left 3x3 cells yellow #FFFF00, all other cells green #00B050; place bold black digits per the matrix in step 4; add tiny subscripts on the yellow cells: row1 x1,x0,x1; row2 x0,x1,x0; row3 x1,x0,x1. 8. RIGHT COLUMN: add label 'Result' (Comic Sans, black); draw a 3x3 grid of cream (#F2EDDA) cells with tan (#C9B26B) borders; fill the top-left cell with grey-olive (#9C9C8E) and bold black '4'; leave the rest empty. 9. Draw a black curved arrow from the top edge of the center grid to the '4' cell. 10. Below the center/right area, add red Comic Sans text 'Inner product' with a red curly-brace shape beneath it. 11. Insert an equation text box (Insert > Equation, black serif italic ~20pt): I(x,y) * h = \\sum_{i=-a}^{a} \\sum_{j=-b}^{b} I(x-i, y-j) \\circ h(i,j), positioned so the brace spans the double sum. 12. BOTTOM: draw a rectangle (~8\u201392% width, ~84\u201395% height) with blue (#2E4B9B) border and white fill; inside, two navy (#1F3864) serif ~18pt lines: 'Scan the original image using the 3x3 filter' and 'Move the filter ONE pixel  (Right, Left, Up, Down) and Re-Calculate'.",
+  "_meta": {
+    "frame": "slide_041.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 41,
+      "image": "slide_041.jpg",
+      "kept_frame": "frame_03091.jpg",
+      "start_sec": 2952.0,
+      "end_sec": 3090.0,
+      "frame_count": 139,
+      "old_group": 54,
+      "founder_frame_swap": false
+    },
+    "elapsed_s": 275.0
+  }
+}

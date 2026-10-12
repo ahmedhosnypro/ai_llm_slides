@@ -1,0 +1,45 @@
+# Region-by-Region Comparison
+
+## 1. Verbatim Transcription
+
+**Pair 1 [R1_title]:**
+- Recreation (top): "Residual Connections and Normalization"
+- Original (bottom): "Residual Connections and Normalization"
+
+**Pair 2 [R2_defbox]:**
+- Recreation (top):
+  - "Adding Residual Connection:"
+  - "Word Embedding + Positional Information   [First Transformer Block]"
+  - "Output of Previous Transformer Block   [Stacked Transformer Blocks]"
+  - "Adding âLAYERâ Normalization"
+  - "Encoded Vectors of Input Sequence   [With Same Input Vectors Dimension"
+- Original (bottom): identical text, same wording, same bracket structure (including the unmatched open bracket "[With Same Input Vectors Dimension").
+
+**Pair 3 [R3_graybar]:**
+- Recreation (top): "Layer Normalization  (NOT Batch Normalization)"
+- Original (bottom): "Layer Normalization  (NOT Batch Normalization)"
+
+**Pair 4 [R4_caption]:**
+- Recreation (top): numbered token cells "2", "3", "4", "5" with red X marks and small dark icons above; caption "Word Embedding + Positional Information"
+- Original (bottom): same repeating token-cell motif (X marks barely legible in blur), caption "Word Embedding + Positional Information"
+
+**Context image (IMG2):** full slide 38 with title, definition box, LayerNorm bar, "Multi Head Self Attention Block", labels "Output of Self Attention", "Residual Connections", "Input to Self Attention", yellow caption bar, slide number "38".
+
+## 2. Similarities
+
+- All four regions contain the same text content, word-for-word, including punctuation and the original's dangling bracket.
+- Layout structure matches: red bold title; blue-bordered cream definition box with two labeled sections; gray horizontal LayerNorm bar with red dash-dot arrows (up) and green arrowheads (below); repeating token cells (yellow/green/red/gray) with red X's, orange connector arcs, and yellow-highlighted caption underlined by a red rule.
+- Colors are faithful: red title, blue text/border, cream box fill, gray bar, red italic + black bold in the LayerNorm bar, yellow caption highlight with red text.
+
+## 3. Differences
+
+- **Sharpness:** Recreation crops are crisp; original crops are low-res/blurry (expected â the original is a 960Ã540 video frame).
+- **Title [R1]:** Original title is noticeably blurrier and its letterforms look slightly heavier/rounder (video compression); recreation uses a cleaner, sharper sans-serif. Line breaks match.
+- **Defbox [R2]:** In the recreation, the bracket text "[With Same Input Vectors Dimension" sits closer to the right edge and its vertical position relative to "Encoded Vectorsâ¦" line appears slightly offset; in the original it sits on the same baseline further right. Original box fill reads slightly more yellow-cream; recreation is flatter white/cream. Original line spacing between the two sections is slightly larger. Minor, but the recreation's third line bracket appears indented differently.
+- **LayerNorm bar [R3]:** In the recreation, the bar extends nearly full width with arrows cropped at edges, and a green arrowhead overlaps the bar's bottom-left; in the original there's a visible mouse cursor above the bar (absent in recreation â appropriate removal). The recreation's dash-dot red line and green markers are cleaner/more saturated. In the original, "(NOT Batch" shows underline-like stroke artifacts from compression; recreation renders clean "(NOT Batch".
+- **Caption [R4]:** Recreation's X marks and cell colors (yellow, green, salmon "2/3/4/5", gray) are bold and saturated; original's are washed out by blur, numbers illegible. Recreation crops the 5th cell at the right edge; original also crops at edges â comparable framing. The recreation's small dark icons above X's are sharper.
+- **No garbage strings, placeholders, or wrong-language text in either.**
+
+## 4. Verdict
+
+**The recreation (top halves) is BETTER.** It reproduces all text and layout faithfully while being far sharper and more legible: crisp title letterforms, clean definition-box typography with correctly aligned bracket text, saturated accurate colors in the token cells (numbers 2â5 clearly readable vs. illegible in the original), and clean arrow/arrowhead rendering on the LayerNorm bar. The only artifacts in the recreation are trivial (slight edge cropping consistent with the crop spec, minor bracket indentation), whereas the original suffers from heavy video blur that obscures fine detail throughout.

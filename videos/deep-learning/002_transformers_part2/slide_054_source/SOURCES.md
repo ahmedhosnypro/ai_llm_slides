@@ -119,3 +119,57 @@ references it.
 The ORIGINAL VIDEO FRAME is ground truth for what each slide shows; web
 sources confirm/correct data and provenance, never license inventing content.
 `[?]` markers are removed only with a confirming URL recorded here.
+
+## Script-12 raw cross-check (2026-10-11, web-research verification worker)
+
+Cross-checked against `analysis/slide_054_raw.json` (script-12 raw landed
+after this record was written from the banked vision transcript).
+
+- CONFIRMED by raw: title verbatim with the double space before "(Adding";
+  the full left→right pipeline (Z stack → W_k → K strips → tan "Dot Product"
+  with yellow "Similarity" pill → "Scaling by √d" with fraction K,q/√d →
+  green "Mask" column [−∞,−∞,0,0] + black "Look Ahead Mask" ellipse →
+  "Soft max" with "Probabilities" pill → four red ⊗ nodes (top arrow labeled
+  red "0") fed by V₁–V₄ from W_v → blue Σ with "Weighted SUM" → top output Z);
+  magenta-highlighted Z₂ in the bottom container driving W_q → q₂ into the
+  Dot Product box; dashed connectors tying the bottom container to both side
+  Z stacks; bottom-right legend (1×d)·W(d×d) = 1×d with "d: Embedding
+  Length"; top-right badge row (−∞ chip, red circled symbol, empty yellow
+  rectangle, badge "54"); identity metadata (old extraction slide 134, kept
+  frame_04756, shown 4681–4755 s, 75 frames). No source claims in this
+  record are contradicted.
+- STRENGTHENED: open question 3 — the raw sees all four K labels (K₁–K₄)
+  and all four W_k/W_v rows explicitly (no partly-hidden 4th row); and the
+  query label reads "q₂" twice (leaning open-question "q_1 (q_2 [?])"
+  toward q₂); the top output cell reads plain "Z" (no ^/bar), leaning open
+  question 2 toward plain "Z".
+- RAISED / keeps `[?]` (frame-level reads needed in the build pass — none of
+  these are resolvable by web sources, they are course-notation/frame reads):
+  1. K-label vertical order: the banked transcript read keys drawn
+     K_4…K_1 top→bottom (which makes mask [−∞,−∞,0,0] self-consistent with
+     query q₂ — self + previous allowed); the raw lists the strips as
+     "K₁, K₂, K₃, K₄" without pinning the vertical order. If K₁ were on
+     top, the mask column as drawn would be inconsistent with q₂ — so the
+     reversed (K₄ top) reading remains the consistency-favored one, but the
+     frame must decide. Flagged for the corrections/build pass.
+  2. Superscript semantics: raw reads the W-box superscripts as "(r)"
+     (possibly "(1)") and marks them `[?]`; the banked transcript read
+     "(0)"/"(1)". Two independent reads disagree → open question 1 stays
+     `[?]` with a widened candidate set {(0), (1), (r)}.
+  3. NEW from raw: a possible dash before √d in the rotated box text
+     (raw: "Scaling by −√d [?]"). The paper (§3.2.1, verified in this
+     record) divides by √d_k — a literal "−√d" would be a slide
+     typo/artifact. Frame-level read flagged; do not "correct" the slide
+     without the frame.
+  4. NEW from raw: a large ς (final-sigma-like) glyph inside the Softmax
+     column, read uncertain (raw marks it `[?]`). Not captured in the
+     original record — added here as a new `[?]` element for the build pass.
+  5. Open question 4 (empty yellow rectangle among the top-right badges)
+     remains `[?]` — the raw also offers no explanation.
+  6. Minor notation read: raw writes the dot-product output label "K,q"
+     (comma) vs the record's "K.q" (dot) — same trivial build-level check.
+- No new published-figure claim appears in the raw (course-authored
+  pipeline cartoon, consistent with this record's figure-identity
+  conclusion; nothing to fetch).
+- Corrections needed: none to source claims; the frame-level flags above go
+  to the build pass.

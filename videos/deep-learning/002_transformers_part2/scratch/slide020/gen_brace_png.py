@@ -36,9 +36,9 @@ d.line([(x_c, y_sp), (x_d, y_sp)], fill=RED, width=SW)
 # original arm ink: x 176..197, y 400..411.5 (frame)
 arm_r = (197 - 176) * (714.6 / 687.0) * S
 arm_h = (411.5 - 400) * (21.9 / 21.0) * S
-d.arc([fx2pt(176) * S, y_sp - arm_h, fx2pt(197) * S, y_sp + arm_h], start=180, end=270, fill=RED, width=SW)
+d.arc([fx2pt(176) * S - 26, y_sp - arm_h, fx2pt(197) * S - 26, y_sp + arm_h], start=180, end=270, fill=RED, width=SW)
 # right arm mirrored (frame 840..863)
-d.arc([fx2pt(840) * S, y_sp - arm_h, fx2pt(863) * S, y_sp + arm_h], start=270, end=360, fill=RED, width=SW)
+d.arc([fx2pt(840) * S + 26, y_sp - arm_h, fx2pt(863) * S + 26, y_sp + arm_h], start=270, end=360, fill=RED, width=SW)
 
 # central cusp: V from (509,412) down to apex (519.5,421) up to (530,412)
 cx_apex = fx2pt(519.5) * S

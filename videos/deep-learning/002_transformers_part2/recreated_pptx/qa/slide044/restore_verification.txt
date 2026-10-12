@@ -1,0 +1,40 @@
+RESTORE VERIFICATION — slide 044 certified chain re-bound to deliverable
+=======================================================================
+Written by the collab-resume worker (~17:05, standby role): builder-9's worker_report.md
+appendix references this file but did not persist it. Contents below are THIS worker's
+independent verification numbers; they corroborate builder-9's appendix claim
+("restored render vs judged render_1 = 2,251,225 / 2,251,225 px identical") with a
+stronger check: byte identity of the PNG rasters.
+
+1. Render identity (md5), three independent renders of the certified build c93f1d26:
+   render_1.png (builder-A 13:48, the JUDGED render)      cc3c38debba10c0e9f162255476c6b76
+   scratch/slide044/render4/slide-1.png (collab 16:40)    cc3c38debba10c0e9f162255476c6b76
+   render_attempt2_restored.png (builder-9 16:54)         cc3c38debba10c0e9f162255476c6b76
+   => byte-identical (2001x1125; every pixel equal). The attempt-2 judge PASS
+      (judge_attempt_2.txt, FINAL VERDICT: PASS) binds to the deliverable as restored.
+
+2. Build identity:
+   recreated_pptx/build/slide_044.js   md5 c93f1d26f9cce5ed5cbfbce1e45749a1
+   qa/slide044/build_attempt_1.js      md5 c93f1d26f9cce5ed5cbfbce1e45749a1  (certified)
+   (restored 16:32 by builder-9 from the banked certified copy; the 14:44 takeover
+    bytes 25e85f33... survive only as qa build_attempt_2/3.js — superseded evidence.)
+
+3. Deliverable: rebuilt 16:39 (collab worker, from the restored script; same content
+   zip as builder-9's 16:33 rebuild — pptxgenjs 4.0.1 unchanged, LibreOffice 26.8.1.1
+   both eras, no environment drift). XML spot-proof: title run sz="3575" (certified em).
+
+4. Pre-judge gates on the restored render:
+   - house_chrome_check.py: PASS (house_chrome_check_restore.txt; badge center
+     (1860,148) d=70 @150dpi).
+   - Closed-loop PIL self-check (scratch/slide044/selfcheck_restore.py + _out.txt):
+     41 checks, 13 flagged — all known triaged classes (orig-side x898..901 cursor
+     line, chrome wash, edge blends; the DIFF94 title-width class was present in the
+     judged render and accepted by judge-2).
+
+5. Superseded iteration (never judged, banked not deleted): build_attempt_2.js ==
+   build_attempt_3.js (25e85f33...), render_2.png == render_3.png (6090210b...),
+   diff banked at scratch/slide044/resume_collab_b/takeover_diff.txt.
+
+Conclusion: gen_status='passed' / visual_check='PASS' / visual_attempts=2 /
+visual_transcript=judge_attempt_2.txt is CONSISTENT with the deliverable on disk.
+No new judge attempt needed; no open issues.

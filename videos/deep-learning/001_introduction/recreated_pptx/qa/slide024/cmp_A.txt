@@ -1,0 +1,44 @@
+## Pre-judge analysis â Slide 024, blue weight-label zone (w_ji labels, blueâgreen gap)
+
+Note on inputs: both provided montages are identical, so the comparison is effectively one montage: top half = recreation render, bottom half = original frame. I compared the top-half crop against the bottom-half crop element by element.
+
+### Element-by-element comparison
+
+**1. The three w_ji labels (text, rotation, placement)**
+- Label 1 (horizontal, ~0Â°): "w" with subscript "ji", sitting above the top horizontal red line in both crops. Position, size ratio of "w" to subscript, and the subscript offset (down-right of the w baseline) match. â
+- Label 2 (~30Â° rotation): both crops show the label rotated clockwise, riding parallel to the descending mesh line, with "ji" following the rotated baseline. Rotation angle visually matches (~30Â°). â
+- Label 3 (~51Â° rotation): both crops show the steepest rotation, "w" strongly tilted with "ji" below along the rotated baseline. Angle matches within a few degrees. â
+- Font: bold italic blue serif-ish "w" with smaller bold "ji" subscript â same style in both. The recreation's blue is darker/crisper; the original is blur-washed. Per ground rule (d), this is a medium artifact, not a discrepancy.
+
+**2. Red mesh-line geometry**
+- Top horizontal line: present at the same relative height in both, spanning full crop width. â
+- Diagonal mesh: both crops show the two diagonals diverging from the upper region, crossing in an X mid-crop, and a lower convergence/crossing near the bottom of the crop. Crossing points land at the same relative positions. â
+- Line weight: recreation's red is darker and slightly crisper (~2px equivalent); the original's red lines are washed pale-pink by JPEG. Per rule (d), the recreation's cleaner/more saturated rendering of the same hue is NOT a discrepancy.
+
+**3. Label-to-line alignment (rule 4)**
+- Label 1 sits centered above the horizontal line in both. â
+- Label 2 rides alongside its diagonal with the same standoff distance in both. â
+- Label 3 similarly rides its steep diagonal. â
+- No label collides with a line or another label in either crop.
+
+**4. Frame containment (rule 5)**
+- All three labels and all mesh lines terminate within the crop bounds in both images; no ink crosses the crop/frame edges abnormally. â
+
+**5. Missing elements (rule 6)**
+- Nothing present in the original crop is absent from the recreation: 3 labels, ~5 visible line segments (1 horizontal + 4 diagonal), all accounted for. â
+
+### Discrepancy list
+
+| # | Item | Severity | Confidence |
+|---|------|----------|------------|
+| 1 | Recreation's blue label ink and red line ink are crisper/more saturated than the JPEG-washed original | None (medium artifact, rule d) | High |
+| 2 | Label 3's subscript "ji" offset is a pixel or two further from "w" in the original (blur makes exact measurement impossible) | MINOR at most | Low |
+| 3 | Mouse-cursor / video artifacts in the original frame region | None (correctly omitted, rule c/f) | High |
+
+### Visual-quality defects in the recreation
+- None observed in this crop: no clipping, no wrapping errors, no collisions, no misalignment. Labels are legible and correctly rotated to ride their mesh lines per (f2).
+
+### Verdict rationale
+The crop is a faithful re-render: same three w_ji labels, same 0Â°/~30Â°/~51Â° rotations, same positions relative to the mesh, same line geometry and crossing points. The only visible differences are JPEG wash/blur in the original versus clean vector rendering â explicitly protected by ground rule (d). No BLOCKER, no MAJOR.
+
+FINAL VERDICT: **PASS** for 'faithful, usable recreation'.

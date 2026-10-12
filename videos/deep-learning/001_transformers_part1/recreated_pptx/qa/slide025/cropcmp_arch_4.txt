@@ -1,0 +1,54 @@
+# Element-by-Element Comparison
+
+**Outer frame / panel regions**
+- Green outer frame: present in both. â
+- Encoder panel (peach/tan): present in both; recreation's fill is slightly more saturated peach. Minor.
+- Decoder panel: **original is near-white / very pale green; recreation is a distinctly mint green (#E0F5E0-ish).** Noticeable fill deviation â MINOR (same color family, low confidence it's acceptable).
+
+**Header row**
+- "Encoder" (red italic, top left): verbatim, positioned correctly. â
+- "Decoder" (green italic, top right): verbatim. â
+- Red up-arrow left of "Output": present in both, correct shape/position. â
+- Yellow "Output" box + "Probabilities" beneath: verbatim, aligned. â
+
+**Top decoder stack**
+- "Softmax" and "Linear" boxes with up-arrows: verbatim, correct order and stacking. Recreation fills are white vs original's pale green â MINOR.
+- Top gray decoder container wrapping Add & Norm / Feed Forward / Add & Norm / Multi-Head Attention: present in both, spans correctly. â
+- "Add & Norm" blue boxes (Ã2), "Feed Forward" gray box, "Multi-Head Attention" box with red outline: all verbatim, correct fills, text vertically centered. â
+- Yellow highlight region behind/around the cross-connection: present in both, similar footprint. â
+- V / K / Q circles (green/blue/red): present, correct order and colors, positioned at container bottom. â
+- Decoder "Nx" tan circle right of container: present, aligned. â
+
+**Encoder stack**
+- Tan container, Add & Norm (blue), Feed Forward (gray), Add & Norm (blue), Multi-Head Attention (red-outlined), V/K/Q circles, green residual elbows: all present, verbatim, vertically centered. â
+- Encoder "Nx" circle: in the original it straddles/overlaps the encoder container's left edge; in the recreation it sits fully outside. MINOR (position, not presence).
+
+**Lower decoder stack â the key structural difference**
+- Original: a separate **blue "Add & Norm" box** sits above a violet "Masked Multi-Head Attention" box; V/K/Q circles sit below.
+- Recreation: the blue box is GONE; "Add & Norm" is rendered as **white text inside an enlarged violet container**, with two white horizontal separator rules crossing the container (above "Masked Multi-Head" and above the V/K/Q row) that do not exist in the original. The violet container now encloses the Add & Norm text and extends down around the V/K/Q area.
+
+**Bottom region**
+- â + sine-wave positional encoding blocks, "Input Embedding" / "Output Embedding" tan boxes, red "Inputs" arrow, yellow "Outputs" + "(shifted right)": all present, verbatim, correct positions, text centered. â
+- "Positional Encoding" labels both sides: verbatim, aligned. â
+
+**Red dashed guide lines**
+- Left diagonal dashed line through encoder: present in both. â
+- Right dash-dot curve: in the original it runs from near the "Output" box at the top all the way down to the "Outputs" arrowhead; the recreation's curve is **truncated â the upper segment (from Output down to ~mid-height) is missing**, only the lower arc and arrowhead remain. MINOR.
+
+# Discrepancy List
+
+1. **MAJOR** (confidence: high) â Decoder lower "Add & Norm": original shows a discrete blue-filled box; recreation omits the blue box entirely and renders it as white text inside an enlarged violet container. This changes both container geometry and element inventory in that stack.
+2. **MAJOR** (confidence: high) â Violet "Masked Multi-Head Attention" container in the recreation extends upward to enclose the Add & Norm text and downward around the V/K/Q row, with two white horizontal rules not present in the original; original violet box wraps only the attention text.
+3. **MINOR** (confidence: medium) â Decoder panel background: mint green in recreation vs near-white/pale green in original.
+4. **MINOR** (confidence: high) â Right red dash-dot guide curve truncated at the top; missing the segment connecting up toward the "Output" box.
+5. **MINOR** (confidence: medium) â Encoder "Nx" circle fully outside the encoder container vs overlapping its edge in the original.
+6. **MINOR** (confidence: medium) â Softmax/Linear box fill white vs pale green; encoder panel peach slightly more saturated than original.
+
+# Visual-Quality Defects in the Recreation
+
+- The white separator rules inside the violet container read as foreign artifacts (they cross the full container width) and slightly collide visually with the container's rounded corners.
+- No text overflow, clipping, wrapping errors, or collisions observed elsewhere; all text is legible and vertically centered within its boxes.
+
+# FINAL VERDICT: FAIL
+
+Faithful in text, layout, and most styling, but the lower decoder stack's container restructure (blue "Add & Norm" box absorbed into an oversized violet container with added rules) is a MAJOR geometry/element defect against the original crop.

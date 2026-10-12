@@ -1,0 +1,49 @@
+# Slide 055 â Z-row crop comparison (attempt 2)
+
+## Element-by-element
+
+**1. Container pill + dashed border**
+- LEFT: light-pink pill, rounded ends, dark green dashed border, well inside the crop.
+- RIGHT: same pill shape, same green dashed border, similar pink fill. â Match.
+- MINOR: LEFT's dash color reads slightly darker teal-green; RIGHT's is a bit more pure green. Acceptable within rendering tolerance.
+
+**2. Strips Z1, Z3, Z4 (non-highlighted)**
+- Cell counts: both sides show 5-cell strips per group. â
+- Tints: LEFT Z1 = yellow / cream / lavender / blue / pink sequence; RIGHT Z1 = yellow / cream / white / lavender â the last-cell pink tint is weaker and one cell reads white instead of tinted.
+- MINOR: Z1's rightmost cells slightly paler in the recreation; tint sequence preserved overall.
+- Zâ / Zâ labels: red serif Z with subscript digit, positioned overlapping the middle-left cell, both sides. â Match.
+- MINOR: RIGHT's Zâ/Zâ strips sit slightly closer to Z2 than in LEFT (spacing marginally tighter), but pill proportions hold.
+
+**3. Highlighted strip Z2 + dashed red rect**
+- Cell tints: LEFT shows 5 cells in magenta-purple family (muted mauve â magenta â lavender-purple, one saturated purple cell 3rd from left). RIGHT shows 5 cells in magenta-pink family with a similarly saturated magenta cell 3rd from left. â Family and accent-cell position match.
+- **MAJOR â dashed red rect size:** In LEFT the dashed red rect hugs the Z2 strip (roughly strip height, contained inside the pill). In RIGHT the dashed rect is significantly oversized â it extends well above the pill's top edge and below the strip toward the pill's bottom edge, swallowing empty pink space. Overshoot is not present in the original.
+- MINOR: RIGHT's Z2 cells have dashed internal outlines (LEFT cells have thin solid outlines).
+- MINOR: RIGHT's Z2 strip is a bit wider than LEFT's Z2 relative to the pill.
+
+**4. Z labels / subscripts**
+- Zâ, Zâ, Zâ, Zâ all present, red serif, subscripts correctly digits 1â4, subscript placed low-right of the Z. â Match on both sides. Zâ placement inside the highlighted strip matches.
+
+**5. Red arrow below**
+- LEFT: thick red 3D arrow, tail at lower-left, head upper-right â a clear NE lean â pointing into the bottom-left corner of the Z2 region.
+- **MAJOR â arrow lean:** RIGHT's arrow is nearly vertical, pointing straight up (at most a hair left of vertical), and it is cut off by the bottom crop edge. The NE (up-right) lean is lost, and the arrowhead sits under the center of the dashed rect rather than its lower-left.
+- MINOR: LEFT arrow has a subtle 3D/faceted look; RIGHT's is flat solid red. Consistent with 2D recreation style, negligible.
+
+**6. Surrounding chrome (not judged, noted for completeness)**
+- Top red callout box: LEFT shows the box with "Ï q" text; RIGHT shows only the box's bottom sliver â crop offset artifact, not judged.
+- Right-edge partial white/pink box present on both sides. â
+
+## Summary
+
+| # | Deviation | Severity |
+|---|-----------|----------|
+| 1 | Z2 dashed red rect oversized, extends outside pill top/bottom | MAJOR |
+| 2 | Arrow lean vertical instead of NE (up-right) | MAJOR |
+| 3 | Z2 cell internal outlines dashed instead of solid | MINOR |
+| 4 | Z1 rightmost cells paler (one reads white) | MINOR |
+| 5 | Z2 strip slightly wider; strip spacing marginally tighter | MINOR |
+| 6 | Arrow flat vs. subtle 3D | MINOR |
+| 7 | Dash green slightly lighter | MINOR |
+
+The magenta cell family, subscript digits, pill/border, and overall layout all match. The two majors â the oversized dashed rect escaping the pill and the lost NE arrow lean â are both explicitly checked items and both miss.
+
+**CROP VERDICT: FAIL**

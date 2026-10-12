@@ -949,3 +949,124 @@ Rule: on resume, verify what the banked artifacts actually RENDER (not what thei
 Context: slide 032's resume fixed a real defect (render_eq called with unhashed C00000 → matplotlib parsed it as the C0 cycle blue #1F77B4 for its red brackets) and warned that certified slide 031's equations "may carry the same bug" — 18 of its 55 equation PNGs are blue rgb(0,0,204).
 Resolution: the deck's originals mix blue (#1C1CC8-family) and red (C00000) content PER SLIDE — 031's original frame has both (7,316 blue-ish + 6,013 red-ish px), and its 18 blue + 19 red equation PNGs mirror that measured mix. 031 is correct; only 032's brackets were wrong.
 Rule: a color defect found on one slide is never assumed transferable. Before touching a CERTIFIED slide on a color suspicion, PIL-census the ORIGINAL frame's saturated ink (blue vs red dominant-px counts) and compare against the build's asset census — matching mixed palettes = correct, mismatched = fix trigger. Unhashed hex passed to matplotlib silently maps to the C0 cycle (#1F77B4) — always pass '#C00000'-style hashed hex, and PIL-probe every generated PNG's dominant ink color after generation (the output check the 032 builder added to its gen loop is now standard).
+
+## 2026-10-12 — A standby builder must SIGNAL through shared state or liveness sweeps will call it dead
+Context: slide 042 accumulated FOUR builders across provider storms (orchestrator resume + watchdog dispatches). Builder 2 detected builder 3 resuming over it mid-run and correctly stood down to read-only monitoring; the chain delivered with one redundant build as the only cost. But the reverse failure mode is real: a builder that pauses (long sleeps, hung probes, measurement marathons) is INDISTINGUISHABLE from a dead one to any watcher using file-activity staleness — three separate "zombie" resets this deck were later proven to be live workers in quiet phases, and each false-positive reset risks a dual-worker collision.
+Rule: every long-running builder TOUCHES SHARED STATE at least every ~15 minutes even when nothing else changed — a DB updated_at bump (`15_progress.py set N gen_status building` re-write or a heartbeat field), a qa/ timestamp touch, or a scratch heartbeat file. Watchdogs/dispatchers, symmetrically: before declaring death, check the DB row's updated_at AND qa/ AND scratch/ (any one moving = alive), prefer messaging the suspected-dead worker, and accept that a redundant resume (resume law preserves attempts + evidence) is the SAFE failure direction — a missed resume (deck stalls) is worse than a doubled build.
+
+## 2026-10-12 — Gate judge dispatch without the -p payload burns an attempt: extract the prompt byte-for-byte from a banked file
+Context: 001_introduction builders (slides 008 and 040, independently) dispatched
+their judge comparison through 16_vision_gate.sh but omitted the `-p` payload in
+the shell command. The gate ran its default "which is better" prompt — the model
+answered coherently, but with no literal `FINAL VERDICT` line, so the result is
+not certifiable; the attempt is spent.
+Fix (both workers found it): pull the frozen judge prompt from a banked
+`judge_prompt_N.txt` and pass it byte-for-byte; the misfired transcripts stay
+banked with an explicit caveat, never counted as verdicts.
+Rule: a judge call without its exact `-p` payload is a misfire, not a verdict —
+always source the payload from the banked prompt file (or write it to a file and
+`-p "$(cat ...)"`), and bank the misfire honestly as spent evidence.
+
+## 2026-10-12 — Cursor baked into a cropped photo: measure the WHOLE artifact, fill iteratively, restore glyphs from clean twins
+Context: 001_introduction slide 030 — the meme photo (cropped from the frame per the baked-crop law) carried the screen-recording cursor over the Sobel matrix's bottom-right '1'; spec orders the cursor excluded, so it had to be inpainted out of the crop. Three failed attempts taught the laws now banked as patterns/cursor-inpaint-restore: (1) a kill window guessed from the obvious blob (x346..) missed the outline's reach (x338..384) and left dark segments; (2) a single radius-2 fill left THICK artifact interiors unfilled (no known neighbor within radius 2) while flood-filling with unrestricted sources bled red from the row-2 '2' glyph downward — the fix is iterative inward fill whose sources exclude red AND near-black px, plus a 7x7 non-red median over the kill mask; (3) the cursor-notched digit was restored by alpha-blending the clean twin glyph from the same matrix row (alpha = redness), verified numerically (restored 193 red px vs twin 183, untouched '2' 341=341, ghost zones = original) and by a zoomed crop comparison through the gate (PASS: "cursor correctly removed; restored '1' verified correct").
+Rule: when a capture artifact is baked into a frame crop, measure its full outline first (class map, not bbox guesses), fill iteratively with content-protecting sources, restore damaged content by twin-glyph alpha blend, prove it numerically AND with a crop comparison — and bank the pattern so the next screencap slide doesn't relearn it in three attempts.
+
+## 2026-10-12 — Native curved arrows: custGeom bezier + explicit triangle head (pattern banked)
+Context: deep-learning 001_introduction slide 004 (AI taxonomy tree, two curved red arrows from a parent box to two child boxes). First build attempt, judge PASS attempt 1.
+Mistake (avoided, near-misses documented): (a) pptxgenjs `fill:{type:'none'}` on a custGeom emits EMPTY fill XML (genXmlColorSelection default case returns '') — the open bezier would inherit the theme fill and render as a solid blob; omitting the fill option entirely emits `<a:noFill/>` and renders stroke-only. (b) `line.endArrowType:'triangle'` tail-ends are size-locked to the line width and tilt with the path tangent — they cannot match a measured 9x13px head arriving diagonally; explicit flipV triangle shapes at the measured bbox are exact. (c) Fitting the bezier by chord-length t alone stalled in a local optimum on the S-shaped right arrow (C2 collapsed to garbage); t-reprojection (nearest-point-on-curve, 6-8 iterations) converged to mean 0.8-1.1px.
+Fix: custGeom with full-slide bbox (x:0,y:0,w:13.333,h:7.5) and ABSOLUTE inch points (plain numbers <100 parse as inches), cubic bezier per arrow, explicit triangle heads; closed loop measured orig-centerline -> render-ink distance max 2.59 frame px (cKDTree), heads' tips at 274.1 vs 274.5 target. Banked as patterns/curved-arrows-custgeom/.
+Rule: curved lecture-diagram arrows are NATIVE shapes, not images: fit the bezier from the original's centerline with orthogonal-distance LSQ, omit (never `type:'none'`) the custGeom fill, draw heads as measured triangles, and verify with point-to-ink distance.
+
+## 2026-10-12 — Rendered-text ink width: match the ORIGINAL's JPEG-inflated ink with small charSpacing, not a bigger font
+Context: slide 004 text-fit: the original frame's white ink reads +2..+8 frame px wider per line than LibreOffice's Arial Bold rendering (JPEG edge bleed inflates the original ~+1px/side; original may also carry slight tracking). Cap-height and advance-width fits agreed on 25pt (children) / 30pt (parent) — yet rendered ink edges sat 3-8 render px inside the original's.
+Fix: per-line charSpacing calibrated from the per-line residual (gaps x spacing): parent +0.05pt (22 gaps), child L1 +0.2 (9 gaps), child L2 +0.3 (15-16 gaps) — every text edge landed within 4.5 render px. No font-size change (a size bump to close a WIDTH residual breaks cap/paren-height and baseline metrics).
+Rule: close text-ink-width residuals with charSpacing sized to (residual/2)/gap-count points per line, never by changing font size; keep cap-height, paren-height, and three independent advance fits as the size evidence.
+
+## 2026-10-12 — Per-row centerline comparison lies on near-horizontal strokes; use point-to-ink distance
+Context: slide 004 closed-loop arrow check: per-row x comparison between render and original showed phantom 13-15 frame px "deviations" at y=237, where the arrow stroke runs nearly horizontal (dx/dy ~ -10); a 0.3-row grid offset between the two images amplifies to 3+ px of phantom x error.
+Fix: extract the ORIGINAL centerline per-row AND per-column (whichever cluster dimension is <=6px), then measure the distance from those points to the RENDER's stroke ink pixels (scipy cKDTree) — grid-offset-immune. True deviation: max 2.59, mean 0.27 frame px.
+Rule: closed-loop stroke/curve checks compare geometry by POINT-TO-INK distance, never by per-row coordinate diffs; sample rows only where the stroke is locally steep, columns where it is locally flat.
+
+## 2026-10-12 — Dispatch-brief content lines must come from the slide's own spec/frame, never from stale sheet reconstructions
+Context: 001_introduction — coordinator wrote per-slide content hints into
+builder briefs from memory of the PRE-CURATION contact sheets (old 80-group
+numbering). After the founder's dense renumbering (80→49), new slide N's content
+differs from old position N: e.g. the slide-021 brief described the
+"Complete DL Model backprop" state (old 23's content) while new 021 is the
+"[3] Quick revision of Neural Netwok (NN)" divider; several sibling briefs
+(022/023/027/028/029/030/031/033/034/038/039/043/044) carry similar stale hints.
+Cost so far: zero wrong builds — workers verify against unique_slides/slide_NNN.jpg
++ the PASSED spec JSON (the slide-021 worker PIL-verified the frame, found zero
+green pixels where the brief implied diagram ink, matched spec+DB+SOURCES, and
+built the divider; slide-032 did the same) — but the wrong hints waste worker
+attention and risk second-guessing correct specs.
+Rule: a dispatch brief's content line must be derived from the slide's own
+analysis spec title / raw _meta / the actual frame — never reconstructed from
+pre-curation artifacts (same law as "a file name is not provenance"). The frame +
+spec are the only content authorities; briefs should state family/deps/numeral
+and point at the spec, not paraphrase content from stale numbering.
+
+## 2026-10-12 — Upstream completions cap at ~32k tokens regardless of requested IR_MAX_TOKENS
+Context: 001_introduction validation lane, slide 48 — the deck's largest raw (12.3KB). Failed twice with the silent empty-content parse error ("Expecting value: line 1 column 1") at IR_MAX_TOKENS=32000 then 65536; a one-off diagnostic stream call showed usage completion_tokens=31999 even when 65536 was requested. The raw needs ~27k reasoning + ~5k content — exactly at the ceiling.
+Fix: third attempt succeeded (578s, PASS_WITH_FIXES score 9) — pure retry variance. Raising IR_MAX_TOKENS beyond ~32k CANNOT take effect on this endpoint (it refines, not replaces, house fact 2: finish_reason=length with content=null means budget burn, but the budget ceiling is ~32k here no matter what you ask for).
+Rule: on this endpoint, dense specs that sit near the ceiling are a retry-variance problem, not a budget problem — re-run rather than raising IR_MAX_TOKENS; a persistent failure means the SPEC is too dense for one completion and needs a re-analysis pass, not a bigger budget.
+
+## 2026-10-12 — SKIP-CHAIN composition: when renderBase can't skip the right blocks, compose from the components' exported per-block functions
+Context: 002:37 (cross-video grandchild 37←001:19←001:18←001:17-chrome) — attempt 1 FAILed with a double title because 019's renderBase could not skip 017's title block through its API.
+Fix (lawful, attempt 2 PASS): compose the chain from the components' EXPORTED per-block functions at the owning level — chrome → 017 blocks (skip title) → 018 deltas → 019 deltas — skipping selectively where each component exports its blocks; no geometry re-derived, all certified constants reused.
+Rule: the u-components model needs components to EXPORT per-block functions (not just a monolithic renderBase with an opts.skip list); when a descendant needs a skip the parent API doesn't offer, compose at the owning level from exported blocks rather than re-deriving geometry or importing a monolith. Document the skip chain in the build header.
+Also (same slide): judge verdict wording can vary ("IMG1 is BETTER" instead of "FINAL VERDICT: PASS") — the verdict law requires a real coherent winner body; a non-standard wording is a documented caveat, not a garbage transcript, when the body is structurally complete.
+
+## 2026-10-12 — render_eq.py/mathtext colors NEED the leading '#' — the no-# law is pptxgenjs-ONLY
+Context: slide 039's fraction rendered matplotlib's default cycle color C0 (blue) instead of
+the intended red — "C00000" passed to render_eq.py was parsed as matplotlib's C0 cycle color.
+Fix: pass "#C00000" to matplotlib-based renderers.
+Rule: the "never prefix hex with #" law binds pptxgenjs shape/text colors ONLY (a # corrupts
+the pptx XML). Matplotlib/mathtext renderers REQUIRE the # (without it, a 6-hex string that
+starts with a valid cycle id like C0/C1... silently becomes a cycle color — worse than an
+error). Two tools, two rules — check which parser eats the string.
+
+## 2026-10-12 — Tiny subscript glyphs: full-frame reads misread indexing; zoomed crops win
+Context: 002 slide 059 token rows (X/Y/Vector_P subscripts ~2px in the 960x540 frame).
+Mistake: The script-12 raw AND the full-frame vision record both read the embedding row as
+1-based ("X_1..X_5" + an invented "indexing-offset quirk" note) while the position row read
+0-based (P0..P5). PIL counted SIX label columns per row (not five) but could not resolve the
+subscript glyphs.
+Fix: Three independent zoomed reads (2x input crop, 2x render-vs-original comparison, 3x
+output-row crop) unanimously read X0..X5 / Y0..Y5 / Vector_P0..P5 — all rows 0-indexed, six
+head columns + 2 tail. A 2x crop comparison also caught "Vector_P(N-2)" -> the original reads
+"Vector_PN-2" (no parens) and that the Vector labels are all-navy (the 2x read's
+"red/orange subscript" was itself a JPEG artifact — the final word is always the render-
+comparison + PIL row cores, not a single zoom read).
+Rule: Never trust full-frame transcript text for glyphs under ~6px; bank a 2-3x crop read
+for any subscript/label detail that changes content. When two zoom reads disagree with one,
+resolve with PIL ink cores before choosing.
+
+## 2026-10-12 — house_chrome_check.py badge test false-positives on wide bottom content
+Context: 002 slide 059 (softmax tan bar reaches frame x864, y91..111 — into the checker's
+badge window x>=857, rows<=107); the standard run failed "badge center/diameter".
+Mistake: The checker's yellow mask (r>200,g>200,b<190) matches the tan bar (245,203,167),
+so the badge bbox = badge ∪ tan-bar corner -> shifted center/diameter 110 vs 75. The same
+checker passes slides whose bottom content leaves a gray sliver above the bottom stroke.
+Fix: Verify the badge in a sub-window above the intruding band (rows < band-top) with the
+same thresholds; document the intrusion as measured-original content (the original frame
+intrudes identically). Keep the standard checker output banked for the record.
+Rule: When the chrome checker fails ONLY on the badge while panel/border checks pass, probe
+whether measured original content enters the badge window before "fixing" the build.
+
+## 2026-10-12 — LibreOffice broke mid-run: placeholder-image renders + deep-path PDF failure; the short-home-path route is the workaround
+Context: slide 011's certification (002 deck) — two judge FAILs on an UNCHANGED build were pure infra: this host's LO 26.8.1.1 started (1) silently replacing ALL embedded raster images with red "Image 0 1" broken-image placeholder text on direct PPTX→PNG export, and (2) failing PPTX→PDF with `impl_store Io Write 16` when run from deep project paths — while WORKING from a short home path.
+Fix (verified certified route, banked at videos/deep-learning/002_transformers_part2/scratch/slide011/render_slide011.sh): copy the pptx to /home/ahmed/lo_pdf_test, soffice→PDF there, pdftoppm -r 150, copy the PNG back.
+Rule: after any host-level tool change, treat "missing images" judge findings on an unchanged build as infra first — check renders for the placeholder pattern BEFORE trusting any pixel metric (early "ink" measurements were counting placeholder glyphs); render through the short-home route; never certify against a placeholder-contaminated render. Symmetric trap to the 2026-10-11 LO-deadlock lesson: LO failures can be path-dependent AND time-dependent — re-verify the route, don't assume yesterday's working command still works.
+
+## 2026-10-12 — "thin arrow" labels invisible to strict color masks; dense-region crop comparison is what catches the omission
+Context: 002 slide 025 (Sine/Cosine Encoders) — the encoder disk has thin leader lines from the red 'cos' / green 'sin' labels to their traces. The validated spec described them ("thin arrow pointing to the trace"), but strict masks (dark<130, red r-g>60) showed NOTHING between label and trace, so the first build omitted them; my own full-frame judge prompt then PASSED nothing yet — the DENSE-REGION crop comparison (mandatory self-check #6) caught it as MAJOR (missing leader lines) on the very first crop check.
+Mistake: 1px anti-aliased strokes dilute below every threshold: the cos leader reads (194,163,171) pinkish (JPEG-diluted red), the sin leader (89,91,88) dark-gray with its upper segment erased entirely by JPEG. Strict masks conclude "no ink" for ink that is plainly visible to a vision model at 2x.
+Fix: before declaring an element absent, scan with a SENSITIVE ink mask (|px-255|.max > 25) plus a 4-5x LANCZOS crop through the vision gate asking for exact segment endpoints/colors/arrowheads (banked: qa/slide025/leaders_detail.txt — elbow paths measured to ~0.5px). Implement exactly what the 5x read says (elbow bends + open-V arrowheads, color matched to the label); then re-run the crop comparison to confirm (attempt 3 = PASS).
+Rule: absence of ink under strict masks is NOT absence of ink. For any spec-mentioned thin/small element (leaders, hairlines, arrowheads), do one sensitive-mask dump + one gated high-zoom read before omitting it — and let the dense-region crop comparison, not the full-slide judge, arbitrate these regions.
+
+## 2026-10-12 — Substituted-font stroke weight reads as TRUNCATION to the vision judge (the label-merging class)
+Context: 001_introduction slide 033 — exposed handwritten labels ("Grayscale", "Multiple channels", "Filters") rendered as Comic-Sans-Bold tight-ink PNGs downscaled into tiny boxes. Two consecutive judge attempts failed on MAJOR "label truncation" claims ("Graysc", "Multiple", "Filter") while PIL proved the ink spanned the full measured boxes — the renders were NOT truncated.
+Root cause: Comic Sans Bold's stroke weight (~0.3 of cap height) is ~2x the original's thin pen hand (~0.15). At tiny label sizes adjacent letters MERGED into blobs, so the vision model read the blobs as fewer/fatter letters and reported truncation. Baking the downscale into the asset and letting LO upscale amplified it.
+Fix (certified attempt 3): crop the three label words directly from the original frame at their measured boxes and embed as PNGs (original pixels = zero font-fidelity risk).
+Rule: at small label sizes, a substituted font's stroke weight must match the original's MEASURED stroke weight (ratio of stroke thickness to cap height), or the handwriting is cropped outright from the frame. A bold marker font reads as truncated text to the vision judge even when every glyph is present. When a judge's truncation claim contradicts a PIL full-span proof, stop re-wording the text — measure stroke weight and check for letter-merging (dense-region crop comparison is the arbiter). Evidence: 001_introduction/recreated_pptx/qa/slide033/worker_report.md (attempts 1-2 FAIL → crop fix → attempt 3 PASS).

@@ -1,0 +1,49 @@
+## Ground-rule settlements (first, per mandate)
+
+- (a) House chrome (red outer frame, #E8E8E8 bg, yellow slide-number badge, title box) â IMG1 is a crop of the central diagram region, so none of this chrome is in scope; not assessed as discrepancies.
+- (b)â(e) Not implicated: IMG2 is a genuine content slide (not a placeholder), no cursor contamination inside the diagram region affects judgment (the faint mark near the right of the matrix in IMG2 is a video artifact and is correctly omitted), no equations, no handwritten ink.
+- Per the VIEW spec, the original renders each masked (âinf) cell as a **filled red rectangle** (pixel fill fraction 0.68â0.76, no glyph strokes). IMG1 reproduces exactly that: ten solid dark-red blocks, no glyphs. This is a match, not a discrepancy.
+
+## Element-by-element comparison
+
+**1. Blue container / blue block arrow**
+- IMG1 shows the blue container's left edge (thick blue vertical line) and the blue block arrow pointing right, positioned at the "me" (row 3) level â same row position as IMG2. â
+- MINOR (confidence low): the arrow tip in IMG1 nearly abuts/touches the blue container line, whereas IMG2 shows a small gap between arrow tip and container edge. Cosmetic only.
+
+**2. Five 45Â° tilted green column tags (SOS / Je / me / sens / malade)**
+- All five present, green tilted bars, red rotated text, correct left-to-right order, even spacing, correct tilt direction (text ascending bottom-left â top-right, matching IMG2). Horizontal placement matches: each tag's lower tip points at its matrix column, with the SOS tag offset left of column 1 exactly as in the original. â
+
+**3. Five green row-label chips**
+- All five present (SOS, Je, me, sens, malade), mint-green rounded rectangles, red bold labels, identical left-edge alignment, equal heights, and â critically â each chip is vertically centered against its matrix row (SOSârow 1 â¦ maladeârow 5), matching IMG2's alignment. Text is vertically centered inside each chip. â
+
+**4. Matrix frame**
+- Red-bordered rounded rectangle present, correct proportions, fully contains all cells, chips, diagonal, and both triangle fills. No ink crosses the matrix border (the only intentional exception is the clipped bottom-right "0" chip, which is clipped in IMG2 as well). â
+
+**5. Lower-left green triangle â zero cells**
+- 15 yellow "0" chips in the correct triangular pattern (rows of 5, 4, 3, 2, 1) â count and positions match IMG2 exactly. Chips pale-yellow with dark border, bold "0" glyphs vertically and horizontally centered. â
+- On-diagonal chips (row2col2, row3col3, row4col4) sit flush against the diagonal exactly as in IMG2; no unwanted clipping of glyphs. â
+- Bottom-right "0" (row5col5) is clipped by the corner/diagonal â this matches IMG2, where that cell is likewise cut by the diagonal at the rounded corner. Not a defect.
+
+**6. Upper-right tan/mauve triangle â red mask blocks**
+- 10 solid red blocks in the correct triangular pattern (4, 3, 2, 1). Block sizes sit in the ~0.65â0.75 fill-fraction range relative to their cells, consistent with the measured 0.68â0.76 in the VIEW, with tan showing between/around blocks as in the original. No glyphs inside blocks â correct per spec. â
+
+**7. Diagonal**
+- Thin dark corner-to-corner line present, running top-left â bottom-right of the matrix, cleanly separating the green and tan triangles, with green/tan fills meeting flush at the line (no white sliver). Matches IMG2. MINOR (confidence low): the diagonal appears to terminate a hair past the bottom-right rounded corner in IMG1 â at most a 1â2 px tail; essentially invisible.
+
+**8. Colors**
+- Mint green chips/triangle, pale-yellow value chips, dark-red label text, red matrix border, mauve/tan upper triangle, dark-red mask blocks, blue container/arrow â all approximate the original's hues within tolerance. â
+
+## Discrepancy list
+
+| # | Item | Severity | Confidence |
+|---|------|----------|------------|
+| 1 | Arrow tip nearly touches blue container line (small gap in original) | MINOR | Low |
+| 2 | Diagonal possibly overshoots bottom-right rounded corner by ~1â2 px | MINOR | Low |
+
+No MAJOR or BLOCKER discrepancies found. All 15 zero values, 10 mask blocks, 10 labels, triangle geometry, tag order/orientation, chip-row alignment, and colors reproduce the original.
+
+## Visual-quality defects in the recreation
+
+- None material: no text overflow, no clipping (other than the original-mandated corner clip), no collisions, no wrapping errors, all glyphs legible and centered in their chips/tags.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

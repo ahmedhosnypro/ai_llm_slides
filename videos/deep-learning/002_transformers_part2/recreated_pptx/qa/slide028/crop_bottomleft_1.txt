@@ -1,0 +1,38 @@
+## Element-by-Element Comparison (frame-px window 315,375â565,540, both at 2x)
+
+**1. "+Ï" label (left)**
+- IMG1: bold red "+Ï" at ~(100,180); IMG2: bold red "+Ï" at ~(100,180). Position, color (dark red â #C00000), and size match well. The omega glyph in IMG1 is marginally narrower than the original's, but within rendering tolerance. â No defect.
+
+**2. Top-left partial chip ("Word 6/7")**
+- Both images show the green chip clipped by the top edge, rotated, with green text partially visible. Clipping behavior matches the original â the chip is cut by the crop/frame in both. Orange arrowhead present in both at the same spot pointing down-left, with the red dotted leader line approaching it. â Match.
+
+**3. "Word 8" chip (center)**
+- Rotation (~55â60Â°), green fill with darker green border, dark-green "Word 8" text running bottom-leftâtop-right, position (~300â390, 45â185) â all match IMG2 closely. Text size and chip proportions consistent. â Match.
+
+**4. Orange arrowhead below Word 8**
+- Present in both, pointing down, at the chip's lower tip, with the red dashed leader line continuing down-right beneath it. Position and size match. â Match.
+
+**5. Pale arc (delta curve)**
+- IMG2: pale tan/orange curve sweeping from upper-left down through ~(250,215) and back up to the arrowhead region. IMG1: the same arc is present but renders noticeably fainter/thinner and appears to cover slightly less of the curve's extent (most visible from ~(205,105) to the arrowhead at ~(310,185)). The lower-left portion of the sweep is barely visible in the recreation. â **MINOR** (faint arc under-rendered / reduced extent), confidence medium. Not a missing element â the arc region is not empty.
+
+**6. Yellow circle arc (top-right)**
+- Both show the large pale-yellow circle's lower edge with a red dotted line crossing it. In IMG1 the circle edge has a light gray stroke that reads slightly heavier than the original's thin boundary; the yellow tone matches (#FFF9C4-family). â **MINOR** (edge stroke slightly heavier), confidence medium.
+
+**7. Red dotted leader (top-right, through yellow circle)**
+- Present in both, same trajectory and dot spacing. â Match.
+
+**8. Frame containment**
+- All content sits inside the crop window; the black bar at the bottom and red frame line are house chrome/crop boundary in both images. The Word 6/7 chip clipping at the top matches the original's own clipping, so it is not an overflow introduced by the recreation. â Match.
+
+**9. Background**
+- Both light gray (#E8E8E8-family). IMG2 is blurrier due to source resolution â medium artifact, not a defect per ground rules.
+
+## Discrepancy List
+1. **MINOR** â Pale delta arc renders fainter with slightly reduced visible extent vs original (confidence: medium).
+2. **MINOR** â Yellow circle edge stroke slightly heavier/grayer than original's thin boundary (confidence: medium).
+3. **MINOR** â Omega glyph in "+Ï" marginally narrower than original (confidence: low).
+
+## Visual-Quality Defects in Recreation
+- None beyond the above; no text overflow, no collisions, no clipping mismatches, no illegible content.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

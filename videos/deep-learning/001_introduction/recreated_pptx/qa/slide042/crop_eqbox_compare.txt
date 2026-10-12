@@ -1,0 +1,52 @@
+# Element-by-Element Comparison
+
+## (1) Equation character content, left-to-right
+
+- **Line 1:** IMG1: `h_out = (h_in â h_f)/s + 1` â IMG2: identical content. â
+- **Line 2:** IMG1: `w_out = (w_in â w_f)/s + 1` â IMG2: identical. â
+- **Line 3:** IMG1: `d_out = n_f` â IMG2: identical. â
+- **Line 4:** IMG1: `d_f = d_in` â IMG2: identical. â
+
+**No missing or extra glyphs.**
+
+## (2) Fraction bars
+
+- Present and horizontal in both, spanning numerator width (h_in â h_f and w_in â w_f), with denominator *s* centered beneath. â
+- **Discrepancy:** IMG1's fraction bars (and especially the minus signs inside the numerators) are noticeably **thicker/heavier** than IMG2's. The minus glyph in IMG1 lines 1â2 renders as a very bold short dash, almost like an em-dash in heavy weight, while IMG2 has a normal-weight minus. **Severity: MAJOR** (confidence: high) â it is the most visually salient difference at this zoom.
+
+## (3) Subscripts
+
+- All subscripts (out, in, f) present, positioned low-right, smaller than base letters in both. â
+- **Discrepancy:** IMG2's subscripts are **italic** (*out*, *in*, *f*); IMG1's subscripts are **upright/roman** ("out", "in", "f"). Most visible on "out" and "f". **Severity: MAJOR** (confidence: high) â a systematic style mismatch across all four lines.
+
+## (4) '=', '+', '1' glyphs
+
+- All '=' signs upright, correctly doubled-bar, present in both. â
+- '+ 1' present and upright in lines 1â2 in both. â
+- No rotation, ghosting, or doubling. â
+
+## (5) Vertical rhythm and alignment
+
+- 4 lines stacked in the same order and roughly the same vertical rhythm; box margins similar. â
+- Line 4 (`d_f = d_in`) is indented right relative to lines 1â3 in both, and line 3 starts slightly left of line 2 in both. â
+- IMG1's line 3â4 vertical gap is slightly larger relative to line spacing than IMG2's; very slight. **Severity: MINOR** (confidence: medium).
+
+## (6) Missing glyphs / ghosting / overlap / clipping
+
+- No clipped glyphs at box edges in either crop. â
+- No doubled or ghost ink. â
+- IMG1's line-2 fraction bar reads slightly thicker than line-1's, consistent with IMG2's slightly heavier line-2 bar; not a discrepancy beyond the weight issue already noted.
+
+---
+
+## Discrepancy Summary
+
+| # | Issue | Severity | Confidence |
+|---|-------|----------|------------|
+| 1 | Minus signs (and fraction bars) much heavier/bolder in IMG1 | MAJOR | High |
+| 2 | Subscripts upright in IMG1 vs italic in IMG2 (all lines) | MAJOR | High |
+| 3 | Slightly larger gap before lines 3â4 in IMG1 | MINOR | Medium |
+
+All character content, structure, fraction layout, alignment, and line indentation are faithful. The two MAJOR items are typographic-style mismatches (stroke weight, italic subscripts), not content errors.
+
+**CROP VERDICT: MATCH**

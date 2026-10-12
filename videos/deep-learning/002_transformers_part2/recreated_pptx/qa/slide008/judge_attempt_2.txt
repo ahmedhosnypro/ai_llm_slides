@@ -1,0 +1,22 @@
+```
+{"page": 1, "verdict": "pass", "issues": []}
+```
+
+**Vision gate log â slide 008, attempt 2**
+
+- SKILL.md read; routing followed: default route (images model), no `--models` flag; glm leg DEFERRED/BLOCKED.
+- **Probe (step 1):** gateway window open, valid body returned on first probe. Transcript: `videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide008/probe_2.txt`
+- **Comparison (step 2):** judge run with `--thinking high --max-tokens 65536`, W4 wide wall 540s (per measured-fact directive), landed on first attempt â no HangError, no GarbageError, coherent FINAL VERDICT line present. Transcript: `videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide008/judge_attempt_2.txt` (single-read, default route/images).
+
+**Judge findings (from winner body):**
+
+- Title + subtitle verbatim, two-line break match: "Self Attention Mechanism (Linear Transformation of Inputs)" / "(Self Attention of word Xâ w.r.t All words in Sentence (Xâ, Xâ, Xâ, Xâ))" â red X tokens with subscripts preserved. Badge numeral **8** correct.
+- Full diagram inventory matches: left green dotted container (XââXâ rows), 4Ã Wââ½Ê³â¾ boxes, KââKâ cell strips, gray Dot Product panel with 4 nodes and K.q label, purple Soft max bar, Probabilities / Similarity / Weighted SUM pills, Î£ bar, Y output with green arrow, right-side VââVâ with red â circles, 4Ã Wáµ¥â½Ê³â¾ boxes, right green container, bottom sentence container with magenta-highlighted Xâ and red pointer arrow, bottom-right "1Â·d | W | = 1Â·d / dÂ·d / d: Embedding Length" box.
+- No missing elements, no frame-containment violations (all content inside inner panel and house frame), no table/delimiter defects, no text clipping or collisions.
+- Delta vs certified parent (001_transformers_part1:33) verified as THIS slide's authorized measured delta, not discrepancies: pale green/cyan W boxes, larger translucent blue annotation circle over the query, K.q shifted right, query box lower / qâ higher, sentence container top offset, olive legend W-box border, badge numeral 8.
+- Judge variance noted on parent-identical regions (soft-max bar width, node dot sizing) â dismissed per dependency context; not fix triggers.
+- Medium differences inherent to video capture (compression softness in IMG2, cursor artifact absent from recreation) correctly not flagged.
+
+**Verdict basis:** real comparison winner body, coherent, single read. Fidelity standard for plain lecture slide met â house chrome per playlist law, retro look not penalized.
+
+**Result: PASS** â faithful, usable recreation. Read-only; nothing modified.

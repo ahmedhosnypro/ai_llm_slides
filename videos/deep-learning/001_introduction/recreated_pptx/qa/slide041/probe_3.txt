@@ -1,0 +1,62 @@
+# Visual QA Analysis â Slide 041
+
+## 1. Verbatim Text Transcription
+
+**Title and badge:**
+- "The Convolution Process" (large, bold, red â title)
+- "41" (inside a yellow circular badge with a purple/blue ring, top right)
+
+**Inside the red-bordered content box (left panel):**
+- "Original image"
+- Digit grid overlaid on a photo (5Ã5, teal digits):
+  - `1 1 1 0 0`
+  - `0 1 1 1 0`
+  - `0 0 1 1 1`
+  - `0 0 1 1 0`
+  - `0 1 1 0 0`
+- "Convolutional filter 1"
+- Filter grid (3Ã3, yellow, black digits):
+  - `1 0 1`
+  - `0 1 0`
+  - `1 0 1`
+- "a=1," and "b=1" (red, to the right of the filter grid)
+- "Image: **I** (x,y)" (the "I" is red; rest black)
+- "Filter: **h** (-a:a , -b:b) *(odd dimension)*" (the "h" red; "(odd dimension)" red italic)
+
+**Center panel:**
+- "Convolving the image" (handwritten-style font)
+- Convolution grid (5Ã5; top-left 3Ã3 cells yellow with orange subscripts, remaining cells green):
+  - `1ââ 1ââ 1ââ | 0 0`
+  - `0ââ 1ââ 1ââ | 1 0`
+  - `0ââ 0ââ 1ââ | 1 1`
+  - `0 0 1 1 0`
+  - `0 1 1 0 0`
+
+**Right panel:**
+- "Result" (handwritten-style font)
+- 3Ã3 tan grid; first cell contains "4" (partially overlapped by an arrowhead); other 8 cells empty
+- "Inner product" (red handwritten-style, with a curly brace beneath it)
+
+**Formula (bottom of content box, black italic math):**
+- "I(x, y) â h =" followed by a summation with upper limit "a" and lower limit "i = âa", then a second summation with upper limit "b" and lower limit "j = âb", then "I(x â i,  y â j) Â· h(i, j)"
+
+**Bottom instruction box (gray, thin blue/purple border, dark blue serif text):**
+- "Scan the original image using the 3x3 filter"
+- "Move the filter ONE pixel  (Right, Left, Up, Down) and Re-Calculate" *(note: double space between "pixel" and the parenthesis)*
+
+## 2. Layout
+
+- **Top:** Red title "The Convolution Process" centered horizontally; the "41" badge sits at the extreme top-right corner. A thin red border frames the whole slide.
+- **Left edge:** "Original image" label with the 5Ã5 photo-backed digit grid; below it "Convolutional filter 1" with the yellow 3Ã3 filter and "a=1, b=1"; below that the two definition lines ("Image: I (x,y)" / "Filter: h (-a:a , -b:b) (odd dimension)").
+- **Center:** "Convolving the image" label above the large 5Ã5 green/yellow convolution grid; a black curved arrow starts near the top of this grid and sweeps right.
+- **Right edge:** "Result" label above the 3Ã3 tan output grid (only the first cell filled with "4"); below it "Inner product" in red with a curly brace spanning under the right portion of the formula.
+- **Bottom:** A full-width gray box with two lines of blue serif instructions, sitting below the red-bordered content box.
+
+## 3. Visual Defects
+
+1. **Arrow/digit overlap:** The black arrowhead terminates directly on top of the "4" in the first Result cell, partially obscuring the digit.
+2. **Stray artifact:** A small dark mark/dash appears just below the word "Original image" (beneath the "l"/" i" area), which looks like an unintended artifact rather than content.
+3. **Low-contrast original image:** The "Original image" grid digits are teal overlaid on a washed-out photograph; legibility is reduced but readable.
+4. **Double spacing** in "pixel  (Right, Left, Up, Down)" in the bottom instruction box.
+5. **Tight spacing:** The "Inner product" curly brace's right tip extends up close to (nearly touching) the "h(i, j)" portion of the formula.
+6. No clipping of the slide border or text boxes was observed; no placeholder/garbage strings or wrong-language text are present. All text is legible at this resolution.

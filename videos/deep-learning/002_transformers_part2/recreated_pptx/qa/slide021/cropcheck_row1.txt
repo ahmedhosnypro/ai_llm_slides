@@ -1,0 +1,53 @@
+# Slide 021 â row1 lane comparison (IMG1 render vs IMG2 original)
+
+## Element-by-element
+
+**Lane (dashed rounded rectangle)**
+- Border dash: Both show a fine dark blue-violet dashed stroke with similar dash length/gap rhythm. â match.
+- Border color: Comparable dark blue-violet in both. â
+- Fill: Light lavender in both; IMG1 reads marginally more saturated/darker lavender than IMG2's paler wash â could be JPEG softening in IMG2. Low impact.
+- **Corner radius: IMG2's lane is nearly a stadium/pill (end radius â half the lane height); IMG1's end caps are visibly flatter (radius ~20px on a ~90px lane). â MINOR, confidence medium-high.**
+- Geometry/position: Lane spans the same region in both crops; height comparable. â
+
+**Boxes (Ã8)**
+- Count: 8 in both (0, 1, 2, 3, 4, 5, N-2, N-1). â
+- Borders: Thin dark-violet, uniform weight in both. â
+- Fill: Slightly lighter lavender than lane fill in both. â
+- Heights: Comparable. â
+- **Box 0 width: In IMG1 box "0" is noticeably narrower (~105px) than its siblings (~120â130px); in IMG2 all boxes are uniform (~115â120px). â MINOR, confidence medium.**
+- Positions: Overall x-placement of boxes tracks well; spacing between box "5" and the dot cluster and between the cluster and "N-2" matches. â
+
+**Digit text**
+- Verbatim: "0 1 2 3 4 5 N-2 N-1" â exact in both. â
+- Italic: Yes in both. â
+- Color: Dark blue in both. â
+- Size: Comparable glyph height; IMG1 digits read a touch bolder (rendering crispness vs. upscaled JPEG â not chargeable).
+- Position: In IMG2 all digits sit right-of-center by ~8â10px. In IMG1 boxes 1â5 and N-1/N-2 reproduce this offset, but **digit "0" sits slightly LEFT of its box center in IMG1** (opposite of the reference offset). â MINOR, confidence medium (could be my eye on a narrow box).
+
+**Ellipsis dots (Ã5)**
+- Count: 5 in both. â
+- Color: Blue-gray in both. â
+- Spacing: Roughly even in both; the leading/trailing gaps around the cluster match. â
+- Size: IMG1 dots marginally larger (~18px vs ~15â16px at this zoom) â within tolerance of the upscale factor. â borderline MINOR, low confidence; likely no charge.
+
+**Other marks**
+- Red vertical tick below the lane (between boxes 4/5) appears in BOTH crops â part of the slide (connector stub), correctly present in IMG1. â
+- IMG2's right-edge red/blue vertical strip and the cursor near box 1: capture artifacts per ground rules â correctly omitted. â
+
+## Discrepancy list
+
+| # | Issue | Severity | Confidence |
+|---|-------|----------|------------|
+| 1 | Lane corner radius flatter in IMG1 than IMG2's near-pill shape | MINOR | medium-high |
+| 2 | Box "0" narrower than siblings in IMG1 (uniform in IMG2) | MINOR | medium |
+| 3 | Digit "0" left-of-center in IMG1 vs right-of-center offset elsewhere/IMG2 | MINOR | medium |
+| 4 | Lane fill marginally more saturated in IMG1 | MINOR | low |
+| 5 | Dots marginally larger in IMG1 | MINOR | low |
+
+## Visual-quality defects
+- None in IMG1: no aliasing, clipping, stroke seams, or text blurring. Rendering is clean.
+
+## Summary
+All renderable content is present and correct: lane geometry, 8 boxes, verbatim italic dark-blue labels, 5 correctly spaced blue-gray dots, and the red connector stub. The discrepancies are small geometry/positioning nits (corner radius, box-0 width, digit-0 offset) with no content or structural errors.
+
+**CROP VERDICT: PASS** for 'row1'

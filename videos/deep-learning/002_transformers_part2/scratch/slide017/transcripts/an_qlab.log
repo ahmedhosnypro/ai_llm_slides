@@ -1,0 +1,32 @@
+[info] context header injected: VIEW: Slide 017 build-time zoom: query label q at 8x — resolve the subscript glyph exactly (t vs 1 vs 2) and the strip beside it | CAPTURE: 8x LANCZOS zoom of original lecture frame crop (frame px 160,455..240,495), 960x540 source
+[info] mode analysis | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 3164304
+[info] crops/micro_qlabel.png: transcript written (validated winner, atomic): transcripts/an_qlab.txt (pid 3164304)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== crops/micro_qlabel.png ===
+[winner] images (round 1, attempt 1)
+## 1. Verbatim text transcription
+
+- **"w"** â bold black lowercase *w*, inside the white label box at the top right. Its top edge is very slightly shaved by the box border/crop.
+- **Subscript glyph** (lower-right of the *w*): resolves to a lowercase **"q"** â it shows a closed round bowl with a short straight descender on the right side. The candidates offered do **not** match: it has no crossbar (ruling out *t*), no plain unadorned stem (ruling out *1*), and no flat horizontal base (ruling out *2*). So the label reads **w_q** (query label), consistent with the "q" designation. Confidence is moderateâhigh; at 8x LANCZOS the glyph is soft but the bowl + descender structure is distinct.
+- **"X"** (symbol, not text) â a medium red X in the 3rd cell of the left cell strip, and a larger, heavier red X in the 3rd cell of the right dotted-border group.
+- A tiny orange/amber speck at the bottom-right corner of the left strip's X cell: **illegible** â too small to resolve as any letter or digit; possibly a stray mark or rendering artifact.
+- No digits, no placeholder/garbage strings, no wrong-language text anywhere in the crop.
+
+## 2. Layout
+
+- **Overall:** uniform dusty-rose/pink background fills the crop.
+- **Top-right:** white rectangle with a thick dark-red border (the w_q label box), clipped by both the top and right edges. Directly below it, a small solid dark-red triangle (arrowhead pointing up toward the box), fully visible.
+- **Left edge:** flat pink background; the rounded left corner of the large container sits ~2â3% in from the edge and is fully visible. A faint vertical seam at the extreme left border is likely the crop boundary itself.
+- **Center/main:** a large rounded rectangle, pale mint-green fill, dark-gray **dashed** border, spanning nearly the full width and clipped at the right edge. It contains two cell strips:
+  - **Left strip:** 5 contiguous cells with thin dark outlines â cells 1â2 pale yellow, cell 3 cream (holding the red X and the orange speck), cells 4â5 pale lavender-blue.
+  - **Right group ("the strip beside it"):** enclosed by a thick dark-red **dotted/beaded** border; contains pink/mauve cells (~3.5 visible) separated by vertical dividers, with the large red X in its 3rd cell; the group runs off the right edge.
+- **Bottom:** the container's bottom dashed border runs just above the bottom edge, with a thin sliver of pink below it. At the bottom-right, a horizontal dark-red line (the top edge of another element) enters the frame and is clipped.
+
+## 3. Visual defects
+
+- **Clipping (expected from the crop, but noted):** the w_q label box is cut at top and right; the right dotted cell group is cut at the right edge; the bottom-right red line is cut at bottom and right; the top of the "w" glyph is very slightly shaved.
+- **Softness:** all edges are blurred by the 8x LANCZOS interpolation; the subscript "q" and the orange speck are the least-crisp elements.
+- **Ambiguity:** the orange speck in the left strip's X cell cannot be identified as a glyph at this resolution.
+- **No defects of substance:** no overlapping text, no broken/duplicated borders, no garbage strings, no language mismatches. The dash and dot patterns on both borders are regular and intact.
+

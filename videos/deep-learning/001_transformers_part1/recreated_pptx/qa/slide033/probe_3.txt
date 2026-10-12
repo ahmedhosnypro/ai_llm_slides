@@ -1,0 +1,42 @@
+# Visual QA Analysis â Slide 033 (Self Attention, Linear Transformation)
+
+## 1. Verbatim Text Transcription
+
+**Title block (top, centered):**
+- "Self Attention Mechanism (Linear Transformation of Inputs)" â "Self Attention Mechanism" in black bold; "(Linear Transformation of Inputs)" in dark navy blue bold
+- "(Self Attention of word Xâ w.r.t All words in Sentence ( Xâ, Xâ, Xâ, Xâ )" â the X letters and their subscript digits (1, 2, 3, 4) are in dark red; note the asymmetric spacing: an opening parenthesis with a leading space before "Xâ" but no space before the closing parenthesis
+
+**Slide number badge (top-right):**
+- "33" inside a purple-outlined oval
+
+**Diagram labels:**
+- "Similarity" (blue text, dotted-border pill, upper left of diagram)
+- "Dot Product" (brown text, inside the tan box)
+- "K.q" (dark red, at the top-right corner of the tan box)
+- "Probabilities" (blue text, dotted-border pill, center)
+- "Soft max" (maroon text, rotated 90Â°, inside the tall lavender rounded rectangle)
+- "Î£" (large sigma, dark blue, in the light-blue bar)
+- "Weighted SUM" (blue text, dotted-border pill, upper right)
+- "Yâ" (green, inside the output cell strip)
+- Left stack: "Xâ", "Xâ", "Xâ", "Xâ" (top to bottom, dark red with subscript digits)
+- Weight boxes (left): "Wââ½Ê³â¾" repeated four times â "W" with subscript "k" and a small superscript "(r)"
+- Key labels: "Kâ", "Kâ", "Kâ", "Kâ" (top to bottom)
+- Weight boxes (right): "Wáµ¥â½Ê³â¾" repeated four times â "W" with subscript "v" and superscript "(r)"
+- Right stack: "Xâ", "Xâ", "Xâ", "Xâ" (top to bottom)
+- Value labels: "Vâ", "Vâ", "Vâ", "Vâ" (top to bottom, maroon)
+- Query labels: "qâ" (dark red) and "W_qâ½Ê³â¾" (yellow box, bottom center)
+- Bottom sentence row: "Xâ", "Xâ", "Xâ", "Xâ"
+- Legend (bottom-right box): "1*d" (under a small cell strip), "W" (in a yellow box), "=", a second cell strip with "1*d" beneath it, "d*d" beneath the "W" box, and the caption "d: Embedding Length" (bold blue)
+- Four "â" (asterisk) glyphs inside small red circles, serving as multiplication operators
+
+## 2. Layout
+
+- **Left edge:** A dotted-green rounded container holding four stacked embedding strips labeled Xâ (top) through Xâ (bottom); small orange arrows point right into a column of four yellow Wââ½Ê³â¾ boxes; a solid green upward triangle sits beneath the container.
+- **Right edge:** A mirrored dotted-green container with embedding strips XââXâ feeding orange leftward arrows into four yellow Wáµ¥â½Ê³â¾ boxes; green upward triangle beneath; the "d: Embedding Length" legend box occupies the bottom-right corner, overlapping the peach panel's edge.
+- **Top:** The two-line title, the "33" oval badge at top-right, and the Yâ output strip (5 cells â three green-shaded, two blue-gray) with a thick green arrow entering from below; the light-blue "Î£" bar sits directly beneath it.
+- **Bottom:** A small yellow W_qâ½Ê³â¾ box with a "qâ" cell strip above it feeding into the tan "Dot Product" box; below that, a dotted-green container with the full sentence embeddings XââXâ, where Xâ is shaded pink/magenta and outlined with a red dashed rectangle; a thick red arrow points up into Xâ from the bottom edge.
+- **Center:** The tan "Dot Product" box containing four blue target dots; KââKâ strips to its left with red arrows into the dots; four red arrows exit right into the tall lavender "Soft max" rectangle; to the right, four red-circled "â" multipliers arranged in a descending staircase receive VââVâ arrows from the right and send arrows up into the "Î£" bar.
+
+## 3. Visual Defects / Anomalies
+
+1. **Translucent red circle over the Kâ area:** A semi-transparent red circular highlight covers the Kâ cell strip and the gap left of the Dot Product box. It partially obscures the strip's cells (the "K

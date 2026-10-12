@@ -1,0 +1,34 @@
+## Element-by-Element Comparison
+
+**House chrome (per ground rule (a)):** outer red frame, gray #E8E8E8 background, yellow "11" badge (recreation renders it with a purple outline vs. plain yellow in original â house-chrome variant, not scored), blue inner frame. All present. â
+
+**Title:** "Multi Head Self Attention of Word Xâ" â verbatim match in both, with red "Multi Head", black "Self Attention of Word", red subscripted "Xâ". Position (bottom-center, inside blue frame) matches. â
+
+**Cascade of head panels (h=1..5):** red/pink base panel + purple (h=2), yellow (h=3), teal/green (h=4), peach (h=5) stacked panels with black "h=1â¦h=5" ovals â all present, correct ordering, correct z-order (front-to-back), approx correct colors. â
+
+**Top yellow wedge + Î³ chain:** translucent yellow ribbon with dashed-Î³ box (top), solid green Î³ box, dashed orange Î³ box, red â²/â¼ markers â present and correctly stacked. â
+
+**Left input zone:** dashed green container with 4 input token strips (xââ¦xâ), the second token boxed in red dashes (xâ focus) â matches original. Green dashed feed-in box of 4 yellow-segmented vectors above â present. Green â² arrow â present. â
+
+**Q/K/V pipeline:** W_q(v) green boxes with orange arrows, Kââ¦Kâ label strips, "Dot Product" box with blue dots and connecting lines, "K:q" label, "Scaling by âd" pink vertical ribbon, "Soft max" pink vertical ribbon, kÂ·q/âd equation (stacked-fraction professional format â mandated upgrade per rule (e), not scored), red arrows into â circles, Î£ box, Vââ¦Vâ labels, weighted-sum output strips â all present, correct order and geometry. â
+
+**Bottom qâ zone:** qâ label with yellow strip, W_q(v) box, red down-arrow into bottom token row, overlapping translucent colored circles â present. â
+
+**Right-side per-head W-matrix stacks:** W_q/W_k/W_v boxes per head with green â¼ markers, dashed green containers of x-strips â present for all heads. â
+
+**"H" Heads red arrow:** present, curving from mid-right up toward the h=4/5 panels with blue italic label. â
+
+## Discrepancies
+
+1. **MINOR** â "Probabilities" oval (h=1 row) is clipped/overlapped by the yellow wedge from the h=3 panel; text reads only "Probabiâ¦". The original shows the same oval partially covered but with more of the word legible. Confidence: high.
+2. **MINOR** â The red "H Heads" arrow in the recreation is substantially thicker/bolder than the original's thin curved arrow, and its tail sits slightly lower-left relative to the original. Confidence: high.
+3. **MINOR** â The translucent overlapping circles around qâ/W_q(v) are larger and more saturated in the recreation than the original's smaller, subtler circle cluster, slightly obscuring the W_q(v) box. Confidence: medium.
+4. **MINOR** â Faint "Similarity"/"Weighted SUM" ghost ovals on upper layers are slightly more visible in the recreation than in the original (z-order/opacity nuance). Confidence: medium.
+
+No BLOCKER defects: no missing equations, tables, rows, or panels; no frame containment violations (all content sits inside the blue inner frame and the red house frame); no delimiter-geometry failures; no text overflow beyond the noted oval overlap.
+
+## Visual-quality notes
+- The "Probabilities" oval clipping (item 1) is the only collision affecting legibility.
+- Everything else is legible; labels are vertically centered in their ovals/boxes; arrows terminate correctly.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

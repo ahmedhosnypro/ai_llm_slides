@@ -1,0 +1,63 @@
+# Slide 15 crop B â Left half of front (h=1) attention panel
+
+*(all coordinates in CROP space, 760Ã530)*
+
+## 1) ORANGE ELLIPSE (input tokens + W_k projections)
+- **Ellipses (two, overlapped):**
+  - Darker orange back ellipse: center â (95, 210), rx â 105, ry â 150, fill â #C05A18 (solid, darker), no visible border.
+  - Lighter translucent orange front ellipse: center â (135, 210), rx â 100, ry â 148, fill â #E8843C at ~55â60% opacity (back ellipse shows through on the left), thin darker orange border.
+- **Rows inside: 4** (row centers y â 115, 168, 218, 270).
+- Each row contains:
+  - **X-token stack**: 3 vertically stacked small rectangles, bbox â x 30â118, height â 44 per row (each sub-box â 13 px tall). Fill light orange â #F0A860, thin darker-orange borders. Each sub-box has a small red/dark-orange letter **"X"** with a tiny subscript [i/?] â subscript too small to read: [?].
+  - **Green W box**: bbox â (150â186) Ã (row y â13 to +13), â 36Ã26 px, fill medium green â #6CBB45, darker green border. Text: dark green **"W"** with a subscript **"k"** and a superscript **"(i)"** (partially clipped at right edge; reads as W_k^(i), superscript small â [(i)?]).
+  - A short **dark-red arrow** (see Â§7) from the X stack to each green W box.
+
+## 2) GREEN ELLIPSE (K vectors)
+- Center â (240, 193), rx â 55, ry â 112.
+- Fill green â #3FAE5C at ~55â60% transparency (orange ellipse edge visible through its left side), thin darker green border.
+- **Inside: 4 small green striped boxes** (horizontal white/green stripes, lime â #5FD050), one per row at x â 205â245, height â 12 px, aligned with the 4 rows. To the right of each, a dark-green label **"K"** with subscript [i/?] â subscript too small: [?] (reads as K_i / K_1â¦K_4).
+
+## 3) 'Dot Product' box
+- **bbox â (272, 42) to (396, 316)** (â 124 Ã 274).
+- Fill: beige/tan â #C9B48E, slightly transparent (salmon shows through faintly); no strong border.
+- Text, top of box, centered, gray â #8A8A8A, **wrapped on two lines**: line 1 "Dot" (y â 60), line 2 "Product" (y â 78).
+
+## 4) Labels near it
+- **"Similarity" pill**: bbox â (285, 5)â(360, 30), light-blue fill â #B8D8E8, dark-gray text "Similarity".
+- **"K.i q" / "K_q" label** right of box top: at â (400â435, 52â70), dark-red text, reads "K" with subscript [?]- "K_i q" most likely, exact subscript unreadable: [?].
+- **Stacked fraction "K.q / âd"** at â (498â535, 42â92):
+  - Numerator "K.q" (dark red â #8B0000) at y â 45â60.
+  - **Horizontal bar**: pink/magenta â #D87090, x â 498â533, y â 63, ~2â3 px thick.
+  - Denominator "âd" (dark red, with radical sign) at y â 66â90.
+- **Blue arrows** from the green ellipse region toward the blue dots (see Â§6/Â§7).
+- **"Probabilities" pill** top right: bbox â (528, 4)â(612, 30), white fill, blue text.
+- **"Weâ¦" pill** clipped at top-right corner â (712, 2)â(760, 30), white fill, blue text, text cut off: [?].
+
+## 5) Pink pills
+- **"Scaling by âd" pill**: bbox â (440, 48)â(478, 316), fill light pink â #F6C6CC, rounded ends. Rotated (90Â°, reading bottom-up) text in dark magenta/plum â #8B2B5E: "Scaling by" (upper portion) and "âd" with radical (lower portion).
+- **"Soft max" pill**: bbox â (540, 48)â(578, 316), fill light pink-lavender â #F2BCE4, rounded ends. Rotated text dark purple â #7B2D8B, wrapped as two vertical lines: "Soft" and "max".
+
+## 6) Blue dots / converging lines
+- **4 blue dots** inside the Dot Product box, one per row, each a dark-blue filled circle (r â 7, fill â #2B4BD0) with a lighter blue ring/halo (r â 12, â #9DB4F0):
+  - dot 1 â (375, 114)
+  - dot 2 â (356, 166)
+  - dot 3 â (329, 218)
+  - dot 4 â (303, 271)
+- Thin light-blue/gray straight lines converge from each dot downward toward the bottom of the box (toward the q entry point â (335, 315)); they are faint, not clearly dotted: [dotted vs solid uncertain].
+- **q label**: "q" with subscript [i/?] in dark red at â (308â322, 333â350), next to a small striped beige box â (335â382, 335â352) (the q vector).
+- **W_q box**: dark-red-bordered white box â (303, 358)â(343, 398), text dark red "W" with subscript "q" and superscript "(i)" [(i)?].
+- **Bottom input row**: green dashed rounded rectangle â (176, 410)â(585, 466) containing 4 token groups (pale-yellow end boxes + lavender cells + orange X boxes); the **2nd token is highlighted**: magenta/pink dashed border â (290, 412)â(370, 464), red "X", red/magenta fill tint. Thick dark-red pointer arrow at â (285â320, 460â478) angled up-right into the highlighted token.
+- Faint dark-red dashed curved line from the orange ellipse bottom (â (78, 300)) curving down to â (115, 425).
+
+## 7) Arrows (all dark maroon/red â #8B0000, ~3â4 px wide, solid, small triangular heads, unless noted)
+1. Four short red arrows, X-stacks â green W_k boxes: x â 122â148, at y â 115, 168, 218, 270.
+2. Four **blue** thin arrows (light blue â #6C86D8, ~2 px): from green-ellipse area / W_k outputs â each blue dot: e.g. from â (250, 115)â(362, 114); (250, 168)â(343, 166); (250, 218)â(316, 218); (250, 270)â(290, 271). [exact start points partly hidden by green ellipse]
+3. Four dark-red arrows, blue dots / box right edge â "Scaling by âd" pill: x â 385â437, at y â 114, 166, 218, 270.
+4. Four dark-red arrows, Scaling pill â Soft max pill: x â 480â536, same four y's.
+5. Dark-red arrow(s), Soft max â Î£ box at right: x â 580â618 at y â 60 and 115 (partially out of crop).
+6. Dark-red vertical arrow, highlighted X token â W_q box: x â 330, y â 410â398 (upward).
+7. Dark-red vertical arrow, W_q box â q striped box: x â 330, y â 358â352.
+8. Dark-red vertical arrow, q striped box â Dot Product box bottom: x â 335, y â 333â316.
+9. Short red arrows feeding the Î£ box from the \* (star-in-circle) nodes at right â (625, 115), (680, 165), (715, 218), (748, 270) â dark-red circles with red asterisks, connected by thin dark-red arrow lines.
+
+**NOTHING ELSE** â no other text, dots, or connectors missed; unreadable subscripts marked [?] (X subscripts, K subscripts, W superscripts, q subscript, "K_i q" label, clipped "Weâ¦" pill).

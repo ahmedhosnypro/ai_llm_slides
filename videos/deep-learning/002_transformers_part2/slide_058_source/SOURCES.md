@@ -61,3 +61,27 @@ one `agy` topic-anchor search.
 The ORIGINAL VIDEO FRAME is ground truth for what each slide shows; web
 sources confirm/correct data and provenance, never license inventing content.
 `[?]` markers are removed only with a confirming URL recorded here.
+
+## Script-12 raw cross-check (2026-10-11, web-research verification worker)
+
+Cross-checked against `analysis/slide_058_raw.json` (script-12 raw landed
+after this record was written from the banked vision transcript).
+
+- CONFIRMED by raw: divider status — the only text on the slide is the
+  two-line title "Transformer Encoder" / "as a Classifier" (bold dark-red,
+  centered in a light-gray panel with thin dark-red border); no bullets, no
+  diagram, no equations; badge "58" top-right; bottom black bar is video
+  letterboxing; the small black icon right of "Classifier" is read by the
+  raw as "a screen-capture artifact of the presenter's cursor rather than
+  an intentional graphic" (matches this record's live-cursor reading and
+  its recreation guidance to omit it). Identity metadata matches (old
+  extraction slide 148, kept frame_05007, shown 4998–5006 s, 9 frames).
+- New raw detail (no conflict, build-level): the badge on this divider
+  reads with a purple/indigo outline (#6C5CE7) and dark "58" — note for the
+  house-chrome pass if divider badges are styled differently from content
+  slides in this deck (frame decides; content-slide badges elsewhere read
+  red-on-yellow).
+- Open questions 1 and 2 are untouched by the raw (they concern slides
+  059/060's frames and a hypothetical external figure — nothing on this
+  frame to resolve them). No new published-figure claims; nothing to fetch.
+- Corrections needed: none.

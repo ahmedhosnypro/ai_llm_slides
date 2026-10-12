@@ -1,0 +1,79 @@
+[info] context header injected: VIEW: Slide 015 dense-region crop comparison: zone D_query_row (3x zoom) | CAPTURE: IMG1=3x LANCZOS crop of the 150dpi PPTX render; IMG2=the exact same region of the original lecture frame resampled into slide coords
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 3722596
+[info] /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/scratch/slide015/crops_cmp/D_query_row_render.png, /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/scratch/slide015/crops_cmp/D_query_row_orig.png: transcript written (validated winner, atomic): /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide015/cropcmp_D_query_row.txt (pid 3722596)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/scratch/slide015/crops_cmp/D_query_row_render.png, /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/scratch/slide015/crops_cmp/D_query_row_orig.png ===
+[winner] images (round 1, attempt 1)
+# Slide 015 dense-region crop comparison â Zone D (query row), 3x zoom
+
+## Element-by-element comparison
+
+**1. Top-edge partial shapes (leftmost element)**
+- IMG2 (original): partial orange arc + partial blue circle entering from the top-left corner.
+- IMG1 (recreation): a small green/white multi-cell block with a tiny red arrow occupies this spot instead.
+- **Discrepancy: different/missing content element at top-left of region â MAJOR, confidence medium** (partially cropped in both, but the visible content plainly differs: orange/blue circular shapes vs. a cell block).
+
+**2. Tan rounded box + upward red arrow (top center)**
+- Present in both, same position and approximate color. Red arrow from the W-box region up into the tan box matches. â MATCH.
+
+**3. "q" label + small cell strip**
+- IMG2: red "qáµ¢" label with subscript, small strip of ~4 pale-yellow/cream cells to its right.
+- IMG1: red "q" with small red subscript, strip of ~3â4 tan/white cells.
+- Label present, subscript present. Cell strip hue slightly more tan/gray in recreation vs. pale yellow in original. **MINOR â color tint of key cells, confidence medium.**
+
+**4. W box**
+- IMG2: white box, red border, "W" bold with red subscript "a" and a small superscript (T-like mark).
+- IMG1: white box, red border, bold "W" with a small red subscript mark. Subscript present but smaller/less defined; superscript mark faint or absent. **MINOR â subscript/superscript fidelity on W, confidence medium.**
+
+**5. Arrow between W box and dashed container**
+- IMG2: red arrow ABOVE W box pointing up, and a short red arrow BELOW the W box pointing DOWN into the green dashed container (bidirectional interaction).
+- IMG1: arrow above points up â, but the arrow below the W box points UP (tip at the container top edge), i.e. direction flipped vs. original's down-arrow.
+- **Discrepancy: arrow direction below W box is reversed â MAJOR, confidence medium-high** (arrowheads are small at this zoom, but the original's lower arrow clearly seats downward into the container).
+
+**6. Green dashed rounded container**
+- Both: large pale-green rounded rectangle enclosing the 4 cell groups. Fill matches.
+- IMG2: dashed stroke is clearly DARK GREEN with a fine dash.
+- IMG1: dashed stroke reads gray/green-gray, coarser dash.
+- **MINOR â dash stroke color/weight, confidence medium.**
+
+**7. The four key-cell groups inside the container**
+- Order and placement of 4 groups match; 2nd group highlighted purple in both. â
+- **Cell counts:** IMG2 groups appear to contain ~4â5 narrow cells each (with pale-yellow + lavender tints); IMG1 groups contain 3 cells each. **Discrepancy: fewer cells per group than original â MAJOR, confidence medium** (blur limits exact counting, but the original's groups are visibly subdivided more finely).
+- **Cell tint:** original cells pale yellow/cream with lavender end-cells; recreation uniform tan/beige. **MINOR, confidence medium.**
+- **x labels:** original shows "x" with red subscript "i" in each group, and the purple group has a notably LARGER bold "Xáµ¢"; recreation's purple-group "x" is the same small size as the others. **MINOR â highlighted X not enlarged as in original, confidence medium-high.**
+
+**8. Purple highlight group border**
+- IMG2: dark-magenta DASHED border around the purple group.
+- IMG1: solid purple border.
+- **MINOR â border style (dashed vs. solid), confidence high.**
+
+**9. Bottom pointer arrow**
+- IMG2: dark-red arrow at bottom, tail lower-left, tip pointing UP-RIGHT into the purple group.
+- IMG1: dark-red arrow present at bottom, but oriented pointing UP-LEFT / nearly vertical.
+- **Discrepancy: pointer arrow angle/direction deviates from original â MAJOR, confidence medium** (it's the diagram's focal gesture; it points at the right target but not with the original's orientation).
+
+**10. Bottom gray strip (slide edge)**
+- Present in both. â MATCH.
+
+## Visual-quality defects in the recreation
+- W-box subscript/superscript marks render very small and partially illegible at slide scale â borderline illegible (MINOR).
+- No clipping, no frame-containment violations: all cell groups, the dashed container, W box, and arrows sit fully inside the region; nothing crosses the dashed container boundary in either image. â
+- No collisions or overlaps introduced by the recreation.
+
+## Summary of discrepancies
+| # | Item | Severity | Confidence |
+|---|------|----------|------------|
+| 1 | Top-left partial shapes: orange/blue circles replaced by green cell block | MAJOR | medium |
+| 2 | Lower red arrow below W box points up instead of down | MAJOR | med-high |
+| 3 | Cells per group (3 vs ~4â5 in original) | MAJOR | medium |
+| 4 | Bottom pointer arrow angle (up-left vs up-right) | MAJOR | medium |
+| 5 | Dashed container stroke gray vs dark green | MINOR | medium |
+| 6 | Purple group border solid vs dashed | MINOR | high |
+| 7 | Highlighted X not enlarged/bold vs original | MINOR | med-high |
+| 8 | Cell tint tan vs pale-yellow/lavender | MINOR | medium |
+| 9 | W-box subscript/superscript fidelity | MINOR | medium |
+
+## FINAL VERDICT
+**FAIL** for "faithful, usable recreation" â the overall diagram structure, labels, and highlight logic are reproduced, but there are four MAJOR fidelity deviations in this dense region (reversed arrow direction under the W box, altered pointer-arrow orientation, reduced cell counts per key group, and replaced top-left partial elements) that a viewer comparing against the original lecture frame would notice immediately. Fix the arrow directions, cell subdivision counts, and top-left shapes, and this region would pass.
+

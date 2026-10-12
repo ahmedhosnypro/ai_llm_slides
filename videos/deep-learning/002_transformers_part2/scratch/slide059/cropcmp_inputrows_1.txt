@@ -1,0 +1,41 @@
+# Slide 059 â Dense-Region Fidelity Check (token rows, 2x crops)
+
+## Element-by-element comparison
+
+### 1. Token-row structure (green dashed band)
+- **Group count:** IMG1 = 6 token groups + 5 ellipsis dots + 2 token groups (8 total). IMG2 = 6 + 5 dots + 2 (8 total). â Match.
+- **Cells per token:** IMG1 = 5 cells per token (cream #FAF3D0 â white â salmon/red X-cell #F0A090 â blue-gray #C8D4E8 â pink #F0D8EC). IMG2 = 5 cells per token with the same left-to-right color sequence. â Match.
+- **Borders:** thin dark cell borders in both. â Match.
+- **Band:** green dashed outline (~#20A040) on pale green fill in both; rounded corners both. â Match.
+
+### 2. Token labels
+- **DISCREPANCY #1 â Subscript indexing off by one.** IMG2 labels read **Xâ, Xâ, Xâ, Xâ, Xâ** (0-indexed, consistent with Vector_P0â¦P5 pairing). IMG1 labels read **Xâ, Xâ, Xâ, Xâ, Xâ** while the position row still uses **Vector_P0â¦P5** â so the recreation pairs Xâ with P0, breaking the index correspondence present in the original. **MAJOR, confidence 0.85.**
+- **Color/style:** X in dark red serif italic with red subscript, positioned on the 3rd (highlighted) cell â match in both. â
+- **DISCREPANCY #2 â Last-two position labels.** IMG2: **Vector_PN-2, Vector_PN-1** (no parentheses). IMG1: **Vector_P(N-2), Vector_P(N-1)** â added parentheses not in the original. **MINOR, confidence 0.8.** (X_N-2 / X_N-1 subscripts match correctly.)
+
+### 3. Ellipsis dots
+- 5 green filled dots (~#20A040) centered in the gap in both rows, both images. â Match.
+
+### 4. Red plus circle
+- Dark red circle (~#A01010) with white plus, vertically centered between the two bands, horizontally aligned with the gap after the 6th token, in both. â Match.
+
+### 5. Position-vector row (orange/peach band)
+- 2 cells per group (cream label cell + tan #F0D8B0 cell), gray borders, 6 + dots + 2 groups in both. Orange dashed outline on peach fill. â Match.
+- Label style: dark blue serif italic "Vector" with subscript on lower-right of the first cell â match. â
+
+### 6. Left annotations (cropped)
+- **DISCREPANCY #3:** IMG2 shows "**quence**" (red), "**ding**" (green italic), "**ion**" (blue); IMG1 shows "**ence**", "**ing**", "**ion**" â the recreation's crop/frame exposes fewer trailing letters of "...sequence" / "...embedding". Text itself is consistent with the same source words; this is a crop-offset artifact. **MINOR, confidence 0.7.**
+- **DISCREPANCY #4:** In IMG2 the X-containing cell fill is less distinctly salmon (reads closer to the neighboring cell tones at this resolution); IMG1's stronger red highlight may be slightly over-saturated relative to the original. **MINOR, confidence 0.4 (low â resolution-limited).**
+
+## Summary table
+
+| # | Item | Severity | Confidence |
+|---|------|----------|------------|
+| 1 | Token subscripts XââXâ vs original XââXs X_iâP_i pairing) | **MAJOR** | 0.85 |
+| 2 | P(N-2)/P(N-1) parentheses added vs PN-2/PN-1 | MINOR | 0.80 |
+| 3 | Left annotation crop shows fewer letters ("ence"/"ing" vs "quence"/"ding") | MINOR | 0.70 |
+| 4 | X-cell highlight possibly over-saturated | MINOR | 0.40 |
+
+Per ground rules, house chrome, cursor artifacts, and typed-vs-handwritten ink differences are excluded from consideration.
+
+**FINAL VERDICT: FAIL** for 'faithful recreation of this region' â driven by Discrepancy #1 (systematic off-by-one token indexing, a content-level error that also creates an internal inconsistency with the Vector_P0â¦P5 labels). All other deviations are MINOR.

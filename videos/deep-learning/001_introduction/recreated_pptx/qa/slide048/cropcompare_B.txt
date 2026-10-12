@@ -1,0 +1,40 @@
+# Comparison: Slide 048 crop B â CNN slabs 1-2 (render vs original)
+
+## (1) Slab shapes and 3-D shading
+- Both images show two orange/brown parallelogram slabs with the same slant angle, similar heights, and the lighter-orange left edge face suggesting 3-D depth.
+- Shading gradient on slab faces (lighter top-right, darker bottom-left) is present in both.
+- No discrepancy of substance.
+
+## (2) White text on slabs
+- **Content:** Both read "Conv. layer 1" (left slab) and "ReLU layer 1" (right slab), with the period after "Conv" present in both.
+- **Two-line split:** Both split as "Conv." / "layer 1" and "ReLU" / "layer 1". Match.
+- **Orientation:** Horizontal in both (not vertical â the recreation correctly reproduces the original's horizontal placement).
+- **Size/position:** Text size, bold weight, and vertical centering on the slabs are essentially identical. Font appears sans-serif (Arial-like) in both.
+- No discrepancy.
+
+## (3) Red "Conv" label
+- Present top-left in both, same dark-red color, same bold weight, same partial-crop position at the frame edge (letter "C" clipped at left in both).
+- No discrepancy.
+
+## (4) Blue "Non Linearity" note
+- Both show two-line blue bold text "Non" / "Linearity" below the gap between slabs.
+- Position: in IMG1 the note sits slightly more toward the center of the gap; in IMG2 it is a touch further left (under the right edge of slab 1). Offset is only a few pixels at 2x zoom.
+- **Discrepancy 1 â MINOR** (confidence: medium): "Non Linearity" note shifted ~3â5 px right in the render relative to the original.
+
+## (5) Photo edge at left
+- Both show the dark slanted strip (Siamese-cat photo edge) running down the left side, with the same angle and width.
+- No discrepancy.
+
+## Other observations
+- **Discrepancy 2 â MINOR** (confidence: medium): The connector line between the two slabs appears slightly thicker/darker gray in IMG1 than the thinner, lighter line in IMG2.
+- Line vertical position and endpoints (from left slab's right edge toward right slab's left edge, passing under "layer 1") match.
+
+## Summary of discrepancies
+| # | Item | Severity | Confidence |
+|---|------|----------|------------|
+| 1 | "Non Linearity" note shifted slightly right in render | MINOR | medium |
+| 2 | Connector line slightly thicker/darker in render | MINOR | medium |
+
+No BLOCKER or MAJOR issues. Slab geometry, text content/split/orientation, label positions, colors, and photo edge all reproduce the original faithfully.
+
+CROP VERDICT: MATCH

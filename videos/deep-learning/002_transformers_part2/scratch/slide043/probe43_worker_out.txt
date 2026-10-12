@@ -1,0 +1,102 @@
+=== 1. RIGHT STACK: front grid fit ===
+magenta front bbox: x 666 .. 799  y 152 .. 314
+magenta row-runs at x=680: [(164, 191), (196, 222), (226, 253), (258, 284), (288, 314)]
+magenta col-runs at y=250: [(666, 789), (792, 798)]
+=== 2. RIGHT STACK: rear staircase sliver boundaries at 3 rows ===
+y=200: 795-798:M 802-807:G 812-816:G 820-833:O 838-838:G 843-850:Y 855-868:B
+y=250: 795-798:M 802-816:G 825-833:O 836-836:G 837-850:Y
+y=290: 795-798:M 802-810:G
+=== 3. REAR LAYER dy: yellow column (x=840) top vs magenta top ===
+x=835 yellow y 263..263
+x=840 yellow y 110..260
+x=845 yellow y 105..255
+x=855 bluegray y 96..245
+x=860 bluegray y 90..240
+x=865 bluegray y 86..235
+=== 4. TOP dark slivers above right-stack front (x=700) raw ===
+  (700,128)#E7D5C7  (700,129)#BFA491  (700,130)#BB9884  (700,131)#BDA082  (700,132)#9E9668  (700,133)#586426
+  (700,134)#2C5101  (700,135)#306306  (700,136)#2B6100  (700,137)#2B6200  (700,138)#2D6100  (700,139)#2D6100
+  (700,140)#2B6100  (700,141)#2D6100  (700,142)#315E00  (700,143)#315E03  (700,144)#2C6109  (700,145)#236100
+  (700,146)#2D7A00  (700,147)#55A913  (700,148)#68B817  (700,149)#72A927  (700,150)#6D723A  (700,151)#39161C
+  (700,152)#3D0030  (700,153)#480047  (700,154)#4B0052  (700,155)#590065  (700,156)#760082  (700,157)#9800A3
+  (700,158)#B300BE  (700,159)#BC00C4
+=== 5. ARROWS with LOOSE red mask (r>120, r-g>40, r-b>30, g<130) ===
+v-arrow region: x 640..658  y 169..312  n=337
+v-arrow dense cols: [(642, 43), (643, 49), (644, 49), (645, 43), (646, 36), (647, 43)]
+v-arrow ink at x644..646: y 193..278
+h-arrow region: x 581..718  y 474..491  n=782
+h-arrow dense rows: [(478, 88), (479, 87), (481, 65), (482, 64), (485, 65), (486, 76)]
+h-arrow ink x at rows [478, 479, 481] : 582 .. 713
+diag-arrow region: x 798..879  y 230..321  n=881
+v-label+arrow all: x 640..658  y 169..312  n=337
+=== 6. 'Feature Vector' v-label strip (x 612..642, loose pink) ===
+v-label bbox: x 612 .. 642  y 192 .. 280  n= 176
+=== 7. h-labels (Channels) rows ===
+h region loose bbox: x 580 .. 719  y 473 .. 492
+  y473: 25
+  y474: 33
+  y475: 38
+  y476: 77
+  y477: 117
+  y478: 125
+  y479: 117
+  y480: 123
+  y481: 117
+  y482: 106
+  y483: 111
+  y484: 118
+  y485: 112
+  y486: 108
+  y487: 116
+  y488: 87
+  y489: 9
+  y490: 9
+  y491: 10
+  y492: 8
+=== 8. diag labels (Batch size) region x800..915 y240..400 loose ===
+diag loose bbox: x 800 .. 902  y 240 .. 399  n= 1481
+=== 9. CALLOUT box border rect (loose red, vertical strokes) ===
+callout border cols(>60 rows): [643, 644, 645, 646, 648]
+callout border rows(>150 cols): []
+=== 10. BOTTOM box border (green) ===
+green border cols(>100): [72, 73, 74, 876, 877, 878, 879]
+green border rows(>300): [357, 358, 359, 360, 495, 496, 497, 498]
+=== 11. B-L3 '(Constrain)' color cores (x715..835, y470..495) ===
+dark-core count: 569
+dark core samples: [(np.int64(22), np.int64(22), np.int64(22)), (np.int64(73), np.int64(73), np.int64(73)), (np.int64(115), np.int64(115), np.int64(115)), (np.int64(0), np.int64(0), np.int64(0)), (np.int64(6), np.int64(8), np.int64(5)), (np.int64(91), np.int64(91), np.int64(91)), (np.int64(7), np.int64(7), np.int64(7)), (np.int64(73), np.int64(73), np.int64(73)), (np.int64(103), np.int64(98), np.int64(104))]
+dark x range: 717 .. 831
+red-core x range in window: (np.int64(715), np.int64(718)) n= 7
+B-L2 dark cores x: 603 .. 798 n= 786
+=== 12. C-L3 blue extent precise (y223..236, per-col blue count) ===
+C-L3 blue col-runs: [(376, 399), (401, 411), (418, 456), (458, 468), (470, 473), (475, 484), (486, 494), (502, 504), (506, 514), (522, 546), (554, 579), (582, 588), (590, 598)]
+C-L2 red col-runs: [(573, 582), (585, 587), (595, 606)]
+C-L1 red bbox x: 341 .. 523  y: 179 .. 192
+C-L4 green bbox x: 398 .. 550  y: 243 .. 260
+  C-L4 y247: green n=94
+  C-L4 y248: green n=123
+  C-L4 y249: green n=131
+  C-L4 y250: green n=121
+  C-L4 y251: green n=110
+  C-L4 y252: green n=109
+  C-L4 y253: green n=114
+  C-L4 y254: green n=115
+  C-L4 y255: green n=119
+  C-L4 y256: green n=121
+  C-L4 y257: green n=120
+  C-L4 y258: green n=152
+  C-L4 y259: green n=151
+  C-L4 y260: green n=105
+=== 13. text baselines: bottom lines per-row ink (x90..860) ===
+B-L1a: ink rows 366..381  peak: (378, 579)
+B-L1b: ink rows 388..405  peak: (393, 347)
+B-L2: ink rows 431..448  peak: (436, 539)
+B-L3: ink rows 474..495  peak: (495, 739)
+C-L1: ink rows 179..192  peak: (184, 139)
+C-L2: ink rows 200..217  peak: (205, 155)
+C-L3: ink rows 222..236  peak: (234, 168)
+C-L4: ink rows 243..260  peak: (258, 158)
+=== 14. title ink bbox (strict red core) ===
+title red-core bbox: x 234 .. 639  y 56 .. 88
+=== 15. pencil icon (x345..405, y232..262) colors ===
+pencil ink bbox: x 348 .. 404  y 232 .. 261  n= 399
+pencil color samples: [((np.int64(177), np.int64(178), np.int64(162)), 1), ((np.int64(23), np.int64(25), np.int64(11)), 1), ((np.int64(20), np.int64(22), np.int64(8)), 1), ((np.int64(45), np.int64(47), np.int64(33)), 1), ((np.int64(192), np.int64(191), np.int64(222)), 1), ((np.int64(33), np.int64(116), np.int64(64)), 1), ((np.int64(184), np.int64(207), np.int64(181)), 1), ((np.int64(202), np.int64(202), np.int64(190)), 1), ((np.int64(187), np.int64(187), np.int64(175)), 1), ((np.int64(71), np.int64(150), np.int64(95)), 1)]

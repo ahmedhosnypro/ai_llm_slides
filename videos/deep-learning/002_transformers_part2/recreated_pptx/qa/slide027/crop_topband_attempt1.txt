@@ -1,0 +1,34 @@
+# Fidelity Check â Slide 027 top-band crop (rotated word chips, +Ï arrows)
+
+## Element-by-element comparison
+
+**Word chips (Word 4, Word 3, Word 2):**
+- Present in both, same order leftâright (Word 4, Word 3, Word 2), same tilt angles (Word 4 â â30Â°, Word 3 = 90Â° vertical, Word 2 â +30Â°), same light-green fill with green border, green bold rotated labels. Text reads bottom-to-top in both. â Match.
+
+**Vertical centering / delimiter geometry inside chips:**
+- "Word 3" sits vertically centered in its chip in both images; "Word 4" and "Word 2" labels run the length of their chips similarly. No text hugging one edge. â Match.
+
+**+Ï labels:**
+- Three "+Ï" labels present in both (left arc, right arc, far right). Positions track the original (~0.22, ~0.55, ~0.94 of crop width). Red serif/omega glyph style matches. Sizes in the recreation are slightly larger/bolder relative to the chips than in the original, but within tolerance. â Match (MINOR size note).
+
+**Arrowheads:**
+- Orange triangular arrowheads present at the correct ends (left end of left arc pointing down-left toward Word 4; top of Word 3; top of Word 2 pointing down; plus partial arrowhead at bottom-right chip). â Match. Recreation arrowheads are somewhat larger/solid vs. the original's smaller heads â MINOR.
+
+**Yellow hub arc (bottom):**
+- Present in both, similar crown height (~85â88% down the crop) and width. â Match.
+
+## Discrepancies
+
+1. **MISSING â dashed radial spoke/leader lines (BLOCKER, confidence medium-high).** In the original (IMG2), dotted lines radiate from the chips to the hub and outward: a dotted spoke runs up-left past Word 4's top corner, dotted leaders run from Word 4's bottom and Word 2's bottom down into the yellow hub, and dotted stubs are visible at the partial bottom-right chip. The recreation (IMG1) has **none of these radial spokes** â Word 4 and Word 2 float with no connectors to the hub. Per ground rule (6), an element the original shows that the recreation omits entirely is a BLOCKER. (Crop limits certainty, but the spokes are clearly visible across the whole width of IMG2.)
+
+2. **Arrow line style: dotted vs. solid (MAJOR, confidence medium).** The original's +Ï arcs are rendered as **dotted/dashed** faint-orange curves; the recreation renders them as **solid, heavier** orange strokes. This changes the diagram's visual character, not just anti-aliasing.
+
+3. **Vertical axis line style (MINOR, confidence high).** The line through Word 3 is dotted in the original; the recreation draws it as a solid light-gray line. Same position/extent, wrong line style.
+
+4. **+Ï label weight (MINOR, confidence medium).** Recreation "+Ï" glyphs are slightly larger/heavier relative to chip text than in the original.
+
+## Visual-quality defects in the recreation
+- No clipping, overflow, collisions, or frame-containment violations; all content sits inside the red house frame; chips, labels, and arrows are legible and non-overlapping. The bottom-right partial chip is cropped consistently with the original.
+
+## FINAL VERDICT
+**FAIL** for 'faithful, usable recreation' â the diagram's dotted radial spoke/leader lines connecting the word chips to the hub are entirely absent (BLOCKER), and the arrow/axis line style is solid where the original is dotted (MAJOR). Text, chip geometry, layout, and +Ï labels are otherwise faithful; fixing the spoke lines and dash styling would bring this to PASS.

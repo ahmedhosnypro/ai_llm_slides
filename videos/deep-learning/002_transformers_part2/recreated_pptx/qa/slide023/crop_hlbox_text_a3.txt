@@ -1,0 +1,52 @@
+# Slide 023 â hlbox_text crop comparison (attempt 3)
+
+## Element-by-element comparison
+
+**Box / geometry**
+- Rounded-corner box, light cyan background, thin blue border present in both. Proportions and line count (6 lines) match. â
+- Background tint: IMG1 reads ~#E6F7FB, IMG2 ~#E8F9F5 (JPEG shift + medium noise). Within tolerance per ground rule (b). **No discrepancy.**
+
+**Line 1 (header)**
+- Text verbatim: "Use Î´=1/Seq. Length  First position Encoding=0, Last Position Encoding= 1 (Independent of Seq. Length)" â identical in both.
+- Color roles match: red bold "Use Î´=1/Seq. Length", blue italic middle segment, bold "0" and "1", red bold underlined "(Independent of Seq. Length)". â
+- Trailing ")" in the red parenthetical is slightly clipped/tighter in IMG2's right margin â consistent with the 0.96x zoom cropping, not a recreation fault. No discrepancy raised.
+
+**"Problems:"** â red bold, same position/color/weight both. â
+
+**Bullet glyph size**
+- IMG1 uses full-size round bullets (â); IMG2's bullets render as noticeably smaller dots (Â·).
+- **MINOR** (confidence: high). Could be glyph choice or just JPEG bloom at this size; does not alter structure or alignment.
+
+**Bullet 1**
+- Verbatim: "Î´ Value depends on Seq. Length  ( Î´ is small for long seq and large for short sequence )" â matches.
+- "small" / "large" red italic underlined: match. Underlined span "long seq â¦ short sequence": match.
+- "Seq. Length" after "depends on": bold + underlined in IMG1; appears underlined but regular-weight in IMG2.
+- **MINOR** (confidence: medium) â could be genuine weight difference or blur flattening bold strokes in the JPEG frame.
+- Similarly "long" / "short" read as bold in IMG1 but ambiguous in IMG2. **MINOR** (confidence: medium), same caveat.
+
+**Bullet 2**
+- Verbatim: "In other words, Encoding value of  position # 4  in  short  seq  will  differ  from  position #4  in  long  seq" â identical, including the inconsistent "position # 4" vs "position #4" spacing faithfully reproduced. â
+- "position # 4" red underlined, "short" navy bold underlined, "differ" navy bold, second "position #4" red underlined, "long" navy bold: all match.
+- IMG2 shows slightly wider inter-word tracking ("In  other  words,") â blur/tracking artifact, at most MINOR per rule (b); not raised as structural.
+
+**Line 4 â "(though they are same position)"**
+- Magenta/pink (~#E040C0 range) italic in both; "same position" bold + underlined in both; underline extent matches (under "same position" only). â
+- IMG1's magenta is slightly more saturated â JPEG desaturation, rule (b). No discrepancy.
+
+**Bullet 3**
+- Verbatim: "Position Encoding is  scalar  and Word embedding is  vector   (how to Combine them ?)" â identical, including wide gaps around "scalar"/"vector" and spacing before "(how to Combine them ?)". â
+- "scalar" and "vector" navy bold in both; question mark spacing "?)" matches. â
+
+**Alignment / ordering / gaps**
+- Left alignment of all lines, indentation of continuation line "(though they are same position)", vertical line spacing, and gap between "Problems:" and bullet 1 all correspond after scale normalization. â
+- No cursor or capture artifact in IMG2 to omit. â
+
+## Discrepancy summary
+| # | Item | Severity | Confidence |
+|---|------|----------|------------|
+| 1 | Bullet glyphs smaller in original vs â in recreation | MINOR | high |
+| 2 | Bold weight on "Seq. Length" / "long" / "short" in bullet 1 not clearly resolved in original | MINOR | medium |
+
+No BLOCKER or MAJOR discrepancies. All text verbatim (including idiosyncratic spacing), line structure, colors, underlines, ordering, and geometry match.
+
+**CROP VERDICT: MATCH**

@@ -1,0 +1,202 @@
+{
+  "slide_title": "Using  FF NN  for Multiplication of a Vector by a Matrix",
+  "subtitle_or_header": "Input Word X",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "9",
+      "Input Word X",
+      "X\u2081",
+      "X\u2082",
+      "X\u2083",
+      "X\u2084",
+      "W\u2081\u2081",
+      "W\u2082\u2081",
+      "W\u2083\u2081",
+      "W\u2084\u2081",
+      "W\u2081\u2082",
+      "W\u2082\u2082",
+      "W\u2083\u2082",
+      "W\u2084\u2082",
+      "W\u2081\u2083",
+      "W\u2082\u2083",
+      "W\u2083\u2083",
+      "W\u2084\u2083",
+      "W\u2081\u2084",
+      "W\u2082\u2084",
+      "W\u2083\u2084",
+      "W\u2084\u2084",
+      "\u03a3",
+      "y\u2081",
+      "y\u2082",
+      "y\u2083",
+      "y\u2084",
+      "b\u2081",
+      "b\u2082",
+      "b\u2083",
+      "b\u2084",
+      "Y\u1d40",
+      "X",
+      "= Sigmoid",
+      "+"
+    ],
+    "equations": [
+      "Y\u1d40 = Sigmoid{ X \u00b7 W + b }",
+      "[y\u2081 y\u2082 y\u2083 y\u2084] = Sigmoid( [X\u2081 X\u2082 X\u2083 X\u2084] \u00b7 [[W\u2081\u2081 W\u2082\u2081 W\u2083\u2081 W\u2084\u2081],[W\u2081\u2082 W\u2082\u2082 W\u2083\u2082 W\u2084\u2082],[W\u2081\u2083 W\u2082\u2083 W\u2083\u2083 W\u2084\u2083],[W\u2081\u2084 W\u2082\u2084 W\u2083\u2084 W\u2084\u2084]] + (b\u2081, b\u2082, b\u2083, b\u2084) )"
+    ]
+  },
+  "layout": {
+    "arrangement": "Light-gray slide with thin dark-red frame; bold red title centered at top; yellow slide-number circle '9' at top-right; below the title two rounded panels side by side: a tall narrow white panel on the left (~22% width, nearly full height) containing a fully connected 4-input / 4-neuron network diagram, and a wide light-gray panel on the right (~63% width, upper 40% of slide) containing the vector-by-matrix equation built from boxed vectors, a 4\u00d74 weight matrix, curly braces, and a '+' sign; a solid black strip runs across the very bottom edge.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, x 8\u201386%, y 8\u201316%",
+        "content": "Bold red title 'Using  FF NN  for Multiplication of a Vector by a Matrix'"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, x 88\u201394%, y 8\u201316%",
+        "content": "Yellow circle outlined dark red containing the numeral 9"
+      },
+      {
+        "name": "Neural-network panel",
+        "position": "left, x 7\u201329%, y 17\u201397%",
+        "content": "White rounded rectangle; header 'Input Word X'; 4 pink input circles X\u2081\u2013X\u2084 on the left; 4 \u03a3 neurons on the right with outputs y\u2081\u2013y\u2084 and biases b\u2081\u2013b\u2084; 16 thin connection lines; 16 color-coded weight labels W\u2081\u2081\u2013W\u2084\u2084 grouped beside each input node"
+      },
+      {
+        "name": "Equation panel",
+        "position": "right of center, x 30\u201393%, y 17\u201356%",
+        "content": "Light-gray rounded rectangle; left-to-right: red Y\u1d40 above a row of yellow boxes y\u2081\u2013y\u2084; blue italic '= Sigmoid'; large blue '{'; row of pink boxes X\u2081\u2013X\u2084 labeled 'X'; 4\u00d74 grid of yellow W-cells on light-green background; large blue '}'; red '+'; red parentheses around a vertical column of yellow boxes b\u2081\u2013b\u2084; a small mouse cursor floats below the y-row"
+      },
+      {
+        "name": "Bottom black strip",
+        "position": "bottom, full width, y 97\u2013100%",
+        "content": "Solid black bar (likely the video-player strip captured with the frame)"
+      }
+    ],
+    "hierarchy": "The red bold title dominates first; the 4\u00d74 W-matrix is the visually densest block; the neural-network diagram is the tallest element; color-coded weight labels (blue/purple/orange/green) and pink X nodes pop against the white panel; blue braces and '= Sigmoid' are mid-weight; green y/b arrows and labels are the smallest marks."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Fully connected feed-forward network, left panel. Header 'Input Word X' (word 'X' in red). Four pink circular input nodes stacked vertically, labeled X\u2081, X\u2082, X\u2083, X\u2084. Four white circular neurons to their right, each containing '\u03a3' plus a small sigmoid-curve glyph, and a tiny multicolor pie icon (blue/purple/green wedges) on the neuron's left rim. All 16 input-to-neuron connections drawn as thin light-purple lines. Weight labels grouped by source node: beside X\u2081 (blue): W\u2081\u2081, W\u2082\u2081, W\u2083\u2081, W\u2084\u2081; beside X\u2082 (purple): W\u2081\u2082, W\u2082\u2082, W\u2083\u2082, W\u2084\u2082; beside X\u2083 (orange): W\u2081\u2083, W\u2082\u2083, W\u2083\u2083, W\u2084\u2083; beside X\u2084 (green): W\u2081\u2084, W\u2082\u2084, W\u2083\u2084, W\u2084\u2084. Each neuron emits a short green arrow to the right ending at labels y\u2081, y\u2082, y\u2083, y\u2084; each neuron also receives a short green arrow from below coming from labels b\u2081, b\u2082, b\u2083, b\u2084.",
+      "colors": [
+        "#FFFFFF",
+        "#FF99CC",
+        "#0033CC",
+        "#9933CC",
+        "#FF9900",
+        "#009900",
+        "#CC99CC",
+        "#808080",
+        "#000000"
+      ],
+      "position": "left panel, x 7\u201329%, y 17\u201397%"
+    },
+    {
+      "type": "diagram",
+      "description": "Equation-as-graphic, right panel, reading left to right: (1) red 'Y' with superscript 'T' above a horizontal row of four yellow rounded boxes labeled y\u2081, y\u2082, y\u2083, y\u2084; (2) blue bold-italic text '= Sigmoid'; (3) large dark-blue curly brace '{'; (4) horizontal row of four pink rounded boxes labeled X\u2081, X\u2082, X\u2083, X\u2084 with a red bold 'X' centered beneath them; (5) a 4\u00d74 matrix on a light-green rounded rectangle, each cell a small yellow box: row 1 = W\u2081\u2081 W\u2082\u2081 W\u2083\u2081 W\u2084\u2081 (blue text), row 2 = W\u2081\u2082 W\u2082\u2082 W\u2083\u2082 W\u2084\u2082 (purple text), row 3 = W\u2081\u2083 W\u2082\u2083 W\u2083\u2083 W\u2084\u2083 (orange text), row 4 = W\u2081\u2084 W\u2082\u2084 W\u2083\u2084 W\u2084\u2084 (green text); (6) large dark-blue curly brace '}'; (7) red bold '+' sign; (8) a vertical column of four yellow rounded boxes labeled b\u2081, b\u2082, b\u2083, b\u2084 enclosed by a pair of large red parentheses. Overall meaning: Y\u1d40 = Sigmoid( X\u00b7W + b ).",
+      "colors": [
+        "#EEEEEE",
+        "#C00000",
+        "#FFFF99",
+        "#E6A23C",
+        "#0000CC",
+        "#000099",
+        "#FF99CC",
+        "#CCFFCC",
+        "#0033CC",
+        "#9933CC",
+        "#FF9900",
+        "#009900"
+      ],
+      "position": "right panel, x 30\u201393%, y 17\u201356%"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: yellow circle with dark-red outline containing the numeral '9' in dark red, positioned at the top-right corner.",
+      "colors": [
+        "#FFFF99",
+        "#800000"
+      ],
+      "position": "top right, x 88\u201394%, y 8\u201316%"
+    },
+    {
+      "type": "other",
+      "description": "Small white mouse-pointer arrow with black outline floating in the empty area of the right panel below the y\u2081\u2013y\u2084 row (screen-capture artifact of the live presentation).",
+      "colors": [
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "right panel, ~x 42%, y 51%"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations. Iconography only: four \u03a3 neuron circles each with a small sigmoid-curve glyph and a multicolor (blue/purple/green) pie icon on the left rim; four pink circular input nodes; yellow rounded number badge '9'; small white mouse-cursor arrow in the right panel."
+  ],
+  "colors": {
+    "background": "#E8E8E8",
+    "title_text": "#C00000",
+    "body_text": "#1A1A1A",
+    "accents": [
+      "#C00000",
+      "#800000",
+      "#0033CC",
+      "#9933CC",
+      "#FF9900",
+      "#009900",
+      "#FF99CC",
+      "#FFFF99",
+      "#CCFFCC",
+      "#000099",
+      "#0000CC",
+      "#E6A23C",
+      "#000000",
+      "#FFFFFF",
+      "#EEEEEE",
+      "#CC99CC",
+      "#808080",
+      "#404040",
+      "#CC6699"
+    ]
+  },
+  "typography_notes": "Sans-serif (Arial/Tahoma-like) throughout. Title ~28pt bold, red, title case with wide double spaces after 'Using' and 'FF NN'. Panel header 'Input Word X' ~14pt bold black with the 'X' enlarged and red. All indices are true subscripts (X\u2081, W\u2081\u2081, y\u2081, b\u2081); 'Y\u1d40' uses a superscript T. '= Sigmoid' is bold italic blue. Weight labels ~9pt bold, color-coded by source node. No all-caps text, no serif fonts, no numbered bullets.",
+  "animation_state": "Slide appears fully built \u2014 all 4 inputs, 16 weight labels, 4 neurons, and the complete equation are visible; nothing is mid-reveal. A mouse cursor is visible in the right panel, indicating a live-recorded session, but no build state is in progress.",
+  "recreation_brief": "1. Slide setup: create a 4:3 slide with background #E8E8E8 and draw a thin dark-red (#800000) rectangular frame along the slide edge.\n2. Title: text box spanning x 8\u201386%, y 8\u201316%, centered text 'Using  FF NN  for Multiplication of a Vector by a Matrix' (keep the double spaces after 'Using' and 'FF NN'), Arial bold 28pt, #C00000.\n3. Slide-number badge: circle ~0.5\" diameter at x 88\u201394%, y 8\u201316%, fill #FFFF99, outline #800000 1.5pt, containing the centered bold numeral '9' in #800000.\n4. Left panel: rounded rectangle x 7\u201329%, y 17\u201397%, fill #FFFFFF, outline #404040 1.5pt.\n5. Panel header: top-left inside the left panel, one text line 'Input Word ' in Arial bold 14pt #000000 followed by 'X' in Arial bold 18pt #C00000.\n6. Input nodes: four circles ~0.35\" diameter, fill #FF99CC, outline #CC6699, at x\u224810% and y\u224827%, 49%, 66%, 84%; label them X\u2081, X\u2082, X\u2083, X\u2084 (black bold, true subscripts).\n7. Neurons: four circles ~0.45\" diameter, fill #FFFFFF, outline #808080, at x\u224824% and the same four y positions as step 6; inside each place '\u03a3' (~16pt) with a small sigmoid-curve glyph, and add a tiny multicolor pie icon (blue/purple/green wedges) on the left rim of each neuron.\n8. Connections: 16 straight lines, 0.75pt #CC99CC, one from every input node to every neuron (fully connected 4\u00d74).\n9. Weight-label group 1: beside X\u2081 place W\u2081\u2081, W\u2082\u2081, W\u2083\u2081, W\u2084\u2081 (~9pt bold, true subscripts) in #0033CC.\n10. Weight-label group 2: beside X\u2082 place W\u2081\u2082, W\u2082\u2082, W\u2083\u2082, W\u2084\u2082 in #9933CC.\n11. Weight-label group 3: beside X\u2083 place W\u2081\u2083, W\u2082\u2083, W\u2083\u2083, W\u2084\u2083 in #FF9900.\n12. Weight-label group 4: beside X\u2084 place W\u2081\u2084, W\u2082\u2084, W\u2083\u2084, W\u2084\u2084 in #009900.\n13. Output arrows: from each neuron one short rightward arrow in #009900 ending at its label y\u2081, y\u2082, y\u2083 or y\u2084 (green bold) to the right of the neuron.\n14. Bias arrows: below each neuron one short upward arrow in #009900 running from its label b\u2081, b\u2082, b\u2083 or b\u2084 (green bold) into the neuron.\n15. Right panel: rounded rectangle x 30\u201393%, y 17\u201356%, fill #EEEEEE, outline #404040 1.5pt; steps 16\u201323 place the equation components left to right on one horizontal line vertically centered in this panel (y\u224836%).\n16. Output vector: red (#C00000) bold 'Y' with superscript 'T' (~20pt) placed above a horizontal row of four rounded boxes (fill #FFFF99, border #E6A23C) labeled y\u2081, y\u2082, y\u2083, y\u2084.\n17. '= Sigmoid': bold-italic text in #0000CC placed to the right of the y-row.\n18. Opening brace: large '{' in #000099.\n19. Input vector: horizontal row of four rounded boxes (fill #FF99CC, border #C00000) labeled X\u2081, X\u2082, X\u2083, X\u2084, with bold red 'X' (#C00000) centered beneath the row.\n20. Weight matrix: rounded rectangle filled #CCFFCC containing a 4\u00d74 grid of small yellow (#FFFF99) cells with true-subscript labels \u2014 row 1: W\u2081\u2081 W\u2082\u2081 W\u2083\u2081 W\u2084\u2081 in #0033CC; row 2: W\u2081\u2082 W\u2082\u2082 W\u2083\u2082 W\u2084\u2082 in #9933CC; row 3: W\u2081\u2083 W\u2082\u2083 W\u2083\u2083 W\u2084\u2083 in #FF9900; row 4: W\u2081\u2084 W\u2082\u2084 W\u2083\u2084 W\u2084\u2084 in #009900.\n21. Closing brace: large '}' in #000099, matching step 18.\n22. Plus sign: bold '+' in #C00000.\n23. Bias vector: a pair of large red (#C00000) parentheses enclosing a vertical column of four yellow (#FFFF99) rounded boxes labeled b\u2081, b\u2082, b\u2083, b\u2084 from top to bottom.\n24. Optional fidelity: small white mouse-cursor arrow with black outline at ~x 42%, y 51% inside the right panel (screen-capture artifact; may be omitted).\n25. Bottom strip: solid black (#000000) rectangle across the full slide width at y 97\u2013100% (video-player strip captured with the frame; may be omitted in a clean rebuild).",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Filled subtitle_or_header (was null) with 'Input Word X' \u2014 the only header text on the slide; note it is the header inside the left neural-network panel (recreation_brief step 5), not a slide-level subtitle.",
+      "verbatim_text.bullets kept empty deliberately: this is a diagram slide with no bullet-list text, so the field is truly absent under the schema exception; all verbatim content is captured in 35 labels and 2 equations. No bullets were invented.",
+      "Extended colors.accents with the 6 colors used in visual_elements/recreation_brief but missing from the palette: #FFFFFF (left-panel and neuron fill), #EEEEEE (equation-panel fill), #CC99CC (16 connection lines), #808080 (neuron outlines), #404040 (panel outlines), #CC6699 (input-node outlines).",
+      "Rewrote recreation_brief from 14 multi-element steps into a 25-step ordered checklist; each step now places exactly one element (or one homogeneous group with per-instance positions) specifying exact text, position, color, and shape.",
+      "Precision audit: no vague quantifiers ('several', 'some', 'many', 'a few', 'various') were present; all counts verified exact \u2014 4 input nodes, 4 \u03a3 neurons, 16 connection lines, 16 weight labels in 4 color groups of 4, 4 y-labels, 4 b-labels, 2 equations, 35 verbatim labels.",
+      "Consistency audit: all 5 layout.regions cover every visual_element (left diagram, equation graphic, badge, mouse cursor, black strip) and every verbatim label; title, panel contents, and brief texts match with no contradictions.",
+      "Documented that the single '\u03a3' entry in verbatim_text.labels represents four identical neuron glyphs (one \u03a3 per neuron), matching the diagram description; the brief places \u03a3 in all 4 neurons."
+    ],
+    "uncertain_items": [
+      "Exact vertical positions of the 4 input-node/neuron pairs are approximate (y\u224827/49/66/84%, unevenly spaced) \u2014 verify spacing against source frame slide_009.jpg.",
+      "Outline colors #404040 (both panels) and #CC6699 (input nodes) appear only in the original recreation_brief and are not confirmed by visual_elements; kept and added to the palette, but the hues are unverifiable without the image.",
+      "Whether the X\u2081\u2013X\u2084 labels sit inside the pink circles or directly beside them is not explicitly stated; the brief assumes on-node labeling.",
+      "The mouse cursor at ~x 42%, y 51% and the bottom black strip (y 97\u2013100%) are screen-capture/video-player artifacts; both are included only as optional fidelity steps (24\u201325) and may be omitted.",
+      "Slide-edge frame color assumed #800000 (dark red) from the arrangement description; exact frame thickness is unspecified ('thin')."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_009.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 9,
+      "image": "slide_009.jpg",
+      "kept_frame": "frame_00275.jpg",
+      "start_sec": 128.0,
+      "end_sec": 274.0,
+      "frame_count": 147,
+      "old_slide": 9
+    },
+    "elapsed_s": 323.7,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1428.0
+  }
+}

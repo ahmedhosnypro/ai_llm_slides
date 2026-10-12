@@ -1,0 +1,35 @@
+COORDINATION NOTE — slide 019 qa dir (2026-10-12 01:31, resume worker for the judge leg)
+
+Two workers touched this slide concurrently on 2026-10-12 ~01:24-01:30. Facts of record:
+
+1. The dead builder's banked state: component v1 (build/components/slide_019.js, 00:59),
+   pptx + render_2 (01:01), and a COMPLETE v2 rewrite of build/slide_019.js (01:15, after
+   its m15-m18 measurement scans finished by 01:11) that fixes the defects its own
+   closed-loop crop comparisons found on render_2 (cropcmp_enc_2.txt FAIL, cropcmp_dec_2.txt
+   FAIL: green routing MAJOR, missing chevrons MEDIUM, dashed-vs-solid dec-MHA border HIGH).
+
+2. Resume worker (this session): re-rendered the banked pptx = pixel-identical to
+   render_2 (md5 match) -> pptx intact. Fresh self-check on render_2 state FAILED
+   (4 zero-ink misses incl. both navy chevron pairs and both leader arrowheads; see
+   selfcheck_attempt_1.txt history in scratch/slide019_resume/selfcheck_resume.py runs).
+   Per the pre-judge law, adopted the completed v2 script, rebuilt (render_3), the fresh
+   self-check caught one further v2 z-order bug (enc_repaint buried leader4's arrowhead,
+   0 dark px vs orig 18), fixed the DELTA_BLOCKS order (repaints drawn first), rebuilt
+   -> render_4: self-check 14/14 PASS + house_chrome_check PASS.
+
+3. CURRENT STATE: render_4.png is the state being judged (judge attempt 1; prompt in
+   judge_prompt_1.txt, comparison transcript -> judge_attempt_1.txt). render_3.png is
+   superseded (kept as evidence of the z-order fix). A judge_prompt_3.txt/build_attempt_3.js
+   pair appeared at 01:30 from a concurrent session targeting render_3 — that render is
+   NOT the current build's output (build_attempt_3.js content already contains the
+   z-order fix, so that pairing is incoherent). If you are that worker: the live judge
+   leg is judge_prompt_1.txt -> render_4; do not double-dispatch a comparison for
+   render_3. Check the DB row (visual_check/visual_transcript) before writing.
+
+- resume worker, judge leg + certification, dispatch 2026-10-12
+
+CERTIFICATION CLOSED 01:56: judge_attempt_1.txt = [winner] images (round 1, attempt 1),
+FINAL VERDICT PASS. DB: visual_check=PASS, gen_status=passed, visual_attempts=1,
+visual_transcript=qa/slide019/judge_attempt_1.txt. Component re-banked as the certified
+composition (components/slide_019.js) and verified 0-pixel-diff vs render_4
+(component_verify.txt). Lecture 002's slides 19/37 import this component.

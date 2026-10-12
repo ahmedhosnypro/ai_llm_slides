@@ -1,0 +1,46 @@
+[info] context header injected: VIEW: Slide 040 dense-region check [panelbot]: render crop vs original crop — algorithm panel bottom: eq3 xhat fraction+radical with lavender highlights, eq4 y_i gamma xhat beta BN line with orange ellipse, pink/orange comment highlights | CAPTURE: IMG1=upscaled crop of 150dpi PPTX render; IMG2=upscaled crop of 960x540 lecture frame (same region)
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 3953302
+[info] videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide040/crops/panelbot/crop_render.png, videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide040/crops/panelbot/crop_original.png: transcript written (validated winner, atomic): videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide040/crops/panelbot/cropcmp.txt (pid 3953302)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide040/crops/panelbot/crop_render.png, videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide040/crops/panelbot/crop_original.png ===
+[winner] images (round 1, attempt 1)
+## Element-by-element comparison (algorithm panel, bottom region: eq3 tail, eq4 normalize, eq5 scale-and-shift)
+
+**Eq3 tail (ÏÂ²_Î² â (1/m)âáµ¢ââ(xáµ¢âÎ¼_B)Â²):**
+- Partially visible at top of both crops. Lavender highlight box on ÏÂ²_Î² present in both, same placement and approx color (#8886C7-ish). Fraction 1/m, large â with i=1 limit, (xáµ¢âÎ¼_B)Â² all present in professional 2D format matching the original's 2D layout. â
+- "// mini-batch variance" comment is cut by the crop top in IMG2 and not visible in IMG1's crop â crop-framing difference, not judgeable here.
+
+**Eq4 (xÌáµ¢ â (xáµ¢âÎ¼_B)/â(ÏÂ²_B+Îµ)):**
+- Pink highlight on xÌáµ¢: present both, approx #F58C8C. â
+- Lavender boxes behind Î¼_B (numerator) and ÏÂ²_B (denominator): present both, similar placement; in both, the ÏÂ²_B box slightly overlaps the radical interior â matches original behavior. â
+- Radical geometry: vinculum meets the fraction bar, radical leg descends past ÏÂ²_B baseline â matches. â
+- "// normalize" pink highlight block on the right: present both, sans-serif, approx same size/color. â
+- **DISCREPANCY 1 (MAJOR, confidence ~0.75):** The original shows a thin **blue rectangle outlining the entire normalize equation** (blue stroke box enclosing xÌáµ¢ â fraction). The recreation omits this box entirely, substituting instead a **stray thick lavender horizontal bar** running under the fraction and extending far to the left beyond the equation (under the arrow region). That lavender bar (a) does not exist in the original and (b) appears to be a malformed attempt at the annotation box. Extra ink + missing annotation element in the same region.
+- **DISCREPANCY 2 (MAJOR, confidence ~0.7, conditional):** The omitted blue rectangle may be a live-drawn lecture annotation rather than slide content; if the founder classifies video pen-annotations as omittable, this downgrades to MINOR. As rendered evidence stands, it is a visible original element absent from the recreation.
+
+**Eq5 (yáµ¢ â Î³xÌáµ¢ + Î² â¡ BN_Î³,Î²(xáµ¢)):**
+- Orange ellipse around yáµ¢: present both.
+  - **DISCREPANCY 3 (MINOR, confidence ~0.8):** In the original the circle is filled light tan/orange with an orange ring; in the recreation it is unfilled (white/transparent with orange stroke). Color/fill mismatch.
+- Green highlights on Î³ and Î², pink on xÌáµ¢: present both, correct colors and placement; Î³/Î² boxes slightly overlap the glyph strokes in both. â
+- "â¡ BN_Î³,Î²(xáµ¢)" with subscript Î³,Î²: present, verbatim, correct serif math. â
+- "// scale and shift" orange highlight block: present both, approx #F5A24B, right-aligned similarly; both crops cut at right edge so right containment is not fully judgeable, but nothing indicates overflow. â
+- **DISCREPANCY 4 (MAJOR, confidence ~0.7, same conditional as #1):** The original shows a thin **red/pink rectangle outlining the entire scale-and-shift line** (from the circle through BN_Î³,Î²(xáµ¢)). The recreation omits this box entirely.
+
+**Vertical layout / spacing:**
+- Inter-equation gaps (eq3âeq4, eq4âeq5) are proportionally similar; eq5 sits close above the panel bottom in both. In IMG2 slightly more whitespace below eq5 before the panel bottom â the recreation's equations run marginally larger, but within tolerance for a dense-region crop. No text touches or crosses the panel bottom border in either. â
+- Numerator/denominator vertical centering about the fraction bar: centered correctly in both. â
+
+## Summary of discrepancies
+1. **MAJOR** â Missing thin blue annotation rectangle around eq4 (normalize) present in original. Confidence 0.75 (downgrade to MINOR if classified as live pen annotation).
+2. **MAJOR** â Extra stray lavender horizontal bar under eq4, absent in original; reads as a malformed substitute for the missing blue box. Confidence 0.85.
+3. **MAJOR** â Missing thin red/pink annotation rectangle around eq5 (scale-and-shift line) present in original. Confidence 0.7 (same conditional).
+4. **MINOR** â yáµ¢ ellipse unfilled in recreation vs tan-filled circle in original. Confidence 0.8.
+
+No BLOCKERs: all equations, highlights, and comment text are present, verbatim, correctly colored, correctly formatted (2D stacked fraction, radical, sub/superscripts), and contained within the panel.
+
+## Visual-quality defects in recreation
+- The stray lavender bar under eq4 is the only rendering artifact; it visually collides with the empty space left of the radical and reads as unintended ink.
+
+FINAL VERDICT: FAIL for 'faithful, usable recreation' â the equation rendering itself is faithful, but the original's annotation rectangles around eq4/eq5 are omitted and an extra lavender bar is introduced; restoring those boxes (or confirming they are non-slide video annotations) would flip this to PASS.
+

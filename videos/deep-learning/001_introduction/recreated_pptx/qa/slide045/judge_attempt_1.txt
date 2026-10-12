@@ -1,0 +1,35 @@
+# Fidelity Check â Slide 045 (Apply Convolution as a NEW MODULE)
+
+## Element-by-element comparison
+
+**House chrome (per ground rules, not scored):** gray panel, red border, yellow "45" badge, omitted black bottom bar and cursor â all consistent with the mandated template; excluded from the verdict.
+
+**Title:** "Apply **Convolution** as a **NEW MODULE**" â verbatim match, same tri-color scheme (red/blue/red), NEW MODULE underlined in both. Original starburst "Important" callout at title's right is reproduced. â
+
+**Top blue-bordered text box:** Lines 2â3 verbatim match ("It can be applied as if it is a NN Layer" / "**Input**: image values, **Weights** : filter values, **Activation**: Linear, **Bias**:0"). Line 1 matches up through "â¦corresponding image vaâ" â see D1.
+
+**Remember box:** Verbatim match, italic red, two-line wrap identical ("â¦both Input and / weights"). â
+
+**Left legend box:** All four entries match, including the preserved original typo "Vevtor of all weights" and "Activation value = Î£". Bold red Î¸/**r, c**/**a**/Î¸ styling matches. â
+
+**Main equation box (red border):** Bullet structure (â Activation function / â Essentially a dot productâ¦ / â Gradient w.r.t. the parameters) matches. Equation 1: a_{r,c} = Î£_{i=âa}^{a} Î£_{j=âb}^{b} xÂ·Î¸_{ij} with limits a, b above and i=âa, j=âb below â structurally correct, professional 2D rendering per rule (e). Equation 3: âa_{r,c}/âÎ¸_{i,j} = Î£_{r=0}^{Nâ2a} Î£_{c=0}^{Nâ2b} x_{râi, câj} â content matches exactly, limits correct. Right-side callouts "Weights: filter values" / "Input: pixel values" verbatim with matching bold-blue/regular-black split and blue borders. â (with exceptions below)
+
+## Discrepancies
+
+| # | Discrepancy | Severity | Confidence |
+|---|---|---|---|
+| D1 | **Starburst occludes verbatim text.** In the original, line 1 of the top box reads "â¦corresponding image **values),**" fully legible (starburst clips only the box border). In the recreation the starburst is placed lower/more left and covers the end of line 1 â "values)," is unreadable. Text must be verbatim-*visible*. | **MAJOR** | High |
+| D2 | **Red arrow annotation obscures equation subscripts.** In the original, the red arrowhead points *at* x_{râi, câj} but the subscript stays legible. In the recreation the arrowhead sits directly ON the subscript region of x in equation 1; "râi, câj" is substantially hidden. The annotation itself is mandated (rule e/f), but it must not occlude equation content it doesn't occlude in the original. | **MAJOR** | Medium-high |
+| D3 | Dot-product equation uses capital **X**áµ_region where the original shows lowercase **x**áµ_region (equations 1 and 3 correctly use lowercase x). | MINOR | High |
+| D4 | Original carries a small hand-drawn red pointer next to "Gradient w.r.t. the parameters" (left of the Nâ2a limit) linking toward the Input callout; the recreation omits this second leader/pointer (only the Weights leader is reproduced). | MINOR | Medium |
+| D5 | Interoperational dot: recreation uses a heavy "â¢" between x and Î¸_{ij} vs the original's thin "Â·"; also slightly wider spacing around the first equation's terms. | MINOR | Medium |
+
+## Visual-quality defects in the recreation
+- D1 and D2 are the collisions: annotation callouts placed over live text/equation ink rather than beside it.
+- No frame-containment violations: all boxes, equations, callouts, and the legend sit inside the gray panel; equations have adequate clearance within the white box; fraction bars and summation limits are vertically centered and correctly stacked.
+- Line spacing in the Remember box and top box matches the original's wraps.
+
+## Summary
+Content is otherwise faithful â every text block verbatim, all three equation regions populated with correct variables, subscripts, and limits, legend and callouts complete, layout geometry close. But D1 hides verbatim original text and D2 hides equation content behind annotations that sit clear of the ink in the original. Both are trivially fixable (nudge starburst up/right; shorten/retarget the arrow), but as rendered they are MAJOR.
+
+**FINAL VERDICT: FAIL** for 'faithful, usable recreation' â re-render with the starburst clear of line 1 and the red arrow tip beside (not on) the x subscripts.

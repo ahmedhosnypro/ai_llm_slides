@@ -1,0 +1,75 @@
+# IMG1 â Cream Info Panel (blue border)
+
+Verbatim transcription, top to bottom (spacing preserved; `â£` shown only where a gap is an alignment gap â actual text uses spaces):
+
+```
+Input:
+      Word Embedding + Positional Information  [First Transformer Block]
+      Output of Previous Transformer Block      [Stacked Transformer Blocks]
+
+Output:
+      Encoded Vectors of Input Sequence   [With Same Input Vectors Dimension]
+
+Remember:
+   Different Input Sequences should be of Same Length  (Fixed Length Sequences)
+         [Apply  Pad or Cut]
+   Output Sequence is of same Length as Input Sequence
+```
+
+- **Bold headers:** `Input:`, `Output:`, `Remember:` â all three are bold, each followed by a blank line before its body text.
+- **Body lines:** all remaining lines (regular/medium weight).
+- **Spacing notes (not normalized):** 2 spaces in `Informationâ£â£[First`; a wide alignment gap (~6 spaces) in `Blockâ£â¦â£[Stacked` so the `[` brackets line up vertically; ~3 spaces in `Sequenceâ£â£â£[With`; 2 spaces in `Lengthâ£â£(Fixed`; 2 spaces in `[Applyâ£â£Pad`.
+- **Left-indent groups (same-x lines):**
+  - Flush-left group: `Input:`, `Output:`, `Remember:` (identical leftmost x).
+  - Deep-indent group: `Word Embeddingâ¦`, `Output of Previousâ¦`, `Encoded Vectorsâ¦` (identical leftmost x).
+  - Mid-indent group: `Different Input Sequencesâ¦`, `Output Sequence is of same Lengthâ¦` (identical leftmost x, shallower than the deep group).
+  - Unique indent: `[Apply  Pad or Cut]` starts furthest right, roughly centered under the `Differentâ¦` sentence.
+- **Colors:** text â `#2121A5` (dark blue-violet); panel fill â `#FFFFE1` (cream / light yellow); border â `#1B1BA6` (navy blue, ~3 px rectangle around the whole panel).
+
+# IMG2 â Red label, top token row
+
+Wrap (2 lines, 2nd line centered):
+
+```
+Output of Self
+   Attention
+```
+
+- Label text color â `#1010A0` (navy blue), bold italic, on white; enclosed in a red frame â `#C10000`.
+
+# IMG3 â Red label, bottom token row
+
+Wrap (2 lines, 2nd line left-aligned with 1st). Note the **double space** between "Input" and "to":
+
+```
+Input  to Self
+Attention
+```
+
+- Label text color â `#B41F24` (brick red), bold italic, on white; thin red vertical rule at the left edge â `#C10000`.
+
+# IMG4 â Yellow-highlighted caption
+
+```
+Word  Embedding  +  Positional  Information
+```
+
+- Double spaces between every token (gaps render uniformly wide, â2â3 spaces â do not collapse to single spaces).
+- Text color â `#A31D1D` (dark red); highlight color â `#FFF200`â`#FFFF00` (saturated yellow band extending slightly beyond the text).
+
+# IMG5 â Slide title
+
+```
+Multi Head Self Attention Block
+```
+
+- Single spaces; bold sans-serif; color â `#C00000` (crimson red) on a light gray background.
+
+# IMG6 â Dark banner bar
+
+```
+Multi Head Self Attention Block
+```
+
+- Single spaces; white (`#FFFFFF`) bold text, centered.
+- Banner fill color â `#1D1DAE` (dark royal/navy blue). (Small white icons above and blue arrow tips below the bar are diagram elements, not banner text.)

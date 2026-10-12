@@ -1,0 +1,50 @@
+# Visual QA Description â Slide 034
+
+## 1. Verbatim text transcription
+
+**Title block (top center):**
+- `[2] Position Embedding` ("[2] Position" in dark red; "Embedding" in dark navy blue)
+- `(Similar to Word Embedding)` (dark red subtitle)
+
+**Page number (top right):** `34` (black text inside a yellow circle with a dark outline)
+
+**Left margin labels:**
+- `Position Information` (bold, two lines)
+- `(similar to word tokenization)`
+- `Positional Embedding` (bold italic, dark red)
+- `(Trained on Position Values)`
+
+**Top row (dashed lavender container), left to right:** `0` Â· `1` Â· `2` Â· `3` Â· `4` Â· `5` Â· then five solid gray dots (ellipsis) Â· `N-2` Â· `N-1` (all numerals bold italic dark blue)
+
+**Purple banner (center):** `Embedding  Layer to  Learn  Position Vectors` ("Embedding" and "Learn" in yellow; remainder in white)
+
+**Bottom row (dashed pale-pink container), left to right:** `Vector p0` Â· `Vector p1` Â· `Vector p2` Â· `Vector p3` Â· `Vector p4` Â· `Vector p5` Â· [large empty gap] Â· `Vector PN-2` Â· `Vector PN-1` (each "Vector" in bold italic navy with a small subscript; the last two subscripts are very small and read approximately "PN-2" / "PN-1")
+
+**Green-bordered box (bottom):**
+- `Real valued vectors representing  positions` (bold black â note double space)
+- `(Vector for each position)` (bold black)
+- `Positions > N-1 can NOT be Embedded` (bold italic dark red; "> N-1" sits on a yellow highlight)
+- `(Must  Train Embedding on Max Expected Seq. Length)` (bold italic dark red, underlined â note double space after "(Must")
+- `Vector Length  = Word Embedding length` (bold black â note extra space before "=")
+
+## 2. Layout
+
+- **Overall:** White slide margin surrounding a thin dark-red rectangular border; interior background is light gray.
+- **Top:** Centered two-line title; page-number circle "34" at top-right inside the border.
+- **Left edge:** Four stacked text labels ("Position Information", "(similar to word tokenization)", "Positional Embedding", "(Trained on Position Values)") aligned to the left of the corresponding diagram rows.
+- **Center (top to bottom):**
+  1. Dashed rounded lavender row of position-number boxes (0â5, dots, N-2, N-1).
+  2. A thick dark-red downward block arrow.
+  3. Full-width dark-purple banner with the "Embedding Layer to Learn Position Vectors" text.
+  4. A second thick dark-red downward block arrow.
+  5. Dashed rounded pale-pink row of "Vector" boxes.
+  6. A dark-red horizontal brace spanning nearly the full width, with upturned ends and a downward V-notch in the middle, pointing at the green box.
+- **Bottom:** Green-outlined rectangle, centered, containing the four explanatory text lines.
+
+## 3. Visual defects / anomalies
+
+- **Clipped border at bottom:** The dark-red rectangular border's bottom edge is not visible; its left and right side segments run to the very bottom edge of the frame (a small red stub is visible at the bottom-left corner), so the border appears cut off at the slide bottom.
+- **Missing ellipsis in bottom row:** The top position row contains five gray dots between "5" and "N-2", but the bottom vector row has a large blank gap between "Vector p5" and "Vector PN-2" with no corresponding dots â an inconsistency between the two rows.
+- **Inconsistent subscript notation:** First six vectors use lowercase subscripts (p0âp5); the last two use what appears to be "PN-2"/"PN-1" (small, near the limit of legibility, but consistent with "PN-2"/"PN-1").
+- **Spacing irregularities:** Double-wide gaps inside the purple banner ("Embeddingâ£â£Layer toâ£â£Learnâ£â£Position Vectors") and in the green box ("representingâ£â£positions", "(Mustâ£â£Train", "Lengthâ£â£=").
+- **No overlapping elements, garbage strings, or wrong-language text observed.** All box text fits within its containers; nothing else appears truncated.

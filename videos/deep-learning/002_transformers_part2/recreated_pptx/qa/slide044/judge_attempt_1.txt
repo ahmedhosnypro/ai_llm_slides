@@ -1,0 +1,26 @@
+## Element-by-Element Fidelity Check â Slide 044
+
+**House chrome (red frame, #E8E8E8 bg, yellow "44" badge, title box):** present and per template â NOT discrepancies per ground rule (a). Title text "Layer , Group, and Instance Normalization" verbatim, red, bold, centered â matches original.
+
+**Text blocks:**
+- "Sample Based Normalization" â blue, italic, bold, two lines, same position â MATCH.
+- Group Normalization box: "Group Normalization" (red) / "(Group of Channels)" (blue bold) / "General Case" (green) â verbatim, line breaks match, box position matches.
+- Instance Normalization box: "Instance Normalization" (red) / "Calculate (then Normalize) Î¼, Ï for **ONE Channel** in **ONE Sample** (Output of ONE Filter)" with correct red/blue/green coloring â verbatim, matches.
+- Layer Normalization banner: "Calculate (then Normalize) Î¼, Ï for **ALL Channels** in the **Same Sample** (Input to Same Layer)" with blue bold and green underlined phrase â verbatim, matches.
+- "Transformer choice" black oval with yellow text at right of banner â MATCH.
+
+**Diagram:**
+- Four cube-stack groups (LN sample, GN, IN, IN-in-panel) present in correct order and approximate positions; magenta/salmon channel split with black horizontal normalization lines reproduced on GN and IN stacks; "Samples" rotated red label with arrow present; vertical red "Feature Vector" arrow with rotated label present; red bounding rectangle around the Instance-Normalization stack present; "Channels" arrow+label and "Batch size" rotated label inside the red panel present. Per worker context P3, the flat-slab/parallelogram cube construction is the certified slide-042/043 geometry and is not charged as a discrepancy.
+
+**Discrepancies found:**
+
+1. **MISSING LABEL â under the first (salmon) Layer-Normalization stack.** The original shows a "Channels" text label directly beneath the red double-headed arrow below the salmon block. The recreation renders the red arrow but **omits the "Channels" label entirely**. Per rule (6), a visual element from the original omitted entirely is a BLOCKER-level omission of a labeled annotation. Severity: **MAJOR-to-BLOCKER**, confidence high.
+2. "Feature Vector" arrow/label sits just OUTSIDE (left of) the red bounding rectangle in the recreation; in the original it sits inside the rectangle's left edge. Severity: **MINOR**, confidence medium.
+3. Layer Normalization banner drawn with an explicit red border in the recreation; original banner is a borderless pink band. Severity: **MINOR**, confidence high.
+4. Cube stacks rendered as stylized flat slabs rather than fully gridded 3D cubes (individual cube face lines simplified). Per certified P3 construction, charged at most **MINOR**, confidence high.
+
+**Visual-quality defects in the recreation:** none observed â no text clipping, no frame overflow (all text and shapes sit inside the red house frame and their own boxes), no collisions, no illegible text; vertical centering inside text boxes is correct.
+
+**Summary:** All verbatim text, layout regions, colors, arrows, and panel structure match the original well. The single substantive fidelity loss is the entirely omitted "Channels" label beneath the first stack â a missing visual element under rule (6), which prevents a clean pass.
+
+FINAL VERDICT: FAIL

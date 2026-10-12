@@ -1,0 +1,27 @@
+# Fidelity Check â Slide 040 "Normalization Parameters"
+
+## Geometry settling (per dispatch law)
+Accepted first: chrome landmarks confirm the algorithm panel bottom = 96.3% of slide height in BOTH images (IMG2: panel bottom row ~497 vs chrome bottom rule ~517; IMG1: equivalent ~41px at 150dpi). The gray house chrome running to the slide bottom in IMG1 is house chrome, not panel overflow. Vertical positions are compared via these landmarks, not image-height fractions. The dark smudge over "batch:" in IMG2's Input line and the underscore-like mark before "Minimizes Loss." in IMG2 are video-capture/cursor artifacts â correctly omitted per ground rule (c).
+
+## Element-by-element comparison
+
+**Title:** "Normalization Parameters" â red bold, centered, same relative size/position. Badge "40" yellow oval top-right, both.**Intro box (red-bordered):**
+- Line 1: "Instead of restricting the Activations of each layer to be *strictly* **Zero** *mean and* **unit** *variance*," â verbatim, identical coloring (blue bold "Zero"/"unit", red italics).- Line 2: "Normalization allows the network to learn parameters Î³ and Î² that can convert the mean and" â verbatim; "learn parameters" green highlight / Î² red-boldconvert the mean and" red italic.
+- Line 3: "variance to any value that Minimizes Loss." â verbatim, same line break position. spacing across the 3 lines is visually equivalent in
+
+**Algorithm panel (black border):**
+- "Input : Values of x over a miniâbatch : B = {xââ¦m};"- Green-highlighted "Parameters to be learned : Î³, Î²" indented under InputOutput : {yáµ¢ = BN_Î³,Î²(xáµ¢)}- Î¼_B â (1/m)âáµ¢ââáµ xáµ¢ â stacked fraction with bar, â with limits above/below; original uses the SAME 2D notation here, so no format-upgrade question arises. Purple highlight on. Comment "// mini-batch mean" unhighlighted in ends near panel right border in both_BÂ² â (1/m)âáµ¢ââáµ(xáµ¢ â Î¼_B)Â² â, "// mini-batch variance" un.
+- xÌáµ¢ â (xáµ¢ â Î¼_B)/â(Ï_BÂ² + Îµ) inside blue-bordered box â pink highlight on xÌáµ¢, purple on Î¼_B and on Ï_BÂ² inside the radical, all matching. "// normalize" pink highlight- yáµ¢ â Î³xÌáµ¢ + Î² â¡ BN_Î³,Î²(xáµ¢) inside pink-bordered box â orange circle on yáµ¢, green Î³, pink xÌáµ¢, green Î², all matching. "// scale and shift".
+
+**Delimiter geometry:** The bounding rectangles around the normalize and scale-and-shift equations span their full contents in both; the big parentheses/braces in Output line render with strokes clear of enclosed
+
+**Frame containment:** All four equation rows, comments, and highlight chips sit fully inside the black panel in both images; the closest items ("// normalize", "// scale and shift" highlights) end inside the right border in both. Nothing crosses the red house frame.Missing elements:** None â every equation, highlight, comment, and box present.
+
+## Discrepancy list
+1. **MINOR** (confidence ~60%): Inter-equation vertical whitespace inside the panel is very slightly more generous in IMG1 (e.g., gap between variance and normalize rows) than in IMG2. Within tolerance given the chrome-landmark calibration; panel top/bottom land at the same slide-relative positions.
+2. **MINOR** (confidence ~50%): IMG1's equation font weight appears a touch heavier/darker than the original's (LaTeX-style thin strokes vs. slightly bolder render). Inherent render-medium difference; no legibility loss.
+3. **MINOR** (confidence ~70%): IMG2's line 3 gap before "Minimizes Loss." (apparent "that_ Minimizes") is a capture artifact; recreation's single space is the correct underlying text â noted only for completeness, not a defect.
+
+No BLOCKER or MAJOR defects found. No text overflow, clipping, collision, misalignment, or wrapping errors in the recreation.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

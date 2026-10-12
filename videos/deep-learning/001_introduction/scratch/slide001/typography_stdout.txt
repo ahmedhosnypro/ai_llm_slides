@@ -1,0 +1,31 @@
+[info] context header injected: VIEW: Slide 001 typography ground truth — credit and instructor text blocks, 2x upscale | CAPTURE: 1300x460 crop (2x upscale) of the lower-left text region of a 960x540 lecture title frame
+[info] mode analysis | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 3673549
+[info] videos/deep-learning/001_introduction/scratch/slide001/typography_crop.png: transcript written (validated winner, atomic): videos/deep-learning/001_introduction/scratch/slide001/typography_read.txt (pid 3673549)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== videos/deep-learning/001_introduction/scratch/slide001/typography_crop.png ===
+[winner] images (round 1, attempt 1)
+# Typography Report â Lines 1â8, top to bottom
+
+| # | Verbatim text | Italic/Upright | Weight | Color | Relative size |
+|---|---|---|---|---|---|
+| 1 | `Prepared By` | **ITALIC** (P and B clearly slanted) | Bold | Red | Large (slightly smaller than name lines) |
+| 2 | `Dr. Khaled Mostafa ElSayed` | **ITALIC** (D, k, l, S all slant) | Bold | Navy / dark blue | Large â largest on the frame |
+| 3 | `kmelsayed@zewailcity.edu.eg` | **UPRIGHT** (k, l, d stems are vertical) | Bold | Blue (brighter/royal blue, lighter than the navy names) | Medium |
+| 4 | `Instructors:` | **ITALIC** (I, t, r slant) | Bold | Red | Large |
+| 5 | `Dr. Khaled Mostafa ElSayed` | **ITALIC** | Bold | Navy / dark blue | Large |
+| 6 | `kmelsayed@zewailcity.edu.eg` | **UPRIGHT** (k, l stems vertical) | Regular (noticeably thinner than line 3) | Blue | Medium |
+| 7 | `Dr. Mohamed Maher Ata` | **ITALIC** | Bold | Navy / dark blue | Large |
+| 8 | `momaher@zewailcity.edu.eg` | **ITALIC** (the l in "zewailcity" and h ascender lean right, unlike line 6) | Regular | Blue | Medium |
+
+## Key italic observations (the crux)
+- The two long email lines are **not** formatted consistently: line 6 (`kmelsayed@...`) is **upright**, while line 8 (`momaher@...`) is **italic**. This is easy to miss because both sit directly under bold-italic navy names.
+- Line 3 (the block-1 email) is also **upright**, despite being sandwiched between two italic lines â the bold weight makes the vertical stems easy to read as vertical.
+- All five name/heading lines (1, 2, 4, 5, 7) are unambiguously italic.
+
+## Other notes
+- **Underline/strikethrough:** none on any of the 8 lines.
+- **Color grouping:** three distinct colors â red (lines 1, 4), navy/dark blue (lines 2, 5, 7), medium/bright blue (lines 3, 6, 8). The emails are clearly a lighter blue than the names.
+- **Alignment:** Block 1's three lines are center-aligned with each other; Block 2's heading starts at the left margin and its four lines share an indented left edge (~1 character-ish further right than "Instructors:").
+- **Non-text elements excluded:** a thin red vertical rule at the far left edge (decorative border), and the Zewail City logo at bottom-right (contains "ZEWAIL CITY," Arabic text, "ESTABLISHED 2011 / INAUGURATED 2011" â logo artwork, not counted among the 8 lines).
+

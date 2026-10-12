@@ -1,0 +1,33 @@
+# Fidelity Check â Slide 018 "Adding Position Information"
+
+## Settled per ground rules (not discrepancies)
+- Red house frame, #E8E8E8 background, yellow "18" badge, title placement = house chrome (IMG1 shows all present and correct).
+- Cursor arrow below "Adding" in IMG2 (~x=395,y=240) = video-capture artifact â correctly omitted (rule c).
+- Thin horizontal line artifact at top-left of IMG2 and black letterbox bar at bottom of IMG2 = video artifacts â correctly omitted.
+
+## Element-by-element comparison
+
+| Element | Original (IMG2) | Recreation (IMG1) | Verdict |
+|---|---|---|---|
+| Title text | "Adding Position Information", bold red, centered | Identical, verbatim, centered | MATCH |
+| Title color | Bright red (~#C00000) | Same | MATCH |
+| White panel | Centered box ~25%â68% width, ~52%â79% height | ~24%â68% width, ~55%â82% height | MATCH (within tolerance) |
+| Line 1 | "[1] Position" navy (~#00008B) + "Encoding" red | Identical split, same colors | MATCH |
+| Line 2 | "[2] Position" navy + "Embedding" magenta (~#CC00CC) | Identical split, same colors | MATCH |
+| Inter-line spacing in panel | ~11.7% of slide height between the two lines | ~12.4% | MATCH (minor diff <1%, imperceptible) |
+| Vertical centering in panel | Lines sit roughly centered, slight top bias | Same slight top bias; text does not hug top nor wrap empty space below disproportionately | MATCH |
+| Horizontal centering of both lines | Left-aligned to each other, block centered in panel | Same left alignment, same relative centering | MATCH |
+| Font weight/style | Bold sans-serif | Bold sans-serif, comparable size ratio to slide | MATCH |
+| Frame containment | All ink inside red frame | All ink inside red frame; panel clear of frame edges; title clear | MATCH |
+| Slide badge | "18" in yellow oval top-right | Present, same position, same content | MATCH |
+| Missing elements | None in original beyond artifacts | None missing | MATCH |
+
+## Discrepancy list
+- **MINOR** â White panel is marginally taller/lower in the recreation (~2â3% of slide height lower bottom edge); confidence high but visually negligible.
+- **MINOR** â Title baseline sits ~2â3% lower relative to slide height than original; confidence high, imperceptible.
+- No BLOCKER or MAJOR defects found. No missing content (rule b satisfied â original has full content and recreation matches it).
+
+## Visual-quality defects in recreation
+- None. No clipping, overflow, collisions, or wrapping errors. Text is crisp and legible at render resolution.
+
+FINAL VERDICT: **PASS** for 'faithful, usable recreation'.

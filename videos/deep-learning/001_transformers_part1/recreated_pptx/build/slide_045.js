@@ -22,9 +22,13 @@
 //   label at left end (line1 y95..100, line2 y101..107); vecbox UNCHANGED at parent
 //   x400..470 y50..72 with red 1·d label; single red arrow x428 y72..88 arrowhead top;
 //   strips h1..h5 (dashed green, head-color fill, 74x16) at (378,206)(423,184)(469,163)
-//   (512,143)(552,124); 1·d/H two-tone labels (red 1·d/ + navy H) at (633,134) and
-//   (583,159); equation box x753..921 y108..170 green dashed, strip A (2 lav + 2 orange)
+//   (512,143)(552,124); 1·d/H two-tone labels (red 1·d/ + navy H) at (633,134) and —
+//   re-anchored per judge attempt 1 (MAJOR #2, oval collision) — at the h4 strip's
+//   top-right corner (ink x588..598 y144..150; frame faint mark x585..590 y144..147);
+//   equation box x753..921 y108..170 green dashed, strip A (2 lav + 2 orange)
 //   x762 y114, W pale-yellow box x809 y112 35x35, = x847, strip B mirrored x861 y124,
+//   label1 re-anchored per judge attempt 1 (MAJOR #1, W-box collision) so its ink ends
+//   x~806 with whitespace before the box (frame mark x799..806 y131..138),
 //   blue caption "d : Embedding Length" y162..171; Input Sequence ellipse x746..870
 //   y347..394; blue X bar x747..876 y397..414; black caption bar x768..920 y418..434
 //   with yellow text; 5 lozenge rows x752..918, yTops 440/459/478/497/516 h16, tinted
@@ -206,12 +210,16 @@ function drawEqbox45(pptx, slide) {
     });
   }
   // blue 1×d/H labels under the strips (spec: blue dimension labels; frame ink
-  // label1 x793..824 y126..137 navy, label2 x870..890 y140..146)
+  // label1 x793..824 y126..137 navy, label2 x870..890 y140..146).
+  // Judge attempt 1 fix (MAJOR #1): label1's ink crossed the W box's left edge
+  // (x809) — frame ground truth has the ink END at x806 with whitespace before
+  // the box (frame blue mark x799..806 y131..138, W box left edge x~810). Label1
+  // re-anchored so its ink spans ~x796..806 (box center 801), y-center 134.5.
   const dimRuns = () => ([
     { text: "1\u00D7d/H", options: { bold: true, fontSize: 7, color: C.navy } },
   ]);
   slide.addText(dimRuns(), {
-    x: px(790), y: px(125), w: px(42), h: px(13), align: "center", valign: "middle",
+    x: px(776), y: px(128), w: px(42), h: px(13), align: "center", valign: "middle",
     fontFace: SANS, margin: 0,
   });
   slide.addText(dimRuns(), {
@@ -315,7 +323,13 @@ function drawHeadannots45(pptx, slide) {
       line: { color: C.red, width: 1, beginArrowType: "triangle" },
     });
   }
-  // two-tone 1·d/H labels beside the two upper strips (measured (633,134) & blue H at (611..631,166..169))
+  // two-tone 1·d/H labels beside the two upper strips (measured (633,134) & blue H at (611..631,166..169)).
+  // Judge attempt 1 fix (MAJOR #2): the LOWER label (box x576..628 y157..169) ran into
+  // the h=5 Weighted SUM oval (x597..660 y158.5..172.5). Frame ground truth: the only
+  // blue ink in that band is the oval's own text (x606..656 y165..170) — no label ink
+  // left of the oval; the faint frame mark at the h4 strip's top-right corner
+  // (x585..590, y144..147) is the label's true home, CLEAR of the oval. Re-anchored:
+  // ink ~x588..598, y~144..150 (8px above the oval's top edge, 2px right of the strip).
   const dimRuns = () => ([
     { text: "1\u00D7d/", options: { bold: true, fontSize: 7, color: C.red } },
     { text: "H", options: { bold: true, fontSize: 7, color: C.navy } },
@@ -325,7 +339,7 @@ function drawHeadannots45(pptx, slide) {
     fontFace: SANS, margin: 0,
   });
   slide.addText(dimRuns(), {
-    x: px(576), y: px(157), w: px(52), h: px(12), align: "center", valign: "middle",
+    x: px(572), y: px(141), w: px(42), h: px(13), align: "center", valign: "middle",
     fontFace: SANS, margin: 0,
   });
 }

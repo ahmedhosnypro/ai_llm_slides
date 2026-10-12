@@ -1,0 +1,70 @@
+== left border column x57..60: row runs (hairline mask) ==
+  runs: [(np.int64(43), np.int64(517))]
+== top rule rows 40..48, x extent (hairline mask) ==
+  y43: x 58..901 n=844
+== gray panel bounds (E8E8E8 +/-5) ==
+  gray rows 47..517; row270 x extent:
+  x 62..901
+  transition x50..66: ['50:(252, 253, 255)', '51:(252, 253, 255)', '52:(247, 248, 252)', '53:(239, 243, 244)', '54:(237, 243, 239)', '55:(248, 245, 238)', '56:(252, 227, 223)', '57:(157, 105, 107)', '58:(122, 42, 51)', '59:(248, 175, 184)', '60:(255, 228, 229)', '61:(238, 230, 227)', '62:(232, 232, 232)', '63:(225, 231, 231)', '64:(199, 203, 206)', '65:(180, 180, 182)', '66:(213, 205, 203)']
+  transition x895..915: ['895:(231, 233, 230)', '896:(230, 232, 229)', '897:(231, 233, 230)', '898:(231, 233, 230)', '899:(230, 232, 229)', '900:(230, 232, 229)', '901:(232, 234, 231)', '902:(237, 239, 236)', '903:(242, 244, 241)', '904:(240, 242, 239)', '905:(240, 242, 239)', '906:(242, 244, 241)', '907:(247, 249, 246)', '908:(252, 254, 251)', '909:(254, 255, 253)', '910:(254, 255, 253)', '911:(253, 255, 252)', '912:(254, 255, 253)', '913:(254, 255, 253)', '914:(254, 255, 253)', '915:(254, 255, 253)']
+  panel top/bottom at x=200:
+    y40: (255, 252, 253)
+    y44: (178, 137, 141)
+    y46: (242, 232, 233)
+    y48: (232, 232, 230)
+    y50: (231, 233, 230)
+    y510: (233, 231, 232)
+    y515: (231, 231, 231)
+    y517: (231, 231, 231)
+    y518: (101, 101, 101)
+    y520: (0, 0, 0)
+
+== TITLE ink bbox: x 328..643 (w 316, center 485.5), y 68..89 (h 22) ==
+  y68: 12
+  y69: 30
+  y70: 43
+  y71: 47
+  y72: 50
+  y73: 77
+  y74: 151
+  y75: 173
+  y76: 145
+  y77: 135
+  y78: 129
+  y79: 135
+  y80: 150
+  y81: 159
+  y82: 128
+  y83: 128
+  y84: 123
+  y85: 129
+  y86: 142
+  y87: 163
+  y88: 105
+  y89: 29
+  modal rgb: [[152, 8, 24], [160, 8, 24], [168, 16, 32], [152, 16, 32]] counts [85, 66, 56, 55]
+  column gaps (>=3 px): [(np.int64(346), np.int64(348)), (np.int64(363), np.int64(366)), (np.int64(381), np.int64(385)), (np.int64(394), np.int64(396)), (np.int64(412), np.int64(414)), (np.int64(419), np.int64(431)), (np.int64(449), np.int64(452)), (np.int64(520), np.int64(522)), (np.int64(532), np.int64(534)), (np.int64(549), np.int64(559)), (np.int64(581), np.int64(584)), (np.int64(601), np.int64(603)), (np.int64(619), np.int64(622)), (np.int64(637), np.int64(639))]
+
+  target ink width 316px
+  Arial 31pt advance 306.6 (delta -9.4)
+  Arial 32pt advance 316.6 (delta +0.6)
+  Arial 33pt advance 326.5 (delta +10.5)
+  ArialBold 29pt advance 304.6 (delta -11.4)
+  ArialBold 30pt advance 315.0 (delta -1.0)
+  ArialBold 31pt advance 325.5 (delta +9.5)
+
+== pink boxes (FF99CC core) ==
+  core rows: 88 .. 89
+  pink x runs: [(np.int64(59), np.int64(59))]
+  -- Input Samples box region x55..140 y90..130
+     dark ink x 75..116, y 102..121
+Traceback (most recent call last):
+  File "/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_introduction/scratch/slide025/forensics_025_p2b.py", line 128, in <module>
+    box_probe(55, 140, 90, 130, "Input Samples box")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_introduction/scratch/slide025/forensics_025_p2b.py", line 120, in box_probe
+    print(f"     pink core y {y0b+rys.min()}..{y0b+rys.max()}, x {x0b+cxs.min()}..{x0b+cxs.max()}")
+                                  ~~~~~~~^^
+  File "/usr/lib/python3.14/site-packages/numpy/_core/_methods.py", line 45, in _amin
+    return umr_minimum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation minimum which has no identity

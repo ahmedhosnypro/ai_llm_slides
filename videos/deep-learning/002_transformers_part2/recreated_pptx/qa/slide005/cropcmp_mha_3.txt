@@ -1,0 +1,50 @@
+# Element-by-Element Fidelity Check
+
+## Ground-rule exclusions applied first
+- Outer house red frame, yellow slide-number badge (not visible in this crop region), #E8E8E8 background: **excluded per rule (a)**.
+- The green diagram frame is present in BOTH images â it is original content, not house chrome, so it must be compared.
+
+## Title
+- "Multi-Head Attention" â verbatim match, red bold italic, centered. Original appears very slightly smaller relative to frame width; recreation ~5â8% larger. **MINOR** (confidence: high).
+
+## Diagram contents (all present, ordering matches)
+| Element | Original (IMG2) | Recreation (IMG1) | Verdict |
+|---|---|---|---|
+| Top upward arrow | Present | Present | Match |
+| Top "Linear" box + stacked-shadow rects | Present | Present | Match |
+| 3 arrows (gray/black/gray) into top Linear | Present | Present | Match |
+| Yellow "Concat" box | Present | Present, fill ~#FFFFCC vs orig ~#FFFFCC | Match |
+| Purple "Scaled Dot-Product Attention" box, 2 lines ("Scaled Dot-Product" / "Attention") | Present | Present, verbatim, 2-line break identical, text vertically centered in box | Match |
+| Red highlight rectangle around attention block | Present | Present, similar inset/offset | Match |
+| Stacked-paper shadow outlines behind attention block | Present (multiple offsets, right+up) | Present (2 gray rects, right+up) | Match (recreation slightly fewer layers â **MINOR**) |
+| "h" tan circle, italic h, brown down-arrow above it | Present | Present | Match |
+| Connector h â attention block | Curved line WITH arrowhead at attention end | Straight diagonal line, NO arrowhead at attention end | **MINOR** (confidence: high) |
+| Three bottom "Linear" boxes with stacked shadows | Present | Present | Match |
+| Triple arrowheads (gray/black/gray) atop each bottom Linear | Present | Present | Match |
+| V (blue), K (blue), Q (red) circles, white letters | Present | Present, colors match (~#0000CC blue, ~#B00000 red) | Match |
+
+## Geometry / metrics scrutiny
+1. **Vertical rhythm:** The recreation stretches the vertical gaps â Concatâattention gap and Linear-rowâV/K/Q gap are both noticeably larger than the original (original is more compressed; V/K/Q sit closer to the Linear row). All elements remain in correct order and correct columns. **MINOR-to-MAJOR** (call: **MINOR**, confidence: medium â ordering, columns, and relative positions preserved; only whitespace differs).
+2. **Vertical centering:** Text inside Linear, Concat, attention box, and V/K/Q/h circles all sit vertically centered. No top-hugging. Match.
+3. **Frame containment:** All content sits inside the green frame in both images. The h circle in the original nearly touches the green frame's right edge; in the recreation it has slightly more clearance â no overflow. The connector line from h crosses the red highlight rectangle in BOTH images (original does too), so not a recreation defect. No ink crosses the green frame or house frame. Match.
+4. **Green frame corners:** Original is a rounded rectangle; recreation is square-cornered with small dark-green corner handles. **MINOR** (confidence: high).
+5. **Red annotation dashes:** Original shows dashed red diagonal marks top-right and a fragment mid-left; recreation reproduces both fragments. Match.
+
+## Missing elements check (rule 6)
+Nothing in the original is absent from the recreation: every box, arrow, circle, label, shadow stack, and annotation fragment is rendered. No empty regions. â
+
+## Table/data/delimiter checks
+No tables or multi-line delimiters in either image â N/A.
+
+## Visual-quality defects in recreation
+- No text clipping, overflow, or collisions.
+- Diagonal h-connector lacks terminating arrowhead (noted above).
+- Minor layer-count reduction in stacked shadow effects.
+
+## Discrepancy summary
+1. **MINOR** â h-connector is straight without arrowhead vs original's curved arrowed line (confidence: high).
+2. **MINOR** â vertical whitespace stretched in two gaps vs original's tighter layout (confidence: medium).
+3. **MINOR** â green frame corners square vs rounded (confidence: high).
+4. **MINOR** â title ~5â8% larger; stacked shadow layers slightly simplified (confidence: medium).
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

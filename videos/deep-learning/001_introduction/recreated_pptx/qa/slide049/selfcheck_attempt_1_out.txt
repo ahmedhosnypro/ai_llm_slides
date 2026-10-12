@@ -1,0 +1,40 @@
+render 2001x1125  scale 2.0833 render-px per frame-px
+title ink: x 253.4..705.1 (w 451.7)  y 83.3..125.6   [orig x 252..707 (w 456) y 84..117(baseline 116.5)]
+title baseline 116.9 [orig 116.5]
+box border rows [152.64, 153.11999999999998, 153.6, 154.07999999999998, 206.39999999999998, 216.48, 216.95999999999998, 217.44, 490.55999999999995, 491.03999999999996, 491.52, 491.99999999999994]  cols [98.39999999999999, 98.88, 99.36, 99.83999999999999, 859.1999999999999, 859.68, 860.16, 860.64, 861.1199999999999]   [orig stroke-center y 153.5/491.5, x 99.5/860.5]
+
+found 8 dark-ink bands (expect 8):
+  band0: y 159.4..183.0  x 111.8..575.4
+  band1: y 200.2..223.3  x 111.8..839.0
+  band2: y 229.5..252.1  x 141.0..401.7
+  band3: y 268.4..291.4  x 111.8..814.0
+  band4: y 309.7..332.2  x 111.8..460.2
+  band5: y 344.2..367.3  x 194.8..697.8
+  band6: y 379.3..402.3  x 194.8..739.6
+  band7: y 414.3..432.6  x 194.8..798.2
+
+  band1 'non-linearities': y 223.2 x 462.7..621.1 (len 158.4)   [orig y 219.5 x 463..621 (len 158)]
+  band4 lead-in: y 331.7 x 147.4..459.8 (len 312.5)   [orig y 328 x 147..458 (len 311)]
+
+  band2 ReLU: red x 331.7..392.2   [orig 334..390]
+  band3 max pooling: red x 677.4..805.6   [orig 679..805]
+
+  dot0: center (114.9,167.8) w 7.2   [orig (115,168) d~6.75]
+  dot1: center (114.9,207.9) w 7.2   [orig (115,208) d~6.75]
+  dot2: center (114.9,275.8) w 7.2   [orig (115,276) d~6.75]
+  dot3: center (114.9,315.9) w 7.2   [orig (115,316) d~6.75]
+  dot4: center (198.4,351.4) w 7.2   [orig (198.5,351.5) d~6.75]
+  dot5: center (198.4,386.8) w 7.2   [orig (198.5,387) d~6.75]
+  dot6: center (198.4,421.8) w 7.2   [orig (198.5,422) d~6.75]
+
+== containment ==
+ink px in box bottom strip (frame y437..488): 0
+ink px in box right strip (frame x842..855): 0
+
+== colors ==
+title ink modal: #C00000 [orig B81020-washed; build C00000]
+band0 ink modal: #000088 [orig #100080; build 00008B]
+row300 modal (panel/box): #F8F8F8 [box FFFFFF, panel E9E9E7]
+box top border modal: #0000A8 [build 0000AA]
+
+SELF-CHECK: PASS (all within tolerance)

@@ -1,0 +1,210 @@
+{
+  "slide_title": "How to Apply Filter on image",
+  "subtitle_or_header": "Apply Filter on Image is a Dot product between image values and filter values (can be modeled  by PERCEPTRON )",
+  "verbatim_text": {
+    "bullets": [
+      "Apply Filter on Image is a Dot product between image values and filter values",
+      "(can be modeled  by PERCEPTRON )"
+    ],
+    "labels": [
+      "Image",
+      "Filter",
+      "Image grid row 1: 1 1 1 0 0",
+      "Image grid row 2: 0 1 1 1 0",
+      "Image grid row 3: 0 0 1 1 1",
+      "Image grid row 4: 0 0 1 1 0",
+      "Image grid row 5: 0 1 1 0 0",
+      "Filter grid row 1: 1 0 1",
+      "Filter grid row 2: 0 1 0",
+      "Filter grid row 3: 1 0 1",
+      "x1 (small red multiplier at lower-right of highlighted cell r1c1)",
+      "x0 (r1c2)",
+      "x1 (r1c3)",
+      "x0 (r2c1)",
+      "x1 (r2c2)",
+      "x0 (r2c3)",
+      "x1 (r3c1)",
+      "x0 (r3c2)",
+      "x1 (r3c3)",
+      "4 (result in first cell of 3x3 output grid)"
+    ],
+    "equations": [
+      "Apply Filter on Image is a Dot product between image values and filter values (can be modeled  by PERCEPTRON )",
+      "Implied computation [inferred from x1/x0 multipliers and result cell, arithmetic verified: sum = 4]: (1x1)+(1x0)+(1x1)+(0x0)+(1x1)+(1x0)+(0x1)+(0x0)+(1x1) = 4"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top with a thin red rule above it; below, three side-by-side blocks: left 'Image' 5x5 binary grid with red border, middle 'Filter' 3x3 yellow grid, right a large white panel containing a 5x5 grid (top-left 3x3 highlighted yellow with red x-multipliers) plus a 3x3 output grid with '4' in its first cell and a curved black arrow connecting them; full-width light-yellow caption box with blue border at bottom; thin black bar (video scrub bar) at very bottom edge",
+    "regions": [
+      {
+        "name": "Red top rule",
+        "position": "top, spanning ~4%-96% width at ~7% height",
+        "content": "thin horizontal red line"
+      },
+      {
+        "name": "Title",
+        "position": "top-center, ~25%-75% width, ~9%-18% height",
+        "content": "red bold title text"
+      },
+      {
+        "name": "Image block",
+        "position": "middle-left, ~8%-25% width, ~30%-62% height",
+        "content": "bold black label 'Image' above a 5x5 grid of green 0/1 values over a faint photo, thick red border"
+      },
+      {
+        "name": "Filter block",
+        "position": "middle, ~26%-38% width, ~30%-55% height",
+        "content": "bold black label 'Filter' above a 3x3 grid of yellow cells with black 0/1 values"
+      },
+      {
+        "name": "Computation panel",
+        "position": "right, ~40%-92% width, ~30%-80% height",
+        "content": "white rectangle containing 5x5 image grid (3x3 yellow highlight with x1/x0 multipliers, remaining 16 cells green), 3x3 output grid with olive '4' cell, curved black arrow, mouse cursor"
+      },
+      {
+        "name": "Caption box",
+        "position": "bottom, ~7%-93% width, ~82%-94% height",
+        "content": "two-line italic sentence about dot product and PERCEPTRON"
+      },
+      {
+        "name": "Bottom black bar",
+        "position": "bottom edge, full width, ~96%-100% height",
+        "content": "solid black strip (video player progress bar captured in screenshot)"
+      }
+    ],
+    "hierarchy": "Title dominates (largest, bold, red); caption text is next largest (blue italic, two lines); 'Image'/'Filter' labels are medium bold black; grid numerals are bold but small; red x-multipliers are the smallest text; the yellow/green color blocks of the grids draw the eye more than any body text"
+  },
+  "visual_elements": [
+    {
+      "type": "table",
+      "description": "Image grid: 5 columns x 5 rows of binary values. Row1: 1 1 1 0 0; Row2: 0 1 1 1 0; Row3: 0 0 1 1 1; Row4: 0 0 1 1 0; Row5: 0 1 1 0 0. Numerals are bold green; a faint green-tinted photograph shows through behind the cells; grid enclosed by a thick red rectangle border.",
+      "colors": [
+        "#00A651",
+        "#FF0000",
+        "#8FCB8F"
+      ],
+      "position": "left side, ~8%-25% width, ~37%-62% height"
+    },
+    {
+      "type": "table",
+      "description": "Filter grid: 3 columns x 3 rows. Row1: 1 0 1; Row2: 0 1 0; Row3: 1 0 1. Each cell bright yellow fill with darker yellow/olive border, bold black numerals.",
+      "colors": [
+        "#FFFF00",
+        "#000000",
+        "#C8A000"
+      ],
+      "position": "middle, ~26%-38% width, ~38%-54% height"
+    },
+    {
+      "type": "diagram",
+      "description": "Computation panel: white rectangle with thin gray border containing (a) a 5x5 grid duplicating the image values \u2014 Row1: 1 1 1 0 0; Row2: 0 1 1 1 0; Row3: 0 0 1 1 1; Row4: 0 0 1 1 0; Row5: 0 1 1 0 0 \u2014 where the top-left 3x3 block cells are yellow with black values and small red multiplier labels (r1: x1,x0,x1; r2: x0,x1,x0; r3: x1,x0,x1) while the remaining 16 cells are green with black values; (b) to its right a 3x3 output grid of empty white cells with tan borders, whose top-left cell is filled dark olive-gray containing bold '4'; (c) a black curved arrow starting above the yellow 3x3 block and pointing down-right into the '4' output cell.",
+      "colors": [
+        "#FFFFFF",
+        "#BFBFBF",
+        "#FFFF00",
+        "#00B050",
+        "#FF0000",
+        "#000000",
+        "#6B6B47",
+        "#C9A876"
+      ],
+      "position": "right side, ~40%-92% width, ~30%-80% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Caption box: light-yellow filled rectangle with medium blue border, two lines of large italic text; line 1 entirely blue italic; line 2 has '(can be modeled' in blue bold italic, 'by' in red, 'PERCEPTRON' in red bold underlined, followed by ' )'.",
+      "colors": [
+        "#FFFFE1",
+        "#0000FF",
+        "#0000CC",
+        "#FF0000"
+      ],
+      "position": "bottom, ~7%-93% width, ~82%-94% height"
+    },
+    {
+      "type": "other",
+      "description": "Mouse cursor (standard white arrow pointer with black outline) resting inside the white panel below-right of the 5x5 grid.",
+      "colors": [
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "~76% width, ~69% height"
+    },
+    {
+      "type": "other",
+      "description": "Thin red horizontal rule across the top of the slide above the title.",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "top, ~4%-96% width at ~7% height"
+    },
+    {
+      "type": "other",
+      "description": "Solid black strip along the very bottom edge of the frame (video-player scrub bar captured with the slide, not slide content).",
+      "colors": [
+        "#000000"
+      ],
+      "position": "bottom edge, full width, ~96%-100% height"
+    }
+  ],
+  "imagery": [
+    "Faint photograph visible behind/under the 5x5 Image grid on the left, heavily tinted green so its content is indistinct [?possibly a scene or face photo]; sits directly under the green binary numerals inside the red border",
+    "Standard mouse-pointer cursor icon inside the right computation panel"
+  ],
+  "colors": {
+    "background": "#F2F2F2",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#FFFF00",
+      "#00B050",
+      "#FF0000",
+      "#0000CC",
+      "#0000FF",
+      "#FFFFE1",
+      "#6B6B47",
+      "#C9A876",
+      "#00A651"
+    ]
+  },
+  "typography_notes": "All text appears sans-serif (Verdana/Tahoma-like). Title: bold, ~32-36pt, red #C00000, centered, mixed case exactly as written ('How to Apply Filter on image', lowercase 'image'). 'Image' and 'Filter' labels: bold, ~20-22pt, black. Grid numerals: bold, ~14-16pt, black (green #00A651 in the left Image grid). Red x1/x0 multipliers: very small (~9pt), positioned subscript-style at the lower-right of the yellow cells. Caption: ~20pt italic; line 1 blue #0000CC; line 2: 'can be modeled' blue bold italic, 'by' red, 'PERCEPTRON' bold, underlined, red, ALL-CAPS. No bullet-list formatting anywhere; the only sentence-level text is the two-line caption.",
+  "animation_state": "Slide appears fully built with no partial bullet reveal. The yellow 3x3 highlight, red multipliers, curved arrow, and filled '4' output cell together depict one static step of a convolution walkthrough; a live mouse cursor is visible over the panel, indicating screen-recorded narration rather than a mid-build state.",
+  "recreation_brief": "1. Set the slide to 16:9 with a light-gray background #F2F2F2.\n2. Draw a thin horizontal red rule (#C00000) spanning ~4%-96% of the slide width at ~7% height.\n3. Place a centered title text box (~25%-75% width, ~9%-18% height) with the exact text 'How to Apply Filter on image': bold sans-serif, ~32-36pt, red #C00000.\n4. Place the label 'Image' (bold, black, ~20-22pt) at the top of the left block, ~8%-25% width, ~30%-36% height.\n5. Directly below the label, build a 5x5 table (~8%-25% width, ~37%-62% height) with row-wise values: 1 1 1 0 0 / 0 1 1 1 0 / 0 0 1 1 1 / 0 0 1 1 0 / 0 1 1 0 0; numerals bold ~14-16pt in green #00A651; behind the numerals place a faint green-tinted (#8FCB8F) picture fill (photo content indistinct - a plain light-green fill is an acceptable substitute); enclose the whole grid in a thick red #FF0000 rectangle border.\n6. Place the label 'Filter' (bold, black, ~20-22pt) at ~26%-38% width, ~30%-37% height.\n7. Directly below it, build a 3x3 table (~26%-38% width, ~38%-54% height) with row-wise values: 1 0 1 / 0 1 0 / 1 0 1; fill every cell bright yellow #FFFF00 with darker-yellow #C8A000 borders; numerals bold black.\n8. Draw the computation panel: a white #FFFFFF rectangle with a thin gray #BFBFBF border at ~40%-92% width, ~30%-80% height.\n9. Inside the panel's left half, build a 5x5 table with the same values as step 5; fill the top-left 3x3 block (rows 1-3, columns 1-3) yellow #FFFF00 and the remaining 16 cells green #00B050; all numerals bold black.\n10. In each of the 9 yellow cells add a very small (~9pt) red multiplier at the cell's lower-right, in row-major order: r1c1 'x1', r1c2 'x0', r1c3 'x1', r2c1 'x0', r2c2 'x1', r2c3 'x0', r3c1 'x1', r3c2 'x0', r3c3 'x1'.\n11. To the right of that table inside the panel, build a 3x3 output table of empty white cells with tan #C9A876 borders; fill only its top-left cell dark olive #6B6B47 and type a bold '4' centered in it (numeral color not captured; use white for contrast).\n12. Draw a black curved arrow that starts above the yellow 3x3 block and bends down-right so its head points into the '4' cell.\n13. Draw the caption box: a rectangle at ~7%-93% width, ~82%-94% height, filled light yellow #FFFFE1 with a ~1.5pt blue #0000FF border.\n14. In the caption box, line 1 (~20pt italic, blue #0000CC): 'Apply Filter on Image is a Dot product between image values and filter values'.\n15. Line 2: '(can be modeled ' in blue bold italic, 'by ' in red, 'PERCEPTRON' in red bold underlined ALL-CAPS, then ' )' (color not captured; render blue italic to match the line's base style).\n16. Optional capture artifacts (not slide content): a solid black strip along the bottom edge (full width, ~96%-100% height) mimicking the video scrub bar, and a white arrow-pointer cursor icon with black outline at ~76% width / ~69% height inside the white panel.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "verbatim_text.bullets was empty (required field): moved the two caption sentences 'Apply Filter on Image is a Dot product between image values and filter values' and '(can be modeled  by PERCEPTRON )' from labels to bullets, since they are sentence-level body text rather than labels; labels now holds only the 20 diagram labels.",
+      "subtitle_or_header was null: reconstructed from the bottom caption box text (the slide's only secondary text); note it renders at ~82%-94% height, not beneath the title.",
+      "Harmonized multiplier placement: the first label annotation said 'under highlighted cell r1c1' while typography_notes and the brief specify lower-right subscript position; corrected to 'at lower-right of highlighted cell r1c1'.",
+      "Precision: replaced 'the remaining cells' in the computation-panel description and region content with the exact count 'the remaining 16 cells' (25 cells minus the 9 yellow ones).",
+      "Corrected typography_notes 'title-case' to the exact mixed-case title text 'How to Apply Filter on image' (lowercase 'image' as written), and added the caption line-1 color #0000CC.",
+      "Verified the dot-product arithmetic from the JSON's own values: (1x1)+(1x0)+(1x1)+(0x0)+(1x1)+(1x0)+(0x1)+(0x0)+(1x1) = 4, matching the '4' output cell; no contradiction between grids, multipliers, and result.",
+      "Rewrote recreation_brief as a 16-step ordered checklist (one element per step) with exact text, position, color, and table/shape type; explicitly flagged the bottom black strip and mouse cursor as optional capture artifacts rather than slide content."
+    ],
+    "uncertain_items": [
+      "Imagery: the faint green-tinted photograph behind the left Image grid is marked [?] (possibly a scene or face photo) and is too indistinct to reproduce; the brief specifies a plain light-green (#8FCB8F) fill as fallback.",
+      "Color of the bold '4' numeral inside the dark-olive (#6B6B47) output cell is not captured; brief recommends white for contrast.",
+      "Color of the closing ' )' in caption line 2 is not captured; brief defaults it to blue italic.",
+      "All font sizes are estimated ranges from the vision model (title ~32-36pt, labels ~20-22pt, numerals ~14-16pt, multipliers ~9pt, caption ~20pt), not measured values."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_035.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 35,
+      "image": "slide_035.jpg",
+      "kept_frame": "frame_01881.jpg",
+      "start_sec": 1880,
+      "end_sec": 2045.0,
+      "frame_count": 166,
+      "old_group": 43,
+      "founder_frame_swap": true,
+      "original_kept_frame": "frame_02046.jpg"
+    },
+    "elapsed_s": 231.1,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 986.9
+  }
+}

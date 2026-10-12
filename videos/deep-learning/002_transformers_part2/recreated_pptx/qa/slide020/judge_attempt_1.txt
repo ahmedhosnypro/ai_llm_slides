@@ -1,0 +1,45 @@
+# Fidelity Check â Slide 020 "Pre-processing of Input Sequence"
+
+## Element-by-element comparison
+
+**Title & chrome (per ground rules, excluded):** Title text verbatim, red, centered â matches. Slide-number badge "20" present â house chrome, not assessed.
+
+**Left-side row labels:**
+- "Sequence of words with Length N" (gray italic, 3 lines) â verbatim, placement matches. â
+- "Word Embedding / e.g. word2vec" (green) â verbatim. â
+- "Position Information" (blue bold) â verbatim. â
+- "Final Embedding" (red italic bold) â verbatim. â
+
+**Row 1 â Word sequence:** Word 0 â¦ Word 5, 5 gray dots, Word_N-2, Word_N-1 â all present, serif italic, red borders, subscripts render correctly. **However:** the original encloses the entire row in a **dashed red rounded container** (visible in IMG2 around all Word boxes); the recreation shows the Word boxes as standalone boxes with **no dashed enclosing container**. Row reads correctly but the container graphic is absent.
+
+**Row 2 â Word Embedding:** Green dashed container with light-green fill â present, fill matches. X_0â¦X_5, 5 green dots, X_N-2, X_N-1 vector strips with yellow/pink cell coloring â match. Cell text vertically centered. â
+
+**Row 3 â Position Information:** Blue dashed container with light-blue fill, Pos 0â¦Pos 5, 5 blue dots, Pos_N-2, Pos_N-1, orange triangles under boxes â all match. â
+
+**Curly braces:** The original shows **two large curly braces on the right edge**, one spanning the Word Embedding row and one spanning the Position Information row (grouping the two streams). The recreation has **no braces at all** â omitted entirely.
+
+**+Î´ row:** Five +Î´ under Pos 0â4 plus one at right near Pos_N-1 â matches original count and placement. â
+
+**Combine bar:** Dark red bar, "Combine" in yellow + white text, verbatim including "(for Each Word)". â Red feed arrows from embedding/position rows down into bar â present, roughly correct positions.
+
+**I/P row:** Dashed red container present (light pink tint in original vs. near-white in recreation â MINOR). I/P 0â¦I/P 5, I/P_N-2, I/P_N-1 all present, verbatim. â Down-arrow from Combine bar present. â
+
+**Merge bracket + bottom arrow + caption:** Red horizontal merge line with notch and down-arrow, and "Input to first Self Attention Layer in Transformer" (blue italic) â present and verbatim. â
+
+**Bottom-left inset:** Green-bordered "Positional Encoding" box with ~/â circles, pink "Input Embedding" box, "Inputs" arrow, connector line up to I/P 0 â all present. "Input to Encoder" green text present.
+
+## Discrepancies
+
+1. **BLOCKER â Missing dashed red rounded container around the Word row** (original IMG2 clearly shows it enclosing Word 0â¦Word_N-1; recreation omits it entirely). Confidence: high.
+2. **BLOCKER â Missing right-side curly braces** grouping the Word Embedding row and the Position Information row (two large braces in original; absent in recreation). Confidence: high.
+3. **MAJOR â Frame containment:** the green "Positional Encoding" inset's bottom edge sits on/crosses the bottom red house frame line; content must sit fully inside the frame. Confidence: medium-high.
+4. **MINOR** â I/P row dashed container fill: original has a faint pink tint, recreation is essentially white/transparent. Confidence: medium.
+5. **MINOR** â "Input to Encoder" sits slightly lower relative to the green inset than in the original. Confidence: medium.
+6. **MINOR** â Word-row box spacing is wider in the recreation (consequence of the missing dashed container); row still reads in correct order. Confidence: high.
+
+## Visual-quality defects in the recreation
+- No text clipping, collisions, or wrapping errors observed; vertical centering inside boxes/cells is correct; subscript alignment (Word_N-2, X_i, Pos_N-1, I/P_N-1) is clean and spatially correct.
+
+## FINAL VERDICT: **FAIL** for 'faithful, usable recreation'
+
+Two entirely omitted visual elements (Word-row dashed container; grouping curly braces) are BLOCKER-level under rule (6), plus one frame-containment MAJOR at the bottom-left inset. All text is verbatim and the pipeline logic renders correctly, but the missing structural graphics must be added before this passes.

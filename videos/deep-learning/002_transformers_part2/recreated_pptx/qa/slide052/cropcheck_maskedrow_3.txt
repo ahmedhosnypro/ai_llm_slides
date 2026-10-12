@@ -1,0 +1,44 @@
+# Slide 052 â Masked Multi-Head Self Attention Row: Element-by-Element Re-Check
+
+## Comparison
+
+**Box count & spacing**
+- IMG1: 5 royal-blue boxes, evenly spaced. â Matches IMG2 (5 boxes, even spacing).
+- No discrepancy.
+
+**Label text (verbatim, colors)**
+- "Masked" in yellow bold, "Multi-Head" and "Self Attention" in white bold â verbatim match, correct colors, correct 3-line stacking order. â
+- No discrepancy.
+
+**Text size vs box size / vertical position / line spacing**
+- IMG1: text block is comfortable and well-centered in the box, generous padding.
+- IMG2: boxes are visibly *shorter* (wider/shorter aspect), so the text fills nearly the full box height with tight top/bottom padding. The render's boxes are taller with more empty blue below "Self Attention."
+- **Discrepancy D1 â box aspect ratio / text-to-box fill (MINOR, confidence high).** Render boxes are ~20â30% taller relative to width than the original; text sits slightly higher in the original. Cosmetic; text is fully legible and correctly placed.
+
+**3D stacked-lid fan**
+- IMG1: navy lid layers peek around the box tops â visible, but the stack is *shallow*: 2â3 thin slivers, mostly offset to the left, small vertical extent.
+- IMG2: the stack is *deep* â a tall column of 4â6 full-width navy slabs rising well above the box top, clearly reading as a thick pile of stacked layers. The stack height in the original is roughly 40â50% of the box height; in the render it's maybe 10â15%.
+- **Discrepancy D2 â lid-fan stack depth (MAJOR, confidence high).** The signature "stack of layers" visual is materially under-rendered. The fanned-navy-lid fix helped (layers now peek), but depth/height still falls well short of the original.
+
+**Container fill & cream strips**
+- Both: pale-pink/lavender container with pale cream vertical strips behind each box column, strip positions aligned to boxes. â
+- No discrepancy (outer chrome correctly ignored per ground rule (a); thin red band at top of IMG2 is frame chrome â ignored).
+
+**Arrows below boxes**
+- Count: IMG2 shows a *progressive* pattern â group 1: ~1 arrow tip visible; group 2: ~2; group 3: ~3; group 4: ~5; group 5: ~6+. The arrows emerge from under the box bottom edge, occluded, with only tips/stems visible. IMG1 shows exactly **5 fully-drawn arrows under every box, uniform across all five groups**.
+- **Discrepancy D3 â arrow count pattern (MAJOR, confidence high).** The original encodes increasing attended-token counts per group (the causal-masking story); the render flattens this to a uniform 5. This changes the semantic content of the visual.
+- Weight/arrowheads: IMG2 arrows are hairline-thin with **tiny solid arrowheads**, mostly peeking below the box. IMG1 arrows are long open-V arrowheads with visible stems, much larger and more prominent, fully exposed below the boxes.
+- **Discrepancy D4 â arrow weight/arrowhead size/exposure (MAJOR, confidence high).** The "light-arrowhead fix" reduced but did not resolve this; render arrowheads remain several times larger than the original's, and stems are fully drawn rather than occluded by the box.
+
+## Discrepancy Summary
+
+| # | Issue | Severity | Confidence |
+|---|-------|----------|------------|
+| D1 | Box aspect taller; text fills less of box than original | MINOR | High |
+| D2 | Lid-fan stack too shallow (2â3 slivers vs tall 4â6-layer pile) | MAJOR | High |
+| D3 | Arrow counts uniform (5/5/5/5/5) vs progressive (~1â6+) | MAJOR | High |
+| D4 | Arrows too heavy, arrowheads too large, stems not occluded | MAJOR | High |
+
+## FINAL VERDICT: FAIL
+
+Text, colors, box count, container, and strips are faithful, but the region's two distinguishing visual devices â the deep stacked-lid pile (D2) and the progressive/occluded arrow pattern (D3, D4) â remain materially off despite the attempt-3 fixes. Fix D3/D4 (vary arrow counts per group, shrink arrowheads, tuck stems behind the box bottom) and deepen D2, then re-submit.

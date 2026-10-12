@@ -1,0 +1,32 @@
+## 1. Visible text (verbatim)
+
+- **Title (top, dark red, bold italic, two lines, centered):**
+  - `Scaled Dot-Product`
+  - `Attention`
+- **Flowchart node labels (black bold text, centered in each box, bottomâtop):**
+  - `MatMul` (lower box)
+  - `Scale`
+  - `Mask (opt.)`
+  - `SoftMax`
+  - `MatMul` (upper box)
+- **Circle labels (white bold letters):**
+  - `Q`, `K`, `V`
+
+All text is in English and legible; there is no placeholder, garbled, or wrong-language text.
+
+## 2. Layout
+
+- **Overall:** Light tan panel containing a darker-tan inner frame (thin dark-olive border) that holds the flowchart. This is the standard "Scaled Dot-Product Attention" block diagram, drawn bottom-up.
+- **Top:** Two-line red italic title spanning most of the width, above the inner frame. Inside the frame at top center, a black arrow points upward out of the upper `MatMul` box (output arrow).
+- **Left edge:** A thin solid red vertical line runs the full height of the crop, at the very edge. Inside it, the left border of the inner frame (with slightly darker/thicker corner marks) and the left side of the `SoftMax` / `Mask (opt.)` / `Scale` column.
+- **Right edge:** The `V` circle sits near the bottom right; a long black line rises from `V`, bends left near the top, and its arrowhead points into the right side of the upper `MatMul` box. A short red vertical line segment touches the right edge at roughly the lower-middle of the image.
+- **Bottom:** Three colored circles â `Q` (brick red) and `K`, `V` (dark purple/maroon) â each with a black arrow pointing up into the flowchart (`Q` and `K` converge on the lower `MatMul`; `V` feeds the long right-side line). Below the circles is the inner frame's bottom border, then tan background. At the very bottom of the crop there is a faint horizontal seam with slightly different shading spanning the width.
+
+## 3. Visual defects / anomalies
+
+- **Clipped foreign element at top edge:** A small blue mark/slug protrudes from the top border just right of center (~x 200). It is cut off by the crop and does not belong to the diagram.
+- **Small red mark, top-right:** A short red diagonal stroke near the top-right corner (~x 325, y ~10), also clipped by the crop.
+- **Right-edge red segment:** A short vertical red line at the right edge (lower-middle area), inconsistent with the rest of the panel; likely a clipped element or border artifact.
+- **Left-edge red line:** A full-height red vertical line hugging the left edge â possibly an intended slide border, but it sits immediately against the crop edge.
+- **Bottom seam:** A horizontal tone change/seam across the full width at the very bottom, suggesting the crop slices through the panel boundary or the top of adjacent content.
+- **No overlap or clipping of the diagram itself:** all boxes, arrows, circles, and labels are fully rendered and non-overlapping; arrows connect cleanly (`Q`,`K` â `MatMul` â `Scale` â `Mask (opt.)` â `SoftMax` â `MatMul` â up; `V` â upper `MatMul`).

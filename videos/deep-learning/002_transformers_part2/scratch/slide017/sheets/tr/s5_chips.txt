@@ -1,0 +1,53 @@
+# Visual QA Analysis
+
+## Overview
+The image is a vertically stacked comparison ("delta sheet") containing **two crops of the same slide-coordinate window** â a reference crop on TOP and a variant crop on BOTTOM â separated by a solid **bright magenta horizontal divider** (~16 px tall, spanning the full width). Both crops show a layered attention-style diagram: horizontal pastel bands, cream oval labels ("Similarity", "Probabilities", "Weighted SUM"), and a diagonal "climbing" stack of cell-divided rectangular chips labeled Yââ½qâ¾, plus small red arrowheads ("head arrows") and a green block arrow.
+
+---
+
+## 1. Verbatim Text Transcription
+
+### TOP crop (reference)
+- **"Similarity"** â blue text in dotted-border cream ovals, appearing **3 times** (upper-center, mid-left, lower-left, each successively lower and further left)
+- **"arity"** â clipped oval at the **left edge** (on the lavender band); almost certainly the tail of "Similarity"
+- **"Probabilities"** â blue text in cream ovals, **2 times** (center, and lower-left on the pink band)
+- **"Weighted SUM"** â blue text in cream ovals, **2 times** fully visible (center-right and right on pink band), plus **1 clipped instance reading "Weigh"** at the right edge (on the yellow band)
+- **"Yââ½qâ¾"** (Y with subscript 2 and superscript "(q)", dark red/maroon) â on each of the three chips: the **yellow chip**, the **dark gray/olive chip**, and the **brown/orange chip**
+- **"K,q"** â red text, bottom-left area, between two pale-pink squares
+- **"Î£"** â blue, bold, centered in a white rectangle at bottom center
+- **Partially occluded text** â a dashed-outline oval behind/above the dark-gray chip contains faint dark lettering mostly hidden by the chip; **illegible**
+
+### BOTTOM crop (variant)
+Identical text inventory: **"Similarity" Ã3**, clipped **"arity"**, **"Probabilities" Ã2**, **"Weighted SUM" Ã2** + clipped **"Weigh"**, **"Yââ½qâ¾" Ã3** (yellow, gray, brown chips), **"K,q"**, **"Î£"**, and the same partially occluded/illegible label behind the gray chip.
+
+No non-English or garbage/placeholder strings appear anywhere.
+
+---
+
+## 2. Layout
+
+### TOP crop
+- **Top edge:** thin cream band crossed by thin **red vertical lines** (â x 430, 570, 690); a **bright-green dotted-border chip** with internal cell dividers sits at the top-right corner, **cut off by the top edge**.
+- **Left edge:** a pale-pink square at bottom-left; the clipped **"arity"** oval on the lavender band; "Similarity" ovals approach but do not touch the edge; red **"K,q"** text near the lower left.
+- **Right edge:** the yellow **Yââ½qâ¾** chip runs into the right edge; clipped **"Weigh"** oval; a small **red upward-pointing triangle** (arrowhead) below the yellow chip; the green chip corner at top-right.
+- **Bottom edge:** salmon-pink band containing "Probabilities" and "Weighted SUM" ovals, two pale-pink squares flanking "K,q", and the **white rectangle with blue "Î£"** â fully visible here â immediately above the magenta divider.
+- **Bands (topâbottom):** cream â peach â mint green â pale yellow â lavender â salmon pink. The three Yââ½qâ¾ chips (yellow, dark gray, brown) form a descending-left "climbing" diagonal; a **thick green block arrow** points up-right beside the central "Probabilities" oval; a red triangle sits below the brown chip.
+
+### BOTTOM crop
+Structurally identical (same bands, ovals, chips, arrows, red lines), with these positional differences:
+- The whole content is **shifted down ~15â20 px** relative to the TOP crop.
+- The **green chip** sits lower and is now **clipped by the right edge** instead of the top edge.
+- The yellow chip and gray chip are shifted slightly right/down.
+- The **white "Î£" box is cut off by the bottom edge** (only its upper portion is visible), the pale-pink squares and a thin red horizontal line at bottom-left are **clipped mid-element**, and "K,q" sits right at the crop edge.
+
+### Divider
+A solid magenta strip runs the full width between the two crops.
+
+---
+
+## 3. Visual Defects / Anomalies
+1. **Edge clipping (both crops):** "arity" (left), "Weigh" (right), yellow/green chips cut at right, red vertical lines cut at top â expected for a fixed-coordinate window crop, but noted as truncation.
+2. **Bottom-crop bottom truncation:** the Î£ box, pink squares, and K,q row are cut by the bottom edge, whereas the TOP crop shows them fully â the two windows are **not identically framed** (vertical misalignment of ~15â20 px).
+3. **Occluded label:** a dashed oval with dark text behind the dark-gray chip is mostly hidden; illegible in both crops (likely by design overlap, not corruption).
+4. **Dotted/dashed borders** on all ovals and chips appear to be the diagram's intentional style, not rendering artifacts.
+5. No overlapping text-on-text, no distorted glyphs, no placeholder strings, no wrong-language text detected.

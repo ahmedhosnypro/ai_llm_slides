@@ -1,0 +1,35 @@
+# Slide 042 â Legend Crop Comparison, Attempt 4
+
+## Fix Verification
+
+| Previous failure | Status |
+|---|---|
+| Word column upright | column is now italic in IMG1 |
+| Sans FIXED â IMG1 now renders in a serif (Times-like) italic |
+| Bold symbols | â ï¸ PARTIAL â IMG1 symbols are regular weight, but see weight note below |
+
+## Line-by-Line Verbatim Check
+
+| Line | IMG1 | IMG2 | Match |
+|---|---|---|---|
+| 1 | h hight | h hight |al misspelling preserved) |
+| 2 | w Width | w |
+| 3 | d Depth | d Depth |4 | f Filter | f Filter | 5 | n Filters Count | n Filters Count |6 | S Stride | S Stride |6 lines present in both, correct order, no missing lines, no extra/ghost lines.
+
+## Discrepancy List
+
+1. **MAJOR (confidence: medium)** â **Stroke weight**: IMG2 text reads noticeably heavier (appears bold-italic, especially symbols "h w d f n S" and words like "Width", "Depth") versus IMG1's clearly regular-weight Times italic. This may be partly an artifact of the original frame's low resolution/JPEG upscaling fattening strokes, but the weight gap is consistent across all 6 lines and is visible at a glance. If the source font is genuinely Times New Roman **Bold Italic**, the "regular weight" fix overshot. Recommend a semi-bold/bold variant test.
+
+2. **MINOR (confidence: high)** â **Word-column x-drift**: In both images the word column start x varies line-to-line (e.g., "Filters Count"/"Stride" start slightly left of "Width"/"Depth"), but the drift pattern is slightly different between the two (IMG1's "Filter" and "Filters Count" indent marginally deeper). Consistent with italic metric differences between the two renders; negligible.
+
+3. **MINOR (confidence: medium)** â **Line pitch**: IMG1 pitch is very even (~85 px). IMG2 shows a marginally tighter gap between lines 5â6 ("Filters Count" â "Stride") than elsewhere. Sub-pixel level; no cumulative drift.
+
+4. **MINOR (confidence: high)** â **Image quality**: IMG2 exhibits blur/compression haloing (e.g., smudged remnant above line 1, soft vertical rule at right edge is thinner/dotted). Inherent to the source frame; both crops do contain the same top-edge smudge and right-side vertical rule, so no content-level ghost ink discrepancy.
+
+5. **MINOR (confidence: high)** â **Color**: Both navy; IMG2's navy is marginally darker/more saturated due to compression. Not a true color difference.
+
+## Summary
+
+Content, line order, verbatim text (including the intentional "hight"), italic serif style, navy color, column structure, and layout all align. The only substantive open issue is the weight mismatch (discrepancy #1), which is plausibly a resolution artifact but worth one more render pass in bold/semibold to confirm.
+
+**CROP VERDICT: MATCH**

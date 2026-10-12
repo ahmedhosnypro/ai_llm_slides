@@ -1,0 +1,42 @@
+# Fidelity Check â Slide 051 "Encoder â Decoder Transformer"
+
+## Element-by-Element Comparison
+
+**House chrome (per ground rule a):** Red outer frame, #E8E8E8 bg, yellow "51" badge, title placement â intentional, not assessed.
+
+**Title:** "Encoder â Decoder Transformer" â verbatim match, red bold, centered. â
+
+**Encoder panel (left):**
+- Panel structure: beige region + green rectangle on right, green border â matches. â
+- Labels: "Encoder" (green italic), "Positional Encoding", "Inputs" â verbatim. â
+- Stack: Add & Norm / Feed Forward / Add & Norm / Multi-Head Attention (red-bordered brown), K/V/Q colored circles, dark residual bar, red up-arrow â all present, correct order. â
+- Check marks: blue (top Add & Norm), black (Feed Forward), blue (right), green+Nx tan circle (left), red check (right of Multi-Head Attention) â all present. â
+- Yellow highlight shape: original is an L-shaped highlight wrapping the top Add & Norm and running down the right side; recreation renders it as a top rectangle + separate right vertical bar. Same intent, slightly different geometry â **MINOR** (confidence: high).
+- Residual connector bars: original uses olive/dark-yellow-green; recreation uses brighter green. Styling-only â **MINOR** (confidence: high).
+
+**Decoder panel (right):**
+- Orange + light-green split regions â matches. â
+- Callout boxes: "Decoder Only" Ã2, "Encoder â Decoder Attention" (3 lines), "Adding Mask" â all verbatim with hollow red-outline arrows pointing right. â
+- Top chain: Output (yellow) â Probabilities â Softmax â Linear, with two red dashed ellipses â present. The mouse cursor touching Softmax in IMG2 is a capture artifact, correctly omitted (rule c). â
+- Stack: Add & Norm â Feed Forward â Add & Norm â Multi-Head Attention (red dashed ellipse) â Add & Norm â Masked Multi-Head Attention (purple), orange "â" mask symbol, Nx tan circle with green check + red check, green residual bar, Output Embedding (brown) with check, Outputs (shifted right) yellow badge, red up-arrow at top â all present, correct order and colors. â
+- Small K/V/Q lettered circles visible near the decoder's Multi-Head Attention in the original appear absent/simplified in the recreation â **MINOR** (confidence: medium; they are ~6px elements and partially occluded in IMG2).
+- Residual bar color: original olive; recreation green â **MINOR** (confidence: high), consistent with encoder treatment.
+
+**Missing graphic element:** The original shows a small circular dial/sine icon overlapping the top of the Output Embedding box in *both* panels (next to "Positional Encoding"); the recreation renders the text but omits this small circular symbol in both panels. It is a decorative graphic, not data â **MINOR** (confidence: high).
+
+**No BLOCKERs found:** no missing equation/table/graph regions, no frame containment violations (all boxes, bars, arrows, and dashed ellipses sit fully inside the green-bordered panels and the house frame), text vertically centered in all boxes, no collisions or clipping.
+
+## Visual-Quality Defects (recreation)
+- None functional. The encoder stack is slightly larger and sits a bit more centered in the beige region than the original's left-leaning stack â within normal rendering tolerance, **MINOR**.
+- Original's bottom black strip and compression blur are video artifacts, not reproducible content.
+
+## Discrepancy Summary
+| # | Issue | Severity | Confidence |
+|---|-------|----------|------------|
+| 1 | Circular positional-encoding icon omitted at Output Embedding (both panels) | MINOR | High |
+| 2 | Decoder K/V/Q micro-circles simplified/absent | MINOR | Medium |
+| 3 | Residual bars olive vs. green (both panels) | MINOR | High |
+| 4 | Yellow encoder highlight L-shape vs. rectangle+bar | MINOR | High |
+| 5 | Encoder stack position/proportion slightly shifted | MINOR | High |
+
+FINAL VERDICT: **PASS** for 'faithful, usable recreation'.

@@ -1,0 +1,38 @@
+# Visual QA Analysis â Slide 033 crop: light-blue "Ï rules" panel
+
+## 1. Verbatim Transcription (all visible text, top to bottom)
+
+- **Use different "Ï" values for different "Pairs"**
+- **Select "Ï" Value Based on "Pair" index "k"**
+- **Formula (inside red-outlined box):** Ï_K = 1 / 10,000^(2k/d)
+  - Rendered as a fraction: numerator "1" over denominator "10,000" with superscript exponent "2k/d"; the Ï carries a subscript capital "K".
+- **(Used in First Pair)**
+- **(Used in Last Pair)**
+- **Largest "Ï" value = 1**
+- **Smallest "Ï" value â 1/10000**
+- **Note:**
+- **"Ï" Value depends on Embedding Dimension "d" ONLY**
+- **"Ï" Value does NOT depend on Sequence Length**
+
+All text is in English; no other language appears.
+
+## 2. Layout
+
+- **LEFT edge:** A dark navy rounded-rectangle border runs vertically just inside the left edge. All left-aligned text begins immediately inside it: the two heading lines at top, the "Largest"/"Smallest" value lines mid-panel, and the "Note:" block at bottom.
+- **RIGHT edge:** The white, red-bordered rounded formula box occupies the right-center area. Below its bottom-right corner sit the two parenthetical lines "(Used in First Pair)" and "(Used in Last Pair)", the first of which ends close to the panel's right border. The panel border is visible at/near the right edge of the crop.
+- **TOP:** The navy top border line, followed by the two full-width heading lines ("Use differentâ¦" / "Selectâ¦").
+- **BOTTOM:** The "Note:" line (bold italic) plus the two note lines, sitting directly above the bottom navy border.
+
+**Relative sizes:** Heading, Largest/Smallest, and note lines are all roughly the same medium size; the parenthetical "(Used in â¦)" lines are slightly smaller; the formula characters are the largest on the panel (the "Ï_K" glyph is biggest). "Largest" and "Smallest" are bold; "ONLY" and "NOT" are bold; "Note:" is bold italic.
+
+**Spacing:** The two heading lines are tightly spaced. A clear vertical gap separates them from the formula box. The two parenthetical lines are tightly stacked; "Largest" sits on roughly the same baseline as "(Used in First Pair)" and "Smallest" aligns with "(Used in Last Pair)". A larger gap precedes "Note:", whose two lines are tightly spaced.
+
+**Color tokens:** Body text is dark navy. Quoted tokens are red: "Ï", "Pairs", "Pair", "k", "d", plus the "Ï_K" in the formula and the formula box border. The formula's "1", "=", "10,000^(2k/d)" and the fraction bar are black/very dark. Background is light blue/cyan; formula box fill is white.
+
+## 3. Defects / Observations
+
+- **No clipping detected:** The panel's navy border is visible on all four sides; every line, including "Pairs"", "k"", "(Used in Last Pair)", and "Sequence Length" appears complete.
+- **Tight clearance:** The last note line sits very close to the bottom border â not clipped, but minimal padding.
+- **Internal inconsistencies (visible, not defects of capture):** the formula uses a capital subscript "K" while surrounding text uses lowercase "k"; "10,000" in the formula includes a comma while "1/10000" in the "Smallest" line does not.
+- **No placeholders, garbage strings, overlaps, or wrong-language text.**
+- Minor JPEG softness on text edges is visible, but everything remains fully legible; nothing is illegible.

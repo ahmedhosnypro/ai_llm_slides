@@ -1,0 +1,29 @@
+## Self-Check Comparison: Slide 042 right batch-block diagram crop
+
+**1. Layer colors and front-to-back order**
+- IMG1: magenta (front) â green â orange â yellow â blue-gray (rear). 
+- IMG2: identical sequence and hues (yellow reads brighter/greener in places due to video blur, but the ordering and assignment match). **No discrepancy.**
+
+**2. Staircase extents**
+- Magenta front face dominates; green top step peeks above-left; orange step above that; yellow top layer; blue-gray rear layer visible at top and along the right side. Right-side peek strips (green/orange/yellow/blue vertical bands) appear in both images at matching relative widths and offsets. **No discrepancy.**
+
+**3. The three dimension arrows**
+- Vertical red double-headed arrow left of block: present, full height, double-head style matches.
+- Horizontal red double-headed arrow beneath block: present, both arrowheads visible, same span relative to the magenta face.
+- Diagonal red double-headed arrow at lower right: present in both, running parallel to the block's depth edge, double-heads at both ends. 
+- **No real discrepancy** (sub-3px length/position differences attributable to blur).
+
+**4. Label texts**
+- "Feature Vector": rotated 90Â°, red, left of the vertical arrow, same relative placement in both. â
+- "Channels" / "(4 Filters)": two-line red text centered above the horizontal arrow, same position and relative size. â
+- "Batch size" / "(5 samples)": two-line red text rotated parallel to the diagonal arrow, positioned along/above the diagonal's mid-section, with "(5 samples)" offset below-right of "Batch size". Angle relative to the arrow matches in both images. â
+- **No real discrepancy.**
+
+**5. Small white stacking arrow near top**
+- IMG1: clear white arrow near the block top, pointing down-right toward the orange/yellow steps.
+- IMG2: a small white mark is present at the same location; its shape/point is heavily degraded by video blur and reads as a short white slash. The mark's existence and position match; the orientation is not confidently resolvable through the blur. At most this is a **MINOR** observation (likely the same arrow, blurred â not a rendering difference).
+
+## Discrepancy List
+1. **MINOR** â White stacking arrow near the block top: orientation/shape not clearly resolvable in IMG2 due to video blur; position matches. (Not confirmable as a real difference.)
+
+CROP VERDICT: MATCH

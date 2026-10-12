@@ -1,0 +1,37 @@
+# Visual QA Analysis: Slide 038 Dense-Diagram Crop Comparison (Attempt 1)
+
+## 1. Verbatim Text Transcription
+
+**IMG1 (crop sheet, 4 labeled pairs):**
+- Header strip 1: "y6_arrow1 TOP=RECREATION BOTTOM=ORIGINAL (same slide region)" â TOP shows six cell groups each with a bold red "Y" over a subscript (1, 2, 3, 4, 5, 6); BOTTOM shows six pale cell groups with "Y" plus small subscripts (appearing as 0, 1, 2, 3, 4, 5).
+- Header strip 2: "y6_plusrow1 TOP=RECREATION BOTTOM=ORIGINAL (same slide region)" â no text; two "+" nodes with green up-arrows and orange curved arrows in both halves.
+- Header strip 3: "y6_tail TOP=RECREATION BOTTOM=ORIGINAL (same slide region)" â TOP: "Y" over "N-1" and "Y" over "N" (twice, lower row as "Yâ²" with N-1 / N, bottom row "X" with N-1 / N). BOTTOM: "Y" over "N-2" and "Y" over "N-1" (lower "Yâ²" with N-2 / N-1, bottom row "X" with N-2 / N-1).
+- Header strip 4: "y6_annotations TOP=RECREATION BOTTOM=ORIGINAL (same slide region)" â both halves: "Output of Self Attention" (blue), "Residual Connections" (orange), "Input to Self Attention" (red).
+
+**IMG2 (original 960Ã540 frame, context):**
+- "Residual Connections and Normalization", badge "38"
+- "Adding Residual Connection:" / "Word Embedding + Positional Information [First Transformer Block]" / "Output of Previous Transformer Block [Stacked Transformer Blocks]"
+- "Adding "LAYER" Normalization" / "Encoded Vectors of Input Sequence [With Same Input Vectors Dimension" *(closing bracket visibly missing in the original itself)*
+- Diagram: "Layer Normalization (NOT Batch Normalization)", "Multi Head Self Attention Block", "Output of Self Attention", "Residual Connections", "Input to Self Attention", "Word Embedding + Positional Information" (yellow highlight); row labels Yââ¦Yâ region, dot ellipses, tail cells "YâN-2â YâN-1â" and "XâN-2â XâN-1â".
+
+## 2. SIMILARITIES
+
+- Same purpose: verification crops of the same slide-38 diagram region (attention residual/normalization flow).
+- Pair 1: both show a horizontal row of multi-cell vectors with red "Y" labels, red dashed upward arrows, a red horizontal boundary line above, and a green dash-dot line below.
+- Pair 2: identical composition â gray band on top, pale-green region, green upward arrows out of red "+" (residual add) nodes, orange curved arrows entering from the left, blue upward arrows below.
+- Pair 3: same stacked structure â top Y vector row â red arrows â gray LayerNorm bar â green arrows â "+" nodes â blue arrows â Yâ² row â hollow blue up-arrows â dark navy attention block â hollow arrows â X row, with long orange residual curves looping around the left side.
+- Pair 4: same three left-margin annotations, same colors (blue/orange/red), same bold-italic sans typography, same red double vertical lines at left edge, same green dash-dot boundary and orange curve.
+
+## 3. DIFFERENCES
+
+- **Off-by-one index shift (content defect):** Pair 1 recreation labels YââYâ; original shows YââY Pair 3 recreation tail is N-1 / N; original is N-2 / N-1. The recreation's numbering does not match the source frame (which is also confirmed by IMG2's YâN-2â, YâN-1â tail).
+- **Plus-node styling:** recreation "+" nodes are white-filled circles with a thick red ring and red plus; original are solid dark-red discs with a white plus. Arrowheads in the recreation are larger/solid (green, blue) vs. the original's smaller, softer arrowheads.
+- **Cell coloring:** recreation uses saturated fills (yellow, green, pink, gray cells with bold red Y over the pink cell); original uses washed-out pale yellow/pink/lavender cells with thin dark red italic Y labels â partly a video-compression artifact, but the recreation exaggerates saturation.
+- **Sharpness:** recreation crops are crisp vector-like renders; original crops are blurry/interlaced (video frame), e.g., "Residual Connections" appears faded brownish and low-contrast in the original bottom of pair 4.
+- **Arrow rendering:** recreation's red dashed arrows in pair 1 have solid triangular heads; original's are thinner with smaller heads. Orange curves in recreation are brighter orange; original is a duller ochre.
+- **Crop coverage:** pair 1's recreation crop is wider/taller than the original crop (original is tighter on the cells); pair 3's crops are aligned in width but the recreation half has extra whitespace on the right.
+- No garbage strings, wrong-language text, or placeholder text in either image.
+
+## 4. Verdict
+
+**Neither is strictly dominant; for content fidelity the ORIGINAL wins, for legibility the recreation wins.** The recreation is far sharper â clean glyphs, saturated consistent colors, smooth curves â but it contains a real content defect: the sequence indices are shifted by one throughout (YââYâ instead of Yââ tail N-1/N instead of N-2/N-1), contradicting the source frame (IMG2 confirms YâN-2â/YâN-1â). It also restyles the "+" nodes (white/red ring vs. solid dark red), deviating from the original look. The original is blurry and washed out but its labels, indices, and node styling are correct. Recommendation: keep the recreation's geometry/legibility but correct the off-by-one subscript labels and the plus-node fill before accepting this attempt.

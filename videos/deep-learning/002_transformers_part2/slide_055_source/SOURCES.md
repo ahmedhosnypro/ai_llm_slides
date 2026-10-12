@@ -109,3 +109,46 @@ verification, per the P4 directive.
 The ORIGINAL VIDEO FRAME is ground truth for what each slide shows; web
 sources confirm/correct data and provenance, never license inventing content.
 `[?]` markers are removed only with a confirming URL recorded here.
+
+## Script-12 raw cross-check (2026-10-11, web-research verification worker)
+
+Cross-checked against `analysis/slide_055_raw.json` (script-12 raw landed
+after this record was written from the banked vision transcript).
+
+- CONFIRMED by raw: title + subtitle verbatim (raw preserves the unbalanced
+  trailing parenthesis and a space after "Sentence ("); two hatched
+  "From Encoder Output" callouts (red 3D block arrows at both slide edges —
+  a build-level detail the original record omitted); yellow Y-containers
+  rows top→bottom Y₄,Y₃,Y₂,Y₁ on BOTH sides; green W_k boxes → striped K
+  boxes and blue W_v boxes → V lines; "Dot Product" gray-tan panel with 4
+  blue dots + red mesh, "Similarity" pill; pink "Scaling by √d" column with
+  red fraction; violet "Soft max" column with "Probabilities" pill; four red
+  × nodes fed by V₄…V₁; light-blue Σ with "Weighted SUM" pill; green output
+  box "O" flanked by striped vector cells; bottom decoder row Z₁–Z₄ with Z₂
+  red-dash-highlighted under a thick red up-arrow, white W_q box → q₂,
+  magenta "From Decoder Self Attention Layer" caption with white 3D arrow;
+  legend (1×d, W, = d×d, rotated 1×d, "d: Embedding Length"); badge "55";
+  identity metadata (old extraction slide 138, kept frame_04852, shown
+  4821–4851 s, 31 frames). No source claims in this record are contradicted.
+- STRENGTHENED / leans open questions:
+  1. K-label order: the raw explicitly pins the left column top→bottom as
+     K₄, K₃, K₂, K₁ — the reversed-key-order deck convention. This also
+     leans slide 054's new frame flag (raw there was ambiguous about K
+     order) toward the consistency-favored reversed reading (K₄ top).
+  2. Dot-product label: the raw reads plain "K.q" (no subscript) both at
+     the box exit and in the fraction "K.q/√d" — leaning open question 1
+     ("K₁.q" [?]) toward plain "K.q", i.e. the same family style as 054
+     rather than a key-indexed label. Two independent reads still disagree
+     (transcript saw a subscript), so the frame-level check stands.
+- RAISED / keeps `[?]`: superscripts on W_k/W_v/W_q — the raw reads "(r)"
+  and marks them `[?]`, while this record's transcript read "(1)" (and 054's
+  transcript read "(0)" there). Open question 2 stays `[?]` with the widened
+  candidate set {(1), (r)} (054's set {(0), (1), (r)}); 054/055 cross-slide
+  superscript difference unresolved until the frame-level build pass.
+- Open question 3 (course intent of "All words in Sentence" for encoder
+  outputs) is untouched by the raw — remains `[?]` (recreation keeps slide
+  wording; paper §3.2.3 quote in this record governs understanding).
+- No new published-figure claim appears in the raw (course-authored
+  schematic; consistent with the shared P4 figure-identity conclusion —
+  nothing to fetch).
+- Corrections needed: none to source claims.

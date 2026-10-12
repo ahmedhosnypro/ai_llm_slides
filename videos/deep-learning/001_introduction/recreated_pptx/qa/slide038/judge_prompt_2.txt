@@ -1,0 +1,12 @@
+You are the visual acceptance gate for slide 038 of /home/ahmed/Projects/ai_llm_slides (video deep-learning/001_introduction).
+The session model cannot see images; ALL vision analysis must go through the image-analysis
+skill's script (.agents/skills/image-analysis/scripts/analyze_image.py, default route, no --models).
+- Render being judged (attempt 2): videos/deep-learning/001_introduction/recreated_pptx/qa/slide038/render_4.png
+- Original frame (ground truth): videos/deep-learning/001_introduction/unique_slides/slide_038.jpg
+- Content spec: videos/deep-learning/001_introduction/analysis/slide_038_final.json
+- Procedure (executed by the worker — no spawn tool in this environment):
+  1. Probe: scripts/16_vision_gate.sh timeout 150 python3 .agents/skills/image-analysis/scripts/analyze_image.py analysis render_4.png --view "...probe" --capture "150dpi PNG render of a 13.33x7.5in PPTX" --timeout 120 --rounds 1 --tries 1 --transcript probe_2.txt  (hang => sleep 300, re-probe ONCE)
+  2. Comparison (MEASURED: --thinking high exceeds 240s wall; dispatch walls: --timeout 280 inside timeout 1700 outer):
+     scripts/16_vision_gate.sh timeout 1700 python3 .agents/skills/image-analysis/scripts/analyze_image.py comparison render_4.png slide_038.jpg --view "Slide 038 recreation — fidelity check vs original lecture frame" --capture "IMG1=150dpi PNG render of a 13.33x7.5in PPTX; IMG2=original lecture video frame" --thinking high --max-tokens 65536 --timeout 280 --rounds 1 --tries 1 --transcript judge_attempt_2.txt -p "$(cat judge_payload.txt)"
+  3. Verdict read from the comparison winner body only; degenerate garbage => retry (max 3).
+Label: single-read, default route (images), glm leg DEFERRED/BLOCKED.

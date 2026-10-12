@@ -1,0 +1,40 @@
+# Fidelity Check â Slide 019 Recreation vs Original Lecture Frame
+
+## Element-by-Element Comparison
+
+**House chrome (per ground rules, not scored):** red outer frame, #E8E8E8 bg, yellow "19" badge, title placement â all present and correct.
+
+**Title:** "Encoder â Decoder Transformer" â verbatim, red bold, centered, dash matches. â
+
+**This slide's delta (legend replacement):**
+- Three legend boxes present: "Normalization Layer" (light-blue fill, dark-blue bold text), "Feed Forward Layer" (gray fill, black bold text), "Residual Connections" (light-green fill, green bold text). Text verbatim, colors â match original (#B3E5FC-ish, #A9A9A9-ish, #D4F7C5-ish). Staggered left-indented ordering matches the original's cascading layout. â
+- Thin leader hairlines from each legend box curving into the right-side figure are present, matching the original's fan of light gray/blue lines. Small dark arrowheads at line termini are faint but present. â
+
+**Base composition (imported from slide 018):**
+- Scaled Dot-Product Attention inset: green frame with corner handles; MatMul â SoftMax â Mask (opt.) â Scale â MatMul vertical stack; Q/K/V circles (red/blue/dark-red) below. Order, colors, and text all match. â
+- Multi-Head Attention inset: Linear (with gray shadow stack), Concat (yellow), Scaled Dot-Product Attention (mauve with red border and shadow stack), three Linear boxes, V/K/Q circles, red italic label. â
+- "h" circle annotation with pointer line present. â
+- Red dashed zoom lines from both insets toward the figure â present, trajectory matches. â
+- Right figure: green outer frame with handles, peach Encoder / light-green Decoder regions, Output (yellow)/Probabilities/Softmax/Linear stack, red up-arrow, dash-dot red return line to Outputs, yellow cross-attention band, NÃ circles (both), Positional Encoding blocks with â and waveform glyphs, Input/Output Embedding, Inputs red arrow, Outputs yellow + "(shifted right)". All present and positioned as in the original. â
+
+**Expected repaints (verified):**
+- Encoder/decoder Add & Norm boxes steel-blue; Feed Forward boxes dark-gray â matches. â
+- Decoder-low Add & Norm indigo â present above Masked Multi-Head Attention. â
+- Bright-green residual buses/trunk with stub arrowheads and pickups in both encoder and decoder â present. â
+- Navy inter-layer flow chevron(s) between decoder layers â present (blue up-chevron between decoder Feed Forward and Add & Norm). â
+- Solid decoder Multi-Head Attention red border overdraw â present (reads as full red rectangle; left-edge omission not distinguishable at this resolution but no conflicting double-border artifact). â
+- Encoder V circle recolored green â present. â
+
+## Discrepancy List
+
+1. **MINOR** â "h" circle placement: in the original it sits overlapping the MHA inset's right green frame edge; in the recreation it sits just inside the frame. Confidence: medium.
+2. **MINOR** â Shadow-stack rectangle behind the top MatMul in the SDPA inset appears absent in the recreation (the original shows a gray offset shadow). Confidence: low (source resolution limits certainty).
+3. **MINOR** â Leader-hairline arrowheads are very faint compared to the original's slightly more visible termini. Confidence: low.
+4. **MINOR** â Overall figure/inset scale is marginally larger relative to slide width in the recreation (~1â2% wider insets); no element is displaced or overlapping as a result. Confidence: medium.
+
+No BLOCKER or MAJOR defects found: no missing elements, no frame-containment violations (all ink inside the red house frame and inner green frames), no text overflow/clipping, no collisions, table/legend geometry, vertical centering, and line spacing all conform.
+
+## Visual-Quality Defects (recreation)
+- None beyond the minor items above; all text legible, boxes vertically centered, no wrapping errors.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

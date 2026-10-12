@@ -1,0 +1,33 @@
+# Discrepancy Report â Slide 020 crop, row2 strips (render vs original)
+
+## Element-by-element comparison
+
+**Row structure / element counts**
+- Boxes: 8 labeled boxes (Xââ¦X ellipsis dots + 2 trailing boxes (X_{Nâ2}, X_{Nâ1}) = 10 boxes in **both** images..
+- Ellipsis dots: 5 green dots in **both** images.
+- Green dashed enclosure around the whole row: present in both.- Red "g" label at left: present in both (in IMG2 it is clipped by the crop edge; see MINOR #5).
+- Small red tick/rectangle below the X_{Nâ2} box: present in **both**.## Discrepancies
+
+1. **MAJOR â Position of the highlighted X cell inside each box.** In IMG1 (render), the pink X cell is the **last (6th) cell** of every box. In IMG2 (original), the pink X cell is clearly the **2nd cell from the left** (Xâ, Xâ â¦ X_{Nâ2}, X_{Nâ1} all sit near the left of their boxes, with ~4 cream cells to their right). This is a systematic, repeated positional error across all 10 boxes. Confidence: **high**.
+
+2. **MAJOR â Red frame proportions.** In IMG1, each red box is much taller than the cell strip, leaving large empty cream-green bands above and below the cells inside the frame. In IMG2, the red frame hugs the cell strip tightly (small padding). The vertical geometry of the boxes is therefore noticeably off. Confidence: **medium-high** (JPEG blur does not account for this magnitude of difference).
+
+3. **MINOR â X glyph oversized / overflowing in render.** In IMG1, the "X" glyphs are much larger than the pink cell, extending above its top edge and below toward the box bottom; in IMG2 the X fits within its cell. Confidence: **high** (this is a render-side defect regardless of blur).
+
+4. **MINOR â Subscript layout for X_{Nâ2} / X_{Nâ1}.** IMG2 renders the subscript inline as "Nâ2" / "Nâ1" beside the X. IMG1 splits it awkwardly: small "N" to the right of X and "â2" / "1" dropped to the bottom edge, partially outside the pink cell / box bottom. The content is correct, but the subscript is not baseline-aligned in the typical sense and clips the cell boundary. Confidence: **high**.
+
+5. **MINOR â "g" label placement.** In IMG1 the green "g" is fully visible well inside the crop; in IMG2 it is clipped at the left crop edge. Could be a crop-alignment artifact, but within the shown region the label sits further right in the render. Confidence: **low-medium**.
+
+6. **MINOR â Dashed enclosure corner style.** IMG2's green dashed enclosure has visibly rounded corners; IMG1's reads as a square-cornered dashed rectangle. Confidence: **low**.
+
+7. **MINOR â Ellipsis dot size.** The 5 green dots in IMG1 are noticeably larger circles than the small dots in IMG2. Count and color-class match; size is off. Confidence: **medium**.
+
+## Visual-quality defects (render only)
+- X glyphs overflow their pink cells vertically (related to #3).
+- Subscripts "â2" / "1" sit at/below the box bottom border, nearly colliding with the red frame (related to #4).
+- No clipping of the outer frame, no element collisions otherwise; all text legible.
+
+## Matches confirmed
+- Cell counts per box (6), cream cell color (~#F5DEB3), pink highlight (~#F4A9C0 class), red box strokes, green dot color-class, dashed green enclosure, red tick below the X_{Nâ2} box â all consistent.
+
+**FINAL VERDICT: FAIL** for 'faithful recreation of this region' â the highlighted X cell is in the wrong position (last cell instead of second cell) in every one of the 10 boxes, and the box frames are far too tall relative to the cell strip.

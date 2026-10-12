@@ -1,0 +1,45 @@
+# Slide 054, attempt 5 â dense crop C1 recheck (Scaling fraction region, equal scale)
+
+## Element-by-element comparison
+
+**1. Red stacked fraction "KÂ·q / âd"**
+- Present in both, stacked with horizontal bar, red ink, positioned between pink Scaling column and green Mask column at matching height. â
+- Notation: IMG1 renders "K Â· q" (centered dot); IMG2 shows "K.q" (period). Same value, different separator glyph â **MINOR** (confidence high).
+- Bar length, radical shape, and "âd" sizing are visually consistent between the two. â
+
+**2. Rotated red "Scaâ¦" label (Scaling column)**
+- Topmost glyphs of the rotated top-to-bottom label visible in both, red, same position inside the pink column sliver, same apparent weight/size. â (Rest below crop â expected.)
+
+**3. Green Mask column + rotated "Mask" label**
+- Column top edge, green fill, dark-green border, rotated bold green "Mask" starting at the same offset from the column top â all match in position and scale. â
+
+**4. Pale-yellow bordered cell at Mask column bottom â â  MAIN DEFECT**
+- IMG2 (original): cell contains a **large, clearly legible red "ââ"** symbol filling most of the cell width.
+- IMG1 (render): cell contains a **tiny, near-illegible "-inf"** in dark ink. Two problems:
+  - **Value/notation mismatch: "ââ" vs "-inf"** â the original displays the infinity symbol; the recreation substitutes the literal string. Semantically equivalent but not the same rendered content â **MAJOR** (confidence high).
+  - **Size/legibility: the render's cell text is drastically smaller than the original's** â the original's glyph height is roughly 2â3Ã the render's relative to the same cell. At this size "-inf" is effectively illegible â **MAJOR** (confidence high).
+
+**5. Red arrow (shaft + arrowhead pointing right toward Mask)**
+- IMG2: shaft leaves the pink column and runs **continuously** into the arrowhead at the level of the "ââ" cell â one connected arrow.
+- IMG1: the horizontal shaft segment sits visibly **higher** (roughly under the "âd" line) while the arrowhead sits lower, at the "-inf" cell level â the shaft and head are **vertically misaligned / disconnected** (~10 px gap in original coordinates). **MAJOR** (confidence medium â could partly be JPEG smear in IMG2, but the discontinuity in IMG1 is clear).
+- Arrowhead shape, direction (rightward), and red color match. â
+
+**6. "Proâ¦" pill sliver (top-right)**
+- Cream pill with dark text sliver present in both at matching position/size; text cut by crop edge in both ("Pro" vs "Prob" â crop artifact, expected). â
+
+**7. Frame containment**
+- No ink crosses the pink column, green Mask column, or pill boundaries in either image. â
+
+## Summary of discrepancies
+| # | Defect | Severity | Confidence |
+|---|--------|----------|------------|
+| 1 | Mask cell shows "-inf" instead of original's "ââ" | MAJOR | High |
+| 2 | Mask cell text far too small / illegible vs original | MAJOR | High |
+| 3 | Arrow shaft and arrowhead vertically misaligned (disconnected) | MAJOR | Medium |
+| 4 | "K Â· q" vs "K.q" separator glyph | MINOR | High |
+
+## Visual-quality defects in the recreation
+- "-inf" text illegible at rendered size (overflow of the legibility threshold, not the frame).
+- Arrow shaft/head discontinuity reads as a rendering error.
+
+FINAL VERDICT: **FAIL** for 'faithful, usable recreation' â the Mask cell's "ââ" is rendered as an illegible miniature "-inf" and the arrow is visually broken (disconnected shaft/head); both are clearly visible at equal scale and must be fixed.

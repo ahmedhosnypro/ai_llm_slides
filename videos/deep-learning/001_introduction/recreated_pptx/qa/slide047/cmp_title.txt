@@ -1,0 +1,40 @@
+# Visual QA Comparison â Slide 047 Title Band Crop
+
+## 1. Verbatim Transcription
+
+**IMG1 (PPTX recreation render):**
+> **AVERAGE POOLING Layer (Take Average Value)**
+
+**IMG2 (original lecture frame):**
+> **AVERAGE POOLING Layer (Take Average Value)**
+
+The text content is identical in both: "AVERAGE POOLING" in red caps, "Layer" in blue (capital L, lowercase rest), "(Take Average Value)" in red, all on one line.
+
+## 2. Similarities
+
+- **Text content & casing:** Exactly the same string, same capitalization, same parenthetical.
+- **Layout:** Single-line horizontal title band; text left-aligned with a small margin, spanning nearly the full crop width; no other elements.
+- **Color scheme:** Three color runs in the same order â dark red â royal blue ("Layer") â dark red. Blue hue is very close in both.
+- **Background:** Light gray/off-white band in both.
+- **Emphasis logic:** The word "Layer" is the only blue element in both, functioning as the highlight word.
+
+## 3. Differences
+
+| Aspect | IMG1 (recreation) | IMG2 (original) |
+|---|---|---|
+| **Typeface** | Bold **sans-serif** (Arial/Calibri-like); uniform stroke weight | Bold **serif** (Times New Roman-like); visible thick/thin stroke contrast and serifed terminals on "A", "G", "L", "T" |
+| **Letterforms** | Open, geometric parentheses; plain "G" | Curled serif parentheses; spurred "G" |
+| **Color tone** | Red slightly brighter/more saturated (closer to #C00000) | Red slightly deeper/darker (maroon-leaning), likely due to video compression |
+| **Background** | Cleaner, slightly lighter gray | Slightly darker/warmer gray with mild compression noise |
+| **Rendering quality** | Crisp, vector-clean anti-aliasing | Slight blur/softness and chroma ringing around glyphs from video compression |
+| **Weight/scale** | Strokes appear a touch heavier; text fills the band height slightly more | Marginally lighter optically; slightly more breathing room |
+
+**Defects:** No clipping, overlap, placeholders, garbage strings, or wrong-language text in either image. Both are fully legible. The only substantive defect is the **typeface mismatch in IMG1** relative to the original's serif style.
+
+## 4. Verdict
+
+**IMG1 is the better-quality image technically** â it is sharper, free of compression artifacts, has cleaner color, and its text is marginally crisper and bolder.
+
+**However, as a recreation of the original, IMG1 has one clear fidelity failure: the font family.** The original title (IMG2) is set in a bold **serif** face (consistent with Times New Roman Bold), while the recreation uses a bold **sans-serif** face. Since every other attribute (text, casing, colors, layout, alignment) matches, the fix is simple: change the title font in the PPTX to a bold serif to achieve a faithful match.
+
+**Bottom line:** IMG1 wins on rendering quality; IMG2 remains the typographic reference. For a compliant recreation, adopt IMG1's clean rendering but swap its sans-serif for the original's bold serif.

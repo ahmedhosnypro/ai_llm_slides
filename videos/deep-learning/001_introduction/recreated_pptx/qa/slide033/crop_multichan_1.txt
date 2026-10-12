@@ -1,0 +1,30 @@
+## Element-by-element comparison â Slide 033, "Multiple channels" label crop
+
+### Text content
+- **IMG2 (original):** single-line handwritten label reading **"Multiple channels"** in a thin, light-stroke pen hand, sitting above the top edge of the tan 3-D box (the box's top face just enters the bottom of the crop).
+- **IMG1 (recreation):** the same crop region shows only the word **"Multiple"** in a very heavy marker font (Comic-Sans-Bold-like), with the tan box top entering the bottom of the crop at roughly the same position.
+
+The crop windows are the same region, so this is directly comparable.
+
+### Discrepancies
+
+1. **MAJOR â Label font size (~2Ã too large), high confidence.** In the original, "Multiple channels" (â17 glyphs + space) spans the full crop width at a modest x-height (~40% of crop height). In the recreation, "Multiple" alone (8 glyphs) spans the same full width at nearly double the cap/x-height. Since "Multiple" is roughly half the string length of "Multiple channels" yet occupies the same horizontal run, the recreation's label font size is approximately **2Ã the original's**. Rule (d) shields glyph *shape* differences of the substitute handwriting font, but not a ~2Ã size mismatch against the measured ink box â the ink box itself is wrong.
+
+2. **MAJOR â Implied line wrap / missing second line in crop, medium-high confidence.** Because "Multiple" fills the entire crop width at its rendered size, the word "channels" cannot fit on the same line and must have wrapped to a second line *below* the crop window (or is clipped). The original label is a **single line**. A wrapped/clipped second line â or a label whose second word is pushed out of its measured position â is a line-break and layout defect, and risks colliding with the tan 3-D box directly beneath it (the box top is already at the crop edge in IMG1, leaving little room for a wrapped line).
+
+3. **MINOR â Stroke weight / glyph style, per ground rule (d).** Recreation uses a thick, bold marker hand; the original is a thin, spidery pen hand. Glyph-shape differences of the closest-installed marker font are capped at MINOR by founder directive. Note the original's dotted/tilted "Ã­"-like tittle on "i" and the narrower letterforms â covered by the same rule.
+
+4. **No defect â surrounding geometry.** The tan 3-D box top face enters the bottom of both crops at a comparable horizontal position (~mid-crop), so the label's *anchor point* relative to the diagram is approximately correct; the failure is the label's own scale, not its placement.
+
+### Visual-quality defects in the recreation
+- The rendered label is so large that only one of its two words fits within the region the original's full label occupies â consistent with either text-box overflow or an unintended wrap (defect #2). If "channels" wraps, it likely sits tight against or overlaps the top of the tan box; this should be verified on the full slide.
+- No clipping, illegibility, or collision is directly visible *inside* this crop beyond the above.
+
+### Summary
+| # | Issue | Severity | Confidence |
+|---|-------|----------|------------|
+| 1 | Label font ~2Ã original size ("Multiple" alone spans full label width) | MAJOR | High |
+| 2 | "channels" wrapped/clipped out of the single-line layout | MAJOR | Medium-high |
+| 3 | Marker-font glyph/weight difference | MINOR | High (capped by rule d) |
+
+**FINAL VERDICT: FAIL** for 'faithful, usable recreation' â the label is rendered at roughly twice the original's size, forcing "channels" off the line and out of the measured ink box; the font size must be reduced ~50% so "Multiple channels" fits as a single line matching the original's extents.

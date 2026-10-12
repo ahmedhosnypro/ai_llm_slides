@@ -1,0 +1,61 @@
+== 1. red matrix clean bbox (x 70..340, y 175..475) ==
+  matrix red x 109..300, y 286..441, n=5064
+  row runs>3: [(286, 420), (428, 434), (436, 440)]
+  col runs>3: [(109, 120), (124, 148), (152, 168), (171, 185), (191, 191), (209, 228), (267, 300)]
+== 2. header text (dark, x 70..380, y 195..255; stroke cols excluded) ==
+  ink x 86..335, y 209..254, n=1445
+  col runs>0: [(86, 87), (90, 102), (105, 107), (112, 125), (130, 133), (143, 162), (166, 175), (179, 189), (192, 200), (204, 210), (219, 235), (237, 244), (246, 263), (272, 292), (295, 312), (314, 323), (326, 335)]
+  row runs>0: [(209, 243), (254, 254)]
+== 3. meme photo edges: scan transitions from white ==
+  row 260: first (84, 329), last (84, 329), nruns=1
+  row 300: first (84, 329), last (84, 329), nruns=1
+  row 340: first (80, 81), last (84, 329), nruns=2
+  row 380: first (83, 329), last (83, 329), nruns=1
+  row 420: first (84, 329), last (84, 329), nruns=1
+  row 440: first (81, 81), last (331, 332), nruns=3
+  col 100: first (216, 225), last (492, 499), nruns=5
+  col 150: first (216, 226), last (492, 499), nruns=5
+  col 200: first (210, 215), last (492, 499), nruns=10
+  col 250: first (215, 237), last (492, 499), nruns=4
+  col 300: first (211, 214), last (492, 499), nruns=14
+  col 330: first (216, 217), last (492, 499), nruns=7
+== 4. RGB copies per channel ==
+  RED copy: x 380..879, y 220..491, n=8213
+      dense rows [(220, 220), (223, 251), (304, 355), (359, 381), (489, 491)]  dense cols [(685, 724)]
+  GREEN copy: x 474..684, y 247..410, n=12606
+      dense rows [(248, 410)]  dense cols [(474, 683)]
+  BLUE copy: x 439..648, y 288..450, n=32455
+      dense rows [(289, 450)]  dense cols [(440, 648)]
+== 5. label '3-D Filter' background check ==
+  (745,240): (np.int64(254), np.int64(255), np.int64(255))
+  (760,242): (np.int64(255), np.int64(247), np.int64(236))
+  (800,242): (np.int64(190), np.int64(86), np.int64(97))
+  (830,242): (np.int64(255), np.int64(226), np.int64(227))
+  (855,242): (np.int64(255), np.int64(255), np.int64(253))
+  (770,230): (np.int64(254), np.int64(255), np.int64(251))
+  (770,255): (np.int64(255), np.int64(255), np.int64(248))
+  (860,240): (np.int64(252), np.int64(255), np.int64(255))
+  red-text bbox precise (x 745..870, y 225..260):
+    x 749..852, y 234..250, n=586
+== 6. cube + arrow extents ==
+  all dark x 600..879, y 221..451, n=18593
+  row runs>6: [(221, 408), (420, 434), (448, 450)]
+  col runs>6: [(600, 723), (734, 860), (863, 864), (866, 870), (874, 874), (876, 876), (879, 879)]
+  (800,300) cube top face?: (np.int64(108), np.int64(110), np.int64(107))
+  (840,330) cube right face?: (np.int64(169), np.int64(171), np.int64(168))
+  (760,350) cube left face?: (np.int64(170), np.int64(170), np.int64(170))
+  (880,300) right of cube?: (np.int64(252), np.int64(255), np.int64(251))
+  (700,260) left of cube?: (np.int64(103), np.int64(0), np.int64(0))
+  (820,430) cube bottom?: (np.int64(225), np.int64(227), np.int64(224))
+== 7. arrow extent (thin black strokes lower-left of cube) ==
+  arrow-region dark x 600..796, y 380..451, n=1182
+  rows>0: [(380, 438), (445, 451)]
+== 8. gap between meme and RGB stack; stack left edge ==
+  row 250: first nonwhite x in 340..480: 471
+  row 300: first nonwhite x in 340..480: 438
+  row 350: first nonwhite x in 340..480: 438
+  row 400: first nonwhite x in 340..480: 436
+== 9. bottom area between box bottom (491) and letterbox (519) ==
+  row 500 sample colors: [(np.int64(231), np.int64(233), np.int64(232)), (np.int64(231), np.int64(233), np.int64(232)), (np.int64(231), np.int64(233), np.int64(232)), (np.int64(231), np.int64(233), np.int64(232)), (np.int64(231), np.int64(233), np.int64(232))]
+  row 510 sample colors: [(np.int64(231), np.int64(233), np.int64(232)), (np.int64(231), np.int64(233), np.int64(232)), (np.int64(231), np.int64(233), np.int64(232)), (np.int64(231), np.int64(233), np.int64(232)), (np.int64(231), np.int64(233), np.int64(232))]
+  row 517 sample colors: [(np.int64(231), np.int64(231), np.int64(231)), (np.int64(231), np.int64(231), np.int64(231)), (np.int64(231), np.int64(231), np.int64(231)), (np.int64(231), np.int64(231), np.int64(231)), (np.int64(231), np.int64(231), np.int64(231))]

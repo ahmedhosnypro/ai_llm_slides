@@ -1,0 +1,35 @@
+## Ground rules settled first (per founder directives â will not be raised as discrepancies)
+
+- **(a) House chrome:** gray #E9E9E7 panel, red panel border, and the yellow/purple "34" badge (present in the recreation, absent in this original frame) are fixed playlist chrome â **not discrepancies**, regardless of the original frame's slightly inset panel border.
+- **(b)** IMG2 is a real content slide (not a placeholder), so content must match â it does, element-for-element (see below).
+- **(c)** The full-width black strip at the bottom of IMG2 (~95â100% height) is a video-player progress-bar artifact â **correctly omitted** from the recreation.
+- **(d)** The original's handwritten "e.g. Sobel 2-D filter" vs the recreation's Comic Sans-style typing = **at most MINOR**.
+- **(e)** N/A â no equations rendered in notation; the Sobel matrix is part of the meme bitmap in both.
+
+## Element-by-element fidelity
+
+| Element | Check | Result |
+|---|---|---|
+| Title "What would a k-D filter looks like?" | Verbatim (incl. original's "looks" grammar), red bold, centered at ~49% slide width, baseline ~19% height, cap height ~5.5% vs ~5.8% | |
+| Inner white frame (red border) | Left 6.5% vs 6.8%, top 31.3% vs 31.9%, bottom 91.6% vs 90.7% | except right edge â see D1 |
+| "e.g. Sobel 2-D filter" | Position (~42% height, left-aligned at ~9%) and size match; font-style difference = rule (d) | (MINOR per d) |
+| Grumpy-cat meme + Sobel matrix | Same bitmap; spans 8.8â34.4% Ã 47â82% in both; matrix brackets span all three rows, values â1 0 1 / â2 0 2 / â1 0 1, vertical centering inside brackets correct |
+| RGB stacked cat images | Blue 45.8â67.5%, green, red to ~75.5% width; stacking order and offsets match within ~0.5% of slide width | "3-D Filter" label | Centered ~83% width, above cube, red bold |
+| Numbered 3-D cube + dimension arrows + yellow "Third D" | Present, legible, same numbering/arrow geometry; but right extent ~96.5% vs original ~91.7% | â ï¸ See D1 |
+| Table/chart/equation | None in original; none required |crepancies
+
+1. **MAJOR â Frame containment (rule 5):** The inner white content frame's right border sits at ~x 1975/2000 (â98.7% slide width), while the house panel's right red border sits at ~x 1912 (â95.6%, i.e., 918/960 in canonical space). The white frame â and the cube image's white background region reaching ~x 1930 â **crosses over the panel's right red border**, burying it. In the original, the inner frame's right edge (~93.5%) stops safely inside the panel with a visible gray sliver + red border + white slide margin to its right; in the recreation there is no visible panel border or gray to the right of the inner frame at all. Confidence: medium-high (~80%). This is the single significant defect.
+2. **MINOR â Layout width of inner frame (consequence of D1):** Inner frame right edge at 98.7% vs original 93.5% of slide width â the frame is proportionally ~5% of slide width too wide on the right; left/top/bottom edges match the original closely. Confidence: high.
+3. **MINOR â Red tone:** Title and "3-D Filter" red in the recreation reads brighter (#FF0000-ish) than the original's darker red (~#C00000). Confidence: medium. Within "approx hex" tolerance but noticeable side-by-side.
+4. **MINOR â Handwritten vs typed label ink** (rule d): "e.g. Sobel 2-D filter" is typed Comic Sans-style vs handwritten in the original. Inherent medium difference; capped at MINOR by directive.
+
+## Visual-quality defects in the recreation
+
+- The D1 overflow is the only geometry defect: the inner frame's right red stroke visually collides with/overlaps the house panel border region. No text clipping, no wrong wrapping, no element collisions, no illegible text elsewhere; all enclosed values sit vertically centered in their delimiters/meme matrix.
+
+## Not discrepancies (per ground rules)
+
+- "34" badge present in recreation, absent in original frame â house chrome (a).
+- Black bottom strip in original omitted â video artifact (c).
+
+**FINAL VERDICT: FAIL** for "faithful, usable recreation" â content is verbatim-faithful and all regions align with the original, but the inner content frame (and cube image region) overflows past the house panel's right border (MAJOR, rule 5). Narrowing the inner frame's right edge by ~60 px (to ~x 1910/2000, â95.5% width) restores containment and would yield a PASS.

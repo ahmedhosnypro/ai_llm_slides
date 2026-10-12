@@ -1,0 +1,44 @@
+[info] context header injected: VIEW: Slide 030 self-check crop comparison (bottom) — region zoom vs original lecture frame | CAPTURE: IMG1=crop of the 150dpi PNG render of the recreation; IMG2=the SAME region cropped from the original lecture video frame, rescaled to identical size
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 3710240
+[info] videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide030/crops/c_bottom_render.png, videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide030/crops/c_bottom_orig.png: transcript written (validated winner, atomic): videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide030/cropcmp_bottom_c1.txt (pid 3710240)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide030/crops/c_bottom_render.png, videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide030/crops/c_bottom_orig.png ===
+[winner] images (round 1, attempt 1)
+## Element-by-Element Comparison
+
+**Left vector [Sin(Ï(t+Î´)) / cos(Ï(t+Î´))]:**
+- Both lines present, verbatim text including capital "Sin". Bracket spans both lines, correct height, no overlap with text. Row spacing matches original closely. â
+
+**"=" sign:** Present in both, vertically centered between the two matrix rows. â
+
+**Middle 2Ã2 matrix:**
+- Entries verbatim: cos(ÏÎ´), sin(ÏÎ´) / âsin(ÏÎ´), cos(ÏÎ´). Minus sign present at correct position. â
+- Highlight color coding matches: green on cos(ÏÎ´) and sin(ÏÎ´) (column/entry pattern), yellow on sin(ÏÎ´) and cos(ÏÎ´). â
+- Blue square brackets span both rows fully; no clipping or text overlap. â
+- Highlight SHAPE: recreation uses sharp rectangular highlight blocks; original uses hand-drawn oval/highlighter strokes (with the pen-artifact near sin(ÏÎ´) in the original correctly omitted per ground rule c). This is a typed-vs-hand-annotated medium difference â **MINOR** (confidence high).
+
+**Right vector [sin(Ït) / cos(Ït)]:** Red brackets, both entries verbatim, alignment against middle matrix rows matches original (sin(Ït) sits slightly lower than matrix top row in both images â consistent). â
+
+**Labels:** "Vector of Pos "t+Î´"" and "Vector of Pos "t"" â verbatim, red, correct positions relative to their vectors and the brace. â
+
+**Red curly brace:** Present under the middle matrix in both, correct width (spanning matrix width), correct downward-pointing shape, tip above "Independent of Position "t"". â
+
+**"Independent of Position "t"":** Verbatim, blue bold italic, centered under brace. â
+
+**Right green panel:** Green border, light-green fill, red bold-italic "From Computer Graphics:" and blue bold-italic three-line body ("Rotation Matrix of Vector at / Pos "t" with angle "ÏÎ´" / e.g "Ï" , "2Ï" , "3Ï" , â¦") â verbatim, same line breaks, same placement. â
+
+**Frame containment:** All content sits inside the blue lecture frame in both; no ink touches or crosses any frame edge, including the brace tip and highlight rectangles. â
+
+## Discrepancy List
+
+1. **MINOR** â Highlight marks rendered as clean rectangles instead of hand-drawn highlighter ovals (high confidence; permitted medium difference under rule d).
+2. **MINOR** â Slight font-style differences in equation glyphs (recreation sans-leaning vs original's serif-ish rendering of Ï, Î´); text content identical (high confidence).
+
+No BLOCKER or MAJOR defects: no missing elements, no delimiter-geometry failures, no frame overflow, no table/data issues, no vertical-centering or line-spacing deviations measurable against the original.
+
+## Visual-Quality Defects (recreation)
+- None observed: no clipping, no collisions, no misalignment, no illegible text.
+
+FINAL VERDICT: **PASS** for 'faithful, usable recreation'.
+

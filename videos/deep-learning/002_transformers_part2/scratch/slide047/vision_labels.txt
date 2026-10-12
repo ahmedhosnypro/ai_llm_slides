@@ -1,0 +1,38 @@
+# Visual QA Analysis: Slide 47 Token-Row Crops
+
+## Overall Structure
+White page background with four caption lines (black sans-serif) stacked vertically, each followed by a crop framed with a thin dark-red border. Content is otherwise only the cropped slide material.
+
+## 1. Verbatim Transcription
+
+**Captions (exact, top to bottom):**
+- `TOP OUTPUT ROW cols1-2 (x150-345, y40-95) x4`
+- `BOTTOM INPUT ROW cols1-2 (x150-345, y474-620) x4`
+- `INTERNAL ROW A cols1-2 (x150-345, y168-200) x4`
+- `INTERNAL ROW C cols1-2 + block arrows (x150-345, y380-420) x4`
+
+**Text inside the crops:**
+- Band 1 (top output row): cropped left box reads **âutâ** (italic serif, dark red â a fragment, left part cut off); token labels **âYââ** and **âYââ** (serif, dark red, with smaller lighter-red subscript digits 0 and 1).
+- Band 2 (bottom input row): cropped left box reads **âtâ** (italic serif, dark red â fragment); token labels **âXââ** and **âXââ** (dark red serif, lighter red/pink subscripts).
+- Band 3 (internal row A): **âYââ** and **âYââ** (orange-red letters, lighter orange subscripts).
+- Band 4 (internal row C): **âYââ** and **âYââ** (same styling as band 3).
+
+No tildes or prime marks appear anywhere. **Ellipsis dots: 0** â none visible in any band. **Labels per token position: exactly one** (a single letter+subscript per strip); arrows/connectors accompany the labels but carry no text.
+
+## 2. Layout & Colors
+
+**Band 1 (top output row):** Light-gray panel. LEFT edge: red-bordered rounded box with cream fill containing âutâ (right portion of the box visible). TOP edge: dark-red horizontal line. Two full token strips, each ~5â6 cells, leftâright: two pale yellow-green cells â cream labeled cell (Yâ / Yâ) â two pale blue cells â pale lavender/pink end cell (exact cell count slightly ambiguous due to upscale blur; second strip's leading cells read more yellow). A third strip is clipped at the RIGHT edge (one pale cell visible). Below each labeled cell: solid red block arrows pointing up, shafts crossing a thick orange bar near the bottom; short darker-orange stubs continue to the bottom edge (clipped).
+
+**Band 2 (bottom input row):** Light-gray panel. TOP edge: thick orange horizontal bar with two dark stubs clipped at the very top, aligned above two blue hatched squares (diagonal hatching, dark blue borders) sitting directly above the Xâ/Xâ cells; curved orange wires descend from the bar on left and right. LEFT edge: red-bordered rounded box with âtâ. Strips leftâright: pale yellow-green/yellow cells â cream labeled cell (Xâ / Xâ) â pale blue cell(s) â pale lavender end cell; third strip clipped at RIGHT edge. BOTTOM edge: thick dark-maroon band, clipped.
+
+**Band 3 (internal row A):** Solid tan/amber background with faint darker-orange curved lines. Two strips, leftâright: two darker amber/orange cells â lighter cream/peach labeled cell (Yâ / Yâ) â light peach cell(s) â salmon/pink end cell; third strip clipped at RIGHT edge (plus a small dark clipped mark at the far right border). TOP edge: two small dark stubs (clipped arrow shafts) above Yâ and Yâ. BOTTOM edge: hollow block arrows (dark purple/plum outline, light fill) pointing up, partially clipped.
+
+**Band 4 (internal row C):** Same tan/amber background, curved lines, and strip colors as band 3. TOP edge: dark clipped stubs above Yâ/Yâ. The hollow purple outlined block arrows are larger here, with visible internal hatching. BOTTOM edge: a dark plum horizontal line spans most of the width (top edge of a lower element, clipped).
+
+## 3. Defects / Clipping Notes
+- **Clipped fragments as labels:** âutâ and âtâ are cut-off ends of longer words (consistent with âoutputâ/âinputâ row labels); the left portions are outside the crop.
+- **Edge clipping in all bands:** partial third token strips at the right edge; arrows, bars, stubs, and bands cut at top/bottom edges in every crop.
+- **Blur:** 4x upscaling softens cell boundaries and subscripts; subscripts 0/1 remain legible, but exact cell counts in some strips (5 vs 6) are slightly ambiguous.
+- **No** garbage strings, placeholder text, overlapping text, or wrong-language text detected. All characters are Latin letters, digits, and standard punctuation.
+
+**Summary:** Each token position carries exactly one label (Yâ/Yâ output & internal rows, Xâ/Xâ input row), one up-pointing arrow or connector per labeled cell, no ellipses (0 dots), and strip segment colors follow the pattern warm-pale â labeled cream cell â blue (or peach) â lavender/pink in bands 1â2, and amber â labeled cell â peach â salmon in bands 3â4.

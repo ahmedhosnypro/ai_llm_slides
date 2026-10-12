@@ -1,0 +1,115 @@
+{
+  "slide_title": "Introduction to Convolutional Neural Network (CNN)",
+  "subtitle_or_header": "None \u2014 title-only section slide (no subtitle); the only secondary text is the bottom-left attribution note 'Some of Slides are picked from UVA Deep Learning Course   EFSTRATIOS GAVVES'",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Some of Slides are picked from",
+      "UVA Deep Learning Course   EFSTRATIOS GAVVES"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Title-only section slide: thin dark-red rectangular border frames the whole slide; large multi-line title centered horizontally in the upper-middle area; small italic two-line attribution note in the bottom-left corner; a mouse cursor arrow floats near the bottom-left above the attribution; a solid black bar runs along the very bottom edge of the frame (video letterboxing/controls strip).",
+    "regions": [
+      {
+        "name": "Framed slide canvas",
+        "position": "center, roughly x 6%-95%, y 8%-97% of frame",
+        "content": "Light gray slide surface enclosed by a thin dark-red border line"
+      },
+      {
+        "name": "Title block",
+        "position": "top-middle to middle, horizontally centered, y ~18%-60% of slide",
+        "content": "Three centered lines of large bold dark-red text: 'Introduction to' / 'Convolutional Neural Network' / '(CNN)'"
+      },
+      {
+        "name": "Attribution note",
+        "position": "bottom-left, x ~10%-45%, y ~88%-95% of slide",
+        "content": "Two lines of small italic dark text crediting the source course and author"
+      },
+      {
+        "name": "Mouse cursor",
+        "position": "bottom-left area, x ~29%, y ~85% of slide",
+        "content": "Standard white/black arrow mouse pointer captured from the screen recording"
+      },
+      {
+        "name": "Bottom black bar",
+        "position": "bottom edge, full width, y ~97%-100%",
+        "content": "Solid black horizontal strip (video player/letterbox artifact, not slide content)"
+      }
+    ],
+    "hierarchy": "The huge bold dark-red title dominates absolutely; everything else (thin border, tiny italic footnote) is subordinate. Visual order: title >> red border frame > attribution text > cursor."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Thin rectangular border (approximately 1-2 px stroke) framing the entire slide content area with no fill; acts as a decorative frame around all content.",
+      "colors": [
+        "#A6191E"
+      ],
+      "position": "Full slide perimeter, inset slightly from the frame edges"
+    },
+    {
+      "type": "other",
+      "description": "Mouse cursor arrow (standard pointer with white fill and black outline) captured mid-recording, angled up-left, located just above the attribution text.",
+      "colors": [
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "Bottom-left quadrant, above the attribution lines"
+    }
+  ],
+  "imagery": [
+    "No photos, icons, or illustrations besides the incidental mouse-pointer cursor from the screen capture"
+  ],
+  "colors": {
+    "background": "#E9E9E7",
+    "title_text": "#A6191E",
+    "body_text": "#3A3A3A",
+    "accents": [
+      "#A6191E",
+      "#000000"
+    ]
+  },
+  "typography_notes": "Title: very large, bold, sans-serif (Arial/Helvetica-like), dark red, centered, set on three lines with generous line spacing ('Introduction to' slightly smaller than the following two lines, which share the largest size). Attribution: small italic sans-serif, dark gray/black, sentence case, two lines, left-aligned. No all-caps, no numbered or bulleted lists anywhere on the slide.",
+  "animation_state": "No build state visible; slide appears fully rendered as a static section-title slide. The only transient artifact is the recorded mouse cursor near the bottom-left.",
+  "recreation_brief": "1. Slide setup: create a new 16:9 PowerPoint slide and set the background fill to solid light gray #E9E9E7.\n2. Red frame: draw one rectangle with No Fill and a solid #A6191E outline of ~1.5 pt (source estimate 1-2 px); size it to cover the whole slide with a ~0.15 in margin on all sides so it forms the thin decorative border framing all content.\n3. Title block: insert one horizontally centered text box spanning x 10%-90%, y 18%-60% of the slide; type three centered lines in bold sans-serif (e.g., Arial Bold), color #A6191E: line 1 'Introduction to' at ~40 pt, line 2 'Convolutional Neural Network' at ~48 pt, line 3 '(CNN)' at ~48 pt; add paragraph spacing between the lines.\n4. Attribution note: insert one small text box at x 10%-45%, y 88%-95% (bottom-left corner); type two left-aligned italic lines in ~12 pt sans-serif, color #3A3A3A: line 1 'Some of Slides are picked from'; line 2 'UVA Deep Learning Course   EFSTRATIOS GAVVES', preserving the wide gap between 'Course' and 'EFSTRATIOS'.\n5. Cursor (optional recording artifact): only if pixel-perfect fidelity to the video frame is desired, place a small mouse-pointer arrow shape (white #FFFFFF fill, black #000000 outline, angled up-left) at x ~29%, y ~85%, just above the attribution box; otherwise omit it.\n6. Exclusions: add no bullets, charts, or images anywhere; do not reproduce the solid black strip along the bottom edge (y 97%-100%), which is a video player/letterbox artifact, not slide content.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Filled the null subtitle_or_header with a reconstruction derived from layout.regions and verbatim_text.labels: no subtitle exists on the slide; the only secondary text is the bottom-left attribution note.",
+      "Harmonized the title text box range in recreation_brief with layout.regions: changed y 15%-65% to y 18%-60%.",
+      "Harmonized the attribution text box position in recreation_brief with layout.regions: changed 'x 10%, y 87%' to 'x 10%-45%, y 88%-95%'.",
+      "Harmonized the cursor position in recreation_brief with layout.regions: changed y 84% to y ~85%.",
+      "Unified the border stroke specification across visual_elements and recreation_brief: 1-2 px expressed as ~1.5 pt.",
+      "Kept verbatim_text.bullets empty because bullets are genuinely absent from the source slide (typography_notes confirms 'no numbered or bulleted lists anywhere'); the two labels carry the only non-title text.",
+      "Confirmed the word 'Some' in the label 'Some of Slides are picked from' is verbatim slide text, not a vague quantifier, and left it unchanged.",
+      "Rewrote recreation_brief as a 6-step ordered checklist in which each step places exactly one element (or states one exclusion rule) with its exact text, position, color, and shape."
+    ],
+    "uncertain_items": [
+      "Exact font sizes are estimates: title lines ~40 pt / ~48 pt and attribution ~12 pt are not explicitly given in the source JSON.",
+      "Border stroke width is approximate: source states 1-2 px, rendered in the brief as ~1.5 pt.",
+      "The wide gap in 'UVA Deep Learning Course   EFSTRATIOS GAVVES' is preserved as three spaces; the exact original spacing is unverifiable.",
+      "The mouse cursor (x ~29%, y ~85%) is a transient screen-recording artifact; its inclusion in the recreation is optional and its exact position approximate.",
+      "No items in the source JSON were marked [?]."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_028.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 28,
+      "image": "slide_028.jpg",
+      "kept_frame": "frame_01386.jpg",
+      "start_sec": 1362.0,
+      "end_sec": 1385.0,
+      "frame_count": 24,
+      "old_group": 33,
+      "founder_frame_swap": false
+    },
+    "elapsed_s": 25.6,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 351.2
+  }
+}

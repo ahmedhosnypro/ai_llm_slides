@@ -1,0 +1,14 @@
+=== (a) TITLE re-scan (red mask, fx 60..900, fy 40..112) ===
+title ink bbox fx 65..897 fy 42..83  (49 comps)
+[FAIL] title bbox: got [65, 897, 42, 83]  banked [116, 805, 56, 76]  (tol 2)
+=== (b) BADGE yellow re-scan (fx 840..915, fy 40..110) ===
+badge yellow bbox fx 859..892 fy 57..84
+[PASS] badge bbox: got [859, 892, 57, 84]  banked [859, 892, 57, 84]  (tol 2)
+=== (c) EQUALS re-scan (fx 255..301, fy 383..428) ===
+    comp fx 295..297 fy 383..428 w3 h46 (123px)
+    comp fx 268..280 fy 404..407 w13 h4 (51px)
+    comp fx 268..280 fy 410..414 w13 h5 (51px)
+= ink bbox fx 268..297 fy 383..428
+[FAIL] equals bbox: got [268, 297, 383, 428]  banked [268, 297, 385, 425]  (tol 2)
+=== (d) ANY-INK row bands fy 40..140 (dev from panel gray E9E9E7 > 55, fx 50..910) ===
+  band fy 43..140  fx 57..902  red_px 6361  blue_px 4446

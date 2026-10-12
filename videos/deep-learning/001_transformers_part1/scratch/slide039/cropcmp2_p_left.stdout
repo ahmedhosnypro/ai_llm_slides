@@ -1,0 +1,41 @@
+[info] context header injected: VIEW: Slide 039 self-check re-crop LEFT after fixes — recreation vs original | CAPTURE: IMG1=150dpi crop of a 13.33x7.5in PPTX recreation; IMG2=the same region of the original lecture frame (960x540), resolution-matched
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 3928125
+[info] videos/deep-learning/001_transformers_part1/scratch/slide039/rc_p_left.png, videos/deep-learning/001_transformers_part1/scratch/slide039/oc_p_left.png: transcript written (validated winner, atomic): videos/deep-learning/001_transformers_part1/scratch/slide039/cropcmp2_p_left.txt (pid 3928125)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== videos/deep-learning/001_transformers_part1/scratch/slide039/rc_p_left.png, videos/deep-learning/001_transformers_part1/scratch/slide039/oc_p_left.png ===
+[winner] images (round 1, attempt 1)
+## Element-by-element comparison
+
+**Left green dashed panel (4 rows):**
+- Row structure, dashed green border, yellow+pink cell strip: present in both. â
+- **X labels (XââXâ):** In the original (IMG2), each red **X** sits *inline inside* the cell strip (yellow cells | X | pink cells, with a thin red box around the X cell). In the recreation (IMG1), the X labels are **green** and sit *outside/right of* the strip, after the pink cells. â **MAJOR** (wrong text color + ~40px position shift; layout reads differently).
+- Arrows from rows to W_k boxes: present in both. â
+
+**W_k boxes + yellow cells + K labels:**
+- W_k^(r) green boxes, trailing yellow cell strips, Kâ/Kâ/Kâ/Kâ labels, and dark-red arrows into the Dot Product panel: present in both, correct order. â
+- Recreation arrows are noticeably thicker/darker red than the original's thinner red arrows. â **MINOR**
+
+**Dot Product panel:**
+- Tan panel, "Dot Product" text, "Similarity" oval above: match. â
+- Blue dots: 4 large dots present in both. â
+- Connector lines: original shows red arrows *with arrowheads* pointing up from the bottom dot to the three upper dots; recreation shows plain connecting lines with no visible arrowheads and slightly different routing. â **MINOR**
+
+**q_z / W_q block:**
+- "q_z" label, small yellow cell strip, red-bordered W_q^(r) box, connector down from panel: all match in position and color. â
+
+**Bottom row:**
+- Pink X box in green dashed border, red up-arrow below: match. â
+- Right adjacent dashed box: original shows yellow cells followed by a red **"Kâ¦"** label (cut by crop); recreation shows yellow cells followed by a green **"X"**. â **MAJOR** (wrong text/color in that cell, even partially cropped).
+- Light-green dashed curved arrow up to the left panel: present in both. â
+
+**Right edge:** "K,q" red label and pink panel edge: match. â
+
+## Summary of discrepancies
+1. **MAJOR** â XââXâ labels: green + outside the strip in recreation vs red + inline inside the strip in original.
+2. **MAJOR** â bottom-right dashed box label reads green "X" vs original red "Kâ¦".
+3. **MINOR** â dot-product connector lines lack arrowheads; routing slightly differs.
+4. **MINOR** â K arrows heavier weight than original.
+
+CROP VERDICT: **MISMATCH** â the X labels' color and placement diverge from the original layout, and the bottom-right box carries the wrong text.
+

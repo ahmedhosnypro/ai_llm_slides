@@ -1,0 +1,28 @@
+eq panel border            frame x50..474 y64..276 | render/scale x54.7..468.7 y67.6..273.9 | d(framepx) dx0=+30.7 dy0=+36.9 dx1=+241.3 dy1=+141.5  FIX
+pill block                 frame x70..207 y108..151 | render/scale x71.0..206.3 y107.9..149.7 | d(framepx) dx0=+37.4 dy0=+56.1 dx1=+107.0 dy1=+77.2  FIX
+matrix                     frame x212..381 y85..263 | render/scale x219.3..374.7 y83.5..259.1 | d(framepx) dx0=+117.5 dy0=+42.7 dx1=+191.9 dy1=+132.9  FIX
+output column              frame x408..454 y86..257 | render/scale x410.2..451.9 y89.7..254.3 | d(framepx) dx0=+214.5 dy0=+48.5 dx1=+234.1 dy1=+131.0  FIX
+X2 label                   frame x115..141 y157..183 | render/scale x119.0..137.7 y160.2..181.8 | d(framepx) dx0=+63.8 dy0=+84.9 dx1=+70.0 dy1=+94.0  FIX
+WQ label                   frame x177..221 y198..241 | render/scale x180.4..221.2 y197.7..241.3 | d(framepx) dx0=+95.5 dy0=+102.7 dx1=+115.1 dy1=+125.7  FIX
+equals                     frame x386..400 y170..180 | render/scale x387.2..397.2 y171.3..178.0 | d(framepx) dx0=+202.0 dy0=+89.7 dx1=+205.3 dy1=+91.6  FIX
+title                      frame x576..829 y115..143 | render/scale x587.7..815.6 y124.3..140.6 | d(framepx) dx0=+311.4 dy0=+69.1 dx1=+417.9 dy1=+72.0  FIX
+subtitle                   frame x540..847 y142..177 | render/scale x539.7..821.8 y144.9..177.5 | d(framepx) dx0=+280.7 dy0=+76.8 dx1=+415.5 dy1=+92.6  FIX
+arrow                      frame x479..569 y144..247 | render/scale x479.8..569.5 y144.9..247.1 | d(framepx) dx0=+250.0 dy0=+75.8 dx1=+296.5 dy1=+128.6  FIX
+net panel                  frame x472..911 y238..509 | render/scale x475.4..910.6 y244.2..506.6 | d(framepx) dx0=+249.0 dy0=+130.0 dx1=+473.5 dy1=+262.4  FIX
+band                       frame x490..891 y300..433 | render/scale x494.6..871.7 y299.9..433.2 | d(framepx) dx0=+259.6 dy0=+155.9 dx1=+444.3 dy1=+225.5  FIX
+out circle row             frame x500..894 y248..309 | render/scale x519.1..880.8 y256.2..306.6 | d(framepx) dx0=+279.2 dy0=+137.2 dx1=+451.9 dy1=+158.3  FIX
+in circle row              frame x518..884 y436..486 | render/scale x517.7..882.3 y435.6..486.5 | d(framepx) dx0=+269.1 dy0=+226.4 dx1=+458.2 dy1=+253.3  FIX
+
+-- color spot checks (frame vs render/scale) --
+eq panel fill      frame #F6C8D2  render #F7C7CB
+matrix cell fill   frame #F6C8CA  render #F7C7CB
+chip fill          frame #F8FFBC  render #F6F7C1
+outcell fill       frame #F8C7CA  render #F7C7C9
+band fill          frame #E1E8E1  render #E7E9E6
+out circle fill    frame #F7FBE2  render #F8FAE6
+in circle fill     frame #D1E2EC  render #D2E2EC
+canvas margin      frame #FEFFFD  render #FFFFFF
+chrome panel       frame #E7E9E6  render #E9E9E7
+
+containment: non-white ink px outside chrome panel = 13032
+  sample outside ink at (frame px): [(np.float64(41.3), np.float64(44.6)), (np.float64(918.7), np.float64(44.6)), (np.float64(41.3), np.float64(45.1)), (np.float64(918.7), np.float64(45.1)), (np.float64(41.3), np.float64(45.6)), (np.float64(918.7), np.float64(45.6)), (np.float64(41.3), np.float64(46.1)), (np.float64(918.7), np.float64(46.1)), (np.float64(41.3), np.float64(46.5)), (np.float64(918.7), np.float64(46.5)), (np.float64(41.3), np.float64(47.0)), (np.float64(918.7), np.float64(47.0))]

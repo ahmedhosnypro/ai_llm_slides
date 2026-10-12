@@ -1,0 +1,39 @@
+# Self-Check Analysis: Slide 043, Round 3 (P3 family)
+
+## 1. Verbatim Text Transcription
+
+**IMG1 (recreation render crop):**
+- Line 1: "Batch Normalization" â bold red
+- Line 2: "Calculate (then Normalize) **Î¼, Ï**" â black with bold red "Î¼, Ï"
+- Line 3: "for **ALL Samples** in the batch" â black "for", bold blue "ALL Samples", blue "in the batch"
+- Line 4: "(for each channel)" â bold green, underlined
+- Vertical right edge: "Feature Vector" â bold red, rotated 90Â° (bottom-to-top)
+
+**IMG2 (original lecture frame crop):**
+- Line 1: "Batch Normalization" â bold red
+- Line 2: "Calculate (then Normalize) **Î¼, Ï**" â black with bold red "Î¼, Ï"
+- Line 3: "for **ALL Samples** in the batch" â black "for", bold blue "ALL Samples", blue "in the batch"
+- Line 4: "(for each channel)" â bold green, underlined
+- Vertical right edge: "Feature Vector" â bold red, rotated 90Â° (bottom-to-top)
+
+## 2. Similarities
+- Callout box with cream/ivory fill and red border, same rounded-corner rectangle shape and position.
+- All 4 text lines are verbatim identical, with matching color coding (red title, black body, red math symbols, blue line 3, green underlined line 4) and matching bold weights/underlines.
+- "Feature Vector" vertical red label with red arrow at right edge present in both.
+- Same overall layout: left-aligned text stack inside the callout, gray slide background.
+
+## 3. Differences
+
+| # | Discrepancy | Severity |
+|---|---|---|
+| 1 | **Wrong icon at line 4:** IMG1 shows a large gray 3D beveled arrow/pointer shape at bottom-left of "(for each channel)"; IMG2 shows a small thin pencil icon. The recreation used the wrong graphic entirely. | **HIGH** |
+| 2 | **Icon scale/overlap:** IMG1's large gray arrow is oversized and its tip touches/overlaps the opening parenthesis of "(for each channel)", clipping into the text. IMG2's pencil is small and sits clear of the text. | **HIGH** |
+| 3 | **Line 4 horizontal offset:** In IMG2 the green line is indented right of the pencil with a clear gap; in IMG1 the green text starts closer to the icon, compressing that gap. | MEDIUM |
+| 4 | **Line spacing/box fill:** IMG1's text block fills the box slightly more tightly (line 4 sits lower, nearer the bottom border) than IMG2, which has slightly more even internal padding. | LOW |
+| 5 | **Font rendering:** IMG2 (video frame) shows slightly softer/compressed glyph edges vs. IMG1's crisp render â an artifact of video compression, not a real defect. | NEGLIGIBLE |
+
+## 4. Verdict
+
+**IMG2 (original) is better.** It presents the correct small pencil icon cleanly separated from the green text, while IMG1 substitutes a large, incorrect gray arrow graphic that overlaps the "(for each channel)" text. All text content, colors, and the cream-fill/red-border callout otherwise match.
+
+**CROP VERDICT: MISMATCH**

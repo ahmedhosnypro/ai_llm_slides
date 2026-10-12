@@ -1,0 +1,26 @@
+render size: (2001, 1125)
+check                                got                        want                 verdict
+title ink bbox                       (np.float64(176.3), np.float64(773.0), np.float64(80.8), np.float64(113.0)) (176, 773, 80, 112)  PASS
+body L1                              (np.float64(93.6), np.float64(577.9), np.float64(148.3), np.float64(175.6)) (95, 286, 149, 170)  FAIL d=[np.float64(1.4), np.float64(291.9), np.float64(0.7), np.float64(5.6)]
+body L2                              (np.float64(87.4), np.float64(581.3), np.float64(169.0), np.float64(196.4)) (88, 573, 175, 196)  FAIL d=[np.float64(0.6), np.float64(8.3), np.float64(6.0), np.float64(0.4)]
+body L3                              (np.float64(86.4), np.float64(473.3), np.float64(237.8), np.float64(264.6)) (88, 452, 238, 259)  FAIL d=[np.float64(1.6), np.float64(21.3), np.float64(0.2), np.float64(5.6)]
+body L4                              (np.float64(86.9), np.float64(500.2), np.float64(257.0), np.float64(285.3)) (88, 493, 263, 285)  FAIL d=[np.float64(1.1), np.float64(7.2), np.float64(6.0), np.float64(0.3)]
+body L5                              (np.float64(86.4), np.float64(523.7), np.float64(326.7), np.float64(353.6)) (88, 516, 326, 348)  FAIL d=[np.float64(1.6), np.float64(7.7), np.float64(0.7), np.float64(5.6)]
+body L6                              (np.float64(87.4), np.float64(467.5), np.float64(346.0), np.float64(374.8)) (88, 274, 352, 374)  FAIL d=[np.float64(0.6), np.float64(193.5), np.float64(6.0), np.float64(0.8)]
+label '2-D Image'                    (np.float64(693.9), np.float64(806.7), np.float64(229.9), np.float64(251.5)) (692, 807, 229, 250) PASS
+left box border bbox                 (np.float64(76.3), np.float64(591.4), np.float64(138.2), np.float64(422.4)) (77, 591, 139, 422)  PASS
+right box border bbox                (np.float64(611.3), np.float64(891.6), np.float64(270.4), np.float64(501.2)) (612, 890, 271, 501) PASS
+plane bbox (arrow excl.)             (np.float64(645.4), np.float64(780.3), np.float64(315.8), np.float64(494.4)) (645, 774, 315, 495) FAIL d=[np.float64(0.4), np.float64(6.3), np.float64(0.8), np.float64(0.6)]
+filter bbox                          (np.float64(728.8), np.float64(753.8), np.float64(346.5), np.float64(376.8)) (728, 754, 345, 378) PASS
+arrow ink in plane                   (np.float64(744.6), np.float64(769.5), np.float64(368.6), np.float64(397.9)) (744, 774, 368, 401) PASS
+'Grayscale' ink bbox                 (np.float64(684.3), np.float64(863.8), np.float64(275.6), np.float64(308.7)) (684, 863, 276, 308) PASS
+'Filters' ink bbox (y438+)           (np.float64(776.8), np.float64(843.0), np.float64(438.0), np.float64(456.7)) (777, 842, 441, 456) PASS
+black bar top                        518.4                      519                  PASS
+panel gray modal                     (232, 232, 224)            (233, 233, 231)      info
+body blue modal (L2)                 (0, 0, 128)                (0, 0, 128)          info
+title red modal                      (192, 0, 0)                (192, 0, 0)          info
+plane brown modal                    (168, 96, 16)              (175, 103, 24)       info
+filter blue modal                    (8, 152, 184)              (13, 153, 187)       info
+left box fill modal                  (248, 248, 248)            (255, 255, 255)      info
+
+7 hard failures

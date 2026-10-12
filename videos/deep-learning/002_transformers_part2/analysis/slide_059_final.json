@@ -1,0 +1,269 @@
+{
+  "slide_title": "Transformer Encoder",
+  "subtitle_or_header": "No separate subtitle or header bar exists on this slide (layout.arrangement: 'No title bar'); the in-diagram header is the large bold white 'Transformer Encoder' text (~26-28pt) centered on the muted-red encoder container at x ~14-90%, y ~50-70%.",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Output Classes",
+      "C\u2081",
+      "C\u2082",
+      "C\u2083",
+      "Softmax Layer",
+      "Softmax (appears 3\u00d7, one per navy circle)",
+      "\u03a3 (appears 3\u00d7, one per navy circle)",
+      "Single vector representing",
+      "the whole sequence",
+      "Global Average Pooling",
+      "Output",
+      "Sequence",
+      "Y\u2081",
+      "Y\u2082",
+      "Y\u2083",
+      "Y\u2084",
+      "Y\u2085",
+      "Y_{N-2}",
+      "Y_{N-1}",
+      "Transformer Block (appears 3\u00d7, one per dark-red bar)",
+      "Transformer Encoder",
+      "Input Sequence",
+      "Word",
+      "Embedding",
+      "Vectors",
+      "X\u2081",
+      "X\u2082",
+      "X\u2083",
+      "X\u2084",
+      "X\u2085",
+      "X_{N-2}",
+      "X_{N-1}",
+      "+",
+      "Position",
+      "Information",
+      "Vectors",
+      "Vector_{P0}",
+      "Vector_{P1}",
+      "Vector_{P2}",
+      "Vector_{P3}",
+      "Vector_{P4}",
+      "Vector_{P5}",
+      "Vector_{P_{N-2}}",
+      "Vector_{P_{N-1}}",
+      "59 (slide number, yellow circle badge, top-right)"
+    ],
+    "equations": [
+      "\u03a3 \u2014 sigma symbol inside each of the three Softmax circles",
+      "C\u2081, C\u2082, C\u2083 \u2014 output class labels",
+      "Y\u2081, Y\u2082, Y\u2083, Y\u2084, Y\u2085, \u2026, Y_{N-2}, Y_{N-1} \u2014 output sequence vectors",
+      "X\u2081, X\u2082, X\u2083, X\u2084, X\u2085, \u2026, X_{N-2}, X_{N-1} \u2014 word embedding vectors",
+      "Vector_{P0}, Vector_{P1}, Vector_{P2}, Vector_{P3}, Vector_{P4}, Vector_{P5}, \u2026, Vector_{P_{N-2}}, Vector_{P_{N-1}} \u2014 position information vectors",
+      "X\u1d62 + Vector_{Pi} \u2014 implied element-wise addition at the red '+' circle node"
+    ]
+  },
+  "layout": {
+    "arrangement": "No title bar: the entire slide is one full-bleed, vertically stacked, bottom-to-top data-flow diagram of a Transformer encoder, centered on a white slide enclosed by a thin dark-red border frame. A column of 5 colored section labels runs down the left margin (Single vector note, Output Sequence, Input Sequence, Word Embedding Vectors, Position Information Vectors). From bottom to top: Input Sequence container (two dashed sub-rows joined by a red '+' circle) \u2192 blue up-arrow \u2192 Transformer Encoder stack (three dark-red bars) \u2192 blue up-arrow \u2192 Output Sequence row \u2192 blue up-arrow \u2192 Global Average Pooling box \u2192 blue up-arrow \u2192 single pooled-vector row of colored squares \u2192 fan of thin red lines \u2192 tan Softmax Layer bar with three circles \u2192 C\u2081/C\u2082/C\u2083 class labels under 'Output Classes'. Slide-number badge '59' at top-right.",
+    "regions": [
+      {
+        "name": "Border frame",
+        "position": "entire slide, inset ~1-2% from all edges",
+        "content": "Thin dark-red (#8B0000) rectangular frame around the white slide"
+      },
+      {
+        "name": "Output Classes header",
+        "position": "top center, ~3-11% height, x ~33-66%",
+        "content": "Blue bold label 'Output Classes' at left; three blue bold-italic labels C\u2081, C\u2082, C\u2083 with tiny up-arrows beneath each, aligned over the three Softmax circles"
+      },
+      {
+        "name": "Softmax Layer band",
+        "position": "top, ~13-21% height, x ~16-90%",
+        "content": "Tan horizontal bar with orange 'Softmax Layer' text at its left end; three navy circles (yellow 'Softmax' text + \u03a3, red base node) sitting on the bar; thin red fan-lines converge into them from below"
+      },
+      {
+        "name": "Left annotation column",
+        "position": "left edge, x ~7-27%, at multiple heights",
+        "content": "Red italic two-line note 'Single vector representing / the whole sequence' (~y 24-30%); red two-line 'Output / Sequence' (~y 41-47%); red 'Input Sequence' (~y 71-74%); green three-line 'Word / Embedding / Vectors' (~y 75-82%); blue three-line 'Position / Information / Vectors' (~y 86-93%)"
+      },
+      {
+        "name": "Pooled vector row",
+        "position": "upper-middle, ~26-30% height, x ~38-65%",
+        "content": "Single horizontal row of ~30 small adjacent squares alternating yellow/green/pink representing the whole-sequence vector"
+      },
+      {
+        "name": "Global Average Pooling box",
+        "position": "~33-38% height, x ~17-90%",
+        "content": "White rectangle, thin black border, bold black centered text 'Global Average Pooling'"
+      },
+      {
+        "name": "Output Sequence row",
+        "position": "~41-48% height, x ~17-92%",
+        "content": "Light-blue rounded rectangle with blue dashed border containing 8 blue-bordered vector boxes Y\u2081\u2026Y\u2085, 5 blue dots, Y_{N-2}, Y_{N-1}"
+      },
+      {
+        "name": "Transformer Encoder stack",
+        "position": "~50-70% height, x ~14-90%",
+        "content": "Muted-red container with three full-width dark-red bars each labeled 'Transformer Block' (white text); columns of white vertical-ellipsis dots between bars; large bold white 'Transformer Encoder' overlaid at center"
+      },
+      {
+        "name": "Input Sequence container",
+        "position": "bottom, ~72-95% height, x ~6-93%",
+        "content": "Light-pink rounded rectangle holding: green-dashed row of X\u2081\u2026X\u2085, 5 green dots, X_{N-2}, X_{N-1}; red '+' circle below it; orange-dashed peach-filled row of Vector_{P0}\u2026Vector_{P5}, 5 green dots, Vector_{P_{N-2}}, Vector_{P_{N-1}}"
+      },
+      {
+        "name": "Block arrows (vertical data flow)",
+        "position": "vertical centerline x ~52%, at y ~70-72%, ~49-50%, ~40%, and ~31%",
+        "content": "Four upward block arrows with blue (#1F3BB3) outlines and pale fill connecting the bands bottom-to-top: Input Sequence \u2192 Transformer Encoder, Transformer Encoder \u2192 Output Sequence, Output Sequence \u2192 Global Average Pooling, Global Average Pooling \u2192 pooled-vector row"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top-right, ~x 91-96%, ~y 6-12%",
+        "content": "Yellow circle with orange ring containing black '59'"
+      }
+    ],
+    "hierarchy": "The diagram dominates 100% of the slide. Largest text: 'Transformer Encoder' (bold white, ~26-28pt, on red). Second tier: 'Global Average Pooling' (bold black ~16pt) and section labels 'Output Classes', 'Input Sequence', 'Output Sequence', 'Word Embedding Vectors', 'Position Information Vectors', 'Transformer Block', 'Softmax Layer' (bold ~13-15pt, colored). Smallest: vector symbols X, Y, Vector_P and C\u2081-C\u2083 (bold italic ~10-12pt with subscripts). Left annotations are italic ~12pt."
+  },
+  "visual_elements": [
+    {
+      "type": "flowchart",
+      "description": "Vertical bottom-to-top Transformer Encoder architecture. Nodes bottom\u2192top: (1) Input Sequence: bottom sub-row of 8 white boxes labeled Vector_{P0}, Vector_{P1}, Vector_{P2}, Vector_{P3}, Vector_{P4}, Vector_{P5}, then 5 green dots, then Vector_{P_{N-2}}, Vector_{P_{N-1}}; a red circle with white '+' above it; top sub-row of 8 white boxes labeled X\u2081, X\u2082, X\u2083, X\u2084, X\u2085, then 5 green dots, then X_{N-2}, X_{N-1}. Each X/Y box shows its bold-italic label followed by 2-3 tiny colored cells (yellow/green/pink) representing vector dimensions. (2) Blue up-arrow into a red container holding three dark-red bars each labeled 'Transformer Block', with ~6-7 columns of white vertical three-dot ellipses between the middle and bottom bars and bold white 'Transformer Encoder' overlaid center. (3) Blue up-arrow into Output Sequence: 8 blue-bordered boxes Y\u2081\u2026Y\u2085, 5 blue dots, Y_{N-2}, Y_{N-1}. (4) Blue up-arrow into white 'Global Average Pooling' box. (5) Blue up-arrow into a single row of ~30 small squares alternating yellow/green/pink (the whole-sequence vector). (6) A fan of thin dark-red lines rises from this row and converges on the red base node of each of the three navy circles labeled 'Softmax' with \u03a3, which sit on a tan bar labeled 'Softmax Layer'. (7) Small thin up-arrows from each circle to C\u2081, C\u2082, C\u2083 beneath the blue 'Output Classes' label.",
+      "colors": [
+        "#FADBD8",
+        "#FDEBD0",
+        "#E67E22",
+        "#009900",
+        "#C0392B",
+        "#CD5C5C",
+        "#B22222",
+        "#FFFFFF",
+        "#D6EAF8",
+        "#0000CC",
+        "#1A237E",
+        "#F5CBA7",
+        "#F7DC6F",
+        "#82E0AA",
+        "#F1948A",
+        "#2E64FE",
+        "#8B0000"
+      ],
+      "position": "centered, spanning ~6-93% width and ~3-95% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Five container shapes: (a) 'Input Sequence' light-pink (#FADBD8) rounded rectangle enclosing both input sub-rows and the '+' node; (b) green dashed rounded rectangle (no fill) around the word-embedding row; (c) orange dashed rounded rectangle with peach (#FDEBD0) fill around the position-vector row; (d) blue dashed rounded rectangle with light-blue (#D6EAF8) fill around the output-sequence row; (e) muted red (#CD5C5C) rectangle enclosing the three Transformer Block bars.",
+      "colors": [
+        "#FADBD8",
+        "#009900",
+        "#E67E22",
+        "#FDEBD0",
+        "#0000CC",
+        "#D6EAF8",
+        "#CD5C5C"
+      ],
+      "position": "bottom half (a-c), middle (d, e) of slide"
+    },
+    {
+      "type": "arrow",
+      "description": "Four large upward block arrows with blue (#1F3BB3) outlines and pale fill, stacked on the vertical centerline (~x 52%): input\u2192encoder (~y 70%), encoder\u2192output (~y 49%), output\u2192GAP (~y 40%), GAP\u2192pooled-vector row (~y 31%). Plus three small thin up-arrows from the Softmax circles to C\u2081/C\u2082/C\u2083, and the thin dark-red fan-line bundle from the pooled-vector row to the three circles. A small white mouse-cursor arrow overlaps the middle Softmax circle (screen-recording artifact, not slide content).",
+      "colors": [
+        "#1F3BB3",
+        "#8B0000",
+        "#FFFFFF"
+      ],
+      "position": "vertical centerline of slide, between the stacked bands"
+    },
+    {
+      "type": "icon",
+      "description": "Two badge/icon shapes: (a) red (#C0392B) filled circle with bold white '+' centered between the word-embedding and position-vector rows (element-wise addition node); (b) yellow (#F7DC6F) circle with orange ring and black '59' at top-right (slide number).",
+      "colors": [
+        "#C0392B",
+        "#FFFFFF",
+        "#F7DC6F",
+        "#E67E22",
+        "#000000"
+      ],
+      "position": "'+' at ~x 52%, ~y 84%; '59' badge at ~x 93%, ~y 8%"
+    },
+    {
+      "type": "other",
+      "description": "Pooled single-vector row: ~30 small adjacent squares in a repeating yellow (#F4D03F) / green (#58D68D) / pink (#EC7063) pattern, one row high, representing 'Single vector representing the whole sequence'.",
+      "colors": [
+        "#F4D03F",
+        "#58D68D",
+        "#EC7063"
+      ],
+      "position": "upper-middle, ~y 26-30%, x ~38-65%"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; all visuals are flat vector diagram shapes (boxes, dashed containers, block arrows, circles, dots, small colored cells).",
+    "Vertical ellipsis dot columns (\u22ee) inside the Transformer Encoder indicate repeated blocks; rows of 5 green/blue dots inside the sequence rows indicate omitted vectors.",
+    "Artifacts visible in the capture: a white mouse cursor over the middle Softmax circle, and a thin black strip along the very bottom edge (video player bar) \u2014 neither is slide content."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#FFFFFF (the dominant 'Transformer Encoder' label is white on a red container)",
+    "body_text": "#000000",
+    "accents": [
+      "#8B0000",
+      "#C00000",
+      "#C0392B",
+      "#0000CC",
+      "#1F3BB3",
+      "#2E64FE",
+      "#009900",
+      "#E67E22",
+      "#B22222",
+      "#CD5C5C",
+      "#F5CBA7",
+      "#FADBD8",
+      "#D6EAF8",
+      "#FDEBD0",
+      "#F7DC6F",
+      "#F4D03F",
+      "#58D68D",
+      "#EC7063",
+      "#82E0AA",
+      "#F1948A",
+      "#1A237E"
+    ]
+  },
+  "typography_notes": "Predominantly sans-serif (Arial-like) for all section labels and bar text; vector/symbol labels (X, Y, Vector_P, C) are bold italic serif (Times-like) with numeric subscripts. 'Transformer Encoder' is the largest text (bold, white, ~26-28pt). 'Global Average Pooling' is bold black ~16pt in a bordered white box. Section labels are bold ~13-15pt: blue ('Output Classes', 'Position Information Vectors', Y labels), red ('Input Sequence', 'Output Sequence', 'Single vector representing the whole sequence' \u2014 the latter italic), green ('Word Embedding Vectors'). 'Transformer Block' is white ~13pt on dark-red bars; 'Softmax Layer' is orange on the tan bar. Multi-word left labels wrap onto 2-3 lines. No bullet lists, no all-caps styling. Slide number '59' is black in a yellow circular badge.",
+  "animation_state": "Slide appears fully built \u2014 all layers, labels, and arrows are revealed; no mid-build state. Only artifacts are a mouse cursor over the middle Softmax circle and a video-player black strip at the bottom edge.",
+  "recreation_brief": "1. Set the slide background to pure white (#FFFFFF). Draw the border frame: a no-fill rectangle with a ~3pt dark-red (#8B0000) outline, inset ~1-2% (~0.15 in) from all four slide edges.\n2. Slide-number badge: yellow (#F7DC6F) filled circle ~0.5 in diameter with an orange (#E67E22) ring, placed top-right (x ~91-96%, y ~6-12%); center black bold text '59' inside it.\n3. Input Sequence container: light-pink (#FADBD8) rounded rectangle spanning x ~6-93%, y ~72-95% (bottom band of the slide).\n4. Position-vector sub-row: inside the container near its bottom (y ~86-93%), draw a wide shallow rounded rectangle with an orange (#E67E22) dashed border and peach (#FDEBD0) fill.\n5. Inside the step-4 rectangle, place 8 white boxes in one row, labeled left-to-right in bold italic dark-maroon serif: 'Vector_{P0}', 'Vector_{P1}', 'Vector_{P2}', 'Vector_{P3}', 'Vector_{P4}', 'Vector_{P5}', then 5 small green dots, then 'Vector_{P_{N-2}}', 'Vector_{P_{N-1}}'.\n6. Left of the position row (x ~7-27%, y ~86-93%): blue bold three-line label 'Position / Information / Vectors'.\n7. Addition node: red (#C0392B) filled circle centered at x ~52%, y ~84%, with bold white '+' centered in it.\n8. Word-embedding sub-row: inside the container above the '+' circle (y ~75-82%), draw a rounded rectangle with a green (#009900) dashed border and no fill.\n9. Inside the step-8 rectangle, place 8 white boxes labeled bold italic dark-red serif 'X\u2081', 'X\u2082', 'X\u2083', 'X\u2084', 'X\u2085', then 5 small green dots, then 'X_{N-2}', 'X_{N-1}'; to the right of each label inside its box add 2-3 tiny cells colored yellow (#F7DC6F), green (#82E0AA), pink (#F1948A).\n10. Left of the word-embedding row (x ~7-27%, y ~75-82%): green bold three-line label 'Word / Embedding / Vectors'.\n11. Left of the container top (x ~7-27%, y ~71-74%): red bold label 'Input Sequence'.\n12. Block arrow 1: upward block arrow with blue (#1F3BB3) outline and pale (near-white) fill, on the vertical centerline x ~52%, y ~70-72%, pointing from the Input Sequence container up to the Transformer Encoder stack.\n13. Transformer Encoder container: muted-red (#CD5C5C) rectangle spanning x ~14-90%, y ~50-70%.\n14. Inside it, stack 3 full-width dark-red (#B22222) horizontal bars with equal gaps; put centered white text 'Transformer Block' (~13pt) on each bar.\n15. Between the middle and bottom bars only, add 6-7 columns of white vertical three-dot ellipses (\u22ee).\n16. Overlay large bold white text 'Transformer Encoder' (~26-28pt) centered on the step-13 container.\n17. Block arrow 2: same style as step 12, at x ~52%, y ~49-50%, pointing from the encoder stack up to the Output Sequence row.\n18. Output Sequence row: light-blue (#D6EAF8) filled rounded rectangle with a blue (#0000CC) dashed border, x ~17-92%, y ~41-48%.\n19. Inside it, place 8 white boxes with blue borders labeled bold italic blue serif 'Y\u2081', 'Y\u2082', 'Y\u2083', 'Y\u2084', 'Y\u2085', then 5 small blue dots, then 'Y_{N-2}', 'Y_{N-1}'; add the same 2-3 tiny yellow (#F7DC6F) / green (#82E0AA) / pink (#F1948A) cells in each box.\n20. Left of the output row (x ~7-27%, y ~41-47%): red bold two-line label 'Output / Sequence'.\n21. Block arrow 3: same style, at x ~52%, y ~40%, pointing from the output row up to the Global Average Pooling box.\n22. Global Average Pooling box: white rectangle with a thin black border, x ~17-90%, y ~33-38%, with bold black centered text 'Global Average Pooling' (~16pt).\n23. Block arrow 4: same style, at x ~52%, y ~31%, pointing from the GAP box up to the pooled-vector row.\n24. Pooled-vector row: one horizontal row of ~30 small adjacent squares, x ~38-65%, y ~26-30%, colored in a repeating yellow (#F4D03F) / green (#58D68D) / pink (#EC7063) pattern.\n25. Left of the pooled row (x ~7-27%, y ~24-30%): red italic two-line label 'Single vector representing / the whole sequence'.\n26. Softmax band: tan (#F5CBA7) rectangle spanning x ~16-90%, y ~13-21%, with orange (#E67E22) text 'Softmax Layer' at its left end.\n27. Place 3 navy (#1A237E) circles sitting on the tan bar at x ~46%, ~55%, ~63%; in each circle put yellow text 'Softmax' and a \u03a3 symbol, and add a small red (#C0392B) semicircular node at the circle's base.\n28. Draw thin dark-red (#8B0000) straight connector lines rising from the top edge of the pooled-vector row and converging into the red base node of each of the 3 circles (3 convergence bundles; exact line count not specified in source).\n29. Draw 3 small thin up-arrows, one from the top of each navy circle, pointing up to the class labels.\n30. Class labels: bold italic blue 'C\u2081', 'C\u2082', 'C\u2083' at y ~3-11%, each directly above its circle at the head of its up-arrow.\n31. Header label: blue bold 'Output Classes' at the left end of the class-label band (x ~33-45%, y ~3-11%).\n32. Typography: sans-serif (Arial-like) for all section labels and bar text; bold italic serif (Times-like) with numeric subscripts for X/Y/Vector_P/C symbols. Do NOT recreate the mouse cursor over the middle Softmax circle or the black strip at the bottom edge \u2014 both are video-capture artifacts, not slide content.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Filled null subtitle_or_header by reconstruction from layout.arrangement ('No title bar') and typography_notes: no separate subtitle exists; the in-diagram header is the bold white 'Transformer Encoder' (~26-28pt) on the muted-red container.",
+      "verbatim_text.bullets intentionally left empty: this is a diagram-only slide with no bullet text (typography_notes: 'No bullet lists'); all 43 text items are captured in labels and equations, so the empty array reflects the source, not a schema gap.",
+      "Added missing layout.regions entry 'Block arrows (vertical data flow)' so regions cover the four blue up-arrows described in visual_elements.type=arrow, which previously had no corresponding region.",
+      "Expanded colors.accents from 13 to 21 values, adding every hex referenced in visual_elements but missing from accents: #C0392B (+ node), #1F3BB3 (arrow outlines), #2E64FE, #F4D03F/#58D68D/#EC7063 (pooled squares), #82E0AA/#F1948A (tiny cells).",
+      "Replaced the vague quantifier 'a fan of many thin dark-red lines' (visual_elements flowchart and old brief step 13) with the exact derivable targets: thin #8B0000 lines from the pooled row converging into the red base node of each of the 3 Softmax circles.",
+      "Rewrote recreation_brief from a 15-item array into a 32-step numbered string; each step now places exactly one element with verbatim text, percent-based position, hex color, and shape type, so the slide can be rebuilt without questions.",
+      "Verified consistency: all 43 verbatim labels and all 5 visual_elements map to a layout region (Output Classes header, Softmax band, left annotation column, pooled row, GAP box, output row, encoder stack, input container, arrows, badge); title 'Transformer Encoder' matches the in-diagram header, the 3 'Transformer Block' bars, and the 3 'Softmax'/\u03a3 circles; recreation_brief references the same texts, counts (8 boxes + 5 dots per sequence row, 3 bars, 3 circles, ~30 squares) and colors with no contradictions."
+    ],
+    "uncertain_items": [
+      "Exact fill hex of the four block arrows \u2014 source says only 'pale fill'; the brief specifies near-white/pale and flags this.",
+      "Exact number of thin red fan-lines from the pooled row to the 3 Softmax circles \u2014 source says 'many'; only the 3 convergence nodes are known.",
+      "Approximate counts not further derivable: ~30 pooled squares, 2-3 tiny cells per X/Y box, ~6-7 white ellipsis columns between encoder bars.",
+      "#C00000 appears in colors.accents but is not referenced by any described element (possible duplicate within the dark-red family).",
+      "#2E64FE appears in the flowchart color list but no specific element is attributed to it (likely one of the blue labels/borders).",
+      "The equation 'X\u1d62 + Vector_{Pi}' is marked 'implied' in the source \u2014 the '+' node denotes element-wise addition, but no such equation text appears verbatim on the slide.",
+      "Physical/typographic estimates: frame weight ~3pt, badge size ~0.5 in, and all pt sizes are approximations from the source analysis."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_059.jpg",
+    "model": "glm-5.3-flash",
+    "source_timestamps": {
+      "slide": 59,
+      "image": "slide_059.jpg",
+      "kept_frame": "frame_05128.jpg",
+      "start_sec": 5007.0,
+      "end_sec": 5127.0,
+      "frame_count": 121,
+      "old_slide": 149
+    },
+    "elapsed_s": 380.6,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 830.1
+  }
+}

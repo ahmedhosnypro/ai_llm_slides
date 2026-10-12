@@ -1,0 +1,62 @@
+# Element-by-Element Comparison â Slide 019 crop, "Prediction Error (Loss Function)" box
+
+## 1. Central pink rounded rectangle
+- **IMG1:** Pink/salmon fill (~#F2A9B2), rounded rect, occupies ~x:100â345 of ~521px crop (~47% width), full vertical span with generous margins top/bottom.
+- **IMG2:** Pink fill (~#F0A3AE), rounded rect, ~x:55â195 of ~278px crop (~50% width), similar proportions.
+- **Corner radius:** IMG1's corners are noticeably rounder relative to box width than IMG2's small-radius corners. **MINOR, high confidence** â visible but does not impair readability or identity.
+- **Fill color:** Match within tolerance. No discrepancy.
+
+## 2. Rotated text (two columns, 13.5pt, dark red)
+- **Column order:** Both images read "Prediction Error" (left column) and "(Loss Function)" (right column), rotated 90Â° CCW (bottom-to-top). â Match.
+- **Verbatim text:** Identical in both, including parentheses. â Match.
+- **Color:** Dark red (~#9E2B33) in both. â Match.
+- **Weight/family:** Bold sans-serif in both; stroke weight ratio consistent with the resolution difference. â Match.
+- **Column alignment:** In IMG1, "(Loss Function)" column sits slightly higher relative to "Prediction Error" than in IMG2, where the two columns look more evenly top-aligned. **MINOR, moderate confidence** â sub-glyph offset only.
+- **Fill of column height:** Both columns fill nearly the full box height in both images. â Match.
+
+## 3. Red horizontal arrows (left and right)
+- Both images: dark red arrows pointing **toward** the pink box from left (from purple box) and right (from tan box), at ~mid-height. â Match in direction, position, color, and relative length.
+
+## 4. Left purple box (edge-cropped)
+- **IMG1:** Purple outline; interior appears filled purple/dark.
+- **IMG2:** Purple outline; interior appears lighter/white.
+- **MINOR, moderate confidence** â element is heavily cropped at frame edge; interior fill difference is not fully verifiable from the crop.
+
+## 5. Right tan box (edge-cropped)
+- Both: tan/khaki fill (~#D2B48C) with thick brown border, partial "S" glyph visible in both. â Match in color, border weight, position.
+
+## 6. Navy dashed line (top)
+- Both present, same position and dash rhythm. IMG1's dashes are visibly **thicker** relative to frame than IMG2's thin dashes. **MINOR, high confidence** â stroke-weight exaggeration, tolerable at 150dpi render.
+
+## 7. Green connector (bottom)
+- **IMG2:** Thin green dashed **curved** line terminating in a small triangular **arrowhead** touching the box bottom.
+- **IMG1:** Thick straight green dashes plus a **large filled green circle/blob** at the box bottom edge where the arrowhead should be.
+- Two sub-issues: (i) path straight vs. curved â **MINOR, high confidence**; (ii) arrowhead rendered as a large circular blob rather than a pointed arrowhead â **MINOR (borderline MAJOR), high confidence**. It is a small decorative connector, but the blob reads as a rendering defect rather than an intentional arrowhead.
+
+## 8. Background / house chrome
+- Per Ground Rule (a): outer red frame, #E8E8E8 bg, badge, title box are intentional house chrome; none of these fall inside the crop region anyway, so nothing to compare. Not a discrepancy.
+
+## 9. Rules (b)â(e) check
+- (b) Not applicable â IMG2 contains real content, and IMG1 matches it content-for-content.
+- (c) No cursor artifacts present in either image. N/A.
+- (d) Both are typed/renders; no handwritten ink involved. N/A.
+- (e) No equations on this slide. N/A.
+
+---
+
+## Discrepancy Summary
+
+| # | Discrepancy | Severity | Confidence |
+|---|---|---|---|
+| 1 | Pink box corner radius larger in recreation than original | MINOR | High |
+| 2 | Green connector arrowhead rendered as large filled circle instead of pointed arrowhead | MINOR (borderline MAJOR) | High |
+| 3 | Green dashed connector straight in recreation vs. curved in original | MINOR | High |
+| 4 | Navy dashed line stroke weight heavier in recreation | MINOR | High |
+| 5 | Left purple box interior fill (dark vs. light) on cropped edge element | MINOR | Moderate |
+| 6 | Slight vertical offset between the two rotated text columns | MINOR | Moderate |
+
+**Visual-quality defects:** The green circle/blob (#2) is the only element that reads as a genuine rendering artifact rather than a stylistic tolerance; everything else is within normal render-vs-original tolerance given the resolution difference.
+
+---
+
+**FINAL VERDICT: PASS** â The recreation is a faithful, usable match: text is verbatim with correct two-column rotated layout, box geometry, arrow directions, and color palette all align; all discrepancies are minor and none impairs content fidelity or legibility. (Recommend, as a cosmetic touch-up, converting the green circle into a proper arrowhead.)

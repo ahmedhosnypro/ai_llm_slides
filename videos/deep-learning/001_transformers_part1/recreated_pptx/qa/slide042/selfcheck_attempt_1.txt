@@ -1,0 +1,29 @@
+== title (want ink x299-663 y81-103 frame px) ==
+  [OK ] title bbox (x0,x1,y0,y1): got [np.float64(299.03999999999996), np.float64(661.4399999999999), np.float64(81.6), np.float64(104.16)] want [299, 663, 81, 103] (maxdiff 1.6, tol 5)
+== subtitle (want L1 x108-832 ytop~151-152; L2 x359-581 ytop~174) ==
+  [OK ] sub L1 (x0,x1,y0): got [np.float64(107.03999999999999), np.float64(832.3199999999999), np.float64(151.67999999999998)] want [108, 832, 151.5] (maxdiff 1.0, tol 5)
+  [OK ] sub L2 (x0,x1,y0): got [np.float64(358.08), np.float64(580.8), np.float64(174.23999999999998)] want [359, 581, 174] (maxdiff 0.9, tol 5)
+== content box borders (want x 72..880, ytop 196, ybot 483) ==
+  [OK ] box top border row: got 194.88 want 196 (maxdiff 1.1, tol 5)
+  [OK ] box bottom border row: got 483.35999999999996 want 483 (maxdiff 0.4, tol 5)
+  [OK ] box left border col: got 71.03999999999999 want 71 (maxdiff 0.0, tol 5)
+  [OK ] box right border col: got 880.3199999999999 want 880 (maxdiff 0.3, tol 5)
+== body lines (blue ink; want tops 234/286/346/398/428, left 82) ==
+  found 5 blue bands
+  [OK ] L1 (top,bot,left,right): got [np.float64(234.23999999999998), np.float64(251.99999999999997), np.float64(83.52), np.float64(401.28)] want [234, 251, 82, 400] (maxdiff 1.5, tol 6)
+  [FAIL] L2 (top,bot,left,right): got [np.float64(285.59999999999997), np.float64(306.23999999999995), np.float64(83.52), np.float64(597.5999999999999)] want [286, 303, 82, 610] (maxdiff 12.4, tol 6)
+  [OK ] L3 (top,bot,left,right): got [np.float64(346.56), np.float64(368.64), np.float64(83.52), np.float64(826.56)] want [346, 367, 82, 827] (maxdiff 1.6, tol 6)
+  [OK ] L4 (top,bot,left,right): got [np.float64(397.91999999999996), np.float64(420.47999999999996), np.float64(81.6), np.float64(772.8)] want [398, 419, 82, 770] (maxdiff 2.8, tol 6)
+  [FAIL] L5 (top,bot,left,right): got [np.float64(428.15999999999997), np.float64(450.71999999999997), np.float64(82.08), np.float64(860.64)] want [428, 446, 82, 849] (maxdiff 11.6, tol 6)
+== green subscripts line 2 (want clusters at 464-472, 531-538, 592-599, y~296-303) ==
+  [FAIL] green line2 bbox (x0,x1): got [np.float64(462.71999999999997), np.float64(586.0799999999999)] want [464, 599] (maxdiff 12.9, tol 6)
+== red math runs ==
+  [OK ] L1 red r (x0,x1): got [np.float64(386.88), np.float64(395.03999999999996)] want [386, 393] (maxdiff 2.0, tol 7)
+  [FAIL] L2 red sups span (x0,x1): got [np.float64(458.4), np.float64(579.36)] want [458, 589] (maxdiff 9.6, tol 7)
+  [OK ] L3 red X..Yr (x0,x1): got [np.float64(185.27999999999997), np.float64(822.2399999999999)] want [186, 821] (maxdiff 1.2, tol 7)
+  [OK ] L4 red X (x0,x1): got [np.float64(710.4), np.float64(726.2399999999999)] want [710, 723] (maxdiff 3.2, tol 7)
+== color cores ==
+  title core: [192.   0.   0.] (want ~C00000=192,0,0 dulled by JPEG ~170,35,48)
+  body core: [  0.   0. 204.] (want ~0000CC=0,0,204 dulled ~49,40,134)
+
+SELF-CHECK GEOMETRY: FAIL -> ['L2 (top,bot,left,right)', 'L5 (top,bot,left,right)', 'green line2 bbox (x0,x1)', 'L2 red sups span (x0,x1)']

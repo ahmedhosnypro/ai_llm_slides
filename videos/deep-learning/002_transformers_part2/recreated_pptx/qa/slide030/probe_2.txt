@@ -1,0 +1,51 @@
+# Visual QA Analysis â Slide "30" (rotation-matrix derivation slide)
+
+## 1. Verbatim Text Transcription
+
+**Slide number (top-right circle):**
+- `30`
+
+**Top-left box (vector definitions):**
+- `Vector of Pos "t"` (red text)
+- Column vector (red brackets): `sin(Ït)` / `cos(Ït)`
+- `Vector of Pos "t+Î´"` (red text)
+- Column vector (black brackets): `Sin (Ï(t+Î´))` / `cos(Ï(t+Î´))` â the `(t+Î´))` portions are highlighted in yellow
+
+**Yellow "Remember" box (upper right):**
+- `Remember:` (bold, italic, underlined, dark blue)
+- `sin(a+b) = sin (a) cos(b)  +  cos(a) sin(b)`
+- `cos(a+b) = cos(a) cos(b) â sin(a) sin(b)`
+
+**Middle box (trig identities applied):**
+- `sin(Ï(t+Î´)) = sin(Ït + ÏÎ´) = sin(Ït) cos(ÏÎ´) + cos(Ït) sin(ÏÎ´)` â `sin(Ït)`/`cos(Ït)` in red; `cos(ÏÎ´)` highlighted green, `sin(ÏÎ´)` highlighted yellow
+- `cos(Ï(t+Î´)) = cos(Ït + ÏÎ´) = cos(Ït) cos(ÏÎ´) â sin(Ït) sin(ÏÎ´)` â `cos(ÏÎ´)` highlighted yellow, `sin(ÏÎ´)` highlighted green
+
+**Bottom-left box (matrix equation):**
+- Column vector (black brackets): `Sin (Ï(t+Î´))` / `cos(Ï(t+Î´))` (yellow highlights on `(t+Î´))`)
+- `=`
+- 2Ã2 matrix (blue brackets): row 1: `cos(ÏÎ´)` (green), `sin(ÏÎ´)` (yellow); row 2: `â sin(ÏÎ´)` (green), `cos(ÏÎ´)` (yellow)
+- Column vector (red brackets): `sin(Ït)` / `cos(Ït)`
+- Red curly underbrace beneath the matrix
+- `Vector of Pos "t+Î´"` (red, lower left) and `Vector of Pos "t"` (red, lower right)
+- `Independent of Position "t"` (bold italic, dark blue, centered at box bottom)
+
+**Bottom-right box (green border, light green fill):**
+- `From Computer Graphics:` (bold italic, red)
+- `Rotation Matrix of Vector at Pos "t" with angle "ÏÎ´"` (bold italic, dark blue)
+- `e.g "Ï" , "2Ï" , "3Ï" , â¦` (bold italic, dark blue)
+
+## 2. Layout
+
+- **Overall:** Light-gray background covering the slide, with a thin red rectangular frame inset from all four edges.
+- **LEFT edge:** The red frame line near the edge; the three white/blue-bordered boxes (vector definitions, identity equations, matrix equation) all begin close to the left, stacked vertically.
+- **RIGHT edge:** Red frame line near the edge; the "30" badge circle at top-right, the yellow "Remember" box in the upper-right region, and the green "From Computer Graphics" box at lower-right.
+- **TOP:** Red frame line; top-left vector-definitions box; "30" circle at top-right.
+- **BOTTOM:** The large matrix-equation box occupies the bottom-left/center; the green box sits bottom-right; the red frame's bottom line runs near the bottom edge.
+
+## 3. Visual Defects
+
+1. **Minus signs rendered as dots (wrong glyph):** In the middle box, the second identity line reads `... cos(ÏÎ´) â sin(Ït) ...` â a small filled dot appears where a minus sign belongs (the "Remember" box above shows the correct `â`). The same defect occurs in the 2Ã2 matrix, where the bottom-left entry renders as `â sin(ÏÎ´)` instead of `âsin(ÏÎ´)`; the dot sits crowded against the matrix's left blue bracket, appearing to nearly touch/overlap it.
+2. **Bracket/text collision:** In the top-left box, the left black bracket of the second vector appears to touch or slightly overlap the "S" of `Sin (Ï(t+Î´))`.
+3. **Capitalization/spacing inconsistency:** `Sin (Ï(t+Î´))` (capital S, space before parenthesis) in both vector displays vs. lowercase `sin(Ï(t+Î´))` in the equations â possibly inherited from the original, but visually inconsistent.
+4. **No clipping observed:** All boxes, brackets, the underbrace, the green box text, and the "30" circle are fully inside the red frame; nothing is cut off at slide edges.
+5. **No placeholder/garbage strings and no wrong-language text** detected.

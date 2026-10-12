@@ -110,3 +110,79 @@ web research via `agy` + live fetches.
 The ORIGINAL VIDEO FRAME is ground truth for what each slide shows; web
 sources confirm/correct data and provenance, never license inventing content.
 `[?]` markers are removed only with a confirming URL recorded here.
+
+## Script-12 raw cross-check (2026-10-11, web-research verification worker)
+
+Cross-checked against `analysis/slide_053_raw.json` (script-12 raw landed after
+this record was written from the banked vision transcript).
+
+- CONFIRMED by raw: title + subtitle verbatim ("Self Attention Look Ahead
+  Mask" / "(Used in  Decoder first Block )" — raw preserves the double space
+  after "in" and space before ")"); 5×5 matrix over SOS/Je/me/sens/malade
+  (rows = query words, columns = key words) with 0 on/below the diagonal
+  (15 cells) and −∞ above (10 cells), rows exactly SOS [0,−∞,−∞,−∞,−∞] …
+  malade [0,0,0,0,0]; boxed softmax σ(x_j) = e^{x_j} / Σ_i e^{x_i} under a red
+  "Softmax" label top-right; bottom statement box "Mask Values are ADDED to
+  Masked (Scaled) Values" with ADDED underlined, plus both explanatory lines
+  verbatim; blue block arrow pointing into the row labels; badge numeral 53;
+  identity metadata (old extraction slide 133, kept frame_04681, shown
+  4555–4680 s, 126 frames) — all match this record's Slide-identity and
+  Primary-source sections. No source claims in this record are contradicted.
+- STRENGTHENED: open question 2 (tiny gray arrow near the matrix's
+  upper-right) — the raw independently reads it as "a mouse-cursor arrow
+  (white with black outline, screen-recording overlay)" sitting on the
+  matrix's right edge (~70% width / 52% height), i.e. frame ground truth
+  itself classifies it as a recording artifact, not slide content. Treating
+  it as non-content in the build is supported by the frame analysis; the
+  formal `[?]` removal rule (confirming URL) does not apply to a
+  frame-ground-truth artifact, so the marker is downgraded to
+  "resolved-by-frame-ground-truth" for build purposes.
+- New raw detail (no conflict, useful for the build): value colors —
+  mint-green (#DCF5DC) lower triangle with dark-navy "0" chips, mauve
+  (#A87C7C) upper triangle with red "−∞" chips, chips on light-yellow
+  (#FFFFCC), badge yellow #FFFF99 with red "53"; softmax equation in italic
+  serif (equation-editor style).
+- No new published-figure claim appears in the raw (it describes a
+  course-authored diagram; consistent with open question 1's course-authored
+  finding — remains `[?]` with no external candidate to fetch).
+- New `[?]` items: none. Corrections needed: none.
+
+## Build-time frame corrections (2026-10-12, slide-053 recreation worker)
+
+PIL pixel forensics during the recreation (scratch/slide053/measure*.py) corrected
+several vision-extraction readings. Frame ground truth wins per the fidelity law;
+recorded here per the disagreement rule:
+
+1. **Subtitle color split** — the frame's line 2 is RED "(Used in  Decoder " + BLUE
+   "first Block " + RED ")". The red/blue ink boundary sits at frame x 455|463, and an
+   Arial-Bold advance fit (em 24.3) puts it exactly after "Decoder" (8.502 em).
+   The earlier reading "blue = Decoder first Block" was a vision-model error.
+2. **Statement box extent** — ONE blue-bordered box (frame x 64..878, y 417..507)
+   contains ALL THREE text lines (left/right borders run continuously between the
+   lines; bottom border rows 506..507). The extraction's "box + separate explanatory
+   band" split was a layout error; the build draws one box.
+3. **Upper-triangle mask cells** — each of the 10 masked cells is a SALMON chip
+   (fill measured (227,170,138) = #E3AA8A; border + value (126,64,39) = #7E4027,
+   chip ~23.0x17.8 pt) DISPLAYING a dark-red "−∞" value. Two earlier readings were
+   both wrong at different levels: the extraction's "mauve field with red −∞ glyphs"
+   (close, but the chip structure/fill color was not resolved) and the build worker's
+   first-pass "solid red rectangles" (a red>55 mask read salmon fill + dark border +
+   dark glyph as one solid red region; a full RGB dump showed the chip structure).
+   The certified build renders chip + border + "−∞" per cell.
+4. **Upper-triangle field color** — the mauve field between/around chips measures
+   (196,172,160) = #C4ACA0 in wide inter-cell gaps (not the extraction's #A87C7C).
+5. **Diagonal** — the green/mauve boundary (thin dark line) runs from frame
+   (472, 201.5) to (676.5, 397.5): it starts ~27 px RIGHT of the matrix's top-left
+   corner, NOT corner-to-corner as the extraction phrased it (green fills the
+   top-left corner region).
+6. **Title size** — advance fits give ~24.3 pt bold (extraction estimated ~28 pt);
+   L1 ink 367.7 pt wide, L2 345.9 pt wide, both matching at 24.3 pt.
+7. **Equation placement** — the softmax equation ink sits HIGH in its black box
+   (top gap ~10 pt, bottom ~19 pt of the 75 pt box) in the frame itself; the
+   recreation reproduces that measured placement (first crop-judge PASS run
+   misread the original as centered; the PIL-facts retry PASSed).
+
+Open questions 1 (course-authored cartoon) and 3 ("(Scaled)" wording) remain as
+recorded above; open question 2 (cursor) was already resolved by frame ground truth.
+No new source claims were needed for these corrections — they are frame-internal
+measurements, not web-verifiable facts.

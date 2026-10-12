@@ -1,0 +1,41 @@
+element                    measured                               expected                               delta                          verdict
+title                      render bbox x479..1692 y93..151        expected x514..1655 y111..155          deltas ['-35.5', '+37.5', '-18.2', '-3.8'] FAIL
+container top line         render bbox x328..1844 y152..195       expected x315..1863 y174..177          deltas ['+12.9', '-18.6', '-22.4', '+18.4'] FAIL
+container bottom rule      render bbox x328..1844 y1112..1115     expected x315..1863 y1108..1114        deltas ['+12.9', '-18.6', '+4.4', '+0.9'] FAIL
+container left line        render bbox x313..348 y436..740        expected x315..319 y436..741           deltas ['-2.1', '+28.6', '-0.0', '-1.3'] FAIL
+container right line       render bbox x1823..1864 y436..740      expected x1860..1865 y436..741         deltas ['-37.4', '-0.7', '-0.0', '-1.3'] FAIL
+stack container+bars       render bbox x313..1864 y250..805       expected x319..1860 y275..796          deltas ['-6.4', '+3.6', '-24.7', '+9.2'] FAIL
+bar M                      render bbox x393..1800 y274..345       expected x337..1845 y288..347          deltas ['+56.3', '-45.2', '-13.8', '-1.7'] FAIL
+bar 2                      render bbox x393..1800 y519..579       expected x337..1845 y519..580          deltas ['+56.3', '-45.2', '+0.1', '-0.9'] FAIL
+bar 0                      render bbox x393..1800 y720..777       expected x337..1845 y719..778          deltas ['+56.3', '-45.2', '+0.5', '-1.3'] FAIL
+green arrow c1             render bbox x388..421 y233..268        expected x391..419 y233..268           deltas ['-2.9', '+1.9', '-0.3', '-0.2'] PASS
+Y ellipsis dots            render bbox x1238..1562 y174..211      expected x1312..1477 y194..214         deltas ['-74.1', '+85.2', '-20.0', '-2.7'] FAIL
+Y label c1                 render bbox x396..416 y194..223        expected x389..417 y192..227           deltas ['+7.2', '-0.9', '+2.1', '-3.7'] FAIL
+X tab c1                   render bbox x371..439 y802..830        expected x387..419 y798..831           deltas ['-15.6', '+19.9', '+4.0', '-0.7'] FAIL
+X label c1                 render bbox x391..416 y837..866        expected x389..417 y835..870           deltas ['+2.2', '-0.9', '+2.0', '-3.9'] PASS
+X ellipsis dots            render bbox x1311..1481 y843..861      expected x1312..1481 y844..861         deltas ['-1.1', '-0.1', '-0.7', '-0.2'] PASS
+blue arrow c1              render bbox x390..419 y873..906        expected x389..421 y874..907           deltas ['+1.2', '-2.3', '-1.3', '-1.0'] PASS
+word arrow c1              render bbox x390..419 y1018..1049      expected x387..419 y1018..1051         deltas ['+3.4', '-0.1', '-0.2', '-1.9'] PASS
+emb top border             render bbox x609..1475 y893..911       expected x332..1847 y909..914          deltas ['+276.6', '-372.4', '-16.2', '-2.5'] FAIL
+emb bottom border          render bbox x609..1475 y1013..1023     expected x332..1847 y1012..1016        deltas ['+276.6', '-372.4', '+1.4', '+7.0'] FAIL
+tan bar fill               render bbox x978..1199 y929..954       expected x337..1843 y914..964          deltas ['+641.3', '-644.1', '+15.5', '-9.7'] FAIL
+cyan bar fill              render bbox x609..1475 y965..1010      expected x337..1843 y964..1012         deltas ['+272.3', '-368.1', '+1.3', '-1.6'] FAIL
+word box c1 top border     render bbox x339..500 y1050..1062      expected x341..469 y1051..1053         deltas ['-2.1', '+31.0', '-0.9', '+9.0'] FAIL
+word label c1              render bbox x339..498 y1059..1093      expected x365..469 y1060..1086         deltas ['-25.9', '+29.0', '-0.6', '+7.2'] FAIL
+word gray dots             render bbox x1316..1484 y1068..1085    expected x1316..1483 y1068..1086       deltas ['-0.4', '+0.7', '-0.3', '-0.8'] PASS
+EO box                     render bbox x86..274 y130..282         expected x101..274 y164..262           deltas ['-14.5', '+0.1', '-33.5', '+20.4'] FAIL
+EI box                     render bbox x86..274 y806..936         expected x101..274 y822..920           deltas ['-14.5', '+0.1', '-15.9', '+15.9'] FAIL
+vert text                  render bbox x149..236 y375..666        expected x144..250 y355..698           deltas ['+5.1', '-14.1', '+19.6', '-31.7'] FAIL
+embedding text             render bbox x86..257 y926..1023        expected x101..274 y942..1007          deltas ['-14.5', '-16.9', '-15.9', '+15.7'] FAIL
+InputSeq box               render bbox x86..274 y1042..1121       expected x101..274 y1051..1114         deltas ['-14.5', '+0.1', '-8.9', '+6.9'] FAIL
+badge yellow               render bbox x1825..1894 y113..171      expected x1824..1893 y122..172         deltas ['+1.4', '+1.1', '-9.1', '-1.2'] FAIL
+
+24/30 FAIL (tol 4.0 render px)
+color bar fill               render@(1086,318)=(np.int64(53), np.int64(59), np.int64(183)) frame=(53, 59, 183) maxdiff=0 PASS
+color stack fill             render@(1476,488)=(np.int64(201), np.int64(223), np.int64(240)) frame=(213, 227, 238) maxdiff=12 PASS
+color tan bar                render@(1476,937)=(np.int64(253), np.int64(233), np.int64(217)) frame=(247, 229, 209) maxdiff=8 PASS
+color cyan bar               render@(1476,985)=(np.int64(204), np.int64(255), np.int64(255)) frame=(218, 253, 247) maxdiff=14 PASS
+color title red              render@(826,130)=(np.int64(192), np.int64(0), np.int64(0)) frame=(160, 20, 30) maxdiff=32 PASS
+color EO box fill            render@(176,211)=(np.int64(249), np.int64(232), np.int64(214)) frame=(249, 232, 214) maxdiff=0 PASS
+color left col bg (gray)     render@(111,545)=(np.int64(233), np.int64(233), np.int64(231)) frame=(232, 232, 230) maxdiff=1 PASS
+color canvas white           render@(999,65)=(np.int64(255), np.int64(255), np.int64(255)) frame=(254, 255, 253) maxdiff=2 PASS

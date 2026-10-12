@@ -1,0 +1,24 @@
+# Slide 021 â Navy Encoder Bar: Render vs Original Crop Check
+
+## Comparison
+
+| Attribute | IMG1 (render) | IMG2 (original) | Match? |
+|---|---|---|---|
+| Bar color | Solid navy, flat, no gradient | Solid navy, flat | extent | Full-width horizontal band with thin white margins; small red vertical rule at far right | Full-width band; left white gap is crop alignment, bar runs to right (within crop tolerance) |
+| Text verbatim | "function to map the positions to real valued vectors" | Ident |
+| Yellow/white split | Yellow ends exactly after "function"; white begins at " to map" | Identical split point| Relative run sizes | Yellow "function" visibly larger than white run | Same |
+| Centering | Text block centered in bar | Text block centered in bar| Boldness | Both runs bold | Both runs bold | Discrepancies
+
+1. **MINOR** (confidence ~0.7): Yellow "function" letter-spacing in IMG1 reads slightly wider/heavier than in IMG2, where tracking is tighter. Direction and intent (letter-spaced yellow) are correct; only the degree differs.
+2. **MINOR** (confidence ~0.6): Yellow "function" in IMG1 appears slightly heavier-weight than in IMG2, where the yellow glyphs read a touch thinner relative to the white run. Could partly be JPEG softening in IMG2 at this scale.
+3. **MINOR** (confidence ~0.75): The decorative red arrow above the bar sits at horizontal center in IMG1 but is shifted left (over "to map the") in IMG2; the below-bar red arrow is centered in both. This is positional, not textual, and partially attributable to differing crop offsets between the two images.
+4. **MINOR** (confidence ~0.5): Vertical gap between the above-bar red arrowhead and the bar top edge differs slightly (arrowhead touches bar in IMG2, small gap in IMG1). Likely crop/render alignment.
+
+## Visual-Quality Defects (IMG2 only, informational)
+- JPEG compression halo around yellow glyphs on navy (chroma bleed); correctly not reproduced in the render per ground rule (b).
+- Thin red vertical rule at IMG1's right edge is a crop boundary artifact; out of scope.
+
+## Summary
+Bar color, extent, verbatim text, the yellow/white split, run-size hierarchy, boldness, and centering all match. Remaining items are letter-spacing degree, slight weight nuance, and decorative-arrow positioning â none affect fidelity of the renderable content.
+
+**CROP VERDICT: PASS** for 'navy'

@@ -1,0 +1,55 @@
+# Visual QA Comparison â Slide 019 Crop (Legend Callouts + Leader Lines)
+
+## 1. Verbatim Text Transcription
+
+**IMG1 (recreation):**
+- "Normalization Layer" (blue text, light-blue box)
+- "Feed Forward Layer" (black text, gray box)
+- "Residual Connections" (green text, light-green box)
+- "Multi-Head Attention" (red bold italic, no box)
+- "Scaled Dot-Product Attention" (red bold italic, two lines â fully visible)
+- "Linear" (white box)
+- "MatMul" (purple box)
+- "Concat" (yellow box, clipped at bottom edge)
+- "Encodâ¦" (red italic, clipped, peach box at right edge)
+
+**IMG2 (original):**
+- "Normalization Layer"
+- "Feed Forward Layer"
+- "Residual Connections"
+- "Multi-Head Attention"
+- "caled Dot-Product Attention" (leading "S" clipped by crop edge)
+- "Linear"
+- "MatMul"
+- "Concat" (fully readable at bottom edge)
+- "Encoâ¦" (red italic, clipped, peach box)
+
+All text matches in language, wording, casing, and styling. No garbage strings or placeholders in either image.
+
+## 2. Similarities
+- Same layout: three legend boxes stacked diagonally (Normalization Layer top-left, Feed Forward Layer middle, Residual Connections below), red italic caption "Multi-Head Attention" beneath them.
+- Same fills/borders: light-blue box, gray box, light-green box, purple MatMul, yellow Concat, peach "Encoder" box with green border at right.
+- Thin leader lines fan from the legend boxes rightward toward the Encoder box in both.
+- Red dashed leader lines descend from the green frame corners in both.
+- Green bracket/frames with corner handles around both attention sub-blocks; upward arrow into "Linear"; arrow from "Concat" to "Linear"; arrow above "MatMul".
+- Background light gray, same overall geometry and element ordering.
+
+## 3. Differences
+
+| # | Discrepancy | Severity |
+|---|---|---|
+| 1 | **Corner handle style:** IMG1 uses *filled* solid green squares at frame corners; IMG2 uses *hollow* squares (white center, green outline) â clearly visible top-right of both green frames | **Moderate** |
+| 2 | **"Linear" box rendering:** IMG1 shows a gray offset rectangle behind/around the white Linear box (double-box/shadow effect); IMG2 shows a single clean white box with thin gray border | **Moderate** |
+| 3 | **Crop/scale offset:** IMG2 is shifted ~10 px right and ~5â10 px down (e.g., "S" of "Scaled" clipped in IMG2, "Encod" vs "Enco" at right edge, "Concat" fully visible in IMG2 but clipped in IMG1); frames sit slightly lower in IMG2 | Minor (crop alignment, not content) |
+| 4 | **Dashed red leader lines:** IMG1 dashes are slightly longer/coarser; IMG2 dashes are finer/denser | Minor |
+| 5 | **Leader lines from "Normalization Layer":** IMG1 appears to fan 2â3 thin blue lines; IMG2 shows essentially one main line with a curve â slight difference in line count/shape | Minor |
+| 6 | **Green frame stroke weight:** left frame stroke in IMG1 reads marginally thicker than IMG2 | Minor |
+| 7 | **Green frame vertical positions:** IMG1 frames top edge ~y310/355 vs IMG2 ~y320/365 â consistent with the global offset in #3 | Minor |
+
+No clipping caused by the recreation itself, no missing elements, no wrong-color elements, no text defects.
+
+## 4. Verdict
+
+**Which is better:** IMG2 (original) is cleaner â the Linear box lacks the spurious gray double-box, and the hollow handles are the intended style. However, all content, positions, colors, and text in IMG1 match within a few pixels of a ~2â3% crop/scale offset.
+
+**FINAL VERDICT: PASS** â for "faithful recreation of this crop." All boxes, arrows, dashed leaders, thin leader lines, and label texts are present with correct fills, borders, colors, and placement. The two moderate items (filled vs hollow handles; Linear-box shadow artifact) are visible but small at 1x scale; recommend fixing them and tightening the crop offset in a follow-up pass, but they do not constitute an unfaithful recreation.

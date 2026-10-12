@@ -1,0 +1,39 @@
+[info] context header injected: VIEW: Slide 017 build-time zoom: bottom query row — W_q box, q bar, token container strips, red arrow, X2 highlight | CAPTURE: 2x LANCZOS zoom of original lecture frame crop (frame px 55,428..625,518), 960x540 source
+[info] mode analysis | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 3011619
+[info] crops/queryrow.png: transcript written (validated winner, atomic): transcripts/an_queryrow.txt (pid 3011619)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== crops/queryrow.png ===
+[winner] images (round 1, attempt 1)
+# Visual QA Report â Slide 017 build-time zoom (query row)
+
+## 1. Visible text (verbatim)
+
+| Location | Text | Appearance |
+|---|---|---|
+| Top center-left | `q` with subscript `t` (i.e., **q_t**) | Red serif/math-style label; adjacent small red vertical arrow glyph (arrowhead appears to point up toward the strip) |
+| Center box | **W_q** with a small superscript that reads as **(1)** (could be "(7)" â superscript is blurry at 2Ã zoom; "(1)" is most consistent with the other boxes) | Red text, thin red border, white fill |
+| Inside the four token strips | A bold red **X** in each strip (4 total). Possible tiny subscript characters after the X's â **illegible at this resolution** | X's are overlaid on individual cells |
+| Right-side stacked boxes | **W_q (1)** in red; **W_k (1)** in green; **W_v (1)** in blue (superscripts same caveat as above) | Small white boxes with colored borders/text, stacked vertically |
+| Far-right edge (clipped boxes) | Partial labels, appear to begin with "W" â **illegible / cut off by frame edge** | Red, green, blue borders matching the stack to their left |
+
+No other readable text. No garbage/placeholder strings; all text is consistent English/math notation for an attention diagram.
+
+## 2. Layout
+
+- **LEFT edge:** Mostly empty pink panel surface. Top-left corner has a small red curved stroke clipped by the top edge (remnant of an off-frame arrow). Bottom-left shows the dark-red rounded corner/border of the large pink panel, with a thin maroon strip beneath it (background outside the panel).
+- **TOP / CENTER:** The `q_t` label sits at top center-left, next to a small white-outlined strip of ~6 tiny cream/yellow squares (a token row). Below it, a short red vertical arrow leads into the **W_q** box; a small red arrowhead points down from the W_q box toward the token strips below.
+- **CENTER:** A large horizontal pill/capsule with a **dashed green border** on a near-white fill contains **four token strips** (rows of small colored cells: cream, pink, lavender). The **second strip is enlarged** and wrapped in a bold **magenta/red dashed highlight box**; its X-marked cell is purple. The other three strips are smaller, each with one X-marked cell.
+- **BOTTOM:** A thick **red curved arrow** at bottom center-left, its tail running along the bottom, curving up to point at the highlighted (second) strip.
+- **RIGHT edge:** The stacked **W_q / W_k / W_v** boxes sit inside the pink panel near the right. At the extreme right edge, a **second column of three boxes (red/green/blue borders) is cut in half** by the frame. Top-right corner contains a thick red hooked/loop arrow shape clipped by the top edge.
+- **Background:** Uniform salmon/pink throughout; the crop sits inside the panel (panel's top border is out of frame).
+
+## 3. Defects / anomalies
+
+- **Clipping (crop-related):** Right-edge boxes are cut vertically mid-box; the top-right red arrow and top-left red stroke are cut by the top edge; the `q_t` label row sits flush against the top edge with elements above presumably out of frame. If this crop is meant to show the "bottom query row" cleanly, the right-edge box halves are the main unintended-looking casualty.
+- **Legibility:** All superscripts "(1)" and any subscripts on the X glyphs are soft/blurry from the 2Ã Lanczos upscale â not confidently readable. Tiny strip cells show mild aliasing/blockiness.
+- **Overlaps:** The red pointer arrow's head touches/overlaps the pill's dashed green border at the highlighted strip (appears intentional as a pointer). The magenta dashed highlight overlaps its strip's cells as designed.
+- **No wrong-language text, no placeholder text, no broken glyphs** observed.
+
+**Verdict:** Content is internally consistent and correct for the described element (query path: token strip â W_q â q_t, with token 2 highlighted); only issues are crop clipping at the right/top edges and resolution-limited legibility of superscripts/subscripts.
+

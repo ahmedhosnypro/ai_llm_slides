@@ -1,0 +1,48 @@
+# Visual QA Description â Slide 019 Render
+
+## 1. Verbatim Text Transcription
+
+**Title area (top):**
+- `Encoder â Decoder Transformer` (large, bold, dark red; en dash with surrounding spaces)
+- `19` (slide number, dark red on a gold circle with purple ring, top-right)
+
+**Left diagram label:** `Scaled Dot-Product Attention` (red bold italic, two lines)
+
+**Left diagram (top to bottom):** `MatMul`, `SoftMax`, `Mask (opt.)`, `Scale`, `MatMul`, and circle labels `Q` (red), `K` (blue), `V` (blue)
+
+**Middle diagram label:** `Multi-Head Attention` (red bold italic)
+
+**Middle diagram (top to bottom):** `Linear`, `Concat`, `Scaled Dot-Product Attention` (inside a purple box with red outline), `Linear` (Ã3, bottom row), `h` (beige circle, right side), circle labels `V` (blue), `K` (blue), `Q` (red)
+
+**Right diagram labels:** `Encoder` (dark red bold italic), `Decoder` (green bold italic)
+
+**Right diagram, encoder column (top to bottom):** `Add & Norm`, `Feed Forward`, `Add & Norm`, `Multi-Head Attention` (red-outlined box), circle labels `V` (green), `K` (blue), `Q` (red)
+
+**Right diagram, decoder column (top to bottom):** `Output` (yellow box), `Probabilities`, `Softmax`, `Linear`, `Add & Norm`, `Feed Forward`, `Add & Norm`, `Multi-Head Attention` (red-outlined box), circle labels `V`, `K`, `Q`, then `Add & Norm`, `Masked Multi-Head Attention` (purple block), circle labels `V`, `K`, `Q`
+
+**Right diagram, other:** `N x` (Ã2, tan circles â one left of the encoder stack, one right of the decoder stack), `Positional Encoding` (Ã2, dark gold text, two lines each), `Input Embedding`, `Output Embedding`, `Inputs`, `Outputs` (yellow box), `(shifted right)`
+
+**Callout:** `WE ARE HERE` (white bold, two lines, in a red speech bubble with downward-pointing tail)
+
+## 2. Layout
+
+- **Overall:** Light gray background with a slightly lighter gray rounded panel; a thin dark-red rectangular border frames the entire slide inset from all edges.
+- **LEFT edge:** Red border line; the "Scaled Dot-Product Attention" block diagram occupies the left ~25% of the slide, vertically centered, enclosed in a green selection rectangle with green square handles at its corners. A red dashed connector exits its right side toward the middle diagram.
+- **CENTER:** The "Multi-Head Attention" diagram in its own green selection rectangle, with red dashed connectors linking it to both the left and right diagrams. The red "WE ARE HERE" callout sits between the center and right diagrams (~middle height).
+- **RIGHT edge:** The full transformer diagram in a large green selection rectangle. It is split into a peach-colored Encoder panel (left) and mint-green Decoder panel (right), with "Encoder"/"Decoder" labels at top. A brown dash-dot curve runs down the right side from near "Output" toward the bottom. Bottom-right has the second "Positional Encoding" label and "(shifted right)".
+- **TOP:** The title spans the upper area, left of the "19" badge in the top-right corner. Top-left region is empty gray.
+- **BOTTOM:** A semi-transparent yellow band spans the bottom of the right diagram containing both "Positional Embedding" highlight labels, the embedding boxes, and icons (â and a waveform). "Inputs" (with red up-arrow) sits bottom center-right; "Outputs (shifted right)" bottom right. The red slide border runs along the bottom.
+
+## 3. Visual Defects and Anomalies
+
+1. **Selection handles visible:** All three diagrams are enclosed in green rectangles with small green filled square handles at corners â these look like PowerPoint selectionBounding-box artifacts captured in the render, not slide content.
+2. **Occlusion/clipping:** Two small dark circles appear partially hidden behind the top edge of the orange "Output Embedding" block, sandwiched between it and the purple "Masked Multi-Head Attention" block.
+3. **Overlapping callout:** The "WE ARE HERE" bubble and its pointer tail overlap the yellow "Positional Encoding" band and the left edge of the encoder column.
+4. **Overlapping labels:** The left "Positional Encoding" text overlaps the â icon and the edge of the "Input Embedding" box; the right "Positional Encoding" text overlaps the "Output Embedding" block. Both are dark-gold-on-yellow with low contrast.
+5. **Misplaced highlight:** A solid yellow rectangle protrudes from behind the encoder stack (visible sticking out around the upper "Add & Norm"/"Feed Forward" area), and additional yellow shapes are partially visible behind the decoder's cross-attention region â they read as highlight rectangles placed behind the wrong elements.
+6. **Border overlap:** The "h" circle in the middle diagram straddles the green frame's right border.
+7. **Inconsistent spelling:** `SoftMax` (left diagram) vs. `Softmax` (right diagram).
+8. **Crowding in decoder:** The red-outlined "Multi-Head Attention" box sits very tight against (and appears to touch/overlap) the "Add & Norm" box above it, and its V/K/Q circles crowd the yellow shape behind it.
+9. **Near-collision at bottom:** The right diagram's green frame bottom edge sits very close to the red slide border; the yellow band overlaps the green frame's lower edge.
+
+No placeholder/garbage strings, no non-English text, and no illegible text were observed; all text is readable at this resolution.

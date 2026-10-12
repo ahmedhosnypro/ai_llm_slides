@@ -23,18 +23,18 @@
 | slide_019.jpg | Encoder – Decoder Transformer | PASS_WITH_FIXES | 9 | 6 |
 | slide_020.jpg | Self Attention Mechanism | PASS_WITH_FIXES | 9 | 7 |
 | slide_021.jpg | Word Embedding | PASS_WITH_FIXES | 9 | 5 |
-| slide_022.jpg | Continuous bag-of-words (CBOW)   vs Skip-Gram Mode | PASS_WITH_FIXES | 9 | 6 |
+| slide_022.jpg | Continuous bag-of-words (CBOW)   vs Skip-Gram Models | PASS_WITH_FIXES | 9 | 6 |
 | slide_023.jpg | Review: Cosine Similarity | PASS_WITH_FIXES | 9 | 7 |
 | slide_024.jpg | Objective of Self attention | PASS_WITH_FIXES | 8 | 8 |
 | slide_025.jpg | Encoder – Decoder Transformer | PASS_WITH_FIXES | 9 | 5 |
 | slide_026.jpg | Self Attention Mechanism (Fundamental Operation) | PASS_WITH_FIXES | 9 | 5 |
 | slide_027.jpg | Self Attention Mechanism (Fundamental Operation) | PASS_WITH_FIXES | 8 | 5 |
-| slide_028.jpg | Self Attention Mechanism (Not Sensitive to Words O | PASS_WITH_FIXES | 9 | 6 |
-| slide_029.jpg | Self Attention Mechanism (as Query and {Key-Value} | PASS_WITH_FIXES | 9 | 5 |
-| slide_030.jpg | Self Attention Mechanism (Input Word plays Differe | PASS_WITH_FIXES | 9 | 4 |
-| slide_031.jpg | Self Attention Mechanism (Linear Transformation of | PASS_WITH_FIXES | 9 | 5 |
+| slide_028.jpg | Self Attention Mechanism (Not Sensitive to Words Order) | PASS_WITH_FIXES | 9 | 6 |
+| slide_029.jpg | Self Attention Mechanism (as Query and {Key-Value} Dictionary) | PASS_WITH_FIXES | 9 | 5 |
+| slide_030.jpg | Self Attention Mechanism (Input Word plays Different Roles) | PASS_WITH_FIXES | 9 | 4 |
+| slide_031.jpg | Self Attention Mechanism (Linear Transformation of Inputs) | PASS_WITH_FIXES | 9 | 5 |
 | slide_032.jpg | Linear Transformation | PASS_WITH_FIXES | 9 | 4 |
-| slide_033.jpg | Self Attention Mechanism (Linear Transformation of | PASS_WITH_FIXES | 9 | 8 |
+| slide_033.jpg | Self Attention Mechanism (Linear Transformation of Inputs) | PASS_WITH_FIXES | 9 | 8 |
 | slide_034.jpg | Self Attention Mechanism | PASS_WITH_FIXES | 9 | 4 |
 | slide_035.jpg | Self Attention Mechanism | PASS_WITH_FIXES | 9 | 4 |
 | slide_036.jpg | Self Attention Mechanism | PASS_WITH_FIXES | 9 | 5 |

@@ -1,0 +1,49 @@
+== per-line x-extents (black ink) ==
+  PreProc L1 'Pre': x 186..209 (w=24)  y 222..232
+  PreProc L2 'processing': x 155..239 (w=85)  y 243..254
+  Cyan L1 'Feature': x 318..378 (w=61)  y 221..233
+  Cyan L2 'Extraction': x 309..392 (w=84)  y 240..252
+  Green L1 'Feature': x 468..528 (w=61)  y 221..233
+  Green L2 'Selection': x 463..538 (w=76)  y 240..252
+  Lav L1 'Post': x 788..823 (w=36)  y 221..232
+  Lav L2 'processing': x 760..850 (w=91)  y 243..255
+  TD L1 'Training': x 108..177 (w=70)  y 150..166
+  TD L2 'Data': x 125..163 (w=39)  y 171..183
+  FR L1: x 795..874 (w=80)  y 314..326
+  FR L2: x 795..874 (w=80)  y 333..345
+  label1 L1: x 258..310 (w=53)  y 298..307
+  label1 L2: x 272..300 (w=29)  y 314..323
+  label2 L1: x 406..454 (w=49)  y 298..307
+  label2 L2: x 405..454 (w=50)  y 314..323
+  label3 L1: x 566..595 (w=30)  y 298..307
+  label3 L2: x 552..608 (w=57)  y 314..323
+  label4 L1: x 707..768 (w=62)  y 298..307
+  label4 L2: x 720..755 (w=36)  y 314..323
+  Classification white text: x 598..709 (w=112)  y 231..242
+  TITLE red band: x 219..715 (w=497)  y 68..91
+
+== font solve (Liberation Sans = Arial metrics) ==
+  missing: DejaVuSans-Bold /usr/share/fonts/dejavu/DejaVuSans-Bold.ttf
+  available: ['LiberationSans-Bold', 'LiberationSans']
+
+title targets: advance 496 (x220..715), cap 19
+  LiberationSans-Bold [(24, 462.3, 17), (25, 481.7, 17), (26, 500.7, 18), (27, 520.2, 19), (28, 539.5, 19), (29, 558.7, 20), (30, 577.9, 21), (31, 597.1, 21)]
+  LiberationSans [(24, 431.2, 17), (25, 449.3, 17), (26, 467.1, 18), (27, 485.2, 19), (28, 503.2, 19), (29, 521.1, 20), (30, 539.1, 21), (31, 557.0, 21)]
+
+'Classification' target adv 112, cap 12:
+  LiberationSans-Bold [(14, 91.0, 10), (15, 97.5, 11), (16, 104.1, 12), (17, 110.5, 12), (18, 117.1, 12), (19, 123.5, 13)]
+
+'processing' target adv ~? (Lav L2):
+  LiberationSans-Bold [(14, 74.7, 10), (15, 80.0, 11), (16, 85.4, 12), (17, 90.7, 12), (18, 96.1, 12), (19, 101.4, 13)]
+
+'Feature' target (Cyan L1):
+  LiberationSans-Bold [(14, 50.5, 10), (15, 54.2, 11), (16, 57.8, 12), (17, 61.4, 12), (18, 65.0, 12), (19, 68.6, 13)]
+
+labels 'Predicted' target ~62 cap 10:
+  LiberationSans-Bold [(11, 50.2, 8), (12, 54.7, 9), (13, 59.2, 10), (14, 63.8, 10), (15, 68.4, 11)]
+
+'Training' target ~70 cap 13:
+  LiberationSans-Bold [(15, 58.3, 11), (16, 62.3, 12), (17, 66.1, 12), (18, 70.0, 12), (19, 73.9, 13), (20, 77.8, 14)]
+
+'Result'/'Final' (FR lines):
+  LiberationSans-Bold Final: [(14, 32.7, 10), (15, 35.0, 11), (16, 37.4, 12), (17, 39.7, 12), (18, 42.0, 12)] Result: [(14, 42.8, 10), (15, 45.8, 11), (16, 48.9, 12), (17, 52.0, 12), (18, 55.0, 12)]

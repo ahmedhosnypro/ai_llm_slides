@@ -1,0 +1,31 @@
+## Element-by-element comparison (intro paragraph region only)
+
+**Red border box:** Present in both, similar weight (#C00000-ish) and proportional insets. Text sits fully inside the border in both; no ink crosses the frame. â
+
+**Text content, verbatim & line breaks:**
+- Line 1: "Instead of restricting the Activations of each layer to be *strictly* **Zero** *mean* and **unit** *variance*," â identical wording, identical wrap point in both. â
+- Line 2: "Normalization allows the network to learn parameters Î³ and Î² that can *convert the mean and*" â identical wording and wrap point. â
+- Line 3: "*variance to any value that **Minimizes Loss.**" â identical. â
+
+**Blue emphasis (line 1):** "strictly" italic, "Zero" bold, "mean and" italic, "unit" bold, "variance," italic â all blue in both; bold/italic pattern matches. â
+
+**Green emphasis (line 2):** "learn parameters" green + underlined in both. â
+
+**Red phrase (lines 2â3):** "*convert the mean and / variance to any value that **Minimizes Loss.**"* red italic underlined, underline continuous across the line break, "Minimizes Loss." bold â matches in both. â
+
+**Line spacing / geometry:** Three lines with comparable inter-line leading in both crops; no hugging-top inside the box; left inset of line 1 vs. lines 2â3 matches. â
+
+## Discrepancies
+
+1. **MINOR â Î³ coloring.** In IMG2 (original), "Î³" appears green (matching the "learn parameters / and" green run); in IMG1 (recreation) it is rendered red italic. Confidence: medium (low-res original, but hue difference vs. adjacent "and" is discernible).
+2. **MINOR â "and" coloring.** In IMG2, the word "and" between Î³ and Î² appears green; in IMG1 it is black. Confidence: medium-high.
+3. **MINOR â added green highlight fill.** IMG1 renders a pale-green highlight box behind "learn parameters"; IMG2 shows green underlined text on plain white with no visible highlight fill. Confidence: medium (low-res could hide a very pale fill, but none is visible).
+4. **MINOR â underline extent.** In IMG1 the green underline appears to continue under the Î³; in IMG2 it terminates with "parameters". Confidence: low-medium.
+5. **MINOR â spacing before "Minimizes".** IMG2 shows a slightly wider gap ("that  Minimizes") than IMG1's single space. Confidence: low; likely rendering artifact at 960Ã540.
+
+No BLOCKER or MAJOR defects: all text verbatim, all three lines present, wrapping identical, no frame overflow, no missing elements, no delimiter issues (n/a in this region).
+
+## Visual-quality defects in the recreation
+None observed â no clipping, collision, overflow, or illegible text; underline placement sits clear of the descenders and of the box border.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

@@ -1,0 +1,96 @@
+# Visual QA Analysis â TIDAâ00176 BlockâDiagram Zone Crops (montage of 6 upscaledÃ3 crops)
+
+## Overall montage layout
+A tall, mostly white page. Six crops are stacked vertically, leftâaligned; the entire right half of the page is empty white space. Each crop is preceded by a small red uppercase caption line (analystâadded labels, not slide content):
+
+1. `ZONE A_top-connection-zone (upscaled x3)`
+2. `ZONE B_mid+bottom-connections (upscaled x3)`
+3. `ZONE C_output-labels-right-of-triangles (upscaled x3)`
+4. `ZONE D_power-supplies-zone (upscaled x3)`
+5. `ZONE E_bluebox-right-edge-labels (upscaled x3)`
+6. `ZONE F_container-top-and-tag (upscaled x3)`
+
+All slide text is English; no wrongâlanguage strings anywhere. Image quality: soft/pixelated from the 3Ã upscale plus mild JPEG blocking/ringing around dark text on light backgrounds.
+
+---
+
+## ZONE A â top connection corridor (crop â 290Ã215)
+**Text (topâtoâbottom, leftâtoâright):**
+- `A, B` â upper right, directly left of the rightâpointing arrowhead (~x150â195, y70â85)
+- `SPI` â below it (~x140â180, y115â135)
+- `rface` â rotated 90Â° (reading bottomâtoâtop) on the gray vertical bar, centerâleft (~x75â110, y145â215). This is a clipped fragment of "Host MCU interface"; its left portion is cut off.
+
+**Layout:** blue block fragment clipped at the LEFT edge (x0â30) with a leftâpointing arrow from the gray bar into it; a tiny illegible oneâglyph fragment at the extreme left edge (~x8, y150). Gray vertical bar centerâleft. Orange/peach block clipped at the RIGHT edge (x255â290), reached by a rightâpointing arrow. Green dashed container background; small dashed bracket fragments at the bottomâright corner.
+
+**Defects:** left/right clipping of both flanking blocks; truncated rotated label ("rface"); illegible glyph fragment at left edge; the bottom dashed subâregion boundary is cut by the crop.
+
+---
+
+## ZONE B â mid/bottom connection corridors (crop â 290Ã360)
+**Text (topâtoâbottom):**
+- `Host MCU interface` â rotated 90Â° on the gray bar spanning nearly the full crop height (~x70â105). Endings are slightly soft but legible.
+- `A, B` â top corridor, right of the bar (~x145â195, y60â80)
+- `Analog` â second corridor (~x145â235, y105â125)
+- `A, B, R` â third corridor (~x145â230, y250â270)
+- `TTL` â below the third corridor (~x145â190, y285â305)
+
+**Layout:** blue block fragment at LEFT edge with three leftâpointing arrows into it (top ~y60, middle ~y175, bottom ~y250). RIGHT edge: dashed bracket/brace shapes (xâ255â290); a white box with a clipped dark glyph fragment (~x270â290, y85â115, unreadable); a gray/blue box fragment clipped at the bottomâright corner (~x255â290, y230â300).
+
+**Defects:** rightâedge clipping cuts a white label box and a gray box to unreadable fragments; corridor labels sit between arrows, slightly crowded against the bar.
+
+---
+
+## ZONE C â output labels right of triangles (crop â 310Ã510)
+**Text (topâtoâbottom):**
+- `A+,A-,B+,B-` â top label (~x80â225, y55â75), above a leftâpointing arrow into the upper triangle
+- `A+,A-,B+,B-,` / `R+,R-` â twoâline label (~x80â235, y320â360), note the trailing comma after the second `B-`; a leftâpointing arrow at ~y330
+- `Encoder connector` â rotated 90Â° inside the tall gray block at the right (~x245â305, y275â475), fully legible
+
+**Layout:** two green amplifier triangles at the LEFT edge (upper ~x10â35, y245â300 inside an orange dashed region; lower ~x10â45, y310â355), both partially clipped. RIGHT: gray "Encoder connector" block with a rightâpointing arrow entering it (~y350). A vertical connector line drops from the label area (~x175) to the bottom edge, cut off. Bottomâleft: gray box (~x0â70, y395â490) containing a white tag with a clipped, unreadable glyph (~x0â40, y425â465). Dashed bracket fragment at the right edge.
+
+**Defects:** triangles and the bottomâleft gray box/tag are clipped; the descending connector line is cut at the bottom border; the white tag glyph is illegible.
+
+---
+
+## ZONE D â power supplies (crop â 850Ã225, the widest crop)
+**Text (leftâtoâright, topâtoâbottom):**
+- `Power` / `Supplies` â two lines inside the tan/orange block (~x265â375, y120â165)
+- `5 V` â right of the upper output arrow (~x515â550, y95â110)
+- `3.3 V` â right of the lower output arrow (~x515â560, y122â138)
+- `Encoder Supply: 5.25 V` â below, right of the orange block (~x440â720, y165â185)
+
+**Layout:** small gray box at the LEFT edge (~x25â85, y112â158) with a rightâpointing arrow into the "Power Supplies" block. Two rightâpointing arrows exit the block to the `5 V` / `3.3 V` labels. A connector line runs from the `3.3 V` arrow region rightward and up (~x710 vertical, ~y40 horizontal) toward the top edge, clipped by the crop. Dashed green container border with rounded corners frames the zone (bottom corners ~x60 and ~x820).
+
+**Defects / omissions:** a `24 V` label is **not visible** in this crop (the expected source label appears to have been cut off to the left, along with any wire attached to the gray box). The top connector routing is clipped midâline. Dashed border fragments at the top edge are truncated.
+
+---
+
+## ZONE E â blue box rightâedge labels (crop â 130Ã530, narrow)
+**Text (topâtoâbottom, all rotated 90Â°, reading bottomâtoâtop):**
+- `SPI` â topâleft (~x10â40, y55â90), slightly clipped at the left edge
+- small white icon just below `SPI` (~x30â60, y85â120) â reads as a tiny pen/pencil or chipâlike pictogram, no text
+- `2-bit` (~x5â35, y330â365) and `ADC` (~x8â35, y375â410) â almost certainly "12âbit ADC" with the leading "1" cut off by the left crop boundary
+- `QEP` â bottom (~x5â40, y470â505), partially clipped
+
+**Layout:** large blue block fills the LEFT portion (x0â75), clipped at left/top/bottom. A thin gray vertical bar (the hostâinterface bar) runs along the RIGHT edge (xâ95â125), clipped at right. Three arrows point left from the bar into the blue block at ~y60, ~y315, ~y480, aligned with the SPI, ADC, and QEP pins respectively.
+
+**Defects:** every label is edgeâclipped to some degree; the "12âbit ADC" reading is inferred from the clipped "2âbit"/"ADC" fragments; heavy upscale softness on the small icon.
+
+---
+
+## ZONE F â container top and tag (crop â 690Ã225)
+**Text (topâtoâbottom):**
+- `TIDA-00176` â bold, inside a white rectangular tag at the top rightâofâcenter (~x380â615, y30â95; text ~x390â590, y40â85)
+- `16-bit high-res path` â inside a white label within a dashed orange/peach outlined box at the lower left (~x60â320, y175â200; dashed box ~x35â425, y155â215, running to the bottom crop edge)
+
+**Layout:** dashed green container top border with a rounded topâright corner (~x640) spans the top; dashed vertical border at the right (~x630â650). Bottom edge: the tip of a green triangle/arrow shape (~x355â440, y205â225) is cut off by the crop.
+
+**Defects:** the dashed "16âbit highâres path" box and the triangle tip are clipped at the bottom; otherwise this zone is the cleanest of the six.
+
+---
+
+## Defect summary
+- **Systematic edge clipping** in every crop: blocks, rotated labels ("rface" in A; "2âbit/ADC", "QEP", "SPI" in E), boxes (B, C), connector lines (C bottom, D top), and the triangle tip (F) are all truncated by crop boundaries.
+- **Unreadable fragments:** one glyph at Zone A's left edge; a dark mark in the white box (Zone B right); a glyph in the white tag of the gray box (Zone C bottomâleft).
+- **Missing expected content:** the `24 V` label referenced for Zone D is not present in the crop.
+- **No placeholder/garbage strings, no overlapping text, no wrongâlanguage text** detected; all legible labels are consistent with a TIDAâ00176 referenceâdesign block diagram.

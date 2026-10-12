@@ -1,0 +1,19 @@
+{"page": 1, "verdict": "pass", "issues": []}
+
+**Evidence section**
+
+- Probe: `videos/deep-learning/001_introduction/recreated_pptx/qa/slide049/probe_1.txt` â gateway window opened, default route (images), single-read.
+- Judge: `videos/deep-learning/001_introduction/recreated_pptx/qa/slide049/judge_attempt_1.txt` â comparison winner body, `--thinking high --max-tokens 65536`, W4 wide wall (540s), no garbage retry needed. Certificate: single-read, default route (images), glm leg DEFERRED/BLOCKED.
+
+**Findings (element-by-element)**
+
+- **Title**: "Convnets in practice" â verbatim match, centered, bold dark-red serif in both. Recreation title is slightly larger relative to the panel; within tolerance (MINOR at most).
+- **Body box**: blue-bordered rectangle present in both, same relative position, top-left bullet list inside. Box occupies a near-identical footprint; recreation's box is marginally wider â MINOR, within house-chrome scaling.
+- **Text verbatim check (all 7 bullets)**: "Several convolutional layers ( 5 or more)" / "After the convolutional layers non-linearities are added (The most popular one is the ReLU)" / "After the ReLU usually some pooling ( Most often max pooling)" / "After 5 rounds of cascading:" / "Vectorize the last convolutional layer (Flatten)" / "Use as Input to the first fully connected layer (FC)" / "Proceed as in a traditional classification neural network" â all verbatim, including the spaced "(" style and the two-line wrap of bullet 2 with identical break point ("The most / popular one is the ReLU)"). Line spacing within the wrapped bullet matches.
+- **Styling**: "non-linearities" bold+underlined dark blue in both; "ReLU" and "max pooling" in red in both; "After 5 rounds of cascading:" bold, underlined, dark red in both. Sub-bullet indentation (3 items, indented one level) matches ordering and gaps.
+- **Vertical centering / alignment**: bullets and text sit vertically centered within the blue box in both; no text hugging delimiters; parenthesized content aligned correctly.
+- **Frame containment**: no ink crosses the blue box border or the house gray panel border; the badge "49" sits inside the panel top-right â house chrome per ground rules, not scored.
+- **Chrome/artifacts**: yellow badge correctly present only in IMG1 (mandated); black bottom bar and mouse cursor in IMG2 correctly omitted per ground rule (c).
+- **Colors**: dark-red title/bold-red rule, blue body text, red highlights, blue box border, gray panel â all approximate hex matches.
+
+No BLOCKER or MAJOR defects found. **FINAL VERDICT: PASS** for "faithful, usable recreation."

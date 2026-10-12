@@ -1,0 +1,23 @@
+check                  target                               measured                             dL dT dR dB              verdict
+title(red)             [ 169.9, 143.9,1210.2, 183.1] [   170,   145,  1206,   183] [ +0.1, +1.1, -4.2, -0.1] OK
+chip1(-inf)            [1544.0, 139.5,1613.3, 183.1] [  1545,   141,  1611,   181] [ +1.0, +1.5, -2.3, -2.1] OK
+fraction(red)          MISSING INK <-- FAIL
+rot_scaling(red)       [ 800.6, 484.0, 843.9, 780.5] [   799,   494,   847,   771] [ -1.6,+10.0, +3.1, -9.5] CHECK
+rot_softmax(purple)    [1075.8, 553.8,1101.8, 623.5] [  1083,   552,  1095,   624] [ +7.2, -1.8, -6.8, +0.5] CHECK
+sigma_glyph(purple)    [1069.3, 630.1,1095.3, 702.0] [  1073,   659,  1091,   689] [ +3.7,+28.9, -4.3,-13.0] CHECK
+
+arrowhead ink presence (>=15 red px in box):
+  head A1 (167,237.5)        n= 133 OK
+  head E (377,240)           n= 133 OK
+  head F1 left(449,237.5)    n= 146 OK
+  head G1 (503.5,237.5)      n= 139 OK
+  head H1 (544.5,238)        n= 179 OK
+  head I2 up (586,216)       n= 164 OK
+  head J1 left(572,238)      n= 140 OK
+  head K1 left(744.5,238)    n= 140 OK
+  head L1 up (306.5,448.5)   n= 168 OK
+  head C1 (328,238)          n= 152 OK
+  B gap empty                n=   0 OK
+  K2 gap empty               n=   0 OK
+
+TOTAL FAILS: 4

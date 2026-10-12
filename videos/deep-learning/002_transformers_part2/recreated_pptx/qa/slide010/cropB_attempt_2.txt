@@ -1,0 +1,62 @@
+# Vision Gate Analysis â Slide 010 (Crop B, Right Panel)
+
+## Dispatch Log
+
+- Step 1 (gateway probe): SKIPPED per dispatcher directive 2026-10-12 (gate shared fleet-global, presumed congested).
+- Step 2 (comparison): Executed exactly once at the mandated wide wall with judge parameters `--thinking high --max-tokens 65536`, timeout 1700 (inner 1600). No HangError, no GarbageError â single-read, no retries required.
+- Step 3: Banked transcript read (never PNG bytes).
+
+**Transcript:** `videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide010/judge_attempt_1.txt`
+**Route:** default (images model), single-read; glm leg DEFERRED/BLOCKED.
+
+---
+
+## Judge Findings (from the comparison winner body)
+
+Ground rules settled first per directive: house template chrome (outer red frame, yellow/purple badge "10", title box) and playlist chrome law are NOT discrepancies; the black bottom strip in IMG2 is a video-player letterbox artifact correctly omitted; typed-vs-handwritten difference at most MINOR; no mouse-cursor recreation demanded.
+
+### Element-by-element fidelity (right panel crop)
+
+| Element | Original (IMG2) | Recreation (IMG1) | Verdict |
+|---|---|---|---|
+| Pink X-pill | Light-pink rounded pill with red `[ ]` brackets, four white circles with red rings containing xâ..xâ | Pink rounded pill, red brackets, four red-ringed circles xâ..xâ | MATCH â same shape, colors, ordering, subscript placement |
+| X label | Large red serif "X" below-left of the pill | Large red serif "X", same relative position | MATCH |
+| Curly braces | Tall dark curly braces spanning pill+matrix rows | Tall braces spanning same enclosed lines | MATCH (delimiter geometry law 7(i)-(iii): full span, no text overlap, curvature consistent) |
+| Mint 4Ã4 W matrix | Mint-green rounded panel, 4Ã4 grid of cream tiles, row-colored W subscripts (blueâpurpleâorangeâgreen), Wââ..Wââ ordering correct (column-index varies fastest) | Identical grid, tile colors, subscript coloring per row, correct indexing | MATCH â table/data law 8 satisfied |
+| Red plus | Red "+" between brace and b-column | Red plus, same placement, vertically mid-panel | MATCH |
+| Tall red parens | Tall thin red parentheses enclosing bâ..bâ | Tall red parens spanning all four b tiles top-to-bottom | MATCH (law 7: spans all enclosed lines, no overlap with text) |
+| b-column | Four cream rounded tiles bâ..bâ, black bold labels with subscripts | Four tiles bâ..bâ, matching colors/spacing/vertical rhythm | MATCH |
+| "IF No Bias" callout | Black rounded callout with white bold text, bottom-right | Present, verbatim, same style and position | MATCH |
+| Red vertical stroke under bâ | Present in both | Present | MATCH |
+| Containment | All elements inside inner frame | All elements fully inside inner panel and house frame; no ink crossing any boundary | MATCH (law 5: no overflow) |
+
+### Text / geometry metrics
+- Inter-tile gaps and line rhythm of the b-column match; bâ..bâ sit vertically centered within the red parens (law 2).
+- xâ..xâ circles evenly spaced with matching gaps; subscripts aligned consistently (law 4).
+- W matrix row colors and subscript offsets replicate the original's coloring scheme exactly.
+- 2Ã zoom on both crops confirms no clipping, no collisions, no illegible glyphs in the recreation.
+
+### Discrepancy list
+- **NONE at BLOCKER or MAJOR severity.** All renderable content matches element-for-element.
+- MINOR (confidence high): slight stroke-weight/anti-aliasing differences in the curly braces and red parens attributable to PowerPoint vector rendering vs. video compression â inherent medium difference per ground rule (d); below actionability.
+- MINOR (confidence medium): the recreation's W-tile corners render marginally rounder than the original's tiles; purely cosmetic.
+
+### Visual-quality defects in the recreation
+- None: no overflow, no wrong wrapping, no collisions, no illegibility.
+
+---
+
+## Certificate
+
+- **Check type:** single-read comparison, default route (images model)
+- **GLM leg:** DEFERRED/BLOCKED (per dispatch context)
+- **Retries:** none (no HangError, no GarbageError; body coherent with a real FINAL VERDICT line)
+- **Verdict basis:** real comparison winner body, banked at the transcript path above
+
+**FINAL VERDICT: PASS** for "faithful, usable recreation"
+
+---
+
+{"page": 1, "verdict": "pass", "issues": []}
+
+Evidence: transcript `videos/deep-learning/002_transformers_part2/recreated_pptx/qa/slide010/judge_attempt_1.txt` â right-panel crop comparison found all elements (pink X-pill with xââxâ circles, curly braces, mint 4Ã4 W matrix with row-colored subscripts, red plus, tall red parens, bââbâ column, "IF No Bias" callout) matching the original with no BLOCKER/MAJOR discrepancies; only sub-actionable MINOR rendering-medium differences. Inherited slide-009 blocks and playlist chrome excluded from findings per inheritance and chrome law.

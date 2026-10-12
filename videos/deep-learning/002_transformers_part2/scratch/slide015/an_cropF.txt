@@ -1,0 +1,39 @@
+# Visual QA Analysis â Slide 015 top-strip crop (x440â830, y60â175, upscaled Ã4)
+
+## 1. Verbatim text transcription
+
+**Fully legible:**
+- `h=5`
+- `h=4`
+- `h=3`
+- `h=2`
+- `Weighted SUM` â appears **4 times** (four identical white oval labels)
+- `arity` â partial word at the left edge (preceding characters are cut off by the crop; could be the end of "Similarity"/"Sparsity"/etc., but only "arity" is visible)
+
+**Partially legible / stylized:**
+- Inside each of the dashed-outline boxes: a green handwritten-style glyph resembling **"Yâ"** with an additional small superscript mark (possibly "(y)" or a hat symbol). The subscript "2" is discernible; the superscript character cannot be resolved at this resolution.
+- In the small dashed box on the right: a red/magenta **"X"** with a small subscript (looks like "Xâ" or "Xáµ¢"; subscript is illegible).
+- Two white ovals are mostly hidden behind the olive box and the red/maroon box respectively; only fragments of dark text are visible (the visible strokes are consistent with a word beginning "Predâ¦", but this is **not clearly legible** â flagged as uncertain).
+
+No other text is present. All legible text is in English; "SUM" is capitalized consistently in all four instances.
+
+## 2. Layout
+
+- **Top edge:** a solid dark navy/purple horizontal rule spans the entire width (~top 1â2% of the image). Below it, white background.
+- **Diagonal stack of dashed boxes (upper-center â lower-left):** five rectangular boxes drawn as rows of ~5 cells with thin vertical dividers, each containing a green "Yâ"-style glyph: peach/orange (topmost), light green, bright yellow, olive/dark khaki, and dark maroon (clipped at the left edge). The top three have green dashed borders; the lower two have darker dashed borders. Each successive box sits lower and further left, slightly overlapping the one above.
+- **Red arrowheads:** a small solid red triangle pointing **upward** sits directly beneath each dashed box; thin gray vertical connector lines extend downward from each arrowhead through the diagram.
+- **"Weighted SUM" ovals:** four white ovals with thin dark outlines step down-left in parallel with the boxes; the gray connector lines pass behind them.
+- **Right side:** four large nested rounded rectangles, layered like cascading cards â peach/tan (backmost, labeled `h=5`), light green (`h=4`), pale yellow (`h=3`), lavender/purple (`h=2`, front/bottom). Each label is bold yellow text inside a black ellipse positioned near the upper-right of its region.
+- **Left edge:** the clipped "â¦arity" oval at upper-left; the maroon box is cut by the left edge at mid-left; the purple region occupies the bottom-left corner, where a small solid green shape is also clipped.
+- **Right side, lower area:** inside the peach region, a small dashed-outline rounded box containing the red "X" glyph plus two or three small pink/white cells; below it, another dashed rounded shape with pink cells is clipped by the bottom edge.
+
+## 3. Visual defects / clipping
+
+- **Clipped on all four edges:**
+  - Top: the navy rule is cut by the crop's top boundary (expected for a strip crop).
+  - Left: "â¦arity" oval and the maroon box are cut mid-content.
+  - Bottom: the purple `h=2` region, its "Weighted SUM" oval, the green shape at bottom-left, and the bottom-right dashed cell-shape are all cut by the bottom edge.
+  - Right: the pink-cell shapes approach the right boundary; the lower dashed shape appears cut at bottom-right.
+- **Occlusion (inherent to the slide, not the crop):** the olive box covers a white oval beneath it, and the maroon box covers another oval â the underlying labels are largely unreadable. Each dashed box also slightly overlaps the one above it.
+- **Illegibility due to scale/upscale:** the "Yâ" superscripts, the "X" subscript, and the occluded oval words cannot be read even at Ã4; borders and text show pixelation/aliasing from the upscale.
+- **No placeholder or garbage strings** (no lorem-ipsum-type content) and **no wrong-language text** were observed.

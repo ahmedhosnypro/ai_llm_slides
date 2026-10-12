@@ -1,0 +1,77 @@
+size 960x540
+
+-- chrome --
+row y=200: red-x 0..0 count 2
+row y=300: red-x 0..0 count 6
+row y=400: red-x 0..0 count 6
+col x=100: red-y runs [(163, 167), (170, 171), (219, 221), (486, 487)]
+col x=480: red-y runs [(165, 166), (219, 221), (486, 487)]
+col x=860: red-y runs [(219, 221), (486, 487)]
+panel fill samples: [252, 252, 254] [254, 255, 253] [254, 255, 253]
+outside fill x=20: [254, 255, 253]  y=20: [254, 255, 253]
+
+-- badge region in ORIGINAL (x 860..930, y 40..105) --
+yellow px: 0
+purple px: 0
+
+-- title --
+title red ink                      x 140..825  y 71..98  (w 686 h 28)
+title blue ink                     x 448..542  y 67..100  (w 95 h 34)
+title all-dark ink                 x 60..899  y 43..99  (w 840 h 57)
+title red sample: [231, 233, 230]
+
+-- intro lines: horizontal ink profiles y 100..200, x 60..900 --
+line y 131..149 h=19  x 81..502  blue_x 83..503
+line y 157..176 h=20  x 81..525  red_x 82..526
+line y 184..199 (open)
+intro line1 color sample: [231, 233, 230]
+
+-- white content box --
+content box red border (all red)   x 58..876  y 190..513  (w 819 h 324)
+red-border columns (count>50): [ 58  59  82  83 571 572 573 574 575 576 577 578 579 580 581 582 583 584
+ 585 586] ...
+red-border rows (count>50): [72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91] ...
+inside-box fill sample: [250, 252, 249] [254, 255, 253]
+
+-- bullet lines: profiles x 90..540, y 205..360 --
+line y 219..220 h=2  x 90..539
+line y 225..243 h=19  x 115..475
+line y 257..271 h=15  x 114..530
+line y 284..313 h=30  x 109..537  blue_x 109..311  blue_y 287..313
+line y 321..355 h=35  x 109..462  blue_x 109..311  blue_y 323..351
+line y 357..359 (open)
+
+bullet markers (scan x 90..130, y 205..360):
+  none
+marker color sample: [251, 255, 253]
+
+-- Where legend box --
+legend light-blue fill             x 457..566  y 348..475  (w 110 h 128)
+legend red ink                     x 420..599  y 358..488  (w 180 h 131)
+legend fill sample: [234, 255, 249]
+legend text bands: [(357, 394), (396, 482), (486, 487)]
+
+-- 4x4 input grid --
+grid green cells                   x 571..647  y 365..423  (w 77 h 59)
+grid yellow cells                  x 648..726  y 366..455  (w 79 h 90)
+grid red-fill cells                x 569..700  y 426..487  (w 132 h 62)
+grid cyan cells                    x 540..726  y 400..482  (w 187 h 83)
+grid colored cols x 571..726 n=148
+grid colored rows y 366..482 n=113
+fill samples TL/TR/BL/BR: [13, 202, 86] [252, 255, 12] [226, 0, 2] [23, 188, 236]
+
+-- arrow + fraction + output grid --
+arrow dark ink                     x 739..788  y 406..448  (w 50 h 43)
+red 1/2 fraction ink               x 777..819  y 405..453  (w 43 h 49)
+out-grid green cell                x 800..831  y 396..423  (w 32 h 28)
+out-grid yellow cell               x 834..871  y 396..423  (w 38 h 28)
+out-grid red cell                  x 800..872  y 426..487  (w 73 h 62)
+out-grid cyan cell                 x 835..871  y 426..453  (w 37 h 28)
+
+-- bottom strip --
+  y=515: dark n=0 
+  y=520: dark n=884 (38, 921)
+  y=525: dark n=884 (38, 921)
+  y=530: dark n=884 (38, 921)
+  y=535: dark n=884 (38, 921)
+  y=538: dark n=884 (38, 921)

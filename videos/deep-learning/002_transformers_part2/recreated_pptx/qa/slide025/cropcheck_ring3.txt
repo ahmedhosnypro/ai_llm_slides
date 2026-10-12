@@ -1,0 +1,53 @@
+# Element-by-Element Comparison
+
+## Ring traces (red cos / green sin)
+- **IMG1**: Two interleaved sinusoidal traces forming a scalloped ring, 16 periods, red outer/cos and green inner/sin alternating. â
+- **IMG2**: Same structure, same 16 periods, same color interleaving, similar phase relationship (red/green swap positions around the ring in the same places). â
+- Thickness and color saturation match well. No missing lobes or extra lobes detected.
+- **Result: MATCH**
+
+## Hub
+- Small white circle with gray outline at center in both. Position, size, and stroke match.
+- **Result: MATCH**
+
+## Dashed radial lines
+- Both images show two dashed black lines from the hub toward the right, spanning one period of the scalloped ring, converging wedge shape. â
+- **Discrepancy**: In IMG1, the dashed lines terminate in small solid arrowheads at their right ends (visible at the top-right and bottom-right tips). In IMG2, the dashed lines end plainly with no arrowheads. This is EXTRA ink in IMG1.
+- **Result: MINOR discrepancy (extra arrowheads on dashed lines), confidence ~70%** (the arrowheads are small and partially overlap the trace, but appear consistently present in IMG1 and absent in IMG2)
+
+## Right arc arrow ("Sin/Cos signal period")
+- Curved double-headed arc arrow at right, positioned between the two dashed lines, both images. â
+- IMG1's arrowheads are slightly larger/bolder than IMG2's finer arrowheads, and the arc in IMG1 sits marginally closer to the ring. Within tolerance.
+- **Result: MATCH (MINOR styling difference in arrowhead size, confidence ~60%)**
+
+## Top arc arrow ("Rotation direction")
+- Curved double-headed arc arrow above "Rotation direction" text, spanning similar arc, in both. â
+- **Result: MATCH**
+
+## Leader lines and arrowheads
+- **cos**: red elbow leader from "cos" label down-left to the trace, with open-V arrowhead touching a red scallop â present in both, similar elbow geometry. â
+- **sin**: green elbow leader from "sin" label down-left to the trace, with open-V arrowhead â present in both. â
+- Arrowheads are small open-V style in both; IMG1's are slightly crisper (rendering artifact of 150dpi PNG vs. video frame, not a real discrepancy).
+- **Result: MATCH**
+
+## Text labels
+- "Rotation direction", "CCW/CW", "Line count =16" (bold), "(16 signal periods per revolution)", "Sin/Cos signal period", "cos" (red), "sin" (green) â all present, correctly colored, correctly positioned in both.
+- **Result: MATCH**
+
+## Extra/missing ink
+- The small stray mark at the far-left edge of IMG2 is the noted video-capture artifact â correctly absent from IMG1, not flagged per instructions. â
+- No other extra or missing ink detected.
+- **Result: MATCH**
+
+---
+
+# Discrepancy Summary
+
+| # | Discrepancy | Severity | Confidence |
+|---|---|---|---|
+| 1 | IMG1 dashed radial lines have small arrowheads at right ends; IMG2 dashed lines are plain (extra ink in IMG1) | MINOR | 70% |
+| 2 | Right arc-arrow heads slightly larger/bolder in IMG1 than IMG2 | MINOR | 60% |
+
+No BLOCKER or MAJOR discrepancies found. All structural elements, colors, text, labels, leader lines, both arc arrows, hub, and the 16-period trace geometry are faithfully reproduced.
+
+**FINAL VERDICT: PASS**

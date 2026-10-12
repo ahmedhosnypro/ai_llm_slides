@@ -1,0 +1,38 @@
+[info] context header injected: VIEW: Slide 017 build-time zoom: concatenated bar left half — resolve the 3 segment labels exactly (Y sub, superscript form and digit) | CAPTURE: 4x LANCZOS zoom of original lecture frame crop (frame px 300,124..500,156), 960x540 source
+[info] mode analysis | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 3099759
+[warn] analysis :: images :: attempt 1: ABORT EmptyStreamError: empty content: no deltas — abort+retry 1/3
+[info] crops/micro_concat_l.png: transcript written (validated winner, atomic): transcripts/an_conl.txt (pid 3099759)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== crops/micro_concat_l.png ===
+[winner] images (round 1, attempt 2)
+## 1. Verbatim text transcription
+
+- **Left edge:** A single dark-red capital letter, partially clipped â best read as **"H"** (only its right portion is inside the frame).
+- **Segment 1 (orange):** **Yââ½Â¹â¾** â a capital "Y" with a small subscript character and a parenthesized superscript. Rendered in white/light text on the orange fill.
+- **Segment 2 (olive):** **Yââ½Â¹â¾** â same pattern as segment 1, white/light text on the olive fill.
+- **Segment 3 (yellow-green):** **Yââ½â¦** â only "Y", the subscript, and the opening of the parenthesized superscript are visible; the rest is cut off by the right edge of the crop.
+
+**Resolution of the label components (as requested):**
+- **Y sub:** In all three labels the subscript is a single small character; the best reading is **"2"** (an italic "a" cannot be fully excluded at this resolution â the glyph is only a few pixels tall and blurred by compression).
+- **Superscript form:** Parenthesized, i.e. **(â¦)** â opening and closing parentheses are clearly distinguishable in segments 1 and 2.
+- **Digit:** **1** â the superscript reads **(1)** in segments 1 and 2. Segment 3's digit is clipped/not resolvable.
+
+No other complete words, sentences, or digits are visible.
+
+## 2. Layout
+
+- **Top edge:** A thin horizontal teal/green rule line runs along the very top of the frame, spanning roughly the full width.
+- **Left edge:** The clipped red "H" glyph sits on a pale/white background, immediately left of the bar. The orange segment begins a short distance in from the left edge.
+- **Right edge:** The bright yellow-green segment runs into and past the right edge; its label is truncated mid-glyph.
+- **Middle:** A single horizontal concatenated bar of three colored segments (burnt orange â olive/khaki â chartreuse). Each segment has a decorative serrated/zigzag border (dark-red zigzag on segment 1, teal zigzag on segment 2, green dotted border on segment 3) and is subdivided by thin vertical lines into about four cells, with the label placed in the second cell from the left.
+- **Bottom:** A white strip below the bar contains **two dark-red upward-pointing arrowheads**, positioned under the right-hand portion of the bar (roughly beneath the segment-2/segment-3 region), apparently marking/pointing at those cells.
+
+## 3. Visual defects and anomalies
+
+- **Clipping (left):** The "H" is cut off â the crop starts mid-glyph.
+- **Clipping (right):** Segment 3 and its label are cut off at the right edge; the superscript "(1)" is incomplete there.
+- **Illegibility:** The subscript characters in all three labels are extremely small and blurred; the reading "2" is a best-effort interpretation, not a certainty.
+- **Compression artifacts:** Heavy blocky JPEG artifacts throughout â visible mosquito noise around the text, the zigzag segment borders, and color bleeding along the bar edges. The serrated borders may in part be artifact-exaggerated dotted/dashed outlines.
+- **No placeholder/garbage strings and no wrong-language text** are evident; all visible content is consistent with a technical/mathematical slide annotation (Y-with-sub/superscript labels plus pointer arrows).
+

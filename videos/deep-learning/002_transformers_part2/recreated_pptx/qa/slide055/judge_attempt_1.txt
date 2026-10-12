@@ -1,0 +1,33 @@
+## Element-by-Element Fidelity Check
+
+**House/playlist chrome** (red frame, gray panel, yellow badge "55", title box placement): matches the playlist chrome law; badge sits top-right with ring, per original. Not assessed as discrepancies.
+
+**Title block:** "Encoder-Decoder  Attention Mechanism  (In Decoder)" + "(Self Attention of word Zâ w.r.t All words in Sentence ( Yâ, Yâ, Yâ, Yâ )" â verbatim match, same line break, same red highlighting of "(In Decoder)", Zâ, and YââYâ with subscripts, centered as in original. â
+
+**Left encoder stack:** Yellow dashed panel with Yâ/Yâ/Yâ/Yâ rows, green Wââ½Ê³â¾ boxes, Kâ/Kâ/Kâ/Kâ key vectors with red labels and subscripts â all present, correct order top-to-bottom, correct colors. â
+
+**Dot Product region:** Gray box with "Dot Product" text, "K.q" label, four blue dots on diagonal with connecting red line and arrowheads â present; diagonal geometry and dot placement match original closely. â (Minor: "K.q" sits just inside the gray box in IMG1 vs just outside in IMG2.)
+
+**Scaling by âd:** Pink vertical strip with rotated "Scaling by âd" â match. The KÂ·q/âd fraction is rendered as a stacked fraction with horizontal bar â per rule (e), a mandated format upgrade, NOT a discrepancy.
+
+**Soft max:** Purple strip, rotated "Soft max" + large purple "S" â match. â
+
+**Weighted SUM region:** Light-blue Î£ box, "Weighted SUM" label, four â multiply nodes in the same staircase arrangement, red arrows from Î£ down to each node, Vâ/Vâ/Vâ/Vâ labels vertically aligned against their nodes â all present and correctly positioned. â
+
+**Right decoder stack:** Wáµ¥â½Ê³â¾ cyan boxes, yellow dashed panel with Yââ¦Yâ, "From Encoder Output" hatched box â present, mirrored correctly. â
+
+**Top output:** Green O block with green arrow â present. Minor: IMG1's green arrow points straight up; original's is slightly diagonal.
+
+**Bottom region:** Purple dashed oval with Zââ¦Zâ segments (Zâ highlighted with dashed red box), W_qâ½Ê³â¾ box, qâ label with color strip, red arrow pointing to Zâ, "From Decoder Self Attention Layer" box with white left arrow, and bottom-right green dashed panel (1Ãd, W, =, 1Ãd, dÃd, "d: Embedding Length") â all present, correct values and layout. â
+
+**Frame containment:** All content sits within the beige panel and house frame with the same tight margins as the original (encoder arrows, purple oval, and green W panel approach the edges in BOTH images identically) â no new overflow introduced.
+
+## Discrepancy List
+
+1. **MINOR** â Left/right "From Encoder Output" block arrows are solid red in IMG1; original uses white/outline-style block arrows. (confidence: high)
+2. **MINOR** â "K.q" label placed just inside the gray Dot Product box in IMG1 vs just outside it in IMG2. (confidence: medium)
+3. **MINOR** â Green arrow to O output is vertical in IMG1 vs slightly angled in IMG2. (confidence: high)
+
+No BLOCKER or MAJOR defects found: no missing elements, no text deviations, no table/chart data issues, no delimiter, wrapping, clipping, or collision problems.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

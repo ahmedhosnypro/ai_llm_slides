@@ -78,3 +78,41 @@ blocked fetches noted below).
 The ORIGINAL VIDEO FRAME is ground truth for what each slide shows; web
 sources confirm/correct data and provenance, never license inventing content.
 `[?]` markers are removed only with a confirming URL recorded here.
+
+## Script-12 raw cross-check (2026-10-11, web-research verification worker)
+
+Cross-checked against `analysis/slide_060_raw.json` (script-12 raw landed
+after this record was written from the banked vision transcript).
+
+- CONFIRMED by raw: title verbatim "What is Next  (as of 2020)" (double
+  space before the parenthetical); all six entries in the blue-bordered box
+  word-for-word as recorded — GPT-1 and GPT-2 (Generative Pre-trained
+  Transformers) / "Radford et al., OpenAI. June 2018 and February 2019.";
+  BERT (Bidirectional Encoder Representations from Transformers) / "Devlin
+  et al., Google AI Language. May 2019."; RoBERTa (Robustly Optimized BERT
+  Approach) / "Liu et al., Facebook AI. June 2019."; "Transformer-XL:
+  Attentive Language ModelsBeyond a Fixed-Length Context" (run-together
+  "ModelsBeyond" preserved) / "Zhang Dai et al. Carnegie Mellon University
+  and Google Brain"; T5 (Text-to-Text Transfer Transformer) with NO
+  citation line; "GPT-3  (175 Billion Parameter, Beta Release June 2020)"
+  (two spaces after "GPT-3") with NO citation line. The raw independently
+  reproduces BOTH recorded slide-vs-source notes from the frame: the
+  slide's "Zhang Dai" typo (recorded correction: first author is Zihang
+  Dai) and the printed "May 2019" BERT date (recorded: arXiv v2 24 May
+  2019, original Oct 2018) — the citation table's groundings stand
+  unchanged. Identity metadata matches (old extraction slide 150, kept
+  frame_05440, shown 5128–5439 s, 312 frames); badge "60" (yellow circle,
+  BLUE outline/text per the raw — deck-consistent detail).
+- STRENGTHENED: open question 2 — the raw ALSO reads "ModelsBeyond" as
+  printed with no space (two independent machine readings now agree it is
+  run-together on the frame); it remains a slide typo to preserve verbatim,
+  so the `[?]` stays frame-level (no URL can confirm a typo).
+- New raw detail (no conflict, build-level): the Transformer-XL entry is
+  styled bold-italic (blue name + red descriptor) unlike the other entries;
+  mouse-cursor artifact located over the content box below the
+  Transformer-XL entry (i.e. in the T5/GPT-3 zone — matches this record's
+  "near the T5/GPT-3 lines").
+- Open question 1 (BERT date intent: NAACL June 2019 vs arXiv v2 May 2019)
+  is untouched by the raw — stays `[?], slide text as printed either way.
+- No new published-figure claims appear in the raw (plain text list;
+  nothing to fetch). Corrections needed: none.

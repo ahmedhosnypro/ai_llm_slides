@@ -1,0 +1,30 @@
+# Element-by-Element Fidelity Check
+
+## Structural inventory (both images)
+
+| Element | Original (IMG2) | Recreation (IMG1) | Match? |
+|---|---|---|---|
+| Title "Continuous bag-of-words (CBOW)   vs Skip-Gram Models" (red, incl. double space before "vs") | â | â | Yes |
+| Slide number "22" in yellow oval, top-right | â | â (house badge) | Yes |
+| Blue outer box split into two halves by central vertical blue divider | â | â | Yes |
+| Left panel: dark-red INPUT box, orange PROJECTION box, green OUTPUT box | â | â | Yes |
+| Right panel: same three boxes | â | â | Yes |
+| CBOW flow: 4 input squares (w(t-2), w(t-1), w(t+1), w(t+2)) â arrows converge â SUM square â arrow â w(t) square | â | â | Yes |
+| Skip-gram flow: w(t) square â arrow â projection square â 4 arrows fan out to output squares (w(t-2)â¦w(t+2)) | â | â | Yes |
+| "SUM" label above projection square (left panel only) | â | â | Yes |
+| Yellow rounded labels "CBOW" / "Skip-gram" with red border, inside blue box at bottom | â | â | Yes |
+| Column headers INPUT / PROJECTION / OUTPUT, top of each box | â | â | Yes |
+| Label placement: left-panel context words left of squares; right-panel context words right of squares; w(t) left of its square in right panel | â | â | Yes |
+
+## Discrepancies
+
+1. **MINOR** â Proportions of inner boxes (confidence: high). Because the original frame is a squarer 4:3 lecture capture and the recreation is on the mandated 16:9 house canvas, the INPUT/PROJECTION/OUTPUT boxes are proportionally taller/narrower and the arrows correspondingly steeper. All content, ordering, and topology are preserved; this is inherent to the house template, not a content error.
+2. **MINOR** â Title weight/size (confidence: medium). The recreation's title renders slightly heavier/larger relative to the slide than the original capture. Same text, same color, same position class.
+3. **MINOR** â Arrow endpoints/curvature (confidence: medium). Converging/fanning arrows in the recreation terminate at slightly different points on the squares than the original (e.g., arrows touch the square edges rather than stopping a few px short). Topology and direction are correct.
+4. **Mouse cursor** visible in IMG2 near w(t-1) in the Skip-gram panel â video-capture artifact, correctly omitted per ground rule (c). Not a discrepancy.
+5. No missing elements: every box, square, label, arrow, and text string present in the original appears in the recreation. No frame-containment violations â all labels, squares, and the CBOW/Skip-gram badges sit fully inside their enclosing boxes and the blue frame; nothing touches or crosses the blue divider or red house frame. Text is verbatim throughout, including the slightly wide gap between "(CBOW)" and "vs". No delimiter, table, or equation content exists on this slide, so ground rules (d), (e), (7), (8) are not triggered.
+
+## Visual-quality defects in the recreation
+- None significant. Labels are vertically centered against their squares; the four context-word labels have consistent spacing; no clipping, collisions, or overflow detected.
+
+FINAL VERDICT: **PASS** for 'faithful, usable recreation'.

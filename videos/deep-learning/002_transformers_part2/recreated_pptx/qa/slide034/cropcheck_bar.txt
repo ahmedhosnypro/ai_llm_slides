@@ -1,0 +1,41 @@
+# Element-by-Element Comparison
+
+## Banner color/extent
+- **IMG1:** Solid purple/magenta banner, full crop width, uniform fill.
+- **IMG2:** Same purple hue, same full-width extent, slight texture/aliasing from video compression.
+- **Assessment:** Color match is very close; purple tone indistinguishable at this scale. discrepancy.
+
+## Text verbatim and word order
+- Both read: **"Embedding Layer to Learn Position Vectors"** â identical wording and
+
+## Per-word colors
+- **Yellow:** "Embedding", "Learn" â correct in both. **White:** "Layer to", "Position Vectors" â correct in both- Yellow hue in IMG1 is slightly paler/lighter than IMG2's more saturated gold, but this is within rendering/compression tolerance. **MINOR** (low impact, confidence: medium).
+
+## Size mix (yellow > white)
+- **IMG1:** "Embedding" and "Learn" clearly larger than the white words (~23pt vs ~18.5pt appearance- **IMG2:** Same relationship visible- Ratio of yellow-to-white size looks proportionally similar in both. No discrepancy.
+
+## Word positions/gaps
+- **Gap between "Learn" and "Position Vectors":** IMG1 shows a noticeably wider gap than IMG2, where "Learn Position" sits tighter. **MINOR** (confidence: high).
+- **Gap between "Embedding" and "Layer to":** Slightly wider in IMG1 as well, though less pronounced. **MINOR** (confidence: medium).
+- **Horizontal centering:** Both have the text block roughly centered; IMG1's block sits a touch further right relative to the banner (partly a consequence of the wider gaps). **MINOR** (confidence: medium).
+
+## Vertical centering
+- **IMG1:** Text baseline sits slightly below the vertical midpoint of the banner.
+- **IMG2:** Similar slight low-bias; both crops show the red arrow marker entering from top center at the same relative position.
+- **Assessment:** Effectively equivalent. discrepancy.
+
+## Incidental chrome
+- Red arrow tip visible at top center and red marker at bottom center appear in both crops at matched
+- IMG1 shows a small dark artifact at bottom-left corner ("Value" text fragment edge) not present in IMG2's crop â outside the banner region itself. **MINOR** (confidence: high, but likely a crop-boundary artifact rather than slide content).
+
+# Discrepancy Summary
+| # | Issue | Severity | Confidence |
+|---|-------|----------|------------|
+| 1 | Gap after "Learn" wider in recreation | MINOR | High |
+| 2 | Slightly wider inter-word gaps overall; text block shifted marginally right | MINOR | Medium |
+| 3 | Yellow shade marginally paler in recreation | MINOR | Medium |
+| 4 | Extraneous dark fragment at bottom-left crop edge in IMG1 | MINOR | High |
+
+No BLOCKER or MAJOR issues. All content, colors, size mixing, and layout semantics are correct.
+
+**CROP VERDICT: MATCH**

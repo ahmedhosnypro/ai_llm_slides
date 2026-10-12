@@ -1,0 +1,44 @@
+# Slide 023 â row12 crop comparison (attempt 4)
+
+## Element-by-element
+
+**Top row container (dashed rounded rect)**
+- Present in both; black dashed stroke on light gray background. â
+- Corner radius: IMG2's corners read slightly rounder (blur fattens the dashes); IMG1's radius is consistent with the original geometry. Not a true discrepancy at this zoom â MINOR at most, low confidence.
+- Dash pattern: IMG1 dashes slightly longer/cleaner; IMG2 finer due to JPEG blur â medium artifact per ground rule (b). Not counted.
+
+**Word boxes (Word 0 â¦ Word 5, Word N-2, Word N-1)**
+- Verbatim text identical in both: "Word 0", "Word 1", "Word 2", "Word 3", "Word 4", "Word 5", "Word N-2", "Word N-1". Italic serif style matches. â
+- Count and ordering: 8 boxes, 6 left + ellipsis + 2 right, same in both. â
+- Box geometry: thin red stroke (~#CC0000), white fill, similar widths/heights and gaps. â
+- Red color: IMG1 ~#CC0000; IMG2 reads ~#C00000 under blur. Approximate match. â
+
+**Ellipsis dots, top row**
+- 5 gray dots in both, same horizontal band, same position between "Word 5" and "Word N-2". â
+- IMG1 dot sizes are slightly uneven (dot 1 and dot 5 marginally larger); original also shows slight size variation under blur. Indistinguishable â no discrepancy raised.
+- Color: mid-gray (~#909090) both. â
+
+**Bottom row container (lavender dashed rect)**
+- Present in both; lavender fill (~#CCCCF2) with darker blue dashed border. â
+- Corner radius: IMG2's corners appear rounder/pill-like vs IMG1's moderately rounded corners. This could be a real (small) radius difference, but blur inflates apparent radius. MINOR, medium confidence.
+
+**Pos boxes (Pos 0 â¦ Pos 5, Pos N-2, Pos N-1)**
+- Verbatim text identical, italic serif, blue-purple (~#3333CC) both. â
+- Count, ordering, spacing, and left/right alignment match; boxes align under the corresponding Word boxes in both images. â
+- Box strokes thin blue on lavender fill â consistent. â
+
+**Ellipsis dots, bottom row**
+- 5 blue-gray dots (~#6688AA-ish) in both, same position. â
+- IMG1: last two dots slightly larger than first three; IMG2 shows the same asymmetric pattern. Matches. â
+
+**Row spacing / alignment**
+- Vertical gap between the two rows comparable; horizontal extents of both containers align with each other in both images. â
+- Partial blue heading text cropped at top edge appears in both at same position. â
+
+## Discrepancy list
+1. MINOR â Bottom rect corner radius possibly slightly smaller in recreation than original (confidence: medium; blur confound per rule b/d).
+2. MINOR â Top rect corner radius similarly reads squarer in IMG1 (confidence: low).
+
+No text, ordering, color, count, or alignment discrepancies found.
+
+CROP VERDICT: MATCH

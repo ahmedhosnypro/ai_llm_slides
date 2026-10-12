@@ -1,0 +1,152 @@
+{
+  "slide_title": "Standard Neural Network vs Convolutional Neural Network for Image Classification",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Standard NN Approach",
+      "Input Image (32x32x3 RGB)",
+      "Flatten to 1-D Vector (3072 elements)",
+      "Fully Connected Layer 1: 3072 × 1000 = 3,072,000 parameters",
+      "Fully Connected Layer 2: 1000 × 500 = 500,000 parameters",
+      "Output Layer: 500 × 10 = 5,000 parameters",
+      "Total Parameters: ~3.6 Million",
+      "",
+      "CNN Approach", 
+      "Input Image (32x32x3 RGB)",
+      "Conv1: 5x5x3 filter, 6 filters → 6 feature maps (28x28x6)",
+      "Parameters: (5×5×3×6) + 6 bias = 456",
+      "ReLU Activation",
+      "Max Pool 2x2 → 6 feature maps (14x14x6)",
+      "",
+      "Conv2: 5x5x6 filter, 16 filters → 16 feature maps (10x10x16)", 
+      "Parameters: (5×5×6×16) + 16 bias = 2,416",
+      "ReLU Activation",
+      "Max Pool 2x2 → 16 feature maps (5x5x16)",
+      "",
+      "Flatten → FC Layers",
+      "FC1: 400 × 120 = 48,000 parameters",
+      "FC2: 120 × 84 = 10,080 parameters",
+      "Output: 84 × 10 = 840 parameters",
+      "Total Parameters: ~62,000",
+      "",
+      "Key Advantages of CNN:",
+      "• Parameter sharing reduces parameters by 98%+",
+      "• Preserves spatial hierarchy in image",
+      "• Translation invariance through pooling",
+      "• Scales to larger images (224x224x3 feasible)",
+      "• Learns local → hierarchical features (edges → textures → parts → objects)"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Two-column comparison layout: left column shows Standard NN approach with flattening and dense connections, right column shows CNN approach with convolutional layers, ReLU, and max pooling. Title centered at top. Comparison metrics and key advantages listed below the diagrams.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, x 25-75%, y 5-12%",
+        "content": "Bold red title 'Standard Neural Network vs Convolutional Neural Network for Image Classification'"
+      },
+      {
+        "name": "Standard NN Diagram",
+        "position": "left column, x 8-45%, y 15-55%", 
+        "content": "Diagram showing image → flatten → fully connected layers with parameter counts"
+      },
+      {
+        "name": "CNN Diagram", 
+        "position": "right column, x 55-92%, y 15-55%",
+        "content": "Diagram showing image → conv+ReLU+pool → conv+ReLU+pool → flatten → FC layers with parameter counts"
+      },
+      {
+        "name": "Comparison Metrics",
+        "position": "full width, x 10-90%, y 60-75%",
+        "content": "Parameter comparison table and scalability metrics"
+      },
+      {
+        "name": "Key Advantages",
+        "position": "full width, x 10-90%, y 78-90%", 
+        "content": "Bullet list of CNN advantages over standard NN"
+      }
+    ],
+    "hierarchy": "1) Title is largest and boldest. 2) The two main diagrams are visually dominant and equal in size. 3) Parameter counts and labels within diagrams are secondary. 4) Comparison metrics section. 5) Key advantages bullet list."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Standard Neural Network diagram: Input image (32x32x3) shown as color cube, arrow to flattened vector (3072 elements), then three layers labeled FC1, FC2, Output with parameter counts shown on connections.",
+      "colors": [
+        "#E8E8E8",
+        "#C00000", 
+        "#FFFFFF",
+        "#0F0FC8",
+        "#FFCC99",
+        "#99FFFF", 
+        "#FFCCFF",
+        "#CCFFCC",
+        "#BFBFBF"
+      ],
+      "position": "x 8-45%, y 15-55%"
+    },
+    {
+      "type": "diagram", 
+      "description": "CNN diagram: Input image (32x32x3) → Conv1+ReLU+Pool → Conv2+ReLU+Pool → Flatten → FC1 → FC2 → Output. Each stage shows feature map dimensions and parameter counts.",
+      "colors": [
+        "#E8E8E8",
+        "#C00000",
+        "#FFFFFF", 
+        "#0F0FC8",
+        "#FFCC99",
+        "#99FFFF",
+        "#FFCCFF", 
+        "#CCFFCC",
+        "#BFBFBF"
+      ],
+      "position": "x 55-92%, y 15-55%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Parameter comparison table showing: Standard NN ~3.6M params vs CNN ~62K params (98% reduction); Max feasible image size: Standard NN ~64x64 vs CNN 224x224+; Feature learning: global vs hierarchical.",
+      "colors": [
+        "#FFFFFF",
+        "#8B1A3A"
+      ],
+      "position": "x 10-90%, y 60-75%"
+    }
+  ],
+  "imagery": [
+    "Input cat image shown as RGB color cube (32x32x3) in both diagrams",
+    "Feature maps visualized as stacked arrays showing depth dimension"
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#C00000",
+    "body_text": "#0F0FC8", 
+    "accents": [
+      "#C00000",
+      "#0F0FC8", 
+      "#FFCC99",
+      "#99FFFF",
+      "#FFCCFF",
+      "#CCFFCC",
+      "#BFBFBF",
+      "#FFFFFF",
+      "#E8E8E8",
+      "#8B1A3A"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout (Arial/Helvetica). Title: bold, 36pt, dark red #C00000. Diagram labels: bold, 20-24pt. Parameter counts: regular, 18pt, dark blue #0F0FC8. Comparison table: bold headers 20pt, regular body 18pt. Advantages list: bullet points, 18pt regular text. All text left-aligned within regions unless specified.",
+  "animation_state": "Fully built - all elements visible simultaneously. No progressive reveal.",
+  "recreation_brief": "1. Set slide background to white (#FFFFFF). 2. Title: centered at top (y 5-12%), text 'Standard Neural Network vs Convolutional Neural Network for Image Classification', Arial bold 36pt, #C00000. 3. Left diagram (Standard NN): x 8-45%, y 15-55%. Show: color cube labeled 'Input Image (32x32x3)', right arrow to flat vector labeled '3072 elements', down arrow to layer 'FC1: 1000 neurons' with label '3,072,000 params', down to 'FC2: 500 neurons' with '500,000 params', down to 'Output: 10 classes' with '5,000 params'. Use boxes for layers, arrows for connections. 4. Right diagram (CNN): x 55-92%, y 15-55%. Show: color cube 'Input Image (32x32x3)', right arrow to 'Conv1: 5x5x3, 6 filters → 28x28x6' with '456 params', then 'ReLU', then down arrow to 'Max Pool 2x2 → 14x14x6', right arrow to 'Conv2: 5x5x6, 16 filters → 10x10x16' with '2,416 params', then 'ReLU', then down arrow to 'Max Pool 2x2 → 5x5x16', right arrow to 'Flatten → 400 elements', down to 'FC1: 120 neurons' with '48,000 params', down to 'FC2: 84 neurons' with '10,080 params', down to 'Output: 10 classes' with '840 params'. 5. Comparison metrics: x 10-90%, y 60-75%. Create 3-row table: Row1: 'Metric', 'Standard NN', 'CNN'; Row2: 'Total Parameters', '~3.6 Million', '~62 Thousand'; Row3: 'Max Practical Image Size', '~64x64', '224x224+'; Row4: 'Feature Learning', 'Global patterns only', 'Hierarchical (edges→textures→parts→objects)'. Use light gray fill #E8E8E8 for table, dark red borders. 6. Key advantages: x 10-90%, y 78-90%. Bulleted list with 5 points as specified in labels. Use dark blue #0F0FC8 text, 18pt. 7. Throughout, use consistent styling: dark red for titles/labels, dark blue for values/parameters, light gray backgrounds for diagrams.",
+  "_meta": {
+    "frame": "slide_050.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 50,
+      "image": "slide_050.jpg", 
+      "kept_frame": "frame_00000.jpg",
+      "start_sec": 0.0,
+      "end_sec": 10.0,
+      "frame_count": 1
+    }
+  }
+}

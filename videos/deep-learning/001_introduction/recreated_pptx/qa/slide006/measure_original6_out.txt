@@ -1,0 +1,32 @@
+== panel gray extent: row y=270, gray mask (within 12 of (231,233,230)) ==
+  gray x extent: 61..906 (n=86)
+== column x=470 gray extent (y 46..540) ==
+  gray y extent: 46..517
+== left/right border columns: red_loose count per col x 50..70 and 890..910, y 50..500 ==
+  col 56: 450
+  col 57: 450
+  col 58: 450
+  col 59: 450
+  col 60: 450
+== border col sample colors ==
+  (57,270): (np.int64(160), np.int64(105), np.int64(108))  (58,270): (np.int64(124), np.int64(43), np.int64(50))  (901,270): (np.int64(231), np.int64(233), np.int64(230))  (902,270): (np.int64(236), np.int64(238), np.int64(235))
+== per-word title advance test ==
+  word         Arial45  Arial45.4   ArialB42   ArialB43   TimesB45  Times48.5   target
+  Machine         170.1      170.1      168.0      172.1      167.5      168.0   167
+  Learning        175.2      175.2      177.4      181.6      177.5      173.3   174
+  in               35.0       35.0       37.3       38.2       37.5       37.3   35
+  the              62.6       62.6       63.0       64.5       60.0       58.7   63
+  real-world      197.6      197.6      200.7      205.5      201.6      199.9   198
+== stroke-width test: 'M' left stem width at mid-cap height ==
+  orig y=100: [(np.int64(142), np.int64(155), np.int64(14)), (np.int64(160), np.int64(173), np.int64(14)), (np.int64(179), np.int64(183), np.int64(5)), (np.int64(190), np.int64(196), np.int64(7)), (np.int64(200), np.int64(207), np.int64(8)), (np.int64(214), np.int64(220), np.int64(7))]
+  orig y=104: [(np.int64(142), np.int64(148), np.int64(7)), (np.int64(151), np.int64(164), np.int64(14)), (np.int64(167), np.int64(173), np.int64(7)), (np.int64(178), np.int64(196), np.int64(19)), (np.int64(200), np.int64(206), np.int64(7)), (np.int64(224), np.int64(231), np.int64(8))]
+  orig y=108: [(np.int64(142), np.int64(149), np.int64(8)), (np.int64(152), np.int64(162), np.int64(11)), (np.int64(167), np.int64(173), np.int64(7)), (np.int64(176), np.int64(183), np.int64(8)), (np.int64(189), np.int64(196), np.int64(8)), (np.int64(200), np.int64(207), np.int64(8))]
+  PIL Arial45 M-runs @~0.75 cap: [np.int64(4), np.int64(4), np.int64(3), np.int64(4), np.int64(2), np.int64(4), np.int64(5), np.int64(2), np.int64(5), np.int64(4), np.int64(4), np.int64(5), np.int64(4), np.int64(4), np.int64(4)]
+  PIL ArialB42 M-runs @~0.75 cap: [np.int64(6), np.int64(6), np.int64(6), np.int64(6), np.int64(3), np.int64(6), np.int64(5), np.int64(3), np.int64(7), np.int64(6), np.int64(6), np.int64(7), np.int64(6), np.int64(6), np.int64(6)]
+== blue pooled 2x2-max calibration ==
+  005 truth 000080: pooled median [254. 255. 253.] top150 [ 21.   6. 144.]
+  002 truth 0000AA: pooled median [254. 255. 253.] top150 [  8.    0.  201.5]
+  006 ?: pooled median [254. 255. 253.] top150 [ 43.5  32.  148. ]
+== bullet density calibration (fixed int) ==
+  PIL b1 4.99 (orig 4.88 -> k 0.98); PIL b2 4.36 (orig 4.07 -> k 0.93)
+  k=0.96; title orig 15.51/k = 16.23 vs PIL reg45 9.69 / bold42 11.61 / bold43 12.34

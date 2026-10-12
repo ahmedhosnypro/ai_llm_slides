@@ -1,0 +1,36 @@
+# Slide 041 crop comparison â cyan normalization stack (bottom)
+
+## Element-by-element analysis
+
+**Boxes (2 total: "Group Normalization", "Layer Normalization")**
+- Light cyan fill present in both. Image 1's fill reads slightly more saturated cyan (~#DFF6F9) vs image 2's JPEG-washed paler cyan (~#E4F7F5) â within tolerance given JPEG wash in image 2. **No defect.**
+- Thin border around each box: present in both. Image 1's border is a slightly more visible blue-gray; image 2's is fainter (partly JPEG softening). **MINOR at most** â confidence low-medium.
+- Box proportions (wide, short rectangles) and rounded-square corners match.
+
+**Text**
+- "Group" bold dark navy + "Normalization" regular medium blue â matches verbatim, bold pattern identical in both.
+- "Layer" bold dark navy + "Normalization" regular â matches.
+- Font: sans-serif, same relative size in both crops; text occupies ~same fraction of box width. "Group Normalization" text width vs box width matches; "Layer Normalization" matches.
+- **Vertical centering:** text sits vertically centered inside both boxes in image 1, same as image 2. No top-hugging. **No defect.**
+- Single line per box â line breaks match.
+
+**Red spine and arrows**
+- Vertical red spine on the left with two horizontal branches terminating in right-pointing arrowheads into each box: present in both, correct ordering (top branch â Group box, bottom branch â Layer box).
+- Branch attachment heights: both branches meet their boxes at vertical center in image 1, matching image 2.
+- Arrowheads: image 1's arrowheads are slightly larger/solidier triangles than image 2's (which appear thinner, partly JPEG degradation). **MINOR** â confidence medium.
+- Spine line weight appears comparable; the red hue matches (~#C00000 family).
+
+**Background / artifacts**
+- Image 2's bottom black letterbox strip is a video-capture artifact â correctly absent from image 1 per ground rule (c). Not a discrepancy.
+- Image 2's warm beige wash vs image 1's flat #E8E8E8: house template background is mandated chrome; JPEG wash accounts for the tint difference. **Not a discrepancy.**
+
+## Discrepancy list
+1. **MINOR** â Arrowhead triangles slightly larger/heavier in recreation than original. Confidence: medium.
+2. **MINOR** â Box border stroke marginally more visible/darker blue in recreation. Confidence: low-medium.
+
+No BLOCKER or MAJOR defects. All text verbatim, both boxes present, spine/arrows correct, text vertically centered, no frame containment issues, no clipping, no collisions, nothing missing.
+
+## Visual-quality check (recreation)
+- No text overflow, no wrapping errors, no clipping at box edges, no overlap between arrows and box borders. Clean render.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

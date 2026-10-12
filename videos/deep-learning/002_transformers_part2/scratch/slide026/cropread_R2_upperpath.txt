@@ -1,0 +1,32 @@
+# Visual QA Analysis â Slide 026 crop R2 (TIDA-00176 upper signal path)
+
+**Canvas:** 675Ã264 px (3Ã upscale of a 225Ã88 px region). Content is a block-diagram fragment on a light-green background, with a dashed-border container of pale salmon/peach fill occupying most of the frame.
+
+---
+
+## 1. Verbatim text transcription
+
+| # | Text | Location / context |
+|---|------|--------------------|
+| 1 | `16-bit high-res path` | White rectangular label with thin border, upper-left inside the dashed container |
+| 2 | `Dual` / `ADC` (two lines, one word per line) | Inside the orange pentagon/arrow-shaped block, center-left |
+| 3 | `A+, A-, B+, B-` | Small label above the horizontal arrow on the right side, just left of the vertical line |
+| 4 | `tor` | Rotated ~90Â° (reads vertically), inside a gray rectangle at the bottom-right corner â **this is a clipped fragment of a longer word; the rest of the word is outside the crop and not legible** |
+
+Notes on #3: the label is rendered at very small size; the `+` and `-` marks appear as tiny raised characters (possibly superscripts). They are marginal but readable as plus/minus signs. No other text is present. No placeholder or nonsense strings are visible, and all legible text is in English, consistent with the diagram context.
+
+## 2. Layout
+
+- **LEFT edge:** A horizontal black line enters from the left edge at mid-height (~y 150â160), clipped by the crop, ending in a solid right-pointing arrowhead that touches the left side of the orange "Dual ADC" block.
+- **RIGHT edge:** A vertical black line (~x 545) runs down the right side; a horizontal arrow branches from it leftward, its arrowhead entering the right (base) side of the green triangle. The `A+, A-, B+, B-` label sits above this arrow. Near the bottom-right corner is a gray rectangle containing the rotated fragment `tor`, clipped by the right and bottom edges.
+- **TOP:** The dashed border (top edge) of the salmon container spans most of the width. The white `16-bit high-res path` label box sits at the upper-left, overlapping/abutting the container's top border. At the extreme top-right corner there is a thick black L-shaped mark touching the top edge â likely the clipped corner of another element outside the crop.
+- **BOTTOM:** A second dashed horizontal border line runs across the lower portion (~y 235), which appears to be the top edge of another dashed container below (cut off). On top of it at bottom-left, only the upper sliver of a white label box is visible â no text from it can be seen. The gray `tor` box occupies the bottom-right corner.
+- **CENTER:** Left-to-right: the orange pentagon (arrow-shaped, pointing right) labeled `Dual` / `ADC`; a short black arrow pointing **left** from the orange block's tip toward the green triangle; a solid green triangle with apex pointing **left** and base at right. Arrowhead directions indicate right-to-left flow between the triangle and the ADC, and left-to-right flow on the left-edge input.
+
+## 3. Visual defects / anomalies
+
+- **Clipping on all four edges** (inherent to the crop): the left input line is cut mid-run; the bottom dashed container and its white label box are cut off with no legible text; the gray box and its rotated text are cut to the fragment `tor`; the top-right L-shape is cut by the top edge.
+- **Incomplete word:** `tor` is a fragment, not a complete label. The full word (e.g., part of a longer block name) is not visible, so its intended text cannot be determined from this crop.
+- **Legibility limits:** the `A+, A-, B+, B-` label and the small `+`/`-` glyphs are at the threshold of legibility due to the tiny source text size and upscaling; transcription is confident for the letters, slightly less so for the exact placement of the plus/minus marks.
+- **No overlaps or collisions** among text elements; the white label box overlapping the dashed container border appears to be intentional design. No wrong-language text, no garbage/placeholder strings.
+- Minor upscaling softness/pixelation is present on all small text, consistent with a 3Ã enlargement of a low-resolution region.

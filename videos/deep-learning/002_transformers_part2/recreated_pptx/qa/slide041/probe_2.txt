@@ -1,0 +1,38 @@
+# Visual QA Analysis â Slide 041 Recreation Probe
+
+## 1. Verbatim Text Transcription
+
+All visible text, in reading order:
+
+| Location | Text (verbatim) |
+|---|---|
+| Slide title (top center) | `Normalization` |
+| Circular badge (top right) | `41` |
+| Top box of diagram (two lines) | `Normalization` / `of` |
+| Navy box (left branch, two lines) | `Activations` / `Outputs` |
+| Green box (right branch) | `Weights` |
+| Cyan box 1 | `Batch Normalization` |
+| Cyan box 2 | `Instance Normalization` |
+| Cyan box 3 | `Group Normalization` |
+| Cyan box 4 | `Layer Normalization` |
+| Light-green box (right branch) | `Weight Normalization` |
+
+No other text, numbers, watermarks, or annotations are visible. All text is English; no wrong-language or garbage/placeholder strings appear.
+
+## 2. Layout Description
+
+- **Overall frame:** A white margin surrounds a large light-gray content panel outlined by a thin red rectangle. The panel's red border runs near the top (~8% down), left (~4.4% in), and right (~4% in from right) of the image.
+- **LEFT edge:** White margin, then the gray panel. Inside, the left side of the canvas holds the dark-navy box **"Activations / Outputs"** (white bold text), roughly vertically centered.
+- **RIGHT edge:** White margin, then the gray panel. The **"41"** badge (pale-yellow circle with purple ring) sits at the top right inside the panel. Below it, the right half holds the dark-green **"Weights"** box (white bold text) and, further down, the light-green **"Weight Normalization"** box (with a thin gray border; "Weight" bold dark green, "Normalization" green).
+- **TOP:** Title **"Normalization"** in large bold red, centered near the top of the panel. Directly below it, a peach/cream box with red bold text reading **"Normalization"** on line 1 and **"of"** on line 2, centered horizontally.
+- **BOTTOM (left-center):** A vertical stack of four light-cyan boxes with thin gray borders â "Batch Normalization", "Instance Normalization", "Group Normalization", "Layer Normalization" â each with the first word in bold dark blue. The lowest box ("Layer Normalization") sits close to the panel's bottom edge.
+- **Connectors (all red):** A vertical line drops from the peach box and splits into a horizontal bus with two downward arrowheads feeding "Activations/Outputs" (left) and "Weights" (right). From "Activations/Outputs," a vertical line descends with four right-pointing arrowheads into the four cyan boxes. From "Weights," a single vertical red arrow points down into "Weight Normalization."
+
+## 3. Visual Defects / Anomalies
+
+1. **Bottom margin nearly zero / panel appears bottom-cropped:** The gray panel's red bottom border sits essentially flush with the image's bottom edge (~2â3 px of white below it), whereas the top, left, and right margins are generous (~4â8% of the image). The panel appears vertically shifted down or clipped at the bottom relative to the other three sides.
+2. **Dangling preposition in the root box:** The top peach box renders as "Normalization / of" â the word "of" wraps alone onto the second line, leaving a grammatically incomplete label. (This may be an intentional connector label, but visually it reads as truncated or awkwardly wrapped text.)
+3. **Tight text fit in cyan boxes:** "Instance Normalization" nearly spans the full width of its box, with very little internal padding on both sides â not clipped, but close to the borders.
+4. **No overlaps, clipping, or missing content otherwise detected:** All arrowheads terminate short of the boxes they point into; the "41" badge overlaps nothing; the title is fully visible and unclipped.
+
+No illegible text was encountered â every string listed in section 1 is clearly readable.

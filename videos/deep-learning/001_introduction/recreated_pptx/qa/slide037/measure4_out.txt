@@ -1,0 +1,24 @@
+orange slab pixels bbox: x177..783 y285..494 n=9504
+orange col runs: [(np.int64(177), np.int64(269)), (np.int64(386), np.int64(438)), (np.int64(510), np.int64(510)), (np.int64(522), np.int64(550)), (np.int64(560), np.int64(721)), (np.int64(731), np.int64(758)), (np.int64(783), np.int64(783))]
+orange row runs: [(np.int64(293), np.int64(429)), (np.int64(486), np.int64(486))]
+modal orange: [((np.int64(177), np.int64(103), np.int64(18)), 102), ((np.int64(174), np.int64(104), np.int64(18)), 91), ((np.int64(175), np.int64(103), np.int64(19)), 66), ((np.int64(172), np.int64(105), np.int64(18)), 47)]
+
+dash rows (y, count) in x250..345:
+[(270, 17), (271, 10), (276, 10), (277, 9), (280, 15), (304, 10), (305, 34), (306, 50), (307, 11), (314, 15), (315, 50), (316, 9), (324, 14), (325, 53), (326, 15), (332, 10), (333, 11), (334, 12), (335, 14), (336, 12), (337, 12), (338, 12), (339, 13), (340, 10), (341, 10), (342, 11), (343, 10), (344, 12), (345, 10), (346, 9), (350, 13), (351, 36), (352, 20), (360, 36), (361, 14), (369, 23), (370, 42), (371, 15), (380, 37), (459, 14), (460, 27), (461, 27), (462, 28), (463, 17), (464, 18), (465, 17), (466, 21), (467, 22), (468, 27), (469, 27), (475, 9), (480, 12)]
+
+filter stack rows: [(np.int64(295), np.int64(391)), (np.int64(479), np.int64(495))]
+filter stack cols: [(np.int64(300), np.int64(302)), (np.int64(314), np.int64(469))]
+
+filter color samples (front row y~400):
+  x=320 y=395..405: [(np.int64(134), np.int64(131), np.int64(140)), (np.int64(104), np.int64(103), np.int64(98)), (np.int64(174), np.int64(174), np.int64(162)), (np.int64(115), np.int64(117), np.int64(114)), (np.int64(254), np.int64(255), np.int64(253)), (np.int64(254), np.int64(255), np.int64(253))]
+  x=345 y=395..405: [(np.int64(178), np.int64(179), np.int64(183)), (np.int64(198), np.int64(199), np.int64(194)), (np.int64(102), np.int64(101), np.int64(96)), (np.int64(104), np.int64(106), np.int64(103)), (np.int64(189), np.int64(191), np.int64(188)), (np.int64(241), np.int64(243), np.int64(240))]
+  x=370 y=395..405: [(np.int64(238), np.int64(238), np.int64(238)), (np.int64(108), np.int64(114), np.int64(112)), (np.int64(190), np.int64(199), np.int64(194)), (np.int64(254), np.int64(255), np.int64(253)), (np.int64(254), np.int64(255), np.int64(253)), (np.int64(253), np.int64(255), np.int64(252))]
+  x=395 y=395..405: [(np.int64(239), np.int64(253), np.int64(253)), (np.int64(112), np.int64(116), np.int64(115)), (np.int64(249), np.int64(249), np.int64(249)), (np.int64(254), np.int64(255), np.int64(253)), (np.int64(253), np.int64(255), np.int64(252)), (np.int64(254), np.int64(255), np.int64(253))]
+  x=420 y=395..405: [(np.int64(255), np.int64(253), np.int64(255)), (np.int64(112), np.int64(111), np.int64(107)), (np.int64(251), np.int64(255), np.int64(251)), (np.int64(249), np.int64(251), np.int64(248)), (np.int64(253), np.int64(255), np.int64(252)), (np.int64(254), np.int64(255), np.int64(253))]
+
+'=' rows: [(np.int64(358), np.int64(359)), (np.int64(364), np.int64(364))]
+Traceback (most recent call last):
+  File "/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_introduction/recreated_pptx/qa/slide037/measure4.py", line 75, in <module>
+    print("modal '=' color:", Counter(map(tuple, s[470-60:520-60][eqz])).most_common(2))
+                                                 ~~~~~~~~~~~~~~~~^^^^^
+IndexError: boolean index did not match indexed array along axis 0; size of axis is 0 but size of corresponding boolean axis is 245

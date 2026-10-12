@@ -1,0 +1,50 @@
+# Slide 055 â Legend Box Crop Comparison (LEFT original / RIGHT recreation)
+
+## Element-by-Element Deviations
+
+### 1. Pale-green dashed legend box (container)
+- **Dash color:** LEFT shows dark/forest-green dashes; RIGHT shows a lighter, yellowish-green dash. â **MINOR**
+- **Corner radius / shape:** Both rounded rectangles; RIGHT corners are slightly rounder. â **MINOR**
+- **Fill:** Both pale mint green. â Match.
+
+### 2. First striped vector glyph (top-left)
+- **Cell count:** LEFT = 5 cells; RIGHT = 5 cells. â Match.
+- **Cell colors:** LEFT pattern is yellow / pink / white / pink / lavender (alternating pastel pink-white). RIGHT shows yellow / orange / green / lavender / pink â including a **green cell that does not exist in the original** and loss of the pink-white alternation. â **MAJOR**
+
+### 3. Red "1Ãd" label (first, under left glyph)
+- **Position:** Correctly placed below-left of the first glyph in both. â Match.
+- **Glyph used:** LEFT uses asterisk "1*d"; RIGHT uses multiplication sign "1Ãd". Per ground rule (e), professional 2D math formatting is a mandated upgrade. â **MINOR**
+- **Color/weight:** Both red, bold. â Match.
+
+### 4. W square
+- **Fill:** Both cream/ivory. â Match.
+- **Border:** Both orange-brown. â Match.
+- **Label:** Black "W" in both; RIGHT's W is slightly smaller relative to the square but clearly legible. â **MINOR**
+
+### 5. "=" text
+- Present in both, positioned between W square and right-hand group. â Match.
+- **Color:** LEFT appears red/orange; RIGHT dark red. â **MINOR**
+
+### 6. Second striped vector glyph (right of "=")
+- **MISSING ENTIRELY.** LEFT clearly shows a second 5-cell striped vector between "=" and the second "1*d" label. RIGHT shows only "=" followed by empty space and the "1Ãd" label â the striped glyph has been dropped. â **BLOCKER**
+
+### 7. Second "1Ãd" label
+- Present in both, red, positioned right of the "=" area. Correct placement given the missing glyph. â Match (position shifts slightly left because the glyph it sits under is absent â consequence of the BLOCKER above).
+
+### 8. "dÃd" text
+- Present in both, red, centered below W square. Asteriskâmultiplication sign per rule (e). â **MINOR**
+
+### 9. Navy caption "d: Embedding Length"
+- Present in both, navy blue, bold. â Match.
+- **Spacing:** LEFT has clear vertical separation between "d*d" and the caption; RIGHT crowds the caption directly beneath "dÃd" with almost no gap. â **MINOR**
+
+## Summary
+| Severity | Count | Items |
+|---|---|---|
+| BLOCKER | 1 | Second striped vector glyph missing |
+| MAJOR | 1 | First glyph cell colors wrong (green cell introduced, pink/white pattern lost) |
+| MINOR | 6 | Dash color, corner radius, Ã-vs-* notation (Ã2), W size, "=" shade, caption spacing |
+
+The missing second vector glyph is a structural omission of a labeled element explicitly present in the original â not excusable under any ground rule.
+
+**CROP VERDICT: FAIL**

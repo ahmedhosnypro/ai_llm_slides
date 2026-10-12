@@ -1,0 +1,41 @@
+# Slide 055 â Decoder Query Crop: Element-by-Element Comparison
+
+## Element 1: Red "qâ" label
+- **LEFT:** Bold red "qâ" with subscript 2, positioned left of the vertical red line, at roughly mid-crop height.
+- **RIGHT:** Bold red "qâ" present, same styling and color; positioned slightly higher/left of the line.
+- **Deviation:** Label sits a bit higher relative to the line than in the original. **Severity: MINOR.**
+
+## Element 2: Striped glyph (multi-cell strip)
+- **LEFT:** 4-cell horizontal strip, cells clearly colored â saturated yellow, cream, blue, lavender.
+- **RIGHT:** 4-cell strip present, same cell count and layout, but the cell fills are noticeably washed out â the blue and lavender cells read as near-white/pale blue, and the yellow is paler.
+- **Deviation:** Cell count correct (4/4), but cell fill saturation is much weaker than the original. **Severity: MINOR** (color fidelity, not structure â the original's JPEG mush partly accounts for saturation difference, but the RIGHT cells are paler than the original supports).
+
+## Element 3: W_q box
+- **LEFT:** Rectangle, maroon/dark-red border, white (faintly pink-tinted by JPEG) fill, sharp corners. Label "W" with subscript "q" and superscript "(r)" in red, all present.
+- **RIGHT:** Same maroon border, white fill, same "W_q^(r)" label with red "(r)". However, the corners are **rounded**, and the box proportions are slightly wider/shorter than the original.
+- **Deviation:** Rounded corners vs. sharp corners; slight proportion difference. **Severity: MINOR** (typed-vs-rendered styling latitude; label text, subscript/superscript structure, border color, and fill all match).
+
+## Element 4: Vertical red line + UP arrowhead
+- **LEFT:** Red vertical line passes behind/through the W box; a clear **UP-pointing arrowhead** is visible at the top of the line (just below the glyph strip level), and a red arrowhead is visible at the bottom of the box.
+- **RIGHT:** Red vertical line present from the box top upward, but **no arrowhead is visible within the crop** â the line runs past the glyph strip toward the top edge. The bottom arrowhead region is cut off by the crop, so it cannot be assessed.
+- **Deviation:** Arrowhead not visible where the original shows it; either positioned above the crop or omitted. **Severity: MINOR** (cannot confirm omission â likely just above crop boundary â but the line/arrowhead position relative to the glyph row differs from LEFT).
+
+## Element 5: Top edge of pink Z-row container
+- **LEFT:** Not visible within this crop (crop ends at the box bottom/arrowhead).
+- **RIGHT:** Pink container with a dashed green/maroon top border is visible at the bottom.
+- **Deviation:** Not comparable â the crop windows don't overlap on this element. The dashed border appears consistent with house template styling. **Severity: NONE (not assessable).**
+
+---
+
+## Summary of Deviations
+| # | Element | Deviation | Severity |
+|---|---------|-----------|----------|
+| 1 | qâ label | Slightly higher position | MINOR |
+| 2 | Striped glyph | Cell colors washed out (count correct) | MINOR |
+| 3 | W_q box | Rounded corners, slight proportion shift | MINOR |
+| 4 | Line/arrowhead | UP arrowhead not visible in crop | MINOR |
+| 5 | Z-row edge | Not comparable (crop offset) | â |
+
+No BLOCKER or MAJOR deviations: all label texts correct, glyph cell count correct, box fill/border/label correct, line present and correctly routed.
+
+**CROP VERDICT: PASS**

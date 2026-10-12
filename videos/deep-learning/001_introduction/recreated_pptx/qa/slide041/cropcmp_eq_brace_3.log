@@ -1,0 +1,46 @@
+[info] context header injected: VIEW: Slide 041 CROP comparison ATTEMPT 3 — equation + Inner-product brace region (IMG1=150dpi render crop taken from the CURRENT fixed build; IMG2=original frame crop; both 2x upscaled) | CAPTURE: two 930x208 crops: left=PowerPoint recreation render, right=original lecture video frame
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 1703682
+[info] /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_introduction/scratch/slide041/crop_ren_eq_brace.png, /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_introduction/scratch/slide041/crop_org_eq_brace.png: transcript written (validated winner, atomic): /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_introduction/recreated_pptx/qa/slide041/cropcmp_eq_brace_3.txt (pid 1703682)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_introduction/scratch/slide041/crop_ren_eq_brace.png, /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_introduction/scratch/slide041/crop_org_eq_brace.png ===
+[winner] images (round 1, attempt 1)
+# Slide 041 CROP comparison â ATTEMPT 3 (equation + Inner-product brace region)
+
+## Element-by-element comparison
+
+### 1. Green bit cells (top strip: 1 1 0 0)
+- Both images show four green squares with bold black "1 1 0 0", same ordering, same approximate cell size and gaps, same vertical position at crop top. Text is centered in each cell in both.
+- **MINOR** (confidence 0.5): In IMG1 the inter-cell separators read as thin white gaps; in IMG2 the cells have a faint gold/yellow outline between cells. Barely perceptible at this scale.
+
+### 2. Equation: I(x, y) â h = Î£ Î£ I(xâi, yâj) Â· h(i,j)
+- Structure matches exactly: LHS "I(x, y) â h =", two stacked-limit sigmas (a / i=âa and b / j=âb), then "I(x â i, y â j) Â· h(i,j)". All symbols present, correct order, correct sub/superscript pairing, limits above/below the sigmas per the mandated 2D format. The multiplication dot before h(i,j) is present in both. No missing elements â **no BLOCKER**.
+- **MINOR** (confidence 0.7): Horizontal gap between the two Î£ symbols is slightly wider in IMG1 than in IMG2 (IMG2's sigmas sit nearly adjacent; IMG1 has a visible extra ~10â15 px of air). Does not change readability or structure.
+- **MINOR** (confidence 0.6): Letterform style â IMG2's equation is a tighter serif-italic (LaTeX-like, more slanted, narrower spacing around "=" and commas); IMG1's italic serif is slightly rounder with wider inter-token spacing. Same medium class (typed math), per rule (e)/(d) at most MINOR.
+- Vertical alignment: the main equation line sits at the same baseline height in both crops; the lower limits i=âa / j=âb hang to the same depth relative to the sigmas. No top-hugging or misalignment of limits.
+- Frame containment: all equation ink is fully inside the panel in both; no clipping at any edge.
+
+### 3. "Inner product" annotation + brace
+- Red handwritten-style "Inner product" label present in both, same position (upper right of the crop), same approximate size and red hue.
+- Red curly brace beneath it present in both, spanning roughly the same horizontal extent (from ~x 510 to ~x 805 in crop coordinates), with the center cusp pointing up toward the label â geometry and curvature style match. The brace is fully drawn (not clipped, not overlapping the label text) and sits clear of the equation line below it in both images.
+- **MINOR** (confidence 0.5): IMG1's label font is a cleaner "handwriting-style" typeface vs IMG2's true marker handwriting; stroke weight slightly thinner. Inherent medium difference per rule (d) â MINOR at most.
+- **MINOR** (confidence 0.4): IMG1's brace stroke is marginally thinner/flatter at the tails than IMG2's; shape family and span still match.
+
+### 4. Right-edge red vertical line (visible in IMG2)
+- Present in IMG2 as part of the original slide's frame. In the recreation this corresponds to the house red border defined by the playlist chrome amendment (a2) â **INTENTIONAL chrome, not a discrepancy**, and the crop offsets differ slightly between the two images.
+
+## Discrepancy summary
+| # | Item | Severity | Confidence |
+|---|------|----------|------------|
+| 1 | Cell separator styling (white gap vs faint gold outline) | MINOR | 0.5 |
+| 2 | Slightly wider gap between the two Î£ symbols | MINOR | 0.7 |
+| 3 | Equation letterform/spacing style (typed serif variants) | MINOR | 0.6 |
+| 4 | "Inner product" typeface vs true handwriting; brace stroke slightly thinner | MINOR | 0.5 |
+
+No BLOCKER defects. No MAJOR defects. No missing elements; equation region fully rendered; brace geometry correct and complete; no text overflow, clipping, collisions, or frame-containment violations; vertical centering of all limits and cell digits is correct.
+
+## Visual-quality defects in the recreation
+- None beyond the minor spacing/typeface notes above. All text legible, nothing clipped, nothing overlapping.
+
+FINAL VERDICT: **PASS** for 'faithful, usable recreation'.
+

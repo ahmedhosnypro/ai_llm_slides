@@ -1,0 +1,42 @@
+# Slide 022 â Diagram Region Crop Comparison
+
+## Element-by-Element Comparison
+
+**1. Input labels (xâ, xâ, xâ, ..., ..., xâ, 1)**
+- IMG1: italic serif black labels stacked at left, "1" in red at bottom â2: identical sequence, same order, "1" red â
+
+**2. Weight labels (wâ, wâ, wâ, wâ, b)**
+- IMG1: blue italic, positioned along the fan of lines; b at bottom below wâ â IMG2: same labels, same colors, same relative placement
+
+**3. Converging weight lines**
+- IMG1: pink lines fan from each input to a solid red convergence arrowhead at Î£
+- IMG2: same fan geometry, same convergence arrowhead; strokes render fainter/thinner in the video upscale â geometry and count match â within rule (e)
+
+**4. Î£ neuron circle**
+- Both: light cyan fill, black outline, large black Î£, same position relative to the fan apex
+
+**5. Arrows (Î£ â activation, activation â O/P)**
+- Both: thick red shafts with solid triangular heads, same start/end points; arrowheads touch box left edge and point at O/P â6. Activation-function box**
+- Both: pink/violet filled rectangle with darker purple border, containing a blue step function (bottom horizontal â vertical riser â top horizontal) â matches; see discrepancies below
+
+**7. O/P label**
+- Both: bold black "O/P" to the right of the output MATCH
+
+**8. Diagram bounding rectangle**
+- Both: white panel with red border enclosing the network diagram
+
+**9. Right annotation box**
+- Both: beige fill, olive-brown border, bold italic dark-red "Binary Classification" / "(2 Classes)" centered, two lines â Discrepancy List
+
+| # | Item | Description | Severity | Confidence |
+|---|------|-------------|----------|------------|
+| 1 | Activation box fill | IMG1 fill reads slightly more orchid/violet; IMG2 reads lighter pink. Likely JPEG chroma softening in IMG2; hue family and border color consistent | MINOR | Medium |
+| 2 | Step-function geometry | Vertical riser and horizontal segment proportions differ by a few px between renders; same step shape and orientation | MINOR | High |
+| 3 | Converging line weight | IMG1 pink lines slightly thicker/more saturated than IMG2's fainter strokes | MINOR | High (rule e) |
+| 4 | Red bounding rectangle | IMG1 border slightly thicker/darker crimson than IMG2's thinner red line | MINOR | High |
+| 5 | Convergence arrowhead | Red triangle marginally larger in IMG1 | MINOR | High |
+| 6 | Right box border/text | Border a touch thicker and text a touch darker in IMG1; position, size, and wording identical | MINOR | Medium |
+
+No text omissions, no reordering, no missing elements, no color-class errors (all reds/blues/pinks map to correct elements), no layout shifts beyond frame-px tolerances. Chrome (template margins) correctly excluded per rule (a); no cursor/player-bar artifacts present per rule (c).
+
+**CROP VERDICT: MATCH**

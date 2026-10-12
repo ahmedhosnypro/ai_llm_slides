@@ -1,0 +1,38 @@
+# Slide 024 â pre-judge crop comparison (neuron3, green middle column)
+
+Both images are the same montage, so this is one comparison: **top half = recreation**, **bottom half = original frame**. House chrome, video artifacts, JPEG wash/saturation, and the f1âf8 measured corrections are pre-settled and are not raised.
+
+## What matches (confirmed element-by-element)
+
+- **Neuron body**: large circle, pale green fill, green/olive border â present both sides. Slightly brighter/cleaner green in the recreation = medium artifact per rule (d), not a discrepancy.
+- **Vertical divider**: thin dark line splitting the circle into Î£-half / sigmoid-half, spanning the full circle diameter in both. Position (~center) and extent match.
+- **Red Î£**: bold red Sigma on the LEFT half, vertically and horizontally well-centered in its half â matches.
+- **Sigmoid glyph**: black S-curve on the RIGHT half â present both sides; curve shape and placement match (recreation's stroke marginally thinner/cleaner; medium).
+- **Dark-red output blob** on the circle's right edge, with red outgoing lines running to the lower-right â present in both, same count (two visible leaving toward lower-right) and same trajectory.
+- **Incoming red arrows** from upper-left, left, lower-left, and bottom, arrowheads terminating at/near the circle border â all four present in both, same directions.
+- **O_j label**: dark-red serif italic "O" with subscript "j", positioned upper-right of the blob â present in both.
+
+## Discrepancies
+
+1. **Output label "O" size â MAJOR (confidence ~65%).** The original's "O" is markedly larger â roughly 1.7â2Ã the cap height of the recreation's "O" (in the original the visible, partially crop-clipped "O" is already taller than the recreation's entire "O_j" assembly). The subscript "j" in the original also sits lower/right of the O, while the recreation tucks it tighter at the baseline. Per founder directive 2026-10-10, a visible label-size deviation is MAJOR even with verbatim text. Note the original's "O" is clipped by the crop's right edge while the recreation's is fully inside â if the crops cover the same region, this also implies the recreation pulled the label left/inward relative to the original (alignment deviation, compounds the severity).
+
+2. **Missing "j" glyph fragment at top-left â MAJOR (confidence ~55%).** The original crop shows a red/magenta "j" fragment at the upper-left edge (the tail of a rotated w_ji mesh label riding a line into this neuron, per f2). The recreation's same region shows only the arrow shaft â no text fragment. This is either an omitted/misplaced mesh-label segment (MAJOR) or an artifact of slightly different crop framing; at ~55% confidence I record it as MAJOR pending a full-slide check that the w_ji labels exist and ride their lines at the f2 rotations.
+
+3. **Neuron circle scale â MINOR (confidence ~50%).** The recreation's circle reads ~5â10% larger within an equivalent crop. Could be crop framing rather than a true scale error; flagged as MINOR.
+
+4. **Incoming arrow shaft lengths â MINOR (confidence ~50%).** The original's lower-left approaches read as shorter arrowheads with faint stubs (JPEG wash eats the thin shafts); the recreation draws fuller shafts. Plausibly medium-only; MINOR.
+
+5. **Sigmoid stroke weight â MINOR.** Original's curve is slightly heavier/warmer (wash + bloom); recreation cleaner. Medium-level, listed only for completeness.
+
+Not raised (pre-settled or medium): color saturation/brightness differences, border-hue exactness (f6 covered by full-slide check), cursor artifacts, chrome.
+
+## Visual-quality defects in the recreation
+
+- No text overflow, clipping, wrapping errors, or collisions observed within the crop; the O_j label, blob, and arrows all sit clear of each other and of the crop edges.
+- Vertical centering of Î£ and the sigmoid glyph inside their halves is correct.
+
+## Assessment
+
+Core content â the split neuron (Î£ | sigmoid), divider, four incoming arrows, output blob, outgoing lines, and the O_j label â is fully present and structurally faithful. The two MAJOR items are a label-size mismatch on "O" and an absent rotated-label fragment, both localized and both carrying meaningful crop-framing uncertainty; nothing is structurally missing from the neuron itself.
+
+**FINAL VERDICT: FAIL** for 'faithful, usable recreation' â driven by discrepancy #1 (O label rendered substantially smaller than the original's, a visible size/alignment deviation under directive 2026-10-10) with #2 as a contributing major; both are cheaply fixable (enlarge O_j ~1.7Ã, verify w_ji label placement along the incoming mesh line), after which this slide should pass.

@@ -1,0 +1,29 @@
+## Element-by-Element Comparison
+
+**Text (verbatim, line breaks):** All labels present and verbatim in both: *Encoder / Decoder* headers, Output, Probabilities, Softmax, Linear, Add & Norm (Ã3 decoder, Ã2 encoder), Feed Forward, Multi-Head Attention (Ã2), Masked Multi-Head Attention, V/K/Q circle letters, Nx, Positional Encoding, Input Embedding, Output Embedding, Inputs, Outputs, (shifted right). Line breaks match ("Feed / Forward", "Masked / Multi-Head / Attention"). â
+
+**Layout/regions:** Encoder/decoder background split, decoder gray container, encoder tan container, vertical stack order of decoder boxes, embedding boxes with â + sine, red up-arrow, Nx circles â all present and correctly ordered. Vertical centering of text inside boxes is good in both. â
+
+**Discrepancies found:**
+
+1. **BLOCKER â Missing red dash-dot curve (right side).** The original shows a red dash-dot curved line sweeping from the "Output"/Decoder-label area down the right side of the slide to the "Outputs" label (conf ~0.85). The recreation has **no trace of it anywhere in the crop** â the entire right margin is clean. Per rule 6, a line/arrow element omitted entirely is a BLOCKER.
+
+2. **MAJOR â Encoder residual connection on wrong side.** In the original, the green residual line runs up the **right** side of the encoder container (rounded loop at xâ330â350). In the recreation, a thick green bar runs up the **left** side of the encoder container (xâ168â185). Same element, mirrored placement (conf ~0.7).
+
+3. **MAJOR â Yellow cross-attention highlight footprint differs.** Original: one continuous yellow rectangle spanning xâ258â490 from yâ335 down behind the V/K/Q row. Recreation: the yellow appears as a narrower block (ending âx400) plus a separate yellow strip behind the V/K row â visible footprint is broken/non-contiguous vs the original's single band (conf ~0.6).
+
+4. **MINOR â Green residual lines heavily overweighted.** Original green connection lines are thin (~5â7 px) with rounded corners; recreation green bars are ~3Ã thicker with square/blocky elbows, noticeably changing the diagram's visual weight (conf ~0.8).
+
+5. **MINOR â Softmax/Linear box fill.** Original shows a pale mint-green fill; recreation shows white fill (conf ~0.7).
+
+6. **MINOR â Left dashed lines.** Recreation shows two red dashed diagonals on the left; original shows one continuous dashed path in that area (conf ~0.5).
+
+7. **MINOR â Embedding â/sine arrangement.** Original merges the â and sine glyph centrally; recreation separates â (left) and sine (right). Same content, different micro-layout (conf ~0.5).
+
+**Text metrics / centering / containment:** No overflow or clipping detected; all boxes contain their text with correct centering; V/K/Q circles sit at the container edge in both (matching the original's own edge-riding). â
+
+## Visual-Quality Defects in the Recreation
+- Green residual bars are blocky and oversized relative to the original's line weight (styling, see #4).
+- No clipping, collisions, wrapping errors, or illegibility observed.
+
+FINAL VERDICT: **FAIL** for 'faithful, usable recreation' of THIS CROP â driven by the entirely missing red dash-dot curve (BLOCKER) and the mirrored encoder residual path plus altered yellow highlight footprint (MAJOR).

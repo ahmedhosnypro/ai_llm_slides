@@ -1,0 +1,28 @@
+[info] context header injected: VIEW: Slide 017 build-time zoom: concatenated bar segment-2 label chip at 8x — resolve Y subscript digit and the parenthesized superscript digit exactly | CAPTURE: 8x LANCZOS zoom of original lecture frame crop (frame px 413,127..447,151), 960x540 source
+[info] mode analysis | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 3155565
+[info] crops/micro_seg2.png: transcript written (validated winner, atomic): transcripts/an_seg2.txt (pid 3155565)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== crops/micro_seg2.png ===
+[winner] images (round 1, attempt 1)
+## 1. Visible text (verbatim)
+
+- **Main label:** `Yââ½Â¹â¾` â a large "Y", followed by a subscript "2" (lowered, to the right of the Y), followed by a parenthesized superscript "(1)" (raised, to the right of the subscript). This reads as mathematical-style notation, consistent with a physics/math label (e.g., a spherical-harmonic-type symbol Y with subscript 2 and superscript (1)).
+  - The subscript digit is clearly a **2** (curved top with a flat horizontal base stroke).
+  - The parenthesized superscript digit appears as a single near-vertical stroke â most consistent with **1**, i.e. "(1)". At this resolution a "7" cannot be 100% excluded, but no distinct top bar is visible, so "(1)" is the best-supported reading.
+- **Bottom glyph:** a red shape protrudes from the bottom edge. Only its pointed apex is visible; it is **not identifiable as a specific character** (illegible/clipped). It could be the top of a red letter, digit, or triangle marker, but this cannot be determined from the crop.
+
+## 2. Layout
+
+- **Overall:** A horizontal khaki/olive-tan band (a "label chip") spans nearly the full width of the crop, framed above and below by green serrated/zigzag (scallop-like) borders, giving a stamp-or-filmstrip edge appearance. Heavy pixelation throughout from the 8x zoom.
+- **LEFT edge:** The khaki band and its green serrated borders run to the left crop edge; the "Y" begins a short distance in from the left, near the vertical center of the band.
+- **RIGHT edge:** The band continues to the right crop edge with empty khaki space after the "(1)" superscript. A thin darker vertical line is visible within the band very close to the right edge â plausibly a separator/boundary between concatenated bar segments.
+- **TOP:** The green zigzag border runs across the top of the band; a thin strip of white/cream is visible above it, more noticeably toward the right side of the crop.
+- **BOTTOM:** Below the band's lower green zigzag is a cream/off-white strip. At bottom center, a red glyph tip rises from the bottom crop edge and is cut off. A thin gray horizontal line appears at the very bottom-right corner.
+
+## 3. Visual defects / anomalies
+
+- **Clipping:** The red glyph at bottom center is cut off by the crop boundary â only its topmost portion is visible, making it unreadable. The crop also slices through the band's left and right context (no full chip boundaries on either side).
+- **Resolution artifacts:** The entire image is heavily pixelated/blurry (8x upscale of a small source region). This is what limits certainty on the superscript digit ("1" vs. "7").
+- **No garbage/placeholder strings, no overlapping text, and no wrong-language text** are present. The only legible content is the `Yââ½Â¹â¾` label, which is internally consistent and correctly formed.
+

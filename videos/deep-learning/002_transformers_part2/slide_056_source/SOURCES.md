@@ -78,3 +78,36 @@ for this slide were already fetched live this session for slides 052/053).
 The ORIGINAL VIDEO FRAME is ground truth for what each slide shows; web
 sources confirm/correct data and provenance, never license inventing content.
 `[?]` markers are removed only with a confirming URL recorded here.
+
+## Script-12 raw cross-check (2026-10-11, web-research verification worker)
+
+Cross-checked against `analysis/slide_056_raw.json` (script-12 raw landed
+after this record was written from the banked vision transcript).
+
+- CONFIRMED by raw: title "Decoder Final Output" (red) + blue subtitle
+  "Probability of each word in Vocab" over a red curly brace; bottom→top
+  stack navy "Last Decoder Block" bar → 4 green up-arrows → 4 green circles
+  → green-bordered "Linear Projection" panel containing 16 magenta circles
+  fully connected to the 4 green circles by 64 thin blue lines → 16 red
+  up-arrows → dark-red "Softmax" bar → 16 blue up-arrows → 16 pale-blue
+  circles; red "Vocab Size" labels at the left of BOTH the pale row and the
+  magenta row; badge "56"; identity metadata (old extraction slide 139,
+  kept frame_04854, shown 4852–4853 s, 2 frames — the brief transitional
+  slide). The raw pins the exact counts the record described as
+  diagrammatic: 16 pale, 16 magenta, 4 green, 4×16 = 64 lines. No source
+  claims in this record are contradicted; the downloaded Alammar reference
+  figure remains reference-only (raw describes generic circle pictograms,
+  consistent with "lecturer's own palette — NOT a pixel match").
+- RAISED (cosmetic, keeps `[?]`): brace span — the raw reads the red curly
+  brace as spanning "the full width of the 16 pale output circles", while
+  the banked transcript read 2nd–15th circle. Open question 2 stays `[?]`
+  as a frame-level cosmetic check for the build pass (two independent
+  reads disagree).
+- Open question 1 (4 green circles as generic d_model) — raw adds no label
+  or count semantics; remains `[?]` (recreation keeps drawn counts; nothing
+  to web-confirm).
+- New raw detail (no conflict): light-gray panel #E9E9E9 on a white outer
+  margin; magenta circles outline-less; pale circles thin blue-gray
+  outlines — build-level only.
+- No new published-figure claim appears in the raw; nothing to fetch.
+- Corrections needed: none.

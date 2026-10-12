@@ -1,0 +1,60 @@
+# Fidelity Check â Slide 010, crop A (middle-panel row)
+
+## Element-by-element comparison
+
+**1. Red serif Y^T (top center)**
+- Present in both; serif "Y" in dark red (~#B00000 / #C00000), with superscript T.
+- **MINOR** â In IMG1 the "T" sits noticeably lower relative to the Y cap-height (near mid/baseline) than in IMG2, where it reads clearly as a raised superscript. Confidence: high. At a glance it can read as "Y_t" rather than "Y^T".
+- Font family/weight match: good.
+
+**2. Tall red square brackets**
+- Present in both, dark red (~#C00000).
+- **MINOR** â Render brackets are noticeably thicker/heavier stroke and extend further above and below the stadium than in the original, where the brackets hug the stadium height more tightly with thinner strokes. Confidence: high.
+- Vertical centering relative to the stadium: centered in both. OK.
+
+**3. Pink rounded stadium**
+- Present in both, horizontal pill shape containing the four boxes.
+- **MINOR** â Fill color: IMG1 is a more saturated warm pink (~#F6CDEF / #F5C9EC); IMG2 is a paler, slightly cooler pink-lavender (~#EBD9F2). Confidence: medium (crop exposure/compression in the video frame could account for some of this).
+- Border: faint pink rim in both. OK.
+- Box vertical centering inside stadium: correct in both. OK.
+
+**4. Four y-boxes (yââyâ)**
+- Present in both: red bold-italic "y" with subscript numerals 1â4, pale fill, dark red rims.
+- Text verbatim: yâ yâ yâ yâ â correct, correct order, subscripts legible. â
+- **MINOR** â Render boxes have more rounded corners and thicker/darker maroon rims; original boxes are more rectangular with thinner rims and whiter fill. Confidence: high.
+- **MINOR** â Gaps between boxes in the render are somewhat wider relative to box width; original row is tighter. Even spacing maintained in both, so alignment logic is correct. Confidence: medium (crop scale differs between the two images).
+
+**5. Blue "= Sigmoid"**
+- Present in both: blue (~#2233CC), bold, italic, sans-serif. Font and style match well. â
+- **MINOR** â Render has a space after "=" ("= Sigmoid"); original is tight ("=Sigmoid"). Confidence: high.
+- Position to the right of the closing bracket: correct in both. â
+
+**6. Blue curly brace fragment (right edge)**
+- Present in both at the right edge. **MINOR** â In IMG1 the fragment reads mostly as a straight vertical blue rule with only a slight kink; the original shows a more pronounced leftward curly-brace point at mid-height. Possibly a crop-window artifact, but as rendered the brace curvature is under-expressed. Confidence: medium.
+
+**7. Red vertical bar fragment (below "=")**
+- Present in both, same relative position under the "=" region. â (Correctly retained; not a video artifact.)
+
+## Non-issues (per ground rules, not listed as discrepancies)
+- Crop scale difference between IMG1 and IMG2 (2x vs lower-res frame).
+- Background gray, template panel edges/blue rules at left and right â house chrome.
+- No cursor/letterbox artifacts in this region.
+
+## Visual-quality defects
+- None blocking: no clipping of content, no misaligned baselines within the y-box row, subscripts legible at render resolution.
+- Superscript T baseline placement (item 1) is the only typographic defect worth a fix pass.
+
+## Discrepancy summary
+| # | Item | Severity | Confidence |
+|---|------|----------|------------|
+| 1 | Superscript T positioned too low on Y | MINOR | High |
+| 2 | Brackets too thick / overshoot stadium height | MINOR | High |
+| 3 | Stadium pink more saturated than original | MINOR | Medium |
+| 4 | y-boxes: rounder corners, thicker rims, whiter original fill | MINOR | High |
+| 5 | Box gaps slightly wider relative to box size | MINOR | Medium |
+| 6 | Space after "=" | MINOR | High |
+| 7 | Brace fragment curvature under-expressed | MINOR | Medium |
+
+No BLOCKER or MAJOR discrepancies. All content is present, verbatim, correctly ordered, correctly colored within tolerance, and correctly positioned.
+
+**FINAL VERDICT: PASS** â faithful, usable recreation of this region.

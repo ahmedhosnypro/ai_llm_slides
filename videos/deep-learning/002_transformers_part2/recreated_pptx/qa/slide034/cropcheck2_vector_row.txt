@@ -1,0 +1,36 @@
+# Element-by-Element Comparison
+
+## Container (dashed rounded rectangle)
+- **Dash/dot color:** Both teal-green. MATCH.
+- **Dash pattern:** IMG1 uses longer dashes; IMG2 uses a finer dotted/dashed pattern. Visually very close at this scale. â **MINOR** (confidence 0.7).
+- **Extent/shape:** Both span full width, rounded corners, similar height and top/bottom margins. MATCH.
+- **Fill:** Light pink-lavender in both. MATCH.
+
+## The 8 boxes
+- **Count:** 8 in both (P0âP5, then gap, PN-2, PN-1). MATCH.
+- **Positions:** Box x-positions align well across the row; first and last boxes sit at matching insets from the container edges. The right pair (PN-2, PN-1) is correctly separated by the wide empty gap in both. MATCH.
+- **Sizes:** Boxes in IMG1 are marginally taller/wider (~5%), within tolerance. â **MINOR** (confidence 0.6).
+- **Fills:** Light pink in both. MATCH.
+- **Borders:** Red-rose thin borders in both. MATCH.
+
+## Labels
+- **Text verbatim:** "Vector" + subscripts P0, P1, P2, P3, P4, P5, PN-2, PN-1 â all correct in both. MATCH.
+- **Font family:** Both serif bold italic. IMG1's "Vector" has correct serif forms (compare the *V* and *f*). MATCH.
+- **Label color:** IMG1 dark navy; IMG2 reads slightly more blue-violet, but effectively the same dark navy family. MATCH (or at most negligible).
+- **Subscript rendering:** Both show P-codes as lowered, smaller, red-rose subscript text. IMG1's subscripts appear very slightly larger than IMG2's. â **MINOR** (confidence 0.6).
+
+## Other
+- **Red arrow:** Partially visible at top-center in both crops. MATCH.
+- **Mouse cursor:** Present in IMG2 only (video artifact) â correctly omitted from IMG1. MATCH.
+- **Gap emptiness:** Both show no dots/content in the wide gap. MATCH.
+
+## Discrepancy Summary
+| # | Item | Severity | Confidence |
+|---|------|----------|------------|
+| 1 | Container dash pattern slightly longer/coarser in IMG1 | MINOR | 0.7 |
+| 2 | Boxes marginally larger in IMG1 | MINOR | 0.6 |
+| 3 | Subscripts slightly larger in IMG1 | MINOR | 0.6 |
+
+No BLOCKER or MAJOR issues. Text, fonts, subscripts, colors, layout, and gap emptiness all match.
+
+**CROP VERDICT: MATCH**

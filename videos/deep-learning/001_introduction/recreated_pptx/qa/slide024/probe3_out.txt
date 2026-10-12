@@ -1,0 +1,132 @@
+== 1. PANEL FILL clean samples ==
+  (120,165): #C8C8C6
+  (300,160): #E9E9E9
+  (450,155): #E7E9E6
+  (620,160): #E9E9E9
+  (760,170): #DCD0C4
+  (100,400): #DAD1C2
+  (300,405): #DAD0C4
+  (700,405): #DAD0C4
+  (340,320): #D9CBBE
+  (520,330): #DDCFC2
+  modal top-strip: ['#E7E9E6 x7710', '#DAD0C4 x6075', '#DCD0C2 x1453']
+== 2. SLIDE BORDERS ==
+  (43,140): #FEFFFD
+  (43,300): #FEFFFD
+  (43,450): #FFFFFF
+  (917,300): #FEFFFD
+  (917,450): #FFFFFF
+  (480,44): #B18A8D
+  (480,46): #F1E8E9
+  (42,60): #FEFFFD
+  x-scan y300 x36..52: ['#FEFFFD', '#FEFFFD', '#FEFFFD', '#FEFFFD', '#FEFFFD', '#FEFFFD', '#FEFFFD', '#FEFFFD', '#FEFFFD', '#FEFFFD', '#FEFFFD', '#FEFFFD', '#FFFFFF', '#FEFEFE', '#FCFDFF', '#FCFDFF', '#F7F9F8']
+  x-scan y300 x910..926: ['#FEFFFD', '#FDFFFC', '#FEFFFD', '#FEFFFD', '#FEFFFD', '#FEFFFD', '#FEFFFD', '#FEFFFD', '#FEFFFD', '#FEFFFD', '#FEFFFD', '#FEFFFD', '#FEFFFD', '#FEFFFD', '#FEFFFD', '#FEFFFD']
+== 3. BLACK BOTTOM BAR ==
+  y527: black x 38..921 n=884
+  y529: black x 38..921 n=884
+  y531: black x 38..921 n=884
+  y535: black x 38..921 n=884
+  y539: black x 38..921 n=884
+== 4. ERROR BAR text core (brightest in bar) ==
+  brightest: [('#FFEEF1', 3), ('#FFF0EF', 3), ('#FFF2F6', 3)]
+  bar fill modal: [((np.int64(160), np.int64(0), np.int64(0)), 157), ((np.int64(159), np.int64(0), np.int64(0)), 110)]
+== 5. RINGS (dark ink clusters) ==
+  after-col1 row yc=212: col-groups=[(np.int64(192), np.int64(199)), (np.int64(207), np.int64(214)), (np.int64(222), np.int64(230))] centers=[np.float64(195.5), np.float64(210.5), np.float64(226.0)]
+    darkest: #6B6863
+  after-col1 row yc=285: col-groups=[(np.int64(192), np.int64(199)), (np.int64(207), np.int64(214)), (np.int64(222), np.int64(230))] centers=[np.float64(195.5), np.float64(210.5), np.float64(226.0)]
+    darkest: #847D73
+  after-col1 row yc=367: col-groups=[(np.int64(192), np.int64(199)), (np.int64(207), np.int64(214)), (np.int64(222), np.int64(230))] centers=[np.float64(195.5), np.float64(210.5), np.float64(226.0)]
+    darkest: #76736A
+  before-col5 row yc=212: col-groups=[(np.int64(600), np.int64(604)), (np.int64(607), np.int64(607)), (np.int64(610), np.int64(621)), (np.int64(626), np.int64(637)), (np.int64(644), np.int64(652))] centers=[np.float64(602.0), np.float64(607.0), np.float64(615.5), np.float64(631.5), np.float64(648.0)]
+    darkest: #230B00
+  before-col5 row yc=285: col-groups=[(np.int64(600), np.int64(604)), (np.int64(614), np.int64(636)), (np.int64(644), np.int64(652))] centers=[np.float64(602.0), np.float64(625.0), np.float64(648.0)]
+    darkest: #2F0D00
+  before-col5 row yc=367: col-groups=[(np.int64(600), np.int64(604)), (np.int64(607), np.int64(607)), (np.int64(614), np.int64(636)), (np.int64(644), np.int64(652))] centers=[np.float64(602.0), np.float64(607.0), np.float64(625.0), np.float64(648.0)]
+    darkest: #361B00
+== 6. NEURON BBOXES via fill masks ==
+  col2 r1: x243..279 y192..231 (w=37 h=40 cx=261.0 cy=211.5)
+  col3 r1: x408..445 y192..231 (w=38 h=40 cx=426.5 cy=211.5)
+  col4 r1: x571..609 y192..231 (w=39 h=40 cx=590.0 cy=211.5)
+  col5 r1: x661..693 y195..220 (w=33 h=26 cx=677.0 cy=207.5)
+  col2 r2: x243..280 y266..305 (w=38 h=40 cx=261.5 cy=285.5)
+  col3 r2: x408..445 y266..305 (w=38 h=40 cx=426.5 cy=285.5)
+  col4 r2: x570..608 y266..304 (w=39 h=39 cx=589.0 cy=285.0)
+  col5 r2: x661..693 y269..301 (w=33 h=33 cx=677.0 cy=285.0)
+  col2 r3: x243..281 y348..385 (w=39 h=38 cx=262.0 cy=366.5)
+  col3 r3: x408..445 y348..385 (w=38 h=38 cx=426.5 cy=366.5)
+  col4 r3: x570..608 y348..385 (w=39 h=38 cx=589.0 cy=366.5)
+  col5 r3: x663..690 y358..379 (w=28 h=22 cx=676.5 cy=368.5)
+  col1 border zone (dark<170) r1:
+    ink x139..194 y195..231
+  col1 fill sample (160,212): #EBEDEA  (155,205): #FFD9DA
+  col2 fill core (245,205): #E8D9F6 border sample (267,212): #DDE8EE
+  col3 fill (420,200): #DBFFB5 border (406,212): #8E0608
+  col4 fill (580,200): #F7C89A border (566,212): #C00007
+  col5 fill (665,205): #FFD5D5 border (653,212): #D0C9B9
+== 7. MESH LINES ==
+  horizontal r1->r1 y212 x350..400 reddest:
+   red px: [('#F2C5BF', 1), ('#D8A19E', 1), ('#C38C89', 1), ('#F5C0BC', 1)] n= 5
+  col2-3 gap y=250: 0 red runs []
+  col3-4 gap y=250: 0 red runs []
+  col2-3 gap tight y=250: 0 red runs []
+== 8. OUTPUT BOXES + red arrows ==
+  outbox r1: dark ink x714..811 y179..247
+    dark modal: [('#9E0002', 41), ('#9F0000', 35), ('#73000F', 33)]
+    fill modal: [('#DAD0C4', 3246), ('#DAD1C2', 392)]
+    red arrow x713..714 y208..215 n=12
+  outbox r2: dark ink x715..811 y252..319
+    dark modal: [('#93000D', 38), ('#9E0005', 32), ('#74000E', 31)]
+    fill modal: [('#DAD0C4', 3055), ('#DAD0C6', 119)]
+    red arrow x713..714 y282..287 n=10
+  outbox r3: dark ink x715..811 y332..394
+    dark modal: [('#A00000', 90), ('#9F0000', 56), ('#A20000', 53)]
+    fill modal: [('#DAD0C4', 2892), ('#DCD0C4', 108)]
+    red arrow x713..714 y363..369 n=12
+== 9. CLASS BOXES ==
+  class r1: x825..891 y202..221 (w=67 h=20 cx=858.0 cy=211.5)
+  class r2: x826..890 y275..293 (w=65 h=19 cx=858.0 cy=284.0)
+  class r3: x826..891 y357..374 (w=66 h=18 cx=858.5 cy=365.5)
+  class border/modal dark: [('#0A1B00', 2), ('#67775A', 2), ('#081900', 2)]
+== 10. CALLOUTS + ARROWS ==
+  prev: ink x220..306 y424..460 border-modal [('#8084AA', 10), ('#8B8FB4', 8)]
+    fill modal: [('#E8E8E8', 255), ('#DEEBF3', 104)]
+  cur: ink x384..471 y424..457 border-modal [('#90BF79', 4), ('#769959', 4)]
+    fill modal: [('#E8E8E8', 188), ('#E7E9E8', 56)]
+  nxt: ink x558..627 y432..458 border-modal [('#A2815E', 4), ('#C4A378', 2)]
+    fill modal: [('#E8E8E8', 141), ('#E8E8E6', 51)]
+  arrow_i: ink x232..299 y383..432 edge-modal [('#B4B4B6', 47), ('#8387AD', 4), ('#7F83A9', 4)]
+    bright fill: [('#E2E3E5', 35), ('#E9E9E7', 33)]
+    tip colored modal: [('#DCD6F0', 1), ('#B4A6C0', 1), ('#C7BDD8', 1)]
+  arrow_j: ink x398..461 y383..436 edge-modal [('#B4B3B8', 11), ('#B3B4B6', 8), ('#B4B4B6', 7)]
+    bright fill: [('#E6EBE7', 29), ('#E7E9E6', 19)]
+    tip colored modal: [('#D6FFBC', 2), ('#B5CB9C', 2), ('#C7D1AE', 2)]
+  arrow_k: ink x558..621 y383..436 edge-modal [('#B3B4B8', 16), ('#B1B5B6', 14), ('#C7A17A', 3)]
+    bright fill: [('#E8EAE5', 30), ('#ECE9E0', 28)]
+    tip colored modal: [('#F8CC9F', 2), ('#DBC0A2', 2), ('#D4BFA0', 2)]
+== 11. MAGENTA BOXES + dashed line ==
+  InputSamples fill: x64..140 y127..155 (w=77 h=29 cx=102.0 cy=141.0)
+  SampleLabel fill: x820..888 y125..154 (w=69 h=30 cx=854.0 cy=139.5)
+  IS border modal: [('#9E696F', 26), ('#7B2B34', 18), ('#9F686E', 14)]
+  left arrowhead: x126..135 y132..149 n=70
+  right end ink: x820..823 y137..142 n=15
+  dash: n_ink=1 span=819..819  on-len modal=[] gap modal=[]
+  dash color modal: [('#F6D4F7', 1)]
+== 12. TITLE color ==
+  title red modal: [('#9D0A1A', 5), ('#9D0F1F', 4), ('#B05E62', 4), ('#9B0D19', 4)]
+== 13. FAN LINES crossings ==
+  x=92: 1 line crossings at y=[287]
+  x=110: 1 line crossings at y=[287]
+  x=130: 1 line crossings at y=[287]
+== 14. LABEL COLORS ==
+  w label blue modal: [('#22097E', 1), ('#311991', 1), ('#463085', 1)]
+  Net label red modal: [('#FF9EA9', 2), ('#BA7F79', 1), ('#B65D5F', 1)]
+  O label red modal: [('#FFC0BA', 2), ('#FFB2B4', 2), ('#A30000', 2)]
+== 15. PORT DOTS at line endpoints ==
+  col2R r1: none
+  col3L r1: x399..407 y208..218 n=72 core [('#DFAAA2', 1), ('#FAC4BA', 1)]
+  col3R r1: x445..451 y205..218 n=72 core [('#8E0000', 2), ('#B90000', 2)]
+  col4L r1: x561..571 y206..219 n=110 core [('#E0B69D', 1), ('#DDAF95', 1)]
+== 16. NEURON INTERNALS col3r1 ==
+  darkest px: #072300
+  divider zone (425,210): #B9E596 (426,210): #84B362 (424,210): #DEFFB6
+  Sigma red modal: [('#C97E56', 1), ('#DB815E', 1)]

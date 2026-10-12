@@ -1,0 +1,18 @@
+{"page": 1, "verdict": "pass", "issues": ["MINOR (low confidence, likely blur): blue attention-head circle in the yellow strip appears to carry a light internal glyph in IMG2 that is not clearly resolved in IMG1", "MINOR (low confidence): red separator bands in IMG1 render slightly thicker than in IMG2", "NOT COUNTED (judge variance per VIEW directive): up-arrow between 'Linear' and top 'Add & Norm' renders bolder/larger arrowhead in IMG1 â this sits in the inherited certified region, not this slide's delta"]}
+
+**Element-by-element comparison (decoder stack crop):**
+
+1. **"Linear" box (top, teal/green)** â present in both, same fill, same dark border, same cropped position at the crop's top edge. Match.
+2. **Up-arrow to Linear** â present in both, pointing up from the top "Add & Norm" box. IMG1's shaft/arrowhead is noticeably bolder; however, this is inherited-region chrome from the certified 001 component, so per the VIEW directive it is treated as judge variance, not a delta defect.
+3. **Top "Add & Norm" (blue box)** â verbatim text, same fill/geometry in both. Match.
+4. **"Feed Forward" (olive-green box)** â two-line text "Feed / Forward" verbatim, same box color, border, and proportions in both. Match.
+5. **Thin dark inter-box shaft (Feed Forward â lower Add & Norm) + green side bar** â the attempt-2 fix is correctly implemented: the thin dark shaft runs through the gap in IMG1 exactly as in IMG2, with the small green bar at the same offset to the right. Match (this slide's delta, correctly applied).
+6. **Lower "Add & Norm" (blue box)** â verbatim, same fill and placement. Match.
+7. **Red separator band â "Multi-Head Attention" (brown box)** â both images show the full-width red band and the brown box with two-line dark-red text "Multi-Heaâ¦ / Attentionâ¦" (crop-truncated identically). Band thickness differs marginally (MINOR, likely zoom/blur). Match otherwise.
+8. **Second red band â yellow strip with navy circles** â both show the red band, yellow strip, navy head circles with connecting line, green bar, and pink bar at bottom. The faint internal glyph in IMG2's circle (possibly a "K") is not clearly resolvable in IMG1 at this zoom â MINOR, low confidence.
+9. **Frame containment** â no ink crosses the crop-region boundaries in either image; box borders, bands, and bars all sit inside their zones. Match.
+10. **Missing elements** â none. Every element visible in IMG2's crop is present in IMG1; the expected deltas (navy chevron pairs absent in upper zones, thin shafts added, lowest chevron-pair region present) are all correctly reflected.
+
+No BLOCKER defects. No text overflow, clipping, collision, or misalignment in the recreation. All verbatim text matches; layout, ordering, and colors align with the original crop.
+
+**FINAL VERDICT: PASS** for "faithful, usable recreation."

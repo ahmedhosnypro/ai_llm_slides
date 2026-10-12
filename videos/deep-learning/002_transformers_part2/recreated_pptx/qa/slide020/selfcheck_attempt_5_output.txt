@@ -259,21 +259,37 @@
   "maxd_px_frame": 1.7,
   "status": "OK"
  },
- "brace": {
+ "brace_left": {
   "frame_equiv": [
-   189.3,
-   410.5,
-   848.7,
-   445.8
+   176.0,
+   400.9,
+   507.2,
+   413.3
   ],
   "target_frame": [
    176,
    400,
-   863,
-   421
+   505,
+   413.5
   ],
-  "maxd_px_frame": 24.8,
-  "status": "OFF"
+  "maxd_px_frame": 2.2,
+  "status": "OK"
+ },
+ "brace_right": {
+  "frame_equiv": [
+   544.6,
+   400.9,
+   863.0,
+   413.3
+  ],
+  "target_frame": [
+   544,
+   400,
+   863,
+   413.5
+  ],
+  "maxd_px_frame": 0.9,
+  "status": "OK"
  },
  "caption": {
   "frame_equiv": [
@@ -326,9 +342,9 @@
  "lab5_green": {
   "frame_equiv": [
    203.2,
-   468.3,
-   255.3,
-   494.0
+   467.8,
+   258.6,
+   493.5
   ],
   "target_frame": [
    203,
@@ -336,8 +352,8 @@
    262,
    495
   ],
-  "maxd_px_frame": 6.7,
-  "status": "OFF"
+  "maxd_px_frame": 3.4,
+  "status": "OK"
  },
  "lab1_gray": {
   "frame_equiv": [
@@ -406,6 +422,4 @@
  "containment": []
 }
 
-SELFCHECK: FAIL
-  - brace: render->frame ['189.3', '410.5', '848.7', '445.8'] vs target [176, 400, 863, 421] (maxd 24.8 > 6.0)
-  - lab5_green: render->frame ['203.2', '468.3', '255.3', '494.0'] vs target [203, 469, 262, 495] (maxd 6.7 > 6.0)
+SELFCHECK: ALL OK

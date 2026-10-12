@@ -1,0 +1,10 @@
+render-match (RESUME LAW, 2026-10-12 resume worker):
+- rebuild from build/slide_029.js -> scratch/slide029/rebuild-1.png (150 dpi, soffice, TMPDIR=scratch)
+- vs banked qa/slide029/render_1.png: sizes 2001x1125 both; mean abs diff 0.0;
+  pixels differing >8: 0 of 2,251,125 — PIXEL-IDENTICAL.
+=> current script reproduces the banked attempt-1 render exactly; banked attempt-1
+   evidence (house_chrome_check_attempt1_out.txt PASS, selfcheck_attempt_1_out.txt ALL PASS)
+   carries to the judged render. Re-run corroborations banked as
+   house_chrome_check_attempt1_rerun_out.txt (PASS) and selfcheck_attempt_1_rerun_out.txt (ALL PASS).
+pptx md5 before rebuild 3d2dda87139c647fae85981f995d51bc (rebuild refreshed zip timestamps;
+render identity is the evidence of equivalence).

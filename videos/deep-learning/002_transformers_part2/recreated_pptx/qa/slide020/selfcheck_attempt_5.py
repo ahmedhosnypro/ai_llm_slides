@@ -110,7 +110,8 @@ cmp("row4_lane_top", bbox(is_red, 300, 1050, 770, 790), [162, 357, 505, 361])
 cmp("row4_band", bbox(is_red, 280, 1900, 782, 865), [162, 358, 883, 398])
 
 # 10. brace (window below row4)
-cmp("brace", bbox(is_red, 300, 1800, 895, 975), [176, 400, 863, 421])
+cmp("brace_left", bbox(is_red, 300, 1060, 869, 975), [176, 400, 505, 413.5])
+cmp("brace_right", bbox(is_red, 1140, 1880, 869, 975), [544, 400, 863, 413.5])
 
 # 11. caption
 def is_capblue(p):

@@ -1,0 +1,38 @@
+# Fidelity Check â Slide 022 "Suggested Positional Encoders"
+
+## Element-by-Element Comparison
+
+**House chrome (per ground rule a):** red outer frame, #E8E8E8 bg, yellow "22" badge, title placement â present and consistent in both. Not assessed as discrepancies.
+
+**Title block:**
+- "Suggested Positional Encoders" â dark red, bold, centered â (recreation maroon vs original brighter red; negligible).
+- "(Use **Word Index** as Position Encoding)" â blue, "Word Index" underlined âbatim, underline present, centered in both.
+
+**Diagram panel (navy inner frame):**
+- Left labels: "Sequence of words with Length N" (gray italic, 3 lines), "Position Embedding" (bold navy, 2 lines), "Use Position Index" (red bold italic, 2 lines) â present, matching color/weight/line-break structure.
+- Strip 1 (dashed gray): Word 0â¦Word 5, 5 gray dots, Word N-2, Word N-1 â 8 boxes + 5 dots, cream fill, red italic text, red borders. Text vertically centered in boxes 2 (lavender dashed): Pos 0â¦Pos 5, 5 blue dots, Pos N-2, Pos N-1, blue borders/text match.
+- Strip 3 (pink dashed): 0â5, gap, N-2, N-1 8 index boxes present, correct values, correct wide gap before N-2/N-1 matching original's proportion.
+- Arrows + "+Î´" labels: 6 arrows and 6 "+Î´" in both, same positions (under boxes 1â5 and one at far right). and placement match.
+
+**Bottom cyan panel (rounded):**
+- "Use Î´ = 1  First position Encoding =0 , Last Position Encoding = **N-1** (Depends on Seq. Length)"batim including "=0 ," spacing, bold N-1, underlined "(Depends on Seq. Length)".
+- "Problems:" red bold 1: verbatim, wraps at "Embedding to Word Embedding" on line 2 wrap point as original.
+- Bullet 2: verbatim, single line, bold segment "how can the system deal with Larger sequence values" 3: verbatim, bold "scalar"/"vector", "(how to Combine them ?)"- Frame containment: all bullet text and the +Î´ row sit fully inside their enclosing panels in the recreation â no overflow at.
+
+**Video artifacts correctly omitted (rule c):** mouse cursor near "N-1" box, black letterbox bar at bottom of IMG2 â properly absent.
+
+## Discrepancy List
+
+| # | Discrepancy | Severity | Confidence |
+|---|---|---|---|
+| 1 | "+Î´" labels rendered larger/bolder dark-red in recreation vs smaller, lighter red in original | MINOR | High |
+| 2 | Arrow geometry: original arrows sit slightly lower in the gaps below the strip; recreation arrows originate at box corners â same count/direction, slightly different anchor point | MINOR | Medium |
+| 3 | Index numerals (0â5, N-2, N-1) in recreation are slightly larger/bolder than original's lighter weight | MINOR | Medium |
+| 4 | Gray dots in word strip marginally larger in recreation | MINOR | High |
+
+No BLOCKER or MAJOR defects found. All text verbatim, all regions present, no missing elements, no frame overflow, no delimiter/table issues (no tables, equations, or multi-line delimiters on this slide).
+
+## Visual-Quality Defects in Recreation
+- None significant. Text is legible, no clipping, no collisions; box text vertically centered; line wraps match original.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

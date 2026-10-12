@@ -1,0 +1,26 @@
+# Visual QA Analysis â Slide 005, arrow-fix attempt 4 probe (h-assembly crop)
+
+## 1. Text transcription (verbatim)
+
+| Text | Location | Notes |
+|------|----------|-------|
+| `h` | Inside the tan/beige circular node, right-of-center | Lowercase, italic, dark gray/black |
+| `r` | Bottom-left, inside a white bordered box | **Partial** â only this letter is visible; the rest of the word is cut off by the left crop edge. It appears to be a lowercase "r" ending a longer string (illegible what the full word is). |
+
+No other text is legible in the crop. No wrong-language or obviously garbage placeholder strings are visible (aside from the truncated "r" fragment noted above).
+
+## 2. Layout
+
+- **LEFT edge:** A white rectangle outlined in red (an annotation/selection box) containing a solid mauve/purple filled rectangle. Both are **clipped** by the left edge of the crop. Below them, partially visible, is a second white bordered box containing the clipped "r" text. A short dark teal vertical bar sits at the very bottom-left corner.
+- **RIGHT edge:** A full-height dark teal/green vertical stripe runs down the right side of the image. To its left is white space; the circular "h" node sits right-of-center but does not touch the stripe.
+- **TOP:** Thin light-gray lines â one slanted diagonal line and one short vertical line â cross the upper area. A thin black arc (curved connector) starts near the top and sweeps down around the left side of the "h" circle. A small dark maroon/brown downward-pointing triangle (arrowhead) sits just above the "h" circle, near top-center-right.
+- **BOTTOM:** Mostly white. The bottom-left contains the clipped "r" box and the teal corner bar.
+
+## 3. Visual defects / anomalies
+
+1. **Clipped content (crop boundary):** The red annotation rectangle, the purple shape inside it, and the white box with the "r" text are all cut off at the left edge â the "r" is a truncated text fragment.
+2. **Detached/broken arrow:** The maroon arrowhead above the "h" circle appears to float with no clearly visible shaft attached. A thin faint gray diagonal line approaches from above but does not visibly connect to the arrowhead. This is consistent with the "arrow-fix" probe context â the arrow appears incomplete or mis-joined.
+3. **Overlapping connector lines:** The black arc curves down and terminates at/behind the "h" circle, crossing near the gray diagonal and vertical lines in the top area. The exact junction points are obscured.
+4. **Clipped teal stripe:** The dark teal stripe at the right edge runs off the right side of the crop (likely a slide-edge element, but its extent is unverifiable in this crop).
+
+Nothing else appears malformed; the "h" node itself (tan circle, brown border, italic "h") renders cleanly.

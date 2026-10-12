@@ -1,0 +1,35 @@
+# Region Fidelity Review â Slide 020 delta_bolt crop (render vs original)
+
+## Element-by-element comparison
+
+**Blue packet boxes (top row, partially cropped):**
+- Count matches: ~7 box bodies + 2 right boxes (N-2, N-1) in both, with matching gap where the red bolt passes.
+- Box fill lavender/periwinkle (~#C9C9F2) and blue borders (~#3333CC) match in color class and relative width in both images. â
+- Subscript labels "N-2", "N-1" render small and baseline-aligned in IMG1, matching IMG2. â
+- Vertical crop offset differs slightly (IMG2 shows more of the "Pos k" labels) â consistent with independent crop/upscaling, not judged as content.
+
+**Orange triangles:** Present at each box base in both, pointing down, similar relative size. In IMG2 the triangles appear slightly right-of-center relative to their boxes; in IMG1 they are centered. **MINOR** (confidence 0.5 â could be JPEG smear plus crop scaling).
+
+**Dashed blue line:** Present in both below the box row. IMG1 uses longer dashes; IMG2 reads as a finer dotted dash. **MINOR** (confidence 0.6; JPEG blur can shorten dashes, but the dash-length difference is noticeable).
+
+**Yellow dashed connector arcs â MISSING:** IMG2 clearly shows faint yellow/tan dashed arcs sweeping between consecutive triangle tips (visible under the triangles across the left half and right end). IMG1 has **no trace of these arcs**. This is a distinct content element (ink on the slide, not a JPEG artifact â it repeats rhythmically across the strip). **MAJOR** (confidence 0.85).
+
+**Faint blue circles in the arrow gap (IMG2, top of gap between the two bolts):** IMG2 shows a hint of light-blue rounded shapes at the top of the gap; IMG1's gap is clean gray. Low confidence this is real content vs. compression smear of adjacent box edges. **MINOR** (confidence 0.35).
+
+**"+Î´" labels:** Six instances in both (five left of the bolt, one right), matching x-positions relative to the boxes, correct math-italic Î´ glyph, dark-red ink (~#B02222 in IMG1, ~#C00000 in IMG2 â slightly brighter in original). **MINOR** color-class difference only; sizes proportionally consistent. â
+
+**Red bolt arrows:** Two arrows in both, same x-positions, both spanning from box row down to the bottom red bar, with matching wide-head profile and dark-red fill. Relative shaft width and head proportions are consistent within each image. â
+
+**Bottom red bar:** Present in both, full width, matching dark red. â
+
+## Visual-quality defects (IMG1)
+- No overflow, clipping, collision, or illegibility in the render. The left arrowhead nearly touches the bottom bar, matching the original. Nothing to flag.
+
+## Summary of discrepancies
+1. **MAJOR** â Yellow dashed transfer arcs between triangles are absent from the render (confidence 0.85).
+2. **MINOR** â Triangle horizontal placement vs. box centers slightly offset relative to original (confidence 0.5).
+3. **MINOR** â Dashed blue line dash length/pattern differs (confidence 0.6).
+4. **MINOR** â "+Î´" and arrow red slightly brighter in original (confidence 0.7, within color-class tolerance).
+5. **MINOR** â Possible faint blue circles in the bolt gap omitted (confidence 0.35).
+
+**FINAL VERDICT: FAIL** for 'faithful recreation of this region' â the missing yellow dashed arcs are a recurring structural element of the original strip and their omission is not attributable to JPEG artifacts.

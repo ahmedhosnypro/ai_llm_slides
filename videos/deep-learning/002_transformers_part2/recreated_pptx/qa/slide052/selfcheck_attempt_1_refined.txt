@@ -1,0 +1,29 @@
+== refined: upper container left edge in a circle-free band ==
+beige band bbox x650..1843 (expect 649..1846)
+== refined: Q circles via tight-window pixel count ==
+OK  Q1: 246 blue px in 18px window at (794,553)
+OK  Q2: 243 blue px in 18px window at (1019,553)
+OK  Q3: 244 blue px in 18px window at (1262,555)
+OK  Q4: 244 blue px in 18px window at (1510,553)
+OK  Q5: 243 blue px in 18px window at (1722,551)
+== refined: word boxes via dark-red text ink ==
+OK  wordbox1 'SOS' text ink (np.int64(740), np.int64(1068), np.int64(784), np.int64(1083)) within box (673,1039)..(853,1109)
+OK  wordbox2 'Je' text ink (np.int64(982), np.int64(1068), np.int64(1005), np.int64(1083)) within box (905,1039)..(1085,1109)
+OK  wordbox3 'me' text ink (np.int64(1216), np.int64(1072), np.int64(1245), np.int64(1083)) within box (1141,1039)..(1321,1109)
+OK  wordbox4 'sens' text ink (np.int64(1448), np.int64(1072), np.int64(1497), np.int64(1083)) within box (1386,1039)..(1562,1109)
+OK  wordbox5 'malade' text ink (np.int64(1674), np.int64(1068), np.int64(1749), np.int64(1083)) within box (1622,1039)..(1802,1109)
+== refined: callout borders (right of chrome border, inside box band) ==
+OK  callout1 border bbox (np.int64(97), np.int64(134), np.int64(602), np.int64(234)) vs (98.4, 135.2, 601.5, 233.3) d=(-1.4,-1.2,+0.5,+0.7)
+FAIL callout2 border bbox (np.int64(97), np.int64(272), np.int64(608), np.int64(389)) vs (98.4, 276.9, 601.5, 388.1) d=(-1.4,-4.9,+6.5,+0.9)
+== refined: callout text lines (interior scan) ==
+FAIL callout1 text: 3 line bands [(np.int64(21), np.int64(37)), (np.int64(41), np.int64(43)), (np.int64(50), np.int64(66))]
+FAIL callout2 text: 3 line bands [(np.int64(28), np.int64(44)), (np.int64(48), np.int64(50)), (np.int64(57), np.int64(73))]
+== refined: masked box 'Masked' yellow present ==
+OK  'Masked' yellow px in box1 top line: 185
+== refined: 'Multi-Head'/'Self Attention' white bands in masked box1 ==
+OK  masked box1 white bands: 2 [(np.int64(32), np.int64(41)), (np.int64(50), np.int64(59))] (expect 2 white lines under yellow 'Masked')
+
+REFINED SELF-CHECK: 3 FAIL
+  - callout2 border d=[np.float64(-1.3823785670443272), np.float64(-4.8882470314092075), np.float64(6.5382335653278005), np.float64(0.9204096725131308)]
+  - callout1 text bands 3
+  - callout2 text bands 3

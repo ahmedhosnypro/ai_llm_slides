@@ -1,0 +1,57 @@
+# Visual QA Analysis â Slide 039 recreation attempt 2
+
+## 1. Verbatim Text Transcription
+
+**Title block (top, black bold text):**
+- "Parallel Processing"
+- "Transform Sequence Elements in Parallel"
+- "[Calculation of Self Attention of words ( **Xâ**, **Xâ**, **Xâ**, **Xâ**)]" â with red bold X subscripts 1â4
+
+**Page number badge (top right, yellow circle):** "39"
+
+**Column headers (repeated on each of the four stacked tan panels, blue text in cream ovals):**
+- "Similarity"
+- "Probabilities"
+- "Weighted SUM"
+(On the back panels these read "Similarit..." / "Similarit..." â partially obscured/truncated where they pass behind foreground elements.)
+
+**Diagram labels:**
+- "K,q" (red, near Dot Product box)
+- "Dot Product" (inside tan box)
+- "Scaling by âd" (vertical red text, pink bar)
+- "K, q" (red text at top of pink bar area)
+- "âd" (inside a small red-outlined formula box)
+- "Soft max" (vertical purple text, lavender bar)
+- "Î£" (large sigma in light blue box)
+- "Wââ½Â¹â¾ / Wâ" labels (green boxes, four instances; subscripts small/illegible)
+- "Wqâ½Â¹â¾ / W" (red-outlined box at bottom)
+- "q" with subscript (partially obscured by an orange/empty box â illegible)
+- "Vâ", "Vâ", "Vâ", "Vâ" (red, left of blue weight boxes)
+- "W" boxes (blue, four instances, small subscripts illegible)
+- "Xâ" ... "Xâ" (red, bottom input arrows)
+- "Yâ", "Yâ", "Yâ", "Yâ" (blue, top output arrows)
+- "Y" (green letters inside output cell boxes, repeated)
+
+**Yellow rotated banner (bottom right):** "*** Run In Parallel ***"
+
+**Right-side stacked matrices:** contain small red "Xâ"..."Xâ" labels (subscripts tiny/illegible).
+
+## 2. Layout
+
+- **Top:** Title block (left-of-center) and yellow circle "39" badge at top-right corner; red page border.
+- **Left edge:** Dashed green box containing four stacked input rows (X blocks), feeding into green W boxes, then yellow K boxes; dashed green arrow curving from bottom diagram up the left side.
+- **Right edge:** Four stacked matrix blocks (XââXâ rows) at far right; back panels of the cascade; rotated yellow "*** Run In Parallel ***" banner at bottom-right corner.
+- **Bottom:** Dashed green box with four X cells (XââXâ), red upward arrows labeled Xâ, Xâ, Xâ, Xâ rising from the bottom edge.
+- **Top of diagram:** Four output groups (Y cell rows) with red arrows to YââYâ labels, cascading upward left-to-right.
+- **Center:** Four overlapping tan panels (cascade, back-to-front left-to-right); front panel contains the full pipeline: Dot Product box â pink "Scaling by âd" bar â lavender "Soft max" bar â â multiply nodes (red circles with X) â Î£ box â blue W boxes â output rows. Red diagonal lines connect Soft max outputs to â nodes.
+- Background: light gray; content area beige/cream inside red border.
+
+## 3. Visual Defects
+
+1. **Truncated "Similarity" labels:** On the second and third back panels the "Similarit..." ovals are clipped/overlapped by the foreground panel â text partially hidden.
+2. **Overlapping small box near "q":** An orange-bordered empty/placeholder box overlaps the "q" label and the red box below "Dot Product" â content inside appears empty/garbage.
+3. **Illegible subscripts:** Wâ, Wq, W, V, X labels inside the right-side matrices have subscripts too small to read at this resolution.
+4. **Broken connector at Soft max:** A short red arrow fragment near the pink bar (below "K, q") appears disconnected/orphaned.
+5. **"Probabilities" ovals partially overlapped** on back panels by Y output rows of the panel in front (e.g., Yâ row covers part of "Similarit..."/"Probabilities" region of the panel behind).
+6. **Cascade alignment:** The back panels' Î£ boxes and headers are offset progressively (intentional cascade, but edges of back panels extend to/past right-side matrix blocks, which slightly overlap the tan panel edges).
+7. No cut-off content at slide edges; the red border fully contains the content. No wrong-language text observed.

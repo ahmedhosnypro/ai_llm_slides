@@ -1,0 +1,137 @@
+== A. vertical red strokes: per-col red count, x 40..100 and 870..910 (y 100..480, away from title) ==
+  col 57: 68
+  col 58: 380
+  col 65: 311
+  col 894: 311
+== B. horizontal red strokes: per-row red count y 30..60, 160..180, 480..500 (x 100..850, away from vstrokes) ==
+  row 169: 750  xruns=[(np.int64(100), np.int64(849))]
+  row 490: 750  xruns=[(np.int64(100), np.int64(849))]
+  row 491: 750  xruns=[(np.int64(100), np.int64(849))]
+== C. row 169 x-extent ==
+  row 169 red x 58..894, n=831, runs=[(np.int64(58), np.int64(58)), (np.int64(65), np.int64(894))]
+== D. gray panel E9E9E7 extent ==
+  gray cols(n>100 of 420): 61..902
+  gray rows(n>100 of 400): 47..517, runs=[(np.int64(47), np.int64(85)), (np.int64(106), np.int64(165)), (np.int64(494), np.int64(515)), (np.int64(517), np.int64(517))]
+== E. white interior extent (near 255) ==
+  rows with >500 white px (x200..850): [(0, 40), (172, 218), (451, 488)]
+== F. title bbox (red, x 150..800, y 60..130) ==
+  title ink x 192..756, y 80..105
+    ink starts row 80
+  row profile nonzero: [(80, 105)]
+== G. header 'e.g. Sobel 2-D filter' dark ink, x 60..380, y 150..250 ==
+  dark ink x 65..335, y 172..243, n=1431
+  row runs: [(172, 172), (209, 243)]
+  col ink first/last: 65 335
+== H. left meme photo box: per-row frac of 'photoish' px in x 70..350 ==
+  row 180: 278
+  row 184: 278
+  row 188: 278
+  row 192: 278
+  row 196: 278
+  row 200: 278
+  row 204: 278
+  row 208: 221
+  row 212: 202
+  row 216: 133
+  row 220: 118
+  row 224: 114
+  row 228: 118
+  row 232: 106
+  row 236: 127
+  row 240: 205
+  row 244: 249
+  row 248: 152
+  row 256: 227
+  row 260: 228
+  row 264: 227
+  row 268: 211
+  row 272: 211
+  row 276: 193
+  row 280: 197
+  row 284: 195
+  row 288: 157
+  row 292: 156
+  row 296: 149
+  row 300: 145
+  row 304: 143
+  row 308: 129
+  row 312: 118
+  row 316: 115
+  row 320: 113
+  row 324: 97
+  row 328: 109
+  row 332: 122
+  row 336: 102
+  row 340: 84
+  row 344: 83
+  row 348: 86
+  row 352: 75
+  row 356: 72
+  row 360: 76
+  row 364: 84
+  row 368: 95
+  row 372: 103
+  row 376: 96
+  row 380: 83
+  row 384: 93
+  row 388: 93
+  row 392: 80
+  row 396: 92
+  row 400: 98
+  row 404: 87
+  row 408: 94
+  row 412: 123
+  row 416: 129
+  row 420: 128
+  row 424: 112
+  row 428: 114
+  row 432: 111
+  row 436: 114
+  row 440: 86
+  row 444: 213
+  row 448: 278
+  row 452: 278
+  row 456: 278
+  row 460: 278
+  row 464: 278
+  row 468: 278
+  row 472: 278
+  row 476: 278
+  row 480: 278
+  row 484: 278
+  row 488: 280
+  row 492: 280
+  (scan for top/bottom edges)
+  cols with photoish>60: [(70, 71), (74, 81), (85, 109), (149, 155), (157, 157), (163, 164), (166, 171), (173, 292), (298, 328), (330, 349)]
+== I. red matrix bbox (left, x 60..360, y 200..500) ==
+  red ink x 65..359, y 200..491, n=5943
+  row runs: [(200, 491)]
+== J. RGB stack tints (lower threshold), x 380..820, y 180..480 ==
+  tint ink x 439..819, y 219..450, n=58633
+  tint col runs>40: [(439, 725)]
+  tint row runs>40: [(220, 450)]
+== K. '3-D Filter' red text, x 750..890, y 170..250 ==
+  red ink x 750..852, y 234..249, n=548
+  row runs: [(234, 249)]
+== L. cube black ink, x 690..920, y 240..480 ==
+  black ink x 690..879, y 240..451, n=7353
+  black row runs>8: [(240, 371), (373, 386), (389, 398), (404, 407)]
+  black col runs>8: [(690, 723), (734, 860), (866, 869)]
+== M. yellow 'Third D' + arrow region, x 640..840, y 330..500 ==
+  yellow x 744..775, y 408..431, n=250
+  black(arrow/label outline) x 640..836, y 330..451, n=2390
+== N. color samples (fine) ==
+  (480,140) between title and y169: (np.int64(231), np.int64(233), np.int64(230))
+  (480,175) just below y169: (np.int64(250), np.int64(254), np.int64(255))
+  (100,180) left of x169? row180: (np.int64(254), np.int64(255), np.int64(253))
+  (300,470) below meme?: (np.int64(255), np.int64(255), np.int64(255))
+  (480,500) below box bottom 491: (np.int64(231), np.int64(233), np.int64(232))
+  (50,300) x50 (outside?): (np.int64(253), np.int64(253), np.int64(255))
+  (46,300) x46: (np.int64(254), np.int64(255), np.int64(253))
+  (40,300) x40: (np.int64(254), np.int64(255), np.int64(253))
+  (920,300) x920: (np.int64(254), np.int64(255), np.int64(253))
+  (905,300) x905: (np.int64(238), np.int64(243), np.int64(239))
+  (480,44) y44: (np.int64(178), np.int64(137), np.int64(141))
+  (480,46) y46: (np.int64(242), np.int64(232), np.int64(233))
+  (200,525) letterbox edge: (np.int64(0), np.int64(0), np.int64(0))
+  (500,516) above letterbox: (np.int64(241), np.int64(241), np.int64(241))

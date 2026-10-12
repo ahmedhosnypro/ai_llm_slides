@@ -1,0 +1,35 @@
+## Element-by-Element Comparison (connector corridor crop)
+
+**1. Connector curve (the element under review)**
+- IMG2 (original): a single thin, faint curved stroke leaves the banner region at top-left, arcs rightward/downward, and terminates on the green inset frame's top border. No second stroke in the corridor.
+- IMG1 (recreation): a single curved stroke leaves the banner's right border area at top-left, arcs down, and its ink terminates **on** the green top border â the junction is present. No spurious straight stroke from banner1's bottom is visible anywhere in the corridor above the inset. matches the founder-directed fix and the PIL ground truth (ink ends on the inset top border; corridor otherwise empty).
+- **Discrepancy (MINOR, confidence medium):** the recreation's curve is rendered in a more saturated salmon/red at slightly heavier weight than the original's very faint, thin gray-red stroke. Some of this is attributable to IMG2's JPEG softness washing the stroke out, so this is at most MINOR.
+- **Discrepancy (MINOR, confidence low-medium):** the recreation's curve reads as a slightly faceted polyline (small straightish mid-segment) versus the original's smoother arc. Cosmetic only.
+- **Touch point (MINOR, confidence low):** the recreation's curve meets the top border roughly mid-span of the visible border, while the original's faint stroke appears to descend slightly closer to the right corner block. Both terminate ON the border, so the mandated junction condition is satisfied; this is a positional nuance only.
+
+**2. "Attention" label**
+- Present in both, dark-red bold italic, matching style and casing. The two crops are not pixel-identical windows (different heights), so the apparent size/offset difference of the word (IMG1 shows "ttention", i.e., the crop window sits further left) cannot be attributed confidently to a real font-size or position mismatch. **No reliable discrepancy; flagged for a full-frame check only (MINOR, confidence low).**
+
+**3. Green inset frame / corner block / dashed red line**
+- Green top border with solid green square block at its right corner: present in both, same position relative to the crop. **Match.**
+- Red dashed diagonal leaving the corner block toward bottom-right: present in both, same direction and dash rhythm. **Match.**
+- **Discrepancy (MINOR, confidence low):** the recreation's green border stroke appears heavier than the original's thin green frame line; possibly a line-weight (pt) difference or crop-scale artifact. Worth one measurement on the full render.
+- **Discrepancy (MINOR, confidence low):** in IMG2 the green corner square sits with a hairline white gap inside the corner; in IMG1 it sits flush/solid on the corner. Cosmetic.
+
+**4. Gray thin stroke below the green border**
+- Present in BOTH images descending below the inset's top border at the same horizontal position. This is a shared element (part of the diagram below the crop), not a spurious connector remnant. **Match â not a defect.**
+
+**5. Frame containment**
+- The connector terminates exactly at the inset top border and does not cross into the inset interior; the text and green elements are contained.## Summary of Discrepancies
+1. MINOR â connector color/weight more saturated/heavier than original's faint stroke (partly JPEG-soft artifact). Confidence: medium.
+2. MINOR â curve smoothness: slightly faceted vs. original smooth arc. Confidence: low-medium.
+3. MINOR â connector touches top border slightly left of the original's touch point; junction condition still satisfied. Confidence: low.
+4. MINOR â green inset border stroke possibly heavier than original. Confidence: low.
+5. MINOR â corner square flush vs. hairline-inset placement. Confidence: low.
+
+No BLOCKER defects. No MAJOR defects. The mandated fix is verified: single curved connector from banner2's right border touching the inset top border; the spurious banner1-bottom straight stroke is gone; the corridor above the inset contains no other stroke.
+
+## Visual-Quality Defects (recreation)
+- None functional. The curve's slight faceting and heavier stroke are the only cosmetic notes (covered above).
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

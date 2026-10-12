@@ -1,0 +1,173 @@
+{
+  "slide_title": "Visualization of Single Layer Perceptron",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Multi-Class Classification",
+      "x\u2081",
+      "x\u2082",
+      "x\u2083",
+      "...",
+      "...",
+      "x\u2099",
+      "1",
+      "w\u2081\u2081",
+      "w\u2081\u2082",
+      "w\u2081\u2083",
+      "w\u2081\u2099",
+      "b\u2081",
+      "w\u2082\u2081",
+      "w\u2082\u2082",
+      "w\u2082\u2083",
+      "w\u2082\u2099",
+      "b\u2082",
+      "w\u2098\u2081",
+      "w\u2098\u2082",
+      "w\u2098\u2083",
+      "w\u2098\u2099",
+      "b\u2098",
+      "\u03a3",
+      "\u03a3",
+      "\u03a3",
+      ">0 Class I",
+      "<0 Not Class I",
+      ">0 Class II",
+      "<0 Not Class II",
+      ">0 Class m",
+      "<0 Not Class m"
+    ],
+    "equations": [
+      "d\u2081(X) = W\u2081\u1d40 X = w\u2081\u2081x\u2081+w\u2081\u2082x\u2082+....+w\u2081\u2099x\u2099+b\u2081*1",
+      "d\u2082(X) = W\u2082\u1d40 X = w\u2082\u2081x\u2081+w\u2082\u2082x\u2082+....+w\u2082\u2099x\u2099+b\u2082*1",
+      "d\u2098(X) = W\u2098\u1d40 X = w\u2098\u2081x\u2081+w\u2098\u2082x\u2082+....+w\u2098\u2099x\u2099+b\u2098*1"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered across the top. Left column below title: cream equation box (upper-left) with three red equations, and further down a small tan label box reading 'Multi-Class Classification'. Right two-thirds: one large white bordered panel containing the full neural-network diagram. Thin dark-red vertical line near the left edge running almost the full slide height; solid black strip across the very bottom of the slide.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, approx x 15-80%, y 8-16%",
+        "content": "Two-color bold title 'Visualization of Single Layer Perceptron'"
+      },
+      {
+        "name": "Equation box",
+        "position": "upper left, approx x 7-48%, y 18-42%",
+        "content": "Cream box with red border holding three stacked red equations d\u2081, d\u2082, d\u2098"
+      },
+      {
+        "name": "Multi-Class Classification box",
+        "position": "middle left, approx x 14-34%, y 66-75%",
+        "content": "Small tan rectangle with dark-red bold italic two-line label"
+      },
+      {
+        "name": "Network diagram panel",
+        "position": "right, approx x 44-93%, y 28-92%",
+        "content": "White panel with thin blue border containing the single-layer perceptron diagram: inputs, weights, three \u03a3 neurons, activation boxes, class outputs"
+      },
+      {
+        "name": "Red vertical rule",
+        "position": "left edge, approx x 6%, y 7-100%",
+        "content": "Thin dark-red vertical decorative line"
+      },
+      {
+        "name": "Black footer bar",
+        "position": "bottom, approx x 4-100%, y 95-100%",
+        "content": "Solid black horizontal strip; no slide number visible"
+      }
+    ],
+    "hierarchy": "Title is the largest and boldest element (two-color). The network diagram dominates by area on the right. The red equation block is the secondary focal point upper-left. The tan 'Multi-Class Classification' box is a small tertiary label. Black bar and red rule are decorative framing with lowest visual weight."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Rectangle with thin red border and cream fill containing three left-aligned equations, one per line: 'd\u2081(X) = W\u2081\u1d40 X = w\u2081\u2081x\u2081+w\u2081\u2082x\u2082+....+w\u2081\u2099x\u2099+b\u2081*1', 'd\u2082(X) = W\u2082\u1d40 X = w\u2082\u2081x\u2081+w\u2082\u2082x\u2082+....+w\u2082\u2099x\u2099+b\u2082*1', 'd\u2098(X) = W\u2098\u1d40 X = w\u2098\u2081x\u2081+w\u2098\u2082x\u2082+....+w\u2098\u2099x\u2099+b\u2098*1'. Each W carries an underline beneath it and its subscript; the trailing term is bias b times the constant input 1 ('*1').",
+      "colors": [
+        "#FFFFCC",
+        "#C00000"
+      ],
+      "position": "upper left, x ~7-48%, y ~18-42%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Small tan/beige rectangle containing the centered two-line text 'Multi-Class Classification' in bold italic dark red.",
+      "colors": [
+        "#D9D9A6",
+        "#8B0000"
+      ],
+      "position": "middle left, x ~14-34%, y ~66-75%"
+    },
+    {
+      "type": "diagram",
+      "description": "Fully-connected single-layer perceptron for multi-class classification, enclosed in a white rectangle with a thin blue border. LEFT: vertical input column labeled top-to-bottom x\u2081, x\u2082, x\u2083, '...', '...', x\u2099, 1 (the '1' is the bias input; two ellipsis rows indicate omitted inputs). CENTER-RIGHT: three summation neurons drawn as circles with light-cyan fill, teal ring, each containing '\u03a3' \u2014 top \u03a3 (~y 33%), middle \u03a3 (~y 57%), bottom \u03a3 (~y 80%). CONNECTIONS: thin straight lines fan from every input to every \u03a3, color-coded per output neuron \u2014 red bundle to top \u03a3, blue bundle to middle \u03a3, green bundle to bottom \u03a3. Weight labels placed along the lines: red w\u2081\u2081, w\u2081\u2082, w\u2081\u2083, w\u2081\u2099 and red b\u2081 (b\u2081 sits just above the bias input '1'); blue w\u2082\u2081, w\u2082\u2082, w\u2082\u2083, w\u2082\u2099 and blue b\u2082; green w\u2098\u2081, w\u2098\u2082, w\u2098\u2083, w\u2098\u2099 and green b\u2098. Between middle and bottom \u03a3, three small hollow circles stacked vertically act as a vertical ellipsis for omitted neurons. Each \u03a3 emits a short red arrow right into a small activation box: white/pink-filled rectangle with magenta border containing a blue step/threshold-function glyph (vertical bar with horizontal strokes). From each activation box a red arrow points to a two-line black bold output: top '>0 Class I' / '<0 Not Class I'; middle '>0 Class II' / '<0 Not Class II'; bottom '>0 Class m' / '<0 Not Class m' (each second line wraps, e.g. '<0 Not Class' + 'I').",
+      "colors": [
+        "#FFFFFF",
+        "#0000FF",
+        "#FF0000",
+        "#0000FF",
+        "#008000",
+        "#CCFFFF",
+        "#339999",
+        "#FF99CC",
+        "#0000CC",
+        "#000000"
+      ],
+      "position": "right panel, x ~44-93%, y ~28-92%"
+    },
+    {
+      "type": "other",
+      "description": "Solid black horizontal strip across the bottom of the slide (footer band, no text).",
+      "colors": [
+        "#000000"
+      ],
+      "position": "bottom edge, y ~95-100%"
+    },
+    {
+      "type": "other",
+      "description": "Thin dark-red vertical rule near the left edge, running from just below the top edge to the bottom black bar.",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "left edge, x ~6%"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations. Icon-style vector glyphs only: three light-cyan '\u03a3' summation circles with teal rings inside the diagram, and three small pink-bordered boxes each containing a blue step/threshold activation-function glyph (vertical bar with horizontal strokes)."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#C00000 (words 'Visualization of Single' and 'Perceptron'), #0000CC (word 'Layer')",
+    "body_text": "#000000 (diagram output labels), #C00000 (equations)",
+    "accents": [
+      "#C00000",
+      "#0000CC",
+      "#FF0000",
+      "#008000",
+      "#FFFFCC",
+      "#D9D9A6",
+      "#CCFFFF",
+      "#FF99CC",
+      "#000000"
+    ]
+  },
+  "typography_notes": "Title: large bold sans-serif (Arial/Verdana-like), ~36-40pt, two-color (red with the single word 'Layer' in blue). Equations: italic serif/math-style font, red, with bold-italic d and X, underlined W with subscripts, and subscripted w and b terms. 'Multi-Class Classification': bold italic sans-serif, dark red, centered on two lines. Diagram labels: small sans-serif; weight labels italic; output decision texts bold black sans-serif. No all-caps styling; no numbered bullets anywhere on the slide.",
+  "animation_state": "Slide appears fully built and static; all three equations, all diagram elements and all three output labels are visible simultaneously. No mid-build state detected.",
+  "recreation_brief": "1) Set slide background to white (#FFFFFF). Add a thin dark-red (#C00000) vertical line ~6% from the left edge spanning nearly full height, and a solid black (#000000) rectangle strip across the bottom (~5% of slide height). 2) Insert a centered title text box at the top: 'Visualization of Single Layer Perceptron', bold sans-serif ~36pt; color 'Visualization of Single ' and 'Perceptron' in #C00000 and the word 'Layer' in #0000CC. 3) Upper-left: draw a rectangle ~41% wide with fill #FFFFCC and red (#C00000) border; inside, left-align three lines of red italic serif text with underlined W and subscripts: 'd\u2081(X) = W\u2081\u1d40 X = w\u2081\u2081x\u2081+w\u2081\u2082x\u2082+....+w\u2081\u2099x\u2099+b\u2081*1', 'd\u2082(X) = W\u2082\u1d40 X = w\u2082\u2081x\u2081+w\u2082\u2082x\u2082+....+w\u2082\u2099x\u2099+b\u2082*1', 'd\u2098(X) = W\u2098\u1d40 X = w\u2098\u2081x\u2081+w\u2098\u2082x\u2082+....+w\u2098\u2099x\u2099+b\u2098*1'. 4) Middle-left: draw a small tan (#D9D9A6) rectangle with centered bold-italic dark-red (#8B0000) text on two lines: 'Multi-Class Classification'. 5) Right side: draw a large white rectangle with a thin blue (#0000FF) border (~49% wide, ~64% tall). 6) Inside it, stack input labels on the left: x\u2081, x\u2082, x\u2083, '...', '...', x\u2099, 1 (small black sans-serif). 7) Place three circles filled #CCFFFF with teal (#339999) rings, each containing '\u03a3', at top-right, middle-right and bottom-right of the panel. 8) Draw thin connector lines from every input to every \u03a3: red (#FF0000) lines to the top \u03a3, blue (#0000FF) to the middle \u03a3, green (#008000) to the bottom \u03a3. 9) Label the lines with color-matched italic weight labels: red w\u2081\u2081, w\u2081\u2082, w\u2081\u2083, w\u2081\u2099 and b\u2081 (b\u2081 just above the '1' input); blue w\u2082\u2081, w\u2082\u2082, w\u2082\u2083, w\u2082\u2099 and b\u2082; green w\u2098\u2081, w\u2098\u2082, w\u2098\u2083, w\u2098\u2099 and b\u2098. 10) Between the middle and bottom \u03a3, add three small hollow circles stacked vertically as an ellipsis. 11) From each \u03a3 draw a short red arrow right into a small rectangle with pink/magenta (#FF99CC) border containing a blue (#0000CC) step-function glyph (vertical bar with two horizontal strokes). 12) From each activation box draw a red arrow to bold black two-line text: top '>0 Class I' / '<0 Not Class I'; middle '>0 Class II' / '<0 Not Class II'; bottom '>0 Class m' / '<0 Not Class m' (let the second line wrap naturally). 13) Verify no slide number or footer text is added beyond the black bar.",
+  "_meta": {
+    "frame": "slide_023.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 23,
+      "image": "slide_023.jpg",
+      "kept_frame": "frame_01199.jpg",
+      "start_sec": 1198,
+      "end_sec": 1226.0,
+      "frame_count": 29,
+      "old_group": 28,
+      "founder_frame_swap": true,
+      "original_kept_frame": "frame_01227.jpg"
+    },
+    "elapsed_s": 231.1
+  }
+}

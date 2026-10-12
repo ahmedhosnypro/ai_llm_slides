@@ -1,0 +1,20 @@
+scale S = 2.0844  (render 2001x1125 vs frame 960x540)
+eq panel border            d(framepx) dx0= +4.7 dy0= +3.6 dx1= -5.3 dy1= -2.1  worst=5.3  FIX
+pill block                 d(framepx) dx0= +1.0 dy0= -0.1 dx1= -0.7 dy1= -1.3  worst=1.3  OK
+matrix                     d(framepx) dx0= +7.3 dy0= -1.5 dx1= -6.3 dy1= -3.9  worst=7.3  FIX
+output column              d(framepx) dx0= +2.2 dy0= +3.7 dx1= -2.1 dy1= -2.7  worst=3.7  FUZZ
+X2 label                   d(framepx) dx0= +4.0 dy0= +3.2 dx1= -3.3 dy1= -1.2  worst=4.0  FUZZ
+WQ label                   d(framepx) dx0= +3.4 dy0= -0.3 dx1= +0.2 dy1= +0.3  worst=3.4  FUZZ
+equals                     d(framepx) dx0= +1.2 dy0= +1.3 dx1= -2.8 dy1= -2.0  worst=2.8  OK
+title                      d(framepx) dx0=+11.7 dy0=+12.3 dx1=-13.4 dy1= +0.1  worst=13.4  FIX
+subtitle                   d(framepx) dx0= -0.3 dy0= +1.9 dx1=-25.2 dy1= +0.5  worst=25.2  FIX
+arrow                      d(framepx) dx0= +0.8 dy0= +0.9 dx1= +0.5 dy1= +0.1  worst=0.9  OK
+net panel                  d(framepx) dx0= +3.4 dy0= +6.2 dx1= -0.4 dy1= -2.4  worst=6.2  FIX
+band                       d(framepx) dx0= +4.6 dy0= -0.1 dx1=-19.3 dy1= +0.2  worst=19.3  FIX
+out circle row             d(framepx) dx0=+19.1 dy0= +8.2 dx1=-13.2 dy1= -2.4  worst=19.1  FIX
+in circle row              d(framepx) dx0= -0.3 dy0= -0.4 dx1= -1.7 dy1= +0.5  worst=1.7  OK
+
+-- pill bracket vs circle-row extent (frame px, from crops/read_c2) --
+bracket-left               d(framepx) dx0= +1.0 dy0= -0.1 dx1= +0.4 dy1= +0.4  worst=1.0  OK
+bracket-right              d(framepx) dx0= -0.1 dy0= -0.1 dx1= -0.7 dy1= -1.3  worst=1.3  OK
+circles row  frame y108..151 | render/scale y107.9..149.2

@@ -1,0 +1,41 @@
+# Fidelity Check â Slide 052 (Multi-head Encoder-Decoder Attention Block)
+
+## Element-by-element comparison
+
+**House chrome** (frame, #E8E8E8 bg, yellow "52" badge, title boxes per template): present and per spec â not assessed as discrepancies per Ground Rule (a).
+
+### Text content (verbatim check)
+- "Multi-head *Encoder-Decoder* / Attention Block" â verbatim, correct line break, underline on "Encoder-Decoder" â
+- "Masked Multi-head *Self* / Attention Block" â verbatim, correct line break, underline on "Self" â
+- "Residual Connection and Layer Normalization" (Ã3) â verbatim â
+- "Feed Forward Networks [ One Hidden with RELU Activation]" â verbatim including bracket spacing â
+- "Encode Decoder Attention" Ã5, "Masked / Multi-Head / Self Attention" Ã5, "Transformer Encoder", "I / feel / Sick", "SOS = Start Of Sentence", "Word and Position Encoding", "SOS / Je / me / sens / malade" â all verbatim â
+- K, V, Q circle labels â present and correctly placed â
+
+### Layout / regions
+- Two title boxes top-left with two red arrows (one to encoder panel, one long one to decoder panel) â
+- Upper tan panel with 5 encoder columns, 3 banner bars (red/green/red), pale column strips above and below, K/V at left with pink/green horizontal pass-through arrows â
+- Lower purple-bordered panel with red banner, 5 Masked blocks, purple "Word and Position Encoding" bar, 5 green word boxes â
+- Left column: 3 Y-labeled token strips, blue Transformer Encoder box (with stacked-layer offset), 3 word boxes, green SOS legend box â
+
+## Discrepancies
+
+1. **BLOCKER (confidence 0.7) â Missing decoder-column token strips.** In the original (IMG2), each of the five decoder columns contains a small pale token strip (a row of ~5â6 tiny colored squares, matching the strips at the top of the encoder panel) sitting between the "Masked Multi-Head Self Attention" blocks and the "Word and Position Encoding" bar. In the recreation (IMG1), these strips are absent entirely â only thin vertical connector lines run down to the purple bar. This is a visual element the original shows that the recreation omits completely.
+
+2. **MINOR (confidence 0.75) â Missing small down-arrows from the top token strips into the encoder panel.** The original shows short vertical arrows from each top strip pointing down into the tan panel; the recreation shows the strips but not the arrows.
+
+3. **MINOR (confidence 0.7) â Italic styling on the green Feed Forward bar.** Original renders "Feed Forward Networks [ One Hidden with RELU Activation]" in italic; recreation is upright. (Also "RELU" in the original uses a typewriter-style face vs. the recreation's plainer face.)
+
+4. **MINOR (confidence 0.6) â Masked Self-Attention blocks lack the stacked/layered 3-D effect.** Original shows each Masked block as a stack of layered blue cards; the recreation renders them as flat single boxes (the encoder-side "Encode Decoder Attention" blocks in the original are also stacked, and the recreation flattens those as well, though the Transformer Encoder box does retain its stacked offset).
+
+5. **MINOR (confidence 0.5) â Missing thin enclosure border around the left Y-strip group.** The original draws a light rectangular outline around the three Y-labeled token strips above the Transformer Encoder; the recreation omits it.
+
+6. **MAJOR, low confidence (0.35) â Possible bottom-edge containment issue in the decoder panel.** In IMG1 the purple panel's bottom border is not visible before the image bottom; the green word boxes (SOS/Je/me/sens/malade) sit very close to the red house frame's bottom edge. If the purple panel border runs past the red frame line, that is a containment overflow; I cannot confirm this definitively at this resolution and it may simply be tight but contained. Flagging for visual inspection rather than asserting it.
+
+## Visual-quality defects in the recreation
+- No text overflow, clipping, wrapping errors, collisions, or illegibility observed. Text is vertically centered in all boxes, banners, and circles; banner bars are contained within their panels; labels align with their values (Q circles centered under their columns, K/V vertically aligned with the encoder blocks).
+
+## Summary
+All text is verbatim with correct line breaks and styling; layout, regions, colors, arrows, and the word-alignment example all match closely. The single substantive issue is the entirely omitted token strips inside the five decoder columns (discrepancy #1), which under rule (6) is a blocker-grade omission of a visible original element, plus several minor styling omissions.
+
+**FINAL VERDICT: FAIL** for 'faithful, usable recreation' â driven by the missing decoder-column token strips (BLOCKER, confidence 0.7); with that element added (and optionally the minor styling items), the slide would pass.

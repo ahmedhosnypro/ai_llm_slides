@@ -1,0 +1,16 @@
+HOUSE CHROME CHECK: FAIL
+  - badge center (1847,167) vs (1860,148) (tol 8)
+  - badge diameter 95 vs 75 (tol 12.0)
+
+--- ADDENDUM (worker, 2026-10-12): checker-window vs content interaction ---
+The FAIL lines above are NOT a chrome defect. The checker's badge window
+(render px x1786..1936, y73..223 = frame x857..929, y35..107) catches the RIGHT
+STACK's rear blue-gray top faces + their AA (frame x855..868, y80..96) which are
+LEGITIMATE SLIDE CONTENT on this slide (the stack sits high; slide 042's stack sat
+at y246+ and never entered the window). Proof: the SAME check run on the ORIGINAL
+frame (upscaled to 2001x1125) fails IDENTICALLY: blob center (1826,148) vs canon
+(1860,148) -> center OFF BY 34 (tol 8), d=72. Direct PIL measurement of the badge
+disc alone in the render: fill center (1859.5,147.5) vs canon (1860,148) d=70
+(fill inside the 2pt ring; ring purple 923 px present) -> the badge IS canonical.
+The ground truth itself trips this window heuristic on slide 043; chrome verified
+by direct measurement instead.

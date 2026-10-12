@@ -1,0 +1,38 @@
+# Slide 047 Crop Comparison â Bullet Label Boxes + Two Equations
+
+## 1. Verbatim Transcription
+
+**Image 1 (PPTX recreation render):**
+- Bullet 1 (boxed label): `Activation function:` â followed by equation: *a*<sub>*r,c*</sub> = 1/(*r*Â·*c*) Î£<sub>*i,j*âÎ©(*r*,*c*)</sub> *x*<sub>*ij*</sub>
+- Bullet 2 (boxed label): `Gradient w.r.t. input` â followed by equation: â*a*<sub>*r,c*</sub>/â*x*<sub>*ij*</sub> = 1/(*r*Â·*c*)
+- Bottom-right (partial box): **Where:**
+
+**Image 2 (original lecture frame):**
+- Bullet 1 (boxed label): `Activation function:` â followed by equation: *a*<sub>*rc*</sub> = 1/(*r*Â·*c*) Î£<sub>*i,j*âÎ©(*r,c*)</sub> *x*<sub>*ij*</sub>
+- Bullet 2 (boxed label): `Gradient w.r.t. input` â followed by equation: â*a*<sub>*rc*</sub>/â*x*<sub>*ij*</sub> = 1/(*r*Â·*c*)
+- Bottom-right (partial box): **Where:**
+
+## 2. Similarities
+
+- **Purpose & structure:** Both show two bulleted list items, each with a dark-navy-bordered rectangular label box followed by a mathematical equation to its right.
+- **Content:** Both contain the same two labels ("Activation function:", "Gradient w.r.t. input") and the same two equations (average-activation with summation over Î©(r,c); partial-derivative gradient = 1/(rÂ·c)).
+- **Equation styling:** Both render equations in a serif math typeface with stacked fractions (1 over rÂ·c), summation symbol with subscript limits, and italic variables.
+- **Box styling:** Navy/blue borders on both label boxes; hollow circular bullet markers at the left of each line in both.
+- **"Where:" callout:** Both have a partially visible light-blue box at bottom right with dark-red bold-italic serif text "Where:", clipped by the crop.
+
+## 3. Differences
+
+- **Subscript notation (content deviation):** Image 1 writes *a*<sub>*r,c*</sub> and â*a*<sub>*r,c*</sub> **with a comma** in the subscript; Image 2 (original) uses *a*<sub>*rc*</sub> / â*a*<sub>*rc*</sub> **without a comma**.
+- **Label typography:** Image 1's box text is a **monospace/typewriter-style font** (uniform letter widths, wide spacing). Image 2's box text is a **proportional sans-serif** (narrow i/t, tighter tracking).
+- **Equation spacing:** Image 1 has generous spacing around "=" and after the Î£ term (e.g., "*a*<sub>r,c</sub> = â¦"); Image 2 is compressed ("*a*<sub>rc</sub>=" nearly touching the fraction). Image 1's equations are slightly larger relative to the labels.
+- **Image quality:** Image 1 is crisp with clean anti-aliased strokes; Image 2 is visibly blurry with compression/scaled-frame artifacts (soft edges on box borders, smeared subscripts).
+- **Box borders:** Image 1's navy borders are slightly thicker/darker; Image 2's are thinner and a brighter blue.
+- **Subscript in Î© limits:** Image 1 appears to render "*i,j* â Î©(*r*, *c*)" with slightly wider spacing; Image 2 packs it tighter as "Î©(*r,c*)" â minor, partly attributable to resolution.
+- **Cropping/margins:** Both crops clip the "Where:" box at the right/bottom; Image 1 shows marginally more top margin; Image 2's crop is slightly tighter vertically. No clipping of labels or equations in either.
+- **No garbage strings, placeholders, or wrong-language text** appear in either image.
+
+## 4. Verdict
+
+**Image 1 (recreation render) is better overall** as a visual artifact: it is sharply rendered, the fractions, summation limits, and subscripts are cleanly typeset and vertically centered against the label boxes, and the box borders and bullet markers are crisp. Image 2 suffers from blur/compression that degrades the small mathematical glyphs (subscripts *ij*, *rc* are smeared).
+
+**However, if the goal is fidelity to the original**, Image 1 contains two deviations that should be corrected: (a) the comma in the subscripts *a*<sub>r,c</sub> / â*a*<sub>r,c</sub>, which the original omits (*a*<sub>rc</sub>), and (b) the monospace label font, whereas the original uses a proportional sans-serif. Fixing these two items would make the recreation both higher-quality and faithful.

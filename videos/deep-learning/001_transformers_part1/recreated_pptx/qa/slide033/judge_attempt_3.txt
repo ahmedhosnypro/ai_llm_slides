@@ -1,0 +1,38 @@
+# Fidelity Check â Slide 033: Self Attention Mechanism (Linear Transformation of Inputs)
+
+## Element-by-element comparison
+
+**Title block**
+- "Self Attention Mechanism (Linear Transformation of Inputs)" â black + blue bold, verbatim match, centered. â
+- Subtitle "(Self Attention of word Xâ w.r.t All words in Sentence ( Xâ, Xâ, Xâ, Xâ )" â verbatim match, red sub-scripted X's with correct subscript indices, comma spacing inside the outer parenthesis matches. â
+
+**Diagram regions (all present in both)**
+- Left XââXâ embedding strips in green dotted container, ordered XââXâ top-to-bottom, with orange arrows into Wââ½Ê³â¾ yellow boxes. â
+- Kâ/Kâ/Kâ/Kâ key strips with labels, same ordering, same adjacency to Wâ boxes. â
+- Dot Product box (tan) with four blue target dots, red connecting lines fanning to qâ, "K.q" annotation, translucent red highlight circle on the Kâ row â present in both, same row placement. â
+- "Similarity", "Probabilities", "Weighted SUM" pill labels â present, same relative positions. â
+- Softmax vertical purple box, rotated text. â
+- Î£ box with red up-arrows, four â (multiply) circles, Vâ/Vâ/Vâ/Vâ labels with same vertical ordering and alignment against their arrows. â
+- Yâ output strip (green) with thick green arrow, top center-right. â
+- Right side: V strips â Wáµ¥â½Ê³â¾ yellow boxes â Xâ/Xâ/Xâ/Xâ strips in green dotted container, left-pointing arrows into Wáµ¥. â
+- Bottom: sentence row XââXâ with Xâ highlighted (pink/magenta dashed selection), red arrow beneath pointing to Xâ, qâ strip and W_qâ½Ê³â¾ box feeding up into the Dot Product box. â
+- Bottom-right annotation box: "1\*d / W / d\*d / 1\*d" with equals sign and "d: Embedding Length". â
+- Green dotted leader arrows under the left and right X containers. â
+
+**Colors**: red frame, yellow badge, beige panel, yellow W-boxes, green dotted containers, purple Softmax, blue Î£ panel â all match closely.
+
+## Discrepancies
+
+| # | Discrepancy | Severity | Confidence |
+|---|---|---|---|
+| 1 | "K.q" label sits inside the top-right corner of the Dot Product box in the recreation; in the original it sits just outside/above the box's top-right edge. | MINOR | High |
+| 2 | The translucent red highlight circle on the Kâ row is somewhat larger and more saturated in the recreation. | MINOR | Medium |
+| 3 | The â circles and Î£ box are slightly larger relative to surrounding elements in the recreation (proportional scale drift ~5â10%); all arrows and connections still land correctly. | MINOR | Medium |
+| 4 | Recreation fonts are slightly heavier/larger in the diagram labels (Wâ, Kâ, Vââ¦) than the original's, though layout positions match. | MINOR | Medium |
+
+No BLOCKER or MAJOR defects: all content elements present, all text verbatim, all arrows/connections land on the correct targets, all regions contained within the inner panel and house frame, no clipping, no overlap of text by shapes, no missing rows or labels.
+
+## Visual-quality defects in the recreation
+- None beyond the minor scale/weight items above; no overflow, no collisions, no illegible text.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

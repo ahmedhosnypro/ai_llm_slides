@@ -1,0 +1,40 @@
+# Typography Forensics â Equation Box (all measurements at 3Ã crop scale; Ã·3 for original pixels)
+
+*(JPEG blur gives Â±2â3 px uncertainty per measurement.)*
+
+## Eq. 1 â `h_out = (h_in â h_f)/s + 1`
+- **(a)** Leftâright: italic **h** + subscript *out* â upright **=** â stacked fraction {numerator: *h* + sub *in* â minus sign â *h* + sub *f* / bar / denominator: *s*} â **+** â upright serif **1**.
+- **(b)** Subscript *out*: ~17â18 px tall vs. main *h* ascender ~35 px â **â 60â65% of main size**, baseline dropped ~5 px below main baseline.
+- **(c)** Numerator letters: ascender height ~34â35 px = main-line *h* (~35 px) â **SAME size** (within ~5%, display-style, not reduced).
+- **(d)** Bar: ~4â5 px thick, length â full numerator width (~215 px). Sits ~15â17 px below numerator baseline but only ~8â9 px above the denominator's top â **slightly closer to the denominator**. Denominator *s*: ~19â20 px, a **full-size x-height letter, not tiny** â stroke weight matches the numerator, and it's visibly ~25â30% larger than the subscripts.
+
+## Eq. 2 â `w_out = (w_in â w_f)/s + 1`
+- **(a)** Identical structure to Eq. 1 with *w* replacing *h*.
+- **(b)** Subscript *out*: ~16 px vs. main *w* x-height ~24 px â **â 65%**.
+- **(c)** Numerator *w*'s: ~25 px = main *w* â **SAME size**.
+- **(d)** Same bar geometry; denominator *s* ~20 px, full-size. Bar slightly longer (~230 px) than Eq. 1's.
+
+## Eq. 3 â `d_out = n_f`
+- **(a)** Italic **d** + sub *out* â **=** â italic **n** + sub *f*. The subscript *f* is a full italic *f* with a descender hook dipping ~6â8 px below the subscript baseline.
+- **(b)** *out*: ~18 px vs. *d* ascender ~35 px â **â 60â65%**.
+- **(e)** Yes â slanted serif italic (~15â18Â° slant), bracketed serifs, moderate stroke contrast; = upright. Consistent with Cambria Math / Times-italic rendering.
+
+## Eq. 4 â `d_f = d_in`
+- **(a)** Italic **d** + sub *f* â **=** â italic **d** + sub *in*.
+- **(b)** Subscripts *f* and *in*: ~18â20 px vs. *d* ~35 px â **â 60â65%** (same as everywhere else).
+- **Layout note:** this line's left edge sits ~35â45 px further right than Eqs. 1â3, whose left edges are roughly aligned (Â±15 px).
+
+## (f) Tallest vs. shortest line
+- Full ink heights: **Eq. 1 â 85â90 px** (numerator top â denominator bottom), Eq. 2 â 80â85 px, Eq. 3 â 40â45 px, Eq. 4 â 45â50 px.
+- **Tallest = Eq. 1; shortest = Eq. 3 â ratio â 2.0â2.1 : 1.** Note this is entirely from the fraction stack: the tallest *single glyph* (h/d ascenders, ~35 px) is identical in every line.
+
+## Summary metrics
+| Element | Height (3Ã) | vs. main |
+|---|---|---|
+| Main letter (h, d ascender) | 34â36 px | 100% |
+| Full-size x-height (w, n) | 22â26 px | ~70% of ascender |
+| Numerator/denominator | same as main | **SAME, not reduced** |
+| Subscripts | 16â20 px | **~60â65%** |
+| Fraction bar | 4â5 px thick | spans full numerator width |
+
+Rebuild recipe: display-style fractions (full-size numerator/denominator), ~65% italic subscripts, upright = and 1, bar gap slightly tighter below than above, Eq. 4 indented ~1 character-width right of the left-aligned group.

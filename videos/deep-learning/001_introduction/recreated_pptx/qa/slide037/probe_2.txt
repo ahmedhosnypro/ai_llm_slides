@@ -1,0 +1,48 @@
+# Slide 037 â Visual QA Description
+
+## 1. Verbatim text transcription
+
+**Slide furniture:**
+- Slide number badge (top right, in a lavender circle with purple outline): `37`
+
+**Title (large red bold text):**
+- `How many filter can we apply on the image`
+
+**Body panel (cream/light-yellow box with thin border), three lines:**
+- `We can Apply **multiple filters** on the **same location** (e.g. 5 different filters on the same location.  For Example:` â "multiple filters" and "same location" are bold; "same location" is dark red
+- `[ one to **detect edges**, one to **detect lines**, one to **detect curves**, ...etc)` â "detect edges", "detect lines", "detect curves" bold
+
+**Embedded diagram (handwritten/sketched style), all text inside the picture:**
+- `RGB` (above the orange slab)
+- `3 dims` (left side, with arrow)
+- `7` â appears three times near the orange slab / dashed window lines
+- `3` â once, rotated ~90Â°, below the cyan filter
+- `Depth=5 dims` (right side, with arrow, above the tan cube)
+- A light-blue `=` glyph (two short bars) between the filter stack and the tan cube
+- An "X" mark with a hand-drawn ellipse circling a patch on the orange slab (graphic, not text, but noted)
+
+**Caption below diagram (black, casual rounded font):**
+- `How many weights for these 5 neurons?`
+
+**Equation below caption (red):**
+- `5 Â· 7 Â· 7 Â· 3 = 735`
+
+## 2. Layout
+
+- **Overall frame:** white margin on all sides; inside it a light-gray content rectangle with a thin red border. A thin black strip runs along the very bottom edge of the render.
+- **Top:** red bold title, roughly centered, starting well inside the left border. The circular `37` badge sits at the top-right corner, just inside the gray box.
+- **Middle:** the cream body-text panel spans nearly the full width beneath the title.
+- **Lower two-thirds:** a second red-bordered rectangle (white fill) containing the CNN diagram:
+  - **Left of diagram:** `3 dims` label with arrow pointing to the orange RGB slab; handwritten `7` labels along the slab.
+  - **Center of diagram:** dashed projection lines from the slab to a row of five 3D colored filter slabs (blue/cyan, green, red, yellow, purple), with arrows converging from a point at the bottom up to the filters.
+  - **Right of diagram:** a tan 3D cube with five colored circles on its front face (teal, green, red, yellow, purple) and five more circles on its top face; `Depth=5 dims` label with arrow at the upper right.
+- **Bottom:** inside the diagram rectangle, the handwritten caption `How many weights for these 5 neurons?` sits bottom-left, with the red equation `5 Â· 7 Â· 7 Â· 3 = 735` centered beneath it, just above the rectangle's bottom red border.
+
+## 3. Visual defects and anomalies
+
+- **Unbalanced punctuation (source-text defect):** the body opens a parenthesis in `(e.g. 5 different filters on the same location.` but never closes it; the next line opens with `[` and closes with `)` â i.e., `[ ... ...etc)`.
+- **Grammar anomalies in source text:** title reads "How many filter can we apply" (singular "filter"); body has mid-sentence capital "Apply". Transcribed as-is.
+- **Bottom-edge artifact:** a thin black strip spans the full width at the very bottom of the image; the outer gray box's bottom red border is not visible (obscured or clipped by this strip).
+- **Title width:** the title runs very close to the right red border; it appears fully readable but tightly fitted. The `37` badge is close to the top-right border.
+- **Diagram internals:** the embedded picture is hand-drawn/low-fidelity; the `3` label is rotated sideways, and the dashed window lines / "X + ellipse" overlay partially cross the slab graphics â consistent with a pasted whiteboard-style illustration rather than a defect per se. All diagram labels are legible.
+- **No wrong-language text, no placeholder/garbage strings** (e.g., lorem ipsum) observed anywhere.

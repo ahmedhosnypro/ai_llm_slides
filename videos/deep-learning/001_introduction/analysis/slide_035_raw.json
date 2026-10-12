@@ -1,0 +1,188 @@
+{
+  "slide_title": "How to Apply Filter on image",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Image",
+      "Filter",
+      "Image grid row 1: 1 1 1 0 0",
+      "Image grid row 2: 0 1 1 1 0",
+      "Image grid row 3: 0 0 1 1 1",
+      "Image grid row 4: 0 0 1 1 0",
+      "Image grid row 5: 0 1 1 0 0",
+      "Filter grid row 1: 1 0 1",
+      "Filter grid row 2: 0 1 0",
+      "Filter grid row 3: 1 0 1",
+      "x1 (small red multiplier under highlighted cell r1c1)",
+      "x0 (r1c2)",
+      "x1 (r1c3)",
+      "x0 (r2c1)",
+      "x1 (r2c2)",
+      "x0 (r2c3)",
+      "x1 (r3c1)",
+      "x0 (r3c2)",
+      "x1 (r3c3)",
+      "4 (result in first cell of 3x3 output grid)",
+      "Apply Filter on Image is a Dot product between image values and filter values",
+      "(can be modeled  by PERCEPTRON )"
+    ],
+    "equations": [
+      "Apply Filter on Image is a Dot product between image values and filter values (can be modeled  by PERCEPTRON )",
+      "Implied computation [inferred from x1/x0 multipliers and result cell]: (1x1)+(1x0)+(1x1)+(0x0)+(1x1)+(1x0)+(0x1)+(0x0)+(1x1) = 4"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top with a thin red rule above it; below, three side-by-side blocks: left 'Image' 5x5 binary grid with red border, middle 'Filter' 3x3 yellow grid, right a large white panel containing a 5x5 grid (top-left 3x3 highlighted yellow with red x-multipliers) plus a 3x3 output grid with '4' in its first cell and a curved black arrow connecting them; full-width light-yellow caption box with blue border at bottom; thin black bar (video scrub bar) at very bottom edge",
+    "regions": [
+      {
+        "name": "Red top rule",
+        "position": "top, spanning ~4%-96% width at ~7% height",
+        "content": "thin horizontal red line"
+      },
+      {
+        "name": "Title",
+        "position": "top-center, ~25%-75% width, ~9%-18% height",
+        "content": "red bold title text"
+      },
+      {
+        "name": "Image block",
+        "position": "middle-left, ~8%-25% width, ~30%-62% height",
+        "content": "bold black label 'Image' above a 5x5 grid of green 0/1 values over a faint photo, thick red border"
+      },
+      {
+        "name": "Filter block",
+        "position": "middle, ~26%-38% width, ~30%-55% height",
+        "content": "bold black label 'Filter' above a 3x3 grid of yellow cells with black 0/1 values"
+      },
+      {
+        "name": "Computation panel",
+        "position": "right, ~40%-92% width, ~30%-80% height",
+        "content": "white rectangle containing 5x5 image grid (3x3 yellow highlight with x1/x0 multipliers, rest green), 3x3 output grid with olive '4' cell, curved black arrow, mouse cursor"
+      },
+      {
+        "name": "Caption box",
+        "position": "bottom, ~7%-93% width, ~82%-94% height",
+        "content": "two-line italic sentence about dot product and PERCEPTRON"
+      },
+      {
+        "name": "Bottom black bar",
+        "position": "bottom edge, full width, ~96%-100% height",
+        "content": "solid black strip (video player progress bar captured in screenshot)"
+      }
+    ],
+    "hierarchy": "Title dominates (largest, bold, red); caption text is next largest (blue italic, two lines); 'Image'/'Filter' labels are medium bold black; grid numerals are bold but small; red x-multipliers are the smallest text; the yellow/green color blocks of the grids draw the eye more than any body text"
+  },
+  "visual_elements": [
+    {
+      "type": "table",
+      "description": "Image grid: 5 columns x 5 rows of binary values. Row1: 1 1 1 0 0; Row2: 0 1 1 1 0; Row3: 0 0 1 1 1; Row4: 0 0 1 1 0; Row5: 0 1 1 0 0. Numerals are bold green; a faint green-tinted photograph shows through behind the cells; grid enclosed by a thick red rectangle border.",
+      "colors": [
+        "#00A651",
+        "#FF0000",
+        "#8FCB8F"
+      ],
+      "position": "left side, ~8%-25% width, ~37%-62% height"
+    },
+    {
+      "type": "table",
+      "description": "Filter grid: 3 columns x 3 rows. Row1: 1 0 1; Row2: 0 1 0; Row3: 1 0 1. Each cell bright yellow fill with darker yellow/olive border, bold black numerals.",
+      "colors": [
+        "#FFFF00",
+        "#000000",
+        "#C8A000"
+      ],
+      "position": "middle, ~26%-38% width, ~38%-54% height"
+    },
+    {
+      "type": "diagram",
+      "description": "Computation panel: white rectangle with thin gray border containing (a) a 5x5 grid duplicating the image values \u2014 Row1: 1 1 1 0 0; Row2: 0 1 1 1 0; Row3: 0 0 1 1 1; Row4: 0 0 1 1 0; Row5: 0 1 1 0 0 \u2014 where the top-left 3x3 block cells are yellow with black values and small red multiplier labels (r1: x1,x0,x1; r2: x0,x1,x0; r3: x1,x0,x1) while the remaining cells are green with black values; (b) to its right a 3x3 output grid of empty white cells with tan borders, whose top-left cell is filled dark olive-gray containing bold '4'; (c) a black curved arrow starting above the yellow 3x3 block and pointing down-right into the '4' output cell.",
+      "colors": [
+        "#FFFFFF",
+        "#BFBFBF",
+        "#FFFF00",
+        "#00B050",
+        "#FF0000",
+        "#000000",
+        "#6B6B47",
+        "#C9A876"
+      ],
+      "position": "right side, ~40%-92% width, ~30%-80% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Caption box: light-yellow filled rectangle with medium blue border, two lines of large italic text; line 1 entirely blue italic; line 2 has '(can be modeled' in blue bold italic, 'by' in red, 'PERCEPTRON' in red bold underlined, followed by ' )'.",
+      "colors": [
+        "#FFFFE1",
+        "#0000FF",
+        "#0000CC",
+        "#FF0000"
+      ],
+      "position": "bottom, ~7%-93% width, ~82%-94% height"
+    },
+    {
+      "type": "other",
+      "description": "Mouse cursor (standard white arrow pointer with black outline) resting inside the white panel below-right of the 5x5 grid.",
+      "colors": [
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "~76% width, ~69% height"
+    },
+    {
+      "type": "other",
+      "description": "Thin red horizontal rule across the top of the slide above the title.",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "top, ~4%-96% width at ~7% height"
+    },
+    {
+      "type": "other",
+      "description": "Solid black strip along the very bottom edge of the frame (video-player scrub bar captured with the slide, not slide content).",
+      "colors": [
+        "#000000"
+      ],
+      "position": "bottom edge, full width, ~96%-100% height"
+    }
+  ],
+  "imagery": [
+    "Faint photograph visible behind/under the 5x5 Image grid on the left, heavily tinted green so its content is indistinct [?possibly a scene or face photo]; sits directly under the green binary numerals inside the red border",
+    "Standard mouse-pointer cursor icon inside the right computation panel"
+  ],
+  "colors": {
+    "background": "#F2F2F2",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#FFFF00",
+      "#00B050",
+      "#FF0000",
+      "#0000CC",
+      "#0000FF",
+      "#FFFFE1",
+      "#6B6B47",
+      "#C9A876",
+      "#00A651"
+    ]
+  },
+  "typography_notes": "All text appears sans-serif (Verdana/Tahoma-like). Title: bold, ~32-36pt, red, centered, title-case. 'Image' and 'Filter' labels: bold, ~20-22pt, black. Grid numerals: bold, ~14-16pt, black (green in the left Image grid). Red x1/x0 multipliers: very small (~9pt), positioned subscript-style at lower-right of yellow cells. Caption: ~20pt italic; 'can be modeled' bold italic; 'PERCEPTRON' bold, underlined, red, ALL-CAPS. No numbered bullets anywhere; content is entirely diagram + caption.",
+  "animation_state": "Slide appears fully built with no partial bullet reveal. The yellow 3x3 highlight, red multipliers, curved arrow, and filled '4' output cell together depict one static step of a convolution walkthrough; a live mouse cursor is visible over the panel, indicating screen-recorded narration rather than a mid-build state.",
+  "recreation_brief": "1. Create a 16:9 slide with light-gray background (#F2F2F2). 2. Draw a thin red (#C00000) horizontal line across the top at ~7% height. 3. Add a centered title text box: 'How to Apply Filter on image', bold sans-serif ~36pt, red #C00000. 4. Left block: add bold black label 'Image' (~22pt); below it build a 5x5 table with values row-wise 1 1 1 0 0 / 0 1 1 1 0 / 0 0 1 1 1 / 0 0 1 1 0 / 0 1 1 0 0; set numeral font bold ~16pt green #00A651, give the table a faint green-tinted picture fill behind cells (or light green cell fill), and wrap it in a thick red (#FF0000) rectangle border. 5. Middle block: add bold black label 'Filter'; below it build a 3x3 table with values 1 0 1 / 0 1 0 / 1 0 1; every cell fill yellow #FFFF00, borders darker yellow #C8A000, numerals bold black. 6. Right block: draw a large white rectangle (#FFFFFF, thin #BFBFBF border) from ~40% to ~92% width. Inside it, build a 5x5 table with the same image values; fill cells (rows 1-3, cols 1-3) yellow #FFFF00 and all other cells green #00B050; numerals bold black; in each yellow cell add a tiny red (~9pt) label at lower-right: r1c1 x1, r1c2 x0, r1c3 x1, r2c1 x0, r2c2 x1, r2c3 x0, r3c1 x1, r3c2 x0, r3c3 x1. 7. To the right of that table, build a 3x3 table of empty white cells with tan (#C9A876) borders; fill its top-left cell dark olive #6B6B47 and type bold '4' in it. 8. Draw a black curved (bent) arrow starting above the yellow 3x3 block and pointing into the '4' cell. 9. Bottom: draw a full-width rectangle (~7%-93% width, ~82%-94% height) filled #FFFFE1 with a 1.5pt blue #0000FF border; inside, line 1 in blue #0000CC italic ~20pt: 'Apply Filter on Image is a Dot product between image values and filter values'; line 2: '(can be modeled ' in blue bold italic, then 'by ' in red, then 'PERCEPTRON' in red bold underlined ALL-CAPS, then ' )'. 10. Optionally add a solid black strip along the very bottom edge to mimic the captured video scrub bar, and a small white arrow-pointer cursor icon at ~76%/69% inside the white panel.",
+  "_meta": {
+    "frame": "slide_035.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 35,
+      "image": "slide_035.jpg",
+      "kept_frame": "frame_01881.jpg",
+      "start_sec": 1880,
+      "end_sec": 2045.0,
+      "frame_count": 166,
+      "old_group": 43,
+      "founder_frame_swap": true,
+      "original_kept_frame": "frame_02046.jpg"
+    },
+    "elapsed_s": 231.1
+  }
+}

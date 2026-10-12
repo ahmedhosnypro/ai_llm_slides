@@ -1,0 +1,127 @@
+# Element Inventory â Decoder Slide Crop (zoomed ~2x, slide body)
+
+## 1. Slide chrome / background
+
+**1.1 Slide body fill**
+- Kind: flat background region (no stroke)
+- Text: â
+- Fill: pale mint green â `#D9EFD9`
+- Bounds: (7, 0, 100, 100) â everything right of the orange strip, inside the green frame
+
+**1.2 Dark green frame band (top edge, partial)**
+- Kind: filled rectangle (slide border, thick stroke of the content frame)
+- Fill: kelly green â `#007A33`
+- Bounds: (23, 0, 100, 4) â runs from ~x=23% to the right edge; cut by top crop edge. Note: no top border visible left of xâ23% (top-left area is bare pale green), suggesting the frame's top-left corner is just inside the crop or cropped out.
+
+**1.3 Dark green frame band (right edge)**
+- Kind: filled rectangle (slide border)
+- Fill: â `#007A33`
+- Bounds: (96, 0, 100, 100) â full-height vertical band, cut by right crop edge; joins 1.2 at a corner.
+
+**1.4 Orange strip (left edge, partial)**
+- Kind: filled rectangle / edge of a larger shape
+- Fill: peach-orange â `#F5A860`
+- Bounds: (0, 0, 7, 100) â full height, cut by left crop edge. Sits outside/behind the diagram; the lower dashed ellipse's left arc reaches toward/overlaps its right edge.
+
+## 2. Title / output cluster (top)
+
+**2.1 Red block arrow (up)**
+- Kind: block arrow (PowerPoint "up arrow": rectangular shaft + triangular head), direction = upward
+- Text: â
+- Fill: dark red â `#A81E1E`; no visible outline
+- Bounds: (11, 8, 17, 44) â shaft bottom ~44%, arrowhead apex ~8%; left of the yellow box, no overlap.
+
+**2.2 "Output" box**
+- Kind: filled rectangle (sharp corners)
+- Text: **"Output"** â verbatim, bold sans-serif, capital O only
+- Fill: pure yellow â `#FFFF00`; text color dark maroon-red â `#8B0000`; border: none/thin same-hue
+- Bounds: (25, 13, 43, 27)
+
+**2.3 "Decoder" title text**
+- Kind: text label (free-floating, no box)
+- Text: **"Decoder"** â verbatim, large, bold, italic, capital D only
+- Fill: â; text color dark green â `#007A33`
+- Bounds: (53, 14, 86, 25) â to the right of the Output box, partially under the top green band's proximity but not overlapping it.
+
+**2.4 "Probabilities" label**
+- Kind: text label
+- Text: **"Probabilities"** â verbatim, regular-weight sans-serif, capital P only; no sub/superscripts
+- Fill: â; text color dark charcoal â `#3B3B3B`
+- Bounds: (23, 27, 52, 36) â directly below the Output box; the upper dashed ellipse's top arc passes just beneath it (near-touching, no clear overlap).
+
+## 3. Dashed ellipses (grouping rings)
+
+**3.1 Upper dashed ellipse (around Softmax)**
+- Kind: dashed ellipse (stroke only, transparent fill); dash marks dark red
+- Text: â
+- Stroke: dark red â `#8B1010`, ~2px dashes
+- Bounds: (4, 37, 67, 61) â horizontally elongated ring enclosing the Softmax box; box interrupts the dashes (ellipse behind box).
+
+**3.2 Lower dashed ellipse (around Linear)**
+- Kind: dashed ellipse (stroke only)
+- Text: â
+- Stroke: â `#8B1010`, same dash style
+- Bounds: (0, 60, 70, 84) â left extremity is cut by the crop's left edge (dashes reach/reach into the orange strip zone); encloses the Linear box; box interrupts dashes (ellipse behind box). Its lower arc passes behind/near the blue circle region.
+
+## 4. Layer boxes
+
+**4.1 "Softmax" rounded rectangle**
+- Kind: rounded rectangle
+- Text: **"Softmax"** â verbatim, single word, no sub/superscript
+- Fill: pale teal-green â `#BFD8D2`; border: dark teal â `#23655C` (~1.5â2px); text color dark teal â `#1D5A52`
+- Bounds: (20, 44, 52, 55) â centered inside upper dashed ellipse; drawn on top of it.
+
+**4.2 "Linear" rounded rectangle**
+- Kind: rounded rectangle, identical style to 4.1
+- Text: **"Linear"** â verbatim
+- Fill: â `#BFD8D2`; border â `#23655C`; text â `#1D5A52`
+- Bounds: (22, 67, 56, 79) â centered inside lower dashed ellipse; drawn on top of it.
+
+## 5. Connectors (thin vertical lines, ~1â2px, dark gray/black â `#333333`)
+
+**5.1 Line: Softmax â Probabilities/Output direction**
+- Kind: straight vertical connector line
+- Bounds: xâ36% column, (36, 36, 37, 44) â from Softmax top edge up to just below the "Probabilities" text; possible tiny arrowhead at the top end (low confidence, partially obscured by text proximity).
+
+**5.2 Line: Linear â Softmax**
+- Kind: straight vertical connector line
+- Bounds: (36, 55, 37, 67) â from Linear top edge to Softmax bottom edge; arrowhead at either end not clearly resolvable (ILLEGIBLE(<possible small arrowhead>)).
+
+**5.3 Line: below Linear (partial, exits crop)**
+- Kind: straight vertical connector line
+- Bounds: (36, 79, 37, 100) â from Linear bottom edge down through the bottom crop edge, entering the region of the partial olive pill (5.5/9.2) and passing right of the blue circle.
+
+## 6. Overlay glyph (video artifact)
+
+**6.1 Mouse cursor**
+- Kind: mouse-pointer arrow glyph (white fill, black outline, classic angled arrow pointing up-left) â this is the capture's live cursor, not slide content
+- Bounds: (44, 57, 52, 72) â sits over the gap between Softmax and Linear, overlapping the top edge of the Linear box and the lower dashed ellipse's arc / connector 5.2's right side. **Topmost layer in its area.**
+
+## 7. Bottom-left glyph
+
+**7.1 Blue circle with checkmark**
+- Kind: filled circle + white checkmark glyph (â) centered inside
+- Text: â (glyph only)
+- Fill: royal/dark blue â `#2B3EA7`; check color: white `#FFFFFF`, bold
+- Bounds: (14, 87, 23, 100) â bottom of circle is clipped by/nearly touches the bottom crop edge; drawn over the pale green body; the lower dashed ellipse's arc passes just above/behind it.
+
+## 8. Bottom-center partial shape
+
+**8.1 Partial rounded rectangle (top sliver only)**
+- Kind: rounded rectangle â only the rounded top edge + ~7% of height visible
+- Text: none visible in the sliver (any label is below the crop) â ILLEGIBLE(<top sliver of a rounded box, no characters visible>)
+- Fill: muted olive/khaki â `#9C9C55`; border: dark olive â `#5F5F2E` (~1.5px)
+- Bounds: (26, 93, 67, 100) â cut by bottom crop edge; sits to the right of the blue circle, below connector 5.3's path.
+
+---
+
+## Layering (back â front)
+
+1. Slide body pale green + dark green frame bands + orange strip (bottom-most chrome)
+2. Both dashed ellipses (over background; lower ellipse's left dashes reach the orange strip)
+3. Connector lines 5.1â5.3 (terminate at box edges; drawn beneath the boxes)
+4. Red block arrow, "Output" yellow box, "Decoder", "Probabilities", Softmax box, Linear box (boxes interrupt the ellipse dashes â boxes over ellipses)
+5. Partial olive pill (8.1) and blue check circle (7.1) over background at bottom
+6. **Mouse cursor (6.1) is topmost**, overlapping Linear's top edge, connector 5.2's area, and the lower ellipse's arc
+
+No other glyphs, thin rules, or edge fragments are present; all four crop edges contain partial content as noted (orange strip, green frame Ã2, lower ellipse, connector 5.3, blue circle, olive pill).

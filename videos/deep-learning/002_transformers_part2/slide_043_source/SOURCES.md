@@ -110,3 +110,36 @@ none yet — verify against script-12 raw transcription when it lands.
   yellow / light-blue #6699CC / navy receding slices. The cube-pixel-style [?] above stands
   (course redraw; axis semantics confirmed via Wu & He Fig 2 + Ioffe & Szegedy — unaffected).
 - No corrections; no new open questions.
+
+## Recreation cross-check (build worker, 2026-10-12 — appended, nothing above edited)
+
+The build's PIL census + crop-vision rounds corrected/refined the spec's vision-model
+guesses (frame wins per the fidelity law; the recreation follows these):
+
+1. **"(Constrain)" is BLACK, not red.** B-L3's red cores end at x718 (frame); dense
+   black cores ((0,0,0)/(22,22,22)) span x732..831 = "(Constrain)". The spec's
+   PASS_WITH_FIXES item "line 3 is entirely red" is overridden by the frame.
+2. **Callout line 3 coloring:** blue ink spans x376..598 continuously = "ALL Samples
+   in the batch" is ALL blue; black cores only at 348..368 = "for ". So the line reads
+   "for " (black regular) + "ALL Samples" (blue BOLD) + " in the batch" (blue regular —
+   the blue-cluster density drops after "Samples", and the judge crop-read confirms the
+   selective bold). The spec's "'ALL Samples' only, rest black" is overridden.
+3. **Left stack structure (the build's decoded model):** 5-layer batch block, 3 visible
+   magenta front columns x 5 rows (seams = bright 4-5px vertical bands at x139/169/200,
+   spanning the full front height), DEEP top faces (dx 44.5 — each top band extends to
+   ox+133 with a bright seam lattice), and a connected deep right wall (dx 44.5
+   parallelograms in engine paint order) whose partial coverage produces the measured
+   strips [204..231.5 rust #D05127][231.5..246 salmon #EB4D42][246..262 dark-gold
+   #D4A108][262..283 orange #E47C09][283..296 bright-gold #F2A614][298..314.5 tan
+   #CA8537] with staircase tops 188/164/151/111/107 (at x210/240/255/285/300).
+   OPEN [?]: the frame splits the front layer's deep right at x=231.5 into rust+salmon
+   sub-strips (stable across all rows) — read here as the "orange column slice" front +
+   its right face; exact provenance unverified. The wall/sliver colors are the frame's,
+   NOT the 042 layer palette (measured; the right stack keeps the 042 palette exactly).
+4. **The pencil icon** is TINY (~15x16fp at [354..368]x[243..259], a thin light-gray
+   diagonal stroke with a small dark tip, left of line 4's parenthesis) — earlier
+   "pencil bbox x348..399 y235..260" measurements had mixed in line 3's baseline ink
+   and line 4's "(" glyph.
+5. **Omitted as video-capture artifacts** (ground rule (c)): the bottom letterbox strip
+   and the full-height pale I-beam cursor line at x615 (spans y42..516 — the 042 x330
+   artifact class).

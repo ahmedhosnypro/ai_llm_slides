@@ -1,0 +1,186 @@
+{
+  "slide_title": "What would a k-D filter looks like?",
+  "subtitle_or_header": "e.g. Sobel 2-D filter",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "e.g. Sobel 2-D filter",
+      "I LOVE MATH",
+      "IT MAKES PEOPLE CRY!",
+      "I LOVE MATH (repeated on the red, green and blue channel copies of the meme)",
+      "IT MAKES PEOPLE CRY! (faintly visible on the blue channel copy)",
+      "3-D Filter",
+      "Third D",
+      "Cube face numerals 1-9, blurry; best guesses given in visual_elements"
+    ],
+    "equations": [
+      "Sobel 2-D filter matrix shown with large red square brackets: [ -1  0  1 ; -2  0  2 ; -1  0  1 ]  (3x3 matrix, rows: -1 0 1 / -2 0 2 / -1 0 1)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Entire slide content is enclosed by a thin red rectangular border. Title centered at top inside the border. Below the title, two side-by-side regions: LEFT (~9%-36% width) has a handwritten-style header 'e.g. Sobel 2-D filter' above a Grumpy Cat meme photo overlaid with a large red 3x3 matrix; RIGHT (~43%-94% width) has three overlapping RGB-tinted copies of the same meme (red back/top-right, green middle, blue front/bottom-left), a red bold label '3-D Filter', and at the far right an isometric 3x3x3 numbered cube with a yellow 'Third D' depth-dimension arrow annotation at its lower-left. A black letterbox bar runs across the very bottom (video frame artifact).",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, x 15-85%, y 12-20%",
+        "content": "Red bold title 'What would a k-D filter looks like?'"
+      },
+      {
+        "name": "Red border frame",
+        "position": "full slide inset, x ~6-94%, y ~7-91%",
+        "content": "Thin red rectangle framing title and all content"
+      },
+      {
+        "name": "Left panel header",
+        "position": "upper-left, x 9-36%, y 38-45%",
+        "content": "Handwritten black text 'e.g. Sobel 2-D filter'"
+      },
+      {
+        "name": "Left panel image",
+        "position": "left, x 9-36%, y 46-82%",
+        "content": "Grumpy Cat meme with white captions and red 3x3 Sobel matrix overlaid on the cat's face"
+      },
+      {
+        "name": "RGB channel stack",
+        "position": "center-right, x 43-80%, y 40-83%",
+        "content": "Three overlapping tinted copies of the same meme: red (back, top-right), green (middle), blue (front, bottom-left)"
+      },
+      {
+        "name": "3-D Filter label",
+        "position": "right, x 82-94%, y 42-48%",
+        "content": "Red bold text '3-D Filter'"
+      },
+      {
+        "name": "Isometric cube",
+        "position": "far right, x 76-93%, y 50-85%",
+        "content": "3x3x3 wireframe cube with black numerals in each visible cell"
+      },
+      {
+        "name": "Third D annotation",
+        "position": "bottom of cube, x 72-82%, y 70-86%",
+        "content": "Thin black double-headed dimension arrow along the depth axis with yellow label 'Third D'"
+      },
+      {
+        "name": "Letterbox bar",
+        "position": "bottom, x 0-100%, y 95-100%",
+        "content": "Solid black bar (video letterbox, not slide content)"
+      }
+    ],
+    "hierarchy": "Title dominates (largest, bold, red). Next largest are the red matrix numerals on the cat image. Medium: handwritten header and '3-D Filter' label. Small: white meme captions and yellow 'Third D'. Smallest: black cube numerals. Red is the dominant accent color throughout."
+  },
+  "visual_elements": [
+    {
+      "type": "image",
+      "description": "Grumpy Cat meme photo: white/gray cat with dark brown-gray ears and face markings, frowning, lying on white bedding. White bold all-caps caption 'I LOVE MATH' at top and 'IT MAKES PEOPLE CRY!' at bottom (classic meme layout). Overlaid on the cat's face is a 3x3 matrix in large red numerals with oversized red square brackets: row1 -1 0 1, row2 -2 0 2, row3 -1 0 1.",
+      "colors": [
+        "#D9D4CC (photo light grays)",
+        "#8A7F72 (photo browns)",
+        "#FFFFFF (caption text)",
+        "#C00000 (matrix numerals and brackets)"
+      ],
+      "position": "left panel, below the handwritten header"
+    },
+    {
+      "type": "diagram",
+      "description": "RGB channel-stack diagram: three identical copies of the same Grumpy Cat meme image, each tinted a single channel color and offset diagonally to suggest stacked 2-D channels: RED copy at back/top-right (caption 'I LOVE MATH' clearly visible), GREEN copy in middle ('I LOVE MATH' visible), BLUE copy at front/bottom-left (captions 'I LOVE MATH' and 'IT MAKES PEOPLE CRY!' faintly visible through the tint). Conceptually represents the three color channels of a 2-D image to motivate a 3-D filter.",
+      "colors": [
+        "#B00000 (red tint)",
+        "#00A000 (green tint)",
+        "#1414C8 (blue tint)"
+      ],
+      "position": "center-right of slide"
+    },
+    {
+      "type": "diagram",
+      "description": "Isometric 3x3x3 cube (3-D filter volume): light gray/white faces subdivided into 3x3 grids of cells by thin black lines, with a small black numeral in each visible cell. Numerals are blurry; best guesses - top face rows: '2 3 5' / '2 3 5' / '2 3 5' [?]; left face rows: '9 7' / '5 3' / '1 6 8' [?]; right face rows: '1 3 9' / '7 3 9' / '3 1 5' / '1 8 2 4' [?] (last row partially cut/unclear). Right face slightly darker gray than top face for 3-D shading.",
+      "colors": [
+        "#E8E8E8 (top face)",
+        "#D0D0D0 (side faces)",
+        "#000000 (grid lines and numerals)"
+      ],
+      "position": "far right, below the '3-D Filter' label"
+    },
+    {
+      "type": "arrow",
+      "description": "Depth-dimension annotation: thin black double-headed dimension arrow running parallel to the cube's lower-left depth edge (pointing from upper-right to lower-left), with small extension ticks, labeled 'Third D' in small yellow text with black outline, indicating the third (depth/channel) dimension of the cube.",
+      "colors": [
+        "#000000 (arrow lines)",
+        "#FFFF00 (label fill)",
+        "#000000 (label outline)"
+      ],
+      "position": "bottom-left of the cube"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Thin red rectangular border (no fill) framing the entire slide content including the title.",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "full slide inset"
+    },
+    {
+      "type": "other",
+      "description": "Solid black horizontal bar across the very bottom of the frame (video letterboxing, not part of the slide design).",
+      "colors": [
+        "#000000"
+      ],
+      "position": "bottom edge, full width"
+    }
+  ],
+  "imagery": [
+    "Grumpy Cat meme photograph (left panel): frowning white/gray cat with dark patches on white fabric, white all-caps meme captions top and bottom, red matrix overlaid",
+    "Three tinted copies of the identical Grumpy Cat meme (red, green, blue) stacked with diagonal offset in the center-right area",
+    "Line-art isometric numbered cube illustration (3x3x3 cells) at far right, clip-art style with black grid and numerals on gray faces"
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#C00000 (title, border, matrix, 3-D Filter label)",
+      "#00A000 (green channel tint)",
+      "#1414C8 (blue channel tint)",
+      "#B00000 (red channel tint)",
+      "#FFFF00 (Third D label)"
+    ]
+  },
+  "typography_notes": "Title: bold sans-serif (Arial-like), red, ~32-36pt, centered, sentence case with question mark (grammar error 'looks' preserved verbatim). 'e.g. Sobel 2-D filter': casual handwritten/marker-style font (Comic Sans-like), black, ~24pt, lowercase 'e.g.'. Matrix numerals: very large red sans-serif (~36-40pt) with oversized brackets. '3-D Filter': bold red sans-serif ~20pt. Meme captions: bold white ALL-CAPS sans (Impact-like). Cube numerals: small black ~10pt. 'Third D': small yellow italic-style text with black outline. No numbered bullets anywhere; slide is image/diagram driven.",
+  "animation_state": "No mid-build state detected; title, left meme with matrix, all three RGB channel images, cube, and annotations are all fully visible. The three stacked channel images appear to be a static illustration rather than a progressive build.",
+  "recreation_brief": "1. Set the slide background to solid white (#FFFFFF).\n2. Draw the frame: a no-fill rectangle with a ~2pt red (#C00000) outline spanning x 6-94%, y 7-91% (inset ~6% left/right, ~7% top, ~9% bottom); it encloses all content placed in steps 3-10.\n3. Place the title: a centered text box at x 15-85%, y 12-20% with the exact text 'What would a k-D filter looks like?' (preserve the verbatim grammar error), Arial Bold ~34pt, red #C00000.\n4. Place the left header: a text box at x 9-36%, y 38-45% with the exact text 'e.g. Sobel 2-D filter' in a handwritten/marker-style font (Comic Sans MS), black #000000, ~24pt.\n5. Place the left meme: insert the Grumpy Cat meme photo (~4:3 landscape, ~27% slide width) at x 9-36%, y 46-82%, and always add two white bold ALL-CAPS Impact-like captions on it: 'I LOVE MATH' across the top edge and 'IT MAKES PEOPLE CRY!' across the bottom edge.\n6. Place the matrix overlay centered on the cat's face: a 3x3 text grid with rows '-1 0 1', '-2 0 2', '-1 0 1' in bold red #C00000 ~36-40pt sans-serif, flanked by two oversized red square brackets '[' and ']' (~120pt, scaled to the full grid height).\n7. Place the RGB channel stack inside the bounding box x 43-80%, y 40-83%: three copies of the same meme, each ~22% slide width (~4:3), tinted and z-ordered back-to-front as red #B00000 (back, top-right), green #00A000 (middle), blue #1414C8 (front, bottom-left); offset each successive copy ~7-8% left and ~12-13% down from the previous one so the three copies exactly fill the bounding box; keep the captions visible through the tints ('I LOVE MATH' on the red and green copies; both captions faintly visible on the blue copy).\n8. Place the label '3-D Filter': bold red #C00000 sans-serif ~20pt, text box at x 82-94%, y 42-48%.\n9. Place the isometric 3x3x3 cube at x 76-93%, y 50-85%: construct it from three flat parallelogram faces (top face #E8E8E8, left and right faces #D0D0D0) with thin black #000000 outlines; subdivide each visible face into a 3x3 cell grid with thin black lines; fill the cells with small black ~10pt numerals: top face rows '2 3 5' / '2 3 5' / '2 3 5' [?], left face rows '9 7' / '5 3' / '1 6 8' [?], right face rows '1 3 9' / '7 3 9' / '3 1 5' [?] plus a partially cut fourth row '1 8 2 4' [?].\n10. Place the depth annotation at x 72-82%, y 70-86%: a thin black #000000 double-headed dimension arrow running parallel to the cube's lower-left depth edge (upper-right to lower-left) with small extension ticks, plus a small 'Third D' text box with yellow #FFFF00 fill and black #000000 outline beside the arrow.\n11. Do NOT draw the solid black bottom bar (video letterbox artifact at y 95-100%): both layout.regions and visual_elements mark it as not slide content, so exclude it from the PowerPoint recreation.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "verbatim_text.bullets kept as [] after verification that no bulleted text exists on the slide (typography_notes: 'No numbered bullets anywhere; slide is image/diagram driven'); all 8 on-slide text items are captured in labels plus 1 equation, so no bullets were invented.",
+      "layout.arrangement right-region extent corrected from '~43%-93%' to '~43%-94%' to match the '3-D Filter' label region (x 82-94%).",
+      "recreation_brief RGB-stack geometry corrected: ~22%-wide copies at ~15% horizontal steps would span 52% of slide width, contradicting the RGB channel stack region (x 43-80% = 37% span); rewrote offsets to ~7-8% horizontal and ~12-13% vertical, which exactly fills the x 43-80%, y 40-83% bounding box with three ~22%-wide 4:3 copies.",
+      "recreation_brief meme captions made unconditional: removed 'if the image lacks captions' so the builder always places 'I LOVE MATH' (top) and 'IT MAKES PEOPLE CRY!' (bottom) in white bold ALL-CAPS on the left meme.",
+      "recreation_brief cube step reduced to a single construction (three parallelogram faces: top #E8E8E8, sides #D0D0D0, thin black 3x3 grid) instead of the 'Cube shape, or three rhombi' alternative, and restored the partially cut fourth right-face row '1 8 2 4' [?] that visual_elements lists but the original brief omitted.",
+      "recreation_brief letterbox step made definite: the black bar at y 95-100% is flagged 'video letterbox, not slide content' in both layout.regions and visual_elements, so the checklist now instructs exclusion instead of 'optionally add'.",
+      "Precision audit: no vague quantifiers ('several', 'some', 'many', 'a few', 'various') found anywhere; all counts verified exact - 3 tinted meme copies, 3x3 Sobel matrix, 3x3x3 cube with 3 visible faces, 9 layout regions, 6 visual elements, 8 labels, 1 equation."
+    ],
+    "uncertain_items": [
+      "All cube numerals are blurry best guesses marked [?]: top face '2 3 5' / '2 3 5' / '2 3 5'; left face '9 7' / '5 3' / '1 6 8'; right face '1 3 9' / '7 3 9' / '3 1 5' plus partially cut '1 8 2 4'. Row lengths are inconsistent with a uniform 3x3 grid and cannot be verified without the source image.",
+      "Font identifications are approximations ('Arial-like', 'Comic Sans-like', 'Impact-like'); exact typefaces are unverifiable from the JSON.",
+      "All x/y coordinates, point sizes, and the meme's ~4:3 aspect ratio are model estimates (marked '~' or 'approx'), not measured values.",
+      "The Grumpy Cat meme is an external photograph: the JSON describes its appearance, but the actual image asset must be supplied separately, so the photo itself cannot be reproduced from the JSON alone."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_034.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 34,
+      "image": "slide_034.jpg",
+      "kept_frame": "frame_01880.jpg",
+      "start_sec": 1856.0,
+      "end_sec": 1879.0,
+      "frame_count": 24,
+      "old_group": 42,
+      "founder_frame_swap": false
+    },
+    "elapsed_s": 199.2,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 572.5
+  }
+}

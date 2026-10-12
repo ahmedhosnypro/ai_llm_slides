@@ -1,0 +1,26 @@
+## Element-by-Element Fidelity Check
+
+**Established first (per ground rules):** IMG2 is a genuine content frame (full transformer-encoder diagram), so rule (b) does not apply. The small dark speck near the FFN band's left edge in IMG2 and the black letterbox bands (left/bottom) are video-capture artifacts â correctly omitted per rule (c). House chrome (red outer frame, #E8E8E8 bg, yellow "46" badge, no title on a full-bleed diagram slide) is intentional. The listed slide-46 deltas (second top LayerNorm unit, final Y row, pink "Final Output" callout, 4th left annotation, 0-based token labels, block arrows in FFN gaps, pink caption band) are all PRESENT in the recreation and are the expected delta â not raised as defects. The +6.35pt global downward shift is inherited/certified â not raised.
+
+### Content checklist (IMG1 vs IMG2)
+- **"Final Output" callout** (pink fill, red border, red italic, 2 lines): present, correct position top-left. â
+- **Top Y row** (Yââ¦Y â¯, Y_{Nâ2}, Y_{Nâ1}) + 5 blue dots: present, count and ordering match (original is 1-based; 0-based labels are the mandated slide-46 delta). â
+- **Top Layer Normalization** (gray bar, "Layer" red italic + "Normalization" black bold, green dashed enclosure, green up-arrows): present. â
+- **Plus-residual rows** (dark-red â, dark-blue arrows, orange curved residual traces): present at both levels, correct count/positions. â
+- **FFN band**: blue-bordered bar, "Feed Forward Networks [ One Hidden with RELU Activation]" verbatim with RELU in red; 6 + 2 tan RELU units with green nets and purple dot rows; outline block arrows in the gaps above/below. â
+- **Second Layer Normalization unit**: present. â
+- **"Output of Self Attention"** (blue italic, 2 lines) and **"Residual Connections"** (orange italic) annotations: present, correct positions and line breaks. â
+- **Multi Head Self Attention Block** (dark navy bar, white bold text): present. â
+- **"Input to Self Attention"** (red italic, 2 lines â the new 4th annotation): present. â
+- **Bottom X row** (Xââ¦X â¯, X_{Nâ2}, X_{Nâ1}) with 5 GREEN dots (vs blue on Y rows): present, matches original's green-dot distinction. â
+- **Pink caption band** "Word Embedding + Positional Information": present. â
+
+### Discrepancies
+1. **Caption band straddles the inner blue frame bottom line** (and sits at the red house-frame bottom edge) â MINOR, high confidence it is faithful: IMG2 shows the identical placement, with the original's caption likewise cut by the frame bottom, so the recreation matches the original rather than violating containment relative to it.
+2. **Token segment saturation** (recreation's yellow/green/pink/gray segments read more vivid than the pale-looking tokens in the low-res original) â MINOR, low confidence; likely a resolution artifact of IMG2, and token styling is pixel-consistent with the certified parent (judge variance).
+3. **0-based token indices (Yâ/Xââ¦) vs original's 1-based (Yâ/Xââ¦)** â NOT a defect: explicitly mandated slide-46 delta per inheritance context; listed only for completeness.
+
+### Visual-quality defects in the recreation
+- None observed: no text clipping or overflow beyond what the original itself exhibits, no collisions, subscripts sit correctly against their Y/X glyphs, labels are vertically centered in their segments, annotation columns align with their diagram levels, and all content sits inside the inner blue frame (except the caption band, addressed above, matching the original).
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

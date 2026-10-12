@@ -1,0 +1,29 @@
+scale S=2.0844
+== FINAL PRE-JUDGE SELF-CHECK (render_5) ==
+  PASS title red: [np.float64(135.8), np.float64(70.6), np.float64(826.7), np.float64(97.4)] tgt (140, 71, 825, 98)
+  PASS title Layer: [np.float64(445.7), np.float64(65.3), np.float64(543.6), np.float64(99.3)] tgt (448, 67, 542, 100)
+  PASS intro1: x 79.7..499.5 (target 81..502)
+  PASS intro2: x 81.6..522.0 (target 81..525)
+  PASS intro3: x 80.1..714.4 (target 81..723)
+  PASS bullet1: [np.float64(117.1), np.float64(224.0), np.float64(475.9), np.float64(241.8)] tgt (116, 226, 475, 242)
+  PASS bullet2: [np.float64(115.6), np.float64(255.9), np.float64(526.8), np.float64(276.5)] tgt (116, 258, 529, 268)
+  PASS box1 text: [np.float64(113.9), np.float64(291.4), np.float64(304.4), np.float64(304.4)] tgt (114, 291, 307, 303)
+  PASS box2 text: [np.float64(112.0), np.float64(328.4), np.float64(307.3), np.float64(344.8)] tgt (114, 330, 307, 342)
+  CHECK eq3 ink: [np.float64(317.4), np.float64(277.0), np.float64(515.1), np.float64(318.3)] tgt (317, 284, 536, 312)
+  CHECK eq4 ink: [np.float64(320.3), np.float64(318.0), np.float64(408.1), np.float64(357.8)] tgt (320, 321, 428, 359)
+  PASS arrow: [np.float64(737.7), np.float64(423.9), np.float64(754.5), np.float64(433.5)] tgt (738, 422, 757, 431)
+  PASS fraction: x 775.2..787.2 y 403.6..446.8 (target 775..790 / 405..449)
+  CHECK input grid: x 571.2..726.2 y 365.3..480.4 (target 571..726 / 365..483.5)
+  PASS output grid: x 796.2..871.1 y 396.7..452.8 (target 796..871 / 396..453.5)
+  PASS legend fill: [np.float64(454.6), np.float64(347.7), np.float64(566.9), np.float64(476.3)] tgt (455, 348, 566, 475)
+Traceback (most recent call last):
+  File "/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_introduction/recreated_pptx/qa/slide047/selfcheck_final.py", line 68, in <module>
+    m = dkn(row)
+  File "/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_introduction/recreated_pptx/qa/slide047/selfcheck_final.py", line 14, in <lambda>
+    dkn = lambda s: (s.sum(axis=2) < 330) & notred(s)
+                     ~~~~~^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/numpy/_core/_methods.py", line 49, in _sum
+    return umr_sum(a, axis, dtype, out, keepdims, initial, where)
+numpy.exceptions.AxisError: axis 2 is out of bounds for array of dimension 2
+PASS eq3 bar: bar at orig y 297.0 (target 298, tol 4), run len 29.7
+PASS eq4 bar: bar at orig y 336.8 (target 337, tol 4), run len 34.5

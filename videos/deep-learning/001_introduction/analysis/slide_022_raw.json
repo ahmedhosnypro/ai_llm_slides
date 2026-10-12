@@ -1,0 +1,191 @@
+{
+  "slide_title": "Visualization of Single Perceptron",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Ugmented Vector",
+      "Model Weights",
+      "Class I",
+      "Class II",
+      "Undefined Class",
+      "O/P",
+      "Binary Classification",
+      "(2 Classes)",
+      "x1",
+      "x2",
+      "x3",
+      "...",
+      "xn",
+      "1",
+      "w1",
+      "w2",
+      "w3",
+      "wn",
+      "b",
+      "\u03a3"
+    ],
+    "equations": [
+      "\\underline{X} = \\begin{pmatrix} x_1 \\\\ x_2 \\\\ \\dots \\\\ \\dots \\\\ x_n \\end{pmatrix} \\Rightarrow \\underline{X} = \\begin{pmatrix} 1 \\\\ x_1 \\\\ x_2 \\\\ \\dots \\\\ \\dots \\\\ x_n \\end{pmatrix}   (label: Ugmented Vector)",
+      "\\underline{W} = \\begin{pmatrix} b \\\\ w_1 \\\\ w_2 \\\\ \\dots \\\\ \\dots \\\\ w_n \\end{pmatrix}   (label: Model Weights; b is red, w's black)",
+      "d(\\underline{X}) = \\underline{W}^T \\, \\underline{X} = w_1x_1 + w_2x_2 + ..... + w_nx_n + b*1 \\Rightarrow \\left\\{ \\begin{array}{l} >0 \\Rightarrow \\text{Class I} \\\\ <0 \\Rightarrow \\text{Class II} \\\\ =0 \\Rightarrow \\text{Undefined Class} \\end{array} \\right."
+    ]
+  },
+  "layout": {
+    "arrangement": "Dark-red title centered at top inside a thin dark-red rectangular frame on a light-gray slide. Below the title, two white boxes side by side (left: augmented-vector equation, right: model-weights equation). Beneath them a full-width pale-yellow box containing the decision-rule equation and its three-case outcome. Bottom area: a white box with the perceptron signal-flow diagram on the left/center, and a small tan callout box at its right. A solid black strip runs across the very bottom of the slide.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~2%-14% height, ~20%-80% width",
+        "content": "Bold dark-red title 'Visualization of Single Perceptron'"
+      },
+      {
+        "name": "Augmented Vector box",
+        "position": "top-left, ~8%-43% width, ~16%-45% height",
+        "content": "White box, red border: column vector X (x1..xn) \u21d2 column vector X with 1 prepended; blue italic underlined label 'Ugmented Vector'"
+      },
+      {
+        "name": "Model Weights box",
+        "position": "top-right, ~55%-82% width, ~16%-45% height",
+        "content": "White box, red border: column vector W = (b, w1, w2, ..., wn); blue italic underlined label 'Model Weights'"
+      },
+      {
+        "name": "Decision rule box",
+        "position": "middle, ~8%-80% width, ~46%-63% height",
+        "content": "Pale-yellow box, red border: d(X) = W\u1d40X = w1x1+w2x2+.....+wnxn+b*1 \u21d2 red brace with three blue cases (>0 Class I, <0 Class II, =0 Undefined Class)"
+      },
+      {
+        "name": "Perceptron diagram box",
+        "position": "bottom center-left, ~23%-63% width, ~64%-93% height",
+        "content": "White box, red border: inputs x1,x2,x3,...,...,xn,1 with weights w1,w2,w3,...,wn,b converging via thin lines to \u03a3 circle, then arrow to step-function block, then red arrow to 'O/P'"
+      },
+      {
+        "name": "Classification callout",
+        "position": "bottom right, ~65%-85% width, ~73%-83% height",
+        "content": "Tan box, red border: 'Binary Classification (2 Classes)' in dark-red bold italic"
+      },
+      {
+        "name": "Bottom black strip",
+        "position": "bottom full width, ~96%-100% height",
+        "content": "Solid black horizontal bar (likely video player edge)"
+      },
+      {
+        "name": "Mouse cursor",
+        "position": "left edge, ~44% height, ~4% width",
+        "content": "Small white/black arrow pointer artifact"
+      }
+    ],
+    "hierarchy": "Title is largest and darkest (bold dark red). The two top equation boxes and the middle yellow equation box are next in visual weight (large math). The perceptron diagram is the most graphically dominant bottom element; the tan callout is small but color-contrasted. Blue labels are italic underlined secondary text; red is used for emphasis symbols (\u21d2, b, 1, b*1, arrows)."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "White rectangle with thin dark-red border containing the augmented vector equation: X = (x1; x2; ...; ...) column \u21d2 X = (1; x1; x2; ...; ...) column. X is bold with underline; the \u21d2 is red and bold.",
+      "colors": [
+        "#FFFFFF",
+        "#C00000",
+        "#000000",
+        "#FF0000"
+      ],
+      "position": "top-left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "White rectangle with thin dark-red border containing column vector W = (b; w1; w2; ...; ...; wn). 'b' at top is red; w entries black; W bold underlined.",
+      "colors": [
+        "#FFFFFF",
+        "#C00000",
+        "#000000",
+        "#FF0000"
+      ],
+      "position": "top-right"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pale-yellow rectangle with thin dark-red border containing the full decision equation d(X) = W\u1d40 X = w1x1+w2x2+.....+wnxn+b*1 (b*1 in red), a large red \u21d2, then a tall red brace grouping three lines: '>0 \u21d2 Class I', '<0 \u21d2 Class II', '=0 \u21d2 Undefined Class' (cases in blue, \u21d2 red).",
+      "colors": [
+        "#FFFFE1",
+        "#C00000",
+        "#000000",
+        "#FF0000",
+        "#0000CC"
+      ],
+      "position": "middle, spanning most of slide width"
+    },
+    {
+      "type": "diagram",
+      "description": "Single-perceptron signal-flow diagram inside a white red-bordered box. Left column of input labels stacked vertically: x1, x2, x3, ..., ..., xn (black), then 1 (red, bias input). Next to each input a weight label: w1, w2, w3, (none beside the two '...' rows), wn, and b (blue) beside the red 1. Thin pink/red lines fan out from all input/weight pairs and converge to a single point, then enter a circle containing '\u03a3' (light-cyan fill, black outline). A short black arrow leads from the \u03a3 circle to a small square block with pink/magenta border containing a step-function glyph (a step/threshold symbol). A thick red arrow points right from that block to the bold black output label 'O/P'.",
+      "colors": [
+        "#FFFFFF",
+        "#C00000",
+        "#000000",
+        "#0000CC",
+        "#FF0000",
+        "#CCFFFF",
+        "#FF66CC"
+      ],
+      "position": "bottom center-left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Small tan/beige rectangle with thin dark-red border containing two centered lines of dark-red bold italic text: 'Binary Classification' / '(2 Classes)'.",
+      "colors": [
+        "#D8C8A8",
+        "#C00000"
+      ],
+      "position": "bottom right, to the right of the diagram box"
+    },
+    {
+      "type": "other",
+      "description": "Thin dark-red rectangular frame outlining the entire slide content area, inset from slide edges.",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "full slide border"
+    },
+    {
+      "type": "other",
+      "description": "Solid black horizontal strip across the very bottom edge of the image (video player bar, not slide content).",
+      "colors": [
+        "#000000"
+      ],
+      "position": "bottom edge"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations; only mathematical notation, a schematic perceptron diagram, and a mouse-cursor artifact at the left edge (~44% height)."
+  ],
+  "colors": {
+    "background": "#E6E6E6",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#FF0000",
+      "#0000CC",
+      "#C00000",
+      "#FFFFE1",
+      "#CCFFFF",
+      "#FF66CC",
+      "#D8C8A8"
+    ]
+  },
+  "typography_notes": "All text is sans-serif (Arial-like). Title is bold, all-initial-caps words, dark red, noticeably larger than everything else. Math variables are bold italic serif-style math font; vectors X and W are bold with underlines. Box labels ('Ugmented Vector', 'Model Weights') are blue, italic, and underlined. Case outcomes (Class I/II/Undefined Class) are blue regular. Emphasis symbols (\u21d2, b, 1, b*1) are red. Callout text is bold italic dark red. No numbered bullets; content is entirely boxed equations and a diagram.",
+  "animation_state": "No mid-build state; all boxes, equations, and diagram elements are fully visible. A mouse cursor rests at the left edge, indicating a paused lecture video, but nothing is partially revealed.",
+  "recreation_brief": "1. Set slide background to light gray (#E6E6E6) and draw a thin dark-red (#C00000) rectangle outline inset ~3% from all edges. 2. Add title text box top-center: 'Visualization of Single Perceptron', bold, ~36pt, dark red (#C00000), sans-serif. 3. Insert a white rectangle (red #C00000 border) at top-left (~8%-43% width, 16%-45% height). Inside, use an equation editor to place: bold underlined X = column vector (x1, x2, ..., ..., xn), then a red bold \u21d2, then bold underlined X = column vector (1, x1, x2, ..., ..., xn). Add blue italic underlined label 'Ugmented Vector' (keep the verbatim spelling) to the right of the equation. 4. Insert a matching white/red-border rectangle at top-right (~55%-82% width). Inside: bold underlined W = column vector (b, w1, w2, ..., ..., wn) with 'b' colored red. Add blue italic underlined label 'Model Weights' to the right. 5. Insert a pale-yellow (#FFFFE1) rectangle with red border across the middle (~8%-80% width, 46%-63% height). Inside: 'd(X) = W\u1d40 X = w\u2081x\u2081+w\u2082x\u2082+.....+w\u2099x\u2099+b*1' (d bold, X red bold, W bold underlined, 'b*1' red), then a red bold \u21d2, then a tall red left brace with three blue lines: '>0 \u21d2 Class I', '<0 \u21d2 Class II', '=0 \u21d2 Undefined Class' (\u21d2 in red). 6. Insert a white red-border rectangle bottom center-left (~23%-63% width, 64%-93% height). Build the perceptron diagram: left column of black labels x1, x2, x3, ..., ..., xn and a red '1' at the bottom; a second column of blue weight labels w1, w2, w3, wn and blue 'b' aligned to the rows (skip weights beside the '...' rows). Draw thin pink/red connector lines from every row converging to one point feeding a circle (light-cyan #CCFFFF fill, black outline) containing '\u03a3'. Add a short black arrow from the circle to a small square with pink (#FF66CC) border containing a step-function glyph; then a thick red arrow to bold black text 'O/P'. 7. Add a tan (#D8C8A8) rectangle with red border at bottom-right (~65%-85% width, 73%-83% height) containing two centered lines of bold italic dark-red text: 'Binary Classification' and '(2 Classes)'. 8. Optionally add a solid black strip across the very bottom edge to mimic the video frame. 9. Do not add slide numbers, footers, or bullets \u2014 none exist on the original.",
+  "_meta": {
+    "frame": "slide_022.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 22,
+      "image": "slide_022.jpg",
+      "kept_frame": "frame_01094.jpg",
+      "start_sec": 1093,
+      "end_sec": 1197.0,
+      "frame_count": 105,
+      "old_group": 27,
+      "founder_frame_swap": true,
+      "original_kept_frame": "frame_01198.jpg"
+    },
+    "elapsed_s": 120.7
+  }
+}

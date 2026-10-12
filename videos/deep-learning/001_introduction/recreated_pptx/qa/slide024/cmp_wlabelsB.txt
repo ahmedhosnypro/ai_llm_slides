@@ -1,0 +1,38 @@
+# Slide 024 pre-judge crop comparison â w_kj label zone (greenâorange gap, right mesh)
+
+## Scope of this crop
+Both provided images are the same montage: top half = recreation render crop, bottom half = original frame crop. The crop isolates the three **w_kj** weight labels riding the greenâorange mesh lines (right gap of the neural-network diagram), per ground rule (f2).
+
+## Element-by-element comparison
+
+**1. Label set / presence (rule f2)**
+- Original: three blue "w_kj" labels stacked vertically down the gap â one near the horizontal (r1âr1) line, one on the ~30Â° (r1âr2) line, one on the ~51Â° (r1âr3) line.
+- Recreation: same three labels, same order, same vertical distribution down the gap. â No missing labels, no extra labels, no w_ki intrusions from the left mesh.
+
+**2. Rotation of labels against their lines**
+- Top label: near-0Â° in both; sits just above the horizontal red line in both. The "W" over "kj" two-line stack is present in both, with "kj" subscripted and offset right-below the W. â
+- Middle label: rotated ~30Â° in both, riding parallel to its diagonal line, positioned at comparable height (~mid-gap). â
+- Bottom label: rotated ~51Â° in both, W leading, kj trailing below-right along the rotation. â
+- The rotation angles visually track the mesh lines in both halves; no label sits flat where its line is angled, or vice versa.
+
+**3. Color / weight**
+- Label blue: same royal-blue hue in both (recreation reads cleaner/more saturated; original is JPEG-softened). Per rule (d), this is a medium artifact, not a discrepancy.
+- Font: bold sans-serif italic-style W in both; recreation is crisper. Same medium rule applies.
+
+**4. Mesh lines in this crop**
+- Both halves show the red diagonal mesh lines crossing in the same X-pattern with matching intersection points and slopes. The original's lines are fainter/washed (blur + desaturation) â rule (d) medium artifact. Line geometry (angles, crossing positions, extent to crop edges) matches.
+
+**5. Containment**
+- All three labels and all line segments in this crop sit fully within the beige panel region; no ink touches or crosses any frame boundary in either half. â
+
+## Discrepancy list
+
+| # | Item | Severity | Confidence |
+|---|------|----------|------------|
+| â | None found in this crop | â | â |
+
+Visual-quality notes (recreation only, non-fidelity): none â no clipping, no collisions between labels and lines, no illegible text; the crisp rendering is the expected vector output.
+
+## FINAL VERDICT: **PASS**
+
+The recreation's w_kj label zone is a faithful match: correct label count, text, stacking (W over subscripted kj), rotations matched to their mesh lines, matching positions and spacing, with only rule-(d) medium artifacts (blur/wash in the original) distinguishing the two.

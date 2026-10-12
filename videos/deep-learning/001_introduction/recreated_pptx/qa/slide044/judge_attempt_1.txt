@@ -1,0 +1,35 @@
+# Slide 044 Fidelity Check â IMG1 (recreation) vs IMG2 (original frame)
+
+## Pre-applied founder directives
+- (a) House chrome (white canvas, gray panel with red border, yellow "44" badge at top-right) is canonical and not a discrepancy â note the original frame's badge is not visible in IMG2's crop, which is immaterial under rule (a).
+- (c) The black OS cursor near the red frame's bottom edge (~x 585, y 380 in IMG2) and the full-width black player progress-bar strip at the very bottom of IMG2 are video artifacts â correctly **absent** from IMG1.
+- (iii) The spec's phantom "thin gray top line" does not exist in the original frame; its absence in IMG1 is correct.
+- (g) Note-box line 3 verbatim: "After apply one filter  of size 3x3 , output will be 5x5 again" â double space after "filter" and space before the comma after "3x3" â **preserved exactly** in IMG1. â
+
+## Element-by-element comparison
+
+**Title** â "Solution? Zero-padding! , Others !!" in bold dark red, centered. Verbatim match including the odd spacing " ! , " and trailing " !! ". Font size/weight/color equivalent (IMG1 slightly larger relative to canvas; within tolerance). â
+
+**Bullet line** â hollow-circle bullet + "For s = 1, surround the image with (h_f â 1)/2 and (w_f â 1)/2 layers of 0" with italic *h*, *w* and subscript *f*. Verbatim match; subscripts render correctly in both. â
+
+**Padded 7Ã7 matrix** â blue/cyan padding ring, green 5Ã5 interior. Cell values match row-for-row in both images:
+`0000000 / 0111000 / 0011100 / 0001110 / 0001100 / 0011000 / 0000000`. Colors approx #29ABE2 (cyan), #00C853-class green. Position/proportion (~29% of slide width) matches. Bottom edge sits just inside the red content frame in both â no containment breach. â
+
+**Filter 3Ã3 (yellow)** â `001 / 011 / 111`, yellow #FFFF00-class fill, centered mid-slide. Match. â
+
+**"â" and "=" operators** â present, correctly placed and vertically centered between matrices in both. â
+
+**Output 5Ã5 matrix (green)** â `11200 / 01110 / 00121 / 10210 / 01130`. All 25 values match the original exactly. â
+
+**Note box** â "Original 5x5" (bold, dark navy) + three lines, all verbatim with the mandated spacing quirks. Line spacing between the four lines is consistent and matches the original's rhythm. Text sits comfortably inside the box; no clipping. â
+
+**Equations** â the (h_fâ1)/2 notation appears in linear inline form in *both* images, so directive (e) is not triggered; no format mismatch exists here.
+
+## Discrepancies found
+1. **MINOR** (confidence ~0.6): IMG1's note box fill appears white, while IMG2's reads as a very light gray/blue tint; border hue slightly bluer in IMG1. Cosmetic only.
+2. **MINOR** (confidence ~0.5): Yellow filter cell grid in IMG1 shows slightly stronger orange-toned gridlines than IMG2's thin yellow separators. Cosmetic.
+3. **MINOR** (confidence ~0.4): Overall scale of matrix blocks in IMG1 marginally larger relative to the red frame than in IMG2 (~2â3%), causing the padded matrix to sit a touch closer to the red frame's bottom edge â still fully contained, no touching/crossing.
+
+No BLOCKER or MAJOR defects. All text verbatim, all 49 + 9 + 25 matrix values correct, layout ordering (padded image â â â filter â = â output) matches, no missing elements, no containment violations, no collisions or illegible text in the recreation.
+
+**FINAL VERDICT: PASS** â faithful, usable recreation.

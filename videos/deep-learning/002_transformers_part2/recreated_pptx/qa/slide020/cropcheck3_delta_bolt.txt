@@ -1,0 +1,41 @@
+# Region Fidelity Review â Slide 020 crop (delta_bolt), render vs original
+
+## Element-by-element comparison
+
+**Top row (blue "Pos" boxes):**
+- Both images show the same sequence: boxes labeled Pos 0â¦Pos 5 (tops cropped), a gap, then Pos Nâ2 and Pos Nâ1 boxes at right. Box fill lavender (~#CCCCFF), dark-blue borders, matching relative x-positions and widths. â
+- Subscripts Nâ2 / Nâ1 in IMG1 are proper small baseline-aligned subscripts, not caret/underscore text. â (IMG2's labels are cropped; nothing contradicts.)
+
+**Orange pin markers:**
+- Counts match (5 under left boxes + 1 under the rightmost box). â
+- **Shape/size mismatch:** IMG1 renders large two-lobe "peg" glyphs (~2â3Ã larger) hanging *below* the boxes and overlapping the dotted line; IMG2 shows small downward-pointing triangles sitting at/above the dotted line. â **MINOR** (stylization of same marker), confidence 0.7.
+- Pin vertical placement relative to the dotted line differs (overlap vs above) â **MINOR**, confidence 0.6.
+
+**Dotted blue line:** present in both, similar dot pitch and color (~#2222CC). Position below boxes matches. â
+
+**MISSING â dashed arc curves:** IMG2 shows faint light-orange/yellow *dashed curved arcs* sweeping between pins beneath the boxes (repeated, structured dashed strokes â not mosquito noise or halos, so not covered by ground rule (b)). These are entirely absent in IMG1. â **MAJOR**, confidence 0.7.
+
+**MISSING â teal circles:** IMG2 shows three small teal/green circles (~#3AAFA0) in the gap between the Pos 5 box and the Pos Nâ2 box, above the dotted line. IMG1's gap region is empty. â **MAJOR**, confidence 0.6 (clearly rendered glyphs in IMG2, not compression smear).
+
+**"+Î´" labels:**
+- Count matches: 5 to the left of the first arrow + 1 at far right = 6 in both. â
+- Relative x-positions under the boxes align well. â
+- Style matches: dark-red (~#B00000) bold serif "+Î´" with italic delta. â (Typed-vs-handwritten/weight differences â within MINOR tolerance per rule (d); not raised.)
+
+**Red arrows:**
+- Two arrows in both: one shorter arrow (~63â64% of width) and one full-height arrow (~78â79%) descending into the dark bar. Positions and proportions match. â
+
+**Bottom dark-red bar (~#8B0000):** present full-width in both. Relative thickness slightly larger in IMG1 (~14% of crop height vs ~19% in IMG2) â **MINOR**, confidence 0.5 (independent upscaling/aspect tolerance).
+
+## Visual-quality defects
+- No overflow, clipping, or collisions in IMG1 attributable to the recreation (top-edge label cropping is a crop artifact present in both).
+- Pin glyphs slightly collide with the dotted line in IMG1 â cosmetic, covered above.
+
+## Discrepancy summary
+1. **MAJOR** â Missing dashed arc curves between pins (present in IMG2). Confidence 0.7.
+2. **MAJOR** â Missing three teal circles in the gap region (present in IMG2). Confidence 0.6.
+3. **MINOR** â Pin marker shape/size mismatch (large peg vs small triangle). Confidence 0.7.
+4. **MINOR** â Pin/dotted-line overlap vs separation. Confidence 0.6.
+5. **MINOR** â Dark-red bar relative thickness. Confidence 0.5.
+
+FINAL VERDICT: **FAIL** for 'faithful recreation of this region'

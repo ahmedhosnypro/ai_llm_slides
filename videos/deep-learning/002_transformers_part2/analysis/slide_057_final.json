@@ -1,0 +1,216 @@
+{
+  "slide_title": "Encoder-Decoder Architecture Schematic (descriptive only \u2014 the source slide has no on-slide title)",
+  "subtitle_or_header": "None \u2014 the slide has no subtitle or header; a single full-bleed Encoder-Decoder schematic is the only content",
+  "verbatim_text": {
+    "bullets": [
+      "[No bullet text on this slide \u2014 all text appears as diagram labels; see labels array]"
+    ],
+    "labels": [
+      "57",
+      "Encoder",
+      "Decoder",
+      "Attention",
+      "Encoder Block M",
+      "Encoder Block 2",
+      "Encoder Block 1",
+      "Encoder Block 0",
+      "Word Embedding",
+      "Positional Encoding / Embedding",
+      "Word 0",
+      "Word 1",
+      "Word 2",
+      "Word 3",
+      "Word 4",
+      "Word 5",
+      "Word N-2",
+      "Word N-1",
+      "X_0",
+      "X_1",
+      "X_2",
+      "X_3",
+      "X_4",
+      "X_5",
+      "X_{N-1}",
+      "X_N",
+      "Y_0",
+      "Y_1",
+      "Y_2",
+      "Y_3",
+      "Y_4",
+      "Y_5",
+      "Y_{N-1}",
+      "Y_N",
+      "K",
+      "V",
+      "Q",
+      "Tokens",
+      "Residual Connection and Layer Normalization",
+      "Feed Forward Networks - One Hidden with RELU Activation",
+      "Encoder Decoder Attention",
+      "Masked Multi-Headed Attention",
+      "Word and Position Embedding",
+      "POS",
+      "m/t/de [?]",
+      "Multi-Head [?] (tiny sub-label inside each blue attention box)"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "No title or subtitle. A single full-bleed schematic fills the slide: a red-bordered Encoder panel on the left (~4-48% width), a narrow blue-striped encoder-output column in the center (~48-57% width) with K/V arrows feeding rightward, and a green-bordered Decoder panel on the right (~56-90% width). A tri-color caption 'Encoder / Decoder / Attention' sits bottom-center beneath the column. A yellow '57' slide-number badge is top-right. A thin black strip (video-player artifact) runs along the very bottom edge.",
+    "regions": [
+      {
+        "name": "Encoder panel",
+        "position": "left, ~4%-48% width, ~7%-96% height",
+        "content": "Vertical red bold-italic 'Encoder' label on left edge; top row of Y_0...Y_N yellow token boxes; light-purple backdrop containing four dark-purple bars 'Encoder Block M / 2 / 1 / 0' with navy dot columns and red up-arrows between them; X_0...X_N token row; tan 'Word Embedding' bar; pale-blue 'Positional Encoding / Embedding' bar; bottom row Word 0...Word N-1 with small blue up-arrows."
+      },
+      {
+        "name": "Encoder-output column + K/V arrows",
+        "position": "center, ~48%-57% width, ~10%-78% height",
+        "content": "Tall narrow blue-striped column (stack of encoded vectors); thin hairpin connector lines from its top to each Y box; red K arrow (~30% height), hatched striped arrows, red V arrow (~50% height), and two solid blue arrows (~57% and ~73% height) all pointing right into the decoder; thin diagonal blue line at column bottom."
+      },
+      {
+        "name": "Tri-color caption",
+        "position": "bottom-center, ~48%-57% width, ~80%-90% height",
+        "content": "Three stacked bold-italic words: 'Encoder' (red), 'Decoder' (green), 'Attention' (blue)."
+      },
+      {
+        "name": "Decoder panel",
+        "position": "right, ~56%-90% width, ~7%-96% height",
+        "content": "Vertical green bold-italic 'Decoder' label on right edge; from top: 'Tokens' label over rows of white, magenta, and green circles with connecting lines; repeating red 'Residual Connection and Layer Normalization' bars, green 'Feed Forward Networks' bars, rows of six blue 'Encoder Decoder Attention' boxes, a row of gray squares, a row of blue 'Masked Multi-Headed Attention' boxes, purple 'Word and Position Embedding' bar with 'POS' and 'm/t/de [?]' end-labels, and a bottom token row; yellow 'Q' badge with red up-arrow at bottom-right."
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top-right, ~91%-97% width, ~5%-12% height",
+        "content": "Yellow circle with red border containing red bold '57'."
+      },
+      {
+        "name": "Bottom strip",
+        "position": "bottom edge, full width, ~98%-100% height",
+        "content": "Solid black horizontal strip \u2014 video-player progress bar captured in the screenshot, not slide content."
+      }
+    ],
+    "hierarchy": "The schematic dominates absolutely; there is no title. Largest text: vertical 'Encoder' (red) and 'Decoder' (green) bold-italic panel labels (~36-40pt). Next: the tri-color 'Encoder / Decoder / Attention' caption (~16-18pt) and 'Encoder Block M' bar labels (~12-16pt). Then bar captions (~9-11pt bold). Smallest: X/Y subscripts, Word labels, and tiny white text inside the blue attention boxes (~6-7pt). The thick red and green container borders are the strongest structural cues; color (red/green/blue/purple) carries more weight than text size."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "ENCODER PANEL: red-bordered container with vertical red bold-italic 'Encoder' on its left edge. Top row: eight small yellow rectangles with red borders labeled Y_0, Y_1, Y_2, Y_3, Y_4, Y_5, then a blue six-dot ellipsis, then Y_{N-1}, Y_N. Below, a light-purple backdrop holds four dark-purple bars with white bold text, top to bottom: 'Encoder Block M', 'Encoder Block 2', 'Encoder Block 1', 'Encoder Block 0'; each gap between bars (and above the top bar) contains ~6 vertical columns of small navy dots with a red upward arrow per column; a row of red up-arrows also runs between the stack top and the Y row. Below the stack: row of yellow boxes X_0...X_5, blue ellipsis, X_{N-1}, X_N; then a tan full-width bar 'Word Embedding' (red text); then a pale-blue bar 'Positional Encoding / Embedding' (blue text); then bottom row of yellow boxes labeled Word 0, Word 1, Word 2, Word 3, Word 4, Word 5, a gray dotted ellipsis, Word N-2, Word N-1, with ~8 small blue up-arrows from the word boxes to the pale-blue bar. Implied flow bottom-to-top: words -> positional/word embedding -> X tokens -> Encoder Blocks 0...M -> Y tokens.",
+      "colors": [
+        "#FF0000",
+        "#FFFF99",
+        "#4A4AA8",
+        "#D9D2E9",
+        "#000080",
+        "#F8CBAD",
+        "#DDEBF7",
+        "#2E64FE"
+      ],
+      "position": "left panel, ~4%-48% of slide width, ~7%-96% of height"
+    },
+    {
+      "type": "diagram",
+      "description": "CENTRAL COLUMN + ARROWS: tall narrow column (~1.5% slide width) filled with dense horizontal blue stripes on white, representing the stack of encoder output vectors; thin blue connector lines run from its top and fan left down to each Y box. On its right edge, horizontal arrows feed the decoder: a thick red right-arrow at ~30% height tagged with a yellow circle 'K'; a bundle of ~4 hatched blue-and-white striped right-arrows just below; a thick red right-arrow at ~50% height tagged with a yellow circle 'V'; and two solid dark-blue right-arrows at ~57% and ~73% heights aligned with the decoder's lower attention rows. A thin diagonal blue line crosses at the column's bottom tip. Below the column sits the tri-color caption stacked on three lines: 'Encoder' (red bold italic), 'Decoder' (green bold italic), 'Attention' (blue bold italic).",
+      "colors": [
+        "#2E64FE",
+        "#FF0000",
+        "#FFFF00",
+        "#00B050"
+      ],
+      "position": "center strip, ~48%-57% width, ~10%-90% height (caption at bottom)"
+    },
+    {
+      "type": "diagram",
+      "description": "DECODER PANEL: green-bordered container with vertical green bold-italic 'Decoder' on its right edge. Top to bottom: (1) tiny red label 'Tokens' (with small red brace) over a row of ~10 white circles with red outlines; (2) row of ~10 magenta circles; (3) row of ~10 green circles, with thin connecting lines among all three rows in a fully-connected pattern (every circle linked to every circle in the adjacent rows); (4) red bar, white bold text 'Residual Connection and Layer Normalization'; (5) green bar, yellow bold text 'Feed Forward Networks - One Hidden with RELU Activation'; (6) row of six blue boxes, white text 'Encoder Decoder Attention' (each with a tiny sub-label [?]), with small yellow 'K' and 'V' tags where the encoder arrows enter; (7) red bar 'Residual Connection and Layer Normalization'; (8) second row of six blue 'Encoder Decoder Attention' boxes; (9) row of six small gray squares; (10) red bar 'Residual Connection and Layer Normalization'; (11) green bar 'Feed Forward Networks - One Hidden with RELU Activation'; (12) third row of six blue 'Encoder Decoder Attention' boxes; (13) red bar 'Residual Connection and Layer Normalization'; (14) row of six blue boxes 'Masked Multi-Headed Attention'; (15) purple bar, white bold text 'Word and Position Embedding', with tiny blue end-labels 'POS' (left) and 'm/t/de' [?] (right); (16) bottom row of small yellow token boxes. A yellow circle 'Q' with a thick red up-arrow enters the Masked Multi-Headed Attention row from the bottom right.",
+      "colors": [
+        "#00B050",
+        "#C00000",
+        "#2E75B6",
+        "#FF00FF",
+        "#7030A0",
+        "#FFFF00",
+        "#FF0000",
+        "#BFBFBF",
+        "#FFFFFF"
+      ],
+      "position": "right panel, ~56%-90% width, ~7%-96% height"
+    },
+    {
+      "type": "icon",
+      "description": "Slide-number badge: yellow circle with red border containing red bold text '57'.",
+      "colors": [
+        "#FFFF00",
+        "#FF0000"
+      ],
+      "position": "top-right corner, ~91%-97% width, ~5%-12% height"
+    },
+    {
+      "type": "other",
+      "description": "Thin solid black horizontal strip spanning the full slide width at the very bottom edge (video-player progress bar captured in the screenshot; not slide content).",
+      "colors": [
+        "#000000"
+      ],
+      "position": "bottom edge, full width, ~98%-100% height"
+    }
+  ],
+  "imagery": [
+    "None \u2014 no photos, clip-art, or illustrations; the slide is entirely composed of vector shapes (rectangles, bars, circles, arrows, dots) forming the Encoder-Decoder architecture schematic."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "N/A \u2014 slide has no title text",
+    "body_text": "#1A1A1A (base label color; most text is element-colored: red, green, blue, or white/yellow-on-fill)",
+    "accents": [
+      "#FF0000",
+      "#00B050",
+      "#4A4AA8",
+      "#2E64FE",
+      "#FFFF99",
+      "#FF00FF",
+      "#7030A0",
+      "#F8CBAD",
+      "#DDEBF7",
+      "#FFFF00"
+    ]
+  },
+  "typography_notes": "Everything is sans-serif (Arial-like) except the token symbols (X_i, Y_i, Word i), which use a serif italic (Times-like) with true subscripts. Vertical panel labels 'Encoder'/'Decoder' are the largest text (~36-40pt bold italic). The tri-color caption is ~16-18pt bold italic. Bar labels are ~9-11pt bold; text inside the blue attention boxes is ~6-7pt bold white stacked on 2-3 lines. 'RELU' appears in caps within the Feed Forward label. No bullet lists anywhere \u2014 the slide is a purely labeled schematic. Slide number is red bold inside a yellow circle.",
+  "animation_state": "Single fully-rendered frame; no build in progress and no partially revealed elements. The black strip at the very bottom edge is a video-player progress bar from the screen capture, not an animated slide element.",
+  "recreation_brief": "1) Canvas: blank 16:9 slide with white (#FFFFFF) background; no title, no subtitle, no bullet text. Font convention: all labels are Arial-like sans-serif; token symbols (X_*, Y_*, Word *) use Times-like serif italic with true subscripts.\n2) Encoder container: unfilled rectangle with a 3pt red (#FF0000) outline spanning x\u22484%-48% of slide width and y\u22487%-96% of slide height.\n3) Encoder panel label: text box 'Encoder', Arial ~36-40pt bold italic, red (#FF0000), rotated 270\u00b0 so it reads bottom-to-top, hugging the container's left edge, vertically centered.\n4) Y token row: 8 yellow (#FFFF99) rectangles with red (#FF0000) outlines in one horizontal row centered in the band between the panel top (~7% height) and the block-stack top (~27% height); label them left-to-right in red serif italic with true subscripts: Y_0, Y_1, Y_2, Y_3, Y_4, Y_5, then a blue (#2E64FE) six-dot ellipsis text box '\u2022 \u2022 \u2022 \u2022 \u2022 \u2022', then Y_{N-1}, Y_N.\n5) Block-stack backdrop: light-purple (#D9D2E9) rectangle at x\u224810%-46% width, y\u224827%-67% height.\n6) Encoder block bars: 4 dark-purple (#4A4AA8) rectangles with white Arial ~12pt bold text, stacked top-to-bottom inside the backdrop: 'Encoder Block M', 'Encoder Block 2', 'Encoder Block 1', 'Encoder Block 0'.\n7) Dot columns and arrows: in each of the 3 gaps between the 4 bars AND in the band above the top bar, place ~6 vertical columns of small navy (#000080) dots with one red (#FF0000) up-arrow per column; also draw a row of red up-arrows in the band between the stack top and the Y row.\n8) X token row: immediately below the backdrop (y\u224868%-73%), 8 yellow rectangles with red outlines labeled in red serif italic with true subscripts: X_0, X_1, X_2, X_3, X_4, X_5, then a blue six-dot ellipsis, then X_{N-1}, X_N.\n9) Word Embedding bar: tan (#F8CBAD) rectangle spanning the panel width at y\u224875%-79% with red bold Arial ~9-11pt text 'Word Embedding'.\n10) Positional Encoding bar: pale-blue (#DDEBF7) rectangle spanning the panel width at y\u224881%-85% with blue bold text 'Positional Encoding / Embedding'.\n11) Word row: 8 yellow rectangles with red outlines at y\u224887%-93% labeled in serif italic: Word 0, Word 1, Word 2, Word 3, Word 4, Word 5, then a gray dotted ellipsis '\u25cb \u25cb \u25cb \u25cb \u25cb \u25cb', then Word N-2, Word N-1; draw ~8 small blue (#2E64FE) up-arrows from these word boxes to the pale-blue bar.\n12) Central encoder-output column: narrow rectangle ~1.5% of slide width at x\u224848%-50%, y\u224810%-78%, white fill with dense horizontal blue (#2E64FE) stripes (the stack of encoded vectors).\n13) Y-to-column connectors: thin blue lines running from the column's top, fanning left and down to the top of each of the 8 Y boxes (hairpin pattern).\n14) Column bottom detail: thin blue diagonal line crossing at the column's bottom tip.\n15) K arrow and badge: thick red (#FF0000) right-arrow at ~30% height running from the column's right edge into the decoder; yellow (#FFFF00) circle badge with red outline and red bold 'K' at ~(57%, 30%).\n16) Hatched arrows: a bundle of ~4 hatched blue-and-white striped right-arrows in the band between the K and V arrows (~32%-48% height), pointing into the decoder.\n17) V arrow and badge: thick red right-arrow at ~50% height; yellow circle badge with red outline and red bold 'V' at ~(57%, 50%).\n18) Blue feed arrows: 2 solid dark-blue (#2E64FE) right-arrows at ~57% and ~73% heights, aligned with the decoder's lower 'Encoder Decoder Attention' rows.\n19) Tri-color caption: 3 stacked bold-italic lines (~16-18pt) centered at ~(52%, 85%): 'Encoder' (red #FF0000), 'Decoder' (green #00B050), 'Attention' (blue #2E64FE).\n20) Decoder container: unfilled rectangle with a 3pt green (#00B050) outline spanning x\u224856%-90% width, y\u22487%-96% height.\n21) Decoder panel label: text box 'Decoder', Arial ~36-40pt bold italic, green (#00B050), vertical, hugging the container's right inner edge, vertically centered.\n22) Decoder stack setup: place the rows from steps 23-36 top-to-bottom inside the decoder container, evenly distributed from ~10% to ~93% height.\n23) Tokens header and circle rows: tiny red 'Tokens' label with a small red brace, over 3 rows of ~10 circles each \u2014 row 1: white circles with red outlines; row 2: magenta (#FF00FF) circles; row 3: green (#00B050) circles; draw thin connecting lines linking every circle to every circle in the adjacent rows (fully-connected pattern).\n24) Red bar 1: dark-red (#C00000) rectangle with white bold Arial ~9-11pt text 'Residual Connection and Layer Normalization'.\n25) FFN bar 1: green (#00B050) rectangle with yellow (#FFFF00) bold text 'Feed Forward Networks - One Hidden with RELU Activation'.\n26) Attention row 1: 6 blue (#2E75B6) rectangles with white bold ~6-7pt text 'Encoder Decoder Attention' stacked on 2-3 lines; add a tiny sub-label 'Multi-Head' [?] inside each box (exact text uncertain \u2014 see validation.uncertain_items); place small yellow 'K' and 'V' tags at the row's left edge where the encoder arrows enter.\n27) Red bar 2: dark-red rectangle 'Residual Connection and Layer Normalization' (same styling as step 24).\n28) Attention row 2: 6 blue 'Encoder Decoder Attention' boxes (same styling as step 26, without the K/V tags).\n29) Gray squares: 1 row of 6 small gray (#BFBFBF) squares.\n30) Red bar 3: dark-red rectangle 'Residual Connection and Layer Normalization'.\n31) FFN bar 2: green rectangle 'Feed Forward Networks - One Hidden with RELU Activation' (yellow bold text, same styling as step 25).\n32) Attention row 3: 6 blue 'Encoder Decoder Attention' boxes (same styling as step 26).\n33) Red bar 4: dark-red rectangle 'Residual Connection and Layer Normalization'.\n34) Masked attention row: 6 blue (#2E75B6) rectangles with white bold text 'Masked Multi-Headed Attention'.\n35) Purple embedding bar: purple (#7030A0) rectangle with white bold text 'Word and Position Embedding', plus tiny blue end-labels 'POS' (left end) and 'm/t/de' [?] (right end).\n36) Bottom token row: 1 row of small yellow token boxes spanning the decoder width beneath the purple bar (unlabeled; exact count not specified in source \u2014 use 8 boxes with red outlines to match the encoder token rows).\n37) Q badge: yellow circle with red outline and red bold 'Q' at ~(88%, 78%), with a thick red up-arrow entering the 'Masked Multi-Headed Attention' row (step 34) from the bottom right.\n38) Slide-number badge: yellow (#FFFF00) circle with a red (#FF0000) border containing red bold '57', centered at ~(94%, 8%).\n39) OPTIONAL video artifact (not slide content): full-width black (#000000) rectangle ~0.4 cm tall along the very bottom edge, mimicking the captured video-player progress bar \u2014 include only if reproducing the video frame.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "slide_title was null: filled with the descriptive label 'Encoder-Decoder Architecture Schematic', explicitly marked as non-verbatim because layout.arrangement and layout.hierarchy confirm the source slide has no on-slide title.",
+      "subtitle_or_header was null: filled with an explicit 'None' statement (schematic-only slide).",
+      "verbatim_text.bullets was empty: inserted the bracketed meta-placeholder '[No bullet text on this slide \u2014 all text appears as diagram labels; see labels array]'; typography_notes confirms 'No bullet lists anywhere', so the slide genuinely has no bullet text.",
+      "layout.hierarchy referenced 'Encoder Block N' bar labels: corrected to 'Encoder Block M' to match verbatim_text.labels and visual_elements (the bars are M / 2 / 1 / 0).",
+      "layout.hierarchy sized the tri-color caption at ~12-16pt, contradicting typography_notes (~16-18pt) and the original recreation_brief (~16pt): harmonized to ~16-18pt; 'Encoder Block M' bar labels remain ~12-16pt.",
+      "visual_elements (Decoder panel) used the vague quantifier 'many thin connecting lines': replaced with the exact fully-connected specification \u2014 thin lines linking every circle to every circle in the adjacent rows.",
+      "Recreation brief rewritten as a 39-step ordered checklist; every step now specifies exact text, count, position (percent coordinates), color (hex), and shape type; added the small red brace after the 'Tokens' label, which was present in visual_elements but missing from the original brief.",
+      "Added derived approximate y-bands for the encoder rows below the block stack (X row ~68-73%, tan bar ~75-79%, pale-blue bar ~81-85%, word row ~87-93%), interpolated from the given anchors (panel 7-96% height, stack 27-67% height); all marked approximate.",
+      "Decoder bottom yellow token row: source gives no labels or count; checklist directs 8 boxes with red outlines by analogy with the encoder token rows and flags this in uncertain_items."
+    ],
+    "uncertain_items": [
+      "'m/t/de [?]' \u2014 exact text of the tiny blue right end-label on the decoder's purple 'Word and Position Embedding' bar.",
+      "'Multi-Head [?]' \u2014 exact text of the tiny sub-label inside each blue 'Encoder Decoder Attention' box.",
+      "Decoder bottom yellow token row: labels and exact box count are not specified in the source (8 boxes suggested by analogy with the encoder token rows).",
+      "Approximate counts retained from the source: ~10 circles per decoder circle row, ~6 navy dot columns per gap, ~4 hatched striped arrows, ~8 blue up-arrows from the word row.",
+      "The supplied slide_title is a descriptive reconstruction; the source slide genuinely has no on-slide title."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_057.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 57,
+      "image": "slide_057.jpg",
+      "kept_frame": "frame_04998.jpg",
+      "start_sec": 4934.0,
+      "end_sec": 4997.0,
+      "frame_count": 64,
+      "old_slide": 147
+    },
+    "elapsed_s": 717.6,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1306.5
+  }
+}

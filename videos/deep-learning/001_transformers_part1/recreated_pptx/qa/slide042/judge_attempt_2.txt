@@ -1,0 +1,35 @@
+# Fidelity Check â Slide 042 "Multi-Head Self Attention"
+
+## Ground-rule dispositions (settled first)
+- Red house frame, #E8E8E8 bg, yellow "42" badge, title box position â **house chrome, not discrepancies** (rule a).
+- IMG2 is a real content-bearing lecture frame (not a placeholder), so full content comparison applies (rule b).
+- Small arrow/cursor artifact near "indexed" in IMG2 â **video-capture artifact, correctly omitted** (rule c).
+- Both images use typed/2D-rendered notation; no handwritten-vs-typed issue arises (rule d).
+- Both show W with superscript r and subscript q/k/v in similar spatial arrangement; no linear-vs-2D equation divergence to grandfather (rule e not triggered).
+
+## Element-by-element comparison
+
+| Element | Original (IMG2) | Recreation (IMG1) | Verdict |
+|---|---|---|---|
+| Title "Multi-Head Self Attention", red bold, centered | â | â | Match |
+| Subtitle, 2 lines, red bold, incl. double space "mechanisms  give" and line break before "power of discrimination" | â | â verbatim, same break | Match |
+| Inner red-bordered box | â | â, proportional position/size (~0.36â0.89 of slide height in both) | Match |
+| Line 1: `Each Head is indexed with "r"` (r red) | â | â verbatim, same width fraction (~33% of slide) | Match |
+| Line 2: matrices W^r_q , W^r_k , W^r_v . (r red superscript, q/k/v green subscript) | â | â all three matrices + trailing period present | Match, minor geometry note below |
+| Line 3: `For input X â¦ output vector Y^r.` (X, Y red; r superscript) | â | â verbatim | Match |
+| Line 4: concatenation sentence, wraps after "linear", "transformation" bold blue, "original" bold blue, "X" red | â | â same wrap point, same bold/color spans | Match |
+| Slide number 42 in yellow oval | â | â (house chrome) | Match |
+| Colors (red â #C00000, blue â #0000CC, green subscripts, yellow badge) | â | â approx | Match |
+
+## Discrepancies found
+
+1. **MINOR** (confidence: medium) â Subscript geometry on the W matrices: in the original, q/k/v sit tucked directly beneath the superscript r; in the recreation they sit slightly lower and fractionally further right, so the r-over-subscript stack is a touch looser. Text, color, and order are identical.
+2. **MINOR** (confidence: medium) â Horizontal gaps between the three W matrices and their commas are slightly wider in the recreation than in the original (original reads slightly more compressed: "W^r_q , W^r_k ,W^r_v"). Cosmetic only.
+3. **MINOR** (confidence: low) â Inter-block vertical whitespace inside the inner box is marginally more generous in the recreation (blocks spread ~3â5% farther apart proportionally), though the box footprint and block ordering match. Within tolerance.
+
+No MAJOR or BLOCKER defects: no missing elements, all table/none-applicable, no delimiter issues (no multi-line delimiters present), no frame containment violations (all ink, including the long line-4 text and the Y^r superscript, sits fully inside the inner box and house frame in both images), no wrong wrapping, no collisions, no illegible text.
+
+## Visual-quality defects in the recreation
+- None beyond the minor spacing items above; no clipping, overflow, or misalignment detected.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

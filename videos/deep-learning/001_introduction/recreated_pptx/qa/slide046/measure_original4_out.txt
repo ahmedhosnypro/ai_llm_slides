@@ -1,0 +1,43 @@
+== bullet text starts (col profiles) ==
+  main: first runs [[116, 126], (137, 228), (236, 308), (316, 371)] ... last x 540
+  sub1: first runs [[130, 132], (140, 219), (225, 239), (246, 284)] ... last x 414
+  sub2: first runs [[129, 132], (141, 203), (210, 234), (241, 268)] ... last x 758
+  sub3: first runs [[129, 132], (140, 185), (191, 228), (235, 311)] ... last x 547
+== box text (marker vs text split) ==
+  box1 'Max pooling': runs [[116, 126], (138, 175), (183, 248)]
+  box2 'Average pooling': runs [[116, 126], (137, 209), (217, 283)]
+== matrix letters (dark-on-green, borders excluded) ==
+letter 'a'                         x 184..193  y 349..358  (w 10 h 10)
+letter 'b'                         x 220..229  y 345..358  (w 10 h 14)
+letter 'c'                         x 185..192  y 380..390  (w 8 h 11)
+letter 'd'                         x 219..229  y 376..390  (w 11 h 15)
+letter 'z'                         x 327..334  y 365..374  (w 8 h 10)
+== parens and == (photo cols excluded) ==
+'(' paren                          x 414..420  y 361..377  (w 7 h 17)
+')' paren                          x 611..617  y 361..377  (w 7 h 17)
+'==' ink                           x 626..650  y 365..370  (w 25 h 6)
+'==' restricted                    x 626..650  y 365..370  (w 25 h 6)
+'Pool' text core                   core [((np.int64(22), np.int64(22), np.int64(22)), 2), ((np.int64(23), np.int64(25), np.int64(22)), 2)]
+'==' core                          core [((np.int64(98), np.int64(98), np.int64(98)), 4), ((np.int64(100), np.int64(100), np.int64(100)), 2)]
+'(' core                           core [((np.int64(21), np.int64(23), np.int64(20)), 2), ((np.int64(16), np.int64(18), np.int64(15)), 1)]
+')' core                           core [((np.int64(31), np.int64(31), np.int64(31)), 1), ((np.int64(31), np.int64(32), np.int64(34)), 1)]
+== tiger photo rects (row/col density) ==
+  large: x 424..610 y 325..413 (w 187 h 89)
+  small: x 670..768 y 342..389 (w 99 h 48)
+== settled colors ==
+panel border red                   core [((np.int64(130), np.int64(36), np.int64(50)), 219), ((np.int64(133), np.int64(18), np.int64(35)), 1)]
+title red                          core [((np.int64(157), np.int64(10), np.int64(28)), 3), ((np.int64(167), np.int64(5), np.int64(28)), 3)]
+box border blue (vert strokes only) core [((np.int64(34), np.int64(25), np.int64(118)), 19), ((np.int64(33), np.int64(24), np.int64(117)), 18)]
+caption blue                       core [((np.int64(56), np.int64(46), np.int64(142)), 2), ((np.int64(20), np.int64(11), np.int64(120)), 1)]
+  matrix green modal: [((np.int64(12), np.int64(200), np.int64(80)), 41)]
+Traceback (most recent call last):
+  File "/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_introduction/recreated_pptx/qa/slide046/measure_original4.py", line 102, in <module>
+    print("  gray chrome modal:", Counter(map(tuple, a[100:120, 480:600])).most_common(1))
+                                  ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/collections/__init__.py", line 617, in __init__
+    self.update(iterable, **kwds)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/collections/__init__.py", line 712, in update
+    _count_elements(self, iterable)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+TypeError: unhashable type: 'numpy.ndarray'

@@ -1,0 +1,155 @@
+{
+  "slide_title": "Filters parameters",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Number of parameters for different filters applied to same location in the image",
+      "= Filter size (2-D) * Number of channels (K)  * number of different filters",
+      "= 7*7  * 3  * 5  =735"
+    ],
+    "labels": [
+      "RGB",
+      "3 dims",
+      "7 (left vertical edge of brown image slab)",
+      "7 (bottom edge of brown image slab)",
+      "X (multiplication sign between image slab and filter stack)",
+      "7 (handwritten, above filter stack)",
+      "7 (handwritten, mid-height between filter slabs)",
+      "7 (handwritten, right side of purple filter slab)",
+      "3 (handwritten, bottom-left of filter stack, beside a tiny pencil icon)",
+      "= (light-blue equals sign between filter stack and circles)",
+      "735 weights",
+      "[no slide number, footer, or watermark visible]"
+    ],
+    "equations": [
+      "= Filter size (2-D) * Number of channels (K)  * number of different filters",
+      "= 7*7  * 3  * 5  =735"
+    ]
+  },
+  "layout": {
+    "arrangement": "Single centered column: thin red rule across the very top edge; red bold title centered at top; below it a wide blue-bordered white box containing three lines of formula text; below that a large red-bordered white box containing a hand-drawn convolution diagram; thin black bar at the very bottom edge (video-player progress bar, not slide content).",
+    "regions": [
+      {
+        "name": "Top red rule",
+        "position": "top, full width, ~0-6% height",
+        "content": "Thin crimson horizontal line separating a white strip above from the gray slide body below"
+      },
+      {
+        "name": "Title",
+        "position": "top center, ~6-18% height, ~30-70% width",
+        "content": "'Filters parameters' in large bold red sans-serif"
+      },
+      {
+        "name": "Formula box",
+        "position": "upper-middle, ~20-42% height, ~9-91% width",
+        "content": "White rectangle with blue border holding three lines: a black sentence, a color-coded general formula, and a color-coded numeric example (=735)"
+      },
+      {
+        "name": "Diagram box",
+        "position": "lower-middle, ~45-95% height, ~18-85% width",
+        "content": "White rectangle with red border containing the hand-drawn RGB image-patch \u00d7 5 filters = 5 output circles diagram with handwritten annotations"
+      },
+      {
+        "name": "Bottom black bar",
+        "position": "bottom, full width, ~97-100% height",
+        "content": "Solid black strip \u2014 video player progress bar, not part of the slide design"
+      }
+    ],
+    "hierarchy": "Title dominates by color (crimson) and weight (bold sans-serif, largest type). The formula box is mid-size serif text whose red/blue/green bold terms draw the eye. The diagram box is the largest area and visually dominant via its five colored 3D filter slabs and five colored output circles; handwritten annotations are the smallest type."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "White rectangle with a medium-blue (~2pt) border containing three left-aligned text lines: (1) black serif sentence 'Number of parameters for different filters applied to same location in the image'; (2) '= Filter size (2-D) * Number of channels (K) * number of different filters' with 'Filter size (2-D)' bold red, 'Number of channels (K)' bold blue, 'number of different filters' bold green, asterisks black; (3) '= 7*7 * 3 * 5 =735' with '7*7' red, '3' blue, '5' green, rest black.",
+      "colors": [
+        "#FFFFFF",
+        "#3333CC",
+        "#000000",
+        "#C00000",
+        "#0000CC",
+        "#009900"
+      ],
+      "position": "upper-middle, spanning ~9-91% of slide width"
+    },
+    {
+      "type": "diagram",
+      "description": "Hand-drawn style convolution-parameter diagram, left to right: (a) a brown 3D slab (parallelepiped) representing an RGB image patch \u2014 tan/brown front face with darker brown top/side edges; handwritten 'RGB' above it; handwritten '3 dims' with a short arrow pointing to its depth edge at top-left; handwritten '7' on its left vertical edge and '7' on its bottom edge; dashed black horizontal lines project rightward from the slab face indicating the 7x7 receptive field; (b) handwritten 'X' multiplication sign; (c) five overlapping 3D slabs (the filters) colored left-to-right cyan, green, red, yellow, purple, each with dark outlines, annotated with handwritten '7' above the stack, '7' between slabs at mid-height, '7' at the right of the purple slab, and '3' with a tiny pencil icon at the bottom-left of the cyan slab (indicating 7x7x3 per filter); (d) a light-blue '=' sign; (e) five filled circles in the same left-to-right color order (cyan, green, red, yellow, purple) with dark outlines, representing the 5 output units / feature maps; (f) at bottom center, handwritten '735 weights' with five thin black arrows fanning upward from the text, one to each filter slab.",
+      "colors": [
+        "#C08040",
+        "#8B4513",
+        "#00BFBF",
+        "#00A000",
+        "#FF0000",
+        "#FFFF00",
+        "#800080",
+        "#000000",
+        "#6699FF",
+        "#FFFFFF"
+      ],
+      "position": "lower-middle inside the red-bordered box, ~18-85% width, ~45-95% height"
+    },
+    {
+      "type": "other",
+      "description": "Framing graphics: thin crimson horizontal rule across the full top edge of the slide; red (~2pt) rectangular border around the diagram area; solid black strip along the very bottom edge (video-player progress bar, not slide content).",
+      "colors": [
+        "#C00000",
+        "#000000"
+      ],
+      "position": "top edge and bottom edge of slide"
+    }
+  ],
+  "imagery": "No photographs or clip-art. All graphics are flat vector-style drawings: one brown 3D slab (image patch), five colored 3D slabs (filters), five colored circles (output units), a tiny pencil icon next to the '3' annotation, dashed black projection lines extending rightward from the image slab, one short arrow from the '3 dims' label to the slab's depth edge, and five thin black arrows fanning upward from the '735 weights' text to the filter slabs. Style is informal hand-drawn/whiteboard-like with a casual handwriting font for annotations.",
+  "colors": {
+    "background": "#E8E8E8",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#C00000 (title, red emphasis terms, diagram box border, top rule)",
+      "#3333CC (formula box border)",
+      "#0000CC (blue emphasis terms)",
+      "#009900 (green emphasis terms)",
+      "#6699FF (equals sign in diagram)"
+    ]
+  },
+  "typography_notes": "Title: bold sans-serif (Arial/Helvetica-like), ~40pt, crimson, centered, mixed case ('Filters parameters'). Body/formula text: serif (Times New Roman-like), ~20-22pt, black, with key terms in bold and color-coded (red/blue/green); no bullet glyphs \u2014 the 2nd and 3rd lines begin with '='. Diagram annotations: casual handwritten-style font (Comic-hand style) for 'RGB', '3 dims', '7', '3', '735 weights'. No italics or all-caps.",
+  "animation_state": "Slide appears fully built; no mid-build state, all text lines, diagram parts, and annotations are visible.",
+  "recreation_brief": "1. Set the slide background to light gray #E8E8E8.\n2. Draw the top rule: a thin horizontal crimson #C00000 line spanning the full slide width at ~5% of slide height; fill the narrow strip above the line (from the slide's top edge down to the rule) with white #FFFFFF, so the rule separates a white top band from the gray body below.\n3. Place the title 'Filters parameters' horizontally centered (~30-70% width) at ~6-18% height, in bold Arial/Helvetica-like sans-serif, ~40pt, crimson #C00000, mixed case.\n4. Place the formula box: a white #FFFFFF rectangle with a solid medium-blue #3333CC border ~2pt thick, spanning ~9-91% of slide width and ~20-42% of slide height in the upper-middle band.\n5. Inside the formula box add line 1, left-aligned, black #000000, serif (Times New Roman-like) ~20-22pt: 'Number of parameters for different filters applied to same location in the image'.\n6. Directly below, add line 2, same font/size/alignment: '= Filter size (2-D) * Number of channels (K)  * number of different filters' with 'Filter size (2-D)' in bold red #C00000, 'Number of channels (K)' in bold blue #0000CC, 'number of different filters' in bold green #009900, and the leading '=' plus both '*' asterisks in black #000000 (preserve the double space between '(K)' and the second '*').\n7. Directly below, add line 3, same font/size/alignment: '= 7*7  * 3  * 5  =735' with '7*7' in bold red #C00000, '3' in bold blue #0000CC, '5' in bold green #009900, and the remaining characters ('=', '*', '=735') in black #000000.\n8. Place the diagram canvas: a white #FFFFFF rectangle with a solid red #C00000 border ~2pt thick, spanning ~18-85% of slide width and ~45-95% of slide height, horizontally centered in the lower-middle band.\n9. On the left side of the canvas, draw the image-patch slab: a 3D parallelepiped with a parallelogram front face filled tan/brown #C08040 and darker brown #8B4513 top and side faces/edges.\n10. Annotate the image slab in a casual handwritten-style font, black #000000: 'RGB' above the slab; '3 dims' at its top-left with a short black arrow pointing to the slab's depth edge; '7' along its left vertical edge; '7' along its bottom edge.\n11. Draw 5 thin dashed black #000000 horizontal lines extending rightward from the right face of the slab, indicating the 7x7 receptive field.\n12. Place a handwritten-style black #000000 'X' (multiplication sign) to the right of the dashed lines, between the image slab and the filter stack.\n13. Draw the filter stack at the center of the canvas: five overlapping 3D parallelepiped slabs, smaller than the image slab, colored left-to-right #00BFBF (cyan), #00A000 (green), #FF0000 (red), #FFFF00 (yellow), #800080 (purple), each with a thin black #000000 outline.\n14. Annotate the filter stack in the handwritten font, black #000000: '7' above the stack; '7' between slabs at mid-height; '7' at the right side of the purple slab; '3' at the bottom-left of the cyan slab beside a tiny pencil icon drawn as a simple black line doodle (together indicating 7x7x3 per filter).\n15. To the right of the filter stack, place a light-blue #6699FF '=' sign.\n16. Further right, draw a horizontal row of five filled circles ~0.4 in in diameter with thin black #000000 outlines, colored left-to-right #00BFBF, #00A000, #FF0000, #FFFF00, #800080 (the 5 output units / feature maps).\n17. At the bottom center of the canvas, add handwritten-style black #000000 text '735 weights' and draw five thin black #000000 arrows fanning upward from this text, one to each of the five filter slabs.\n18. Do NOT recreate the solid black strip along the very bottom edge of the source frame (it is the video-player progress bar, not slide content), and add no slide number, footer, or watermark (none is present on the slide).",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Kept subtitle_or_header null after verifying it is genuinely absent: the layout places the title directly above the formula box and no subtitle text exists in any region, bullet, or label.",
+      "Normalized verbatim_text.equations spacing to match the verbatim bullets exactly (both equations previously dropped the double space before the second '*').",
+      "Replaced the vague range '4-5 dashed black horizontal lines' (original recreation_brief step 6) with a definite instruction to draw 5 dashed lines; the exact count is not verifiable from the JSON and is flagged in uncertain_items.",
+      "Made imagery exact: the vague 'hand-drawn arrows' now reads as exactly one short arrow (from the '3 dims' label to the slab's depth edge) plus five thin black arrows (from '735 weights' to the five filter slabs).",
+      "Made layout.hierarchy exact: 'multicolored 3D slabs and circles' replaced with 'five colored 3D filter slabs and five colored output circles'.",
+      "Added the white strip above the top crimson rule to the recreation brief; it is described in layout.regions ('Top red rule' separates a white strip above from the gray body) but was missing from the original brief.",
+      "Specified bold weight for the color-coded terms in formula line 3 ('7*7', '3', '5') so the brief matches typography_notes ('key terms in bold and color-coded'); visual_elements had listed colors only.",
+      "Assigned black #000000 to all handwritten annotations, the 'X', the dashed lines, the arrows, and the 'dark outlines' of the filter slabs and circles, using the diagram's stated color palette.",
+      "Aligned the formula text size in the brief to ~20-22pt per typography_notes (the original brief said ~20pt).",
+      "Rewrote recreation_brief into an 18-step ordered checklist in which each step places exactly one element with verbatim text (including the double spaces in formula lines 2 and 3), position, hex color, and shape type."
+    ],
+    "uncertain_items": [
+      "Exact number of dashed black projection lines extending rightward from the image slab: the source gives no count (the original brief estimated '4-5'); the rewritten brief standardizes on 5, but the true count is unverifiable from the JSON.",
+      "Bold vs. regular weight of the colored terms in formula line 3 ('7*7', '3', '5'): visual_elements specifies colors only; bold was inferred from typography_notes' general rule that key terms are 'bold and color-coded'.",
+      "Color of the handwritten annotations ('RGB', '3 dims', '7', '3', 'X', '735 weights') and the pencil icon is not explicitly stated; black #000000 was assumed as the only neutral color in the diagram palette."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_038.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 38,
+      "image": "slide_038.jpg",
+      "kept_frame": "frame_02769.jpg",
+      "start_sec": 2754.0,
+      "end_sec": 2768.0,
+      "frame_count": 15,
+      "old_group": 51,
+      "founder_frame_swap": false
+    },
+    "elapsed_s": 97.9,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1168.2
+  }
+}

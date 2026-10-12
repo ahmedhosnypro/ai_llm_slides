@@ -1,0 +1,34 @@
+# Slide 013 â Sentence Container Zoom (bottom-left crop)
+
+## 1. The dashed-green container and its cell-stack widgets
+
+**Container:** large rounded rectangle with a **dashed medium-green border** (~#3a9a3a, dash length â dash gap, thin stroke) and a **pale mint-green fill** (~#dcf2da). Fully rounded corners.
+
+**Inside: 4 cell-stack widgets side by side**, each a **horizontal row of small square cells** (a word-embedding vector laid leftâright). All four sit on one baseline near the container's vertical center.
+
+| Widget (leftâright) | Cells | Colors (leftâright, approx.) | Red label |
+|---|---|---|---|
+| 1st | **5 cells** in a horizontal row | pale yellow #f5f0bd â pale yellow #f2edb0 â cream #fbf8e0 â light lavender-blue #c7c3ee â pink #f3c6dc | **"Xâ"** (red, bold serif, subscript 1), centered **over the middle (3rd, cream) cell** |
+| 2nd | **5 cells** | light pink #f6c3d9 â medium pink #ec9dc6 â pale pink #f9dce9 (under label) â deep pink/magenta #d55ba4 â medium pink #ea9cc5 | **"Xâ"**, centered over the middle cell |
+| 3rd | **5 cells** | pale yellow â cream â cream (under label) â lavender #ccc6f0 â pink #f2c3da | **"Xâ"**, centered over the middle cell |
+| 4th | **5 cells** (appears same pattern; slightly tighter) | pale yellow â cream â cream (under label) â pink #f0bfd8 â light purple-pink #e3b4e0 | **"Xâ"**, centered over the middle cell |
+
+Each label is dark/bright red (~#c40000) with a clearly smaller subscript digit (â â â â) at the baseline-right of the X.
+
+## 2. Dashed highlight around ONE widget
+
+- It is around the **2nd widget from the left (Xâ)**.
+- Highlight color: **dark magenta/purple** (~#8b1a8b).
+- Dash style: **fine dotted** (dense small round dots, not long dashes), forming a rounded rectangle padded a few pixels around the pink row.
+
+## 3. Thick red shape pointing at the highlighted widget
+
+- A **thick bright-red arrow** (~#e02418), coming from **below** and pointing **up-and-slightly-right**, its tip touching the bottom border of the Xâ widget (overlapping the container's bottom edge).
+- It has a broad tail and solid triangular head with slightly irregular/rounded contours â it reads as a **hand-drawn "ink" annotation, i.e., a live annotation overlay** added on top of the slide (not one of the slide's native crisp vector arrows, which are thin dark-red lines like the one described next).
+
+## 4. Arrows/lines leaving the container top
+
+- **Yes â a thin dark-red arrow with an upward arrowhead** leaves the **top center of the Xâ widget**, exits the container, and points into a small box labeled **"W" with superscript "(r)" and subscript "q"** (red text, cream fill ~#fffdf0, dark-red border ~#8b0000). Semantically: Xâ â W_qâ½Ê³â¾.
+- Above that box the crop's top edge cuts things off: a red **"qâ"** label (q with subscript 2) sits at the very top, with a **partially cropped mini row of cells** (yellow/pink) just right of it â evidently the resulting query vector qâ; the connector between the box and qâ is mostly outside the crop.
+- **Dashed curve from the container's top-left:** yes â a faint **dashed green/grey-green thin curve** arcs from the container's upper-left corner up and to the left, running beneath the large grey-blue ellipse in the top-left corner of the crop and leaving the frame (likely connecting the container to an element higher up on the slide). A short matching dashed-green stub is also visible at the container's right edge near the crop's right border.
+- Other (not asked, for orientation): a large grey-blue ellipse and a green teardrop shape intrude into the top of the crop; these are background shapes from the upper slide area, unrelated to the container.

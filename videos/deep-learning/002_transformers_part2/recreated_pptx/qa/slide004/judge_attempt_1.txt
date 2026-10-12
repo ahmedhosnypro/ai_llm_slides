@@ -1,0 +1,30 @@
+# Fidelity Check â Slide 004 "Encoder â Decoder Transformer"
+
+## Pre-checks (founder ground rules)
+- House chrome (red outer frame, #E8E8E8 bg, yellow "4" badge, title box) â present in IMG1, intentionally different. **Not discrepancies.**
+- IMG2 is a real content-bearing lecture frame (not a placeholder), so full content comparison applies.
+- No cursor artifact issues; red up-arrows near "Output Probabilities" and "Inputs" exist in **both** images â they are slide content, not capture artifacts, and must be (and are) recreated.
+
+## Element-by-element comparison
+
+**Title:** "Encoder â Decoder Transformer" â verbatim match, en dash correct, dark red bold, centered. panel (white, black border):** All elements present and correctly ordered: Output Probabilities (2 lines), Softmax, Linear, Add & Norm, Feed Forward, Add & Norm, Multi-Head Attention, Add & Norm, Masked Multi-Head Attention (3 lines), two Positional Encoding groups (circle â + â glyphs), Input/Output Embedding, Inputs, Outputs (shifted right), both "Nx" labels, all residual curved arrows. Box colors (green Softmax, lavender Linear, yellow Add&Norm, blue FF, orange MHA, pink embeddings) match. Geometry, line breaks, and label alignments match.Red transition arrow between panels:** present, correct position/size/d
+
+**Right panel (Encoder/Decoder):** Green frame, peach Encoder region, green Decoder region, italic red "Encoder" / green "Decoder" labels â all match. Full stack present (Softmax â Linear â Add&Norm â FF â Add&Norm â MHA â Add&Norm â Masked MHA â PE â embeddings â Inputs / Outputs (shifted right)). "Nx" labels both present and positioned as in original (decoder "Nx" inside right highlight rect â matches original placement**Orange highlight rects (expected difference):** Both present â encoder MHA (extending left past the sub-stack border) and decoder MHA (extending right past the stack, enclosing "Nx"). Positions, extents, and overlap behavior match the original.These are the sanctioned additions.)
+
+**Red up-arrows:** Both present in correct locations (left of "Output Probabilities"; between Input Embedding and "Inputs"). See defect #2/#3 below on rendering quality.
+
+## Discrepancy list
+
+| # | Item | Severity | Confidence |
+|---|------|----------|------------|
+| 1 | Decoder "Output Embedding" fill: recreation green-tinted vs. original pink/white; decoder "Feed Forward" hue greener than original's blue-cyan | MINOR (sanctioned palette drift per brief) | High |
+| 2 | Top red up-arrow renders as a partially clipped blob tucked against the "Output" text; original shows a clean, fully visible thick arrow left of the text | MINOR | Medium |
+| 3 | Bottom red up-arrow sits slightly tighter to the "Inputs" label than in the original (near-collision, no actual overlap of glyphs) | MINOR | Medium |
+| 4 | Right-panel box fills overall slightly more saturated/green-shifted than original | MINOR (expected palette drift) | High |
+
+No BLOCKER or MAJOR defects found: no missing elements, no frame containment violations (both orange rects, all text, and both red arrows sit inside the green panel frame), no delimiter/table issues applicable, all text verbatim with matching line breaks.
+
+## Visual-quality defects in recreation
+- Top red arrow shape is slightly malformed/clipped at its arrowhead (defect #2) â only quality issue worth noting.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

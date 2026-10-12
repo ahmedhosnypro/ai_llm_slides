@@ -1,0 +1,45 @@
+PASS training_ellipse fill F6DEC2 at center  render rgb=(np.int64(246), np.int64(222), np.int64(194))
+PASS training_ellipse outline top ~y128  gray px=236
+PASS ellipse text line1 cap-top ~141  got (np.float64(108.71064467766116), np.float64(141.35832083958022), np.float64(176.3568215892054), np.float64(157.67016491754123))
+PASS ellipse text line2 bottom ~174  got (np.float64(125.50224887556222), np.float64(160.95952023988005), np.float64(161.48425787106447), np.float64(173.43328335832084))
+PASS box_pre left navy border ~x129-130  navy px=116
+PASS box_pre right navy border ~x235-236  navy px=138
+PASS box_pre fill FAFED8  rgb=(np.int64(250), np.int64(254), np.int64(216))
+PASS box_pre text line1 band ~221..232  got (np.float64(170.3808095952024), np.float64(220.7976011994003), np.float64(195.32833583208395), np.float64(232.311844077961))
+PASS box_pre text line2 bottom ~255  got (np.float64(138.2368815592204), np.float64(239.91904047976013), np.float64(226.03298350824588), np.float64(254.79160419790105))
+PASS box_pre 'Pre' centered ~x182.5  center=182.9
+PASS arrow1 red line present x238..288  red px=450
+PASS arrow1 line y ~236.5  peak row=239
+PASS arrow1 head near x292  red px=101
+PASS curve1 red ink present  red px=709
+PASS curve1 ink bbox within measured region  bbox=(np.float64(95.4), np.float64(177.9), np.float64(128.9), np.float64(240.3))
+PASS curve1 stem at x~96  red px=129
+PASS box5 fill DCBFA1  rgb=(np.int64(220), np.int64(191), np.int64(161))
+PASS box5 top border dark brown  rgb=(np.int64(85), np.int64(40), np.int64(24))
+PASS box5 'Classifier' band ~221..233  got (np.float64(767.832083958021), np.float64(220.31784107946027), np.float64(842.6746626686656), np.float64(232.311844077961))
+PASS box5 'Output' bottom ~255  got (np.float64(778.3868065967016), np.float64(239.4392803598201), np.float64(832.119940029985), np.float64(254.79160419790105))
+PASS box5 'Classifier' centered ~x805.5  center=805.3
+PASS callout A inspection bbox ~(85,291,278,331)  got (np.float64(84.9), np.float64(290.4), np.float64(279.7), np.float64(332.1))
+PASS callout A inspection text band count 2  got [(297.8, 310.3), (314.1, 326.6)]
+PASS callout A inspection text line1 band ~298..310  got (297.8..310.3)
+PASS callout A inspection text line2 band ~314..325  got (314.1..326.6)
+PASS callout B handcrafted bbox ~(280,336,433,395)  got (np.float64(279.4), np.float64(333.0), np.float64(436.3), np.float64(395.8))
+PASS callout B handcrafted text band count 2  got [(352.4, 362.0), (368.3, 380.7)]
+PASS callout B handcrafted text line1 band ~353..362  got (352.4..362.0)
+PASS callout B handcrafted text line2 band ~369..381  got (368.3..380.7)
+PASS callout C decision bbox ~(435,282,574,341)  got (np.float64(432.0), np.float64(281.4), np.float64(575.0), np.float64(344.7))
+PASS callout C decision text band count 3  got [(290.8, 300.4), (306.6, 319.1), (322.9, 335.4)]
+PASS callout C decision text line1 band ~290..300  got (290.8..300.4)
+PASS callout C decision text line2 band ~306..318  got (306.6..319.1)
+PASS callout C decision text line3 band ~322..334  got (322.9..335.4)
+PASS callout D apply bbox ~(612,282,700,322)  got (np.float64(611.4), np.float64(281.4), np.float64(701.1), np.float64(323.1))
+PASS callout D apply text band count 2  got [(288.4, 300.8), (304.7, 314.3)]
+PASS callout D apply text line1 band ~289..301  got (288.4..300.8)
+PASS callout D apply text line2 band ~305..314  got (304.7..314.3)
+PASS final_ellipse region white (removed)
+PASS parent label_vectors region white (removed)
+PASS parent label_predicted region white (removed)
+PASS curve2 region white (removed)
+PASS inherited regions pixel-equal to certified parent render  stray diff px=9 (tol 400 ~ 92 frame px)
+
+SELF-CHECK RESULT: ALL PASS

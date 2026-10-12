@@ -1,0 +1,53 @@
+render 2001x1125 scale 2.0844
+TITLE (original ink x211..751 y68..100):
+  [PASS] ink bbox: got (np.float64(210.61469265367316), np.float64(747.9460269865067), np.float64(66.68665667166417), np.float64(98.35082458770614)) want (211, 751, 68, 100) (max dev 3.1 fpx, tol 4)
+  [PASS] ink center x: got 479.2803598200899 want 481 (max dev 1.7 fpx, tol 4)
+FRAME (stroke centers 77/885/122/386):
+  [PASS] left stroke center: got 76.52173913043478 want 77 (max dev 0.5 fpx, tol 4)
+  [PASS] right stroke center: got 884.1979010494753 want 885 (max dev 0.8 fpx, tol 4)
+  [PASS] top stroke center: got 121.61919040479759 want 122 (max dev 0.4 fpx, tol 4)
+  [PASS] bottom stroke center: got 385.48725637181406 want 386 (max dev 0.5 fpx, tol 4)
+GRID 7x7 (ink 101..378 x 173..383):
+  [PASS] g77 ink bbox: got (np.float64(100.83208395802099), np.float64(377.65367316341826), np.float64(173.15592203898052), np.float64(379.9325337331334)) want (101, 378, 173, 383) (max dev 3.1 fpx, tol 4)
+  [PASS] ring fill r1c1: got (14, 191, 233) want (14, 191, 233) (max dev 0.0 fpx, tol 45)
+  [PASS] interior fill r4c4: got (14, 202, 82) want (14, 202, 82) (max dev 0.0 fpx, tol 45)
+NUMERALS (measured digit ink from the frame):
+  [FAIL] g77 r1c1 '0': got (np.float64(116.47376311844079), np.float64(124.14992503748125), np.float64(193.23088455772114), np.float64(200.42728635682158)) want (115, 126, 182, 193) (max dev 11.2 fpx, tol 4)
+  [FAIL] g77 r2c2 '1': got (np.float64(156.91304347826087), np.float64(161.71064467766118), np.float64(222.7511244377811), np.float64(230.42728635682158)) want (156, 165, 213, 224) (max dev 9.8 fpx, tol 4)
+  [FAIL] f33 r1c1 '0': got (np.float64(451.11544227886054), np.float64(456.87256371814095), np.float64(260.0344827586207), np.float64(267.23088455772114)) want (450, 458, 253, 262) (max dev 7.0 fpx, tol 4)
+  [FAIL] o55 r1c1 '1': got (np.float64(638.3928035982009), np.float64(643.1904047976012), np.float64(222.7511244377811), np.float64(230.42728635682158)) want (638, 647, 213, 224) (max dev 9.8 fpx, tol 4)
+  [FAIL] o55 r5c4 '3': got (np.float64(756.3928035982009), np.float64(763.1094452773614), np.float64(343.71064467766115), np.float64(350.4272863568216)) want (753, 764, 331, 344) (max dev 12.7 fpx, tol 4)
+GRID 3x3 / 5x5:
+  [PASS] f33 ink bbox: got (np.float64(439.87256371814095), np.float64(526.7091454272863), np.float64(246.71664167916043), np.float64(312.92353823088456)) want (440, 527, 247, 313) (max dev 0.3 fpx, tol 4)
+  [PASS] o55 ink bbox: got (np.float64(621.311844077961), np.float64(819.4527736131934), np.float64(202.71664167916043), np.float64(356.23988005997)) want (622, 820, 203, 354) (max dev 2.2 fpx, tol 4)
+OPERATORS:
+  [PASS] '*' ink: got (np.float64(407.4737631184408), np.float64(414.1904047976012), np.float64(278.43328335832086), np.float64(285.14992503748124)) want (407, 413, 278, 284) (max dev 1.2 fpx, tol 4)
+  [PASS] '=' ink: got (np.float64(546.9940029985007), np.float64(558.9880059970016), np.float64(276.9940029985008), np.float64(281.79160419790105)) want (546, 559, 276, 281) (max dev 1.0 fpx, tol 4)
+BULLET (word-level):
+  [PASS] ring: got (np.float64(110.7976011994003), np.float64(125.67016491754123), np.float64(141.0344827586207), np.float64(151.10944527736132)) want (111, 125, 141, 150) (max dev 1.1 fpx, tol 5)
+  [PASS] For: got (np.float64(136.7976011994003), np.float64(165.10344827586206), np.float64(137.19640179910044), np.float64(152.06896551724137)) want (136, 166, 137, 150) (max dev 2.1 fpx, tol 5)
+  [PASS] s=1,: got (np.float64(173.35832083958022), np.float64(234.76761619190404), np.float64(137.67616191904048), np.float64(152.5487256371814)) want (173, 234, 137, 152) (max dev 0.8 fpx, tol 5)
+  [PASS] surround: got (np.float64(242.87856071964018), np.float64(326.3568215892054), np.float64(136.2368815592204), np.float64(152.06896551724137)) want (243, 331, 141, 150) (max dev 4.8 fpx, tol 5)
+  [FAIL] the: got (np.float64(339.3583208395802), np.float64(369.1034482758621), np.float64(135.75712143928035), np.float64(152.06896551724137)) want (340, 371, 141, 150) (max dev 5.2 fpx, tol 5)
+  [PASS] image: got (np.float64(380.3583208395802), np.float64(435.5307346326837), np.float64(136.71664167916043), np.float64(155.90704647676162)) want (380, 437, 141, 153) (max dev 4.3 fpx, tol 5)
+  [FAIL] with: got (np.float64(443.9190404797601), np.float64(483.7391304347826), np.float64(135.75712143928035), np.float64(152.06896551724137)) want (445, 487, 141, 150) (max dev 5.2 fpx, tol 5)
+  [PASS] htok: got (np.float64(495.83808095952025), np.float64(592.7496251874063), np.float64(133.35832083958022), np.float64(153.50824587706148)) want (496, 592, 136, 157) (max dev 3.5 fpx, tol 5)
+  [PASS] and: got (np.float64(606.7976011994003), np.float64(639.4212893553223), np.float64(136.2368815592204), np.float64(152.06896551724137)) want (607, 642, 136, 150) (max dev 2.6 fpx, tol 5)
+  [PASS] wtok: got (np.float64(651.3583208395802), np.float64(756.9055472263868), np.float64(132.87856071964018), np.float64(153.50824587706148)) want (651, 756, 136, 156) (max dev 3.1 fpx, tol 5)
+  [PASS] layers: got (np.float64(765.8785607196402), np.float64(818.1724137931035), np.float64(135.75712143928035), np.float64(155.90704647676162)) want (766, 821, 140, 153) (max dev 4.2 fpx, tol 5)
+  [FAIL] of: got (np.float64(827.4392803598201), np.float64(846.1499250374812), np.float64(135.75712143928035), np.float64(152.06896551724137)) want (828, 847, 141, 150) (max dev 5.2 fpx, tol 5)
+  [PASS] zero: got (np.float64(854.3988005997002), np.float64(864.4737631184407), np.float64(136.71664167916043), np.float64(152.06896551724137)) want (855, 866, 137, 150) (max dev 2.1 fpx, tol 5)
+NOTEBOX:
+  [PASS] left border center: got 76.52173913043478 want 77 (max dev 0.5 fpx, tol 4)
+  [PASS] right border center: got 671.904047976012 want 672.5 (max dev 0.6 fpx, tol 4)
+  [PASS] top border center: got 392.6836581709145 want 393 (max dev 0.3 fpx, tol 4)
+  [PASS] bottom border center: got 508.30584707646176 want 509 (max dev 0.7 fpx, tol 4)
+  [PASS] line band: got (np.float64(407.79610194902546), np.float64(426.0269865067466)) want (406, 423) (max dev 3.0 fpx, tol 4)
+  [PASS] line band: got (np.float64(434.6626686656671), np.float64(452.89355322338827)) want (432, 450) (max dev 2.9 fpx, tol 4)
+  [PASS] line band: got (np.float64(461.5292353823088), np.float64(479.76011994002994)) want (459, 477) (max dev 2.8 fpx, tol 4)
+  [PASS] line band: got (np.float64(488.87556221889054), np.float64(507.1064467766117)) want (486, 504) (max dev 3.1 fpx, tol 4)
+  L1 baseline: ink rows 408.2..503.6
+  L2 baseline: ink rows 408.2..507.5
+CONTAINMENT:
+  [PASS] left gutter (x60..76, y130..380) stray ink px: 0
+SELFCHECK RESULT: HAS FAILURES

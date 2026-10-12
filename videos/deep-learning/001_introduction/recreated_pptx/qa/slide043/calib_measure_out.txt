@@ -1,0 +1,18 @@
+label                                ink_top_f ink_bot_f     h baseline_f       A    w_f
+After conv 1 Comic24 nod                  70.5      90.7  20.1      90.67  0.8989  137.2
+Image Comic24 (g desc)                   171.3     195.3  24.0        nan     nan   68.1
+x1 Comic10 nod                           284.0     291.2   7.2     291.21  2.2114    9.6
+1 VerdanaB16 nod                         379.0     390.0  11.0     390.04  1.3091    7.7
+0 VerdanaB16 nod                         478.3     490.3  12.0     490.31  1.3259    9.6
+will be 1x1 Times21.2 (desc p)       EMPTY
+Details are lost URW20.5 nod         EMPTY
+18 VerdanaB16 nod                    EMPTY
+
+Model: baseline = top + (43.2-25)/2 + A*size  ->  A per font (nod rows):
+  Comic Sans MS 24: A = 0.8989442778610691
+  Comic Sans MS 10: A = 2.211439280359817
+  Verdana Bold 16:  A = 1.3090610944527739
+  Times 21.2: (desc row — solve from ink_top via cap-height instead)
+Traceback (most recent call last):
+  File "<stdin>", line 40, in <module>
+KeyError: 'will be 1x1 Times21.2 (desc p)'

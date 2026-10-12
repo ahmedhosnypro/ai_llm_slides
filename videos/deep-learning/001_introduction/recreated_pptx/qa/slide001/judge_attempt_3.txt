@@ -1,0 +1,15 @@
+{"page": 1, "verdict": "pass", "issues": ["MINOR (confidence 0.8): font family mismatch â original uses a serif face (Times New Roman-like) for 'Prepared By', 'Dr. Khaled Mostafa ElSayed', 'Instructors:', and instructor names; recreation renders these in a sans-serif face (Arial-like). Text is verbatim; medium/template difference only.", "MINOR (confidence 0.7): recreation title block sits slightly higher and is marginally larger relative to the panel than the original (~2-4% vertical shift); within tolerance for a template recreation.", "NOTE (not a defect): mouse-cursor artifact '+' in original correctly omitted per ground rule (c); bottom black letterbox strip of the video frame correctly omitted; yellow slide-number badge '1' is mandated playlist chrome per ground rule (a), not a discrepancy even though the original frame carries no badge."]}
+
+**Evidence**
+
+- Comparison transcript banked (single-read, default route, images; glm leg DEFERRED/BLOCKED â verdict from real vision comparison winner body, no PNG bytes read directly).
+- Element-by-element check:
+  - **Title**: "Deep Learning" / "DSAI 308" â verbatim, two lines, bold red (#C00000-range) both images, centered. Match.
+  - **Prepared By block**: "Prepared By" (red italic), "Dr. Khaled Mostafa ElSayed" (blue bold), "kmelsayed@zewailcity.edu.eg" (blue, smaller) â verbatim, correct order, correct centering. Match (font family noted above).
+  - **Instructors block**: "Instructors:" red italic left-aligned; "Dr. Khaled Mostafa ElSayed" (blue bold, not italic) / "kmelsayed@zewailcity.edu.eg" (not italic) / "Dr. Mohamed Maher Ata" (blue bold italic) / "momaher@zewailcity.edu.eg" (italic) â verbatim with matching italic pattern and line stacking. Match.
+  - **Logo**: Zewail City / University of Science and Technology image, bottom-right region, comparable position and size, fully inside the panel â no frame containment violation.
+  - **Layout/regions**: title zone, prepared-by zone, instructors-left/logo-right split all preserved; no collisions, no clipped or overflowing ink; original's contentless-region rule not implicated (original carries full content, recreation matches it).
+- House chrome (white canvas, gray panel with #C00000 border, badge circle with numeral 1) present per founder directive 2026-10-11 â excluded from discrepancy accounting.
+- No BLOCKER or MAJOR defects found; renderable-content fidelity is sufficient for "faithful, usable recreation."
+
+FINAL VERDICT: **PASS**

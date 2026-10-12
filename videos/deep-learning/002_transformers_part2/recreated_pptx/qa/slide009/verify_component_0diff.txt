@@ -1,0 +1,12 @@
+Slide 009 component banking — 0-pixel-diff verification (2026-10-12)
+Component: recreated_pptx/build/components/slide_009.js
+  (= build/slide_009.js verbatim; renderBase(pptx, slide, opts) + block draw fns;
+   opts: {numeral (default 9), skip: ['title','leftpanel','connections','stacks',
+   'inputs','neurons','outputs','rightpanel']})
+CONFIRMED DEPENDENT: 10 <- 9 (slide_dependencies.json, same video) + P1 [9,10,12,14,16]
+  (slide 10 is the next pattern-group member; pattern reuse, not content dependency).
+Driver: scratch/slide009/component_verify_driver.js (requires the component by absolute
+  path, renderBase({numeral:9}), builds scratch/slide009/component_verify.pptx).
+Render: LibreOffice headless 150dpi -> scratch/slide009/component_verify_render.png.
+RESULT: 0-PIXEL-DIFF VERIFY: PASS — 0 of 2,251,125 pixels differ vs
+  recreated_pptx/qa/slide009/render_4.png (the judged render). Pixel-exact.

@@ -66,14 +66,19 @@ const T = {
 // ---- initial build parameters (CORRECTED by the closed-loop PIL check,
 //      tolerance ~4px @150dpi = 1.92pt, before judging) --------------------------
 const P = {
-  titleSize: 40,   // pt, Arial Bold
-  bodySize: 30,    // pt, Arial Bold
+  titleSize: 39.6, // pt, Arial Bold (closed-loop: advance-fit 39.61 from 533.76@40)
+  bodySize: 31.1,  // pt, Arial Bold (closed-loop: 31.07/31.10 from line widths @30)
   // lead: ink-top offset below a valign-top margin-0 box top, as a fraction of em
-  titleLead: 0.28,
-  bodyLead: 0.28,
-  titleCx: T.title.inkCx, // text box centered on measured ink center
-  line1Left: T.line1.inkLeft - 2.1, // box left = ink left - LSB('[') ~0.07em @30pt
-  line2Left: T.line1.inkLeft - 2.1,
+  // (observed in render 1: title 0.2729em, body 0.2740em)
+  titleLead: 0.2729,
+  bodyLead: 0.2740,
+  // title text box centered on measured ink center + LO advance-vs-ink cx offset
+  // (render 1: ink cx landed 2.3pt left of target -> box cx 475.5 + 2.3)
+  titleCx: 477.8,
+  // box left = ink left - LSB('['): observed LSB 2.37pt@30 (0.079em) -> 2.46@31.1;
+  // render-1 ink left +0.27pt high -> 265.65 - 2.46 = 263.19
+  line1Left: 263.19,
+  line2Left: 263.19,
 };
 
 const BLUE = "0000A0";   // "[1] Position" / "[2] Position"
@@ -95,7 +100,7 @@ s.addShape(pres.ShapeType.rect, {
   x: pt(T.box.x), y: pt(T.box.y), w: pt(T.box.w), h: pt(T.box.h),
   fill: { color: "FFFFFF" },
   line: { color: BOX_LINE, width: 1 },
-  shadow: { type: "outer", angle: 90, blur: 5, offset: 2, color: "000000", opacity: 0.25 },
+  shadow: { type: "outer", angle: 90, blur: 3, offset: 2, color: "000000", opacity: 0.05 },
 });
 
 // 3) title — centered on the MEASURED ink center (frame is ground truth)
@@ -110,7 +115,7 @@ s.addText(T.title.text, {
 //    one single-line box per line (exact measured band placement)
 s.addText(
   [
-    { text: "[1] Position ", options: { color: BLUE } },
+    { text: "[1] Position ", options: { color: BLUE, charSpacing: 0.15 } },
     { text: "Encoding", options: { color: RED } },
   ],
   {
@@ -122,7 +127,7 @@ s.addText(
 );
 s.addText(
   [
-    { text: "[2] Position ", options: { color: BLUE } },
+    { text: "[2] Position ", options: { color: BLUE, charSpacing: 0.15 } },
     { text: "Embedding", options: { color: MAG } },
   ],
   {

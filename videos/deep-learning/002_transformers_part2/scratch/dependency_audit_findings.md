@@ -64,3 +64,6 @@ Today's buildable already had to be trusted on 42 (fine). The mismatches would s
 10. 51 image-mechanism — PIL at build time.
 
 CONFIRMED overall: 8←33, 10←9, 11←001:43, 13←001:33, 15←001:43, 17←001:43, 19←001:19, 24←23, 37←001:19, 46←45, 51←001:18 (topology; caveat E), 47←46, 48←47 (lineage), 28←27, 59←38 (pattern), 42←P3.
+
+## SETTLED (E): 51 image-mechanism = COURSE REDRAW
+PIL forensics (scratch/slide51_mechanism/SLIDE51_MECHANISM.md + diagnostic_sheet.png): literal-halves hypothesis REJECTED on every signature — NCC +0.20/+0.10 vs +0.95 positive control; halves at panel height need 2.26× horizontal distortion; frame palette 94-98% saturated (green #11FF74, orange #F2A557, navy badges) vs banked 9-15% pastels-on-white; zero dark pixels at the claimed x=760 cut edges. 002:51 inherits 001:18's provenance for CONTENT/TOPOLOGY only; the banked half PNGs must NOT be embedded — the builder redraws both panels as vectors at measured placements LEFT (140,105) 304×397, RIGHT (566,99) 315×408 with the measured palette; red callouts are course-authored.

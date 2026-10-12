@@ -1,0 +1,81 @@
+== raw pixel samples ==
+  (20,270) far left mid: (np.int64(254), np.int64(255), np.int64(253))
+  (480,20) top center above red line: (np.int64(254), np.int64(255), np.int64(253))
+  (480,60) between line and title: (np.int64(231), np.int64(233), np.int64(230))
+  (30,30) top-left corner: (np.int64(254), np.int64(255), np.int64(253))
+  (940,270) far right mid: (np.int64(254), np.int64(255), np.int64(253))
+  (480,530) bottom center: (np.int64(0), np.int64(0), np.int64(0))
+  (930,30) top-right: (np.int64(254), np.int64(255), np.int64(253))
+  (470,43) ON the red line: (np.int64(106), np.int64(46), np.int64(54))
+  (100,43) red line left: (np.int64(106), np.int64(46), np.int64(54))
+  (900,43) red line right: (np.int64(94), np.int64(40), np.int64(56))
+== red line at y42..45: exact extent per row (r-g>20) ==
+  row 42: x 57..902 n=846
+  row 43: x 56..903 n=847
+  row 44: x 56..901 n=846
+  row 45: x 56..894 n=814
+  row 46: x 56..60 n=5
+  row 47: x 56..60 n=5
+== vertical structure: column x=470, y 0..140 colors every 4px ==
+  y=0: (np.int64(254), np.int64(255), np.int64(253))
+  y=4: (np.int64(254), np.int64(255), np.int64(253))
+  y=8: (np.int64(254), np.int64(255), np.int64(253))
+  y=12: (np.int64(254), np.int64(255), np.int64(253))
+  y=16: (np.int64(254), np.int64(255), np.int64(253))
+  y=20: (np.int64(254), np.int64(255), np.int64(253))
+  y=24: (np.int64(254), np.int64(255), np.int64(253))
+  y=28: (np.int64(254), np.int64(255), np.int64(253))
+  y=32: (np.int64(255), np.int64(255), np.int64(253))
+  y=36: (np.int64(255), np.int64(255), np.int64(253))
+  y=40: (np.int64(255), np.int64(251), np.int64(252))
+  y=44: (np.int64(178), np.int64(137), np.int64(141))
+  y=48: (np.int64(232), np.int64(232), np.int64(230))
+  y=52: (np.int64(231), np.int64(233), np.int64(230))
+  y=56: (np.int64(231), np.int64(233), np.int64(230))
+  y=60: (np.int64(231), np.int64(233), np.int64(230))
+  y=64: (np.int64(231), np.int64(233), np.int64(230))
+  y=68: (np.int64(231), np.int64(233), np.int64(230))
+  y=72: (np.int64(231), np.int64(233), np.int64(230))
+  y=76: (np.int64(231), np.int64(233), np.int64(230))
+  y=80: (np.int64(233), np.int64(231), np.int64(236))
+  y=84: (np.int64(232), np.int64(233), np.int64(228))
+  y=88: (np.int64(233), np.int64(233), np.int64(231))
+  y=92: (np.int64(233), np.int64(232), np.int64(230))
+  y=96: (np.int64(255), np.int64(222), np.int64(220))
+  y=100: (np.int64(255), np.int64(160), np.int64(169))
+  y=104: (np.int64(249), np.int64(147), np.int64(160))
+  y=108: (np.int64(252), np.int64(146), np.int64(160))
+  y=112: (np.int64(249), np.int64(151), np.int64(152))
+  y=116: (np.int64(255), np.int64(219), np.int64(217))
+  y=120: (np.int64(231), np.int64(234), np.int64(227))
+  y=124: (np.int64(236), np.int64(230), np.int64(232))
+  y=128: (np.int64(234), np.int64(234), np.int64(232))
+  y=132: (np.int64(223), np.int64(120), np.int64(137))
+  y=136: (np.int64(255), np.int64(249), np.int64(248))
+== is there a gray panel? sample corners/edges ==
+  (5,5): (np.int64(254), np.int64(255), np.int64(253))
+  (955,5): (np.int64(254), np.int64(255), np.int64(253))
+  (5,270): (np.int64(254), np.int64(255), np.int64(253))
+  (955,270): (np.int64(254), np.int64(255), np.int64(253))
+  (5,470): (np.int64(255), np.int64(255), np.int64(255))
+  (955,470): (np.int64(255), np.int64(255), np.int64(255))
+  (480,535): (np.int64(0), np.int64(0), np.int64(0))
+  (100,270): (np.int64(254), np.int64(255), np.int64(253))
+  (860,270): (np.int64(231), np.int64(233), np.int64(230))
+== blue calibration: slide_005 (certified truth 000080) same analysis ==
+  slide005 blue (truth 000080): n=5686 median [ 88.  79. 173.] top200 [ 21.5   5.  150.5] maxB px [166 153 255]
+  slide006 blue: n=13905 median [108. 101. 181.] top200 [ 43.5  30.  154. ] maxB px [204 199 255]
+== bullet-12 grays: top-20 darkest px ==
+  darkest: [(0, 0, 0), (5, 3, 4), (7, 7, 7), (7, 5, 6), (8, 8, 8), (8, 6, 7), (8, 8, 8), (8, 8, 8), (11, 11, 11), (12, 12, 12)]
+== title: PIL-render calibration of density ==
+  PIL Arial45 regular density: 9.69
+  PIL ArialB42 bold density: 11.61  ArialB43: 12.34
+Traceback (most recent call last):
+  File "/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_introduction/recreated_pptx/qa/slide006/measure_original5.py", line 73, in <module>
+    db1 = render_density("/usr/share/fonts/TTF/Arial.TTF", 17.5, "Spam filtering")
+  File "/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_introduction/recreated_pptx/qa/slide006/measure_original5.py", line 58, in render_density
+    im = Image.new("L", (int(f.getlength(text)) + 40, size * 2), 255)
+  File "/home/ahmed/.local/lib/python3.14/site-packages/PIL/Image.py", line 3239, in new
+    return im._new(core.fill(mode, size, color))
+                   ~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+TypeError: 'float' object cannot be interpreted as an integer

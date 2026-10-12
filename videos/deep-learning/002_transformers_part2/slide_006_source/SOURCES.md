@@ -65,3 +65,24 @@ to correct.
   Cursor artifact frozen over line 5; no bullet glyphs; no diagrams/equations.
 - [?]: none. Corrections: none yet — verify against script-13 final when it lands
   (no final for 006 as of this pass).
+
+## Recreation record (build worker, 2026-10-12)
+
+- Built `recreated_pptx/build/slide_006.js` -> `slide_006_recreated.pptx` (house chrome
+  numeral 6; title 40pt bold C00000 at measured ink center cx 427.4pt — NOT slide-centered,
+  matching this spec's 24%..66% title region; six 20pt bold single-line boxes at the
+  measured per-line ink positions, pitch 41.8/43.9/41.8/41.8/45.9 reproduced).
+- COLOR REFINEMENT (frame wins per fidelity law): agenda blue measured census (6544
+  near-pure px: R 0-8, G 0-8, B 96-128 cores, darkest-1/8 mean (12.8, 6.0, 104.3))
+  matches the certified slide_032 calibration (cores B~100-110 -> true #000080); the
+  spec's #1414B8 is a validator estimate overridden per this deck's precedent
+  (slide_035: measured cores -> 0000A8; slide_018: -> 0000A0). Build header documents it.
+- Verbatim spacing anomalies (double spaces; "What is Next ?") preserved — frame truth.
+- Mouse cursor + bottom letterbox omitted (judge GROUND RULES (c)).
+- Pre-judge self-checks all banked under `recreated_pptx/qa/slide006/`
+  (house_chrome_check PASS; PIL closed-loop: title dw -0.6px, all lines <=3px
+  profile-aligned @150dpi; frame containment PASS; gap bands clean).
+- JUDGE: comparison attempt 1 (single-read, default route images, glm leg
+  DEFERRED/BLOCKED) -> FINAL VERDICT: PASS, no BLOCKER/MAJOR, 2 MINORs (title size
+  "~5% larger" — contradicted by PIL measurement dw -0.6px; first-gap "few px lower" —
+  measured <=2.1px). Transcript: `recreated_pptx/qa/slide006/judge_attempt_1.txt`.

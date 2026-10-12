@@ -1,0 +1,38 @@
+/usr/lib/python3.14/site-packages/numpy/_core/fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/usr/lib/python3.14/site-packages/numpy/_core/_methods.py:134: RuntimeWarning: invalid value encountered in divide
+  ret = um.true_divide(
+== 1. DASHED CONTAINER edges (multi-column scans) ==
+ u1 top x=250: [(96, '#C69C50')]
+ u1 top x=400: [(96, '#A98634'), (97, '#BC9C45')]
+ u1 top x=520: [(96, '#A58731'), (97, '#B69E44')]
+ u1 top x=640: [(96, '#A98632'), (97, '#B99B41')]
+ u1 top x=700: [(96, '#A88835'), (97, '#B79C43')]
+ u1 bottom x=250: [(164, '#C5AC48'), (165, '#9C8422'), (166, '#B69A46'), (174, '#D29F50')]
+ u1 bottom x=520: [(165, '#CCA256')]
+ u2 top x=400: [(302, '#C99F55'), (303, '#A67F32'), (304, '#C49B4C')]
+ u2 top x=520: [(302, '#C7A44A'), (303, '#A7842A'), (304, '#C39D4A')]
+ u2 top x=640: [(302, '#CCA44D'), (303, '#A58028'), (304, '#C39D4C')]
+ u2 top x=700: [(302, '#C6A349'), (303, '#A28124'), (304, '#C6A24E')]
+ u2 bottom x=400: [(377, '#C8A554'), (378, '#A37E2E'), (379, '#BA9346')]
+ u2 bottom x=520: [(377, '#C9A454'), (378, '#A57E2F'), (379, '#BC9246')]
+ u2 bottom x=640: [(378, '#AA8334'), (379, '#BE9448')]
+ u2 bottom x=700: [(377, '#CAA555'), (378, '#A57E2F'), (379, '#C1974B')]
+== 2. DASHED CONTAINER interior fill (clean spots) ==
+ u1 interior (slide 285, y~141): #E7BB72
+ u1 interior (slide 720, y~141): #E7BB72
+ u2 interior (slide 285, y~352): #E7BB72
+ outside compare tan: #FAFFFD
+== 3. BLOCK ARROWS per zone at col1 (x 196..214) ==
+ X->MHA: light #E7E6F2 n=132 | mid #BA9FA9 n=111 | dark #A25B2E n=118
+Traceback (most recent call last):
+  File "/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/scratch/slide047/m20_final.py", line 33, in <module>
+    print(f" {tag}: light {hx(np.median(light,axis=0))} n={len(light)} | mid {hx(np.median(mid,axis=0))} n={len(mid)} | dark {hx(np.median(dark,axis=0))} n={len(dark)}")
+                           ~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/scratch/slide047/m20_final.py", line 12, in <lambda>
+    hx = lambda c: "#%02X%02X%02X" % tuple(int(round(v)) for v in c)
+                                     ^^^^^
+  File "/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/scratch/slide047/m20_final.py", line 12, in <genexpr>
+    hx = lambda c: "#%02X%02X%02X" % tuple(int(round(v)) for v in c)
+                                               ~~~~~^^^
+ValueError: cannot convert float NaN to integer

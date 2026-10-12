@@ -1,0 +1,21 @@
+GROUND RULES: This is a STRUCTURAL READ (not a comparison) of ONE image: a labeled composite of 8 zoomed crops (3x) from an original lecture slide frame (Encoder-Decoder cross-attention diagram, Deep Learning course). JPEG mush is expected; report what the ink most plausibly shows. Where a color is ambiguous, give your best hex guess. Be EXACT about texts (character-exact, sub/superscripts), orientations, and relative positions.
+
+For EACH crop C1..C8 report precisely:
+
+C1 (title block): exact text of both lines; which tokens are RED vs BLACK (give the red token spans); spacing anomalies (double spaces); alignment (left/center).
+
+C2 (left input group): the red 3D block arrow at far left (direction, shape); the hatched box: exact two-line text + text color, border color, hatch style (diagonal lines? which sides?); the yellow container: border (dashed? color), fill; its 4 rows top-to-bottom: label text in each row (red? with subscript digit), row structure (yellow chip + pale cells? how many cells, colors); the 4 green W_k boxes: fill color, border, exact label (W + subscript + superscript?); black arrows between rows and W_k boxes (direction); the striped K boxes right of W_k: structure (stripes? colors), and the red K labels with their subscript digits top-to-bottom; arrows W_k->K (present? direction?).
+
+C3 (Dot Product + Scaling): the tan box: exact header text (1 or 2 lines) + color; the blue/navy dots: HOW MANY, arrangement (diagonal direction); the red thin lines: how do the K strips connect into the dots (horizontal lines? which rows?); are there red lines INTERCONNECTING the dots with each other (mesh — how many, pattern); any line entering from below; the "K.q" label position/color; the "Similarity" pill: fill color, text color, position relative to the box; the red fraction at top-right: exact rendering (numerator over bar over denominator — what exactly is the numerator? what is under the radical?), position relative to the pale-pink Scaling column; the Scaling column: fill color, rotated text exact ("Scaling by sqrt d"? color? reading direction bottom-to-top or top-to-bottom?).
+
+C4 (Soft max column): fill color; rotated text exact + color + reading direction; any other glyphs in the column (final sigma?); the "Probabilities" pill: fill + text color; any red labels near the column edges.
+
+C5 (Sigma + O output): the Sigma box: fill, border?, the Sigma glyph size/color; the "Weighted SUM" pill: fill + text; the green block arrow: direction, from where to where; the O output box: fill, border (dashed?), exact label; the small striped cells flanking the O box: how many on each side, colors; the red vertical lines from the 4 multiply nodes up into the Sigma box: arrowheads at top? where exactly do they attach.
+
+C6 (right input group, mirrored): the 4 multiply/circled-x nodes: fill (white?), ring color, the x symbol color; the red V labels: exact subscript digits top-to-bottom, and their x-position relative to the lines; the V connector lines: color (red? black?), from the nodes to where; the W_v boxes: fill, border color, exact label; black arrows Y-rows->W_v (pointing which way); the yellow container + its rows (labels top-to-bottom); the hatched box + text; the red 3D arrow at the far right (direction); any red arrowheads on the V lines at the node ends (direction).
+
+C7 (query + Z-row): the "q2" label (red? subscript) + the small striped glyph next to it (structure); the W_q box: fill (white?), border, exact label; the thin red line from q2 going UP (where does it end?); the pink Z-row container: fill, border; the 4 cells Z1..Z4: structure of each (chip + pale cells?), label color, which cell is HIGHLIGHTED (dashed red border? deeper pink fill?) and its exact position (2nd from left?); the thick red 3D up-arrow below the container: position (under which cell?), shape.
+
+C8 (caption + legend): the magenta caption: exact two-line text + color; the white 3D arrow next to it (direction); the legend box: border (dashed? color), fill; inside: the striped vector glyph (how many cells, colors), the "1xd" label(s) — how many, colors (red?), positions (above/below the glyph? rotated?); the W box: fill, border, label; the "= dxd" text (color); the blue caption at the bottom: exact text + color.
+
+End with a line "STRUCT READ COMPLETE".

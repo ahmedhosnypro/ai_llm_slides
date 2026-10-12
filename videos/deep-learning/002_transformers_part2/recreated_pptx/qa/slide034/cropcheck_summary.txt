@@ -1,0 +1,36 @@
+# Slide 034 Crop Comparison â Element-by-Element
+
+## Border
+- **Color:** Both dark green. Recreation's green reads slightly darker/more saturated than the original's medium-green; original stroke looks marginally thinner. â **MINOR** (confidence: high)
+- **Extent/geometry:** Full-width rectangle with matching inset and corner behavior in both. No discrepancy.
+
+## Line 1 â "Real valued vectors representing  positions"
+- Verbatim text matches, including the double space between "representing" and "positions". Black, bold, centered. Size matches.## Line 2 â "(Vector for each position)"
+- Verbatim text, color (black), bold, centering all No discrepancy.
+
+## Line 3 â "Positions > N-1  can NOT be Embedded"
+- Verbatim text matches; dark red bold italic in both. Centering matches.
+- **Yellow highlight:** In the original, the yellow block cleanly covers "> N-1" plus a small trailing pad. In the recreation, the block is slightly narrower and shifted â the ">" sits partly at the left edge and the trailing pad after "N-1" is reduced/absent. â **MINOR** (confidence: medium)
+
+## Line 4 â "(Must Train Embedding on Max Expected Seq. Length)"
+- **Underline:** The original shows a clear continuous **underline** spanning the entire line 4 (from "(" through ")"). The recreation has **no underline**. This is a real style omission, regardless of the check spec's "NOT underlined" note â the original frame is the ground truth. â **MAJOR** (confidence: high)
+- **Spacing:** Original appears to contain a wider gap after "(Must" ("(Must  Train" â likely a double space); the recreation shows a single space. â **MINOR** (confidence: medium)
+- Color (dark red bold italic), size, and centering otherwise match.
+
+## Line 5 â "Vector Length  = Word Embedding length"
+- Verbatim text matches, including the double space before "=". Black, bold, centered, correct No discrepancy.
+
+## Vertical rhythm
+- Line positions/baseline rhythm are closely matched across all 5 lines; the gap before line 5 (blank-line separation) is reproduced. No material discrepancy.
+
+---
+
+## Discrepancy Summary
+| # | Issue | Severity | Confidence |
+|---|-------|----------|------------|
+| 1 | Line 4 underline present in original, absent in recreation | **MAJOR** | High |
+| 2 | Yellow highlight block on line 3 slightly narrower/shifted vs. original (">" edge + trailing pad) | MINOR | Medium |
+| 3 | Line 4 spacing after "(Must" â original appears double-spaced, recreation single | MINOR | Medium |
+| 4 | Border green slightly darker/thicker in recreation | MINOR | High |
+
+CROP VERDICT: MISMATCH

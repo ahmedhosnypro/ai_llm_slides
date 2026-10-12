@@ -1,0 +1,22 @@
+# Slide 045 â Equation (a) Double-Sum: Element-by-Element Comparison
+
+## Comparison Table
+
+| Element | IMG2 (original / ground truth) | IMG1 (recreation) | Match? |
+|---|---|---|---|
+| LHS `a_{r,c}` | *a* with subscript *r,c*, italic | *a_{r,c}* â matches, correct subscripts, baseline OK | sign | `=` | `=` | #1 limits | *a* above, *i = âa* below | *a* above, *i = âa* below, professional 2D layout| Î£ #2 limits | *b* above, *j = âb* below | *b* above, *j = âb* below | Operand *x* | italic *x* | italic *x* | *x* subscript | *râi, câj* | *r* â¦ *câj* visible; middle portion (*âi,*) obscured by the red annotation arrow in **both** images | â ï¸ partially unverifiable |
+| Dot operator | small centered dot `Â·` before Î¸ | rendered as a **large filled black square (âª)** | â |
+| Î¸ term | *Î¸* with subscript *ij* | *Î¸_{ij}* â matches | Red annotation arrow | present (points to *x* subscript) | present â annotation, not slide content, ignored per scopenot scored) |
+| 2D vs linear format | professional 2D in both | per ground rule (b), format consistent## Discrepancy List
+
+1. **MAJOR â Dot operator glyph mismatch.** The multiplication dot between *x_{râi,câj}* and *Î¸_{ij}* renders as a solid black square (âª) in IMG1 instead of the centered dot (Â·) shown in IMG2. This is an operator-level content mismatch, explicitly required to match under ground rule (b). Most likely cause: font fallback / missing-glyph substitution for `` (U+22C5) or `Â·` (U+00B7) in the recreation's math font. Confidence: **high (0.9)** â the square sits at exactly the dot's position and is not red (so it is not part of the annotation arrow, whose arrowhead is red).
+
+2. **MINOR â *x* subscript middle segment unverifiable.** The red annotation arrow overlaps *x*'s subscript in both crops, so the *âi,* portion cannot be confirmed in IMG1. The visible portions (*r* prefix, *câj* suffix, correct baseline and comma placement) are consistent with *râi, câj*. Confidence: **low relevance (0.5)** â likely fine, but not provable from this crop.
+
+3. **MINOR â Dot size/weight (conditional).** Even if the square is intended as the dot, its visual weight (~2â3Ã the dot diameter in IMG2, full-height of the lowercase box) is wrong regardless of glyph identity. Confidence: high.
+
+No other discrepancies: limits, Sigma construction, subscript content where visible, baseline alignment, and spacing all match.
+
+## FINAL VERDICT: **FAIL**
+
+**Reason:** The multiplication operator renders as a filled black square rather than the centered dot in the original â an operator content mismatch (MAJOR, high confidence), which violates the requirement that operators match IMG2 exactly. Fix: replace the square glyph with a proper centered dot (`Â·`/`\cdot`) in a font that supports it, then re-crop. All other checked elements pass; item #2 should be verified on an unannotated frame if available.

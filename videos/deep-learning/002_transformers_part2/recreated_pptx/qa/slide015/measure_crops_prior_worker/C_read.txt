@@ -1,0 +1,57 @@
+# Slide 15 crop C â analysis (all coords in 640Ã640 crop px)
+
+## (1) Blue Sigma box
+- **bbox:** â (60, 44) â (235, 76); very light blue (aliceblue) fill, thin **blue** border.
+- **Glyph:** blue **Î£**, â 22â26 px tall, centered â (147, 58).
+
+## (2) Four circle-X multiply nodes (red circle, white fill, red X/asterisk glyph)
+| # | center | radius |
+|---|--------|--------|
+| 1 | (78, 114) | â 9 |
+| 2 | (117, 166) | â 9 |
+| 3 | (155, 219) | â 9 |
+| 4 | (197, 278) | â 9 |
+- Border: red, ~1.5 px; fill white; glyph: **red** X (drawn as a 6-point asterisk/â³), ~12 px.
+
+## (3) 'v' labels
+Verbatim: **Vâ, Vâ, Vâ, Vâ** (italic serif V, red; subscripts 1â4 readable).
+- Vâ â (233â252, 92â112); Vâ â (233â252, 145â165); Vâ â (233â252, 199â219); Vâ â (236â255, 258â278). All **red/dark-red**.
+
+## (4) Vector strips beside v labels (4 small striped boxes)
+- (263, 94)â(296, 109); (263, 147)â(296, 162); (263, 200)â(296, 215); (265, 258)â(298, 273).
+- Stripes: alternating **gold/yellow** and **pale-yellow/white** cells (~4â5 cells each), thin red/orange internal separators.
+
+## (5) W boxes labeled W_v
+**Column inside salmon panel â 4 blue boxes, identical style** (cyan fill, dark-blue border, black "W", red subscript "v", red superscript "[1]"):
+- W_v[1] â (310, 100)â(352, 131)
+- W_v[1] â (310, 152)â(352, 184)
+- W_v[1] â (310, 205)â(352, 236)
+- W_v[1] â (313, 262)â(355, 293)
+Text best read as **W_v^( [1] )** â subscript v red, [1] red; the "1" is small but consistent across all four.
+**No W^o or W^u boxes in this crop.**
+
+## (6) Output token strips + green dashed containers
+- **Main green dashed rounded container:** â (378, 84) â (492, 310), dashed green, white fill.
+- **4 strips inside** (~100 px wide Ã ~30 px tall each):
+  - Row 1: (385, 98)â(486, 128); Row 2: (385, 151)â(486, 181); Row 3: (385, 204)â(486, 234); Row 4: (388, 259)â(488, 289).
+  - **â6 cells per row**: pale-yellow cell, light-yellow, pale-green/white cells, one **white cell with red border and red "X"** (X with tiny subscript, red), then 1â2 **pink** cells; thin red cell borders throughout.
+- **Second green dashed container (next/lavender head):** â (505, 52) â (588, 268); 4 strips with red **Xâ** cells (â (513,60)â(570,90), (513,112)â¦, (513,165)â¦, (513,218)â¦), pink/yellow cells.
+- **Third green dashed container (far right, cut):** â (615, 0) â (640, 240); red **Xâ** cells partially visible.
+
+## (7) Arrows / lines
+- **Thin red horizontal lines** from left (Soft max strip) into each multiply node, small red triangular arrowheads at node left edge: y â 114, 166, 219, 278.
+- **Thin red vertical lines** from Sigma box bottom (y â 76) down to each node top (arrowheads pointing down at nodes 1â4) at x â 78, 117, 155, 197.
+- **Thick red curved arrow:** enters from right edge â (640, 285), sweeps left/down through â (560, 330) â (450, 345), hooking up to tip â (405, 332); stroke ~10 px.
+- **Green solid triangle arrowheads (upward):** â (428, 302)â(443, 318) at bottom of main dashed container; â (514, 256)â(530, 272) at second container; â (597, 226)â(612, 242) at third.
+- **Small red glyph/box** with hooked arrow â (352, 95)â(370, 112), between W_v[1] row 1 and the output strip (arrow symbol, exact glyph [?]).
+- No visible explicit connector lines from nodes to v strips or from Sigma directly to v strips beyond the vertical lines above.
+
+## (8) Salmon panel right edge & white background beyond
+- **Panel right edge: x â 507** (top to y â 455), rounded bottom-right corner; panel bottom edge y â 470.
+- **Right of edge:** lavender (next head) panel x â 507â588 down to y â 430 containing the 2nd dashed container and three **blue-bordered white boxes**: W_q[2] â (535, 293)â(582, 327), W_k[2] â (535, 330)â(582, 364), W_v[2] â (535, 367)â(582, 400) (black W, red subscripts q/k/v, red [2]).
+- Yellow panel fragment x â 590â640 with block of yellow cells â (592, 275)â(640, 360).
+- **On salmon panel, bottom right:** three **red-bordered white boxes**: W_q[1] â (450, 360)â(492, 388), W_k[1] â (450, 396)â(492, 422), W_v[1] â (450, 432)â(492, 459).
+- **White background below y â 475:** bold title "â¦**Head** Self Attention of Word **Xâ**" (y â 555â595; "Head" red, likely cut from "Multi-Head" [?]; "X" red with red subscript 2), black bold otherwise; **blue horizontal rule** at y â 620â623 spanning full width.
+- Top-left: white ellipse "â¦ilities" (cut "Probabilities" [?]) blue text â (0,0)â(45,28); pink vertical strip x 0â18, y â 100â220 with rotated purple "Soft max"; blue "Weighted SUM" text in white ellipse â (118, 0)â(258, 30); **black oval "h=1"** â (423, 2)â(492, 32), yellow bold italic text.
+
+**NOTHING ELSE** â missed items: the small red hooked-arrow glyph at (352,95)â(370,112) is ambiguous [?]; the title's first word is cut ("â¦Head") [?]; a partial pale rounded shape at the left edge â (0, 415)â(25, 445) on the salmon panel.

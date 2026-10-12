@@ -1,0 +1,171 @@
+{
+  "slide_title": "Update the weights by moving in the negative direction of the Gradient of the Loss function with respect  to model weights",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "(For Sigmoid Function)",
+      "(Error at Output layer ONLY)",
+      "Let",
+      "then",
+      "new (superscript on w_ji)",
+      "old (superscript on w_ji)"
+    ],
+    "equations": [
+      "Net_j = \\sum_{i} (w_{ji} O_i)",
+      "\\frac{\\partial Net_j}{\\partial w_{ji}} = O_i",
+      "O_j = f(Net_j) = \\frac{1}{1+e^{-Net_j}}",
+      "E = \\frac{1}{2}\\sum_{j} (t_j - O_j)^2",
+      "\\Delta w_{ji} = -\\eta \\frac{\\partial E}{\\partial w_{ji}} = -\\eta \\frac{\\partial E}{\\partial Net_j} \\, \\frac{\\partial Net_j}{\\partial w_{ji}}",
+      "\\Delta w_{ji} = -\\eta \\frac{\\partial E}{\\partial Net_j} \\, O_i",
+      "\\delta_j = -\\frac{\\partial E}{\\partial Net_j}",
+      "\\Delta w_{ji} = \\eta \\, \\delta_j \\, O_i",
+      "w_{ji}^{new} = w_{ji}^{old} + \\Delta w_{ji}"
+    ]
+  },
+  "layout": {
+    "arrangement": "Thin red horizontal rule across the very top; below it a two-line centered title (line 1 red, line 2 blue). The rest of the slide is one large blue-outlined container holding three stacked shaded boxes: top tan box with three definition equations, middle yellow box with the chain-rule equation, bottom tan box with the two-line final derivation. A black progress-bar-style strip runs along the very bottom edge with a small black square at the bottom-left corner.",
+    "regions": [
+      {
+        "name": "Top red rule",
+        "position": "top, y\u22486-8%, x\u22485-95%",
+        "content": "Thin solid red horizontal line spanning nearly full width"
+      },
+      {
+        "name": "Title",
+        "position": "top, y\u22489-21%, centered, x\u22487-93%",
+        "content": "Two-line title: line 1 in red, line 2 in blue, both bold and roughly centered"
+      },
+      {
+        "name": "Blue container",
+        "position": "middle, x\u22487-93%, y\u224822-95%",
+        "content": "Large rectangle, no fill, thin blue border, framing all equation boxes"
+      },
+      {
+        "name": "Definition box (tan)",
+        "position": "upper-middle, x\u22488-67%, y\u224823-55%",
+        "content": "Three stacked equations: Net_j sum definition with red arrow to partial derivative; sigmoid output function with red note; squared-error loss with blue note"
+      },
+      {
+        "name": "Chain-rule box (yellow)",
+        "position": "middle, x\u22488-79%, y\u224856-68%",
+        "content": "Single equation: gradient descent update expanded via chain rule into two partial-derivative fractions"
+      },
+      {
+        "name": "Final derivation box (tan)",
+        "position": "lower-middle, x\u22488-88%, y\u224870-94%",
+        "content": "Two lines: \u0394w_ji = \u2212\u03b7 (\u2202E/\u2202Net_j) O_i with red 'Let' and \u03b4_j definition; \u0394w_ji = \u03b7 \u03b4_j O_i with red 'then' and weight-update rule w_ji^new = w_ji^old + \u0394w_ji; small black diagonal arrow connects the two \u03b4_j terms"
+      },
+      {
+        "name": "Footer bar",
+        "position": "bottom, y\u224896-100%, x\u22487-95% (plus small black square x\u22480-6%)",
+        "content": "Solid black horizontal bar (video progress-bar artifact) and small black square at bottom-left corner"
+      }
+    ],
+    "hierarchy": "Title dominates (largest, boldest, two saturated colors red then blue). Equations are medium-size black serif-italic math and are the visual bulk. Red/blue parenthetical notes and the words 'Let'/'then' are smaller bold accents. Shaded tan/yellow boxes group the equations; the blue container and black footer bar are thin structural elements."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Large empty rectangle framing all content: no fill, thin solid blue border",
+      "colors": [
+        "#0000CC"
+      ],
+      "position": "middle of slide, x\u22487-93%, y\u224822-95%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Tan/beige box containing three definition equations: (1) Net_j = \u03a3_i (w_ji O_i) followed by a red block arrow then \u2202Net_j/\u2202w_ji = O_i; (2) O_j = f(Net_j) = 1/(1+e^(\u2212Net_j)) with red note '(For Sigmoid Function)'; (3) E = (1/2) \u03a3_j (t_j \u2212 O_j)\u00b2 with blue note '(Error at Output layer ONLY)' where ONLY is underlined",
+      "colors": [
+        "#D6CFC5",
+        "#000000",
+        "#CC0000",
+        "#0000CC"
+      ],
+      "position": "top of container, x\u22488-67%, y\u224823-55%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Light-yellow box containing one equation: \u0394w_ji = \u2212\u03b7 \u2202E/\u2202w_ji = \u2212\u03b7 (\u2202E/\u2202Net_j)(\u2202Net_j/\u2202w_ji), with the last two factors shown as side-by-side fractions",
+      "colors": [
+        "#FFFFCC",
+        "#000000"
+      ],
+      "position": "middle of container, x\u22488-79%, y\u224856-68%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Tan/beige box containing two-line derivation. Line 1: \u0394w_ji = \u2212\u03b7 (\u2202E/\u2202Net_j) O_i, then red bold 'Let', then \u03b4_j = \u2212\u2202E/\u2202Net_j (fraction). Line 2: \u0394w_ji = \u03b7 \u03b4_j O_i, then red bold 'then', then w_ji^new = w_ji^old + \u0394w_ji",
+      "colors": [
+        "#D6CFC5",
+        "#000000",
+        "#CC0000"
+      ],
+      "position": "bottom of container, x\u22488-88%, y\u224870-94%"
+    },
+    {
+      "type": "arrow",
+      "description": "Solid red right-pointing block arrow placed between 'Net_j = \u03a3_i (w_ji O_i)' and '\u2202Net_j/\u2202w_ji = O_i', indicating implication/differentiation",
+      "colors": [
+        "#CC0000"
+      ],
+      "position": "inside top tan box, upper-left area, \u2248x 32-38%, y\u224826-31%"
+    },
+    {
+      "type": "arrow",
+      "description": "Small thin black diagonal arrow pointing down-left, visually linking \u03b4_j from the 'Let \u03b4_j = \u2212\u2202E/\u2202Net_j' definition (upper line) to \u03b4_j in '\u0394w_ji = \u03b7 \u03b4_j O_i' (lower line)",
+      "colors": [
+        "#000000"
+      ],
+      "position": "inside bottom tan box, center-left, \u2248x 27-31%, y\u224882-88%"
+    },
+    {
+      "type": "other",
+      "description": "Thin solid red horizontal rule across the top of the slide",
+      "colors": [
+        "#CC0000"
+      ],
+      "position": "top edge, y\u22487%, x\u22485-95%"
+    },
+    {
+      "type": "other",
+      "description": "Solid black horizontal bar along the bottom edge (video player progress-bar artifact) plus a small solid black square at the bottom-left corner",
+      "colors": [
+        "#000000"
+      ],
+      "position": "bottom edge, y\u224896-100%"
+    }
+  ],
+  "imagery": [
+    "No photographs, icons, or illustrations; the slide is purely typographic with colored boxes, equations, and two arrows."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#CC0000 (line 1) and #0000CC (line 2)",
+    "body_text": "#000000",
+    "accents": [
+      "#CC0000",
+      "#0000CC",
+      "#D6CFC5",
+      "#FFFFCC"
+    ]
+  },
+  "typography_notes": "Title: bold serif (Times New Roman-like), two lines, first red second blue, roughly same size (~28-32pt equivalent). Equations: serif italic math font (Times/Cambria Math style) with proper fractions, summation signs with subscripts i and j, Greek letters \u03b7 (eta) and \u03b4 (delta), superscripts new/old in italic. Parenthetical notes '(For Sigmoid Function)' (red) and '(Error at Output layer ONLY)' (blue, ONLY underlined) are smaller bold text. 'Let' and 'then' are red bold serif. No bullet lists anywhere; content is entirely equations.",
+  "animation_state": "Slide appears fully built; no partial reveal, dimming, or mid-build elements detected.",
+  "recreation_brief": "1. Set slide background to white (16:9). 2. Insert a thin red (#CC0000) horizontal line across the top at ~7% height, spanning ~5-95% width. 3. Add a centered title text box with two paragraphs, bold serif (Times New Roman), ~28pt: paragraph 1 in red #CC0000 reading 'Update the weights by moving in the negative direction of the'; paragraph 2 in blue #0000CC reading 'Gradient of the Loss function with respect  to model weights' (preserve the double space between 'respect' and 'to'). 4. Draw a rectangle at x\u22487-93%, y\u224822-95% with no fill and a 2pt blue (#0000CC) border. 5. Inside it, add tan box #1: rectangle fill #D6CFC5 at x\u22488-67%, y\u224823-55%. Insert three equation lines using Insert > Equation (LaTeX): line 1 'Net_j = \\sum_{i} (w_{ji} O_i)'; then place a solid red (#CC0000) right-pointing block arrow shape; then '\\frac{\\partial Net_j}{\\partial w_{ji}} = O_i'. Line 2: 'O_j = f(Net_j) = \\frac{1}{1+e^{-Net_j}}' with red bold text '(For Sigmoid Function)' to its right. Line 3: 'E = \\frac{1}{2}\\sum_{j} (t_j - O_j)^2' with blue bold text '(Error at Output layer ONLY)' to its right, underlining only the word 'ONLY'. 6. Add yellow box #2: rectangle fill #FFFFCC at x\u22488-79%, y\u224856-68%, containing the single equation '\\Delta w_{ji} = -\\eta \\frac{\\partial E}{\\partial w_{ji}} = -\\eta \\frac{\\partial E}{\\partial Net_j} \\frac{\\partial Net_j}{\\partial w_{ji}}'. 7. Add tan box #3: rectangle fill #D6CFC5 at x\u22488-88%, y\u224870-94%, with two lines: line 1 '\\Delta w_{ji} = -\\eta \\frac{\\partial E}{\\partial Net_j} O_i' followed by red bold 'Let' followed by '\\delta_j = -\\frac{\\partial E}{\\partial Net_j}'; line 2 '\\Delta w_{ji} = \\eta \\delta_j O_i' followed by red bold 'then' followed by 'w_{ji}^{new} = w_{ji}^{old} + \\Delta w_{ji}'. 8. Between the two \u03b4_j occurrences in box #3, draw a small thin black arrow pointing down-left. 9. At the bottom, add a solid black rectangle spanning x\u22487-95%, y\u224896-100%, plus a small solid black square at x\u22480-6%, y\u224896-100% (to match the captured video progress bar). 10. Use black (#000000) for all equation text, serif math font, and keep all boxes borderless (or with very subtle borders) except the outer blue container.",
+  "_meta": {
+    "frame": "slide_026.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 26,
+      "image": "slide_026.jpg",
+      "kept_frame": "frame_01332.jpg",
+      "start_sec": 1295.0,
+      "end_sec": 1331.0,
+      "frame_count": 37,
+      "old_group": 31,
+      "founder_frame_swap": false
+    },
+    "elapsed_s": 185.2
+  }
+}

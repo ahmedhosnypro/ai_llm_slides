@@ -1,0 +1,49 @@
+# Element-by-Element Fidelity Check â Slide 042
+
+## Pre-flight (per ground rules, settled and not raised as discrepancies)
+- White canvas, gray panel with red border, "42" badge (yellow circle, purple ring, navy numeral): house chrome, present and correctly rendered per spec.
+- Original frame's black letterbox strip at the very bottom edge: video artifact, correctly omitted.
+- Both images show the equations in professional 2D stacked-fraction form with horizontal bars â formats agree; no mandated-upgrade note needed.
+
+## Content comparison
+
+**Title**
+- Text verbatim: "Output dimensions of Convolution?" â both. Red bold sans-serif, horizontally centered over the panel, same proportional width (~62% of slide width in both) and vertical position (~17â18% down). No line-break differences. â
+
+**Diagram: input slab (left)**
+- Brown/tan parallelepiped with labels *w_in* (top), *h_in* (left), *d_in* (bottom), plus the small *S* stride marker with dots/arrow. All labels present, italic serif, correct positions relative to the slab in both. â
+
+**Diagram: filter stack (center-left)**
+- Five colored slabs (cyan, green, red/pink, yellow, purple) with *w_f*, *h_f*, *d_f*, *n_f* labels â all present, correct order and placement. â
+
+**Equals sign** â present at the same relative position (~53% x, ~50% y). â
+
+**Diagram: output box (right)**
+- Tan cube with *w_out* (top-left edge), *h_out* (left edge), *d_out* (bottom). All labels present and aligned as in the original. Cube stays fully inside the inner white/red frame. â
+
+**Legend (bottom-left)** â verbatim, including the original's misspelling "hight" (correctly preserved): h/hight, w/Width, d/Depth, f/Filter, n/Filters Count, S/Stride. Navy italic serif; two-column layout; line spacing and column gap match proportionally. â
+
+**Equation box (center-bottom)**
+- Black-bordered box, all four equations present and matching:
+  - h_out = (h_in â h_f)/s + 1 â
+  - w_out = (w_in â w_f)/s + 1 â
+  - d_out = n_f â
+  - d_f = d_in â
+- Box position (~33â54% x, ~62â85% y) matches the original; content vertically centered; fraction bars span numerator width; no clipping or collision. â
+
+**Frame containment** â inner white frame: all content (slab, stack, cube, legend, equation box) sits fully inside; no ink touches or crosses the inner frame or the house panel border in the recreation. â
+
+## Discrepancy list
+
+| # | Discrepancy | Severity | Confidence |
+|---|---|---|---|
+| 1 | Denominator of the first fraction renders as capital italic **S** where the original shows lowercase italic *s* (the second fraction correctly uses lowercase *s* in the recreation, so the two are internally inconsistent) | MINOR | High |
+| 2 | Title red is a slightly darker crimson (âC00000) vs the original's brighter red (âE00000/FF0000) | MINOR | Medium |
+| 3 | Output cube is proportionally a few percent smaller than in the original (~29% vs ~33% of slide width); layout region otherwise aligned | MINOR | Medium |
+
+No BLOCKER or MAJOR defects found: no missing elements, no empty equation regions, no delimiter-geometry issues (no multi-line delimiters present in either), no frame overflows, no table (n/a), all text verbatim including the preserved "hight" typo.
+
+## Visual-quality defects in the recreation
+- None observed: no overflow, no clipping, no bad wrapping, no collisions, no illegible text. Subscript spacing ("h_o u t" style) matches the original's rendering.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

@@ -1,0 +1,25 @@
+{"page": 1, "verdict": "fail", "issues": ["Missing upward connector arrow between 'Feed Forward' box and second 'Add & Norm' box (present in original at x~205 with visible arrowhead; absent in recreation) â MAJOR, confidence 0.75", "Bottom-of-crop zone structure mismatch: recreation shows tall yellow band with horizontal dark line through navy circle plus magenta strip at the very bottom; original shows shorter yellow band with navy 'K' circle bounded below by a red band and then a green/dark element â MAJOR, confidence 0.55 (crop alignment uncertainty)", "Horizontal dark line crossing the yellow zone left of the navy circle in the recreation has no visible counterpart in the original â MINOR, confidence 0.5", "Declared delta (absence of the two navy chevron pairs at the top two zones, lowest pair present) is correctly reproduced â no discrepancy, per the VIEW contract"]}
+
+**Fidelity report â Slide 019 attempt 2, decoder-stack zoom crop (IMG1 recreation vs IMG2 original)**
+
+**Element-by-element:**
+
+1. **Title/labels (cropped):** "Linear" (light-green box, dark text), "Add & Norâ¦" (steel-blue box), "Feed Forward" (olive-green box, two lines "Feed" / "Forward"), "Multi-Hea(d) Attentio(n)" (brown box) â all verbatim and correctly positioned. Text is cut at the crop edge identically in both images. â
+
+2. **Zone banding:** tan/khaki zone background, red horizontal bands bracketing the Multi-Head Attention zone â present and correctly placed in both. â
+
+3. **Top arrow (Linear â Add & Norm):** black vertical arrow with upward arrowhead present in both, similar x-position and size. â
+
+4. **MISSING ARROW (Feed Forward â Add & Norm):** IMG2 clearly shows a second vertical connector with an upward arrowhead in the gap between "Feed Forwarâ¦" and the second "Add & Noâ¦" box, next to the green sliver. IMG1 shows only tan background and the green bar in that gap â no shaft, no arrowhead. Per rule (6), an omitted diagram element is a **MAJOR** defect. Confidence 0.75 (crop is tight but the gap is fully visible in IMG1).
+
+5. **Navy chevron pairs:** correctly ABSENT at the top two zones in the recreation, matching this slide's declared delta; the lowest navy element on yellow is present. This is the certified difference, **not** a discrepancy.
+
+6. **Bottom yellow zone:** both show a yellow band with a navy circular badge (white glyph). However, the recreation renders a long horizontal dark line entering from the left through the circle and ends in a magenta strip; the original at the same depth shows the badge sitting in a shorter yellow band closed off by a red band, with green/dark content below. Likely a real structural mismatch at the crop boundary; flagged MAJOR at reduced confidence (0.55) because the two crops are not perfectly co-registered.
+
+7. **Green marker bars:** green bar at right edge beside the lower gap present in both (IMG1 slightly larger/positioned marginally differently â within crop tolerance). MINOR at most.
+
+**Visual-quality defects in the recreation:** none beyond the above; no clipping, no overflow against the house frame within this crop, text vertically centered in its boxes.
+
+**Certificate:** single-read, default route (images), glm leg DEFERRED/BLOCKED. Founder ground rules (a)â(f) applied; house chrome not evaluated; chevron delta honored as intentional.
+
+FINAL VERDICT: **FAIL** for 'faithful, usable recreation' â one missing inter-layer arrow (MAJOR) plus an unresolved bottom-zone structural mismatch.

@@ -1,0 +1,29 @@
+## Element-by-element comparison (crop region: frame px 470..700 Ã 265..415)
+
+**Elements present in BOTH images:**
+1. **Left-edge partial content** â teal box/shape sliver with the partial katakana "ã" glyph, plus a second partial "ã" below it, both clipped at the crop's left edge. Present in both, same clipping, same position. â
+2. **Equals sign** â two stacked teal (#2AA0A8-ish) horizontal bars, upper-left of the cluster. Present in both, same orientation, same teal color, same relative bar length/thickness. â
+3. **Plus sign** â small gray "+" below and between the equals and the neuron icon. Present in both; recreation's plus is marginally larger/darker gray, original's is fainter. MINOR.
+4. **Neuron icon** â orange (#E8880C-ish) filled ellipse with cyan (#29B6E8) inner ellipse, upper-right of the plus. Present in both; same two-tone structure, same colors, same slight horizontal oval aspect. The recreation's icon is very slightly larger relative to the equals sign. MINOR.
+5. **Arrow** â thin black arrow from lower-right pointing up-left, tip landing near the lower-right of the neuron icon. Present in both; same angle, same head style, same target point. â
+6. **Bottom-left diagonal stroke fragment** â the clipped corner of the off-crop diagonal element. Present in both at the same position. â
+
+**Layout/ordering:** The cluster arrangement (equals top-left â plus below-center â neuron top-right â arrow entering from lower-right) is identical in both. Gaps between equals/plus/neuron are proportionally consistent.
+
+**Frame containment:** No element touches or crosses any crop/frame boundary that it shouldn't â all edge clipping matches the original's clipping exactly.
+
+**Colors:** Teal equals, gray plus, orange/cyan neuron, black arrow â all match within tolerance.
+
+## Discrepancy list
+
+| # | Discrepancy | Severity | Confidence |
+|---|---|---|---|
+| 1 | Neuron icon rendered ~5â10% larger relative to the equals sign than in the original | MINOR | Medium |
+| 2 | Plus sign slightly larger and darker gray than the original's fainter "+" | MINOR | Medium |
+
+No BLOCKER or MAJOR defects found. All cluster elements are present, correctly ordered, correctly colored, and correctly positioned; the left-edge and bottom-left clipped fragments match the original's cropping exactly.
+
+## Visual-quality defects in the recreation
+None observed â no overflow, clipping (beyond the intended crop edges), collisions, or illegibility within this region.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

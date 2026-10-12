@@ -1,0 +1,31 @@
+# Visual QA Analysis: Y-row Label Band (Tiles 1â6, Top Row)
+
+## 1. Verbatim Text Transcription
+
+Reading left to right, each of the six tiles contains a red serif letter "Y" with a small red subscript digit in the lower-right of its third (pink) cell:
+
+| Tile 1 | Tile 2 | Tile 3 | Tile 4 | Tile 5 | Tile 6 |
+|--------|--------|--------|--------|--------|--------|
+| **Yâ** | **Yâ** | **Yâ** | **Yâ** | **Yâ** | **Y- The subscript digits are 0, 1, 2, 3, 4, 5 respectively.
+- Each subscript digit is rendered small and appears tilted/rotated clockwise (an artifact of the label styling or the zoom), but they are legible as the sequence 0â5.
+- The two left cells of every tile are **empty** â no text inside them.
+- No other text, captions, or numerals appear anywhere in the band.
+
+## 2. Layout Description
+
+- **Overall:** A wide, short horizontal strip of white background containing six repeating tile units separated by clean white gaps.
+- **Each tile structure:** A 3-cell horizontal box outlined in thin gray/black:
+  - Cells 1 and 2: empty, filled with a pale yellow-to-light-green vertical gradient.
+  - Cell 3: filled pale pink/salmon with a **red border**, containing the red "Y" label and its red subscript digit.
+- **LEFT edge:** Tile 1 begins almost immediately at the left edge with only a thin white margin before its first yellow cell.
+- **RIGHT edge:** Tile 6's pink "Y into and is truncated by the right edge of the image.
+- **TOP:** Blank white space above the tiles; a faint gray top border of each box is visible.
+- **BOTTOM:** Directly beneath each tile, the **upper apex of a dark navy-blue upward-pointing chevron/caret (^)** is visible. These six chevrons are evenly spaced, one centered under each tile.
+
+## 3. Visual Defects and Anomalies
+
+1. **Right-edge clipping:** The sixth tile ( is cut off at the right image boundary â its pink cell's right border is not visible.
+2. **Bottom-edge clipping:** The navy chevrons below the tiles are cut off; only their pointed tops are within frame, the bodies extend below the image edge.
+3. **Rotated/skewed subscripts:** All six subscript digits render at a pronounced clockwise tilt rather than upright; digits 3 and 5 are the most distorted by this (the "3" reads almost sideways, the "5" resembles an "S"). Content remains identifiable but is stylistically inconsistent with the upright "Y".
+4. **Zoom softness:** As an 8x LANCZOS enlargement, edges show mild blur/blockiness, especially on the small red digits; no pixel data appears invented.
+5. **No placeholder or garbage strings** are present, and **no wrong-language text** appears â the band consists solely of the YââY the clipped chevron ornaments.

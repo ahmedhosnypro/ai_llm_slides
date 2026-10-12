@@ -1,0 +1,172 @@
+{
+  "slide_title": "Problem: Image will vanish  if applying more filters in cascade",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Our images get smaller and smaller",
+      "Not too deep architectures",
+      "Details are lost"
+    ],
+    "labels": [
+      "Image",
+      "After conv 1",
+      "After conv 2",
+      "x0 (tiny red annotation under the column-1 numbers, rows 1-3 of the yellow 3x3 sub-region)",
+      "x1 (tiny red annotation under the column-3 numbers, rows 1-3 of the yellow 3x3 sub-region)",
+      "Original 5x5",
+      "After apply one filter  of size 3x3, output will be3x3",
+      "After applying second filter on the output (cascaded filters)",
+      "Output will be 1x1",
+      "[solid black horizontal strip across the very bottom of the frame - likely video player progress bar, not slide content]",
+      "[thin gray strip along the very top edge - video frame artifact]",
+      "[white mouse-cursor arrow below the title near top-right - live-lecture screenshot artifact]"
+    ],
+    "equations": [
+      "Image (5x5 matrix): [[1,1,1,0,0],[0,1,1,1,0],[0,0,1,1,1],[0,0,1,1,0],[0,1,1,0,0]]",
+      "After conv 1 (3x3 matrix): [[4,3,4],[2,4,3],[2,3,4]]",
+      "After conv 2 (1x1 value): [18]"
+    ]
+  },
+  "layout": {
+    "arrangement": "A large thin red-bordered rectangle frames almost the whole slide. Title sits top-left inside it. Below the title, a second thinner red-bordered panel contains three bullets in its upper-left and a left-to-right convolution diagram across its lower two-thirds (5x5 colored grid -> white block arrow -> 3x3 gray grid -> white block arrow -> single gray cell). Beneath that panel, a full-width blue-bordered white box holds four navy serif explanation lines. A solid black strip runs along the very bottom edge of the frame.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top-left, ~10%-90% horizontal, ~10%-18% vertical",
+        "content": "Red bold serif title 'Problem: Image will vanish  if applying more filters in cascade'"
+      },
+      {
+        "name": "Bullet list",
+        "position": "upper-left inside inner red panel, ~12%-55% horizontal, ~21%-37% vertical",
+        "content": "Three hollow-circle bullets in dark gray text"
+      },
+      {
+        "name": "Convolution diagram",
+        "position": "lower two-thirds of inner red panel, ~25%-87% horizontal, ~37%-69% vertical",
+        "content": "5x5 yellow/green grid labeled 'Image', white block arrow, 3x3 gray-olive grid labeled 'After conv 1', white block arrow, single gray-olive cell '18' labeled 'After conv 2'"
+      },
+      {
+        "name": "Explanation box",
+        "position": "bottom, ~8%-90% horizontal, ~73%-94% vertical",
+        "content": "Blue-bordered white rectangle with four navy serif lines, first line bold 'Original 5x5'"
+      },
+      {
+        "name": "Bottom black strip",
+        "position": "full width, ~96%-100% vertical",
+        "content": "Solid black bar (video player UI, not slide content)"
+      }
+    ],
+    "hierarchy": "Title dominates: largest, bold, red. The bright yellow/green 5x5 grid is the strongest visual anchor, followed by the gray-olive conv grids and white arrows. Bullets are secondary (medium dark-gray text); the bottom blue-box text is tertiary (smaller navy serif)."
+  },
+  "visual_elements": [
+    {
+      "type": "table",
+      "description": "5x5 grid labeled 'Image' (black handwritten-style label above). Cell values row by row: [1,1,1,0,0],[0,1,1,1,0],[0,0,1,1,1],[0,0,1,1,0],[0,1,1,0,0]. The top-left 3x3 cells (rows 1-3, cols 1-3) are filled bright yellow; the remaining 14 cells are bright green. Numbers are bold black and centered. Tiny red annotations sit inside cells beneath the numbers: 'x0' under the col-1 entries (1,0,0) and 'x1' under the col-3 entries (1,1,1) of rows 1-3 (placement approximate).",
+      "colors": [
+        "#FFE135 (yellow cells)",
+        "#33CC33 (green cells)",
+        "#000000 (numbers)",
+        "#FF0000 (x0/x1 annotations)"
+      ],
+      "position": "left-center of diagram area, ~25%-46% horizontal, ~42%-69% vertical"
+    },
+    {
+      "type": "arrow",
+      "description": "White right-pointing block arrow with thin black outline, between the 5x5 grid and the 3x3 grid.",
+      "colors": [
+        "#FFFFFF (fill)",
+        "#000000 (outline)"
+      ],
+      "position": "~46%-52% horizontal, ~53%-58% vertical"
+    },
+    {
+      "type": "table",
+      "description": "3x3 grid labeled 'After conv 1' (black handwritten-style label above). Values row by row: [4,3,4],[2,4,3],[2,3,4]. All nine cells filled gray-olive; numbers bold black, centered.",
+      "colors": [
+        "#9A9A8A (cell fill)",
+        "#000000 (numbers)"
+      ],
+      "position": "~53%-69% horizontal, ~45%-67% vertical"
+    },
+    {
+      "type": "arrow",
+      "description": "Second white right-pointing block arrow with thin black outline, between the 3x3 grid and the single output cell.",
+      "colors": [
+        "#FFFFFF (fill)",
+        "#000000 (outline)"
+      ],
+      "position": "~70%-76% horizontal, ~53%-58% vertical"
+    },
+    {
+      "type": "table",
+      "description": "Single 1x1 cell labeled 'After conv 2' (black handwritten-style label above) containing the bold black number '18' on gray-olive fill.",
+      "colors": [
+        "#9A9A8A (fill)",
+        "#000000 (number)"
+      ],
+      "position": "~77%-82% horizontal, ~53%-60% vertical"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Outer thin red rectangle border (no fill) framing title + all content.",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "~6%-94% horizontal, ~8%-94% vertical"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Inner thin red rectangle border (no fill) around the bullets + diagram panel.",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "~8%-88% horizontal, ~20%-70% vertical"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Blue-bordered white rectangle containing the four-line explanation text.",
+      "colors": [
+        "#2E75B6 (border)",
+        "#FFFFFF (fill)"
+      ],
+      "position": "~8%-90% horizontal, ~73%-94% vertical"
+    }
+  ],
+  "imagery": [
+    "No photos or illustrations. Only a standard white mouse-cursor arrow with black outline captured below the title near top-right (~82% horizontal, ~17% vertical) - a screenshot artifact from the lecture video, not slide content."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#C00000",
+    "body_text": "#3F3F3F (bullets, dark gray); #1F3864 (bottom box, navy)",
+    "accents": [
+      "#C00000 (red title and rectangle borders)",
+      "#FF0000 (x0/x1 annotations)",
+      "#FFE135 (yellow cells)",
+      "#33CC33 (green cells)",
+      "#9A9A8A (gray-olive conv cells)",
+      "#2E75B6 (blue box border)",
+      "#1F3864 (navy box text)",
+      "#D8A800 (hollow bullet markers, approx)",
+      "#000000 (bottom bar, grid numbers, arrow outlines)"
+    ]
+  },
+  "typography_notes": "Title: large bold serif (Times New Roman/Georgia-like), red, ~28-30pt, sentence case with colon; note the wide (double) space between 'vanish' and 'if'. Bullets: ~20pt regular, dark gray, marked with small hollow circles (tan/gold outline); face looks serif/humanist at this resolution. Diagram labels ('Image', 'After conv 1', 'After conv 2'): casual handwritten-style font (Comic Sans MS-like), black, ~22pt. Grid numbers: bold, ~14-16pt, black, centered in cells. Bottom box: serif (Times-like), navy, ~18pt, left-aligned; first line 'Original 5x5' is bold; the line 'After apply one filter  of size 3x3, output will be3x3' contains a double space after 'filter' and no space in 'be3x3' - reproduce verbatim. Red 'x0'/'x1' annotations are tiny (~9-10pt).",
+  "animation_state": "Slide appears fully built: all three bullets, the complete three-stage diagram, and the bottom text box are visible. Nothing looks mid-build. A mouse cursor is visible near the top-right below the title (live-lecture screenshot).",
+  "recreation_brief": "1. Create a 16:9 slide with white (#FFFFFF) background. 2. Draw a thin red (#C00000) rectangle outline (no fill) from ~6%,8% to ~94%,94%. 3. Add title text box at ~10%,10%: 'Problem: Image will vanish  if applying more filters in cascade' - Times New Roman Bold (or Georgia Bold), 28pt, color #C00000, left-aligned (keep the double space after 'vanish'). 4. Draw a second thin red (#C00000) rectangle outline from ~8%,20% to ~88%,70%. 5. Inside its top-left, add a bulleted list (~20pt, dark gray #3F3F3F, hollow-circle bullets in tan/gold): 'Our images get smaller and smaller' / 'Not too deep architectures' / 'Details are lost'. 6. Build a 5x5 table/grid of equal squares at ~25%,42% (overall ~21% wide, ~27% tall) with values rows [1,1,1,0,0],[0,1,1,1,0],[0,0,1,1,1],[0,0,1,1,0],[0,1,1,0,0]; fill rows 1-3 x cols 1-3 with yellow #FFE135 and all other cells green #33CC33; thin light cell borders; bold black ~14pt centered numbers. 7. Add tiny red (#FF0000) ~9pt 'x0' under the col-1 numbers and 'x1' under the col-3 numbers in rows 1-3. 8. Above the grid, add label 'Image' in Comic Sans MS ~22pt black. 9. Insert a white right-pointing block arrow with black outline at ~47%,55%. 10. Build a 3x3 grid at ~53%,45% with values [4,3,4],[2,4,3],[2,3,4], cells filled #9A9A8A, bold black numbers; label 'After conv 1' above in Comic Sans MS ~22pt black. 11. Insert a second white block arrow at ~71%,55%. 12. Place one #9A9A8A square at ~77%,54% containing bold black '18'; label 'After conv 2' above it in Comic Sans MS ~22pt black. 13. Draw a white rectangle with 1pt blue (#2E75B6) border from ~8%,73% to ~90%,94%. 14. Inside it, four left-aligned Times New Roman ~18pt navy (#1F3864) lines: bold 'Original 5x5'; then 'After apply one filter  of size 3x3, output will be3x3' (preserve double space after 'filter' and missing space in 'be3x3'); then 'After applying second filter on the output (cascaded filters)'; then 'Output will be 1x1'. 15. Optionally add a solid black rectangle strip across the very bottom edge (~96%-100% vertical) to mimic the video frame.",
+  "_meta": {
+    "frame": "slide_043.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 43,
+      "image": "slide_043.jpg",
+      "kept_frame": "frame_04018.jpg",
+      "start_sec": 3892.0,
+      "end_sec": 4017.0,
+      "frame_count": 126,
+      "old_group": 71,
+      "founder_frame_swap": false
+    },
+    "elapsed_s": 309.5
+  }
+}

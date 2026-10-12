@@ -1,0 +1,40 @@
+# Slide 042 INPUT-SLAB crop comparison â attempt 3
+
+## Element-by-element comparison
+
+**(1) Slab geometry**
+- Orange slab present in both, same overall parallelepiped orientation (front face large, thin left side face, narrow top strip).
+- IMG1's top edge has a small notch/bump near the w_in label that IMG2 does not have (smooth straight edge). â **MINOR, high confidence** (likely trace artifact).
+- IMG1's right end of the slab tapers to a slightly irregular point vs IMG2's clean straight vertical edge. â **MINOR, high confidence**.
+
+**(2) Fill colors**
+- Front face: same orange/brown in both. Match.
+- Left side strip: slightly lighter orange in both. Match.
+- Top strip: lighter orange in both. Match.
+
+**(3) Labels w_in, h_in, d_in**
+- All three present, italic serif style, same positions (w_in above top edge, h_in left â note h_in is cut off at crop edge in both, only italic h visible, consistent), d_in below bottom-left. Match.
+
+**(4) Stride marker** â ï¸
+- IMG2 clearly shows **two black dots and a diagonal double-headed arrow** on the slab face, with the italic "s" label below the arrow.
+- IMG1 shows **only the italic "s" letter** â the two dots and the arrow are **completely absent**. â **BLOCKER, very high confidence**. This is the defining element of the stride annotation.
+
+**(5) Other elements in crop**
+- Filter stack (right side): IMG2 shows two distinct slabs â blue front slab and a separated translucent green slab behind/right, with w_f, h_f, d_f labels. IMG1 shows the slabs **merged/overlapping**: green slab partially hidden behind teal slab, different silhouette, lighter/washed colors. â **MAJOR, high confidence** (right-side diagram geometry doesn't match).
+- Box outline bottom-right with "h" fragment: present in both, similar position. Match.
+- No mouse cursor in either crop. Pass.
+- No ghost ink detected in IMG1.
+
+## Discrepancy list
+
+| # | Issue | Severity | Confidence |
+|---|-------|----------|------------|
+| 1 | Stride dots + double-headed arrow missing from slab face (only "s" letter rendered) | **BLOCKER** | Very high |
+| 2 | Filter stack on right: slabs merged/overlapping, green slab mostly occluded, silhouette differs from original's separated blue+green slabs | MAJOR | High |
+| 3 | Notch/bump on top edge of orange slab near w_in not in original | MINOR | High |
+| 4 | Right edge of slab slightly irregular/pointed vs clean edge | MINOR | High |
+| 5 | "s" label position slightly lower on face (would shift once arrow is added anyway) | MINOR | Medium |
+
+**Key failure:** the stride marker (dots + arrow) â the exact element this comparison is checking â is missing from the recreation, and the neighboring filter volume is drawn with wrong overlap geometry.
+
+CROP VERDICT: MISMATCH
