@@ -25,18 +25,36 @@
 
 - One slide = one worker, `run_in_background: true`; all vision calls flock through
   the gate, so worker count is not the bottleneck.
-- **Watchdog duties** (every ~30 min): sync+report the DB; a row stuck in
-  building/judging with no file mtime movement for >60 min = dead worker → re-dispatch
-  (resume rule: banked artifacts and attempt numbering are preserved, a fresh worker
-  MUST verify the banked state against its own ground-truth frame before continuing);
+- **WORKER LIVENESS CONTRACT (founder directive 2026-10-12 — supersedes mtime/row
+  guessing):** a build worker that touches the progress DB MUST use the claim/heartbeat
+  protocol in `scripts/15_progress.py`: (1) `claim <slide> <self-generated-unique-id>`
+  at start — it refuses if a DIFFERENT worker holds a fresh claim (that is a live
+  peer: stand down read-only, the dual-dispatch law made flesh in the tool); (2)
+  `heartbeat <slide> <id>` after every completed step and at least every ~10 min in
+  long read phases (the ONLY liveness writer — bulk `sync` and content `set` never
+  touch it); (3) `release <slide> <id>` at the end. Liveness is answered by `sweep`
+  (building rows classified live / ZOMBIE / unclaimed by heartbeat freshness, 40-min
+  default), NEVER by file mtimes or "no completion notification" — on 2026-10-12
+  those over-counted a 6-worker fleet when 4 were alive (2 were dead but still looked
+  busy from their own last writes). `set` refuses to write a row claimed by a live
+  foreign worker (writers pass `--worker <owner>`, coordinator repairs `--force`).
+  Legacy rows without claims read as UNCLAIMED — claim them on first touch.
+- **Watchdog duties** (every ~30 min): sync+report the DB; run `15_progress.py sweep`
+  — building rows with stale/missing heartbeats are the re-dispatch list (resume
+  rule: banked artifacts and attempt numbering are preserved, a fresh worker MUST
+  verify the banked state against its own ground-truth frame before continuing);
   content gate enforcement; house-frame conformance sweep on PASSed builds.
 - **A worker reported done but shows "running" → check before re-dispatching**: the UI
   state can be stale (TaskStop returning "not running (status: completed)" proved
-  several "stuck" workers were actually done). Verify with file mtimes and DB rows.
+  several "stuck" workers were actually done). Verify with `sweep` + DB rows, not
+  mtimes.
 - **Dual-worker collisions**: a silently-resumed original worker + a re-dispatched
   resume worker can both own one slide. They overwrite each other's DB writes and
   bank evidence into different dirs (padded vs unpadded QA paths). Recovery: let both
   finish, then reconcile the DB row from the transcripts and bank BOTH evidence tracks.
+  (The claim/heartbeat contract above PREVENTS the write-collision half; the
+  stand-down-on-fresh-writes read-only protocol remains the fallback for pre-contract
+  workers.)
 - **Provider failures kill workers** (TLS failure, upstream timeout). The work isn't
   lost — re-dispatch a resume worker with a state summary (what's banked, what
   attempt number is next, what doesn't count as a spent attempt, e.g. a judge prompt

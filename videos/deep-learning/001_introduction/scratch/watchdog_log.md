@@ -114,3 +114,16 @@
 ## 2026-10-12 23:22 — DECK COMPLETE: 49/49
 - s25 certified judge attempt 1 (3 MINORs only). Row verified passed/PASS/1; deliverable md5 bdfe6011d50527a85e95ce88e5f483b9. Parent 24's component imported; numeral 25 per deck rule (veto pending deck-wide); equations PNG-only per deck peer convention, OMML manifest banked at build/assets/eq_025_manifest.json if the founder mandates later.
 - Deck 001_introduction COMPLETE. Outstanding founder items: badge-numeral veto (deck-wide), then any final-deck merge decision.
+
+## 2026-10-13 00:14 — watchdog cycle (all three 002 builders live + claimed)
+- s14 measuring (measure7 00:11, heartbeat 23:51), s48 FIRST RENDER landed (render_1 00:14, 91 files this window), s57 2nd builder claimed + verifying via banked corpus (z5 band crops 00:14). Certified 55/60 stable, no regressions this cycle.
+- 001t/001i complete and quiet. Gates: s16 behind 14; s1 founder.
+
+## 2026-10-13 00:44 — watchdog cycle
+- s14 JUDGING (attempt 1 registered, heartbeat fresh, 60 files) — P1 gate about to open for s16. s57 verifying token rows (z_tokrow6x 00:40). s48 certified row stable (56/60). No regressions, no dispatches.
+
+## 2026-10-13 01:14 — watchdog cycle
+- s14 fix loop running (judge attempt 2 registered, measure10 at 01:13, heartbeat 01:07). s57 3rd builder claimed (builder3-s57-b3a001) and in its TLS storm-retry loop (storm_loop.log 01:12) — alive, protocol handling the unstable upstream. s16 gated. Certified 56/60 stable.
+
+## 2026-10-13 01:51 — watchdog cycle
+- s57 4th builder alive + claimed (band probes at 01:50, pre-build verification continuing). s16 builder in opening read phase (0 writes, 25min — under threshold, claim expected soon; WATCH next cycle: if no claim + no files by ~02:10, treat as dead and resume). s14 row stable. Certified 57/60.

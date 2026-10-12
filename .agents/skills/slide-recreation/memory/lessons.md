@@ -1200,3 +1200,46 @@ builder for 002:14 claimed with a fresh heartbeat within minutes of the update.
 Rule: "is this worker alive?" is answered from the DB heartbeat, never from mtimes,
 absence of notifications, or DB gen_status alone; a bulk sync's updated_at is a
 content-write timestamp, not a liveness signal.
+
+## 2026-10-13 — Run a full-grid pixel diff BEFORE accepting a banked "full re-style" verdict (047→048 was inheritance, not re-style)
+Context: 002_transformers_part2 slide 048 ("Encoder Block" + right-hand Multi-Head
+Attention inset + positional-encoding thumbnail). The pre-curation campaign's banked
+m18_ffdiff-style verdict said 048 is a "full re-style" of 047, which pointed the builder
+at forking 047's blocks from scratch.
+Mistake: that verdict was accepted for a day of work without re-measuring; it was wrong.
+A fresh full-grid diff (tol<=10 identical-fraction + per-cell maps, 002:48 scratch
+m17_diff/m18_finediff) showed 047 vs 048 are 70.16% IDENTICAL pixels — identical outside
+exactly three zones (right inset panel, bottom-left thumbnail, longer LN-bar labels);
+everything else (strips, dots, FFN tiles, MHA bar, discs, curves, arrows, container,
+title, IO boxes) is shared, i.e. 048 = renderBase(047) + 3 delta zones.
+Fix: build/slide_048.js requires components/slide_047.js and calls renderBase(pptx,
+slide, {numeral:48}), then draws the three zones; selfcheck 11/11, judge PASS attempt 1.
+Rule: before forking a parent's mechanism as a "re-style", run the cheap full-grid
+pixel diff between the two frames — same chrome + >50% identical pixels means
+INHERITANCE (renderBase + delta zones), and only a genuinely re-styled frame (046→047
+shares only the outer margins) justifies a fork. (Corrects the 2026-10-12 "full re-style
+children" entry: that entry documents how to fork when diffing proves re-style; this
+entry says the diff must be the TRIGGER, not a banked claim.)
+
+## 2026-10-13 — Occluded badge digits: adjudicate by same-font sibling IoU at the ring-arc-located badge; never by a vision read of the occluded glyph
+Context: 002:48 badge "48-or-49" conflict (three transcriptions + the validated spec
+said "49"; the file is named by its printed number). The badge's lower half is covered
+by the inset panel border from y73; only digit upper halves y58-72 are ink evidence,
+and the '8'/'9' discriminator rows (waist pinch vs loop-close-then-tail, y71-74) sit
+EXACTLY at the occlusion boundary.
+Mistake (both directions): (a) locating the badge by a yellow-color centroid returned
+(877.6,65.3) — polluted by pale-yellow strip cells nearby — and later IoU vs '9' of
+0.869 was computed on that mis-located window and never tested '8' at all; (b) full-
+badge vision reads hallucinate the hidden rows and confidently returned "49".
+Fix (scratch/slide048/m24_badge3.txt + m25_badge_iou.txt): locate the badge by its RING
+ARCS (top arc y53, bottom arc y88, identical across 018/038/047/048/049 → center
+(874.5,70.5)); print per-row ASCII ink maps of a fixed window for the question frame
+AND sibling frames whose digit is known from their filenames (018/038/058='8',
+047='7', 049='9'); compare the unoccluded patch by binarized ink IoU: 048's digit-2 vs
+known-'8' = 0.91-0.96 (mean gray |diff| 2.6-4.6 = same glyph), vs '9' = 0.75, vs '7' =
+0.50 → numeral 48, file id and print agree, transcriptions were misreads.
+Rule: for any partially occluded glyph, the arbiter is a fixed-window pixel comparison
+against same-font siblings at a ring-arc-verified position — a vision read of the
+occluded artifact is a prior, not evidence; and a discriminating measurement that
+"confirms" a hypothesis is void if the window was located by a polluted heuristic or
+the strongest alternative hypothesis was never tested.

@@ -9,6 +9,7 @@ Usage:
                                                validation_status='ready')
   15_progress.py sync                          refresh analysis/validation fields from analysis/
   15_progress.py set <slide_id> <field> <val>  update one field (whitelisted)
+                                               [--worker <id>] [--force]  (ownership guard)
   15_progress.py get <slide_id>                print one row as JSON
   15_progress.py report                       print the full status table
   15_progress.py ready                         print slide_ids with validation_status='ready'
@@ -18,6 +19,31 @@ Usage:
                                                AND visual_check='PASS')
   15_progress.py buildable                    ids passing content gate + dep gate + pattern gate
                                                that are not built yet (the dispatch list)
+  15_progress.py claim <slide_id> <worker_id> [--force]
+                                               take ownership of a build lane: refuses if a
+                                               DIFFERENT worker holds a FRESH claim (heartbeat
+                                               < 40 min) — that is a live peer, stand down;
+                                               stale claims are taken over automatically.
+  15_progress.py heartbeat <slide_id> <worker_id>
+                                               ONLY liveness writer: stamps worker_heartbeat_at
+                                               (never touched by set/sync). The truth signal that
+                                               a 'building' row has a live owner.
+  15_progress.py release <slide_id> <worker_id>
+                                               clear the claim when the worker finishes.
+  15_progress.py sweep [--stale-min N]         the DB-vs-reality check: every gen_status='building'
+                                               row classified live / ZOMBIE (heartbeat stale or
+                                               missing) / unclaimed. Zombies are the re-dispatch
+                                               list. (lesson 2026-10-12: file-mtime inference
+                                               over-counted live workers 6 vs actual 4 — the DB
+                                               must carry worker liveness itself.)
+
+WORKER LIVENESS CONTRACT (founder directive 2026-10-12, after mtime-guessing
+miscounted the fleet): a builder subagent (1) `claim`s its slide with a
+self-generated unique id at start, (2) calls `heartbeat` after every completed
+step (and at least every ~10 min during long phases), (3) `release`s at the end.
+'building' + fresh heartbeat = live; 'building' + stale/missing heartbeat =
+zombie (safe to reclaim via claim's takeover path). updated_at records CONTENT
+writes (any writer, incl. bulk syncs) and must never be read as liveness.
 
 Dependency token grammar (depends_on CSV, v2 — founder directive 2026-10-11):
   bare int                  same-video parent        e.g.  26
@@ -59,7 +85,12 @@ COLS = ["slide_id", "image_path", "title", "analysis_status", "analysis_attempts
         "validation_status", "validation_verdict", "recreatability_score",
         "validation_attempts", "gen_status", "pptx_path", "build_script",
         "visual_check", "visual_attempts", "visual_transcript", "last_error", "updated_at",
-        "depends_on", "pattern_group", "pattern_seq"]
+        "depends_on", "pattern_group", "pattern_seq",
+        "worker_id", "worker_heartbeat_at"]
+
+# Worker-claim staleness (minutes): a 'building' row whose heartbeat is older
+# than this has a dead owner (the banked dual-condition death-test threshold).
+STALE_MIN = 40
 
 
 def now():
@@ -72,11 +103,14 @@ def conn():
     # dependency-gated decks (founder directive 2026-10-11): depends_on holds a csv of
     # direct-parent tokens — bare ints (same video) or qualified '<namespace>:<id>'
     # (cross-video). pattern_group/pattern_seq encode sequential-build pattern groups.
+    # worker_id/worker_heartbeat_at are the worker-liveness contract (founder
+    # directive 2026-10-12): claim/heartbeat/release manage them; set/sync never do.
     # Guarded adds keep old DBs compatible (and no-op before init creates the table).
     cols = [r[1] for r in c.execute("PRAGMA table_info(slides)")]
     if cols:
         for col, typ in (("depends_on", "TEXT"), ("pattern_group", "TEXT"),
-                         ("pattern_seq", "INTEGER")):
+                         ("pattern_seq", "INTEGER"),
+                         ("worker_id", "TEXT"), ("worker_heartbeat_at", "TEXT")):
             if col not in cols:
                 c.execute(f"ALTER TABLE slides ADD COLUMN {col} {typ}")
         c.commit()
@@ -99,7 +133,8 @@ def init():
             recreatability_score INTEGER, validation_attempts INTEGER DEFAULT 0,
             gen_status TEXT DEFAULT 'pending', pptx_path TEXT, build_script TEXT,
             visual_check TEXT, visual_attempts INTEGER DEFAULT 0, visual_transcript TEXT,
-            last_error TEXT, updated_at TEXT)""")
+            last_error TEXT, updated_at TEXT,
+            worker_id TEXT DEFAULT '', worker_heartbeat_at TEXT)""")
 
 
 def register():
@@ -266,12 +301,124 @@ def sync():
     print("synced analysis/ -> db")
 
 
-def set_field(sid, field, value):
+def _hb_age_minutes(hb):
+    """Minutes since a worker_heartbeat_at timestamp; None if never stamped/unparseable."""
+    if not hb:
+        return None
+    try:
+        dt = datetime.datetime.fromisoformat(hb)
+    except ValueError:
+        return None
+    return (datetime.datetime.now() - dt).total_seconds() / 60.0
+
+
+def claim(sid, wid, force=False):
+    """Take ownership of a build lane. Refuses a DIFFERENT worker's FRESH claim
+    (that is a live peer — stand down); stale claims are taken over."""
+    with conn() as c:
+        row = c.execute("SELECT worker_id, worker_heartbeat_at FROM slides WHERE slide_id=?",
+                        (sid,)).fetchone()
+        if not row:
+            sys.exit(f"no row for slide {sid} (run register first)")
+        owner, hb = row
+        age = _hb_age_minutes(hb)
+        if owner and owner != wid and not force:
+            if age is None or age >= STALE_MIN:
+                pass  # stale/unparseable claim -> takeover
+            else:
+                sys.exit(f"REFUSED: slide {sid} claimed by live worker {owner!r} "
+                         f"(heartbeat {age:.0f}m ago, fresh < {STALE_MIN}m) — "
+                         f"that is a live peer; stand down (or --force to override)")
+        took = ""
+        if owner and owner != wid:
+            took = f" (took over from {owner!r}, heartbeat " + (
+                f"{age:.0f}m stale)" if age is not None else "none)")
+        c.execute("UPDATE slides SET worker_id=?, worker_heartbeat_at=?, "
+                  "gen_status='building', updated_at=? WHERE slide_id=?",
+                  (wid, now(), now(), sid))
+    print(f"claimed slide {sid} by {wid}{took}")
+
+
+def heartbeat(sid, wid):
+    """The ONLY liveness writer. Refuses a foreign live claim; implicitly claims
+    an unclaimed row. Never touches updated_at — content writes and liveness
+    are separate signals."""
+    with conn() as c:
+        row = c.execute("SELECT worker_id FROM slides WHERE slide_id=?", (sid,)).fetchone()
+        if not row:
+            sys.exit(f"no row for slide {sid} (run register first)")
+        owner = row[0]
+        if owner and owner != wid:
+            age = _hb_age_minutes(
+                c.execute("SELECT worker_heartbeat_at FROM slides WHERE slide_id=?",
+                          (sid,)).fetchone()[0])
+            if age is not None and age < STALE_MIN:
+                sys.exit(f"REFUSED: slide {sid} claimed by live worker {owner!r} "
+                         f"({age:.0f}m) — heartbeat from {wid!r} rejected")
+        c.execute("UPDATE slides SET worker_id=CASE WHEN worker_id IS NULL OR worker_id='' "
+                  "THEN ? ELSE worker_id END, worker_heartbeat_at=? WHERE slide_id=?",
+                  (wid, now(), sid))
+    print("ok")
+
+
+def release(sid, wid):
+    """Clear the claim when the worker finishes (pass or fail)."""
+    with conn() as c:
+        n = c.execute("UPDATE slides SET worker_id='', worker_heartbeat_at=NULL "
+                      "WHERE slide_id=? AND worker_id=?", (sid, wid)).rowcount
+        if not n:
+            sys.exit(f"slide {sid} is not claimed by {wid!r} — nothing released")
+    print(f"released slide {sid} ({wid})")
+
+
+def sweep(stale_min):
+    """The DB-vs-reality check: every 'building' row classified by claim freshness.
+    Zombies (stale/missing heartbeat) are the re-dispatch list; fresh claims are
+    live workers. This is what 'is anything actually running?' is answered FROM."""
+    with conn() as c:
+        rows = c.execute("SELECT slide_id, worker_id, worker_heartbeat_at FROM slides "
+                         "WHERE gen_status='building' ORDER BY slide_id").fetchall()
+    live, zombie, unclaimed = [], [], []
+    for sid, wid, hb in rows:
+        age = _hb_age_minutes(hb)
+        if not wid or age is None:
+            unclaimed.append((sid, wid or ""))
+        elif age <= stale_min:
+            live.append((sid, wid, age))
+        else:
+            zombie.append((sid, wid, age))
+    print(f"sweep @ {now()} (stale threshold {stale_min}m): "
+          f"{len(live)} live, {len(zombie)} ZOMBIE, {len(unclaimed)} unclaimed-building")
+    for sid, wid, age in live:
+        print(f"  LIVE      {sid:>3}  {wid}  heartbeat {age:.0f}m ago")
+    for sid, wid, age in zombie:
+        print(f"  ZOMBIE    {sid:>3}  {wid}  heartbeat {age:.0f}m ago (STALE > {stale_min}m) — reclaimable")
+    for sid, wid in unclaimed:
+        print(f"  UNCLAIMED {sid:>3}  worker_id={wid!r} heartbeat none — legacy row, claim it")
+    if zombie or unclaimed:
+        print("re-dispatch list: " + " ".join(str(s) for s, *_ in zombie + unclaimed))
+
+
+def set_field(sid, field, value, worker=None, force=False):
     if field not in TEXT_FIELDS and field not in INT_FIELDS:
         sys.exit(f"bad field {field!r}; allowed: {sorted(TEXT_FIELDS | INT_FIELDS)}")
     if field in INT_FIELDS:
         value = int(value)
     with conn() as c:
+        row = c.execute("SELECT worker_id, worker_heartbeat_at FROM slides WHERE slide_id=?",
+                        (sid,)).fetchone()
+        if not row:
+            sys.exit(f"no row for slide {sid} (run register first)")
+        owner, hb = row
+        # Ownership guard (worker-liveness contract): a row claimed by a live worker
+        # is that worker's to write. Stale claims pass through (dead owner); the
+        # row's own owner passes --worker <id>; coordinator repairs pass --force.
+        if owner and owner != worker and not force:
+            age = _hb_age_minutes(hb)
+            if age is not None and age < STALE_MIN:
+                sys.exit(f"REFUSED: slide {sid} claimed by live worker {owner!r} "
+                         f"({age:.0f}m) — writers pass --worker {owner}; coordinator "
+                         f"repairs pass --force")
         n = c.execute(f"UPDATE slides SET {field}=?, updated_at=? WHERE slide_id=?",
                       (value, now(), sid)).rowcount
         if not n:
@@ -289,14 +436,22 @@ def get(sid):
 
 def report():
     cols = ["id", "title", "analysis", "verdict", "score", "gen", "visual", "vatt",
-            "deps", "pat", "pptx", "err"]
+            "deps", "pat", "pptx", "wkr", "hb", "err"]
     sel = """SELECT slide_id,title,analysis_status,validation_verdict,recreatability_score,
              gen_status,visual_check,visual_attempts,depends_on,
-             COALESCE(pattern_group || '#' || pattern_seq, ''), pptx_path,last_error
+             COALESCE(pattern_group || '#' || pattern_seq, ''), pptx_path,
+             COALESCE(worker_id,''), worker_heartbeat_at, last_error
              FROM slides ORDER BY slide_id"""
     with conn() as c:
         rows = c.execute(sel).fetchall()
-    data = [[("" if v is None else str(v)) for v in r] for r in rows]
+    # hb column: minutes since the owning worker's last heartbeat (liveness),
+    # NOT updated_at — content writes and worker liveness are separate signals.
+    data = []
+    for r in rows:
+        r = list(r)
+        age = _hb_age_minutes(r[12])
+        r[12] = f"{age:.0f}m" if age is not None else ""
+        data.append([("" if v is None else str(v)) for v in r])
     widths = [max([len(cols[i])] + [len(r[i]) for r in data] or [0]) for i in range(len(cols))]
     print("  ".join(cols[i].ljust(widths[i]) for i in range(len(cols))))
     for r in data:
@@ -317,16 +472,42 @@ def main():
         print(__doc__)
         sys.exit(1)
     cmd = sys.argv[1]
+    rest = sys.argv[2:]
+    FLAGS_WITH_VALUES = ("--worker", "--stale-min")  # any other --flag is boolean
+    def optval(name, default=None):
+        return rest[rest.index(name) + 1] if name in rest else default
+    # Positionals = tokens that are neither a flag nor a flag's VALUE (else
+    # '--worker w-A' puts w-A in the positional list and the command falls
+    # through to the usage error — hit in the first live test).
+    pos, skip = [], False
+    for a in rest:
+        if skip:
+            skip = False
+            continue
+        if a.startswith("--"):
+            skip = a in FLAGS_WITH_VALUES
+            continue
+        pos.append(a)
     if cmd == "init":
         init()
     elif cmd == "register":
         register()
     elif cmd == "sync":
         sync()
-    elif cmd == "set" and len(sys.argv) == 5:
-        set_field(int(sys.argv[2]), sys.argv[3], sys.argv[4])
-    elif cmd == "get" and len(sys.argv) == 3:
-        get(int(sys.argv[2]))
+    elif cmd == "set" and len(pos) == 3:
+        set_field(int(pos[0]), pos[1], pos[2],
+                  worker=optval("--worker"), force="--force" in rest)
+    elif cmd == "claim" and len(pos) == 2:
+        claim(int(pos[0]), pos[1], force="--force" in rest)
+    elif cmd == "heartbeat" and len(pos) == 2:
+        heartbeat(int(pos[0]), pos[1])
+    elif cmd == "release" and len(pos) == 2:
+        release(int(pos[0]), pos[1])
+    elif cmd == "sweep":
+        stale = int(optval("--stale-min", STALE_MIN))
+        sweep(stale)
+    elif cmd == "get" and len(pos) == 1:
+        get(int(pos[0]))
     elif cmd == "report":
         report()
     elif cmd == "ready":

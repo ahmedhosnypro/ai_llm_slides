@@ -7,7 +7,9 @@ Deck: 49 curated slides (founder curation 80 extraction groups → 49, renumbere
 metadata rebuilt from content hashes — `unique_slides/new2old_mapping.json`).
 Status at close-out: **49/49 CERTIFIED PASS** (judge attempts 1–4 across the deck;
 DB snapshot: `closeout_db_report_2026-10-12.txt`; the report's "50th row" is the
-quarantined fabricated-artifact placeholder, blocked, not a slide).
+quarantined fabricated-artifact placeholder, blocked, not a slide). DB refreshed
+2026-10-13 (slide-18 pointer fix + worker-liveness migration + final sync):
+`closeout_db_report_2026-10-13.txt`.
 
 ## 1. Deliverables (single-version law: one pptx per slide, plain names)
 

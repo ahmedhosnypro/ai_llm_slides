@@ -259,3 +259,25 @@ Context: 001_introduction slide 025. Two builders had raced (21:05 + 21:24 dispa
 Facts: #2 had already exited with a zero-writes report; the watchdog does not judge; #1 was the ONLY live agent in the window and stayed alive through 23:26. Conclusion: #1 executed the whole certification chain itself across turns whose details were compacted out of its context, then misattributed its own artifacts to a phantom peer.
 Why nothing was lost: (1) the coordinator messaged #1 the concrete on-disk facts with mtimes, so it READ before writing (banking law) instead of overwriting; (2) banked-PASS-terminal meant once the transcript+DB were found it stood down instead of re-judging; (3) the certificate's validity never depended on authorship — only on the real gate transcript + DB row, both verified independently by the coordinator.
 Rule: an agent's "who wrote this" attributions are UNRELIABLE after long runs — before treating observed fresh writes as a peer's, enumerate every candidate writer INCLUDING the observer itself (duration/mtime math: if only you were alive, it was you). Coordinators: when relaying state to a long-running worker, include absolute mtimes and the full write-chain; workers: re-stat + read-first is what saved this — never rebuild over artifacts you cannot attribute.
+
+## 2026-10-13 — Stale handoff summary said "mid-campaign" when the task was already certified; the dispatch's "expected 49" was falsified by measurement
+Context: 002_transformers_part2 slide 048. The continuation session's handoff summary
+described the worker as "in the middle of a measurement campaign"; the dispatch brief
+listed a full build/judge/certify program and stated the badge's expected printed value
+was "49" (from three raw transcriptions + the validated spec), mandating a prominent
+mismatch flag if the print disagreed with the file id.
+Facts on disk (discovered by stat + read-first, before any work): the ENTIRE program had
+already been executed by the prior session of the same task in 1 attempt — build/slide_
+048.js (00:14), render_1.png, judge_attempt_1.txt PASS (00:28), DB gen_status=passed/
+visual_check=PASS (00:29), worker_report.md (00:30). The only genuine open item was the
+badge conflict, and re-measurement (ring-arc-located fixed-window sibling IoU, scratch/
+slide048/m24/m25) proved the print IS 48 — the dispatch's "expected 49" was a false
+prior from misreads of the occluded digit, so the mandated mismatch flag became a
+"mismatch refuted, evidence banked" flag instead.
+Handling: no rebuild, no re-judge, no second attempt; certification chain verified
+intact, worker_report.md badge section strengthened + addendum appended, lessons
+recorded.
+Rule: a handoff summary is a hypothesis about disk state — stat the deliverable, qa/
+dir, and DB row BEFORE resuming any phase of a compacted task; and a dispatch's
+"expected" measurement value is a claim to test, never a target to write — the frame
+wins over both the dispatch and the transcriptions.
