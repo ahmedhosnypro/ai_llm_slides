@@ -1,69 +1,39 @@
-// slide_016.js — "Using  FF NN  for Multiplication of Multiple Vectors by Multiple Matrices"
+// slide_016_r2.js — "Using  FF NN  for Multiplication of Multiple Vectors by Multiple Matrices"
 // (Deep Learning DSAI 308, Transformers Part II — video 002, slide 16)
 //
-// PATTERN GROUP P1#5 (FINAL MEMBER; 9/10/12/14 certified). Pattern reuse, NOT content
-// dependency. Family idioms applied:
-//   * house chrome via shared shared_patterns/house_chrome.js (badge numeral 16 —
-//     048-protocol verified: tens IoU 1.000 vs '1', units 0.911 vs '6' vs 0.688 max '9')
-//   * matrix cells == 009/012/14-certified treatment (fill FCF9C8, olive rim 8B7B3A,
-//     bold W + two-digit subscript, row text colors = N9.C.stack1..4). MEASURED on this
-//     frame too (m3/g2): ALL 48 cell fills pale-yellow #FFFBC0-#FDFFD6; row text
-//     families blue/purple/ORANGE/green — spec's "row1 yellow/row2 pink/row3 orange/
-//     row4 green fills" is WRONG, frame wins (same correction as slide 14's worker).
-//   * containers == 012-certified tints (D4FCE6 / F8E6D0 / D5D5FB; measured
-//     #D8FFE6 / #F8E6D0 / #D5D5F9)
-//   * output cells == 010-certified y-box idiom (red y + red sub, centered) with
-//     group-tinted fills; borders thin dark 404040 (measured median #B2A39A = 1px
-//     dark border JPEG-washed on tinted fills)
-//   * big vector names as separate positioned boxes (012 fix12: LO renders
-//     baseline-attr runs at 58% — separate boxes keep PowerPoint == LibreOffice)
-//   * tall parentheses around the matrices via the certified raster mechanism
-//     (gen_paren_s016.py -> s016_paren_L/R.png at exact px/600 size)
+// r2 = watcher-of-record fix build (claim: .claim_builder zcode-worker
+// 2026-10-13T01:57:00+03:00, renewed r2). Copy-then-modify of s16-p1-final-0158's
+// slide_016.js (its attempt-1 files are untouched banked evidence). Fixes the four
+// points of the divergence audit (qa/slide016/OBJECTION_divergence.md, filed over the
+// attempt-1 judge PASS per the visual-precision mandate):
+//   FIX 1+4 (bracket shape): the frame's brackets are ALL flat PARENS (per-row ink-run
+//     profiles: smooth end-drift, NO horizontal arms, bow 7-8 fx) — the pill-wrapper
+//     and embed flank brackets are therefore raster parens (s016r2_pil_L/R.png maroon
+//     800000, s016r2_emb_L/R.png blue 0000CC; gen_paren_s016_r2.py, same certified
+//     raster mechanism as the mat parens), NOT native leftBracket/rightBracket shapes.
+//     Matrix parens were already paren-shaped and stay (s016_paren_L/R.png).
+//   FIX 2 (output cells): WHITE fills (FFFFFF — measured mode (255,255,250); 009's
+//     y-box idiom) + 8B7B3A rims ~1pt (measured cores (76,52,42)/(98,88,63)), NOT
+//     group-tinted fills with 404040 rims. The group-tinted ROW PILLS behind the cells
+//     are confirmed frame-true (gaps g1 green/g2 peach/g3 lavender) and stay.
+//   FIX 3 (right annotation column): both lines CENTER-aligned at cx fx 846.5 (measured
+//     line1 ink 816..877, line2 800..893 — the attempt-1 right-align at fx 902 was the
+//     house-border column mistaken for text ink); line1 fs 8.5 (61 px ink, not 12.3);
+//     line2 = red "Projection of Word " + NAVY 0000CC "#N" runs (39 navy px measured at
+//     fx 883..893, (62,44,143) family) at fs 9.5.
+// Circle fill minor: RESOLVED transparent (frame shows pill pink through interiors).
 //
-// COMPOSITION (MEASURED, scratch/slide016/ m1 m2 m3 g1-g4 v1 t2-t9 + vision reads
-// vision_subtitle/headers_captions/labels_summary_annot/xname .txt; frame px 1px=1pt,
-// THIS-frame deck mapping slide_x=(fx-17.582)/0.962329, slide_y=fy/0.955556):
-//   upper panel fx 72..801 fy 111..317 (fill F2F1EF, rim D0D5DA) — embeddings AND
-//     matrices in ONE panel; lower panel fx 264..897 fy 322..514 (same treatment)
-//   title ink fx 116..805 caps fy 56..71 (fs 20.5 metric-fit; Arial-bold 34.9em)
-//   subtitle ink fx 122..836 caps fy 80..91 — ALL deep blue 0000CC (cores #090066),
-//     bold italic, W italic + sub k; VERBATIM "Usage: Multiply Vectors of All Words
-//     by Multiple  (different) W_k  (Keys of Multiple Heads)" (double spaces; the 5
-//     tiny red marks above it are TITLE DESCENDERS, not subtitle runs — vision read)
-//   embedding rows (5, pitch 36.5): blue [ ] brackets fx 157..160/297..300 fy 133..315
-//     (arms ~14px inward); pink pill fx 163..295 h 32.5 (fill FFE3F9, C00000 rim);
-//     4 TRANSPARENT circles d22.5 cx [188.5,215.5,240,264.5] C00000 rims + bold X_i
-//     (C00000; measured rose = C00000 washed by pink pill bleed); label L1
-//     "Embedding Vector" (red fs 7.5, caps fy 139..143) / L2 "of Word " (red) + "#1"
-//     (BLUE 0000CC — 8x vision read) + big italic X_i (CC00CC fs 14.5, cores #AA52AC
-//     == CC00CC washed) + sub (CC00CC)
-//   matrix headers "W_k of Head N": red "W_k of " + blue "Head N" (vision read), caps
-//     fy 118..126, ink centers fx 386.5/547/709.5
-//   3 containers + 16 cells each (cols H1 [317,353,390,424] H2 [483,519,557,590]
-//     H3 [643,679,717,750] w26.5; rows fy [151.5,189,230.5,269] h18.5)
-//   tall ( ) around all three matrices: L ink fx 306..315, R fx 782..790, fy 128..309
-//     (middle apex outward-facing... inward apex: L middle-leftmost, R middle-rightmost
-//     — normal parentheses; the spec's "[?] brace" = these)
-//   "=" fx 268..280 bars fy 404..414 (fs 26 bold red); the vertical red stroke at
-//     fx 295..297 fy 339..477 is the OUTPUT BLOCK's left bracket, not part of "="
-//   output block: 3 groups x 5 rows x 4 cells (lefts g1 [311.5,348,383.5,419.5],
-//     g2 [475,511,546.5,582], g3 [636.5,673,709,745], w24; tops [337,367.5,397.5,428,
-//     458] h19.5, pitch 30.2); group tints D4FCE6/F8E6D0/D5D5FB; red y_i labels;
-//     block wrapped in tall maroon 9C3444 [ ] end-bars (spines fx 295..297 / 787..790,
-//     fy ~334..478, short arms) — spec missed these
-//   captions 2 lines centered (vision read): "Corresponding" (red fs 11) /
-//     "Projections at " (red fs 9.5) + "Head N" (BLUE 0000CC — spec's [?] resolved);
-//     line1 caps fy 486..493, line2 498..504; centers fx 366.5/566.5/735.5
-//   right annotations: 5 centered 2-line blocks (pitch 29.9fx, aligned to output rows):
-//     "Corresponding" (red fs 11) / "Projection of Word #N" (red fs 8.5), cx ~fx 857
-//   summary box fx 64..258 fy 417..496: BLUE 0000CC border w2.25 (core #19125C),
-//     fill FAFBEB (pale cream — measured, NOT F0F1EF), round bullets 0000CC at fx ~75,
-//     3 lines fs 11 bold (blue with red highlights on lines 1-2; line 3 measured ALL
-//     BLUE — spec's red '4' wrong): "Sequence of  5 Words" / "Network with  3 Heads" /
-//     "Embedding  Dimension=4"
-//   OMITTED as video artifacts (GROUND RULES (c) + m3 artifact note): gray cursor box
-//     over Head1 row 3; black bottom letterbox rows 519..539.
-// CONTENT SPEC: analysis/slide_016_final.json (PASS_WITH_FIXES, score 9). Badge = 16.
+// PATTERN GROUP P1#5 (FINAL MEMBER; 9/10/12/14 certified). Family idioms (inherited
+// from the attempt-1 build, unchanged here):
+//   * house chrome via shared shared_patterns/house_chrome.js (badge numeral 16)
+//   * matrix cells == 009/012/14-certified treatment (FCF9C8 / 8B7B3A, N9 row colors)
+//   * containers == 012-certified tints (D4FCE6 / F8E6D0 / D5D5FB)
+//   * big vector names as separate positioned boxes (012 fix12)
+//   * tall parentheses via the certified raster mechanism at exact px/600 size
+//
+// COMPOSITION (MEASURED, scratch/slide016/ m1 m2 m3 g1-g4 v1 t2-t9 + r2 audit;
+// frame px 1px=1pt, THIS-frame deck mapping slide_x=(fx-17.582)/0.962329,
+// slide_y=fy/0.955556): see the attempt-1 header + OBJECTION_divergence.md.
 
 const { drawHouseChrome } = require(
   "/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/shared_patterns/house_chrome.js"
@@ -78,18 +48,17 @@ const FONT = "Arial";
 // ---- palette (frame-measured / family-certified) ------------------------------------
 const C = {
   inkRed: "C00000",
-  blue: "0000CC",          // deep blue family (cores #090066..#261A88; 014-certified mapping)
-  magenta: "CC00CC",       // X_N vector names (012-certified; cores #AA52AC..#B65EC0)
-  panel: "F2F1EF",         // content panels (measured #F2F1EF)
-  panelRim: "D0D5DA",      // panel borders (009-certified)
-  pillPink: "FFE3F9",      // embedding pill fill (measured)
-  cellFill: N9.C.cellFill, // FCF9C8
-  cellRim: N9.C.cellRim,   // 8B7B3A
-  green: "D4FCE6",         // Head1 tint (012-certified)
-  orange: "F8E6D0",        // Head2 tint
-  lavender: "D5D5FB",      // Head3 tint
-  outCellRim: "404040",    // output cell borders (measured dark 1px)
-  yBracket: "9C3444",      // output end-bars (010-certified maroon family)
+  blue: "0000CC",          // deep blue family (014-certified; annotation "#N" runs measured (62,44,143))
+  magenta: "CC00CC",       // X_N vector names (012-certified)
+  panel: "F2F1EF",
+  panelRim: "D0D5DA",
+  pillPink: "FFE3F9",
+  cellFill: N9.C.cellFill, // FCF9C8 (matrix cells)
+  cellRim: N9.C.cellRim,   // 8B7B3A — ALSO the output-cell rim (r2 fix 2; measured cores)
+  outCellFill: "FFFFFF",   // output cells white (r2 fix 2; measured mode (255,255,250))
+  green: "D4FCE6",
+  orange: "F8E6D0",
+  lavender: "D5D5FB",
 };
 
 // ---- mapping (THIS frame's deck fit, m1_chrome_output.txt) ---------------------------
@@ -107,8 +76,10 @@ const G = {
   sub: { cx: 479, capTop: 80, fs: 17.9 },
   panelU: { x: 72, y: 111, w: 729, h: 206 },
   panelL: { x: 264, y: 322, w: 633, h: 192 },
-  embedBracketL: { spine: [157, 133, 3.5, 182], armW: 15, armH: 4 },
-  embedBracketR: { spine: [297, 133, 3.5, 182], armW: 13, armH: 4 },
+  // r2 fix 1+4: embed flanks are flat paren IMAGES (frame: apex 158..159/298..300,
+  // ends 164..166/292..296, bow 7-8 fx, ink fy 133..315; boxes carry 2px pad)
+  embedParenL: { x: 155, y: 131, wPt: 14.5480, hPt: 194.6511 },
+  embedParenR: { x: 290, y: 131, wPt: 13.5089, hPt: 194.6511 },
   embedRows: {
     pillX: 163, pillW: 132, pillH: 32.5, tops: [134.5, 171, 207.5, 244, 280.5],
     circleCxs: [188.5, 215.5, 240, 264.5], circleD: 22.5,
@@ -120,7 +91,6 @@ const G = {
     { x: 476, y: 131, w: 147, h: 178, fill: C.orange,   hcx: 547 },
     { x: 637, y: 131, w: 146, h: 178, fill: C.lavender, hcx: 709.5 },
   ],
-  // header W/k/of parts measured per matrix: W ink / k ink / "of Head N" left edge
   headerParts: [
     { wCx: 359, kCx: 366.5, ofX: 371 },
     { wCx: 519, kCx: 526.5, ofX: 531 },
@@ -134,15 +104,19 @@ const G = {
   parenL: { x: 302, y: 126, wPt: 20.7829, hPt: 193.6046 },
   parenR: { x: 774, y: 126, wPt: 19.7438, hPt: 193.6046 },
   equals: { cx: 274, cy: 409, fs: 26 },
-  outBracketL: { spine: [295, 334, 3, 144], armW: 11, armH: 5 },
-  outBracketR: { spine: [787, 335, 3, 143], armW: 11, armH: 5 },
+  // r2 fix 1: output wrapper flanks are flat paren IMAGES (frame: apex 295..297/788..790,
+  // ends 300..303/781..785, bow 8 fx, ink fy 335..481)
+  outParenL: { x: 293, y: 333, wPt: 13.5089, hPt: 156.9767 },
+  outParenR: { x: 779, y: 333, wPt: 14.5480, hPt: 156.9767 },
   outCells: {
     lefts: [[311.5, 348, 383.5, 419.5], [475, 511, 546.5, 582], [636.5, 673, 709, 745]],
     cw: 24, rowTops: [337, 367.5, 397.5, 428, 458], ch: 19.5,
-    fills: [C.green, C.orange, C.lavender],
+    pillFills: [C.green, C.orange, C.lavender],  // row pills BEHIND cells (frame-true)
   },
   captions: { cxs: [366.5, 566.5, 735.5], l1CapTop: 486, l2CapTop: 498, fs1: 11, fs2: 10.4 },
-  annots: { rightFx: 902, pitch: 29.9, l1CapTop: 341, l2CapTop: 351, fs1: 12.3, fs2: 11, n: 5 },
+  // r2 fix 3: annotations CENTER-aligned at cx 846.5; line1 fs 8.5 red; line2 red +
+  // navy "#N" (frame: line1 ink 816..877, line2 red 800..879 + navy 883..893)
+  annots: { cx: 846.5, pitch: 29.9, l1CapTop: 341, l2CapTop: 351, fs1: 8.5, fs2: 9.5, n: 5 },
   summary: {
     x: 64, y: 417, w: 194, h: 79, bulletCx: 75, bulletD: 4.5,
     lineCapTops: [434, 456, 477], textX: 88, textW: 164, fs: 11,
@@ -158,10 +132,6 @@ function drawTitle(pres, s) {
 }
 
 function drawSubtitle(pres, s) {
-  // original hand-styles the math variable: larger italic W (ink fx603..619 h14 ->
-  // fs ~20.5) + big lowered k (ink fx619..626 fy89..97 -> fs ~12.5, below the text
-  // baseline) — separate positioned boxes (fix12 idiom; vision read + t-art measured).
-  // main text caps fy80..91.5 (fs 17.9); left box ends fx601, right starts fx636.
   const mainCy = fy2sy(85.75);
   s.addText("Usage: Multiply Vectors of All Words by Multiple  (different) ",
     { x: px(fx2sx(601) - 580), y: px(mainCy - 13), w: px(580), h: px(26),
@@ -187,29 +157,24 @@ function drawPanels(pres, s) {
   }
 }
 
-function drawEmbedBrackets(pres, s) {
-  // blue [ ] hugging the pill column, arms pointing inward
-  const B = G.embedBracketL, B2 = G.embedBracketR;
-  for (const [b, dir] of [[B, 1], [B2, -1]]) {
-    const [x0, y0, w, h] = b.spine;
-    s.addShape(pres.ShapeType.rect, { x: px(fx2sx(x0)), y: px(fy2sy(y0)),
-      w: px(w), h: px(h / 0.955556), fill: { color: C.blue }, line: { type: "none" } });
-    s.addShape(pres.ShapeType.rect, { x: px(fx2sx(dir > 0 ? x0 : x0 + w - b.armW)),
-      y: px(fy2sy(y0)), w: px(b.armW), h: px(b.armH), fill: { color: C.blue }, line: { type: "none" } });
-    s.addShape(pres.ShapeType.rect, { x: px(fx2sx(dir > 0 ? x0 : x0 + w - b.armW)),
-      y: px(fy2sy(y0 + h - b.armH)), w: px(b.armW), h: px(b.armH), fill: { color: C.blue }, line: { type: "none" } });
-  }
+function drawEmbedParens(pres, s) {
+  // r2 fix 1+4: blue flat paren images at exact px/600 size (never rescaled)
+  s.addImage({ path: ASSETS + "s016r2_emb_L.png",
+    x: px(fx2sx(G.embedParenL.x)), y: px(fy2sy(G.embedParenL.y)),
+    w: G.embedParenL.wPt / 72, h: G.embedParenL.hPt / 72 });
+  s.addImage({ path: ASSETS + "s016r2_emb_R.png",
+    x: px(fx2sx(G.embedParenR.x)), y: px(fy2sy(G.embedParenR.y)),
+    w: G.embedParenR.wPt / 72, h: G.embedParenR.hPt / 72 });
 }
 
 function drawEmbedRows(pres, s) {
   const E = G.embedRows;
   for (let r = 0; r < 5; r++) {
     const top = E.tops[r];
-    // pink pill
+    const dy = top - E.tops[0];
     s.addShape(pres.ShapeType.roundRect, { x: px(fx2sx(E.pillX)), y: px(fy2sy(top)),
       w: px(E.pillW / 0.962329), h: px(E.pillH / 0.955556), rectRadius: 0.14,
       fill: { color: C.pillPink }, line: { color: C.inkRed, width: 1.75 } });
-    // 4 transparent circles with red rims + bold X_i labels
     for (let q = 0; q < 4; q++) {
       const cx = E.circleCxs[q], cy = top + 16.3, d = E.circleD;
       s.addShape(pres.ShapeType.ellipse, { x: px(fx2sx(cx - d / 2)), y: px(fy2sy(cy - d / 2)),
@@ -218,22 +183,21 @@ function drawEmbedRows(pres, s) {
         { x: px(fx2sx(cx - d / 2)), y: px(fy2sy(cy - d / 2)), w: px(d), h: px(d),
           align: "center", valign: "middle", bold: true, color: C.inkRed, fontFace: FONT, margin: 0 });
     }
-    // label line 1 (red) + line 2 "of Word #N" with BLUE #N — separate positioned boxes
     s.addText("Embedding Vector",
-      { x: px(fx2sx(E.labX)), y: px(fy2sy(E.l1CapTop + 2) - 6), w: px(E.labW / 0.962329),
-        h: px(12), align: "center", valign: "middle", bold: true, fontSize: 7.5,
+      { x: px(fx2sx(77)), y: px(fy2sy(E.l1CapTop + 2 + dy) - 6), w: px(76),
+        h: px(12), align: "left", valign: "middle", bold: true, fontSize: 8.2,
         color: C.inkRed, fontFace: FONT, margin: 0 });
-    s.addText([R("of Word ", { color: C.inkRed }), R("#" + (r + 1), { color: C.blue })],
-      { x: px(fx2sx(E.labX + 8)), y: px(fy2sy(E.l2CapTop + 2) - 6), w: px(E.labW / 0.962329),
-        h: px(12), align: "center", valign: "middle", bold: true, fontSize: 7.5,
+    s.addText([R("of Word ", { color: C.inkRed, fontSize: 8.2 }),
+               R("#" + (r + 1), { color: C.blue, fontSize: 12 })],
+      { x: px(fx2sx(82)), y: px(fy2sy(E.l2CapTop + 2 + dy) - 6.5), w: px(60),
+        h: px(13), align: "left", valign: "middle", bold: true,
         fontFace: FONT, margin: 0 });
-    // big italic magenta X_(r+1) + subscript — separate boxes (fix12 idiom)
     s.addText([R("X", { italic: true })],
-      { x: px(fx2sx(E.xCx) - 9), y: px(fy2sy((E.xCapTop + E.xCapBot) / 2) - 8.5),
+      { x: px(fx2sx(138) - 9), y: px(fy2sy((E.xCapTop + E.xCapBot) / 2 + dy) - 8.5),
         w: px(18), h: px(17), align: "center", valign: "middle", bold: true, italic: true,
         fontSize: 14.5, color: C.magenta, fontFace: FONT, margin: 0 });
     s.addText(String(r + 1),
-      { x: px(fx2sx(E.subCx) - 4), y: px(fy2sy((E.subTop + E.subBot) / 2) - 5),
+      { x: px(fx2sx(E.subCx) - 4), y: px(fy2sy((E.subTop + E.subBot) / 2 + dy) - 5),
         w: px(8), h: px(10), align: "center", valign: "middle", bold: true,
         fontSize: 8.5, color: C.magenta, fontFace: FONT, margin: 0 });
   }
@@ -295,33 +259,46 @@ function drawEquals(pres, s) {
     fontSize: G.equals.fs, color: C.inkRed, fontFace: FONT, margin: 0 });
 }
 
-function drawOutBrackets(pres, s) {
-  for (const [b, dir] of [[G.outBracketL, 1], [G.outBracketR, -1]]) {
-    const [x0, y0, w, h] = b.spine;
-    s.addShape(pres.ShapeType.rect, { x: px(fx2sx(x0)), y: px(fy2sy(y0)),
-      w: px(w), h: px(h / 0.955556), fill: { color: C.yBracket }, line: { type: "none" } });
-    s.addShape(pres.ShapeType.rect, { x: px(fx2sx(dir > 0 ? x0 : x0 + w - b.armW)),
-      y: px(fy2sy(y0)), w: px(b.armW), h: px(b.armH), fill: { color: C.yBracket }, line: { type: "none" } });
-    s.addShape(pres.ShapeType.rect, { x: px(fx2sx(dir > 0 ? x0 : x0 + w - b.armW)),
-      y: px(fy2sy(y0 + h - b.armH)), w: px(b.armW), h: px(b.armH), fill: { color: C.yBracket }, line: { type: "none" } });
-  }
-}
-
 function drawOutCells(pres, s) {
   const O = G.outCells;
+  // group-tinted row pills BEHIND the cells (frame-true: gap samples g1 green / g2 peach /
+  // g3 lavender; strips fy rowTop-2..+22.5, x g1 298.5..455.5, g2 462.5..636.5, g3 642.5..786.5)
+  const pillX = [[298.5, 455.5], [462.5, 636.5], [642.5, 786.5]];
+  for (let m = 0; m < 3; m++) {
+    for (let r = 0; r < 5; r++) {
+      s.addShape(pres.ShapeType.roundRect, { x: px(fx2sx(pillX[m][0])),
+        y: px(fy2sy(O.rowTops[r] - 2)), w: px((pillX[m][1] - pillX[m][0]) / 0.962329),
+        h: px(24.5 / 0.955556), rectRadius: 0.17,
+        fill: { color: O.pillFills[m] }, line: { type: "none" } });
+    }
+  }
+  // r2 fix 2: cells WHITE fill + 8B7B3A rim ~1pt (010-certified y-box idiom; measured
+  // interiors (255,255,250) mode, rim cores (76,52,42)/(98,88,63))
   for (let m = 0; m < 3; m++) {
     for (let r = 0; r < 5; r++) {
       for (let c = 0; c < 4; c++) {
         const bx = O.lefts[m][c], by = O.rowTops[r];
         s.addShape(pres.ShapeType.roundRect, { x: px(fx2sx(bx)), y: px(fy2sy(by)),
           w: px(O.cw), h: px(O.ch), rectRadius: 0.04,
-          fill: { color: O.fills[m] }, line: { color: C.outCellRim, width: 1 } });
+          fill: { color: C.outCellFill }, line: { color: C.cellRim, width: 1 } });
         s.addText([R("y", { fontSize: 11 }), SUB(String(c + 1), { fontSize: 8 })],
           { x: px(fx2sx(bx)), y: px(fy2sy(by)), w: px(O.cw), h: px(O.ch),
             align: "center", valign: "middle", bold: true, color: C.inkRed, fontFace: FONT, margin: 0 });
       }
     }
   }
+}
+
+function drawOutParens(pres, s) {
+  // r2 fix 1: maroon flat paren images at exact px/600 size (replaces native square
+  // leftBracket/rightBracket; drawn AFTER the cells/pills so the ends sit over the
+  // pill edges as in the frame)
+  s.addImage({ path: ASSETS + "s016r2_pil_L.png",
+    x: px(fx2sx(G.outParenL.x)), y: px(fy2sy(G.outParenL.y)),
+    w: G.outParenL.wPt / 72, h: G.outParenL.hPt / 72 });
+  s.addImage({ path: ASSETS + "s016r2_pil_R.png",
+    x: px(fx2sx(G.outParenR.x)), y: px(fy2sy(G.outParenR.y)),
+    w: G.outParenR.wPt / 72, h: G.outParenR.hPt / 72 });
 }
 
 function drawCaptions(pres, s) {
@@ -340,17 +317,20 @@ function drawCaptions(pres, s) {
 }
 
 function drawAnnotts(pres, s) {
+  // r2 fix 3: CENTER-aligned at cx 846.5 (frame: line1 ink 816..877 -> center 846.5;
+  // line2 red 800..879 + navy 883..893 -> center 846.5). line1 fs 8.5 (61 px ink);
+  // line2 "Projection of Word " red + "#N" NAVY 0000CC, fs 9.5.
   const A = G.annots;
-  const right = fx2sx(A.rightFx);
+  const cx = fx2sx(A.cx);
   for (let k = 0; k < A.n; k++) {
     s.addText("Corresponding",
-      { x: px(right - 115), y: px(fy2sy(A.l1CapTop + A.pitch * k + 3) - 6), w: px(115), h: px(12),
-        align: "right", valign: "middle", bold: true, fontSize: A.fs1, color: C.inkRed,
+      { x: px(cx - 60), y: px(fy2sy(A.l1CapTop + A.pitch * k + 3) - 6), w: px(120), h: px(12),
+        align: "center", valign: "middle", bold: true, fontSize: A.fs1, color: C.inkRed,
         fontFace: FONT, margin: 0 });
-    s.addText("Projection of Word #" + (k + 1),
-      { x: px(right - 115), y: px(fy2sy(A.l2CapTop + A.pitch * k + 2.5) - 5.5), w: px(115), h: px(11),
-        align: "right", valign: "middle", bold: true, fontSize: A.fs2, color: C.inkRed,
-        fontFace: FONT, margin: 0 });
+    s.addText([R("Projection of Word ", { color: C.inkRed }),
+               R("#" + (k + 1), { color: C.blue })],
+      { x: px(cx - 60), y: px(fy2sy(A.l2CapTop + A.pitch * k + 2.5) - 5.5), w: px(120), h: px(11),
+        align: "center", valign: "middle", bold: true, fontSize: A.fs2, fontFace: FONT, margin: 0 });
   }
 }
 
@@ -376,11 +356,12 @@ function drawSummary(pres, s) {
 /**
  * Full composition. opts:
  *   { numeral }  badge numeral (default 16)
- *   { skip }     block names to omit: "title" "subtitle" "panels" "embedBrackets"
- *                "embedRows" "containers" "headers" "cells" "parens" "equals"
- *                "outBrackets" "outCells" "captions" "annotts" "summary"
+ *   { skip }     block names to omit: "title" "subtitle" "panels" "embedRows"
+ *                "embedParens" "containers" "headers" "cells" "parens" "equals"
+ *                "outCells" "outParens" "captions" "annotts" "summary"
  *   { only }     draw ONLY these blocks
- * P1 sibling pattern: per-block renderBase + BLOCKS map (014's idiom).
+ * Parens (embed flanks, output wrapper) draw AFTER their rows/cells so the paren
+ * ends sit over the pill edges exactly as in the frame (r2 z-order).
  */
 function renderBase(pres, slide, opts = {}) {
   drawHouseChrome(pres, slide, { numeral: opts.numeral === undefined ? 16 : opts.numeral });
@@ -393,24 +374,24 @@ function renderBase(pres, slide, opts = {}) {
   if (want("containers")) drawContainers(pres, slide);
   if (want("cells")) drawMatrixCells(pres, slide);
   if (want("headers")) drawHeaders(pres, slide);
-  if (want("embedBrackets")) drawEmbedBrackets(pres, slide);
   if (want("embedRows")) drawEmbedRows(pres, slide);
+  if (want("embedParens")) drawEmbedParens(pres, slide);
   if (want("parens")) drawParens(pres, slide);
   if (want("equals")) drawEquals(pres, slide);
-  if (want("outBrackets")) drawOutBrackets(pres, slide);
   if (want("outCells")) drawOutCells(pres, slide);
+  if (want("outParens")) drawOutParens(pres, slide);
   if (want("captions")) drawCaptions(pres, slide);
   if (want("annotts")) drawAnnotts(pres, slide);
   if (want("summary")) drawSummary(pres, slide);
 }
 
-const BLOCKS = ["title", "subtitle", "panels", "embedBrackets", "embedRows", "containers",
-  "headers", "cells", "parens", "equals", "outBrackets", "outCells", "captions",
+const BLOCKS = ["title", "subtitle", "panels", "embedRows", "embedParens", "containers",
+  "headers", "cells", "parens", "equals", "outCells", "outParens", "captions",
   "annotts", "summary"];
 
 module.exports = { G, C, BLOCKS, renderBase, drawTitle, drawSubtitle, drawPanels,
-  drawEmbedBrackets, drawEmbedRows, drawContainers, drawHeaders, drawMatrixCells,
-  drawParens, drawEquals, drawOutBrackets, drawOutCells, drawCaptions, drawAnnotts,
+  drawEmbedParens, drawEmbedRows, drawContainers, drawHeaders, drawMatrixCells,
+  drawParens, drawEquals, drawOutCells, drawOutParens, drawCaptions, drawAnnotts,
   drawSummary };
 
 if (require.main === module) {
@@ -422,3 +403,8 @@ if (require.main === module) {
   const OUT = "/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/recreated_pptx/slide_016_recreated.pptx";
   pres.writeFile({ fileName: OUT }).then(() => console.log("wrote " + OUT));
 }
+
+// SHIP-RENAME NOTE (close-out 2026-10-13 05:15): certified build is slide_016_r2.js
+// (judge_attempt_3.txt). This entry is the SAME builder with OUT set to the plain
+// single-version deliverable name; foreign builder attempt-1 archived at
+// qa/slide016/foreign_build_attempt1.js + foreign_attempt1_overridden.pptx.
