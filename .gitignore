@@ -25,6 +25,33 @@ __pycache__/
 .zcode/
 
 # runtime churn (LO profiles, gate locks) + 58MB copyrighted source PDF (keep on disk only)
-**/lo_profile/
+**/lo_profile*/
+**/lo_tmp*/
 **/ir_vision_gate_*.lock
 videos/deep-learning/001_introduction/slide_005_source/MachineLearningTomMitchell.pdf
+
+# scratch / QA working trees (founder 2026-10-13: stop banking work-in-progress churn;
+# existing tracked content was untracked — files remain on disk, git history keeps old copies)
+**/scratch*/
+**/qa/
+
+# sqlite sidecars (transient WAL/SHM state; the .db is the artifact)
+*.db-shm
+*.db-wal
+
+# lane coordination markers (liveness/claim markers outside scratch+qa, e.g. build/components/)
+**/.heartbeat
+**/.claim_*
+**/.watch_*
+**/HEARTBEAT_*
+**/hb_*
+**/*_builder_id.txt
+**/.*_fixed
+
+# stray root junk from worker misdirects (keep on disk, out of git)
+pkcs11.txt
+band_probe_out.txt
+probe_final_out.txt
+# root-anchored: a worker opened a DB path relative to the repo root (2026-10-13,
+# 0-byte stray) — the real per-video DBs under videos/ are NOT matched by this rule
+/slides_progress.db

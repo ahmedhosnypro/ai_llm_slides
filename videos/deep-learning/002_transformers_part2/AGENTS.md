@@ -94,3 +94,5 @@ The ORIGINAL VIDEO FRAME is ground truth for what each slide shows; web sources
 confirm/correct data and provenance, never license inventing content. Slide wins
 for recreation, source wins for understanding; disagreements are recorded in the
 slide's SOURCES.md. `[?]` markers are removed only with a confirming URL.
+
+## Close-out: slide 001 placeholder cover — FOUNDER SIGN-OFF recorded 2026-10-13 ("slide 1 signed off"). Row 1 in certified state per merge RUNBOOK caveat 4 (sign-off + house_chrome_check PASS evidence at recreated_pptx/qa/slide001/; deliverable md5 45edefe7d3b80df70217373a4965c0f6). Final merge now gated only on slides 016 + 057 certifying.

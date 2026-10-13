@@ -28,8 +28,16 @@
 //     slide ~(348..370, 201..212); parent's certified spot is 14px left).
 //   * sigma: multiply rings d~36.5 (frame arcs 33-35px, x4 consistent; parent d19)
 //     at centers (534.5,240),(564.5,290.5),(592.5,325.5),(623,371.5), stroke ~3,
-//     fill NONE (peach interiors measured), '*' 14pt red; NO stems and NO side
-//     stubs (windowed scan y188..212 x505..645: ZERO red between Sigma and rings).
+//     fill NONE (peach interiors measured), '*' 14pt red; STEMS: 4 vertical
+//     multiply->Sigma arrows on the node centerlines (triangle tips slide y~220,
+//     1px under the Sigma box bottom edge; shafts run from the ring centers down
+//     into the rings) + horizontal rail slide y~229.5 from x534.5 to x623.
+//     ARBITRATION (settled 2026-10-12): the earlier "NO stems and NO side stubs"
+//     decision came from a windowed scan y188..212 x505..645 that sat ABOVE the
+//     actual node structures (frame y208..226); the missing stems are corroborated
+//     by two independent gated reads (qa/slide008/zoomread_orig.txt crop D 8x +
+//     judge attempt-3 raw transcript). Geometry derived in
+//     scratch/slide008-fix/GEN3_FIX_PLAN.md (gen-4 applied).
 //   * query: W_q box (275,432,47,48) yellow band fill (blend-solved #FFFD79;
 //     NOT purple — spec hex refuted), parent label style; q2 label + mini-vector
 //     at parent positions (frame ink + zoom reads confirm both exist); W_q->DP
@@ -200,8 +208,13 @@ function wBox8(x, y, w, sub, fill, border) {
 BOXY8.forEach((y) => wBox8(160.6, y, 35.4, "k", "D4FCDC", "51A363"));
 BOXY8.forEach((y) => wBox8(706.5, y, 34.6, "v", "D2ECFF", "1F2C6B"));
 
-// ---- 6. sigma block: Sigma box (parent geometry) + multiply rings --------------------
-// (rings d36.5, peach interiors, no stems/stubs — all verified on this frame)
+// ---- 6. sigma block: Sigma box + multiply rings + restored stems + rail --------------
+// (rings d36.5, peach interiors — verified on this frame. Stems restored per the
+//  settled 2026-10-12 arbitration: the certified build's "NO stems" scan window
+//  y188..212 sat ABOVE the actual node structures (frame y208..226); stems are
+//  corroborated by zoomread_orig.txt crop D (8x) + judge attempt 3. Mechanism is
+//  the parent-certified drawSigma pattern (001:33): rail as a plain red line
+//  (w0.75, head:false), then one redArrow per node centerline, tips at y~220.)
 s.addShape(pres.ShapeType.rect, {
   x: px(516), y: px(194), w: px(135), h: px(25),
   fill: { color: C.sigmaFill }, line: { color: C.sigmaBorder, width: 1 },
@@ -222,6 +235,10 @@ NODES.forEach(([cx, cy]) => {
     fontFace: FONT, fontSize: 14, bold: true, color: C.red,
   });
 });
+// horizontal rail (plain red line, no head) — the four up-arrowheads sit on it
+redArrow(534.5, 229.5, 623, 229.5, 0.75, { head: false });
+// stems: ring centers -> Sigma (triangle tips land at slide y~220 under the box)
+NODES.forEach(([cx, cy]) => redArrow(cx, cy, cx, 220, 1.5));
 
 // ---- 7. query path (W_q yellow at measured geometry; q2/vector/arrows parent) --------
 s.addShape(pres.ShapeType.rect, {

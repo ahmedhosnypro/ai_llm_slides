@@ -12,18 +12,23 @@
 //     measure8/9/10/11/12_output.txt, frame px 1px=1pt, deck mapping
 //     slide_x=(fx-17.628)/0.961232, slide_y=fy/0.955556):
 //       white canvas fx 93..768, fy 121..470 on the gray panel
-//       title red fx 159..799 caps fy 58..74 (fs 23; "Multiple Matrices" underlined)
+//       title red fx 159..799 caps fy 58..74 (fs 22.1; "Multiple Matrices" underlined)
 //       subtitle blue fx ~100..839 caps fy 81..95 (fs 18.5, = 010's certified density)
 //       embed label 2 lines fy 129..137 / 140..155 ("Current Word" red + X_2 blue fs 20)
-//       pink box fx 102..241 fy 158..193, 4 red-rimmed circles d26 cx 123/155/187.5/220
+//       pink box fx 102..230.5 fy 159..191.5, 4 red-rimmed circles d26 cy 174
+//         cx 123.5/152.5/176.5/203.5 (fix12 per-circle rim measurement)
 //       tall "{" fx 241..253 + tall "}" fx 714..728, both fy 152..337
 //       3 pastel panels fx 247/413/572 w ~145, fy 157..332 (green/orange/lavender)
 //       headers "W_Q of Head N" maroon caps fy 139..147 ABOVE panel tops
 //       16 cells/panel: lefts p+8/44/82/115 w 19.5; rows fy 176.5/214/256/294 h 18
 //       "=" fx 206..222 fy 367..378 (fs 28)
-//       short "{" fx 242..253 + short "}" fx 719..730, both fy 349..388
+//       short "{" ink fx 242..249.5 + short "}" ink fx 722..728.5, both fy 351..387.5
+//         (fix12: full-bleed brace PNGs sized so INK lands on the measured span)
 //       3 strips (head fills) fy 357..384; 4 y-boxes each (lefts 257/420/582 pitch ~36)
-//       captions 2 lines red fy 392..412; results = red y + blue 2^(h) fy 425..442
+//       captions 2 lines red, line1 caps fy 392..400 / line2 404..411.5 (pitch 12 fx,
+//         line2 w ~100 fx -> fs 11.3, lineSpacing 12.5); centers fx 312.5/487.75/656.5
+//       results = red y + red sub 2 + blue sup (h): ink fy 426..441, centers fx
+//         317/492.5/661, y fs 20 / sub fs 13.5 (RED) / sup fs 11 (blue)  (fix12 map)
 //       magenta X_2 micro-annotation fx 518..529 fy 276..289 (below Head-2 W_43)
 //   * NOTE (frame-vs-spec deltas, frame wins per fidelity law): y-box labels and
 //     captions are RED (measured glyph cores), NOT blue; embed circle X labels RED;
@@ -73,19 +78,19 @@ const SUP = (t, o = {}) => ({ text: t, options: Object.assign({ superscript: tru
 
 // ---- measured geometry, frame px ----------------------------------------------------
 const G = {
-  title: { cx: 479, capTop: 58, fs: 23 },
+  title: { cx: 479, capTop: 58, fs: 22.1 },
   sub: { cx: 470, capTop: 81, fs: 18.5 },
   canvas: { x: 93, y: 121, w: 675, h: 349 }, // fx 93..768, fy 121..470
   embed: {
-    l1: { cx: 172, capTop: 129, fs: 10.5 },
+    l1: { cx: 165.5, capTop: 129, fs: 10 },
     l2: { cx: 167, capTopX: 141, fs: 11, fsX: 20 },
-    box: { x: 102, y: 158, w: 139, h: 35 },
-    circles: { cxs: [123, 155, 187.5, 220], cy: 174, d: 26 },
+    box: { x: 102, y: 159, w: 128.5, h: 32.5 },
+    circles: { cxs: [123.5, 152.5, 176.5, 203.5], cy: 174, d: 26 },
   },
   braceTallL: { x: 241, y: 152, w: 0.1667, h: 2.5817 },
   braceTallR: { x: 714, y: 152, w: 0.1933, h: 2.5750 },
-  braceShortL: { x: 242, y: 349, w: 0.1550, h: 0.5600 },
-  braceShortR: { x: 719, y: 349, w: 0.1550, h: 0.5600 },
+  braceShortL: { x: 242, y: 351, w: 0.1090, h: 0.5313 },
+  braceShortR: { x: 722, y: 351, w: 0.0956, h: 0.5313 },
   panels: [
     { x: 247, y: 157, w: 145, h: 175, fill: C.green,   hc: "Head 1", hcx: 324 },
     { x: 413, y: 157, w: 145, h: 175, fill: C.orange,  hc: "Head 2", hcx: 483.5 },
@@ -100,8 +105,16 @@ const G = {
     { x: 575, y: 357, w: 149, h: 27, fill: C.lavender, bx: [582, 619, 655, 691] },
   ],
   yBox: { y: 361, w: 23, h: 20 },
-  caption: { cxs: [310, 486.5, 656], top: 390, fs: 10.5, lsp: 13 },
-  result: { cxs: [323.5, 497.5, 667.5], cy: 433 },
+  caption: { cxs: [312.5, 487.75, 656.5], top: 388.7, fs: 11.3, lsp: 12.5 },
+  result: {
+    // separate positioned boxes per glyph (fix12: LO renders baseline-attr sub/sup
+    // runs at 58% size — measured; plain runs at measured ink centers instead).
+    // org ink: y fx 302..310 fy 428..441 | sub 2 fx 314..319 fy 432..441 (RED)
+    //          sup (h) fx 320..332 fy 426..435 (blue)   [centers below, frame px]
+    yC: [[306, 430.5], [482, 430.5], [650, 430.5]],
+    subC: [[316, 436.5], [491, 436.5], [659.5, 436.5]],
+    supC: [[326, 430.5], [500.5, 430.5], [670, 430.5]],
+  },
   magenta: { cx: 523.5, cy: 282.5, tipX: 527, tipY: 272 },
 };
 
@@ -220,17 +233,24 @@ function drawBottom(pres, s) {
   for (let i = 0; i < 3; i++) {
     s.addText([R("Corresponding", { breakLine: true }),
                R("Projection at Head " + (i + 1), {})],
-      { x: px(fx2sx(G.caption.cxs[i]) - 55), y: px(fy2sy(G.caption.top)), w: px(110),
+      { x: px(fx2sx(G.caption.cxs[i]) - 60), y: px(fy2sy(G.caption.top)), w: px(120),
         h: px(26), align: "center", valign: "top", bold: true, fontSize: G.caption.fs,
         color: C.inkRed, fontFace: FONT, margin: 0, lineSpacing: G.caption.lsp });
   }
-  // results: red y + blue subscript 2 + blue superscript (h)
+  // results: red y + red sub 2 + blue sup (h) — three positioned plain-run boxes
+  // per result (fix12: LO scales baseline-attr runs to 58%, measured — separate
+  // boxes reproduce the original's glyph sizes; ink centers calibrated below)
   for (let i = 0; i < 3; i++) {
-    s.addText([R("y", { fontSize: 13, color: C.inkRed }),
-               SUB("2", { fontSize: 8.5, color: C.blue }),
-               SUP("(" + (i + 1) + ")", { fontSize: 8.5, color: C.blue })],
-      { x: px(fx2sx(G.result.cxs[i]) - 16), y: px(fy2sy(G.result.cy) - 13), w: px(32),
-        h: px(26), align: "center", valign: "middle", bold: true, fontFace: FONT, margin: 0 });
+    const yC = G.result.yC[i], subC = G.result.subC[i], supC = G.result.supC[i];
+    s.addText("y", { x: px(fx2sx(yC[0]) - 10), y: px(fy2sy(yC[1]) - 11), w: px(20),
+      h: px(22), align: "center", valign: "middle", bold: true, fontSize: 20,
+      color: C.inkRed, fontFace: FONT, margin: 0 });
+    s.addText("2", { x: px(fx2sx(subC[0]) - 7), y: px(fy2sy(subC[1]) - 8), w: px(14),
+      h: px(16), align: "center", valign: "middle", bold: true, fontSize: 13.5,
+      color: C.inkRed, fontFace: FONT, margin: 0 });
+    s.addText("(" + (i + 1) + ")", { x: px(fx2sx(supC[0]) - 11), y: px(fy2sy(supC[1]) - 8),
+      w: px(22), h: px(16), align: "center", valign: "middle", bold: true, fontSize: 11,
+      color: C.blue, fontFace: FONT, margin: 0 });
   }
 }
 
@@ -263,26 +283,37 @@ function drawBraces(pres, s) {
 }
 
 /**
- * Full composition. opts: { numeral (default 12) }
- * No dependents in either deck's slide_dependencies.json (2026-10-12) — P1 siblings
- * 14/16 reuse the PATTERN (cell/y-box/brace treatments), not this composition.
+ * Full composition. opts:
+ *   { numeral }  badge numeral (default 12)
+ *   { skip }     array of block names to omit: "title" "subtitle" "canvas" "embed"
+ *                "panels" "bottom" "magenta" "braces"
+ *   { only }     array of block names — draw ONLY these (canvas auto-included unless
+ *                itself skipped/filtered; pass "canvas" in only to get it alone)
+ * P1 siblings 14/16 import this and select blocks per their measured deltas.
  */
 function renderBase(pptx, slide, opts = {}) {
   drawHouseChrome(pptx, slide, { numeral: opts.numeral === undefined ? 12 : opts.numeral });
-  drawTitle(pptx, slide);
-  drawSubtitle(pptx, slide);
+  const skip = Array.isArray(opts.skip) ? opts.skip : [];
+  const only = Array.isArray(opts.only) ? opts.only : null;
+  const want = (name) => (only ? only.indexOf(name) !== -1 : skip.indexOf(name) === -1);
+  if (want("title")) drawTitle(pptx, slide);
+  if (want("subtitle")) drawSubtitle(pptx, slide);
   // white content canvas on the gray panel
-  slide.addShape(pptx.ShapeType.roundRect, { x: px(fx2sx(G.canvas.x)), y: px(fy2sy(G.canvas.y)),
-    w: px(fx2sx(G.canvas.w)), h: px(G.canvas.h), rectRadius: 0.08,
-    fill: { color: C.canvas }, line: { type: "none" } });
-  drawEmbed(pptx, slide);
-  drawPanels(pptx, slide);
-  drawBottom(pptx, slide);
-  drawMagenta(pptx, slide);
-  drawBraces(pptx, slide);
+  if (want("canvas")) {
+    slide.addShape(pptx.ShapeType.roundRect, { x: px(fx2sx(G.canvas.x)), y: px(fy2sy(G.canvas.y)),
+      w: px(fx2sx(G.canvas.w)), h: px(G.canvas.h), rectRadius: 0.08,
+      fill: { color: C.canvas }, line: { type: "none" } });
+  }
+  if (want("embed")) drawEmbed(pptx, slide);
+  if (want("panels")) drawPanels(pptx, slide);
+  if (want("bottom")) drawBottom(pptx, slide);
+  if (want("magenta")) drawMagenta(pptx, slide);
+  if (want("braces")) drawBraces(pptx, slide);
 }
 
-module.exports = { G, C, renderBase, drawTitle, drawSubtitle, drawEmbed, drawPanels,
+const BLOCKS = ["title", "subtitle", "canvas", "embed", "panels", "bottom", "magenta", "braces"];
+
+module.exports = { G, C, BLOCKS, renderBase, drawTitle, drawSubtitle, drawEmbed, drawPanels,
   drawBottom, drawMagenta, drawBraces };
 
 if (require.main === module) {

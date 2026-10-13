@@ -18,10 +18,25 @@
 // callout, 4th left annotation pair, BLOCK arrows in the FFN gaps (replacing 045's thin
 // navy lines), caption with PINK highlight band (045's is yellow).
 //
-// opts: { numeral: 46 (default), chrome: true }
+// opts: { numeral: 46 (default), chrome: true, skip: [names], only: [names] }
 // Block granularity for children: drawStripRow46(pptx, slide, row, letter, dotCy, dotColor),
 // drawNormUnit46(pptx, slide, u), drawCallout46, drawBlkFFN, drawCaption46, drawBadge46,
-// uT/uB unit geometry objects, ROW_FINAL/ROW_POSTLN row objects — exported.
+// drawCurveArrow46, uT/uB unit geometry objects, ROW_FINAL/ROW_POSTLN row objects,
+// BLK_FFN, SUBS_46, CURVE_KNOTS, BLOCKS, PAINT_ORDER — exported.
+//
+// FOUNDER-DEFECT FIX 2026-10-12 (attempt 2, qa/slide046/): "the dark orange arrows have
+// small twists around the path — the path itself is correct and perfect." The certified
+// attempt-1 build drew these arrows from the raster asset s038_orangearrow.png (a PIL
+// ImageDraw.line joint="curve" over a Catmull-Rom, m18): the segment joints left small
+// twists along every arrow — measured (afix_trace_2.txt): centerline wobble up to 1.0pt,
+// 920 centerline direction reversals across the 16 arrows, stroke width ragged 1..13px.
+// Fix: each arrow is now ONE custGeom shape — the SAME uniform Catmull-Rom spline the
+// asset encoded (m18's measured knots, path unchanged per founder) converted EXACTLY
+// (C1-identical) to a chain of cubic Beziers and stroked natively: identical endpoints,
+// endpoint tangents, color E36C09, weight 1.33pt, and arrowhead placement (LO triangle
+// tailEnd at the same tip/tangent, measured within 0.7pt of the drawn head). Verified
+// against the certified render: path agreement <=0.3pt on every visible row
+// (scratch/slide046_afix/afix_check_test1.py); post-fix profile flat (afix_trace_3.txt).
 
 const pptxgen = require("pptxgenjs");
 const p45 = require("/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/recreated_pptx/build/components/slide_045.js");
@@ -89,6 +104,98 @@ const BLK_FFN = { upIntoPostFFN: { y: 198.8, h: 16.8 }, upIntoFFN: { y: 276.3, h
 
 const SUBS_46 = ["0", "1", "2", "3", "4", "5", "N-2", "N-1"];
 
+// ---- orange residual-curve arrows (founder-defect fix 2026-10-12, see header) ----
+const ORANGE_ARROW = "E36C09"; // the asset's own orange (m18), unchanged
+const ARROW_LW = 1.33;         // asset stroke = 8px @ 6px/pt, unchanged
+const H_ASSET_CURVE = 149.0;   // asset canvas height in pt
+// Asset-coords knots (pt; canvas origin = (cx-52, unit.curves.y), canvas 54 x 149) —
+// the m18 measured path, EXACTLY as the certified build drew it (path unchanged).
+const CURVE_KNOTS = [[17.4, 147.1], [8.4, 134.6], [1.0, 110.0], [1.0, 79.0], [1.0, 55.0],
+  [7.4, 38.3], [14.7, 21.6], [22.0, 13.2], [29.8, 9.0], [35.6, 4.8], [46.0, 2.2]];
+
+// Exact conversion of the asset's uniform Catmull-Rom (endpoint-duplicated) to cubic
+// Beziers: for segment P1->P2 with neighbours P0/P3: B1 = P1 + (P2-P0)/6, B2 = P2-(P3-P1)/6.
+// C1-identical to the spline the raster asset sampled — the path is unchanged by law.
+function catmullRomToCubic46(K) {
+  const pts = [K[0], ...K, K[K.length - 1]];
+  const segs = [];
+  for (let i = 1; i < pts.length - 2; i++) {
+    const p0 = pts[i - 1], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2];
+    segs.push({
+      p1, p2,
+      b1: [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6],
+      b2: [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6],
+    });
+  }
+  return segs;
+}
+
+const CURVE_POINTS_CACHE = {};
+function curveGeom46(hBox) {
+  const key = String(hBox);
+  if (!CURVE_POINTS_CACHE[key]) {
+    const segs = catmullRomToCubic46(CURVE_KNOTS);
+    const sy = (y) => (y * hBox) / H_ASSET_CURVE; // uT box stretches the asset by h_box/149
+    const pts = [{ x: pt(segs[0].p1[0]), y: pt(sy(segs[0].p1[1])), moveTo: true }];
+    for (const s of segs) {
+      pts.push({
+        x: pt(s.p2[0]), y: pt(sy(s.p2[1])),
+        curve: { type: "cubic", x1: pt(s.b1[0]), y1: pt(sy(s.b1[1])), x2: pt(s.b2[0]), y2: pt(sy(s.b2[1])) },
+      });
+    }
+    // Arrowhead — EXACTLY the certified asset's drawn head (m18): tip = path end + 0.8pt,
+    // base vertices 5.2pt back along the end tangent at +/-0.45rad (base width 4.52pt).
+    // The end tangent comes from the asset's own last polyline samples: px[-1] = appended
+    // P10, px[-3] = CR sample t = 22/23 of the final segment (m18 sampled
+    // linspace(0,1,24) — t INCLUSIVE of 1 — per segment, then appended the end point).
+    // Final CR segment neighbours: p0 = P8, p1 = P9, p2 = p3 = P10 (endpoint duplicated).
+    const P = CURVE_KNOTS;
+    const seg = { p0: P[P.length - 3], p1: P[P.length - 2], p2: P[P.length - 1], p3: P[P.length - 1] };
+    const smp = (t) => {
+      const fx_ = 0.5 * (2 * seg.p1[0] + (-seg.p0[0] + seg.p2[0]) * t + (2 * seg.p0[0] - 5 * seg.p1[0] + 4 * seg.p2[0] - seg.p3[0]) * t * t + (-seg.p0[0] + 3 * seg.p1[0] - 3 * seg.p2[0] + seg.p3[0]) * t * t * t);
+      const fy_ = 0.5 * (2 * seg.p1[1] + (-seg.p0[1] + seg.p2[1]) * t + (2 * seg.p0[1] - 5 * seg.p1[1] + 4 * seg.p2[1] - seg.p3[1]) * t * t + (-seg.p0[1] + 3 * seg.p1[1] - 3 * seg.p2[1] + seg.p3[1]) * t * t * t);
+      return [fx_, fy_];
+    };
+    const s3 = smp(22 / 23);           // px[-3] of the asset's smoothed polyline
+    const s1 = P[P.length - 1];        // px[-1] = appended path end (46.0, 2.2)
+    const ang = Math.atan2(s1[1] - s3[1], s1[0] - s3[0]);
+    const tip = [s1[0] + 0.8, s1[1]];
+    const b1 = [tip[0] - 5.2 * Math.cos(ang - 0.45), tip[1] - 5.2 * Math.sin(ang - 0.45)];
+    const b2 = [tip[0] - 5.2 * Math.cos(ang + 0.45), tip[1] - 5.2 * Math.sin(ang + 0.45)];
+    const head = [
+      { x: pt(tip[0]), y: pt(sy(tip[1])) },
+      { x: pt(b1[0]), y: pt(sy(b1[1])) },
+      { x: pt(b2[0]), y: pt(sy(b2[1])) },
+      { close: true },
+    ];
+    CURVE_POINTS_CACHE[key] = { stroke: pts, head };
+  }
+  return CURVE_POINTS_CACHE[key];
+}
+
+// ONE perfectly smooth stroke per arrow (founder directive 2026-10-12): a single custGeom
+// shape — native cubic-bezier chain, solid E36C09 stroke — plus the arrowhead drawn with
+// the certified asset's EXACT head geometry (filled custGeom triangle). The built-in
+// `triangle` tailEnd was measured (600dpi) ~1.25x the certified head (base 5.4pt vs
+// 4.2pt) — a new deviation from the original the founder did not ask for; the drawn head
+// keeps the certified pixels. Draw-order position unchanged (still painted inside
+// drawNormUnit46, before ffnbox/navy cover the mid-section).
+function drawCurveArrow46(pptx, slide, cx, u) {
+  const g = curveGeom46(u.curves.h);
+  slide.addShape("custGeom", {
+    x: pt(cx + u.curves.dx), y: pt(u.curves.y), w: pt(u.curves.w), h: pt(u.curves.h),
+    points: g.stroke,
+    line: { color: ORANGE_ARROW, width: ARROW_LW },
+    fill: { type: "none" },
+  });
+  slide.addShape("custGeom", {
+    x: pt(cx + u.curves.dx), y: pt(u.curves.y), w: pt(u.curves.w), h: pt(u.curves.h),
+    points: g.head,
+    fill: { color: ORANGE_ARROW },
+    line: { type: "none" },
+  });
+}
+
 function drawStripRow46(pptx, slide, row, letter, dotCy, dotColor) {
   for (let i = 0; i < 8; i++) {
     const cx = T.cols[i];
@@ -138,8 +245,7 @@ function drawNormUnit46(pptx, slide, u) {
     }
   );
   for (const cx of T.cols) {
-    slide.addImage({ path: ASSETS + "s038_orangearrow.png",
-      x: pt(cx + u.curves.dx), y: pt(u.curves.y), w: pt(u.curves.w), h: pt(u.curves.h) });
+    drawCurveArrow46(pptx, slide, cx, u);
   }
   const dotCy = u.row.y + u.row.h / 2;
   drawStripRow46(pptx, slide, u.row, "Y", dotCy, BLUE);
@@ -235,21 +341,36 @@ function drawBadge46(pptx, slide, numeral = 46) {
 function renderBase(pptx, slide, opts = {}) {
   const numeral = opts.numeral === undefined ? 46 : opts.numeral;
   if (opts.chrome !== false) drawHouseChrome(pptx, slide, { numeral });
-  p45.BLOCKS.panel(pptx, slide);
-  drawStripRow46(pptx, slide, ROW_FINAL, "Y", ROW_FINAL.y + ROW_FINAL.h / 2, BLUE);
-  drawNormUnit46(pptx, slide, uT);
-  p45.BLOCKS.ffnbox(pptx, slide);
-  drawBlkFFN(pptx, slide);
-  drawStripRow46(pptx, slide, ROW_POSTLN, "Y", ROW_POSTLN.y + ROW_POSTLN.h / 2, BLUE);
-  drawNormUnit46(pptx, slide, uB);
-  p45.BLOCKS.navy(pptx, slide);
-  p45.BLOCKS.blkArrows(pptx, slide);
-  drawStripRow46(pptx, slide, T.rows.x, "X", T.rows.x.y + T.rows.x.h / 2, GREEN);
-  p45.BLOCKS.ann(pptx, slide);
-  drawCallout46(pptx, slide);
-  drawCaption46(pptx, slide);
+  const skip = new Set(opts.skip || []);
+  const only = opts.only ? new Set(opts.only) : null;
+  for (const name of PAINT_ORDER) {
+    if (only ? !only.has(name) : skip.has(name)) continue;
+    BLOCKS[name](pptx, slide);
+  }
   if (numeral !== null) drawBadge46(pptx, slide, numeral);
 }
 
+const BLOCKS = {
+  panel: (pptx, slide) => p45.BLOCKS.panel(pptx, slide),
+  finalRow: (pptx, slide) => drawStripRow46(pptx, slide, ROW_FINAL, "Y", ROW_FINAL.y + ROW_FINAL.h / 2, BLUE),
+  topUnit: (pptx, slide) => drawNormUnit46(pptx, slide, uT),
+  ffnbox: (pptx, slide) => p45.BLOCKS.ffnbox(pptx, slide),
+  blkFFN: drawBlkFFN,
+  postLnRow: (pptx, slide) => drawStripRow46(pptx, slide, ROW_POSTLN, "Y", ROW_POSTLN.y + ROW_POSTLN.h / 2, BLUE),
+  bottomUnit: (pptx, slide) => drawNormUnit46(pptx, slide, uB),
+  navy: (pptx, slide) => p45.BLOCKS.navy(pptx, slide),
+  blkArrows: (pptx, slide) => p45.BLOCKS.blkArrows(pptx, slide),
+  xRow: (pptx, slide) => drawStripRow46(pptx, slide, T.rows.x, "X", T.rows.x.y + T.rows.x.h / 2, GREEN),
+  ann: (pptx, slide) => p45.BLOCKS.ann(pptx, slide),
+  callout: drawCallout46,
+  caption: drawCaption46,
+};
+
+// Paint order = the certified composition order (z-order matters: ffnbox covers the
+// topUnit curves' mid-section, navy covers the bottomUnit curves' mid-section).
+const PAINT_ORDER = ["panel", "finalRow", "topUnit", "ffnbox", "blkFFN", "postLnRow",
+  "bottomUnit", "navy", "blkArrows", "xRow", "ann", "callout", "caption"];
+
 module.exports = { renderBase, drawStripRow46, drawNormUnit46, drawCallout46, drawBlkFFN,
-  drawCaption46, drawBadge46, uT, uB, ROW_FINAL, ROW_POSTLN, BLK_FFN, SUBS_46, T };
+  drawCaption46, drawBadge46, drawCurveArrow46, uT, uB, ROW_FINAL, ROW_POSTLN, BLK_FFN,
+  SUBS_46, CURVE_KNOTS, T, BLOCKS, PAINT_ORDER };

@@ -1243,3 +1243,18 @@ against same-font siblings at a ring-arc-verified position — a vision read of 
 occluded artifact is a prior, not evidence; and a discriminating measurement that
 "confirms" a hypothesis is void if the window was located by a polluted heuristic or
 the strongest alternative hypothesis was never tested.
+
+## 2026-10-13 — pptxgenjs rotated brace presets: LibreOffice renders rotate:90 leftBrace as a displaced vertical bar — use a deterministic arc
+Context: 002:057 decoder brace (maroon curly brace above the Softmax layer, frame bbox x592-793 y50-68, drawn rotate:90). Judge attempt 1 MAJOR: the brace rendered as a single displaced vertical maroon line from the Softmax bar upward, crossing the house frame.
+Fix: LibreOffice applies preset rotation to the SHAPE BBOX and swaps its axes for tall-thin presets (rotation-bbox swap), so a wide-short brace bbox + rotate:90 lands the ink nowhere near the intended column. Replaced with `p.ShapeType.arc` in an upright bbox with `angleRange: [180,360]` (upper half-arc opening downward) + maroon line — deterministic in LO renders; verified 1239 ink px exactly where wanted, no stray line.
+Rule: never combine pptxgenjs preset shapes with rotate:90 when targeting a LibreOffice-rendered deliverable — draw the rotated geometry directly as an upright shape (arc/half-turn per the 2026-10-10 delimiter entry) instead.
+
+## 2026-10-13 — A probe window that overlaps a neighboring element manufactures evidence: record connected-component x-ranges, then re-probe tight
+Context: 002:057 legend placement. A probe over frame x60-140 (looking for the Encoder/Decoder/Attention legend in the bottom-left) returned colored ink — taken as proof the legend lives bottom-left; judge attempt 2 then MAJOR-failed the build for exactly that placement.
+Fix: the x60-140 ink was the Word-Embedding box + word-row borders inside the window, not legend text. PIL re-measure of the ORIGINAL with per-connected-component row ranges isolated the true legend: x463-535, rows red y426-443 / green y444-462 / blue y463-482 (302/320/363 px) — center column below the striped stack. Same discipline caught the reverse false alarm after the fix: "870 dark px bottom-left of render_3" was the container x65 border + emb-box x100 border, identified by dumping per-row dark x clusters and their RGB cores.
+Rule: a probe result is only evidence if you can say WHAT the ink is — always record each connected component's x-range (and color core) inside the window; a window wide enough to include a neighbor's ink proves the neighbor, not your hypothesis. Re-probe with a window that touches only the element in question.
+
+## 2026-10-13 — analyze_image.py --view/--capture require argument values; a bare flag aborts the whole dispatch with usage text
+Context: 002:057 judge dispatch 1 via 16_vision_gate.sh: `--view` and `--capture` passed without values → `[error] argument --view: expected one argument`, gate exited before any model call (exit burned ~2 min).
+Fix: both flags take one free-text argument each (prepended as VIEW:/CAPTURE: header lines) — always pass quoted values, e.g. `--view "057 judge - recreation vs original, full-slide fidelity" --capture "PowerPoint recreation render 150dpi 2001x1125 vs original frame 960x540"`. The frozen -p payload copied from judge_prompt file via `"$(cat prompt.txt | sed 's/^-p //')"`.
+Rule: before dispatching the gate, check the frozen command line for valueless flags; the analyzer's argparse error only surfaces in the tail of the log, so grep the dispatch log for `[error] argument` before assuming the model failed.

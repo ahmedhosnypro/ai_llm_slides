@@ -166,3 +166,71 @@ section fills the `[pending raw]` placeholders).
   `[pending raw]` placeholders above are now filled; open questions 1–3
   are resolved as stated (1 and 3 by frame ground truth, 2 as a recorded
   slide-vs-source difference).
+
+## Build pass (2026-10-13) — frame-level resolutions + composition verdict
+
+Certification evidence: `recreated_pptx/qa/slide057/` (attempts 1–3, judge
+transcripts, renders); storm reads `scratch/slide057/v_M5..v_M12`, `v_K1/v_K2`,
+`v_token5`, `v_blk4`; PIL censuses `measure_057_out.txt`, `measure_057_p3_out.txt`,
+`color_census_out.txt`. Build: `recreated_pptx/build/slide_057.js` →
+`slide_057_recreated.pptx`; judge attempt 3 PASS, zero MAJOR/BLOCKER; DB row 57
+`gen_status=passed`.
+
+1. **Composition identity (builder3 verdict, adopted + implemented):** the
+   frame's encoder half is slide **049**'s stacked-encoder composition
+   RESTYLED tan/red (`v_comp_vs049` YES-identity; `v_comp_vs047` NOT-47) —
+   the founder brief's "encoder from 047" is superseded by frame evidence;
+   **57 ← 49 re-anchor pending founder ratification** (DB edge stays 47,
+   certified). The composition was forked from
+   `recreated_pptx/build/slide_049.js` (absolute-path require for provenance)
+   at 057's measured geometry, per the certified 47←46 restyle precedent.
+   The paper's §3.1 / Figure 1 remain the mechanism ground truth; the
+   banked Fig 1 stays reference-only in 001 (image policy: composed from
+   shapes — the frame is a course-authored redraw family composition, so
+   nothing was embedded from web figures).
+2. **Raw cross-check `[?]` #1 (decoder row composition) RESOLVED:** the
+   frame shows the deck's expanded redraw pattern — bottom masked
+   "Multi-Head / Self-Attention" row (5 lavender boxes, red connector arcs,
+   staggered colored square grids), three "Encoder / Decoder / Attention"
+   cross-attention box rows (5 shadowed blue boxes each) at K, mid and
+   lower levels, with K/V/Q badges and hatched feed arrows from the central
+   striped column. The raw's "three rows of six" was a count/label misread;
+   the canonical §3.1 per-layer pattern is still what the diagram MEANS
+   (masked MHA → cross-attn → FFN, residual+LN each), just drawn expanded
+   in the deck's house style.
+3. **Raw cross-check `[?]` #2 (K/V entry) RESOLVED:** K badge arrow enters
+   the TOPMOST cross-attention row (`v_column_kv`: K at frame ≈(518,168));
+   V enters the second row (≈(519,265)); tiny Q badges feed the two lower
+   cross-attention rows (≈(578,302)/(577,383)) plus the bottom-right
+   Q up-arrow into the masked row — matches the paper (queries from below,
+   K/V from the encoder output).
+4. **Raw cross-check `[?]` #3 RESOLVED:** the purple bar has NO visible
+   end labels at 057's resolution (p3 census: solid bar ends; `v_blk4`
+   not-visible) — GROUND RULES(c) omission, raw's "POS/m-t-de" `[?]`
+   stands unreproducible and was not invented. The tiny red "Tokens" label
+   above the decoder token row is also a GROUND RULES(c) omission (spec-only
+   string, not frame-visible); bottom tokens verbatim SOS / Je / ne / suis /
+   **faisait** (`v_token5` dedicated 4× read — raw's "fatsalt" corrected).
+   "Multi-Head" sub-label: the blue attention boxes carry their own 2/3-line
+   white labels ("Multi-Head Self-Attention" bottom row; "Encoder/Decoder/
+   Attention" cross rows) — no additional sub-label.
+5. **Legend placement (judge-attempt-2 finding, PIL-verified):** the
+   tri-color caption "Encoder / Decoder / Attention" sits in the CENTER
+   column directly below the striped encoder-output stack (frame x≈463–535,
+   rows red y426–443 / green y444–462 / blue y463–482), NOT bottom-left as
+   first built and NOT beside the encoder panel.
+6. **Token/word label grid:** chip labels are 0..5, N-2, N-1 (evidence:
+   `v_M6` "n-3/n-2", `v_M7` "w-2/w-1", 049-identity law; builder3's
+   `[N-1,N]` deviated and was overridden); word row uses plain spaced
+   "Word 0 … Word N-1" strings (judge-attempt-2 MINOR, 049 uses plain
+   strings too); first word column at frame x≈114.5 (word-box + stack-dot
+   censuses), not 83.
+7. **LO rendering lesson (attempt 1):** pptxgenjs rotated `leftBrace`
+   (rotate:90) renders in LibreOffice as a displaced vertical bar
+   (rotation-bbox swap) — the decoder's brace is drawn as a deterministic
+   `arc` (angleRange [180,360]) instead; attempt-3 render is pixel-clean.
+
+Corrections to source claims: none — paper §3.1 topology confirmed as the
+underlying mechanism; slide-vs-source differences (no Linear/Softmax tail,
+no "Outputs (shifted right)" label, deck redraw strings) stand as recorded;
+slide wins for recreation.
