@@ -1,0 +1,122 @@
+{
+  "slide_title": "Linear Regression",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "2"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Section-divider slide: thin red-bordered light-gray content panel inset within a white outer frame; single large bold red title centered horizontally and slightly above vertical center; small yellow numbered badge in top-right corner of the panel; no other content",
+    "regions": [
+      {
+        "name": "Outer frame",
+        "position": "full slide, 0-100% both axes",
+        "content": "plain white margin surrounding the inner slide panel"
+      },
+      {
+        "name": "Content panel",
+        "position": "approximately 6% to 94% horizontally, 8% to 100% vertically (panel touches bottom edge)",
+        "content": "light gray rectangle with thin dark-red border; contains the title and the slide-number badge"
+      },
+      {
+        "name": "Title",
+        "position": "centered horizontally, roughly 42-55% vertically",
+        "content": "the text 'Linear Regression' in large bold red sans-serif"
+      },
+      {
+        "name": "Slide-number badge",
+        "position": "top-right of panel, approx 88-93% horizontally, 10-17% vertically",
+        "content": "yellow oval with purple outline containing the numeral 2"
+      },
+      {
+        "name": "Cursor artifact",
+        "position": "approx 85% horizontally, 72% vertically",
+        "content": "small pen/arrow pointer icon (screen-recording cursor, not slide content)"
+      }
+    ],
+    "hierarchy": "The red title dominates absolutely; everything else is empty space. Secondary element is the small yellow badge; the red panel border is the only other visual structure."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Full-slide inner panel: light gray rectangle with a thin (1-2px) dark red border, inset from the white outer background on top, left, and right; it extends to the bottom edge of the visible frame",
+      "colors": [
+        "#E9E9E7",
+        "#C00000",
+        "#FFFFFF"
+      ],
+      "position": "x = 6% to 94% of slide width, y = 8% to 100% of slide height (touches bottom edge; white margin on top, left, and right only)"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: small horizontal oval/ellipse, yellow fill, medium purple-blue outline, containing the black numeral '2' centered inside",
+      "colors": [
+        "#FFFF99",
+        "#7070D0",
+        "#000000"
+      ],
+      "position": "top-right corner of the gray panel: x = 88-93%, y = 10-17% of slide dimensions"
+    },
+    {
+      "type": "other",
+      "description": "Small pen-style mouse/pointer cursor icon (recording artifact, angled pen nib pointing down-left)",
+      "colors": [
+        "#333333",
+        "#FFFFFF"
+      ],
+      "position": "x = approx 85%, y = approx 72% (lower-right quadrant, below and right of the title)"
+    }
+  ],
+  "imagery": [
+    "No photographs, illustrations, or icons besides the small pen-cursor artifact at x = approx 85%, y = approx 72% (a screen-recording pointer, not slide content)"
+  ],
+  "colors": {
+    "background": "#FFFFFF (outer frame) with inner panel #E9E9E7",
+    "title_text": "#C00000",
+    "body_text": "#000000 (only the numeral '2' in the badge)",
+    "accents": [
+      "#C00000 (panel border and title)",
+      "#FFFF99 (badge fill)",
+      "#7070D0 (badge outline)"
+    ]
+  },
+  "typography_notes": "Single text element: 'Linear Regression' set in a bold sans-serif (Arial/Helvetica-like), large display size (roughly 40-44pt equivalent), dark red, title case, centered. No italics, no all-caps, no bullet lists anywhere on the slide. Badge numeral is small plain sans-serif black (~12pt).",
+  "animation_state": "No build state visible; this is a static section-title slide with all elements (title + page number) already revealed. No partial bullets or mid-animation cues.",
+  "recreation_brief": "1. Background: set the entire slide (0-100% width and height) to solid white #FFFFFF; no gradient, texture, or master decorations. 2. Content panel: insert one rectangle spanning x = 6% to 94% of slide width and y = 8% to 100% of slide height (it touches the bottom edge, leaving a white margin only on the top, left, and right); fill #E9E9E7, outline #C00000 at 1pt, no shadow. 3. Title: insert one text box centered horizontally, occupying the vertical band y = 42-55% (visual center approx 48% of slide height); text exactly 'Linear Regression' in title case, Arial Bold, ~42pt (source estimate 40-44pt), color #C00000, center-aligned; no italics, no all-caps, no other styling. 4. Slide-number badge: insert one horizontal oval spanning x = 88-93% of slide width and y = 10-17% of slide height (top-right corner inside the gray panel); fill #FFFF99, outline #7070D0 at 1.5pt; center the numeral '2' inside it in plain black #000000 sans-serif, ~12pt. 5. Exclusions: add no bullets, no subtitle, no images, no footer, and no other text or shapes anywhere on the slide. 6. Artifact: do not draw the pen/mouse-pointer cursor visible at x = approx 85%, y = approx 72% in the source frame; it is a screen-recording overlay, not slide content.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Confirmed verbatim_text.bullets = [] and subtitle_or_header = null are genuinely absent (section-divider slide whose only text is the title 'Linear Regression' and the badge numeral '2'); left empty per the true-absence rule instead of fabricating content.",
+      "Replaced the vague position 'covers nearly the entire slide' in visual_elements[0] with exact coordinates from layout.regions: x = 6-94%, y = 8-100% (touches bottom edge).",
+      "Replaced the vague position 'lower-right quadrant, below and right of the title' in visual_elements[2] with the exact region coordinates x = approx 85%, y = approx 72%, and mirrored those coordinates into imagery.",
+      "Fixed badge placement conflict in recreation_brief: the original '0.3in from top and right edges' and '~0.45in x 0.35in' contradicted layout.regions (x = 88-93%, y = 10-17%) and assumed slide dimensions not stated in the JSON; standardized every placement in the brief to percentage coordinates taken from layout.regions.",
+      "Harmonized title size between recreation_brief ('~40pt') and typography_notes ('roughly 40-44pt'): the brief now specifies ~42pt with the 40-44pt estimate cited, and typography_notes now also carries the badge numeral's ~12pt size from the brief.",
+      "Pinned exact outline weights in the brief (panel border 1pt, derived from 'thin (1-2px)'; badge outline 1.5pt) so no step relies on 'thin'/'medium' adjectives.",
+      "Rewrote recreation_brief as a strict 6-step ordered checklist, one element per step, each specifying exact text, position, color, and shape type, plus an explicit exclusions step and an explicit do-not-draw step for the cursor artifact.",
+      "Removed the non-schema _meta block from the validated output."
+    ],
+    "uncertain_items": [
+      "Exact panel border weight: source describes only 'thin (1-2px)'; 1pt assumed in the brief.",
+      "Exact title font size: estimated 40-44pt; 42pt chosen as the midpoint.",
+      "Badge outline weight (1.5pt) is carried over from the original recreation_brief; visual_elements specifies no weight, so it cannot be verified against the image.",
+      "Slide aspect ratio and absolute dimensions are not stated in the JSON; all coordinates are percentages of slide width/height.",
+      "The pen-cursor artifact (angled pen nib, #333333/#FFFFFF, x = approx 85%, y = approx 72%) is a recording overlay excluded from recreation; its exact rendering is unverifiable.",
+      "No items in the source JSON were marked [?]."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_002.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 2,
+      "image": "slide_002.jpg"
+    },
+    "elapsed_s": 63.5,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 416.8
+  }
+}

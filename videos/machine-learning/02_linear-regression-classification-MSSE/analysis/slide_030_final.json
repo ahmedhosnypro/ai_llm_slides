@@ -1,0 +1,206 @@
+{
+  "slide_title": "Regression Example",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "30",
+      "Linear Equation",
+      "Perfect Fit",
+      "Check y for training data",
+      "y",
+      "15",
+      "13",
+      "12",
+      "10",
+      "x1",
+      "x2",
+      "1",
+      "2"
+    ],
+    "equations": [
+      "W = [5; 3; 2] (column vector)",
+      "X = [1; x1; x2] (column vector)",
+      "y = W^T X = X^T W",
+      "y = 3 x1 + 2 x2 + 5",
+      "y = [1 7 3] \u00b7 [5; 3; 2] = 32 (with X^T and W labels above)",
+      "Y = [[1 1 1],[1 2 2],[1 2 1],[1 1 2]] \u00b7 [5; 3; 2] = [10; 15; 13; 12]"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title 'Regression Example' top-center in red (#FF0000). Left half: large 3D scatter plot inside a red (#FF0000)-bordered box with a yellow (#FFFF00) regression plane, exactly 4 data points at (1,1,10), (2,2,15), (2,1,13), (1,2,12), and axes x1, x2, y with ticks 1 and 2 on x1 and x2 and ticks 10, 12, 13, 15 on y. Right half, stacked top to bottom: 'Linear Equation' label [position uncertain], a top row with the W = [5; 3; 2] and X = [1; x1; x2] boxes on light blue (#ADD8E6), the equation y = W^T X = X^T W in a blue (#0000FF)-bordered box, y = 3 x1 + 2 x2 + 5 in a yellow (#FFFF00)-highlighted box, a boxed matrix multiplication y = [1 7 3] \u00b7 [5; 3; 2] = 32 with 'X^T' and 'W' labels, and the 'Check y for training data' block with Y = [[1 1 1],[1 2 2],[1 2 1],[1 1 2]] \u00b7 [5; 3; 2] = [10; 15; 13; 12] and 'Perfect Fit' in green (#008000) below. Slide number 30 in a yellow (#FFFF00) circle at the top-right corner.",
+    "regions": [
+      {
+        "name": "3D plot",
+        "position": "left half, inside a red (#FF0000)-bordered box",
+        "content": "3D scatter plot with a yellow (#FFFF00) regression plane y = 3 x1 + 2 x2 + 5, exactly 4 points at (1,1,10), (2,2,15), (2,1,13), (1,2,12), axes x1, x2, y with ticks 1, 2 on x1 and x2 and ticks 10, 12, 13, 15 on y"
+      },
+      {
+        "name": "Linear Equation label",
+        "position": "right column, above the W and X vector boxes [?]",
+        "content": "Text label 'Linear Equation'"
+      },
+      {
+        "name": "W vector",
+        "position": "top-center-right",
+        "content": "W = [5; 3; 2] (column vector) in a light blue (#ADD8E6) box"
+      },
+      {
+        "name": "X vector",
+        "position": "top-center-right",
+        "content": "X = [1; x1; x2] (column vector) in a light blue (#ADD8E6) box"
+      },
+      {
+        "name": "Equation y = W^T X = X^T W",
+        "position": "top-right, below the W/X row",
+        "content": "y = W^T X = X^T W in a blue (#0000FF)-bordered box"
+      },
+      {
+        "name": "Equation y = 3 x1 + 2 x2 + 5",
+        "position": "right column, directly below the y = W^T X = X^T W box",
+        "content": "y = 3 x1 + 2 x2 + 5 in a yellow (#FFFF00)-highlighted box"
+      },
+      {
+        "name": "Matrix multiplication",
+        "position": "middle-right",
+        "content": "y = [1 7 3] \u00b7 [5; 3; 2] = 32 with the label 'X^T' above [1 7 3] and the label 'W' above [5; 3; 2]"
+      },
+      {
+        "name": "Check y for training data",
+        "position": "bottom-right",
+        "content": "Caption 'Check y for training data' above Y = [[1 1 1],[1 2 2],[1 2 1],[1 1 2]] \u00b7 [5; 3; 2] = [10; 15; 13; 12]; 'Perfect Fit' in green (#008000) below"
+      },
+      {
+        "name": "Slide number",
+        "position": "top-right corner",
+        "content": "30 in a yellow (#FFFF00) circle"
+      }
+    ],
+    "hierarchy": "Title in red (#FF0000) dominates at the top. The 3D plot is the single largest element, occupying the left half. The right column stacks 6 blocks (2 light blue vector boxes, 1 blue-bordered equation box, 1 yellow-highlighted equation box, 1 matrix-multiplication box, 1 training-data check block) reading top to bottom, ending with 'Perfect Fit' in green (#008000). Slide number 30 sits in a yellow (#FFFF00) circle at the top-right corner."
+  },
+  "visual_elements": [
+    {
+      "type": "graph",
+      "description": "3D scatter plot (chart type: 3D scatter with fitted plane) with a yellow (#FFFF00) regression plane y = 3 x1 + 2 x2 + 5, exactly 4 data points at (1,1,10), (2,2,15), (2,1,13), (1,2,12), axes x1, x2, y in blue (#0000FF) with ticks 1, 2 on x1 and x2 and ticks 10, 12, 13, 15 on y, enclosed in a red (#FF0000)-bordered box",
+      "colors": [
+        "#FFFF00",
+        "#0000FF",
+        "#FF0000"
+      ],
+      "position": "left half"
+    },
+    {
+      "type": "text-label",
+      "description": "Text label 'Linear Equation' in black, heading the right-column equation stack [?]",
+      "colors": [
+        "#000000"
+      ],
+      "position": "right column, above the W and X vector boxes"
+    },
+    {
+      "type": "highlight-box",
+      "description": "W = [5; 3; 2] (column vector) in a light blue (#ADD8E6) filled box, black text",
+      "colors": [
+        "#ADD8E6"
+      ],
+      "position": "top-center-right"
+    },
+    {
+      "type": "highlight-box",
+      "description": "X = [1; x1; x2] (column vector) in a light blue (#ADD8E6) filled box, black text",
+      "colors": [
+        "#ADD8E6"
+      ],
+      "position": "top-center-right"
+    },
+    {
+      "type": "highlight-box",
+      "description": "y = W^T X = X^T W in a blue (#0000FF)-bordered box, black text",
+      "colors": [
+        "#0000FF"
+      ],
+      "position": "top-right"
+    },
+    {
+      "type": "highlight-box",
+      "description": "y = 3 x1 + 2 x2 + 5 in a yellow (#FFFF00)-highlighted box, black text",
+      "colors": [
+        "#FFFF00"
+      ],
+      "position": "right column, directly below the y = W^T X = X^T W box"
+    },
+    {
+      "type": "highlight-box",
+      "description": "y = [1 7 3] \u00b7 [5; 3; 2] = 32 in blue (#0000FF) with 'X^T' and 'W' labels in red (#FF0000) above the two vectors",
+      "colors": [
+        "#0000FF",
+        "#FF0000"
+      ],
+      "position": "middle-right"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Caption 'Check y for training data' and Y = [[1 1 1],[1 2 2],[1 2 1],[1 1 2]] \u00b7 [5; 3; 2] = [10; 15; 13; 12] in blue (#0000FF), with 'Perfect Fit' in green (#008000) below",
+      "colors": [
+        "#0000FF",
+        "#008000"
+      ],
+      "position": "bottom-right"
+    },
+    {
+      "type": "badge",
+      "description": "Slide number 30 in black inside a yellow (#FFFF00) filled circle",
+      "colors": [
+        "#FFFF00"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#FF0000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000FF",
+      "#FF0000",
+      "#008000",
+      "#FFFF00",
+      "#ADD8E6"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title 'Regression Example' in bold red (#FF0000). Body and equation text default to black (#000000) unless noted. Equations use blue (#0000FF) with red (#FF0000) accents (the 'X^T' and 'W' labels). W and X vector definitions sit on light blue (#ADD8E6) boxes. 'y = 3 x1 + 2 x2 + 5' sits on a yellow (#FFFF00) highlight. 'Perfect Fit' in green (#008000). Slide number '30' in black inside a yellow (#FFFF00) circle.",
+  "animation_state": "No mid-build state visible; the slide is shown fully built (static).",
+  "recreation_brief": "1. Set the slide background to white (#FFFFFF).\n2. Place the title 'Regression Example' at top-center in bold red (#FF0000) sans-serif text.\n3. At the top-right corner, draw a yellow (#FFFF00) filled circle containing the slide number '30' in black text.\n4. On the left half, draw a rectangle with a red (#FF0000) border containing a 3D scatter plot (chart type: 3D scatter with fitted plane): three axes labeled 'x1', 'x2', 'y' in blue (#0000FF); tick values 1 and 2 on the x1 axis; tick values 1 and 2 on the x2 axis; tick values 10, 12, 13, 15 on the y axis; exactly 4 black data points at (x1, x2, y) = (1, 1, 10), (2, 2, 15), (2, 1, 13), (1, 2, 12); a yellow (#FFFF00) regression plane for y = 3 x1 + 2 x2 + 5 passing through all 4 points.\n5. At the top of the right column, place the text label 'Linear Equation' in black sans-serif, above the W and X boxes (exact position uncertain [?]).\n6. In the top row of the right column (top-center-right), draw a light blue (#ADD8E6) filled box with black text 'W = [5; 3; 2]' shown as a column vector (5 above 3 above 2).\n7. In the same top row, to the right of the W box, draw a light blue (#ADD8E6) filled box with black text 'X = [1; x1; x2]' shown as a column vector (1 above x1 above x2).\n8. Below the vector boxes (top-right), draw a box with a blue (#0000FF) border containing the equation 'y = W^T X = X^T W' in black text.\n9. Directly below step 8, draw a box with yellow (#FFFF00) highlight fill containing the equation 'y = 3 x1 + 2 x2 + 5' in black text.\n10. In the middle-right area, draw a box containing the matrix multiplication 'y = [1 7 3] \u00b7 [5; 3; 2] = 32' in blue (#0000FF) text, with the label 'X^T' in red (#FF0000) above the row vector [1 7 3] and the label 'W' in red (#FF0000) above the column vector [5; 3; 2].\n11. In the bottom-right area, place the caption 'Check y for training data' in black text.\n12. Below the caption, place the matrix equation 'Y = [[1 1 1],[1 2 2],[1 2 1],[1 1 2]] \u00b7 [5; 3; 2] = [10; 15; 13; 12]' in blue (#0000FF) text (4x3 matrix times 3x1 vector = 4x1 result).\n13. Below the matrix equation, place the text 'Perfect Fit' in green (#008000).",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Corrected the second vector in the matrix-multiplication equation from '[5; 2; 2]' to '[5; 3; 2]' in verbatim_text.equations, layout.arrangement, layout.regions ('Matrix multiplication'), visual_elements, and recreation_brief: the same slide defines W = [5; 3; 2], and only [5; 3; 2] yields the stated result 32 (1*5 + 7*3 + 3*2 = 32; the extracted [5; 2; 2] would give 25).",
+      "Added a layout region and a visual element for the 'Linear Equation' text label: it appeared in verbatim_text.labels but was covered by no region, no visual element, and no recreation_brief step.",
+      "Added the slide-number badge ('30' in a yellow circle) to visual_elements: it existed in layout.regions and in the labels but was missing from visual_elements.",
+      "Added #ADD8E6 (light blue fill of the W and X vector boxes) to colors.accents: it was used by two visual elements but absent from the colors object.",
+      "Replaced the uncounted 'points' in the 3D plot with 'exactly 4 data points at (1,1,10), (2,2,15), (2,1,13), (1,2,12)' and made axis ticks explicit: 1 and 2 on x1 and x2 (from labels '1', '2' and the point coordinates), 10, 12, 13, 15 on y.",
+      "Expanded the abbreviated region content 'Y = 4x3 matrix \u00b7 W' into the full verbatim equation Y = [[1 1 1],[1 2 2],[1 2 1],[1 1 2]] \u00b7 [5; 3; 2] = [10; 15; 13; 12] so the slide can be rebuilt from the JSON alone.",
+      "Rewrote recreation_brief as a 13-step numbered checklist; each step places exactly one element with its exact text, position, color, and shape/chart type.",
+      "Kept subtitle_or_header = null and verbatim_text.bullets = [] after verifying both are genuinely absent from the source: the slide has no subtitle and no bullet list (all verbatim content is carried by 13 labels and 6 equations)."
+    ],
+    "uncertain_items": [
+      "The second vector in 'y = [1 7 3] \u00b7 [...] = 32' was extracted as '[5; 2; 2]' but corrected to '[5; 3; 2]' from internal consistency (W definition plus the result 32); verify against the source image. [?]",
+      "Exact position of the 'Linear Equation' label is not stated in the source; placed as a header at the top of the right column, above the W and X boxes. [?]",
+      "Color of the 4 scatter points is unspecified in the source; defaulted to body-text black (#000000). [?]",
+      "The split of the two colors inside the matrix-multiplication box (equation text blue #0000FF, 'X^T'/'W' labels red #FF0000) is inferred from the box's two listed colors, not explicitly mapped in the source. [?]"
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_030.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 30,
+      "image": "slide_030.jpg"
+    },
+    "elapsed_s": 72.0,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1857.7
+  }
+}

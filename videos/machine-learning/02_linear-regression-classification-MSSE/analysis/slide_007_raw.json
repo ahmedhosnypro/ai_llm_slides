@@ -1,0 +1,207 @@
+{
+  "slide_title": null,
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Input Vector: 1-D",
+      "Input Vector: 2-D",
+      "Input Vector: d-D",
+      "General Case",
+      "Input:",
+      "Output: (y)",
+      "Model",
+      "I/P: Length [x]",
+      "O/P: Weight [y]",
+      "Model",
+      "I/P: Length, Radius [x,y]",
+      "O/P: Weight [z]",
+      "Model",
+      "I/P: [X1, X2, X3, . . . . Xd]",
+      "O/P: [Y]",
+      "Model ( Line )",
+      "Model ( Plane )",
+      "Model ( Hyperplane )",
+      "Model Parameters : a , b",
+      "Model Parameters : a , b , c",
+      "Model Parameters : w1 , w2 , , w3 , ...., wd+1"
+    ],
+    "labels": [
+      "7",
+      "Weight",
+      "Length",
+      "Weight",
+      "Length",
+      "Radius",
+      "x1",
+      "x2",
+      "x3",
+      "...",
+      "...",
+      "xd"
+    ],
+    "equations": [
+      "y = a x + b",
+      "Weight = a * Length + b",
+      "z = a x + b y + c",
+      "Weight = a * Length + b * Radius + c",
+      "y = w1 x1 + w2 x2 + w3 x3 + ... + wd xd + wd+1"
+    ]
+  },
+  "layout": {
+    "arrangement": "No main title; three vertical panels side by side filling the slide. Left panel: 'Input Vector: 1-D' header (dark red), scatter plot with regression line on top, Model info box, then Model (Line) equation box. Middle panel: 'Input Vector: 2-D' header (dark red), 3D plane plot on top, Model info box, then Model (Plane) equation box. Right panel: 'Input Vector: d-D' header (green), 'General Case' diagram box on top, Model info box, then Model (Hyperplane) equation box; the entire right panel is enclosed in a tan/brown bordered container. Slide number '7' in a yellow circle at top-right corner.",
+    "regions": [
+      {
+        "name": "Left panel header",
+        "position": "top-left, ~10-27% width, ~15% height",
+        "content": "Dark red banner with white text 'Input Vector: 1-D'"
+      },
+      {
+        "name": "Left plot",
+        "position": "upper-left, ~7-30% width, ~23-62% height",
+        "content": "2D scatter plot: orange dots with black regression line, axes Weight (y) and Length (x), dotted magenta projection lines meeting at a red point on the line"
+      },
+      {
+        "name": "Left model box",
+        "position": "mid-left, ~7-26% width, ~63-74% height",
+        "content": "Small box: 'Model', 'I/P: Length [x]', 'O/P: Weight [y]'"
+      },
+      {
+        "name": "Left equation box",
+        "position": "bottom-left, ~7-26% width, ~75-97% height",
+        "content": "'Model ( Line )', y = a x + b, Weight = a * Length + b, Model Parameters : a , b"
+      },
+      {
+        "name": "Middle panel header",
+        "position": "top-center, ~35-52% width",
+        "content": "Dark red banner 'Input Vector: 2-D'"
+      },
+      {
+        "name": "Middle plot",
+        "position": "upper-center, ~32-58% width, ~23-62% height",
+        "content": "3D plot with a tilted plane, scattered points, axes Weight, Length, Radius; red question mark and red points on plane"
+      },
+      {
+        "name": "Middle model box",
+        "position": "mid-center, ~32-57% width, ~63-74% height",
+        "content": "'Model', 'I/P: Length, Radius [x,y]', 'O/P: Weight [z]'"
+      },
+      {
+        "name": "Middle equation box",
+        "position": "bottom-center, ~32-57% width, ~75-97% height",
+        "content": "'Model ( Plane )', z = a x + b y + c, Weight = a * Length + b * Radius + c, Model Parameters : a , b , c"
+      },
+      {
+        "name": "Right panel container",
+        "position": "right, ~59-93% width, ~20-97% height",
+        "content": "Tan/brown filled container with dark border enclosing the entire d-D column"
+      },
+      {
+        "name": "Right panel header",
+        "position": "top-right, ~64-82% width",
+        "content": "Green banner 'Input Vector: d-D'"
+      },
+      {
+        "name": "General Case box",
+        "position": "upper-right inside container, ~60-87% width, ~22-62% height",
+        "content": "Blue banner 'General Case'; below: 'Input:' in red with a vertical red bracket listing x1, x2, x3, ..., ..., xd; 'Output: (y)' in blue to the right"
+      },
+      {
+        "name": "Right model box",
+        "position": "mid-right, ~60-87% width, ~63-74% height",
+        "content": "'Model', 'I/P: [X1, X2, X3, . . . . Xd]', 'O/P: [Y]'"
+      },
+      {
+        "name": "Right equation box",
+        "position": "bottom-right, ~60-87% width, ~75-97% height",
+        "content": "'Model ( Hyperplane )', y = w1 x1 + w2 x2 + w3 x3 + ... + wd xd + wd+1, Model Parameters : w1 , w2 , , w3 , ...., wd+1"
+      },
+      {
+        "name": "Slide number",
+        "position": "top-right corner, ~90-94% width, ~10-15% height",
+        "content": "Yellow circle with '7'"
+      }
+    ],
+    "hierarchy": "Three equal columns; colored header banners (red, red, green) dominate the top of each column; plots are the largest elements; equation boxes at bottom use multicolored text (red labels, blue/green equations); the right column is emphasized by the tan container box."
+  },
+  "visual_elements": [
+    {
+      "type": "chart",
+      "description": "2D scatter plot with regression line: x-axis labeled 'Length', y-axis labeled 'Weight'; ~15 orange/brown dots trending upward; thick black diagonal regression line; magenta dotted vertical and horizontal projection lines from a red point on the line to both axes",
+      "colors": [
+        "#000000",
+        "#D2691E",
+        "#FF00FF",
+        "#FF0000"
+      ],
+      "position": "upper-left panel"
+    },
+    {
+      "type": "chart",
+      "description": "3D scatter/fitted-plane plot: axes labeled 'Weight' (vertical), 'Length' (right), 'Radius' (lower-left); a translucent tilted plane with scattered small points above/below it; a red circle with white '?' on the left edge of the plane; two red dots on the plane edges",
+      "colors": [
+        "#000000",
+        "#FF0000",
+        "#808080",
+        "#4682B4"
+      ],
+      "position": "upper-middle panel"
+    },
+    {
+      "type": "diagram",
+      "description": "General Case box: blue header 'General Case'; red text 'Input:' followed by a tall red curly/parenthesis bracket containing vertically stacked x1, x2, x3, ..., ..., xd (red italic subscripted); blue text 'Output: (y)' to the right",
+      "colors": [
+        "#0000CC",
+        "#FF0000",
+        "#FFFFFF"
+      ],
+      "position": "upper-right panel"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Tan/brown rectangular container with dark brown border enclosing the entire right (d-D) column",
+      "colors": [
+        "#C4A484",
+        "#5C4033"
+      ],
+      "position": "right column, full height"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle with dark border containing black number '7' (slide number badge)",
+      "colors": [
+        "#FFFF99",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [
+    "No photos; only the two plots (1-D regression scatter, 2-D plane fit) and the general-case input/output bracket diagram"
+  ],
+  "colors": {
+    "background": "#F2F2F2",
+    "title_text": "#FFFFFF",
+    "body_text": "#000000",
+    "accents": [
+      "#8B0000",
+      "#006400",
+      "#0000CC",
+      "#FF0000",
+      "#C4A484",
+      "#FFFF99",
+      "#FF00FF"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Header banners: white bold text on dark red (1-D, 2-D) and green (d-D) rectangles. 'Model' labels in red bold. Equations in blue italic serif-like font with red/green variable coloring (e.g., 'y = a x + b' with a, b in red/green). 'Model Parameters' line in blue italic. Subscripts used for x1...xd and w1...wd+1. 'Input:' red, 'Output: (y)' blue, both bold.",
+  "animation_state": "Fully built; no partial reveals visible.",
+  "recreation_brief": "1. Set slide background to light gray (#F2F2F2). 2. Create three columns. 3. Left column: dark red (#8B0000) banner with white bold text 'Input Vector: 1-D'; below it draw a scatter plot with axes 'Length' (x) and 'Weight' (y), ~15 orange dots, a thick black diagonal regression line, and magenta dotted projection lines to a red point on the line; below add a bordered box with red bold 'Model', then 'I/P: Length [x]' and 'O/P: Weight [y]'; below add equation box: red 'Model ( Line )', blue italic 'y = a x + b' (a,b colored), 'Weight = a * Length + b', and blue italic 'Model Parameters : a , b'. 4. Middle column: red banner 'Input Vector: 2-D'; 3D plot with axes Weight/Length/Radius, a tilted translucent plane with scattered points, a red '?' marker and red dots; model box: 'Model', 'I/P: Length, Radius [x,y]', 'O/P: Weight [z]'; equation box: 'Model ( Plane )', 'z = a x + b y + c', 'Weight = a * Length + b * Radius + c', 'Model Parameters : a , b , c'. 5. Right column: draw a large tan (#C4A484) rectangle with dark brown border spanning the column; green (#006400) banner 'Input Vector: d-D'; inside a white box add blue banner 'General Case', red 'Input:' with a tall red bracket listing x1, x2, x3, ..., ..., xd vertically, and blue 'Output: (y)'; model box: 'Model', 'I/P: [X1, X2, X3, . . . . Xd]', 'O/P: [Y]'; equation box: 'Model ( Hyperplane )', 'y = w1 x1 + w2 x2 + w3 x3 + ... + wd xd + wd+1' with subscripts, 'Model Parameters : w1 , w2 , , w3 , ...., wd+1'. 6. Add yellow circle with '7' at top-right corner.",
+  "_meta": {
+    "frame": "slide_007.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 7,
+      "image": "slide_007.jpg"
+    },
+    "elapsed_s": 78.9
+  }
+}

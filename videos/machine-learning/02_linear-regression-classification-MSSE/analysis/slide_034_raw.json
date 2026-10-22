@@ -1,0 +1,145 @@
+{
+  "slide_title": "Classification  Example",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "y =",
+      "Z =",
+      "Z^T =",
+      "Z^T Z =",
+      "(Z^T Z)^-1 =",
+      "W = (Z^T Z)^-1 Z^T Y",
+      "W =",
+      "X =",
+      "y = W^T X",
+      "y = 0 x_1 - 2 x_2 + 3",
+      "Check Classes of training data",
+      "Y =",
+      "C_1",
+      "C_2",
+      "C_1",
+      "C_2",
+      "Perfect Classification",
+      "34"
+    ],
+    "equations": [
+      "y = (1, 1, 1, 1)^T  [column vector of four 1s]",
+      "Z = [[1, 1, 1], [1, 2, 1], [-1, -2, -2], [-1, -1, -2]]",
+      "Z^T = [[1, 1, -1, -1], [1, 2, -2, -1], [1, 1, -2, -2]]",
+      "Z^T Z = [[4, 6, 6], [6, 10, 9], [6, 9, 10]]",
+      "(Z^T Z)^-1 = [[4.75, -1.5, -1.5], [-1.5, 1, 0], [-1.5, 0, 1]]",
+      "W = (Z^T Z)^-1 Z^T Y  =>  W = (3, 0, -2)^T",
+      "X = (1, x_1, x_2)^T",
+      "y = W^T X",
+      "y = 0 x_1 - 2 x_2 + 3",
+      "Y = [[1, 1, 1], [1, 2, 2], [1, 2, 1], [1, 1, 2]] * (3, 0, -2)^T = (1, -1, 1, -1)^T  =>  C_1, C_2, C_1, C_2"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top in red. Below, a worked matrix computation flows left-to-right in two rows: top row shows y vector, Z matrix, Z^T matrix, then arrow to Z^T Z matrix; second row shows (Z^T Z)^-1 matrix, arrow to W formula and W result vector, then X vector. Bottom-left: boxed equation y = W^T X with arrow to highlighted result y = 0 x_1 - 2 x_2 + 3. Bottom-right: 'Check Classes of training data' panel with matrix multiplication and class labels, ending with green 'Perfect Classification'. Slide number 34 in yellow circle top-right.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top center, ~5-12% height",
+        "content": "Classification  Example in red bold"
+      },
+      {
+        "name": "slide number",
+        "position": "top-right corner",
+        "content": "yellow circle with '34'"
+      },
+      {
+        "name": "row 1 matrices",
+        "position": "upper-middle, full width, ~15-40% height",
+        "content": "y column vector, Z 4x3 matrix, Z^T 3x4 matrix, hatched arrow, Z^T Z 3x3 matrix"
+      },
+      {
+        "name": "row 2 matrices",
+        "position": "middle, full width, ~42-62% height",
+        "content": "(Z^T Z)^-1 3x3 matrix, hatched arrow, W formula with W result vector (3,0,-2), X vector (1,x1,x2)"
+      },
+      {
+        "name": "result equation",
+        "position": "lower-left, ~65-75% height",
+        "content": "boxed y = W^T X, arrow, yellow-highlighted y = 0 x_1 - 2 x_2 + 3"
+      },
+      {
+        "name": "check classes panel",
+        "position": "lower-right, ~65-100% height",
+        "content": "matrix multiplication Y = Z*W yielding (1,-1,1,-1) mapped to C1,C2,C1,C2, green 'Perfect Classification' caption"
+      }
+    ],
+    "hierarchy": "Red bold title dominates; large blue matrix labels (Z, Z^T, W, Y) next; black matrix entries; red negative numbers and red W result entries; green 'Perfect Classification' as concluding emphasis."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Sequence of matrices connected by pink hatched arrows: y = column vector (1,1,1,1) in red; Z = 4x3 matrix rows [1,1,1],[1,2,1],[-1,-2,-2],[-1,-1,-2] with negatives in red; Z^T = 3x4 matrix rows [1,1,-1,-1],[1,2,-2,-1],[1,1,-2,-2]; arrow to Z^T Z = 3x3 matrix rows [4,6,6],[6,10,9],[6,9,10]. Second row: (Z^T Z)^-1 = 3x3 matrix rows [4.75,-1.5,-1.5],[-1.5,1,0],[-1.5,0,1]; arrow to W = (Z^T Z)^-1 Z^T Y => W = column vector (3,0,-2) with 3 and -2 in red; X = column vector (1, x_1, x_2) in red.",
+      "colors": [
+        "#000000",
+        "#FF0000",
+        "#0000CC",
+        "#FFC0CB"
+      ],
+      "position": "upper two-thirds of slide"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Blue-bordered box containing 'y = W^T X' (W^T in red), followed by pink hatched arrow to yellow-highlighted equation 'y = 0 x_1 - 2 x_2 + 3' with 0 in blue and -2 in red.",
+      "colors": [
+        "#0000CC",
+        "#FFFF99",
+        "#FF0000"
+      ],
+      "position": "lower-left"
+    },
+    {
+      "type": "diagram",
+      "description": "Panel titled 'Check Classes of training data' with 'Classes' in red. Shows Y = 4x3 matrix rows [1,1,1],[1,2,2],[1,2,1],[1,1,2] times column vector (3,0,-2) equals column vector (1,-1,1,-1), with red arrows mapping rows to C_1, C_2, C_1, C_2. Below in green bold: 'Perfect Classification'.",
+      "colors": [
+        "#0000CC",
+        "#FF0000",
+        "#009900",
+        "#000000"
+      ],
+      "position": "lower-right"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle with black border containing slide number '34'",
+      "colors": [
+        "#FFFF66",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [
+    "No photos; all content is mathematical notation. Pink/red hatched diagonal arrows connect computation steps. A small cursor arrow is visible over the Z matrix."
+  ],
+  "colors": {
+    "background": "#E8E8E8",
+    "title_text": "#CC0000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000CC",
+      "#FF0000",
+      "#009900",
+      "#FFFF99",
+      "#FFC0CB"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title large bold red. Matrix labels (y, Z, Z^T, W, Y, X) in large blue bold italic math style. Matrix entries black with negative values in red. 'Check Classes of training data' underlined, with 'Classes' in red. 'Perfect Classification' green bold. Final equation highlighted on yellow background.",
+  "animation_state": "Fully built slide; all elements visible. A mouse cursor appears over the Z matrix, suggesting live lecture annotation.",
+  "recreation_brief": "1. Light gray (#E8E8E8) background with thin dark red border frame. 2. Top center: bold red title 'Classification  Example'. 3. Top-right: yellow circle (#FFFF66) with black outline containing '34'. 4. Upper row, left to right: blue 'y =' with red column vector (1,1,1,1); blue 'Z =' with 4x3 matrix [[1,1,1],[1,2,1],[-1,-2,-2],[-1,-1,-2]], negatives red; blue 'Z^T =' with 3x4 matrix [[1,1,-1,-1],[1,2,-2,-1],[1,1,-2,-2]]; pink hatched arrow; blue 'Z^T Z =' with 3x3 matrix [[4,6,6],[6,10,9],[6,9,10]]. 5. Middle row: blue '(Z^T Z)^-1 =' with 3x3 matrix [[4.75,-1.5,-1.5],[-1.5,1,0],[-1.5,0,1]]; pink hatched arrow; 'W = (Z^T Z)^-1 Z^T Y' in blue/red with black '=>' then red 'W =' and column vector (3,0,-2) with 3 and -2 red; then red 'X =' with column vector (1, x_1, x_2). 6. Lower-left: blue-outlined box 'y = W^T X' (W^T red), pink hatched arrow, yellow-highlighted 'y = 0 x_1 - 2 x_2 + 3' (0 blue, -2 red). 7. Lower-right panel: underlined heading 'Check Classes of training data' ('Classes' red); equation Y = 4x3 matrix [[1,1,1],[1,2,2],[1,2,1],[1,1,2]] times vector (3,0,-2) equals vector (1,-1,1,-1), with red '=>' arrows to C_1, C_2, C_1, C_2; below, green bold 'Perfect Classification'.",
+  "_meta": {
+    "frame": "slide_034.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 34,
+      "image": "slide_034.jpg"
+    },
+    "elapsed_s": 76.6
+  }
+}

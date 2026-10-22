@@ -1,0 +1,158 @@
+{
+  "slide_title": "Calculation of Model Parameter \u201cW\u201d",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Y = X W",
+      "Where: X_{N x d+1} is a matrix \u21d2 Given",
+      "Y_{N x 1} is labels vector \u21d2 Given",
+      "W is Model Parameter \u21d2 Required",
+      "W = (X_{N x d})^{-1} Y",
+      "X_{N x d} is non-square matrix",
+      "There is NO Inverse",
+      "W = X^{-1} Y"
+    ],
+    "labels": [
+      "19"
+    ],
+    "equations": [
+      "\\underline{Y} = X \\, \\underline{W}",
+      "X_{N \\times d+1}",
+      "Y_{N \\times 1}",
+      "\\underline{W} = (X_{N \\times d})^{-1} \\underline{Y}",
+      "\\underline{W} = X^{-1} \\underline{Y}"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top in red with the letter W in blue inside quotes. Slide number '19' in a yellow circle at top-right. Below title, a large red-bordered box on the left-center containing the equation Y = X W and three 'Where:' lines each followed by a red double arrow and a status word (Given/Given/Required). To the right of that box, a large outlined arrow points right into a smaller red-bordered box containing W = X^{-1} Y and a yellow smiley face. Below the first box, a second red-bordered box contains W = (X_{Nxd})^{-1} Y, a line stating X_{Nxd} is non-square matrix, red italic text 'There is NO Inverse', and a yellow sad face emoji. The whole slide is framed by a thin red border.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top center, ~5-15% height",
+        "content": "Calculation of Model Parameter \u201cW\u201d"
+      },
+      {
+        "name": "slide number",
+        "position": "top right corner",
+        "content": "yellow circle with '19'"
+      },
+      {
+        "name": "upper equation box",
+        "position": "left-center, ~20-55% height, ~10-60% width",
+        "content": "Y = X W equation and Where: definitions with Given/Given/Required annotations"
+      },
+      {
+        "name": "arrow",
+        "position": "center, ~35-45% height, ~60-68% width",
+        "content": "large outlined right-pointing arrow"
+      },
+      {
+        "name": "result box",
+        "position": "right-center, ~33-48% height, ~68-92% width",
+        "content": "W = X^{-1} Y with smiley face"
+      },
+      {
+        "name": "lower equation box",
+        "position": "bottom-left, ~60-92% height, ~10-50% width",
+        "content": "W = (X_{Nxd})^{-1} Y, non-square matrix note, 'There is NO Inverse', sad face"
+      }
+    ],
+    "hierarchy": "Title in red bold dominates the top. Equations in large bold black/blue/red text dominate the boxes. Status words (Given, Required) in bold black. Red italic 'There is NO Inverse' stands out as a warning. Emojis add visual emphasis to the two outcome boxes."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Red-bordered rectangular box containing the equation Y = X W (Y and W underlined, X in blue, W in red) and three lines: 'Where: X_{N x d+1} is a matrix' with red \u21d2 and bold 'Given'; 'Y_{N x 1} is labels vector' with red \u21d2 and bold 'Given'; 'W is Model Parameter' with red \u21d2 and bold 'Required'. Subscripts N x d+1 and N x 1 are in blue.",
+      "colors": [
+        "#CC0000",
+        "#0000CC",
+        "#000000"
+      ],
+      "position": "upper-left center"
+    },
+    {
+      "type": "arrow",
+      "description": "Large hollow/outlined right-pointing block arrow connecting the upper box to the result box",
+      "colors": [
+        "#CC6666",
+        "#FFFFFF"
+      ],
+      "position": "center, between the two upper boxes"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Red-bordered box containing W = X^{-1} Y (W underlined black, X^{-1} in blue, Y underlined red) followed by a yellow smiley face emoji",
+      "colors": [
+        "#CC0000",
+        "#0000CC",
+        "#FFD700"
+      ],
+      "position": "right-center"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Red-bordered box containing W = (X_{N x d})^{-1} Y (W underlined, X and parentheses in blue, Y underlined red), then 'X_{N x d} is non-square matrix' with blue subscript, then red italic bold 'There is NO Inverse', with a yellow sad face emoji to the right",
+      "colors": [
+        "#CC0000",
+        "#0000CC",
+        "#FFD700",
+        "#000000"
+      ],
+      "position": "bottom-left"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle badge with black number 19 (slide number)",
+      "colors": [
+        "#FFFF99",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow smiley face emoji (happy)",
+      "colors": [
+        "#FFD700",
+        "#000000"
+      ],
+      "position": "inside right result box"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow sad/frowning face emoji",
+      "colors": [
+        "#FFD700",
+        "#000000"
+      ],
+      "position": "inside lower box, right side"
+    }
+  ],
+  "imagery": [
+    "Yellow smiley face emoji next to W = X^{-1} Y indicating the naive solution works",
+    "Yellow sad face emoji next to 'There is NO Inverse' indicating the problem with non-square matrices"
+  ],
+  "colors": {
+    "background": "#F2F2F2",
+    "title_text": "#CC0000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000CC",
+      "#CC0000",
+      "#FFD700",
+      "#FFFF99"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title is bold red, medium-large. Equations use large bold math-style lettering with underlines on Y and W, blue for X terms, red for W and Y in places. 'Given' and 'Required' are bold black. 'There is NO Inverse' is red, bold, italic with NO capitalized. Subscripts are smaller and blue.",
+  "animation_state": "All elements appear fully revealed; no mid-build state evident.",
+  "recreation_brief": "1. Set slide background to light gray (#F2F2F2) and draw a thin red (#CC0000) border rectangle around the entire slide edge. 2. Add centered title at top: 'Calculation of Model Parameter \u201cW\u201d' in bold red, with the W inside the quotes colored blue. 3. Add a yellow circle (#FFFF99) with black '19' at top-right. 4. Draw a red-bordered box in the upper-left-center; inside place large equation 'Y = X W' with Y and W underlined, X blue, W red. Below it add three lines: 'Where: X_{N x d+1} is a matrix' (subscript blue) followed by a red \u21d2 and bold 'Given'; 'Y_{N x 1} is labels vector' (subscript blue) \u21d2 'Given'; 'W is Model Parameter' \u21d2 'Required'. 5. Draw a large hollow right-pointing block arrow to the right of this box. 6. Draw a second red-bordered box to the right of the arrow containing 'W = X^{-1} Y' (W underlined black, X^{-1} blue, Y underlined red) and a yellow smiley emoji. 7. Draw a third red-bordered box at bottom-left containing 'W = (X_{N x d})^{-1} Y' (X and parentheses blue, Y underlined red), then a line 'X_{N x d} is non-square matrix' with blue subscript, then red bold italic 'There is NO Inverse', and place a yellow sad face emoji to the right of these lines.",
+  "_meta": {
+    "frame": "slide_019.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 19,
+      "image": "slide_019.jpg"
+    },
+    "elapsed_s": 65.8
+  }
+}

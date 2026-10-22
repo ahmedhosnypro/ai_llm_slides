@@ -1,0 +1,181 @@
+{
+  "slide_title": "Matrix Notation for Linear Regression and Classification (N- Samples)",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "N Training Samples",
+      "Remember",
+      "In General: N >>> d",
+      "Where: X_{N x d+1} is a matrix",
+      "Y_{N x 1} is labels vector"
+    ],
+    "labels": [
+      "17",
+      "X_1",
+      "X_2",
+      "...",
+      "X_n",
+      "x_11",
+      "x_12",
+      "..",
+      "x_1d",
+      "x_21",
+      "x_22",
+      "..",
+      "x_2d",
+      "x_n1",
+      "x_n2",
+      "..",
+      "x_nd",
+      "y_1",
+      "y_2",
+      "...",
+      "y_n",
+      "N x 1",
+      "N x d+1",
+      "d+1 x 1"
+    ],
+    "equations": [
+      "y = W^T X = X^T W",
+      "Y = X W",
+      "y vector (N x 1) = matrix with rows [1 x_11 x_12 ... x_1d], [1 x_21 x_22 ... x_2d], [1 .... .... .... ....], [1 x_n1 x_n2 ... x_nd]  (N x d+1)  times  w vector [1, w_2, w_2, ..., w_d] (d+1 x 1)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title spans the top in red with 'Matrix' in blue; slide number '17' in a yellow circle at top-right. Upper-middle: a blue-bordered box containing four vertical sample vectors X_1, X_2, ..., X_n with labels 'N Training Samples' to its left. Upper-right: a 'Remember' box with equation, and below it an 'In General: N >>> d' box. Bottom-left: a large red-bordered box containing the full matrix equation Y = X W expanded. Bottom-right: a red-bordered box with 'Y = X W' and the 'Where:' definitions, connected by a red arrow from the matrix box.",
+    "regions": [
+      {
+        "name": "title bar",
+        "position": "top, full width, ~0-12% height",
+        "content": "Slide title in red/blue, page number 17 in yellow circle at right"
+      },
+      {
+        "name": "sample vectors box",
+        "position": "upper-center, ~20-55% height, ~28-62% width",
+        "content": "Blue-bordered box with four colored vertical vectors X_1 (yellow), X_2 (cyan), ellipsis, X_n (magenta), each with x entries and y label at bottom"
+      },
+      {
+        "name": "remember box",
+        "position": "upper-right, ~28-42% height, ~66-92% width",
+        "content": "Light-blue box: 'Remember' in red italic, equation y = W^T X = X^T W with W in blue and X in red"
+      },
+      {
+        "name": "general note",
+        "position": "right-middle, ~48-55% height",
+        "content": "Beige box: 'In General: N >>> d' with N and d in red"
+      },
+      {
+        "name": "matrix equation box",
+        "position": "bottom-left, ~60-95% height, ~8-55% width",
+        "content": "Red-bordered box with full matrix equation: y vector = X matrix (with leading 1s column) times w vector, dimension labels N x 1, N x d+1, d+1 x 1"
+      },
+      {
+        "name": "definitions box",
+        "position": "bottom-right, ~60-95% height, ~60-93% width",
+        "content": "Red-bordered box: 'Y = X W' and Where: definitions of X matrix and Y labels vector"
+      }
+    ],
+    "hierarchy": "Title largest in bold red; equations and box headers next in mixed red/blue bold; matrix entries and labels smaller black text; color-coded vectors (yellow, cyan, magenta) draw the eye to the sample columns."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Four vertical column vectors representing training samples: X_1 (yellow highlight) containing x_11, x_12, .., x_1d with y_1 below; X_2 (cyan) containing x_21, x_22, .., x_2d with y_2 below; an ellipsis column of '...'; X_n (magenta) containing x_n1, x_n2, .., x_nd with y_n below. Labels X_1, X_2, ..., X_n above each column. Enclosed in a blue rectangular border.",
+      "colors": [
+        "#FFFF99",
+        "#99FFFF",
+        "#FF99FF",
+        "#0000CC"
+      ],
+      "position": "upper-center"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Light blue box titled 'Remember' (red italic) containing equation y = W^T X = X^T W, with W in blue and X in red; a small cursor arrow points at the equation.",
+      "colors": [
+        "#CCFFFF",
+        "#FF0000",
+        "#0000FF"
+      ],
+      "position": "upper-right"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Beige/tan box with text 'In General: N >>> d' where N and d are red.",
+      "colors": [
+        "#FFEECC",
+        "#FF0000"
+      ],
+      "position": "right-middle"
+    },
+    {
+      "type": "diagram",
+      "description": "Matrix equation inside red border: left side is column vector [y_1 (yellow), y_2 (cyan), ..., y_n (magenta)] labeled N x 1; equals sign; large matrix with rows [1 x_11 x_12 ... x_1d] (yellow highlight), [1 x_21 x_22 ... x_2d] (cyan), [1 .... .... .... ....], [1 x_n1 x_n2 ... x_nd] (magenta), labeled N x d+1; times column vector [1, w_2, w_2, ..., w_d] labeled d+1 x 1.",
+      "colors": [
+        "#FFFF99",
+        "#99FFFF",
+        "#FF99FF",
+        "#FF0000",
+        "#0000FF"
+      ],
+      "position": "bottom-left"
+    },
+    {
+      "type": "arrow",
+      "description": "Red outlined right-pointing arrow connecting the matrix equation box to the definitions box.",
+      "colors": [
+        "#FF6666"
+      ],
+      "position": "bottom-center"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Red-bordered box: 'Y = X W' with Y underlined, X in blue, W in red; below 'Where: X_{N x d+1} is a matrix' and 'Y_{N x 1} is labels vector' with subscripts in red.",
+      "colors": [
+        "#FF0000",
+        "#0000FF",
+        "#000000"
+      ],
+      "position": "bottom-right"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle with black border containing slide number '17'.",
+      "colors": [
+        "#FFFF99",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [
+    "Small green squiggle/scribble marks under the title at top-left and near top-right (hand-drawn annotation style)",
+    "Small mouse-cursor arrow icon pointing at the Remember equation"
+  ],
+  "colors": {
+    "background": "#DDDDDD",
+    "title_text": "#CC0000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000CC",
+      "#FF0000",
+      "#FFFF99",
+      "#99FFFF",
+      "#FF99FF",
+      "#CCFFFF",
+      "#FFEECC"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout; title bold with 'Matrix' in blue and remainder in red; mathematical notation in italic serif-like math font; 'Remember' in red italic; color-coding (blue for W/X matrix symbols, red for X/W and subscripts) used consistently for emphasis; no numbered bullets.",
+  "animation_state": "Fully built slide; no partial reveals apparent. A cursor arrow near the Remember box suggests live annotation during lecture.",
+  "recreation_brief": "1. Set slide background to light gray (#DDDDDD) with a thin dark-red border framing the whole slide. 2. Top: add title text 'Matrix Notation for Linear Regression and Classification (N- Samples)' \u2014 'Matrix' in blue, rest in bold red. Add yellow circle with '17' at top-right. 3. Add small green squiggle marks beneath title left and near top-right. 4. Upper-center: draw blue-bordered rectangle; inside place four vertical rounded columns labeled X_1, X_2, ..., X_n on top; fill X_1 column yellow with entries x_11, x_12, .., x_1d and y_1 below; X_2 cyan with x_21, x_22, .., x_2d and y_2; ellipsis column of dots; X_n magenta with x_n1, x_n2, .., x_nd and y_n. 5. Left of that box, red bold text 'N Training Samples'. 6. Upper-right: light-blue box with red italic 'Remember' and equation 'y = W^T X = X^T W' (W blue, X red); add small cursor arrow beneath. 7. Below it: beige box 'In General: N >>> d' with N and d red. 8. Bottom-left: red-bordered box containing matrix equation: column vector [y_1, y_2, ..., y_n] (rows highlighted yellow, cyan, magenta) labeled 'N x 1', equals sign, matrix with first column of 1s and rows [1 x_11 x_12 ... x_1d] (yellow), [1 x_21 x_22 ... x_2d] (cyan), [1 .... .... .... ....], [1 x_n1 x_n2 ... x_nd] (magenta) labeled 'N x d+1', times vector [1, w_2, w_2, ..., w_d] labeled 'd+1 x 1'. 9. Draw red right-pointing arrow from this box to the right box. 10. Bottom-right: red-bordered box with 'Y = X W' (Y underlined black, X blue, W red), then 'Where: X_{N x d+1} is a matrix' and 'Y_{N x 1} is labels vector' with red subscripts.",
+  "_meta": {
+    "frame": "slide_017.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 17,
+      "image": "slide_017.jpg"
+    },
+    "elapsed_s": 107.8
+  }
+}

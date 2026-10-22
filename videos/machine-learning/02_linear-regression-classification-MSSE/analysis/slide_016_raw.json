@@ -1,0 +1,261 @@
+{
+  "slide_title": "Vector Notation for Linear Regression and Classification (One Sample)",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Model",
+      "I/P: ( x1  x2  x3  .....  xn )        O/P: ( y )",
+      "Model",
+      "y = w1 x1 + w2 x2 + w2 x2 + ... + wn xn + b",
+      "y = W^T X + b",
+      "Input:  X = (column vector x1, x2, x3, ..., xd)",
+      "W = (column vector W1, W2, W3, ..., Wd)",
+      "Output: ( y )",
+      "y = ( w1  w2  ...  wn ) (column vector x1, x2, ..., xn) + b",
+      "y = ( b  w1  w2  ...  wd ) (column vector 1, x1, x2, ..., xd)",
+      "y = W^T X",
+      "Note:",
+      "\"b\" may be added at begin of the vector or at end of the vector",
+      "Same for \"1\" added to input vector",
+      "y = W^T X",
+      "Where X is Augmented vector",
+      "W is  d+1 dimension",
+      "Model Parameter is   W"
+    ],
+    "labels": [
+      "16 (slide number in yellow circle, top-right)",
+      "I/P:",
+      "O/P:",
+      "Input:",
+      "Output:",
+      "Note:"
+    ],
+    "equations": [
+      "y = w_1 x_1 + w_2 x_2 + w_2 x_2 + ... + w_n x_n + b",
+      "y = W^T X + b",
+      "X = [x_1; x_2; x_3; ...; x_d] (column vector)",
+      "W = [W_1; W_2; W_3; ...; W_d] (column vector)",
+      "y = (w_1  w_2  ...  w_n) [x_1; x_2; ...; x_n] + b",
+      "y = (b  w_1  w_2  ...  w_d) [1; x_1; x_2; ...; x_d]",
+      "y = W^T X"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top in blue with red underline; slide number '16' in a yellow circle at top-right. Below title: left column contains two stacked pale-yellow 'Model' boxes (top: I/P and O/P vectors; below: the linear equation y = w1x1+...+b) followed by a small boxed 'y = W^T X + b'. Right of these, upper-right, a large white box showing Input X column vector, W column vector, and Output (y). Middle band: a pale-yellow box (left) showing y = row vector (w1...wn) times column vector (x1...xn) + b, an arrow pointing right to a pale-green box showing y = row vector (b w1...wd) times augmented column vector (1, x1...xd), then another arrow to a boxed 'y = W^T X'. Bottom-left: a peach 'Note' box. Bottom-center: a pale-green box with 'y = W^T X / Where X is Augmented vector / W is d+1 dimension'. Bottom-right: pale-yellow box 'Model Parameter is W'. Whole slide framed by a thin dark-red border.",
+    "regions": [
+      {
+        "name": "title bar",
+        "position": "top, full width, ~0-12% height",
+        "content": "Blue underlined title text; yellow circle with '16' at right"
+      },
+      {
+        "name": "model IO box",
+        "position": "upper-left, ~5-40% width, ~18-30% height",
+        "content": "Pale yellow box: 'Model' in red italic, I/P row vector (x1 x2 x3 ..... xn), O/P: (y)"
+      },
+      {
+        "name": "model equation box",
+        "position": "left, ~5-40% width, ~35-47% height",
+        "content": "Pale yellow box: 'Model' red italic, equation y = w1x1 + w2x2 + w2x2 + ... + wnxn + b"
+      },
+      {
+        "name": "compact form box",
+        "position": "left, ~5-25% width, ~48-56% height",
+        "content": "Small white box: y = W^T X + b with W^T underlined in red"
+      },
+      {
+        "name": "input/output vector box",
+        "position": "upper-right, ~42-85% width, ~18-55% height",
+        "content": "White box: 'Input:' red, X = column vector (x1..xd) in red parentheses; W = column vector (W1..Wd) in blue parentheses; 'Output: ( y )'"
+      },
+      {
+        "name": "derivation step 1",
+        "position": "middle-left, ~5-38% width, ~58-78% height",
+        "content": "Pale yellow box: y = row vector (w1 w2 ... wn) times column vector (x1 x2 ... xn) + b"
+      },
+      {
+        "name": "derivation step 2",
+        "position": "middle-center, ~42-72% width, ~58-82% height",
+        "content": "Pale green box: y = row vector (b w1 w2 ... wd) times column vector (1, x1, x2, ..., xd)"
+      },
+      {
+        "name": "derivation result",
+        "position": "middle-right, ~75-92% width, ~62-72% height",
+        "content": "Boxed bold y = W^T X with W^T underlined red"
+      },
+      {
+        "name": "note box",
+        "position": "bottom-left, ~5-42% width, ~80-97% height",
+        "content": "Peach box: Note about 'b' added at begin or end of vector, same for '1' added to input vector"
+      },
+      {
+        "name": "augmented vector box",
+        "position": "bottom-center, ~42-68% width, ~84-97% height",
+        "content": "Pale green box: y = W^T X; Where X is Augmented vector; W is d+1 dimension"
+      },
+      {
+        "name": "model parameter box",
+        "position": "bottom-right, ~68-95% width, ~88-97% height",
+        "content": "Pale yellow box: 'Model Parameter is' in blue italic, W in red"
+      }
+    ],
+    "hierarchy": "Title largest in bold blue; red italic 'Model' and 'Note:' headers next; equations in mixed red/blue/black medium size; boxed final result 'y = W^T X' emphasized with bold and border; note text smallest."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Pale yellow box labeled 'Model' (red italic) containing 'I/P: ( x1  x2  x3  .....  xn )' with red parentheses and 'O/P: ( y )'",
+      "colors": [
+        "#FFFFCC",
+        "#FF0000",
+        "#000000"
+      ],
+      "position": "upper-left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pale yellow box labeled 'Model' containing equation y = w1x1 + w2x2 + w2x2 + ... + wnxn + b with subscripts; w's in blue, x's in red, b in blue",
+      "colors": [
+        "#FFFFCC",
+        "#0000FF",
+        "#FF0000"
+      ],
+      "position": "left, below first model box"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Small white box: y = W^T X + b, W^T underlined in red, b in blue",
+      "colors": [
+        "#FFFFFF",
+        "#FF0000",
+        "#0000FF"
+      ],
+      "position": "left-center"
+    },
+    {
+      "type": "diagram",
+      "description": "White box showing vector definitions: 'Input:' in red, X = tall column vector with red parentheses containing x1, x2, x3, ..., xd; W = column vector with blue parentheses containing W1, W2, W3, ..., Wd; 'Output: ( y )' to the right",
+      "colors": [
+        "#FFFFFF",
+        "#FF0000",
+        "#0000FF",
+        "#000000"
+      ],
+      "position": "upper-right"
+    },
+    {
+      "type": "diagram",
+      "description": "Pale yellow box: y = row vector (w1 w2 ... wn) in blue parentheses multiplied by column vector (x1 x2 ... xn) in red parentheses, '+ b' with b in blue",
+      "colors": [
+        "#FFFFCC",
+        "#0000FF",
+        "#FF0000"
+      ],
+      "position": "middle-left"
+    },
+    {
+      "type": "arrow",
+      "description": "Light pink outlined right-pointing arrow from step 1 box to step 2 box",
+      "colors": [
+        "#FFCCCC"
+      ],
+      "position": "center, between the two derivation boxes"
+    },
+    {
+      "type": "diagram",
+      "description": "Pale green box: y = row vector (b w1 w2 ... wd) in blue parentheses multiplied by augmented column vector (1, x1, x2, ..., xd) in red parentheses, leading '1' in red",
+      "colors": [
+        "#CCFFCC",
+        "#0000FF",
+        "#FF0000"
+      ],
+      "position": "middle-center"
+    },
+    {
+      "type": "arrow",
+      "description": "Light pink outlined right-pointing arrow from step 2 box to result box",
+      "colors": [
+        "#FFCCCC"
+      ],
+      "position": "center-right"
+    },
+    {
+      "type": "highlight-box",
+      "description": "White box with dark border containing bold 'y = W^T X', W^T underlined in red",
+      "colors": [
+        "#FFFFFF",
+        "#000000",
+        "#FF0000"
+      ],
+      "position": "middle-right"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Peach note box: 'Note:' red underlined; '\"b\" may be added at begin of the vector or at end of the vector' with 'begin' and 'end' underlined; 'Same for \"1\" added to input vector'",
+      "colors": [
+        "#FFE0CC",
+        "#FF0000",
+        "#000000"
+      ],
+      "position": "bottom-left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pale green box: 'y = W^T X' (W^T red underlined), 'Where X is Augmented vector' (X red), 'W is  d+1 dimension' (W red, d+1 blue)",
+      "colors": [
+        "#CCFFCC",
+        "#FF0000",
+        "#0000FF",
+        "#000000"
+      ],
+      "position": "bottom-center"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pale yellow box: 'Model Parameter is' in blue italic bold, 'W' in red",
+      "colors": [
+        "#FFFFCC",
+        "#0000FF",
+        "#FF0000"
+      ],
+      "position": "bottom-right"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle with dark border containing slide number '16'",
+      "colors": [
+        "#FFFF99",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [
+    "No photos; content is entirely equation boxes, vector diagrams, arrows, and a yellow slide-number circle"
+  ],
+  "colors": {
+    "background": "#F2F2F2",
+    "title_text": "#0000CC",
+    "body_text": "#000000",
+    "accents": [
+      "#FF0000",
+      "#0000FF",
+      "#FFFFCC",
+      "#CCFFCC",
+      "#FFE0CC",
+      "#990000"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title bold blue, large, with red underline. 'Model' and 'Note:' headers in red italic bold. Math variables color-coded: weights w/W in blue, inputs x/X in red, bias b in blue. Subscripts used for vector elements. Final results bolded and boxed. Note text smaller, with underlined keywords 'begin' and 'end'.",
+  "animation_state": "Fully built slide; no partial reveals visible.",
+  "recreation_brief": "1. Set slide background to light gray #F2F2F2 and draw a thin dark-red (#990000) border around the entire slide. 2. Top center: add title 'Vector Notation for Linear Regression and Classification (One Sample)' in bold blue (#0000CC) with a red underline. 3. Top-right: yellow circle (#FFFF99) with dark outline containing '16'. 4. Upper-left: pale yellow (#FFFFCC) box with red italic 'Model', then 'I/P: ( x1  x2  x3  .....  xn )' with red parentheses and 'O/P: ( y )'. 5. Below it: second pale yellow 'Model' box with equation 'y = w1x1 + w2x2 + w2x2 + ... + wnxn + b' (w's blue, x's red, b blue, subscripts). 6. Below that: small white box 'y = W^T X + b' with W^T underlined red. 7. Upper-right: large white box with 'Input:' in red, X = column vector (x1, x2, x3, ..., xd) in red parentheses; W = column vector (W1...Wd) in blue parentheses; 'Output: ( y )' on the right. 8. Middle-left: pale yellow box with y = row vector (w1 w2 ... wn) times column vector (x1...xn) + b. 9. Draw a light pink right arrow to a pale green (#CCFFCC) box: y = row vector (b w1 w2 ... wd) times column vector (1, x1, x2, ..., xd) with leading 1 in red. 10. Draw another pink arrow to a bordered white box with bold 'y = W^T X', W^T underlined red. 11. Bottom-left: peach (#FFE0CC) box with red underlined 'Note:' and text '\"b\" may be added at begin of the vector or at end of the vector / Same for \"1\" added to input vector', underlining 'begin' and 'end'. 12. Bottom-center: pale green box with 'y = W^T X', 'Where X is Augmented vector', 'W is  d+1 dimension' (X and W red, d+1 blue). 13. Bottom-right: pale yellow box with blue italic 'Model Parameter is' and red 'W'.",
+  "_meta": {
+    "frame": "slide_016.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 16,
+      "image": "slide_016.jpg"
+    },
+    "elapsed_s": 88.1
+  }
+}

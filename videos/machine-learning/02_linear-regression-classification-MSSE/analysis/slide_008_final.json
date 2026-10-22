@@ -1,0 +1,103 @@
+{
+  "slide_title": "Linear Classification",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "8"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Minimalist section-title slide: large centered title text in the middle of the slide; a small circular page-number badge ('8') in the top-right corner; thin dark-red border frame around the entire slide content area; a mouse cursor visible in the lower-center-right area (screen-recording artifact, not part of the slide design)",
+    "regions": [
+      {
+        "name": "title",
+        "position": "center, roughly 30%-72% horizontal, 45%-55% vertical",
+        "content": "Text 'Linear Classification' in large bold red sans-serif"
+      },
+      {
+        "name": "page number badge",
+        "position": "top-right corner, ~88%-93% horizontal, ~10%-17% vertical",
+        "content": "Yellow circle with dark outline containing the number '8'"
+      },
+      {
+        "name": "border frame",
+        "position": "full slide perimeter, inset ~5% from edges",
+        "content": "Thin dark-red rectangular outline framing the slide"
+      },
+      {
+        "name": "cursor (recording artifact)",
+        "position": "lower-center-right, ~65% horizontal, ~78% vertical",
+        "content": "Standard mouse pointer arrow (screen-recording artifact; exclude from recreation)"
+      }
+    ],
+    "hierarchy": "The red title text dominates; the small yellow page-number circle is a minor accent; the thin border frame is subtle"
+  },
+  "visual_elements": [
+    {
+      "type": "icon",
+      "description": "Small circular badge with dark navy/purple outline, pale yellow fill, containing the numeral '8' in dark navy text",
+      "colors": [
+        "#FFF9A8",
+        "#2B2B6B"
+      ],
+      "position": "top-right corner"
+    },
+    {
+      "type": "other",
+      "description": "Thin rectangular border frame (~1-2px stroke) enclosing the whole slide content area",
+      "colors": [
+        "#8B1A2B"
+      ],
+      "position": "perimeter of slide"
+    }
+  ],
+  "imagery": [
+    "Mouse cursor arrow visible in lower-center-right of slide (screen capture artifact, not part of slide design)"
+  ],
+  "colors": {
+    "background": "#F2F2F2",
+    "title_text": "#C8102E",
+    "body_text": "#2B2B6B",
+    "accents": [
+      "#FFF9A8",
+      "#2B2B6B",
+      "#8B1A2B"
+    ]
+  },
+  "typography_notes": "Bold sans-serif (Arial/Helvetica-like) for the title, large size (~44-54pt equivalent), centered; page number '8' in small dark sans-serif (dark navy #2B2B6B) centered inside the circle; no other text styling present",
+  "animation_state": "Fully static section-divider slide; no partial builds visible",
+  "recreation_brief": "1. Background: set the entire slide background to a solid light gray fill #F2F2F2 (no gradient, no image). 2. Border frame: draw one rectangle with no fill and a dark-red #8B1A2B outline ~1.5pt thick, inset ~5% from all four slide edges so the frame spans ~5%-95% of both slide width and height and encloses the whole content area. 3. Title: add one text box spanning ~30%-72% of slide width and ~45%-55% of slide height (horizontally and vertically centered), containing exactly the text 'Linear Classification' in bold Arial/Helvetica-style sans-serif at ~48pt, color #C8102E, center-aligned. 4. Page-number badge circle: draw one circle ~0.4in in diameter centered at ~90% of slide width and ~13% of slide height (top-right corner, fully inside the border frame), with pale yellow #FFF9A8 fill and a dark-navy #2B2B6B outline ~1.5pt. 5. Badge numeral: place the text '8' centered inside the circle from step 4, in small dark sans-serif (~12pt), color #2B2B6B. 6. Exclusions: add no subtitle, no bullet text, and no other shapes, text, or images; do not draw the mouse cursor (the lower-center-right pointer is a screen-recording artifact, not slide content).",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "subtitle_or_header: kept null after verifying it is truly absent \u2014 this is a minimalist section-divider slide with no subtitle or header text in any region, label, or note; documented rather than fabricated.",
+      "verbatim_text.bullets: kept as an empty array after verifying no bullet text exists on the slide (the only text is the title 'Linear Classification' and the page-number label '8'); documented rather than invented.",
+      "colors.body_text: corrected #C8102E to #2B2B6B \u2014 the only non-title text is the badge numeral '8' described as 'dark text', and #2B2B6B is the dark color listed for that badge; #C8102E applies to the title only. typography_notes and the badge description were aligned to this.",
+      "recreation_brief: rewritten as a 6-step ordered checklist with exact placements taken from layout.regions (title box ~30%-72% width / ~45%-55% height; badge centered ~90% width / ~13% height; border inset ~5% on all edges), the badge split into separate circle and numeral steps, and an explicit exclusions step (no subtitle, no bullets, no cursor).",
+      "layout.arrangement and the cursor region were annotated to state explicitly that the mouse pointer is a screen-recording artifact to be excluded from recreation.",
+      "Cross-field consistency verified: title, '8' badge, dark-red border frame, and cursor artifact are described identically across verbatim_text, layout.regions, visual_elements, imagery, and colors; no vague quantifiers ('several', 'some', 'many', 'a few', 'various') were present in the source."
+    ],
+    "uncertain_items": [
+      "Exact point size of the badge numeral '8' is not specified (source says only 'small'); ~12pt in the brief is an estimate chosen to fit the ~0.4in circle.",
+      "Exact color of the badge numeral is inferred as #2B2B6B from 'dark text' plus the badge's two listed colors (#FFF9A8 fill, #2B2B6B outline); the source does not state it explicitly.",
+      "Border stroke width is approximate: source gives '~1-2px' (about 1-1.5pt); the brief specifies ~1.5pt.",
+      "Title font size is a range in the source (~44-54pt); the brief uses ~48pt as the midpoint.",
+      "Slide aspect ratio is not stated in the source; all positions are expressed as percentages of slide width/height so they map to any canvas size.",
+      "No '[?]' markers were present in the source JSON."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_008.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 8,
+      "image": "slide_008.jpg"
+    },
+    "elapsed_s": 62.8,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 695.7
+  }
+}

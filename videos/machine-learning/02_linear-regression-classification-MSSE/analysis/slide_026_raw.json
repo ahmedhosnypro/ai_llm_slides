@@ -1,0 +1,139 @@
+{
+  "slide_title": "Minimization of Loss function to obtain BEST model parameters",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "26",
+      "Remember",
+      "X is a matrix, W is a vector, X W is a vector",
+      "Remember",
+      "Get Best W that minimizes the loss"
+    ],
+    "equations": [
+      "Loss = 1/2 (Y - \u0176)^T (Y - \u0176) = 1/2 (Y - X W)^T (Y - X W)",
+      "Loss = 1/2 [ Y^T Y + (X W)^T (X W) - Y^T (X W) - (X W)^T Y ]",
+      "Loss = 1/2 [ Y^T Y + (X W)^T (X W) - 2 (X W)^T Y ]",
+      "Y^T (X W) = (X W)^T Y",
+      "\u2202Loss/\u2202W = 0",
+      "\u2202Loss/\u2202W = 0 = 1/2 [ (X W)^T (X) + (X)^T (X W) - 2 (X)^T Y ]",
+      "X^T (X W) = (X W)^T X",
+      "\u2202Loss/\u2202W = 0 = 1/2 [ 2 X^T X W - 2 X^T Y ]",
+      "(X^T X) W = X^T Y",
+      "W = (X^T X)^{-1} X^T Y"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top in red with 'BEST' in blue; slide number '26' in a yellow circle at top-right. Below the title, a large pale-yellow box contains three lines of loss-expansion equations on the left and a blue 'Remember' note box on the right. Under that, a pink-bordered box holds the derivative-set-to-zero statement. At the bottom, another pale-yellow box contains the derivative derivation on the left, a second blue 'Remember' note on the right, and the final solution W = (X^T X)^{-1} X^T Y highlighted in a green box at bottom-right, connected by pink arrows.",
+    "regions": [
+      {
+        "name": "title bar",
+        "position": "top, full width, ~0-12% height",
+        "content": "Red title text with blue word 'BEST'; yellow circled '26' at right"
+      },
+      {
+        "name": "loss expansion box",
+        "position": "upper-middle, ~15-50% height, full width",
+        "content": "Three lines of Loss equations on pale yellow background; blue 'Remember' box on right"
+      },
+      {
+        "name": "derivative condition box",
+        "position": "middle, ~52-62% height, left ~55% width",
+        "content": "Pink-bordered box: \u2202Loss/\u2202W = 0 and 'Get Best W that minimizes the loss'"
+      },
+      {
+        "name": "derivation box",
+        "position": "bottom, ~65-95% height, full width",
+        "content": "Derivative expansion equations, second blue 'Remember' box, pink arrows leading to green-boxed final solution"
+      }
+    ],
+    "hierarchy": "Title largest in red; equations in large black serif math font dominate; 'Remember' notes smaller in blue boxes; final answer emphasized with green highlight box; pink box draws attention to the \u2202Loss/\u2202W = 0 condition."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Blue 'Remember' box (top right): 'Remember / X is a matrix, W is a vector, X W is a vector / Y^T (X W) = (X W)^T Y' with 'Remember' in red italic",
+      "colors": [
+        "#DCE6F2",
+        "#FF0000",
+        "#0000FF",
+        "#000000"
+      ],
+      "position": "right side of upper yellow box"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pink-bordered box containing '\u2202Loss/\u2202W = 0   Get Best W that minimizes the loss' with W in red",
+      "colors": [
+        "#F2DCDC",
+        "#C00000",
+        "#000000"
+      ],
+      "position": "middle-left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Blue 'Remember' box (lower right): 'Remember / X^T (X W) = (X W)^T X' with 'Remember' in red italic",
+      "colors": [
+        "#DCE6F2",
+        "#FF0000",
+        "#000000"
+      ],
+      "position": "right side of lower yellow box"
+    },
+    {
+      "type": "arrow",
+      "description": "Two pink/salmon outlined right-pointing arrows: one from the derivative equation to '(X^T X) W = X^T Y', and one from that to the final boxed solution",
+      "colors": [
+        "#F4B6C2"
+      ],
+      "position": "bottom area, between equations"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Green-bordered box highlighting final answer 'W = (X^T X)^{-1} X^T Y' with W underlined",
+      "colors": [
+        "#00B050",
+        "#E2EFDA"
+      ],
+      "position": "bottom-right"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle with dark border containing slide number '26'",
+      "colors": [
+        "#FFF2CC",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#F2F2F2",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000FF",
+      "#FF0000",
+      "#FFF9E3",
+      "#DCE6F2",
+      "#F2DCDC",
+      "#00B050",
+      "#F4B6C2",
+      "#FFF2CC"
+    ]
+  },
+  "typography_notes": "Title is bold sans-serif in red with the word 'BEST' in blue. Equations are in a serif math font (Times-like), large size. 'Remember' headers are red italic serif. Note text mixes blue and black. The W in 'Get Best W' is red. Slide number in a small yellow circle.",
+  "animation_state": "Fully built slide; all equations and boxes visible. A mouse cursor appears near the final green-boxed solution.",
+  "recreation_brief": "1. Set slide background to light gray (#F2F2F2) with a thin dark-red border frame. 2. Add centered title at top: 'Minimization of Loss function to obtain BEST model parameters' in bold red (#C00000), with 'BEST' colored blue (#0000FF). 3. Add yellow circle (#FFF2CC) with '26' at top-right. 4. Draw a pale-yellow (#FFF9E3) rectangle in the upper-middle area; inside left, place three equation lines: 'Loss = 1/2 (Y - \u0176)^T (Y - \u0176) = 1/2 (Y - X W)^T (Y - X W)', 'Loss = 1/2 [ Y^T Y + (X W)^T (X W) - Y^T (X W) - (X W)^T Y ]', 'Loss = 1/2 [ Y^T Y + (X W)^T (X W) - 2 (X W)^T Y ]' in serif math font. 5. Inside the same yellow box at right, add a light-blue (#DCE6F2) box: red italic 'Remember', then 'X is a matrix, W is a vector, X W is a vector' (X, W, X W in blue), then 'Y^T (X W) = (X W)^T Y'. 6. Below, add a pink-bordered (#C00000) light-pink (#F2DCDC) box with '\u2202Loss/\u2202W = 0    Get Best W that minimizes the loss' (W in red). 7. Add a second pale-yellow box at the bottom; inside left place '\u2202Loss/\u2202W = 0 = 1/2 [ (X W)^T (X) + (X)^T (X W) - 2 (X)^T Y ]' and below it '\u2202Loss/\u2202W = 0 = 1/2 [ 2 X^T X W - 2 X^T Y ]'. 8. At right of this box add a second blue 'Remember' box: 'Remember' (red italic) and 'X^T (X W) = (X W)^T X'. 9. Add two pink outlined right arrows leading to '(X^T X) W = X^T Y' and then to the final answer. 10. Place final answer 'W = (X^T X)^{-1} X^T Y' (W underlined) inside a green-bordered (#00B050) box at bottom-right.",
+  "_meta": {
+    "frame": "slide_026.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 26,
+      "image": "slide_026.jpg"
+    },
+    "elapsed_s": 50.2
+  }
+}

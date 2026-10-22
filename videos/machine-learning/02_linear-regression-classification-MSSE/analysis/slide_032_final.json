@@ -1,0 +1,189 @@
+{
+  "slide_title": "Classification Example",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Classify",
+      "y = C1 or C2 ???",
+      "Required to obtain W that satisfies",
+      "How to deal \u201cMathematically\u201d with \u201c<\u201d and \u201c>\u201d ???"
+    ],
+    "labels": [
+      "32",
+      "x1",
+      "x2",
+      "y1 = C1",
+      "y2 = C2",
+      "y3 = C1",
+      "y4 = C2",
+      "W",
+      "+ve ( > 0 )",
+      "-ve ( < 0 )",
+      "y",
+      "x1",
+      "x2",
+      "1",
+      "2",
+      "1",
+      "2",
+      "x1 \u21d2",
+      "x2 \u21d2",
+      "x3 \u21d2",
+      "x4 \u21d2",
+      "> 0",
+      "< 0",
+      "> 0",
+      "< 0"
+    ],
+    "equations": [
+      "X1 = (1, 1)^T",
+      "X2 = (2, 2)^T",
+      "X3 = (2, 1)^T",
+      "X4 = (1, 2)^T",
+      "X = (7, 3)^T",
+      "x1 \u21d2 (1 1 1)",
+      "x2 \u21d2 (1 2 2)",
+      "x3 \u21d2 (1 2 1)",
+      "x4 \u21d2 (1 1 2)",
+      "(matrix) \u00b7 W = ( >0, <0, >0, <0 )^T"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top ('Classification' in blue #0000CC, 'Example' in red #FF0000). Slide number '32' in a yellow circle at the top-right corner. Body splits left/right: left column (~5\u201345% width, ~18\u201395% height) is a red-bordered box with a 3D coordinate diagram; right column has two stacked boxes \u2014 upper box (~45\u201390% width, ~18\u201355% height) listing data vectors X1\u2013X4 with class labels y1\u2013y4 plus the classification question, lower box (~47\u201388% width, ~58\u201388% height) with the matrix equation. Footer strip at bottom center-right (~92\u2013100% height) holds the question about dealing mathematically with '<' and '>'.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top center, ~5\u201315% height",
+        "content": "Title text 'Classification Example'"
+      },
+      {
+        "name": "slide number",
+        "position": "top right corner",
+        "content": "Yellow circle with '32'"
+      },
+      {
+        "name": "left diagram box",
+        "position": "left, ~5\u201345% width, ~18\u201395% height",
+        "content": "Red-bordered box containing 3D axes (x1, x2, y), a yellow tilted plane labeled W, 4 data-point dots, and +ve/-ve annotations"
+      },
+      {
+        "name": "upper right box",
+        "position": "right, ~45\u201390% width, ~18\u201355% height",
+        "content": "Gray-bordered box listing X1..X4 vectors with class labels y1..y4, and 'Classify X = (7,3)' with 'y = C1 or C2 ???'"
+      },
+      {
+        "name": "lower right box",
+        "position": "right, ~47\u201388% width, ~58\u201388% height",
+        "content": "Light green box titled 'Required to obtain W that satisfies' containing a 4x3 matrix times W equals inequality vector"
+      },
+      {
+        "name": "footer",
+        "position": "bottom center-right, ~92\u2013100% height",
+        "content": "Beige box: 'How to deal \u201cMathematically\u201d with \u201c<\u201d and \u201c>\u201d ???'"
+      }
+    ],
+    "hierarchy": "Title largest and bold at top; the left 3D diagram dominates visually by area (~40% width \u00d7 ~77% height); the two right boxes are secondary; footer question in bold acts as the takeaway."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "3D coordinate system inside the red-bordered left box. Axes labeled y (vertical, red), x1 (lower left, red), x2 (right, red). A yellow tilted plane (parallelogram) labeled 'W' in black with underline. On the plane: 4 data points marked as small dots (blue and orange/brown) with axis tick labels '1' and '2' on the x1 and x2 axes. A red arrow points into the plane with label '-ve ( < 0 )' in red above the plane, and '+ve ( > 0 )' in blue below-left of the plane, indicating the two half-spaces.",
+      "colors": [
+        "#FFFF99",
+        "#FF0000",
+        "#0000FF",
+        "#000000",
+        "#CC7722"
+      ],
+      "position": "left box (~5\u201345% width, ~18\u201395% height)"
+    },
+    {
+      "type": "table",
+      "description": "Upper right gray-bordered box: rows 'x1 \u21d2' and 'x2 \u21d2' in blue, followed by 4 column vectors X1=(1,1), X2=(2,2), X3=(2,1), X4=(1,2); beneath each, class labels y1=C1 (red), y2=C2 (blue), y3=C1 (red), y4=C2 (blue). Below: 'Classify' in green italic, X=(7,3) in blue, then 'y = C1 or C2 ???' with C1 red, C2 blue.",
+      "colors": [
+        "#0000FF",
+        "#FF0000",
+        "#009900",
+        "#000000",
+        "#808080"
+      ],
+      "position": "upper right (~45\u201390% width, ~18\u201355% height)"
+    },
+    {
+      "type": "diagram",
+      "description": "Lower right light green box: header 'Required to obtain W that satisfies' with W in red underlined. Matrix equation: 4 row labels x1 \u21d2, x2 \u21d2, x3 \u21d2, x4 \u21d2 (blue); 4x3 matrix with rows (1 1 1), (1 2 2), (1 2 1), (1 1 2) in red; multiplied by vector W (red, in parentheses); equals a column vector of inequalities: > 0, < 0, > 0, < 0 (red).",
+      "colors": [
+        "#E8F5E9",
+        "#FF0000",
+        "#0000FF",
+        "#000000"
+      ],
+      "position": "lower right (~47\u201388% width, ~58\u201388% height)"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Footer beige/tan box with bold text: How to deal \u201cMathematically\u201d with \u201c<\u201d and \u201c>\u201d ??? \u2014 the word 'Mathematically' in red, rest in black.",
+      "colors": [
+        "#F5F5DC",
+        "#FF0000",
+        "#000000"
+      ],
+      "position": "bottom center-right (~92\u2013100% height)"
+    }
+  ],
+  "imagery": [
+    "Yellow circle badge containing slide number '32' at top-right corner",
+    "Yellow 3D plane illustration representing the weight-vector hyperplane W"
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#0000CC",
+    "body_text": "#000000",
+    "accents": [
+      "#FF0000",
+      "#0000FF",
+      "#009900",
+      "#FFFF99",
+      "#E8F5E9",
+      "#F5F5DC",
+      "#808080",
+      "#CC7722"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title bold, split-colored ('Classification' blue #0000CC, 'Example' red #FF0000), largest text on the slide. Math expressions in italic serif-like style. 'Classify' in green italic (#009900). Color coding for classes: C1 red (#FF0000), C2 blue (#0000FF). Footer text bold with red emphasis on 'Mathematically'.",
+  "animation_state": "Fully built static slide; no partial reveals or build-up animations apparent.",
+  "recreation_brief": "1. Set a white (#FFFFFF) slide background; use one sans-serif font family throughout.\n2. Place the title at top center (vertical band ~5\u201315% of slide height): bold text 'Classification Example' with 'Classification' in blue #0000CC and 'Example' in red #FF0000; this is the largest text on the slide.\n3. Place the slide-number badge in the top-right corner: a filled yellow (#FFFF99) circle containing '32' in black (#000000).\n4. Draw the left diagram container: a rectangle with a red (#FF0000) border and white/transparent fill, spanning x \u22485\u201345% and y \u224818\u201395% of the slide.\n5. Inside the left container, draw a 3D coordinate system: 3 red (#FF0000) arrowed axes \u2014 vertical axis labeled 'y', lower-left axis labeled 'x1', right axis labeled 'x2' \u2014 with tick labels '1' and '2' on the x1 axis and '1' and '2' on the x2 axis.\n6. Inside the left container, draw the hyperplane as a yellow (#FFFF99) tilted parallelogram between the axes; label it 'W' in black (#000000) with an underline.\n7. Inside the left container, place 4 small data-point dots on the yellow plane, colored blue (#0000FF) and orange/brown (#CC7722); per-dot color assignment is unspecified (see validation.uncertain_items).\n8. Inside the left container, draw 1 red (#FF0000) arrow pointing into the plane; place the text '-ve ( < 0 )' in red (#FF0000) above the plane and '+ve ( > 0 )' in blue (#0000FF) below-left of the plane.\n9. Draw the upper-right container: a rectangle with a gray (#808080) border and white/transparent fill, spanning x \u224845\u201390% and y \u224818\u201355% of the slide.\n10. Inside the upper-right container, build the data table: 2 blue (#0000FF) row labels 'x1 \u21d2' and 'x2 \u21d2' on the left, and 4 column vectors to their right \u2014 X1 = (1, 1)^T, X2 = (2, 2)^T, X3 = (2, 1)^T, X4 = (1, 2)^T \u2014 in black (#000000).\n11. Directly beneath the 4 vectors, place the class labels: 'y1 = C1' in red (#FF0000), 'y2 = C2' in blue (#0000FF), 'y3 = C1' in red (#FF0000), 'y4 = C2' in blue (#0000FF).\n12. Below the table, place 'Classify' in green (#009900) italic followed by 'X = (7, 3)^T' in blue (#0000FF), then the text 'y = C1 or C2 ???' with 'C1' in red (#FF0000) and 'C2' in blue (#0000FF).\n13. Draw the lower-right container: a light-green (#E8F5E9) filled rectangle spanning x \u224847\u201388% and y \u224858\u201388% of the slide; at its top place the header 'Required to obtain W that satisfies' in black (#000000) with the 'W' in red (#FF0000) and underlined.\n14. Inside the lower-right container, place the matrix equation: 4 blue (#0000FF) row labels 'x1 \u21d2', 'x2 \u21d2', 'x3 \u21d2', 'x4 \u21d2' on the left; a 4\u00d73 matrix in red (#FF0000) with rows (1 1 1), (1 2 2), (1 2 1), (1 1 2); multiplied by a red (#FF0000) vector 'W' in parentheses; then an equals sign and a red (#FF0000) 4-entry column vector reading '> 0', '< 0', '> 0', '< 0' top to bottom.\n15. Place the footer box at bottom center-right (y \u224892\u2013100% of slide height): a beige (#F5F5DC) filled rectangle with bold text 'How to deal \u201cMathematically\u201d with \u201c<\u201d and \u201c>\u201d ???' \u2014 'Mathematically' in red (#FF0000), the rest in black (#000000).",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Rewrote recreation_brief from 7 prose steps into a 15-step numbered checklist; each step now places exactly one element with exact text, percent-band position, hex color, and shape type.",
+      "Replaced vague dimensions in the brief ('~40% width', 'most of height') with the exact region coordinates for the left box (x \u22485\u201345%, y \u224818\u201395%).",
+      "Added two hex values missing from colors: #808080 for the gray border of the upper-right box (border named in layout.regions but no hex anywhere in source) and #CC7722 for the orange/brown data-point dots (named in the diagram description but no hex anywhere in source); both are suggested placeholders, flagged in uncertain_items.",
+      "Amended visual_elements[0] to state the diagram sits inside a red-bordered box and visual_elements[1] to state its gray border, so element descriptions match layout.regions.",
+      "Distinguished title blue #0000CC from body blue #0000FF explicitly in the brief and typography_notes, and removed the stray trailing space in the quoted title segment 'Classification '.",
+      "Tightened layout.arrangement with the exact percent coordinates of each region and replaced 'data points' with '4 data-point dots' for precision.",
+      "Preserved the literal '???' question marks in 'y = C1 or C2 ???' and the footer text as verbatim slide content (they are on-slide text, not uncertainty markers).",
+      "subtitle_or_header: verified genuinely absent from every source field; retained null (the title is the only header on the slide)."
+    ],
+    "uncertain_items": [
+      "Exact hex of the gray border (upper-right box) is not in the source; #808080 is a suggested standard gray.",
+      "Exact hex of the orange/brown data-point dots is not in the source; #CC7722 is a suggested placeholder.",
+      "Per-dot color assignment (which of the 4 dots are blue vs orange/brown), the exact positions of the 4 dots on the yellow plane, and the 3D projection angle/tilt of the plane and axes are not specified.",
+      "Color conventions differ between areas: class labels use C1=red / C2=blue while half-space annotations use +ve=blue / -ve=red; both retained as extracted since the image cannot be re-checked.",
+      "Table row labels are recorded as plain 'x1','x2' in verbatim_text.labels but as 'x1 \u21d2','x2 \u21d2' in visual_elements[1].description; the recreation brief follows the element description (with arrows).",
+      "Text color of the '32' badge is unspecified; black assumed per colors.body_text."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_032.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 32,
+      "image": "slide_032.jpg"
+    },
+    "elapsed_s": 90.0,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 775.4
+  }
+}

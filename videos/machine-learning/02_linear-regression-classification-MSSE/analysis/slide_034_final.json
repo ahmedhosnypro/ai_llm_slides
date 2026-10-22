@@ -1,0 +1,172 @@
+{
+  "slide_title": "Classification  Example",
+  "subtitle_or_header": "None: the slide has no subtitle; the red title 'Classification  Example' is the only header text.",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "y =",
+      "Z =",
+      "Z^T =",
+      "Z^T Z =",
+      "(Z^T Z)^-1 =",
+      "W = (Z^T Z)^-1 Z^T Y",
+      "W =",
+      "X =",
+      "y = W^T X",
+      "y = 0 x_1 - 2 x_2 + 3",
+      "Check Classes of training data",
+      "Y =",
+      "C_1",
+      "C_2",
+      "C_1",
+      "C_2",
+      "Perfect Classification",
+      "34"
+    ],
+    "equations": [
+      "y = (1, 1, 1, 1)^T  [column vector of four 1s]",
+      "Z = [[1, 1, 1], [1, 2, 1], [-1, -2, -2], [-1, -1, -2]]",
+      "Z^T = [[1, 1, -1, -1], [1, 2, -2, -1], [1, 1, -2, -2]]",
+      "Z^T Z = [[4, 6, 6], [6, 10, 9], [6, 9, 10]]",
+      "(Z^T Z)^-1 = [[4.75, -1.5, -1.5], [-1.5, 1, 0], [-1.5, 0, 1]]",
+      "W = (Z^T Z)^-1 Z^T Y  =>  W = (3, 0, -2)^T",
+      "X = (1, x_1, x_2)^T",
+      "y = W^T X",
+      "y = 0 x_1 - 2 x_2 + 3",
+      "Y = [[1, 1, 1], [1, 2, 2], [1, 2, 1], [1, 1, 2]] * (3, 0, -2)^T = (1, -1, 1, -1)^T  =>  C_1, C_2, C_1, C_2"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top in red. Below, a worked matrix computation flows left-to-right in two rows: top row shows y vector, Z matrix, Z^T matrix, then arrow to Z^T Z matrix; second row shows (Z^T Z)^-1 matrix, arrow to W formula and W result vector, then X vector. Bottom-left: boxed equation y = W^T X with arrow to highlighted result y = 0 x_1 - 2 x_2 + 3. Bottom-right: 'Check Classes of training data' panel with matrix multiplication and class labels, ending with green 'Perfect Classification'. Slide number 34 in yellow circle top-right.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top center, ~5-12% height",
+        "content": "Classification  Example in red bold (double space between words is verbatim)"
+      },
+      {
+        "name": "slide number",
+        "position": "top-right corner",
+        "content": "yellow circle (#FFFF66 fill, black outline) with '34'"
+      },
+      {
+        "name": "row 1 matrices",
+        "position": "upper-middle, full width, ~15-40% height",
+        "content": "y column vector (1,1,1,1), Z 4x3 matrix, Z^T 3x4 matrix, pink hatched arrow, Z^T Z 3x3 matrix"
+      },
+      {
+        "name": "row 2 matrices",
+        "position": "middle, full width, ~42-62% height",
+        "content": "(Z^T Z)^-1 3x3 matrix, pink hatched arrow, W formula with W result vector (3,0,-2), X vector (1, x_1, x_2)"
+      },
+      {
+        "name": "result equation",
+        "position": "lower-left, ~65-75% height",
+        "content": "boxed y = W^T X, pink hatched arrow, yellow-highlighted y = 0 x_1 - 2 x_2 + 3"
+      },
+      {
+        "name": "check classes panel",
+        "position": "lower-right, ~65-100% height",
+        "content": "matrix multiplication Y = [[1,1,1],[1,2,2],[1,2,1],[1,1,2]] * (3,0,-2)^T = (1,-1,1,-1)^T mapped by red arrows to C_1, C_2, C_1, C_2; green 'Perfect Classification' caption"
+      }
+    ],
+    "hierarchy": "Red bold title dominates; large blue (#0000CC) matrix labels (y, Z, Z^T, Z^T Z, (Z^T Z)^-1, W formula, Y) next; red (#FF0000) result labels 'W =' and 'X ='; black matrix entries; red negative numbers, red y-vector entries, and red W-result entries (3, -2); green 'Perfect Classification' as concluding emphasis."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Sequence of matrices connected by pink hatched arrows: y = column vector (1,1,1,1) in red; Z = 4x3 matrix rows [1,1,1],[1,2,1],[-1,-2,-2],[-1,-1,-2] with negatives in red; Z^T = 3x4 matrix rows [1,1,-1,-1],[1,2,-2,-1],[1,1,-2,-2]; arrow to Z^T Z = 3x3 matrix rows [4,6,6],[6,10,9],[6,9,10]. Second row: (Z^T Z)^-1 = 3x3 matrix rows [4.75,-1.5,-1.5],[-1.5,1,0],[-1.5,0,1]; arrow to W = (Z^T Z)^-1 Z^T Y => W = column vector (3,0,-2) with 3 and -2 in red; X = column vector (1, x_1, x_2) in red.",
+      "colors": [
+        "#000000",
+        "#FF0000",
+        "#0000CC",
+        "#FFC0CB"
+      ],
+      "position": "upper two-thirds of slide"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Blue-bordered box containing 'y = W^T X' (W^T in red), followed by pink hatched arrow to yellow-highlighted equation 'y = 0 x_1 - 2 x_2 + 3' with 0 in blue and -2 in red.",
+      "colors": [
+        "#0000CC",
+        "#FFFF99",
+        "#FF0000"
+      ],
+      "position": "lower-left"
+    },
+    {
+      "type": "diagram",
+      "description": "Panel titled 'Check Classes of training data' with 'Classes' in red. Shows Y = 4x3 matrix rows [1,1,1],[1,2,2],[1,2,1],[1,1,2] times column vector (3,0,-2) equals column vector (1,-1,1,-1), with red arrows mapping rows to C_1, C_2, C_1, C_2. Below in green bold: 'Perfect Classification'.",
+      "colors": [
+        "#0000CC",
+        "#FF0000",
+        "#009900",
+        "#000000"
+      ],
+      "position": "lower-right"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle with black border containing slide number '34'",
+      "colors": [
+        "#FFFF66",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [
+    "No photos; all content is mathematical notation. Pink/red hatched diagonal arrows connect computation steps. A small cursor arrow is visible over the Z matrix (video-recording artifact, not slide content)."
+  ],
+  "colors": {
+    "background": "#E8E8E8",
+    "title_text": "#CC0000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000CC",
+      "#FF0000",
+      "#009900",
+      "#FFFF99",
+      "#FFC0CB",
+      "#FFFF66"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title large bold red (#CC0000), with a verbatim double space between 'Classification' and 'Example'. Matrix labels 'y =', 'Z =', 'Z^T =', 'Z^T Z =', '(Z^T Z)^-1 =' and 'Y =', plus the formula 'W = (Z^T Z)^-1 Z^T Y', in large blue (#0000CC) bold italic math style; the result label 'W =' and the label 'X =' in red (#FF0000). Matrix entries black with negative values in red; y-vector entries (1,1,1,1) and X-vector entries (1, x_1, x_2) in red. 'Check Classes of training data' underlined, with 'Classes' in red. 'Perfect Classification' green (#009900) bold. Final equation highlighted on yellow (#FFFF99) background.",
+  "animation_state": "Fully built slide; all elements visible. A mouse cursor appears over the Z matrix, suggesting live lecture annotation (cursor is a recording artifact and must not be recreated).",
+  "recreation_brief": "1. Background: fill the entire slide with solid light gray #E8E8E8. 2. Border frame: draw a thin dark red border frame around the slide edge [?] - this item appears only in the original brief and is unverified; omit it if the source cannot confirm it. 3. Title: place a text box at top center (vertical band roughly 5-12% of slide height) containing 'Classification  Example' - keep the double space between the two words exactly as extracted; bold sans-serif, dark red #CC0000, the largest text on the slide. 4. Slide number: at the top-right corner, draw a circle filled #FFFF66 with a black #000000 outline containing black text '34'. 5. Row 1, element 1 (left end of the upper band, roughly 15-40% of slide height): blue #0000CC bold italic label 'y =' followed by a 4x1 column vector (1,1,1,1)^T with all four entries in red #FF0000. 6. Row 1, element 2: blue label 'Z =' followed by a 4x3 matrix with rows [1,1,1], [1,2,1], [-1,-2,-2], [-1,-1,-2]; positive entries black #000000, all six negative entries red #FF0000. 7. Row 1, element 3: blue label 'Z^T =' followed by a 3x4 matrix with rows [1,1,-1,-1], [1,2,-2,-1], [1,1,-2,-2]; all six negative entries red, the other six entries black. 8. Row 1, element 4: a right-pointing arrow filled pink #FFC0CB with diagonal hatching, placed between the Z^T matrix and the Z^T Z matrix. 9. Row 1, element 5: blue label 'Z^T Z =' followed by a 3x3 matrix with rows [4,6,6], [6,10,9], [6,9,10]; all nine entries black. 10. Row 2, element 1 (left end of the middle band, roughly 42-62% of slide height): blue label '(Z^T Z)^-1 =' followed by a 3x3 matrix with rows [4.75,-1.5,-1.5], [-1.5,1,0], [-1.5,0,1]; the four -1.5 entries red, the other five entries black. 11. Row 2, element 2: a second pink #FFC0CB hatched right-pointing arrow. 12. Row 2, element 3: the formula 'W = (Z^T Z)^-1 Z^T Y' in blue #0000CC, then a black '=>' symbol, then a red #FF0000 label 'W =' followed by a 3x1 column vector (3,0,-2)^T with the entries 3 and -2 in red and the entry 0 in black. 13. Row 2, element 4: a red #FF0000 label 'X =' followed by a 3x1 column vector (1, x_1, x_2)^T with all three entries in red. 14. Lower-left block, element 1 (roughly 65-75% of slide height): a rectangle with a blue #0000CC border containing 'y = W^T X', with 'W^T' in red #FF0000 and the remaining characters in black. 15. Lower-left block, element 2: a third pink #FFC0CB hatched right-pointing arrow leading out of the rectangle. 16. Lower-left block, element 3: the equation 'y = 0 x_1 - 2 x_2 + 3' on a yellow #FFFF99 highlight background, with '0' in blue #0000CC, '-2' in red #FF0000, and all remaining characters in black. 17. Lower-right panel, element 1 (roughly 65-100% of slide height): an underlined heading 'Check Classes of training data', with the word 'Classes' in red #FF0000 and the other four words in black. 18. Lower-right panel, element 2: a blue #0000CC label 'Y =' followed by a 4x3 matrix with rows [1,1,1], [1,2,2], [1,2,1], [1,1,2] (all twelve entries black), a multiplication sign, a 3x1 column vector (3,0,-2)^T, an equals sign, and a 4x1 result column vector (1,-1,1,-1)^T. 19. Lower-right panel, element 3: four red #FF0000 arrows, one from each of the four result entries, pointing to the class labels 'C_1', 'C_2', 'C_1', 'C_2' in top-to-bottom order. 20. Lower-right panel, element 4: below the class labels, the caption 'Perfect Classification' in bold green #009900. 21. Exclusion: do NOT recreate the mouse cursor shown over the Z matrix in the video frame; it is a recording artifact, not slide content.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "subtitle_or_header was null; filled with an explicit note that the slide has no subtitle (the red title is the only header). No text was invented.",
+      "verbatim_text.bullets kept empty deliberately: verified the slide contains no bulleted list (it is an equation-only derivation slide); all text is captured by the 18 labels and 10 equations, so inventing bullets would falsify the source.",
+      "Corrected layout.regions 'check classes panel' content: it claimed 'Y = Z*W', but the displayed 4x3 matrix [[1,1,1],[1,2,2],[1,2,1],[1,1,2]] is not Z (Z = [[1,1,1],[1,2,1],[-1,-2,-2],[-1,-1,-2]]); the region now spells out the actual matrix, matching visual_elements and verbatim_text.",
+      "Resolved a label-color contradiction: typography_notes listed X among the blue labels, but visual_elements and the original brief both specify 'X =' in red; typography_notes and layout.hierarchy were updated (blue labels: y, Z, Z^T, Z^T Z, (Z^T Z)^-1, the W formula, Y; red labels: the result 'W =' and 'X =').",
+      "Added #FFFF66 (fill of the slide-number circle) to colors.accents; it was used by the icon element but was missing from the palette list.",
+      "Preserved the verbatim double space in the title 'Classification  Example' and flagged it in typography_notes and recreation_brief step 3 so the builder reproduces it exactly.",
+      "Marked the 'thin dark red border frame' as [?] in recreation_brief step 2: it appears only in the original brief and is not corroborated by layout or visual_elements.",
+      "Rewrote recreation_brief from 7 bundled sentences into a 21-step ordered checklist; each step places exactly one element with exact text, position, color, and shape, and vague wording was replaced with exact counts (e.g., 'four -1.5 entries', 'six negative entries in Z', 'four red arrows', 'other four words').",
+      "Specified the arrow color as pink #FFC0CB in region contents where the source said only 'hatched arrow'.",
+      "Excluded the mouse cursor over the Z matrix from the recreation checklist (video-recording artifact, not slide content) and stated this explicitly in step 21."
+    ],
+    "uncertain_items": [
+      "Thin dark red border frame around the slide edge - mentioned only in the original recreation_brief, not corroborated by layout or visual_elements [?]",
+      "Color of the result 'W =' label before (3,0,-2)^T: the original brief says red, while layout.hierarchy and typography_notes list W among the blue labels; resolved to red per the more specific brief [?]",
+      "Distribution of red versus blue characters inside the formula 'W = (Z^T Z)^-1 Z^T Y': the original brief says 'blue/red' without specifying which characters are red [?]",
+      "Double space inside the title 'Classification  Example' - preserved as extracted, but it may be a rendering artifact of the original slide [?]",
+      "Matrix delimiter style (square brackets versus parentheses) and exact font point sizes are not specified in the source [?]",
+      "The check-panel 4x3 matrix [[1,1,1],[1,2,2],[1,2,1],[1,1,2]] is labeled 'Y =' on the slide and differs from Z; the reading that it is the sign-unsigned training-data matrix is an inference from arithmetic consistency, not a statement in the source [?]"
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_034.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 34,
+      "image": "slide_034.jpg"
+    },
+    "elapsed_s": 76.6,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1343.1
+  }
+}

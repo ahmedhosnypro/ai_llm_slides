@@ -1,0 +1,136 @@
+{
+  "slide_title": "One vs All   (for Multi Class Classification)",
+  "subtitle_or_header": "Decision Rules (underlined header of the bottom rules panel; the slide has no subtitle beneath the main title)",
+  "verbatim_text": {
+    "bullets": [
+      "Decision Rules",
+      "Number of Positive output  (Only One)   \u2192  Input is properly Classified",
+      "Number of Positive output  (More than One)  \u2192  can NOT define the class",
+      "NO Positive output   \u2192  Not one of the classes  (new class)"
+    ],
+    "labels": [
+      "39",
+      "Training Sample",
+      "Classification Model (of Class \"1\")",
+      "Classification Model (of Class \"2\")",
+      "Classification Model (of Class \"3\")",
+      "+ve if Class \"1\" -ve for other classes",
+      "Decision"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Title centered at top in dark red #8B0000; slide number '39' in a yellow #FFFF00 circle at top-right. Left side: scatter plot at top-left, 'Training Sample' box (tan #D2B48C) below it. Center: three stacked model boxes (dark red #8B0000, dark blue #00008B, dark green #006400), each feeding a small output box to its right. Right side: 'Decision' box (tan #D2B48C). Bottom: Decision Rules panel spanning the width.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top center",
+        "content": "One vs All (for Multi Class Classification) in dark red bold"
+      },
+      {
+        "name": "slide number",
+        "position": "top-right",
+        "content": "39 inside yellow circle"
+      },
+      {
+        "name": "scatter plot",
+        "position": "top-left",
+        "content": "scatter plot with red, green, blue point clusters"
+      },
+      {
+        "name": "flowchart",
+        "position": "center, spanning left-to-right (Training Sample on the left below the scatter plot; model boxes and output boxes in the center; Decision on the right)",
+        "content": "Training Sample \u2192 three classification models \u2192 three output boxes \u2192 Decision"
+      },
+      {
+        "name": "decision rules",
+        "position": "bottom",
+        "content": "Decision Rules panel with three rules"
+      }
+    ],
+    "hierarchy": "Title dominates in dark red; flowchart boxes are large and colorful; Decision Rules panel at bottom with colored text (green, red, purple)."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Flowchart: 'Training Sample' box (tan #D2B48C) \u2192 arrows to three stacked model boxes: 'Classification Model (of Class \"1\")' (dark red #8B0000), 'Classification Model (of Class \"2\")' (dark blue #00008B), 'Classification Model (of Class \"3\")' (dark green #006400), each with white bold text. Each model \u2192 a small output box to its right (white #FFFFFF fill) with a matching colored border (dark red #8B0000, dark blue #00008B, dark green #006400) containing '+ve if Class \"1\" -ve for other classes'. The three output boxes \u2192 'Decision' box (tan #D2B48C).",
+      "colors": [
+        "#8B0000",
+        "#00008B",
+        "#006400",
+        "#D2B48C",
+        "#FFFFFF"
+      ],
+      "position": "center, spanning left-to-right"
+    },
+    {
+      "type": "chart",
+      "description": "Scatter plot with red, green, and blue point clusters; axes with ticks; red cluster top-left, green middle, blue right.",
+      "colors": [
+        "#FF0000",
+        "#008000",
+        "#0000FF"
+      ],
+      "position": "top-left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Decision Rules panel: 'Decision Rules' underlined; three rules, each with a '\u2192' arrow, colored green #008000, red #FF0000, and purple #800080 (one color per rule, in listed order).",
+      "colors": [
+        "#008000",
+        "#FF0000",
+        "#800080"
+      ],
+      "position": "bottom"
+    }
+  ],
+  "imagery": [
+    "Scatter plot (top-left) with axes and tick marks and three point clusters: red #FF0000 at the top-left of the plot area, green #008000 in the middle, blue #0000FF at the right."
+  ],
+  "colors": {
+    "background": "#F0F0F0",
+    "title_text": "#8B0000",
+    "body_text": "#000000",
+    "accents": [
+      "#8B0000",
+      "#00008B",
+      "#006400",
+      "#D2B48C",
+      "#FFFF00"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title bold dark red #8B0000. Model box labels in white bold text. 'Decision Rules' header underlined. The three decision rules in colored text (green, red, purple) with '\u2192' arrows.",
+  "animation_state": "Fully revealed; no mid-build state.",
+  "recreation_brief": "1. Set the slide background to light gray #F0F0F0.\n2. Place the title 'One vs All   (for Multi Class Classification)' centered at the top, bold sans-serif, dark red #8B0000.\n3. Place a yellow #FFFF00 circle in the top-right corner containing the slide number '39' in black text.\n4. In the top-left quadrant, draw a scatter (XY) chart with axes and tick marks containing three point clusters: red #FF0000 points at the top-left of the plot area, green #008000 points in the middle, blue #0000FF points at the right.\n5. Below the scatter plot on the left side, draw a tan #D2B48C rectangle labeled 'Training Sample' in black text.\n6. In the center, draw the top model box: dark red #8B0000 rectangle with white bold text 'Classification Model (of Class \"1\")'.\n7. Directly below it, draw the middle model box: dark blue #00008B rectangle with white bold text 'Classification Model (of Class \"2\")'.\n8. Directly below that, draw the bottom model box: dark green #006400 rectangle with white bold text 'Classification Model (of Class \"3\")'.\n9. Draw a black arrow from the 'Training Sample' box to each of the three model boxes (3 arrows).\n10. To the right of the top model box, draw a small output box (smaller than the model boxes): white #FFFFFF fill, dark red #8B0000 border, text '+ve if Class \"1\" -ve for other classes'.\n11. To the right of the middle model box, draw a small output box: white #FFFFFF fill, dark blue #00008B border, same captured text '+ve if Class \"1\" -ve for other classes' (see validation.uncertain_items).\n12. To the right of the bottom model box, draw a small output box: white #FFFFFF fill, dark green #006400 border, same captured text.\n13. Draw a black arrow from each model box to the output box on its right (3 arrows).\n14. On the right side, draw a tan #D2B48C rectangle labeled 'Decision' in black text.\n15. Draw a black arrow from each of the three output boxes to the 'Decision' box (3 arrows).\n16. Along the bottom, spanning the slide width, add the Decision Rules panel, starting with the underlined header 'Decision Rules'.\n17. Under the header, add rule 1 in green #008000: 'Number of Positive output  (Only One)   \u2192  Input is properly Classified'.\n18. Add rule 2 in red #FF0000: 'Number of Positive output  (More than One)  \u2192  can NOT define the class'.\n19. Add rule 3 in purple #800080: 'NO Positive output   \u2192  Not one of the classes  (new class)'.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Filled the null subtitle_or_header with 'Decision Rules', the underlined header of the bottom panel (the slide has no subtitle beneath the main title); a clarifier was added to the value so a builder does not mistake it for a top subtitle.",
+      "Harmonized positions: layout.arrangement places 'Training Sample' on the left (below the scatter plot) and 'Decision' on the right, so the flowchart region and the diagram element were changed from position 'center' to 'center, spanning left-to-right'.",
+      "Disambiguated output-box border colors as the dark variants #8B0000 / #00008B / #006400 taken from the diagram element's own color list; the bright #FF0000 / #008000 / #0000FF belong to the scatter plot element.",
+      "Assigned white #FFFFFF (already present in the diagram color list) as the fill of the three output boxes.",
+      "Added explicit hex codes to layout.arrangement (title #8B0000, yellow circle #FFFF00, tan boxes #D2B48C, model boxes #8B0000/#00008B/#006400) so no color is referenced only by name.",
+      "Expanded imagery and kept the chart description consistent with the scatter plot's axes, tick marks, and per-cluster positions already present in visual_elements.",
+      "Added the underlined 'Decision Rules' header detail to typography_notes (from the highlight-box description).",
+      "Rewrote recreation_brief from 6 coarse sentences into a 19-step numbered checklist in which every step places exactly one element (or one repeated connector set) with its exact text, position, hex color, and shape/chart type."
+    ],
+    "uncertain_items": [
+      "Only one output-box label is captured verbatim ('+ve if Class \"1\" -ve for other classes'); the text inside output boxes 2 and 3 may be class-specific variants (e.g., '+ve if Class \"2\" -ve for other classes'), which is not derivable from this JSON.",
+      "The rule-to-color mapping in the Decision Rules panel (rule 1 = green #008000, rule 2 = red #FF0000, rule 3 = purple #800080) is inferred from the order of the highlight-box color list; the JSON does not explicitly bind each rule to a color.",
+      "Text color inside the tan 'Training Sample' and 'Decision' boxes and inside the yellow '39' circle, and the color of the connector arrows, are not specified; black #000000 (colors.body_text / default) is assumed.",
+      "The triple space in the title ('One vs All   (for Multi Class Classification)') may indicate a line break between 'One vs All' and '(for Multi Class Classification)' in the original; it is treated here as a single centered title line."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_039.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 39,
+      "image": "slide_039.jpg"
+    },
+    "elapsed_s": 56.9,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 962.1
+  }
+}

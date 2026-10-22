@@ -1,0 +1,193 @@
+{
+  "slide_title": "Classification Example",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "33",
+      "Rearrange vecotrs (group vectors in same class)",
+      "Substitute > 0 with 1 (may use any small positive value)",
+      "Multiply vectors belong to -ve class with -1",
+      "The equation is in the form:",
+      "Z W = Y",
+      "W = (Z^T Z)^-1 Z^T Y",
+      "C1",
+      "C2",
+      "x1",
+      "x2",
+      "x3",
+      "x4",
+      "W",
+      "Z",
+      "Y"
+    ],
+    "equations": [
+      "x1 => |1 1 1|",
+      "x2 => |1 2 2|",
+      "x3 => |1 2 1|",
+      "x4 => |1 1 2|",
+      "(W) = (>0, <0, >0, <0)",
+      "C1: x1 => |1 1 1|, x2 => |1 2 1| ; (W) = (>0, >0)",
+      "C2: x3 => |1 2 2|, x4 => |1 1 2| ; (W) = (<0, <0)",
+      "x1 => 1 1 1 ; x2 => 1 2 1 ; x3 => -1 -2 -2 ; x4 => -1 -1 -2 ; W = (1, 1, 1, 1)",
+      "Z W = Y",
+      "x1 => 1 1 1 ; x2 => 1 2 1 ; x3 => -1 -2 -2 ; x4 => -1 -1 -2 ; W = (>0, >0, >0, >0)",
+      "W = (Z^T Z)^-1 Z^T Y"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top in dark red. Slide number '33' in a yellow circle at top-right. Four matrix panels arranged in a 2x2 flow: top-left original matrix, top-right rearranged-by-class matrix, bottom-right sign-multiplied matrix, bottom-left substituted matrix. Pink hatched arrows connect them clockwise: top-left \u2192 top-right \u2192 bottom-right \u2192 bottom-left. Bottom strip: left a boxed note 'The equation is in the form: Z W = Y', arrow pointing right to a boxed final formula 'W = (Z^T Z)^-1 Z^T Y'. Entire slide framed by a thin dark-red border.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top center, ~5-15% height",
+        "content": "'Classification Example' in dark red bold"
+      },
+      {
+        "name": "slide number",
+        "position": "top-right corner",
+        "content": "yellow circle with '33'"
+      },
+      {
+        "name": "panel 1 (original)",
+        "position": "top-left, ~15-40% height, ~10-40% width",
+        "content": "matrix of x1..x4 rows with values, W column, inequalities >0/<0"
+      },
+      {
+        "name": "panel 2 (rearranged)",
+        "position": "top-right, ~15-40% height, ~50-90% width",
+        "content": "blue underlined header 'Rearrange vecotrs (group vectors in same class)', rows grouped under C1 and C2 braces"
+      },
+      {
+        "name": "panel 3 (multiply -ve class)",
+        "position": "middle-right, ~50-75% height, ~50-90% width",
+        "content": "blue underlined header 'Multiply vectors belong to -ve class with -1', rows x3,x4 negated in red, all results >0"
+      },
+      {
+        "name": "panel 4 (substitute)",
+        "position": "middle-left, ~50-80% height, ~5-45% width",
+        "content": "blue underlined header 'Substitute > 0 with 1 (may use any small positive value)', matrix Z, W = Y with red 1s, green horizontal line separating x1,x2 from x3,x4"
+      },
+      {
+        "name": "bottom equations",
+        "position": "bottom strip, ~85-97% height",
+        "content": "boxed 'The equation is in the form: Z W = Y' (left), pink arrow, boxed 'W = (Z^T Z)^-1 Z^T Y' (right)"
+      }
+    ],
+    "hierarchy": "Dark red bold title dominates top. Four pale-green matrix panels are the main content, with blue underlined annotation headers. Red used for emphasis (negative values, W, Y, 1s). Bottom boxed formulas in red-bordered boxes with pale yellow fill serve as the conclusion."
+  },
+  "visual_elements": [
+    {
+      "type": "table",
+      "description": "Panel 1 (top-left): rows labeled x1,x2,x3,x4 each followed by '\u21d2' and a 3-column row vector: x1: 1 1 1; x2: 1 2 2; x3: 1 2 1; x4: 1 1 2. To the right a bracketed column labeled W (red) equals a column of inequalities: >0 (red), <0 (blue), >0 (red), <0 (blue).",
+      "colors": [
+        "#000000",
+        "#FF0000",
+        "#0000FF",
+        "#E8F8F0"
+      ],
+      "position": "top-left"
+    },
+    {
+      "type": "table",
+      "description": "Panel 2 (top-right): header 'Rearrange vecotrs (group vectors in same class)' in blue, underlined. Curly braces group rows: C1 contains x1 \u21d2 1 1 1 and x2 \u21d2 1 2 1; C2 contains x3 \u21d2 1 2 2 and x4 \u21d2 1 1 2. W column equals >0, >0 (red) then <0, <0 (blue).",
+      "colors": [
+        "#000000",
+        "#FF0000",
+        "#0000FF",
+        "#E8F8F0"
+      ],
+      "position": "top-right"
+    },
+    {
+      "type": "table",
+      "description": "Panel 3 (middle-right): header 'Multiply vectors belong to -ve class with -1' in blue underlined ('-ve' in red, '-1' in blue). Rows: x1 \u21d2 1 1 1; x2 \u21d2 1 2 1; x3 \u21d2 -1 -2 -2 (red); x4 \u21d2 -1 -1 -2 (red). W column equals >0 four times (red).",
+      "colors": [
+        "#000000",
+        "#FF0000",
+        "#0000FF",
+        "#E8F8F0"
+      ],
+      "position": "middle-right"
+    },
+    {
+      "type": "table",
+      "description": "Panel 4 (middle-left): header 'Substitute > 0 with 1 (may use any small positive value)' with 'small' in red italic. Rows: x1 \u21d2 1 1 1; x2 \u21d2 1 2 1; x3 \u21d2 -1 -2 -2 (red); x4 \u21d2 -1 -1 -2 (red). A green horizontal line separates rows x1,x2 from x3,x4. W column equals four red 1s. Below: large 'Z' under the matrix, 'W = Y' under the right columns.",
+      "colors": [
+        "#000000",
+        "#FF0000",
+        "#00A000",
+        "#0000FF",
+        "#E8F8F0"
+      ],
+      "position": "middle-left"
+    },
+    {
+      "type": "arrow",
+      "description": "Three pink hatched block arrows: one pointing right from panel 1 to panel 2; one pointing down from panel 2 to panel 3; one pointing left from panel 3 to panel 4; plus one pointing right between the two bottom equation boxes.",
+      "colors": [
+        "#F4C7C3",
+        "#CC0000"
+      ],
+      "position": "between panels and bottom center"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Bottom-left box: red border, pale yellow fill, text 'The equation is in the form:' on first line and 'Z W = Y' large on second line (Z blue, W black, Y red).",
+      "colors": [
+        "#CC0000",
+        "#FFFFCC",
+        "#0000FF",
+        "#FF0000"
+      ],
+      "position": "bottom-left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Bottom-right box: red border, pale yellow fill, containing 'W = (Z^T Z)^-1 Z^T Y' with W black, Z blue, Y red.",
+      "colors": [
+        "#CC0000",
+        "#FFFFCC",
+        "#0000FF",
+        "#FF0000"
+      ],
+      "position": "bottom-right"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle with thin outline containing black number '33' (slide number).",
+      "colors": [
+        "#FFFF99",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#F2F2F2",
+    "title_text": "#990000",
+    "body_text": "#000000",
+    "accents": [
+      "#FF0000",
+      "#0000FF",
+      "#00A000",
+      "#F4C7C3",
+      "#FFFFCC",
+      "#E8F8F0",
+      "#990000"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title large bold dark red. Panel headers smaller blue underlined italic-ish. Matrix labels x1..x4 in italic serif-like math font; numbers plain. Red used for negative numbers, W, Y, and substituted 1s; blue for class labels C1/C2 and Z. Bottom formulas large bold inside boxed highlights.",
+  "animation_state": "Fully built slide; no partial reveal evident.",
+  "recreation_brief": "1. Set slide background light gray (#F2F2F2) and draw a thin dark-red (#990000) border around the entire slide. 2. Add title 'Classification Example' centered at top, bold, dark red (#990000). 3. Add yellow circle (#FFFF99) with '33' at top-right. 4. Top-left: pale green (#E8F8F0) panel with rows 'x1 \u21d2 1 1 1', 'x2 \u21d2 1 2 2', 'x3 \u21d2 1 2 1', 'x4 \u21d2 1 1 2', then '( W ) =' column with red '>0', blue '<0', red '>0', blue '<0'. 5. Draw pink hatched arrow right to top-right panel: blue underlined header 'Rearrange vecotrs (group vectors in same class)'; braces labeled C1 (blue) grouping x1 \u21d2 1 1 1 and x2 \u21d2 1 2 1, C2 grouping x3 \u21d2 1 2 2 and x4 \u21d2 1 1 2; W column = red >0, >0 then blue <0, <0. 6. Pink arrow down to middle-right panel: header 'Multiply vectors belong to -ve class with -1' (blue underline, '-ve' red, '-1' blue); rows x1 \u21d2 1 1 1, x2 \u21d2 1 2 1, x3 \u21d2 -1 -2 -2 (red), x4 \u21d2 -1 -1 -2 (red); W = four red '>0'. 7. Pink arrow left to middle-left panel: header 'Substitute > 0 with 1 (may use any small positive value)' ('small' red italic); same matrix as panel 3 with green horizontal line between rows 2 and 3; W = four red 1s; label 'Z' under matrix and 'W = Y' under right side. 8. Bottom: red-bordered pale-yellow box left with 'The equation is in the form:' and large 'Z W = Y' (Z blue, Y red); pink arrow right; second red-bordered pale-yellow box with 'W = (Z^T Z)^-1 Z^T Y' (Z blue, Y red, superscripts T and -1).",
+  "_meta": {
+    "frame": "slide_033.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 33,
+      "image": "slide_033.jpg"
+    },
+    "elapsed_s": 94.0
+  }
+}

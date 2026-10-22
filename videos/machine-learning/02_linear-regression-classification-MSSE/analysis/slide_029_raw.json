@@ -1,0 +1,183 @@
+{
+  "slide_title": "Regression Example",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Predict",
+      "Augmented Vectors",
+      "Always Symmetric (and its inverse)",
+      "29"
+    ],
+    "equations": [
+      "x_1 => X_1 = (1, 1)^T, X_2 = (2, 2)^T, X_3 = (2, 1)^T, X_4 = (1, 2)^T",
+      "x_2 =>",
+      "y_1 = 10, y_2 = 15, y_3 = 13, y_4 = 12",
+      "X = (7, 3)^T, y = ? ? ?",
+      "W = (X^T X)^{-1} X^T Y",
+      "y = W^T X",
+      "1 => X_1 = (1, 1, 1)^T, X_2 = (1, 2, 2)^T, X_3 = (1, 2, 1)^T, X_4 = (1, 1, 2)^T",
+      "y = (10, 15, 13, 12)^T",
+      "X = [[1,1,1],[1,2,2],[1,2,1],[1,1,2]]",
+      "X^T = [[1,1,1,1],[1,2,2,1],[1,2,1,2]]",
+      "X^T X = [[4,6,6],[6,10,9],[6,9,10]]",
+      "(X^T X)^{-1} = [[4.75,-1.5,-1.5],[-1.5,1,0],[-1.5,0,1]]",
+      "W = (X^T X)^{-1} X^T Y => W = (5, 3, 2)^T",
+      "y = 3 x_1 + 2 x_2 + 5"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top in red. Slide number '29' in a yellow circle at top-right. Below title: a row of four data-point vectors X1..X4 with y-values beneath, plus a 'Predict' vector X=(7,3) with y=???. To the right of that row, two boxed formulas: W = (X^T X)^{-1} X^T Y (red box) and y = W^T X (blue box). Second row: 'Augmented Vectors' panel showing the same vectors with a leading 1 row, y-values below. Bottom area: four matrix panels left-to-right: y column vector, X matrix, X^T matrix, X^T X matrix (with a callout note 'Always Symmetric (and its inverse)' pointing to it). Bottom-left: (X^T X)^{-1} matrix. Bottom-right green panel: W computation and final equation y = 3x_1 + 2x_2 + 5.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top center, ~5% height",
+        "content": "Regression Example in red bold"
+      },
+      {
+        "name": "slide number",
+        "position": "top right corner",
+        "content": "yellow circle with 29"
+      },
+      {
+        "name": "data vectors row",
+        "position": "upper area, left ~70% width",
+        "content": "x1/x2 labels with arrows, X1..X4 column vectors, y1..y4 values, Predict X=(7,3), y=???"
+      },
+      {
+        "name": "formula boxes",
+        "position": "upper right ~25% width",
+        "content": "W = (X^T X)^{-1} X^T Y in red-bordered box; y = W^T X in blue-bordered box"
+      },
+      {
+        "name": "augmented vectors panel",
+        "position": "middle, left ~70% width",
+        "content": "augmented X1..X4 with leading 1s, label 'Augmented Vectors' in magenta, y values below"
+      },
+      {
+        "name": "matrices row",
+        "position": "lower middle, full width",
+        "content": "y vector, X matrix, X^T matrix, X^T X matrix with symmetry callout"
+      },
+      {
+        "name": "inverse matrix",
+        "position": "bottom left ~40% width",
+        "content": "(X^T X)^{-1} 3x3 matrix"
+      },
+      {
+        "name": "result panel",
+        "position": "bottom right ~45% width, green background",
+        "content": "W = (X^T X)^{-1} X^T Y => W = (5,3,2)^T and y = 3x_1 + 2x_2 + 5"
+      }
+    ],
+    "hierarchy": "Red bold title dominates top; large blue matrix symbols (X, X^T, X^T X, W) draw the eye; red y-values and final equation y=3x_1+2x_2+5 (red on yellow highlight) are the key takeaways; green result panel anchors bottom-right."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Row of four 2D column vectors: X_1=(1,1), X_2=(2,2), X_3=(2,1), X_4=(1,2), each with y value below in red (10, 15, 13, 12). Left labels x_1 => and x_2 =>. Then 'Predict' in green italic with X=(7,3) and y=??? in red.",
+      "colors": [
+        "#0000CC",
+        "#CC0000",
+        "#009900"
+      ],
+      "position": "upper left/center"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Red-bordered box containing W = (X^T X)^{-1} X^T Y with W in green and Y in red; below it a blue-bordered box with y = W^T X (y in blue, X in blue).",
+      "colors": [
+        "#CC0000",
+        "#0000CC",
+        "#009900"
+      ],
+      "position": "upper right"
+    },
+    {
+      "type": "diagram",
+      "description": "Augmented vectors panel: rows labeled 1 =>, x_1 =>, x_2 =>; X_1=(1,1,1), X_2=(1,2,2), X_3=(1,2,1), X_4=(1,1,2); y values 10,15,13,12 in red below; magenta italic label 'Augmented Vectors' on right.",
+      "colors": [
+        "#0000CC",
+        "#CC0000",
+        "#CC00CC"
+      ],
+      "position": "middle left/center"
+    },
+    {
+      "type": "table",
+      "description": "y column vector (10,15,13,12) in red inside parentheses; X 4x3 matrix rows [1 1 1],[1 2 2],[1 2 1],[1 1 2]; X^T 3x4 matrix rows [1 1 1 1],[1 2 2 1],[1 2 1 2]; X^T X 3x3 matrix rows [4 6 6],[6 10 9],[6 9 10].",
+      "colors": [
+        "#CC0000",
+        "#0000CC",
+        "#000000"
+      ],
+      "position": "lower middle row of four panels"
+    },
+    {
+      "type": "arrow",
+      "description": "Thin curved arrow from callout box 'Always Symmetric (and its inverse)' pointing to the X^T X matrix.",
+      "colors": [
+        "#CC6600"
+      ],
+      "position": "right of X^T X matrix"
+    },
+    {
+      "type": "table",
+      "description": "(X^T X)^{-1} = 3x3 matrix rows [4.75 -1.5 -1.5],[-1.5 1 0],[-1.5 0 1].",
+      "colors": [
+        "#0000CC",
+        "#000000"
+      ],
+      "position": "bottom left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Green-background panel: W = (X^T X)^{-1} X^T Y => W = column vector (5,3,2) with 5 in red, 3 in green, 2 in blue; below, final equation y = 3 x_1 + 2 x_2 + 5 in red on a pale yellow highlight.",
+      "colors": [
+        "#CCFFCC",
+        "#CC0000",
+        "#009900",
+        "#0000CC",
+        "#FFFFCC"
+      ],
+      "position": "bottom right"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle with black border containing slide number 29.",
+      "colors": [
+        "#FFFF99",
+        "#000000"
+      ],
+      "position": "top right corner"
+    }
+  ],
+  "imagery": [
+    "No photos; all content is mathematical notation, matrices, and colored highlight boxes. Small yellow circular slide-number badge '29' top-right."
+  ],
+  "colors": {
+    "background": "#F2F2F2",
+    "title_text": "#CC0000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000CC",
+      "#CC0000",
+      "#009900",
+      "#CC00CC",
+      "#CCFFCC",
+      "#FFFF99"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout; title large bold red; math in italic serif-like math font; matrix symbols (X, X^T, W, y) large bold blue; y-values and final result in red; 'Predict' green italic; 'Augmented Vectors' magenta italic; callout note small italic in a beige box.",
+  "animation_state": "Fully built slide; no partial reveals apparent.",
+  "recreation_brief": "1. Light gray (#F2F2F2) background with a thin dark-red border frame around the whole slide. 2. Title 'Regression Example' centered top in bold red (~28pt). 3. Yellow circle badge top-right with '29'. 4. Upper-left panel: labels 'x_1 =>' and 'x_2 =>' at left; four column vectors X_1=(1;1), X_2=(2;2), X_3=(2;1), X_4=(1;2) in blue with parentheses; red y-values y_1=10, y_2=15, y_3=13, y_4=12 beneath each; then green italic 'Predict' with X=(7;3) and red 'y = ? ? ?'. 5. Upper-right: red-bordered box 'W = (X^T X)^{-1} X^T Y' (W green, Y red); below, blue-bordered box 'y = W^T X'. 6. Middle panel: rows labeled '1 =>', 'x_1 =>', 'x_2 =>'; augmented vectors X_1=(1;1;1), X_2=(1;2;2), X_3=(1;2;1), X_4=(1;1;2); red y-values below; magenta italic 'Augmented Vectors' at right. 7. Lower row of four light panels: red y vector (10;15;13;12); blue X 4x3 matrix [[1,1,1],[1,2,2],[1,2,1],[1,1,2]]; blue X^T 3x4 matrix [[1,1,1,1],[1,2,2,1],[1,2,1,2]]; blue X^T X 3x3 matrix [[4,6,6],[6,10,9],[6,9,10]]. 8. Beige callout box 'Always Symmetric (and its inverse)' with curved arrow pointing to X^T X. 9. Bottom-left: (X^T X)^{-1} = [[4.75,-1.5,-1.5],[-1.5,1,0],[-1.5,0,1]] with blue symbol. 10. Bottom-right green (#CCFFCC) panel: 'W = (X^T X)^{-1} X^T Y => W = (5;3;2)' with 5 red, 3 green, 2 blue; below on pale yellow highlight: 'y = 3 x_1 + 2 x_2 + 5' in red.",
+  "_meta": {
+    "frame": "slide_029.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 29,
+      "image": "slide_029.jpg"
+    },
+    "elapsed_s": 77.2
+  }
+}

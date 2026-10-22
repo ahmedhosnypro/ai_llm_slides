@@ -1,0 +1,213 @@
+{
+  "slide_title": "Concept of LOSS Function",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Let Y = (bracketed column vector: y\u2081, y\u2082, \u22ee, y\u2099) with red subscript N\u00d71",
+      "Original Labels from Training Samples",
+      "Let \u0176 = (bracketed column vector: \u0177\u2081, \u0177\u2082, \u22ee, \u0177\u2099) with red subscript N\u00d71",
+      "Predicted Labels from Model \u0176 = X W",
+      "Objective is \u0176=Y",
+      "If \u0176\u2260Y \u21d2 There is an Error (Loss)",
+      "Define Loss function as squared distance between \u0176 and Y",
+      "Loss=\u2016Y\u2212\u0176\u2016\u2082 = (Y\u2212\u0176)\u1d40(Y\u2212\u0176)"
+    ],
+    "labels": [
+      "21 (slide number, black text in yellow oval, top-right corner)",
+      "N\u00d71 (red dimension subscript under left vector)",
+      "N\u00d71 (red dimension subscript under right vector)",
+      "Original Labels (red bold caption, line 1 of left box)",
+      "from Training Samples (black caption, line 2 of left box)",
+      "Predicted Labels (blue bold caption, line 1 of right box)",
+      "from Model \u0176 = X W (black caption, line 2 of right box)",
+      "Remember (red bold italic heading of small sidebar box)",
+      "+ (small gray plus-shaped mouse-cursor artifact, lower center-right, screen-recording overlay)"
+    ],
+    "equations": [
+      "Let \ud835\udc18 = (y\u2081, y\u2082, \u2026, y\u2099)\u1d40, size N\u00d71 \u2014 LaTeX: \\mathbf{Y}=(y_1, y_2, \\ldots, y_n)^T,\\ N\\times 1 (rendered as a tall bracketed column vector)",
+      "Let \u0176 = (\u0177\u2081, \u0177\u2082, \u2026, \u0177\u2099)\u1d40, size N\u00d71 \u2014 LaTeX: \\hat{\\mathbf{Y}}=(\\hat{y}_1, \\hat{y}_2, \\ldots, \\hat{y}_n)^T,\\ N\\times 1 (rendered as a tall bracketed column vector)",
+      "\u0176 = \ud835\udc17\ud835\udc16 \u2014 LaTeX: \\hat{Y}=\\mathbf{X}\\,\\mathbf{W} (X and W bold with underlines)",
+      "Objective is \u0176=\ud835\udc18 \u2014 LaTeX: \\hat{\\mathbf{Y}}=\\mathbf{Y} (both sides bold and underlined)",
+      "\u0176\u2260\ud835\udc18 \u2014 LaTeX: \\hat{\\mathbf{Y}}\\neq\\mathbf{Y} (blue, bold, underlined)",
+      "\u2016a\u2016\u2082 = a\u1d40a \u2014 LaTeX: \\|\\mathbf{a}\\|_2=\\mathbf{a}^T\\mathbf{a}",
+      "Loss=\u2016\ud835\udc18\u2212\u0176\u2016\u2082 = (\ud835\udc18\u2212\u0176)\u1d40(\ud835\udc18\u2212\u0176) \u2014 LaTeX: \\mathrm{Loss}=\\|\\mathbf{Y}-\\hat{\\mathbf{Y}}\\|_2=(\\mathbf{Y}-\\hat{\\mathbf{Y}})^T(\\mathbf{Y}-\\hat{\\mathbf{Y}})"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top with a yellow oval slide-number badge in the top-right corner. Directly below the title, two side-by-side definition boxes (left: Original Labels, right: Predicted Labels). Beneath them, a left-aligned vertical ladder of four statement boxes of increasing width (Objective, If/Error, Define Loss, Loss formula). A small 'Remember' reminder box floats at the right edge, vertically level with the Define box. A thin border frames the whole slide on a gray video canvas; the bottom edge of the slide is slightly cropped by the video frame.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top center, ~15\u201380% width, ~10\u201318% height",
+        "content": "'Concept of LOSS Function' in large bold serif; red with 'LOSS' in blue"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top right, ~89\u201393% width, ~11\u201317% height",
+        "content": "yellow oval containing the number 21"
+      },
+      {
+        "name": "Original Labels box",
+        "position": "upper left, ~8\u201345% width, ~19\u201344% height",
+        "content": "white rectangle with red border: 'Let Y =' plus red column vector (N\u00d71) plus two-line caption 'Original Labels / from Training Samples'"
+      },
+      {
+        "name": "Predicted Labels box",
+        "position": "upper right, ~47\u201384% width, ~19\u201344% height",
+        "content": "white rectangle with red border: 'Let \u0176 =' plus red column vector (N\u00d71) plus two-line caption 'Predicted Labels / from Model \u0176 = X W'"
+      },
+      {
+        "name": "Objective box",
+        "position": "middle left, ~9\u201332% width, ~45\u201355% height",
+        "content": "pale-yellow rectangle with blue border: 'Objective is \u0176=Y'"
+      },
+      {
+        "name": "If/Error box",
+        "position": "middle left, ~9\u201352% width, ~57\u201367% height",
+        "content": "pale-yellow rectangle with blue border: 'If \u0176\u2260Y \u21d2 There is an Error (Loss)'"
+      },
+      {
+        "name": "Define Loss box",
+        "position": "lower middle-left, ~9\u201369% width, ~70\u201381% height",
+        "content": "pale-peach rectangle with red border: 'Define Loss function as squared distance between \u0176 and Y'"
+      },
+      {
+        "name": "Remember box",
+        "position": "right side, ~81\u201391% width, ~69\u201379% height",
+        "content": "small pale-blue rectangle: 'Remember' over '\u2016a\u2016\u2082 = a\u1d40a'"
+      },
+      {
+        "name": "Loss formula box",
+        "position": "bottom left, ~9\u201352% width, ~84\u201395% height",
+        "content": "pale-yellow rectangle with blue border: 'Loss=\u2016Y\u2212\u0176\u2016\u2082 = (Y\u2212\u0176)\u1d40(Y\u2212\u0176)'"
+      },
+      {
+        "name": "Cursor artifact",
+        "position": "lower center-right, ~68% width, ~83% height",
+        "content": "small gray '+' mouse cursor from the screen recording"
+      }
+    ],
+    "hierarchy": "The title dominates (largest, bold, red/blue). The two top definition boxes are the next-largest elements. The four statement boxes form a descending left-aligned ladder, with the Define box the widest; bold red and blue keywords carry the visual weight inside them. Vector math is smaller italic serif. The Remember box is the smallest text on the slide."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Left definition box: white fill, medium red border. Content left-to-right: 'Let ' (black) + 'Y' (bold, underlined) + ' =' then a tall bracketed column vector with entries y\u2081, y\u2082, \u22ee, y\u2099 in red italic and small red subscript 'N\u00d71' at bottom-right of the bracket; to the right the two-line caption 'Original Labels' (red bold) / 'from Training Samples' (black regular).",
+      "colors": [
+        "#FFFFFF",
+        "#C00000",
+        "#000000"
+      ],
+      "position": "upper left, ~8\u201345% width, ~19\u201344% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Right definition box: white fill, medium red border, mirror of the left box. Content: 'Let ' + '\u0176' (bold, underlined) + ' =' then tall bracketed column vector with entries \u0177\u2081, \u0177\u2082, \u22ee, \u0177\u2099 in red italic and red subscript 'N\u00d71'; caption 'Predicted Labels' (blue bold) / 'from Model \u0176 = X W' (black, with X and W bold and underlined).",
+      "colors": [
+        "#FFFFFF",
+        "#C00000",
+        "#0000CC",
+        "#000000"
+      ],
+      "position": "upper right, ~47\u201384% width, ~19\u201344% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Objective box: pale-yellow fill, blue border. Single line: 'Objective is' (black bold) + '\u0176=Y' (bold, underlined).",
+      "colors": [
+        "#FFFFCC",
+        "#0000CC",
+        "#000000"
+      ],
+      "position": "middle left, ~9\u201332% width, ~45\u201355% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "If/Error box: pale-yellow fill, blue border. Single line: 'If' (black bold) + '\u0176\u2260Y' (blue, bold, underlined) + '\u21d2' (black) + 'There is an' (black) + 'Error (Loss)' (red, bold italic).",
+      "colors": [
+        "#FFFFCC",
+        "#0000CC",
+        "#C00000",
+        "#000000"
+      ],
+      "position": "middle left, ~9\u201352% width, ~57\u201367% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Define box: pale-peach/orange fill, red border, widest box on the slide. Single line: 'Define' (black) + 'Loss' (red bold) + 'function as' (black) + 'squared distance' (blue) + 'between' (black) + '\u0176 and Y' (bold, underlined).",
+      "colors": [
+        "#FCE4D6",
+        "#C00000",
+        "#0000CC",
+        "#000000"
+      ],
+      "position": "lower middle-left, ~9\u201369% width, ~70\u201381% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Loss formula box: pale-yellow fill, blue border. Single line: 'Loss' (red bold italic) + '=\u2016Y\u2212\u0176\u2016\u2082 = (Y\u2212\u0176)\u1d40(Y\u2212\u0176)' in black with Y and \u0176 bold and underlined, subscript 2 and superscript T.",
+      "colors": [
+        "#FFFFCC",
+        "#0000CC",
+        "#C00000",
+        "#000000"
+      ],
+      "position": "bottom left, ~9\u201352% width, ~84\u201395% height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Remember sidebar: small pale-blue rectangle with thin blue border. Line 1: 'Remember' (red bold italic). Line 2: '\u2016a\u2016\u2082 = a\u1d40a' (blue, with a bold italic).",
+      "colors": [
+        "#D6EAF8",
+        "#0000CC",
+        "#C00000"
+      ],
+      "position": "right side, ~81\u201391% width, ~69\u201379% height"
+    },
+    {
+      "type": "other",
+      "description": "Slide-number badge: yellow filled oval (no visible outline) containing the black number '21'.",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    },
+    {
+      "type": "other",
+      "description": "Small gray plus-shaped mouse cursor (screen-recording artifact, not slide content).",
+      "colors": [
+        "#9E9E9E"
+      ],
+      "position": "below right end of the Define box"
+    }
+  ],
+  "imagery": [
+    "No photographs, icons, or illustrations. The only non-text graphics are the vector-drawn colored rectangles, the yellow oval slide-number badge, and the '+' cursor artifact."
+  ],
+  "colors": {
+    "background": "#E8E8E8 (slide surface) on a slightly darker #D4D4D4 video canvas",
+    "title_text": "#C00000 (red) with the word 'LOSS' in #0000CC (blue)",
+    "body_text": "#000000",
+    "accents": [
+      "#C00000",
+      "#0000CC",
+      "#FFFFCC",
+      "#FCE4D6",
+      "#D6EAF8",
+      "#FFFF00"
+    ]
+  },
+  "typography_notes": "Serif (Times New Roman-like) throughout, including the title. Title ~28\u201332pt bold; box statement text ~20\u201322pt; Remember box ~14\u201316pt. Heavy use of bold for keywords; mathematical vector/matrix symbols (Y, \u0176, X, W) are bold with underlines; scalar/vector entries (y\u2081\u2026y\u2099, a) are italic. 'Error (Loss)', 'Loss' (formula box) and 'Remember' are bold italic. Two-line captions in the top boxes: first line bold and colored (red/blue), second line black regular. Only 'LOSS' in the title is all-caps. No numbered or bulleted lists \u2014 each statement sits in its own colored box.",
+  "animation_state": "Slide appears fully built \u2014 all boxes and equations are visible with no partial reveal. A '+' mouse-cursor artifact below the Define box indicates this is a frame from a screen-recorded lecture; the slide is very slightly cropped at the bottom edge of the video frame.",
+  "recreation_brief": "1. Set the slide background to light gray #E8E8E8 and add a thin darker-gray border rectangle framing the content area. 2. Insert a centered title text box at the top: 'Concept of ' in bold red #C00000 serif, 'LOSS' in bold blue #0000CC, ' Function' in bold red #C00000 (~32pt Times New Roman). 3. Top-right corner: draw a small yellow (#FFFF00) oval with black '21' centered inside. 4. Upper-left: draw a white rectangle (~37% wide) with a 2pt red #C00000 border. Inside, use Insert > Equation to build: 'Let ' + bold underlined 'Y' + ' =' followed by a tall bracketed column vector with rows y\u2081, y\u2082, \u22ee, y\u2099 (red italic) and red subscript 'N\u00d71' at the bracket's bottom-right. To the right of the vector place the two-line caption: line 1 'Original Labels' (red bold), line 2 'from Training Samples' (black). 5. Upper-right: duplicate this box (~37% wide) with 'Let ' + bold underlined '\u0176' + ' =' and a column vector \u0177\u2081, \u0177\u2082, \u22ee, \u0177\u2099 (red italic, subscript N\u00d71); caption line 1 'Predicted Labels' (blue #0000CC bold), line 2 'from Model \u0176 = X W' (black, X and W bold underlined). 6. Below, build a left-aligned stack of four boxes, each pale yellow #FFFFCC with 2pt blue #0000CC border except where noted: (a) 'Objective is \u0176=Y' \u2014 'Objective is' black bold, '\u0176=Y' bold underlined; (b) 'If \u0176\u2260Y \u21d2 There is an Error (Loss)' \u2014 '\u0176\u2260Y' blue bold underlined, 'Error (Loss)' red bold italic; (c) widest box, fill pale peach #FCE4D6 with red #C00000 border: 'Define Loss function as squared distance between \u0176 and Y' \u2014 'Loss' red bold, 'squared distance' blue, '\u0176 and Y' bold underlined; (d) 'Loss=\u2016Y\u2212\u0176\u2016\u2082 = (Y\u2212\u0176)\u1d40(Y\u2212\u0176)' \u2014 'Loss' red bold italic, Y and \u0176 bold underlined, built with the Equation editor for the norm bars, subscript 2 and superscript T. 7. Right side, level with box (c): small rectangle filled #D6EAF8 with thin blue border containing 'Remember' (red bold italic) over '\u2016a\u2016\u2082 = a\u1d40a' (blue). 8. Use Times New Roman for all text; ~20\u201322pt in boxes, ~14\u201316pt in the Remember box. 9. Do not add the gray '+' cursor \u2014 it is a recording artifact, not slide content.",
+  "_meta": {
+    "frame": "slide_021.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 21,
+      "image": "slide_021.jpg"
+    },
+    "elapsed_s": 286.9
+  }
+}

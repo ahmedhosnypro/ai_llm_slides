@@ -1,0 +1,169 @@
+{
+  "slide_title": "Minimum Sum Squared Error (MSSE) Technique",
+  "subtitle_or_header": "(Least Squares)",
+  "verbatim_text": {
+    "bullets": [
+      "W = (X_{N x d})^{-1} Y",
+      "X_{N x d} is non-square matrix",
+      "There is NO Inverse",
+      "W = (X^T X)^{-1} X^T Y",
+      "Pseudo Inverse of Non-Square Matrix",
+      "(X_{N x d})^{-1} = (X^T X)^{-1} X^T",
+      "Remember",
+      "(X^T_{d x N} X_{N x d})^{-1} = (...)^{-1}_{d x d}",
+      "In General: d <<< N"
+    ],
+    "labels": [
+      "27 (slide number in yellow circle, top-right corner)"
+    ],
+    "equations": [
+      "W = (X_{N x d})^{-1} Y",
+      "W = (X^T X)^{-1} X^T Y",
+      "(X_{N x d})^{-1} = (X^T X)^{-1} X^T",
+      "(X^T_{d x N} X_{N x d})^{-1} = (...)^{-1}_{d x d}",
+      "d <<< N"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top in dark red, with blue subtitle '(Least Squares)' directly beneath it. Below, a two-column arrangement: left column has two stacked boxes (top: white box with the naive inverse formula and sad face; bottom: yellow box with the pseudo-inverse solution formula); right column has a red heading 'Pseudo Inverse of Non-Square Matrix' above a pink box with the pseudo-inverse expansion, and below that a 'Remember' box with dimension notes and a smiley face. A large red curly brace sits between the left boxes and the right column, visually linking them. Slide number 27 in a yellow circle at top-right.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top center, ~5-20% height",
+        "content": "Dark red bold title 'Minimum Sum Squared Error (MSSE) Technique' with blue '(Least Squares)' on second line"
+      },
+      {
+        "name": "slide number",
+        "position": "top-right corner",
+        "content": "Yellow circle with dark red border containing '27'"
+      },
+      {
+        "name": "left top box",
+        "position": "middle-left, ~30-60% height, ~8-42% width",
+        "content": "White box with red border: underlined W equals pink-highlighted (X_{N x d})^{-1} times underlined Y, sad face emoji to the right; below: 'X_{N x d} is non-square matrix' (blue) and 'There is NO Inverse' (red italic bold)"
+      },
+      {
+        "name": "left bottom box",
+        "position": "lower-left, ~65-80% height, ~8-42% width",
+        "content": "Pale yellow box with red border: underlined W = pink-highlighted (X^T X)^{-1} X^T times underlined red Y"
+      },
+      {
+        "name": "curly brace",
+        "position": "center, between left boxes and right column, ~30-80% height",
+        "content": "Large red curly brace '}' opening leftward, grouping the two left boxes"
+      },
+      {
+        "name": "right heading",
+        "position": "middle-right, ~40% height",
+        "content": "Red bold text 'Pseudo Inverse of Non-Square Matrix'"
+      },
+      {
+        "name": "right top box",
+        "position": "middle-right, ~45-62% height, ~50-92% width",
+        "content": "Pink box with red border containing blue equation (X_{N x d})^{-1} = (X^T X)^{-1} X^T"
+      },
+      {
+        "name": "right bottom box",
+        "position": "lower-right, ~68-92% height, ~50-85% width",
+        "content": "White box with red border: red italic 'Remember' label, light blue highlighted equation (X^T_{d x N} X_{N x d})^{-1} = (...)^{-1}_{d x d}, then 'In General: d <<< N' with red d and N and a smiley face emoji"
+      }
+    ],
+    "hierarchy": "Title dominates in large dark red bold; blue subtitle slightly smaller. Red-bordered boxes organize content; equations in large blue/black math text are the focal points within boxes. Pink/yellow/blue highlights draw attention to key formula fragments. Red text used for warnings/emphasis ('There is NO Inverse', 'Remember', 'Pseudo Inverse of Non-Square Matrix')."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "White rectangle with thin red border containing the naive formula W = (X_{N x d})^{-1} Y; the (X_{N x d})^{-1} term is highlighted with a pink rounded rectangle; W and Y are underlined; a yellow sad-face emoji sits to the right of the equation; below in blue 'X_{N x d} is non-square matrix' and in red bold italic 'There is NO Inverse'",
+      "colors": [
+        "#FFFFFF",
+        "#C00000",
+        "#F8A5C2",
+        "#0000CC",
+        "#FFD700"
+      ],
+      "position": "middle-left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pale yellow rectangle with thin red border containing W = (X^T X)^{-1} X^T Y; the (X^T X)^{-1} X^T portion highlighted with a pink rounded rectangle; W underlined in black, Y underlined in red",
+      "colors": [
+        "#FFFFCC",
+        "#C00000",
+        "#F8A5C2",
+        "#000000",
+        "#CC0000"
+      ],
+      "position": "lower-left"
+    },
+    {
+      "type": "other",
+      "description": "Large red curly brace '}' spanning the height of both left boxes, pointing/grouping toward the right column content",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "center, between left and right columns"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pink filled rectangle with red border containing the blue equation (X_{N x d})^{-1} = (X^T X)^{-1} X^T",
+      "colors": [
+        "#F8C8DC",
+        "#C00000",
+        "#0000CC"
+      ],
+      "position": "middle-right"
+    },
+    {
+      "type": "highlight-box",
+      "description": "White rectangle with red border: red italic bold 'Remember' at top-left; below it a light-blue highlighted equation (X^T_{d x N} X_{N x d})^{-1} = (...)^{-1}_{d x d} in blue; below that 'In General: d <<< N' with d and N in red, and a yellow smiley face emoji to the right",
+      "colors": [
+        "#FFFFFF",
+        "#C00000",
+        "#CCE5FF",
+        "#0000CC",
+        "#CC0000",
+        "#FFD700"
+      ],
+      "position": "lower-right"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle with dark red outline containing black number '27' (slide number badge)",
+      "colors": [
+        "#FFFF99",
+        "#C00000"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [
+    "Sad face emoji (yellow frowny) to the right of the naive inverse formula in the left top box",
+    "Smiley face emoji (yellow happy) to the right of 'In General: d <<< N' in the Remember box"
+  ],
+  "colors": {
+    "background": "#F2F2F2",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000CC",
+      "#CC0000",
+      "#F8A5C2",
+      "#F8C8DC",
+      "#FFFFCC",
+      "#CCE5FF",
+      "#FFD700"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title large bold dark red; subtitle bold blue, slightly smaller. Equations in large serif-like math italic (Cambria Math style), mostly blue or black with red accents. Emphasis text ('There is NO Inverse', 'Remember') in red bold italic. 'Pseudo Inverse of Non-Square Matrix' in red bold. Subscripts used for matrix dimensions (N x d, d x N).",
+  "animation_state": "All elements appear fully revealed; no mid-build state visible.",
+  "recreation_brief": "1. Set slide background to light gray (#F2F2F2). 2. Add centered title at top: 'Minimum Sum Squared Error (MSSE) Technique' in bold dark red (#C00000), with a second line '(Least Squares)' in bold blue (#0000CC). 3. Top-right: yellow circle (#FFFF99) with red outline containing '27'. 4. Middle-left: white rectangle with thin red border; inside place underlined 'W' = pink-highlighted '(X_{N x d})^{-1}' and underlined 'Y'; add a sad face emoji to the right; below add blue text 'X_{N x d} is non-square matrix' and red bold italic 'There is NO Inverse'. 5. Lower-left: pale yellow (#FFFFCC) rectangle with red border; inside 'W = (X^T X)^{-1} X^T Y' with the middle term pink-highlighted, W underlined black, Y underlined red. 6. Between left boxes and right column draw a large red curly brace '}'. 7. Middle-right: red bold heading 'Pseudo Inverse of Non-Square Matrix'; below it a pink (#F8C8DC) box with red border containing blue equation '(X_{N x d})^{-1} = (X^T X)^{-1} X^T'. 8. Lower-right: white box with red border; red italic bold 'Remember'; light blue (#CCE5FF) highlighted blue equation '(X^T_{d x N} X_{N x d})^{-1} = (...)^{-1}_{d x d}'; then 'In General: d <<< N' with d and N in red, plus a smiley emoji. 9. Use Cambria Math or similar for equations; keep all math large and legible.",
+  "_meta": {
+    "frame": "slide_027.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 27,
+      "image": "slide_027.jpg"
+    },
+    "elapsed_s": 72.4
+  }
+}

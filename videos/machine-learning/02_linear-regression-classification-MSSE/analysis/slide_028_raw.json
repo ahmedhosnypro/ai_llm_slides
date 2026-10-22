@@ -1,0 +1,142 @@
+{
+  "slide_title": "Regression Example",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Predict",
+      "28"
+    ],
+    "equations": [
+      "x_1 =>",
+      "x_2 =>",
+      "X_1 = (1, 1)^T",
+      "X_2 = (2, 2)^T",
+      "X_3 = (2, 1)^T",
+      "X_4 = (1, 2)^T",
+      "y_1 = 10",
+      "y_2 = 15",
+      "y_3 = 13",
+      "y_4 = 12",
+      "X = (7, 3)^T",
+      "y = ? ? ?",
+      "W = (X^T X)^{-1} X^T Y",
+      "y = W^T X"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top in red. Below it, a wide light-gray bordered panel spans the left ~60% of the slide containing the data points and prediction prompt. To the right of that panel, two stacked boxed formulas (red-bordered box on top, blue-bordered box below). A yellow circle with slide number '28' sits at the top-right corner. The entire slide is framed by a thin dark-red border. Lower two-thirds of the slide is empty gray space with a small gray crosshair mark on the left.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top-center, ~5-15% height",
+        "content": "Red bold text 'Regression Example'"
+      },
+      {
+        "name": "data panel",
+        "position": "top-left, ~5-65% width, ~15-35% height",
+        "content": "Gray-bordered box with column vectors X_1..X_4 in blue, y values in red below them, green 'Predict' label, and query vector X=(7,3) with y=???"
+      },
+      {
+        "name": "formula boxes",
+        "position": "top-right, ~68-92% width, ~17-35% height",
+        "content": "Two stacked equations: W = (X^T X)^{-1} X^T Y in a red-outlined box; y = W^T X in a blue-outlined box"
+      },
+      {
+        "name": "slide number",
+        "position": "top-right corner",
+        "content": "Yellow circle containing '28'"
+      },
+      {
+        "name": "empty area",
+        "position": "bottom ~65% of slide",
+        "content": "Empty light-gray space with a small gray '+' crosshair mark at left-center"
+      }
+    ],
+    "hierarchy": "Red bold title dominates; next the boxed formulas on the right (bold, boxed, colored); then the vector data in the panel (blue vectors, red y-values, green 'Predict'); slide number is small."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Large light-gray filled rectangle with thin gray border containing the training data: left side shows 'x_1 =>' and 'x_2 =>' row labels in black; four column vectors X_1=(1 over 1), X_2=(2 over 2), X_3=(2 over 1), X_4=(1 over 2) rendered in blue with parentheses; beneath them red text y_1=10, y_2=15, y_3=13, y_4=12; then green italic-bold 'Predict'; then blue vector X=(7 over 3) with red 'y = ? ? ?' beneath it",
+      "colors": [
+        "#F2F2F2",
+        "#0000CC",
+        "#CC0000",
+        "#009900",
+        "#000000"
+      ],
+      "position": "top-left panel"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Red-bordered white box containing bold equation W = (X^T X)^{-1} X^T Y, with W and Y underlined/highlighted in red",
+      "colors": [
+        "#CC0000",
+        "#000000",
+        "#FFFFFF"
+      ],
+      "position": "top-right, upper box"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Blue-bordered white box containing bold equation y = W^T X",
+      "colors": [
+        "#0000CC",
+        "#000000",
+        "#FFFFFF"
+      ],
+      "position": "top-right, lower box"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow filled circle with thin dark outline containing black number '28' (slide number badge)",
+      "colors": [
+        "#FFFF99",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    },
+    {
+      "type": "other",
+      "description": "Thin dark-red rectangular border framing the entire slide",
+      "colors": [
+        "#990000"
+      ],
+      "position": "full-slide perimeter"
+    },
+    {
+      "type": "other",
+      "description": "Small gray crosshair '+' mark, likely a laser-pointer/cursor artifact",
+      "colors": [
+        "#999999"
+      ],
+      "position": "left-center, ~35% height"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#F0F0F0",
+    "title_text": "#CC0000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000CC",
+      "#CC0000",
+      "#009900",
+      "#FFFF99",
+      "#990000"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title is large, bold, red, centered. Math is typeset in a serif/TeX-like italic style with blue vectors and red scalar values. 'Predict' is green, bold, italic. Formula box text is bold black with red accents. Slide number is small black text in a yellow circle.",
+  "animation_state": "Appears fully built; the 'y = ? ? ?' indicates an unanswered prediction prompt, not a partial animation.",
+  "recreation_brief": "1. Set slide background to light gray (#F0F0F0) and draw a thin dark-red (#990000) rectangle border around the entire slide edge. 2. Add centered bold red (#CC0000) title 'Regression Example' near the top. 3. Draw a large light-gray panel with thin gray border occupying the top-left ~60% width; inside, place black text 'x_1 =>' and 'x_2 =>' stacked at far left. 4. Add four blue (#0000CC) column vectors in a row: X_1=(1;1), X_2=(2;2), X_3=(2;1), X_4=(1;2), using parentheses with stacked numbers. 5. Below each vector place red (#CC0000) text: y_1=10, y_2=15, y_3=13, y_4=12. 6. To the right inside the panel add green (#009900) bold-italic 'Predict', then blue vector X=(7;3) with red 'y = ? ? ?' beneath it. 7. At top-right, draw a white box with red border containing bold 'W = (X^T X)^{-1} X^T Y' with W and Y in red; below it a white box with blue border containing bold 'y = W^T X'. 8. Add a yellow (#FFFF99) circle with '28' at the top-right corner. 9. Leave the bottom two-thirds empty.",
+  "_meta": {
+    "frame": "slide_028.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 28,
+      "image": "slide_028.jpg"
+    },
+    "elapsed_s": 36.6
+  }
+}

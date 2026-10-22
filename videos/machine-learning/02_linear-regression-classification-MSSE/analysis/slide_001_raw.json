@@ -1,0 +1,139 @@
+{
+  "slide_title": "Linear Regression & Classification",
+  "subtitle_or_header": "CSAI 253  -  Spring 2024",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "1",
+      "Prepared By",
+      "Dr. Khaled Mostafa ElSayed",
+      "kmelsayed@zewailcity.edu.eg",
+      "Instructors:",
+      "Dr. Khaled Mostafa ElSayed",
+      "kmelsayed@zewailcity.edu.eg",
+      "Dr. Mohamed Maher Ata",
+      "momaher@zewailcity.edu.eg",
+      "ZEWAIL CITY",
+      "UNIVERSITY OF SCIENCE AND TECHNOLOGY",
+      "\u062c\u0627\u0645\u0639\u0629 \u0627\u0644\u0639\u0644\u0648\u0645 \u0648\u0627\u0644\u062a\u0643\u0646\u0648\u0644\u0648\u062c\u064a\u0627",
+      "University of Science and Technology",
+      "\u0645\u062f\u064a\u0646\u0629 \u0632\u0648\u064a\u0644 \u0644\u0644\u0639\u0644\u0648\u0645 \u0648\u0627\u0644\u062a\u0643\u0646\u0648\u0644\u0648\u062c\u064a\u0627 [?]"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Title slide: thin red frame border inset around all edges of a light-gray slide; slide number '1' in a yellow oval at top-right; large two-line red title centered in upper-middle; blue course-code subtitle centered below it; centered 'Prepared By' block (red serif line, blue name, blue email) in lower-middle; bottom-left left-aligned 'Instructors:' block with two instructor names and emails; bottom-right two-part Zewail City logo (teal square + white rectangle); a mouse cursor artifact floats at right-middle",
+    "regions": [
+      {
+        "name": "Red frame border",
+        "position": "entire slide perimeter, inset ~2-3% from each edge",
+        "content": "thin solid red rectangular outline framing the whole slide, no fill"
+      },
+      {
+        "name": "Slide number",
+        "position": "top-right, ~88-96% width, ~8-18% height",
+        "content": "yellow oval with purple outline containing the numeral 1"
+      },
+      {
+        "name": "Title",
+        "position": "top-center to middle, ~25-45% height, horizontally centered",
+        "content": "'Linear Regression &' on line 1, 'Classification' on line 2, large bold red text"
+      },
+      {
+        "name": "Subtitle",
+        "position": "middle, ~53-58% height, centered",
+        "content": "'CSAI 253  -  Spring 2024' in bold dark blue"
+      },
+      {
+        "name": "Prepared By block",
+        "position": "lower-middle, ~63-77% height, centered",
+        "content": "three stacked centered lines: 'Prepared By' (red italic serif), 'Dr. Khaled Mostafa ElSayed' (blue bold italic serif), 'kmelsayed@zewailcity.edu.eg' (blue bold sans)"
+      },
+      {
+        "name": "Instructors block",
+        "position": "bottom-left, ~8-40% width, ~77-98% height, left-aligned",
+        "content": "five stacked lines: red 'Instructors:' header, two instructor names in bold italic blue, each followed by an email in blue"
+      },
+      {
+        "name": "University logo",
+        "position": "bottom-right, ~60-93% width, ~84-98% height",
+        "content": "Zewail City lockup: teal square with white emblem and wordmark + adjacent white rectangle with Arabic and English university name"
+      },
+      {
+        "name": "Cursor artifact",
+        "position": "right side, ~85% width, ~72% height",
+        "content": "small white/black mouse pointer from the video capture, not slide content"
+      }
+    ],
+    "hierarchy": "Title dominates (largest, boldest, red); subtitle second (medium bold blue); 'Prepared By' name third; instructor names and emails smaller; slide-number oval and logo smallest; red frame is thin and subordinate"
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Thin solid red rectangular border frame inset ~2-3% from every slide edge; no fill; encloses all slide content",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "perimeter of entire slide"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Slide-number badge: small horizontal oval/ellipse with pale-yellow fill and purple outline, containing the black/dark numeral '1' centered",
+      "colors": [
+        "#FFFF99",
+        "#6633CC",
+        "#333333"
+      ],
+      "position": "top-right corner, inside the red frame"
+    },
+    {
+      "type": "image",
+      "description": "Zewail City logo lockup made of two adjacent rectangles: LEFT: teal square containing, top to bottom, tiny white Arabic text '\u0645\u062f\u064a\u0646\u0629 \u0632\u0648\u064a\u0644 \u0644\u0644\u0639\u0644\u0648\u0645 \u0648\u0627\u0644\u062a\u0643\u0646\u0648\u0644\u0648\u062c\u064a\u0627 [?]', a white stylized emblem (abstract mountain/flask-like shape of curved strokes), bold white 'ZEWAIL CITY', and a tiny white line 'UNIVERSITY OF SCIENCE AND TECHNOLOGY'; RIGHT: white rectangle with bold Arabic '\u062c\u0627\u0645\u0639\u0629 \u0627\u0644\u0639\u0644\u0648\u0645 \u0648\u0627\u0644\u062a\u0643\u0646\u0648\u0644\u0648\u062c\u064a\u0627' in maroon-red on top and 'University of Science and Technology' in smaller dark-red text beneath",
+      "colors": [
+        "#339999",
+        "#FFFFFF",
+        "#A03030",
+        "#8B0000"
+      ],
+      "position": "bottom-right corner"
+    },
+    {
+      "type": "other",
+      "description": "Standard arrow mouse cursor (white with black outline) captured from the screen recording; not an authored slide element",
+      "colors": [
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "right-middle area, ~85% width, ~72% height"
+    }
+  ],
+  "imagery": [
+    "Zewail City university logo at bottom-right: teal square badge with white abstract emblem (curved strokes forming a mountain/flask motif), white 'ZEWAIL CITY' wordmark and tiny English tagline, paired with a white panel bearing maroon Arabic university name '\u062c\u0627\u0645\u0639\u0629 \u0627\u0644\u0639\u0644\u0648\u0645 \u0648\u0627\u0644\u062a\u0643\u0646\u0648\u0644\u0648\u062c\u064a\u0627' and dark-red 'University of Science and Technology'; flat vector style",
+    "Mouse cursor arrow near right-middle \u2014 a screen-recording artifact, not slide artwork"
+  ],
+  "colors": {
+    "background": "#E8E8E8",
+    "title_text": "#C00000",
+    "body_text": "#2222CC",
+    "accents": [
+      "#C00000 (red frame + title + 'Prepared By'/'Instructors:' labels)",
+      "#FFFF99 (slide-number oval fill)",
+      "#6633CC (oval outline)",
+      "#339999 (logo teal)",
+      "#A03030 (logo Arabic maroon)",
+      "#8B0000 (logo English dark red)"
+    ]
+  },
+  "typography_notes": "All text appears on a light-gray ground with no bullets anywhere (pure title slide). Title: large sans-serif (Arial-like) bold, two centered lines, red, roughly 3x the subtitle size. Subtitle: sans-serif bold, dark blue, centered. 'Prepared By' and the name under it are serif (Times New Roman-like) italic / bold-italic, while the email beneath is sans-serif bold \u2014 a mixed serif/sans lockup. 'Instructors:' is sans-serif bold italic red; instructor names are sans-serif bold italic blue; emails are smaller regular sans-serif blue. Slide number is a plain numeral inside an oval. No all-caps except the tiny logo tagline 'UNIVERSITY OF SCIENCE AND TECHNOLOGY'.",
+  "animation_state": "Fully revealed static title slide; nothing mid-build. The only overlay is a mouse cursor from the video capture near the right-middle of the slide.",
+  "recreation_brief": "1. Set slide background to light gray #E8E8E8. 2. Draw a rectangle with no fill and a ~2.5pt red (#C00000) outline, inset ~0.15 in from all four edges, to form the frame. 3. Top-right (inside frame): insert a small oval (~0.5 x 0.35 in), fill #FFFF99, outline #6633CC ~1.5pt, and type '1' centered in it (dark gray/black, ~12pt). 4. Add a centered text box spanning ~80% width at ~25% height with two lines: 'Linear Regression &' then 'Classification'; Arial Bold, ~44pt, color #C00000, centered. 5. Below it add a centered text box with 'CSAI 253  -  Spring 2024' (keep the wide spaces around the hyphen); Arial Bold ~24pt, color #2222CC. 6. Add a centered three-line block at ~63-77% height: line 1 'Prepared By' (Times New Roman Italic ~20pt, #C00000); line 2 'Dr. Khaled Mostafa ElSayed' (Times New Roman Bold Italic ~22pt, #2222CC); line 3 'kmelsayed@zewailcity.edu.eg' (Arial Bold ~14pt, #2222CC). 7. Bottom-left, left-aligned five-line text box: 'Instructors:' (Arial Bold Italic ~18pt, #C00000); 'Dr. Khaled Mostafa ElSayed' (Arial Bold Italic ~16pt, #2222CC); 'kmelsayed@zewailcity.edu.eg' (Arial ~14pt, #2222CC); 'Dr. Mohamed Maher Ata' (Arial Bold Italic ~16pt, #2222CC); 'momaher@zewailcity.edu.eg' (Arial ~14pt, #2222CC). 8. Bottom-right: place the Zewail City logo (insert official image if available). To fake it: teal #339999 square with tiny white Arabic '\u0645\u062f\u064a\u0646\u0629 \u0632\u0648\u064a\u0644 \u0644\u0644\u0639\u0644\u0648\u0645 \u0648\u0627\u0644\u062a\u0643\u0646\u0648\u0644\u0648\u062c\u064a\u0627' at top, a white curved emblem shape in the middle, bold white 'ZEWAIL CITY', and tiny white 'UNIVERSITY OF SCIENCE AND TECHNOLOGY'; immediately to its right a white rectangle with bold maroon #A03030 Arabic '\u062c\u0627\u0645\u0639\u0629 \u0627\u0644\u0639\u0644\u0648\u0645 \u0648\u0627\u0644\u062a\u0643\u0646\u0648\u0644\u0648\u062c\u064a\u0627' over smaller dark-red #8B0000 'University of Science and Technology'. 9. Add no bullets, charts, or equations \u2014 this is a title-only slide. 10. Do NOT reproduce the mouse cursor; it is a video artifact.",
+  "_meta": {
+    "frame": "slide_001.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 1,
+      "image": "slide_001.jpg"
+    },
+    "elapsed_s": 217.0
+  }
+}

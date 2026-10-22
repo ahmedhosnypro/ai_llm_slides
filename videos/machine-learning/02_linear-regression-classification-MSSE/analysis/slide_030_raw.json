@@ -1,0 +1,162 @@
+{
+  "slide_title": "Regression Example",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "30",
+      "Linear Equation",
+      "Perfect Fit",
+      "Check y for training data",
+      "y",
+      "15",
+      "13",
+      "12",
+      "10",
+      "x1",
+      "x2",
+      "1",
+      "2"
+    ],
+    "equations": [
+      "W = [5; 3; 2] (column vector)",
+      "X = [1; x1; x2] (column vector)",
+      "y = W^T X = X^T W",
+      "y = 3 x1 + 2 x2 + 5",
+      "y = [1 7 3] \u00b7 [5; 2; 2] = 32 (with X^T and W labels above)",
+      "Y = [[1 1 1],[1 2 2],[1 2 1],[1 1 2]] \u00b7 [5; 3; 2] = [10; 15; 13; 12]"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title top-center in red. Left half: large 3D plot inside a red-bordered box. Right half: top row W and X vectors, then equation y = W^T X = X^T W, then y = 3x1+2x2+5, then a boxed matrix multiplication y = X^T W = 32, then 'Check y for training data' matrix equation with 'Perfect Fit' below. Slide number 30 in yellow circle top-right.",
+    "regions": [
+      {
+        "name": "3D plot",
+        "position": "left half, inside red border box",
+        "content": "3D scatter plot with yellow regression plane, points, axes x1, x2, y with ticks 10, 12, 13, 15"
+      },
+      {
+        "name": "W vector",
+        "position": "top-center-right",
+        "content": "W = [5; 3; 2] in a light blue box"
+      },
+      {
+        "name": "X vector",
+        "position": "top-center-right",
+        "content": "X = [1; x1; x2] in a light blue box"
+      },
+      {
+        "name": "Equation y = W^T X = X^T W",
+        "position": "top-right",
+        "content": "y = W^T X = X^T W in a blue-bordered box"
+      },
+      {
+        "name": "Equation y = 3x1+2x2+5",
+        "position": "below the top equation",
+        "content": "y = 3 x1 + 2 x2 + 5 in a yellow-highlighted box"
+      },
+      {
+        "name": "Matrix multiplication",
+        "position": "middle-right",
+        "content": "y = [1 7 3] \u00b7 [5; 2; 2] = 32 with X^T and W labels"
+      },
+      {
+        "name": "Check y for training data",
+        "position": "bottom-right",
+        "content": "Y = 4x3 matrix \u00b7 W = [10; 15; 13; 12], 'Perfect Fit' in green below"
+      },
+      {
+        "name": "Slide number",
+        "position": "top-right corner",
+        "content": "30 in yellow circle"
+      }
+    ],
+    "hierarchy": "Title in red dominates. Equations in blue and red. 'Perfect Fit' in green. 3D plot on left is large. Slide number in yellow circle."
+  },
+  "visual_elements": [
+    {
+      "type": "graph",
+      "description": "3D scatter plot with yellow regression plane, points at (1,1,10), (2,2,15), (2,1,13), (1,2,12), axes x1, x2, y with ticks 10, 12, 13, 15",
+      "colors": [
+        "#FFFF00",
+        "#0000FF",
+        "#FF0000"
+      ],
+      "position": "left half"
+    },
+    {
+      "type": "highlight-box",
+      "description": "W = [5; 3; 2] in light blue box",
+      "colors": [
+        "#ADD8E6"
+      ],
+      "position": "top-center-right"
+    },
+    {
+      "type": "highlight-box",
+      "description": "X = [1; x1; x2] in light blue box",
+      "colors": [
+        "#ADD8E6"
+      ],
+      "position": "top-center-right"
+    },
+    {
+      "type": "highlight-box",
+      "description": "y = W^T X = X^T W in blue-bordered box",
+      "colors": [
+        "#0000FF"
+      ],
+      "position": "top-right"
+    },
+    {
+      "type": "highlight-box",
+      "description": "y = 3 x1 + 2 x2 + 5 in yellow-highlighted box",
+      "colors": [
+        "#FFFF00"
+      ],
+      "position": "below top equation"
+    },
+    {
+      "type": "highlight-box",
+      "description": "y = [1 7 3] \u00b7 [5; 2; 2] = 32 with X^T and W labels",
+      "colors": [
+        "#0000FF",
+        "#FF0000"
+      ],
+      "position": "middle-right"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Y = 4x3 matrix \u00b7 W = [10; 15; 13; 12], 'Perfect Fit' in green",
+      "colors": [
+        "#0000FF",
+        "#008000"
+      ],
+      "position": "bottom-right"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#FF0000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000FF",
+      "#FF0000",
+      "#008000",
+      "#FFFF00"
+    ]
+  },
+  "typography_notes": "Sans-serif. Title in red, bold. Equations in blue and red. 'Perfect Fit' in green. Slide number in yellow circle.",
+  "animation_state": "No mid-build state visible.",
+  "recreation_brief": "1. Title 'Regression Example' top-center in red. 2. Left half: 3D plot with yellow plane, points, axes x1, x2, y with ticks 10, 12, 13, 15. 3. Top-center-right: W = [5; 3; 2] in light blue box. 4. Top-center-right: X = [1; x1; x2] in light blue box. 5. Top-right: y = W^T X = X^T W in blue-bordered box. 6. Below: y = 3 x1 + 2 x2 + 5 in yellow-highlighted box. 7. Middle-right: y = [1 7 3] \u00b7 [5; 2; 2] = 32 with X^T and W labels. 8. Bottom-right: Y = 4x3 matrix \u00b7 W = [10; 15; 13; 12], 'Perfect Fit' in green. 9. Top-right: slide number 30 in yellow circle.",
+  "_meta": {
+    "frame": "slide_030.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 30,
+      "image": "slide_030.jpg"
+    },
+    "elapsed_s": 72.0
+  }
+}

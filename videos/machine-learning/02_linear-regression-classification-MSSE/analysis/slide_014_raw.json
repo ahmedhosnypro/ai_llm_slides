@@ -1,0 +1,161 @@
+{
+  "slide_title": "Same Equation for Linear Regression and Classification",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Model",
+      "I/P: ( x1  x2  x3  .....  xn )",
+      "O/P: ( y )",
+      "General Case - Regression",
+      "Model",
+      "y = w1 x1 + w2 x2 + w2 x2 + ... + wd xd + b",
+      "Model Parameters : w1 , w2 , w3 , ... wd , b",
+      "b   is called   \"bias\"  term as it is independent of  x",
+      "General Case - Classification",
+      "Model",
+      "y = w1 x1 + w2 x2 + w2 x2 + ... + wd xd + b",
+      "y > 0 \u21d2  Class 1    y < 0 \u21d2  Class 2    y = 0 \u21d2  Undefined",
+      "Model Parameters : w1 , w2 , w3 , ... wd , b"
+    ],
+    "labels": [
+      "14",
+      "Input:",
+      "Output: ( y )"
+    ],
+    "equations": [
+      "y = w_1 x_1 + w_2 x_2 + w_2 x_2 + ... + w_d x_d + b",
+      "X = column vector (x_1, x_2, x_3, ..., x_d)",
+      "W = column vector (W_1, W_2, W_3, ..., W_d)",
+      "y > 0 \u21d2 Class 1;  y < 0 \u21d2 Class 2;  y = 0 \u21d2 Undefined"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top with 'Same Equation' underlined in blue and the rest in dark red; slide number '14' in a yellow circle at top-right. Below title, top-left is a small 'Model' box showing I/P and O/P vectors. Left column below contains two stacked sections, each headed by a dark blue banner ('General Case - Regression' then 'General Case - Classification') with a pale yellow content box beneath. Right-middle region holds a vector diagram showing Input X, weight vector W, and Output (y). Whole slide framed by a thin dark-red border.",
+    "regions": [
+      {
+        "name": "title bar",
+        "position": "top center, ~5-15% height",
+        "content": "Slide title with mixed blue underlined and dark red text; yellow circled '14' at top-right"
+      },
+      {
+        "name": "model I/O box",
+        "position": "top-left, ~20-33% height, ~7-30% width",
+        "content": "White box with red italic 'Model' header, I/P row vector (x1 x2 x3 ..... xn), O/P (y)"
+      },
+      {
+        "name": "regression section",
+        "position": "left-middle, ~36-63% height, ~7-50% width",
+        "content": "Blue banner 'General Case - Regression' above pale yellow box with model equation, parameters, and bias note"
+      },
+      {
+        "name": "classification section",
+        "position": "left-bottom, ~70-97% height, ~7-52% width",
+        "content": "Blue banner 'General Case - Classification' above pale yellow box with model equation, class decision rules, parameters"
+      },
+      {
+        "name": "vector diagram",
+        "position": "right-middle, ~40-75% height, ~53-93% width",
+        "content": "White box: red 'Input:' label, column vector X in parentheses, blue W column vector, 'Output: ( y )'"
+      }
+    ],
+    "hierarchy": "Title largest and boldest (blue underline + dark red). Blue section banners next in visual weight (white bold text on dark blue). Red italic 'Model' headers inside boxes. Body equations in mixed colors (blue y, green w terms, red x subscripts, green b). Diagram labels in red/blue."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Small white box with thin border containing red italic 'Model', then 'I/P:' followed by a row vector in parentheses (x1 x2 x3 ..... xn) in red, then 'O/P:' followed by ( y ) in red",
+      "colors": [
+        "#FFFFFF",
+        "#CC0000",
+        "#000000"
+      ],
+      "position": "top-left under title"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Dark blue rectangular banner with white bold text 'General Case - Regression'",
+      "colors": [
+        "#0000CC",
+        "#FFFFFF"
+      ],
+      "position": "left-middle, above regression box"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pale yellow box with thin blue border containing: red italic 'Model'; equation 'y = w1 x1 + w2 x2 + w2 x2 + ... + wd xd + b' with y in blue, w terms in green, x terms in red, b in green; 'Model Parameters : w1 , w2 , w3 , ... wd , b' with label in blue italic and parameters in green; 'b  is called  \"bias\"  term as it is independent of  x' with b in green bold, 'bias' in quotes, x in red",
+      "colors": [
+        "#FFFFCC",
+        "#0000CC",
+        "#CC0000",
+        "#009900",
+        "#000000"
+      ],
+      "position": "left-middle under regression banner"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Dark blue rectangular banner with white bold text 'General Case - Classification'",
+      "colors": [
+        "#0000CC",
+        "#FFFFFF"
+      ],
+      "position": "left-bottom, above classification box"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pale yellow box with thin blue border containing: red italic 'Model'; same linear equation with same color coding; decision rules 'y > 0 \u21d2 Class 1   y < 0 \u21d2 Class 2   y = 0 \u21d2 Undefined' with y>0 and y<0 in red, 'Class 1'/'Class 2' in blue, 'y = 0' in green, 'Undefined' in blue; 'Model Parameters : w1 , w2 , w3 , ... wd , b' in blue italic label with green parameters",
+      "colors": [
+        "#FFFFCC",
+        "#0000CC",
+        "#CC0000",
+        "#009900"
+      ],
+      "position": "left-bottom under classification banner"
+    },
+    {
+      "type": "diagram",
+      "description": "White box showing matrix/vector form: red italic 'Input:' label, then 'X =' (X underlined in red) followed by a tall parenthesized column vector with entries x1, x2, x3, ..., ..., xd in red; then blue underlined 'W =' followed by a tall parenthesized column vector with entries W1, W2, W3, ..., ..., Wd in blue; then bold black 'Output:' followed by red '( y )'",
+      "colors": [
+        "#FFFFFF",
+        "#CC0000",
+        "#0000CC",
+        "#000000"
+      ],
+      "position": "right-middle"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle with thin dark outline containing black number '14' (slide number)",
+      "colors": [
+        "#FFFF99",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#F2F2F2",
+    "title_text": "#8B0000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000CC",
+      "#CC0000",
+      "#009900",
+      "#FFFFCC",
+      "#FFFF99"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title large and bold; 'Same Equation' is blue and underlined, remainder dark red. Section banners are white bold text on dark blue. 'Model' headers are red italic. Equations use color-coded variables: y blue, weights green, x terms red, bias b green. 'Model Parameters' label in blue italic. Slide number in small yellow circle.",
+  "animation_state": "No mid-build indicators; all content appears fully revealed.",
+  "recreation_brief": "1. Set slide background to light gray (#F2F2F2) and draw a thin dark-red border around the entire slide edge. 2. Add title at top center: 'Same Equation' in blue (#0000CC), bold, underlined, followed by ' for Linear Regression and Classification' in dark red (#8B0000), bold. 3. Add yellow circle (#FFFF99) with dark outline at top-right containing '14'. 4. Top-left: white box with thin border; inside, red italic 'Model', then 'I/P:' in black with red row vector '( x1  x2  x3  .....  xn )', then 'O/P:' with red '( y )'. 5. Left-middle: dark blue (#0000CC) banner with white bold text 'General Case - Regression'. 6. Below it, pale yellow (#FFFFCC) box with thin blue border: red italic 'Model'; equation 'y = w1 x1 + w2 x2 + w2 x2 + ... + wd xd + b' with y blue, w's green, x's red, b green; line 'Model Parameters : w1 , w2 , w3 , ... wd , b' with blue italic label and green parameters; line 'b  is called  \"bias\"  term as it is independent of  x' with b green bold and x red. 7. Left-bottom: dark blue banner 'General Case - Classification'; below it pale yellow box: red italic 'Model'; same color-coded equation; line 'y > 0 \u21d2 Class 1   y < 0 \u21d2 Class 2   y = 0 \u21d2 Undefined' with inequalities color-coded (y>0, y<0 red; y=0 green; Class 1, Class 2, Undefined blue); 'Model Parameters : w1 , w2 , w3 , ... wd , b' as before. 8. Right-middle: white box with thin border; inside place red italic 'Input:' then red underlined 'X =' and a tall parenthesized column vector (x1, x2, x3, ..., ..., xd) in red; then blue underlined 'W =' with tall parenthesized column vector (W1, W2, W3, ..., ..., Wd) in blue; then bold black 'Output:' with red '( y )'. 9. Use sans-serif font (e.g., Arial) throughout, matching sizes: title largest, banners medium-bold, body text smaller.",
+  "_meta": {
+    "frame": "slide_014.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 14,
+      "image": "slide_014.jpg"
+    },
+    "elapsed_s": 96.9
+  }
+}

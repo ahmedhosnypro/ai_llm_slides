@@ -1,0 +1,226 @@
+{
+  "slide_title": "Classification Models: 2-D vs d-D Input Vectors",
+  "subtitle_or_header": "No separate on-slide title region; the two column header banners serve as headers: 'Input Vector: 2-D' (red banner, left column) and 'Input Vector: d-D' (green banner, right column)",
+  "verbatim_text": {
+    "bullets": [
+      "Input Vector: 2-D",
+      "Input Vector: d-D",
+      "General Case",
+      "Input:",
+      "Output: ( y )",
+      "Model",
+      "I/P: Length, Weight",
+      "O/P: Class Type",
+      "Model ( Plane )",
+      "Class >0 Steel   Class <0 Wood",
+      "Class =0 Undefined",
+      "Model Parameters : a , b , c",
+      "Model",
+      "I/P: [X1, X2, X3, . . . . Xd]",
+      "O/P: [y]",
+      "Model ( Hyperplane )",
+      "y >0 \u21d2 Class 1   y <0 \u21d2 Class 2   y =0 \u21d2 Undefined",
+      "Model Parameters : w1 , w2 ,, w3 , ...,, wd+1"
+    ],
+    "labels": [
+      "13",
+      "Steel",
+      "Wood",
+      "Length",
+      "Weight",
+      "x1",
+      "x2",
+      "x3",
+      "...",
+      "...",
+      "xd"
+    ],
+    "equations": [
+      "z = a x + b y + c",
+      "Class = a * Length + b * Weight + c",
+      "y = w1 x1 + w2 x2 + w3 x3 + ... + wn xd + wd+1"
+    ]
+  },
+  "layout": {
+    "arrangement": "Two-column comparison layout inside a thin maroon outer border. Left column (~45% width): red header bar 'Input Vector: 2-D' at top, below it a scatter-plot diagram in a blue-bordered box, below that a small 'Model' I/P-O/P table, below that a pale-yellow box with the plane model equations. Right column (~55% width): green header bar 'Input Vector: d-D' at top, a large tan/brown panel containing a white 'General Case' box (input vector x1..xd and output y), below it a small 'Model' I/P-O/P table, below that a pale-yellow box with the hyperplane model equations. Slide number '13' in a yellow circle at top-right corner.",
+    "regions": [
+      {
+        "name": "left header",
+        "position": "top-left, ~10-30% width, ~10-15% height",
+        "content": "red banner with white text 'Input Vector: 2-D'"
+      },
+      {
+        "name": "left diagram",
+        "position": "upper-left, ~7-40% width, ~16-58% height",
+        "content": "blue-bordered white box containing a tilted 2-D scatter plot (separating plane) with axes labeled Length (x) and Weight (y), points labeled Steel and Wood, three red circled question marks '?'"
+      },
+      {
+        "name": "left model table",
+        "position": "mid-left, ~8-28% width, ~60-70% height",
+        "content": "small table: Model / I/P: Length, Weight / O/P: Class Type"
+      },
+      {
+        "name": "left equation box",
+        "position": "bottom-left, ~8-40% width, ~70-98% height",
+        "content": "pale-yellow box: 'Model ( Plane )' heading and equations z = a x + b y + c, Class = a*Length+b*Weight+c, decision rules, parameters a,b,c"
+      },
+      {
+        "name": "right header",
+        "position": "top-center-right, ~60-80% width, ~10-15% height",
+        "content": "green banner with white text 'Input Vector: d-D'"
+      },
+      {
+        "name": "right panel",
+        "position": "right, ~45-93% width, ~16-98% height",
+        "content": "large tan/brown panel holding the General Case box, model table, and hyperplane equation box"
+      },
+      {
+        "name": "general case box",
+        "position": "upper-right inside panel, ~47-73% width, ~20-58% height",
+        "content": "white box with dark-blue 'General Case' banner; red 'Input:' label, vertical red vector x1,x2,x3,...,xd; blue 'Output: ( y )'"
+      },
+      {
+        "name": "right model table",
+        "position": "mid-right, ~47-70% width, ~62-72% height",
+        "content": "small table: Model / I/P: [X1, X2, X3, . . . . Xd] / O/P: [y]"
+      },
+      {
+        "name": "right equation box",
+        "position": "bottom-right, ~46-92% width, ~74-97% height",
+        "content": "pale-yellow box: 'Model ( Hyperplane )' heading, hyperplane equation, class rules, model parameters"
+      },
+      {
+        "name": "slide number",
+        "position": "top-right corner",
+        "content": "yellow circle with '13'"
+      }
+    ],
+    "hierarchy": "Colored header banners (red left, green right) dominate each column; the large tan right panel draws the eye; equation boxes in pale yellow with red/green headings are secondary; small model tables are tertiary."
+  },
+  "visual_elements": [
+    {
+      "type": "chart",
+      "description": "2-D scatter plot drawn as a tilted (rotated) light-blue parallelogram plane inside a blue-bordered white box. Vertical axis labeled 'Weight' (red, left side), horizontal axis labeled 'Length' (red, bottom right). Small open-circle data points scattered on the plane; upper region labeled 'Steel', lower-right region labeled 'Wood'; three red circled question marks '?' mark unknown points on the plane.",
+      "colors": [
+        "#DCE9F5",
+        "#0000CC",
+        "#CC0000",
+        "#000000"
+      ],
+      "position": "upper-left quadrant"
+    },
+    {
+      "type": "table",
+      "description": "Small 3-row table, left column: 'Model' (red), 'I/P:', 'O/P:'; right column: blank, 'Length, Weight', 'Class Type'. Thin black borders.",
+      "colors": [
+        "#FFFFFF",
+        "#000000",
+        "#CC0000"
+      ],
+      "position": "mid-left below diagram"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pale-yellow box with blue border. Heading 'Model ( Plane )' with 'Model' in red underlined and '( Plane )' in green. Lines: 'z = a x + b y + c' (blue italic), 'Class = a * Length + b * Weight + c' (blue), 'Class >0 Steel   Class <0 Wood' (blue with red >0 and <0), 'Class =0 Undefined' (blue), 'Model Parameters : a , b , c' (blue italic with red a,b,c).",
+      "colors": [
+        "#FFFFCC",
+        "#0000CC",
+        "#CC0000",
+        "#009900"
+      ],
+      "position": "bottom-left"
+    },
+    {
+      "type": "diagram",
+      "description": "White box with dark-blue banner 'General Case' (white text). Inside: red 'Input:' label left of a tall vertical parenthesis containing red italic entries x1, x2, x3, ..., ..., xd (top to bottom); to the right, blue text 'Output: ( y )'.",
+      "colors": [
+        "#FFFFFF",
+        "#000066",
+        "#CC0000",
+        "#0000CC"
+      ],
+      "position": "upper area of right tan panel"
+    },
+    {
+      "type": "table",
+      "description": "Small 3-row table: 'Model' (red) / 'I/P:' '[X1, X2, X3, . . . . Xd]' (red subscripts) / 'O/P:' '[y]'. Thin black borders.",
+      "colors": [
+        "#FFFFFF",
+        "#000000",
+        "#CC0000"
+      ],
+      "position": "middle of right panel"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pale-yellow box with blue border. Heading 'Model ( Hyperplane )' with 'Model' red underlined and '( Hyperplane )' green. Equation 'y = w1 x1 + w2 x2 + w3 x3 + ... + wn xd + wd+1' in blue with red subscripts (a mouse cursor arrow is visible near wd+1). Then 'y >0 \u21d2 Class 1   y <0 \u21d2 Class 2   y =0 \u21d2 Undefined' in blue with red inequalities. Then 'Model Parameters : w1 , w2 ,, w3 , ...,, wd+1' in blue italic with red subscripts.",
+      "colors": [
+        "#FFFFCC",
+        "#0000CC",
+        "#CC0000",
+        "#009900"
+      ],
+      "position": "bottom of right panel"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle with dark outline containing black number '13' (slide number).",
+      "colors": [
+        "#FFFF99",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": "No photographs; only the hand-drawn-style tilted scatter-plane diagram and a visible mouse cursor arrow near the hyperplane equation.",
+  "colors": {
+    "background": "#F2F2F2",
+    "title_text": "#FFFFFF",
+    "body_text": "#0000CC",
+    "accents": [
+      "#CC0000",
+      "#009933",
+      "#000066",
+      "#C8B89A",
+      "#FFFFCC",
+      "#FFFF99",
+      "#800000",
+      "#009900",
+      "#DCE9F5",
+      "#000000"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Header banners: white bold text on red/green bars. 'General Case' banner: white bold on dark blue. Body/equation text mostly blue, with red used for emphasis (inequality signs, subscripts, 'Model' labels) and green for '( Plane )' / '( Hyperplane )'. Equations in italic serif-like styling for variables; subscripts smaller. 'Model' headings underlined in red.",
+  "animation_state": "No mid-build state apparent; all content fully revealed. A mouse cursor is visible near the wd+1 term, suggesting live narration.",
+  "recreation_brief": "1. Canvas: set the slide background to light gray #F2F2F2 and draw a thin maroon #800000 rectangle border around the entire slide edge; use a sans-serif font throughout, with equation variables in italic and subscripts rendered smaller.\n2. Left header banner: red #CC0000 bar at top-left (~10-30% width, ~10-15% height) with white bold text 'Input Vector: 2-D'.\n3. Left scatter-plot chart: white box with #0000CC border at ~7-40% width, ~16-58% height, containing a hand-drawn-style tilted 2-D scatter plot: a rotated light-blue #DCE9F5 parallelogram plane; red #CC0000 vertical axis label 'Weight' on the left side; red #CC0000 horizontal axis label 'Length' at the bottom right; small black #000000 open-circle data points scattered on the plane (exact count not specified in source); label 'Steel' in the upper region and 'Wood' in the lower-right region; exactly three red #CC0000 circled '?' marks on the plane.\n4. Left model table: 3-row x 2-column table with thin black #000000 borders at ~8-28% width, ~60-70% height; row 1: 'Model' in red #CC0000 with an empty right cell; row 2: 'I/P:' | 'Length, Weight'; row 3: 'O/P:' | 'Class Type'.\n5. Left equation box: pale-yellow #FFFFCC box with #0000CC border at ~8-40% width, ~70-98% height; heading 'Model ( Plane )' with 'Model' in red #CC0000 underlined and '( Plane )' in green #009900; then 5 lines: 'z = a x + b y + c' (blue #0000CC italic); 'Class = a * Length + b * Weight + c' (blue #0000CC); 'Class >0 Steel   Class <0 Wood' (blue with '>0' and '<0' in red #CC0000); 'Class =0 Undefined' (blue); 'Model Parameters : a , b , c' (blue italic with 'a', 'b', 'c' in red).\n6. Right header banner: green #009933 bar at ~60-80% width, ~10-15% height with white bold text 'Input Vector: d-D'.\n7. Right panel: large tan #C8B89A rectangle at ~45-93% width, ~16-98% height (below the green banner), serving as the container for steps 8-10.\n8. General Case diagram: white box at ~47-73% width, ~20-58% height inside the panel, topped by a dark-blue #000066 banner with white bold text 'General Case'; inside the box place red #CC0000 label 'Input:' at left, a tall vertical parenthesis containing red italic entries 'x1', 'x2', 'x3', '...', '...', 'xd' from top to bottom, and blue #0000CC text 'Output: ( y )' to the right of the parenthesis.\n9. Right model table: 3-row x 2-column table with thin black #000000 borders at ~47-70% width, ~62-72% height; row 1: 'Model' in red #CC0000 with an empty right cell; row 2: 'I/P:' | '[X1, X2, X3, . . . . Xd]' with red subscripts; row 3: 'O/P:' | '[y]'.\n10. Right equation box: pale-yellow #FFFFCC box with #0000CC border at ~46-92% width, ~74-97% height; heading 'Model ( Hyperplane )' with 'Model' in red #CC0000 underlined and '( Hyperplane )' in green #009900; then 3 lines: 'y = w1 x1 + w2 x2 + w3 x3 + ... + wn xd + wd+1' (blue with red subscripts); 'y >0 \u21d2 Class 1   y <0 \u21d2 Class 2   y =0 \u21d2 Undefined' (blue with red inequality signs); 'Model Parameters : w1 , w2 ,, w3 , ...,, wd+1' (blue italic with red subscripts; reproduce the comma spacing exactly as extracted).\n11. Slide number icon: yellow #FFFF99 circle with dark outline at the top-right corner containing black '13'.\n12. Exclusion: do NOT recreate the mouse-cursor arrow visible near 'wd+1' in the source frame (it is a video-recording artifact, not slide content); the slide contains no photographs or other imagery.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Filled null slide_title with the reconstruction 'Classification Models: 2-D vs d-D Input Vectors', derived from the two column headers ('Input Vector: 2-D', 'Input Vector: d-D') and the 'Model ( Plane )' / 'Model ( Hyperplane )' headings.",
+      "Filled null subtitle_or_header with the two column header banners and noted that layout.regions defines no separate title region.",
+      "Precision fix in layout.regions ('left diagram'): replaced the uncounted 'red question marks' with the exact count from visual_elements: 'three red circled question marks'.'",
+      "Added three palette colors to colors.accents that are used in visual_elements but were missing from the palette: #009900 (green of '( Plane )' / '( Hyperplane )' text), #DCE9F5 (light-blue plane fill), #000000 (table borders, data points, slide number).",
+      "Disambiguated the two greens so a builder cannot conflate them: #009933 is the right header banner green, #009900 is the '( Plane )' / '( Hyperplane )' heading green; both hex values now specified explicitly in the brief.",
+      "Rewrote recreation_brief as a 12-step ordered checklist: every step now gives the exact verbatim text, the position range from layout.regions, the hex color, and the shape/chart type; added an explicit instruction to exclude the mouse-cursor recording artifact."
+    ],
+    "uncertain_items": [
+      "slide_title and subtitle_or_header are QA reconstructions: the source analysis provided nulls and layout.regions contains no title region, so the actual slide may have no on-slide title at all.",
+      "The hyperplane equation reads 'y = w1 x1 + w2 x2 + w3 x3 + ... + wn xd + wd+1' with mismatched subscripts ('wn' paired with 'xd'); it may be a misextraction of 'wn xn' or 'wd xd' \u2014 kept verbatim, unverifiable without the image.",
+      "'Model Parameters : w1 , w2 ,, w3 , ...,, wd+1' contains doubled commas, likely an extraction artifact of 'w1, w2, w3, ..., wd+1' \u2014 kept verbatim in both verbatim_text and the brief.",
+      "The exact number of open-circle data points in the left scatter plot is not specified anywhere in the source JSON.",
+      "Two near-identical greens appear (#009933 for the right banner vs #009900 for the parenthetical headings); whether they are the same green on the actual slide cannot be verified."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_013.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 13,
+      "image": "slide_013.jpg"
+    },
+    "elapsed_s": 75.8,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1365.0
+  }
+}

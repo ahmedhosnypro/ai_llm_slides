@@ -1,0 +1,173 @@
+{
+  "slide_title": "Regression Example",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Predict",
+      "28"
+    ],
+    "equations": [
+      "x_1 =>",
+      "x_2 =>",
+      "X_1 = (1, 1)^T",
+      "X_2 = (2, 2)^T",
+      "X_3 = (2, 1)^T",
+      "X_4 = (1, 2)^T",
+      "y_1 = 10",
+      "y_2 = 15",
+      "y_3 = 13",
+      "y_4 = 12",
+      "X = (7, 3)^T",
+      "y = ? ? ?",
+      "W = (X^T X)^{-1} X^T Y",
+      "y = W^T X"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top in red. Below it, a wide light-gray (#F2F2F2) panel with a thin gray border spans the left ~60% of the slide, containing the training-data vectors and the prediction prompt. To the right of that panel, two stacked boxed formulas (red-bordered box on top containing 'W = (X^T X)^{-1} X^T Y'; blue-bordered box below containing 'y = W^T X'). A yellow circle with slide number '28' sits at the top-right corner. The entire slide is framed by a thin dark-red (#990000) border. The bottom ~65% of the slide is empty gray space with a small gray (#999999) crosshair mark on the left.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top-center, ~5-15% height",
+        "content": "Red bold text 'Regression Example'"
+      },
+      {
+        "name": "data panel",
+        "position": "top-left, ~5-65% width, ~15-35% height",
+        "content": "Light-gray (#F2F2F2) box with thin gray border containing: black row labels 'x_1 =>' and 'x_2 =>' at far left; four blue column vectors X_1=(1,1)^T, X_2=(2,2)^T, X_3=(2,1)^T, X_4=(1,2)^T; red y-values y_1=10, y_2=15, y_3=13, y_4=12 beneath them; green 'Predict' label; blue query vector X=(7,3)^T with red 'y = ? ? ?' beneath it"
+      },
+      {
+        "name": "formula boxes",
+        "position": "top-right, ~68-92% width, ~17-35% height",
+        "content": "Two stacked equations: 'W = (X^T X)^{-1} X^T Y' in a red-outlined white box (upper); 'y = W^T X' in a blue-outlined white box (lower)"
+      },
+      {
+        "name": "slide number",
+        "position": "top-right corner",
+        "content": "Yellow (#FFFF99) circle containing black '28'"
+      },
+      {
+        "name": "empty area",
+        "position": "bottom ~65% of slide",
+        "content": "Empty light-gray space with a small gray (#999999) '+' crosshair mark at left-center (~35% height)"
+      },
+      {
+        "name": "slide frame",
+        "position": "full-slide perimeter",
+        "content": "Thin dark-red (#990000) rectangular border framing the entire slide"
+      }
+    ],
+    "hierarchy": "Red bold title dominates; next the boxed formulas on the right (bold, boxed, colored); then the vector data in the panel (blue vectors, red y-values, green 'Predict'); slide number is small."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Large light-gray filled rectangle with thin gray border containing the training data: left side shows 'x_1 =>' and 'x_2 =>' row labels in black; four column vectors X_1=(1 over 1), X_2=(2 over 2), X_3=(2 over 1), X_4=(1 over 2) rendered in blue with parentheses; beneath them red text y_1=10, y_2=15, y_3=13, y_4=12; then green italic-bold 'Predict'; then blue vector X=(7 over 3) with red 'y = ? ? ?' beneath it",
+      "colors": [
+        "#F2F2F2",
+        "#0000CC",
+        "#CC0000",
+        "#009900",
+        "#000000"
+      ],
+      "position": "top-left panel"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Red-bordered white box containing bold equation W = (X^T X)^{-1} X^T Y, with W and Y underlined/highlighted in red",
+      "colors": [
+        "#CC0000",
+        "#000000",
+        "#FFFFFF"
+      ],
+      "position": "top-right, upper box"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Blue-bordered white box containing bold equation y = W^T X",
+      "colors": [
+        "#0000CC",
+        "#000000",
+        "#FFFFFF"
+      ],
+      "position": "top-right, lower box"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow filled circle with thin dark outline containing black number '28' (slide number badge)",
+      "colors": [
+        "#FFFF99",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    },
+    {
+      "type": "other",
+      "description": "Thin dark-red rectangular border framing the entire slide",
+      "colors": [
+        "#990000"
+      ],
+      "position": "full-slide perimeter"
+    },
+    {
+      "type": "other",
+      "description": "Small gray crosshair '+' mark, likely a laser-pointer/cursor artifact",
+      "colors": [
+        "#999999"
+      ],
+      "position": "left-center, ~35% height"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#F0F0F0",
+    "title_text": "#CC0000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000CC",
+      "#CC0000",
+      "#009900",
+      "#FFFF99",
+      "#990000"
+    ],
+    "panel_fill": "#F2F2F2",
+    "formula_box_fill": "#FFFFFF",
+    "crosshair_gray": "#999999"
+  },
+  "typography_notes": "Sans-serif throughout. Title is large, bold, red, centered. Math is typeset in a serif/TeX-like italic style with blue vectors and red scalar values. 'Predict' is green, bold, italic. Formula box text is bold black with red accents. Slide number is small black text in a yellow circle.",
+  "animation_state": "Appears fully built; the 'y = ? ? ?' indicates an unanswered prediction prompt, not a partial animation.",
+  "recreation_brief": "1. Set the slide background to light gray #F0F0F0. 2. Draw a thin dark-red #990000 rectangle border (outline only, no fill) around the full slide perimeter. 3. Place the title 'Regression Example' as large, bold, red #CC0000, sans-serif text, horizontally centered in the band from ~5% to ~15% of slide height. 4. Draw the data panel: a light-gray #F2F2F2 filled rectangle with a thin gray border, spanning ~5%-65% of slide width and ~15%-35% of slide height (top-left, about 60% of slide width). 5. Inside the panel at the far left, stack two black #000000 row labels: 'x_1 =>' on top and 'x_2 =>' below. 6. To the right of those labels, place four blue #0000CC column vectors in one horizontal row, each typeset TeX-style in italic serif with parentheses and vertically stacked components: X_1 = (1 over 1), X_2 = (2 over 2), X_3 = (2 over 1), X_4 = (1 over 2); align the top components with the 'x_1 =>' label and the bottom components with the 'x_2 =>' label. 7. Directly beneath each column vector, place red #CC0000 text: 'y_1 = 10' under X_1, 'y_2 = 15' under X_2, 'y_3 = 13' under X_3, 'y_4 = 12' under X_4. 8. To the right of the four training vectors, still inside the panel, place the green #009900 bold-italic label 'Predict'. 9. To the right of 'Predict', place the blue #0000CC query column vector X = (7 over 3) with parentheses, and directly beneath it the red #CC0000 text 'y = ? ? ?'. 10. In the top-right band (~68%-92% of slide width, ~17%-35% of slide height), draw the upper of two stacked formula boxes: white #FFFFFF fill with a red #CC0000 border, containing the bold black equation 'W = (X^T X)^{-1} X^T Y' with the symbols W and Y emphasized in red #CC0000. 11. Directly below the upper box, draw the lower formula box: white #FFFFFF fill with a blue #0000CC border, containing the bold black equation 'y = W^T X'. 12. In the top-right corner of the slide, draw a small yellow #FFFF99 filled circle with a thin dark #000000 outline, containing the black #000000 slide number '28'. 13. Leave the bottom ~65% of the slide as empty #F0F0F0 background with no content. 14. Omit the small gray #999999 '+' crosshair at left-center (~35% height) when recreating the slide: the source marks it as a likely laser-pointer/cursor artifact, not slide content (include it only if an exact video-frame reproduction is required).",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Confirmed verbatim_text.bullets is genuinely empty (the slide contains no bullet-list text); all 16 verbatim strings are captured as 2 labels and 14 equations, so no bullets were fabricated to fill the field.",
+      "Kept subtitle_or_header null because no subtitle or section header exists on the slide (only the main title 'Regression Example').",
+      "Added a sixth layout region 'slide frame' (full-slide perimeter, thin dark-red #990000 border) so layout.regions covers the full-slide border visual element that was previously described only in layout.arrangement.",
+      "Added the black row labels 'x_1 =>' and 'x_2 =>' to the 'data panel' region content so every verbatim string is covered by a layout region.",
+      "Extended the colors object with panel_fill #F2F2F2, formula_box_fill #FFFFFF, and crosshair_gray #999999 so every hex used in visual_elements is listed in colors.",
+      "Harmonized the empty-area extent: layout.arrangement said 'lower two-thirds' while the region said 'bottom ~65%'; standardized both to the bottom ~65%.",
+      "Standardized the prediction prompt in the data panel region to the exact verbatim string 'y = ? ? ?' (was written 'y=???').",
+      "Rewrote recreation_brief as a 14-step ordered checklist with one placement per step, exact verbatim strings, hex colors, shape types, and percentage position bands (title ~5-15% height; panel ~5-65% width x ~15-35% height; formula boxes ~68-92% width x ~17-35% height).",
+      "Added previously missing details to the brief: the yellow badge's thin dark #000000 outline, the red emphasis on W and Y in the first formula box, and explicit instructions for handling the gray crosshair artifact."
+    ],
+    "uncertain_items": [
+      "Exact treatment of W and Y in the first formula box: the source says 'underlined/highlighted in red' without specifying underline versus highlight.",
+      "Exact hex of the data panel's thin gray border: not captured (described only as 'gray'); the brief instructs a thin gray border without a hex.",
+      "Nature of the gray #999999 '+' crosshair at left-center (~35% height): the source marks it as a likely laser-pointer/cursor artifact rather than slide content.",
+      "Absolute font sizes and box dimensions: only relative emphasis (large bold title, small slide number) and position bands are captured; no point sizes or pixel dimensions are available."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_028.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 28,
+      "image": "slide_028.jpg"
+    },
+    "elapsed_s": 36.6,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 547.7
+  }
+}
