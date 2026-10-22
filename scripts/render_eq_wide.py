@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """render_eq_wide.py — one-off variant of the CERTIFIED helper
-videos/ml-intro/recreated_pptx/qa/scratch_math/render_eq.py for WIDE equations.
+scripts/render_eq.py for WIDE equations.
 
 Why this exists (slide-042 math rework, 2026-10-10): the certified helper renders
 on a 10in-wide (6000px @600dpi) canvas with a baseline probe 'x' at x=0.15

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-13_validate_slides.py — Per slide: validate the vision analysis with glm-5.3 (text-only).
+13_validate_slides.py — Per slide: validate the vision analysis with the text model (text-only).
 
-glm-5.3 receives the extracted analysis JSON and checks it for:
+The validation model receives the extracted analysis JSON and checks it for:
   - required fields present and non-empty
   - internal consistency (title matches verbatim text, layout regions cover elements)
   - precision (no vague quantifiers like "several"/"some" where counts are needed)
@@ -13,7 +13,7 @@ It returns a corrected FINAL JSON (same schema + "validation" block). Output:
 Environment:
     IR_BASE_URL  (default http://localhost:17844/v1 — the local IronRouter dist)
     IR_API_KEY   (default: read from <project>/.analyze-image-key)
-    IR_TEXT_MODEL (default "glm-5.3")
+    IR_TEXT_MODEL (default "validate_slides" — founder-created IronRouter model, 2026-10-21)
 
 Usage:
     python3 13_validate_slides.py <analysis_dir> [--slides 10]
@@ -87,7 +87,7 @@ def main() -> None:
     parser.add_argument("--slides", type=int, default=10)
     parser.add_argument("--from", dest="from_slide", type=int, default=1)
     parser.add_argument("--to", dest="to_slide", type=int, default=None)
-    parser.add_argument("--model", default=os.environ.get("IR_TEXT_MODEL", "glm-5.3"))
+    parser.add_argument("--model", default=os.environ.get("IR_TEXT_MODEL", "validate_slides"))
     args = parser.parse_args()
 
     base_url = os.environ.get("IR_BASE_URL", "http://localhost:17844/v1")
@@ -127,7 +127,7 @@ def main() -> None:
             resp = client.chat.completions.create(
                 model=args.model,
                 messages=[{"role": "user", "content": VALIDATION_PROMPT + json.dumps(raw, indent=1)}],
-                max_tokens=int(os.environ.get("IR_MAX_TOKENS", "16000")),  # raise via env when glm spends the whole budget thinking (AGENTS.md fact 2)
+                max_tokens=int(os.environ.get("IR_MAX_TOKENS", "16000")),  # raise via env when the model spends the whole budget thinking (AGENTS.md fact 2)
                 temperature=0.1,
                 stream=True,  # streaming avoids the upstream gateway's 60s non-streaming cut
             )
@@ -139,8 +139,10 @@ def main() -> None:
             parsed["_meta"] = raw.get("_meta", {})
             parsed["_meta"]["validated_by"] = args.model
             parsed["_meta"]["validation_elapsed_s"] = round(time.time() - t0, 1)
-            with open(out_file, "w") as f:
+            tmp_out = out_file + ".tmp"
+            with open(tmp_out, "w") as f:
                 json.dump(parsed, f, indent=2)
+            os.replace(tmp_out, out_file)  # atomic bank: a kill mid-write must never leave a truncated "final"
             v = parsed.get("validation", {})
             print(f"  -> {os.path.basename(out_file)} verdict={v.get('verdict')} "
                   f"score={v.get('recreatability_score_1_to_10')} ({time.time()-t0:.0f}s)")

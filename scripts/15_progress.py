@@ -63,9 +63,10 @@ import sqlite3
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# Multi-video layout: each video gets its own namespace under videos/<VIDEO>/.
+# Multi-video layout: each video gets its own namespace under videos/<course>/<lecture>/
+# (nested since 2026-10-16; a slash-containing VIDEO id resolves correctly via os.path.join).
 # VIDEO selects the namespace (env var, so parallel videos never collide).
-VIDEO = os.environ.get("VIDEO", "ml-intro")
+VIDEO = os.environ.get("VIDEO", "machine-learning/01_ml-intro")
 VROOT = os.path.join(ROOT, "videos", VIDEO)
 DB = os.path.join(VROOT, "slides_progress.db")
 IDX = os.path.join(VROOT, "unique_slides", "slides_index.json")

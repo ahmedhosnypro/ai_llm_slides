@@ -23,7 +23,7 @@ done
 remaining=$(count_missing)
 echo "[stage2b] gap re-run complete: $remaining still missing after 3 rounds" >> analysis/run_12b.log
 
-# Validation pass (glm-5.3, text-only) over all slides with raw JSON.
+# Validation pass (validate_slides model, text-only) over all slides with raw JSON.
 python3 scripts/13_validate_slides.py analysis --slides 104 >> analysis/run_13b.log 2>&1
 echo "[stage2b] script 13 exited with $?" >> analysis/run_13b.log
 

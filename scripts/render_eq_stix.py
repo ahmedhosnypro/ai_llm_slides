@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Thin wrapper over the CERTIFIED qa/scratch_math/render_eq.py (unchanged) that renders
+"""Thin wrapper over the CERTIFIED scripts/render_eq.py (unchanged) that renders
 with matplotlib's STIX serif mathtext fontset — slide 054's original equation is italic
 SERIF and STIX matches both the look and the measured ink proportions far better than
 the default DejaVu sans (founder alignment feedback 2026-10-10; see
@@ -16,7 +16,7 @@ matplotlib.rcParams["mathtext.fontset"] = "stix"  # serif — matches original i
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 spec = importlib.util.spec_from_file_location(
-    "render_eq", os.path.join(HERE, "..", "scratch_math", "render_eq.py"))
+    "render_eq", os.path.join(HERE, "..", "..", "..", "..", "scripts", "render_eq.py"))
 mod = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mod)  # __name__ != "__main__ -> CLI block skipped
 

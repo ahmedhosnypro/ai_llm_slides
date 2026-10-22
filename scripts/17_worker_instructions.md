@@ -6,11 +6,12 @@ autonomously — never ask questions; if blocked, record `last_error` in the DB 
 
 Throughout, substitute your slide id for `N` and its zero-padded form for `NNN`
 (e.g. N=7, NNN=007). Project root: `/home/ahmed/Projects/ai_llm_slides`.
-**Multi-video layout:** all data lives under `videos/<VIDEO>/` (your dispatch tells you
-the video; currently `ml-intro`). Your paths are therefore
+**Multi-video layout:** all data lives under `videos/<course>/<lecture>/` (your dispatch
+tells you the video; VIDEO ids are nested, e.g. `machine-learning/01_ml-intro`). Your
+paths are therefore
 `videos/<VIDEO>/unique_slides/slide_NNN.jpg` (original), `videos/<VIDEO>/analysis/` (spec),
 `videos/<VIDEO>/recreated_pptx/` (build + qa + pptx). Run progress-DB commands with
-`VIDEO=<VIDEO>` set, e.g. `VIDEO=ml-intro python3 scripts/15_progress.py set N field value`.
+`VIDEO=<VIDEO>` set, e.g. `VIDEO=machine-learning/01_ml-intro python3 scripts/15_progress.py set N field value`.
 
 ## HARD STOP: human review of unique frames (founder directive 2026-10-10 — non-negotiable)
 
@@ -30,7 +31,7 @@ Some decks (first: `deep-learning/001_transformers_part1`) carry a founder-provi
 dependency graph: a dependent slide is its parent's composition + a delta (extra /
 removed / replaced blocks). Canonical edges: `videos/<VIDEO>/slide_dependencies.json`
 (applied to the DB's `depends_on` on register). Full law:
-`.agents/skills/slide-recreation/references/dependencies.md`. Worker rules:
+`~/.agents/skills/slide-recreation/references/dependencies.md`. Worker rules:
 
 1. **Before building**, run `VIDEO=<VIDEO> python3 scripts/15_progress.py deps`
    (dispatchers: `buildable` prints the exact dispatch list):
@@ -157,7 +158,8 @@ graph image is embedded IN this same pptx; if it contains equations, the OMML wr
 applied to this same pptx post-certification. Superseded/intermediate builds live only
 in QA evidence dirs, never as parallel deliverables.
 
-Usage contract (validated in `videos/ml-intro/recreated_pptx/qa/math/` — read
+Usage contract (validated in the since-removed `qa/math/` tree of
+`videos/machine-learning/01_ml-intro/recreated_pptx/` — read
 `scratch_validation_report.md` and use `render_eq.py` + `scratch_build.js` as the pattern):
 1. Generate per equation: `python3 scripts/render_eq.py '<mathtext>' <out.png> <fontsize_pt> '<hex>'` — 600 dpi, tight bbox, transparent bg; it prints a JSON sidecar with exact pixel width/height and baseline fraction. Store generated PNGs under `recreated_pptx/build/assets/` (or qa), never delete them.
 2. Embed at EXACT size: `w = px/600` inches (and `h = py/600`) — NEVER rescale the image
@@ -187,7 +189,7 @@ Usage contract (validated in `videos/ml-intro/recreated_pptx/qa/math/` — read
 
 Before ANY judge dispatch, run ALL of these on your 150 dpi render (2001x1125; 1 px @150dpi = 1/200 in). A judge PASS does NOT waive any of them — founder feedback overrides judge PASS. If any check fails, fix and re-render before judging. Bank each check's numbers in your QA dir (`selfcheck_attempt_K.py` + printed output).
 
-1. **REUSABLE PATTERNS**: read `.agents/skills/slide-recreation/patterns/index.json` FIRST (the example-script library: one runnable script per pattern, laws in the comments; `references/patterns.md` is the pointer doc). If your slide hits a situation a pattern already solves, use the pattern — do not improvise a variant. When your fix produces a NEW confirmed-working pattern, add it to the library (new subdir + runnable example + index.json entry) and bank the slide story in the skill memory lessons.
+1. **REUSABLE PATTERNS**: read `~/.agents/skills/slide-recreation/references/patterns/index.json` FIRST (the example-script library: one runnable script per pattern, laws in the comments; `references/patterns.md` is the pointer doc). If your slide hits a situation a pattern already solves, use the pattern — do not improvise a variant. When your fix produces a NEW confirmed-working pattern, report it to the owner with the slide story (new subdir + runnable example + index.json entry) for inclusion in the published skill — never edit the installed skill files yourself.
 2. **FRAME CONTAINMENT (PIL)**: for every inner frame/panel on the slide, PIL-measure the ink bbox of the content assigned to it and assert the ink sits fully inside the frame edges (no ink on or beyond the boundary). Include the house frame: content ink must not cross x<0.15in / x>13.18in / y<0.15in / y>7.35in equivalents at 150 dpi.
 3. **EQUATIONS EXIST**: if the original has equations, assert the equation regions in YOUR render contain ink (nonzero ink pixels in the measured region). An empty equation box is a BLOCKER — never judge with one.
 4. **DELIMITER GEOMETRY**: for every multi-line parenthesized/bracketed block, PIL-measure the delimiter strokes' vertical extent vs the enclosed text lines' extent (must cover ALL lines, topmost to bottommost) and the horizontal clearance between delimiter stroke and enclosed text (strokes must not sit on text).
@@ -210,7 +212,7 @@ Milestones: `gen_status=building` (start) → `judging` (each judge dispatch) �
 
 ## Build (attempt 1)
 
-1. Read the spec JSON fully. Read `scripts/14_build_slide_007_pptx.js` as the working
+1. Read the spec JSON fully. Read `scripts/example_build_slide_007.js` as the working
    pptxgenjs pattern example.
 2. Write `videos/<VIDEO>/recreated_pptx/build/slide_NNN.js` (mkdir -p `recreated_pptx/build` first) using
    pptxgenjs:
