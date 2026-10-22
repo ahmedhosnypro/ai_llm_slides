@@ -96,3 +96,27 @@ for recreation, source wins for understanding; disagreements are recorded in the
 slide's SOURCES.md. `[?]` markers are removed only with a confirming URL.
 
 ## Close-out: slide 001 placeholder cover — FOUNDER SIGN-OFF recorded 2026-10-13 ("slide 1 signed off"). Row 1 in certified state per merge RUNBOOK caveat 4 (sign-off + house_chrome_check PASS evidence at recreated_pptx/qa/slide001/; deliverable md5 45edefe7d3b80df70217373a4965c0f6). Final merge now gated only on slides 016 + 057 certifying.
+
+## DECK CLOSED 2026-10-13 ~05:20 — 60/60 CERTIFIED, FINAL DECK SHIPPED
+
+- **Deliverable**: `recreated_pptx/002_transformers_part2_final.pptx` (3,400,854 bytes,
+  md5 `8e5ed03b037c0961b64e45c617bd474a`, recorded in `recreated_pptx/002_transformers_part2_final.pptx.md5`).
+  Merge: LIVE-DB certified set (60 slides) + skeleton byte-check (15 parts) + rel
+  resolution (430 parts) + byte-verification (all slide XML/media/notes verbatim).
+  Gate: `scratch/merge_gate_002/gate_report.txt` — **PASS — 0/60 mismatched pages,
+  merge is lossless** (LO one-session render, 150 dpi, PIL diff; run 2026-10-13T05:20).
+- **Last two slides**: 057 certified judge attempt-3 (composition = 049 stacked-encoder
+  restyled — 57←49 re-anchor evidenced, pending founder ratification of the DB edge);
+  016 certified judge attempt-3 via the two-builder collision contract (foreign
+  builder's build certified then OVERRIDDEN — its four measured divergences were
+  visible in its certified pixels; watcher filed `qa/slide016/OBJECTION_divergence.md`,
+  fixed all four under the session claim, re-certified. Foreign attempt-1 preserved at
+  `qa/slide016/foreign_attempt1_overridden.pptx` + `foreign_build_attempt1.js`).
+- **Single-version normalization at ship**: 016's certified build was named
+  `slide_016_recreated_r2.pptx` during the collision; the plain-named deliverable now
+  holds the certified bytes (md5 5cd47b2b79908eb8d221be08c012c07d), `build/slide_016.js`
+  is the certified builder with ship-name OUT (note in-file), and the superseded
+  variant lives only in `qa/slide016/`. DB pptx_path re-bound accordingly.
+- Row-regression incidents (s5/s46/22:52 batch) were repaired from disk evidence;
+  final DB re-verified 60/60 (`gen_status='passed' AND visual_check='PASS'`) at merge
+  time by the LIVE-DB merge itself.

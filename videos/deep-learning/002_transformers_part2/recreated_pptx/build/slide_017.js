@@ -50,6 +50,24 @@
 //      retry2 contradicted; PIL decides for the frame). Evidence:
 //      scratch/slide017/swoosh_delta_evidence.md + swoosh_probe_outputs.txt.
 //
+//   7. F10-CASCADE ALIGNMENT PASS (casc-f10-002-17-20261014, attempt 3): after the
+//      parent's F10 rework (component md5 c8b643db...), the 13 inherited blocks pull
+//      all parent fixes automatically. Two slide-local redraws still carried
+//      pre-F10 copies of parent internals and were aligned to the parent's
+//      certified treatment (all edits in THIS file only; parent untouched):
+//      ff_right D4 — old diagonal node->Sigma fans removed (they collided with the
+//        reworked Sigma box: 68 red px inside 394..454 x 289..323) and replaced by
+//        the D4 wiring measured on THIS frame: per-row leftward arrowhead into the
+//        W_v face (head x502, shaft ink x538..557), Sigma feed at (440,323..332),
+//        bottom node = circled star;
+//      ff_left C5/C6 — fan spokes get end-arrowheads at the circles; "Dot/Product"
+//        label on two lines. NOT changed (visually inert: the opaque tan box /
+//        W_q box occlude both variants identically to the certified parent):
+//        C4 arrow-to-rim length, C7 q-feed tail length. NOT changed (recorded
+//        suspects / certified choices): C3 cell treatment (gold-panel zone measured
+//        by the attempt-2 worker), C1 X/K label order (low-confidence zoomed read
+//        says THIS frame keeps X1/K1 top-down), gold-panel widths, swoosh family.
+//
 // FRAME->SLIDE MAPPING (scratch/slide017/fit_mapping.py, grid-search against the parent's
 // certified 150dpi render; verified on four chrome landmarks: left border 58, bottom
 // stroke 517, badge center (875.8,70.5), panel top 46):
@@ -167,27 +185,44 @@ function drawFfLeft() {
     text(slide, idxRuns("K", i + 1, C.brick, 6), {
       x: px(177), y: px(yc - 20), w: px(16), h: px(10), align: "left", valign: "middle",
     });
-    slide.addShape(pptx.ShapeType.line, {
-      x: px(186), y: px(yc), w: px(9), h: 0,
-      line: { color: C.brick, width: 1, endArrowType: "triangle" },
-    });
   }
   // tan Dot Product box x195..253 y301..441 + label + circles + q1 arrow (parent geom)
   slide.addShape(pptx.ShapeType.rect, {
     x: px(195), y: px(301), w: px(58), h: px(140),
     fill: { color: C.tan }, line: { color: "8A6A48", width: 1 },
   });
-  text(slide, "Dot Product", {
+  // F10-cascade C6: "Dot / Product" on TWO centered lines (parent-certified fix;
+  // frames identical in this zone; explicit lineSpacing per the LO/PowerPoint law).
+  text(slide, [
+    { text: "Dot", options: { breakLine: true } },
+    { text: "Product", options: {} },
+  ], {
     x: px(195), y: px(303), w: px(58), h: px(14), align: "center", valign: "middle",
-    bold: true, fontSize: 6.5, color: "5C2E12",
+    bold: true, fontSize: 6.5, color: "5C2E12", lineSpacing: 7,
   });
+  // F10-cascade C4 refresh (judge-flagged child delta, midcols attempt-3 finding 6):
+  // red K arrows ENTER the tan panel, heads TERMINATING at the circles' left rims —
+  // the parent's certified C4 geometry (186 -> circX-5). Drawn AFTER the tan box so
+  // the penetration is visible; the parent's own z-order (C4 before the tan rect)
+  // hides its shafts — latent parent defect recorded for the F10 ledger, parent file
+  // untouched. Frame evidence: 001:43 frame ink penetrates to x223/229 (rows 1-2);
+  // 002:17 frame thin-line ink to x198 + circle-rim clusters (JPEG-compressed).
+  const c4circ = [238, 226, 216, 208];
+  for (let i = 0; i < 4; i++) {
+    slide.addShape(pptx.ShapeType.line, {
+      x: px(186), y: px(335 + 28 * i), w: px(c4circ[i] - 5 - 186), h: 0,
+      line: { color: C.brick, width: 1, endArrowType: "triangle" },
+    });
+  }
   const circles = [
     { x: 208, y: 419 }, { x: 216, y: 391 }, { x: 226, y: 363 }, { x: 238, y: 335 },
   ];
   for (const c of circles) {
     slide.addShape(pptx.ShapeType.line, {
       x: px(224), y: px(438), w: px(c.x - 224), h: px(c.y + 4 - 438),
-      line: { color: C.darkred, width: 0.9 },
+      // F10-cascade C5: small red arrowheads AT the circles (parent-certified fix;
+      // frames identical — the pre-F10 copy had bare spokes)
+      line: { color: C.darkred, width: 0.9, endArrowType: "triangle" },
     });
     slide.addShape(pptx.ShapeType.ellipse, {
       x: px(c.x - 5), y: px(c.y - 5), w: px(10), h: px(10),
@@ -214,13 +249,22 @@ function drawFfRight() {
       x: px(432), y: px(y - 7.5), w: px(15), h: px(15),
       fill: { color: "FCE8E8" }, line: { color: "CC2222", width: 1.25 },
     });
-    text(slide, "\u00D7", {
+    // F10-cascade D4: the BOTTOM node is a circled STAR/asterisk (parent-certified
+    // treatment; frames identical in this zone — pre-F10 copy drew x4)
+    text(slide, i === 3 ? "*" : "\u00D7", {
       x: px(432), y: px(y - 7.5), w: px(15), h: px(15), align: "center", valign: "middle",
-      bold: true, fontSize: 8, color: "CC2222",
+      bold: true, fontSize: 9, color: "CC2222",
     });
-    // thin red arrow node -> Sigma box right edge (parent geometry)
+    // F10-cascade D4 (collision fix, measured): the pre-F10 parent drew diagonal
+    // node->Sigma fans here; the reworked Sigma box (394..454 x 289..323) moved ONTO
+    // their heads (PIL on render_3: 68 red px inside the Sigma box interior; parent
+    // render_4: 0). Parent-certified replacement per DEFECTS.md D4 + THIS frame's
+    // measured ink: per-row red LEFTWARD arrowhead INTO the W_v box left face
+    // (head x502 = THIS frame's W_v face; tail x558 = X-cells box edge; the gold
+    // panel + boxes drawn below cover the shaft, same occlusion as the parent).
+    // Frame ink on slide_017.jpg: head zone x494..502 + shaft x538..557, all 4 rows.
     slide.addShape(pptx.ShapeType.line, {
-      x: px(418), y: px(316 + i * 4), w: px(10), h: px(y - 7.5 - (316 + i * 4)),
+      x: px(502), y: px(y), w: px(56), h: 0,
       line: { color: C.red, width: 0.9, beginArrowType: "triangle" },
     });
     // V label shifted right (measured ink x~466..479); subscripts DESCENDING top->bottom
@@ -235,6 +279,12 @@ function drawFfRight() {
         fill: { color: barFills[j] }, line: { color: "B8B8B8", width: 0.5 },
       });
     }
+  });
+  // F10-cascade D4: short vertical up-arrow feeding the inherited Sigma box's bottom
+  // (head at y323; parent-certified geometry; frame ink x436..444 y321..334 measured)
+  slide.addShape(pptx.ShapeType.line, {
+    x: px(440), y: px(323), w: 0, h: px(9),
+    line: { color: C.red, width: 1, beginArrowType: "triangle" },
   });
   // gold column panel + four yellow-green W_v^(0) boxes (measured x499..537 / x502..534)
   for (let i = 0; i < 4; i++) {

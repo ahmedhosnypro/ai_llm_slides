@@ -36,6 +36,10 @@
 // 2D math (stacked K·q/sqrt(d) fraction: mathtext PNGs at exact size + measured pink
 // bar; rotated pill labels as pre-rotated 600dpi PNGs); margin:0 + fontFace everywhere;
 // no '#' in hex; mouse cursor + letterbox bars omitted (ground rule (c)).
+//
+// FIX LANE fix-swoosh-015-20261014 (CASCADE_DELTA register, judge attempt 2): swoosh
+// asset re-traced from the frame (fix_m1..m9, scratch/slide015/), h4/h5 outContainers
+// + W-chip triads + "H" Heads seat re-measured and corrected below.
 
 const path = require("path");
 const parent = require("/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/001_transformers_part1/recreated_pptx/build/components/slide_043.js");
@@ -285,8 +289,12 @@ const xCells = [];
 outContainer(575, 233, 58, 122, [242, 268, 294, 322], null, xCells, "A0A385");
 outContainer(639, 213, 35, 131, [219, 247, 275, 302], null, xCells);
 outContainer(691, 208, 33, 119, [213, 240, 268, 296], null, xCells);
-outContainer(735, 182, 39, 117, [187, 215, 243, 271], null, xCells);
-outContainer(763, 144, 42, 122, [153, 181, 209, 236], null, xCells);
+// h4/h5 re-measured 2026-10-14 (fix_m7..m9 column/row dash runs): h4 right edge solid
+// frame x750-751 -> slide ~762, top dashes y163-165 -> ~172, bottom dashes y273-275 ->
+// ~287, left ~729.5; h5 left dashed frame x759-760 -> ~771.8, right solid x790-791 ->
+// ~803.5, top y146-147 -> ~152.8, bottom y254-255 -> ~266.9. Cell rows pitch 27.
+outContainer(729.5, 172, 32.5, 115, [177, 204, 231, 258], null, xCells);
+outContainer(771.8, 153, 32, 114, [160, 187, 214, 241], null, xCells);
 for (const [cx, cy, cw, idx] of xCells) {
   text(xRuns(idx, C.red, 5), { x: px(cx), y: px(cy), w: px(cw), h: px(12),
     align: "center", valign: "middle" });
@@ -321,8 +329,8 @@ const COLS = [
   { x: 608, tops: [377, 402, 422], n: 1 },
   { x: 656, tops: [355, 376, 396], n: 2 },
   { x: 699, tops: [333, 356, 378], n: 3 },
-  { x: 744, tops: [320, 344, 367], n: 4 },
-  { x: 785, tops: [297, 321, 344], n: 5 },
+  { x: 742, tops: [314, 334, 355], n: 4 },
+  { x: 784, tops: [296, 317, 337], n: 5 },
 ];
 const chipBorder = { q: "CC2222", k: "2E8B57", v: "2F55C8" };
 for (const c of COLS) {
@@ -357,8 +365,14 @@ line(427, 175, 21, 11, { color: C.brightgreen, width: 2.5, flipH: true, beginArr
 img("plane015.png", 110, 65, 335, 163);
 
 // ================= swoosh + "H" Heads label ====================================
+// swoosh015.png regenerated 2026-10-14 from the fix_m1/m4/m7 frame trace (tapered
+// 7.0->5.6 crimson ribbon, J-hook head tip (810.3,251.2) pointing down, U-curl tail
+// w/ small UP arrowhead tip (588.7,351.6)); same 295x165 canvas at (550,235) — the
+// img() line is unchanged and sibling 002:11 re-uses the fixed pixels as-is.
 img("swoosh015.png", 550, 235, 295, 165);
-text('"H" Heads', { x: px(778), y: px(262), w: px(72), h: px(30), align: "center",
+// label re-seated so the ink center matches the measured (820.7,274.7): box center
+// (785+36, 260+15) = (821, 275); sits just clear of the thin shaft under the hook arch.
+text('"H" Heads', { x: px(785), y: px(260), w: px(72), h: px(30), align: "center",
   valign: "middle", bold: true, italic: true, fontSize: 10, color: C.navy, rotate: 338 });
 
 // ================= query row ===================================================

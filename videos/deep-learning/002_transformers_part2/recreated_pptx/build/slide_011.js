@@ -256,9 +256,11 @@ NODES.forEach(([nx, ny], i) => {
 });
 
 // ================= output containers (h1..h5, 015-verified) =====================
-function outContainer(x, y, w, h, strips, cellW, xCell, borderColor) {
+function outContainer(x, y, w, h, strips, cellW, xCell, borderColor, connBelow) {
   rrect(x, y, w, h, "DFEAD2", { color: borderColor || "2E8B57", width: 0.75, dashType: "dash" }, 0.05);
-  const palette = ["F2DCD4", "E6E4F6", "D8DEC8", "F0E2EE"];
+  // fix-swoosh-011: sub-cell tints re-measured from frame (m_tint.py) — c0 pale
+  // beige-yellow ~FBFECC, c1 pale cream ~EBD7CC, c2 lavender ~ECE6F6, c3 pale rose ~DFCAD7
+  const palette = ["F6F8C8", "F0E2CE", "E2E0F4", "ECD6DE"];
   strips.forEach((sy, k) => {
     for (let j = 0; j < 4; j++) {
       const cw = (w - 10) / 4;
@@ -266,6 +268,14 @@ function outContainer(x, y, w, h, strips, cellW, xCell, borderColor) {
       if (j === 1) xCell.push([x + 5 + j * cw, sy, cw, k + 1]);
     }
   });
+  if (connBelow) {
+    // h5 connector UNBURIED: frame mark is an up-triangle BELOW the box bottom
+    // (frame cluster n=41: x 762-766, y 257-265 → slide apex (778,269), base y 277)
+    slide.addShape(pres.ShapeType.triangle, {
+      x: px(774.5), y: px(268.8), w: px(5.6), h: px(8.2), fill: { color: C.brightgreen },
+    });
+    return;
+  }
   const yTop = y + h - 8, yBot = y + h - 1;
   rect(x + w / 2 - 0.6, yTop + 4, 1.25, yBot - yTop - 4, C.brightgreen);
   slide.addShape(pres.ShapeType.triangle, {
@@ -277,7 +287,7 @@ outContainer(575, 233, 58, 122, [242, 268, 294, 322], null, xCells, "A0A385");
 outContainer(639, 213, 35, 131, [219, 247, 275, 302], null, xCells);
 outContainer(691, 208, 33, 119, [213, 240, 268, 296], null, xCells);
 outContainer(735, 182, 39, 117, [187, 215, 243, 271], null, xCells);
-outContainer(763, 144, 42, 122, [153, 181, 209, 236], null, xCells);
+outContainer(763, 144, 42, 122, [153, 181, 209, 236], null, xCells, null, true);
 for (const [cx, cy, cw, idx] of xCells) {
   text(xRuns(idx, C.red, 5), { x: px(cx), y: px(cy), w: px(cw), h: px(12),
     align: "center", valign: "middle" });
@@ -295,9 +305,11 @@ function pill(x, y, w, h, label, txtColor) {
 }
 const SIMS = [[236, 186, 46, 18], [282, 165, 44, 16], [330, 148, 42, 14], [373, 128, 41, 14], [417, 109, 41, 14]];
 SIMS.forEach(([x, y, w, h]) => pill(x, y, w, h, "Similarity", "9A9A9A"));
-pill(349, 186, 53, 18, "Probabilities", "4A5AA0");
 pill(396, 167, 53, 18, "Probabilities", "4A5AA0");
-const WSS = [[440, 186, 76, 18], [505, 168, 67, 16], [547, 148, 69, 15], [592, 128, 69, 15], [638, 108, 62, 15]];
+// h1-level pills (Probabilities @186, Weighted SUM @186) are drawn AFTER the chain
+// cascade below — judge attempt 4: the original shows them IN FRONT of the beam
+// terminus and the orange base rect, fully legible (z-order fix, fix-swoosh-011).
+const WSS = [[505, 168, 67, 16], [547, 148, 69, 15], [592, 128, 69, 15], [638, 108, 62, 15]];
 WSS.forEach(([x, y, w, h]) => pill(x, y, w, h, "Weighted SUM", "4A5AA0"));
 // ================= top zone: chain cascade (z14/z9 reads + measured boxes) ======
 // drawn AFTER the pills (the ribbon overlays them); h-ovals drawn later still.
@@ -331,8 +343,13 @@ chainBox(546, 109, 73, 21, { color: "FFE98C", transparency: 30 }, "C8901C",
 // olive chain box (measured x458..544 y132..157)
 chainBox(458, 132, 86, 26, C.chainOlive, "6B8E23", null);
 upArrowOrange(520, 158, 180);
-// dark-orange chain box over the h1 card top (measured x378..570 y184..205)
-chainBox(378, 184, 192, 21, C.chainOrange, "6B8E23", null);
+// dark-orange chain box over the h1 card top — left edge narrowed 378->400 per the
+// frame's measured orange band (judge attempt 4: rect was wider than the original's
+// and extended under both h1-level pills)
+chainBox(400, 184, 170, 21, C.chainOrange, "6B8E23", null);
+// h1-level pills IN FRONT of the beam terminus + base rect (original z-order)
+pill(349, 186, 53, 18, "Probabilities", "4A5AA0");
+pill(440, 186, 76, 18, "Weighted SUM", "4A5AA0");
 
 const OVALS = [[596, 191, 31, 15, 1], [650, 169, 30, 15, 2], [690, 146, 31, 15, 3],
   [734, 128, 31, 14, 4], [778, 109, 30, 15, 5]];
@@ -365,8 +382,11 @@ for (const c of COLS) {
   });
 }
 
-// ================= swoosh + label (chroma-clean vs 015; asset reused) ===========
-img("swoosh015.png", 550, 235, 295, 165);
+// ================= swoosh + label ================================================
+// fix-swoosh-011 (CASCADE_DELTA register E): frame-traced under-sweeping arc with
+// hooked tip (assets/swoosh011.png, gen_swoosh011.py; IoU 0.665 vs frame corridor)
+// replaces the straight swoosh015.png chord that cut h=2/3/4 boxes. Seat 578,238.
+img("swoosh011.png", 578, 238, 252, 142);
 text('"H" Heads', { x: px(778), y: px(262), w: px(72), h: px(30), align: "center",
   valign: "middle", bold: true, italic: true, fontSize: 10, color: C.navy, rotate: 338 });
 
