@@ -1,0 +1,142 @@
+{
+  "slide_title": "Minimization of Loss function to obtain BEST model parameters",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "5",
+      "Remember",
+      "X is a matrix, W is a vector, XW is a vector",
+      "Remember",
+      "Get Best W that minimizes the loss"
+    ],
+    "equations": [
+      "Loss = 1/2 (Y - \u0176)^T (Y - \u0176) = 1/2 (Y - XW)^T (Y - XW)",
+      "Loss = 1/2 [Y^T Y + (XW)^T (XW) - Y^T (XW) - (XW)^T Y]",
+      "Loss = 1/2 [Y^T Y + (XW)^T (XW) - 2 (XW)^T Y]",
+      "\u2202Loss/\u2202W = 0",
+      "\u2202Loss/\u2202W = 0 = 1/2 [(XW)^T (X) + (X)^T (XW) - 2 (X)^T Y]",
+      "\u2202Loss/\u2202W = 0 = 1/2 [2 X^T XW - 2 X^T Y] \u2192 (X^T X)W = X^T Y \u2192 W = (X^T X)^(-1) X^T Y",
+      "X^T (XW) = (XW)^T X",
+      "X^T (XW) = (XW)^T X"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title top-left with yellow slide-number circle at top-right. Three horizontal content bands stacked vertically: top band splits into a light-yellow equation box on the left and a light-blue Remember box on the right; middle band is a full-width pink/salmon box; bottom band splits into a light-gray equation box on the left and a light-blue Remember box on the right.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top, left-aligned; slide number at far right",
+        "content": "Red bold title with BEST in blue; yellow circle with 5"
+      },
+      {
+        "name": "loss_equations",
+        "position": "upper-left, ~65% width",
+        "content": "Three Loss function expansion equations in a cream/yellow box"
+      },
+      {
+        "name": "remember_1",
+        "position": "upper-right, ~30% width",
+        "content": "Light-blue Remember box with matrix/vector facts and a transpose identity"
+      },
+      {
+        "name": "derivative_condition",
+        "position": "middle, full width",
+        "content": "Pink/salmon box containing the first-order condition and explanatory text"
+      },
+      {
+        "name": "derivative_equations",
+        "position": "lower-left, ~65% width",
+        "content": "Light-gray box with two derivative equations; final W formula is green-outlined and the W in (X^T X)W is underlined"
+      },
+      {
+        "name": "remember_2",
+        "position": "lower-right, ~30% width",
+        "content": "Light-blue Remember box with a transpose identity"
+      }
+    ],
+    "hierarchy": "Title dominates in large bold red with blue BEST. Equations are secondary in black math notation. Remember boxes are tertiary with small red labels. The pink band provides a visual break. The green outline around the final W formula draws the eye to the closed-form solution."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Cream/light-yellow rounded rectangle containing three Loss equations stacked vertically",
+      "colors": [
+        "#FFFFCC"
+      ],
+      "position": "upper-left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Light-blue rectangle with red bold 'Remember' header, two lines of explanatory text, and one equation",
+      "colors": [
+        "#CCFFFF"
+      ],
+      "position": "upper-right"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Light-pink/salmon full-width rectangle containing the derivative-equals-zero condition and the 'Get Best W' annotation",
+      "colors": [
+        "#FFCCCC"
+      ],
+      "position": "middle"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Very-light-gray rectangle containing two derivative equations; the final result W = (X^T X)^(-1) X^T Y is enclosed in a green outline, and the W in (X^T X)W is underlined",
+      "colors": [
+        "#F0F0F0",
+        "#00AA00"
+      ],
+      "position": "lower-left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Light-blue rectangle with red bold 'Remember' header and one equation",
+      "colors": [
+        "#CCFFFF"
+      ],
+      "position": "lower-right"
+    },
+    {
+      "type": "other",
+      "description": "Yellow filled circle with black numeral 5",
+      "colors": [
+        "#FFFF00"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#FF0000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000FF",
+      "#FFFF00",
+      "#FFCCCC",
+      "#CCFFFF",
+      "#00AA00"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title is bold and large; 'BEST' is bold blue while the rest of the title is bold red. Equations use standard math notation with superscript T for transpose and \u0176 for predicted Y. 'Remember' labels are bold red. Body/equation text is black. The final W formula is emphasized with a green outline; the W in (X^T X)W is underlined.",
+  "animation_state": "No build animation visible; all elements appear simultaneously on the slide.",
+  "recreation_brief": "1. Set the slide background to white. 2. Place the title at the top-left: 'Minimization of Loss function to obtain BEST model parameters'. Style 'Minimization of Loss function to obtain' and 'model parameters' in bold red; style 'BEST' in bold blue. 3. Add a yellow filled circle at the top-right containing the black numeral '5'. 4. Add a cream (#FFFFCC) rounded rectangle in the upper-left (~65% width). Inside, add three black-text equations: 'Loss = 1/2 (Y - \u0176)^T (Y - \u0176) = 1/2 (Y - XW)^T (Y - XW)', 'Loss = 1/2 [Y^T Y + (XW)^T (XW) - Y^T (XW) - (XW)^T Y]', and 'Loss = 1/2 [Y^T Y + (XW)^T (XW) - 2 (XW)^T Y]'. 5. Add a light-blue (#CCFFFF) rectangle in the upper-right. Put 'Remember' in bold red at the top, then 'X is a matrix, W is a vector,' on one line, 'XW is a vector' on the next, and 'X^T (XW) = (XW)^T X' below. 6. Add a light-pink (#FFCCCC) rectangle spanning the full width in the middle. Place '\u2202Loss/\u2202W = 0' on the left and 'Get Best W that minimizes the loss' on the right (same line). 7. Add a very-light-gray (#F0F0F0) rectangle in the lower-left. Add two equations: '\u2202Loss/\u2202W = 0 = 1/2 [(XW)^T (X) + (X)^T (XW) - 2 (X)^T Y]' and '\u2202Loss/\u2202W = 0 = 1/2 [2 X^T XW - 2 X^T Y] \u2192 (X^T X)W = X^T Y \u2192 W = (X^T X)^(-1) X^T Y'. Underline the 'W' in '(X^T X)W'. Draw a green outline rectangle around 'W = (X^T X)^(-1) X^T Y'. 8. Add a light-blue (#CCFFFF) rectangle in the lower-right. Put 'Remember' in bold red, then 'X^T (XW) = (XW)^T X' below it.",
+  "_meta": {
+    "frame": "slide_005.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 5,
+      "image": "slide_005.jpg",
+      "kept_frame": "frame_00329.jpg",
+      "start_sec": 328,
+      "end_sec": 328,
+      "precuration_slide": 5,
+      "provenance": "founder-curated kept frame",
+      "_reconcile_md5_snapshot": "2f302b38bfdb219e050fc153ec3fb70b"
+    },
+    "elapsed_s": 282.5
+  }
+}

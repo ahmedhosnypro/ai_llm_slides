@@ -1,0 +1,224 @@
+{
+  "slide_title": "Perceptron Algorithm: Iteration 4 \u2014 Stop Iterations",
+  "subtitle_or_header": "Ugmented Vectors (From Top)",
+  "verbatim_text": {
+    "bullets": [
+      "Initial W = (4, \u22122, \u22122)\u1d40",
+      "Step \u03b7 = 2",
+      "Check classes of Z (matrix: Z1 Z1 Z1 / 0 0 7 / 0 6 2)",
+      "Iteration 4",
+      "No change in W",
+      "Stop Iterations",
+      "C1 positive \u2014 C2 negative \u2014 Zero is unaccepted"
+    ],
+    "labels": [
+      "Initial",
+      "Step",
+      "Check classes of",
+      "Ugmented Vectors (From Top)",
+      "Iteration 4",
+      "No change in W",
+      "Stop Iterations",
+      "+ve",
+      "46",
+      "C\u2081",
+      "C\u2082",
+      "C\u2081 positive",
+      "C\u2082 negative",
+      "Zero is unaccepted"
+    ],
+    "equations": [
+      "\\underline{W} = \\begin{pmatrix} 4 \\\\ -2 \\\\ -2 \\end{pmatrix}",
+      "\\eta = 2",
+      "\\underline{W} = \\begin{pmatrix} 14 \\\\ -4 \\\\ 0 \\end{pmatrix}",
+      "\\begin{pmatrix} x_1 & x_2 & x_3 & x_4 & x_5 & x_6 \\\\ 1 & 2 & 1 & 5 & 6 & 4 \\\\ 1 & 1 & 2 & 4 & 5 & 6 \\\\ 1 & 1 & 1 & 4 & 5 & 6 \\end{pmatrix}",
+      "\\begin{pmatrix} Z_1 & Z_1 & Z_1 \\\\ 0 & 0 & 7 \\\\ 0 & 6 & 2 \\end{pmatrix}",
+      "\\begin{pmatrix} x_1 & x_2 & x_3 & x_4 & x_5 & x_6 \\\\ 1 & 1 & 1 & 1 & 1 & 1 \\\\ 1 & 2 & 1 & 5 & 6 & 4 \\\\ 1 & 1 & 2 & 4 & 5 & 6 \\end{pmatrix}"
+    ]
+  },
+  "layout": {
+    "arrangement": "Top strip contains a data matrix with class labels, initial weight vector, step size, a Z-matrix, and a yellow final-weight box; a yellow slide-number circle sits at the far top-right. A small class-legend caption ('C1 positive / C2 negative / Zero is unaccepted') sits with the top data table. Middle-left holds an augmented-vectors matrix above a red 'Iteration 4' callout. Bottom-left holds a pink 'Stop Iterations' callout. The right half is occupied by a large red-bordered scatter plot showing the decision boundary and classified points.",
+    "regions": [
+      {
+        "name": "top data table",
+        "position": "top-left to top-center, roughly 5%-65% width",
+        "content": "Matrix with headers x1..x6, three data rows, and class labels C1 C1 C1 C2 C2 C2 beneath; adjacent text for Initial W, Step \u03b7=2, Check classes of, and a Z1 matrix"
+      },
+      {
+        "name": "class legend caption",
+        "position": "adjacent to the top data table (beneath its class-label row), roughly 5%-40% width",
+        "content": "Text 'C1 positive', 'C2 negative', 'Zero is unaccepted' with C1 blue, C2 red, Zero green"
+      },
+      {
+        "name": "final weight box",
+        "position": "top-right, roughly 80%-95% width",
+        "content": "Pale yellow rectangle containing column vector W = (14, -4, 0)\u1d40"
+      },
+      {
+        "name": "slide number",
+        "position": "top-right corner, roughly 95%-100% width",
+        "content": "Yellow circle with black number 46"
+      },
+      {
+        "name": "augmented vectors",
+        "position": "middle-left, roughly 5%-35% width",
+        "content": "Header 'Ugmented Vectors (From Top)' above a matrix whose first row is all 1s, followed by the original x and y rows, with C1/C2 labels below"
+      },
+      {
+        "name": "iteration callout",
+        "position": "middle-left below augmented matrix, roughly 5%-25% width",
+        "content": "Red-outlined box with red text 'Iteration 4'"
+      },
+      {
+        "name": "stop callout",
+        "position": "bottom-left, roughly 5%-30% width",
+        "content": "Pink/red filled box with black text 'No change in W' and red bold text 'Stop Iterations'"
+      },
+      {
+        "name": "scatter plot",
+        "position": "right side, middle to bottom, roughly 35%-100% width",
+        "content": "Red-bordered Cartesian plot with x-axis 0-8, y-axis 0-7, vertical red decision line at x=3, colored data markers, and a '+ve' arrow annotation"
+      }
+    ],
+    "hierarchy": "The scatter plot and the top matrix table dominate visually. The red 'Stop Iterations' box and red decision line are strong secondary focal points due to saturated red color. The yellow W box and slide-number circle provide high-contrast accents."
+  },
+  "visual_elements": [
+    {
+      "type": "table",
+      "description": "Matrix with column headers x1 x2 x3 x4 x5 x6; row 1: 1 2 1 5 6 4; row 2: 1 1 2 4 5 6; row 3: 1 1 1 4 5 6; column labels beneath in colored text: C1 C1 C1 C2 C2 C2",
+      "colors": [
+        "#000000",
+        "#0000FF",
+        "#FF0000"
+      ],
+      "position": "top-left"
+    },
+    {
+      "type": "text",
+      "description": "Class legend caption: 'C1 positive' (C1 blue), 'C2 negative' (C2 red), 'Zero is unaccepted' (Zero green), placed near the top data table",
+      "colors": [
+        "#0000FF",
+        "#FF0000",
+        "#008000",
+        "#000000"
+      ],
+      "position": "adjacent to top data table"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pale yellow rectangle containing column vector W = (14, -4, 0)\u1d40",
+      "colors": [
+        "#FFFF99",
+        "#000000"
+      ],
+      "position": "top-right"
+    },
+    {
+      "type": "table",
+      "description": "Matrix headed Z1 Z1 Z1 with rows 0 0 7 and 0 6 2",
+      "colors": [
+        "#000000"
+      ],
+      "position": "top-center-right"
+    },
+    {
+      "type": "table",
+      "description": "Augmented matrix headed x1..x6; row 1 all 1s; row 2: 1 2 1 5 6 4; row 3: 1 1 2 4 5 6; labels C1 C1 C1 C2 C2 C2 below",
+      "colors": [
+        "#000000",
+        "#0000FF",
+        "#FF0000"
+      ],
+      "position": "middle-left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Red-bordered box with red bold text 'Iteration 4'",
+      "colors": [
+        "#FF0000",
+        "#FFFFFF"
+      ],
+      "position": "middle-left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pink/red filled box with 'No change in W' (W underlined) in black and 'Stop Iterations' in red bold",
+      "colors": [
+        "#FFC0CB",
+        "#FF0000",
+        "#000000"
+      ],
+      "position": "bottom-left"
+    },
+    {
+      "type": "graph",
+      "description": "Scatter plot with white background and red border. X-axis ticks 0-8, y-axis ticks 0-7. Vertical red line at x=3. Blue square markers at (1,1), (1,2), (2,1). Red triangle markers at (3,2) and (7,6). Magenta diamond markers at (5,4), (6,5), (6,6). Label '+ve' in black with a left-pointing arrow near the top of the decision line.",
+      "colors": [
+        "#FFFFFF",
+        "#FF0000",
+        "#0000FF",
+        "#FF00FF",
+        "#000000"
+      ],
+      "position": "right side, middle to bottom"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#000000",
+    "body_text": "#000000",
+    "accents": [
+      "#FF0000",
+      "#0000FF",
+      "#FF00FF",
+      "#FFFF99",
+      "#FFC0CB",
+      "#008000"
+    ]
+  },
+  "typography_notes": "Sans-serif font throughout. Mathematical symbols and variables rendered in italic serif style. Headers and key terms are bold. 'Step \u03b7 = 2', 'Iteration 4', and 'Stop Iterations' are red and bold. 'Ugmented Vectors (From Top)' is black bold. Class labels C1/C2 are color-coded blue and red. The class-legend caption color-codes C1 blue, C2 red, and Zero green. The slide number is black on a yellow circle.",
+  "animation_state": "The slide appears complete and static, showing the terminal state of the perceptron algorithm after Iteration 4 where no weight change occurs and iterations stop. No partial build or reveal is evident.",
+  "recreation_brief": "1. Set the slide background to solid white (#FFFFFF). Do NOT add a slide title \u2014 the original slide displays no title text; the reconstructed title is for filing only. 2. Top-left (approx. 5%-40% width, top strip): build a data matrix table with header row 'x1 x2 x3 x4 x5 x6' (black, bold) and three data rows: [1 2 1 5 6 4], [1 1 2 4 5 6], [1 1 1 4 5 6] in black text. 3. Directly beneath those six columns, add class labels 'C1 C1 C1 C2 C2 C2' \u2014 render the three C1 labels blue (#0000FF) and the three C2 labels red (#FF0000). 4. Immediately below the class-label row, add the caption 'C1 positive   C2 negative   Zero is unaccepted': color 'C1' blue (#0000FF), 'C2' red (#FF0000), 'Zero' green (#008000), remaining words black (#000000). 5. To the right of the matrix (approx. 40%-55% width, top strip): add black text 'Initial W =' followed by the 3x1 column vector (4; \u22122; \u22122)\u1d40 in black. 6. Next to it (approx. 55%-65% width): add red (#FF0000) bold text 'Step \u03b7 = 2'. 7. Below the step text (top-center, approx. 40%-65% width): add black text 'Check classes of' followed by a small matrix with header row 'Z1 Z1 Z1' and two data rows [0 0 7] and [0 6 2], all in black. 8. Top-right (approx. 80%-95% width): draw a pale-yellow (#FFFF99) rectangle containing black text 'W =' and the 3x1 column vector (14; \u22124; 0)\u1d40. 9. Far top-right corner (approx. 95%-100% width): draw a yellow circle (about 0.6 inch diameter) with black bold number '46'. 10. Middle-left (approx. 5%-35% width): add the black bold section header 'Ugmented Vectors (From Top)' \u2014 keep this spelling verbatim. 11. Below that header: build the augmented matrix table with header 'x1 x2 x3 x4 x5 x6', row 1 all 1s [1 1 1 1 1 1], row 2 [1 2 1 5 6 4], row 3 [1 1 2 4 5 6], all black; beneath the columns add labels 'C1 C1 C1 C2 C2 C2' with C1 blue (#0000FF) and C2 red (#FF0000). 12. Below the augmented matrix (approx. 5%-25% width): draw a rectangle with white (#FFFFFF) fill and red (#FF0000) outline containing red (#FF0000) bold text 'Iteration 4'. 13. Bottom-left (approx. 5%-30% width): draw a pink (#FFC0CB) filled rectangle containing black text 'No change in W' with the W underlined, and on the next line red (#FF0000) bold text 'Stop Iterations'. 14. Right side (approx. 35%-100% width, middle to bottom): draw a large scatter plot with white (#FFFFFF) background, red (#FF0000) border, black axes with x-axis ticks 0-8 and y-axis ticks 0-7. 15. Inside the plot, draw a vertical red (#FF0000) line at x=3 spanning the full plot height (the decision boundary). 16. Plot 3 blue (#0000FF) square markers at coordinates (1,1), (1,2), and (2,1). 17. Plot 2 red (#FF0000) triangle markers at coordinates (3,2) and (7,6). 18. Plot 3 magenta (#FF00FF) diamond markers at coordinates (5,4), (6,5), and (6,6). 19. Near the top of the red decision line, add black text '+ve' with a left-pointing black arrow.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Filled null slide_title with reconstructed 'Perceptron Algorithm: Iteration 4 \u2014 Stop Iterations' derived from the Iteration 4 / Stop Iterations / weight-vector content; the original slide shows no title text.",
+      "Filled empty verbatim_text.bullets with 7 statements assembled from the labels and equations (Initial W, Step \u03b7=2, Check classes of Z, Iteration 4, No change in W, Stop Iterations, class legend).",
+      "Set subtitle_or_header to the on-slide section header 'Ugmented Vectors (From Top)'.",
+      "Corrected truncated label 'No change in' to 'No change in W' to match the stop-callout description in layout.regions and visual_elements.",
+      "Added missing layout region 'class legend caption' covering the labels 'C1 positive', 'C2 negative', 'Zero is unaccepted', which previously appeared only in verbatim_text and the brief.",
+      "Added a matching visual_elements entry (type: text) for the class legend caption so regions and visual_elements are mutually consistent.",
+      "Updated layout.arrangement and typography_notes to mention the class legend caption and its green 'Zero' coloring (green #008000 was listed in accents but previously unassigned).",
+      "Rewrote recreation_brief as a 19-step ordered checklist with explicit hex colors, percentage positions from layout.regions, exact marker counts (3 blue squares, 2 red triangles, 3 magenta diamonds), and an explicit instruction not to add a slide title."
+    ],
+    "uncertain_items": [
+      "'Ugmented Vectors (From Top)' kept verbatim; suspected OCR typo for 'Augmented Vectors (From Top)'.",
+      "Z-matrix header 'Z1 Z1 Z1' repeated three times kept verbatim; may actually be Z1 Z2 Z3.",
+      "Label 'Check classes of' appears truncated (no object named after it); kept verbatim.",
+      "Scatter marker coordinates do not fully match the data matrix: matrix columns imply C2 point (4,6) but the plot shows a diamond at (6,6); red triangles (3,2) and (7,6) match no matrix column. Values kept as extracted.",
+      "Augmented matrix lists only two data rows after the 1s row (equation and table description agree); the top matrix's third data row [1 1 1 4 5 6] does not appear in it \u2014 kept as extracted.",
+      "Caption position ('adjacent to the top data table') and the green (#008000) 'Zero' coloring are inferred from the accents list and the original brief; exact on-slide placement unverifiable without the image.",
+      "Slide title is a reconstruction; no title text exists in the extraction.",
+      "'Initial W =' combines the extracted label 'Initial' with the W equation; the literal string 'Initial W =' was not extracted verbatim."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_046.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 46,
+      "image": "slide_046.jpg",
+      "kept_frame": "frame_05595.jpg",
+      "start_sec": 5594,
+      "end_sec": 5594,
+      "precuration_slide": 157,
+      "provenance": "founder-curated 2026-10-19 (frame swap from group)",
+      "_reconcile_md5_snapshot": "0b355cbc667845d46001d7001ada241d"
+    },
+    "elapsed_s": 239.6,
+    "validated_by": "validate_slides",
+    "validation_elapsed_s": 347.1
+  }
+}

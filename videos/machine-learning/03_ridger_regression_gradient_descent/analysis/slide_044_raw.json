@@ -1,0 +1,161 @@
+{
+  "slide_title": null,
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "x\u2081",
+      "x\u2082",
+      "x\u2083",
+      "x\u2084",
+      "x\u2085",
+      "x\u2086",
+      "C\u2081",
+      "C\u2082",
+      "Z\u2081",
+      "Initial W = [4; -2]",
+      "Step \u03b7 = 2",
+      "Check classes of",
+      "C\u2081 positive, C\u2082 negative, Zero is unaccepted",
+      "Upgraded Vectors (from Top)",
+      "Iteration 3",
+      "\u21d2 Update Weight",
+      "\u21d2 Keep same Weight",
+      "44"
+    ],
+    "equations": [
+      "Initial W = [4; -2]",
+      "Step \u03b7 = 2",
+      "Check classes of [Z\u2081 Z\u2081 Z\u2081; (0)(7)(3); (0)(6)(2)]",
+      "d(x\u2081) = [1 1 1; -12; -8] = -12 \u21d2 Update Weight W = [4; -2] + 2 * [3; -2] = [10; -6]",
+      "d(x\u2082) = [1 2 1; -10; -6] = -16 \u21d2 Update Weight W = [10; -6] + 2 * [1; 1] = [12; -4]",
+      "d(x\u2083) = [1 1 2; -6; -2] = -4 \u21d2 Update Weight W = [12; -4] + 2 * [1; 0] = [14; -4]",
+      "d(x\u2084) = [1 5 4; -4; 0] = -6 \u21d2 Keep same Weight W = [14; -4]",
+      "d(x\u2085) = [1 6 5; -14; -10] = -10 \u21d2 Keep same Weight W = [14; -4]",
+      "d(x\u2086) = [1 6 6; -14; -4] = -4 \u21d2 Keep same Weight W = [14; -4]"
+    ]
+  },
+  "layout": {
+    "arrangement": "No title. Top-left holds an untitled 6-column vector table; top-center holds initial weight, step size, a boxed class-check matrix, and the class rule; top-right holds a yellow slide-number badge. Left-middle holds the upgraded-vector table and a red Iteration 3 badge. The right two-thirds hold six stacked d(x) computation/update rows.",
+    "regions": [
+      {
+        "name": "top_left_table",
+        "position": "top-left, approx x 3-37%, y 8-31%",
+        "content": "Untitled table headed x\u2081\u2026x\u2086 with three data rows and a C\u2081/C\u2082 class row."
+      },
+      {
+        "name": "top_center",
+        "position": "top-center, approx x 39-74%, y 8-31%",
+        "content": "Initial W vector, red Step \u03b7 = 2, Check classes of matrix in a blue-outlined box, and the C\u2081/C\u2082/Zero rule."
+      },
+      {
+        "name": "slide_number",
+        "position": "top-right, approx x 88-97%, y 3-12%",
+        "content": "Yellow circular badge containing 44."
+      },
+      {
+        "name": "left_middle",
+        "position": "middle-left, approx x 3-31%, y 39-78%",
+        "content": "Red caption Upgraded Vectors (from Top), upgraded vector table, and red Iteration 3 badge."
+      },
+      {
+        "name": "right_equations",
+        "position": "middle/right, approx x 33-97%, y 35-90%",
+        "content": "Six rows for d(x\u2081)\u2026d(x\u2086), each with a bracketed computation, result, and either Update Weight or Keep same Weight."
+      }
+    ],
+    "hierarchy": "The right-side equation block dominates by area and density. Secondary emphasis comes from the red Iteration 3 badge, red Upgraded Vectors caption, red Step \u03b7 = 2, and the yellow 44 badge. Tables are supporting detail."
+  },
+  "visual_elements": [
+    {
+      "type": "table",
+      "description": "Untitled top-left table: columns x\u2081 x\u2082 x\u2083 x\u2084 x\u2085 x\u2086; rows: (1)(2)(1)(5)(6)(6); (1)(1)(2)(4)(5)(6); (1)(1)(1)(2)(4)(5); class row C\u2081 C\u2081 C\u2081 C\u2082 C\u2082 C\u2082.",
+      "colors": [
+        "#000000",
+        "#0000FF",
+        "#FF0000"
+      ],
+      "position": "top-left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Blue-outlined box headed Z\u2081 Z\u2081 Z\u2081 with rows (0)(7)(3) and (0)(6)(2), labeled Check classes of.",
+      "colors": [
+        "#0000FF",
+        "#000000"
+      ],
+      "position": "top-center"
+    },
+    {
+      "type": "table",
+      "description": "Upgraded Vectors table: columns x\u2081 x\u2082 x\u2083 x\u2084 x\u2085 x\u2086; rows: (1)(1)(1)(1)(1)(1); (1)(2)(1)(5)(6)(6); (1)(2)(4)(5)(6)(6); class row C\u2081 C\u2081 C\u2081 C\u2082 C\u2082 C\u2082.",
+      "colors": [
+        "#000000",
+        "#0000FF",
+        "#FF0000"
+      ],
+      "position": "left-middle"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Red rounded rectangular badge with white text Iteration 3.",
+      "colors": [
+        "#FF0000",
+        "#FFFFFF"
+      ],
+      "position": "left-middle, below the upgraded table"
+    },
+    {
+      "type": "other",
+      "description": "Yellow circular slide-number badge with black text 44.",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top-right"
+    },
+    {
+      "type": "arrow",
+      "description": "Right arrows (\u21d2) introduce Update Weight for d(x\u2081)-d(x\u2083) and Keep same Weight for d(x\u2084)-d(x\u2086). Left arrows (\u21d0) appear at the far right of the updated rows d(x\u2081)-d(x\u2083).",
+      "colors": [
+        "#000000"
+      ],
+      "position": "right side"
+    },
+    {
+      "type": "icon",
+      "description": "Small mouse-pointer/cursor icon near the d(x\u2084) row.",
+      "colors": [
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "right-middle"
+    }
+  ],
+  "imagery": [
+    "Small mouse-pointer/cursor icon beside the d(x\u2084) equation."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#000000",
+    "body_text": "#000000",
+    "accents": [
+      "#FF0000",
+      "#0000FF",
+      "#FFFF00"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout, Arial/Calibri-like. Math and table values are black; subscripts are smaller and lowered. Red is used for Step \u03b7 = 2, Upgraded Vectors (from Top), and the Iteration 3 badge. C\u2081 is blue and C\u2082 is red in class rows and the class rule. No bullet numbering; items are separated by tables and equation rows.",
+  "animation_state": "Static slide; no mid-build indication. All tables, equations, arrows, and badges are fully visible.",
+  "recreation_brief": "1. Set the slide background to white. 2. Add a yellow circle at the top-right, approx x 88-96%, y 3-11%, fill #FFFF00, no outline, black bold text 44. 3. Top-left: build a 6-column table/text grid headed x\u2081 x\u2082 x\u2083 x\u2084 x\u2085 x\u2086. Add rows (1)(2)(1)(5)(6)(6), then (1)(1)(2)(4)(5)(6), then (1)(1)(1)(2)(4)(5). Add a bottom class row C\u2081 C\u2081 C\u2081 C\u2082 C\u2082 C\u2082; color C\u2081 #0000FF and C\u2082 #FF0000. 4. Top-center: add black text Initial W = [4; -2]. To its right add red text Step \u03b7 = 2. Add black text Check classes of above a blue-outlined matrix with headers Z\u2081 Z\u2081 Z\u2081 and rows (0)(7)(3), (0)(6)(2). Below it add C\u2081 positive, C\u2082 negative, Zero is unaccepted, coloring only C\u2081 blue and C\u2082 red. 5. Left-middle: add red bold caption Upgraded Vectors (from Top). Below it build the upgraded table headed x\u2081\u2026x\u2086 with rows (1)(1)(1)(1)(1)(1), (1)(2)(1)(5)(6)(6), (1)(2)(4)(5)(6)(6), and class row C\u2081 C\u2081 C\u2081 C\u2082 C\u2082 C\u2082 using the same C\u2081/C\u2082 colors. 6. Add a red rounded rectangle under that table with white bold text Iteration 3. 7. Right side: place six equation rows from the equations field. Use black text; for d(x\u2081)-d(x\u2083) use \u21d2 Update Weight, and for d(x\u2084)-d(x\u2086) use \u21d2 Keep same Weight. Add left-pointing arrows at the far right of d(x\u2081)-d(x\u2083) only. 8. Keep all other text black except the specified red/blue accents; do not add extra bullets or titles.",
+  "_meta": {
+    "frame": "slide_044.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 44,
+      "image": "slide_044.jpg",
+      "provenance": "analysis pending; precuration id unrecoverable (owner removed frames/ + pre-curation state)"
+    },
+    "elapsed_s": 781.3
+  }
+}

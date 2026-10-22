@@ -1,0 +1,257 @@
+           The Perceptron Learning Algorithm and its Convergence∗
+                                          Shivaram Kalyanakrishnan
+
+                                                 January 21, 2017
+
+
+
+                                                      Abstract
+             We introduce the Perceptron, describe the Perceptron Learning Algorithm, and provide
+          a proof of convergence when the algorithm is run on linearly-separable data. We also discuss
+          some variations and extensions of the Perceptron.
+
+
+1        Perceptron
+The Perceptron, introduced by Rosenblatt [2] over half a century ago, may be construed as
+a parameterised function, which takes a real-valued vector as input, and produces a Boolean
+output. In particular, the output is obtained by thresholding a linear function of the input: the
+parameters of the Perceptron are precisely the coefficients of this linear function.
+   Figure 1 provides a useful visualisation of a Perceptron. For d ě 1, a d-dimensional Percep-
+tron has a d-dimensional parameter vector w P Rd . For input x P Rd , the output produced is
+y “ signpw ¨ xq, where for α P R,
+                                              #
+                                                1 if α ě 0,
+                                    signpαq “
+                                                0 if α ă 0.
+
+                               x1
+                                               w1
+                               x2
+                                               w2
+
+                               x3              w3                                y
+                                                                    sign
+
+
+                                               wd
+
+                               xd
+
+
+                                               Figure 1: Perceptron
+
+    It is sometimes the practice to include an additional “bias” term b P R to the linear function,
+such that the Perceptron’s output is signpw ¨ x ` bq. We proceed without this additive term,
+since it can easily be implemented by transforming the d-dimensional input into a pd ` 1q-
+dimensional one, which is then passed to a corresponding pd ` 1q-dimensional Perceptron. We
+leave the details of this transformation as an exercise to the student.
+    The significance of the Perceptron lies in its use as a device for learning. Consider Figure 2,
+which shows two data sets, both in the same 2-dimensional space. It is apparent that in the
+    ∗
+        This note is based on one prepared by Collins [1].
+
+
+                                                             1
+                     x2                                                  x2
+
+
+
+
+                                          x1                                                  x1
+
+
+
+
+Figure 2: Labeled points in 2-dimensional space. The data set on the left is linearly separable,
+whereas the data set on the right is not.
+
+
+figure on the left, we may draw a line such that all the points labeled ` lie to one side of the
+line, and all the points labeled ´ lie to the other side. It is also apparent that no line with the
+same property may be drawn for the set of labeled points shown on the right. The property
+in question is linear separability. More generally, in d-dimensional space, a set of points with
+labels in t`, ´u is linearly separable if there exists a hyperplane in the same space such that
+all the points labeled ` lie to one side of the hyperplane, and all the points labeled ´ lie to the
+other side of the hyperplane.
+    A Perceptron with its parameters fixed may indeed be viewed as an origin-centred hyperplane
+that partitions space into two regions. Concretely, the parameters (or weights) of the Perceptron
+may be interpreted as the components of a normal vector to the hyperplane. Observe that a
+normal vector suffices to fix an origin-centred hyperplane. In fact, the length of the normal
+vector is immaterial; its direction alone matters.
+    Given a set of points labeled ` and ´, the Perceptron Learning Algorithm is an iterative
+procedure to update the weights of a Perceptron such that eventually the corresponding hyper-
+plane contains all the points labeled ` on one side, and all the points labeled ´ on the other.
+We adopt the convention that the points labeled ` must lie on the side of the hyperplane to
+which its normal points.
+
+
+2    Perceptron Learning Algorithm
+The input to the Perceptron Learning Algorithm is a data set of n ě 1 points (each d-
+dimensional), and their associated labels (` or ´). For mathematical convenience, we associate
+the ` label with the number `1, and the ´ label with the number ´1. Hence, we may take
+our input to be
+                                 px1 , y 1 q, px2 , y 2 q, . . . , pxn , y n q,
+where for i P t1, 2, . . . , nu, xi P Rd and y i P t´1, 1u.
+   To entertain any hope of our algorithm succeeding, we must assume that our input data
+points are linearly separable. Consistent with our choice of ignoring the bias term in the
+Perceptron, we shall assume that not only are the input data points linearly separable, they can
+indeed be separated by a hyperplane that passes through the origin. After all, our Perceptron
+can only represent origin-centred hyperplanes!
+
+
+
+
+                                                2
+Assumption 1 (Linear Separability). There exists some w‹ P Rd such that ||w‹ || “ 1 and for
+some γ ą 0, for all i P t1, 2, . . . , nu,
+
+                                             y i pw‹ ¨ xi q ą γ.
+
+    Taking w‹ to be unit-length is not strictly necessary; it merely simplifies our subsequent
+analysis. Observe that the condition on each data point i essentially amounts to saying that its
+prediction (that is, signpw‹ ¨xi q) matches its label (y i ). Requiring y i pw‹ ¨xi q to be strictly positive
+implies we can find a hyperplane such that none of the data points actually lie on the hyperplane.
+If the separating hyperplane must necessarily pass through some of the data points, note that
+the Perceptron’s predictions for these points would depend on whether we assign signp0q to be 0
+or 1—which seems an arbitrary choice. If our input points are “genuinely” linearly separable, it
+must not matter, for example, what convention we adopt to define signp¨q, or if we interchange
+the labels of the ` points and the ´ points. This is the demand Assumption 1 places on our
+data set. The quantity γ is introduced in the assumption as a place-holder for the minimum
+value of the y i pw‹ ¨ xi q. Our analysis will yield an upper bound on the convergence time of the
+Perceptron Learning Algorithm that relates inversely with γ. The bound will also depend on
+the distance between the input points and the origin; we shall assume that this distance is at
+most R.
+
+Assumption 2 (Bounded coordinates). There exists R P R such that for i P t1, 2, . . . , nu,
+
+                                                ||xi || ď R.
+
+    Naturally, the Perceptron Learning Algorithm itself does not explicitly know w‹ , γ, and R
+(although R can be inferred from the data). These quantities are merely useful artefacts we
+have defined in order to aid our subsequent analysis of the algorithm. The algorithm itself is
+remarkably simple, as we see below.
+
+
+                  Perceptron Learning Algorithm
+
+                  k Ð 1; wk Ð 0.
+                  While there exists i P t1, 2, . . . , nu such that y i pwk ¨ xi q ď 0:
+                      Pick an arbitrary j P t1, 2, . . . , nu such that y j pwk ¨xj q ď 0.
+                      wk`1 Ð wk ` y j xj .
+                      k Ð k ` 1.
+                  Return wk .
+
+
+    The algorithm maintains a weight vector, initially the zero vector. If this weight vector
+already separates the ` points from the ´ points, we are done. If not, we pick an arbitrary
+point xj that is being misclassified. This point is used to update the weight vector: in fact, the
+update is nothing more than vector addition with y j xj .
+    We note that the weight vector maintained and ultimately returned by the algorithm is not
+unit-length. In fact our proof to demonstrate the convergence of the algorithm relies on showing
+that the length of the weight vector increases with each update. Before proceeding to the proof,
+the student is encouraged to visualise the progress of the algorithm by sketching simple data
+sets in two dimensions and verifying that the Perceptron Learning algorithm repeatedly “tilts”
+the hyperplane in response to errors, until no more errors are made. In doing so, recall that the
+weight vector is a normal to the hyperplane.
+
+
+
+
+                                                     3
+3    Analysis
+                                                                                              2
+Theorem 3 (Perceptron convergence). The Perceptron Learning Algorithm makes at most R
+                                                                                    γ2
+updates (after which it returns a separating hyperplane).
+
+Proof. It is immediate from the code that should the algorithm terminate and return a weight
+vector, then the weight vector must separate the ` points from the ´ points. Thus, it suffices
+                                                       2
+to show that the algorithm terminates after at most Rγ2
+                                                         updates. In other words, we need to
+                                    2
+show that k is upper-bounded by R γ2
+                                     . Our strategy to do so is to derive both lower and upper
+and bounds on the length of w k`1  in terms of k, and to relate them.
+    Note that w “ 0, and for k ě 1, note that if xj is the misclasssified point during iteration
+                1
+
+k, we have
+
+                              wk`1 ¨ w‹ “ pwk ` y j xj q ¨ w‹
+                                           “ wk ¨ w‹ ` y j pxj ¨ w‹ q
+                                           ą wk ¨ w‹ ` γ.
+
+It follows by induction that wk`1 ¨ w‹ ą kγ. Since wk`1 ¨ w‹ ď }wk`1 }}w‹ } “ }wk`1 }, we get
+
+                                           }wk`1 } ą kγ.                                     (1)
+To obtain an upper bound, we argue that
+
+                          }wk`1 }2 “ }wk ` y j xj }2
+                                   “ }wk }2 ` }y j xj }2 ` 2pwk ¨ xj qy j
+                                   “ }wk }2 ` }xj }2 ` 2pwk ¨ xj qy j
+                                   ď }wk }2 ` }xj }2
+                                   ď }wk }2 ` R2 ,
+
+from which it follows by induction that
+
+                                          }wk`1 }2 ď kR2 .                                   (2)
+
+Together, (1) and (2) yield
+                                    k 2 γ 2 ă }wk`1 }2 ď kR2 ,
+                    2
+which implies k ă R
+                  γ2
+                     . Our proof is done.
+
+
+4    Discussion
+The Perceptron Learning Algorithm was among the earliest demonstrations of the learnability of
+concepts from data. The algorithm makes the rather strong assumption of the linear separability
+of data, which is seldom encountered in practice. However, nothing stops us from applying
+algorithms such as the Perceptron Learning Algorithm in practice in the hope of achieving good,
+if not perfect, results. Indeed there exist refinements to the Perceptron Learning Algorithm
+such that even when the input points are not linearly separable, the algorithm converges to a
+configuration that minimises the number of misclassified points.
+     It is also common in practice to design features that “separate out” the data well. For
+example, observe that in the data set shown in the right in Figure 2, the addition of a feature
+x1 x2 will make the data linearly-separable in a 3-dimensional space. With real-world data sets,
+it is impractical to conjure up features that yield exact linear separability. Good features are
+
+
+                                                 4
+ones that convey substantive (if not definitive) information about the labels. Learning systems
+that perform well in practice invariably owe a significant part of their success to the design of
+good features by the programmers.
+    While the Perceptron Learning Algorithm is a good starting point for learning linear classi-
+fiers, modern methods improve upon it in several ways. For example, we need not be satisfied
+with merely a separating hyperplane, but require one that leaves a maximal gap with the train-
+ing data points. Such “maximum margin” classifiers (for example, Support Vector Machines)
+can also be learned efficiently from data. When the number of features (d) is very large, it is
+possible to explicitly look for weight vectors that have a much smaller support (that is, most
+components being zero). This “sparsity” can be achieved using a technique called “regularisa-
+tion”.
+    One may generalise the 2-class problem we have described in this note to multiclass clas-
+sification, wherein the set of labels can have a larger cardinality. In such a setting, the 2-class
+Perceptron can still be used as a blackbox. Suppose the set of classes is t1, 2, . . . , Lu. One
+common approach is to train a separate binary classifier for each class: that is, associate a
+separate weight vector wplq with each class l. These weight vectors can then be trained in a
+manner akin to the Perceptron Learning Algorithm. During deployment, the class that they
+predict together for a given query point x is taken to be argmaxlPt1,2,...Lu wplq ¨ x.
+    It exceeds the scope of our discussion to expand upon the myriad of threads that emanate
+from the Perceptron. The interested student is encouraged to enrol in a full course on machine
+learning.
+
+
+References
+[1] Michael Collins. Convergence proof for the perceptron algorithm, 2012. See http://www.
+    cs.columbia.edu/~mcollins/courses/6998-2012/notes/perc.converge.pdf.
+
+[2] Frank Rosenblatt. The perceptron: A perceiving and recognizing automaton (Project
+    PARA). Technical Report 85-460-1, New York, 1957.
+
+
+
+
+                                                5
+

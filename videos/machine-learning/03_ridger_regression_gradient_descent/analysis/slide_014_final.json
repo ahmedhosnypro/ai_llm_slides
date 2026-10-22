@@ -1,0 +1,236 @@
+{
+  "slide_title": "LOSS Function that MINIMIZES Overfitting",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Let Y = [y1; y2; ...; yn] Nx1",
+      "Original Labels",
+      "from Training Samples",
+      "Let \u0176 = [\u01771; \u01772; ...; \u0177n] Nx1",
+      "Predicted Labels",
+      "from Model \u0176 = XW",
+      "Objective is \u0176=Y and ||W|| is minimum",
+      "This is called Ridge Regularization",
+      "Objective function J(W) = Loss(X,Y,W) + \u03bb R(W)",
+      "(\u03bb is a weighting factor)",
+      "Define Loss function as squared distance between \u0176 and Y",
+      "Loss Term = ||Y-\u0176||\u00b2 = (Y-\u0176)^T(Y-\u0176)",
+      "Regularization Term R = ||W||\u00b2 = W^T W",
+      "Objective function J(W) = 1/2 [ (Y-\u0176)^T(Y-\u0176) + \u03bb W^T W ]"
+    ],
+    "labels": [
+      "14"
+    ],
+    "equations": [
+      "Y = [y1; y2; ...; yn]_{N\u00d71}",
+      "\u0176 = [\u01771; \u01772; ...; \u0177n]_{N\u00d71}",
+      "\u0176 = XW",
+      "\u0176 = Y",
+      "J(W) = Loss(X,Y,W) + \u03bb R(W)",
+      "||Y-\u0176||\u00b2 = (Y-\u0176)^T(Y-\u0176)",
+      "R = ||W||\u00b2 = W^T W",
+      "J(W) = 1/2 [ (Y-\u0176)^T(Y-\u0176) + \u03bb W^T W ]"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title top-left with slide number circle top-right; two vector-definition boxes side-by-side below the title; three full-width explanatory bands stacked vertically in the middle; two term boxes side-by-side below the bands; one final full-width formula band at the bottom.",
+    "regions": [
+      {
+        "name": "Title",
+        "position": "top, left/center, ~0-15% height",
+        "content": "LOSS Function that MINIMIZES Overfitting"
+      },
+      {
+        "name": "Slide number",
+        "position": "top-right, ~90-98% width, ~2-10% height",
+        "content": "Yellow circle containing 14"
+      },
+      {
+        "name": "Original Labels box",
+        "position": "upper-middle, left, ~5-45% width, ~18-38% height",
+        "content": "Let Y = column vector [y1;y2;...;yn] Nx1; Original Labels; from Training Samples"
+      },
+      {
+        "name": "Predicted Labels box",
+        "position": "upper-middle, right, ~55-95% width, ~18-38% height",
+        "content": "Let \u0176 = column vector [\u01771;\u01772;...;\u0177n] Nx1; Predicted Labels; from Model \u0176 = XW"
+      },
+      {
+        "name": "Ridge Regularization band",
+        "position": "middle, full width, ~42-52% height",
+        "content": "Objective is \u0176=Y and ||W|| is minimum; This is called Ridge Regularization"
+      },
+      {
+        "name": "Objective function band",
+        "position": "middle, full width, ~55-65% height",
+        "content": "Objective function J(W) = Loss(X,Y,W) + \u03bb R(W); (\u03bb is a weighting factor)"
+      },
+      {
+        "name": "Define Loss band",
+        "position": "middle, full width, ~68-76% height",
+        "content": "Define Loss function as squared distance between \u0176 and Y"
+      },
+      {
+        "name": "Loss Term box",
+        "position": "lower-middle, left, ~5-45% width, ~80-88% height",
+        "content": "Loss Term = ||Y-\u0176||\u00b2 = (Y-\u0176)^T(Y-\u0176)"
+      },
+      {
+        "name": "Regularization Term box",
+        "position": "lower-middle, right, ~55-95% width, ~80-88% height",
+        "content": "Regularization Term R = ||W||\u00b2 = W^T W"
+      },
+      {
+        "name": "Final Objective function band",
+        "position": "bottom, full width, ~92-98% height",
+        "content": "Objective function J(W) = 1/2 [ (Y-\u0176)^T(Y-\u0176) + \u03bb W^T W ]"
+      }
+    ],
+    "hierarchy": "Title dominates with large bold blue/black text. Mathematical formulas are the secondary focus. Colored keywords create visual hierarchy: red for Loss-related terms, blue for weights/regularization, green for key concepts (Ridge Regularization, squared distance). Boxes and bands use subtle pastel backgrounds to group related content."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Left vector definition box containing Let Y = column vector, Original Labels, from Training Samples",
+      "colors": [
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "upper-middle left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Right vector definition box containing Let \u0176 = column vector, Predicted Labels, from Model \u0176 = XW",
+      "colors": [
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "upper-middle right"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Full-width light yellow band with Ridge Regularization objective statement",
+      "colors": [
+        "#FFF9C4",
+        "#000000",
+        "#0000FF",
+        "#008000"
+      ],
+      "position": "middle"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Full-width light yellow band with objective function formula and weighting factor note",
+      "colors": [
+        "#FFF9C4",
+        "#000000",
+        "#FF0000",
+        "#0000FF"
+      ],
+      "position": "middle"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Full-width light pink band defining Loss function as squared distance",
+      "colors": [
+        "#FFEBEE",
+        "#000000",
+        "#FF0000",
+        "#008000"
+      ],
+      "position": "middle"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Left light blue box with Loss Term formula",
+      "colors": [
+        "#E1F5FE",
+        "#FF0000",
+        "#000000"
+      ],
+      "position": "lower-middle left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Right light blue box with Regularization Term formula",
+      "colors": [
+        "#E1F5FE",
+        "#0000FF",
+        "#000000"
+      ],
+      "position": "lower-middle right"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Full-width light blue band with final expanded objective function",
+      "colors": [
+        "#E1F5FE",
+        "#0000FF",
+        "#000000"
+      ],
+      "position": "bottom"
+    },
+    {
+      "type": "other",
+      "description": "Yellow circle slide number marker",
+      "colors": [
+        "#FFEB3B",
+        "#000000"
+      ],
+      "position": "top-right"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#0000FF / #000000 (mixed: 'LOSS', 'MINIMIZES', 'Overfitting' in #0000FF; 'Function that' in #000000)",
+    "body_text": "#000000",
+    "accents": [
+      "#0000FF",
+      "#FF0000",
+      "#008000",
+      "#FFF9C4",
+      "#FFEBEE",
+      "#E1F5FE",
+      "#FFEB3B"
+    ]
+  },
+  "typography_notes": "Sans-serif font (likely Arial/Calibri). Title is large, bold, mixed blue and black. Body text is medium weight. Mathematical variables (Y, \u0176, W, J) are italicized and often bold. Keywords are color-coded: red for Loss, blue for weights/regularization terms, green for conceptual highlights. Column vectors use bracketed notation with vertically stacked entries.",
+  "animation_state": "Static slide; all content fully visible, no mid-build elements.",
+  "recreation_brief": "1. Set the slide to 16:9 with a solid white background (#FFFFFF).\n2. Place the title text box at the top, left-aligned, spanning ~0-15% of slide height: 'LOSS Function that MINIMIZES Overfitting' in large bold sans-serif (~40pt), with 'LOSS', 'MINIMIZES', 'Overfitting' in blue #0000FF and 'Function that' in black #000000.\n3. Place a yellow (#FFEB3B) filled circle at the top-right (region ~90-98% width, ~2-10% height; diameter ~8% of slide width) with the black (#000000) number '14' centered inside.\n4. Place the Original Labels box: white (#FFFFFF) rectangle with black (#000000) border at upper-middle left (~5-45% width, ~18-38% height), all text black, three stacked lines: (a) 'Let Y = [y1; y2; ...; yn] Nx1' with Y in bold italic and y1, y2, ..., yn stacked vertically inside square brackets with subscript 'N\u00d71' to the right of the bracket; (b) 'Original Labels' in bold; (c) 'from Training Samples' in regular weight.\n5. Place the Predicted Labels box: white (#FFFFFF) rectangle with black (#000000) border at upper-middle right (~55-95% width, ~18-38% height), leaving a ~10% width gutter from the left box, all text black, three stacked lines: (a) 'Let \u0176 = [\u01771; \u01772; ...; \u0177n] Nx1' with \u0176 in bold italic and \u01771, \u01772, ..., \u0177n stacked vertically inside square brackets with subscript 'N\u00d71' to the right of the bracket; (b) 'Predicted Labels' in bold; (c) 'from Model \u0176 = XW' in regular weight.\n6. Place the Ridge Regularization band: full-width rectangle with light yellow fill (#FFF9C4) at ~42-52% height, base text black, two lines: (a) 'Objective is \u0176=Y and ||W|| is minimum' with '\u0176=Y' and '||W||' in bold blue #0000FF; (b) 'This is called Ridge Regularization' with 'Ridge Regularization' in bold green #008000.\n7. Place the Objective function band: full-width rectangle with light yellow fill (#FFF9C4) at ~55-65% height, base text black: 'Objective function J(W) = Loss(X,Y,W) + \u03bb R(W)' with 'J(W)' and 'R(W)' in bold blue #0000FF, 'Loss' in bold red #FF0000, and '\u03bb' in blue #0000FF, followed on the same line by '(\u03bb is a weighting factor)' with '\u03bb' in blue #0000FF.\n8. Place the Define Loss band: full-width rectangle with light pink fill (#FFEBEE) at ~68-76% height, base text black: 'Define Loss function as squared distance between \u0176 and Y' with 'Loss' in bold red #FF0000, 'squared distance' in bold green #008000, and '\u0176' and 'Y' in bold italic black.\n9. Place the Loss Term box: light blue (#E1F5FE) rectangle at lower-middle left (~5-45% width, ~80-88% height): 'Loss Term = ||Y-\u0176||\u00b2 = (Y-\u0176)\u1d40(Y-\u0176)' with 'Loss Term' in bold red #FF0000 and the rest in black, using superscript \u00b2 and superscript T.\n10. Place the Regularization Term box: light blue (#E1F5FE) rectangle at lower-middle right (~55-95% width, ~80-88% height): 'Regularization Term R = ||W||\u00b2 = W\u1d40 W' with 'Regularization Term' in bold blue #0000FF and the rest in black, using superscript \u00b2 and superscript T.\n11. Place the Final Objective function band: full-width rectangle with light blue fill (#E1F5FE) at the bottom (~92-98% height), base text black: 'Objective function J(W) = 1/2 [ (Y-\u0176)\u1d40(Y-\u0176) + \u03bb W\u1d40 W ]' with 'J(W)' in bold blue #0000FF and '\u03bb' in blue #0000FF.\n12. Apply global typography: sans-serif font (Arial or Calibri); italicize all mathematical variables (Y, \u0176, W, J, \u03bb, y1...yn, \u01771...\u0177n); render transposes as superscript T and squared norms as superscript \u00b2; any text without an explicit color above is black #000000.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Schema check passed: slide_title, verbatim_text.bullets (14 items), layout.arrangement, layout.regions (10 regions), visual_elements (9 elements), colors, and recreation_brief are all present and non-empty. subtitle_or_header (null) and imagery ([]) were verified as genuinely absent from the source (no subtitle text appears in any region, bullet, or label; no photos or diagrams exist) and were left empty rather than invented.",
+      "layout.arrangement precision: replaced the vague 'a vertical stack of full-width explanatory bands' with 'three full-width explanatory bands stacked vertically in the middle' and 'a final full-width formula band' with 'one final full-width formula band at the bottom' (counts match layout.regions: Ridge Regularization band, Objective function band, Define Loss band, plus the Final Objective function band).",
+      "Removed color contradiction in the recreation_brief: it specified 'Original Labels' in bold red and 'Predicted Labels' in bold blue, but visual_elements list only #FFFFFF and #000000 for both vector-definition boxes; both keyword lines are now bold black #000000. Every other color assignment in the brief was verified against its element's color list and all match.",
+      "Clarified colors.title_text from plain '#0000FF' to a mixed specification (#0000FF for 'LOSS', 'MINIMIZES', 'Overfitting'; #000000 for 'Function that') to agree with typography_notes ('mixed blue and black') and the recreation_brief.",
+      "Rewrote recreation_brief from 10 multi-element steps into a 12-step ordered checklist placing one element per step, each with exact text, position (percentage coordinates from layout.regions), fill/border colors, shape (rectangle/band/circle), and per-phrase text colors; steps 1 and 12 carry global background and typography rules.",
+      "Verified text coverage: all 14 bullets map onto the 10 regions (Original Labels box: bullets 1-3; Predicted Labels box: bullets 4-6; Ridge band: bullets 7-8; Objective band: bullets 9-10; Define Loss band: bullet 11; Loss Term box: bullet 12; Regularization Term box: bullet 13; Final band: bullet 14), label '14' maps to the Slide number region/circle, and all 8 equations are restatements of bullet content; verbatim_text was left unchanged."
+    ],
+    "uncertain_items": [
+      "True on-slide color of the 'Original Labels' and 'Predicted Labels' keywords: the original recreation_brief asserted red and blue respectively, while visual_elements list only black (#000000) for those two boxes; resolved to black, but this cannot be confirmed from the JSON alone.",
+      "Exact font family is not fixed: typography_notes says 'likely Arial/Calibri'; any similar sans-serif font is an acceptable substitute.",
+      "Title font size '~40pt' is an estimate inherited from the original recreation_brief, not a measured value.",
+      "Border color of the two vector-definition boxes is inferred as black #000000 (the boxes are described as 'bordered' and black is the only non-white color listed for those elements, shared with their text); no separate border hex exists in the source."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_014.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 14,
+      "image": "slide_014.jpg",
+      "kept_frame": "frame_01082.jpg",
+      "start_sec": 1081,
+      "end_sec": 1081,
+      "precuration_slide": 29,
+      "provenance": "founder-curated kept frame",
+      "_reconcile_md5_snapshot": "c75545837564aa259ac5dd541e03ac7f"
+    },
+    "elapsed_s": 118.7,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1346.8
+  }
+}

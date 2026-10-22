@@ -1,0 +1,200 @@
+{
+  "slide_title": "Inverse Problem of Singular Matrix",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "|X^T X| = 0 \u21d2 Singular Matrix \u21d2 No Inverse",
+      "|X^T X| = 5685 \u21d2 Non-Singular Matrix \u21d2 Inverse Exists",
+      "(X^T X + \u03bbI)^-1"
+    ],
+    "labels": [
+      "Inverse Problem of Singular Matrix",
+      "21",
+      "X^T X",
+      "|X^T X| = 0",
+      "Singular Matrix",
+      "No Inverse",
+      "(X^T X + \u03bbI)",
+      "\u03bb=3",
+      "|X^T X| = 5685",
+      "Non-Singular Matrix",
+      "Inverse Exists",
+      "(X^T X + \u03bbI)^-1"
+    ],
+    "equations": [
+      "X^T X",
+      "|X^T X| = 0",
+      "(X^T X + \u03bbI)",
+      "\u03bb=3",
+      "|X^T X| = 5685",
+      "(X^T X + \u03bbI)^-1",
+      "[[14, 10, 15], [10, 40, 46], [20, 80, 92]]",
+      "[[17, 10, 15], [10, 43, 46], [20, 80, 95]]",
+      "[[0.07, 0.04, -0.03], [-0.01, 0.23, -0.11], [-0.01, -0.2, 0.11]]"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title top-center; yellow slide-number badge top-right; three full-width blue-outlined light-gray panels stacked vertically with white gaps. Top and middle panels are split left/right: left has a math label above a 3x3 matrix table, right has a determinant/conclusion chain. Bottom panel has the regularized-inverse expression on the left, a long right arrow, and the resulting inverse matrix table on the right.",
+    "regions": [
+      {
+        "name": "title_header",
+        "position": "top center, roughly x 30-70%, y 8-16%",
+        "content": "Dark red bold title 'Inverse Problem of Singular Matrix'"
+      },
+      {
+        "name": "slide_number_badge",
+        "position": "top right, roughly x 90-97%, y 5-13%",
+        "content": "Yellow circle containing black number '21'"
+      },
+      {
+        "name": "top_panel",
+        "position": "upper middle, roughly x 4-96%, y 20-40%",
+        "content": "Singular matrix example: X^T X matrix, determinant zero, conclusion 'No Inverse'"
+      },
+      {
+        "name": "middle_panel",
+        "position": "middle, roughly x 4-96%, y 48-69%",
+        "content": "Regularized matrix example: X^T X + \u03bbI with \u03bb=3, highlighted diagonal, determinant 5685, conclusion 'Inverse Exists'"
+      },
+      {
+        "name": "bottom_panel",
+        "position": "bottom, roughly x 4-96%, y 78-95%",
+        "content": "Inverse of regularized matrix: (X^T X + \u03bbI)^-1 followed by the inverse matrix"
+      }
+    ],
+    "hierarchy": "Title dominates by size and dark red color. The three panels are visually equal containers. Within panels, the left matrix and right conclusion chain are balanced; yellow diagonal highlights and red italic conclusions provide secondary emphasis."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Top blue-outlined light-gray panel containing the singular-matrix example.",
+      "colors": [
+        "#0000FF",
+        "#F2F2F2"
+      ],
+      "position": "upper middle, full width"
+    },
+    {
+      "type": "table",
+      "description": "Top 3x3 matrix under red label X^T X. Row 1: 14, 10, 15 with a small diagonal slash artifact visible near 15; Row 2: 10, 40, 46; Row 3: 20, 80, 92. Black cell borders and centered black numerals.",
+      "colors": [
+        "#000000",
+        "#F2F2F2"
+      ],
+      "position": "left side of top panel"
+    },
+    {
+      "type": "arrow",
+      "description": "Two black right arrows in the top panel chain: |X^T X| = 0 \u21d2 Singular Matrix \u21d2 No Inverse.",
+      "colors": [
+        "#000000"
+      ],
+      "position": "right side of top panel"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Middle blue-outlined light-gray panel containing the regularized non-singular matrix example.",
+      "colors": [
+        "#0000FF",
+        "#F2F2F2"
+      ],
+      "position": "middle, full width"
+    },
+    {
+      "type": "table",
+      "description": "Middle 3x3 matrix under label (X^T X + \u03bbI) with \u03bb=3. Row 1: 17, 10, 15; Row 2: 10, 43, 46; Row 3: 20, 80, 95. Diagonal entries 17, 43, and 95 are highlighted yellow.",
+      "colors": [
+        "#000000",
+        "#F2F2F2",
+        "#FFFF00"
+      ],
+      "position": "left side of middle panel"
+    },
+    {
+      "type": "arrow",
+      "description": "Two black right arrows in the middle panel chain: |X^T X| = 5685 \u21d2 Non-Singular Matrix \u21d2 Inverse Exists.",
+      "colors": [
+        "#000000"
+      ],
+      "position": "right side of middle panel"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Bottom blue-outlined light-gray panel containing the inverse-matrix result.",
+      "colors": [
+        "#0000FF",
+        "#F2F2F2"
+      ],
+      "position": "bottom, full width"
+    },
+    {
+      "type": "arrow",
+      "description": "Long black right arrow from (X^T X + \u03bbI)^-1 to the inverse matrix table.",
+      "colors": [
+        "#000000"
+      ],
+      "position": "center of bottom panel"
+    },
+    {
+      "type": "table",
+      "description": "Bottom 3x3 inverse matrix. Row 1: 0.07, 0.04, -0.03; Row 2: -0.01, 0.23, -0.11; Row 3: -0.01, -0.2, 0.11. Black cell borders and centered black numerals.",
+      "colors": [
+        "#000000",
+        "#F2F2F2"
+      ],
+      "position": "right side of bottom panel"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#8B0000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000FF",
+      "#008000",
+      "#FF0000",
+      "#FFFF00",
+      "#F2F2F2"
+    ]
+  },
+  "typography_notes": "Serif font throughout, Cambria/Times-like. Title is bold, larger, and dark red. Math expressions use mixed colors: X^T X in dark red, + \u03bbI in blue, \u03bb=3 in green. Conclusions 'No Inverse' and 'Inverse Exists' are red italic. Matrix numerals are black and centered. Slide number is black inside a yellow circle.",
+  "animation_state": "No build or animation state is apparent; all elements are fully visible.",
+  "recreation_brief": "1) Slide setup: create a 16:9 slide with a solid white (#FFFFFF) background; set the default font to a serif face (Cambria/Times-like) for all text; leave every element static with no animation or build. 2) Title: place a text box at top center (x 30-70%, y 8-16%) with the exact text 'Inverse Problem of Singular Matrix', bold serif, approx. 32-36 pt, color #8B0000. 3) Slide-number badge: place a circle filled #FFFF00 at top right (x 90-97%, y 5-13%) containing the centered black number '21'. 4) Top panel: place a full-width rectangle at x 4-96%, y 20-40%, fill #F2F2F2, outline #0000FF. 5) Top-panel label: on the left half of the top panel, place the text 'X^T X' in dark red (#8B0000) serif, above the matrix table. 6) Top matrix table: directly below the label, insert a 3x3 table with black (#000000) cell borders and centered black numerals: Row 1: 14, 10, 15; Row 2: 10, 40, 46; Row 3: 20, 80, 92. Do not draw the small diagonal slash near 15; the source marks it as a video artifact, not slide content. 7) Top chain text 1: on the right half of the top panel, place '|X^T X| = 0' in black. 8) Top arrow 1: place a black right-pointing arrow immediately to the right of '|X^T X| = 0'. 9) Top chain text 2: place 'Singular Matrix' in black to the right of that arrow. 10) Top arrow 2: place a second black right-pointing arrow to the right of 'Singular Matrix'. 11) Top conclusion: place 'No Inverse' in red (#FF0000) italic as the last item of the chain. 12) Middle panel: place a full-width rectangle at x 4-96%, y 48-69%, fill #F2F2F2, outline #0000FF, leaving a white gap below the top panel. 13) Middle-panel label: on the left half of the middle panel, place '(X^T X + \u03bbI)' with 'X^T X' in dark red (#8B0000) and '+ \u03bbI' in blue (#0000FF). 14) Lambda annotation: place '\u03bb=3' in green (#008000) immediately to the right of the '(X^T X + \u03bbI)' label. 15) Middle matrix table: directly below the label, insert a 3x3 table with black cell borders and centered black numerals: Row 1: 17, 10, 15; Row 2: 10, 43, 46; Row 3: 20, 80, 95; fill the three diagonal cells (17, 43, 95) with yellow (#FFFF00). 16) Middle chain text 1: on the right half of the middle panel, place '|X^T X| = 5685' in black. 17) Middle arrow 1: place a black right-pointing arrow immediately to its right. 18) Middle chain text 2: place 'Non-Singular Matrix' in black to the right of that arrow. 19) Middle arrow 2: place a second black right-pointing arrow to the right of 'Non-Singular Matrix'. 20) Middle conclusion: place 'Inverse Exists' in red (#FF0000) italic as the last item of the chain. 21) Bottom panel: place a full-width rectangle at x 4-96%, y 78-95%, fill #F2F2F2, outline #0000FF, leaving a white gap below the middle panel. 22) Bottom expression: on the left side of the bottom panel, place '(X^T X + \u03bbI)^-1' with 'X^T X' in dark red (#8B0000) and '+ \u03bbI' in blue (#0000FF). 23) Bottom arrow: draw one long black right-pointing arrow from the expression across the center of the bottom panel. 24) Inverse matrix table: at the right end of the arrow, insert a 3x3 table with black cell borders and centered black numerals: Row 1: 0.07, 0.04, -0.03; Row 2: -0.01, 0.23, -0.11; Row 3: -0.01, -0.2, 0.11.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "subtitle_or_header: kept null after confirming no subtitle or secondary header exists in the source; the title 'Inverse Problem of Singular Matrix' is the only header text, so nothing was invented to fill the field.",
+      "recreation_brief: rewrote from 8 multi-element steps into a 24-step numbered checklist in which each step places exactly one element with exact text, position (percentage coordinates taken from layout.regions), hex color, and shape/table type.",
+      "Tables: made each of the 3 table steps self-contained by listing all 9 cell values row by row (27 numerals total across the 3 matrices) so no step depends on another step.",
+      "Colors: added explicit hex codes to the brief for every element: #8B0000 title and 'X^T X' fragments; #FFFF00 badge circle and diagonal cell highlights; #0000FF panel outlines and '+ \u03bbI' fragments; #008000 '\u03bb=3'; #FF0000 italic conclusions; #F2F2F2 panel fills; #000000 body text, arrows, and table borders.",
+      "Artifact handling: excluded the 'small diagonal slash artifact visible near 15' in the top matrix from the recreation steps (the source itself labels it an artifact) and flagged it in uncertain_items.",
+      "Consistency verification (no text corrections needed): det([[14,10,15],[10,40,46],[20,80,92]]) = 0 matches '|X^T X| = 0'; adding \u03bb=3 to that diagonal yields [[17,10,15],[10,43,46],[20,80,95]] with det = 5685, matching '|X^T X| = 5685'; the bottom table equals (X^T X + \u03bbI)^-1 to two decimal places. All 12 labels, 9 equations, 9 visual elements, and 5 layout regions cross-check without contradiction."
+    ],
+    "uncertain_items": [
+      "The 'small diagonal slash artifact visible near 15' in the top matrix: the source JSON calls it an artifact, but without the image it cannot be conclusively classified as a video-compression mark versus an actual slide mark; it is excluded from recreation.",
+      "Exact point sizes for all non-title text (matrix labels, chain text, matrix numerals) are not specified in the source; only the title is estimated at 32-36 pt, so remaining text must be scaled to fit the stated regions.",
+      "Exact serif typeface is unspecified beyond 'Cambria/Times-like'.",
+      "All element positions are approximate percentage ranges from layout.regions (e.g., x 4-96%, y 20-40%); pixel-exact coordinates are not derivable from the JSON.",
+      "No items in the source JSON are marked [?]; nothing was kept as an explicit [?] marker."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_021.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 21,
+      "image": "slide_021.jpg",
+      "kept_frame": "frame_02327.jpg",
+      "start_sec": 2326,
+      "end_sec": 2326,
+      "precuration_slide": 93,
+      "provenance": "founder-curated kept frame",
+      "_reconcile_md5_snapshot": "557d14e06840c67f2eebc1df964a8565"
+    },
+    "elapsed_s": 224.0,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 426.1
+  }
+}

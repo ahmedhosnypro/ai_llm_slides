@@ -1,0 +1,151 @@
+{
+  "slide_title": "Inverse of High Dimension Matrix",
+  "subtitle_or_header": "None \u2014 no subtitle present on the slide; the only header-area elements are the title (top-left) and the slide-number badge '23' (top-right)",
+  "verbatim_text": {
+    "bullets": [
+      "The standard matrix inversion algorithm has a time complexity of O(n^3), which means that the computation time increases rapidly with the size of the matrix (increasing cubically with the number of components).",
+      "For Example: if Features vector is of size 1000 then Inverse calculation is or order 1,000,000,000 which is impractical",
+      "Instead of using Least Squares with Matrix inversion,",
+      "use Gradient Descent iterative solution"
+    ],
+    "labels": [
+      "Recall:",
+      "Solution:",
+      "23",
+      "if Feature vectors are of dimension d",
+      "(X^T X) is of size d+1 x d+1"
+    ],
+    "equations": [
+      "W = (X^T X + \u03bbI)^(-1) X^T Y"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title top-left with a slide-number badge top-right; four stacked full-width content sections below: a light green recall box containing the equation and dimension note (~18-35% height), a light blue complexity box (~38-55% height), a plain-text example line (~58-70% height), and a light yellow solution box at the bottom (~75-95% height)",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top-left/center, ~5-15% height",
+        "content": "Red bold title text"
+      },
+      {
+        "name": "slide_number",
+        "position": "top-right, ~5-15% height",
+        "content": "Yellow circle containing number 23"
+      },
+      {
+        "name": "recall_box",
+        "position": "upper-middle, ~18-35% height, full width",
+        "content": "Light green rounded rectangle containing 'Recall:' label, the matrix equation, and dimension note"
+      },
+      {
+        "name": "complexity_box",
+        "position": "middle, ~38-55% height, full width",
+        "content": "Light blue rounded rectangle with time complexity explanation"
+      },
+      {
+        "name": "example_text",
+        "position": "middle-lower, ~58-70% height, full width",
+        "content": "Plain text example with red highlighted numbers"
+      },
+      {
+        "name": "solution_box",
+        "position": "bottom, ~75-95% height, full width",
+        "content": "Light yellow rounded rectangle with 'Solution:' label and two lines of text"
+      }
+    ],
+    "hierarchy": "Title dominates in red; equation is central focus in green box; solution box provides visual closure at bottom"
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Light green rounded rectangle containing the recall equation and dimension note",
+      "colors": [
+        "#E2EFDA",
+        "#000000",
+        "#C00000"
+      ],
+      "position": "upper-middle"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Light blue rounded rectangle containing the time complexity explanation",
+      "colors": [
+        "#DDEBF7",
+        "#1F3864",
+        "#C00000"
+      ],
+      "position": "middle"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Light yellow rounded rectangle containing the solution text",
+      "colors": [
+        "#FFF2CC",
+        "#1F3864",
+        "#000000"
+      ],
+      "position": "bottom"
+    },
+    {
+      "type": "other",
+      "description": "Yellow circle with black number 23",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top-right"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#E2EFDA",
+      "#DDEBF7",
+      "#FFF2CC",
+      "#FFFF00",
+      "#1F3864"
+    ]
+  },
+  "typography_notes": "Sans-serif font throughout; title is bold red larger text; 'Recall:' is italic and underlined; 'Solution:' is blue bold; body text is dark blue/black; numbers 1000 and 1,000,000,000 are red; equation uses bold serif-style math variables with underline on W",
+  "animation_state": "No build animation apparent; all content fully visible",
+  "recreation_brief": "1. Create a slide with a white (#FFFFFF) background and sans-serif typography throughout. 2. Place the title 'Inverse of High Dimension Matrix' at top-left (vertical band ~5-15% of slide height) in bold red (#C00000), sized noticeably larger than all body text. 3. Place a yellow (#FFFF00) filled circle at top-right (same ~5-15% height band) with the black (#000000) number '23' centered inside it. 4. Draw a light green (#E2EFDA) rounded rectangle spanning the full slide width in the upper-middle band (~18-35% height). Inside it place three text items: (a) the label 'Recall:' in black, italic and underlined; (b) the equation 'W = (X^T X + \u03bbI)^(-1) X^T Y' in black with bold math variables and an underline beneath W; (c) the dimension note 'if Feature vectors are of dimension d' followed by '(X^T X) is of size d+1 x d+1', with 'd+1 x d+1' in red (#C00000) and the remaining words in black (#000000). 5. Draw a light blue (#DDEBF7) rounded rectangle spanning the full slide width in the middle band (~38-55% height). Inside it write in dark blue (#1F3864): 'The standard matrix inversion algorithm has a time complexity of O(n^3), which means that the computation time increases rapidly with the size of the matrix (increasing cubically with the number of components).' with 'O(n^3)' rendered in red (#C00000). 6. Below the blue box, in the ~58-70% height band, place one line of plain text with no fill box, in black (#000000): 'For Example: if Features vector is of size 1000 then Inverse calculation is or order 1,000,000,000 which is impractical', with '1000' and '1,000,000,000' rendered in red (#C00000). 7. Draw a light yellow (#FFF2CC) rounded rectangle spanning the full slide width at the bottom (~75-95% height). Inside it place: (a) the label 'Solution:' in bold dark blue (#1F3864); (b) the line 'Instead of using Least Squares with Matrix inversion,'; (c) the line 'use Gradient Descent iterative solution' \u2014 both lines in dark blue/black (#1F3864/#000000). 8. Add no images, charts, or build animations; all elements listed above are static and fully visible on this single slide.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Filled the null subtitle_or_header field with an explicit note: no subtitle exists; the only header-area elements are the title (top-left) and the slide-number badge '23' (top-right).",
+      "Corrected layout.arrangement count error: 'three stacked content sections' changed to 'four' \u2014 the JSON defines four content regions below the title (recall_box, complexity_box, example_text, solution_box).",
+      "Removed the '=>' connector invented in the original recreation_brief between the two verbatim labels 'if Feature vectors are of dimension d' and '(X^T X) is of size d+1 x d+1'; both labels are now placed as separate text items exactly as stored in verbatim_text.labels.",
+      "Added the exact vertical position bands from layout.regions (~5-15%, ~18-35%, ~38-55%, ~58-70%, ~75-95% height) and the full-width span requirement to every placement step in recreation_brief.",
+      "Added explicit hex color codes to every text and shape instruction in recreation_brief (several steps previously omitted the text color).",
+      "Added a final checklist step recording zero imagery and no animation, matching imagery=[] and animation_state."
+    ],
+    "uncertain_items": [
+      "Exact font point sizes are not specified in the source; only relative sizing is known (title larger than body text).",
+      "The red (#C00000) accent inside the green recall box is applied to 'd+1 x d+1' per the source brief; typography_notes does not independently confirm which green-box text is red.",
+      "Whether the two dimension-note labels sit on one line or two lines is unverifiable from the JSON; they are stored as two separate labels.",
+      "The verbatim phrase 'is or order 1,000,000,000' contains an apparent typo ('or' vs 'of'); preserved exactly as extracted.",
+      "Precise horizontal margins and box widths beyond 'full width' are not specified in the source."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_023.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 23,
+      "image": "slide_023.jpg",
+      "kept_frame": "frame_02540.jpg",
+      "start_sec": 2539,
+      "end_sec": 2539,
+      "precuration_slide": 105,
+      "provenance": "founder-curated kept frame",
+      "_reconcile_md5_snapshot": "bc5c99ae61ea467f9531374bbab98d76"
+    },
+    "elapsed_s": 62.3,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 405.3
+  }
+}

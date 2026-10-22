@@ -1,0 +1,198 @@
+{
+  "slide_title": null,
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "REPEAT using Step \u03b7 = 1",
+      "C1 positive, C2 negative, Zero is unaccepted",
+      "Ugmented Vectors (from Top)",
+      "Iteration 1"
+    ],
+    "labels": [
+      "x1",
+      "x2",
+      "x3",
+      "x4",
+      "x5",
+      "x6",
+      "C1",
+      "C2",
+      "Initial W =",
+      "REPEAT using Step \u03b7 = 1",
+      "Check classes of",
+      "Z1",
+      "Z2",
+      "Z3",
+      "C1 positive, C2 negative, Zero is unaccepted",
+      "Ugmented Vectors (from Top)",
+      "Iteration 1",
+      "d(x\u2081)",
+      "d(x\u2082)",
+      "d(x\u2083)",
+      "d(x\u2084)",
+      "d(x\u2085)",
+      "d(x\u2086)",
+      "Update Weight",
+      "Keep same Weight",
+      "48"
+    ],
+    "equations": [
+      "Initial W = [4; -2; -2]",
+      "d(x\u2081) = [1 1 1]\u00b7[4; -2; -2] = 0",
+      "W = [4; -2; -2] + 1\u00b7[1; 1; 1] = [5; -1; -1]",
+      "d(x\u2082) = [1 2 1]\u00b7[5; -1; -1] = 2",
+      "d(x\u2083) = [1 1 2]\u00b7[5; -1; -1] = 2",
+      "d(x\u2084) = [1 5 4]\u00b7[5; -1; -1] = -4",
+      "d(x\u2085) = [1 6 5]\u00b7[5; -1; -1] = -6",
+      "d(x\u2086) = [1 6 6]\u00b7[5; -1; -1] = -7"
+    ]
+  },
+  "layout": {
+    "arrangement": "No top title bar. A top band (y\u22485\u201322%) holds three clusters: input data table at far left, Initial-W vector plus the red REPEAT instruction at center, and the Check-classes Z table with the positive/negative/unaccepted note at right. Below, the left third (y\u224830\u201366%) holds the Augmented-vectors matrix and a red-boxed 'Iteration 1' header. The right two-thirds (y\u224827\u201397%) are filled by six stacked boxed calculation rows. A yellow slide-number badge sits in the extreme top-right corner.",
+    "regions": [
+      {
+        "name": "input data table",
+        "position": "top-left, x\u22484\u201330%, y\u22485\u201322%",
+        "content": "Header row x1\u2013x6 over three feature rows and a red class row C1 C1 C1 C2 C2 C2"
+      },
+      {
+        "name": "initial weight + repeat",
+        "position": "top-center, x\u224831\u201363%, y\u22485\u201318%",
+        "content": "Italic W column vector [4;-2;-2] labeled 'Initial W =' with red 'REPEAT using Step \u03b7 = 1'"
+      },
+      {
+        "name": "check classes",
+        "position": "top-right, x\u224863\u201391%, y\u22485\u201322%",
+        "content": "'Check classes of' over a Z1/Z2/Z3 table (rows 0 7 3 and 0 6 2) and the note 'C1 positive, C2 negative, Zero is unaccepted'"
+      },
+      {
+        "name": "slide number badge",
+        "position": "extreme top-right, x\u224892\u201398%, y\u22482\u20138%",
+        "content": "Yellow circle containing 48"
+      },
+      {
+        "name": "augmented vectors",
+        "position": "mid-left, x\u22484\u201330%, y\u224830\u201352%",
+        "content": "Header 'Ugmented Vectors (from Top)' over a matrix with bias row of ones, two feature rows, and red class row"
+      },
+      {
+        "name": "iteration header",
+        "position": "mid-left, x\u22487\u201328%, y\u224856\u201366%",
+        "content": "Red-bordered white box with red text 'Iteration 1'"
+      },
+      {
+        "name": "calculation panel",
+        "position": "right/center, x\u224833\u201397%, y\u224827\u201397%",
+        "content": "Six stacked light-blue boxed rows showing d(x\u1d62) dot products, results, \u21d2 actions, and updated W vectors"
+      },
+      {
+        "name": "cursor",
+        "position": "top-right area near 'unaccepted', x\u224870\u201376%, y\u224820\u201326%",
+        "content": "White mouse-pointer arrow icon"
+      }
+    ],
+    "hierarchy": "The six calculation rows dominate by area and repetition. Red accents (class labels, REPEAT line, Iteration-1 box, action phrases) are the secondary focus. The yellow '48' badge is tiny but high-contrast. Math uses italic variables with tall bracket vectors; everything is left-aligned within its cluster."
+  },
+  "visual_elements": [
+    {
+      "type": "table",
+      "description": "Input data table. Columns headed x1 x2 x3 x4 x5 x6. Rows: (1 2 1 5 6 6), (1 1 2 4 5 6), (1 2 2 4 5 6). Bottom row of class labels in red: C1 C1 C1 C2 C2 C2.",
+      "colors": [
+        "#000000",
+        "#FF0000",
+        "#FFFFFF"
+      ],
+      "position": "top-left, x\u22484\u201330%, y\u22485\u201322%"
+    },
+    {
+      "type": "table",
+      "description": "Check-classes table headed Z1 Z2 Z3 with two rows: (0 7 3) and (0 6 2). Sits under the caption 'Check classes of'.",
+      "colors": [
+        "#000000",
+        "#FFFFFF"
+      ],
+      "position": "top-right, x\u224866\u201386%, y\u22488\u201318%"
+    },
+    {
+      "type": "table",
+      "description": "Augmented-vectors matrix headed x1\u2013x6. Rows: (1 1 1 1 1 1) bias, (1 2 1 5 6 6), (1 1 2 4 5 6); bottom red class row C1 C1 C1 C2 C2 C2.",
+      "colors": [
+        "#000000",
+        "#FF0000",
+        "#FFFFFF"
+      ],
+      "position": "mid-left, x\u22486\u201329%, y\u224833\u201351%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Red-outlined, white-filled rectangle containing red text 'Iteration 1'.",
+      "colors": [
+        "#FF0000",
+        "#FFFFFF"
+      ],
+      "position": "mid-left, x\u22487\u201328%, y\u224856\u201366%"
+    },
+    {
+      "type": "table",
+      "description": "Six stacked boxed derivation rows (no shared gridlines; each row its own light box). Columns per row: d(x\u1d62) expression (1\u00d73 row vector times current 3\u00d71 W), scalar result, \u21d2, action phrase, resulting W column vector. Row1: d(x\u2081)=[1 1 1]\u00b7[4;-2;-2]=0 \u21d2 Update Weight; W=[4;-2;-2]+1\u00b7[1;1;1]=[5;-1;-1]. Row2: d(x\u2082)=[1 2 1]\u00b7[5;-1;-1]=2 \u21d2 Keep same Weight; W=[5;-1;-1]. Row3: d(x\u2083)=[1 1 2]\u00b7[5;-1;-1]=2 \u21d2 Keep same Weight; W=[5;-1;-1]. Row4: d(x\u2084)=[1 5 4]\u00b7[5;-1;-1]=-4 \u21d2 Keep same Weight; W=[5;-1;-1]. Row5: d(x\u2085)=[1 6 5]\u00b7[5;-1;-1]=-6 \u21d2 Keep same Weight; W=[5;-1;-1]. Row6: d(x\u2086)=[1 6 6]\u00b7[5;-1;-1]=-7 \u21d2 Keep same Weight; W=[5;-1;-1].",
+      "colors": [
+        "#E9F2F9",
+        "#8FB3CC",
+        "#000000",
+        "#8B0000"
+      ],
+      "position": "right/center, x\u224833\u201397%, y\u224827\u201397%"
+    },
+    {
+      "type": "arrow",
+      "description": "Green double-lined left arrow (\u21d0) at the right edge of the first calculation row, pointing at its result W=[5;-1;-1].",
+      "colors": [
+        "#1E8449"
+      ],
+      "position": "far right of row 1, x\u224893\u201397%, y\u224830\u201336%"
+    },
+    {
+      "type": "other",
+      "description": "Yellow-filled circle with thin black border containing the number 48 (slide number).",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "extreme top-right, x\u224892\u201398%, y\u22482\u20138%"
+    }
+  ],
+  "imagery": [
+    "White mouse-pointer cursor icon near the word 'unaccepted' in the top-right note, indicating a live screen capture."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#000000",
+    "body_text": "#000000",
+    "accents": [
+      "#FF0000",
+      "#8B0000",
+      "#FFFF00",
+      "#1E8449",
+      "#E9F2F9",
+      "#8FB3CC"
+    ]
+  },
+  "typography_notes": "Sans-serif (Arial/Helvetica-like) throughout. Variables W, d, x are italicized; x carries subscript numerals (x\u2081\u2026x\u2086). Column vectors use tall square brackets with entries stacked. 'REPEAT' and 'Iteration 1' are all-caps. Class labels C1/C2, the words 'Zero' and 'REPEAT using Step \u03b7 = 1', and the Iteration-1 box are red; action phrases 'Update Weight'/'Keep same Weight' are dark red/maroon; the \u21d2 and \u21d0 glyphs are used for implication and the green pointer. No serif text is present.",
+  "animation_state": "No build animation is evident; all six calculation rows and both matrices are fully revealed. The mouse cursor near 'unaccepted' suggests a live screen capture rather than a partial build.",
+  "recreation_brief": "1) Set the slide background to white (#FFFFFF) and use a sans-serif font such as Arial. 2) Top-left (x\u22484\u201330%, y\u22485\u201322%): build a table headed x1 x2 x3 x4 x5 x6 with rows (1 2 1 5 6 6), (1 1 2 4 5 6), (1 2 2 4 5 6), then a final row C1 C1 C1 C2 C2 C2 in red #FF0000. 3) Top-center (x\u224831\u201350%, y\u22486\u201314%): place italic 'W' as a tall-bracket column vector labeled 'Initial W =' with entries 4, -2, -2. 4) Just right of it (x\u224850\u201363%, y\u22486\u201316%): add red text 'REPEAT using Step \u03b7 = 1'. 5) Top-right (x\u224863\u201391%, y\u22485\u201322%): add caption 'Check classes of', a small table headed Z1 Z2 Z3 with rows (0 7 3) and (0 6 2), and below it the sentence 'C1 positive, C2 negative, Zero is unaccepted' with C1, C2 and 'Zero' in red. 6) Extreme top-right (x\u224892\u201398%, y\u22482\u20138%): draw a yellow #FFFF00 circle with a thin black border containing '48'. 7) Mid-left (x\u22484\u201330%, y\u224830\u201352%): add the header 'Ugmented Vectors (from Top)' (keep the misspelling), then a matrix headed x1\u2013x6 with rows (1 1 1 1 1 1), (1 2 1 5 6 6), (1 1 2 4 5 6) and a red class row C1 C1 C1 C2 C2 C2. 8) Below it (x\u22487\u201328%, y\u224856\u201366%): draw a red-bordered white box with red text 'Iteration 1'. 9) Right/center (x\u224833\u201397%, y\u224827\u201397%): draw six stacked light-blue boxes (fill #E9F2F9, thin border #8FB3CC). In each box place, left to right, the d(x\u1d62) dot product (1\u00d73 row vector times the current 3\u00d71 W), the scalar result, a \u21d2 glyph, the action phrase in dark red #8B0000, and the resulting W column vector, using exactly: row1 d(x\u2081)=[1 1 1]\u00b7[4;-2;-2]=0, 'Update Weight', W=[4;-2;-2]+1\u00b7[1;1;1]=[5;-1;-1]; rows 2\u20136 'Keep same Weight' with W=[5;-1;-1] and results 2, 2, -4, -6, -7 for d(x\u2082)=[1 2 1], d(x\u2083)=[1 1 2], d(x\u2084)=[1 5 4], d(x\u2085)=[1 6 5], d(x\u2086)=[1 6 6]. 10) Add a green #1E8449 double arrow \u21d0 at the right edge of row 1 pointing to its W=[5;-1;-1]. 11) Place a standard white mouse-cursor icon near 'unaccepted'. 12) Italicize W, d and x, subscript the x indices, and keep 'REPEAT' and 'Iteration 1' in caps.",
+  "_meta": {
+    "frame": "slide_048.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 48,
+      "image": "slide_048.jpg",
+      "kept_frame": "frame_05674.jpg",
+      "start_sec": 5673,
+      "end_sec": 5673,
+      "precuration_slide": 159,
+      "provenance": "founder-curated kept frame",
+      "_reconcile_md5_snapshot": "aaa2e585ea5b8a58de38ab8af7875aa3"
+    },
+    "elapsed_s": 213.8
+  }
+}

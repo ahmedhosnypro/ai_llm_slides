@@ -1,0 +1,140 @@
+{
+  "slide_title": "Minimization of Objective function to obtain BEST model parameters",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "J(W)=1/2(Y\u2212\u0176)^T(Y\u2212\u0176)+1/2 \u03bb W^T W = 1/2(Y\u2212XW)^T(Y\u2212XW)+1/2 \u03bb W^T W",
+      "J(W)=1/2[Y^T Y + (XW)^T(XW) \u2212 Y^T(XW) \u2212 (XW)^T Y]+1/2 \u03bb W^T W",
+      "J(W)=1/2[Y^T Y + (XW)^T(XW) \u2212 2(XW)^T Y]+1/2 \u03bb W^T W",
+      "\u2202J(W)/\u2202W = 0",
+      "Get Best W that minimizes the Objective Function J(W)",
+      "\u2202W^T W/\u2202W = 2W",
+      "\u2202J(W)/\u2202W = 0 = 1/2[(XW)^T(X) + (X)^T(XW) \u2212 2(X)^T Y]+\u03bb W",
+      "\u2202J(W)/\u2202W = 0 = 1/2[2X^T X W \u2212 2 X^T Y]+\u03bb I W",
+      "(X^T X + \u03bb I)W = X^T Y",
+      "W = (X^T X + \u03bb I)^(\u22121) X^T Y"
+    ],
+    "labels": [
+      "Remember",
+      "15"
+    ],
+    "equations": [
+      "J(W) = \\frac{1}{2}(Y-\\hat{Y})^T(Y-\\hat{Y}}) + \\frac{1}{2}\\lambda W^T W = \\frac{1}{2}(Y-XW)^T(Y-XW) + \\frac{1}{2}\\lambda W^T W",
+      "J(W) = \\frac{1}{2}[Y^T Y + (XW)^T(XW) - Y^T(XW) - (XW)^T Y] + \\frac{1}{2}\\lambda W^T W",
+      "J(W) = \\frac{1}{2}[Y^T Y + (XW)^T(XW) - 2(XW)^T Y] + \\frac{1}{2}\\lambda W^T W",
+      "\\frac{\\partial J(W)}{\\partial W} = 0",
+      "\\frac{\\partial W^T W}{\\partial W} = 2W",
+      "\\frac{\\partial J(W)}{\\partial W} = 0 = \\frac{1}{2}[(XW)^T(X) + (X)^T(XW) - 2(X)^T Y] + \\lambda W",
+      "\\frac{\\partial J(W)}{\\partial W} = 0 = \\frac{1}{2}[2X^T X W - 2 X^T Y] + \\lambda I W",
+      "(X^T X + \\lambda I)W = X^T Y",
+      "\\underline{W} = (X^T X + \\lambda I)^{-1} X^T Y"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title top-left with slide number circle top-right; three derivation equations in upper block; red-bordered callout box in middle-left with peach 'Remember' box to its right; two derivative equations below; final closed-form solution in green box at bottom",
+    "regions": [
+      {
+        "name": "title_bar",
+        "position": "top, spanning full width",
+        "content": "Title text with mixed red/blue coloring and yellow slide-number circle at far right"
+      },
+      {
+        "name": "objective_expansion",
+        "position": "upper-middle, left/center",
+        "content": "Three lines expanding the objective function J(W)"
+      },
+      {
+        "name": "gradient_condition",
+        "position": "middle, left/center",
+        "content": "Red-bordered box containing \u2202J(W)/\u2202W = 0 and explanatory text"
+      },
+      {
+        "name": "remember_sidebar",
+        "position": "middle, right",
+        "content": "Peach box labeled 'Remember' with derivative identity"
+      },
+      {
+        "name": "derivative_steps",
+        "position": "lower-middle, left/center",
+        "content": "Two lines computing the gradient and simplifying"
+      },
+      {
+        "name": "solution_box",
+        "position": "bottom, center/right",
+        "content": "Green-bordered box with final normal-equation solution"
+      }
+    ],
+    "hierarchy": "Title dominates by size; red callout and green solution box are visually emphasized via colored borders; equations are uniform medium weight in dark blue"
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Red-outlined rectangular box containing the gradient-equals-zero condition and the sentence 'Get Best W that minimizes the Objective Function J(W)'",
+      "colors": [
+        "#FF0000",
+        "#FFFFFF"
+      ],
+      "position": "middle-left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Peach/light-orange box labeled 'Remember' in red, containing the matrix derivative identity \u2202W^T W/\u2202W = 2W",
+      "colors": [
+        "#FCE4D6",
+        "#FF0000",
+        "#00008B"
+      ],
+      "position": "middle-right"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Green-outlined box with light green fill containing the final solution W = (X^T X + \u03bbI)^(\u22121) X^T Y",
+      "colors": [
+        "#00B050",
+        "#E2EFDA",
+        "#00008B"
+      ],
+      "position": "bottom-center"
+    },
+    {
+      "type": "other",
+      "description": "Yellow filled circle containing the slide number 15",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#FF0000",
+    "body_text": "#00008B",
+    "accents": [
+      "#0000FF",
+      "#FF0000",
+      "#00B050",
+      "#FFFF00",
+      "#FCE4D6"
+    ]
+  },
+  "typography_notes": "Sans-serif title with alternating red and blue words; mathematical body text in a serif/math style, dark blue, with W underlined to denote vector/matrix; 'BEST' and 'Objective' emphasized in blue; 'Remember' label in red small caps",
+  "animation_state": "Static slide; all derivation steps and boxes fully visible, no partial build",
+  "recreation_brief": "1. Set slide background to white. 2. Add title text box at top-left: 'Minimization of' in red, 'Objective' in blue, 'function to obtain' in red, 'BEST' in blue, 'model parameters' in red; use large bold sans-serif. 3. Add a yellow filled circle at top-right with black text '15'. 4. Insert a text box below the title with three centered equations in dark blue math font: (a) J(W)=1/2(Y\u2212\u0176)^T(Y\u2212\u0176)+1/2\u03bbW^TW=1/2(Y\u2212XW)^T(Y\u2212XW)+1/2\u03bbW^TW; (b) J(W)=1/2[Y^TY+(XW)^T(XW)\u2212Y^T(XW)\u2212(XW)^TY]+1/2\u03bbW^TW; (c) J(W)=1/2[Y^TY+(XW)^T(XW)\u22122(XW)^TY]+1/2\u03bbW^TW. 5. Draw a red-outlined white rectangle in the middle-left; inside place '\u2202J(W)/\u2202W = 0' followed by 'Get Best W that minimizes the Objective Function J(W)' with 'Objective Function J(W)' in blue and W underlined. 6. To its right, draw a peach-filled rectangle labeled 'Remember' in red at top, with equation '\u2202W^TW/\u2202W = 2W' below in dark blue. 7. Below the red box, add two centered equations: '\u2202J(W)/\u2202W = 0 = 1/2[(XW)^T(X)+(X)^T(XW)\u22122(X)^TY]+\u03bbW' and '\u2202J(W)/\u2202W = 0 = 1/2[2X^TXW\u22122X^TY]+\u03bbIW'. 8. Add centered line '(X^TX+\u03bbI)W = X^TY' followed by a right-pointing arrow. 9. Draw a green-outlined light-green rectangle at bottom-center containing 'W = (X^TX+\u03bbI)^(\u22121)X^TY' in dark blue with W underlined.",
+  "_meta": {
+    "frame": "slide_015.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 15,
+      "image": "slide_015.jpg",
+      "kept_frame": "frame_01085.jpg",
+      "start_sec": 1084,
+      "end_sec": 1084,
+      "precuration_slide": 30,
+      "provenance": "founder-curated kept frame",
+      "_reconcile_md5_snapshot": "c6cbe225c783c6f86caf076cca26594f"
+    },
+    "elapsed_s": 61.2
+  }
+}

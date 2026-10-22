@@ -1,0 +1,178 @@
+{
+  "slide_title": "Minimization of Objective function to obtain BEST model parameters",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "J(W)=1/2(Y\u2212\u0176)^T(Y\u2212\u0176)+1/2 \u03bb W^T W = 1/2(Y\u2212XW)^T(Y\u2212XW)+1/2 \u03bb W^T W",
+      "J(W)=1/2[Y^T Y + (XW)^T(XW) \u2212 Y^T(XW) \u2212 (XW)^T Y]+1/2 \u03bb W^T W",
+      "J(W)=1/2[Y^T Y + (XW)^T(XW) \u2212 2(XW)^T Y]+1/2 \u03bb W^T W",
+      "\u2202J(W)/\u2202W = 0",
+      "Get Best W that minimizes the Objective Function J(W)",
+      "\u2202W^T W/\u2202W = 2W",
+      "\u2202J(W)/\u2202W = 0 = 1/2[(XW)^T(X) + (X)^T(XW) \u2212 2(X)^T Y]+\u03bb W",
+      "\u2202J(W)/\u2202W = 0 = 1/2[2X^T X W \u2212 2 X^T Y]+\u03bb I W",
+      "(X^T X + \u03bb I)W = X^T Y",
+      "W = (X^T X + \u03bb I)^(\u22121) X^T Y"
+    ],
+    "labels": [
+      "Remember",
+      "15"
+    ],
+    "equations": [
+      "J(W) = \\frac{1}{2}(Y-\\hat{Y})^T(Y-\\hat{Y}) + \\frac{1}{2}\\lambda W^T W = \\frac{1}{2}(Y-XW)^T(Y-XW) + \\frac{1}{2}\\lambda W^T W",
+      "J(W) = \\frac{1}{2}[Y^T Y + (XW)^T(XW) - Y^T(XW) - (XW)^T Y] + \\frac{1}{2}\\lambda W^T W",
+      "J(W) = \\frac{1}{2}[Y^T Y + (XW)^T(XW) - 2(XW)^T Y] + \\frac{1}{2}\\lambda W^T W",
+      "\\frac{\\partial J(W)}{\\partial W} = 0",
+      "\\frac{\\partial W^T W}{\\partial W} = 2W",
+      "\\frac{\\partial J(W)}{\\partial W} = 0 = \\frac{1}{2}[(XW)^T(X) + (X)^T(XW) - 2(X)^T Y] + \\lambda W",
+      "\\frac{\\partial J(W)}{\\partial W} = 0 = \\frac{1}{2}[2X^T X W - 2 X^T Y] + \\lambda I W",
+      "(X^T X + \\lambda I)W = X^T Y",
+      "\\underline{W} = (X^T X + \\lambda I)^{-1} X^T Y"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title top-left with slide number circle top-right; three derivation equations in upper block; red-bordered callout box in middle-left with peach 'Remember' box to its right; two derivative equations below; centered normal-equation line (X^T X + \u03bb I)W = X^T Y followed by a right-pointing arrow; final closed-form solution in green box at bottom-center",
+    "regions": [
+      {
+        "name": "title_bar",
+        "position": "top, spanning full width",
+        "content": "Title text with alternating red (#FF0000) and blue (#0000FF) word coloring and yellow slide-number circle at far right"
+      },
+      {
+        "name": "objective_expansion",
+        "position": "upper-middle, left/center",
+        "content": "Three lines expanding the objective function J(W)"
+      },
+      {
+        "name": "gradient_condition",
+        "position": "middle, left/center",
+        "content": "Red-bordered box containing \u2202J(W)/\u2202W = 0 and the sentence 'Get Best W that minimizes the Objective Function J(W)'"
+      },
+      {
+        "name": "remember_sidebar",
+        "position": "middle, right",
+        "content": "Peach box labeled 'Remember' with derivative identity \u2202W^T W/\u2202W = 2W"
+      },
+      {
+        "name": "derivative_steps",
+        "position": "lower-middle, left/center",
+        "content": "Two lines computing the gradient and simplifying"
+      },
+      {
+        "name": "normal_equation_line",
+        "position": "below derivative_steps, centered, directly above the solution box",
+        "content": "Centered line (X^T X + \u03bb I)W = X^T Y followed by a right-pointing arrow leading to the green solution box"
+      },
+      {
+        "name": "solution_box",
+        "position": "bottom-center",
+        "content": "Green-bordered box with final normal-equation solution W = (X^T X + \u03bb I)^(\u22121) X^T Y"
+      }
+    ],
+    "hierarchy": "Title dominates by size; red callout and green solution box are visually emphasized via colored borders; equations are uniform medium weight in dark blue"
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Red-outlined rectangular box containing the gradient-equals-zero condition \u2202J(W)/\u2202W = 0 and the sentence 'Get Best W that minimizes the Objective Function J(W)'",
+      "colors": [
+        "#FF0000",
+        "#FFFFFF"
+      ],
+      "position": "middle-left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Peach/light-orange box labeled 'Remember' in red, containing the matrix derivative identity \u2202W^T W/\u2202W = 2W",
+      "colors": [
+        "#FCE4D6",
+        "#FF0000",
+        "#00008B"
+      ],
+      "position": "middle-right"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Green-outlined box with light green fill containing the final solution W = (X^T X + \u03bb I)^(\u22121) X^T Y",
+      "colors": [
+        "#00B050",
+        "#E2EFDA",
+        "#00008B"
+      ],
+      "position": "bottom-center"
+    },
+    {
+      "type": "other",
+      "description": "Yellow filled circle containing the slide number 15",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    },
+    {
+      "type": "arrow",
+      "description": "Right-pointing arrow following the centered line (X^T X + \u03bb I)W = X^T Y, pointing toward the green solution box",
+      "colors": [
+        "#00008B"
+      ],
+      "position": "bottom, between the normal-equation line and the solution box"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#FF0000",
+    "body_text": "#00008B",
+    "accents": [
+      "#0000FF",
+      "#FF0000",
+      "#00B050",
+      "#FFFF00",
+      "#FCE4D6",
+      "#E2EFDA",
+      "#000000"
+    ]
+  },
+  "typography_notes": "Sans-serif title with alternating red and blue words; mathematical body text in a serif/math style, dark blue, with W underlined to denote vector/matrix; 'BEST' and 'Objective' emphasized in blue; 'Remember' label in red small caps",
+  "animation_state": "Static slide; all derivation steps and boxes fully visible, no partial build",
+  "recreation_brief": "1. Set the slide background to solid white (#FFFFFF). 2. Place the title text box at the top, spanning the full width and left-aligned: exact text 'Minimization of Objective function to obtain BEST model parameters' in large bold sans-serif, colored word-by-word as 'Minimization of' red (#FF0000), 'Objective' blue (#0000FF), 'function to obtain' red (#FF0000), 'BEST' blue (#0000FF), 'model parameters' red (#FF0000). 3. Place a yellow (#FFFF00) filled circle in the top-right corner containing the slide number '15' in black (#000000) text. 4. Place one text box in the upper-middle (left/center), below the title, containing exactly three centered equation lines in dark blue (#00008B) serif/math style: line 1 'J(W)=1/2(Y\u2212\u0176)^T(Y\u2212\u0176)+1/2 \u03bb W^T W = 1/2(Y\u2212XW)^T(Y\u2212XW)+1/2 \u03bb W^T W'; line 2 'J(W)=1/2[Y^T Y + (XW)^T(XW) \u2212 Y^T(XW) \u2212 (XW)^T Y]+1/2 \u03bb W^T W'; line 3 'J(W)=1/2[Y^T Y + (XW)^T(XW) \u2212 2(XW)^T Y]+1/2 \u03bb W^T W'. 5. Place a rectangle at middle-left with white (#FFFFFF) fill and red (#FF0000) outline containing two lines: '\u2202J(W)/\u2202W = 0' and 'Get Best W that minimizes the Objective Function J(W)', with 'Objective Function J(W)' in blue (#0000FF), the W underlined, and remaining text dark blue (#00008B). 6. Place a peach (#FCE4D6) filled rectangle at middle-right, beside the red box: put the label 'Remember' in red (#FF0000) small caps at its top and the equation '\u2202W^T W/\u2202W = 2W' in dark blue (#00008B) below it. 7. Place one text box at lower-middle (left/center), below the red box, containing exactly two centered equation lines in dark blue (#00008B): line 1 '\u2202J(W)/\u2202W = 0 = 1/2[(XW)^T(X) + (X)^T(XW) \u2212 2(X)^T Y]+\u03bb W'; line 2 '\u2202J(W)/\u2202W = 0 = 1/2[2X^T X W \u2212 2 X^T Y]+\u03bb I W'. 8. Place a centered line '(X^T X + \u03bb I)W = X^T Y' in dark blue (#00008B) below the derivative steps, followed immediately by a right-pointing arrow in dark blue (#00008B) pointing toward the solution box placed in step 9. 9. Place a rectangle at bottom-center with light green (#E2EFDA) fill and green (#00B050) outline containing the single line 'W = (X^T X + \u03bb I)^(\u22121) X^T Y' in dark blue (#00008B), with the leading W underlined.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Fixed LaTeX syntax error in verbatim_text.equations[0]: stray closing brace in '(Y-\\hat{Y}})' corrected to '(Y-\\hat{Y})'.",
+      "Added missing layout region 'normal_equation_line' (below derivative_steps, centered) so the verbatim bullet '(X^T X + \u03bb I)W = X^T Y' is covered by layout.regions; previously no region covered it.",
+      "Updated layout.arrangement to include the normal-equation line '(X^T X + \u03bb I)W = X^T Y' and its arrow between the derivative steps and the green solution box.",
+      "Harmonized solution_box position from 'bottom, center/right' to 'bottom-center' to match visual_elements and recreation_brief.",
+      "Added the right-pointing arrow to visual_elements (type 'arrow', between the normal-equation line and the solution box) so recreation_brief no longer references an element absent from visual_elements; arrow color assumed #00008B (see uncertain_items).",
+      "Added #E2EFDA (light-green solution-box fill) and #000000 (slide-number text) to colors.accents; both appear in visual_elements but were missing from the palette.",
+      "Normalized '\u03bbI' to '\u03bb I' in the green solution-box description to match verbatim bullet 10.",
+      "Made region contents explicit: gradient_condition now names its sentence, remember_sidebar names the identity \u2202W^T W/\u2202W = 2W, title_bar specifies alternating red (#FF0000)/blue (#0000FF) word coloring instead of vague 'mixed red/blue'.",
+      "Rewrote recreation_brief as a 9-step numbered checklist with one element per step, exact verbatim text, hex colors, positions, and shape types.",
+      "Confirmed subtitle_or_header is genuinely absent in the source (title-only slide); kept null instead of inventing a subtitle."
+    ],
+    "uncertain_items": [
+      "Right-pointing arrow after '(X^T X + \u03bb I)W = X^T Y': attested only in the original recreation_brief, not in visual_elements or layout.regions of the source; retained for internal consistency, but its presence and color (assumed dark blue #00008B) are unverified.",
+      "Exact font sizes/point values are not specified in the source; the checklist uses relative sizing ('large bold' title, medium-weight dark blue equations).",
+      "Which W occurrences are underlined in the red callout sentence is ambiguous in the source brief ('W underlined'); typography_notes states W is underlined to denote vector/matrix, and equations[8] confirms \\underline{W} only for the final solution, so the checklist underlines W in the callout sentence and in the final solution."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_015.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 15,
+      "image": "slide_015.jpg",
+      "kept_frame": "frame_01085.jpg",
+      "start_sec": 1084,
+      "end_sec": 1084,
+      "precuration_slide": 30,
+      "provenance": "founder-curated kept frame",
+      "_reconcile_md5_snapshot": "c6cbe225c783c6f86caf076cca26594f"
+    },
+    "elapsed_s": 61.2,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1257.5
+  }
+}

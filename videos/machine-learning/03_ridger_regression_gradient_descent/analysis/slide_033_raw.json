@@ -1,0 +1,171 @@
+{
+  "slide_title": "Non-Convex Function",
+  "subtitle_or_header": "May reach different minimum value based on:\ninitial point and learning rate",
+  "verbatim_text": {
+    "bullets": [
+      "May reach different minimum value based on:",
+      "initial point and learning rate",
+      "X is in between -9.7 and color red bold -9.6",
+      "f(x) is in between -8.08 and -8.011"
+    ],
+    "labels": [
+      "step",
+      "initial x",
+      "delta x",
+      "x",
+      "f(x)",
+      "x-delta",
+      "f(x-delta)",
+      "x+delta",
+      "f(x+delta)",
+      "slope",
+      "next x",
+      "x",
+      "y",
+      "Reach Local Minima",
+      "33"
+    ],
+    "equations": [
+      "f(x) = (x^2 cos(x) - x) / 10"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title top-left; slide number in a yellow circle at the top-right; a small parameter box at the left-middle; the formula and explanatory annotation in the center; a function plot with a local-minimum callout at the right; a large numeric table across the bottom.",
+    "regions": [
+      {
+        "name": "Title block",
+        "position": "top-left, roughly x 3%-45%, y 6%-20%",
+        "content": "Red title 'Non-Convex Function' above a blue two-line subtitle."
+      },
+      {
+        "name": "Slide number",
+        "position": "top-right, roughly x 88%-97%, y 3%-12%",
+        "content": "Yellow circle containing the number 33."
+      },
+      {
+        "name": "Parameter box",
+        "position": "left-middle, roughly x 3%-18%, y 33%-50%",
+        "content": "Small bordered box with rows step/initial x/delta x and values 0.1/-11/0.1; a red block arrow points from it toward the table."
+      },
+      {
+        "name": "Formula and annotation",
+        "position": "center, roughly x 38%-66%, y 32%-52%",
+        "content": "Fraction formula for f(x), then two annotation lines about the interval for X and f(x)."
+      },
+      {
+        "name": "Function plot",
+        "position": "right, roughly x 64%-97%, y 24%-60%",
+        "content": "Green oscillating curve, red initial point, orange arrow to a green square local minimum, purple 'Reach Local Minima' callout."
+      },
+      {
+        "name": "Numeric table",
+        "position": "bottom, roughly x 2%-98%, y 62%-95%",
+        "content": "Eight labeled rows and sixteen data columns showing x, f(x), x-delta, f(x-delta), x+delta, f(x+delta), slope, and next x."
+      }
+    ],
+    "hierarchy": "The red title is largest; the blue subtitle is second; the dense table dominates the lower half visually; the plot is the main graphic; the formula and annotation are smaller center text; the parameter box is smallest."
+  },
+  "visual_elements": [
+    {
+      "type": "table",
+      "description": "8 row labels plus 16 data columns. Row 'x': [-11, -10.9, -10.8, -10.7, -10.6, -10.5, -10.4, -10.3, -10.2, -10.1, -10, -9.9, -9.8, -9.7, -9.6, -9.5]. Row 'f(x)': [1.15, -0.04, -1.19, -2.26, -3.27, -4.19, -5.03, -5.77, -6.41, -6.95, -7.39, -7.72, -7.96, -8.08, -8.11, -8.05]. Row 'x-delta': [-11.1, -11, -10.9, -10.8, -10.7, -10.6, -10.5, -10.4, -10.3, -10.2, -10.1, -10, -9.9, -9.8, -9.7, -9.6]. Row 'f(x-delta)': [2.39, 1.15, -0.04, -1.19, -2.26, -3.27, -4.19, -5.03, -5.77, -6.41, -6.95, -7.39, -7.72, -7.96, -8.08, -8.11]. Row 'x+delta': [-10.9, -10.8, -10.7, -10.6, -10.5, -10.4, -10.3, -10.2, -10.1, -10, -9.9, -9.8, -9.7, -9.6, -9.5, -9.4]. Row 'f(x+delta)': [-0.04, -1.19, -2.26, -3.27, -4.19, -5.03, -5.77, -6.41, -6.95, -7.39, -7.72, -7.96, -8.08, -8.11, -8.05, -7.89]. Row 'slope': [-24.3, -23.4, -22.2, -20.8, -19.3, -17.6, -15.8, -13.8, -11.8, -9.8, -7.7, -5.7, -3.6, -1.5, 0.3, 2.2]. Row 'next x': [-10.9, -10.8, -10.7, -10.6, -10.5, -10.4, -10.3, -10.2, -10.1, -10, -9.9, -9.8, -9.7, -9.6, -9.7, -9.6]. The cells around the minimum, especially x=-9.6 and f(x)=-8.11, are highlighted; -9.6 and -8.11 appear red/bold.",
+      "colors": [
+        "#FFFFFF",
+        "#E2EFDA",
+        "#DDEBF7",
+        "#E4DFEC",
+        "#FCE4D6",
+        "#FFFF00",
+        "#FF0000"
+      ],
+      "position": "bottom center/right, spanning most of the slide width"
+    },
+    {
+      "type": "graph",
+      "description": "Cartesian plot of the same non-convex function. Horizontal axis labeled x with ticks -12, -10, -8, -6, -4, -2; vertical axis labeled y with ticks 0, -2, -4, -6, -8, -10 and space above 0 for the initial point. A green curve oscillates through several local minima/maxima. A red/orange dot marks the initial point near x=-11, y=1.15; a thick orange arrow follows the curve down to a green square marker at the first local minimum near x=-9.6, y=-8.11. A purple rounded label reads 'Reach Local Minima' with a purple pointer toward the green square.",
+      "colors": [
+        "#00B050",
+        "#FF0000",
+        "#ED7D31",
+        "#7030A0",
+        "#000000",
+        "#D9D9D9"
+      ],
+      "position": "top-right"
+    },
+    {
+      "type": "table",
+      "description": "Small parameter box with two columns and three rows: step | 0.1; initial x | -11; delta x | 0.1.",
+      "colors": [
+        "#FFFF00",
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "left-middle"
+    },
+    {
+      "type": "other",
+      "description": "Formula displayed as a fraction: numerator x^2 cos(x) - x, denominator 10, with f(x) on the left.",
+      "colors": [
+        "#000000"
+      ],
+      "position": "center"
+    },
+    {
+      "type": "other",
+      "description": "Two annotation lines: 'X is in between -9.7 and color red bold -9.6' and 'f(x) is in between -8.08 and -8.011'. The second line literally shows -8.011 even though the table cell shows -8.11.",
+      "colors": [
+        "#000000",
+        "#FF0000"
+      ],
+      "position": "center, below the formula"
+    },
+    {
+      "type": "arrow",
+      "description": "Red block arrow from the parameter box pointing right/down toward the table.",
+      "colors": [
+        "#FF0000"
+      ],
+      "position": "left-middle to bottom-left"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle slide number containing '33'.",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top-right"
+    }
+  ],
+  "imagery": [
+    "No photos or external icons; the only illustration is the vector-style function plot described above."
+  ],
+  "colors": {
+    "background": "#F2F2F2",
+    "title_text": "#FF0000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000FF",
+      "#FF0000",
+      "#00B050",
+      "#FFFF00",
+      "#7030A0",
+      "#ED7D31",
+      "#D9D9D9"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout, likely Arial/Calibri. Title is large bold red; subtitle is bold blue with 'initial point' in red and 'learning rate' in blue. Table text is small and dense; row labels are plain, numerals are compact. The formula uses italic math variables. No all-caps text except none; no numbered bullets.",
+  "animation_state": "Static slide; no mid-build indicators. All table rows, the plot, and all callouts are fully visible.",
+  "recreation_brief": "1) Use a 16:9 light-gray slide and add a white content rectangle with a thick purple border. 2) Place the title 'Non-Convex Function' top-left in large bold red. 3) Below it, add the subtitle in bold blue: 'May reach different minimum value based on:' then a second line 'initial point and learning rate', making 'initial point' red and 'learning rate' blue. 4) Add a yellow circle at the top-right with black text '33'. 5) Add the small parameter box at the left-middle with rows step | 0.1, initial x | -11, delta x | 0.1, and a red block arrow pointing toward the table. 6) Add the formula f(x) = (x^2 cos(x) - x) / 10 in the center as a fraction. 7) Add the annotation lines exactly: 'X is in between -9.7 and color red bold -9.6' and 'f(x) is in between -8.08 and -8.011'. 8) Insert the bottom table with one label column and 16 data columns using the exact rows listed in visual_elements[0]; keep the text small and dense. 9) Color the table rows in alternating pale green/blue/purple/pink bands, and highlight the local-minimum columns; make x=-9.6 and f(x)=-8.11 red/bold. 10) Draw the top-right plot with black axes, light gridlines, x ticks -12 to -2 and y ticks 0 to -10, a green oscillating curve, a red initial dot near (-11, 1.15), an orange arrow to a green square at the first local minimum, and a purple 'Reach Local Minima' callout pointing to that square.",
+  "_meta": {
+    "frame": "slide_033.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 33,
+      "image": "slide_033.jpg",
+      "provenance": "analysis pending; precuration id unrecoverable (owner removed frames/ + pre-curation state)"
+    },
+    "elapsed_s": 944.8
+  }
+}

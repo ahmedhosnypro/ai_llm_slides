@@ -1,0 +1,194 @@
+{
+  "slide_title": "Non-Convex Function",
+  "subtitle_or_header": "May reach different minimum value based on:\ninitial point and learning rate",
+  "verbatim_text": {
+    "bullets": [
+      "May reach different minimum value based on:",
+      "initial point and learning rate",
+      "X is in between -9.7 and -9.6",
+      "f(x) is in between -8.08 and -8.011"
+    ],
+    "labels": [
+      "step",
+      "initial x",
+      "delta x",
+      "x",
+      "f(x)",
+      "x-delta",
+      "f(x-delta)",
+      "x+delta",
+      "f(x+delta)",
+      "slope",
+      "next x",
+      "x",
+      "y",
+      "Reach Local Minima",
+      "33"
+    ],
+    "equations": [
+      "f(x) = (x^2 cos(x) - x) / 10"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title top-left; slide number in a yellow circle at the top-right; a small parameter box at the left-middle; the formula and explanatory annotation in the center; a function plot with a local-minimum callout at the right; a large numeric table across the bottom.",
+    "regions": [
+      {
+        "name": "Title block",
+        "position": "top-left, roughly x 3%-45%, y 6%-20%",
+        "content": "Red title 'Non-Convex Function' above a blue two-line subtitle."
+      },
+      {
+        "name": "Slide number",
+        "position": "top-right, roughly x 88%-97%, y 3%-12%",
+        "content": "Yellow circle containing the number 33."
+      },
+      {
+        "name": "Parameter box",
+        "position": "left-middle, roughly x 3%-18%, y 33%-50%",
+        "content": "Small bordered box with rows step/initial x/delta x and values 0.1/-11/0.1; a red block arrow points from it toward the table."
+      },
+      {
+        "name": "Formula and annotation",
+        "position": "center, roughly x 38%-66%, y 32%-52%",
+        "content": "Fraction formula for f(x), then two annotation lines: 'X is in between -9.7 and -9.6' (with '-9.6' in red bold) and 'f(x) is in between -8.08 and -8.011'."
+      },
+      {
+        "name": "Function plot",
+        "position": "right, roughly x 64%-97%, y 24%-60%",
+        "content": "Green oscillating curve, red initial point, orange arrow to a green square local minimum, purple 'Reach Local Minima' callout."
+      },
+      {
+        "name": "Numeric table",
+        "position": "bottom, roughly x 2%-98%, y 62%-95%",
+        "content": "Eight labeled rows and sixteen data columns showing x, f(x), x-delta, f(x-delta), x+delta, f(x+delta), slope, and next x."
+      }
+    ],
+    "hierarchy": "The red title is largest; the blue subtitle is second; the dense table dominates the lower half visually; the plot is the main graphic; the formula and annotation are smaller center text; the parameter box is smallest."
+  },
+  "visual_elements": [
+    {
+      "type": "table",
+      "description": "8 row labels plus 16 data columns. Row 'x': [-11, -10.9, -10.8, -10.7, -10.6, -10.5, -10.4, -10.3, -10.2, -10.1, -10, -9.9, -9.8, -9.7, -9.6, -9.5]. Row 'f(x)': [1.15, -0.04, -1.19, -2.26, -3.27, -4.19, -5.03, -5.77, -6.41, -6.95, -7.39, -7.72, -7.96, -8.08, -8.11, -8.05]. Row 'x-delta': [-11.1, -11, -10.9, -10.8, -10.7, -10.6, -10.5, -10.4, -10.3, -10.2, -10.1, -10, -9.9, -9.8, -9.7, -9.6]. Row 'f(x-delta)': [2.39, 1.15, -0.04, -1.19, -2.26, -3.27, -4.19, -5.03, -5.77, -6.41, -6.95, -7.39, -7.72, -7.96, -8.08, -8.11]. Row 'x+delta': [-10.9, -10.8, -10.7, -10.6, -10.5, -10.4, -10.3, -10.2, -10.1, -10, -9.9, -9.8, -9.7, -9.6, -9.5, -9.4]. Row 'f(x+delta)': [-0.04, -1.19, -2.26, -3.27, -4.19, -5.03, -5.77, -6.41, -6.95, -7.39, -7.72, -7.96, -8.08, -8.11, -8.05, -7.89]. Row 'slope': [-24.3, -23.4, -22.2, -20.8, -19.3, -17.6, -15.8, -13.8, -11.8, -9.8, -7.7, -5.7, -3.6, -1.5, 0.3, 2.2]. Row 'next x': [-10.9, -10.8, -10.7, -10.6, -10.5, -10.4, -10.3, -10.2, -10.1, -10, -9.9, -9.8, -9.7, -9.6, -9.7, -9.6]. The two columns around the minimum (x=-9.7 and x=-9.6) are highlighted in yellow #FFFF00; the cells x=-9.6 and f(x)=-8.11 are red #FF0000 bold.",
+      "colors": [
+        "#FFFFFF",
+        "#E2EFDA",
+        "#DDEBF7",
+        "#E4DFEC",
+        "#FCE4D6",
+        "#FFFF00",
+        "#FF0000"
+      ],
+      "position": "bottom center/right, spanning most of the slide width"
+    },
+    {
+      "type": "graph",
+      "description": "Cartesian plot of the same non-convex function. Horizontal axis labeled x with ticks -12, -10, -8, -6, -4, -2; vertical axis labeled y with ticks 0, -2, -4, -6, -8, -10 and space above 0 for the initial point. A green curve oscillates through alternating local minima and maxima (exact count not derivable from this analysis). A red/orange dot marks the initial point near x=-11, y=1.15; a thick orange arrow follows the curve down to a green square marker at the first local minimum near x=-9.6, y=-8.11. A purple rounded label reads 'Reach Local Minima' with a purple pointer toward the green square.",
+      "colors": [
+        "#00B050",
+        "#FF0000",
+        "#ED7D31",
+        "#7030A0",
+        "#000000",
+        "#D9D9D9"
+      ],
+      "position": "top-right"
+    },
+    {
+      "type": "table",
+      "description": "Small parameter box with two columns and three rows: step | 0.1; initial x | -11; delta x | 0.1. Yellow #FFFF00 appears as an accent within the box (exact sub-element not specified in the source analysis).",
+      "colors": [
+        "#FFFF00",
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "left-middle"
+    },
+    {
+      "type": "other",
+      "description": "Formula displayed as a fraction: numerator x^2 cos(x) - x, denominator 10, with f(x) on the left.",
+      "colors": [
+        "#000000"
+      ],
+      "position": "center"
+    },
+    {
+      "type": "other",
+      "description": "Two annotation lines: 'X is in between -9.7 and -9.6' (with '-9.6' rendered in red bold) and 'f(x) is in between -8.08 and -8.011'. The second line literally shows -8.011 even though the table cell shows -8.11; this discrepancy is unresolved (see validation.uncertain_items).",
+      "colors": [
+        "#000000",
+        "#FF0000"
+      ],
+      "position": "center, below the formula"
+    },
+    {
+      "type": "arrow",
+      "description": "Red block arrow from the parameter box pointing right/down toward the table.",
+      "colors": [
+        "#FF0000"
+      ],
+      "position": "left-middle to bottom-left"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circle slide number containing '33'.",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top-right"
+    }
+  ],
+  "imagery": [
+    "No photos or external icons; the only illustration is the vector-style function plot described in visual_elements[1]."
+  ],
+  "colors": {
+    "background": "#F2F2F2",
+    "title_text": "#FF0000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000FF",
+      "#FF0000",
+      "#00B050",
+      "#FFFF00",
+      "#7030A0",
+      "#ED7D31",
+      "#D9D9D9"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout, likely Arial/Calibri; use one sans-serif family for the whole slide. Title is large bold red; subtitle is bold blue with 'initial point' in red and 'learning rate' in blue. In the center annotation, the value '-9.6' is red bold. Table text is small and dense; row labels are plain, numerals are compact. The formula uses italic math variables. No all-caps text; no numbered bullets.",
+  "animation_state": "Static slide; no mid-build indicators. All table rows, the plot, and all callouts are fully visible.",
+  "recreation_brief": "1) Create a 16:9 slide with a solid light-gray background #F2F2F2 (no other background shape is specified). 2) Place a text box at top-left (x 3%-45%, y 6%-20%) with the title 'Non-Convex Function' in large bold red #FF0000 sans-serif. 3) Directly below the title, add two bold blue #0000FF subtitle lines: line 1 'May reach different minimum value based on:' and line 2 'initial point and learning rate', with the words 'initial point' in red #FF0000 and 'learning rate' in blue #0000FF. 4) At top-right (x 88%-97%, y 3%-12%), draw a yellow #FFFF00 circle with the black number '33' centered inside. 5) At left-middle (x 3%-18%, y 33%-50%), draw a small bordered 2-column by 3-row parameter table with black text on white #FFFFFF and a yellow #FFFF00 accent: rows 'step | 0.1', 'initial x | -11', 'delta x | 0.1'. 6) From the parameter box, draw a red #FF0000 block arrow pointing right/down toward the bottom table. 7) At center (x 38%-66%, y 32%-52%), typeset the formula f(x) = (x^2 cos(x) - x) / 10 in black as a stacked fraction (numerator 'x^2 cos(x) - x', denominator '10') with italic math variables. 8) Below the formula, add two black annotation lines: 'X is in between -9.7 and -9.6' with '-9.6' in red #FF0000 bold, and 'f(x) is in between -8.08 and -8.011' reproduced exactly as extracted (note: -8.011 conflicts with the table value -8.11; see validation.uncertain_items). 9) Across the bottom (x 2%-98%, y 62%-95%), build a dense table with one label column plus 16 data columns and 8 rows using exactly these values - row 'x': -11, -10.9, -10.8, -10.7, -10.6, -10.5, -10.4, -10.3, -10.2, -10.1, -10, -9.9, -9.8, -9.7, -9.6, -9.5; row 'f(x)': 1.15, -0.04, -1.19, -2.26, -3.27, -4.19, -5.03, -5.77, -6.41, -6.95, -7.39, -7.72, -7.96, -8.08, -8.11, -8.05; row 'x-delta': -11.1, -11, -10.9, -10.8, -10.7, -10.6, -10.5, -10.4, -10.3, -10.2, -10.1, -10, -9.9, -9.8, -9.7, -9.6; row 'f(x-delta)': 2.39, 1.15, -0.04, -1.19, -2.26, -3.27, -4.19, -5.03, -5.77, -6.41, -6.95, -7.39, -7.72, -7.96, -8.08, -8.11; row 'x+delta': -10.9, -10.8, -10.7, -10.6, -10.5, -10.4, -10.3, -10.2, -10.1, -10, -9.9, -9.8, -9.7, -9.6, -9.5, -9.4; row 'f(x+delta)': -0.04, -1.19, -2.26, -3.27, -4.19, -5.03, -5.77, -6.41, -6.95, -7.39, -7.72, -7.96, -8.08, -8.11, -8.05, -7.89; row 'slope': -24.3, -23.4, -22.2, -20.8, -19.3, -17.6, -15.8, -13.8, -11.8, -9.8, -7.7, -5.7, -3.6, -1.5, 0.3, 2.2; row 'next x': -10.9, -10.8, -10.7, -10.6, -10.5, -10.4, -10.3, -10.2, -10.1, -10, -9.9, -9.8, -9.7, -9.6, -9.7, -9.6; fill the rows with alternating bands pale green #E2EFDA, pale blue #DDEBF7, pale purple #E4DFEC, pale peach #FCE4D6 over white #FFFFFF; highlight the two columns around the minimum (x=-9.7 and x=-9.6) in yellow #FFFF00; render the cells 'x = -9.6' and 'f(x) = -8.11' in red #FF0000 bold; keep all table text small and dense. 10) At right (x 64%-97%, y 24%-60%), draw a Cartesian line chart: black #000000 axes with the horizontal axis labeled 'x' and ticks -12, -10, -8, -6, -4, -2, the vertical axis labeled 'y' with ticks 0, -2, -4, -6, -8, -10 plus headroom above 0, and light-gray #D9D9D9 gridlines; plot f(x) = (x^2 cos(x) - x) / 10 as a green #00B050 oscillating curve; mark the initial point with a red #FF0000 dot at (-11, 1.15); draw a thick orange #ED7D31 arrow following the curve from the initial point down to a green #00B050 square marker at the local minimum (-9.6, -8.11); add a purple #7030A0 rounded callout reading 'Reach Local Minima' with a pointer aimed at the green square.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Removed the embedded style descriptor 'color red bold' from verbatim_text.bullets[2], visual_elements[4], and the 'Formula and annotation' region; the annotation line is now the clean text 'X is in between -9.7 and -9.6', with '-9.6' red bold recorded as styling in typography_notes rather than as slide text.",
+      "Deleted the unsupported 'white content rectangle with a thick purple border' from recreation_brief step 1; no region, visual_element, or colors entry describes such a rectangle. The only specified background is light gray #F2F2F2.",
+      "Replaced the vague quantifier 'several local minima/maxima' in visual_elements[1] with 'alternating local minima and maxima'; no exact extremum count is derivable from the JSON (flagged in uncertain_items).",
+      "Made the table highlight precise in visual_elements[0] and recreation_brief: the two columns around the minimum (x=-9.7 and x=-9.6) are highlighted yellow #FFFF00 (the only unassigned color in the table palette), and the cells x=-9.6 and f(x)=-8.11 are red #FF0000 bold, replacing the vague 'cells around the minimum are highlighted'.",
+      "Corrected the self-contradictory typography note 'No all-caps text except none' to 'No all-caps text'.",
+      "Rewrote recreation_brief as a 10-step ordered checklist; each step places exactly one element with its verbatim text, region-derived position, hex color, and shape/chart type, and embeds the complete 8-row by 16-column table data.",
+      "Verified coverage: all 15 verbatim labels map to regions (step/initial x/delta x -> parameter box; x, f(x), x-delta, f(x-delta), x+delta, f(x+delta), slope, next x -> table rows; x, y -> plot axes; 'Reach Local Minima' -> plot callout; 33 -> slide-number circle), and all 7 visual_elements fall inside the 6 layout.regions."
+    ],
+    "uncertain_items": [
+      "The annotation 'f(x) is in between -8.08 and -8.011' shows -8.011, which conflicts with the table value -8.11 at x=-9.6 (and with f(-9.6) computed from the equation, approximately -8.115). The source analysis itself flags this. Kept verbatim as extracted; verify against the source video frame before final render.",
+      "Reconstruction of annotation line 1 as 'X is in between -9.7 and -9.6' assumes 'color red bold' was an OCR style descriptor that leaked into the text, not literal slide text.",
+      "Which sub-element of the parameter box carries the yellow #FFFF00 accent (border, header, or fill) is not specified in the source analysis.",
+      "The exact row-to-color mapping of the four pastel band fills (#E2EFDA, #DDEBF7, #E4DFEC, #FCE4D6) across the 8 table rows is not enumerated; the brief assumes alternating row bands per the original analysis.",
+      "The exact number of oscillation extrema visible in the green curve is not derivable; the brief specifies the curve by its equation over the tick range x=-12 to -2 instead.",
+      "The highlighted 'cells around the minimum' are interpreted as the x=-9.7 and x=-9.6 columns, inferred from the annotation 'X is in between -9.7 and -9.6'; the exact highlighted cell set is not enumerated in the source."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_033.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 33,
+      "image": "slide_033.jpg",
+      "provenance": "analysis pending; precuration id unrecoverable (owner removed frames/ + pre-curation state)"
+    },
+    "elapsed_s": 944.8,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 860.5
+  }
+}

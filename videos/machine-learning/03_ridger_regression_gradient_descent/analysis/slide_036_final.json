@@ -1,0 +1,176 @@
+{
+  "slide_title": "Problem Formulation",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Define two classes: class I and Class II",
+      "let d(X) be a discriminant function = W^T X",
+      "if X \u2208 class I then d(X) > 0",
+      "if X \u2208 class II then d(X) < 0",
+      "For misclassified X :",
+      "If X \u2208 class I and misclassified as Class II then d(X) will be <0",
+      "If X \u2208 class II and misclassified as Class I then d(X) will be >0",
+      "Define Error function as:",
+      "Error = \u03a3_{all misclassified vectors(i)} (W^T X_i) \u21d2 (W^T X_i) take positive and negative values",
+      "Define \u03b4_i as :",
+      "If X \u2208 class I and misclassified as Class II then d(X) will be <0 \u21d2 \u03b4_i = -1 \u21d2 d(X) \u03b4_i >0",
+      "If X \u2208 class II and misclassified as Class I then d(X) will be >0 \u21d2 \u03b4_i = +1 \u21d2 d(X) \u03b4_i >0"
+    ],
+    "labels": [
+      "36",
+      "X (large red standalone mark at the right side of the Error equation box)"
+    ],
+    "equations": [
+      "d(X) = W^T X",
+      "if X \u2208 class I then d(X) > 0",
+      "if X \u2208 class II then d(X) < 0",
+      "Error = \u03a3_{all misclassified vectors(i)} (W^T X_i) \u21d2 (W^T X_i) take positive and negative values",
+      "If X \u2208 class I and misclassified as Class II then d(X) will be <0 \u21d2 \u03b4_i = -1 \u21d2 d(X) \u03b4_i >0",
+      "If X \u2208 class II and misclassified as Class I then d(X) will be >0 \u21d2 \u03b4_i = +1 \u21d2 d(X) \u03b4_i >0"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title top-center; yellow slide-number badge top-right; four full-width bordered text boxes stacked vertically with approximately 2% vertical gaps between them (box y-ranges 15%-36%, 38%-53%, 55%-71%, 73%-98%); text is left-aligned inside each box; the Error equation is centered within its box with a red X mark at the far right.",
+    "regions": [
+      {
+        "name": "Title region",
+        "position": "top-center, approx x 25%-75%, y 4%-14%",
+        "content": "Red bold title: Problem Formulation"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top-right, approx x 89%-98%, y 3%-12%",
+        "content": "Yellow circle containing black text 36"
+      },
+      {
+        "name": "First content box",
+        "position": "top, approx x 3%-97%, y 15%-36%",
+        "content": "Defines two classes, discriminant function d(X), and sign conditions for class I and class II"
+      },
+      {
+        "name": "Second content box",
+        "position": "upper-middle, approx x 3%-97%, y 38%-53%",
+        "content": "Defines misclassified X and the resulting sign of d(X)"
+      },
+      {
+        "name": "Third content box",
+        "position": "middle, approx x 3%-97%, y 55%-71%",
+        "content": "Defines the Error function as a sum over misclassified vectors; includes a red X mark at the right"
+      },
+      {
+        "name": "Fourth content box",
+        "position": "bottom, approx x 3%-97%, y 73%-98%",
+        "content": "Defines \u03b4_i for misclassified samples and shows d(X) \u03b4_i > 0"
+      }
+    ],
+    "hierarchy": "Title dominates by size and red color; box borders structure the content; body text is smaller black sans-serif; color-coded keywords and inequalities provide secondary emphasis; the yellow slide-number badge is small but high-contrast."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "First bordered rectangle containing four left-aligned lines: class definitions, discriminant function, and two sign conditions.",
+      "colors": [
+        "#A60000",
+        "#F7F7F7"
+      ],
+      "position": "top, x 3%-97%, y 15%-36%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Second bordered rectangle containing the heading For misclassified X : and two conditional misclassification lines.",
+      "colors": [
+        "#A60000",
+        "#F7F7F7"
+      ],
+      "position": "upper-middle, x 3%-97%, y 38%-53%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Third bordered rectangle containing Define Error function as: and the summation equation; a standalone red X appears at the far right.",
+      "colors": [
+        "#A60000",
+        "#F7F7F7",
+        "#FF0000"
+      ],
+      "position": "middle, x 3%-97%, y 55%-71%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Fourth bordered rectangle containing Define \u03b4_i as : and two conditional lines ending with d(X) \u03b4_i >0.",
+      "colors": [
+        "#A60000",
+        "#F7F7F7"
+      ],
+      "position": "bottom, x 3%-97%, y 73%-98%"
+    },
+    {
+      "type": "other",
+      "description": "Yellow circular slide-number badge with black outline and black number 36.",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top-right"
+    },
+    {
+      "type": "other",
+      "description": "Large red standalone X annotation at the right edge of the Error function box.",
+      "colors": [
+        "#FF0000"
+      ],
+      "position": "middle-right, inside third box"
+    }
+  ],
+  "imagery": [
+    "No photos or illustrative icons; only the yellow circular slide-number badge and the red X annotation."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#C00000",
+      "#008000",
+      "#0000FF",
+      "#FFFF00",
+      "#A60000",
+      "#FF0000"
+    ]
+  },
+  "typography_notes": "Sans-serif slide font. Title is bold, red, and noticeably larger than body text. Body text is black, regular weight, with math symbols such as X, W, d, and \u03b4 italicized. Key terms are color-coded: class I in green, Class II in blue, d(X) in red, and inequality results in blue. The words misclassified and Error are underlined; \u03b4_i is also underlined. The slide number is black bold text inside a yellow circle.",
+  "animation_state": "None; the slide appears fully revealed with no partial build state.",
+  "recreation_brief": "1. Set the slide background to solid white #FFFFFF. 2. Place the title 'Problem Formulation' in a text box at top-center (x 25%-75%, y 4%-14%): bold sans-serif, red #C00000, the largest text on the slide. 3. Place a yellow #FFFF00 circle with a thin black #000000 outline at top-right (x 89%-98%, y 3%-12%) and center the bold black text '36' inside it. 4. Draw box 1: a rectangle spanning x 3%-97%, y 15%-36%, with a dark red #A60000 border and light gray #F7F7F7 fill, containing exactly 4 left-aligned black lines: 'Define two classes: class I and Class II' / 'let d(X) be a discriminant function = W^T X' / 'if X \u2208 class I then d(X) > 0' / 'if X \u2208 class II then d(X) < 0'; color 'class I' green #008000, 'Class II' blue #0000FF, 'd(X)' red #C00000, and the inequality results ('> 0', '< 0') blue #0000FF. 5. Draw box 2: a rectangle spanning x 3%-97%, y 38%-53% (about a 2% gap below box 1), same border and fill, containing exactly 3 left-aligned lines: 'For misclassified X :' with 'misclassified' underlined / 'If X \u2208 class I and misclassified as Class II then d(X) will be <0' / 'If X \u2208 class II and misclassified as Class I then d(X) will be >0'; apply the same color coding (class I green #008000, Class II blue #0000FF, inequality results blue #0000FF). 6. Draw box 3: a rectangle spanning x 3%-97%, y 55%-71% (about a 2% gap below box 2), same border and fill, containing the left-aligned heading 'Define Error function as:' with 'Error' underlined, followed by the centered equation 'Error = \u03a3_{all misclassified vectors(i)} (W^T X_i) \u21d2 (W^T X_i) take positive and negative values'; render the summation subscript 'all misclassified vectors(i)' and the trailing explanatory phrase in red #C00000. 7. Add a large standalone red #FF0000 'X' mark at the far right inside box 3 (middle-right of the box), positioned to the right of the centered equation. 8. Draw box 4: a rectangle spanning x 3%-97%, y 73%-98% (about a 2% gap below box 3), same border and fill, containing exactly 3 left-aligned lines: 'Define \u03b4_i as :' with '\u03b4_i' underlined / 'If X \u2208 class I and misclassified as Class II then d(X) will be <0 \u21d2 \u03b4_i = -1 \u21d2 d(X) \u03b4_i >0' / 'If X \u2208 class II and misclassified as Class I then d(X) will be >0 \u21d2 \u03b4_i = +1 \u21d2 d(X) \u03b4_i >0'; color 'class I' green #008000, 'Class II' blue #0000FF, the implication arrows and \u03b4_i assignments red #C00000, and the final 'd(X) \u03b4_i >0' results blue #0000FF. 9. Italicize the math symbols X, W, d, and \u03b4 throughout all four boxes; keep all remaining body text black, regular-weight sans-serif with uniform inner padding. 10. Apply no animation; all elements must be fully visible simultaneously.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Verified subtitle_or_header: no subtitle exists in any region, visual element, or text field, so it correctly remains null (truly absent from the source, not an omission).",
+      "Replaced the vague 'small gaps' with the exact value derivable from layout.regions: approximately 2% vertical gaps (y 36%-38%, 53%-55%, 71%-73%), and updated layout.arrangement accordingly.",
+      "Added exact coordinates for the title (x 25%-75%, y 4%-14%) and the slide-number badge (x 89%-98%, y 3%-12%) from layout.regions into the recreation_brief steps.",
+      "Added the italicization of math symbols (X, W, d, \u03b4) and the black regular-weight body text from typography_notes, which the original recreation_brief omitted.",
+      "Split the red X annotation into its own numbered step (step 7) so each checklist step places exactly one element with exact text, position, color, and shape.",
+      "Cross-checked all 12 verbatim bullets against the 4 content boxes (4 + 3 + 2 + 3 lines) and all 6 visual_elements against layout.regions; coverage is complete (title, badge, 4 boxes, X mark inside box 3) with no orphan or missing elements, so no structural fixes were needed."
+    ],
+    "uncertain_items": [
+      "Exact font sizes are not specified anywhere in the JSON; only the relative rule 'title noticeably larger than body text' is available.",
+      "Exact dimensions of the large red X annotation are not given (only 'large', 'standalone', 'far right of box 3').",
+      "The red #C00000 coloring of the Error-equation summation subscript and explanatory phrase (recreation_brief step 6) appears only in the original brief and is not corroborated by typography_notes; kept as stated but unverified.",
+      "The red #C00000 coloring of the implication arrows and \u03b4_i assignments in box 4 (recreation_brief step 8) appears only in the original brief and is not corroborated by typography_notes; kept as stated but unverified."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_036.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 36,
+      "image": "slide_036.jpg",
+      "kept_frame": "frame_01257.jpg",
+      "start_sec": 1256.0,
+      "end_sec": 1256.0,
+      "frame_count": 1
+    },
+    "elapsed_s": 201.4,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 642.2
+  }
+}

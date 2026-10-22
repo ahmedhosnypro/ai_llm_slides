@@ -1,0 +1,126 @@
+{
+  "slide_title": "Gradient Descent (GD)",
+  "subtitle_or_header": "and\nHow to apply to minimize Loss function",
+  "verbatim_text": {
+    "bullets": [
+      "and",
+      "How to apply to minimize Loss function"
+    ],
+    "labels": [
+      "24"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Title centered horizontally in the upper-middle band; two-line subtitle directly beneath it, also centered; yellow slide-number circle pinned to the top-right corner; a tiny pen/cursor icon sits alone at the bottom-center; a thin rectangular border frames the entire content area.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "upper-middle band, horizontally centered; approx 35-45% vertical, 20-80% horizontal",
+        "content": "Large bold red (#C00000) text: 'Gradient Descent (GD)'"
+      },
+      {
+        "name": "subtitle_line_1",
+        "position": "middle, horizontally centered; approx 50-55% vertical",
+        "content": "Smaller red (#C00000) text: 'and'"
+      },
+      {
+        "name": "subtitle_line_2",
+        "position": "middle-lower, horizontally centered; approx 60-70% vertical",
+        "content": "Smaller red (#C00000) text: 'How to apply to minimize Loss function'"
+      },
+      {
+        "name": "slide_number",
+        "position": "top-right corner; approx 5-15% vertical, 85-95% horizontal",
+        "content": "Yellow (#FFFF00) filled circle with a thin black (#000000) outline containing the black numeral '24'"
+      },
+      {
+        "name": "footer_icon",
+        "position": "bottom-center; approx 90-95% vertical",
+        "content": "Very small dark (#404040) pen/pencil or mouse-cursor glyph"
+      },
+      {
+        "name": "content_border",
+        "position": "full-slide frame enclosing the entire content area, near the slide margins",
+        "content": "Thin dark rectangular border line (exact line color and weight not specified in source)"
+      }
+    ],
+    "hierarchy": "The red title dominates by size and weight; the two subtitle lines are secondary but share the same red hue; the yellow circle is a small high-contrast accent in the corner; the bottom icon is nearly negligible; the thin border frames all content without competing for attention."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Yellow filled circle with a thin dark outline, containing the black numeral 24, used as a slide counter.",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top-right corner (approx 5-15% vertical, 85-95% horizontal)"
+    },
+    {
+      "type": "icon",
+      "description": "Very small dark pen/pencil or mouse-cursor glyph centered at the bottom edge.",
+      "colors": [
+        "#404040"
+      ],
+      "position": "bottom-center (approx 90-95% vertical)"
+    },
+    {
+      "type": "border",
+      "description": "Thin dark rectangular line framing the entire content area of the slide; exact line color and weight not specified in source.",
+      "colors": [],
+      "position": "full-slide content frame around all other elements"
+    }
+  ],
+  "imagery": [
+    "Small dark pen/cursor icon at bottom center",
+    "Yellow circular slide-number badge in top-right corner",
+    "Thin dark rectangular border framing the entire content area"
+  ],
+  "colors": {
+    "background": "#F0F0F0",
+    "title_text": "#C00000",
+    "body_text": "#C00000",
+    "accents": [
+      "#FFFF00",
+      "#000000",
+      "#404040"
+    ]
+  },
+  "typography_notes": "Sans-serif typeface throughout. The title 'Gradient Descent (GD)' is large, bold, and horizontally centered. The two subtitle lines ('and' and 'How to apply to minimize Loss function') are noticeably smaller than the title but retain the same red (#C00000) color and centered alignment. The slide number uses a standard sans-serif black numeral inside the yellow circle.",
+  "animation_state": "Static; no build or reveal is in progress.",
+  "recreation_brief": "1. Set the slide background to light gray (#F0F0F0).\n2. Draw one thin dark rectangular border (suggested 1 pt black #000000 line) framing the entire content area, set slightly inside the slide edges.\n3. Place the title: one horizontally centered text box in the upper-middle band (text center at approx 40% vertical height, spanning approx 20-80% horizontal) containing exactly 'Gradient Descent (GD)' in a large bold sans-serif font (suggested ~40 pt), colored red #C00000.\n4. Directly below the title, place subtitle line 1: one horizontally centered text box at approx 50-55% vertical height containing exactly 'and' in the same red #C00000 sans-serif font at a noticeably smaller size (suggested ~24 pt).\n5. Below that, place subtitle line 2: one horizontally centered text box at approx 60-70% vertical height containing exactly 'How to apply to minimize Loss function' in the same red #C00000 and the same smaller size as line 1.\n6. Top-right corner (approx 5-15% vertical, 85-95% horizontal): draw one small filled circle in yellow #FFFF00 with a thin black #000000 outline (suggested diameter ~0.5 inch) and center the black numeral '24' inside it in a standard sans-serif font.\n7. Bottom-center (approx 90-95% vertical): add one very small dark (#404040) pen/pencil or mouse-cursor icon glyph (suggested height ~0.2-0.3 inch).\n8. Verify the finished slide: exactly three text elements (title plus two subtitle lines), one yellow circular slide-number badge, one bottom icon, and the surrounding border; all text horizontally centered; no charts, diagrams, or additional imagery; static with no animations.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "verbatim_text.bullets was empty; populated it with the two verbatim subtitle lines 'and' and 'How to apply to minimize Loss function' (reconstructed from subtitle_or_header) so the required field is non-empty and all on-slide text is captured in verbatim_text.",
+      "The thin rectangular content border was described in layout.arrangement and the original recreation_brief but was missing from layout.regions, visual_elements, and imagery; added a 'content_border' region, a visual_elements entry of type 'border', and an imagery entry so every mentioned element is covered.",
+      "Added #404040 (footer icon color) to colors.accents so the palette covers every color referenced in visual_elements.",
+      "Added explicit hex colors to each layout.regions content string (#C00000 title/subtitle, #FFFF00/#000000 badge, #404040 icon) and percentage coordinates to visual_elements positions for unambiguous rebuilding.",
+      "Rewrote recreation_brief as an 8-step ordered checklist placing exactly one element per step with exact text strings, percentage positions, hex colors, and shape types; replaced the loose 'roughly 40% from the top' with the source band 35-45% vertical (center ~40%).",
+      "Made typography_notes element-specific by naming each text string and its hex color instead of generic descriptions."
+    ],
+    "uncertain_items": [
+      "The bottom-center glyph is ambiguous in the source: described as either a pen/pencil or a mouse-cursor pointer; the exact icon type cannot be resolved from the JSON.",
+      "Border line color and thickness are not specified (source says only 'thin'; the original brief says 'dark'); the checklist's 1 pt #000000 line is a suggested default, not a source fact.",
+      "Exact font sizes, the yellow badge's diameter, and the footer icon's size are not given in the source; all pt/inch values in the checklist are suggested defaults.",
+      "All percentage positions are the vision model's estimates (e.g., title at 35-45% vertical) and may deviate slightly from the true render."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_024.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 24,
+      "image": "slide_024.jpg",
+      "kept_frame": "frame_01036.jpg",
+      "start_sec": 1005.0,
+      "end_sec": 1035.0,
+      "frame_count": 31
+    },
+    "elapsed_s": 114.4,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 783.8
+  }
+}

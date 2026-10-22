@@ -1,0 +1,206 @@
+{
+  "slide_title": "Matrix Notation for Linear Regression and Classification (N- Samples)",
+  "subtitle_or_header": "N Training Samples",
+  "verbatim_text": {
+    "bullets": [
+      "N Training Samples",
+      "Remember",
+      "In General: N >>> d",
+      "Where: X_(N x d+1) is a matrix",
+      "Y_(N x 1) is labels vector"
+    ],
+    "labels": [
+      "N Training Samples",
+      "Remember",
+      "In General: N >>> d",
+      "3",
+      "Where:",
+      "is a matrix",
+      "is labels vector"
+    ],
+    "equations": [
+      "Top matrix: column headers X_1, X_2, ..., X_n; entries x_{11}, x_{12}, ..., x_{1d}; x_{21}, x_{22}, ..., x_{2d}; ...; x_{n1}, x_{n2}, ..., x_{nd}; bottom row y_1, y_2, ..., y_n",
+      "y = \\underline{W}^T X = X^T \\underline{W}",
+      "N >>> d",
+      "\\begin{bmatrix} y_1 \\\\ y_2 \\\\ ... \\\\ y_n \\end{bmatrix}_{N \\times 1} = \\begin{bmatrix} 1 & x_{11} & x_{12} & .... & x_{1d} \\\\ 1 & x_{21} & x_{22} & .... & x_{2d} \\\\ 1 & .... & .... & .... & .... \\\\ 1 & x_{n1} & x_{n2} & .... & x_{nd} \\end{bmatrix} \\begin{bmatrix} b \\\\ w_1 \\\\ w_2 \\\\ ... \\\\ w_d \\end{bmatrix}_{d+1 \\times 1}",
+      "\\underline{Y} = \\underline{X} \\underline{W}",
+      "Where: \\underline{X}_{N \\times d+1} is a matrix",
+      "\\underline{Y}_{N \\times 1} is labels vector"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title top-left with slide-number badge top-right. Left-side red label introduces the top matrix. A large matrix-notation box sits top-center; a Remember box and an In General box sit top-right. Two large boxes occupy the bottom half: left box contains the expanded matrix equation, right box contains the compact matrix form and definitions; a gray arrow points from the left bottom box to the right bottom box.",
+    "regions": [
+      {
+        "name": "Title region",
+        "position": "top-left/center, roughly x 3-80%, y 3-12%",
+        "content": "Matrix Notation for Linear Regression and Classification (N- Samples)"
+      },
+      {
+        "name": "Slide number badge",
+        "position": "top-right, roughly x 92-98%, y 2-9%",
+        "content": "Yellow circle containing the number 3"
+      },
+      {
+        "name": "Training samples label",
+        "position": "left-middle, roughly x 4-18%, y 22-30%",
+        "content": "N Training Samples"
+      },
+      {
+        "name": "Top matrix notation box",
+        "position": "top-center, roughly x 15-73%, y 14-45%",
+        "content": "Column-wise matrix of N samples with headers X_1 through X_n, feature entries, and bottom labels y_1 through y_n"
+      },
+      {
+        "name": "Remember box",
+        "position": "top-right, roughly x 74-96%, y 14-35%",
+        "content": "Remember y=W^T X = X^T W"
+      },
+      {
+        "name": "In General box",
+        "position": "right-middle, roughly x 74-96%, y 39-48%",
+        "content": "In General: N >>> d"
+      },
+      {
+        "name": "Bottom-left expanded equation box",
+        "position": "bottom-left, roughly x 3-45%, y 55-90%",
+        "content": "Column vector y equals design matrix times weight vector"
+      },
+      {
+        "name": "Arrow",
+        "position": "bottom-center, roughly x 45-49%, y 68-74%",
+        "content": "Right-pointing gray arrow"
+      },
+      {
+        "name": "Bottom-right compact form box",
+        "position": "bottom-right, roughly x 49-96%, y 55-90%",
+        "content": "Y=X W with definitions of X and Y dimensions"
+      }
+    ],
+    "hierarchy": "Title is largest and bold. The two large matrix diagrams (the top matrix-notation box and the bottom-left expanded equation) dominate the middle and bottom. The three colored column headers (X_1 on yellow #FFFF99, X_2 on cyan #CCFFFF, X_n on pink #FFC0CB), the red labels ('N Training Samples' and y_1 through y_n), and the yellow slide-number badge provide secondary visual emphasis. The two small annotation boxes on the right (the Remember box and the In General box) support the main equations."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Top matrix notation: headers X_1 on yellow, X_2 on cyan, dotted ellipsis, X_n on pink. Under X_1: x_{11}, x_{12}, ..., x_{1d}; under X_2: x_{21}, x_{22}, ..., x_{2d}; under X_n: x_{n1}, x_{n2}, ..., x_{nd}. A horizontal line separates the bottom row of red labels y_1, y_2, ..., y_n.",
+      "colors": [
+        "#FFFF99",
+        "#CCFFFF",
+        "#FFC0CB",
+        "#FF0000",
+        "#000000",
+        "#808080"
+      ],
+      "position": "top-center, roughly x 15-73%, y 14-45%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Blue-bordered Remember box containing red italic heading Remember and the equation y=W^T X = X^T W with W underlined.",
+      "colors": [
+        "#0000FF",
+        "#FF0000",
+        "#000000"
+      ],
+      "position": "top-right, roughly x 74-96%, y 14-35%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Black-bordered box containing In General: N >>> d, with N, >>>, and d emphasized in red.",
+      "colors": [
+        "#000000",
+        "#FF0000"
+      ],
+      "position": "right-middle, roughly x 74-96%, y 39-48%"
+    },
+    {
+      "type": "diagram",
+      "description": "Bottom-left expanded equation: left column vector y_1, y_2, ..., y_n with red subscript N x 1; equals sign; middle matrix whose first column is all 1s and whose remaining visible cells are x_{11}, x_{12}, ...., x_{1d}; x_{21}, x_{22}, ...., x_{2d}; an ellipsis row; and x_{n1}, x_{n2}, ...., x_{nd}; right weight vector with blue b, then w_1, w_2, ..., w_d and red subscript d+1 x 1.",
+      "colors": [
+        "#000000",
+        "#FF0000",
+        "#0000FF",
+        "#808080"
+      ],
+      "position": "bottom-left, roughly x 3-45%, y 55-90%"
+    },
+    {
+      "type": "arrow",
+      "description": "Gray right-pointing arrow from the bottom-left equation box to the bottom-right definition box.",
+      "colors": [
+        "#808080"
+      ],
+      "position": "bottom-center, roughly x 45-49%, y 68-74%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Bottom-right box containing Y=X W with Y, X, and W underlined, then Where: X_{N x d+1} is a matrix and Y_{Nx1} is labels vector.",
+      "colors": [
+        "#000000",
+        "#808080"
+      ],
+      "position": "bottom-right, roughly x 49-96%, y 55-90%"
+    },
+    {
+      "type": "other",
+      "description": "Small yellow circular slide-number badge with black numeral 3.",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top-right, roughly x 92-98%, y 2-9%"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#0000FF for Matrix; #000000 for the remaining title words",
+    "body_text": "#000000",
+    "accents": [
+      "#FF0000",
+      "#0000FF",
+      "#FFFF00",
+      "#FFFF99",
+      "#CCFFFF",
+      "#FFC0CB",
+      "#808080"
+    ]
+  },
+  "typography_notes": "Sans-serif slide text with bold title. Math variables are italic and use subscripts. The word Matrix is blue; red is used for labels, emphasis, and dimension subscripts. W, X, and Y are underlined in key equations. No bullet numbering is used.",
+  "animation_state": "None; the slide appears fully revealed with no partial build.",
+  "recreation_brief": "1. Set the slide background to white (#FFFFFF). Place the title 'Matrix Notation for Linear Regression and Classification (N- Samples)' as one bold sans-serif text line, 30-34 pt, at top-left (x 3-80%, y 3-12%): color the word 'Matrix' blue (#0000FF) and all remaining words black (#000000).\n2. Draw a filled yellow (#FFFF00) circle at top-right (x 92-98%, y 2-9%) and center the black (#000000) numeral '3' inside it (slide-number badge).\n3. Place the text 'N Training Samples' in red (#FF0000) at left-middle (x 4-18%, y 22-30%), vertically aligned with the top matrix box.\n4. Draw a gray (#808080)-bordered rectangle at top-center (x 15-73%, y 14-45%) as the top matrix-notation box. Inside it, build a column-wise matrix: header 'X_1' on a yellow (#FFFF99) highlight, header 'X_2' on a cyan (#CCFFFF) highlight, a dotted ellipsis between them, and header 'X_n' on a pink (#FFC0CB) highlight. Under 'X_1' stack x_11, x_12, ..., x_1d; under 'X_2' stack x_21, x_22, ..., x_2d; under 'X_n' stack x_n1, x_n2, ..., x_nd (black #000000, italic variables with subscripts). Draw one horizontal black (#000000) line under the entries and place the red (#FF0000) labels y_1, y_2, ..., y_n in a bottom row, one under each column.\n5. Draw a blue (#0000FF)-bordered highlight box at top-right (x 74-96%, y 14-35%). Inside it place the red (#FF0000) italic heading 'Remember' and, below it, the black (#000000) equation 'y = W^T X = X^T W' with both W's underlined.\n6. Draw a black (#000000)-bordered highlight box at right-middle (x 74-96%, y 39-48%) containing the single line 'In General: N >>> d': render 'In General:' in black (#000000) and 'N', '>>>', 'd' in red (#FF0000).\n7. Draw a gray (#808080)-bordered rectangle at bottom-left (x 3-45%, y 55-90%) as the expanded-equation box. Inside it place, left to right: a bracketed column vector [y_1; y_2; ...; y_n] with the red (#FF0000) subscript 'N x 1'; an equals sign; a bracketed matrix whose first column is all 1s and whose visible cells are row 1: 1, x_11, x_12, ...., x_1d; row 2: 1, x_21, x_22, ...., x_2d; an ellipsis row: 1, ...., ...., ...., ....; row n: 1, x_n1, x_n2, ...., x_nd (all black #000000); then a bracketed weight vector [b; w_1; w_2; ...; w_d] with 'b' in blue (#0000FF), w_1 through w_d in black (#000000), and the red (#FF0000) subscript 'd+1 x 1'.\n8. Draw a gray (#808080) right-pointing arrow at bottom-center (x 45-49%, y 68-74%) pointing from the bottom-left box to the bottom-right box.\n9. Draw a gray (#808080)-bordered rectangle at bottom-right (x 49-96%, y 55-90%) as the compact-form box. Inside it place three black (#000000) lines: line 1: 'Y = X W' with Y, X, and W underlined; line 2: 'Where: X_(N x d+1) is a matrix' with X underlined; line 3: 'Y_(N x 1) is labels vector' with Y underlined.\n10. Apply global typography: sans-serif font everywhere; bold weight only for the title; italic math variables with true subscripts at smaller size; keep every matrix column vertically aligned; use no bullet numbering anywhere on the slide.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "SCHEMA: verbatim_text.bullets was empty; reconstructed the slide's 5 standalone text lines from verbatim_text.labels and verbatim_text.equations: 'N Training Samples', 'Remember', 'In General: N >>> d', 'Where: X_(N x d+1) is a matrix', 'Y_(N x 1) is labels vector'. The label fragments 'Where:', 'is a matrix', 'is labels vector' were merged into the two complete definition lines already present in verbatim_text.equations; the numeral '3' was excluded because it is the slide-number badge, not body text.",
+      "SCHEMA: subtitle_or_header was null; filled with 'N Training Samples' (the red left-side label), the only header-like text on the slide besides the title. Interpretation flagged in uncertain_items.",
+      "CONSISTENCY: the bottom-right visual element said 'Y=X W with X and W underlined', but the verbatim equation \\underline{Y} = \\underline{X} \\underline{W} and typography_notes ('W, X, and Y are underlined in key equations') underline Y as well; corrected the visual-element description and brief step 9 to underline Y, X, and W, and to underline X and Y in the two 'Where' definition lines, per the verbatim LaTeX.",
+      "PRECISION: layout.hierarchy's 'Small annotation boxes on the right' replaced with the exact count: 'The two small annotation boxes on the right (the Remember box and the In General box)'.",
+      "PRECISION: layout.hierarchy's 'Colored column headers' replaced with the exact count and colors: 'The three colored column headers (X_1 on yellow #FFFF99, X_2 on cyan #CCFFFF, X_n on pink #FFC0CB)'.",
+      "RECREATABILITY: recreation_brief rewritten from an unnumbered 10-item list into a numbered 10-step checklist; steps 1-9 each place exactly one element with exact text, bounding position (x/y percentages), hex colors, and shape type (text line, circle badge, bordered rectangles, highlight boxes, matrix layouts, arrow); step 10 sets global typography.",
+      "VERIFIED (no change needed): all 7 visual_elements map 1:1 onto layout.regions, every label and equation in verbatim_text is covered by a region, and the title matches the title region exactly; imagery stays [] because the slide contains no photographic imagery (only vector diagrams, boxes, an arrow, and text)."
+    ],
+    "uncertain_items": [
+      "subtitle_or_header is a reconstruction: the source marked it null and the slide shows no separate subtitle; 'N Training Samples' (the red side label) was used as the closest header text.",
+      "Title fragment '(N- Samples)' kept verbatim; the hyphen may be an extraction artifact of '(N Samples)' or '(N-samples)'.",
+      "Title font size 30-34 pt is an estimate carried over from the source brief ('about 30-34 pt'); the exact point size is not derivable from the JSON.",
+      "Gray (#808080) borders on the three matrix/equation boxes are inferred from the source brief and the #808080 entries in each element's color list; the JSON never explicitly labels them as border colors.",
+      "No items were marked [?] in the source; the entries above are the only unverifiable interpretations introduced during validation."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_003.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 3,
+      "image": "slide_003.jpg",
+      "kept_frame": "frame_00139.jpg",
+      "start_sec": 17.0,
+      "end_sec": 138.0,
+      "frame_count": 122
+    },
+    "elapsed_s": 281.3,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 776.0
+  }
+}

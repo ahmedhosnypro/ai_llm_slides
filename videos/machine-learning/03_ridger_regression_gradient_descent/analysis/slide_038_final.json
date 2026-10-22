@@ -1,0 +1,124 @@
+{
+  "slide_title": "Gradient Descent (GD) vs Stochastic Gradient Descent (SGD)",
+  "subtitle_or_header": "No separate subtitle exists; this is a title-only slide whose entire text content is the three-line centered title block: 'Gradient Descent (GD)' / 'vs' / 'Stochastic Gradient Descent (SGD)'",
+  "verbatim_text": {
+    "bullets": [
+      "Gradient Descent (GD)",
+      "vs",
+      "Stochastic Gradient Descent (SGD)"
+    ],
+    "labels": [
+      "38"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Centered title block occupying the middle of the slide; first line 'Gradient Descent (GD)' in mixed red/blue, second line 'vs' in red centered below, third line 'Stochastic Gradient Descent (SGD)' in mixed red/blue below that; thin gray border frame around the full slide; slide number badge in top-right corner; mouse cursor near lower right of text block",
+    "regions": [
+      {
+        "name": "title_line_1",
+        "position": "upper-middle, center-left to center-right, roughly 30-45% vertical",
+        "content": "'Gradient Descent' in bold red followed by '(GD)' in bold blue"
+      },
+      {
+        "name": "separator",
+        "position": "middle, center, roughly 45-55% vertical",
+        "content": "'vs' in bold red, centered"
+      },
+      {
+        "name": "title_line_2",
+        "position": "lower-middle, center-left to center-right, roughly 55-75% vertical",
+        "content": "'Stochastic Gradient Descent' in bold red followed by '(SGD)' in bold blue"
+      },
+      {
+        "name": "slide_number",
+        "position": "top-right corner, roughly 2-8% vertical, 90-98% horizontal",
+        "content": "Yellow circular badge containing the number '38' in black"
+      },
+      {
+        "name": "cursor",
+        "position": "lower-right of text block, roughly 70% vertical, 72% horizontal",
+        "content": "White mouse cursor arrow pointer"
+      },
+      {
+        "name": "content_border",
+        "position": "full slide perimeter, inset from all four slide edges",
+        "content": "Thin gray (#808080) rectangular border framing the entire slide content area"
+      }
+    ],
+    "hierarchy": "The two title lines dominate visually due to large bold font size; red text is primary with blue parenthetical acronyms as secondary emphasis; slide number is small and peripheral"
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Thin rectangular border framing the entire slide content area",
+      "colors": [
+        "#808080"
+      ],
+      "position": "full slide perimeter"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow filled circle with thin dark outline containing black numeral '38'",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [
+    "Standard white/gray mouse cursor arrow pointer located to the right of the word 'Descent' in the second title line"
+  ],
+  "colors": {
+    "background": "#F5F5F5",
+    "title_text": "#C00000",
+    "body_text": "#C00000",
+    "accents": [
+      "#0000FF",
+      "#FFFF00",
+      "#808080",
+      "#000000"
+    ]
+  },
+  "typography_notes": "Sans-serif font (likely Arial or Calibri); all text is bold; title lines are very large (approximately 48-60pt); 'vs' is slightly smaller than the title lines; parenthetical acronyms are same size as preceding words but colored blue; slide number is small (~12pt)",
+  "animation_state": "No build animation apparent; all text is fully revealed simultaneously",
+  "recreation_brief": "1. Set the slide background to light gray #F5F5F5. 2. Draw a thin (~2pt) gray #808080 rectangular border framing the entire slide content area, inset slightly from all four slide edges. 3. Add a horizontally centered text box with vertical center at ~37% of slide height containing 'Gradient Descent (GD)': render 'Gradient Descent' in bold red #C00000 and ' (GD)' in bold blue #0000FF, both at ~54pt sans-serif (source range 48-60pt). 4. Add a horizontally centered text box with vertical center at ~50% of slide height containing 'vs' in bold red #C00000 at ~44pt (slightly smaller than the title lines). 5. Add a horizontally centered text box with vertical center at ~65% of slide height containing 'Stochastic Gradient Descent (SGD)': render 'Stochastic Gradient Descent' in bold red #C00000 and ' (SGD)' in bold blue #0000FF, at the same ~54pt size as step 3. 6. In the top-right corner (badge center at ~94% horizontal, ~5% vertical), draw a yellow #FFFF00 filled circle of ~0.4in diameter with a thin black #000000 outline, and center the numeral '38' inside it in black #000000 at ~12pt. 7. Overlay a white mouse-cursor arrow pointer with its tip at ~72% horizontal and ~70% vertical, immediately to the right of the word 'Descent' in the second title line (this is a screen-capture artifact; include only for frame-accurate fidelity).",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "verbatim_text.bullets was empty; populated with the 3 verbatim title lines ('Gradient Descent (GD)', 'vs', 'Stochastic Gradient Descent (SGD)') derived from layout.regions and slide_title.",
+      "subtitle_or_header was null; filled with an explicit statement that no separate subtitle exists (title-only slide), reconstructed from layout.regions.",
+      "Added missing layout.regions entry 'content_border' (full-slide-perimeter thin gray #808080 frame) so that regions cover the highlight-box element listed in visual_elements.",
+      "Extended colors.accents from [#0000FF, #FFFF00] to also include #808080 (border gray) and #000000 (numeral black) so the colors object matches every color cited in visual_elements.",
+      "Rewrote recreation_brief as a 7-step ordered checklist; each step now specifies exact text, hex color, font size, and percentage position; removed the vague 'optionally overlay' phrasing for the cursor and replaced the vague 'small' circle with an approximate 0.4in diameter sized to the ~12pt numeral.",
+      "Replaced approximate-only size guidance with concrete mid-range values (~54pt title lines, ~44pt 'vs') derived from typography_notes' 48-60pt range and 'slightly smaller' descriptor."
+    ],
+    "uncertain_items": [
+      "Exact font family is unverifiable: source only states 'likely Arial or Calibri'.",
+      "Exact point sizes are estimates: title lines given only as a 48-60pt range and 'vs' only as 'slightly smaller'; the brief uses ~54pt and ~44pt mid-range values.",
+      "Yellow badge diameter is not specified in the source; ~0.4in is an estimate sized to fit the ~12pt numeral.",
+      "Border thickness is described only as 'thin'; ~2pt is an assumed value.",
+      "The mouse cursor arrow is likely a video screen-capture artifact rather than designed slide content; it is retained per layout.regions and imagery for frame fidelity.",
+      "No items were explicitly marked [?] in the source JSON."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_038.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 38,
+      "image": "slide_038.jpg",
+      "kept_frame": "frame_04692.jpg",
+      "start_sec": 4691,
+      "end_sec": 4691,
+      "precuration_slide": 133,
+      "provenance": "founder-curated kept frame",
+      "_reconcile_md5_snapshot": "d80c9b100126cbb8a1c3008ef736efea"
+    },
+    "elapsed_s": 33.7,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 186.7
+  }
+}

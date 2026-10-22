@@ -1,0 +1,180 @@
+{
+  "slide_title": "Test Data",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Test Data",
+      "Outlier X_s",
+      "NO Regularizer with (as if \u03bb=0)",
+      "Ridge Regularizer with \u03bb=3",
+      "Ridge Regularizer with \u03bb=10"
+    ],
+    "labels": [
+      "19",
+      "z\u2081",
+      "z\u2082",
+      "z\u2083",
+      "y=60",
+      "y=80",
+      "y=100",
+      "Outlier",
+      "X_s",
+      "Test1",
+      "Test2",
+      "Test3",
+      "x\u2081",
+      "x\u2082",
+      "y",
+      "W",
+      "||W||\u00b2"
+    ],
+    "equations": [
+      "z\u2081 = (30, 15), y=60",
+      "z\u2082 = (40, 20), y=80",
+      "z\u2083 = (50, 25), y=100",
+      "Outlier Row 1: 11, 3, 22",
+      "Outlier Row 2: 30, 3, 22",
+      "Outlier Row 3: 60, 3, 22",
+      "NO Regularizer Row 1: W=(2,0), ||W||\u00b2=4; Test1: x\u2081=30,x\u2082=15,y=60; Test2: x\u2081=40,x\u2082=20,y=80; Test3: x\u2081=50,x\u2082=25,y=100",
+      "NO Regularizer Row 2: W=(2.7,0.67), ||W||\u00b2=8.11; Test1: x\u2081=30,x\u2082=15,y=60; Test2: x\u2081=40,x\u2082=20,y=80; Test3: x\u2081=50,x\u2082=25,y=100",
+      "NO Regularizer Row 3: W=(4,0.29), ||W||\u00b2=16.7; Test1: x\u2081=30,x\u2082=15,y=60; Test2: x\u2081=40,x\u2082=20,y=80; Test3: x\u2081=50,x\u2082=25,y=100",
+      "Ridge \u03bb=3 Row 1: W=(0.1,1.95), ||W||\u00b2=3.8; Test1: x\u2081=30,x\u2082=15,y=59; Test2: x\u2081=40,x\u2082=20,y=78.7; Test3: x\u2081=50,x\u2082=25,y=98.4",
+      "Ridge \u03bb=3 Row 2: W=(1.2,0.72), ||W||\u00b2=2.45; Test1: x\u2081=30,x\u2082=15,y=34.1; Test2: x\u2081=40,x\u2082=20,y=45.1; Test3: x\u2081=50,x\u2082=25,y=56.1",
+      "Ridge \u03bb=3 Row 3: W=(1.77,0.32), ||W||\u00b2=4.2; Test1: x\u2081=30,x\u2082=15,y=26.2; Test2: x\u2081=40,x\u2082=20,y=34.4; Test3: x\u2081=50,x\u2082=25,y=42.5",
+      "Ridge \u03bb=10 Row 1: W=(0.13,1.87), ||W||\u00b2=3.5; Test1: x\u2081=30,x\u2082=15,y=57.4; Test2: x\u2081=40,x\u2082=20,y=76.5; Test3: x\u2081=50,x\u2082=25,y=95.6",
+      "Ridge \u03bb=10 Row 2: W=(0.54,0.73), ||W||\u00b2=1.48; Test1: x\u2081=30,x\u2082=15,y=34.6; Test2: x\u2081=40,x\u2082=20,y=46; Test3: x\u2081=50,x\u2082=25,y=57.4",
+      "Ridge \u03bb=10 Row 3: W=(0.82,0.33), ||W||\u00b2=1.92; Test1: x\u2081=30,x\u2082=15,y=26.8; Test2: x\u2081=40,x\u2082=20,y=35.4; Test3: x\u2081=50,x\u2082=25,y=44.1"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title bar across top with 'Test Data' on the left and slide number '19' in a yellow circle on the right. Below the title bar is a reference line for the three fixed test points: z\u2081=(30, 15), y=60; z\u2082=(40, 20), y=80; z\u2083=(50, 25), y=100. Below that is a grid: a left column at ~2-12% width labeled 'Outlier X_s' with exactly three rows of outlier values, followed by three content columns at ~12-42%, ~42-72%, and ~72-98% width headed 'NO Regularizer with (as if \u03bb=0)', 'Ridge Regularizer with \u03bb=3', and 'Ridge Regularizer with \u03bb=10'. Each content column contains exactly three horizontal rows of test-result boxes, and each row contains exactly three test boxes. Two right-pointing arrows sit between the three main columns at mid-height.",
+    "regions": [
+      {
+        "name": "Title Bar",
+        "position": "top, spanning full width, ~0-8% height",
+        "content": "Blue-bordered box with 'Test Data' on the left; yellow circle with '19' on the far right"
+      },
+      {
+        "name": "Test Point Reference",
+        "position": "top of content area, below Title Bar and above column headers, ~8-14% height, ~12-98% width",
+        "content": "z\u2081=(30, 15), y=60; z\u2082=(40, 20), y=80; z\u2083=(50, 25), y=100"
+      },
+      {
+        "name": "Outlier Column",
+        "position": "left, ~14-90% height, ~2-12% width",
+        "content": "Header 'Outlier X_s' then exactly three rows: '11, 3, 22', '30, 3, 22', '60, 3, 22'"
+      },
+      {
+        "name": "No Regularizer Column",
+        "position": "left-center, ~14-90% height, ~12-42% width",
+        "content": "Header 'NO Regularizer with (as if \u03bb=0)'; exactly three rows, each with W, ||W||\u00b2, and three Test boxes showing x\u2081,x\u2082,y"
+      },
+      {
+        "name": "Ridge \u03bb=3 Column",
+        "position": "center, ~14-90% height, ~42-72% width",
+        "content": "Header 'Ridge Regularizer with \u03bb=3'; exactly three rows, each with W, ||W||\u00b2, and three Test boxes showing x\u2081,x\u2082,y"
+      },
+      {
+        "name": "Ridge \u03bb=10 Column",
+        "position": "right, ~14-90% height, ~72-98% width",
+        "content": "Header 'Ridge Regularizer with \u03bb=10'; exactly three rows, each with W, ||W||\u00b2, and three Test boxes showing x\u2081,x\u2082,y"
+      },
+      {
+        "name": "Intercolumn Arrows",
+        "position": "between the No Regularizer and Ridge \u03bb=3 columns, and between the Ridge \u03bb=3 and Ridge \u03bb=10 columns, at mid-height",
+        "content": "Two right-pointing arrows indicating increasing regularization strength"
+      }
+    ],
+    "hierarchy": "Column headers in blue bold dominate; W and ||W||\u00b2 values in red are secondary; predicted y values in green are tertiary; test x-values in black are smallest"
+  },
+  "visual_elements": [
+    {
+      "type": "table",
+      "description": "Grid comparing three regularization settings across three outlier scenarios. The left column lists outlier triples. Each main column shows the learned W vector, squared norm, and predictions on three fixed test points.",
+      "colors": [
+        "#0000FF",
+        "#FF0000",
+        "#008000",
+        "#000000"
+      ],
+      "position": "full slide below the title bar and test-point reference"
+    },
+    {
+      "type": "text-line",
+      "description": "Reference line listing the three fixed test points: z\u2081=(30, 15), y=60; z\u2082=(40, 20), y=80; z\u2083=(50, 25), y=100",
+      "colors": [
+        "#000000"
+      ],
+      "position": "top of content area, below the title bar and above the column headers"
+    },
+    {
+      "type": "arrow",
+      "description": "Two right-pointing arrows between the three main columns, indicating progression from no regularization to \u03bb=3 to \u03bb=10",
+      "colors": [
+        "#000000"
+      ],
+      "position": "between columns at mid-height"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Blue-bordered header box containing 'Test Data' at top-left; yellow filled circle containing '19' at top-right",
+      "colors": [
+        "#0000FF",
+        "#FFFF00"
+      ],
+      "position": "top-left and top-right"
+    }
+  ],
+  "imagery": [
+    "No photos or illustrations; purely typographic and diagrammatic slide"
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#0000FF",
+    "body_text": "#000000",
+    "accents": [
+      "#0000FF",
+      "#FF0000",
+      "#008000",
+      "#FFFF00"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title 'Test Data' is blue bold. Column headers are blue bold. W and ||W||\u00b2 values are red. Predicted y values are green. Test x-values and labels are black. Subscripts used for z\u2081,z\u2082,z\u2083,x\u2081,x\u2082. Slide number '19' is black on a yellow circle.",
+  "animation_state": "Static slide; no build animation evident",
+  "recreation_brief": "1. Set the slide background to white (#FFFFFF) and use sans-serif type throughout.\n2. Place a blue-bordered (#0000FF) rectangle at the top-left, approximately x=2%-32%, y=0%-8%; inside it place bold blue (#0000FF) text 'Test Data'.\n3. Place a yellow-filled (#FFFF00) circle at the top-right, approximately x=92%-98%, y=1%-7%; inside it place black (#000000) text '19'.\n4. Place a black (#000000) text line/box below the title bar and above the column headers, approximately x=12%-98%, y=8%-14%, with exact text 'z\u2081=(30, 15), y=60; z\u2082=(40, 20), y=80; z\u2083=(50, 25), y=100'.\n5. Place the Outlier column at x=2%-12%, y=14%-90%; add a blue bold (#0000FF) header text box with exact text 'Outlier X_s'.\n6. In the Outlier column top third, place a black (#000000) text row with exact text '11, 3, 22'.\n7. In the Outlier column middle third, place a black (#000000) text row with exact text '30, 3, 22'.\n8. In the Outlier column bottom third, place a black (#000000) text row with exact text '60, 3, 22'.\n9. Place the first main column at x=12%-42%, y=14%-90%; add a blue bold (#0000FF) header text box with exact text 'NO Regularizer with (as if \u03bb=0)'.\n10. In that column top third, place a horizontal row area; at its left place red (#FF0000) text 'W=(2,0), ||W||\u00b2=4', then three equal-width small rectangles left-to-right labeled 'Test1', 'Test2', 'Test3' with black (#000000) x-values and green (#008000) y-values: 'Test1: x\u2081=30,x\u2082=15,y=60', 'Test2: x\u2081=40,x\u2082=20,y=80', 'Test3: x\u2081=50,x\u2082=25,y=100'.\n11. In the same column middle third, place red (#FF0000) text 'W=(2.7,0.67), ||W||\u00b2=8.11', then three small rectangles with exact texts 'Test1: x\u2081=30,x\u2082=15,y=60', 'Test2: x\u2081=40,x\u2082=20,y=80', 'Test3: x\u2081=50,x\u2082=25,y=100'; keep x-values black (#000000) and y-values green (#008000).\n12. In the same column bottom third, place red (#FF0000) text 'W=(4,0.29), ||W||\u00b2=16.7', then three small rectangles with exact texts 'Test1: x\u2081=30,x\u2082=15,y=60', 'Test2: x\u2081=40,x\u2082=20,y=80', 'Test3: x\u2081=50,x\u2082=25,y=100'; keep x-values black (#000000) and y-values green (#008000).\n13. Place the second main column at x=42%-72%, y=14%-90%; add a blue bold (#0000FF) header text box with exact text 'Ridge Regularizer with \u03bb=3'.\n14. In that column top third, place red (#FF0000) text 'W=(0.1,1.95), ||W||\u00b2=3.8', then three small rectangles with exact texts 'Test1: x\u2081=30,x\u2082=15,y=59', 'Test2: x\u2081=40,x\u2082=20,y=78.7', 'Test3: x\u2081=50,x\u2082=25,y=98.4'; keep x-values black (#000000) and y-values green (#008000).\n15. In that column middle third, place red (#FF0000) text 'W=(1.2,0.72), ||W||\u00b2=2.45', then three small rectangles with exact texts 'Test1: x\u2081=30,x\u2082=15,y=34.1', 'Test2: x\u2081=40,x\u2082=20,y=45.1', 'Test3: x\u2081=50,x\u2082=25,y=56.1'; keep x-values black (#000000) and y-values green (#008000).\n16. In that column bottom third, place red (#FF0000) text 'W=(1.77,0.32), ||W||\u00b2=4.2', then three small rectangles with exact texts 'Test1: x\u2081=30,x\u2082=15,y=26.2', 'Test2: x\u2081=40,x\u2082=20,y=34.4', 'Test3: x\u2081=50,x\u2082=25,y=42.5'; keep x-values black (#000000) and y-values green (#008000).\n17. Place the third main column at x=72%-98%, y=14%-90%; add a blue bold (#0000FF) header text box with exact text 'Ridge Regularizer with \u03bb=10'.\n18. In that column top third, place red (#FF0000) text 'W=(0.13,1.87), ||W||\u00b2=3.5', then three small rectangles with exact texts 'Test1: x\u2081=30,x\u2082=15,y=57.4', 'Test2: x\u2081=40,x\u2082=20,y=76.5', 'Test3: x\u2081=50,x\u2082=25,y=95.6'; keep x-values black (#000000) and y-values green (#008000).\n19. In that column middle third, place red (#FF0000) text 'W=(0.54,0.73), ||W||\u00b2=1.48', then three small rectangles with exact texts 'Test1: x\u2081=30,x\u2082=15,y=34.6', 'Test2: x\u2081=40,x\u2082=20,y=46', 'Test3: x\u2081=50,x\u2082=25,y=57.4'; keep x-values black (#000000) and y-values green (#008000).\n20. In that column bottom third, place red (#FF0000) text 'W=(0.82,0.33), ||W||\u00b2=1.92', then three small rectangles with exact texts 'Test1: x\u2081=30,x\u2082=15,y=26.8', 'Test2: x\u2081=40,x\u2082=20,y=35.4', 'Test3: x\u2081=50,x\u2082=25,y=44.1'; keep x-values black (#000000) and y-values green (#008000).\n21. Place a black (#000000) right-pointing arrow between the first and second main columns at approximately x=42%, y=50% of the grid.\n22. Place a black (#000000) right-pointing arrow between the second and third main columns at approximately x=72%, y=50% of the grid.\n23. Leave all elements static; add no build animations.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Added a Test Point Reference region and visual element for the z\u2081/z\u2082/z\u2083 equations that were present in verbatim_text but missing from layout.regions and visual_elements.",
+      "Added an Intercolumn Arrows region so layout.regions covers the arrow visual element.",
+      "Updated layout.arrangement to include the test-point reference line and to use exact counts instead of vague wording.",
+      "Adjusted main content column positions to start below the reconstructed test-point reference strip.",
+      "Removed #FFFF00 from the table color list because yellow is used only by the slide-number circle; kept it in the highlight-box colors.",
+      "Rewrote recreation_brief as an ordered numbered checklist with exact texts, positions, colors, and shapes for every element."
+    ],
+    "uncertain_items": [
+      "subtitle_or_header is absent from the source; left as null.",
+      "Exact coordinates and color styling of the z\u2081/z\u2082/z\u2083 test-point reference line are not specified; reconstructed as a black text line below the title bar.",
+      "Whether 'X_s' is intended to be typeset with a subscript s is not specified; kept as plain 'X_s'.",
+      "Exact font family and point sizes are not specified; only sans-serif usage and the color hierarchy are given."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_019.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 19,
+      "image": "slide_019.jpg",
+      "kept_frame": "frame_02177.jpg",
+      "start_sec": 2176,
+      "end_sec": 2176,
+      "precuration_slide": 75,
+      "provenance": "founder-curated 2026-10-19 (frame swap from group)",
+      "_reconcile_md5_snapshot": "f8a4feb271e79be71d946cc8628d1c51"
+    },
+    "elapsed_s": 314.8,
+    "validated_by": "validate_slides",
+    "validation_elapsed_s": 373.2
+  }
+}

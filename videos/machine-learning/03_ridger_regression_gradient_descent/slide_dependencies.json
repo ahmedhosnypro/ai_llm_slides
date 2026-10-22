@@ -1,0 +1,14 @@
+{
+  "edges": {
+    "10": [9],
+    "13": [12],
+    "17": [13],
+    "18": [17]
+  },
+  "special": {
+    "13": "shares slide 12's table PATTERN (same table layout, different numbers) at a DIFFERENT position - inherit 12's table component, redraw with 13's measured geometry + values",
+    "17": "shares 13's tables (same pattern, different numbers) - chain 12->13->17 composes transitively",
+    "18": "builds on 17's certified composition"
+  },
+  "founder_message_2026-10-19": "deps: 10>9 (slide 10 depends on 9); 13>12 (some shared tables, but with different numbers, same table pattern, different position); 17>13 (some shared tables, but with different numbers); 18>17"
+}

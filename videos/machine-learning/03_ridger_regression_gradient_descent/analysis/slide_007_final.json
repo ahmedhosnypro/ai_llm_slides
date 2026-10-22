@@ -1,0 +1,112 @@
+{
+  "slide_title": "Problems of Linear Regression",
+  "subtitle_or_header": "Linear regression model has FOUR problems:",
+  "verbatim_text": {
+    "bullets": [
+      "Assume the Dataset is linearly separable (suitable to apply Linear regression model)",
+      "Linear regression model has FOUR problems:",
+      "\u27a2Overfitting Problem",
+      "\u27a2Matrix Inversion Problem [1] (Singular Matrix)",
+      "\u27a2Matrix Inversion Problem [2] (Large Matrix dimension)",
+      "\u27a2Different Hyperplanes can solve the problems (Selection of Best Hyperplane)"
+    ],
+    "labels": [
+      "7"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Title centered at top; yellow slide-number circle at top-right; large white content box with blue border occupying middle/lower area; text stacked vertically inside box with intro line, section header, and four bulleted items",
+    "regions": [
+      {
+        "name": "title_area",
+        "position": "top center, approx 10-20% height",
+        "content": "Red bold title text 'Problems of Linear Regression'"
+      },
+      {
+        "name": "slide_number",
+        "position": "top right corner, approx 5-15% width, 5-15% height",
+        "content": "Yellow circle containing black number '7'"
+      },
+      {
+        "name": "content_box",
+        "position": "middle to bottom, approx 20-95% height, 5-95% width",
+        "content": "White rectangular box with blue border containing intro sentence, underlined section header, and four arrow-bulleted problem statements"
+      }
+    ],
+    "hierarchy": "Title is largest and red (#C00000); section header 'Linear regression model has FOUR problems:' is blue (#0000FF) and underlined; bullet items are blue (#0000FF) bold with red (#C00000) italic parenthetical notes; intro sentence is smaller and dark red/maroon (exact hex not captured)"
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Large white rectangular content area with a thin blue border enclosing all body text",
+      "colors": [
+        "#FFFFFF",
+        "#0000FF"
+      ],
+      "position": "center/middle of slide below title, approx 5-95% width and 20-95% height"
+    },
+    {
+      "type": "icon",
+      "description": "Yellow circular badge with black numeral '7' indicating slide number",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top right corner, approx 5-15% width and 5-15% height"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#F0F0F0",
+    "title_text": "#C00000",
+    "body_text": "#0000FF",
+    "intro_line_text": "dark red/maroon (exact hex not captured; closest palette red #C00000)",
+    "parenthetical_text": "#C00000",
+    "accents": [
+      "#FFFF00",
+      "#0000FF",
+      "#C00000"
+    ]
+  },
+  "typography_notes": "Sans-serif font throughout (exact family and point sizes not captured). Title is bold, red (#C00000), and larger than all body text. Intro line is dark red/maroon, smaller than the other body text, with underlined key phrases. Section header is blue (#0000FF), bold, and underlined. Bullet items use blue (#0000FF) bold text for main phrases and red (#C00000) italic text for parenthetical explanations. Arrow bullets (\u27a2) precede each of the four problem items.",
+  "animation_state": "No visible build state; all text appears fully revealed",
+  "recreation_brief": "1. Set the slide background to light gray #F0F0F0.\n2. Place the title 'Problems of Linear Regression' in the top-center band (approx 10-20% of slide height): bold sans-serif, red #C00000, the largest text on the slide.\n3. Place a yellow (#FFFF00) circular badge in the top-right corner (approx 5-15% of slide width and 5-15% of slide height) containing the black (#000000) numeral '7'.\n4. Draw the content box: a white (#FFFFFF) rectangle with a thin blue (#0000FF) border spanning approx 5-95% of slide width and 20-95% of slide height, centered below the title; all body text goes inside this box, left-aligned and stacked vertically.\n5. Inside the box, add the intro line as the first body text, in dark red/maroon (exact hex not captured; use #C00000), set smaller than the header and bullets: 'Assume the Dataset is linearly separable (suitable to apply Linear regression model)', with the key phrases 'linearly separable' and 'Linear regression model' underlined [?].\n6. Below the intro line, add the section header in blue (#0000FF) bold underlined text: 'Linear regression model has FOUR problems:'.\n7. Below the header, add exactly four bullet lines, each starting with the arrow character \u27a2 (U+27A2), main text in blue (#0000FF) bold: (1) '\u27a2Overfitting Problem'; (2) '\u27a2Matrix Inversion Problem [1] (Singular Matrix)'; (3) '\u27a2Matrix Inversion Problem [2] (Large Matrix dimension)'; (4) '\u27a2Different Hyperplanes can solve the problems (Selection of Best Hyperplane)'.\n8. Render the parenthetical segments in red (#C00000) italic: '(Singular Matrix)' in bullet 2, '(Large Matrix dimension)' in bullet 3, and '(Selection of Best Hyperplane)' in bullet 4; bullet 1 'Overfitting Problem' has no parenthetical and remains entirely blue bold.\n9. Use a sans-serif font throughout, keep the title the largest text, and apply even vertical spacing between the six text lines inside the box (1 intro line, 1 section header, 4 bullets).",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Filled the null subtitle_or_header with the in-box section header 'Linear regression model has FOUR problems:' (from verbatim_text.bullets[1] and layout.hierarchy).",
+      "Replaced the vague 'spanning most of slide width' with the exact bounds from layout.regions.content_box (5-95% width, 20-95% height) in recreation_brief step 4 and in visual_elements[0].position.",
+      "Added explicit placement coordinates from layout.regions to recreation_brief steps 2-4 (title: top center, 10-20% height; badge: top-right, 5-15% width and 5-15% height).",
+      "Added explicit hex colors to every recreation_brief step: #F0F0F0 background, #C00000 title, #FFFF00 badge fill with #000000 numeral, #FFFFFF box fill with #0000FF border, #0000FF header/bullets, #C00000 parentheticals.",
+      "Corrected 'parenthetical text after each problem' to apply to only 3 of the 4 bullets \u2014 'Overfitting Problem' has no parenthetical.",
+      "Added colors.intro_line_text (dark red/maroon, hex not captured) and colors.parenthetical_text (#C00000) to cover styles described in layout.hierarchy and typography_notes but missing from colors.",
+      "Kept the [?] marker on the exact underlined spans of the intro line and listed the detail in validation.uncertain_items, since typography_notes only says 'underlined key phrases'.",
+      "Rewrote recreation_brief as a 9-step ordered checklist; each step places exactly one element with verbatim text, position, color, and shape type."
+    ],
+    "uncertain_items": [
+      "Exact hex of the intro line's dark red/maroon color is not captured; #C00000 is suggested as the closest palette red.",
+      "Exact underlined spans in the intro line ('linearly separable', 'Linear regression model') come from the original recreation_brief only; typography_notes confirms 'underlined key phrases' without naming them [?].",
+      "Font family and point sizes are unspecified beyond 'sans-serif' and relative ordering (title largest; intro line smallest body text).",
+      "Content-box border is described only as 'thin'; exact stroke width is unknown."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_007.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 7,
+      "image": "slide_007.jpg",
+      "kept_frame": "frame_00372.jpg",
+      "start_sec": 371,
+      "end_sec": 371,
+      "precuration_slide": 8,
+      "provenance": "founder-curated kept frame",
+      "_reconcile_md5_snapshot": "2e7f407904024bfdd000493b53fd9f74"
+    },
+    "elapsed_s": 34.5,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 366.7
+  }
+}

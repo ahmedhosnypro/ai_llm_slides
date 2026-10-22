@@ -1,0 +1,208 @@
+{
+  "slide_title": "Iteration 1",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "No bulleted list appears on the slide; verbatim content is captured in the labels and equations fields."
+    ],
+    "labels": [
+      "Initial W =",
+      "Step \u03b7 = 2",
+      "Check classes of",
+      "C1 positive, C2 negative, Zero is unaccepted",
+      "Upgraded Vectors (From Top)",
+      "Iteration 1",
+      "42",
+      "x1 x2 x3 x4 x5 x6",
+      "C1 C1 C1 C2 C2 C2",
+      "Z1 Z1 Z1",
+      "Update Weight",
+      "Keep same Weight",
+      "\u21d2",
+      "\u21d0"
+    ],
+    "equations": [
+      "Initial W = \\begin{pmatrix}4\\\\-2\\end{pmatrix}",
+      "Step \\eta = 2",
+      "d(x_1)=\\begin{pmatrix}1&1&1&4\\\\-2&0\\end{pmatrix}=0",
+      "W=\\begin{pmatrix}4\\\\-2\\end{pmatrix}+2*\\begin{pmatrix}1\\\\1\\end{pmatrix}=\\begin{pmatrix}6\\\\0\\end{pmatrix}",
+      "d(x_2)=\\begin{pmatrix}1&2&1&6\\\\0&0\\end{pmatrix}=6",
+      "W=\\begin{pmatrix}6\\\\0\\end{pmatrix}",
+      "d(x_3)=\\begin{pmatrix}1&1&2\\\\0&0\\end{pmatrix}=6",
+      "W=\\begin{pmatrix}6\\\\0\\end{pmatrix}",
+      "d(x_4)=\\begin{pmatrix}1&5&4\\\\0&0\\end{pmatrix}=6",
+      "W=\\begin{pmatrix}6\\\\0\\end{pmatrix}-2*\\begin{pmatrix}1\\\\5\\end{pmatrix}=\\begin{pmatrix}4\\\\-10\\end{pmatrix}",
+      "d(x_5)=\\begin{pmatrix}1&6&5\\\\-10&-98\\end{pmatrix}=-96",
+      "W=\\begin{pmatrix}4\\\\-10\\end{pmatrix}"
+    ]
+  },
+  "layout": {
+    "arrangement": "Red Iteration 1 badge on the left-middle; two vector tables on the left; a top strip with initial weight, step size, check-classes matrix, and color legend; the dominant right column is a vertical stack of five d(x_i) \u2192 action \u2192 W update rows; yellow slide-number circle at the top-right.",
+    "regions": [
+      {
+        "name": "top-left data table",
+        "position": "top-left, x 3\u201334%, y 6\u201322%",
+        "content": "Initial x1\u2013x6 vector matrix with C1/C2 class row"
+      },
+      {
+        "name": "top-center initial weight/step",
+        "position": "top-center, x 35\u201360%, y 6\u201320%",
+        "content": "Initial W matrix and Step \u03b7 = 2"
+      },
+      {
+        "name": "top-right check classes",
+        "position": "top-right, x 60\u201388%, y 6\u201322%",
+        "content": "Check classes of Z1 Z1 Z1 matrix and color legend"
+      },
+      {
+        "name": "slide number badge",
+        "position": "top-right corner, x 90\u201397%, y 4\u201313%",
+        "content": "Yellow circle containing 42"
+      },
+      {
+        "name": "left upgraded vectors table",
+        "position": "left, x 4\u201336%, y 28\u201345%",
+        "content": "Upgraded Vectors (From Top) matrix with C1/C2 class row"
+      },
+      {
+        "name": "iteration title box",
+        "position": "left, x 4\u201320%, y 47\u201356%",
+        "content": "Red rectangle with white text Iteration 1"
+      },
+      {
+        "name": "right computation stack",
+        "position": "right, x 38\u201397%, y 28\u201392%",
+        "content": "Five stacked computation rows for d(x1) through d(x5), with update/keep actions and W matrices"
+      }
+    ],
+    "hierarchy": "Red Iteration 1 badge and yellow 42 badge are highest-contrast; the right-hand equation stack is the densest and largest content block; left tables are supporting data; colored class labels provide semantic accents."
+  },
+  "visual_elements": [
+    {
+      "type": "table",
+      "description": "Top-left initial vector table. Header row: x1 x2 x3 x4 x5 x6. Data rows: (1)(2)(1)(5)(6)(6); (1)(2)(1)(4)(5)(6); (1)(2)(1)(5)(6)(6). Bottom class row: C1 C1 C1 C2 C2 C2.",
+      "colors": [
+        "#FFFFFF",
+        "#000000",
+        "#FF0000",
+        "#0000FF"
+      ],
+      "position": "top-left"
+    },
+    {
+      "type": "other",
+      "description": "Top-center text block: Initial W = followed by a 2x1 matrix with 4 over -2; to the right, red italic Step \u03b7 = 2.",
+      "colors": [
+        "#000000",
+        "#FF0000"
+      ],
+      "position": "top-center"
+    },
+    {
+      "type": "table",
+      "description": "Top-right check-classes matrix under the caption Check classes of. Header: Z1 Z1 Z1. Rows: (0)(7)(3); (0)(6)(2).",
+      "colors": [
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "top-right"
+    },
+    {
+      "type": "other",
+      "description": "Legend sentence with colored terms: C1 positive, C2 negative, Zero is unaccepted.",
+      "colors": [
+        "#FF0000",
+        "#0000FF",
+        "#008000",
+        "#000000"
+      ],
+      "position": "top-right below check-classes matrix"
+    },
+    {
+      "type": "table",
+      "description": "Left-middle table captioned Upgraded Vectors (From Top). Header row: x1 x2 x3 x4 x5 x6. Data rows: (1)(1)(1)(1)(1)(1); (1)(2)(1)(5)(6)(6); (1)(2)(1)(5)(6)(6). Bottom class row: C1 C1 C1 C2 C2 C2.",
+      "colors": [
+        "#FFFFFF",
+        "#000000",
+        "#FF0000",
+        "#0000FF"
+      ],
+      "position": "left-middle"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Solid red rectangle with white bold text Iteration 1.",
+      "colors": [
+        "#FF0000",
+        "#FFFFFF"
+      ],
+      "position": "left-middle below the upgraded vectors table"
+    },
+    {
+      "type": "flowchart",
+      "description": "Right-hand computation stack, top to bottom: Row 1: d(x1) matrix = 0, \u21d2 Update Weight, W = [4;-2] + 2*[1;1] = [6;0], with a green \u21d0 at the far right. Row 2: d(x2) matrix = 6, \u21d2 Keep same Weight, W = [6;0]. Row 3: d(x3) matrix = 6, \u21d2 Keep same Weight, W = [6;0]. Row 4: d(x4) matrix = 6, \u21d2 Update Weight, W = [6;0] - 2*[1;5] = [4;-10], with a green \u21d0 at the far right. Row 5: d(x5) matrix = -96, \u21d2 Keep same Weight, W = [4;-10].",
+      "colors": [
+        "#000000",
+        "#FF0000",
+        "#008000"
+      ],
+      "position": "right-middle to bottom-right"
+    }
+  ],
+  "imagery": [
+    "White mouse-pointer arrow near the right side between the second and third computation rows; it obscures no text and is a cursor artifact, not slide content."
+  ],
+  "colors": {
+    "background": "#F5F5F5",
+    "title_text": "#FFFFFF",
+    "body_text": "#000000",
+    "accents": [
+      "#FF0000",
+      "#0000FF",
+      "#008000",
+      "#FFFF00",
+      "#FFFFE0"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout; math/matrices in a compact equation-style font. Iteration 1 is white bold on a red rectangle. Step \u03b7 = 2 is red italic. Update Weight is red; Keep same Weight is black. Table headers and class labels are small; C1 is red, C2 is blue, Zero is green. Slide number 42 is bold black inside a yellow circle.",
+  "animation_state": "Static; no mid-build. All tables and all five computation rows are fully visible. A mouse pointer is present but obscures no text.",
+  "recreation_brief": "1. Set the slide background fill to #F5F5F5; use sans-serif type throughout and a compact equation-style font for all matrices. The source does not specify a canvas aspect ratio, so do not change the deck size or add an assumed border.\n2. Place a yellow #FFFF00 circle at the top-right corner, x 90\u201397%, y 4\u201313%, and center bold black #000000 text 42 inside it.\n3. Place a 6-column table at top-left, x 3\u201334%, y 6\u201322%, with white #FFFFFF cells, thin black #000000 borders, and small header/class text. Header row: x1 x2 x3 x4 x5 x6. Data rows: (1)(2)(1)(5)(6)(6); (1)(2)(1)(4)(5)(6); (1)(2)(1)(5)(6)(6). Bottom class row: C1 C1 C1 C2 C2 C2, with C1 in red #FF0000 and C2 in blue #0000FF.\n4. Place a text block at top-center, x 35\u201360%, y 6\u201320%: black #000000 text Initial W = followed by the 2x1 matrix \\begin{pmatrix}4\\\\-2\\end{pmatrix}; then red #FF0000 italic text Step \u03b7 = 2.\n5. Place a table at top-right, x 60\u201388%, y 6\u201322%, with white #FFFFFF cells and thin black #000000 borders; put black #000000 caption Check classes of above it. Header row: Z1 Z1 Z1. Data rows: (0)(7)(3); (0)(6)(2).\n6. Directly below the check-classes table in the same top-right region, place the legend C1 positive, C2 negative, Zero is unaccepted; color C1 red #FF0000, C2 blue #0000FF, Zero green #008000, and the remaining words black #000000.\n7. Place a 6-column table at left, x 4\u201336%, y 28\u201345%, with white #FFFFFF cells, thin black #000000 borders, and small header/class text; put black #000000 caption Upgraded Vectors (From Top) above it. Header row: x1 x2 x3 x4 x5 x6. Data rows: (1)(1)(1)(1)(1)(1); (1)(2)(1)(5)(6)(6); (1)(2)(1)(5)(6)(6). Bottom class row: C1 C1 C1 C2 C2 C2, with C1 in red #FF0000 and C2 in blue #0000FF.\n8. Place a solid red #FF0000 rectangle at left, x 4\u201320%, y 47\u201356%, and center white #FFFFFF bold text Iteration 1 inside it.\n9. Place a flowchart-style stack of five computation rows in the right column, x 38\u201397%, y 28\u201392%, top to bottom. Use black #000000 for d(x_i), matrices, and Keep same Weight; use red #FF0000 for Update Weight; place a black #000000 \u21d2 between each d(x_i) result and its action; place a green #008000 \u21d0 at the far right of rows 1 and 4 only.\n10. Row 1 exact text: d(x_1)=\\begin{pmatrix}1&1&1&4\\\\-2&0\\end{pmatrix}=0 \u21d2 Update Weight W=\\begin{pmatrix}4\\\\-2\\end{pmatrix}+2*\\begin{pmatrix}1\\\\1\\end{pmatrix}=\\begin{pmatrix}6\\\\0\\end{pmatrix}, with green #008000 \u21d0 at the far right.\n11. Row 2 exact text: d(x_2)=\\begin{pmatrix}1&2&1&6\\\\0&0\\end{pmatrix}=6 \u21d2 Keep same Weight W=\\begin{pmatrix}6\\\\0\\end{pmatrix}.\n12. Row 3 exact text: d(x_3)=\\begin{pmatrix}1&1&2\\\\0&0\\end{pmatrix}=6 \u21d2 Keep same Weight W=\\begin{pmatrix}6\\\\0\\end{pmatrix}.\n13. Row 4 exact text: d(x_4)=\\begin{pmatrix}1&5&4\\\\0&0\\end{pmatrix}=6 \u21d2 Update Weight W=\\begin{pmatrix}6\\\\0\\end{pmatrix}-2*\\begin{pmatrix}1\\\\5\\end{pmatrix}=\\begin{pmatrix}4\\\\-10\\end{pmatrix}, with green #008000 \u21d0 at the far right.\n14. Row 5 exact text: d(x_5)=\\begin{pmatrix}1&6&5\\\\-10&-98\\end{pmatrix}=-96 \u21d2 Keep same Weight W=\\begin{pmatrix}4\\\\-10\\end{pmatrix}.\n15. Do not add the white mouse-pointer arrow visible near the right side between computation rows 2 and 3; it is a cursor in the source frame, not slide content.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Populated the empty verbatim_text.bullets field with an explicit no-bullet note derived from the empty source list.",
+      "Kept subtitle_or_header null because the source contains no subtitle or header.",
+      "Expanded layout.arrangement to explicitly include the color legend alongside the check-classes matrix.",
+      "Rewrote recreation_brief as a 15-step ordered placement checklist using exact region percentages, exact texts, colors, and element types.",
+      "Removed the unsupported 16:9 canvas assumption from recreation_brief because the source does not specify aspect ratio.",
+      "Added a final recreation step not to reproduce the mouse-pointer cursor, since imagery lists it and animation_state says it obscures no text.",
+      "Flagged the unused #FFFFE0 accent and the verbatim d(x1) matrix row-length mismatch in uncertain_items."
+    ],
+    "uncertain_items": [
+      "Source does not specify slide canvas aspect ratio.",
+      "Exact mouse-pointer coordinates are not given; only 'near the right side between the second and third computation rows'.",
+      "Accent #FFFFE0 is listed in colors.accents but is not referenced by any visual element.",
+      "Equation d(x1) is retained verbatim even though its matrix rows appear dimensionally inconsistent: first row has four entries, second row has two.",
+      "No bulleted list exists in the source; verbatim_text.bullets contains a reconstruction note rather than verbatim bullets.",
+      "subtitle_or_header is null because no subtitle/header is present in the source."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_042.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 42,
+      "image": "slide_042.jpg",
+      "kept_frame": "frame_04947.jpg",
+      "start_sec": 4946,
+      "end_sec": 4946,
+      "precuration_slide": 142,
+      "provenance": "founder-curated 2026-10-19 (frame swap from group)",
+      "_reconcile_md5_snapshot": "c8913083a18f76039b5abc2b9f8bbcf5"
+    },
+    "elapsed_s": 201.5,
+    "validated_by": "validate_slides",
+    "validation_elapsed_s": 390.8
+  }
+}

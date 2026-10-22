@@ -1,0 +1,171 @@
+{
+  "slide_title": "Non-Convex Function",
+  "subtitle_or_header": "May reach different minimum value based on: initial point and learning rate",
+  "verbatim_text": {
+    "bullets": [
+      "May reach different minimum value based on:",
+      "initial point and learning rate",
+      "X is in between 9.6 and color red bold 9.8",
+      "f(x) is in between -10.03 and -9.92"
+    ],
+    "labels": [
+      "step",
+      "initial X",
+      "delta",
+      "x",
+      "f(x)",
+      "x-delta",
+      "f(x-delta)",
+      "x+delta",
+      "f(x+delta)",
+      "slope",
+      "next x",
+      "Reach global Minima",
+      "34"
+    ],
+    "equations": [
+      "f(x) = (x^2 cos(x) - x) / 10"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title block top-left with red heading and two-line subtitle; small parameter box directly below subtitle on the left; equation box centered-left; explanatory text below equation; large data table spanning the full bottom width; function plot occupying the top-right quadrant; yellow slide-number circle in the extreme top-right corner.",
+    "regions": [
+      {
+        "name": "title_block",
+        "position": "top-left, approx 5-45% width, 5-20% height",
+        "content": "Red title 'Non-Convex Function' followed by black subtitle line and blue subtitle line"
+      },
+      {
+        "name": "parameter_box",
+        "position": "top-left, approx 5-20% width, 22-35% height",
+        "content": "Small 3-row box listing step=0.2, initial X=7, delta=0.1 with a red arrow pointing right toward the main table"
+      },
+      {
+        "name": "equation_box",
+        "position": "center-left, approx 25-50% width, 25-40% height",
+        "content": "Boxed formula f(x) = (x\u00b2 cos(x) - x)/10"
+      },
+      {
+        "name": "explanatory_text",
+        "position": "center-left, approx 5-50% width, 42-52% height",
+        "content": "Two lines of text describing the x range and f(x) range with red bold emphasis on 9.8"
+      },
+      {
+        "name": "main_table",
+        "position": "bottom, approx 3-97% width, 55-95% height",
+        "content": "Wide numerical table with 8 labeled rows and 18 data columns showing gradient-descent iteration values"
+      },
+      {
+        "name": "function_plot",
+        "position": "top-right, approx 60-95% width, 8-50% height",
+        "content": "2D Cartesian plot of the non-convex function with blue curve, red markers, orange arrow, and pink 'Reach global Minima' annotation"
+      },
+      {
+        "name": "slide_number",
+        "position": "top-right corner, approx 93-98% width, 3-10% height",
+        "content": "Yellow circle containing the number 34"
+      }
+    ],
+    "hierarchy": "The large multi-row table dominates the lower two-thirds of the slide by area. The red title is the largest text element. The graph is the most visually complex element. The parameter box and equation are smaller supporting elements."
+  },
+  "visual_elements": [
+    {
+      "type": "table",
+      "description": "Small parameter table with 3 rows: step | 0.2 ; initial X | 7 ; delta | 0.1. Cells have thin black borders and a pale yellow/cream fill.",
+      "colors": [
+        "#FFFACD",
+        "#000000"
+      ],
+      "position": "top-left, below subtitle"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Rectangular equation box with black border containing f(x) = (x\u00b2 cos(x) - x)/10, with the fraction rendered as numerator over denominator.",
+      "colors": [
+        "#FFFFFF",
+        "#000000"
+      ],
+      "position": "center-left"
+    },
+    {
+      "type": "arrow",
+      "description": "Thick red arrow pointing from the parameter box to the right, toward the main table header row.",
+      "colors": [
+        "#FF0000"
+      ],
+      "position": "between parameter box and main table"
+    },
+    {
+      "type": "table",
+      "description": "Large numerical table, 8 rows x 19 columns (1 label column + 18 data columns). Row labels and data values: x | 7, 7.2, 7.4, 7.6, 7.8, 8, 8.2, 8.4, 8.6, 8.8, 9, 9.2, 9.4, 9.6, 9.8, 9.8, 9.8, 9.8 ; f(x) | 2.99, 2.43, 1.66, 0.69, -0.45, -1.73, -3.1, -4.5, -5.88, -7.16, -8.28, -9.17, -9.77, -10.03, -9.92, -10.03, -9.92, -10.03 ; x-delta | 6.9, 7.1, 7.3, 7.5, 7.7, 7.9, 8.1, 8.3, 8.5, 8.7, 8.9, 9.1, 9.3, 9.5, 9.7, 9.5, 9.7, 9.5 ; f(x-delta) | 3.19, 2.74, 2.07, 1.2, 0.14, -1.08, -2.41, -3.8, -5.2, -6.54, -7.75, -8.76, -9.51, -9.95, -10.02, -9.95, -10.02, -9.95 ; x+delta | 7.1, 7.3, 7.5, 7.7, 7.9, 8.1, 8.3, 8.5, 8.7, 8.9, 9.1, 9.3, 9.5, 9.7, 9.9, 9.7, 9.9, 9.7 ; f(x+delta) | 2.74, 2.07, 1.2, 0.14, -1.08, -2.41, -3.8, -5.2, -6.54, -7.75, -8.76, -9.51, -9.95, -10.02, -9.7, -10.02, -9.7, -10.02 ; slope | -4.5, -6.7, -8.7, -10.6, -12.2, -13.3, -13.9, -14, -13.4, -12.1, -10.1, -7.5, -4.4, -0.7, 3.2, -0.7, 3.2, -0.7 ; next x | 7.2, 7.4, 7.6, 7.8, 8, 8.2, 8.4, 8.6, 8.8, 9, 9.2, 9.4, 9.6, 9.8, 9.6, 9.8, 9.6, 9.8. Header row (x values) has cyan fill; f(x) row has white fill with green highlight boxes around the -10.03 and -9.92 cells near the right end; x-delta, f(x-delta), x+delta, f(x+delta) rows have pale yellow fill; slope row has pale red/pink fill; next x row has pale green fill.",
+      "colors": [
+        "#AFEEEE",
+        "#FFFFFF",
+        "#90EE90",
+        "#FFFACD",
+        "#FFB6C1",
+        "#98FB98",
+        "#000000"
+      ],
+      "position": "bottom, spanning full width"
+    },
+    {
+      "type": "graph",
+      "description": "2D line plot with Cartesian axes. X-axis labeled 'x' with ticks from -10 to 10. Y-axis labeled 'y' with ticks from -12 to 8. A blue oscillating curve represents f(x). Several red circular markers sit on the curve. An orange arrow points to one red marker. Pink/red text 'Reach global Minima' sits at the lower right with a small arrow pointing to a local minimum valley of the curve.",
+      "colors": [
+        "#0000FF",
+        "#FF0000",
+        "#FFA500",
+        "#FF69B4",
+        "#000000"
+      ],
+      "position": "top-right"
+    },
+    {
+      "type": "image",
+      "description": "Yellow filled circle with black outline containing the black numeral 34.",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [
+    "Yellow circular slide-number badge in the top-right corner",
+    "No photographs or illustrations; all elements are textual, tabular, or diagrammatic"
+  ],
+  "colors": {
+    "background": "#F5F5F5",
+    "title_text": "#8B0000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000FF",
+      "#FF0000",
+      "#90EE90",
+      "#FFFF00",
+      "#FFA500",
+      "#FF69B4",
+      "#AFEEEE",
+      "#FFB6C1"
+    ]
+  },
+  "typography_notes": "Sans-serif typeface throughout. Title is large, bold, dark red. Subtitle first line is black; second line 'initial point and learning rate' is blue. Table text is small and monospaced or tightly spaced. Row labels are left-aligned bold; data values are center-aligned. The value 9.8 in the explanatory text is red and bold. Axis labels on the graph are small black text.",
+  "animation_state": "Static slide; no build or reveal indicators are visible. All content appears fully rendered.",
+  "recreation_brief": "1. Set slide background to light gray (#F5F5F5). 2. Place title 'Non-Convex Function' at top-left in large bold dark red (#8B0000). 3. Below it add black text 'May reach different minimum value based on:' and on the next line blue text (#0000FF) 'initial point and learning rate'. 4. Add a small 3-row parameter box at top-left with pale yellow fill (#FFFACD) and black borders containing: step | 0.2 ; initial X | 7 ; delta | 0.1. 5. Draw a thick red arrow from the right edge of the parameter box pointing toward the main table. 6. Add a white equation box with black border in the center-left containing f(x) = (x\u00b2 cos(x) - x)/10 formatted as a vertical fraction. 7. Below the equation add two lines: 'X is in between 9.6 and color red bold 9.8' (render 9.8 in red bold) and 'f(x) is in between -10.03 and -9.92'. 8. In the top-right, insert a 2D plot: x-axis from -10 to 10, y-axis from -12 to 8, blue oscillating curve for f(x), red dot markers on the curve, an orange arrow pointing to one marker, and pink text 'Reach global Minima' with a pointer to a valley. 9. Along the bottom, build a wide table with 8 rows and 19 columns. Use cyan fill (#AFEEEE) for the x header row, white for f(x) with green highlight boxes (#90EE90) around the -10.03 and -9.92 cells, pale yellow (#FFFACD) for the four delta rows, pale pink (#FFB6C1) for slope, and pale green (#98FB98) for next x. Populate every cell with the exact numeric values listed in the visual_elements table description. 10. Add a yellow circle (#FFFF00) with black outline in the extreme top-right containing '34'.",
+  "_meta": {
+    "frame": "slide_034.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 34,
+      "image": "slide_034.jpg",
+      "kept_frame": "frame_04020.jpg",
+      "start_sec": 4019,
+      "end_sec": 4019,
+      "precuration_slide": 129,
+      "provenance": "founder-curated kept frame",
+      "_reconcile_md5_snapshot": "859dea0ea570ee3d064b008ffbc058c4"
+    },
+    "elapsed_s": 446.7
+  }
+}

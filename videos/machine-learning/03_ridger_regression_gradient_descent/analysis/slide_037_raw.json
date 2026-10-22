@@ -1,0 +1,165 @@
+{
+  "slide_title": "Problem Formulation",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Define \u03b4_i as :",
+      "If X \u2208 class I and misclassified as Class II then d(X) will be <0 \u21d2 \u03b4_i = -1 \u21d2 d(X) \u03b4_i > 0",
+      "If X \u2208 class II and misclassified as Class I then d(X) will be >0 \u21d2 \u03b4_i = +1 \u21d2 d(X) \u03b4_i > 0",
+      "Redefine Error function as:",
+      "Error = \u03a3_{all misclassified vectors (i)} \u03b4_i W^T X_i \u21d2 (W^T X_i) takes positive and negative values and \u03b4_i has the same sign",
+      "Summation is always positive",
+      "Minimize the Error using Gradient Descent with step \u03b7",
+      "W^(updated) = W^(old) - \u03b7 \u2202Error/\u2202W where \u2202Error/\u2202W = \u03a3_{misclassified vectors} \u03b4_i X_i",
+      "W^(updated) = W^(old) - \u03b7 \u03a3_{misclassified vectors ONLY (i)} \u03b4_i X_i"
+    ],
+    "labels": [
+      "37",
+      "class I",
+      "Class II",
+      "class II",
+      "Class I",
+      "where",
+      "all misclassified vectors (i)",
+      "misclassified vectors",
+      "misclassified vectors ONLY (i)"
+    ],
+    "equations": [
+      "If X \u2208 class I and misclassified as Class II then d(X) will be <0 \u21d2 \u03b4_i = -1 \u21d2 d(X) \u03b4_i > 0",
+      "If X \u2208 class II and misclassified as Class I then d(X) will be >0 \u21d2 \u03b4_i = +1 \u21d2 d(X) \u03b4_i > 0",
+      "Error = \u03a3_{all misclassified vectors (i)} \u03b4_i W^T X_i \u21d2 (W^T X_i) takes positive and negative values and \u03b4_i has the same sign",
+      "W^(updated) = W^(old) - \u03b7 \u2202Error/\u2202W where \u2202Error/\u2202W = \u03a3_{misclassified vectors} \u03b4_i X_i",
+      "W^(updated) = W^(old) - \u03b7 \u03a3_{misclassified vectors ONLY (i)} \u03b4_i X_i"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top inside a thin dark-red outer border; a yellow slide-number circle sits at the top right. Below the title are three full-width stacked panels: a pale-yellow definition panel, a tan error-function panel, and a tan gradient-descent panel. The bottom panel contains two green rounded highlight boxes around update-rule expressions.",
+    "regions": [
+      {
+        "name": "title area",
+        "position": "top center, roughly x 20-80%, y 4-14%",
+        "content": "Problem Formulation in dark red serif bold; yellow circle with 37 at far right"
+      },
+      {
+        "name": "definition panel",
+        "position": "upper middle, roughly x 3-97%, y 17-38%",
+        "content": "Red-bordered pale-yellow box: Define \u03b4_i as : followed by two misclassification implication lines"
+      },
+      {
+        "name": "error panel",
+        "position": "middle, roughly x 3-97%, y 41-63%",
+        "content": "Red-bordered tan box: Redefine Error function as: with summation equation, explanation, and Summation is always positive"
+      },
+      {
+        "name": "gradient panel",
+        "position": "bottom, roughly x 3-97%, y 66-97%",
+        "content": "Red-bordered tan box: Minimize the Error using Gradient Descent with step \u03b7, two update equations, green rounded highlights, red subscripts"
+      }
+    ],
+    "hierarchy": "Title is largest and dark red. Top and middle panel headings are dark red bold. The bottom heading is italic black with Gradient Descent in blue. Body and equations are black serif. Red is used for arrows, key terms, and summation subscripts. Green rounded highlights draw attention to the update rule."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Outer thin dark-red rectangle framing the whole slide content",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "around all content, roughly x 2-98%, y 2-98%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pale-yellow panel with dark-red border containing the definition of \u03b4_i; two lines with red implication arrows and red delta symbols",
+      "colors": [
+        "#FFF9C4",
+        "#C00000",
+        "#FF0000"
+      ],
+      "position": "upper panel"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Tan panel with dark-red border containing the redefined Error summation; red subscript under \u03a3 and red implication arrow; positive in red italic",
+      "colors": [
+        "#F5E6CA",
+        "#C00000",
+        "#FF0000"
+      ],
+      "position": "middle panel"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Tan panel with dark-red border containing the gradient descent update rule; blue text for Gradient Descent; red subscript misclassified vectors ONLY (i)",
+      "colors": [
+        "#F5E6CA",
+        "#C00000",
+        "#0000FF",
+        "#FF0000"
+      ],
+      "position": "bottom panel"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Green rounded rectangle highlighting W^(updated)=W^(old) on the first update line; a small green curved arrow leads down to the second highlighted equation",
+      "colors": [
+        "#E8F5E9",
+        "#2E7D32"
+      ],
+      "position": "bottom panel left, first equation"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Larger green rounded rectangle highlighting the full substituted update equation W^(updated)=W^(old) - \u03b7 \u03a3_{misclassified vectors ONLY (i)} \u03b4_i X_i",
+      "colors": [
+        "#E8F5E9",
+        "#2E7D32"
+      ],
+      "position": "bottom panel left, second equation"
+    },
+    {
+      "type": "image",
+      "description": "Yellow circular slide-number badge with black number 37",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top right"
+    }
+  ],
+  "imagery": [
+    "Yellow circular slide-number badge containing 37 at top right; no photos or illustrations"
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#C00000",
+      "#FF0000",
+      "#0000FF",
+      "#2E7D32",
+      "#E8F5E9",
+      "#FFF9C4",
+      "#F5E6CA",
+      "#FFFF00"
+    ]
+  },
+  "typography_notes": "Serif font throughout. Title is bold dark red and much larger. Top and middle panel headings are bold dark red. Body and equations are black serif with mathematical italics for variables. Key words such as misclassified, positive, and ONLY are red; Gradient Descent is blue; d(X) is underlined; class labels are italic; where is italic.",
+  "animation_state": "No mid-build indication; all content appears fully revealed.",
+  "recreation_brief": "1. Set slide background white. Add a thin dark-red (#C00000) rectangle border near the slide edges. 2. Place title Problem Formulation centered at top in bold dark-red serif, about 36 pt. Add a yellow (#FFFF00) circle at top right with black text 37. 3. Add a pale-yellow (#FFF9C4) rectangle with dark-red border below the title. Inside, put heading Define \u03b4_i as : in dark-red bold. Below it add the two lines: If X \u2208 class I and misclassified as Class II then d(X) will be <0 \u21d2 \u03b4_i = -1 \u21d2 d(X) \u03b4_i > 0 and If X \u2208 class II and misclassified as Class I then d(X) will be >0 \u21d2 \u03b4_i = +1 \u21d2 d(X) \u03b4_i > 0. Use black serif, italic for class labels, underline d(X), and red for misclassified, arrows, \u03b4_i and the numeric results. 4. Add a tan (#F5E6CA) rectangle with dark-red border. Heading: Redefine Error function as: in dark-red bold. Add equation Error = \u03a3_{all misclassified vectors (i)} \u03b4_i W^T X_i \u21d2 (W^T X_i) takes positive and negative values and \u03b4_i has the same sign; put the \u03a3 subscript in red. Below it add Summation is always positive with positive in red italic. 5. Add another tan (#F5E6CA) rectangle with dark-red border. Heading: Minimize the Error using Gradient Descent with step \u03b7, with Gradient Descent in blue bold. 6. In the bottom panel, add a green rounded rectangle (#E8F5E9 fill, #2E7D32 border) around W^(updated)=W^(old) on the first line; to its right add - \u03b7 \u2202Error/\u2202W where \u2202Error/\u2202W = \u03a3_{misclassified vectors} \u03b4_i X_i, with the \u03a3 subscript in red and where in italic. 7. Add a second larger green rounded rectangle around W^(updated)=W^(old) - \u03b7 \u03a3_{misclassified vectors ONLY (i)} \u03b4_i X_i; keep ONLY and the subscript red. Add a small green curved arrow from the first green highlight down to the second if matching the original. 8. Keep all panels full width and evenly stacked; use serif math font for equations.",
+  "_meta": {
+    "frame": "slide_037.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 37,
+      "image": "slide_037.jpg",
+      "kept_frame": "frame_04686.jpg",
+      "start_sec": 4685,
+      "end_sec": 4685,
+      "precuration_slide": 132,
+      "provenance": "founder-curated kept frame",
+      "_reconcile_md5_snapshot": "cb3a7373fac99019a41b9434ef5895a3"
+    },
+    "elapsed_s": 295.1
+  }
+}

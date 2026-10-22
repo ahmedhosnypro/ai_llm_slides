@@ -1,0 +1,206 @@
+{
+  "slide_title": "Convex Function, Learning Rate =0.4, Start at X=3",
+  "subtitle_or_header": "f(x)=(x-5)\u00b2+1 (center-left equation callout; the source slide has no separate subtitle line, so this prominent equation is the closest header-level text)",
+  "verbatim_text": {
+    "bullets": [
+      "X = 5",
+      "f(x) Minimum value is 1.0",
+      "Reach Minimum after 6 Steps"
+    ],
+    "labels": [
+      "32",
+      "step",
+      "initial X",
+      "delta",
+      "x",
+      "f(x)",
+      "x-delta",
+      "f(x-delta)",
+      "x+delta",
+      "f(x+delta)",
+      "slope",
+      "next x",
+      "(2,10)",
+      "(5,1)",
+      "stop",
+      "-6",
+      "0",
+      "5",
+      "10",
+      "15"
+    ],
+    "equations": [
+      "f(x)=(x-5)\u00b2+1"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title top-left spanning ~3-70% of slide width (~0-12% height); 3x2 parameter table top-left directly below the title; 2D function graph top-right (~58-95% width, ~8-45% height); equation and result callouts center-left (~28-60% width, ~33-58% height); 8x7 gradient-descent iteration table bottom-center/right (~25-95% width, ~62-95% height); pink arrow from the callout text down to the iteration table; yellow slide-number circle in the top-right corner; small red cursor dot upper-left/center (~24% height, ~26% width)",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top, left-to-center, ~0-12% height, ~3-70% width",
+        "content": "Bold title text in three color segments: 'Convex Function, ' dark red #C00000, 'Learning Rate =0.4, ' green #008000, 'Start at X=3' blue #0000FF"
+      },
+      {
+        "name": "slide_number",
+        "position": "top-right corner, ~2-9% height, ~90-97% width",
+        "content": "Yellow #FFFF00 circle with black outline containing bold black number 32"
+      },
+      {
+        "name": "parameter_table",
+        "position": "top-left, ~16-30% height, ~4-22% width",
+        "content": "3-row x 2-column table: step=0.4, initial X=3, delta=0.1"
+      },
+      {
+        "name": "graph",
+        "position": "top-right, ~8-45% height, ~58-95% width",
+        "content": "Parabola plot of f(x)=(x-5)\u00b2+1 with points (2,10) and (5,1), dashed line x=5, horizontal line y=10, and axis ticks"
+      },
+      {
+        "name": "equation_callouts",
+        "position": "center-left, ~33-58% height, ~28-60% width",
+        "content": "Equation 'f(x)=(x-5)\u00b2+1', 'X = 5', 'f(x) Minimum value is 1.0', 'Reach Minimum after 6 Steps'"
+      },
+      {
+        "name": "iteration_table",
+        "position": "bottom, ~62-95% height, ~25-95% width",
+        "content": "8-row x 7-column gradient descent iteration table (row labels: x, f(x), x-delta, f(x-delta), x+delta, f(x+delta), slope, next x)"
+      },
+      {
+        "name": "arrow",
+        "position": "center, ~54-64% height, ~25-35% width",
+        "content": "Pink #C000C0 arrow pointing from the 'Reach Minimum after 6 Steps' callout down to the iteration table"
+      },
+      {
+        "name": "cursor_dot",
+        "position": "upper-left/center, ~24% height, ~26% width",
+        "content": "Small solid red #FF0000 dot, likely a cursor or laser-pointer marker"
+      }
+    ],
+    "hierarchy": "Title is largest and boldest at top; the 8x7 iteration table is the largest visual block at bottom; the graph is the second-largest visual element; colored callout text (red 'X = 5', blue '1.0', purple statements) draws attention in the middle; the 3x2 parameter table is the smallest element"
+  },
+  "visual_elements": [
+    {
+      "type": "table",
+      "description": "Small 3-row, 2-column parameter table. Row 1: 'step' | '0.4'. Row 2: 'initial X' | '3'. Row 3: 'delta' | '0.1'. Left-column cells have colored backgrounds (green, red, yellow).",
+      "colors": [
+        "#C0E0C0",
+        "#F0C0C0",
+        "#FFFFC0",
+        "#000000"
+      ],
+      "position": "top-left, below title"
+    },
+    {
+      "type": "graph",
+      "description": "2D Cartesian plot of f(x)=(x-5)^2+1. Blue upward parabola with vertex at (5,1). X-axis ticks at -6, 0, 5, 10, 15. Y-axis ticks at 0, 5, 10, 15. Light gray grid lines. Red vertical dashed line at x=5. Red dot at (2,10) labeled '(2,10)' in red. Green dot at (5,1) labeled '(5,1)' in green. Horizontal black line at y=10 extending from x=2 rightward to approximately x=7.",
+      "colors": [
+        "#0000FF",
+        "#FF0000",
+        "#008000",
+        "#000000",
+        "#D3D3D3"
+      ],
+      "position": "top-right"
+    },
+    {
+      "type": "table",
+      "description": "Large 8-row, 7-column gradient descent table. Column 1 contains row labels with colored backgrounds; columns 2-7 contain iteration data. Row 1 'x' (light green): 3, 3.4, 3.8, 4.2, 4.6, 5. Row 2 'f(x)' (light yellow): 5, 3.56, 2.44, 1.64, 1.16, 1. Row 3 'x-delta' (light green): 2.9, 3.3, 3.7, 4.1, 4.5, 4.9. Row 4 'f(x-delta)' (light yellow): 5.41, 3.89, 2.69, 1.81, 1.25, 1.01. Row 5 'x+delta' (light green): 3.1, 3.5, 3.9, 4.3, 4.7, 5.1. Row 6 'f(x+delta)' (light yellow): 4.61, 3.25, 2.21, 1.49, 1.09, 1.01. Row 7 'slope' (light red): -8, -6.4, -4.8, -3.2, -1.6, 0. Row 8 'next x' (light red): 3.4, 3.8, 4.2, 4.6, 5, stop.",
+      "colors": [
+        "#C0E0C0",
+        "#FFFFC0",
+        "#F0C0C0",
+        "#0000FF",
+        "#008000",
+        "#800080",
+        "#FF0000"
+      ],
+      "position": "bottom-center/right"
+    },
+    {
+      "type": "arrow",
+      "description": "Pink/magenta arrow pointing from the 'Reach Minimum after 6 Steps' text downward to the top edge of the iteration table.",
+      "colors": [
+        "#C000C0"
+      ],
+      "position": "center, between callouts and table"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Yellow filled circle with black outline containing the number 32.",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    },
+    {
+      "type": "other",
+      "description": "Small solid red dot, likely a mouse cursor or laser pointer marker.",
+      "colors": [
+        "#FF0000"
+      ],
+      "position": "upper-left/center area"
+    }
+  ],
+  "imagery": [
+    "No photographs or illustrations. Only geometric shapes, tables, a function plot, and text."
+  ],
+  "colors": {
+    "background": "#F0F0F0",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#C00000",
+      "#008000",
+      "#0000FF",
+      "#800080",
+      "#C000C0",
+      "#FFFF00",
+      "#F0C0C0",
+      "#C0E0C0",
+      "#FFFFC0",
+      "#FF0000",
+      "#D3D3D3"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. Title is large and bold with three color segments (dark red #C00000, green #008000, blue #0000FF). Body text is black #000000 and medium-sized. Table text is small. 'X = 5' is bold red #C00000. '1.0' is bold blue #0000FF. 'Minimum value is' and 'Reach Minimum after 6 Steps' are purple/magenta #800080. Row labels in both tables are bold. The number 32 is bold black inside the yellow circle.",
+  "animation_state": "None. All elements appear fully revealed; no partial builds or missing bullets.",
+  "recreation_brief": "1) Set the slide background to solid light gray #F0F0F0. 2) Place the title text box at top-left, spanning ~3-70% of slide width within the top ~0-12% of height: one bold ~30pt sans-serif line reading 'Convex Function, Learning Rate =0.4, Start at X=3' in three color runs - 'Convex Function, ' in dark red #C00000, 'Learning Rate =0.4, ' in green #008000, 'Start at X=3' in blue #0000FF. 3) Place a yellow #FFFF00 filled circle with a black outline in the top-right corner (~90-97% width, ~2-9% height) containing the bold black number '32' at ~20pt. 4) Place a 3-row x 2-column parameter table at top-left below the title (~4-22% width, ~16-30% height) with a thin dark border and small black text; bold left-column labels on colored fills: row 1 'step' on light green #C0E0C0 with value '0.4'; row 2 'initial X' on light red #F0C0C0 with value '3'; row 3 'delta' on light yellow #FFFFC0 with value '0.1'. 5) Place a 2D Cartesian line chart at top-right (~58-95% width, ~8-45% height): x-axis from -6 to 15 with tick labels -6, 0, 5, 10, 15; y-axis from 0 to 15 with tick labels 0, 5, 10, 15; light gray #D3D3D3 gridlines; blue #0000FF parabola of f(x)=(x-5)\u00b2+1 with vertex at (5,1); red #FF0000 vertical dashed line at x=5; red #FF0000 dot at (2,10) with red text label '(2,10)'; green #008000 dot at (5,1) with green text label '(5,1)'; black horizontal line at y=10 from x=2 to approximately x=7. 6) Place a text box at center-left (~28-60% width, top edge ~33% height) containing the equation 'f(x)=(x-5)\u00b2+1' in black ~20pt sans-serif. 7) Directly below the equation, place 'X = 5' in bold red #C00000. 8) Directly below that, place one line 'f(x) Minimum value is 1.0' with 'f(x) ' in black, 'Minimum value is ' in purple #800080, and '1.0' in bold blue #0000FF. 9) Directly below that, place 'Reach Minimum after 6 Steps' in purple #800080; the four-line callout block ends at ~58% height. 10) Draw a pink/magenta #C000C0 arrow (~54-64% height, ~25-35% width) starting at the 'Reach Minimum after 6 Steps' line and pointing down to the top edge of the iteration table. 11) Place an 8-row x 7-column table at bottom-center/right (~62-95% height, ~25-95% width): column 1 holds bold row labels on colored fills - 'x' light green #C0E0C0, 'f(x)' light yellow #FFFFC0, 'x-delta' light green #C0E0C0, 'f(x-delta)' light yellow #FFFFC0, 'x+delta' light green #C0E0C0, 'f(x+delta)' light yellow #FFFFC0, 'slope' light red #F0C0C0, 'next x' light red #F0C0C0; columns 2-7 hold small black text on white cells with these exact values - row 'x': 3, 3.4, 3.8, 4.2, 4.6, 5; row 'f(x)': 5, 3.56, 2.44, 1.64, 1.16, 1; row 'x-delta': 2.9, 3.3, 3.7, 4.1, 4.5, 4.9; row 'f(x-delta)': 5.41, 3.89, 2.69, 1.81, 1.25, 1.01; row 'x+delta': 3.1, 3.5, 3.9, 4.3, 4.7, 5.1; row 'f(x+delta)': 4.61, 3.25, 2.21, 1.49, 1.09, 1.01; row 'slope': -8, -6.4, -4.8, -3.2, -1.6, 0; row 'next x': 3.4, 3.8, 4.2, 4.6, 5, stop; set the outer border blue #0000FF with thin inner borders. 12) Place a small solid red #FF0000 dot at ~24% height and ~26% width; the source marks it as a likely cursor/laser-pointer marker, so omit this step when recreating the clean slide.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "subtitle_or_header was null; filled it with the slide's only header-level text, the equation callout 'f(x)=(x-5)\u00b2+1', and annotated that no separate subtitle exists in the source.",
+      "colors.accents omitted #FF0000 (red dashed line and red dot) and #D3D3D3 (graph gridlines) declared by the graph element; added both so the global palette matches visual_elements.",
+      "layout.arrangement used vague size terms ('small parameter table', 'large gradient-descent iteration table'); replaced with exact dimensions (3x2 and 8x7) and added the percentage position spans for every region.",
+      "layout.regions title content said 'Multi-colored bold title text'; made it exact: three color segments dark red #C00000 / green #008000 / blue #0000FF with the verbatim segment texts.",
+      "typography_notes lacked hex codes; added #C00000, #008000, #0000FF for the title segments and #800080 for the purple callouts.",
+      "Rebuilt recreation_brief as a 12-step ordered checklist; each step places exactly one element with verbatim text, position (percent height/width from layout.regions), fill/text colors, and shape or chart type; embedded all 48 data cells of the 8x7 iteration table so no values are left to guess.",
+      "Made the approximate endpoint of the black horizontal line explicit in the brief ('from x=2 to approximately x=7'), preserving the source approximation rather than inventing an exact value."
+    ],
+    "uncertain_items": [
+      "The small red dot at ~24% height / ~26% width is described only as 'likely a mouse cursor or laser pointer marker'; it may be a video-frame artifact rather than slide content, so brief step 12 is optional.",
+      "The right endpoint of the black horizontal line at y=10 is approximate ('approximately x=7'); exact endpoint is not specified in the source.",
+      "The iteration table's color list contains #0000FF, #008000, #800080 and #FF0000, but the element description does not state where each applies; the brief follows the original analysis in applying #0000FF to the outer border - the exact use of the other three colors (likely text or border accents) is unverifiable from the JSON.",
+      "Source labeling inconsistency kept verbatim: the title calls the 0.4 value 'Learning Rate' while the parameter table row label for the same value is 'step'; both strings are retained as extracted."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_032.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 32,
+      "image": "slide_032.jpg",
+      "kept_frame": "frame_03845.jpg",
+      "start_sec": 3844,
+      "end_sec": 3844,
+      "precuration_slide": 127,
+      "provenance": "founder-curated kept frame",
+      "_reconcile_md5_snapshot": "e42058a774e44d9f870a5e4670ecdffd"
+    },
+    "elapsed_s": 242.1,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 960.0
+  }
+}

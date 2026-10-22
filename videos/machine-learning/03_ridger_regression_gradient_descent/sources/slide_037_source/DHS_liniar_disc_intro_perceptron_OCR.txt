@@ -1,0 +1,495 @@
+5.2 Linear Discriminant Functions and Decision Sur-
+faces
+
+5.2.1 The Two-Category Case
+
+A discriminant function that is a linear combination of the components of x can be
+written as
+
+g(x) = wix + wy, (1)
+
+where w is the weight vector and wq the bias or threshold weight. A two-category
+linear classifier implements the following decision rule: Decide w, if g(x) > 0 and w,
+if g(x) < 0. Thus, x is assigned to w; if the inner product wix exceeds the threshold
+—wg and wy otherwise. If g(x) = 0, x can ordinarily be assigned to either class, but
+in this chapter we shall leave the assignment undefined. Figure 5.1 shows a typical
+implementation, a clear example of the general structure of a pattern recognition
+system we saw in Chap. 77.
+
+2(x)
+
+Figure 5.1: A simple linear classifier having d input units, each corresponding to the
+values of the components of an input vector. Each input feature value z; is multiplied
+by its corresponding weight w;; the output unit sums all these products and emits a
++1 if wtx 4+ wg > 0 or a —1 otherwise.
+
+The equation g(x) = 0 defines the decision surface that separates points assigned
+
+to wy from points assigned to we. When g(x) is linear, this decision surface is a
+hyperplane. If x; and x5 are both on the decision surface, then
+
+wix; +wp = whxa + wy
+
+or
+
+w'(x; —x3) =0,
+and this shows that w is normal to any vector lying in the hyperplane. In general,
+the hyperplane H divides the feature space into two halfspaces, decision region R,
+for wy and region Ry for ws. Since g(x) > 0 if x is in Ry, it follows that the normal
+vector w points into R;. It is sometimes said that any x in R; is on the positive side
+of H, and any x in Ry is on the negative side.
+
+The discriminant function g(x) gives an algebraic measure of the distance from x
+to the hyperplane. Perhaps the easiest way to see this is to express x as
+
+X=Xp+r had
+[lw][®
+where x,, is the normal projection of x onto H, and r is the desired algebraic distance
+— positive if x is on the positive side and negative if x is on the negative side. Then,
+
+since g(x,) =0,
+
+9(x) = w'x +wo = r||w],
+
+or
+
+g(x)
+
+Tr= —
+
+[wll”
+
+In particular, the distance from the origin to H is given by wg/||w|. If wy > 0 the
+origin is on the positive side of H, and if wg < 0 it is on the negative side. If wy = 0,
+then g(x) has the homogeneous form wx, and the hyperplane passes through the
+origin. A geometric illustration of these algebraic results is given in Fig. 5.2.
+
+Figure 5.2: The linear decision boundary H, where g(x) = w'x + wo = 0, separates
+the feature space into two half-spaces Ry (where g(x) > 0) and R2 (where g(x) < 0).
+
+To summarize, a linear discriminant function divides the feature space by a hy-
+perplane decision surface. The orientation of the surface is determined by the normal
+vector w, and the location of the surface is determined by the bias wy. The discrim-
+inant function g(x) is proportional to the signed distance from x to the hyperplane,
+with g(x) > 0 when x is on the positive side, and g(x) < 0 when x is on the negative
+side.
+of every hyperplane. Thus, a solution vector must lie in the intersection of n half-
+spaces; indeed any vector in this region is a solution vector. The corresponding region
+is called the solution region, and should not be confused with the decision region in
+feature space corresponding to any particular category. A two-dimensional example
+illustrating the solution region for both the normalized and the unnormalized case is
+shown in Fig. 5.8,
+
+solution solution
+region Y2 region 2
+
+-
+- -
+
+sep¥
+
+Figure 5.8: Four training samples (black for w;, red for ws) and the solution region
+in feature space. The figure on the left shows the raw data; the solution vectors leads
+to a plane that separates the patterns from the two categories. In the figure on the
+right, the red points have been “normalized” — i.e., changed in sign. Now the solution
+vector leads to a plane that places all “normalized” points on the same side.
+
+From this discussion, it should be clear that the solution vector — again, if it
+exists — is not unique. There are several ways to impose additional requirements to
+constrain the solution vector. One possibility is to seek a unit-length weight vector
+that maximizes the minimum distance from the samples to the separating plane.
+Another possibility is to seek the minimum-length weight vector satisfying a’y; > b
+for all 7, where b is a positive constant called the margin. As shown in Fig. 5.9, the
+solution region resulting form the intersections of the halfspaces for which aly; > b > 0
+lies within the previous solution region, being insultated from the old boundaries by
+the distance b/||y;||.
+
+The motivation behind these attempts to find a solution vector closer to the “mid-
+dle” of the solution region is the natural belief that the resulting solution is more likely
+to classify new test samples correctly. In most of the cases we shall treat, however,
+we shall be satisfied with any solution strictly within the solution region. Our chief
+concern will be to see that any iterative procedure used does not converge to a limit
+point on the boundary. This problem can always be avoided by the introduction of a
+margin, i.e., by requiring that a'y; > b > 0 for all i.
+1
+Ed ! .
+- Il e - ! N\
+1
+
+, / %
+[ [ vy
+1 1
+1 [
+
+Figure 5.9: The effect of the margin on the solution region. At the left, the case of
+no margin (b = 0) equivalent to a case such as shown at the left in Fig. 5.8. At the
+right is the case b > 0, shrinking the solution region by margins b/||y;]|.
+
+distance from a(1) in the direction of steepest descent, i.e., along the negative of the
+gradient. In general, a(k + 1) is obtained from a(k) by the equation
+
+a(k+1) = a(k) - n(k)VJ(a(k)), (12)
+
+where 7 is a positive scale factor or learning rate that sets the step size. We hope
+that such a sequence of weight vectors will converge to a solution minimizing J(a).
+In algorithmic form we have:
+
+Algorithm 1 (Basic gradient descent)
+
+1 begin initialize a, criterion 8,7(-),k =0
+dok—k+1
+a—a—n(k)VJ(a)
+until (k) V.J(a) < ¢
+5 return a
+
+6 end
+
+The many problems associated with gradient descent procedures are well known.
+Fortunately, we shall be constructing the functions we want to minimize, and shall be
+able to avoid the most serious of these problems. One that will confront us repeatedly,
+however, is the choice of the learning rate n(k). If n(k) is too small, convergence is
+needlessly slow, whereas if 5(k) is too large, the correction process will overshoot and
+can even diverge (Sect. 5.6.1).
+
+‘We now consider a principled method for setting the learning rate. Suppose that
+the criterion function can be well approximated by the second-order expansion around
+a value a(k) as
+
+- L e
+
+J(a) ~ J(a(k)) + V.J'(a —a(k)) + %(a —a(k))'H (a— a(k)), (13)
+
+where H is the Hessian matriz of second partial derivatives 82J/8a.-aaj evaluated at
+a(k). Then, substituting a(k + 1) from Eq. 12 into Eq. 13 we find:
+J(alk +1)) = J(a(k)) — n(k)| W J|2 + %n2(k)VJ'HVJ.
+
+From this it follows (Problem 12) that J(a(k + 1)) can be minimized by the choice
+
+vJ?
+" =g ey
+
+where H depends on a, and thus indirectly on k. This then is the optimal choice
+of n(k) given the assumptions mentioned. Note that if the criterion function J(a) is
+quadratic throughout the region of interest, then H is constant and 1 is a constant
+independent of k.
+
+An alternative approach, obtained by ignoring Eq. 12 and by choosing a(k +
+1) to minimize the second-order expansion, is Newton’s algorithm where line 3 in
+Algorithm 1 is replaced by
+
+(14)
+
+a(k+1)=a(k)-H'VJ, (15)
+
+leading to the following algorithm:
+
+Algorithm 2 (Newton descent)
+
+.
+
+1 begin initialize a, criterion #
+2 do
+
+3 a—a—H'VJ(a)
+4 until H-'V.J(a) < 4
+5
+6
+
+Simple gradient descent and Newton’s algorithm are compared in Fig. 5.10.
+
+Generally speaking, Newton’s algorithm will usually give a greater improvement
+per step than the simple gradient descent algorithm, even with the optimal value
+of n(k). However, Newton’s algorithm is not applicable if the Hessian matrix H is
+singular. Furthermore, even when H is nonsingular, the O(d®) time required for
+matrix inversion on each iteration can easily offset the descent advantage. In fact,
+it often takes less time to set n(k) to a constant n that is smaller than necessary
+and make a few more corrections than it is to compute the optimal (k) at each step
+(Computer exercise 1).
+
+5.5 Minimizing the Perceptron Criterion Function
+
+5.5.1 The Perceptron Criterion Function
+
+Consider now the problem of constructing a criterion function for solving the linear
+inequalities a®y; > 0. The most obvious choice is to let .J(a; y1,...,y») be the number
+of samples misclassified by a. However, because this function is piecewise constant, it
+is obviously a poor candidate for a gradient search. A better choice is the Perceptron
+criterion function
+
+Jp(a) =Y (-a'y), (16)
+
+yey
+Figure 5.11: Four learning criteria as a function of weights in a linear classifier. At the
+upper left is the total number of patterns misclassified, which is piecewise constant
+and hence unacceptable for gradient descent procedures. At the upper right is the
+Perceptron criterion (Eq. 16), which is piecewise linear and acceptable for gradient
+descent. The lower left is squared error (Eq. 32), which has nice analytic properties
+and is useful even when the patterns are not linearly separable. The lows:r right is
+the square error with margin (Eq. 33). A designer may adjust the margin b in order
+to force the solution vector to lie toward the middle of the b = 0 solution region in
+hopes of improving generalization of the resulting classifier.
+
+Thus, the batch Perceptron algorithm for finding a solution vector can be stated
+very simply: the next weight vector is obtained by adding some multiple of the sum
+of the misclassified samples to the present weight vector. We use the term “batch”
+to refer to the fact that (in general) a large group of samples is used when com-
+puting each weight update. (We shall soon see alternate methods based on single
+samples.) Figure 5.12 shows how this algorithm yields a solution vector for a simple
+two-dimensional example with a(1) = 0, and n(k) = 1. We shall now show that it
+will yield a solution for any linearly separable problem.
+Figure 5.12: The Perceptron criterion, J,, is plotted as a function of the weights a,
+and a3 for a three-pattern problem. The weight vector begins at 0, and the algorithm
+sequentially adds to it vectors equal to the “normalized” misclassified patterns them-
+selves. In the example shown, this sequence is y2,¥3, ¥1,¥3, at which time the vector
+lies in the solution region and iteration terminates. Note that the second update (by
+y3) takes the candidate vector farther from the solution region than after the first
+update (cf. Theorem 5.1. (In an alternate, batch method, all the misclassified points
+are added at each iteration step leading to a smoother trajectory in weight space.)
+
+5.5.2 Convergence Proof for Single-Sample Correction
+
+We shall begin our examination of convergence properties of the Perceptron algo-
+rithm with a variant that is easier to analyze. Rather than testing a(k) on all of the
+samples and basing our correction of the set Vi of misclassified training samples, we
+shall consider the samples in a sequence and shall modify the weight vector when-
+ever it misclassifies a single sample. For the purposes of the convergence proof, the
+detailed nature of the sequence is unimportant as long as every sample appears in
+the sequence infinitely often. The simplest way to assure this is to repeat the sam-
+ples cyclically, though from a practical point of view random selection is often to be
+preferred (Sec. 5.8.5). Clearly neither the batch nor this single-sample version of the
+Perceptron algorithm are on-line since we must store and potentially revisit all of the
+training patterns.
+
+Two further simplifications help to clarify the exposition. First, we shall tem-
+porarily restrict our attention to the case in which n(k) is constant — the so-called
+fized-increment case. It is clear from Eq. 18 that if 7(t) is constant it merely serves to
+scale the samples; thus, in the fixed-increment case we can take n(t) = 1 with no loss
+in generality. The second simplification merely involves notation. When the samples
+are considered sequentially, some will be misclassified. Since we shall only change the
+weight vector when there is an error, we really need only pay attention to the mis-
+classified samples. Thus we shall denote the sequence of samples using superscripts,
+ie, by y', ¥% ..., ¥*, ..., where each y* is one of the n samples yy, ..., yn, and where
+each y* is misclassified. For example, if the samples y;, y2, and y3 are considered
+cyclically, and if the marked samples
+
+l i ) | |
+Y1, ¥2, ¥3, Y1, Y2, ¥3, ¥1, Y2, - (19)
+
+are misclassified, then the sequence y', y2, y® y* y® ... denotes the sequence
+Y1, ¥3, ¥1, ¥2, ¥2, ... With this understanding, the fized-increment rule for generating
+a sequence of weight vectors can be written as
+
+a(l) arbitrary
+a(k+1)=a(k)+y* k>1 } (20)
+
+where af(k)y* < 0 for all k. If we let n denote the total number of patterns, the
+algorithm is:
+
+Algorithm 4 (Fixed-increment single-sample Perceptron)
+
+1 begin initialize a, k=0
+
+2 do k « (k+ 1)modn
+
+3 if yi is misclassified by a then a <« a —y;
+4 until all patterns properly classified
+
+5 return a
+
+5 end
+
+The fixed-increment Perceptron rule is the simplest of many algorithms that have
+been proposed for solving systems of linear inequalities. Geometrically, its interpre-
+tation in weight space is particularly clear. Since a(k) misclassifies y*, a(k) is not on
+the positive side of the y* hyperplane aty* = 0. The addition of y* to a(k) moves
+the weight vector directly toward and perhaps across this hyperplane. Whether the
+hyperplane is crossed or not, the new inner product a’(k + 1)y* is larger than the old
+inner product a’(k)y* by the amount |ly*||?, and the correction is clearly moving the
+weight vector in a good direction (Fig. 5.13).
+Figure 5.13: Samples from two categories, w; (black) and ws (red) are shown in
+augmented feature space, along with an augmented weight vector a. At each step
+in a fixed-increment rule, one of the misclassified patterns, y*, is shown by the large
+dot. A correction Aa (proportional to the pattern vector y*) is added to the weight
+vector — towards an wy point or away from an wy point. This changes the decision
+boundary from the dashed position (from the previous update) to the solid position.
+The sequence of resulting a vectors is shown, where later values are shown darker. In
+this example, by step 9 a solution vector has been found and the categories successfully
+separated by the decision boundary shown.
+
+Clearly this algorithm can only terminate if the samples are linearly separable; we
+now prove that indeed it terminates so long as the samples are linearly separable.
+
+Theorem 5.1 (Perceptron Convergence) If training samples are linearly sepa-
+rable then the sequence of weight vectors given by Algorithm 4 will terminate at a
+solution vector.
+
+Proof:
+In seeking a proof, it is natural to try to show that each correction brings the weight
+
+vector closer to the solution region. That is, one might try to show that if a is any
+solution vector, then ||a(k + 1) — a|| is smaller than ||a(k) — a||. While this turns out
+not to be true in general (cf. steps 6 & 7 in Fig. 5.13), we shall see that it is true for
+solution vectors that are sufficiently long.
+
+Let a be any solution vector, so that a'y; is strictly positive for all i, and let a be
+a positive scale factor. From Eq. 20,
+
+a(k +1) — aa = (a(k) — ad) + y*
+
+and hence
+
+la(k +1) - aa||* = [la(k) — aall* + 2(a(k) — aa)y* + [ly*|*.
+
+Since y* was misclassified, af(k)y* < 0, and thus
+
+la(k +1) — cal* < |la(k) - oa||* — 20a'y" + ||y*|*.
+
+Because a'y* is strictly positive, the second term will dominate the third if « is
+sufficiently large. In particular, if we let 3 be the maximum length of a pattern
+vector,
+
+A% = max||yi|?, (1)
+
+and v be the smallest inner product of the solution vector with any pattern vector,
+ie.,
+
+5 = min [ay;] >0, 22)
+1
+
+then we have the inequality
+
+la(k + 1) - aa||* < [la(k) - aal* — 207 + 5.
+
+If we choose
+
+(23)
+
+BZ
+a=—,
+y
+
+we obtain
+
+la(k +1) - oa|* < |la(k) — cal* - 5°.
+
+Thus, the squared distance from a(k) to aa is reduced by at least 3° at each correction,
+and after k corrections
+
+la(k + 1) — aa|® < ||a(k) — oa|® — kG2 (24)
+
+Since the squared distance cannot become negative, it follows that the sequence of
+corrections must terminate after no more than kg corrections, where
+
+_ la( - ad*
+
+ko 7
+
+(25)
+Since a correction occurs whenever a sample is misclassified, and since each sample
+appears infinitely often in the sequence, it follows that when corrections cease the
+resulting weight vector must classify all of the samples correctly. ll
+
+The number kg gives us a bound on the number of corrections. If a(1) = 0, we
+get the following particularly simple expression for ko:
+
+i . 12142
+p QLA _ e _ m lyClal (26)
+0 3 3?2 miiu[yﬁé]"’ '
+
+The denominator in Eq. 26 shows that the difficulty of the problem is essentially
+determined by the samples most nearly orthogonal to the solution vector. Unfortu-
+nately, it provides no help when we face an unsolved problem, since the bound is
+expressed in terms of a solution vector which is unknown. In general, it is clear that
+linearly-separable problems can be made arbitrarily difficult to solve by making the
+samples almost coplanar (Computer exercise 2). Nevertheless, if the training sam-
+ples are linearly separable, the fixed-increment rule will yield a solution after a finite
+number of corrections.
+
+5.5.3 Some Direct Generalizations
+
+The fixed increment rule can be generalized to provide a variety of related algorithms.
+We shall briefly consider two variants of particular interest. The first variant intro-
+duces a variable increment n(k) and a margin b, and calls for a correction whenever
+a'(k)y* fails to excede the margin. The update is given by
+
+a(l) arbitrary } 27)
+
+a(k+1) = a(k) + n(k)y* k>1,
+
+where now at(k)y* < b for all k. Thus for n patterns, our algorithm is:
+Algorithm 5 (Variable increment Perceptron with margin)
+
+1 begin initialize a,criterion ¢, margin b,n(-),k =0
+2 do k—k+1
+3 if a'yx +b <0 then a« a—n(k)yx
+4 until a'y; +b < 0 for all k
+5 return a
+6 end
+
+It can be shown that if the samples are linearly separable and if
+
+n(k) =0, (28)
+
+Jim i n(k) = oo (29)
+k=1
+
+and
+lim =1 o, (30)
+
+then a(k) converges to a solution vector a satisfying a'y; > b for all i (Problem 1R8).
+In particular, these conditions on 7(k) are satisfied if 5(k) is a positive constant, or if
+it decreases like 1/k.
+
+Another variant of interest is our original gradient descent algorithm for J,,
+
+a(1) arbitrary
+alk+1)=a(k)+nk) ¥ v, } (31)
+yEVi
+
+where Yy is the set of training samples misclassified by a(k). It is easy to see that this
+algorithm will also yield a solution once one recognizes that if a is a solution vector
+for y1,...,¥n, then it correctly classifies the correction vector
+
+ve=>y.
+
+YEYVk
+
+In greater detail, then, the algorithm is
+
+Algorithm 6 (Batch variable increment Perceptron)
+
+1 begin initialize a, n(-),k =0
+
+2 dok —k+1
+
+4 j=0
+
+5 doje—j+1
+
+6 if y; is misclassified then Append y; to Vi
+7 until j =n
+
+8 a—a+nk) Xy
+
+YEVi
+
+9 until Vi = {}
+10 return a
+
+11 end
+
+The benefit of batch gradient descent is that the trajectory of the weight vector is
+smoothed, compared to that in corresponding single-sample algorithms (e.g., Algo-
+rithm 5), since at each update the full set of misclassified patterns is used — the
+local statistical variations in the misclassified patterns tend to cancel while the large-
+scale trend does not. Thus, if the samples are linearly separable, all of the possible
+correction vectors form a linearly separable set, and if 5(k) satisfies Eqs. 28-30, the
+sequence of weight vectors produced by the gradient descent algorithm for Jp,(-) will
+always converge to a solution vector.
+
+It is interesting to note that the conditions on n(k) are satisfied if n(k) is a positive
+constant, if it decreases as 1/k, or even if it increases as k. Generally speaking, one
+would prefer to have 7(k) become smaller as time goes on. This is particularly true
+if there is reason to believe that the set of samples is not linearly separable, since it
+reduces the disruptive effects of a few “bad” samples. However, in the separable case
+it is a curious fact that one can allow n(k) to become larger and still obtain a solution.

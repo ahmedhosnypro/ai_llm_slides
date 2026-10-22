@@ -1,0 +1,139 @@
+{
+  "slide_title": null,
+  "subtitle_or_header": "Step \u03b7 = 2",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "43",
+      "Initial W = [4; -2]",
+      "Check classes of",
+      "C1 positive, C2 negative, Zero is unaccepted",
+      "Augmented Vectors (from Top)",
+      "Iteration 2",
+      "Update Weight",
+      "Keep same Weight",
+      "x1 x2 x3 x4 x5 x6",
+      "C1 C1 C1 C2 C2 C2",
+      "Z1 Z1 Z1"
+    ],
+    "equations": [
+      "d(x\u2081) = [1 1 1; -10; -8] = -14",
+      "W = [4; -10; -8] + 2 * [1; 1; 1] = [6; -8; -6]",
+      "d(x\u2082) = [1 2 1; -8; -6] = -14",
+      "W = [6; -8; -6] + 2 * [1; 2; -2] = [8; -4; -10]",
+      "d(x\u2083) = [1 2 1; -4; -4] = -4",
+      "W = [8; -4; -4] + 2 * [1; 1; -3] = [10; -2; -10]",
+      "d(x\u2084) = [1 5 4; -2; 0] = 0",
+      "W = [10; -2; 0]",
+      "d(x\u2085) = [1 6 5; -12; -8] = -104",
+      "W = [8; -12; -8]",
+      "d(x\u2086) = [1 6 6; -12; -8] = -112",
+      "W = [8; -12; -8]"
+    ]
+  },
+  "layout": {
+    "arrangement": "Top band spans full width with three zones: left original-data table, center initial-parameter block, right class-check matrix and legend. Middle-left holds augmented-vectors table with a red Iteration 2 callout box. Right side and lower-right contain six stacked calculation rows for the perceptron iteration, each with a left-pointing blue arrow.",
+    "regions": [
+      {
+        "name": "top_left_table",
+        "position": "top-left, approx 0-30% width",
+        "content": "Original un-augmented data table with columns x1\u2013x6, two numeric rows, and a class-label row (C1 C1 C1 C2 C2 C2 in red)."
+      },
+      {
+        "name": "top_center",
+        "position": "top-center, approx 30-50% width",
+        "content": "Initial W = [4; -2] and red header Step \u03b7 = 2."
+      },
+      {
+        "name": "top_right",
+        "position": "top-right, approx 50-85% width",
+        "content": "Check classes of matrix (Z1 Z1 Z1 over rows 0/7/3 and 0/6/2) and legend line C1 positive, C2 negative, Zero is unaccepted."
+      },
+      {
+        "name": "middle_left",
+        "position": "middle-left, approx 0-30% width",
+        "content": "Augmented vectors table (adds top row of ones) and red-bordered Iteration 2 box with pointer icon."
+      },
+      {
+        "name": "calculation_rows",
+        "position": "right and bottom, approx 30-100% width",
+        "content": "Six rows showing d(x_i) dot-product results, update/keep decisions, and resulting weight vectors."
+      }
+    ],
+    "hierarchy": "Red Step \u03b7 = 2 header is the visual entry point. The six calculation rows dominate the right side with the largest continuous text block. Tables are secondary, smaller, and enclosed in thin brackets. Blue arrows and colored class labels provide accent hierarchy."
+  },
+  "visual_elements": [
+    {
+      "type": "table",
+      "description": "Original data table: header row x1 x2 x3 x4 x5 x6; row 1 values (1)(2)(1)(5)(6)(6); row 2 values (1)(1)(2)(4)(5)(6); bottom row class labels C1 C1 C1 C2 C2 C2 in red.",
+      "colors": [
+        "#000000",
+        "#FF0000"
+      ],
+      "position": "top-left"
+    },
+    {
+      "type": "table",
+      "description": "Augmented vectors table: header row x1 x2 x3 x4 x5 x6; row 1 all (1); row 2 (1)(2)(1)(5)(6)(6); row 3 (1)(1)(2)(4)(5)(6); bottom row C1 C1 C1 C2 C2 C2 in red.",
+      "colors": [
+        "#000000",
+        "#FF0000"
+      ],
+      "position": "middle-left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Red rectangular border containing the text Iteration 2, with a small hand-pointer icon to its right.",
+      "colors": [
+        "#FF0000",
+        "#000000"
+      ],
+      "position": "middle-left, below augmented table"
+    },
+    {
+      "type": "diagram",
+      "description": "Six-row perceptron calculation stack. Each row: left side shows d(x_i) matrix and scalar result; center shows decision text (Update Weight or Keep same Weight) with a right arrow; right side shows the weight-vector equation. Rows 1\u20134 have blue left-pointing arrows on the far right.",
+      "colors": [
+        "#000000",
+        "#0000FF"
+      ],
+      "position": "right side, spanning middle to bottom"
+    },
+    {
+      "type": "other",
+      "description": "Yellow filled circle in the top-right corner containing the slide number 43 in black.",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [
+    "Small hand-pointer icon immediately to the right of the Iteration 2 box."
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#FF0000",
+    "body_text": "#000000",
+    "accents": [
+      "#FF0000",
+      "#0000FF",
+      "#008000",
+      "#FFFF00"
+    ]
+  },
+  "typography_notes": "Sans-serif typeface throughout. Step \u03b7 = 2 is bold red and larger than body. Math variables (W, d, x, \u03b7) are italicized; numerals and operators are upright. Class labels C1 and C2 are colored red and blue respectively; the word Zero in the legend is green. Table entries are wrapped in parentheses. No serif fonts are used.",
+  "animation_state": "All elements appear fully revealed; no partial-build or fade states are visible.",
+  "recreation_brief": "1) Set slide background to white. 2) Place a yellow circle (approx. 1 inch diameter) in the top-right corner and add black text '43' centered inside it. 3) At top-center, add bold red text 'Step \u03b7 = 2' (eta italicized). 4) Top-left: build a 3-row by 6-column table. Header: x1 x2 x3 x4 x5 x6. Row 1: (1) (2) (1) (5) (6) (6). Row 2: (1) (1) (2) (4) (5) (6). Row 3: C1 C1 C1 C2 C2 C2 with C1 in red and C2 in blue. 5) Top-center below Step \u03b7: add black text 'Initial W = [4; -2]'. 6) Top-right: add label 'Check classes of' above a small matrix with top row 'Z1 Z1 Z1', middle row '(0) (7) (3)', bottom row '(0) (6) (2)'. 7) Below that matrix add the legend line: 'C1 positive, C2 negative, Zero is unaccepted' with C1 red, C2 blue, and Zero green. 8) Middle-left: add heading 'Augmented Vectors (from Top)' above a 4-row by 6-column table. Header: x1 x2 x3 x4 x5 x6. Row 1: all (1). Row 2: (1) (2) (1) (5) (6) (6). Row 3: (1) (1) (2) (4) (5) (6). Row 4: C1 C1 C1 C2 C2 C2 (red/blue as before). 9) Below this table place a red-outlined rectangle containing 'Iteration 2' and add a small pointer icon to its right. 10) Right side: create six horizontal calculation bands. For each band i (x1 through x6), place on the left a column vector showing the augmented input and current weight components (e.g., for x1: top row '1 1 1', then '-10', then '-8') followed by '= -14'. 11) In the center of each band add the decision text: 'Update Weight' for x1\u2013x3 with a right arrow, and 'Keep same Weight' for x4\u2013x6. 12) On the right of each band add the weight equation in the form W = [old vector] + 2 * [update vector] = [new vector] for x1\u2013x3, or simply W = [vector] for x4\u2013x6. 13) Add blue left-pointing arrows on the far right of the first four calculation rows. 14) Ensure all math vectors use square brackets with semicolon separators and italic variables.",
+  "_meta": {
+    "frame": "slide_043.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 43,
+      "image": "slide_043.jpg",
+      "provenance": "analysis pending; precuration id unrecoverable (owner removed frames/ + pre-curation state)"
+    },
+    "elapsed_s": 489.7
+  }
+}

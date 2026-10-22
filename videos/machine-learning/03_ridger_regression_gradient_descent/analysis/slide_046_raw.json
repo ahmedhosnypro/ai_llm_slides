@@ -1,0 +1,174 @@
+{
+  "slide_title": null,
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Initial",
+      "Step",
+      "Check classes of",
+      "Ugmented Vectors (From Top)",
+      "Iteration 4",
+      "No change in",
+      "Stop Iterations",
+      "+ve",
+      "46",
+      "C\u2081",
+      "C\u2082",
+      "C\u2081 positive",
+      "C\u2082 negative",
+      "Zero is unaccepted"
+    ],
+    "equations": [
+      "\\underline{W} = \\begin{pmatrix} 4 \\\\ -2 \\\\ -2 \\end{pmatrix}",
+      "\\eta = 2",
+      "\\underline{W} = \\begin{pmatrix} 14 \\\\ -4 \\\\ 0 \\end{pmatrix}",
+      "\\begin{pmatrix} x_1 & x_2 & x_3 & x_4 & x_5 & x_6 \\\\ 1 & 2 & 1 & 5 & 6 & 4 \\\\ 1 & 1 & 2 & 4 & 5 & 6 \\\\ 1 & 1 & 1 & 4 & 5 & 6 \\end{pmatrix}",
+      "\\begin{pmatrix} Z_1 & Z_1 & Z_1 \\\\ 0 & 0 & 7 \\\\ 0 & 6 & 2 \\end{pmatrix}",
+      "\\begin{pmatrix} x_1 & x_2 & x_3 & x_4 & x_5 & x_6 \\\\ 1 & 1 & 1 & 1 & 1 & 1 \\\\ 1 & 2 & 1 & 5 & 6 & 4 \\\\ 1 & 1 & 2 & 4 & 5 & 6 \\end{pmatrix}"
+    ]
+  },
+  "layout": {
+    "arrangement": "Top strip contains a data matrix with class labels, initial weight vector, step size, a Z-matrix, and a yellow final-weight box; a yellow slide-number circle sits at the far top-right. Middle-left holds an augmented-vectors matrix above a red 'Iteration 4' callout. Bottom-left holds a pink 'Stop Iterations' callout. The right half is occupied by a large red-bordered scatter plot showing the decision boundary and classified points.",
+    "regions": [
+      {
+        "name": "top data table",
+        "position": "top-left to top-center, roughly 5%-65% width",
+        "content": "Matrix with headers x1..x6, three data rows, and class labels C1 C1 C1 C2 C2 C2 beneath; adjacent text for Initial W, Step \u03b7=2, Check classes of, and a Z1 matrix"
+      },
+      {
+        "name": "final weight box",
+        "position": "top-right, roughly 80%-95% width",
+        "content": "Pale yellow rectangle containing column vector W = (14, -4, 0)^T"
+      },
+      {
+        "name": "slide number",
+        "position": "top-right corner, roughly 95%-100% width",
+        "content": "Yellow circle with black number 46"
+      },
+      {
+        "name": "augmented vectors",
+        "position": "middle-left, roughly 5%-35% width",
+        "content": "Header 'Ugmented Vectors (From Top)' above a 4x6 matrix whose first row is all 1s, followed by the original x and y rows, with C1/C2 labels below"
+      },
+      {
+        "name": "iteration callout",
+        "position": "middle-left below augmented matrix, roughly 5%-25% width",
+        "content": "Red-outlined box with red text 'Iteration 4'"
+      },
+      {
+        "name": "stop callout",
+        "position": "bottom-left, roughly 5%-30% width",
+        "content": "Pink/red filled box with black text 'No change in W' and red bold text 'Stop Iterations'"
+      },
+      {
+        "name": "scatter plot",
+        "position": "right side, middle to bottom, roughly 35%-100% width",
+        "content": "Red-bordered Cartesian plot with x-axis 0-8, y-axis 0-7, vertical red decision line at x=3, colored data markers, and a '+ve' arrow annotation"
+      }
+    ],
+    "hierarchy": "The scatter plot and the top matrix table dominate visually. The red 'Stop Iterations' box and red decision line are strong secondary focal points due to saturated red color. The yellow W box and slide-number circle provide high-contrast accents."
+  },
+  "visual_elements": [
+    {
+      "type": "table",
+      "description": "Matrix with column headers x1 x2 x3 x4 x5 x6; row 1: 1 2 1 5 6 4; row 2: 1 1 2 4 5 6; row 3: 1 1 1 4 5 6; column labels beneath in colored text: C1 C1 C1 C2 C2 C2",
+      "colors": [
+        "#000000",
+        "#0000FF",
+        "#FF0000"
+      ],
+      "position": "top-left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pale yellow rectangle containing column vector W = (14, -4, 0)^T",
+      "colors": [
+        "#FFFF99",
+        "#000000"
+      ],
+      "position": "top-right"
+    },
+    {
+      "type": "table",
+      "description": "Matrix headed Z1 Z1 Z1 with rows 0 0 7 and 0 6 2",
+      "colors": [
+        "#000000"
+      ],
+      "position": "top-center-right"
+    },
+    {
+      "type": "table",
+      "description": "Augmented matrix headed x1..x6; row 1 all 1s; row 2: 1 2 1 5 6 4; row 3: 1 1 2 4 5 6; labels C1 C1 C1 C2 C2 C2 below",
+      "colors": [
+        "#000000",
+        "#0000FF",
+        "#FF0000"
+      ],
+      "position": "middle-left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Red-bordered box with red bold text 'Iteration 4'",
+      "colors": [
+        "#FF0000",
+        "#FFFFFF"
+      ],
+      "position": "middle-left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Pink/red filled box with 'No change in W' (W underlined) in black and 'Stop Iterations' in red bold",
+      "colors": [
+        "#FFC0CB",
+        "#FF0000",
+        "#000000"
+      ],
+      "position": "bottom-left"
+    },
+    {
+      "type": "graph",
+      "description": "Scatter plot with white background and red border. X-axis ticks 0-8, y-axis ticks 0-7. Vertical red line at x=3. Blue square markers at (1,1), (1,2), (2,1). Red triangle markers at (3,2) and (7,6). Magenta diamond markers at (5,4), (6,5), (6,6). Label '+ve' in black with a left-pointing arrow near the top of the decision line.",
+      "colors": [
+        "#FFFFFF",
+        "#FF0000",
+        "#0000FF",
+        "#FF00FF",
+        "#000000"
+      ],
+      "position": "right side, middle to bottom"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#000000",
+    "body_text": "#000000",
+    "accents": [
+      "#FF0000",
+      "#0000FF",
+      "#FF00FF",
+      "#FFFF99",
+      "#FFC0CB",
+      "#008000"
+    ]
+  },
+  "typography_notes": "Sans-serif font throughout. Mathematical symbols and variables rendered in italic serif style. Headers and key terms are bold. 'Step \u03b7 = 2', 'Iteration 4', and 'Stop Iterations' are red and bold. 'Ugmented Vectors (From Top)' is black bold. Class labels C1/C2 are color-coded blue and red. The slide number is black on a yellow circle.",
+  "animation_state": "The slide appears complete and static, showing the terminal state of the perceptron algorithm after Iteration 4 where no weight change occurs and iterations stop. No partial build or reveal is evident.",
+  "recreation_brief": "1. Create a white-background slide. 2. In the top-left, draw a matrix table with headers x1 x2 x3 x4 x5 x6 and three rows: [1 2 1 5 6 4], [1 1 2 4 5 6], [1 1 1 4 5 6]; place colored labels C1 C1 C1 C2 C2 C2 beneath the columns (C1 blue, C2 red). 3. To the right of the matrix, add text 'Initial W =' followed by a column vector (4, -2, -2)^T. 4. Add red bold text 'Step \u03b7 = 2' to the right. 5. Below that, add 'Check classes of' and a small matrix with headers Z1 Z1 Z1 and rows [0 0 7], [0 6 2]. 6. In the top-right, draw a pale-yellow rectangle containing 'W =' and the column vector (14, -4, 0)^T. 7. In the extreme top-right corner, draw a yellow circle with the number 46. 8. In the middle-left, add bold header 'Ugmented Vectors (From Top)' and below it a matrix with headers x1..x6, first row all 1s, second row [1 2 1 5 6 4], third row [1 1 2 4 5 6], with C1/C2 labels below. 9. Below the augmented matrix, draw a red-outlined box containing red bold text 'Iteration 4'. 10. In the bottom-left, draw a pink-filled box with black text 'No change in W' (underline the W) and red bold text 'Stop Iterations' on the next line. 11. On the right side, draw a large scatter plot with a red border, x-axis 0-8 and y-axis 0-7. 12. Draw a vertical red line at x=3. 13. Plot blue square markers at coordinates (1,1), (1,2), and (2,1). 14. Plot red triangle markers at (3,2) and (7,6). 15. Plot magenta diamond markers at (5,4), (6,5), and (6,6). 16. Add a black '+ve' label with a left-pointing arrow near the top of the decision line. 17. Add the explanatory caption 'C1 positive C2 negative Zero is unaccepted' near the top matrix, color-coding C1 blue, C2 red, and Zero green.",
+  "_meta": {
+    "frame": "slide_046.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 46,
+      "image": "slide_046.jpg",
+      "kept_frame": "frame_05595.jpg",
+      "start_sec": 5594,
+      "end_sec": 5594,
+      "precuration_slide": 157,
+      "provenance": "founder-curated 2026-10-19 (frame swap from group)",
+      "_reconcile_md5_snapshot": "0b355cbc667845d46001d7001ada241d"
+    },
+    "elapsed_s": 239.6
+  }
+}

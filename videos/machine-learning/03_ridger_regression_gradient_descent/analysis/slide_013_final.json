@@ -1,0 +1,221 @@
+{
+  "slide_title": "Effect of Overfitting on model parameter \u201cW\u201d",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Train",
+      "Test",
+      "13",
+      "X1",
+      "X2",
+      "X3",
+      "X4",
+      "X5",
+      "X6",
+      "X7",
+      "X8",
+      "y",
+      "Test1",
+      "Test2",
+      "Test3"
+    ],
+    "equations": [
+      "W = [0; 2; 0]",
+      "||W||^2 = 4",
+      "W = [2.7; 0.67; 0.64]",
+      "||W||^2 = 8.11",
+      "W = [4; 0.29; 0.78]",
+      "||W||^2 = 16.7"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title top-center. Slide-number badge top-right. Three horizontal rows below; each row contains: a 'Train' label box above a left training table, a center weight vector W with a yellow norm-squared ellipse below it, a blue right-pointing arrow, and a right test table with a 'Test' label box above it.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top center",
+        "content": "Effect of Overfitting on model parameter \u201cW\u201d"
+      },
+      {
+        "name": "slide_number",
+        "position": "top right",
+        "content": "Yellow circle with number 13"
+      },
+      {
+        "name": "row1",
+        "position": "upper middle",
+        "content": "'Train' label box; train table (X1 row 1,2,3,4,8,9,10,11; X2 row 1,3,5,6,16,7,5,3; y row 2,4,6,8,16,18,20,22); W=[0;2;0]; ||W||^2=4 ellipse; blue arrow; 'Test' label box; test table with y=60,80,100"
+      },
+      {
+        "name": "row2",
+        "position": "middle",
+        "content": "'Train' label box; train table with X8 cell of the X1 row = 30 highlighted yellow; W=[2.7;0.67;0.64]; ||W||^2=8.11 ellipse; blue arrow; 'Test' label box; test table with y=32.4,42.3,52.3 highlighted yellow"
+      },
+      {
+        "name": "row3",
+        "position": "lower middle",
+        "content": "'Train' label box; train table with X8 cell of the X1 row = 60 highlighted yellow; W=[4;0.29;0.78]; ||W||^2=16.7 ellipse; blue arrow; 'Test' label box; test table with y=24.4,31.2,38 highlighted yellow"
+      }
+    ],
+    "hierarchy": "Title dominates at top. Three equal-weight horizontal bands. Within each band, tables are primary, the W vector is secondary in red, the norm-squared callout is a yellow ellipse, and the 'Train'/'Test' label boxes are small accents."
+  },
+  "visual_elements": [
+    {
+      "type": "table",
+      "description": "Training table row 1: columns X1-X8; X1 row values 1,2,3,4,8,9,10,11; X2 row values 1,3,5,6,16,7,5,3; y row values 2,4,6,8,16,18,20,22",
+      "colors": [
+        "#FFFFFF",
+        "#000000",
+        "#CCCCCC"
+      ],
+      "position": "row1 left"
+    },
+    {
+      "type": "table",
+      "description": "Training table row 2: columns X1-X8; X1 row values 1,2,3,4,8,9,10,30 (X8 cell yellow); X2 row values 1,3,5,6,16,7,5,3; y row values 2,4,6,8,16,18,20,22",
+      "colors": [
+        "#FFFFFF",
+        "#000000",
+        "#FFFF00",
+        "#CCCCCC"
+      ],
+      "position": "row2 left"
+    },
+    {
+      "type": "table",
+      "description": "Training table row 3: columns X1-X8; X1 row values 1,2,3,4,8,9,10,60 (X8 cell yellow); X2 row values 1,3,5,6,16,7,5,3; y row values 2,4,6,8,16,18,20,22",
+      "colors": [
+        "#FFFFFF",
+        "#000000",
+        "#FFFF00",
+        "#CCCCCC"
+      ],
+      "position": "row3 left"
+    },
+    {
+      "type": "diagram",
+      "description": "Column vector W shown as vertical stack of three numbers in red, enclosed in brackets",
+      "colors": [
+        "#FF0000",
+        "#FFFFFF"
+      ],
+      "position": "center of each row"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Yellow ellipse containing ||W||^2 value",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "below each W vector"
+    },
+    {
+      "type": "arrow",
+      "description": "Blue right-pointing arrow from W vector to test table",
+      "colors": [
+        "#0000FF"
+      ],
+      "position": "between W and test table in each row"
+    },
+    {
+      "type": "table",
+      "description": "Test table row 1: columns Test1-Test3; X1 row 30,40,50; X2 row 15,20,25; y row 60,80,100",
+      "colors": [
+        "#FFFFFF",
+        "#000000",
+        "#CCCCCC"
+      ],
+      "position": "row1 right"
+    },
+    {
+      "type": "table",
+      "description": "Test table row 2: columns Test1-Test3; X1 row 30,40,50; X2 row 15,20,25; y row 32.4,42.3,52.3 (y row yellow)",
+      "colors": [
+        "#FFFFFF",
+        "#000000",
+        "#FFFF00",
+        "#CCCCCC"
+      ],
+      "position": "row2 right"
+    },
+    {
+      "type": "table",
+      "description": "Test table row 3: columns Test1-Test3; X1 row 30,40,50; X2 row 15,20,25; y row 24.4,31.2,38 (y row yellow)",
+      "colors": [
+        "#FFFFFF",
+        "#000000",
+        "#FFFF00",
+        "#CCCCCC"
+      ],
+      "position": "row3 right"
+    },
+    {
+      "type": "label-box",
+      "description": "'Train' label: white text on a blue box, placed above the training table",
+      "colors": [
+        "#0000FF",
+        "#FFFFFF"
+      ],
+      "position": "above the left training table in each row"
+    },
+    {
+      "type": "label-box",
+      "description": "'Test' label: black text on a yellow box, placed above the test table",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "above the right test table in each row"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#8B0000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000FF",
+      "#FFFF00",
+      "#FF0000"
+    ]
+  },
+  "typography_notes": "Title bold, dark red (#8B0000), approximately 32 pt, the largest text on the slide; font family (serif vs. sans) not determinable from the JSON [?]. Table column headers (X1-X8, Test1-Test3) and row labels (X1, X2, y) bold black. W vector values red (#FF0000). 'Train' label: white text on a blue (#0000FF) box. 'Test' label: black text on a yellow (#FFFF00) box. Norm-squared values: black text inside yellow (#FFFF00) ellipses. All remaining body text black.",
+  "animation_state": "All three rows fully visible; no mid-build state detected.",
+  "recreation_brief": "1. Set the slide background to solid white (#FFFFFF). 2. Place the title 'Effect of Overfitting on model parameter \u201cW\u201d' at top-center: bold, dark red (#8B0000), approximately 32 pt, the largest text on the slide. 3. Place the slide-number badge at top-right: a yellow (#FFFF00) filled circle containing '13' in black text. 4. Row 1 (upper-middle band), left: place a blue (#0000FF) filled rectangle with white text 'Train' immediately above the training table position. 5. Row 1, left: insert the training table as a 4-row by 9-column grid: header row X1, X2, X3, X4, X5, X6, X7, X8 in bold black; leftmost column row labels X1, X2, y in bold black; data row X1: 1, 2, 3, 4, 8, 9, 10, 11; data row X2: 1, 3, 5, 6, 16, 7, 5, 3; data row y: 2, 4, 6, 8, 16, 18, 20, 22; white cell fill, black text, thin gray (#CCCCCC) borders, no highlighted cells. 6. Row 1, center: place 'W = [0; 2; 0]' as the text 'W =' followed by a bracketed column vector with the values 0, 2, 0 stacked vertically in red (#FF0000). 7. Row 1, center, directly below the W vector: place a yellow (#FFFF00) filled ellipse containing black text '||W||^2 = 4'. 8. Row 1, between the W vector and the right table: place a blue (#0000FF) right-pointing arrow. 9. Row 1, right: place a yellow (#FFFF00) filled rectangle with black text 'Test' immediately above the test table position. 10. Row 1, right: insert the test table as a 4-row by 4-column grid: header row Test1, Test2, Test3 in bold black; row labels X1, X2, y in bold black; data row X1: 30, 40, 50; data row X2: 15, 20, 25; data row y: 60, 80, 100; white fill, black text, thin gray (#CCCCCC) borders, no highlighted cells. 11. Row 2 (middle band), left: place the blue (#0000FF) 'Train' label box (white text) above the training table. 12. Row 2, left: insert the training table exactly as step 5, except the eighth value of data row X1 is 30 and that single cell (X1 row, X8 column) is filled yellow (#FFFF00). 13. Row 2, center: place 'W = [2.7; 0.67; 0.64]' as a bracketed column vector with the values 2.7, 0.67, 0.64 stacked vertically in red (#FF0000). 14. Row 2, directly below the W vector: yellow (#FFFF00) filled ellipse with black text '||W||^2 = 8.11'. 15. Row 2: blue (#0000FF) right-pointing arrow between the W vector and the test table. 16. Row 2, right: yellow (#FFFF00) 'Test' label box (black text) above the test table. 17. Row 2, right: insert the test table exactly as step 10, except data row y is 32.4, 42.3, 52.3 and all three y cells are filled yellow (#FFFF00). 18. Row 3 (lower-middle band), left: blue (#0000FF) 'Train' label box (white text) above the training table. 19. Row 3, left: training table exactly as step 5, except the eighth value of data row X1 is 60 and that single cell is filled yellow (#FFFF00). 20. Row 3, center: 'W = [4; 0.29; 0.78]' as a bracketed column vector with the values 4, 0.29, 0.78 stacked vertically in red (#FF0000). 21. Row 3, directly below the W vector: yellow (#FFFF00) filled ellipse with black text '||W||^2 = 16.7'. 22. Row 3: blue (#0000FF) right-pointing arrow between the W vector and the test table. 23. Row 3, right: yellow (#FFFF00) 'Test' label box (black text) above the test table. 24. Row 3, right: test table exactly as step 10, except data row y is 24.4, 31.2, 38 and all three y cells are filled yellow (#FFFF00). 25. Render the slide in its final state: all three rows fully visible simultaneously, no build animation.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Confirmed verbatim_text.bullets is genuinely empty: the slide contains no bullet text; all verbatim content is captured in 15 labels and 6 equations. No filler bullets were invented.",
+      "Kept subtitle_or_header null: no subtitle or section header exists on the slide; the main title is the only header text, consistent with layout.regions.",
+      "Added two missing visual_elements entries ('Train' blue label box, 'Test' yellow label box) that appeared in verbatim_text.labels and typography_notes but were absent from visual_elements and layout.regions; updated layout.arrangement and the row1/row2/row3 region contents to include them.",
+      "Added border color #CCCCCC to the colors arrays of the four row-2 and row-3 tables (train and test), which omitted it even though the row-1 tables and the global brief specify thin gray borders on all tables.",
+      "Replaced the hedged typography note 'bold serif/sans' with an explicit description and marked the font family as [?] since it cannot be determined from the JSON.",
+      "Confirmed imagery is genuinely empty: the slide consists only of tables, text, a vector diagram, an ellipse, an arrow, and label boxes; no photos or icons.",
+      "Rewrote recreation_brief from 8 dense steps into a 25-step numbered checklist placing exactly one element per step, with exact text, cell values, positions, hex colors, and shape types."
+    ],
+    "uncertain_items": [
+      "Title font family (serif vs. sans-serif) is not determinable from the JSON [?].",
+      "Whether the 'Train' and 'Test' label boxes appear once per row (assumed in the brief) or only once per slide is not explicit in the source JSON [?].",
+      "Title size ~32 pt is an approximation carried over from the source brief; exact point sizes for all text are not specified [?].",
+      "Exact geometry (table cell sizes, ellipse size, arrow length, band heights) is not given; positions are band-relative (left/center/right within upper-middle, middle, lower-middle bands) [?]."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_013.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 13,
+      "image": "slide_013.jpg",
+      "kept_frame": "frame_00476.jpg",
+      "start_sec": 447.0,
+      "end_sec": 475.0,
+      "frame_count": 29
+    },
+    "elapsed_s": 126.4,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 1407.0
+  }
+}

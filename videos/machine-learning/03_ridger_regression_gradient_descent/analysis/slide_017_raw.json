@@ -1,0 +1,203 @@
+{
+  "slide_title": "Adding Ridge Regularizer to the model \u03bb=3",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Train",
+      "Test",
+      "X1",
+      "X2",
+      "X3",
+      "X4",
+      "X5",
+      "X6",
+      "X7",
+      "X8",
+      "Test1",
+      "Test2",
+      "Test3",
+      "17",
+      "\u03bb=3"
+    ],
+    "equations": [
+      "W = [0.1; 1.95; 0.03], ||W||^2 = 3.8",
+      "W = [1.2; 0.72; 0.77], ||W||^2 = 2.45",
+      "W = [1.77; 0.32; 0.99], ||W||^2 = 4.2"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title spans the top with a yellow slide-number circle at the far top-right. Below the title, three identical horizontal rows are stacked vertically. Each row contains, from left to right: a red-bordered Train data table with a blue 'Train' tag, a blue right-pointing arrow, a red-bordered W-matrix box, a blue right-pointing arrow, and a red-bordered Test prediction table with a blue 'Test' tag.",
+    "regions": [
+      {
+        "name": "Title bar",
+        "position": "top, full width",
+        "content": "Title text 'Adding Ridge Regularizer to the model' with 'Ridge' in blue and the rest in red, followed by '\u03bb=3' (lambda blue, =3 red). A yellow circle containing '17' sits at the far right."
+      },
+      {
+        "name": "Row 1 (top data row)",
+        "position": "upper-middle, full width",
+        "content": "Train table (X1\u2013X8 columns; X1, X2, y rows), arrow, W box with vector [0.1;1.95;0.03] and ||W||^2=3.8, arrow, Test table (Test1\u2013Test3; X1, X2, y rows)."
+      },
+      {
+        "name": "Row 2 (middle data row)",
+        "position": "middle, full width",
+        "content": "Train table identical to row 1 except the last X1 value is 30 highlighted yellow. W box with vector [1.2;0.72;0.77] and ||W||^2=2.45. Test table with y values 34.1, 45.1, 56.1."
+      },
+      {
+        "name": "Row 3 (bottom data row)",
+        "position": "lower-middle, full width",
+        "content": "Train table identical to row 1 except the last X1 value is 60 highlighted yellow. W box with vector [1.77;0.32;0.99] and ||W||^2=4.2. Test table with y values 26.2, 34.4, 42.5."
+      }
+    ],
+    "hierarchy": "The title is the largest element. Within each row, the red-bordered tables and W boxes are visually equal in weight; blue arrows guide the eye left-to-right. Yellow highlights on the '30' and '60' cells draw attention to the changed training value. The slide number is small and secondary."
+  },
+  "visual_elements": [
+    {
+      "type": "table",
+      "description": "Train table, row 1. Red border. Header row: X1 X2 X3 X4 X5 X6 X7 X8. Row X1: 1 2 3 4 8 9 10 11. Row X2: 1 3 5 6 16 7 5 3. Row y: 2 4 6 8 16 18 20 22. Blue 'Train' label tab at top-left.",
+      "colors": [
+        "#CC0000",
+        "#000000",
+        "#0000FF"
+      ],
+      "position": "Row 1, left"
+    },
+    {
+      "type": "table",
+      "description": "Train table, row 2. Same as row 1 except X1 row last value is 30 with yellow cell highlight. Values: X1: 1 2 3 4 8 9 10 30; X2: 1 3 5 6 16 7 5 3; y: 2 4 6 8 16 18 20 22.",
+      "colors": [
+        "#CC0000",
+        "#000000",
+        "#FFFF00",
+        "#0000FF"
+      ],
+      "position": "Row 2, left"
+    },
+    {
+      "type": "table",
+      "description": "Train table, row 3. Same as row 1 except X1 row last value is 60 with yellow cell highlight. Values: X1: 1 2 3 4 8 9 10 60; X2: 1 3 5 6 16 7 5 3; y: 2 4 6 8 16 18 20 22.",
+      "colors": [
+        "#CC0000",
+        "#000000",
+        "#FFFF00",
+        "#0000FF"
+      ],
+      "position": "Row 3, left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "W matrix box, row 1. Red border. Contains column vector W = [0.1; 1.95; 0.03] in red bold, and below it ||W||^2 = 3.8.",
+      "colors": [
+        "#CC0000",
+        "#FFFFFF"
+      ],
+      "position": "Row 1, center"
+    },
+    {
+      "type": "highlight-box",
+      "description": "W matrix box, row 2. Red border. Contains column vector W = [1.2; 0.72; 0.77] in red bold, and below it ||W||^2 = 2.45.",
+      "colors": [
+        "#CC0000",
+        "#FFFFFF"
+      ],
+      "position": "Row 2, center"
+    },
+    {
+      "type": "highlight-box",
+      "description": "W matrix box, row 3. Red border. Contains column vector W = [1.77; 0.32; 0.99] in red bold, and below it ||W||^2 = 4.2.",
+      "colors": [
+        "#CC0000",
+        "#FFFFFF"
+      ],
+      "position": "Row 3, center"
+    },
+    {
+      "type": "table",
+      "description": "Test table, row 1. Red border. Header row: Test1 Test2 Test3. Row X1: 30 40 50. Row X2: 15 20 25. Row y: 59 78.7 98.4. Blue 'Test' label tab at top-left.",
+      "colors": [
+        "#CC0000",
+        "#000000",
+        "#0000FF"
+      ],
+      "position": "Row 1, right"
+    },
+    {
+      "type": "table",
+      "description": "Test table, row 2. Red border. Header: Test1 Test2 Test3. X1: 30 40 50. X2: 15 20 25. y: 34.1 45.1 56.1.",
+      "colors": [
+        "#CC0000",
+        "#000000",
+        "#0000FF"
+      ],
+      "position": "Row 2, right"
+    },
+    {
+      "type": "table",
+      "description": "Test table, row 3. Red border. Header: Test1 Test2 Test3. X1: 30 40 50. X2: 15 20 25. y: 26.2 34.4 42.5.",
+      "colors": [
+        "#CC0000",
+        "#000000",
+        "#0000FF"
+      ],
+      "position": "Row 3, right"
+    },
+    {
+      "type": "arrow",
+      "description": "Blue right-pointing arrow connecting Train table to W box in each of the three rows.",
+      "colors": [
+        "#0000FF"
+      ],
+      "position": "Between Train table and W box, all three rows"
+    },
+    {
+      "type": "arrow",
+      "description": "Blue right-pointing arrow connecting W box to Test table in each of the three rows.",
+      "colors": [
+        "#0000FF"
+      ],
+      "position": "Between W box and Test table, all three rows"
+    },
+    {
+      "type": "other",
+      "description": "Yellow filled circle containing the number 17, indicating slide number.",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "Top-right corner"
+    }
+  ],
+  "imagery": [
+    "Yellow circle with black number '17' at top-right corner",
+    "Yellow cell highlights on the value '30' in row 2 train table and '60' in row 3 train table"
+  ],
+  "colors": {
+    "background": "#F2F2F2",
+    "title_text": "#CC0000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000FF",
+      "#FFFF00",
+      "#CC0000"
+    ]
+  },
+  "typography_notes": "Sans-serif font throughout (appears to be Arial or Calibri). Title is large and bold; 'Adding', 'Regularizer to the model', and '=3' are red, while 'Ridge' and '\u03bb' are blue. Table headers and row labels are bold black. W-matrix values are bold red. 'Train' and 'Test' tags are blue. All table text is smaller than the title. No italics or all-caps observed.",
+  "animation_state": "No mid-build animation detected; all three rows and all elements appear fully revealed.",
+  "recreation_brief": "1. Set slide background to light gray (#F2F2F2). 2. Add title at top-left: 'Adding' in bold red (#CC0000), 'Ridge' in bold blue (#0000FF), 'Regularizer to the model' in bold red, then a space and '\u03bb=3' with \u03bb in blue and =3 in red; use a large sans-serif font (~36pt). 3. Add a yellow (#FFFF00) filled circle at the top-right with black text '17' (~14pt). 4. Create three horizontal rows below the title. For each row, place from left to right: a Train table, a blue arrow, a W box, a blue arrow, and a Test table. 5. Train table (all rows): red (#CC0000) border, 4 rows \u00d7 9 columns (first column for row labels). Header: X1 X2 X3 X4 X5 X6 X7 X8. Row X1: 1 2 3 4 8 9 10 11. Row X2: 1 3 5 6 16 7 5 3. Row y: 2 4 6 8 16 18 20 22. Add a small blue 'Train' label tab overlapping the top-left. 6. In row 2 only, change the last X1 cell to 30 and fill it yellow (#FFFF00). In row 3 only, change the last X1 cell to 60 and fill it yellow. 7. W box (all rows): red border, white fill. Inside, show a 3\u00d71 column vector labeled W in bold red, then below it '||W||^2 = <value>' also in bold red. Row 1 values: 0.1, 1.95, 0.03 with norm 3.8. Row 2 values: 1.2, 0.72, 0.77 with norm 2.45. Row 3 values: 1.77, 0.32, 0.99 with norm 4.2. 8. Test table (all rows): red border, 4 rows \u00d7 4 columns. Header: Test1 Test2 Test3. Row X1: 30 40 50. Row X2: 15 20 25. Row y varies by row: row 1 = 59, 78.7, 98.4; row 2 = 34.1, 45.1, 56.1; row 3 = 26.2, 34.4, 42.5. Add a small blue 'Test' label tab overlapping the top-left. 9. Draw blue (#0000FF) right-pointing arrows between Train\u2192W and W\u2192Test in each row. 10. Ensure all table text is black (#000000) and smaller than the title; keep row labels (X1, X2, y) bold.",
+  "_meta": {
+    "frame": "slide_017.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 17,
+      "image": "slide_017.jpg",
+      "kept_frame": "frame_02081.jpg",
+      "start_sec": 2080,
+      "end_sec": 2080,
+      "precuration_slide": 72,
+      "provenance": "founder-curated 2026-10-19 (frame swap from group)",
+      "_reconcile_md5_snapshot": "2148279bce874e5352eef91ca5a596ef"
+    },
+    "elapsed_s": 122.8
+  }
+}

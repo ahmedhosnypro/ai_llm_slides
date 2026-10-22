@@ -1,0 +1,148 @@
+{
+  "slide_title": "Adding Ridge Regularizer to the model",
+  "subtitle_or_header": "\u03bb=10",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "Train",
+      "Test",
+      "X1",
+      "X2",
+      "X3",
+      "X4",
+      "X5",
+      "X6",
+      "X7",
+      "X8",
+      "x1",
+      "x2",
+      "y",
+      "Test1",
+      "Test2",
+      "Test3",
+      "\u03bb=10",
+      "18"
+    ],
+    "equations": [
+      "W = [[0.13],[1.87],[0.09]]",
+      "||W||^2 = 3.5",
+      "W = [[0.54],[0.73],[0.81]]",
+      "||W||^2 = 1.48",
+      "W = [[0.82],[0.33],[1.1]]",
+      "||W||^2 = 1.92"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title across the top with \u03bb=10 at the upper right and a yellow slide-number circle at the far upper right. Below the title are three identical horizontal experiment bands stacked top to bottom. Each band runs left-to-right: Train table, blue right arrow, red-bordered W/norm box, blue right arrow, Test table. No footer is visible.",
+    "regions": [
+      {
+        "name": "title_area",
+        "position": "top center/left, roughly x 15-80%, y 8-18%",
+        "content": "Adding Ridge Regularizer to the model, with Ridge in blue and the rest in dark red"
+      },
+      {
+        "name": "lambda_parameter",
+        "position": "top right, roughly x 78-90%, y 10-18%",
+        "content": "\u03bb=10 in blue"
+      },
+      {
+        "name": "slide_number",
+        "position": "top far right, roughly x 90-97%, y 4-12%",
+        "content": "Yellow circle containing 18"
+      },
+      {
+        "name": "row1_band",
+        "position": "upper middle, roughly y 23-38%",
+        "content": "Train table, arrow, W box with ||W||^2=3.5, arrow, Test table with y = 57.4 / 76.5 / 95.6"
+      },
+      {
+        "name": "row2_band",
+        "position": "middle, roughly y 40-56%",
+        "content": "Train table with yellow highlights 30, arrow, W box with ||W||^2=1.48, arrow, Test table with y = 34.6 / 46.4 / 57.4"
+      },
+      {
+        "name": "row3_band",
+        "position": "lower middle, roughly y 58-76%",
+        "content": "Train table with yellow highlights 60, arrow, W box with ||W||^2=1.92, arrow, Test table with y = 26.8 / 35.4 / 44.1"
+      }
+    ],
+    "hierarchy": "The title is the largest text. The three experiment bands are visually equal and dominate the body. Within each band, the tables and W box are similar in scale; yellow highlighted cells and blue arrows act as strong visual guides. The slide number is small and secondary."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Row 1 flow: left Train table has header X1 X2 X3 X4 X5 X6 X7 X8 and rows x1 = 1 2 3 4 8 9 10 11, x2 = 1 3 5 6 16 7 5 3, y = 2 4 6 8 16 18 20 22. A blue right arrow points to a red-bordered white box containing W = [[0.13],[1.87],[0.09]] and, below it, ||W||^2 = 3.5 in blue. A second blue right arrow points to the Test table with header Test1 Test2 Test3 and rows x1 = 30 40 50, x2 = 15 20 25, y = 57.4 76.5 95.6.",
+      "colors": [
+        "#C00000",
+        "#0000FF",
+        "#FFFF00",
+        "#CCFFCC",
+        "#000000",
+        "#FF0000"
+      ],
+      "position": "upper middle band, left-to-right across the slide"
+    },
+    {
+      "type": "diagram",
+      "description": "Row 2 flow: left Train table has header X1 X2 X3 X4 X5 X6 X7 X8 and rows x1 = 1 2 3 4 8 9 10 30, x2 = 1 3 5 6 16 7 5 3, y = 2 4 30 8 16 18 20 22. The cells X8=30 in the x1 row and X3=30 in the y row are yellow-highlighted. A blue right arrow points to a red-bordered white box containing W = [[0.54],[0.73],[0.81]] and, below it, ||W||^2 = 1.48 in blue. A second blue right arrow points to the Test table with header Test1 Test2 Test3 and rows x1 = 30 40 50, x2 = 15 20 25, y = 34.6 46.4 57.4; a small red pencil-like mark appears near the middle y value.",
+      "colors": [
+        "#C00000",
+        "#0000FF",
+        "#FFFF00",
+        "#CCFFCC",
+        "#000000",
+        "#FF0000"
+      ],
+      "position": "middle band, left-to-right across the slide"
+    },
+    {
+      "type": "diagram",
+      "description": "Row 3 flow: left Train table has header X1 X2 X3 X4 X5 X6 X7 X8 and rows x1 = 1 2 3 4 8 9 10 60, x2 = 1 3 5 6 16 7 5 3, y = 2 4 60 8 16 18 20 22. The cells X8=60 in the x1 row and X3=60 in the y row are yellow-highlighted. A blue right arrow points to a red-bordered white box containing W = [[0.82],[0.33],[1.1]] and, below it, ||W||^2 = 1.92 in blue. A second blue right arrow points to the Test table with header Test1 Test2 Test3 and rows x1 = 30 40 50, x2 = 15 20 25, y = 26.8 35.4 44.1.",
+      "colors": [
+        "#C00000",
+        "#0000FF",
+        "#FFFF00",
+        "#CCFFCC",
+        "#000000",
+        "#FF0000"
+      ],
+      "position": "lower middle band, left-to-right across the slide"
+    }
+  ],
+  "imagery": [
+    "Yellow circular slide-number badge at the top far right with black text 18",
+    "Small red pencil-like annotation near the middle y value in the second Test table"
+  ],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000CC",
+      "#0000FF",
+      "#C00000",
+      "#FFFF00",
+      "#CCFFCC",
+      "#00B050",
+      "#FF0000"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout. The title is bold and large, with mixed color runs: Adding and Regularizer to the model in dark red, Ridge in blue. Table headers are small bold dark-green on light green; row labels are small bold black; data values are compact black, with highlighted cells bold and test prediction y-values in red. The W box uses a red W, black matrix entries, and a blue norm line.",
+  "animation_state": "None; all three rows and all values appear fully revealed.",
+  "recreation_brief": "1. Use a white slide background. 2. Add the title near the top: 'Adding' in dark red, 'Ridge' in blue, 'Regularizer to the model' in dark red; place '\u03bb=10' in blue at the upper right. 3. Add a small yellow circle at the far upper right with the number 18. 4. Create three horizontal bands. In each band, place a Train table on the left, a blue right arrow, a red-bordered W box in the middle, another blue right arrow, and a Test table on the right. 5. Each Train table has a top-left label cell 'Train' in white on blue, then header cells X1 through X8 on light green, then rows labeled x1, x2, y. 6. Each Test table has a top-left label cell 'Test' in white on green, then header cells Test1 through Test3 on light green, then rows labeled x1, x2, y. 7. Row 1 Train values: x1 = 1 2 3 4 8 9 10 11; x2 = 1 3 5 6 16 7 5 3; y = 2 4 6 8 16 18 20 22. W box: W = [[0.13],[1.87],[0.09]], ||W||^2 = 3.5. Test y = 57.4 76.5 95.6. 8. Row 2 Train values: x1 = 1 2 3 4 8 9 10 30; x2 = 1 3 5 6 16 7 5 3; y = 2 4 30 8 16 18 20 22; highlight X8=30 and y X3=30 in yellow. W box: W = [[0.54],[0.73],[0.81]], ||W||^2 = 1.48. Test y = 34.6 46.4 57.4, with a small red pencil-like mark near 46.4. 9. Row 3 Train values: x1 = 1 2 3 4 8 9 10 60; x2 = 1 3 5 6 16 7 5 3; y = 2 4 60 8 16 18 20 22; highlight X8=60 and y X3=60 in yellow. W box: W = [[0.82],[0.33],[1.1]], ||W||^2 = 1.92. Test y = 26.8 35.4 44.1. 10. All Test tables share x1 = 30 40 50 and x2 = 15 20 25. Use red table borders, blue arrows, black data text, and red Test y prediction values.",
+  "_meta": {
+    "frame": "slide_018.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 18,
+      "image": "slide_018.jpg",
+      "kept_frame": "frame_02176.jpg",
+      "start_sec": 2175,
+      "end_sec": 2175,
+      "precuration_slide": 74,
+      "provenance": "founder-curated kept frame",
+      "_reconcile_md5_snapshot": "9972d59b585cbf34ceacf8c773d97276"
+    },
+    "elapsed_s": 181.3
+  }
+}

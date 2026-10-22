@@ -1,0 +1,136 @@
+{
+  "slide_title": "Gradient Descent (GD) \u2013 Stochastic Gradient Descent SGD)\nand Mini-Batch Gradient Descent",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Stochastic Gradient Descent (SGD) is a variant of GD which computes the gradient of the Error function with respect to a single training example",
+      "In other words, it updates the weights using one training sample at a time",
+      "Remember: GD updated the weight vector after passing through ALL training samples.",
+      "SGD is usually more efficient than GD",
+      "SGD converges faster than GD"
+    ],
+    "labels": [
+      "39",
+      "Why using SGD",
+      "Repeat for ALL misclassified Samples",
+      "Batch GD is a generalization of GD and SGD where weights are updated after passing through \u201cMini-Batch\u201d of training samples with size n",
+      "If n=N (it is GD), and if n=1 (it is SGD)"
+    ],
+    "equations": [
+      "W^(updated)=W^old - \u03b7 \u03b4_i X_i"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title top-left/center in two lines; yellow slide-number badge top-right; a large white panel with a blue border occupies the middle-left/center; inside it, three black bullets sit above a centered green-bordered equation callout, with a red subheading and two more bullets below; a two-line colored caption sits below the panel.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top, left/center; x 10\u201380%, y 8\u201322%",
+        "content": "Two-line title: first line mostly red, second line blue."
+      },
+      {
+        "name": "slide_number",
+        "position": "top-right; x 88\u201397%, y 5\u201313%",
+        "content": "Yellow rounded badge with black number 39."
+      },
+      {
+        "name": "main_panel",
+        "position": "middle; x 10\u201379%, y 25\u201382%",
+        "content": "White rectangle with blue border containing bullets, equation callout, Why using SGD subheading, and two more bullets."
+      },
+      {
+        "name": "upper_bullets",
+        "position": "inside main_panel, upper; x 12\u201378%, y 28\u201343%",
+        "content": "Three blue-arrow bullets defining SGD and contrasting it with GD."
+      },
+      {
+        "name": "equation_callout",
+        "position": "inside main_panel, center; x 30\u201377%, y 44\u201356%",
+        "content": "Green-bordered box with the weight-update formula and red annotation Repeat for ALL misclassified Samples."
+      },
+      {
+        "name": "why_sgd_block",
+        "position": "inside main_panel, lower; x 12\u201378%, y 58\u201375%",
+        "content": "Red subheading Why using SGD followed by two bullets."
+      },
+      {
+        "name": "bottom_caption",
+        "position": "bottom; x 10\u201379%, y 84\u201395%",
+        "content": "Red Batch GD generalization sentence and blue centered conditional sentence."
+      }
+    ],
+    "hierarchy": "The bold two-color title dominates the top. Inside the panel, the green-bordered equation is the visual anchor; the red subheading Why using SGD and the red word efficient draw secondary attention; black bullet text is the main body. The bottom caption is smaller but bold and color-coded."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Large white content panel with a thick blue border; contains all main bullets, the equation callout, and the Why using SGD block.",
+      "colors": [
+        "#0000ff",
+        "#ffffff"
+      ],
+      "position": "middle, x 10\u201379%, y 25\u201382%"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Green-bordered rectangular callout centered in the panel; contains W^(updated)=W^old - \u03b7 \u03b4_i X_i and red text Repeat for ALL misclassified Samples.",
+      "colors": [
+        "#00b050",
+        "#ffffff",
+        "#ff0000"
+      ],
+      "position": "center of main panel, x 30\u201377%, y 44\u201356%"
+    },
+    {
+      "type": "icon",
+      "description": "Blue arrow/chevron bullet markers precede each bullet in the main panel.",
+      "colors": [
+        "#0000ff"
+      ],
+      "position": "left edge of each bullet inside main panel"
+    },
+    {
+      "type": "other",
+      "description": "Red mouse-pointer arrow is visible over the equation near \u03b4_i; likely a screen cursor from the video capture rather than a slide object.",
+      "colors": [
+        "#ff0000"
+      ],
+      "position": "center, over the equation callout"
+    }
+  ],
+  "imagery": [
+    "Yellow rounded-rectangle slide-number badge with 39, top-right",
+    "Blue arrow bullet markers",
+    "Red mouse-pointer arrow over the equation, likely not part of the slide content"
+  ],
+  "colors": {
+    "background": "#f2f2f2",
+    "title_text": "#c00000 / #0000ff",
+    "body_text": "#000000",
+    "accents": [
+      "#0000ff",
+      "#c00000",
+      "#ff0000",
+      "#00b050",
+      "#ffff00"
+    ]
+  },
+  "typography_notes": "Serif font throughout, Times New Roman/Cambria-like. Title is bold and large, about 32\u201336 pt, split across two lines with red then blue. Body bullets are about 20\u201324 pt. Why using SGD is bold red; efficient is red; the equation is italic math-style; the bottom caption is bold, with the first line red and the second line blue. The slide number is black bold inside a yellow rounded badge.",
+  "animation_state": "No mid-build state is evident; all text and bullets appear fully revealed. A red mouse-pointer cursor is visible over the equation, likely from the screen recording rather than a PowerPoint animation.",
+  "recreation_brief": "1. Make a 16:9 slide with light gray background #F2F2F2. 2. Add a left-aligned title text box near the top: line 1 in bold red #C00000, 'Gradient Descent (GD) \u2013 Stochastic Gradient Descent SGD)'; line 2 in bold blue #0000FF, 'and Mini-Batch Gradient Descent'. Use a serif font about 32\u201336 pt. 3. Add a yellow #FFFF00 rounded rectangle at the top right containing black bold '39'. 4. Add a white rectangle with a thick blue #0000FF border in the middle, roughly x 10\u201379% and y 25\u201382%. 5. Inside it, place three bullets with blue arrow markers: 'Stochastic Gradient Descent (SGD) is a variant of GD which computes the gradient of the Error function with respect to a single training example'; 'In other words, it updates the weights using one training sample at a time'; 'Remember: GD updated the weight vector after passing through ALL training samples.' 6. Add a centered white rectangle with a green #00B050 border; inside it place the formula 'W^(updated)=W^old - \u03b7 \u03b4_i X_i' in italic serif math style, and to the right place red #FF0000 text 'Repeat for ALL misclassified Samples'. 7. Below the equation, still inside the blue-bordered panel, add bold red #C00000 subheading 'Why using SGD', then two bullets: 'SGD is usually more efficient than GD' with 'efficient' in red, and 'SGD converges faster than GD'. 8. Below the panel, add bold red #C00000 text: 'Batch GD is a generalization of GD and SGD where weights are updated after passing through \u201cMini-Batch\u201d of training samples with size n'. 9. Under that, add centered bold blue #0000FF text: 'If n=N (it is GD), and if n=1 (it is SGD)'. 10. Do not add the red mouse pointer unless intentionally reproducing the screenshot cursor.",
+  "_meta": {
+    "frame": "slide_039.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 39,
+      "image": "slide_039.jpg",
+      "kept_frame": "frame_04722.jpg",
+      "start_sec": 4721,
+      "end_sec": 4721,
+      "precuration_slide": 134,
+      "provenance": "founder-curated kept frame",
+      "_reconcile_md5_snapshot": "00dccae898f3ccd615343449d0972d92"
+    },
+    "elapsed_s": 187.6
+  }
+}

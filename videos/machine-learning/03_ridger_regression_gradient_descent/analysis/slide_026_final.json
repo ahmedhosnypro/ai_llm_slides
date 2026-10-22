@@ -1,0 +1,127 @@
+{
+  "slide_title": "Gradient Descent Solution",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "[1] Start with initial Random Weights (W)",
+      "[2] Update the weights by moving along the direction of negative gradient of Loss function (w.r.t. W) (moving step is a hyper parameter, AKA Learning Rate)",
+      "[3] Stop when the gradient is almost zero (this is at the minimum value of the function)",
+      "Least Squares Linear regression objective function is a convex function (even with regularizer). This means it has ONE Minimum (good news ).",
+      "GD will approximately find this minimum value but at a variable number of steps depending on the used Learning Rate"
+    ],
+    "labels": [
+      "Gradient Descent (GD) Algorithm:",
+      "Notes:",
+      "26"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Title centered at top. Slide number badge at top-right. A large blue-bordered rectangular content box dominates the center and lower slide. Inside the box, a red section header is followed by three blue numbered algorithm steps; below that, a second red section header is followed by two black bullet points.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top center, approx 0-12% vertical",
+        "content": "Gradient Descent Solution"
+      },
+      {
+        "name": "slide_number",
+        "position": "top right, approx 88-96% horizontal, 3-13% vertical",
+        "content": "Yellow circle with black number 26"
+      },
+      {
+        "name": "content_box",
+        "position": "center, approx 8-92% horizontal, 14-96% vertical",
+        "content": "Blue-bordered white-filled rectangle containing all body text"
+      },
+      {
+        "name": "algorithm_header",
+        "position": "inside content box, upper area",
+        "content": "Red bold text: Gradient Descent (GD) Algorithm:"
+      },
+      {
+        "name": "algorithm_steps",
+        "position": "inside content box, upper-middle area",
+        "content": "Three blue numbered lines [1]-[3]"
+      },
+      {
+        "name": "notes_header",
+        "position": "inside content box, lower-middle area",
+        "content": "Red bold text: Notes:"
+      },
+      {
+        "name": "notes_bullets",
+        "position": "inside content box, bottom area",
+        "content": "Two black bullet points"
+      }
+    ],
+    "hierarchy": "Title is largest, bold, red. Section headers are medium, bold, red. Numbered algorithm steps are blue. Notes bullets are black. Slide number is smallest, inside a yellow circle."
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Large rectangular container with a thin blue outline and white fill, holding the algorithm and notes text",
+      "colors": [
+        "#0000FF",
+        "#FFFFFF"
+      ],
+      "position": "center of slide, approx 8-92% horizontal, 14-96% vertical"
+    },
+    {
+      "type": "other",
+      "description": "Small yellow circular badge in the upper-right corner containing the slide number",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top right corner, approx 88-96% horizontal, 3-13% vertical"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#F0F0F0",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000FF",
+      "#FFFF00",
+      "#C00000"
+    ]
+  },
+  "typography_notes": "Sans-serif typeface. Title is bold, red, and the largest text on the slide. Section headers are medium, bold, red. Algorithm steps are blue with selective bold and underline emphasis on key terms. Notes are black with selective bold and underline emphasis. Numbered items use bracketed numerals [1], [2], [3]. Notes use standard round bullet markers. Slide number '26' is the smallest text on the slide.",
+  "animation_state": "No mid-build state detected; all text and elements appear fully revealed.",
+  "recreation_brief": "1. Set the entire slide background to solid light gray (#F0F0F0).\n2. Place the title 'Gradient Descent Solution' centered horizontally at the top of the slide (approx 0-12% vertical) in bold sans-serif, red (#C00000); it is the largest text on the slide.\n3. Draw one small circle at the top-right (approx 88-96% horizontal, 3-13% vertical) with yellow fill (#FFFF00) and center the number '26' inside it in black (#000000); it is the smallest text on the slide.\n4. Draw one rectangle with a thin blue (#0000FF) outline and white (#FFFFFF) fill spanning approx 8-92% of the slide width and 14-96% of the slide height, centered below the title.\n5. Inside the rectangle, upper area, place the section header 'Gradient Descent (GD) Algorithm:' in bold red (#C00000) at medium size.\n6. Directly below that header, place the line '[1] Start with initial Random Weights (W)' in blue (#0000FF), with 'Random Weights (W)' in bold.\n7. Below line [1], place the line '[2] Update the weights by moving along the direction of negative gradient of Loss function (w.r.t. W) (moving step is a hyper parameter, AKA Learning Rate)' in blue (#0000FF); bold 'negative gradient', 'Loss function', 'w.r.t. W', 'moving step is a hyper parameter', and 'AKA Learning Rate'; underline 'moving along'.\n8. Below line [2], place the line '[3] Stop when the gradient is almost zero (this is at the minimum value of the function)' in blue (#0000FF); underline 'gradient' and apply bold plus underline to 'almost zero'.\n9. In the lower-middle area of the rectangle, place the second section header 'Notes:' in bold red (#C00000) at medium size.\n10. Below 'Notes:', place one round black bullet marker followed by the text 'Least Squares Linear regression objective function is a convex function (even with regularizer). This means it has ONE Minimum (good news ).' in black (#000000); bold 'is a convex function' and 'ONE Minimum'.\n11. Below the first note, place one round black bullet marker followed by the text 'GD will approximately find this minimum value but at a variable number of steps depending on the used Learning Rate' in black (#000000); underline 'approximately', apply bold plus underline to 'variable number of steps', and bold 'Learning Rate'.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "recreation_brief: moved the bold instruction for 'Random Weights (W)' from algorithm line [2] to line [1], the only line containing that phrase (the source brief contradicted its own verbatim text).",
+      "recreation_brief: replaced the vague content-box placement 'roughly the lower 80% of the slide' with the exact bounds from layout.regions: approx 8-92% horizontal, 14-96% vertical.",
+      "visual_elements: replaced the vague positions 'center of slide, spanning most of the width and height' and 'top right corner' with the exact bounds 'approx 8-92% horizontal, 14-96% vertical' and 'approx 88-96% horizontal, 3-13% vertical' taken from layout.regions.",
+      "recreation_brief: restructured from an 8-step run-on paragraph into an 11-step numbered checklist placing exactly one element per step (each of the 3 algorithm lines and each of the 2 notes bullets now has its own step).",
+      "recreation_brief: added explicit 'one round black bullet marker' placement for both Notes bullets, derived from typography_notes ('Notes use standard round bullet markers').",
+      "typography_notes: harmonized with layout.hierarchy \u2014 title now stated as 'the largest text on the slide' (was 'significantly larger than body text') and added that slide number '26' is the smallest text.",
+      "subtitle_or_header: retained null because no subtitle or subtitle-like text exists in any source field (title-only slide); nothing could be reconstructed without inventing content."
+    ],
+    "uncertain_items": [
+      "Exact font point sizes are not specified anywhere in the JSON; only relative hierarchy is available (title largest, section headers medium, slide number smallest).",
+      "Exact thickness of the blue content-box border is not specified (described only as 'thin').",
+      "All percentage positions are vision-model approximations; no pixel-exact coordinates exist in the JSON. No items were marked [?] in the source."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_026.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 26,
+      "image": "slide_026.jpg",
+      "kept_frame": "frame_01079.jpg",
+      "start_sec": 1037.0,
+      "end_sec": 1078.0,
+      "frame_count": 42
+    },
+    "elapsed_s": 71.1,
+    "validated_by": "glm-5.3",
+    "validation_elapsed_s": 339.0
+  }
+}

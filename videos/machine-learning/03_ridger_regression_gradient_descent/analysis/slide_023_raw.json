@@ -1,0 +1,130 @@
+{
+  "slide_title": "Inverse of High Dimension Matrix",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "The standard matrix inversion algorithm has a time complexity of O(n^3), which means that the computation time increases rapidly with the size of the matrix (increasing cubically with the number of components).",
+      "For Example: if Features vector is of size 1000 then Inverse calculation is or order 1,000,000,000 which is impractical",
+      "Instead of using Least Squares with Matrix inversion,",
+      "use Gradient Descent iterative solution"
+    ],
+    "labels": [
+      "Recall:",
+      "Solution:",
+      "23",
+      "if Feature vectors are of dimension d",
+      "(X^T X) is of size d+1 x d+1"
+    ],
+    "equations": [
+      "W = (X^T X + \u03bbI)^(-1) X^T Y"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title top-left with slide number top-right; three stacked content sections below: green recall box with equation, blue explanatory box, plain-text example, and yellow solution box at bottom",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top-left/center, ~5-15% height",
+        "content": "Red bold title text"
+      },
+      {
+        "name": "slide_number",
+        "position": "top-right, ~5-15% height",
+        "content": "Yellow circle containing number 23"
+      },
+      {
+        "name": "recall_box",
+        "position": "upper-middle, ~18-35% height, full width",
+        "content": "Light green rounded rectangle containing 'Recall:' label, the matrix equation, and dimension note"
+      },
+      {
+        "name": "complexity_box",
+        "position": "middle, ~38-55% height, full width",
+        "content": "Light blue rounded rectangle with time complexity explanation"
+      },
+      {
+        "name": "example_text",
+        "position": "middle-lower, ~58-70% height, full width",
+        "content": "Plain text example with red highlighted numbers"
+      },
+      {
+        "name": "solution_box",
+        "position": "bottom, ~75-95% height, full width",
+        "content": "Light yellow rounded rectangle with 'Solution:' label and two lines of text"
+      }
+    ],
+    "hierarchy": "Title dominates in red; equation is central focus in green box; solution box provides visual closure at bottom"
+  },
+  "visual_elements": [
+    {
+      "type": "highlight-box",
+      "description": "Light green rounded rectangle containing the recall equation and dimension note",
+      "colors": [
+        "#E2EFDA",
+        "#000000",
+        "#C00000"
+      ],
+      "position": "upper-middle"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Light blue rounded rectangle containing the time complexity explanation",
+      "colors": [
+        "#DDEBF7",
+        "#1F3864",
+        "#C00000"
+      ],
+      "position": "middle"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Light yellow rounded rectangle containing the solution text",
+      "colors": [
+        "#FFF2CC",
+        "#1F3864",
+        "#000000"
+      ],
+      "position": "bottom"
+    },
+    {
+      "type": "other",
+      "description": "Yellow circle with black number 23",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "top-right"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#E2EFDA",
+      "#DDEBF7",
+      "#FFF2CC",
+      "#FFFF00",
+      "#1F3864"
+    ]
+  },
+  "typography_notes": "Sans-serif font throughout; title is bold red larger text; 'Recall:' is italic and underlined; 'Solution:' is blue bold; body text is dark blue/black; numbers 1000 and 1,000,000,000 are red; equation uses bold serif-style math variables with underline on W",
+  "animation_state": "No build animation apparent; all content fully visible",
+  "recreation_brief": "1. Create slide with white background. 2. Add title 'Inverse of High Dimension Matrix' in bold red (#C00000) sans-serif at top-left. 3. Add yellow circle (#FFFF00) at top-right with black text '23'. 4. Add light green (#E2EFDA) rounded rectangle below title. Inside: italic underlined 'Recall:' in black; equation 'W = (X^T X + \u03bbI)^(-1) X^T Y' with bold math variables and underline beneath W; below equation add 'if Feature vectors are of dimension d => (X^T X) is of size d+1 x d+1' with 'd+1 x d+1' in red. 5. Add light blue (#DDEBF7) rounded rectangle below green box. Fill with dark blue (#1F3864) text: 'The standard matrix inversion algorithm has a time complexity of O(n^3), which means that the computation time increases rapidly with the size of the matrix (increasing cubically with the number of components).' Make 'O(n^3)' red. 6. Add plain text below blue box: 'For Example: if Features vector is of size 1000 then Inverse calculation is or order 1,000,000,000 which is impractical' with '1000' and '1,000,000,000' in red. 7. Add light yellow (#FFF2CC) rounded rectangle at bottom. Inside: blue bold 'Solution:'; then two lines: 'Instead of using Least Squares with Matrix inversion,' and 'use Gradient Descent iterative solution' in dark text.",
+  "_meta": {
+    "frame": "slide_023.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 23,
+      "image": "slide_023.jpg",
+      "kept_frame": "frame_02540.jpg",
+      "start_sec": 2539,
+      "end_sec": 2539,
+      "precuration_slide": 105,
+      "provenance": "founder-curated kept frame",
+      "_reconcile_md5_snapshot": "bc5c99ae61ea467f9531374bbab98d76"
+    },
+    "elapsed_s": 62.3
+  }
+}
