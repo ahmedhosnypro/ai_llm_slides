@@ -56,3 +56,8 @@ probe_final_out.txt
 # root-anchored: a worker opened a DB path relative to the repo root (2026-10-13,
 # 0-byte stray) — the real per-video DBs under videos/ are NOT matched by this rule
 /slides_progress.db
+*_recreated.pptx
+# course-level combined deck + large course-material PDF (keep on disk only)
+deep_learning_playlist_final.pptx*
+**/lecture4.pdf
+*.log
