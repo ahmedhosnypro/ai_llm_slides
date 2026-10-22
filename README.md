@@ -22,7 +22,7 @@ video (mp4)
 ## Usage
 
 ```bash
-# 0. download the video into this directory (see README download command)
+# 0. download the video into its namespace (see README download command)
 # 1. frames
 ./scripts/10_extract_frames.sh <video.mp4> frames
 # 2. first N unique slides
@@ -49,7 +49,7 @@ PowerPoint generation), `summary.md` (verdict table), and per-slide `slide_XXX_f
 
 ```bash
 yt-dlp --cookies /tmp/yt-cookies.txt -f "bv*[height<=1080]+ba/b" \
-  --merge-output-format mp4 -o "ml-intro.mp4" \
+  --merge-output-format mp4 -o "videos/<course>/<lecture>/<lecture>.mp4" \
   "https://www.youtube.com/watch?v=mRUgi0Be2ds"
 ```
 

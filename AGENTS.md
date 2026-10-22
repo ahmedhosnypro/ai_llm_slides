@@ -17,31 +17,41 @@ registration as ready, build dispatch, subagent fan-out). The machine may prepar
 review packet (index, contact sheet, new2old mapping draft) but must never approve the
 set itself. Curation (duplicates, non-valid frames, numbering/badges) is human-owned.
 
-## Multi-video layout (founder directive 2026-10-09)
+## Multi-video layout (founder directive 2026-10-09; nested 2026-10-16)
 
-The project processes **several videos in parallel**. Every video owns a namespace under
-`videos/<VIDEO>/` — currently `ml-intro` is the only one, but nothing is shared between
-namespaces except the scripts and the model endpoint. Adding a video = adding a directory:
+The project processes **several videos in parallel**, grouped by course. Every lecture
+owns a namespace `videos/<course>/<lecture>/` — nothing is shared between namespaces
+except the scripts and the model endpoint. Adding a video = adding a directory (plus a
+`<course>/AGENTS.md` if the course has its own directives):
 
 ```
 videos/
-  ml-intro/                 # <VIDEO> id used in commands and env vars
-    ml-intro.mp4            # source video
-    frames/                 # 1 FPS extraction (large)
-    unique_slides/          # kept slide images + slides_index.json (+ new2old mapping)
-    analysis/               # slide_XXX_raw.json → slide_XXX_final.json, slides_final.json
-    analysis_old104/        # archive of the pre-curation 104-slide run (never delete)
-    recreated_pptx/         # build/slide_XXX.js, qa/slideXXX/, slide_XXX_recreated.pptx
-    slides_progress.db      # per-video progress DB (+ slides_progress_old104.db.bak)
+  <course>/                        # e.g. deep-learning (DSAI 308), machine-learning (Zewail CSAI)
+    AGENTS.md                      # optional course-level directives (deep-learning has one)
+    _raw/                          # un-processed future-workload lecture mp4s (gitignored)
+    <lecture>/                     # <VIDEO> id used in commands and env vars,
+      <lecture>.mp4                #   e.g. machine-learning/01_ml-intro,
+      unique_slides/               #   deep-learning/002_transformers_part2
+      analysis/                    # slide_XXX_raw.json → slide_XXX_final.json, slides_final.json
+      sources/                     # consolidated slide_NNN_source/ research dirs (where present)
+      recreated_pptx/              # build/ chain, slide_XXX_recreated.pptx, final deck + .md5, qa/
+      slides_progress.db           # per-video progress DB (+ *.db.bak archives — never delete)
 ```
+
+Example namespaces (all five current decks are CLOSED): `machine-learning/01_ml-intro`,
+`machine-learning/02_linear-regression-classification-MSSE`,
+`deep-learning/001_transformers_part1`, `deep-learning/001_introduction`,
+`deep-learning/002_transformers_part2`. `frames/` is transient (extraction output,
+never persisted).
 
 Rules:
 - **Everything a command touches must stay inside one video's namespace.** Pass the
   video's dirs explicitly to scripts 10–13 (`10_extract_frames.sh <video> <frames_dir>`,
   `11_unique_slides.py <frames_dir> <unique_slides_dir>`, `12_analyze_slides.py
   <unique_slides_dir> <analysis_dir>`, `13_validate_slides.py <analysis_dir>`), and set
-  `VIDEO=<id>` for `15_progress.py` (defaults to `ml-intro`) so parallel videos' DBs
-  never collide.
+  `VIDEO=<course>/<lecture>` for `15_progress.py` (defaults to
+  `machine-learning/01_ml-intro`; nested ids resolve via the same path join) so parallel
+  videos' DBs never collide.
 - **The vision gate (`scripts/16_vision_gate.sh`) is fleet-global** — it throttles ALL
   videos' vision calls together through the shared localhost:17844 gateway.
 - Never write one video's artifacts into another video's directory or into the project
@@ -58,7 +68,7 @@ Rules:
 | Base URL | `http://localhost:17844/v1` (local IronRouter **dist** lane) |
 | API key | `.analyze-image-key` in the project root (mode 600); `IR_API_KEY` env overrides |
 | Vision model | `images` (IronRouter virtual model; fallback that worked on a codespace: `glm-5.3-flash`) |
-| Validation model | `glm-5.3` |
+| Validation model | `validate_slides` (founder-created IronRouter model, 2026-10-21; replaces glm-5.3 for script 13) |
 
 ## Hard-won operational facts (do not relearn these)
 
@@ -73,8 +83,9 @@ Rules:
 5. Analysis is slow (~3–5 min/slide including upstream key churn). Validate with
    `finish=stop` per slide in the log; retry individual failures by deleting the
    `slide_XXX_raw.json` and re-running — both 12 and 13 are idempotent (skip existing outputs).
-6. glm-5.3 occasionally returns empty content (parse error "Expecting value: line 1 column 1") —
-   just re-run script 13; it retries only the missing finals.
+6. The validation model occasionally returns empty content (parse error
+   "Expecting value: line 1 column 1") — just re-run script 13; it retries only
+   the missing finals.
 7. YouTube blocks anonymous downloads from datacenter/rate-limited IPs — use
    `--cookies /tmp/yt-cookies.txt` (exported from Chrome).
 
@@ -112,8 +123,9 @@ The equation's *content* stays verbatim per the output contract; only its *rende
 professional-format. The concrete mechanism is **vision-certified (2026-10-09)**: matplotlib
 mathtext → tight transparent PNG (600 dpi) → `pptxgenjs.addImage()` at exact size
 (`w = px/600` in, never rescaled). Hand-authoring OMML/Office-Math *for rendering* is
-forbidden — LibreOffice headless renders only the linear fallback (measured, see
-`videos/ml-intro/recreated_pptx/qa/math/`). Full usage contract lives in
+forbidden — LibreOffice headless renders only the linear fallback (measured; validation
+evidence was under the since-removed `qa/math/` tree of
+`videos/machine-learning/01_ml-intro/`). Full usage contract lives in
 `scripts/17_worker_instructions.md` + `qa/math/scratch_validation_report.md`.
 Equation-vs-original linear-notation differences are covered by a judge GROUND RULES clause
 (e-format upgrade, not a discrepancy).
@@ -163,26 +175,33 @@ can only approximate) get their graphs embedded from a properly generated image:
 deleted duplicates and non-valid slides (including "Processing..." placeholder frames and
 number mismatches), and renamed the remainder to 64 files numbered by the original on-slide
 number. The mapping from the old 104-slide numbering lives in
-`videos/ml-intro/unique_slides/new2old_mapping.json`. The old 104-slide artifacts are
-archived under their old names (`videos/ml-intro/analysis_old104/`,
-`videos/ml-intro/slides_progress_old104.db.bak`, `videos/ml-intro/recreated_pptx/build/slide_OOO.js`,
-`videos/ml-intro/recreated_pptx/qa/slideOOO/`) and may be reused as prior work via the
-mapping file — never delete them.
+`videos/machine-learning/01_ml-intro/unique_slides/new2old_mapping.json`. The old
+104-slide artifacts were archived under their old names (DB backup
+`slides_progress_old104.db.bak` still exists at the namespace root; the
+`analysis_old104/` dir, old-numbering `build/slide_OOO.js` scripts, and `qa/slideOOO/`
+transcripts were removed in the 2026-10-10 evidence cleanup — git history keeps copies)
+and may be reused as prior work via the mapping file — never delete what remains.
 
 ## Directory layout
 
 ```
-scripts/   10_extract_frames.sh, 11_unique_slides.py, 12_analyze_slides.py, 13_validate_slides.py
-videos/    one namespace per video (see "Multi-video layout" above)
-.agents/skills/slide-recreation/   the distillation of this whole pipeline as a
-                                    self-learning skill (SKILL.md + references/ +
-                                    memory/ lessons + scripts/). Use it for any
-                                    slide-recreation/PPTX-generation task; append new
-                                    experience to its memory/ dir per its README.
+scripts/   10_extract_frames.sh … 22_validate_lanes.sh, render_eq*.py, example_build_slide_007.js,
+           17_worker_instructions.md (worker runbook)
+videos/    per-course namespaces, one lecture dir each (see "Multi-video layout" above)
 ```
 
-All working data lives under `videos/<VIDEO>/`; the project root holds only scripts,
-docs, and the API key.
+The slide-recreation skill — the distillation of this whole pipeline — is PUBLISHED
+at `ahmedhosnypro/skills` and installed user-level at
+`~/.agents/skills/slide-recreation/` (SKILL.md + references/ + the 16-pattern
+example library + scripts/). Use it for any slide-recreation/PPTX-generation
+task. It is a published, versioned skill: report doctrine candidates (new laws,
+supersessions) to the owner in-session — never edit the installed files. The
+former self-learning copy that lived at `.agents/skills/slide-recreation/` in
+this repo (lessons/incidents corpus + memory protocol) is preserved in this
+repo's git history.
+
+All working data lives under `videos/<course>/<lecture>/`; the project root holds only
+scripts, docs, and the API key.
 
 ## Output contract (what the PPTX-generation step consumes)
 
@@ -196,14 +215,16 @@ marked `[?]`, recreatability score). Never invent facts — uncertain content ke
 
 ## QA evidence removal (founder directive 2026-10-10)
 
-The `videos/ml-intro/recreated_pptx/qa/` evidence tree was REMOVED at the founder's
-direction after the program completed. What survives: the certified deliverables (64
-single-version pptx + ml-intro_final.pptx), the full build chain (`recreated_pptx/build/`
-with per-slide scripts, graph assets, OMML base builds + manifests + wrapper), the
-certified reference render (`videos/ml-intro/ml-intro_final_render_certified.pdf`),
-the pixel-gate record (`videos/ml-intro/final_deck_pixel_gate_2026-10-10.txt`), the
-program report (`videos/ml-intro/CLOSEOUT_REPORT.md`), the certified math tooling
-(`scripts/render_eq*.py`), and the 30+ lesson corpus in the skill memory. Historical
+The `videos/machine-learning/01_ml-intro/recreated_pptx/qa/` evidence tree was REMOVED at
+the founder's direction after the program completed. What survives: the certified
+deliverables (64 single-version pptx + ml-intro_final.pptx), the full build chain
+(`recreated_pptx/build/` with per-slide scripts, graph assets, OMML base builds +
+manifests + wrapper), the certified reference render
+(`videos/machine-learning/01_ml-intro/ml-intro_final_render_certified.pdf`),
+the pixel-gate record
+(`videos/machine-learning/01_ml-intro/final_deck_pixel_gate_2026-10-10.txt`), the
+program report (`videos/machine-learning/01_ml-intro/CLOSEOUT_REPORT.md`), the certified
+math tooling (`scripts/render_eq*.py`), and the 30+ lesson corpus in the skill memory. Historical
 references in docs/skill files to `qa/slideNNN/...` paths are historical — those dirs
 no longer exist. Per-slide re-certification after any future fix is mandatory (judge
 template in scripts/17_worker_instructions.md).
