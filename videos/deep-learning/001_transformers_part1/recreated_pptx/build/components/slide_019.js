@@ -76,8 +76,16 @@ const C = {
   legend3Fill: "DCFCC0",      // (220,252,192)
   legend3Border: "A9CC98",    // soft green edge (197,235,186)
   legend3Text: "2F8C14",      // text mode (44,132,28)
-  leaderBlue: "B7CDE0",       // L1/L2 (175,212,231)/(202,200,221) blend
-  leaderGray: "C9CDC9",       // L3/L4/L5 (196,197,192)
+  // F7 fix (founder defect batch 2026-10-13): the 5 legend leader hairlines were the
+  // certification-era JPEG-core colors (L1/L2 leaderBlue B7CDE0, L3/L4/L5 leaderGray
+  // C9CDC9) at 0.75pt — same faint-arrow class as 016/017/018. Family value adopted
+  // per the F5-certified 017 fix and VERIFIED on this frame (cores (165,163,184)/
+  // (194,195,193)/(195,205,200), path medians (192..204,195..206,185..204); all within
+  // the family band C8C8C8..D3D3D3 under JPEG smear): single neutral #C8C8C8 at 2.25pt.
+  // Geometry + the L3/L4 black heads (frame-measured 742-746/234-238, 644-648/301-305,
+  // color core (17,0,0)=near-black warm) are unchanged — see scratch/slide019/
+  // ARROW_COLOR.txt, b01/b02/b03, m16.
+  leader: "C8C8C8",           // L1..L5 family faint-leader gray (200,200,200)
   steelFill: "6D99B4",        // encoder Add&Norm boxes (109,153,180)
   steelFillDec: "5C9CB7",     // decoder Add&Norm boxes (92,156,183)
   steelBorder: "2F6476",      // (47,100,118)
@@ -171,14 +179,14 @@ function drawLegend3(pptx, slide) {
 
 function drawLeader1(pptx, slide) {
   // box1 -> Softmax box left edge (light hairline, shallow then descending)
-  addLines(slide, C.leaderBlue, 0.75, [
+  addLines(slide, C.leader, 2.25, [
     [342, 118], [470, 120], [570, 124], [622, 138], [680, 147], [726, 152], [751, 161],
   ]);
 }
 
 function drawLeader2(pptx, slide) {
   // box1 (second hairline, appears x~464) -> Linear box left edge
-  addLines(slide, C.leaderBlue, 0.75, [
+  addLines(slide, C.leader, 2.25, [
     [464, 122], [538, 134], [570, 143], [622, 167], [700, 172], [726, 173], [740, 181], [751, 186],
   ]);
 }
@@ -186,7 +194,7 @@ function drawLeader2(pptx, slide) {
 function drawLeader3(pptx, slide) {
   // box2 -> shallow line flattening over the encoder panel top, ending in a BLACK
   // arrowhead into the decoder Feed Forward box (measured (742-746, y234-238), m16)
-  addLines(slide, C.leaderGray, 0.75, [
+  addLines(slide, C.leader, 2.25, [
     [514, 157], [570, 161], [622, 183], [654, 193], [676, 224], [700, 231], [738, 236],
   ]);
   arrowHeadRight(slide, 743, 236, "1A1000");
@@ -195,7 +203,7 @@ function drawLeader3(pptx, slide) {
 function drawLeader4(pptx, slide) {
   // box2 -> steep dive ending in a BLACK arrowhead into the encoder Feed Forward
   // box (measured (644-648, y301-305), m16)
-  addLines(slide, C.leaderGray, 0.75, [
+  addLines(slide, C.leader, 2.25, [
     [513, 152], [538, 161], [562, 176], [578, 206], [594, 264], [610, 290], [622, 296], [638, 301],
   ]);
   arrowHeadRight(slide, 645, 303, "1A1000");
@@ -203,7 +211,7 @@ function drawLeader4(pptx, slide) {
 
 function drawLeader5(pptx, slide) {
   // box3 -> steep dive to the 'N x' circle left edge
-  addLines(slide, C.leaderGray, 0.75, [
+  addLines(slide, C.leader, 2.25, [
     [460, 195], [506, 201], [526, 210], [538, 225], [550, 251], [562, 296], [570, 318], [584, 330], [597, 337],
   ]);
 }

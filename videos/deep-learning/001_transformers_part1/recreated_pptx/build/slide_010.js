@@ -295,8 +295,11 @@ slide.addShape(pres.ShapeType.roundRect, {
   x: px(495), y: px(292), w: px(358), h: px(49), rectRadius: 0.08,
   fill: { color: D.boxFill }, line: { color: D.rightEdge, width: 1 },
 });
-// dashed pink attention fan (single 600dpi asset; S-curve + 3 hooks)
-slide.addImage({ path: path.join(ASSETS, "dash_fan.png"), x: px(328), y: px(172), w: 6.8889, h: 2.3333 });
+// dashed pink attention fan + sage "weighted sum" connector (single 600dpi asset;
+// S-curve + 3 hooks; F2 fix 2026-10-13: connector extended to the callout's right
+// edge per the ORIGINAL measured path (351,163)->(416,186)->(427,270); canvas
+// grown up 90px, fan pixels preserved 141652/141652 (scratch/slide010/fix_dashfan_f2.py)
+slide.addImage({ path: path.join(ASSETS, "dash_fan.png"), x: px(328), y: px(161.2), w: 6.8889, h: 2.48354 });
 // three olive up-arrowheads beneath the decoder's hidden bars (tips ~y277)
 for (const hx of [557, 684, 820]) {
   slide.addShape(pres.ShapeType.line, {

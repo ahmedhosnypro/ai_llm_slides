@@ -76,7 +76,11 @@ const C = {
   ink: "1A1A1A",
   line: "333333",
   spine: "2F2F2F",
-  leader: "BFBFBF",
+  // FOUNDER-DEFECT F4 fix (2026-10-13): leader gray re-measured on the LOSSLESS
+  // evidence PNG (qa/slide016/arrows/slide_16_arrows_original.png): line cores
+  // (206..213, 207..214, 209..218) -> CFCFD3 at ~1pt (was BFBFBF 0.75 — rendered
+  // darker/thinner than the original). Full note: scratch/slide016/ARROW_COLOR.txt
+  leader: "CFCFD3",
   // callouts
   c1Fill: "B8E6CA",  c1Text: "006400",
   c2Fill: "F2C6C6",  c2Text: "CC0000",
@@ -579,13 +583,36 @@ function drawFeeds(pptx, slide) {
 // ---- callouts + leaders ---------------------------------------------------------
 
 function drawLeaders(pptx, slide) {
-  addLines(slide, C.leader, 0.75, [[449, 118], [569, 122]]);            // c1 -> decoder block
-  addLines(slide, C.leader, 0.75, [[529, 161], [569, 165]]);            // c2 -> encoder block
-  addLines(slide, C.leader, 0.75, [[478, 227], [569, 228]]);            // c3 -> Nx (horizontal)
-  addLines(slide, C.leader, 0.75, [[505, 232], [569, 336]]);            // c3 -> enc Nx (diagonal)
-  addLines(slide, C.leader, 0.75, [[529, 320], [569, 319]]);            // c4 -> highlight
-  addLines(slide, C.leader, 0.75, [[447, 426], [569, 424]]);            // c5 -> encoder input path
-  addLines(slide, C.leader, 0.75, [[467, 491], [568, 486]]);            // c6 -> decoder input path
+  // FOUNDER-DEFECT F4 fix (2026-10-13): the leader lines do NOT stop at the figure
+  // frame (x570) — in the original they CONTINUE into the figure to their target
+  // blocks. Continuation geometry measured on the lossless evidence PNG
+  // (slide_16_arrows_original.png) via per-column luminance ridge reads, cross-
+  // checked against the founder's bolded strokes (qa/slide016/arrows/) and two
+  // vision reads (scratch/slide016/vision_intent.txt, vision_Z1tight.txt).
+  // c1 "Decoder Block" -> across the figure top (under the Encoder label band,
+  // faint sag) to the decoder-top red-arrow zone, fading at ~(734,146)
+  addLines(slide, C.leader, 1, [[449, 118], [569, 120], [650, 127], [734, 146]]);
+  // c2 "Encoder Block" -> bends down-right at the frame, diagonal to the mid
+  // confluence point (674,233) (faint mid-gap x637-650 in the original drawn
+  // continuous, matching the founder's continuous stroke)
+  addLines(slide, C.leader, 1, [[529, 161], [569, 165], [633, 183], [674, 233]]);
+  // c3 "N Cascaded Blocks" -> across the middle to the same confluence (676,233)
+  addLines(slide, C.leader, 1, [[478, 227], [569, 228], [676, 233]]);
+  // merged c2+c3 tail -> bends down-right into the decoder upper container's left
+  // edge (x744) at the Add & Norm band top (founder stroke ends ~(792,252) inside
+  // the text band; the visible line ends at the container border)
+  addLines(slide, C.leader, 1, [[676, 233], [724, 237], [744, 246]]);
+  // c3 -> enc Nx (diagonal) — already correct, unchanged
+  addLines(slide, C.leader, 1, [[505, 232], [569, 336]]);
+  // c4 "Encoder Decoder Attention" -> diagonal UP-right toward the encoder
+  // container's upper left (fades ~(621,296); founder marked (588,314)->(607,302))
+  addLines(slide, C.leader, 1, [[529, 320], [569, 319], [621, 296]]);
+  // c5 "Inputs to Encoder Block" -> continues straight to the Positional Encoding
+  // label's left edge (~x600); founder stroke to x608
+  addLines(slide, C.leader, 1, [[447, 426], [569, 424], [600, 424]]);
+  // c6 "Inputs to Decoder Block" -> gentle upward curve to the encoder Input
+  // Embedding box's bottom-left (~(648,472))
+  addLines(slide, C.leader, 1, [[467, 491], [568, 486], [605, 481], [648, 472]]);
 }
 
 function drawCallout1(pptx, slide) {
@@ -707,6 +734,10 @@ drawHouseChrome(pptx, slide, { numeral: 16 });
 drawTitle(pptx, slide);
 drawFigFrame(pptx, slide);
 drawPanels(pptx, slide);
+// leaders drawn UNDER all text/labels (F4 fix): in the original the c1 leader
+// passes behind the "Encoder" label glyphs (no leader ink between glyphs) —
+// drawing it over the text would fabricate line-through-glyph artifacts.
+drawLeaders(pptx, slide);
 drawPanelLabels(pptx, slide);
 drawYellowBands(pptx, slide);
 drawEncStack(pptx, slide);
@@ -727,7 +758,6 @@ drawDecTop(pptx, slide);
 drawDecSpine(pptx, slide);
 drawFeeds(pptx, slide);
 drawYellowDashes(pptx, slide);
-drawLeaders(pptx, slide);
 drawCallout1(pptx, slide);
 drawCallout2(pptx, slide);
 drawCallout3(pptx, slide);

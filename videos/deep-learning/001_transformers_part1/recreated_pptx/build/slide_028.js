@@ -142,28 +142,16 @@ s.addText(
   }
 );
 
-// ---- 4) certified z-tail: query arrows + feed curves ---------------------------
+// ---- 4) certified z-tail: query arrows + feed curves --------------------------
 base.renderBase(pres, s, { only: ["queryArrows", "feedCurves"] });
 
-// ---- 4b) DELTA (f): Dot-Product red diamond marks (judge attempt 2, finding 1) --
-// The original frame carries 8 small red diamond marks in the Dot Product box that
-// the certified parent's render (and slide 26's certified build) omits — the visible
-// ink of the spec's "thin red fan lines ... reach each dot": 4 diamonds sit ON the
-// horizontal flow lines just LEFT of each dot (arrowhead position), 4 sit directly
-// BELOW each dot. Fine-scan measured (frame px, centers + w x h):
-//   on-line:  (316, 246.5) 10x9 | (300, 287) 10x9 | (281.5, 328) 10x8 | (262.5, 372) 10x9
-//   below-dot:(329, 260.5) 9x10 | (314.5, 301) 8x10 | (297, 342.5) 8x10 | (282, 385) 9x9
-// Drawn HERE (child delta) — the certified component stays frozen (cascade law).
-const dotDia = [
-  [316, 246.5, 10, 9], [300, 287, 10, 9], [281.5, 328, 10, 8], [262.5, 372, 10, 9],
-  [329, 260.5, 9, 10], [314.5, 301, 8, 10], [297, 342.5, 8, 10], [282, 385, 9, 9],
-];
-for (const [cx, cy, w, h] of dotDia) {
-  s.addShape(pres.ShapeType.diamond, {
-    x: (cx - w / 2) * PX, y: (cy - h / 2) * PX, w: w * PX, h: h * PX,
-    fill: { color: C.red }, line: { type: "none" },
-  });
-}
+// ---- 4b) REMOVED 2026-10-13 (F8 cascade): the local 8-diamond delta is deleted.
+// The founder-fixed components/slide_026.js now draws the REAL marks (white/ice-blue
+// halo + inner blue disc + dark-red arrowheads at the measured bboxes: on-line-left
+// right-pointing (311-322,243-251)...(258-268,369-377), below-dot up-pointing
+// (326-335,254-264)...(272-280,381-390)); keeping the diamonds would double-draw red
+// marks at the same coordinates. Measured evidence: scratch/slide028/CASCADE_DELTA.md,
+// scratch/slide028/right_zone/cropdot_vision_1.txt.
 
 // ---- 5) DELTA (d): green annotation box ----------------------------------------
 s.addShape(pres.ShapeType.roundRect, {

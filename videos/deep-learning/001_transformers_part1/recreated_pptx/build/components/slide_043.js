@@ -17,6 +17,12 @@
 // cross-read with 12 banked vision-crop transcripts (an_*.txt). The spec's fallback-model
 // color/label claims were re-verified against pixels; measured values win.
 //
+// FIX PASS fixer-f10-43-resume2-20261014 (DEFECTS.md F10 huge-rework): A1-A10, B1-B5,
+// C1-C7, D1-D5, E1-E6, F1-F4, G1-G5, H1-H2 applied; assets regenerated (swoosh.png
+// PIL-traced ribbon, eq_kq_sqrtd.png K\cdot q, bottom_curve.png right end cut at x592);
+// E-zone re-derived on the fix-step PIL map (FIVE columns h1..h5, panel tops
+// 337/316/295/274/255, q tops 422/401/380/359/338, k/v pitch 40).
+//
 // LAWS honored: playlist chrome via shared module (numeral = printed 43); verbatim text;
 // professional-2D math (mathtext 600dpi PNGs, exact size, never rescaled); true
 // sub/superscript runs for indexed labels; margin:0 + fontFace everywhere; no '#' in hex;
@@ -118,7 +124,7 @@ function drawVecbox(pptx, slide) {
     { text: "Y", options: { bold: true, color: "007A00", fontSize: 8 } },
     { text: "2", options: { bold: true, color: "007A00", fontSize: 6, subscript: true } },
   ], { x: px(424), y: px(54), w: px(20), h: px(14), align: "center", valign: "middle" });
-  text(slide, "1\u00D7d", {
+  text(slide, "1*d", {
     x: px(473), y: px(60), w: px(26), h: px(14), align: "left", valign: "middle",
     bold: true, fontSize: 8, color: C.red,
   });
@@ -144,8 +150,8 @@ function drawLtbox(pptx, slide) {
   text(slide, [
     { text: "Linear Transformation    [ T ] ", options: { color: C.ink } },
     { text: "d", options: { color: C.red, fontSize: 7.5, subscript: true } },
-    { text: "H", options: { color: C.blue, fontSize: 7.5, subscript: true } },
-    { text: "\u00D7", options: { color: C.red, fontSize: 7.5, superscript: true } },
+    { text: "H", options: { color: C.blue, fontSize: 6.5, subscript: true } },
+    { text: "*", options: { color: C.red, fontSize: 7.5, subscript: true } },
     { text: "d", options: { color: C.red, fontSize: 7.5, subscript: true } },
   ], {
     x: px(314), y: px(90), w: px(240), h: px(24.5), align: "center", valign: "middle",
@@ -170,17 +176,23 @@ function drawConcatbar(pptx, slide) {
       x: px(s.x + 1), y: px(129.5), w: px(s.w - 2), h: px(20.5),
       fill: { color: s.fill }, line: { color: "3A3A3A", width: 0.5 },
     });
-    // tiny white Y chip w/ subscript numeral (spec item 6, [?]-marked in spec)
-    const cxm = s.x + s.w / 2;
-    slide.addShape(pptx.ShapeType.rect, {
-      x: px(cxm - 8), y: px(133.5), w: px(16), h: px(12.5),
-      fill: { color: "FFFFFF" }, line: { color: "B0B0B0", width: 0.5 },
-    });
+    // internal dotted partitions (B2: cellular strip idiom, 3 dividers per segment)
+    for (let j = 1; j <= 3; j++) {
+      slide.addShape(pptx.ShapeType.line, {
+        x: px(s.x + 1 + ((s.w - 2) * j) / 4), y: px(130.5), w: 0, h: px(18.5),
+        line: { color: "C9C9C9", width: 0.5, dashType: "sysDot" },
+      });
+    }
   }
   SEGS.forEach((s, i) => {
+    // Y_i^(t) printed DIRECTLY on the segments (B1: no white chip boxes; (t) letters)
     const cxm = s.x + s.w / 2;
-    text(slide, idxRuns("Y", i + 1, C.brick, 6), {
-      x: px(cxm - 8), y: px(133.5), w: px(16), h: px(12.5),
+    text(slide, [
+      { text: "Y", options: { bold: true, fontSize: 6, color: C.brick } },
+      { text: String(i + 1), options: { bold: true, fontSize: 4.5, color: C.brick, subscript: true } },
+      { text: "(t)", options: { bold: true, fontSize: 4.5, color: C.brick, superscript: true } },
+    ], {
+      x: px(cxm - 10), y: px(133.5), w: px(20), h: px(12.5),
       align: "center", valign: "middle",
     });
   });
@@ -195,7 +207,7 @@ function drawConcatbar(pptx, slide) {
     bold: true, fontSize: 7.5, color: C.red,
   });
   text(slide, [
-    { text: "1\u00D7", options: { color: C.red } },
+    { text: "1*", options: { color: C.red } },
     { text: "dH", options: { color: C.blue } },
   ], {
     x: px(248), y: px(141), w: px(58), h: px(9.5), align: "left", valign: "middle",
@@ -204,14 +216,17 @@ function drawConcatbar(pptx, slide) {
 }
 
 function drawHeadarrows(pptx, slide) {
-  // five thin red arrows rise from the head-vector stack into the bar's five segments;
-  // visible only in the gap between bar bottom (151.5) and the back card top (~192) —
-  // the cards drawn later clip the rest, exactly as in the original.
-  const xs = [411, 431, 451, 471, 491];
-  for (const x of xs) {
+  // B3: five THIN muted verticals at the head-chip centers, chip top -> bar bottom,
+  // small arrowheads at BOTH ends; visible only in the gap between bar bottom (151.5)
+  // and the back card top (~192) — cards drawn later clip the rest, as in the original.
+  const arrows = [
+    { x: 337, chipTop: 278 }, { x: 411, chipTop: 262 }, { x: 435, chipTop: 242 },
+    { x: 473, chipTop: 217 }, { x: 490, chipTop: 197 },
+  ];
+  for (const a of arrows) {
     slide.addShape(pptx.ShapeType.line, {
-      x: px(x), y: px(152.5), w: 0, h: px(38),
-      line: { color: C.red, width: 1.1, beginArrowType: "triangle" },
+      x: px(a.x), y: px(152.5), w: 0, h: px(a.chipTop - 152.5),
+      line: { color: "B08585", width: 0.8, beginArrowType: "triangle", endArrowType: "triangle" },
     });
   }
 }
@@ -260,7 +275,7 @@ function drawHeadannots(pptx, slide) {
     // lavender-bits / orange / dark gray / yellow + the green chip poking into the
     // gap below the bar). h1's slot: pale chip right of the Probabilities oval.
     const vecs = [
-      { x: 312, y: 278, w: 62, h: 16, fill: "E4E0BC" },
+      { x: 312, y: 278, w: 62, h: 16, fill: "FFFFE3" }, // PIL: original pale-yellow (255,255,227)
       { x: 391, y: 262, w: 40, h: 14, fill: "9A86C8" },
       { x: 413, y: 242, w: 44, h: 16, fill: "A0400E" },
       { x: 445, y: 217, w: 56, h: 15, fill: "4A4A4A" },
@@ -276,8 +291,13 @@ function drawHeadannots(pptx, slide) {
         align: "center", valign: "middle",
       });
     }
-    // h=N tag: black ellipse, bold yellow numeral text
-    const tag = { x: 563 + 46 * k, y: 280 - 20.5 * k };
+    // h=N tag: black ellipse, bold yellow numeral text (A10: measured per-k centers
+    // (578.6,287.0)(631.8,264.9)(673.1,242.9)(716.9,224.0)(761.0,205.0), blobs 30x15)
+    const TAGC = [
+      { x: 578.6, y: 287.0 }, { x: 631.8, y: 264.9 }, { x: 673.1, y: 242.9 },
+      { x: 716.9, y: 224.0 }, { x: 761.0, y: 205.0 },
+    ][k];
+    const tag = { x: TAGC.x - 15, y: TAGC.y - 7.25 };
     slide.addShape(pptx.ShapeType.ellipse, {
       x: px(tag.x), y: px(tag.y), w: px(30), h: px(14.5),
       fill: { color: C.tagFill }, line: { type: "none" },
@@ -288,9 +308,10 @@ function drawHeadannots(pptx, slide) {
     });
   }
   // Probabilities oval straddling the h2/h1 top edges (ink x 312..374 y 276..295 + top half)
+  // fill per PIL: original lavender (196,194,244) = C4C2F4 (crop-judge MAJOR, fixed)
   slide.addShape(pptx.ShapeType.ellipse, {
     x: px(294), y: px(250), w: px(80), h: px(28),
-    fill: { color: "FDF3EE" }, line: { color: "C9B8B0", width: 0.75 },
+    fill: { color: "C4C2F4" }, line: { color: "C9B8B0", width: 0.75 },
   });
   text(slide, "Probabilities", {
     x: px(294), y: px(250), w: px(80), h: px(28), align: "center", valign: "middle",
@@ -310,7 +331,7 @@ function drawHeadannots(pptx, slide) {
 // ---- front-card flow: left (inputs -> W_k -> K bars -> Dot Product) -----------
 
 function drawFfLeft(pptx, slide) {
-  // dashed input container x 92..128, y 318..442 with 4 pink/lavender cells
+  // dashed input container x 92..128, y 318..442 (C3: original width per PIL Oct11)
   slide.addShape(pptx.ShapeType.roundRect, {
     x: px(92), y: px(318), w: px(36), h: px(124), rectRadius: 0.05,
     fill: { color: "F3F3F0" }, line: { color: C.green, width: 1.25, dashType: "dash" },
@@ -318,24 +339,33 @@ function drawFfLeft(pptx, slide) {
   const cellFills = ["F6DAF3", "EAE4EE", "F6DAF3", "EAE4EE"];
   for (let i = 0; i < 4; i++) {
     const yc = 335 + 28 * i; // row centers 335/363/391/419
+    // C1: X labels reversed — X4 top ... X1 bottom
+    const tok = 4 - i;
+    // C3: shrunken X cell + small 3-cell striped embedding bar beside it
     slide.addShape(pptx.ShapeType.rect, {
-      x: px(96), y: px(yc - 11), w: px(28), h: px(22),
+      x: px(94), y: px(yc - 11), w: px(15), h: px(22),
       fill: { color: cellFills[i] }, line: { color: "C9C9C9", width: 0.5 },
     });
-    // X label inside the input cell (judge attempt 1 #5)
-    text(slide, idxRuns("X", i + 1, C.brick, 5), {
-      x: px(96), y: px(yc - 11), w: px(28), h: px(22), align: "center", valign: "middle",
+    text(slide, idxRuns("X", tok, C.brick, 5), {
+      x: px(94), y: px(yc - 11), w: px(15), h: px(22), align: "center", valign: "middle",
     });
+    const embFills = ["F9FF96", "FFFFFF", "F08B96"];
+    for (let j = 0; j < 3; j++) {
+      slide.addShape(pptx.ShapeType.rect, {
+        x: px(110.5 + j * 4.7), y: px(yc - 7.5), w: px(4.4), h: px(15),
+        fill: { color: embFills[j] }, line: { color: "B8B8B8", width: 0.5 },
+      });
+    }
     slide.addShape(pptx.ShapeType.line, {
       x: px(125), y: px(yc), w: px(9), h: 0,
       line: { color: C.darkred, width: 1, endArrowType: "triangle" },
     });
-    // four bright-green bordered W_k^(0..3) boxes x 128..152 (spec superscript set)
+    // A8/C2: four bright-green bordered W_k^(1) boxes (constant head-1 superscript)
     slide.addShape(pptx.ShapeType.rect, {
       x: px(128), y: px(yc - 9.5), w: px(24), h: px(19),
       fill: { color: "F0FFF0" }, line: { color: C.green, width: 1.25 },
     });
-    text(slide, wRuns("k", i, C.ink, 5.5), {
+    text(slide, wRuns("k", 1, C.ink, 5.5), {
       x: px(128), y: px(yc - 9.5), w: px(24), h: px(19), align: "center", valign: "middle",
     });
     // striped K bar x 156..184 (yellow/white/red-pink segments)
@@ -346,12 +376,14 @@ function drawFfLeft(pptx, slide) {
         fill: { color: barFills[j] }, line: { color: "B8B8B8", width: 0.5 },
       });
     }
-    // red K label above the arrow into the Dot Product box (K1..K4 top->bottom)
-    text(slide, idxRuns("K", i + 1, C.brick, 6), {
+    // red K label above the arrow (C1: K4 top ... K1 bottom)
+    text(slide, idxRuns("K", tok, C.brick, 6), {
       x: px(177), y: px(yc - 20), w: px(16), h: px(10), align: "left", valign: "middle",
     });
+    // C4: red arrow ENTERS the tan panel, head TERMINATING at the circle's left rim
+    const circ = [{ x: 238 }, { x: 226 }, { x: 216 }, { x: 208 }][i];
     slide.addShape(pptx.ShapeType.line, {
-      x: px(186), y: px(yc), w: px(9), h: 0,
+      x: px(186), y: px(yc), w: px(circ.x - 5 - 186), h: 0,
       line: { color: C.brick, width: 1, endArrowType: "triangle" },
     });
   }
@@ -360,19 +392,23 @@ function drawFfLeft(pptx, slide) {
     x: px(195), y: px(301), w: px(58), h: px(140),
     fill: { color: C.tan }, line: { color: "8A6A48", width: 1 },
   });
-  text(slide, "Dot Product", {
+  // C6: "Dot / Product" on two centered lines
+  text(slide, [
+    { text: "Dot", options: { breakLine: true } },
+    { text: "Product", options: {} },
+  ], {
     x: px(195), y: px(303), w: px(58), h: px(14), align: "center", valign: "middle",
-    bold: true, fontSize: 6.5, color: "5C2E12",
+    bold: true, fontSize: 6.5, color: "5C2E12", lineSpacing: 7,
   });
   // four target circles (navy dot + light-blue ring) on an ascending diagonal,
-  // red fan lines from the box's bottom-center up to each circle
+  // red fan lines from the box's bottom-center up to each circle (C5: heads at circles)
   const circles = [
     { x: 208, y: 419 }, { x: 216, y: 391 }, { x: 226, y: 363 }, { x: 238, y: 335 },
   ];
   for (const c of circles) {
     slide.addShape(pptx.ShapeType.line, {
       x: px(224), y: px(438), w: px(c.x - 224), h: px(c.y + 4 - 438),
-      line: { color: C.darkred, width: 0.9 },
+      line: { color: C.darkred, width: 0.9, endArrowType: "triangle" },
     });
     slide.addShape(pptx.ShapeType.ellipse, {
       x: px(c.x - 5), y: px(c.y - 5), w: px(10), h: px(10),
@@ -383,9 +419,9 @@ function drawFfLeft(pptx, slide) {
       fill: { color: "1F2A5C" }, line: { type: "none" },
     });
   }
-  // q1 entry arrow from below into the box bottom
+  // C7: q-feed arrow from below into the box bottom, tail lengthened down to y~468
   slide.addShape(pptx.ShapeType.line, {
-    x: px(224), y: px(443), w: 0, h: px(20),
+    x: px(224), y: px(443), w: 0, h: px(25),
     line: { color: C.red, width: 1.5, beginArrowType: "triangle" },
   });
 }
@@ -393,15 +429,19 @@ function drawFfLeft(pptx, slide) {
 // ---- front-card flow: middle (K,q labels, pills, Probabilities->Sigma) --------
 
 function drawFfMid(pptx, slide) {
-  // four dashed row lines from the Dot Product cells rightward (under the pills)
+  // D2: row lanes SOLID dark-red in three segments with RED ARROWHEADS at each
+  // segment's right end (DotProduct->Scaling 253..278, Scaling->Softmax 300..332,
+  // Softmax->nodes 355..430 into the circles' left rim)
   for (const y of [335, 363, 391, 419]) {
-    slide.addShape(pptx.ShapeType.line, {
-      x: px(256), y: px(y), w: px(158), h: 0,
-      line: { color: C.brick, width: 1, dashType: "dash" },
-    });
+    for (const seg of [[253, 278], [300, 332], [355, 430]]) {
+      slide.addShape(pptx.ShapeType.line, {
+        x: px(seg[0]), y: px(y), w: px(seg[1] - seg[0]), h: 0,
+        line: { color: C.darkred, width: 1, endArrowType: "triangle" },
+      });
+    }
   }
-  // "K,q" label right of the Dot Product box
-  text(slide, "K,q", {
+  // A3/D1: "K.q" with the dot operator (never a comma)
+  text(slide, "K.q", {
     x: px(255), y: px(302), w: px(24), h: px(12), align: "left", valign: "middle",
     bold: true, fontSize: 6.5, color: C.brick,
   });
@@ -414,10 +454,11 @@ function drawFfMid(pptx, slide) {
     path: path.join(ASSETS, "eq_scaling_pill_rot.png"),
     x: px(279.5), y: px(318), w: 0.25833, h: 1.23167,
   });
-  // K,q / sqrt(d) stacked fraction above the Soft max pill (professional 2D — PNG at exact size)
+  // K.q / sqrt(d) stacked fraction above the Soft max pill (D5: dot operator,
+  // professional 2D — PNG at exact size from the certified sidecar)
   slide.addImage({
     path: path.join(ASSETS, "eq_kq_sqrtd.png"),
-    x: px(305), y: px(294), w: 0.225, h: 0.31667,
+    x: px(304), y: px(294), w: 0.24667, h: 0.31667,
   });
   // Soft max pill (light lavender) with rotated label
   slide.addShape(pptx.ShapeType.roundRect, {
@@ -433,13 +474,13 @@ function drawFfMid(pptx, slide) {
     x: px(378), y: px(277), w: px(32), h: px(-6),
     line: { color: C.brightgreen, width: 2.5, endArrowType: "triangle" },
   });
-  // Sigma box (white, blue outline, large blue sigma)
+  // Sigma box (D3: measured right position ~(394,289) w60 h34, glyph center ~(424,306))
   slide.addShape(pptx.ShapeType.rect, {
-    x: px(354), y: px(296), w: px(60), h: px(34),
+    x: px(394), y: px(289), w: px(60), h: px(34),
     fill: { color: "FFFFFF" }, line: { color: C.blue, width: 1.25 },
   });
   text(slide, "\u03A3", {
-    x: px(354), y: px(296), w: px(60), h: px(34), align: "center", valign: "middle",
+    x: px(394), y: px(289), w: px(60), h: px(34), align: "center", valign: "middle",
     bold: true, fontSize: 20, color: C.blue,
   });
 }
@@ -449,18 +490,18 @@ function drawFfMid(pptx, slide) {
 function drawFfRight(pptx, slide) {
   const rows = [335, 363, 391, 419];
   rows.forEach((y, i) => {
-    // circled-X node
+    // circled-X node; D4: the BOTTOM one is a circled STAR/asterisk
     slide.addShape(pptx.ShapeType.ellipse, {
       x: px(432), y: px(y - 7.5), w: px(15), h: px(15),
       fill: { color: "FCE8E8" }, line: { color: "CC2222", width: 1.25 },
     });
-    text(slide, "\u00D7", {
+    text(slide, i === 3 ? "*" : "\u00D7", {
       x: px(432), y: px(y - 7.5), w: px(15), h: px(15), align: "center", valign: "middle",
-      bold: true, fontSize: 8, color: "CC2222",
+      bold: true, fontSize: 9, color: "CC2222",
     });
-    // thin red arrow node -> Sigma box right edge
+    // D4: per-row red LEFTWARD arrowhead INTO the W_v left face (tail at X-bar 558)
     slide.addShape(pptx.ShapeType.line, {
-      x: px(418), y: px(316 + i * 4), w: px(10), h: px(y - 7.5 - (316 + i * 4)),
+      x: px(510), y: px(y), w: px(48), h: 0,
       line: { color: C.red, width: 0.9, beginArrowType: "triangle" },
     });
     // V label + tiny multi-colored bar
@@ -474,14 +515,19 @@ function drawFfRight(pptx, slide) {
         fill: { color: barFills[j] }, line: { color: "B8B8B8", width: 0.5 },
       });
     }
-    // W_v^(0..3) box (white, blue outline)
+    // A8: W_v^(1) box (white, blue outline) — constant head-1 superscript
     slide.addShape(pptx.ShapeType.rect, {
       x: px(510), y: px(y - 11), w: px(42), h: px(22),
       fill: { color: "FFFFFF" }, line: { color: C.blue, width: 1 },
     });
-    text(slide, wRuns("v", i, C.ink, 5.5), {
+    text(slide, wRuns("v", 1, C.ink, 5.5), {
       x: px(510), y: px(y - 11), w: px(42), h: px(22), align: "center", valign: "middle",
     });
+  });
+  // D4: short vertical up-arrow feeding the Sigma box's bottom (head at y=323)
+  slide.addShape(pptx.ShapeType.line, {
+    x: px(440), y: px(323), w: 0, h: px(9),
+    line: { color: C.red, width: 1, beginArrowType: "triangle" },
   });
   // dashed X-cells box x 558..602, y 320..432
   slide.addShape(pptx.ShapeType.roundRect, {
@@ -511,51 +557,72 @@ function drawFfRight(pptx, slide) {
 // ---- query row (bottom) --------------------------------------------------------
 
 function drawQueryrow(pptx, slide) {
-  // q1 red vector bar + label, red arrow up into the Dot Product box
+  // A6: striped q-vector icon (pale rounded, ~4 vertical stripes) + A4: label q2 —
+  // the solid red bar is GONE (measured: no flat red bar in the original's query row)
+  slide.addShape(pptx.ShapeType.roundRect, {
+    x: px(186), y: px(461), w: px(22), h: px(18), rectRadius: 0.03,
+    fill: { color: "F3F0E8" }, line: { color: "B8B8B8", width: 0.5 },
+  });
+  const iconFills = ["F9FF96", "FFFFFF", "F08B96", "EAE4EE"];
+  for (let j = 0; j < 4; j++) {
+    slide.addShape(pptx.ShapeType.rect, {
+      x: px(188 + j * 4.5), y: px(463.5), w: px(4), h: px(13),
+      fill: { color: iconFills[j] }, line: { color: "C9C9C9", width: 0.4 },
+    });
+  }
+  // A4: q2 label (query belongs to word X2) — measured red ink x164..183 y455..480
+  text(slide, idxRuns("q", 2, C.red, 8), {
+    x: px(162), y: px(458), w: px(22), h: px(22), align: "center", valign: "middle",
+  });
+  // A5: W_q^(0) box re-centered over X2 (measured x211..237, y448..489) + the q-feed
+  // arrow rising from it into the Dot Product box (drawn in ff_left, head at y443)
   slide.addShape(pptx.ShapeType.rect, {
-    x: px(205), y: px(467), w: px(46), h: px(12),
-    fill: { color: C.red }, line: { type: "none" },
+    x: px(211), y: px(448), w: px(26), h: px(41),
+    fill: { color: "FFFFFF" }, line: { color: "CC2222", width: 1 },
   });
-  text(slide, idxRuns("q", 1, C.red, 7), {
-    x: px(189), y: px(466), w: px(15), h: px(13), align: "left", valign: "middle",
+  text(slide, wRuns("q", 0, C.red, 6), {
+    x: px(211), y: px(448), w: px(26), h: px(41), align: "center", valign: "middle",
   });
-  // W_q^(0) box (white, red outline) + small red arrow down toward the container
-  // (judge attempt 1 #2: original reads W_q^(0) feeding q1; clearer subscript size)
-  slide.addShape(pptx.ShapeType.rect, {
-    x: px(258), y: px(448), w: px(44), h: px(24),
-    fill: { color: "FFFFFF" }, line: { color: "CC2222", width: 1.25 },
-  });
-  text(slide, wRuns("q", 0, C.ink, 6.5), {
-    x: px(258), y: px(448), w: px(44), h: px(24), align: "center", valign: "middle",
-  });
+  // small red arrow from the box's bottom center down to the strips (measured 222..226)
   slide.addShape(pptx.ShapeType.line, {
-    x: px(280), y: px(474), w: 0, h: px(12),
+    x: px(224), y: px(489), w: 0, h: px(6),
     line: { color: C.red, width: 1, endArrowType: "triangle" },
   });
-  // token container: dashed green, pale green fill, 4 word strips, X2 magenta
+  // G2: token container with 4 SEGMENTED multi-cell strips; X2 emphasized with pale
+  // magenta cells + red dotted border (equal 44px strips, measured X2 at 203..247)
   slide.addShape(pptx.ShapeType.roundRect, {
-    x: px(152), y: px(492), w: px(190), h: px(29), rectRadius: 0.05,
+    x: px(150), y: px(492), w: px(198), h: px(29), rectRadius: 0.05,
     fill: { color: "E8FCE8" }, line: { color: C.green, width: 1.25, dashType: "dash" },
   });
   const strips = [
-    { x: 158, w: 56, fill: "F7F3D8", hot: false },
-    { x: 222, w: 36, fill: "F2C8F0", hot: true },
-    { x: 260, w: 46, fill: "F7F3D8", hot: false },
-    { x: 310, w: 32, fill: "F7F3D8", hot: false },
+    { x: 155, hot: false }, { x: 203, hot: true },
+    { x: 251, hot: false }, { x: 299, hot: false },
   ];
   strips.forEach((s, i) => {
-    slide.addShape(pptx.ShapeType.rect, {
-      x: px(s.x), y: px(496), w: px(s.w), h: px(15),
-      fill: { color: s.fill },
-      line: s.hot ? { color: C.magenta, width: 1.5 } : { color: "B8B8B8", width: 0.5 },
+    const cells = ["F9FF96", "FFFFF0", "F6DAF3", "EAE4EE"];
+    for (let j = 0; j < 4; j++) {
+      slide.addShape(pptx.ShapeType.rect, {
+        x: px(s.x + 1 + j * 10.5), y: px(497), w: px(10), h: px(14),
+        fill: { color: s.hot ? (j % 2 ? "F2C8F0" : "F6DAF3") : cells[j] },
+        line: { color: "B8B8B8", width: 0.5 },
+      });
+    }
+    // G4: X labels inside the strips in red (X2 bigger)
+    text(slide, idxRuns("X", i + 1, C.red, s.hot ? 6.5 : 5), {
+      x: px(s.x), y: px(497), w: px(44), h: px(14), align: "center", valign: "middle",
     });
-    text(slide, idxRuns("X", i + 1, C.brick, 5), {
-      x: px(s.x), y: px(496), w: px(s.w), h: px(15), align: "center", valign: "middle",
-    });
+    if (s.hot) {
+      // red dotted emphasis border over the X2 strip
+      slide.addShape(pptx.ShapeType.rect, {
+        x: px(s.x), y: px(496), w: px(44), h: px(16),
+        fill: { type: "none" }, line: { color: C.red, width: 1.25, dashType: "sysDot" },
+      });
+    }
   });
-  // thick red arrow pointing up-right into the X2 strip from lower-left
+  // G3: thick red diagonal from outside/below the container (tail ~(205,527)) into
+  // the X2 strip's lower-left, head AT the chip's bottom edge (~(224,499))
   slide.addShape(pptx.ShapeType.line, {
-    x: px(243), y: px(513), w: px(10), h: px(-13),
+    x: px(205), y: px(527), w: px(19), h: px(-28),
     line: { color: C.red, width: 2.25, endArrowType: "triangle" },
   });
 }
@@ -567,61 +634,84 @@ function drawBottomcurve(pptx, slide) {
   });
 }
 
-// ---- per-head right panels: dashed X-boxes on the card slivers + W-chip columns
-
+// ---- per-head right panels: dotted X-boxes on the card slivers + W-chip columns
+// E1 (resolved by the dedicated PIL map, fix_m3): FIVE columns h1..h5 — panel lefts
+// 601/645/688/731/774 (w 43), tops 337/316/295/274/255 (h 78); measured q-chip tops
+// 422/401/380/359/338 = panel bottom + 7; k/v pitch 40 (h2 q 401, k 441, v 481).
 const HEADCOLS = [
-  { h: 2, x: 616, xboxY: 322, wtop: 446 },
-  { h: 3, x: 660, xboxY: 296, wtop: 420 },
-  { h: 4, x: 704, xboxY: 270, wtop: 394 },
-  { h: 5, x: 748, xboxY: 244, wtop: 368 },
+  { h: 1, x: 601, xboxY: 337, wtop: 422 },
+  { h: 2, x: 645, xboxY: 316, wtop: 401 },
+  { h: 3, x: 688, xboxY: 295, wtop: 380 },
+  { h: 4, x: 731, xboxY: 274, wtop: 359 },
+  { h: 5, x: 774, xboxY: 255, wtop: 338 },
 ];
+const PANEL_H = 78, PANEL_W = 43;
 
 function drawHeadpanels(pptx, slide) {
-  const rowFills = [
-    ["F9FF96", "FFFFF0", "F6DAF3"],
-    ["EAE4EE", "F9FF96", "FFFFF0"],
-    ["F6DAF3", "EAE4EE", "F9FF96"],
-    ["FFFFF0", "F6DAF3", "EAE4EE"],
-  ];
+  // E3: muted gray/lavender/pink cell palette (vivid rows were a defect)
+  const muted = ["DAD2CE", "D8D2E0", "E4D6D8", "D8D2E0", "DAD2CE"];
   for (const c of HEADCOLS) {
-    // dashed X-box on the card sliver
+    // E2: dark-green DOTTED border (fine dots), no fill
     slide.addShape(pptx.ShapeType.roundRect, {
-      x: px(c.x), y: px(c.xboxY), w: px(42), h: px(122), rectRadius: 0.05,
-      fill: { color: "FFFFFF" }, line: { color: C.green, width: 1, dashType: "dash" },
+      x: px(c.x), y: px(c.xboxY), w: px(PANEL_W), h: px(PANEL_H), rectRadius: 0.05,
+      fill: { color: "FFFFFF" }, line: { color: "1F6B3A", width: 1, dashType: "sysDot" },
     });
     for (let i = 0; i < 4; i++) {
-      const yc = c.xboxY + 16 + i * 30;
-      text(slide, idxRuns("X", i + 1, C.brick, 5), {
-        x: px(c.x + 3), y: px(yc - 8), w: px(12), h: px(16), align: "left", valign: "middle",
-      });
-      for (let j = 0; j < 3; j++) {
+      const yc = c.xboxY + 12 + i * 18;
+      // A9: 5 muted cells per row; the LEFTMOST cell carries a thick red X-STRIKE
+      // (hand-drawn strike marks, not text labels — g_panelrow wave-4 decision)
+      for (let j = 0; j < 5; j++) {
         slide.addShape(pptx.ShapeType.rect, {
-          x: px(c.x + 15 + j * 8.5), y: px(yc - 8), w: px(8.5), h: px(16),
-          fill: { color: rowFills[i][j] }, line: { color: "C9C9C9", width: 0.5 },
+          x: px(c.x + 1.5 + j * 8.2), y: px(yc - 6), w: px(7.5), h: px(12),
+          fill: { color: muted[(i + j) % 5] }, line: { color: "BFB8B4", width: 0.4 },
         });
       }
+      const lx = c.x + 1.5, lw = 7.5;
+      slide.addShape(pptx.ShapeType.line, {
+        x: px(lx), y: px(yc - 6), w: px(lw), h: px(12),
+        line: { color: C.red, width: 1.4 },
+      });
+      slide.addShape(pptx.ShapeType.line, {
+        x: px(lx), y: px(yc - 6), w: px(lw), h: px(-12),
+        line: { color: C.red, width: 1.4 },
+      });
     }
-    // small green arrowhead beneath the dashed group
+  }
+  // E4: stemmed green arrows seated at the panel bottoms, heads up — 3 (h=2..4)
+  // + 1 near the h=5 right edge; drawn here so the W chips (next block) overlap
+  // only the tails, as measured (q top = panel bottom + 7)
+  for (const idx of [1, 2, 3, 4]) {
+    const c = HEADCOLS[idx];
+    const ax = idx === 4 ? c.x + 40 : c.x + 21;
     slide.addShape(pptx.ShapeType.line, {
-      x: px(c.x + 21), y: px(c.xboxY + 116), w: 0, h: px(9),
+      x: px(ax), y: px(c.xboxY + PANEL_H - 4), w: 0,
+      h: px(c.wtop + 8 - (c.xboxY + PANEL_H - 4)),
       line: { color: C.brightgreen, width: 1.25, beginArrowType: "triangle" },
     });
   }
 }
 
 function drawWochips(pptx, slide) {
-  const borders = { q: "CC2222", k: C.green, v: C.blue };
+  // E5: pastel-filled chips, thin semantic borders; q top = wtop, k/v pitch 40.
+  // Labels semantic per chip letter (original ink: q red 200,0,0 / k green ~3EA74B /
+  // v dark blue) — brick was a fidelity gap vs the frame, caught in closed-loop F2.
+  const styles = {
+    q: { border: "CC2222", fill: "FBD5DC", label: C.red },
+    k: { border: C.green, fill: "DFF0D5", label: C.green },
+    v: { border: C.blue, fill: "D6E4F7", label: C.blue },
+  };
   for (const c of HEADCOLS) {
     const rows = [
-      { letter: "q", dy: 0 }, { letter: "k", dy: 24 }, { letter: "v", dy: 48 },
+      { letter: "q", dy: 0 }, { letter: "k", dy: 40 }, { letter: "v", dy: 80 },
     ];
     for (const r of rows) {
+      const st = styles[r.letter];
       slide.addShape(pptx.ShapeType.rect, {
-        x: px(c.x), y: px(c.wtop + r.dy), w: px(42), h: px(22),
-        fill: { color: "FFFFFF" }, line: { color: borders[r.letter], width: 1.25 },
+        x: px(c.x), y: px(c.wtop + r.dy), w: px(PANEL_W), h: px(22),
+        fill: { color: st.fill }, line: { color: st.border, width: 0.9 },
       });
-      text(slide, wRuns(r.letter, c.h, C.brick, 5.5), {
-        x: px(c.x), y: px(c.wtop + r.dy), w: px(42), h: px(22),
+      text(slide, wRuns(r.letter, c.h, st.label, 5.5), {
+        x: px(c.x), y: px(c.wtop + r.dy), w: px(PANEL_W), h: px(22),
         align: "center", valign: "middle",
       });
     }
@@ -629,77 +719,77 @@ function drawWochips(pptx, slide) {
 }
 
 function drawSwoosh(pptx, slide) {
+  // F1/F4: regenerated ribbon — J-curl tail at (559,453), rising body, hooked
+  // tapered terminal (no arrowhead) at (787,333); bright red C00000; the head tip
+  // stops just short of the h=5 panel's bottom edge (F4)
   slide.addImage({
     path: path.join(ASSETS, "swoosh.png"),
-    x: px(585), y: px(325), w: 2.43056, h: 2.08333,
+    x: px(546), y: px(323), w: 3.55556, h: 2.30556,
   });
 }
 
 function drawHlabel(pptx, slide) {
-  // blue italic "H^th Heads" along the swoosh's upper end (angled parallel to it)
+  // F3: blue italic serif «"H" Heads» with literal quotes, rising ~-22 deg along the
+  // swoosh's upper end — measured line center (745,443), ink x703..790 y424..463
   text(slide, [
-    { text: "H", options: { italic: true, bold: true, fontSize: 10, color: "0033CC" } },
-    { text: "th", options: { italic: true, bold: true, fontSize: 7, color: "0033CC", superscript: true } },
-    { text: " Heads", options: { italic: true, bold: true, fontSize: 10, color: "0033CC" } },
+    { text: "\u201CH\u201D Heads", options: { italic: true, bold: true, fontSize: 11, color: "0033CC" } },
   ], {
-    x: px(612), y: px(392), w: px(96), h: px(16), align: "center", valign: "middle",
-    rotate: 322, margin: 0, fontFace: SANS,
+    x: px(694), y: px(435), w: px(102), h: px(16), align: "center", valign: "middle",
+    rotate: 338, margin: 0, fontFace: "Times New Roman",
   });
 }
 
 function drawLegend(pptx, slide) {
+  // H1: [striped vector icon + red 1*d] [yellow W box; red d*d UNDER it] [red =]
+  //     [second striped vector icon + red 1*d] [blue caption] — legend box measured
+  //     734..903 x 466..531; W box 796..828 x 473..501; chip2 846..886
   slide.addShape(pptx.ShapeType.roundRect, {
-    x: px(736), y: px(468), w: px(170), h: px(64), rectRadius: 0.06,
-    fill: { color: C.legendFill }, line: { color: C.green, width: 1.25, dashType: "dash" },
+    x: px(734), y: px(466), w: px(169), h: px(65), rectRadius: 0.06,
+    fill: { color: C.legendFill }, line: { color: C.green, width: 1.25, dashType: "sysDot" },
   });
-  // vector icon: 8 tiny cells + red 1×d caption
+  const chip1x = 744, chip2x = 846;
   const cellFills = ["F9FF96", "FFFFFF", "F6DAF3", "EAE4EE", "F9FF96", "FFFFFF", "F6DAF3", "EAE4EE"];
   for (let j = 0; j < 8; j++) {
     slide.addShape(pptx.ShapeType.rect, {
-      x: px(744 + j * 5.6), y: px(472), w: px(5.6), h: px(11),
+      x: px(chip1x + j * 5), y: px(476), w: px(5), h: px(12),
+      fill: { color: cellFills[j] }, line: { color: "C9C9C9", width: 0.5 },
+    });
+    slide.addShape(pptx.ShapeType.rect, {
+      x: px(chip2x + j * 5), y: px(476), w: px(5), h: px(12),
       fill: { color: cellFills[j] }, line: { color: "C9C9C9", width: 0.5 },
     });
   }
-  text(slide, "1\u00D7d", {
-    x: px(744), y: px(486), w: px(44), h: px(10), align: "center", valign: "middle",
-    bold: true, fontSize: 6, color: C.brick,
+  // H2: dimension captions red/maroon C00000-family
+  text(slide, "1*d", {
+    x: px(chip1x), y: px(492), w: px(40), h: px(10), align: "center", valign: "middle",
+    bold: true, fontSize: 6, color: C.red,
   });
-  // W square
+  text(slide, "1*d", {
+    x: px(chip2x + 20), y: px(492), w: px(40), h: px(10), align: "center", valign: "middle",
+    bold: true, fontSize: 6, color: C.red,
+  });
+  // W square (measured 796..828 x 473..501)
   slide.addShape(pptx.ShapeType.rect, {
-    x: px(798), y: px(472), w: px(26), h: px(26),
+    x: px(796), y: px(473), w: px(32), h: px(28),
     fill: { color: "FBE8B8" }, line: { color: C.ink, width: 1.25 },
   });
   text(slide, "W", {
-    x: px(798), y: px(472), w: px(26), h: px(26), align: "center", valign: "middle",
+    x: px(796), y: px(473), w: px(32), h: px(28), align: "center", valign: "middle",
     bold: true, fontSize: 12, color: C.ink,
   });
-  // =
+  // d*d caption UNDER the W box (H1 defect 2: dimension note belongs to W)
+  text(slide, "d*d", {
+    x: px(802), y: px(503), w: px(48), h: px(10), align: "center", valign: "middle",
+    bold: true, fontSize: 6, color: C.red,
+  });
+  // = (red operator between W and the second chip)
   text(slide, "=", {
-    x: px(828), y: px(478), w: px(14), h: px(16), align: "center", valign: "middle",
+    x: px(830), y: px(478), w: px(14), h: px(16), align: "center", valign: "middle",
     bold: true, fontSize: 12, color: C.red,
-  });
-  // d×d grid icon + caption
-  slide.addShape(pptx.ShapeType.rect, {
-    x: px(846), y: px(472), w: px(26), h: px(26),
-    fill: { color: "FFFFFF" }, line: { color: C.ink, width: 1 },
-  });
-  for (let j = 1; j < 4; j++) {
-    slide.addShape(pptx.ShapeType.line, {
-      x: px(846 + j * 6.5), y: px(472), w: 0, h: px(26),
-      line: { color: "8A8A8A", width: 0.5 },
-    });
-    slide.addShape(pptx.ShapeType.line, {
-      x: px(846), y: px(472 + j * 6.5), w: px(26), h: 0,
-      line: { color: "8A8A8A", width: 0.5 },
-    });
-  }
-  text(slide, "d\u00D7d", {
-    x: px(840), y: px(500), w: px(38), h: px(10), align: "center", valign: "middle",
-    bold: true, fontSize: 6, color: C.brick,
   });
   // caption (blue bold per two independent crop reads)
   text(slide, "d: Embedding Length", {
-    x: px(740), y: px(514), w: px(162), h: px(12), align: "center", valign: "middle",
+    x: px(740), y: px(514), w: px(157), h: px(12), align: "center", valign: "middle",
     bold: true, fontSize: 7, color: C.blue,
   });
 }

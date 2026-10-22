@@ -24,7 +24,8 @@
 // verbatim text incl. curly quotes (“t-1”, “t”) and the spaced "N x" repeat glyph per
 // the gate-passed spec; margin:0 + explicit fontFace everywhere; explicit lineSpacing
 // on every multi-line box; no '#' in hex; dashed feedback + thin connectors as native
-// lines; the faint gray callout leader lines (measured at y151/245-254/364-379/492).
+// lines; the callout leader arrows draw LAST as full measured curves (F5 fix 2026-10-13:
+// founder-bolded paths; 2.25pt #C8C8C8 with triangle heads — see drawLeader1..4).
 
 const { drawHouseChrome } = require("./house_chrome.js");
 
@@ -192,17 +193,42 @@ function drawCallout4(pptx, slide) {
   );
 }
 
+// ---- F5 fix (founder defect batch 2026-10-13, certified at attempt 2): the original
+// frame's four callout leader arrows are FAINT full-length light-gray curves; the
+// pre-fix build drew only headless stubs at the figure-frame edge. Full paths below are
+// PIL-measured from the founder-bolded evidence (qa/slide017/arrow/), drawn at visible
+// weight (2.25pt) in the original family color (#C8C8C8, see scratch/slide017/ARROW_COLOR.txt)
+// with triangle arrowheads. Drawn AFTER the stubs' z-position (they overlay panels/figure).
+function addArrow(slide, pts) {
+  for (let i = 0; i < pts.length - 1; i++) {
+    const [x0, y0] = pts[i];
+    const [x1, y1] = pts[i + 1];
+    const line = { color: C.leader, width: 2.25 };
+    if (i === pts.length - 2) line.endArrowType = "triangle";
+    slide.addShape("line", {
+      x: px(Math.min(x0, x1)), y: px(Math.min(y0, y1)),
+      w: px(Math.abs(x1 - x0)), h: px(Math.abs(y1 - y0)),
+      flipV: y1 < y0, flipH: x1 < x0,
+      line,
+    });
+  }
+}
+
 function drawLeader1(pptx, slide) {
-  addLines(slide, C.leader, 0.75, [[530, 151], [572, 151]]);
+  // callout1 -> right end of the Output Probabilities band
+  addArrow(slide, [[528, 151], [600, 155], [660, 154], [700, 143], [748, 128], [784, 122], [812, 121]]);
 }
 function drawLeader2(pptx, slide) {
-  addLines(slide, C.leader, 0.75, [[521, 245], [572, 254]]);
+  // callout2 -> into encoder stack, down the MHA spine, head under the K/Q circles
+  addArrow(slide, [[488, 245], [560, 254], [613, 268], [640, 287], [656, 301], [656, 404], [712, 405]]);
 }
 function drawLeader3(pptx, slide) {
-  addLines(slide, C.leader, 0.75, [[523, 365], [572, 379]]);
+  // callout3 -> curving down to the encoder embedding/PE top
+  addArrow(slide, [[522, 366], [540, 373], [568, 392], [584, 406], [600, 423], [620, 438], [640, 446], [682, 450]]);
 }
 function drawLeader4(pptx, slide) {
-  addLines(slide, C.leader, 0.75, [[533, 492], [572, 492]]);
+  // callout4 -> flat then curving up to the decoder PE / Output Embedding right side
+  addArrow(slide, [[532, 494], [604, 497], [650, 486], [690, 468], [722, 463], [770, 459], [810, 455], [846, 450]]);
 }
 
 function drawFigFrame(pptx, slide) {
@@ -655,10 +681,6 @@ const BLOCKS = {
   callout2: drawCallout2,
   callout3: drawCallout3,
   callout4: drawCallout4,
-  leader1: drawLeader1,
-  leader2: drawLeader2,
-  leader3: drawLeader3,
-  leader4: drawLeader4,
   fig_frame: drawFigFrame,
   panels: drawPanels,
   panel_labels: drawPanelLabels,
@@ -682,6 +704,11 @@ const BLOCKS = {
   green_trunk: drawGreenTrunk,
   feeds: drawFeeds,
   feedback: drawFeedback,
+  // F5 fix: leader arrows draw LAST (they overlay the figure, as in the original)
+  leader1: drawLeader1,
+  leader2: drawLeader2,
+  leader3: drawLeader3,
+  leader4: drawLeader4,
 };
 
 /**

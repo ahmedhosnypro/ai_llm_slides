@@ -52,6 +52,7 @@ const pptxgen = require("pptxgenjs");
 const { renderBase } = require(path.join(__dirname, "components", "slide_043.js"));
 
 const OUT = path.join(__dirname, "..", "slide_044_recreated.pptx");
+const ASSETS = path.join(__dirname, "assets");
 
 const px = (v) => v / 72;
 const SANS = "Arial";
@@ -258,6 +259,88 @@ function drawInset(pptx, slide) {
   }
 }
 
+// ---- delta 3: eqfrac-crop judge D1-D5 fixes (attempt 4, ALL CHILD-LOCAL) --------
+// Ground truth = unique_slides/slide_044.jpg (measurements scratch/slide044/m20-m22,
+// banked in RESUME.md). The certified parent's state differs from THIS slide's frame in
+// five measured ways; each fix covers the inherited ink with the exact neighboring fill
+// (card EF8C96 / pill E4D8F4 / oval C4C2F4) and redraws. Parent component untouched;
+// inherited block names and draw order unchanged (this draws after the base, on top).
+function drawEqfracFix44(pptx, slide) {
+  // D1+D5 — Probabilities chip (parent vecs[0] box 312,278,62,16, cream FFFFE3).
+  // 44's frame: dark text "Probabilities" at x323..362 y283..287 (purplish-dark cores
+  // ~= ovalText 4A5AA0 family), NO green dashed border anywhere on the perimeter
+  // (scan: 2-3 greenish px total), and the chip is a STADIUM/PILL, not a square:
+  // corner rasters (m25) measure cream x313..371, y278.25..292.75 with both ends
+  // fully rounded (left cap: x313 flat only y283..287, receding to x325 by y278;
+  // right cap: x371 only at y283.5, receding to x361 by y278/y292) — pill radius
+  // = h/2 = 7.25 frame px. Inherited: red Y1 glyphs + a 1pt 2E8B57 dash ring on a
+  // square rect. Cover ring+square with neighbor fills, redraw as a cream stadium
+  // + text; no new border (the original has none).
+  slide.addShape(pptx.ShapeType.rect, { // above the chip: old top border; oval
+    x: px(310.8), y: px(276.6), w: px(64.9), h: px(1.9), // lavender arc zone
+    fill: { color: "C4C2F4" }, line: { type: "none" },
+  });
+  slide.addShape(pptx.ShapeType.rect, { // full old chip square + side/bottom
+    x: px(310.8), y: px(278.2), w: px(64.9), h: px(17.6), // borders -> card salmon
+    fill: { color: "EF8C96" }, line: { type: "none" },
+  });
+  slide.addShape(pptx.ShapeType.roundRect, { // the chip itself: measured stadium
+    x: px(313), y: px(278.25), w: px(58), h: px(14.5), rectRadius: 0.0755,
+    fill: { color: "FFFFE3" }, line: { type: "none" },
+  });
+  text(slide, "Probabilities", {
+    x: px(312), y: px(278), w: px(62), h: px(16), align: "center", valign: "middle",
+    fontSize: 6, color: "4A5AA0",
+  });
+
+  // D4 — the four flow lanes: original = hairline (~0.5pt blurred) shafts with small
+  // heads (n=15-19 px); inherited = 1pt dark shafts with big heads (n=122-128). Cover
+  // each segment with the card fill (x-ranges trimmed short of the pill borders at
+  // 278/300/332/355 so the borders are not nicked), redraw at 0.5pt.
+  for (const y of [335, 363, 391, 419]) {
+    for (const seg of [[253, 278], [300, 332], [355, 430]]) {
+      const x0 = seg[0] + (seg[0] === 253 ? -0.4 : 0.4);
+      const x1 = seg[1] + (seg[1] === 430 ? 0.6 : -0.3);
+      slide.addShape(pptx.ShapeType.rect, {
+        x: px(x0), y: px(y - 2.6), w: px(x1 - x0), h: px(5.2),
+        fill: { color: "EF8C96" }, line: { type: "none" },
+      });
+      slide.addShape(pptx.ShapeType.line, {
+        x: px(seg[0]), y: px(y), w: px(seg[1] - seg[0]), h: 0,
+        line: { color: "8B1A10", width: 0.5, endArrowType: "triangle" },
+      });
+    }
+  }
+
+  // D3 — fraction seat: the certified asset's SIZE already matches 44's frame at frame
+  // scale (rend ink 21.6px tall vs orig 21px; the attempt-3 judge's "1.7-2x too big"
+  // was a crop-scale artifact — r1's render crop was 8.4x frame vs orig 4.07x). The
+  // real delta is the SEAT: orig ink y300..321 x310..329 vs rend y293.7..315.3
+  // x304.6..321.4. Cover the old seat with the card fill, re-add at +7.5x/+5.5y,
+  // same size (still downsampling the 600dpi asset at 150dpi — law-safe).
+  slide.addShape(pptx.ShapeType.rect, {
+    x: px(303.8), y: px(294.4), w: px(18.2), h: px(22.6),
+    fill: { color: "EF8C96" }, line: { type: "none" },
+  });
+  slide.addImage({
+    path: path.join(ASSETS, "eq_kq_sqrtd.png"),
+    x: px(311.5), y: px(299.5), w: 0.24667, h: 0.31667,
+  });
+
+  // D2 — Soft max rotated label: original ink x339..349 y346..397 (1.30x the rend's
+  // y352.5..391.8, same center); its S enters the eqfrac crop at y~346 while the
+  // rend's started y352.5 (invisible in-crop -> judge D2). Cover the old seat with
+  // the pill fill, re-add the certified PNG at 1.30x around the same center.
+  slide.addShape(pptx.ShapeType.rect, {
+    x: px(338.6), y: px(351.6), w: px(9.4), h: px(42),
+    fill: { color: "E4D8F4" }, line: { type: "none" },
+  });
+  slide.addImage({
+    path: path.join(ASSETS, "eq_softmax_pill_rot.png"),
+    x: px(337.69), y: px(345.81), w: 0.15817, h: 0.74533,
+  });
+}
+
 // ---- composition ---------------------------------------------------------------
 
 const pres = new pptxgen();
@@ -268,9 +351,11 @@ const slide = pres.addSlide();
 renderBase(pres, slide, { numeral: 44, skip: ["title"] });
 
 // child delta — title first (same layer as the parent's would be), then the
-// inset LAST so it sits on top and reproduces the original's occlusions
+// inset LAST so it sits on top and reproduces the original's occlusions, then the
+// attempt-4 eqfrac fixes (chip zone x312..374 — no overlap with the inset x738..908)
 drawTitle44(pres, slide);
 drawInset(pres, slide);
+drawEqfracFix44(pres, slide);
 
 pres.writeFile({ fileName: OUT }).then(() => {
   console.log("WROTE", OUT);

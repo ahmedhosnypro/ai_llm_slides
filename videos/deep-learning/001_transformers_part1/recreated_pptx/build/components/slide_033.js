@@ -32,6 +32,23 @@
 // VERIFIED: 0-pixel-diff render vs the certified reference render
 // qa/slide033/render_3.png (scratch/slide033_component_verify/, 2026-10-12).
 //
+// F9-REGISTER EXECUTION (fix-f9-33-20261014, 2026-10-14): the F9 investigator's
+// zoomed forensics (scratch/slide033/CASCADE_DELTA.md, measured against the
+// certified render_3) produced a slide-local defect register; all edits executed
+// here are PIL re-verified against unique_slides/slide_033.jpg (frame = ground
+// truth; scripts scratch/slide033/fixf9_verify{,2,3}.py). Changed blocks:
+// dotproduct (dots d14.5 pale-periwinkle ring D6E2FF + navy core d10 — frame
+// ASCII-verified; old cyan d13 halo read as oversized halo marker), flowlines
+// (fan recolored faint EDCDBA w1 + 4 saturated C.red tip arrowheads at the
+// measured below-dot marks; segments end at the marks, no more core overdraw),
+// sigma (faint gray-tan softTan lines softmax->circles; flanking wedges BOTH
+// sides ALL 4 rows replacing the rows-2-4-only right stubs; stems extended to
+// touch the Sigma bottom edge y219; circle centers = solid red ellipse d8.5 —
+// FRAME WINS over the spec text "white fill, red outline, asterisk": the frame
+// center is a filled red blob, deviation documented), y2 (red head apex flush
+// with the strip edge). Geometry/GEO/block names/draw order unchanged — 002
+// slides 8/13 inherit via require() and see the corrected composition.
+//
 // LAWS honored: playlist chrome via components/house_chrome.js (badge numeral 33
 // = the number printed on the frame; drawn ONCE here — children must not re-draw
 // it); verbatim text; margin:0 + explicit fontFace on every text element;
@@ -64,7 +81,10 @@ const C = {
   y2c1: "9CCB96", y2c4: "C9D6DA",
   legW: "FFFBD1", legWBorder: "C87A2A", legendRed: "A0392E", eqSign: "8F4A2E",
   kq: "7A231C", qRed: "800007",
-  dotCore: "0D1B8F", dotHalo: "9FC5F0",
+  // F9-register (2026-10-14) frame-measured additions:
+  dotCore: "0D1B8F", dotHalo: "D6E2FF", dotHaloLine: "C4CFF0", // pale periwinkle ring (frame: C0D2FF/D5E9FF-class), NOT cyan
+  fanFaint: "EDCDBA",   // fan lines ~15% red over peach (frame corridor max-redness 16-22)
+  softTan: "DCC8B6",    // faint gray-tan circle->softmax lines (frame ink (228,208,189)-class, redness~bg)
   grayLine: "A9A5A0", greenArrow: "4E9A4E", greenArrowLine: "2F6B2F",
   triRed: "8F2020", emph: "A00000",
 };
@@ -226,14 +246,17 @@ function drawDotproduct(pptx, slide) {
       fontFace: FONT, fontSize: 9, bold: true, color: C.kq,
     }
   );
-  // dots: pale-blue halo + navy core, diagonal staircase (on top of the flow lines)
+  // dots: F9 frame-measured (verify3 K): solid navy core d~10 + PALE periwinkle ring to
+  // d~14.5 (frame radial blueness 171/172/153/136/110 r0-4 then 63/42/33 — ring reads
+  // white-pale, never cyan). Supersedes the certified d13 9FC5F0 halo + d7 core (frame wins;
+  // the old saturated cyan halo read as an oversized "halo marker" — judge MAJOR).
   DOTC.forEach(([cx, cy]) => {
     slide.addShape(pptx.ShapeType.ellipse, {
-      x: px(cx - 6.5), y: px(cy - 6.5), w: px(13), h: px(13),
-      fill: { color: C.dotHalo }, line: { color: "6F8FC0", width: 0.5 },
+      x: px(cx - 7.25), y: px(cy - 7.25), w: px(14.5), h: px(14.5),
+      fill: { color: C.dotHalo }, line: { color: C.dotHaloLine, width: 0.5 },
     });
     slide.addShape(pptx.ShapeType.ellipse, {
-      x: px(cx - 3.5), y: px(cy - 3.5), w: px(7), h: px(7),
+      x: px(cx - 5), y: px(cy - 5), w: px(10), h: px(10),
       fill: { color: C.dotCore }, line: { type: "none" },
     });
   });
@@ -247,12 +270,44 @@ function drawFlowlines(pptx, slide) {
   LINEY.forEach((y, i) => redArrow(pptx, slide, 200, y, DOTX[i] - 8, y, 1.25));
   // right container -> W_v box (short, red)
   LINEY.forEach((y) => redArrow(pptx, slide, 763, y, 753, y, 1.5, { head: false }));
-  // converging red lines from the bottom convergence point up to each dot
-  DOTC.forEach(([cx, cy]) => {
+  // converging fan lines from the bottom convergence point to each dot's below-dot
+  // tip mark — F9 frame-measured: FAINT sketch-like pale pink-red (frame corridor
+  // max-redness 16-22 vs the certified saturated C03030 at 89-144 — judge MAJOR),
+  // each tip ending in a small SATURATED arrowhead at the dot's halo rim (the
+  // below-dot marks measured solid: (326,256)-(333,264) etc.). Segments end at the
+  // mark centers so nothing overdraws the dot cores (old lines ran into the centers).
+  const FAN_TIP = [
+    [329.5, 260], // mark (326,256)-(333,264)
+    [314, 301.5], // mark (311,297)-(317,306)
+    [297, 342.5], // mark (294,339)-(300,346)
+    [282.5, 385], // mark (279,381)-(286,389)
+  ];
+  FAN_TIP.forEach(([mx, my]) => {
     slide.addShape(pptx.ShapeType.line, {
-      x: px(Math.min(cx, 300)), y: px(cy), w: px(Math.abs(cx - 300)), h: px(399 - cy),
-      flipV: cx > 300,
-      line: { color: C.red, width: 1 },
+      x: px(Math.min(mx, 300)), y: px(my), w: px(Math.abs(mx - 300)), h: px(399 - my),
+      flipV: mx > 300,
+      line: { color: C.fanFaint, width: 1 },
+    });
+  });
+  // saturated up/inward tip arrowheads ON the fan ends — frame ASCII shows FAT
+  // steep-wedge heads (~90% bbox fill), so each mark = two overlapping C.red
+  // triangles (a thin single triangle underfills, judge reads blunt ends).
+  // Rotation aligns each head with its fan approach direction.
+  const FAN_HEAD = [
+    // [x, y, w, h, rot, x2, y2, w2, h2]  (outer + inner offset triangle)
+    [325.5, 255.5, 8.5, 9.5, 11, 326.75, 257, 6, 7.5],    // mark1 (326,256)-(333,264)
+    [310, 296.5, 8, 10, 7, 311.25, 298.5, 5.5, 8],        // mark2 (311,297)-(317,306)
+    [293, 338, 8, 9, -3, 294.25, 339.5, 5.5, 7.5],        // mark3 (294,339)-(300,346)
+    [278, 380.5, 9, 9.5, -40, 279.5, 382, 6.5, 8],        // mark4 (279,381)-(286,389)
+  ];
+  FAN_HEAD.forEach(([x, y, w, h, rot, x2, y2, w2, h2]) => {
+    slide.addShape(pptx.ShapeType.triangle, {
+      x: px(x), y: px(y), w: px(w), h: px(h), rotate: rot,
+      fill: { color: C.red }, line: { type: "none" },
+    });
+    slide.addShape(pptx.ShapeType.triangle, {
+      x: px(x2), y: px(y2), w: px(w2), h: px(h2), rotate: rot,
+      fill: { color: C.red }, line: { type: "none" },
     });
   });
 }
@@ -352,26 +407,64 @@ function drawSigma(pptx, slide) {
     align: "center", valign: "middle", margin: 0,
     fontFace: FONT, fontSize: 16, bold: true, color: C.sigmaText,
   });
+  // F9 frame-measured: faint gray-tan horizontal lines from the softmax right edge
+  // toward each circle (frame ink = dark-nonred (228,208,189)-class px, redness ~ bg —
+  // gray/tan, NOT red; completely absent in the certified render — judge MAJOR).
+  // Start at x491 (softmax right edge; left-of-softmax tails at x447-456 already drawn
+  // by the faintarrows block) and run under the flanking wedges to the circle rim.
+  CIRC.forEach(([cx, cy]) => {
+    slide.addShape(pptx.ShapeType.line, {
+      x: px(491), y: px(cy), w: px(cx - 9.5 - 491), h: 0,
+      line: { color: C.softTan, width: 0.75 },
+    });
+  });
+  // weighted-sum circles: white fill + thin red ring — frame-verified structure —
+  // BUT the frame center is a SOLID red blob d~8-9 ((139,0,5)..(152,0,13); 11x11
+  // redness map = filled block, not an asterisk). FRAME WINS over the spec text
+  // "white fill, red outline, asterisk": center drawn as a filled red ellipse
+  // (deviation from spec documented here per founder hard rule).
   CIRC.forEach(([cx, cy]) => {
     slide.addShape(pptx.ShapeType.ellipse, {
       x: px(cx - 9.5), y: px(cy - 9.5), w: px(19), h: px(19),
       fill: { color: "FFFFFF" }, line: { color: C.red, width: 1.5 },
     });
-    slide.addText("*", {
-      x: px(cx - 9.5), y: px(cy - 9.5), w: px(19), h: px(19),
-      align: "center", valign: "middle", margin: 0,
-      fontFace: FONT, fontSize: 14, bold: true, color: C.red,
+    slide.addShape(pptx.ShapeType.ellipse, {
+      x: px(cx - 4.25), y: px(cy - 4.25), w: px(8.5), h: px(8.5),
+      fill: { color: C.redDark }, line: { type: "none" },
     });
   });
-  // stems: circles -> Sigma (arrowheads land under the Sigma box)
-  redArrow(pptx, slide, 531, 241, 531, 225, 1);
-  redArrow(pptx, slide, 563, 283, 563, 225, 1);
-  redArrow(pptx, slide, 592, 323, 592, 225, 1);
-  redArrow(pptx, slide, 623, 367, 623, 225, 1);
-  // short right stubs with left-pointing arrowheads (rows 2-4 only, as measured)
-  redArrow(pptx, slide, 584, LINEY[1], 574, LINEY[1], 1.25);
-  redArrow(pptx, slide, 612, LINEY[2], 594, LINEY[2], 1.25);
-  redArrow(pptx, slide, 643, LINEY[3], 624, LINEY[3], 1.25);
+  // stems: circles -> Sigma (arrowhead tips land ON the Sigma box bottom edge y219 —
+  // frame head tips y219; certified build stopped at y225, a 6px gap — judge MINOR-borderline-MAJOR)
+  redArrow(pptx, slide, 531, 241, 531, 219, 1);
+  redArrow(pptx, slide, 563, 283, 563, 219, 1);
+  redArrow(pptx, slide, 592, 323, 592, 219, 1);
+  redArrow(pptx, slide, 623, 367, 623, 219, 1);
+  // flanking arrowhead wedges BOTH sides, ALL 4 rows (frame-measured bboxes; the
+  // certified build drew only right-side stubs on rows 2-4 — left wedges + rows 1/4
+  // were missing, judge MAJOR). Wide-flat wedges, tips pointing INWARD at the
+  // circles. NOTE the declared w/h are the PRE-rotation box (pptxgenjs rotates
+  // about the center and swaps the visual bbox): a right/left-pointing wedge with
+  // visual size wV x hV is declared w=hV, h=wV, centered on the visual center.
+  // Left (point right, rot 90); visual rows 1-3 measured + row 4 family (L = cx-18..cx-7):
+  [[514, 243, 12, 7], [544, 284, 13, 7], [574, 325, 11, 7], [604, 369, 12, 7]].forEach(
+    ([xv, yv, wv, hv]) => {
+      slide.addShape(pptx.ShapeType.triangle, {
+        x: px(xv + wv / 2 - hv / 2), y: px(yv + hv / 2 - wv / 2),
+        w: px(hv), h: px(wv), rotate: 90,
+        fill: { color: C.red }, line: { type: "none" },
+      });
+    }
+  );
+  // Right (point left, rot 270); visual rows 1-3 measured + row 4 family (R = cx+8..cx+20):
+  [[540, 243, 14, 8], [571, 284, 12, 7], [600, 325, 12, 8], [630, 369, 13, 7]].forEach(
+    ([xv, yv, wv, hv]) => {
+      slide.addShape(pptx.ShapeType.triangle, {
+        x: px(xv + wv / 2 - hv / 2), y: px(yv + hv / 2 - wv / 2),
+        w: px(hv), h: px(wv), rotate: 270,
+        fill: { color: C.red }, line: { type: "none" },
+      });
+    }
+  );
 }
 
 // 13) query path
@@ -441,7 +534,10 @@ function drawY2(pptx, slide) {
     fill: { color: C.greenArrow }, line: { color: C.greenArrowLine, width: 0.75 },
   });
   slide.addShape(pptx.ShapeType.triangle, {
-    x: px(579), y: px(146), w: px(8), h: px(8),
+    // F9: apex extended to touch the strip bottom edge (frame first-red y146 flush;
+    // certified build's apex anti-aliased 1-3px short — judge MINOR). Apex nudged
+    // 0.5px into the edge so the apex COLUMNS all read flush (orig 146 at x582-584).
+    x: px(578), y: px(144.5), w: px(10), h: px(9.5),
     fill: { color: C.triRed }, line: { type: "none" },
   });
   slide.addShape(pptx.ShapeType.line, {

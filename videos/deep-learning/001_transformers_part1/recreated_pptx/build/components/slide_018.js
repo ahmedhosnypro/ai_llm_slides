@@ -10,9 +10,14 @@
 //   banner1        peach callout x71-488 y104-145, fill F2C699, 2 lines (L1 black,
 //                  L2 mixed: "Multi-Head" blue / "Self Attention" red / quotes+block black)
 //   banner2        tan callout x109-415 y157-199, fill DECDBB, 2 lines dark red
-//   connect_h      thin gray connector from banner1's bottom edge down into the MHA
-//                  inset, ending in a small red down-arrowhead at the "h" circle
-//                  (spec-mandated; measured faint line inside frame B x486-493 y248-352)
+//   connect_h      (F6 re-measured 2026-10-13: attempt 1 ran banner1-bottom pink +
+//                  gray lanes, but the frame is verifiably clean below banner1 — no
+//                  printed ink; the founder's drawn arrow runs from BANNER2's right
+//                  end to the "h" circle). Now draws ONLY the small tan/red
+//                  down-arrowhead on the "h" circle top (present in the frame);
+//                  the connector path lives in connect_tan (extends banner2's
+//                  printed pink curve (417,182)->(443,232 fade) down to the "h"
+//                  circle per the founder's F6 arrow)
 //   inset_sdpa_*   Figure-2-left inset: green frame x59-189 y269-491 + corner
 //                  handles + red italic 2-line title + q/k/v circles, MatMul x2,
 //                  Scale, Mask (opt.), SoftMax, black arrows, V bypass up the right
@@ -22,9 +27,21 @@
 //                  drawn around the mauve SDPA box
 //   h_annot        "h" in a small tan-ringed circle at (494,367), black curved line
 //                  from the red rectangle to it, red down-arrowhead on top
-//   dash_d1/d2/d3  thin red DASHED connectors: d1 inset-B top-right corner ->
-//                  encoder MHA box; d2 inset-A top-right -> red rect in inset B;
-//                  d3 inset-A bottom-right -> short fading fragment (as in frame)
+//   dash_d1/d2/d3/d4  thin red DASHED connectors (RE-MEASURED 2026-10-13 from the
+//                  founder's F6 evidence, qa/slide018/arrow/ — the two ">" chevrons
+//                  he traced mark the TRUE pairs): d1 inset-B top-right corner
+//                  (508,250) -> enc MHA box top-left corner (644,349); d4 NEW:
+//                  inset-B bottom-right (509,506) -> enc MHA box bottom-left edge
+//                  (638,387) [was MISSING in attempt 1]; d2 inset-A top-right
+//                  (191,275) -> red rect left edge (299,368); d3 inset-A bottom-right
+//                  (191,484) -> red rect left-bottom edge (297,394) [attempt 1 drew
+//                  only a fading stub to (238,433) — the frame shows the full stroke]
+//   dec_wrapper    green outer wrapper around the WHOLE decoder stack (olive +
+//                  purple containers), frame-measured x744-843 y199-411, stroke
+//                  #3E7150 — founder F6 "box" hint (olive highlight + handwritten
+//                  "box" + blue arrow on the evidence). Missing from parent 17's
+//                  component; drawn here as 18's own delta (see
+//                  scratch/slide018/CHILD_DELTA.md for the cascade)
 //   enc_mha_box    SOLID red outline x650-722 y355-387, salmon fill C87E57, drawn
 //                  over the parent's encoder MHA compartment
 //   dec_mha_box    DASHED red outline x748-821 y277-310, fill B28659; first covers
@@ -77,6 +94,7 @@ const C = {
   salmon: "C87E57",          // encoder MHA box fill (200,126,87)
   tanBrown: "B28659",        // decoder MHA box fill (178,134,89)
   olive: "B0B070",           // parent decoder-stack fill (for the cover patch)
+  wrapGreen: "3E7150",       // decoder outer wrapper stroke (F6 modal (62,113,80))
   spine: "2F2F2F",
   black: "333333",
 };
@@ -178,12 +196,9 @@ function drawBanner2(pptx, slide) {
 }
 
 function drawConnectH(pptx, slide) {
-  // thin pink/red curved connector: banner1's bottom edge down toward the MHA inset
-  // (cmp_banner_1: original connectors are pink/red curves), continuing as the faint
-  // gray measured line inside the frame, ending at the "h" circle
-  addLines(slide, C.pinkConn, 0.75, [[481, 146], [486, 200], [488, 246]]);
-  addLines(slide, C.grayLine, 0.75, [[486, 246], [490, 300], [493, 350]]);
-  // small tan arrowhead pointing down at the "h" circle (measured (101,55,22))
+  // F6: the banner1-bottom pink lane + gray middle lane measured as FABRICATED
+  // (frame clean below banner1 — see scratch/slide018/RESUME.md). Only the small
+  // tan down-arrowhead on the "h" circle survives (measured (101,55,22)).
   slide.addShape("triangle", {
     x: px(489.5), y: px(347), w: px(7), h: px(8), flipV: true,
     fill: { color: C.tanArrow }, line: { color: C.tanArrow, width: 0.5 },
@@ -191,8 +206,15 @@ function drawConnectH(pptx, slide) {
 }
 
 function drawConnectTan(pptx, slide) {
-  // second thin pink/red curved connector from the tan banner's right end
-  addLines(slide, C.pinkConn, 0.75, [[417, 182], [445, 212], [470, 238]]);
+  // thin pink/red curved connector from the tan ("h Heads") banner's right end,
+  // CONTINUED down to the "h" circle per the founder's F6 drawn arrow (the frame
+  // prints the start of this curve (417,182)->(~443,232) before video-compression
+  // fades; the founder's annotation completes it onto the "h" circle top, where
+  // the frame carries the tan arrowhead). Same pink family as measured (255,191,194
+  // JPEG-core at (439,223)).
+  addLines(slide, C.pinkConn, 0.75, [
+    [417, 182], [445, 212], [470, 238], [481, 296], [491, 348.5],
+  ]);
 }
 
 function drawInsetSdpaTitle(pptx, slide) {
@@ -330,18 +352,45 @@ function drawHAnnot(pptx, slide) {
 }
 
 function drawDashD1(pptx, slide) {
-  // red dashed connector: MHA inset top-right corner -> encoder MHA box
-  addLines(slide, C.red, 1, [[505, 245], [576, 300], [648, 368]], { dash: "dash" });
+  // red dashed connector: MHA inset top-right corner -> encoder MHA box TOP-LEFT
+  // corner (F6 re-measure: the frame's dashes form ONE straight diagonal
+  // (508,250)->(644,349), not a bent polyline ending mid-edge)
+  // tip lands ON the drawn enc_mha_box outline's top-left corner (build box is
+  // x650-722; the frame's box reads x634-723 with fill from ~x650 — contact must
+  // be against the DRAWN outline)
+  addLines(slide, C.red, 1, [[508, 250], [651, 356.5]], { dash: "sysDash" });
+}
+
+function drawDashD4(pptx, slide) {
+  // red dashed connector (MISSING in attempt 1 — founder F6 right ">" chevron has
+  // TWO arms): MHA inset bottom-right corner -> enc MHA box bottom-left edge
+  addLines(slide, C.red, 1, [[509, 506], [651, 386.5]], { dash: "sysDash" });
 }
 
 function drawDashD2(pptx, slide) {
-  // red dashed connector: SDPA inset top-right -> red rectangle in the MHA inset
-  addLines(slide, C.red, 1, [[191, 272], [270, 345], [294, 356]], { dash: "dash" });
+  // red dashed connector: SDPA inset top-right -> red rectangle's LEFT EDGE in the
+  // MHA inset (F6 re-measure: straight diagonal (191,275)->(299,368) hitting the
+  // rect edge at y368 within rect y354-396)
+  addLines(slide, C.red, 1, [[191, 275], [301, 369]], { dash: "sysDash" });
 }
 
 function drawDashD3(pptx, slide) {
-  // red dashed fragment: SDPA inset bottom-right, fading (as in the frame)
-  addLines(slide, C.red, 1, [[193, 487], [238, 433]], { dash: "dash" });
+  // red dashed connector: SDPA inset bottom-right -> red rectangle's left-bottom
+  // edge (F6 re-measure: the frame shows the FULL diagonal (191,484)->(297,394);
+  // attempt 1's fading stub to (238,433) was the defect the founder circled)
+  addLines(slide, C.red, 1, [[191, 484], [300, 394.5]], { dash: "sysDash" });
+}
+
+function drawDecWrapper(pptx, slide) {
+  // F6 "box": the course figure draws ONE green outer wrapper around the ENTIRE
+  // decoder layer stack (olive A&N/FF/A&N/MHA container + purple masked-MHA
+  // container). Frame-measured edges: left x744-746, right x840-842, top y199-202,
+  // bottom y408-411; stroke modal #3E7150. Missing from parent slide_017.js —
+  // drawn here as 18's own delta (cascade: scratch/slide018/CHILD_DELTA.md).
+  slide.addShape("roundRect", {
+    x: px(744), y: px(199), w: px(99), h: px(212), rectRadius: 0.04,
+    fill: { type: "none" }, line: { color: C.wrapGreen, width: 1.25 },
+  });
 }
 
 function drawEncMhaBox(pptx, slide) {
@@ -417,6 +466,8 @@ const DELTA_BLOCKS = {
   dash_d1: drawDashD1,
   dash_d2: drawDashD2,
   dash_d3: drawDashD3,
+  dash_d4: drawDashD4,
+  dec_wrapper: drawDecWrapper,
   enc_mha_box: drawEncMhaBox,
   dec_mha_box: drawDecMhaBox,
   connect_h: drawConnectH,

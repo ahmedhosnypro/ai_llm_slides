@@ -246,24 +246,15 @@ function drawChunkyArrow(pptx, slide) {
   slide.addShape(pptx.ShapeType.line, o);
 }
 
-function drawDotFeeds(pptx, slide) {
-  // four red up-arrowheads below the Dot-Product dots (judge attempt-1 BLOCKER fix;
-  // present in BOTH frames, omitted by the certified parent component — redrawn as
-  // this slide's delta). Measured blobs under dots
-  // (330.5,246.5)(314.5,287.5)(295.5,328)(276.5,372.5).
-  var DOTFEEDS = [
-    { x: 329.5, y: 255, w: 8, h: 10 },
-    { x: 308, y: 297, w: 9.5, h: 10 },
-    { x: 290.5, y: 337, w: 7.5, h: 10 },
-    { x: 276.5, y: 381, w: 8, h: 8 },
-  ];
-  for (var i = 0; i < DOTFEEDS.length; i++) {
-    slide.addShape(pptx.ShapeType.triangle, {
-      x: DOTFEEDS[i].x * PX, y: DOTFEEDS[i].y * PX, w: DOTFEEDS[i].w * PX, h: DOTFEEDS[i].h * PX,
-      fill: { color: C.red }, line: { type: "none" },
-    });
-  }
-}
+// ---- RE-BANK NOTE 2026-10-13 (F8 cascade) --------------------------------------
+// drawDotFeeds REMOVED: the founder-fixed components/slide_026.js (F8 batch, certified
+// at slide-26 judge attempt 4) now draws the dot-unit marks itself — white/ice-blue
+// halo + inner blue disc + 8 dark-red arrowheads at the MEASURED bboxes (the banked
+// DOTFEEDS sat up to 6.5px off the measured below-dot heads, and the 4 on-line-left
+// heads were entirely missing). Keeping them would double-draw. This module re-banked
+// to match the re-certified slide-29 deliverable (judge_attempt_3.txt PASS; render_3.png);
+// removal verified 0-pixel-diff vs that render (scratch/f9_investigator/component_
+// verify_029/ render diff). Evidence: scratch/slide029/CASCADE_DELTA.md.
 
 // ---- composition ------------------------------------------------------------
 
@@ -275,7 +266,6 @@ var BLOCKS = {
   callouts: drawCallouts,
   resultBox: drawResultBox,
   chunkyArrow: drawChunkyArrow,
-  dotFeeds: drawDotFeeds,
   title: drawTitle,
 };
 
@@ -283,7 +273,7 @@ var BLOCKS = {
 // leftCurve sits UNDER queryBox (frame shows canvas at (112,460) — the box covers
 // the curve's edge); title last, matching the parent's convention.
 var ORDER = ["leftCurve", "queryBox", "badges", "tanBoxes", "callouts",
-  "resultBox", "chunkyArrow", "dotFeeds", "title"];
+  "resultBox", "chunkyArrow", "title"];
 
 /**
  * Draw the slide-29 composition: the certified slide-026 base (minus the blocks

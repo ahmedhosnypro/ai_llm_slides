@@ -14,5 +14,8 @@ const slide = pptx.addSlide();
 
 renderBase(pptx, slide, { numeral: 6 });
 
-const OUT = path.join(__dirname, "..", "slide_006_recreated.pptx");
+// SLIDE006_OUT override lets the QA loop render a candidate pptx without touching the
+// certified deliverable (single-version law: slide_006_recreated.pptx is replaced ONLY
+// at a fresh judge PASS).
+const OUT = process.env.SLIDE006_OUT || path.join(__dirname, "..", "slide_006_recreated.pptx");
 pptx.writeFile({ fileName: OUT }).then(() => console.log("wrote " + OUT));

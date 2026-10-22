@@ -27,13 +27,15 @@
 //     label, lavender E6E2F8, pale pink F3D3EC) — vision panel A read
 //     "yellow, yellow, X-cell, lavender, pink"; left labels 11pt, right 7.5pt
 //   Dot Product box x253..343 y194..404 fill DBCBBB; 2-line label "Dot"/"Product"
-//     13pt bold 5C3712 (pitch 15px); 4 dots d8 fill 0200AB at (330.5,246.5)(314.5,287.5)
+//     13pt bold 5C3712 (pitch 15px); dot-unit geometry SUPERSEDED by the F8 fix block
+//     below (halo+inner-disc+arrowheads); centers stay (330.5,246.5)(314.5,287.5)
 //     (295.5,328)(276.5,372.5) — top dot farthest right
 //   Soft max bar x458..488 y196..401 fill F8DEFB; "Soft max" ONE line 16.5pt bold
 //     6B006E rotated 270 (reads bottom-to-top; word gap y296..301 in the frame)
 //   Sigma box x516..649 y196..217 fill EAFEFC (borderless); Sigma glyph ~20pt bold 2A2AB5
 //   Weighted-SUM plumbing: 4 horizontal red C00000 lines y246/287/328/372 from softmax
-//     right edge to the right stack (line 4 measured to STOP at x~688 — reproduced);
+//     right edge to the right stack — ALL FOUR reach the stack edge x761 (F8 fix: the
+//     line-4 tail past x639 is faint but continuous in the original; founder green-box);
 //     4 vertical lines x532/563/591/622 from the nodes up into Sigma with UP arrowheads
 //     at y219 (vision panel C: "Sigma box receiving red up-arrows"); W21..W24 labels
 //     10pt bold 0033CC at x495..510 above each line; 4 nodes = red-ring ellipses
@@ -53,6 +55,26 @@
 //   Mouse cursor over the X2 glyph in the original frame is a video artifact — NOT
 //     recreated (judge ground rule c).
 
+// FOUNDER DEFECT BATCH 2026-10-13 (F8) — POST-CERTIFICATION SURGICAL FIX (both fixes are
+// IN the shared component so children 27/28/29 (chain 30<-29) inherit them on rebuild):
+//  (a) Row-4 W24 connector line y372 was truncated at x688 (the pre-fix build had
+//      "measured" only the strong-red part of the original's faint tail); the original's
+//      row-4 line DOES reach the right stack edge: reddish run x491..761 continuous at
+//      y370..374 (faint past x639, same as rows 1-3 past their nodes). Founder evidence:
+//      green growth-target box over the gap (qa/slide026/arrow/). FIX: row 4 now runs
+//      490->761 exactly like rows 1-3.
+//  (b) Dot-product unit anatomy (PIL census of unique_slides/slide_026.jpg): the original
+//      dots are WHITE/ice-blue HALO circles (d~15-16, interior rgb ~ (214,232,246)) each
+//      with an INNER solid BLUE disc (d~9, 0200AB), ringed by STRONG dark-red 8C0007
+//      solid-triangle ARROWHEADS: one at the LEFT rim pointing RIGHT into the halo (the
+//      incoming row line terminates in it: tip at halo rim cx-8, base cx-20, h~10) and
+//      one directly BELOW pointing UP at the halo (apex at cy+8, base ~cy+18, w~9-10);
+//      plus a FAINT thin red trunk line D5BFB5 descending from below dot1's arrowhead to
+//      the Dot Product box's bottom edge (~x330,y264 -> ~x300,y403) where the query arrow
+//      continues to the strip. The pre-fix build drew bare solid blue dots d8 with the
+//      row lines stopping short — founder: "dot product has issues; original = white
+//      circles with inner blue circles, red arrows around them acting as arrow heads".
+
 var PX = 1 / 72; // frame px -> inches
 
 var C = {
@@ -62,6 +84,10 @@ var C = {
   subRed: "9E101E",
   blue: "0033CC",
   dotBlue: "0200AB",
+  dotHalo: "E0ECF9",
+  dotArrow: "8C0007",
+  shaft: "D5AEA1",
+  fanLine: "C6A097",
   sigmaBlue: "2A2AB5",
   ellipseFill: "F9FCDB",
   containerFill: "E6FCE7",
@@ -203,12 +229,40 @@ function drawDotProduct(pptx, slide) {
       color: C.brownLabel, fontFace: FONT, lineSpacing: 15, margin: 0,
     }
   );
-  // dots (blue), one per row, staggered top-right -> bottom-left
+  // FAN: four thin faint lines, one descending from each dot unit's up-arrowhead base,
+  // converging DIFFUSELY at the box bottom edge around x297..306, y402..404 (where the
+  // query arrow continues below) — the original's strands land as a soft band, not a
+  // single hard point (run-map y400-411; attempt-3 crop judge note)
+  var fan = [[331, 266], [314, 307], [296, 348], [282, 390]];
+  var fanEnd = [[299, 402], [301, 403], [303, 402], [306, 404]];
+  for (var f = 0; f < 4; f++) {
+    line(pptx, slide, fan[f][0], fan[f][1], fanEnd[f][0], fanEnd[f][1], { color: C.fanLine, width: 0.75 });
+  }
+  // dot units (founder F8-b): WHITE halo circle (d15) + INNER BLUE disc (d9) +
+  // dark-red solid arrowheads ringing each: LEFT rim pointing RIGHT (incoming row
+  // line lands in it), BELOW pointing UP at the halo.
   var dots = [[330.5, 246.5], [314.5, 287.5], [295.5, 328], [276.5, 372.5]];
   for (var i = 0; i < 4; i++) {
+    var cx = dots[i][0], cy = dots[i][1];
     slide.addShape(pptx.ShapeType.ellipse, {
-      x: (dots[i][0] - 4) * PX, y: (dots[i][1] - 4) * PX, w: 8 * PX, h: 8 * PX,
+      x: (cx - 7.5) * PX, y: (cy - 7.5) * PX, w: 15 * PX, h: 15 * PX,
+      fill: { color: C.dotHalo }, line: { type: "none" },
+    });
+    slide.addShape(pptx.ShapeType.ellipse, {
+      x: (cx - 4.5) * PX, y: (cy - 4.5) * PX, w: 9 * PX, h: 9 * PX,
       fill: { color: C.dotBlue }, line: { type: "none" },
+    });
+    // left arrowhead: triangle (points UP) rotated 90deg -> points RIGHT (render-verified);
+    // rotation is about the bbox center: bbox w8 h10 centered (cx-13, cy) -> visual
+    // tip cx-8 (halo rim), base cx-18, base height 8 (measured w~11 h~7-9)
+    slide.addShape(pptx.ShapeType.triangle, {
+      x: (cx - 17) * PX, y: (cy - 4) * PX, w: 8 * PX, h: 10 * PX, rotate: 90,
+      fill: { color: C.dotArrow }, line: { type: "none" },
+    });
+    // below arrowhead: triangle pointing UP, apex at halo bottom (cy+8), base cy+18, w9
+    slide.addShape(pptx.ShapeType.triangle, {
+      x: (cx - 4.5) * PX, y: (cy + 8) * PX, w: 9 * PX, h: 10 * PX,
+      fill: { color: C.dotArrow }, line: { type: "none" },
     });
   }
 }
@@ -293,21 +347,34 @@ function drawLabels(pptx, slide) {
 function drawFlowLines(pptx, slide) {
   var ys = [246, 287, 328, 372];
   var dots = [330.5, 314.5, 295.5, 276.5];
-  // left rows: stack edge -> dot, dot -> softmax left edge (arrowhead into the bar)
+  // left rows: stack edge -> dot unit's LEFT arrowhead base (shaft thin/faint per the
+  // original — judge attempt-2 + pixel sampling: shafts are faint pinkish ~(213,174,161),
+  // heads dark red); dot halo right rim -> separate STRONG triangle head into the bar
   for (var i = 0; i < 4; i++) {
-    line(pptx, slide, 139, ys[i], dots[i] - 4, ys[i], {});
-    line(pptx, slide, dots[i] + 4, ys[i], 456, ys[i], { arrow: true });
+    line(pptx, slide, 139, ys[i], dots[i] - 18, ys[i], { color: C.shaft, width: 0.75 });
+    line(pptx, slide, dots[i] + 8, ys[i], 447, ys[i], { color: C.shaft, width: 0.75 });
+    // strong dark-red arrowhead into the softmax bar (measured x448..457, ~(138,0,6))
+    slide.addShape(pptx.ShapeType.triangle, {
+      x: 447 * PX, y: (ys[i] - 4.5) * PX, w: 9 * PX, h: 9 * PX, rotate: 90,
+      fill: { color: C.dotArrow }, line: { type: "none" },
+    });
   }
-  // right rows: softmax right edge -> right stack (row 4 measured to stop at x~688)
-  line(pptx, slide, 490, 246, 761, 246, {});
-  line(pptx, slide, 490, 287, 761, 287, {});
-  line(pptx, slide, 490, 328, 761, 328, {});
-  line(pptx, slide, 490, 372, 688, 372, {});
-  // verticals node -> Sigma with UP arrowheads at the Sigma underside
+  // right rows: softmax right edge -> right stack (F8-a: row 4 originally reaches the
+  // stack edge x761 like the other rows — faint tail past x639 had been mis-measured as
+  // ending at x688; founder green-box = the growth target). Shafts faint like the rest.
+  line(pptx, slide, 490, 246, 761, 246, { color: C.shaft, width: 0.75 });
+  line(pptx, slide, 490, 287, 761, 287, { color: C.shaft, width: 0.75 });
+  line(pptx, slide, 490, 328, 761, 328, { color: C.shaft, width: 0.75 });
+  line(pptx, slide, 490, 372, 761, 372, { color: C.shaft, width: 0.75 });
+  // verticals node -> Sigma: faint shafts + STRONG up-head at the Sigma underside
   var vx = [532, 563, 591, 622];
   var vy = [244, 285, 326, 368];
   for (var j = 0; j < 4; j++) {
-    line(pptx, slide, vx[j], vy[j], vx[j], 221, { arrow: true });
+    line(pptx, slide, vx[j], vy[j], vx[j], 228, { color: C.shaft, width: 0.75 });
+    slide.addShape(pptx.ShapeType.triangle, {
+      x: (vx[j] - 3.5) * PX, y: 219 * PX, w: 7 * PX, h: 9 * PX,
+      fill: { color: C.dotArrow }, line: { type: "none" },
+    });
   }
   // W labels above each right row
   var wy = [226, 267, 308, 352];

@@ -64,7 +64,7 @@ Edges (child ← parent): 7←6, 8←6, 9←6, 10←6, 15←14, 18←17, 19←18
 - **Components are certified single-source-of-truth artifacts**: never edit one
   after certification (cascade law: an edit re-opens every descendant — rebuild +
   re-judge the subtree); copy-then-modify into a new module instead.
-- Full contract: `.agents/skills/slide-recreation/references/dependencies.md` and the
+- Full contract: `~/.agents/skills/slide-recreation/references/dependencies.md` and the
   DEPENDENCY-GATED section of `scripts/17_worker_instructions.md`.
 
 **Figure family**: slides 14, 15, 16, 17, 18, 19 all draw on the founder-downloaded

@@ -254,26 +254,12 @@ s.addText(
   s.addShape(pres.ShapeType.line, o);
 }
 
-// ---- 9b) DELTA (j): four red up-arrowheads below the Dot-Product dots -----------
-// Judge attempt-1 BLOCKER fix. Both frames carry these (identical red blobs
-// x329..337/y255..265, x308..317/y297..307, x291..297/y337..347, x277..284/y381..389
-// under dots (330.5,246.5)(314.5,287.5)(295.5,328)(276.5,372.5)); the certified
-// parent component never drew them (parent frame == child frame here, so the
-// omission is inherited content the component missed — redrawn as THIS slide's
-// delta, not by editing the certified component). Measured: solid up-pointing
-// marks ~7-10px wide, 8-10px tall, tip ~9-10px under each dot center.
-const DOTFEEDS = [
-  { x: 329.5, y: 255, w: 8, h: 10 },   // under dot1 (330.5,246.5)
-  { x: 308, y: 297, w: 9.5, h: 10 },   // under dot2 (314.5,287.5)
-  { x: 290.5, y: 337, w: 7.5, h: 10 }, // under dot3 (295.5,328)
-  { x: 276.5, y: 381, w: 8, h: 8 },    // under dot4 (276.5,372.5)
-];
-for (const df of DOTFEEDS) {
-  s.addShape(pres.ShapeType.triangle, {
-    x: df.x * PX, y: df.y * PX, w: df.w * PX, h: df.h * PX,
-    fill: { color: D.red }, line: { type: "none" },
-  });
-}
+// ---- 9b) REMOVED 2026-10-13 (F8 cascade): the local 4 up-triangle delta is deleted.
+// The founder-fixed components/slide_026.js now draws the real dot-unit marks at the
+// MEASURED bboxes (the local DOTFEEDS sat up to 6.5px left / 4px high of the measured
+// below-dot arrowheads, and the 4 on-line-left heads were entirely missing — the fixed
+// component supplies all 8 arrowheads); keeping DOTFEEDS would double-draw marks.
+// Evidence: scratch/slide029/CASCADE_DELTA.md, scratch/slide029/right_zone/*.txt.
 
 // ---- 10) DELTA (a/b): MY title block --------------------------------------------
 // L1 ink x163..770 (center 466.5px); highlight x411..773 y53..78 saturated yellow.

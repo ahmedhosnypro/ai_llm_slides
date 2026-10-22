@@ -124,10 +124,15 @@ function drawDecGreenBars(pptx, slide) {
 }
 
 function drawDecDownarrows(pptx, slide) {
+  // F1-reshape episode (attempt 5 judge, 2026-10-13): PIL proof on slide_006.jpg — the
+  // original's heads sit at the TOP (tip ~y222, base y224-226, just below the softmax bar);
+  // flow is hidden -> softmax (UP). The certified build had endArrowType (head at y254) =
+  // flipped. beginArrowType puts the head at (col, 219) like the original. Block key kept
+  // for the children's opts.skip/only contract.
   for (let i = 0; i < 3; i++) {
     slide.addShape(pptx.ShapeType.line, {
-      x: DECCOL[i], y: px(219), w: 0, h: px(35), // 219..254, head at bottom
-      line: { color: C.decInk, width: 1.75, endArrowType: "triangle" },
+      x: DECCOL[i], y: px(219), w: 0, h: px(35), // 219..254, head at TOP (original-measured)
+      line: { color: C.decInk, width: 1.75, beginArrowType: "triangle" },
     });
   }
 }
@@ -166,18 +171,20 @@ function drawDecSlabels(pptx, slide) {
 }
 
 function drawDecFeedback(pptx, slide) {
-  // recurrent sweeps: 600dpi PNG bezier arcs from col i up-arrow into cell i+1 top edge
-  slide.addImage({ path: path.join(ASSETS, "curve_a.png"), x: px(550), y: px(183), w: px(101), h: px(76) });
-  slide.addImage({ path: path.join(ASSETS, "curve_b.png"), x: px(681), y: px(183), w: px(101), h: px(76) });
-  // small diagonal tails under hidden bars 2 and 3 (measured 653,276 -> 669,291 etc.)
-  slide.addShape(pptx.ShapeType.line, {
-    x: px(653), y: px(276), w: px(16), h: px(15),
-    line: { color: C.decInk, width: 1.5 },
-  });
-  slide.addShape(pptx.ShapeType.line, {
-    x: px(784), y: px(276), w: px(16), h: px(15),
-    line: { color: C.decInk, width: 1.5 },
-  });
+  // recurrent sweeps (col i softmax level -> feedback into the BOTTOM of column i+1):
+  // 600dpi PNG arcs, each ONE single continuous olive curve (DEC_INK, lw 2.0) whose own
+  // terminus IS the arrowhead-in-place at the destination column's bottom edge
+  // ((674,294)/(805,294) frame-px), crossing the decoder container bottom edge exactly as
+  // the original draws it. F1 history (founder defect batch 2026-10-13): certified build
+  // stopped ~3pt short; v2 stapled a SEPARATE dark V barb — founder REJECTED the shape
+  // (verbatim: "same component OF THE arrow, not a different layer, same curve pattern,
+  // but just reaches the destination (slide 6), NOT a twisted arrow at all"); v3 extends
+  // the stem's SAME stroke/cubic family to the measured destination — no V layer, no
+  // kink. Geometry: 1px PIL maps of slide_006.jpg + cascade measurements; generator
+  // scratch/slide006/gen_curves_f1fix.py (v3). Assets of record: curve_{a,b}_prefix.png
+  // (pre-F1), _f1v1 (superseded wedge), _f1v2 (rejected dark-V), _f1v3 (this shape).
+  slide.addImage({ path: path.join(ASSETS, "curve_a.png"), x: px(550), y: px(183), w: px(140), h: px(117) });
+  slide.addImage({ path: path.join(ASSETS, "curve_b.png"), x: px(681), y: px(183), w: px(140), h: px(117) });
 }
 
 function drawDecDot(pptx, slide) {
