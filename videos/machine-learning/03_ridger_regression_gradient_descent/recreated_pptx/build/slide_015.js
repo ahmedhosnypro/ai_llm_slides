@@ -92,7 +92,7 @@ s.addText(eq1Lines.map((t, i) => ({
   options: { fontSize: 16, color: DARK_BLUE, fontFace: MATH_FONT, bold: false, breakLine: i < eq1Lines.length - 1 },
 })), {
   x: 1.1, y: EQ1_Y, w: W - 2.2, h: EQ1_H,
-  align: "center", valign: "middle", margin: 0, lineSpacing: 1.15,
+  align: "center", valign: "middle", margin: 0, lineSpacing: 19.2,
 });
 
 // ============================================================
@@ -104,14 +104,15 @@ s.addShape(pptx.ShapeType.rect, {
   line: { color: RED_BORDER, width: 1.5 },
 });
 
-// Text inside red box (two lines): condition, then the sentence
+// Text boxes: explicit point lineSpacing (fleet convention — pptxgenjs turns a
+// bare fraction into spcPts = value*100, which LibreOffice renders as nothing).
 s.addText([
   { text: "∂J(W)/∂W = 0", options: { fontSize: 16, color: DARK_BLUE, fontFace: MATH_FONT, bold: true, breakLine: true } },
   { text: "Get Best W that minimizes the ", options: { fontSize: 14, color: DARK_BLUE, fontFace: FONT } },
   { text: "Objective Function J(W)", options: { fontSize: 14, color: BLUE_TEXT, fontFace: FONT, underline: true } },
 ], {
   x: RED_BOX_X + 0.15, y: RED_BOX_Y + 0.05, w: RED_BOX_W - 0.3, h: RED_BOX_H - 0.1,
-  align: "left", valign: "middle", margin: 0, lineSpacing: 1.2,
+  align: "left", valign: "middle", margin: 0, lineSpacing: 16.8,
 });
 
 // ============================================================
@@ -128,7 +129,7 @@ s.addText([
   { text: "∂W^T W/∂W = 2W", options: { fontSize: 16, color: DARK_BLUE, fontFace: MATH_FONT } },
 ], {
   x: PEACH_BOX_X + 0.1, y: RED_BOX_Y + 0.08, w: PEACH_BOX_W - 0.2, h: RED_BOX_H - 0.16,
-  align: "center", valign: "middle", margin: 0, lineSpacing: 1.2,
+  align: "center", valign: "middle", margin: 0, lineSpacing: 16.8,
 });
 
 // ============================================================
@@ -144,7 +145,7 @@ s.addText(derivLines.map((t, i) => ({
   options: { fontSize: 15, color: DARK_BLUE, fontFace: MATH_FONT, breakLine: i < derivLines.length - 1 },
 })), {
   x: 1.1, y: DERIV_Y, w: W - 2.2, h: DERIV_H,
-  align: "center", valign: "middle", margin: 0, lineSpacing: 1.15,
+  align: "center", valign: "middle", margin: 0, lineSpacing: 18,
 });
 
 // ============================================================

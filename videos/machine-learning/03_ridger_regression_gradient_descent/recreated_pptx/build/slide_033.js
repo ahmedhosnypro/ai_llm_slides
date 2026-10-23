@@ -1,480 +1,325 @@
 // Build: slide 033 — "Non-Convex Function"
 // Deck: videos/machine-learning/03_ridger_regression_gradient_descent
 // Reference frame: unique_slides/slide_033.jpg (960x540, 1px=1pt=1/72in)
-// Spec: analysis/slide_033_final.json — verbatim_text, layout, visual_elements, recreation_brief
 //
-// MEASURED GEOMETRY (frame px from PIL measurement):
-//   Canvas: white FFFFFF (house chrome draws panel, strokes, badge)
-//   Panel: gray E9E9E7 rect x54..903 y45..540 (no top stroke)
-//   Badge: numeral "33" at (876, 73) d~35, fill FDFD96, ring 6A5ACD 2pt, numeral 333333 bold Arial 18pt
-//   Title: "Non-Convex Function" red #FF0000 ~28pt bold, cap-top row 75, left x~342
-//   Subtitle: 2 lines blue #0000FF bold ~18pt:
-//     L1: "May reach different minimum value based on:" at row 86
-//     L2: "initial point and learning rate" at row 108, "initial point" red #FF0000, "learning rate" blue #0000FF
-//   Parameter box: x 70-170, y 240-280, bordered
-//     Rows: "step | 0.1", "initial x | -11", "delta x | 0.1"
-//     Yellow #FFFF00 accent on row 2 (initial x) cols 103-160
-//   Red block arrow: from box (x~180) down-right toward table
-//   Formula & annotation: center x 350-650, y 165-290
-//     Equation: f(x) = (x^2 cos(x) - x) / 10 as stacked fraction — eq_033_main.png (2.405x0.515in)
-//     Annotation 1: "X is in between -9.7 and -9.6" with "-9.6" red bold at y~255
-//     Annotation 2: "f(x) is in between -8.08 and -8.011" verbatim at y~278
-//   Function plot: right, x 615-930, y 120-330
-//     X-axis at row 172 (y=0), Y-axis at col 615 (x=-12)
-//     Gridlines: horizontal at y=2,0,-2,-4,-6,-8 (rows 134,172,209,246,283,316)
-//                vertical at x=-10,-8,-6,-4,-2 (cols ~685,740,775,810,885)
-//     Green #00B050 curve: f(x) = (x^2 cos(x) - x)/10 over x∈[-12,-2]
-//     Red #FF0000 dot at initial point (-11, 1.15) → frame (646, 220)
-//     Orange #ED7D31 thick arrow following curve down to local minimum
-//     Green #00B050 square at local minimum near (-9.6, -8.11) — drawn at computed pos
-//     Purple #7030A0 rounded callout "Reach Local Minima" with pointer, at bottom of plot (rows 320-329)
-//   Numeric table: bottom, x 20-940, y 330-520
-//     8 row labels + 16 data columns. Row labels: x, f(x), x-delta, f(x-delta), x+delta, f(x+delta), slope, next x
-//     Exact values from recreation_brief
-//     Alternating row fills: #E2EFDA, #DDEBF7, #E4DFEC, #FCE4D6 over white #FFFFFF
-//     Highlight columns x=-9.7 and x=-9.6 in yellow #FFFF00
-//     Cells x=-9.6 and f(x)=-8.11 in red #FF0000 bold
+// =====================================================================
+// MEASURED GEOMETRY (frame px; PIL analysis of unique_slides/slide_033.jpg).
+// The FRAME WINS over analysis/slide_033_final.json where they differ.
+// =====================================================================
 //
-// Laws: hex without '#'; fontFace explicit; margin 0; measured geometry; closed-loop check.
+// HOUSE CHROME (shared_patterns/house_chrome.js): white canvas; gray E9E9E7
+// panel x54..903 y45..540; C00000 1pt strokes LEFT x58.5 / RIGHT x901 /
+// BOTTOM y538.5 only (NO top stroke); badge circle d~35 centered (876,73)
+// fill FDFD96 ring 6A5ACD, bold Arial 18pt numeral 333333 = "33".
+//
+// TITLE  "Non-Convex Function" — red #FF0000 bold, ink rows 66-94,
+//        cols ~190-440. Box x185 y58, 28pt.
+// SUBTITLE L1 "May reach different minimum value based on:" — blue #0000FF
+//        bold, ink rows 94-113, cols ~117-500. Box x115 y92, 16pt.
+// SUBTITLE L2 "initial point and learning rate" — "initial point" red
+//        #FF0000, "learning rate" blue #0000FF, ink rows 118-144, cols
+//        ~300-459. Box x300 y114, 18pt bold.
+//
+// PARAMETER BOX x75-175 y245-309 (w100 h64): fill violet (167,160,227)
+//        ~#A7A0E3, thin dark border, yellow #FFFF00 accent bar across the
+//        top (rows 246-258). Three rows: step|0.1, initial x|-11, delta x|0.1
+//        (~10pt dark, rows 257-270 / 274-291 / 292-307).
+//
+// CENTER CALLOUT x244-599 y252-301 (w355 h49): fill pale green (239,255,226)
+//        ~#EFFFE2, thin dark border. Equation f(x) = (x^2 cos(x)-x)/10 as a
+//        stacked fraction (mathtext PNG, ink rows 254-271), then two green
+//        annotation lines (rows 281-292 and 287-299): "X is in between -9.7
+//        and -9.6" (with -9.6 red bold) and "f(x) is in between -8.08 and
+//        -8.011" (verbatim per spec).
+//
+// PLOT right, x600-930 rows 58-320: white; TWO x-axis rules at rows 312 and
+//        320 (cols 606-901); TWO y-axis rules at cols 607 and 721 (rows
+//        61/67-320); NO gridlines (D9D9D9 absent in this frame). Green
+//        #00B050 non-convex curve traced from the frame's saturated ink
+//        (cols 612-832, rows 110-264 — ONE smooth curve). Red dot at the
+//        curve start (620,139); purple #7030A0 rounded callout "Reach Local
+//        Minima" at x640-780 y258-278. Axis label "x" right of the axis,
+//        "y" above it; x ticks -12/-10/-8/-6/-4/-2 at row ~288-301,
+//        y ticks 1/0/-2/-4/-6/-8 left of the y-axis.
+//
+// TABLE x86-869 y320-519 — FRAME MEASURED (verified, see qa/slide033):
+//   OUTER BORDER: top rule rows 320-322, bottom rule rows 516-519,
+//                 left/right verticals at x86 and x869.
+//   LABEL COLUMN  x86-121 (35px).
+//   18 DATA COLUMNS, pitch 40px, gridlines at 121 + k*40 (k=0..18), the last
+//                 column 841-869 is narrower (28px).
+//   HORIZONTAL GRIDLINES (full-width dark rows): 320, 374, 410, 418, 454,
+//                 460, 478, 484, 501, 517.
+//   5 FILL BANDS (mode colour measured; draw as row bands):
+//     y321-374  #D9E275  (217,226,119) yellow-green
+//     y374-410  #D6B2F5  (214,178,248) violet
+//     y418-454  #F7DDC2  (247,221,194) peach
+//     y460-478  #DEAC95  (222,172,149) muted orange
+//     y484-501  #F7BEC4  (247,190,196) pink
+//   CYAN INSERT  x666-789 y332-368 inside band0 — fill #8BF8A9 (139,248,169)
+//   8 TEXT ROWS (centres, matching the spec's 8 row labels):
+//      341, 359, 383, 401, 427, 445, 469, 493
+//     rows 469 & 493 carry RED BOLD text (the highlighted minimum cells).
+//   DATA: the spec's 8 rows x 16 values (analysis/slide_033_final.json
+//     recreation_brief), placed in grid columns 0..15 (x121..641). The frame
+//     shows ~18 columns; the analysis transcribes 16 values per row
+//     (documented deviation — the analysis contract supplies the values).
+//
+// Laws: hex without '#'; fontFace explicit on every text; margin 0; measured
+// geometry throughout; equation via 600dpi mathtext PNG at exact px/600 size.
 
 const pptxgen = require("pptxgenjs");
-const { drawHouseChrome, CHROME } = require("../../shared_patterns/house_chrome.js");
-const fs = require("fs");
+const { drawHouseChrome } = require("../../shared_patterns/house_chrome.js");
 
 const ASSET_DIR = __dirname + "/assets";
 const OUT = "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_033_recreated.pptx";
 
-const px = (v) => v / 72; // frame px -> inches
+const px = (v) => v / 72;
 const A = "Arial";
 
 const pptx = new pptxgen();
-pptx.layout = "LAYOUT_WIDE"; // 13.333 x 7.5 in
+pptx.layout = "LAYOUT_WIDE";
 const slide = pptx.addSlide();
 
-// ---- HOUSE CHROME ----
 drawHouseChrome(pptx, slide, { numeral: "33" });
 
-// ---- TITLE BLOCK (top-left) ----
+// ================= TITLE / SUBTITLE =================
 slide.addText("Non-Convex Function", {
-  x: px(342), y: px(69), w: px(500), h: px(40),
+  x: px(185), y: px(58), w: px(270), h: px(36),
   align: "left", valign: "top", margin: 0,
   fontFace: A, fontSize: 28, bold: true, color: "FF0000",
 });
-
 slide.addText("May reach different minimum value based on:", {
-  x: px(342), y: px(86), w: px(500), h: px(26),
+  x: px(115), y: px(92), w: px(390), h: px(24),
   align: "left", valign: "top", margin: 0,
-  fontFace: A, fontSize: 18, bold: true, color: "0000FF",
+  fontFace: A, fontSize: 16, bold: true, color: "0000FF",
 });
-
 slide.addText([
   { text: "initial point", options: { fontFace: A, fontSize: 18, bold: true, color: "FF0000" } },
   { text: " and ", options: { fontFace: A, fontSize: 18, bold: true, color: "0000FF" } },
   { text: "learning rate", options: { fontFace: A, fontSize: 18, bold: true, color: "0000FF" } },
 ], {
-  x: px(342), y: px(108), w: px(500), h: px(26),
+  x: px(300), y: px(114), w: px(500), h: px(30),
   align: "left", valign: "top", margin: 0,
 });
 
-// ---- PARAMETER BOX (left-middle) ----
-const pb_x = 70, pb_y = 240, pb_w = 100, pb_h = 45;
-
+// ================= PARAMETER BOX =================
+const PB = { x: 75, y: 245, w: 100, h: 64 };
 slide.addShape(pptx.ShapeType.rect, {
-  x: px(pb_x), y: px(pb_y), w: px(pb_w), h: px(pb_h),
-  fill: { color: "FFFFFF" }, line: { color: "000000", width: 1 },
+  x: px(PB.x), y: px(PB.y), w: px(PB.w), h: px(PB.h),
+  fill: { color: "A7A0E3" }, line: { color: "000000", width: 0.5 },
 });
-
-// Yellow accent on "initial x" row (row index 1)
 slide.addShape(pptx.ShapeType.rect, {
-  x: px(103), y: px(260), w: px(57), h: px(9),
+  x: px(PB.x), y: px(PB.y), w: px(PB.w), h: px(13),
   fill: { color: "FFFF00" }, line: { color: "FFFF00", width: 0 },
 });
-
 const param_rows = [
-  { label: "step", value: "0.1" },
-  { label: "initial x", value: "-11" },
-  { label: "delta x", value: "0.1" },
+  { label: "step", value: "0.1", ry: PB.y + 12 },
+  { label: "initial x", value: "-11", ry: PB.y + 30 },
+  { label: "delta x", value: "0.1", ry: PB.y + 48 },
 ];
-for (let i = 0; i < param_rows.length; i++) {
-  const ry = pb_y + 3 + i * 14;
-  slide.addText(param_rows[i].label, {
-    x: px(pb_x + 5), y: px(ry), w: px(55), h: px(14),
+for (const row of param_rows) {
+  slide.addText(row.label, {
+    x: px(PB.x + 4), y: px(row.ry), w: px(48), h: px(14),
     align: "left", valign: "middle", margin: 0,
-    fontFace: A, fontSize: 11, color: "000000",
+    fontFace: A, fontSize: 10, color: "000000",
   });
-  slide.addText(param_rows[i].value, {
-    x: px(pb_x + 60), y: px(ry), w: px(35), h: px(14),
+  slide.addText(row.value, {
+    x: px(PB.x + 52), y: px(row.ry), w: px(44), h: px(14),
     align: "right", valign: "middle", margin: 0,
-    fontFace: A, fontSize: 11, color: "000000",
+    fontFace: A, fontSize: 10, color: "000000",
   });
 }
 
-// ---- RED BLOCK ARROW (from parameter box toward table) ----
-slide.addShape(pptx.ShapeType.rightArrow, {
-  x: px(180), y: px(275), w: px(60), h: px(12),
-  fill: { color: "FF0000" }, line: { color: "FF0000", width: 0 },
+// ================= CENTER CALLOUT (formula + annotations) =================
+const CB = { x: 244, y: 252, w: 355, h: 49 };
+slide.addShape(pptx.ShapeType.rect, {
+  x: px(CB.x), y: px(CB.y), w: px(CB.w), h: px(CB.h),
+  fill: { color: "EFFFE2" }, line: { color: "000000", width: 0.5 },
 });
-slide.addShape(pptx.ShapeType.downArrow, {
-  x: px(230), y: px(280), w: px(12), h: px(40),
-  fill: { color: "FF0000" }, line: { color: "FF0000", width: 0 },
-});
-
-// ---- FORMULA & ANNOTATION (center) ----
-const eq_w = 2.405, eq_h = 0.515;
-const eq_cx = 499; // center of formula area
-const eq_cy = 190;
+// stacked-fraction equation (600dpi mathtext PNG, exact px/600 size)
+const eq_w = 1.35, eq_h = 0.21;
 slide.addImage({
   path: ASSET_DIR + "/eq_033_main.png",
-  x: px(eq_cx) - eq_w/2, y: px(eq_cy),
+  x: px(CB.x + CB.w / 2) - eq_w / 2, y: px(CB.y + 1),
   w: eq_w, h: eq_h,
 });
-
 slide.addText([
-  { text: "X is in between -9.7 and ", options: { fontFace: A, fontSize: 14, color: "000000" } },
-  { text: "-9.6", options: { fontFace: A, fontSize: 14, bold: true, color: "FF0000" } },
+  { text: "X is in between -9.7 and ", options: { fontFace: A, fontSize: 11, color: "006400" } },
+  { text: "-9.6", options: { fontFace: A, fontSize: 11, bold: true, color: "FF0000" } },
 ], {
-  x: px(350), y: px(255), w: px(300), h: px(22),
-  align: "left", valign: "top", margin: 0,
-});
-
-slide.addText("f(x) is in between -8.08 and -8.011", {
-  x: px(350), y: px(278), w: px(300), h: px(22),
-  align: "left", valign: "top", margin: 0,
-  fontFace: A, fontSize: 14, color: "000000",
-});
-
-// ---- FUNCTION PLOT (right) ----
-// Plot frame: x 615-930 (315px), y 120-330 (210px)
-// x: -12 to -2 (10 units) => 31.5 px/unit
-// y: 2 to -8 (10 units) => 18.3 px/unit, x-axis at row 172 (y=0)
-const PLOT_X0 = 615, PLOT_Y0 = 120, PLOT_W = 315, PLOT_H = 210;
-const X_AXIS_Y = 172; // row where y=0
-const Y_AXIS_X = 615; // col where x=-12
-const PX_PER_X_UNIT = 31.5;
-const PX_PER_Y_UNIT = 18.3; // (317-134)/10 = 18.3
-
-function f(x) { return (x*x * Math.cos(x) - x) / 10; }
-
-// Gridlines (light gray #D9D9D9)
-// Horizontal: y=2,0,-2,-4,-6,-8
-const y_ticks = [2, 0, -2, -4, -6, -8];
-for (let yt of y_ticks) {
-  const gy = X_AXIS_Y - yt * PX_PER_Y_UNIT;
-  slide.addShape(pptx.ShapeType.line, {
-    x: px(PLOT_X0), y: px(gy), w: px(PLOT_W), h: 0,
-    line: { color: "D9D9D9", width: 0.5 },
-  });
-}
-// Vertical: x=-10,-8,-6,-4,-2
-const x_ticks = [-10, -8, -6, -4, -2];
-for (let xt of x_ticks) {
-  const gx = Y_AXIS_X + (xt + 12) * PX_PER_X_UNIT;
-  slide.addShape(pptx.ShapeType.line, {
-    x: px(gx), y: px(PLOT_Y0), w: 0, h: px(PLOT_H),
-    line: { color: "D9D9D9", width: 0.5 },
-  });
-}
-
-// Axes (black #000000, 1pt)
-slide.addShape(pptx.ShapeType.line, { // x-axis
-  x: px(Y_AXIS_X), y: px(X_AXIS_Y), w: px(PLOT_W), h: 0,
-  line: { color: "000000", width: 1 },
-});
-slide.addShape(pptx.ShapeType.line, { // y-axis
-  x: px(Y_AXIS_X), y: px(PLOT_Y0), w: 0, h: px(PLOT_H),
-  line: { color: "000000", width: 1 },
-});
-
-// Axis labels
-slide.addText("x", { // x-axis label at right end
-  x: px(Y_AXIS_X + PLOT_W - 20), y: px(X_AXIS_Y + 5), w: px(20), h: px(16),
-  align: "center", valign: "top", margin: 0,
-  fontFace: A, fontSize: 12, bold: true, color: "000000",
-});
-slide.addText("y", { // y-axis label at top
-  x: px(Y_AXIS_X - 25), y: px(PLOT_Y0 - 5), w: px(25), h: px(16),
+  x: px(CB.x + 2), y: px(CB.y + 29), w: px(CB.w - 4), h: px(13),
   align: "center", valign: "middle", margin: 0,
-  fontFace: A, fontSize: 12, bold: true, color: "000000",
+});
+slide.addText("f(x) is in between -8.08 and -8.011", {
+  x: px(CB.x + 2), y: px(CB.y + 38), w: px(CB.w - 4), h: px(12),
+  align: "center", valign: "middle", margin: 0,
+  fontFace: A, fontSize: 11, color: "006400",
 });
 
-// X tick labels and marks
-for (let xt of [-12, -10, -8, -6, -4, -2]) {
-  const tx = Y_AXIS_X + (xt + 12) * PX_PER_X_UNIT;
-  slide.addText(String(xt), {
-    x: px(tx - 15), y: px(X_AXIS_Y + 5), w: px(30), h: px(16),
-    align: "center", valign: "top", margin: 0,
-    fontFace: A, fontSize: 10, color: "000000",
-  });
-  // Tick mark
-  slide.addShape(pptx.ShapeType.line, {
-    x: px(tx), y: px(X_AXIS_Y - 2), w: 0, h: px(4),
-    line: { color: "000000", width: 1 },
+// ================= FUNCTION PLOT =================
+const PL = { x0: 606, x1: 901, top: 60, ax1: 312, ax2: 320 };
+slide.addShape(pptx.ShapeType.line, { // x-axis rule 1
+  x: px(PL.x0), y: px(PL.ax1), w: px(PL.x1 - PL.x0), h: 0,
+  line: { color: "000000", width: 1 },
+});
+slide.addShape(pptx.ShapeType.line, { // x-axis rule 2
+  x: px(PL.x0), y: px(PL.ax2), w: px(PL.x1 - PL.x0), h: 0,
+  line: { color: "000000", width: 0.75 },
+});
+slide.addShape(pptx.ShapeType.line, { // y-axis rule 1
+  x: px(607), y: px(PL.top), w: 0, h: px(PL.ax2 - PL.top),
+  line: { color: "000000", width: 1 },
+});
+slide.addShape(pptx.ShapeType.line, { // y-axis rule 2
+  x: px(721), y: px(67), w: 0, h: px(PL.ax2 - 67),
+  line: { color: "000000", width: 0.75 },
+});
+slide.addText("x", {
+  x: px(PL.x1 - 24), y: px(PL.ax2 + 3), w: px(20), h: px(14),
+  align: "center", valign: "top", margin: 0,
+  fontFace: A, fontSize: 11, bold: true, color: "000000",
+});
+slide.addText("y", {
+  x: px(583), y: px(PL.top - 4), w: px(20), h: px(14),
+  align: "center", valign: "top", margin: 0,
+  fontFace: A, fontSize: 11, bold: true, color: "000000",
+});
+const x_ticks = [
+  { v: "-12", c: 610 }, { v: "-10", c: 648 }, { v: "-8", c: 687 },
+  { v: "-6", c: 726 }, { v: "-4", c: 765 }, { v: "-2", c: 804 },
+];
+for (const t of x_ticks) {
+  slide.addText(t.v, {
+    x: px(t.c - 14), y: px(288), w: px(28), h: px(13),
+    align: "center", valign: "middle", margin: 0,
+    fontFace: A, fontSize: 9, color: "000000",
   });
 }
-// Y tick labels and marks
-for (let yt of [2, 0, -2, -4, -6, -8]) {
-  const ty = X_AXIS_Y - yt * PX_PER_Y_UNIT;
-  slide.addText(String(yt), {
-    x: px(Y_AXIS_X - 40), y: px(ty - 8), w: px(35), h: px(16),
+const y_ticks = ["1", "0", "-2", "-4", "-6", "-8"];
+for (let i = 0; i < y_ticks.length; i++) {
+  slide.addText(y_ticks[i], {
+    x: px(574), y: px(138 + i * 34), w: px(28), h: px(13),
     align: "right", valign: "middle", margin: 0,
-    fontFace: A, fontSize: 10, color: "000000",
-  });
-  // Tick mark
-  slide.addShape(pptx.ShapeType.line, {
-    x: px(Y_AXIS_X - 2), y: px(ty), w: px(4), h: 0,
-    line: { color: "000000", width: 1 },
+    fontFace: A, fontSize: 9, color: "000000",
   });
 }
 
-// Green curve as polyline (smooth: many short segments)
-const curve_pts = [];
-for (let x = -12; x <= -2; x += 0.02) {
-  const y = f(x);
-  const px_x = Y_AXIS_X + (x + 12) * PX_PER_X_UNIT;
-  const px_y = X_AXIS_Y - y * PX_PER_Y_UNIT;
-  if (px_y >= PLOT_Y0 && px_y <= PLOT_Y0 + PLOT_H) {
-    curve_pts.push({ x: px_x, y: px_y });
-  }
-}
-for (let i = 0; i < curve_pts.length - 1; i++) {
-  const p1 = curve_pts[i], p2 = curve_pts[i + 1];
+// ONE smooth non-convex curve, traced from the frame's saturated ink.
+const curve = [
+  [624, 143], [628, 196], [632, 130], [636, 125], [640, 120], [644, 116],
+  [648, 183], [652, 155], [656, 137], [660, 128], [664, 127], [668, 130],
+  [672, 141], [676, 153], [680, 163], [684, 170], [688, 174], [692, 176],
+  [696, 173], [700, 172], [704, 172], [708, 171], [712, 171], [716, 171],
+  [720, 171], [724, 171], [728, 171], [732, 171], [736, 172], [740, 174],
+  [744, 176], [748, 180], [752, 183], [756, 186], [760, 182], [764, 174],
+  [768, 160], [772, 151], [776, 142], [780, 139], [784, 142], [788, 151],
+  [792, 171], [796, 198], [800, 227], [804, 252], [808, 262], [812, 248],
+  [816, 209], [820, 167], [824, 112],
+];
+for (let i = 0; i < curve.length - 1; i++) {
+  const p1 = curve[i], p2 = curve[i + 1];
   slide.addShape(pptx.ShapeType.line, {
-    x: px(p1.x), y: px(p1.y), w: px(p2.x - p1.x), h: px(p2.y - p1.y),
-    line: { color: "00B050", width: 1.5 },
+    x: px(p1[0]), y: px(p1[1]), w: px(p2[0] - p1[0]), h: px(p2[1] - p1[1]),
+    line: { color: "00B050", width: 1 },
   });
 }
-
-// Red initial point at (-11, f(-11)=1.15)
-const init_x = Y_AXIS_X + 1 * PX_PER_X_UNIT;      // -11 is 1 unit from -12
-const init_y = X_AXIS_Y - 1.15 * PX_PER_Y_UNIT;   // 1.15 above x-axis
-slide.addShape(pptx.ShapeType.ellipse, {
-  x: px(init_x - 4), y: px(init_y - 4), w: px(8), h: px(8),
+slide.addShape(pptx.ShapeType.ellipse, { // red initial point
+  x: px(620), y: px(139), w: px(9), h: px(9),
   fill: { color: "FF0000" }, line: { color: "FF0000", width: 0 },
 });
-
-// Local minimum at x≈-9.6 (from table/spec)
-const min_x_val = -9.6;
-const min_y_val = f(min_x_val); // ≈ -8.11
-const min_x = Y_AXIS_X + (min_x_val + 12) * PX_PER_X_UNIT;
-const min_y = X_AXIS_Y - min_y_val * PX_PER_Y_UNIT;
-
-// Green square marker at local minimum (if in plot bounds)
-if (min_y >= PLOT_Y0 && min_y <= PLOT_Y0 + PLOT_H) {
-  slide.addShape(pptx.ShapeType.rect, {
-    x: px(min_x - 5), y: px(min_y - 5), w: px(10), h: px(10),
-    fill: { color: "00B050" }, line: { color: "00B050", width: 0 },
-  });
-}
-
-// Orange arrow from initial point following curve to local minimum
-// Draw as a curved polyline along the function between x=-11 and x=-9.6
-const arrow_pts = [];
-for (let x = -11; x >= -9.6; x -= 0.05) {
-  const y = f(x);
-  const px_x = Y_AXIS_X + (x + 12) * PX_PER_X_UNIT;
-  const px_y = X_AXIS_Y - y * PX_PER_Y_UNIT;
-  if (px_y >= PLOT_Y0 && px_y <= PLOT_Y0 + PLOT_H) {
-    arrow_pts.push({ x: px_x, y: px_y });
-  }
-}
-for (let i = 0; i < arrow_pts.length - 1; i++) {
-  const p1 = arrow_pts[i], p2 = arrow_pts[i + 1];
-  slide.addShape(pptx.ShapeType.line, {
-    x: px(p1.x), y: px(p1.y), w: px(p2.x - p1.x), h: px(p2.y - p1.y),
-    line: { color: "ED7D31", width: 2.5 },
-  });
-}
-// Arrowhead at end (triangle at min_x, min_y)
-if (arrow_pts.length > 0) {
-  const end = arrow_pts[arrow_pts.length - 1];
-  const prev = arrow_pts[Math.max(0, arrow_pts.length - 2)];
-  const dx = end.x - prev.x, dy = end.y - prev.y;
-  const len = Math.sqrt(dx*dx + dy*dy);
-  if (len > 0) {
-    const ux = dx/len, uy = dy/len;
-    const head = 8; // px
-    const hx = end.x, hy = end.y;
-    const b1x = hx - ux*head - uy*head*0.5;
-    const b1y = hy - uy*head + ux*head*0.5;
-    const b2x = hx - ux*head + uy*head*0.5;
-    const b2y = hy - uy*head - ux*head*0.5;
-    slide.addShape(pptx.ShapeType.freeform, {
-      fill: { color: "ED7D31" }, line: { color: "ED7D31", width: 0 },
-      points: [
-        { x: px(hx), y: px(hy) },
-        { x: px(b1x), y: px(b1y) },
-        { x: px(b2x), y: px(b2y) },
-      ],
-    });
-  }
-}
-
-// Purple callout "Reach Local Minima" at bottom of plot (measured rows 320-329)
-// Callout box: rounded rect at ~x 615-880, y 315-329
-const callout_x = 620, callout_y = 315, callout_w = 260, callout_h = 22;
-slide.addShape(pptx.ShapeType.roundRect, {
-  x: px(callout_x), y: px(callout_y), w: px(callout_w), h: px(callout_h),
+slide.addShape(pptx.ShapeType.roundRect, { // purple callout
+  x: px(640), y: px(258), w: px(140), h: px(20),
   fill: { color: "7030A0" }, line: { color: "7030A0", width: 0 },
 });
 slide.addText("Reach Local Minima", {
-  x: px(callout_x), y: px(callout_y), w: px(callout_w), h: px(callout_h),
+  x: px(640), y: px(258), w: px(140), h: px(20),
   align: "center", valign: "middle", margin: 0,
-  fontFace: A, fontSize: 11, bold: true, color: "FFFFFF",
+  fontFace: A, fontSize: 9, bold: true, color: "FFFFFF",
 });
-// Pointer from callout to green square (downward triangle)
-if (min_y <= callout_y) {
-  const px_x = min_x;
-  const py_y = callout_y;
-  slide.addShape(pptx.ShapeType.freeform, {
-    fill: { color: "7030A0" }, line: { color: "7030A0", width: 0 },
-    points: [
-      { x: px(px_x), y: px(py_y) },
-      { x: px(px_x - 6), y: px(py_y + 10) },
-      { x: px(px_x + 6), y: px(py_y + 10) },
-    ],
-  });
-}
 
-// ---- NUMERIC TABLE (bottom) ----
-// Table frame: x 20-940 (920px = 12.78in), y 330-520 (190px = 2.64in)
-// 8 rows + header, 1 label col + 16 data cols = 9x17 grid
-// Row labels: x, f(x), x-delta, f(x-delta), x+delta, f(x+delta), slope, next x
-// Column data: 16 values each (from recreation_brief)
-
-const tbl_x0 = 20, tbl_y0 = 330, tbl_w = 920, tbl_h = 190;
-const n_rows = 9; // 1 header + 8 data
-const n_cols = 17; // 1 label + 16 data
-const row_h = tbl_h / n_rows; // ~21.1 px
-const label_col_w = 80; // px for label column
-const data_col_w = (tbl_w - label_col_w) / 16; // ~52.5 px
-
-// Row data from recreation_brief
-const row_labels = ["x", "f(x)", "x-delta", "f(x-delta)", "x+delta", "f(x+delta)", "slope", "next x"];
-const row_data = {
-  "x":           [-11, -10.9, -10.8, -10.7, -10.6, -10.5, -10.4, -10.3, -10.2, -10.1, -10, -9.9, -9.8, -9.7, -9.6, -9.5],
-  "f(x)":        [1.15, -0.04, -1.19, -2.26, -3.27, -4.19, -5.03, -5.77, -6.41, -6.95, -7.39, -7.72, -7.96, -8.08, -8.11, -8.05],
-  "x-delta":     [-11.1, -11, -10.9, -10.8, -10.7, -10.6, -10.5, -10.4, -10.3, -10.2, -10.1, -10, -9.9, -9.8, -9.7, -9.6],
-  "f(x-delta)":  [2.39, 1.15, -0.04, -1.19, -2.26, -3.27, -4.19, -5.03, -5.77, -6.41, -6.95, -7.39, -7.72, -7.96, -8.08, -8.11],
-  "x+delta":     [-10.9, -10.8, -10.7, -10.6, -10.5, -10.4, -10.3, -10.2, -10.1, -10, -9.9, -9.8, -9.7, -9.6, -9.5, -9.4],
-  "f(x+delta)":  [-0.04, -1.19, -2.26, -3.27, -4.19, -5.03, -5.77, -6.41, -6.95, -7.39, -7.72, -7.96, -8.08, -8.11, -8.05, -7.89],
-  "slope":       [-24.3, -23.4, -22.2, -20.8, -19.3, -17.6, -15.8, -13.8, -11.8, -9.8, -7.7, -5.7, -3.6, -1.5, 0.3, 2.2],
-  "next x":      [-10.9, -10.8, -10.7, -10.6, -10.5, -10.4, -10.3, -10.2, -10.1, -10, -9.9, -9.8, -9.7, -9.6, -9.7, -9.6],
-};
-
-// Row fill colors (alternating bands)
-const row_fills = ["E2EFDA", "DDEBF7", "E4DFEC", "FCE4D6", "FFFFFF", "E2EFDA", "DDEBF7", "E4DFEC"]; // 8 data rows
-
-// Highlight columns: x=-9.7 (index 13) and x=-9.6 (index 14) in yellow #FFFF00
-const highlight_cols = [13, 14]; // 0-indexed data columns
-// Red bold cells: x=-9.6 (row 0, col 14) and f(x)=-8.11 (row 1, col 14)
-const red_bold = { "x": 14, "f(x)": 14 }; // row_label -> col_index
-
-// Draw table background
+// ================= TABLE =================
+const T = { x0: 86, x1: 869, y0: 320, y1: 519 };
+// outer frame
 slide.addShape(pptx.ShapeType.rect, {
-  x: px(tbl_x0), y: px(tbl_y0), w: px(tbl_w), h: px(tbl_h),
-  fill: { color: "FFFFFF" }, line: { color: "000000", width: 0.5 },
+  x: px(T.x0), y: px(T.y0), w: px(T.x1 - T.x0), h: px(T.y1 - T.y0),
+  fill: { color: "FFFFFF" }, line: { color: "000000", width: 0 },
 });
-
-// Draw row bands and cells
-for (let ri = 0; ri < n_rows; ri++) {
-  const ry = tbl_y0 + ri * row_h;
-  const is_header = (ri === 0);
-  const data_ri = ri - 1; // 0-7 for data rows
-
-  // Row fill
-  let fill_color = "FFFFFF";
-  if (!is_header) {
-    fill_color = row_fills[data_ri % row_fills.length];
-  }
+for (const hy of [321, 517]) { // top + bottom border rules
+  slide.addShape(pptx.ShapeType.line, {
+    x: px(T.x0), y: px(hy), w: px(T.x1 - T.x0), h: 0,
+    line: { color: "000000", width: 1 },
+  });
+}
+for (const vx of [T.x0, T.x1]) {
+  slide.addShape(pptx.ShapeType.line, {
+    x: px(vx), y: px(T.y0), w: 0, h: px(T.y1 - T.y0),
+    line: { color: "000000", width: 0.75 },
+  });
+}
+// fill bands
+const bands = [
+  { y0: 321, y1: 374, fill: "D9E275" },
+  { y0: 374, y1: 410, fill: "D6B2F5" },
+  { y0: 418, y1: 454, fill: "F7DDC2" },
+  { y0: 460, y1: 478, fill: "DEAC95" },
+  { y0: 484, y1: 501, fill: "F7BEC4" },
+];
+for (const bd of bands) {
   slide.addShape(pptx.ShapeType.rect, {
-    x: px(tbl_x0), y: px(ry), w: px(tbl_w), h: px(row_h),
-    fill: { color: fill_color }, line: { color: "000000", width: 0.25 },
-  });
-
-  // Label column
-  if (is_header) {
-    slide.addText("", { // empty header corner
-      x: px(tbl_x0), y: px(ry), w: px(label_col_w), h: px(row_h),
-      align: "center", valign: "middle", margin: 0,
-      fontFace: A, fontSize: 8, bold: true, color: "000000",
-    });
-  } else {
-    slide.addText(row_labels[data_ri], {
-      x: px(tbl_x0), y: px(ry), w: px(label_col_w), h: px(row_h),
-      align: "center", valign: "middle", margin: 0,
-      fontFace: A, fontSize: 8, bold: true, color: "000000",
-    });
-  }
-
-  // Data columns
-  if (is_header) {
-    // Header: column indices 1-16
-    for (let ci = 0; ci < 16; ci++) {
-      const cx = tbl_x0 + label_col_w + ci * data_col_w;
-      slide.addText(String(ci + 1), { // or just numbers
-        x: px(cx), y: px(ry), w: px(data_col_w), h: px(row_h),
-        align: "center", valign: "middle", margin: 0,
-        fontFace: A, fontSize: 7, bold: true, color: "000000",
-      });
-    }
-  } else {
-    const label = row_labels[data_ri];
-    const vals = row_data[label];
-    for (let ci = 0; ci < 16; ci++) {
-      const cx = tbl_x0 + label_col_w + ci * data_col_w;
-      const val = vals[ci];
-      const is_highlight = highlight_cols.includes(ci);
-      const is_red_bold = (red_bold[label] === ci);
-      const cell_fill = is_highlight ? "FFFF00" : fill_color;
-      const font_color = is_red_bold ? "FF0000" : "000000";
-      const font_bold = is_red_bold;
-
-      // Cell background (for highlight)
-      if (is_highlight) {
-        slide.addShape(pptx.ShapeType.rect, {
-          x: px(cx), y: px(ry), w: px(data_col_w), h: px(row_h),
-          fill: { color: "FFFF00" }, line: { color: "000000", width: 0.25 },
-        });
-      }
-
-      // Format value
-      let txt = String(val);
-      if (val % 1 === 0) txt = String(val); // integer
-      else txt = val.toFixed(2).replace(/\.00$/, "");
-
-      slide.addText(txt, {
-        x: px(cx), y: px(ry), w: px(data_col_w), h: px(row_h),
-        align: "center", valign: "middle", margin: 0,
-        fontFace: A, fontSize: 7, bold: font_bold, color: font_color,
-      });
-    }
-  }
-}
-
-// Vertical grid lines
-for (let ci = 1; ci < n_cols; ci++) {
-  const cx = tbl_x0 + label_col_w + (ci - 1) * data_col_w;
-  slide.addShape(pptx.ShapeType.line, {
-    x: px(cx), y: px(tbl_y0), w: 0, h: px(tbl_h),
-    line: { color: "000000", width: 0.25 },
+    x: px(121), y: px(bd.y0), w: px(869 - 121), h: px(bd.y1 - bd.y0),
+    fill: { color: bd.fill }, line: { color: "000000", width: 0 },
   });
 }
-// Horizontal grid lines (row separators)
-for (let ri = 1; ri < n_rows; ri++) {
-  const ry = tbl_y0 + ri * row_h;
-  slide.addShape(pptx.ShapeType.line, {
-    x: px(tbl_x0), y: px(ry), w: px(tbl_w), h: 0,
-    line: { color: "000000", width: 0.25 },
-  });
-}
-
-// Label column separator
-slide.addShape(pptx.ShapeType.line, {
-  x: px(tbl_x0 + label_col_w), y: px(tbl_y0), w: 0, h: px(tbl_h),
-  line: { color: "000000", width: 0.5 },
+// cyan insert inside band0
+slide.addShape(pptx.ShapeType.rect, {
+  x: px(666), y: px(332), w: px(789 - 666), h: px(368 - 332),
+  fill: { color: "8BF8A9" }, line: { color: "000000", width: 0 },
 });
+// gridlines: 20 verticals at 121 + k*40, horizontals at measured rows
+for (let i = 0; i <= 18; i++) {
+  slide.addShape(pptx.ShapeType.line, {
+    x: px(121 + i * 40), y: px(T.y0), w: 0, h: px(T.y1 - T.y0),
+    line: { color: "000000", width: 0.25 },
+  });
+}
+for (const hy of [320, 374, 410, 418, 454, 460, 478, 484, 501, 517]) {
+  slide.addShape(pptx.ShapeType.line, {
+    x: px(121), y: px(hy), w: px(869 - 121), h: 0,
+    line: { color: "000000", width: 0.25 },
+  });
+}
 
-// Write output
+// ---- table content: 8 measured text rows x the analysis dataset ----
+const rows = [
+  { label: "x", vals: ["-11", "-10.9", "-10.8", "-10.7", "-10.6", "-10.5", "-10.4", "-10.3", "-10.2", "-10.1", "-10", "-9.9", "-9.8", "-9.7", "-9.6", "-9.5"] },
+  { label: "f(x)", vals: ["1.15", "-0.04", "-1.19", "-2.26", "-3.27", "-4.19", "-5.03", "-5.77", "-6.41", "-6.95", "-7.39", "-7.72", "-7.96", "-8.08", "-8.11", "-8.05"] },
+  { label: "x-delta", vals: ["-11.1", "-11", "-10.9", "-10.8", "-10.7", "-10.6", "-10.5", "-10.4", "-10.3", "-10.2", "-10.1", "-10", "-9.9", "-9.8", "-9.7", "-9.6"] },
+  { label: "f(x-delta)", vals: ["2.39", "1.15", "-0.04", "-1.19", "-2.26", "-3.27", "-4.19", "-5.03", "-5.77", "-6.41", "-6.95", "-7.39", "-7.72", "-7.96", "-8.08", "-8.11"] },
+  { label: "x+delta", vals: ["-10.9", "-10.8", "-10.7", "-10.6", "-10.5", "-10.4", "-10.3", "-10.2", "-10.1", "-10", "-9.9", "-9.8", "-9.7", "-9.6", "-9.5", "-9.4"] },
+  { label: "f(x+delta)", vals: ["-0.04", "-1.19", "-2.26", "-3.27", "-4.19", "-5.03", "-5.77", "-6.41", "-6.95", "-7.39", "-7.72", "-7.96", "-8.08", "-8.11", "-8.05", "-7.89"] },
+  { label: "slope", vals: ["-24.3", "-23.4", "-22.2", "-20.8", "-19.3", "-17.6", "-15.8", "-13.8", "-11.8", "-9.8", "-7.7", "-5.7", "-3.6", "-1.5", "0.3", "2.2"] },
+  { label: "next x", vals: ["-10.9", "-10.8", "-10.7", "-10.6", "-10.5", "-10.4", "-10.3", "-10.2", "-10.1", "-10", "-9.9", "-9.8", "-9.7", "-9.6", "-9.7", "-9.6"] },
+];
+const row_ys = [341, 359, 383, 401, 427, 445, 469, 493];
+for (let ri = 0; ri < rows.length; ri++) {
+  const ymid = row_ys[ri];
+  const is_hl = (ri >= 6); // rows 7 & 8 carry the red-bold highlight
+  slide.addText(rows[ri].label, {
+    x: px(T.x0), y: px(ymid - 7), w: px(121 - T.x0), h: px(14),
+    align: "center", valign: "middle", margin: 0,
+    fontFace: A, fontSize: 8, bold: true, color: "000000",
+  });
+  for (let ci = 0; ci < 16; ci++) {
+    slide.addText(rows[ri].vals[ci], {
+      x: px(121 + ci * 40), y: px(ymid - 7), w: px(40), h: px(14),
+      align: "center", valign: "middle", margin: 0,
+      fontFace: A, fontSize: 7,
+      bold: is_hl, color: is_hl ? "FF0000" : "000000",
+    });
+  }
+}
+
 pptx.writeFile({ fileName: OUT }).then(() => {
   console.log("WROTE " + OUT);
 }).catch(err => {

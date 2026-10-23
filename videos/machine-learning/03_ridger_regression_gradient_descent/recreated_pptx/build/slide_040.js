@@ -1,6 +1,8 @@
 // Build slide 040 — "Training of Linear Regression Model ... using SGD ... Solved Example"
 // Deck: videos/machine-learning/03_ridger_regression_gradient_descent
-// Attempt 1 — fresh ROOT build (no dependencies; slide 40 has no children).
+// Attempt 2 — fixed after the attempt-1 judge FAIL (title wrapped to two lines).
+// CHANGE: per-line wrap-safe box widths from the TRUE Arial-bold advances
+// (Liberation Sans Bold metrics), verified in adjudicate_wrap.py.
 //
 // GROUND TRUTH: unique_slides/slide_040.jpg — 960x540, 1 frame px == 1 pt == 1/72 in
 // (verified: 960/13.3333 = 72.0001). All geometry below is in FRAME PX.
@@ -33,11 +35,13 @@
 //   3. "usnig SGD" is almost certainly "using SGD"; validation.uncertain_items[0] says
 //      keep it VERBATIM — drawn exactly as "usnig SGD".
 //
-// SIZE FIT CHECKS (measured advance vs measured ink, Arial bold):
-//   L1 44pt: advance "Training of Linear Regression Model" = 736 vs ink 736 (108..844)
-//   L2 36pt: advance "usnig SST" = 0 -> measured ink w=214 (367..580) at x-height+desc
-//   L3 44pt: advance "Solved Example" = 323 vs ink 323 (306..629)
-//   All lines sit fully inside the panel (x58.5..901, y45..540) with >= 55px clearance.
+// SIZE FIT CHECKS (attempt-1 box was 760px = the exact advance, so the line wrapped;
+// attempt 2 recomputes every width from the true bold advance + 12% headroom):
+//   L1 44pt: true advance 760 (Liberation Sans Bold) -> box 850, ink on frame 747
+//   L2 36pt: true advance 184 -> box 240, ink on frame 214
+//   L3 44pt: true advance 337 -> box 380, ink on frame 325
+//   All boxes stay fully inside the panel (x58.5..901) — widest box spans
+//   474±425 = 49..899, within the stroke-to-stroke 58.5..901 clearance.
 //
 // Laws honored: hex without '#'; fontFace explicit; margin 0; every text box is
 // SINGLE-LINE (one band per element — no multi-line box, so no lineSpacing needed);
@@ -65,8 +69,17 @@ drawHouseChrome(pptx, slide, { numeral: 40 });
 // ---- three centred single-line text boxes, one band per element ----
 // capTop is the top of the cap letters on the frame; box top = capTop - 0.25*size
 // (LibreOffice ascent offset, same model as the slide_001 build).
-function centeredLine(text, size, ctr, capTop, color) {
-  const w = 760; // wide enough for the longest line (736 px advance) with margin
+//
+// WRAP-SAFE BOX WIDTHS (attempt-1 FAIL adjudication, banked in
+// qa/slide040/adjudicate_wrap.py): attempt 1 used a single 760px box for every
+// line, which is EXACTLY the 44pt bold advance of
+// "Training of Linear Regression Model" (verified against Liberation Sans
+// Bold, the metric-compatible substitute LibreOffice uses for Arial Bold:
+// fb.getlength(text)*size/100 = 760 frame px) — no slack, so the line wrapped
+// into "Training of Linear Regression" + "Model". Per-line widths below are
+// the measured true advance + 12% headroom so every line stays on ONE line.
+function centeredLine(text, size, ctr, capTop, color, wBox) {
+  const w = wBox;
   slide.addText(text, {
     x: px(ctr - w / 2),
     y: px(capTop - 0.25 * size),
@@ -78,8 +91,8 @@ function centeredLine(text, size, ctr, capTop, color) {
   });
 }
 
-centeredLine("Training of Linear Regression Model", 44, 474, 177, RED);
-centeredLine("usnig SGD", 36, 473, 257, BLUE);
-centeredLine("Solved Example", 44, 462, 326, RED);
+centeredLine("Training of Linear Regression Model", 44, 474, 177, RED, 850);  // advance 760 + 12%
+centeredLine("usnig SGD", 36, 473, 257, BLUE, 240);                              // advance 184 + 12%
+centeredLine("Solved Example", 44, 462, 326, RED, 380);                           // advance 337 + 12%
 
 pptx.writeFile({ fileName: OUT }).then(() => console.log("WROTE " + OUT));

@@ -1,273 +1,249 @@
 #!/usr/bin/env python3
-"""Generate 4 3D surface plots for slide 025 - Types of Loss function shapes.
+"""Generate the four loss-function-shape plots for slide 025.
 
-Original frame: 960x540, 1px = 1pt = 1/72 in
-Slide: LAYOUT_WIDE 13.333 x 7.5 in
+Regions measured from unique_slides/slide_025.jpg (960x540, 1px = 1pt = 1/72in):
+  TL concave dome   x 60..470  y 116..289
+  TR convex bowl    x 470..901 y 116..316
+  BL non-convex     x 60..470  y 296..527
+  BR gradient path  x 470..901 y 346..530
 
-Plot positions (frame px, from PIL measurement):
-- Top-left (concave dome): x ~60-450, y ~100-280 -> w=390, h=180 px
-- Top-right (convex bowl): x ~500-890, y ~100-280 -> w=390, h=180 px
-- Bottom-left (non-convex): x ~60-450, y ~280-520 -> w=390, h=240 px
-- Bottom-right (gradient descent): x ~500-890, y ~280-520 -> w=390, h=240 px
+Red reference lines in the original are pure HORIZONTAL strokes (measured:
+uniform 1-2px runs at constant frame y, x-extents below), i.e. 2-D overlays
+rather than 3-D level rings -- drawn here as figure-fraction Line2D artists
+so they land at the measured rows exactly.
 
-Converted to inches at 300 dpi for matplotlib:
-Each plot at 300 dpi: w_in = w_px/72, h_in = h_px/72
-Then render at 300 dpi -> px = w_in * 300 = w_px * 300/72 = w_px * 4.167
+  TL  y168 x121..267   y186 x110..279
+  TR  y222 x619..873   y234 x619..866
+  BL  y418 x124..381
+  BR  none (the blob at y371..396 in the BR region is jet colormap, not a line)
+
+Black annotations in BL measured at (slide px):
+  "Global Maxima" ~x242..268 y304..319, "Local Maxima" ~x286..315 y337..352,
+  "Local Minima"  ~x286..311 y390..399, "Global Minima" ~x145..201 y439..465
+
+Surfaces are single dense analytic lattices (90-120 grid) -- no ripple: the
+second difference of the gradient-descent trajectory is asserted smooth below.
 """
-
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib import cm
-from mpl_toolkits.mplot3d import Axes3D
-from PIL import Image
 import os
+from matplotlib.lines import Line2D
 
-OUTDIR = "/workspaces/codespaces-blank/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/build/assets"
-os.makedirs(OUTDIR, exist_ok=True)
+OUT = "/workspaces/codespaces-blank/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/build/assets"
+os.makedirs(OUT, exist_ok=True)
 
-# Frame px dimensions (1px = 1pt = 1/72 in)
-PLOT_W_PX = 390
-PLOT_H_TOP = 180
-PLOT_H_BOTTOM = 240
 DPI = 300
+JET = plt.get_cmap("jet")
+RED = (0.75, 0.0, 0.0)          # C00000 family nominal
+BLK = "black"
 
-# Convert to inches for matplotlib figure size
-w_in = PLOT_W_PX / 72.0
-h_top_in = PLOT_H_TOP / 72.0
-h_bot_in = PLOT_H_BOTTOM / 72.0
+PLOTS = {
+    "tl": dict(x0=60,  y0=116, w=411, h=174, elev=34, azim=-64),
+    "tr": dict(x0=470, y0=116, w=431, h=200, elev=34, azim=-64),
+    "bl": dict(x0=60,  y0=296, w=411, h=231, elev=30, azim=-62),
+    "br": dict(x0=470, y0=346, w=431, h=184, elev=30, azim=-62),
+}
 
-# Jet/rainbow colormap (MATLAB-style)
-jet = plt.get_cmap('jet')
 
-# ============================================================
-# Plot 1: Top-Left - Concave Dome (One Maximum)
-# z = -(x^2 + y^2) scaled - inverted bowl = dome
-# Red horizontal lines at upper portion (maxima)
-# Axis ticks: vertical (z) 0, 5, 2; horizontal (x/y) -2
-# ============================================================
-fig = plt.figure(figsize=(w_in, h_top_in), dpi=DPI)
-ax = fig.add_axes([0, 0, 1, 1], projection='3d')
-ax.view_init(elev=30, azim=-60)
+def axis_style(ax):
+    for axis in (ax.xaxis, ax.yaxis, ax.zaxis):
+        axis.set_pane_color((1, 1, 1, 1))
+        axis._axinfo["grid"].update(color="#DDDDDD", linewidth=0.4)
+        axis.line.set_linewidth(0.5)
+        axis.set_tick_params(pad=-3, labelsize=7.5)
+    for t in ax.get_xticklabels() + ax.get_yticklabels() + ax.get_zticklabels():
+        t.set_fontsize(7.5)
+        t.set_color("#444444")
 
-# Generate dome surface
-x = np.linspace(-2, 2, 50)
-y = np.linspace(-2, 2, 50)
-X, Y = np.meshgrid(x, y)
-# Concave: z = 5 - (x^2 + y^2)*1.25  -> max 5 at center, 0 at edges
-Z = 5 - (X**2 + Y**2) * 1.25
-Z = np.clip(Z, 0, 5)
 
-# Plot with jet colormap
-surf = ax.plot_surface(X, Y, Z, cmap=jet, rstride=1, cstride=1,
-                       linewidth=0, antialiased=True, shade=True)
+def hlines(fig, spec, slide_rows):
+    """Draw measured horizontal red reference lines.
 
-# Red horizontal reference lines at upper portion (z=4 and z=3.5)
-# Draw lines at constant z across the surface
-for z_line in [4.0, 3.5]:
-    # Line across x at y=0
-    x_line = np.linspace(-2, 2, 100)
-    y_line = np.zeros_like(x_line)
-    z_line_arr = np.full_like(x_line, z_line)
-    ax.plot(x_line, y_line, z_line_arr, color='red', linewidth=1.5, zorder=10)
-    # Line across y at x=0
-    y_line2 = np.linspace(-2, 2, 100)
-    x_line2 = np.zeros_like(y_line2)
-    ax.plot(x_line2, y_line2, z_line_arr, color='red', linewidth=1.5, zorder=10)
+    slide_rows: list of (slide_y, slide_x0, slide_x1) in frame px.
+    """
+    for (sy, sx0, sx1) in slide_rows:
+        ly = sy - spec["y0"]
+        lx0, lx1 = sx0 - spec["x0"], sx1 - spec["x0"]
+        xf0, xf1 = lx0 / spec["w"], lx1 / spec["w"]
+        yf = 1.0 - ly / spec["h"]
+        fig.add_artist(Line2D([xf0, xf1], [yf, yf], transform=fig.transFigure,
+                              color=RED, lw=1.6, zorder=20, solid_capstyle="butt"))
 
-# Axis formatting
-ax.set_xlim(-2, 2)
-ax.set_ylim(-2, 2)
-ax.set_zlim(0, 5)
-ax.set_xticks([-2])
-ax.set_yticks([-2])
-ax.set_zticks([0, 2, 5])
-ax.set_xlabel('', color='black', fontsize=8)
-ax.set_ylabel('', color='black', fontsize=8)
-ax.set_zlabel('', color='black', fontsize=8)
 
-# Style
-for axis in (ax.xaxis, ax.yaxis, ax.zaxis):
-    axis.set_pane_color((1.0, 1.0, 1.0, 1.0))
-    axis._axinfo['grid'].update(color='#DDDDDD', linewidth=0.5)
-    axis.line.set_linewidth(0.5)
+def figure(spec):
+    fig = plt.figure(figsize=(spec["w"] / 72.0, spec["h"] / 72.0), dpi=DPI)
+    ax = fig.add_axes([0.0, 0.045, 1.0, 0.955], projection="3d")
+    ax.view_init(elev=spec["elev"], azim=spec["azim"])
+    return fig, ax
 
-# Tick labels
-for t in (ax.get_xticklabels() + ax.get_yticklabels() + ax.get_zticklabels()):
-    t.set_fontsize(7)
-    t.set_color('#444444')
 
-# Remove axis lines/panes for clean look
-ax.xaxis.set_tick_params(pad=-2)
-ax.yaxis.set_tick_params(pad=-2)
-ax.zaxis.set_tick_params(pad=-2)
+def save(fig, name):
+    fig.savefig(os.path.join(OUT, "plot_025_%s.png" % name), dpi=DPI, facecolor="white")
+    plt.close(fig)
+    print("wrote plot_025_%s.png" % name)
 
-plt.savefig(os.path.join(OUTDIR, 'plot_025_tl.png'), dpi=DPI, facecolor='white', bbox_inches='tight', pad_inches=0)
-plt.close(fig)
-print("Generated plot_025_tl.png")
 
-# ============================================================
-# Plot 2: Top-Right - Convex Bowl (One Minimum)
-# z = (x^2 + y^2) scaled
-# Red horizontal lines at lower portion (minima)
-# Axis: vertical (z) ×10^4 ticks 1.5, 0.5; horizontal -100 to 100
-# ============================================================
-fig = plt.figure(figsize=(w_in, h_top_in), dpi=DPI)
-ax = fig.add_axes([0, 0, 1, 1], projection='3d')
-ax.view_init(elev=30, azim=-60)
+# ── TL: concave dome — one maximum, two red maximum-level lines ──────────────
+def plot_tl():
+    spec = PLOTS["tl"]
+    fig, ax = figure(spec)
+    x = np.linspace(-2, 2, 90)
+    X, Y = np.meshgrid(x, x)
+    Z = np.clip(4.0 * np.exp(-0.62 * (X ** 2 + Y ** 2)), 0, 4)
+    ax.plot_surface(X, Y, Z, cmap=JET, rstride=1, cstride=1,
+                    linewidth=0, antialiased=True, shade=True)
+    ax.set_xlim(-2, 2); ax.set_ylim(-2, 2); ax.set_zlim(0, 5)
+    ax.set_xticks([-2]); ax.set_yticks([-2]); ax.set_zticks([0, 2, 4])
+    ax.set_zticklabels(["0", "2", "5"])
+    axis_style(ax)
+    hlines(fig, spec, [(168, 121, 267), (186, 110, 279)])
+    save(fig, "tl")
 
-x = np.linspace(-100, 100, 50)
-y = np.linspace(-100, 100, 50)
-X, Y = np.meshgrid(x, y)
-# Convex bowl: z = (x^2 + y^2) * 1e-4 * 1.5  -> min 0, max ~3 at corners
-# Scale to match ×10^4 axis: z in units of 10^4
-Z = (X**2 + Y**2) * 1.5e-4
 
-surf = ax.plot_surface(X, Y, Z, cmap=jet, rstride=1, cstride=1,
-                       linewidth=0, antialiased=True, shade=True)
+# ── TR: convex bowl — one minimum, two red minimum-level lines ───────────────
+def plot_tr():
+    spec = PLOTS["tr"]
+    fig, ax = figure(spec)
+    x = np.linspace(-100, 100, 90)
+    X, Y = np.meshgrid(x, x)
+    Z = (X ** 2 + Y ** 2) / 10000.0 * 1.5
+    ax.plot_surface(X, Y, Z, cmap=JET, rstride=1, cstride=1,
+                    linewidth=0, antialiased=True, shade=True)
+    ax.set_xlim(-100, 100); ax.set_ylim(-100, 100); ax.set_zlim(0, 1.5)
+    ax.set_xticks([-100, 0, 100]); ax.set_yticks([-100, 0, 100])
+    ax.set_zticks([0, 0.5, 1.5])
+    ax.set_zticklabels(["0", "0.5", "1.5"])
+    ax.text2D(0.012, 0.60, r"$\times 10^{4}$", transform=ax.transAxes,
+              fontsize=8.5, color="#444444")
+    axis_style(ax)
+    hlines(fig, spec, [(222, 619, 873), (234, 619, 866)])
+    save(fig, "tr")
 
-# Red horizontal lines at lower portion (z=0.5 and z=0.2 in 10^4 units)
-for z_line in [0.5, 0.2]:
-    x_line = np.linspace(-100, 100, 100)
-    y_line = np.zeros_like(x_line)
-    z_line_arr = np.full_like(x_line, z_line)
-    ax.plot(x_line, y_line, z_line_arr, color='red', linewidth=1.5, zorder=10)
-    y_line2 = np.linspace(-100, 100, 100)
-    x_line2 = np.zeros_like(y_line2)
-    ax.plot(x_line2, y_line2, z_line_arr, color='red', linewidth=1.5, zorder=10)
 
-ax.set_xlim(-100, 100)
-ax.set_ylim(-100, 100)
-ax.set_zlim(0, 1.5)
-ax.set_xticks([-100, 0, 100])
-ax.set_yticks([-100, 0, 100])
-ax.set_zticks([0, 0.5, 1.5])
+# ── BL: non-convex — four annotated features, one red reference line ─────────
+BL_SURF = None
 
-for axis in (ax.xaxis, ax.yaxis, ax.zaxis):
-    axis.set_pane_color((1.0, 1.0, 1.0, 1.0))
-    axis._axinfo['grid'].update(color='#DDDDDD', linewidth=0.5)
-    axis.line.set_linewidth(0.5)
 
-for t in (ax.get_xticklabels() + ax.get_yticklabels() + ax.get_zticklabels()):
-    t.set_fontsize(7)
-    t.set_color('#444444')
+def plot_bl():
+    spec = PLOTS["bl"]
+    fig, ax = figure(spec)
+    x = np.linspace(-3, 3, 120)
+    X, Y = np.meshgrid(x, x)
+    Z = (3.0 * np.sin(X * 1.35) * np.cos(Y * 1.35)
+         + 1.5 * np.sin(2 * X * 1.35) * np.cos(2 * Y * 1.35) * 0.7)
+    ax.plot_surface(X, Y, Z, cmap=JET, rstride=1, cstride=1,
+                    linewidth=0, antialiased=True, shade=True)
 
-plt.savefig(os.path.join(OUTDIR, 'plot_025_tr.png'), dpi=DPI, facecolor='white', bbox_inches='tight', pad_inches=0)
-plt.close(fig)
-print("Generated plot_025_tr.png")
+    ax.set_xlim(-3, 3); ax.set_ylim(-3, 3); ax.set_zlim(-4, 6)
+    ax.set_xticks([-2]); ax.set_yticks([-2])
+    ax.set_zticks([-4, -2, 0, 2, 4, 6])
+    axis_style(ax)
 
-# ============================================================
-# Plot 3: Bottom-Left - Non-Convex (Multiple Minima/Maxima)
-# z = sin(x)*cos(y) or similar multi-modal function
-# Annotations: Global Maxima, Local Maxima, Local Minima, Global Minima
-# One red horizontal reference line
-# Axis ticks: vertical 6, 4, 2, 0, -2, -4
-# ============================================================
-fig = plt.figure(figsize=(w_in, h_bot_in), dpi=DPI)
-ax = fig.add_axes([0, 0, 1, 1], projection='3d')
-ax.view_init(elev=30, azim=-60)
+    # annotation label anchors in SLIDE px (measured) -> 3-D data coords
+    ANCH = {
+        "Global":  (0, 0),
+        "LocalMx": (-2.1, 0),
+        "LocalMn": (-1.1, -1.1),
+        "GlobalMn": (1.4, 1.4),
+    }
+    LABELS = {
+        "Global":   ("Global Maxima",  255, 312),
+        "LocalMx":  ("Local Maxima",   300, 345),
+        "LocalMn":  ("Local Minima",   298, 395),
+        "GlobalMn": ("Global Minima",  173, 452),
+    }
 
-x = np.linspace(-3, 3, 80)
-y = np.linspace(-3, 3, 80)
-X, Y = np.meshgrid(x, y)
-# Non-convex: combination of sine waves
-Z = 3 * np.sin(X) * np.cos(Y) + 1.5 * np.sin(2*X) * np.cos(2*Y)
-Z = np.clip(Z, -4, 6)
+    def extremum(key, want_max):
+        cx, cy = ANCH[key]
+        d = (X - cx) ** 2 + (Y - cy) ** 2
+        m = d < 1.2 ** 2
+        masked = np.where(m, Z, -1e9 if want_max else 1e9)
+        i = np.argmax(masked) if want_max else np.argmin(masked)
+        return X.flat[i], Y.flat[i], Z.flat[i]
 
-surf = ax.plot_surface(X, Y, Z, cmap=jet, rstride=1, cstride=1,
-                       linewidth=0, antialiased=True, shade=True)
+    PEAK = {"Global": extremum("Global", True), "LocalMx": extremum("LocalMx", True),
+            "LocalMn": extremum("LocalMn", False), "GlobalMn": extremum("GlobalMn", False)}
 
-# One red horizontal reference line at z=0
-x_line = np.linspace(-3, 3, 100)
-y_line = np.zeros_like(x_line)
-z_line = np.zeros_like(x_line)
-ax.plot(x_line, y_line, z_line, color='red', linewidth=1.5, zorder=10)
-y_line2 = np.linspace(-3, 3, 100)
-x_line2 = np.zeros_like(y_line2)
-ax.plot(x_line2, y_line2, z_line, color='red', linewidth=1.5, zorder=10)
+    for key, (label, sx, sy) in LABELS.items():
+        # label ink box in slide px -> 3-D text anchor via the axes' own
+        # projection (text2D would not be occluded by the surface; use 3-D
+        # text placed just above the leader-line target instead)
+        fx, fy, fz = PEAK[key]
+        ax.text(fx, fy, fz + 0.12, "", fontsize=8)
+        # leader line from the feature point outward, toward the label side
+        dirx = -1.0 if sx < 265 else 1.0
+        diry = -1.0 if sy < 346 else 1.0
+        ex, ey = fx + dirx * 0.85, fy + diry * 0.85
+        ax.plot([fx, ex], [fy, ey], [fz + 0.12, 1.2], color=BLK, lw=0.9, zorder=25)
+        ax.text(ex, ey, 1.2, label, fontsize=8.5, color=BLK, ha="center",
+                va="bottom", zorder=30, linespacing=1.05)
 
-# Annotation positions (approximate peaks/valleys)
-# Global Maxima: near (0, 0) where Z~4.5
-# Local Maxima: near (±2.5, 0) or similar
-# Global Minima: where Z~-4
-# Local Minima: intermediate valleys
+    hlines(fig, spec, [(418, 124, 381)])
+    save(fig, "bl")
 
-ax.set_xlim(-3, 3)
-ax.set_ylim(-3, 3)
-ax.set_zlim(-4, 6)
-ax.set_xticks([-2])
-ax.set_yticks([-2])
-ax.set_zticks([-4, -2, 0, 2, 4, 6])
 
-for axis in (ax.xaxis, ax.yaxis, ax.zaxis):
-    axis.set_pane_color((1.0, 1.0, 1.0, 1.0))
-    axis._axinfo['grid'].update(color='#DDDDDD', linewidth=0.5)
-    axis.line.set_linewidth(0.5)
+# ── BR: gradient-descent path into a valley, no reference line ───────────────
+def plot_br():
+    spec = PLOTS["br"]
+    fig, ax = figure(spec)
+    x = np.linspace(-3, 3, 120)
+    X, Y = np.meshgrid(x, x)
+    Z = 0.55 * ((X - 0.6) ** 2 + (Y + 0.5) ** 2)
+    ax.plot_surface(X, Y, Z, cmap=JET, rstride=1, cstride=1,
+                    linewidth=0, antialiased=True, shade=True, alpha=0.94)
 
-for t in (ax.get_xticklabels() + ax.get_yticklabels() + ax.get_zticklabels()):
-    t.set_fontsize(7)
-    t.set_color('#444444')
+    # analytic dense gradient-descent trajectory (one smooth curve)
+    def grad(px, py):
+        return 1.1 * (px - 0.6), 1.1 * (py + 0.5)
 
-plt.savefig(os.path.join(OUTDIR, 'plot_025_bl.png'), dpi=DPI, facecolor='white', bbox_inches='tight', pad_inches=0)
-plt.close(fig)
-print("Generated plot_025_bl.png")
+    px, py = -2.35, 2.30
+    lr = 0.22
+    path = []
+    for _ in range(240):
+        path.append((px, py))
+        gx, gy = grad(px, py)
+        px -= lr * gx
+        py -= lr * gy
+    path = np.array(path)
+    pz = 0.55 * ((path[:, 0] - 0.6) ** 2 + (path[:, 1] + 0.5) ** 2) \
+        + 0.35 * np.sin(1.1 * path[:, 0]) * np.cos(1.1 * path[:, 1])
 
-# ============================================================
-# Plot 4: Bottom-Right - Gradient Descent Path
-# Surface + black curved path with arrows descending to minimum
-# No red reference line
-# ============================================================
-fig = plt.figure(figsize=(w_in, h_bot_in), dpi=DPI)
-ax = fig.add_axes([0, 0, 1, 1], projection='3d')
-ax.view_init(elev=30, azim=-60)
+    # second-difference ripple check: one smooth analytic curve -- successive
+    # step directions must keep turning consistently (no zig-zag oscillation).
+    seg = np.diff(path, axis=0)
+    ang = []
+    for i in range(len(seg) - 1):
+        a, b = seg[i], seg[i + 1]
+        na, nb = np.linalg.norm(a), np.linalg.norm(b)
+        if na > 1e-12 and nb > 1e-12:
+            ang.append(float(np.dot(a, b) / (na * nb)))
+    ang = np.array(ang)
+    assert ang.min() > 0.0, "gradient path zig-zags (min cos = %.3f)" % ang.min()
+    assert np.all(np.diff(ang) <= 1e-9), "gradient path turn rate is not monotone"
 
-x = np.linspace(-3, 3, 80)
-y = np.linspace(-3, 3, 80)
-X, Y = np.meshgrid(x, y)
-# Bowl with a valley
-Z = (X-0.5)**2 + (Y+0.5)**2
-Z = np.clip(Z, 0, 8)
+    ax.plot(path[:, 0], path[:, 1], pz, color="black", lw=2.2,
+            zorder=25, solid_capstyle="round")
 
-surf = ax.plot_surface(X, Y, Z, cmap=jet, rstride=1, cstride=1,
-                       linewidth=0, antialiased=True, shade=True, alpha=0.9)
+    for idx in (28, 62, 96, 130, 168, 205, 232):
+        a = np.array([path[idx, 0], path[idx, 1], pz[idx]])
+        bb = np.array([path[idx + 1, 0], path[idx + 1, 1], pz[idx + 1]])
+        d = bb - a
+        n = np.linalg.norm(d)
+        if n > 0:
+            ax.quiver(a[0], a[1], a[2],
+                      d[0] / n * 0.30, d[1] / n * 0.30, d[2] / n * 0.30,
+                      color="black", arrow_length_ratio=0.55, linewidth=2.0, zorder=26)
 
-# Gradient descent path: starts high, spirals down to minimum
-# Path: start at (-2.5, 2.5) -> spiral to (0.5, -0.5)
-t = np.linspace(0, 4*np.pi, 200)
-# Spiral inwards
-path_x = 0.5 + 3.0 * np.exp(-0.2*t) * np.cos(t)
-path_y = -0.5 + 3.0 * np.exp(-0.2*t) * np.sin(t)
-path_z = (path_x-0.5)**2 + (path_y+0.5)**2
+    ax.set_xlim(-3, 3); ax.set_ylim(-3, 3); ax.set_zlim(-1, 6.5)
+    ax.set_xticks([]); ax.set_yticks([]); ax.set_zticks([])
+    axis_style(ax)
+    save(fig, "br")
 
-ax.plot(path_x, path_y, path_z, color='black', linewidth=2.5, zorder=20, solid_capstyle='round')
 
-# Add arrowheads along the path
-arrow_indices = [30, 60, 90, 120, 150, 180]
-for idx in arrow_indices:
-    if idx < len(path_x)-1:
-        dx = path_x[idx+1] - path_x[idx]
-        dy = path_y[idx+1] - path_y[idx]
-        dz = path_z[idx+1] - path_z[idx]
-        # Draw small cone/arrow
-        ax.quiver(path_x[idx], path_y[idx], path_z[idx],
-                  dx, dy, dz, color='black', arrow_length_ratio=0.1,
-                  linewidth=2, zorder=21)
-
-ax.set_xlim(-3, 3)
-ax.set_ylim(-3, 3)
-ax.set_zlim(0, 8)
-ax.set_xticks([])
-ax.set_yticks([])
-ax.set_zticks([])
-
-for axis in (ax.xaxis, ax.yaxis, ax.zaxis):
-    axis.set_pane_color((1.0, 1.0, 1.0, 1.0))
-    axis._axinfo['grid'].update(color='#DDDDDD', linewidth=0.5)
-    axis.line.set_linewidth(0.5)
-
-plt.savefig(os.path.join(OUTDIR, 'plot_025_br.png'), dpi=DPI, facecolor='white', bbox_inches='tight', pad_inches=0)
-plt.close(fig)
-print("Generated plot_025_br.png")
-
-print("All 4 plots generated.")
+plot_tl()
+plot_tr()
+plot_bl()
+plot_br()
+print("all four plots written")

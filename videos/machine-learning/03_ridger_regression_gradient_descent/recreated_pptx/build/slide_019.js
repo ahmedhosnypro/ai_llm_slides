@@ -1,6 +1,9 @@
 // Build slide 019 — "Test Data" — Ridge Regression gradient descent
 // Deck: videos/machine-learning/03_ridger_regression_gradient_descent
-// Attempt 1 — fresh build from frame measurements (qa/slide019/measurements_summary.txt)
+// Attempt 2 — same measurements; the attempt-1 textBox() helper passed
+// lineSpacing as a multiplier, which pptxgenjs emits as POINTS (1.2pt), so
+// LibreOffice dropped every body text run (only the badge numeral survived).
+// Attempt 2 derives line spacing in points from the run's fontSize.
 //
 // ═══════════════════════════════════════════════════════════════════════════════
 // GROUND TRUTH: unique_slides/slide_019.jpg — 960x540, exactly 72 px/in
@@ -53,10 +56,14 @@ const FONT   = "Arial";
 
 // ── HELPERS ────────────────────────────────────────────────────────────────────
 function textBox(x, y, w, h, runs, opts = {}) {
+  // pptxgenjs emits lineSpacing as POINTS (spcPts), not a multiplier: a bare
+  // 1.2 becomes a 1.2pt line height and LibreOffice drops the text entirely.
+  const first = Array.isArray(runs) ? runs[0] : runs;
+  const size = (first && first.options && first.options.fontSize) || 12;
   const defaults = {
     x: px(x), y: px(y), w: px(w), h: px(h),
     align: "left", valign: "top", margin: 0,
-    fontFace: FONT, lineSpacing: 1.2,
+    fontFace: FONT, lineSpacing: size * 1.2,
   };
   slide.addText(runs, { ...defaults, ...opts });
 }
@@ -92,17 +99,17 @@ textBox(60, 170, 64, 30, [
 // Row 1: "11, 3, 22" around y=201..230
 textBox(60, 205, 64, 60, [
   { text: "11, 3, 22", options: { color: BLACK, fontSize: 12 } }
-], { lineSpacing: 1.0 });
+]);
 
 // Row 2: "30, 3, 22" around y=291..320
 textBox(60, 295, 64, 60, [
   { text: "30, 3, 22", options: { color: BLACK, fontSize: 12 } }
-], { lineSpacing: 1.0 });
+]);
 
 // Row 3: "60, 3, 22" around y=415..444
 textBox(60, 420, 64, 60, [
   { text: "60, 3, 22", options: { color: BLACK, fontSize: 12 } }
-], { lineSpacing: 1.0 });
+]);
 
 // ── MAIN CONTENT COLUMNS ───────────────────────────────────────────────────────
 // Column definitions: [name, x_start, x_end, header_text]
@@ -219,7 +226,7 @@ for (const col of columns) {
   // Column header (blue bold) at y=170..199
   textBox(x0, 170, w, 30, [
     { text: col.header, options: { bold: true, color: BLUE, fontSize: 12 } }
-  ], { lineSpacing: 1.0 });
+  ], {});
   
   // Each row group
   for (let gi = 0; gi < 3; gi++) {
@@ -229,7 +236,7 @@ for (const col of columns) {
     // W vector + ||W||² (red) - single line
     textBox(x0, gy, w, 18, [
       { text: group.w, options: { color: RED, fontSize: 11 } }
-    ], { lineSpacing: 1.0 });
+    ], {});
     
     // Three test boxes: Test1, Test2, Test3
     // Layout: "Test1: x₁=30,x₂=15,y=60" etc.
@@ -248,7 +255,7 @@ for (const col of columns) {
         { text: `x₂=${test.x2},`, options: { color: BLACK, fontSize: 10 } },
         { text: `y=${test.y}`, options: { color: GREEN, fontSize: 10 } },
       ];
-      textBox(tx, ty, testW, 16, runs, { lineSpacing: 1.0 });
+      textBox(tx, ty, testW, 16, runs, {});
     }
   }
 }

@@ -69,9 +69,11 @@ const BX = 88 / 72;
 const BW = 790 / 72;
 
 // Line 1 — intro: "Assume the Dataset is linearly separable (suitable to apply
-// Linear regression model)". Dark-red / maroon (nominal #C00000), 18pt, key phrases
-// underlined (spec) — "linearly separable" and "Linear regression model".
-// pptxgenjs array-format per-run underline does not render in LO; draw explicit lines.
+// Linear regression model)". Dark-red / maroon, 18pt, smallest body text per spec.
+// FRAME-vs-SPEC: spec (5) claims underlined key phrases [?], but PIL on the original
+// (unique_slides/slide_007.jpg) shows NO underline on this line — rows y173..175 carry
+// only ~90 px of ink (descender tails), vs 472 px on the header's y220-221 underline
+// stroke. Frame wins: the intro line is drawn WITHOUT underlines.
 slide.addText(
   [
     { text: "Assume the Dataset is ", options: { color: INTRO_RED, fontSize: 18 } },
@@ -86,19 +88,6 @@ slide.addText(
     lineSpacing: 22, margin: 0, valign: "top",
   }
 );
-// Underline 1: "linearly separable" starts after "Assume the Dataset is " (22 chars ≈ 218 pt)
-// Arial 18pt ≈ 9.9pt/char. x=88 + 22*9.9 = 306 pt. width 18*9.9 = 178 pt.
-// Underline 2: "Linear regression model" starts after above + "(suitable to apply " (18 chars)
-// x = 88 + (22+18+18)*9.9 = 88 + 58*9.9 = 662 pt. width 22*9.9 = 218 pt.
-// Baseline ≈ text top + 14pt = 146+14 = 160pt. Underline at 162pt.
-slide.addShape(pptx.ShapeType.line, {
-  x: 306 / 72, y: 162 / 72, w: 178 / 72, h: 0,
-  line: { color: INTRO_RED, width: 1 },
-});
-slide.addShape(pptx.ShapeType.line, {
-  x: 662 / 72, y: 162 / 72, w: 218 / 72, h: 0,
-  line: { color: INTRO_RED, width: 1 },
-});
 
 // Line 2 — section header: "Linear regression model has FOUR problems:",
 // blue bold, underlined, 20pt.
@@ -141,7 +130,11 @@ slide.addText(
 );
 
 // Line 6 — bullet 4: "➢Different Hyperplanes can solve the problems (Selection of Best
-// Hyperplane)".
+// Hyperplane)". FRAME-MEASURED: this is the longest line (orig x92..859 = 768pt) and at
+// 22pt it wrapped to a second line in LO (rendered 810.8pt > 792pt usable). Compressed
+// with negative charSpacing so it fits one line at the same font size as the other
+// bullets (never font size — that breaks cap-height/baseline metrics).
+// residual (measured at -0.3pt) = 801 - 790 = 11pt over 76 glyph gaps -> charSpacing -0.6pt.
 slide.addText(
   [
     { text: "\u27A2Different Hyperplanes can solve the problems ", options: { color: BLUE, bold: true } },
@@ -149,7 +142,7 @@ slide.addText(
   ],
   {
     x: BX, y: 389 / 72, w: BW, h: 44 / 72,
-    fontSize: 22, fontFace: FONT, margin: 0, valign: "top",
+    fontSize: 22, fontFace: FONT, margin: 0, valign: "top", charSpacing: -0.6,
   }
 );
 

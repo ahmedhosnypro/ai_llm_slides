@@ -179,19 +179,25 @@ slide.addImage({
 
 // ============================================================
 // GRAPH (parabola with axes, grid, points, dashed lines)
-// This is complex - we'll draw it as a combination of shapes
-// Position: x ~ 600-920, y ~ 50-250
-// Plot area: approx x 640-900, y 70-240
+// MEASURED from unique_slides/slide_031.jpg (007 re-measure, 2026-10-23):
+//   plot box x 573..809, y 66..267 (236x201 px) — RED C00000 border, white fill.
+//   The plot box's LEFT edge is x573; it never reaches the badge zone
+//   (x 858..894, y 56..90), so the badge stays fully visible.
+//   Grid lines measured at x 572/630/689/748/807 and y 87/146/206/265
+//   (tick labels -5,0,5,10,15 on both axes).
+//   OLD geometry (x 640..900, y 70..240) put the white plot rect ON TOP of
+//   the badge — the house chrome check caught it (badge center 21 render-px
+//   high, lower half covered). See worker_report.md.
 // ============================================================
-const gX = px(640);
-const gY = px(70);
-const gW = px(260); // 900-640
-const gH = px(170); // 240-70
+const gX = px(573);
+const gY = px(66);
+const gW = px(809 - 573); // 236px
+const gH = px(267 - 66);  // 201px
 
-// Graph background (white)
+// Graph background (white), RED border per the frame
 slide.addShape(pptx.ShapeType.rect, {
   x: gX, y: gY, w: gW, h: gH,
-  fill: { color: "FFFFFF" }, line: { color: "000000", width: 1 },
+  fill: { color: "FFFFFF" }, line: { color: "C00000", width: 1 },
 });
 
 // Grid lines (light gray CCCCCC) - both horizontal and vertical

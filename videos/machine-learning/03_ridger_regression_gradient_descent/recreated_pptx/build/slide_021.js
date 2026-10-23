@@ -6,11 +6,14 @@
 // KEY MEASUREMENTS (frame px):
 // Title: red ink x290..708 y77..101, center (499, 89), cap h=19px (~26pt Liberation Serif Bold)
 // House chrome: house_chrome.js (panel E9E9E7 x54..903 y45..540, C00000 strokes L/R/B, badge "21")
-// Three content panels (blue #0000FF border, white fill on gray house panel):
-//   P1: y130..230 (h=100), x76..880 (w=804)
-//   P2: y290..395 (h=105), x76..880
-//   P3: y415..520 (h=105), x76..880
-//   Gaps: P1-P2 60px, P2-P3 20px
+// Three content panels (blue #0000FF ~1pt stroke, white fill on gray house panel).
+// Measured 2026-10-23 (scratch/tmp/measure_strokes.py → qa/slide021/measure_strokes_out.txt)
+// from the original frame with a blueish mask (b-r>25) that catches the anti-aliased
+// 2px strokes:
+//   LEFT vertical cols 75-77 (core 76 — a solid (46,36,123) column, full block height);
+//   RIGHT vertical: B1 x884-886, B2/B3 x886-889;
+//   TOP/BOTTOM rules 2-3px rows: B1 128-130 / 255-257, B2 288-290 / 415-418,
+//   B3 437-439 / 527-529. All three blocks are CLOSED rectangles.
 // Tables (3x3 each, gridlines gray ~#6D6F6C):
 //   TOP:    x98..302, y174..226. Cols [98,166,234,302], Rows [174,191,209,226]
 //   MID:    x90..294, y342..395. Cols [90,158,226,294], Rows [342,360,377,395]
@@ -49,24 +52,20 @@ const FONT_SERIF = "Liberation Serif"; // Times-like serif (available)
 const FONT_SANS  = "Liberation Sans";  // Arial metric twin
 
 // ── Helpers ────────────────────────────────────────────────────────────────────
+// pptxgenjs has no {color:"none"}: a non-hex fill falls back to 000000. Omit the
+// fill/line keys entirely for no-fill / no-line rects.
 const rect = (x, y, w, h, fill, line) =>
   slide.addShape(pptx.ShapeType.rect, {
     x: px(x), y: px(y), w: px(w), h: px(h),
-    fill: { color: fill },
-    line: line ? { color: line.color, width: line.width } : { color: "none" },
+    ...(fill ? { fill: { color: fill } } : {}),
+    ...(line ? { line: { color: line.color, width: line.width } } : {}),
   });
 
-const lineShape = (x, y, w, h, color, width, head) =>
-  slide.addShape(pptx.ShapeType.line, {
-    x: px(x), y: px(y), w: px(w), h: px(h),
-    line: { color: color, width: width, head: head || "none" },
-  });
-
-// Arrow with triangular head (pptxgenjs line head="triangle" works)
+// Arrow with a triangular head at the END point (pptxgenjs line.endArrowType).
 const arrow = (x0, y0, x1, y1, color, width) =>
   slide.addShape(pptx.ShapeType.line, {
     x: px(x0), y: px(y0), w: px(x1 - x0), h: px(y1 - y0),
-    line: { color: color, width: width, head: "triangle", headSize: "medium" },
+    line: { color: color, width: width, endArrowType: "triangle" },
   });
 
 // ── 1. TITLE ──────────────────────────────────────────────────────────────────
@@ -78,18 +77,18 @@ slide.addText("Inverse Problem of Singular Matrix", {
 });
 
 // ── 2. THREE CONTENT PANELS ──────────────────────────────────────────────────
-// Panel geometry (frame px)
+// Measured geometry (see header): B1 y129..257 x76..886, B2 y288..418 x76..889,
+// B3 y437..530 x76..889. Stroke width 1pt ≈ the original's 2px blue rules.
 const PANELS = [
-  { name: "P1", x: 76, y: 130, w: 804, h: 100 }, // top
-  { name: "P2", x: 76, y: 290, w: 804, h: 105 }, // middle
-  { name: "P3", x: 76, y: 415, w: 804, h: 105 }, // bottom
+  { name: "P1", x: 76, y: 129, w: 810, h: 129 }, // top
+  { name: "P2", x: 76, y: 288, w: 813, h: 130 }, // middle (rule lands y418)
+  { name: "P3", x: 76, y: 437, w: 813, h: 93 },  // bottom
 ];
 
 for (const p of PANELS) {
-  // White fill on top of house gray panel
+  // White fill on top of house gray panel, then a blue 1pt border rect on top
   rect(p.x, p.y, p.w, p.h, WHITE);
-  // Blue border (1pt)
-  rect(p.x, p.y, p.w, p.h, "none", { color: BLUE, width: 1 });
+  rect(p.x, p.y, p.w, p.h, null, { color: BLUE, width: 1 });
 }
 
 // ── 3. TOP PANEL (P1) ─────────────────────────────────────────────────────────

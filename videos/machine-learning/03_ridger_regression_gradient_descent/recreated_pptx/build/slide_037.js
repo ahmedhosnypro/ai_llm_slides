@@ -3,31 +3,51 @@
 // "Problem Formulation"
 //
 // Frame geometric measurements (unique_slides/slide_037.jpg, 960x540 px = slide pts,
-// PIL-based measurement 2026-10-23):
-//   Title: "Problem Formulation" - dark red (C00000), centered, rows 65-83, cols 354-627
-//   Badge: "37" at (877, 73.5), d~28px
-//   Gray panel (house chrome): x 54..903, y 45..540, fill E9E9E7
-//   Red strokes: left x58, right x901, bottom y538.5 (NO top stroke)
-//   Pale yellow panel (FFF9C4): rows ~110-200, cols ~70-890, red border
-//   Tan panel 1 (F5E6CA): rows ~228-379, cols ~70-890, red border
-//   Tan panel 2 (F5E6CA): rows ~380-519, cols ~70-890, red border
-//   Text bands (ink tops, approx pt heights):
-//     Define δ_i heading:    y111-134, ~23px, dark red C00000
-//     Implication 1:         y146-162, ~16px, black + red highlights + blue italic class labels
-//     Implication 2:         y172-189, ~17px, black + red highlights + blue italic class labels
-//     Redefine Error heading: y243-256, ~13px, dark red C00000
-//     Error equation:        y264-287, ~23px, black + red subscript/arrow
-//     Summation positive:    y310-322, ~12px, black + red "positive"
-//     Minimize heading:      y363-381, ~18px, black italic + blue "Gradient Descent"
-//     First update eq:       y404-449, ~45px (two visual lines), black + red subscript
-//     Second update eq:      y473-513, ~40px, black + red subscript + red "ONLY"
-//   Green highlights:
-//     Highlight 1: around "W^(updated) = W^(old)" on first eq, border rows 417-430, cols 724-752
-//     Highlight 2: around full second eq, fill rows 465-514, cols 78-486, border rows 480-493, cols 432-460
-//   Green arrow: between highlights, ~rows 450-470
+// 1px = 1pt = 1/72in; PIL-measured 2026-10-23, all values in frame px):
 //
-// Spec: analysis/slide_037_final.json - verbatim text, colors, layout per recreation_brief
-// Spec-vs-frame: frame geometry wins; spec provides verbatim text and color roles
+//   Title "Problem Formulation": red (#C00000) ink rows 64..84, cols 354..628, centered
+//     (center x=479.5). Badge "37" per house chrome.
+//   Pale-yellow panel #FFF9C4 with red #C00000 border: cols 69..893, rows 108..205
+//   Tan panel #F5E6CA with red border (middle):  cols 69..893, rows 228..373
+//   Tan panel #F5E6CA with red border (bottom):  cols 69..893, rows 380..534
+//
+//   Inside pale-yellow panel:
+//     "Define δ_i as :" (red #C00000 bold): rows 111..134, cols 68..870 (heading)
+//     implication line 1 (black): rows 144..171, cols 79..845
+//     implication line 2 (black): rows 172..189, cols 79..844
+//       red marks: rows 146..158 cols 128..594 / 172..185 cols 360..410
+//       italic blue class labels ("class I", "Class II"): rows 146..159 cols 358..415
+//   Inside middle tan panel:
+//     "Redefine Error function as:" (red bold): rows 229..256, cols 77..
+//     error equation line: rows 264..286, cols 82..868
+//       Sigma ∑ ink at cols 203..220 rows 264..286
+//       red Sum-subscript "all misclassified vectors (i)" BELOW the Sum:
+//         rows 292..302, cols 151..271 (red)
+//     "Summation is always positive": rows 310..326, cols 76..294
+//       (red italic "positive" per spec)
+//   Inside bottom tan panel:
+//     "Minimize the Error using Gradient Descent with step η": rows 380..399
+//       black italic, "Gradient Descent" blue + bold (blue ink rows 362..377 cols 295..445)
+//     first update equation: main line rows 404..440 cols 84..762
+//       Sigma ∑ ink cols 652..673; red subscript "misclassified vectors" below:
+//         rows 442..452, cols 611..676
+//       red "η" glyph at cols 224..250, rows 422..438
+//     green highlight box (#E8F5E9 fill, soft green edge ~#99CC99): rows 458..521,
+//       cols 66..488 — contains the SECOND update equation:
+//       main line rows 472..500, cols 85..470
+//       red Sum-subscript "misclassified vectors ONLY (i)" below: rows 506..514, cols 266..419
+//     NOTE: the original has NO second light-green box on the first equation and NO
+//       curved green arrow — PIL scan of green ink in rows 400..458 shows none. The
+//       spec's "green rounded rectangle + curved arrow" on the first line is not present
+//       in the measured frame; the frame wins (frame-vs-spec law).
+//
+// Equations are rendered in PROFESSIONAL 2D FORMAT via matplotlib mathtext -> 600dpi
+// transparent PNG (scripts/render_eq.py) + eq_*.json sidecars: each Sigma carries its
+// subscript stacked below it, matching the original's stacked rendering. Text is Arial
+// (deck standard); math glyphs come from the mathtext DejaVu set (house law, accepted).
+//
+// Spec: analysis/slide_037_final.json — VERBATIM text, per-run colors per
+// recreation_brief steps 5..15.
 
 const path = require("path");
 const pptxgen = require("pptxgenjs");
@@ -47,295 +67,260 @@ const FONT = "Arial";
 const RED = "C00000";
 const BLACK = "000000";
 const BLUE = "0000FF";
-const GREEN_FILL = "E8F5E9";
-const GREEN_BORDER = "2E7D32";
 const PALE_YELLOW = "FFF9C4";
 const TAN = "F5E6CA";
-const PANEL_RED = "C00000"; // panel border color
+const PANEL_RED = "C00000";
+const BRIGHT_RED = "FF0000";
+const GREEN_FILL = "E8F5E9";
 
-// Conversion: frame px (960x540) -> inches (1px = 1pt = 1/72 in)
-const px = (v) => v / 72;
+const ASSET = __dirname + "/assets";
+const px = (v) => v / 72; // frame px -> inches
+
+// ---- panel geometry (frame px) ----
+const PANELS = [
+  { x: 69, y: 108, w: 893 - 69, h: 205 - 108, fill: PALE_YELLOW },
+  { x: 69, y: 228, w: 893 - 69, h: 373 - 228, fill: TAN },
+  { x: 69, y: 380, w: 893 - 69, h: 534 - 380, fill: TAN },
+];
+const PANEL_X = px(69), PANEL_W = px(893 - 69), PAD = px(12);
+
+// ---- text metrics (frame px) ----
+// cap-height advance from measured bands: heading ~20pt, body ~17pt, small subscript text ~13pt
+const HEAD_SIZE = 20, BODY_SIZE = 17;
+
+// helper: a single text line pinned to a measured ink TOP (frame px) and LEFT (frame px)
+function line(text, leftPx, topPx, sizePx, color, opts = {}) {
+  slide.addText(text, {
+    x: px(leftPx), y: px(topPx), w: px(opts.w || 820), h: px(sizePx * 1.35),
+    fontSize: sizePx, color, fontFace: FONT,
+    bold: !!opts.bold, italic: !!opts.italic, underline: !!opts.underline,
+    margin: 0, valign: "top", align: opts.align || "left",
+  });
+}
+// helper: multi-run line (array of {text, options})
+function runLine(runs, leftPx, topPx, sizePx, opts = {}) {
+  slide.addText(runs.map((r) => ({
+    text: r.text,
+    options: Object.assign({ color: BLACK, fontSize: sizePx, fontFace: FONT }, r.options || {}),
+  })), {
+    x: px(leftPx), y: px(topPx), w: px(opts.w || 820), h: px(sizePx * 1.6),
+    margin: 0, valign: "top", align: opts.align || "left",
+  });
+}
 
 // ============================================================
-// PANEL DEFINITIONS (measured frame coordinates)
+// TITLE
 // ============================================================
-// Pale yellow panel (upper): ~rows 110-200
-const PY_Y0 = px(110);
-const PY_Y1 = px(200);
-const PY_H = PY_Y1 - PY_Y0;
-const PY_X = px(70);
-const PY_W = px(890 - 70);
-
-// Tan panel 1 (middle): ~rows 228-379
-const T1_Y0 = px(228);
-const T1_Y1 = px(379);
-const T1_H = T1_Y1 - T1_Y0;
-const T1_X = px(70);
-const T1_W = px(890 - 70);
-
-// Tan panel 2 (bottom): ~rows 380-519
-const T2_Y0 = px(380);
-const T2_Y1 = px(519);
-const T2_H = T2_Y1 - T2_Y0;
-const T2_X = px(70);
-const T2_W = px(890 - 70);
-
-// Panel border width (red stroke)
-const PANEL_BORDER_W = 1.5; // pt
-
-// Internal padding for text inside panels (frame px)
-const PAD = px(12);
-
-// ============================================================
-// TITLE - add early to ensure it's above gray panel
-// ============================================================
-// Frame: centered at x~479.5, cap-top y~74 (rows 65-83)
 slide.addText("Problem Formulation", {
-  x: 0, y: px(68), w: 13.333, h: px(34),
+  x: 0, y: px(62), w: 13.333, h: px(34),
   align: "center", valign: "middle",
-  fontSize: 30, bold: true, color: RED, fontFace: FONT,
-  margin: 0,
+  fontSize: 28, bold: true, color: RED, fontFace: FONT, margin: 0,
 });
 
 // ============================================================
-// PALE YELLOW PANEL (upper): Define δ_i as : + two implications
+// PANELS
 // ============================================================
-// Panel background
-slide.addShape(pptx.ShapeType.rect, {
-  x: PY_X, y: PY_Y0, w: PY_W, h: PY_H,
-  fill: { color: PALE_YELLOW }, line: { color: PANEL_RED, width: PANEL_BORDER_W },
-});
+for (const p of PANELS) {
+  slide.addShape(pptx.ShapeType.rect, {
+    x: px(p.x), y: px(p.y), w: px(p.w), h: px(p.h),
+    fill: { color: p.fill }, line: { color: PANEL_RED, width: 1.5 },
+  });
+}
 
-// Heading: "Define δ_i as :"
-slide.addText("Define \u03b4_i as :", {
-  x: PY_X + PAD, y: PY_Y0 + PAD, w: PY_W - 2*PAD, h: px(28),
-  fontSize: 18, bold: true, color: RED, fontFace: FONT,
-  margin: 0, valign: "top",
-});
-
-// Implication 1: "If X ∈ class I and misclassified as Class II then d(X) will be <0 ⇒ δ_i = -1 ⇒ d(X)δ_i > 0"
-// Row ~146-162. Black text, with:
-// - "class I" and "Class II" italic blue
-// - "misclassified" red
-// - "⇒" (⇒) red
-// - "δ_i" red
-// - "-1" red
-// - "> 0" red
-// - "d(X)" underlined
-const imp1_y = PY_Y0 + px(44);
+// ============================================================
+// PANEL 1 (pale yellow): Define δ_i as : + two implications
+// ============================================================
+// Heading — measured ink rows 111..134, cols 68..870
 slide.addText([
-  { text: "If X \u2208 ", options: { color: BLACK, fontSize: 16 } },
-  { text: "class I", options: { color: BLUE, fontSize: 16, italic: true } },
-  { text: " and ", options: { color: BLACK, fontSize: 16 } },
-  { text: "misclassified", options: { color: RED, fontSize: 16 } },
-  { text: " as ", options: { color: BLACK, fontSize: 16 } },
-  { text: "Class II", options: { color: BLUE, fontSize: 16, italic: true } },
-  { text: " then ", options: { color: BLACK, fontSize: 16 } },
-  { text: "d(X)", options: { color: BLACK, fontSize: 16, underline: true } },
-  { text: " will be ", options: { color: BLACK, fontSize: 16 } },
-  { text: "<0", options: { color: RED, fontSize: 16 } },
-  { text: " \u21d2 ", options: { color: RED, fontSize: 16 } },
-  { text: "\u03b4_i", options: { color: RED, fontSize: 16 } },
-  { text: " = ", options: { color: RED, fontSize: 16 } },
-  { text: "-1", options: { color: RED, fontSize: 16 } },
-  { text: " \u21d2 ", options: { color: RED, fontSize: 16 } },
-  { text: "d(X)", options: { color: BLACK, fontSize: 16, underline: true } },
-  { text: "\u03b4_i", options: { color: RED, fontSize: 16 } },
-  { text: " > 0", options: { color: RED, fontSize: 16 } },
+  { text: "Define ", options: { color: RED, bold: true } },
+  { text: "\u03b4", options: { color: RED, bold: true, italic: true } },
+  { text: "_i", options: { color: RED, bold: true, italic: true, subscript: true } },
+  { text: " as :", options: { color: RED, bold: true } },
 ], {
-  x: PY_X + PAD, y: imp1_y, w: PY_W - 2*PAD, h: px(28),
-  fontSize: 16, color: BLACK, fontFace: FONT,
-  margin: 0, valign: "top",
+  x: PANEL_X, y: px(111), w: PANEL_W, h: px(HEAD_SIZE * 1.4),
+  fontSize: HEAD_SIZE, fontFace: FONT, margin: 0, valign: "top",
 });
 
-// Implication 2: "If X ∈ class II and misclassified as Class I then d(X) will be >0 ⇒ δ_i = +1 ⇒ d(X)δ_i > 0"
-// Row ~172-189
-const imp2_y = imp1_y + px(30);
-slide.addText([
-  { text: "If X \u2208 ", options: { color: BLACK, fontSize: 16 } },
-  { text: "class II", options: { color: BLUE, fontSize: 16, italic: true } },
-  { text: " and ", options: { color: BLACK, fontSize: 16 } },
-  { text: "misclassified", options: { color: RED, fontSize: 16 } },
-  { text: " as ", options: { color: BLACK, fontSize: 16 } },
-  { text: "Class I", options: { color: BLUE, fontSize: 16, italic: true } },
-  { text: " then ", options: { color: BLACK, fontSize: 16 } },
-  { text: "d(X)", options: { color: BLACK, fontSize: 16, underline: true } },
-  { text: " will be ", options: { color: BLACK, fontSize: 16 } },
-  { text: ">0", options: { color: RED, fontSize: 16 } },
-  { text: " \u21d2 ", options: { color: RED, fontSize: 16 } },
-  { text: "\u03b4_i", options: { color: RED, fontSize: 16 } },
-  { text: " = ", options: { color: RED, fontSize: 16 } },
-  { text: "+1", options: { color: RED, fontSize: 16 } },
-  { text: " \u21d2 ", options: { color: RED, fontSize: 16 } },
-  { text: "d(X)", options: { color: BLACK, fontSize: 16, underline: true } },
-  { text: "\u03b4_i", options: { color: RED, fontSize: 16 } },
-  { text: " > 0", options: { color: RED, fontSize: 16 } },
-], {
-  x: PY_X + PAD, y: imp2_y, w: PY_W - 2*PAD, h: px(28),
-  fontSize: 16, color: BLACK, fontFace: FONT,
-  margin: 0, valign: "top",
-});
+// Implication 1 — measured ink rows 144..171, cols 79..845
+// colors per recreation_brief step 6: class labels italic BLUE; "misclassified",
+// arrows ⇒, δ_i, "-1" and "> 0" in BRIGHT RED; "d(X)" underlined.
+const IMP_SIZE = BODY_SIZE;
+runLine([
+  { text: "If X \u2208 " },
+  { text: "class I", options: { italic: true, color: BLUE } },
+  { text: " and " },
+  { text: "misclassified", options: { color: BRIGHT_RED } },
+  { text: " as " },
+  { text: "Class II", options: { italic: true, color: BLUE } },
+  { text: " then " },
+  { text: "d(X)", options: { underline: true } },
+  { text: " will be " },
+  { text: "<0", options: { color: BRIGHT_RED } },
+  { text: " \u21d2 ", options: { color: BRIGHT_RED } },
+  { text: "\u03b4", options: { color: BRIGHT_RED, italic: true } },
+  { text: "_i", options: { color: BRIGHT_RED, italic: true, subscript: true } },
+  { text: " = ", options: { color: BRIGHT_RED } },
+  { text: "-1", options: { color: BRIGHT_RED } },
+  { text: " \u21d2 ", options: { color: BRIGHT_RED } },
+  { text: "d(X)", options: { underline: true } },
+  { text: "\u03b4", options: { color: BRIGHT_RED, italic: true } },
+  { text: "_i", options: { color: BRIGHT_RED, italic: true, subscript: true } },
+  { text: " > 0", options: { color: BRIGHT_RED } },
+], PANEL_X, px(144), IMP_SIZE);
+
+// Implication 2 — measured ink rows 172..189, cols 79..844
+runLine([
+  { text: "If X \u2208 " },
+  { text: "class II", options: { italic: true, color: BLUE } },
+  { text: " and " },
+  { text: "misclassified", options: { color: BRIGHT_RED } },
+  { text: " as " },
+  { text: "Class I", options: { italic: true, color: BLUE } },
+  { text: " then " },
+  { text: "d(X)", options: { underline: true } },
+  { text: " will be " },
+  { text: ">0", options: { color: BRIGHT_RED } },
+  { text: " \u21d2 ", options: { color: BRIGHT_RED } },
+  { text: "\u03b4", options: { color: BRIGHT_RED, italic: true } },
+  { text: "_i", options: { color: BRIGHT_RED, italic: true, subscript: true } },
+  { text: " = ", options: { color: BRIGHT_RED } },
+  { text: "+1", options: { color: BRIGHT_RED } },
+  { text: " \u21d2 ", options: { color: BRIGHT_RED } },
+  { text: "d(X)", options: { underline: true } },
+  { text: "\u03b4", options: { color: BRIGHT_RED, italic: true } },
+  { text: "_i", options: { color: BRIGHT_RED, italic: true, subscript: true } },
+  { text: " > 0", options: { color: BRIGHT_RED } },
+], PANEL_X, px(172), IMP_SIZE);
 
 // ============================================================
-// TAN PANEL 1 (middle): Redefine Error function
+// PANEL 2 (middle tan): Redefine Error function
 // ============================================================
-slide.addShape(pptx.ShapeType.rect, {
-  x: T1_X, y: T1_Y0, w: T1_W, h: T1_H,
-  fill: { color: TAN }, line: { color: PANEL_RED, width: PANEL_BORDER_W },
+// Heading — measured ink rows 229..256, cols 77..
+line("Redefine Error function as:", px(77), px(229), HEAD_SIZE, RED, { bold: true });
+
+// Error equation — main line rows 264..286, cols 82..868.
+// Sigma ∑ ink cols 203..220; red stacked subscript "all misclassified vectors (i)"
+// below it (rows 292..302, cols 151..271).
+// The line composes: "Error = " + [Sigma+subscript image] + " δ_i W^T X_i ⇒ (W^T X_i) takes
+// positive and negative values and δ_i has the same sign"
+const EQ1_SIZE = 17;
+runLine([{ text: "Error = " }], PANEL_X, px(264), EQ1_SIZE, { w: 120 });
+
+// Sigma-with-subscript image (professional 2D format), bottom-aligned so the folded
+// subscript sits under the Sum, matching the original's stacked rendering.
+slide.addImage({
+  path: ASSET + "/eq_037_sum_error.png",
+  x: px(203 - 8), y: px(286 - 0.46333 * 600 + 135), // baseline pass; re-pinned in closed loop
+  w: 1.94667, h: 0.46333,
 });
 
-// Heading: "Redefine Error function as:"
-slide.addText("Redefine Error function as:", {
-  x: T1_X + PAD, y: T1_Y0 + PAD, w: T1_W - 2*PAD, h: px(28),
-  fontSize: 18, bold: true, color: RED, fontFace: FONT,
-  margin: 0, valign: "top",
-});
+runLine([
+  { text: " \u03b4", options: { italic: true } },
+  { text: "_i", options: { italic: true, subscript: true } },
+  { text: " W" },
+  { text: "T", options: { superscript: true } },
+  { text: " X" },
+  { text: "_i", options: { subscript: true } },
+  { text: " " },
+  { text: "\u21d2", options: { color: BRIGHT_RED, fontSize: EQ1_SIZE + 3 } },
+  { text: " (W" },
+  { text: "T", options: { superscript: true } },
+  { text: " X" },
+  { text: "_i", options: { subscript: true } },
+  { text: ") takes " },
+  { text: "positive", options: { color: BRIGHT_RED, italic: true } },
+  { text: " and negative values and " },
+  { text: "\u03b4", options: { italic: true, color: BRIGHT_RED } },
+  { text: "_i", options: { italic: true, color: BRIGHT_RED, subscript: true } },
+  { text: " has the same sign" },
+], px(320), px(264), EQ1_SIZE, { w: 560 });
 
-// Error equation: "Error = Σ_{all misclassified vectors (i)} δ_i W^T X_i ⇒ (W^T X_i) takes positive and negative values and δ_i has the same sign"
-// Row ~264-287. Black text with:
-// - Σ subscript "all misclassified vectors (i)" red
-// - ⇒ red
-// - δ_i red (both occurrences)
-// - "positive" in red italic per spec
-const eq1_y = T1_Y0 + px(40);
-slide.addText([
-  { text: "Error = ", options: { color: BLACK, fontSize: 16 } },
-  { text: "\u03a3", options: { color: RED, fontSize: 20 } },
-  { text: " all misclassified vectors (i) ", options: { color: RED, fontSize: 13 } },
-  { text: "\u03b4_i W^T X_i ", options: { color: BLACK, fontSize: 16 } },
-  { text: "\u21d2 ", options: { color: RED, fontSize: 16 } },
-  { text: "(W^T X_i) takes ", options: { color: BLACK, fontSize: 16 } },
-  { text: "positive", options: { color: RED, fontSize: 16, italic: true } },
-  { text: " and negative values and ", options: { color: BLACK, fontSize: 16 } },
-  { text: "\u03b4_i", options: { color: RED, fontSize: 16 } },
-  { text: " has the same sign", options: { color: BLACK, fontSize: 16 } },
-], {
-  x: T1_X + PAD, y: eq1_y, w: T1_W - 2*PAD, h: px(36),
-  fontSize: 16, color: BLACK, fontFace: FONT,
-  margin: 0, valign: "top",
-});
-
-// "Summation is always positive" - row ~310-322
-const sum_pos_y = eq1_y + px(38);
-slide.addText([
-  { text: "Summation is always ", options: { color: BLACK, fontSize: 16 } },
-  { text: "positive", options: { color: RED, fontSize: 16, italic: true } },
-], {
-  x: T1_X + PAD, y: sum_pos_y, w: T1_W - 2*PAD, h: px(24),
-  fontSize: 16, color: BLACK, fontFace: FONT,
-  margin: 0, valign: "top",
-});
-
-// ============================================================
-// TAN PANEL 2 (bottom): Minimize Error using Gradient Descent
-// ============================================================
-slide.addShape(pptx.ShapeType.rect, {
-  x: T2_X, y: T2_Y0, w: T2_W, h: T2_H,
-  fill: { color: TAN }, line: { color: PANEL_RED, width: PANEL_BORDER_W },
-});
-
-// Heading: "Minimize the Error using Gradient Descent with step η"
-// Row ~363-381. Black italic, "Gradient Descent" blue bold
-const head2_y = T2_Y0 + PAD;
-slide.addText([
-  { text: "Minimize the Error using ", options: { color: BLACK, fontSize: 16, italic: true } },
-  { text: "Gradient Descent", options: { color: BLUE, fontSize: 16, bold: true, italic: true } },
-  { text: " with step \u03b7", options: { color: BLACK, fontSize: 16, italic: true } },
-], {
-  x: T2_X + PAD, y: head2_y, w: T2_W - 2*PAD, h: px(28),
-  fontSize: 16, color: BLACK, fontFace: FONT,
-  margin: 0, valign: "top",
-});
+// "Summation is always positive" — measured ink rows 310..326, cols 76..294
+runLine([
+  { text: "Summation is always " },
+  { text: "positive", options: { color: BRIGHT_RED, italic: true } },
+], PANEL_X, px(310), EQ1_SIZE);
 
 // ============================================================
-// GREEN HIGHLIGHTS - add BEFORE text so text renders on top
+// PANEL 3 (bottom tan): Minimize the Error using Gradient Descent
 // ============================================================
+// Heading — measured ink rows 380..399; black italic + blue bold "Gradient Descent"
+runLine([
+  { text: "Minimize the Error using ", options: { italic: true } },
+  { text: "Gradient Descent", options: { italic: true, bold: true, color: BLUE } },
+  { text: " with step ", options: { italic: true } },
+  { text: "\u03b7", options: { italic: true } },
+], PANEL_X, px(380), HEAD_SIZE);
 
-// Green highlight 1: around "W^(updated) = W^(old)" on first eq
-// Frame: border rows 417-430, cols 724-752
-// In inches: x=724/72..752/72 = 10.05..10.44, y=417/72..430/72 = 5.79..5.97
-// Width ~0.4in, height ~0.18in
-// Add padding: ~10px = 0.14in
+// ---- first update equation: main line rows 404..440, cols 84..762 ----
+// "W^(updated) = W^(old) - η ∂Error/∂W where ∂Error/∂W = " + [Sigma+sub image] + " δ_i X_i"
+// measured: "W^(updated) = W^(old) - η ∂Error/∂W where ∂Error/∂W =" ends at col ~600;
+// Sigma ink cols 652..673; red stacked subscript "misclassified vectors" rows 442..452
+// cols 611..676; then "δ_i X_i" cols ~700..762.
+const EQ2_SIZE = 17;
+runLine([
+  { text: "W" },
+  { text: "(updated)", options: { superscript: true } },
+  { text: " = W" },
+  { text: "(old)", options: { superscript: true } },
+  { text: " - " },
+  { text: "\u03b7", options: { color: BRIGHT_RED } },
+  { text: " " },
+  { text: "\u2202Error/\u2202W" },
+  { text: " " },
+  { text: "where", options: { italic: true } },
+  { text: " " },
+  { text: "\u2202Error/\u2202W" },
+  { text: " = " },
+], PANEL_X, px(404), EQ2_SIZE, { w: 600 });
+
+slide.addImage({
+  path: ASSET + "/eq_037_sum_misclass.png",
+  x: px(652 - 8), y: px(452 - 0.46333 * 600 + 135),
+  w: 1.6, h: 0.38,
+});
+
+runLine([
+  { text: " \u03b4", options: { italic: true } },
+  { text: "_i", options: { italic: true, subscript: true } },
+  { text: " X" },
+  { text: "_i", options: { subscript: true } },
+], px(700), px(404), EQ2_SIZE, { w: 80 });
+
+// ---- green highlight box (measured rows 458..521, cols 66..488) ----
 slide.addShape(pptx.ShapeType.roundRect, {
-  x: px(714), y: px(407), w: px(50), h: px(33),
-  fill: { color: GREEN_FILL }, line: { color: GREEN_BORDER, width: 1.5 },
+  x: px(66), y: px(458), w: px(488 - 66), h: px(521 - 458),
+  fill: { color: GREEN_FILL },
+  line: { color: "99CC99", width: 1 },
 });
 
-// Green highlight 2: larger rounded rectangle around full second equation
-// Frame: fill rows 465-514, cols 78-486 -> x=78..486, y=465..514
-// Inches: x=1.08..6.75, y=6.46..7.14
-// Width ~5.67in, height ~0.68in
-slide.addShape(pptx.ShapeType.roundRect, {
-  x: px(68), y: px(455), w: px(428), h: px(64),
-  fill: { color: GREEN_FILL }, line: { color: GREEN_BORDER, width: 1.5 },
+// ---- second update equation inside the green box ----
+// main line rows 472..500, cols 85..470:
+// "W^(updated) = W^(old) - η " + [Sigma + red stacked subscript "misclassified vectors
+// ONLY (i)"] + " δ_i X_i"
+// red Sum-subscript measured rows 506..514, cols 266..419 (below the Sum).
+runLine([
+  { text: "W" },
+  { text: "(updated)", options: { superscript: true } },
+  { text: " = W" },
+  { text: "(old)", options: { superscript: true } },
+  { text: " - " },
+  { text: "\u03b7", options: { color: BRIGHT_RED } },
+  { text: " " },
+], px(85), px(472), EQ2_SIZE, { w: 240 });
+
+slide.addImage({
+  path: ASSET + "/eq_037_sum_only.png",
+  x: px(300 - 8), y: px(514 - 0.46333 * 600 + 135),
+  w: 2.4, h: 0.57,
 });
 
-// ============================================================
-// FIRST UPDATE EQUATION
-// "W^(updated) = W^(old) - η ∂Error/∂W where ∂Error/∂W = Σ_{misclassified vectors} δ_i X_i"
-// Row ~404-449. Black text with:
-// - "where" italic
-// - Σ subscript "misclassified vectors" red
-// Green highlight 1 around "W^(updated) = W^(old)" 
-// ============================================================
-const eq2_y = head2_y + px(34);
-const eq2_x = T2_X + PAD;
-const eq2_w = T2_W - 2*PAD;
-
-// Part 1 - highlighted portion: "W^(updated) = W^(old)"
-slide.addText("W^(updated) = W^(old)", {
-  x: eq2_x, y: eq2_y, w: eq2_w, h: px(28),
-  fontSize: 16, color: BLACK, fontFace: FONT,
-  margin: 0, valign: "top",
-});
-
-// Part 2 - rest of first equation
-slide.addText([
-  { text: " - \u03b7 ", options: { color: BLACK, fontSize: 16 } },
-  { text: "\u2202Error/\u2202W", options: { color: BLACK, fontSize: 16 } },
-  { text: " where ", options: { color: BLACK, fontSize: 16, italic: true } },
-  { text: "\u2202Error/\u2202W", options: { color: BLACK, fontSize: 16 } },
-  { text: " = ", options: { color: BLACK, fontSize: 16 } },
-  { text: "\u03a3", options: { color: RED, fontSize: 20 } },
-  { text: " misclassified vectors ", options: { color: RED, fontSize: 13 } },
-  { text: "\u03b4_i X_i", options: { color: BLACK, fontSize: 16 } },
-], {
-  x: eq2_x + px(110), y: eq2_y, w: eq2_w - px(110), h: px(28),
-  fontSize: 16, color: BLACK, fontFace: FONT,
-  margin: 0, valign: "top",
-});
-
-// ============================================================
-// SECOND UPDATE EQUATION
-// "W^(updated) = W^(old) - η Σ_{misclassified vectors ONLY (i)} δ_i X_i"
-// Row ~473-513. Black text with:
-// - Σ subscript "misclassified vectors ONLY (i)" red
-// - "ONLY" red
-// Green highlight 2 around entire expression
-// ============================================================
-const eq3_y = eq2_y + px(52);
-
-slide.addText([
-  { text: "W^(updated) = W^(old) - \u03b7 ", options: { color: BLACK, fontSize: 16 } },
-  { text: "\u03a3", options: { color: RED, fontSize: 20 } },
-  { text: " misclassified vectors ONLY (i) ", options: { color: RED, fontSize: 13 } },
-  { text: "\u03b4_i X_i", options: { color: BLACK, fontSize: 16 } },
-], {
-  x: eq2_x, y: eq3_y, w: eq2_w, h: px(36),
-  fontSize: 16, color: BLACK, fontFace: FONT,
-  margin: 0, valign: "top",
-});
-
-// ============================================================
-// GREEN ARROW: small curved arrow from highlight 1 down to highlight 2
-// Frame: between highlights ~rows 450-470
-// Approx: from bottom of first highlight (y~430) to top of second (y~465)
-// Arrow at x ~ right side of first highlight (col ~752) pointing down-left to second
-// ============================================================
-slide.addShape(pptx.ShapeType.curvedDownArrow, {
-  x: px(750), y: px(430), w: px(30), h: px(40),
-  fill: { color: GREEN_BORDER }, line: { color: GREEN_BORDER, width: 2 },
-});
+runLine([
+  { text: " \u03b4", options: { italic: true } },
+  { text: "_i", options: { italic: true, subscript: true } },
+  { text: " X" },
+  { text: "_i", options: { subscript: true } },
+], px(420), px(472), EQ2_SIZE, { w: 80 });
 
 // ============================================================
 // OUTPUT

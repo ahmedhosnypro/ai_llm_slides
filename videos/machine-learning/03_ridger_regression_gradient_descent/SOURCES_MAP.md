@@ -26,6 +26,8 @@ per-slide records land. Never edit or delete a row once written.
 |---|---|---|---|---|
 | 001 | Ridge Regression, Gradient Descent, And Perceptron | Zewail City course-catalog CMS API (`zcadminpanel.zewailcity.edu.eg/api/courses/264` + member 53), fetched live HTTP 200 | CONFIRMED | `sources/slide_001_source/SOURCES.md` |
 | 002 | Revision of Standard Linear Regression Model | none needed (section divider, no external claims) — cross-referenced slide 001 | origin-level | `sources/slide_002_source/SOURCES.md` |
+| 008 | [1] Ridge Regularizer to Minimize Overfitting | Wikipedia Ridge regression (re-fetched live this window, HTTP 200) + origin-level cross-refs to Overfitting (slide_007_source) and Euclidean norm (slide_004_source) | CONFIRMED | `sources/slide_008_source/SOURCES.md` |
+| 009 | Overfit vs. Generalized | Wikipedia Overfitting (banked slide_007_source, re-confirmed live) + Ridge regression (origin-level ref), fetched live | CONFIRMED | `sources/slide_009_source/SOURCES.md` |
 | 010 | Overfit vs. Generalized Model Fits | Wikipedia Overfitting + Ridge regression/Tikhonov regularization, fetched live | CONFIRMED | `sources/slide_010_source/SOURCES.md` |
 | 003 | Matrix Notation for Linear Regression and Classification | CS229 lecture notes (`cs229-notes1.pdf`, serve.stanford.edu), fetched live HTTP 200 | CONFIRMED | `sources/slide_003_source/SOURCES.md` |
 | 011 | Example of Overfitting due to outlier in data | Wikipedia Robust regression (+ Overfitting/Outlier origin-level refs), fetched live | CONFIRMED | `sources/slide_011_source/SOURCES.md` |
@@ -41,6 +43,7 @@ per-slide records land. Never edit or delete a row once written.
 | 015 | (sources slide 015) | Wikipedia Matrix calculus / Ridge regression / Tikhonov regularization, fetched live | CONFIRMED | `sources/slide_015_source/SOURCES.md` |
 | 016 | (sources slide 016) | Wikipedia Lasso/Overfitting/Ridge regression + ICML 2004 paper (Lasso/Tikhonov comparison), fetched live | CONFIRMED | `sources/slide_016_source/SOURCES.md` |
 | 022 | [3] Inverse of High Dimension | CS229 2021 notes1 + Wikipedia Gaussian elimination / Invertible matrix, fetched live | CONFIRMED | `sources/slide_022_source/SOURCES.md` |
+| 023 | Inverse of High Dimension Matrix | CS229 main notes PDF + CS229 2021 fall notes1 + Wikipedia Gaussian elimination / Computational complexity (×3) / Gradient descent / Ridge regression, fetched live | CONFIRMED | `sources/slide_023_source/SOURCES.md` |
 | 037 | (perceptron/GD slide 037) | Illinois CS440 lecture notes + Wikipedia Gradient descent / Perceptron + NEU MLcourse perceptron PDF, fetched live | CONFIRMED | `sources/slide_037_source/SOURCES.md` |
 | 038 | Gradient Descent (GD) vs Stochastic Gradient Descent (SGD) | CS231n optimization-1 + Wikipedia GD/SGD + scikit-learn SGD docs, fetched live | CONFIRMED | `sources/slide_038_source/SOURCES.md` |
 | 039 | (perceptron slide 039) | CS231n optimization-1 + Wikipedia Perceptron/SGD + scikit-learn SGD docs + NEU MLcourse PDF, fetched live | CONFIRMED | `sources/slide_039_source/SOURCES.md` |
@@ -49,6 +52,8 @@ per-slide records land. Never edit or delete a row once written.
 | 017 | (perceptron/GD tables slide 017) | Wikipedia Ridge regression/Robust regression + ICML 2004 paper #354, fetched live | CONFIRMED | `sources/slide_017_source/SOURCES.md` |
 | 018 | (weight-update worked example) | Wikipedia Matrix calculus/Ridge regression/Robust regression, fetched live | CONFIRMED | `sources/slide_018_source/SOURCES.md` |
 | 024 | Gradient Descent (GD) | CS229 2021 notes1 + Wikipedia Gradient descent/Loss function, fetched live | CONFIRMED | `sources/slide_024_source/SOURCES.md` |
+| 025 | Types of Loss function shapes | Wikipedia Convex function + Gradient descent + Linear least squares + Loss function, all fetched live this window (hash-verified) | CONFIRMED | `sources/slide_025_source/SOURCES.md` |
+| 027 | Follow Negative Direction of Gradient with Selected Learning Rate | Wikipedia Convex function (banked, byte-identical to sibling copy) + Gradient descent + Linear least squares, all fetched live, re-fetch byte-identical | CONFIRMED | `sources/slide_027_source/SOURCES.md` |
 | 028 | Effect of small and large Learning Rate | arXiv 1609.04747 + CS229 2020 notes1, fetched live | CONFIRMED | `sources/slide_028_source/SOURCES.md` |
 | 029 | Example: gradient descent minima | none needed (course-authored worked example) | origin-level | `sources/slide_029_source/SOURCES.md` |
 | 030 | Convex Function, Learning Rate=0.2, Start at X=3 | arXiv 1609.04747 + CS229 2020 notes1, fetched live | CONFIRMED | `sources/slide_030_source/SOURCES.md` |
