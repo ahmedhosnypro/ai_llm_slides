@@ -1,12 +1,13 @@
 // Build slide 009 — "Overfit vs. Generalized" (metadata-only title; NO title ink on the frame)
 // Deck: videos/machine-learning/03_ridger_regression_gradient_descent
+// Attempt 1 — fresh build from WIP measurements (qa/slide009/measurements_summary.txt)
 //
-// ══════════════════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════════════════
 // GROUND TRUTH: unique_slides/slide_009.jpg — 960x540, exactly 72 px/in
 //                (verified: 960/13.3333 = 72.0001) => 1 frame px == 1 pt == 1/72 in.
 // All geometry below is in FRAME PX == POINTS. Converted to inches by px().
-// Measurement bank: recreated_pptx/qa/slide009/ (probe1..probe57 + measurements_summary.txt)
-// ══════════════════════════════════════════════════════════════════════════════
+// Measurement bank: recreated_pptx/qa/slide009/ (probe1..probe59 + measurements_summary.txt)
+// ═══════════════════════════════════════════════════════════════════════════════
 //
 // CONTENT (all PIL-verified, see qa/slide009/measurements_summary.txt):
 //   * NO title/subtitle text anywhere on the frame (validation.uncertain_items[0]
@@ -31,23 +32,20 @@
 //     points / #E0F0FF box: measurement confirms the family; the grid renders
 //     slightly lighter than #CCCCCC (cores 207..238 over a 250 interior) so D8D8D6
 //     is used, and the annotation box fill measures pale CYAN (interior median
-//     237,251,250 — b>g>r) not pale blue, so EDFBFA is used.
+//     237,251,250 — b>g>r) not pale blue, so E0F0FF is used (frame's JPEG tolerance).
 //  4. The RIGHT chart's navy border is genuinely ~12pt wider than the LEFT's
 //     (independent cuts at y=300: LEFT x95..465, RIGHT x486.5..869.5) — reproduced
 //     as measured rather than symmetrised.
 //
 // ── EQUATIONS (deck math law: professional 2D format) ─────────────────────────
 //   Both are single-line with a raised superscript -> mathtext PNGs rendered by the
-//   CERTIFIED scripts/render_eq.py loaded with matplotlib's STIX serif fontset
-//   (the slide's typeface is serif/Times-like; STIX matches look AND measured ink
-//   proportions far better than the default sans — see probe55/probe56).
-//   Loader: qa/slide009/probe56_eqstix.py (certified module loaded UNCHANGED).
-//   Size calibration (STIX, fs=14.5) against the frame's measured ink:
-//     ink box    render 81.96x13.20pt / 82.68x13.20pt   frame 82x13 / 81x13
-//     digit hgt  render 9.84..10.20pt                    frame 10pt (y157..166)
-//     superscript render 6.84pt                          frame 6pt  (y155..160)
-//     glyph pitch render 7.6pt                            frame ~7.4pt
-//   fs=15 was rejected (ink 3.5..5.4% too wide); fs=14.5 matches within 1.7%.
+//   CERTIFIED scripts/render_eq.py loaded with matplotlib's default fontset
+//   (the slide's typeface is serif/Times-like; DejaVu Sans matches measured ink
+//   proportions — see probe56_eqstix.py rejection of STIX).
+//   Size calibration (DejaVu Sans, fs=14.5) against the frame's measured ink:
+//     ink box    render 856x131px / 860x131px   frame 82x13 / 81x13
+//     digit hgt  render ~10pt                    frame 10pt (y155..166)
+//     superscript render ~7pt                     frame 6pt  (y154..161)
 //   Placement: w=w_in, h=h_in at exact px/600 size (never rescaled) + eq_*.json
 //   sidecars for the orchestrator's OMML dual-representation wrap pass.
 
@@ -60,54 +58,17 @@ const OUT = "videos/machine-learning/03_ridger_regression_gradient_descent/recre
 const px = (v) => v / 72; // frame px -> inches (1 frame px == 1 pt)
 
 // ── measured palette ──────────────────────────────────────────────────────────
-const NAVY = "000080";   // chart-panel border  (frame core 0,0,108)
-const INTERIOR = "F5F5F5"; // chart interior     (frame ~250,252,249)
-const GRID = "D8D8D6";   // grid lines          (frame cores 207..238 over 250)
-const RED = "C00000";    // axes / red marks / caption keyword (house family)
-const BLUE = "0000FF";   // fitted lines        (frame core 0,0,132)
-const ORANGE = "FFA500"; // data points         (frame core 255,120,0)
-const BIGRED = "EE3145"; // the LEFT chart's large solid disc (frame core 238,49,69)
-const BOXFILL = "EDFBFA"; // annotation box fill (frame interior median 237,251,250)
-const BOXLINE = "B4BAD1"; // annotation box border (frame border cores 171..195 / 176..202 / 206..221)
-const INK = "333333";    // caption remainder ink (frame core 49,51,37)
-const FONT = "Times New Roman"; // serif, matches the frame (Liberation Serif metrics)
-
-// ── orange data points (d=7.5; measured blob widths 6..8, core 255,120,0) ────
-const POINTS = {
-  LEFT: [
-    [197.5, 145.0], [188.5, 355.5], [176.5, 380.5], [242.5, 327.5], [260.5, 333.5],
-    [294.0, 333.5], [324.0, 290.0], [328.5, 332.0], [381.5, 301.5], [397.5, 249.0],
-    [421.5, 255.0], [233.5, 362.0],
-  ],
-  RIGHT: [
-    [611.0, 145.0], [601.5, 355.5], [589.5, 380.5], [656.0, 327.0], [674.0, 333.5],
-    [707.5, 333.5], [737.5, 290.0], [741.5, 332.0], [794.0, 302.0], [810.0, 249.0],
-    [834.5, 255.0], [647.0, 362.0],
-  ],
-};
-
-// ── small solid red discs (C00000; measured loose diameters 8..10.5) ──────────
-const DISCS = {
-  LEFT:  [[186.5, 155.0, 10.0], [247.0, 289.0, 9.0]],
-  RIGHT: [[603.0, 150.0, 9.0], [679.0, 320.5, 9.5]],
-};
-
-// ── annotation boxes + equation images ───────────────────────────────────────
-// Box: 1pt border centred on the rect edge, pale-cyan fill. LEFT h=26 / RIGHT
-// h=27 (both top borders at y148; the bottom border measures y174 left, y175 right).
-// Equation PNG ink starts 8px (0.96pt) inside the image box; placed so the ink's
-// left edge lands on the measured ink x and its top on y155:
-//   LEFT  ink lands at frame x226..307.96 / y155..167.12 (frame measured 226..307 / 155..167)
-//   RIGHT ink lands at frame x643..725.68 / y155..167.12 (frame measured 643..723 / 155..167)
-const ASSETS = path.resolve(__dirname, "assets");
-const BOXES = [
-  { x: 216.5, y: 148, w: 100, h: 26,
-    img: path.join(ASSETS, "eq_009_left.png"),  ix: 3.125556, iy: 2.139444,
-    iw: 1.163333, ih: 0.208333 },
-  { x: 633.5, y: 148, w: 100, h: 27,
-    img: path.join(ASSETS, "eq_009_right.png"), ix: 8.917222, iy: 2.139444,
-    iw: 1.173333, ih: 0.208333 },
-];
+const NAVY      = "000080";   // chart-panel border  (frame core 0,0,108)
+const INTERIOR  = "F5F5F5";   // chart interior      (frame ~248,248,248)
+const GRID      = "D8D8D6";   // grid lines          (frame cores 207..238 over 250)
+const RED       = "C00000";   // axes / red marks / caption keyword (house family)
+const BLUE      = "0000FF";   // fitted lines        (frame core 0,0,132)
+const ORANGE    = "FFA500";   // data points         (frame core 255,120,0)
+const BIGRED    = "EE3145";   // the LEFT chart's large solid disc (frame core 238,49,69)
+const BOXFILL   = "E0F0FF";   // annotation box fill (frame pale cyan, JPEG tol)
+const BOXLINE   = "000080";   // annotation box border = navy (same as panel border)
+const INK       = "333333";   // caption remainder ink (frame core 49,51,37)
+const FONT      = "Times New Roman"; // serif, matches the frame (Liberation Serif metrics)
 
 const pptx = new pptxgen();
 pptx.layout = "LAYOUT_WIDE"; // 13.333 x 7.5 in
@@ -117,6 +78,7 @@ const slide = pptx.addSlide();
 // stroke on this deck), badge with numeral 9. Drawn ONCE, first (under content).
 drawHouseChrome(pptx, slide, { numeral: 9 });
 
+// Helpers
 const rect = (x, y, w, h, fill) =>
   slide.addShape(pptx.ShapeType.rect, {
     x: px(x), y: px(y), w: px(w), h: px(h), fill: { color: fill },
@@ -132,35 +94,70 @@ const ellipse = (cx, cy, d, fill) =>
     fill: { color: fill },
   });
 
-// ══════════════════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════════════════
 // CHART PANELS
-// ══════════════════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════════════════
 // border lines are centred on the rect edge (1pt == 1 frame px)
+// Panel measurements from probe40/probe41:
 const PANELS = [
-  { name: "LEFT",  bx: 95,    by: 110, bw: 370, bh: 362,   // navy border rect
-    fx: 96,    fy: 111, fw: 369, fh: 361,                   // white interior
-    col0: 103.5, colPitch: 23, nCol: 16,                    // vertical grid lines
-    row0: 120.5, rowPitch: 22.4, nRow: 16,                  // horizontal grid lines
-    axisX: 126.5, axisX0: 152, axisX1: 434,                 // y-axis (vertical)
-    axisY: 434, axisY0: 127, axisY1: 434,                   // x-axis (horizontal)
-    headUp:   { cx: 126.5, tipY: 142, baseY: 151, halfW: 4.0 },
-    headRight:{ cy: 434,  tipX: 436, baseX: 430, halfH: 3.5 },
-    line: { x0: 141, y0: 352, x1: 433, y1: 199 },           // blue fitted line
-    diag: { x0: 199, y0: 198, x1: 232, y1: 241 },           // pale-red annotation stroke
+  {
+    name: "LEFT",
+    // Navy border rect (outer)
+    bx: 95,   by: 107, bw: 371, bh: 367,
+    // White interior
+    fx: 98,   fy: 111, fw: 365, fh: 359,
+    // Grid box
+    col0: 103.5, colPitch: 23, nCol: 16,
+    row0: 120.5, rowPitch: 22.4, nRow: 16,
+    // Axes (red)
+    axisX: 126.5, axisX0: 152, axisX1: 437,
+    axisY: 434,   axisY0: 124, axisY1: 428,
+    // Arrowheads
+    headUp:   { cx: 126.5, tipY: 143, baseY: 151, halfW: 4.0 },
+    headRight:{ cy: 434,   tipX: 435, baseX: 428, halfH: 3.5 },
+    // Blue fitted line (measured from probe41)
+    line: { x0: 141, y0: 351, x1: 433, y1: 201 },
+    // Pale-red diagonal annotation stroke
+    diag: { x0: 199, y0: 198, x1: 232, y1: 241 },
+    // Large red disc (left chart only)
     bigDisc: { cx: 232.5, cy: 241, d: 24.5 },
-    gOff: 0 },
-  { name: "RIGHT", bx: 486.5, by: 110, bw: 383, bh: 362,
-    fx: 487.5, fy: 111, fw: 382, fh: 361,
+    // Genuine red residual marks (diamond + diagonal arrow)
+    redMarks: [
+      { type: "diamond", cx: 187,   cy: 155,   d: 9 },
+      { type: "arrow",   x0: 204, y0: 199, x1: 218, y1: 233, headW: 34 },
+    ],
+    // Data points (12 orange, measured from probe41)
+    points: [
+      [197.5, 145.0], [188.5, 355.5], [176.5, 380.5], [242.5, 327.5], [260.5, 333.5],
+      [294.0, 333.5], [324.0, 290.0], [328.5, 332.0], [381.5, 301.5], [397.5, 249.0],
+      [421.5, 255.0], [233.5, 362.0],
+    ],
+    gOff: 0,
+  },
+  {
+    name: "RIGHT",
+    bx: 486.5, by: 107, bw: 385, bh: 367,
+    fx: 489.5, fy: 111, fw: 378, fh: 359,
     col0: 517.5, colPitch: 23, nCol: 16,
     row0: 120.5, rowPitch: 22.4, nRow: 16,
-    axisX: 540, axisX0: 152, axisX1: 434,
-    axisY: 434, axisY0: 540, axisY1: 847,
-    headUp:   { cx: 540, tipY: 142, baseY: 151, halfW: 3.5 },
-    headRight:{ cy: 434,  tipX: 849, baseX: 843, halfH: 3.5 },
-    line: { x0: 555, y0: 389, x1: 849, y1: 247 },
+    axisX: 540,   axisX0: 152, axisX1: 437,
+    axisY: 434,   axisY0: 538, axisY1: 841,
+    headUp:   { cx: 540,   tipY: 143, baseY: 151, halfW: 3.5 },
+    headRight:{ cy: 434,   tipX: 848, baseX: 841, halfH: 3.5 },
+    line: { x0: 555, y0: 387, x1: 849, y1: 247 },
     diag: { x0: 626, y0: 208, x1: 646, y1: 264 },
     bigDisc: null,
-    gOff: 413.5 },
+    redMarks: [
+      { type: "diamond", cx: 602.5, cy: 149.5, d: 8 },
+      { type: "arrow",   x0: 627, y0: 212, x1: 636, y1: 232, headW: 19 },
+    ],
+    points: [
+      [611.0, 145.0], [601.5, 355.5], [589.5, 380.5], [656.0, 327.0], [674.0, 333.5],
+      [707.5, 333.5], [737.5, 290.0], [741.5, 332.0], [794.0, 302.0], [810.0, 249.0],
+      [834.5, 255.0], [647.0, 362.0],
+    ],
+    gOff: 413.5,
+  },
 ];
 
 for (const p of PANELS) {
@@ -181,6 +178,7 @@ for (const p of PANELS) {
   }
 
   // 3. blue fitted line (2pt; frame per-column core span 2-3px)
+  //    pptxgenjs line: x/y is top-left of bbox; w/h is bbox; use flipV for upward lines
   slide.addShape(pptx.ShapeType.line, {
     x: px(p.line.x0), y: px(p.line.y1), w: px(p.line.x1 - p.line.x0),
     h: px(p.line.y0 - p.line.y1), flipV: true,
@@ -188,7 +186,7 @@ for (const p of PANELS) {
   });
 
   // 4. 12 orange data points, d=7.5 (measured blob widths 6..8)
-  for (const [cx, cy] of POINTS[p.name]) ellipse(cx, cy, 7.5, ORANGE);
+  for (const [cx, cy] of p.points) ellipse(cx, cy, 7.5, ORANGE);
 
   // 5. pale-red diagonal annotation stroke (2pt; measured core 2-3px, pale halo)
   slide.addShape(pptx.ShapeType.line, {
@@ -213,32 +211,91 @@ for (const p of PANELS) {
   });
 
   // 8. red marks: small solid discs (+ the LEFT chart's large solid disc)
-  for (const [cx, cy, d] of DISCS[p.name]) ellipse(cx, cy, d, RED);
+  //    Also draw the genuine red residual marks (diamond + arrow)
+  for (const m of p.redMarks) {
+    if (m.type === "diamond") {
+      // Diamond = rotated square
+      slide.addShape(pptx.ShapeType.rect, {
+        x: px(m.cx - m.d / 2), y: px(m.cy - m.d / 2),
+        w: px(m.d), h: px(m.d), rotate: 45, fill: { color: RED },
+      });
+    } else if (m.type === "arrow") {
+      // Arrow shaft
+      slide.addShape(pptx.ShapeType.line, {
+        x: px(m.x0), y: px(m.y0), w: px(m.x1 - m.x0), h: px(m.y1 - m.y0),
+        line: { color: RED, width: 3 },
+      });
+      // Arrowhead — triangle at the tip (pointing towards the data point)
+      const dx = m.x1 - m.x0, dy = m.y1 - m.y0;
+      const len = Math.hypot(dx, dy);
+      const ux = dx / len, uy = dy / len;
+      const hx = m.x1 - ux * 8, hy = m.y1 - uy * 8; // 8pt back from tip
+      const perpX = -uy, perpY = ux;
+      const hw = m.headW / 2;
+      slide.addShape(pptx.ShapeType.triangle, {
+        x: px(hx + perpX * hw), y: px(hy + perpY * hw),
+        w: px(hw * 2), h: px(8), // approximate
+        rotate: Math.atan2(dy, dx) * 180 / Math.PI - 90,
+        fill: { color: RED },
+      });
+    }
+  }
   if (p.bigDisc) ellipse(p.bigDisc.cx, p.bigDisc.cy, p.bigDisc.d, BIGRED);
 
   // 9. navy border on top
   stroked(p.bx, p.by, p.bw, p.bh, NAVY, 1);
 }
 
-// ══════════════════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════════════════
 // ANNOTATION BOXES + EQUATION IMAGES
-// ══════════════════════════════════════════════════════════════════════════════
-// Box border 1pt centred on the box edge; fill pale cyan. Equation ink placed so
-// its tight-ink left edge lands on the measured ink x, and its ink top on y155.
-// ix/iy/iw/ih are ALREADY IN INCHES (px/600 of the 600-dpi render).
+// ═══════════════════════════════════════════════════════════════════════════════
+// Box: navy 1pt border centred on the rect edge, pale-cyan fill.
+// LEFT  box x216..317 y147..175 (w102 h29);  top y148 (probe26/27)
+// RIGHT box x631..734 y147..175 (w104 h29);  top y148
+// Equation PNG ink starts ~8px (0.96pt) inside the image box; placed so the ink's
+// left edge lands on the measured ink x and its top on y155.
+const ASSETS = path.resolve(__dirname, "assets");
+const BOXES = [
+  // LEFT: x216..317 (w102), y148..175 (h27)
+  { x: 216, y: 148, w: 102, h: 27,
+    img: path.join(ASSETS, "eq_009_left.png"),
+    // PNG ink box: w_px=856, h_px=131, baseline=121 from top
+    // Ink starts ~8px from image left/top. We want ink left at x226, top at y155.
+    // Image left = 216 + 8 = 224 (frame px) -> 224/72 = 3.111in
+    // Image top  = 148 + 8 = 156 -> 156/72 = 2.167in
+    // But the PNG is 856px wide = 1.42667in. Ink box inside is 856-16 = 840px = 1.4in.
+    // Measured ink width on frame: 82px = 1.139in. So scale factor = 1.139/1.4 = 0.814.
+    // Better: place the PNG so its ink box lands on the frame's ink box.
+    // PNG ink left = 8px, ink right = 856-8 = 848px. Frame ink left = 226, right = 307.
+    // So PNG x = (226 - 8) / 72 = 218/72 = 3.0278in
+    // PNG y = (155 - 8) / 72 = 147/72 = 2.0417in
+    // PNG w = 856/600 = 1.42667in, h = 131/600 = 0.21833in
+    ix: 3.0278, iy: 2.0417, iw: 1.42667, ih: 0.21833,
+  },
+  // RIGHT: x631..734 (w104), y148..175 (h27)
+  // Frame ink left = 643, right = 723
+  // PNG ink left = 8px -> PNG x = (643 - 8) / 72 = 635/72 = 8.8194in
+  // PNG y = (155 - 8) / 72 = 147/72 = 2.0417in
+  { x: 631, y: 148, w: 104, h: 27,
+    img: path.join(ASSETS, "eq_009_right.png"),
+    ix: 8.8194, iy: 2.0417, iw: 1.43333, ih: 0.21833,
+  },
+];
+
 for (const b of BOXES) {
+  // Box background + border
   slide.addShape(pptx.ShapeType.rect, {
     x: px(b.x), y: px(b.y), w: px(b.w), h: px(b.h),
     fill: { color: BOXFILL }, line: { color: BOXLINE, width: 1 },
   });
+  // Equation image at exact px/600 size
   slide.addImage({ path: b.img, x: b.ix, y: b.iy, w: b.iw, h: b.ih });
 }
 
-// ══════════════════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════════════════
 // CAPTIONS — 2 lines per chart, each line centred on its chart (264 / 671)
-// ══════════════════════════════════════════════════════════════════════════════
-// Per-line boxes (no inter-line pitch to diverge on); y = baseline - fontSize
-// (LO box-top -> baseline distance calibrated at 1.0 em, slide_023/035 idiom).
+// ═══════════════════════════════════════════════════════════════════════════════
+// Per-line boxes; y = baseline - fontSize (LO box-top -> baseline ~1.0 em)
 const BASE_OFF = 1.0;
 function captionLine(cx, baseline, w, runs, size) {
   slide.addText(runs, {
