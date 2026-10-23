@@ -14,8 +14,10 @@ V5 = ["5", "-1", "-1"]      # [5; -1; -1]
 V11 = ["1", "1", "1"]       # [1; 1; 1]
 
 
-def eq(name, segments, fontsize=13):
+def eq(name, segments, fontsize=13, tw=None, th=None):
     spec = {"segments": segments, "fontsize": fontsize, "color": "000000"}
+    if tw: spec["target_w_in"] = tw
+    if th: spec["target_h_in"] = th
     out = os.path.join(ASSETS, name + ".png")
     r = subprocess.run(
         [sys.executable, os.path.join(HERE, "render_stackeq.py"),
@@ -31,33 +33,33 @@ def eq(name, segments, fontsize=13):
     return info
 
 
-# --- top-centre: Initial W vector, drawn on its own line (stacked) ---
+# --- top-centre: Initial W vector on its own line (stacked, measured 23x40px) ---
 eq("eq_initial_w_col", [
     {"col": V4},
-])
+], tw=23/72, th=40/72)
 
-# --- Initial W label (plain text, drawn as pptx text) ---
-# --- REPEAT line (red text, drawn as pptx text) ---
+# --- six calculation rows (measured widths in frame px) ---
+LEFT_W = 128          # d(xN) = ... = R  (box1 measured cols 301-429)
+ROW1_W = 182          # W = [4;-2;-2]+1.[1;1;1]=[5;-1;-1]  (cols 617-799)
 
-# --- six calculation rows ---
-for i, (vec, res, nxt) in enumerate([
-        (["1", "1", "1"], "0", "1"),
-        (["1", "2", "1"], "2", None),
-        (["1", "1", "2"], "2", None),
-        (["1", "5", "4"], "-4", None),
-        (["1", "6", "5"], "-6", None),
-        (["1", "6", "6"], "-7", None)]):
-    segs = [{"t": f"d(x_{{{i + 1}}}) = "}, {"row": vec},
-            {"t": " \\cdot "}, {"col": V4 if i == 0 else V5},
-            {"t": f" = {res}"}]
-    eq(f"eq_r{i+1}_l", segs)
+for i, (vec, res) in enumerate([
+        (["1", "1", "1"], "0"),
+        (["1", "2", "1"], "2"),
+        (["1", "1", "2"], "2"),
+        (["1", "5", "4"], "-4"),
+        (["1", "6", "5"], "-6"),
+        (["1", "6", "6"], "-7")]):
+    eq(f"eq_r{i+1}_l", [
+        {"t": f"d(x_{{{i + 1}}}) = "}, {"row": vec},
+        {"t": " \\cdot "}, {"col": V4 if i == 0 else V5},
+        {"t": f" = {res}"}], tw=LEFT_W/72)
 
-# right-hand W updates
 eq("eq_r1_w", [
     {"t": "W = "}, {"col": V4}, {"t": " + 1 \\cdot "}, {"col": V11},
     {"t": " = "}, {"col": V5},
-])
+], tw=ROW1_W/72)
+
 eq("eq_r_kw", [
     {"t": "W = "}, {"col": V5},
-])
+], tw=96/72)
 print("done")

@@ -53,6 +53,7 @@ per-slide records land. Never edit or delete a row once written.
 | 018 | (weight-update worked example) | Wikipedia Matrix calculus/Ridge regression/Robust regression, fetched live | CONFIRMED | `sources/slide_018_source/SOURCES.md` |
 | 024 | Gradient Descent (GD) | CS229 2021 notes1 + Wikipedia Gradient descent/Loss function, fetched live | CONFIRMED | `sources/slide_024_source/SOURCES.md` |
 | 025 | Types of Loss function shapes | Wikipedia Convex function + Gradient descent + Linear least squares + Loss function, all fetched live this window (hash-verified) | CONFIRMED | `sources/slide_025_source/SOURCES.md` |
+| 026 | Gradient Descent Solution | Wikipedia Gradient descent + Convex function + Linear least squares + Ridge regression, all fetched live and content-verified (normalised md5 byte-identity) | CONFIRMED | `sources/slide_026_source/SOURCES.md` |
 | 027 | Follow Negative Direction of Gradient with Selected Learning Rate | Wikipedia Convex function (banked, byte-identical to sibling copy) + Gradient descent + Linear least squares, all fetched live, re-fetch byte-identical | CONFIRMED | `sources/slide_027_source/SOURCES.md` |
 | 028 | Effect of small and large Learning Rate | arXiv 1609.04747 + CS229 2020 notes1, fetched live | CONFIRMED | `sources/slide_028_source/SOURCES.md` |
 | 029 | Example: gradient descent minima | none needed (course-authored worked example) | origin-level | `sources/slide_029_source/SOURCES.md` |

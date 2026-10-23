@@ -2,10 +2,12 @@
 """Generate the four loss-function-shape plots for slide 025.
 
 Regions measured from unique_slides/slide_025.jpg (960x540, 1px = 1pt = 1/72in):
-  TL concave dome   x 60..470  y 116..289
-  TR convex bowl    x 470..901 y 116..316
-  BL non-convex     x 60..470  y 296..527
-  BR gradient path  x 470..901 y 346..530
+  TL concave dome   x 60..460  y 116..289
+  TR convex bowl    x 480..898 y 116..316
+  BL non-convex     x 60..460  y 296..527
+  BR gradient path  x 480..898 y 346..530
+(the right edge stops at 898 so the house chrome's right stroke at x901 stays
+visible; the left column starts at x60 so the left stroke at x58.5 stays visible)
 
 Red reference lines in the original are pure HORIZONTAL strokes (measured:
 uniform 1-2px runs at constant frame y, x-extents below), i.e. 2-D overlays
@@ -40,10 +42,10 @@ RED = (0.75, 0.0, 0.0)          # C00000 family nominal
 BLK = "black"
 
 PLOTS = {
-    "tl": dict(x0=60,  y0=116, w=411, h=174, elev=34, azim=-64),
-    "tr": dict(x0=470, y0=116, w=431, h=200, elev=34, azim=-64),
-    "bl": dict(x0=60,  y0=296, w=411, h=231, elev=30, azim=-62),
-    "br": dict(x0=470, y0=346, w=431, h=184, elev=30, azim=-62),
+    "tl": dict(x0=60,  y0=116, w=400, h=174, elev=34, azim=-64),
+    "tr": dict(x0=480, y0=116, w=418, h=200, elev=34, azim=-64),
+    "bl": dict(x0=60,  y0=296, w=400, h=231, elev=30, azim=-62),
+    "br": dict(x0=480, y0=346, w=418, h=184, elev=30, azim=-62),
 }
 
 

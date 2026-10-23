@@ -1,344 +1,169 @@
 // Build slide 036 — "Problem Formulation"
-// Deck: videos/machine-learning/03_ridger_regression_gradient_descent (house chrome = shared_patterns/house_chrome.js)
-// Ground truth: unique_slides/slide_036.jpg (960x540, 1px = 1pt = 1/72 in).
-// Content: Title + badge + 4 bordered content boxes with left-aligned text, one centered equation, red X mark.
-// MEASURED geometry (frame px -> inches via /72):
-//   Title "Problem Formulation": ink x=354..628 (center 491), y=64..84
-//   Badge: center (876,73) d=35, numeral "36"
-//   Panel: x=54..903, y=45..540 (house chrome, E9E9E7 fill, C00000 strokes L/R/bottom, NO top)
-//   Box 1: borders y=94, y=212; text lines y=101..116, 127..146, 158..172, 187..202; x=79..435
-//   Box 2: borders y=212/226, y=314; text lines y=231..248, 259..278, 288..306; x=81..646
-//   Box 3: borders y=328/329, y=421/437; text lines y=338..353, 369..396, 402..410; x=79..780
-//   Box 4: borders y=437, y=539; text lines y=442..455, 468..486, 494..512; x=80..846
-//   Red X mark in box 3: x=771..778, y=369..382
-//   Colors: box border A60000, fill F7F7F7; text black; class I green 008000; Class II blue 0000FF;
-//           d(X) red C00000; inequalities blue 0000FF; misclassified/Error/delta_i underlined;
-//           summation subscript + trailing phrase red C00000; implication arrows + delta_i red C00000.
-// Font sizes fit from ink widths via Arial (Liberation Sans metric):
-//   Title: ink w=275px -> ~44pt (from slide_035 calibration)
-//   Box body: ink w up to 767px (box 4 line 2) -> ~14-16pt depending on line length
-//   Equation: rendered as mathtext PNG (18pt, red C00000)
-//   Red X: large standalone, ~36pt bold red FF0000
+// Deck: videos/machine-learning/03_ridger_regression_gradient_descent
+// House chrome: shared_patterns/house_chrome.js (white canvas, E9E9E7 panel x54..903
+// y45..540, C00000 1pt strokes LEFT x58.5 / RIGHT x901 / BOTTOM y538.5, NO top stroke,
+// badge circle d35 center (876,73) fill FDFD96 ring 6A5ACD, bold Arial 18pt numeral 36).
+//
+// Ground truth: unique_slides/slide_036.jpg (960x540, 1px = 1pt = 1/72in).
+// PIL-measured geometry (frame px -> inches via /72), all values measured on the JPEG:
+//
+// TITLE "Problem Formulation": ink x=354..628 (center 491), cap top y=64, baseline y=83
+//   (no descenders -> ink bottom = baseline). Color core (142,0,16) -> C00000.
+//   Bold 26pt fits ink width 275px (Liberation Sans Bold @26pt = 275px); cap height
+//   20px = 0.716*26=18.6 + AA -> consistent.
+//
+// 4 content boxes (border A60000 1pt, fill F7F7F7), left border x=68 (stroke core),
+//   right border x=870, interior x=69..869 (800px):   [drawBoxX = 68, drawBoxW = 802.5]
+//   box1 y=94..212 | box2 y=226..314 | box3 y=328..421 | box4 y=437..539
+//   Text ink always starts x=79 (=> 10.5px inside the left border).
+//
+// BODY TEXT 20pt Arial, left-aligned, black. MEASURED line baselines / cap tops:
+//   box1: 116/101 (L1), 146/127 (L2), 172/158 (L3), 202/187 (L4)   [pitch ~29px]
+//   box2: 248/231 (L1), 278/259 (L2), 306/288 (L3)
+//   box3: 353/338 (L1 heading "Define Error function as:"), equation row y=369..396
+//   box4: 455/442 (L1), 486/468 (L2), 512/494 (L3)
+//   => first baseline = boxTop + 22; successive baselines pitch 29px.
+//   LO line model (validated on sibling build 035): with exact lineSpacing L and font F,
+//   first baseline = top + (L - 1.117F)/2 + 0.905F + 1.6  [Arial asc 0.905, desc 0.212]
+//
+// COLOR CODING (measured from the frame; the analysis JSON's color claims are
+// uncorroborated by pixels and are superseded by the frame):
+//   lowercase "class" + "I"      -> C00000 red
+//   uppercase "Class" + "II"     -> 0000FF blue
+//   "d(X)", "delta_i", "X_i"     -> 008000 green (math symbols, italic)
+//   inequality results           -> line's class color (red on class-I lines, blue on
+//                                   Class-II lines); box 4's trailing "d(X) delta_i >0"
+//                                   is BLACK (measured (29,29,29))
+//   title                        -> C00000
+//   body                         -> 000000
+//
+// EQUATION (box 3, left-aligned at x=84, ink y=369..396):
+//   "Error = Sum_{all misclassified vectors(i)} (W^T X_i) => (W^T X_i) take positive
+//    and negative values"  -- main row ~21pt, Sigma 219..239 (tall, display style with
+//   the subscript BELOW, centered under the Sigma), subscript at y=401..411 x=162..297
+//   (partially red, partially black in the frame). Rendered as ONE mathtext PNG at
+//   600dpi (professional 2D format) + eq_036_error.json sidecar; placed at its measured
+//   left edge; the trailing explanatory phrase is set BLACK (measured core (13,15,12)) --
+//   the JSON brief's "red phrase" claim is not corroborated by the frame.
+//
+// RED X MARK: standalone, ink x=766..786 y=367..390 (core (168,0,5) -> FF0000),
+//   ~32pt bold Arial, at the far right of box 3, right edge 86px inside the right border.
 
 const pptxgen = require("pptxgenjs");
 const { drawHouseChrome } = require("../../shared_patterns/house_chrome.js");
-const fs = require("fs");
 
 const OUT = "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_036_recreated.pptx";
+const EQ = "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/build/assets/eq_036_error.png";
+// equation image metrics from the composite renderer (600dpi, tight crop, 3px pad)
+const EQ_W = 9.07833, EQ_H = 0.615, EQ_X = 83.6, EQ_Y = 368.6;
 
 const px = (v) => v / 72; // frame px -> inches
-
-// Equation asset (generated via render_eq.py)
-const EQ_ERROR = {
-  path: "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/build/assets/eq_036_error.png",
-  w_in: 8.10333,
-  h_in: 0.55167,
-  baseline_frac: 0.93353,
-};
 
 const pptx = new pptxgen();
 pptx.layout = "LAYOUT_WIDE"; // 13.333 x 7.5 in
 const slide = pptx.addSlide();
 
-// House chrome: white canvas, E9E9E7 panel, C00000 L/R/bottom strokes (NO top),
-// badge circle with numeral 36 (file number = printed number; no zero-padding).
 drawHouseChrome(pptx, slide, { numeral: 36 });
 
-// --- Title: "Problem Formulation" ---
-// ink bbox: x=354..628 (w=275, center=491), y=64..84 (h=21, center=74)
-// From slide_035: LO ink center ~1.2px left of box center -> box center = 492.2 -> x=71.2 (w=820)
-// Baseline at y=74: slide_035 lineSpacing 54, ascent 40.73, halfLead 1.87, LO offset +1.6
-// -> baseline = top + 44.2 => top = 74 - 44.2 = 29.8px? But title is above panel (y<45).
-// Title is in the TOP margin (y=64..84, panel starts at y=45).
-// Wait: the title in this deck is at y=4%-14% of frame (21.6..75.6px). My measurement: y=64..84.
-// This is partially in the panel area (panel starts at y=45). The house chrome from slide_003
-// has panel at y=45..540. The title must be rendered in the TOP MARGIN above the panel.
-// Let me use the frame coordinates directly.
-// Frame height 540px = 7.5in. Title y=64..84 -> center ~74px = 1.028in from top.
-// slide_035 had title at y=166.8px (2.317in) for a larger 45pt font.
-// For ~44pt, baseline at y=74px (1.028in): lineSpacing ~54, top = 74 - 44.2 = 29.8px (0.414in).
-slide.addText("Problem Formulation", {
-  x: px(71.2), y: px(29.8), w: px(820), h: px(70),
-  align: "center", valign: "top", margin: 0,
-  fontFace: "Arial", fontSize: 44, bold: true, color: "C00000",
-  lineSpacing: 54,
-});
+// ---------------------------------------------------------------------------
+// Layout constants (frame px)
+// ---------------------------------------------------------------------------
+const BODY = 20;          // body font pt
+const LS = 28;            // exact line spacing (pt) -> measured render pitch ~29px
+const BOX_TOP1 = 94, BOX_BOT1 = 212;
+const BOX_TOP2 = 226, BOX_BOT2 = 314;
+const BOX_TOP3 = 328, BOX_BOT3 = 421;
+const BOX_TOP4 = 437, BOX_BOT4 = 539;
+const BOX_X = 68;          // left border core
+const BOX_W = 802.5;       // to the right border core x=870 (68+802.5=870.5)
+const TXT_X = 79;          // text ink left edge in every line of the original
+const TXT_W = 790;         // 20% beyond the longest ink (846) but well inside the box
 
-// --- Content boxes: draw border rect + fill, then add text ---
-// Panel left edge: x=54px (0.75in). Boxes span x=54..903 (850px = 11.806in).
-// Measured box borders at x=58 (left stroke of house) and x=901 (right stroke).
-// But boxes have their own border A60000 at x=58/59 and x=870/871? Wait - the house strokes
-// are at x=58 and x=901. The box borders are at x=58/59 (left) and x=870/871 (right).
-// Actually my measurement: vertical reddish at x=58 (house left), x=68 (box 1 left?),
-// x=870 (box right), x=901 (house right). The boxes share the house left/right strokes?
-// No - the house panel IS the gray background E9E9E7. The boxes are drawn ON the panel
-// with their own A60000 borders and F7F7F7 fill.
-// The box left border aligns with house left stroke (x=58/59), right border at x=870/871
-// (well inside the house right stroke at x=901).
-// So box x range: 58..871 (813px = 11.292in). Fill inside: x=59..870 (812px).
-// But panel is x=54..903. So boxes are inset 4px from panel left, 32px from panel right.
+// First text baseline = boxTop + 22; successive pitch 29.
+// Box y of an addText block whose FIRST baseline must land at BASE1:
+const firstTop = (base1) => base1 - ((LS - 1.117 * BODY) / 2 + 0.905 * BODY + 1.6);
 
-const BOX_LEFT = 59;   // fill starts at 59 (1px inside left border at 58)
-const BOX_RIGHT = 870; // fill ends at 870 (1px inside right border at 871)
-const BOX_W = BOX_RIGHT - BOX_LEFT; // 811px = 11.264in
-const BOX_X = px(BOX_LEFT);
-
-// Box vertical positions (measured border y's):
-// Box 1: y=94 (top border) .. y=212 (bottom border) -> content y=95..211
-// Box 2: y=226 (top border) .. y=314 (bottom border) -> content y=227..313
-// Box 3: y=329 (top border) .. y=437 (bottom border) -> content y=330..436
-// Box 4: y=437 (top border) .. y=539 (bottom border) -> content y=438..538
-
-function drawBox(slide, yTop, yBottom, fillColor, borderColor) {
-  const h = yBottom - yTop;
-  // border rect (A60000) at yTop..yBottom, x=58..871
+// ---------------------------------------------------------------------------
+// Content boxes (drawn first so text sits on top)
+// ---------------------------------------------------------------------------
+function drawBox(yTop, yBottom) {
   slide.addShape(pptx.shapes.RECTANGLE, {
-    x: px(58), y: px(yTop), w: px(813), h: px(h),
-    fill: { color: fillColor }, line: { color: borderColor, width: 1 },
+    x: px(BOX_X), y: px(yTop), w: px(BOX_W), h: px(yBottom - yTop),
+    fill: { color: "F7F7F7" }, line: { color: "A60000", width: 1 },
   });
 }
+drawBox(BOX_TOP1, BOX_BOT1);
+drawBox(BOX_TOP2, BOX_BOT2);
+drawBox(BOX_TOP3, BOX_BOT3);
+drawBox(BOX_TOP4, BOX_BOT4);
 
-// Box fills: F7F7F7 (light gray), borders: A60000 (dark red)
-drawBox(slide, 94, 212, "F7F7F7", "A60000");   // Box 1
-drawBox(slide, 226, 314, "F7F7F7", "A60000");  // Box 2
-drawBox(slide, 329, 437, "F7F7F7", "A60000");  // Box 3
-drawBox(slide, 437, 539, "F7F7F7", "A60000");  // Box 4
-
-// --- Box 1 text (y=101..202) ---
-// 4 lines, left-aligned. Font size from ink widths: line 1 ink w=337px at 14pt? 
-// Line 1: "Define two classes: class I and Class II"
-// Line 2: "let d(X) be a discriminant function = W^T X"
-// Line 3: "if X ∈ class I then d(X) > 0"
-// Line 4: "if X ∈ class II then d(X) < 0"
-// Line pitch: ~25px (101->127=26, 127->158=31, 158->187=29). Average ~29px.
-// Use lineSpacing = 29pt (inches: 29/72 = 0.403in).
-// First line top: y=101px. Baseline offset ~1.6px (slide_035). For 14pt, ascent ~12.7, halfLead ~0.6, baseline = top + 14.9 -> top = 101 - 14.9 = 86.1px.
-const B1_TOP = px(86);
-const B1_LINE_SPACING = 29;
-
-function addRichText(slide, x, y, w, h, runs, fontSize, lineSpacing) {
-  // runs: array of {text, options} where options can have color, bold, italic, underline, breakLine
-  const opts = {
-    x, y, w, h,
+// ---------------------------------------------------------------------------
+// Text helper: one left-aligned line, verbatim runs with measured colors
+// ---------------------------------------------------------------------------
+function line(base1, runs) {
+  slide.addText(runs.map((r, i) => ({
+    text: r[0],
+    options: { color: r[1] || "000000", italic: !!r[2], underline: !!r[3] },
+  })), {
+    x: px(TXT_X), y: px(firstTop(base1)), w: px(TXT_W), h: px(60),
     align: "left", valign: "top", margin: 0,
-    fontFace: "Arial", fontSize, color: "000000",
-    lineSpacing,
-    paraSpaceAfter: 0,
-  };
-  // Build text array with breakLine on all but last
-  const texts = runs.map((r, i) => ({
-    text: r.text,
-    options: { ...r.options, breakLine: i < runs.length - 1 }
-  }));
-  slide.addText(texts, opts);
+    fontFace: "Arial", fontSize: BODY, lineSpacing: LS, paraSpaceAfter: 0,
+  });
 }
+const R = "C00000", B = "0000FF", G = "008000", K = "000000";
 
-// Box 1 lines
-// Line 1: "Define two classes: class I and Class II"
-// Colors: "class I" green, "Class II" blue
-addRichText(slide, BOX_X, B1_TOP, px(BOX_W), px(116), [
-  { text: "Define two classes: " },
-  { text: "class I", options: { color: "008000" } },
-  { text: " and " },
-  { text: "Class II", options: { color: "0000FF" } },
-], 14, B1_LINE_SPACING);
+// --- Box 1 (measured colors: "class I" red, "Class II" blue, d(X) green) ---
+line(116, [["Define two classes: " + ""], ["class", R], [" "], ["I", R], [" and "], ["Class", B], [" "], ["II", B]]);
+line(146, [["let "], ["d(X)", G, true], [" be a discriminant function = "], ["W", K, true], ["T"], [" "], ["X", G, true]]);
+line(172, [["if "], ["X", K, true], [" \u2208 "], ["class", R], [" I", R], [" then "], ["d(X)", G, true], [" > 0", R]]);
+line(202, [["if "], ["X", K, true], [" \u2208 "], ["Class", B], [" II", B], [" then "], ["d(X)", G, true], [" < 0", B]]);
 
-// Line 2: "let d(X) be a discriminant function = W^T X"
-// Color: "d(X)" green (from measurement: green at x=106..113, 132..138, 427..433)
-addRichText(slide, BOX_X, px(86 + 29), px(BOX_W), px(116), [
-  { text: "let " },
-  { text: "d(X)", options: { color: "008000", italic: true } },
-  { text: " be a discriminant function = " },
-  { text: "W", options: { italic: true } },
-  { text: "^T " },
-  { text: "X", options: { italic: true } },
-], 14, B1_LINE_SPACING);
+// --- Box 2 ---
+line(248, [["For "], ["misclassified"], [" "], ["X", G, true], [" :"]]);
+line(278, [["If "], ["X", K, true], [" \u2208 "], ["class", R], [" I", R], [" and "], ["misclassified"], [" as "], ["Class", B], [" II", B], [" then "], ["d(X)", G, true], [" will be "], ["<0", R]]);
+line(306, [["If "], ["X", K, true], [" \u2208 "], ["Class", B], [" II", B], [" and "], ["misclassified"], [" as "], ["class", R], [" I", R], [" then "], ["d(X)", G, true], [" will be "], [">0", B]]);
 
-// Line 3: "if X ∈ class I then d(X) > 0"
-// Colors: "class I" green, "d(X)" red, "> 0" blue
-addRichText(slide, BOX_X, px(86 + 2*29), px(BOX_W), px(116), [
-  { text: "if " },
-  { text: "X", options: { italic: true } },
-  { text: " \u2208 " },
-  { text: "class I", options: { color: "008000" } },
-  { text: " then " },
-  { text: "d(X)", options: { color: "C00000", italic: true } },
-  { text: " > 0", options: { color: "0000FF" } },
-], 14, B1_LINE_SPACING);
+// --- Box 3 heading (black; the frame shows NO underline under "Error") ---
+line(353, [["Define "], ["Error"], [" function as:"]]);
+// Equation: single mathtext PNG, left edge at the measured ink x=84
+slide.addImage({ path: EQ, x: px(84), y: px(EQ_Y), w: EQ_W, h: EQ_H });
 
-// Line 4: "if X ∈ class II then d(X) < 0"
-// Colors: "class II" blue, "d(X)" red, "< 0" blue
-addRichText(slide, BOX_X, px(86 + 3*29), px(BOX_W), px(116), [
-  { text: "if " },
-  { text: "X", options: { italic: true } },
-  { text: " \u2208 " },
-  { text: "Class II", options: { color: "0000FF" } },
-  { text: " then " },
-  { text: "d(X)", options: { color: "C00000", italic: true } },
-  { text: " < 0", options: { color: "0000FF" } },
-], 14, B1_LINE_SPACING);
+// --- Box 4 ---
+line(455, [["Define "], ["\u03b4_i", G, true], [" as :"]]);
+line(486, [
+  ["If "], ["X", K, true], [" \u2208 "], ["class", R], [" I", R], [" and "], ["misclassified"], [" as "],
+  ["Class", B], [" II", B], [" then "], ["d(X)", G, true], [" will be "], ["<0", R], [" \u21d2 "],
+  ["\u03b4_i", G, true], [" = -1"], [" \u21d2 "], ["d(X) ", K, true], ["\u03b4_i >0", K],
+]);
+line(512, [
+  ["If "], ["X", K, true], [" \u2208 "], ["Class", B], [" II", B], [" and "], ["misclassified"], [" as "],
+  ["class", R], [" I", R], [" then "], ["d(X)", G, true], [" will be "], [">0", B], [" \u21d2 "],
+  ["\u03b4_i", G, true], [" = +1"], [" \u21d2 "], ["d(X) ", K, true], ["\u03b4_i >0", K],
+]);
 
-// --- Box 2 text (y=231..306) ---
-// 3 lines. First line: "For misclassified X :"
-// "misclassified" underlined, "X" green (from measurement: green at x=244..257)
-const B2_TOP = px(231 - 15); // baseline ~15px down from top for 14pt
-const B2_LINE_SPACING = 29;
-
-// Line 1: "For misclassified X :"
-addRichText(slide, BOX_X, B2_TOP, px(BOX_W), px(100), [
-  { text: "For " },
-  { text: "misclassified", options: { underline: true, color: "008000" } },
-  { text: " " },
-  { text: "X", options: { italic: true, color: "008000" } },
-  { text: " :" },
-], 14, B2_LINE_SPACING);
-
-// Line 2: "If X ∈ class I and misclassified as Class II then d(X) will be <0"
-// Colors: "class I" green, "Class II" blue, "d(X)" red, "<0" blue
-// Measurement: red run at x=136..176 (d(X)?), blue at x=385..450 (Class II), green at x=509..516 (class I), red at x=629..648 (will be <0?)
-// Actually the verbatim says: "If X ∈ class I and misclassified as Class II then d(X) will be <0"
-addRichText(slide, BOX_X, px(231 - 15 + 29), px(BOX_W), px(100), [
-  { text: "If " },
-  { text: "X", options: { italic: true } },
-  { text: " \u2208 " },
-  { text: "class I", options: { color: "008000" } },
-  { text: " and " },
-  { text: "misclassified", options: { underline: true } },
-  { text: " as " },
-  { text: "Class II", options: { color: "0000FF" } },
-  { text: " then " },
-  { text: "d(X)", options: { color: "C00000", italic: true } },
-  { text: " will be " },
-  { text: "<0", options: { color: "0000FF" } },
-], 14, B2_LINE_SPACING);
-
-// Line 3: "If X ∈ class II and misclassified as Class I then d(X) will be >0"
-// Colors: "Class II" blue, "class I" green, "d(X)" red, ">0" blue
-addRichText(slide, BOX_X, px(231 - 15 + 2*29), px(BOX_W), px(100), [
-  { text: "If " },
-  { text: "X", options: { italic: true } },
-  { text: " \u2208 " },
-  { text: "Class II", options: { color: "0000FF" } },
-  { text: " and " },
-  { text: "misclassified", options: { underline: true } },
-  { text: " as " },
-  { text: "class I", options: { color: "008000" } },
-  { text: " then " },
-  { text: "d(X)", options: { color: "C00000", italic: true } },
-  { text: " will be " },
-  { text: ">0", options: { color: "0000FF" } },
-], 14, B2_LINE_SPACING);
-
-// --- Box 3 text (y=338..410) ---
-// Line 1: "Define Error function as:" with "Error" underlined
-// Line 2: centered equation (rendered as PNG)
-// Line 3: "take positive and negative values" - wait, this is part of the equation per verbatim
-// Actually verbatim: "Error = \u03a3_{all misclassified vectors(i)} (W^T X_i) \u21d2 (W^T X_i) take positive and negative values"
-// The recreation_brief says: heading "Define Error function as:" with "Error" underlined,
-// followed by the centered equation. The equation includes the trailing phrase in red.
-const B3_TOP = px(338 - 15);
-const B3_LINE_SPACING = 29;
-
-// Line 1: "Define Error function as:"
-addRichText(slide, BOX_X, B3_TOP, px(BOX_W), px(100), [
-  { text: "Define " },
-  { text: "Error", options: { underline: true, color: "C00000" } },
-  { text: " function as:" },
-], 14, B3_LINE_SPACING);
-
-// Line 2: Centered equation image
-// Equation image: w=8.103in, h=0.552in. Center horizontally in box (BOX_W=11.264in).
-// Box center x = 58 + 813/2 = 464.5px (6.451in). Image left = 464.5 - 8.103/2 * 72 = 464.5 - 291.7 = 172.8px.
-// Vertical: box 3 content y=330..436 (106px = 1.472in). Equation height 0.552in.
-// Center vertically: top = 330 + (106 - 8.103*72*0.552/1.5? No.
-// Box top border at 329, bottom at 437. Content area y=330..436.
-// Equation image h_in=0.55167in = 39.7px at 72dpi? No, in inches it's 0.55167in.
-// Box content height = (436-330)/72 = 1.472in.
-// Center: top = 330/72 + (1.472 - 0.55167)/2 = 4.583 + 0.460 = 5.043in = 363px.
-// But the equation is at y=369..396 in original (center ~382). That's ~1.2in below box top (330).
-// Let me use the measured position: equation center y=382px. Image h=0.552in=39.7pt.
-// Top = 382 - 39.7/2 = 362px.
-const EQ_X_PX = 464.5 - (EQ_ERROR.w_in * 72) / 2;
-const EQ_Y_PX = 362;
-slide.addImage({
-  path: EQ_ERROR.path,
-  x: px(EQ_X_PX), y: px(EQ_Y_PX),
-  w: EQ_ERROR.w_in, h: EQ_ERROR.h_in,
+// ---------------------------------------------------------------------------
+// Title: bold, red, centered (measured ink center x=491 -> box center 492),
+// cap top 64 / baseline 83.
+// ---------------------------------------------------------------------------
+const T_SIZE = 26, T_LS = 34;
+const titleTop = 83 - ((T_LS - 1.117 * T_SIZE) / 2 + 0.905 * T_SIZE + 1.6);
+slide.addText("Problem Formulation", {
+  x: px(72), y: px(titleTop), w: px(840), h: px(60),
+  align: "center", valign: "top", margin: 0,
+  fontFace: "Arial", fontSize: T_SIZE, bold: true, color: "C00000",
+  lineSpacing: T_LS,
 });
 
-// Red X mark at far right of box 3
-// Original: x=771..778, y=369..382 (center ~774, 375). Box right edge at x=871.
-// So X is ~97px from right edge.
-// In inches: 774/72 = 10.75in from left. Box right = 871/72 = 12.097in.
-// X mark w~7px = 0.097in. Font size ~36pt.
+// ---------------------------------------------------------------------------
+// Red X mark at the far right of box 3
+// ---------------------------------------------------------------------------
+const X_SIZE = 32, X_LS = 34;
+const xTop = 390 - ((X_LS - 1.117 * X_SIZE) / 2 + 0.905 * X_SIZE + 1.6);
 slide.addText("X", {
-  x: px(774), y: px(375 - 18), // baseline at 375, ~18pt descent for 36pt
-  w: px(30), h: px(40),
-  align: "center", valign: "middle", margin: 0,
-  fontFace: "Arial", fontSize: 36, bold: true, color: "FF0000",
-  lineSpacing: 36,
+  x: px(752), y: px(xTop), w: px(50), h: px(50),
+  align: "center", valign: "top", margin: 0,
+  fontFace: "Arial", fontSize: X_SIZE, bold: true, color: "FF0000",
+  lineSpacing: X_LS,
 });
-
-// --- Box 4 text (y=442..512) ---
-// 3 lines.
-// Line 1: "Define \u03b4_i as :" with \u03b4_i underlined
-// Line 2: "If X \u2208 class I and misclassified as Class II then d(X) will be <0 \u21d2 \u03b4_i = -1 \u21d2 d(X) \u03b4_i >0"
-// Line 3: "If X \u2208 class II and misclassified as Class I then d(X) will be >0 \u21d2 \u03b4_i = +1 \u21d2 d(X) \u03b4_i >0"
-// Colors per recreation_brief: class I green, Class II blue, implication arrows and delta_i red, final d(X)delta_i >0 blue
-const B4_TOP = px(442 - 15);
-const B4_LINE_SPACING = 29;
-
-// Line 1: "Define \u03b4_i as :"
-addRichText(slide, BOX_X, B4_TOP, px(BOX_W), px(100), [
-  { text: "Define " },
-  { text: "\u03b4_i", options: { underline: true, italic: true } },
-  { text: " as :" },
-], 14, B4_LINE_SPACING);
-
-// Line 2
-addRichText(slide, BOX_X, px(442 - 15 + 29), px(BOX_W), px(100), [
-  { text: "If " },
-  { text: "X", options: { italic: true } },
-  { text: " \u2208 " },
-  { text: "class I", options: { color: "008000" } },
-  { text: " and " },
-  { text: "misclassified", options: { underline: true } },
-  { text: " as " },
-  { text: "Class II", options: { color: "0000FF" } },
-  { text: " then " },
-  { text: "d(X)", options: { color: "C00000", italic: true } },
-  { text: " will be " },
-  { text: "<0 ", options: { color: "0000FF" } },
-  { text: "\u21d2 ", options: { color: "C00000" } },
-  { text: "\u03b4_i ", options: { color: "C00000", italic: true } },
-  { text: "= -1 ", options: { color: "C00000" } },
-  { text: "\u21d2 ", options: { color: "C00000" } },
-  { text: "d(X) ", options: { color: "C00000", italic: true } },
-  { text: "\u03b4_i ", options: { color: "C00000", italic: true } },
-  { text: ">0", options: { color: "0000FF" } },
-], 14, B4_LINE_SPACING);
-
-// Line 3
-addRichText(slide, BOX_X, px(442 - 15 + 2*29), px(BOX_W), px(100), [
-  { text: "If " },
-  { text: "X", options: { italic: true } },
-  { text: " \u2208 " },
-  { text: "Class II", options: { color: "0000FF" } },
-  { text: " and " },
-  { text: "misclassified", options: { underline: true } },
-  { text: " as " },
-  { text: "class I", options: { color: "008000" } },
-  { text: " then " },
-  { text: "d(X)", options: { color: "C00000", italic: true } },
-  { text: " will be " },
-  { text: ">0 ", options: { color: "0000FF" } },
-  { text: "\u21d2 ", options: { color: "C00000" } },
-  { text: "\u03b4_i ", options: { color: "C00000", italic: true } },
-  { text: "= +1 ", options: { color: "C00000" } },
-  { text: "\u21d2 ", options: { color: "C00000" } },
-  { text: "d(X) ", options: { color: "C00000", italic: true } },
-  { text: "\u03b4_i ", options: { color: "C00000", italic: true } },
-  { text: ">0", options: { color: "0000FF" } },
-], 14, B4_LINE_SPACING);
 
 pptx.writeFile({ fileName: OUT }).then(() => console.log("wrote " + OUT));

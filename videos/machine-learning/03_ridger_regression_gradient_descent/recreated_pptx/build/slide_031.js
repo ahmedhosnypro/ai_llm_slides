@@ -201,17 +201,22 @@ slide.addShape(pptx.ShapeType.rect, {
 });
 
 // Grid lines (light gray CCCCCC) - both horizontal and vertical
-// Grid spans x: -5 to 15 (20 units), y: -5 to 15 (20 units)
-// Plot: x in [-5,15] mapped to [0, gW], y in [-5,15] mapped to [gH, 0]
+// MEASURED grid lines (007 re-measure, 2026-10-23): vertical at x 573/630/687/745/801
+// = data x -5/0/5/10/15; horizontal at y 87/146/206/265 = data y 10/5/0/-5.
+// Confirmed against the frame's green dashed line at y=1 -> frame y ~194
+// (= -5 at 265 with 11.87 px/unit). So the y axis runs -5..12, NOT -5..15
+// (the old -5..15 mapping squashed the y grid to 10 px/unit, which the frame
+// disproves). Tick labels: x { -5,0,5,10,15 }, y { -5,0,5,10 }.
 const xMin = -5, xMax = 15;
-const yMin = -5, yMax = 15;
-const tickVals = [-5, 0, 5, 10, 15];
+const yMin = -5, yMax = 12;
+const xTickVals = [-5, 0, 5, 10, 15];
+const yTickVals = [-5, 0, 5, 10];
 
 function mapX(x) { return gX + ((x - xMin) / (xMax - xMin)) * gW; }
 function mapY(y) { return gY + gH - ((y - yMin) / (yMax - yMin)) * gH; }
 
 // Vertical grid lines
-tickVals.forEach(xv => {
+xTickVals.forEach(xv => {
   const xPx = mapX(xv);
   slide.addShape(pptx.ShapeType.line, {
     x: xPx, y: gY, w: 0, h: gH,
@@ -220,7 +225,7 @@ tickVals.forEach(xv => {
 });
 
 // Horizontal grid lines
-tickVals.forEach(yv => {
+yTickVals.forEach(yv => {
   const yPx = mapY(yv);
   slide.addShape(pptx.ShapeType.line, {
     x: gX, y: yPx, w: gW, h: 0,
@@ -239,13 +244,13 @@ slide.addShape(pptx.ShapeType.line, { // y-axis (x=0)
 });
 
 // Tick labels (Arial 9pt)
-tickVals.forEach(xv => {
+xTickVals.forEach(xv => {
   slide.addText(String(xv), {
     x: mapX(xv) - px(12), y: mapY(0) + px(4), w: px(24), h: px(14),
     align: "center", valign: "top", fontSize: 9, color: "000000", fontFace: A, margin: 0,
   });
 });
-tickVals.forEach(yv => {
+yTickVals.forEach(yv => {
   if (yv === 0) return; // skip 0 on y-axis (already at origin)
   slide.addText(String(yv), {
     x: mapX(0) - px(30), y: mapY(yv) - px(7), w: px(28), h: px(14),

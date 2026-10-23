@@ -25,8 +25,9 @@
 //     Cap 13px => Times regular 19pt (advance fit: B2 29.16em x 19 = 554 vs measured 558).
 //   GREEN callout box: x348..855 w507, y260..302 h42; fill (226,255,239) => E1FFEF;
 //     border core (89,129,76) => 59814C, ~2-3px => 1.5pt.
-//   EQUATION (professional 2D): ink x352..563 (211px) inside the green box, vertically
-//     centred (box centre y281). assets/eq_039_main.png @600dpi, 18pt => ink 210.9px.
+//   EQUATION (professional 2D): ink x367..563 (196px), baseline y291; the mandated 2D
+//     form is more vertically compact than the original's ink (y270..299), matched on
+//     left edge / baseline / ink centre (y285) instead. 17pt mathtext => ink 199px.
 //   RED annotation "Repeat for ALL misclassified Samples": x605..841 (236px), y279..292.
 //     16.10em => Times regular 15pt (242px).
 //   WHY USING SGD (red, bold): ink x84..212, band y308..324. 7.11em x 1.04 x 18 = 133px.
@@ -76,8 +77,8 @@ const PANEL = { x: 73, y: 142, w: 795, h: 340 };          // white panel + blue 
 const GBOX = { x: 348, y: 260, w: 507, h: 42 };           // green equation callout
 const EQ = {
   path: path.resolve(__dirname, "assets/eq_039_main.png"),
-  wIn: 1774 / 600, hIn: 189 / 600,
-  x: 351.04, y: 269.7,   // image origin => ink lands at frame (352, ~271)
+  wIn: 1676 / 600, hIn: 179 / 600,
+  x: 366.04, y: 274.1,   // ink x367..566 (orig x367..563), baseline y291 (orig 291), ink centre y285 (orig 284.5)
 };
 const ARROW_PNG = {
   path: path.resolve(__dirname, "assets/evt_039.png"),
@@ -212,7 +213,7 @@ slide.addText("SGD converges faster than GD", {
 // ---- bottom captions ------------------------------------------------------------------
 // red caption: left-aligned at x92, wraps to 2 lines (measured pitches 24px => lineSpacing 24pt)
 slide.addText("Batch GD is a generalization of GD and SGD where weights are updated after passing through \u201cMini-Batch\u201d of training samples with size n", {
-  x: 92 * PX, y: (429 - 23) * PX, w: 520 * PX, h: 46 * PX,
+  x: 92 * PX, y: (425 - 23) * PX, w: 745 * PX, h: 46 * PX,
   align: "left", valign: "middle",
   fontSize: CAP_SIZE, bold: true, color: RED, fontFace: SERIF, margin: 0,
   lineSpacing: 24,

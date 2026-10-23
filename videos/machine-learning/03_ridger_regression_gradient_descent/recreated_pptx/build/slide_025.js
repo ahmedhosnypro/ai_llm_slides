@@ -79,19 +79,19 @@ const FONT = "Arial";
 }
 
 // ── four 3-D surface plots (unscaled images at measured region size) ─────────
-// TL 411x174, TR 431x200, BL/BR 411x231 / 431x184 frame px. Each PNG is 300dpi
+// TL 400x174, TR 418x200, BL 400x231, BR 418x184 frame px. Each PNG is 300dpi
 // with figsize = region_px/72, so placing it at region_px/72 inches is exact —
 // no rescale, no resampling ripple. Red reference lines and the BL annotations
 // are drawn INSIDE these PNGs (2-D figure-fraction overlays), so their measured
 // slide-space positions are preserved exactly.
 slide.addImage({ path: path.join(assetsDir, "plot_025_tl.png"),
-                 x: px(60),  y: px(116), w: 411 / 72, h: 174 / 72 });
+                 x: px(60),  y: px(116), w: 400 / 72, h: 174 / 72 });
 slide.addImage({ path: path.join(assetsDir, "plot_025_tr.png"),
-                 x: px(470), y: px(116), w: 431 / 72, h: 200 / 72 });
+                 x: px(480), y: px(116), w: 418 / 72, h: 200 / 72 });
 slide.addImage({ path: path.join(assetsDir, "plot_025_bl.png"),
-                 x: px(60),  y: px(296), w: 411 / 72, h: 231 / 72 });
+                 x: px(60),  y: px(296), w: 400 / 72, h: 231 / 72 });
 slide.addImage({ path: path.join(assetsDir, "plot_025_br.png"),
-                 x: px(470), y: px(346), w: 431 / 72, h: 184 / 72 });
+                 x: px(480), y: px(346), w: 418 / 72, h: 184 / 72 });
 
 // ── four blue label boxes with white bold text ───────────────────────────────
 // The white text in EVERY box sits in TWO bands (measured: band pitch ~12px,

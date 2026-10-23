@@ -174,6 +174,39 @@ def main():
     y0, y1 = rows[0], rows[-1] + 1
     x0, x1 = cols[0], cols[-1] + 1
     canvas = canvas[y0:y1, x0:x1]
+
+    # optional uniform rescale to a measured slide width (frame-px fidelity):
+    # the composite is generated, so resizing it is a render-at-size, not a
+    # rescale of fixed-size glyphs.
+    tw = spec.get("target_w_in")
+    th = spec.get("target_h_in")
+    if tw or th:
+        from PIL import Image as _I
+        im = _I.fromarray(canvas)
+        cur_w, cur_h = im.size
+        if tw and th:
+            nw, nh = int(round(tw * DPI)), int(round(th * DPI))
+        elif tw:
+            nw = int(round(tw * DPI))
+            nh = max(1, int(round(cur_h * (nw / cur_w))))
+        else:
+            nh = int(round(th * DPI))
+            nw = max(1, int(round(cur_w * (nh / cur_h))))
+        im = im.resize((nw, nh), _I.LANCZOS)
+        canvas = np.asarray(im)
+        Image.fromarray(canvas).save(out_path)
+        h = canvas.shape[0]
+        new_base = int(round(line_y * nh / (y1 - y0)))
+        info = {"path": out_path, "w_px": canvas.shape[1], "h_px": int(h),
+                "w_in": round(canvas.shape[1] / DPI, 5),
+                "h_in": round(h / DPI, 5),
+                "baseline_px": int(new_base),
+                "baseline_frac": round(new_base / h, 5),
+                "dpi": DPI, "fontsize_pt": fs,
+                "color": spec.get("color", "000000")}
+        print(json.dumps(info))
+        return
+
     Image.fromarray(canvas).save(out_path)
 
     h = y1 - y0
