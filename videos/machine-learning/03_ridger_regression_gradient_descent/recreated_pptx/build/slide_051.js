@@ -2,17 +2,25 @@
 // "Check Classes" (Perceptron — final slide of the deck).
 // Built from PIL measurement of unique_slides/slide_051.jpg (960x540 frame, 1px = 1pt).
 //
-// MEASURED GEOMETRY (frame px; banked in qa/slide051/measurements_051.json):
+// MEASURED GEOMETRY (frame px; banked in qa/slide051/measurements_051.json plus
+// qa/slide051/fix_measurements_051.txt):
 //
 //   chrome          : panel x54..903 y45..540 (E9E9E7), C00000 1pt strokes
 //                     LEFT x58.5 / RIGHT x901 / BOTTOM y538.5 (NO top stroke),
 //                     badge d35 centred (876,73), numeral "51"
 //   pale card       : x68..720 y54..130, border (32,24,109) 2pt, fill (254,255,232)
-//   sample matrix   : header x1..x6 y64..74 (cols x91-97/114-119/135-146/158-164/
-//                     181-187/204-214); rows (1)(2)(1)(5)(6)(6) y77..91 and
-//                     (1)(1)(2)(4)(5)(6) y94..108; class row C1 C1 C1 C2 C2 C2
-//                     y113..125 (red / blue)
-//   centre block    : "Initial W =" x265..315 y75..85; bracketed column vector
+//   sample matrix   : 6 TALL-BRACKET COLUMN VECTORS, each one column of the
+//                     2-row x 6-column sample matrix. Brackets are straight
+//                     single-px strokes spanning BOTH data rows (y78..106);
+//                     digit lines centred y84 (row 1) and y100 (row 2).
+//                     bracket x pairs (L,R) and interior centre:
+//                       90/102  c96     111/124  c117.5  134/147  c140.5
+//                       156/170 c163    179/192  c185.5  202/214  c208
+//                     header x1..x6 centres 94/116.5/140.5/161/184/209 (y64..74);
+//                     class row y110..125 — C1 red c93.5/116.5/140.5,
+//                     C2 blue c163.5/185.5/208.5.
+//                     rows: (1)(2)(1)(5)(6)(6) / (1)(1)(2)(4)(5)(6)
+//   centre block    : "Initial W =" x265..315 y75..85; bracketted column vector
 //                     [4; -2; -2] bars x329..333 & x351..354 y59..106 with entries
 //                     4 y61..71, -2 y77..87, -2 y93..102; red "Step η = 1"
 //                     x365..435 y67..81
@@ -20,27 +28,33 @@
 //                     C2(blue) x327..336, negative x344..396,
 //                     Zero(green) x413..439, "is unaccepted" x447..520
 //   label           : "Check classes of" x498..583 y78..89 (black)
-//   Z test matrix   : x597..658, header Z1 Z2 Z3 y64..76 (cols x600..613/621..635/
-//                     643..655), 2 data rows y80..110 read as 3 COLUMNS x 2 ROWS:
-//                     cols = (0,7,3) and (0,6,2) -> Z1=(0,0), Z2=(7,6), Z3=(3,2)
+//   Z test matrix   : 3 TALL-BRACKET COLUMN VECTORS (Z1 Z2 Z3) x597..658,
+//                     brackets y80..108, digit lines y87 / y103:
+//                     Z1 598/612 c605 = (0,0); Z2 621/634 c627.5 = (7,6);
+//                     Z3 643/656 c649.5 = (3,2). Header Z1 Z2 Z3 y64..76,
+//                     centres 606.5 / 628 / 649.
+//                     Cross-checked against the decision rows: Z1=(0,0), Z2=(7,6),
+//                     Z3=(3,2) is the reading the printed d(Zn) arithmetic forces
+//                     (the analysis JSON's 3x3 grid reading contradicts it).
 //   augmented matrix: heading "Augmented Vectors (from Top)" navy x81..236 y147..159;
-//                     header x1..x6 y166..175; rows y180..199 / y197..225 / y231..243
-//                     (3 rows x 6 cols: bias 1s, then (1,2,1,5,6,6), (1,1,2,4,5,6));
-//                     class row y231..243 (red x93..145 / blue x184..218)
+//                     6 TALL-BRACKET COLUMN VECTORS, brackets y181..224,
+//                     digit lines y188 / y203 / y218, bracket x pairs and
+//                     interior centres:
+//                       94/107  c100.5   115/128  c121.5   137/151  c144
+//                       160/173 c166.5   182/195  c188.5   205/218  c211.5
+//                     header x1..x6 y166..175; class row y231..243 —
+//                     C1 red c97.5/120/142.5, C2 blue c164.5/189.5/209.5.
+//                     columns: (1,1,1) (1,2,1) (1,1,2) (1,5,4) (1,6,5) (1,6,6)
 //   red box         : x78..239 y277..305, fill (194,0,3), white bold "Check Classes"
 //   decision rows   : three white cards x276..853, tops y141 / y207 / y273
 //                     (2pt grey border (159,168,177)); each holds a blue d(Zn) label,
-//                     a green bracketed weight vector [5; -1; -1] (bars x381..382 and
-//                     x404..405, interior 3 lines), then the chain
-//                     "= <val>" / "<condition>" / "<class tag>".
-//                     Arithmetic check: W=(5,-1,-1) gives (1,0,0)FW=5,
-//                     (1,7,6)FW=-8, (1,3,2)FW=0 — exactly the printed results, so the
-//                     DEC bracket interior is the weight vector, not the Z vectors.
+//                     a GREEN tall-bracket vector [5; -1; -1] (bars x383..386 and
+//                     x402..406 spanning y145..191, three interior lines), then the
+//                     chain "= <val>" / "<condition>" / "<class tag>" at y161..173.
 //   bottom-right    : connected-component scan finds NO mouse-pointer cursor in the
 //                     frame (only the bottom chrome stroke) — nothing drawn.
 
 const pptxgenpkg = require("pptxgenjs");
-const path = require("path");
 const { CHROME, drawHouseChrome } = require("../../shared_patterns/house_chrome.js");
 
 const pptx = new pptxgenpkg();
@@ -64,51 +78,66 @@ const GREEN = "5C9A5C";        // measured DEC interior green (~101,153,105)
 const GREEN_DK = "27331A";     // measured legend "Zero" green (~59,71,45)
 const CARD_BORDER = "9FA8B1";  // measured decision-card border (159,168,177)
 
+// A tall bracket column: two straight vertical strokes spanning all enclosed
+// lines, with each entry centred in the interior.
+function bracketColumn(L, R, yTop, yBot, vals, digitCentres, opts) {
+  opts = opts || {};
+  const color = opts.color || BLACK;
+  const fontSize = opts.fontSize || 10;
+  const strokeW = opts.strokeW == null ? 1 : opts.strokeW;
+  s.addShape(pptx.ShapeType.line, {
+    x: fx(L), y: fx(yTop), w: 0, h: fx(yBot - yTop),
+    line: { color: color, width: strokeW },
+  });
+  s.addShape(pptx.ShapeType.line, {
+    x: fx(R), y: fx(yTop), w: 0, h: fx(yBot - yTop),
+    line: { color: color, width: strokeW },
+  });
+  vals.forEach(function (v, i) {
+    s.addText(v, {
+      x: fx(L), y: fx(digitCentres[i] - 7), w: fx(R - L), h: fx(14),
+      fontFace: FONT, fontSize: fontSize, color: color,
+      align: "center", valign: "middle", margin: 0,
+    });
+  });
+}
+
+// subscripted "C1"/"C2" class tag centred at cx
+function classTag(cx, y, digit, color) {
+  s.addText([
+    { text: "C", options: { fontSize: 10, color: color, bold: true } },
+    { text: digit, options: { fontSize: 8, color: color, bold: true, subscript: true } },
+  ], {
+    x: fx(cx - 11), y: fx(y), w: fx(22), h: fx(16),
+    fontFace: FONT, align: "center", valign: "middle", margin: 0,
+  });
+}
+
 // ================= 1. PALE CARD (x68..720, y54..130) =================
 s.addShape(pptx.ShapeType.rect, {
   x: fx(68), y: fx(54), w: fx(720 - 68), h: fx(130 - 54),
   fill: { color: CREAM }, line: { color: NAVY, width: 2 },
 });
 
-// ================= 2. LEFT SAMPLE MATRIX =================
-const HDR_X = [91, 114, 135, 158, 181, 204];
-HDR_X.forEach(function (x, i) {
+// ================= 2. LEFT SAMPLE MATRIX (6 tall bracket columns) =================
+const SAMPLE = [
+  { hdr: 94, L: 90, R: 102, c: 96, vals: ["1", "1"], cls: "1" },
+  { hdr: 116.5, L: 111, R: 124, c: 117.5, vals: ["2", "1"], cls: "1" },
+  { hdr: 140.5, L: 134, R: 147, c: 140.5, vals: ["1", "2"], cls: "1" },
+  { hdr: 161, L: 156, R: 170, c: 163, vals: ["5", "4"], cls: "2" },
+  { hdr: 184, L: 179, R: 192, c: 185.5, vals: ["6", "5"], cls: "2" },
+  { hdr: 209, L: 202, R: 214, c: 208, vals: ["6", "6"], cls: "2" },
+];
+SAMPLE.forEach(function (col, i) {
   s.addText([
     { text: "x", options: { fontSize: 11, color: BLACK, italic: true } },
     { text: String(i + 1), options: { fontSize: 8, color: BLACK, italic: true, subscript: true } },
   ], {
-    x: fx(x), y: fx(63), w: fx(18), h: fx(12),
+    x: fx(col.hdr - 9), y: fx(63), w: fx(18), h: fx(12),
     fontFace: FONT, align: "center", valign: "middle", margin: 0,
   });
-});
-
-const COLS = [91, 114, 135, 158, 181, 204]; // glyph centres, pitch ~23
-const ROWS = [
-  { y: 76, vals: ["1", "2", "1", "5", "6", "6"] },
-  { y: 93, vals: ["1", "1", "2", "4", "5", "6"] },
-];
-ROWS.forEach(function (r) {
-  r.vals.forEach(function (v, i) {
-    s.addText("(" + v + ")", {
-      x: fx(COLS[i] - 6), y: fx(r.y), w: fx(20), h: fx(14),
-      fontFace: FONT, fontSize: 10, color: BLACK,
-      align: "center", valign: "middle", margin: 0,
-    });
-  });
-});
-
-const CLS = [
-  ["C1", 90, RED], ["C1", 112, RED], ["C1", 134, RED],
-  ["C2", 157, BLUE], ["C2", 179, BLUE], ["C2", 203, BLUE],
-];
-CLS.forEach(function (c) {
-  s.addText([
-    { text: "C", options: { fontSize: 10, color: c[2], bold: true } },
-    { text: c[0][1], options: { fontSize: 8, color: c[2], bold: true, subscript: true } },
-  ], {
-    x: fx(c[1]), y: fx(110), w: fx(20), h: fx(16),
-    fontFace: FONT, align: "center", valign: "middle", margin: 0,
-  });
+  bracketColumn(col.L, col.R, 78, 106, col.vals, [84, 100]);
+  classTag(col.c, 110, col.cls, col.cls === "1" ? RED : BLUE);
 });
 
 // ================= 3. CENTRE BLOCK =================
@@ -139,7 +168,7 @@ s.addShape(pptx.ShapeType.line, {
   });
 });
 
-// red "Step η = 1" — Step x365..391, η x401..409, = x414..422, 1 x429..435
+// red "Step η = 1"
 s.addText([
   { text: "Step ", options: { fontSize: 12, color: RED, italic: true } },
   { text: "\u03b7", options: { fontSize: 12, color: RED, italic: true } },
@@ -187,77 +216,47 @@ s.addText("Check classes of", {
   fontFace: FONT, fontSize: 12, color: BLACK, bold: true, align: "left", valign: "middle", margin: 0,
 });
 
-// ================= 5. RIGHT Z TEST MATRIX =================
-// header Z1 Z2 Z3 (3 columns)
-const Z_HDR = [600, 621, 643];
-Z_HDR.forEach(function (x, i) {
+// ================= 5. RIGHT Z TEST MATRIX (3 tall bracket columns) =================
+const Z_COLS = [
+  { hdr: 606.5, L: 598, R: 612, c: 605, vals: ["0", "0"] },
+  { hdr: 628, L: 621, R: 634, c: 627.5, vals: ["7", "6"] },
+  { hdr: 649, L: 643, R: 656, c: 649.5, vals: ["3", "2"] },
+];
+Z_COLS.forEach(function (col, i) {
   s.addText([
     { text: "Z", options: { fontSize: 11, color: BLACK, italic: true } },
     { text: String(i + 1), options: { fontSize: 8, color: BLACK, italic: true, subscript: true } },
   ], {
-    x: fx(x), y: fx(63), w: fx(20), h: fx(14),
+    x: fx(col.hdr - 9), y: fx(63), w: fx(18), h: fx(14),
     fontFace: FONT, align: "center", valign: "middle", margin: 0,
   });
-});
-// 2 data rows, each 3 paren-wrapped digits: (0)(7)(3) then (0)(6)(2)
-const Z_ROWS = [
-  { y: 80, vals: ["0", "7", "3"] },
-  { y: 95, vals: ["0", "6", "2"] },
-];
-Z_ROWS.forEach(function (r) {
-  r.vals.forEach(function (v, i) {
-    s.addText("(" + v + ")", {
-      x: fx(Z_HDR[i] - 5), y: fx(r.y), w: fx(22), h: fx(14),
-      fontFace: FONT, fontSize: 10, color: BLACK,
-      align: "center", valign: "middle", margin: 0,
-    });
-  });
+  bracketColumn(col.L, col.R, 80, 108, col.vals, [87, 103]);
 });
 
-// ================= 6. AUGMENTED MATRIX (middle-left) =================
+// ================= 6. AUGMENTED MATRIX (middle-left, 6 tall bracket columns) =================
 s.addText("Augmented Vectors (from Top)", {
   x: fx(81), y: fx(146), w: fx(158), h: fx(14),
   fontFace: FONT, fontSize: 11, color: NAVY, bold: true, align: "left", valign: "middle", margin: 0,
 });
 
-const AUG_HDR = [93, 116, 139, 162, 185, 208];
-AUG_HDR.forEach(function (x, i) {
+const AUG = [
+  { hdr: 100.5, L: 94, R: 107, c: 100.5, vals: ["1", "1", "1"], cls: "1" },
+  { hdr: 121.5, L: 115, R: 128, c: 121.5, vals: ["1", "2", "1"], cls: "1" },
+  { hdr: 144, L: 137, R: 151, c: 144, vals: ["1", "1", "2"], cls: "1" },
+  { hdr: 166.5, L: 160, R: 173, c: 166.5, vals: ["1", "5", "4"], cls: "2" },
+  { hdr: 188.5, L: 182, R: 195, c: 188.5, vals: ["1", "6", "5"], cls: "2" },
+  { hdr: 211.5, L: 205, R: 218, c: 211.5, vals: ["1", "6", "6"], cls: "2" },
+];
+AUG.forEach(function (col, i) {
   s.addText([
     { text: "x", options: { fontSize: 10, color: BLACK, italic: true } },
     { text: String(i + 1), options: { fontSize: 8, color: BLACK, italic: true, subscript: true } },
   ], {
-    x: fx(x), y: fx(165), w: fx(18), h: fx(12),
+    x: fx(col.hdr - 9), y: fx(165), w: fx(18), h: fx(12),
     fontFace: FONT, align: "center", valign: "middle", margin: 0,
   });
-});
-
-const AUG_ROWS = [
-  { y: 179, vals: ["1", "1", "1", "1", "1", "1"] },
-  { y: 197, vals: ["1", "2", "1", "5", "6", "6"] },
-  { y: 215, vals: ["1", "1", "2", "4", "5", "6"] },
-];
-AUG_ROWS.forEach(function (r) {
-  r.vals.forEach(function (v, i) {
-    s.addText("(" + v + ")", {
-      x: fx(AUG_HDR[i] - 6), y: fx(r.y), w: fx(20), h: fx(12),
-      fontFace: FONT, fontSize: 10, color: BLACK,
-      align: "center", valign: "middle", margin: 0,
-    });
-  });
-});
-
-const AUG_CLS = [
-  ["C1", 93, RED], ["C1", 116, RED], ["C1", 139, RED],
-  ["C2", 184, BLUE], ["C2", 206, BLUE], ["C2", 210, BLUE],
-];
-AUG_CLS.forEach(function (c) {
-  s.addText([
-    { text: "C", options: { fontSize: 10, color: c[2], bold: true } },
-    { text: c[0][1], options: { fontSize: 8, color: c[2], bold: true, subscript: true } },
-  ], {
-    x: fx(c[1]), y: fx(229), w: fx(20), h: fx(16),
-    fontFace: FONT, align: "center", valign: "middle", margin: 0,
-  });
+  bracketColumn(col.L, col.R, 181, 224, col.vals, [188, 203, 218]);
+  classTag(col.c, 229, col.cls, col.cls === "1" ? RED : BLUE);
 });
 
 // ================= 7. RED "Check Classes" BOX =================
@@ -294,23 +293,9 @@ DEC_BASE.forEach(function (base, idx) {
     x: fx(333), y: fx(base + 8), w: fx(44), h: fx(14),
     fontFace: FONT, align: "left", valign: "middle", margin: 0,
   });
-  // green bracket bars spanning the 3 interior lines
-  s.addShape(pptx.ShapeType.line, {
-    x: fx(381.5), y: fx(base + 4), w: 0, h: fx(46),
-    line: { color: GREEN, width: 2 },
-  });
-  s.addShape(pptx.ShapeType.line, {
-    x: fx(404.5), y: fx(base + 4), w: 0, h: fx(46),
-    line: { color: GREEN, width: 2 },
-  });
-  // interior: the weight vector [5; -1; -1] in green
-  ["5", "-1", "-1"].forEach(function (v, i) {
-    s.addText(v, {
-      x: fx(386), y: fx(base + 6 + i * 15), w: fx(16), h: fx(13),
-      fontFace: FONT, fontSize: 10, color: GREEN,
-      align: "center", valign: "middle", margin: 0,
-    });
-  });
+  // green bracket bars spanning the 3 interior lines (measured x383..386 / x402..406, y145..191)
+  bracketColumn(384, 403, base + 4, base + 50, ["5", "-1", "-1"],
+    [base + 12, base + 26, base + 41], { color: GREEN, strokeW: 2 });
 });
 
 // chain texts, per row: "= <val>", "<condition>", "<class tag>"
