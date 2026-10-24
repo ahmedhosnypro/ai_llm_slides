@@ -18,6 +18,13 @@ export TMPDIR=/workspaces/codespaces-blank/ai_llm_slides/scratch/tmp
 cd /workspaces/codespaces-blank/ai_llm_slides
 QA=videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide017
 
+# gate law: pgrep < 8 required before EVERY call.
+COUNT=$(pgrep -c -f analyze_image.py || true)
+if [ "${COUNT:-99}" -ge 8 ]; then
+  echo "=== GATE BUSY (analyze_image.py count=${COUNT}) — not dispatching ==="
+  exit 75
+fi
+
 scripts/16_vision_gate.sh timeout 1700 python3 \
   .agents/skills/image-analysis/scripts/analyze_image.py comparison \
   $QA/render_4.png \

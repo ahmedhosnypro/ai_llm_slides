@@ -12,7 +12,14 @@ export TMPDIR=/workspaces/codespaces-blank/ai_llm_slides/scratch/tmp
 cd /workspaces/codespaces-blank/ai_llm_slides
 QA=videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide017
 
-for NAME in wbox band1 test; do
+for NAME in wbox band1 band2 band3 test; do
+  # gate law: pgrep < 8 required before EVERY call; abort the remaining legs
+  # when the gate is busy so no leg is ever dispatched without a probe.
+  COUNT=$(pgrep -c -f analyze_image.py || true)
+  if [ "${COUNT:-99}" -ge 8 ]; then
+    echo "=== GATE BUSY (analyze_image.py count=${COUNT}) — aborting before leg ${NAME} ==="
+    exit 75
+  fi
   DESC=$(python3 -c "import json,sys; print(json.load(open('$QA/region_descs_4.json'))['$NAME'])")
   scripts/16_vision_gate.sh timeout 1700 python3 \
     .agents/skills/image-analysis/scripts/analyze_image.py comparison \

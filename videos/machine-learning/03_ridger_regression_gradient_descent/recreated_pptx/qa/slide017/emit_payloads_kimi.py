@@ -73,6 +73,8 @@ print("render_4.png %dx%d scale %.6f (md5-proven identical to render_3.png)"
 REGIONS = [
     ("wbox",  (497, 119, 632, 259)),
     ("band1", (84, 118, 880, 258)),
+    ("band2", (84, 255, 880, 395)),
+    ("band3", (84, 392, 880, 532)),
     ("test",  (660, 88, 880, 258)),
 ]
 DESCS = json.load(open(os.path.join(HERE, "region_descs_%s.json" % K), encoding="utf-8"))
