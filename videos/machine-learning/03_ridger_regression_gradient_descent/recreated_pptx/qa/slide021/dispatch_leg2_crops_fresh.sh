@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# LEG 2 (fresh lane w021-fresh-20261024) — Procedure B crop certificates, slide 021 attempt 10 (render_10.png)
+# LEG 2 (Procedure B) — zoomed crop-pair certificates, slide 021 attempt 10 (render_10.png)
+# Fresh lane copy of dispatch_leg2_crops.sh. Owner: WID (default w021-fresh-20261024).
+# Only the four legs that were MISSING when this was banked; top_table_eq is already PASS.
 # Payload byte-for-byte from judge_protocol_03.md Template B (banked: crop_prompt_template_10.txt,
 # 1915 chars, NNN->021 already substituted; region description goes in --capture).
 # Cut pairs (matched effective scale 2.0833, verified output_px/frame_px equal on both axes):
@@ -12,11 +14,13 @@ set -u
 ROOT="/workspaces/codespaces-blank/ai_llm_slides"
 V="videos/machine-learning/03_ridger_regression_gradient_descent"
 QADIR="$ROOT/$V/recreated_pptx/qa/slide021"
+# Owner of the lane's DB claim; a resume lane overrides WID after its own `claim 21 <id>`.
+WID="${WID:-w021-fresh-20261024}"
 PAYLOAD="$(cat "$QADIR/crop_prompt_template_10.txt")"
 cd "$ROOT"
 hb () {
   cd "$ROOT" && VIDEO=machine-learning/03_ridger_regression_gradient_descent \
-    python3 scripts/15_progress.py heartbeat 21 w021-fresh-20261024 >/dev/null 2>&1
+    python3 scripts/15_progress.py heartbeat 21 "$WID" >/dev/null 2>&1
   cd "$ROOT"
 }
 run_crop () {
@@ -29,7 +33,7 @@ run_crop () {
     return 99
   fi
   cd "$ROOT" && VIDEO=machine-learning/03_ridger_regression_gradient_descent \
-    python3 scripts/15_progress.py heartbeat 21 w021-fresh-20261024 >/dev/null 2>&1
+    python3 scripts/15_progress.py heartbeat 21 "$WID" >/dev/null 2>&1
   cd "$ROOT"
   scripts/16_vision_gate.sh timeout 1700 python3 \
     .agents/skills/image-analysis/scripts/analyze_image.py comparison \
@@ -47,4 +51,4 @@ run_crop mid_table_eq "the second block's left side: the (X^T X + lambda I) labe
 run_crop mid_chain   "the second block's determinant chain: |X^T X| = 5685, two blue arrows, Non-Singular Matrix, red italic Inverse Exists" || true
 run_crop bot_eq_table "the bottom block: the (X^T X + lambda I)^-1 expression, the long blue arrow, and the 3x3 inverse matrix table of decimals" || true
 hb
-echo "ALL CROPS DONE by w021-fresh-20261024"
+echo "ALL CROPS DONE by ${WID}"

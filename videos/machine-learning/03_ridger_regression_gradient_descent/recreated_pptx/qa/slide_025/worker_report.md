@@ -277,3 +277,45 @@ check ALL SMOOTH (max d2 0.0074 « tol 0.35; GD-path turn cos 1.000 monotone);
   1914 chars, byte-verified in `verify_4.txt`) → `crop_4_<name>_judge.txt`.
 - Both detached (`nohup setsid`) under `timeout 1700` with the approved
   analyzer `--timeout 1200`, `--thinking high --max-tokens 65536`.
+
+## PARK — 2026-10-24 17:11 UTC: both judge legs blocked by the vision gateway (banked 043 failure mode)
+
+**Verdicts: NONE. Nothing fabricated.** 8 dispatches (1 full-slide + 7 crop
+regions; the crop driver was stopped after 5 of 7 to stop contending), every
+call failed `HTTP 504 upstream_timeout` on the IronRouter `images` model
+(Nvidia candidate), ~1-20 min per call, 0 transcripts banked
+(`wall_A_4.log`, `wall_crops_4.log` — the 504 counts and the per-region rc=1
+lines are the wall evidence). Fleet pgrep 15-29 throughout; per the re-anchor
+law (no retry-looping a dead image leg; "park honestly") the drivers were
+stopped. Per verdict law these 504s are NOT judge attempts (no coherent body)
+— `visual_attempts` stays 3; the next real dispatch is still K=4.
+
+### Resume commands (next window, when the image leg is healthy)
+
+```bash
+cd "/worksp""aces/codespaces-blank/ai_llm_slides"   # path split per PATH LAW
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py claim 25 <worker-id> --force
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py heartbeat 25 <worker-id>
+# everything below is STAGED and byte-verified — no rebuild needed, the build is current:
+bash videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide_025/dispatch_A_4.sh        # full-slide leg -> judge_attempt_4.txt
+nohup setsid bash videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide_025/dispatch_crops_4.sh \
+  > videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide_025/scratch/dispatch_crops_4.log 2>&1 &   # 7 crops -> crop_4_<name>_judge.txt
+```
+
+Gate sanity probe first (cheap, 150 s): `scripts/16_vision_gate.sh timeout 150
+python3 .agents/skills/image-analysis/scripts/analyze_image.py analysis
+.../render_4.png --view probe --timeout 120 --rounds 1 --tries 1
+--transcript .../probe_4.txt` — a valid body means the window is open.
+
+Certification sequence on both legs PASS (or PIL-adjudicated with the
+refutation records already banked above):
+
+```
+set 25 visual_check PASS --worker <id>
+set 25 visual_transcript videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide_025/judge_attempt_4.txt --worker <id>
+set 25 visual_attempts 4 --worker <id>
+set 25 gen_status passed --worker <id>
+heartbeat 25 <id>; release 25 <id>; get 25   # confirm gen_status=passed AND worker_id=""
+```
+
+Row is released for takeover; `last_error` carries this park record.
