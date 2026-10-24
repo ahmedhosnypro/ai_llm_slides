@@ -53,13 +53,13 @@ const SERIF = C.SERIF;
 const SANS = C.SANS;
 
 // Title: two ink colours, measured per word (see MEASUREMENTS.md).
-// "Adding" RED, "Ridge" BLUE, "Regularizer to the model" RED, "λ=3" BLUE+RED.
+// "Adding" RED, "Ridge" BLUE, "Regularizer to the model" RED, "λ=3" all BLUE
+// (PIL: original's tail is one blue run; a red "=" was a defect, fixed 2026-10-24).
 const TITLE_RUNS = [
   { text: "Adding ", options: { color: RED } },
   { text: "Ridge ", options: { color: BLUE } },
-  { text: "Regularizer to the model ", options: { color: RED } },
-  { text: "λ", options: { color: BLUE } },
-  { text: "=3", options: { color: RED } },
+  { text: "Regularizer to the model  ", options: { color: RED } },
+  { text: "λ=3", options: { color: BLUE } },
 ];
 const TITLE_BOX = { x: 176, y: 62, w: 650, h: 42, fontSize: 30, lineSpacing: 34 };
 

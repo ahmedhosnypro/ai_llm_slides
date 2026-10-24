@@ -26,6 +26,8 @@
 
 const pptxgenpkg = require("pptxgenjs");
 const { CHROME, drawHouseChrome } = require("../../shared_patterns/house_chrome.js");
+const path = require("path");
+const ASSET_DIR = path.join(__dirname, "assets");
 
 const pptx = new pptxgenpkg();
 pptx.layout = "LAYOUT_WIDE";  // 13.333 x 7.5 in
@@ -190,12 +192,12 @@ s.addText("Iterations", {
 
 // ---------------- 9. SIX CALCULATION ROWS (table x273..852) ----------------
 const CALC = [
-  { y: 140, lbl: "d(x1)", m: "[1, 1, 1, 5]", res: "[-1, 3]" },
-  { y: 205, lbl: "d(x2)", m: "[1, 2, 1, 5]", res: "[-1, 2]" },
-  { y: 271, lbl: "d(x3)", m: "[1, 1, 2, 5]", res: "[-1, 2]" },
-  { y: 337, lbl: "d(x4)", m: "[1, 5, 4, 5]", res: "[-1, -4]" },
-  { y: 403, lbl: "d(x5)", m: "[1, 6, 5, 5]", res: "[-1, -6]" },
-  { y: 469, lbl: "d(x6)", m: "[1, 6, 6, 5]", res: "[-1, -7]" },
+  { y: 140, lbl: "d(x1)", m: "[1, 1, 1, 5]", res: "[-1, 3]", img: "slide_049_matrix_1.png" },
+  { y: 205, lbl: "d(x2)", m: "[1, 2, 1, 5]", res: "[-1, 2]", img: "slide_049_matrix_2.png" },
+  { y: 271, lbl: "d(x3)", m: "[1, 1, 2, 5]", res: "[-1, 2]", img: "slide_049_matrix_3.png" },
+  { y: 337, lbl: "d(x4)", m: "[1, 5, 4, 5]", res: "[-1, -4]", img: "slide_049_matrix_4.png" },
+  { y: 403, lbl: "d(x5)", m: "[1, 6, 5, 5]", res: "[-1, -6]", img: "slide_049_matrix_5.png" },
+  { y: 469, lbl: "d(x6)", m: "[1, 6, 6, 5]", res: "[-1, -7]", img: "slide_049_matrix_6.png" },
 ];
 CALC.forEach(function (r) {
   const ry = r.y + 18;                    // measured text-line centre offset inside the row
@@ -203,15 +205,14 @@ CALC.forEach(function (r) {
     x: fx(273), y: fy(r.y), w: fw(852 - 273), h: 0,
     line: { color: RULE, width: 1 },
   });
-  // d(xN) label + matrix, single text line centred on the row's text line
-  s.addText([
-    { text: r.lbl + " = ", options: { fontFace: FONT, fontSize: 12, color: BLACK } },
-    { text: r.m, options: { fontFace: FONT, fontSize: 12, color: BLACK } },
-    { text: "  ", options: { fontFace: FONT, fontSize: 12, color: BLACK } },
-    { text: r.res, options: { fontFace: FONT, fontSize: 12, color: BLACK } },
-  ], {
-    x: fx(283), y: fy(ry), w: fw(160), h: fh(18),
+  // 2D fix (worker-fresh-049f2): d(xN) matrix as a stacked 2-row bracketed matrix
+  // PNG per the deck's 2D-equation law; the "d(xN) =" label stays inline text.
+  s.addText(r.lbl + " =", {
+    x: fx(283), y: fy(ry), w: fw(60), h: fh(18),
     fontFace: FONT, fontSize: 12, color: BLACK, align: "left", valign: "middle", margin: 0,
+  });
+  s.addImage({
+    path: path.join(ASSET_DIR, r.img), x: fx(348), y: fy(ry - 6), w: 0.79167, h: 0.42,
   });
   s.addText("\u21d2 Keep same Weight", {
     x: fx(508), y: fy(ry), w: fw(120), h: fh(18),

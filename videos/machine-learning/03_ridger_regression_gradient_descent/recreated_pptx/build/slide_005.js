@@ -18,9 +18,12 @@
 //
 // Text bands (frame px) — re-measured attempt 7 (border-aware windows):
 //   eq1 x 98..545 y 108..150   eq2 x 97..630 y 173..214   eq3 x 98..523 y 229..271
-//   eq4 x 96..593 y 374..420   eq5 x 96..683 y 459..504 — eq5 is the ARROW CHAIN
-//     and runs to x683, 5 px clear of the green box; the attempt-6 band (96..637)
-//     was window-clipped and dropped the chain's last 7 glyph groups.
+//   eq4 x 96..593 y 374..420   eq5 x 96..637 y 460..502 — eq5 is the ARROW CHAIN.
+//     CAUTION (attempt 9): the original's eq5 window must stop at x684, and its ink
+//     genuinely ends at x637 — columns x639..646 hold ZERO ink and x647..683 hold only
+//     1 px/col of JPEG noise, with the green box border beyond x688. A noise-inflated
+//     window measurement pretending "x683" adds ~45 px of arrow the original does not
+//     have. Any future re-measurement MUST reject columns with <3 ink rows.
 //   Remember up x 681..761 y 138..149 ; Remember low x 661..733 y 376..385
 //     — the ORIGINAL's lower-right box carries its content ~20 px LEFT of the
 //     upper-right box's (x 661 vs 681); measured, not a typo.
@@ -183,13 +186,14 @@ textbox(196, 306, 350, 30, [
 // ============================================================
 rect(72, 358, 821, 165, CREAM, { color: CBORD, width: 1 });
 eqFit("eq_005_deriv1.png", 97, 592, 375, 417);
-// CORRECTED 2026-10-24 (attempt 7): the prior band (96,637,460,502) was a TRUNCATED
-// measurement — it clipped the chain at the measurement window's right edge. Re-measured
-// with a window clear of the green box (x90..684, y455..510): the original's chain ink
-// spans x96..683, y459..504 = 588x46 px, and carries 28 glyph groups ending in the
-// 37px "→" just left of the green box. The old band cut 7 groups / 45 px of content —
-// the final arrow never rendered. eqFit now fits the full band (sx 1.099, sy 0.902).
-eqFit("eq_005_deriv2.png", 96, 683, 459, 504);
+// REVERTED 2026-10-24 (attempt 9): an attempt-8 "fix" stretched this band to x683 on the
+// strength of a window measurement inflated by JPEG noise (the original's eq5 columns
+// x639..646 hold ZERO ink, x647..683 only 1 px/col of noise, x689+ is the green box
+// border). Noise-rejected segmentation (>=3 ink rows/col) puts the original's chain at
+// 26 glyph groups ending x637 and attempt 6's render at 27 groups ending x638 — they
+// MATCH. Stretching to x683 added 3 glyph groups / ~45 px the original does not have.
+// Law: refute a "defect" against BOTH images before changing the build.
+eqFit("eq_005_deriv2.png", 96, 637, 460, 502);
 
 // ============================================================
 // 6. BLUE LOWER BOX — Remember / X^T(XW) = (XW)^T X
