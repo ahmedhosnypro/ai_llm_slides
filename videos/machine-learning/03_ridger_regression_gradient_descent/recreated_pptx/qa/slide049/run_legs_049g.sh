@@ -17,7 +17,7 @@ LOG="$QA/legs_049g.log"
 hb(){ ( cd "$PROJ" && VIDEO=machine-learning/03_ridger_regression_gradient_descent \
         python3 scripts/15_progress.py heartbeat 49 "$WID" >/dev/null 2>&1 ); }
 say(){ echo "[$(date -u +%H:%M:%S)] $*" >> "$LOG"; }
-clients(){ pgrep -c -f analyze_image.py 2>/dev/null || echo 0; }
+clients(){ local n; n=$(pgrep -c -f '[a]nalyze_image\.py' 2>/dev/null) || n=0; echo "${n:-0}"; }
 
 case "$LEG" in
   legA)
@@ -50,8 +50,8 @@ esac
 for try in 0 1 2; do
   L=$(clients)
   if [ "$L" -lt 8 ]; then say "$LEG slot open clients=$L"; break; fi
+  if [ "$try" = "2" ]; then say "$LEG PARKED reason=congestion clients=$L"; echo "$(date -u +%F_%H:%M) $LEG PARKED congestion clients=$L" >> "$QA/judge_status_049g.log"; exit 3; fi
   say "$LEG congested clients=$L -> heartbeat + sleep 240 (re-probe $try/2)"; hb; sleep 240
-  if [ "$try" = "2" ]; then say "$LEG PARKED reason=congestion"; echo "$LEG PARKED congestion" >> "$QA/judge_status_049g.log"; exit 3; fi
 done
 
 hb; rm -f "$OUT"

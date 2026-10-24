@@ -42,7 +42,7 @@ const pptxgen = require("pptxgenjs");
 const fs = require("fs");
 const { drawHouseChrome } = require("../../shared_patterns/house_chrome.js");
 
-const OUT = __dirname + "/../slide_044_recreated_v2.pptx";
+const OUT = __dirname + "/../slide_044_recreated.pptx";
 const ASSETS = __dirname + "/assets/";
 
 const px = (v) => v / 72; // frame px -> inches (1 frame px == 1 pt)

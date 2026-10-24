@@ -431,3 +431,36 @@ Crops crop_8_* (12 pairs, cut 12:45 from render_8 at matched eff scale 2.083) cu
 - Script banked: `scratch/tmp/w7_judge_B9.sh <NAME>` (parameterized over the 6 regions,
   order caption -> pinkbox -> mathzone -> tableeq -> chart -> redstop; payload
   judge_payload_B_8.txt, --timeout 600, outer 1700). --> RESULTS RECORDED BELOW.
+
+## SESSION RECOVERY 2026-10-24 18:53 (lane lost contact to app exit; resumed)
+Re-glob of the bank after the session exit found NO late-landing verdict transcripts:
+`judge_attempt_9.txt` and `crop_9_*_judge.txt` do NOT exist; only dispatch logs do
+(judge_attempt_9_dispatch{,_r2,_r3}.log, crop_9_caption_dispatch.log). Per the
+re-glob rule, a dispatch log is NOT a verdict -- a verdict requires a real
+"FINAL VERDICT:" body in a transcript. The only transcripts banked from this lane are
+the two PINGs `probe_9b.txt` (16:35, PASS) and `probe_9d.txt` (17:55, PASS) -- both are
+single-image `analysis` PINGs, not certificates (no FINAL VERDICT line in either).
+DB row 50 survived intact: worker_id=w050-legs-20261024, heartbeat 18:08:38,
+gen_status=building, visual_check=null. Fleet load at recovery = 1 lane (drained).
+
+## Dispatch history this lane (all Template A dispatches used the approved wall:
+## analyzer --timeout 1200 inside `timeout 1700`, payload bytes unchanged,
+## --thinking high --max-tokens 65536, --rounds 1 --tries 1)
+| # | time | outcome |
+|---|---|---|
+| probe 1 16:29 | `probe_9.txt` | HTTP 504 upstream_timeout (Nvidia), 0/1 |
+| probe 2 16:35 | `probe_9b.txt` | **PASS** 79s (caption crop read back correctly) |
+| A r1 16:45 | `judge_attempt_9_dispatch.log` | attempt1 HangError@1230s; retry HTTP 504; 0/1, no transcript |
+| probe 3 17:43 | `probe_9c.txt` | HangError@210s (probe wall), 0/1 |
+| probe 4 17:55 | `probe_9d.txt` | **PASS** 152s |
+| A r2 17:14 (dispatched) | `..._r2.log` | attempt1 HangError@1230s; outer timeout exit=124; 0/1, no transcript |
+| crop caption 17:56 | `crop_9_caption_dispatch.log` | attempt1 HangError@630s; lane died on session exit; no transcript |
+| A r3 17:56 | `..._r3.log` | killed by session exit; no transcript |
+| A r4 18:56 | `..._r4.log` | fired on DRAINED fleet (load=1) |
+
+DIAGNOSTIC (new, this lane): the two PASSING calls were both small SINGLE-IMAGE
+`analysis` PINGs (no `-p` payload, default thinking/tokens) which returned in 79s and
+152s. Every `comparison` call -- 2 images, --thinking high, --max-tokens 65536 -- has
+died at the hard wall (630s for crops, 1230s for the full slide) with NO result. So the
+failure mode is the heavy comparison contract against the shared upstream, not the
+slide-050 content and not image size alone. Small calls succeed; heavy ones hang.

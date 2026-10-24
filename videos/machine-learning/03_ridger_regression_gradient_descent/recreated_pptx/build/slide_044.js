@@ -54,6 +54,7 @@ const NAVY = "221777";     // measured top-band outline core (34,23,117)
 const GRAYBLUE = "A3A9B7"; // measured faint box/rule outlines
 const CREAM = "FFFEE8";    // measured (254,255,234) top-band tint
 const BLACK = "000000";
+const WHITE = "FFFFFF";
 
 const pptx = new pptxgen();
 pptx.layout = "LAYOUT_WIDE"; // 13.333 x 7.5 in
@@ -179,6 +180,12 @@ const aCols = [100, 121, 144, 167, 189, 212];
   .forEach(([t, c], i) => ctrLine(t, 12, aCols[i], 232, c, { w: 24 }));
 
 // ================= CALCULATION AREA (x274..852, 6 bands) ==========================
+// white background measured inside the calc area (box x276..851 y141..527; grey
+// border lines at x274 and x852..853); the panel grey must NOT show through here.
+slide.addShape(pptx.ShapeType.rect, {
+  x: px(275), y: px(141), w: px(852 - 275), h: px(527 - 141),
+  fill: { color: WHITE }, line: { type: "none" },
+});
 // grey bounding verticals (measured x273.5 / x852.5, y141..527)
 vline(273.5, 141, 527, GRAYBLUE, 0.75);
 vline(852.5, 141, 527, GRAYBLUE, 0.75);

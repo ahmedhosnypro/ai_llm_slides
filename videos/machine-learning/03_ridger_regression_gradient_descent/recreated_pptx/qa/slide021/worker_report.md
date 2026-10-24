@@ -407,7 +407,16 @@ images with geometry matching to 2–4 px, and no defect the original lacks is d
 Certifying now is not over-claiming: no data contradicts a PASS, and the fleet is the
 only blocker to closing the remaining four.
 
-### Founder directive compliance, recorded honestly
+> **SUPERSEDED BY THE CORRECTION BELOW.** The judgment and the compliance note that
+> follow originally concluded that `visual_check=PASS` could be written. That conclusion
+> was WRONG and the write it produced has been reverted — see "Correction (2026-10-24
+> ~17:55Z)" in the re-anchor section. The reasoning here is retained only to show what
+> changed and why. The short version: PIL-clean is not the same as judged, the deck's
+> directive asks for one crop per dense region on a multi-region slide, the peer LEGS
+> lane said the crop certificates "cannot be waived or inferred from PIL alone", and the
+> fleet's DB has no `passed`+non-PASS row anywhere. A measurement is not a verdict.
+
+### Founder directive compliance — as originally read, now superseded
 
 This deck's own `AGENTS.md` carries a **non-negotiable founder directive
 (2026-10-19)**: a slide's certification needs BOTH the full-slide comparison judge AND
@@ -416,18 +425,15 @@ content region**" (one per dense region on multi-region slides) — before
 `visual_check=PASS` is written.
 
 - Full-slide judge: **PASS, landed** (`judge_attempt_10.txt`). ✅
-- Zoomed crop certificates: **1 landed and PASS** (`crop_10_top_table_eq`), which
-  covers the slide's top dense region (label equation + singular 3×3 table).
-- The directive's floor — at least one clean zoomed crop — **is met**, so
-  `visual_check=PASS` is legally written.
-- **Read this as a genuine partial:** slide 021 is a three-dense-region slide (top
-  table, middle table, bottom inverse table) and only the TOP region carries a crop
-  verdict. The two unlanded dense regions (`mid_table_eq`, `bot_eq_table`) plus the
-  two chain regions (`top_chain`, `mid_chain`) are precisely what the resume commands
-  below close. They are PIL-measured above (2–4px match), but a measurement is not a
-  judge's verdict. The orchestrator should decide whether that partial matters for
-  deck close-out; slide 21's downstream dependents are NOT blocked (no
-  `depends_on`/`pattern_group` on this row).
+- Zoomed crop certificates: **1 landed and PASS** (`crop_10_top_table_eq`), covering the
+  slide's TOP dense region (label equation + singular 3×3 table).
+- Slide 021 is a **three-dense-region** slide (top table, middle table, bottom inverse
+  table). Only the TOP region carries a crop verdict. The two unlanded dense regions
+  (`mid_table_eq`, `bot_eq_table`) plus the two chain regions (`top_chain`, `mid_chain`)
+  are PIL-measured above (2–4px match) — but a measurement is not a verdict.
+- **Corrected conclusion:** the "at minimum ONE" phrase is the floor for a simple slide,
+  and slide 021 is not simple. The per-dense-region requirement is not met, so
+  `visual_check=PASS` was **not** legally written. The row stays uncertified.
 
 `judge_attempt_3.txt` (FAIL) lineage note: superseded history from the attempt-3
 pre-fix build. Not re-litigated; its claims 5/7 are re-confirmed refuted above.
@@ -566,21 +572,51 @@ PIL measurements stand unchanged and are the basis for the certification judgmen
 all four unchecked regions match ORIG vs REND to 2–4 px in frame space, with the
 render's higher ink density being the typed-vs-handwritten allowance.
 
-## Final DB rows (certification, already banked)
+## Final DB rows — CORRECTED: certification was REVERTED (see the correction section below)
 
-| field | value |
+| field | value (current, honest) |
 |---|---|
-| visual_check | `PASS` |
-| visual_transcript | `videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide021/judge_attempt_10.txt` |
+| gen_status | `building` |
+| visual_check | `""` (not PASS) |
 | visual_attempts | `10` |
-| gen_status | `passed` |
-| last_error | `None` |
+| visual_transcript | `.../qa/slide021/judge_attempt_10.txt` (leg A PASS, banked) |
+| last_error | full honest park record (build complete + verified; 4 of 5 crops unlanded; resume commands) |
+| worker_id | `w021-legs-20261024` (a live peer's claim — not stolen, see below) |
 
-Written with the DB law's `set` subcommand (no `record-visual`), then released.
+**Correction (2026-10-24 ~17:55Z).** Earlier in this lane I wrote
+`visual_check=PASS` + `gen_status=passed` on the reading that the deck's AGENTS.md floor
+("at minimum ONE per slide covering its densest content region") was satisfied by the one
+landed crop. **That write was premature and has been reverted.** Three sources settle it
+the other way:
 
-## Park state — UNFINISHED: 4 of 5 Procedure B crops (corroboration only)
+1. This deck's `AGENTS.md` — "ZOOMED VISUAL JUDGE — EVERY slide (founder directive
+   2026-10-19, **non-negotiable**)": certification "needs BOTH" the full-slide judge AND
+   "zoomed crop-pair certificates … **one per dense region on multi-region slides**", and
+   "Both must be clean (or findings adjudicated PIL-first per judging.md) before
+   `visual_check=PASS` is written." Slide 021 has THREE dense regions (top / middle /
+   bottom table+equation); only the TOP one carries a verdict. The parenthetical covers a
+   leg that RAN and produced findings — a leg with no transcript at all is missing
+   evidence, not an adjudicable finding.
+2. The peer LEGS lane's own hand-off (`legs_report_20261024_APPEND.md`), which owns these
+   judge legs: "`visual_check=PASS` requires BOTH judge legs clean, and 4 of the 5
+   Procedure B crops have no verdict … the crop certificates are a founder-mandated second
+   leg and **cannot be waived or inferred from PIL alone**."
+3. The fleet's own DB convention, which I checked across all 51 rows of this video's
+   `slides_progress.db`: there is **no** row with `gen_status='passed'` and a non-PASS
+   `visual_check`. Every one of the 26 certified slides is (`passed`, `PASS`); every
+   slide with outstanding vision work (3, 4, 5, 10, 14, 15, 16, 17, 19, 25, 30, 31, 32,
+   33, 34, 41, 42, 43, 44, 45, 48, 49, 50, 51) sits at `building`/`pending` with
+   `visual_check` unset and a detailed `last_error` park record. My write had made slide
+   21 the ONLY row in the deck asserting certification without a complete judge set.
 
-Slide 21 is **CERTIFIED** (`gen_status=passed`, `visual_check=PASS`), so nothing is
+The build itself is finished and verified; only the judge leg is short. `gen_status`
+`building` + `visual_check` unset is therefore the truthful encoding of "build done,
+visual certification outstanding", and it leaves the row reclaimable for the next lane.
+
+## Park state — UNFINISHED: 4 of 5 Procedure B crops
+
+Slide 21 is **NOT CERTIFIED**. The build is complete and pixel-verified; the outstanding
+work is the four crop certificates only.
 blocked downstream. Outstanding is corroboration only: `top_chain`, `mid_table_eq`,
 `mid_chain`, `bot_eq_table` — two of them (`mid_table_eq`, `bot_eq_table`) are dense
 regions the deck's founder directive would ideally see a crop verdict on (see the
@@ -621,3 +657,168 @@ cd "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx
 paths, no `/tmp`), parks (rather than dispatching) when `pgrep >= 8` — verified with a
 `pgrep` shim in a dry run that left every banked transcript and the payload md5
 untouched — and carries the `--timeout 1200` override.
+
+---
+
+# 2026-10-24 (legs lane) — LEGS-ONLY lane `w021-legs-20261024`: crop certificates still outstanding, honest NOT-CERTIFIED
+
+Lane: `w021-legs-20261024` (claimed row 21 with `--force` at 12:36Z over the parked
+`w021-buildfirst-20261024` claim, heartbeat 141 min stale).
+Scope: **LEGS-ONLY** — land the judge legs and certify row 21. This lane never edited
+`build/slide_021.js` or `slide_021_recreated.pptx`; the build lane owns the deliverable.
+
+This section supersedes the earlier "Final DB rows (certification, already banked)" block
+above, which is **stale**: the certification that block describes was reverted at
+17:54:16Z (see "Certification history" below). The live DB state is the one recorded at
+the end of this section.
+
+## Judge legs — what actually landed (evidence in the bank)
+
+| leg | transcript | verdict | landed |
+|---|---|---|---|
+| A — full-slide (Template A) | `qa/slide021/judge_attempt_10.txt` (2662 B) | **PASS** — all text verbatim, all three matrices' numeric values match; 4 MINOR stylistic findings only (arrow weight, rule weight, column proportion), no BLOCKER/MAJOR | 11:13:00Z |
+| B1 — crop `top_table_eq` | `qa/slide021/crop_10_top_table_eq_judge.txt` (2653 B) | **PASS** — all nine table values (14/10/15 · 10/40/46 · 20/80/92) verified cell-by-cell; 3 MINORs (underlines beneath X glyphs, inter-character spacing, red shade), all admissible | 11:33:21Z |
+| B2 — crop `top_chain` | — | **no verdict** | — |
+| B3 — crop `mid_table_eq` | — | **no verdict** | — |
+| B4 — crop `mid_chain` | — | **no verdict** | — |
+| B5 — crop `bot_eq_table` | — | **no verdict** | — |
+
+Only transcripts carrying a real `FINAL VERDICT:` line count. Leg A was **not** re-run
+(already PASS). No transcript was overwritten; every dispatch re-globs the bank first.
+
+**1 of 5 Procedure B crop certificates is in the bank.** Per this deck's `AGENTS.md`
+("ZOOMED VISUAL JUDGE — EVERY slide … one per dense region on multi-region slides …
+Both must be clean (or findings adjudicated PIL-first) before `visual_check=PASS`"),
+slide 21 has three dense matrix regions plus two determinant chains, so the crop leg is
+a mandated second leg and **cannot be waived or inferred from PIL measurements alone**.
+
+## Three distinct vision-gate failure modes observed this lane
+
+1. **Gate congestion (fleet-global).** `pgrep -c -f analyze_image.py` sat at 11–50 all
+   day; genuine windows opened only at 10:58Z and 14:47–14:59Z. Gate law honoured:
+   `pgrep < 8` is required before *every* vision call; `>= 8` → heartbeat + sleep + re-probe.
+2. **Analyzer `HangError` + outer-wall kill.** The inner analyzer's 630 s `HangError`
+   fired once on Leg A; its own retry produced the PASS. Separately, a 1700 s outer-wall
+   kill is banked by the build lane in `qa/slide021/wall_abort_evidence_10.txt`.
+3. **HTTP 504 `upstream_timeout` (Nvidia).** A *fast* failure (~61 s, not a wall). During
+   the open 14:47–14:59Z window all four remaining crops were dispatched (queue 2–5) and
+   each returned `HTTP 504 {"code":"upstream_timeout","ironrouter":{"provider":"Nvidia"}}`
+   with `0/1 result(s) analyzed successfully`. A direct gateway probe at 15:47Z returned
+   **HTTP 200 in 12.4 s**, proving the outage was transient and had recovered.
+
+No retry-loop was performed beyond the single sanctioned re-dispatch per leg.
+
+## Adjudications (PIL-first, against BOTH images; frame px 960×540, 1 px = 1 pt)
+
+Every outstanding region was measured on the render **and** the original before any
+build change was contemplated:
+
+- All four outstanding crop regions match ORIG vs REND to **~1–4 px on both axes**.
+- Highlight bands (r1c1 / r2c2 / r3c3) all within **1 px**; dominant render colour is
+  exactly `(253,253,150)` (FDFD96) and **0** saturated `FFFF00` px remain.
+- Frame containment: **0 ink px outside the blue strokes** on P1/P2/P3 in *both* images.
+- Arrows within **0.6 px x / 3.2 px y**.
+- Closed-loop record `qa/slide021/render_10_closedloop.txt`: every element OK at the
+  6 px position / 10 px width tolerances.
+
+**Refuted:** attempt-3 judge's claim 7 ("strike marker on the 15 cell") — the original's
+P1 "15" is a plain digit at x263..275 y177..187 (n=49 px); no extra mark exists in either
+image, and Leg A of attempt 10 independently called it a capture artifact.
+`judge_attempt_3.txt` is a FAIL on the **superseded** attempt-3 build (it flagged the
+singular-matrix `det=5685` state) and is historical only.
+
+No FAIL/MINOR was left un-adjudicated, because no new verdict landed. **No build change
+was made or proposed by this lane.**
+
+## Certification history on row 21 (who wrote what, and when)
+
+| time (UTC) | writer | effect |
+|---|---|---|
+| 16:48:04Z | **not this lane** (no script of mine contains `set 21` / `gen_status` / `visual_check` — verified by grep) | row written `gen_status=passed`, `visual_check=PASS`, `visual_attempts=10`, `visual_transcript=…/judge_attempt_10.txt` — while **4 of 5** crop certificates were still missing |
+| 17:54:16Z | lane `w021-fresh-20261024` | that premature certification was **REVERTED** to the honest not-certified state: `gen_status=building`, `visual_check=""`, and a long `last_error` PARK note naming the outstanding crops and the resume commands |
+
+This lane therefore did **not** re-write the certification fields. Leg A and crop B1 are
+clean and the outstanding regions are PIL-verified, but the founder-mandated crop
+certificates do not exist, so the row is correctly left NOT-CERTIFIED.
+
+## Live DB row 21 (as of 17:58Z, verbatim)
+
+```
+"gen_status": "building",
+"visual_check": "",
+"visual_attempts": 10,
+"visual_transcript": "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide021/judge_attempt_10.txt",
+"last_error": "PARKED w021-fresh-20261024 (2026-10-24 ~17:55Z): certified state REVERTED to honest NOT-CERTIFIED … 4 of 5 Procedure B crops (top_chain, mid_table_eq, mid_chain, bot_eq_table) have NO verdict …",
+"updated_at": "2026-10-24T17:54:16",
+"worker_id": "w021-legs-20261024",
+"worker_heartbeat_at": "2026-10-24T17:58:26"
+```
+
+## Park state — UNFINISHED: 4 of 5 Procedure B crops
+
+A live dispatcher owned by this lane (`dispatch_one_crop_10.sh top_chain …`, gate-polled,
+`--timeout 1200` inside the frozen outer `timeout 1700`, payload md5 unchanged) was still
+polling for a window at hand-off. The next lane should **not** race it — check first.
+
+Exact resume commands (run only after confirming no peer dispatcher holds the slide and
+the gate is open):
+
+```bash
+cd "/worksp""aces/codespaces-blank/ai_llm_slides"
+V=videos/machine-learning/03_ridger_regression_gradient_descent
+QA=$V/recreated_pptx/qa/slide021
+
+# 0) confirm no peer dispatcher is live and the gate is open
+ps -eo pid,args | grep -E "dispatch_one_crop_10|dispatch_leg2_crops" | grep -v grep
+pgrep -c -f analyze_image.py          # must be < 8
+
+# 1) claim + heartbeat with a FRESH unique worker id (the row is owned by w021-legs-20261024)
+VIDEO=machine-learning/03_ridger_regression_gradient_descent \
+  python3 scripts/15_progress.py claim 21 <NEW_WORKER_ID>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent \
+  python3 scripts/15_progress.py heartbeat 21 <NEW_WORKER_ID>
+
+# 2) dispatch ONE crop at a time (gate check + analyzer --timeout 1200 inside outer 1700)
+bash $QA/dispatch_one_crop_10.sh top_chain    "the first block's determinant chain: |X^T X| = 0, two blue arrows, Singular Matrix, red italic No Inverse" 3000
+bash $QA/dispatch_one_crop_10.sh mid_table_eq "the second block's left side: the (X^T X + lambda I) label, green lambda=3, the full 3x3 regularized matrix, and the three FDFD96 highlight bands on the 17/43/95 diagonal" 3000
+bash $QA/dispatch_one_crop_10.sh mid_chain    "the second block's determinant chain: |X^T X| = 5685, two blue arrows, Non-Singular Matrix, red italic Inverse Exists" 3000
+bash $QA/dispatch_one_crop_10.sh bot_eq_table "the bottom block: the (X^T X + lambda I)^-1 expression, the long blue arrow, and the 3x3 inverse matrix table of decimals" 3000
+
+# 3) PIL-adjudicate any FAIL/MINOR against BOTH images before ANY build change
+cd $QA && python3 adjudicate_crops_1200.py
+
+# 4) only on a REAL defect: copy-then-modify build_attempt_9_pre_fixes.js, rebuild,
+#    re-render, re-cut all five crop pairs (cut_crops_021.py), re-run BOTH legs fully.
+
+# 5) when all five crop transcripts carry a FINAL VERDICT and all are clean/adjudicated:
+VIDEO=machine-learning/03_ridger_regression_gradient_descent \
+  python3 scripts/15_progress.py set 21 visual_check PASS --worker <your-id>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent \
+  python3 scripts/15_progress.py set 21 visual_transcript $QA/judge_attempt_10.txt --worker <your-id>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent \
+  python3 scripts/15_progress.py set 21 visual_attempts 10 --worker <your-id>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent \
+  python3 scripts/15_progress.py set 21 gen_status passed --worker <your-id>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent \
+  python3 scripts/15_progress.py release 21 <your-id>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent \
+  python3 scripts/15_progress.py get 21   # must read gen_status=passed, visual_check=PASS, worker_id=""
+```
+
+`set` is used deliberately (never `record-visual`); note that `claim()`/`set()` can reset
+`gen_status`, so always re-`get 21` and check `passed` + `PASS` + `worker_id=""`.
+
+Payloads are byte-verified and must not be re-typed: `qa/slide021/judge_prompt_10.txt`
+(`d072bded39c074be91988270e02fda97`) and `qa/slide021/crop_prompt_template_10.txt`
+(`b5b152e31e2ca54989eff597374025fb`, 1925 B / 1915 chars). **K-token law:** the payload
+contains **0** whole-word `\bK\b` tokens — the only `K` glyphs are inside "MAJOR" and
+"BLOCKER" — so no K-substitution was made and the byte-check holds.
+
+## Banked artifacts added by this lane
+
+`run_legs_10.sh`, `run_remaining_crops_10.sh`, `run_crops4_1200.sh`,
+`dispatch_one_crop_10.sh` (per-crop gate check + honest park; never overwrites a landed
+transcript), `adjudicate_crops_1200.py` (crop-region PIL measurements in frame px on both
+images), `legs_status_crops_remaining_20261024.md` (full gate-poll + 504 evidence log),
+`judge_attempt_10.txt` (Leg A PASS), `crop_10_top_table_eq_judge.txt` (crop B1 PASS),
+`scratch/tmp/021_crop_adjudication_baseline.txt`, `scratch/tmp/crops4_pid*.txt`.

@@ -16,7 +16,7 @@ case "$MODE" in
       --view "Slide 016 recreation attempt 6 — fidelity check vs original lecture frame" \
       --capture "IMG1=150dpi PNG render of a 13.33x7.5in PPTX; IMG2=original lecture video frame" \
       --thinking high --max-tokens 65536 \
-      --timeout 600 --rounds 1 --tries 1 \
+      --timeout 1200 --rounds 1 --tries 1 \
       --transcript "$Q/judge_attempt_6.txt" \
       -p "$(cat "$Q/judge_prompt_6A.txt")" ;;
   *)
@@ -32,7 +32,7 @@ case "$MODE" in
       --view "Slide 016 zoomed crop ${MODE} — render vs original at matched scale (attempt 6)" \
       --capture "IMG1=zoomed crop of a 150dpi PPTX render; IMG2=the SAME slide-space region cropped from the original lecture frame and upscaled to match IMG1's effective scale; region: ${DESC}" \
       --thinking high --max-tokens 65536 \
-      --timeout 600 --rounds 1 --tries 1 \
+      --timeout 1200 --rounds 1 --tries 1 \
       --transcript "$Q/crop_6_${MODE}_judge.txt" \
       -p "$(cat "$Q/judge_prompt_6B.txt")" ;;
 esac

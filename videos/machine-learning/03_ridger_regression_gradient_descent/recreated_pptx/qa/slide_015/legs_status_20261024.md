@@ -29,6 +29,22 @@ unmodified dispatches at `--timeout 600`** — the payloads are the frozen,
 byte-checked ones. Its log is `qa/slide_015/final_legs_status.txt`; per-leg
 logs are `qa/slide_015/judgeA_final.log` and `qa/slide_015/crop_<slug>_final.log`.
 
+### Client-retry resilience (payload still untouched)
+
+A 504 is a transient upstream fault, not a verdict, so the runner raises the
+**client** retry count only: `--tries 1` → `--tries 3`. The judgment payload
+is provably unaffected — `scratch/tmp/tries_check.sh` asserts, before every
+call, that the `-p` string is byte-identical to the banked dispatch and that
+`--tries` is the ONLY difference anywhere in the file. Verified for all six
+dispatches:
+
+```
+TRIES-OK: --tries 1 -> 3, -p payload byte-identical   (judgeA + all 5 crops)
+```
+
+The `--timeout` stays at the banked 600 s (the script itself warns that
+`--timeout > 600s` saturates the shared gateway for everyone).
+
 ## Observed gateway load (fleet-global, `pgrep -c -f analyze_image.py`)
 
 All observations are from the same run; times are UTC.
