@@ -82,13 +82,15 @@ paramRows.forEach((row, i) => {
     x: px(PT.x0), y, w: px(PT.x1 - PT.x0), h,
     fill: { color: row.fill }, line: { color: "595959", width: 1 },
   });
+  // LO centres the line box a touch high: measured render_7 text sat 2.5px
+  // above the frame's measured ink rows, so the text boxes are nudged down.
   slide.addText(row.label, {
-    x: px(PT.x0 + 1), y, w: px(PT.div - PT.x0 - 1), h,
+    x: px(PT.x0 + 1), y: px(PT.rows[i] + 2.5), w: px(PT.div - PT.x0 - 1), h: px(h * 72),
     align: "center", valign: "middle", fontSize: 14, bold: true,
     color: "000000", fontFace: A, margin: 0,
   });
   slide.addText(row.value, {
-    x: px(PT.div), y, w: px(PT.x1 - PT.div), h,
+    x: px(PT.div), y: px(PT.rows[i] + 2.5), w: px(PT.x1 - PT.div), h: px(h * 72),
     align: "center", valign: "middle", fontSize: 14,
     color: "000000", fontFace: A, margin: 0,
   });
