@@ -5,7 +5,12 @@
 // Content spec: analysis/slide_042_final.json (verbatim_text.equations —
 // ten equations: five d(x_i)=… and five distinct W=… result equations).
 //
-// ATTEMPT 12 — geometry correction over attempt 11 (PIL-measured against the frame):
+// ATTEMPT 17 — colour corrections over attempt 16 (channel-order measured):
+//   the frame's table headers are BLACK where the build drew them blue. The test
+//   distinguishes them unambiguously: on a JPEG where blue ink IS detectable
+//   (the LM caption's darkest px carry b-r = +45..+77), the TL x1..x6 header's
+//   12 darkest px all carry b-r = -19..-20 and 0 px pass b>r+25 & b>120.
+//   Same signature as the check-classes header (b-r = -19..-20), already fixed.
 //   1. BAND_A/BAND_B re-derived from the frame's own ink bands. Attempt 11's bands
 //      were calibrated for TEXT boxes (LibreOffice centres a h=14 text box's ink
 //      ~6px ABOVE the box top) but applied the same +8 shift to the IMAGES, which
@@ -110,8 +115,13 @@ STACK_BOXES.forEach(([y0, y1]) => {
 // 1. TOP-LEFT vector table  (inside the cream box, x68..720 y54..130)
 // ---------------------------------------------------------------------------
 [95, 117, 139, 161, 184, 206].forEach((cx, i) => {
+  // the frame's x1..x6 header ink is BLACK, not blue: the 12 darkest px in
+  // y64..73 x86..216 all have b-r = -19..-20 (blue is the LOWEST channel),
+  // and 0 px pass a blue test (b>r+25 & b>120). The same test on the LM caption
+  // gives b-r = +45..+77, so blue ink IS detectable in this JPEG — the TL header
+  // simply is not blue.
   txt("x" + (i + 1), cx - 9, 63, 18, 11, {
-    fontSize: 10, color: BLUE, bold: true, align: "center", valign: "middle",
+    fontSize: 10, color: BLACK, bold: true, align: "center", valign: "middle",
   });
 });
 
@@ -171,8 +181,12 @@ txt("Check classes of", 496, 74, 100, 20, {
   fontSize: 12, color: BLACK, valign: "middle",
 });
 [601, 625, 645].forEach((cx, i) => {
-  txt("Z" + (i + 1), cx - 9, 62, 18, 13, {
-    fontSize: 10, color: BLUE, bold: true, align: "center", valign: "middle",
+  // the frame prints "Z1" THREE times over this block (glyphs identical, measured
+  // x-masks dot-for-dot) and the ink is DARK (darkest px rgb 31,33,11 — b is the
+  // lowest channel, so not blue; analysis colors for this block list only #FFFFFF
+  // and #000000), so the headers are black, not the TL table's blue.
+  txt("Z1", cx - 9, 62, 18, 13, {
+    fontSize: 10, color: BLACK, bold: true, align: "center", valign: "middle",
   });
 });
 [[0, 0], [7, 6], [3, 2]].forEach((v, i) => {
@@ -282,13 +296,13 @@ const GREEN_L_X = 380;   // green ⇐ near the left of each line
 const GREEN_R_X = 736;   // green ⇐ at the far right of rows 1 and 4 only
 
 // per-box line bands derived from the frame's own ink spans.
-// LibreOffice renders a h=14 text box's ink ~6px ABOVE the pptxgenjs box top, so
-// a TEXT lineA top = frame lineA ink top + 6. An equation IMAGE places its ink at
-// the image top, so lineB's image top = frame lineB ink top directly.
+// Empirically (render_14 measurement): LibreOffice renders a text box's ink starting
+// ~2px BELOW the pptxgenjs box top (not above it — attempt 11's +8 shift came from
+// that wrong assumption). An equation IMAGE places its ink AT the image top.
 // box interiors (frame): 219..262 / 274..327 / 342..393 / 408..458 / 474..526 —
-// every derived band sits fully inside its box.
-const BAND_A = [240, 303, 369, 435, 501];   // lineA text tops (ink +6 above)
-const BAND_B = [246, 309, 375, 440, 507];   // lineB image tops (ink at top)
+// every derived band sits fully inside its box with a 2px gap between lineA and lineB.
+const BAND_A = [232, 295, 361, 427, 493];   // lineA text tops (ink starts +2 below)
+const BAND_B = [247, 310, 376, 442, 508];   // lineB image tops (ink at top, h=14.4)
 
 ROWS.forEach((r, i) => {
   const a = BAND_A[i];   // lineA band top
@@ -312,7 +326,7 @@ ROWS.forEach((r, i) => {
   txt("\u21D2", ARROW_X, a - 3, 16, 14, {
     fontSize: 14, color: BLACK, align: "center", valign: "middle",
   });
-  txt(r.action, ACT_X, a - 3, 130, 14, {
+  txt(r.action, ACT_X, a - 3, 148, 14, {
     fontSize: 16, color: r.actionColor, valign: "middle",
   });
   txt("\u21D0", GREEN_L_X, a - 3, 16, 12, {

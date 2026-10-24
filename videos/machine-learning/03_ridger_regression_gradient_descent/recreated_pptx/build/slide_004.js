@@ -151,9 +151,11 @@ textbox(565, 163, 170, 20, [
 // ============================================================
 rect(784, 100, 97, 53, PALEBL);
 
-// "Remember" - bold black
+// "Remember" - bold dark-red (PIL-measured original ink RGB(169,51,74) = the
+// same dark-red as the slide's other red text runs, JPEG-softened; REDTXT FF0000
+// is the build's red-text constant, matching "Original Labels"/"Error (Loss)").
 textbox(787, 102, 92, 14, [
-  { text: "Remember", options: { color: BLACK, bold: true, fontSize: 11 } },
+  { text: "Remember", options: { color: REDTXT, bold: true, fontSize: 11 } },
 ], "left", "top", 11);
 
 // "||a||2 = a^T a"

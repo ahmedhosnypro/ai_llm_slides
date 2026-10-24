@@ -197,7 +197,13 @@ gLabel("10", 733.5, 266, 24, 13, "center");
 gLabel("15", 790.5, 266, 24, 13, "center");
 // point labels
 gLabel("(2, 10)", 619, 149, 40, 14, "left");
-gLabel("(7, 7)", 724, 140, 30, 13, "left");
+// The frame's label beside the RIGHT chord dot is a blank placeholder
+// "(?, ?)" — measured/independently transcribed (attempt-9 graph crop judge +
+// isolated transcription probe, both read the original as "(?, ?)" and this
+// slide's own analysis record lists only "(2,10)" and "(5,1)" as point
+// labels). The inherited build invented "(7, 7)"; data (7,7) is not even the
+// plotted point (the dot is at data (8, 10)).
+gLabel("(?, ?)", 724, 140, 30, 13, "left");
 gLabel("(5, 1)", 694, 244, 36, 14, "left");
 // segment length labels above the chord (measured gray-blue family)
 // Fresh re-measurement (measure_verify_15 / measure_verify_14): the frame's
