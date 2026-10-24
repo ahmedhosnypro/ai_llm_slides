@@ -103,3 +103,35 @@ visual_check, visual_transcript, visual_attempts, gen_status, heartbeat, release
 | `dispatch_legs_6.sh`, `dispatch_legs_6_v3.sh` | dispatchers |
 | `worker_report_progress.log` | live dispatch log |
 | `scratch/render_w030_finish.sh` (deck scratch) | rebuild + render script |
+
+---
+
+## 5. 2026-10-24 ~15:20 — resume by w030-finish-20261024b (timeout-resume)
+
+### Resume state
+- Re-claimed (prior heartbeat stale, 68 m) and confirmed the deliverable is still
+  current: rebuild from `build/slide_030.js` re-renders to the SAME md5
+  (`ac17141f…`) as the banked `render_5/render_6.png` → the 07:55 pptx is not stale.
+- Banked crop verdict found: **`crop_6_formula_judge.txt` → FINAL VERDICT: PASS**
+  (landed 13:41 during v3). 5 MINOR findings, zero MAJOR/BLOCKER.
+- Verdict coverage before this resume: 1/8 legs. Missing: Leg A (full-slide) and
+  crops plot, iter_left, iter_right, param, callout, arrow.
+- Wall cause of the misses (banked dispatch logs): image leg dying with HTTP 504
+  Nvidia `upstream_timeout` and/or internal 1230 s HangError — the same failure
+  channel the fleet saw on 043. Text (vision) leg healthy. Gateway now light
+  (real clients 3-4, pgrep 12).
+
+### Adjudication of crop_6_formula PASS (all PIL, frame px, 960x540)
+See the table in the transcript above this section; summary: operator spacing
+(render eq bbox 405.4..522.9 vs orig 404.0..524.0 = 2.5 px narrower overall),
+minus-glyph width (mandated professional mathtext), italic math-serif voice
+(mandated 2D format), gap after `f(x)` (render line2 363.2..539.7 vs orig
+353.0..547.0 → render is 17 px TIGHTER overall, so the "wider gap" reading is the
+italic run, not a defect), and colour deltas (orig RGB is the JPEG wash of the
+same house red/green). → **No build change; region certified clean.**
+
+### Dispatched
+`dispatch_legs_6_v4.sh` (detached, started 15:28:40): re-fires Leg A then the 6
+missing crop legs sequentially at `--timeout 1200` (approved wall) inside
+`timeout 1700`, payload bytes unchanged, `--thinking high --max-tokens 65536`,
+gate law probing real clients < 8 (max 2 probes/hour, then wait).

@@ -105,3 +105,84 @@ Resume steps for the next worker:
 6. Adjudicate any finding PIL-first against the ORIGINAL frame before any edit.
 7. On both legs PASS: `record-visual 34 PASS <transcript>`, `set 34 gen_status passed`,
    `release 034 <worker-id>`, verify with `get 034`.
+
+---
+
+# Worker section — `w034-finish-20261024` (2026-10-24, resumed)
+
+## Status at hand-off
+
+- **Claim**: `claim 34 w034-finish-20261024 --force` (took over from
+  `worker-fresh-034b`, heartbeat 268 min stale at first claim; re-claimed after a
+  further stale period per the orchestrator's re-anchor directives).
+- **Build CURRENT**: `build/slide_034_attempt6.js` == `build/slide_034.js`
+  (md5 `210f6e9a…`). Rebuilt from it: 40/41 pptx zip entries byte-identical to
+  `recreated_pptx/slide_034_recreated.pptx` (md5 `b2c49258…`); only
+  `docProps/core.xml`'s `dcterms:created` differs.
+- **Render CURRENT**: `render_6.png` (md5 `71c03bfa…`, 2001×1125 @150dpi) ==
+  `render_5.png`; reproduced from the current pptx by the banked
+  soffice→pdftoppm pipeline.
+- **House chrome PASS**, selfcheck PASS (as per the previous section).
+- **Crop pairs CURRENT and matched-scale**: `crop_6_table_{render,orig}.png`
+  1694×442, `crop_6_plot_{render,orig}.png` 529×565; regeneration compares
+  byte-identical in all four files; effective scale 2.083 px/frame-px on both
+  sides (asserted by `make_crops_6.py`).
+- **Payloads BYTE-EXACT** vs `shared_patterns/judge_protocol_03.md`:
+  Template A `judge_prompt_6.txt` 4115 chars md5 `9387f5fbb9` (BLOCKER×4, exactly
+  one `FINAL VERDICT:`); Template B `crop_table_prompt_6.txt` /
+  `crop_plot_prompt_6.txt` 1914 chars md5 `305bf380dfd` (BLOCKER×2, one
+  `FINAL VERDICT:`), `slide NNN`→`slide 034` substituted only.
+- **DB row**: left at `gen_status=building`, `visual_check=null`,
+  `visual_attempts=2`, `worker_id=w034-finish-20261024` (nothing written except
+  heartbeats — **no verdict was obtained, so no PASS was fabricated**).
+
+## Vision-dispatch history (this worker) — ALL wall-aborted, zero verdicts
+
+| # | when (UTC) | leg | wall used | outcome |
+|---|---|---|---|---|
+| probe | 10:28 | analysis probe | `timeout 150`, `--timeout 120` | rc=124, no transcript, no inner ABORT line |
+| re-probe | 10:38 | analysis probe (protocol's ONE re-probe) | same | rc=124, no transcript |
+| A1 | 11:21 | Template A | `timeout 1700`, `--timeout 600` | 2× inner 630s HangError aborts, killed by outer 1700 on attempt 3 |
+| W4 | 12:07 | Template A (one hard-wall retry) | same | 2× 630s aborts; attempt 3 could not fit under outer 1700 — killed by me |
+| A7 | 12:43 | Template A | `timeout 1700`, `--timeout 1200` (orchestrator override) | attempt 1 ABORT at 1230s wall; outer 1700 killed attempt 2 |
+| crop-table | 14:18 | Procedure B table | `timeout 1700`, `--timeout 1200` | **HTTP 504 `upstream_timeout` (Nvidia)** — "every model failed", 0/1 results |
+| A9 | 15:26 | Template A | `timeout 1700`, `--timeout 1200` | **PARKED below** |
+
+Wall attribution: every abort logs the analyzer's own inner hard wall
+(630s at `--timeout 600`, 1230s at `--timeout 1200`); the outer `timeout 1700`
+is what killed the running retries. The 14:18 leg shows the wall is now a
+**clean upstream 504**, matching the banked 043 evidence — the image leg is
+dying, not merely congested.
+
+## PIL adjudications performed this session
+
+1. **crop_3_table_judge.txt `FINAL VERDICT: FAIL`** (banked, 2910 B, one verdict
+   line — counted as real) — fully adjudicated in
+   `adjudication_step1_w034.md`. Outcome: the c16 finding (must be 9.6) is
+   **confirmed** by an independent native-resolution NCC read of the original
+   (c16 → '6' margin 0.205) and **already satisfied** by the current build; the
+   c18 finding is glyph-ambiguous but the build's 9.6 is forced by four
+   independent table rows. **No build change required.**
+2. **Unilateral PIL findings (D1–D5)** — measured against BOTH images and banked
+   in `pil_findings_w034.md`. These are NOT backed by any judge verdict, so per
+   the "measure before any build change / never draw a defect the original lacks"
+   law they are recorded as measurements, not applied. In short, they indicate
+   the build inherited the analysis JSON's colour list instead of the frame's:
+   table band fills (dE 31–143; frame = slide_033's certified D9E275/D6B2F5/
+   F7DDC2/DEAC95/F7BEC4), a banded/gapless-row table structure, a missing
+   cyan/green insert (#8BF8AB at x666..787 y332..368), a teal curve and a red
+   plot-box border. **A future judge should be asked to confirm these before the
+   build is touched.**
+
+## Banked evidence (this worker)
+
+- `adjudication_step1_w034.md` — c16/c18 adjudication with NCC numbers + method controls.
+- `pil_findings_w034.md` — the complete verified/defect/not-a-defect inventory.
+- `scratch/tmp/w034/*.py` — every measurement script (xrow segmentation/NCC,
+  element alignment, ink census, table gridline/column comparison, fill audit,
+  plot colour and curve-overlay, density maps).
+- `judge_templateA_6_w1200.sh`, `judge_crops_6_w1200.sh` — the staged scripts
+  with the orchestrator-approved `--timeout 1200` inside `timeout 1700`
+  (the `600` originals are left untouched).
+- Logs: `scratch/tmp/w034/tmplA_a7.log`, `tmplA_a9.log`, `crop_table_w1200.log`,
+  `tmplA_w4.log`, plus the prior section's `probe_6_run.log`.

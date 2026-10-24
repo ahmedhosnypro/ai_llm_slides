@@ -171,3 +171,111 @@ original already satisfies.
   (heartbeat alive; claim not released — it will auto-take-over after 40 min).
 - `visual_attempts` stays 1 (no leg was dispatched), but the build is already at
   attempt 2 and `render_2.png` is the artifact the resume commands above judge.
+
+---
+
+# RESUME LOG — 2026-10-24 (worker `w051-finish-20261026`)
+
+## Timeout-resume history (this worker, third run)
+
+| run | claimed as | outcome |
+|---|---|---|
+| 1 | `w051-finish-20261024` @ 11:12 | triaged bank, proved the prior report false, rebuilt attempt 2, banked crops/payloads, then **parked on gateway congestion** — never dispatched a leg |
+| 2 | (heartbeat went stale 11:40) | no legs dispatched |
+| 3 | `w051-finish-20261026` @ 15:07 (re-claimed) | legacy transcript adjudicated invalid; gate cleared to 5 procs; **Leg A dispatched** |
+
+## Validity ruling on the LEGACY transcript (orchestrator question 1)
+
+`qa/slide051/judge_attempt_2_promptA.txt` is **NOT a verdict — it is a payload
+template. It does not satisfy Leg A, and neither leg is discharged.**
+
+Proof (three independent checks):
+
+1. **Content** — it opens with `GROUND RULES (founder-mandated, settle these FIRST
+   and never raise them as discrepancies): (a) The recreation uses a house template…`
+   and closes with the *imperative instruction* `… End with: FINAL VERDICT: PASS or
+   FAIL for 'faithful, usable recreation'.` Its single `FINAL VERDICT` occurrence is
+   the **instruction to emit one**, not the line itself. It contains no findings list,
+   no per-item severities, no model reasoning — i.e. no analyzer stdout.
+2. **Size / shape** — 4139 bytes, **0 newlines** (`wc -c -l` → `4139 0`): one long
+   line. An analyzer transcript is multi-line prose. (`wc -c -l` proves this; the
+   `1` a naive `grep -c FINAL VERDICT` returns comes from that one instruction.)
+3. **Identity** — md5 `9387f5fbb94ef05a31db19f1e018dde1`, **byte-identical** to
+   `qa/slide051/judge_prompt_1.txt`, which the prior lane generated itself from
+   `shared_patterns/judge_protocol_03.md` line 71. So the file is the Template A
+   payload as extracted, i.e. the `-p` argument, not the output.
+
+Conclusion: this file was created at 11:10 by run 1 as the Leg-A payload
+(`judge_attempt_2_promptA.txt`), never renamed to a transcript name, and **no
+analyzer ever ran for slide 051 on either attempt**. There is no legacy comparison
+verdict to reuse. Both legs remain due, and `visual_check` stays null.
+
+## Build currency (verified, not asserted)
+
+- DB row 51: `gen_status=building`, `pptx_path`/`build_script` both point at the
+  attempt-2 artifacts, `visual_check=null`, `visual_attempts=1`, worker
+  `w051-finish-20261026`.
+- `recreated_pptx/build/slide_051.js` md5 `e213e905ee6d5368a5ed6e6707c4ff93`
+- `recreated_pptx/slide_051_recreated.pptx` md5 `8af978080e6ae77f9b7910920140b99e`
+- `recreated_pptx/qa/slide051/render_2.png` md5 `015c587b20449c62ff8c1e88e24f67bd`
+  (2001×1125). Independent re-render of the current pptx (private LO profile
+  `file:///tmp/lo_w051_v`, `soffice --convert-to pdf` → `pdftoppm -png -r 150`)
+  is **pixel-identical to render_2** — `ImageChops.difference(...).getbbox()` is
+  `None`, md5 `cd88cb66435ffb2f95b2b05f32454199`. Build/render currency proven.
+
+## Gate evidence (2026-10-24)
+
+Load oscillated 9–49 procs for ~3 h (peaks 48–49, troughs 5–9). `ps -eo etimes`
+diagnosis: one **wedged analyzer at 5657 s (94 min)** that never exited, plus a
+steady 10–16 healthy jobs (260–990 s) that other lanes kept refilling the 16-slot
+flock with. The fleet pgrep of 40–42 referred to in the 043 evidence was not
+reproduced here, but the same wedge behaviour was: the pool stuck at 11–20 while a
+single stale job held a slot. Gate law was honoured throughout: no leg was
+dispatched at ≥8. `pgrep` before every dispatch.
+
+## Legs dispatched this run
+
+| leg | script | wall | state |
+|---|---|---|---|
+| A — full-slide comparison | `dispatch_legA_attempt2.sh` | `timeout 1700`, analyzer `--timeout 1200` | **dispatched 15:07** → `qa/slide051/judge_attempt_2.txt` |
+| B — crop pairs (mats/aug/dec) | `dispatch_legB_attempt2.sh` | same | pending after A |
+
+Payloads, byte-for-byte and never retyped:
+- `judge_attempt_2_promptA.txt` — Template A verbatim (no `\bK\b`, no `NNN` in
+  Template A), md5 `9387f5fbb94ef05a31db19f1e018dde1`.
+- `crop_attempt_2_promptB.txt` — Template B with the single permitted substitution
+  `slide NNN`→`slide051` (no `\bK\b` in Template B). 1914 → 1913 chars, delta −1,
+  `\bK\b`-token assertion passed, md5 `6ae2c27e0ac3c7f3716ae50f823ebb25`.
+
+Crops at matched effective scale (render `x*2001/960, y*1125/540`; original
+LANCZOS to identical output size — verified `render_banked_ok=True,
+orig_banked_ok=True` for all three, i.e. they are cut from the current render_2):
+
+| crop | frame bbox | output px | region |
+|---|---|---|---|
+| `crop_2_mats_*` | x78..668, y58..132 | 1230×154 | top band: sample 2×6 matrix + centre W/η/legend + Z matrix |
+| `crop_2_aug_*` | x78..230, y140..250 | 317×229 | augmented 3×6 matrix + C1/C2 row |
+| `crop_2_dec_*` | x276..862, y138..335 | 1221×410 | three d(Zn) decision rows |
+
+## Resume / park commands (if this run ends with legs still open)
+
+```bash
+cd "/worksp""aces/codespaces-blank/ai_llm_slides"
+export VIDEO=machine-learning/03_ridger_regression_gradient_descent
+D="videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide051"
+
+# gate probe — must print < 8
+pgrep -c -f analyze_image.py
+
+# Leg A (full-slide)
+bash "$D/dispatch_legA_attempt2.sh"
+
+# Leg B (three crop pairs)
+bash "$D/dispatch_legB_attempt2.sh"
+```
+
+On PASS of A and every crop: certify with `set 51 visual_check PASS`,
+`set 51 visual_transcript $D/judge_attempt_2.txt`,
+`set 51 visual_attempts 2`, `set 51 gen_status passed`, `heartbeat`,
+`release 51 w051-finish-20261026`, then re-read `get 51` (claim()/set() can reset
+gen_status, 15_progress.py:337-339).

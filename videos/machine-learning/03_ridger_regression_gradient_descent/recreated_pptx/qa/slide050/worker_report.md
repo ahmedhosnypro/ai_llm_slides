@@ -271,3 +271,125 @@ scripts/16_vision_gate.sh timeout 1700 python3 .agents/skills/image-analysis/scr
   --transcript "$QA/crop_8_<NAME>_judge.txt" -p "$(cat "$QA/judge_payload_B_8.txt")"
 ```
 4. on clean/adjudicated legs → certify per runbook and re-read `get 50` before release.
+
+---
+
+# UPDATE 2026-10-24 14:35-15:05 — w050-fixjudge2-20261024-134000 (RE-ANCHOR + PARK)
+
+Row 50 reclaimed --force (`w050-fixjudge-20261024-114323` hb 59m stale — my own prior
+lane; it had exhausted its max-two re-probes and was mid-park).
+
+## Banked FAIL provenance (which build each FAIL scored — confirmed by md5 + render chain)
+- `judge_attempt_2.txt` FAIL scored `render_2.png` (00:56) — the pre-captionfix build.
+- `judge_attempt_5.txt` FAIL scored `render_5.png` (09:39) — prior lane's post-captionfix,
+  pre-finalW-3comp build.
+- CURRENT deliverable = `recreated_pptx/slide_050_recreated.pptx` md5
+  **d2ce33ec10db6011f45361521cf7bb03**, rebuilt 12:19 → `render_8.png` md5
+  **7265fa10ac17b96c78e4b07cfa6cabf1**. Both FAILs therefore PRE-DATE the current build
+  and were correctly re-adjudicated, not simply refuted.
+
+## What changed this lane (all copy-then-modify; no banked evidence deleted)
+1. `assets/eq_050_finalW.png` re-rendered as `\underline{W}=\left(\substack{5\\-1}\right)`
+   (2 components), 13pt black, 557x215px @600dpi, md5 `620bf144eaee1aeca11941d6c07ca124`.
+2. `assets/eq_050_finalW.json` sidecar WRITTEN to disk (md5 `b9792c5f...`). __pycache__ /
+   render_eq.py only PRINTS sidecars — the prior lane's caught trap.
+3. Prior 3-component assets preserved as `.pre_w7_3comp` in `build/assets/`.
+4. `build/slide_050.js` untouched this lane (md5 `b9da2078...` == my banked
+   `build_attempt_7_pre_finalW_revert.js`); the revert was sidecar-driven only.
+5. `render_7.png` was byte-identical to banked `render_6.png` (md5
+   `04d2882c...`), proving the prior build was deterministic before I changed anything.
+6. render_7 vs render_8 diff: 2240 px confined to x745..815 y70..105 — ONLY the pink
+   construct moved; nothing else shifted.
+
+## Adjudication outcomes (full detail: `w7_adjudication.md`, `w7_final_pil_table.txt`)
+| FAIL item | outcome |
+|---|---|
+| attempt_2 #1 BLOCKER (omitted L4 caption) | CONFIRMED FIXED — render carries it at x240..498 y109..123 with red/blue/green/black. Closed. |
+| attempt_5 #1 BLOCKER (W truncated) | **REFUTED — original shows W = (5, −1), TWO components. The prior lane's 3-component "fix" invented content the original lacks (`w7_pinkbox_ascii.txt`: exactly two digit rows y68..83 / y119..133, ONE bar y106; the "third component" is the construct's own right paren at x786..787). REVERTED.** |
+| attempt_5 #2 BLOCKER (η = 1 missing) | REFUTED — my own PIL (`w7_eta2.py`): red "REPEAT using Step" terminates at x530; x531..642 has ZERO ink at lum<210/200/190/175/160; the 166 ink px in the wider zone are the Z₁Z₂Z₃ black labels at x643..699. No η in the original. Closed. |
+| attempt_5 #3 MINOR (six vs five labels) | REFUTED — six C-clusters at 22.6px pitch in both tables (six columns x1..x6). Closed. |
+| attempt_5 #4 MINOR (cursor "+") | CONFIRMED FIXED — render has ZERO ink at x215..260 y405..425. Closed. |
+
+Final PIL table (`w7_final_pil_table.txt`): every contested region matches the original in
+position/structure; the only divergences are typed-vs-handwritten ink weight
+(L4 caption 270→257 px wide; heading ink counts 4-5x) which are ground-rule (d) MINORs.
+house_chrome_8: PASS. Zero render ink outside the gray panel.
+
+## Vision legs — BLOCKED, NOT FAILED (no verdict exists to adjudicate)
+Fleet/gateway state observed (matches the banked 043 "GATE REALITY" evidence):
+- 13:18 Template A (`--timeout 1200`, outer 1700): HangError abort at 1230s hard wall, 0/1 results.
+- 13:18 one sanctioned hard-wall retry: HTTP 504 `upstream_timeout` (NVIDIA upstream), 0/1 results.
+- 14:41 re-anchor probe: HangError abort at 180s (load 10).
+- 14:49 re-probe 1: HangError abort at 180s (load 6 — under gate, still hanging).
+- 14:56 re-probe 2 (max-two budget exhausted): HTTP 504 `upstream_timeout`, 0/1 results.
+
+**No `FINAL VERDICT:` line was ever produced, so no verdict was fabricated and nothing was
+certified.** The image leg is dying on the shared gateway, not on slide 050's content —
+text is healthy but I did not use it, per law. Max two re-probes are exhausted → PARK.
+
+`row 50 is parked as `gen_status=building` (NOT released, NOT passed) with a live heartbeat.
+
+## STAGED RESUME COMMANDS (run in order; all hand-off-ready)
+```bash
+# 0. re-claim + heartbeat
+cd "/worksp""aces/codespaces-blank/ai_llm_slides"
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py \
+  claim 50 "<your-worker-id>" --force
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py \
+  heartbeat 50 "<your-worker-id>"
+
+# 1. gateway health probe FIRST (small crop, cheap). Park again if it 504s/hangs.
+Q=/worksp/aces/codespaces-blank/ai_llm_slides
+W=$Q/videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide050
+pgrep -c -f analyze_image.py            # >=8 => heartbeat, sleep 240, re-probe (max 2)
+cd "$Q" && TMPDIR=$Q/scratch/tmp HOME=$Q/scratch/tmp/w7prof timeout 200 \
+  python3 .agents/skills/image-analysis/scripts/analyze_image.py analysis \
+  "$W/crop_8_caption_render.png" --view "Slide 050 gateway probe" \
+  --capture "Small zoomed crop of a 150dpi PPTX render" \
+  --timeout 150 --rounds 1 --tries 1 --transcript "$W/probe_resume.txt"
+
+# 2. Template A full-slide judge (payload is BYTE-IDENTICAL to the frozen protocol
+#    template after NNN->050; md5-verified equal to banked judge_payload_6.txt)
+cd "$Q" && scripts/16_vision_gate.sh timeout 1700 python3 \
+  .agents/skills/image-analysis/scripts/analyze_image.py comparison \
+  "$W/render_8.png" \
+  "$Q/videos/machine-learning/03_ridger_regression_gradient_descent/unique_slides/slide_050.jpg" \
+  --view "Slide 050 recreation — fidelity check vs original lecture frame" \
+  --capture "IMG1=150dpi PNG render of a 13.33x7.5in PPTX; IMG2=original lecture video frame" \
+  --thinking high --max-tokens 65536 --timeout 1200 --rounds 1 --tries 1 \
+  --transcript "$W/judge_attempt_9.txt" -p "$(cat "$W/judge_payload_8.txt")"
+
+# 3. Template B crop pairs (already cut at matched effective scale 2.082-2.084, corr 0.83-0.93)
+#    order: caption, pinkbox, mathzone, tableeq, chart, redstop
+cd "$Q" && scripts/16_vision_gate.sh timeout 1700 python3 \
+  .agents/skills/image-analysis/scripts/analyze_image.py comparison \
+  "$W/crop_8_<NAME>_render.png" "$W/crop_8_<NAME>_orig.png" \
+  --view "Slide 050 zoomed crop <NAME> — render vs original at matched scale (attempt 9)" \
+  --capture "IMG1=zoomed crop of a 150dpi PPTX render; IMG2=the SAME slide-space region cropped from the original lecture frame and upscaled to match IMG1's effective scale; region: <region desc from w7_cut_crops.py REGIONS>" \
+  --thinking high --max-tokens 65536 --timeout 600 --rounds 1 --tries 1 \
+  --transcript "$W/crop_8_<NAME>_judge.txt" -p "$(cat "$W/judge_payload_B_8.txt")"
+
+# 4. PIL-adjudicate every finding against `w7_final_pil_table.txt` + `w7_pinkbox_ascii.txt`.
+#    Only fix defects the ORIGINAL demonstrably has (phantom trap: <3 ink px = noise).
+
+# 5. certify (NO record-visual subcommand), then VERIFY the row
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py \
+  set 50 visual_check PASS --worker "<your-worker-id>"
+VIDEO=... set 50 visual_transcript "$W/judge_attempt_9.txt" --worker "<id>"
+VIDEO=... set 50 visual_attempts 9 --worker "<id>"
+VIDEO=... set 50 gen_status passed --worker "<id>"
+VIDEO=... set 50 pptx_path "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_050_recreated.pptx" --worker "<id>"
+VIDEO=... heartbeat 50 "<id>"
+VIDEO=... release 50 "<id>"
+VIDEO=... get 50        # MUST show gen_status=passed, visual_check=PASS, worker_id=""
+```
+
+## Banked artifacts
+- `w7_adjudication.md` — full PIL adjudication of both FAILs (measurements, refutations)
+- `w7_final_pil_table.txt` — corrected final PIL table vs original
+- `w7_pinkbox_ascii.txt` — the decisive ASCII proof: original's pink box has TWO components
+- `judge_attempt_8_dispatch.log`, `judge_payload_8.txt`, `judge_payload_B_8.txt` (byte-checked)
+- `crop_8_{caption,mathzone,pinkbox,tableeq,chart,redstop}_{render,orig}.png`
+- `build_attempt_7_pre_finalW_revert.js`, `assets/eq_050_finalW.{png,json}.pre_w7_3comp`
+- scripts: `scratch/tmp/w7_measure.py`, `w7_eta.py`, `w7_eta2.py`, `w7_finalw.py`,
+  `w7_pink.py`, `w7_rules.py`, `w7_cut_crops.py`, `w7_judge_A8.sh`, `w7_judge_A8r1.sh`

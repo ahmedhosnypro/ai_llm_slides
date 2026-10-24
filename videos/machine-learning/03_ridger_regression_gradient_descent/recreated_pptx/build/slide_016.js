@@ -48,6 +48,18 @@ slide.addShape("rect", {
   fill: { color: "333333" },
 });
 
+// Black underline beneath "Small number of samples" on b5a (original x446..640, y500)
+slide.addShape("rect", {
+  x: 445 / 72, y: 500 / 72, w: (641 - 445) / 72, h: 1 / 72,
+  fill: { color: "333333" },
+});
+
+// Black underline beneath "Large vector" on b5a (original x710..806, y500)
+slide.addShape("rect", {
+  x: 709 / 72, y: 500 / 72, w: (807 - 709) / 72, h: 1 / 72,
+  fill: { color: "333333" },
+});
+
 // Title (measured: original ink x312..621, y61..86 -> ~27pt bold, centred at x466.5, mid-y 73)
 slide.addText("L\u2081 and L\u2082 Regularization", {
   x: 0.479, y: 0.612, w: 12.0, h: 0.75,

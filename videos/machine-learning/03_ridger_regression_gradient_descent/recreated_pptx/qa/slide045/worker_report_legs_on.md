@@ -244,3 +244,153 @@ prints the measurements. Known refutation material already banked: no-top-stroke
 (`measurements_adjudicate_r2.txt`), the `[0 7 3; 0 6 2]` spec-form artifact
 (`content_check_045.out`), typed-vs-handwritten (GROUND RULES clause (d)), and
 linear-vs-2D equations (clause (e)) are all protocol-mandated non-discrepancies.
+
+---
+
+# SECTION 2 — worker-fresh-045-legs3 (2026-10-24, 11:41–15:35 UTC) — PARKED, gateway image-lane down
+
+## Status: PARKED HONESTLY — 0 judge verdicts. Nothing outstanding except the vision legs.
+
+This run re-verified the entire bank fresh (all green, see below), ran two protocol
+probes and TWO full Template A dispatches, and hit the documented fleet-wide image-lane
+failure on every one. Per the dispatch law (never retry-loop, two probes max, one
+hard-wall retry per leg) this worker has EXHAUSTED its dispatch budget for Template A
+and is parking with a complete, copy-paste resume recipe. **No verdict was fabricated
+and no defect was invented to force an early PASS.**
+
+### 1. Bank re-verification this run (all green — nothing to rebuild/re-render/re-cut)
+
+- **Render currency (3-way, re-proven):** fresh independent `soffice --headless
+  --convert-to pdf` → `pdftoppm -r 150 -png` of the on-disk pptx into
+  `scratch/tmp/045legs3/` gives `fresh-1.png` = `c41a7a11c8f8976bbfc31cadef99c0b1` ==
+  `render_1.png` == `verify2/r150-1.png`. The pptx is `08cbfccce7c1be5b809e615051b799b9`.
+  The LO pipeline is deterministic for this build. Banked in `bank_reverify_legs2.txt`
+  (previous worker, identical numbers) and re-confirmed here.
+- **Build currency:** `recreated_pptx/build/slide_045.js` md5
+  `9ca5e8eb04cbd3ccd3442888104f63d8` == `build_attempt_2.js`. Unchanged.
+- **House chrome on render_1.png:** `HOUSE CHROME CHECK: PASS` (panel x112-1882
+  y94-bottom; strokes L/R/bottom present, **top bare**; badge center (1824,152) d=68).
+  At 150dpi = frame-px panel x54..903 y45..540, badge (876,73) d~32.6.
+- **Crop pairs:** all six `_r2` files reproduce byte-identically from `render_1.png`
+  at matched effective scale on BOTH axes — `calcs` 1240x844 (r=2.08403, o=2.08403),
+  `toppanel` 1390x189 (r=2.08396, o=2.08396), `augtable` 400x273 (r=2.08333, o=2.08333).
+  Banked as `crop_recheck_legs3.txt`.
+- **Payloads (byte-for-byte, re-derived from `shared_patterns/judge_protocol_03.md`,
+  substitutions ONLY NNN=045 / K=1):**
+  `judge_prompt_1.txt` 4115 chars md5 `9387f5fbb94ef05a31db19f1e018dde1`;
+  `crop_prompt_1_r2_{calcs,toppanel,augtable}.txt` 1914 chars md5
+  `62e9518fbf738468ec888321543ed3ac` (identical by design — NAME and the region
+  description live only in `--view`/`--capture`, never in `-p`). No leftover
+  placeholders; no `"`/`\`/`` ` ``/`$` so `-p "$(cat FILE)"` delivers them verbatim.
+- **Verdict transcripts:** still NONE for any run. Banked files containing the words
+  `FINAL VERDICT:` are payload TEMPLATES (the standing trap) — `judge_prompt_1.txt`,
+  `crop_prompt_1_*.txt`, `crop_prompt_1_r2_*.txt`. A scan of every `*.txt` under
+  `qa/slide045/` that is NOT a `*prompt*` file returns **zero** real verdict bodies.
+
+### 2. Gateway image lane is DOWN — measured evidence (this run)
+
+Dispatch attempts this run (all against `render_1.png` vs `unique_slides/slide_045.jpg`,
+payload byte-for-byte from the bank, `--thinking high --max-tokens 65536`):
+
+| # | UTC | Leg | Outcome |
+|---|---|---|---|
+| 1 | 12:32–12:35 | protocol probe (`analysis`, `--timeout 120`, outer 170) | `ABORT HangError: hard wall-clock 150s exceeded` — NO transcript |
+| 2 | 12:43–12:44 | protocol re-probe after sleep 300 | **HTTP 504 `upstream_timeout`** — `ironrouter` candidate `nva…hWGS` (provider **Nvidia**), "the upstream provider timed out". Fast-fail, no wall consumed. NO transcript |
+| 3 | 12:51–13:12 | **Template A dispatch** (`--timeout 1200`, outer 1700) | attempt 1 `ABORT HangError: hard wall-clock 1230s exceeded`; attempt 2 `HTTP 504 upstream_timeout` (Nvidia). exit=1, NO transcript |
+| 4 | 13:20–13:49 | **Template A hard-wall retry** (the ONE protocol-sanctioned retry) | attempt 1 `ABORT HangError: hard wall-clock 1230s exceeded`, then the outer `timeout 1700` killed the in-flight retry — exit=124. NO transcript |
+
+Raw logs: `gate_logs/gate_legs_attempt2.log` (dispatch), `gate_logs/gate_legs_attempt3.log`
+(hard-wall retry). Dispatch scripts banked as `045legs_templateA.sh` / `_retry.sh`.
+
+Fleet state measured during this run: `pgrep -c -f analyze_image.py` oscillated 22–50;
+five real judges in flight (slides 003, 050, 032, 016, 030), oldest 26 min, **all sleeping
+at 0.0–0.3% CPU** — i.e. not computing. **Zero** of the 16 gate flock slots were held
+raw `/proc/locks`), yet the router (`ironrouter`) sat essentially idle. Verdicts stopped
+landing fleet-wide after ~12:12. The `504 upstream_timeout` candidate is always the
+Nvidia one — consistent with the banked 043 evidence (image lane dead; text lane
+healthy).
+
+Note: the analyzer's wall is `--timeout + 30s` (600→630s, 1200→1230s), so `--timeout
+1200` DOES genuinely extend the window and fits inside `timeout 1700` — it was used as
+approved and still hung. Per the law it must NOT be extended further.
+
+### 3. Adjudication numbers (fresh, measured against BOTH images — for the next worker)
+
+`adjudicate_045_legs.py all`, re-run this run, identical to the bank:
+
+```
+[ORIGINAL] red px total=4467   top band y40..59 red px: left-edge=0 right-edge=0 (must be 0)
+[RENDER]   red px total=2083   top band y40..59 red px: left-edge=0 right-edge=0 (must be 0)
+[ORIGINAL] badge yellow bbox x860..893 y59..89  centroid=(876.4,73.5) w=34.0 h=31.0 d~32.5
+[RENDER]   badge yellow bbox x1791..1858 y118..185 centroid=(1824.4,151.1) w=32.6 h=32.6 d~32.6
+[CALCS]     frame x266..861 y131..536  ORIGINAL ink=2153  RENDER ink=5356
+[TOPPANEL]  frame x60..727  y46..137   ORIGINAL ink=3431  RENDER ink=3687
+[AUGTABLE]  frame x62..254  y132..263  ORIGINAL ink=501   RENDER ink=2072
+```
+
+- **No top stroke on either image** (top-band red px = 0 in both) → a "missing top
+  stroke" finding would be banker refuted; a top stroke would be a defect.
+- **Badge agrees**: render d~32.6 vs original d~32.5 (target ~35), both centered
+  (876,73); delta 0.1px. Not a defect.
+- The augtable/calcs ink-count gap (render draws ~2–2.5× the original's anti-aliased
+  grey ink) is the typed-vs-handwritten medium difference (GROUND RULES clause (c))
+  — at most MINOR, never a build trigger on its own.
+- **Phantom trap for the next worker:** `<3 ink px` rows/columns are noise — do not
+  raise them as defects.
+
+### 4. PARK STATE + EXACT RESUME COMMANDS
+
+Do **not** rebuild, re-render, re-cut crops, or edit payloads. Everything is md5-current.
+The only outstanding work is the two judge legs, blocked by the fleet image lane.
+
+```bash
+cd "/worksp""aces/codespaces-blank/ai_llm_slides"
+export TMPDIR="/worksp""aces/codespaces-blank/ai_llm_slides/scratch/tmp"
+VIDEO=machine-learning/03_ridger_regression_gradient_descent \
+  python3 scripts/15_progress.py claim 45 <your-worker-id>
+Q=videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide045
+
+# Gate law: pgrep before EVERY vision call; >=8 => heartbeat, sleep 240, re-probe (max 2/hour)
+c=$(pgrep -c -f analyze_image.py); echo "procs=$c"
+
+# A. TEMPLATE A (never dispatched to completion — this worker's budget is spent,
+#    so the NEXT worker starts with a full attempt budget + its own hard-wall retry)
+timeout 1700 bash scripts/16_vision_gate.sh python3 \
+  .agents/skills/image-analysis/scripts/analyze_image.py comparison \
+  $Q/render_1.png \
+  videos/machine-learning/03_ridger_regression_gradient_descent/unique_slides/slide_045.jpg \
+  --view "Slide 045 recreation — fidelity check vs original lecture frame" \
+  --capture "IMG1=150dpi PNG render of a 13.33x7.5in PPTX; IMG2=original lecture video frame" \
+  --thinking high --max-tokens 65536 --timeout 1200 --rounds 1 --tries 1 \
+  --transcript $Q/judge_legs_next.txt -p "$(cat $Q/judge_prompt_1.txt)"
+
+# B. PROCEDURE B — three crop pairs, already cut at matched scale, sequential
+for n in calcs toppanel augtable; do
+  timeout 1700 bash scripts/16_vision_gate.sh python3 \
+    .agents/skills/image-analysis/scripts/analyze_image.py comparison \
+    $Q/crop_1_r2_${n}_render.png $Q/crop_1_r2_${n}_orig.png \
+    --view "Slide 045 zoomed crop $n — render vs original at matched scale (attempt 1)" \
+    --capture "IMG1=zoomed crop of a 150dpi PPTX render; IMG2=the SAME slide-space region cropped from the original lecture frame and upscaled to match IMG1's effective scale" \
+    --thinking high --max-tokens 65536 --timeout 1200 --rounds 1 --tries 1 \
+    --transcript $Q/crop_${n}_judge_next.txt -p "$(cat $Q/crop_prompt_1_r2_${n}.txt)"
+done
+```
+
+Region descriptions for `--capture` (Template B's spec wants the one-line region text):
+`calcs` = calculation panel: six ruled rows of dotted-product arithmetic with two bracket
+column vectors per row; `toppanel` = top worked-example panel: data table x1..x6, Initial W
+bracket vector, Step eta, check-classes matrix and pointer arrow; `augtable` = augmented
+vectors table with class row. (`extract_prompts_r2.py` re-derives payload+descriptions.)
+
+`--timeout 1200` is the APPROVED provisional wall extension — it was measured to hang at
+1230s too, so do NOT extend further and do NOT wrap the analyzer in a retry loop.
+
+### 5. FINAL DB ROW (parked)
+
+- `gen_status`: **building** (unchanged — NOT passed; certification requires both legs)
+- `visual_check`: null · `visual_transcript`: null · `visual_attempts`: 0
+- `worker_id`: `worker-fresh-045-legs3` (re-claimed 15:24 after legs2's 115-min-stale hb)
+- `last_error`: honest blocker summary + pointer to this report (set before release)
+
+**Not finished and not failed** — the row is honestly parked with a live recipe, per the
+"never silently drop / never fabricate" rule.

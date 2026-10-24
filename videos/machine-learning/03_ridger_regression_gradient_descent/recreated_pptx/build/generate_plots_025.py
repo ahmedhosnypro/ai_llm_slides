@@ -297,6 +297,35 @@ def plot_bl():
                 va="bottom", zorder=30, linespacing=1.05)
 
     fit_zoom(fig, ax, "bl")
+
+    # measured original: two RED annotation arrows at the minima (slide-px ->
+    # local frame px = slide - (83,290)); each = filled wedge + 2px shaft +
+    # short diagonal, drawn as figure-fraction artists so they land exactly.
+    # Drawn AFTER fit_zoom so their red ink never enters surface_box()'s fit.
+    #   1: wedge apex (116,150) base (110,154)-(124,154); shaft x111 y155..160;
+    #      diagonal (123,154)-(139,160)
+    #   2: wedge apex (182,188) base (178,192)-(188,192); shaft x181.5 y193..197;
+    #      diagonal (188,193)-(196,197)
+    from matplotlib.patches import Polygon
+    BW, BH = 293, 237
+    def fx(x): return x / BW
+    def fy(y): return 1.0 - y / BH
+    ARROWS = [
+        (116, 150, 110, 154, 124, 154, 111, 155, 160, 123, 154, 139, 160),
+        (182, 188, 178, 192, 188, 192, 181.5, 193, 197, 188, 193, 196, 197),
+    ]
+    for (ax_, ay_, bx_, by_, cx_, cy_, sx, sy0, sy1, dx0, dy0, dx1, dy1) in ARROWS:
+        fig.add_artist(Polygon([(fx(ax_), fy(ay_)), (fx(bx_), fy(by_)),
+                                (fx(cx_), fy(cy_))], closed=True,
+                               facecolor=RED, edgecolor="none",
+                               transform=fig.transFigure, zorder=26))
+        fig.add_artist(Line2D([fx(sx), fx(sx)], [fy(sy0), fy(sy1)],
+                              transform=fig.transFigure, color=RED, lw=2.0,
+                              zorder=26, solid_capstyle="butt"))
+        fig.add_artist(Line2D([fx(dx0), fx(dx1)], [fy(dy0), fy(dy1)],
+                              transform=fig.transFigure, color=RED, lw=2.0,
+                              zorder=26, solid_capstyle="butt"))
+
     redrect(fig, spec)
     save(fig, "bl")
 

@@ -77,3 +77,110 @@
 [2026-10-24T13:55:46Z] gate probe pgrep=12 (>=8) — heartbeat sent, sleeping 240s (waited 4083s for top_chain)
 [2026-10-24T13:59:46Z] gate probe pgrep=9 (>=8) — heartbeat sent, sleeping 240s (waited 4324s for top_chain)
 [2026-10-24T14:03:46Z] gate probe pgrep=11 (>=8) — heartbeat sent, sleeping 240s (waited 4564s for top_chain)
+[2026-10-24T14:07:46Z] gate probe pgrep=10 (>=8) — heartbeat sent, sleeping 240s (waited 4804s for top_chain)
+[2026-10-24T14:11:46Z] gate probe pgrep=8 (>=8) — heartbeat sent, sleeping 240s (waited 5044s for top_chain)
+[2026-10-24T14:15:46Z] gate probe pgrep=12 (>=8) — heartbeat sent, sleeping 240s (waited 5284s for top_chain)
+[2026-10-24T14:19:47Z] gate probe pgrep=12 (>=8) — heartbeat sent, sleeping 240s (waited 5524s for top_chain)
+[2026-10-24T14:23:47Z] gate probe pgrep=12 (>=8) — heartbeat sent, sleeping 240s (waited 5765s for top_chain)
+[2026-10-24T14:27:47Z] gate probe pgrep=12 (>=8) — heartbeat sent, sleeping 240s (waited 6005s for top_chain)
+[2026-10-24T14:31:47Z] gate probe pgrep=12 (>=8) — heartbeat sent, sleeping 240s (waited 6245s for top_chain)
+[2026-10-24T14:35:47Z] gate probe pgrep=10 (>=8) — heartbeat sent, sleeping 240s (waited 6485s for top_chain)
+[2026-10-24T14:39:47Z] gate probe pgrep=10 (>=8) — heartbeat sent, sleeping 240s (waited 6725s for top_chain)
+[2026-10-24T14:43:47Z] gate probe pgrep=9 (>=8) — heartbeat sent, sleeping 240s (waited 6965s for top_chain)
+[2026-10-24T14:47:47Z] WINDOW OPEN (pgrep=3) — top_chain
+[2026-10-24T14:47:47Z] DISPATCH crop top_chain (queue at dispatch 3, analyzer --timeout 1200 inside outer 1700)
+[info] context header injected: VIEW: Slide 021 zoomed crop top_chain — render vs original at matched scale (attempt 10) | CAPTURE: IMG1=zoomed crop of a 150dpi PPTX render; IMG2=the SAME slide-space region cropped from the original lecture frame and upscaled to match IMG1's effective scale; region: the first block's determinant chain: |X^T X| = 0, two blue arrows, Singular Matrix, red italic No Inverse
+[warn] --timeout > 600s: the gateway at localhost:17844 is shared (Stitch proxy + vision). Long-timeout retry loops SATURATE it for everyone — prefer one modest call and retry later.
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 659064
+[warn] comparison :: images :: attempt 1: HTTP 504: {"error":{"code":"upstream_timeout","ironrouter":{"candidate":"nva…hWGS","provider":"Nvidia"},"message":"the upstream provider timed out","type":"server_error"}}
+[error] None: every model failed:
+  images: attempt 1: HTTP 504: {"error":{"code":"upstream_timeout","ironrouter":{"candidate":"nva…hWGS","provider":"Nvidia"},"message":"the upstream provider timed out","type":"server_error"}}
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 0/1 result(s) analyzed successfully
+[2026-10-24T14:48:48Z] crop top_chain: NO VERDICT (rc=1, elapsed 61s, transcript MISSING) — honest no-verdict, NOT retry-looped
+[2026-10-24T14:48:48Z] WINDOW OPEN (pgrep=2) — mid_table_eq
+[2026-10-24T14:48:48Z] DISPATCH crop mid_table_eq (queue at dispatch 2, analyzer --timeout 1200 inside outer 1700)
+[info] context header injected: VIEW: Slide 021 zoomed crop mid_table_eq — render vs original at matched scale (attempt 10) | CAPTURE: IMG1=zoomed crop of a 150dpi PPTX render; IMG2=the SAME slide-space region cropped from the original lecture frame and upscaled to match IMG1's effective scale; region: the second block's left side: the (X^T X + lambda I) label, green lambda=3, the full 3x3 regularized matrix, and the three FDFD96 highlight bands on the 17/43/95 diagonal
+[warn] --timeout > 600s: the gateway at localhost:17844 is shared (Stitch proxy + vision). Long-timeout retry loops SATURATE it for everyone — prefer one modest call and retry later.
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 659311
+[warn] comparison :: images :: attempt 1: HTTP 504: {"error":{"code":"upstream_timeout","ironrouter":{"candidate":"nva…hWGS","provider":"Nvidia"},"message":"the upstream provider timed out","type":"server_error"}}
+[error] None: every model failed:
+  images: attempt 1: HTTP 504: {"error":{"code":"upstream_timeout","ironrouter":{"candidate":"nva…hWGS","provider":"Nvidia"},"message":"the upstream provider timed out","type":"server_error"}}
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 0/1 result(s) analyzed successfully
+[2026-10-24T14:49:50Z] crop mid_table_eq: NO VERDICT (rc=1, elapsed 62s, transcript MISSING) — honest no-verdict, NOT retry-looped
+[2026-10-24T14:49:50Z] WINDOW OPEN (pgrep=5) — mid_chain
+[2026-10-24T14:49:50Z] DISPATCH crop mid_chain (queue at dispatch 5, analyzer --timeout 1200 inside outer 1700)
+[info] context header injected: VIEW: Slide 021 zoomed crop mid_chain — render vs original at matched scale (attempt 10) | CAPTURE: IMG1=zoomed crop of a 150dpi PPTX render; IMG2=the SAME slide-space region cropped from the original lecture frame and upscaled to match IMG1's effective scale; region: the second block's determinant chain: |X^T X| = 5685, two blue arrows, Non-Singular Matrix, red italic Inverse Exists
+[warn] --timeout > 600s: the gateway at localhost:17844 is shared (Stitch proxy + vision). Long-timeout retry loops SATURATE it for everyone — prefer one modest call and retry later.
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 659610
+[warn] comparison :: images :: attempt 1: HTTP 504: {"error":{"code":"upstream_timeout","ironrouter":{"candidate":"nva…hWGS","provider":"Nvidia"},"message":"the upstream provider timed out","type":"server_error"}}
+[error] None: every model failed:
+  images: attempt 1: HTTP 504: {"error":{"code":"upstream_timeout","ironrouter":{"candidate":"nva…hWGS","provider":"Nvidia"},"message":"the upstream provider timed out","type":"server_error"}}
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 0/1 result(s) analyzed successfully
+[2026-10-24T14:50:51Z] crop mid_chain: NO VERDICT (rc=1, elapsed 61s, transcript MISSING) — honest no-verdict, NOT retry-looped
+[2026-10-24T14:50:51Z] gate probe pgrep=8 (>=8) — heartbeat sent, sleeping 240s (waited 0s for bot_eq_table)
+[2026-10-24T14:54:51Z] gate probe pgrep=9 (>=8) — heartbeat sent, sleeping 240s (waited 240s for bot_eq_table)
+[2026-10-24T14:58:51Z] WINDOW OPEN (pgrep=4) — bot_eq_table
+[2026-10-24T14:58:51Z] DISPATCH crop bot_eq_table (queue at dispatch 4, analyzer --timeout 1200 inside outer 1700)
+[info] context header injected: VIEW: Slide 021 zoomed crop bot_eq_table — render vs original at matched scale (attempt 10) | CAPTURE: IMG1=zoomed crop of a 150dpi PPTX render; IMG2=the SAME slide-space region cropped from the original lecture frame and upscaled to match IMG1's effective scale; region: the bottom block: the (X^T X + lambda I)^-1 expression, the long blue arrow, and the 3x3 inverse matrix table of decimals
+[warn] --timeout > 600s: the gateway at localhost:17844 is shared (Stitch proxy + vision). Long-timeout retry loops SATURATE it for everyone — prefer one modest call and retry later.
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 662517
+[warn] comparison :: images :: attempt 1: HTTP 504: {"error":{"code":"upstream_timeout","ironrouter":{"candidate":"nva…hWGS","provider":"Nvidia"},"message":"the upstream provider timed out","type":"server_error"}}
+[error] None: every model failed:
+  images: attempt 1: HTTP 504: {"error":{"code":"upstream_timeout","ironrouter":{"candidate":"nva…hWGS","provider":"Nvidia"},"message":"the upstream provider timed out","type":"server_error"}}
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 0/1 result(s) analyzed successfully
+[2026-10-24T14:59:52Z] crop bot_eq_table: NO VERDICT (rc=1, elapsed 61s, transcript MISSING) — honest no-verdict, NOT retry-looped
+[2026-10-24T14:59:52Z] LEG 2 (remaining four) run complete.
+
+## Final crop verdicts
+- top_table_eq: FINAL VERDICT: PASS  [/workspaces/codespaces-blank/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide021/crop_10_top_table_eq_judge.txt]
+- top_chain: NO VERDICT (not landed)
+- mid_table_eq: NO VERDICT (not landed)
+- mid_chain: NO VERDICT (not landed)
+- bot_eq_table: NO VERDICT (not landed)
+
+---
+
+## THIRD FAILURE MODE — HTTP 504 upstream_timeout (Nvidia), 2026-10-24 14:47–15:06 UTC
+
+The four remaining crop legs were each dispatched during GENUINELY OPEN windows and each
+returned `HTTP 504 {"code":"upstream_timeout","ironrouter":{"candidate":"nva…hWGS",
+"provider":"Nvidia"}}` in ~61 s. No wall was reached (neither the 1200 s analyzer wall nor
+the 1700 s outer wrapper); the upstream provider failed FAST.
+
+| crop | dispatched (UTC) | queue at dispatch | elapsed | error |
+|---|---|---|---|---|
+| top_chain | 14:47:47 | 3 | 61 s | HTTP 504 upstream_timeout (Nvidia) |
+| mid_table_eq | 14:48:48 | 2 | 62 s | HTTP 504 upstream_timeout (Nvidia) |
+| mid_chain | 14:49:50 | 5 | 61 s | HTTP 504 upstream_timeout (Nvidia) |
+| bot_eq_table | 14:58:51 | 4 | 61 s | HTTP 504 upstream_timeout (Nvidia) |
+| top_chain (re-dispatch, foreground) | 15:06 | 5 | 61 s | HTTP 504 upstream_timeout (Nvidia) |
+
+All five attempts: `0/1 result(s) analyzed successfully`, no transcript written, no
+`FINAL VERDICT:` line. Distinct from the two earlier modes (gate congestion; the 630 s
+analyzer `HangError` + 1700 s outer-wall kill). This is an UPSTREAM provider failure —
+the Nvidia candidate behind the `images` alias times out server-side.
+
+No retry-loops were performed beyond the single sanctioned re-dispatch (foreground,
+queue 5, same 504). Per wall-abort discipline this is an honest no-verdict.
+
+## Landed verdicts (unchanged)
+- `crop_10_top_table_eq_judge.txt` — FINAL VERDICT: PASS (11:33:21Z)
+- `judge_attempt_10.txt` — FINAL VERDICT: PASS (11:13:00Z)
+
+NOT CERTIFIED: 4 of 5 Procedure B crops still have no verdict.
+# Slide 021 attempt-10 — LEG 2 remaining four crop pairs (--timeout 1200 override), started 2026-10-24T15:15:28Z
+[2026-10-24T15:15:28Z] payload md5 = b5b152e31e2ca54989eff597374025fb (expect b5b152e31e2ca54989eff597374025fb)
+[2026-10-24T15:15:28Z] gate law: pgrep<8 before EVERY vision call; >=8 => heartbeat + sleep 240 + re-probe
+[2026-10-24T15:15:28Z] gate probe pgrep=12 (>=8) — heartbeat sent, sleeping 240s (waited 0s for top_chain)
+[2026-10-24T15:19:28Z] gate probe pgrep=17 (>=8) — heartbeat sent, sleeping 240s (waited 240s for top_chain)
+[2026-10-24T15:23:28Z] gate probe pgrep=11 (>=8) — heartbeat sent, sleeping 240s (waited 480s for top_chain)
+[2026-10-24T15:27:28Z] gate probe pgrep=13 (>=8) — heartbeat sent, sleeping 240s (waited 720s for top_chain)
+[2026-10-24T15:31:28Z] gate probe pgrep=17 (>=8) — heartbeat sent, sleeping 240s (waited 960s for top_chain)
+[2026-10-24T15:35:29Z] gate probe pgrep=11 (>=8) — heartbeat sent, sleeping 240s (waited 1200s for top_chain)
+[2026-10-24T15:39:29Z] gate probe pgrep=20 (>=8) — heartbeat sent, sleeping 240s (waited 1441s for top_chain)
+[2026-10-24T15:43:29Z] gate probe pgrep=20 (>=8) — heartbeat sent, sleeping 240s (waited 1681s for top_chain)
+[2026-10-24T15:47:29Z] gate probe pgrep=18 (>=8) — heartbeat sent, sleeping 240s (waited 1921s for top_chain)

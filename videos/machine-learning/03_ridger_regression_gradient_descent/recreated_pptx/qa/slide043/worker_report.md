@@ -163,3 +163,142 @@ VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_
 ```
 
 Judge attempts used this lane: **0 verdicts obtained** (2 probe hangs, 0 real-judge dispatches).
+
+---
+
+# Resume 3 — 2026-10-24, worker `w043-finish-20261024b`: build CURRENT, 4 real defects fixed, VISION LEGS STILL PARKED
+
+## Final DB row (parked, `get 43`)
+
+```
+gen_status            building
+pptx_path             videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_043_recreated.pptx
+build_script          videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/build/slide_043.js
+visual_check          null
+visual_attempts       0        (0 judge dispatches reached a transcript)
+visual_transcript     null
+worker_id             w043-finish-20261024b
+worker_heartbeat_at   2026-10-24T13:49:04Z
+```
+`gen_status` was never advanced, `visual_check` was never written, `release` was not run.
+No verdict was fabricated. `set` operations were limited to heartbeat + claim this resume.
+
+## Triage outcome (reuse-after-verification, md5 + timestamp)
+
+- `build/slide_043.js` **md5-identical** to banked `build_attempt_2.js` → inherited as the base.
+- `render_2.png` **re-rendered from the pptx and md5-IDENTICAL** → the prior render was genuinely current, not stale.
+- `house_chrome_check.py` on render_2 **PASS** (panel x112-1882 y94-bottom; L/R/bottom, top bare; badge (1824,152) d68).
+- `build/assets/eq043_dx*.png|json` (Oct 24 08:33) = **ABANDONED partial rebuild**: only 6 of 22 assets, and the generator `gen_eq_043.py` carries content typos (`"-0"`, `"02"`) plus different values than both the frame and the validated analysis. **Not reused.**
+- `build/components/` holds slide_009/012/013/017/020/022/027/035 — **no perceptron-family component** to IMPORT. `slide_dependencies.json` has edges only `10>9`, `13>12`, `17>13`, `18>17`: **slide 43 is NOT dependency-gated**, so the "import a certified family component" instruction in the lane brief has no object in this repo.
+
+## The inherited selfcheck was wrong on 1 of 4 claims — and missed 1 entirely
+
+| claim (from `selfcheck_attempt_2.txt`) | adjudication, PIL, BOTH images | action |
+|---|---|---|
+| `4b` class row "render is black" | **REAL**. Original x1..x3 red=77 blue=0, x4..x6 red=3 blue=32; render 0/0 | FIXED |
+| `3b` matrix "separate one-line parens per entry" | **REAL**. Original col1 ink x593..617 y83..112 = ONE paren pair spanning both stacked entries `( 0 ; 0 )`; render drew two inline `(0)` `(0)` lines | FIXED |
+| `5a` aug heading overflow to 247.8 vs box edge 246 | **REAL, marginal (1.8px)**. Box outline verified identical in both (x69..246 via the grayblue C0C3CA scan) | FIXED |
+| `3a` initial-W "Step text inside bracket / no enclosing delimiter" | **REFUTED**. Full-res ASCII of the original shows tall bracket strokes at x331 and x431 spanning y62..101 and `Step η = 2` inside them, exactly as the render draws it | none |
+| *(not in the inherited selfcheck at all)* legend "C1/C2 not coloured on the frame (red 1-2px)" | **REAL, MISSED**. Original per-token: C1 red=72, C2 blue=52, Zero green=165; render 0/0 | FIXED |
+
+Root cause of the inherited report's error: `probe_1.txt` was a probe of **render_1** (attempt 1). The report asserted its four defects were fixed in render_2 but never re-ran the probe or the selfcheck on render_2. Three real defects survived into the deliverable untouched.
+
+## Fixes (copy-then-modify; pre-fix script kept at `scratch/tmp/slide_043_pre_legend_fix.js`)
+
+All in `recreated_pptx/build/slide_043.js`:
+
+1. **Top-left class row** (`slide_043.js:101`): `C1`→`C00000`, `C2`→`0000FF`.
+2. **Class-check matrix** (`slide_043.js:118`): the two inline paren-text rows replaced by three generated 600dpi images `eq043_mx1/2/3.png` — one tall paren pair per Z1 column spanning both stacked entries, centred (605/628/651, 95). The generator's matrix specs were correct (frame digits really are `(0;0) (7;6) (3;2)`); nothing had been generated from them.
+3. **Aug heading** (`slide_043.js:139`): `x 88 → 79`, `w 170 → 160`.
+4. **Legend** (`slide_043.js:130`): split into `C1`(red @239) / ` positive, ` / `C2`(blue @312) / ` negative, ` / `Zero`(green @396) / ` is unaccepted`(black @431), anchored on the original's measured run positions.
+
+New assets: `recreated_pptx/build/assets/eq043_mx1.png|json`, `eq043_mx2.png|json`, `eq043_mx3.png|json` (125×222/221/225 px at 600dpi, transparent).
+
+**Equation content verified against the validated analysis, not just the frame**: all 12 equations in `analysis/slide_043_final.json` `verbatim_text.equations[0..11]` match the build's in-use `eq_043_*.json` mathtexts exactly. That independently confirms `gen_eq_043.py`'s differing w-series values were wrong and must not be adopted.
+
+## Verification — `selfcheck_attempt_4.txt` (banked), `render_4.png` 2001×1125 md5 `dd94595e`, chrome PASS
+
+```
+FIX 1 class row      ORIG red 77/32 -> REND red 414/489, blue 489        PASS
+FIX 2 matrix paren   ORIG (598,82,612,109) -> REND (597.2,81.8,620.7,108.2) span 26.4
+                     col2 ORIG 612..643 -> REND 612.0..643.7             PASS
+                     col3 ORIG 635..657 -> REND 635.0..658.0             PASS
+FIX 3 aug heading    REND ink x79.3..212.7 vs box edge 246 (was 247.8)   PASS
+FIX 4 legend         C1 REND red=185 | C2 REND blue=163 | Zero REND green=309   PASS
+regression  eq bands all inked (4128-5319 px), 24/24 table cells inked,
+            content ink bbox (67.7,53.7,893.8,519.3) inside x57..902 y45..539   PASS
+RESULT: ALL PASS
+```
+`render_2 → render_4` region diff proves the **eqstack region is pixel-identical (0 px)** — all four fixes land in the top band and middle-left, the calc stack untouched, so the banked eqstack crop pair remains valid evidence for that region.
+
+## Crop pairs cut for attempt 4 (Procedure B, matched effective scale)
+
+`cropcut_attempt_4.py`, regions from **render_4**, orig LANCZOS-upscaled to match:
+
+| region | frame bbox | render crop | orig upscaled | eff px/frame x/y |
+|---|---|---|---|---|
+| `topband` | 70,50..675,132 | 1261×171 | 1261×171 | 2.0843 / 2.0854 |
+| `eqstack` | 268,133..859,535 | 1231×838 | 1231×838 | 2.0829 / 2.0846 |
+| `midleft` | 60,130..260,320 | 417×396 | 417×396 | 2.0850 / 2.0842 |
+
+All MATCHED. Payloads byte-verified against the protocol with only the documented substitutions (`NNN→043`, `\bK\b→4` — the template has **zero** standalone `\bK\b` tokens so `BLOCKER` stays intact 4/4 and 2/2, no `BLOC5ER` corruption anywhere):
+
+`judge_prompt_4.txt` (4115 B), `crop_prompt_4_{topband,eqstack,midleft}.txt` (1914 B each) + matching `_desc.txt`.
+
+## BLOCKER — vision upstream provider wedged, 0 verdicts
+
+Every dispatched image call failed. Full wall evidence in `wedge_evidence_4.txt`:
+
+| call | wall | outcome |
+|---|---|---|
+| `probe_4.sh`, `probe_4b.sh` | 150s | EXIT 124, hung, no transcript |
+| `probe_4c.sh` (`--timeout 1200`) | 1400s | **HTTP 504 `upstream_timeout`, provider Nvidia** |
+| `leg_a4.sh` (full-slide, `--timeout 1200`) | 1700s | HangError 1230s wall at ~1117s, killed |
+| `leg_b4.sh eqstack` (crop, `--timeout 1200`) | 1700s | HangError 1230s wall at ~1050s, killed |
+
+The orchestrator's 1200s override was applied and **still hung** — the wall was not the constraint; the upstream is. A 1MP crop pair hung identically to the 2.25MP full frame, so it is not a size problem. Text leg in the same window: HTTP 200 in 55.8s. Fleet queue was 40-42 concurrent judges. Conclusion: **the router and auth are healthy; the Nvidia image upstream is not serving.**
+
+Per the deck's wedge law I banked the evidence and stopped. Nothing was recorded as PASS.
+
+## To finish (next worker, fully staged and verified)
+
+```bash
+cd /worksp""aces/codespaces-blank/ai_llm_slides
+pgrep -c -f analyze_image.py          # if >= 8, sleep and retry before dispatching
+bash scratch/tmp/043_leg_a4.sh        # Leg A, full-slide Template A on render_4, --timeout 1200
+bash scratch/tmp/043_leg_b4.sh topband
+bash scratch/tmp/043_leg_b4.sh eqstack
+bash scratch/tmp/043_leg_b4.sh midleft
+```
+The judge payloads are already banked and byte-checked; the scripts heartbeat the DB themselves.
+On both legs clean (or every FAIL/MINOR PIL-refuted against `unique_slides/slide_043.jpg`):
+
+```bash
+D=videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide043
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py set 43 pptx_path videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_043_recreated.pptx --worker <id>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py set 43 build_script videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/build/slide_043.js --worker <id>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py set 43 visual_check PASS --worker <id>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py set 43 visual_transcript $D/judge_attempt_4.txt --worker <id>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py set 43 visual_attempts 1 --worker <id>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py set 43 gen_status passed --worker <id>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py heartbeat 43 <id>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py release 43 <id>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py get 43   # re-read: set/claim can reset gen_status
+```
+
+## Files touched this resume
+
+- `recreated_pptx/build/slide_043.js` — 4 fixes + header comments corrected.
+- `recreated_pptx/build/assets/eq043_mx1/2/3.png|json` — new.
+- `recreated_pptx/slide_043_recreated.pptx` — rebuilt (441751 → current).
+- `recreated_pptx/qa/slide043/`: `render_3.png`, `render_4.png`, `build_attempt_4.js`,
+  `selfcheck_attempt_4.py`/`.txt`, `cropcut_attempt_4.py`,
+  `crop_4_{topband,eqstack,midleft}_{render,orig}.png`,
+  `judge_prompt_4.txt`, `crop_prompt_4_{topband,eqstack,midleft}.txt` + `_desc.txt`,
+  `wedge_evidence_4.txt`, this section.
+- `scratch/tmp/`: `043_adj.py`, `043_ascii.py`, `043_initw.py`, `043_wdef.py`,
+  `043_verify_fixes.py`, `043_cut_crops.py`, `043_eqvals.py`, `043_legend_icon.py`,
+  `043_img_latency.py`/`.log`, `043_verify_cur.sh`, `043_render_att3.sh`,
+  `043_leg_a4.sh`, `043_leg_b4.sh`, `043_probe4{,b,c}.sh`/`.log`,
+  `slide_043_pre_fix.js`, `slide_043_pre_legend_fix.js`.
+- No banked evidence deleted; no slide outside 43 touched.

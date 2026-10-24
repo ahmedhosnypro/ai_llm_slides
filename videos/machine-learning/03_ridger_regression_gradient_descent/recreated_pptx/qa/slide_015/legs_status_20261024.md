@@ -4,6 +4,31 @@ Worker `w015-buildfirst-20261024`. This file is the LIVE congestion record for
 the verdict legs. It is updated as the run proceeds; the final adjudication and
 certification outcome is appended to `worker_report.md`.
 
+## Root cause of the previous run's failure (diagnosed 2026-10-24)
+
+The first gate-policed run **did dispatch legs** — the count reached 7 at
+14:45 UTC and 4 at 14:51. Every dispatch then failed within ~1 s with
+
+```
+HTTP 504 {"error":{"code":"upstream_timeout","ironrouter":
+{"provider":"Nvidia","message":"the upstream provider timed out"}}}
+[info] 0/1 result(s) analyzed successfully
+```
+
+So the earlier "congestion" diagnosis was wrong in kind: this was an **upstream
+NIM timeout**, not gateway saturation. The one wall-extension retry
+(`--timeout 1200` on the banked judgeA payload, byte-identity verified by
+`scratch/tmp/wallext_check.sh`) aborted at the script's own hard wall-clock
+(1230 s, `HangError ... abort+retry 1/3`) and the tool itself warns that
+`--timeout > 600s` saturates the shared gateway for everyone. **No transcript
+file was ever written by any attempt** (`probe_4.txt`, `judge_attempt_4.txt`
+and `crop_4_*_judge.txt` all absent), so nothing garbage was banked.
+
+Final runner `scratch/tmp/lorch15_final.sh` therefore uses the **banked
+unmodified dispatches at `--timeout 600`** — the payloads are the frozen,
+byte-checked ones. Its log is `qa/slide_015/final_legs_status.txt`; per-leg
+logs are `qa/slide_015/judgeA_final.log` and `qa/slide_015/crop_<slug>_final.log`.
+
 ## Observed gateway load (fleet-global, `pgrep -c -f analyze_image.py`)
 
 All observations are from the same run; times are UTC.
@@ -117,3 +142,186 @@ Legs land at `qa/slide_015/probe_4.txt`, `judge_attempt_4.txt` and
 `set gen_status passed` must be the LAST content write before `release`, and
 `get 15` must be re-read after it. Final row must read
 `gen_status=passed`, `visual_check=PASS`, `worker_id=""`.
+
+### Full congestion log from the first run (12:42-15:22 UTC)
+
+```
+[12:42:32] === leg run start (attempt 4) ===
+[12:42:32] gate=32
+[12:42:32]   heartbeat
+[12:43:32] gate=33
+[12:44:32] gate=41
+[12:45:32] gate=39
+[12:46:32] gate=38
+[12:46:32]   heartbeat
+[12:47:32] gate=37
+[12:48:32] gate=36
+[12:49:32] gate=38
+[12:50:32] gate=38
+[12:50:32]   heartbeat
+[12:51:33] gate=43
+[12:52:33] gate=49
+[12:53:33] gate=52
+[12:54:33] gate=47
+[12:54:33]   heartbeat
+[12:55:33] gate=50
+[12:56:33] gate=62
+[12:57:33] gate=52
+[12:58:33] gate=49
+[12:58:33]   heartbeat
+[12:59:33] gate=49
+[13:00:33] gate=43
+[13:01:33] gate=46
+[13:02:33] gate=43
+[13:02:33]   heartbeat
+[13:03:33] gate=49
+[13:04:33] gate=48
+[13:05:33] gate=49
+[13:06:33] gate=44
+[13:06:34]   heartbeat
+[13:07:34] gate=46
+[13:08:34] gate=44
+[13:09:34] gate=41
+[13:10:34] gate=31
+[13:10:34]   heartbeat
+[13:11:34] gate=32
+[13:12:34] gate=28
+[13:13:34] gate=24
+[13:14:34] gate=27
+[13:14:34]   heartbeat
+[13:15:34] gate=26
+[13:16:34] gate=24
+[13:17:34] gate=23
+[13:18:34] gate=23
+[13:18:34]   heartbeat
+[13:19:34] gate=24
+[13:20:34] gate=24
+[13:21:34] gate=24
+[13:22:34] gate=22
+[13:22:34]   heartbeat
+[13:23:34] gate=19
+[13:24:34] gate=19
+[13:25:34] gate=22
+[13:26:35] gate=14
+[13:26:35]   heartbeat
+[13:27:35] gate=16
+[13:28:35] gate=18
+[13:29:35] gate=16
+[13:30:35] gate=16
+[13:30:35]   heartbeat
+[13:31:35] gate=16
+[13:32:35] gate=13
+[13:33:35] gate=17
+[13:34:35] gate=16
+[13:34:35]   heartbeat
+[13:35:35] gate=16
+[13:36:35] gate=19
+[13:37:35] gate=16
+[13:38:35] gate=21
+[13:38:35]   heartbeat
+[13:39:36] gate=20
+[13:40:36] gate=21
+[13:41:36] gate=22
+[13:42:36] gate=23
+[13:42:36]   heartbeat
+[13:43:36] gate=23
+[13:44:36] gate=20
+[13:45:36] gate=22
+[13:46:36] gate=19
+[13:46:36]   heartbeat
+[13:47:36] gate=17
+[13:48:36] gate=17
+[13:49:36] gate=13
+[13:50:36] gate=13
+[13:50:36]   heartbeat
+[13:51:36] gate=14
+[13:52:36] gate=13
+[13:53:36] gate=13
+[13:54:36] gate=13
+[13:54:36]   heartbeat
+[13:55:36] gate=13
+[13:56:36] gate=13
+[13:57:36] gate=13
+[13:58:36] gate=12
+[13:58:37]   heartbeat
+[13:59:37] gate=9
+[14:00:37] gate=11
+[14:01:37] gate=10
+[14:02:37] gate=11
+[14:02:37]   heartbeat
+[14:03:37] gate=11
+[14:04:37] gate=11
+[14:05:37] gate=9
+[14:06:37] gate=9
+[14:06:37]   heartbeat
+[14:07:37] gate=10
+[14:08:37] gate=14
+[14:09:37] gate=11
+[14:10:37] gate=10
+[14:10:37]   heartbeat
+[14:11:37] gate=9
+[14:12:37] gate=15
+[14:13:37] gate=15
+[14:14:38] gate=12
+[14:14:38]   heartbeat
+[14:15:38] gate=12
+[14:16:38] gate=11
+[14:17:38] gate=17
+[14:18:38] gate=9
+[14:18:38]   heartbeat
+[14:19:38] gate=12
+[14:20:38] gate=9
+[14:21:38] gate=9
+[14:22:38] gate=10
+[14:22:38]   heartbeat
+[14:23:38] gate=12
+[14:24:38] gate=12
+[14:25:38] gate=12
+[14:26:38] gate=12
+[14:26:38]   heartbeat
+[14:27:38] gate=12
+[14:28:38] gate=10
+[14:29:38] gate=10
+[14:30:38] gate=11
+[14:30:38]   heartbeat
+[14:31:38] gate=11
+[14:32:38] gate=12
+[14:33:38] gate=11
+[14:34:38] gate=11
+[14:34:39]   heartbeat
+[14:35:39] gate=11
+[14:36:39] gate=10
+[14:37:39] gate=10
+[14:38:39] gate=10
+[14:38:39]   heartbeat
+[14:39:39] gate=10
+[14:40:39] gate=8
+[14:41:39] gate=11
+[14:42:39] gate=12
+[14:42:39]   heartbeat
+[14:43:39] gate=9
+[14:44:39] gate=9
+[14:45:39] gate=7
+[14:45:39] gate drained (7)
+[14:45:39] dispatching probe (gate 7)
+[14:46:40]   probe exit=1
+[14:46:40]   probe NO VERDICT (rc=1) - one wall-extension retry permitted
+[14:46:40] probe produced no transcript - one re-probe after sleep 300 (driver law)
+[14:51:40] gate=4
+[14:51:40] gate drained (4)
+[14:51:40] dispatching probe2 (gate 4)
+[14:52:42]   probe2 exit=1
+[14:52:42]   probe2 NO VERDICT (rc=1) - one wall-extension retry permitted
+[14:52:42] gate=6
+[14:52:42] gate drained (6)
+[14:52:42] dispatching judgeA (gate 6)
+[14:53:43]   judgeA exit=1
+[14:53:43]   judgeA NO VERDICT (rc=1) - one wall-extension retry permitted
+[14:53:43] gate=6
+[14:53:43] gate drained (6)
+[14:53:43] WALLEXT-OK: only timeout 600->1200 - payload byte-identical
+[14:53:43] retry judgeA with --timeout 1200 (gate 6)
+[15:22:03]   judgeA retry still no verdict (rc=124)
+[15:22:03] === judgeA outcome rc=2 ===
+[15:22:03] DONE
+```

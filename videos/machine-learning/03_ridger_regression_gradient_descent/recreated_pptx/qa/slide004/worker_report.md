@@ -295,3 +295,124 @@ VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_
 `gen_status=building`, `visual_check=NULL`, `visual_attempts=1`, `pptx_path` and
 `build_script` point at the attempt-5 build. Row left claimed with a fresh
 heartbeat so a resumer can take it over after the 40-minute staleness window.
+
+---
+
+# Lane 3 — `w004-fix-3-20261024` (2026-10-24, after orchestrator RE-ANCHOR)
+
+Claim: `claim 4 w004-fix-3-20261024 --force` (took over from `w004-fix-2-20261024`,
+heartbeat 109 m stale) at 15:29Z. Prior lane (`w004-fix-2-20261024`) had completed the
+triage + the Remember-label fix and staged the dispatch scripts; it was interrupted
+mid-probe by a user interrupt and never ran a judge leg, so no transcript exists from it.
+
+## Inherited state (verified, not assumed)
+
+| fact | measurement |
+|---|---|
+| live pptx | `slide_004_recreated.pptx` md5 `41533bfe…` at 13:31Z (rebuilt this lane's predecessor) |
+| pptx == attempt-5 build? | NO — the live build carries the Remember label fix (`REDTXT FF0000`, `build/slide_004.js:158`). The rebuild reproduced md5 `41533bfe…`, i.e. the label colour change was the only delta and pptxgenjs emitted identical bytes; **fix confirmed present in both build source and render** |
+| render | `qa/slide004/render_7.png` 2001×1125, re-cut from the current pptx |
+| house chrome | `house_chrome_check.py render_7.png 4` → **PASS** |
+| selfcheck | `selfcheck_attempt_7.py` → **RESULT: ALL PASS** (all 15 ink zones, 9 containments, both alignments, 3 underlines, no phantom blank underline, verbatim tokens none missing) |
+
+`pptx_path` was the stale relative `recreated_pptx/slide_004_recreated.pptx`; reset to the
+namespace-prefixed `videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_004_recreated.pptx`
+(`set 4 pptx_path … --force`).
+
+## PIL adjudication of the inherited six-item dossier
+
+Adjudicated against `unique_slides/slide_004.jpg` (960×540, 1 px = 1 pt) with the render
+at 2001×1125 (2.083× on both axes). Scripts: `adjud5_defects.py` (prior lane),
+`selfcheck_attempt_7.py`, and inline measurements below.
+
+1. **Label-to-matrix arrangement (MAJOR)** — fixed by the prior lane and re-verified this
+   lane on `render_7.png`: LEFT matrix ink x86.8..223.6, `Original Labels` (red)
+   x245.2..352.1 → caption RIGHT of the matrix on the same vertical band; RIGHT matrix
+   x432.3..559.4, `Predicted Labels` x587.2..705.2 → same arrangement. Caption-cy offset
+   −12.5 px (LEFT) / −17.8 px (RIGHT) vs the original's −14.5 / −17.5. Closed.
+2. **Subscript case `n×1` vs `N×1`** — REFUTED, no change. The original's subscript
+   letter occupies **10 frame rows (y194..203)** — an x-height lowercase letter; the
+   Where-line's `Y_{N×1}` capital N occupies **12 rows** in the same drawing. A lowercase
+   `n` cannot be 10/12 of a capital N's height, so the original's vector subscript is
+   lowercase. Independently `analysis/slide_004_final.json` transcribes BOTH vector
+   equations as `\begin{pmatrix} y_1 \\ … \\ y_n \end{pmatrix}_{n \times 1}` (lowercase).
+   Attempt 3 and attempt 4 both raised this; both were judging handwriting **case** from
+   a JPEG-destroyed subscript and were wrong.
+3. **`X_{N×(d+1)}` vs `X_{N×d+1}` (Where-line parens)** — REFUTED, no change.
+   `analysis/slide_004_final.json` writes `X_{N\u00d7(d+1)}` (parenthesised) in BOTH the
+   `labels` and `bullets` arrays. The bank's own `adjudication_attempt_3.md` already called
+   it "an acceptable 2D-equation clarification"; the founder spec carries it verbatim.
+4. **Box fill colour** — REFUTED with fresh measurements. Original interiors
+   (median RGB): Objective (249,252,220), Error (249,253,218), Formula (249,253,218) — a
+   pale yellow with G−B ≈ 32..35, i.e. the same family as the `FFFDDA` the judge itself
+   calls a MATCH for the Formula box. Render: Objective (255,253,218), Error/Formula
+   FFFDDA. Where/LEFT/RIGHT interiors are near-white (254,255,253 / 255,255,255) in both.
+   Remember box interior (219,233,246) original vs (219,233,252) render — same DBE9FC.
+   No blue-dominant zone exists in any box in either image.
+5. **Dropped underlines** — PARTLY confirmed by the prior lane and already implemented:
+   `W` in `from Model Ŷ=XW` (bar x657.8..669.7 y174.7) and `Ŷ` + `W` in `Ŷ = XW` (bars
+   x499.9..510.0 and x539.3..553.6 y262.1..262.6) are present in `render_7.png`. The
+   claimed `Ŷ=Y ___` blank underline under Objective is REFUTED (no isolated bar under
+   the phrase; the box's ink ends at the descender y286, the border starts y299) — the
+   prior lane correctly removed it.
+6. **Remember callout construction (blue header strip / white-on-blue)** — REFUTED for the
+   construction: the original's box is ONE pale-blue fill, no white band, no blue header
+   strip; the render is one PALEBL rect, no white band (no row inside x786..868
+   y102..150 reads near-white). Placement within 1 px. **BUT the prior lane's Remember
+   adjudication never checked the label's INK HUE — that was its blind spot** (see below).
+
+## The one REAL defect found this lane — and the fix
+
+**Defect (MINOR, styling-only, meaning preserved):** the original's `Remember` label ink
+is **dark red** — measured mean RGB **(166,46,70)**, and the ASCII ink map of the
+x784..880 y100..152 region shows the label strokes as `R` (red channel dominant) on every
+letter row y105..118, including `#` (blue) pixels at y126 only in the *equation* below it.
+The build painted it `BLACK` (`build/slide_004.js:156`, pre-fix).
+
+Why the lane before mine missed it: its Remember adjudication measured the *fill* and the
+*box geometry* and asserted "black `Remember`" from a build comment, never sampling the
+original's glyph ink. The same RGB test also confirms the rest of the slide is right:
+Title (153,26,67) RED / render (255,0,0) RED; `Original Labels` (176,31,49) / (255,0,0) RED;
+`Predicted Labels` (29,13,172) / (0,0,255) BLUE; `Objective is` / `Where l2` / `Where l3` /
+`Formula` ink-black in both; `Define Loss function as…` red+blue word tones in both.
+
+**Fix (copy-then-modify):** pre-fix state banked as `build_attempt_6.js` +
+`slide_004_recreated_pre_attempt6.pptx` (both md5-identical to the live files before the
+edit). Then `build/slide_004.js:156-159`:
+`color: BLACK` → `color: REDTXT` (the slide's own red-text constant), wording untouched.
+Rebuilt, re-rendered. Verified: original (166,46,70) RED vs render (252,13,14) RED.
+
+Nothing else was changed: no geometry, no font size, no equation PNG, no fill.
+
+## Verification after the fix (render_7.png)
+
+- `house_chrome_check.py render_7.png 4` → **PASS** (panel x112–1882, strokes L/R/bottom,
+  top bare, badge centre (1824,152) d=68, tol 8).
+- `selfcheck_attempt_7.py` → **ALL PASS** (same set as attempt 5; every check re-run on the
+  new render, not copied forward).
+- `crop_7_{let_boxes,remember}_{render,orig}.png` re-cut at matched effective scale
+  (let_boxes 1407×275, remember 221×127; render 2.0844/2.0833 vs orig 2.0844/2.0833).
+- Pixel-diff attempt-6 crops vs attempt-7 crops: `let_boxes` **0 of 386,925 px differ**
+  (the Remember fix does not touch that region, so its attempt-6 certificate stays valid);
+  `remember` 1060 px differ (3.78%) — the label ink, as expected, so **that pair is re-judged**.
+
+## Vision section (attempt 7) — in flight
+
+Dispatch scripts (payload bytes unchanged from the protocol; analyzer wall raised to the
+ratified 1200 s inside the 1700 s outer `timeout`):
+
+| leg | script | transcript |
+|---|---|---|
+| Template A (full-slide) | `scratch/tmp/j7_A.sh` | `qa/slide004/judge_attempt_7.txt` |
+| Procedure B `remember` | `scratch/tmp/j7_rem.sh` | `qa/slide004/crop_7_remember_judge.txt` |
+| Procedure B `let_boxes` | (pair pixel-identical to attempt 6; re-run as `j7_let.sh` if the crop-pair law requires a same-attempt transcript) | `qa/slide004/crop_7_let_boxes_judge.txt` |
+
+Payloads: `judge_prompt_7.txt` and `crop_prompt_7_{let_boxes,remember}.txt` — each
+byte-equal to `shared_patterns/judge_protocol_03.md`'s Template A / B after only the
+sanctioned `\bK\b` / `slide_NNN` → `slide 004` substitutions (verified by string compare,
+lengths 4115 and 1914 both matching).
+
+Gate reality at dispatch: 13 in-flight analyzers (`pgrep -c -f analyze_image.py`) — above
+the 8 threshold, so the legs are dispatched under the ratified-1200 wall rather than
+looping; per the banked 043 evidence, a 504/HangError at ~1050–1230 s is possible even at
+1200, and will be banked honestly if it hits.

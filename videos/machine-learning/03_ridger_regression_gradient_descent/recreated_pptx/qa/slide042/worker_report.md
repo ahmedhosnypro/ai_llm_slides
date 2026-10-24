@@ -88,3 +88,225 @@ occurrences.
 Crop pairs are cut from slide-space regions with 8px padding; the original crop is
 LANCZOS-upscaled to the render's pixel dimensions so both sides have identical
 effective scale (see the Procedure B law in `shared_patterns/judge_protocol_03.md`).
+
+---
+
+# SECTION 2 — 2026-10-24, worker `w042-finish-20261024` (resume + adjudication + fixes + PARKED on gateway)
+
+## Resume history (timeout-resume)
+
+- Took over a **stale claim** (`worker-fresh-042-final`, heartbeat 259 min stale) with
+  `claim 42 w042-finish-20261024 --force`; row read `gen_status=building`,
+  `visual_attempts=0`, pptx_path + build_script already set.
+- Triage: the bank held 12 build attempts (`build_attempt_3..11.js`), renders 1..12,
+  `judge_attempt_10.txt` (a real FAIL), crop-10 pairs, calibrate/selfcheck files.
+- **Currency verified by reproduction, not assumption:**
+  - `build/slide_042.js` rebuilt in-place → pptx XML content **byte-identical** to the
+    banked `slide_042_recreated.pptx` (only `docProps/core.xml` timestamps differ), so the
+    banked pptx was current.
+  - Fresh LibreOffice render (soffice → PDF → `pdftoppm -r 150`) of that pptx →
+    **md5-identical** to the banked `render_12.png` (`e82df095…`). Render current too.
+  - `analysis/slide_042_final.json` `_meta._reconcile_md5_snapshot` == the original JPEG's
+    md5 → ground truth unchanged.
+- The banked `render_12.png` was therefore reused as the adjudication baseline (banked as
+  `render_13.png` after a byte-identical re-render) and the lane continued from attempt 12.
+- **No certified perceptron-family component existed to import.** `build/components/`
+  holds 009/012/013/017/020/022/027/035 — none is a perceptron-family member, and every
+  sibling in the family (041/043/044/045) is still `building`/uncertified, so the cascade
+  law ("children import only *certified* components") barred importing from them. The
+  slide's own monolith build was the correct path.
+
+## Banked verdict being adjudicated
+
+`qa/slide042/judge_attempt_10.txt` — **FINAL VERDICT: FAIL**, confidence ~0.7, rendered on
+`render_10.png` (attempt 10's build). Note attempt 11 had already replaced the per-box
+line B, which is the substance of items 1–2, so those two items are adjudicated against
+the **current** build.
+
+## Item-by-item adjudication (measured against BOTH images, 960×540, 1px = 1pt)
+
+Full measurements and scripts: `adjudication_16.md`, `scratch/tmp/042*.py`.
+
+### Independent PIL defects found first (not raised by the judge) — FIXED, both real
+
+| defect | measurement | fix |
+|---|---|---|
+| box1 W equation crosses its box border | image top y258, h 14.4 → ink y258..272; box1 bottom border y263. Render ink in the y264..272 inter-box gap = **750 dark px** (per-row 130/129/96/139/88/77 for y264..269) where the **frame has 0**. | `BAND_B[0]` 258 → 247 |
+| box4 W equation sits ABOVE its `d(x4)` line | `BAND_B[3]=420 < BAND_A[3]=434`; the W4 image (y420..434) overlapped `= 6` (x610..642) and inverted the frame's order (frame: d-line y426..437 **above** W-line y444..452); render y420..443 was one merged band vs the frame's two separated bands. | `BAND_B[3]` 420 → 442, `BAND_A[3]` 434 → 427 |
+
+Root cause: attempt 11 calibrated the bands from the frame then applied one blanket "+8"
+shift measured for **text** boxes; line B is an **image** (ink at image top), while
+LibreOffice puts a h=14 text box's ink ~2 px **below** its box top. Every derived band is
+now checked against its box interior (219..262 / 274..327 / 342..393 / 408..458 / 474..526).
+Also matrix row pitch 11 → 7 px (the frame's per-box 2-row matrix fits a 12–13 px line).
+
+### Item 1 — per-step weight-result equations "omitted" (MAJOR conf 0.6)
+**REFUTED for the current build.** The judge's own downgrade condition is met: attempt 11
+gives each box its **own distinct** mathtext PNG — `eq_042_w1.png`
+(W=(4;−2)+2·(1;1)=(6;0)), `w2`/`w3` (W=(6;0)), `w4` (W=(6;0)−2·(1;5)=(4;−10)), `w5`
+(W=(4;−10)) — via the mandated pipeline (matplotlib mathtext → 600 dpi transparent PNG →
+addImage at px/600 + `assets/eq_index_042.json` sidecar). All five distinct, one per box,
+in the line-B band. **Partial substance, real and carried as an open item:** on the frame
+the W result is *not* a wide horizontal equation where the build draws it — the frame's
+box1 line-B region x395..704 y250..258 is **100% ink-free** (darkest px lum 735–760 ≈ pure
+white; per-10px-column scan darkest = 760 throughout x395..704). The only frame ink in that
+band is a green ⇐ at x384..393 (RGB 130,157,124, green excess +39) and a narrow dark paren
+pair at x713..729 spanning the whole box height. The judge's own wording ("at the **right**
+of every iteration row") agrees with the frame. The five equations are kept (the analysis
+JSON's `verbatim_text.equations` mandates them) but are now placed inside their boxes.
+
+### Item 2 — garbled/merged step equations (MAJOR conf 0.7)
+**REFUTED for the current build.** Attempt 10 stacked 2×1 tiles (that is what read as
+"cluttered stray stacked numerals" and "W× 4/−2 + … = −6 0"). Attempt 11's single
+horizontal mathtext PNG per row removes the stacking; measured render line-B ink is one
+clean 14 px band per box with no merged stray tokens.
+
+### Item 3 — Z / "Check classes of" layout (POSSIBLE MAJOR conf 0.4)
+**The judge's arrangement reading is REFUTED; two real frame mismatches found instead and FIXED.**
+- The frame is caption → header → two digit rows (the analysis's structure); frame ink
+  row-runs x490..670: (55,56) box border, (64,76) caption+header, (79,121) digit rows — no
+  evidence of the 3×3 layout the judge could not reconcile.
+- **Real defect 1:** the build printed `Z1 Z2 Z3`. The frame prints `Z1` **three times** —
+  1 px ASCII of y60..78 shows three glyph groups at x595..610 / 616..631 / 638..653 with
+  identical x-masks and shapes. → fixed to `Z1 Z1 Z1`.
+- **Real defect 2:** the build drew those headers blue; the frame's header ink is dark
+  (darkest px RGB 31,33,11; 0 px pass a blue test). → fixed to black.
+
+### Item 4 — upgraded-vector delimiter / transposition (MINOR conf 0.7)
+**REFUTED.** The frame's premise (repeated blue x1..x6 headers, "(n)" cells) does not hold:
+the frame's LM data is **column-major with thin vertical strokes** — ink row-runs x76..240
+are (148,159) caption, (166,175), (184,191), (199,206), (215,222) four digit bands,
+(231,243) class row, i.e. the build's `LM_BANDS` order, with the paren span y166..222
+matching the build's measured `LM_PAREN_PAIRS`. No transpose fix.
+
+### Item 5 — missing repeated header row above the LM matrix (MINOR conf 0.6)
+**REFUTED with numbers.** No second header exists on the frame: blue ink in the candidate
+header zone y140..168 = 236 px (accounted for by the single blue
+"Upgraded Vectors (From Top)" caption, the only ink between caption and first digit band),
+vs 132 px in the matrix zone y168..230; the gap y160..166 carries **0** ink. Adding a
+header row would fabricate an element the frame lacks.
+
+### Item 6 — top grouping box "rounded, ~#FFF2CC" (MINOR conf 0.75)
+**REFUTED.** Fill: frame interior px are (254,255,234) / (255,247,224) / (254,255,232) —
+the frame's cream is **FEFFE9 ≈ FEFFE8**, not #FFF2CC and not white; the build already
+uses `CREAM = FEFFE8` and the judge's "IMG1 rectangular white box" is wrong. Rounded: the
+frame's extreme corner px (69,58) is dark border ink (RGB 33,24,103) — a rounded container
+would leave that corner empty, so the frame's box is **rectangular**, matching the build.
+Border: frame RGB (34,27,107)/(162,156,230) — blue, matching the build's 0000FF 1 pt.
+
+### Visual note — "Keep same Weight" wraps to two lines
+**REAL, FIXED.** Frame action ink for row2 is x688..727 in **one** line; the pre-fix render
+split rows 2/3/5 into two row-bands (row2 y285..298 + y304..318) because the 130 px box was
+too narrow for 16 pt. Action box widened 130 → 148 px; each action now renders as one band
+(row2 294..308, row3 360..374, row5 492..506).
+
+### Extra frame-measured deviation found while adjudicating item 3 — FIXED (attempt 17)
+The TL table's `x1..x6` header is **black** on the frame but the build drew it **blue**.
+Channel-order test (unambiguous, and blue *is* detectable in this JPEG): the header's 12
+darkest px (y64..73, x86..216) all carry **b − r = −19..−20** (blue is the *lowest*
+channel) and 0 px pass `b>r+25 & b>120`, while the known-blue LM caption's darkest px carry
+**b − r = +45..+77**. Same signature as the check-classes header already fixed. The red/blue
+C1/C2 class row was measured separately and left alone (red 422 px, blue 502 px preserved).
+
+## What changed (build attempts, all single plain-named deliverable)
+
+- `build_attempt_16.js` (md5 `976b3d64…`): band re-derivation (`BAND_A`/`BAND_B`), matrix
+  row pitch 7, `Z1 Z1 Z1` headers in black, action box 148 px.
+- `build_attempt_17.js` (md5 `6fe3d19b…`, identical to the live
+  `build/slide_042.js`): + TL `x1..x6` header black.
+- Deliverable rewritten by the build into the single plain-named
+  `recreated_pptx/slide_042_recreated.pptx`; renders `render_14..17.png` banked.
+
+## Verification of the fixed build (`render_17.png`, 2001×1125 @150 dpi)
+
+- `shared_patterns/house_chrome_check.py render_17.png 42` → **PASS**
+- Inter-box gap ink (x276..853): **0 / 0 / 0 / 0** for y264..271, y330..337, y396..403,
+  y462..469 — the frame keeps these ink-free and the pre-fix build spilled 750 px into gap 1.
+- Per-box ink contained and in frame order: 231..259, 294..322, 360..388, 426..454, 492..520
+  (all inside their boxes 219..262 / 274..327 / 342..393 / 408..458 / 474..526).
+- TL header black (0 blue px); check-classes `Z1` headers black (0 blue px); LM caption
+  still blue (2581 px); C1 red / C2 blue preserved.
+
+## Vision legs — NOT certified (gateway wedge, no verdict produced)
+
+| event | transcript | outcome |
+|---|---|---|
+| attempt 16 dispatch, Template A | — | my dispatch script had a path typo (`slide042.jpg` vs `slide_042.jpg`); the analyzer exited on "not a file" **before any model call**, so 0 model calls were made and no attempt was consumed. Evidence: `legA_16_abort_504.log`. Script corrected + re-verified. |
+| attempt 17 dispatch, Template A | — | **HTTP 504 `upstream_timeout`**, ironrouter candidate `nva…hWGS` provider `Nvidia`; "0/1 result(s) analyzed"; no FINAL VERDICT. `legA_17_abort_504.log`. |
+| protocol probe (Template A's prescribed window-opener, `analysis`, `--timeout 120`, tiny prompt) | — | **identical HTTP 504** from the same Nvidia candidate at gate count 7. |
+
+**Wall attribution (banked):** the failure is upstream-provider-level, not queue depth — the
+attempt-17 dispatch ran at gate count **7** (below the 8-slot law) and the tiny probe still
+died, with no 630 s/1200 s client wall involved (both returned in ~60 s). Fleet trend
+`gate_trend_20261024.log`: 44→41→39→38→33→28→25→21→23→20→20 true analyzers between
+13:06 and 13:25 UTC, with the oldest process aged 1271–1673 s (past its own 1200 s wall),
+matching the documented fleet IMAGE-leg wedge; TEXT legs on the same router were healthy
+per the 043 lane's banked evidence.
+
+**Attempt accounting:** attempt 10 produced a real FAIL verdict on a superseded build;
+attempt 17 was dispatched on the current build and produced no verdict. No verdict exists
+for the current build → **NOT certified, no PASS fabricated.**
+
+### Payload integrity (audit finding from the bank)
+The prior lane's `judge_prompt_10.txt` and `crop_10_*_prompt.txt` contain "**BLOC10ER**"
+where the protocol template says "BLOCKER" — a naive `K`→`10` substitution corrupted the
+severity keyword. This lane's payloads are generated with **`\bK\b` word-boundary-only**
+substitution and byte-verified: `judge_prompt_17.txt` md5 `65de405e669cf6574e9465221fbec5f3`
+== protocol Template A line; all five `crop_17_*_prompt.txt` identical
+(md5 `4ce754a2f9515f1f5ac69be4ee0cf04e`) == protocol Template B with `NNN`→`042` only.
+"BLOCKER" intact in all 6 payloads; no `BLOC\d+ER` anywhere in this lane's outputs.
+
+## Banked artifacts (this lane, all under `qa/slide042/`)
+
+`render_14.png`, `render_15.png`, `render_16.png`, `render_17.png`,
+`build_attempt_12_pre_bandfix.js`, `build_attempt_16.js`, `build_attempt_17.js`,
+`judge_prompt_17.txt`, `crop_17_{stack,tl_table,lm_table,topright,legend}_{render,orig,prompt}.png/.txt`,
+`dispatch_A17.sh`, `dispatch_B17.sh`, `adjudication_16.md`,
+`gate_trend_20261024.log`, `legA_16_abort_504.log`, `legA_17_abort_504.log`.
+Measurement scripts: `scratch/tmp/042measure.py`, `042bands.py`, `042origbands.py`,
+`042boxbands.py`, `042clean.py`, `042adjudicate.py`, `042maps.py`, `042cc.py`,
+`042crops17.py`, `042payloads17.py`.
+
+## PARK STATE — verdicts outstanding, exact resume commands
+
+Row 42 is parked **`gen_status=building`, `visual_check=FAIL` (no vision evidence for the
+current build), `visual_attempts=2`** (attempt 10 FAIL on a superseded build; attempt 17
+dispatched and aborted with no verdict), `worker_id=""` after release. Build side is
+**complete and verified** — only the two judge legs are missing.
+
+Resume (the Nvidia `images` upstream must be returning 200s first):
+
+```bash
+cd "/worksp""aces/codespaces-blank/ai_llm_slides"     # mandatory split path
+export VIDEO=machine-learning/03_ridger_regression_gradient_descent
+
+# 0) gate check — dispatch only when pgrep -f "python3 .*analyze_image.py" | wc -l  < 8
+# 1) LEG A — full-slide comparison judge (Template A), payload already byte-verified
+./videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide042/dispatch_A17.sh
+# 2) LEG B — Procedure B crop pairs (stack/tl_table/lm_table/topright/legend), matched scale
+./videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide042/dispatch_B17.sh
+```
+
+Both scripts carry the mandated walls (`--timeout 1200` inside `timeout 1700`,
+`--thinking high --max-tokens 65536`, `--rounds 1 --tries 1`), the byte-verified payloads,
+and the ≥8 gate back-off. Expected outputs:
+`qa/slide042/judge_attempt_17.txt` and `qa/slide042/crop_17_<name>_judge.txt`.
+
+If both legs return `FINAL VERDICT: PASS` (or every finding is PIL-refuted with a banked
+number from `adjudication_16.md`):
+
+```bash
+python3 scripts/15_progress.py set 42 pptx_path videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_042_recreated.pptx
+python3 scripts/15_progress.py set 42 build_script videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/build/slide_042.js
+python3 scripts/15_progress.py set 42 visual_check PASS
+python3 scripts/15_progress.py set 42 visual_transcript videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide042/judge_attempt_17.txt
+python3 scripts/15_progress.py set 42 visual_attempts 3
+python3 scripts/15_progress.py set 42 gen_status passed
+python3 scripts/15_progress.py heartbeat 42 <worker-id>
+python3 scripts/15_progress.py release 42 <worker-id>
+python3 scripts/15_progress.py get 42     # must read gen_status=passed AND visual_check=PASS AND worker_id=""
+```
+
+If either leg FAILs: adjudicate PIL-first against `adjudication_16.md`, fix the build
+(copy-then-modify, single plain-named deliverable), re-render, re-cut crops, re-dispatch
+both legs — up to 6 attempts total.

@@ -189,3 +189,27 @@ done
 "Procedure B" table above) — re-derive it with `extract_prompts_r2.py` if editing the protocol.
 Do NOT re-cut crops, do NOT re-render, do NOT rebuild: `render_1.png` is md5-identical to a
 fresh LO render of the shipped pptx (`render_verify_045.txt`).
+
+---
+
+# worker-fresh-045-legs3 — 2026-10-24 11:41–15:35 UTC — PARKED (fleet image lane down)
+
+**Full detail + resume recipe: `worker_report_legs_on.md`, SECTION 2.**
+
+- Zero verdicts. No rebuild / re-render / crop re-cut / payload edit was needed or done.
+- Bank re-verified fresh and green: render_1.png == a fresh LO render of the shipped pptx
+  (md5 c41a7a11c8f8976bbfc31cadef99c0b1, 3-way); build md5 9ca5e8eb04cbd3ccd3442888104f63d8;
+  house_chrome_check PASS (top stroke correctly bare); all six `_r2` crop files reproduce
+  byte-identically at matched effective scale; all four payloads byte-identical to a fresh
+  re-derivation from `shared_patterns/judge_protocol_03.md`.
+- Gateway image lane measured DOWN: 2 protocol probes + a full Template A dispatch + the
+  ONE sanctioned hard-wall retry, every one failing with `HangError` (1230s wall) and/or
+  `HTTP 504 upstream_timeout` on the Nvidia candidate. Raw logs:
+  `gate_logs/gate_legs_attempt2.log`, `gate_logs/gate_legs_attempt3.log`; dispatch scripts
+  `045legs_templateA.sh` / `045legs_templateA_retry.sh`.
+- Adjudication numbers re-measured against BOTH images (`adjudicate_all_legs.out`): top band
+  red px = 0 in both images (no-top-stroke refutation holds); badge d~32.6 render vs
+  d~32.5 original, both centered (876,73) — not a defect.
+- DB: gen_status building, visual_check null, visual_attempts 0, worker_id
+  worker-fresh-045-legs3, last_error = honest blocker summary. Row parked with a live
+  resume recipe (see SECTION 2 of worker_report_legs_on.md).
