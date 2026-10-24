@@ -92,11 +92,11 @@ drawHouseChrome(pres, slide, { numeral: "30" });
 
 // ---------------------------------------------------------------- 1. TITLE
 slide.addText([
-  { text: "Convex Function,  ", options: { fontSize: 22, bold: true, color: COL.titleRed, fontFace: FONT } },
-  { text: "Learning Rate =0.2,  ", options: { fontSize: 22, bold: true, color: COL.titleGreen, fontFace: FONT } },
-  { text: "Start at X=3", options: { fontSize: 22, bold: true, color: COL.titleRed, fontFace: FONT } },
+  { text: "Convex Function,  ", options: { fontSize: 20, bold: true, color: COL.titleRed, fontFace: FONT } },
+  { text: "Learning Rate =0.2,  ", options: { fontSize: 20, bold: true, color: COL.titleGreen, fontFace: FONT } },
+  { text: "Start at X=3", options: { fontSize: 20, bold: true, color: COL.titleRed, fontFace: FONT } },
 ], {
-  x: px(57), y: px(62), w: px(515), h: px(30),
+  x: px(57), y: px(62), w: px(543), h: px(30),
   margin: 0, align: "left", valign: "middle",
 });
 
@@ -113,7 +113,7 @@ slide.addTable(
     options: {
       fontSize: 12, bold: true, color: COL.bodyBlack, fontFace: FONT,
       fill: { color: [COL.paramRow1, COL.paramRow2, COL.paramRow3][ri] },
-      margin: [1, 3, 1, 3], align: "center", valign: "middle",
+      margin: [0.014, 0.04, 0.014, 0.04], align: "center", valign: "middle",
       border: { pt: 0.75, color: "808080" },
     },
   }))),
@@ -168,9 +168,9 @@ slide.addShape(ST.rect, {
   });
 }
 slide.addText([
-  { text: "f(x)", options: { fontSize: 15, italic: true, color: COL.bodyBlack, fontFace: FONT } },
-  { text: " Minimum value is ", options: { fontSize: 15, color: COL.bodyBlack, fontFace: FONT } },
-  { text: "1.0", options: { fontSize: 16, bold: true, color: COL.formulaBlue, fontFace: FONT } },
+  { text: "f(x)", options: { fontSize: 16, italic: true, color: COL.bodyBlack, fontFace: FONT } },
+  { text: " Minimum value is ", options: { fontSize: 16, color: COL.bodyBlack, fontFace: FONT } },
+  { text: "1.0", options: { fontSize: 17, bold: true, color: COL.formulaBlue, fontFace: FONT } },
 ], {
   x: px(352), y: px(258), w: px(200), h: px(20),
   align: "center", valign: "middle", margin: 0,
@@ -185,7 +185,7 @@ slide.addShape(ST.rect, {
 });
 slide.addText("Reach Minimum after 11 Steps", {
   x: px(335), y: px(292), w: px(234), h: px(28),
-  fontSize: 14, bold: true, italic: true, color: COL.calloutPurple, fontFace: FONT,
+  fontSize: 13, bold: true, italic: true, color: COL.calloutPurple, fontFace: FONT,
   align: "center", valign: "middle", margin: 0,
 });
 
@@ -385,7 +385,7 @@ iterGroups.forEach((grp) => {
           color: isRed ? COL.titleRed : COL.bodyBlack,
           fontFace: FONT,
           fill: { color: grp.fill },
-          margin: [0, 2, 0, 2],
+          margin: [0.006, 0.028, 0.006, 0.028],
           align: "center", valign: "middle",
           border: { pt: 1, color: grp.border },
         },
