@@ -1,18 +1,28 @@
 #!/usr/bin/env python3
 """Generate slide 017's three W-box interiors as 600-dpi transparent PNGs.
 
-Slide 017 ("Adding Ridge Regularizer to the model λ=3") inherits slide 013's
-certified math-image MECHANISM (matplotlib mathtext, STIX serif, exact px/600
-placement) — the images carry 017's own measured content, never 013's.
+Region per band = the W box's interior in frame px (960x540, 1px = 1pt):
+  origin (507, 128/266/404), size 115 x 123 px  (parent 013's certified W-box
+  origin/size; re-measured on 017's frame: border centreline x507..622,
+  y127..251 / 265..389 / 403..527).
 
-Every number below is PIL-measured from unique_slides/slide_017.jpg (960x540,
-1px=1pt); see recreated_pptx/qa/slide017/MEASUREMENTS.md.
+Contents (all measured from unique_slides/slide_017.jpg; numbers banked in
+qa/slide017/measure_017.txt):
+  * red italic serif "W" with a red underline bar
+  * black "=" (two bars)
+  * thin black parentheses spanning the three stacked values
+  * the three vector values, black serif (0.1/1.95/0.03 | 1.2/0.72/0.77 |
+    1.77/0.32/0.99) at the frame's measured baselines
+  * the blue ||W||^2 = <value> line (3.8 | 2.45 | 4.2) with a blue underline
+    under the W, typeset as measured glyph-group positions
+  Unlike slide 013 there is NO pale-yellow ellipse on 017 (PIL: 0 pale-yellow px
+  inside the three boxes).
 
-Measured differences vs 013 (the parent):
-  - NO pale-yellow ||W||^2 ellipse: 017 prints the norm line as plain BLUE ink
-    on the white cell (PIL: 0 pale-yellow px in any box interior; 013 has 2176).
-  - The norm line is BLUE (frame median (23,12,132)); 013's was olive.
-  - The bracket pair hugs the value stack: left paren ~x560, right ~x607.
+matplotlib mathtext (STIX = Times-like) is the deck's certified mechanism for
+math; images are placed at exact px/600 inches, never rescaled. The 013 parent
+supplied the mechanism only — every coordinate/value here is 017's own.
+Closed-loop: font sizes were tuned so each digit line's ink height lands within
+1px of the frame (see qa/slide017/wbox17_compare.txt).
 """
 import json
 import os
@@ -27,46 +37,40 @@ rcParams["mathtext.fontset"] = "stix"
 rcParams["font.family"] = "Liberation Serif"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUTDIR = os.path.join(HERE, "..", "assets")
-os.makedirs(OUTDIR, exist_ok=True)
 W_PX, H_PX = 115, 123
 ORIGIN_X = 507
 RED = "#C00000"
 BLACK = "#000000"
-BLUE = "#0000A7"  # 013's measured blue ink
+BLUE = "#0000A7"
 
-# per band: y0 = image origin y (frame px); every other value is absolute frame px
+# per band: y0 = interior origin y; every item coordinate is ABSOLUTE frame px
 BANDS = [
-    dict(
-        y0=127,
-        w_cx=530.0, w_base=179.0,                 # W glyph centre + baseline
-        eq=(544, 556, 168, 174),                  # "=" two black bars (x0,x1,ytop,ybot)
-        lparen=(562, 559.5, 136, 215),            # (tip, body, ytop, ybot)
-        rparen=(607, 610.0, 136, 215),
-        digits=[("0.1", 156, 583.0), ("1.95", 180, 583.0), ("0.03", 206, 583.0)],
-        norm_y=241.0, norm="3.8",
-    ),
-    dict(
-        y0=265,
-        w_cx=535.5, w_base=317.0,
-        eq=(550, 562, 305, 311),
-        lparen=(560, 557.5, 274, 350),
-        rparen=610,  # placeholder, set below
-        digits=[("1.2", 293, 588.0), ("0.72", 319, 588.0), ("0.77", 344, 588.0)],
-        norm_y=380.5, norm="2.45",
-    ),
-    dict(
-        y0=403,
-        w_cx=530.0, w_base=455.0,
-        eq=(544, 556, 442, 449),
-        lparen=(561, 558.5, 412, 487),
-        rparen=(617, 620.0, 412, 487),
-        digits=[("1.77", 431, 588.0), ("0.32", 456, 588.0), ("0.99", 482, 588.0)],
-        norm_y=518.5, norm="4.2",
-    ),
+    dict(y0=128,
+         w=dict(cx=530.0, base=172.4, under=(521.0, 538.5, 178.0)),
+         eq=dict(x0=543.0, x1=555.5, y1=168.6, y2=173.6),
+         parens=dict(ltip=557.5, lbody=560.2, rtip=606.5, rbody=603.8, yt=137.0, yb=211.5),
+         digits=[("0.1", 582.5, 156.0), ("1.95", 582.5, 180.5), ("0.03", 582.5, 206.0)],
+         norm=dict(bar1=524.0, w=530.0, bar2=551.0, eq=567.0, val=582.0,
+                   base=239.0, text="3.8", wunder=(530.0, 546.0))),
+    dict(y0=266,
+         w=dict(cx=535.5, base=310.5, under=(528.5, 543.5, 315.5)),
+         eq=dict(x0=549.0, x1=560.5, y1=306.5, y2=311.7),
+         parens=dict(ltip=561.0, lbody=563.7, rtip=611.0, rbody=608.3, yt=274.0, yb=350.0),
+         digits=[("1.2", 588.5, 293.0), ("0.72", 588.5, 318.5), ("0.77", 588.5, 344.0)],
+         norm=dict(bar1=521.5, w=531.0, bar2=551.0, eq=568.0, val=583.0,
+                   base=376.3, text="2.45", wunder=(531.0, 547.0))),
+    dict(y0=404,
+         w=dict(cx=530.5, base=449.0, under=(522.0, 539.0, 455.0)),
+         eq=dict(x0=544.0, x1=555.5, y1=444.5, y2=449.5),
+         parens=dict(ltip=557.5, lbody=560.2, rtip=606.5, rbody=603.8, yt=412.0, yb=487.0),
+         digits=[("1.77", 583.0, 431.0), ("0.32", 583.0, 456.0), ("0.99", 583.0, 482.0)],
+         norm=dict(bar1=521.5, w=530.0, bar2=551.0, eq=567.0, val=582.0,
+                   base=513.3, text="4.2", wunder=(530.0, 546.0))),
 ]
-# band 2's right paren measured separately (bow reversed: tip left, body right)
-BANDS[1]["rparen"] = (607.0, 610.0, 274, 350)
+
+DIGIT_FS = 20.0      # closed loop: STIX digit ink 13.5px == frame 13-14px
+W_FS = 19.5
+NORM_FS = 19.0
 
 sidecar = []
 for i, b in enumerate(BANDS, start=1):
@@ -74,42 +78,52 @@ for i, b in enumerate(BANDS, start=1):
     fig = plt.figure(figsize=(W_PX / 72.0, H_PX / 72.0), dpi=600)
     ax = fig.add_axes([0, 0, 1, 1])
     ax.set_xlim(ORIGIN_X, ORIGIN_X + W_PX)
-    ax.set_ylim(y0 + H_PX, y0)  # inverted y: frame coordinates
+    ax.set_ylim(y0 + H_PX, y0)          # inverted y: frame coordinates
     ax.axis("off")
     fig.patch.set_alpha(0)
 
-    # ---- ||W||^2 norm line: BLUE ink, NO ellipse (017's measured form) ----
-    ax.text((519 + 607) / 2.0, b["norm_y"], r"$\|W\|^2 = %s$" % b["norm"],
-            fontsize=20, color=BLUE, ha="center", va="baseline", zorder=2)
-
-    # ---- "W" italic math glyph, red, with the frame's red underline bar ----
-    ax.text(b["w_cx"], b["w_base"], r"$W$", fontsize=21, color=RED,
+    # ── "W" red italic + red underline ──────────────────────────────────────
+    W = b["w"]
+    ax.text(W["cx"], W["base"], r"$W$", fontsize=W_FS, color=RED,
             ha="center", va="baseline", zorder=3)
-    ax.plot([b["w_cx"] - 9.0, b["w_cx"] + 9.0],
-            [b["w_base"] + 1.6, b["w_base"] + 1.6], color=RED, lw=1.6, zorder=3)
+    ax.plot([W["under"][0], W["under"][1]], [W["under"][2], W["under"][2]],
+            color=RED, lw=1.6, zorder=3)
 
-    # ---- "=" two black bars ----
-    x0, x1, ytop, ybot = b["eq"]
-    for yy in (ytop, ybot):
-        ax.plot([x0, x1], [yy + 0.5, yy + 0.5], color=BLACK, lw=1.4, zorder=3)
+    # ── "=" two black bars ──────────────────────────────────────────────────
+    E = b["eq"]
+    for yy in (E["y1"], E["y2"]):
+        ax.plot([E["x0"], E["x1"]], [yy, yy], color=BLACK, lw=1.5, zorder=3)
 
-    # ---- parentheses as cubic Beziers (tip at the outer end, body bows in) ----
-    for tip, body, yt, yb in (b["lparen"], b["rparen"]):
-        verts = [(tip, yt), (body, yt + 20), (body, yb - 20), (tip, yb)]
+    # ── parentheses as cubic Beziers ────────────────────────────────────────
+    P = b["parens"]
+    for tip, body in ((P["ltip"], P["lbody"]), (P["rtip"], P["rbody"])):
+        verts = [(tip, P["yt"]), (body, P["yt"] + 18), (body, P["yb"] - 18), (tip, P["yb"])]
         codes = [Path.MOVETO, Path.CURVE4, Path.CURVE4, Path.CURVE4]
         ax.add_patch(PathPatch(Path(verts, codes), facecolor="none",
                                edgecolor=BLACK, lw=0.9, zorder=3))
 
-    # ---- stacked vector values (serif 22pt, baseline at the measured ink bottom)
-    for txt, base, cx in b["digits"]:
-        ax.text(cx, base, txt, fontsize=22, color=BLACK, ha="center",
-                va="baseline", zorder=3)
+    # ── stacked vector values ───────────────────────────────────────────────
+    for txt, cx, base in b["digits"]:
+        ax.text(cx, base, txt, fontsize=DIGIT_FS, color=BLACK,
+                ha="center", va="baseline", zorder=3)
 
-    name = "wbox017_band%d.png" % i
-    fig.savefig(os.path.join(OUTDIR, name), dpi=600, transparent=True)
+    # ── ||W||^2 = value (blue) as measured glyph groups ─────────────────────
+    # The frame's runs (PIL): || at bar1, W at w, ||^2 at bar2, = at eq,
+    # digits at val. Typesetting the same groups keeps the run positions while
+    # letting mathtext shape each glyph.
+    N = b["norm"]
+    for x, s in ((N["bar1"], r"$\|$"), (N["w"], r"$W$"), (N["bar2"], r"$\|^2$"),
+                 (N["eq"], r"$=$"), (N["val"], "$%s$" % N["text"])):
+        ax.text(x, N["base"], s, fontsize=NORM_FS, color=BLUE,
+                ha="left", va="baseline", zorder=3)
+    ax.plot([N["wunder"][0], N["wunder"][1]],
+            [N["base"] + 2.2, N["base"] + 2.2], color=BLUE, lw=1.3, zorder=3)
+
+    name = "wbox17_band%d.png" % i
+    fig.savefig(os.path.join(HERE, name), dpi=600, transparent=True)
     plt.close(fig)
     sidecar.append(dict(image=name, origin=(ORIGIN_X, y0), size_px=(W_PX, H_PX)))
 
-with open(os.path.join(OUTDIR, "wbox017_sidecar.json"), "w") as f:
+with open(os.path.join(HERE, "wbox17_sidecar.json"), "w") as f:
     json.dump(sidecar, f, indent=2)
 print(json.dumps(sidecar, indent=2))

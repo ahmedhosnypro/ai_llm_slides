@@ -337,9 +337,11 @@ slide.addText("d+1 × 1", {
   fontFace: A, fontSize: 11, bold: true, color: "FF0000",
 });
 
-// ---- ARROW (thin gray line, measured — the old tall chevron was wrong) -----
+// ---- ARROW: the original is a thin gray line (ink x531..533 spanning the
+// whole zone, x569..572 for the head) drawn from the bottom-left box to the
+// bottom-right box; measured at x532..572, head y402..407 ----------------
 slide.addShape(pptx.ShapeType.line, {
-  x: px(538), y: px(392), w: px(34), h: 0,
+  x: px(532), y: px(392), w: px(40), h: 0,
   line: { color: GRAY, width: 1.5, endArrowType: "triangle" },
 });
 

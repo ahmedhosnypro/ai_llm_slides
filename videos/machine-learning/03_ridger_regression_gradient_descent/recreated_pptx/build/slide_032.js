@@ -85,12 +85,12 @@ paramRows.forEach((row, i) => {
   // LO centres the line box a touch high: measured render_7 text sat 2.5px
   // above the frame's measured ink rows, so the text boxes are nudged down.
   slide.addText(row.label, {
-    x: px(PT.x0 + 1), y: px(PT.rows[i] + 2.5), w: px(PT.div - PT.x0 - 1), h: px(h * 72),
+    x: px(PT.x0 + 1), y: px(PT.rows[i] + 2.5), w: px(PT.div - PT.x0 - 1), h,
     align: "center", valign: "middle", fontSize: 14, bold: true,
     color: "000000", fontFace: A, margin: 0,
   });
   slide.addText(row.value, {
-    x: px(PT.div), y: px(PT.rows[i] + 2.5), w: px(PT.x1 - PT.div), h: px(h * 72),
+    x: px(PT.div), y: px(PT.rows[i] + 2.5), w: px(PT.x1 - PT.div), h,
     align: "center", valign: "middle", fontSize: 14,
     color: "000000", fontFace: A, margin: 0,
   });
@@ -198,7 +198,7 @@ gLabel("15", 790.5, 266, 24, 13, "center");
 // point labels
 gLabel("(2, 10)", 619, 149, 40, 14, "left");
 gLabel("(7, 7)", 724, 140, 30, 13, "left");
-gLabel("(5, 1)", 694, 246, 36, 14, "left");
+gLabel("(5, 1)", 694, 244, 36, 14, "left");
 // segment length labels above the chord (measured gray-blue family)
 slide.addText("3", { x: px(664), y: px(124), w: px(15), h: px(13), align: "center", valign: "middle", fontSize: 9, color: "99AABA", fontFace: A, margin: 0 });
 slide.addText("3", { x: px(697), y: px(124), w: px(15), h: px(13), align: "center", valign: "middle", fontSize: 9, color: "99AABA", fontFace: A, margin: 0 });
@@ -219,10 +219,10 @@ slide.addShape(ST.rect, {
 // line 1: "X = 5" — X bold italic, "= 5" bold upright, red (16pt)
 slide.addText(
   [
-    { text: "X", options: { fontSize: 16, bold: true, italic: true, color: "C00000", fontFace: A } },
-    { text: " = 5", options: { fontSize: 16, bold: true, color: "C00000", fontFace: A } },
+    { text: "X", options: { fontSize: 17, bold: true, italic: true, color: "C00000", fontFace: A } },
+    { text: " = 5", options: { fontSize: 17, bold: true, color: "C00000", fontFace: A } },
   ],
-  { x: px(339), y: px(236), w: px(120), h: px(16), align: "left", valign: "middle", margin: 0 }
+  { x: px(340), y: px(236), w: px(120), h: px(16), align: "left", valign: "middle", margin: 0 }
 );
 // line 2: "f(x) Minimum value is 1.0" (18.5pt; blue italic f(x), blue bold 1.0)
 slide.addText(
