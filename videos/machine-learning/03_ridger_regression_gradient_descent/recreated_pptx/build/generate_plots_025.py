@@ -18,14 +18,16 @@ BL x86..373 y293..524, BR x618..877 y347..528).
 Each PNG is 300dpi with figsize = box_px/72, placed on the slide at box_px/72
 inches, so 1 slide px = 1 PNG px: no rescale, no resampling ripple.
 
-Red reference lines in the original are pure HORIZONTAL strokes (measured:
-uniform 1-2px runs at constant frame y, x-extents below), i.e. 2-D figure-fraction
-overlays -- drawn here as figure-fraction Line2D artists so they land at the
-measured rows exactly.
+Red reference lines in the original are pure HORIZONTAL 2-D strokes (measured:
+uniform 1-2px runs at constant frame y, x-extents below). They extend PAST the
+figure image's own bounds (e.g. TL y186 reaches x281 while its image ends at
+x265), so they cannot be drawn as figure-fraction artists inside the PNG --
+they clip at the image edge. They are drawn as slide-level shapes in
+slide_025.js at these measured frame-px coordinates instead:
 
-  TL  y168 x121..267   y186 x110..279
-  TR  y222 x619..873   y234 x619..866
-  BL  y418 x124..381
+  TL  y168 x119..267   y186 x109..281
+  TR  y226 x633..875   y234 x644..867
+  BL  y418 x124..382
   BR  none
 
 BL annotations measured in the original (two-line text bands + leader strokes):
@@ -34,10 +36,11 @@ BL annotations measured in the original (two-line text bands + leader strokes):
   "Local Minima"   x301..326 y450..465
   "Global Minima"  x145..167 y439..470
 
-The 3-D cube is auto-fitted so surface + axis labels fill the small figure
-(the originals' content fills ~97% of their box); without the zoom the default
-margins leave the cube at ~25% of the box, which is what made attempt 1's
-surfaces read as "a small bowl floating in white".
+The 3-D cube is auto-fitted so the surface fills the small figure (the
+originals' jet surfaces span ~97-99% of their figure boxes, measured
+saturated-ink extents); without the zoom the default margins leave the cube at
+~25% of the box, which is what made attempt 1's surfaces read as "a small bowl
+floating in white".
 """
 import matplotlib
 matplotlib.use("Agg")
@@ -61,7 +64,7 @@ PLOTS = {
     "br": dict(x0=615, y0=344, w=265, h=187, elev=30, azim=-62),
 }
 
-FIT_TARGET = 0.93                # content fraction of the figure box
+FIT_TARGET = 0.95                # content fraction of the figure box
 FIT_ZOOMS = {"tl": 1.0, "tr": 1.0, "bl": 1.0, "br": 1.0}
 
 
@@ -84,71 +87,91 @@ def axis_style(ax):
 
 
 def surface_box(fig):
-    """Bounding box of the 3-D surface's own projection (saturated pixels).
+    """Bounding box of the 3-D surface's own projection (jet-chroma pixels).
 
-    Label ink is neutral gray/dark (low saturation), so this isolates the
-    plotted surface: the cube must be zoomed on ITS extent, otherwise the
-    tick/annotation labels span the figure height first and the surface is
-    left at a fraction of the box.
+    Measured against the original at the same chroma threshold (chroma > 45,
+    with the red C00000 strokes masked out): the original's surfaces occupy
+    only a central core of their white figures, surrounded by white margin.
     """
     fig.canvas.draw()
     buf = np.asarray(fig.canvas.buffer_rgba())
     rgb = buf[:, :, :3].astype(int)
     mx = rgb.max(axis=2); mn = rgb.min(axis=2)
-    surf = (mx - mn) > 22
+    surf = (mx - mn) > 45
     ys, xs = np.where(surf)
     if not len(xs):
         return None
     return xs.min(), xs.max(), ys.min(), ys.max(), buf.shape[1], buf.shape[0]
 
 
-def data_aspect(ax):
+def data_aspect(ax, xys=1.0, zscale=1.0):
     (x0, x1), (y0, y1), (z0, z1) = (ax.get_xlim(), ax.get_ylim(), ax.get_zlim())
-    return (max(x1 - x0, 1e-6), max(y1 - y0, 1e-6), max(z1 - z0, 1e-6))
+    xr, yr, zr = (max(x1 - x0, 1e-6), max(y1 - y0, 1e-6), max(z1 - z0, 1e-6))
+    return (xr * xys, yr * xys, zr * zscale)
 
 
-def fit_zoom(fig, ax, name, target=0.80, rounds=9):
-    """Zoom the 3-D cube until the surface's projection fills `target` of the
-    figure box (leaving the side/bottom margin the axis + annotation labels
-    occupy, as in the original)."""
-    z = FIT_ZOOMS.get(name, 1.0)
-    ax.set_box_aspect(data_aspect(ax), zoom=z)
-    for _ in range(rounds):
-        bb = surface_box(fig)
-        if bb is None:
-            break
-        x0, x1, y0, y1, W, H = bb
-        fx, fy = (x1 - x0 + 1) / W, (y1 - y0 + 1) / H
-        if abs(fx - target) < 0.02 and abs(fy - 0.80) < 0.03:
-            break
-        # grow the smaller axis toward the target, keep the other under it
-        need_x, need_y = target / max(fx, 1e-3), 0.80 / max(fy, 1e-3)
-        z2 = min(z * max(1.0, min(need_x, need_y)) * 1.03, 60.0)
-        if z2 <= z + 0.005:
-            break
-        z = z2
-        ax.set_box_aspect(data_aspect(ax), zoom=z)
+TARGETS = {"tl": (0.70, 0.54),   # jet-core fill of the white figure box
+           "tr": (0.62, 0.53),
+           "bl": (0.80, 0.51),
+           "br": (0.95, 0.70)}
+
+
+def fill_at(fig, ax, xys, zscale, zoom):
+    ax.set_box_aspect(data_aspect(ax, xys, zscale), zoom=zoom)
     bb = surface_box(fig)
-    FIT_ZOOMS[name] = z
-    if bb:
-        x0, x1, y0, y1, W, H = bb
-        print("  fit %-3s zoom=%.2f surface %.2fx%.2f of %dx%d"
-              % (name, z, (x1 - x0 + 1) / W, (y1 - y0 + 1) / H, W, H))
-    return z
+    if bb is None:
+        return None
+    x0, x1, y0, y1, W, H = bb
+    return (x1 - x0 + 1) / W, (y1 - y0 + 1) / H
 
 
-def hlines(fig, spec, slide_rows):
-    """Draw measured horizontal red reference lines.
+def max_zoom(fig, ax, xys, zscale, cap=1.0, rounds=12):
+    """Largest zoom at which the surface still fits inside the figure box."""
+    lo, hi = 0.05, 60.0
+    for _ in range(rounds):
+        mid = 0.5 * (lo + hi)
+        f = fill_at(fig, ax, xys, zscale, mid)
+        if f is not None and f[0] <= cap and f[1] <= cap:
+            lo = mid
+        else:
+            hi = mid
+    return lo
 
-    slide_rows: list of (slide_y, slide_x0, slide_x1) in frame px.
+
+def fit_zoom(fig, ax, name, cap=0.995):
+    """Scale the surface so its jet core fills the same fraction of the white
+    figure box that the original's does (TARGETS, measured from the frame).
+
+    A uniform zoom alone cannot hit a 2-D target: the projected box has its own
+    aspect, so the x/y spread and the z spread of the box aspect are searched
+    alongside the zoom, keeping the candidate nearest the target.
     """
-    for (sy, sx0, sx1) in slide_rows:
-        ly = sy - spec["y0"]
-        lx0, lx1 = sx0 - spec["x0"], sx1 - spec["x0"]
-        xf0, xf1 = lx0 / spec["w"], lx1 / spec["w"]
-        yf = 1.0 - ly / spec["h"]
-        fig.add_artist(Line2D([xf0, xf1], [yf, yf], transform=fig.transFigure,
-                              color=RED, lw=1.6, zorder=20, solid_capstyle="butt"))
+    tx, ty = TARGETS[name]
+    best = None
+    for xys in (1.0, 1.3, 1.7, 2.2, 2.9, 3.8, 5.0, 6.5, 8.5):
+        for zs in (1.0, 0.72, 0.5):
+            z = max_zoom(fig, ax, xys, zs, cap)
+            f = fill_at(fig, ax, xys, zs, z)
+            if f is None:
+                continue
+            fx, fy = f
+            # scale the fill toward the target by trimming the zoom
+            z *= max(min(tx / max(fx, 1e-3), ty / max(fy, 1e-3)), 1e-3)
+            f = fill_at(fig, ax, xys, zs, z)
+            if f is None:
+                continue
+            err = abs(f[0] - tx) + abs(f[1] - ty)
+            if best is None or err < best[0]:
+                best = (err, z, f[0], f[1], xys, zs)
+    if best is None:
+        FIT_ZOOMS[name] = 1.0
+        return 1.0
+    _, z, fx, fy, xys, zs = best
+    fill_at(fig, ax, xys, zs, z)
+    FIT_ZOOMS[name] = z
+    print("  fit %-3s zoom=%.2f xys=%.1f zs=%.2f core %.2fx%.2f (target %.2fx%.2f)"
+          % (name, z, xys, zs, fx, fy, tx, ty))
+    return z
 
 
 def redrect(fig, spec, inset=3):
@@ -188,7 +211,6 @@ def plot_tl():
     axis_style(ax)
     fit_zoom(fig, ax, "tl")
     redrect(fig, spec)
-    hlines(fig, spec, [(168, 121, 267), (186, 110, 279)])
     save(fig, "tl")
 
 
@@ -210,7 +232,6 @@ def plot_tr():
     axis_style(ax)
     fit_zoom(fig, ax, "tr")
     redrect(fig, spec)
-    hlines(fig, spec, [(222, 619, 873), (234, 619, 866)])
     save(fig, "tr")
 
 
@@ -274,7 +295,6 @@ def plot_bl():
 
     fit_zoom(fig, ax, "bl")
     redrect(fig, spec)
-    hlines(fig, spec, [(418, 124, 381)])
     save(fig, "bl")
 
 

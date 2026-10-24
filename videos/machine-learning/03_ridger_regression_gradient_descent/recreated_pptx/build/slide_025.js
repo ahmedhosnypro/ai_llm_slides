@@ -110,6 +110,32 @@ slide.addImage({ path: path.join(assetsDir, "plot_025_bl.png"),
 slide.addImage({ path: path.join(assetsDir, "plot_025_br.png"),
                  x: px(615), y: px(344), w: 265 / 72, h: 187 / 72 });
 
+// ── thin red REFERENCE LINES (slide-level, exact measured frame px) ───────────
+// The original's reference lines are pure HORIZONTAL 2-D strokes (uniform
+// 1-2px runs at constant frame y) and they run PAST the figure image's own
+// bounds (TL y186 reaches x281 while its image ends at x265; BL y418 reaches
+// x382 while its image ends at x376). Drawn as figure-fraction artists inside
+// a PNG they clip at the image edge, so they are drawn here as 2-frame-px tall
+// strips at the measured coordinates instead (drawn after the images, so they
+// sit on top exactly as in the original).
+//   TL  y168 x119..267   y186 x109..281
+//   TR  y226 x633..875   y234 x644..867
+//   BL  y418 x124..382
+//   BR  none
+const REFLINES = [
+  [168, 119, 267],   // TL maximum level, upper
+  [186, 109, 281],   // TL maximum level, lower
+  [226, 633, 875],   // TR minimum level, upper
+  [234, 644, 867],   // TR minimum level, lower
+  [417, 124, 382],   // BL single reference line
+];
+for (const [ry, rx0, rx1] of REFLINES) {
+  slide.addShape(pptx.ShapeType.rect, {
+    x: px(rx0), y: px(ry), w: (rx1 - rx0 + 1) / 72, h: 2 / 72,
+    fill: { color: RED }, line: { type: "none" },
+  });
+}
+
 // ── four blue label boxes with white bold text ───────────────────────────────
 // The white text in EVERY box sits in TWO bands (measured: band pitch ~12px,
 // e.g. box 1 bands y147..154 + y163..169; box 2 y195..201 + y210..216; box 3

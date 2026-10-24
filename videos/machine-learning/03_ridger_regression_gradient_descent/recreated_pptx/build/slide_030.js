@@ -78,7 +78,7 @@ const COL = {
   plotFrame: "C00000",
   gridGray: "D9D9D9",
   axisBlack: "000000",
-  parabolaBlue: "95B3D7",
+  parabolaBlue: "4F81BD",
   tickGray: "404040",
   labelGray: "7F7F7F",
   threeGray: "A0A0B0",
@@ -168,7 +168,7 @@ slide.addShape(ST.rect, {
   });
 }
 slide.addText([
-  { text: "f(x)", options: { fontSize: 16, italic: true, color: COL.bodyBlack, fontFace: FONT } },
+  { text: "f(x)", options: { fontSize: 16, italic: true, color: COL.formulaBlue, fontFace: FONT } },
   { text: " Minimum value is ", options: { fontSize: 16, color: COL.bodyBlack, fontFace: FONT } },
   { text: "1.0", options: { fontSize: 17, bold: true, color: COL.formulaBlue, fontFace: FONT } },
 ], {
@@ -185,7 +185,7 @@ slide.addShape(ST.rect, {
 });
 slide.addText("Reach Minimum after 11 Steps", {
   x: px(335), y: px(292), w: px(234), h: px(28),
-  fontSize: 13, bold: true, italic: true, color: COL.calloutPurple, fontFace: FONT,
+  fontSize: 14, bold: true, italic: true, color: COL.calloutPurple, fontFace: FONT,
   align: "center", valign: "middle", margin: 0,
 });
 
@@ -301,7 +301,7 @@ slide.addShape(ST.ellipse, {
 });
 
 slide.addText("(2, 10)", {
-  x: px(629), y: px(152), w: px(46), h: px(13),
+  x: px(634), y: px(152), w: px(46), h: px(13),
   fontSize: 9, italic: true, color: COL.labelGray, fontFace: FONT, margin: 0, align: "left",
 });
 slide.addText("(7, 7)", {
@@ -317,9 +317,9 @@ slide.addText("(5, 1)", {
 // White-filled block arrow with red outline, tilted ~15° (measured bbox
 // x172..194 y304..340; tip points down-left).
 slide.addShape(ST.downArrow, {
-  x: px(172), y: px(304), w: px(22), h: px(36),
+  x: px(173), y: px(306), w: px(19), h: px(30),
   fill: { color: "FFFFFF" },
-  line: { color: COL.titleRed, width: 2 },
+  line: { color: COL.titleRed, width: 1.5 },
   rotate: 15,
 });
 

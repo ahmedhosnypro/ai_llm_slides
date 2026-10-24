@@ -1,77 +1,76 @@
 // Build: slide 033 — "Non-Convex Function"
 // Deck: videos/machine-learning/03_ridger_regression_gradient_descent
-// Reference frame: unique_slides/slide_033.jpg (960x540, 1px=1pt=1/72in)
+// Reference frame: unique_slides/slide_033.jpg (960x540, 1px = 1pt = 1/72 in)
+//
+// ATTEMPT 7 — rebuilt from a full PIL re-measurement of the ORIGINAL frame
+// (attempts 1-6 drew a generic layout that did not match the frame: Arial
+// title that wrapped over the subtitle, a violet param box, the equation
+// inside the annotation box, only 16 table columns, empty right-hand cells,
+// and a hand-traced plot fragment). Every element below now follows the
+// frame's measured ink bboxes documented inline.
 //
 // =====================================================================
-// MEASURED GEOMETRY (frame px; PIL analysis of unique_slides/slide_033.jpg).
-// The FRAME WINS over analysis/slide_033_final.json where they differ.
+// MEASURED GEOMETRY (frame px; PIL analysis of unique_slides/slide_033.jpg)
 // =====================================================================
+// HOUSE CHROME: shared_patterns/house_chrome.js drawHouseChrome(numeral 33).
 //
-// HOUSE CHROME (shared_patterns/house_chrome.js): white canvas; gray E9E9E7
-// panel x54..903 y45..540; C00000 1pt strokes LEFT x58.5 / RIGHT x901 /
-// BOTTOM y538.5 only (NO top stroke); badge circle d~35 centered (876,73)
-// fill FDFD96 ring 6A5ACD, bold Arial 18pt numeral 333333 = "33".
+// TITLE   "Non-Convex Function": Times bold, ink x197..432 y66..83, C00000,
+//         centered in the x100..530 band (center 314.5).
+// SUB L1  "May reach different minimum value based on:" Times bold C00000,
+//         ink x115..525 y95..109 (center 320).
+// SUB L2  "initial point and learning rate": "initial point" BLUE #0000CC,
+//         " and " RED #C00000, "learning rate" BLUE #0000CC; ink x192..459
+//         y119..138 (center 325.5); Times bold.
 //
-// TITLE  "Non-Convex Function" — red #FF0000 bold, ink rows 66-94,
-//        cols ~190-440. Box x185 y58, 28pt.
-// SUBTITLE L1 "May reach different minimum value based on:" — blue #0000FF
-//        bold, ink rows 94-113, cols ~117-500. Box x115 y92, 16pt.
-// SUBTITLE L2 "initial point and learning rate" — "initial point" red
-//        #FF0000, "learning rate" blue #0000FF, ink rows 118-144, cols
-//        ~300-459. Box x300 y114, 18pt bold.
+// PARAM BOX x75..174 y246..308 (white, navy #1E1856 border). Three coloured
+//         cell rows: step|0.1 green #E9FFD4, initial X|-11 pink #F9BBC1,
+//         delta|0.1 yellow #FDFD00. Text 8pt Arial bold black.
+// RED BLOCK ARROW from (167,299) to (202,338) pointing to the table's
+//         first column (frame shows a hollow red-outlined block arrow).
 //
-// PARAMETER BOX x75-175 y245-309 (w100 h64): fill violet (167,160,227)
-//        ~#A7A0E3, thin dark border, yellow #FFFF00 accent bar across the
-//        top (rows 246-258). Three rows: step|0.1, initial x|-11, delta x|0.1
-//        (~10pt dark, rows 257-270 / 274-291 / 292-307).
+// EQUATION BOX x449..585 y182..230 white with C00000 border; 2D stacked
+//         fraction f(x) = (x^2 cos(x) - x)/10 (mathtext \dfrac 13.5pt PNG
+//         at exact px/600 size; original equation ink x460..575 y188..225).
+// ANNOTATION BOX x246..597 y254..299 pale green #EFFFE2, green border.
+//         Line 1: "X" red bold italic + "is in between -9.7 and color red
+//         bold -9.6" (the literal words "color red bold" ARE on the frame;
+//         the analysis had stripped them as a style descriptor) with -9.6
+//         red bold. Line 2: "f(x)" blue bold italic + "is in between -8.08
+//         and -8.011" with both values blue bold.
 //
-// CENTER CALLOUT x244-599 y252-301 (w355 h49): fill pale green (239,255,226)
-//        ~#EFFFE2, thin dark border. Equation f(x) = (x^2 cos(x)-x)/10 as a
-//        stacked fraction (mathtext PNG, ink rows 254-271), then two green
-//        annotation lines (rows 281-292 and 287-299): "X is in between -9.7
-//        and -9.6" (with -9.6 red bold) and "f(x) is in between -8.08 and
-//        -8.011" (verbatim per spec).
+// PLOT box x607..845 y60..313 white with C00000 border. The plotted ink is
+//         the analytic f(x) over x in [-12.68, 13.69] (mapping fitted on the
+//         frame's teal ink: x_px = 721.5 + 8.95x, y_px = 172 - 9.25 f(x),
+//         median residual 0.34 px). Grid every 2 units, black double-arrow
+//         axes at y=0 / x=0, x ticks -10..10, y ticks 8..-12 (0 / -2 not
+//         printed on the frame). Curve teal #2FA9AC, lw 2.6.
+//         Markers (frame-measured): maroon dashed drop line x617 y150..171;
+//         red dot x621..626 y144..149; orange #ED7D31 arrow x632..645
+//         y118..136; bright green square x629..642 y237..245; pink
+//         #F7C9FA "Reach / Local Minima" callout x613..700 y258..295 with
+//         purple italic text and a black pointer to the green square.
+//         Axis label "x" sits OUTSIDE the plot border at ~x850 y168.
 //
-// PLOT right: white background box x610..843 y62..311 painted over the house
-//        panel (the panel is E9E9E7 there too, so the box must be explicit).
-//        ONE x-axis rule at y313 spanning x607..901; two y-axis rules at x607
-//        and x721 spanning y60..313. 11 vertical gray gridlines
-//        (x615,632,650,667,685,703,739,757,775,793,811) and 9 horizontal gray
-//        gridlines (y115,134,153,171,190,209,227,246,264), clipped to the box.
-//        Green #00B050 non-convex curve traced from the frame's ink (cols
-//        612-832, rows 110-264 — ONE smooth curve). Red initial-point marker
-//        x619-628 y143-151; orange #EE730C arrowhead x631-648 y115-138; green
-//        square #8FFF17 x629-643 y236-244; pale pink #F7C9FA callout "Reach
-//        Local Minima" x613-703 y258-296. Axis label "x" right of the axis,
-//        "y" above it; x ticks -12/-10/-8/-6/-4/-2 at row ~288-301,
-//        y ticks 1/0/-2/-4/-6/-8 left of the y-axis.
+// TABLE outer box x86..869 y320..519 (white, navy border).
+//   label column x86..143; 18 data columns with separators measured at
+//   143,184,224,264,304,344,384,425,465,505,546,586,626,666,707,747,787,
+//   827,867. The analysis transcribed only 16 columns; the frame shows 18
+//   (after x=-9.8 the gradient-descent columns oscillate -9.7 / -9.6).
+//   Bands (frame-measured):
+//     band1 y331..369 fill #D9E275, navy border;  rows y341 / 359
+//     band2 y374..411 fill #D6B2F5, violet border; rows y383 / 401
+//     band3 y417..455 fill #F7DDC2, brown border;  rows y427 / 445
+//     slope y459..479: label cell #E9FFD4, data #DEAC95, green border;
+//           cols 14 & 16 (slope 0.3) are yellow #F5FB9C with green borders;
+//           row y469
+//     next x y483..503: pink #F7BEC4, red border; row y493
+//   Cyan insert x666..787 y332..368 (#8BF8AB) with a maroon DASHED border
+//   over band1 cols 13-15; its text is dark green #006400.
+//   All table text 8pt Arial bold; labels right-aligned at x141, values
+//   centered per column.
 //
-// TABLE x86-869 y320-519 — FRAME MEASURED (verified, see qa/slide033):
-//   OUTER BORDER: top rule rows 320-322, bottom rule rows 516-519,
-//                 left/right verticals at x86 and x869.
-//   LABEL COLUMN  x86-121 (35px).
-//   18 DATA COLUMNS, pitch 40px, gridlines at 121 + k*40 (k=0..18), the last
-//                 column 841-869 is narrower (28px).
-//   HORIZONTAL GRIDLINES (full-width dark rows): 320, 374, 410, 418, 454,
-//                 460, 478, 484, 501, 517.
-//   5 FILL BANDS (exact y-extents measured; fills span x89-866 and DO cover
-//                 the label column, except band 4):
-//     y334-367  #D9E275  (217,226,119) yellow-green
-//     y376-408  #D6B2F5  (214,178,248) violet
-//     y420-452  #F7DDC2  (247,221,194) peach
-//     y463-472  #DEAC95  (222,172,149) muted orange — label column E9FFD2
-//     y486-500  #F7BEC4  (247,190,196) pink
-//   CYAN INSERT  x666-789 y332-368 inside band0 — fill #8BF8A9 (139,248,169)
-//   8 TEXT ROWS (centres, matching the spec's 8 row labels):
-//      341, 359, 383, 401, 427, 445, 469, 493
-//     rows 469 & 493 carry RED BOLD text (the highlighted minimum cells).
-//   DATA: the spec's 8 rows x 16 values (analysis/slide_033_final.json
-//     recreation_brief), placed in grid columns 0..15 (x121..641). The frame
-//     shows ~18 columns; the analysis transcribes 16 values per row
-//     (documented deviation — the analysis contract supplies the values).
-//
-// Laws: hex without '#'; fontFace explicit on every text; margin 0; measured
-// geometry throughout; equation via 600dpi mathtext PNG at exact px/600 size.
+// Laws: hex without '#'; fontFace explicit; margin 0; measured geometry;
+// equation/plot images embedded at exact px/600 and px/72 sizes.
 
 const pptxgen = require("pptxgenjs");
 const { drawHouseChrome } = require("../../shared_patterns/house_chrome.js");
@@ -81,6 +80,11 @@ const OUT = "videos/machine-learning/03_ridger_regression_gradient_descent/recre
 
 const px = (v) => v / 72;
 const A = "Arial";
+const T = "Times New Roman";
+
+const C_RED = "C00000";
+const C_BLUE = "0000CC";
+const C_NAVY = "1E1856";
 
 const pptx = new pptxgen();
 pptx.layout = "LAYOUT_WIDE";
@@ -90,271 +94,253 @@ drawHouseChrome(pptx, slide, { numeral: "33" });
 
 // ================= TITLE / SUBTITLE =================
 slide.addText("Non-Convex Function", {
-  x: px(185), y: px(58), w: px(270), h: px(36),
-  align: "left", valign: "top", margin: 0,
-  fontFace: A, fontSize: 28, bold: true, color: "FF0000",
+  x: px(100), y: px(60), w: px(430), h: px(26),
+  align: "center", valign: "top", margin: 0,
+  fontFace: T, fontSize: 25, bold: true, color: C_RED,
 });
 slide.addText("May reach different minimum value based on:", {
-  x: px(115), y: px(92), w: px(390), h: px(24),
-  align: "left", valign: "top", margin: 0,
-  fontFace: A, fontSize: 16, bold: true, color: "0000FF",
+  x: px(100), y: px(91), w: px(440), h: px(20),
+  align: "center", valign: "top", margin: 0,
+  fontFace: T, fontSize: 17, bold: true, color: C_RED, charSpacing: 1.8,
 });
 slide.addText([
-  { text: "initial point", options: { fontFace: A, fontSize: 18, bold: true, color: "FF0000" } },
-  { text: " and ", options: { fontFace: A, fontSize: 18, bold: true, color: "0000FF" } },
-  { text: "learning rate", options: { fontFace: A, fontSize: 18, bold: true, color: "0000FF" } },
+  { text: "initial point", options: { fontFace: T, fontSize: 21, bold: true, color: C_BLUE } },
+  { text: " and ", options: { fontFace: T, fontSize: 21, bold: true, color: C_RED } },
+  { text: "learning rate", options: { fontFace: T, fontSize: 21, bold: true, color: C_BLUE } },
 ], {
-  x: px(300), y: px(114), w: px(500), h: px(30),
-  align: "left", valign: "top", margin: 0,
+  x: px(175), y: px(114), w: px(300), h: px(27),
+  align: "center", valign: "top", margin: 0,
 });
 
 // ================= PARAMETER BOX =================
-const PB = { x: 75, y: 245, w: 100, h: 64 };
+// white box with navy border, three coloured cell rows
 slide.addShape(pptx.ShapeType.rect, {
-  x: px(PB.x), y: px(PB.y), w: px(PB.w), h: px(PB.h),
-  fill: { color: "A7A0E3" }, line: { color: "000000", width: 0.5 },
+  x: px(75), y: px(246), w: px(99), h: px(62),
+  fill: { color: "FFFFFF" }, line: { color: C_NAVY, width: 1.25 },
 });
-slide.addShape(pptx.ShapeType.rect, {
-  x: px(PB.x), y: px(PB.y), w: px(PB.w), h: px(13),
-  fill: { color: "FFFF00" }, line: { color: "FFFF00", width: 0 },
-});
-const param_rows = [
-  { label: "step", value: "0.1", ry: PB.y + 12 },
-  { label: "initial x", value: "-11", ry: PB.y + 30 },
-  { label: "delta x", value: "0.1", ry: PB.y + 48 },
+const PCELLS = [
+  { y0: 255, y1: 270, fill: "E9FFD4", label: "step", value: "0.1" },
+  { y0: 270, y1: 285, fill: "F9BBC1", label: "initial X", value: "-11" },
+  { y0: 285, y1: 300, fill: "FDFD00", label: "delta", value: "0.1" },
 ];
-for (const row of param_rows) {
-  slide.addText(row.label, {
-    x: px(PB.x + 4), y: px(row.ry), w: px(48), h: px(14),
-    align: "left", valign: "middle", margin: 0,
-    fontFace: A, fontSize: 10, color: "000000",
+for (const c of PCELLS) {
+  slide.addShape(pptx.ShapeType.rect, {
+    x: px(80), y: px(c.y0), w: px(47), h: px(c.y1 - c.y0),
+    fill: { color: c.fill }, line: { color: C_NAVY, width: 0.5 },
   });
-  slide.addText(row.value, {
-    x: px(PB.x + 52), y: px(row.ry), w: px(44), h: px(14),
-    align: "right", valign: "middle", margin: 0,
-    fontFace: A, fontSize: 10, color: "000000",
+  slide.addShape(pptx.ShapeType.rect, {
+    x: px(127), y: px(c.y0), w: px(43), h: px(c.y1 - c.y0),
+    fill: { color: c.fill }, line: { color: C_NAVY, width: 0.5 },
+  });
+  slide.addText(c.label, {
+    x: px(81), y: px(c.y0), w: px(45), h: px(c.y1 - c.y0),
+    align: "center", valign: "middle", margin: 0,
+    fontFace: A, fontSize: 8, bold: true, color: "000000",
+  });
+  slide.addText(c.value, {
+    x: px(128), y: px(c.y0), w: px(41), h: px(c.y1 - c.y0),
+    align: "center", valign: "middle", margin: 0,
+    fontFace: A, fontSize: 8, bold: true, color: "000000",
   });
 }
-
-// ================= CENTER CALLOUT (formula + annotations) =================
-const CB = { x: 244, y: 252, w: 355, h: 49 };
-slide.addShape(pptx.ShapeType.rect, {
-  x: px(CB.x), y: px(CB.y), w: px(CB.w), h: px(CB.h),
-  fill: { color: "EFFFE2" }, line: { color: "000000", width: 0.5 },
+// hollow red block arrow pointing from the param box to the table
+slide.addShape(pptx.ShapeType.rightArrow, {
+  x: px(156), y: px(297), w: px(58), h: px(26), rotate: 45,
+  fill: { color: "FFFFFF" }, line: { color: "C00000", width: 1.5 },
 });
-// stacked-fraction equation (600dpi mathtext PNG, exact px/600 size)
-const eq_w = 1.35, eq_h = 0.21;
+
+// ================= EQUATION BOX =================
+slide.addShape(pptx.ShapeType.rect, {
+  x: px(449), y: px(182), w: px(136), h: px(48),
+  fill: { color: "FFFFFF" }, line: { color: C_RED, width: 1.25 },
+});
+// eq_033_main_v7b.png: 998 x 216 px at 600 dpi -> 119.8 x 25.9 pt exactly
 slide.addImage({
-  path: ASSET_DIR + "/eq_033_main.png",
-  x: px(CB.x + CB.w / 2) - eq_w / 2, y: px(CB.y + 1),
-  w: eq_w, h: eq_h,
+  path: ASSET_DIR + "/eq_033_main_v7b.png",
+  x: px(517 - 119.8 / 2), y: px(206.5 - 25.9 / 2),
+  w: 119.8 / 72, h: 25.9 / 72,
+});
+
+// ================= ANNOTATION BOX =================
+slide.addShape(pptx.ShapeType.rect, {
+  x: px(246), y: px(254), w: px(351), h: px(45),
+  fill: { color: "EFFFE2" }, line: { color: "008000", width: 1.25 },
+});
+slide.addText("X", {
+  x: px(248), y: px(257), w: px(42), h: px(16),
+  align: "left", valign: "middle", margin: 0,
+  fontFace: T, fontSize: 17, bold: true, italic: true, color: C_RED,
 });
 slide.addText([
-  { text: "X is in between -9.7 and ", options: { fontFace: A, fontSize: 11, color: "006400" } },
-  { text: "-9.6", options: { fontFace: A, fontSize: 11, bold: true, color: "FF0000" } },
+  { text: "is in between ", options: { fontFace: T, fontSize: 17, bold: true, color: "000000" } },
+  { text: "-9.7", options: { fontFace: T, fontSize: 17, bold: true, color: "000000" } },
+  { text: " and color red bold ", options: { fontFace: T, fontSize: 17, bold: true, color: "000000" } },
+  { text: "-9.6", options: { fontFace: T, fontSize: 17, bold: true, color: C_RED } },
 ], {
-  x: px(CB.x + 2), y: px(CB.y + 29), w: px(CB.w - 4), h: px(13),
-  align: "center", valign: "middle", margin: 0,
+  x: px(293), y: px(257), w: px(301), h: px(16),
+  align: "left", valign: "middle", margin: 0,
 });
-slide.addText("f(x) is in between -8.08 and -8.011", {
-  x: px(CB.x + 2), y: px(CB.y + 38), w: px(CB.w - 4), h: px(12),
-  align: "center", valign: "middle", margin: 0,
-  fontFace: A, fontSize: 11, color: "006400",
+slide.addText("f(x)", {
+  x: px(248), y: px(276), w: px(44), h: px(20),
+  align: "left", valign: "middle", margin: 0,
+  fontFace: T, fontSize: 17, bold: true, italic: true, color: C_BLUE,
+});
+slide.addText([
+  { text: "is in between ", options: { fontFace: T, fontSize: 17, bold: true, color: "000000" } },
+  { text: "-8.08", options: { fontFace: T, fontSize: 17, bold: true, color: C_BLUE } },
+  { text: " and ", options: { fontFace: T, fontSize: 17, bold: true, color: "000000" } },
+  { text: "-8.011", options: { fontFace: T, fontSize: 17, bold: true, color: C_BLUE } },
+], {
+  x: px(293), y: px(276), w: px(301), h: px(20),
+  align: "left", valign: "middle", margin: 0,
 });
 
 // ================= FUNCTION PLOT =================
-const PL = { x0: 607, x1: 901, top: 60, axRow: 313 };
-// white plot background box — frame-measured x610..843 y62..311. The house
-// panel is E9E9E7 there too, so the box must be painted explicitly (measured:
-// 248 rows of the original have first-white x610 and last-white x843).
+// white plot box with the frame's dark-red border
 slide.addShape(pptx.ShapeType.rect, {
-  x: px(610), y: px(62), w: px(843 - 610), h: px(311 - 62),
-  fill: { color: "FFFFFF" }, line: { color: "FFFFFF", width: 0 },
+  x: px(607), y: px(60), w: px(238), h: px(253),
+  fill: { color: "FFFFFF" }, line: { color: C_RED, width: 1.25 },
 });
-slide.addShape(pptx.ShapeType.line, { // x-axis rule (single; measured y313 x607..901)
-  x: px(PL.x0), y: px(PL.axRow), w: px(PL.x1 - PL.x0), h: 0,
-  line: { color: "000000", width: 1 },
+// generated analytic plot: 1966 x 2083 px at 600 dpi -> 235.92 x 249.96 pt
+slide.addImage({
+  path: ASSET_DIR + "/slide_033_plot_v7.png",
+  x: px(608), y: px(62), w: 1966 / 600, h: 2083 / 600,
 });
-slide.addShape(pptx.ShapeType.line, { // y-axis rule 1 (measured x607 y60..313)
-  x: px(607), y: px(PL.top), w: 0, h: px(PL.axRow - PL.top),
-  line: { color: "000000", width: 1 },
-});
-slide.addShape(pptx.ShapeType.line, { // y-axis rule 2 (measured x721 y60..313)
-  x: px(721), y: px(PL.top), w: 0, h: px(PL.axRow - PL.top),
-  line: { color: "000000", width: 0.75 },
-});
+// axis label "x" — the frame prints it OUTSIDE the plot border (x~850 y168)
 slide.addText("x", {
-  x: px(PL.x1 - 24), y: px(PL.axRow + 3), w: px(20), h: px(14),
-  align: "center", valign: "top", margin: 0,
-  fontFace: A, fontSize: 11, bold: true, color: "000000",
-});
-slide.addText("y", {
-  x: px(583), y: px(PL.top - 4), w: px(20), h: px(14),
-  align: "center", valign: "top", margin: 0,
-  fontFace: A, fontSize: 11, bold: true, color: "000000",
-});
-const x_ticks = [
-  { v: "-12", c: 610 }, { v: "-10", c: 648 }, { v: "-8", c: 687 },
-  { v: "-6", c: 726 }, { v: "-4", c: 765 }, { v: "-2", c: 804 },
-];
-for (const t of x_ticks) {
-  slide.addText(t.v, {
-    x: px(t.c - 14), y: px(288), w: px(28), h: px(13),
-    align: "center", valign: "middle", margin: 0,
-    fontFace: A, fontSize: 9, color: "000000",
-  });
-}
-const y_ticks = ["1", "0", "-2", "-4", "-6", "-8"];
-for (let i = 0; i < y_ticks.length; i++) {
-  slide.addText(y_ticks[i], {
-    x: px(574), y: px(138 + i * 34), w: px(28), h: px(13),
-    align: "right", valign: "middle", margin: 0,
-    fontFace: A, fontSize: 9, color: "000000",
-  });
-}
-
-// plot gridlines (frame-measured gray, clipped to the white plot box x610..843 y62..311)
-for (const gx of [615, 632, 650, 667, 685, 703, 739, 757, 775, 793, 811]) {
-  slide.addShape(pptx.ShapeType.line, {
-    x: px(gx), y: px(62), w: 0, h: px(311 - 62),
-    line: { color: "D9D9D9", width: 0.5 },
-  });
-}
-for (const gy of [115, 134, 153, 171, 190, 209, 227, 246, 264]) {
-  slide.addShape(pptx.ShapeType.line, {
-    x: px(610), y: px(gy), w: px(843 - 610), h: 0,
-    line: { color: "D9D9D9", width: 0.5 },
-  });
-}
-
-// ONE smooth non-convex curve, traced from the frame's saturated ink.
-const curve = [
-  [624, 143], [628, 196], [632, 130], [636, 125], [640, 120], [644, 116],
-  [648, 183], [652, 155], [656, 137], [660, 128], [664, 127], [668, 130],
-  [672, 141], [676, 153], [680, 163], [684, 170], [688, 174], [692, 176],
-  [696, 173], [700, 172], [704, 172], [708, 171], [712, 171], [716, 171],
-  [720, 171], [724, 171], [728, 171], [732, 171], [736, 172], [740, 174],
-  [744, 176], [748, 180], [752, 183], [756, 186], [760, 182], [764, 174],
-  [768, 160], [772, 151], [776, 142], [780, 139], [784, 142], [788, 151],
-  [792, 171], [796, 198], [800, 227], [804, 252], [808, 262], [812, 248],
-  [816, 209], [820, 167], [824, 112],
-];
-for (let i = 0; i < curve.length - 1; i++) {
-  const p1 = curve[i], p2 = curve[i + 1];
-  slide.addShape(pptx.ShapeType.line, {
-    x: px(p1[0]), y: px(p1[1]), w: px(p2[0] - p1[0]), h: px(p2[1] - p1[1]),
-    line: { color: "00B050", width: 1 },
-  });
-}
-slide.addShape(pptx.ShapeType.ellipse, { // red initial-point marker, frame-measured x619-628 y143-151
-  x: px(618), y: px(142), w: px(11), h: px(10),
-  fill: { color: "D92524" }, line: { color: "D92524", width: 0 },
-});
-// orange+red arrowhead at the trajectory start (frame-measured x631-648 y115-138)
-slide.addShape(pptx.ShapeType.triangle, {
-  x: px(629), y: px(115), w: px(20), h: px(24), rotate: 45,
-  fill: { color: "EE730C" }, line: { color: "EE730C", width: 0 },
-});
-slide.addShape(pptx.ShapeType.rect, { // green square at the reached local minimum (x629-643 y236-244)
-  x: px(628), y: px(235), w: px(17), h: px(11),
-  fill: { color: "8FFF17" }, line: { color: "8FFF17", width: 0 },
-});
-slide.addShape(pptx.ShapeType.rect, { // "Reach Local Minima" callout (frame-measured x613-703 y258-296)
-  x: px(612), y: px(257), w: px(93), h: px(40),
-  fill: { color: "F7C9FA" }, line: { color: "000000", width: 0.75 },
-});
-slide.addText("Reach Local Minima", {
-  x: px(612), y: px(257), w: px(93), h: px(40),
+  x: px(847), y: px(164), w: px(16), h: px(16),
   align: "center", valign: "middle", margin: 0,
-  fontFace: A, fontSize: 8, bold: true, color: "000000",
+  fontFace: T, fontSize: 10, bold: true, color: "333333",
+});
+// maroon dashed drop line under the initial point
+slide.addShape(pptx.ShapeType.line, {
+  x: px(617), y: px(150), w: 0, h: px(21),
+  line: { color: "8B0000", width: 1, dashType: "dash" },
+});
+// red initial-point dot (frame x621..626 y144..149)
+slide.addShape(pptx.ShapeType.ellipse, {
+  x: px(620), y: px(143), w: px(7), h: px(7),
+  fill: { color: "D00000" }, line: { color: "D00000", width: 0 },
+});
+// orange arrow from the initial point up-right (frame x632..645 y118..136);
+// flipH makes the line run (646,117)->(633,136) with the head at the lower left
+slide.addShape(pptx.ShapeType.line, {
+  x: px(633), y: px(117), w: px(13), h: px(19), flipH: true,
+  line: { color: "ED7D31", width: 3, endArrowType: "triangle" },
+});
+// bright green square at the reached local minimum (x629..642 y237..245)
+slide.addShape(pptx.ShapeType.rect, {
+  x: px(629), y: px(236), w: px(13), h: px(9),
+  fill: { color: "7CFC00" }, line: { color: "7CFC00", width: 0 },
+});
+// "Reach Local Minima" callout (x613..700 y258..295) + pointer
+slide.addShape(pptx.ShapeType.line, {
+  x: px(692), y: px(258), w: px(-51), h: px(-12),
+  line: { color: "000000", width: 1.2 },
+});
+slide.addShape(pptx.ShapeType.rect, {
+  x: px(613), y: px(257), w: px(87), h: px(38),
+  fill: { color: "F7C9FA" }, line: { color: "8E2A92", width: 0.75 },
+});
+slide.addText([
+  { text: "Reach", options: { fontFace: T, fontSize: 10, bold: true, italic: true, color: "8E2A92", breakLine: true } },
+  { text: "Local Minima", options: { fontFace: T, fontSize: 10, bold: true, italic: true, color: "8E2A92" } },
+], {
+  x: px(613), y: px(257), w: px(87), h: px(38),
+  align: "center", valign: "middle", margin: 0, lineSpacing: 12,
 });
 
 // ================= TABLE =================
-const T = { x0: 86, x1: 869, y0: 320, y1: 519 };
-// outer frame
+const TBL = { x0: 86, x1: 869, y0: 320, y1: 519 };
+// outer white table box with navy border
 slide.addShape(pptx.ShapeType.rect, {
-  x: px(T.x0), y: px(T.y0), w: px(T.x1 - T.x0), h: px(T.y1 - T.y0),
-  fill: { color: "FFFFFF" }, line: { color: "000000", width: 0 },
+  x: px(TBL.x0), y: px(TBL.y0), w: px(TBL.x1 - TBL.x0), h: px(TBL.y1 - TBL.y0),
+  fill: { color: "FFFFFF" }, line: { color: C_NAVY, width: 1.25 },
 });
-for (const hy of [321, 517]) { // top + bottom border rules
-  slide.addShape(pptx.ShapeType.line, {
-    x: px(T.x0), y: px(hy), w: px(T.x1 - T.x0), h: 0,
-    line: { color: "000000", width: 1 },
-  });
-}
-for (const vx of [T.x0, T.x1]) {
-  slide.addShape(pptx.ShapeType.line, {
-    x: px(vx), y: px(T.y0), w: 0, h: px(T.y1 - T.y0),
-    line: { color: "000000", width: 0.75 },
-  });
-}
-// fill bands — frame-measured y-extents and x-extents. Band fills span x89..866
-// (they cover the LABEL column x86-121 too, not just the data columns), except
-// band 4 whose label column is pale green E9FFD2 instead of the band orange.
-const bands = [
-  { y0: 334, y1: 367, fill: "D9E275", label: null },
-  { y0: 376, y1: 408, fill: "D6B2F5", label: null },
-  { y0: 420, y1: 452, fill: "F7DDC2", label: null },
-  { y0: 463, y1: 472, fill: "DEAC95", label: "E9FFD2" },
-  { y0: 486, y1: 500, fill: "F7BEC4", label: null },
+const XSEP = [143, 184, 224, 264, 304, 344, 384, 425, 465, 505, 546, 586, 626, 666, 707, 747, 787, 827, 867];
+
+// bands: [y0, y1, fill, border]
+const BANDS = [
+  { y0: 331, y1: 369, fill: "D9E275", border: C_NAVY, bw: 1.25 },
+  { y0: 374, y1: 411, fill: "D6B2F5", border: "5B2C6F", bw: 1.25 },
+  { y0: 417, y1: 455, fill: "F7DDC2", border: "6B4226", bw: 1.25 },
 ];
-for (const bd of bands) {
+for (const bd of BANDS) {
   slide.addShape(pptx.ShapeType.rect, {
-    x: px(89), y: px(bd.y0), w: px(866 - 89), h: px(bd.y1 - bd.y0),
-    fill: { color: bd.fill }, line: { color: "000000", width: 0 },
+    x: px(87), y: px(bd.y0), w: px(781), h: px(bd.y1 - bd.y0),
+    fill: { color: bd.fill }, line: { color: bd.border, width: bd.bw },
   });
-  if (bd.label) { // band 4's label column is a different pale green
-    slide.addShape(pptx.ShapeType.rect, {
-      x: px(89), y: px(bd.y0), w: px(121 - 89), h: px(bd.y1 - bd.y0),
-      fill: { color: bd.label }, line: { color: "000000", width: 0 },
+}
+// slope band: pale-green label cell + salmon data area + green border
+slide.addShape(pptx.ShapeType.rect, {
+  x: px(87), y: px(459), w: px(56), h: px(20),
+  fill: { color: "E9FFD4" }, line: { color: "2E7D32", width: 1.5 },
+});
+slide.addShape(pptx.ShapeType.rect, {
+  x: px(143), y: px(459), w: px(724), h: px(20),
+  fill: { color: "DEAC95" }, line: { color: "2E7D32", width: 1.5 },
+});
+// yellow slope cells (0.3) at cols 14 and 16
+for (const ci of [14, 16]) {
+  slide.addShape(pptx.ShapeType.rect, {
+    x: px(XSEP[ci]), y: px(460), w: px(XSEP[ci + 1] - XSEP[ci]), h: px(18),
+    fill: { color: "F5FB9C" }, line: { color: "2E7D32", width: 0.75 },
+  });
+}
+// next x band: pink with red border
+slide.addShape(pptx.ShapeType.rect, {
+  x: px(87), y: px(483), w: px(781), h: px(20),
+  fill: { color: "F7BEC4" }, line: { color: "C00000", width: 1.5 },
+});
+// cyan insert over band1 cols 13-15 with the maroon dashed border
+slide.addShape(pptx.ShapeType.rect, {
+  x: px(666), y: px(332), w: px(121), h: px(36),
+  fill: { color: "8BF8AB" }, line: { color: "8B0000", width: 1.25, dashType: "dash" },
+});
+
+// thin white separators between cells
+for (const bd of [[331, 369], [374, 411], [417, 455], [459, 479], [483, 503]]) {
+  for (const sx of XSEP) {
+    slide.addShape(pptx.ShapeType.line, {
+      x: px(sx), y: px(bd[0] + 1), w: 0, h: px(bd[1] - bd[0] - 2),
+      line: { color: "FFFFFF", width: 0.5 },
     });
   }
 }
-// cyan insert inside band0
-slide.addShape(pptx.ShapeType.rect, {
-  x: px(666), y: px(332), w: px(789 - 666), h: px(368 - 332),
-  fill: { color: "8BF8A9" }, line: { color: "000000", width: 0 },
-});
-// gridlines: 20 verticals at 121 + k*40, horizontals at measured rows
-for (let i = 0; i <= 18; i++) {
+// thin white separators between the two text rows of each 2-row band
+for (const hy of [350, 392.5, 436]) {
   slide.addShape(pptx.ShapeType.line, {
-    x: px(121 + i * 40), y: px(T.y0), w: 0, h: px(T.y1 - T.y0),
-    line: { color: "000000", width: 0.25 },
-  });
-}
-for (const hy of [320, 374, 410, 418, 454, 460, 478, 484, 501, 517]) {
-  slide.addShape(pptx.ShapeType.line, {
-    x: px(121), y: px(hy), w: px(869 - 121), h: 0,
-    line: { color: "000000", width: 0.25 },
+    x: px(88), y: px(hy), w: px(780), h: 0,
+    line: { color: "FFFFFF", width: 0.5 },
   });
 }
 
-// ---- table content: 8 measured text rows x the analysis dataset ----
+// ---- table content: 8 rows x 18 columns (frame-verified values) ----
 const rows = [
-  { label: "x", vals: ["-11", "-10.9", "-10.8", "-10.7", "-10.6", "-10.5", "-10.4", "-10.3", "-10.2", "-10.1", "-10", "-9.9", "-9.8", "-9.7", "-9.6", "-9.5"] },
-  { label: "f(x)", vals: ["1.15", "-0.04", "-1.19", "-2.26", "-3.27", "-4.19", "-5.03", "-5.77", "-6.41", "-6.95", "-7.39", "-7.72", "-7.96", "-8.08", "-8.11", "-8.05"] },
-  { label: "x-delta", vals: ["-11.1", "-11", "-10.9", "-10.8", "-10.7", "-10.6", "-10.5", "-10.4", "-10.3", "-10.2", "-10.1", "-10", "-9.9", "-9.8", "-9.7", "-9.6"] },
-  { label: "f(x-delta)", vals: ["2.39", "1.15", "-0.04", "-1.19", "-2.26", "-3.27", "-4.19", "-5.03", "-5.77", "-6.41", "-6.95", "-7.39", "-7.72", "-7.96", "-8.08", "-8.11"] },
-  { label: "x+delta", vals: ["-10.9", "-10.8", "-10.7", "-10.6", "-10.5", "-10.4", "-10.3", "-10.2", "-10.1", "-10", "-9.9", "-9.8", "-9.7", "-9.6", "-9.5", "-9.4"] },
-  { label: "f(x+delta)", vals: ["-0.04", "-1.19", "-2.26", "-3.27", "-4.19", "-5.03", "-5.77", "-6.41", "-6.95", "-7.39", "-7.72", "-7.96", "-8.08", "-8.11", "-8.05", "-7.89"] },
-  { label: "slope", vals: ["-24.3", "-23.4", "-22.2", "-20.8", "-19.3", "-17.6", "-15.8", "-13.8", "-11.8", "-9.8", "-7.7", "-5.7", "-3.6", "-1.5", "0.3", "2.2"] },
-  { label: "next x", vals: ["-10.9", "-10.8", "-10.7", "-10.6", "-10.5", "-10.4", "-10.3", "-10.2", "-10.1", "-10", "-9.9", "-9.8", "-9.7", "-9.6", "-9.7", "-9.6"] },
+  { label: "x", vals: ["-11", "-10.9", "-10.8", "-10.7", "-10.6", "-10.5", "-10.4", "-10.3", "-10.2", "-10.1", "-10", "-9.9", "-9.8", "-9.7", "-9.6", "-9.7", "-9.6", "-9.7"] },
+  { label: "f(x)", vals: ["1.15", "-0.04", "-1.19", "-2.26", "-3.27", "-4.19", "-5.03", "-5.77", "-6.41", "-6.95", "-7.39", "-7.72", "-7.96", "-8.08", "-8.11", "-8.08", "-8.11", "-8.08"] },
+  { label: "x-delta", vals: ["-11.1", "-11", "-10.9", "-10.8", "-10.7", "-10.6", "-10.5", "-10.4", "-10.3", "-10.2", "-10.1", "-10", "-9.9", "-9.8", "-9.7", "-9.8", "-9.7", "-9.8"] },
+  { label: "f(x-delta)", vals: ["2.39", "1.15", "-0.04", "-1.19", "-2.26", "-3.27", "-4.19", "-5.03", "-5.77", "-6.41", "-6.95", "-7.39", "-7.72", "-7.96", "-8.08", "-7.96", "-8.08", "-7.96"] },
+  { label: "x+delta", vals: ["-10.9", "-10.8", "-10.7", "-10.6", "-10.5", "-10.4", "-10.3", "-10.2", "-10.1", "-10", "-9.9", "-9.8", "-9.7", "-9.6", "-9.5", "-9.6", "-9.5", "-9.6"] },
+  { label: "f(x+delta)", vals: ["-0.04", "-1.19", "-2.26", "-3.27", "-4.19", "-5.03", "-5.77", "-6.41", "-6.95", "-7.39", "-7.72", "-7.96", "-8.08", "-8.11", "-8.05", "-8.11", "-8.05", "-8.11"] },
+  { label: "slope", vals: ["-24.3", "-23.4", "-22.2", "-20.8", "-19.3", "-17.6", "-15.8", "-13.8", "-11.8", "-9.8", "-7.7", "-5.7", "-3.6", "-1.5", "0.3", "-1.5", "0.3", "-1.5"] },
+  { label: "next x", vals: ["-10.9", "-10.8", "-10.7", "-10.6", "-10.5", "-10.4", "-10.3", "-10.2", "-10.1", "-10", "-9.9", "-9.8", "-9.7", "-9.6", "-9.7", "-9.6", "-9.7", "-9.6"] },
 ];
 const row_ys = [341, 359, 383, 401, 427, 445, 469, 493];
 for (let ri = 0; ri < rows.length; ri++) {
   const ymid = row_ys[ri];
-  const is_hl = (ri >= 6); // rows 7 & 8 carry the red-bold highlight
   slide.addText(rows[ri].label, {
-    x: px(T.x0), y: px(ymid - 7), w: px(121 - T.x0), h: px(14),
-    align: "center", valign: "middle", margin: 0,
+    x: px(88), y: px(ymid - 7), w: px(53), h: px(14),
+    align: "right", valign: "middle", margin: 0,
     fontFace: A, fontSize: 8, bold: true, color: "000000",
   });
-  for (let ci = 0; ci < 16; ci++) {
+  for (let ci = 0; ci < 18; ci++) {
+    const inCyan = (ri < 2 && ci >= 13 && ci <= 15);
     slide.addText(rows[ri].vals[ci], {
-      x: px(121 + ci * 40), y: px(ymid - 7), w: px(40), h: px(14),
+      x: px(XSEP[ci]), y: px(ymid - 7), w: px(XSEP[ci + 1] - XSEP[ci]), h: px(14),
       align: "center", valign: "middle", margin: 0,
-      fontFace: A, fontSize: 7,
-      bold: is_hl, color: is_hl ? "FF0000" : "000000",
+      fontFace: A, fontSize: 8, bold: true,
+      color: inCyan ? "006400" : "000000",
     });
   }
 }

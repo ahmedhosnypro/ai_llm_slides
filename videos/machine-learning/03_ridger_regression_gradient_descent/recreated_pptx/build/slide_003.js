@@ -56,13 +56,14 @@ const slide = pptx.addSlide();
 // ---- HOUSE CHROME (shared deck module — badge numeral = file number 3) -----
 drawHouseChrome(pptx, slide, { numeral: 3 });
 
-// ---- TITLE: ONE line (21pt — 26pt wraps in LO), blue "Matrix" + red rest ----
+// ---- TITLE: ONE line (23pt — cap-height 16.8px measured vs 15px at 21pt;
+// box widened to 800px so 23pt (advance 761.8px) cannot wrap) ---------------
 slide.addText([
-  { text: "Matrix", options: { fontFace: A, fontSize: 21, bold: true, color: "0000FF" } },
+  { text: "Matrix", options: { fontFace: A, fontSize: 23, bold: true, color: "0000FF" } },
   { text: " Notation for Linear Regression and Classification (N- Samples)",
-    options: { fontFace: A, fontSize: 21, bold: true, color: "FF0000" } },
+    options: { fontFace: A, fontSize: 23, bold: true, color: "FF0000" } },
 ], {
-  x: px(82), y: px(64), w: px(752), h: px(28),
+  x: px(70), y: px(62), w: px(800), h: px(32),
   align: "center", valign: "top", margin: 0,
 });
 
@@ -91,32 +92,46 @@ for (const b of band_defs) {
     fill: { color: b.fill },
   });
 }
-// Column headers above the bands, measured y119..137, black
+// Column headers above the bands (measured glyph height 19.7px incl. subscript
+// vs the render's 14.4px at 13pt => ~18pt; the subscript carries the digit, so
+// the base X is what sets the visual size)
 for (const b of band_defs) {
   slide.addText([
-    { text: "X", options: { fontFace: A, fontSize: 13, bold: true, italic: true, color: "000000" } },
-    { text: b.label.split("_")[1], options: { fontFace: A, fontSize: 13, bold: true, italic: true, subscript: true, color: "000000" } },
+    { text: "X", options: { fontFace: A, fontSize: 18, bold: true, italic: true, color: "000000" } },
+    { text: b.label.split("_")[1], options: { fontFace: A, fontSize: 18, bold: true, italic: true, subscript: true, color: "000000" } },
   ], {
-    x: px(b.cx - 20), y: px(117), w: px(40), h: px(22),
+    x: px(b.cx - 24), y: px(115), w: px(48), h: px(24),
     align: "center", valign: "middle", margin: 0,
   });
 }
-// Interior entry stacks (judge+spec: x_i1, x_i2, ..., x_id inside each band;
-// frame: dark entry ink at y160..174 and y189..198 inside all three bands)
+// Interior entry stacks (frame-measured): glyph column inside each band with
+// four stacked entries at rows y160..174, y189..203, y226, y243..257 (glyph
+// height 15px => ~11pt). Each entry is its own text box at its measured row —
+// LibreOffice ignores lineSpacing on inline runs, which collapsed the earlier
+// 4-row stack to 2.
+const entry_rows = [156, 185, 224, 240];
 for (const b of band_defs) {
-  const runs = [];
   for (let i = 0; i < b.entries.length; i++) {
-    if (i > 0) runs.push({ text: "\n", options: { breakLine: true, fontSize: 8 } });
-    if (b.entries[i] === "...") {
-      runs.push({ text: "...", options: { fontFace: A, fontSize: 8, italic: true, color: "000000" } });
-    } else {
-      runs.push({ text: "x", options: { fontFace: A, fontSize: 8, italic: true, color: "000000" } });
-      runs.push({ text: b.entries[i], options: { fontFace: A, fontSize: 8, italic: true, subscript: true, color: "000000" } });
-    }
+    const e = b.entries[i];
+    const isDots = (e === "...");
+    slide.addText([
+      ...(isDots ? [{ text: "...", options: { fontFace: A, fontSize: 11, italic: true, color: "000000" } }] : [
+        { text: "x", options: { fontFace: A, fontSize: 11, italic: true, color: "000000" } },
+        { text: e, options: { fontFace: A, fontSize: 11, italic: true, subscript: true, color: "000000" } },
+      ]),
+    ], {
+      x: px(b.cx - b.w / 2), y: px(entry_rows[i]), w: px(b.w), h: px(18),
+      align: "center", valign: "middle", margin: 0,
+    });
   }
-  slide.addText(runs, {
-    x: px(b.cx - b.w / 2), y: px(158), w: px(b.w), h: px(48),
-    align: "center", valign: "top", margin: 0, lineSpacing: 10,
+}
+// Right-hand side bars of the glyph column (measured ink x331..332 in the
+// yellow band, x414 in the cyan band, x556 in the pink band, each spanning the
+// band) — delimiters the original draws.
+for (const bx of [331.5, 414.5, 556.5]) {
+  slide.addShape(pptx.ShapeType.line, {
+    x: px(bx), y: px(155), w: 0, h: px(104),
+    line: { color: "000000", width: 1 },
   });
 }
 // Separator line under the entries, measured y297
@@ -124,14 +139,14 @@ slide.addShape(pptx.ShapeType.line, {
   x: px(272), y: px(297.5), w: px(323), h: 0,
   line: { color: "000000", width: 1 },
 });
-// Red y-labels inside the bands, measured y277..293
+// Red y-labels inside the bands, measured glyph h=16.3px => ~12pt (was 11pt)
 const y_labels = ["y_1", "y_2", "y_n"];
 for (let c = 0; c < 3; c++) {
   slide.addText([
-    { text: "y", options: { fontFace: A, fontSize: 11, italic: true, color: "FF0000" } },
-    { text: y_labels[c].split("_")[1], options: { fontFace: A, fontSize: 11, italic: true, subscript: true, color: "FF0000" } },
+    { text: "y", options: { fontFace: A, fontSize: 12, italic: true, color: "FF0000" } },
+    { text: y_labels[c].split("_")[1], options: { fontFace: A, fontSize: 12, italic: true, subscript: true, color: "FF0000" } },
   ], {
-    x: px(band_defs[c].cx - 20), y: px(276), w: px(40), h: px(16),
+    x: px(band_defs[c].cx - 20), y: px(274), w: px(40), h: px(18),
     align: "center", valign: "middle", margin: 0,
   });
 }
@@ -139,9 +154,9 @@ for (let c = 0; c < 3; c++) {
 // parens with a "..." header) — omitted by every earlier build, flagged by all
 // judges.
 slide.addText("...", {
-  x: px(428), y: px(117), w: px(48), h: px(22),
+  x: px(420), y: px(115), w: px(56), h: px(24),
   align: "center", valign: "middle", margin: 0,
-  fontFace: A, fontSize: 13, bold: true, italic: true, color: "000000",
+  fontFace: A, fontSize: 18, bold: true, italic: true, color: "000000",
 });
 slide.addText("(", {
   x: px(420), y: px(141), w: px(20), h: px(155),
@@ -335,6 +350,10 @@ slide.addShape(pptx.ShapeType.rect, {
   fill: { color: "FFFFFF" }, line: { color: "C00000", width: 1 },
 });
 
+// Original layout (measured): Y glyphs y360..371 with their underlines at
+// y373..374 under Y (x586..596) and W (x644..659) — the X underline sits at
+// y382..383 with a separate second stroke below; "Where:" line-1 glyphs at
+// y397..411; line-2 at y443..473. The "=" is drawn at y363/y367.
 slide.addText([
   { text: "Y", options: { fontFace: A, fontSize: 16, bold: true, color: "000000", underline: true } },
   { text: " = ", options: { fontFace: A, fontSize: 16, bold: true, color: "000000" } },
@@ -342,7 +361,7 @@ slide.addText([
   { text: " ", options: { fontFace: A, fontSize: 16, bold: true, color: "000000" } },
   { text: "W", options: { fontFace: A, fontSize: 16, bold: true, color: "000000", underline: true } },
 ], {
-  x: px(br_x + 15), y: px(br_y + 15), w: px(br_w - 30), h: px(28),
+  x: px(br_x + 2), y: px(365), w: px(br_w - 4), h: px(30),
   align: "left", valign: "top", margin: 0,
 });
 
@@ -352,7 +371,7 @@ slide.addText([
   { text: "N×d+1", options: { fontFace: A, fontSize: 13, color: "000000", italic: true, subscript: true } },
   { text: " is a matrix", options: { fontFace: A, fontSize: 13, color: "000000", italic: true } },
 ], {
-  x: px(br_x + 12), y: px(br_y + 45), w: px(br_w - 24), h: px(46),
+  x: px(br_x + 12), y: px(br_y + 74), w: px(br_w - 24), h: px(22),
   align: "left", valign: "top", margin: 0,
 });
 
@@ -361,7 +380,7 @@ slide.addText([
   { text: "N×1", options: { fontFace: A, fontSize: 13, color: "000000", italic: true, subscript: true } },
   { text: " is labels vector", options: { fontFace: A, fontSize: 13, color: "000000", italic: true } },
 ], {
-  x: px(br_x + 12), y: px(br_y + 95), w: px(br_w - 24), h: px(46),
+  x: px(br_x + 12), y: px(br_y + 120), w: px(br_w - 24), h: px(22),
   align: "left", valign: "top", margin: 0,
 });
 

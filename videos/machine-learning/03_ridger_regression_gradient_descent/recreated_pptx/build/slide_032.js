@@ -56,13 +56,15 @@ drawHouseChrome(pptx, slide, { numeral: 32 });
 // ------------------------------------------------------------------ TITLE
 // ONE line, ink x81..557, y66..88. Run widths measured 158 / 177 / 111 px;
 // Times/Liberation Serif Bold 21pt gives 158.7 / 178.8 / 111.1.
+// Measured gaps between runs: 19px (red->green) and 11px (green->blue);
+// 3 and 2 spaces at 21.2pt reproduce them (render_7 used 2/1 and fell 10px short).
 slide.addText(
   [
-    { text: "Convex Function,  ", options: { fontSize: 21, bold: true, color: "C00000", fontFace: A } },
-    { text: "Learning Rate =0.4, ", options: { fontSize: 21, bold: true, color: "008000", fontFace: A } },
-    { text: "Start at X=3", options: { fontSize: 21, bold: true, color: "0000FF", fontFace: A } },
+    { text: "Convex Function,   ", options: { fontSize: 21.2, bold: true, color: "C00000", fontFace: A } },
+    { text: "Learning Rate =0.4,  ", options: { fontSize: 21.2, bold: true, color: "008000", fontFace: A } },
+    { text: "Start at X=3", options: { fontSize: 21.2, bold: true, color: "0000FF", fontFace: A } },
   ],
-  { x: px(80), y: px(62), w: px(520), h: px(30), margin: 0, align: "left", valign: "top" }
+  { x: px(80), y: px(59.5), w: px(520), h: px(30), margin: 0, align: "left", valign: "top" }
 );
 
 // ------------------------------------------------------- PARAMETER TABLE

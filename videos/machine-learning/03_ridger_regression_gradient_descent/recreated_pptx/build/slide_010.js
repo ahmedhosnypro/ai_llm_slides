@@ -22,9 +22,9 @@
 // deliberately NOT drawn (deck judge ground rule (c)).
 //
 // Z-ORDER: parent underlay (chrome, panels incl. grid + periwinkle residual
-// connectors + navy borders, fitted lines, axes, caption boxes) → delta →
-// points + captions (parent blocks, drawn on top so the orange dots cover the
-// delta line ends exactly as on the frame).
+// connectors + navy borders, axes, caption boxes) → delta → fitted lines +
+// points + captions. This matches the frame: the blue line is drawn OVER the
+// pale-rose projection dashes, and the orange dots cover the delta line ends.
 //
 // All delta coordinates are PIL-measured on unique_slides/slide_010.jpg
 // (960x540 frame px; 1 px = 1 pt). Measured 2026-10-24:
@@ -115,8 +115,10 @@ function drawDelta(pptx, slide) {
   for (const d of DELTA) {
     // pale-rose projection pairs (drawn first; the green vertical crosses them)
     for (const p of d.pairs) {
-      // horizontal dashed line from the y-axis out to the point's left edge
-      seg(pptx, slide, d.axisHead.baseX, p.hy, p.cx - 4, p.hy, PALE, 1, "dash");
+      // horizontal dashed line from the y-axis out past the point (the dot --
+      // drawn later by the parent's points block -- covers the middle exactly
+      // as on the frame, whose last dash emerges ~2px right of the dot)
+      seg(pptx, slide, d.axisHead.baseX, p.hy, p.cx + 5, p.hy, PALE, 1, "dash");
       // dark-red left arrowhead at the y-axis
       headLeft(pptx, slide, d.axisHead.tipX, d.axisHead.baseX, p.hy,
                d.axisHead.halfH, RED);
@@ -142,20 +144,22 @@ const pptx = new pptxgen();
 pptx.layout = "LAYOUT_WIDE";
 const slide = pptx.addSlide();
 
-// stage 1 — parent underlay (skip the parent's marks + equation boxes: slide 010
-// has neither; the caption boxes + captions themselves are inherited)
+// stage 1 — parent underlay (chrome, panels incl. grid + residual connectors,
+// axes, caption boxes; the parent's 'marks' and 'eqBoxes' do not exist on
+// slide 010 and are skipped)
 base.renderBase(pptx, slide, {
   numeral: 10,
-  only: { chrome: true, panels: true, fittedLines: true, axes: true, capBoxes: true },
+  only: { chrome: true, panels: true, axes: true, capBoxes: true },
 });
 
-// stage 2 — slide 010's own measured delta
+// stage 2 — slide 010's own measured delta (under the fitted line: on the
+// frame the blue line is drawn OVER the pale-rose projection dashes)
 drawDelta(pptx, slide);
 
-// stage 3 — parent points + captions on top (dot covers the delta line ends)
+// stage 3 — parent fitted lines, points + captions on top
 base.renderBase(pptx, slide, {
   numeral: 10,
-  only: { points: true, captions: true },
+  only: { fittedLines: true, points: true, captions: true },
 });
 
 pptx.writeFile({ fileName: OUT }).then(() => console.log("wrote " + OUT));
