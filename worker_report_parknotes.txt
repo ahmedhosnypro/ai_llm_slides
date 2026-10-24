@@ -1,0 +1,36 @@
+PARK NOTES for slide 003 (if interrupted before certification):
+
+STATE (as of this run):
+- render_18 built from fixed slide_003.js (leading "1" restored + matrix shifted
+  to the ORIGINAL's compact 5-column layout 209/237/283/329/369, bands 205..395,
+  bracket x398, N x d+1 label x247). house_chrome PASS. banked build_attempt_17.js
+  = pre-fix (= render_17 = the current 09:15 pptx).
+- Leg A (Template A attempt 18) + Leg B (Template B matrix crop, attempt 18)
+  payloads are byte-generated at:
+    scratch/tmp/payload18.txt   (full-slide; NNN=003, K=18)
+    scratch/tmp/cropB18.txt     (crop; NNN=003, K=18, NAME=matrix)
+  crop pairs cut (matched eff scale LANCZOS x H_render/540):
+    qa/slide003/crop_18_matrix_{render,orig}.png
+    qa/slide003/crop_18_topbox_{render,orig}.png
+
+RESUME (run from ai_llm_slides):
+  # Leg A
+  NODE_PATH=$(npm root -g) bash scripts/16_vision_gate.sh timeout 1700 python3 \
+    .agents/image-analysis/scripts/analyze_image.py comparison \
+    videos/.../recreated_pptx/qa/slide003/render_18.png \
+    videos/.../unique_slides/slide_003.jpg \
+    --view "Slide 003 recreation attempt 18 — fidelity check vs original lecture frame" \
+    --capture "IMG1=150dpi PNG render of a 13.33x7.5in PPTX; IMG2=original lecture video frame" \
+    --thinking high --max-tokens 65536 --timeout 600 --rounds 1 --tries 1 \
+    --transcript videos/.../recreated_pptx/qa/slide003/judge_attempt_18.txt \
+    -p "$(cat scratch/tmp/payload18.txt)"
+  # Leg B (matrix crop)
+  NODE_PATH=$(npm root -g) bash scripts/16_vision_gate.sh timeout 1700 python3 \
+    .agents/image-analysis/scripts/analyze_image.py comparison \
+    videos/.../qa/slide003/crop_18_matrix_render.png \
+    videos/.../qa/slide003/crop_18_matrix_orig.png \
+    --view "Slide 003 zoomed crop matrix — render vs original at matched scale (attempt 18)" \
+    --capture "IMG1=zoomed crop of a 150dpi PPTX render; IMG2=the SAME slide-space region cropped from the original lecture frame and upscaled to match IMG1's effective scale; region: bottom-left design matrix — 1/x columns, ellipsis rows, dimension labels, weight vector" \
+    --thinking high --max-tokens 65536 --timeout 600 --rounds 1 --tries 1 \
+    --transcript videos/.../qa/slide003/crop_18_matrix_judge.txt \
+    -p "$(cat scratch/tmp/cropB18.txt)"

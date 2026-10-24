@@ -210,11 +210,12 @@ the first iterate). Equations on the frame: none — the update rule is drawn, n
    > undesirable local minima the learning rate is often varied during training either in
    > accordance to a learning rate schedule or by using an adaptive learning rate."
 
-   Local verification (this worker's computation against the certified curve, not a web claim):
-   on the convex quadratic `C(x) = 0.00395282·(x−450.41)²` the nine-dot chain gives cost steps of
-   28.72, 28.47, 25.72, 19.21, 13.41, 9.83, 7.09, 4.26 fpx and iterate vertical spacing of
-   46.47, 31.91, 24.57, 14.64, 9.45, 6.29, 5.01, 4.15 fpx — monotone decreasing in both, no
-   overshoot past the minimum. This matches *Gradient descent*'s qualitative statements
+   Local verification (this worker's computation in this window against the certified curve, not a
+   web claim): on the convex quadratic `C(x) = 0.00395282·(x−450.41)²` the nine-dot chain gives
+   cost steps of 28.72, 28.47, 25.72, 19.21, 13.41, 9.83, 7.09, 4.26 fpx and per-interval
+   downhill magnitudes (image-y drop) of 46.47, 31.91, 24.57, 14.64, 9.45, 6.29, 5.01, 4.15 fpx —
+   both monotone decreasing, with no dot overshooting the minimum, and the last step to the
+   yellow dot a further 1.81 fpx of cost over 1.35 fpx. This matches *Gradient descent*'s qualitative statements
    ("strongly convex and lipschitz smooth … **gradient descent converges linearly with a fixed
    step size**") and the decaying-step behaviour both pages describe.
 6. **The bowl is a convex quadratic with exactly one minimum — "Minimum" + θ̂.** CONFIRMED by
@@ -258,13 +259,16 @@ the first iterate). Equations on the frame: none — the update rule is drawn, n
    the global solution." The frame's dashed drop-line under the first iterate marks that
    arbitrary starting abscissa.
 9. **The nine-dot chain has no numeric η, and must not be "corrected" into one.** The frame
-   states no numeric learning rate; a least-squares fit over the measured x-chain gives η ≈ 20.45
-   frame-px units that reproduces the chain only to ±23.5 fpx, with per-interval implied η
-   spanning 13.9 → 55.7 (previous window's computation, re-checked against the shipped
-   `build/slide_027.js` geometry). This is consistent with the sources, which never require a
-   constant η ("the value of the step size η is allowed to change at every iteration"), and the
-   deck's own worked examples use a specific η only when the frame says so (slides 030–032).
-   Honest note so no later worker "fixes" the trajectory into a plotted constant-η run.
+   states no numeric learning rate, and no constant-η walk fits the measured x-chain: the
+   previous window's least-squares fit gave η = 20.45 frame-px units reproducing the chain only
+   to ±23.5 fpx max, with per-interval implied η ranging 13.9 → 55.7. This window independently
+   re-derived the geometry from the shipped `build/slide_027.js` (`CURVE.a/h/k`, `BLUE_DOTS`) —
+   a minimax scan gives η ≈ 21.16 at 10.8 fpx max residual, i.e. a different "best" η depending
+   on the fit norm, which is the signature of a chain that is not a plotted constant-η run. This
+   is consistent with the sources, which never require a constant η ("the value of the step size
+   η is allowed to change at every iteration"), and the deck's own worked examples use a specific
+   η only when the frame says so (slides 030–032). Honest note so no later worker "fixes" the
+   trajectory into a plotted constant-η run.
 
 ## Course-authored elements (no source counterpart — do NOT "fix" to source)
 
