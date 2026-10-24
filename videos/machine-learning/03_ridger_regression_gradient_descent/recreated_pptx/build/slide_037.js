@@ -70,6 +70,8 @@ const CREAM = "FEFFE8";
 const WHITE = "FFFFFF";
 const BROWN = "865E3A";
 const BRIGHT_RED = "FF0000";
+const GREEN = "4A8B37"; // measured delta_i / X_i term ink in the original equation row
+const NAVY = "3426A0"; // measured superscript-T ink in the original equation row
 const GREEN_FILL = "DFFFEE";
 const GREEN_EDGE = "99CC99";
 
@@ -88,7 +90,7 @@ function lineAt(runs, leftPx, topPx, size, opts = {}) {
     })),
     {
       x: px(leftPx), y: px(topPx), w: opts.w || px(890 - leftPx),
-      h: px(size * 1.35),
+      h: opts.h || px(size * 1.35),
       margin: 0, valign: "top", align: "left",
     }
   );
@@ -209,26 +211,26 @@ slide.addImage({
 lineAt(
   [
     { text: " " },
-    { text: "\u03b4", o: { italic: true } },
-    { text: "_i", o: { italic: true, subscript: true } },
-    { text: " W" },
-    { text: "T", o: { superscript: true } },
-    { text: " X" },
+    { text: "\u03b4", o: { color: GREEN, italic: true } },
     { text: "_i", o: { subscript: true } },
+    { text: " W", o: { color: GREEN } },
+    { text: "T", o: { color: NAVY, superscript: true } },
+    { text: " X" },
+    { text: "_i", o: { subscript: true, color: GREEN } },
     { text: " " },
-    { text: "\u21d2", o: { color: BRIGHT_RED } },
+    { text: "\u21d2" },
     { text: " (W" },
     { text: "T", o: { superscript: true } },
     { text: " X" },
     { text: "_i", o: { subscript: true } },
     { text: ") takes " },
-    { text: "positive", o: { color: BRIGHT_RED, italic: true } },
+    { text: "positive" },
     { text: " and negative values and " },
-    { text: "\u03b4", o: { color: BRIGHT_RED, italic: true } },
-    { text: "_i", o: { color: BRIGHT_RED, italic: true, subscript: true } },
+    { text: "\u03b4", o: { color: GREEN, italic: true } },
+    { text: "_i", o: { subscript: true, color: GREEN } },
     { text: " has the same sign" },
   ],
-  295, 263, BODY
+  295, 263, BODY, { h: px(24) }
 );
 
 lineAt(
@@ -281,10 +283,10 @@ slide.addImage({
 lineAt(
   [
     { text: " " },
-    { text: "\u03b4", o: { italic: true } },
-    { text: "_i", o: { italic: true, subscript: true } },
-    { text: " X" },
-    { text: "_i", o: { subscript: true } },
+    { text: "\u03b4", o: { color: GREEN, italic: true } },
+    { text: "_i", o: { color: GREEN, italic: true, subscript: true } },
+    { text: " X", o: { color: GREEN } },
+    { text: "_i", o: { color: GREEN, subscript: true } },
   ],
   747, 404, BODY
 );
@@ -312,10 +314,10 @@ slide.addImage({
 lineAt(
   [
     { text: " " },
-    { text: "\u03b4", o: { italic: true } },
-    { text: "_i", o: { italic: true, subscript: true } },
-    { text: " X" },
-    { text: "_i", o: { subscript: true } },
+    { text: "\u03b4", o: { color: GREEN, italic: true } },
+    { text: "_i", o: { color: GREEN, italic: true, subscript: true } },
+    { text: " X", o: { color: GREEN } },
+    { text: "_i", o: { color: GREEN, subscript: true } },
   ],
   460, 472, BODY
 );

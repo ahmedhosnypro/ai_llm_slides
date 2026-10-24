@@ -119,8 +119,8 @@ slide.addText([
 slide.addText([
   { text: "This is called ", options: { color: "000000", fontSize: 18, bold: false, fontFace: "Arial" } },
   { text: "L\u2082 regularization", options: { color: "0000FF", fontSize: 18, bold: false, fontFace: "Arial" } },
-  { text: " (also known as ", options: { color: "000000", fontSize: 18, bold: false, fontFace: "Arial" } },
-  { text: "Ridge Regularization)", options: { color: "0000FF", fontSize: 18, bold: false, fontFace: "Arial" } },
+  { text: " (also know as ", options: { color: "000000", fontSize: 18, bold: false, fontFace: "Arial" } },
+  { text: "Ridge Regularization )", options: { color: "0000FF", fontSize: 18, bold: false, fontFace: "Arial" } },
 ], {
   x: 146 / 72, y: 4.9097, w: 9.5000, h: 0.3472,
   margin: 0, valign: "middle",

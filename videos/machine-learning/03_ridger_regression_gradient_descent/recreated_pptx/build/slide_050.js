@@ -72,6 +72,7 @@ const PINK = "F9E8FA";        // measured pink box fill
 const MARK_BLUE = "1C3D5E";   // measured blue marker (28,61,94)
 const MARK_MAG = "FF94FF";    // measured magenta marker (255,148,255)
 const MARK_RED = "D2000F";    // measured red triangle / blob (210,0,15)
+const GREEN = "008000";       // measured "Zero" green in the L4 key caption
 
 // chart axis mapping (measured least squares over the 7 marker centres)
 const X2PX = (x) => 362.7 + 52.725 * x;
@@ -151,34 +152,47 @@ s.addText("REPEAT using Step", {
   s.addImage({ path: EQ("eq_050_eta.png"), x: fx(270), y: fx(73), w: m.w_in, h: m.h_in });
 })();
 
-// L3: "Check classes of" caption
+// L3: "Check classes of" caption (measured ink x542..626, y86..96)
 s.addText("Check classes of", {
-  x: fx(266), y: fx(84), w: fw(110), h: fw(15),
+  x: fx(542), y: fx(84), w: fw(110), h: fw(15),
   fontFace: FONT, fontSize: 11, color: BLACK, align: "left", valign: "middle", margin: 0,
 });
 
-// L3/L4: the three Z column vectors with subscript labels (measured Z labels + parens)
+// L3/L4: the three Z column vectors with subscript labels (measured Z labels + parens).
+// Measured: label x641..656 / x664..678 / x684..702 y74..85; vector x640..658 /
+// x663..680 / x684..702 y86..120 (pitch 23).
 const ZVEC = [
-  { label: "Z", sub: "1", img: "eq_050_Z1.png", x: 320 },
-  { label: "Z", sub: "2", img: "eq_050_Z2.png", x: 430 },
-  { label: "Z", sub: "3", img: "eq_050_Z3.png", x: 540 },
+  { label: "Z", sub: "1", img: "eq_050_Z1.png", x: 641 },
+  { label: "Z", sub: "2", img: "eq_050_Z2.png", x: 664 },
+  { label: "Z", sub: "3", img: "eq_050_Z3.png", x: 686 },
 ];
 ZVEC.forEach(function (z) {
   s.addText([
     { text: "Z", options: { fontSize: 12, color: BLACK, italic: true } },
     { text: z.sub, options: { fontSize: 9, color: BLACK, italic: true, subscript: true } },
   ], {
-    x: fx(z.x), y: fx(86), w: fw(24), h: fw(12),
+    x: fx(z.x), y: fx(74), w: fw(16), h: fw(12),
     fontFace: FONT, align: "left", valign: "middle", margin: 0,
   });
   const m = eqInfo(z.img);
-  s.addImage({ path: EQ(z.img), x: fx(z.x + 2), y: fx(99), w: m.w_in, h: m.h_in });
+  s.addImage({ path: EQ(z.img), x: fx(z.x), y: fx(86), w: m.w_in, h: m.h_in });
 });
 
-// L4: the row of values under the Z labels
-s.addText("(0,0)   (7,6)   (3,2)", {
-  x: fx(266), y: fx(112), w: fw(200), h: fw(13),
-  fontFace: FONT, fontSize: 10, color: BLACK, align: "left", valign: "middle", margin: 0,
+// L4: the key caption under the math lines — measured x240..510 y110..124:
+// "C1 positive  C2 negative  Zero is unaccepted" with C1 red (x240..253),
+// C2 blue, Zero green (x394..423), remainder black.
+s.addText([
+  { text: "C", options: { color: RED, bold: true } },
+  { text: "1", options: { color: RED, bold: true, subscript: true } },
+  { text: " positive   ", options: { color: BLACK } },
+  { text: "C", options: { color: BLUE, bold: true } },
+  { text: "2", options: { color: BLUE, bold: true, subscript: true } },
+  { text: " negative   ", options: { color: BLACK } },
+  { text: "Zero", options: { color: GREEN } },
+  { text: " is unaccepted", options: { color: BLACK } },
+], {
+  x: fx(240), y: fx(106), w: fw(280), h: fw(20),
+  fontFace: FONT, fontSize: 13, align: "left", valign: "middle", margin: 0,
 });
 
 // ================= 4. PINK WEIGHT BOX (top-right) =================
@@ -343,7 +357,7 @@ s.addShape(pptx.ShapeType.rect, {
 });
 s.addText("Augmented Vectors (from Top)", {
   x: fx(82), y: fx(145), w: fw(155), h: fw(15),
-  fontFace: FONT, fontSize: 12, color: NAVY, bold: true,
+  fontFace: FONT, fontSize: 10, color: NAVY, bold: true,
   align: "left", valign: "middle", margin: 0,
 });
 

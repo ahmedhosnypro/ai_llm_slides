@@ -24,13 +24,17 @@
 //   Place against the ORIGINAL's measured INK box, never by subtracting a 600-dpi
 //   baseline_px from a frame-px target (that mixed the two scales and threw every
 //   equation a block high).
-//   original ink boxes / chosen font sizes (ink width matched within 2%):
-//     xtx     red  x97..140  y133..156  fs22   |X^T X|
-//     det0    red  x341..435 y187..212  fs22   |X^T X| = 0
-//     d5685   red  x337..445 y354..378  fs18   |X^T X| = 5685
-//     regmat  blue x89..255  y300..326  fs36   (X^T X + lambda I)
-//     lam3    grn  x245..288 y304..321  fs18   lambda = 3
-//     invexpr blue x154..288 y466..492  fs24   (X^T X + lambda I)^-1
+//   original ink boxes / chosen font sizes (multi-colour composites, calibrated so the
+//   TOTAL ink width matches the original within ~2%):
+//     xtx     red  x97..141  y133..157  fs22       X^T X
+//     det0    ink  x341..435 y187..212  fs22       |X^T X| = 0   (red X^TX 345..390)
+//     d5685   ink  x338..464 y354..379  fs20.5     |X^T X| = 5685 (red X^TX 342..387)
+//     regmat  ink  x89..206  y300..326  fs24       (X^T X + lambda I)
+//     lam3    grn  x245..289 y304..321  fs18       lambda = 3
+//     invexpr ink  x155..289 y466..492  fs24       (X^T X + lambda I)^-1
+//   Equations are MULTI-COLOUR in the original (typography_notes): X^T X dark red,
+//   "+ lambda I" blue, lambda=3 green, rest near-black - composed per-segment by
+//   qa/slide021/compose_eq_021.py (probe: scratch/tmp/probe021_fontsets.py).
 //
 // TABLES (3x3, gridlines gray): P1 x97..303 y173..227 | P2 x89..295 y340..395
 //                               P3 x421..626 y457..511
@@ -123,7 +127,7 @@ for (const p of PANELS) {
 }
 
 // ── 3. TOP PANEL (P1): singular X^T X, det 0 -> No Inverse ────────────────────
-eq("eq_021_xtx.png", 97, 133, 374, 185);
+eq("eq_021_xtx.png", 97, 133, 375, 186);
 
 const topTableData = [
   [{ text: "14" }, { text: "10" }, { text: "15" }],
@@ -138,15 +142,15 @@ slide.addTable(topTableData, {
   row: { h: px(54 / 3) },
 });
 
-eq("eq_021_det0.png", 341, 187, 793, 229);
+eq("eq_021_det0.png", 341, 187, 794, 230);
 arrow(460, 201, 476, 201, BLUE, 2);
 textAt("Singular Matrix", 492, 192, 212, { boxW: 160, fontSize: 20, color: BLACK });
 arrow(660, 201, 677, 201, BLUE, 2);
 textAt("No Inverse", 704, 193, 207, { boxW: 120, fontSize: 21, italic: true, color: RED });
 
 // ── 4. MIDDLE PANEL (P2): (X^T X + lambda I) lambda=3, det 5685 -> Inverse Exists ──
-eq("eq_021_regmat.png", 89, 300, 1401, 331);
-eq("eq_021_lambda3.png", 245, 304, 378, 131);
+eq("eq_021_regmat.png", 89, 300, 940, 227);
+eq("eq_021_lambda3.png", 245, 304, 380, 132);
 
 const midTableData = [
   [
@@ -173,14 +177,14 @@ slide.addTable(midTableData, {
   row: { h: px(55 / 3) },
 });
 
-eq("eq_021_det5685.png", 337, 354, 935, 191);
+eq("eq_021_det5685.png", 338, 354, 1064, 215);
 arrow(489, 368, 505, 368, BLUE, 2);
-textAt("Non-Singular Matrix", 495, 358, 378, { boxW: 210, fontSize: 18, color: BLACK });
+textAt("Non-Singular Matrix", 495, 358, 378, { boxW: 210, fontSize: 23.5, color: BLACK });
 arrow(728, 368, 744, 368, BLUE, 2);
 textAt("Inverse Exists", 761, 359, 373, { boxW: 140, fontSize: 21, italic: true, color: RED });
 
 // ── 5. BOTTOM PANEL (P3): (X^T X + lambda I)^-1 -> inverse matrix ─────────────
-eq("eq_021_invexpr.png", 154, 466, 1152, 226);
+eq("eq_021_invexpr.png", 155, 466, 1153, 227);
 arrow(364, 480, 380, 480, BLUE, 2);
 
 const botTableData = [

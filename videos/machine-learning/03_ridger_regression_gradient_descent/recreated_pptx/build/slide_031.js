@@ -20,8 +20,8 @@
 //     Row 1: "step" | "0.3"
 //     Row 2: "initial X" | "3"
 //     Row 3: "delta" | "0.1"
-//     Label cells: yellow FFFFF99 fill, black text
-//     Value cells: white FFFFFF fill, black text
+//     Label cells: green EAFFD5, green EAFFD5, pink F2C4C6 (MEASURED, not spec yellow)
+//     Value cells: warm grey E7E9E6 (MEASURED, not spec white)
 //     Grid lines: thin black
 //
 //   Formula box (top-center, x ~ 330-640, y ~ 185-200):
@@ -92,7 +92,7 @@ const A = "Arial";
 // starts x 260, blue "Start at X=3" starts x 446 and runs to x ~530. Stacking
 // the three segments on separate lines was a MAJOR line-break deviation.
 // ============================================================
-const titleY = px(66);
+const titleY = px(60);
 const titleX = px(81);
 const titleSize = 22;
 
@@ -101,7 +101,7 @@ slide.addText([
   { text: "  Learning Rate =0.3,", options: { color: "008000" } },
   { text: "  Start at X=3", options: { color: "0000FF" } },
 ], {
-  x: titleX, y: titleY, w: px(560), h: px(24),
+  x: titleX, y: titleY, w: px(560), h: px(22),
   fontSize: titleSize, bold: true, fontFace: A, margin: 0,
   valign: "middle",
 });
@@ -122,23 +122,28 @@ const pRows = [
   { label: "initial X", value: "3" },
   { label: "delta", value: "0.1" },
 ];
+// Cell fills MEASURED as the modal colour of each cell interior in the frame:
+// labels are green / green / pink, values are a light warm grey. The old build
+// used yellow FFFF99 + white FFFFFF.
+const pLabelFills = ["EAFFD5", "EAFFD5", "F2C4C6"];
+const pValueFill = "E7E9E6";
 
 pRows.forEach((row, i) => {
   const y = pTableY + i * pRowH;
-  // Label cell (yellow)
+  // Label cell
   slide.addShape(pptx.ShapeType.rect, {
     x: pTableX, y: y, w: pLabelW, h: pRowH,
-    fill: { color: "FFFF99" }, line: { color: "000000", width: 0.5 },
+    fill: { color: pLabelFills[i] }, line: { color: "000000", width: 0.5 },
   });
   slide.addText(row.label, {
     x: pTableX, y: y, w: pLabelW, h: pRowH,
     align: "center", valign: "middle", fontSize: 12, bold: false,
     color: "000000", fontFace: A, margin: 0,
   });
-  // Value cell (white)
+  // Value cell
   slide.addShape(pptx.ShapeType.rect, {
     x: pTableX + pLabelW, y: y, w: pValueW, h: pRowH,
-    fill: { color: "FFFFFF" }, line: { color: "000000", width: 0.5 },
+    fill: { color: pValueFill }, line: { color: "000000", width: 0.5 },
   });
   slide.addText(row.value, {
     x: pTableX + pLabelW, y: y, w: pValueW, h: pRowH,

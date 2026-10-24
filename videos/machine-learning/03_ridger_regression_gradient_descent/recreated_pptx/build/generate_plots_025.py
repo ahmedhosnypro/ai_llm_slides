@@ -1,30 +1,43 @@
 #!/usr/bin/env python3
 """Generate the four loss-function-shape plots for slide 025.
 
-Regions measured from unique_slides/slide_025.jpg (960x540, 1px = 1pt = 1/72in):
-  TL concave dome   x 60..460  y 116..289
-  TR convex bowl    x 480..898 y 116..316
-  BL non-convex     x 60..460  y 296..527
-  BR gradient path  x 480..898 y 346..530
-(the right edge stops at 898 so the house chrome's right stroke at x901 stays
-visible; the left column starts at x60 so the left stroke at x58.5 stays visible)
+Regions measured from unique_slides/slide_025.jpg (960x540, 1px = 1pt = 1/72in).
+The original does NOT stretch each plot image over its whole quadrant: every plot
+is a SMALL white figure with a red border inset ~3px inside its own image edge,
+and the label boxes sit in the gutters beside them. Measured figure boxes:
+
+  TL concave dome   x 85..265  y 115..288   (180x173 px)
+  TR convex bowl    x 616..879 y 115..317   (263x202 px)
+  BL non-convex     x 83..376  y 290..527   (293x237 px)
+  BR gradient path  x 615..880 y 344..531   (265x187 px)
+
+and the red rectangles measured inside them are exactly those boxes inset by 3px
+on every side (TL x88..262 y118..285, TR x619..876 y118..314,
+BL x86..373 y293..524, BR x618..877 y347..528).
+
+Each PNG is 300dpi with figsize = box_px/72, placed on the slide at box_px/72
+inches, so 1 slide px = 1 PNG px: no rescale, no resampling ripple.
 
 Red reference lines in the original are pure HORIZONTAL strokes (measured:
-uniform 1-2px runs at constant frame y, x-extents below), i.e. 2-D overlays
-rather than 3-D level rings -- drawn here as figure-fraction Line2D artists
-so they land at the measured rows exactly.
+uniform 1-2px runs at constant frame y, x-extents below), i.e. 2-D figure-fraction
+overlays -- drawn here as figure-fraction Line2D artists so they land at the
+measured rows exactly.
 
   TL  y168 x121..267   y186 x110..279
   TR  y222 x619..873   y234 x619..866
   BL  y418 x124..381
-  BR  none (the blob at y371..396 in the BR region is jet colormap, not a line)
+  BR  none
 
-Black annotations in BL measured at (slide px):
-  "Global Maxima" ~x242..268 y304..319, "Local Maxima" ~x286..315 y337..352,
-  "Local Minima"  ~x286..311 y390..399, "Global Minima" ~x145..201 y439..465
+BL annotations measured in the original (two-line text bands + leader strokes):
+  "Global Maxima"  x242..265 y304..309  + leaders x187..204 y319..340, x178..184 y347..364
+  "Local Maxima"   x282..342 y386..405
+  "Local Minima"   x301..326 y450..465
+  "Global Minima"  x145..167 y439..470
 
-Surfaces are single dense analytic lattices (90-120 grid) -- no ripple: the
-second difference of the gradient-descent trajectory is asserted smooth below.
+The 3-D cube is auto-fitted so surface + axis labels fill the small figure
+(the originals' content fills ~97% of their box); without the zoom the default
+margins leave the cube at ~25% of the box, which is what made attempt 1's
+surfaces read as "a small bowl floating in white".
 """
 import matplotlib
 matplotlib.use("Agg")
@@ -42,15 +55,21 @@ RED = (0.75, 0.0, 0.0)          # C00000 family nominal
 BLK = "black"
 
 PLOTS = {
-    "tl": dict(x0=60,  y0=116, w=400, h=174, elev=34, azim=-64,
-               redrect=(88, 114, 409, 291)),
-    "tr": dict(x0=480, y0=116, w=418, h=200, elev=34, azim=-64,
-               redrect=(619, 118, 876, 314)),
-    "bl": dict(x0=60,  y0=296, w=400, h=231, elev=30, azim=-62,
-               redrect=(80, 292, 472, 527)),
-    "br": dict(x0=480, y0=346, w=418, h=184, elev=30, azim=-62,
-               redrect=(466, 342, 882, 532)),
+    "tl": dict(x0=85,  y0=115, w=180, h=173, elev=34, azim=-64),
+    "tr": dict(x0=616, y0=115, w=263, h=202, elev=34, azim=-64),
+    "bl": dict(x0=83,  y0=290, w=293, h=237, elev=30, azim=-62),
+    "br": dict(x0=615, y0=344, w=265, h=187, elev=30, azim=-62),
 }
+
+FIT_TARGET = 0.93                # content fraction of the figure box
+FIT_ZOOMS = {"tl": 1.0, "tr": 1.0, "bl": 1.0, "br": 1.0}
+
+
+def figure(spec):
+    fig = plt.figure(figsize=(spec["w"] / 72.0, spec["h"] / 72.0), dpi=DPI)
+    ax = fig.add_axes([0.0, 0.0, 1.0, 1.0], projection="3d")
+    ax.view_init(elev=spec["elev"], azim=spec["azim"])
+    return fig, ax
 
 
 def axis_style(ax):
@@ -62,6 +81,60 @@ def axis_style(ax):
     for t in ax.get_xticklabels() + ax.get_yticklabels() + ax.get_zticklabels():
         t.set_fontsize(7.5)
         t.set_color("#444444")
+
+
+def surface_box(fig):
+    """Bounding box of the 3-D surface's own projection (saturated pixels).
+
+    Label ink is neutral gray/dark (low saturation), so this isolates the
+    plotted surface: the cube must be zoomed on ITS extent, otherwise the
+    tick/annotation labels span the figure height first and the surface is
+    left at a fraction of the box.
+    """
+    fig.canvas.draw()
+    buf = np.asarray(fig.canvas.buffer_rgba())
+    rgb = buf[:, :, :3].astype(int)
+    mx = rgb.max(axis=2); mn = rgb.min(axis=2)
+    surf = (mx - mn) > 22
+    ys, xs = np.where(surf)
+    if not len(xs):
+        return None
+    return xs.min(), xs.max(), ys.min(), ys.max(), buf.shape[1], buf.shape[0]
+
+
+def data_aspect(ax):
+    (x0, x1), (y0, y1), (z0, z1) = (ax.get_xlim(), ax.get_ylim(), ax.get_zlim())
+    return (max(x1 - x0, 1e-6), max(y1 - y0, 1e-6), max(z1 - z0, 1e-6))
+
+
+def fit_zoom(fig, ax, name, target=0.80, rounds=9):
+    """Zoom the 3-D cube until the surface's projection fills `target` of the
+    figure box (leaving the side/bottom margin the axis + annotation labels
+    occupy, as in the original)."""
+    z = FIT_ZOOMS.get(name, 1.0)
+    ax.set_box_aspect(data_aspect(ax), zoom=z)
+    for _ in range(rounds):
+        bb = surface_box(fig)
+        if bb is None:
+            break
+        x0, x1, y0, y1, W, H = bb
+        fx, fy = (x1 - x0 + 1) / W, (y1 - y0 + 1) / H
+        if abs(fx - target) < 0.02 and abs(fy - 0.80) < 0.03:
+            break
+        # grow the smaller axis toward the target, keep the other under it
+        need_x, need_y = target / max(fx, 1e-3), 0.80 / max(fy, 1e-3)
+        z2 = min(z * max(1.0, min(need_x, need_y)) * 1.03, 60.0)
+        if z2 <= z + 0.005:
+            break
+        z = z2
+        ax.set_box_aspect(data_aspect(ax), zoom=z)
+    bb = surface_box(fig)
+    FIT_ZOOMS[name] = z
+    if bb:
+        x0, x1, y0, y1, W, H = bb
+        print("  fit %-3s zoom=%.2f surface %.2fx%.2f of %dx%d"
+              % (name, z, (x1 - x0 + 1) / W, (y1 - y0 + 1) / H, W, H))
+    return z
 
 
 def hlines(fig, spec, slide_rows):
@@ -78,40 +151,20 @@ def hlines(fig, spec, slide_rows):
                               color=RED, lw=1.6, zorder=20, solid_capstyle="butt"))
 
 
-def redrect(fig, spec):
-    """Draw the thin red rectangle enclosing each plot.
+def redrect(fig, spec, inset=3):
+    """Thin red border inset `inset` px from the PNG's own bounds.
 
-    The original encloses every plot in a thin red frame (judge finding 2,
-    attempt 1). The measured red sides sit at/just outside each plot's own
-    figure box, so the rectangle is drawn on the PNG's own bounds inset by
-    ~2 px: that keeps all four sides fully inside the image (a rect drawn at a
-    position outside the image gets clipped and half the frame disappears) and
-    gives one clean rectangle per quadrant.
+    A rectangle drawn at or outside the image edge gets clipped and half the
+    frame vanishes; the original's borders sit ~3px inside their image.
     """
-    rx0 = spec["x0"] + 2
-    ry0 = spec["y0"] + 2
-    rx1 = spec["x0"] + spec["w"] - 2
-    ry1 = spec["y0"] + spec["h"] - 2
-    x0 = (rx0 - spec["x0"]) / spec["w"]
-    x1 = (rx1 - spec["x0"]) / spec["w"]
-    y0 = 1.0 - (ry0 - spec["y0"]) / spec["h"]
-    y1 = 1.0 - (ry1 - spec["y0"]) / spec["h"]
-    # left / right verticals, top / bottom horizontals
-    fig.add_artist(Line2D([x0, x0], [y0, y1], transform=fig.transFigure,
-                          color=RED, lw=1.4, zorder=20, solid_capstyle="butt"))
-    fig.add_artist(Line2D([x1, x1], [y0, y1], transform=fig.transFigure,
-                          color=RED, lw=1.4, zorder=20, solid_capstyle="butt"))
-    fig.add_artist(Line2D([x0, x1], [y0, y0], transform=fig.transFigure,
-                          color=RED, lw=1.4, zorder=20, solid_capstyle="butt"))
-    fig.add_artist(Line2D([x0, x1], [y1, y1], transform=fig.transFigure,
-                          color=RED, lw=1.4, zorder=20, solid_capstyle="butt"))
-
-
-def figure(spec):
-    fig = plt.figure(figsize=(spec["w"] / 72.0, spec["h"] / 72.0), dpi=DPI)
-    ax = fig.add_axes([0.0, 0.045, 1.0, 0.955], projection="3d")
-    ax.view_init(elev=spec["elev"], azim=spec["azim"])
-    return fig, ax
+    x0 = inset / spec["w"]
+    x1 = 1.0 - inset / spec["w"]
+    y0 = 1.0 - inset / spec["h"]
+    y1 = inset / spec["h"]
+    for (a0, b0, a1, b1) in ((x0, y0, x0, y1), (x1, y0, x1, y1),
+                             (x0, y0, x1, y0), (x0, y1, x1, y1)):
+        fig.add_artist(Line2D([a0, a1], [b0, b1], transform=fig.transFigure,
+                              color=RED, lw=1.4, zorder=20, solid_capstyle="butt"))
 
 
 def save(fig, name):
@@ -120,7 +173,7 @@ def save(fig, name):
     print("wrote plot_025_%s.png" % name)
 
 
-# ── TL: concave dome — one maximum, two red maximum-level lines ──────────────
+# ── TL: concave dome — one maximum, two red maximum-level lines ───────────────
 def plot_tl():
     spec = PLOTS["tl"]
     fig, ax = figure(spec)
@@ -130,9 +183,10 @@ def plot_tl():
     ax.plot_surface(X, Y, Z, cmap=JET, rstride=1, cstride=1,
                     linewidth=0, antialiased=True, shade=True)
     ax.set_xlim(-2, 2); ax.set_ylim(-2, 2); ax.set_zlim(0, 5)
-    ax.set_xticks([-2]); ax.set_yticks([-2]); ax.set_zticks([0, 2, 4])
+    ax.set_xticks([-2, 0]); ax.set_yticks([-2, 0]); ax.set_zticks([0, 2, 4])
     ax.set_zticklabels(["0", "2", "5"])
     axis_style(ax)
+    fit_zoom(fig, ax, "tl")
     redrect(fig, spec)
     hlines(fig, spec, [(168, 121, 267), (186, 110, 279)])
     save(fig, "tl")
@@ -149,20 +203,18 @@ def plot_tr():
                     linewidth=0, antialiased=True, shade=True)
     ax.set_xlim(-100, 100); ax.set_ylim(-100, 100); ax.set_zlim(0, 1.5)
     ax.set_xticks([-100, 0, 100]); ax.set_yticks([-100, 0, 100])
-    ax.set_zticks([0, 0.5, 1.5])
-    ax.set_zticklabels(["0", "0.5", "1.5"])
-    ax.text2D(0.012, 0.60, r"$\times 10^{4}$", transform=ax.transAxes,
+    ax.set_zticks([0, 0.5, 1, 1.5])
+    ax.set_zticklabels(["0", "0.5", "1", "1.5"])
+    ax.text2D(0.012, 0.66, r"$\times 10^{4}$", transform=ax.transAxes,
               fontsize=8.5, color="#444444")
     axis_style(ax)
+    fit_zoom(fig, ax, "tr")
     redrect(fig, spec)
     hlines(fig, spec, [(222, 619, 873), (234, 619, 866)])
     save(fig, "tr")
 
 
 # ── BL: non-convex — four annotated features, one red reference line ─────────
-BL_SURF = None
-
-
 def plot_bl():
     spec = PLOTS["bl"]
     fig, ax = figure(spec)
@@ -184,7 +236,7 @@ def plot_bl():
     ax.set_zlabel("y", fontsize=7.5, color="#444444", labelpad=-4)
     axis_style(ax)
 
-    # annotation label anchors in SLIDE px (measured) -> 3-D data coords
+    # annotation label ink centres in SLIDE px (measured) -> 3-D feature points
     ANCH = {
         "Global":  (0, 0),
         "LocalMx": (-2.1, 0),
@@ -192,10 +244,10 @@ def plot_bl():
         "GlobalMn": (1.4, 1.4),
     }
     LABELS = {
-        "Global":   ("Global Maxima",  255, 312),
-        "LocalMx":  ("Local Maxima",   300, 345),
-        "LocalMn":  ("Local Minima",   298, 395),
-        "GlobalMn": ("Global Minima",  173, 452),
+        "Global":   ("Global Maxima",  254, 307),
+        "LocalMx":  ("Local Maxima",   312, 396),
+        "LocalMn":  ("Local Minima",   313, 458),
+        "GlobalMn": ("Global Minima",  156, 455),
     }
 
     def extremum(key, want_max):
@@ -210,12 +262,9 @@ def plot_bl():
             "LocalMn": extremum("LocalMn", False), "GlobalMn": extremum("GlobalMn", False)}
 
     for key, (label, sx, sy) in LABELS.items():
-        # label ink box in slide px -> 3-D text anchor via the axes' own
-        # projection (text2D would not be occluded by the surface; use 3-D
-        # text placed just above the leader-line target instead)
+        # 3-D text placed just above the feature, leader line to the label side
         fx, fy, fz = PEAK[key]
         ax.text(fx, fy, fz + 0.12, "", fontsize=8)
-        # leader line from the feature point outward, toward the label side
         dirx = -1.0 if sx < 265 else 1.0
         diry = -1.0 if sy < 346 else 1.0
         ex, ey = fx + dirx * 0.85, fy + diry * 0.85
@@ -223,6 +272,7 @@ def plot_bl():
         ax.text(ex, ey, 1.2, label, fontsize=8.5, color=BLK, ha="center",
                 va="bottom", zorder=30, linespacing=1.05)
 
+    fit_zoom(fig, ax, "bl")
     redrect(fig, spec)
     hlines(fig, spec, [(418, 124, 381)])
     save(fig, "bl")
@@ -283,6 +333,7 @@ def plot_br():
     ax.set_xlim(-3, 3); ax.set_ylim(-3, 3); ax.set_zlim(-1, 6.5)
     ax.set_xticks([]); ax.set_yticks([]); ax.set_zticks([])
     axis_style(ax)
+    fit_zoom(fig, ax, "br")
     redrect(fig, spec)
     save(fig, "br")
 
@@ -291,4 +342,4 @@ plot_tl()
 plot_tr()
 plot_bl()
 plot_br()
-print("all four plots written")
+print("all four plots written", FIT_ZOOMS)

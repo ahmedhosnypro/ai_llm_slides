@@ -32,9 +32,12 @@
 //        and -9.6" (with -9.6 red bold) and "f(x) is in between -8.08 and
 //        -8.011" (verbatim per spec).
 //
-// PLOT right, x606-901 rows 60-320: white plot area with 11 vertical gray
-//        gridlines (x615,632,650,667,685,703,720,739,757,775,793,811) and
-//        9 horizontal gray gridlines (y115,134,153,171,190,209,227,246,264).
+// PLOT right: white background box x610..843 y62..311 painted over the house
+//        panel (the panel is E9E9E7 there too, so the box must be explicit).
+//        ONE x-axis rule at y313 spanning x607..901; two y-axis rules at x607
+//        and x721 spanning y60..313. 11 vertical gray gridlines
+//        (x615,632,650,667,685,703,739,757,775,793,811) and 9 horizontal gray
+//        gridlines (y115,134,153,171,190,209,227,246,264), clipped to the box.
 //        Green #00B050 non-convex curve traced from the frame's ink (cols
 //        612-832, rows 110-264 — ONE smooth curve). Red initial-point marker
 //        x619-628 y143-151; orange #EE730C arrowhead x631-648 y115-138; green
@@ -160,25 +163,28 @@ slide.addText("f(x) is in between -8.08 and -8.011", {
 });
 
 // ================= FUNCTION PLOT =================
-const PL = { x0: 606, x1: 901, top: 60, ax1: 312, ax2: 320 };
-slide.addShape(pptx.ShapeType.line, { // x-axis rule 1
-  x: px(PL.x0), y: px(PL.ax1), w: px(PL.x1 - PL.x0), h: 0,
+const PL = { x0: 607, x1: 901, top: 60, axRow: 313 };
+// white plot background box — frame-measured x610..843 y62..311. The house
+// panel is E9E9E7 there too, so the box must be painted explicitly (measured:
+// 248 rows of the original have first-white x610 and last-white x843).
+slide.addShape(pptx.ShapeType.rect, {
+  x: px(610), y: px(62), w: px(843 - 610), h: px(311 - 62),
+  fill: { color: "FFFFFF" }, line: { color: "FFFFFF", width: 0 },
+});
+slide.addShape(pptx.ShapeType.line, { // x-axis rule (single; measured y313 x607..901)
+  x: px(PL.x0), y: px(PL.axRow), w: px(PL.x1 - PL.x0), h: 0,
   line: { color: "000000", width: 1 },
 });
-slide.addShape(pptx.ShapeType.line, { // x-axis rule 2
-  x: px(PL.x0), y: px(PL.ax2), w: px(PL.x1 - PL.x0), h: 0,
-  line: { color: "000000", width: 0.75 },
-});
-slide.addShape(pptx.ShapeType.line, { // y-axis rule 1
-  x: px(607), y: px(PL.top), w: 0, h: px(PL.ax2 - PL.top),
+slide.addShape(pptx.ShapeType.line, { // y-axis rule 1 (measured x607 y60..313)
+  x: px(607), y: px(PL.top), w: 0, h: px(PL.axRow - PL.top),
   line: { color: "000000", width: 1 },
 });
-slide.addShape(pptx.ShapeType.line, { // y-axis rule 2
-  x: px(721), y: px(67), w: 0, h: px(PL.ax2 - 67),
+slide.addShape(pptx.ShapeType.line, { // y-axis rule 2 (measured x721 y60..313)
+  x: px(721), y: px(PL.top), w: 0, h: px(PL.axRow - PL.top),
   line: { color: "000000", width: 0.75 },
 });
 slide.addText("x", {
-  x: px(PL.x1 - 24), y: px(PL.ax2 + 3), w: px(20), h: px(14),
+  x: px(PL.x1 - 24), y: px(PL.axRow + 3), w: px(20), h: px(14),
   align: "center", valign: "top", margin: 0,
   fontFace: A, fontSize: 11, bold: true, color: "000000",
 });
@@ -207,16 +213,16 @@ for (let i = 0; i < y_ticks.length; i++) {
   });
 }
 
-// plot gridlines (frame-measured gray, drawn under the curve)
+// plot gridlines (frame-measured gray, clipped to the white plot box x610..843 y62..311)
 for (const gx of [615, 632, 650, 667, 685, 703, 739, 757, 775, 793, 811]) {
   slide.addShape(pptx.ShapeType.line, {
-    x: px(gx), y: px(58), w: 0, h: px(254),
+    x: px(gx), y: px(62), w: 0, h: px(311 - 62),
     line: { color: "D9D9D9", width: 0.5 },
   });
 }
 for (const gy of [115, 134, 153, 171, 190, 209, 227, 246, 264]) {
   slide.addShape(pptx.ShapeType.line, {
-    x: px(606), y: px(gy), w: px(295), h: 0,
+    x: px(610), y: px(gy), w: px(843 - 610), h: 0,
     line: { color: "D9D9D9", width: 0.5 },
   });
 }

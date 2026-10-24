@@ -24,12 +24,59 @@ function fx(px) { return 54 / 72 + px / 72; }
 function fy(px) { return 45 / 72 + px / 72; }
 function fw(px) { return px / 72; }
 function fh(px) { return px / 72; }
+// ABSOLUTE frame px -> pptx inches (panel origin already subtracted): 1 frame px = 1pt.
+function ax(px) { return px / 72; }
+function ay(py) { return py / 72; }
 
 const ASSET = "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/build/assets/";
 function placeEq(img, baselineYIn, xIn) {
   const yTop = baselineYIn - img.baseline_frac * img.h_in;
   s.addImage({ path: ASSET + img.file, x: xIn, y: yTop, w: img.w_in, h: img.h_in });
 }
+
+// ============================================================
+// SPANNING-PAREN COLUMN VECTORS (measured on the 960x540 original)
+// Every column of the three matrices is enclosed in ONE paren pair spanning all
+// its component lines; the header row sits ABOVE the parens. Placements were
+// computed by make_parens047.py from the measured stroke centres/extents.
+// entry = [x, y, w, h] in ABSOLUTE frame px.
+// ============================================================
+const PAREN2 = [
+  [88.65, 74.04, 14.72, 36.35], [110.65, 74.04, 14.72, 36.35],
+  [132.62, 74.04, 15.29, 36.35], [155.09, 74.04, 15.85, 36.35],
+  [177.59, 74.04, 15.85, 36.35], [200.65, 74.04, 14.72, 36.35],
+];
+const PAREN3 = [
+  [92.65, 171.94, 14.72, 61.70], [113.65, 171.94, 14.72, 61.70],
+  [136.11, 171.94, 15.29, 61.70], [158.58, 171.94, 15.85, 61.70],
+  [181.11, 171.94, 15.29, 61.70], [203.61, 171.94, 15.29, 61.70],
+];
+const PARENZ = [
+  [597.05, 76.94, 16.42, 37.56], [620.12, 76.94, 15.29, 37.56],
+  [642.12, 76.94, 15.29, 37.56],
+];
+function placeParen(px, py, pw, ph, file) {
+  s.addImage({ path: ASSET + file, x: ax(px), y: ay(py), w: fw(pw), h: fh(ph) });
+}
+// One digit inside a paren pair, optically centred on the column's paren centre.
+function placeDigit(txt, colCentre, bandCentre, fs, color) {
+  s.addText(txt, {
+    x: ax(colCentre - 8), y: ay(bandCentre - 10), w: fw(16), h: fh(20),
+    fontFace: FONT, fontSize: fs, color: color, margin: 0,
+    align: "center", valign: "middle",
+  });
+}
+// Header / class glyph, centred on the column's paren centre.
+function placeCell(txt, colCentre, bandCentre, fs, color, bold) {
+  s.addText(txt, {
+    x: ax(colCentre - 12), y: ay(bandCentre - 9), w: fw(24), h: fh(18),
+    fontFace: FONT, fontSize: fs, color: color, bold: !!bold, margin: 0,
+    align: "center", valign: "middle",
+  });
+}
+const SUB1 = "\u2081", SUB2 = "\u2082";
+const HDR = ["x\u2081", "x\u2082", "x\u2083", "x\u2084", "x\u2085", "x\u2086"];
+const CLASS = (n) => n === 1 ? "C" + SUB1 : "C" + SUB2;
 
 // ============================================================
 // 1. TOP BAND: bordered box (abs x68..720, y55..130)
@@ -39,27 +86,22 @@ s.addShape(pptx.ShapeType.rect, {
   fill: { color: "FFFFFF" }, line: { color: "000000", width: 0.75 },
 });
 
-// ---- 1a. TOP-LEFT data matrix (abs x88..217; rows y63-74/77-89/93-107/110-125) ----
-const SUB1 = "\u2081";
-const CLASS_ROW = ["C\u2081","C\u2081","C\u2081","C\u2082","C\u2082","C\u2082"];
-const TLX = fx(34), TLY = fy(18), TLW = fw(129);
-s.addTable([
-  ["x\u2081","x\u2082","x\u2083","x\u2084","x\u2085","x\u2086"],
-  ["(1)","(2)","(1)","(5)","(6)","(6)"],
-  ["(1)","(1)","(2)","(4)","(5)","(6)"],
-  CLASS_ROW,
-].map((row, ri) => row.map((txt) => {
-  const o = { fontFace: FONT, fontSize: 14, align: "center", valign: "middle", margin: 0 };
-  if (ri === 0) { o.bold = true; o.color = BLACK; }
-  else if (ri === 3) { o.bold = true; o.color = txt.indexOf(SUB1) !== -1 ? RED : BLUE; }
-  else { o.color = BLACK; }
-  return { text: txt, options: o };
-})), {
-  x: TLX, y: TLY, w: TLW, h: fh(63),
-  fontFace: FONT, border: { pt: 0, color: "FFFFFF" }, fill: { color: "FFFFFF" },
-  colW: [TLW / 6, TLW / 6, TLW / 6, TLW / 6, TLW / 6, TLW / 6],
-  rowH: [fh(14), fh(14), fh(16), fh(17)],
-});
+// ---- 1a. TOP-LEFT data matrix ----
+// header x1..x6 (abs y63..74, centre 68.5); each column is a 2-component
+// column vector in spanning parens (abs y77..107) with digit bands centred
+// y84 / y101; class row (abs y113..125, centre 119).
+{
+  const centres = [96, 118, 140.25, 163, 185.5, 208];
+  const bands = [84, 101];
+  const data = [[1, 1], [2, 1], [1, 2], [5, 4], [6, 5], [6, 6]];
+  const klass = [1, 1, 1, 2, 2, 2];
+  for (let i = 0; i < 6; i++) {
+    placeParen(...PAREN2[i], "eq_047_span2.png");
+    placeCell(HDR[i], centres[i], 68.5, 14, BLACK, true);
+    for (let b = 0; b < 2; b++) placeDigit(String(data[i][b]), centres[i], bands[b], 14, BLACK);
+    placeCell(CLASS(klass[i]), centres[i], 119, 14, klass[i] === 1 ? RED : BLUE, true);
+  }
+}
 
 // ---- 1b. TOP-CENTER params ----
 // "Initial W =" black (abs x266..354 y75..84)
@@ -89,7 +131,7 @@ s.addText([
   x: fx(312), y: fy(21), w: fw(72), h: fh(15),
   fontFace: FONT, margin: 0, align: "left", valign: "middle",
 });
-// "Check classes of" BLACK (abs x499..582 y78..89) — left of the Z matrix
+// "Check classes of" BLACK (abs x499..583 y78..89) — left of the Z matrix
 s.addText("Check classes of", {
   x: fx(445), y: fy(31), w: fw(105), h: fh(13),
   fontFace: FONT, fontSize: 13, color: BLACK, margin: 0,
@@ -109,61 +151,49 @@ s.addText([
   fontFace: FONT, margin: 0, align: "left", valign: "middle",
 });
 
-// ---- 1d. TOP-RIGHT: Z matrix (abs x597..657; hdr y64..77, r1 y79..92, r2 y98..111) ----
+// ---- 1d. TOP-RIGHT: Z matrix ----
+// header Z1 Z1 Z1 (abs y64..77, centre 70.5); each column is a 2-component
+// column vector in spanning parens (abs y80..111) with digit bands centred
+// y87 / y103.
 {
-  const ZX = fx(543), ZY = fy(19), ZW = fw(62);
-  s.addTable([
-    ["Z\u2081", "Z\u2081", "Z\u2081"],
-    ["(0)", "(7)", "(3)"],
-    ["(0)", "(6)", "(2)"],
-  ].map((row, ri) => row.map((txt) => ({
-    text: txt,
-    options: {
-      fontFace: FONT, fontSize: 13, bold: (ri === 0), color: BLACK,
-      align: "center", valign: "middle", margin: 0,
-    },
-  }))), {
-    x: ZX, y: ZY, w: ZW, h: fh(48),
-    fontFace: FONT, border: { pt: 0, color: "FFFFFF" }, fill: { color: "FFFFFF" },
-    colW: [ZW / 3, ZW / 3, ZW / 3],
-    rowH: [fh(16), fh(16), fh(16)],
-  });
+  const centres = [605.25, 627.75, 649.75];
+  const bands = [87, 103];
+  const data = [[0, 0], [7, 6], [3, 2]];
+  for (let i = 0; i < 3; i++) {
+    placeParen(...PARENZ[i], "eq_047_span2.png");
+    placeCell("Z" + SUB1, centres[i], 70.5, 13, BLACK, true);
+    for (let b = 0; b < 2; b++) placeDigit(String(data[i][b]), centres[i], bands[b], 13, BLACK);
+  }
 }
 
 // ============================================================
-// 2. MID-LEFT: "Augmented Vectors (from Top)" inside a bordered box
+// 2. MID-LEFT: "Ugmented Vectors ( from Top )" inside a bordered box
 //    box abs x69..247, y139..256 (measured 2px strokes); interior white
+//    title abs x81..236, y147..160 — BLUE (measured ink core B-G=+78)
 // ============================================================
 s.addShape(pptx.ShapeType.rect, {
   x: fx(15), y: fy(94), w: fw(178), h: fh(117),
   fill: { color: "FFFFFF" }, line: { color: "000000", width: 0.75 },
 });
-// title abs x81..237, y147..160, ONE line (build must not wrap)
-s.addText("Augmented Vectors (from Top)", {
-  x: fx(14), y: fy(101), w: fw(178), h: fh(15),
-  fontFace: FONT, fontSize: 12, color: BLACK, margin: 0,
+s.addText("Ugmented Vectors ( from Top )", {
+  x: fx(22), y: fy(101), w: fw(172), h: fh(16),
+  fontFace: FONT, fontSize: 13, color: BLUE, margin: 0,
   align: "left", valign: "middle",
 });
+// matrix: header x1..x6 (abs y165..176, centre 170.5); each column is a
+// 3-component column vector in spanning parens (abs y179..226) with digit
+// bands centred y187.5 / 202.5 / 218.5; class row (abs y231..243, centre 237).
 {
-  const AX = fx(41), AY = fy(120), AW = fw(125);
-  s.addTable([
-    ["x\u2081","x\u2082","x\u2083","x\u2084","x\u2085","x\u2086"],
-    ["(1)","(1)","(1)","(1)","(1)","(1)"],
-    ["(1)","(2)","(1)","(5)","(6)","(6)"],
-    ["(1)","(1)","(2)","(4)","(5)","(6)"],
-    CLASS_ROW,
-  ].map((row, ri) => row.map((txt) => {
-    const o = { fontFace: FONT, fontSize: 13, align: "center", valign: "middle", margin: 0 };
-    if (ri === 0) { o.bold = true; o.color = BLACK; }
-    else if (ri === 4) { o.bold = true; o.color = txt.indexOf(SUB1) !== -1 ? RED : BLUE; }
-    else { o.color = BLACK; }
-    return { text: txt, options: o };
-  })), {
-    x: AX, y: AY, w: AW, h: fh(80),
-    fontFace: FONT, border: { pt: 0, color: "FFFFFF" }, fill: { color: "FFFFFF" },
-    colW: [AW / 6, AW / 6, AW / 6, AW / 6, AW / 6, AW / 6],
-    rowH: [fh(11), fh(11), fh(15), fh(15), fh(13)],
-  });
+  const centres = [100, 121, 143.75, 166.5, 188.75, 211.25];
+  const bands = [187.5, 202.5, 218.5];
+  const data = [[1, 1, 1], [1, 2, 1], [1, 1, 2], [1, 5, 4], [1, 6, 5], [1, 6, 6]];
+  const klass = [1, 1, 1, 2, 2, 2];
+  for (let i = 0; i < 6; i++) {
+    placeParen(...PAREN3[i], "eq_047_span3.png");
+    placeCell(HDR[i], centres[i], 170.5, 13, BLACK, true);
+    for (let b = 0; b < 3; b++) placeDigit(String(data[i][b]), centres[i], bands[b], 13, BLACK);
+    placeCell(CLASS(klass[i]), centres[i], 237, 13, klass[i] === 1 ? RED : BLUE, true);
+  }
 }
 
 // ============================================================
@@ -215,7 +245,7 @@ s.addShape(pptx.ShapeType.rect, {
 s.addText("Check Classes", {
   x: fx(25), y: fy(233), w: fw(160), h: fh(27),
   fontFace: FONT, fontSize: 14, color: "FFFFFF", bold: true,
-  align: "center", valign: "middle", margin: 0,
+  align: "center", valign: "middle",
 });
 
 pptx.writeFile({ fileName: "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_047_recreated.pptx" })

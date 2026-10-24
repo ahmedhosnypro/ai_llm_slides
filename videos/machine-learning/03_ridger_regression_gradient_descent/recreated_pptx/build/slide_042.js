@@ -5,19 +5,17 @@
 // Content spec: analysis/slide_042_final.json (verbatim_text.equations —
 // ten equations: five d(x_i)=… and five distinct W=… result equations).
 //
-// ATTEMPT 11 fixes (PIL-adjudicated judge_attempt_10 + adjudication_10.md):
-//   1. all ten equations drawn as distinct composite mathtext PNGs (the
-//      W=… result equation was previously merged into / dropped from rows 2,3,5)
-//   2. the two computation rows per box are separate equations, so neither is a
-//      "merged step equation" artefact
-//   3. top-left grouping box: interior FEFFE8 (frame-measured 254,255,232) with
-//      the frame's blue 0000FF border, not white interior
-//   4. green ⇐ at the far right of rows 1 and 4 only (recreation_brief item 9)
-//   5. stack boxes x276..851 (frame-measured), not x276..898
-//   6. row y-anchors aligned to the frame's box-top-relative offsets
+// ATTEMPT 11 — adjudicated fixes over attempt 10 (qa/slide042/adjudication_10.md):
+//   1. every box's line B is ONE horizontal mathtext PNG (the frame's lineB band is
+//      a single ~15px line spanning x384..726, i.e. flowing inline math, not the
+//      stacked 2x1 tiles attempt 10 used — that stacking is what read as "cluttered")
+//   2. all five W equations are therefore distinct and legible
+//   3. top-left grouping box: interior FEFFE8 (frame 254,255,232) + blue 0000FF border
+//   4. stack boxes x276..851 (frame-measured), not x276..898
+//   5. green ⇐ at the far right of rows 1 and 4 only (recreation_brief item 9)
 //
 // Equation PNGs: build/render_stackeq_042.py (extends the certified
-// build/render_stackeq.py with a 2-D matrix segment), 600dpi transparent PNG
+// build/render_stackeq.py with a 2-D matrix segment), 600dpi transparent PNG,
 // embedded at exact px/600 size per the deck's equation law.
 
 const path = require("path");
@@ -31,7 +29,7 @@ const EQ = require(path.resolve(ASSETS, "eq_index_042.json"));
 const px = (v) => v / 72; // frame px -> inches
 
 const RED = "FF0000";
-const BLUE = "0000FF";      // frame-measured stroke / header blue
+const BLUE = "0000FF";
 const BLACK = "000000";
 const GREEN = "008000";
 const WHITE = "FFFFFF";
@@ -59,15 +57,17 @@ function vecCol(digits, cx, yTop, size, color, bold) {
   });
 }
 
-// embed a composite equation PNG: left edge at frame x, baseline at frame y
-function eqImage(tag, x, baselineY) {
+// embed an equation PNG with its top edge at frame y (baseline lands at
+// y + baseline_frac*h, matching the frame's line band)
+function eqImage(tag, x, topY) {
   const e = EQ.find((q) => q.tag === tag);
   if (!e) throw new Error("no equation sidecar for " + tag);
+  const hPx = e.h_in * 72;
   slide.addImage({
     path: path.join(ASSETS, e.image),
-    x: px(x), y: px(baselineY - e.baseline_frac * (e.h_in * 72)),
-    w: e.w_in, h: e.h_in,
+    x: px(x), y: px(topY), w: e.w_in, h: e.h_in,
   });
+  return topY + hPx;
 }
 
 // ---- house chrome (deck 03 values) -----------------------------------------
@@ -82,40 +82,34 @@ slide.addShape(pptx.ShapeType.rect, {
   fill: { color: CREAM }, line: { color: BLUE, width: 1 },
 });
 
-// left "Upgraded Vectors" table: white, no border stroke (frame-measured)
-slide.addShape(pptx.ShapeType.rect, {
-  x: px(76), y: px(162), w: px(145), h: px(83), fill: { color: WHITE },
-});
-
-// right computation stack: five white boxes, x276..851 (frame-measured)
+// right computation stack: five white boxes with a thin gray border
+// (frame-measured: border x273..853 verticals at x274 / x852-853,
+//  colour ~(190,196,196), 1px; box tops y217/273/340/406/472)
 const STACK_BOXES = [
-  [217, 262], [273, 328], [340, 394], [406, 459], [472, 527],
+  [214, 262], [273, 328], [340, 394], [406, 459], [472, 527],
 ];
 STACK_BOXES.forEach(([y0, y1]) => {
   slide.addShape(pptx.ShapeType.rect, {
-    x: px(276), y: px(y0), w: px(576), h: px(y1 - y0 + 1),
-    fill: { color: WHITE },
+    x: px(273), y: px(y0), w: px(581), h: px(y1 - y0 + 1),
+    fill: { color: WHITE }, line: { color: "BEBEBE", width: 1 },
   });
 });
 
 // ---------------------------------------------------------------------------
 // 1. TOP-LEFT vector table  (inside the cream box, x68..720 y54..130)
 // ---------------------------------------------------------------------------
-// caption "x1..x6" — blue, one label per column (digit centres 95,117,139,161,184,206)
 [95, 117, 139, 161, 184, 206].forEach((cx, i) => {
   txt("x" + (i + 1), cx - 9, 63, 18, 11, {
     fontSize: 10, color: BLUE, bold: true, align: "center", valign: "middle",
   });
 });
 
-// value rows: two digits stacked per column (a 2-D vector)
 const TL_COLS = [[1, 1], [2, 1], [1, 2], [5, 4], [6, 5], [6, 6]];
 TL_COLS.forEach((v, i) => {
   const cx = [95, 117, 139, 161, 184, 206][i];
   vecCol(v, cx, 78, 11, BLACK, true);
 });
 
-// class row y110..123: C1 C1 C1 C2 C2 C2
 [["C1", 95], ["C1", 117], ["C1", 139], ["C2", 161], ["C2", 184], ["C2", 206]]
   .forEach(([lab, cx]) => {
     txt(lab, cx - 9, 109, 18, 15, {
@@ -135,11 +129,25 @@ txt("\u21D2", 239, 109, 15, 15, {
 txt("Initial W =", 262, 71, 70, 18, {
   fontSize: 14, color: BLACK, valign: "middle",
 });
-// 2x1 matrix with tall parentheses: frame ink x330..353, y64..102
-txt("(", 328, 63, 14, 40, { fontSize: 34, color: BLACK, align: "center", valign: "middle" });
-txt(")", 344, 63, 14, 40, { fontSize: 34, color: BLACK, align: "center", valign: "middle" });
-txt("4", 338, 74, 14, 14, { fontSize: 13, color: BLACK, align: "center", valign: "middle" });
-txt("-2", 335, 88, 18, 14, { fontSize: 13, color: BLACK, align: "center", valign: "middle" });
+// the 2x1 matrix parens: a 34pt glyph paren renders far too tall in pptxgenjs
+// (measured y202..289 vs the frame's y63..102), so draw them as thin line shapes
+// with top/bottom hooks, exactly like the LM table's parens.
+[[330, 337], [349, 356]].forEach(([xl, xr]) => {
+  [xl, xr].forEach((x) => {
+    slide.addShape(pptx.ShapeType.line, {
+      x: px(x), y: px(63), w: 0, h: px(39),
+      line: { color: BLACK, width: 1 },
+    });
+  });
+  [[63, xl + 1], [102, xr - 7]].forEach(([y, hx]) => {
+    slide.addShape(pptx.ShapeType.line, {
+      x: px(hx), y: px(y), w: px(6), h: 0,
+      line: { color: BLACK, width: 1 },
+    });
+  });
+});
+txt("4", 341, 66, 14, 14, { fontSize: 13, color: BLACK, align: "center", valign: "middle" });
+txt("-2", 339, 80, 18, 14, { fontSize: 13, color: BLACK, align: "center", valign: "middle" });
 
 txt("Step \u03B7 = 2", 364, 63, 74, 19, {
   fontSize: 15, color: RED, italic: true, valign: "middle",
@@ -156,7 +164,6 @@ txt("Check classes of", 496, 74, 100, 20, {
     fontSize: 10, color: BLUE, bold: true, align: "center", valign: "middle",
   });
 });
-// Z vectors: col1 = (0;0), col2 = (7;6), col3 = (3;2); bands y83..94 / y99..108
 [[0, 0], [7, 6], [3, 2]].forEach((v, i) => {
   vecCol(v, [601, 625, 645][i], 82, 11, BLACK, true);
 });
@@ -194,8 +201,7 @@ LM_BANDS.forEach((band) => {
     });
   });
 });
-// the frame shows THIN 1px strokes, not glyph parens: draw them as thin line
-// shapes so they span all four digit bands without fattening.
+// the frame shows THIN 1px strokes, not glyph parens
 const LM_PAREN_PAIRS = [[93, 107], [115, 128], [137, 150], [173, 182], [205, 218]];
 LM_PAREN_PAIRS.forEach(([xl, xr]) => {
   [xl, xr].forEach((x) => {
@@ -212,7 +218,6 @@ LM_PAREN_PAIRS.forEach(([xl, xr]) => {
   });
 });
 
-// class row y231..243: C1 C1 C1 C2 C2 C2
 [["C1", 95], ["C1", 117], ["C1", 139], ["C2", 161], ["C2", 184], ["C2", 206]]
   .forEach(([lab, cx]) => {
     txt(lab, cx - 10, 230, 20, 14, {
@@ -233,56 +238,83 @@ txt("Iteration 1", 98, 283, 104, 17, {
 });
 
 // ---------------------------------------------------------------------------
-// 6. RIGHT COMPUTATION STACK — 5 white boxes, two equation lines each
+// 6. RIGHT COMPUTATION STACK — 5 white boxes, two lines each
 // ---------------------------------------------------------------------------
-// Per box: lineA = d(x_i)=<matrix>=<value>  ⇒ <action>  (the black ⇒ between the
-// d-result and the action, per recreation_brief item 9); lineB = the W result
-// equation. All ten are DISTINCT composite equation PNGs, so no step equation is
-// merged into or dropped from another.
+// line A: d(x_i) = <matrix> = <value>  ⇒ <action>   (black ⇒ between the
+//         d-result and the action, per recreation_brief item 9)
+// line B: the W result equation, drawn as ONE horizontal mathtext PNG so it
+//         reads as flowing inline math (the frame's lineB spans x384..726 as a
+//         single ~15px line)
 //
-// box-top-relative offsets measured on the frame: lineA top +8, lineB top +22.
-const STACK = [
-  { box: 0, sub: "1", action: "Update Weight", actionColor: RED, greenRight: true },
-  { box: 1, sub: "2", action: "Keep same Weight", actionColor: BLACK, greenRight: false },
-  { box: 2, sub: "3", action: "Keep same Weight", actionColor: BLACK, greenRight: false },
-  { box: 3, sub: "4", action: "Update Weight", actionColor: RED, greenRight: true },
-  { box: 4, sub: "5", action: "Keep same Weight", actionColor: BLACK, greenRight: false },
+// frame-measured line bands (frame px): lineA y229..246, lineB y244..258 in box1
+const ROWS = [
+  { box: 0, sub: "1", dMat: [[1, 1, 1, 4], [-2, 0, "", ""]],
+    dEq: "0", action: "Update Weight", actionColor: RED, greenRight: true },
+  { box: 1, sub: "2", dMat: [[1, 2, 1, 6], [0, 0, "", ""]],
+    dEq: "6", action: "Keep same Weight", actionColor: BLACK, greenRight: false },
+  { box: 2, sub: "3", dMat: [[1, 1, 2, ""], [0, 0, "", ""]],
+    dEq: "6", action: "Keep same Weight", actionColor: BLACK, greenRight: false },
+  { box: 3, sub: "4", dMat: [[1, 5, 4, ""], [0, 0, "", ""]],
+    dEq: "6", action: "Update Weight", actionColor: RED, greenRight: true },
+  { box: 4, sub: "5", dMat: [[1, 6, 5, ""], [-10, -98, "", ""]],
+    dEq: "-96", action: "Keep same Weight", actionColor: BLACK, greenRight: false },
 ];
 
 // frame-measured ink anchors (frame px)
-const EQ_X = 283;          // equation left edge (both lines, every box)
-const ARROW_X = 664;       // black ⇒
-const ACT_X = 688;         // action text left edge
-const ACT_W = 140;         // frame-measured action ink extent x688..727
-const GREEN_L_X = 380;     // green ⇐ at the left of every equation line
-const GREEN_R_X = 736;     // green ⇐ at the far right of rows 1 and 4 only
+const LBL_X = 283;       // "d(x_i) =" label left
+const MAT_X = 489;       // stacked matrix digit left edge
+const EQ_X = 610;        // "= <value>" result
+const ARROW_X = 662;     // black ⇒
+const ACT_X = 688;       // action text left edge (ink x688..727)
+const W_IMG_X = 384;     // line-B equation image left edge
+const GREEN_L_X = 380;   // green ⇐ near the left of each line
+const GREEN_R_X = 736;   // green ⇐ at the far right of rows 1 and 4 only
 
-STACK.forEach((r, i) => {
-  const top = STACK_BOXES[r.box][0];
-  const aY = top + 8;      // lineA baseline
-  const bY = top + 22;     // lineB baseline
+// per-box line bands measured on the frame (frame px), then shifted +8 because
+// LibreOffice centres 14pt ink ~8px ABOVE the pptxgenjs box top (anchor="ctr")
+// in a h=14 box. lineA carries the d(x_i) label + matrix + "= val" + ⇒ + action;
+// lineB carries the W equation.
+const BAND_A = [239, 289, 355, 434, 487];   // lineA band tops
+const BAND_B = [258, 302, 368, 420, 500];   // lineB band tops
 
-  eqImage("d" + r.sub, EQ_X, aY);
-  txt("\u21D2", ARROW_X, aY - 8, 16, 15, {
+ROWS.forEach((r, i) => {
+  const a = BAND_A[i];   // lineA band top
+  const b = BAND_B[i];   // lineB band top
+
+  // ---- line A: d(x_i) = <matrix> = <value>  ⇒ <action>
+  txt("d(x", LBL_X, a - 3, 16, 14, { fontSize: 14, color: BLACK, valign: "middle" });
+  txt(r.sub, LBL_X + 15, a + 0, 7, 10, {
+    fontSize: 9, color: BLACK, align: "center", valign: "middle",
+  });
+  txt(") =", LBL_X + 20, a - 3, 14, 14, { fontSize: 14, color: BLACK, valign: "middle" });
+  r.dMat.forEach((row, ri) => {
+    row.forEach((cell, ci) => {
+      if (cell === "") return;
+      txt(String(cell), MAT_X + ci * 24, a - 3 + ri * 11, 24, 11, {
+        fontSize: 11, color: BLACK, align: "center", valign: "middle",
+      });
+    });
+  });
+  txt("= " + r.dEq, EQ_X, a - 3, 52, 14, { fontSize: 14, color: BLACK, valign: "middle" });
+  txt("\u21D2", ARROW_X, a - 3, 16, 14, {
     fontSize: 14, color: BLACK, align: "center", valign: "middle",
   });
-  txt(r.action, ACT_X, aY - 8, ACT_W, 15, {
+  txt(r.action, ACT_X, a - 3, 130, 14, {
     fontSize: 16, color: r.actionColor, valign: "middle",
   });
-
-  eqImage("w" + r.sub, EQ_X, bY);
-
-  // green ⇐ marks: one at the left of both lines, one at the far right of
-  // rows 1 and 4 only (frame shows the right-hand mark in row 3; the analysis
-  // record prescribes rows 1 and 4 — see worker_report.md provenance note).
-  txt("\u21D0", GREEN_L_X, aY - 8, 16, 15, {
-    fontSize: 12, color: GREEN, align: "center", valign: "middle",
+  txt("\u21D0", GREEN_L_X, a - 3, 16, 12, {
+    fontSize: 12, color: GREEN, align: "center", valign: "top",
   });
-  txt("\u21D0", GREEN_L_X, bY - 8, 16, 15, {
-    fontSize: 12, color: GREEN, align: "center", valign: "middle",
+
+  // ---- line B: the W result equation as one horizontal mathtext PNG
+  eqImage("w" + r.sub, W_IMG_X, b);
+  txt("\u21D0", GREEN_L_X, b + 1, 16, 12, {
+    fontSize: 12, color: GREEN, align: "center", valign: "top",
   });
+
+  // green ⇐ at the far right of rows 1 and 4 only (recreation_brief item 9)
   if (r.greenRight) {
-    txt("\u21D0", GREEN_R_X, aY - 8, 16, 15, {
+    txt("\u21D0", GREEN_R_X, a - 3, 18, 15, {
       fontSize: 12, color: GREEN, align: "center", valign: "middle",
     });
   }
