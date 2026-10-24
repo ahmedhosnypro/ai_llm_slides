@@ -184,3 +184,4 @@ NOT CERTIFIED: 4 of 5 Procedure B crops still have no verdict.
 [2026-10-24T15:39:29Z] gate probe pgrep=20 (>=8) — heartbeat sent, sleeping 240s (waited 1441s for top_chain)
 [2026-10-24T15:43:29Z] gate probe pgrep=20 (>=8) — heartbeat sent, sleeping 240s (waited 1681s for top_chain)
 [2026-10-24T15:47:29Z] gate probe pgrep=18 (>=8) — heartbeat sent, sleeping 240s (waited 1921s for top_chain)
+[2026-10-24T15:51:29Z] gate probe pgrep=25 (>=8) — heartbeat sent, sleeping 240s (waited 2161s for top_chain)

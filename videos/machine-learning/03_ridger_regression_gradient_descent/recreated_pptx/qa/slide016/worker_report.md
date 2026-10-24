@@ -666,3 +666,123 @@ worker's attempt-5 crop pairs, dispatch scripts and payloads. The build is untou
   15_progress.py:337-339; restore before release); final row must read
   gen_status=passed AND visual_check=PASS AND worker_id="". Runnable script banked
   at qa/slide016/certify_5.sh.
+
+## Attempt 6 — crop-legs lane (crop-legs-016b, 2026-10-24 14:25-15:47 UTC) — REAL DEFECT FOUND + FIXED + PARKED ON GATE
+
+Second crop-legs lane (first lane `crop-legs-016` ran 11:16-12:07 UTC and was cut off
+by its 2h wall mid-legs; its interim report section above). Row 16 re-claimed with
+--force (stale claim, heartbeat 79m stale). Worker id `crop-legs-016b`.
+
+### Banked census on entry (what was already landed)
+Re-globbed `qa/slide016/` and verified every `crop_*_judge.txt` has a real
+"FINAL VERDICT:" line (probe/template files excluded):
+- `crop_5_missing_band_judge.txt` — PASS (landed 11:23 UTC, prior lane still observed)
+- `crop_5_bullet2_judge.txt` — PASS (landed 12:08 UTC, after the first lane's last observation)
+- `crop_5_last_bullet_judge.txt` — **FAIL** (landed 13:06 UTC, after the first lane's death)
+- crop_1/crop_2 missing_band transcripts are FAILs from the PRE-FIX renders
+  (render_1/render_2) — historical, superseded by the build fix; not re-adjudicated.
+- LEG A full-slide: `judge_attempt_5.txt` PASS (banked prior lane, 10:53 UTC).
+
+### Render currency (first lane, redone here)
+`render_verify_016.sh` re-rendered the CURRENT pptx at 150dpi and md5-matched
+render_5 (e50fd50d429ca880793c05b94e0c6487 == render_5), 2001x1125 — currency confirmed.
+
+### Crop MINORs adjudicated (first lane's findings, banked `adjudicate_crops_5.py/.txt`)
+PIL vs BOTH images (960x540, 1px = 1pt, render 2.0833 px/frame px):
+- missing_band MINOR "double space before '(also know as'" — the original's word gaps
+  on that line are all 5 frame px except ONE 10 px gap (x391→402) = exactly a double
+  space; the render's word gaps are 6-7 px with a 7 px gap = a single space. REAL
+  whitespace deviation, but the build source (`slide_016.js:122`) carries the single
+  space, so it is faithful to the build.
+- missing_band MINOR "stray space before ')'" — gap-to-')' is 1 frame px in the
+  original and 0-1 in the render; refuted (render is flush, slightly tighter).
+- bullet2 MINOR "missing yellow highlight behind 'customized weigh factor'" —
+  REFUTED: yellow fill (r>190,g>190,b<160) is 2494 px in the original and 12009 in
+  the render, ALL confined to the "better generalization" line (y176..197); the
+  "customized weigh factor" band (y285..300) has 0 yellow px in BOTH. The judge read
+  the video-capture warm cast as a highlight.
+- bullet2 MINOR "phrase text tint" — REFUTED: the phrase's ink is 3.0% strong-red in
+  the original vs 10.3-13.6% for the known red runs ("Squared Norm", "(N)"); the
+  render's phrase ink is (42,42,42) = 0% strong-red, matching the render's body text.
+- Red runs darker in IMG1 than the JPEG original: expected (rule e, video artifact).
+
+### THE REAL DEFECT — crop_5_last_bullet FAIL: two missing black underlines
+Adjudicated PIL-first (`adjudicate_underline_5.py/.txt`, then `adjudicate_underline_5b.py/.txt`
+with a 12 frame-px threshold so strokes under the narrow (N)/(d) are caught too, plus
+stroke colour sampling). Region x80..830 y470..540, black strokes (luma<120), merged
+by row:
+  ORIGINAL: y500 x446..640 (w194, RGB 36,36,36) ; y500 x710..806 (w96, RGB 36,36,36) ;
+            y525 x110..162 (w52, RGB 37,37,37)
+  render_5: y525 x109..162 ONLY (w53) — the two b5a underlines are ABSENT.
+The b5a line reads "Regularization is particularly important for Small number of
+samples (N) and Large vector" (word extents and the red (N) at x647..671 in both), so
+the original's strokes sit under "Small number of samples" and "Large vector". The
+analysis record agrees verbatim: "Black underlines beneath Small number of samples (N)
+and Large vector Length (d)". The crop judge's FAIL is therefore VALID, and the banked
+selfcheck_attempt_4 had never measured b5a underlines at all.
+Note: the judge's positive claim that the original does NOT underline "Length" is
+wrong (the original has y525 x110..162, identical to the render's) — but its core
+finding (two underlines dropped on b5a) is PIL-proven.
+
+### Build fix (copy-then-modify; certified state banked first)
+Banked: `slide016_certified_attempt5.pptx` (md5-verified copy of the
+attempt-5 deliverable), `slide_016.js.bak_before_underline_fix`,
+`render_5_pre_underline_fix.png`. Then added two 333333 rects to
+`build/slide_016.js` after the existing "Length" underline block (same 1px-pad
+convention, h = 1/72):
+  x445..641 y500 (beneath "Small number of samples")
+  x709..807 y500 (beneath "Large vector")
+Rebuilt with `node slide_016.js`; re-rendered 150dpi as `render_6.png` (2001x1125).
+PIL re-verified (`adjudicate_underline_5b.py` re-run on render_6):
+  ORIGINAL y500 x446..640 / y500 x710..806 / y525 x110..162
+  RENDER_6 y500.2 x445.3..640.6 / y500.2 x709.3..806.7 / y525.2 x109.3..162.6
+All three black underlines now match the original within ~1 frame px.
+
+### Which crop transcripts survive the rebuild (pixel-diff proof)
+render_5 vs render_6: 1673 differing px overall, all inside the last_bullet region.
+- missing_band region: 0 differing px -> `crop_5_missing_band_judge.txt` KEPT (PASS)
+- bullet2 region:    0 differing px -> `crop_5_bullet2_judge.txt` KEPT (PASS)
+- last_bullet, full_body: 1673 px (rows y500..501) -> legs MUST be re-run.
+Banks: `render_5_pre_underline_fix.png` + `render_6.png` for the diff.
+
+### Staged for the resume (all banked and byte-verified)
+- `render_6.png`, `crop_6_last_bullet_{render,orig}.png` (1541x118, matched eff
+  2.0824/2.0702), `crop_6_full_body_{render,orig}.png` (1531x904, matched eff
+  2.0830/2.0829) — cut by `recut_crops_6.py`.
+- Payloads: `judge_prompt_6A.txt` (md5 9387f5fbb94ef05a31db19f1e018dde1, 4115 bytes —
+  byte-match vs the Template A block in shared_patterns/judge_protocol_03.md; K does
+  not occur in Template A's payload, only in --view/transcript), and `judge_prompt_6B.txt`
+  (md5 481172b034aa3336f54591d4e8e4bc98, 1914 bytes, BLOCKER x2 — byte-match vs
+  Template B). Both re-derived from the frozen template with only NNN->016.
+- Dispatcher: `dispatch_judge_6.sh` (legA | last_bullet | full_body), `--timeout 600`,
+  wrapped in `timeout 1700`, through `scripts/16_vision_gate.sh`.
+
+### PARK STATE — gate congestion, NOT a defect
+Fleet pgrep at gate probes: 20, 20, 17 (re-anchor law: max two re-probes then park).
+Latest attempts died on HTTP 504 `upstream_timeout` from the Nvidia candidate, plus
+HangErrors at 630s/1230s even with `--timeout 1200`; banked 043 evidence records the
+same. No verdict was fabricated and no leg was retry-looped.
+
+EXACT RESUME COMMANDS (run from the project root; nothing else is needed first):
+  cd "/worksp""aces/codespaces-blank/ai_llm_slides"
+  export VIDEO=machine-learning/03_ridger_regression_gradient_descent
+  python3 scripts/15_progress.py claim 16 <worker-id> --force
+  # re-probe the gate; if < 8 dispatch (payloads + crops already staged):
+  bash videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide016/dispatch_judge_6.sh legA
+  bash videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide016/dispatch_judge_6.sh last_bullet
+  bash videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide016/dispatch_judge_6.sh full_body
+  # when judge_attempt_6.txt / crop_6_last_bullet_judge.txt / crop_6_full_body_judge.txt
+  # all carry a real "FINAL VERDICT:" line, adjudicate any finding PIL-first and certify:
+  python3 scripts/15_progress.py set 16 visual_check PASS --worker <worker-id>
+  python3 scripts/15_progress.py set 16 visual_transcript \
+    videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide016/judge_attempt_6.txt --worker <worker-id>
+  python3 scripts/15_progress.py set 16 visual_attempts 6 --worker <worker-id>
+  python3 scripts/15_progress.py set 16 gen_status passed --worker <worker-id>
+  python3 scripts/15_progress.py heartbeat 16 <worker-id>
+  python3 scripts/15_progress.py release 16 <worker-id>
+  python3 scripts/15_progress.py get 16     # must read gen_status=passed, visual_check=PASS, worker_id=""
+  # claim()/set() can reset gen_status (15_progress.py:337-339) — restore before releasing
+
+DO NOT certify from the attempt-5 transcripts: the render changed, so per the protocol
+both legs must be re-run from render_6 (missing_band/bullet2 crop transcripts are kept
+only because their regions are pixel-identical, proven above).
