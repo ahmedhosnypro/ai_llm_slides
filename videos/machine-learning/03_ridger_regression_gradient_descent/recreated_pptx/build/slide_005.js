@@ -16,15 +16,18 @@
 //   green_outline  ring 2F8F3F (green), fill CEFFE3 (measured 206,255,226)
 //                  x 688..879, y 464..498  → wraps the final W formula
 //
-// Text bands (frame px):
-//   eq1 x 98..544 y 109..150   eq2 x 97..629 y 173..214   eq3 x 98..522 y 230..271
-//   eq4 x 97..592 y 375..417   eq5 x 96..637 y 460..502 — eq5 is the ARROW CHAIN
-//   Remember up x 681..754 y 138..149 ; Remember low x 661..733 y 376..387
+// Text bands (frame px) — re-measured attempt 7 (border-aware windows):
+//   eq1 x 98..545 y 108..150   eq2 x 97..630 y 173..214   eq3 x 98..523 y 229..271
+//   eq4 x 96..593 y 374..420   eq5 x 96..683 y 459..504 — eq5 is the ARROW CHAIN
+//     and runs to x683, 5 px clear of the green box; the attempt-6 band (96..637)
+//     was window-clipped and dropped the chain's last 7 glyph groups.
+//   Remember up x 681..761 y 138..149 ; Remember low x 661..733 y 376..385
 //     — the ORIGINAL's lower-right box carries its content ~20 px LEFT of the
 //     upper-right box's (x 661 vs 681); measured, not a typo.
-//   "X is a matrix, W is a vector," x 681..869 y 158..171
-//   "XW is a vector" x 680..787 y 178..191
-//   "Get Best W that minimizes the loss" x 196..506 y 296..334
+//   "X is a matrix, W is a vector," x 680..873 y 158..171
+//   "XW is a vector" x 680..792 y 179..190
+//   "Get Best W that minimizes the loss" x 196..500 y 306..322 (ends 5 px inside
+//     the pink box's right border x505..506)
 //
 // HOUSE CHROME: deck 03 — white canvas FFFFFF, gray panel E9E9E7 x54..903
 // y45..540, C00000 1pt strokes LEFT x58.5 / RIGHT x901 / BOTTOM y538.5 ONLY
@@ -161,16 +164,32 @@ eqFit("eq_005_remember1.png", 680, 864, 213, 235);
 // ============================================================
 rect(73, 288, 434, 56, PINKF, { color: PBORD, width: 1 });
 eqFit("eq_005_pinkfrac.png", 79, 164, 294, 338);
-textbox(196, 303, 350, 28, [
-  { text: "Get Best W that minimizes the loss", options: { color: BLACK, fontSize: 18 } },
-], "left", "top", 18);
+// "Get Best W that minimizes the loss" — ink x196..500 y306..322 in the original, i.e.
+// it ENDS 5 px INSIDE the pink box's right border (x505..506). At 18 pt DejaVu Sans the
+// string advances 316.3 px / inks 314.5 px (PIL-verified), which carried the ink to
+// x510.5 and ACROSS the pink border — a frame-containment MAJOR. The original's exact
+// font is not installed (searched all 1935 system faces: none reproduces its metrics),
+// so the size is dropped to 17.4 pt (ink 304.3 px, ending at x501, 4 px inside the
+// border) and the box is nudged to y306 to centre the line on the original's ink centre
+// (314.0 frame px). Vertical ink extent is 3-4 px shorter than the original for every
+// text element — an unavoidable font-substitution artifact, identical at any size that
+// preserves the horizontal advance.
+textbox(196, 306, 350, 30, [
+  { text: "Get Best W that minimizes the loss", options: { color: BLACK, fontSize: 17.4 } },
+], "left", "top", 17.4);
 
 // ============================================================
 // 5. CREAM LOWER BOX + two derivative equations
 // ============================================================
 rect(72, 358, 821, 165, CREAM, { color: CBORD, width: 1 });
 eqFit("eq_005_deriv1.png", 97, 592, 375, 417);
-eqFit("eq_005_deriv2.png", 96, 637, 460, 502);
+// CORRECTED 2026-10-24 (attempt 7): the prior band (96,637,460,502) was a TRUNCATED
+// measurement — it clipped the chain at the measurement window's right edge. Re-measured
+// with a window clear of the green box (x90..684, y455..510): the original's chain ink
+// spans x96..683, y459..504 = 588x46 px, and carries 28 glyph groups ending in the
+// 37px "→" just left of the green box. The old band cut 7 groups / 45 px of content —
+// the final arrow never rendered. eqFit now fits the full band (sx 1.099, sy 0.902).
+eqFit("eq_005_deriv2.png", 96, 683, 459, 504);
 
 // ============================================================
 // 6. BLUE LOWER BOX — Remember / X^T(XW) = (XW)^T X
