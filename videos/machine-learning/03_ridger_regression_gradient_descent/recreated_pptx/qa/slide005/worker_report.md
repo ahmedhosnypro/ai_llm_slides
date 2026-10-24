@@ -192,3 +192,125 @@ for r in eq_stack blue_upper pink_band lower_eqs; do bash "$Q/dispatch_attempt9/
 No web searches were spent by this lane (the deck's web-source research leg for slide 005
 is already `CONFIRMED` in `SOURCES_MAP.md`, so the economy law's "check sibling records
 first" rule applied and no query was needed).
+
+---
+
+# Lane section — `w005-fresh-20261024` (2026-10-24 15:53 → 17:15)
+
+## Claim / timeout-recovery history
+
+- Took the lane over from `w005-buildfirst-20261024` via `claim` at 15:53 (the prior claim's
+  `worker_heartbeat_at` was `2026-10-24T10:16:43` — **337 min stale**, the DB's zombie
+  takeover path fired automatically; `--force` was not needed).
+- Heartbeats at 15:53, 16:11, 16:35 (and in-session while waiting on the gate).
+
+## Verdicts banked vs newly run by THIS lane
+
+- **Newly run (vision): NONE.** Zero judge transcripts produced — see the park state below.
+- **Banked by prior lanes and re-verified by me (all PIL/local, no vision):** render
+  currency, house-chrome PASS, payload byte-fidelity, crop-pair scale-match, build
+  determinism, ink-band deltas. Details below.
+- The only transcript-less banked artifacts I re-confirmed are the evidence files
+  (`render_9.png`, `slide_005_recreated.pptx`, `build/slide_005.js`), all current.
+
+## Two REAL defects found in the STAGED DISPATCH KIT (repaired, payloads untouched)
+
+The kit a prior lane left behind was **not runnable**. Both defects were in the shell
+wrappers — never in the `-p` payloads:
+
+1. **Broken path prefix in all 5 leg scripts.** Every `Q=`/`R=` line read
+   `"/worksp/aces/codespaces-blank/..."` — a dead path (`ls /worksp` → "No such file or
+   directory"). Had any leg fired, `cd "$R"` would have failed and `cat $Q/*.txt` would
+   have come back empty, silently dispatching a judge with **no payload**. Repaired to the
+   expand correctly on all 5 (`bash -c 'eval "$(sed -n "5,6p" leg_*.sh)"; echo $Q'` →
+   `/workspaces/codespaces-blank/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide005`, `R=/workspaces/codespaces-blank/ai_llm_slides`).
+   Payload lines (`-p "$(cat $Q/...)"`) are byte-for-byte untouched.
+2. **Wall mismatch vs the orchestrator's CRITICAL WALL OVERRIDE.** All 5 scripts carried the
+   protocol-prescribed `--timeout 600`, but the override (superseding law) mandates
+   `--timeout 1200` inside `timeout 1700`. Changed on all 5; the outer `timeout 1700` and
+   every other wall are unchanged and no value exceeds 1200/1700.
+
+## Verification performed (all reproduced independently, no vision calls)
+
+| check | method | result |
+|---|---|---|
+| payload byte-fidelity | new `dispatch_attempt9/verify_payloads.py` — round-trips all 5 `-p` payloads against `shared_patterns/judge_protocol_03.md` Templates A/B with the substitutions applied | **PASS** — A 4115 B, B 1914 B ×4, all exact |
+| late-landing transcripts | re-glob for the 5 attempt-9 transcript names + `find -newermt` | **none** — all 5 ABSENT, nothing redispatched |
+| render currency | fresh `soffice --convert-to pdf` + `pdftoppm -r 150` from the live pptx, md5 against the bank | **PASS** — 0 px differ, md5 `01bcb967…` identical |
+| crop-pair scale match | new `measure_attempt9/crop_currency_9.py` — re-cuts all 4 regions from render_9 + the original | **PASS** — all 4 byte-current, effective scale 2.0844×2.0833 on both axes |
+| build determinism | rebuild into `scratch/tmp/w005_rebuild/` (output path redirected; script copied so relative `require`s resolve), zip-entry compare vs the deliverable | **PASS** — 48 entries, 1 differs (`docProps/core.xml`, timestamps only), 10/10 media identical, `slide1.xml` identical |
+| house chrome | `shared_patterns/house_chrome_check.py` on render_9 | **PASS** |
+| ink bands / phantom | new `measure_attempt9/adjudicate_9.py` (re-runnable adjudication fixture) | worst **3.64 px** (TOL 8), 0 px house-frame overflow |
+
+### Adjudication numbers banked for the verdicts (to use, NOT to fabricate a verdict with)
+
+These are the PIL facts I will measure any finding against — they are pre-flight
+measurements, **not** a substitute for the judge, and I have written **no** verdict:
+
+- **45 px phantom band (eq5) — REJECTED.** With `<3 ink px per column` treated as JPEG
+  noise: ORIGINAL = 26 real glyph groups ending **x637**; render = 27 groups ending **x638**.
+  Columns x639..x646 hold ZERO ink; x647..x683 hold 1 px/col; x689+ is the green box border.
+  Any finding demanding eq5 extend to x683 should be **refuted** — that stretch adds
+  ~45 px of arrow the original does not have.
+- **getbest containment — the one real attempt-9 fix.** Original ink x196..500 ends 5 px
+  inside the pink box's right border (x505..506); render_9 ink x196.7..499.9 (dx1 = -0.09 px).
+  A finding claiming overflow here must be measured against the border on both images.
+- **Font substitution — bounded, not a defect.** No installed face reproduces the original's
+  (advance, ink-height) pair; DejaVu Sans 18 pt matches advance to 1 px but inks 3–5 px
+  shorter vertically (worst band delta 3.64 px at rememberU dy1, within TOL 8). An
+  unavoidable medium/font artifact, identical at any size preserving the advance.
+
+## PARK STATE — gateway congestion (not a defect in the slide)
+
+Per the fleet-confirmed gate reality and the standing law (`pgrep -c -f analyze_image.py`
+≥ 8 ⇒ do NOT dispatch, heartbeat, sleep 240, re-probe, max TWO per hour, then park honestly):
+
+- Measured queue: **19/19/22 → 27 → 26 → 17/17/17 → 15/16/16** analyzer procs across
+  six samples between 16:39 and 17:15. The two allowed hourly re-probes
+  (16:11→16:49 and 16:35→17:01, `sleep 240` + re-probe) both returned ≥ 8.
+- **Both quotas consumed. NO leg was dispatched** — dispatching into this congestion would
+  burn ~20 min per leg and return no verdict.
+- **`visual_attempts` left at 0** — no vision call of mine ever started, so nothing is
+  countable as an attempt. The previous lane also left it at 0.
+- **`gen_status` left at `building`**, `visual_check`/`visual_transcript` left `null`.
+  Nothing was certified because nothing was judged. **I did not fabricate any verdict.**
+- The banked render/pptx are verified current and the slides' content is not in question:
+  this is purely the fleet's vision gateway being wedged.
+
+### DB row as parked (`get 5`)
+
+`gen_status=building`, `pptx_path=videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_005_recreated.pptx` (the one empty row, now filled — the file is confirmed at `58de0cb2…`), `visual_check=null`, `visual_attempts=0`, `visual_transcript=null`, `worker_id=w005-fresh-20261024` (released at the end of the lane).
+
+### Exact resume commands
+
+```bash
+C=/workspaces/codespaces-blank/ai_llm_slides
+Q="$C/videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide005"
+cd "$C" && VIDEO=machine-learning/03_ridger_regression_gradient_descent \
+  python3 scripts/15_progress.py claim 5 w005-resume-<stamp>        # auto-takes-over if stale
+bash "$Q/dispatch_attempt9/_gate_check.sh" 2>/dev/null || true       # if >=8, wait: don't dispatch
+bash "$Q/dispatch_attempt9/leg_A_full_slide.sh"                     # Template A -> judge_attempt_9.txt
+# then one at a time, gate-checking between each:
+for r in eq_stack blue_upper pink_band lower_eqs; do
+  bash "$Q/dispatch_attempt9/_gate_check.sh" && bash "$Q/dispatch_attempt9/leg_B_$r.sh"
+done
+```
+
+Adjudicate every FAIL/MINOR PIL-first against `measure_attempt9/adjudicate_9.py` and the
+numbers above, then certify with `set` (`no record-visual subcommand`):
+`visual_check PASS`, `visual_transcript <full-slide transcript>`, `visual_attempts <n>`,
+`gen_status passed`, `release`.
+
+## Banked evidence (this lane)
+
+- `dispatch_attempt9/verify_payloads.py` — payload round-trip checker (new)
+- `measure_attempt9/adjudicate_9.py` — adjudication fixture (new)
+- `measure_attempt9/crop_currency_9.py` — crop currency + scale audit (new)
+- `scratch/tmp/w005_rebuild/` — redirected rebuild + its zip-compare evidence
+- `dispatch_attempt9/leg_*.sh` — the 5 repaired scripts (payload bytes unchanged)
+
+## Query budget (this lane)
+
+Zero web queries. Slide 005's research leg is already `CONFIRMED` in `SOURCES_MAP.md`
+(CS229 notes, fetched live), so the economy law's sibling-record check applied.
+

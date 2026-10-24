@@ -17,7 +17,7 @@ LOG="$QA/legs_049g.log"
 hb(){ ( cd "$PROJ" && VIDEO=machine-learning/03_ridger_regression_gradient_descent \
         python3 scripts/15_progress.py heartbeat 49 "$WID" >/dev/null 2>&1 ); }
 say(){ echo "[$(date -u +%H:%M:%S)] $*" >> "$LOG"; }
-clients(){ ps -eo args= | awk '$0 ~ /analyze_image\.py$/ {n++} END {print n+0}'; }
+clients(){ pgrep -c -f analyze_image.py 2>/dev/null || echo 0; }
 
 case "$LEG" in
   legA)
@@ -61,7 +61,7 @@ say "$LEG FIRE clients=$(clients) wall=1700 inner=1200"
     --thinking high --max-tokens 65536 --timeout 1200 --rounds 1 --tries 1 \
     --transcript "$OUT" -p "$(cat "$PAYLOAD")" ) > "$QA/${LEG}_049g_dispatch.log" 2>&1
 rc=$?
-say "$LEG EXIT rc=$rc bytes=$(wc -c < "$OUT" 2>/dev/null || echo 0)"
+say "$LEG EXIT rc=$rc bytes=$( [ -f "$OUT" ] && wc -c < "$OUT" || echo 0 )"
 if [ -s "$OUT" ] && grep -q "FINAL VERDICT" "$OUT"; then
   v=$(grep -oE "FINAL VERDICT: (PASS|FAIL)" "$OUT" | tail -1)
   echo "$(date -u +%F_%H:%M) $LEG VERDICT $v rc=$rc" >> "$QA/judge_status_049g.log"

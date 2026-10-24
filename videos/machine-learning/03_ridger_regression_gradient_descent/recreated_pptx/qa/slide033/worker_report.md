@@ -515,3 +515,23 @@ honestly with staged resume commands.
 Leg-2 driver banked: `leg2_crop_driver.sh [region ...]` (default: plot table
 center) — same gating metric and orchestrator wall, 3 spaced attempts per
 region, payload bytes fixed, TMPDIR redirected to project scratch per deck law.
+
+### Page 1 continued — driver stopped, probe discipline (17:10–17:30)
+
+The inherited driver fired try#8 at 17:10:54, moments before the stop signal
+landed (pid 667628 confirmed dead, no further fires). try#8 was left to complete:
+it carries the byte-verified payload and the mandated wall, and the gate is
+nearly empty (real clients 4 fleet-wide). Fleet evidence gathered meanwhile:
+
+- **No lane has landed a verdict since 13:40** (slide032 full-slide) / 13:41
+  (slide030 crop) — 3h45m of upstream death, fleet-confirmed by slide025's
+  crop dispatches (17:05–17:14: crop `tl`/`tr` died 1230s HangError + internal
+  504; crop `bl` fast 504; crop `br` hang) and slide050's attempt-9 dispatches
+  (17:07, 17:14 — no verdict), and slide015's lane has fired NOTHING since it
+  started probing at 15:39 (load never dipped below 8).
+- This lane's remaining probe page follows the orchestrator law exactly:
+  heartbeat, sleep 240, max two probes this hour, then park honestly.
+
+Tools banked this lane: `leg2_crop_driver.sh` (crop legs, gated + bounded),
+`parse_verdict_033.py` (verdict extraction + certification command block),
+`leg1_dispatch_k9_stopped.txt` (driver-stop ledger).

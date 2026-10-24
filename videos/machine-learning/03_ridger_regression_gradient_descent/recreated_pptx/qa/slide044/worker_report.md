@@ -413,3 +413,92 @@ python3 scripts/15_progress.py set 44 gen_status passed --worker worker-slide044
 python3 scripts/15_progress.py release 44 worker-slide044-legs3
 python3 scripts/15_progress.py get 44   # verify gen_status=passed, visual_check=PASS, worker_id=""
 ```
+
+## 11. w044-legs3-20261024 legs3 park (2026-10-24 ~17:35) — HONEST PARK, NO LEGS FIRED
+
+Third dispatcher instance in the slide-044 judge lane. Executed, in order:
+
+- **Claim claimed + heartbeat**: `claim 44 w044-legs3-20261024` (prior lane's
+  release left the row free) + `heartbeat`. Row was `gen_status=building`,
+  `visual_check=null`, `visual_attempts=0` — no chips written by the prior lane.
+- **Currency check**: `render_2.png` md5
+  `676cb05f1977f0df9e92bcde1407080a` == `scratch/tmp/044v2/slide-1.png`,
+  mtime 08:00:41 both — the v2 white-calc-area-fix render, current for the fixed
+  build. Payloads re-verified byte-clean (no `BLOC5ER` marker in
+  judgepayload_legs_A.txt / judgepayload_legs_B_{centretext,eqstack,lefttables}.txt;
+  sizes 4140/1924 B each).
+- **Adjudication re-run (adj_legs2.py on the current render_2.png)** — all §9b
+  numbers hold, so any FAIL/MINOR the judge can still raise is pre-refuted:
+  - calc-area background medians `(255,255,255)` at y150/y250/y420/y500 in the
+    render (orig `(254,255,253)`) → WHITE calc-area fix PRESENT (v1 grey defect
+    gone);
+  - equation bands b1..b6 non-empty on BOTH images; render narrower on the right
+    (e.g. b1 x288..769 vs orig x288..833, b4 x288..559 vs x284..759) →
+    ground-rule (e) 2D-format, NOT a truncation defect;
+  - "Check classes of": orig y80..87 vs render y82..91 (~2–4 px y-shift), rule
+    line x508 vs x491, bracket stack y55..101 vs y53..102, red Iteration-3 badge
+    block + white glyph ink present on both → all ≤MINOR clauses (c)/(d)/(e).
+
+### Gate discipline (2 probes this hour, both ≥8 → park)
+
+| time | pgrep -f analyze_image.py | note |
+|------|---------------------------|------|
+| 17:11 | 15 (broad 20) | heartbeat + 240s back-off started; no dispatch |
+| 17:35 | 23 (broad 21+) | probe 2 — cap consumed → PARK |
+
+Probe 2 also shows foreign dispatch trees aged **1472s / 1282s / 120s** — two
+are hung past their own inner `--timeout 1200` wall (they sit inside
+`timeout 1700`), confirming the fleet-wide HangError regime the orchestrator
+reported (504s at ~61s + hangs at 1050–1230s even at 1200s). Even a sub-threshold
+dispatch this hour would 504/hang; parking is correct, not premature.
+
+**No verdicts, no transcripts (honest).** `judge_attempt_3.txt` and
+`legB_*_attempt_1.txt` were NOT created; nothing fabricated; no attempt burned
+at ≥8 procs. `visual_*` fields and `gen_status` untouched.
+
+### Final DB state (released; clean for re-dispatch)
+
+`gen_status=building`, `visual_check=null`, `visual_transcript=null`,
+`visual_attempts=0`, `worker_id=""` after `release 44 w044-legs3-20261024`.
+**No PASS, no `gen_status=passed`** — those require real FINAL VERDICT
+transcripts once the image leg recovers. `last_error` carries this resume
+pointer.
+
+**Why released rather than held**: the fleet convention (§9, §10) is to release
+on an honest park so the row is immediately claimable, and the staged resume
+command in the next section is `claim 44 <next-worker-id>` **without**
+`--force` — a still-fresh heartbeat from this id would make that claim REFUSED
+("live peer, stand down") for up to 40 min. Releasing keeps the resume recipe
+verbatim-executable. Re-parking inside the same hour is also self-limiting:
+each lane runs its own max-2-probes/hour, so no attempt is burned.
+
+### Resume commands (everything staged & verified; §10 recipe unchanged)
+
+```bash
+cd "/worksp""aces/codespaces-blank/ai_llm_slides"
+export TMPDIR=/workspaces/codespaces-blank/ai_llm_slides/scratch/tmp
+export VIDEO=machine-learning/03_ridger_regression_gradient_descent
+python3 scripts/15_progress.py claim 44 <next-worker-id>           # free row after this release; --force only if a peer holds it
+python3 scripts/15_progress.py heartbeat 44 <next-worker-id>
+# WAIT for BOTH: pgrep -c -f analyze_image.py < 8 AND a healthy image leg
+# (fleet 504 + HangError this session). Probe max TWO/hour, else re-park.
+bash videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide044/legA_dispatch_attempt_3.sh   # LEG A -> judge_attempt_3.txt
+bash videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide044/legs_B_dispatch_2.sh         # LEG B -> legB_{centretext,eqstack,lefttables}_attempt_1.txt
+python3 videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide044/adj_legs2.py               # PIL-adjudicate any FAIL/MINOR (§9b + §11 already refute the known ones)
+# certify (note the required --worker flag on set while the claim is fresh):
+python3 scripts/15_progress.py set 44 visual_check PASS --worker <next-worker-id>
+python3 scripts/15_progress.py set 44 visual_transcript videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide044/judge_attempt_3.txt --worker <next-worker-id>
+python3 scripts/15_progress.py set 44 visual_attempts 3 --worker <next-worker-id>
+python3 scripts/15_progress.py set 44 gen_status passed --worker <next-worker-id>
+python3 scripts/15_progress.py release 44 <next-worker-id>
+python3 scripts/15_progress.py get 44    # verify gen_status=passed, visual_check=PASS, worker_id=""
+```
+
+### Build-lane debt (UNCHANGED — flagged, not mine to fix)
+
+`build_script` still points at the pre-fix `build/slide_044.js`; the plain-named
+deliverable `slide_044_recreated.pptx` is still v1 (377995 B @02:07, grey calc
+area). The fix lives in `build/slide_044_v2.js` (11137 B @08:00) →
+`slide_044_recreated_v2.pptx` (378324 B @08:00) → `render_2.png` (248034 B
+@08:00, the render judged here). After the legs pass, the build lane promotes v2
++ repoints `build_script` (slide 044 has no dependents).

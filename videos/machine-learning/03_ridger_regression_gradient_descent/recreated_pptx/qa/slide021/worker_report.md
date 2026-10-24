@@ -261,6 +261,31 @@ is also 13.33×7.5in at 2001×1125, so the scale matches exactly — the earlier
 So the banked render IS the current build. No rebuild, no re-cut, no re-render. The
 Leg A PASS and the banked `crop_10_top_table_eq` PASS are both against the current pptx.
 
+### Why the pptx mtime is newer — reconciled (not a rebuild by me)
+
+The pptx at handoff was md5 `74364813557716b5a83e0fde790d510f`, which the build-first
+lane's own report names as "the last rebuild" hash — i.e. the deliberate re-run that
+regenerates `docProps/core.xml` with a fresh timestamp while leaving every content part
+byte-identical. So the mtime gap is explained by a build re-run, NOT by a content
+change, and it is the reason the whole-archive hash differs from the authoritative
+content hash `6ea9e28cce3f9c47e6cf6abd42365147`.
+
+Content confirmed by three independent checks:
+
+1. **Pixel**: 0 of 2,251,125 pixels differ between the banked `render_10.png` and a
+   fresh 150dpi render of the current pptx (above).
+2. **XML fix retention** in `ppt/slides/slide1.xml`: `marT="0"` + `marB="0"`
+   (Defect-2 row-inset kill), `noFill` on the table cells plus an `FDFD96` shape fill
+   (Defect-3 highlight rects), `marB` present. All retained.
+3. **Media**: `ppt/media/image-1-5.png` is (1064, 215) — the corrected `eq_021_d5685`
+   asset, not the stale (936, 192) `eq_021_det5685` (Defect 1). All six media parts
+   present and non-empty.
+
+I did NOT modify `build/slide_021.js` (md5 still `56e8f2db37e3500b32013f9446b47b47`)
+or the pptx. The only files I created live under `qa/slide021/` (the fresh runner, the
+`legs_status_crops_remaining_20261024.md` continuation, this report) and
+`scratch/tmp/re021/`.
+
 ## Crop verdicts (5 total, Procedure B)
 
 | slug | file | outcome |
@@ -448,3 +473,151 @@ cd "/worksp""aces/codespaces-blank/ai_llm_slides/videos/machine-learning/03_ridg
 #    cp build_attempt_9_pre_fixes.js build_attempt_<N+1>.js ; edit ; rebuild ; re-render ;
 #    re-cut the 5 crop pairs (cut_crops_021.py) ; re-run BOTH legs fully.
 ```
+
+---
+
+# 2026-10-24 (re-anchor) — lane w021-fresh-20261024
+
+Re-anchored by the orchestrator after the 2h slot timeout. All prior work in this
+lane's section above stands; this section records the re-anchor pass.
+
+## Bank-first re-glob — qa/slide021 holds 104 files, 1 crop verdict
+
+Re-globbed the whole bank (timeouts kill observation, not files):
+
+| slug | verdict file | outcome |
+|---|---|---|
+| top_table_eq | `crop_10_top_table_eq_judge.txt` | **FINAL VERDICT: PASS** (11:33:21Z) |
+| top_chain | `crop_10_top_chain_judge.txt` | **NO VERDICT — not landed** |
+| mid_table_eq | `crop_10_mid_table_eq_judge.txt` | **NO VERDICT — not landed** |
+| mid_chain | `crop_10_mid_chain_judge.txt` | **NO VERDICT — not landed** |
+| bot_eq_table | `crop_10_bot_eq_table_judge.txt` | **NO VERDICT — not landed** |
+
+No crop verdict landed after my 15:39 observation. The four missing transcripts are
+still absent from disk — the peer dispatcher's `PARK` records in
+`legs_status_crops_remaining_20261024.md` (16:19:26Z and 17:11:22Z) confirm they were
+never written, not merely unobserved.
+
+Banked artifacts re-verified byte-identical after the re-anchor:
+`crop_prompt_template_10.txt` md5 `b5b152e31e2ca54989eff597374025fb` (payload
+unchanged), `judge_attempt_10.txt` md5 `da72952ba5c0dc2911cfed5d091599b1`,
+`crop_10_top_table_eq_judge.txt` md5 `22e005512e0b3032120aa46631072a88`.
+
+## Wedge record re-read — `wall_abort_evidence_10.txt`
+
+The 09:39–10:07Z leg-1 abort was an **outer-wall kill** (alive at 10:05, ~17 min past
+the analyzer's own 600 s client timeout; `judge_attempt_10.txt` never written). It was
+NOT congestion (the window was genuinely open at pgrep=5). Leg 1 has since SUCCEEDED
+at 11:13Z with FINAL VERDICT: PASS, so the wall did clear for the full-slide leg; the
+residual failure mode on the crops is the upstream 504 / late-HangError described in
+the section above. Not re-litigated.
+
+## DB state found at re-anchor — the certification is INTACT
+
+| field | value at re-anchor |
+|---|---|
+| gen_status | `passed` |
+| visual_check | `PASS` |
+| visual_attempts | `10` |
+| visual_transcript | `.../qa/slide021/judge_attempt_10.txt` |
+| worker_id | `w021-legs-20261024` (a PEER's fresh claim — see below) |
+| last_error | `None` |
+
+A peer lane re-claimed slide 21 after my release. That re-claim rewrote ONLY
+`worker_id` / `worker_heartbeat_at`; all four certified content fields survived intact.
+No certified value was reverted.
+
+## Peer lane is LIVE — I stood down deliberately (did not steal, did not duplicate)
+
+Two files appeared during my sleep window that I did not author:
+`dispatch_one_crop_10.sh` (16:15Z) and `legs_report_20261024_APPEND.md` (16:31Z),
+both from peer lane `w021-legs-20261024`.
+
+That lane is **live and protocol-correct**: PID 723129 runs
+`bash dispatch_one_crop_10.sh top_chain "<desc>" 7000`, whose dispatch form is
+`dispatch_leg2_crops.sh`'s `run_crop` VERBATIM with the analyzer `--timeout 1200`
+override inside the unchanged outer `timeout 1700` wrapper, the payload byte-unchanged,
+`--thinking high --max-tokens 65536 --rounds 1 --tries 1`, a `pgrep < 8` gate check
+before the call, an honest `PARK` record when no window opens, and no overwrite of any
+banked transcript. It polls every 20 s and had ~5600 s of budget left at re-anchor.
+
+Its claim heartbeat is fresh (17:38:56Z), so `claim 21 w021-fresh-20261024` would be
+REFUSED without `--force`. Per the DB law, a fresh claim means "a live peer — stand
+down". Taking it with `--force` would steal a lane from a live, correctly-behaving
+worker and would split the shared vision gateway across two lanes racing for the same
+four crops. **I did not re-claim and did not duplicate a vision call.**
+
+## Gate reality in this window
+
+| moment | gate | action |
+|---|---|---|
+| re-anchor | 16 | held (>=8) |
+| during monitor | 13–16 | held (>=8) |
+
+Congestion was other lanes, not slide 021: slide050 (1574 s), slide_015 (829 s),
+slide032 (449 s), slide030 (412 s), slide_015 (207 s), slide034 (131 s). Per the
+two-probes-per-hour cap I did not dispatch. Zero vision calls issued by this lane in
+the re-anchor window; zero retry-loops; no verdict fabricated.
+
+## Adjudications in this window
+
+No new verdict landed, so there was no new FAIL/MINOR to adjudicate. The prior
+PIL measurements stand unchanged and are the basis for the certification judgment:
+all four unchecked regions match ORIG vs REND to 2–4 px in frame space, with the
+render's higher ink density being the typed-vs-handwritten allowance.
+
+## Final DB rows (certification, already banked)
+
+| field | value |
+|---|---|
+| visual_check | `PASS` |
+| visual_transcript | `videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide021/judge_attempt_10.txt` |
+| visual_attempts | `10` |
+| gen_status | `passed` |
+| last_error | `None` |
+
+Written with the DB law's `set` subcommand (no `record-visual`), then released.
+
+## Park state — UNFINISHED: 4 of 5 Procedure B crops (corroboration only)
+
+Slide 21 is **CERTIFIED** (`gen_status=passed`, `visual_check=PASS`), so nothing is
+blocked downstream. Outstanding is corroboration only: `top_chain`, `mid_table_eq`,
+`mid_chain`, `bot_eq_table` — two of them (`mid_table_eq`, `bot_eq_table`) are dense
+regions the deck's founder directive would ideally see a crop verdict on (see the
+"founder directive compliance" note above: the stated floor of >=1 clean crop is met,
+but this is a three-dense-region slide and only the TOP region carries a verdict).
+
+A live peer dispatcher is already attempting `top_chain` under the correct protocol,
+so the next lane should NOT race it. Exact resume commands (run only after checking
+that the peer is gone and the gate is open):
+
+```bash
+cd "/worksp""aces/codespaces-blank/ai_llm_slides"
+
+# 0) confirm the peer dispatcher is gone and the gate is open
+ps -eo pid,args | grep -E "dispatch_one_crop_10|dispatch_leg2_crops" | grep -v grep
+pgrep -c -f analyze_image.py          # must be < 8
+
+# 1) claim a FRESH worker id (the row is currently owned by w021-legs-20261024)
+VIDEO=machine-learning/03_ridger_regression_gradient_descent \
+  python3 scripts/15_progress.py claim 21 <NEW_WORKER_ID>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent \
+  python3 scripts/15_progress.py heartbeat 21 <NEW_WORKER_ID>
+
+# 2) launch the staged runner (gate check + analyzer --timeout 1200 inside outer 1700)
+#    override the worker id so its heartbeats are accepted by the new claim
+WID=<NEW_WORKER_ID> bash "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide021/dispatch_leg2_crops_fresh.sh" \
+  > "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide021/legs2_fresh_resume.log" 2>&1
+
+# 3) PIL-adjudicate any FAIL/MINOR against BOTH images before ANY build change
+cd "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide021" \
+  && python3 adjudicate_crops_1200.py
+
+# 4) real-defect path only: copy-then-modify build_attempt_9_pre_fixes.js, rebuild,
+#    re-render, re-cut all five crop pairs (cut_crops_021.py), re-run BOTH legs.
+```
+
+`dispatch_leg2_crops_fresh.sh` is syntax-clean, runs correctly from any cwd (absolute
+paths, no `/tmp`), parks (rather than dispatching) when `pgrep >= 8` — verified with a
+`pgrep` shim in a dry run that left every banked transcript and the payload md5
+untouched — and carries the `--timeout 1200` override.

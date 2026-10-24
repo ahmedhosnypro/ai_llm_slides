@@ -95,16 +95,23 @@ def hline_scan(img_white, y0, y1, x0, x1, ren):
         if f > 0.30:
             yy = y0 + (i / S if ren else i)
             out.append((round(yy, 1), round(float(f), 2)))
-    return merge([(int(a * 10), int(a * 10)) for a, _ in out], 0), out
+    return out
+def line_color(img, y, x, ren):
+    if ren:
+        yy, xx = int(y * S), int(x * S)
+        return np.round(np.median(img[yy-2:yy+3, xx-2:xx+3].reshape(-1, 3), axis=0)).astype(int)
+    return np.round(np.median(img[y-1:y+2, x-1:x+2].reshape(-1, 3), axis=0)).astype(int)
 for bi, (ya, yb, yexp) in enumerate([(231, 262, 251), (369, 400, 389), (507, 538, 527)], 1):
-    _, o_lines = hline_scan(mo["white"], ya, yb, 664, 876, False)
-    _, r_lines = hline_scan(mr["white"], ya, yb, 664, 876, True)
+    o_lines = hline_scan(mo["white"], ya, yb, 664, 876, False)
+    r_lines = hline_scan(mr["white"], ya, yb, 664, 876, True)
     o_bot = [l for l in o_lines if abs(l[0] - yexp) <= 6]
     r_bot = [l for l in r_lines if abs(l[0] - yexp) <= 6]
     print("   test B%d expected bottom y=%d:" % (bi, yexp))
-    print("      orig lines:", o_lines)
-    print("      rend lines:", r_lines)
+    print("      orig first/last non-white rows: %s .. %s" % (o_lines[0] if o_lines else None, o_lines[-1] if o_lines else None))
+    print("      rend first/last non-white rows: %s .. %s" % (r_lines[0] if r_lines else None, r_lines[-1] if r_lines else None))
     print("      orig bottom present:", bool(o_bot), " render bottom present:", bool(r_bot))
+    for yy in range(yexp - 2, yexp + 2):
+        print("      y=%d  orig px@690 %s  rend px@690 %s" % (yy, line_color(oi, yy, 690, False), line_color(ri, yy, 690, True)))
 
 print("\n== ITEM 4: Train / Test label ink colour inside the blue boxes ==")
 for nm, (x0, x1) in [("Train", (96, 160)), ("Test", (801, 866))]:
@@ -117,10 +124,16 @@ for nm, (x0, x1) in [("Train", (96, 160)), ("Test", (801, 866))]:
         whiteish = ink & (sub_img.sum(axis=2) > 735)
         reddish = ink & (r_ > 90) & ((r_ - g_) > 40)
         darkish = ink & (sub_img.sum(axis=2) < 330)
-        return fill, int(ink.sum()), int(whiteish.sum()), int(reddish.sum()), int(darkish.sum())
+        inkmed = (np.round(np.median(sub_img[ink].reshape(-1, 3), axis=0)).astype(int).tolist()
+                  if ink.sum() >= 8 else None)
+        return fill, int(ink.sum()), int(whiteish.sum()), int(reddish.sum()), int(darkish.sum()), inkmed
     fo = label_ink(oi, False); fr = label_ink(ri, True)
-    print("   %s label: orig fill=%s ink=%d white=%d red=%d dark=%d" % (nm, np.round(fo[0]).astype(int), fo[1], fo[2], fo[3], fo[4]))
-    print("   %s label: rend fill=%s ink=%d white=%d red=%d dark=%d" % (nm, np.round(fr[0]).astype(int), fr[1], fr[2], fr[3], fr[4]))
+    print("   %s label: orig fill=%s ink=%d white=%d red=%d dark=%d inkmed=%s" % (nm, np.round(fo[0]).astype(int), fo[1], fo[2], fo[3], fo[4], fo[5]))
+    print("   %s label: rend fill=%s ink=%d white=%d red=%d dark=%d inkmed=%s" % (nm, np.round(fr[0]).astype(int), fr[1], fr[2], fr[3], fr[4], fr[5]))
+    Image.fromarray(oi[96:126, x0:x1+1].astype(np.uint8)).resize(
+        ((x1-x0+1)*4, 30*4), Image.LANCZOS).save(os.path.join(HERE, "label_%s_orig_x4.png" % nm.lower()))
+    Image.fromarray(ri[int(96*S):int(125*S), int(x0*S):int(x1*S)].astype(np.uint8)).save(
+        os.path.join(HERE, "label_%s_render.png" % nm.lower()))
 
 print("\n== ITEM 5: mint y-row cells, all three test bands (fill medians) ==")
 BANDS = [(1, (222, 247)), (2, (360, 385)), (3, (498, 523))]
@@ -130,7 +143,6 @@ for bi, (y0, y1) in BANDS:
             sub = (img[int(y0*S):int(y1*S), int(x0*S):int(x1*S)] if ren else img[y0:y1+1, x0:x1+1])
             return np.median(sub.reshape(-1, 3), axis=0), sub.reshape(-1, 3).shape[0]
         co, _ = cell(oi, False); cr, _ = cell(ri, True)
-        mo_cell = masks(np.asarray(Image.open(RENDER).convert("RGB")[[int(y0*S)+1]]*1))  # placeholder no-op
         print("   B%d cell%d: orig fill=%s rend fill=%s" % (bi, ci, np.round(co).astype(int), np.round(cr).astype(int)))
 # also mint pixel counts per band (same windows as the banked selfcheck, all 3 bands)
 for bi, (y0, y1) in enumerate([(222, 246), (359, 383), (497, 521)], 1):

@@ -135,3 +135,62 @@ same house red/green). → **No build change; region certified clean.**
 missing crop legs sequentially at `--timeout 1200` (approved wall) inside
 `timeout 1700`, payload bytes unchanged, `--thinking high --max-tokens 65536`,
 gate law probing real clients < 8 (max 2 probes/hour, then wait).
+
+## 6. 2026-10-24 ~17:50 — resume by w030-finish-20261024c (claim renewed)
+
+### Claim / DB state
+`get 30` (17:28): `gen_status=building`, `visual_check=null`,
+`visual_attempts=1` (**must become 6** — fleet convention is the judge attempt
+index: slide 13→`judge_attempt_6.txt`/attempts 6, slide 21→attempt 10,
+slide 27→attempt 10), `visual_transcript=null`,
+`worker_id=w030-finish-20261024c` (claimed `--force`; earlier ids ...b went
+stale), `last_error=null`. Heartbeat sent this cycle.
+
+### Deliverable currency re-verified
+`scratch/render_w030_finish.sh` rebuilds `build/slide_030.js` and re-renders to
+`render_6.png` md5 `ac17141f492f2b61291e4912007c0b78` = banked `render_5.png`
+= `render_attempt_1.png`. House chrome check on render_6: PASS (panel
+x112..1882, L/R/bottom red strokes, no top stroke, badge d68 at (1824,152)).
+Payloads re-derived + byte-verified (idempotent regen, md5s unchanged,
+`ALL BYTE CHECKS PASS`) and confirmed verbatim against
+`shared_patterns/judge_protocol_03.md` sources.
+
+### Judge-leg status at this cycle
+Verdict coverage: **1/8** (formula PASS, adjudicated in section 5, no build
+change). Still missing: Leg A full-slide + crops plot, iter_left, iter_right,
+param, callout, arrow — all lost to the shared image upstream, not to the slide.
+
+Failure channel (banked in `*_dispatch.log` / `probe_health_dispatch.log`):
+every leg attempt ends either `HTTP 504 upstream_timeout` (Nvidia candidate
+`nva…hWGS`) or an internal `HangError: hard wall-clock 1230s exceeded` (which
+then retries and hits the 504). Observed 2026-10-24 16:18–17:55:
+- legA_full (16:59 fire) → 504 in 60 s
+- legB_plot (17:00 fire) → 504 in 62 s
+- legB_iter_left round 1 (17:01) → 1230 s HangError + 504 pair, outer
+  `timeout 1700` killed during retry 2 → rc=124 17:29
+- legB_iter_left round 2 (17:33) → 1230 s HangError + 504 pair → rc=1 17:55
+- legB_iter_right firing 17:55 (in flight)
+So ~22 min per attempt and the healthy shape is "survive past 1230 s": the one
+verdict that ever landed (formula, 13:14→13:41) took 27 min to complete. Fast
+504 passes are the outage shape, so v5's `fire_leg` (which returns immediately
+on a 504) exhausts legs quickly; v6 (added this cycle) therefore re-checks
+EVERY leg each outer round and fires only the ones with no verdict yet,
+including Leg A, which v5 already burned through and never revisits.
+
+### Dispatch state
+`dispatch_legs_6_v5.sh` (PID 706312, detached) — probes the lane with a light
+`analysis` probe every 300 s, then fires missing legs back-to-back at
+`--timeout 1200` inside `timeout 1700`, `--thinking high --max-tokens 65536`,
+payload bytes unchanged, gate law real clients < 8.
+`dispatch_legs_6_v6.sh` (new, this cycle) — 10 outer rounds, missing-leg-first
+(Leg A first), fast-504 legs skipped rather than blocking, verdict-present legs
+skipped. To be launched only when v5 exits and no duplicate leg is in flight.
+
+### Adjudication posture (banked, pending verdicts)
+- formula PASS → all 5 MINORs PIL-adjudicated, no build change (section 5).
+- Two further MINOR candidates found PIL-first, awaiting a verdict:
+  red arrow ~3 px narrower / ~2.2 px shorter than orig's arrow ink
+  (render x170.8..190.9 / y304.2..333.0 vs orig x171..194 / y304..335 — same
+  shape and tilt, so MINOR at most); plot point labels ~3 px smaller
+  (orig (5,1) bbox 698..223 vs render 696.1..715.3). Both PIL-surfaced and
+  neither is a content defect.
