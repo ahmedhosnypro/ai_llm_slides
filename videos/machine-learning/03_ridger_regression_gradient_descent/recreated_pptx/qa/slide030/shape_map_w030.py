@@ -28,23 +28,32 @@ def pinkish(a):
     return (r > 200) & (r - g > 18) & (r - b > 18) & (g > 150) & (b > 150)
 
 
-def frame_grid(im, sx, sy, box):
-    """Resample an image region to frame px (1 char per frame px) and classify."""
+def to_frames(im, sx, sy, box):
+    """Block-average an image region down to ONE CELL PER FRAME PXEL (960x540)."""
     x0, y0, x1, y1 = box
     X0, Y0, X1, Y1 = int(round(x0 * sx)), int(round(y0 * sy)), int(round(x1 * sx)), int(round(y1 * sy))
-    sub = im[Y0:Y1, X0:X1]
-    rm, pm = redish(sub), pinkish(sub)
+    sub = im[Y0:Y1, X0:X1].astype(float)
+    h, w = sub.shape[:2]
+    fh, fw = int(round(h / sy)), int(round(w / sx))
+    if (fh, fw) != (h, w):
+        out = np.zeros((fh, fw, 3))
+        for i in range(fh):
+            for j in range(fw):
+                ys = slice(int(round(i * sy)), max(int(round((i + 1) * sy)), int(round(i * sy)) + 1))
+                xs = slice(int(round(j * sx)), max(int(round((j + 1) * sx)), int(round(j * sx)) + 1))
+                out[i, j] = sub[ys, xs].reshape(-1, 3).mean(axis=0)
+        return out
+    return sub
+
+
+def frame_grid(im, sx, sy, box):
+    """Classify each frame-px cell of the region ('#', '.', ' ')."""
+    sub = to_frames(im, sx, sy, box)
+    a = sub.astype(int)
+    rm, pm = redish(a), pinkish(a)
     rows = []
-    for i in range(sub.shape[0]):
-        row = []
-        for j in range(sub.shape[1]):
-            if pm[i, j]:
-                row.append(".")
-            elif rm[i, j]:
-                row.append("#")
-            else:
-                row.append(" ")
-        rows.append(row)
+    for i in range(rm.shape[0]):
+        rows.append("".join("#" if rm[i, j] else ("." if pm[i, j] else " ") for j in range(rm.shape[1])))
     return rows
 
 
@@ -67,19 +76,12 @@ print("\n== callout band map (purple=#, light text=o, other=.): frame px x320..5
 
 
 def callout_map(im, sx, sy):
-    x0, y0, x1, y1 = (320, 288, 585, 324)
-    X0, Y0, X1, Y1 = int(round(x0 * sx)), int(round(y0 * sy)), int(round(x1 * sx)), int(round(y1 * sy))
-    sub = im[Y0:Y1, X0:X1]
+    sub = to_frames(im, sx, sy, (320, 288, 585, 324)).astype(int)
     r_, g_, b_ = sub[:, :, 0], sub[:, :, 1], sub[:, :, 2]
     purple = (r_ - g_ > 25) & (b_ - g_ > 25) & (b_ > 120)
     light = (r_ > 200) & (g_ > 200) & (b_ > 200)
-    out = []
-    for i in range(sub.shape[0]):
-        row = []
-        for j in range(sub.shape[1]):
-            row.append("#" if purple[i, j] else ("o" if light[i, j] else "."))
-        out.append(row)
-    return out
+    return ["".join("#" if purple[i, j] else ("o" if light[i, j] else ".") for j in range(purple.shape[1]))
+            for i in range(purple.shape[0])]
 
 
 rc = callout_map(rend, SXR, SYR)

@@ -502,3 +502,50 @@ area). The fix lives in `build/slide_044_v2.js` (11137 B @08:00) →
 `slide_044_recreated_v2.pptx` (378324 B @08:00) → `render_2.png` (248034 B
 @08:00, the render judged here). After the legs pass, the build lane promotes v2
 + repoints `build_script` (slide 044 has no dependents).
+
+## 12. w044-buildjudge-20261024 — build-lane promotion done (2026-10-24 18:08–18:10); judge legs NOT yet obtained
+
+Worker: `w044-buildjudge-20261024`. **This lane carries BOTH mandates**: the judge
+legs AND the build-debt promotion the previous lanes explicitly deferred to the
+build lane. The promotion is DONE and render-verified; the vision legs remain
+blocked by the fleet gateway and are still owed (§12c).
+
+### 12a. BUILD PROMOTION — DONE (this was the carried-forward build debt)
+
+Copy-then-modify; nothing deleted; v1 bytes remain banked as evidence.
+
+| step | result |
+|---|---|
+| v1 evidence re-verified | `qa/slide044/slide_044_build_v1_bank.js` md5 `26900e39…` == pre-promotion `build/slide_044.js` (byte-identical); `qa/slide044/slide_044_recreated_v1_bank.pptx` md5 `afe14148…` == pre-promotion plain `slide_044_recreated.pptx` (377,995 B). Both v1 artefacts still banked. |
+| plain deliverable promoted | `cp slide_044_recreated_v2.pptx slide_044_recreated.pptx` → plain deliverable now md5 `b5c9fcb2f69c27a5e314644cf72fc88c` (378,324 B) = the **v2 white-calc-area-fix build**. The grey-calc-area v1 is gone from the deliverable path but preserved in the bank. |
+| build scripts repointed | `build/slide_044_v2.js` `OUT` → `../slide_044_recreated.pptx` (was `_v2.pptx`); `build/slide_044.js` was then copied from the v2 script, so **both** build scripts now emit the plain-named deliverable (md5 `bd021196…`, identical). No stale v1 script can overwrite the certified deliverable again. |
+| render re-verified | promoted deliverable re-rendered by the canonical recipe (`soffice --headless -env:UserInstallation=… → pdftoppm -png -r 150`, private profile `lo_044promo`, scratch `scratch/tmp/044promo/`) → md5 **`676cb05f1977f0df9e92bcde1407080a` == `qa/slide044/render_2.png`**. **The certified render corresponds byte-for-byte to the certified (promoted) deliverable.** |
+| house chrome | `house_chrome_check.py` on the promoted render → **PASS** (panel x112-1882 y94-bottom; strokes L/R/bottom present, top bare; badge center (1824,152) d=68; tol 8) |
+| single-version law | the root-level parallel `slide_044_recreated_v2.pptx` was moved into the QA bank as `qa/slide044/slide_044_recreated_v2_bank.pptx` (md5 still `b5c9fcb2…`); the deck dir now holds exactly ONE 044 deliverable: `recreated_pptx/slide_044_recreated.pptx`. |
+| DB write | `set 44 build_script …/recreated_pptx/build/slide_044_v2.js` and `set 44 pptx_path …/recreated_pptx/slide_044_recreated.pptx` (both with `--worker w044-buildjudge-20261024`), confirmed by `get 44`. |
+
+Slide 044 has **no dependents** (its row shows `depends_on: null`, no pattern group),
+so the promotion does not reopen any descendant.
+
+### 12b. Pre-dispatch verification (fresh this run, both gateway-free)
+
+- Bank re-globbed: **no `judge_attempt_3.txt`, no `legB_*_attempt_1.txt`** — no
+  verdict transcript has ever landed for this slide. Attempts still 0.
+- **Payload integrity re-proven by reconstruction**: a script compared both banked
+  templates against `shared_patterns/judge_protocol_03.md` with the protocol's only
+  legal substitutions (`NNN`→`44`, `\bK\b`→`2`). Both A and all three B payloads are
+  identical to the reconstruction except a trailing `\n` (which `$(cat …)` strips).
+  `BLOCKER` is intact in every file — the earlier naive `K→1` global substitution
+  documented in §1 is gone from the current bank. md5s: A `8fc119623b…`,
+  B×3 `4ec37fe0a5…`.
+- **Dispatch scripts**: `legA_dispatch_attempt_3.sh` and `legs_B_dispatch_2.sh` both
+  already carry the approved wall (`--timeout 1200` inside `timeout 1700`) and the
+  fixed split-path `cd`; used as-is, no edit.
+- **Adjudication harness re-run** (`qa/slide044/adj_legs2.py`, output banked
+  `adjudication_legs3_output.txt`): calc-area medians `(255,255,255)` at y150/250/
+  420/500 (original `(254,255,253)`) → the white-calc-area fix is PRESENT in the
+  promoted deliverable; equation bands b1..b6 non-empty on both images (render
+  narrower on the right = ground-rule (e) 2D format, not truncation); "Check classes
+  of" y80..87 vs y82..91, class rule x508 vs x491, bracket stack y55..101 vs y53..102,
+  red "Iteration 3" block + white glyph ink present on both → every known finding
+  stays **≤ MINOR**, clauses (c)/(d)/(e).

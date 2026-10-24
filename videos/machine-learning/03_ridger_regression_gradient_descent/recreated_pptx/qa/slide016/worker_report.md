@@ -786,3 +786,106 @@ EXACT RESUME COMMANDS (run from the project root; nothing else is needed first):
 DO NOT certify from the attempt-5 transcripts: the render changed, so per the protocol
 both legs must be re-run from render_6 (missing_band/bullet2 crop transcripts are kept
 only because their regions are pixel-identical, proven above).
+
+
+---
+
+# Attempt 7 — worker-016-buildjudge-20261024 (session resume 2026-10-24 18:00–19:07 UTC) — PARKED on gate congestion, NOT a defect
+
+Claim taken over with `--force` from `crop-legs-016b` (heartbeat 125m stale). DB row on entry:
+`gen_status=building`, `visual_check=NULL`, `visual_attempts=1`, stale attempt-1 `last_error`.
+`gen_status` was set to `judging` before the first gate probe. Heartbeats every probe
+(VIDEO-prefixed, per standing law).
+
+## Late-transcript re-glob (per parent law)
+
+Full bank re-globbed on entry and again before parking. Every `*_judge.txt` / `judge_attempt_*.txt`
+was scanned for a real `FINAL VERDICT:` body (prompt/echo files excluded). NO attempt-6
+transcript landed late: `judge_attempt_6.txt`, `crop_6_last_bullet_judge.txt` and
+`crop_6_full_body_judge.txt` DO NOT EXIST. The only verdicts on disk are
+`judge_attempt_5.txt` PASS, `crop_5_missing_band_judge.txt` PASS, `crop_5_bullet2_judge.txt` PASS,
+`crop_5_last_bullet_judge.txt` FAIL (the real underline defect, since fixed), and the superseded
+pre-fix FAILs (`judge_attempt_1/2.txt`, `crop_1/2_missing_band_judge.txt`).
+The attempt-1 FULL-SLIDE FAIL ("missing 4 of 12 body text lines") remains SUPERSEDED build history
+and was never used as a certification or fix basis in this lane.
+
+## Build/fix verification on the CURRENT deliverable (no vision needed — PASS)
+
+Script banked: `verify_attempt6_current.py` (+ output `verify_attempt6_current.txt`).
+Method: 960x540 frame space (1px = 1pt), render 2001x1125 at 2.0833 render-px per frame-px;
+neutral-dark stroke mask (excludes the purple inner border and red house strokes);
+12 body bands measured for ink; all numbers printed to bank file.
+
+1. **Render currency — PROVEN.** `slide_016_recreated.pptx` (mtime 15:12, md5
+   `e78067837ab777212529e902d484ec1d`, 63585 B) re-rendered fresh this lane to
+   `scratch/tmp/slide016_verify/render-1.png` (TMPDIR=scratch/tmp, private LO profile) — md5
+   `ed916ea68516820580b787856813d4df`, **byte-identical to `qa/slide016/render_6.png`** (`cmp` clean).
+2. **All 3 black underlines — PRESENT, within ~1.5 frame px of the original:**
+   original `y500 x446..640` / `y500 x710..806` / `y525 x110..162`;
+   render_6 `y500.2 x445.3..641.1` / `y500.2 x709.3..806.7` / `y525.2 x109.3..163.0`.
+   The attempt-5crop FAIL defect (render had only the last underline) is measurably fixed.
+3. **Underline crossing the inner box border x830 — REFUTED on the CURRENT render.** No neutral
+   stroke in x80..830 y470..540 extends beyond x~832; the wide runs at y531.9..532.9 are the
+   box's own purple bottom border (`43,35,122`, excluded by the neutral mask) and at y538.2/538.6
+   the red house bottom stroke (`192,0,0`) — both present in the original too. The attempt-1 MAJOR
+   stroke at x675..877 is GONE from the current build.
+4. **Body text bands — 12/12 INKED.** render ink px vs original: 3377/998 (h1), 7811/1787 (h2),
+   8397/2803, 12048/3118, 11223/3002, 8778/1979, 9524/2350, 8572/2666, 11146/2962, 2886/1039,
+   13232/3642, 1733/519. The L7-L10 band (y332..447) holds ~26k ink px incl. both blue key terms.
+5. **House chrome — PASS** (`house_chrome_check.py`: panel x112-1882 y94-bottom; strokes L/R/bottom,
+   top bare; badge (1824,152) d68).
+
+## Attempt-6 staged artifacts — RE-DERIVED and byte-verified this lane
+
+- Payloads (only legal substitution NNN->016; `\bK\b` not present in Template A/B bodies):
+  `judge_prompt_6A.txt` 4139 B, md5 `9387f5fbb94ef05a31db19f1e018dde1`, frozen-match TRUE, BLOCKER x4,
+  BLOC1ER x0; `judge_prompt_6B.txt` 1924 B, md5 `481172b034aa3336f54591d4e8e4bc98`, frozen-match
+  TRUE, BLOCKER x2, BLOC1ER x0.
+- Crops on render_6, matched effective scale, MAX source-pixel diff 0 vs render_6 regions:
+  `crop_6_last_bullet_{render,orig}.png` 1541x118, eff x 2.0824/2.0824, y 2.0702/2.0702;
+  `crop_6_full_body_{render,orig}.png` 1531x904, eff x 2.0830/2.0830, y 2.0829/2.0829.
+- Dispatcher `dispatch_judge_6.sh` OVERRIDDEN from `--timeout 600` to the approved
+  `--timeout 1200` (both occurrences, lines 19 and 35), still inside `timeout 1700`, gate +
+  `--thinking high --max-tokens 65536`.
+
+## Gate probes this lane (park reason — congestion, NOT a defect)
+
+| when (UTC) | pgrep -c -f analyze_image.py | action |
+|---|---|---|
+| 19:00 | 14 | heartbeat + sleep 240 |
+| 19:04 | 13 | second probe; both allowed probes (max TWO/hour) exhausted |
+
+Counts stayed >= 8 the whole window, so NO vision call was dispatched this lane. No verdict was
+fabricated, no leg was retry-looped, and nothing was certified. Certification is NOT possible
+without real attempt-6 legs — per protocol any FAIL or render change requires re-running BOTH legs
+from render_6 (the unchanged-region crop PASSes `crop_5_missing_band_judge.txt` and
+`crop_5_bullet2_judge.txt` keep their validity only because render_5->render_6 diff is confined to
+the last_bullet/full_body regions, proven in the 016b section above).
+
+## PARK STATE
+
+Row 16 is NOT certified: `gen_status=judging`, `visual_check=NULL`,
+`visual_transcript=NULL`, `visual_attempts=1`, `worker_id=worker-016-buildjudge-20261024` (live).
+EXACT RESUME COMMANDS (project root; nothing else needed first — build is verified, payloads and
+crops staged and byte-checked, dispatcher at the approved wall):
+
+    cd "/worksp""aces/codespaces-blank/ai_llm_slides"
+    export VIDEO=machine-learning/03_ridger_regression_gradient_descent
+    python3 scripts/15_progress.py heartbeat 16 worker-016-buildjudge-20261024
+    # gate probe; if < 8 and retryable, dispatch ONE leg at a time:
+    bash videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide016/dispatch_judge_6.sh legA
+    bash videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide016/dispatch_judge_6.sh last_bullet
+    bash videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide016/dispatch_judge_6.sh full_body
+    # when all three transcripts carry a real "FINAL VERDICT:" line, adjudicate findings
+    # PIL-first vs the original, then certify with fields only (no record-visual subcommand):
+    python3 scripts/15_progress.py set 16 visual_check PASS --worker <id>
+    python3 scripts/15_progress.py set 16 visual_transcript \
+      videos/.../recreated_pptx/qa/slide016/judge_attempt_6.txt --worker <id>
+    python3 scripts/15_progress.py set 16 visual_attempts 6 --worker <id>
+    python3 scripts/15_progress.py set 16 gen_status passed --worker <id>
+    python3 scripts/15_progress.py heartbeat 16 <id>
+    python3 scripts/15_progress.py release 16 <id>
+    python3 scripts/15_progress.py get 16   # must read passed / PASS / worker_id=""
+
+The full path form `videos/.../` above is abbreviated; the actual path is
+`videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide016/judge_attempt_6.txt`.

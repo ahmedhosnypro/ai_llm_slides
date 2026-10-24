@@ -187,3 +187,10 @@ NOT CERTIFIED: 4 of 5 Procedure B crops still have no verdict.
 [2026-10-24T15:51:29Z] gate probe pgrep=25 (>=8) — heartbeat sent, sleeping 240s (waited 2161s for top_chain)
 [2026-10-24T16:19:26Z] PARK top_chain: no window in 161s (pgrep=14); NOT dispatched — honest no-verdict
 [2026-10-24T17:11:22Z] PARK top_chain: no window in 3003s (pgrep=13); NOT dispatched — honest no-verdict
+[2026-10-24T19:02Z] RELAUNCH (fresh lane, detached): dispatch_leg2_crops_fresh.sh (PID 17905, own session)
+  SLUGS="mid_table_eq mid_chain bot_eq_table top_chain" WID=w021-legs-20261024 POLL_MAX=21600 POLL_EVERY=240
+  gate-checked, analyzer --timeout 1200 inside outer timeout 1700, payload md5 verified unchanged.
+[2026-10-24T19:02Z] Also launched certify_watch_021.sh (PID 21945, own session) — observer only, never dispatches.
+  It certifies the row ONLY when all five crop transcripts carry a real FINAL VERDICT: PASS and the
+  payload/render md5s are unchanged and leg A is still PASS; any non-PASS verdict stops it for
+  PIL adjudication instead of auto-certifying.
