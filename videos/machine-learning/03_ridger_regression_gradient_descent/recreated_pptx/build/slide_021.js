@@ -38,6 +38,17 @@
 //
 // TABLES (3x3, gridlines gray): P1 x97..303 y173..227 | P2 x89..295 y340..395
 //                               P3 x421..626 y457..511
+// TABLE ROW-HEIGHT LAW (measured 2026-10-24, the "rows drift down" defect):
+//   LibreOffice treats a table row's declared height as a MINIMUM and expands it to
+//   fit the glyph line-height PLUS the cell's default vertical insets. At fs14 that
+//   made every row ~22.5px instead of the original's ~17.7px, pushing row-3 digits
+//   ~12px below the original (and 4px past the gridline). Fix: margin:0 on the table
+//   (kills the insets) + an explicit rowH array in the ORIGINAL's measured row
+//   heights — then the declared height is not exceeded.
+//   P1 rows [17,18,18] y173..226 | P2 rows [18,17,19] y341..395 | P3 rows [17,17,19] y458..511
+// HIGHLIGHT: the middle table's diagonal cells (17/43/95) carry an OPAQUE FDFD96 band
+//   around the digits only (r1c1 x107..143 y345..357, r2c2 x173..210 y363..374,
+//   r3c3 x243..279 y380..392) — NOT a whole-cell saturated-yellow fill.
 // ARROWS — the original's chain arrows are BLUE (not black):
 //   P1 a1 x460..476 @y201 | P1 a2 x660..677 @y201
 //   P2 a1 x489..505 @y368 | P2 a2 x728..744 @y368 | P3 x364..380 @y480
@@ -66,7 +77,8 @@ drawHouseChrome(pptx, slide, { numeral: 21 });
 const RED   = "C00000"; // title, conclusions
 const BLUE  = "0000FF"; // panel borders, arrows, equation ink
 const GREEN = "008000"; // lambda=3
-const YELLOW= "FFFF00"; // diagonal highlights
+const YELLOW= "FFFF00"; // (unused now) saturated yellow — the original's is FDFD96
+const HILITE= "FDFD96"; // original's diagonal-cell highlight band (measured, opaque)
 const GRID  = "909090"; // table gridlines
 const BLACK = "000000"; // table digits, chain text
 const WHITE = "FFFFFF"; // panel fill
@@ -135,11 +147,12 @@ const topTableData = [
   [{ text: "20" }, { text: "80" }, { text: "92" }],
 ];
 slide.addTable(topTableData, {
-  x: px(97), y: px(173), w: px(206), h: px(54),
+  x: px(97), y: px(173), w: px(206), h: px(53),
   fontFace: FONT_SERIF, fontSize: 14, color: BLACK,
   align: "center", valign: "middle",
   border: [{ type: "solid", color: GRID, pt: 1 }],
-  row: { h: px(54 / 3) },
+  margin: 0,
+  rowH: [px(17), px(18), px(18)],
 });
 
 eq("eq_021_det0.png", 341, 187, 794, 230);
@@ -152,29 +165,30 @@ textAt("No Inverse", 704, 193, 207, { boxW: 120, fontSize: 21, italic: true, col
 eq("eq_021_regmat.png", 89, 300, 940, 227);
 eq("eq_021_lambda3.png", 245, 304, 380, 132);
 
+// Original highlight = an OPAQUE FDFD96 band behind each diagonal cell's digits
+// (measured: r1c1 x107..143 y345..357, r2c2 x173..210 y363..374, r3c3 x243..279 y380..392
+// — competent: pale FDFD96, NOT saturated FFFF00, and tight around the digits, not a
+// whole-cell fill). Drawn behind transparent table cells, so the digits sit on top.
+for (const b of [
+  { x: 107, y: 345, w: 37, h: 13 },
+  { x: 173, y: 363, w: 38, h: 12 },
+  { x: 243, y: 380, w: 37, h: 13 },
+]) {
+  rect(b.x, b.y, b.w, b.h, HILITE);
+}
+
 const midTableData = [
-  [
-    { text: "17", options: { color: BLACK, fill: { color: YELLOW } } },
-    { text: "10", options: { color: BLACK } },
-    { text: "15", options: { color: BLACK } },
-  ],
-  [
-    { text: "10", options: { color: BLACK } },
-    { text: "43", options: { color: BLACK, fill: { color: YELLOW } } },
-    { text: "46", options: { color: BLACK } },
-  ],
-  [
-    { text: "20", options: { color: BLACK } },
-    { text: "80", options: { color: BLACK } },
-    { text: "95", options: { color: BLACK, fill: { color: YELLOW } } },
-  ],
+  ["17", "10", "15"],
+  ["10", "43", "46"],
+  ["20", "80", "95"],
 ];
 slide.addTable(midTableData, {
-  x: px(89), y: px(340), w: px(206), h: px(55),
+  x: px(89), y: px(341), w: px(206), h: px(54),
   fontFace: FONT_SERIF, fontSize: 14, color: BLACK,
   align: "center", valign: "middle",
   border: [{ type: "solid", color: GRID, pt: 1 }],
-  row: { h: px(55 / 3) },
+  margin: 0,
+  rowH: [px(18), px(17), px(19)],
 });
 
 eq("eq_021_d5685.png", 338, 354, 1064, 215);
@@ -193,11 +207,12 @@ const botTableData = [
   [{ text: "-0.01" }, { text: "-0.2" }, { text: "0.11" }],
 ];
 slide.addTable(botTableData, {
-  x: px(421), y: px(457), w: px(205), h: px(54),
+  x: px(421), y: px(458), w: px(205), h: px(53),
   fontFace: FONT_SERIF, fontSize: 13, color: BLACK,
   align: "center", valign: "middle",
   border: [{ type: "solid", color: GRID, pt: 1 }],
-  row: { h: px(54 / 3) },
+  margin: 0,
+  rowH: [px(17), px(17), px(19)],
 });
 
 // ── Write ──────────────────────────────────────────────────────────────────────

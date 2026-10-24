@@ -270,13 +270,18 @@ slide.addText("=", {
   fontFace: A, fontSize: 24, color: "000000", bold: true,
 });
 
-// Matrix: four rows as horizontal bands (frame-measured), cells on top
+// Matrix: four rows as horizontal bands (frame-measured). The ORIGINAL has
+// NO left bracket and NO leading "1" glyph in column 1 (measured: rows 1/3
+// have zero ink at x154..182; the sparse ink in rows 2/4 is the band edge) —
+// the first-column cells are EMPTY in the frame. The middle (white) row does
+// draw an ellipsis in ALL FIVE cells (measured ink in c2..c5, judge leg A
+// finding 1 CONFIRMED).
 const mx_x = 150;
 const row_defs = [
-  { y: 368, h: 22, fill: "FFFF99", cells: [["1", ""], ["x", "11"], ["x", "12"], ["...", ""], ["x", "1d"]] },
-  { y: 397, h: 26, fill: "CCFFFF", cells: [["1", ""], ["x", "21"], ["x", "22"], ["...", ""], ["x", "2d"]] },
-  { y: 427, h: 25, fill: "FFFFFF", cells: [["1", ""], ["...", ""], ["...", ""], ["...", ""], ["...", ""]] },
-  { y: 456, h: 22, fill: "FFC0CB", cells: [["1", ""], ["x", "n1"], ["x", "n2"], ["...", ""], ["x", "nd"]] },
+  { y: 368, h: 22, fill: "FFFF99", cells: [["", ""], ["x", "11"], ["x", "12"], ["...", ""], ["x", "1d"]] },
+  { y: 397, h: 26, fill: "CCFFFF", cells: [["", ""], ["x", "21"], ["x", "22"], ["...", ""], ["x", "2d"]] },
+  { y: 427, h: 25, fill: "FFFFFF", cells: [["", ""], ["...", ""], ["...", ""], ["...", ""], ["...", ""]] },
+  { y: 456, h: 22, fill: "FFC0CB", cells: [["", ""], ["x", "n1"], ["x", "n2"], ["...", ""], ["x", "nd"]] },
 ];
 const cell_cols = [4, 32, 76, 120, 164];
 for (const r of row_defs) {
@@ -310,6 +315,10 @@ slide.addText("N × d+1", {
 });
 
 // w-vector: bracket pair + b (blue), w_1, w_2, ..., w_d
+// The ORIGINAL draws the entries at measured rows y352(b, blue), y390(w_1),
+// y418(w_2), y455(ellipsis), y472(w_d) — explicit boxes per entry (LO ignores
+// line spacing/stretch on inline runs, which scattered the earlier stacked
+// build). Measured glyph height 26px => ~13pt for the entries.
 slide.addShape(pptx.ShapeType.leftBracket, {
   x: px(458), y: px(330), w: px(9), h: px(148),
   fill: { type: "none" }, line: { color: "000000", width: 1 },
@@ -318,16 +327,24 @@ slide.addShape(pptx.ShapeType.rightBracket, {
   x: px(514), y: px(330), w: px(9), h: px(148),
   fill: { type: "none" }, line: { color: "000000", width: 1 },
 });
-const w_entries = ["b", "w_1", "w_2", "...", "w_d"];
-for (let i = 0; i < w_entries.length; i++) {
-  const sub = w_entries[i].split("_")[1];
-  const isB = w_entries[i] === "b";
+const w_rows = [
+  { y: 350, isB: true },
+  { y: 388, isB: false, sub: "1" },
+  { y: 416, isB: false, sub: "2" },
+  { y: 453, dots: true },
+  { y: 470, isB: false, sub: "d" },
+];
+for (const w of w_rows) {
+  const size = w.isB ? 13 : 13;
   slide.addText([
-    { text: isB ? "b" : "w", options: { fontFace: A, fontSize: isB ? 13 : 11, bold: isB, italic: !isB, color: isB ? "0000FF" : "000000" } },
-    ...(!isB && sub ? [{ text: sub === "..." ? "" : sub, options: { fontFace: A, fontSize: 11, italic: true, subscript: sub !== "...", color: "000000" } }] : []),
-    ...(!isB && sub === "..." ? [{ text: "...", options: { fontFace: A, fontSize: 11, italic: true, color: "000000" } }] : []),
+    ...(w.dots ? [{ text: "...", options: { fontFace: A, fontSize: size, italic: true, color: "000000" } }] : [
+      { text: w.isB ? "b" : "w",
+        options: { fontFace: A, fontSize: size, bold: w.isB, italic: !w.isB,
+                   color: w.isB ? "0000FF" : "000000" } },
+      ...(w.sub ? [{ text: w.sub, options: { fontFace: A, fontSize: size, italic: true, subscript: true, color: "000000" } }] : []),
+    ]),
   ], {
-    x: px(462), y: px(334 + i * 30), w: px(56), h: px(22),
+    x: px(462), y: px(w.y), w: px(56), h: px(24),
     align: "center", valign: "middle", margin: 0,
   });
 }
