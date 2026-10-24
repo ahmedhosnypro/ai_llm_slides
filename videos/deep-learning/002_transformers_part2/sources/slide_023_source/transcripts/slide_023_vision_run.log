@@ -1,0 +1,75 @@
+[info] context header injected: VIEW: Slide 023 frame — Transformers Part II lecture slide (Deep Learning DSAI 308); purpose: capture verbatim text, equations, and diagram topology for web-source verification | CAPTURE: 960x540 px lecture video frame, scale 1, video still (slide fully built)
+[info] mode analysis | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 2011115
+[info] /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/unique_slides/slide_023.jpg: transcript written (validated winner, atomic): /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/slide_023_source/transcripts/slide_023_vision_2026-10-11.txt (pid 2011115)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/unique_slides/slide_023.jpg ===
+[winner] images (round 1, attempt 1)
+1. TITLE
+Title: "Suggested Positional Encoders"
+Subtitle (second line, same heading block): "(Normalize Seq. Length to "1")"
+Badge numeral (top-right circle, yellow fill, purple outline): "23"
+
+2. ALL VERBATIM TEXT
+Left-side labels:
+- "Sequence of words with Length N" (italic, grey; three lines: "Sequence of" / "words with" / "Length N")
+- "Position Embedding" (blue italic, two lines: "Position" / "Embedding")
+- "Use Position Index" (red italic, two lines: "Use Position" / "Index")
+
+Row 1 (white boxes with red dashed outline, red italic labels):
+"Word 0", "Word 1", "Word 2", "Word 3", "Word 4", "Word 5", [ellipsis shown as grey dots], "Word N-2", "Word N-1"
+
+Row 2 (white boxes with blue solid outline inside a blue-shaded dashed container, blue italic labels):
+"Pos 0", "Pos 1", "Pos 2", "Pos 3", "Pos 4", "Pos 5", [ellipsis shown as blue dots], "Pos N-2", "Pos N-1"
+
+Row 3 (white boxes with red dashed outline, red italic labels):
+"0", "Î´", "2Î´", "3Î´", "4Î´", "5Î´", [long empty stretch], "1-Î´", "1"
+
+Below row 3, red "+Î´" labels between consecutive boxes (under each gap): "+Î´", "+Î´", "+Î´", "+Î´", "+Î´", and one more "+Î´" under the gap before the final "1" box (between "1-Î´" and "1").
+
+Bottom callout box (light cyan fill, blue rounded border):
+"Use Î´=1/Seq. Length  First position Encoding=0, Last Position Encoding=1 (Independent of Seq. Length)"
+"Problems:"
+- "Î´ Value depends on Seq. Length ( Î´ is small for long seq and large for short sequence )"
+- "In other words, Encoding value of position # 4 in short seq will differ from position #4 in long seq (though they are same position)"
+- "Position Encoding is scalar and Word embedding is vector (how to Combine them ?)"
+
+3. EQUATIONS
+- "Î´ = 1/Seq. Length" (delta equals one over sequence length)
+- "First position Encoding = 0"
+- "Last Position Encoding = 1"
+- Row values: 0, Î´, 2Î´, 3Î´, 4Î´, 5Î´, â¦, 1-Î´, 1 (i.e., position i encoded as iÂ·Î´, with last = 1-Î´ followed by 1)
+- Increment relation implied by arrows: each next value = previous + Î´ ("+Î´" labels)
+- "Position # 4" / "position #4" comparisons
+- Index tokens: Word 0 â¦ Word N-1, Pos 0 â¦ Pos N-1 (N = sequence length)
+
+4. DIAGRAM TOPOLOGY
+Three parallel horizontal rows, each enclosed in a dashed rounded-rectangle container, left-to-right data flow, aligned vertically so boxes correspond column-wise:
+
+- Row 1 container: grey/dark dashed rounded outline spanning full width; label at left outside container: "Sequence of words with Length N". Contains 8 visible white boxes (red dashed borders, red italic text): Word 0, Word 1, Word 2, Word 3, Word 4, Word 5, then a gap with ~5 grey dots (ellipsis), then Word N-2, Word N-1. Box fill: white.
+- Row 2 container: blue-shaded (light blue fill) dashed rounded outline; label at left outside: "Position Embedding" (blue). Contains 8 visible white boxes (blue solid borders, blue italic text): Pos 0, Pos 1, Pos 2, Pos 3, Pos 4, Pos 5, then gap with ~5 blue dots (ellipsis), then Pos N-2, Pos N-1.
+- Row 3 container: red/pink dashed rounded outline (light pink fill); label at left outside: "Use Position Index" (red). Contains 8 visible white boxes (red dashed borders, red italic text): 0, Î´, 2Î´, 3Î´, 4Î´, 5Î´, [long empty region with no boxes], 1-Î´, 1.
+
+Arrows: small red/orange curved arrows beneath Row 3 connecting each box to the next (left to right), each annotated with red "+Î´": 0âÎ´, Î´â2Î´, 2Î´â3Î´, 3Î´â4Î´, 4Î´â5Î´; the gap region is not bridged by arrows; one more arrow connects 1-Î´â1 annotated "+Î´". A mouse cursor artifact overlaps the third "+Î´" arrow region (between 2Î´ and 3Î´).
+
+Vertical correspondence: rows are column-aligned (Word 0 above Pos 0 above 0, etc.), implying element-wise association of word, position embedding, and positional index value; no explicit vertical arrows are drawn between rows.
+
+Bottom callout: light-cyan rounded rectangle with blue border spanning slide width beneath the rows; contains the summary equation line and three bullet "Problems" items (styled text: red/blue/purple emphasis, some underlining).
+
+Resemblance to published figures: This is NOT the Vaswani et al. 2017 Figure 1 architecture or Figure 2; it is an original teaching illustration (likely instructor-authored, in the style of Jay Alammar-style annotated diagrams) explaining the naive "linear/ratio" positional encoding scheme (pos/ N normalized to [0,1]). It matches no standard published figure verbatim; the "Normalize Seq. Length to 1" + Î´=1/Seq.Length scheme with listed problems (length dependence, scalar-vs-vector combination) is a pedagogical setup that typically precedes the sinusoidal positional encoding from Vaswani et al. 2017 ("Attention Is All You Need", Â§3.5).
+
+5. NUMBERS/DATA
+- Badge: 23 (slide number)
+- Indices: 0, 1, 2, 3, 4, 5, N-2, N-1; N = sequence length
+- Encoding values: 0, Î´, 2Î´, 3Î´, 4Î´, 5Î´, 1-Î´, 1
+- Î´ = 1/Seq. Length
+- Referenced position "# 4" in short vs long sequence comparison
+- No tables or percentages.
+
+6. BUILD STATE / ARTIFACTS
+- Slide appears fully built (all three rows, arrows, and callout box present).
+- Mouse cursor (white arrow pointer) visible over the arrow between "2Î´" and "3Î´" boxes in Row 3, overlapping the third "+Î´" annotation â a video/cursor artifact, not slide content.
+- Thin red horizontal rule near the top of the frame (above the title area, full-width) â likely a video-player or slide-border artifact.
+- Black bars at bottom corners of the frame (video letterboxing/cropping artifact).
+- No mid-reveal partial elements detected.
+

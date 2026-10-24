@@ -1,0 +1,71 @@
+[info] context header injected: VIEW: Slide 038 frame — Transformers Part II lecture slide (Deep Learning DSAI 308); purpose: capture verbatim text, equations, and diagram topology for web-source verification | CAPTURE: 960x540 px lecture video frame, scale 1, video still (slide fully built)
+[info] mode analysis | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 2351477
+[info] /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/unique_slides/slide_038.jpg: transcript written (validated winner, atomic): /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/slide_038_source/transcripts/slide_038_vision_2026-10-11.txt (pid 2351477)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/unique_slides/slide_038.jpg ===
+[winner] images (round 1, attempt 1)
+1. TITLE â exact title text verbatim; badge numeral
+- Title (red bold, centered): Residual Connections and Normalization
+- Badge (top-right yellow circle, black numeral): 38
+
+2. ALL VERBATIM TEXT â every visible string
+- Top white box (blue border), blue bold heading: Adding Residual Connection:
+- Indented line 1 (blue): Word Embedding + Positional Information   [First Transformer Block]
+- Indented line 2 (blue): Output of Previous Transformer Block   [Stacked Transformer Blocks]
+- Blue bold heading 2: Adding "LAYER" Normalization
+- Indented line (blue): Encoded Vectors of Input Sequence   [With Same Input Vectors Dimension   (note: closing bracket appears missing in the original)
+- Inside gray horizontal bar: Layer Normalization (in red italic) (NOT Batch Normalization) (in black bold; "NOT" italic)
+- Left-side labels (stacked, colored):
+  - Output of Self Attention (blue)
+  - Residual Connections (orange)
+  - Input to Self Attention (red)
+- Large dark-blue horizontal bar (white text): Multi Head Self Attention Block
+- Yellow-highlighted caption at bottom (red text with underscores): Word_Embedding + Positional_Information
+- No other captions/footnotes visible.
+
+3. EQUATIONS â formulaic sequences
+- Word Embedding + Positional Information (prose formula, top box)
+- Word_Embedding + Positional_Information (underscored tokens, bottom caption)
+- Indexed token vector sequences: X_1, X_2, X_3, X_4, X_5, X_6, ..., X_(N-1), X_N (bottom row)
+- Y'_1, Y'_2, Y'_3, Y'_4, Y'_5, Y'_6, ..., Y'_(N-1), Y'_N (middle row, primes render as small "1"-like prime marks [possibly Y_1' etc.])
+- Y_1, Y_2, Y_3, Y_4, Y_5, Y_6, ..., Y_(N-1), Y_N (top row)
+- Implicit operation: Y_i = LayerNorm(Y'_i + Y'_i-branch residual); residual additions shown as â nodes.
+
+4. DIAGRAM TOPOLOGY â exhaustive
+Outer container: large white panel with dark-red/maroon rounded border enclosing the whole diagram; a light-red/coral rounded-rectangle inset outline also frames the diagram area inside it.
+
+Rows (bottom-to-top data flow):
+- Bottom row: 8 vector boxes X_1..X_6, then green ellipsis dots (green filled circles), then X_(N-1), X_N. Each vector box is a wide rounded cell (pale yellow/cream fill) subdivided into ~4 small colored sub-cells (red, green, blue, pink) representing embedding dimensions; label X_i in red with subscript under/inside the box.
+- Middle row: 8 vector boxes Y'_1..Y'_6, blue ellipsis dots, Y'_(N-1), Y'_N; same cell styling; labels in red/maroon.
+- Top row: 8 vector boxes Y_1..Y_6, blue ellipsis dots, Y_(N-1), Y'_N â Y_N; same styling.
+
+Central components:
+- Large dark-navy-blue solid horizontal bar spanning full width between bottom and middle rows: "Multi Head Self Attention Block".
+- Gray horizontal bar spanning full width above the middle row, inside a light-green rounded rectangle with green dashed border (this dashed container highlights the normalization stage): "Layer Normalization (NOT Batch Normalization)".
+
+Arrows/edges:
+- Blue block (thick 3D-style) upward arrows: one from each X_i box up into the Multi Head Self Attention Block, and one from the block up to each Y'_i box (X row â attention block â Y' row), left-to-right column-aligned.
+- Red thin vertical arrows: from the Layer Normalization bar up to each Y_i box (LayerNorm â output Y row).
+- Green thin vertical arrows: from each â node up to the Layer Normalization bar (â â LayerNorm).
+- â addition nodes: dark-red circles with white "+", positioned between the Y' row and the LayerNorm bar, one per token column.
+- Orange curved arrows (residual/skip connections): from each X_i column area (right side of each input column, curving around the right side) up past the Multi Head Self Attention Block and Y' row into the corresponding â node. They originate at the bottom X row level and arc upward on the right side of each column â one per token column (visible for columns 1â6 and for the N-1, N columns).
+- Small blue block arrow also appears at the far right from X_N column into the attention block.
+
+Grouping: green dashed rounded rectangle encloses only the LayerNorm bar (and the â/green-arrow region it spans). The coral rounded-rectangle outline encloses the entire diagram. Left margin (outside the coral frame, inside the maroon frame) holds the three colored row labels listed above.
+
+Data flow: strictly bottom-to-top (X inputs â Multi Head Self Attention â Y' â â residual add â Layer Normalization â Y outputs).
+
+Resemblance to published figures: This closely matches the style of Jay Alammar's "The Illustrated Transformer" residual-connection illustrations (http://jalammar.github.io/illustrated-transformer/) â per-token vertical vector stacks, a blue "Multi Head Self Attention" band, a "Layer Normalization" band, and â skip connections â but it is a custom redrawn variant: it shows N tokens (N-1, N ellipsis notation), colored per-dimension sub-cells inside each vector, the annotation "(NOT Batch Normalization)", and bracketed pedagogical labels, none of which appear in Alammar's originals. It does not match Vaswani et al. 2017 Figure 1 (which shows the full encoderâdecoder block diagram with "Add & Norm" boxes) except in the underlying concept of Add & Norm.
+
+5. NUMBERS/DATA
+- Slide/badge number: 38
+- Sequence indices: 1, 2, 3, 4, 5, 6, N-1, N (subscripts on X, Y', Y)
+- No other numeric values, tables, or percentages.
+
+6. BUILD STATE / ARTIFACTS
+- Slide appears fully built (all rows, arrows, labels present); no partial-reveal gaps.
+- A mouse cursor is visible near the top edge of the Layer Normalization bar, around the Y_6 column / right of center (video still artifact).
+- Bottom-left corner: a solid black rectangle at the frame edge â likely a video-player/letterbox artifact, not slide content.
+- Compression artifacts typical of a 960x540 video still; subscripts on Y' row primes are small and the prime glyphs could be misread as "1" at this resolution (marked [?] where ambiguous).
+

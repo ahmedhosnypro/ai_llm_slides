@@ -1,0 +1,56 @@
+[info] context header injected: VIEW: Slide 047 frame — Transformers Part II lecture slide (Deep Learning DSAI 308); purpose: capture verbatim text, equations, and diagram topology for web-source verification | CAPTURE: 960x540 px lecture video frame, scale 1, video still (founder kept frame_03900.jpg — the other half of the old-115 group split with slide 46)
+[info] mode analysis | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 2061649
+[info] /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/unique_slides/slide_047.jpg: transcript written (validated winner, atomic): /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/slide_047_source/transcripts/slide_047_vision_2026-10-11.txt (pid 2061649)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/unique_slides/slide_047.jpg ===
+[winner] images (round 1, attempt 1)
+1. TITLE â No title text is present on the slide body. The only identifier is a circular badge in the top-right corner (yellow/pale-yellow fill, dark outline) containing the numeral: 47. The slide is titled implicitly by its content ("Encoder Block" is the large vertical label), consistent with a "Transformers Part II" lecture slide showing a Transformer encoder block diagram.
+
+2. ALL VERBATIM TEXT â
+- "Block Output" (red-outlined white box, top-left corner)
+- "Encoder Block" (large red vertical text running bottom-to-top along the left edge, inside the outer frame)
+- "Block Input" (red-outlined white box, bottom-left corner)
+- "Layer Normalization" (top orange bar; word "Layer" in red, "Normalization" in dark brown/black)
+- "Layer Normalization" (second orange bar, lower-middle; same two-color styling)
+- "Feed Forward Networks [ One Hidden with  RELU Activation]" (purple/blue italic label centered above the FFN box row; brackets as shown, appears to be "[ One Hidden with  RELU Activation]" with a double space between "with" and "RELU")
+- "FFN" (small label inside each orange feed-forward box, top-left of each box)
+- "RELU" (small dark label inside each FFN box, next to a row of small colored dots representing units)
+- "Multi Head Self Attention Block" (white text inside the large dark-purple/maroon bar near the bottom)
+- Token labels (repeated at multiple levels, see Section 3): X_0, X_1, X_2, X_3, X_4, X_N-2, X_N-1; Y_0, Y_1, Y_2, Y_3, Y_4, Y_N-2, Y_N-1
+- No readable caption, footnote, axis labels, or callouts beyond the above. No [?] strings observed; all visible text was legible.
+
+3. EQUATIONS â No mathematical equations are present. The only formulaic token sequences are:
+- Input row (bottom): X_0, X_1, X_2, X_3, X_4, (ellipsis dots), X_N-2, X_N-1 â subscripts rendered as true subscripts; the N-2 and N-1 subscripts are small and slightly compressed, best read as X_{N-2}, X_{N-1}.
+- Intermediate/output rows (repeated at four vertical levels): Y_0, Y_1, Y_2, Y_3, Y_4, (ellipsis dots), Y_N-2, Y_N-1 â i.e., Y_{N-2}, Y_{N-1}.
+No softmax, attention(Q,K,V), or other formulaic expressions appear in this frame.
+
+4. DIAGRAM TOPOLOGY â
+Overall container: a white outer frame with a thin red/maroon border, labeled "Encoder Block" vertically on the left. Inside it, a large tan/orange filled panel (the encoder block body) spans nearly the full width. "Block Input" sits at bottom-left outside the tan panel; "Block Output" at top-left outside it. Data flows strictly bottom-to-top.
+
+Bottom-to-top structure:
+1. Bottom token row (inside a light strip at the very bottom of the frame): 7 token boxes labeled X_0 â¦ X_4, then a group of 5 small GREEN dots (ellipsis), then X_N-2 and X_N-1. Each token box is a small rectangle divided into 3â4 colored segments (yellow/orange, pink/magenta, cyan/light-blue segment pattern). Small dark-purple/blue segment markers sit atop each X box.
+2. Thick light-purple/lavender BLOCK ARROWS pointing UP from each X token into the "Multi Head Self Attention Block" â one wide dark-purple/maroon horizontal bar with white text, spanning the full panel width.
+3. From the attention block, thick block arrows continue UP into a row of Y tokens: Y_0 â¦ Y_4, then 5 dark-purple dots (ellipsis), then Y_N-2, Y_N-1 (same segmented color styling, pink-dominant tops).
+4. DASHED dark-green/olive rounded rectangle (grouping container #1) enclosing: (a) a row of RED circle-plus nodes (â, red circle with darker red plus) â one per token position, and (b) above them, the first orange "Layer Normalization" bar. Per token position: a thin ORANGE/GOLD curved arrow (residual/skip connection) rises from the Y-token row below, loops up the side, and enters the â node from below/side; a short GREEN upward arrow goes from â into the Layer Normalization bar.
+5. From the top Layer Normalization bar, thin GREEN upward arrows emerge (one per token position) into the next token row: Y_0 â¦ Y_4, dark-purple ellipsis dots, Y_N-2, Y_N-1 (row just below the FFN label).
+
+Wait â corrected vertical ordering per the frame: the token row at mid-height (Y_0â¦Y_N-1 at approx. y=290) sits BELOW the "Feed Forward Networks [ One Hidden with RELU Activation]" label and its box row; that row receives upward-pointing thick light-purple/gray block arrows rising FROM the mid-height Y row INTO each FFN box. Full correct order is:
+  X row â [thick purple block arrows up] â Multi Head Self Attention Block â [block arrows up] â Y token row (Y_0â¦Y_N-1, with dark ellipsis dots) â [curved orange residual arrows + red â + green arrows, enclosed in dashed green container #2 (lower)] â "Layer Normalization" bar (lower) â [green arrows up] â Y token row â [thick purple/gray block arrows up] â row of 7+ orange "FFN" boxes (each bordered red/orange, containing a row of small multicolored dots and the label "RELU") â Y token row (Y_0â¦Y_N-1) â [curved orange residual arrows + red â + green arrows, enclosed in dashed green container #1 (upper)] â "Layer Normalization" bar (upper) â [thin RED upward arrows] â top Y token row (Y_0â¦Y_N-1) â exits to "Block Output".
+Both dashed green containers each enclose one â row plus one Layer Normalization bar (i.e., the "Add & Norm" step, drawn per-token). There are 7 â nodes per container (matching 7 drawn token positions), plus none drawn over the ellipsis gap.
+Colors summary: outer frame white with red border; inner panel tan/orange; attention bar dark maroon/purple; FFN boxes orange with red-brown borders; Layer Norm bars orange with darker orange border; â nodes red; residual arrows orange/gold; sub-layer-to-norm arrows green; final arrows to output red; block arrows pale lavender/gray; dashed containers olive-green; token boxes multicolored segments (yellow, pink, cyan); ellipsis dots blue (top row), dark purple (middle rows), green (bottom X row).
+Resemblance to published figures: this is NOT a verbatim copy of Vaswani et al. 2017 Figure 1, but it is clearly the instructor's expanded per-token redrawing of the Vaswani et al. (2017) Figure 1 LEFT half (encoder layer): the "Multi Head Self Attention Block" corresponds to "Multi-Head Attention", the red â + "Layer Normalization" pairs correspond to "Add & Norm", and the "Feed Forward Networks [One Hidden with RELU Activation]" corresponds to "Feed Forward". Differences: this version shows per-token streams X_i â Y_i with explicit residual loops, explicit repeated token rows, positional-style segmented token glyphs, and omits the Nx repetition label, mask, and embeddings/softmax that appear in the original figure. It does not match the Alammar or Bloem diagrams.
+
+5. NUMBERS/DATA â
+- Badge numeral: 47 (top-right circle).
+- Subscript indices: 0, 1, 2, 3, 4 on both X and Y tokens; N-2 and N-1 as the last two indices (implying sequence length N, tokens indexed 0â¦N-1).
+- Ellipsis dot counts: 5 dots in each ellipsis group (blue top row; dark purple in the three Y rows; green in the bottom X row).
+- Drawn token positions: 7 per row; 7 FFN boxes; 7 â nodes per dashed container; 2 Layer Normalization bars; 2 dashed containers.
+- "One Hidden" in the FFN label implies a single hidden layer; no numeric sizes/dimensions given.
+
+6. BUILD STATE / ARTIFACTS â
+- A mouse CURSOR (standard white arrow pointer) is visible overlapping the word "Layer" in the upper "Layer Normalization" bar (approx. center of the slide, slightly left of the "Normalization" text) â the slide appears to be mid-lecture-annotation or the presenter's pointer resting there.
+- No mid-reveal/partial-animation artifacts detected: all seven token positions, both dashed containers, and all arrows appear fully drawn, so the slide appears to be in a fully built state.
+- A solid BLACK horizontal bar runs along the very bottom edge of the frame (video letterbox/cropping artifact of the video still, not slide content).
+- Slight JPEG/video-compression blur on small subscripts (N-2, N-1) and on the tiny "FFN"/"RELU" box labels; no text obscured to the point of [?].
+

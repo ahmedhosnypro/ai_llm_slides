@@ -25,10 +25,9 @@ from matplotlib.lines import Line2D
 
 OUT = os.path.join(os.path.dirname(__file__), "assets", "plot_046_scatter.png")
 DPI = 600
-# interior rect in frame px (the red border box: x 312..824, y 173..481 incl. the
-# tick marks + labels that sit just inside its right/bottom edges)
-X0, X1 = 312, 825
-Y0, Y1 = 173, 482
+# interior rect in frame px
+X0, X1 = 315, 822
+Y0, Y1 = 176, 478
 W = (X1 - X0 + 1) / 72.0
 H = (Y1 - Y0 + 1) / 72.0
 
@@ -54,7 +53,7 @@ BLUE = (0.0, 0.0, 1.0)        # #0000FF
 RED = (1.0, 0.0, 0.0)         # #FF0000
 MAGENTA = (1.0, 0.0, 1.0)     # #FF00FF
 
-ax.plot([dx(3.5), dx(3.5)], [Y0, Y1], color=RED, lw=1.3, solid_capstyle="butt", zorder=2)
+ax.plot([dx(3.478), dx(3.478)], [Y0, Y1], color=RED, lw=1.3, solid_capstyle="butt", zorder=2)
 ax.plot([X0, X1], [Y0, Y0], color=RED, lw=1.3, solid_capstyle="butt", zorder=3)
 ax.plot([X0, X0], [Y0, Y1], color=RED, lw=1.3, solid_capstyle="butt", zorder=3)
 ax.plot([X0, X1], [Y1, Y1], color=RED, lw=1.3, solid_capstyle="butt", zorder=3)
@@ -76,20 +75,18 @@ for (px_, py_) in [(7, 6), (3, 2), (0, 0)]:
                                (dx(px_) - 4.3, dy(py_) + 4.0)],
                               closed=True, facecolor=RED, edgecolor="none", zorder=5))
 
-# ---- ticks (measured: inside the plot box's bottom/right edge) -------------
-# x-axis: tick marks 2 px tall just above the bottom border row (frame y 444..445),
-# digit caps 437..444 (baseline ~444). y-axis: marks left of the left border (frame
-# x 340..341), digits x 350..354 centred on the tick row.
+# ---- ticks ----------------------------------------------------------------
 for n in range(9):
-    ax.plot([dx(n), dx(n)], [Y1 - 6, Y1 - 1], color="black", lw=1.0, zorder=6)
+    ax.plot([dx(n), dx(n)], [Y1, Y1 + 11], color="black", lw=1.3, zorder=6)
 for n in range(8):
-    ax.plot([X0 + 1, X0 + 6], [dy(n), dy(n)], color="black", lw=1.0, zorder=6)
+    ax.plot([X0 - 11, X0], [dy(n), dy(n)], color="black", lw=1.3, zorder=6)
 
+# tick numbers: bottom row n=0..8, left column n=0..7 (0 at the corner, one column)
 for n in range(9):
-    ax.text(dx(n) + 0.6, Y1 - 4.0, str(n), ha="center", va="baseline",
+    ax.text(dx(n) + 0.6, Y1 + 12.5, str(n), ha="center", va="baseline",
             fontsize=7.3, fontweight="bold", color="black", zorder=6)
 for n in range(8):
-    ax.text(X0 + 15.0, dy(n) + 2.6, str(n), ha="center", va="baseline",
+    ax.text(X0 - 12.3, dy(n) + 2.6, str(n), ha="center", va="baseline",
             fontsize=7.3, fontweight="bold", color="black", zorder=6)
 
 # ---- "+ve" + arrow --------------------------------------------------------
@@ -102,3 +99,4 @@ ax.annotate("", xy=(546.5, 219), xytext=(526, 217.5),
 
 fig.savefig(OUT, dpi=DPI, transparent=True, pad_inches=0)
 print("wrote", OUT)
+

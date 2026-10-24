@@ -1,0 +1,83 @@
+[info] context header injected: VIEW: Slide 046 frame — Transformers Part II lecture slide (Deep Learning DSAI 308); purpose: capture verbatim text, equations, and diagram topology for web-source verification | CAPTURE: 960x540 px lecture video frame, scale 1, video still (founder kept frame_03828.jpg — mid-group state of the 46/47 split)
+[info] mode analysis | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 2037846
+[info] /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/unique_slides/slide_046.jpg: transcript written (validated winner, atomic): /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/slide_046_source/transcripts/slide_046_vision_2026-10-11.txt (pid 2037846)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/unique_slides/slide_046.jpg ===
+[winner] images (round 1, attempt 1)
+1. TITLE
+
+No title text is visible on this frame. The diagram fills essentially the entire slide; the frame is either cropped above the title bar or the slide is a full-bleed figure slide. No badge numeral is clearly visible; there is a small red shape partially cut off at the far right edge near the top (y â 55â80) that may be the slide-number badge, but its numeral is not readable [?]. Contextual identification (from the course/lecture name only, not on-frame): DSAI 308 Deep Learning, "Transformers Part II", slide 46 of 47.
+
+2. ALL VERBATIM TEXT
+
+- "Final Output" â top-left box, dark red italic serif text on pale pink fill, dark red border.
+- "Layer Normalization" â appears twice (two gray horizontal bars); "Layer" in red italic serif, "Normalization" in black italic serif.
+- "Feed Forward Networks [ One Hidden with  RELU Activation]" â blue bold text centered in a blue-bordered box. (Spacing as shown: a double space appears between "with" and "RELU".)
+- "RELU" â small orange/red label repeated inside each per-token FFN sub-box (8 instances visible).
+- "Multi Head Self Attention Block" â white bold sans-serif text on a dark navy blue horizontal bar.
+- "Residual Connections" â orange text, left margin, two occurrences (one beside the FFN level, one beside the attention level).
+- "Output of Self Attention" â blue text, left margin, beside the middle Y-token row (word "Attention" on its own line).
+- "Input  to Self Attention" â orange/red text, bottom-left margin (note: appears to have extra spacing, "Input  to").
+- "Word Embedding  +  Positional Information" â bottom caption, red/dark text, partially cut off by the black letterbox strip at the very bottom of the frame.
+- Token labels (repeated per row): "X_0", "X_1", "X_2", "X_3", "X_4", "X_5", "X_N3" [?], "X_N-1"; and "Y_0", "Y_1", "Y_2", "Y_3", "Y_4", "Y_5", "Y_N3" [?], "Y_N-1" (Y rows occur four times: output-of-attention row, FFN input row, FFN output row, final output row). Note: the penultimate subscript renders as "N3"; it is likely intended as Nâ2 (or Nâ3) but the glyph is small/ambiguous [?]. The last subscript clearly reads "N-1".
+- No other captions, footnotes, or axis labels present.
+
+3. EQUATIONS
+
+No mathematical equations are present. The only formulaic sequences are the token index chains:
+- X_0, X_1, X_2, X_3, X_4, X_5, â¦ , X_N3 [?], X_N-1 (bottom input row)
+- Y_0, Y_1, Y_2, Y_3, Y_4, Y_5, â¦ , Y_N3 [?], Y_N-1 (three intermediate Y rows and the final output row)
+- The caption "Word Embedding + Positional Information" contains the only "+" operator, indicating X_i = embedding(x_i) + positional encoding (conceptual, not written as an equation).
+
+4. DIAGRAM TOPOLOGY
+
+Overall container: the whole diagram is enclosed by a thin dark-red/maroon outer rectangle, with a thin blue inner rectangle border just inside it. Data flows strictly bottom-to-top.
+
+Rows and nodes (bottom to top):
+
+(a) Bottom input token row (y â 480â510): 8 visible token boxes labeled X_0 â¦ X_5, then a horizontal ellipsis of 5 green dots, then X_N3 [?] and X_N-1. Each token box is a small rectangle split into two vertical sub-cells (left half pale yellow, right half pink) â visually representing concatenated word embedding + positional information. Below this row sits the caption "Word Embedding  +  Positional Information" (cut off).
+
+(b) "Multi Head Self Attention Block": one full-width dark navy blue bar (y â 425â465) with white bold label. Light-blue block arrows point upward from each X token box into this bar (8 arrows).
+
+(c) Residual connection level 1: orange curved arrows originate at the X token row (left of the attention block, branching from each token's column) and arc around the outside of the blue block up to the row of â nodes. Left-margin label "Residual Connections" (orange). About 8 orange curves visible (under X_0 â¦ X_5, X_N3 [?], X_N-1).
+
+(d) â add nodes (y â 350â375): 8 dark-red circles with white "+" symbols, one per token column. Green upward arrows leave each â node toward the token row above.
+
+(e) "Output of Self Attention" row (y â 380â415... visually the row of Y tokens just above the â nodes): token boxes Y_0 â¦ Y_5, blue-dot ellipsis (5 blue dots), Y_N3 [?], Y_N-1; same two-tone pink/yellow box style. Left-margin blue label "Output of Self Attention".
+
+Wait â correction to stacking order (as actually drawn): the â nodes sit BELOW the first Y row; the green arrows go from â up into the Y token boxes. So per column: X â (blue arrow) â Multi Head Self Attention Block; simultaneously X â (orange curve) â â; block output and residual meet at â; â â (green arrow) â Y_i ("Output of Self Attention").
+
+(f) Bottom "Layer Normalization" bar (y â 315â340): a full-width gray gradient bar labeled "Layer Normalization", wrapped in a light-green filled rounded rectangle with a green dashed outline. Red thin arrows point upward from this bar to the next token row.
+
+(g) FFN input Y row (y â 275â300): Y_0 â¦ Y_5, blue-dot ellipsis, Y_N3 [?], Y_N-1 (same token box style). From each of these Y boxes a blue block arrow points up into the FFN box above.
+
+(h) "Feed Forward Networks [ One Hidden with  RELU Activation]" container (y â 205â260): a large white box with a blue border and blue title. Inside are 8 per-token FFN sub-boxes (light yellow fill, red/orange border), one under each token column; each sub-box contains: a row of small green circles (top), the small orange label "RELU", and a row of small magenta/purple circles (bottom) â a pictorial two-layer network with a RELU hidden layer.
+
+(i) Residual connection level 2: orange curved arrows from the FFN-input Y row (branching left of the FFN container) arc around the FFN box up to a second row of â nodes. Left-margin label "Residual Connections" (orange).
+
+(j) Second row of â add nodes (y â 130â150): 8 dark-red â circles; green arrows from these point up into the next Y row.
+
+(k) FFN output Y row (y â 175â200): Y_0 â¦ Y_5, blue-dot ellipsis, Y_N3 [?], Y_N-1.
+
+(l) Top "Layer Normalization" bar (y â 100â125): identical gray gradient bar inside a second green dashed rounded rectangle. Red thin arrows point up from it to the final output row.
+
+(m) Final output row (y â 60â85): token boxes Y_0 â¦ Y_5 (pink), then 5 blue dots (ellipsis), then Y_N3 [?] and Y_N-1 â the last two boxes are highlighted pale yellow, visually distinct from the pink boxes to their left.
+
+(n) "Final Output" box: top-left corner, pale pink rectangle with dark-red border containing dark-red italic text "Final Output" (a label/legend, not connected by arrows).
+
+Similarity to published figures: This is NOT Vaswani et al. 2017 Figure 1 (no encoder/decoder split, no Nx repetition tag, no softmax/linear head, no positional-encoding module box) and not the Peter Bloem self-attention diagram. Its red/navy/green color styling, per-token column layout, "Multi Head Self Attention Block" phrasing, and residual arcs strongly echo the visual language of Jay Alammar's "The Illustrated Transformer" illustrations, but it is a custom course diagram: it differs from Alammar by (i) showing an explicit full token sequence X_0â¦X_N-1 with ellipsis rather than 2 tokens, (ii) drawing per-token FFN sub-networks with explicit neurons and a RELU label, (iii) drawing residual connections as long orange curved bypass arcs with explicit â nodes, and (iv) explicitly annotating "Word Embedding + Positional Information" as split sub-cells inside each token box. Topology matches the canonical Transformer encoder layer: input â Multi-Head Self-Attention â Add(&Norm) â FFN â Add(&Norm) â output, with Layer Normalization drawn post-residual (post-LN, matching Vaswani et al. 2017).
+
+5. NUMBERS/DATA
+
+- No numeric data, tables, percentages, or sizes.
+- Index values only: token indices 0â5, Nâ1 (and the ambiguous "N3" penultimate index [?]); hidden-layer structure implied by "One Hidden" FFN and the drawn green/magenta neuron rows (roughly 7 green + 7 magenta dots per FFN sub-box, pictorial only).
+
+6. BUILD STATE / ARTIFACTS
+
+- Frame is described as a mid-group state (frame_03828.jpg) of the 46/47 split; the diagram itself appears fully assembled â all arrows, â nodes, token rows, and both Layer Normalization groups are present. No partially-revealed (half-drawn) elements were detected.
+- Mouse cursor artifact: a small arrow-shaped cursor pointer is visible inside the diagram near the left, at approximately (x â 185, y â 215), just left of the "Feed Forward Networks" container / above the "Output of Self Attention" label.
+- Black letterbox strip across the very bottom of the frame (~last 15â20 px) partially crops the red caption "Word Embedding  +  Positional Information" (tops of letters visible only).
+- Red shape cut off at the far right edge near the top (y â 55â80) â likely a slide-number badge or decoration extending off-slide; unreadable [?].
+- Minor compression blur typical of a 960x540 video still; subscripts on the penultimate tokens ("N3") are the least legible glyphs on the slide [?].
+
