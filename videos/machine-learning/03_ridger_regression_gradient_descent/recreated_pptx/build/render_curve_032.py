@@ -46,7 +46,7 @@ sc = DPI / 72.0
 img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
 d = ImageDraw.Draw(img)
 pts = [((p - X0) * sc + 2 * PXW, (q - Y0) * sc + 2 * PXW) for p, q in zip(px, py)]
-d.line(pts, fill=(0, 0, 255, 255), width=int(round(PXW * sc)), joint="curve")
+d.line(pts, fill=(125, 154, 170, 255), width=int(round(PXW * sc)), joint="curve")  # measured steel-blue frame core
 
 out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "curve_032.png")
 img.save(out)
