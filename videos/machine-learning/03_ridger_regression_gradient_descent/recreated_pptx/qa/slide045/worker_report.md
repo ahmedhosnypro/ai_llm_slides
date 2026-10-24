@@ -213,3 +213,105 @@ fresh LO render of the shipped pptx (`render_verify_045.txt`).
 - DB: gen_status building, visual_check null, visual_attempts 0, worker_id
   worker-fresh-045-legs3, last_error = honest blocker summary. Row parked with a live
   resume recipe (see SECTION 2 of worker_report_legs_on.md).
+
+---
+
+# worker-fresh-045-legs4 — 2026-10-24 18:09–19:17 UTC — PARKED AT GATE THRESHOLD (0 verdicts)
+
+## Status
+
+**UNFINISHED / PARKED HONESTLY.** No vision call was dispatched in this worker run because the fleet never fell below the mandated `<8` threshold during the two permitted 240-second drain intervals. There are still **zero real verdict transcripts** and therefore **zero certified judge legs**. No verdict was fabricated, no prompt echo was counted as a verdict, and no build change was invented.
+
+## Attempt history
+
+| # | UTC | Action | Outcome |
+|---|---|---|---|
+| 1 | 18:09 | Re-globbed slide045 QA bank after session loss | No late transcript; payload echoes only; zero verdict bodies |
+| 2 | 18:09 | Claimed stale row 45 as `worker-fresh-045-legs4`; deps check | Dep status `root`; build permitted; stale owner taken over |
+| 3 | 18:09–19:01 | Re-verified deliverable/build/render, house chrome, self-check, content, payload bytes, crop currency | All green; no rebuild/re-render/re-cut/edit needed |
+| 4 | 19:03–19:11 | Gate-law dispatch runner: two 240s drain intervals before any vision call | Fleet counts `16 -> 11 -> 10`, never `<8`; runner parked without dispatch |
+| 5 | 19:11–19:17 | Banked park evidence, updated DB, released claim | Row parked `building`, visual fields SQL NULL, worker_id empty |
+
+## Verdict transcript filenames
+
+**NONE.** No `judge_worker_legs4_attempt_1.txt`, `crop_*_worker_legs4_attempt_1.txt`, or other slide-045 comparison transcript exists. The files containing the phrase `FINAL VERDICT:` are only frozen payload templates (`judge_prompt_1.txt`, `crop_prompt_*.txt`), not model winner bodies.
+
+## Build/fix phase — independently re-verified
+
+- Deliverable: `recreated_pptx/slide_045_recreated.pptx`, md5 `08cbfccce7c1be5b809e615051b799b9`.
+- Build: `recreated_pptx/build/slide_045.js`, md5 `9ca5e8eb04cbd3ccd3442888104f63d8`.
+- Bank render: `qa/slide045/render_1.png`, md5 `c41a7a11c8f8976bbfc31cadef99c0b1`.
+- Fresh independent LibreOffice→PDF→150dpi render: md5 `c41a7a11c8f8976bbfc31cadef99c0b1` — byte-identical to `render_1.png`.
+- `house_chrome_check.py`: PASS (panel x54..903/y45..540 in frame px; LEFT/RIGHT/BOTTOM strokes present; top bare; badge centered at (876,73), d≈35 frame px).
+- `selfcheck_attempt_1.py`: 43/43 PASS.
+- `content_check_045.py`: all bullets/labels found; 9/10 equations found; the one “missing” equation is the documented spec-form artifact because its label and 2×3 table are separate verbatim runs.
+- All four frozen payloads re-derived byte-for-byte from `shared_patterns/judge_protocol_03.md` using NNN=045 and word-boundary `\bK\b`→1 only. MD5s: `9387f5fbb94ef05a31db19f1e018dde1` (Template A), `62e9518fbf738468ec888321543ed3ac` (each Template B).
+- All six `_r2` crop files reproduce byte-identically at matched effective scale: calcs 2.08403/2.08403; toppanel 2.08396/2.08396; augtable 2.08333/2.08333.
+- Fresh evidence: `render_currency_worker_legs4.txt`, `payload_check_worker_legs4.txt`, `selfcheck_worker_legs4.txt`, `content_check_worker_legs4.txt`, `adjudicate_all_legs_worker_legs4.txt`.
+
+## PIL-first adjudication baseline (both images)
+
+- Top-band red pixels outside the mandated left/right verticals: **0 in original and 0 in render**. The no-top-stroke refutation holds; a present top stroke would be a defect.
+- Badge: original d≈32.5 at (876.4,73.5); render d≈32.6 at frame (876,73). Agreement, not a defect.
+- Dense-region ink counts: calcs original/render 2153/5356; toppanel 3431/3687; augtable 501/2072. The larger typed-ink count is the mandated typed-vs-handwritten medium difference (at most MINOR), not a build trigger by itself.
+- Any future claimed ink absence must be rejected when the measured ink is `<3 px` (phantom ink).
+
+## Gate measurements and raw logs
+
+- `gate_logs/gate_worker_legs4_probe1.log`: pre-wait fleet count 33; the lost session ended during its 240s drain wait before any vision call.
+- `gate_logs/gate_worker_legs4_dispatch.log`: at 19:03 count 16; after first 240s interval count 11; after second interval final count 10; `GATE_PARKED fleet remained at or above threshold after two drain intervals`.
+- Staged runner: `045legs4_dispatch.sh`; prior probe runner: `045legs4_probe1.sh`.
+- No gate/analyzer comparison command ran. Therefore no transcript or verdict can exist from this worker.
+
+## FINAL DB ROW (parked, released)
+
+- `gen_status`: **building**
+- `visual_check`: SQL `NULL`
+- `visual_transcript`: SQL `NULL`
+- `visual_attempts`: 0
+- `worker_id`: empty (released)
+- `worker_heartbeat_at`: NULL
+- `pptx_path`: `recreated_pptx/slide_045_recreated.pptx`
+- `last_error`: honest gate-threshold park summary with hashes and evidence pointers.
+
+**Not certified.** Both Template A and Procedure B remain outstanding. Certification requires both real legs banked, `visual_check=PASS`, `gen_status=passed`, and `worker_id=""`.
+
+## Resume commands
+
+```bash
+cd "/worksp""aces/codespaces-blank/ai_llm_slides"
+export TMPDIR="/worksp""aces/codespaces-blank/ai_llm_slides/scratch/tmp"
+export VIDEO=machine-learning/03_ridger_regression_gradient_descent
+python3 scripts/15_progress.py claim 45 <fresh-worker-id>
+Q=videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide045
+
+# Before EVERY vision call: gate law. If >=8: heartbeat, sleep 240, re-probe;
+# max TWO probes/hour, then park honestly.
+c=$(pgrep -c -f analyze_image.py || true); echo "fleet=$c"
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py heartbeat 45 <fresh-worker-id>
+
+# Template A
+timeout 1700 bash scripts/16_vision_gate.sh python3 \
+  .agents/skills/image-analysis/scripts/analyze_image.py comparison \
+  "$Q/render_1.png" \
+  videos/machine-learning/03_ridger_regression_gradient_descent/unique_slides/slide_045.jpg \
+  --view "Slide 045 recreation — fidelity check vs original lecture frame" \
+  --capture "IMG1=150dpi PNG render of a 13.33x7.5in PPTX; IMG2=original lecture video frame" \
+  --thinking high --max-tokens 65536 --timeout 1200 --rounds 1 --tries 1 \
+  --transcript "$Q/judge_next_attempt_1.txt" \
+  -p "$(cat "$Q/judge_prompt_1.txt")"
+
+# Procedure B (all three; repeat the gate check before each call)
+for n in calcs toppanel augtable; do
+  timeout 1700 bash scripts/16_vision_gate.sh python3 \
+    .agents/skills/image-analysis/scripts/analyze_image.py comparison \
+    "$Q/crop_1_r2_${n}_render.png" "$Q/crop_1_r2_${n}_orig.png" \
+    --view "Slide 045 zoomed crop $n — render vs original at matched scale (attempt 1)" \
+    --capture "IMG1=zoomed crop of a 150dpi PPTX render; IMG2=the SAME slide-space region cropped from the original lecture frame and upscaled to match IMG1's effective scale" \
+    --thinking high --max-tokens 65536 --timeout 1200 --rounds 1 --tries 1 \
+    --transcript "$Q/crop_${n}_judge_next_attempt_1.txt" \
+    -p "$(cat "$Q/crop_prompt_1_r2_${n}.txt")"
+done
+```
+
+Do not rebuild, re-render, re-cut crops, or edit payloads. Adjudicate every FAIL/MINOR PIL-first against both images before any build change.

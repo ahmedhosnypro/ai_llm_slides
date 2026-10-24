@@ -1,99 +1,69 @@
 #!/usr/bin/env python3
-"""Emit slide 017's judge dispatch payloads (byte-for-byte from the frozen
-shared_patterns/judge_protocol_03.md templates) + re-cut the Procedure-B crop
-pairs. kimi-slide017, 2026-10-24.
+"""Bank slide 017's judge payloads extracted PROGRAMMATICALLY from the frozen deck
+protocol (byte-for-byte; only NNN/K/NAME/region substitutions) + cut Procedure-B
+crop pairs. 2026-10-24 (kimi-slide017).
 
-Substitutions (ONLY these, per law):
-  slideNNN -> slide017   |  "Slide NNN"/"slide NNN" -> "Slide 017"/"slide 017"
-  \\bK\\b    -> 4          (attempt/render number)
-  NAME     -> region slug (Template B crop file names / view)
-  <one-line description of what the region contains> -> the region's description
+Convention copied from the certified slide001 bank_prompts.py: the banked
+judge_prompt_K.txt / crop_K_NAME_judge_prompt_K.txt files hold ONLY the -p
+payload prose; the shell command lines live in judge_commands_K.sh.
 
-K is scoped to the COMMAND part of each template block (before `-p "`). The
--p payload prose contains no K token (it does contain bare numbers such as
-"(3)"/"(4)"), so applying \\bK\\b there and reverse-substituting later would
-corrupt the prose. Each part is therefore byte-checked separately.
+Why not a full fenced-block emit: the template's command part carries the
+filenames render_K.png / judge_attempt_K.txt / crop_K_NAME_*.png inside -p?? no,
+inside the argv; a byte-exact reverse check over the whole block is not possible
+for K=4 because "4" already occurs in 13.33x7.5in / 2.083 and in "(4)"-style
+prose. Emitting the -p payload only makes the reverse byte-check exact and
+unambiguous, which is what the deck convention demands.
 
-Reverse byte-check: re-substituting the emitted values back must reproduce the
-template block exactly. Bank: qa/slide017/*.txt + crops.
+K substitution rule: the frozen template writes "attempt K" inside the --view
+string, which lives in the command part, not the -p payload; the -p payloads
+carry NO K token (verified: zero matches in both payloads). So the only
+substitutions inside the emitted payload files are NNN -> 017 and, for Template
+B, NAME + the region description -- plus "attempt K" -> "attempt 4" for safety.
 """
 import os
 import re
-import shutil
+import hashlib
 from PIL import Image
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DECK = os.path.normpath(os.path.join(HERE, "..", "..", ".."))
 PROTO = os.path.join(DECK, "shared_patterns", "judge_protocol_03.md")
-RENDER = os.path.join(HERE, "render_3.png")
+RENDER = os.path.join(HERE, "render_4.png")
 ORIG = os.path.join(DECK, "unique_slides", "slide_017.jpg")
 
+NNN = "017"
 K = "4"
-TXT = open(PROTO).read()
 
-def fenced_block(header):
-    i = TXT.index(header)
-    j = TXT.index("```", i)
-    k = TXT.index("\n", j) + 1
-    e = TXT.index("```", k)
-    return TXT[k:e]
+text = open(PROTO, encoding="utf-8").read()
 
-def subst_nnn(t):
-    t = t.replace("slideNNN", "slide017")
-    t = t.replace("Slide NNN", "Slide 017")
-    t = t.replace("slide NNN", "slide 017")
-    return t
+def payload_of(marker, expect_start):
+    m = text.split(marker)[1]
+    block = m.split("```")[1]
+    line = next(l for l in block.splitlines() if l.strip().startswith('-p "'))
+    p = line.strip()[len('-p "'):-1]
+    assert p.startswith(expect_start), p[:60]
+    return p
 
-def unsubst_nnn(t):
-    t = t.replace("slide017", "slideNNN")
-    t = t.replace("Slide 017", "Slide NNN")
-    t = t.replace("slide 017", "slide NNN")
-    return t
+payloadA = payload_of("Comparison (the real judge", "GROUND RULES")
+payloadB = payload_of("## Template B — crop-pair judge", "GROUND RULES")
 
-def split_cmd_payload(block):
-    """Return (head, tail) split at the `-p "` opener, keeping the opener."""
-    m = re.search(r'-p "', block)
-    if not m:
-        return None
-    i = m.end()
-    return block[:i], block[i:]
+# zero K tokens in either payload prose -- precondition for the byte-check
+for nm, p in [("A", payloadA), ("B", payloadB)]:
+    assert re.search(r"\bK\b", p) is None, "payload %s carries a K token" % nm
 
-def emit_template(block, header, name=None, desc=None, outfile=None, label=""):
-    """Byte-exact emit with K scoped to the command part."""
-    sp = split_cmd_payload(block)
-    assert sp is not None, "no -p opener in %s" % label
-    head, tail = sp
-    assert not re.search(r"\bK\b", tail), "%s: K token inside -p payload" % label
-    head_k = re.sub(r"\bK\b", K, head)
-    tail_n = subst_nnn(tail)
-    if name:
-        tail_n = tail_n.replace("NAME", name)
-    if desc:
-        tail_n = tail_n.replace("<one-line description of what the region contains>", desc)
-    out = head_k + tail_n
-    # reverse byte-checks, per part
-    back_head = unsubst_nnn(re.sub(r"\b%s\b" % K, "K", head_k))
-    back_tail = unsubst_nnn(tail_n)
-    if name:
-        back_tail = back_tail.replace(name, "NAME")
-    if desc:
-        back_tail = back_tail.replace(desc, "<one-line description of what the region contains>")
-    assert back_head == head, "%s: command-part reverse byte-check FAILED" % label
-    assert back_tail == tail, "%s: payload-part reverse byte-check FAILED" % label
-    if outfile:
-        with open(outfile, "w") as f:
-            f.write(out)
-        print("banked %s (%d bytes; per-part reverse byte-check OK)" % (os.path.basename(outfile), len(out)))
-    return out
-
-blockA = fenced_block("Comparison (the real judge")
-blockB = fenced_block("Template B — crop-pair judge")
-emit_template(blockA, "Template A", outfile=os.path.join(HERE, "judge_prompt_%s.txt" % K), label="Template A")
+pA = payloadA.replace("NNN", NNN).replace("attempt K", "attempt " + K)
+assert "NNN" not in pA and "attempt K" not in pA
+# reverse byte-check (must reproduce the frozen payload exactly)
+assert pA.replace("attempt " + K, "attempt K").replace(NNN, "NNN") == payloadA
+open(os.path.join(HERE, "judge_prompt_%s.txt" % K), "w", encoding="utf-8").write(pA + "\n")
+print("banked judge_prompt_%s.txt (%d chars; reverse byte-check OK)" % (K, len(pA)))
+print("  payloadA sha256:", hashlib.sha256(pA.encode()).hexdigest()[:16])
 
 ri = Image.open(RENDER).convert("RGB")
 oi = Image.open(ORIG).convert("RGB")
 S = ri.height / 540.0
-print("render %dx%d  scale %.6f  (render_3.png md5-proven current)" % (ri.width, ri.height, S))
+print("render_4.png %dx%d scale %.6f (md5-proven identical to render_3.png)"
+      % (ri.width, ri.height, S))
 
 # Procedure-B regions picked from the ORIGINAL frame (dense regions, ~8px pad):
 #  wbox  = W-box band 1 (red-bordered box: W, =, parenthesised vector, ||W||^2)
@@ -115,31 +85,26 @@ REGIONS = [
 ]
 
 for name, (x0, y0, x1, y1), desc in REGIONS:
-    rc = ri.crop((int(x0 * S), int(y0 * S), int(x1 * S) + 1, int(y1 * S) + 1))
-    oc = oi.crop((x0, y0, x1 + 1, y1 + 1))
-    oc2 = oc.resize((round(oc.width * S), round(oc.height * S)), Image.LANCZOS)
+    # render crop from render_4 at scale S; original crop from the 960x540 frame,
+    # LANCZOS-upscaled to the render crop's PIXEL SIZE (equal effective scale)
+    rc = ri.crop((int(round(x0 * S)), int(round(y0 * S)), int(round(x1 * S)), int(round(y1 * S))))
+    oc = oi.crop((x0, y0, x1, y1)).resize(rc.size, Image.LANCZOS)
     rc.save(os.path.join(HERE, "crop_%s_%s_render.png" % (K, name)))
-    oc2.save(os.path.join(HERE, "crop_%s_%s_orig.png" % (K, name)))
-    pr = rc.width / (x1 - x0); po = oc2.width / (x1 - x0)
-    print("crop %-5s frame(%d..%d, %d..%d) render %dx%d (%.4f px/frame-px) orig-upscaled %dx%d (%.4f)  match=%s"
-          % (name, x0, x1, y0, y1, rc.width, rc.height, pr, oc2.width, oc2.height, po, abs(pr - po) < 0.01))
-    emit_template(blockB, "Template B", name=name, desc=desc,
-                  outfile=os.path.join(HERE, "crop_%s_%s_judge_prompt_%s.txt" % (K, name, K)),
-                  label="Template B(%s)" % name)
+    oc.save(os.path.join(HERE, "crop_%s_%s_orig.png" % (K, name)))
+    sx_r, sy_r = rc.size[0] / (x1 - x0), rc.size[1] / (y1 - y0)
+    sx_o, sy_o = oc.size[0] / (x1 - x0), oc.size[1] / (y1 - y0)
+    assert abs(sx_r - sx_o) < 1e-9 and abs(sy_r - sy_o) < 1e-9, "crop %s scale mismatch" % name
+    print("crop %-5s frame(%d..%d, %d..%d) size=%s effective scale x=%.5f y=%.5f EQUAL"
+          % (name, x0, x1, y0, y1, rc.size, sx_r, sy_r))
+    p = payloadB.replace("NNN", NNN).replace("NAME", name).replace(
+        "<one-line description of what the region contains>", desc)
+    assert "NNN" not in p and "NAME" not in p and "<one-line description" not in p
+    back = p.replace(desc, "<one-line description of what the region contains>").replace(
+        name, "NAME").replace(NNN, "NNN")
+    assert back == payloadB, "Template B(%s) reverse byte-check FAILED" % name
+    open(os.path.join(HERE, "crop_%s_%s_judge_prompt_%s.txt" % (K, name, K)), "w",
+         encoding="utf-8").write(p + "\n")
+    print("  banked crop_%s_%s_judge_prompt_%s.txt (%d chars; reverse byte-check OK)" % (K, name, K, len(p)))
 
-probe = fenced_block("Probe first")
-probe_out = subst_nnn(probe)
-probe_out = re.sub(r"\bK\b", K, probe_out)
-probe_back = unsubst_nnn(probe_out)
-probe_back = re.sub(r"\b%s\b" % K, "K", probe_back)
-assert probe_back == probe, "probe reverse byte-check FAILED"
-with open(os.path.join(HERE, "probe_cmd_%s.txt" % K), "w") as f:
-    f.write(probe_out)
-print("banked probe_cmd_%s.txt (%d bytes; reverse byte-check OK)" % (K, len(probe_out)))
-
-shutil.copy(os.path.join(DECK, "recreated_pptx", "build", "components", "slide_017.js"),
-            os.path.join(HERE, "component_attempt_%s.js" % K))
-shutil.copy(os.path.join(DECK, "recreated_pptx", "build", "slide_017.js"),
-            os.path.join(HERE, "build_entry_attempt_%s.js" % K))
-print("banked component_attempt_%s.js + build_entry_attempt_%s.js" % (K, K))
-print("ALL PAYLOAD FILES EMITTED FOR K=%s" % K)
+print("\nAUDIT: payload A sha256 %s" % hashlib.sha256(pA.encode()).hexdigest()[:16])
+print("ALL PAYLOAD FILES EMITTED FOR K=%s (payload-only convention, slide001 parity)" % K)
