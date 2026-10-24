@@ -436,3 +436,68 @@ law, this leg has NOT been re-dispatched yet — it gets one retry, reserved for
 window. Instead the cheap leg went first (the `remember` crop pair is 221×127 px, ~4 orders
 of magnitude less image-encoder work than the 2001×1125 full slide, which is the likely
 cause of the encoder stall at this fleet load).
+
+### Leg-2 wall evidence (banked honestly — no verdict produced)
+
+`j7_rem.sh` (Procedure B `remember` crop pair, 221×127 px, `--timeout 1200` inside
+`timeout 1700`) dispatched 16:09Z detached. Full log `scratch/tmp/j7_rem.log`:
+
+```
+[warn] comparison :: images :: attempt 1: ABORT HangError: hard wall-clock 1230s exceeded
+       — call aborted (possible stuck thinking stream) — abort+retry 1/3
+[warn] comparison :: images :: attempt 2: HTTP 504: {"error":{"code":"upstream_timeout",
+       "ironrouter":{"candidate":"nva…hWGS","provider":"Nvidia"},"message":
+       "the upstream provider timed out"},"type":"server_error"}}
+[error] None: every model failed
+[info] 0/1 result(s) analyzed successfully
+```
+
+No `crop_7_remember_judge.txt` was written. Even the cheap 221×127 crop pair could not
+complete — this is the shared-gateway stall, not a slide-specific problem.
+
+## LANE 3 OUTCOME: PARKED — fix complete, vision gate unreachable
+
+**The build is finished.** Every dossier defect is either fixed or PIL-refuted, and the
+one real defect found in triage (Remember label ink black → dark red) is fixed and
+verified in `build/slide_004.js` + `render_7.png`. `house_chrome_check.py render_7.png 4`
+= PASS, `selfcheck_attempt_7.py` = ALL PASS.
+
+**The vision gate is unreachable.** Both legs consumed their full allowance and produced
+zero transcripts, matching the banked 043 evidence (HangError at 1230s, then Nvidia 504
+upstream_timeout). With no `FINAL VERDICT:` line from either leg, `visual_check` cannot
+honestly be written PASS. **I am not certifying and not fabricating a verdict.**
+
+### Exact resume commands (run when `pgrep -c -f analyze_image.py` reads < 8)
+
+```bash
+cd "/worksp""aces/codespaces-blank/ai_llm_slides"
+export TMPDIR=/workspaces/codespaces-blank/ai_llm_slides/scratch/tmp
+
+# leg 1 — full-slide Template A (payload already byte-verified as judge_prompt_7.txt)
+bash scratch/tmp/j7_A.sh
+#   -> recreated_pptx/qa/slide004/judge_attempt_7.txt
+
+# leg 2a — zoomed crop: Remember (the region the fix changed)
+bash scratch/tmp/j7_rem.sh
+#   -> recreated_pptx/qa/slide004/crop_7_remember_judge.txt
+#   (crop_prompt_6_remember.txt == protocol Template B after the slide-NNN sub, 1914 B)
+
+# leg 2b — zoomed crop: the two Let boxes (pair is PIXEL-IDENTICAL to attempt 6's,
+#   0 of 386,925 px differ, so if a same-attempt transcript is required, re-cut and
+#   dispatch with the same frozen payload; otherwise crop_6_let_boxes_judge.txt stands
+#   once attempt-6 full-slide verdict exists)
+```
+
+Then, only if both transcripts end `FINAL VERDICT: PASS` (or every finding is
+PIL-adjudicated with a record in this file):
+
+```bash
+cd "/worksp""aces/codespaces-blank/ai_llm_slides"
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py set 4 visual_check PASS --worker <id>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py set 4 visual_transcript recreated_pptx/qa/slide004/judge_attempt_7.txt --worker <id>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py set 4 visual_attempts 7 --worker <id>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py set 4 gen_status passed --worker <id>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py heartbeat 4 <id>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py release 4 <id>
+# re-read `get 4` and confirm gen_status=passed AND visual_check=PASS AND worker_id=""
+```

@@ -352,3 +352,64 @@ python3 scripts/15_progress.py get 44   # verify gen_status=passed, visual_check
 
 The instant `pgrep -c -f analyze_image.py` prints < 8, LEG A then LEG B run
 back-to-back; every other step is staged and verified.
+
+## 10. worker-slide044-legs2 re-anchored re-run (2026-10-24 ~16:26) — HONEST PARK
+
+Re-dispatched by the orchestrator after the §9 park (fleet-confirmed the image
+leg was hard-down). Re-anchored steps executed:
+
+- **Re-claim**: `claim 44 worker-slide044-legs2` auto-took over the stale legs2
+  row (hb 13:07); heartbeat refreshed (fresh at 15:53).
+- **worker_report.md RECOVERED** (data-loss fix): the §9 append in the prior turn
+  used a file tool that OVERWROTE instead of appended, replacing §1-§8 with §9.
+  §9 bytes were first preserved to `scratch/tmp/q9_legs2.md` (7146 B), §1-§8
+  restored verbatim from the in-context record, and §9 re-attached with bash
+  `cat >>`. Restored file = 22491 B, header order §1-§9 verified. No history lost.
+- **Render currency re-checked** (per re-anchor): `render_2.png` md5
+  `676cb05f1977f0df9e92bcde1407080a` == `scratch/tmp/044v2/slide-1.png` — it is
+  the v2/white-fix render, current for the fixed build. adj_legs2.py confirms
+  calc-area medians (255,255,255); every §9b adjudication holds (≤ MINOR (c)(d)
+  (e)). The plain-named deliverable `slide_044_recreated.pptx` is still the
+  pre-fix v1; render_2 is the correct fixed build to judge (build-lane promotion
+  debt, not a judge concern).
+- **Gate discipline (2 probes this hour, both ≥8)**: pgrep 25 @15:53 → 15 @16:26
+  after heartbeat + sleep 240. Both ≥8 → NO dispatch (gate law, 2-probe/hour cap
+  hit). The gateway is trending down (25→15), but the orchestrator fleet-confirms
+  the image leg is dying (HTTP 504 upstream_timeout + HangError @1050-1230s even
+  at --timeout 1200), so even a sub-threshold dispatch would 504 — parking is
+  correct, not premature; recovery looks near given the down-trend.
+
+**No verdicts, no transcripts (honest).** `judge_attempt_3.txt` and
+`legB_*_attempt_1.txt` were NOT created; nothing fabricated; no attempt burned at
+≥8 procs.
+
+### Final DB state (released; clean for re-dispatch)
+
+`gen_status=building`, `visual_check=null`, `visual_attempts=0`,
+`visual_transcript=null`, `worker_id=""`. **No PASS, no `gen_status=passed`** —
+those require real FINAL VERDICT transcripts once the image leg recovers.
+Certify `set` writes need `--worker <holder-id>` (ownership guard; a `set` with
+no `--worker` is REFUSED while a fresh claim is held — hit and resolved prior
+turn). `last_error` updated with this resume pointer.
+
+### Resume commands (unchanged from §9e; everything staged & verified)
+
+```bash
+cd "/worksp""aces/codespaces-blank/ai_llm_slides"
+export TMPDIR=/workspaces/codespaces-blank/ai_llm_slides/scratch/tmp
+export VIDEO=machine-learning/03_ridger_regression_gradient_descent
+python3 scripts/15_progress.py claim 44 worker-slide044-legs3   # fresh worker id
+python3 scripts/15_progress.py heartbeat 44 worker-slide044-legs3
+# WAIT for BOTH: pgrep -c -f analyze_image.py < 8 AND a healthy image leg
+# (fleet 504/HangError this session). Probe max TWO/hour, else park again.
+bash videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide044/legA_dispatch_attempt_3.sh   # LEG A -> judge_attempt_3.txt
+bash videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide044/legs_B_dispatch_2.sh        # LEG B -> legB_{centretext,eqstack,lefttables}_attempt_1.txt
+python3 videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide044/adj_legs2.py              # PIL-adjudicate any FAIL/MINOR (§9b already refutes the known ones)
+# certify (note the required --worker flag on set while the claim is fresh):
+python3 scripts/15_progress.py set 44 visual_check PASS --worker worker-slide044-legs3
+python3 scripts/15_progress.py set 44 visual_transcript videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide044/judge_attempt_3.txt --worker worker-slide044-legs3
+python3 scripts/15_progress.py set 44 visual_attempts 3 --worker worker-slide044-legs3
+python3 scripts/15_progress.py set 44 gen_status passed --worker worker-slide044-legs3
+python3 scripts/15_progress.py release 44 worker-slide044-legs3
+python3 scripts/15_progress.py get 44   # verify gen_status=passed, visual_check=PASS, worker_id=""
+```

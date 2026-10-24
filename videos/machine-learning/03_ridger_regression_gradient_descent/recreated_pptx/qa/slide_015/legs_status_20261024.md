@@ -325,3 +325,32 @@ Legs land at `qa/slide_015/probe_4.txt`, `judge_attempt_4.txt` and
 [15:22:03] === judgeA outcome rc=2 ===
 [15:22:03] DONE
 ```
+
+### Final runner log (15:39-16:39 UTC, gate never < 8)
+
+```
+[16:18:24] gate=18
+[16:19:24] gate=14
+[16:20:24] gate=14
+[16:21:24] gate=16
+[16:22:24] gate=15
+[16:23:24] gate=16
+[16:24:24] gate=12
+[16:24:24]   heartbeat
+[16:25:24] gate=14
+[16:26:24] gate=15
+[16:27:24] gate=14
+[16:28:24] gate=18
+[16:29:24] gate=14
+[16:30:24] gate=18
+[16:31:24] gate=16
+[16:32:24] gate=12
+[16:33:24] gate=13
+[16:34:24] gate=12
+[16:35:24] gate=24
+[16:36:24] gate=15
+[16:37:24] gate=15
+[16:38:24] gate=11
+[16:39:24] gate=17
+[16:39:25]   heartbeat
+```

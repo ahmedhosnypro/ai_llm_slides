@@ -37,3 +37,26 @@ each get ONE further hard-wall retry, already spent above, and no more.
    (render_19.png + crop_19_*.png, all already banked).
    Re-dispatched: bash-lk5c9li5 (Leg A), bash-ko76qbf8 (matrix crop).
    No further extension is permitted for these legs.
+
+--- second window (worker judge-slide003-att20, re-anchor 15:30) ---
+15:30 re-claimed slide 3 (judge-slide003-att20, hb 143m stale).
+Bank-first verification: pptx md5 66efcb88934169c253e47551866c54b8 UNCHANGED;
+render_18 == render_19 md5 7afc5d9056ad725cbf7b6f5d9a29e20a — the banked render
+still matches the current pptx. No re-render was needed. House chrome PASS.
+Transcript re-glob found crop_19_matrix_judge.txt had landed at 13:09:49
+(FAIL) — the matrix crop verdict that the first window was waiting for.
+
+Legs in the second window:
+- Leg A (full-slide): dispatched --timeout 1200 -> ABORT HangError at the
+  script's own hard wall (1230s) on attempt 1; the outer 1700s wrapper then
+  expired, so attempts 2-3 never ran. No transcript.
+- Matrix crop re-run --timeout 900 --tries 3: all three attempts returned
+  HTTP 504 upstream_timeout (Nvidia) in 188s. The analyzer's own hygiene
+  correctly REFUSED to overwrite the valid 13:09 verdict ("transcript NOT
+  overwritten — this run produced no validated winner"). The 13:09 FAIL verdict
+  therefore stands as the current, real crop-pair verdict.
+- Leg A final dispatch: --timeout 900 --tries 3 inside timeout 1700 (task
+  bash-qou69ur8), in flight.
+
+Congestion across the window: 13-16 analyze_image.py processes;
+gateway responds (401 = key required, healthy).
