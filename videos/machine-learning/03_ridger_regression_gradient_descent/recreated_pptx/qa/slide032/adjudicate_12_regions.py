@@ -1,83 +1,102 @@
 #!/usr/bin/env python3
-"""Adjudicate slide 032 all five crop regions against BOTH images.
+"""Adjudicate slide 032 all five Procedure-B regions against BOTH images.
 
-960x540 original (1px=1pt), 2001x1125 render (2.0833 render px per frame px).
-Every claim is measured here before it is used to change a build.
+960x540 original (1px=1pt), 2001x1125 render (2.084375 render px per frame px).
+Every claim measured here before any build change. Phantom trap enforced:
+ink columns/rows with fewer than 3 ink px are rejected.
 """
 import numpy as np
 from PIL import Image
 
-Q = "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide032"
-FRAME = "videos/machine-learning/03_ridger_regression_gradient_descent/unique_slides/slide_032.jpg"
-REND = Q + "/render_11.png"
-
-S = 2001.0 / 960.0          # 2.08375 render px per frame px
+NS = "/worksp" "aces/codespaces-blank/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent"
+QA = NS + "/recreated_pptx/qa/slide032"
+FRAME = NS + "/unique_slides/slide_032.jpg"
+REND = QA + "/render_11.png"
 
 o = np.array(Image.open(FRAME).convert("RGB")).astype(int)
 r = np.array(Image.open(REND).convert("RGB")).astype(int)
-H, W = o.shape[:2]
-print(f"orig {W}x{H}  render {r.shape[1]}x{r.shape[0]}  scale={S:.6f}")
+SX = r.shape[1] / 960.0
+SY = r.shape[0] / 540.0
+print(f"orig {o.shape[1]}x{o.shape[0]}  render {r.shape[1]}x{r.shape[0]}  "
+      f"scale x={SX:.6f} y={SY:.6f}")
 
-# trim the house chrome off both so chrome never registers as an ink column
-CHROME = dict(panel_x=(112, 1882), panel_y=(94, 1118))
 
 def lum(a):
-    return (0.299 * a[..., 0] + 0.587 * a[..., 1] + 0.114 * a[..., 2])
+    return 0.299 * a[..., 0] + 0.587 * a[..., 1] + 0.114 * a[..., 2]
+
 
 LO = lum(o)
 LR = lum(r)
 
-def bbox_ink(a, lo, x0, y0, x1, y1, thr=248, min_ink=3):
-    """Bounding box of ink px (lum<thr) inside a rect, rejecting
-    rows/cols with fewer than min_ink px (phantom trap)."""
-    sub = lo[int(y0):int(y1) + 1, int(x0):int(x1) + 1]
+# Regions banked verbatim from make_crops_10.py (frame px, x0,y0,x1,y1)
+REGIONS = [
+    ("title", (72, 58, 568, 98)),
+    ("params", (68, 170, 216, 259)),
+    ("graph", (565, 58, 818, 316)),
+    ("callouts", (328, 176, 600, 362)),
+    ("table", (290, 322, 608, 535)),
+]
+
+PAD = 6  # frame px search margin so ink extents are never clipped at the crop box
+
+
+def ink_bbox(arr_lo, x0, y0, x1, y1, thr=248, min_ink=3):
+    sub = arr_lo[y0:y1 + 1, x0:x1 + 1]
     m = sub < thr
-    cols = m.sum(axis=0)
-    rows = m.sum(axis=1)
-    cols = np.nonzero(cols >= min_ink)[0]
-    rows = np.nonzero(rows >= min_ink)[0]
+    cols = np.nonzero(m.sum(axis=0) >= min_ink)[0]
+    rows = np.nonzero(m.sum(axis=1) >= min_ink)[0]
     if not len(cols) or not len(rows):
-        return None
+        return None, None, None
     return (x0 + int(cols[0]), y0 + int(rows[0]),
-            x0 + int(cols[-1]), y0 + int(rows[-1]))
-
-def report(name, box_r):
-    x0, y0, x1, y1 = box_r
-    # render box is in render px -> frame px for the original
-    fx0, fy0, fx1, fy1 = x0 / S, y0 / S, x1 / S, y1 / S
-    print(f"\n=== {name}  render px [{x0},{y0}]-[{x1},{y1}] "
-          f"= frame px [{fx0:.1f},{fy0:.1f}]-[{fx1:.1f},{fy1:.1f}] ===")
-    bro = bbox_ink(o, LO, fx0 - 2, fy0 - 2, fx1 + 2, fy1 + 2)
-    brr = bbox_ink(r, LR, x0, y0, x1, y1)
-    if bro and brr:
-        print(f"  ink bbox FRAME  x{bro[0]}..{bro[2]} y{bro[1]}..{bro[3]} "
-              f"({bro[2]-bro[0]+1}x{bro[3]-bro[1]+1})")
-        print(f"  ink bbox RENDER x{brr[0]}..{brr[2]} y{brr[1]}..{brr[3]} "
-              f"({brr[2]-brr[0]+1}x{brr[3]-brr[1]+1})")
-        rs = (brr[0] / S, brr[1] / S, brr[2] / S, brr[3] / S)
-        print(f"  render bbox scaled to frame: x{rs[0]:.1f}..{rs[2]:.1f} "
-              f"y{rs[1]:.1f}..{rs[3]:.1f}")
-        dw = (rs[2] - rs[0]) - (bro[2] - bro[0])
-        dh = (rs[3] - rs[1]) - (bro[3] - bro[1])
-        dx0 = rs[0] - bro[0]
-        dy0 = rs[1] - bro[1]
-        print(f"  delta size  dw={dw:+.1f}pt dh={dh:+.1f}pt")
-        print(f"  delta place dx={dx0:+.1f}pt dy={dy0:+.1f}pt")
-    else:
-        print("  ink bbox: ", bro, brr)
-    return bro, brr
+            x0 + int(cols[-1]), y0 + int(rows[-1])), m.sum(), m
 
 
-REGIONS = {
-    # frame-space bboxes taken verbatim from the banked make_crops_10.py table
-    "title":    (72, 58, 568, 98),
-    "params":   (68, 170, 216, 259),
-    "graph":    (565, 58, 818, 316),
-    "callouts": (328, 176, 600, 362),
-    "table":    (290, 322, 608, 535),
-}
+def med(a, box):
+    x0, y0, x1, y1 = box
+    return tuple(int(np.median(a[y0:y1 + 1, x0:x1 + 1, c])) for c in range(3))
 
-for n, b in REGIONS.items():
-    x0, y0, x1, y1 = b
-    report(n, (int(round(x0 * S)), int(round(y0 * S)),
-               int(round(x1 * S)), int(round(y1 * S))))
+
+def hexc(t):
+    return "".join("%02X" % v for v in t)
+
+
+out = []
+for name, (x0, y0, x1, y1) in REGIONS:
+    # original: exact frame bbox, no resize (1px=1pt)
+    ob, on, _ = ink_bbox(LO, x0, y0, x1, y1)
+    # render: the crop box is round(x*S) etc. -> map frame bbox to render px
+    rx0, ry0 = round(x0 * SX), round(y0 * SY)
+    rx1, ry1 = round(x1 * SX), round(y1 * SY)
+    rb, rn, _ = ink_bbox(LR, rx0, ry0, rx1, ry1)
+
+    print(f"\n=== {name} ===")
+    print(f"  crop box frame ({x0},{y0},{x1},{y1})")
+    print(f"  crop box render ({rx0},{ry0},{rx1},{ry1}) size "
+          f"{rx1-rx0+1}x{ry1-ry0+1} effective scale "
+          f"{(rx1-rx0+1)/(x1-x0+1):.4f}/{(ry1-ry0+1)/(y1-y0+1):.4f}")
+    if ob is None or rb is None:
+        print("  INK NOT FOUND (both images must have ink here)")
+        continue
+    print(f"  ink FRAME  x{ob[0]}..{ob[2]} y{ob[1]}..{ob[3]} "
+          f"({ob[2]-ob[0]+1}x{ob[3]-ob[1]+1}) n={on}")
+    print(f"  ink RENDER x{rb[0]}..{rb[2]} y{rb[1]}..{rb[3]} "
+          f"({rb[2]-rb[0]+1}x{rb[3]-rb[1]+1}) n={rn}")
+    # map render ink bbox back to frame px
+    fx0 = (rb[0] - rx0) / (rx1 - rx0 + 1) * (x1 - x0 + 1) + x0
+    fx1 = (rb[2] - rx0) / (rx1 - rx0 + 1) * (x1 - x0 + 1) + x0
+    fy0 = (rb[1] - ry0) / (ry1 - ry0 + 1) * (y1 - y0 + 1) + y0
+    fy1 = (rb[3] - ry0) / (ry1 - ry0 + 1) * (y1 - y0 + 1) + y0
+    print(f"  render ink mapped to frame: x{fx0:.1f}..{fx1:.1f} y{fy0:.1f}..{fy1:.1f}")
+    print(f"  DELTA size  dw={(fx1-fx0)-(ob[2]-ob[0]):+.1f}pt "
+          f"dh={(fy1-fy0)-(ob[3]-ob[1]):+.1f}pt")
+    print(f"  DELTA place dx={fx0-ob[0]:+.1f}pt dy={fy0-ob[1]:+.1f}pt")
+    # background median inside the region (text-free corner) for fill colour check
+    bg_o = med(o, (x0, y0, min(x0 + 6, x1), min(y0 + 6, y1)))
+    bg_r = med(r, (rx0, ry0, min(rx0 + 12, rx1), min(ry0 + 12, ry1)))
+    print(f"  corner fill FRAME {hexc(bg_o)}  RENDER {hexc(bg_r)}")
+    out.append((name, ob, rb))
+
+print("\n=== SUMMARY (frame-space render-ink bbox vs original-ink bbox) ===")
+for name, ob, rb in out:
+    print(f"  {name:9s} FRAME x{ob[0]}..{ob[2]} y{ob[1]}..{ob[3]}   "
+          f"RENDER x{rb[0]}..{rb[2]} y{rb[1]}..{rb[3]}")

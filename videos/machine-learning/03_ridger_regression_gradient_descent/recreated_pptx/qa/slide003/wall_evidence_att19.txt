@@ -60,3 +60,14 @@ Legs in the second window:
 
 Congestion across the window: 13-16 analyze_image.py processes;
 gateway responds (401 = key required, healthy).
+
+--- Leg A final dispatch (task bash-qou69ur8) : ladder exhausted, NO VERDICT ---
+  attempt 1: ABORT HangError hard wall-clock 930s exceeded
+  attempt 2: HTTP 504 upstream_timeout (Nvidia)
+  attempt 3: HTTP 504 upstream_timeout (Nvidia)
+  attempt 4: HTTP 504 upstream_timeout (Nvidia)
+  -> 0/1 analyzed; LEG_A_EXIT=1. No transcript write (analyzer hygiene: a
+  degenerate run never overwrites a transcript; here none existed).
+
+Probe budget used this hour: 2 (16:15 re-probe after sleep 240; the Leg A
+ladder above). Per the gate law no further probe is permitted within the hour.

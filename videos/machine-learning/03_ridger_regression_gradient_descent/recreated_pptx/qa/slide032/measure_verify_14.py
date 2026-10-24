@@ -4,7 +4,7 @@ from PIL import Image
 
 DECK = "/worksp" "aces/codespaces-blank/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent"
 ORI = Image.open(f"{DECK}/unique_slides/slide_032.jpg").convert("RGB")
-REN = Image.open(f"{DECK}/recreated_pptx/qa/slide032/render_8.png").convert("RGB")
+REN = Image.open(f"{DECK}/recreated_pptx/qa/slide032/render_11.png").convert("RGB")
 S = REN.width / 960.0
 
 def lum(c):

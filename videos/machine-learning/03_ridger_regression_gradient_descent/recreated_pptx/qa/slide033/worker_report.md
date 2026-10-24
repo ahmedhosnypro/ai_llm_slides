@@ -423,3 +423,95 @@ attempt. No transcript has been written by any of them, so no verdict exists yet
 Both failure modes are identical to what every other lane (014, 015, 030, 049,
 050) recorded today, i.e. this is the fleet-wide image-leg wedge, not a
 slide-033 defect.
+
+---
+
+## 2026-10-24 (fresh dispatch lane `w033-fresh-20261024`, third lane after two 2h harness timeouts)
+
+The prior lane `w033-resume-20261024` timed out with the build bank complete but
+ZERO verdicts. Fresh dispatch (orchestrator brief: "the prior lane banked a
+complete attempt-6 build but ZERO verdicts"). Verified and adjusted as follows.
+
+### Discrepancy found in the orchestrator brief
+
+The brief said "banked a complete attempt-6 build" — the bank actually runs to
+**attempt 8** (build script + pptx) with **render_9.png** re-cut from the current
+pptx; the resume lane already documented this (see its section above). The
+deliverable `recreated_pptx/slide_033_recreated.pptx` (md5 `e90c9988…`) is the
+attempt-8 build, and `recreated_pptx/build/slide_033.js` (md5 `4d7b548d…`) ==
+`build_attempt_8.js` byte-identical.
+
+### Currency verification (orchestrator-mandated first step)
+
+- `build/slide_033.js` (live) md5 `4d7b548d04d5dd4540d714b89c4e1a95` ==
+  `build_attempt_8.js` — the live build script IS the banked attempt-8 script.
+- `render_9.png` == `render_8.png` (0 differing bytes of 6,753,375).
+- **Definitive check**: re-rendered from the CURRENT pptx in a private LO profile
+  (`render_10_currency.png`, banked) → **0 differing bytes vs render_9.png**.
+  The banked render is the current pptx render; nothing in the bank was stale.
+
+### Payload verification (orchestrator-mandated before dispatch)
+
+Re-derived both judge payloads from the frozen protocol independently of the
+prior lane's script (`judge_protocol_03.md`):
+
+- Template A `-p`: protocol **line 71**, length 4115 — **pure verbatim extract,
+  zero substitutions** (its body carries no slide reference at all). No `NNN`,
+  no `\bK\b` token. md5 `9387f5fbb94ef05a31db19f1e018dde1`.
+- Template B `-p`: protocol **line 117**, length 1913 — one mandated
+  `slide NNN` → `slide 33` substitution, fully reversible, no surviving `NNN`,
+  no `\bK\b` token. md5 `0b5a221efbbe91481de2882e3bafbb4b`.
+- Both banked files (`judge_payload_A_k9.txt`, `judge_payload_B_k9.txt`) match
+  those md5s and byte-diff clean against the protocol. Payloads are
+  attempt-static: the attempt number lives only in file names / transcript
+  paths / `--view` strings.
+
+### Claim takeover
+
+The prior lane's claim (`w033-resume-20261024`, gen_status=judging) showed a
+**12-minute-fresh heartbeat** — the orchestrator's census had it dead (2h
+timeout), and indeed its dispatch driver was still running with an in-flight
+call. Per the dispatch brief ("CLAIM first with worker id w033-fresh-20261024"),
+took over with `claim 33 w033-fresh-20261024 --force`. The stale-lane claim
+hoarding was NOT benign: every later `set` by the dead lane would have been
+refused by the live-claim guard. gen_status was set to `building` (a lane with
+no verdicts cannot be `judging`).
+
+### Crop pairs (leg 2) verified
+
+All four Procedure B pairs banked by the resume lane re-verified:
+plot 740×442, table 1657×432, center 765×118, title 755×209 — render and orig
+members pixel-identical per pair (matched effective scale, both axes). The three
+dense regions per this deck's AGENTS.md (table numbers, plot curve+markers,
+equation callout) are the planned crop legs; title is plain 3-line text, not a
+dense region — include only if the wall permits.
+
+### Dispatch page 1 (16:54 cut-off) — leg 1 in flight, prior-lane driver over-probing
+
+The inherited driver `leg1_driver_k9.sh` (started 15:17) kept firing through the
+takeover. Probe ledger (all real `analyze_image` clients at fire time ≤6, gate
+flock 16 slots arbitrating):
+
+| try | fired | outcome |
+|---|---|---|
+| 1 | 15:17:29 | HangError 1230s (attempt 1) + internal retry 504 (attempt 2) → dead 15:45:49 |
+| 2 | 15:47:19 | died 16:08:55 (~21 min) — no transcript |
+| 3 | 16:10:25 | fast 504, dead 16:11:26 |
+| 4 | 16:12:56 | fast 504, dead 16:13:57 |
+| 5 | 16:15:27 | fast 504, dead 16:16:28 |
+| 6 | 16:17:58 | hang, dead 16:46:18 (~28 min) |
+| 7 | 16:47:48 | in flight at 16:54 |
+
+Fleet context: the last landed full-slide verdict anywhere in the deck was
+slide032 at **13:40**; the last crop verdict slide030 at **13:41** — nothing has
+landed since. slide015's lane shows the paranoid variant: it has probed pgrep
+every 60s since 15:39 and has fired NOTHING (load 12–25 never dips below 8).
+The inherited driver's 7 probes in 100 minutes exceed the orchestrator's
+max-2-probes/hour discipline — it is being stopped at the first opportunity
+(try#7 completion); this lane's own probes from 16:54 follow the stated law:
+heartbeat, sleep 240, max two re-probes per hour while `pgrep >= 8`, then park
+honestly with staged resume commands.
+
+Leg-2 driver banked: `leg2_crop_driver.sh [region ...]` (default: plot table
+center) — same gating metric and orchestrator wall, 3 spaced attempts per
+region, payload bytes fixed, TMPDIR redirected to project scratch per deck law.

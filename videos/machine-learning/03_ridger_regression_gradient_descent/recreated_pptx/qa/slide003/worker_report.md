@@ -252,3 +252,119 @@ bash scripts/16_vision_gate.sh timeout 1700 python3 \
 - The attempt-16 ellipsis defect is FIXED and visible in the render, verified
   twice (pptx shape geometry + rendered-pixel census). No rebuild is needed on
   its account.
+
+---
+
+# Attempt-20 judge/certify lane — worker judge-slide003-att20 (2026-10-24, 15:30-17:03)
+
+## 1. Bank-first state verification (done before any judging)
+- DB row 3 re-claimed `--force` (prior claim `judge-slide003-att19`, hb 143m stale);
+  heartbeat stamped.
+- `slide_003_recreated.pptx` md5 `66efcb88934169c253e47551866c54b8` — UNCHANGED.
+- `render_18.png` == `render_19.png` == md5 `7afc5d9056ad725cbf7b6f5d9a29e20a`.
+  Currency was already proven in the attempt-19 window (a fresh deterministic
+  LibreOffice re-render of the current pptx reproduced the same bytes), so the
+  banked render still matches the current pptx. **No re-render was needed.**
+- House chrome check on render_19: PASS.
+
+## 2. Real landed verdicts (both re-globbed this window)
+- `crop_19_matrix_judge.txt` (13:09:49, 3125 B) — **the only real verdict**:
+  `FINAL VERDICT: FAIL` — BLOCKER "missing intercept/ones column in X",
+  MAJOR "y-column third row is a bare y", MINOR "b and = not red".
+- `judge_attempt_20.txt` — DOES NOT EXIST. The full-slide leg never landed a
+  verdict in any window (see §4). Leg B crop pairs for `topbox`, `sideboxes`
+  and `bottomright` were never dispatched to completion.
+
+## 3. PIL-first adjudication (banked: `adjudication_att20.txt`)
+All three findings measured against BOTH images at frame scale, 1px=1pt.
+
+| # | judge finding | adjudication | measurements |
+|---|---|---|---|
+| 1 | BLOCKER — X drops the whole ones/intercept column | **REFUTED** | The strip where a "1" column would sit (between the y-vector ending ~x128 and the matrix's first data column at x181.5) is **empty in the original**: per 8px windows, row1 x132..192 = 0,0,0,0,0,0,0,0; row2 same; row3 same; row4's ink at x128..152 belongs to the y-vector's `yn` glyph (x112..161, y460..475), not a matrix cell. Fine 4px scan of row1 y369-392: x132,136,…,196 all 0 px. The matrix's first real glyph cluster sits at x200/x208 in BOTH images. The judge's inference came from the `N x d+1` label, not pixels. |
+| 2 | MAJOR — y-column 3rd row renders bare "y" where original has an ellipsis | **REFUTED as MAJOR (indeterminate original cell)** | The original's OWN ellipsis, measured in the same image at the same scale, is a 17px x 3px three-dot band at x283..299, y444..446 (15 ink px). The original's y-vector third cell is 3px x 7px at x117..119, y409..415 (6 ink px) — 5.7x NARROWER than its own ellipsis, so it is a thin vertical stroke, not an ellipsis. The judge mis-measured. The build's bare "y" is a MINOR content diff against an indeterminate cell. NOT a fix trigger (PIL-first law forbids drawing a defect the original does not have). |
+| 3 | MINOR — `b` and `=` not red | **CONFIRMED (MINOR)** | Red-ink census (R>120 & G<90 & B<90) in the b-box (x455..520, y349..374): ORIG = 75 px, RENDER = 0 px. Real emphasis difference, correctly graded MINOR. |
+
+**Verdict on the pending fix:** the attempt-16 ellipsis defect the crop FAIL
+was raised against is fixed and present — matrix row3 = 10/10/10/10 dark px per
+cell, matching the original's 4-cell row (rendered ellipsis cell x270..276, 7px
+x 1px, present). No build change is required by this adjudication: the BLOCKER
+and the MAJOR are both pixel-refuted, and the one confirmed REAL finding is a
+MINOR colour-emphasis difference that the judge itself graded MINOR.
+
+## 4. Vision-gate history (why nothing certified this window)
+Congestion 13-30 `analyze_image.py` processes fleet-wide all window; gateway
+healthy (401 = key-required). Dispatches, none of which landed a verdict:
+- Leg A `--timeout 1200` inside `timeout 1700`: attempt 1 ABORT HangError at the
+  script's own hard wall 1230s; the outer 1700s wrapper then expired so
+  attempts 2-3 never ran.
+- Leg A `--timeout 900 --tries 3` inside `timeout 1700` (final): attempt 1 ABORT
+  at 930s; attempts 2, 3, 4 each `HTTP 504 upstream_timeout` (Nvidia).
+- Matrix crop re-run `--timeout 900 --tries 3`: attempts 1-3 all 504. The
+  analyzer's own hygiene correctly refused to overwrite the valid 13:09 verdict.
+- Probe budget for the hour exhausted (2 probes: 16:15 re-probe after sleep 240,
+  plus the Leg A ladder). Per the gate law no further probe within the hour.
+Full evidence: `wall_evidence_att19.txt`.
+
+## 5. PARK STATE — NOT CERTIFIED (honest)
+Certification requires the full-slide comparison judge AND the zoomed crop-pair
+certificates to be clean (deck AGENTS.md, founder directive 2026-10-19). The
+full-slide leg has no verdict, so `visual_check` CANNOT be set to PASS:
+
+- `visual_check` left **""** (untouched — nothing certified),
+- `visual_transcript` left **null**,
+- `visual_attempts` left **18** (no judge attempt completed this window; the
+  aborted/504 dispatches produced no body and so consumed no attempt),
+- `gen_status` left `building`,
+- claim still held by `judge-slide003-att20` with a fresh heartbeat; it will go
+  stale within 40 min and the next worker takes it over with `claim 3 --force`.
+
+## 6. NEXT COMMANDS (exact, run from the project root)
+```bash
+W="<your-id>"
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py claim 3 $W --force
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py heartbeat 3 $W
+
+# Bank-first: confirm currency. pptx md5 66efcb88934169c253e47551866c54b8;
+# render_19.png md5 7afc5d9056ad725cbf7b6f5d9a29e20a must still match the
+# current pptx (re-render from the CURRENT pptx if either changed).
+
+# (a) LEG A — full-slide comparison. Payload byte-verified: judge_prompt_19.txt
+#     (4115 B, byte-identical to shared_patterns/judge_protocol_03.md Template A,
+#     4 BLOCKER tokens intact). Dispatch when the fleet has cooled (pgrep < 8):
+bash scripts/16_vision_gate.sh timeout 1700 python3 \
+  .agents/skills/image-analysis/scripts/analyze_image.py comparison \
+  videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide003/render_19.png \
+  videos/machine-learning/03_ridger_regression_gradient_descent/unique_slides/slide_003.jpg \
+  --view "Slide 003 recreation attempt 21 — fidelity check vs original lecture frame" \
+  --capture "IMG1=150dpi PNG render of a 13.33x7.5in PPTX; IMG2=original lecture video frame" \
+  --thinking high --max-tokens 65536 --timeout 900 --tries 3 --rounds 1 \
+  --transcript videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide003/judge_attempt_21.txt \
+  -p "$(cat videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide003/judge_prompt_19.txt)"
+
+# (b) LEG B — crops already cut at matched 2.0833 scale (do NOT re-cut unless the
+#     render changes; cut_attempt_19.sh regenerates them): matrix (DONE, verdict
+#     FAIL), plus topbox / sideboxes / bottomright. Payload:
+#     judge_prompt_19_crop.txt (1914 B = Template B with NNN->003, 2 BLOCKER tokens).
+
+# (c) Once Leg A lands a real "FINAL VERDICT:" line, adjudicate every finding
+#     PIL-first against EITHER image BEFORE any build change, then certify:
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py set 3 visual_check PASS --worker $W
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py set 3 visual_transcript \
+  videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide003/judge_attempt_21.txt --worker $W
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py set 3 visual_attempts 21 --worker $W
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py set 3 gen_status passed --worker $W
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py heartbeat 3 $W
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py release 3 $W
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py get 3
+# NOTE: claim()/set() can reset gen_status (15_progress.py:337-339) — re-read
+# `get 3` and restore gen_status=passed BEFORE release.
+```
+
+## 7. Artifacts banked this lane
+`currency_check_att19.txt`, `pil_ellipsis_evidence_att19.txt`,
+`payload_corruption_evidence_att19.txt`, `measure_ellipsis_att19.py`,
+`matrixprofile_att19.py`, `inkcells_att19.py`, `cut_attempt_19.sh`,
+`judge_prompt_19.txt`, `judge_prompt_19_crop.txt`, `payloadA_protocol.txt`,
+`payloadB_protocol.txt`, `render_19.png`, `render_19.pdf`,
+`crop_19_{matrix,topbox,sideboxes,bottomright}_{render,orig}.png`,
+`crop_19_matrix_judge.txt`, `wall_evidence_att19.txt`, `adjudication_att20.txt`.

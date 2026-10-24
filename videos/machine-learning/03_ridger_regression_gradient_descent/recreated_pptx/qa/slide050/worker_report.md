@@ -393,3 +393,41 @@ VIDEO=... get 50        # MUST show gen_status=passed, visual_check=PASS, worker
 - `build_attempt_7_pre_finalW_revert.js`, `assets/eq_050_finalW.{png,json}.pre_w7_3comp`
 - scripts: `scratch/tmp/w7_measure.py`, `w7_eta.py`, `w7_eta2.py`, `w7_finalw.py`,
   `w7_pink.py`, `w7_rules.py`, `w7_cut_crops.py`, `w7_judge_A8.sh`, `w7_judge_A8r1.sh`
+
+---
+
+# UPDATE 2026-10-24 16:20 - w050-legs-20261024 (LEGS LANE: fire two staged legs + certify)
+
+Row 50 --force claim took over from 'w050-fixjudge2-20261024-134000' (heartbeat 62m stale).
+NOTE: the prior lane's banked line "house_chrome_8: PASS" cited a file that was NEVER
+written (qa/slide050 holds only house_chrome_1..6). Re-run this lane, banked as
+`house_chrome_9.txt`: **PASS** (panel x112-1882 y94-bottom; L/R/bottom strokes present, top
+bare; badge center (1824,152) d=68; tol 8) with the numeral 50 verified.
+
+## Currency verification (pre-dispatch, md5)
+- `recreated_pptx/slide_050_recreated.pptx` md5 **d2ce33ec10db6011f45361521cf7bb03** (12:19)
+- `qa/slide050/render_8.png` md5 **7265fa10ac17b96c78e4b07cfa6cabf1** (12:20)
+Both byte-identical to the banked handoff values. Payload byte-check:
+judge_payload_8.txt md5 9387f5fbb94ef05a31db19f1e018dde1 == banked judge_payload_6.txt;
+judge_payload_B_8.txt md5 c21c958c1bc4fb8c2520d963fd8096bd == judge_payload_B_6.txt.
+K-token law: zero standalone "K" in either payload body.
+Crops crop_8_* (12 pairs, cut 12:45 from render_8 at matched eff scale 2.083) current.
+
+## Gateway probe budget (max two per hour, per protocol)
+- 16:29 probe 1 (`probe_9.txt`): HTTP 504 upstream_timeout (Nvidia), 0/1. Gate load 17.
+- heartbeat 16:29:47, slept 240s.
+- 16:35 re-probe 2 (`probe_9b.txt`): **PASSED** — read back the caption crop correctly
+  ("C1 positive C2 negative Zero is unaccepted", red/blue/green/black) in 79s. The image
+  leg is ALIVE; the earlier 504s were transient upstream, not a slide-050 content problem.
+
+## Template A (full-slide)
+- 16:45:26 dispatched `scratch/tmp/w7_judge_A9.sh` (copy-then-modify of banked A8 sh;
+  only the transcript path _8->_9 changed). --thinking high --max-tokens 65536
+  --timeout 1200 --rounds 1 --tries 1, outer 1700, through scripts/16_vision_gate.sh.
+- Script banked: scratch/tmp/w7_judge_A9.sh (+ A8, A8r1). Transcript target:
+  qa/slide050/judge_attempt_9.txt. --> RESULT RECORDED BELOW.
+
+## Template B (six crop pairs)
+- Script banked: `scratch/tmp/w7_judge_B9.sh <NAME>` (parameterized over the 6 regions,
+  order caption -> pinkbox -> mathzone -> tableeq -> chart -> redstop; payload
+  judge_payload_B_8.txt, --timeout 600, outer 1700). --> RESULTS RECORDED BELOW.
