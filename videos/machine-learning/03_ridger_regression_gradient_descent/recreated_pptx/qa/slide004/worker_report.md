@@ -501,3 +501,144 @@ VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_
 VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py release 4 <id>
 # re-read `get 4` and confirm gen_status=passed AND visual_check=PASS AND worker_id=""
 ```
+
+---
+
+## LANE 4 (w004-fix-4-20261024) — takeover + deterministic re-verification + payload byte-proof
+
+### Claim and state at takeover
+
+`VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py claim 4 w004-fix-4-20261024`
+→ `claimed slide 4 by w004-fix-4-20261024 (took over from 'w004-fix-3-20261024', heartbeat 74m stale)`.
+Row at takeover: `gen_status=building`, `visual_check=null`, `visual_attempts=1`,
+`visual_transcript=null`, `worker_id=w004-fix-4-20261024`,
+`pptx_path=videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_004_recreated.pptx`
+(already namespace-prefixed and correct — no update needed). DB heartbeat refreshed
+(19:00:22Z, verified by `get 4`).
+
+### Deliverable/render binding (re-proven this lane, not assumed)
+
+- Deliverable `recreated_pptx/slide_004_recreated.pptx` SHA-256
+  `288c8dc5b51e96bcb7b32bb16a4eabe496451f80eac4d4b53a592e6759cb6690`.
+- Banked render `recreated_pptx/qa/slide004/render_7.png` SHA-256
+  `933f9bda9e331ea7836b0b7882e68d0c07fe0d161bed5094091e6591cc51c604`, MD5
+  `cac47b06de9974aea9113d4329520995`, 2001×1125.
+- The current deliverable was re-rendered (private LO profile) into
+  `scratch/tmp/w004_fix4_verify/render-1.png` and is **byte-identical** to `render_7.png`
+  (same SHA-256/MD5; PIL diff `0` pixels) → rebuilding is correctly skipped;
+  `render_7.png` is bound to the current deliverable.
+
+### Deterministic verification — `verification_current_fix4.txt` → `RESULT: ALL PASS`
+
+Run: `python3 recreated_pptx/qa/slide004/verify_current_fix4.py`
+(banked to `recreated_pptx/qa/slide004/verification_current_fix4.txt`; the script's only
+defect was a generator-vs-subscript bug in its own reporting, fixed in the verifier — the
+slide was never edited). Checks that passed:
+
+- `[PASS] Remember source color is REDTXT` (build/slide_004.js:157-159).
+- `[PASS] Remember PPTX run srgbClr FF0000` (XML-parsed current deliverable).
+- `[PASS] Remember render ink is red` — original mean RGB `[215.3,131.5,150.8]`,
+  render mean RGB `[253.9,6.0,6.5]` (render ink is pure red).
+- `[PASS] subscript discriminator: lower vector n rows=10 y195..204, capital comparator rows=12 y326..337`.
+- `[PASS] vector subscript spec is lowercase n`.
+- `[PASS] X subscript keeps foundered parenthesised (d+1)`.
+- `[PASS] Objective/Error/Formula fill is pale yellow family` (original vs render medians
+  `[249,253,220]/[255,253,218]`, `[249,253,218]/[255,253,218]`, `[249,253,218]/[255,253,218]`).
+- `[PASS] Remember construction: single pale-blue fill, no white header band` — original
+  median `[218,234,246]`, render median `[219,233,252]`, white-band px `23 < 100`.
+
+Re-run of the prior deterministic checks also banked:
+`verification_attempt_7_fix4.txt` → `RESULT: ALL PASS`;
+`verification_chrome_7_fix4.txt` → `HOUSE CHROME CHECK: PASS (panel x 112-1882,
+y 94-bottom; strokes L/R/bottom present, top bare; badge center (1824,152) d=68; all within tol 8)`.
+
+### Four refuted dossier items — still refuted (all verified against the ORIGINAL frame)
+
+1. **Vector subscript case (capital N) — REFUTED.** Matched grayscale threshold `<240`
+   against `unique_slides/slide_004.jpg`: lower-case vector subscript region
+   `x188..194,y190..206` spans **10 rows (y195..204)**; the capital comparator
+   `x594..601,y320..339` spans **12 rows (y326..337)**. 10 ≠ 12 ⇒ the subscript glyph is
+   the shorter lowercase `n`. `analysis/slide_004_final.json` confirms both vector
+   equations use lowercase `n`.
+2. **`X_{N×(d+1)}` parentheses (drop them) — REFUTED.** The spec carries
+   `X_{N×(d+1)}` verbatim; parens are part of the original's typeset form.
+3. **Objective/Error/Formula pale-yellow fill family — REFUTED.** Medians above
+   (original and render both green>channel-blue, i.e. pale yellow, not white/neutral).
+4. **Remember single-pale-blue construction (no white header band) — REFUTED.**
+   One pale-blue fill in both original and render; white-band pixels 23 (threshold 100).
+
+### Payload byte-proof — `verification_payload_bytes_7.txt` → `RESULT: ALL PASS`
+
+Run: `python3 recreated_pptx/qa/slide004/verify_payload_bytes.py` (script extracts each
+`-p "..."` payload byte-for-byte out of the frozen
+`shared_patterns/judge_protocol_03.md`, then applies only the substitutions the protocol
+sanctions). Measured:
+
+| payload file | size | sha256 | provenance |
+|---|---|---|---|
+| `judge_prompt_7.txt` | 4139 B | `39b498eaf70480312fbf160dba7118bee328305ef829c259bead2cbd8e91ccde` | byte-identical to frozen Template A payload (in-payload `\bNNN\b` and `\bK\b` count = 0, so NO substitution is applied inside the payload; NNN/K appear only in the command's paths/view/transcript names) |
+| `crop_prompt_6_remember.txt` | 1924 B | `533c38463821044e7a6bda60859aad3b755235660ca2bd11ab5d551cf9a40dec` | frozen Template B payload with the single sanctioned substitution `slide NNN` → `slide 004` (the ONLY in-payload placeholder: `\bNNN\b` ×1; `\bK\b` ×0, `\bNAME\b` ×0) |
+| `crop_prompt_6_let_boxes.txt` | 1924 B | `533c38463821044e7a6bda60859aad3b755235660ca2bd11ab5d551cf9a40dec` | same frozen Template B payload, same single substitution |
+
+The frozen Template B payload's region description `<one-line description of what the
+region contains>` is **not** inside the `-p` payload — it lives in the `--capture` flag
+(`crop_7_remember_desc.txt` / `crop_7_let_boxes_desc.txt`), exactly as the protocol
+template shows. The earlier lane's "1914 B" figure was a string-compare length; the
+authoritative check is the byte-equal SHA-256 above (1924 B).
+
+### Crop-pair provenance — both attempt-7 pairs are cut from `render_7`, matched scale
+
+Measured this lane (re-derived from `render_7.png` + `unique_slides/slide_004.jpg`,
+PIL `ImageChops.difference(...).getbbox()` = `None` for both, i.e. **pixel-identical to a
+fresh cut**):
+
+| region | frame bbox | output px | effective scale (render / orig) |
+|---|---|---|---|
+| `let_boxes` | x75..750, y94..226 | 1407×275 | 2.0844 / 2.0833 — equal |
+| `remember` | x780..886, y96..157 | 221×127 | 2.0849 / 2.0820 — equal |
+
+Neither crop crosses the house panel boundary (panel = x54..903, y45..540).
+
+### Vision status at 19:19Z — NOT certified, not fabricated
+
+- Zero attempt-7 real transcripts exist. Re-glob of `qa/slide004/` confirms no
+  `judge_attempt_7.txt` and no `crop_7_*_judge.txt`; the only real FAIL body in the bank
+  is `judge_attempt_4.txt`; every other `FINAL VERDICT` hit in this tree is an echoed
+  prompt payload, not evidence.
+- Probe accounting (lane law: `pgrep -c -f analyze_image.py` before every vision call,
+  `>=8` ⇒ heartbeat/sleep 240/re-probe, max TWO probes per hour then park):
+  `18:01Z = 33`, `19:00Z = 13`, `19:19Z = 13` — all `>= 8`, and this hour's two-probe
+  budget is consumed. **No dispatch and no further probe before 20:00Z.**
+- Prior lane-3 wall evidence (unchanged, banked honestly in `scratch/tmp/j7_A.log` and
+  `scratch/tmp/j7_rem.log`): leg-1 `ABORT HangError: hard wall-clock 1230s exceeded`;
+  leg-2 `HangError 1230s` then `HTTP 504 upstream_timeout` (Nvidia). Both are shared-gateway
+  stalls, not slide defects — the text validator and every PIL check stay healthy.
+- `visual_check` cannot be written PASS without a real `FINAL VERDICT: PASS|FAIL`
+  winner body from the vision model. **I am not certifying and not fabricating.**
+
+### RESUME plan (fresh probe window opens 20:00Z) — exact commands
+
+```bash
+cd "/worksp""aces/codespaces-blank/ai_llm_slides"
+export TMPDIR=/workspaces/codespaces-blank/ai_llm_slides/scratch/tmp
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py heartbeat 4 w004-fix-4-20261024
+
+# probe law — at most two probes in the hour, no dispatch while load >= 8:
+pgrep -c -f analyze_image.py      # 19:00Z=13, 19:19Z=13 ; re-probe in the 20:00Z window
+
+# when load < 8, dispatch the three legs (frozen payloads, protocol walls:
+# per-call --timeout 600 inside the gate wrapper 'timeout 1700'):
+bash scratch/tmp/j7_A.sh          # leg 1 — Template A full-slide on render_7.png
+bash scratch/tmp/j7_rem.sh        # leg 2a — zoomed Remember crop pair (221x127, matched scale)
+bash scratch/tmp/j7_let.sh        # leg 2b — zoomed Let-boxes crop pair (1407x275, matched scale)
+#   -> judge_attempt_7.txt / crop_7_remember_judge.txt / crop_7_let_boxes_judge.txt
+```
+
+Read ONLY the `.txt` transcripts (never the PNGs). A verdict requires a real winner body
+ending `FINAL VERDICT: PASS|FAIL` — an echoed payload is not evidence. PIL-adjudicate every
+FAIL/MINOR against both `unique_slides/slide_004.jpg` (960×540) and `render_7.png`
+(2001×1125) before any build change; reject phantom ink `<3 px`. Then, only if all legs are
+clean or PIL-adjudicated, run the certification sequence in LANE 3 above
+(`visual_check PASS` → `visual_transcript judge_attempt_7.txt` → `visual_attempts 7` →
+`gen_status passed` → `heartbeat` → `release` → re-read `get 4` and confirm
+`gen_status=passed`, `visual_check=PASS`, `worker_id=""`).

@@ -22,6 +22,7 @@ B, NAME + the region description -- plus "attempt K" -> "attempt 4" for safety.
 """
 import os
 import re
+import json
 import hashlib
 from PIL import Image
 
@@ -70,21 +71,14 @@ print("render_4.png %dx%d scale %.6f (md5-proven identical to render_3.png)"
 #  band1 = full band-1 strip (Train table, arrows, W box, Test table + mint y row)
 #  test  = the three Test tables' label column + mint y-rows
 REGIONS = [
-    ("wbox",  (497, 119, 632, 259),
-     "slide 017 W-box band 1: red italic W with underline, black '=' bars, the "
-     "parenthesised 3-value vector (0.1; 1.95; 0.03) and the blue ||W||^2 = 3.8 "
-     "norm line inside the red-bordered white box"),
-    ("band1", (84, 118, 880, 258),
-     "slide 017 band-1 strip: Train table (X1..X8 header, rows X1/X2/y, "
-     "alternating blue/red ink), the two blue arrows, the W box, and the Test "
-     "table (label column X1/X2/y + Test1..Test3, mint y row)"),
-    ("test",  (660, 88, 880, 258),
-     "slide 017 Test side: the blue Test label box, the Test1..Test3 header row "
-     "with alternating red/blue ink, the test table's 4 columns including the "
-     "black label column, and the mint-green y row (26.2 / 34.4 / 42.5)"),
+    ("wbox",  (497, 119, 632, 259)),
+    ("band1", (84, 118, 880, 258)),
+    ("test",  (660, 88, 880, 258)),
 ]
+DESCS = json.load(open(os.path.join(HERE, "region_descs_%s.json" % K), encoding="utf-8"))
 
-for name, (x0, y0, x1, y1), desc in REGIONS:
+for name, (x0, y0, x1, y1) in REGIONS:
+    desc = DESCS[name]
     # render crop from render_4 at scale S; original crop from the 960x540 frame,
     # LANCZOS-upscaled to the render crop's PIXEL SIZE (equal effective scale)
     rc = ri.crop((int(round(x0 * S)), int(round(y0 * S)), int(round(x1 * S)), int(round(y1 * S))))
@@ -108,3 +102,17 @@ for name, (x0, y0, x1, y1), desc in REGIONS:
 
 print("\nAUDIT: payload A sha256 %s" % hashlib.sha256(pA.encode()).hexdigest()[:16])
 print("ALL PAYLOAD FILES EMITTED FOR K=%s (payload-only convention, slide001 parity)" % K)
+
+# Cross-check: the banked shell scripts must use exactly these payload paths.
+SH = "\n".join(open(os.path.join(HERE, f), encoding="utf-8").read()
+               for f in ("judge_commands_kimi.sh", "judge_crops_kimi.sh"))
+# expand ${NAME} in the crop loop's references before matching
+SH_EXPANDED = "\n".join(sh.replace("${NAME}", n).replace("$NAME", n)
+                         for sh in SH.splitlines() for n in ("wbox", "band1", "test"))
+for need in ("judge_prompt_4.txt", "crop_4_wbox_judge_prompt_4.txt",
+             "crop_4_band1_judge_prompt_4.txt", "crop_4_test_judge_prompt_4.txt",
+             "render_4.png", "crop_4_wbox_render.png", "crop_4_wbox_orig.png",
+             "crop_4_band1_render.png", "crop_4_band1_orig.png",
+             "crop_4_test_render.png", "crop_4_test_orig.png"):
+    assert need in SH_EXPANDED, "dispatch script does not reference %s" % need
+print("CROSS-CHECK OK: banked dispatch scripts reference the emitted payload/crop files")

@@ -319,3 +319,70 @@ heartbeat 25 <id>; release 25 <id>; get 25   # confirm gen_status=passed AND wor
 ```
 
 Row is released for takeover; `last_error` carries this park record.
+
+---
+
+## K=4 judge wave — LANDED + adjudication (2026-10-24 18:58–20:00Z)
+
+Build judged: render_4.png (md5 f885623df4e5a85b83774a87f1d1817f), pptx 16:00:44.
+Runner: `run_4.sh` (detached, setsid) — leg A + 7 crop legs, analyzer
+`--timeout 600` inside `timeout 1700`, payloads byte-frozen from K=4 staging.
+
+Verdicts banked (file -> verdict):
+- judge_attempt_4.txt        -> FAIL (12 findings)
+- crop_4_title_judge.txt     -> PASS
+- crop_4_lbl_upper_judge.txt -> FAIL (yellow emphasis, line breaks, typeface)
+- crop_4_lbl_lower_judge.txt -> PASS
+- crop_4_tl_judge.txt        -> FAIL (missing axis tick numerals, no mesh)
+- crop_4_tr_judge.txt        -> pending (HungError 630s, analyzer retrying)
+- crop_4_bl_judge.txt / crop_4_br_judge.txt -> pending
+NOTE: K=4 = real coherent bodies (legs FAIL, not 504) -> visual_attempts 4.
+
+### PIL-first adjudication of leg A findings (measured, both images)
+
+CONFIRMED (real omissions — evidence):
+1. **TL third red reference line missing.** Direct measurement on
+   unique_slides/slide_025.jpg (960x540): TL box y118-285 wide-red rows
+   y168-169, y186-187, **y200-201** (0.83/0.89/0.91 row fractions). The build
+   draws only y168/y186 (generator docstring + slide_025.js shapes).
+   Script: scratch/meas_red_lines_orig_025.py
+2. **Caption yellow emphasis missing.** lbl_upper crop pair: ORIG 133/134
+   yellow px on the first word of both top boxes, RENDER 0. Script:
+   scratch/meas_captions_025.py, scratch/meas_boxes_025.py
+3. **Caption line breaks differ (all 4 boxes).** lbl_upper/lbl_lower box
+   segmentation: render = "Concave Function One" / "Maxima" (3 words line 1);
+   original = "Concave Function" / "One Maxima". Same in the other three.
+4. **BR figure overflows its frame.** br crop pair dark-ink gaps: ORIG top 8 /
+   bottom 10 / left 37 / right 22 px; RENDER ink touches all four borders.
+   Script: scratch/meas_blbr_025.py
+5. **BR has no interior red; original has 6099 red px inside its frame.**
+   Same script — topology/colour mismatch, not yet diagnosed (red spike?).
+6. **TL left-axis tick numerals missing.** Original TL left interior strip
+   (x92-115, y120-283) has two glyph-like dark bands y145-149 and y218-223,
+   absent in the render (same strip in render = white).
+7. **TL surface is a mesh in the original.** High-res ASCII of the TL crop
+   interior shows a cross-hatch lattice; the render is a smooth surface.
+   Same class for the other three figures (MATLAB 3-D plots).
+8. **BL "stray black hook" (m10) is PHANTOM** — no dark component exists at
+   the claimed crop coords (208-244,162-218): render dark comps are elsewhere.
+
+REFUTED by measurement:
+- **D2 "TL bottom tick labels missing"** — original TL bottom interior is
+  WHITE with a single axis line (ASCII zoom scratch/zoom_tl2_025.py); no
+  numerals exist to reproduce.
+- **m11 "TR tick clipped at right edge"**, **M8 "BL red pointers missing"**
+  (render draws the two red arrows), **B3 label swap** (code anchors
+  Global Maxima->local max, Global Minima->local min) — pending BL/TR/BR crop
+  verdicts, no build action.
+- M4/M6 "frames shifted/short, caption boxes displaced": the crop-pair boxes
+  register within ~2-6 px (measured box edges: lbl_upper orig x19-304/y16-100
+  vs render x21-305/y14-101) — framing difference, not content drift.
+
+### Fix set for K=5 (generator + builder)
+(a) TL: third red line y200 (slide-level shape in slide_025.js, matching the
+    two existing lines' geometry and stroke).
+(b) Captions: original line breaks + yellow first word ("Concave", "Convex"),
+    serif family per original.
+(c) BR: pull the surface inside the frame (white margins like the original).
+(d) TL/BL/BR: mesh wireframe + axis tick numerals per the original figures.
+(e) TR: red spike / z-tick set pending the crop verdict.

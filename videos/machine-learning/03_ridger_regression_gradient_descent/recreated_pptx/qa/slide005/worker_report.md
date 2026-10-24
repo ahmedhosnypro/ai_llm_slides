@@ -391,3 +391,44 @@ actually dispatched judge legs.
 `gen_status=building`, `visual_check=null`, `visual_attempts=0`,
 `visual_transcript=null`, `pptx_path=videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_005_recreated.pptx`,
 `worker_id=""`, and `last_error=null`. The lane was released cleanly at 2026-10-24T19:18Z.
+
+---
+
+# Lane section — `slide005-judge9-1024192313` (2026-10-24, PATIENT WAIT lane)
+
+## Defining instruction
+PATIENCE, not probing. A prior lane exhaustively verified the build and parked because the
+vision gateway was congested. This lane's mandate was to WAIT for a genuine window
+(`pgrep -c -f analyze_image.py` STRICTLY < 8, polled at most once per 10 min) and then fire
+BOTH legs completely, rather than burning probes on congestion.
+
+## Claim
+- `VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py claim 005 slide005-judge9-1024192313` → `claimed slide 5 by slide005-judge9-1024192313`.
+- Heartbeats at claim and every ~10 min per the worker liveness contract; release at lane end.
+
+## Non-vision verification re-run by this lane (nothing assumed; all reproduced)
+| check | method | result |
+|---|---|---|
+| bank / payloads present | Glob over `recreated_pptx/qa/slide005/**` | all attempt-9 artifacts present |
+| payload byte-fidelity | `dispatch_attempt9/verify_payloads.py` — round-trips all 5 `-p` payloads vs `shared_patterns/judge_protocol_03.md` | **PASS** — A 4115 B, B 1914 B ×4, exact |
+| BLOC1ER/BLOC2ER corruption | grep -noE 'BLOC[0-9]ER' over protocol + 5 payloads + dispatch scripts | **BLOC1ER/BLOC2ER = 0**; only clean `BLOCKER` survives (payload A ×4, crop ×2 each ×4, protocol ×6) |
+| `\bK\b` discipline | same grep + byte round-trip above | only `\bK\b`→9 substituted |
+| deliverable currency | md5sum `slide_005_recreated.pptx` | `58de0cb2c39c5ef004e60d9f000a48a9` (matches verified prior state) |
+| render currency | fresh `soffice --convert-to pdf` + `pdftoppm -png -r 150` from the live pptx, md5 vs bank | **IDENTICAL** — 0 px differ, md5 `01bcb967f29e502e99e80925aa320599`, 2001x1125 |
+| house chrome | `shared_patterns/house_chrome_check.py render_9.png 005` | **PASS** (panel x112-1882 y94-bottom, L/R/bottom strokes, top bare, badge (1824,152) d=68) |
+| pre-judge selfcheck | `measure_attempt9/selfcheck_005_final.py` | **PASS** (`OVERALL SELFCHECK attempt 8: PASS`), worst ink-band deviation 3.64 px vs TOL 8, 0 px house-frame overflow, all boxes contained |
+| crop-pair currency | `measure_attempt9/crop_currency_9.py` | **ALL 4 PAIRS CURRENT + SCALE-MATCHED** |
+| effective scale re-derivation | independent PIL re-derivation of `H_render/540` and per-pair `output_px/frame_px` on BOTH images | render 2001x1125 ⇒ `H_render/540 = 2.083333`, `W_render/960 = 2.084375`; per-pair render eff == orig eff per axis (2.0826..2.0865) ⇒ matched LANCZOS scale ~2.083x confirmed |
+
+Conclusion of the non-vision phase: the build needs NO rebuild; the deliverable, the render,
+the house chrome, the payloads and the crop pairs are all current and correct. The ONLY
+outstanding item is the vision gate itself.
+
+## DB state on entry
+`get 005` → `gen_status=building`, `pptx_path=videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_005_recreated.pptx`,
+`visual_check=null`, `visual_attempts=0`, `visual_transcript=null`,
+`worker_id=slide005-judge9-1024192313` (fresh claim). `last_error` carries the prior lane's
+honest-park note (congestion), which is accurate and was not overwritten.
+
+## Gateway observations (slow poll, one probe per ~10 min, no dispatch while >= 8)
+See the poll log below.

@@ -910,3 +910,25 @@ baseline (all four regions within 2–4 px, attempt-3 claims 1–7 refuted) stan
 Note on `judge_attempt_3.txt`: SUPERSEDED-build history (attempt-3, pre-fix). Never
 certify or fix against it; its findings are addressed by the attempt-10 build fixes
 recorded in this report's earlier section.
+
+## 2026-10-24 ~19:20Z — session-loss recovery re-anchor (lane w021-legs-20261024)
+
+Re-glob of the bank first (verdict counted only when the file contains a real `FINAL VERDICT:` body, not an echoed payload):
+- `crop_10_top_table_eq_judge.txt` — FINAL VERDICT: PASS (unchanged, 2653 B, 11:33:21Z)
+- `crop_10_top_chain_judge.txt`, `crop_10_mid_table_eq_judge.txt`, `crop_10_mid_chain_judge.txt`, `crop_10_bot_eq_table_judge.txt` — no verdict body: STILL DUE.
+
+Worker liveness (checked 19:18Z):
+- dispatcher PID 17905 (SID 17905, started 18:58:51Z, env WID=w021-legs-20261024,
+  SLUGS="mid_table_eq mid_chain bot_eq_table top_chain", POLL_MAX=21600, POLL_EVERY=240),
+  fd/1+fd/2 -> qa/slide021/legs2_fresh_resume.log, ALIVE (child: `sleep 240`).
+- certifier PID 21945 (SID 21945, started 19:02:58Z), fd -> qa/slide021/certify_watch.log, ALIVE.
+- DB row via `get 21`: gen_status=building, visual_check="" (honest NOT-CERTIFIED),
+  visual_attempts=10, worker_id=w021-legs-20261024, worker_heartbeat_at=19:22:02Z (live).
+
+Loop-order clarification (not a defect): the dispatcher's `for slug in top_chain mid_table_eq
+mid_chain bot_eq_table` list is hardcoded in the script; the env `SLUGS` only filters membership,
+so legs run in the hardcoded order (top_chain first). All four are in SLUGS, so all four run.
+Gate state at 19:18Z: pgrep=9 (>=8), so the dispatcher is in its per-slug gate-wait loop for
+top_chain (last log line 19:14:52Z, waited 960s). No vision call dispatched; no new probe spent.
+No verdict landed after 19:13Z as of this re-glob. Nothing rebuilt; no DB write made by this lane
+beyond the heartbeat the dispatcher already sends.
