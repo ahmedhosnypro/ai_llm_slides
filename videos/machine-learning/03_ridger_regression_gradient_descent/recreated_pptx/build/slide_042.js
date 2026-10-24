@@ -281,12 +281,14 @@ const W_IMG_X = 384;     // line-B equation image left edge
 const GREEN_L_X = 380;   // green ⇐ near the left of each line
 const GREEN_R_X = 736;   // green ⇐ at the far right of rows 1 and 4 only
 
-// per-box line bands measured on the frame (frame px), then shifted +8 because
-// LibreOffice centres 14pt ink ~8px ABOVE the pptxgenjs box top (anchor="ctr")
-// in a h=14 box. lineA carries the d(x_i) label + matrix + "= val" + ⇒ + action;
-// lineB carries the W equation.
-const BAND_A = [239, 289, 355, 434, 487];   // lineA band tops
-const BAND_B = [258, 302, 368, 420, 500];   // lineB band tops
+// per-box line bands derived from the frame's own ink spans.
+// LibreOffice renders a h=14 text box's ink ~6px ABOVE the pptxgenjs box top, so
+// a TEXT lineA top = frame lineA ink top + 6. An equation IMAGE places its ink at
+// the image top, so lineB's image top = frame lineB ink top directly.
+// box interiors (frame): 219..262 / 274..327 / 342..393 / 408..458 / 474..526 —
+// every derived band sits fully inside its box.
+const BAND_A = [240, 303, 369, 435, 501];   // lineA text tops (ink +6 above)
+const BAND_B = [246, 309, 375, 440, 507];   // lineB image tops (ink at top)
 
 ROWS.forEach((r, i) => {
   const a = BAND_A[i];   // lineA band top
@@ -301,7 +303,7 @@ ROWS.forEach((r, i) => {
   r.dMat.forEach((row, ri) => {
     row.forEach((cell, ci) => {
       if (cell === "") return;
-      txt(String(cell), MAT_X + ci * 24, a - 3 + ri * 11, 24, 11, {
+      txt(String(cell), MAT_X + ci * 24, a - 3 + ri * 7, 24, 11, {
         fontSize: 11, color: BLACK, align: "center", valign: "middle",
       });
     });

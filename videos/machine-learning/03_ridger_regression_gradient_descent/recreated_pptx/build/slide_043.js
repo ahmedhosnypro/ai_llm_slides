@@ -9,8 +9,10 @@
 // narrative and the frame disagree, the frame wins:
 //   - "Iteration 2" is a SOLID RED FILLED block with WHITE text (measured
 //     192,0,0) fill, white glyph ink) — not the analysis's "red border/black text".
-//   - The legend line is BLACK with only "Zero" green; C1/C2 in it are not
-//     coloured on the frame (measured red px = 1-2, blue = 2-3 per row).
+//   - The legend line colours "C1" red and "C2" blue (measured red px
+//     x239..253, blue x312..326); only "Zero" green, rest black.
+//   - The hand-pointer strokes right of the Iteration-2 box are a video-capture
+//     CURSOR (neutral gray 129,131,128 / 172,174,171) and are correctly omitted.
 //   - The class row of BOTH tables is drawn in COLOUR on this frame: C1 red
 //     (measured 77 red px at x1..x3), C2 blue (32 blue px at x4..x6).
 //   - The class-check matrix is ONE tall paren pair per Z1 column spanning
@@ -126,8 +128,12 @@ mImages.forEach((nm, i) => {
   });
 });
 
-// ---- legend line: black, "Zero" green only (measured) ----
-line("C1 positive, C2 negative, ", 12, 240, 110, "000000", { w: 155 });
+// ---- legend line: "C1" red, "Zero" green, rest black (measured on the frame:
+// red px x239..253, blue px x312..326, green px x395..423) ----
+line("C1", 12, 239, 110, RED, { w: 16 });
+line(" positive, ", 12, 256, 110, "000000", { w: 56 });
+line("C2", 12, 312, 110, BLUE, { w: 16 });
+line(" negative, ", 12, 329, 110, "000000", { w: 64 });
 line("Zero", 12, 396, 110, GREEN, { w: 30 });
 line(" is unaccepted", 12, 431, 110, "000000", { w: 110 });
 
