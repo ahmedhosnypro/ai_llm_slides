@@ -41,7 +41,7 @@ while :; do
   missing=""
   for s in $SLUGS; do
     f="$QADIR/crop_10_${s}_judge.txt"
-    if [ ! -f "$f" ] || ! grep -qE '^FINAL VERDICT: (PASS|FAIL)[[:space:]]*$' "$f" 2>/dev/null; then
+    if [ ! -f "$f" ] || ! grep -qE '^FINAL VERDICT: (PASS|FAIL)\b' "$f" 2>/dev/null; then
       missing="$missing $s"
     fi
   done

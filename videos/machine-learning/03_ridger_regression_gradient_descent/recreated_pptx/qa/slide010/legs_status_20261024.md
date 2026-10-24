@@ -190,3 +190,40 @@ New facts observed after the first bank of this note:
 (max two 240 s re-probes, then park), never beyond `--timeout 1200` /
 `timeout 1700`, no retry-loop. Then certify with `set` (no `record-visual`
 subcommand exists) and re-read `get 10` before release.
+
+---
+
+## ADDENDUM 2026-10-24 20:16 — PARK LIFTED, SLIDE 010 CERTIFIED
+(worker `w010-crops-20261024c`)
+
+**The park is over. All four Procedure B crop legs landed real PASS verdicts and
+slide 010 is certified in the DB.**
+
+| leg | verdict file | outcome |
+|---|---|---|
+| chart_left | `crop_3_chart_left_judge.txt` | **PASS** (7 MINOR, all PIL-adjudicated) |
+| cap_left | `crop_3_cap_left_judge.txt` | **PASS** (0 discrepancies) |
+| cap_right | `crop_3_cap_right_judge.txt` | **PASS** (3 MINOR, all PIL-adjudicated) |
+| chart_right | `crop_3_chart_right_judge.txt` | **PASS** (4 MINOR, all PIL-adjudicated) |
+
+- chart_right needed one re-probe: the first call 504'd at 19:15:59Z
+  (`upstream_timeout`, rc=1, no transcript); re-probe #1 of max 2 (after the
+  mandated 240 s sleep) landed PASS at 19:36:53Z.
+- Every MINOR was adjudicated PIL-first: either refuted with measured numbers
+  (wrong coordinate frames, inverted dash ordering, misread colour families,
+  JPEG desaturation/halo artifacts under ground rules (c)/(e)) or identified as
+  **inherited certified-parent geometry** (the chart_right fitted-line offset,
+  drawn from the certified `build/components/slide_009.js` — cascade law, not a
+  fix trigger). **0 genuine FAIL findings.**
+- **No build edit, no re-cut, no re-judge.** Deliverable and build md5s are
+  byte-identical to the bank (`slide_010_recreated.pptx` `9b4ee43a…`,
+  `slide_010.js` `3ddc44e2…`, `slide_009.js` `593997f3…`, `render_3.png`
+  `637426c5…`).
+- Final DB row 10: `gen_status=passed`, `visual_check=PASS`, `visual_attempts=3`
+  (the certified judge family's attempt index — same convention as slide 009's
+  `5` ↔ `judge_attempt_5.txt` / `crop_5_*` and slide 013's `6` ↔ `judge_attempt_6.txt`
+  / `crop_6_*`), `visual_transcript=…/qa/slide010/judge_attempt_3.txt`,
+  `worker_id=""` (released).
+- Full attempt history, per-finding adjudication numbers, the two dispatcher bugs
+  fixed this lane and the TMPDIR flock-pool finding are in
+  `worker_report.md` § "CROPS LANE — dated section 5".

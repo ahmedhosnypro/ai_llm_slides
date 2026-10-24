@@ -317,3 +317,198 @@ first attempt (which 504'd at the gateway, not at a wall). Do not retry-loop it.
 - `recreated_pptx/qa/slide010/dispatch_3crops_run.log`, `dispatch_3crops_run2.log`
 - Payloads re-verified by re-running `payload_gen_3.py` → md5-identical.
 - No banked evidence deleted or modified; deliverable and build byte-identical.
+
+---
+
+## CROPS LANE — dated section 5 (2026-10-24, worker `w010-crops-20261024c`)
+
+**Verdict: CERTIFIED. All four Procedure B zoomed crop legs landed REAL PASS
+verdicts; every MINOR finding was PIL-adjudicated and adjudicated away (refuted
+or covered by a capture/cascade ground rule). The build was NOT rebuilt and NOT
+re-cut — the frozen deliverable and its render were certified as they stood.**
+
+### 1. Final DB row (after `release`)
+
+| field | value |
+|---|---|
+| slide_id | 10 |
+| gen_status | `passed` |
+| visual_check | `PASS` |
+| visual_attempts | `3` |
+| visual_transcript | `videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide010/judge_attempt_3.txt` |
+| validation_verdict | `PASS_WITH_FIXES` |
+| worker_id | `""` (released) |
+| updated_at | `2026-10-24T20:16:28` |
+
+Row before this lane: `gen_status=building`, `visual_check=null`,
+`visual_attempts=0`, `visual_transcript=null`, `worker_id=w010-crops-20261024c`
+(claimed). DB writes used `set` with the `--worker` VALUE flag; `gen_status` was
+set LAST (after the other three fields), then `heartbeat`, then `release`, then
+`get` re-read.
+
+**`visual_attempts=3` rationale (deck convention, verified against sibling rows):**
+the value tracks the **attempt index of the certified judge family**, not a raw
+count of vision calls. Slide 009 uses `5` with `judge_attempt_5.txt` + `crop_5_*`;
+slide 013 uses `6` with `judge_attempt_6.txt` + `crop_6_*`; slide 012 uses `4`
+with its `crop_4_*` family. Slide 010's certified family is `judge_attempt_3.txt`
+(Leg A full-slide) + `crop_3_*` (Leg B) → `3`.
+
+### 2. Attempt history (honest, complete)
+
+| leg | attempts | outcome |
+|---|---|---|
+| Leg A — full slide | 1 | `judge_attempt_3.txt` → **PASS**, 0 discrepancies (banked by the child lane; not re-run) |
+| chart_left | 3 earlier + 1 here | earlier lane: 2× HTTP 504 `upstream_timeout` (Nvidia candidate `nva…hWGS`) + 1 sanctioned hard-wall retry (also 504). This lane: **PASS at 19:15:21Z** |
+| cap_left | 1 | **PASS at 19:18Z**, "Discrepancies found: None" |
+| cap_right | 1 | **PASS at 19:21Z** (3 MINOR findings, all adjudicated) |
+| chart_right | 2 | 504 at 19:15:59Z (upstream_timeout, rc=1, no transcript) → re-probe #1 of max 2 (after the mandated 240 s sleep) → **PASS at 19:36:53Z** |
+
+Dispatcher: `qa/slide010/dispatch_crops_w010c.sh` (PID 31171, finished 19:22:00),
+log `qa/slide010/dispatch_crops_w010c.log`; re-probe log
+`qa/slide010/reprobe_chart_right_w010c.out`.
+
+### 3. Crop verdict certificates (all REAL bodies, all PASS)
+
+| file | size | verdict | findings |
+|---|---|---|---|
+| `crop_3_chart_left_judge.txt` | 5479 B | `### FINAL VERDICT: **PASS**` | 7 MINOR |
+| `crop_3_cap_left_judge.txt` | 1389 B | `FINAL VERDICT: PASS` | 0 |
+| `crop_3_cap_right_judge.txt` | 3578 B | `## FINAL VERDICT: PASS` | 3 MINOR |
+| `crop_3_chart_right_judge.txt` | 4706 B | `**FINAL VERDICT: PASS**` | 4 MINOR |
+
+Re-verified after certification: all four contain a real `FINAL VERDICT:` line and
+**zero** `GROUND RULES` occurrences (i.e. real verdict bodies, not prompt echoes).
+
+### 4. PIL adjudication (PIL-first) — every MINOR resolved, no build change
+
+Authoritative scripts: `scratch/tmp/pil_adj_010_robust.py` (least-squares line
+fits), `scratch/tmp/pil_adj_010_decisive.py` (hue/coordinate probes),
+`scratch/tmp/pil_adj_010_final.py` (cap_right geometry, arrowhead sizes, dot
+deltas). `pil_adjudicate_010_all.py` and `pil_adjudicate_chart_left_010.py` are
+**superseded** (their RGB-target predicates missed the actual stroke colours
+navy `(0,0,128)`, orange `(255,165,0)`, red `(192,0,0)`, cream `(251,252,236)`)
+and their numbers are not cited here.
+
+**chart_left (7 MINOR)**
+- *gray stylus on the frame* — render has **0** gray-ink rows (≥4 px, x340..520,
+  y395..460); original has **51** rows forming a distinct diagonal tail. Direct
+  comparison: `unique_slides/slide_009.jpg` has **no** gray cluster at the
+  analogous frame spot `(281,306)` while `slide_010.jpg` does → the shape exists
+  only in slide 010's lecture frame (lecturer's on-screen pointer / capture
+  artifact). **REFUTED** — correctly omitted per ground rule (c) (Template A).
+- *blue line weight* — render blue px/col median **9** crop px (≈4.3 frame px) vs
+  original **16** (≈7.7 frame px); the build draws `line: {color: BLUE, width: 2}`
+  = 2 pt = 2.08 frame px. The original's apparent thickness is JPEG/upsample
+  bleed → ground rule (e). Medium artifact, not content.
+- *rose dash hue* — the build uses the SAME pale `ECBAC4` for both dashes
+  (`DELTA.LEFT.pairs` `hy: 289.5` upper, `hy: 300.5` lower); on the original frame
+  the darker dash is the **upper** one (rows 290–291 mean `(223.8,199.2,204.6)`)
+  while the lower rows 298–301 read `(239.8,211.9,218.2)`. The judge inverted the
+  two lines. **REFUTED** — the recreation matches the frame's actual dash hues.
+- *red arrowheads bolder* — render small red components carry clean saturated
+  means in the `(192,0,0)` family; the originals are duller (`≈(212–222,110–128,
+  66–76)`) = JPEG desaturation (rule e). Positions and sizes agree.
+- *sub-pixel offsets* — all 12 orange-point centroid deltas |dx|,|dy| = 0.40–1.72
+  crop px (0.17–0.81 frame px); below threshold. One pair sits at dy = 3.55 crop
+  px (1.7 frame px) — still under the MINOR bar.
+- *panel tone* — render near-white `(242.19,241.96,241.81)` vs original
+  `(242.23,242.70,242.48)`: the original is **-1.5 green** (slightly blue-leaning),
+  not greenish as claimed, and the whole difference is ≤0.5/255. **REFUTED**.
+
+**chart_right (4 MINOR)**
+- *"blue line 4–5 px too high"* — least-squares fit over x200–600: render slope
+  −0.47569 / intercept 668.50 vs original slope −0.47935 / intercept 675.47 →
+  dy = **−6.24…−4.78 crop px (−2.99…−2.29 frame px)**. A ~2.3–3.0 frame-px
+  vertical offset does exist, consistent in sign with the judge, but it is
+  **inherited geometry**: `slide_010.js` stage 3 draws the parent's fitted lines
+  via `base.renderBase(pptx, slide, {only:{fittedLines:true, points:true,
+  captions:true}})` from the certified `build/components/slide_009.js` (row 9
+  `gen_status=passed`, `visual_check=PASS`). Per the cascade law, inherited/cascade
+  zones are adjudication inputs, never fix triggers. Severity stays MINOR; no
+  build edit.
+- *"missing filled green node at (477,307)"* — the judge coordinate decodes as if
+  the image were downscaled ~0.796× (its `(477,307)` → actual `(601,384)`); the
+  cited pixel is **289 pure-white px in BOTH crops**. At the TRUE intersection
+  (crop x≈601–602, y≈384–385) both images show the green horizontal dash row
+  with the blue stroke crossing; the original carries a 178 px JPEG-soft green
+  vertical blob, the render the same vertical in 18 px dash segments. **No
+  distinct filled green node exists in either image** → **REFUTED**.
+- *"dot 2–3 px left of the vertical"* — render bright-green dot centroid
+  cx = 600.4 vs green vertical dash column x = 601 → offset **−0.6 crop px
+  (−0.31 frame px)**; original +0.7. **REFUTED** (sub-pixel; wrong coordinate frame).
+- *"points more yellow/gold"* — render modal colour is exactly `(255,165,0)` (the
+  build's ORANGE) on all 12 points; original pooled mean `(221.9,119.2,47.3)` with
+  JPEG-mottled modes (`≈(212,112,19)…(231,119,31)`) = capture darkening /
+  desaturation of the same orange family (rule e). **REFUTED**.
+- Point inventory (strict PIL): render 12 components, original 11 (the known
+  JPEG-soft 12th right dot); the 11 matched frame-px centroids agree to
+  ≈0.5–1.3 px.
+
+**cap_right (3 MINOR)**
+- *vertical padding* — line-2 lowest ink y = 88 vs bottom rose rule y = 110 →
+  gap **22 crop px (10.55 frame px)**; original: ink y = 90, rule y = 111 → gap
+  **21 crop px (10.07 frame px)**. Difference 0.48 frame px → **REFUTED**.
+- *line-2 width* — render line-2 ink x extent 154..582 = **429 crop px**
+  (205.8 frame px); original 157..583 = **427 crop px** (204.9 frame px).
+  Difference 2 crop px → **REFUTED** (the judge's own x-ranges were misread).
+- *"Generalized" red saturation* — render red is pure `(192,0,0)` = the build's
+  `C00000`; the original is duller = JPEG desaturation (rule e). **REFUTED**.
+
+**cap_left** — the judge found **zero discrepancies**; PIL independently confirms
+both caption lines render in the build's colours (cream fill `251,252,236`,
+ink `51,51,51`, red `192,0,0`). Clean.
+
+Net adjudication result: **0 genuine FAIL findings → no build edit, no re-cut,
+no re-judge.**
+
+### 5. Bank untouched (re-verified after certification)
+
+| file | md5 |
+|---|---|
+| `recreated_pptx/slide_010_recreated.pptx` | `9b4ee43ad50f90f09df108c1645c4d26` |
+| `recreated_pptx/build/slide_010.js` | `3ddc44e236ca5a8149925f9aa6997147` |
+| `recreated_pptx/build/components/slide_009.js` | `593997f32c59ff00e92982e1caab7257` |
+| `recreated_pptx/qa/slide010/render_3.png` | `637426c5f7b87d32b689da818c34ce34` |
+
+Identical to the bank: **the build was not rebuilt and the render was not
+re-rendered.** `crop_3_chart_left_render.png` remains pixel-exact
+`render_3.crop((181,213,986,1000))`.
+
+### 6. Two dispatcher bugs found and fixed in this lane (process notes)
+
+1. **Call-site name mismatch** — the dispatcher invoked the analyzer helper as
+   `judge_crop`; the actual entry point is `run_leg`. Fixed before firing.
+2. **Verdict-detector regex too strict** — the detector matched only `^FINAL
+   VERDICT:` and therefore reported `crop_3_chart_left_judge.txt` and
+   `crop_3_cap_right_judge.txt` as "NOT a real verdict body" (their verdict lines
+   are `### FINAL VERDICT: **PASS**` and `## FINAL VERDICT: PASS`). Both ARE real
+   PASS bodies — confirmed by re-reading the transcripts (0 `GROUND RULES`
+   occurrences). The corrected detector is
+   `grep -qE 'FINAL VERDICT: *\** *(PASS|FAIL)'` **and**
+   `! grep -q "GROUND RULES"`.
+3. **TMPDIR / flock-pool finding** — the banked `dispatch_3crops.sh` exported a
+   **video-scoped** `scratch/tmp` as `TMPDIR`; that directory holds only 2 lock
+   files, so the fleet's 16-slot gate (project-root `scratch/tmp` lock pool) was
+   bypassed entirely. This lane's dispatcher exports the **project-root**
+   `TMPDIR`, so its calls queue behind the real fleet gate.
+
+### 7. Park state
+
+**No park. All legs resolved and certified.** The earlier park
+(`legs_status_20261024.md`, sections 1–8) is lifted: 4/4 crop legs PASS,
+0 findings outstanding, DB row certified and released.
+
+### 8. Evidence touched this lane (additive only)
+
+- `recreated_pptx/qa/slide010/dispatch_crops_w010c.sh`, `dispatch_crops_w010c.log`,
+  `dispatch_crops_w010c.out`
+- `recreated_pptx/qa/slide010/reprobe_chart_right_w010c.sh`,
+  `reprobe_chart_right_w010c.out`
+- `recreated_pptx/qa/slide010/crop_3_{chart_left,cap_left,cap_right,chart_right}_judge.txt`
+  (the four certificates)
+- `scratch/tmp/pil_adj_010_robust.py`, `pil_adj_010_decisive.py`,
+  `pil_adj_010_final.py` (superseded: `pil_adjudicate_010_all.py`,
+  `pil_adjudicate_chart_left_010.py`)
+- `recreated_pptx/qa/slide010/worker_report.md` (this section),
+  `legs_status_20261024.md` (park-lift note)
+- No banked evidence deleted or modified; deliverable and build byte-identical.

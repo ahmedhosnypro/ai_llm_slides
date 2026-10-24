@@ -190,3 +190,119 @@ VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_
 
 No findings other than the two above were raised by either leg, and both are fixed and
 verified by PIL. The build is otherwise complete and leg A already passes it end-to-end.
+
+---
+
+# Attempt 12 — judge worker `w032-judge2-20261024` (2026-10-24, ~18:00–21:00 UTC)
+
+## Claim / lease
+
+- Took over slide 32 from the stale claim `w032-fresh-20261024` (55 min stale) with
+  `--force`; worker id for this run: `w032-judge2-20261024`.
+- DB row 32 on takeover: `gen_status=building`, `visual_check=null`, `visual_attempts=1`,
+  `visual_transcript=null`, `worker_id=w032-judge2-20261024`,
+  `pptx_path=videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_032_recreated.pptx`,
+  `build_script=recreated_pptx/build/slide_032.js`.
+- Every `15_progress.py` call in this run used
+  `VIDEO=machine-learning/03_ridger_regression_gradient_descent` so no write could land in
+  the closed ml-intro DB.
+
+## Deliverable currency (build/fix leg)
+
+- Rebuilt from `recreated_pptx/build/slide_032.js` into the single plain-named deliverable
+  `recreated_pptx/slide_032_recreated.pptx` (md5 `6c544c9299dd421e85201f3f0a5ae074`,
+  mtime 2026-10-24 18:05) with a private LibreOffice profile under `scratch/tmp/lo_s032b`.
+- Rendered to `scratch/tmp/s032b/render-1.png` (2001x1125).
+- **Render md5 `6f79115004f067f5d036a78d6e961345`** — byte-identical to `qa/slide032/render_10.png`
+  and `qa/slide032/render_11.png`. The deliverable is CURRENT; no rebuild was pending.
+- Because leg A's transcript (`judge_attempt_10.txt`, FINAL VERDICT: PASS) was produced on
+  `render_10.png`, and that file is byte-identical to the deliverable's render, leg A is
+  provably about the exact pixels now being delivered.
+- House chrome re-checked on the new render: `house_chrome_check_12.txt` =
+  `HOUSE CHROME CHECK: PASS` (panel x 112-1882, y 94-bottom; strokes L/R/bottom present,
+  top bare; badge center (1824,152) d=68).
+- Build content: `recreated_pptx/build/slide_032.js:206` emits
+  `gLabel("(?, ?)", 724, 140, 30, 13, "left");`.
+
+## Adjudication of the `crop_9_graph` FAIL — the governing question
+
+Question: what does the ORIGINAL frame actually print at the right-hand end of the
+black y=10 chord (frame x727..756, y136..154)?
+
+**Answer: the original prints "(?, ?)" — a deliberately blank to-be-filled coordinate.**
+The render now prints "(?, ?)". The `crop_9_graph` FAIL is SUPERSEDED by a real fix,
+not merely refuted. Banked record: `adjudicate_24_verdict.txt`.
+
+### Evidence 1 — the vision judge read the ORIGINAL as "(?, ?)" on both legs
+
+- `crop_9_graph_judge.txt` line 5 (the FAILING crop leg, run against `render_9`):
+  "IMG1 (recreation) prints '(7, 7)' by the right-hand black dot; IMG2 (original) prints
+  '(?, ?)' at the same spot. The original is left as a blank/to-be-filled coordinate;
+  the recreation replaces it." The judge also noted that for f(x)=(x-5)^2+1, f(7)=5, so
+  "(7, 7)" was geometrically impossible in any case.
+- `judge_attempt_10.txt` line 28 (the full-slide PASS leg, run on `render_10`):
+  "horizontal gradient-descent segment with labeled '(?, ?)'" — the same judge read BOTH
+  images as "(?, ?)" and passed the full slide.
+
+### Evidence 2 — PIL ink measurements (original vs the two builds)
+
+`adjudicate_23_ab.py` / `adjudicate_23_ab.txt` (label bbox x727..756, y136..154, black
+chord and dot excluded):
+
+| threshold | original | render_9 "(7, 7)" | render_10 "(?, ?)" |
+|---|---|---|---|
+| thr170 | 20w x 7h | 39w x 18h (render px) | 36w x 18h |
+| thr190 | 20w x 9h | 39w x 18h | 37w x 18h |
+| thr210 | 22w x 10h | 39w x 18h | 37w x 18h |
+
+- IoU(original ink vs render ink): 0.1146 (thr210 vs render_9) and 0.1026 (thr210 vs
+  render_10) — low for both, because the original is faint handwritten ink while the
+  render is typed serif. This measure alone does not settle the reading; it is recorded
+  rather than hidden.
+- `render_9` vs `render_10` diff bbox = render px (1516, 298, 1553, 318) = frame
+  x 727.3..744.6, y 143.0..152.2 — the ONLY pixel difference between the two builds is
+  this label, so the A/B is isolated and valid.
+- Original glyph structure (`adjudicate_13_label.txt`, `adjudicate_15_components.txt`,
+  thr<190): left cluster x729..737 (9w x 8h) has NO full-width top bar and NO
+  descending-left diagonal, so it is NOT a digit 7; right cluster x742..748 (7w x 9h) has
+  a wide left stem at rows 143-148 and a tail curving right at rows 149-151, also NOT a
+  7. The two clusters differ in width (9 then 7) and span only 20 frame px with a 4px gap
+  at x738..741 — consistent with the small glyphs of a "(?, ?)" placeholder and
+  inconsistent with two equal-width dense digits.
+- At thr<170 the same area dissolves into fragments of 1-4 px (`adjudicate_15_components.txt`:
+  blobs x729 (1x4), x732..735 (4x4), x743..745 (3x5), x747..748 (2x6)) — faint handwritten
+  ink, not the dense typed digits that "(7, 7)" would leave.
+- The gray-blue stroke at x722..727 y130..161 is the CURVE (RGB ~150,164,173 —
+  `adjudicate_17_runs.py`), not text.
+- Control: the same frame's genuine "(2, 10)" label leaves the ink density a real
+  coordinate pair leaves behind; the right label does not.
+
+No phantom ink was removed, nothing was deleted, and the failing build is retained as
+evidence (`render_9.png`, `crop_9_*`).
+
+## Attempt 12 staging (banked, ready to dispatch)
+
+- `render_12.png` = `scratch/tmp/s032b/render-1.png` (md5 `6f79115004f067f5d036a78d6e961345`).
+- `make_crops_12.py` / `make_crops_12.txt` re-cut all five Procedure B pairs from
+  `render_12.png` at the same slide-space bboxes with matched effective scale
+  (output_px/frame_px per axis ~2.081-2.090 on both sides). All ten `crop_12_*` files are
+  BYTE-IDENTICAL to their `crop_11_*` counterparts — the pixels never changed; only the
+  prompt text did.
+- `make_prompts_12.py` / `make_prompts_12.txt` regenerate the frozen-template commands.
+  Payloads are extracted byte-for-byte from `shared_patterns/judge_protocol_03.md`
+  (Template A = lines 62..71, Template B = lines 108..117); the only payload substitution
+  is "slide NNN" -> "slide 032" in Template B. Walls: `scripts/16_vision_gate.sh` with an
+  outer `timeout 1700`, `--thinking high --max-tokens 65536`, `--timeout 1200`,
+  `--rounds 1 --tries 1`.
+- The graph region's `--capture` description is now NEUTRAL: it describes the plot box and
+  its elements without asserting any label text (the attempt-11 text still asserted the
+  refuted "(7, 7)"), so the crop judge is not cued.
+- `verify_prompts_12.py` / `verify_prompts_12.txt`: `TOTAL FAILURES: 0` — all six payloads
+  byte-exact against the protocol, no "(7, 7)" string anywhere in the attempt-12 prompts.
+
+## Vision lane state (parked under the gate law)
+
+- Probe 1 at 20:08 UTC: `pgrep -c -f analyze_image.py` = 9 (>= 8) -> heartbeat sent.
+- Probe 2 at 20:12 UTC (after sleep 240): 13 (>= 8) -> two probes used for this hour, so
+  dispatch is PARKED honestly until the next hourly probe window rather than adding load
+  to a congested gateway (previous notes in this file record 504 upstream timeouts).

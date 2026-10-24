@@ -271,61 +271,125 @@ s.addText("Check Classes", {
 });
 
 // ================= 8. THREE DECISION ROWS =================
-// white cards x276..853 at y141 / y207 / y273, 2pt grey border
-[141, 207, 273].forEach(function (y) {
-  s.addShape(pptx.ShapeType.rect, {
-    x: fx(276), y: fx(y), w: fx(853 - 276), h: fx(56),
-    fill: { color: WHITE }, line: { color: CARD_BORDER, width: 2 },
-  });
-});
-
-// d(Zn) blue labels + green weight-vector brackets (constant across the 3 rows)
-const DEC_BASE = [141, 207, 273];
-DEC_BASE.forEach(function (base, idx) {
-  const sub = String(idx + 1);
-  // blue d(Zn)
-  s.addText([
-    { text: "d", options: { fontSize: 12, color: BLUE, italic: true } },
-    { text: "(Z", options: { fontSize: 12, color: BLUE, italic: true } },
-    { text: sub, options: { fontSize: 8, color: BLUE, italic: true, subscript: true } },
-    { text: ")", options: { fontSize: 12, color: BLUE, italic: true } },
-  ], {
-    x: fx(333), y: fx(base + 8), w: fx(44), h: fx(14),
-    fontFace: FONT, align: "left", valign: "middle", margin: 0,
-  });
-  // green bracket bars spanning the 3 interior lines (measured x383..386 / x402..406, y145..191)
-  bracketColumn(384, 403, base + 4, base + 50, ["5", "-1", "-1"],
-    [base + 12, base + 26, base + 41], { color: GREEN, strokeW: 2 });
-});
-
-// chain texts, per row: "= <val>", "<condition>", "<class tag>"
-const CHAINS = [
+// White cards, border cores measured at x274 / x853, top y140 / y206 / y272,
+// bottom y197 / y263 / y329.
+//
+// Row content, measured from unique_slides/slide_051.jpg (PIL, ink < 200):
+//   black italic "d(Zn)"   x283..312        (the n is a subscript)
+//   black "="              x319..324
+//   BLUE augmented test vector, three glyphs at x335 / x351 / x369
+//                          row1 "1 0 0", row2 "1 7 6", row3 "1 3 2"
+//                          (5*1-1*7-1*6 = -8 and 5*1-1*3-1*2 = 0 fix the reading)
+//   GREEN weight vector [5; -1; -1] in tall brackets, bars x381..382 / x404..405
+//   black "="              x412..417, then the value at x423
+//   black "=>" arrow       x500..509 (x510..519 on row 2)
+//   condition text, then the colour-coded class tag
+const DEC_ROWS = [
   {
-    val: "= 5", valX: 421, valColor: BLACK, cond: "Positive > 0",
-    condX: 522, condColor: BLACK, cls: "Class I", clsX: 655, clsColor: RED,
+    z: ["1", "0", "0"], zX: [334, 350, 369], zBase: 157,
+    mainBase: 171, vecBase: [157, 173, 189],
+    val: "5", arrow: [500, 165],
+    cond: "Positive > 0", condX: 522, cls: "Class I", clsX: 655, clsColor: RED,
   },
   {
-    val: "= -8", valX: 421, valColor: BLACK, cond: "Negative < 0",
-    condX: 532, condColor: BLACK, cls: "Class II", clsX: 669, clsColor: BLUE,
+    z: ["1", "7", "6"], zX: [334, 351, 369], zBase: 227,
+    mainBase: 240, vecBase: [227, 242, 258],
+    val: "-8", arrow: [510, 234],
+    cond: "Negative < 0", condX: 531, cls: "Class II", clsX: 668, clsColor: BLUE,
   },
   {
-    val: "= 0", valX: 420, valColor: BLACK, cond: "Not > 0 , Not < 0",
-    condX: 512, condColor: BLACK, cls: "Undefined Class", clsX: 653, clsColor: BLUE,
+    z: ["1", "3", "2"], zX: [334, 351, 369], zBase: 293,
+    mainBase: 306, vecBase: [292, 308, 324],
+    val: "0", arrow: [500, 300],
+    cond: "Not > 0 , Not < 0", condX: 512, cls: "Undefined Class", clsX: 652,
+    clsColor: BLUE,
   },
 ];
-DEC_BASE.forEach(function (base, i) {
-  const c = CHAINS[i];
-  s.addText(c.val, {
-    x: fx(c.valX), y: fx(base + 20), w: fx(34), h: fx(14),
-    fontFace: FONT, fontSize: 11, color: c.valColor, align: "left", valign: "middle", margin: 0,
+
+// text box tops for a 12pt Arial baseline, h=14, valign middle
+const TEXT_TOP = (baseline) => baseline - 11;
+// text box top for the 13pt italic label, h=16
+const LABEL_TOP = (baseline) => baseline - 12.5;
+
+// the small double-line right arrow measured at x500..509 / y165..170
+function implyArrow(x, y) {
+  s.addShape(pptx.ShapeType.line, {
+    x: fx(x), y: fx(y + 1.5), w: fx(5), h: 0,
+    line: { color: BLACK, width: 1 },
   });
-  s.addText(c.cond, {
-    x: fx(c.condX), y: fx(base + 20), w: fx(80), h: fx(14),
-    fontFace: FONT, fontSize: 11, color: c.condColor, align: "left", valign: "middle", margin: 0,
+  s.addShape(pptx.ShapeType.line, {
+    x: fx(x), y: fx(y + 3.5), w: fx(5), h: 0,
+    line: { color: BLACK, width: 1 },
   });
-  s.addText(c.cls, {
-    x: fx(c.clsX), y: fx(base + 20), w: fx(70), h: fx(14),
-    fontFace: FONT, fontSize: 11, color: c.clsColor, bold: true, align: "left", valign: "middle", margin: 0,
+  s.addShape(pptx.ShapeType.line, {
+    x: fx(x + 5), y: fx(y), w: fx(4), h: fx(2),
+    line: { color: BLACK, width: 1 },
+  });
+  s.addShape(pptx.ShapeType.line, {
+    x: fx(x + 5), y: fx(y + 2), w: fx(4), h: fx(2), flipV: true,
+    line: { color: BLACK, width: 1 },
+  });
+}
+
+DEC_ROWS.forEach(function (row, idx) {
+  const sub = String(idx + 1);
+
+  // white card
+  s.addShape(pptx.ShapeType.rect, {
+    x: fx(274), y: fx(140 + idx * 66), w: fx(853 - 274), h: fx(57),
+    fill: { color: WHITE }, line: { color: CARD_BORDER, width: 2 },
+  });
+
+  // black italic d(Zn) label
+  s.addText([
+    { text: "d", options: { fontSize: 13, color: BLACK, italic: true } },
+    { text: "(Z", options: { fontSize: 13, color: BLACK, italic: true } },
+    { text: sub, options: { fontSize: 9, color: BLACK, italic: true, subscript: true } },
+    { text: ")", options: { fontSize: 13, color: BLACK, italic: true } },
+  ], {
+    x: fx(282), y: fx(LABEL_TOP(row.mainBase)), w: fx(36), h: fx(16),
+    fontFace: FONT, align: "left", valign: "middle", margin: 0,
+  });
+
+  // black "=" between the label and the test vector
+  s.addText("=", {
+    x: fx(318), y: fx(TEXT_TOP(row.mainBase)), w: fx(12), h: fx(14),
+    fontFace: FONT, fontSize: 12, color: BLACK, align: "left", valign: "middle", margin: 0,
+  });
+
+  // blue augmented test vector, three separately spaced glyphs
+  row.z.forEach(function (d, i) {
+    s.addText(d, {
+      x: fx(row.zX[i]), y: fx(TEXT_TOP(row.zBase)), w: fx(10), h: fx(14),
+      fontFace: FONT, fontSize: 12, color: BLUE, align: "left", valign: "middle", margin: 0,
+    });
+  });
+
+  // green weight-vector bracket [5; -1; -1]
+  bracketColumn(382, 405, row.vecBase[0] - 8, row.vecBase[2] + 8, ["5", "-1", "-1"],
+    row.vecBase.map(function (b) { return b - 4; }), { color: GREEN, strokeW: 2, fontSize: 12 });
+
+  // black "=" and the result value
+  s.addText("=", {
+    x: fx(411), y: fx(TEXT_TOP(row.mainBase)), w: fx(12), h: fx(14),
+    fontFace: FONT, fontSize: 12, color: BLACK, align: "left", valign: "middle", margin: 0,
+  });
+  s.addText(row.val, {
+    x: fx(422), y: fx(TEXT_TOP(row.mainBase)), w: fx(34), h: fx(14),
+    fontFace: FONT, fontSize: 12, color: BLACK, align: "left", valign: "middle", margin: 0,
+  });
+
+  implyArrow(row.arrow[0], row.arrow[1]);
+
+  // condition text and the class tag
+  s.addText(row.cond, {
+    x: fx(row.condX), y: fx(TEXT_TOP(row.mainBase)), w: fx(100), h: fx(14),
+    fontFace: FONT, fontSize: 12, color: BLACK, align: "left", valign: "middle", margin: 0,
+  });
+  s.addText(row.cls, {
+    x: fx(row.clsX), y: fx(TEXT_TOP(row.mainBase)), w: fx(100), h: fx(14),
+    fontFace: FONT, fontSize: 12, color: row.clsColor, bold: true,
+    align: "left", valign: "middle", margin: 0,
   });
 });
 
