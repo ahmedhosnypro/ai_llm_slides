@@ -233,14 +233,13 @@ slide.addShape(pptx.ShapeType.rect, {
 });
 
 // Four C00000 1pt border lines (frame-measured box x573..809, y66..267)
+// NOTE: the BOTTOM line is re-drawn AFTER the annotation box below, because the
+// frame shows it painted on top of the annotation box's white fill (frame row
+// y265-266 is a full dark span across x572..811, i.e. the border survives the
+// overlap in the original).
 const gBx = 573, gBy = 66, gBw = 809 - 573, gBh = 267 - 66;
-const lw = 0.5; // corner overdraw compensation in px
 slide.addShape(pptx.ShapeType.line, { // top
   x: px(gBx), y: px(gBy), w: px(gBw), h: 0,
-  line: { color: "C00000", width: 1 },
-});
-slide.addShape(pptx.ShapeType.line, { // bottom
-  x: px(gBx), y: px(gBy + gBh), w: px(gBw), h: 0,
   line: { color: "C00000", width: 1 },
 });
 slide.addShape(pptx.ShapeType.line, { // left
@@ -439,27 +438,44 @@ slide.addShape(pptx.ShapeType.line, { // right, red
   line: { color: "FF0000", width: 1.5 },
 });
 
-// Line 1: "X is in between 4.8 and 5.1" (5.1 in red bold) — MEASURED y 249..261
-slide.addText([
-  { text: "X is in between 4.8 and ", options: { fontSize: 13, color: "000000", fontFace: A, bold: false } },
-  { text: "5.1", options: { fontSize: 13, color: "C00000", fontFace: A, bold: true } },
-], {
-  x: aBoxX + px(10), y: px(247), w: aBoxW - px(20), h: px(16),
+// Line 1: "X is in between 4.8 and 5.1" — MEASURED in the frame at x 249..560,
+// y 248..262; the "5.1" is red bold. Drawn as ONE box per segment (never one
+// multi-run addText — pptxgenjs splits runs into separate <a:p> paragraphs and
+// LibreOffice then drops the last one, see the TITLE comment above).
+const aLine1Y = px(247);
+slide.addText("X is in between 4.8 and", {
+  x: px(250), y: aLine1Y, w: px(300), h: px(18),
   align: "left", valign: "middle", margin: 0,
+  fontSize: 13, color: "000000", fontFace: A,
+});
+slide.addText("5.1", {
+  x: px(541), y: aLine1Y, w: px(40), h: px(18),
+  align: "left", valign: "middle", margin: 0,
+  fontSize: 13, color: "C00000", fontFace: A, bold: true,
 });
 
-// Line 2: "f(x) is in between 1.04 and 1.01" — MEASURED y 266..283
+// Line 2: "f(x) is in between 1.04 and 1.01" — MEASURED y 266..286
 slide.addText("f(x) is in between 1.04 and 1.01", {
-  x: aBoxX + px(10), y: px(264), w: aBoxW - px(20), h: px(16),
-  align: "left", valign: "middle", fontSize: 13, color: "000000", fontFace: A, margin: 0,
+  x: px(250), y: px(266), w: px(320), h: px(18),
+  align: "left", valign: "middle", margin: 0,
+  fontSize: 13, color: "000000", fontFace: A,
 });
 
-// "(5,1)" label — MEASURED in the frame at x 497..535, y 249..261: left of the
-// plot box, vertically centered on the vertex (frame y 253). MUST be drawn after
-// the annotation box (its white fill covers this footprint) and after the plot.
+// "(5,1)" label — MEASURED in the frame at x 497..535, y 249..261: the glyphs
+// are BLACK/dark, not green (the green "point" is a separate small dot at the
+// vertex). MUST be drawn after the annotation box (its white fill covers this
+// footprint) and after the plot.
 slide.addText("(5,1)", {
   x: px(497), y: px(249), w: px(38), h: px(14),
-  align: "left", valign: "top", fontSize: 9, color: "008000", fontFace: A, margin: 0,
+  align: "left", valign: "top", fontSize: 9, color: "000000", fontFace: A, margin: 0,
+});
+
+// Plot box BOTTOM border — re-drawn here so it sits on top of the annotation
+// box's white fill, matching the frame (a full dark span at y265-266 across
+// x572..811 survives the overlap in unique_slides/slide_031.jpg).
+slide.addShape(pptx.ShapeType.line, { // bottom
+  x: px(gBx), y: px(gBy + gBh), w: px(gBw), h: 0,
+  line: { color: "C00000", width: 1 },
 });
 
 // x-axis tick labels — MEASURED band frame y 269..283 under the plot box, which
