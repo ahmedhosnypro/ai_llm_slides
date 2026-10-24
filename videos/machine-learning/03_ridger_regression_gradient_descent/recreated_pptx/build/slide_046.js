@@ -1,313 +1,192 @@
 // Build slide 046 — "Perceptron Algorithm: Iteration 4 — Stop Iterations"
 // Deck: videos/machine-learning/03_ridger_regression_gradient_descent
-// Spec: analysis/slide_046_final.json + slide_046_raw.json
-// Frame: unique_slides/slide_046.jpg (960x540, 1px = 1pt = 1/72 in) — PIL measured.
+// ATTEMPT 4 — frame-true rebuild. The attempt-2/3 build transcribed the top
+// matrix as horizontal ROWS and the Z matrix with wrong values; the frame
+// (unique_slides/slide_046.jpg, 960x540, 1px = 1pt) actually shows
+// PARENTHESISED COLUMN VECTORS. Every coordinate below is PIL-measured on the
+// frame (measurements banked in qa/slide046/selfcheck_attempt_4.py).
 //
-// MEASURED GEOMETRY (frame px, from unique_slides/slide_046.jpg):
-//   Rules (black 3px bars): y 54..56 and y 128..130, both spanning x 68..719
-//   Top-left block, 6 columns at measured centres:
-//     subscript header  y 64..73  x [94.5 116.5 138.5 160.5 183.5 206.5]  "x1 x2 x3 x4 x5 x6"
-//     data row 1        y 80..89  x [96.5 118.5 140.5 163.5 186 208.5]     "1 2 1 5 6 4"
-//     data row 2        y 96..105 x [97 118 140.5 163 186.5 208.5]         "1 1 2 4 5 6"
-//     class labels      y 111..124 x [94 116.5 138.5 161 183.5 206.5]      "C1 C1 C1 C2 C2 C2"
-//     caption           x 253..449 (coloured C1 / C2 / Zero + black words)
-//   Upper-mid block: "Initial" + W vector (x 336..470, y 62..74),
-//     red "Step η = 2" (x 336..~400, y 77..90), "Check Classes of Z" (y 110..124)
-//   Z matrix: Z1 Z1 Z1 header x [384 398 412] y 169..180,
-//     rows "0 0 7" y 175..183 and "0 6 2" y 187..195
-//   Yellow final-weight box: x 744..828, y 58..107 (fill FFFF99, 1pt black border),
-//     holds eq_046_final_w.png = W = (14,-4,0)^T
-//   Lower data matrix (x 68..236):
-//     dashed separator y 140 (x 70..246) | small subscript line y 148..159
-//     subscript header y 166..175 x [97.5 119.5 142.5 164.5 187.5 210.5]
-//     data rows y 184..192 / 199..207 / 214..222 at x [100 121.5 144 166.5 189.5 212]
-//       = "1 2 1 5 6 4" / "1 1 2 4 5 6" / "1 1 1 4 5 6"
-//     class labels y 232..240 x [97.5 120 142 165 187.5 210]
-//   "Iteration 4" red-outlined box: x 83..217, y 278..305
-//   "Stop Iterations" pink box: x 63..244, y 330..416 (fill FFC0CB)
-//   Scatter plot: plot_046_scatter.png at x=312, y=173, w=514, h=310 (native px/72)
+// MEASURED FRAME FACTS (attempt 4)
+//  - Top-left box: cream fill #FEFFE8, thin NAVY #221775 border, x68..720 y54..130.
+//  - Top matrix = 6 parenthesised 2-value COLUMNS (x1..x6 = (1,1)(2,1)(1,2)(5,4)
+//    (6,5)(6,6)); header x1..x6 y64..73; values y80..88 / y97..104; parens
+//    y78..107; class row y114..124 = C1 C1 C1 in RED, C2 C2 C2 in BLUE
+//    (the analysis JSON has the C1/C2 colours SWAPPED — the frame wins).
+//  - Caption y110..123, x245..508: "C1 positive  C2negative   Zero  is
+//    unaccepted" — C1 red, C2 blue, Zero green.
+//  - "Initial" x267..305 y75..84; "W =" x305..325; vector 4 / -2 / -2 in tall
+//    parens x330..371 y58..108; "Step η = 2" red bold italic x374..455 y67..80.
+//  - "Check classes of" x499..581 y80..88.
+//  - Z matrix: header Z1 Z1 Z1 y64..72 at x [604,627,650]; 3 parenthesised
+//    COLUMNS (0,0) (7,6) (3,2) — frame values, NOT the spec's 0 0 7 / 0 6 2.
+//  - Final-weight box x738..829 y58..143, fill #F9E8FA, border #D4BED5;
+//    underlined W + "=" + 14 / -4 / 0 between tall parens x786..822.
+//  - Augmented box x69..246 y140..255, white fill, #C0C3C8 border; title
+//    "Ugmented Vectors ( from Top )" blue-violet #453CA5 x82..236 y146..159;
+//    header x1..x6 y166..175; 6 columns of 3 values (1,1,1)(1,2,1)(1,1,2)
+//    (1,5,4)(1,6,5)(1,6,6) y180..226; class row y232..240 C1 red / C2 blue.
+//  - "Iteration 4" solid #C00000 box x84..213 y278..304, white bold text.
+//  - Stop box x64..245 y331..415, fill #F9D7D8, thin red border; "No change in
+//    W" (W bold italic underlined) y350..370; "Stop" RED bold italic +
+//    "Iterations" BLACK italic y376..394.
+//  - Scatter plot x312..825 y173..482 (generated PNG, assets/m046_plot.png):
+//    white field, red border, gray grid, decision line data x=3.478,
+//    blue squares (1,2)(1,1)(2,1), magenta diamonds (5,4)(6,5)(6,6),
+//    red down triangles (3,2)(7,6)(0,0), red "+ve" with a LEFT arrow.
 //
-// HEX never carries '#'; fontFace explicit; margin 0; single-line boxes with a
-// pinned lineSpacing (LO/PowerPoint auto-pitch divergence law); images at native
-// px/600 so eq glyphs are exactly fontsize pt on the slide.
+// House chrome: shared_patterns/house_chrome.js (deck geometry, numeral 46).
+// Hex never carries '#'; fontFace explicit; margin 0; explicit lineSpacing.
 
 const pptxgen = require("pptxgenjs");
+const path = require("path");
 const { drawHouseChrome } = require("../../shared_patterns/house_chrome.js");
-const fs = require("fs");
 
-const px = (v) => v / 72; // frame px -> inches
+const px = (v) => v / 72;                      // frame px -> inches (1px = 1pt)
 const A = "Arial";
-const OUT = "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_046_recreated.pptx";
-const EQ = (n) => JSON.parse(fs.readFileSync(__dirname + "/assets/" + n + ".json", "utf8"));
+const OUT = path.resolve(__dirname, "../slide_046_recreated.pptx");
+const ASSETS = path.join(__dirname, "assets");
+
+const RED = "C00000";
+const BLUE = "0000CC";
+const GREEN = "008000";
+const NAVY = "221775";
+const CREAM = "FEFFE8";
+const LAV_FILL = "F9E8FA";
+const LAV_LINE = "D4BED5";
+const GRAYBLUE = "C0C3C8";
+const STOP_FILL = "F9D7D8";
+const AUG_TITLE = "453CA5";
 
 const pptx = new pptxgen();
-pptx.layout = "LAYOUT_WIDE"; // 13.333 x 7.5 in
+pptx.layout = "LAYOUT_WIDE";
 const slide = pptx.addSlide();
 
-// ---- house chrome: white canvas, gray panel, red L/R/bottom strokes, badge "46" ----
 drawHouseChrome(pptx, slide, { numeral: 46 });
 
-// ---- helpers ---------------------------------------------------------------
-function AB(base, x, y, size, subSize) {          // italic base + subscript digit
-  slide.addText(
-    [
-      { text: base, options: { fontFace: A, fontSize: size, italic: true, color: "000000" } },
-      { text: "1", options: { fontFace: A, fontSize: subSize, color: "0000FF", subscript: true } },
-    ],
-    { x: px(x), y: px(y), w: px(18), h: px(11),
-      align: "left", valign: "middle", margin: 0, lineSpacing: 14 }
-  );
-}
-function NUM(v, x, y, size) {                      // black digit, centred on x
-  slide.addText(String(v), {
-    x: px(x - 6), y: px(y), w: px(12), h: px(11),
-    align: "center", valign: "middle", margin: 0,
-    fontFace: A, fontSize: size, color: "000000",
+// ---------------------------------------------------------------- helpers
+function txt(runs, x, y, w, h, opts = {}) {
+  slide.addText(runs, {
+    x: px(x), y: px(y), w: px(w), h: px(h),
+    align: opts.align || "left", valign: opts.valign || "middle",
+    margin: 0, fontFace: A, lineSpacing: opts.lineSpacing || (opts.size || 12) * 1.2,
+    charSpacing: opts.charSpacing || 0, wrap: opts.wrap === undefined ? true : opts.wrap,
   });
 }
-function CL(sub, x, y) {                           // class label C1/C2, coloured
-  const col = sub === "1" ? "0000FF" : "FF0000";
-  slide.addText(
-    [
-      { text: "C", options: { fontFace: A, fontSize: 10, bold: true, color: col } },
-      { text: sub, options: { fontFace: A, fontSize: 7.5, bold: true, color: col, subscript: true } },
-    ],
-    { x: px(x - 9), y: px(y), w: px(18), h: px(11),
-      align: "center", valign: "middle", margin: 0, lineSpacing: 11 }
-  );
+function word(text, x, y, w, h, size, color, opts = {}) {
+  txt([{ text, options: { fontSize: size, color, bold: !!opts.bold, italic: !!opts.italic } }],
+    x, y, w, h, { align: opts.align || "center", size, wrap: opts.wrap });
+}
+function subLabel(base, sub, cx, y, h, size, subSize, color, opts = {}) {
+  const w = opts.w || 26;
+  txt([
+    { text: base, options: { fontSize: size, color, italic: opts.italic !== false, bold: !!opts.bold } },
+    { text: sub, options: { fontSize: subSize, color, subscript: true, bold: !!opts.bold } },
+  ], cx - w / 2, y, w, h, { align: "center", size });
+}
+function img(name, x, y) {
+  const m = require(ASSETS + "/" + name.replace(/\.png$/, ".json"));
+  slide.addImage({ path: ASSETS + "/" + name, x: px(x), y: px(y), w: m.w_in, h: m.h_in });
 }
 
-// ===========================================================================
-// TOP-LEFT BLOCK (x 68..719, y 54..130)
-// ===========================================================================
-for (const ry of [54, 128]) {
-  slide.addShape(pptx.ShapeType.rect, {
-    x: px(68), y: px(ry), w: px(719 - 68), h: px(3),
-    fill: { color: "000000" }, line: { type: "none" },
-  });
-}
-const TOP_H = [94.5, 116.5, 138.5, 160.5, 183.5, 206.5];
-TOP_H.forEach((x) => AB("x", x - 2, 64, 8.3, 6.2));
-[96.5, 118.5, 140.5, 163.5, 186, 208.5].forEach((x, i) => NUM([1, 2, 1, 5, 6, 4][i], x, 80, 13));
-[97, 118, 140.5, 163, 186.5, 208.5].forEach((x, i) => NUM([1, 1, 2, 4, 5, 6][i], x, 96, 13));
-[94, 116.5, 138.5, 161, 183.5, 206.5].forEach((x, i) => CL(["1", "1", "1", "2", "2", "2"][i], x, 111));
-
-// caption: "C1 positive   C2 negative   Zero is unaccepted" (x 253..449)
-const CAP = [
-  { t: "C1", c: "0000FF", b: true }, { t: " positive ", c: "000000", b: false },
-  { t: "C2", c: "FF0000", b: true }, { t: " negative ", c: "000000", b: false },
-  { t: "Zero", c: "008000", b: true }, { t: " is unaccepted", c: "000000", b: false },
-];
-slide.addText(
-  CAP.map((w) => ({ text: w.t, options: { fontFace: A, fontSize: 12, color: w.c, bold: w.b } })),
-  { x: px(253), y: px(109), w: px(260), h: px(17),
-    align: "left", valign: "middle", margin: 0, lineSpacing: 14 }
-);
-
-// ===========================================================================
-// UPPER-MID BLOCK (x 330..583, y 54..130)
-//   "Initial" + W vector (x 368..435, y 67..80)
-//   red "Step η = 2" (x 336..353 eta, y 89..104; "= 2" follows)
-//   "Check Classes of Z" (x 329..422, y 110..124)
-//   second line "Ugmented Vectors (From Top)" (x 429..583, y 67..124)
-// ===========================================================================
-slide.addText("Initial", {
-  x: px(336), y: px(66), w: px(32), h: px(14),
-  align: "left", valign: "middle", margin: 0,
-  fontFace: A, fontSize: 11, color: "000000", lineSpacing: 13,
-});
-const eInit = EQ("eq_046_initial_w");
-slide.addImage({ path: __dirname + "/assets/eq_046_initial_w.png", x: px(368), y: px(66), w: eInit.w_in, h: eInit.h_in });
-
-slide.addText("Step", {
-  x: px(331), y: px(89), w: px(40), h: px(16),
-  align: "left", valign: "middle", margin: 0,
-  fontFace: A, fontSize: 12, color: "000000", lineSpacing: 14,
-});
-// η = 2 (mathtext PNG, red — measured red ink x402..408 y71..79)
-slide.addImage({ path: __dirname + "/assets/eq_046_step_eta.png", x: px(402), y: px(70), w: 0.352, h: 0.16 });
-
-slide.addText("Check Classes of Z", {
-  x: px(320), y: px(110), w: px(190), h: px(15),
-  align: "left", valign: "middle", margin: 0,
-  fontFace: A, fontSize: 12, color: "000000", lineSpacing: 14,
-});
-// Measured tall vertical strokes: x330..331 spanning y62..103 (the W-vector's
-// left bracket edge) and a red stroke at x430..434 y67..79 (its right edge).
-slide.addShape(pptx.ShapeType.line, {
-  x: px(330.5), y: px(62), w: 0, h: px(103 - 62),
-  line: { color: "000000", width: 1.5 },
-});
-slide.addShape(pptx.ShapeType.line, {
-  x: px(433.5), y: px(67), w: 0, h: px(79 - 67),
-  line: { color: "C00000", width: 1.5 },
-});
-
-// Z MATRIX — MEASURED PRESENT at x597..657, y60..111 (same column positions as
-// slide_043's certified Z component). Header Z1 Z1 Z1 on cols [605,628,651],
-// then two digit rows inside three TALL parenthesised columns (verticals at
-// x598/611, x621/634, x643/656 spanning y80..110). Values per the analysis
-// spec: rows "0 0 7" and "0 6 2".
-const ZC = [605, 628, 651];
-ZC.forEach((cx) => {
-  slide.addText(
-    [
-      { text: "Z", options: { fontFace: A, fontSize: 12, italic: true, color: "000000" } },
-      { text: "1", options: { fontFace: A, fontSize: 9, color: "000000", subscript: true } },
-    ],
-    { x: px(cx - 7), y: px(63), w: px(16), h: px(13),
-      align: "center", valign: "middle", margin: 0, lineSpacing: 13 }
-  );
-});
-// tall paren pairs, 1.5pt strokes, spanning y80..110
-[[598, 611], [621, 634], [643, 656]].forEach(([xl, xr]) => {
-  slide.addShape(pptx.ShapeType.line, {
-    x: px(xl), y: px(80), w: 0, h: px(110 - 80),
-    line: { color: "000000", width: 1.5 },
-  });
-  slide.addShape(pptx.ShapeType.line, {
-    x: px(xr), y: px(80), w: 0, h: px(110 - 80),
-    line: { color: "000000", width: 1.5 },
-  });
-});
-// two digit rows inside the parens (measured cap-tops y83 and y99)
-["0", "0", "7"].forEach((v, i) => NUM(v, ZC[i], 83, 12));
-["0", "6", "2"].forEach((v, i) => NUM(v, ZC[i], 99, 12));
-
-// (no "Ugmented Vectors (From Top)" text measured at x429..583 y67..124 on this
-//  frame — PIL scan of the region returns zero ink; the analysis label belongs
-//  to slide 043's layout, not this frame. Block intentionally omitted.)
-
-// ===========================================================================
-// YELLOW FINAL-WEIGHT BOX (x 738..828, y 59..142, pale-yellow fill, black 1pt)
-//   Measured contents: underlined W (x743..762, y90..106) + "=" (x766..775,
-//   y94..102) + a THREE-ROW column vector between tall straight paren strokes
-//   at x786 and x823 (both y60..139): rows "14" (centre x805, y68..83),
-//   "-4" (y93..105) and "0" (y118..134).
-// ===========================================================================
+// ============================================================ TOP-LEFT BOX
 slide.addShape(pptx.ShapeType.rect, {
-  x: px(738), y: px(59), w: px(90), h: px(142 - 59),
-  fill: { color: "FFFF99" }, line: { color: "000000", width: 1.5 },
-});
-// tall straight paren strokes (measured x786 and x823, y60..139 — no curvature)
-[[786], [823]].forEach(([x]) => {
-  slide.addShape(pptx.ShapeType.line, {
-    x: px(x), y: px(60), w: 0, h: px(139 - 60),
-    line: { color: "000000", width: 1.5 },
-  });
-});
-// underlined W at x743..762 (y90..106)
-slide.addText("W =", {
-  x: px(742), y: px(89), w: px(38), h: px(19),
-  align: "left", valign: "middle", margin: 0,
-  fontFace: A, fontSize: 14, bold: true, italic: true, underline: true,
-  color: "000000", lineSpacing: 17,
-});
-// three-row column vector, digit centres measured at x ~805
-[["1", "4"], ["-", "4"], ["", "0"]].forEach(([a, b], i) => {
-  const ry = [74, 99, 126][i];
-  slide.addText(a + b, {
-    x: px(792), y: px(ry), w: px(26), h: px(17),
-    align: "center", valign: "middle", margin: 0,
-    fontFace: A, fontSize: 13, color: "000000", lineSpacing: 16,
-  });
+  x: px(68), y: px(54), w: px(720 - 68), h: px(130 - 54),
+  fill: { color: CREAM }, line: { color: NAVY, width: 0.75 },
 });
 
-// ===========================================================================
-// LOWER DATA MATRIX (x 70..246, y 140..255)
-//   MEASURED: a full closed box — left vertical x69..70 and right vertical
-//   x245..246 both spanning y140..249, a dashed separator rule at y140
-//   (x70..246), and a solid 1px horizontal rule at y255 (x70..246).
-// ===========================================================================
-// dashed separator at y140 (x70..246)
-slide.addShape(pptx.ShapeType.line, {
-  x: px(70), y: px(140), w: px(176), h: 0,
-  line: { color: "000000", width: 1, dashType: "dash" },
-});
-// closed box: left + right verticals (measured y140..249) and the y255 rule
-slide.addShape(pptx.ShapeType.line, {
-  x: px(69.5), y: px(140), w: 0, h: px(249 - 140),
-  line: { color: "000000", width: 1.5 },
-});
-slide.addShape(pptx.ShapeType.line, {
-  x: px(245.5), y: px(140), w: 0, h: px(249 - 140),
-  line: { color: "000000", width: 1.5 },
-});
-slide.addShape(pptx.ShapeType.line, {
-  x: px(70), y: px(254.5), w: px(176), h: 0,
-  line: { color: "000000", width: 1.5 },
-});
-// small subscript line y 148..159 (x 84..236) — the x1..x6 header, small
-[84, 99, 114, 130, 145, 161].forEach((x, i) => {
-  slide.addText(
-    [
-      { text: "x", options: { fontFace: A, fontSize: 7.5, italic: true, color: "000000" } },
-      { text: String(i + 1), options: { fontFace: A, fontSize: 6, color: "000000", subscript: true } },
-    ],
-    { x: px(x), y: px(149), w: px(16), h: px(11),
-      align: "left", valign: "middle", margin: 0, lineSpacing: 10 }
-  );
-});
-// subscript header y 166..175
-const LO_H = [97.5, 119.5, 142.5, 164.5, 187.5, 210.5];
-LO_H.forEach((x) => AB("x", x - 6, 166, 8, 6));
-// three data rows
-const LO_R = [100, 121.5, 144, 166.5, 189.5, 212];
-const LO_V = [[1, 2, 1, 5, 6, 4], [1, 1, 2, 4, 5, 6], [1, 1, 1, 4, 5, 6]];
-LO_V.forEach((vals, r) => {
-  vals.forEach((v, i) => NUM(v, LO_R[i], 184 + r * 15, 11));
-});
-// class labels y 232..240
-[97.5, 120, 142, 165, 187.5, 210].forEach((x, i) =>
-  CL(["1", "1", "1", "2", "2", "2"][i], x, 232)
-);
+// --- matrix header x1..x6 (y64..73) ---
+const TOPC = [96, 118, 140, 162, 185, 207];
+TOPC.forEach((cx, i) => subLabel("x", String(i + 1), cx, 60, 16, 10, 7.5, "000000"));
 
-// ===========================================================================
-// "ITERATION 4" — SOLID RED FILLED block (x84..212, y277..304) with WHITE bold
-//   text (measured: interior is FF0000; the glyphs are negative white space).
-// ===========================================================================
+// --- 6 parenthesised 2-value column vectors (y77..109) ---
+const TOPV = [["1", "1"], ["2", "1"], ["1", "2"], ["5", "4"], ["6", "5"], ["6", "6"]];
+TOPV.forEach((v, i) => {
+  img("m046_topcol" + (i + 1) + ".png", TOPC[i] - 7.5, 77);
+});
+
+// --- class row y114..124: C1 x3 RED, C2 x3 BLUE (frame; spec has this swapped) ---
+["1", "1", "1", "2", "2", "2"].forEach((s, i) =>
+  subLabel("C", s, TOPC[i], 111, 16, 11.5, 8.5, s === "1" ? RED : BLUE, { bold: true, italic: false }));
+
+// --- caption y110..123 (C1 red, C2 blue, Zero green; words italic) ---
+txt([
+  { text: "C", options: { fontSize: 13, bold: true, italic: true, color: RED } },
+  { text: "1", options: { fontSize: 9.5, bold: true, italic: true, color: RED, subscript: true } },
+  { text: " positive   ", options: { fontSize: 13, italic: true, color: "000000" } },
+  { text: "C", options: { fontSize: 13, bold: true, italic: true, color: BLUE } },
+  { text: "2", options: { fontSize: 9.5, bold: true, italic: true, color: BLUE, subscript: true } },
+  { text: "negative    ", options: { fontSize: 13, italic: true, color: "000000" } },
+  { text: "Zero", options: { fontSize: 13, bold: true, italic: true, color: GREEN } },
+  { text: "  is unaccepted", options: { fontSize: 13, italic: true, color: "000000" } },
+], 245, 107, 280, 20, { align: "left", size: 13 });
+
+// ---------------------------------------------------- Initial W + Step eta
+word("Initial", 266, 67, 44, 22, 11.5, "000000", { align: "left" });
+txt([
+  { text: "W", options: { fontSize: 12, bold: true, italic: true, underline: true, color: "000000" } },
+  { text: " =", options: { fontSize: 12, bold: true, italic: true, color: "000000" } },
+], 305, 66, 26, 24, { align: "left", size: 12 });
+img("m046_vec_initial.png", 330, 56);              // 4 / -2 / -2 in tall parens
+word("Step η = 2", 371, 63, 88, 20, 14, RED, { align: "left", bold: true, italic: true });
+
+// ---------------------------------------------------- Check classes of + Z
+word("Check classes of", 499, 75, 90, 18, 11, "000000", { align: "left" });
+const ZC = [604, 627, 650];
+ZC.forEach((cx, i) => subLabel("Z", "1", cx, 60, 16, 11.5, 8.5, "000000"));
+["m046_zcol1.png", "m046_zcol2.png", "m046_zcol3.png"].forEach((n, i) =>
+  img(n, ZC[i] - 7.5, 80));
+
+// ================================================== FINAL-WEIGHT (lavender)
 slide.addShape(pptx.ShapeType.rect, {
-  x: px(84), y: px(277), w: px(212 - 84), h: px(304 - 277),
-  fill: { color: "FF0000" }, line: { type: "none" },
+  x: px(738), y: px(58), w: px(829 - 738), h: px(143 - 58),
+  fill: { color: LAV_FILL }, line: { color: LAV_LINE, width: 0.75 },
 });
-slide.addText("Iteration 4", {
-  x: px(84), y: px(277), w: px(212 - 84), h: px(304 - 277),
-  align: "center", valign: "middle", margin: 0,
-  fontFace: A, fontSize: 20, bold: true, color: "FFFFFF", lineSpacing: 22,
-});
+txt([
+  { text: "W", options: { fontSize: 17, bold: true, italic: true, underline: true, color: "000000" } },
+], 741, 82, 24, 30, { align: "center", size: 17 });
+word("=", 762, 86, 16, 22, 17, "000000");
+img("m046_vec_final.png", 783, 66);                // 14 / -4 / 0 in tall parens
 
-// ===========================================================================
-// "STOP ITERATIONS" pink box (x64..245, y331..415, fill FFC0CB, 1pt black)
-//   "No change in W" black (W underlined) y350..370, then RED bold
-//   "Stop Iterations" y375..390 — measured red ink, not black.
-// ===========================================================================
+// =================================================== AUGMENTED-VECTORS BOX
+slide.addShape(pptx.ShapeType.rect, {
+  x: px(69), y: px(140), w: px(246 - 69), h: px(255 - 140),
+  fill: { color: "FFFFFF" }, line: { color: GRAYBLUE, width: 0.75 },
+});
+word("Ugmented Vectors ( from Top )", 66, 142, 187, 20, 10.7, AUG_TITLE,
+  { align: "center", bold: true, italic: true, wrap: false });
+const AUGC = [98, 120, 142, 165, 188, 210];
+AUGC.forEach((cx, i) => subLabel("x", String(i + 1), cx, 161.5, 13, 7.8, 5.8, "000000", { w: 20 }));
+["m046_augcol1.png", "m046_augcol2.png", "m046_augcol3.png",
+ "m046_augcol4.png", "m046_augcol5.png", "m046_augcol6.png"].forEach((n, i) =>
+  img(n, AUGC[i] - 7.5, 178));
+["1", "1", "1", "2", "2", "2"].forEach((s, i) =>
+  subLabel("C", s, AUGC[i], 229, 16, 11.5, 8.5, s === "1" ? RED : BLUE, { bold: true, italic: false }));
+
+// =========================================================== ITERATION 4
+slide.addShape(pptx.ShapeType.rect, {
+  x: px(84), y: px(278), w: px(213 - 84), h: px(304 - 278),
+  fill: { color: RED }, line: { type: "none" },
+});
+word("Iteration 4", 84, 277, 129, 28, 21.5, "FFFFFF", { align: "center", bold: true });
+
+// ========================================================== STOP BOX
 slide.addShape(pptx.ShapeType.rect, {
   x: px(64), y: px(331), w: px(245 - 64), h: px(415 - 331),
-  fill: { color: "FFC0CB" }, line: { color: "000000", width: 1.5 },
+  fill: { color: STOP_FILL }, line: { color: RED, width: 0.75 },
 });
-slide.addText("No change in W", {
-  x: px(64), y: px(349), w: px(181), h: px(22),
-  align: "center", valign: "middle", margin: 0,
-  fontFace: A, fontSize: 15, color: "000000", lineSpacing: 18, underline: false,
-});
-// the W in "No change in W" is underlined (measured) — overlay it on the W run
-slide.addText("W", {
-  x: px(202), y: px(349), w: px(18), h: px(22),
-  align: "center", valign: "middle", margin: 0,
-  fontFace: A, fontSize: 15, color: "000000", underline: true, lineSpacing: 18,
-});
-slide.addText("Stop Iterations", {
-  x: px(64), y: px(374), w: px(181), h: px(22),
-  align: "center", valign: "middle", margin: 0,
-  fontFace: A, fontSize: 17, bold: true, color: "FF0000", lineSpacing: 20,
-});
+txt([
+  { text: "No change in ", options: { fontSize: 19.5, color: "000000" } },
+  { text: "W", options: { fontSize: 19.5, color: "000000", bold: true, italic: true, underline: true } },
+], 59, 343, 176, 30, { align: "center", size: 19.5 });
+txt([
+  { text: "Stop", options: { fontSize: 19, color: RED, bold: true, italic: true } },
+  { text: " Iterations", options: { fontSize: 19, color: "000000", italic: true } },
+], 59, 371, 176, 26, { align: "center", size: 19 });
 
-// ===========================================================================
-// SCATTER PLOT — plot_046_scatter.png at native px/72 (NO rescale)
-// ===========================================================================
+// ============================================================ SCATTER PLOT
 slide.addImage({
-  path: __dirname + "/assets/plot_046_scatter.png",
-  x: px(312), y: px(173), w: px(514), h: px(310),
+  path: ASSETS + "/m046_plot.png",
+  x: px(312), y: px(173), w: 513 / 72, h: 309 / 72,
 });
 
 pptx.writeFile({ fileName: OUT }).then(() => console.log("WROTE " + OUT));

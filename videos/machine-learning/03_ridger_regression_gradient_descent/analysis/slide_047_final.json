@@ -3,21 +3,21 @@
   "subtitle_or_header": "Check classes of | Ugmented Vectors (from Top)",
   "verbatim_text": {
     "bullets": [
-      "Initial W = [4; -2], Step \u03b7 = 2",
-      "d(Z\u2081) = 14 \u21d2 Positive > 0 \u21d2 Class I",
-      "d(Z\u2081) = -14 \u21d2 Negative < 0 \u21d2 Class II",
-      "d(Z\u2081) = -2 \u21d2 Negative < 0 \u21d2 Class II"
+      "Initial W = [4; -2; -2], Step η = 2",
+      "d(Z₁) = 14 ⇒ Positive > 0 ⇒ Class I",
+      "d(Z₂) = -14 ⇒ Negative < 0 ⇒ Class II",
+      "d(Z₂) = -2 ⇒ Negative < 0 ⇒ Class II"
     ],
     "labels": [
       "47",
-      "x\u2081 x\u2082 x\u2083 x\u2084 x\u2085 x\u2086",
-      "C\u2081 C\u2081 C\u2082 C\u2082 C\u2082 C\u2082",
+      "x₁ x₂ x₃ x₄ x₅ x₆",
+      "C₁ C₁ C₁ C₂ C₂ C₂",
       "Initial W =",
-      "Step \u03b7 = 2",
-      "C\u2081 positive C\u2082 negative Zero is unaccepted",
+      "Step η = 2",
+      "C₁ positive C₂negative Zero is unaccepted",
       "Check classes of",
-      "Z\u2081 Z\u2081 Z\u2081",
-      "Ugmented Vectors (from Top)",
+      "Z₁ Z₁ Z₁",
+      "Ugmented Vectors ( from Top )",
       "Check Classes",
       "Class I",
       "Class II",
@@ -25,10 +25,10 @@
       "Negative < 0"
     ],
     "equations": [
-      "Initial W = [4; -2]",
-      "d(Z\u2081) = [1 0 0; -4 0; 14] = 14",
-      "d(Z\u2081) = [1 7 6; -4 0; 14] = -14",
-      "d(Z\u2081) = [1 3 2; -4 0; -2] = -2"
+      "Initial W = [4; -2; -2]",
+      "d(Z₁) = (1 0 0)(14; -4; 0) = 14",
+      "d(Z₂) = (1 7 6)(14; -4; 0) = -14",
+      "d(Z₂) = (1 3 2)(14; -4; 0) = -2"
     ]
   },
   "layout": {
@@ -37,22 +37,22 @@
       {
         "name": "top-left data matrix",
         "position": "top-left, approx 0-30% width, 5-25% height",
-        "content": "2x6 matrix of feature values (header x\u2081-x\u2086, values in parentheses) with column class labels C\u2081 C\u2081 C\u2082 C\u2082 C\u2082 C\u2082 beneath"
+        "content": "2x6 matrix of feature values (header x₁-x₆, values in parentheses) with column class labels C₁ C₁ C₁ C₂ C₂ C₂ (three red, three blue) beneath"
       },
       {
         "name": "top-center parameters",
         "position": "top-center, approx 30-55% width, 5-25% height",
-        "content": "Initial W = column vector (4 over -2), red 'Step \u03b7 = 2', and color legend 'C\u2081 positive C\u2082 negative Zero is unaccepted'"
+        "content": "Initial W = column vector (4 over -2 over -2, three entries), red 'Step η = 2', and color legend 'C₁ positive C₂negative Zero is unaccepted'"
       },
       {
         "name": "top-right check matrix",
         "position": "top-right, approx 55-100% width, 5-25% height",
-        "content": "'Check classes of' header, Z matrix with headers Z\u2081 Z\u2081 Z\u2081 and rows (0)(7)(3) / (0)(6)(2), plus yellow '47' circle badge at the far top-right corner"
+        "content": "'Check classes of' header, Z matrix with headers Z₁ Z₁ Z₁ and rows (0)(7)(3) / (0)(6)(2), plus yellow '47' circle badge at the far top-right corner"
       },
       {
         "name": "middle-left augmented matrix",
         "position": "middle-left, approx 0-35% width, 30-70% height",
-        "content": "'Ugmented Vectors (from Top)' header, matrix with header row x\u2081-x\u2086 plus 4 data rows, class labels C\u2081 C\u2081 C\u2082 C\u2082 C\u2082 C\u2082 beneath"
+        "content": "'Ugmented Vectors ( from Top )' header (blue italic), matrix with header row x₁-x₆ plus THREE data rows (each column a 3-component column vector), class labels C₁ C₁ C₁ C₂ C₂ C₂ beneath"
       },
       {
         "name": "middle-right calculations",
@@ -70,7 +70,7 @@
   "visual_elements": [
     {
       "type": "table",
-      "description": "2-row x 6-column matrix. Header: x\u2081 x\u2082 x\u2083 x\u2084 x\u2085 x\u2086. Row 1: (1) (2) (1) (5) (6) (6). Row 2: (1) (1) (2) (4) (5) (6). Column labels beneath: C\u2081 C\u2081 C\u2082 C\u2082 C\u2082 C\u2082.",
+      "description": "2-row x 6-column matrix. Header: x₁ x₂ x₃ x₄ x₅ x₆. Row 1: (1) (2) (1) (5) (6) (6). Row 2: (1) (1) (2) (4) (5) (6). Column labels beneath: C₁ C₁ C₁ (red) C₂ C₂ C₂ (blue) — three C₁, not two.",
       "colors": [
         "#000000",
         "#FF0000",
@@ -80,7 +80,7 @@
     },
     {
       "type": "diagram",
-      "description": "Column vector labeled Initial W with entries 4 (top) and -2 (bottom). Text 'Step \u03b7 = 2' in red. Legend line: 'C\u2081 positive C\u2082 negative Zero is unaccepted' with C\u2081 in red, C\u2082 in blue, Zero in green.",
+      "description": "Column vector labeled Initial W with entries 4 (top) and -2 (bottom). Text 'Step η = 2' in red. Legend line: 'C₁ positive C₂ negative Zero is unaccepted' with C₁ in red, C₂ in blue, Zero in green.",
       "colors": [
         "#000000",
         "#FF0000",
@@ -91,7 +91,7 @@
     },
     {
       "type": "table",
-      "description": "Matrix under 'Check classes of' with column headers Z\u2081 Z\u2081 Z\u2081. Row 1: (0) (7) (3). Row 2: (0) (6) (2).",
+      "description": "Matrix under 'Check classes of' with column headers Z₁ Z₁ Z₁. Row 1: (0) (7) (3). Row 2: (0) (6) (2).",
       "colors": [
         "#000000"
       ],
@@ -108,7 +108,7 @@
     },
     {
       "type": "table",
-      "description": "Matrix under 'Ugmented Vectors (from Top)': header row x\u2081 x\u2082 x\u2083 x\u2084 x\u2085 x\u2086 plus 4 data rows (6 columns). Row 1: (1) (1) (1) (1) (1) (1). Row 2: (1) (2) (1) (5) (6) (6). Row 3: (1) (1) (2) (4) (5) (6). Row 4: (1) (1) (2) (4) (5) (6) (identical to Row 3 in source). Column labels beneath: C\u2081 C\u2081 C\u2082 C\u2082 C\u2082 C\u2082.",
+      "description": "Matrix under 'Ugmented Vectors ( from Top )': header row x₁ x₂ x₃ x₄ x₅ x₆ plus THREE data rows (6 columns, each column is a 3-component column vector in spanning parentheses). Row 1: (1) (1) (1) (1) (1) (1). Row 2: (1) (2) (1) (5) (6) (6). Row 3: (1) (1) (2) (4) (5) (6). Column labels beneath: C₁ C₁ C₁ (red) C₂ C₂ C₂ (blue).",
       "colors": [
         "#000000",
         "#FF0000",
@@ -127,7 +127,7 @@
     },
     {
       "type": "highlight-box",
-      "description": "First calculation box: d(Z\u2081) = [1 0 0; -4 0; 14] = 14 \u21d2 Positive > 0, outcome 'Class I' in red.",
+      "description": "First calculation box: d(Z₁) = (1 0 0)(14; -4; 0) = 14 ⇒ Positive > 0 (sign statement BLACK bold — measured, not red), outcome 'Class I' in red.",
       "colors": [
         "#000000",
         "#FF0000",
@@ -137,7 +137,7 @@
     },
     {
       "type": "highlight-box",
-      "description": "Second calculation box: d(Z\u2081) = [1 7 6; -4 0; 14] = -14 \u21d2 Negative < 0, outcome 'Class II' in blue.",
+      "description": "Second calculation box: d(Z₂) = (1 7 6)(14; -4; 0) = -14 ⇒ Negative < 0 (sign statement BLACK bold), outcome 'Class II' in blue.",
       "colors": [
         "#000000",
         "#FF0000",
@@ -147,7 +147,7 @@
     },
     {
       "type": "highlight-box",
-      "description": "Third calculation box: d(Z\u2081) = [1 3 2; -4 0; -2] = -2 \u21d2 Negative < 0, outcome 'Class II' in blue.",
+      "description": "Third calculation box: d(Z₂) = (1 3 2)(14; -4; 0) = -2 ⇒ Negative < 0 (sign statement BLACK bold), outcome 'Class II' in blue. Source arithmetic note: (1 3 2)·(14; -4; 0) = +2, but the slide prints '-2' — reproduced verbatim.",
       "colors": [
         "#000000",
         "#FF0000",
@@ -161,41 +161,43 @@
     "Red rectangular button labeled Check Classes at bottom-left"
   ],
   "colors": {
-    "background": "#F0F0F0",
+    "background": "#FFFFFF",
+    "top_band_fill": "#FFFFE8 (measured cream; the band box is filled, not white)",
+    "box_borders": "#A6ACB8 (measured gray-blue hairline on the augmented + calc boxes); top band border dark blue #221A78-ish",
     "title_text": "#000000",
     "body_text": "#000000",
     "accents": [
-      "#FF0000",
-      "#0000FF",
-      "#FFFF00",
-      "#008000",
+      "#C00000 (measured red: C₁ labels, Class I, Step η, button fill — flat button interior sampled 198,0,16)",
+      "#1A1A99 (measured dark blue: C₂ labels, Class II, row vectors, block title, band border)",
+      "#008000 (green: 'Zero' legend word and the (14;-4;0) stacked columns)",
       "#FFFFFF"
     ]
   },
-  "typography_notes": "Sans-serif throughout. Subscripts used for x\u2081-x\u2086, C\u2081/C\u2082, and Z\u2081. Mathematical values enclosed in parentheses. 'Step \u03b7 = 2' and class outcomes are bold. 'Check Classes' button uses white bold text on red. Mixed color coding: red for C\u2081/Class I/positive, blue for C\u2082/Class II/negative, green for 'Zero'. No title text appears on the slide face.",
+  "typography_notes": "SERIF throughout (Times-like; measured frame — the raw analysis' 'sans-serif' guess was wrong). Body text ~14-16pt. Matrix headers are lowercase italic math x₁-x₆ (NOT uppercase X); matrix digits plain serif. Subscripts used for x₁-x₆, C₁/C₂, Z₁/Z₂. Mathematical values enclosed in parentheses (2-row columns in the top-left matrix, 3-row columns in the augmented matrix, 2-row columns in the Z matrix). 'Step η = 2' is RED bold; sign statements ('⇒ Positive > 0' / '⇒ Negative < 0') are BLACK bold (measured — NOT red/blue); class outcomes 'Class I'/'Class II' are bold red/blue. Row vectors in the calc boxes are BLUE, the stacked (14; -4; 0) columns are GREEN, the d(Z) labels and results are black. 'Check Classes' button uses white bold text on red. The 'Ugmented Vectors ( from Top )' block title is BLUE italic serif. No title text appears on the slide face.",
   "animation_state": "Static slide; no mid-build indicators visible.",
-  "recreation_brief": "1) SLIDE SETUP: Set the slide background to solid #F0F0F0 and use a sans-serif font for all text. Do NOT add a title text box \u2014 the source slide has no title; 'slide_title' is a reconstruction for indexing only.\n2) TOP-LEFT DATA MATRIX (x: 0-30% of width, y: 5-25% of height): Insert a table with header row 'x\u2081 x\u2082 x\u2083 x\u2084 x\u2085 x\u2086' in black #000000; data row 1 '(1) (2) (1) (5) (6) (6)'; data row 2 '(1) (1) (2) (4) (5) (6)' \u2014 black #000000, every value wrapped in parentheses. Directly beneath the six columns place class labels 'C\u2081 C\u2081 C\u2082 C\u2082 C\u2082 C\u2082': the two C\u2081 labels in red #FF0000, the four C\u2082 labels in blue #0000FF.\n3) TOP-CENTER PARAMETERS (x: 30-55%, y: 5-25%): Write 'Initial W =' in black #000000 next to a 2-entry column vector with '4' stacked above '-2' (black). Below it write 'Step \u03b7 = 2' in bold red #FF0000. Below that write the legend 'C\u2081 positive C\u2082 negative Zero is unaccepted' with 'C\u2081' in red #FF0000, 'C\u2082' in blue #0000FF, 'Zero' in green #008000, and all remaining words in black #000000.\n4) TOP-RIGHT CHECK MATRIX (x: 55-100%, y: 5-25%): Write 'Check classes of' in black #000000 above a 2x3 matrix: header row 'Z\u2081 Z\u2081 Z\u2081' (black \u2014 verbatim; all three headers read Z\u2081) and data rows '(0) (7) (3)' and '(0) (6) (2)' in black parentheses.\n5) TOP-RIGHT CORNER BADGE (x: approx 90-100%, y: approx 2-10%): Insert a yellow #FFFF00 filled oval containing the number '47' in black #000000, centered.\n6) MIDDLE-LEFT AUGMENTED MATRIX (x: 0-35%, y: 30-70%): Write the header 'Ugmented Vectors (from Top)' in black #000000 (verbatim spelling 'Ugmented'). Below it build a 6-column matrix: header row 'x\u2081 x\u2082 x\u2083 x\u2084 x\u2085 x\u2086'; then 4 data rows '(1) (1) (1) (1) (1) (1)', '(1) (2) (1) (5) (6) (6)', '(1) (1) (2) (4) (5) (6)', '(1) (1) (2) (4) (5) (6)' (rows 3 and 4 are identical in the source \u2014 reproduce as-is). Beneath the six columns place 'C\u2081 C\u2081' in red #FF0000 and 'C\u2082 C\u2082 C\u2082 C\u2082' in blue #0000FF.\n7) MIDDLE-RIGHT CALCULATION BOXES (x: 35-100%, y: 30-70%): Draw three unfilled rectangles with thin black #000000 borders, stacked vertically with small vertical gaps. TOP BOX: 'd(Z\u2081) = [1 0 0; -4 0; 14] = 14' in black, '\u21d2 Positive > 0' in red #FF0000, 'Class I' in bold red #FF0000. MIDDLE BOX: 'd(Z\u2081) = [1 7 6; -4 0; 14] = -14' in black, '\u21d2 Negative < 0' in blue #0000FF, 'Class II' in bold blue #0000FF. BOTTOM BOX: 'd(Z\u2081) = [1 3 2; -4 0; -2] = -2' in black, '\u21d2 Negative < 0' in blue #0000FF, 'Class II' in bold blue #0000FF.\n8) BOTTOM-LEFT BUTTON (x: 5-25%, y: 75-95%): Draw a solid red #FF0000 rectangle with the text 'Check Classes' in bold white #FFFFFF, centered.",
+  "recreation_brief": "1) SLIDE SETUP: white background (the house chrome supplies the gray panel, red strokes and yellow badge); SERIF font (Times New Roman) for every text element. The slide face has NO title band — do not add a title text box; 'slide_title' is an indexing reconstruction.\n2) TOP BAND (abs x68..720, y55..130): cream-filled #FFFFE8 rectangle with a 0.75pt dark-blue border. Top-left matrix (x88..217): header x₁..x₆ (lowercase italic serif) over six 2-component column vectors in spanning parentheses — rows (1)(2)(1)(5)(6)(6) / (1)(1)(2)(4)(5)(6); class row beneath: C₁ C₁ C₁ (red #C00000) then C₂ C₂ C₂ (blue #1A1A99).\n3) TOP-CENTER: 'Initial W =' black serif with W bold+underlined, then a THREE-entry column vector (4 over -2 over -2) in round parens spanning all three entries; 'Step η = 2' red #C00000 bold italic to its right; legend 'C₁ positive C₂negative Zero is unaccepted' (C₁ red, C₂ blue, 'Zero' green, other words black; no space between C₂ and 'negative').\n4) TOP-RIGHT: 'Check classes of' black serif, then the 2x3 Z matrix: headers Z₁ Z₁ Z₁ (all three read Z₁ verbatim), rows (0)(7)(3) / (0)(6)(2), each column in a spanning paren pair. The yellow '47' circle is house chrome.\n5) TOP-RIGHT CORNER BADGE: house chrome (do not redraw; numeral 47).\n6) MID-LEFT (abs x69..247, y139..256): white box with a gray-blue hairline border. Title 'Ugmented Vectors ( from Top )' in BLUE #1A1A99 italic serif on ONE line; below it header x₁..x₆ over six 3-component column vectors in spanning parentheses — rows (1)(1)(1)(1)(1)(1) / (1)(2)(1)(5)(6)(6) / (1)(1)(2)(4)(5)(6); class row C₁ C₁ C₁ red / C₂ C₂ C₂ blue.\n7) MID-RIGHT (abs x273..855): three white boxes with gray-blue hairline borders at y139..198, y206..264, y271..330. Each box: black 'd(Z₁) =' / 'd(Z₂) =' / 'd(Z₂) =' label at x283; BLUE row vector (1 0 0)/(1 7 6)/(1 3 2) at x335 (aligned with the TOP row of the stack); GREEN stacked column (14; -4; 0) in a spanning paren pair at x388; black '= 14' / '= -14' / '= -2' at x414; black bold '⇒ Positive > 0' / '⇒ Negative < 0' at x508 (one line); bold class outcome at x663/677/670 ('Class I' red, 'Class II' blue). The stacked vector and the result text must NOT overlap.\n8) BOTTOM-LEFT BUTTON (abs x79..238, y278..304): solid red #C00000 rectangle, white bold 'Check Classes' centered.",
   "validation": {
     "verdict": "PASS_WITH_FIXES",
     "fixes_applied": [
-      "slide_title was null; reconstructed as 'Check Classes of Z Vectors' from the 'Check classes of' label and Z-matrix content. The slide face has no title band, so the recreation brief explicitly omits a title text box.",
-      "subtitle_or_header was null; filled with the two verbatim section headers 'Check classes of' and 'Ugmented Vectors (from Top)'.",
-      "verbatim_text.bullets was empty; reconstructed 4 bullets strictly from existing fields (Initial W / Step \u03b7 line plus the three calculation-box outcomes: value \u21d2 sign \u21d2 class). No new facts introduced.",
-      "layout.regions: 'top-right check matrix' width extended from 55-85% to 55-100% so the region covers the yellow '47' circle badge positioned at the far top-right corner.",
-      "visual_elements augmented-matrix description clarified from ambiguous '4x6 matrix' to 'header row plus 4 data rows (6 columns)' to remove build ambiguity; identical rows 3 and 4 explicitly noted.",
-      "recreation_brief rewritten as an 8-step ordered checklist, each step placing exactly one element with exact text, position percentages, hex colors, and shape/table type; sign statements colored per typography_notes (Positive red, Negative blue).",
-      "Precision pass: all counts made explicit (2x6 data matrix, 2x3 check matrix, header + 4 data rows, 3 calculation boxes, 1 circle badge, 1 button, 2 red C\u2081 labels + 4 blue C\u2082 labels per matrix).",
-      "Source anomalies preserved verbatim ('Ugmented' spelling, triple 'Z\u2081' headers, 'd(Z\u2081)' repeated in all three equations, duplicate matrix rows) and logged in uncertain_items instead of silently corrected."
+      "2026-10-24 rescue (worker w047): fresh direct frame reads of unique_slides/slide_047.jpg plus 6x/12x/20x PIL crops replaced the raw analysis' guesses; every listed uncertainty resolved from the frame.",
+      "Initial W: the frame shows THREE stacked entries 4 / -2 / -2 (12x crop; the two -2 glyphs are identical). The spec's '[4; -2]' was a truncated read -> corrected to [4; -2; -2].",
+      "Class rows: BOTH matrices print C₁ C₁ C₁ (red) then C₂ C₂ C₂ (blue) — three of each (6x crops + per-glyph colour sampling: C₁ core ~ (147,19,42), C₂ ~ (19,1,135)). The spec's 'C₁ C₁ C₂ C₂ C₂ C₂' is corrected in labels, visual_elements and brief.",
+      "Augmented matrix: the frame shows header + THREE data rows — (1 1 1 1 1 1) / (1 2 1 5 6 6) / (1 1 2 4 5 6); each column is a 3-component column vector in one spanning paren pair. The spec's 4-row version with a duplicated row was a grouping error; corrected.",
+      "Z matrix headers resolved: all three read Z₁ verbatim (ASCII bitmap of the header band: three identical Z + vertical-stroke subscript, no 2/3 curvature). NOT Z₂/Z₃ — the uncertainty is closed.",
+      "Calc-box subscripts: box 1 reads d(Z₁); boxes 2 and 3 both read d(Z₂) (20x bitmaps; the two subscripts are the same 7-px-wide glyph, distinct from box 1's 5-px '1'). Equations corrected from the spec's all-d(Z₁) to Z₁/Z₂/Z₂.",
+      "Equation bracket notation '[1 0 0; -4 0; 14]' was a garbled read: the frame shows a BLUE row vector (1 0 0) times a GREEN stacked column (14; -4; 0). Equations rewritten as (1 0 0)(14; -4; 0) = 14, etc.",
+      "Sign statements measured BLACK bold (glyph cores ~ (13,15,12)); the spec's red/blue assignment was wrong -> corrected in typography_notes, visual_elements and brief.",
+      "Legend has no space between C₂ and 'negative' ('C₂negative', measured); the block title prints 'Ugmented Vectors ( from Top )' with spaces inside the parens -> verbatim strings corrected.",
+      "Typography: the frame is SERIF (Times-like) throughout, not sans-serif; headers are lowercase italic x₁..x₆, not uppercase -> corrected.",
+      "Colours measured and recorded: cream top band #FFFFE8; dark blue accents ~#1A1A99; red ~#C00000 (flat button interior median (198,0,16)); green (14;-4;0) stack; gray-blue box borders ~#A6ACB8.",
+      "Source anomalies preserved verbatim: box 3 prints '= -2' although (1 3 2)·(14;-4;0) = +2, and it repeats d(Z₂) where the natural progression would be Z₃ — reproduced as printed."
     ],
     "uncertain_items": [
-      "All three column headers of the check matrix read 'Z\u2081 Z\u2081 Z\u2081' and all three equations read 'd(Z\u2081)'; columns/equations 2 and 3 may actually be Z\u2082/Z\u2083 (d(Z\u2082)/d(Z\u2083)) \u2014 unverifiable without the source image; reproduced verbatim.",
-      "Augmented matrix rows 3 and 4 are identical '(1)(1)(2)(4)(5)(6)'; possible extraction duplication \u2014 reproduced as-is per the JSON as single source of truth.",
-      "Equation bracket notation (e.g., '[1 0 0; -4 0; 14]') appears garbled from handwriting (ragged row lengths); reproduced verbatim; exact handwritten arrangement unverifiable.",
-      "'Ugmented' is likely 'Augmented' on the actual slide; kept verbatim per source-of-truth rule.",
-      "Fill color of the three calculation boxes is not specified in the JSON; the brief defaults to unfilled rectangles (background #F0F0F0 shows through) with black borders.",
-      "The slide appears to have no on-slide title; slide_title and subtitle_or_header are schema reconstructions, not slide text."
+      "[?] Box 3's subscript is a 3-px-tall glyph read as 'Z₂' (identical to box 2's); it may be intended as Z₃. At 960x540 it cannot be resolved beyond the pixel evidence. Reproduced as printed: d(Z₂).",
+      "[?] Exact accent hex values are JPEG-approximated from a compressed video frame (core-pixel samples); 'approximate hex' per the output contract."
     ],
-    "recreatability_score_1_to_10": 7
+    "recreatability_score_1_to_10": 9,
+    "score_rationale": "9: every content element (all text, both matrices, the three 2D equations, colours and geometry) is now resolved from the frame or PIL-measured; the only residual unknowns are one 3-px subscript glyph choice and approximate hex values from JPEG compression, neither of which blocks a faithful recreation."
   },
   "_meta": {
     "frame": "slide_047.jpg",

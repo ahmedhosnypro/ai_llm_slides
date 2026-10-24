@@ -56,9 +56,13 @@
 //     EX1 "For Example: if Features vector is of size 1000 then Inverse calculation is"
 //          ink x95..854, baseline 382 ('p' descender to 387); Arial 23.5pt (761 vs 760);
 //          RED "1000" x529..577 (prefix 432.3 -> 528.3).
-//     EX2 "or order 1,000,000,000 which is impractical"
+//     EX2 "or order 1000,000,000 which is impractical"
 //          ink x96..541, baseline 416; Arial 23.5pt (448 vs 447); RED
-//          "1,000,000,000" x189..327 (prefix 88.8 -> 184.8, 4px early - accepted).
+//          "1000,000,000" x189..327 (prefix 88.8 -> 184.8, 4px early - accepted).
+//          ATTEMPT-7 FRAME CORRECTION (2026-10-24): the frame's numeral carries TWO
+//          commas ("1000,000,000": red ink below the baseline only at x238..241 and
+//          x283..286), NOT the analysis spec's normalized "1,000,000,000" (three
+//          commas). Frame wins over the transcription (build law).
 //   YELLOW solution box: strokes center L x87.5 R x874.75, T y435.5 B y530;
 //     fill median (250,253,226) => FAFDE2; border cores avg (107,86,46) => 6B562E.
 //     "Solution:" navy 000080 bold, ink x96..176, cap 13-15, baseline 464 => Arial bold
@@ -188,6 +192,13 @@ slide.addImage({
 });
 
 // ---- dim note (baseline 211): part 1 + the green-box implication arrow + part 2 -------
+// ATTEMPT-7 FIX (2026-10-24, direct-read crop probe): the frame prints "(X^T X)" with a
+// TRUE raised superscript T and an underline bar under the FIRST X (measured on
+// unique_slides/slide_023.jpg: T ink x529..536 y192..200, X underline bar x512..526
+// y212..213). The old build reproduced the analysis spec's LINEAR transcription
+// "(X^T X)" - a literal caret plus a full-height T - which is a caret-text violation of
+// the math-format law and visibly wrong at crop zoom. The T is now its own text box at
+// the measured baseline, and the X carries the underline.
 textBox(103, 211, 320,
   [r("if Feature vectors are of dimension "), r("d", { color: RED })], 19, { color: BLACK });
 
@@ -204,7 +215,11 @@ textBox(103, 211, 320,
 textBox(436, 213, 40, [r("⇒", { color: RED })], 25,
   { color: RED, fontFace: "DejaVu Sans" });
 
-textBox(505, 211, 170, [r("(X^T X) is of size ")], 20, { color: BLACK });
+textBox(505, 211, 34, [r("("), r("X", { underline: true })], 20, { color: BLACK });
+textBox(528.9, 200.6, 16, [r("T")], 12.6, { color: BLACK });
+textBox(539, 211, 18, [r("X")], 20, { color: BLACK });
+textBox(557.0, 211, 20, [r(")")], 20, { color: BLACK });
+textBox(570.6, 211, 220, [r("is of size ")], 20, { color: BLACK });
 textBox(662, 211, 42, [r("d+1")], 20, { color: RED });
 textBox(695.4, 211, 20, [r(" x ")], 20, { color: BLACK });
 textBox(714, 211, 42, [r("d+1")], 20, { color: RED });
@@ -214,10 +229,16 @@ textBox(714, 211, 42, [r("d+1")], 20, { color: RED });
 // bullets[0]) and the frame has it: a RED comma at x831..835 y257..264 hanging 4px
 // below the baseline 260, directly after the ')' (x826..830). L2 starts "which means"
 // with no leading comma. The comma therefore belongs to the RED run, not the navy one.
+// ATTEMPT-7 FIX (2026-10-24): the frame prints O(n) with a TRUE raised superscript 3
+// (measured ink x815..821 y243..252) - the old build ran the linear caret transcription
+// "O(n^3)," (caret + full-height 3), a math-format-law violation. The 3 is now its own
+// text box at the measured baseline and ")," is a separate red box after it.
 textBox(96, 260, 760, [
   r("The standard matrix inversion algorithm has a time complexity of "),
-  r("O(n^3),", { color: RED }),
+  r("O(n", { color: RED }),
 ], 23.5, { color: NAVY });
+textBox(814.5, 254.0, 16, [r("3", { color: RED })], 15.3, { color: RED });
+textBox(822, 260, 30, [r("),", { color: RED })], 23.5, { color: RED });
 
 textBox(96, 294, 760, [
   r("which means that the computation time increases rapidly with the size of"),
@@ -234,9 +255,11 @@ textBox(96, 382, 770, [
   r(" then Inverse calculation is"),
 ], 23.5, { color: BLACK });
 
+// ATTEMPT-7 FIX (2026-10-24): "1000,000,000" (two commas) is the FRAME's verbatim
+// numeral; the spec's "1,000,000,000" carries an extra comma after the leading 1.
 textBox(96, 416, 460, [
   r("or order "),
-  r("1,000,000,000", { color: RED }),
+  r("1000,000,000", { color: RED }),
   r(" which is impractical"),
 ], 23.5, { color: BLACK });
 
@@ -251,12 +274,23 @@ textBox(96, 464, 100,
 // SOL2 'G' top terminal leans left-of-centre) - oblique terminals, not serifs.
 // The same family is already used for the "Recall" label and the blue/EX body
 // lines, so italics + `r(..., {italic:true})` is the deck-consistent choice.
+// ATTEMPT-8 FIX (2026-10-24, direct-read crop probe + stroke-width adjudication): the
+// frame sets "Least Squares" and "Gradient Descent" in BOLD italic (measured median
+// horizontal stroke run 6.0/7.0 px and p75 7.0-8.0 px against 4.0-5.0 px for the
+// surrounding regular italic words IN THE SAME image; the render carried both phrases at
+// the body weight. The earlier line-average "density" refutation could not see a
+// phrase-level emphasis; the per-word stroke measurement does). The phrases are now bold
+// runs inside the same centred italic lines.
 textBox(center(477.5, 480), 492, 480, [
-  r("Instead of using Least Squares with Matrix inversion,", { italic: true }),
+  r("Instead of using "),
+  r("Least Squares", { bold: true }),
+  r(" with Matrix inversion,"),
 ], 20, { color: NAVY, align: "center", italic: true });
 
 textBox(center(480.5, 360), 519, 360, [
-  r("use Gradient Descent iterative solution", { italic: true }),
+  r("use "),
+  r("Gradient Descent", { bold: true }),
+  r(" iterative solution"),
 ], 20, { color: NAVY, align: "center", italic: true });
 
 pptx.writeFile({ fileName: "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_023_recreated.pptx" })

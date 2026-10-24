@@ -2,30 +2,40 @@
 // ("Overfit vs. Generalized" — metadata-only title; NO title ink on the frame),
 // ML lecture 03 (03_ridger_regression_gradient_descent).
 //
-// REFRESHED 2026-10-24 (worker w009-judge-20261024): re-sourced from the
-// CERTIFIED build/slide_009.js after the attempt-2 adjudication pass, so this
-// module and slide_009_recreated.pptx are one artifact again (cascade law:
-// the previous banking, 2026-10-21, described the pre-attempt-2 build).
+// REFRESHED 2026-10-24 (worker w009): re-sourced from the CERTIFIED attempt-4/5
+// build/slide_009.js after the full-slide + six-crop certification of render_5
+// (cascade law: earlier bankings described the pre-attempt-4 build and are
+// superseded by this file).
 //
-// CERTIFICATION (2026-10-24, w009-judge-20261024):
-//   Build: recreated_pptx/build/slide_009.js -> slide_009_recreated.pptx (single
-//     plain-named version).
-//   Render: 150 dpi -> qa/slide009/render_3.png (2001x1125). House-chrome check
-//     PASS (shared_patterns/house_chrome_check.py).
-//   Visual gate: BOTH legs from render_3 — full-slide judge judge_attempt_3.txt
-//     + six zoomed crop certificates crop_3_<name>_judge.txt (Procedure B,
-//     matched effective scale, cut_crops_3.py VERDICT PASS).
-//   PIL adjudication of every raised finding: qa/slide009/adjudication_attempt_2.txt
-//     (attempt 1) and adjudication_attempt_2b.txt / adjudication_attempt_3.txt
-//     (attempts 2-3); full record in qa/slide009/worker_report.md.
+// CERTIFICATION (2026-10-24, w009):
+//   Build: recreated_pptx/build/slide_009.js (md5 dbb694bc840268f9e8008cf1307aa0ab,
+//     banked as qa/slide009/build_attempt_5.js) -> slide_009_recreated.pptx
+//     (single plain-named version, md5 9b0efe4f1255774d7c2aac4c3e2e04dc).
+//   Render: 150 dpi -> qa/slide009/render_5.png (2001x1125,
+//     md5 84c8bf3179992d74717fa070f5f8c607). House-chrome check PASS
+//     (qa/slide009/house_chrome_5.txt).
+//   Visual gate, BOTH legs from render_5: full-slide judge_attempt_5.txt PASS +
+//     six zoomed crop certificates crop_5_{eq_left,eq_right,cap_left,cap_right,
+//     chart_left,chart_right}_judge.txt each PASS (cut_crops_5.txt VERDICT PASS,
+//     matched effective scale). Pre-judge selfcheck: selfcheck_attempt_5.txt PASS
+//     (0 FIX).
+//   Attempt 4 (render_4) was a build round whose selfcheck caught the equation
+//     containment/high-placement defect; it was superseded BEFORE judging and its
+//     render is banked untouched. Attempts 1-3 and their (partly wrong) adjudication
+//     records stay banked; the attempt-3 "mm labels are hallucinations" call was
+//     disproved by direct de-rotated frame reads and is superseded by this build.
 //
 // CONTRACT: renderBase(pptx, slide, opts) draws the FULL slide — house chrome
 // (numeral 9) + the two scatter charts (each: white interior over a navy border,
-// 16x16 grid, blue fitted line, 12 orange points, pale-red diagonal stroke, red
-// axes with triangular arrowheads, the red residual marks — diamond + arrow —
-// and the LEFT chart's large solid red disc) + the two pale-cyan annotation
-// boxes with their equation PNGs + the two caption-band boxes (cream fill,
-// rose open-top outline) + the four caption lines. opts:
+// 16x16 grid, light-periwinkle dashed residual connectors from every point to its
+// perpendicular foot on the fitted line, blue fitted line, 12 orange points, the
+// measured annotation group — pale-rose dimension line from the top outlier to
+// the fitted line with a solid red arrowhead, pale-rose callout leader + red head
+// pointing at the outlier, and the rotated red '50.85 mm' / '63.64 mm' label — plus
+// the LEFT chart's large solid red disc on the dimension line and red axes with
+// triangular heads) + the two pale-cyan annotation boxes with their equation PNGs
+// + the two caption-band boxes (cream fill, rose open-top outline) + the four
+// caption lines. opts:
 //   { numeral }       — override the badge numeral (a recap variant passes its own
 //                       number; the badge numeral is ALWAYS the number printed on
 //                       the VARIANT's own original frame)
@@ -33,12 +43,15 @@
 //                       marks, axes, eqBoxes, capBoxes, captions
 //   { only: {...} }   — draw ONLY the listed blocks (a child composes its delta)
 //
-// Draw order inside BLOCKS is the certified z-order. The chart blocks are split
-// per element rather than per panel: the two panels are disjoint rectangles
-// (LEFT x95..465, RIGHT x486.5..869.5) and no element of either panel crosses
-// the other's border, so cross-block z-order is geometrically irrelevant.
-// bandMarks sits LAST: the rose underlines overlay the caption text exactly as
-// the hand annotation does on the frame.
+// Draw order inside BLOCKS is the certified z-order. Blocks are split per element
+// rather than per panel: the two panels are disjoint rectangles (LEFT x95..466,
+// RIGHT x486.5..871.5) and no element of either panel crosses the other's border,
+// so cross-block z-order is geometrically irrelevant. NOTE the residual connectors
+// are drawn inside the 'panels' block (before fittedLines/points) so the line and
+// points cover their ends; the rotated labels are inside 'marks' (after eqBoxes?
+// no — marks runs before eqBoxes; the labels sit outside the equation boxes and do
+// not overlap them). capBoxes is ordered before captions so the cream fill sits
+// under the caption ink.
 //
 // Never edit this certified module in place — copy-then-modify (cascade law).
 
@@ -58,6 +71,8 @@ const BIGRED   = "EE3145";   // the LEFT chart's large solid disc (frame core 23
 const BOXFILL  = "ECFDF9";   // annotation box fill (frame median 236,253,249)
 const BOXLINE  = "000080";   // annotation box border = navy (same as panel border)
 const INK      = "333333";   // caption remainder ink (frame core 49,51,37)
+const DIMLINE  = "ECBAC4";   // pale-rose dimension line / callout leader (frame core 240,190,200)
+const CONN     = "B4B2D2";   // light-periwinkle dashed residual connectors (frame core ~200,197,220)
 const FONT     = "Times New Roman"; // serif, matches the frame (Liberation Serif metrics)
 
 // caption-band box palette (PIL-measured 2026-10-24, frame cores)
@@ -68,7 +83,7 @@ const BAND_STROKES = [
   { x: 96,    y: 527.5, w: 337, h: 2, c: "DCBBBB" }, // LEFT bottom rule  (220,187,187)
   { x: 502,   y: 479, w: 2, h: 49, c: "D3BCB9" },   // RIGHT left vertical (211,188,185)
   { x: 839.5, y: 479, w: 2, h: 49, c: "CAA5A6" },   // RIGHT right vertical (202,165,166)
-  { x: 503,   y: 527.5, w: 337, h: 2, c: "D9BBBA" }, // RIGHT bottom rule  (217,187,186)
+  { x: 503,   y: 527.5, w: 337, h: 2, c: "D9BBBA" }, // RIGHT bottom rule (217,187,186)
 ];
 const BAND_FILLS = [
   { x: 97,  y: 480, w: 335, h: 47 },
@@ -76,11 +91,12 @@ const BAND_FILLS = [
 ];
 
 // ── equation PNG assets (600-dpi matplotlib mathtext, deck math law) ──────────
+// attempt-4 re-render: 12.1pt DejaVu Sans -> ink 702/704 px (81.9/82.1pt) wide,
+// 96px (11.2pt) tall; placed so the INK box lands on the frame's measured
+// x226..307 / x643..723, y155..167 (8px @600dpi pad = 0.8pt).
 const ASSETS = path.resolve(__dirname, "..", "assets");
 
 // ── chart panels ─────────────────────────────────────────────────────────────
-// border lines are centred on the rect edge (1pt == 1 frame px)
-// Panel measurements from probe40/probe41 (banked with build/slide_009.js):
 const PANELS = [
   { name: "LEFT",
     bx: 95,   by: 107, bw: 371, bh: 367,   // navy border rect
@@ -92,13 +108,12 @@ const PANELS = [
     headUp:   { cx: 126.5, tipY: 143, baseY: 151, halfW: 4.0 },
     headRight:{ cy: 434,   tipX: 435, baseX: 428, halfH: 3.5 },
     line: { x0: 141, y0: 351, x1: 433, y1: 201 }, // blue fitted line
-    diag: { x0: 199, y0: 198, x1: 232, y1: 241 }, // pale-red annotation stroke
+    dim: { x0: 197, y0: 146, x1: 249, y1: 292 },  // pale-rose dimension line
+    dimHead: { tipX: 249, tipY: 292, ux: 0.336, uy: 0.942, bw: 7, h: 7.5 },
+    tail: { x0: 164, y0: 167, x1: 185, y1: 157 }, // callout leader
+    tailHead: { tipX: 191, tipY: 150, ux: 0.707, uy: -0.707, bw: 6.5, h: 8 },
+    label: { text: "50.85 mm", cx: 210, cy: 212, rot: -69 },
     bigDisc: { cx: 232.5, cy: 241, d: 24.5 },     // LEFT chart only
-    // genuine red residual marks (diamond + diagonal arrow)
-    redMarks: [
-      { type: "diamond", cx: 187,   cy: 155,   d: 9 },
-      { type: "arrow",   x0: 204, y0: 199, x1: 218, y1: 233, headW: 34 },
-    ],
     points: [
       [197.5, 145.0], [188.5, 355.5], [176.5, 380.5], [242.5, 327.5], [260.5, 333.5],
       [294.0, 333.5], [324.0, 290.0], [328.5, 332.0], [381.5, 301.5], [397.5, 249.0],
@@ -114,12 +129,12 @@ const PANELS = [
     headUp:   { cx: 540,   tipY: 143, baseY: 151, halfW: 3.5 },
     headRight:{ cy: 434,   tipX: 848, baseX: 841, halfH: 3.5 },
     line: { x0: 555, y0: 387, x1: 849, y1: 247 },
-    diag: { x0: 626, y0: 208, x1: 646, y1: 264 },
+    dim: { x0: 611, y0: 147, x1: 682, y1: 324 },
+    dimHead: { tipX: 682, tipY: 324, ux: 0.372, uy: 0.928, bw: 7, h: 8 },
+    tail: { x0: 585, y0: 158, x1: 601, y1: 152 },
+    tailHead: { tipX: 607, tipY: 144, ux: 0.707, uy: -0.707, bw: 6.5, h: 8 },
+    label: { text: "63.64 mm", cx: 637, cy: 237, rot: -68 },
     bigDisc: null,
-    redMarks: [
-      { type: "diamond", cx: 602.5, cy: 149.5, d: 8 },
-      { type: "arrow",   x0: 627, y0: 212, x1: 636, y1: 232, headW: 19 },
-    ],
     points: [
       [611.0, 145.0], [601.5, 355.5], [589.5, 380.5], [656.0, 327.0], [674.0, 333.5],
       [707.5, 333.5], [737.5, 290.0], [741.5, 332.0], [794.0, 302.0], [810.0, 249.0],
@@ -128,27 +143,16 @@ const PANELS = [
 ];
 
 // ── annotation boxes + equation images ───────────────────────────────────────
-// Box: navy 1pt border centred on the rect edge, pale-cyan fill.
-// LEFT  box x216..317 y148..175 (w102 h27)
-// RIGHT box x631..734 y148..175 (w104 h27)
-// Equation PNG placed at EXACTLY the 600-dpi px/600 size (never rescaled — deck
-// math law); ix/iy/iw/ih are ALREADY IN INCHES, solved so the PNG's ~8px ink
-// inset lands its left edge on the frame's measured ink x and its top on y155.
-// Sidecars: build/assets/eq_009_{left,right}.json (for the orchestrator's OMML
-// dual-representation wrap pass; the wrap is a SEPARATE pass, not done here).
 const BOXES = [
   { x: 216, y: 148, w: 102, h: 27,
-    img: path.join(ASSETS, "eq_009_left.png"),
-    ix: 3.027778, iy: 2.041667, iw: 1.426667, ih: 0.218333 },
+    img: path.join(ASSETS, "eq_009_left_attempt4.png"),
+    ix: 3.127778, iy: 2.141667, iw: 1.195, ih: 0.185 },
   { x: 631, y: 148, w: 104, h: 27,
-    img: path.join(ASSETS, "eq_009_right.png"),
-    ix: 8.819444, iy: 2.041667, iw: 1.433333, ih: 0.218333 },
+    img: path.join(ASSETS, "eq_009_right_attempt4.png"),
+    ix: 8.919444, iy: 2.141667, iw: 1.198333, ih: 0.185 },
 ];
 
 // ── captions: 2 lines per chart, each centred on its chart (264 / 671) ───────
-// Per-line boxes; y = baseline - fontSize (LO box-top -> baseline ~1.0 em).
-// Line 1 = RED bold keyword + near-black regular remainder (two text runs);
-// line 2 = all near-black. 'Successes' sic — source grammar preserved.
 const CAP_BASE_OFF = 1.0;
 const CAPTIONS = [
   { cx: 264, base: 500, w: 380, size: 17,
@@ -163,17 +167,31 @@ const CAPTIONS = [
     runs: [["Successes to detect the Pattern", { color: INK }]] },
 ];
 
-// ── caption-band annotation boxes (frame px, 1px=1pt) ────────────────────────
-// PIL-measured on the frame 2026-10-24: each caption sits inside a CREAM-FILLED,
-// rose-outlined box that is OPEN AT THE TOP — left + right verticals plus a
-// bottom rule, no top stroke:
-//   LEFT  box x95..434 y479..529 ; RIGHT box x501..842 y479..529
-// Fill medians 251,252,236 (cream) both sides; stroke cores per side (the
-// frame's JPEG halos widen each stroke ~1-2px around the cores above).
-
 function drawChrome(pptx, slide, opts) {
   const n = opts && opts.numeral !== undefined ? opts.numeral : 9;
   drawHouseChrome(pptx, slide, { numeral: n });
+}
+
+// plain segment (no heads): left-to-right, flipV when the left end is lower
+function seg(pptx, slide, xa, ya, xb, yb, color, width, dashType) {
+  const xl = Math.min(xa, xb), xr = Math.max(xa, xb);
+  const yl = xa <= xb ? ya : yb, yr = xa <= xb ? yb : ya;
+  const line = { color: color, width: width };
+  if (dashType) line.dashType = dashType;
+  slide.addShape(pptx.ShapeType.line, {
+    x: px(xl), y: px(Math.min(yl, yr)), w: px(xr - xl), h: px(Math.abs(yr - yl)),
+    flipV: yl > yr, line: line,
+  });
+}
+
+// solid triangular head, tip at (tipX,tipY), pointing along (ux,uy)
+function head(pptx, slide, tipX, tipY, ux, uy, bw, h) {
+  const cx = tipX - ux * h / 2, cy = tipY - uy * h / 2;
+  const rot = Math.atan2(ux, -uy) * 180 / Math.PI;
+  slide.addShape(pptx.ShapeType.triangle, {
+    x: px(cx - bw / 2), y: px(cy - h / 2), w: px(bw), h: px(h),
+    rotate: rot, fill: { color: RED },
+  });
 }
 
 function drawPanels(pptx, slide) {
@@ -199,13 +217,21 @@ function drawPanels(pptx, slide) {
       const cy = p.row0 + p.rowPitch * k;
       rect(gx0, cy - 0.5, gx1 - gx0, 1, GRID);
     }
+    // residual connectors: point -> perpendicular foot on the fitted line
+    const { x0: lx0, y0: ly0, x1: lx1, y1: ly1 } = p.line;
+    const ldx = lx1 - lx0, ldy = ly1 - ly0, l2 = ldx * ldx + ldy * ldy;
+    for (const [cx, cy] of p.points) {
+      const t = ((cx - lx0) * ldx + (cy - ly0) * ldy) / l2;
+      const fx = lx0 + t * ldx, fy = ly0 + t * ldy;
+      if (Math.hypot(fx - cx, fy - cy) < 9) continue;
+      seg(pptx, slide, cx, cy, fx, fy, CONN, 0.75, "dash");
+    }
     // navy border on top
     stroked(p.bx, p.by, p.bw, p.bh, NAVY, 1);
   }
 }
 
 function drawFittedLines(pptx, slide) {
-  // 2pt (frame per-column core span 2-3px); flipV for the upward lines
   for (const p of PANELS) {
     slide.addShape(pptx.ShapeType.line, {
       x: px(p.line.x0), y: px(p.line.y1), w: px(p.line.x1 - p.line.x0),
@@ -216,7 +242,6 @@ function drawFittedLines(pptx, slide) {
 }
 
 function drawPoints(pptx, slide) {
-  // 12 orange data points per chart, d=7.5 (measured blob widths 6..8)
   for (const p of PANELS) {
     for (const [cx, cy] of p.points) {
       slide.addShape(pptx.ShapeType.ellipse, {
@@ -228,56 +253,31 @@ function drawPoints(pptx, slide) {
 }
 
 function drawMarks(pptx, slide) {
-  // pale-red diagonal annotation strokes (2pt core, pale halo) + the genuine red
-  // residual marks (diamond + diagonal arrow) + the LEFT chart's large solid
-  // disc (drawn AFTER the diagonal, so the disc covers the diagonal's end — as
-  // on the frame).
+  // measured annotation group + the LEFT chart's large solid disc + rotated label.
+  // Disc drawn after the dimension line so it covers it, as on the frame.
   for (const p of PANELS) {
-    slide.addShape(pptx.ShapeType.line, {
-      x: px(p.diag.x0), y: px(p.diag.y0), w: px(p.diag.x1 - p.diag.x0),
-      h: px(p.diag.y1 - p.diag.y0), line: { color: RED, width: 2 },
-    });
-  }
-  for (const p of PANELS) {
-    for (const m of p.redMarks) {
-      if (m.type === "diamond") {
-        // Diamond = rotated square
-        slide.addShape(pptx.ShapeType.rect, {
-          x: px(m.cx - m.d / 2), y: px(m.cy - m.d / 2),
-          w: px(m.d), h: px(m.d), rotate: 45, fill: { color: RED },
-        });
-      } else if (m.type === "arrow") {
-        // Arrow shaft
-        slide.addShape(pptx.ShapeType.line, {
-          x: px(m.x0), y: px(m.y0), w: px(m.x1 - m.x0), h: px(m.y1 - m.y0),
-          line: { color: RED, width: 3 },
-        });
-        // Arrowhead — triangle at the tip (pointing towards the data point)
-        const dx = m.x1 - m.x0, dy = m.y1 - m.y0;
-        const len = Math.hypot(dx, dy);
-        const ux = dx / len, uy = dy / len;
-        const hx = m.x1 - ux * 8, hy = m.y1 - uy * 8; // 8pt back from tip
-        const perpX = -uy, perpY = ux;
-        const hw = m.headW / 2;
-        slide.addShape(pptx.ShapeType.triangle, {
-          x: px(hx + perpX * hw), y: px(hy + perpY * hw),
-          w: px(hw * 2), h: px(8), // approximate
-          rotate: Math.atan2(dy, dx) * 180 / Math.PI - 90,
-          fill: { color: RED },
-        });
-      }
-    }
+    seg(pptx, slide, p.dim.x0, p.dim.y0, p.dim.x1, p.dim.y1, DIMLINE, 1.0);
+    head(pptx, slide, p.dimHead.tipX, p.dimHead.tipY, p.dimHead.ux, p.dimHead.uy,
+         p.dimHead.bw, p.dimHead.h);
+    seg(pptx, slide, p.tail.x0, p.tail.y0, p.tail.x1, p.tail.y1, DIMLINE, 1.0);
+    head(pptx, slide, p.tailHead.tipX, p.tailHead.tipY, p.tailHead.ux, p.tailHead.uy,
+         p.tailHead.bw, p.tailHead.h);
     if (p.bigDisc) {
       slide.addShape(pptx.ShapeType.ellipse, {
         x: px(p.bigDisc.cx - p.bigDisc.d / 2), y: px(p.bigDisc.cy - p.bigDisc.d / 2),
         w: px(p.bigDisc.d), h: px(p.bigDisc.d), fill: { color: BIGRED },
       });
     }
+    slide.addText(p.label.text, {
+      x: px(p.label.cx - 45), y: px(p.label.cy - 7), w: px(90), h: px(14),
+      align: "center", valign: "middle", margin: 0,
+      fontFace: "Arial", fontSize: 11, bold: true, color: RED,
+      rotate: p.label.rot,
+    });
   }
 }
 
 function drawAxes(pptx, slide) {
-  // red 1pt shafts centred on the measured axis + triangular arrowheads
   for (const p of PANELS) {
     slide.addShape(pptx.ShapeType.rect, {
       x: px(p.axisX - 0.5), y: px(p.axisX0), w: px(1), h: px(p.axisX1 - p.axisX0),
@@ -287,7 +287,6 @@ function drawAxes(pptx, slide) {
       x: px(p.axisY0), y: px(p.axisY - 0.5), w: px(p.axisY1 - p.axisY0), h: px(1),
       fill: { color: RED },
     });
-    // up-head (~8x8) and right-head (~6x7, rotated 90)
     slide.addShape(pptx.ShapeType.triangle, {
       x: px(p.headUp.cx - p.headUp.halfW), y: px(p.headUp.tipY),
       w: px(p.headUp.halfW * 2), h: px(p.headUp.baseY - p.headUp.tipY),
@@ -302,7 +301,6 @@ function drawAxes(pptx, slide) {
 }
 
 function drawEqBoxes(pptx, slide) {
-  // pale-cyan box (navy 1pt border) + equation PNG at exact px/600 size
   for (const b of BOXES) {
     slide.addShape(pptx.ShapeType.rect, {
       x: px(b.x), y: px(b.y), w: px(b.w), h: px(b.h),
@@ -325,7 +323,6 @@ function drawCaptions(pptx, slide) {
 }
 
 function drawBandMarks(pptx, slide) { // block name: capBoxes
-  // cream fill first, then the rose outline (fills under the caption ink)
   for (const f of BAND_FILLS) {
     slide.addShape(pptx.ShapeType.rect, {
       x: px(f.x), y: px(f.y), w: px(f.w), h: px(f.h), fill: { color: CAPFILL },
@@ -364,5 +361,5 @@ module.exports = {
   renderBase, BLOCKS,
   PANELS, BOXES, CAPTIONS, BAND_FILLS, BAND_STROKES,
   NAVY, INTERIOR, GRID, RED, BLUE, ORANGE, BIGRED, BOXFILL, BOXLINE, INK, FONT,
-  CAPFILL, ASSETS, CAP_BASE_OFF,
+  DIMLINE, CONN, CAPFILL, ASSETS, CAP_BASE_OFF,
 };

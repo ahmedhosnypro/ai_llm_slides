@@ -25,9 +25,18 @@
 //  1. typography_notes claims the captions are "bold red" THROUGHOUT. Measurement
 //     (probe44 per-row runs, probe45 font fits) shows ONLY the leading keyword is red;
 //     the remainder of line 1 and all of line 2 are near-black #333333.
-//  2. brief/dispatch ask for vertical '50.85 mm' / '63.64 mm' arrows and labels.
-//     NO 'mm' text and NO vertical double-arrow exist on the frame (probe28/29/30/44:
-//     zero dark components in that region). NOT drawn.
+//  2. brief/dispatch describe a VERTICAL double-headed '50.85 mm' / '63.64 mm' arrow.
+//     DIRECT frame re-read (2026-10-24, worker w009, attempt 4) shows the real
+//     annotation: a ROTATED (-68 deg) red label '50.85 mm' / '63.64 mm' written along a
+//     pale-rose dimension line that runs from the top-left outlier DOWN TO THE FITTED
+//     LINE and ends in a small solid red arrowhead (LEFT tip 249,292; RIGHT tip 682,324),
+//     plus a pale-rose callout leader with a red arrowhead pointing AT the outlier
+//     (LEFT head 184..190,151..159; RIGHT head 600..606,145..154), plus light-periwinkle
+//     dashed residual connectors from every orange point to the fitted line. The earlier
+//     attempt-3 adjudication (adjudication_3_chartleft.txt) classified these as
+//     hallucinations — that was WRONG: the labels are legible on the frame once the
+//     region is de-rotated. All four elements are drawn here (frame wins over the spec's
+//     vertical-arrow description; the spec's LABEL TEXT is verbatim and kept).
 //  3. Spec colours #F5F5F5 chart interior / #CCCCCC grid / #0000FF line / #FFA500
 //     points / #E0F0FF box: measurement confirms the family; the grid renders
 //     slightly lighter than #CCCCCC (cores 207..238 over a 250 interior) so D8D8D6
@@ -39,15 +48,18 @@
 //
 // ── EQUATIONS (deck math law: professional 2D format) ─────────────────────────
 //   Both are single-line with a raised superscript -> mathtext PNGs rendered by the
-//   CERTIFIED scripts/render_eq.py loaded with matplotlib's default fontset
-//   (the slide's typeface is serif/Times-like; DejaVu Sans matches measured ink
-//   proportions — see probe56_eqstix.py rejection of STIX).
-//   Size calibration (DejaVu Sans, fs=14.5) against the frame's measured ink:
-//     ink box    render 856x131px / 860x131px   frame 82x13 / 81x13
-//     digit hgt  render ~10pt                    frame 10pt (y155..166)
-//     superscript render ~7pt                     frame 6pt  (y154..161)
+//   CERTIFIED scripts/render_eq.py with matplotlib's default fontset (DejaVu Sans —
+//   the frame's equation glyphs are SANS, no serifs; the attempt-1 STIX variant was
+//   rejected on glyph shape).
+//   ATTEMPT-4 CORRECTION (2026-10-24, worker w009): the attempt-1 PNGs (14.5pt) had
+//   ink 98px wide vs the frame's measured 82px, and the placement code mistook the
+//   600dpi 8px pad for frame px, so the last glyph overlapped the box border and the
+//   line sat 5px high. Re-rendered at 12.1pt: PNG 717x111 / 719x111 px, INK 702px
+//   (81.9pt) x 96px (11.2pt) = the frame's full ink width, dark-core height equal to
+//   the frame's 10px core; ink box placed exactly on x226..307 / x643..723, y155..167.
+//   Size law kept: addImage at exact px/600 size (never rescaled).
 //   Placement: w=w_in, h=h_in at exact px/600 size (never rescaled) + eq_*.json
-//   sidecars for the orchestrator's OMML dual-representation wrap pass.
+//   sidecars (eq_009_{left,right}_attempt4.json) for a future OMML wrap pass.
 
 const path = require("path");
 const pptxgen = require("pptxgenjs");
@@ -68,6 +80,8 @@ const BIGRED    = "EE3145";   // the LEFT chart's large solid disc (frame core 2
 const BOXFILL   = "ECFDF9";   // annotation box fill (frame median 236,253,249 = pale cyan)
 const BOXLINE   = "000080";   // annotation box border = navy (same as panel border)
 const INK       = "333333";   // caption remainder ink (frame core 49,51,37)
+const DIMLINE   = "ECBAC4";   // pale-rose dimension line / callout leader (frame core 240,190,200)
+const CONN      = "B4B2D2";   // light-periwinkle dashed residual connectors (frame core ~200,197,220)
 const FONT      = "Times New Roman"; // serif, matches the frame (Liberation Serif metrics)
 
 const pptx = new pptxgen();
@@ -93,6 +107,28 @@ const ellipse = (cx, cy, d, fill) =>
     x: px(cx - d / 2), y: px(cy - d / 2), w: px(d), h: px(d),
     fill: { color: fill },
   });
+// Plain segment (no heads): always drawn left-to-right, flipV when the left end is
+// the LOWER one (pptxgenjs phantom-segment pitfall: positive w/h + flipV only).
+const seg = (xa, ya, xb, yb, color, width, dashType) => {
+  const xl = Math.min(xa, xb), xr = Math.max(xa, xb);
+  const yl = xa <= xb ? ya : yb, yr = xa <= xb ? yb : ya;
+  const line = { color: color, width: width };
+  if (dashType) line.dashType = dashType;
+  slide.addShape(pptx.ShapeType.line, {
+    x: px(xl), y: px(Math.min(yl, yr)), w: px(xr - xl), h: px(Math.abs(yr - yl)),
+    flipV: yl > yr, line: line,
+  });
+};
+// Solid triangular arrowhead with its TIP at (tipX,tipY) pointing along (ux,uy),
+// base width bw, height h (measured bbox from the frame).
+const head = (tipX, tipY, ux, uy, bw, h) => {
+  const cx = tipX - ux * h / 2, cy = tipY - uy * h / 2;
+  const rot = Math.atan2(ux, -uy) * 180 / Math.PI;
+  slide.addShape(pptx.ShapeType.triangle, {
+    x: px(cx - bw / 2), y: px(cy - h / 2), w: px(bw), h: px(h),
+    rotate: rot, fill: { color: RED },
+  });
+};
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // CHART PANELS
@@ -117,15 +153,16 @@ const PANELS = [
     headRight:{ cy: 434,   tipX: 435, baseX: 428, halfH: 3.5 },
     // Blue fitted line (measured from probe41)
     line: { x0: 141, y0: 351, x1: 433, y1: 201 },
-    // Pale-red diagonal annotation stroke
-    diag: { x0: 199, y0: 198, x1: 232, y1: 241 },
-    // Large red disc (left chart only)
+    // Annotation group measured from the frame 2026-10-24 (PIL + de-rotated reads):
+    // pale-rose dimension line outlier -> fitted line, red head at the line end,
+    // pale-rose callout leader + red head pointing at the outlier, rotated label.
+    dim: { x0: 197, y0: 146, x1: 249, y1: 292 },
+    dimHead: { tipX: 249, tipY: 292, ux: 0.336, uy: 0.942, bw: 7, h: 7.5 },
+    tail: { x0: 164, y0: 167, x1: 185, y1: 157 },
+    tailHead: { tipX: 191, tipY: 150, ux: 0.707, uy: -0.707, bw: 6.5, h: 8 },
+    label: { text: "50.85 mm", cx: 210, cy: 212, rot: -69 },
+    // Large red disc (left chart only) — sits ON the dimension line
     bigDisc: { cx: 232.5, cy: 241, d: 24.5 },
-    // Genuine red residual marks (diamond + diagonal arrow)
-    redMarks: [
-      { type: "diamond", cx: 187,   cy: 155,   d: 9 },
-      { type: "arrow",   x0: 204, y0: 199, x1: 218, y1: 233, headW: 34 },
-    ],
     // Data points (12 orange, measured from probe41)
     points: [
       [197.5, 145.0], [188.5, 355.5], [176.5, 380.5], [242.5, 327.5], [260.5, 333.5],
@@ -145,12 +182,15 @@ const PANELS = [
     headUp:   { cx: 540,   tipY: 143, baseY: 151, halfW: 3.5 },
     headRight:{ cy: 434,   tipX: 848, baseX: 841, halfH: 3.5 },
     line: { x0: 555, y0: 387, x1: 849, y1: 247 },
-    diag: { x0: 626, y0: 208, x1: 646, y1: 264 },
+    // Annotation group measured from the frame 2026-10-24 (same pattern as LEFT):
+    // dimension line ends in a red head ON the fitted line at (682,324) — the text
+    // glyphs end at (650,264); the pale line continues to the line.
+    dim: { x0: 611, y0: 147, x1: 682, y1: 324 },
+    dimHead: { tipX: 682, tipY: 324, ux: 0.372, uy: 0.928, bw: 7, h: 8 },
+    tail: { x0: 585, y0: 158, x1: 601, y1: 152 },
+    tailHead: { tipX: 607, tipY: 144, ux: 0.707, uy: -0.707, bw: 6.5, h: 8 },
+    label: { text: "63.64 mm", cx: 637, cy: 237, rot: -68 },
     bigDisc: null,
-    redMarks: [
-      { type: "diamond", cx: 602.5, cy: 149.5, d: 8 },
-      { type: "arrow",   x0: 627, y0: 212, x1: 636, y1: 232, headW: 19 },
-    ],
     points: [
       [611.0, 145.0], [601.5, 355.5], [589.5, 380.5], [656.0, 327.0], [674.0, 333.5],
       [707.5, 333.5], [737.5, 290.0], [741.5, 332.0], [794.0, 302.0], [810.0, 249.0],
@@ -177,7 +217,19 @@ for (const p of PANELS) {
     rect(gx0, cy - 0.5, gx1 - gx0, 1, GRID);
   }
 
-  // 3. blue fitted line (2pt; frame per-column core span 2-3px)
+  // 3. light-periwinkle DASHED residual connectors: one per point, from the point
+  //    centre to its perpendicular foot on the fitted line (frame shows them under
+  //    the points and under the line; distances < 9px have no visible connector).
+  const { x0: lx0, y0: ly0, x1: lx1, y1: ly1 } = p.line;
+  const ldx = lx1 - lx0, ldy = ly1 - ly0, l2 = ldx * ldx + ldy * ldy;
+  for (const [cx, cy] of p.points) {
+    const t = ((cx - lx0) * ldx + (cy - ly0) * ldy) / l2;
+    const fx = lx0 + t * ldx, fy = ly0 + t * ldy;
+    if (Math.hypot(fx - cx, fy - cy) < 9) continue;
+    seg(cx, cy, fx, fy, CONN, 0.75, "dash");
+  }
+
+  // 4. blue fitted line (2pt; frame per-column core span 2-3px)
   //    pptxgenjs line: x/y is top-left of bbox; w/h is bbox; use flipV for upward lines
   slide.addShape(pptx.ShapeType.line, {
     x: px(p.line.x0), y: px(p.line.y1), w: px(p.line.x1 - p.line.x0),
@@ -185,20 +237,33 @@ for (const p of PANELS) {
     line: { color: BLUE, width: 2 },
   });
 
-  // 4. 12 orange data points, d=7.5 (measured blob widths 6..8)
+  // 5. 12 orange data points, d=7.5 (measured blob widths 6..8)
   for (const [cx, cy] of p.points) ellipse(cx, cy, 7.5, ORANGE);
 
-  // 5. pale-red diagonal annotation stroke (2pt; measured core 2-3px, pale halo)
-  slide.addShape(pptx.ShapeType.line, {
-    x: px(p.diag.x0), y: px(p.diag.y0), w: px(p.diag.x1 - p.diag.x0),
-    h: px(p.diag.y1 - p.diag.y0), line: { color: RED, width: 2 },
+  // 6. annotation group (measured geometry, 2026-10-24):
+  //    pale-rose dimension line + red head at the fitted-line end, pale-rose callout
+  //    leader + red head pointing at the outlier, then the large red disc (LEFT only,
+  //    drawn AFTER the dimension line so it covers it — as on the frame).
+  seg(p.dim.x0, p.dim.y0, p.dim.x1, p.dim.y1, DIMLINE, 1.0);
+  head(p.dimHead.tipX, p.dimHead.tipY, p.dimHead.ux, p.dimHead.uy, p.dimHead.bw, p.dimHead.h);
+  seg(p.tail.x0, p.tail.y0, p.tail.x1, p.tail.y1, DIMLINE, 1.0);
+  head(p.tailHead.tipX, p.tailHead.tipY, p.tailHead.ux, p.tailHead.uy, p.tailHead.bw, p.tailHead.h);
+  if (p.bigDisc) ellipse(p.bigDisc.cx, p.bigDisc.cy, p.bigDisc.d, BIGRED);
+
+  // 7. rotated measurement label ('50.85 mm' / '63.64 mm'), red bold, written along
+  //    the dimension line (frame: rotated ~-68..-69 deg, reading bottom-to-top).
+  slide.addText(p.label.text, {
+    x: px(p.label.cx - 45), y: px(p.label.cy - 7), w: px(90), h: px(14),
+    align: "center", valign: "middle", margin: 0,
+    fontFace: "Arial", fontSize: 11, bold: true, color: RED,
+    rotate: p.label.rot,
   });
 
-  // 6. red axes (1pt shafts, centred on the measured axis)
+  // 8. red axes (1pt shafts, centred on the measured axis)
   rect(p.axisX - 0.5, p.axisX0, 1, p.axisX1 - p.axisX0, RED); // vertical
   rect(p.axisY0, p.axisY - 0.5, p.axisY1 - p.axisY0, 1, RED); // horizontal
 
-  // 7. triangular arrowheads (measured ~8x8 for the up-head, ~6x7 for the right-head)
+  // 9. triangular arrowheads (measured ~8x8 for the up-head, ~6x7 for the right-head)
   slide.addShape(pptx.ShapeType.triangle, {
     x: px(p.headUp.cx - p.headUp.halfW), y: px(p.headUp.tipY),
     w: px(p.headUp.halfW * 2), h: px(p.headUp.baseY - p.headUp.tipY),
@@ -210,39 +275,7 @@ for (const p of PANELS) {
     rotate: 90, fill: { color: RED },
   });
 
-  // 8. red marks: small solid discs (+ the LEFT chart's large solid disc)
-  //    Also draw the genuine red residual marks (diamond + arrow)
-  for (const m of p.redMarks) {
-    if (m.type === "diamond") {
-      // Diamond = rotated square
-      slide.addShape(pptx.ShapeType.rect, {
-        x: px(m.cx - m.d / 2), y: px(m.cy - m.d / 2),
-        w: px(m.d), h: px(m.d), rotate: 45, fill: { color: RED },
-      });
-    } else if (m.type === "arrow") {
-      // Arrow shaft
-      slide.addShape(pptx.ShapeType.line, {
-        x: px(m.x0), y: px(m.y0), w: px(m.x1 - m.x0), h: px(m.y1 - m.y0),
-        line: { color: RED, width: 3 },
-      });
-      // Arrowhead — triangle at the tip (pointing towards the data point)
-      const dx = m.x1 - m.x0, dy = m.y1 - m.y0;
-      const len = Math.hypot(dx, dy);
-      const ux = dx / len, uy = dy / len;
-      const hx = m.x1 - ux * 8, hy = m.y1 - uy * 8; // 8pt back from tip
-      const perpX = -uy, perpY = ux;
-      const hw = m.headW / 2;
-      slide.addShape(pptx.ShapeType.triangle, {
-        x: px(hx + perpX * hw), y: px(hy + perpY * hw),
-        w: px(hw * 2), h: px(8), // approximate
-        rotate: Math.atan2(dy, dx) * 180 / Math.PI - 90,
-        fill: { color: RED },
-      });
-    }
-  }
-  if (p.bigDisc) ellipse(p.bigDisc.cx, p.bigDisc.cy, p.bigDisc.d, BIGRED);
-
-  // 9. navy border on top
+  // 10. navy border on top
   stroked(p.bx, p.by, p.bw, p.bh, NAVY, 1);
 }
 
@@ -257,29 +290,20 @@ for (const p of PANELS) {
 const ASSETS = path.resolve(__dirname, "assets");
 const BOXES = [
   // LEFT: x216..317 (w102), y148..175 (h27)
+  // Attempt 4 (2026-10-24): the attempt-1 PNG (14.5pt DejaVu) rendered ink 98px wide —
+  // 16px wider than the frame's measured 82px — and was placed with PNG-px padding
+  // mistaken for frame px, so its last glyph overlapped the box border and it sat 5px
+  // high. Re-rendered at 12.1pt (ink 702px = 81.9pt wide, 96px tall; certified
+  // render_eq.py, DejaVu Sans = the frame's sans family) and placed so the INK box
+  // lands exactly on the frame's measured ink bbox x226..307, y155..167.
+  // PNG pad = 8px @600dpi = 0.8pt -> image x = (226-0.8)/72, y = (155-0.8)/72.
   { x: 216, y: 148, w: 102, h: 27,
-    img: path.join(ASSETS, "eq_009_left.png"),
-    // PNG ink box: w_px=856, h_px=131, baseline=121 from top
-    // Ink starts ~8px from image left/top. We want ink left at x226, top at y155.
-    // Image left = 216 + 8 = 224 (frame px) -> 224/72 = 3.111in
-    // Image top  = 148 + 8 = 156 -> 156/72 = 2.167in
-    // But the PNG is 856px wide = 1.42667in. Ink box inside is 856-16 = 840px = 1.4in.
-    // Measured ink width on frame: 82px = 1.139in. So scale factor = 1.139/1.4 = 0.814.
-    // Better: place the PNG so its ink box lands on the frame's ink box.
-    // PNG ink left = 8px, ink right = 856-8 = 848px. Frame ink left = 226, right = 307.
-    // So PNG x = (226 - 8) / 72 = 218/72 = 3.0278in
-    // PNG y = (155 - 8) / 72 = 147/72 = 2.0417in
-    // PNG w = 856/600 = 1.42667in, h = 131/600 = 0.21833in
-    ix: 3.0278, iy: 2.0417, iw: 1.42667, ih: 0.21833,
-  },
-  // RIGHT: x631..734 (w104), y148..175 (h27)
-  // Frame ink left = 643, right = 723
-  // PNG ink left = 8px -> PNG x = (643 - 8) / 72 = 635/72 = 8.8194in
-  // PNG y = (155 - 8) / 72 = 147/72 = 2.0417in
+    img: path.join(ASSETS, "eq_009_left_attempt4.png"),
+    ix: 3.127778, iy: 2.141667, iw: 1.195, ih: 0.185 },
+  // RIGHT: x631..734 (w104), y148..175 (h27); ink target x643..723, y155..167
   { x: 631, y: 148, w: 104, h: 27,
-    img: path.join(ASSETS, "eq_009_right.png"),
-    ix: 8.8194, iy: 2.0417, iw: 1.43333, ih: 0.21833,
-  },
+    img: path.join(ASSETS, "eq_009_right_attempt4.png"),
+    ix: 8.919444, iy: 2.141667, iw: 1.198333, ih: 0.185 },
 ];
 
 for (const b of BOXES) {
