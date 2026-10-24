@@ -177,7 +177,7 @@ slide.addTable(midTableData, {
   row: { h: px(55 / 3) },
 });
 
-eq("eq_021_det5685.png", 338, 354, 1064, 215);
+eq("eq_021_d5685.png", 338, 354, 1064, 215);
 arrow(489, 368, 505, 368, BLUE, 2);
 textAt("Non-Singular Matrix", 495, 358, 378, { boxW: 210, fontSize: 23.5, color: BLACK });
 arrow(728, 368, 744, 368, BLUE, 2);
