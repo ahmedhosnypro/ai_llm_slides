@@ -314,3 +314,80 @@ numbers above, then certify with `set` (`no record-visual subcommand`):
 Zero web queries. Slide 005's research leg is already `CONFIRMED` in `SOURCES_MAP.md`
 (CS229 notes, fetched live), so the economy law's sibling-record check applied.
 
+
+---
+
+# Lane section — `w005-attempt9-resume-20261024` (2026-10-24 18:00 → 19:18Z)
+
+## Resume state
+- Claimed with `VIDEO=... python3 scripts/15_progress.py claim 5 w005-attempt9-resume-20261024`.
+- Row was dependency-free (`deps`); no parent, no pattern gate.
+- Build fix phase SKIPPED by law: the current deliverable/render currency was proven with a
+  fresh LibreOffice render. No rebuild occurred and no certified component was edited in place.
+
+## Local verification re-run by this lane (no vision calls)
+- `qa/slide005/resume_local_verify_attempt9.txt` is banked.
+- Fresh render: `scratch/tmp/w005_attempt9_fresh/slide-1.png` is byte-identical to
+  `qa/slide005/render_9.png`; both md5 `01bcb967f29e502e99e80925aa320599`.
+- Deliverable md5: `58de0cb2c39c5ef004e60d9f000a48a9`
+  (`slide_005_recreated.pptx`).
+- Build script md5: `6a65b1f67c4e30a27929281f02c1a214`.
+- Payload byte-fidelity: all 5 attempt-9 payloads PASS against
+  `shared_patterns/judge_protocol_03.md`.
+- Crop-pair currency/scale: all 4 pairs current; matched effective scales ~2.083-2.086 per axis.
+- House chrome: PASS.
+- Pre-judge selfcheck remains `OVERALL SELFCHECK attempt 8: PASS`; worst ink-band deviation
+  is `3.64` frame px against `TOL 8`.
+
+## Late-landing-transcript re-glob (timeout kills observation, not files)
+Re-globbed the entire bank at 19:00Z:
+- No `judge_attempt_9.txt` exists.
+- No `crop_9_*_judge.txt` exists.
+- Existing `judge_attempt_6.txt` is the only real prior verdict and is stale/not attempt 9.
+- No banked `FINAL VERDICT` belongs to attempt 9 or render_9.
+- `visual_attempts` remains `0` because no vision leg was dispatched.
+
+## Park state — gateway congestion, NOT a slide defect
+Gate law was followed exactly before any vision call:
+- 19:00Z probe: `analyzer_count=13` → `>=8`, do not dispatch.
+- 19:04Z re-probe after heartbeat + sleep 240: `analyzer_count=11`.
+- 19:11Z final allowed hourly re-probe after heartbeat + sleep 240: `analyzer_count=10`.
+- Hourly two-probe quota consumed. No Template A leg and no Procedure B crop leg was dispatched.
+- This follows the image-analysis routing/storm doctrine and the deck gate law; it is an honest
+  park, not a fabricated verdict.
+
+## Exact resume commands
+```bash
+cd "$PWD/ai_llm_slides"
+export TMPDIR="$PWD/scratch/tmp"
+Q="$PWD/videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide005"
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py claim 5 w005-attempt9-resume-<stamp>
+echo -n 'analyzer_count='; pgrep -c -f analyze_image.py || echo 0
+bash "$Q/dispatch_attempt9/leg_A_full_slide.sh"
+for r in eq_stack blue_upper pink_band lower_eqs; do
+  echo -n 'analyzer_count='; pgrep -c -f analyze_image.py || echo 0
+  bash "$Q/dispatch_attempt9/leg_B_$r.sh"
+done
+```
+
+## Certification still required
+`gen_status=passed` and `visual_check=PASS` must NOT be written yet. Certification requires:
+1. Template A full-slide PASS from `judge_attempt_9.txt`; and
+2. all four crop-pair legs clean or PIL-adjudicated in
+   `crop_9_{eq_stack,blue_upper,pink_band,lower_eqs}_judge.txt`.
+
+When both are real, use:
+```bash
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py set 5 visual_check PASS --worker <worker-id>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py set 5 visual_transcript videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide005/judge_attempt_9.txt --worker <worker-id>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py set 5 visual_attempts 5 --worker <worker-id>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py set 5 gen_status passed --worker <worker-id>
+VIDEO=machine-learning/03_ridger_regression_gradient_descent python3 scripts/15_progress.py release 5 <worker-id>
+```
+Use the actual count only if all five vision attempts are truly run; otherwise use the number of
+actually dispatched judge legs.
+
+## Final DB row after this lane
+`gen_status=building`, `visual_check=null`, `visual_attempts=0`,
+`visual_transcript=null`, `pptx_path=videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_005_recreated.pptx`,
+`worker_id=""`, and `last_error=null`. The lane was released cleanly at 2026-10-24T19:18Z.

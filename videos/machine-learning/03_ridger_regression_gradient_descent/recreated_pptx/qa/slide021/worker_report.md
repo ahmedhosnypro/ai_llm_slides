@@ -822,3 +822,91 @@ transcript), `adjudicate_crops_1200.py` (crop-region PIL measurements in frame p
 images), `legs_status_crops_remaining_20261024.md` (full gate-poll + 504 evidence log),
 `judge_attempt_10.txt` (Leg A PASS), `crop_10_top_table_eq_judge.txt` (crop B1 PASS),
 `scratch/tmp/021_crop_adjudication_baseline.txt`, `scratch/tmp/crops4_pid*.txt`.
+
+---
+
+# 2026-10-24 (re-anchor #2) — lane w021-legs-20261024
+
+Session lost contact again mid-monitor. Bank-first re-glob before anything else (a timeout
+kills observation, not files).
+
+## Bank-first re-glob
+
+- `judge_attempt_10.txt` (2662 B, 11:13:00Z) — `FINAL VERDICT: PASS`. Landed, unchanged.
+- `crop_10_top_table_eq_judge.txt` (2653 B, 11:33:21Z) — `FINAL VERDICT: PASS`. Landed.
+- `crop_10_top_chain_judge.txt`, `crop_10_mid_table_eq_judge.txt`,
+  `crop_10_mid_chain_judge.txt`, `crop_10_bot_eq_table_judge.txt` — **no transcript on
+  disk at all**. Counted as "due", not as verdicts. Nothing new landed during the gap.
+- Only files touched since 18:00 are this lane's own: `dispatch_leg2_crops_fresh.sh`
+  (18:01), `worker_report.md` (18:06), `legs2_fresh_resume.log` (18:10).
+
+## What the session loss took with it (and the fix)
+
+The previous relaunch used plain `nohup … &`, which still dies with the session's process
+group — both dispatchers (the peer's `dispatch_one_crop_10.sh` and my
+`dispatch_leg2_crops_fresh.sh`) were gone when I re-globbed, mid-poll, having dispatched
+nothing. The gate had since come down to 10–13 (from 33–36), so a window was in reach and
+was being wasted.
+
+**Fix: `setsid`.** Both workers below are now in their own sessions (PID 17905 and
+PID 21945, both with `sid == pid`), so a session exit no longer kills them.
+
+## Live workers now running (detached)
+
+| script | PID | role |
+|---|---|---|
+| `dispatch_leg2_crops_fresh.sh` | 17905 | dispatcher for the four due crops, `SLUGS="mid_table_eq mid_chain bot_eq_table top_chain"`, `POLL_MAX=21600`, `POLL_EVERY=240`, `WID=w021-legs-20261024` |
+| `certify_watch_021.sh` | 21945 | observer/certifier; never dispatches a vision call |
+
+Both run the orchestrator-approved wall: analyzer `--timeout 1200` inside the unchanged
+outer `timeout 1700`, `--thinking high --max-tokens 65536`, `--rounds 1 --tries 1`,
+payload `-p` byte-unchanged (md5 `b5b152e31e2ca54989eff597374025fb` verified immediately
+before launch). Every vision call is preconditioned on `pgrep -c -f analyze_image.py < 8`;
+when the gate is closing, each poll sends a heartbeat and sleeps 240 s. No retry loops.
+
+`dispatch_leg2_crops_fresh.sh` also now SKIPS any crop whose transcript already carries a
+`FINAL VERDICT:` line, so no banked verdict can ever be overwritten — this is why
+`top_chain` is last in the slug list: the dead peer dispatcher's `top_chain` attempt is
+preserved by the skip rather than re-run.
+
+## Strict auto-certifier (`certify_watch_021.sh`) — safety is in the gates, not the loop
+
+`certify_watch_021.sh` exists because two session losses showed the lane cannot rely on me
+observing a landing. It is deliberately **narrow**:
+
+- fires only when all five `crop_10_*_judge.txt` transcripts carry a real
+  `FINAL VERDICT:` line **and** every one of them reads `FINAL VERDICT: PASS`;
+- otherwise, if any transcript's verdict is not PASS it logs that and **stops without
+  certifying** (a FAIL/MINOR needs PIL adjudication first, never auto-written);
+- also refuses to certify (`exit 43/44/45`) if the crop payload md5 drifts, if
+  `render_10.png` md5 drifts, or if `judge_attempt_10.txt` stops being PASS;
+- never dispatches a vision call itself; one dispatch per crop remains spent by the
+  dispatcher;
+- it banks `adjudicate_crops_1200.py` output to `adjudicate_crops_final.txt` before
+  writing the DB, so the PIL record exists even in the fully-automatic path;
+- then runs exactly the DB-law sequence (`set 21 … --worker <id>` × 4, `release`, `get 21`).
+
+Verified before launch: `bash -n` clean; the two md5 constants in the script match the
+banked files on disk (`render_10.png` `a17310a3…`, payload `b5b152e3…`).
+
+## DB state at this re-anchor
+
+| field | value |
+|---|---|
+| gen_status | `building` |
+| visual_check | `""` (not PASS) |
+| visual_attempts | `10` |
+| visual_transcript | `.../qa/slide021/judge_attempt_10.txt` |
+| worker_id | `w021-legs-20261024` |
+| worker_heartbeat_at | live, refreshed by both workers |
+
+The honest park `last_error` from the previous section is unchanged and still accurate.
+
+## Nothing adjudicated this window
+
+No leg landed a verdict during the gap, so no FAIL/MINOR to adjudicate. The banked PIL
+baseline (all four regions within 2–4 px, attempt-3 claims 1–7 refuted) stands.
+
+Note on `judge_attempt_3.txt`: SUPERSEDED-build history (attempt-3, pre-fix). Never
+certify or fix against it; its findings are addressed by the attempt-10 build fixes
+recorded in this report's earlier section.

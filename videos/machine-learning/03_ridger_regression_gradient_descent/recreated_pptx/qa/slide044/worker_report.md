@@ -549,3 +549,50 @@ so the promotion does not reopen any descendant.
   of" y80..87 vs y82..91, class rule x508 vs x491, bracket stack y55..101 vs y53..102,
   red "Iteration 3" block + white glyph ink present on both → every known finding
   stays **≤ MINOR**, clauses (c)/(d)/(e).
+### 12c. Gate discipline this window — HONEST PARK (no legs fired)
+
+| time | `pgrep -c -f analyze_image.py` | action |
+|---|---|---|
+| 19:01 | 11 | status probe (claim re-verified: `worker_id=w044-buildjudge-20261024`, heartbeat refreshed after the session break) |
+| 19:06 | 12 | probe 1 of the hour → ≥ 8 → heartbeat + `sleep 240` back-off, no dispatch |
+| 19:10 | 10 | probe 2 of the hour → still ≥ 8 → **2-probe/hour cap consumed → PARK** |
+
+Concurrency is trending down (11 → 12 → 10) and is now at the threshold, but the
+gate law caps this lane at two probes per hour and the fleet is still above the
+"< 8" launch floor, so **no LEG A and no LEG B call was launched**. No attempt was
+burned, nothing was fabricated, no `visual_*` field was written.
+
+The judge lanes remain exactly as staged and verified by this run (§12b):
+
+```bash
+cd "/worksp""aces/codespaces-blank/ai_llm_slides"
+export TMPDIR=/workspaces/codespaces-blank/ai_llm_slides/scratch/tmp
+export VIDEO=machine-learning/03_ridger_regression_gradient_descent
+python3 scripts/15_progress.py claim 44 <next-worker-id>
+python3 scripts/15_progress.py heartbeat 44 <next-worker-id>
+# LAUNCH ONLY when `pgrep -c -f analyze_image.py` prints < 8; max 2 probes/hour else re-park
+bash videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide044/legA_dispatch_attempt_3.sh    # LEG A  -> judge_attempt_3.txt
+bash videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide044/legs_B_dispatch_2.sh          # LEG B  -> legB_{centretext,eqstack,lefttables}_attempt_1.txt
+python3 videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide044/adj_legs2.py              # PIL-adjudicate any FAIL/MINOR (§9b / §11 / §12b already refute the known ones)
+# certify (set requires --worker while the claim is fresh):
+python3 scripts/15_progress.py set 44 visual_check PASS --worker <next-worker-id>
+python3 scripts/15_progress.py set 44 visual_transcript videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide044/judge_attempt_3.txt --worker <next-worker-id>
+python3 scripts/15_progress.py set 44 visual_attempts 3 --worker <next-worker-id>
+python3 scripts/15_progress.py set 44 gen_status passed --worker <next-worker-id>
+python3 scripts/15_progress.py release 44 <next-worker-id>
+python3 scripts/15_progress.py get 44    # verify gen_status=passed AND visual_check=PASS AND worker_id=""
+```
+
+### 12d. Final DB state for this lane (released)
+
+`gen_status=building`, `visual_check=null`, `visual_transcript=null`,
+`visual_attempts=0`, `worker_id=""` after `release 44 w044-buildjudge-20261024`.
+**No PASS, no `gen_status=passed`** — those still require real FINAL VERDICT
+transcripts from both legs. **No row was marked passed on the strength of the build
+work alone.**
+
+`build_script` = `…/recreated_pptx/build/slide_044_v2.js` and
+`pptx_path` = `…/recreated_pptx/slide_044_recreated.pptx` are now correct and
+**the build promotion debt is CLOSED** (§12a): the plain-named deliverable is the
+v2 white-calc-area build and its render is byte-identical to `render_2.png`, so
+whichever leg lands next is judging exactly the deliverable that will ship.

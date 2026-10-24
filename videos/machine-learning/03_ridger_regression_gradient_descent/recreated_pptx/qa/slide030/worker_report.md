@@ -194,3 +194,76 @@ skipped. To be launched only when v5 exits and no duplicate leg is in flight.
   shape and tilt, so MINOR at most); plot point labels ~3 px smaller
   (orig (5,1) bbox 698..223 vs render 696.1..715.3). Both PIL-surfaced and
   neither is a content defect.
+
+## 7. 2026-10-24 ~19:05 — session-restart resume + PIL forensics (w030-finish-20261024c)
+
+### Restart state (nothing assumed)
+Re-glob of `qa/slide030/*judge*.txt`: only `crop_6_formula_judge.txt` (2310 B, 13:41)
+carries a real `FINAL VERDICT:` body. `judge_attempt_6.txt` still absent — no
+Template A verdict has ever landed for this slide. The v5 dispatcher was killed
+by the session exit (last log line 17:55); the DB claim survived
+(`get 30`: gen_status=building, visual_check=null, visual_attempts=1,
+worker_id=w030-finish-20261024c, heartbeat stamped 17:49) and was re-heartbeated.
+`dispatch_legs_6_v6.sh` relaunched detached 18:58 — it re-checks EVERY leg each
+outer round and fires Leg A first (v5 had burned Leg A on a fast 504 and never
+revisited it).
+
+### Scale bug found in the earlier baseline (corrected this cycle)
+`measure_w030.py` converted ORIGINAL pixels with the RENDER's scale factor
+(SX = 2001/960 = 2.0844) instead of the original's own 1.0, so every
+original-frame bbox was halved and any window starting past orig column ~460
+came back empty (`orig=None` for the plot / iter table / arrow / callout).
+Corrected copy: `measure_w030_b.py` → `measure_output_6b.txt` (each image
+converted with its own scale). The corrected render-vs-orig alignment, frame px:
+
+| region | render bbox | orig bbox | delta pos | delta size |
+|---|---|---|---|---|
+| title | 57.6,64.3–599.7,99.4 | 58,66–574,99 | (-0.4,-1.7) | (+26.1,+2.1) |
+| param_table | 102.2,198.2–237.0,281.3 | 103,199–237,281 | (-0.8,-0.8) | (+0.8,+1.1) |
+| upper_eq_box | 398.2,184.3–530.1,212.2 | 399,185–530,212 | (-0.8,-0.7) | (+0.9,+0.9) |
+| green_box | 346.9,232.8–554.1,281.3 | 348,234–554,281 | (-1.1,-1.2) | (+1.2,+1.5) |
+| callout band | 333.9,291.4–569.0,320.2 | 335,292–569,320 | (-1.1,-0.6) | (+1.1,+0.8) |
+| plot_frame | 570.9,64.3–809.8,311.0 | 573,66–810,310 | (-2.1,-1.7) | (+1.9,+2.7) |
+| iter_table | 76.8,324.0–653.9,530.4 | 78,325–654,530 | (-1.2,-1.0) | (+1.1,+1.4) |
+
+→ every region sits within ~2 frame px of the original in BOTH position and
+size. Callout text colour matches too: render text pixels inside the purple
+band are white (median 255,255,255), original's are near-white (241,225,230),
+purple band heights 28.8 vs 28.0 frame px (`measure_w030_c.py`,
+`measure_output_6c.txt`).
+
+### ARROW forensics (`arrow_rows_w030.py` → `arrow_rows_output_6.txt`,
+### `shape_map_w030.py` → `shape_map_output_6.txt`)
+Both images carry the SAME arrow family: a double-headed red arrow (up wedge at
+the top, two outline flanks, a V tip at the bottom). Measured, frame px:
+
+| feature | render | original | delta |
+|---|---|---|---|
+| top head tip | (182, 304.3) | (187, 304) | 5 px left |
+| top head base | x177..190 @y307 | x184..193 @y306 | ~5 px left, 13 px vs 9 px wide |
+| bottom head tip | ≈(179, 333.5) | (177.5, 340) | 6.5 px higher, 1.5 px right |
+| total height | 29.5 px | 36 px | 6.5 px shorter |
+| major-axis angle | 109.1° | 110.4° | 1.3° |
+
+The build draws `ST.downArrow` at x173,y306,w19,h30, rotate 15, white fill with
+a C00000 outline (`recreated_pptx/build/slide_030.js:317-324`), whose comment
+claims the measured bbox x172..194 y304..340; the RENDER lands at
+x170..191, y304..333.5 — LibreOffice's rotated-shape geometry, ~6 px short at
+the tip and ~5 px left at the head. → **MINOR-class geometry difference**
+(same double-headed form, same pointing direction at the iteration table, no
+content error). NOT a phantom: both tips and both flanks are present in both
+images; the ink is 135 px (render) / 224 px (orig) in the region, far above the
+3-px noise floor. No build change until a judge verdict says otherwise.
+
+The small red mark at x169.8..173.7, y341.3..347.0 (71 px, exact house red
+C00000) that looked like a stray artifact is the INTENDED red "3" of the
+iteration table's first value cell (build `redCells: [[0,1],[0,11]]`, group 1
+starts x=89/y=334, label col 61 px + 44 px value cols → col 1 centre x≈172).
+Not a defect.
+
+### Adjudication posture (banked, pending verdicts)
+- formula PASS → all 5 MINORs PIL-adjudicated, no build change (section 5).
+- arrow → MINOR geometry difference quantified above (pending the arrow crop
+  verdict; if a verdict escalates it, fix = adjust the arrow shape, re-render,
+  re-cut crops, re-run BOTH affected legs).
+- plot point labels ~3 px smaller than the original's (MINOR-class).

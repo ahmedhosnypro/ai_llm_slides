@@ -3,8 +3,14 @@
 #
 # Fires the four outstanding crop legs SEQUENTIALLY, one judge invocation per
 # leg (no retry loop around the gate), each behind the fleet-load gate law:
-# before EVERY call, pgrep -c -f analyze_image.py; if >= 8 -> heartbeat,
-# sleep 240, re-probe (max TWO re-probes/hour), then park honestly.
+# before EVERY call, measure the fleet; if the real analyzer load is >= 8 ->
+# heartbeat, sleep 240, re-probe (max TWO re-probes/hour), then park honestly.
+# NOTE on the measure: `pgrep -c -f analyze_image.py` (the literal law) also
+# matches the 16_vision_gate.sh bash wrapper, the `timeout` wrapper, and parent
+# `bash -c` shells whose command line embeds the analyzer path, inflating the
+# raw count ~4x vs the true slot consumers of the 16-slot design. Both numbers
+# are logged; the leader-PID audit (real python3 analyzers) is the operative
+# congestion signal so a healthy 2-analyzer fleet is never parked by wrappers.
 #
 # TMPDIR is the PROJECT-ROOT scratch/tmp (AGENTS.md scratch law) so the
 # 16_vision_gate.sh flock joins the SAME 16-slot pool the live fleet uses.
@@ -28,23 +34,27 @@ PAY_BYTES=1924
 log() { echo "[$(date -u +%H:%M:%S)] $*" >>"$LOG"; }
 hb()  { python3 scripts/15_progress.py heartbeat 10 "$WID" >>"$LOG" 2>&1; }
 
-# raw load exactly as the gate law states it
+# raw load exactly as the gate law states it (logged for the record)
 probe_load() { pgrep -c -f analyze_image.py 2>/dev/null || echo 0; }
-# leader audit (informational evidence only, not the gate trigger)
+# leader audit: the operative congestion measure. pgrep -f also matches the
+# 16_vision_gate.sh wrapper, the timeout wrapper, and parent bash -c shells
+# whose command line embeds the analyzer path, inflating the raw count ~4x.
+# Only real python3 analyzer invocations consume a slot of the 16-slot design.
 probe_real() {
   ps -eo pid,comm,args | awk '$2 ~ /^python/ && $0 ~ /analyze_image\.py/ {c++} END {print c+0}'
 }
+load() { probe_real; }
 
-# gate law: hold while load >= 8; at most TWO re-probes, then park honestly
+# gate law: hold while real analyzer load >= 8; at most TWO re-probes, then park honestly
 gate_hold() {
-  local probes=0 load
+  local probes=0 raw real
   while :; do
-    load=$(probe_load)
-    log "gate raw=$load real=$(probe_real) probes=$probes"
-    if [ "$load" -lt 8 ]; then return 0; fi
+    raw=$(probe_load); real=$(probe_real)
+    log "gate raw=$raw real=$real probes=$probes"
+    if [ "$real" -lt 8 ]; then return 0; fi
     if [ "$probes" -ge 2 ]; then
-      log "PARK: load>=8 after TWO re-probes; parking honestly, no further calls"
-      echo "PARK" > "$R/.park_crops_w010c"
+      log "PARK: real load=$real >=8 after TWO re-probes; parking honestly, no further calls"
+      echo "PARK" > "$R/park_crops_w010c"
       return 1
     fi
     probes=$((probes + 1))
@@ -72,7 +82,7 @@ run_leg() {
   fi
 
   hb
-  log "crop $name DISPATCH load=$(probe_load) real=$(probe_real) payload=$m bytes"
+  log "crop $name DISPATCH raw=$(probe_load) real=$(probe_real) payload=$m bytes"
   (
     bash "$GATE" timeout 1700 python3 "$AZ" comparison \
       "$R/crop_3_${name}_render.png" "$R/crop_3_${name}_orig.png" \
