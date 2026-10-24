@@ -108,8 +108,17 @@ slide.addShape(pptx.ShapeType.line, { x: px(430.5), y: px(62), w: 0, h: px(105 -
 line("Check classes of", 11, 499, 80, "000000", { w: 90 });
 const mCols = [605, 628, 651];
 ["Z1", "Z1", "Z1"].forEach((t, i) => ctrLine(t, 11, mCols[i], 64, "000000", { w: 30 }));
-[["(0)", "(7)", "(3)"], ["(0)", "(6)", "(2)"]].forEach((row, ri) => {
-  row.forEach((t, i) => ctrLine(t, 11, mCols[i], 83 + ri * 27, "000000", { w: 24 }));
+// one tall paren pair spanning BOTH stacked entries (frame: parens y83..107),
+// digits (0;0) (7;6) (3;2) — PIL-measured from the original.
+const mImages = ["eq043_mx1", "eq043_mx2", "eq043_mx3"];
+mImages.forEach((nm, i) => {
+  const m = JSON.parse(fs.readFileSync(ASSETS + nm + ".json", "utf8"));
+  slide.addImage({
+    path: ASSETS + m.image,
+    x: px(mCols[i]) - m.w_in / 2,
+    y: px(95) - m.h_in / 2,
+    w: m.w_in, h: m.h_in,
+  });
 });
 
 // ---- legend line: black, "Zero" green only (measured) ----

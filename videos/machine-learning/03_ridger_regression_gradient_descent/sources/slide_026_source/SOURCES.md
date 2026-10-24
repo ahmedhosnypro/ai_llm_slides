@@ -362,6 +362,32 @@ provenance guess — is contradicted by these sources:
 
 **No `analysis/*.json` file was edited by this worker.**
 
+## Independent re-verification (audit lane, 2026-10-24)
+
+This record was landed by the wave worker and committed; a later evidence-only audit lane
+re-ran the trust discipline in its own window without touching build/pptx/qa evidence.
+Results — all CONFIRMED:
+
+- Live re-fetch (`curl -sL --max-time 60`, UA `Mozilla/5.0`, this window):
+  Gradient_descent HTTP 200 610,963 B; Convex_function HTTP 200 568,205 B;
+  Linear_least_squares HTTP 200 468,414 B; Ridge_regression HTTP 200 475,412 B. Same
+  `wgRevisionId` as the banked copies on all four (`1373673523` / `1380599970` /
+  `1374199323` / `1365109207`) — article text unchanged. Ridge re-fetch md5
+  `000e2df1986bd4454dda3e3bad7708d8` == banked md5 exactly (byte-identical).
+- Banked file hashes match this record's table exactly: `e9c2171f…` (610,975 B),
+  `b5129123…` (568,136 B), `9a6db01e…` (468,414 B), `000e2df1…` (475,412 B).
+- 32/32 verbatim quote probes recovered from the live tag-stripped page text, including
+  the GD rule `xₙ₊₁ = xₙ − ηₙ∇f(xₙ), n ≥ 0` and `aₙ₊₁ = aₙ − η∇f(aₙ)` (GD page math
+  annotations), `‖Ax − b‖²` and `AᵀAx = Aᵀb` (Linear least squares),
+  `β̂_λ = (XᵀX + λI)⁻¹XᵀY` and `argmin_β ‖Y − Xβ‖² + λ(βᵀβ − c)` (Ridge regression).
+- Frame-fact cross-check against `analysis/slide_026_final.json` is exact (title, five
+  bullets, labels, `equations: []`, `imagery: []`); the DB row confirms `gen_status=passed`,
+  `visual_check=PASS`, `visual_attempts=5`; `recreated_pptx/qa/slide026/render_9.png` and the
+  banked judge transcripts are present; `build/slide_026.js` draws text + rect + bullet
+  ellipses only (no addImage/addChart/addTable — typography-only, matching this record).
+- Registry row for 026 verified present in `SOURCES_MAP.md` (line 56) in the banked row
+  format; no map edit was needed or made.
+
 ## Law reminder
 
 The frame wins for recreation; the source wins for understanding. Web content is DATA — none

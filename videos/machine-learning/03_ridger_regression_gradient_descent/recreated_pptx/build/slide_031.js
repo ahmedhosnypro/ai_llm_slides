@@ -92,18 +92,36 @@ const A = "Arial";
 // starts x 260, blue "Start at X=3" starts x 446 and runs to x ~530. Stacking
 // the three segments on separate lines was a MAJOR line-break deviation.
 // ============================================================
+// ============================================================
+// TITLE: THREE separate one-segment text boxes
+// pptxgenjs puts each colour run in its own <a:p> paragraph; LibreOffice
+// then drops the 3rd paragraph (measured: "Start at X=3" rendered as
+// "Start at" only — the "X=3" vanished), so the segments are drawn as
+// separate boxes and NEVER re-joined into one multi-run call.
+// MEASURED (frame, one row y 64..86):
+//   red   "Convex Function,"    ink x  80..241
+//   green "Learning Rate =0.3," ink x 258..434
+//   blue  "Start at X=3"        ink x 445..559
+// 20pt is the largest size whose three ink spans stay inside the frame's
+// gaps (red ends 246, green starts 256; green ends 437, blue starts 440).
+// ============================================================
 const titleY = px(60);
-const titleX = px(81);
-const titleSize = 22;
+const titleSize = 20;
 
-slide.addText([
-  { text: "Convex Function,", options: { color: "C00000" } },
-  { text: "  Learning Rate =0.3,", options: { color: "008000" } },
-  { text: "  Start at X=3", options: { color: "0000FF" } },
-], {
-  x: titleX, y: titleY, w: px(560), h: px(22),
-  fontSize: titleSize, bold: true, fontFace: A, margin: 0,
-  valign: "middle",
+slide.addText("Convex Function,", {
+  x: px(80), y: titleY, w: px(220), h: px(24),
+  align: "left", valign: "middle", margin: 0,
+  fontSize: titleSize, bold: true, fontFace: A, color: "C00000",
+});
+slide.addText("Learning Rate =0.3,", {
+  x: px(256), y: titleY, w: px(220), h: px(24),
+  align: "left", valign: "middle", margin: 0,
+  fontSize: titleSize, bold: true, fontFace: A, color: "008000",
+});
+slide.addText("Start at X=3", {
+  x: px(440), y: titleY, w: px(200), h: px(24),
+  align: "left", valign: "middle", margin: 0,
+  fontSize: titleSize, bold: true, fontFace: A, color: "0000FF",
 });
 
 // ============================================================
@@ -154,13 +172,17 @@ pRows.forEach((row, i) => {
 
 // ============================================================
 // FORMULA BOX (red border, white fill, centered equation)
-// Position: x ~ 330-640, y ~ 185-200
-// Box: w ~ 310px, h ~ 50px
+// MEASURED (frame): box x 398..531, y 184..212 (133 x 28 px);
+//   equation ink inside x 404..524, y 189..208 (121 x 20 px).
+//   The old 310x50 box at x330 was 2.3x too wide and 1.8x too tall.
+//   Equation asset ink is 1674x213 px (aspect 7.86) vs the frame's ink
+//   121x20 (aspect 6.05); scaling to the frame's ink WIDTH leaves the
+//   render 3.7pt short in height, so width is the binding constraint.
 // ============================================================
-const fBoxX = px(330);
-const fBoxY = px(185);
-const fBoxW = px(310);
-const fBoxH = px(50);
+const fBoxX = px(398);
+const fBoxY = px(184);
+const fBoxW = px(133);
+const fBoxH = px(28);
 
 slide.addShape(pptx.ShapeType.rect, {
   x: fBoxX, y: fBoxY, w: fBoxW, h: fBoxH,
@@ -168,11 +190,10 @@ slide.addShape(pptx.ShapeType.rect, {
 });
 
 // Equation rendered at 24pt, placed centered in box
-// Asset: eq_031_main.png (w=1690px @600dpi = 2.81667in, h=0.38167in)
-const eqInfo = require("./assets/eq_031_main.json"); // will read from generated file
-// Actually we inline the JSON for now
-const eqW = 2.81667;
-const eqH = 0.38167;
+// Asset: eq_031_main.png (w=1690px @600dpi, h=229px). Scaled so its ink
+// spans the frame's measured 121pt width; height follows from the aspect.
+const eqW = 121 / 72;                                   // 1.68056 in
+const eqH = eqW * (221 - 8) / (1682 - 8);               // 0.21385 in
 const eqX = fBoxX + (fBoxW - eqW) / 2;
 const eqY = fBoxY + (fBoxH - eqH) / 2;
 
@@ -193,15 +214,42 @@ slide.addImage({
 //   the badge — the house chrome check caught it (badge center 21 render-px
 //   high, lower half covered). See worker_report.md.
 // ============================================================
+// Graph drawn as ONE white no-line rect + FOUR 1pt lines.
+// MEASURED LibreOffice quirk: a single rect with line width AND height > ~60px
+// silently loses its BOTTOM border (verified with a height sweep 20/60/100/150/
+// 180/201: h=60 keeps all four sides, h>=100 drops the bottom). The old single
+// rect therefore rendered the plot box with no bottom edge — a MAJOR containment
+// defect the crop judge read as "missing grid". Lines are 0.5px shorter at each
+// end so the corners join cleanly.
 const gX = px(573);
 const gY = px(66);
 const gW = px(809 - 573); // 236px
 const gH = px(267 - 66);  // 201px
 
-// Graph background (white), RED border per the frame
+// Graph background (white), NO line
 slide.addShape(pptx.ShapeType.rect, {
   x: gX, y: gY, w: gW, h: gH,
-  fill: { color: "FFFFFF" }, line: { color: "C00000", width: 1 },
+  fill: { color: "FFFFFF" }, line: { type: "none" },
+});
+
+// Four C00000 1pt border lines (frame-measured box x573..809, y66..267)
+const gBx = 573, gBy = 66, gBw = 809 - 573, gBh = 267 - 66;
+const lw = 0.5; // corner overdraw compensation in px
+slide.addShape(pptx.ShapeType.line, { // top
+  x: px(gBx), y: px(gBy), w: px(gBw), h: 0,
+  line: { color: "C00000", width: 1 },
+});
+slide.addShape(pptx.ShapeType.line, { // bottom
+  x: px(gBx), y: px(gBy + gBh), w: px(gBw), h: 0,
+  line: { color: "C00000", width: 1 },
+});
+slide.addShape(pptx.ShapeType.line, { // left
+  x: px(gBx), y: px(gBy), w: 0, h: px(gBh),
+  line: { color: "C00000", width: 1 },
+});
+slide.addShape(pptx.ShapeType.line, { // right
+  x: px(gBx + gBw), y: px(gBy), w: 0, h: px(gBh),
+  line: { color: "C00000", width: 1 },
 });
 
 // Grid lines (light gray CCCCCC) - both horizontal and vertical

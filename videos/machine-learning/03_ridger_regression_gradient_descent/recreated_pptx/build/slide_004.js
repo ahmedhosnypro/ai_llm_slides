@@ -102,16 +102,22 @@ textbox(240, 68, 440, 26, [
 // ============================================================
 rect(80, 99, 315, 123, WHITE, { color: RED, width: 1 });
 
-// "Let Y = (y1, y2, ..., yn)_{n x 1}" — 2D stacked column vector
-eqImage("eq_004_Yvec.png", 180.38, 104.08, 1.90373, 0.71400);
+// Original arrangement, PIL-measured on unique_slides/slide_004.jpg
+// (qa/slide004/adjud5_defects.py, 1px == 1pt):
+//   "Let Y ="      x 87..148, y145..157        black, box-left
+//   matrix         x165..209, y115..203        left / centre band
+//   "Original Labels"  x246..371, y136..153    red, RIGHT of the matrix
+//   "from Training Samples" x215..388, y159..177 black, UNDER the caption
+// => the caption block sits beside the matrix, not stacked under it.
+eqImage("eq_004_Yvec.png", 87, 131, 1.90373, 0.71400);
 
-// "Original Labels" - bold red
-textbox(84, 152, 300, 18, [
+// "Original Labels" - bold red, to the RIGHT of the matrix (same vertical band)
+textbox(245, 136, 145, 18, [
   { text: "Original Labels", options: { color: REDTXT, bold: true, fontSize: 15 } },
 ], "left", "top", 15);
 
-// "from Training Samples" - black
-textbox(84, 178, 300, 18, [
+// "from Training Samples" - black, underneath the caption
+textbox(214, 158, 165, 20, [
   { text: "from Training Samples", options: { color: BLACK, fontSize: 13 } },
 ], "left", "top", 13);
 
@@ -121,18 +127,22 @@ textbox(84, 178, 300, 18, [
 // ============================================================
 rect(427, 99, 318, 123, WHITE, { color: RED, width: 1 });
 
-// "Let Ŷ = (ŷ1, ..., ŷn)_{n x 1}" — 2D stacked column vector
-eqImage("eq_004_Yhatvec.png", 532.86, 103.02, 1.78800, 0.86600);
+// Measured arrangement (same adjudication script): "Let Yh=" x432..494 y145..163,
+// matrix x511..547 y114..208, "Predicted Labels" x587..722 y137..150 RIGHT of the
+// matrix, "from Model Yh=XW" x565..735 y163..183 UNDER the caption.
+eqImage("eq_004_Yhatvec.png", 432, 130, 1.78800, 0.86600);
 
-// "Predicted Labels" - bold blue
-textbox(431, 160, 300, 18, [
+// "Predicted Labels" - bold blue, to the RIGHT of the matrix (same vertical band)
+textbox(587, 137, 145, 18, [
   { text: "Predicted Labels", options: { color: BLUE, bold: true, fontSize: 15 } },
 ], "left", "top", 15);
 
-// "from Model Ŷ=XW" - black
-textbox(431, 184, 300, 18, [
+// "from Model Yh=XW" - black, underneath the caption; the original underlines W
+// (measured bar x720..734 y184, under the W glyph at x720..735).
+textbox(565, 163, 170, 20, [
   { text: "from Model ", options: { color: BLACK, fontSize: 13 } },
-  { text: "Ŷ=XW", options: { color: BLACK, fontSize: 13 } },
+  { text: "Ŷ=X", options: { color: BLACK, fontSize: 13 } },
+  { text: "W", options: { color: BLACK, fontSize: 13, underline: true } },
 ], "left", "top", 13);
 
 // ============================================================
@@ -160,12 +170,10 @@ textbox(84, 242, 212, 59, [
   { text: "Ŷ=Y", options: { color: INK, fontSize: 14, italic: true } },
 ], "left", "middle", 14);
 
-// The original underlines "Ŷ=Y" (measured: bar x254..270 frame, 2 rows, ~4px
-// below the italic glyph baseline).
-slide.addShape(pptx.ShapeType.line, {
-  x: px(254), y: px(283), w: px(17), h: 0,
-  line: { color: INK, width: 1 },
-});
+// The original shows NO underline under "Ŷ=Y" — PIL-measured: the Objective box's
+// ink ends at y286 (descenders) and the bottom border starts y299; no isolated
+// >=8px-wide bar exists under the phrase, so the blank stays blank (a free "—" in
+// the original's own spacing is not a line).
 
 // ============================================================
 // 6. ERROR BOX — blue border, pale-yellow fill
@@ -186,9 +194,14 @@ textbox(84, 306, 396, 59, [
 // ============================================================
 rect(494, 232, 390, 139, WHITE, { color: RED, width: 1 });
 
-// "Ŷ = XW" + "Predicted" in red — first line
+// "Ŷ = XW" + "Predicted" in red — first line. The original underlines Ŷ and W in
+// this line (measured bars x506..519 y274 and x562..579 y274, i.e. under the Ŷ at
+// x507..519 and the W at x563..579; the X at x541..556 is NOT underlined). The text
+// is split into runs — never re-worded — only to place those two underlines.
 textbox(500, 248, 378, 22, [
-  { text: "Ŷ = XW", options: { color: INK, fontSize: 16, italic: true } },
+  { text: "Ŷ", options: { color: INK, fontSize: 16, italic: true, underline: true } },
+  { text: " = X", options: { color: INK, fontSize: 16, italic: true } },
+  { text: "W", options: { color: INK, fontSize: 16, italic: true, underline: true } },
   { text: "  Predicted", options: { color: REDTXT, bold: true, fontSize: 14 } },
 ], "left", "top", 16);
 
