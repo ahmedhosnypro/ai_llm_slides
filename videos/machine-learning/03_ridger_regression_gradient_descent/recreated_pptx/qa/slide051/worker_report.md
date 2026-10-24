@@ -279,3 +279,120 @@ On PASS of A and every crop: certify with `set 51 visual_check PASS`,
 `set 51 visual_attempts 2`, `set 51 gen_status passed`, `heartbeat`,
 `release 51 w051-finish-20261026`, then re-read `get 51` (claim()/set() can reset
 gen_status, 15_progress.py:337-339).
+
+---
+
+# WEDGE RUN — 2026-10-24 (worker `w051-finish-20261026`) — **PARKED**
+
+## What happened to Leg A (full-slide judge)
+
+| t (UTC) | event |
+|---|---|
+| 15:07 | gate read **5 procs** (< 8) → dispatched `dispatch_legA_attempt2.sh` |
+| 15:07 | analyzer `comparison render_2.png vs unique_slides/slide_051.jpg`, `--timeout 1200 --thinking high --max-tokens 65536 --rounds 1 --tries 1`, pid **670454** |
+| 15:08 | background task record hit the harness's own 600 s limit and was marked `timed_out` — **the command itself survived** (wrapper pid 670453 / 670454 kept running, ppid chain intact) |
+| 15:18–16:30 | analyzer ran on: 701 s → 1037 s → 1325 s … **past its 1200 s internal wall** |
+| 16:34 | analyzer pid 670454 **EXITED. `judge_attempt_2.txt` was never written.** No output file of any kind was produced — verified with `find . -newermt 2026-10-24T15:06` (only my own `worker_report.md` came back) |
+
+This is the documented wedge: the image leg hung, its internal `--timeout 1200`
+did **not** terminate it, and it exited without emitting a transcript. It matches
+the banked 043 evidence (HTTP 504 `nvidia upstream_timeout` + HangErrors at
+~1050–1230 s, dies at the analyzer's 630 s client wall / the outer wrapper's wall).
+
+## Router health check (same wedge run, banked)
+
+- `curl GET http://localhost:17844/v1` → **404 in 3.4 ms** — gateway process alive.
+- `POST /v1/chat/completions` → **401 `invalid_api_key` in 0.6 ms** — the router
+  *answers immediately*; it is not down or saturated. (401 is expected on my
+  unauthenticated curl; the analyzer uses a key file.)
+- A **text-mode probe** on the same gateway, `--timeout 120`, returned
+  `[info] mode analysis | endpoint http://localhost:17844/v1 | models: images | auth: key
+  file present | pid 684832` and **exit 0 but no transcript file** — i.e. the
+  analyzer returned successfully with an empty body. The image leg is silently
+  wedged while the router itself is healthy.
+- Concurrency during the run: 5 → 17 → 11 → 16 → 13 analyzers, with the same
+  stale-job pathology seen earlier (jobs at 5657 s / 94 min never exiting).
+
+**Conclusion: the wedge is not load and not the router. It is the image-model
+upstream.** No amount of re-dispatching at this wall will produce a verdict, and
+per the law I must not retry-loop it.
+
+## Adjudication status
+
+No judge verdict exists for slide 051, on either attempt. **`visual_check` stays
+null. Both legs remain due. Nothing was certified and nothing was fabricated.**
+
+## PARK STATE — exact resume commands
+
+Run only after the image leg is healthy again (probe first; the probe must produce
+a real transcript with a `FINAL VERDICT:` line, or at least a non-empty body):
+
+```bash
+cd "/worksp""aces/codespaces-blank/ai_llm_slides"
+export VIDEO=machine-learning/03_ridger_regression_gradient_descent
+D="videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide051"
+
+# 0) health probe (must write a transcript) + gate check (must be < 8)
+timeout 300 bash scripts/16_vision_gate.sh python3 \
+  .agents/skills/image-analysis/scripts/analyze_image.py analysis \
+  "$D/render_2.png" --view "probe" --capture "150dpi PNG" \
+  --timeout 120 --rounds 1 --tries 1 --transcript scratch/tmp/probe_w051.txt
+pgrep -c -f analyze_image.py      # < 8 before dispatching
+
+# 1) Leg A — full-slide comparison (the failed one above)
+bash "$D/dispatch_legA_attempt2.sh"
+
+# 2) Leg B — three crop pairs at matched effective scale
+bash "$D/dispatch_legB_attempt2.sh"
+```
+
+Both legs use the mandated walls: outer `timeout 1700`, analyzer `--timeout 1200`,
+payloads byte-unchanged (`judge_attempt_2_promptA.txt` md5
+`9387f5fbb94ef05a31db19f1e018dde1`; `crop_attempt_2_promptB.txt` md5
+`6ae2c27e0ac3c7f3716ae50f823ebb25`).
+
+On a real `FINAL VERDICT: PASS` in `judge_attempt_2.txt` **and** every crop
+transcript (or a banked PIL refutation per finding):
+
+```bash
+$VIDEO ... 15_progress.py set 51 visual_check PASS --worker <id>
+$VIDEO ... 15_progress.py set 51 visual_transcript "$D/judge_attempt_2.txt" --worker <id>
+$VIDEO ... 15_progress.py set 51 visual_attempts 2 --worker <id>
+$VIDEO ... 15_progress.py set 51 gen_status passed --worker <id>
+$VIDEO ... 15_progress.py heartbeat 51 <id>
+$VIDEO ... 15_progress.py release 51 <id>
+$VIDEO ... 15_progress.py get 51      # verify gen_status=passed, visual_check=PASS, worker_id=""
+```
+
+`dispatch_legA_attempt2.sh` / `dispatch_legB_attempt2.sh` are banked in
+`qa/slide051/` and re-runnable verbatim.
+
+## Not done (honest)
+- No verdict transcript of any kind exists for slide 051.
+- `visual_check=null`, `visual_attempts=1` (no judge has ever been dispatched on
+  a completed comparison for this slide — attempts stay 1 because a wedged,
+  output-less dispatch is not an attempt).
+- Row 51 remains `gen_status=building`.
+
+## WEDGE PROOF — banked `wedge_probe_504.log` / `.txt` (16:18 UTC)
+
+The confirming probe on the same gateway, banked verbatim:
+
+```
+[info] mode analysis | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 691998
+[warn] analysis :: images :: attempt 1: HTTP 504: {"error":{"code":"upstream_timeout",
+ "ironrouter":{"candidate":"nva…hWGS","provider":"Nvidia"},"message":"the upstream
+ provider timed out","type":"server_error"}}
+[error] None: every model failed:
+  images: attempt 1: HTTP 504: …
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 0/1 result(s) analyzed successfully
+```
+
+So the image leg returns `HTTP 504 upstream_timeout` from the **Nvidia** provider on
+`models: images` in ~60 s, for a **150 s text-mode analysis call** — it is not the
+comparison mode, not my payload, and not the timeout length. The Leg A run that
+"hung to 1325 s" was this same upstream failing *without* ever surfacing its error.
+
+This is the fleet-wide wedge the WEDGE CAUTION predicts. Per gate law (max two
+probes/hour) I stopped probing at this point and parked.

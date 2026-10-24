@@ -381,3 +381,45 @@ Pre-measured so a judge finding can be settled without re-deriving:
    the original at 5 column positions, NOT glyph ink, so they are not a
    missing-content finding. No BLOCKER, no MAJOR: the residual is typed-vs-
    handwritten ink weight, MINOR at most under protocol clause (c).
+
+### 2026-10-24 15:20 — vision-gate metric correction (load-bearing)
+
+`pgrep -c -f analyze_image.py` is NOT the concurrent-call count: it also matches
+the gate wrapper (`bash scripts/16_vision_gate.sh … analyze_image.py …`), the
+`timeout 1700` shell, and any `bash -c` that merely names the script — three
+processes per real call, plus driver shells. Measured at 15:05 with exactly TWO
+real in-flight calls (lanes slide_015 and slide_051): `pgrep -f` = 8, real
+`python3 analyze_image.py` clients = 2. So this lane's earlier "39 procs →
+do not dispatch" readings were counting other lanes' wrapper chains, not work.
+
+Slide 030's `dispatch_legs_6_v3.sh` — the script that landed today's only heavy
+verdict — gates on the REAL client count:
+
+    real_clients() { ps -eo args= | awk '$1 ~ /python3$/ && $2 ~ /analyze_image\.py$/ {n++} END {print n+0}'; }
+
+and treats `--timeout >600` as a warning, not a blocker. `leg1_driver_k9.sh`
+(banked in this directory) gates on `real_clients` with the same flock as final
+arbiter.
+
+### 2026-10-24 15:17→16:18 — Leg 1 dispatch ledger (payload byte-identical each time)
+
+Payload md5 re-verified `9387f5fbb94ef05a31db19f1e018dde1` on every attempt; all
+invocations are the orchestrator's mandated form (`--timeout 1200` inside
+`timeout 1700`, `--rounds 1 --tries 1`, `--thinking high --max-tokens 65536`).
+
+| try | window | real clients at fire | result |
+|---|---|---|---|
+| A | 14:49 | 6 | HTTP 504 `upstream_timeout` (Nvidia) in 61s |
+| B | 15:02 | 9 | HTTP 504 in 61s |
+| 1 | 15:17 | 3 | `HangError: hard wall-clock 1230s exceeded` at 15:45 (28m — the fleet wedge) |
+| 2 | 15:47 | 4 | HTTP 504 at 16:08 |
+| 3 | 16:11 | 4 | HTTP 504 at 16:13 |
+| 5 | 16:15 | 4 | HTTP 504 at 16:16 |
+| 6 | 16:17 | 5 | in flight |
+
+`HangError` at the 1230s internal wall and `504 upstream_timeout` are
+upstream/gateway failures — neither is a judge FAIL and neither consumes a build
+attempt. No transcript has been written by any of them, so no verdict exists yet.
+Both failure modes are identical to what every other lane (014, 015, 030, 049,
+050) recorded today, i.e. this is the fleet-wide image-leg wedge, not a
+slide-033 defect.

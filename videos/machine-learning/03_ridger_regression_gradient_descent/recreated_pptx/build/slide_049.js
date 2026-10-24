@@ -22,7 +22,8 @@
 //   red "=>"-glyph: x84..122 y375..394 ; "Stop Iterations": x76..205 y375..394
 //   calc table    : x273..852, rules y140/205/271/337/403/469/527, WHITE interior
 //                   per row: d(xN) x283..336 | matrix x350..437 | "=> Keep same Weight"
-//                   x508..622 | W-vector x708..757
+//                   x508..622 | W column x697..749 ("W =" x697..716, bracket+values
+//                   x722..749, column spans the row height y150..187)
 
 const pptxgenpkg = require("pptxgenjs");
 const { CHROME, drawHouseChrome } = require("../../shared_patterns/house_chrome.js");
@@ -118,11 +119,16 @@ s.addTable([
 });
 
 // ---------------- 5. colour legend ----------------
-// measured: single line x245..544 y110..124 (~15px glyphs) — 15pt
+// measured: single line x245..544 y110..124 (~15px glyphs) — 15pt.
+// PIL colour map of the ORIGINAL: only the two class TAGS are coloured
+// (C1 red at x240..244, C2 blue at x312..320); "positive"/"negative"/
+// "Zero is unaccepted" are dark. 2026-10-24 fix-judge-049g.
 s.addText([
-  { text: "C1 positive", options: { color: RED } },
+  { text: "C1", options: { color: RED } },
+  { text: " positive", options: { color: BLACK } },
   { text: "  ", options: { color: BLACK } },
-  { text: "C2 negative", options: { color: BLUE } },
+  { text: "C2", options: { color: BLUE } },
+  { text: " negative", options: { color: BLACK } },
   { text: "  ", options: { color: BLACK } },
   { text: "Zero is unaccepted", options: { color: BLACK } },
 ], {
@@ -218,14 +224,18 @@ CALC.forEach(function (r) {
     x: fx(508), y: fy(ry), w: fw(120), h: fh(18),
     fontFace: FONT, fontSize: 12, color: BLACK, align: "left", valign: "middle", margin: 0,
   });
-  s.addText([
-    { text: "5", options: { breakLine: true } },
-    { text: "-1", options: { breakLine: true } },
-    { text: "-1", options: {} },
-  ], {
-    x: fx(708), y: fy(ry - 2), w: fw(50), h: fh(50),
-    fontFace: FONT, fontSize: 12, color: BLACK, align: "center", valign: "middle",
-    lineSpacing: 17, margin: 0,
+  // 2D fix (fix-judge-049g, 2026-10-24): the original's per-row result column is a
+  // LABELLED bracketed 2-D column vector — glyph x697..706 ("W", bitmap-verified:
+  // 2 top strokes, converging middle, 2 bottom vertices) + "=" x711..716 + faint
+  // tall bracket x722..723 spanning y150..187 + values x727..747. Label stays inline
+  // text; the stacked bracketed column is a 600dpi PNG (sidecar eq_slide049_wcol.json).
+  s.addText("W =", {
+    x: fx(706), y: fy(ry), w: fw(24), h: fh(18),
+    fontFace: FONT, fontSize: 12, color: BLACK, align: "left", valign: "middle", margin: 0,
+  });
+  s.addImage({
+    path: path.join(ASSET_DIR, r.img.replace("slide_049_matrix_", "slide_049_wcol_")),
+    x: fx(728), y: fy(r.y + 10), w: 0.29167, h: 0.63167,
   });
 });
 s.addShape(pptx.ShapeType.line, {

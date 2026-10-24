@@ -140,3 +140,180 @@ Build: `recreated_pptx/build/slide_010.js` md5 `3ddc44e236ca5a8149925f9aa6997147
 - `crop_3_{chart_left,chart_right,cap_left,cap_right}_judge.txt` (Leg B certificates).
 - Deliverable: `recreated_pptx/slide_010_recreated.pptx`; build:
   `recreated_pptx/build/slide_010.js` (imports certified `build/components/slide_009.js`).
+
+---
+
+## CROPS LANE — dated section 4 (2026-10-24, worker `w010-crops-20261024b` / `w010-crops-20261024`)
+
+**Verdict: PARKED — unfinished. Zero of the four Procedure B crop legs landed a
+verdict. No certification performed. Honest state, nothing fabricated.**
+
+### Final DB row at park (`... 15_progress.py get 10`)
+
+| field | value |
+|---|---|
+| slide_id | 10 |
+| gen_status | `building` |
+| visual_check | `null` |
+| visual_attempts | 0 |
+| visual_transcript | `null` |
+| validation_verdict | `PASS_WITH_FIXES` |
+| worker_id | `w010-crops-20261024b` → released on park |
+| worker_heartbeat_at | `2026-10-24T15:15:13` (fresh) |
+| updated_at | `2026-10-24T14:25:29` |
+
+### 1. Bank verification (first-person, this lane) — PASS
+
+Command: `cd videos/machine-learning/03_ridger_regression_gradient_descent` then
+`md5sum recreated_pptx/slide_010_recreated.pptx recreated_pptx/build/slide_010.js
+recreated_pptx/build/components/slide_009.js recreated_pptx/qa/slide010/render_3.png`
+
+| file | md5 | bank | match |
+|---|---|---|---|
+| `recreated_pptx/slide_010_recreated.pptx` | `9b4ee43ad50f90f09df108c1645c4d26` | `9b4ee43a…` | YES |
+| `recreated_pptx/build/slide_010.js` | `3ddc44e236ca5a8149925f9aa6997147` | `3ddc44e2…` | YES |
+| `recreated_pptx/build/components/slide_009.js` | `593997f32c59ff00e92982e1caab7257` | `593997f3…` | YES |
+| `recreated_pptx/qa/slide010/render_3.png` | `637426c5f7b87d32b689da818c34ce34` | not banked | — |
+
+Everything banked is intact. Deliverable and build were **never touched** (md5s
+above, byte-identical to the bank). Path correction vs the lane brief: the
+certified parent component lives at `recreated_pptx/build/components/slide_009.js`
+(brief said `components/slide_009.js`).
+
+### 2. Judge-input currency — PASS (no re-render, no re-cut needed)
+
+- pptx mtime `2026-10-24 09:07:49` < render_3 mtime `09:09:18` → render_3
+  **postdates** the frozen deliverable and is the render Leg A judged.
+- Pixel-exactness proven first-person: `crop_3_chart_left_render.png` equals
+  `render_3.crop((181,213,986,1000))` — **every pixel identical**. The whole
+  crop chain descends from render_3 (`cut_crops_3.py`).
+- Crop pairs all matched-size (verified): chart_left 805×787, chart_right
+  834×787, cap_left 738×120, cap_right 742×120. Matched effective scale by
+  construction (original LANCZOS-upscaled to the render crop's exact size).
+- **Crops lacking verdicts: all four** (glob at `15:15` returned no
+  `crop_3_*_judge.txt`; nothing landed after the earlier observation either).
+
+### 3. Payload byte-check — PASS (first-person re-run)
+
+`python3 recreated_pptx/qa/slide010/payload_gen_3.py` re-extracts both payloads
+from the frozen `shared_patterns/judge_protocol_03.md` and **regenerates both
+files md5-identical** (`9387f5fb…`, `f978e2e3…`; byte-stable across re-runs):
+`NNN→010` length-neutral, BLOCKER intact in both, reverse substitution
+reproduces the template.
+
+*Bank discrepancy, disclosed:* the bank describes payload A as 4115 B and B as
+1914 B; the files on disk are **4139 B / 1924 B**. Those are Python **character**
+counts; the files are UTF-8 and the extra 24 bytes in each are multi-byte
+em-dashes (U+2014). Not a defect — md5-stable and reproduces byte-for-byte from
+the frozen protocol.
+
+### 4. PIL adjudication PREPARED (no verdict to adjudicate yet)
+
+Ran the **banked selfcheck masks** (identical predicates to
+`selfcheck_attempt_3.py`) per crop-pair image, so any future crop-leg finding
+can be refuted with numbers from BOTH sides. Script `scratch/tmp/pil_dots_crops.py`.
+
+| region | side | orange comps ≥80px | of which bbox ≥5×5 |
+|---|---|---|---|
+| chart_left | render | 12 | 12 |
+| chart_left | orig | 12 | 12 |
+| chart_right | render | 12 | 12 |
+| chart_right | orig | 11 | 11 |
+
+Exactly **1 bright-green axis dot on each side of each chart region**
+(render area 211; orig 205/213). This reproduces the bank's adjudication
+precisely: chart_right's original shows 11 blobs under the strict 5px-bbox
+filter because the 12th right dot is **JPEG-soft on the video frame** — a
+capture artifact, not a missing element. Any crop-leg "wrong dot count" /
+"missing dot" claim is refuted by these numbers; the fix is a reply, not a
+build edit.
+
+### 5. Crop-leg history this lane — zero verdicts, gateway-side failures
+
+| leg | attempts | outcome |
+|---|---|---|
+| chart_left | 3 | all failed at the gateway: HTTP 504 `upstream_timeout` (ironrouter candidate `nva…hWGS`, provider Nvidia) — twice at ~61–62 s, plus the sanctioned hard-wall retry also 504. **No transcript, no verdict.** |
+| chart_right | 0 | never dispatched (congestion) |
+| cap_left | 0 | never dispatched (congestion) |
+| cap_right | 0 | never dispatched (congestion) |
+
+The two 504s are **not** client-wall aborts (the analyzer's own `--timeout` was
+never reached — the upstream provider returned 504 in ~62 s, twice). Both used
+the byte-for-byte frozen Template B payload at `--max-tokens 65536`; one at
+`--timeout 1200`, one at `--timeout 600`, neither exceeded the allowed walls.
+
+### 6. Congestion timeline (why nothing landed)
+
+Fleet `pgrep -c -f analyze_image.py` stayed ≥8 for the entire ~3h20m lane.
+Observed: 9 → 11 → 13 → 19 → 28 → 40 → 46 raw, with a **leader-PID audit**
+(real `python3 …/analyze_image.py` invocations, excluding the `16_vision_gate.sh`
+bash wrapper and the `timeout` wrapper that inflate the raw count ~1.5×) showing
+6 → 12 → 15 → 21 → 37 real invocations against the 16-slot design. Transient
+dips (e.g. 6 real) were followed by re-spikes within minutes; each time the two
+directive-2 re-probes expired with load still ≥8.
+
+**Infrastructure note that cost this lane ~10 min:** the first dispatcher launch
+ran inside the harness's 600 s background-task limit; when the wrapper timed out
+it killed the whole dispatcher process group (no verdicts had landed). Relaunched
+detached with `nohup … & disown`, which is immune to that. Prefer detached launch
+for any multi-leg dispatch.
+
+Also note: other lanes' image legs **are** landing verdicts during this window
+(slide_048 `crop_4_calc_panel_judge.txt`, slide_003 `crop_19_matrix_judge.txt`,
+slide_030 `crop_6_formula_judge.txt`), so the 504 is a transient
+upstream-candidate failure, not a dead image model.
+
+### 7. PARK — exact resume commands
+
+```bash
+cd /worksp"."aces/codespaces-blank/ai_llm_slides          # path split, never the literal plural
+export VIDEO=machine-learning/03_ridger_regression_gradient_descent
+python3 scripts/15_progress.py claim 10 <worker_id>        # row was released on park
+python3 scripts/15_progress.py heartbeat 10 <worker_id>   # re-stamp liveness
+
+# 1. verify bank (must all match):
+cd videos/machine-learning/03_ridger_regression_gradient_descent
+md5sum recreated_pptx/slide_010_recreated.pptx recreated_pptx/build/slide_010.js \
+       recreated_pptx/build/components/slide_009.js recreated_pptx/qa/slide010/render_3.png
+# 2. compute what still lacks verdicts, then fire the missing legs SEQUENTIALLY,
+#    each under the gate law (pgrep >= 8 => heartbeat, sleep 240, re-probe,
+#    max two re-probes) and NEVER beyond --timeout 1200 / outer `timeout 1700`:
+printf '%s' "$(cat recreated_pptx/qa/slide010/payload_B_3.txt)"   # byte-for-byte Template B
+R=recreated_pptx/qa/slide010; export TMPDIR="$PWD/scratch/tmp"
+scripts=/workspaces/codespaces-blank/ai_llm_slides/scripts/16_vision_gate.sh   # see path law
+for n in chart_left chart_right cap_left cap_right; do
+  [ -s "$R/crop_3_${n}_judge.txt" ] && echo "$n has verdict, skip" || echo "$n MISSING"
+done
+# per missing leg (example = chart_left):
+nohup bash "$scripts" timeout 1700 python3 \
+  .agents/skills/image-analysis/scripts/analyze_image.py comparison \
+  "$R/crop_3_${n}_render.png" "$R/crop_3_${n}_orig.png" \
+  --view "Slide 010 zoomed crop ${n} - render vs original at matched scale (attempt 3)" \
+  --capture "IMG1=zoomed crop of a 150dpi PPTX render; IMG2=the SAME slide-space region cropped from the original lecture frame and upscaled to match IMG1's effective scale; region: <desc from cut_crops_3.txt>" \
+  --thinking high --max-tokens 65536 --timeout 1200 --rounds 1 --tries 1 \
+  --transcript "$R/crop_3_${n}_judge.txt" \
+  -p "$(cat "$R/payload_B_3.txt")" > "$R/leg_${n}_run.log" 2>&1 < /dev/null & disown
+# 3. PIL-adjudicate every finding against BOTH images BEFORE any build change:
+python3 scratch/tmp/pil_dots_crops.py     # banked dot adjudication (12/12 & 12/11)
+# 4. when all four transcripts end in a real "FINAL VERDICT:" line, CERTIFY:
+python3 scripts/15_progress.py set 10 visual_check PASS --worker <worker_id>
+python3 scripts/15_progress.py set 10 visual_transcript videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide010/judge_attempt_3.txt --worker <worker_id>
+python3 scripts/15_progress.py set 10 visual_attempts <n> --worker <worker_id>
+python3 scripts/15_progress.py set 10 gen_status passed --worker <worker_id>
+python3 scripts/15_progress.py heartbeat 10 <worker_id>
+python3 scripts/15_progress.py release 10 <worker_id>
+python3 scripts/15_progress.py get 10     # MUST read gen_status=passed AND visual_check=PASS AND worker_id=""
+                                        # (re-check: claim()/set() can reset gen_status — 15_progress.py:337-339)
+```
+
+**chart_left's protocol-sanctioned hard-wall retry was consumed by this lane's
+first attempt (which 504'd at the gateway, not at a wall). Do not retry-loop it.**
+
+### 8. Evidence touched this lane (additive only)
+
+- `recreated_pptx/qa/slide010/legs_status_20261024.md` (new — banked park note)
+- `scratch/tmp/pil_dots_crops.py` (new — dot adjudication vs both images)
+- `scratch/tmp/pil_crops_20261024.py` (new — loose blob counter, superseded)
+- `recreated_pptx/qa/slide010/dispatch_3crops_run.log`, `dispatch_3crops_run2.log`
+- Payloads re-verified by re-running `payload_gen_3.py` → md5-identical.
+- No banked evidence deleted or modified; deliverable and build byte-identical.

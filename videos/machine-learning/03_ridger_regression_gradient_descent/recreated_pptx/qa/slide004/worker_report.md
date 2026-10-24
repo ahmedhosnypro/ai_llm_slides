@@ -416,3 +416,23 @@ Gate reality at dispatch: 13 in-flight analyzers (`pgrep -c -f analyze_image.py`
 the 8 threshold, so the legs are dispatched under the ratified-1200 wall rather than
 looping; per the banked 043 evidence, a 504/HangError at ~1050–1230 s is possible even at
 1200, and will be banked honestly if it hits.
+
+### Leg-1 wall evidence (banked honestly — no verdict produced)
+
+`j7_A.sh` (Template A full-slide, `--timeout 1200` inside `timeout 1700`) dispatched
+15:35Z under fleet load 13. Full log `scratch/tmp/j7_A.log`:
+
+```
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | pid 674986
+[warn] comparison :: images :: attempt 1: ABORT HangError: hard wall-clock 1230s exceeded
+       — call aborted (possible stuck thinking stream) — abort+retry 1/3
+```
+
+No `judge_attempt_7.txt` was written. The analyzer was killed at 16:08Z (the outer
+`timeout 1700` would have killed it at 16:03Z anyway) to free a gateway slot. This
+matches the banked 043 evidence exactly (HTTP 504 upstream_timeout / HangError at
+~1050–1230 s even at `--timeout 1200`; text legs stay healthy). Per the one-retry-per-leg
+law, this leg has NOT been re-dispatched yet — it gets one retry, reserved for a lower-load
+window. Instead the cheap leg went first (the `remember` crop pair is 221×127 px, ~4 orders
+of magnitude less image-encoder work than the 2001×1125 full slide, which is the likely
+cause of the encoder stall at this fleet load).
