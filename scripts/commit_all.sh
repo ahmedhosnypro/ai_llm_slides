@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Commit every local change in a repo with a random message.
-# Usage: scripts/commit_all.sh [repo-path]   (defaults to current directory)
+# Commit every local change in a repo with a random message, then push.
+# Usage: scripts/commit_all.sh [repo-path] [remote] [branch]   (defaults: cwd / origin / current branch)
 set -euo pipefail
 
 REPO="${1:-$PWD}"
@@ -22,3 +22,11 @@ WORDS=(routine checkpoint snapshot wip save bank batch wave lane fleet)
 msg="${WORDS[RANDOM % ${#WORDS[@]}]} $RANDOM"
 git commit --quiet -m "$msg"
 echo "$REPO: $msg"
+
+REMOTE="${2:-origin}"
+BRANCH="${3:-$(git rev-parse --abbrev-ref HEAD)}"
+if git push --quiet "$REMOTE" "$BRANCH" 2>/dev/null; then
+  echo "$REPO: pushed to $REMOTE/$BRANCH"
+else
+  echo "$REPO: WARNING push to $REMOTE/$BRANCH failed (commit kept locally)" >&2
+fi
