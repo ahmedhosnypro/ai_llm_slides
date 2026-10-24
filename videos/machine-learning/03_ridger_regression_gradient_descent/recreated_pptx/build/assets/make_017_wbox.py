@@ -107,17 +107,38 @@ for i, b in enumerate(BANDS, start=1):
         ax.text(cx, base, txt, fontsize=DIGIT_FS, color=BLACK,
                 ha="center", va="baseline", zorder=3)
 
-    # ── ||W||^2 = value (blue) as measured glyph groups ─────────────────────
-    # The frame's runs (PIL): || at bar1, W at w, ||^2 at bar2, = at eq,
-    # digits at val. Typesetting the same groups keeps the run positions while
-    # letting mathtext shape each glyph.
+    # ── ||W||^2 = value (blue) ──────────────────────────────────────────────
+    # Typeset sequentially (natural mathtext kerning) starting at the frame's
+    # measured left ink edge; each group is advanced by its RENDERED width so
+    # the tight frame spacing (no gaps) is reproduced without hand-guessed x's.
     N = b["norm"]
-    for x, s in ((N["bar1"], r"$\|$"), (N["w"], r"$W$"), (N["bar2"], r"$\|^2$"),
-                 (N["eq"], r"$=$"), (N["val"], "$%s$" % N["text"])):
-        ax.text(x, N["base"], s, fontsize=NORM_FS, color=BLUE,
+    fig.canvas.draw()
+    inv = ax.transData.inverted()
+
+    def width_of(t):
+        fig.canvas.draw()
+        bb = t.get_window_extent(renderer=fig.canvas.get_renderer())
+        (x0, _), (x1, _) = inv.transform([(bb.x0, bb.y0), (bb.x1, bb.y1)])
+        return abs(x1 - x0)
+
+    x = N["bar1"]
+    t = ax.text(x, N["base"], r"$\|$", fontsize=NORM_FS, color=BLUE,
                 ha="left", va="baseline", zorder=3)
-    ax.plot([N["wunder"][0], N["wunder"][1]],
-            [N["base"] + 2.2, N["base"] + 2.2], color=BLUE, lw=1.3, zorder=3)
+    x += width_of(t)
+    t = ax.text(x, N["base"], r"$W$", fontsize=NORM_FS, color=BLUE,
+                ha="left", va="baseline", zorder=3)
+    w0 = x
+    x += width_of(t)
+    ax.plot([w0 + 0.4, x - 0.4], [N["base"] + 2.2, N["base"] + 2.2],
+            color=BLUE, lw=1.3, zorder=3)
+    t = ax.text(x + 0.3, N["base"], r"$\|^2$", fontsize=NORM_FS, color=BLUE,
+                ha="left", va="baseline", zorder=3)
+    x += 0.3 + width_of(t)
+    t = ax.text(x + 5.0, N["base"], r"$=$", fontsize=NORM_FS, color=BLUE,
+                ha="left", va="baseline", zorder=3)
+    x += 5.0 + width_of(t)
+    ax.text(x + 4.5, N["base"], "$%s$" % N["text"], fontsize=NORM_FS, color=BLUE,
+            ha="left", va="baseline", zorder=3)
 
     name = "wbox17_band%d.png" % i
     fig.savefig(os.path.join(HERE, name), dpi=600, transparent=True)

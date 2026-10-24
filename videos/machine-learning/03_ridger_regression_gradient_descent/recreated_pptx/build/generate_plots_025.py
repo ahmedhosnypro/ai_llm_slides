@@ -148,8 +148,11 @@ def fit_zoom(fig, ax, name, cap=0.995):
     """
     tx, ty = TARGETS[name]
     best = None
-    for xys in (1.0, 1.3, 1.7, 2.2, 2.9, 3.8, 5.0, 6.5, 8.5):
-        for zs in (1.0, 0.72, 0.5):
+    # deliberately narrow grid: extreme x/y spread or z squash flattens the
+    # surface and destroys the 3-D read, so stay near the natural box aspect
+    # and accept a small residual against the fill target.
+    for xys in (1.0, 1.25, 1.5):
+        for zs in (1.0, 0.8):
             z = max_zoom(fig, ax, xys, zs, cap)
             f = fill_at(fig, ax, xys, zs, z)
             if f is None:
