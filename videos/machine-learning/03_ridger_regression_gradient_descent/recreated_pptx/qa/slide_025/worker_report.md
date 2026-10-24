@@ -205,3 +205,75 @@ Render for the K=2 judge: `render_1.png` (2001x1125 @150dpi, md5
 `e3365728bcd5ddff070f43a32bb5e64c`). Crops re-cut from it at matched effective
 scale (2.08333 render-px/frame-px, original side LANCZOS-upscaled to match,
 `cut_crops_1.py`).
+
+---
+
+# Attempt K=4 (worker_025_finish / worker_025_finish2) — BL red-arrow fix, re-render, judge legs
+
+## Banked state at handoff
+
+- Prior lane (worker_025_final) died mid-flight with gen_status="judging" (a
+  non-standard value it set mid-flight); the row was taken over and the
+  non-standard value cleared (claim() resets gen_status to "building").
+  `pptx_path` was stale-relative; set to the prefixed
+  `videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_025_recreated.pptx`.
+- Pre-fix chain banked as `build_attempt_3b.js` / `generate_plots_3b.py`
+  (md5-verified identical to the then-current build tree).
+
+## Adjudication of the K=2 FAIL (PIL-first, both images, 960x540)
+
+Banked scripts: `measure_5_adjudicate.py`, `measure_6_terrain.py`,
+`measure_7_bl.py` (+ `selfcheck_attempt_3/4.py`, `ripple_check.py`).
+
+1. **K=2 MAJOR 1 "BR is a multi-bump terrain"** — REFUTED. Original BR carries
+   ONE jet-red core (x695..841 y364..422, 2102 px) and a monotone
+   red-over-blue column profile at every cut (x685/745/805: 0-1 transitions);
+   a ridge/hollow terrain would oscillate. Same single-valley class as the
+   render (whose column cuts are blue-only because its zlim maps the rim to
+   cyan, not red). Surface fill differs; shape class does not.
+2. **K=2 MAJOR 2 "five BL labels + red arrows"** — PARTIALLY CONFIRMED, FIXED.
+   The original's BL has exactly FOUR text bands (y306..319, y337..352,
+   y390..406, y433..477 — banked census) matching the analysis JSON's 22
+   labels (one "Local Minima", leader lines). BUT the original also carries
+   TWO red annotation arrows — filled wedge + 2px shaft + short diagonal —
+   at slide px (192..207, 440..450) and (259..277, 478..486), ASCII-proven
+   in `measure_7_bl.py` output and CONFIRMED OMITTED in every prior build.
+   That is a real renderable-content omission (Template A ground rule 6).
+3. **K=2 MINOR 3 "TR ticks/×10⁴"** — build already has z ticks 0/0.5/1/1.5
+   and the ×10⁴ multiplier (generator lines 231-234); judged at crop scale.
+4. **K=2 MINOR 4 "TL z ticks absent"** — generator has z ticks 0/2/4;
+   labels exist in the source PNG (2021 dark px); judged at crop scale.
+5. **K=2 MINOR 5 "title larger"** — REFUTED: title ink orig x262..586 (w325)
+   y65..86 vs render x265..583 (w319) y66..86; both centred x424.
+6. **K=2 MINOR 6 "label boxes encroach"** — REFUTED: four blue boxes match the
+   original bboxes within 1-2 px (LB1 x270..406 y137..178 vs orig x271..405
+   y139..176; etc.).
+7. **K=2 MINOR 7 "stray red line in BL"** — REFUTED: the y417/418 line
+   x124..382 IS in the original (loose-red row scan) and is reproduced.
+
+## Fix (copy-then-modify)
+
+`generate_plots_025.py` (banked as `generate_plots_4.py`): BL now draws the two
+measured red arrows as figure-fraction artists AFTER `fit_zoom` (so their red
+ink never enters `surface_box()`'s chroma fit). All four plots regenerated
+(78 s), pptx rebuilt 16:00, re-rendered as `render_4.png`
+(2001x1125 @150dpi, md5 `f885623df4e5a85b83774a87f1d1817f`).
+
+Verify-before-judge (all green): house chrome PASS (panel x112-1882,
+strokes L/R/bottom, top bare, badge (1824,152) d=68); frame containment
+0/0/0/0; title within 1-2 px; BL reference line y417-418 x124..382; arrows
+present (A1 265 red px, A2 202 red px in the render vs 55/50 loose-mask px in
+the original — the render's are solid strokes, same geometry); curve ripple
+check ALL SMOOTH (max d2 0.0074 « tol 0.35; GD-path turn cos 1.000 monotone);
+7 crop pairs re-cut from render_4 at matched effective scale 2.0833
+(`cut_crops_4.py`, all MATCHED=True).
+
+## Staged judge dispatch (attempt K=4)
+
+- `dispatch_A_4.sh` — Template A full-slide (payload `judge_prompt_4.txt`,
+  Template A verbatim, 4115 chars) → `judge_attempt_4.txt`.
+- `dispatch_crops_4.sh` — Template B loop over title/lbl_upper/lbl_lower/tl/
+  tr/bl/br (payloads `crop_prompt_4_<name>.txt`, Template B with NNN→025 only,
+  1914 chars, byte-verified in `verify_4.txt`) → `crop_4_<name>_judge.txt`.
+- Both detached (`nohup setsid`) under `timeout 1700` with the approved
+  analyzer `--timeout 1200`, `--thinking high --max-tokens 65536`.

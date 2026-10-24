@@ -111,7 +111,7 @@ P("")
 P("=" * 78)
 P("Z. ASCII MAP of the arrow corridor x335..620 y288..340")
 P("   legend:  W=white  P=panel-gray  Y=yellow  G=green  R=red  M=magenta/purple")
-P("            B=blue  K=black/dark  .=other")
+P("            B=blue  /workspaces/codespaces-blank/ai_llm_slides=black/dark  .=other")
 P("=" * 78)
 def cls(c):
     r, g, b = c
@@ -121,7 +121,7 @@ def cls(c):
     if g - r > 25 and g - b > 25: return "G"
     if b - r > 25 and b - g > 15: return "B"
     if r - b > 40 and b - g > 20: return "M"
-    if min(r, g, b) < 150: return "K"
+    if min(r, g, b) < 150: return "/workspaces/codespaces-blank/ai_llm_slides"
     return "."
 hdr = "     " + "".join(str((x // 10) % 10) for x in range(335, 620, 1))
 P(hdr)

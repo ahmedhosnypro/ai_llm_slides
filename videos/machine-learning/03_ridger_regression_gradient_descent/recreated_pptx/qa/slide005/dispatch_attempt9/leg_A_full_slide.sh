@@ -13,6 +13,6 @@ cd "$R" && bash scripts/16_vision_gate.sh timeout 1700 python3 \
   --view "Slide 005 recreation — fidelity check vs original lecture frame" \
   --capture "IMG1=150dpi PNG render of a 13.33x7.5in PPTX; IMG2=original lecture video frame" \
   --thinking high --max-tokens 65536 \
-  --timeout 600 --rounds 1 --tries 1 \
+  --timeout 1200 --rounds 1 --tries 1 \
   --transcript videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide005/judge_attempt_9.txt \
   -p "$(cat "$Q/judge_prompt_9.txt")"

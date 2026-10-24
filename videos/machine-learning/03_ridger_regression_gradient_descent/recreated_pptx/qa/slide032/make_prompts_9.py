@@ -8,11 +8,11 @@ only the GROUND RULES text is sent as the prompt. The command lines are rebuilt
 explicitly with the runbook's own substitutions.
 
 Substitutions actually needed:
-  payload A : none (its GROUND RULES text carries no NNN/K placeholder)
+  payload A : none (its GROUND RULES text carries no NNN//workspaces/codespaces-blank/ai_llm_slides placeholder)
   payload B : "slide NNN" -> "slide 032"   (the only placeholder in the text)
   commands  : slideNNN/slide_NNN -> slide032/slide_032 ; render_K -> render_9 ;
               judge_attempt_K -> judge_attempt_9 ; crop_K_NAME -> crop_9_<slug> ;
-              Slide NNN [zoomed crop NAME] -> Slide 032 [...] ; (attempt K) -> (attempt 9) ;
+              Slide NNN [zoomed crop NAME] -> Slide 032 [...] ; (attempt /workspaces/codespaces-blank/ai_llm_slides) -> (attempt 9) ;
               <one-line description ...> -> the region text
 verify_prompts_9.py re-derives the payload from the protocol and asserts equality.
 """
@@ -22,7 +22,7 @@ import re
 DECK = "/worksp" "aces/codespaces-blank/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent"
 PROTO = DECK + "/shared_patterns/judge_protocol_03.md"
 QA = DECK + "/recreated_pptx/qa/slide032"
-K = 9
+/workspaces/codespaces-blank/ai_llm_slides = 9
 ROOT = "/worksp" "aces/codespaces-blank/ai_llm_slides"
 REL = "videos/machine-learning/03_ridger_regression_gradient_descent"
 
@@ -43,9 +43,9 @@ PAY_B = payload_of(BLOCK_B)
 assert PAY_A.startswith("GROUND RULES"), PAY_A[:60]
 assert PAY_B.startswith("GROUND RULES"), PAY_B[:60]
 print("payload A chars:", len(PAY_A), "| placeholders present:",
-      {t: (t in PAY_A) for t in ("NNN", "K", "slide_NNN")})
+      {t: (t in PAY_A) for t in ("NNN", "/workspaces/codespaces-blank/ai_llm_slides", "slide_NNN")})
 print("payload B chars:", len(PAY_B), "| placeholders present:",
-      {t: (t in PAY_B) for t in ("NNN", "K", "slide_NNN", "NAME")})
+      {t: (t in PAY_B) for t in ("NNN", "/workspaces/codespaces-blank/ai_llm_slides", "slide_NNN", "NAME")})
 
 
 def show_diff(a, b, label):

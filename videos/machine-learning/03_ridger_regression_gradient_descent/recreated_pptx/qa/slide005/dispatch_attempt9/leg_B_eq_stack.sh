@@ -13,6 +13,6 @@ cd "$R" && bash scripts/16_vision_gate.sh timeout 1700 python3 \
   --view "Slide 005 zoomed crop eq_stack — render vs original at matched scale (attempt 9)" \
   --capture "IMG1=zoomed crop of a 150dpi PPTX render; IMG2=the SAME slide-space region cropped from the original lecture frame and upscaled to match IMG1's effective scale; region: $(cat $Q/crop_9_eq_stack_desc.txt)" \
   --thinking high --max-tokens 65536 \
-  --timeout 600 --rounds 1 --tries 1 \
+  --timeout 1200 --rounds 1 --tries 1 \
   --transcript videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide005/crop_9_eq_stack_judge.txt \
   -p "$(cat $Q/crop_prompt_9_eq_stack.txt)"

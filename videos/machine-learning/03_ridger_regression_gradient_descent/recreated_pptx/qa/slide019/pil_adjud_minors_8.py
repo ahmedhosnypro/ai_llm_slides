@@ -43,7 +43,7 @@ print("MINOR #5 — 'added title frame' (build draws a blue box the judge says t
 print("original lacks). Adjudicated against the ORIGINAL.")
 print("=" * 72)
 # title band: the banked ledger locates the box at frame ~y64..160, x66..436
-for label, arr, scale in (("original", O, 1.0), ("render_8", R, (SX, SY))):
+for label, arr, scale in (("original", O, (1.0, 1.0)), ("render_8", R, (SX, SY))):
     h, w = arr.shape[:2]
     y0, y1 = int(60 * scale[1]), int(165 * scale[1])
     x0, x1 = int(60 * scale[0]), int(440 * scale[0])
@@ -74,7 +74,6 @@ print("MINOR #6 — 'highlight only the y-value cells' vs build's full-width ban
 print("=" * 72)
 for label, arr, scale in (("original", O, (1.0, 1.0)), ("render_8", R, (SX, SY))):
     ym = yellow_mask(arr)
-    rowsum = ym.sum(axis=1)
     rows = np.nonzero(rowsum >= 3)[0]
     print(f"  {label:9s} total yellow px = {int(ym.sum()):6d}")
     if len(rows):
@@ -96,9 +95,6 @@ print("MINOR #3 — 'green per-component figures flanking the W labels'")
 print("=" * 72)
 for label, arr, scale in (("original", O, (1.0, 1.0)), ("render_8", R, (SX, SY))):
     gm = green_mask(arr)
-    cols = np.nonzero(gm.sum(axis=0) >= 3)[0]
-    print(f"  {label:9s} green px(>=3-col-filtered) = {int(gm[:, cols].sum()):6d} "
-          f"raw = {int(gm.sum()):6d}  cols={len(cols)}")
     if len(cols):
         ys = np.nonzero(gm[:, cols].sum(axis=1) >= 3)[0]
         print(f"            green row extent y{ys.min()/scale[1]:.0f}..{ys.max()/scale[1]:.0f}")

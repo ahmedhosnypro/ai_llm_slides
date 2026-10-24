@@ -21,7 +21,7 @@ def P(*a):
     lines.append(s)
 
 P("=" * 78)
-P("K. BLUE CURVE — wide scan over the whole plot box + surroundings")
+P("/workspaces/codespaces-blank/ai_llm_slides. BLUE CURVE — wide scan over the whole plot box + surroundings")
 P("=" * 78)
 # loose blue test: blue clearly dominant
 def isblue(c):
