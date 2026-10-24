@@ -535,3 +535,81 @@ nearly empty (real clients 4 fleet-wide). Fleet evidence gathered meanwhile:
 Tools banked this lane: `leg2_crop_driver.sh` (crop legs, gated + bounded),
 `parse_verdict_033.py` (verdict extraction + certification command block),
 `leg1_dispatch_k9_stopped.txt` (driver-stop ledger).
+
+## Lane w033-judge2-20261024 — page 2 (19:47–…, 2026-10-24)
+
+### Takeover state re-verified
+
+- Claim: `claim 33 w033-judge2-20261024` re-confirmed live (`get 33` →
+  `worker_id=w033-judge2-20261024`, heartbeat 25m stale at 19:47) → heartbeat
+  re-sent. Prior lane's processes were confirmed dead at takeover (ghost
+  dispatches left no transcripts).
+- **Build currency re-measured at 19:47**: `build/slide_033.js` md5
+  `4d7b548d…` == `build_attempt_8.js` == banked pptx `slide_033_recreated.pptx`
+  md5 `e90c9988…` (08:14); `render_9.png` == `render_10_currency.png`
+  byte-identical. Nothing stale; attempt numbering continued from 9/8.
+
+### Defect fixed: annotation line-1 `-9.7` is RED on the original
+
+PIL census of the original frame (see `adj_kit_033.txt`):
+- ORIG `-9.7` word (frame x386..424 y254..274): 236 dark px, **99 reddish**
+  (darkest (153,0,11)) — the value IS red in the frame, faintly (JPEG-softened
+  brick red).
+- ORIG `-9.6` word: 270 dark px, **131 reddish** (darkest (151,1,12)).
+- Attempt-8 render drew `-9.7` BLACK (0 reddish px of 456) — a genuine,
+  measured colour defect.
+
+Fix applied (one run, `slide_033.js:177`): `-9.7` run `color: "000000"` →
+`color: C_RED`; the inline geometry comment (lines 35–39) updated to record
+both values as red bold. Rebuilt, banked as `build_attempt_9.js` (md5
+`7a1b54698752e0800a615390d1b64925`), rendered to `render_11.png` (2001×1125,
+private LO profile) via `pdf9/slide_033_recreated.pdf`.
+
+`render_11.png` post-fix verification:
+- Pixel diff vs `render_9.png`: 1662 px, bbox confined to frame x391.0–585.3,
+  y259.7–271.7 — exactly the annotation line-1 band; nothing else moved.
+- Ink census REND11: `-9.7` 402/424 px reddish (darkest (192,0,0)); `-9.6`
+  483/642 px reddish — both now red, matching the original's hue family.
+- `selfcheck_11.py` (re-targeted bands): **SELFCHECK: PASS** — all 5 fill bands
+  within ≤3 RGB on data and label columns (D9E275 2/2, D6B2F5 3/1, F7DDC2 0/1,
+  DEAC95 0/4, F7BEC4 2/0), banked at `selfcheck_11.txt`.
+- `house_chrome_check.py render_11.png 33` → **PASS** (panel x112-1882,
+  y94-bottom; strokes L/R/bottom present, top bare; badge centre (1824,152) d=68).
+- `measurement/curve_fidelity_r11.py` → SMOOTH ONE-CURVE OK on RENDER11
+  (ripple std 2.024px, max|d2| 14.16px, 0 column gaps; turning points match the
+  original to 1 px: max 637/637, min 664/665, max 692/692, min 782/782, max 810).
+  Render curve unchanged from attempt 9 (identical numbers).
+- `selfcheck_struct_11.py` → containment OK (dark ink bbox x135..1823 y131..1071,
+  inside the house frame); plot-box white fraction 82% vs ORIG 71%; equation +
+  callout + both annotation regions non-empty. The reported
+  "orange arrowhead FAIL (missing)" is a **threshold artifact, refuted**:
+  colour-matched census of ED7D31 (237,125,49) ±30 finds **336 px at frame
+  x633.2..646.6 y116.3..135.5** in RENDER11 vs 55 px at x632..646 y119..136 in
+  ORIG. The absolute-darkness threshold (<200) cannot see ED7D31 at all.
+- Phantom ink: 0 column runs and 0 row runs <3 px in RENDER11 (and in `render_9`
+  and the original) — no stray ink anywhere.
+- Crop pairs re-cut from the new render by `cut_crops_11.py` →
+  `crop_11_{plot,table,center,title}_{render,orig}.png`, all four at EXACTLY
+  matched effective scale (MATCH=OK on every pair; e.g. plot 740×442 both sides,
+  scale x 2.084507 vs 2.084507, y 2.084906 vs 2.084906).
+  Banked log: `cut_crops_11.txt`.
+
+### Judge dispatch ledger (this lane)
+
+- Payloads re-verified byte-for-byte before any dispatch:
+  A = `judge_payload_A_k9.txt`, len 4139, md5 `9387f5fbb94ef05a31db19f1e018dde1`
+  (verbatim protocol Template A, line 71, no substitutions);
+  B = `judge_payload_B_k9.txt`, len 1923, md5 `0b5a221efbbe91481de2882e3bafbb4b`
+  (protocol Template B, line 117, single mandated `slide NNN`→`slide 33`).
+  Attempt numbering lives only in filenames / transcript paths / `--view`.
+- Gate law honoured: `pgrep -c -f analyze_image.py` probed before each call
+  (14 at 19:53, 12 at 19:47) with `real_clients=2` — the legal gate, dispatched
+  per the lane's documented over-counting decision.
+- **Leg 1 (Template A, full-slide)**: dispatched 19:53 by
+  `dispatch_leg1_k11.sh` → `judge_attempt_11.txt`, comparing `render_11.png`
+  vs `unique_slides/slide_033.jpg`.
+- **Leg 2 (Procedure B, crop-pairs)**: staged via `dispatch_crop_k11.sh`
+  `<region>` for plot / table / center (title only if the wall permits), each
+  writing `crop_11_<region>_judge.txt`.
+
+(leg outcomes, verdicts, certification rows appended below as they land)

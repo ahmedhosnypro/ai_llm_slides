@@ -93,3 +93,92 @@ LINE2 rend runs 7 [(248.0, 272.5), (293.6, 303.7), (309.0, 322.4), (327.2, 386.2
     run(402,421) px=163 reddish=151
     run(430,453) px=186 reddish=0
     run(459,493) px=237 reddish=0
+
+=== ADJUDICATION KIT ADDENDUM — lane w033-judge2, 2026-10-24 19:56 ===
+(A) -9.7 RED FIX — original-frame evidence (1:1, unique_slides/slide_033.jpg)
+    region frame x386..424 y254..274 : dark=236  reddish=99  blackish=7
+        reddish darkest (153,0,11)  mean (205.2,106.3,105.9)   [JPEG-softened]
+    region frame x554..596 y254..274 : dark=270  reddish=131 blackish=3
+        reddish darkest (151,1,12)  mean (205.8,96.4,98.2)
+    => BOTH -9.7 and -9.6 are red in the frame. Attempt-8 render had -9.7
+       black (0/456 reddish) => real colour defect. Fixed (C_RED).
+    post-fix RENDER11 (render_11.png, scaled 2001/960 x 1125/540):
+        -9.7 region: dark=537 reddish=404 blackish=36, reddish darkest (192,0,0)
+        -9.6 region: dark=642 reddish=483 blackish=38, reddish darkest (192,0,0)
+    Both values now carry the house red C00000, matching the sibling -9.6 run
+    that the prior lane already certified.
+
+(B) render_9 -> render_11 DELTA ISOLATION (proves nothing else moved)
+    total differing px 1662; bbox render (815,541)-(1221,567)
+        = frame x391.0..585.3, y259.7..271.7  (annotation line-1 band only)
+    per-zone magnitude:
+        -9.7 zone  n=536 maxdelta=202 meandelta=52.38   <- the intended change
+        mid  words n=743 maxdelta= 65 meandelta=33.04   <- antialiasing
+        -9.6 zone  n=383 maxdelta= 64 meandelta=27.45   <- antialiasing
+    word-run column positions REND9 vs REND11 (frame px): all runs identical
+    except the -9.7 glyph edges (391.0->391.5, 396.3->396.8, 405.4->405.9,
+    409.7->410.2, 416.9->416.4) and -9.6 edges (560.4->559.9, 585.3->584.8)
+    i.e. <=0.5 frame px sub-pixel antialiasing shift, NO reflow, NO text move.
+
+(C) ORANGE ARROWHEAD — struct-check FAIL REFUTED (threshold artifact)
+    colour-matched census, ED7D31 (237,125,49) tolerance 30:
+        ORIG   55 px, frame bbox x632.0..646.0  y119.0..136.0
+        REND11 336 px, frame bbox x633.2..646.6  y116.3..135.5
+    The struct check's absolute "<200 max-channel" darkness test cannot see
+    ED7D31 at all; the arrow IS drawn, in the right place, in the right colour.
+
+(D) PHANTOM INK — RENDER11
+    ink col runs <3px wide: 0 ; ink row runs <3px tall: 0
+    (same for render_9 and the original) -> no stray ink anywhere.
+
+(E) HOUSE CHROME render_11: PASS (panel x112-1882 y94-bottom; L/R/bottom
+    strokes present; top bare; badge centre (1824,152) d=68)
+(F) BAND SELFCHECK render_11: PASS (D9E275 2/2, D6B2F5 3/1, F7DDC2 0/1,
+    DEAC95 0/4, F7BEC4 2/0)
+(G) CURVE FIDELITY RENDER11: SMOOTH ONE-CURVE OK; ripple std 2.024px,
+    max|d2| 14.16px, 0 column gaps; turning points match ORIG to 1px
+    (max 637/637, min 664/665, max 692/692, min 782/782, max 810/810)
+
+=== (H) PLOT CROP LEG VERDICT (crop_11_plot) — ADJUDICATED, ALL 3 CONFIRMED ===
+crop_11_plot_judge.txt (render_11 vs original, plot region, matched scale):
+  FINAL VERDICT: FAIL
+  D1 MAJOR  green marker at reached minimum: SQUARE in render, CIRCLE in orig
+  D2 MINOR  callout leader line: orig has an arrowhead at the marker end
+  D3 MINOR  leader line attaches bottom-LEFT of the callout box in orig
+PIL adjudication against BOTH images (original 1:1, render scaled 2.084375):
+  (H1) GREEN MARKER SHAPE — ORIGINAL solid green (g>170) bbox x629..643 (15px)
+       y236..246 (11px); row widths from y236: 6,11,13,13,15,15,15,14,11,10,3
+       -> a ROUND blob (tapers at both ends), NOT a square.
+       RENDER11 (attempt 9): perfect rectangle, 30 render px wide for 19 rows.
+       => D1 CONFIRMED. The attempt-8/9 "square" was a mis-measurement.
+  (H2) POINTER ARROWHEAD — ORIGINAL dark ink wedge at x634..641 y246..250
+       (widest 8 px at y247, narrowing to 2 px at y250) = triangular arrowhead
+       with its tip touching the green marker at (637,246); below it a 1-2 px
+       pale line runs down-right to the callout box top edge, reaching
+       x643..645 at y259.
+       RENDER11: a plain 1.2 pt line from (692,258) to (641,246), no head.
+       => D2 CONFIRMED.
+  (H3) POINTER ATTACHMENT — ORIGINAL attaches at x~643 on the box's TOP edge
+       (box x613..700 -> 30 px from its left edge = LEFT-OF-CENTRE).
+       RENDER11 attached at x692 (79 px from the left edge = right edge).
+       => D3 CONFIRMED.
+FIX (attempt 10, build/slide_033.js):
+  * marker: ShapeType.rect 13x9 @ (629,236) -> ShapeType.ellipse 15x11 @
+    (629,236), fill 7CFC00.
+  * pointer: line (692,258)->(641,246) -> line (643,258)->(637,247),
+    width 1.5, endArrowType triangle (head at the marker end).
+Post-fix verification on render_12.png:
+  * marker mask is a clean ellipse; frame bbox x628.2..644.1 y235.8..247.3
+    (ORIG x628..643 y236..246) -> matched.
+  * pointer trace on render_12: 2 px shaft at x642..643 running down to
+    y256, triangular head widening x637..641 at y249..252, tip at y247
+    touching the marker -> matches the ORIGINAL trace (H2/H3).
+  * render_11 -> render_12 delta: 742 px, frame bbox x628.0..688.9
+    y235.2..256.3 (marker + pointer only); nothing else moved.
+  * bands selfcheck_12: PASS; chrome render_12: PASS; curve RENDER12:
+    SMOOTH ONE-CURVE OK (ripple std 2.223px, max|d2| 14.16px, 0 column gaps);
+    containment OK; phantom ink 0 col/0 row runs <3 px.
+  * crops re-cut from render_12 -> crop_12_{plot,table,center,title}_*,
+    all four MATCH=OK at identical effective scale.
+  * struct check's "orange arrowhead FAIL" is the known absolute-threshold
+    artifact (336 px of ED7D31 present at frame x633.2..646.6 y116.3..135.5).

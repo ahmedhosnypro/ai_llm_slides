@@ -24,7 +24,7 @@ MAX_LAUNCHES="${MAX_LAUNCHES:-40}"
 SLUGS="top_chain mid_table_eq mid_chain bot_eq_table"
 
 ts() { date -u +%Y-%m-%dT%H:%M:%SZ; }
-note() { echo "[$(ts)] $*" | tee -a "$LOG"; }
+note() { echo "[$(ts)] $*" >> "$LOG"; }
 
 cd "$ROOT"
 note "watchdog started (WID=$WID, poll ${POLL_EVERY}s, cap ${POLL_MAX}s, max launches ${MAX_LAUNCHES})"

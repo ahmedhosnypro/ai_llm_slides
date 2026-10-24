@@ -97,3 +97,51 @@ ATTEMPT-7 ITEMS (superseded build render_6, md5 b89c7a… = build_before_2Dfix)
 NET for attempt 9: build changed for D2 + D5 only (D1, D3, D4, D6 refuted with the
 numbers above). Render_8 (2001x1125, 150dpi) rebuilt from build/slide_049.js;
 house chrome check PASS; crops re-cut from render_8 at matched scale ~2.083.
+
+------------------------------------------------------------------
+ATTEMPT-9 CYCLE, SIZE 2 — W-column geometry re-measured on render_8 (2026-10-24)
+method: connected components on crop_9_wstack_<orig,render>.png (frame bbox
+692..760 x 135..530, 2.083x upscale), row bands = the calc-table rows.
+
+ORIGINAL W column, per row (frame px):
+  row1  W 696.3..707.8 | "=" 711.2..716.4 | "[" 721.7..724.6 (tall) | "5" 731.3..737.0
+        "-1" minus 727.3..733.7 + "1" 737.5..740.8 | "]" 743.7..746.1
+  row2  W 696.3..707.8 | "=" 710.2..715.9 | "[" 721.7..724.6 | "]" 743.7..746.1
+  row3  W 696.3..706.8 | "=" 710.7..716.4 | "[" 721.7..724.1 | "]" 743.7..746.1
+  row4  W 708.9..719.8 | "=" 722.4..728.1 | "[" 733.7..736.5 | "]" 755.8..758.6
+  row5  W 707.6..718.1 | "=" 721.2..727.0 | "[" 732.7..735.6 | "]" 754.7..757.1
+  row6  W 707.6..718.1 | "=" 721.2..727.4 | "[" 732.7..735.6 | "]" 755.2..757.1
+  => the original's own W column steps right by ~11px from row 4 down.
+  Bracket pair span 22.5pt on every row; interior (between serif tips) 17.3pt;
+  values CENTRED in the interior ("5" margins 6.7/6.7, "-1" margins 2.0/1.9);
+  bracket stroke 0.9pt, serif tips 2.2pt, bracket overshoot 1.9pt above the first
+  value line and 1.9pt below the last; value ink block 41.1pt tall, line pitch 16.4pt.
+
+RENDER (render_8, all six rows IDENTICAL — the jitter is not reproduced):
+  W 705.9..716.4 | "=" 720.7..726.5 | "[" 729.4..731.7 | "5" 733.7..738.9
+  "-1" minus 733.3..736.2 + "1" 738.0..742.8 | "]" 746.1..748.5
+
+DEFECTS MEASURED (real, both images, not phantom ink):
+  a) W label displaced: rows 1-3 +9.6pt right (706 vs 696 original W edge),
+     rows 4-6 -2pt LEFT (706 vs 709). No single x fits — the original's own
+     +11pt step at row 4 is absent from the build.
+  b) bracket column displaced +7.2pt right on rows 1-3 (729.4 vs 722.2) and
+     +0.5pt on rows 4-6 — again the missing row-4 step.
+  c) bracket pair span 18.6pt vs the original's 22.5pt (interior 14.4 vs 17.3):
+     the PNG is too narrow, so the values hug the brackets (left gap 1.6pt vs the
+     original's 2.0, right gap 3.3 vs 0.9) instead of sitting centred and clear.
+  d) bracket height 45.0pt vs the original's 42.1 (overshoot 4.4pt vs 1.9pt).
+  e) value block sits ~2pt low in the row.
+NOTE (accepted as inherent medium, NOT a fix trigger): the original's value
+glyphs and minus stroke are wider than Liberation Sans 12pt ("-1" ink 13.4pt vs
+9.5pt, minus 6.3pt vs 2.9pt) — typed-vs-handwritten clause (d). Digit ink 9.6pt
+vs 8.1pt. Only geometry is adjusted.
+
+FIX (copy-then-modify from build_before_Wfix_049g.js, md5 bfede8a1…):
+  render_wcol_049g.py v2 (v1 banked as render_wcol_049g_v1_bank.py): fixed
+  bracket frame — left serif at 18px, interior 145px, values CENTRED in it,
+  right serif at 199px, W=204, bracket overshoot px(1.3) past the value ink
+  block (H computed content-driven).
+  build/slide_049.js: per-row geometry from the measurements above —
+  rows 1-3 "W =" at fx(697) + column PNG at fx(721), y = r.y + 8;
+  rows 4-6 "W =" at fx(709) + column PNG at fx(732), y = r.y + 8.

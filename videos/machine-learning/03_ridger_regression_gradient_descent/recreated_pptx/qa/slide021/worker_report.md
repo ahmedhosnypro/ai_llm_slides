@@ -932,3 +932,36 @@ Gate state at 19:18Z: pgrep=9 (>=8), so the dispatcher is in its per-slug gate-w
 top_chain (last log line 19:14:52Z, waited 960s). No vision call dispatched; no new probe spent.
 No verdict landed after 19:13Z as of this re-glob. Nothing rebuilt; no DB write made by this lane
 beyond the heartbeat the dispatcher already sends.
+
+## 2026-10-24 19:49Z — crop-leg supervisor added (qa/slide021/watchdog_021.sh)
+
+Why: the fleet-global vision gate has been >=8 for the whole day (real analyzer count
+measured self-match-free via `ps -eo args | grep -E 'analyze_image\.py comparison'`:
+9-18 at 19:18-19:45Z). The dispatcher polls it every 240s and dispatches a leg only when
+pgrep<8. Its `for slug` list is one-shot per leg, so if the gate re-spikes to >=8 in the
+milliseconds between the gate check and run_crop's own check, that leg is silently skipped
+and the script advances (the log would show "GATE: N analyze_image.py running (>=8) — NOT
+dispatching <slug>"). With the count hovering right at the threshold, that failure mode is
+live, not hypothetical.
+
+watchdog_021.sh (new, detached, PID 72400 / SID 72400 / log qa/slide021/watchdog_021.log):
+- NEVER dispatches a vision call and NEVER touches the DB — it only supervises.
+- A leg counts as DONE only when its transcript has a REAL verdict body, matched
+  line-anchored: `grep -qE '^FINAL VERDICT: (PASS|FAIL)[[:space:]]*$'`. The payload file
+  itself contains the literal string "End with: FINAL VERDICT: PASS or FAIL ...", so an
+  echoed payload line would otherwise read as a verdict; the line-anchored test rejects it
+  (verified: payload line -> NO MATCH, banked top_table_eq body -> MATCH).
+- While a dispatcher is alive it does nothing (no duplicate dispatchers, no double calls).
+- When no dispatcher is alive and legs are still missing, it archives any no-verdict
+  transcript as crop_10_<slug>_judge.noverdict.<ts>.bak (evidence preserved, never
+  deleted) and relaunches the EXISTING dispatch_leg2_crops_fresh.sh for exactly those legs,
+  so the dispatcher keeps owning the gate check, the frozen payload, and one dispatch per leg.
+- Caps: POLL_MAX 21600s, MAX_LAUNCHES 40, honest exit 42/43 parks with no fabrication.
+Tested before launch: `bash -n` clean; foreground run with POLL_EVERY=1 POLL_MAX=3 exited 42
+without dispatching anything; the live dispatcher was untouched throughout.
+
+Also refreshed the DB park record via `set 21 last_error ... --worker w021-legs-20261024`
+(now 19:40Z) to name the live worker PIDs, the gate state, the exact resume commands, and
+the fact that any FAIL/MINOR must be PIL-adjudicated before any build change. No other DB
+field was touched: gen_status=building, visual_check="", visual_attempts=10,
+visual_transcript=judge_attempt_10.txt, worker_id=w021-legs-20261024 (heartbeat live).

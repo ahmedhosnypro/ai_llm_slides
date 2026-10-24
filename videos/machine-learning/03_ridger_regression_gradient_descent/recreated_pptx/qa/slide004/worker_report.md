@@ -642,3 +642,54 @@ clean or PIL-adjudicated, run the certification sequence in LANE 3 above
 (`visual_check PASS` → `visual_transcript judge_attempt_7.txt` → `visual_attempts 7` →
 `gen_status passed` → `heartbeat` → `release` → re-read `get 4` and confirm
 `gen_status=passed`, `visual_check=PASS`, `worker_id=""`).
+
+Byte-identity was proven by comparing the package's `ppt/media/image-*.png` members against
+`recreated_pptx/build/assets/eq_004_{Yvec,Yhatvec,norm,formula}.png` — all four `identical=True`,
+so no build re-render occurred inside the deliverable (the packaging path is the certified asset
+pipeline). Verbatim runs checked character-exactly in the slide XML:
+`X_{N×(d+1)} is a matrix ⇒ Given`, `Y_{N×1} is labels vector ⇒ Given`, `Ŷ=XW`, `Ŷ=Y`, `Ŷ≠Y`,
+`⇒` all present (`(N×(d+1)` parentheses intact — refutation #2 holds at the string level too);
+`||a||` and superscript look-alikes are NOT typed text (they live in `eq_004_norm.png`), so no
+caret/underscore text violates the 2D-format rule.
+
+Slide-frame geometry measured from the deliverable XML (all values in 960×540 frame px):
+
+```
+badge        x 858.5 y 55.5  w 35 h 35     ("4" — matches the original's printed numeral)
+title        x 240   y 68    w 440 h 26
+eq Yvec      x 87    y 131   w 137 h 51
+eq Yhatvec   x 432   y 130   w 129 h 62
+Remember lbl x 787   y 102   w 92  h 14
+eq norm      x 797.9 y 126.8 w 82  h 20
+Objective    x 84    y 242   w 212 h 59
+Error        x 84    y 306   w 396 h 59
+Ŷ = XW       x 500   y 248   w 378 h 22
+Where: X_    x 500   y 285   w 378 h 22
+Y_{N×1}      x 500   y 315   w 378 h 22
+W is Model   x 500   y 345   w 378 h 22
+Define Loss  x 82    y 387   w 571 h 61
+eq formula   x 171.5 y 481.9 w 265 h 24
+```
+
+Dense-region coverage for Procedure B is now **five regions**, each pair cut from `render_7.png`
+at matched effective scale (render crop px/frame px == original upscaled crop px/frame px on
+both axes):
+
+| region | frame bbox | output px | eff. scale |
+|---|---|---|---|
+| `let_boxes` | x75..750, y94..226 | 1407×275 | 2.0844 / 2.0833 |
+| `remember` | x780..886, y96..157 | 221×127 | 2.0849 / 2.0820 |
+| `where_block` | x490..890, y230..375 | 834×302 | 2.0850 / 2.0828 |
+| `label_boxes` (inherited, attempt-4 bbox) | x70..750, y90..230 | — | see `crop_pairs_004_v4.py` |
+| `bottom` (inherited, attempt-4 bbox) | x70..495, y380..530 | — | see `crop_pairs_004_v4.py` |
+
+The three freshly-cut pairs (`let_boxes`, `remember`, `where_block`) were re-derived from
+`render_7.png` + `unique_slides/slide_004.jpg` and are pixel-identical to a fresh cut
+(`ImageChops.difference(...).getbbox()` = `None` for both images of every pair). The inherited
+attempt-4 bboxes are superseded by the three current pairs and are NOT re-judged from stale
+renders (protocol: a crop transcript is kept only if its region is pixel-identical across the
+rebuild — `crop_4_*` renders predate `render_7.png`, so they are retained as history only).
+
+Prize leg-2c script staged: `scratch/tmp/j7_where.sh` (where_block, payload
+`crop_prompt_6_where_block.txt` — same frozen Template B payload plus the sanctioned
+`slide_NNN` → `slide 004` substitution, sha256 `533c38…0dec`).

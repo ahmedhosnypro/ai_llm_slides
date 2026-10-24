@@ -889,3 +889,164 @@ crops staged and byte-checked, dispatcher at the approved wall):
 
 The full path form `videos/.../` above is abbreviated; the actual path is
 `videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide016/judge_attempt_6.txt`.
+
+---
+
+# Attempt 8 — fresh background judge lane (worker `judge016-fresh-lane-20261024`, 2026-10-24 19:12–)
+
+Row 16 claimed fresh with `claim 16 judge016-fresh-lane-20261024` (row was free; no `--force`
+needed — the prior lane had released nothing but its worker_id/`gen_status` were left
+`judging`/NULL, and `claim` succeeded because no other worker held a fresh heartbeat).
+
+## Bank re-glob on entry (VERIFIED FIRST)
+Every `*_judge.txt` / `judge_attempt_*.txt` scanned for a real `FINAL VERDICT:` body
+(prompt/echo files excluded):
+
+- `judge_attempt_1.txt` FAIL (SUPERSEDED — the attempt-1 "missing 4 of 12 body text lines"
+  build state; never used here as a fix or certification basis)
+- `judge_attempt_2.txt` FAIL, all 3 findings PIL-refuted (prior lane)
+- `judge_attempt_4.txt` — NO `FINAL VERDICT:` line (no verdict, banked as such)
+- `judge_attempt_5.txt` FINAL VERDICT: PASS (on **render_5**)
+- `crop_5_missing_band_judge.txt` PASS, `crop_5_bullet2_judge.txt` PASS (render_5)
+- `crop_5_last_bullet_judge.txt` **FAIL** (the real 2-missing-underlines defect; since fixed)
+- `crop_1/2_missing_band_judge.txt` FAIL — pre-fix renders, historical
+
+**No attempt-6 transcript landed:** `judge_attempt_6.txt`, `crop_6_last_bullet_judge.txt`
+and `crop_6_full_body_judge.txt` DO NOT EXIST. So all three legs are genuinely outstanding.
+
+Census banked by command:
+`for f in judge_attempt_*.txt crop_*_judge.txt; do ... grep FINAL VERDICT ...`
+
+## Independent verification of the CURRENT deliverable (this lane, own scripts)
+
+### Banked artifacts
+| file | what it proves |
+|---|---|
+| `verify_fresh_016.py` / `verify_fresh_016.txt` | this lane's own end-to-end PIL verification (independent re-implementation, not the prior lane's code) |
+| `verify_attempt6_current_freshlane.txt` | re-run of the prior lane's `verify_attempt6_current.py`, reproducing its numbers exactly |
+| `verify_colors_016.txt` | colour-class ink counts per body region, both images |
+| `verify_geometry_016.txt` | text-line row bands + band-centre alignment, both images |
+| `verify_b3b_gap_016.txt` | b3b word-gap profile (the confirmed double-space MINOR) |
+
+### 1. Render currency — PROVEN by me (not inherited)
+Fresh LibreOffice re-render of `recreated_pptx/slide_016_recreated.pptx` (md5
+`e78067837ab777212529e902d484ec1d`, mtime 2026-10-24 15:12:23Z, 63585 B) at 150dpi in a
+private profile under `TMPDIR=scratch/tmp/w016_judge_spotcheck`:
+**md5 `ed916ea68516820580b787856813d4df`, `cmp` clean against
+`qa/slide016/render_6.png`, size 2001x1125.** The deliverable is current.
+
+### 2. Black underlines — 3/3 PRESENT (frame px, orig vs render_6)
+`y500 x446..640` → `y500.2 x445.3..641.1` (overlap 194)
+`y500 x710..806` → `y500.2 x709.3..806.7` (overlap 96)
+`y525 x110..162` → `y525.2 x109.3..163.0` (overlap 52)
+My independent run (different mask: `max<140 & (max-min)<=20`, min width 12 frame px,
+row-merge) reproduces the same segments, incl. the render's anti-aliased duplicate rows.
+
+### 3. No underline crosses the inner border x830 — CONFIRMED
+Render neutral runs in x80..830 y470..540 all end at x≤641.1/806.7/163.0 — nothing
+crosses. The wide runs near the box bottom are proven coloured:
+- `y531.9..532.9`, x820..833.9, median RGB **(43,35,122)** = the content box's own purple
+  bottom border (the original has the identical run: `y532 x820..833` RGB (124,112,214)/(63,52,154));
+- `y538.2/538.6`, x820..845.4, median RGB **(192,0,0)** = the deck's red house bottom stroke
+  (present in the original too).
+So the attempt-1 MAJOR ("underline crosses the inner border") is REFUTED on render_6 — no
+phantom ink, and neither run is a defect the original does not have.
+
+### 4. 12/12 body bands inked (incl. L7-L10)
+x88..828, dark ink (mean<170): render 998/7811/8397/12048/11223/8778/9524/8572/11146/2886/
+13232/1733 vs original 998/1787/2803/3118/3002/1979/2350/2666/2962/1039/3642/519 — all ≥500.
+
+### 5. House chrome — PASS via the deck checker
+`python3 shared_patterns/house_chrome_check.py recreated_pptx/qa/slide016/render_6.png 16`
+→ **PASS**: panel x112-1882 y94-bottom; strokes L/R/bottom present, **top bare**; badge
+(1824,152) d=68; all within tol 8.
+Own red-stroke measurement agrees: bottom red stroke y539 x58.1..901.4 (n=1758 render px),
+left/right verticals x~58/x~901 spanning rows 46..538.6; zero red px in the top band y40..50
+in BOTH images.
+
+### 6. Line geometry — tight
+15 row bands in each image; band centres agree within **+/-2.4 frame px** for every line
+(`verify_geometry_016.txt`). Last-line mid-y = 518 in both; box bottom border y=532 in both.
+
+### 7. Colour regions (no MINOR raised by me)
+Blue sub-header ink, b3/b4 blue key terms, the b1 yellow highlight (orig 2253 / render 11059 px),
+and every red run are present in the same regions in both images (`verify_colors_016.txt`).
+Red runs are stronger in the render (206,63,63 vs the original's washed 184,98,109) —
+video-capture artifact, ground rule (e).
+
+### 8. Known-and-confirmed surviving MINOR (frame-wins wording)
+b3b word-gap profile (`verify_b3b_gap_016.txt`): original gaps on that line are 1/5/6 px
+everywhere **except one 10 px gap before the "(" at x402..415**; render_6 has a 7 px gap
+there. The original thus carries a **double space before "(also know as"** where the render
+has one. `build/slide_016.js:122` carries the single space, so the render is faithful to the
+build but 3 px shy of the frame. Measured against BOTH images, so it is PIL-confirmed
+(not phantom). It is whitespace-level and matches the original's own inter-word norm of
+5-7 px; it does not affect legibility, containment, or any structural element.
+
+## Attempt-6 staged artifacts — re-verified this lane
+- `judge_prompt_6A.txt` — md5 `9387f5fbb94ef05a31db19f1e018dde1`, 4115 bytes,
+  **re-derived from the Template A block of `shared_patterns/judge_protocol_03.md` with
+  only NNN->016 (Template A's payload contains no standalone `K`) and byte-identical**
+  (`IDENTICAL: True`). BLOC1ER x0. (The dispatcher comment says "4115 bytes"; the banked
+  `wc -c` says 4139 because it was written by `write_text` vs my byte-count of the
+  decoded string — md5 is the binding check and it matches.)
+- `judge_prompt_6B.txt` — md5 `481172b034aa3336f54591d4e8e4bc98`, 1924 bytes, **BLOC1ER x0**,
+  BLOCKER x2 intact; generated by `recut_crops_6.py` from the Template B block with
+  `NNN->016` and `\bK\b->6`.
+- Crop pairs re-derived from `render_6.png` by me and pixel-compared to the banked files:
+  `crop_6_last_bullet_{render,orig}.png` 1541x118, effective scale x 2.0824 = 2.0824 and
+  y 2.0702 = 2.0702; `crop_6_full_body_{render,orig}.png` 1531x904, x 2.0830 = 2.0830 and
+  y 2.0829 = 2.0829. **Max differing px vs re-derivation: 0 on all four** — the pairs are
+  pixel-exact from render_6 at matched effective scale (LANCZOS, H_render/540 = 2.0833).
+- `dispatch_judge_6.sh` — legs `legA` / `last_bullet` / `full_body`, `--timeout 1200` inside
+  `timeout 1700`, `--thinking high --max-tokens 65536 --rounds 1 --tries 1`.
+
+## Which crop legs the rebuild invalidates (proved, my own diff)
+render_5 vs render_6 differ by 1673 px total, bbox frame-px **y499.7..500.6 x445.0..806.9**
+(the two b5a underlines). Region counts:
+`missing_band` 0 px, `bullet2` 0 px, `last_bullet` 1673 px, `full_body` 1673 px.
+So the render_5 crop PASSes survive for the two unchanged regions, but the two
+regions that changed both need re-judging — as the parent law requires, all three
+attempt-6 legs are needed on render_6.
+
+## Gate probes this lane (park reason — congestion, NOT a build defect)
+| when (UTC) | pgrep -c -f analyze_image.py | action |
+|---|---|---|
+| 19:14 | 8 | at the >=8 threshold -> heartbeat + sleep 240 |
+| 19:20 | 11 | heartbeat + sleep 240 |
+| 19:36 | 18 | >=8 -> heartbeat; congestion increased, not draining |
+
+Two probes per hour are the budget; the hour's probes are spent. No vision call has been
+dispatched this lane, so nothing is burned and no verdict has been fabricated.
+Next probe window opens ~20:00 UTC; heartbeats keep the row live.
+
+## PARK STATE
+NOT certified by this lane yet. Row 16: `gen_status=judging`, `visual_check=NULL`,
+`visual_transcript=NULL`, `visual_attempts=1`, `worker_id=judge016-fresh-lane-20261024`.
+RESUME COMMANDS (project root; build, payloads, crops and dispatcher are all verified):
+
+    cd "/worksp""aces/codespaces-blank/ai_llm_slides"
+    export VIDEO=machine-learning/03_ridger_regression_gradient_descent
+    python3 scripts/15_progress.py heartbeat 16 judge016-fresh-lane-20261024
+    pgrep -c -f analyze_image.py          # must be < 8
+    bash videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide016/dispatch_judge_6.sh legA
+    bash videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide016/dispatch_judge_6.sh last_bullet
+    bash videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide016/dispatch_judge_6.sh full_body
+    # then, once all three transcripts carry a real FINAL VERDICT: line and each
+    # finding is adjudicated PIL-first (or the verdicts are clean):
+    python3 scripts/15_progress.py set 16 visual_check PASS   --worker judge016-fresh-lane-20261024
+    python3 scripts/15_progress.py set 16 visual_transcript \
+      videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide016/judge_attempt_6.txt \
+      --worker judge016-fresh-lane-20261024
+    python3 scripts/15_progress.py set 16 visual_attempts 6  --worker judge016-fresh-lane-20261024
+    python3 scripts/15_progress.py set 16 pptx_path \
+      videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_016_recreated.pptx \
+      --worker judge016-fresh-lane-20261024
+    python3 scripts/15_progress.py set 16 gen_status passed  --worker judge016-fresh-lane-20261024
+    python3 scripts/15_progress.py heartbeat 16 judge016-fresh-lane-20261024
+    python3 scripts/15_progress.py release 16 judge016-fresh-lane-20261024
+    python3 scripts/15_progress.py get 16   # must read gen_status=passed, visual_check=PASS, worker_id=""
+
+Verification note: `gen_status` must be set to `passed` AFTER `release` planning — if a
+`claim`/`set` resets it to `building` (15_progress.py:337-339), re-set `gen_status passed`
+before the final `release` so the closing row reads `passed` / `PASS` / `worker_id=""`.

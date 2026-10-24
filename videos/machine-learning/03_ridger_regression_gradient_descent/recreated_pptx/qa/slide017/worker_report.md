@@ -174,12 +174,19 @@ count ≥ 8 means "wait"):
 | 19:20:42 | 12 | probe 1 of hour 19 → wait |
 | 19:31:16 | 11 | probe 2 of hour 19 → wait |
 | 19:34:27 | 18 | probe 3 of hour 19 (over cap) → stop probing this hour |
+| 20:00:13 | 13 | probe 1 of hour 20 → wait (heartbeat + sleep 240) |
+| 20:04:53 | 8 | probe 2 of hour 20 → still ≥ 8 → **park honestly** (both probes of hour 20 used) |
 
 Upstream symptom measured by the sibling lane 010: Nvidia `models: images` returning
 HTTP 504 `upstream_timeout` at ~61 s, while the local router itself is healthy. The
 fleet is saturated with analyzer processes, so the gate law's probe cap is the binding
 constraint. **No vision call was dispatched in this window; no verdict was fabricated;
 no leg was retry-looped.**
+
+The dispatch scripts now enforce the probe themselves: `judge_commands_kimi.sh` and
+`judge_crops_kimi.sh` both run `pgrep -c -f analyze_image.py` before the call (and
+before **each** crop leg) and exit 75 with "GATE BUSY" instead of dispatching, so no
+leg can ever be launched without a passing probe.
 
 ## Known open item (carried, not a defect)
 
@@ -247,6 +254,29 @@ python3 scripts/15_progress.py release 17 kimi-slide017
 python3 scripts/15_progress.py get 17   # must read passed / PASS / worker_id=""
 ```
 
+### Adjudication helper (banked)
+
+`qa/slide017/check_verdict.py <transcript> …` reports VOID for any transcript without a
+genuine `FINAL VERDICT: PASS|FAIL` line and rejects an echo of the template's own
+"…FINAL VERDICT: PASS or FAIL…" instruction (verified against the banked
+`judge_attempt_3.txt`, which it correctly reports as VOID). Exit code 0 only when every
+listed transcript is a real verdict. Adjudicate each FAIL/MINOR against **both** images
+with `compare_017_orig_vs_render.py` (pre-measured bank) before deciding anything.
+
+### Known deltas to adjudicate against, if a judge raises them
+
+| judge phrasing likely | banked answer |
+|---|---|
+| "row label glyphs wider than the original" | render's label X₁ ~14 px wide vs original ~11 px at equal cap height; both are bold serif in the build; data cells and header match within 1 px → MINOR font/medium metric |
+| "row labels sit slightly high" | label X₁ y165..178 (render) vs y169..181 (original); data cells match (y166..178 vs y167..179) → MINOR vertical centering |
+| "header row text smaller" | header X1 cap 13 rows (render) vs 15 rows (original) → MINOR |
+| "Test label should be red" | red px = 0 on BOTH sides (original ink median (193,190,255) = JPEG-softened periwinkle) → REFUTED |
+| "42.5 cell is the wrong colour" | band-3 y-row cells are mint in both: orig (204,255,222)/(201,255,225)/(204,255,223) vs render (204,255,225) → REFUTED |
+| "badge ring too light/thin" | render ring is exactly the mandated 6A5ACD (106,90,205); original median (132,95,163) is JPEG-shifted purple → house chrome, REFUTED |
+| "test table bottom border missing" | border present at frame y 251.7/252.2, 389.7–390.7, 526.7/527.2 (render rose D7BEC2) = the original's positions → REFUTED |
+| "ink left of the left stroke" | 4124 px left of x56 are all panel gray E9E9E7 (panel starts x54); 0 other ink → REFUTED |
+| "colours more saturated than the original" | crisp PPTX render vs JPEG lecture frame → rule (e), expected |
+
 ## Banked artifacts (`recreated_pptx/qa/slide017/`)
 
 | file | what |
@@ -267,3 +297,52 @@ python3 scripts/15_progress.py get 17   # must read passed / PASS / worker_id=""
 | `adjudicate_fails{,_2..5}.py`, `measure_017.py/.txt` | earlier attempt adjudications + measurements |
 | `build_entry_attempt_4.js`, `component_attempt_4.js` | build-side artifacts from the attempt-4 pass |
 | `bank/` | peer bank (wbox peer crop + its generator) |
+| `compare_017_orig_vs_render.py/.txt` | full side-by-side original-vs-render measurement bank (168 cells) |
+| `check_verdict.py` | transcript verdict extractor (VOID detector, template-echo rejecter) |
+
+---
+
+# Pre-judge PIL sweep — original vs render_4 (added 19:5x UTC, before dispatch)
+
+`compare_017_orig_vs_render.py` measures the same quantities on BOTH images (original
+960×540 native; render_4 downscaled LANCZOS ×2.0844 to 960×540): chrome, both tables'
+gridlines, all 168 table cells' ink counts, label boxes, W-box borders, norm lines,
+arrows, title runs, and the Train/Test label ink colour. Bank:
+`compare_017_orig_vs_render.txt`. Result: **no missing element, no wrong table value,
+no frame-containment violation.** The only deltas found are MINOR-scale and are banked
+here so any judge finding can be adjudicated immediately.
+
+| finding | measurement (frame px) | class |
+|---|---|---|
+| Render's train/test **row-label glyphs are ~3 px wider** at equal cap height | label "X₁": original X core x100..107 (8 px) / cap y169..181; render X core x100..107 but with the stroke pairs at x99..112 (14 px) / cap y165..178. Both are **bold serif** in the build (`cellStyle(... bold: true)`, `fontFace: SERIF`); the data cells and the header row match the original within 1 px. | MINOR — font/medium metrics (the original is a compressed video frame, rule e) |
+| Render's row labels sit **~2–3 px higher** than the original's | label "X₁" y165..178 (render) vs y169..181 (original); the row's data cells are y166..178 vs y167..179 — the data text matches, only the label column is offset | MINOR — vertical centering inside the cell |
+| Render's **header row cap height is ~2 px shorter** | header "X1" y135..147 (render, 13 rows) vs y136..150 (original, 15 rows) | MINOR |
+| Ink counts in the render run **10–30 % higher** in most cells | e.g. B1 r0 c2: original 90 ink px vs render 99; label column X₁: original 56 vs render 84 | not a defect — the render is crisp black (0,0,0) while the original's ink is JPEG-softened (median 38,40,37), so the original falls below the ink threshold |
+| Render's **test table y-row fills** are a uniform mint (204,255,225) vs the original's per-cell (200–204,255,220–227) | all three bands | not a defect — the original's per-cell variance is JPEG noise around one fill |
+| Render's **right red stroke** reads at x900 (197,27,27) = C00000; the original's at x901 (106,46,56) | the original's stroke is 1–2 px right and JPEG-desaturated, and its x900 column is faint, which is why the original's gridline scan stops at x872 while the render's also catches the house stroke's AA edge at x899 | not a defect — house chrome (GROUND RULES a), and the stroke's x agrees within 1 px |
+
+Nothing here is a BLOCKER/MAJOR trigger, so no build change was made before dispatch.
+The glyph-width and vertical-offset deltas are recorded as the standing adjudication for
+any MINOR the K=4 judges raise about the row-label column.
+
+---
+
+# Follow-ups / known gaps (non-blocking)
+
+1. **Dangling doc reference:** `build/components/slide_017.js` cites its geometry source
+   as `recreated_pptx/qa/slide017/MEASUREMENTS.md`, but that file does not exist (the
+   parent slide 013 has one). The measurements themselves ARE banked — `measure_017.txt`
+   (the full dossier the component was built from) and `compare_017_orig_vs_render.txt`
+   (the original-vs-render bank). A worker who changes the table geometry should write
+   `MEASUREMENTS.md` from those two files rather than re-measure; this lane did not
+   create it because no build change was made here.
+2. **Namespace-root `qa/worker_report.md` is slide 005's report** (it is titled
+   "Worker report — slide 005" and duplicates `recreated_pptx/qa/slide005/worker_report.md`).
+   It was left untouched; this lane's report is `recreated_pptx/qa/slide017/worker_report.md`.
+3. **Train/Test label ink** — the one open colour question, described in "Known open
+   item" above: white in the render vs JPEG-softened periwinkle (193,190,255) in the
+   original, red px = 0 on both sides. Not a fix trigger; adjudicate as MINOR if raised.
+4. **Row-label glyph width / vertical offset** — the two MINOR deltas measured in the
+   pre-judge sweep above. Both are inside the tolerance the deck's other certified
+   slides already carry for font substitution; no change made without a judge raising
+   them as MAJOR.

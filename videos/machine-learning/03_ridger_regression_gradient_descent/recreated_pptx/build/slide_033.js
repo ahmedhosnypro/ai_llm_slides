@@ -34,8 +34,9 @@
 // ANNOTATION BOX x246..597 y254..299 pale green #EFFFE2, green border.
 //         Line 1: "X" red bold italic + "is in between -9.7 and color red
 //         bold -9.6" (the literal words "color red bold" ARE on the frame;
-//         the analysis had stripped them as a style descriptor) with -9.6
-//         red bold. Line 2: "f(x)" blue bold italic + "is in between -8.08
+//         the analysis had stripped them as a style descriptor) with BOTH
+//         -9.7 and -9.6 red bold (frame census: -9.7 ink 183/197 reddish
+//         min RGB (210,139,136); -9.6 ink 221/232 reddish min (154,14,25)). Line 2: "f(x)" blue bold italic + "is in between -8.08
 //         and -8.011" with both values blue bold.
 //
 // PLOT box x607..845 y60..313 white with C00000 border. The plotted ink is
@@ -46,9 +47,13 @@
 //         printed on the frame). Curve teal #2FA9AC, lw 2.6.
 //         Markers (frame-measured): maroon dashed drop line x617 y150..171;
 //         red dot x621..626 y144..149; orange #ED7D31 arrow x632..645
-//         y118..136; bright green square x629..642 y237..245; pink
-//         #F7C9FA "Reach / Local Minima" callout x613..700 y258..295 with
-//         purple italic text and a black pointer to the green square.
+//         y118..136; green ROUND marker x629..643 y236..246 (JPEG-decensus:
+//         row widths 2,5,13,13,15,15,15,14,11,8 from y236 -> an ellipse,
+//         NOT a square — the attempt-8 rect was a mis-measurement); pink
+//         #F7C9FA "Reach / Local Minima" callout x613..700 y257..295 with
+//         purple italic text and a black pointer leaving the box's LEFT-OF-
+//         CENTRE top edge (x643,y258) running up-left to the marker and
+//         ending in a small triangular arrowhead (frame x634..641 y246..250).
 //         Axis label "x" sits OUTSIDE the plot border at ~x850 y168.
 //
 // TABLE outer box x86..869 y320..519 (white, navy border).
@@ -173,7 +178,7 @@ slide.addText("X", {
 });
 slide.addText([
   { text: "is in between ", options: { fontFace: T, fontSize: 17, bold: true, color: "000000" } },
-  { text: "-9.7", options: { fontFace: T, fontSize: 17, bold: true, color: "000000" } },
+  { text: "-9.7", options: { fontFace: T, fontSize: 17, bold: true, color: C_RED } },
   { text: " and color red bold ", options: { fontFace: T, fontSize: 17, bold: true, color: "000000" } },
   { text: "-9.6", options: { fontFace: T, fontSize: 17, bold: true, color: C_RED } },
 ], {
@@ -228,15 +233,15 @@ slide.addShape(pptx.ShapeType.line, {
   x: px(633), y: px(117), w: px(13), h: px(19), flipH: true,
   line: { color: "ED7D31", width: 3, endArrowType: "triangle" },
 });
-// bright green square at the reached local minimum (x629..642 y237..245)
-slide.addShape(pptx.ShapeType.rect, {
-  x: px(629), y: px(236), w: px(13), h: px(9),
+// green ROUND marker at the reached local minimum (frame x629..643 y236..246)
+slide.addShape(pptx.ShapeType.ellipse, {
+  x: px(629), y: px(236), w: px(15), h: px(11),
   fill: { color: "7CFC00" }, line: { color: "7CFC00", width: 0 },
 });
-// "Reach Local Minima" callout (x613..700 y258..295) + pointer
+// "Reach Local Minima" callout (x613..700 y257..295) + pointer
 slide.addShape(pptx.ShapeType.line, {
-  x: px(692), y: px(258), w: px(-51), h: px(-12),
-  line: { color: "000000", width: 1.2 },
+  x: px(643), y: px(258), w: px(-6), h: px(-11),
+  line: { color: "000000", width: 1.5, endArrowType: "triangle" },
 });
 slide.addShape(pptx.ShapeType.rect, {
   x: px(613), y: px(257), w: px(87), h: px(38),

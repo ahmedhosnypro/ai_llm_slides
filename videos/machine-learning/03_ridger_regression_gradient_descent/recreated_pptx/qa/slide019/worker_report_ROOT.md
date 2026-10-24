@@ -135,3 +135,48 @@ nohup bash videos/machine-learning/03_ridger_regression_gradient_descent/recreat
 ```
 Both scripts are banked and executable; payloads are banked and byte-verified.
 Dispatch Template A first (it is the verdict-carrying leg), then Procedure B.
+
+## Attempt 8 outcomes — 2026-10-24 (worker `w019-legs-20261024`)
+
+**Currency question RESOLVED: `judge_attempt_6.txt`'s FAIL does NOT apply to the current
+build.** attempt_6 consumed `render_6.png` (md5 `b2370bc9cdbb…`, 151,917 B, 01:03:26); the
+current artifacts are `render_8.png` (md5 `ed8bc8124e94…`, 151,716 B, 07:02:08),
+`build/slide_019.js` (md5 `42f4ac7e…`, unchanged since attempt 7 and byte-identical to the
+banked `build_attempt_20261024_root.js`), `slide_019_recreated.pptx` (md5 `953cedc1…`,
+07:01:49). `render_6.png` vs `render_8.png` differ by 1,247 px (0.0554%), confined to
+y356..362 x214..345 and y466..472 x214..343 — exactly the two NO REG row-group `y=` lines
+named by FAIL drivers #1/#2. The build now carries the original's values:
+`build/slide_019.js:180-182` = 32.4/42.3/52.3 and `:188-190` = 24.4/31.2/38.
+
+Both drivers are adjudicated **RESOLVED** from the original frame's saturated-green
+Test-2 numerals (glyph-level, 1 char/px): NO REG row 2 = **42.3**, row 3 = **31.2** —
+matching the build exactly. The banked *transcriptions* are the thing that was wrong:
+`analysis/slide_019_raw.json` (step 7) and `analysis/slide_019_final.json` still say
+"all y predictions 60,80,100" for those rows. Whoever next scores slide 019 must re-derive
+from the frame, not from the JSON, or they will reproduce the attempt-6 FAIL.
+
+MINOR #3 (green per-component figures flanking the W label) — **REFUTED**: 0 green px in
+the W-label zone (x124..206) for all three row groups, in both images. MINOR #4/#5/#6
+**REFUTED**, #7 content-equivalent — unchanged from earlier adjudication.
+
+**Residual defect, FLAGGED NOT FIXED (out of scope for this lane):** the original puts the
+green Test-2 numeral on its own bottom line per row group (group-relative y ~+74..+79) and
+draws an empty rectangle at x209..234 in row groups 2/3; the build inlines the numeral at
+~+44..+54 and omits the rectangle. Needs a build-lane decision.
+
+**Vision legs — attempt 8: NO VERDICT, session PARKS.** Three Template A dispatches
+consumed (logs `log_judgeA8_run1_20261024.txt`, `log_judgeA8_run2_20261024.txt`,
+`scratch/tmp/legs_sentry_8.log`): EXIT=124 on HangError ladder, EXIT=1 on HangError
+ladder, and EXIT=1 on `HTTP 504 upstream_timeout` (provider Nvidia) at the one gate-open
+window (14:04:48, load=6). Peak fleet load 58 concurrent `analyze_image.py` vs 16 slots.
+Load re-probed this session: 12 @19:26 and 19 @19:33 — both congested, so the two permitted
+probes of the 19:00 hour are spent and the gate law mandates a park.
+`qa/slide019/judge_attempt_8.txt` does not exist; Procedure B never dispatched.
+Per protocol, verdict-producing judge attempts for slide 019 remain **1**.
+
+**DB state left honest:** `gen_status=building`, `visual_check=null`,
+`visual_transcript=null`, `visual_attempts=0`, `worker_id=w019-legs-20261024`,
+`last_error` updated with the full attempt-8 history. **Nothing certified.**
+
+Full attempt-8 detail is banked in `recreated_pptx/qa/slide019/worker_report.md`
+(appended, dated 2026-10-24). Resume state: `scratch/tmp/legs_status_20261024_attempt8.md`.

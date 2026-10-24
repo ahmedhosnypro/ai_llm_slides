@@ -348,3 +348,128 @@ attempt budget remains intact (1 verdict-producing attempt consumed: `judge_atte
 legs) register `pptx_path` / `build_script`, set `visual_check=PASS`,
 `visual_transcript=<judge_attempt_7.txt>` and `gen_status=passed`, and
 `release 19 judge019-r2`.
+
+---
+
+## Attempt 8 (2026-10-24) — currency re-anchor resolved: the attempt-6 FAIL no longer applies to the current build
+
+### Currency question (the governing request)
+
+The re-anchor dispatch asked whether `judge_attempt_6.txt`'s FAIL applies to the
+**current** build. Answer: **it does not.** Resolved by md5/mtime, then by pixel diff,
+then by glyph-level PIL reading of both images (960x540, 1 px = 1 pt).
+
+**What attempt 6 consumed** (`scratch/tmp/judgeA6.log` names IMG1 = `render_6.png`):
+md5 `b2370bc9cdbb4dbc1c9b104f18b65c8e`, 151,917 B, mtime 2026-10-24 01:03:26.
+
+**What is current now:**
+
+| artifact | md5 | size | mtime (UTC) |
+|---|---|---|---|
+| `render_8.png` | `ed8bc8124e945f98d194416e79bf8fdf` | 151,716 B | 2026-10-24 07:02:08 |
+| `build/slide_019.js` | `42f4ac7ee2378b37322dfef2c8ee7f80` | 13,526 B | 2026-10-24 04:19:30 |
+| `slide_019_recreated.pptx` | `953cedc1ab78cd475fc78828d4218b2d` | 128,550 B | 2026-10-24 07:01:49 |
+
+`build/slide_019.js` is byte-identical to the banked `build_attempt_20261024_root.js`
+(same md5): the **build has not changed since attempt 7**; only the render was refreshed
+at 07:02 to match the 07:01 pptx. The attempt-6 FAIL's evidentiary basis is therefore
+superseded bytes.
+
+**Pixel diff `render_6.png` vs `render_8.png`: 1,247 differing px (0.0554%), confined to
+exactly two windows — y356..362 x214..345 and y466..472 x214..343 — which are precisely
+the `y=` lines of NO REG row groups 2 and 3, i.e. exactly the cells named by FAIL
+drivers #1/#2. Nothing else moved.**
+
+### Adjudication of every FAIL/MINOR against BOTH images (PIL, banked scripts + logs)
+
+**Driver #1** (NO REG row 2 "shows 60/80/100, should be 32.4/42.3/52.3") —
+**RESOLVED in the current build.** `build/slide_019.js:180-182` now carries
+`y: 32.4 / 42.3 / 52.3`. Independently confirmed from the original frame: its saturated
+green numeral for that cell group spans x309..330, rows 387..397 — glyphs "<4>" (x309..320),
+decimal (x322..323), "3" (x325..330) — reads **42.3** (Test 2 of the row group), matching
+the build.
+
+**Driver #2** (NO REG row 3 "shows 60/80/100, should be 24.4/31.2/38") —
+**RESOLVED.** `build/slide_019.js:188-190` now carries `y: 24.4 / 31.2 / 38`. The original's
+green numeral at x309..329, rows 496..506, reads **31.2**, matching the build.
+
+**Provenance caveat — important for the record:** the banked analysis *transcriptions* are
+what was wrong, not the frame. `analysis/slide_019_raw.json` (brief step 7) and
+`analysis/slide_019_final.json` both record NO REG rows 2/3 as "all y predictions 60,80,100";
+the frame shows 42.3 / 31.2. So the build was rebuilt from the frame while the transcription
+was never re-derived. Any future worker re-scoring this slide from the JSON will reproduce
+the attempt-6 error. This is the single most useful thing in this report for whoever picks
+the slide up next.
+
+**MINOR #3** (original's W-boxes carry small green per-component figures flanking the W label,
+"0.1 | W=(1.95) | 0.03") — **REFUTED.** The original contains **0 green pixels** in the
+W-label zone (frame x124..206) for all three row groups, in both images. Its only green ink
+per column group is the single Test-2 numeral at column-relative x ~+185..+205 (NO REG
+x313..325 / x309..330; RIDGE 3 x569..589; RIDGE 10 x827..847), which the build already
+reproduces. Scripts `pil_green_adjud_8.py`, `pil_ycolor_census_8.py`; logs
+`scratch/tmp/pil_green_adjud_8.log`, `scratch/tmp/pil_ycolor_census_8.log`,
+`scratch/tmp/orig_green_map.log`, `scratch/tmp/green_glyphs_all.log`.
+The original's red/blue classification of its 8 pt text was also measured to be unreliable
+(JPEG chroma noise), so colour-based classes other than saturated green were **not** used
+as evidence.
+
+**MINOR #4** number formatting — **REFUTED** (unchanged): the original also lays these out linearly.
+**MINOR #5** title frame — **REFUTED**: identical blue footprint; no second blue element exists.
+**MINOR #6** highlight regions — **REFUTED**: the original's gold bands are genuinely full-width
+and carry no extra content inside them.
+**MINOR #7** grid restructure — **not a defect**: content-equivalent.
+
+### Residual caveat — FLAGGED, NOT FIXED (this is the legs lane; build edits are out of scope)
+
+In the original the green Test-2 numeral sits on its **own line at the bottom of each row
+group** (group-relative y ~+74..+79), while the other cell text lines sit at ~+7..+15,
++29..+38, +52..+63 (~23 px pitch). The build paints the numeral as the third line of its test
+block at group-relative y ~+44..+54. The original also shows an **empty rectangle outline at
+x209..234 (row groups 2 and 3)** that the build does not draw. The original's full internal
+cell structure is only partly mapped; the green-numeral evidence above is the reliable subset.
+**Hand this to a build lane for verification — do not "fix" it blind from here.**
+
+### Verified structure (for whoever picks this up)
+
+Original vertical rules: x~58 (outer red), x65, x117..125, x377..384, x637..644,
+x893..894 (green right border), x900..902 (outer red). The build's column boundaries
+(124/380, 384/640, 644/900) are correct.
+
+Green Test-2 numerals measured in the original (original green is saturated, colour-isolated):
+
+| column | row 1 | row 2 | row 3 |
+|---|---|---|---|
+| NO REG | 80 | 42.3 | 31.2 |
+| RIDGE 3 | 78.7 | 45.1 | 34.4 |
+| RIDGE 10 | 76.5 | 46 (see note) | 35.4-shaped |
+
+Left "Outlier X_s" column: green "22" at x91..108 (row 1), x85..103 (row 2), x86..102 (row 3).
+The build's Test-2 values agree with every reading except RIDGE 10 row 2, whose first glyph
+is 5 px wide and reads "3" or "4"; the spec value is 46, the build has 46, so the reading is
+consistent with "46" if that glyph is a 4.
+
+### Vision legs — attempt 8: still no verdict (fleet gateway saturation) -> PARKED
+
+`qa/slide019/judge_attempt_8.txt` **does not exist.** Three Template A dispatches were
+consumed and produced no verdict body; Procedure B was never dispatched.
+
+1. `dispatch_A8.sh` (wall `timeout 1700`) — attempts 1 and 2 aborted with
+   `HangError: hard wall-clock 630s exceeded`; the outer wall killed the process during
+   attempt 3, EXIT=124. Log `log_judgeA8_run1_20261024.txt`.
+2. `dispatch_A8r.sh` (the one permitted hard-wall retry, wall `timeout 2400`) — all three
+   attempts aborted `HangError ... giving up`, EXIT=1, "0/1 result(s) analyzed
+   successfully". Log `log_judgeA8_run2_20261024.txt`.
+3. `dispatch_A8rr.sh` (fired on the only gate-open window the sentry saw, 14:04:48,
+   load=6) — `HTTP 504 upstream_timeout` (upstream provider Nvidia) on attempt 1,
+   EXIT=1, "0/1 result(s) analyzed successfully". Log `scratch/tmp/legs_sentry_8.log`
+   tail; sentry parked 14:05:49.
+
+Peak fleet load across the window: **58** concurrent `analyze_image.py` against a 16-slot
+flock gateway. Load re-probed this session: 30 @17:58, 8 @18:57, **12 @19:26**, **19 @19:33**,
+19 @19:35. The two permitted probes of the 19:00 hour both show congestion, so per the gate
+law this session **parks without a dispatch**. The Template A flight budget is exhausted;
+per protocol none of the three dispatches count as a judge attempt. Verdict-producing
+attempts remain **1** (`judge_attempt_6.txt`, FAIL, superseded bytes).
+
+**Nothing on slide 019 may be certified from this session.** Certification requires a real
+Template A `FINAL VERDICT:` body plus all four Procedure B legs; none exist for attempt 8.
