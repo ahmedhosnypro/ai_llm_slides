@@ -32,13 +32,14 @@
 //        and -9.6" (with -9.6 red bold) and "f(x) is in between -8.08 and
 //        -8.011" (verbatim per spec).
 //
-// PLOT right, x600-930 rows 58-320: white; TWO x-axis rules at rows 312 and
-//        320 (cols 606-901); TWO y-axis rules at cols 607 and 721 (rows
-//        61/67-320); NO gridlines (D9D9D9 absent in this frame). Green
-//        #00B050 non-convex curve traced from the frame's saturated ink
-//        (cols 612-832, rows 110-264 — ONE smooth curve). Red dot at the
-//        curve start (620,139); purple #7030A0 rounded callout "Reach Local
-//        Minima" at x640-780 y258-278. Axis label "x" right of the axis,
+// PLOT right, x606-901 rows 60-320: white plot area with 11 vertical gray
+//        gridlines (x615,632,650,667,685,703,720,739,757,775,793,811) and
+//        9 horizontal gray gridlines (y115,134,153,171,190,209,227,246,264).
+//        Green #00B050 non-convex curve traced from the frame's ink (cols
+//        612-832, rows 110-264 — ONE smooth curve). Red initial-point marker
+//        x619-628 y143-151; orange #EE730C arrowhead x631-648 y115-138; green
+//        square #8FFF17 x629-643 y236-244; pale pink #F7C9FA callout "Reach
+//        Local Minima" x613-703 y258-296. Axis label "x" right of the axis,
 //        "y" above it; x ticks -12/-10/-8/-6/-4/-2 at row ~288-301,
 //        y ticks 1/0/-2/-4/-6/-8 left of the y-axis.
 //
@@ -50,12 +51,13 @@
 //                 column 841-869 is narrower (28px).
 //   HORIZONTAL GRIDLINES (full-width dark rows): 320, 374, 410, 418, 454,
 //                 460, 478, 484, 501, 517.
-//   5 FILL BANDS (mode colour measured; draw as row bands):
-//     y321-374  #D9E275  (217,226,119) yellow-green
-//     y374-410  #D6B2F5  (214,178,248) violet
-//     y418-454  #F7DDC2  (247,221,194) peach
-//     y460-478  #DEAC95  (222,172,149) muted orange
-//     y484-501  #F7BEC4  (247,190,196) pink
+//   5 FILL BANDS (exact y-extents measured; fills span x89-866 and DO cover
+//                 the label column, except band 4):
+//     y334-367  #D9E275  (217,226,119) yellow-green
+//     y376-408  #D6B2F5  (214,178,248) violet
+//     y420-452  #F7DDC2  (247,221,194) peach
+//     y463-472  #DEAC95  (222,172,149) muted orange — label column E9FFD2
+//     y486-500  #F7BEC4  (247,190,196) pink
 //   CYAN INSERT  x666-789 y332-368 inside band0 — fill #8BF8A9 (139,248,169)
 //   8 TEXT ROWS (centres, matching the spec's 8 row labels):
 //      341, 359, 383, 401, 427, 445, 469, 493
@@ -205,6 +207,20 @@ for (let i = 0; i < y_ticks.length; i++) {
   });
 }
 
+// plot gridlines (frame-measured gray, drawn under the curve)
+for (const gx of [615, 632, 650, 667, 685, 703, 739, 757, 775, 793, 811]) {
+  slide.addShape(pptx.ShapeType.line, {
+    x: px(gx), y: px(58), w: 0, h: px(254),
+    line: { color: "D9D9D9", width: 0.5 },
+  });
+}
+for (const gy of [115, 134, 153, 171, 190, 209, 227, 246, 264]) {
+  slide.addShape(pptx.ShapeType.line, {
+    x: px(606), y: px(gy), w: px(295), h: 0,
+    line: { color: "D9D9D9", width: 0.5 },
+  });
+}
+
 // ONE smooth non-convex curve, traced from the frame's saturated ink.
 const curve = [
   [624, 143], [628, 196], [632, 130], [636, 125], [640, 120], [644, 116],
@@ -224,18 +240,27 @@ for (let i = 0; i < curve.length - 1; i++) {
     line: { color: "00B050", width: 1 },
   });
 }
-slide.addShape(pptx.ShapeType.ellipse, { // red initial point
-  x: px(620), y: px(139), w: px(9), h: px(9),
-  fill: { color: "FF0000" }, line: { color: "FF0000", width: 0 },
+slide.addShape(pptx.ShapeType.ellipse, { // red initial-point marker, frame-measured x619-628 y143-151
+  x: px(618), y: px(142), w: px(11), h: px(10),
+  fill: { color: "D92524" }, line: { color: "D92524", width: 0 },
 });
-slide.addShape(pptx.ShapeType.roundRect, { // purple callout
-  x: px(640), y: px(258), w: px(140), h: px(20),
-  fill: { color: "7030A0" }, line: { color: "7030A0", width: 0 },
+// orange+red arrowhead at the trajectory start (frame-measured x631-648 y115-138)
+slide.addShape(pptx.ShapeType.triangle, {
+  x: px(629), y: px(115), w: px(20), h: px(24), rotate: 45,
+  fill: { color: "EE730C" }, line: { color: "EE730C", width: 0 },
+});
+slide.addShape(pptx.ShapeType.rect, { // green square at the reached local minimum (x629-643 y236-244)
+  x: px(628), y: px(235), w: px(17), h: px(11),
+  fill: { color: "8FFF17" }, line: { color: "8FFF17", width: 0 },
+});
+slide.addShape(pptx.ShapeType.rect, { // "Reach Local Minima" callout (frame-measured x613-703 y258-296)
+  x: px(612), y: px(257), w: px(93), h: px(40),
+  fill: { color: "F7C9FA" }, line: { color: "000000", width: 0.75 },
 });
 slide.addText("Reach Local Minima", {
-  x: px(640), y: px(258), w: px(140), h: px(20),
+  x: px(612), y: px(257), w: px(93), h: px(40),
   align: "center", valign: "middle", margin: 0,
-  fontFace: A, fontSize: 9, bold: true, color: "FFFFFF",
+  fontFace: A, fontSize: 8, bold: true, color: "000000",
 });
 
 // ================= TABLE =================
@@ -257,19 +282,27 @@ for (const vx of [T.x0, T.x1]) {
     line: { color: "000000", width: 0.75 },
   });
 }
-// fill bands
+// fill bands — frame-measured y-extents and x-extents. Band fills span x89..866
+// (they cover the LABEL column x86-121 too, not just the data columns), except
+// band 4 whose label column is pale green E9FFD2 instead of the band orange.
 const bands = [
-  { y0: 321, y1: 374, fill: "D9E275" },
-  { y0: 374, y1: 410, fill: "D6B2F5" },
-  { y0: 418, y1: 454, fill: "F7DDC2" },
-  { y0: 460, y1: 478, fill: "DEAC95" },
-  { y0: 484, y1: 501, fill: "F7BEC4" },
+  { y0: 334, y1: 367, fill: "D9E275", label: null },
+  { y0: 376, y1: 408, fill: "D6B2F5", label: null },
+  { y0: 420, y1: 452, fill: "F7DDC2", label: null },
+  { y0: 463, y1: 472, fill: "DEAC95", label: "E9FFD2" },
+  { y0: 486, y1: 500, fill: "F7BEC4", label: null },
 ];
 for (const bd of bands) {
   slide.addShape(pptx.ShapeType.rect, {
-    x: px(121), y: px(bd.y0), w: px(869 - 121), h: px(bd.y1 - bd.y0),
+    x: px(89), y: px(bd.y0), w: px(866 - 89), h: px(bd.y1 - bd.y0),
     fill: { color: bd.fill }, line: { color: "000000", width: 0 },
   });
+  if (bd.label) { // band 4's label column is a different pale green
+    slide.addShape(pptx.ShapeType.rect, {
+      x: px(89), y: px(bd.y0), w: px(121 - 89), h: px(bd.y1 - bd.y0),
+      fill: { color: bd.label }, line: { color: "000000", width: 0 },
+    });
+  }
 }
 // cyan insert inside band0
 slide.addShape(pptx.ShapeType.rect, {

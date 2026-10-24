@@ -45,6 +45,10 @@
 //   600dpi (professional 2D format) + eq_036_error.json sidecar; placed at its measured
 //   left edge; the trailing explanatory phrase is set BLACK (measured core (13,15,12)) --
 //   the JSON brief's "red phrase" claim is not corroborated by the frame.
+//   NOTE: the trailing phrase is rendered SEPARATELY in Liberation Sans Narrow 18.7pt,
+//   ink-positioned at frame x=507 (scratch/tmp/eq036_v2.py). Attempt 1 glued it onto the
+//   "_i) (W" run at 21pt, ran ~85 frame-px past the canvas edge and CLIPPED the last
+//   glyph; the original measures that phrase's ink as x=507..733 (226px).
 //
 // RED X MARK: standalone, ink x=766..786 y=367..390 (core (168,0,5) -> FF0000),
 //   ~32pt bold Arial, at the far right of box 3, right edge 86px inside the right border.
@@ -55,7 +59,7 @@ const { drawHouseChrome } = require("../../shared_patterns/house_chrome.js");
 const OUT = "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_036_recreated.pptx";
 const EQ = "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/build/assets/eq_036_error.png";
 // equation image metrics from the composite renderer (600dpi, tight crop, 3px pad)
-const EQ_W = 9.07833, EQ_H = 0.615, EQ_X = 83.6, EQ_Y = 368.6;
+const EQ_W = 8.99667, EQ_H = 0.615, EQ_X = 83.6, EQ_Y = 368.6;
 
 const px = (v) => v / 72; // frame px -> inches
 
@@ -103,7 +107,10 @@ drawBox(BOX_TOP4, BOX_BOT4);
 function line(base1, runs) {
   slide.addText(runs.map((r, i) => ({
     text: r[0],
-    options: { color: r[1] || "000000", italic: !!r[2], underline: !!r[3] },
+    options: {
+      color: r[1] || "000000", italic: !!r[2], underline: !!r[3],
+      superscript: !!r[4], subscript: !!r[5],
+    },
   })), {
     x: px(TXT_X), y: px(firstTop(base1)), w: px(TXT_W), h: px(60),
     align: "left", valign: "top", margin: 0,
@@ -114,31 +121,31 @@ const R = "C00000", B = "0000FF", G = "008000", K = "000000";
 
 // --- Box 1 (measured colors: "class I" red, "Class II" blue, d(X) green) ---
 line(116, [["Define two classes: " + ""], ["class", R], [" "], ["I", R], [" and "], ["Class", B], [" "], ["II", B]]);
-line(146, [["let "], ["d(X)", G, true], [" be a discriminant function = "], ["W", K, true], ["T"], [" "], ["X", G, true]]);
+line(144, [["let "], ["d(X)", G, true], [" be a discriminant function = "], ["W", K, true], ["T", K, false, false, true], [" "], ["X", G, true]]);
 line(172, [["if "], ["X", K, true], [" \u2208 "], ["class", R], [" I", R], [" then "], ["d(X)", G, true], [" > 0", R]]);
-line(202, [["if "], ["X", K, true], [" \u2208 "], ["Class", B], [" II", B], [" then "], ["d(X)", G, true], [" < 0", B]]);
+line(201, [["if "], ["X", K, true], [" \u2208 "], ["Class", B], [" II", B], [" then "], ["d(X)", G, true], [" < 0", B]]);
 
 // --- Box 2 ---
-line(248, [["For "], ["misclassified"], [" "], ["X", G, true], [" :"]]);
-line(278, [["If "], ["X", K, true], [" \u2208 "], ["class", R], [" I", R], [" and "], ["misclassified"], [" as "], ["Class", B], [" II", B], [" then "], ["d(X)", G, true], [" will be "], ["<0", R]]);
-line(306, [["If "], ["X", K, true], [" \u2208 "], ["Class", B], [" II", B], [" and "], ["misclassified"], [" as "], ["class", R], [" I", R], [" then "], ["d(X)", G, true], [" will be "], [">0", B]]);
+line(247, [["For "], ["misclassified"], [" "], ["X", G, true], [" :"]]);
+line(274, [["If "], ["X", K, true], [" \u2208 "], ["class", R], [" I", R], [" and "], ["misclassified"], [" as "], ["Class", B], [" II", B], [" then "], ["d(X)", G, true], [" will be "], ["<0", R]]);
+line(302, [["If "], ["X", K, true], [" \u2208 "], ["Class", B], [" II", B], [" and "], ["misclassified"], [" as "], ["class", R], [" I", R], [" then "], ["d(X)", G, true], [" will be "], [">0", B]]);
 
 // --- Box 3 heading (black; the frame shows NO underline under "Error") ---
 line(353, [["Define "], ["Error"], [" function as:"]]);
 // Equation: single mathtext PNG, left edge at the measured ink x=84
 slide.addImage({ path: EQ, x: px(84), y: px(EQ_Y), w: EQ_W, h: EQ_H });
 
-// --- Box 4 ---
-line(455, [["Define "], ["\u03b4_i", G, true], [" as :"]]);
-line(486, [
+// --- Box 4 (delta_i split into delta + true subscript i per the equation rule) ---
+line(458, [["Define "], ["\u03b4", G, true], ["i", G, true, false, false, true], [" as :"]]);
+line(485, [
   ["If "], ["X", K, true], [" \u2208 "], ["class", R], [" I", R], [" and "], ["misclassified"], [" as "],
   ["Class", B], [" II", B], [" then "], ["d(X)", G, true], [" will be "], ["<0", R], [" \u21d2 "],
-  ["\u03b4_i", G, true], [" = -1"], [" \u21d2 "], ["d(X) ", K, true], ["\u03b4_i >0", K],
+  ["\u03b4", G, true], ["i", G, true, false, false, true], [" = -1"], [" \u21d2 "], ["d(X) ", K, true], ["\u03b4", K, true], ["i", K, false, false, false, true], [" >0", K],
 ]);
 line(512, [
   ["If "], ["X", K, true], [" \u2208 "], ["Class", B], [" II", B], [" and "], ["misclassified"], [" as "],
   ["class", R], [" I", R], [" then "], ["d(X)", G, true], [" will be "], [">0", B], [" \u21d2 "],
-  ["\u03b4_i", G, true], [" = +1"], [" \u21d2 "], ["d(X) ", K, true], ["\u03b4_i >0", K],
+  ["\u03b4", G, true], ["i", G, true, false, false, true], [" = +1"], [" \u21d2 "], ["d(X) ", K, true], ["\u03b4", K, true], ["i", K, false, false, false, true], [" >0", K],
 ]);
 
 // ---------------------------------------------------------------------------

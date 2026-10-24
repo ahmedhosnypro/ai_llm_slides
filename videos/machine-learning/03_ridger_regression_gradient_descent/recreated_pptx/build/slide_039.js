@@ -38,10 +38,9 @@
 //     L1 x90..830 y409..425, L2 x92..429 y435..447 (pitch 24px => lineSpacing 24pt).
 //   BLUE caption (bold 19pt, centred on panel centre x470.5):
 //     "If n=N (it is GD), and if n=1 (it is SGD)" ink x313..628 y459..475.
-//   RED NOTE: the caption's first line measures red ink only up to x453 with black ink
-//     from x455..830 - a mid-line colour change in the original. The analysis spec
-//     declares this line wholly RED and no clean word boundary explains the split at
-//     x455; rendered per spec (all red). Adjudication input for the judge if raised.
+//   CAPTION COLOURS (frame measurement, overrides the spec's "all red"): the first
+//     caption line is RED for x88..454 ("Batch GD ... SGD") and BLACK for x460..832;
+//     the second caption line is BLACK. Rendered as measured.
 //
 // DEVIATIONS FROM SPEC (law hierarchy: deck AGENTS.md + judge_protocol_03.md + runbook
 // OVERRIDE the analysis spec; the frame wins):
@@ -88,7 +87,7 @@ const TITLE_SIZE = 28;   // bold, Times
 const BODY = 19;         // regular, Times
 const WHY_SIZE = 18;     // bold
 const ANN_SIZE = 15;     // regular
-const CAP_SIZE = 17;     // bold (red caption)
+const CAP_SIZE = 19;     // bold (caption lines: red run, black runs, blue line)
 const CAP_BLUE_SIZE = 19;// bold (blue caption)
 
 // closed-loop tuning knobs (frame px deltas, applied per element after render measurement)
@@ -135,7 +134,7 @@ slide.addText("Mini-Batch", {
   fontSize: TITLE_SIZE, bold: true, color: BLUE, fontFace: SERIF, margin: 0,
 });
 slide.addText("Gradient Descent", {
-  x: 478 * PX, y: (118 - 15) * PX, w: 215 * PX, h: 30 * PX,
+  x: 478 * PX, y: (118 - 15) * PX, w: 235 * PX, h: 30 * PX,
   align: "left", valign: "middle",
   fontSize: TITLE_SIZE, bold: true, color: RED, fontFace: SERIF, margin: 0,
 });
@@ -151,7 +150,7 @@ MARKERS.forEach((my) => {
 
 // Bullet 1 wraps after "...the Error" (measured: L1 x101..839, L2 x101..478)
 slide.addText("Stochastic Gradient Descent (SGD) is a variant of GD which computes the gradient of the Error", {
-  x: 101 * PX, y: (160.5 - 15) * PX, w: 760 * PX, h: 30 * PX,
+  x: 101 * PX, y: (160.5 - 15) * PX, w: 800 * PX, h: 30 * PX,
   align: "left", valign: "middle",
   fontSize: BODY, color: BLACK, fontFace: SERIF, margin: 0,
 });
@@ -163,14 +162,14 @@ slide.addText("function with respect to a single training example", {
 
 // Bullet 2 — x102..660 y209..219
 slide.addText("In other words, it updates the weights using one training sample at a time", {
-  x: 102 * PX, y: (214 - 15) * PX, w: 600 * PX, h: 30 * PX,
+  x: 102 * PX, y: (214 - 15) * PX, w: 660 * PX, h: 30 * PX,
   align: "left", valign: "middle",
   fontSize: BODY, color: BLACK, fontFace: SERIF, margin: 0,
 });
 
 // Bullet 3 — x102..765 y231..244
 slide.addText("Remember: GD updated the weight vector after passing through ALL training samples.", {
-  x: 102 * PX, y: (237 - 15) * PX, w: 680 * PX, h: 30 * PX,
+  x: 102 * PX, y: (237 - 15) * PX, w: 720 * PX, h: 30 * PX,
   align: "left", valign: "middle",
   fontSize: BODY, color: BLACK, fontFace: SERIF, margin: 0,
 });
@@ -179,14 +178,14 @@ slide.addText("Remember: GD updated the weight vector after passing through ALL 
 slide.addImage({ path: EQ.path, x: EQ.x * PX, y: EQ.y * PX, w: EQ.wIn, h: EQ.hIn });
 
 slide.addText("Repeat for ALL misclassified Samples", {
-  x: 605 * PX, y: (283.5 - 9) * PX, w: 250 * PX, h: 18 * PX,
+  x: 605 * PX, y: (283.5 - 9) * PX, w: 275 * PX, h: 18 * PX,
   align: "left", valign: "middle",
   fontSize: ANN_SIZE, color: RED, fontFace: SERIF, margin: 0,
 });
 
 // ---- "Why using SGD" (red, bold) -----------------------------------------------------
 slide.addText("Why using SGD", {
-  x: 84 * PX, y: (313 - 12) * PX, w: 140 * PX, h: 24 * PX,
+  x: 84 * PX, y: (313 - 12) * PX, w: 155 * PX, h: 24 * PX,
   align: "left", valign: "middle",
   fontSize: WHY_SIZE, bold: true, color: RED, fontFace: SERIF, margin: 0,
 });
@@ -200,28 +199,47 @@ MARKERS_L.forEach((my) => {
 });
 
 slide.addText("SGD is usually more efficient than GD", {
-  x: 101 * PX, y: (341 - 15) * PX, w: 320 * PX, h: 30 * PX,
+  x: 101 * PX, y: (341 - 15) * PX, w: 350 * PX, h: 30 * PX,
   align: "left", valign: "middle",
   fontSize: BODY, color: BLACK, fontFace: SERIF, margin: 0,
 });
 slide.addText("SGD converges faster than GD", {
-  x: 101 * PX, y: (367 - 15) * PX, w: 260 * PX, h: 30 * PX,
+  x: 101 * PX, y: (367 - 15) * PX, w: 300 * PX, h: 30 * PX,
   align: "left", valign: "middle",
   fontSize: BODY, color: BLACK, fontFace: SERIF, margin: 0,
 });
 
 // ---- bottom captions ------------------------------------------------------------------
-// red caption: left-aligned at x92, wraps to 2 lines (measured pitches 24px => lineSpacing 24pt)
-slide.addText("Batch GD is a generalization of GD and SGD where weights are updated after passing through \u201cMini-Batch\u201d of training samples with size n", {
-  x: 92 * PX, y: (425 - 23) * PX, w: 745 * PX, h: 46 * PX,
+// FRAME WINS over the analysis spec: the original's first caption line is RED only for
+// its first nine words ("Batch GD is a generalization of GD and SGD", ink x88..454,
+// R-G +85..+97) and BLACK for the remaining seven ("where weights are updated after
+// passing through", ink x460..832, R-G -2). Line 2 ("\u201cMini-Batch\u201d of training
+// samples with size n", ink x92..429) is BLACK. All three lines are bold 19pt.
+// Measured: line1 ink centre y417, line2 y441, pitch 24px (=> lineSpacing 24pt).
+// Word-group x-extents verified against the 23-word sentence: Batch(88-129) GD(135-162)
+// is(168-180) a(186-195) generalization(200-316) of(321-337) GD(347-374) and(380-411)
+// SGD(416-454) | where(460-507) weights(512-571) are(576-599) updated(605-665)
+// after(670-706) passing(710-768) through(773-832).
+const CAP_CY = [417, 441, 467];  // ink centres of the three caption lines
+slide.addText("Batch GD is a generalization of GD and SGD", {
+  x: 88 * PX, y: (CAP_CY[0] - 10) * PX, w: 400 * PX, h: 20 * PX,
   align: "left", valign: "middle",
   fontSize: CAP_SIZE, bold: true, color: RED, fontFace: SERIF, margin: 0,
-  lineSpacing: 24,
+});
+slide.addText("where weights are updated after passing through", {
+  x: 460 * PX, y: (CAP_CY[0] - 10) * PX, w: 420 * PX, h: 20 * PX,
+  align: "left", valign: "middle",
+  fontSize: CAP_SIZE, bold: true, color: BLACK, fontFace: SERIF, margin: 0,
+});
+slide.addText("\u201cMini-Batch\u201d of training samples with size n", {
+  x: 92 * PX, y: (CAP_CY[1] - 10) * PX, w: 400 * PX, h: 20 * PX,
+  align: "left", valign: "middle",
+  fontSize: CAP_SIZE, bold: true, color: BLACK, fontFace: SERIF, margin: 0,
 });
 
 // blue caption: centred on the panel centre (470.5)
 slide.addText("If n=N (it is GD), and if n=1 (it is SGD)", {
-  x: 313 * PX, y: (465 - 13) * PX, w: 315 * PX, h: 26 * PX,
+  x: 300.5 * PX, y: (CAP_CY[2] - 13) * PX, w: 340 * PX, h: 26 * PX,
   align: "center", valign: "middle",
   fontSize: CAP_BLUE_SIZE, bold: true, color: BLUE, fontFace: SERIF, margin: 0,
 });

@@ -65,7 +65,7 @@ const RED       = "C00000";   // axes / red marks / caption keyword (house famil
 const BLUE      = "0000FF";   // fitted lines        (frame core 0,0,132)
 const ORANGE    = "FFA500";   // data points         (frame core 255,120,0)
 const BIGRED    = "EE3145";   // the LEFT chart's large solid disc (frame core 238,49,69)
-const BOXFILL   = "E0F0FF";   // annotation box fill (frame pale cyan, JPEG tol)
+const BOXFILL   = "ECFDF9";   // annotation box fill (frame median 236,253,249 = pale cyan)
 const BOXLINE   = "000080";   // annotation box border = navy (same as panel border)
 const INK       = "333333";   // caption remainder ink (frame core 49,51,37)
 const FONT      = "Times New Roman"; // serif, matches the frame (Liberation Serif metrics)
@@ -290,6 +290,35 @@ for (const b of BOXES) {
   });
   // Equation image at exact px/600 size
   slide.addImage({ path: b.img, x: b.ix, y: b.iy, w: b.iw, h: b.ih });
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// CAPTION-BAND ROSE ANNOTATION BOXES — PIL-measured on the frame 2026-10-24.
+// Each caption sits inside a CREAM-FILLED, rose-outlined box that is open at the
+// top: left + right verticals plus a bottom rule, no top stroke. Drawn BEFORE
+// the captions so the ink sits on the fill, exactly as the hand annotation does.
+//   LEFT  box x95..434 y479..529 ; RIGHT box x501..842 y479..529 (frame px)
+// Fill medians 251,252,236 (cream) on both sides; stroke cores measured per side
+// (the frame's JPEG halos widen each stroke ~1-2px around the cores below).
+// ═══════════════════════════════════════════════════════════════════════════════
+const CAPFILL = "FBFCEC"; // caption-box fill (frame median 251,252,236)
+const BANDS = [
+  { fill: { x: 97,    y: 480,  w: 335, h: 47, c: CAPFILL },
+    strokes: [
+      { x: 95.5,  y: 479,   w: 2, h: 49, c: "E2C6C3" }, // left vertical  (226,198,195)
+      { x: 432.5, y: 479,   w: 2, h: 49, c: "F0E6E7" }, // right vertical (240,230,231)
+      { x: 96,    y: 527.5, w: 337, h: 2, c: "DCBBBB" }, // bottom rule   (220,187,187)
+    ] },
+  { fill: { x: 504,   y: 480,  w: 335, h: 47, c: CAPFILL },
+    strokes: [
+      { x: 502,   y: 479,   w: 2, h: 49, c: "D3BCB9" }, // left vertical  (211,188,185)
+      { x: 839.5, y: 479,   w: 2, h: 49, c: "CAA5A6" }, // right vertical (202,165,166)
+      { x: 503,   y: 527.5, w: 337, h: 2, c: "D9BBBA" }, // bottom rule   (217,187,186)
+    ] },
+];
+for (const band of BANDS) {
+  rect(band.fill.x, band.fill.y, band.fill.w, band.fill.h, band.fill.c);
+  for (const s of band.strokes) rect(s.x, s.y, s.w, s.h, s.c);
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════

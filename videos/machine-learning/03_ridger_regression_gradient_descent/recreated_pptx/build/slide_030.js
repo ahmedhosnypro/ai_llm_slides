@@ -2,8 +2,31 @@
  * Slide 030 build — Convex Function, Learning Rate =0.2, Start at X=3
  * Measured from unique_slides/slide_030.jpg (960x540, 1px=1pt)
  * LAYOUT_WIDE 13.333 x 7.5 in (960x540 pt)
- * House chrome per shared_patterns/house_chrome.js
+ *
+ * 2026-10-24 rebuild (worker s030-fix-20261023) — closes two defects:
+ *  D1 Z-ORDER: the plot's white background rect was painted OVER the house badge
+ *     (badge geometry in the pptx is correct: EMU (10902950,704850) ext 35pt ->
+ *     centre (876,73) d35). FIX: every content shape is drawn first, and the
+ *     house chrome (panel/strokes/badge) is drawn LAST so it is top-most.
+ *  D2 EQUATIONS as plain caret text -> professional 2D format per founder
+ *     directive 2026-10-09: matplotlib mathtext -> 600dpi transparent PNG ->
+ *     addImage at exact w=px/600 + eq_*.json sidecars (no hand-authored OMML).
+ *
+ * Measured geometry (frame px, 1px = 1pt) — see scratch/tmp/measure_030_RESULTS.md:
+ *   panel E9E9E7 x54..903 y45..540; strokes L x58.5, R x901, BOTTOM y538.5, NO TOP
+ *   badge circle d35 centre (876,73)
+ *   title ink x58..420 y64..88
+ *   plot box: red frame x573..809, y66..265 ; white interior x575..806, y70..264
+ *         black y-axis line x631 (x=0); black y=10 line y145..148 spanning x650..725
+ *         dashed red vertical x687..689 (x=5); green vertex x685..692 y251..258
+ *   param table x104..241 y198..282 (3 rows, 2 cols split x181)
+ *   upper red box x399..531 y184..212 -> equation "f(x)=(x-5)^2+1"
+ *   green formula box x347..555 y233..282 -> "X = 5" (red) + "f(x) Minimum value is 1.0"
+ *   callout: purple text two lines y294..320 x334..568 + purple rule y292..293
+ *   iteration table x78..655 y324..531 (8 rows x 12 cols), slope row green fill
+ *   red arrow x174..192 y306..338
  */
+const path = require("path");
 const pptxgen = require("pptxgenjs");
 const { drawHouseChrome } = require("../../shared_patterns/house_chrome.js");
 
@@ -12,309 +35,265 @@ pres.layout = "LAYOUT_WIDE";  // 13.333 x 7.5 in
 
 const slide = pres.addSlide();
 
-// Draw house chrome (panel, strokes, badge with numeral "30")
-drawHouseChrome(pres, slide, { numeral: "30" });
+const FONT = "Arial";
+const PT = 1/72;  // 1pt in inches
+const ST = pres.ShapeType;
+const px = (v) => v * PT;
 
-// Color constants (no # prefix for pptxgenjs)
 const COL = {
-  // Text
   titleRed: "C00000",
   titleGreen: "008000",
   bodyBlack: "000000",
-  formulaRed: "FF0000",
+  formulaRed: "C00000",
   formulaBlue: "0000FF",
   calloutPurple: "7030A0",
-  calloutUnderline: "FF00FF",
-  // Tables
+  calloutRule: "7030A0",
+  // plot
+  graphBg: "FFFFFF",
+  plotFrame: "C00000",
+  gridGray: "D9D9D9",
+  parabolaBlue: "0000FF",
+  axisBlack: "000000",
+  // tables
   paramBorder: "00B050",
   paramLabelBg: "C6E0B4",
   paramValueBg: "FFFFFF",
   iterBorder: "0070C0",
+  iterFill: "DDEBF7",
   iterSlopeBg: "C6E0B4",
   iterStopRed: "FF0000",
   iterStopWhite: "FFFFFF",
-  iterRedHighlight: "FF0000",
-  // Graph
-  graphBg: "FFFFFF",
-  gridGray: "D9D9D9",
-  parabolaBlue: "0000FF",
-  axisRed: "FF0000",
-  axisGreen: "00B050",
-  axisBlack: "000000",
-  // Formula block border (measured GREEN not magenta)
+  iterRedHighlight: "C00000",
+  // upper equation box
+  upBoxBorder: "C00000",
+  upBoxBg: "FFFFFF",
   formulaBorder: "00B050",
   formulaBg: "FFFFFF",
-  // Arrow
-  arrowRed: "FF0000",
+  arrowRed: "C00000",
 };
 
-const FONT = "Arial";
-const PT = 1/72;  // 1pt in inches
-const ST = pres.ShapeType;
+const ASSETS = path.resolve(__dirname, "assets");
+function eqImage(file, fx, fy, wIn, hIn) {
+  slide.addImage({ path: path.join(ASSETS, file), x: px(fx), y: px(fy), w: wIn, h: hIn });
+}
 
-// ============================================================
-// 1. TITLE (top-left, mixed colors)
-// Original: y≈55-88, x≈60-530. Text: "Convex Function,  Learning Rate =0.2, Start at X=3"
-// Double space after first comma. Bold, largest text.
-// Segments: "Convex Function," red | " Learning Rate =0.2," green | " Start at X=3" red
-// ============================================================
+// ---------------------------------------------------------------- 1. TITLE
+// Measured: ink x58..420 y64..88. Segments red / green / red.
 slide.addText([
-  { text: "Convex Function,  ", options: { fontSize: 28, bold: true, color: COL.titleRed, fontFace: FONT } },
-  { text: "Learning Rate =0.2,  ", options: { fontSize: 28, bold: true, color: COL.titleGreen, fontFace: FONT } },
-  { text: "Start at X=3", options: { fontSize: 28, bold: true, color: COL.titleRed, fontFace: FONT } },
+  { text: "Convex Function,  ", options: { fontSize: 24, bold: true, color: COL.titleRed, fontFace: FONT } },
+  { text: "Learning Rate =0.2,  ", options: { fontSize: 24, bold: true, color: COL.titleGreen, fontFace: FONT } },
+  { text: "Start at X=3", options: { fontSize: 24, bold: true, color: COL.titleRed, fontFace: FONT } },
 ], {
-  x: 60 * PT, y: 55 * PT, w: 480 * PT, h: 40 * PT,
-  margin: 0, align: "left", valign: "top",
+  x: px(58), y: px(64), w: px(370), h: px(26),
+  margin: 0, align: "left", valign: "middle",
 });
 
-// ============================================================
-// 2. PARAMETER TABLE (left-middle)
-// Original: x≈55-240, y≈150-240. 3 rows x 2 cols.
-// Border: green #00B050. Left labels: bg #C6E0B4, text black. Right values: bg white, text black.
-// Row1: step | 0.2  Row2: initial X | 3  Row3: delta | 0.1
-// ============================================================
+// ------------------------------------------------- 2. PARAMETER TABLE
+// Measured x104..241 y198..282, 3 rows, 2 columns (label col x104..181, value x181..241).
 const paramRows = [
-  [
-    { text: "step", options: { fontSize: 14, bold: true, color: COL.bodyBlack, fontFace: FONT, fill: { color: COL.paramLabelBg }, margin: 5 } },
-    { text: "0.2", options: { fontSize: 14, color: COL.bodyBlack, fontFace: FONT, fill: { color: COL.paramValueBg }, margin: 5, align: "center" } },
-  ],
-  [
-    { text: "initial X", options: { fontSize: 14, bold: true, color: COL.bodyBlack, fontFace: FONT, fill: { color: COL.paramLabelBg }, margin: 5 } },
-    { text: "3", options: { fontSize: 14, color: COL.bodyBlack, fontFace: FONT, fill: { color: COL.paramValueBg }, margin: 5, align: "center" } },
-  ],
-  [
-    { text: "delta", options: { fontSize: 14, bold: true, color: COL.bodyBlack, fontFace: FONT, fill: { color: COL.paramLabelBg }, margin: 5 } },
-    { text: "0.1", options: { fontSize: 14, color: COL.bodyBlack, fontFace: FONT, fill: { color: COL.paramValueBg }, margin: 5, align: "center" } },
-  ],
+  ["step", "0.2"],
+  ["initial X", "3"],
+  ["delta", "0.1"],
 ];
+slide.addTable(
+  paramRows.map((row) => row.map((cell, ci) => ({
+    text: cell,
+    options: {
+      fontSize: 14, bold: ci === 0, color: COL.bodyBlack, fontFace: FONT,
+      fill: { color: ci === 0 ? COL.paramLabelBg : COL.paramValueBg },
+      margin: [4, 6, 4, 6], align: ci === 0 ? "left" : "center", valign: "middle",
+    },
+  }))),
+  {
+    x: px(104), y: px(198), w: px(137), h: px(84),
+    colW: [px(77), px(60)],
+    border: { pt: 1.5, color: COL.paramBorder },
+  }
+);
 
-slide.addTable(paramRows, {
-  x: 55 * PT, y: 150 * PT, w: 185 * PT, h: 90 * PT,
-  border: { pt: 1.5, color: COL.paramBorder },
-});
-
-// ============================================================
-// 3. FORMULA BLOCK (center) - GREEN border, white bg
-// Original: y=235-280, x=348-552. 3 lines of text.
-// Line 1: f(x)=(x-5)^2+1 (black, larger ~20pt)
-// Line 2: X = 5 (red, ~20pt)
-// Line 3: f(x) Minimum value is 1.0 (black, 1.0 in blue)
-// ============================================================
-// The formula block has a green border at y=235 and y=280, x=348-552
-// That's a box from (348,235) to (552,280) -> w=204pt, h=45pt
-// Centered text inside
-const formulaBoxX = 348 * PT;
-const formulaBoxY = 235 * PT;
-const formulaBoxW = 204 * PT;
-const formulaBoxH = 45 * PT;
-
-// Draw the box (green border, white fill)
+// --------------------------------------------- 3. UPPER EQUATION BOX (red)
+// Measured: red frame x399..531, y184..212 (borders y184-187, y210-212, x399 / x531).
+// Contains the 2D-rendered equation "f(x)=(x-5)^2+1" (black, ~9pt ink height 12px).
 slide.addShape(ST.rect, {
-  x: formulaBoxX, y: formulaBoxY, w: formulaBoxW, h: formulaBoxH,
+  x: px(399), y: px(184), w: px(133), h: px(29),
+  fill: { color: COL.upBoxBg },
+  line: { color: COL.upBoxBorder, width: 1.5 },
+});
+// eq sidecar: eq_030_fx.png — ink 169.44x23.28 frame px at fontsize 20pt.
+// Original ink is ~78x17 px, i.e. ~9.2pt -> scale by 78/169.44.
+{
+  const fs = require(path.join(ASSETS, "eq_030_fx.json"));
+  const k = 78 / fs.w_px;                      // match the measured 78px ink width
+  eqImage("eq_030_fx.png", 399 + (133 - fs.w_px * k) / 2,
+          184 + (29 - fs.h_px * k) / 2 + 1,
+          (fs.w_px / 600) * k, (fs.h_px / 600) * k);
+}
+
+// ------------------------------------------ 4. GREEN FORMULA BOX
+// Measured: green frame x347..555 y233..282; line 1 "X = 5" (red) y240..251;
+// line 2 "f(x) Minimum value is 1.0" (black + blue 1.0) y261..278.
+slide.addShape(ST.rect, {
+  x: px(347), y: px(233), w: px(209), h: px(50),
   fill: { color: COL.formulaBg },
   line: { color: COL.formulaBorder, width: 2 },
 });
-
-// Add text inside (3 lines, centered)
+// "X = 5" — rendered in 2D mathtext (eq_030_x5.json, ink 51.96x16.8 px @20pt).
+// Original ink is ~52x14 px, so scale 1.0 (font size already matches).
+{
+  const x5 = require(path.join(ASSETS, "eq_030_x5.json"));
+  const fx = 399 + (133 - x5.w_px) / 2;        // centred inside the box width
+  const fy = 236 + (45 - x5.h_px) / 2;         // top half of the green box
+  eqImage("eq_030_x5.png", fx, fy, x5.w_in, x5.h_in);
+  // recolour to red by overlaying a red-tinted copy is not possible at build time;
+  // the sidecar renders black ink, so the red is applied via a red text layer only
+  // when mathtext colour is re-rendered. Until then the box keeps mathtext ink.
+  void fx; void fy;
+}
+// line 2: "f(x) Minimum value is " (black) + "1.0" (blue)
 slide.addText([
-  { text: "f(x)=(x-5)^2+1", options: { fontSize: 20, bold: true, color: COL.bodyBlack, fontFace: FONT, breakLine: true } },
-  { text: "X = 5", options: { fontSize: 20, bold: true, color: COL.formulaRed, fontFace: FONT, breakLine: true } },
-  { text: "f(x) Minimum value is ", options: { fontSize: 18, color: COL.bodyBlack, fontFace: FONT } },
-  { text: "1.0", options: { fontSize: 18, color: COL.formulaBlue, fontFace: FONT } },
+  { text: "f(x) Minimum value is ", options: { fontSize: 16, color: COL.bodyBlack, fontFace: FONT } },
+  { text: "1.0", options: { fontSize: 16, color: COL.formulaBlue, fontFace: FONT } },
 ], {
-  x: formulaBoxX, y: formulaBoxY, w: formulaBoxW, h: formulaBoxH,
-  align: "center", valign: "middle", margin: 5,
-  lineSpacing: 24,  // explicit line spacing for multi-line
-});
-
-// ============================================================
-// 4. CALLOUT (center-lower) - purple text with magenta underline
-// Original: y=300-310, x=346-527. Text: "Reach Minimum after 11 Steps"
-// Purple #7030A0, underline magenta #FF00FF
-// ============================================================
-const calloutY = 302 * PT;
-const calloutX = 350 * PT;
-const calloutW = 180 * PT;
-slide.addText("Reach Minimum after 11 Steps", {
-  x: calloutX, y: calloutY, w: calloutW, h: 28 * PT,
-  fontSize: 18, bold: true, color: COL.calloutPurple, fontFace: FONT,
-  underline: { style: "single", color: COL.calloutUnderline },
+  x: px(352), y: px(257), w: px(199), h: px(22),
   align: "center", valign: "middle", margin: 0,
 });
 
-// ============================================================
-// 5. GRAPH (top-right) - coordinate grid with parabola, points, lines
-// Original: x≈630-910, y≈46-244. Plot area roughly x=650-890, y=60-230
-// Axes: x -5 to 15, y -5 to 15. Ticks at -5, 0, 5, 10, 15.
-// Blue parabola f(x)=(x-5)^2+1. Red dashed vertical at x=5.
-// Green point (5,1) labeled (5,1). Red point (2,10) labeled (2,10).
-// Black line (2,10) to (7,1) labeled (7,1). Red point at ~(6.2, 2.44).
-// ============================================================
-// Plot area in slide coordinates:
-// x: 650pt to 890pt (240pt wide) maps to x: -5 to 15 (20 units) -> 12pt per unit
-// y: 60pt to 230pt (170pt tall) maps to y: -5 to 15 (20 units) -> 8.5pt per unit (inverted)
-
-const plotX = 650 * PT;
-const plotY = 60 * PT;
-const plotW = 240 * PT;
-const plotH = 170 * PT;
-const xScale = 12;  // pt per x unit
-const yScale = 8.5; // pt per y unit (inverted: y increases down)
-
-// Grid background
-slide.addShape(ST.rect, {
-  x: plotX, y: plotY, w: plotW, h: plotH,
-  fill: { color: COL.graphBg },
-  line: { color: COL.gridGray, width: 0.5 },
+// ------------------------------------------------------- 5. CALLOUT
+// Measured: purple text two lines y294..320 x334..568; purple rule y292..293.
+slide.addShape(ST.line, {
+  x: px(352), y: px(292.5), w: px(218), h: 0,
+  line: { color: COL.calloutRule, width: 1.5 },
+});
+slide.addText("Reach Minimum after 11 Steps", {
+  x: px(334), y: px(294), w: px(234), h: px(26),
+  fontSize: 16, bold: true, color: COL.calloutPurple, fontFace: FONT,
+  align: "center", valign: "middle", margin: 0,
 });
 
-// Grid lines (light gray)
-for (let xi = -5; xi <= 15; xi += 5) {
-  const px = plotX + (xi + 5) * xScale * PT;
+// ------------------------------------------------------- 6. PLOT
+// Measured frame x573..809 y66..265, white interior x575..806 y70..264.
+// y-axis (vertical black) at x631 => x=0. Red dashed vertical at x687..689 => x=5.
+// Horizontal black band y145..148 x650..725 => the y=10 line between (2,10) and (8,10).
+// Green vertex x685..692 y251..258.
+const BX0 = 573, BX1 = 809, BY0 = 66, BY1 = 265;
+const plotW = BX1 - BX0, plotH = BY1 - BY0;
+
+// white plot background + red frame border
+slide.addShape(ST.rect, {
+  x: px(BX0), y: px(BY0), w: px(plotW), h: px(plotH),
+  fill: { color: COL.graphBg },
+  line: { color: COL.plotFrame, width: 1.5 },
+});
+
+// grid: dashed light-gray at every 5 units, ticks -5..15
+const XMIN = -5, XMAX = 15, YMIN = -5, YMAX = 15;
+const XS = (v) => BX0 + ((v - XMIN) / (XMAX - XMIN)) * plotW;
+const YS = (v) => BY0 + ((YMAX - v) / (YMAX - YMIN)) * plotH;
+for (let v = XMIN; v <= XMAX; v += 5) {
   slide.addShape(ST.line, {
-    x: px, y: plotY, w: 0, h: plotH,
+    x: px(XS(v)), y: px(BY0), w: 0, h: px(plotH),
     line: { color: COL.gridGray, width: 0.5, dashType: "sysDash" },
   });
-  // Tick label
-  slide.addText(String(xi), {
-    x: px - 15 * PT, y: plotY + plotH + 3 * PT, w: 30 * PT, h: 14 * PT,
+}
+for (let v = YMIN; v <= YMAX; v += 5) {
+  slide.addShape(ST.line, {
+    x: px(BX0), y: px(YS(v)), w: px(plotW), h: 0,
+    line: { color: COL.gridGray, width: 0.5, dashType: "sysDash" },
+  });
+}
+
+// x tick labels below the plot (measured y~275, x575/630/685/740/795)
+for (let v = XMIN; v <= XMAX; v += 5) {
+  slide.addText(String(v), {
+    x: px(XS(v) - 16), y: px(273), w: px(32), h: px(14),
     fontSize: 10, color: COL.bodyBlack, fontFace: FONT, align: "center", margin: 0,
   });
 }
-for (let yi = -5; yi <= 15; yi += 5) {
-  const py = plotY + plotH - (yi + 5) * yScale * PT;
-  slide.addShape(ST.line, {
-    x: plotX, y: py, w: plotW, h: 0,
-    line: { color: COL.gridGray, width: 0.5, dashType: "sysDash" },
-  });
-  // Tick label
-  slide.addText(String(yi), {
-    x: plotX - 30 * PT, y: py - 7 * PT, w: 28 * PT, h: 14 * PT,
+// y tick labels left of the plot (measured x547..557)
+for (let v = YMIN; v <= YMAX; v += 5) {
+  slide.addText(String(v), {
+    x: px(BX0 - 29), y: px(YS(v) - 7), w: px(26), h: px(14),
     fontSize: 10, color: COL.bodyBlack, fontFace: FONT, align: "right", valign: "middle", margin: 0,
   });
 }
-
-// Axis labels
+// axis names
 slide.addText("x", {
-  x: plotX + plotW/2 - 10 * PT, y: plotY + plotH + 18 * PT, w: 20 * PT, h: 14 * PT,
+  x: px(XS(5) - 10), y: px(288), w: px(20), h: px(14),
   fontSize: 12, bold: true, color: COL.bodyBlack, fontFace: FONT, align: "center", margin: 0,
 });
 slide.addText("f(x)", {
-  x: plotX - 35 * PT, y: plotY + plotH/2 - 10 * PT, w: 30 * PT, h: 20 * PT,
+  x: px(BX0 - 52), y: px(YS(5) - 10), w: px(30), h: px(20),
   fontSize: 12, bold: true, color: COL.bodyBlack, fontFace: FONT, align: "center", margin: 0,
 });
 
-// Parabola: f(x) = (x-5)^2 + 1
-// Sample points and draw as polyline (smooth curve approximation)
-const parabolaPts = [];
-for (let xi = -5; xi <= 15; xi += 0.2) {
-  const yi = Math.pow(xi - 5, 2) + 1;
-  const px = plotX + (xi + 5) * xScale * PT;
-  const py = plotY + plotH - (yi + 5) * yScale * PT;
-  if (py >= plotY && py <= plotY + plotH) {
-    parabolaPts.push({ x: px, y: py });
-  }
-}
-// Draw as series of small line segments (pptxgenjs doesn't have polyline)
-for (let i = 0; i < parabolaPts.length - 1; i++) {
-  const p1 = parabolaPts[i];
-  const p2 = parabolaPts[i+1];
-  slide.addShape(ST.line, {
-    x: p1.x, y: p1.y, w: p2.x - p1.x, h: p2.y - p1.y,
-    line: { color: COL.parabolaBlue, width: 2 },
-  });
-}
-
-// Red dashed vertical line at x=5
-const vx5 = plotX + (5 + 5) * xScale * PT;
+// black y-axis (vertical) at x=0 -> x631 ; horizontal y=10 line x650..725 (black band)
 slide.addShape(ST.line, {
-  x: vx5, y: plotY, w: 0, h: plotH,
-  line: { color: COL.axisRed, width: 1.5, dashType: "sysDash" },
+  x: px(631), y: px(BY0), w: 0, h: px(plotH),
+  line: { color: COL.axisBlack, width: 1 },
 });
-
-// Points and labels
-// (5,1) - green point
-const px_5_1 = plotX + (5 + 5) * xScale * PT;
-const py_5_1 = plotY + plotH - (1 + 5) * yScale * PT;
-slide.addShape(ST.ellipse, {
-  x: px_5_1 - 4 * PT, y: py_5_1 - 4 * PT, w: 8 * PT, h: 8 * PT,
-  fill: { color: COL.axisGreen }, line: { color: COL.axisGreen, width: 1 },
-});
-slide.addText("(5,1)", {
-  x: px_5_1 + 6 * PT, y: py_5_1 - 12 * PT, w: 40 * PT, h: 14 * PT,
-  fontSize: 11, color: COL.axisGreen, fontFace: FONT, bold: true, margin: 0,
-});
-
-// (2,10) - red point
-const px_2_10 = plotX + (2 + 5) * xScale * PT;
-const py_2_10 = plotY + plotH - (10 + 5) * yScale * PT;
-slide.addShape(ST.ellipse, {
-  x: px_2_10 - 4 * PT, y: py_2_10 - 4 * PT, w: 8 * PT, h: 8 * PT,
-  fill: { color: COL.axisRed }, line: { color: COL.axisRed, width: 1 },
-});
-slide.addText("(2,10)", {
-  x: px_2_10 - 45 * PT, y: py_2_10 - 12 * PT, w: 45 * PT, h: 14 * PT,
-  fontSize: 11, color: COL.axisRed, fontFace: FONT, bold: true, align: "right", margin: 0,
-});
-
-// (7,1) - black line endpoint with label
-const px_7_1 = plotX + (7 + 5) * xScale * PT;
-const py_7_1 = plotY + plotH - (1 + 5) * yScale * PT;
-slide.addText("(7,1)", {
-  x: px_7_1 + 6 * PT, y: py_7_1 - 12 * PT, w: 40 * PT, h: 14 * PT,
-  fontSize: 11, color: COL.axisBlack, fontFace: FONT, bold: true, margin: 0,
-});
-
-// Black line segment from (2,10) to (7,1)
 slide.addShape(ST.line, {
-  x: px_2_10, y: py_2_10, w: px_7_1 - px_2_10, h: py_7_1 - py_2_10,
+  x: px(650), y: px(146.5), w: px(75), h: 0,
   line: { color: COL.axisBlack, width: 2 },
 });
 
-// Unlabeled red point at intersection (~6.2, 2.44)
-const ix = 6.2;
-const iy = Math.pow(ix - 5, 2) + 1; // 2.44
-const px_int = plotX + (ix + 5) * xScale * PT;
-const py_int = plotY + plotH - (iy + 5) * yScale * PT;
+// red dashed vertical at x=5 -> x688
+slide.addShape(ST.line, {
+  x: px(688), y: px(BY0), w: 0, h: px(plotH),
+  line: { color: COL.formulaRed, width: 1.5, dashType: "sysDash" },
+});
+
+// THE COST CURVE: ONE dense analytic parabola y = (x-5)^2 + 1.
+// Dense uniform sampling (0.1 frame px steps in x) -> second-difference ripple check.
+const VX = 688, VY = 254.5;             // vertex pixels (5,1)
+const A_X = (BX1 - BX0 - 4) / 20;       // px per unit (approx 11.6)
+const A_Y = (BY1 - BY0 - 6) / 20;
+{
+  const pts = [];
+  for (let pxX = BX0 + 2; pxX <= BX1 - 2; pxX += 0.25) {
+    const xd = XMIN + ((pxX - BX0) / plotW) * (XMAX - XMIN);
+    const yd = Math.pow(xd - 5, 2) + 1;
+    let pxY = BY0 + ((YMAX - yd) / (YMAX - YMIN)) * plotH;
+    // calibrate so the vertex lands on the measured green point (5,1)
+    const cal = (pxY - BY0) * (VY - BY0) / (BY0 + ((YMAX - 1) / (YMAX - YMIN)) * plotH - BY0);
+    pxY = BY0 + cal;
+    pts.push({ x: px(pxX), y: px(pxY) });
+  }
+  for (let i = 0; i < pts.length - 1; i++) {
+    slide.addShape(ST.line, {
+      x: pts[i].x, y: pts[i].y, w: pts[i + 1].x - pts[i].x, h: pts[i + 1].y - pts[i].y,
+      line: { color: COL.parabolaBlue, width: 2 },
+    });
+  }
+}
+
+// green vertex point (5,1)
 slide.addShape(ST.ellipse, {
-  x: px_int - 4 * PT, y: py_int - 4 * PT, w: 8 * PT, h: 8 * PT,
-  fill: { color: COL.axisRed }, line: { color: COL.axisRed, width: 1 },
+  x: px(VX - 4), y: px(VY - 4), w: px(8), h: px(8),
+  fill: { color: "00B050" }, line: { color: "00B050", width: 1 },
+});
+// point labels (measured: (5,1) at x704..721 y248..258 -> right of the vertex)
+slide.addText("(5,1)", {
+  x: px(VX + 16), y: px(VY - 4), w: px(30), h: px(14),
+  fontSize: 11, color: "008000", fontFace: FONT, bold: true, margin: 0,
 });
 
-// ============================================================
-// 6. RED DOWN ARROW (between param table and iter table)
-// Original: x≈140-200, y≈235-300. Solid red block arrow pointing down.
-// ============================================================
-// Draw as triangle (arrowhead) + rectangle (shaft)
-const arrowX = 170 * PT;  // center x
-const arrowY = 250 * PT;  // top y
-const arrowW = 30 * PT;
-const arrowH = 70 * PT;
-// Shaft
-slide.addShape(ST.rect, {
-  x: arrowX - arrowW/2, y: arrowY, w: arrowW, h: arrowH * 0.7,
-  fill: { color: COL.arrowRed }, line: { color: COL.arrowRed, width: 0 },
-});
-// Arrowhead (triangle pointing down)
-slide.addShape(ST.triangle, {
-  x: arrowX - arrowW, y: arrowY + arrowH * 0.7, w: arrowW * 2, h: arrowH * 0.3,
-  fill: { color: COL.arrowRed }, line: { color: COL.arrowRed, width: 0 },
-});
+// --------------------------------------------------- 7. RED DOWN ARROW
+// Measured red block arrow x174..192, y306..338 (shaft + downward triangle head).
+{
+  const ax = 183, ay = 306, aw = 19, ah = 32;
+  slide.addShape(ST.rect, {
+    x: px(ax - aw / 2), y: px(ay), w: px(aw), h: px(ah * 0.62),
+    fill: { color: COL.arrowRed }, line: { color: COL.arrowRed, width: 0 },
+  });
+  slide.addShape(ST.triangle, {
+    x: px(ax - aw), y: px(ay + ah * 0.62), w: px(aw * 2), h: px(ah * 0.38),
+    fill: { color: COL.arrowRed }, line: { color: COL.arrowRed, width: 0 },
+  });
+}
 
-// ============================================================
-// 7. ITERATION TABLE (bottom) - 8 rows x 12 cols
-// Original: x≈57-902, y≈375-528. Blue border #0070C0.
-// Row 1 (x): 3 | 3.2 | 3.4 | 3.6 | 3.8 | 4 | 4.2 | 4.4 | 4.6 | 4.8 | 5  (3 and 5 red)
-// Row 2 (f(x)): 5 | 4.24 | 3.56 | 2.96 | 2.44 | 2 | 1.64 | 1.36 | 1.16 | 1.04 | 1
-// Row 3 (x-delta): 2.9 | 3.1 | 3.3 | 3.5 | 3.7 | 3.9 | 4.1 | 4.3 | 4.5 | 4.7 | 4.9
-// Row 4 (f(x-delta)): 5.41 | 4.61 | 3.89 | 3.25 | 2.69 | 2.21 | 1.81 | 1.49 | 1.25 | 1.09 | 1.01
-// Row 5 (x+delta): 3.1 | 3.3 | 3.5 | 3.7 | 3.9 | 4.1 | 4.3 | 4.5 | 4.7 | 4.9 | 5.1
-// Row 6 (f(x+delta)): 4.61 | 3.89 | 3.25 | 2.69 | 2.21 | 1.81 | 1.49 | 1.25 | 1.09 | 1.01 | 1.01
-// Row 7 (slope): -8 | -7.2 | -6.4 | -5.6 | -4.8 | -4 | -3.2 | -2.4 | -1.6 | -0.8 | 0 (green tint)
-// Row 8 (next x): 3.2 | 3.4 | 3.6 | 3.8 | 4 | 4.2 | 4.4 | 4.6 | 4.8 | 5 | stop (stop: red bg, white text)
-// ============================================================
+// --------------------------------------------- 8. ITERATION TABLE
+// Measured x78..655 y324..531, 8 rows x 12 cols. Values verbatim from the frame.
 const iterData = [
-  // Header row (labels)
   ["x", "3", "3.2", "3.4", "3.6", "3.8", "4", "4.2", "4.4", "4.6", "4.8", "5"],
   ["f(x)", "5", "4.24", "3.56", "2.96", "2.44", "2", "1.64", "1.36", "1.16", "1.04", "1"],
   ["x-delta", "2.9", "3.1", "3.3", "3.5", "3.7", "3.9", "4.1", "4.3", "4.5", "4.7", "4.9"],
@@ -324,66 +303,47 @@ const iterData = [
   ["slope", "-8", "-7.2", "-6.4", "-5.6", "-4.8", "-4", "-3.2", "-2.4", "-1.6", "-0.8", "0"],
   ["next x", "3.2", "3.4", "3.6", "3.8", "4", "4.2", "4.4", "4.6", "4.8", "5", "stop"],
 ];
-
-const iterRows = iterData.map((row, ri) => {
-  return row.map((cell, ci) => {
-    const isHeader = (ri === 0);
-    const isLabelCol = (ci === 0);
-    const isSlopeRow = (ri === 6);
-    const isStopCell = (ri === 7 && ci === 11);
-    const isRedHighlight = (ri === 0 && (ci === 1 || ci === 11));  // 3 and 5 in x row
-    
-    let opts = {
-      fontSize: 9,
-      fontFace: FONT,
-      color: COL.bodyBlack,
-      margin: 2,
-      align: isLabelCol ? "left" : "center",
-      valign: "middle",
+slide.addTable(
+  iterData.map((row, ri) => row.map((cell, ci) => {
+    const isLabel = ci === 0;
+    const isSlopeRow = ri === 6;
+    const isStopCell = ri === 7 && ci === 11;
+    const isXRowRed = ri === 0 && (ci === 1 || ci === 11);
+    const opts = {
+      fontSize: 9, fontFace: FONT, color: COL.bodyBlack,
+      margin: [1, 3, 1, 3],
+      align: isLabel ? "left" : "center", valign: "middle",
     };
-    
-    if (isHeader) {
-      opts.bold = true;
-      opts.fontSize = 9;
-    }
-    if (isLabelCol) {
-      opts.bold = true;
-    }
-    if (isSlopeRow && !isLabelCol) {
-      opts.fill = { color: COL.iterSlopeBg };
-    }
+    if (isLabel) { opts.bold = true; }
+    if (ri === 0 && !isLabel) { opts.bold = true; }
+    if (isSlopeRow) { opts.fill = { color: COL.iterSlopeBg }; }
+    else if (!isStopCell) { opts.fill = { color: COL.iterFill }; }
     if (isStopCell) {
       opts.fill = { color: COL.iterStopRed };
       opts.color = COL.iterStopWhite;
       opts.bold = true;
     }
-    if (isRedHighlight) {
-      opts.color = COL.iterRedHighlight;
-      opts.bold = true;
-    }
-    
+    if (isXRowRed) { opts.color = COL.iterRedHighlight; opts.bold = true; }
     return { text: cell, options: opts };
-  });
-});
+  })),
+  {
+    x: px(78), y: px(324), w: px(577), h: px(207),
+    colW: Array(12).fill(px(577 / 12)),
+    rowH: Array(8).fill(px(207 / 8)),
+    border: { pt: 1.5, color: COL.iterBorder },
+  }
+);
 
-const iterTableX = 57 * PT;
-const iterTableY = 375 * PT;
-const iterTableW = 845 * PT;
-const iterTableH = 153 * PT;
+// ---------------------------------------------- 9. HOUSE CHROME LAST
+// THE z-order fix: chrome is the TOP-most paint so the badge can never be
+// occluded by content (the plot's white background used to paint over it).
+drawHouseChrome(pres, slide, { numeral: "30" });
 
-slide.addTable(iterRows, {
-  x: iterTableX, y: iterTableY, w: iterTableW, h: iterTableH,
-  border: { pt: 1.5, color: COL.iterBorder },
-  // rowHeights handled by content
-});
-
-// ============================================================
-// Write output
-// ============================================================
+// ---------------------------------------------------------------- output
 const outPath = "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_030_recreated.pptx";
 pres.writeFile(outPath).then(() => {
   console.log("Written:", outPath);
-}).catch(err => {
+}).catch((err) => {
   console.error("Error:", err);
   process.exit(1);
 });

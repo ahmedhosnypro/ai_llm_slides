@@ -160,6 +160,13 @@ textbox(84, 242, 212, 59, [
   { text: "Ŷ=Y", options: { color: INK, fontSize: 14, italic: true } },
 ], "left", "middle", 14);
 
+// The original underlines "Ŷ=Y" (measured: bar x254..270 frame, 2 rows, ~4px
+// below the italic glyph baseline).
+slide.addShape(pptx.ShapeType.line, {
+  x: px(254), y: px(283), w: px(17), h: 0,
+  line: { color: INK, width: 1 },
+});
+
 // ============================================================
 // 6. ERROR BOX — blue border, pale-yellow fill
 //    x 78..486, y 306..365
@@ -179,19 +186,34 @@ textbox(84, 306, 396, 59, [
 // ============================================================
 rect(494, 232, 390, 139, WHITE, { color: RED, width: 1 });
 
-// Line 1: "Ŷ = XW" + "Predicted" in red
-textbox(500, 240, 378, 20, [
+// "Ŷ = XW" + "Predicted" in red — first line
+textbox(500, 248, 378, 22, [
   { text: "Ŷ = XW", options: { color: INK, fontSize: 16, italic: true } },
   { text: "  Predicted", options: { color: REDTXT, bold: true, fontSize: 14 } },
 ], "left", "top", 16);
 
-// "Where:" + three lines
-textbox(500, 262, 378, 100, [
-  { text: "Where:", options: { color: INK, bold: true, fontSize: 13 }, breakLine: true },
-  { text: "X_{N×(d+1)} is a matrix → Given", options: { color: INK, fontSize: 13 }, breakLine: true },
-  { text: "Y_{N×1} is labels vector → Given", options: { color: INK, fontSize: 13 }, breakLine: true },
-  { text: "W is Model Parameter → Required", options: { color: INK, fontSize: 13 } },
-], "left", "top", 20);
+// "Where:" starts the first fact line INLINE in the original (measured: the
+// y285..303 band runs "Where: X_{N×(d+1)} is a matrix ⇒ Given" as one line;
+// band tops 285/314/345 -> pitch ~30).
+// pptxgenjs v4 multi-line law (measured 2026-10-23 on slide_004): 'breakLine'
+// emits NO <a:br/> so all runs collapse into ONE paragraph, and the nested-array
+// (per-paragraph) form makes LibreOffice drop the whole shape. ONLY separate
+// addText calls per line render every line — verified with pdftotext + a PIL
+// ink-band check before banking. Each line is pinned to its own y so the pitch
+// is explicit (LO-vs-PPT auto-pitch divergence law, founder directive (2026-10-10)).
+const WHERE_LINES = [
+  [
+    { text: "Where: ", options: { color: INK, bold: true, fontSize: 13 } },
+    { text: "X_{N×(d+1)} is a matrix ⇒ Given", options: { color: INK, fontSize: 13 } },
+  ],
+  [{ text: "Y_{N×1} is labels vector ⇒ Given", options: { color: INK, fontSize: 13 } }],
+  [{ text: "W is Model Parameter ⇒ Required", options: { color: INK, fontSize: 13 } }],
+];
+const WHERE_Y = 285;      // first line top (measured: original 'Where:' band 285..303)
+const WHERE_PITCH = 30;   // frame px between line tops (measured tops 285/314/345)
+WHERE_LINES.forEach((runs, i) => {
+  textbox(500, WHERE_Y + i * WHERE_PITCH, 378, 22, runs, "left", "top", 13);
+});
 
 // ============================================================
 // 8. DEFINE BOX — red border, salmon fill

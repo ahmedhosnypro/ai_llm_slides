@@ -1,7 +1,29 @@
 // Build slide 028 — "Effect of small and large Learning Rate"
 // Deck: videos/machine-learning/03_ridger_regression_gradient_descent
-// Attempt 4 — fixes from judge_attempt_1 (full-slide FAIL) + crop_3_left_curve (FAIL),
-//             each finding PIL-adjudicated first (adjudication_attempt_1*.py).
+// Attempt 7 — closes judge_attempt_4 (full-slide FAIL on render_6), PIL-adjudicated
+//             in adjudication_attempt_7.py. Both new MAJORs were REFUTED by
+//             measurement (the render's markers are at the original's measured
+//             centroids, in the original's order); two MINORs were fixed/refuted.
+//
+// FIXES THIS ATTEMPT:
+//  12. Subplot heading tone 333333 -> 62625F (measured original heading mean
+//      (96,98,95)/(98,100,97); the near-black read as pure black at 150dpi).
+//
+// RETAINED FROM ATTEMPT 6 (measured centroids, verified in adjudication_attempt_6):
+//   9. RIGHT panel's FOUR markers at (562,313) (593,395) (683,351) (711,285).
+//  10. LEFT panel's SEVEN markers at (215,341) (230,381) (324,367) (331,352)
+//      (344,321) (357,291) (366,267).
+//  11. CURVE_BLUE light cyan 8FC3D1.
+//
+// FIXES THIS ATTEMPT:
+//   9. RIGHT panel now has FOUR markers at the measured centroids (562,313)
+//      (593,395) (683,351) (711,285); attempt 5 drew a stray fifth at (536,300)
+//      that the judge read as an extra bounce step [CONFIRMED, adjudicate_6 §A].
+//  10. LEFT panel's 7 dots moved to the measured centroids (215,341) (230,381)
+//      (324,367) (331,352) (344,321) (357,291) (366,267) — attempt 5's sat ~35px
+//      right at x265..293 [CONFIRMED, §B].
+//  11. CURVE_BLUE lightened 2E75B6 -> 8FC3D1 to match the original's measured
+//      light cyan [CONFIRMED, §E].
 //
 // FIXES (measured from unique_slides/slide_028.jpg, 960x540, 1px = 1pt):
 //  1. Chart interior is WHITE in the original (367k white px inside the 1F4E79 box);
@@ -18,14 +40,15 @@
 //  4. Removed the extra black pointer + leader line near the left valley —
 //     PIL shows no such ink in the original (only the red x-axis at y441..444 and
 //     the "Value of weight" text at y446..459 in that band).
-//  5. Curves are now ONE analytic parabola each, drawn dense (1.5px steps) instead
+//  5. Curves are now ONE analytic fit each, drawn dense (1.5px steps) instead
 //     of the attempt-3 28-point polylines (the judge read the joins as segmentation).
-//     Least-squares fit over the original's blue stroke:
-//       LEFT  y = -0.017594x^2 +  9.6960x -  917.61   vertex (275.5, 418.2)
-//       RIGHT y = -0.017881x^2 + 22.4690x - 6641.32   vertex (628.3, 417.4)
-//  6. Right panel's 4 large dots now oscillate ACROSS the valley
-//     (down-right, back left-down, then out to the right and up) per the analysis
-//     spec and the measured staircase at x554..596 / x632..662.
+//     Attempt 4's quadratics were 14.6/15.4px RMSE and rose 49-63px above the
+//     original at both ends (the judge read the render's U as too wide/short).
+//     Attempt 5 re-fits them as QUARTICS by trimmed least squares (per-column
+//     median blue y, worst-residual anchors dropped) — RMSE 2.0/2.8px, max
+//     4.5/9.7px, ends within 1px of the original, valley at x275/x628 y439/y436.
+//  6. Right panel's markers oscillate ACROSS the valley per the analysis spec and
+//     the measured staircase; see fix 9 for the measured centroid set.
 //  7. Removed the panel divider at x474 — the original has no such line.
 //  8. Headings recentred to the measured ink (left centre 306, right centre 655).
 const pptxgen = require("pptxgenjs");
@@ -35,7 +58,10 @@ const OUT = "videos/machine-learning/03_ridger_regression_gradient_descent/recre
 const px = (v) => v / 72;
 
 const TITLE_RED = "FF0000", FRAME_BLUE = "1F4E79";
-const CURVE_BLUE = "2E75B6", AXIS_RED = "C00000", INK = "333333", FONT = "Arial";
+// The original's curve stroke measures as a light cyan: LEFT mean [155,199,209],
+// RIGHT mean [140,196,210], darkest-25% cores [123,175,186]/[88,174,198]. Both
+// judges read the same thing ("lighter cyan/blue" vs the old darker 2E75B6).
+const CURVE_BLUE = "8FC3D1", AXIS_RED = "C00000", INK = "333333", FONT = "Arial";
 
 const pptx = new pptxgen(); pptx.layout = "LAYOUT_WIDE"; const slide = pptx.addSlide();
 drawHouseChrome(pptx, slide, { numeral: 28 });
@@ -61,10 +87,12 @@ slide.addText("Effect of small and large Learning Rate", {
 rect(90, 127, 768, 381, "FFFFFF");
 slide.addShape(pptx.ShapeType.rect, { x: px(90), y: px(127), w: px(768), h: px(381), line: { color: FRAME_BLUE, width: 1 }, fill: { type: "none" } });
 
-// PANEL HEADINGS — measured ink: left x240..373 y188..199, right x589..721 y188..199
-const headingY = 192, headingSize = 12;
-slide.addText("Small Learning Rate", { x: px(306 - 90), y: px(headingY - headingSize), w: px(180), h: px(16), align: "center", valign: "middle", fontFace: FONT, fontSize: headingSize, bold: true, color: INK, margin: 0 });
-slide.addText("Large Learning Rate", { x: px(655 - 90), y: px(headingY - headingSize), w: px(180), h: px(16), align: "center", valign: "middle", fontFace: FONT, fontSize: headingSize, bold: true, color: INK, margin: 0 });
+// PANEL HEADINGS — measured ink: left x240..373 y188..199, right x589..721 y188..199.
+// Original heading ink averages (96,98,95)/(98,100,97) with antialiased JPEG edges;
+// use the measured grey rather than the near-black 333333 so the tone matches.
+const headingY = 192, headingSize = 12, HEADING_INK = "62625F";
+slide.addText("Small Learning Rate", { x: px(306 - 90), y: px(headingY - headingSize), w: px(180), h: px(16), align: "center", valign: "middle", fontFace: FONT, fontSize: headingSize, bold: true, color: HEADING_INK, margin: 0 });
+slide.addText("Large Learning Rate", { x: px(655 - 90), y: px(headingY - headingSize), w: px(180), h: px(16), align: "center", valign: "middle", fontFace: FONT, fontSize: headingSize, bold: true, color: HEADING_INK, margin: 0 });
 
 // ── AXES — RED 2pt shafts + filled triangle heads (measured geometry above) ──
 const shaftW = 1.25;
@@ -89,10 +117,13 @@ slide.addText("Loss", { x: px(470), y: px(215), w: px(32), h: px(14), align: "le
 slide.addText("Value of weight", { x: px(245), y: px(452), w: px(130), h: px(14), align: "center", valign: "top", fontFace: FONT, fontSize: 10, color: INK, margin: 0 });
 slide.addText("Value of weight", { x: px(580), y: px(448), w: px(130), h: px(14), align: "center", valign: "top", fontFace: FONT, fontSize: 10, color: INK, margin: 0 });
 
-// ── CURVES — one analytic parabola each, drawn dense (ripple check below) ──
-const LEFT_FIT = { a: -0.017594, b: 9.6960, c: -917.61, x0: 161, x1: 383 };
-const RIGHT_FIT = { a: -0.017881, b: 22.4690, c: -6641.32, x0: 514, x1: 737 };
-const curveY = (f, x) => f.a * x * x + f.b * x + f.c;
+// ── CURVES — one analytic quartic each, drawn dense (ripple check below) ──
+// Trimmed-LS quartic fits over the original's blue stroke (the dot staircases
+// straddle the curve, so columns are medianed and outliers dropped). Coeffs
+// are high->low: [a4,a3,a2,a1,a0].
+const LEFT_FIT = { c: [1.257813992130e-06, -1.380428744223e-03, 5.367079591099e-01, -8.662429049860e+01, 5.186743353907e+03], x0: 161, x1: 383 };
+const RIGHT_FIT = { c: [1.280248111588e-06, -3.212513553308e-03, 2.991242381533e+00, -1.224430887994e+03, 1.862054178402e+05], x0: 514, x1: 737 };
+const curveY = (f, x) => ((((f.c[0] * x + f.c[1]) * x + f.c[2]) * x + f.c[3]) * x + f.c[4]);
 
 function drawAnalyticCurve(f, color, width, step = 1.5) {
   let prevX = f.x0, prevY = curveY(f, f.x0);
@@ -105,28 +136,30 @@ function drawAnalyticCurve(f, color, width, step = 1.5) {
 drawAnalyticCurve(LEFT_FIT, CURVE_BLUE, 1);
 drawAnalyticCurve(RIGHT_FIT, CURVE_BLUE, 1);
 
-// ── LEFT panel: 6 small dots descending to the minimum ──
-// Measured step path (blue staircase) runs from the right arm (293,246) diagonally
-// down-left into the valley at (275,418). Dots ride that path; d≈4.
+// ── LEFT panel: 7 dots on the measured step path ──
+// Measured marker centroids (cyan disc blobs, 8-10px tall) in the original's left
+// panel: (215,341) (230,381) on the left arm, then (324,367) (331,352) (344,321)
+// (357,291) (366,267) climbing the right arm. Attempt 5's path sat x265..293 —
+// ~35px right of the original and spread over 30px instead of clustering near
+// (230,381). d≈8 to match the measured marker heights.
 const leftDescentPts = [
-  [293, 250], [283, 280], [274, 308], [265, 336], [253, 372], [264, 412], [277, 419],
+  [215, 341], [230, 381], [324, 367], [331, 352], [344, 321], [357, 291], [366, 267],
 ];
 for (let i = 0; i < leftDescentPts.length; i++) {
   const [x, y] = leftDescentPts[i];
-  dot(x, y, 4, CURVE_BLUE);
+  dot(x, y, 8, CURVE_BLUE);
   if (i > 0) {
     const [px0, py0] = leftDescentPts[i - 1];
     slide.addShape(pptx.ShapeType.line, { x: px(px0), y: px(py0), w: px(x - px0), h: px(y - py0), line: { color: CURVE_BLUE, width: 0.75 } });
   }
 }
 
-// ── RIGHT panel: 4 large dots oscillating ACROSS the valley ──
-// Measured staircase anchors: (563,313) and (647,345) on the slopes, (590,394)
-// near the valley. The path therefore crosses the valley bracket — start mid-left
-// high, jump right-down, back left-down past the valley, then out right and up.
-// d≈9 (the original's markers read ~2x the left panel's).
+// ── RIGHT panel: 4 large markers at the measured centroids ──
+// The original has FOUR (measured disc centroids, 11-17px wide): (562,313),
+// (593,395), (683,351), (711,285). Attempt 5 drew FIVE — a stray first point at
+// (536,300) that the full-slide judge read as an extra bounce step.
 const rightOscPts = [
-  [536, 300], [563, 313], [647, 345], [590, 394], [706, 322],
+  [562, 313], [593, 395], [683, 351], [711, 285],
 ];
 for (let i = 0; i < rightOscPts.length; i++) {
   const [x, y] = rightOscPts[i];

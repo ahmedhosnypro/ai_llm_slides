@@ -13,8 +13,8 @@
 //   Four blue label boxes, fill 0000FF-family, white bold text, ~h 42/38px:
 //     1. "Concave Function One Maxima"          x 270..406, y 137..178
 //     2. "Convex Function One Minima"           x 475..611, y 184..225
-//     3. "Non-Convex Multiple Minima"           x 474..611, y 354..391
-//     4. "Gradient Descent Path to reach Minima" x 382..518, y 452..489
+//     3. "Gradient Descent Path to reach Minima" x 474..611, y 354..391
+//     4. "Non-Convex Multiple Minima"            x 382..518, y 452..489
 //     Every box's white text sits in TWO bands (band pitch ~12px) — all four
 //     labels wrap to two lines.
 //   Four 3-D surface plots (jet/rainbow), white-background figure rects
@@ -33,6 +33,18 @@
 //   BL black annotations measured at (slide px): "Global Maxima"
 //     ~x242..268 y304..319, "Local Maxima" ~x286..315 y337..352,
 //     "Local Minima" ~x286..311 y390..399, "Global Minima" ~x145..201 y439..465.
+//   Thin RED RECTANGLE enclosing each plot (measured frame px, drawn as 2-D
+//     figure-fraction artists inside each PNG):
+//     TL x88..409 y114..291 | TR x619..876 y118..314
+//     BL x80..472 y292..527 | BR x466..882 y342..532
+//   CAPTION-TO-PLOT ASSIGNMENT is by measured X-OVERLAP with the plot: the top
+//     row's LB1 (x270..406) overlaps TL (x86..409) = concave and LB2
+//     (x475..611) overlaps TR (x472..876) = convex, so in the bottom row LB3
+//     (x474..611) overlaps BR = the gradient-descent path and LB4 (x382..518)
+//     overlaps BL = the multi-extremum surface. The analysis JSON's
+//     "right of / left of" phrasings are unreliable (they describe LB1 as
+//     "right of the top-left plot" when it actually sits ON TL), so the frame
+//     geometry wins.
 //
 // Assets: plot_025_tl/tr/bl/br.png generated at 300dpi at the EXACT measured
 //   region size (figsize = region_px / 72), so addImage() places them
@@ -102,8 +114,8 @@ slide.addImage({ path: path.join(assetsDir, "plot_025_br.png"),
 const labels = [
   { text: "Concave Function One Maxima",           x: 270, y: 137, w: 137, h: 42 },
   { text: "Convex Function One Minima",            x: 475, y: 184, w: 137, h: 42 },
-  { text: "Non-Convex Multiple Minima",            x: 474, y: 354, w: 138, h: 38 },
-  { text: "Gradient Descent Path to reach Minima", x: 382, y: 452, w: 137, h: 38 },
+  { text: "Gradient Descent Path to reach Minima", x: 474, y: 354, w: 138, h: 38 },
+  { text: "Non-Convex Multiple Minima",            x: 382, y: 452, w: 137, h: 38 },
 ];
 for (const L of labels) {
   slide.addShape(pptx.ShapeType.rect, {

@@ -3,26 +3,35 @@
 // Reference frame: unique_slides/slide_003.jpg (960x540, 1px=1pt=1/72in)
 // Spec: analysis/slide_003_final.json
 //
-// MEASURED GEOMETRY (frame px from PIL measurement + ASCII art structural analysis):
-//   Canvas: white FFFFFF
-//   Panel: gray E9E9E7 rect x54..903 y45..540 (no top stroke)
-//   Title: "Matrix Notation for Linear Regression and Classification (N- Samples)"
-//     - y band ~68-86, x ~88..894 (center ~474)
-//     - "Matrix" blue #0000FF bold ~32pt; rest black #000000 bold ~32pt
-//   Badge: numeral "3" at (876, 73) d~35, fill FDFD96, ring 6A5ACD 2pt, numeral 333333 bold Arial 18pt
-//     - LO render correction: badge cy needs +10.56 frame px (22px at 150dpi) -> use cy=83.56
-//   Left label: "N Training Samples" red #FF0000 ~18pt, x~80..180, y~110..145
-//   Top matrix box: gray #808080 border rect ~x140..740, y~90..230
-//   Remember box: blue #0000FF border rect ~x700..900, y~70..180
-//   In General box: black border rect ~x700..900, y~195..260
-//   Bottom-left box: gray #808080 border rect ~x55..400, y~285..490
-//   Arrow: gray #808080 right-pointing, x~396..470 at y~375
-//   Bottom-right box: gray #808080 border rect ~x475..904, y~285..490
+// MEASURMENTS (frame px, PIL-measured on unique_slides/slide_003.jpg 2026-10-23;
+// the FRAME wins over the spec wherever they disagree):
+//   Chrome: house_chrome.js (deck law) — canvas FFFFFF, panel E9E9E7 x54..903
+//     y45..540, C00000 1pt LEFT x58.5 / RIGHT x901 / BOTTOM y538.5 ONLY (no top
+//     stroke), badge d35 at (876,73) FDFD96 ring 6A5ACD numeral 3.
+//   Title ink:      x82..832, y68..90 — ONE line; "Matrix" blue #0000FF, the
+//     remaining words RED #FF0000 (spec said black; frame says red).
+//   N Training Samples: x81..272, y177..199, red.
+//   Top matrix box: x271..596, y107..301 — BLUE #0000FF border, white fill.
+//     Three full-height column bands y141..296: yellow #FFFF99 x296..337,
+//     cyan #CCFFFF x372..415, pink #FFC0CB x513..557. Column headers above the
+//     bands at y120..139; red y-labels inside the bands at y277..293.
+//   Remember box:   x649..874, y153..221 — blue border, pale-cyan fill;
+//     red bold italic "Remember" x656..689 y160..176; blue UNDERLINED equation
+//     y=W^T X = X^T W, blue ink x699..867 y185..214.
+//   In General box: x659..850, y268..294 — border #6C5B3D, cream fill.
+//   Bottom-left box:  x79..533, y323..517 — RED #C00000 border, cyan #CCFFFF fill
+//   Bottom-right box: x572..752, y323..517 — RED #C00000 border, white fill
+//   Arrow:          x532..573, y330..409 (tall chevron)
+//
+// The previous build carried an unverified "LO badge correction" (badge cy
+// 83.56 instead of 73) and a Remember box at x700..900 y70..180 whose white
+// fill was drawn OVER the badge — house_chrome_check.py failed on renders 1-4.
 //
 // FRAME-VS-SPEC DEVIATIONS: deck house chrome overrides spec's background/border/badge.
 
 const pptxgen = require("pptxgenjs");
 const fs = require("fs");
+const { drawHouseChrome } = require("../../shared_patterns/house_chrome.js");
 
 const ASSET_DIR = __dirname + "/assets";
 const OUT = "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_003_recreated.pptx";
@@ -34,170 +43,125 @@ const pptx = new pptxgen();
 pptx.layout = "LAYOUT_WIDE";
 const slide = pptx.addSlide();
 
-// ---- HOUSE CHROME (inlined with badge cy correction) ----
-// Canvas
-slide.background = { color: "FFFFFF" };
-// Panel: x54..903, y45..540
-slide.addShape(pptx.ShapeType.rect, {
-  x: px(54), y: px(45), w: px(903 - 54 + 1), h: px(540 - 45),
-  fill: { color: "E9E9E7" },
-});
-// Strokes: C00000 1pt - LEFT, RIGHT, BOTTOM only (NO TOP)
-const st = { color: "C00000", width: 1 };
-// Left vertical: x58.5, y46..539
-slide.addShape(pptx.ShapeType.line, {
-  x: px(58.5), y: px(46), w: 0, h: px(539 - 46),
-  line: st,
-});
-// Right vertical: x901, y46..539
-slide.addShape(pptx.ShapeType.line, {
-  x: px(901), y: px(46), w: 0, h: px(539 - 46),
-  line: st,
-});
-// Bottom horizontal: y538.5, x58..902
-slide.addShape(pptx.ShapeType.line, {
-  x: px(58), y: px(538.5), w: px(902 - 58), h: 0,
-  line: st,
-});
-// Badge: corrected cy = 83.56 frame px (was 73, LO renders 22px high)
-const badge_cx = 876 / 72;
-const badge_cy = 83.56 / 72;  // corrected for LO offset
-const badge_d = 35 / 72;
-const bx = badge_cx - badge_d / 2;
-const by = badge_cy - badge_d / 2;
-slide.addShape(pptx.ShapeType.ellipse, {
-  x: bx, y: by, w: badge_d, h: badge_d,
-  fill: { color: "FDFD96" },
-  line: { color: "6A5ACD", width: 2 },
-});
-slide.addText("3", {
-  x: bx, y: by, w: badge_d, h: badge_d,
-  align: "center", valign: "middle", bold: true,
-  fontSize: 18, color: "333333", fontFace: "Arial", margin: 0,
+// ---- HOUSE CHROME (shared deck module — badge numeral = file number 3) -----
+drawHouseChrome(pptx, slide, { numeral: 3 });
+
+// ---- TITLE: ONE line, measured ink x82..832 y68..90 -----------------------
+slide.addText([
+  { text: "Matrix", options: { fontFace: A, fontSize: 26, bold: true, color: "0000FF" } },
+  { text: " Notation for Linear Regression and Classification (N- Samples)",
+    options: { fontFace: A, fontSize: 26, bold: true, color: "FF0000" } },
+], {
+  x: px(82), y: px(63), w: px(832 - 82), h: px(30),
+  align: "center", valign: "top", margin: 0,
 });
 
-// ---- TITLE ---------------------------------------------------------------
-slide.addText("Matrix", {
-  x: px(474 - 410), y: px(77 - 8), w: px(820), h: px(55),
-  align: "center", valign: "top", margin: 0,
-  fontFace: A, fontSize: 32, bold: true, color: "0000FF",
-});
-slide.addText("Notation for Linear Regression and Classification (N- Samples)", {
-  x: px(474 - 410), y: px(77 - 8 + 34), w: px(820), h: px(55),
-  align: "center", valign: "top", margin: 0,
-  fontFace: A, fontSize: 32, bold: true, color: "000000",
-});
-
-// ---- LEFT LABEL: "N Training Samples" ------------------------------------
+// ---- LEFT LABEL: "N Training Samples" (measured x81..272 y177..199) --------
 slide.addText("N Training Samples", {
-  x: px(60), y: px(110), w: px(130), h: px(50),
+  x: px(80), y: px(173), w: px(200), h: px(30),
   align: "left", valign: "top", margin: 0,
-  fontFace: A, fontSize: 18, bold: true, color: "FF0000", italic: false,
-  lineSpacing: 22,
+  fontFace: A, fontSize: 18, bold: true, color: "FF0000",
 });
 
-// ---- TOP MATRIX BOX (gray border) ----------------------------------------
-const tm_x = 140, tm_y = 90, tm_w = 600, tm_h = 140;
+// ---- TOP MATRIX BOX (measured x271..596 y107..301, blue border) -----------
+const tm_x = 271, tm_y = 107, tm_w = 325, tm_h = 194;
 slide.addShape(pptx.ShapeType.rect, {
   x: px(tm_x), y: px(tm_y), w: px(tm_w), h: px(tm_h),
-  fill: { color: "FFFFFF" }, line: { color: "808080", width: 1 },
+  fill: { color: "FFFFFF" }, line: { color: "0000FF", width: 1 },
 });
 
-const col_x = [315, 393, 697];
-const col_labels = ["X_1", "X_2", "X_n"];
-const col_bg = ["FFFF99", "CCFFFF", "FFC0CB"];
-
-for (let i = 0; i < 3; i++) {
-  const cx = col_x[i];
-  const bw = 70;
+// Three full-height column bands, measured y141..296
+const band_defs = [
+  { cx: 316.5, w: 42, fill: "FFFF99", label: "X_1" },
+  { cx: 393.5, w: 44, fill: "CCFFFF", label: "X_2" },
+  { cx: 535,   w: 45, fill: "FFC0CB", label: "X_n" },
+];
+for (const b of band_defs) {
   slide.addShape(pptx.ShapeType.rect, {
-    x: px(cx - bw/2), y: px(115), w: px(bw), h: px(22),
-    fill: { color: col_bg[i] }, line: { color: "808080", width: 0.5 },
+    x: px(b.cx - b.w / 2), y: px(141), w: px(b.w), h: px(155),
+    fill: { color: b.fill },
   });
+}
+// Column headers above the bands, measured y120..139
+const hdr_x = [316.5, 393.5, 535];
+const col_labels = ["X_1", "X_2", "X_n"];
+for (let i = 0; i < 3; i++) {
   slide.addText(col_labels[i], {
-    x: px(cx - bw/2), y: px(115), w: px(bw), h: px(22),
+    x: px(hdr_x[i] - 20), y: px(117), w: px(40), h: px(22),
     align: "center", valign: "middle", margin: 0,
     fontFace: A, fontSize: 13, bold: true, color: "000000", italic: true,
   });
 }
-
-slide.addText("...", {
-  x: px(450), y: px(115), w: px(100), h: px(22),
-  align: "center", valign: "middle", margin: 0,
-  fontFace: A, fontSize: 16, bold: true, color: "000000",
-});
-
-const entry_rows = [
-  ["x_{11}", "x_{21}", "x_{n1}"],
-  ["x_{12}", "x_{22}", "x_{n2}"],
-  ["...", "...", "..."],
-  ["x_{1d}", "x_{2d}", "x_{nd}"],
-];
-const entry_y_start = 145;
-const entry_dy = 15;
-for (let r = 0; r < entry_rows.length; r++) {
-  for (let c = 0; c < 3; c++) {
-    slide.addText(entry_rows[r][c], {
-      x: px(col_x[c] - 30), y: px(entry_y_start + r * entry_dy), w: px(70), h: px(16),
-      align: "center", valign: "middle", margin: 0,
-      fontFace: A, fontSize: 11, color: "000000", italic: true,
-    });
-  }
-}
-
-slide.addShape(pptx.ShapeType.line, {
-  x: px(tm_x + 10), y: px(210), w: px(tm_w - 20), h: 0,
-  line: { color: "000000", width: 1 },
-});
-
+// Red y-labels inside the bands, measured y277..293
 const y_labels = ["y_1", "y_2", "y_n"];
 for (let c = 0; c < 3; c++) {
   slide.addText(y_labels[c], {
-    x: px(col_x[c] - 30), y: px(213), w: px(70), h: px(16),
+    x: px(hdr_x[c] - 20), y: px(274), w: px(40), h: px(16),
     align: "center", valign: "middle", margin: 0,
     fontFace: A, fontSize: 11, color: "FF0000", italic: true,
   });
 }
 
-// ---- REMEMBER BOX (blue border) ------------------------------------------
-const rb_x = 700, rb_y = 70, rb_w = 200, rb_h = 110;
+// ---- REMEMBER BOX (measured x649..874 y153..221, blue border, pale-cyan fill).
+// The old seat (x700..900 y70..180) overlapped and OCCLUDED the house badge. ----
+const rb_x = 649, rb_y = 153, rb_w = 225, rb_h = 68;
 slide.addShape(pptx.ShapeType.rect, {
   x: px(rb_x), y: px(rb_y), w: px(rb_w), h: px(rb_h),
-  fill: { color: "FFFFFF" }, line: { color: "0000FF", width: 1.5 },
+  fill: { color: "CCFFFF", transparency: 40 }, line: { color: "0000FF", width: 1.5 },
 });
+// red bold italic "Remember" — measured ink x656..689 y160..176
 slide.addText("Remember", {
-  x: px(rb_x + 10), y: px(rb_y + 8), w: px(rb_w - 20), h: px(22),
+  x: px(rb_x + 7), y: px(rb_y + 4), w: px(120), h: px(22),
   align: "left", valign: "top", margin: 0,
-  fontFace: A, fontSize: 16, bold: false, color: "FF0000", italic: true,
+  fontFace: A, fontSize: 18, bold: true, color: "FF0000", italic: true,
 });
-const eq_rem_w = 2.09333, eq_rem_h = 0.36333;
-slide.addImage({
-  path: ASSET_DIR + "/eq_003_remember.png",
-  x: px(rb_x + rb_w/2) - eq_rem_w/2, y: px(rb_y + 35),
-  w: eq_rem_w, h: eq_rem_h,
+// "y = W^T X = X^T W" — blue glyphs measured x699..867 y185..214 with underline
+// runs (y198..199 x677..693 and y214 x843..867). Native text with real
+// underline runs in professional 2D-ish layout; blue + underlined per the frame.
+const eq_size = 20;
+slide.addText([
+  { text: "y", options: { fontFace: A, fontSize: eq_size, italic: true, color: "000000" } },
+  { text: " = ", options: { fontFace: A, fontSize: eq_size, color: "000000" } },
+  { text: "W", options: { fontFace: A, fontSize: eq_size, bold: true, color: "0000FF", underline: true } },
+  { text: "T", options: { fontFace: A, fontSize: eq_size, italic: true, color: "000000" } },
+  { text: "X", options: { fontFace: A, fontSize: eq_size, bold: true, color: "0000FF", underline: true } },
+  { text: " = ", options: { fontFace: A, fontSize: eq_size, color: "000000" } },
+  { text: "X", options: { fontFace: A, fontSize: eq_size, bold: true, color: "0000FF", underline: true } },
+  { text: "T", options: { fontFace: A, fontSize: eq_size, italic: true, color: "000000" } },
+  { text: "W", options: { fontFace: A, fontSize: eq_size, bold: true, color: "0000FF", underline: true } },
+], {
+  x: px(697), y: px(183), w: px(170), h: px(30),
+  align: "left", valign: "middle", margin: 0,
 });
+// Sidecar banked alongside the superseded PNG asset (eq_*.json law).
+fs.writeFileSync(__dirname + "/assets/eq_003_remember.json", JSON.stringify({
+  rel_id: null, image: "assets/eq_003_remember.png",
+  mathtext: "y = W^{T}X = X^{T}W", font_size_pt: 20, color: "000000",
+  blue_runs: ["W", "X", "X", "W"], underline: true,
+  note: "native text runs with underline; PNG superseded by the measured build",
+}, null, 2));
 
-// ---- IN GENERAL BOX (black border) ---------------------------------------
-const ig_x = 700, ig_y = 195, ig_w = 200, ig_h = 65;
+// ---- IN GENERAL BOX (measured x659..850 y268..294, border #6C5B3D) ---------
+const ig_x = 659, ig_y = 268, ig_w = 191, ig_h = 26;
 slide.addShape(pptx.ShapeType.rect, {
   x: px(ig_x), y: px(ig_y), w: px(ig_w), h: px(ig_h),
-  fill: { color: "FFFFFF" }, line: { color: "000000", width: 1.5 },
+  fill: { color: "FFFFFF" }, line: { color: "6C5B3D", width: 1 },
 });
 slide.addText([
-  { text: "In General: ", options: { fontFace: A, fontSize: 15, bold: false, color: "000000" } },
+  { text: "In General: ", options: { fontFace: A, fontSize: 15, color: "000000" } },
   { text: "N", options: { fontFace: A, fontSize: 15, bold: true, color: "FF0000" } },
   { text: " >>> ", options: { fontFace: A, fontSize: 15, bold: true, color: "FF0000" } },
   { text: "d", options: { fontFace: A, fontSize: 15, bold: true, color: "FF0000" } },
 ], {
-  x: px(ig_x + 10), y: px(ig_y + 10), w: px(ig_w - 20), h: px(ig_h - 20),
-  align: "left", valign: "top", margin: 0,
+  x: px(ig_x + 6), y: px(ig_y + 2), w: px(ig_w - 12), h: px(ig_h - 4),
+  align: "left", valign: "middle", margin: 0,
 });
 
-// ---- BOTTOM-LEFT BOX (gray border) ---------------------------------------
-const bl_x = 55, bl_y = 285, bl_w = 345, bl_h = 205;
+// ---- BOTTOM-LEFT BOX (measured x79..533 y323..517, RED border, cyan fill) --
+const bl_x = 79, bl_y = 323, bl_w = 454, bl_h = 194;
 slide.addShape(pptx.ShapeType.rect, {
   x: px(bl_x), y: px(bl_y), w: px(bl_w), h: px(bl_h),
-  fill: { color: "FFFFFF" }, line: { color: "808080", width: 1 },
+  fill: { color: "CCFFFF" }, line: { color: "C00000", width: 1 },
 });
 
 slide.addText("[", {
@@ -281,19 +245,17 @@ slide.addText("d+1 × 1", {
   fontFace: A, fontSize: 11, color: "FF0000",
 });
 
-// ---- ARROW (gray, right-pointing) ----------------------------------------
-const arrow_y = 375;
-const arrow_x0 = 400, arrow_x1 = 475;
+// ---- ARROW (measured ink x532..573 y330..409 — a tall chevron) ------------
 slide.addShape(pptx.ShapeType.rightArrow, {
-  x: px(arrow_x0), y: px(arrow_y - 6), w: px(arrow_x1 - arrow_x0), h: px(12),
+  x: px(532), y: px(330), w: px(573 - 532), h: px(409 - 330),
   fill: { color: "808080" }, line: { color: "808080", width: 0 },
 });
 
-// ---- BOTTOM-RIGHT BOX (gray border) --------------------------------------
-const br_x = 475, br_y = 285, br_w = 430, br_h = 205;
+// ---- BOTTOM-RIGHT BOX (measured x572..752 y323..517, RED border, white) ----
+const br_x = 572, br_y = 323, br_w = 180, br_h = 194;
 slide.addShape(pptx.ShapeType.rect, {
   x: px(br_x), y: px(br_y), w: px(br_w), h: px(br_h),
-  fill: { color: "FFFFFF" }, line: { color: "808080", width: 1 },
+  fill: { color: "FFFFFF" }, line: { color: "C00000", width: 1 },
 });
 
 slide.addText([

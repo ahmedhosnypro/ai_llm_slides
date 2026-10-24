@@ -1,189 +1,153 @@
+// Build slide 015 — "Minimization of Objective function to obtain BEST model parameters"
+// Deck: videos/machine-learning/03_ridger_regression_gradient_descent
+// GROUND TRUTH: unique_slides/slide_015.jpg (960x540, 1 frame px = 1 pt = 1/72 in).
+//
+// PIL-measured geometry (qa/slide_015/{reink_015,colours_015,boxgeom via
+// scratch/tmp/*}.py; every value below is measured, not assumed):
+//   title          ink x129..827 y68..84, 18pt DejaVu Sans Bold (698px measured
+//                  vs 696px predicted at 18pt - the sibling's verified font).
+//                  Runs: "Minimization of " red | "Objective " blue |
+//                        "function to obtain " red | "BEST " blue | "model parameters" red
+//   cream rect A   fill FBFDE5, border C6CBC7, outer x72..892 y104..266
+//   cream rect B   fill FBFDE5, border C6CBC7, outer x72..892 y344..521
+//   pink box       fill F7D0D3, border C00000 (measured 142,61,84 - the deck red
+//                  family), outer x73..709 y275..334
+//   peach box      fill F7DCBE, NO border, outer x786..895 y275..332
+//   green box      fill CFFFE3, border 499243, outer x547..885 y472..516
+//
+// Equations: 2D matplotlib mathtext -> 600dpi transparent PNG -> addImage at the
+// exact px/600 size from eq015_table.json (built by qa/slide_015/build_eq_015.py).
+// Font sizes are width-matched to the frame ink (the certified sibling
+// slide_005 recipe): mathtext's \frac is taller than the original's inline ½,
+// so h-ratio runs 1.0..1.3 at w-ratio ~1.0 and the ink is centred in its band.
+//
+// HOUSE CHROME: deck 03 — white canvas FFFFFF, gray panel E9E9E7 x54..903
+// y45..540, C00000 1pt strokes LEFT x58.5 / RIGHT x901 / BOTTOM y538.5 ONLY
+// (NO top stroke — a top stroke is a build defect). Badge circle d35 centered
+// (876,73), fill FDFD96, purple ring 6A5ACD, bold 18pt numeral 333333 = 15.
+// All of this is drawn by the shared house_chrome.js primitive.
+
+const path = require("path");
+const fs = require("fs");
 const pptxgen = require("pptxgenjs");
-const { CHROME, drawHouseChrome } = require("../../shared_patterns/house_chrome.js");
+const { drawHouseChrome } = require("../../shared_patterns/house_chrome.js");
+
+const OUT = "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_015_recreated.pptx";
+const ASSETS = path.resolve(__dirname, "assets");
+const TABLE = JSON.parse(fs.readFileSync(path.join(ASSETS, "eq015_table.json"), "utf8"));
+
+const px = (v) => v / 72; // frame px -> inches
+
+// measured fills / borders
+const CREAM = "FBFDE5"; // cream content rect fill
+const CBORD = "C6CBC7"; // cream content rect border
+const PINKF = "F7D0D3"; // measured (247,208,211)
+const PBORD = "C00000"; // measured (142,61,84) - deck red family, founder nominal
+const PEACHF = "F7DCBE"; // measured (247,220,190)
+const GRING = "499243"; // measured (73,146,67)
+const GFILL = "CFFFE3"; // measured (207,255,227)
+const RED = "C00000";
+const BLUE = "00008B"; // measured (2,0,110)
+const BLACK = "000000";
+
+const FONT = "DejaVu Sans"; // verified: 18pt bold title = 696px vs frame 698px
 
 const pptx = new pptxgen();
-pptx.layout = "LAYOUT_WIDE";   // 13.333 x 7.5 in
-const W = 13.333, H = 7.5;
+pptx.layout = "LAYOUT_WIDE"; // 13.333 x 7.5 in
+const slide = pptx.addSlide();
 
-let s = pptx.addSlide();
+drawHouseChrome(pptx, slide, { numeral: 15 });
 
-// --- House chrome (panel, strokes, badge) ---
-drawHouseChrome(pptx, s, { numeral: "15" });
+const rect = (x, y, w, h, fill, line = null) => {
+  const opts = { x: px(x), y: px(y), w: px(w), h: px(h), fill: { color: fill } };
+  if (line) opts.line = { color: line.color, width: line.width };
+  return slide.addShape(pptx.ShapeType.rect, opts);
+};
 
-// ============================================================
-// MEASURED GEOMETRY (frame px -> inches via /72, 1px = 1pt)
-// ============================================================
-// Title: y=68..84 (17px tall), words x=129..826 (697px wide, 64 chars).
-//   Arial Bold char advance ~0.62em -> orig font ~19-20pt (measured).
-//   Words alternate RED/BLUE: "Minimization of" (R) "Objective" (B)
-//   "function to obtain" (R) "BEST" (B) "model parameters" (R)
-//   Box must be wide enough to avoid wrap: use x=1.7, w=10.1 in.
-const TITLE_X = 1.7, TITLE_Y = 0.92, TITLE_W = 10.1, TITLE_H = 0.32;
-const TITLE_SIZE = 20;
+const textbox = (x, y, w, h, runs, align, valign, ls) => {
+  const opts = { x: px(x), y: px(y), w: px(w), h: px(h), align, valign, margin: 0,
+                 fontFace: FONT };
+  if (ls !== null && ls !== undefined) opts.lineSpacing = ls;
+  slide.addText(runs, opts);
+};
 
-// Eq block 1: y=105..155 (three lines), center x~499 (frame)
-//   Frame y=105..155 → in: 105/72=1.46 .. 155/72=2.15
-//   Use y=1.5 in, h=0.8 in
-const EQ1_Y = 1.5, EQ1_H = 0.8;
-
-// Red box (callout): border y=276..333, x=80..700 (frame)
-//   Frame y=276..333 → in: 3.83 .. 4.63
-//   Use y=3.8 in, h=0.85 in, x=1.1 in, w=8.6 in
-const RED_BOX_X = 1.1, RED_BOX_Y = 3.8, RED_BOX_W = 8.6, RED_BOX_H = 0.85;
-const RED_BORDER = "C00000"; // red border
-
-// Peach box (Remember): fill x=788..903, y=275..334 (frame)
-//   Frame x=788..903 → in: 10.94 .. 12.54
-//   y same as red box
-//   Use x=10.9 in, w=1.6 in, same y/h as red box
-const PEACH_BOX_X = 10.9, PEACH_BOX_W = 1.6, PEACH_FILL = "FCE4D6";
-
-// Derivative steps: y=345..410 (two lines), center x~490
-//   Frame y=345..410 → in: 4.79 .. 5.69
-//   Use y=4.85 in, h=0.9 in
-const DERIV_Y = 4.85, DERIV_H = 0.9;
-
-// Normal equation line: y=412..470, center x~490
-//   Frame y=412..470 → in: 5.72 .. 6.53
-//   Use y=5.8 in, h=0.7 in
-const NORMALEQ_Y = 5.8, NORMALEQ_H = 0.7;
-
-// Green box: border y=473..516, x=314..884 (frame)
-//   Frame y=473..516 → in: 6.57 .. 7.17
-//   x=314..884 → in: 4.36 .. 12.28
-//   Use x=4.4 in, w=7.9 in, y=6.6 in, h=0.55 in
-const GREEN_BOX_X = 4.4, GREEN_BOX_Y = 6.6, GREEN_BOX_W = 7.9, GREEN_BOX_H = 0.55;
-const GREEN_BORDER = "00B050";
-const GREEN_FILL = "E2EFDA";
-
-// Colors
-const DARK_BLUE = "00008B";   // body text
-const RED_TEXT  = "FF0000";   // red accents
-const BLUE_TEXT = "0000FF";   // blue accents
-const FONT = "Arial";
-const MATH_FONT = "Times New Roman";  // serif/math style for equations
+// equation image: placed at its table (x_frame,y_frame) = the PNG's top-left in
+// frame px, at exactly px/600 (w_in/h_in from the sidecar).  No stretching - the
+// font size was chosen so the ink already matches the frame's ink width.
+const eqAt = (tag) => {
+  const t = TABLE[tag];
+  slide.addImage({ path: path.join(ASSETS, `eq_015_${tag}.png`),
+                   x: px(t.x_frame), y: px(t.y_frame),
+                   w: t.w_in, h: t.h_in });
+};
 
 // ============================================================
-// TITLE — word-by-word alternating red/blue
+// 1. TITLE - red/blue alternating, 18pt DejaVu Sans Bold (measured 698px ink,
+//    predicted 696px at 18pt).  Ink y68..84 -> box centred on the ink band.
 // ============================================================
-// Use a single text box with rich-text runs to get exact coloring
-s.addText([
-  { text: "Minimization of ", options: { fontSize: TITLE_SIZE, bold: true, color: RED_TEXT, fontFace: FONT } },
-  { text: "Objective ",       options: { fontSize: TITLE_SIZE, bold: true, color: BLUE_TEXT, fontFace: FONT } },
-  { text: "function to obtain ", options: { fontSize: TITLE_SIZE, bold: true, color: RED_TEXT, fontFace: FONT } },
-  { text: "BEST ",            options: { fontSize: TITLE_SIZE, bold: true, color: BLUE_TEXT, fontFace: FONT } },
-  { text: "model parameters", options: { fontSize: TITLE_SIZE, bold: true, color: RED_TEXT, fontFace: FONT } },
-], {
-  x: TITLE_X, y: TITLE_Y, w: TITLE_W, h: TITLE_H,
-  align: "left", valign: "middle", margin: 0,
+textbox(129, 65, 700, 22, [
+  { text: "Minimization of ", options: { color: RED, bold: true, fontSize: 18 } },
+  { text: "Objective ", options: { color: BLUE, bold: true, fontSize: 18 } },
+  { text: "function to obtain ", options: { color: RED, bold: true, fontSize: 18 } },
+  { text: "BEST ", options: { color: BLUE, bold: true, fontSize: 18 } },
+  { text: "model parameters", options: { color: RED, bold: true, fontSize: 18 } },
+], "left", "middle", 18);
+
+// ============================================================
+// 2. CREAM CONTENT RECT A + the three J(W) lines (eq1_l1/l2/l3)
+// ============================================================
+rect(72, 104, 821, 163, CREAM, { color: CBORD, width: 1 });
+eqAt("eq1_l1");
+eqAt("eq1_l2");
+eqAt("eq1_l3");
+
+// ============================================================
+// 3. PINK BOX - the ∂J/∂W = 0 identity (left) and the sentence (right)
+// ============================================================
+rect(73, 275, 637, 60, PINKF, { color: PBORD, width: 1.5 });
+eqAt("redbox_eq");
+// sentence ink x209..702 y296..315, 18pt DejaVu Sans (measured 494px, predicted
+// 490px at 18pt).  Only the trailing J(W) is blue (x650..702) and its W is the
+// underlined one; "Best W" is NOT underlined in the original.
+textbox(208, 292, 800, 21, [
+  { text: "Get Best W that minimizes the Objective Function ",
+    options: { color: BLACK, fontSize: 18 } },
+  { text: "J(", options: { color: BLUE, fontSize: 18 } },
+  { text: "W", options: { color: BLUE, fontSize: 18, underline: {} } },
+  { text: ")", options: { color: BLUE, fontSize: 18 } },
+], "left", "middle", 18);
+
+// ============================================================
+// 4. PEACH BOX - "Remember" + the ∂W^TW/∂W = 2W identity (no border)
+// ============================================================
+rect(786, 275, 110, 58, PEACHF);
+// "Remember" red bold 11pt (measured 65px wide; predicted 67px at 11pt DejaVu Bold)
+textbox(790, 274, 100, 20, [
+  { text: "Remember", options: { color: RED, bold: true, fontSize: 11 } },
+], "left", "middle", 11);
+eqAt("peach_eq");
+
+// ============================================================
+// 5. CREAM CONTENT RECT B + the two DERIV lines
+// ============================================================
+rect(72, 344, 821, 178, CREAM, { color: CBORD, width: 1 });
+eqAt("deriv_l1");
+eqAt("deriv_l2");
+
+// ============================================================
+// 6. NORMAL EQUATION (left of the green box, at the rect's lower edge)
+// ============================================================
+eqAt("normal");
+
+// ============================================================
+// 7. GREEN BOX - the final solution, W underlined in the mathtext
+// ============================================================
+rect(547, 472, 339, 45, GFILL, { color: GRING, width: 1 });
+eqAt("solution");
+
+pptx.writeFile({ fileName: OUT }).then(() => {
+  console.log("WROTE " + OUT);
+}).catch((err) => {
+  console.error("ERROR:", err);
+  process.exit(1);
 });
-
-// ============================================================
-// EQUATION BLOCK 1 — three lines, centered, dark blue serif
-// ============================================================
-const eq1Lines = [
-  "J(W)=½(Y−Ŷ)^T(Y−Ŷ)+½ λ W^T W = ½(Y−XW)^T(Y−XW)+½ λ W^T W",
-  "J(W)=½[Y^T Y + (XW)^T(XW) − Y^T(XW) − (XW)^T Y]+½ λ W^T W",
-  "J(W)=½[Y^T Y + (XW)^T(XW) − 2(XW)^T Y]+½ λ W^T W",
-];
-
-s.addText(eq1Lines.map((t, i) => ({
-  text: t,
-  options: { fontSize: 16, color: DARK_BLUE, fontFace: MATH_FONT, bold: false, breakLine: i < eq1Lines.length - 1 },
-})), {
-  x: 1.1, y: EQ1_Y, w: W - 2.2, h: EQ1_H,
-  align: "center", valign: "middle", margin: 0, lineSpacing: 19.2,
-});
-
-// ============================================================
-// RED CALLOUT BOX — middle-left
-// ============================================================
-s.addShape(pptx.ShapeType.rect, {
-  x: RED_BOX_X, y: RED_BOX_Y, w: RED_BOX_W, h: RED_BOX_H,
-  fill: { color: "FFFFFF" },
-  line: { color: RED_BORDER, width: 1.5 },
-});
-
-// Text boxes: explicit point lineSpacing (fleet convention — pptxgenjs turns a
-// bare fraction into spcPts = value*100, which LibreOffice renders as nothing).
-s.addText([
-  { text: "∂J(W)/∂W = 0", options: { fontSize: 16, color: DARK_BLUE, fontFace: MATH_FONT, bold: true, breakLine: true } },
-  { text: "Get Best W that minimizes the ", options: { fontSize: 14, color: DARK_BLUE, fontFace: FONT } },
-  { text: "Objective Function J(W)", options: { fontSize: 14, color: BLUE_TEXT, fontFace: FONT, underline: true } },
-], {
-  x: RED_BOX_X + 0.15, y: RED_BOX_Y + 0.05, w: RED_BOX_W - 0.3, h: RED_BOX_H - 0.1,
-  align: "left", valign: "middle", margin: 0, lineSpacing: 16.8,
-});
-
-// ============================================================
-// PEACH "REMEMBER" BOX — middle-right
-// ============================================================
-s.addShape(pptx.ShapeType.rect, {
-  x: PEACH_BOX_X, y: RED_BOX_Y, w: PEACH_BOX_W, h: RED_BOX_H,
-  fill: { color: PEACH_FILL },
-  // no border line
-});
-
-s.addText([
-  { text: "Remember", options: { fontSize: 14, bold: true, color: RED_TEXT, fontFace: FONT, caps: true, breakLine: true } },
-  { text: "∂W^T W/∂W = 2W", options: { fontSize: 16, color: DARK_BLUE, fontFace: MATH_FONT } },
-], {
-  x: PEACH_BOX_X + 0.1, y: RED_BOX_Y + 0.08, w: PEACH_BOX_W - 0.2, h: RED_BOX_H - 0.16,
-  align: "center", valign: "middle", margin: 0, lineSpacing: 16.8,
-});
-
-// ============================================================
-// DERIVATIVE STEPS — two lines, centered
-// ============================================================
-const derivLines = [
-  "∂J(W)/∂W = 0 = ½[(XW)^T(X) + (X)^T(XW) − 2(X)^T Y]+λ W",
-  "∂J(W)/∂W = 0 = ½[2X^T X W − 2 X^T Y]+λ I W",
-];
-
-s.addText(derivLines.map((t, i) => ({
-  text: t,
-  options: { fontSize: 15, color: DARK_BLUE, fontFace: MATH_FONT, breakLine: i < derivLines.length - 1 },
-})), {
-  x: 1.1, y: DERIV_Y, w: W - 2.2, h: DERIV_H,
-  align: "center", valign: "middle", margin: 0, lineSpacing: 18,
-});
-
-// ============================================================
-// NORMAL EQUATION LINE + ARROW
-// ============================================================
-s.addText([
-  { text: "(X^T X + λ I)W = X^T Y", options: { fontSize: 18, color: DARK_BLUE, fontFace: MATH_FONT, bold: true } },
-], {
-  x: 2.5, y: NORMALEQ_Y, w: W - 5.0, h: 0.5,
-  align: "center", valign: "middle", margin: 0,
-});
-
-// Right-pointing arrow (dark blue) pointing to green box
-// Arrow from x≈9.0 to x≈10.5 at same vertical center
-s.addShape(pptx.ShapeType.rightArrow, {
-  x: 9.0, y: NORMALEQ_Y + 0.05, w: 1.5, h: 0.4,
-  fill: { color: DARK_BLUE },
-  line: { color: DARK_BLUE, width: 1 },
-});
-
-// ============================================================
-// GREEN SOLUTION BOX — bottom-center
-// ============================================================
-s.addShape(pptx.ShapeType.rect, {
-  x: GREEN_BOX_X, y: GREEN_BOX_Y, w: GREEN_BOX_W, h: GREEN_BOX_H,
-  fill: { color: GREEN_FILL },
-  line: { color: GREEN_BORDER, width: 1.5 },
-});
-
-s.addText([
-  { text: "W = (X^T X + λ I)^(-1) X^T Y", options: { fontSize: 18, color: DARK_BLUE, fontFace: MATH_FONT, underline: true } },
-], {
-  x: GREEN_BOX_X + 0.2, y: GREEN_BOX_Y + 0.02, w: GREEN_BOX_W - 0.4, h: GREEN_BOX_H - 0.04,
-  align: "center", valign: "middle", margin: 0,
-});
-
-// ============================================================
-// WRITE
-// ============================================================
-const outPath = "/workspaces/codespaces-blank/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_015_recreated.pptx";
-pptx.writeFile({ fileName: outPath }).then(() => console.log("done:", outPath));

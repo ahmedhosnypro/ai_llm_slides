@@ -244,13 +244,20 @@ textBox(96, 416, 460, [
 textBox(96, 464, 100,
   [r("Solution:", { bold: true })], 21, { color: NAVY, bold: true });
 
+// PIL-verdict (2026-10-24): the frame's solution lines set in an oblique/italic
+// face. Verified on unique_slides/slide_023.jpg by stem-slant and glyph-form
+// forensics (SOL1 12 stems -0.129 px/row = -7.3 deg vs the render's 0.0; the
+// 'e' counter at y512 x493..495 spans 3 columns where roman 'e' spans 5, and the
+// SOL2 'G' top terminal leans left-of-centre) - oblique terminals, not serifs.
+// The same family is already used for the "Recall" label and the blue/EX body
+// lines, so italics + `r(..., {italic:true})` is the deck-consistent choice.
 textBox(center(477.5, 480), 492, 480, [
-  r("Instead of using Least Squares with Matrix inversion,"),
-], 20, { color: NAVY, align: "center" });
+  r("Instead of using Least Squares with Matrix inversion,", { italic: true }),
+], 20, { color: NAVY, align: "center", italic: true });
 
 textBox(center(480.5, 360), 519, 360, [
-  r("use Gradient Descent iterative solution"),
-], 20, { color: NAVY, align: "center" });
+  r("use Gradient Descent iterative solution", { italic: true }),
+], 20, { color: NAVY, align: "center", italic: true });
 
 pptx.writeFile({ fileName: "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_023_recreated.pptx" })
   .then(() => console.log("wrote slide_023_recreated.pptx"));
