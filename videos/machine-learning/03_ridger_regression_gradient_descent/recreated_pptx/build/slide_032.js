@@ -200,8 +200,12 @@ gLabel("(2, 10)", 619, 149, 40, 14, "left");
 gLabel("(7, 7)", 724, 140, 30, 13, "left");
 gLabel("(5, 1)", 694, 244, 36, 14, "left");
 // segment length labels above the chord (measured gray-blue family)
-slide.addText("3", { x: px(664), y: px(124), w: px(15), h: px(13), align: "center", valign: "middle", fontSize: 9, color: "99AABA", fontFace: A, margin: 0 });
-slide.addText("3", { x: px(697), y: px(124), w: px(15), h: px(13), align: "center", valign: "middle", fontSize: 9, color: "99AABA", fontFace: A, margin: 0 });
+// Fresh re-measurement (measure_verify_15 / measure_verify_14): the frame's
+// marks are ~11pt "3" glyphs, ink core y132..139, 5x8 px each, centred
+// (671.5, 135.5) and (705, 135.5) — the earlier 9pt/13px box drew a 5x6 px
+// stem sitting 4px above the frame's ink.
+slide.addText("3", { x: px(664), y: px(127.5), w: px(15), h: px(16), align: "center", valign: "middle", fontSize: 11, color: "99AABA", fontFace: A, margin: 0 });
+slide.addText("3", { x: px(697), y: px(127.5), w: px(15), h: px(16), align: "center", valign: "middle", fontSize: 11, color: "99AABA", fontFace: A, margin: 0 });
 
 // --------------------------------------------------- EQUATION CALLOUTS
 // box 1: equation, red border, white fill (measured x398..530 y184..212)

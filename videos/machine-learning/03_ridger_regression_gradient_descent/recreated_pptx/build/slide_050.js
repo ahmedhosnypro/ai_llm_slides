@@ -20,12 +20,15 @@
 //   vectors table   : same 6 columns; THREE rows (augmented, leading 1s):
 //                     [1,1,1,1,1,1] y183..192, [1,2,1,5,6,6] y198..207,
 //                     [1,1,2,4,5,6] y214..222, class row y231..244
-//   math zone       : x246..717 inside the navy box; 4 lines
-//                       L1 y60..74 : "Initial W = (4/-2)" (black) + "REPEAT using Step" (RED x425..531)
-//                       L2 y74..86 : "η = 1" (RED)
-//                       L3 y86..102: "Check classes of" + 3 bracketed column vectors Z1 Z2 Z3
-//                       L4 y110..124: "Z1=(0,0)  Z2=(7,6)  Z3=(3,2)" label row
-//   pink box        : x743..830 y58..171, fill (249,232,250), underlined W = (5/-1)
+//   math zone       : x246..717 inside the navy box; 3 lines
+//                       L1 y59..83 : "Initial W = (4/-2)" stacked (black) + "REPEAT using Step"
+//                                    (red ink x415..537 — the zone right of it is BLANK cream:
+//                                    the original shows no "eta = 1" text)
+//                       L3 y86..120: "Check classes of" (x542..626) + Z1 Z2 Z3 labels/vectors
+//                                    (x640..702; labels y74..85, vectors y86..120)
+//                       L4 y110..124: key caption "C1 positive  C2 negative  Zero is unaccepted"
+//                                    (x240..510; C1 red / C2 blue / Zero green / rest black)
+//   pink box        : x743..830 y58..171, fill (249,232,250), underlined W = (5/-1/-1)
 //   red box         : x84..213 y278..305, fill (201,0,4), white bold "Iteration 2"
 //   stop text       : "No change in W" y350..371 (W underlined), "Stop Iterations"
 //                     y375..394 with "Stop" in red
@@ -42,7 +45,6 @@
 //                     markers: blue squares (1,1),(2,1),(2,2); magenta diamonds
 //                     (5,4),(6,5),(6,6); red triangle (7,6); red origin blob (0,0).
 //                     "+ve" red text at data (0.56,3.84) with two small red arrows.
-//   stray plus      : black "+" at x233..241 y414..419
 
 const pptxgenpkg = require("pptxgenjs");
 const path = require("path");
@@ -139,18 +141,14 @@ CLS.forEach(function (c) {
   s.addImage({ path: EQ("eq_050_initialW.png"), x: fx(266), y: fx(63), w: m.w_in, h: m.h_in });
 })();
 
-// L1 red text: "REPEAT using Step"  (measured red ink x425..531, y60..74)
+// L1 red text: "REPEAT using Step"  (measured red ink x415..537, y59..77 — no "eta = 1"
+// follows it in the original: the zone right of it is blank cream, PIL-verified;
+// the prior lane's "eta" glyphs were a misread of the Initial-W "-2" denominator.)
 s.addText("REPEAT using Step", {
   x: fx(425), y: fx(59), w: fw(108), h: fw(15),
   fontFace: FONT, fontSize: 11, color: CHART_RED, bold: true,
   align: "left", valign: "middle", margin: 0,
 });
-
-// L2: "η = 1" in red
-(function () {
-  const m = eqInfo("eq_050_eta.png");
-  s.addImage({ path: EQ("eq_050_eta.png"), x: fx(270), y: fx(73), w: m.w_in, h: m.h_in });
-})();
 
 // L3: "Check classes of" caption (measured ink x542..626, y86..96)
 s.addText("Check classes of", {
@@ -201,8 +199,8 @@ s.addShape(pptx.ShapeType.rect, {
   fill: { color: PINK }, line: { color: PINK, width: 1 },
 });
 (function () {
-  const m = eqInfo("eq_050_finalW.png");   // underlined W = (5/-1) column vector
-  s.addImage({ path: EQ("eq_050_finalW.png"), x: fx(748), y: fx(95), w: m.w_in, h: m.h_in });
+  const m = eqInfo("eq_050_finalW.png");   // underlined W = (5/-1/-1) column vector
+  s.addImage({ path: EQ("eq_050_finalW.png"), x: fx(744), y: fx(69), w: m.w_in, h: m.h_in });
 })();
 
 // ================= 5. RED "Iteration 2" BOX =================
@@ -341,13 +339,6 @@ s.addShape(pptx.ShapeType.line, {
   x: fx(X2PX(0.36)), y: fx(Y2PY(3.58)), w: fw(X2PX(0.65) - X2PX(0.36)),
   h: fw(Y2PY(3.30) - Y2PY(3.58)),
   line: { color: CHART_RED, width: 3, beginArrowType: "triangle" },
-});
-
-// ================= 8. STRAY PLUS (x233..241 y414..419) =================
-s.addText("+", {
-  x: fx(231), y: fx(411), w: fw(14), h: fw(12),
-  fontFace: FONT, fontSize: 9, color: BLACK, bold: true,
-  align: "center", valign: "middle", margin: 0,
 });
 
 // ================= 9. CAPTION BOX + AUGMENTED-VECTORS TABLE =================

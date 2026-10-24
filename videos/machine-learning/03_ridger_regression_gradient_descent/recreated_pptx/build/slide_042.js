@@ -5,14 +5,25 @@
 // Content spec: analysis/slide_042_final.json (verbatim_text.equations —
 // ten equations: five d(x_i)=… and five distinct W=… result equations).
 //
-// ATTEMPT 11 — adjudicated fixes over attempt 10 (qa/slide042/adjudication_10.md):
-//   1. every box's line B is ONE horizontal mathtext PNG (the frame's lineB band is
-//      a single ~15px line spanning x384..726, i.e. flowing inline math, not the
-//      stacked 2x1 tiles attempt 10 used — that stacking is what read as "cluttered")
-//   2. all five W equations are therefore distinct and legible
-//   3. top-left grouping box: interior FEFFE8 (frame 254,255,232) + blue 0000FF border
-//   4. stack boxes x276..851 (frame-measured), not x276..898
-//   5. green ⇐ at the far right of rows 1 and 4 only (recreation_brief item 9)
+// ATTEMPT 12 — geometry correction over attempt 11 (PIL-measured against the frame):
+//   1. BAND_A/BAND_B re-derived from the frame's own ink bands. Attempt 11's bands
+//      were calibrated for TEXT boxes (LibreOffice centres a h=14 text box's ink
+//      ~6px ABOVE the box top) but applied the same +8 shift to the IMAGES, which
+//      place their ink at the image top. Two hard defects followed:
+//        - box1's W equation image sat at y258..272, crossing box1's bottom border
+//          (y263) and spilling into the y264..272 inter-box gap that the frame keeps
+//          INK-FREE (0 ink px there on the frame)
+//        - box4's W equation image sat at y420..434, ABOVE box4's d(x4) line
+//          (BAND_B[3]=420 < BAND_A[3]=434) — inverted order and overlapping "= 6"
+//   2. matrix row pitch 11px -> 7px: the frame's per-box 2-row d(x_i) matrix fits in a
+//      12-13px line, so its rows sit ~6.5px apart, not 11px
+//
+// Frame-measured line bands (frame px), ink spans:
+//   box1 218..263  lineA 231..242  lineB 250..257
+//   box2 272..329  lineA 294..306  lineB 313..320
+//   box3 338..395  lineA 360..372  lineB 379..386
+//   box4 404..461  lineA 426..437  lineB 444..452
+//   box5 470..528  lineA 492..503  lineB 511..519
 //
 // Equation PNGs: build/render_stackeq_042.py (extends the certified
 // build/render_stackeq.py with a 2-D matrix segment), 600dpi transparent PNG,
