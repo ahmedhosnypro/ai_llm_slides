@@ -401,20 +401,42 @@ for (let xv = xMin; xv <= xMax; xv += 0.5) {
 }
 
 // ============================================================
-// ANNOTATION BOX (red border, white fill, 2 lines)
-// MEASURED from the frame: box spans frame y 244..289 (borders at 244 and 289),
-// line 1 text y 249..261, line 2 text y 266..283, x 243..809. The box MUST stop
-// above the plot's x-tick labels (frame y 271..285) — the old h=px(65) ran the
-// white rect down to y 310 and painted over them.
+// ANNOTATION BOX (green top/bottom/left edge, red right edge, white fill)
+// MEASURED from the frame (modal colour of each edge):
+//   top edge    green  ~(68,136,63)   x 241..568, y 244..245
+//   bottom edge green  ~(68,152,64)   x 240..569, y 288..290
+//   left edge   green  ~(68,136,63)   x 243..244, y 243..290
+//   right edge  red    ~C00000        x 808..812, y 231..309
+// The old build drew ONE red rect 243..809 x 244..289 whose white fill painted
+// over the plot box's bottom border AND its x-axis tick labels.
+// The white fill is a no-line rect inset 1px inside the border so it cannot
+// touch the neighbouring plot box (x573..809, y66..267).
+// Same LibreOffice rule as the plot box: four separate lines, never one tall
+// bordered rect (a single rect >=100px tall loses its bottom border).
 // ============================================================
-const aBoxX = px(243);
-const aBoxY = px(244);
-const aBoxW = px(809 - 243);
-const aBoxH = px(289 - 244);
+const aBoxX = 243, aBoxY = 244, aBoxR = 809, aBoxB = 290;
 
 slide.addShape(pptx.ShapeType.rect, {
-  x: aBoxX, y: aBoxY, w: aBoxW, h: aBoxH,
-  fill: { color: "FFFFFF" }, line: { color: "FF0000", width: 1.5 },
+  x: px(aBoxX + 1), y: px(aBoxY + 1),
+  w: px(aBoxR - aBoxX - 2), h: px(aBoxB - aBoxY - 2),
+  fill: { color: "FFFFFF" }, line: { type: "none" },
+});
+const GREEN = "44883F"; // measured frame annotation-box green
+slide.addShape(pptx.ShapeType.line, { // top, green
+  x: px(aBoxX), y: px(aBoxY), w: px(568 - aBoxX), h: 0,
+  line: { color: GREEN, width: 1.5 },
+});
+slide.addShape(pptx.ShapeType.line, { // bottom, green
+  x: px(aBoxX), y: px(aBoxB), w: px(569 - aBoxX), h: 0,
+  line: { color: GREEN, width: 1.5 },
+});
+slide.addShape(pptx.ShapeType.line, { // left, green
+  x: px(aBoxX), y: px(aBoxY), w: 0, h: px(aBoxB - aBoxY),
+  line: { color: GREEN, width: 1.5 },
+});
+slide.addShape(pptx.ShapeType.line, { // right, red
+  x: px(aBoxR), y: px(aBoxY), w: 0, h: px(aBoxB - aBoxY),
+  line: { color: "FF0000", width: 1.5 },
 });
 
 // Line 1: "X is in between 4.8 and 5.1" (5.1 in red bold) — MEASURED y 249..261

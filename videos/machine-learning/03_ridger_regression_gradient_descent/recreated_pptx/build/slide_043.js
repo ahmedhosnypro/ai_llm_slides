@@ -11,7 +11,10 @@
 //     192,0,0) fill, white glyph ink) — not the analysis's "red border/black text".
 //   - The legend line is BLACK with only "Zero" green; C1/C2 in it are not
 //     coloured on the frame (measured red px = 1-2, blue = 2-3 per row).
-//   - The class row of BOTH tables is drawn black on this frame.
+//   - The class row of BOTH tables is drawn in COLOUR on this frame: C1 red
+//     (measured 77 red px at x1..x3), C2 blue (32 blue px at x4..x6).
+//   - The class-check matrix is ONE tall paren pair per Z1 column spanning
+//     BOTH stacked entries (parens frame y83..107), digits (0;0) (7;6) (3;2).
 //   - The middle-left box holds 6 parenthesised STACKED COLUMN VECTORS, not a
 //     plain 4-row table.
 //
@@ -93,8 +96,10 @@ const tblCols = [96, 118, 140, 162, 184, 206];
 ["x1", "x2", "x3", "x4", "x5", "x6"].forEach((t, i) => ctrLine(t, 11, tblCols[i], 64, "000000", { w: 40 }));
 ["(1)", "(2)", "(1)", "(5)", "(6)", "(6)"].forEach((t, i) => ctrLine(t, 11, tblCols[i], 80, "000000", { w: 44 }));
 ["(1)", "(1)", "(2)", "(4)", "(5)", "(6)"].forEach((t, i) => ctrLine(t, 11, tblCols[i], 96, "000000", { w: 44 }));
-// class row measured BLACK on this frame (red 1-2px, blue 2-3px = JPEG noise)
-["C1", "C1", "C1", "C2", "C2", "C2"].forEach((t, i) => ctrLine(t, 11, tblCols[i], 113, "000000", { w: 40 }));
+// class row: C1 RED, C2 BLUE (measured on the frame: 77 red px x1..x3,
+// 32 blue px x4..x6 — the previous all-black row was wrong).
+["C1", "C1", "C1", "C2", "C2", "C2"].forEach((t, i) =>
+  ctrLine(t, 11, tblCols[i], 113, i < 3 ? RED : BLUE, { w: 40 }));
 
 // ---- top-center ----
 line("Step η = 2", 17, 331, 63, RED, { bold: true, italic: true, w: 120 });
@@ -131,7 +136,7 @@ slide.addShape(pptx.ShapeType.rect, {
   x: px(70), y: px(140), w: px(246 - 70), h: px(255 - 140),
   fill: { type: "none" }, line: { color: GRAYBLUE, width: 1 },
 });
-line("Augmented Vectors (from Top)", 11, 88, 146, "3B3F8C", { bold: true, w: 170 });
+line("Augmented Vectors (from Top)", 11, 79, 146, "3B3F8C", { bold: true, w: 160 });
 // header row (text) + 6 stacked column vectors + class row (PIL image)
 ["x1", "x2", "x3", "x4", "x5", "x6"].forEach((t, i) => ctrLine(t, 11, tblCols[i], 166, "000000", { w: 30 }));
 slide.addImage({
