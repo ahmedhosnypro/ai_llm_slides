@@ -351,13 +351,18 @@ CALC.forEach((r, i) => {
     align: "left", valign: "middle", margin: 0, lineSpacing: 15,
   });
 
-  // BLUE augmented row on the text line, left of the bracket (measured x334..375,
-  // single line, no parentheses, blue 0000FF)
-  slide.addText(row.blue, {
-    x: px(334), y: px(TY), w: px(44), h: px(TH),
-    align: "left", valign: "middle", margin: 0,
-    fontFace: A, fontSize: 13, color: BLUE, charSpacing: 3, lineSpacing: 15,
-  });
+  // BLUE augmented triplet re-laid on the high digit line (measured digit centroids
+  // cx 334.7/352.6/370.7, cy = band_top+13.2), hugged by straight paren bars —
+  // 1px rects A6A6A6: ( at x329 y b+7 h13, ) at x375 y b+8 h12 (founder directive:
+  // straight delimiters only, 45's own certified idiom)
+  const b = r.band[0];
+  row.blue.split(" ").forEach((d, k) =>
+    CELL([334.7, 352.6, 370.7][k], b + 5.7, b + 19.7, 10, d, 13, BLUE));
+  [[329.0, 7, 13], [375.0, 8, 12]].forEach(([bx, yo, hh]) =>
+    slide.addShape(pptx.ShapeType.rect, {
+      x: px(bx), y: px(b + yo), w: px(1), h: px(hh),
+      fill: { color: GRAY }, line: { type: "none" },
+    }));
 
   // gray bracket with the GREEN stacked weight column 14/-4/0
   bracketVector(r.vec, [r.vec[0] + 7.5, r.vec[0] + 23, r.vec[0] + 38.5], W_VEC, r.dx[0], r.dx[1], GRAY, GREEN);
