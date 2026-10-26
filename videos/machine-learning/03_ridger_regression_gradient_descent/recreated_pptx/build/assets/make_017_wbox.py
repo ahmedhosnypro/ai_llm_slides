@@ -48,21 +48,21 @@ BANDS = [
     dict(y0=128,
          w=dict(cx=530.0, base=172.4, under=(521.0, 538.5, 178.0)),
          eq=dict(x0=543.0, x1=555.5, y1=168.6, y2=173.6),
-         parens=dict(ltip=557.5, lbody=560.2, rtip=606.5, rbody=603.8, yt=137.0, yb=211.5),
+         parens=dict(ltip=560.2, lbody=557.5, rtip=603.8, rbody=606.5, yt=137.0, yb=211.5),
          digits=[("0.1", 582.5, 156.0), ("1.95", 582.5, 180.5), ("0.03", 582.5, 206.0)],
          norm=dict(bar1=524.0, w=530.0, bar2=551.0, eq=567.0, val=582.0,
                    base=239.0, text="3.8", wunder=(530.0, 546.0))),
     dict(y0=266,
          w=dict(cx=535.5, base=310.5, under=(528.5, 543.5, 315.5)),
          eq=dict(x0=549.0, x1=560.5, y1=306.5, y2=311.7),
-         parens=dict(ltip=561.0, lbody=563.7, rtip=611.0, rbody=608.3, yt=274.0, yb=350.0),
+         parens=dict(ltip=563.7, lbody=561.0, rtip=608.3, rbody=611.0, yt=274.0, yb=350.0),
          digits=[("1.2", 588.5, 293.0), ("0.72", 588.5, 318.5), ("0.77", 588.5, 344.0)],
          norm=dict(bar1=521.5, w=531.0, bar2=551.0, eq=568.0, val=583.0,
                    base=376.3, text="2.45", wunder=(531.0, 547.0))),
     dict(y0=404,
          w=dict(cx=530.5, base=449.0, under=(522.0, 539.0, 455.0)),
          eq=dict(x0=544.0, x1=555.5, y1=444.5, y2=449.5),
-         parens=dict(ltip=557.5, lbody=560.2, rtip=606.5, rbody=603.8, yt=412.0, yb=487.0),
+         parens=dict(ltip=560.2, lbody=557.5, rtip=603.8, rbody=606.5, yt=412.0, yb=487.0),
          digits=[("1.77", 583.0, 431.0), ("0.32", 583.0, 456.0), ("0.99", 583.0, 482.0)],
          norm=dict(bar1=521.5, w=530.0, bar2=551.0, eq=567.0, val=582.0,
                    base=513.3, text="4.2", wunder=(530.0, 546.0))),
@@ -140,11 +140,11 @@ for i, b in enumerate(BANDS, start=1):
     ax.text(x + 4.5, N["base"], "$%s$" % N["text"], fontsize=NORM_FS, color=BLUE,
             ha="left", va="baseline", zorder=3)
 
-    name = "wbox17_band%d.png" % i
+    name = "wbox017_band%d.png" % i
     fig.savefig(os.path.join(HERE, name), dpi=600, transparent=True)
     plt.close(fig)
     sidecar.append(dict(image=name, origin=(ORIGIN_X, y0), size_px=(W_PX, H_PX)))
 
-with open(os.path.join(HERE, "wbox17_sidecar.json"), "w") as f:
+with open(os.path.join(HERE, "wbox017_sidecar.json"), "w") as f:
     json.dump(sidecar, f, indent=2)
 print(json.dumps(sidecar, indent=2))

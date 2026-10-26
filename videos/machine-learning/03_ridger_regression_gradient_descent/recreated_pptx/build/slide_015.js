@@ -110,7 +110,9 @@ eqAt("redbox_eq");
 // 490px at 18pt).  Only the trailing J(W) is blue (x650..702) and its W is the
 // underlined one; "Best W" is NOT underlined in the original.
 textbox(208, 292, 800, 21, [
-  { text: "Get Best W that minimizes the Objective Function ",
+  { text: "Get Best ", options: { color: BLACK, fontSize: 18 } },
+  { text: "W", options: { color: RED, fontSize: 18 } },
+  { text: " that minimizes the Objective Function ",
     options: { color: BLACK, fontSize: 18 } },
   { text: "J(", options: { color: BLUE, fontSize: 18 } },
   { text: "W", options: { color: BLUE, fontSize: 18, underline: {} } },

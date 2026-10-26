@@ -17,7 +17,7 @@ FONT = "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"
 DPI = 600
 px = lambda pt: int(round(pt * DPI / 72.0))
 
-OVER_PT = 2.2
+OVER_PT = float(__import__("os").environ.get("W051_OVER_PT", "1.5"))
 STROKE_PT = 1.5
 D_PT = 1.0
 PITCH_PT = 16.0

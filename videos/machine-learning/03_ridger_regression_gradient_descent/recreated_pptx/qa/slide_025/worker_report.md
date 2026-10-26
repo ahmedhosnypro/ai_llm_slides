@@ -425,3 +425,70 @@ time of this note (dispatch owned by worker-s4-3730479).
     orig extents (634..873 / 646..873); overshoot left (sub-2px, minor).
 - k11 regenerated all four plot PNGs; slide_025.js rebuilt; render_12; chrome PASS.
 - crop_12 pairs cut (tr/tl/bl/br/title); tr attempt 12 dispatched.
+
+## S4b carrier (kimi-s4b-fresh-1026b, pool 299640) — 2026-10-26 ~04:45–05:30Z: BR anomaly resolved, judge chain staged
+
+### BR "zero-ink" anomaly — RESOLVED (measurement bug, not a build defect)
+
+The banked `pil_verify_a13fix_r14.py` / `pil_adjud_a13_s4b.py` applied the RENDER
+scale (S=2001/960≈2.084) to the ORIG (960×540) as well — every ORIG zone slice was
+EMPTY (`a[717:1121]` on a 540-row array), so all ORIG rows ("ORIG: total dark 0",
+"ORIG top-band 0") were VOID. Same bug class as slide 019's `pil_probe_26.py`
+(corrected there in `pil_clusters_26b.py`).
+
+Correct-scale re-measurement (`pil_br_path_r14.py`, log
+`scratch/tmp/pil_br_path_r14.log`), BR x615..886 y344..538:
+
+| image | very-dark px (sum<220) | % of region | x-quarter profile |
+|---|---|---|---|
+| ORIG | 1259 | 2.395% | [224, 536, 393, 106] |
+| REND14 | 5830 | 2.554% | [646, 2511, 2047, 626] |
+
+Per-area density matches within ~7% (render has 4.34× px per frame area); both ASCII
+maps show a coherent curved descent trajectory (peak start upper-middle → S-curve →
+minima cluster + arrowhead). k13's `plot_br()` (real GD path lw 2.0 + FancyArrowPatch,
+MATLAB-peaks surface, axes-free, view-searched elev=26/azim=-62) IS present in
+render_14. **NO rebuild needed; att13 BLOCKER (missing descent path) is fixed in the
+current bytes.**
+
+Asset provenance: `slide_025_recreated.pptx` (03:41) embeds exactly the k13 bytes —
+media sizes match `build/assets/plot_025_{tl,tr,bl,br}.png` (02:02).
+
+att13 MAJOR (BL tick clipping) verified fixed: bottommost tick ink ~y520.9 vs the
+redrect border y523.8 (only 2–4 dark px at the border row = the border itself).
+
+### Certificate inventory → everything fresh
+
+- crop_12 tl/tr/bl/br: ALL FINAL VERDICT: FAIL — nothing carries.
+- crop_7/8/9 title+lbl PASSes CANNOT carry: REND14 vs REND9 label boxes 74–77%
+  changed, title region 0.8% >tol (section-4 identity probes). Only TL is
+  byte-stable (REND12↔REND14 maxdiff=5), and TL has no PASS cert (crop_12_tl FAIL).
+- So task #87's fresh set = A14 full + **7** crops (title, lbl_upper, lbl_lower,
+  tl, tr, bl, br). Task #87's list omitted tl; it is included because the deck law
+  needs a per-dense-region cert and TL has none (six crop FAILs, latest crop_12_tl).
+
+### TL crop_12_tl FAIL items vs render_14 (pre-adjudication)
+
+- "Floor contour rings missing" — **REFUTED**: floor ring ink ORIG cyan 1088 /
+  yellow 799 / green 586 vs REND14 cyan 7997 / yellow 2389 / green 7147 (per-area
+  ≥ orig; `pil_adjud_tl_r14.py`, log `scratch/tmp/pil_adjud_tl_r14.log`). The rings
+  exist since k8 ("heavier floor contours"); crop_12_tl's reading was wrong.
+- "2 vs −2 tick" + "missing −2,−2 pair" — unadjudicated at glyph level (probe
+  granularity insufficient); the fresh tl judge settles it.
+
+### STAGED AND READY TO DISPATCH (resume here)
+
+- `cut_crops_14.py` RUN: 7 crop_14_* pairs, MATCHED=True all (log
+  `scratch/tmp/cut_crops_14.log`).
+- `dispatch_A14_1200.sh [wait_max]` — Template A on render_14 →
+  `judge_attempt_14.txt`; payload `judge_prompt_4.txt` (md5 9387f5fbb94ef05a31db19f1e018dde1,
+  frozen Template A NNN→025); fail-loud payload guard; logs `legs_status_14_s4b.md`.
+- `dispatch_B14_1200.sh <slug> <desc> [wait_max]` — crop_14_<slug> pair →
+  `crop_14_<slug>_judge.txt`; per-slug payloads `crop_prompt_4_<slug>.txt`
+  (byte-verified in `verify_4.txt`); guards for payload + crop existence.
+- Gate law: pgrep `-c -f analyze_image.py` < 8 before each leg (script self-probes),
+  ONE leg per Bash call, background+WaitFor, `--timeout 1200` inside `timeout 1700`,
+  `TMPDIR=scratch/tmp`. att14 cert needs A14 PASS + 7 crop PASSes (or adjudicated
+  findings), then `15_progress.py set 25 ...` + release + task #87 done.
+- att14 numbering: DB visual_attempts=4 is stale (last recorded wave); set
+  visual_attempts=14 + visual_transcript=judge_attempt_14.txt at cert time.

@@ -492,3 +492,68 @@ Final A24-fix build COMPLETE + PIL-verified; judges NOT dispatched (wall closed 
   render_23-vs-render_26 diff = 0 on those regions (not yet diffed — do it first);
   on all clean → 15_progress.py DB write (verify CLI first) + judge_attempt_26 transcripts.
 - 025: UNTOUCHED this carrier (k13 render_14 + chrome PASS stand; BR anomaly unresolved).
+
+## S4b fresh carrier (kimi-s4b-fresh-1026b, pool 299640) — 2026-10-26 03:50–05:50Z: pair-span fix certified, judge chain run
+
+Continues "attempt 26 (wall park)" above. Task #86: arc-pair-span fix → verify →
+A26-retry full judge + 3 fresh crop judges → DB write.
+
+### Probe re-index + pair-span fix (carry-over, verified before this window)
+
+`pil_probe_26.py`'s hardcoded ORIG `want` table was VOID (measured with the render
+scale on the 960×540 orig). Corrected per-image indexing in `pil_clusters_26b.py`
+(orig native 1.0×; render SX=2.08438, SY=2.08333): 9 outlier digits verify d≤3 at
+tol 4; s_sub ✓; yellow patches MATCH (pred-sensitive: only at b<190 do orig/render
+both give x76..116 — the old "mismatch" was JPEG chroma smear); **arcs were WRONG**:
+orig arcs span ONLY the digit PAIR (y215..264 / y323..371 / y425..475; the
+highlighted 22 sits OUTSIDE), while render_26 arcs ran full-height h72-75 (22
+INSIDE). Triple-confirmed (clusters + loose y-profile + 1px ASCII) and consistent
+with the A24 judge + crop_23 judge texts.
+
+**Fix applied** in `build/slide_019.js`: `outlierArcs(83,110,216,72) /
+(77.5,106,321,74) / (77.5,105.5,425,74)` → `(83,110,215,50) / (77.5,106,323,49) /
+(77.5,105.5,425,51)`. Rebuilt → `render_27.png` (2001×1125), chrome check PASS.
+Re-probe on render_27: all 6 arcs match orig d≤3. Surgical diff render_26→27 = 3342
+px (tol 8), frame bbox x76..117 y214..499 (arc zones only).
+
+### Carries and fresh-leg plan (diff_23_26_carry.md, extended to render_27)
+
+- `noreg_rows`: region byte-identical render_23↔27 → **crop_23 PASS CARRIES**
+  (proof in diff_23_26_carry.md).
+- `table_right`: region byte-identical but **NO cert exists** → judged fresh
+  (crop_27 pair from cut_crops_27.py).
+- `table_left` (9008 px changed) + `header_strip` (1548 px, arc tips y180..193):
+  judged fresh per task #86.
+
+### The empty-payload incident (attempt 27) + adjudication
+
+`dispatch_A27_1200.sh` was staged with a **2027 filename typo** → `-p ""` — the
+judge ran WITHOUT the frozen Template A and improvised its own report
+(`judge_attempt_27.txt`, banked, no `FINAL VERDICT:` line — not certifiable, does
+not count as an attempt). Full adjudication of its findings:
+`adjud_a27_improvised_s4b.md`. Key results: the `"22"` tag color claim
+(orig-black-vs-build-green) **PIL-REFUTED** (`pil_adjud_a27findings.py` — orig ink
+is green ≈(123,179,26) core in all three patches; build 008000 correct; patches
+align sub-pixel); the navy-rule claim was already graded MINOR inside
+crop_23_header_strip's PASS; badge = house chrome (overridden). **No build change.**
+Both dispatch scripts fixed to `20261024` + fail-loud payload guard.
+
+### Judge legs on render_27
+
+- **A28 (04:46:42Z, correct payload md5 9387f5fb len 4139): NO VERDICT** — gateway
+  hard wall (`HangError 1230s, stuck thinking stream`) aborted attempt 1 at
+  ~05:07Z; the in-gate retry was killed by the outer timeout-1700 at 05:15:02Z;
+  no transcript. Honest no-verdict (log + manual record in legs_status_27_s4b.md).
+- **A29 (re-dispatch ~05:19Z, same payload): PENDING** (`judge_attempt_29.txt`).
+- **crop_27 header_strip: FINAL VERDICT: PASS** (05:21Z, `crop_27_header_strip_judge.txt`).
+- **crop_27 table_left: FINAL VERDICT: PASS** (05:30Z, `crop_27_table_left_judge.txt`).
+- **crop_27 table_right: PENDING** (dispatched 05:24:56Z).
+- noreg_rows: carried from crop_23 (byte-identical region proof).
+
+### DB write (only after all legs clean)
+
+`VIDEO=machine-learning/03_ridger_regression_gradient_descent python3
+scripts/15_progress.py set 19 gen_status passed|visual_check PASS|visual_attempts
+29|visual_transcript recreated_pptx/qa/slide019/judge_attempt_29.txt --worker
+kimi-s4b-fresh-1026b`, then `get 19` verify. CLI + whitelist verified (all four
+fields whitelisted).

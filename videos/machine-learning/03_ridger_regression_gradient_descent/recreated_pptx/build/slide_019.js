@@ -48,6 +48,7 @@ const GREENB = "008000";  // table right border + bottom-right rule
 const YELLOW = "FFFF80";  // row-highlight bands (modal #F8F880)
 const RULE   = "8B3A3A";  // W/test divider + inter-column rule (washed maroon)
 const MAROON = "8B3A3A";  // test-grid interior rules (orig cell borders read washed maroon)
+const REDB   = "8A2024";  // RIDGE-3 column rect edges (measured 138,32,36 / 135,34,38)
 
 // ── HELPERS ────────────────────────────────────────────────────────────────────
 function textBox(x, y, w, h, runs, opts = {}) {
@@ -195,13 +196,14 @@ band(219, 487, 670, 28);  // band C content
 vline(65, 168, 526, NAVY);
 vline(894, 168, 526, GREENB);
 hline(170, 64, 894, NAVY);
-hline(170, 383.5, 640, RULE);   // orig red segment over the RIDGE-3 column (pil_adjud_a19 d)
-hline(524, 64, 641, NAVY);
-hline(524, 641, 894, GREENB);
+hline(170, 383.5, 640, REDB);   // top rule is colour-segmented (a29 rgb): red over RIDGE 3
+hline(170, 644, 894, GREENB);   // green over RIDGE 10 (a29 rgb: 69,140,70 core)
+hline(524, 64, 380, NAVY);      // bottom y524 segments (a29 rgb): navy over outlier+NO REG
+hline(524, 383, 640, REDB);     // red over RIDGE 3
+hline(524, 644, 894, GREENB);   // green over RIDGE 10
 // Interior column-edge rules (continuous through the bands — measured 355/365 rows).
 vline(117.5, 168, 526, NAVY);
 vline(124, 168, 526, NAVY);
-vline(130, 168, 526, RULE);
 vline(378, 168, 526, NAVY);
 // Divider + inter-column rules: drawn per row group, interrupted by the bands.
 for (const [y0, y1] of [[203, 291], [310, 379], [416, 513]]) {
@@ -209,11 +211,11 @@ for (const [y0, y1] of [[203, 291], [310, 379], [416, 513]]) {
   vline(466, y0, y1, RULE);     // RIDGE 3 divider column-internal
   vline(724, y0, y1, RULE);     // RIDGE 10 divider column-internal
 }
-for (const [y0, y1] of [[168, 271], [303, 378], [410, 486]]) {
-  vline(383.5, y0, y1, RULE);   // between NO REG and RIDGE 3
-  vline(390, y0, y1, RULE);     // second inter-column rule
-  vline(643.5, y0, y1, GREENB); // between RIDGE 3 and RIDGE 10
-}
+// Anomalous-column rect edges are CONTINUOUS (a29 adjudication): λ3 rect edges
+// dark-red at x383-384 / x637-639, λ10 left edge green at x643 — not per-band.
+vline(383.5, 169, 525, REDB);
+vline(638, 169, 525, REDB);
+vline(643.5, 169, 525, GREENB);
 
 // ── OUTLIER COLUMN ─────────────────────────────────────────────────────────────
 // x=66..125 (rules at 64-66 navy and 117-118 navy); header on TWO lines
@@ -256,9 +258,10 @@ outlierRow(203, 84, "11", BLUE, 268, [214, 239, 264]);
 outlierRow(325, 79, "30", RED, 375, [321, 346, 371]);
 outlierRow(428, 79, "60", RED, 479, [424, 450, 475]);
 
-// Thin blue delimiters around each triplet (pil_probe_a25: ~2px arcs, not fat
-// parens; ink left [x, x+3], right [x+3.5, x+6.5] at bbox w6 — scratch/arc_test;
-// ink tops 216/321/425, h 72-74; P1 ink #2E3B96).
+// Thin blue delimiters around each outlier PAIR (first value + the "3" row;
+// the highlighted "22" sits below, OUTSIDE the parens — orig ink y215..264 /
+// 323..371 / 425..475). ~2px arcs, ink left [x, x+3], right [x+3.5, x+6.5]
+// at bbox w6 — scratch/arc_test; P1 ink #2E3B96.
 function outlierArcs(xL, xR, y0, h) {
   [[xL, [90, 270]], [xR, [270, 450]]].forEach(([x, a]) => {
     slide.addShape(pptx.ShapeType.arc, {
@@ -269,9 +272,9 @@ function outlierArcs(xL, xR, y0, h) {
     });
   });
 }
-outlierArcs(83, 110, 216, 72);
-outlierArcs(77.5, 106, 321, 74);
-outlierArcs(77.5, 105.5, 425, 74);
+outlierArcs(83, 110, 215, 50);
+outlierArcs(77.5, 106, 323, 49);
+outlierArcs(77.5, 105.5, 425, 51);
 
 // ── MAIN CONTENT COLUMNS ───────────────────────────────────────────────────────
 // Column definitions: [name, x_start, x_end, header text split into blue + red runs]
@@ -341,7 +344,7 @@ const columnData = {
     },
     {
       w: "W=(1.77, 0.32), ||W||²=4.2",
-      w3: ['1.77', '0.32', '0.98'],
+      w3: ['1.77', '0.32', '0.99'],
       norm: "||W||²=4.2",
       tests: [
         { x1: 30, x2: 15, y: 26.2 },
@@ -407,10 +410,11 @@ for (const col of columns) {
     fill: { color: tint }, line: { type: "none" },
   });
 
-  // Column header (blue bold, red λ tail) at y=181..198 (measured band)
-  textBox(x0, 181, w, 30, [
-    { text: col.headBlue, options: { bold: true, color: BLUE, fontSize: 12 } },
-    { text: col.headRed, options: { bold: true, color: RED, fontSize: 12 } },
+  // Column header (blue bold, red λ tail): ink rows y181..196, caps ~12px ->
+  // fs16, indented +16/+17/+18px from the column left (a29 head census)
+  textBox(x0 + 16, 177, w, 30, [
+    { text: col.headBlue, options: { bold: true, color: BLUE, fontSize: 16 } },
+    { text: col.headRed, options: { bold: true, color: RED, fontSize: 16 } },
   ], {});
 
   for (let gi = 0; gi < 3; gi++) {

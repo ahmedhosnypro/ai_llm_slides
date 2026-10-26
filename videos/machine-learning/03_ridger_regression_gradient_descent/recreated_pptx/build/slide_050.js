@@ -17,13 +17,16 @@
 //                     class row C1 C1 C1 C2 C2 C2 y112..125 (red / blue)
 //   caption box     : x66..240 y134..248, WHITE fill, 1pt grey border
 //                     (161,171,183), "Augmented Vectors (from Top)" navy y147..160
-//   vectors table   : same 6 columns; THREE rows (augmented, leading 1s):
-//                     [1,1,1,1,1,1] y183..192, [1,2,1,5,6,6] y198..207,
-//                     [1,1,2,4,5,6] y214..222, class row y231..244
+//   vectors table   : same 6 columns; THREE rows (augmented, leading 1s) with
+//                     TALL per-column parens (042-aug pattern, ink y179..223):
+//                     [1,1,1,1,1,1] c187, [1,2,1,5,6,6] c203,
+//                     [1,1,2,4,5,6] c218, class row y231..244
 //   math zone       : x246..717 inside the navy box; 3 lines
-//                       L1 y59..83 : "Initial W = (4/-2)" stacked (black) + "REPEAT using Step"
-//                                    (red ink x415..537 — the zone right of it is BLANK cream:
-//                                    the original shows no "eta = 1" text)
+//                       L1 y59..83 : "Initial W" (W underlined) = 3-row column
+//                                    vector (4/-2/-2, parens x330..353 y62..102)
+//                                    + "REPEAT" (dark, x366..421 y61..70,
+//                                    underlined y71..72) + "using Step η = 1" (red
+//                                    ink x425..530)
 //                       L3 y86..120: "Check classes of" (x542..626) + Z1 Z2 Z3 labels/vectors
 //                                    (x640..702; labels y74..85, vectors y86..120)
 //                       L4 y110..124: key caption "C1 positive  C2 negative  Zero is unaccepted"
@@ -68,11 +71,11 @@ const RED = "FF0000";
 const BLUE = "0000FF";
 const RED_DARK = "C90004";    // measured red-box fill (201,0,4)
 const CHART_RED = "92211B";   // measured chart border/line red (~146,22,33 / 200,48,60)
-const GRID = "CFD1CE";        // measured gridline grey
+const GRID = "DEE0DD";        // measured gridline grey
 const CREAM = "FFFFE8";       // measured table fill
 const PINK = "F9E8FA";        // measured pink box fill
 const MARK_BLUE = "1C3D5E";   // measured blue marker (28,61,94)
-const MARK_MAG = "FF94FF";    // measured magenta marker (255,148,255)
+const MARK_MAG = "E03FEB";    // measured magenta marker (224,63,235)
 const MARK_RED = "D2000F";    // measured red triangle / blob (210,0,15)
 const GREEN = "008000";       // measured "Zero" green in the L4 key caption
 
@@ -95,58 +98,123 @@ s.addShape(pptx.ShapeType.rect, {
 // own border columns x68..70 and x718..720 (measured). Nothing is drawn here.
 
 // ================= 2. TOP-LEFT DATA TABLE =================
-// header row x1..x6
-[["x1", 88], ["x2", 110], ["x3", 132], ["x4", 155], ["x5", 178], ["x6", 203]].forEach(function (c) {
-  s.addText([
-    { text: "x", options: { fontSize: 12, color: BLACK, italic: true } },
-    { text: c[0][1], options: { fontSize: 8, color: BLACK, subscript: true } },
-  ], {
-    x: fx(c[1]), y: fx(62), w: fw(22), h: fw(12),
-    fontFace: FONT, align: "center", valign: "middle", margin: 0,
-  });
-});
-
-const TBL_COLS = [88, 110, 132, 155, 178, 203]; // left edge of each bracketed cell
-const TBL_ROWS = [
-  { y: 80, vals: ["1", "2", "1", "5", "6", "6"] },
-  { y: 96, vals: ["1", "1", "2", "4", "5", "6"] },
-];
-TBL_ROWS.forEach(function (r) {
-  r.vals.forEach(function (v, i) {
-    s.addText("(" + v + ")", {
-      x: fx(TBL_COLS[i]), y: fx(r.y), w: fw(22), h: fw(10),
-      fontFace: FONT, fontSize: 10, color: BLACK,
+// 049-certified top-table composition ported verbatim (XOR slide_049.jpg vs
+// slide_050.jpg over x80..240 y60..130 = 0 px: identical original geometry;
+// the per-cell "(v)" text rows were a judged MAJOR — the original shows tall
+// Bezier parens spanning both digit rows, qa/slide050/crop_18_tableeq_judge.txt)
+// header y64..73; bracketed 2-stacks y77..107 (digit rows y78..88 / y97..107);
+// class tag row y113..124 (outside the brackets). Column centres 96.2..208.2.
+{
+  const centres = [96.2, 118.6, 141.0, 163.4, 185.8, 208.2];
+  const cellW = 22.4;
+  const trow = function (texts, top, h, o) {
+    for (let i = 0; i < 6; i++) {
+      s.addText(texts[i], Object.assign({
+        x: fx(centres[i] - cellW / 2), y: fx(top), w: fw(cellW), h: fx(h),
+        fontFace: FONT, fontSize: 11, color: BLACK, align: "center",
+        valign: "middle", margin: 0,
+      }, o || {}));
+    }
+  };
+  trow(["x\u2081", "x\u2082", "x\u2083", "x\u2084", "x\u2085", "x\u2086"],
+    64, 10, { bold: true });
+  trow(["1", "2", "1", "5", "6", "6"], 78, 10.5);
+  trow(["1", "1", "2", "4", "5", "6"], 97, 10);
+  // class tags C1 C1 C1 C2 C2 C2 at y113..124 (below the brackets); C2 ink
+  // 211776 per 049's certified measurement (same pixels, XOR = 0)
+  const cls = ["C\u2081", "C\u2081", "C\u2081", "C\u2082", "C\u2082", "C\u2082"];
+  for (let i = 0; i < 6; i++) {
+    s.addText(cls[i], {
+      x: fx(centres[i] - cellW / 2), y: fx(113), w: fw(cellW), h: fx(12),
+      fontFace: FONT, fontSize: 11, bold: true, italic: true,
+      color: i < 3 ? RED : "211776",
       align: "center", valign: "middle", margin: 0,
     });
-  });
-});
-
-// class row C1 C1 C1 C2 C2 C2 (red / blue)
-const CLS = [["C1", 88, RED], ["C1", 110, RED], ["C1", 132, RED],
-             ["C2", 155, BLUE], ["C2", 178, BLUE], ["C2", 203, BLUE]];
-CLS.forEach(function (c) {
-  s.addText([
-    { text: "C", options: { fontSize: 10, color: c[2], bold: true } },
-    { text: c[0][1], options: { fontSize: 8, color: c[2], bold: true, subscript: true } },
-  ], {
-    x: fx(c[1]), y: fx(112), w: fw(22), h: fw(13),
-    fontFace: FONT, align: "center", valign: "middle", margin: 0,
-  });
-});
+  }
+  // tall parentheses around the 2-stack rows (ink y77..107): measured Bezier
+  // PNGs (fix 15: font parens -> 909090 class, same as Z; bows = sub-pixel
+  // centroids, qa/slide049/parenA_15c.out)
+  const ptL = eqInfo("parens049/paren_top2_lp");
+  const ptR = eqInfo("parens049/paren_top2_rp");
+  const PPPT = 72 / 600;
+  const topLP = [89.78, 111.18, 133.45, 155.89, 178.84, 201.21];
+  const topRP = [102.42, 124.72, 147.12, 170.07, 192.45, 214.74];
+  for (let i = 0; i < 6; i++) {
+    s.addImage({
+      path: EQ("parens049/paren_top2_lp.png"),
+      x: fx(topLP[i] - (ptL.ink_left_px * PPPT + ptL.S_pt / 2)),
+      y: fx(77 - ptL.ink_top_px * PPPT),
+      w: ptL.px_w * PPPT / 72, h: ptL.px_h * PPPT / 72,
+    });
+    s.addImage({
+      path: EQ("parens049/paren_top2_rp.png"),
+      x: fx(topRP[i] + 0.5 - ((ptR.ink_right_px + 1) * PPPT - ptR.S_pt / 2)),
+      y: fx(77 - ptR.ink_top_px * PPPT),
+      w: ptR.px_w * PPPT / 72, h: ptR.px_h * PPPT / 72,
+    });
+  }
+}
 
 // ================= 3. MATH ZONE (right half of the navy box) =================
-// L1: "Initial W = (4/-2)" as a professional 2D column vector (mathtext PNG)
+// L1: "Initial W =" (W NOT underlined — the x366..421 band y71..72 belongs to
+//     the Step text below-right; the old read_initialw misattribution drew a
+//     phantom W-underline) + 3-row column vector (4/-2/-2) drawn
+//     042-cert pattern: text + bowed paren PNGs (tips 330.5/353.5, ink
+//     y62..102) + re-centred bare digits; the mathtext asset could not
+//     carry the underline or the third row.
+s.addText([
+  { text: "Initial " },
+  { text: "W", options: { bold: true, italic: true } },
+  { text: " =" },
+], {
+  x: fx(262), y: fx(71), w: fw(70), h: fw(18),
+  fontFace: FONT, fontSize: 14, color: BLACK,
+  align: "left", valign: "middle", margin: 0,
+});
 (function () {
-  const m = eqInfo("eq_050_initialW.png");
-  s.addImage({ path: EQ("eq_050_initialW.png"), x: fx(266), y: fx(63), w: m.w_in, h: m.h_in });
+  const P = path.join(__dirname, "assets", "parens042");
+  const fs2 = require("fs");
+  const sc = 40 / 39.96;
+  [[`${P}/paren_tall_lp.png`, `${P}/paren_tall_lp.json`, 330.5, "lp"],
+   [`${P}/paren_tall_rp.png`, `${P}/paren_tall_rp.json`, 353.5, "rp"]]
+    .forEach(function ([img, meta, tipX, side]) {
+      const j = JSON.parse(fs2.readFileSync(meta, "utf8"));
+      const ink = side === "lp" ? j.ink_right_px : j.ink_left_px;
+      s.addImage({
+        path: img,
+        x: fx(tipX - ink * j.pt_per_px * sc),
+        y: fx(62 - j.ink_top_px * j.pt_per_px * sc),
+        w: (j.px_w * j.pt_per_px * sc) / 72,
+        h: (j.px_h * j.pt_per_px * sc) / 72,
+      });
+    });
 })();
+// bare digits re-centred on the frame's ink (minus bars x336..341 -> cell
+// centre 342.5; rows y62..70 / y78..86 / y93..102)
+s.addText("4", { x: fx(335.5), y: fx(59), w: fw(14), h: fw(14),
+  fontFace: FONT, fontSize: 11, color: BLACK, align: "center", valign: "middle", margin: 0 });
+s.addText("-2", { x: fx(333.5), y: fx(75), w: fw(18), h: fw(14),
+  fontFace: FONT, fontSize: 11, color: BLACK, align: "center", valign: "middle", margin: 0 });
+s.addText("-2", { x: fx(333.5), y: fx(90.5), w: fw(18), h: fw(14),
+  fontFace: FONT, fontSize: 11, color: BLACK, align: "center", valign: "middle", margin: 0 });
 
-// L1 red text: "REPEAT using Step"  (measured red ink x415..537, y59..77 — no "eta = 1"
-// follows it in the original: the zone right of it is blank cream, PIL-verified;
-// the prior lane's "eta" glyphs were a misread of the Initial-W "-2" denominator.)
-s.addText("REPEAT using Step", {
-  x: fx(425), y: fx(59), w: fw(108), h: fw(15),
-  fontFace: FONT, fontSize: 11, color: CHART_RED, bold: true,
+// L1 instruction line (att18, pixel-adjudicated: att17 judges + glyph
+// forensics — six uniform caps-height glyphs x366..421 y61..70, no
+// descenders = "REPEAT" black italic, underlined bar y71..72 x366..419;
+// red ink x425..530 y60..74 with i-dot at x442 and descenders g/p/η at
+// x452/481/508 = "using Step η = 1", core (152,38,41) ≈ CHART_RED.
+// The earlier "dark Step η = 1 + red REPEAT using Step" reading was the
+// misattributed-underline chain's other half — both att17 judges and the
+// bitmap agree on REPEAT-first.)
+s.addText("REPEAT", {
+  x: fx(365), y: fx(56), w: fw(64), h: fw(18),
+  fontFace: FONT, fontSize: 14, color: BLACK, italic: true, underline: true,
+  align: "left", valign: "middle", margin: 0,
+});
+
+s.addText("using Step \u03B7 = 1", {
+  x: fx(424.5), y: fx(57), w: fw(112), h: fw(17),
+  fontFace: FONT, fontSize: 14, color: CHART_RED, bold: true, italic: true,
   align: "left", valign: "middle", margin: 0,
 });
 
@@ -271,9 +339,8 @@ s.addShape(pptx.ShapeType.rect, {
 });
 
 // 7f. decision line y = -1.00417x + 4.90556 from (-0.51,5.42) to (6.19,-1.31).
-//     Both measured ends taper to a point, so the line is drawn as a filled
-//     triangle-free tapered shape: a thick line with a triangular arrowhead at
-//     the lower-right end (the frame's taper reads as a point there).
+//     The original's line ends taper to a point with NO arrowhead (measured:
+//     end window carries a single taper, no head) — plain thick line.
 (function () {
   const x0d = -0.51, y0d = -1.00417 * x0d + 4.90556;
   const x1d = 6.19, y1d = -1.00417 * x1d + 4.90556;
@@ -284,7 +351,7 @@ s.addShape(pptx.ShapeType.rect, {
   const lx = ax, ly = ay, lw = bx - ax, lh = by - ay;
   s.addShape(pptx.ShapeType.line, {
     x: fx(lx), y: fx(ly), w: fw(lw), h: fw(lh),
-    line: { color: CHART_RED, width: 3.5, endArrowType: "triangle" },
+    line: { color: CHART_RED, width: 3.5 },
   });
 })();
 
@@ -336,23 +403,23 @@ s.addShape(pptx.ShapeType.rect, {
   });
 })();
 
-// 7k. "+ve" red annotation at data (0.56,3.84) with its two small red arrows.
-//     Arrow 1 runs from data (0.21,4.59) down-right to (0.80,4.03);
-//     arrow 2 is a short V (head at (0.65,3.58), tail at (0.36,3.30)).
+// 7k. "+ve" red annotation at data (0.56,3.84) with ONE small red arrow.
+//     Att19 pixel re-measure (qa/slide050/adjud_chart_20261026.md): the orig
+//     has a single arrow branching off the decision line at ~(415,309) frame
+//     px, running DOWN-LEFT to a V-head at (398..409, 318..326) — no second
+//     arrow, no parallel stroke (the old two-arrow measurement had misread
+//     the fork+head; the long "arrow 1" it produced hugged the line and
+//     shipped as a spurious on-line blob — att13+att19 MAJORs).
+//     "+ve" glyph group spans x374..396 (centre 385), y306..315.
 s.addText("+ve", {
-  x: fx(X2PX(0.56) - 21), y: fx(Y2PY(3.84) - 6), w: fw(42), h: fw(12),
+  x: fx(364), y: fx(Y2PY(3.84) - 6), w: fw(42), h: fw(12),
   fontFace: FONT, fontSize: 11, color: CHART_RED, bold: true,
   align: "center", valign: "middle", margin: 0,
 });
 s.addShape(pptx.ShapeType.line, {
-  x: fx(X2PX(0.21)), y: fx(Y2PY(4.59)), w: fw(X2PX(0.80) - X2PX(0.21)),
-  h: fw(Y2PY(4.03) - Y2PY(4.59)),
+  x: fx(399), y: fx(309), w: fw(16), h: fw(17),
+  flipH: true,
   line: { color: CHART_RED, width: 3, endArrowType: "triangle" },
-});
-s.addShape(pptx.ShapeType.line, {
-  x: fx(X2PX(0.36)), y: fx(Y2PY(3.58)), w: fw(X2PX(0.65) - X2PX(0.36)),
-  h: fw(Y2PY(3.30) - Y2PY(3.58)),
-  line: { color: CHART_RED, width: 3, beginArrowType: "triangle" },
 });
 
 // ================= 9. CAPTION BOX + AUGMENTED-VECTORS TABLE =================
@@ -378,21 +445,48 @@ V_HDR.forEach(function (c) {
   });
 });
 
-// three augmented rows (each cell a paren-wrapped digit, per the frame)
+// three augmented rows: bare digits re-centred between the tall per-column
+// parens (measured digit bands y184..190/199..207/214..222 -> centres
+// 187/203/218); parens drawn below as bowed PNG pairs (042-cert pattern)
 const V_ROWS = [
-  { y: 181, vals: ["1", "1", "1", "1", "1", "1"] },
-  { y: 196, vals: ["1", "2", "1", "5", "6", "6"] },
-  { y: 212, vals: ["1", "1", "2", "4", "5", "6"] },
+  { y: 182, vals: ["1", "1", "1", "1", "1", "1"] },
+  { y: 198, vals: ["1", "2", "1", "5", "6", "6"] },
+  { y: 213, vals: ["1", "1", "2", "4", "5", "6"] },
 ];
+const V_CENTRES = [99, 121, 143, 166, 188, 211];
 V_ROWS.forEach(function (r) {
   r.vals.forEach(function (v, i) {
-    s.addText("(" + v + ")", {
-      x: fx(V_HDR[i][1]), y: fx(r.y), w: fw(20), h: fw(10),
+    s.addText(v, {
+      x: fx(V_CENTRES[i] - 5), y: fx(r.y), w: fw(11), h: fw(10),
       fontFace: FONT, fontSize: 10, color: BLACK,
       align: "center", valign: "middle", margin: 0,
     });
   });
 });
+// tall per-column parens spanning all three digit rows (measured: continuous
+// strokes y179..~y223 at the 042-aug stem positions; per-cell parens were a
+// judged MAJOR deviation)
+(function () {
+  const P = path.join(__dirname, "assets", "parens042");
+  const fs2 = require("fs");
+  const sc = 44 / 39.96;
+  [[93, 107], [115, 128], [137, 150], [159, 173], [182, 196], [205, 218]]
+    .forEach(function ([xl, xr]) {
+      [[`${P}/paren_tall_lp.png`, `${P}/paren_tall_lp.json`, xl, "lp"],
+       [`${P}/paren_tall_rp.png`, `${P}/paren_tall_rp.json`, xr, "rp"]]
+        .forEach(function ([img, meta, tipX, side]) {
+          const j = JSON.parse(fs2.readFileSync(meta, "utf8"));
+          const ink = side === "lp" ? j.ink_right_px : j.ink_left_px;
+          s.addImage({
+            path: img,
+            x: fx(tipX - ink * j.pt_per_px * sc),
+            y: fx(179 - j.ink_top_px * j.pt_per_px * sc),
+            w: (j.px_w * j.pt_per_px * sc) / 72,
+            h: (j.px_h * j.pt_per_px * sc) / 72,
+          });
+        });
+    });
+})();
 
 // class row beneath the augmented table
 const V_CLS = [["C1", 93, RED], ["C1", 114, RED], ["C1", 137, RED],

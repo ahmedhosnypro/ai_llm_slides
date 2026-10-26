@@ -5,7 +5,7 @@
 # Lane wall: --timeout 1200 inside an outer `timeout 1700` wrapper (orchestrator
 # directive 2026-10-24). Do NOT extend beyond 1200/1700; no retry loops.
 set -u
-cd "/worksp""aces/codespaces-blank/ai_llm_slides" || exit 2
+cd /home/ahmed/Projects/ai_llm_slides || exit 2
 V="videos/machine-learning/03_ridger_regression_gradient_descent"
 bash scripts/16_vision_gate.sh timeout 1700 python3 \
   .agents/skills/image-analysis/scripts/analyze_image.py comparison \

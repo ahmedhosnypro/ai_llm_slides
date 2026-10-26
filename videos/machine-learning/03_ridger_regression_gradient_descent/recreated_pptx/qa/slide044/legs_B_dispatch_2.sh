@@ -4,7 +4,7 @@
 # with only NNN/K/NAME/region-description substituted (regenerated, not the
 # corrupted banked copies). One call per region, all wrapped per the wall law.
 set -u
-cd "/worksp""aces/codespaces-blank/ai_llm_slides" || exit 2
+cd /home/ahmed/Projects/ai_llm_slides || exit 2
 V="videos/machine-learning/03_ridger_regression_gradient_descent"
 Q="$V/recreated_pptx/qa/slide044"
 

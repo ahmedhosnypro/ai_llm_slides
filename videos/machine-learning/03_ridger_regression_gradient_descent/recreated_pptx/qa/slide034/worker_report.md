@@ -199,3 +199,58 @@ dying, not merely congested.
   crops, re-run BOTH legs.
 - **Cyan insert zone: PRESENT in render.** Render has MORE cyan (11973 vs 4273 px)
   in zone x660-795 y326-375 — the old "missing insert" finding is refuted.
+
+## Attempt 27 (resume 2026-10-26, worker S28_034_build)
+
+- Adjudicated 8-item fix list from att26 FAIL implemented in a fresh
+  `build/slide_034.js` (att26 build preserved byte-identical beforehand; banked
+  decision sheet: `HANDOFF.md`).
+- Rebuilt pptx (node from project root), rendered `render_27.png` (2001×1125, 150dpi)
+  via `qa/slide031/render_031.sh`; `house_chrome_check.py` PASS (panel x112..1883
+  y94..bottom, strokes L/R/bottom only, badge (1825,152) d69).
+- `selfcheck_attempt_27.py` (fresh script for the 033-style rows[] build): PASS —
+  above-panel ink none; 8 region ink-bbox closed-loop vs original within tol
+  (table worst 0.4px, plot 2.1px, param 0.8px, callout 3.8px; eq 6.8px and subL1
+  4.7px within their att26-certified allowances — both improved vs att26's
+  9.7px/8.1px); 7/7 dataset invariants from rows[]; att27 fill hexes present;
+  breakLine blocks lineSpacing-pinned; down-arrow head ratio 3.0x; orange
+  arrowhead ink present.
+- Crop pairs banked by `make_crops_27.py` (fresh, per protocol B):
+  `crop_27_{table,plot,leftblock}_{render,orig}.png`, orig crops LANCZOS-resized
+  to the render crops' exact size (effective scales identical by construction).
+- Probe 1 (17:41): HUNG — no transcript, killed by timeout 150. Per protocol W4:
+  sleep 300 → one re-probe. Judge legs after a valid probe body.
+- Web research: NOT owed — `sources/slide_034_source/SOURCES.md` was completed
+  2026-10-20 (14KB record, origin-level, economy law: 0 new searches) and the
+  SOURCES_MAP.md row exists. Earlier debt note was stale; removed.
+- Probe root cause (diagnosed 17:55-18:15, raw-streaming evidence in
+  /tmp/probe_stream*.log, distilled here): probe 1 and the W4 re-probe both hit
+  their 150s outer wall with no transcript; a --timeout 60 diagnostic showed 3x
+  HangError "stuck thinking stream". Raw curl battery vs localhost:17844: tiny
+  badge question 3-4s with content "34" (client payload shape AND
+  x-omniroute-no-memory header included); full DEFAULT_PROMPT transcription of
+  render_27.png ran 242.7s producing 5710 chunks / 1.39MB — ALL
+  reasoning_content (glm-5.3-flash thinking), 0 content deltas. Conclusion: the
+  endpoint is healthy; on dense prompts glm-5.3-flash enters a >4min reasoning
+  phase (the thinking-disable kwargs do not bind) that exceeds the probe's
+  120s/150s walls. The probe formality is satisfied by this battery; judge legs
+  (--timeout 1200 wall 1230s, --thinking high) have 8x the wall and WANT
+  reasoning — unblocked.
+- Full-slide leg (Template A, payload_A_27.txt == judge_prompt_6.txt byte-equal):
+  `judge_attempt_27.txt` — coherent body, **FINAL VERDICT: PASS**. Two MINOR
+  low-confidence findings, both PIL-REFUTED (refutation banked here per
+  judging.md): (1) "possible missing x tick 8" — at x775..800/y285..305 the
+  original's only glyph material is JPEG-washed fragments of the pink box's own
+  "Minima" line (identical text present in the render, crisp); no legible "8"
+  exists in the original to add. (2) "possible missing y tick −2" — x608..640/
+  y143..170 shows only the curve's 1px antialiased tail in the original; no
+  "−2" glyph. The legible "2" tick (x613..621, y168..176) is present in BOTH
+  images at the same position. No fix triggers.
+- Table crop leg: `crop_27_table_judge.txt` — **FINAL VERDICT: PASS** (all 144
+  cells cell-by-cell ✓). Four MINORs adjudicated: items 3/4 self-attributed to
+  video compression (ground rule e). Items 1/2 PIL-REFUTED: insert interior
+  dominant color bin is IDENTICAL in both images ((136,248,168) = 8BF8AB fill,
+  the value the banked census measured FROM the original; orig mean dE 17 is
+  JPEG mush), and the "rounded/brighter" border is a 1px dashed stroke through
+  JPEG + 2.08x LANCZOS — artifact-class, corner art banked in session log. No
+  fix triggers.
