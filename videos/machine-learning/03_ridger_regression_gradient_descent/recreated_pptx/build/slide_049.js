@@ -1,7 +1,9 @@
 // Slide 049 — machine-learning/03_ridger_regression_gradient_descent
 // "Iteration 2" — rebuild per qa/slide049/pil_adjudication_049h.txt REBUILD TARGETS
 // + att12 fix cycle per qa/slide049/pil_adjudication_legA12.md FIX LIST
-// (paren delimiters aug/Z/wcol/initial-W, C1/C2 + Z subscripts, triplet
+// (paren delimiters aug/Z/wcol/initial-W → straight 1px delimiter bars (founder
+// directive 2026-10-26: no curved parens; 45's certified bar idiom), C1/C2 + Z
+// subscripts, triplet
 // RED/INK coloring, W bold+underline, black =>, Initial-only underline,
 // italic aug title/headers/Stop).
 // (+ s7_049 pixel maps: result digits, legend tokens, rule/background census).
@@ -10,7 +12,7 @@
 // Key rebuild deltas vs the prior build (all PIL-adjudicated):
 //   * top box border is INK 211776 (frame cores 33,23,117), not violet
 //   * tables are per-cell text boxes (LibreOffice expands addTable rows)
-//   * top table: bracketed 2-value stacks (tall font parens y77..107) + third
+//   * top table: bracketed 2-value stacks (straight bars y77 h31) + third
 //     value row below; "Initial W" dark label (no "=", underlined) with the
 //     stacked [4;-2;-2] column LEFT of it; red REPEAT on one line
 //   * aug box: gray frame rect, six 3-row bracketed columns, C1/C2 tags
@@ -24,11 +26,14 @@
 
 const pptxgenpkg = require("pptxgenjs");
 const { drawHouseChrome } = require("../../shared_patterns/house_chrome.js");
-const path = require("path");
-const fs = require("fs");
-const ASSET_DIR = path.join(__dirname, "assets");
-const sidecar = (n) => JSON.parse(
-  fs.readFileSync(path.join(ASSET_DIR, n + ".json"), "utf8"));
+// straight delimiter bar: 1px vertical rect (founder directive: no curved parens;
+// 45's certified idiom). Defined after fx/fy below; hoisted, refs resolve at call time.
+function dbar(x, y, h, color) {
+  s.addShape(pptx.ShapeType.rect, {
+    x: fx(x), y: fy(y), w: fw(1), h: fh(h),
+    fill: { color }, line: { type: "none" },
+  });
+}
 
 const pptx = new pptxgenpkg();
 pptx.layout = "LAYOUT_WIDE";
@@ -44,7 +49,10 @@ const INK = "211776";      // top-box border + C2 class tags
 const NAVY = "1F1655";     // legend C2
 const VIOLET = "6A5ACD";   // aug-box title
 const GRAY = "ABAFBA";     // frame rects + calc rules
-const DGRAY = "909090";    // aug-table delimiter strokes
+const DGRAY = "909090";    // tall delimiter bars: top2 / Z / aug / W column
+const PGRAY = "A6A6A6";    // calc triplet + dx delimiter bars (measured green-gray)
+const IGRAY = "6E6E6E";    // initial-W delimiter bars (measured darker gray)
+const DGREEN = "008000";   // dx column digits (measured green family)
 const GREEN = "5B9C4E";    // legend "Zero" (frame core 91,156,78)
 const WHITE = "FFFFFF";
 
@@ -93,40 +101,24 @@ s.addShape(pptx.ShapeType.rect, {
       bold: true, italic: true, color: i < 3 ? RED : INK,
     });
   }
-  // tall parentheses around the 2-stack rows (ink y77..107): measured Bezier
-  // PNGs (fix 15: font parens -> 909090 class, same as Z; bows = sub-pixel
-  // centroids, qa/slide049/parenA_15c.out)
-  const ptL = sidecar("parens049/paren_top2_lp");
-  const ptR = sidecar("parens049/paren_top2_rp");
-  const PPPT = 72 / 600;
-  const topLP = [89.78, 111.18, 133.45, 155.89, 178.84, 201.21];
-  const topRP = [102.42, 124.72, 147.12, 170.07, 192.45, 214.74];
+  // straight delimiter bars around the 2-stack rows (founder: no curves; 45 idiom;
+  // bar x at measured bulge centres)
+  const topL = [89.81, 111.95, 133.86, 156.28, 179.34, 202.25];
+  const topR = [101.37, 123.59, 146.15, 169.01, 191.46, 213.61];
   for (let i = 0; i < 6; i++) {
-    s.addImage({
-      path: path.join(ASSET_DIR, "parens049/paren_top2_lp.png"),
-      x: fx(topLP[i] - (ptL.ink_left_px * PPPT + ptL.S_pt / 2)),
-      y: fy(77 - ptL.ink_top_px * PPPT),
-      w: ptL.px_w * PPPT / 72, h: ptL.px_h * PPPT / 72,
-    });
-    s.addImage({
-      path: path.join(ASSET_DIR, "parens049/paren_top2_rp.png"),
-      x: fx(topRP[i] + 0.5 - ((ptR.ink_right_px + 1) * PPPT - ptR.S_pt / 2)),
-      y: fy(77 - ptR.ink_top_px * PPPT),
-      w: ptR.px_w * PPPT / 72, h: ptR.px_h * PPPT / 72,
-    });
+    dbar(topL[i], 77, 31, DGRAY);
+    dbar(topR[i], 77, 31, DGRAY);
   }
 }
 // --------------------------------------------- INITIAL-W VECTOR + REPEAT
 // stacked column [4;-2;-2] LEFT of its label (F1); dark underlined "Initial W"
 // (no "="; underline band y72..73 x364..423); red REPEAT single line (F5).
 {
-  const vm = sidecar("eq_slide049_wcol_paren").iw;
-  const PPP = 72 / 600; // pt per asset px
-  s.addImage({
-    path: path.join(ASSET_DIR, "eq_initial_w_col_paren.png"),
-    x: fx(330.5 - vm.ink_left_px * PPP), y: fy(58 - vm.ink_top_px * PPP),
-    w: vm.w_in, h: vm.h_in,
-  });
+  dbar(330.28, 57, 49, IGRAY);
+  dbar(351.72, 57, 49, IGRAY);
+  // digits [4;−2;−2] at measured centroids, 13pt Arial BLACK
+  [["4", 341.5, 66.5], ["\u22122", 344.5, 82.5], ["\u22122", 344.5, 97.5]].forEach(([t, cx, cy]) =>
+    txt(t, { x: fx(cx - 8), y: fy(cy - 8), w: fw(16), h: fh(16), fontSize: 13, color: BLACK }));
   // underline band y72..73 x365..422 = "Initial" only; W has no underline
   s.addText([
     { text: "Initial", options: { underline: true } },
@@ -157,25 +149,11 @@ txt("Check classes of", {
     { top: 86, h: 14, texts: ["0", "7", "3"], bold: false, italic: false },
     { top: 106, h: 12, texts: ["0", "6", "2"], bold: false, italic: false },
   ];
-  // measured paren pairs (bows, ink top y88): (0;0)(7;6)(3;2)
-  // same bulge-centre placement as the aug pairs (lp bulge at bow, rp at bow+0.5)
-  const pl = sidecar("parens049/paren_z49_lp");
-  const pr = sidecar("parens049/paren_z49_rp");
-  const PPPP = 72 / 600;
-  const zp = [[641.5, 655.5], [664.5, 677.5], [686.5, 699.5]];
+  // straight delimiter bars (founder: no curves): y86 h33 at measured bulge centres
+  const zp = [[640.96, 654.65], [664.10, 676.56], [686.30, 699.07]];
   for (const [lx, rx] of zp) {
-    s.addImage({
-      path: path.join(ASSET_DIR, "parens049/paren_z49_lp.png"),
-      x: fx(lx - (pl.ink_left_px * PPPP + pl.S_pt / 2)),
-      y: fy(88 - pl.ink_top_px * PPPP),
-      w: pl.px_w * PPPP / 72, h: pl.px_h * PPPP / 72,
-    });
-    s.addImage({
-      path: path.join(ASSET_DIR, "parens049/paren_z49_rp.png"),
-      x: fx(rx + 0.5 - ((pr.ink_right_px + 1) * PPPP - pr.S_pt / 2)),
-      y: fy(88 - pr.ink_top_px * PPPP),
-      w: pr.px_w * PPPP / 72, h: pr.px_h * PPPP / 72,
-    });
+    dbar(lx, 86, 33, DGRAY);
+    dbar(rx, 86, 33, DGRAY);
   }
   for (const b of rows) {
     for (let i = 0; i < 3; i++) {
@@ -231,27 +209,12 @@ s.addText("Ugmented Vectors (from Top)", {
       });
     }
   }
-  // measured paren pairs (fix 2: bows lp x93.5/115.5/137.5/160.5/182.5/205.5,
-  // rp x106.5/128.5/151.5/173.5/196.5/218.5, ink top y180; lp bulge = leftmost
-  // ink at bow, rp bulge = rightmost ink at bow+0.5 = centre of the measured band)
-  const paL = sidecar("parens049/paren_aug_lp");
-  const paR = sidecar("parens049/paren_aug_rp");
-  const PPP = 72 / 600;
-  const augLP = [93.5, 115.5, 137.5, 160.5, 182.5, 205.5];
-  const augRP = [106.5, 128.5, 151.5, 173.5, 196.5, 218.5];
+  // straight delimiter bars (founder: no curves): y180 h46 at measured bulge centres
+  const augL = [93.59, 115.28, 137.43, 160.65, 182.66, 205.64];
+  const augR = [105.84, 127.15, 149.74, 172.35, 195.05, 217.20];
   for (let i = 0; i < 6; i++) {
-    s.addImage({
-      path: path.join(ASSET_DIR, "parens049/paren_aug_lp.png"),
-      x: fx(augLP[i] - (paL.ink_left_px * PPP + paL.S_pt / 2)),
-      y: fy(180 - paL.ink_top_px * PPP),
-      w: paL.px_w * PPP / 72, h: paL.px_h * PPP / 72,
-    });
-    s.addImage({
-      path: path.join(ASSET_DIR, "parens049/paren_aug_rp.png"),
-      x: fx(augRP[i] + 0.5 - ((paR.ink_right_px + 1) * PPP - paR.S_pt / 2)),
-      y: fy(180 - paR.ink_top_px * PPP),
-      w: paR.px_w * PPP / 72, h: paR.px_h * PPP / 72,
-    });
+    dbar(augL[i], 180, 46, DGRAY);
+    dbar(augR[i], 180, 46, DGRAY);
   }
   // class tags C1..C6 -> C1 C1 C1 C2 C2 C2 (bold+italic, RED/INK, measured)
   for (let c = 0; c < 6; c++) {
@@ -322,6 +285,7 @@ s.addShape(pptx.ShapeType.line, {
 //   (rows 4-6 x528); "W =" x695 (rows 4-6 x708); W column x721 (rows 4-6 x733).
 {
   const B = [140, 206, 272, 338, 404, 470];
+  const DY = [[145, 192], [214, 260], [277, 324], [347, 392], [410, 456], [475, 522]];
   const digits = [["1", "1", "1"], ["1", "2", "1"], ["1", "1", "2"],
     ["1", "5", "4"], ["1", "6", "5"], ["1", "6", "6"]];
   const results = ["3", "2", "2", "\u22124", "\u22126", "\u22127"];
@@ -346,14 +310,16 @@ s.addShape(pptx.ShapeType.line, {
         fontSize: 12, valign: "top", color: lower ? INK : RED,
       });
     }
-    // high-bracket column (5;-1;-1) — paren asset, box pinned at certified x
-    // (379.02 = 379.5 - 4*0.12; apex sits at asset px18 -> lands at 381.18)
-    const wc = sidecar("eq_slide049_wcol_paren").wcol_1;
-    s.addImage({
-      path: path.join(ASSET_DIR, "slide_049_wcol_paren_1.png"),
-      x: fx(379.02), y: fy(b + 7),
-      w: wc.w_in, h: wc.h_in,
-    });
+    // straight paren bars ADDED around the triplet (founder: 45 idiom, no curves)
+    dbar(329.0, b + 7, 13, PGRAY);
+    dbar(375.0, b + 8, 12, PGRAY);
+    // high-bracket dx column (5;-1;-1): straight bars at measured per-row spans
+    const dy0 = DY[i][0], dy1 = DY[i][1];
+    dbar(378.5, dy0, dy1 - dy0 + 1, PGRAY);
+    dbar(401.0, dy0, dy1 - dy0 + 1, PGRAY);
+    // dx digits at measured centroids (green family — frame cores are pale green)
+    [["5", 392, b + 12], ["\u22121", 393.5, b + 29], ["\u22121", 393.5, b + 45.5]].forEach(([t, cx, cy]) =>
+      txt(t, { x: fx(cx - 8), y: fy(cy - 8), w: fw(16), h: fh(16), fontSize: 12, color: DGREEN }));
     // "="
     txt("=", {
       x: fx(lower ? 411 : 409), y: fy(b + 22), w: fw(10), h: fh(16), fontSize: 12,
@@ -382,12 +348,12 @@ s.addShape(pptx.ShapeType.line, {
       fontFace: FONT, fontSize: 12, color: BLACK, align: "left",
       valign: "middle", margin: 0,
     });
-    const wcol = sidecar("eq_slide049_wcol_paren")["wcol_" + (i + 1)];
-    s.addImage({
-      path: path.join(ASSET_DIR, "slide_049_wcol_paren_" + (i + 1) + ".png"),
-      x: fx(lower ? 733.02 : 722.02),
-      y: fy(b + 8), w: wcol.w_in, h: wcol.h_in,
-    });
+    // W column: straight bars (909090) + BLACK digits at measured centroids
+    dbar(lower ? 733.8 : 722.3, dy0, dy1 - dy0 + 1, DGRAY);
+    dbar(lower ? 755.4 : 744.0, dy0, dy1 - dy0 + 1, DGRAY);
+    const w5 = lower ? 745.5 : 733.5, wm1 = lower ? 748 : 736;
+    [["5", w5, b + 12], ["\u22121", wm1, b + 29], ["\u22121", wm1, b + 45.5]].forEach(([t, cx, cy]) =>
+      txt(t, { x: fx(cx - 8), y: fy(cy - 8), w: fw(16), h: fh(16), fontSize: 12, color: BLACK }));
   }
 }
 
