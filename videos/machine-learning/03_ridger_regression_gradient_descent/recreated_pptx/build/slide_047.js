@@ -33,7 +33,9 @@ const BLUE = "1A1A99";
 const GREEN = "008000";
 const CREAM = "FFFFE8";
 const BOXLINE = "A6ACB8";
-const ASSET = "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/build/assets/";
+const BARGRAY = "909090";   // tall matrix delimiter bars (measured light gray)
+const BARGRAY_D = "6E6E6E"; // initial-W delimiter bars (measured darker gray)
+const TRIPGRAY = "A6A6A6";  // calc-row triplet + stack delimiter bars (measured)
 
 const IN = (px) => px / 72; // frame px -> inches (1px = 1pt)
 
@@ -45,8 +47,12 @@ function rect(x, y, w, h, fill, lineColor, lineW) {
   });
 }
 
-function img(file, x, y, w, h) {
-  s.addImage({ path: ASSET + file, x: IN(x), y: IN(y), w: IN(w), h: IN(h) });
+// straight delimiter bar: 1px vertical rect (founder directive: no curved parens)
+function dbar(x, y, h, color) {
+  s.addShape(pptx.ShapeType.rect, {
+    x: IN(x), y: IN(y), w: IN(1), h: IN(h),
+    fill: { color }, line: { type: "none" },
+  });
 }
 
 // centred ink-cell text (matrix digits / headers / class labels)
@@ -78,13 +84,14 @@ rect(68, 55, 652, 75, CREAM, BLUE, 1);
 // 1a. top-left data matrix: header y69, digit bands y84 / 100.5, class y118.5
 {
   const CX = [96.5, 118.5, 140.5, 163, 185.5, 208];
-  const PAR_X = [88.65, 110.65, 132.62, 155.09, 177.59, 200.65];
-  const PAR_W = [14.72, 14.72, 15.29, 15.85, 15.85, 14.72];
+  const BAR_L = [89.81, 111.45, 133.54, 156.30, 178.75, 201.69];
+  const BAR_R = [100.50, 122.84, 145.10, 168.06, 189.78, 212.36];
   const HDR = ["x\u2081", "x\u2082", "x\u2083", "x\u2084", "x\u2085", "x\u2086"];
   const data = [[1, 1], [2, 1], [1, 2], [5, 4], [6, 5], [6, 6]];
   const klass = [1, 1, 1, 2, 2, 2];
   for (let i = 0; i < 6; i++) {
-    img("paren_p047_tl2.png", PAR_X[i], 76.5, 15.24, 31.44);
+    dbar(BAR_L[i], 77, 31, BARGRAY);
+    dbar(BAR_R[i], 77, 31, BARGRAY);
     cell(HDR[i], CX[i], 65.6, 12.5, BLACK, { italic: true, w: 24 });
     cell(String(data[i][0]), CX[i], 83.6, 13.5, BLACK, { w: 18 });
     cell(String(data[i][1]), CX[i], 100.1, 13.5, BLACK, { w: 18 });
@@ -102,8 +109,9 @@ s.addText([
   x: IN(266), y: IN(78.5 - 8), w: IN(68), h: IN(16),
   fontFace: FONT, margin: 0, align: "left", valign: "middle",
 });
-// W vector: paren pair x327..353 spanning the THREE entries (y58..105)
-img("paren_p047_w.png", 326, 58, 31, 47.4);
+// W vector: straight bars x330.5/352.0 y57 h50 spanning the THREE entries (founder: no curves)
+dbar(330.5, 57, 50, BARGRAY_D);
+dbar(352.0, 57, 50, BARGRAY_D);
 for (const r of [{ t: "4", cy: 66 }, { t: "-2", cy: 82 }, { t: "-2", cy: 97.5 }]) {
   cell(r.t, 340, r.cy, 14, BLACK, { w: 18, h: 13 });
 }
@@ -128,11 +136,12 @@ s.addText([
 // 1d. top-right Z matrix: header y70.5, digit bands y87 / 104.5
 {
   const CX = [606.5, 628, 650.5];
-  const PAR_X = [597.05, 620.12, 642.12];
-  const PAR_W = [16.42, 15.29, 15.29];
+  const BAR_L = [598.06, 621.45, 643.03];
+  const BAR_R = [609.92, 632.78, 654.45];
   const data = [[0, 0], [7, 6], [3, 2]];
   for (let i = 0; i < 3; i++) {
-    img("paren_p047_z.png", PAR_X[i], 79, 16.2, 32.4);
+    dbar(BAR_L[i], 80, 32, BARGRAY);
+    dbar(BAR_R[i], 80, 32, BARGRAY);
     cell("Z\u2081", CX[i], 68.2, 12.5, BLACK, { italic: true, w: 24 });
     cell(String(data[i][0]), CX[i], 86.2, 13.5, BLACK, { w: 18 });
     cell(String(data[i][1]), CX[i], 103.5, 13.5, BLACK, { w: 18 });
@@ -146,13 +155,14 @@ rect(69, 139, 178, 117, "FFFFFF", BOXLINE, 0.75);
 left("Ugmented Vectors ( from Top )", 82, 152.5, 178, 16, 13, BLUE, { italic: true });
 {
   const CX = [100.5, 121.5, 144.5, 167, 189.5, 211.5];
-  const PAR_X = [92.65, 113.65, 136.11, 158.58, 181.11, 203.61];
-  const PAR_W = [14.72, 14.72, 15.29, 15.85, 15.29, 15.29];
+  const BAR_L = [93.27, 114.66, 137.11, 159.49, 182.17, 204.63];
+  const BAR_R = [105.67, 126.09, 149.00, 171.29, 193.88, 215.93];
   const HDR = ["x\u2081", "x\u2082", "x\u2083", "x\u2084", "x\u2085", "x\u2086"];
   const data = [[1, 1, 1], [1, 2, 1], [1, 1, 2], [1, 5, 4], [1, 6, 5], [1, 6, 6]];
   const klass = [1, 1, 1, 2, 2, 2];
   for (let i = 0; i < 6; i++) {
-    img("paren_p047_aug3.png", PAR_X[i], 181, 15.24, 45.48);
+    dbar(BAR_L[i], 180, 46, BARGRAY);
+    dbar(BAR_R[i], 180, 46, BARGRAY);
     cell(HDR[i], CX[i], 167.8, 12.5, BLACK, { italic: true, w: 24 });
     cell(String(data[i][0]), CX[i], 187.7, 13.5, BLACK, { w: 18 });
     cell(String(data[i][1]), CX[i], 202.7, 13.5, BLACK, { w: 18 });
@@ -176,13 +186,17 @@ for (const b of boxes) {
   rect(273, b.top, 582, b.h, "FFFFFF", BOXLINE, 0.75);
   // d(Z) = label: ink x283..323, band centre 168 (+dy)
   left(b.label, 283, 166.4 + b.dy, 52, 18, 14, BLACK, { italic: true });
-  // blue row vector: ink x335..375, band centre 153 (+dy)
-  left(b.row, 335, 152 + b.dy, 50, 16, 13, BLUE);
-  // green stacked column (14; -4; 0): parens x388..405 y150..188 (+dy)
-  img("paren_p047_stack.png", 388, 150 + b.dy, 18.24, 39.48);
-  cell("14", 397, 153.5 + b.dy, 10.5, GREEN, { w: 16, h: 12 });
-  cell("-4", 397, 167 + b.dy, 10.5, GREEN, { w: 16, h: 12 });
-  cell("0",  397, 184 + b.dy, 10.5, GREEN, { w: 16, h: 12 });
+  // blue row-vector digits (font parens removed → straight bars): cx 336/353.5/369.5
+  b.row.replace(/[()]/g, "").trim().split(/\s+/).forEach((d, k) =>
+    cell(d, [336, 353.5, 369.5][k], 153.5 + b.dy, 13, BLUE, { w: 12, h: 14 }));
+  // green stacked column (14; -4; 0): straight bars x380.9/403.95 y145..193 (+dy)
+  dbar(380.9, 145 + b.dy, b.dy === 135 ? 47 : 48, TRIPGRAY);
+  dbar(403.95, 145 + b.dy, b.dy === 135 ? 47 : 48, TRIPGRAY);
+  dbar(330.0, 147 + b.dy, 13, TRIPGRAY);
+  dbar(378.0, 148 + b.dy, 12, TRIPGRAY);
+  cell("14", 395, 153.5 + b.dy, 10.5, GREEN, { w: 16, h: 12 });
+  cell("-4", 395, 167 + b.dy, 10.5, GREEN, { w: 16, h: 12 });
+  cell("0",  395, 184 + b.dy, 10.5, GREEN, { w: 16, h: 12 });
   // result: ink x414..435, band centre 166.5 (+dy)
   left(b.result, 414, 166.2 + b.dy, 40, 16, 13.5, BLACK);
   // sign statement: black bold, ONE line, ink starts x508 (arrow glyph)
