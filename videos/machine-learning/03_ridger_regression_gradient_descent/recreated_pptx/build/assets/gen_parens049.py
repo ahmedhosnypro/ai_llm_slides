@@ -4,9 +4,12 @@
 Frame-measured on unique_slides/slide_049.jpg (960x540, 1px = 1pt):
   aug-table column parens: ink y181..223 (h44.5), bow D=1.0pt, stroke ~1.5px, DGRAY 909090
   Z-block column parens:   ink y88..118 (h30),   bow D=1.0pt, stroke ~1.5px, DGRAY
+  top-table column parens: ink y77..107 (h30),   bow D=1.0pt, stroke ~1.5px, DGRAY
 Build places ink_left/lp and ink_right/rp on the frame's bow columns
 (aug lp [93.5,115.5,137.5,160.5,182.5,205.5] / rp [106.5,128.5,151.5,173.5,196.5,218.5];
- Z bows (641.5,655.5)(664.5,677.5)(686.5,699.5)).
+ Z bows (641.5,655.5)(664.5,677.5)(686.5,699.5); top2 lp [89.78,111.18,133.45,155.89,
+ 178.84,201.21] / rp [102.42,124.72,147.12,170.07,192.45,214.74] sub-pixel bow
+ centroids, qa/slide049/parenA_15c.out; A gray signature == D's certified 909090).
 """
 import json, os
 import numpy as np
@@ -24,6 +27,7 @@ PAD = 0.5
 CLASSES = [
     ("aug",  1.5, 44.5, 1.0, "909090"),
     ("z49",  1.5, 30.0, 1.0, "909090"),
+    ("top2", 1.5, 30.0, 1.0, "909090"),
 ]
 
 

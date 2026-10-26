@@ -93,12 +93,27 @@ s.addShape(pptx.ShapeType.rect, {
       bold: true, italic: true, color: i < 3 ? RED : INK,
     });
   }
-  // tall font parentheses around the 2-stack rows (span y77..107)
-  const colL = [90, 111, 133, 156, 179, 201];
-  const colR = [102, 125, 147, 170, 193, 215];
+  // tall parentheses around the 2-stack rows (ink y77..107): measured Bezier
+  // PNGs (fix 15: font parens -> 909090 class, same as Z; bows = sub-pixel
+  // centroids, qa/slide049/parenA_15c.out)
+  const ptL = sidecar("parens049/paren_top2_lp");
+  const ptR = sidecar("parens049/paren_top2_rp");
+  const PPPT = 72 / 600;
+  const topLP = [89.78, 111.18, 133.45, 155.89, 178.84, 201.21];
+  const topRP = [102.42, 124.72, 147.12, 170.07, 192.45, 214.74];
   for (let i = 0; i < 6; i++) {
-    txt("(", { x: fx(colL[i] - 2), y: fy(77), w: fw(6), h: fh(30), fontSize: 26 });
-    txt(")", { x: fx(colR[i] - 2), y: fy(77), w: fw(6), h: fh(30), fontSize: 26 });
+    s.addImage({
+      path: path.join(ASSET_DIR, "parens049/paren_top2_lp.png"),
+      x: fx(topLP[i] - (ptL.ink_left_px * PPPT + ptL.S_pt / 2)),
+      y: fy(77 - ptL.ink_top_px * PPPT),
+      w: ptL.px_w * PPPT / 72, h: ptL.px_h * PPPT / 72,
+    });
+    s.addImage({
+      path: path.join(ASSET_DIR, "parens049/paren_top2_rp.png"),
+      x: fx(topRP[i] + 0.5 - ((ptR.ink_right_px + 1) * PPPT - ptR.S_pt / 2)),
+      y: fy(77 - ptR.ink_top_px * PPPT),
+      w: ptR.px_w * PPPT / 72, h: ptR.px_h * PPPT / 72,
+    });
   }
 }
 // --------------------------------------------- INITIAL-W VECTOR + REPEAT
@@ -331,11 +346,12 @@ s.addShape(pptx.ShapeType.line, {
         fontSize: 12, valign: "top", color: lower ? INK : RED,
       });
     }
-    // high-bracket column (5;-1;-1) — paren asset, lp bow x379.5, ink top b+7
+    // high-bracket column (5;-1;-1) — paren asset, box pinned at certified x
+    // (379.02 = 379.5 - 4*0.12; apex sits at asset px18 -> lands at 381.18)
     const wc = sidecar("eq_slide049_wcol_paren").wcol_1;
     s.addImage({
       path: path.join(ASSET_DIR, "slide_049_wcol_paren_1.png"),
-      x: fx(379.5 - wc.ink_left_px * 72 / 600), y: fy(b + 7),
+      x: fx(379.02), y: fy(b + 7),
       w: wc.w_in, h: wc.h_in,
     });
     // "="
@@ -369,7 +385,7 @@ s.addShape(pptx.ShapeType.line, {
     const wcol = sidecar("eq_slide049_wcol_paren")["wcol_" + (i + 1)];
     s.addImage({
       path: path.join(ASSET_DIR, "slide_049_wcol_paren_" + (i + 1) + ".png"),
-      x: fx((lower ? 733.5 : 722.5) - wcol.ink_left_px * 72 / 600),
+      x: fx(lower ? 733.02 : 722.02),
       y: fy(b + 8), w: wcol.w_in, h: wcol.h_in,
     });
   }
