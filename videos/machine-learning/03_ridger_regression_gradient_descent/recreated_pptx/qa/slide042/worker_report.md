@@ -310,3 +310,90 @@ python3 scripts/15_progress.py get 42     # must read gen_status=passed AND visu
 If either leg FAILs: adjudicate PIL-first against `adjudication_16.md`, fix the build
 (copy-then-modify, single plain-named deliverable), re-render, re-cut crops, re-dispatch
 both legs — up to 6 attempts total.
+
+---
+
+## ATTEMPT 24 — carrier-s6-251025b handoff (2026-10-25)
+
+Status at claim: attempt-24 micro-fix phase. Prior 8-item fix spec was already
+applied to `build/slide_042.js` (full map in its ATTEMPT 24 header; pre-edit bank
+`build_attempt_23.js` md5 cc3f18277cf1dd3054a26595d941c267; content ground truth =
+`adjudication_attempt23.md` read-legs at bottom).
+
+This session completed the last 2 of 3 micro-fixes:
+
+1. box1 ROWS x1 `eqX: 400 → 411` ("= 0" was ~11px left of ORIG ink 414..429)
+2. Initial-W row3 `txt("-2", 339, 95, …) → y 91` (was ~4px low vs ORIG ink 91..102)
+
+(the 3rd item, LM paren-pairs x {353,360,372,384,391,403,410,422,429,441,448,460},
+was applied earlier in this attempt)
+
+Verified after fixes:
+
+- rebuild: `TMPDIR=scratch/tmp node build/slide_042.js` → `slide_042_recreated.pptx` OK
+- render: `qa/slide042/render_24.png` md5 **83280ab5789092e0fa656bb0b9781ab6**,
+  2001×1125 (150dpi, same soffice recipe as before)
+- house chrome check: **PASS** (panel x112-1882, y94-bottom; strokes L/R/bottom,
+  top bare; badge center d=68; all within tol 8)
+- banked: `qa/slide042/build_attempt_24.js` md5 **5f1350f758b1099716e29f4c5bcb05e8**
+- PIL selfcheck: everything within ~2-6px of ORIG except two drifts (was: two
+  drifts before these micro-fixes; paren-pair edit + these two landed)
+
+NOT done (deadline hit): legA judge. Next carrier steps:
+
+1. Gate check `pgrep -c -f analyze_image.py` (need <8), then legA Template A
+   comparison exactly per `shared_patterns/judge_protocol_03.md` — payload line 71
+   byte-identical, substitute only NNN=042 K=24. ONE leg per Bash call,
+   background+wait. Transcript: `qa/slide042/judge_attempt_24.txt`.
+2. Zoomed crop-pair certs (Template B, protocol line 117), render crop ×2.083
+   LANCZOS from render_24, 5 windows (orig coords): stack (320,135,810,540),
+   Initial W (312,45,415,110), legend (225,95,570,132), lm (30,140,340,252),
+   topright (560,30,850,125). Transcripts `crop_24_<name>_judge.txt`.
+3. Adjudicate any FAILs PIL-first vs `adjudication_attempt23.md`; fix = copy-then-
+   modify the build; re-render; re-cut crops; re-dispatch.
+4. Certify: visual_check PASS + visual_transcript + visual_attempts + gen_status
+   passed, then `15_progress.py release 42 <carrier>`.
+
+Key measured facts this attempt (PIL-arbitrated, from `scratch/tmp/s6_042_pil24.py`
+follow-ups): LM digit rows y166/184/199 with values [1,1,1,1,1,1]/[1,2,1,5,6,6]/
+[1,1,2,4,5,6]; LM paren pairs (93,107),(115,128),(137,150),(159,173),(182,196),
+(205,218) span y166..222 (identical in 043); legend ORIG: C1 RED x239..253,
+"positive," ends 302, C2 312..319, "negative," 322..378, Zero 396..422, "is
+unaccepted" 431..508; box1 anchors: ⇒ RED ~486, action ~507..591, W̲= 614,
+vec(4,−2,−2) black (646,672), "+ 2*" red 676, vec(1,1,1) (708,725), "=" 728,
+vec(6,0,0) GREEN (740,758), ⇐ 774; Initial W rows y63/79/91; paren asset
+`build/assets/parens042/paren_z_{lp,rp}_red.png` (tinted 192,0,0, alpha kept).
+
+## ATTEMPT 25 — CERTIFIED (2026-10-25, kimi-s6-FRESH-1792954337)
+
+Build `build/slide_042.js` md5 **7b459f1ae97e3f0d478673f61cbdb6e1** (banked
+`build_attempt_25.js`), render `qa/slide042/render_25.png` md5
+**98bedc4be123bff2f592b6c18edcfd07** (2001×1125), house chrome check **PASS**.
+Fix basis: `adjudication_attempt24.md` (all 6 a24 legs dispositioned + the
+lm_table refutation correction + the topright hang incident + the B24 DESC
+arrow-wording correction). Edits: TL parens/TL_CX, legend (⇒ removed, commas
+removed, re-centred), Initial-W bowed parens + 11pt digits, LM restructure
+(white card + x₁..x₆ header + bands 183/198/214 + bowed parens ink y179..225),
+tallVec → side-aware bowed PNGs (black/green), DVEC_XS per-box spans,
+W̲ all 6 rows, b4 eqX 406.5, Z-block digits/tips.
+
+Judge round (dispatch_A25.sh / dispatch_B25.sh; frozen payloads byte-for-byte):
+| Leg | Verdict |
+|---|---|
+| legA full slide | **PASS** (3 MINOR: arrow glyph variant, LM border hairline, spacing) |
+| crop initial_w | **PASS** (MINOR: hyphen-minus, spacing) |
+| crop lm_table | **PASS** (MINOR: typography only) |
+| crop tl_table | **PASS** (MINOR: typography, 1-2px baseline wobble) |
+| crop legend | **PASS** (MINOR×4; the 1 MAJOR is the Initial-W sliver — certified by initial_w) |
+| crop stack | **PASS** (MINOR×4: hyphen-minus, serif, spacing, arrow weight) |
+| crop topright | **PASS** (MINOR/non-defect: glyph weight) |
+
+DB: visual_check PASS · visual_transcript legA-25 · visual_attempts 25 ·
+gen_status passed · released. **No OMML wrap** (042 draws no mathtext PNGs —
+eqImage is dead code in the build; verify grep eqImage( → definition only).
+
+043 prep done this window: `build/assets/eq043_mx1..3.png` regenerated
+(gen_eq_043.py mx specs; dims match the banked sidecars exactly; stale codespace
+`path` field repaired). Remaining 043 asset regen needs band-value corrections
+first (dx2 −16 not −14; x₄ "(10;02;0)" PIL arbitration) per
+`qa/slide043/prephase/build_readiness.md` + `orig_judges/slide_043_stack_desc.txt`.

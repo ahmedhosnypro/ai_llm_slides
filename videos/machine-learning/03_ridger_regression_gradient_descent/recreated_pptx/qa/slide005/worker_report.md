@@ -432,3 +432,114 @@ honest-park note (congestion), which is accurate and was not overwritten.
 
 ## Gateway observations (slow poll, one probe per ~10 min, no dispatch while >= 8)
 See the poll log below.
+
+---
+
+# Lane section — `s1-judge-1025` (2026-10-25, judge lane, scope S1)
+
+## Claim
+Pool scope S1 (slides 3/4/5) claimed via pool-db.sh; DB rows claimed `--force`:
+003 / 004 / 005 all by `s1-judge-1025`.
+
+## Bank-state audit (all re-verified before any dispatch)
+- `slide_005_recreated.pptx` sha256 `1c9eb5ea22dbb8969e9d7a2fe8ebfa4bb4f9a854f6503a27c55abfb05ad0b443` — matches the banked value on entry (md5 `58de0cb2…`), i.e. the deliverable was UNCHANGED.
+- All reel/crops/render PNGs had been REMOVED from `qa/slide005/` (same as 003/004). Re-produced deterministically:
+  - Fresh LibreOffice render (private profile, `pdftoppm -r 150`, 2001×1125) byte-reproduces the deliverable → banked as `render_9.png`.
+  - Crops re-cut from render_9 by `measure_attempt9/crops_005_attempt9.py`; `crop_currency_9.py` re-run: **ALL 4 PAIRS CURRENT + SCALE-MATCHED**.
+  - `house_chrome_check.py render_9.png 005` → PASS.
+- Scripts in `measure_attempt9/` + `dispatch_attempt9/` carried a stale `/workspaces/codespaces-blank/...` root (the codespace no longer exists); the root was rewritten to `/home/ahmed/Projects/ai_llm_slides` in place. Payload byte-fidelity re-verified after the rewrite: `verify_payloads.py` → **ALL 5 PAYLOADS BYTE-FAITHFUL** (A 4115 B, B×4 1914 B; independent re-derivation from `shared_patterns/judge_protocol_03.md` confirms byte-identity).
+
+## Judge legs — attempt K=9 (render_9), all five dispatched and landed
+| leg | transcript | verdict |
+|---|---|---|
+| A full-slide | `judge_attempt_9.txt` | **PASS** (3755 B, real FINAL VERDICT body; 1 BLOCKER token mentioned only as checked) |
+| B eq_stack | `crop_9_eq_stack_judge.txt` | PASS — 3 MINORs (denominator-2 colour, variable underlines, spacing around 2) |
+| B blue_upper | `crop_9_blue_upper_judge.txt` | **FAIL** — BLOCKER: equation rendered `Xᵀ(XW)=(XW)ᵀX`, original reads `Yᵀ(XW)=(XW)ᵀY` |
+| B pink_band | `crop_9_pink_band_judge.txt` | PASS — MINOR: red emphasis on "W" in "Get Best W" absent |
+| B lower_eqs | `crop_9_lower_eqs_judge.txt` | FAIL — MAJOR: "vector/matrix underlines" missing |
+
+## PIL-first adjudication (banked below)
+1. **blue_upper X→Y — CONFIRMED BLOCKER.** Render glyph x44..76 y173..226: two strokes converge at a cross then diverge = italic serif **X**. Original glyph x38..75 y176..226: strokes converge INTO a stem that continues down = italic serif **Y**. `build/assets/eq_005_remember1.json` (and `_remember2.json`) mathtext was `X^{T}(XW) = (XW)^{T}X`; the build source `build/slide_005.js:147,199` comments repeated it. Build repaired (see below) and re-verified: render_10's first glyph is a Y (converging stem, single 7 px stem below the join).
+2. **eq_stack / lower_eqs "equation underlines" — PIL-REFUTED.** Strict underline detector (long run ≥13 px, 3 px clean gap above, glyph ink above that) on the original crops finds NO underline bars in either equation line set — the only bars it reports in BOTH images are the `1/2` fraction bars (eq_stack ORIG y62/199/317 = REND y66/200/318 at equivalent positions) and the `+` crossbars. Equation-underline findings are judge artefacts at this resolution; attempt-9's eq_stack judge graded the same items MINOR/PASS. Not fix triggers. No underline bars exist under the blue Remember equation in the original (red/blue census: the Remember word and box edges only).
+3. **blue_upper body-text emphasis — CONFIRMED REAL.** Original blue box: red `X` on body line 1 (red ink x50..63 y63..85, 1114 red px in box vs 1175 in render restricted to the Remember label row only) and a BLUE `W` (mean RGB (55,54,187), 229 blue px; render = 0 blue px) + underline on `XW` line 2. Attempt-10's blue_upper judge graded this MAJOR; the build fixed it (build/slide_005.js:158-175): line 1 `X` in RED, `W` in `#3736BB` + underline, line 2 `XW` underlined. Verified in render_11: blue px 217, red-below-label 121 present.
+4. **pink_band red `W` in "Get Best W" — CONFIRMED REAL but correctly MINOR** (pink_band leg passed). Original red census in band: frame clusters x73-77, 101-105, 113-114 (red ∂Loss/∂W accents), 279-295 (the red "W"), 505 (red dot); render = 1 px. Judge graded MINOR; pink_band verdict PASS. Left as-is (cosmetic colour emphasis; the build's black "Get Best W" matches the frozen recreation_brief).
+
+## Build repair (attempt 10/11 chain)
+- `build/assets/eq_005_remember1.png` / `_remember2.png` regenerated (scripts/render_eq.py) with mathtext `Y^{T}(XW) = (XW)^{T}Y` at the banked font sizes (21.7 / 24.4 pt, black); sidecars updated (w_in/h_in/pad_px + mathtext). The eq-fit ink extents in the render reproduce the original boxes (679.8..864.5 vs 680..864).
+- The other 7 eq PNGs were also absent and were re-derived from their sidecars' mathtext (PAD re-centred to the sidecar's pad_px); pptx rebuilt via `NODE_PATH=/home/ahmed/.npm-global/lib/node_modules node build/slide_005.js` (pptxgenjs lives at the npm global root, not in a project node_modules).
+- After the equation fix (`render_10.png`): leg A PASS; eq_stack FAIL (equation-underline MAJOR — refuted above); blue_upper FAIL (missing emphasis MAJOR — fixed).
+- After the emphasis fix (`render_11.png`): all five legs re-dispatched (attempt-11 chain in flight at bank time; crops `crop_11_*` re-cut from render_11, matched scale).
+
+## Resume state
+Claim 005 by `s1-judge-1025`, heartbeat fresh. Rendering/crops/payloads current for attempt 11. Attempt-11 leg transcripts: `judge_attempt_11.txt` + `crop_11_*_judge.txt` under `qa/slide005/`.
+
+## Attempt 12→14 lane (dead carriers) — state found by the 2026-10-25 S1 fresh carrier
+
+- Attempts 12/13 happened under earlier carriers (renders 12/13 + `judge_attempt_13.txt`
+  + `crop_13_*` legs exist; DB row still `building`/0 — never certified).
+- att13 defects: (1) loss2 line left-edge clip, (2) deriv2 "second line" clip, (3)
+  remember2 identity wrong-direction fix. The dead carrier regenerated remember2
+  (`eq_005_remember2.*`, mathtext `X^{T}(XW) = (XW)^{T}Y` — matches the original's
+  lower box, X-terminal first term) and staged a 14-leg dispatch on render_14.
+- **att14 dispatch SKIPPED by PIL premortem (this carrier):** render_14 is
+  pixel-identical to a fresh LO render of the current pptx, and the two att13
+  clipping defects live INSIDE the banked asset PNGs, untouched since Oct 25 02:13:
+  - `eq_005_loss2.png` 4234px, ink opens col 4 with "oss = ½[…]" — the "L" (and part
+    of "o") are cut; correct render is 4429px with ink at col 12.
+  - `eq_005_deriv2.png` 4255px, numerator opens "oss" — "∂L" cut; correct 4477px.
+  - `eq_005_deriv1.png` 4073px vs correct 4098 — ∂ left limb shaved.
+  - NEW same-family defect: `eq_005_remember1.png` (upper box) is X-terminal
+    (`X^{T}(XW) = (XW)^{T}X`) but the original's upper identity is
+    **Yᵀ(XW) = (XW)ᵀY** — crop_9/crop_11 judges were right; `id_rem2.py`'s
+    "both boxes X" claim was wrong (the att10/11 Y-fix had been clobbered by the
+    Oct 25 02:13 wholesale `eq_fit_slide005.py` re-run, whose EQS hardcodes the
+    X-terminal rem1 string — that wholesale re-run is what also left the trims).
+- Skip recorded: attempt 14 was never burned (no att14 transcripts); attempt 15 is
+  the post-fix certification render.
+
+## Attempt 15 — asset fix + certification (S1 fresh carrier, 2026-10-26)
+
+Fix (`qa/slide005/fix_att15_assets.py`, exact replica of eq_fit_slide005.py's
+probe/render/binary-search; graphgen venv for matplotlib): regenerated EXACTLY four
+assets + sidecars — `eq_005_loss2`, `eq_005_deriv1`, `eq_005_deriv2` (all black,
+untrimmed) and `eq_005_remember1` (Y-terminal `Y^{T}(XW) = (XW)^{T}Y`). No other
+asset touched: eq_005_loss1 keeps its red-½ fix, eq_005_remember2 keeps the dead
+carrier's X-terminal fix, the aggregate `eq_fit_slide005.json` was NOT rewritten.
+Results: eq2 4429×460 @23.4pt, eq4 4098×450 @22.7pt, eq5 4477×450 @22.7pt,
+rem1 1555×217 @22.0pt — all first-ink-col == PAD (no trim), and the new rem1 ink is
+IoU 1.0 vs a fresh render of the Y-terminal string (0.109 vs the X-terminal one).
+
+Render 15: pptx rebuilt (`node build/slide_005.js`, eqFit re-reads sidecars so no JS
+change needed), fresh soffice→pdf→pdftoppm → `render_15.png`.
+- house_chrome_check: **PASS** (panel x112-1882 y94-bottom; badge (1824,152) d=68).
+- r14↔r15 pixel diff: 49,396 px, **100% inside the 4 fixed regions, 0 outside**.
+- probe: first `timeout 150` probe hung (gateway busy, 6 foreign procs, no body);
+  after sleep 300 the once-only re-probe landed: `probe_15.txt` (4007 B, valid body;
+  itself reads the upper Remember line as Yᵀ(XW) = (XW)ᵀY and reports "No clipping
+  detected… nothing is cut off at any edge"). Probe's "brownish ½ in eq1" is the
+  founder-certified red-½ of loss1, not a defect.
+- Crop pairs re-cut (`crops_005_attempt15.py`): eq_stack (88,100,650,285),
+  blue_upper (660,128,890,245), pink_band (65,280,515,350), lower_eqs (64,350,900,530);
+  LANCZOS-upscaled originals at matched scale, desc files written.
+- Legs (payloads md5-frozen: judge_prompt_9 `8fc119…`, crop_prompt_9_* `875c8e…`):
+  leg A full judge + 4 crop legs dispatched concurrently through the empty gate
+  → `judge_attempt_15.txt` + `crop_15_*_judge.txt`.
+
+CERTIFICATION (2026-10-26): **PASS — slide 005 CERTIFIED at attempt 15.**
+- All five legs returned real FINAL VERDICT: PASS bodies: leg A (4303 B,
+  "zero BLOCKER/MISSING-ELEMENT findings") + eq_stack / lower_eqs / blue_upper /
+  pink_band crops (2286-3453 B each). Only MINOR findings fleet-wide: matrix/vector
+  underline emphasis, block-arrow vs → glyph style (judge: "borderline MAJOR" but
+  explicitly chrome-acceptable), ½ hue (brick vs bright red — the founder red-½),
+  operator spacing, typed-vs-medium font face. None is a fix trigger; att13's clip
+  family is verifiably dead (lower_eqs: "no truncated subscripts; no missing terms";
+  eq_stack leg covering the loss2 line: PASS; blue_upper: "equation's structure
+  matches exactly", identity Yᵀ(XW) = (XW)ᵀY).
+- remember2 adjudication correction: att13's #3 fix is X-TERMINAL-BOTH
+  (mathtext X^{T}(XW) = (XW)^{T}X, IoU 0.946 vs the live asset; sidecar agrees) — matching
+  the original per att13's own high-confidence reading ("the final symbol is clearly
+  an X"). The premortem summary's "X..Y" was a transcription slip; the asset needed
+  no change and was not touched.
+- DB row: gen_status='passed', visual_check='PASS', visual_attempts=15,
+  visual_transcript='recreated_pptx/qa/slide005/judge_attempt_15.txt'
+  (verified via sqlite3 SELECT and scripts/15_progress.py get 5).

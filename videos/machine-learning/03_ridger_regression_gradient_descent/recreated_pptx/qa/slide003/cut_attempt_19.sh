@@ -3,7 +3,7 @@
 # Render: render_19.png (2001x1125, 2.0833 px per frame px).
 # Original: unique_slides/slide_003.jpg (960x540 -> upscale x2.0833 LANCZOS).
 set -e
-B="/worksp""aces/codespaces-blank/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent"
+B="/home/ahmed/Projects/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent"
 Q="$B/recreated_pptx/qa/slide003"
 K=19
 cut() {

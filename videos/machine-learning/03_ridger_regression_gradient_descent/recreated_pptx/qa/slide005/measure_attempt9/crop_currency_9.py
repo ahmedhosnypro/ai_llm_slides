@@ -14,7 +14,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 Q = os.path.dirname(HERE)
 RENDER = os.path.join(Q, "render_9.png")
-ORIG = ("/workspaces/codespaces-blank/ai_llm_slides/videos/machine-learning/"
+ORIG = ("/home/ahmed/Projects/ai_llm_slides/videos/machine-learning/"
         "03_ridger_regression_gradient_descent/unique_slides/slide_005.jpg")
 
 SX, SY = 2001 / 960, 1125 / 540

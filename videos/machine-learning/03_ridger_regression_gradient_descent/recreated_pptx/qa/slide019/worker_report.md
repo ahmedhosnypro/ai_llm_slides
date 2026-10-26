@@ -473,3 +473,22 @@ attempts remain **1** (`judge_attempt_6.txt`, FAIL, superseded bytes).
 
 **Nothing on slide 019 may be certified from this session.** Certification requires a real
 Template A `FINAL VERDICT:` body plus all four Procedure B legs; none exist for attempt 8.
+
+## attempt 26 (2026-10-26 ~02:10Z, S4b carrier — wall park)
+
+Final A24-fix build COMPLETE + PIL-verified; judges NOT dispatched (wall closed before dispatch).
+
+- Edits applied to build/slide_019.js: outlierRow gained x param (g1 x84, g2/g3 x79);
+  outlierParens (fs55 text-glyph parens) REPLACED by outlierArcs() — pptxgenjs ShapeType.arc,
+  fill none, line 2E3B96 w1.5, angleRange [90,270]/[270,450], bbox w6, full-height h72-74.
+- Rebuilt slide_019_recreated.pptx → qa/slide019/render_26.png (render_25 = banked intermediate).
+- house_chrome_check render_26 PASS (panel/strokes/badge within tol 8).
+- pil_probe_26.py (banked) + refined probe: ALL PASS — 9 digit bboxes d≤2.1 vs orig table;
+  s_sub x93-99 y207-212 (d2.2); 6 thin arcs ink w3.4-3.8 (orig ~2px+AA), g1_left tip x83.8-85.8
+  = orig 84-85; patches x76.3-115.2 (orig 76-116). First-pass probe "fails" were window
+  contamination (arcs+X glyph inside digit windows) — refined tight-window rerun clean.
+- NEXT (resume here): dispatch A26/B26 full+crops per dispatch_A24_1200.sh pattern (copy→sed 24→26);
+  crop table_left + header_strip FRESH; table_right + noreg_rows carry crop_23 certs IF
+  render_23-vs-render_26 diff = 0 on those regions (not yet diffed — do it first);
+  on all clean → 15_progress.py DB write (verify CLI first) + judge_attempt_26 transcripts.
+- 025: UNTOUCHED this carrier (k13 render_14 + chrome PASS stand; BR anomaly unresolved).

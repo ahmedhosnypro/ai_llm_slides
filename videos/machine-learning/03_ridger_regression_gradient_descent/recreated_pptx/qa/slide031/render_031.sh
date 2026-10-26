@@ -2,7 +2,7 @@
 # render_031.sh  <pptx> <out.png>  — LibreOffice -> PDF (300dpi) -> PNG
 set -e
 IN="$1"; OUT="$2"
-export TMPDIR=/home/codespace/Projects/ai_llm_slides/scratch/tmp
+export TMPDIR=/home/ahmed/Projects/ai_llm_slides/scratch/tmp
 mkdir -p "$TMPDIR"
 WORK="$TMPDIR/render_031_$$"
 mkdir -p "$WORK"

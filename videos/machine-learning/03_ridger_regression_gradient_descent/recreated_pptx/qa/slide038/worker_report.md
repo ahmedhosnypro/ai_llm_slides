@@ -205,3 +205,17 @@ research: **0**.
 
 `gen_status='passed'`, `visual_check='PASS'` (both judge legs), `worker_report.md` banked,
 claim released. **Slide 038 is CERTIFIED.**
+
+## S19 payload-exact confirmation addendum (2026-10-25)
+
+Confirmation crop legs re-ran on the certified deliverable under the
+pool-299640 amendment (no rebuild): frozen tplB payload byte-exact (payload
+banked as payload_B_N038_confirm.txt, md5 d137335f924c3d7e8ff77bdcc68e8c6e),
+PIL-verified matched-scale crop pairs.
+
+- Title l1/l2 crop: crop_1_title_l1l2_judge_confirm.txt — FINAL VERDICT: PASS
+  (after 1 allowed transport-wall retry; no verdict-bearing retry).
+- Title l3 crop: crop_1_title_l3_judge_confirm.txt — FINAL VERDICT: PASS.
+- Badge crop: crop_1_badge_judge_confirm.txt — FINAL VERDICT: PASS.
+- DB: last_error note written; gen_status/visual_check untouched.
+- No build, render, or banked evidence was modified.

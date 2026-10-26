@@ -7,7 +7,7 @@ pixel size so output_px/frame_px is equal on both axes.
 """
 from PIL import Image
 
-DECK = ("/worksp" + "aces/codespaces-blank/ai_llm_slides/videos/machine-learning/"
+DECK = ("/home/ahmed/Projects/ai_llm_slides/videos/machine-learning/"
         "03_ridger_regression_gradient_descent")
 QA = DECK + "/recreated_pptx/qa/slide004/"
 ORIG = DECK + "/unique_slides/slide_004.jpg"

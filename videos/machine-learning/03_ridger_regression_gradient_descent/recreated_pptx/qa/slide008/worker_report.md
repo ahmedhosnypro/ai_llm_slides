@@ -113,3 +113,19 @@ invocations that produced or attempted a body: the full-slide judge consumed 1
 crop leg consumes 1. All well within budget. The remaining dispatches were
 upstream wall events (abort/timeout) which the protocol explicitly does not
 count as attempts.
+
+## S19 payload-exact confirmation addendum (2026-10-25)
+
+Confirmation crop legs re-ran on the certified deliverable under the
+pool-299640 amendment (no rebuild): frozen tplB payload byte-exact (payload
+banked as payload_B_N008_confirm.txt, md5 d137335f924c3d7e8ff77bdcc68e8c6e),
+PIL-verified matched-scale crop pairs.
+
+- Title crop: crop_1_title_judge_confirm.txt — FINAL VERDICT: PASS + 4 MINORs,
+  adjudicated PIL-first in adjudication_title_1_confirm.txt (notably the
+  judge's "IMG2 narrower" claim inverted under measurement: render ink w1480
+  vs original w1489; remaining MINORs noise-floor/weight class).
+- Subtitle crop: crop_1_subtitle_judge_confirm.txt — FINAL VERDICT: PASS,
+  zero findings.
+- DB: last_error note written; gen_status/visual_check untouched.
+- No build, render, or banked evidence was modified.

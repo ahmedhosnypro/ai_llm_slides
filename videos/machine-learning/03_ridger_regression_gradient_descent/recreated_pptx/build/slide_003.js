@@ -60,8 +60,9 @@ drawHouseChrome(pptx, slide, { numeral: 3 });
 // box widened to 800px so 23pt (advance 761.8px) cannot wrap) ---------------
 slide.addText([
   { text: "Matrix", options: { fontFace: A, fontSize: 23, bold: true, color: "0000FF" } },
-  { text: " Notation for Linear Regression and Classification (N- Samples)",
-    options: { fontFace: A, fontSize: 23, bold: true, color: "FF0000" } },
+  { text: " Notation for Linear Regression and Classification ", options: { fontFace: A, fontSize: 23, bold: true, color: "FF0000" } },
+  { text: "(N-", options: { fontFace: A, fontSize: 23, bold: true, color: "0000FF" } },
+  { text: " Samples)", options: { fontFace: A, fontSize: 23, bold: true, color: "FF0000" } },
 ], {
   x: px(70), y: px(62), w: px(800), h: px(32),
   align: "center", valign: "top", margin: 0,
@@ -84,7 +85,7 @@ slide.addShape(pptx.ShapeType.rect, {
 const band_defs = [
   { cx: 315, w: 43, fill: "FFFF99", label: "X_1", entries: ["11", "12", "...", "1d"] },
   { cx: 393.5, w: 48, fill: "CCFFFF", label: "X_2", entries: ["21", "22", "...", "2d"] },
-  { cx: 535, w: 45, fill: "FFC0CB", label: "X_n", entries: ["n1", "n2", "...", "nd"] },
+  { cx: 535, w: 45, fill: "F0A0F0", label: "X_n", entries: ["n1", "n2", "...", "nd"] },
 ];
 for (const b of band_defs) {
   slide.addShape(pptx.ShapeType.rect, {
@@ -125,13 +126,24 @@ for (const b of band_defs) {
     });
   }
 }
-// Right-hand side bars of the glyph column (measured ink x331..332 in the
-// yellow band, x414 in the cyan band, x556 in the pink band, each spanning the
-// band) — delimiters the original draws.
-for (const bx of [331.5, 414.5, 556.5]) {
-  slide.addShape(pptx.ShapeType.line, {
-    x: px(bx), y: px(155), w: 0, h: px(104),
-    line: { color: "000000", width: 1 },
+// Column delimiters, left+right per column — att34 PIL adjudication
+// (adjudication_att34_topbox.md): the originals are SHALLOW PARENS (sagitta
+// 1.0-1.5px, all six bowing in the paren direction; render control was 0.0),
+// not straight bars. Replaced the line shapes with generated arc PNGs
+// (parens/col{1,2,4}_{L,R}.png, same mechanism as the midcol arcs, ink colors
+// sampled from the frame strokes). Measured bulge cores:
+// yellow L296.5/R331.5, cyan L373.5/R409 (NOT 414.5 — att31 mis-measured),
+// pink L517.5/R552.5 (NOT 556.5); spans y146..263 (th210; the y141..296 the
+// att31 fix used was FILL extent — threshold pollution; strokes stop at 263).
+const col_delims = [
+  { img: "col1_L", x: 296.2 }, { img: "col1_R", x: 327.96 },
+  { img: "col2_L", x: 373.2 }, { img: "col2_R", x: 405.46 },
+  { img: "col4_L", x: 517.2 }, { img: "col4_R", x: 548.96 },
+];
+for (const d of col_delims) {
+  slide.addImage({
+    path: "/home/ahmed/Projects/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide003/parens/" + d.img + ".png",
+    x: px(d.x), y: px(146), w: px(3.8), h: px(117),
   });
 }
 // Separator line under the entries, measured y297
@@ -150,28 +162,27 @@ for (let c = 0; c < 3; c++) {
     align: "center", valign: "middle", margin: 0,
   });
 }
-// Ellipsis column between cyan and pink (measured x415..479: gray dot stack in
-// parens with a "..." header) — omitted by every earlier build, flagged by all
-// judges.
+// red "..." continuing the y-sequence between y_2 and y_n — measured red ink
+// x466..479 y285..287 on the frame (the render previously had none)
+slide.addText("...", {
+  x: px(462), y: px(278), w: px(24), h: px(16),
+  align: "center", valign: "middle", margin: 0,
+  fontFace: A, fontSize: 11, italic: true, color: "FF0000",
+});
+// Ellipsis column between cyan and pink (measured x449..479: gray parens
+// spanning y159..249 with FOUR horizontal "..." rows at y171/198/222/249).
 slide.addText("...", {
   x: px(420), y: px(115), w: px(56), h: px(24),
   align: "center", valign: "middle", margin: 0,
   fontFace: A, fontSize: 18, bold: true, italic: true, color: "000000",
 });
-slide.addText("(", {
-  x: px(420), y: px(141), w: px(20), h: px(155),
-  align: "center", valign: "middle", margin: 0,
-  fontFace: A, fontSize: 30, color: GRAY,
-});
-slide.addText(")", {
-  x: px(462), y: px(141), w: px(20), h: px(155),
-  align: "center", valign: "middle", margin: 0,
-  fontFace: A, fontSize: 30, color: GRAY,
-});
-for (let d = 0; d < 7; d++) {
-  slide.addShape(pptx.ShapeType.ellipse, {
-    x: px(445.5), y: px(152 + d * 19), w: px(3), h: px(3),
-    fill: { color: GRAY }, line: { color: GRAY, width: 0 },
+slide.addImage({ path: "/home/ahmed/Projects/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide003/parens/arc_midcol_L.png", x: px(451), y: px(157), w: px(3.8), h: px(94) });
+slide.addImage({ path: "/home/ahmed/Projects/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide003/parens/arc_midcol_R.png", x: px(468), y: px(157), w: px(3.8), h: px(94) });
+for (const dy of [163, 190, 214, 241]) {
+  slide.addText("...", {
+    x: px(448), y: px(dy), w: px(30), h: px(16),
+    align: "center", valign: "middle", margin: 0,
+    fontFace: A, fontSize: 12, bold: true, italic: true, color: GRAY,
   });
 }
 
@@ -179,7 +190,7 @@ for (let d = 0; d < 7; d++) {
 const rb_x = 649, rb_y = 153, rb_w = 225, rb_h = 68;
 slide.addShape(pptx.ShapeType.rect, {
   x: px(rb_x), y: px(rb_y), w: px(rb_w), h: px(rb_h),
-  fill: { color: "CCFFFF", transparency: 40 }, line: { color: "0000FF", width: 1.5 },
+  fill: { color: "E5FEFA" }, line: { color: "0000FF", width: 1.5 },
 });
 // red bold italic "Remember" — measured ink x656..689 y160..176
 slide.addText("Remember", {
@@ -190,13 +201,13 @@ slide.addText("Remember", {
 // "y = W^T X = X^T W" — blue underlined W/X per the frame (ink x699..867 y185..214)
 const eq_size = 18;
 slide.addText([
-  { text: "y", options: { fontFace: A, fontSize: eq_size, italic: true, color: "000000" } },
+  { text: "y", options: { fontFace: A, fontSize: eq_size, italic: true, bold: true, color: "0000FF", underline: true } },
   { text: " = ", options: { fontFace: A, fontSize: eq_size, color: "000000" } },
   { text: "W", options: { fontFace: A, fontSize: eq_size, bold: true, color: "0000FF", underline: true } },
   { text: "T", options: { fontFace: A, fontSize: eq_size, italic: true, superscript: true, color: "000000" } },
-  { text: "X", options: { fontFace: A, fontSize: eq_size, bold: true, color: "0000FF", underline: true } },
+  { text: "X", options: { fontFace: A, fontSize: eq_size, bold: true, color: "FF0000", underline: true } },
   { text: " = ", options: { fontFace: A, fontSize: eq_size, color: "000000" } },
-  { text: "X", options: { fontFace: A, fontSize: eq_size, bold: true, color: "0000FF", underline: true } },
+  { text: "X", options: { fontFace: A, fontSize: eq_size, bold: true, color: "FF0000", underline: true } },
   { text: "T", options: { fontFace: A, fontSize: eq_size, italic: true, superscript: true, color: "000000" } },
   { text: "W", options: { fontFace: A, fontSize: eq_size, bold: true, color: "0000FF", underline: true } },
 ], {
@@ -237,60 +248,82 @@ slide.addShape(pptx.ShapeType.rect, {
   fill: { color: "FFFFFF" }, line: { color: "C00000", width: 1 },
 });
 
-// y-vector: bracket pair + y_1, y_2, ..., y_n
-slide.addShape(pptx.ShapeType.leftBracket, {
-  x: px(82), y: px(334), w: px(9), h: px(140),
-  fill: { type: "none" }, line: { color: "000000", width: 1 },
-});
-slide.addShape(pptx.ShapeType.rightBracket, {
-  x: px(110), y: px(334), w: px(9), h: px(140),
-  fill: { type: "none" }, line: { color: "000000", width: 1 },
-});
+// Row bands: measured x196..393 (matrix width only, from left paren to the
+// right curve) for yellow/cyan/orchid.
+const row_bands = [
+  { y: 368, h: 22, fill: "FFFF99" },
+  { y: 397, h: 26, fill: "CCFFFF" },
+  { y: 456, h: 22, fill: "F0A0F0" },
+];
+for (const rb of row_bands) {
+  slide.addShape(pptx.ShapeType.rect, {
+    x: px(196), y: px(rb.y), w: px(197), h: px(rb.h),
+    fill: { color: rb.fill },
+  });
+}
+
+// y-vector chips: pale fills behind each entry (measured x108..136,
+// y368..391 / y399..423 / y455..479 — same palette as the matrix row bands;
+// the ellipsis row carries NO chip).
+for (const chip of [
+  { y: 368, h: 23, fill: "FFFF99" },
+  { y: 399, h: 24, fill: "CCFFFF" },
+  { y: 455, h: 24, fill: "F0A0F0" },
+]) {
+  slide.addShape(pptx.ShapeType.rect, {
+    x: px(108), y: px(chip.y), w: px(28), h: px(chip.h),
+    fill: { color: chip.fill },
+  });
+}
+
+// y-vector: bracket pair + y_1 (gold), y_2 (teal), ... (red), y_n (magenta)
+// — label colors measured from the frame (match the chip palette, darker).
+slide.addImage({ path: "/home/ahmed/Projects/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide003/parens/arc_yvec_L.png", x: px(107), y: px(358), w: px(3.8), h: px(128) });
+slide.addImage({ path: "/home/ahmed/Projects/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide003/parens/arc_yvec_R.png", x: px(129), y: px(358), w: px(3.8), h: px(128) });
 const y_entries = ["y_1", "y_2", "...", "y_n"];
+const y_colors = ["C8963C", "46A0A8", "C00000", "CC3FB0"];
+const y_ys = [368, 397, 427, 456];
+const y_hs = [22, 26, 25, 24];
 for (let i = 0; i < y_entries.length; i++) {
-  const sub = y_entries[i].split("_")[1];
-  slide.addText([
-    { text: "y", options: { fontFace: A, fontSize: 11, italic: true, color: "000000" } },
-    ...(sub && sub !== "..." ? [{ text: sub, options: { fontFace: A, fontSize: 11, italic: true, subscript: true, color: "000000" } }] : []),
-    ...(sub === "..." ? [{ text: "...", options: { fontFace: A, fontSize: 11, italic: true, color: "000000" } }] : []),
-  ], {
-    x: px(84), y: px(338 + i * 36), w: px(34), h: px(22),
+  const e = y_entries[i];
+  const runs = e === "..."
+    ? [{ text: "...", options: { fontFace: A, fontSize: 15, italic: true, color: y_colors[i] } }]
+    : [
+        { text: "y", options: { fontFace: A, fontSize: 15, italic: true, color: y_colors[i] } },
+        { text: e.split("_")[1], options: { fontFace: A, fontSize: 15, italic: true, subscript: true, color: y_colors[i] } },
+      ];
+  slide.addText(runs, {
+    x: px(109), y: px(y_ys[i]), w: px(34), h: px(y_hs[i]),
     align: "center", valign: "middle", margin: 0,
   });
 }
 slide.addText("N × 1", {
-  x: px(86), y: px(474), w: px(80), h: px(18),
-  align: "center", valign: "top", margin: 0,
-  fontFace: A, fontSize: 11, bold: true, color: "FF0000",
+  x: px(140), y: px(462), w: px(60), h: px(18),
+  align: "left", valign: "top", margin: 0,
+  fontFace: A, fontSize: 11, bold: true, color: "C00000",
 });
 
 slide.addText("=", {
-  x: px(126), y: px(384), w: px(24), h: px(30),
+  x: px(144), y: px(387), w: px(24), h: px(30),
   align: "center", valign: "middle", margin: 0,
   fontFace: A, fontSize: 24, color: "000000", bold: true,
 });
 
-// Matrix: four rows as horizontal bands (frame-measured). The ORIGINAL has
-// NO left bracket and NO leading "1" glyph in column 1 (measured: rows 1/3
-// have zero ink at x154..182; the sparse ink in rows 2/4 is the band edge) —
-// the first-column cells are EMPTY in the frame. The middle (white) row does
-// draw an ellipsis in ALL FIVE cells (measured ink in c2..c5, judge leg A
-// finding 1 CONFIRMED).
-const mx_x = 150;
+// Matrix: four rows. The ORIGINAL has a leading "1" (bias) column — serif
+// "1" glyphs at x210 per row — inside tall parentheses (left vertical
+// x196 y366..481, right curve x358..368), then x11 x12 x1d. The middle
+// (white) row draws "1" in column 1 and ellipsis dots under the three
+// x-columns (measured dots at x254..270, x283..300, x329..344); it has NO
+// dots column of its own.
+const mx_x = 192;
 const row_defs = [
-  { y: 368, h: 22, fill: "FFFF99", cells: [["", ""], ["x", "11"], ["x", "12"], ["...", ""], ["x", "1d"]] },
-  { y: 397, h: 26, fill: "CCFFFF", cells: [["", ""], ["x", "21"], ["x", "22"], ["...", ""], ["x", "2d"]] },
-  { y: 427, h: 25, fill: "FFFFFF", cells: [["", ""], ["...", ""], ["...", ""], ["...", ""], ["...", ""]] },
-  { y: 456, h: 22, fill: "FFC0CB", cells: [["", ""], ["x", "n1"], ["x", "n2"], ["...", ""], ["x", "nd"]] },
+  { y: 368, h: 22, fill: "FFFF99", cells: [["1", ""], ["x", "11"], ["x", "12"], ["...", ""], ["x", "1d"]] },
+  { y: 397, h: 26, fill: "CCFFFF", cells: [["1", ""], ["x", "21"], ["x", "22"], ["...", ""], ["x", "2d"]] },
+  { y: 427, h: 25, fill: "FFFFFF", cells: [["1", ""], ["...", ""], ["...", ""], ["...", ""], ["...", ""]] },
+  { y: 456, h: 22, fill: "F0A0F0", cells: [["1", ""], ["x", "n1"], ["x", "n2"], ["...", ""], ["x", "nd"]] },
 ];
-const cell_cols = [4, 32, 76, 120, 164];
+const cell_cols = [17, 53, 98, 138, 173];
 for (const r of row_defs) {
-  if (r.fill !== "FFFFFF") {
-    slide.addShape(pptx.ShapeType.rect, {
-      x: px(mx_x), y: px(r.y), w: px(282), h: px(r.h),
-      fill: { color: r.fill },
-    });
-  }
   for (let c = 0; c < r.cells.length; c++) {
     const [txt, sub] = r.cells[c];
     slide.addText([
@@ -302,31 +335,35 @@ for (const r of row_defs) {
     });
   }
 }
-// closing bracket after the matrix (gray, spans the bands)
-slide.addShape(pptx.ShapeType.rightBracket, {
-  x: px(434), y: px(362), w: px(9), h: px(122),
-  fill: { type: "none" }, line: { color: GRAY, width: 1 },
+// tall parentheses spanning all matrix rows (original: left vertical x196
+// y366..481, right curve x358..368)
+slide.addImage({ path: "/home/ahmed/Projects/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide003/parens/arc_matrix_L.png", x: px(194), y: px(362), w: px(3.8), h: px(122) });
+slide.addImage({ path: "/home/ahmed/Projects/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide003/parens/arc_matrix_R.png", x: px(388), y: px(362), w: px(3.8), h: px(122) });
+// nested double-paren inner verticals — measured on the frame at x198.5 and
+// x394.5 spanning y~366..477; the arcs carry the other two paren sides
+slide.addShape(pptx.ShapeType.line, {
+  x: px(198.5), y: px(366), w: 0, h: px(111),
+  line: { color: "000000", width: 0.75 },
 });
-// "N x d+1" dimension label under the matrix (judge finding CONFIRMED)
+slide.addShape(pptx.ShapeType.line, {
+  x: px(394.5), y: px(366), w: 0, h: px(111),
+  line: { color: "000000", width: 0.75 },
+});
+// "N x d+1" dimension label — measured right of the matrix's right bracket
+// (glyphs x399..460, y468..486), near-black 333333 as measured.
 slide.addText("N × d+1", {
-  x: px(190), y: px(474), w: px(110), h: px(18),
-  align: "center", valign: "top", margin: 0,
-  fontFace: A, fontSize: 11, bold: true, color: "FF0000",
+  x: px(399), y: px(468), w: px(110), h: px(20),
+  align: "left", valign: "top", margin: 0,
+  fontFace: A, fontSize: 11, bold: true, color: "333333",
 });
 
-// w-vector: bracket pair + b (blue), w_1, w_2, ..., w_d
+// w-vector: bracket pair + b (red), w_1, w_2, ..., w_d (blue)
 // The ORIGINAL draws the entries at measured rows y352(b, blue), y390(w_1),
 // y418(w_2), y455(ellipsis), y472(w_d) — explicit boxes per entry (LO ignores
 // line spacing/stretch on inline runs, which scattered the earlier stacked
 // build). Measured glyph height 26px => ~13pt for the entries.
-slide.addShape(pptx.ShapeType.leftBracket, {
-  x: px(458), y: px(330), w: px(9), h: px(148),
-  fill: { type: "none" }, line: { color: "000000", width: 1 },
-});
-slide.addShape(pptx.ShapeType.rightBracket, {
-  x: px(514), y: px(330), w: px(9), h: px(148),
-  fill: { type: "none" }, line: { color: "000000", width: 1 },
-});
+slide.addImage({ path: "/home/ahmed/Projects/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide003/parens/arc_wvec_L.png", x: px(458), y: px(348), w: px(3.8), h: px(130) });
+slide.addImage({ path: "/home/ahmed/Projects/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide003/parens/arc_wvec_R.png", x: px(516), y: px(348), w: px(3.8), h: px(130) });
 const w_rows = [
   { y: 350, isB: true },
   { y: 388, isB: false, sub: "1" },
@@ -340,8 +377,8 @@ for (const w of w_rows) {
     ...(w.dots ? [{ text: "...", options: { fontFace: A, fontSize: size, italic: true, color: "000000" } }] : [
       { text: w.isB ? "b" : "w",
         options: { fontFace: A, fontSize: size, bold: w.isB, italic: !w.isB,
-                   color: w.isB ? "0000FF" : "000000" } },
-      ...(w.sub ? [{ text: w.sub, options: { fontFace: A, fontSize: size, italic: true, subscript: true, color: "000000" } }] : []),
+                   color: w.isB ? "FF0000" : "0000FF" } },
+      ...(w.sub ? [{ text: w.sub, options: { fontFace: A, fontSize: size, italic: true, subscript: true, color: "0000FF" } }] : []),
     ]),
   ], {
     x: px(462), y: px(w.y), w: px(56), h: px(24),
@@ -351,55 +388,55 @@ for (const w of w_rows) {
 slide.addText("d+1 × 1", {
   x: px(452), y: px(486), w: px(76), h: px(18),
   align: "center", valign: "top", margin: 0,
-  fontFace: A, fontSize: 11, bold: true, color: "FF0000",
+  fontFace: A, fontSize: 11, bold: true, color: "4D429E",
 });
 
 // ---- ARROW: the original is a thin gray line (ink x531..533 spanning the
 // whole zone, x569..572 for the head) drawn from the bottom-left box to the
 // bottom-right box; measured at x532..572, head y402..407 ----------------
 slide.addShape(pptx.ShapeType.line, {
-  x: px(532), y: px(392), w: px(40), h: 0,
+  x: px(543), y: px(408), w: px(34), h: 0,
   line: { color: GRAY, width: 1.5, endArrowType: "triangle" },
 });
 
-// ---- BOTTOM-RIGHT BOX (measured x572..752 y323..517, RED border, white) ----
-const br_x = 572, br_y = 323, br_w = 180, br_h = 194;
+// ---- BOTTOM-RIGHT BOX (measured x585..886 y323..517, RED border, white) ----
+const br_x = 585, br_y = 323, br_w = 301, br_h = 194;
 slide.addShape(pptx.ShapeType.rect, {
   x: px(br_x), y: px(br_y), w: px(br_w), h: px(br_h),
   fill: { color: "FFFFFF" }, line: { color: "C00000", width: 1 },
 });
 
-// Original layout (measured): Y glyphs y360..371 with their underlines at
-// y373..374 under Y (x586..596) and W (x644..659) — the X underline sits at
-// y382..383 with a separate second stroke below; "Where:" line-1 glyphs at
-// y397..411; line-2 at y443..473. The "=" is drawn at y363/y367.
+// Original layout (measured): heading "Y = X W" glyphs y362..383 with the Y
+// underline y380..383 (x604..620) — X is BLUE, W is RED; "Where:" line-1
+// glyphs at y398..431 with X + its subscript in BLUE; line-2 at y446..470
+// with Y + subscript in RED, indented to align under the X.
 slide.addText([
   { text: "Y", options: { fontFace: A, fontSize: 16, bold: true, color: "000000", underline: true } },
   { text: " = ", options: { fontFace: A, fontSize: 16, bold: true, color: "000000" } },
-  { text: "X", options: { fontFace: A, fontSize: 16, bold: true, color: "000000", underline: true } },
+  { text: "X", options: { fontFace: A, fontSize: 16, bold: true, color: "0000FF", underline: true } },
   { text: " ", options: { fontFace: A, fontSize: 16, bold: true, color: "000000" } },
-  { text: "W", options: { fontFace: A, fontSize: 16, bold: true, color: "000000", underline: true } },
+  { text: "W", options: { fontFace: A, fontSize: 16, bold: true, color: "FF0000", underline: true } },
 ], {
-  x: px(br_x + 2), y: px(365), w: px(br_w - 4), h: px(30),
+  x: px(br_x + 20), y: px(356), w: px(br_w - 40), h: px(30),
   align: "left", valign: "top", margin: 0,
 });
 
 slide.addText([
   { text: "Where: ", options: { fontFace: A, fontSize: 13, color: "000000" } },
-  { text: "X", options: { fontFace: A, fontSize: 13, color: "000000", underline: true, italic: true } },
-  { text: "N×d+1", options: { fontFace: A, fontSize: 13, color: "000000", italic: true, subscript: true } },
-  { text: " is a matrix", options: { fontFace: A, fontSize: 13, color: "000000", italic: true } },
+  { text: "X", options: { fontFace: A, fontSize: 13, color: "0000FF", underline: true, italic: true } },
+  { text: "N×d+1", options: { fontFace: A, fontSize: 13, color: "0000FF", italic: true, subscript: true } },
+  { text: " is a matrix", options: { fontFace: A, fontSize: 13, color: "000000", bold: true } },
 ], {
-  x: px(br_x + 12), y: px(br_y + 74), w: px(br_w - 24), h: px(22),
+  x: px(br_x + 20), y: px(398), w: px(br_w - 40), h: px(22),
   align: "left", valign: "top", margin: 0,
 });
 
 slide.addText([
-  { text: "Y", options: { fontFace: A, fontSize: 13, color: "000000", underline: true, italic: true } },
-  { text: "N×1", options: { fontFace: A, fontSize: 13, color: "000000", italic: true, subscript: true } },
-  { text: " is labels vector", options: { fontFace: A, fontSize: 13, color: "000000", italic: true } },
+  { text: "Y", options: { fontFace: A, fontSize: 13, color: "FF0000", underline: true, italic: true } },
+  { text: "N×1", options: { fontFace: A, fontSize: 13, color: "FF0000", italic: true, subscript: true } },
+  { text: " is labels vector", options: { fontFace: A, fontSize: 13, color: "000000", bold: true } },
 ], {
-  x: px(br_x + 12), y: px(br_y + 120), w: px(br_w - 24), h: px(22),
+  x: px(br_x + 83), y: px(446), w: px(br_w - 103), h: px(22),
   align: "left", valign: "top", margin: 0,
 });
 

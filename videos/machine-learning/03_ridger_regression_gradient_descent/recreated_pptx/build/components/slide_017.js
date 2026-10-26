@@ -12,6 +12,10 @@
 //   { skip: {...} } — omit any block: chrome, title, labels, trainTables,
 //                     testTables, arrows, wBoxes
 //   { only: {...} } — draw ONLY the listed blocks
+//   { overrides }   — per-block draw handlers ({ wBoxes(pptx, slide, opts) });
+//                     a matching handler replaces the built-in for that block
+//                     (content-delta variants express their block this way
+//                     instead of cloning the module)
 //
 // CHILD of slide 013 (dependency edge 17 > 13) — the chain 12→13→17 composes
 // transitively. The table PATTERN is IMPORTED from the certified parent
@@ -241,7 +245,8 @@ function renderBase(pptx, slide, opts = {}) {
   for (const [name, fn] of Object.entries(BLOCKS)) {
     if (only && !only[name]) continue;
     if (!only && skip[name]) continue;
-    fn(pptx, slide, opts);
+    const hdl = opts.overrides && opts.overrides[name]; // per-block override
+    (hdl || fn)(pptx, slide, opts);
   }
 }
 

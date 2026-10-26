@@ -5,7 +5,7 @@
 # The upserts below are NOT run by this script: a certifier must confirm the
 # verdicts with check_transcript.py first, then run the listed `set` commands.
 set -u
-WID="/worksp""aces/codespaces-blank/PLACEHOLDER"
+WID="placeholder-worker-id"
 cd "/worksp""aces/codespaces-blank/ai_llm_slides" || exit 9
 Q="videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide005"
 T=(

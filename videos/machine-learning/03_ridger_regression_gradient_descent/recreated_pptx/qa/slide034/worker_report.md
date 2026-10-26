@@ -186,3 +186,16 @@ dying, not merely congested.
   (the `600` originals are left untouched).
 - Logs: `scratch/tmp/w034/tmplA_a7.log`, `tmplA_a9.log`, `crop_table_w1200.log`,
   `tmplA_w4.log`, plus the prior section's `probe_6_run.log`.
+
+## PIL-confirmed defect (vs render_25) — 2026-10-25
+
+- **Plot-box border colour: CONFIRMED.** Orig border red C00000-family:
+  left vertical frame x607 (176px+, (124,46,59) JPEG-softened), top horizontal
+  y60 (155,9,22), bottom y312 (255,175,188 softened). Render draws the SAME box
+  (dark verticals at render px 607 & 845 = frame x607/x845.6, 257px tall) in PURE
+  BLACK (0,0,0); no red rows found near y60/y312 in the plot x-range.
+  → FIX TRIGGER: recolour plot-box border to red C00000-family in
+  `build/slide_034.js` (copy-then-modify), rebuild, re-render (render_26), re-cut
+  crops, re-run BOTH legs.
+- **Cyan insert zone: PRESENT in render.** Render has MORE cyan (11973 vs 4273 px)
+  in zone x660-795 y326-375 — the old "missing insert" finding is refuted.

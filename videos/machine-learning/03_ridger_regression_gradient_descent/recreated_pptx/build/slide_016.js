@@ -1,14 +1,12 @@
 const pptxgen = require("pptxgenjs");
-const { CHROME, drawHouseChrome } = require(
-  "/workspaces/codespaces-blank/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent/shared_patterns/house_chrome.js"
-);
+const { drawHouseChrome } = require("../../shared_patterns/house_chrome.js");
 
 const pres = new pptxgen();
 pres.layout = "LAYOUT_WIDE";
 const W = 13.333, H = 7.5;
 
 let slide = pres.addSlide();
-slide.background = { color: CHROME.canvas };
+slide.background = { color: "FFFFFF" };
 
 // House chrome: gray panel, red strokes (L/R/bottom only), badge numeral "16"
 drawHouseChrome(pres, slide, { numeral: "16" });
@@ -88,7 +86,7 @@ slide.addText([
 
 // b1: y187 x95
 slide.addText([
-  { text: "\u2022 This has the effect of better generalization of the model", options: { color: "000000", fontSize: 18, bold: false, fontFace: "Arial" } },
+  { text: "\u2022 This have the effect of better generalization of the model", options: { color: "000000", fontSize: 18, bold: false, fontFace: "Arial" } },
 ], {
   x: 95 / 72, y: 2.4236, w: 10.2083, h: 0.3472,
   margin: 0, valign: "middle",
@@ -104,7 +102,7 @@ slide.addText([
 
 // b2b: y264 x110
 slide.addText([
-  { text: "generalization, the regularization term is added to the objective loss function with a", options: { color: "000000", fontSize: 18, bold: false, fontFace: "Arial" } },
+  { text: "generalization, the generalization term is added to the objective loss function with a", options: { color: "000000", fontSize: 18, bold: false, fontFace: "Arial" } },
 ], {
   x: 110 / 72, y: 3.4931, w: 10.0000, h: 0.3472,
   margin: 0, valign: "middle",

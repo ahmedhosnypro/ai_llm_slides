@@ -7,7 +7,7 @@ Copy-only: this script reads files and compares, it never rewrites payloads.
 """
 import sys
 
-VIDEO_DIR = ("/workspaces/codespaces-blank/ai_llm_slides/videos/machine-learning/"
+VIDEO_DIR = ("/home/ahmed/Projects/ai_llm_slides/videos/machine-learning/"
              "03_ridger_regression_gradient_descent")
 Q = f"{VIDEO_DIR}/recreated_pptx/qa/slide005"
 MD = f"{VIDEO_DIR}/shared_patterns/judge_protocol_03.md"

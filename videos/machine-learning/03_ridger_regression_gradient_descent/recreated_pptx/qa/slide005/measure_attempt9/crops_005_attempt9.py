@@ -6,7 +6,7 @@ Law (judge_protocol_03.md §Procedure B): crop BOTH images at the SAME slide-spa
 import numpy as np
 from PIL import Image
 
-D = "/worksp""aces/codespaces-blank/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent"
+D = "/home/ahmed/Projects/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent"
 Q = D + "/recreated_pptx/qa/slide005"
 SX, SY = 2001/960.0, 1125/540.0
 

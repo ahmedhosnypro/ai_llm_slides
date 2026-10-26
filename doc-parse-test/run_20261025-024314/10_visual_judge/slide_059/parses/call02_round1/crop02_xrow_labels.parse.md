@@ -1,0 +1,1 @@
+<x_0.0><y_0.0>Xi □ Xi □ X2 □ X3 □ X4 □ X5 ○ ⊗ ⊗ ○ XN2 □ XNI<x_0.999><y_0.9859><class_Picture>

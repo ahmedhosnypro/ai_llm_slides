@@ -2,8 +2,8 @@
 # Leg B — zoomed crop-pair judge, slide 005 attempt 9, region 'lower_eqs'.
 # Payload sourced byte-for-byte from shared_patterns/judge_protocol_03.md Template B.
 set -e
-Q="/worksp""aces/codespaces-blank/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide005"
-R="/worksp""aces/codespaces-blank/ai_llm_slides"
+Q="/home/ahmed/Projects/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide005"
+R="/home/ahmed/Projects/ai_llm_slides"
 N=$(pgrep -c -f analyze_image.py || echo 0)
 if [ "$N" -ge 8 ]; then echo "GATE CONGESTED ($N) -- not dispatching"; exit 3; fi
 cd "$R" && bash scripts/16_vision_gate.sh timeout 1700 python3 \

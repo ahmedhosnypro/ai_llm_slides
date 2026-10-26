@@ -155,10 +155,14 @@ textbox(681, 138, 130, 24, [
   { text: "Remember", options: { color: RED, bold: true, fontSize: 12 } },
 ], "left", "top", 12);
 textbox(681, 158, 230, 26, [
-  { text: "X is a matrix, W is a vector,", options: { color: BLACK, fontSize: 14 } },
+  { text: "X", options: { color: RED, fontSize: 14 } },
+  { text: " is a matrix, ", options: { color: BLACK, fontSize: 14 } },
+  { text: "W", options: { color: "3736BB", fontSize: 14, underline: true } },
+  { text: " is a vector,", options: { color: BLACK, fontSize: 14 } },
 ], "left", "top", 14);
 textbox(681, 179, 150, 26, [
-  { text: "XW is a vector", options: { color: BLACK, fontSize: 14 } },
+  { text: "XW", options: { color: BLACK, fontSize: 14, underline: true } },
+  { text: " is a vector", options: { color: BLACK, fontSize: 14 } },
 ], "left", "top", 14);
 eqFit("eq_005_remember1.png", 680, 864, 213, 235);
 
@@ -178,7 +182,9 @@ eqFit("eq_005_pinkfrac.png", 79, 164, 294, 338);
 // text element — an unavoidable font-substitution artifact, identical at any size that
 // preserves the horizontal advance.
 textbox(196, 306, 350, 30, [
-  { text: "Get Best W that minimizes the loss", options: { color: BLACK, fontSize: 17.4 } },
+  { text: "Get Best ", options: { color: BLACK, fontSize: 17.4 } },
+  { text: "W", options: { color: RED, bold: true, fontSize: 17.4 } },
+  { text: " that minimizes the loss", options: { color: BLACK, fontSize: 17.4 } },
 ], "left", "top", 17.4);
 
 // ============================================================

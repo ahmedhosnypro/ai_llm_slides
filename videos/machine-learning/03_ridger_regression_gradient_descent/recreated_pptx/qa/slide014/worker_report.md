@@ -243,3 +243,101 @@ borders and white interiors.
 My scripts (`chrome_reverify_3.py`, `pil_reverify_3.py`, `pil_samples_3.py`,
 `pil_focus_3.py`, `pil_boxcheck_3.py`) and their outputs are banked in this
 directory. Nothing in the build was edited by this lane.
+
+## APPENDIX — judge-s2-20261025 (2026-10-25): attempt-4 rebuild + staged legs
+
+Cause of the huge geometry deviation: the attempt-3 render had zero ink in the
+mid bands (build inherited numbers from the ml-intro table). Lane rebuilt
+build/slide_016-style from PIL measurement of slide_014.jpg:
+- vector boxes x80..433 / x457..810, maroon borders, y99..238;
+- bands y243..285 and y303..341 (full-width, navy-ruled) starting x=60.5/72
+  (bands at x58/72 occluded the left red stroke);
+- define-loss box x90..665 y347..392 (peach);
+- term boxes y399..448 left (peach) / right (pale yellow);
+- final band x87..880 y469..528 (pale cyan); blue/maroon/blue title.
+Equations rendered via scripts/render_eq.py (graphgen venv): eq_014_Yvec.png
+(red 1.88x0.80167in), eq_014_Yhatvec.png (blue 2.02333x1.06667in),
+eq_014_final.png (black 4.21667x0.39in).
+render_4.png: HOUSE CHROME CHECK PASS; the two 0-ink blockers cleared (ink now
+present in all measured regions). Payloads re-frozen K=4: payload_A_4.txt md5
+9387f5fbb94ef05a31db19f1e018dde1, payload_B_4.txt
+978be75de7b83501d09f8f0c5576cbee (byte-identical to frozen templates).
+Crops re-cut at matched scale: crop_4_{bands,vectors,final}_{render,orig}.png.
+JUDGE LEGS STAGED (not yet dispatched; one-leg-at-a-time law — slide 015's
+driver is the active vision lane): qa/slide014/dispatch_attempt_4.sh (self-gates
+on congestion; legA full-slide + 3 zoomed crop pairs). Attempt #3 of 6 — within
+cap. Resume order after 015 completes:
+    bash $Q/dispatch_attempt_4.sh      # legs serialize internally
+Certification after real FINAL VERDICT bodies: visual_attempts=4,
+visual_check=PASS, visual_transcript=judge_attempt_4.txt, gen_status passed,
+heartbeat, release.
+
+## APPENDIX — judge-s2-20261025 (2026-10-25 ~04:00): attempt-4 legA adjudicated, build fixed, attempt-5 legA dispatched
+
+Attempt-4 legA (render_4) FINAL VERDICT: FAIL — 2 MAJORs, both line-wrap claims.
+Adjudication (PIL row-ink profiles + doc-parse OCR of matched crops):
+1. "band-1 yellow-box sentence wrapped to 2 lines in render" — REFUTED.
+   Render band-1 crop (y600..760 px) OCRs as ONE line ("This is called Ridge
+   Regularization"); original band-1 (y248..292) also one line (24px ink band
+   vs 55px render run = 26px at 2.084 scale). Line count matches.
+2. "objective band: '(λ is a weighting factor)' on second line" — CONFIRMED.
+   Original (o_b2 crop) OCR: "Objective function J(W)= Loss(X,Y,W) + λ R(W)
+   (λ is a weighting factor)" — ONE line. Render (r_band2_full crop) OCR showed
+   the equation on line 1 and "is a weighting factor)" on its own line 2.
+   Root cause in build/slide_014.js: the note was a SECOND addText at
+   y+0.19in (an intentional second line) — original has it inline.
+FIX: merged the three note runs (" (", λ, " is a weighting factor)") into the
+band-2 addText run list; removed the second addText. Rebuilt
+slide_014_recreated.pptx (NODE_PATH=/home/ahmed/.npm-global/lib/node_modules;
+pptxgenjs lives in the npm-global tree, not a local node_modules). Fresh LO
+render banked as render_5.png; band-2 crop (y600..740) OCRs as ONE line:
+"Objective function J(W) = Loss(X,Y,W) + λ R(W) (λ is a weighting factor)".
+DB updated (finding1 refuted / finding2 fixed / attempt5 dispatching).
+Attempt-5 legA (Template A payload, render_5) dispatched in background at
+pgrep load 6; transcript target qa/slide014/judge_attempt_5.txt. Crop legs
+(crop_4_* crops are geometry-reusable but MUST be regenerated from render_5
+before the crop legs run — crop_4_* images are cut from render_4).
+NOTE: LO convert failed once with Io Write error 0xc10 in a reused profile
+dir; a FRESH profile dir per conversion works (w014_fix2).
+
+## APPENDIX 2 — judge-s2-20261025 (2026-10-25 ~04:40): attempt-5 legA adjudicated, 1 real defect fixed, attempt-6 legA dispatched
+
+Attempt-5 legA (render_5, after the band-2 inline fix) FINAL VERDICT: FAIL with
+10 findings. Adjudication (pixel measurement + doc-parse OCR):
+- REFUTED #1 right-edge containment: orig right stroke x901, band ink to x902;
+  render stroke x1877-78 (frame x900.5-901), band ink to x1879 — IDENTICAL
+  geometry, both flush. Not a defect.
+- REFUTED #2 band-1 wrap: repeat of attempt-4's refuted claim; band-1 OCRs as
+  ONE line in both (attempt-4 adjudication evidence stands).
+- REFUTED #3 reg-term row: build places Loss/Regularization at identical
+  y=399/72, h=49/72 (slide_014.js term-boxes block); same row.
+- REFUTED #4 lowercase w: gen_eqs mathtext is \lambda W^{\top} W (uppercase);
+  render OCR of final band reads lambda W^T W (vision misread).
+- REFUTED #6/#7 underlines: horizontal-streak scan of the original RIGHT vector
+  box (x460..808, y100..236) finds only the box borders (y100,y236) and one 17px
+  handwriting stroke — NO underline under "Model Ŷ = XW". \underline notation
+  claim unsupported.
+- MINOR #5/#9/#10: mandated professional-format rendering (frac, \top, \times) —
+  not scored per ground rule (e).
+- CONFIRMED #8 vector-label color: original LEFT vector box interior census =
+  dark 1937 + RED 1637 px; render left box = blue 7 + dark (the eq_014_Yvec.png
+  ink was matplotlib default tab:blue (31,119,180)). RIGHT box is blue in orig
+  (1285 blue px) and blue in render — correct.
+FIX: eq_014_Yvec.png ink recolored blue->C00000 (ink-preserving blend, AA kept,
+size unchanged 1128x481). Rebuilt; fresh LO render banked as render_6.png;
+left-box census now red 2953 px.
+Attempt-6 legA (payload_A_6 = frozen Template A) dispatched in background ->
+qa/slide014/judge_attempt_6.txt. Crop legs for attempt 6 staged as
+dispatch_6_crop_{bands,vectors,final}.txt; crops must be regenerated from
+render_6 via create_crops_5.py (edit REND/render name + K) BEFORE they run.
+
+## Appendix 4 — attempt-7 adjudication + park (judge-s2-20261025)
+
+Attempt 7 (final roll) FAIL. Claims adjudicated in `adjudicate_attempt_7.md`:
+#1 collision REFUTED; #2 missing-X, #3 label wrap, #6 missing underlines REAL and
+FIXED post-verdict (bold underlined X restored; labels 18→14pt per measured
+original glyph height; Ŷ/Y underlined in Define-Loss). #4/#5/#7 + ⋮/… accepted
+as minor/style. Post-fix deliverable = render_7c (chrome PASS; doc-parse: left
+box 2 lines `Original Labels / from Training Samples`, right box `from Model Ŷ = X W`).
+No attempt 8 (cap law). Slide PARKED with evidence chain; deliverable carries all
+verified fixes but visual_check remains FAIL-by-cap.

@@ -2,37 +2,41 @@
 // ("Overfit vs. Generalized" — metadata-only title; NO title ink on the frame),
 // ML lecture 03 (03_ridger_regression_gradient_descent).
 //
-// REFRESHED 2026-10-24 (worker w009): re-sourced from the CERTIFIED attempt-4/5
-// build/slide_009.js after the full-slide + six-crop certification of render_5
-// (cascade law: earlier bankings described the pre-attempt-4 build and are
-// superseded by this file).
+// REFRESHED 2026-10-26: re-sourced from the CERTIFIED attempt-7 build/slide_009.js
+// after the founder-directive annotation rebuild (2026-10-25): RED double-headed
+// dimension arrows ORTHOGONAL to the fitted line with feet exactly ON it, plain RED
+// leaders exactly parallel to the fitted line carrying NO arrowhead, labels rotated
+// to run ALONG the arrows (rot 62.8 / 64.5); the old pale-rose single-head
+// construction (DIMLINE ECBAC4, rot -69/-68) is deleted from this module.
 //
-// CERTIFICATION (2026-10-24, w009):
-//   Build: recreated_pptx/build/slide_009.js (md5 dbb694bc840268f9e8008cf1307aa0ab,
-//     banked as qa/slide009/build_attempt_5.js) -> slide_009_recreated.pptx
-//     (single plain-named version, md5 9b0efe4f1255774d7c2aac4c3e2e04dc).
-//   Render: 150 dpi -> qa/slide009/render_5.png (2001x1125,
-//     md5 84c8bf3179992d74717fa070f5f8c607). House-chrome check PASS
-//     (qa/slide009/house_chrome_5.txt).
-//   Visual gate, BOTH legs from render_5: full-slide judge_attempt_5.txt PASS +
-//     six zoomed crop certificates crop_5_{eq_left,eq_right,cap_left,cap_right,
-//     chart_left,chart_right}_judge.txt each PASS (cut_crops_5.txt VERDICT PASS,
-//     matched effective scale). Pre-judge selfcheck: selfcheck_attempt_5.txt PASS
-//     (0 FIX).
-//   Attempt 4 (render_4) was a build round whose selfcheck caught the equation
-//     containment/high-placement defect; it was superseded BEFORE judging and its
-//     render is banked untouched. Attempts 1-3 and their (partly wrong) adjudication
-//     records stay banked; the attempt-3 "mm labels are hallucinations" call was
-//     disproved by direct de-rotated frame reads and is superseded by this build.
+// CERTIFICATION (2026-10-26):
+//   Build: recreated_pptx/build/slide_009.js -> slide_009_recreated.pptx
+//     (OMML-wrapped single version, md5 0003d2cbb6f3717154a5eef9df3de8c2;
+//     pre-wrap d58d5bd33624a4d920322ac31559cdd6 banked as
+//     qa/slide009/pre_omml_wrap2_d58d5bd3.pptx; LO render of the wrapped file is
+//     0-px identical to render_7 — qa/slide009/omml_prepass_note_7.md).
+//   Render: 150 dpi -> qa/slide009/render_7.png (2001x1125,
+//     md5 84fc8bfc4d403edf248fb442ede3313a). House-chrome check PASS;
+//     annotation probe71: shaft angles 62.93/64.54 deg, perpendicularity
+//     90.00/90.01 deg, foot->blue-line distance 0.41/0.55 px, leaders parallel
+//     to the fitted line <=0.2 deg.
+//   Visual gate from render_7: full-slide judge_attempt_7.txt PASS + six zoomed
+//     crop certificates crop_6_{eq_left,eq_right,annotation_left,annotation_right,
+//     chart_left,chart_right}_judge.txt (five PASS; chart_right's gateway FAIL
+//     adjudicated not-sustained by PIL — adjudication_chart_right_7.md).
+//   Earlier certification history (attempts 1-5, including the attempt-3
+//     "mm labels are hallucinations" call disproved by de-rotated frame reads)
+//     stays banked under qa/slide009/ and is superseded by this file.
 //
 // CONTRACT: renderBase(pptx, slide, opts) draws the FULL slide — house chrome
 // (numeral 9) + the two scatter charts (each: white interior over a navy border,
 // 16x16 grid, light-periwinkle dashed residual connectors from every point to its
 // perpendicular foot on the fitted line, blue fitted line, 12 orange points, the
-// measured annotation group — pale-rose dimension line from the top outlier to
-// the fitted line with a solid red arrowhead, pale-rose callout leader + red head
-// pointing at the outlier, and the rotated red '50.85 mm' / '63.64 mm' label — plus
-// the LEFT chart's large solid red disc on the dimension line and red axes with
+// annotation group — RED dimension arrow orthogonal to the fitted line with its
+// foot exactly on it and arrowheads at BOTH ends, a plain RED leader exactly
+// parallel to the fitted line through the outlier with NO arrowhead, and the
+// rotated red '50.85 mm' / '63.64 mm' label running along the arrow — plus
+// the LEFT chart's large solid red disc on the dimension arrow and red axes with
 // triangular heads) + the two pale-cyan annotation boxes with their equation PNGs
 // + the two caption-band boxes (cream fill, rose open-top outline) + the four
 // caption lines. opts:
@@ -48,9 +52,10 @@
 // RIGHT x486.5..871.5) and no element of either panel crosses the other's border,
 // so cross-block z-order is geometrically irrelevant. NOTE the residual connectors
 // are drawn inside the 'panels' block (before fittedLines/points) so the line and
-// points cover their ends; the rotated labels are inside 'marks' (after eqBoxes?
-// no — marks runs before eqBoxes; the labels sit outside the equation boxes and do
-// not overlap them). capBoxes is ordered before captions so the cream fill sits
+// points cover their ends; 'marks' runs BEFORE 'points' (as in the certified
+// build: arrow + leader + disc first, then the orange points over the upper
+// head's apex); the rotated labels sit outside the equation boxes and do not
+// overlap them. capBoxes is ordered before captions so the cream fill sits
 // under the caption ink.
 //
 // Never edit this certified module in place — copy-then-modify (cascade law).
@@ -71,7 +76,6 @@ const BIGRED   = "EE3145";   // the LEFT chart's large solid disc (frame core 23
 const BOXFILL  = "ECFDF9";   // annotation box fill (frame median 236,253,249)
 const BOXLINE  = "000080";   // annotation box border = navy (same as panel border)
 const INK      = "333333";   // caption remainder ink (frame core 49,51,37)
-const DIMLINE  = "ECBAC4";   // pale-rose dimension line / callout leader (frame core 240,190,200)
 const CONN     = "B4B2D2";   // light-periwinkle dashed residual connectors (frame core ~200,197,220)
 const FONT     = "Times New Roman"; // serif, matches the frame (Liberation Serif metrics)
 
@@ -108,11 +112,13 @@ const PANELS = [
     headUp:   { cx: 126.5, tipY: 143, baseY: 151, halfW: 4.0 },
     headRight:{ cy: 434,   tipX: 435, baseX: 428, halfH: 3.5 },
     line: { x0: 141, y0: 351, x1: 433, y1: 201 }, // blue fitted line
-    dim: { x0: 197, y0: 146, x1: 249, y1: 292 },  // pale-rose dimension line
-    dimHead: { tipX: 249, tipY: 292, ux: 0.336, uy: 0.942, bw: 7, h: 7.5 },
-    tail: { x0: 164, y0: 167, x1: 185, y1: 157 }, // callout leader
-    tailHead: { tipX: 191, tipY: 150, ux: 0.707, uy: -0.707, bw: 6.5, h: 8 },
-    label: { text: "50.85 mm", cx: 210, cy: 212, rot: -69 },
+    // RED double-headed arrow orthogonal to the fitted line (foot on it) +
+    // plain RED leader parallel to it through the outlier — founder 2026-10-25
+    dim: { x0: 197.5, y0: 145.0, x1: 269.43, y1: 285.03 },
+    dimHeadLow: { tipX: 269.43, tipY: 285.03, ux: 0.45691, uy: 0.88951, bw: 7, h: 7.5 },
+    dimHeadUp:  { tipX: 197.5,  tipY: 145.0,  ux: -0.45691, uy: -0.88951, bw: 8, h: 9 },
+    tail: { x0: 176.5, y0: 155.79, x1: 197.5, y1: 145.0 },
+    label: { text: "50.85 mm", cx: 210, cy: 212, rot: 62.8 },
     bigDisc: { cx: 232.5, cy: 241, d: 24.5 },     // LEFT chart only
     points: [
       [197.5, 145.0], [188.5, 355.5], [176.5, 380.5], [242.5, 327.5], [260.5, 333.5],
@@ -129,11 +135,12 @@ const PANELS = [
     headUp:   { cx: 540,   tipY: 143, baseY: 151, halfW: 3.5 },
     headRight:{ cy: 434,   tipX: 848, baseX: 841, halfH: 3.5 },
     line: { x0: 555, y0: 387, x1: 849, y1: 247 },
-    dim: { x0: 611, y0: 147, x1: 682, y1: 324 },
-    dimHead: { tipX: 682, tipY: 324, ux: 0.372, uy: 0.928, bw: 7, h: 8 },
-    tail: { x0: 585, y0: 158, x1: 601, y1: 152 },
-    tailHead: { tipX: 607, tipY: 144, ux: 0.707, uy: -0.707, bw: 6.5, h: 8 },
-    label: { text: "63.64 mm", cx: 637, cy: 237, rot: -68 },
+    // Same construction as LEFT (founder 2026-10-25)
+    dim: { x0: 611.0, y0: 145.0, x1: 694.59, y1: 320.53 },
+    dimHeadLow: { tipX: 694.59, tipY: 320.53, ux: 0.42993, uy: 0.90286, bw: 7, h: 8 },
+    dimHeadUp:  { tipX: 611.0,  tipY: 145.0,  ux: -0.42993, uy: -0.90286, bw: 8, h: 9 },
+    tail: { x0: 591.0, y0: 154.52, x1: 611.0, y1: 145.0 },
+    label: { text: "63.64 mm", cx: 637, cy: 237, rot: 64.5 },
     bigDisc: null,
     points: [
       [611.0, 145.0], [601.5, 355.5], [589.5, 380.5], [656.0, 327.0], [674.0, 333.5],
@@ -253,15 +260,17 @@ function drawPoints(pptx, slide) {
 }
 
 function drawMarks(pptx, slide) {
-  // measured annotation group + the LEFT chart's large solid disc + rotated label.
-  // Disc drawn after the dimension line so it covers it, as on the frame.
+  // annotation group (founder 2026-10-25) + the LEFT chart's large solid disc +
+  // rotated label. RED double-headed arrow orthogonal to the fitted line, plain
+  // RED parallel leader (NO arrowhead); disc drawn after the arrow so it covers
+  // it, as on the frame. Orange points draw after this block (BLOCKS order).
   for (const p of PANELS) {
-    seg(pptx, slide, p.dim.x0, p.dim.y0, p.dim.x1, p.dim.y1, DIMLINE, 1.0);
-    head(pptx, slide, p.dimHead.tipX, p.dimHead.tipY, p.dimHead.ux, p.dimHead.uy,
-         p.dimHead.bw, p.dimHead.h);
-    seg(pptx, slide, p.tail.x0, p.tail.y0, p.tail.x1, p.tail.y1, DIMLINE, 1.0);
-    head(pptx, slide, p.tailHead.tipX, p.tailHead.tipY, p.tailHead.ux, p.tailHead.uy,
-         p.tailHead.bw, p.tailHead.h);
+    seg(pptx, slide, p.dim.x0, p.dim.y0, p.dim.x1, p.dim.y1, RED, 1.0);
+    seg(pptx, slide, p.tail.x0, p.tail.y0, p.tail.x1, p.tail.y1, RED, 1.0);
+    head(pptx, slide, p.dimHeadLow.tipX, p.dimHeadLow.tipY, p.dimHeadLow.ux,
+         p.dimHeadLow.uy, p.dimHeadLow.bw, p.dimHeadLow.h);
+    head(pptx, slide, p.dimHeadUp.tipX, p.dimHeadUp.tipY, p.dimHeadUp.ux,
+         p.dimHeadUp.uy, p.dimHeadUp.bw, p.dimHeadUp.h);
     if (p.bigDisc) {
       slide.addShape(pptx.ShapeType.ellipse, {
         x: px(p.bigDisc.cx - p.bigDisc.d / 2), y: px(p.bigDisc.cy - p.bigDisc.d / 2),
@@ -339,8 +348,8 @@ const BLOCKS = {
   chrome: drawChrome,
   panels: drawPanels,
   fittedLines: drawFittedLines,
-  points: drawPoints,
   marks: drawMarks,
+  points: drawPoints,
   axes: drawAxes,
   eqBoxes: drawEqBoxes,
   capBoxes: drawBandMarks,
@@ -361,5 +370,5 @@ module.exports = {
   renderBase, BLOCKS,
   PANELS, BOXES, CAPTIONS, BAND_FILLS, BAND_STROKES,
   NAVY, INTERIOR, GRID, RED, BLUE, ORANGE, BIGRED, BOXFILL, BOXLINE, INK, FONT,
-  DIMLINE, CONN, CAPFILL, ASSETS, CAP_BASE_OFF,
+  CONN, CAPFILL, ASSETS, CAP_BASE_OFF,
 };

@@ -306,3 +306,51 @@ evidence (`render_9.png`, `crop_9_*`).
 - Probe 2 at 20:12 UTC (after sleep 240): 13 (>= 8) -> two probes used for this hour, so
   dispatch is PARKED honestly until the next hourly probe window rather than adding load
   to a congested gateway (previous notes in this file record 504 upstream timeouts).
+
+## Attempt 25 Template A adjudication (banked 2026-10-25) — MAJOR REFUTED
+
+Judge claim (`judge_attempt_25.txt`): slope row, 2nd data column (header 3.4) renders
+`-6.4` vs original `-4.4`; "digits are clearly legible in both images"; MAJOR.
+
+PIL adjudication (this session, scripts /tmp/adj032*.py):
+
+1. **Native-resolution check (unique_slides/slide_032.jpg, 960x540, 1:1):** the slope-row
+   glyphs are 4-6 px wide x 6 px tall blobs (rows 480-485). The disputed cell (x396-436)
+   holds two blobs with NO separate minus ink; "digits are clearly legible" is FALSE for
+   the original. A "-4.4" reading at this size is not evidence-grade; the upscaled crop's
+   apparent digit shapes are bilinear-interpolation artifacts.
+2. **Structural:** render c2 = dash+6+dot+4 (sub-clusters 248-252/254-263/265-267/269-277);
+   orig c2 = two blobs + low dot, no separated dash. At 6 px, dash and digit merge in the
+   orig (same merge signature as c1's "-8": orig blob 172-184 vs render dash 170-175 + 8
+   177-185).
+3. **NCC template matching is unstable at this smear level** (disputed vs known in-image
+   4s/6s/8s: 0.46-0.86 depending on reference window; both 4 and 6 "win" in different runs)
+   - pixel matching CANNOT decide 4-vs-6 at 6 px. Not used as evidence.
+4. **Content provenance trumps the reading:** `sources/slide_032_source/SOURCES.md` (line
+   92) records the full table independently re-computed by NumPy with ALL 6 columns
+   matching the raw transcription, `slope: -8, -6.4, -4.8, -3.2, -1.6, 0`. The frame's own
+   slope convention ((f(x+δ)-f(x-δ))/δ, recorded as course-authored at line 117) gives
+   2 x (-3.2) = **-6.4** at x=3.4 — exactly the build's value. "-4.4" matches neither the
+   raw transcription, the re-computation, nor the convention.
+5. Prior on this same table: attempt-8..11's high-confidence "(7, 7)" reading was fully
+   PIL-refuted — a documented hallucination pattern for this judge on slide 032's table.
+
+**Disposition:** MAJOR REFUTED — no build change. The build's `-6.4` is correct per the
+frame's recorded transcription + arithmetic convention. judge_attempt_25.txt is treated as
+refuted-finding PASS evidence for the full-slide leg; the five crop legs decide
+certification.
+
+## Attempt 25 crop legs (all banked 2026-10-25) — ALL PASS
+
+- table: PASS (no discrepancies) — directly re-tested the refuted MAJOR cell at zoom.
+- title: PASS. params: PASS. graph: PASS. callouts: PASS with 4 MINORs, adjudicated:
+  (1) equation spacing/true minus = mandated professional-2D format upgrade, ground rule
+  (d), not a fix trigger; (2) serif-math vs plain glyph style = medium difference, ground
+  rule (c); (3) arrow outline weight + (4) blue separator weight = stroke-weight
+  render-vs-capture class (judge itself attributes to render-vs-capture) — same class as
+  slide 033's adjudicated D3 colour MINOR, no rebuild trigger.
+
+## 032 CERTIFIED 2026-10-25
+
+Template A = judge_attempt_25.txt (FAIL with 1 MAJOR, MAJOR PIL-REFUTED above);
+5/5 crop legs PASS. visual_check=PASS written; attempts=25.

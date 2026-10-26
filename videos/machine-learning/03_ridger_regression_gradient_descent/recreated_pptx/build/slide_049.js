@@ -1,183 +1,267 @@
-// Slide 049 — machine-learning lecture 03 (03_ridger_regression_gradient_descent)
-// "Iteration 2" — built from measured frame unique_slides/slide_049.jpg (960x540, 1px=1pt)
-// plus the content spec analysis/slide_049_final.json.
+// Slide 049 — machine-learning/03_ridger_regression_gradient_descent
+// "Iteration 2" — rebuild per qa/slide049/pil_adjudication_049h.txt REBUILD TARGETS
+// + att12 fix cycle per qa/slide049/pil_adjudication_legA12.md FIX LIST
+// (paren delimiters aug/Z/wcol/initial-W, C1/C2 + Z subscripts, triplet
+// RED/INK coloring, W bold+underline, black =>, Initial-only underline,
+// italic aug title/headers/Stop).
+// (+ s7_049 pixel maps: result digits, legend tokens, rule/background census).
+// Frame unique_slides/slide_049.jpg (960x540, 1px = 1pt).
 //
-// MEASURED GEOMETRY (frame px), banked from PIL measurement 2026-10-23
-// (scratch/meas049.py, scratch/rlscan_049.py, scratch/zoom.py, scratch/lines.py):
-//   chrome        : panel x54..903 y45..540; C00000 strokes L58.5 / R901 / B538.5 (NO top);
-//                   badge centre (876,73) d35
-//   top box       : x68..720 y54..130, BLUE-VIOLET 2px border, WHITE interior
-//   data table    : 6 num cols x89..103,111..125,133..148,155..171,178..193,201..215
-//                   (pitch 21.2); header row y64..73; data rows y77..125
-//   "Initial" hdr : x239..253 y58..73 (RED)
-//   "Initial W=.." : x257..423 (dark)
-//   "REPEAT ..."  : RED, x420..535 y61..74
-//   "Check classes of" : x550..624 y86..98
-//   3x3 grid      : cols x640..656, 663..678, 686..701; rows y71..84, 86..104, 106..118
-//   title         : "Ugmented Vectors (from Top)" BLUE-VIOLET x82..215 y146..159
-//   aug table     : cols x89..211 y162..230 (6 cols pitch ~21, 5 rows)
-//   class labels  : C1 x88..134 RED / C2 x152..202 BLUE, y230..244
-//   RED box       : x84..214 y277..305, red fill + one white text line
-//   "No change in W": x77..156 y350..370 (black, plain)
-//   red "=>"-glyph: x84..122 y375..394 ; "Stop Iterations": x76..205 y375..394
-//   calc table    : x273..852, rules y140/205/271/337/403/469/527, WHITE interior
-//                   per row: d(xN) x283..336 | matrix x350..437 | "=> Keep same Weight"
-//                   x508..622 | W column x697..749 ("W =" x697..716, bracket+values
-//                   x722..749, column spans the row height y150..187)
+// Key rebuild deltas vs the prior build (all PIL-adjudicated):
+//   * top box border is INK 211776 (frame cores 33,23,117), not violet
+//   * tables are per-cell text boxes (LibreOffice expands addTable rows)
+//   * top table: bracketed 2-value stacks (tall font parens y77..107) + third
+//     value row below; "Initial W" dark label (no "=", underlined) with the
+//     stacked [4;-2;-2] column LEFT of it; red REPEAT on one line
+//   * aug box: gray frame rect, six 3-row bracketed columns, C1/C2 tags
+//   * calc panel: white-filled region x274..853 y140..528 (frame census) with
+//     ABAFBA rules — top y140, double separators 9px apart, bottom y528, left
+//     vertical x274 y140..514, NO right vertical, NO y46 line (house law)
+//   * d-rows per F2: bare digit triplet, high-bracket (5;-1;-1) column, "=",
+//     results 3/2/2/-4/-6/-7 (pixel-decided, see adjudication addendum),
+//     red =>, "Keep same Weight", "W =" + bracket column
+//   * legend: no commas; "Zero" green (frame core RGB(91,156,78))
 
 const pptxgenpkg = require("pptxgenjs");
-const { CHROME, drawHouseChrome } = require("../../shared_patterns/house_chrome.js");
+const { drawHouseChrome } = require("../../shared_patterns/house_chrome.js");
 const path = require("path");
+const fs = require("fs");
 const ASSET_DIR = path.join(__dirname, "assets");
+const sidecar = (n) => JSON.parse(
+  fs.readFileSync(path.join(ASSET_DIR, n + ".json"), "utf8"));
 
 const pptx = new pptxgenpkg();
-pptx.layout = "LAYOUT_WIDE";  // 13.333 x 7.5 in
+pptx.layout = "LAYOUT_WIDE";
 const s = pptx.addSlide();
-
 drawHouseChrome(pptx, s, { numeral: "49" });
 
 const FONT = "Arial";
 const BLACK = "000000";
 const RED = "FF0000";
-const BLUE = "0000FF";
-const VIOLET = "6A5ACD";   // measured blue-violet (box border, left heading, ring family)
-const RULE = "C1C1C9";     // measured calc-table rule
+const CRED = "C00000";     // => glyph / house-stroke red family
+const BOXRED = "C6020A";   // Iteration-box fill (048-certified measurement)
+const INK = "211776";      // top-box border + C2 class tags
+const NAVY = "1F1655";     // legend C2
+const VIOLET = "6A5ACD";   // aug-box title
+const GRAY = "ABAFBA";     // frame rects + calc rules
+const DGRAY = "909090";    // aug-table delimiter strokes
+const GREEN = "5B9C4E";    // legend "Zero" (frame core 91,156,78)
 const WHITE = "FFFFFF";
 
-// frame px -> inches (absolute frame coords: 960x540 == 13.333x7.5in)
-function fx(px) { return px / 72; }
-function fy(px) { return px / 72; }
-function fw(px) { return px / 72; }
-function fh(px) { return px / 72; }
+const fx = (px) => px / 72;
+const fy = (py) => py / 72;
+const fw = (px) => px / 72;
+const fh = (px) => px / 72;
 
-function cell(text, o) {
-  return { text: text, options: Object.assign({
-    fontFace: FONT, fontSize: 11, color: BLACK, align: "center", valign: "middle", margin: 0,
-  }, o || {}) };
+function txt(str, o) {
+  s.addText(str, Object.assign({
+    fontFace: FONT, fontSize: 11, color: BLACK, align: "center",
+    valign: "middle", margin: 0,
+  }, o || {}));
 }
-// parenthesised numeric cell (spec: "Column/vector numerals are parenthesized in tables")
-function pc(v, o) { return cell("(" + v + ")", o); }
+// one row of six per-cell texts on given centres
+function row(texts, centres, cellW, top, h, o) {
+  for (let i = 0; i < 6; i++) {
+    txt(texts[i], Object.assign({
+      x: fx(centres[i] - cellW / 2), y: fy(top), w: fw(cellW), h: fh(h),
+    }, o || {}));
+  }
+}
 
-// ---------------- 1. TOP BLUE-VIOLET BOX (white interior) ----------------
+// ---------------------------------------------------------------- TOP-BAND BOX
+// border bands measured: top y54-56, bottom y128-130, left x68-69, right x718-720
 s.addShape(pptx.ShapeType.rect, {
-  x: fx(68), y: fy(54), w: fw(720 - 68), h: fh(130 - 54),
-  fill: { color: WHITE }, line: { color: VIOLET, width: 1.5 },
+  x: fx(69), y: fy(55), w: fw(719 - 69), h: fh(129 - 55),
+  fill: { color: WHITE }, line: { color: INK, width: 1 },
 });
 
-// ---------------- 2. TOP DATA TABLE (x1..x6) ----------------
-const TBL_X = 89, TBL_W = 21.2;
-const tblRows = [
-  [cell("x1"), cell("x2"), cell("x3"), cell("x4"), cell("x5"), cell("x6")],
-  [pc("1"), pc("2"), pc("1"), pc("5"), pc("6"), pc("6")],
-  [pc("1"), pc("1"), pc("2"), pc("4"), pc("5"), pc("6")],
-  [pc("1"), pc("1"), pc("2"), pc("4"), pc("5"), pc("6")],
-];
-s.addTable(tblRows, {
-  x: fx(TBL_X), y: fy(64), w: fw(TBL_W * 6),
-  colW: [fw(TBL_W), fw(TBL_W), fw(TBL_W), fw(TBL_W), fw(TBL_W), fw(TBL_W)],
-  rowH: [fh(14), fh(15), fh(15), fh(14)],
-  fontFace: FONT, margin: 0, border: { type: "none" },
-});
+// ------------------------------------------------------- TOP TABLE (x1..x6)
+// header y64..73; bracketed 2-stacks y77..107 (digit rows y78..88 / y97..107);
+// class tag row y113..124 (outside the brackets). Column centres 96.2..208.2.
+{
+  const centres = [96.2, 118.6, 141.0, 163.4, 185.8, 208.2];
+  const cellW = 22.4;
+  row(["x\u2081", "x\u2082", "x\u2083", "x\u2084", "x\u2085", "x\u2086"],
+    centres, cellW, 64, 10, { bold: true });
+  row(["1", "2", "1", "5", "6", "6"], centres, cellW, 78, 10.5);
+  row(["1", "1", "2", "4", "5", "6"], centres, cellW, 97, 10);
+  // class tags C1..C6 -> C1 C1 C1 C2 C2 C2 at y113..124 (below the brackets)
+  const cls = ["C\u2081", "C\u2081", "C\u2081", "C\u2082", "C\u2082", "C\u2082"];
+  for (let i = 0; i < 6; i++) {
+    txt(cls[i], {
+      x: fx(centres[i] - cellW / 2), y: fy(113), w: fw(cellW), h: fh(12),
+      bold: true, italic: true, color: i < 3 ? RED : INK,
+    });
+  }
+  // tall font parentheses around the 2-stack rows (span y77..107)
+  const colL = [90, 111, 133, 156, 179, 201];
+  const colR = [102, 125, 147, 170, 193, 215];
+  for (let i = 0; i < 6; i++) {
+    txt("(", { x: fx(colL[i] - 2), y: fy(77), w: fw(6), h: fh(30), fontSize: 26 });
+    txt(")", { x: fx(colR[i] - 2), y: fy(77), w: fw(6), h: fh(30), fontSize: 26 });
+  }
+}
+// --------------------------------------------- INITIAL-W VECTOR + REPEAT
+// stacked column [4;-2;-2] LEFT of its label (F1); dark underlined "Initial W"
+// (no "="; underline band y72..73 x364..423); red REPEAT single line (F5).
+{
+  const vm = sidecar("eq_slide049_wcol_paren").iw;
+  const PPP = 72 / 600; // pt per asset px
+  s.addImage({
+    path: path.join(ASSET_DIR, "eq_initial_w_col_paren.png"),
+    x: fx(330.5 - vm.ink_left_px * PPP), y: fy(58 - vm.ink_top_px * PPP),
+    w: vm.w_in, h: vm.h_in,
+  });
+  // underline band y72..73 x365..422 = "Initial" only; W has no underline
+  s.addText([
+    { text: "Initial", options: { underline: true } },
+    { text: " W", options: {} },
+  ], {
+    x: fx(365), y: fy(61), w: fw(60), h: fh(13),
+    fontFace: FONT, fontSize: 13, color: BLACK, italic: true,
+    align: "left", valign: "middle", margin: 0, lineSpacing: 13,
+  });
+  s.addText("REPEAT using Step \u03b7 = 1", {
+    x: fx(426), y: fy(60), w: fw(150), h: fh(16),
+    fontFace: FONT, fontSize: 12, color: RED, bold: true,
+    align: "left", valign: "middle", margin: 0, lineSpacing: 13,
+  });
+}
 
-// "Initial" header of the 7th column (RED)
-s.addText("Initial", {
-  x: fx(233), y: fy(64), w: fw(24), h: fh(14),
-  fontFace: FONT, fontSize: 11, color: RED, align: "left", valign: "middle", margin: 0,
+// ------------------------------------------------------ CHECK-CLASSES + Z GRID
+txt("Check classes of", {
+  x: fx(548), y: fy(85), w: fw(92), h: fh(14),
+  fontSize: 10, align: "left",
 });
-// "Initial W = [4, -2]" — first data row, x257..423
+// header Z1 Z2 Z3 y71..84; rows (0,7,3) / (0,6,2); centres 648/670.5/693.5
+{
+  const centres = [648, 670.5, 693.5];
+  const cellW = 22.4;
+  const rows = [
+    { top: 71, h: 13, texts: ["Z\u2081", "Z\u2082", "Z\u2083"], bold: false, italic: true },
+    { top: 86, h: 14, texts: ["0", "7", "3"], bold: false, italic: false },
+    { top: 106, h: 12, texts: ["0", "6", "2"], bold: false, italic: false },
+  ];
+  // measured paren pairs (bows, ink top y88): (0;0)(7;6)(3;2)
+  // same bulge-centre placement as the aug pairs (lp bulge at bow, rp at bow+0.5)
+  const pl = sidecar("parens049/paren_z49_lp");
+  const pr = sidecar("parens049/paren_z49_rp");
+  const PPPP = 72 / 600;
+  const zp = [[641.5, 655.5], [664.5, 677.5], [686.5, 699.5]];
+  for (const [lx, rx] of zp) {
+    s.addImage({
+      path: path.join(ASSET_DIR, "parens049/paren_z49_lp.png"),
+      x: fx(lx - (pl.ink_left_px * PPPP + pl.S_pt / 2)),
+      y: fy(88 - pl.ink_top_px * PPPP),
+      w: pl.px_w * PPPP / 72, h: pl.px_h * PPPP / 72,
+    });
+    s.addImage({
+      path: path.join(ASSET_DIR, "parens049/paren_z49_rp.png"),
+      x: fx(rx + 0.5 - ((pr.ink_right_px + 1) * PPPP - pr.S_pt / 2)),
+      y: fy(88 - pr.ink_top_px * PPPP),
+      w: pr.px_w * PPPP / 72, h: pr.px_h * PPPP / 72,
+    });
+  }
+  for (const b of rows) {
+    for (let i = 0; i < 3; i++) {
+      txt(b.texts[i], {
+        x: fx(centres[i] - cellW / 2), y: fy(b.top), w: fw(cellW), h: fh(b.h),
+        bold: b.bold, italic: b.italic, fontSize: 12,
+      });
+    }
+  }
+}
+
+// ------------------------------------------------------------------- LEGEND
+// x239..508 y110..124; NO commas (frame descender census); Zero is green (F6).
 s.addText([
-  { text: "Initial ", options: { color: BLACK } },
-  { text: "W", options: { color: BLACK, italic: true } },
-  { text: " = [4, -2]", options: { color: BLACK } },
+  { text: "C\u2081", options: { color: RED, bold: true } },
+  { text: " positive " },
+  { text: "C\u2082", options: { color: NAVY, bold: true } },
+  { text: " negative " },
+  { text: "Zero", options: { color: GREEN, bold: true } },
+  { text: " is unaccepted" },
 ], {
-  x: fx(257), y: fy(64), w: fw(170), h: fh(15),
-  fontFace: FONT, fontSize: 11, color: BLACK, align: "left", valign: "middle", margin: 0,
+  x: fx(239), y: fy(108), w: fw(300), h: fh(17),
+  fontFace: FONT, fontSize: 13.5, color: BLACK,
+  align: "left", valign: "middle", margin: 0, lineSpacing: 14,
 });
 
-// ---------------- 3. REPEAT instruction (RED, x420..535 y61..74) ----------------
-s.addText("REPEAT using Step \u03b7 = 1", {
-  x: fx(420), y: fy(58), w: fw(120), h: fh(18),
-  fontFace: FONT, fontSize: 11, color: RED, bold: true,
+// ------------------------------------------------------------- AUGMENTED BOX
+// gray frame x69.5..245.5 / y139.5..255.5 (border strokes x70/x246, y140/y255)
+s.addShape(pptx.ShapeType.rect, {
+  x: fx(69.5), y: fy(139.5), w: fw(176), h: fh(116),
+  fill: { color: WHITE }, line: { color: GRAY, width: 0.75 },
+});
+s.addText("Ugmented Vectors (from Top)", {
+  x: fx(80), y: fy(146), w: fw(158), h: fh(15),
+  fontFace: FONT, fontSize: 12, color: VIOLET, italic: true,
   align: "left", valign: "middle", margin: 0,
 });
+{
+  const centres = [100, 122, 144.5, 167, 189.5, 212];
+  const cellW = 22.4;
+  row(["x\u2081", "x\u2082", "x\u2083", "x\u2084", "x\u2085", "x\u2086"],
+    centres, cellW, 166, 10, { bold: false, italic: true });
+  // six 3-row columns, value bands y184..192 / 199..207 / 214..222
+  const vals = [
+    ["1", "1", "1"], ["1", "2", "1"], ["1", "1", "2"],
+    ["1", "5", "4"], ["1", "6", "5"], ["1", "6", "6"],
+  ];
+  const bands = [183, 198, 213];
+  for (let r = 0; r < 3; r++) {
+    for (let c = 0; c < 6; c++) {
+      txt(vals[c][r], {
+        x: fx(centres[c] - cellW / 2), y: fy(bands[r]), w: fw(cellW), h: fh(10),
+      });
+    }
+  }
+  // measured paren pairs (fix 2: bows lp x93.5/115.5/137.5/160.5/182.5/205.5,
+  // rp x106.5/128.5/151.5/173.5/196.5/218.5, ink top y180; lp bulge = leftmost
+  // ink at bow, rp bulge = rightmost ink at bow+0.5 = centre of the measured band)
+  const paL = sidecar("parens049/paren_aug_lp");
+  const paR = sidecar("parens049/paren_aug_rp");
+  const PPP = 72 / 600;
+  const augLP = [93.5, 115.5, 137.5, 160.5, 182.5, 205.5];
+  const augRP = [106.5, 128.5, 151.5, 173.5, 196.5, 218.5];
+  for (let i = 0; i < 6; i++) {
+    s.addImage({
+      path: path.join(ASSET_DIR, "parens049/paren_aug_lp.png"),
+      x: fx(augLP[i] - (paL.ink_left_px * PPP + paL.S_pt / 2)),
+      y: fy(180 - paL.ink_top_px * PPP),
+      w: paL.px_w * PPP / 72, h: paL.px_h * PPP / 72,
+    });
+    s.addImage({
+      path: path.join(ASSET_DIR, "parens049/paren_aug_rp.png"),
+      x: fx(augRP[i] + 0.5 - ((paR.ink_right_px + 1) * PPP - paR.S_pt / 2)),
+      y: fy(180 - paR.ink_top_px * PPP),
+      w: paR.px_w * PPP / 72, h: paR.px_h * PPP / 72,
+    });
+  }
+  // class tags C1..C6 -> C1 C1 C1 C2 C2 C2 (bold+italic, RED/INK, measured)
+  for (let c = 0; c < 6; c++) {
+    s.addText(c < 3 ? "C\u2081" : "C\u2082", {
+      x: fx(centres[c] - cellW / 2), y: fy(230), w: fw(cellW), h: fh(14),
+      fontFace: FONT, fontSize: 11, bold: true, italic: true,
+      color: c < 3 ? RED : INK, align: "center", valign: "middle", margin: 0,
+    });
+  }
+}
 
-// ---------------- 4. "Check classes of" + 3x3 grid ----------------
-// measured: single line x542..624 y86..96 (needs w>=90 or 11pt wraps to 2 lines)
-s.addText("Check classes of", {
-  x: fx(548), y: fy(85), w: fw(92), h: fh(14),
-  fontFace: FONT, fontSize: 10, color: BLACK, align: "left", valign: "middle", margin: 0,
-});
-s.addTable([
-  [cell("Z1"), cell("Z1"), cell("Z1")],
-  [pc("0"), pc("7"), pc("3")],
-  [pc("0"), pc("6"), pc("2")],
-], {
-  x: fx(636), y: fy(69), w: fw(70),
-  colW: [fw(23.3), fw(23.3), fw(23.4)],
-  rowH: [fh(15), fh(19), fh(14)],
-  fontFace: FONT, margin: 0, border: { type: "none" },
-});
-
-// ---------------- 5. colour legend ----------------
-// measured: single line x245..544 y110..124 (~15px glyphs) — 15pt.
-// PIL colour map of the ORIGINAL: only the two class TAGS are coloured
-// (C1 red at x240..244, C2 blue at x312..320); "positive"/"negative"/
-// "Zero is unaccepted" are dark. 2026-10-24 fix-judge-049g.
-s.addText([
-  { text: "C1", options: { color: RED } },
-  { text: " positive", options: { color: BLACK } },
-  { text: "  ", options: { color: BLACK } },
-  { text: "C2", options: { color: BLUE } },
-  { text: " negative", options: { color: BLACK } },
-  { text: "  ", options: { color: BLACK } },
-  { text: "Zero is unaccepted", options: { color: BLACK } },
-], {
-  x: fx(245), y: fy(109), w: fw(305), h: fh(18),
-  fontFace: FONT, fontSize: 15, color: BLACK, align: "left", valign: "middle", margin: 0,
-});
-
-// ---------------- 6. Ugmented Vectors title + table ----------------
-// measured: title x82..219 y148..159 (~12px glyphs) — 12pt
-s.addText("Ugmented Vectors (from Top)", {
-  x: fx(82), y: fy(146), w: fw(158), h: fh(15),
-  fontFace: FONT, fontSize: 12, color: VIOLET, align: "left", valign: "middle", margin: 0,
-});
-const AW = 21;
-s.addTable([
-  [cell("x1"), cell("x2"), cell("x3"), cell("x4"), cell("x5"), cell("x6")],
-  [pc("1"), pc("1"), pc("1"), pc("1"), pc("1"), pc("1")],
-  [pc("1"), pc("2"), pc("1"), pc("5"), pc("6"), pc("6")],
-  [pc("1"), pc("1"), pc("2"), pc("4"), pc("5"), pc("6")],
-  [pc("1"), pc("1"), pc("2"), pc("4"), pc("5"), pc("6")],
-], {
-  x: fx(89), y: fy(162), w: fw(AW * 6),
-  colW: [fw(AW), fw(AW), fw(AW), fw(AW), fw(AW), fw(AW)],
-  rowH: [fh(14), fh(14), fh(14), fh(14), fh(13)],
-  fontFace: FONT, margin: 0, border: { type: "none" },
-});
-[["C1", 88, RED], ["C1", 109, RED], ["C1", 130, RED],
- ["C2", 151, BLUE], ["C2", 172, BLUE], ["C2", 193, BLUE]].forEach(function (c) {
-  s.addText(c[0], {
-    x: fx(c[1]), y: fy(230), w: fw(21), h: fh(15),
-    fontFace: FONT, fontSize: 11, color: c[2], bold: true, align: "center", valign: "middle", margin: 0,
-  });
-});
-
-// ---------------- 7. RED BOX "Iteration 2" ----------------
-// measured box x84..213 y278..304; white text x99..199 y283..298 (~16px glyphs) -> 21pt bold
+// ---------------------------------------------------------- ITERATION 2 BOX
+// red fill x84..213 y278..304 (row census 278..304 solid; NOT taller — the
+// r7 "y278..394" extent merged the box with the red Stop glyphs y376..393)
 s.addShape(pptx.ShapeType.rect, {
   x: fx(84), y: fy(278), w: fw(129), h: fh(26),
-  fill: { color: RED }, line: { color: RED, width: 1 },
+  fill: { color: BOXRED }, line: { color: BOXRED, width: 1 },
 });
 s.addText("Iteration 2", {
   x: fx(84), y: fy(278), w: fw(129), h: fh(26),
-  fontFace: FONT, fontSize: 21, color: WHITE, bold: true, align: "center", valign: "middle", margin: 0,
+  fontFace: FONT, fontSize: 21, color: WHITE, bold: true,
+  align: "center", valign: "middle", margin: 0,
 });
 
-// ---------------- 8. "No change in W" (W underlined) / "Stop Iterations" ----------------
-// measured line1 x78..216 y351..370: "No change in " x78..188 + underlined W x200..216 (rule y366..367)
-// measured line2: RED "Stop" x85..123 y375..394  +  dark "Iterations" x127..208 y375..394
-// glyph height ~16px in both lines -> 20pt
+// ------------------------------- "No change in W" / "Stop Iterations"
 s.addText("No change in ", {
   x: fx(78), y: fy(349), w: fw(120), h: fh(22),
   fontFace: FONT, fontSize: 20, color: BLACK, align: "left", valign: "middle", margin: 0,
@@ -189,59 +273,107 @@ s.addText("W", {
 });
 s.addText("Stop", {
   x: fx(85), y: fy(374), w: fw(42), h: fh(22),
-  fontFace: FONT, fontSize: 20, color: RED, align: "left", valign: "middle", margin: 0,
+  fontFace: FONT, fontSize: 20, color: RED, italic: true,
+  align: "left", valign: "middle", margin: 0,
 });
 s.addText("Iterations", {
   x: fx(127), y: fy(374), w: fw(90), h: fh(22),
   fontFace: FONT, fontSize: 20, color: BLACK, align: "left", valign: "middle", margin: 0,
 });
 
-// ---------------- 9. SIX CALCULATION ROWS (table x273..852) ----------------
-const CALC = [
-  { y: 140, lbl: "d(x1)", m: "[1, 1, 1, 5]", res: "[-1, 3]", img: "slide_049_matrix_1.png" },
-  { y: 205, lbl: "d(x2)", m: "[1, 2, 1, 5]", res: "[-1, 2]", img: "slide_049_matrix_2.png" },
-  { y: 271, lbl: "d(x3)", m: "[1, 1, 2, 5]", res: "[-1, 2]", img: "slide_049_matrix_3.png" },
-  { y: 337, lbl: "d(x4)", m: "[1, 5, 4, 5]", res: "[-1, -4]", img: "slide_049_matrix_4.png" },
-  { y: 403, lbl: "d(x5)", m: "[1, 6, 5, 5]", res: "[-1, -6]", img: "slide_049_matrix_5.png" },
-  { y: 469, lbl: "d(x6)", m: "[1, 6, 6, 5]", res: "[-1, -7]", img: "slide_049_matrix_6.png" },
-];
-CALC.forEach(function (r) {
-  const ry = r.y + 18;                    // measured text-line centre offset inside the row
+// ---------------------------------------------------------------- CALC PANEL
+// white-filled region x274..853 y140..528 (frame census: interiors 254,255,253
+// vs panel 231,233,230); ABAFBA rules; left vertical x274 y140..514; open right.
+s.addShape(pptx.ShapeType.rect, {
+  x: fx(274), y: fy(140), w: fw(853 - 274), h: fh(528 - 140),
+  fill: { color: WHITE }, line: { type: "none" },
+});
+[140, 197, 206, 263, 272, 329, 338, 395, 404, 461, 470, 528].forEach((y) => {
   s.addShape(pptx.ShapeType.line, {
-    x: fx(273), y: fy(r.y), w: fw(852 - 273), h: 0,
-    line: { color: RULE, width: 1 },
-  });
-  // 2D fix (worker-fresh-049f2): d(xN) matrix as a stacked 2-row bracketed matrix
-  // PNG per the deck's 2D-equation law; the "d(xN) =" label stays inline text.
-  s.addText(r.lbl + " =", {
-    x: fx(283), y: fy(ry), w: fw(60), h: fh(18),
-    fontFace: FONT, fontSize: 12, color: BLACK, align: "left", valign: "middle", margin: 0,
-  });
-  s.addImage({
-    path: path.join(ASSET_DIR, r.img), x: fx(348), y: fy(ry - 6), w: 0.79167, h: 0.42,
-  });
-  s.addText("\u21d2 Keep same Weight", {
-    x: fx(508), y: fy(ry), w: fw(120), h: fh(18),
-    fontFace: FONT, fontSize: 12, color: BLACK, align: "left", valign: "middle", margin: 0,
-  });
-  // 2D fix (fix-judge-049g, 2026-10-24): the original's per-row result column is a
-  // LABELLED bracketed 2-D column vector — glyph x697..706 ("W", bitmap-verified:
-  // 2 top strokes, converging middle, 2 bottom vertices) + "=" x711..716 + faint
-  // tall bracket x722..723 spanning y150..187 + values x727..747. Label stays inline
-  // text; the stacked bracketed column is a 600dpi PNG (sidecar eq_slide049_wcol.json).
-  s.addText("W =", {
-    x: fx(706), y: fy(ry), w: fw(24), h: fh(18),
-    fontFace: FONT, fontSize: 12, color: BLACK, align: "left", valign: "middle", margin: 0,
-  });
-  s.addImage({
-    path: path.join(ASSET_DIR, r.img.replace("slide_049_matrix_", "slide_049_wcol_")),
-    x: fx(728), y: fy(r.y + 10), w: 0.29167, h: 0.63167,
+    x: fx(274), y: fy(y), w: fw(853 - 274), h: 0,
+    line: { color: GRAY, width: 1 },
   });
 });
 s.addShape(pptx.ShapeType.line, {
-  x: fx(273), y: fy(527), w: fw(852 - 273), h: 0,
-  line: { color: RULE, width: 1 },
+  x: fx(274), y: fy(140), w: 0, h: fh(514 - 140),
+  line: { color: GRAY, width: 1 },
 });
+
+// --------------------------------------------------- SIX CALCULATION ROWS
+// band starts 140/206/272/338/404/470; ink offsets within a band:
+//   bare digits +9..+20 at x-centres 335/353/371; label/+ others centred +30;
+//   high-bracket column x379 (top +7); "=" x409 (rows 4-6 x411); result digit
+//   x420 (rows 4-6 "−d" from x420); => x496 (rows 4-6 x508.5); verdict x516
+//   (rows 4-6 x528); "W =" x695 (rows 4-6 x708); W column x721 (rows 4-6 x733).
+{
+  const B = [140, 206, 272, 338, 404, 470];
+  const digits = [["1", "1", "1"], ["1", "2", "1"], ["1", "1", "2"],
+    ["1", "5", "4"], ["1", "6", "5"], ["1", "6", "6"]];
+  const results = ["3", "2", "2", "\u22124", "\u22126", "\u22127"];
+  const centres = [335, 353, 371];
+  for (let i = 0; i < 6; i++) {
+    const b = B[i];
+    const lower = i >= 3;
+    // d(xi) = label with true subscript
+    s.addText([
+      { text: "d(x", options: {} },
+      { text: String(i + 1), options: { subscript: true } },
+      { text: ") =", options: {} },
+    ], {
+      x: fx(283), y: fy(b + 22), w: fw(46), h: fh(16),
+      fontFace: FONT, fontSize: 12, color: BLACK, align: "left",
+      valign: "middle", margin: 0,
+    });
+    // bare digit triplet (top-aligned); fix 8: rows 1-3 RED, rows 4-6 INK
+    for (let c = 0; c < 3; c++) {
+      txt(digits[i][c], {
+        x: fx(centres[c] - 7), y: fy(b + 9), w: fw(14), h: fh(12),
+        fontSize: 12, valign: "top", color: lower ? INK : RED,
+      });
+    }
+    // high-bracket column (5;-1;-1) — paren asset, lp bow x379.5, ink top b+7
+    const wc = sidecar("eq_slide049_wcol_paren").wcol_1;
+    s.addImage({
+      path: path.join(ASSET_DIR, "slide_049_wcol_paren_1.png"),
+      x: fx(379.5 - wc.ink_left_px * 72 / 600), y: fy(b + 7),
+      w: wc.w_in, h: wc.h_in,
+    });
+    // "="
+    txt("=", {
+      x: fx(lower ? 411 : 409), y: fy(b + 22), w: fw(10), h: fh(16), fontSize: 12,
+    });
+    // result (rows 4-6 carry the minus in the same box)
+    txt(results[i], {
+      x: fx(lower ? 420 : 419), y: fy(b + 22), w: fw(lower ? 24 : 12), h: fh(16),
+      fontSize: 12, align: "left",
+    });
+    // => (fix 10: BLACK, keep bold)
+    txt("\u21d2", {
+      x: fx(lower ? 508.5 : 496), y: fy(b + 22), w: fw(14), h: fh(16),
+      fontSize: 15, bold: true, color: BLACK,
+    });
+    // verdict
+    txt("Keep same Weight", {
+      x: fx(lower ? 528 : 516), y: fy(b + 22), w: fw(110), h: fh(16),
+      fontSize: 12, align: "left",
+    });
+    // W = (fix 9: W bold + underlined) + paren column (lp bow x722.5/x733.5, ink top b+8)
+    s.addText([
+      { text: "W", options: { bold: true, underline: true } },
+      { text: " =", options: {} },
+    ], {
+      x: fx(lower ? 708 : 695), y: fy(b + 22), w: fw(26), h: fh(16),
+      fontFace: FONT, fontSize: 12, color: BLACK, align: "left",
+      valign: "middle", margin: 0,
+    });
+    const wcol = sidecar("eq_slide049_wcol_paren")["wcol_" + (i + 1)];
+    s.addImage({
+      path: path.join(ASSET_DIR, "slide_049_wcol_paren_" + (i + 1) + ".png"),
+      x: fx((lower ? 733.5 : 722.5) - wcol.ink_left_px * 72 / 600),
+      y: fy(b + 8), w: wcol.w_in, h: wcol.h_in,
+    });
+  }
+}
 
 const OUT = "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_049_recreated.pptx";
 pptx.writeFile({ fileName: OUT }).then(function () { console.log("wrote " + OUT); });

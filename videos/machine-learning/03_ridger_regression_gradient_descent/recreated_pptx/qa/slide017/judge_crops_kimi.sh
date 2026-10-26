@@ -8,8 +8,8 @@
 # region_descs_4.json the payload was emitted from.
 # Run the gate-law pgrep check (<8) before EACH leg.
 set -u
-export TMPDIR=/workspaces/codespaces-blank/ai_llm_slides/scratch/tmp
-cd /workspaces/codespaces-blank/ai_llm_slides
+export TMPDIR=/home/ahmed/Projects/ai_llm_slides/scratch/tmp
+cd /home/ahmed/Projects/ai_llm_slides
 QA=videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide017
 
 for NAME in wbox band1 band2 band3 test; do

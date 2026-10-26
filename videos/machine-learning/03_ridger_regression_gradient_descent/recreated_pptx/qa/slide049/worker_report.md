@@ -86,3 +86,18 @@ deterministic 630s client-side abort on the current vision model; if the model c
 be prompted to finish under those constraints, this needs a founder decision
 (either a gateway/model fix, or a sanctioned reduction of max-tokens) — NOT a local
 workaround, which the byte-for-byte/token law forbids.
+
+## 2026-10-26 fresh-carrier addendum (S7a, att14)
+
+- att14 legA PASS (3 MINORs adjudicated in pil_adjudication_att14.md: Initial-W "="
+  + REPEAT underline settled-refuted; Z-subscript order unscoreable — orig marks 1px).
+- 5/5 crop legs clean-or-adjudicated: top_band 3 MAJORs all settled Initial-W
+  refutations / unscoreable delimiter (render objectively paren asset, unchanged
+  since a12); aug_box, legend, calc_rows, iter_stop PASS.
+- Fix cycle applied: top-table digit row2 (1,1,2,4,5,6) restored y97 h10; class tags
+  moved to y113 h12; legend + aug tags switched subscript:true → plain unicode ₁₂
+  (certified 044/045/047 idiom). render_13 chrome-PASS.
+- **CERTIFIED**: DB slide 49 gen_status=passed, visual_check=PASS, attempts=14,
+  transcript judge_attempt_14.txt; stale 2026-10-24 last_error cleared; pool cert event.
+- 048 att8 dispositions + fix recipe banked at qa/slide048/HANDOFF.md (parked at
+  wall); pool parked event.

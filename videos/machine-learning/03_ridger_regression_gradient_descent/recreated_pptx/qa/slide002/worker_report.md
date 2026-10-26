@@ -90,3 +90,19 @@ Full record: `qa/slide002/adjudication_badgeplus_1.txt`.
   and the dead predecessors' measurement scripts all remain in `qa/slide002/`).
 - Scratch used: `/home/ahmed/Projects/ai_llm_slides/scratch/tmp` (TMPDIR redirect per deck law);
   LibreOffice private profile `scratch/lo_slide002_render`.
+
+## S19 payload-exact confirmation addendum (2026-10-25)
+
+Confirmation crop legs re-ran on the certified deliverable under the
+pool-299640 amendment (no rebuild): frozen tplB payload byte-exact (literal
+"of slide NNN" substitution only; payload banked as payload_B_N002_confirm.txt,
+md5 d137335f924c3d7e8ff77bdcc68e8c6e), PIL-verified matched-scale crop pairs.
+
+- Title crop: crop_1_title_judge_confirm.txt — FINAL VERDICT: PASS, zero
+  findings.
+- Badge+title-left crop: crop_1_badgeplus_judge_confirm.txt — FINAL VERDICT:
+  PASS + 2 MINORs (glyph-weight class); adjudicated PIL-first in
+  adjudication_badgeplus_1_confirm.txt (render-vs-original weight deltas at
+  the 960x540 noise floor; no content defect).
+- DB: last_error note written; gen_status/visual_check untouched.
+- No build, render, or banked evidence was modified.

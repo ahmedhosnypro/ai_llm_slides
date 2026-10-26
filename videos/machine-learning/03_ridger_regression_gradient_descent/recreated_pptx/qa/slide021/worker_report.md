@@ -965,3 +965,62 @@ Also refreshed the DB park record via `set 21 last_error ... --worker w021-legs-
 the fact that any FAIL/MINOR must be PIL-adjudicated before any build change. No other DB
 field was touched: gen_status=building, visual_check="", visual_attempts=10,
 visual_transcript=judge_attempt_10.txt, worker_id=w021-legs-20261024 (heartbeat live).
+
+---
+
+## Attempt 11 (2026-10-25, worker s4-3730479) — real defect fix, then re-judge
+
+### Dispatch-context correction (important for the record)
+
+The 2026-10-24 park note said the 4 remaining crops were "DUE, never dispatched".
+In fact all five crop transcripts WERE banked (top_table_eq PASS,
+mid_table_eq PASS, top_chain FAIL, mid_chain FAIL, bot_eq_table FAIL) — the
+dispatcher/certifier from that session died before logging its completion. Those
+FAILs are real verdict bodies, not gateway no-verdicts.
+
+### PIL-first adjudication of the three FAILs (fresh crop pairs re-cut from the
+current render at matched x2.0833 scale; original truth = unique_slides/slide_021.jpg)
+
+CONFIRMED defects (both sides measured):
+1. **Arrows:** original chain arrows are double-stroke implication arrows
+   (ink ~17 x 10.5 frame-px, blue census 972/1503 px); render drew single-shaft
+   (6.2 frame-px tall, 413/511 px). top_chain + mid_chain driver + bot_eq_table
+   MINOR 3. -> fixed: `arrowD()` text run "\u21D2" (Liberation Serif 23pt),
+   measured after fix 14 x 10.1 frame-px (double-stroke verified).
+2. **bot_eq_table P3 table enclosure:** original has 4 vertical rules
+   (x570/712/853/995 crop-px) + 4 horizontal rules (y15/51/88/124); render had
+   3 horizontals and ZERO verticals. Root cause found in the pptx XML:
+   `border: [{...}]` (1-element array) makes pptxgenjs emit
+   `lnT` solid + `lnL/lnR/lnB noFill` — LibreOffice then draws top-only.
+   -> fixed: `border: {type:"solid",color:GRID,pt:1}` (object) on all three
+   tables (top/mid had the same latent defect, though their judges had passed).
+
+Fixes verified in the new 150dpi render (house_chrome PASS):
+- verticals now at crop x568/711/853/995 (orig 570/712/853/995), bottom rule at
+  y126 (orig y124..127);
+- arrows 14 x 10.1 frame-px, blue double-stroke glyph.
+
+Both `slide_021.js` source of truth and `render_10.png` are regenerated from the
+build (equation PNGs recovered from the prior pptx media; resize re-derived).
+Payloads unchanged: leg A `judge_prompt_10.txt` md5 d072bded (verbatim Template
+A), crops `crop_prompt_template_10.txt` md5 b5b152e3 (verbatim Template B, NNN=21).
+Attempt-11 leg A dispatched (bash-ro2dmvq4) -> judge_attempt_11.txt; crops
+re-cut from the new render_10 at matched scale.
+
+### crop_11 top_chain adjudication (worker-s4-3730479, 2026-10-25)
+Verdict FAIL, 3 findings — ALL DISMISSED by PIL at matched scale (render_11 vs
+unique_slides/slide_021.jpg, s=2.0833):
+1. "Missing red underlines under X terms (HIGH 0.85)" — REFUTED: loose red-mask row
+   profile x340..395 shows red ink ending y209 in BOTH images, zero rows y210..214 in
+   BOTH. No solid wide red rule exists in the original; the judge read the X glyph's
+   lower diagonal strokes as rules. Nothing to fix.
+2. Glyph weight MINOR — render red row max 66 vs orig 30 (render slightly heavier, not
+   lighter as claimed); same PNG class as crop_11 top_table_eq which PASSED. Medium
+   artifact, below bar. Dismissed.
+3. Determinant bar weight MINOR (low conf) — same class. Dismissed.
+top_chain: content-equivalent, no build change.
+Follow-up (label-region check): the top_table_eq judge also described faint red
+strokes under the LABEL X's (IMG2 y153-157 frame) as a possible lecture pen mark,
+MINOR, in a leg that PASSED. Render label band y133-153 vs orig y133-157 (dy<=3,
+within 6px tol); the d5685/det0 chain X red ink ends y209 (orig) vs y207-208
+(render). No solid red rule exists in either. No build change.

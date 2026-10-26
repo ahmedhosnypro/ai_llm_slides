@@ -53,6 +53,7 @@ const PALEBL = "DBE9FC";   // remember box fill (measured 219,233,252)
 const WHITE  = "FFFFFF";
 const BLACK  = "000000";
 const INK    = "333333";
+const WHEREBLUE = "1F1FC8"; // where-block math letters (measured)
 const FONT   = "Arial";
 
 const pptx = new pptxgen();
@@ -109,7 +110,7 @@ rect(80, 99, 315, 123, WHITE, { color: RED, width: 1 });
 //   "Original Labels"  x246..371, y136..153    red, RIGHT of the matrix
 //   "from Training Samples" x215..388, y159..177 black, UNDER the caption
 // => the caption block sits beside the matrix, not stacked under it.
-eqImage("eq_004_Yvec.png", 87, 131, 1.90373, 0.71400);
+eqImage("eq_004_Yvec.png", 84, 102, 2.47222, 1.50000);
 
 // "Original Labels" - bold red, to the RIGHT of the matrix (same vertical band)
 textbox(245, 136, 145, 18, [
@@ -130,7 +131,7 @@ rect(427, 99, 318, 123, WHITE, { color: RED, width: 1 });
 // Measured arrangement (same adjudication script): "Let Yh=" x432..494 y145..163,
 // matrix x511..547 y114..208, "Predicted Labels" x587..722 y137..150 RIGHT of the
 // matrix, "from Model Yh=XW" x565..735 y163..183 UNDER the caption.
-eqImage("eq_004_Yhatvec.png", 432, 130, 1.78800, 0.86600);
+eqImage("eq_004_Yhatvec.png", 428, 104, 1.91667, 1.59722);
 
 // "Predicted Labels" - bold blue, to the RIGHT of the matrix (same vertical band)
 textbox(587, 137, 145, 18, [
@@ -154,8 +155,10 @@ rect(784, 100, 97, 53, PALEBL);
 // "Remember" - bold dark-red (PIL-measured original ink RGB(169,51,74) = the
 // same dark-red as the slide's other red text runs, JPEG-softened; REDTXT FF0000
 // is the build's red-text constant, matching "Original Labels"/"Error (Loss)").
+// Underlined: the original carries a full-width bar under the header
+// (measured y118, x795..864, clear gap below the text baseline).
 textbox(787, 102, 92, 14, [
-  { text: "Remember", options: { color: REDTXT, bold: true, fontSize: 11 } },
+  { text: "Remember", options: { color: REDTXT, bold: true, fontSize: 11, underline: true } },
 ], "left", "top", 11);
 
 // "||a||2 = a^T a"
@@ -194,41 +197,81 @@ textbox(84, 306, 396, 59, [
 // 7. PREDICTED / WHERE BOX — red border, white fill
 //    x 494..884, y 232..371 (measured: the block IS boxed, not free-floating)
 // ============================================================
-rect(494, 232, 390, 139, WHITE, { color: RED, width: 1 });
+rect(494, 234, 388, 137, WHITE, { color: RED, width: 1 });
 
-// "Ŷ = XW" + "Predicted" in red — first line. The original underlines Ŷ and W in
-// this line (measured bars x506..519 y274 and x562..579 y274, i.e. under the Ŷ at
-// x507..519 and the W at x563..579; the X at x541..556 is NOT underlined). The text
-// is split into runs — never re-worded — only to place those two underlines.
-textbox(500, 248, 378, 22, [
-  { text: "Ŷ", options: { color: INK, fontSize: 16, italic: true, underline: true } },
-  { text: " = X", options: { color: INK, fontSize: 16, italic: true } },
-  { text: "W", options: { color: INK, fontSize: 16, italic: true, underline: true } },
-  { text: "  Predicted", options: { color: REDTXT, bold: true, fontSize: 14 } },
+// Line 1 "Ŷ = XW": Ŷ black bold, X/W blue bold-italic (measured 1F1FC8);
+// the X–W gap is real in the original. Underlines are separate line shapes,
+// not run underlines (measured bars: Ŷ x508..526 y278 black, W x566..584 y278
+// red; the X at x541..556 is NOT underlined). "Predicted" is its own red
+// box well to the right (measured x672..760 y256..278), not inline.
+textbox(505, 252, 120, 22, [
+  { text: "Ŷ", options: { color: INK, bold: true, fontSize: 16 } },
+  { text: " = ", options: { color: INK, fontSize: 16 } },
+  { text: "X", options: { color: WHEREBLUE, bold: true, italic: true, fontSize: 16 } },
+  { text: " W", options: { color: REDTXT, bold: true, italic: true, fontSize: 16 } },
 ], "left", "top", 16);
-
-// "Where:" starts the first fact line INLINE in the original (measured: the
-// y285..303 band runs "Where: X_{N×(d+1)} is a matrix ⇒ Given" as one line;
-// band tops 285/314/345 -> pitch ~30).
-// pptxgenjs v4 multi-line law (measured 2026-10-23 on slide_004): 'breakLine'
-// emits NO <a:br/> so all runs collapse into ONE paragraph, and the nested-array
-// (per-paragraph) form makes LibreOffice drop the whole shape. ONLY separate
-// addText calls per line render every line — verified with pdftotext + a PIL
-// ink-band check before banking. Each line is pinned to its own y so the pitch
-// is explicit (LO-vs-PPT auto-pitch divergence law, founder directive (2026-10-10)).
-const WHERE_LINES = [
-  [
-    { text: "Where: ", options: { color: INK, bold: true, fontSize: 13 } },
-    { text: "X_{N×(d+1)} is a matrix ⇒ Given", options: { color: INK, fontSize: 13 } },
-  ],
-  [{ text: "Y_{N×1} is labels vector ⇒ Given", options: { color: INK, fontSize: 13 } }],
-  [{ text: "W is Model Parameter ⇒ Required", options: { color: INK, fontSize: 13 } }],
-];
-const WHERE_Y = 285;      // first line top (measured: original 'Where:' band 285..303)
-const WHERE_PITCH = 30;   // frame px between line tops (measured tops 285/314/345)
-WHERE_LINES.forEach((runs, i) => {
-  textbox(500, WHERE_Y + i * WHERE_PITCH, 378, 22, runs, "left", "top", 13);
+slide.addShape(pptx.ShapeType.line, {
+  x: px(508), y: px(266), w: px(18), h: 0,
+  line: { color: BLACK, width: 1.5 },
 });
+slide.addShape(pptx.ShapeType.line, {
+  x: px(551), y: px(266), w: px(15), h: 0,
+  line: { color: REDTXT, width: 1.5 },
+});
+textbox(672.5, 256, 88, 22, [
+  { text: "Predicted", options: { color: REDTXT, bold: true, italic: true, fontSize: 14 } },
+], "left", "top", 14);
+
+// Three fact lines with the original's staircase indentation (measured line
+// x-origins 506 / 572.5 / 564, tops 284/309/336), clean typographic
+// subscripts (subscript: true — same idiom as slide_003.js), bold emphasis
+// on matrix/vector/Given/Required, and right-aligned ⇒-tag column at x770.
+// pptxgenjs v4 multi-line law: ONLY separate addText calls per line render
+// every line (see the retired WHERE_LINES block history below).
+const whereLine = (x, y, runs) => textbox(x, y, 220, 22, runs, "left", "top", 13);
+const whereArrow = (y, tag, tagY) => {
+  textbox(770, y, 22, 16, [
+    { text: "⇒", options: { color: INK, bold: true, fontSize: 13 } },
+  ], "center", "middle", 13);
+  textbox(799, tagY, 80, 22, [
+    { text: tag, options: { color: INK, bold: true, fontSize: 13 } },
+  ], "left", "top", 13);
+};
+
+// L2: Where : X_{N x d+1} is a matrix ⇒ Given
+whereLine(506, 284, [
+  { text: "Where", options: { color: INK, italic: true, fontSize: 13 } },
+  { text: " : ", options: { color: INK, fontSize: 13 } },
+  { text: "X", options: { color: WHEREBLUE, bold: true, italic: true, fontSize: 13 } },
+  { text: "N x d+1", options: { color: WHEREBLUE, italic: true, fontSize: 9.5, subscript: true } },
+  { text: " is a ", options: { color: INK, fontSize: 13 } },
+  { text: "matrix", options: { color: INK, bold: true, fontSize: 13 } },
+]);
+whereArrow(286, "Given", 284);
+
+// L3: Y_{N x 1} is labels vector ⇒ Given  (Y red with red underline)
+whereLine(572.5, 309, [
+  { text: "Y", options: { color: REDTXT, bold: true, italic: true, fontSize: 13 } },
+  { text: "N x 1", options: { color: REDTXT, italic: true, fontSize: 9.5, subscript: true } },
+  { text: " is labels ", options: { color: INK, fontSize: 13 } },
+  { text: "vector", options: { color: INK, bold: true, fontSize: 13 } },
+]);
+slide.addShape(pptx.ShapeType.line, {
+  x: px(574), y: px(322.5), w: px(17), h: 0,
+  line: { color: REDTXT, width: 1.5 },
+});
+whereArrow(311, "Given", 309);
+
+// L4: W is Model Parameter ⇒ Required  (W red with red underline)
+whereLine(564, 336, [
+  { text: "W", options: { color: REDTXT, bold: true, italic: true, fontSize: 13 } },
+  { text: " is Model Parameter ", options: { color: INK, fontSize: 13 } },
+]);
+slide.addShape(pptx.ShapeType.line, {
+  x: px(565), y: px(348), w: px(19), h: 0,
+  line: { color: REDTXT, width: 1.5 },
+});
+whereArrow(338, "Required", 336);
 
 // ============================================================
 // 8. DEFINE BOX — red border, salmon fill
@@ -254,6 +297,10 @@ textbox(82, 387, 571, 61, [
 rect(78, 464, 408, 58, PALE, { color: NAVY, width: 1 });
 
 // "Loss = ||Y - Ŷ||2 = (Y - Ŷ)^T (Y - Ŷ)"
-eqImage("eq_004_formula.png", 171.54, 481.92, 3.68200, 0.33600);
+// Placement maps the asset's ink onto the original's measured ink span
+// x93..392 (299 frame px) with y-top 472.8 — NOT the sidecar's ×1.2 native
+// size (that put the equation at x171..437, right-shifted 78px and 15% short).
+// Asset ink is two-tone: "Loss =" recolored red, body black (recolor_vectors.py).
+eqImage("eq_004_formula.png", 93, 472.8, 4.1528, 0.3789);
 
 pptx.writeFile({ fileName: OUT }).then(() => console.log("wrote " + OUT));

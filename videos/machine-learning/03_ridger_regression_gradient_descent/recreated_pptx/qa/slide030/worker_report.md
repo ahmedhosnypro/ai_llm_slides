@@ -267,3 +267,55 @@ Not a defect.
   verdict; if a verdict escalates it, fix = adjust the arrow shape, re-render,
   re-cut crops, re-run BOTH affected legs).
 - plot point labels ~3 px smaller than the original's (MINOR-class).
+
+## Adjudication of crop_25_plot FAIL (vs render_25, PIL-first) — 2026-10-25
+
+- **Finding 1 (MAJOR — "(5,1)" label green vs black): REFUTED.** Orig label glyphs
+  at (5,1) (frame x685-723, y238-261): 54 green px (e.g. (48,238,42)), ZERO dark
+  neutral. The original's label IS green. Render: 69 green px (0,176,80) —
+  matches class. Judge misread the original.
+- **Finding 2 (MAJOR — x-axis tick "5" green vs black): REFUTED.** Orig tick5
+  glyph (frame x687-690, y269-278): dark warm-grey pixels (119,92,97),(118,102,105)
+  — R>G, NOT green. Render tick5: neutral (64,64,64),(72,72,72). The (192,0,0)
+  pixels intersecting x687 are the RED DASHED LINE, not the tick glyph. Both ticks
+  are neutral-dark; judge's colour claim is an artifact of the dashed line overlay.
+- **Finding 3 (MINOR — dashed line weight): MINOR-class, judge itself says do not
+  block; IMG2 is compression-softened (ground rule e).**
+
+Disposition: plot region is PASS-equivalent by pixel evidence; no fix trigger.
+Banked with this adjudication as the certification record.
+
+## Attempt-25 progress ledger — 2026-10-25
+
+Template A: PASS (judge_attempt_25.txt; 7 MINORs, no BLOCKER/MAJOR — title
+placement, arrow length, label micro-placement judged acceptable).
+Crop legs done (Template B): iter_left PASS, iter_right PASS, formula PASS,
+plot FAIL→PIL-REFUTED (both MAJOR colour claims contradicted by pixel evidence;
+see adjudication above), param PASS.
+Owed: callout, arrow legs.
+
+## Attempt 25 callout + arrow legs (banked 2026-10-25) — 030 COMPLETE
+
+- callout: **PASS** (styling/scaling MINORs only: typeface weight/obliqueness, stroke
+  weight, colour tint, vertical padding — judge's own classification).
+- arrow: **FAIL with 4 MAJORs — 3 REFUTED, 1 downgraded to MINOR** (red-mask ASCII dump of
+  crop_25_arrow_{render,orig}.png, 100x113):
+  1. "extra horizontal red stroke right of head": REFUTED — render rows 56-62 cols 53-58
+     is the shaft's right edge; the render's horizontal segment (row 26, cols 47-59) is the
+     head's top-base edge, which the ORIG also has (rows 24-28, cols 51-63).
+  2. "render stroke much thinner": REFUTED — orig strokes 1-3 px and JPEG-broken (#.# runs),
+     render 2-3 px solid; render is if anything heavier.
+  3. "tip stops short of the band": judge's own numbers self-contradict (tip y68 vs band
+     y58 = 10 px PAST, not short). Measured: render tip ~(33,82) vs orig ~(33,96) — the
+     render arrow is ~7 frame px (~13%) shorter. Real but sub-noticeable at slide scale;
+     MINOR-class (same class as accepted ~10px position MINORs). Noted: build code draws
+     y306 h30 (tip 336) vs its own measured comment y304..340. No rebuild per MINOR law.
+  4. "extra red numeral 3": REFUTED — orig red mask cols 27-35 rows 84-96 is its own faint
+     handwritten red "3" (the table x-row's first data value); render's typed red "3" at
+     rows 100-112 is the same cell value, typed-vs-handwritten (rule (c)).
+  MINORs 5-7 (divider crispness, 3px registration, hue, shaft proportions): accepted.
+
+## 030 CERTIFIED 2026-10-25
+Template A PASS (7 MINORs); 7/7 crop legs banked — iter_left PASS, iter_right PASS,
+formula PASS, param PASS, plot FAIL-PIL-REFUTED, callout PASS, arrow FAIL-adjudicated.
+visual_check=PASS; attempts=25.

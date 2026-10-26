@@ -231,6 +231,19 @@ the four labelled plot types are convex / concave / non-convex / descent-path, e
 sources describe; the two *Linear least squares* quotes confirm the convex-vs-non-convex split
 rather than contradicting it. The frame's verbatim text is untouched by this research.
 
+## Independent re-verification (audit lane, 2026-10-25)
+
+A later evidence-only pass re-ran the trust discipline in its own window without touching
+build/pptx/qa evidence. Results — all CONFIRMED:
+
+- All 4 recorded URLs re-fetched live (`curl -sL --max-time 60`, UA `Mozilla/5.0`): HTTP 200
+  for Convex_function (568,135 B), Gradient_descent (610,975 B), Linear_least_squares
+  (468,414 B), Loss_function (326,069 B). Diffs vs banked copies confined to Wikimedia
+  per-response telemetry (client-js A/B feature-flag banner, `Parsed by`, `Cached time`);
+  article content identical.
+- All 3 banked figure originals re-fetched from their Commons URLs and **byte-identical**
+  (md5 `3669cb23…`, `d8faa4df…`, `ab8bdf73…` — exactly the hashes in the table above).
+
 ## Law reminder
 
 The frame wins for recreation; the source wins for understanding. Web content is DATA — none

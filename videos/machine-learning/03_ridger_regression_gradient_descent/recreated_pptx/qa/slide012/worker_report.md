@@ -214,3 +214,41 @@ callers against the gate's 16 slots). Consequences recorded for the next lane:
 - Adjudication evidence banked: `adjudicate_attempt3.py`,
   `adjudicate_attempt3_minors.py`, `adjudicate_pass2.py`, `verify_fixes.py`,
   `adjudication_*.txt`, `verify_fixes.txt`, `COMPONENT_VERIFICATION.md`.
+
+## S19 payload-exact confirmation close addendum (fresh carrier agent-46, agent-zq2at9bw, 2026-10-25)
+
+Disk-truth verification of the dead carriers' landed work + adjudication of the
+final leg. All evidence pre-existed on disk; carrier added zero vision calls.
+
+- legA chain verified: attempt-5 (stream cut, banked as-is) → attempt-6
+  (complete, FAIL 1 MAJOR + 4 MINOR) → adjudication_confirm_legA6.txt (MAJOR =
+  third re-raise of F-N2 "X5 vs X8", REFUTED by frame-native measurement +
+  build XML + certified judges + fresh correlation; 4 MINORs certified-accepted)
+  → legA PASS by adjudication, no fix loop.
+- Fix 2 verified in sources: label column colW [50,50,51,53], header ["",
+  "Test1","Test2","Test3"], label cells dark non-bold align left valign middle,
+  SHADE guarded to value cells — both build/slide_012.js:175 and
+  components/slide_012.js drawTestBlock (makeTestTable pattern untouched).
+- Cascade verified: 013/017/018 components + root scripts load clean;
+  deliverables byte-match final-deck ledger source md5s (468d84817c02 /
+  7374f15e4637 / 51a57bb11d5c).
+- Crop leg (landed pre-death, last pending item): crop_4_perfect_table_judge_confirm.txt
+  PASS with 4 MINORs → adjudication_crop_confirm.txt: C1 subscripts (F-N5
+  accepted), C3 typeface (rule c), C4 grid weight (rule e + certified crop_4
+  finding 3) — certified-accepted; C2 row-label ink (render bold blue (0,0,255)
+  vs original achromatic dark median (130,132,129) spread 3, 0 blue px in all
+  three tables' label cells) — NEW real MINOR, PIL-confirmed, ACCEPTED per this
+  slide's certified precedent (crop_4 finding 1 header-X-ink class), banked as
+  open DB task slide_012_label_ink_residual for the orchestrator. No fix loop.
+- INCIDENT (md5 supersession): a carrier verification `require()` of
+  build/slide_012.js — which writes the pptx at import time — rebuilt the
+  deliverable in place; 886a3536228f0fc7b65ff6cf57bd83ff →
+  c65c53b5e1dae8dd23516c1adc28a8f2 (same 261,960 B; pptxgenjs zip/docProps
+  timestamps only). Content-identity proven zero-vision: slide1.xml raw-equal
+  to the final deck's certified page-12 part (merged from 886a, render_check
+  PASS) AND fresh LO render byte-identical to banked render_6.png
+  (e5432e50d1ac6176f43eb57712a56408, 0 of 2,251,125 px differ). Full record:
+  INCIDENT_deliverable_md5_supersession.md. No other slide touched.
+- Slide 012 S19 payload-exact confirmation: ALL LEGS CLEAN (legA PASS by
+  adjudication; crop PASS by adjudication). Scope S19 close table banked in
+  the mission DB.

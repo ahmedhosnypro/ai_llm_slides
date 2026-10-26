@@ -613,3 +613,86 @@ private LO profile) via `pdf9/slide_033_recreated.pdf`.
   writing `crop_11_<region>_judge.txt`.
 
 (leg outcomes, verdicts, certification rows appended below as they land)
+
+## Adjudication of judge_attempt_12 + crop_12_plot (vs render_25, PIL-first) — 2026-10-25
+
+Old attempt-12 legs judged a superseded render; all four structural claims were
+re-measured against the current `render_25.png` (s=2001/960):
+
+- **Template A D1 (MAJOR — x-label overflows plot frame): REFUTED.** Plot-box frame
+  matched sub-pixel (orig x607/x845; render 1263.5/1760 → 606.0/844.8... measured
+  605.9-606.9 and 843.9-844.9 frame). Bottom-band ink runs (frame x): 605.9-606.9
+  (frame), 612.2-699.5, 707.2-725.4, 802.2-812.7, 843.9-844.9 (frame) — no ink
+  beyond x845.6. Claimed x≈795-overflow does not exist in render_25.
+- **Template A D2 (BLOCKER — missing blue dashed callout): REFUTED as
+  missing-element.** Orig has no tall blue dashed verticals in the table region
+  (col scan, B>60 & B-R>25: max col run ~78px over x671-788 = the converged-columns
+  annotation ZONE, not a rectangle outline). Render has the same zone at x665-786
+  (col runs ~149px) — present, somewhat taller (this is the D4 extent delta,
+  MINOR). The "blue band" the old note saw is yellow-highlight text rows
+  (orig y336-345 dump) — row content, present in render.
+- **Template A D3 (MAJOR — missing outer blue table frame): REFUTED.** Orig frame
+  lines: blue horizontals y320-321 (781px) and y516 (796px), (80,80,160). Render:
+  y665-667 and y1080-1081 (400px each), (20,20,80) darker indigo. Lines exist;
+  colour slightly darker → MINOR-class colour delta, not missing.
+- **crop_12_plot finding #1 (MAJOR — dashed drop-guide truncated/black): REFUTED.**
+  Orig guide: red col x584, y183-230 (42px). Render guide: red cols frame x584.3,
+  y181-271 — same x, same colour, LONGER (more complete). The claimed "short black
+  stub" is the dark dash segment y168-176 which exists in BOTH (orig dark y168-176;
+  render y168-176 + 182-185). Strip scan y150-315: orig R@150-152/158-159/313,
+  D@168-176/247-250; render R@150-152/313, D@168-176/182-185/248-252.
+- **crop_12_plot finding #2 (MINOR — green marker larger): REFUTED.** Green extents:
+  orig x560-643 y236-300 (w83 h64); render x559.9-643.8 y235.1-298.9 (w84 h63.8).
+
+Residual real deltas: MINOR-class only (frame-line colour darker, converged-highlight
+extent, curve stroke weight, mini-table styling, curve frame clearance, scale).
+No fix trigger from attempt-12 claims. Fresh attempt-25 legs (Template A + crops)
+will be the certification verdicts.
+
+## Attempt 25 Template A adjudication (banked 2026-10-25) — PASS, 7 MINORs adjudicated
+
+- M1 extra red plot frame: **REFUTED** — orig plot border measured dark red (123,47,59)/
+  (152,7,20)/(131,51,60) at x607/x845/y60/y313 (probe /tmp adj 033 borders); the C00000
+  render border is faithful. Judge's "original has only light-gray boundary" is false.
+- M2 grid density (render finer 18-20 vs orig 11-12): **REFUTED** — at thresholds 225/240/248
+  both images show the SAME vertical line set: axis x721.5 + gridlines ~x665, ~x779 (orig
+  extra faint candidate x834 only at th225); axis row y172 in both. No 18-20-line grid exists.
+- M6 systematic 10-14px band offset: **largely REFUTED** — table h-rules ORIG
+  320.5/374.5/410.5-417.5/454-460.5/478-483.5/501.5/517 vs REND 319.7/368.6-373.6/410.6-416.6/
+  454.7-458.8/478.5-482.8/502.5/518.5: all within 1.5px; right ink extent x901 in BOTH.
+  Only the left extent differs (orig ink x68 vs render x85 at y460) — MINOR-class.
+- M3 callout offset, M4 green box size/position, M5 equation box offset, M7 subtitle width:
+  accepted as MINOR-class position/tracking nuances (≤12px, medium/low confidence) — same
+  class as the already-adjudicated attempt-12 D4; not rebuild triggers.
+
+## Attempt 25 plot-crop adjudication (banked 2026-10-25) — MAJOR REFUTED, 5 MINORs accepted
+
+- MAJOR (orig has "two overlapping green circles", render "single wide ellipse"): **REFUTED**
+  — green mask in the plot box: ORIG 147 px bbox x628..643 y236..246 (w16 h11), REND 666 px
+  bbox x628..644 y235..247 (w17 h13); orig column profile is monotone unimodal (3→11→5),
+  no bimodality/waist — a single blob in BOTH. Two outlined circles are not resolvable in a
+  16x11 px blob; sub-structure invention, same class as the refuted "(7, 7)".
+- M2 arrow fill colour, M3 dashed-line terminus arrowhead (JPEG-softened, judge medium),
+  M4 axis-label typeface (medium class), M5 callout fill saturation (rule (e) JPEG washout),
+  M6 crop-alignment artifact (judge: not a real defect): accepted as MINOR-class; no rebuild
+  triggers.
+
+## Attempt 25 table-crop adjudication (banked 2026-10-25) — PASS, 6 MINORs adjudicated
+
+Value audit: all 8 rows x 18 columns IDENTICAL (transcribed both sides in the transcript).
+- M1 red pointer arrow "largely absent": **REFUTED as lost content** — red ink present in
+  BOTH in x130-190/y285-330 (ORIG 29 px x166-186 y304-329, REND 456 px x160-190 y285-319);
+  render's arrow sits ~10px higher so most of it falls above the crop top. Position nuance.
+- M2 cyan insert corners/dash/fill-hue, M3 next-x enclosure weight/rounding, M4 slope
+  enclosure weight/rounding, M5 band hue drift (judge: partly JPEG), M6 stroke crispness:
+  styling/medium-class MINORs, no rebuild triggers.
+
+## Center-crop leg adjudication (crop_25_center_judge.txt) — 3 MAJORs REFUTED via PIL
+
+Judge claimed: "-9.7" black in render (red in orig); "-8.08" and "-8.011" minus signs black (blue in orig).
+
+PIL scan of crop_25_center_render.png (765x118, red mask r>150,g<90,b<90; blue mask b>150,r<90,g<90):
+- RED: 894 px, y 25-48 (top row), x-runs (19,45),(320,372),(671,724) — red ink present in the 9.x row as the build specifies (C00000).
+- BLUE: 1757 px, y 68-98 (bottom row), x-runs (15,70),(320,390),(468,521),(527,537),(543,552) — blue ink with minus signs present in the 8.x row (C_BLUE).
+
+Corroborated by build source `build/slide_033.js` lines 179-201: "-9.7"/"-9.6" are C_RED, "-8.08"/"-8.011" are C_BLUE. All three colour MAJORs are judge misreads (same tiny-glyph hallucination pattern as the (7,7) phantom on 032). Center leg effectively PASS; with Template A PASS, plot-crop FAIL-refuted, table-crop PASS → **slide 033 PASSES** at attempt 25.

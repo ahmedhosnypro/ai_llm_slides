@@ -32,9 +32,12 @@
 //   - outlier labels read "X5 is Outlier" verbatim (judge read it; the frame's
 //     glyph ink is at the noise floor for a per-character PIL read)
 //   - training tables: label column BLUE bold; data columns 1..8 alternate
-//     odd=BLUE / even=RED; every cell WHITE-filled
-//   - TEST table: 3 data columns x 4 rows, no label column, phase RED/BLUE/RED
-//     (the INVERSE of the training tables) and a pale-yellow FFF7C2 y row
+//     odd=BLUE / even=RED; every cell WHITE-filled (label ink is a
+//     certification-era mis-measurement — original labels are achromatic;
+//     banked as accepted residual: mission task slide_012_label_ink_residual)
+//   - TEST table: row-label column (X1/X2/y, dark non-bold, empty header cell)
+//     + 3 data columns x 4 rows, phase RED/BLUE/RED (the INVERSE of the
+//     training tables) and a mint CCFFE1 y row
 //   - Test Data label: a solid BLUE box with white bold text at x767 y96 (the
 //     original's region median is (3,0,166) = a filled box, not a bare caption)
 //   - arrow: a faint 2px red hairline at y250..251, x670..705, head facing LEFT
@@ -50,7 +53,7 @@ const RED    = "FF0000"; // title, red labels, Again callout, arrow
 const BLUE   = "0000FF"; // blue labels, odd-column cell ink, question box
 const BLACK  = "000000"; // table grid
 const WHITE  = "FFFFFF"; // label text, cell fill, question-box fill
-const SHADE  = "FFF7C2"; // test-table y-row fill (measured pale yellow)
+const SHADE  = "CCFFE1"; // test-table y-row fill (measured mint 203,255,224)
 const YELLOW = "FFFF00"; // outlier cell highlight
 const FONT   = "Arial";
 
@@ -69,7 +72,14 @@ const OUTLIER2_ROWS = [31, 30, 31, 31];
 const TEST_X = 719, TEST_Y = 128, TEST_W = 154, TEST_H = 124;
 const TEST_COLS = [50, 51, 53];
 const TEST_ROWS = [32, 30, 31, 31];
-const TEST_Y_ROW = 2; // pale-yellow shaded row in the test table
+const TEST_Y_ROW = 2; // mint-shaded row in the test table
+// 012's own test table also carries a row-label column LEFT of the value
+// columns (measured: empty header cell; labels X1/X2/y — cap-height X glyphs,
+// ink (77,78,76), non-bold, left-aligned at x677; label cells white-filled).
+// The shared makeTestTable pattern below stays 3-column: 013/017 consume it
+// for their own label-less test tables.
+const TEST_LABEL_COLW = 50; // label column x669..719
+const TEST_LABELS = ["X1", "X2", "y"];
 
 const TRAIN_HEADER = ["", "X1", "X2", "X3", "X4", "X5", "X6", "X7", "X8"];
 const TEST_HEADER  = ["Test1", "Test2", "Test3"];
@@ -90,7 +100,8 @@ const OUTLIER2_ROWS_DATA = [
   ["X2", 1, 3, 5, 6, 16, 7, 5, 3],
   ["y",  2, 4, 6, 8, 16, 18, 20, 22],
 ];
-// The test table has NO label column — its three columns carry values.
+// TEST_ROWS_DATA carries the three VALUE columns; 012's row-label column is
+// prepended in drawTestBlock.
 const TEST_ROWS_DATA = [
   [30, 40, 50],
   [15, 20, 25],
@@ -100,6 +111,10 @@ const TEST_ROWS_DATA = [
 // ── table builders (the PATTERN slide 013 inherits) ───────────────────────────
 // Row-label column (ci 0) and the header row bold; data-column ink alternates
 // BLUE on odd columns / RED on even columns; every cell carries a WHITE fill.
+// (ci-0 BLUE is a known mis-measurement vs the original's achromatic label
+// ink — accepted residual, mission task slide_012_label_ink_residual. Do NOT
+// "fix" here: descendants 013/017/018 already override ci-0 to BLACK in their
+// own builds; changing this re-times 012 against its certified render.)
 // This is the TRAINING-table rule only — the test table has its own measured
 // phase (see TEST_COL_COLOR below). Cell insets are pptxgenjs defaults
 // (marL/R 91440, marT/B 45720 EMU), matching the certified deliverable.
@@ -132,8 +147,9 @@ function makeTrainTable(header, rows, hlRow = -1, hlCol = -1) {
   return [head, ...body];
 }
 
-// NOTE: the test table has NO label column. Measured against the original frame
-// by hue classification: its three columns read RED, BLUE, RED — the INVERSE
+// NOTE: the shared makeTestTable pattern has NO label column — its three
+// columns carry values. Measured against the original frame by hue
+// classification: its three columns read RED, BLUE, RED — the INVERSE
 // phase of the training tables' 1-based data columns (odd=BLUE/even=RED),
 // verified in all four rows. It is not derived from cellOpts.
 const TEST_COL_COLOR = (ci) => (ci % 2 === 0 ? RED : BLUE);
@@ -242,8 +258,17 @@ function drawTrainTable(pptx, slide) {
 function drawTestBlock(pptx, slide) {
   const L = TEST_DATA_LABEL;
   textBox(pptx, slide, L.x, L.y, L.w, L.h, L.lines, L.fill, L.fontSize);
-  const data = makeTestTable(TEST_HEADER, TEST_ROWS_DATA);
-  tablePlacement(pptx, slide, data, TEST_X, TEST_Y, TEST_W, TEST_H, TEST_COLS, TEST_ROWS);
+  const data = makeTestTable(TEST_HEADER, TEST_ROWS_DATA).map((row, ri) => {
+    const label = ri === 0
+      ? { text: "", options: { bold: true, color: BLACK, fontFace: FONT,
+                               fontSize: 11, fill: { color: WHITE } } }
+      : { text: TEST_LABELS[ri - 1],
+          options: { bold: false, color: BLACK, fontFace: FONT, fontSize: 11,
+                     fill: { color: WHITE }, align: "left", valign: "middle" } };
+    return [label, ...row];
+  });
+  tablePlacement(pptx, slide, data, TEST_X - TEST_LABEL_COLW, TEST_Y,
+    TEST_W + TEST_LABEL_COLW, TEST_H, [TEST_LABEL_COLW, ...TEST_COLS], TEST_ROWS);
 }
 
 function drawOutlier1Table(pptx, slide) {

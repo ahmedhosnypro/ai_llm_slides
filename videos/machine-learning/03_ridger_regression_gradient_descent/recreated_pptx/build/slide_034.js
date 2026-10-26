@@ -172,7 +172,7 @@ const plotCy = plotBox.y + plotBox.h / 2;   // 186
 slide.addShape(pptx.ShapeType.rect, {
   x: px(plotBox.x), y: px(plotBox.y), w: px(plotBox.w), h: px(plotBox.h),
   fill: { color: "FFFFFF" },
-  line: { color: "000000", width: 1 },
+  line: { color: "8B0000", width: 1 },  // original axes box border is dark red, not black
 });
 
 // asset aspect 2732/1832 = 1.491; fit to box width, centre vertically

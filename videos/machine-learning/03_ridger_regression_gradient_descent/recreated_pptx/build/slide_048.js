@@ -23,8 +23,12 @@
 //   * Action phrases ("Update Weight" / "Keep same Weight") are BLACK, not the
 //     spec's maroon 8B0000 (darkest core RGB (13,15,12)); only the ⇒ glyph is
 //     red.
-//   * "Check classes of" is absent from the check-classes box (interior rows
-//     58-70 is pure white) and the analysis spec's position for the
+//   * "Check classes of" IS in the frame at rows 86-96 / cols 542-626 (an
+//     early note misread rows 58-70 as the caption band and dropped it);
+//     re-added, together with the input table's per-column tall parentheses
+//     (stroke pairs (90,102)...(201,215), rows ~80-102), after the crop
+//     top-band judge flagged both and frame-pixel maps confirmed them.
+//   * The analysis spec's position for the
 //     "C1 positive, C2 negative, Zero is unaccepted" note is wrong — it is
 //     measured in the top band at rows 110..124 / cols 239..508, and its
 //     "Zero" is GREEN (core 69,138,56), not the spec's red. See the note block.
@@ -98,32 +102,50 @@ function addEq(name, xIn, baselineIn) {
 // ---------------------------------------------------------------- INPUT TABLE
 // Input data table inside the top-band box: 5 rows x 6 cols, cols 85..219,
 // rows 64..124. Column centres measured at 96.0/118.0/140.5/163.0/185.5/208.0
-// (spacing 22.4); header row 64-73, data rows 75-106, red class row 111-124.
+// (spacing 22.4); header row 64-73, data rows 75-106, class row 111-124.
+// Rendered as per-cell text boxes: LibreOffice expands addTable rows to ~30px
+// regardless of rowH/fontSize, which pushed the class row onto the band border.
 {
-  // colW must be equal: centres 96.2/118.6/141.0/163.4/185.8/208.2
-  const tx = fx(85), ty = fy(64), twid = fw(134);
-  const rows = [
-    ["x\u2081", "x\u2082", "x\u2083", "x\u2084", "x\u2085", "x\u2086"],
-    ["1", "2", "1", "5", "6", "6"],
-    ["1", "1", "2", "4", "5", "6"],
-    ["1", "2", "2", "4", "5", "6"],
-    ["C1", "C1", "C1", "C2", "C2", "C2"],
+  const centres = [96.2, 118.6, 141.0, 163.4, 185.8, 208.2];
+  const cellW = 22.4;
+  const rowBands = [
+    { top: 64, h: 10, texts: ["x\u2081", "x\u2082", "x\u2083", "x\u2084", "x\u2085", "x\u2086"], bold: true, colors: null },
+    { top: 75, h: 10.5, texts: ["1", "2", "1", "5", "6", "6"], bold: false, colors: null },
+    { top: 85.5, h: 10, texts: ["1", "1", "2", "4", "5", "6"], bold: false, colors: null },
+    { top: 96, h: 10, texts: ["1", "2", "2", "4", "5", "6"], bold: false, colors: null },
+    { top: 111, h: 13.5, texts: ["C1", "C1", "C1", "C2", "C2", "C2"], bold: true,
+      colors: [RED, RED, RED, "1F1655", "1F1655", "1F1655"] },
   ];
-  const tbl = rows.map((r, ri) => r.map((cell) => ({
-    text: cell,
-    options: {
-      fontFace: FONT, fontSize: 12, align: "center", valign: "middle",
-      margin: 0,
-      bold: ri === 0 || ri === 4,
-      color: ri === 4 ? RED : BLACK,
-    },
-  })));
-  s.addTable(tbl, {
-    x: tx, y: ty, w: twid, h: fh(124 - 64 + 1),
-    fontFace: FONT, colW: [twid / 6, twid / 6, twid / 6, twid / 6, twid / 6, twid / 6],
-    rowH: fh(60 / 5),
-    border: { type: "none" },
-    fill: { color: "FFFFFF" },
+  for (const band of rowBands) {
+    for (let ci = 0; ci < 6; ci++) {
+      s.addText(band.texts[ci], {
+        x: fx(centres[ci] - cellW / 2), y: fy(band.top), w: fw(cellW), h: fh(band.h),
+        fontFace: FONT, fontSize: 11, align: "center", valign: "middle", margin: 0,
+        bold: band.bold, color: band.colors ? band.colors[ci] : BLACK,
+      });
+    }
+  }
+  // Per-column tall parentheses around the three data rows. Measured strokes:
+  // left col 90/111/133/156/179/201, right col 102/125/147/170/193/215,
+  // rows ~80..102 (long runs 80-104 .. 84-101).
+  const colL = [90, 111, 133, 156, 179, 201];
+  const colR = [102, 125, 147, 170, 193, 215];
+  for (let i = 0; i < 6; i++) {
+    s.addText("(", {
+      x: fx(colL[i] - 2), y: fy(79), w: fw(6), h: fh(25),
+      fontFace: FONT, fontSize: 22, color: BLACK, align: "center", valign: "middle", margin: 0,
+    });
+    s.addText(")", {
+      x: fx(colR[i] - 2), y: fy(79), w: fw(6), h: fh(25),
+      fontFace: FONT, fontSize: 22, color: BLACK, align: "center", valign: "middle", margin: 0,
+    });
+  }
+  // "Check classes of" caption above the Z-grid. Measured bbox rows 86-96,
+  // cols 542-626 (~5.6 px/char).
+  s.addText("Check classes of", {
+    x: fx(540), y: fy(84), w: fw(90), h: fh(14),
+    fontFace: FONT, fontSize: 9, color: BLACK, italic: true,
+    align: "left", valign: "middle", margin: 0,
   });
 }
 
@@ -149,7 +171,7 @@ function addEq(name, xIn, baselineIn) {
   // and put the box on the measured band.
   s.addText("Initial W =", {
     x: fx(366), y: fy(61), w: fw(70), h: fh(13),
-    fontFace: FONT, fontSize: 13, color: BLACK, italic: true,
+    fontFace: FONT, fontSize: 13, color: BLACK, italic: true, underline: true,
     align: "left", valign: "middle", margin: 0, lineSpacing: 13,
   });
 
@@ -159,7 +181,7 @@ function addEq(name, xIn, baselineIn) {
   // box that cannot wrap.
   s.addText("REPEAT using Step \u03b7 = 1", {
     x: fx(426), y: fy(60), w: fw(150), h: fh(16),
-    fontFace: FONT, fontSize: 12, color: RED, bold: true,
+    fontFace: FONT, fontSize: 12, color: RED, bold: true, italic: true, underline: true,
     align: "left", valign: "middle", margin: 0, lineSpacing: 13,
   });
 }
@@ -177,7 +199,7 @@ function addEq(name, xIn, baselineIn) {
   s.addText([
     { text: "C1", options: { color: RED, bold: true } },
     { text: " positive, " },
-    { text: "C2", options: { color: RED, bold: true } },
+    { text: "C2", options: { color: "1F1655", bold: true } },
     { text: " negative, " },
     { text: "Zero", options: { color: "458A38", bold: true } },
     { text: " is unaccepted" },
@@ -228,7 +250,7 @@ function addEq(name, xIn, baselineIn) {
 
   s.addText("Ugmented Vectors (from Top)", {
     x: fx(90), y: fy(156), w: fw(138), h: fh(14),
-    fontFace: FONT, fontSize: 12, color: BLACK,
+    fontFace: FONT, fontSize: 11, color: BLACK,
     align: "left", valign: "baseline", margin: 0, lineSpacing: 12,
   });
 

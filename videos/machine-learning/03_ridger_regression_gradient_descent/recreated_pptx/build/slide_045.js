@@ -69,10 +69,13 @@ const OUT = "videos/machine-learning/03_ridger_regression_gradient_descent/recre
 const px = (v) => v / 72;   // frame px -> inches
 const A = "Arial";
 const BLUE = "0000FF";
+const GREEN = "008000";
 const RED = "FF0000";
 const RED2 = "D8262C";      // dark red used in accents
 const BLACK = "000000";
 const WHITE = "FFFFFF";
+const GRAY = "A6A6A6";      // calc-panel bracket strokes: measured (180,198,177)/(193,195,192)
+const PINK = "F8D7DA";      // stop-box fill: measured (248,215,218)
 // calc panel rules: brief says #D9D9D9; measured lum 165-193 (blue-tinted from JPEG
 // chroma subsampling on a 1px line).
 const RULE = "D9D9D9";
@@ -129,11 +132,12 @@ topData.forEach((row, r) =>
   TOP_COLS.forEach((cx, c) =>
     CELL(cx, TOP_ROWS_CY[r] - 6, TOP_ROWS_CY[r] + 6, 26, row[c], 13, BLACK)));
 
-// Class row C1 C1 C1 C2 C2 C2 — measured: C1 red, C2 BLACK in this table
-const TOP_CLASS = ["1", "2", "1", "2", "2", "2"];
+// Class row C1 C1 C1 C2 C2 C2 — original: C1 RED (cols 1-3), C2 BLUE (cols 4-6);
+// d(x₂)=+6 ⇒ x₂ is class 1 (pixel + arithmetic + judge agreement)
+const TOP_CLASS = ["1", "1", "1", "2", "2", "2"];
 TOP_COLS.forEach((cx, i) =>
   SUB("C", TOP_CLASS[i], cx - 9, 112, 18, 14, 13, 9.5,
-      i === 0 || i === 2 ? RED2 : BLACK, { bold: true }));
+      i < 3 ? RED2 : BLUE, { bold: true }));
 
 // ---- 1b. "Initial W = [4; -2; -2]" ----
 // Text part x266..324 y75..85; W underlined
@@ -151,28 +155,28 @@ slide.addText([
     x: px(x), y: px(y0), w: px(1), h: px(y1 - y0 + 1),
     fill: { color: BLACK }, line: { type: "none" },
   }));
-[["4", 66.5], ["-2", 83], ["-2", 97.5]].forEach(([t, cy]) =>
+[["4", 66.5], ["\u22122", 83], ["\u22122", 97.5]].forEach(([t, cy]) =>
   slide.addText(t, {
     x: px(333), y: px(cy - 8), w: px(20), h: px(16),
     align: "center", valign: "middle", margin: 0,
     fontFace: A, fontSize: 13, color: BLACK, lineSpacing: 15,
   }));
 
-// ---- 1c. "Step η = 2" in red ----
+// ---- 1c. "Step η = 2" in red (bold italic per original) ----
 slide.addText([
-  { text: "Step ", options: { fontFace: A, fontSize: 14, color: RED2 } },
-  { text: "\u03b7", options: { fontFace: A, fontSize: 14, color: RED2 } },
-  { text: " = 2", options: { fontFace: A, fontSize: 14, color: RED2 } },
+  { text: "Step ", options: { fontFace: A, fontSize: 14, color: RED2, bold: true, italic: true } },
+  { text: "\u03b7", options: { fontFace: A, fontSize: 14, color: RED2, bold: true, italic: true } },
+  { text: " = 2", options: { fontFace: A, fontSize: 14, color: RED2, bold: true, italic: true } },
 ], {
   x: px(365), y: px(65), w: px(84), h: px(16),
   align: "left", valign: "middle", margin: 0, lineSpacing: 16,
 });
 
-// ---- 1d. "Check classes of" label ----
+// ---- 1d. "Check classes of" label (single line per original) ----
 slide.addText("Check classes of", {
-  x: px(499), y: px(78), w: px(95), h: px(12),
+  x: px(499), y: px(78), w: px(108), h: px(12),
   align: "left", valign: "middle", margin: 0,
-  fontFace: A, fontSize: 13, color: BLACK, lineSpacing: 15,
+  fontFace: A, fontSize: 12, color: BLACK, charSpacing: -0.5, lineSpacing: 14,
 });
 
 // ---- 1e. Z table (2 rows x 3 cols) ----
@@ -196,7 +200,7 @@ slide.addShape(pptx.ShapeType.rect, {
 });
 
 // ============================================================
-// 2. LEGEND LINE
+// 2. LEGEND LINE (Zero green per original, judged + measured)
 // ============================================================
 slide.addText([
   { text: "C", options: { fontFace: A, fontSize: 13, color: RED2, bold: true } },
@@ -205,7 +209,8 @@ slide.addText([
   { text: "C", options: { fontFace: A, fontSize: 13, color: BLUE, bold: true } },
   { text: "2", options: { fontFace: A, fontSize: 9.5, color: BLUE, bold: true, subscript: true } },
   { text: " negative, ", options: { fontFace: A, fontSize: 13, color: BLACK } },
-  { text: "Zero is unaccepted", options: { fontFace: A, fontSize: 13, color: BLACK } },
+  { text: "Zero", options: { fontFace: A, fontSize: 13, color: "458A38", bold: true } },
+  { text: " is unaccepted", options: { fontFace: A, fontSize: 13, color: BLACK } },
 ], {
   x: px(240), y: px(109), w: px(272), h: px(16),
   align: "left", valign: "middle", margin: 0, lineSpacing: 15,
@@ -216,13 +221,13 @@ slide.addText([
 // ============================================================
 slide.addShape(pptx.ShapeType.rect, {
   x: px(70), y: px(140), w: px(246 - 70), h: px(255 - 140),
-  fill: { color: WHITE }, line: { color: BLACK, width: 1 },
+  fill: { color: WHITE }, line: { color: GRAY, width: 1 },
 });
 // title (blue, "Ugmented Vectors (from Top)" — sic: the frame omits the leading "A")
-slide.addText("Ugmented Vectors (from Top)", {
+slide.addText("Ugmented Vectors ( from Top )", {
   x: px(81), y: px(147), w: px(158), h: px(13),
   align: "center", valign: "middle", margin: 0,
-  fontFace: A, fontSize: 12, color: BLUE, italic: true, lineSpacing: 14,
+  fontFace: "Times New Roman", fontSize: 12, color: BLUE, italic: true, lineSpacing: 14,
 });
 const AUG_COLS = [99.5, 122, 144.5, 167, 189.5, 212.5];
 // row 1 (1)(1)(1)(1)(1)(1), cy 170.5
@@ -237,11 +242,11 @@ const AUG_DATA = [
 AUG_DATA.forEach((row, r) =>
   AUG_COLS.forEach((cx, c) =>
     CELL(cx, AUG_ROWS_CY[r] - 8, AUG_ROWS_CY[r] + 8, 26, row[c], 12, BLACK)));
-// class row C1 C1 C1 C2 C2 C2 — measured C1 red, C2 BLUE here
-const AUG_CLASS = ["1", "2", "1", "2", "2", "2"];
+// class row C1 C1 C1 C2 C2 C2 — C1 RED, C2 BLUE (same vectors as the top table)
+const AUG_CLASS = ["1", "1", "1", "2", "2", "2"];
 AUG_COLS.forEach((cx, i) =>
   SUB("C", AUG_CLASS[i], cx - 9, 230, 18, 15, 12, 9,
-      i === 0 || i === 2 ? RED2 : BLUE, { bold: true }));
+      i < 3 ? RED2 : BLUE, { bold: true }));
 
 // ============================================================
 // 4. ITERATION BADGE
@@ -261,22 +266,20 @@ slide.addText("Iteration 4", {
 // ============================================================
 slide.addShape(pptx.ShapeType.rect, {
   x: px(64), y: px(330), w: px(246 - 64), h: px(415 - 330),
-  fill: { color: WHITE }, line: { color: RED2, width: 1 },
+  fill: { color: PINK }, line: { color: RED2, width: 1 },
 });
-slide.addText("No change in ", {
-  x: px(77), y: px(349), w: px(60), h: px(18),
-  align: "left", valign: "middle", margin: 0,
-  fontFace: A, fontSize: 13, color: BLACK, lineSpacing: 15,
-});
-slide.addText("W", {
-  x: px(133), y: px(349), w: px(14), h: px(18),
-  align: "left", valign: "middle", margin: 0,
-  fontFace: A, fontSize: 13, color: BLACK, underline: true, lineSpacing: 15,
+// single run so the underlined W stays inline (original: one line, x78..216)
+slide.addText([
+  { text: "No change in ", options: { fontFace: A, fontSize: 19, bold: true, color: BLACK } },
+  { text: "W", options: { fontFace: A, fontSize: 19, bold: true, color: BLACK, underline: true } },
+], {
+  x: px(74), y: px(344), w: px(160), h: px(26),
+  align: "left", valign: "middle", margin: 0, lineSpacing: 21,
 });
 slide.addText("Stop Iterations", {
-  x: px(85), y: px(374), w: px(120), h: px(20),
+  x: px(85), y: px(372), w: px(140), h: px(26),
   align: "left", valign: "middle", margin: 0,
-  fontFace: A, fontSize: 14, italic: true, color: RED, lineSpacing: 16,
+  fontFace: A, fontSize: 19, bold: true, italic: true, color: RED, lineSpacing: 21,
 });
 
 // ============================================================
@@ -290,16 +293,20 @@ const CALC = [
   { band: [404, 461], cy: 431.5, vec: [410, 455], dx: [379.5, 403.5], wv: [740.5, 764.5], scalarX: 412, arrowX: 516, keepX: 535, weqX: 715 },
   { band: [470, 528], cy: 497.5, vec: [476, 521], dx: [379.5, 403.5], wv: [746.0, 770.0], scalarX: 411, arrowX: 522, keepX: 541, weqX: 721 },
 ];
-// The frame keeps its own arithmetic errors verbatim (no [?] marker) — never "fixed"
+// Original layout per row (measured + doc-parse ground truth, 2026-10-25):
+//   d(xᵢ) =  <BLUE augmented row "1 1 1" on the text line, x334..375, no parens>
+//            <gray bracket x379.5/403.5 with GREEN stacked column 14/-4/0>
+//            = scalar ⇒ Keep same Weight W = [14;-4;0] (black, gray bracket)
+// The frame's own scalar for row 6 (-112) is preserved verbatim (no [?] marker).
 const CALC_ROWS = [
-  { sub: "1", dvec: ["1 1 1", "-4", "0"], scalar: "= 10" },
-  { sub: "2", dvec: ["1 1 2", "-4", "0"], scalar: "= -4" },
-  { sub: "3", dvec: ["1 1 2", "-4", "0"], scalar: "= 10" },
-  { sub: "4", dvec: ["1 5 4", "-4", "0"], scalar: "= -6" },
-  { sub: "5", dvec: ["1 6 5", "-4", "0"], scalar: "= -10" },
-  { sub: "6", dvec: ["1 6 6", "-4", "0"], scalar: "= -112" },
+  { sub: "1", blue: "1 1 1", scalar: "= 10" },
+  { sub: "2", blue: "1 2 1", scalar: "= 6" },
+  { sub: "3", blue: "1 1 2", scalar: "= 10" },
+  { sub: "4", blue: "1 5 4", scalar: "= −6" },
+  { sub: "5", blue: "1 6 5", scalar: "= −10" },
+  { sub: "6", blue: "1 6 6", scalar: "= −112" },
 ];
-const W_VEC = ["14", "-4", "0"];   // identical in every row
+const W_VEC = ["14", "−4", "0"];   // identical in every row
 
 slide.addShape(pptx.ShapeType.rect, {
   x: px(274), y: px(139), w: px(853 - 274), h: px(528 - 139),
@@ -312,18 +319,18 @@ CALC.forEach((r) => [r.band[0], r.band[1]].forEach((y) =>
   })));
 
 // bracket column vector: two 1px vertical strokes + centred value rows
-function bracketVector(vecYR, rowCy, rows, leftX, rightX) {
+function bracketVector(vecYR, rowCy, rows, leftX, rightX, strokeColor, textColor) {
   const span = rightX - leftX;
   [leftX, rightX].forEach((x) =>
     slide.addShape(pptx.ShapeType.rect, {
       x: px(x), y: px(vecYR[0]), w: px(1), h: px(vecYR[1] - vecYR[0] + 1),
-      fill: { color: BLACK }, line: { type: "none" },
+      fill: { color: strokeColor || BLACK }, line: { type: "none" },
     }));
   rows.forEach((t, k) =>
     slide.addText(t, {
       x: px(leftX + 1), y: px(rowCy[k] - 8), w: px(span - 2), h: px(16),
       align: "center", valign: "middle", margin: 0,
-      fontFace: A, fontSize: 13, color: BLACK, lineSpacing: 15,
+      fontFace: A, fontSize: 13, color: textColor || BLACK, lineSpacing: 15,
     }));
 }
 
@@ -331,7 +338,8 @@ CALC.forEach((r, i) => {
   const row = CALC_ROWS[i];
   const TY = r.cy - 9, TH = 18;                    // one text line, vertically centred on cy
 
-  // "d(xᵢ) ="  with a real subscript, left-aligned at measured x283
+  // "d(xᵢ) ="  with a real subscript, left-aligned at measured x283 (ends ~x333;
+  // the blue augmented row starts at measured x334)
   slide.addText([
     { text: "d(", options: { fontFace: A, fontSize: 13, color: BLACK } },
     { text: "x", options: { fontFace: A, fontSize: 13, color: BLACK } },
@@ -339,11 +347,20 @@ CALC.forEach((r, i) => {
     { text: ")", options: { fontFace: A, fontSize: 13, color: BLACK } },
     { text: " = ", options: { fontFace: A, fontSize: 13, color: BLACK } },
   ], {
-    x: px(283), y: px(TY), w: px(92), h: px(TH),
+    x: px(283), y: px(TY), w: px(50), h: px(TH),
     align: "left", valign: "middle", margin: 0, lineSpacing: 15,
   });
 
-  bracketVector(r.vec, [r.vec[0] + 7.5, r.vec[0] + 23, r.vec[0] + 38.5], row.dvec, r.dx[0], r.dx[1]);
+  // BLUE augmented row on the text line, left of the bracket (measured x334..375,
+  // single line, no parentheses, blue 0000FF)
+  slide.addText(row.blue, {
+    x: px(334), y: px(TY), w: px(44), h: px(TH),
+    align: "left", valign: "middle", margin: 0,
+    fontFace: A, fontSize: 13, color: BLUE, charSpacing: 3, lineSpacing: 15,
+  });
+
+  // gray bracket with the GREEN stacked weight column 14/-4/0
+  bracketVector(r.vec, [r.vec[0] + 7.5, r.vec[0] + 23, r.vec[0] + 38.5], W_VEC, r.dx[0], r.dx[1], GRAY, GREEN);
 
   // "= <scalar>"
   slide.addText(row.scalar, {
@@ -378,7 +395,7 @@ CALC.forEach((r, i) => {
     align: "left", valign: "middle", margin: 0, lineSpacing: 15,
   });
 
-  bracketVector(r.vec, [r.vec[0] + 7.5, r.vec[0] + 23, r.vec[0] + 38.5], W_VEC, r.wv[0], r.wv[1]);
+  bracketVector(r.vec, [r.vec[0] + 7.5, r.vec[0] + 23, r.vec[0] + 38.5], W_VEC, r.wv[0], r.wv[1], GRAY, BLACK);
 });
 
 pptx.writeFile({ fileName: OUT }).then(() => {

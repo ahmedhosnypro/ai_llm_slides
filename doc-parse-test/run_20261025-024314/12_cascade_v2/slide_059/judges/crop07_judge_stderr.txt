@@ -1,0 +1,7 @@
+[info] mode analysis | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 244089
+[warn] analysis :: images :: attempt 1: ABORT EmptyStreamError: empty content: no deltas — abort+retry 1/3
+[warn] analysis :: images :: attempt 2: HTTP 502: {"error":{"code":"upstream_unreachable","ironrouter":{"candidate":"nva…4pGn","provider":"Nvidia"},"message":"the upstream provider could not be reached","type":"server_error"}}
+[warn] analysis :: images :: attempt 3: HTTP 502: {"error":{"code":"upstream_invalid_credentials","ironrouter":{"candidate":"nva…N3hs","provider":"Nvidia"},"message":"the upstream provider rejected the configured credential","type":"server_error"}}
+[warn] analysis :: round 1: all models failed, restarting race
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully

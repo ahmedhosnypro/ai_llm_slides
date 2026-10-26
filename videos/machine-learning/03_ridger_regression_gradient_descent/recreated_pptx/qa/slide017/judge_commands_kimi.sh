@@ -14,8 +14,8 @@
 # dispatching nothing: the gate law requires pgrep < 8 before EVERY call, so
 # this script must be launched only after that check passes.
 set -u
-export TMPDIR=/workspaces/codespaces-blank/ai_llm_slides/scratch/tmp
-cd /workspaces/codespaces-blank/ai_llm_slides
+export TMPDIR=/home/ahmed/Projects/ai_llm_slides/scratch/tmp
+cd /home/ahmed/Projects/ai_llm_slides
 QA=videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide017
 
 # gate law: pgrep < 8 required before EVERY call.

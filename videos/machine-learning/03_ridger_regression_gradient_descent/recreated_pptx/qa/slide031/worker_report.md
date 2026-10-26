@@ -244,3 +244,19 @@ labels after box, measured row colours) → 7 (param-table fills) →
 
 Attempts used so far: 2 coherent verdicts (K=1, K=2). 4 remain of the 6-max
 budget, shared across both legs.
+
+## Adjudication: red dashed x=5 line placement (vs render_25) — 2026-10-25
+
+- Orig dashed line: red cols x658-664 (runs 8-11px each, sparse dashes); orig red
+  axis verticals x572-574 (204px) and x808-810 (204px).
+- Render dashed line: frame x690.4 (171px tall) + x690.9; render's own tick labels
+  sit at 571.8/631.7/690.7/752/806 (evenly ~61px apart = -5,0,5,10,15), so the
+  render's line sits EXACTLY on its own x=5 tick.
+- Orig tick-label glyphs are too small/degraded to establish an even tick lattice
+  (clusters ~578, ~653-658, ~672-676, ~742-750, ~805-811; spacing uneven).
+- Orig line at 658-664 sits adjacent to a label cluster at ~653-658, i.e. the
+  original's hand-placed line may not sit on its own x=5 tick. The render is
+  internally self-consistent (line on tick, curve minimum aligned).
+- Disposition: ~30px frame delta in an element whose original placement appears
+  hand-imprecise; chart-internal consistency preserved. MINOR-class; no fix
+  trigger unless a fresh judge leg escalates it (then adjudicate again PIL-first).

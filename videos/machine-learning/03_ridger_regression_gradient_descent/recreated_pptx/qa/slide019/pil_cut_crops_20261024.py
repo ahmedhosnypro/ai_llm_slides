@@ -9,7 +9,7 @@ import os
 
 Q = "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide019"
 ORIG = "videos/machine-learning/03_ridger_regression_gradient_descent/unique_slides/slide_019.jpg"
-REND = f"{Q}/render_8.png"
+REND = f"{Q}/render_9.png"
 
 o = Image.open(ORIG).convert("RGB")
 r = Image.open(REND).convert("RGB")
@@ -40,7 +40,7 @@ for name, x0, y0, x1, y1, desc in REGIONS:
     oc = oc.resize(rc.size, Image.LANCZOS)
     assert rc.size == oc.size, (rc.size, oc.size)
     assert abs(rc.size[0] / (x1 - x0) - SX) < 0.01 and abs(rc.size[1] / (y1 - y0) - SY) < 0.01
-    rp, op = f"{Q}/crop_8_{name}_render.png", f"{Q}/crop_8_{name}_orig.png"
+    rp, op = f"{Q}/crop_9_{name}_render.png", f"{Q}/crop_9_{name}_orig.png"
     rc.save(rp); oc.save(op)
     print(f"  {name:12s} frame x{x0}..{x1} y{y0}..{y1} -> {rc.size}  "
           f"eff-scale {rc.size[0]/(x1-x0):.4f}/{rc.size[1]/(y1-y0):.4f}  OK")

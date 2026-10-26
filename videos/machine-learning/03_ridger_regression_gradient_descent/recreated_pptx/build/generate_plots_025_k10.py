@@ -1,0 +1,279 @@
+#!/usr/bin/env python3
+"""Generate the four loss-function-shape plots for slide 025 (attempt 8 lane, k8).
+# k8: zoom<=1.10 so every 3-D tick label stays inside the figure (k7 clipped them),
+# TL super-gaussian dome (flat crown, steep flanks) with jet norm stretched so the
+# crown reads olive/green (no red cap), heavier floor contours, coarser mesh.
+
+Fixes from the attempt-7 crop-judge verdicts (crop_7_{tl,tr,bl,br}_judge.txt):
+  - full 3-D axes box WITH numeric tick labels visible inside each figure
+    (k5's giant fit_zoom pushed the box + ticks out of the figure);
+  - dense black wireframe mesh over the jet surface (fine quadrilateral mesh);
+  - TL: projected contour rings on the floor plane;
+  - TR: z ticks 0..2 x10^4 with the multiplier OUTSIDE the box top-left,
+    x/y ticks 100..-100 step 50;
+  - BL: x/y ticks -3..3 step 1, z ticks -6..8 step 2, red X markers at the
+    extrema, labels at the frame-measured slide-px positions;
+  - BR: wavy multi-modal surface (red peak top-center, blue troughs), thin
+    curved descent path with round marker dots, faded reflected surface below.
+
+Regions measured from unique_slides/slide_025.jpg (960x540, 1px = 1/72in):
+  TL x85..265 y115..288 | TR x616..879 y115..317
+  BL x83..376  y290..527 | BR x615..880 y344..531
+Each PNG is 300dpi at figsize = box_px/72 and is placed at box_px/72 inches.
+"""
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+import numpy as np
+import os
+from matplotlib.lines import Line2D
+from mpl_toolkits.mplot3d import proj3d
+
+OUT = "/home/ahmed/Projects/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/build/assets"
+os.makedirs(OUT, exist_ok=True)
+
+DPI = 300
+JET = plt.get_cmap("jet")
+RED = (0.75, 0.0, 0.0)
+BLK = "black"
+TICKC = "#333333"
+
+PLOTS = {
+    "tl": dict(x0=85,  y0=115, w=180, h=173, elev=32, azim=60),
+    "tr": dict(x0=616, y0=115, w=263, h=202, elev=30, azim=60),
+    "bl": dict(x0=83,  y0=290, w=293, h=237, elev=28, azim=-62),
+    "br": dict(x0=615, y0=344, w=265, h=187, elev=26, azim=-62),
+}
+
+
+def figure(spec):
+    fig = plt.figure(figsize=(spec["w"] / 72.0, spec["h"] / 72.0), dpi=DPI)
+    ax = fig.add_axes([0.05, 0.04, 0.90, 0.92], projection="3d")
+    ax.view_init(elev=spec["elev"], azim=spec["azim"])
+    return fig, ax
+
+
+def axis_style(ax, tsize=6.0):
+    for axis in (ax.xaxis, ax.yaxis, ax.zaxis):
+        axis.set_pane_color((1, 1, 1, 0.0))
+        axis._axinfo["grid"].update(color="#E4E4E4", linewidth=0.3)
+        axis.line.set_linewidth(0.4)
+        axis.set_tick_params(pad=-1, labelsize=tsize, length=1.5, width=0.4)
+    for t in ax.get_xticklabels() + ax.get_yticklabels() + ax.get_zticklabels():
+        t.set_fontsize(tsize)
+        t.set_color(TICKC)
+
+
+def mesh(ax, X, Y, Z, **kw):
+    ax.plot_surface(X, Y, Z, cmap=JET, shade=False, antialiased=True,
+                    rstride=4, cstride=4, linewidth=0.28,
+                    edgecolor=(0.05, 0.05, 0.05, 0.55), **kw)
+
+
+def proj_xy(ax, x, y, z):
+    """3-D data point -> figure-fraction (fx, fy)."""
+    x2, y2, _ = proj3d.proj_transform(x, y, z, ax.get_proj())
+    disp = ax.transData.transform([(x2, y2)])[0]
+    return (disp[0] / fig_w(ax), 1.0 - disp[1] / fig_h(ax))
+
+
+def fig_w(ax):
+    return ax.figure.get_size_inches()[0] * DPI
+
+
+def fig_h(ax):
+    return ax.figure.get_size_inches()[1] * DPI
+
+
+def redrect(fig, spec, inset=3):
+    x0 = inset / spec["w"]
+    x1 = 1.0 - inset / spec["w"]
+    y0 = 1.0 - inset / spec["h"]
+    y1 = inset / spec["h"]
+    for (a0, b0, a1, b1) in ((x0, y0, x0, y1), (x1, y0, x1, y1),
+                             (x0, y0, x1, y0), (x0, y1, x1, y1)):
+        fig.add_artist(Line2D([a0, a1], [b0, b1], transform=fig.transFigure,
+                              color=RED, lw=1.4, zorder=40, solid_capstyle="butt"))
+
+
+def save(fig, name):
+    fig.savefig(os.path.join(OUT, "plot_025_%s.png" % name), dpi=DPI,
+                facecolor="white")
+    plt.close(fig)
+    print("wrote plot_025_%s.png" % name)
+
+
+# ── TL: concave dome (one maximum), ticks 2/0/-2 both base axes, 0/-5 z-axis,
+#      contour rings projected on the floor ────────────────────────────────────
+def plot_tl():
+    spec = PLOTS["tl"]
+    fig, ax = figure(spec)
+    x = np.linspace(-2, 2, 80)
+    X, Y = np.meshgrid(x, x)
+    R = np.sqrt(X ** 2 + Y ** 2)
+    Z = 7.0 * np.exp(-((X ** 2 + Y ** 2) / 1.15) ** 2) - 4.6 \
+        - 0.9 * np.exp(-((R - 1.5) / 0.30) ** 2)
+    Z = np.clip(Z, -5.0, None)
+    Zn = (Z - Z.min()) / max(Z.max() - Z.min(), 1e-9)
+    ax.plot_surface(X, Y, Z, facecolors=JET(0.60 * Zn), shade=False,
+                    antialiased=True, rstride=3, cstride=3, linewidth=0.40,
+                    edgecolor=(0.05, 0.05, 0.05, 0.75))
+    ax.contour(X, Y, Z, levels=12, zdir="z", offset=-5.0,
+               colors=[JET(0.60 * t) for t in np.linspace(0, 1, 12)],
+               linewidths=0.8)
+    ax.set_xlim(-2, 2); ax.set_ylim(-2, 2); ax.set_zlim(-5, 2)
+    ax.set_xticks([2, 0, -2]); ax.set_yticks([2, 0, -2])
+    ax.set_zticks([0, -5])
+    axis_style(ax)
+    ax.set_box_aspect((1, 1, 0.85), zoom=1.08)
+    redrect(fig, spec)
+    save(fig, "tl")
+
+
+# ── TR: convex bowl (one minimum), x/y ticks 100..-100 step 50, z 0..2 x10^4,
+#      multiplier text outside the box top-left ────────────────────────────────
+def plot_tr():
+    spec = PLOTS["tr"]
+    fig, ax = figure(spec)
+    x = np.linspace(-100, 100, 90)
+    X, Y = np.meshgrid(x, x)
+    R2 = X ** 2 + Y ** 2
+    Z = 0.8 * R2 / 10000.0 + 1.9 * np.exp(-(R2) / (22.0 ** 2))
+    mesh(ax, X, Y, Z)
+    ax.set_xlim(-100, 100); ax.set_ylim(-100, 100); ax.set_zlim(0, 2)
+    ax.set_xticks([100, 50, 0, -50, -100])
+    ax.set_yticks([100, 50, 0, -50, -100])
+    ax.set_zticks([2, 1.5, 1, 0.5, 0])
+    ax.set_zticklabels(["2", "1.5", "1", "0.5", "0"])
+    axis_style(ax)
+    ax.set_box_aspect((1, 1, 0.62), zoom=1.12)
+    ax.text2D(0.02, 0.97, r"$\times 10^{4}$", transform=ax.transAxes,
+              fontsize=6.0, color=TICKC, va="top", zorder=50)
+    redrect(fig, spec)
+    save(fig, "tr")
+
+
+# ── BL: non-convex two-peak/two-valley surface, x/y ticks -3..3 step 1,
+#      z -6..8 step 2, red X markers at the extrema, labels at the measured
+#      slide-px positions (Global Maxima top-center, Local Maxima mid-right,
+#      Local Minima lower-right, Global Minima lower-left) ─────────────────────
+def plot_bl():
+    spec = PLOTS["bl"]
+    fig, ax = figure(spec)
+    x = np.linspace(-3, 3, 100)
+    X, Y = np.meshgrid(x, x)
+    Z = (4.6 * np.exp(-((X - 0.2) ** 2 + (Y - 0.4) ** 2) * 0.9)
+         + 3.4 * np.exp(-((X + 1.9) ** 2 + (Y - 1.7) ** 2) * 1.5)
+         - 4.8 * np.exp(-((X + 0.7) ** 2 + (Y + 1.6) ** 2) * 1.1)
+         - 3.6 * np.exp(-((X - 1.8) ** 2 + (Y + 1.3) ** 2) * 1.4))
+    mesh(ax, X, Y, Z)
+    ax.set_xlim(-3, 3); ax.set_ylim(-3, 3); ax.set_zlim(-6, 8)
+    ax.set_xticks([-3, -2, -1, 0, 1, 2, 3])
+    ax.set_yticks([-3, -2, -1, 0, 1, 2, 3])
+    ax.set_zticks([-6, -4, -2, 0, 2, 4, 6, 8])
+    axis_style(ax, tsize=5.5)
+    ax.set_box_aspect((1, 1, 0.95), zoom=1.06)
+
+    def extremum(cx, cy, want_max):
+        d = (X - cx) ** 2 + (Y - cy) ** 2
+        m = d < 0.9 ** 2
+        masked = np.where(m, Z, -1e9 if want_max else 1e9)
+        i = np.argmax(masked) if want_max else np.argmin(masked)
+        return X.flat[i], Y.flat[i], Z.flat[i]
+
+    PEAKS = {
+        "GM":  extremum(0.2, 0.4, True),
+        "LMx": extremum(-1.9, 1.7, True),
+        "LMn": extremum(1.8, -1.3, False),
+        "GMn": extremum(-0.7, -1.6, False),
+    }
+    # label slide-px (measured) -> figure fraction; BL figure origin (83,290)
+    BW, BH = spec["w"], spec["h"]
+    LABELS = {   # key: (text, slide_x, slide_y, ha)
+        "GM":  ("Global Maxima", 254, 307, "center"),
+        "LMx": ("Local Maxima",  312, 396, "center"),
+        "LMn": ("Local Minima",  313, 458, "center"),
+        "GMn": ("Global Minima", 156, 455, "center"),
+    }
+    for key, (txt, sx, sy, ha) in LABELS.items():
+        fxp = (sx - spec["x0"]) / BW
+        fyp = 1.0 - (sy - spec["y0"]) / BH
+        fig.text(fxp, fyp, txt, fontsize=6.2, color=BLK, ha=ha, va="center",
+                 zorder=45)
+        px_, py_, pz_ = PEAKS[key]
+        ex, ey = proj_xy(ax, px_, py_, pz_)
+        # leader from label toward the marker
+        lx, ly = fxp, fyp
+        fig.add_artist(Line2D([lx, ex], [ly, ey], transform=fig.transFigure,
+                              color=BLK, lw=0.6, zorder=42))
+        fig.add_artist(Line2D([ex], [ey], transform=fig.transFigure,
+                              marker="x", color=RED, markersize=5,
+                              markeredgewidth=1.6, zorder=46, linestyle="none"))
+
+    redrect(fig, spec)
+    save(fig, "bl")
+
+
+# ── BR: wavy multi-modal surface (red peak top-center, blue troughs), thin
+#      curved descent path with dots, faded reflected surface below ────────────
+def plot_br():
+    spec = PLOTS["br"]
+    fig, ax = figure(spec)
+    x = np.linspace(-3, 3, 90)
+    X, Y = np.meshgrid(x, x)
+    Z = (2.6 * np.exp(-((X - 0.3) ** 2 + (Y - 1.9) ** 2) * 0.8)
+         + 1.6 * np.exp(-((X + 1.7) ** 2 + (Y + 0.4) ** 2) * 0.9)
+         + 1.2 * np.exp(-((X - 1.9) ** 2 + (Y - 0.6) ** 2) * 1.0)
+         - 2.2 * np.exp(-((X + 0.6) ** 2 + (Y + 1.9) ** 2) * 0.9)
+         - 1.8 * np.exp(-((X - 1.4) ** 2 + (Y + 1.9) ** 2) * 1.1))
+    mesh(ax, X, Y, Z)
+
+    def grad(px, py):
+        e = 1e-4
+        return ((Zf(px + e, py) - Zf(px - e, py)) / (2 * e),
+                (Zf(px, py + e) - Zf(px, py - e)) / (2 * e))
+
+    def Zf(px, py):
+        return (2.6 * np.exp(-((px - 0.3) ** 2 + (py - 1.9) ** 2) * 0.8)
+                + 1.6 * np.exp(-((px + 1.7) ** 2 + (py + 0.4) ** 2) * 0.9)
+                + 1.2 * np.exp(-((px - 1.9) ** 2 + (py - 0.6) ** 2) * 1.0)
+                - 2.2 * np.exp(-((px + 0.6) ** 2 + (py + 1.9) ** 2) * 0.9)
+                - 1.8 * np.exp(-((px - 1.4) ** 2 + (py + 1.9) ** 2) * 1.1))
+
+    px_, py_ = -2.4, 2.4
+    lr = 0.55
+    path = []
+    for _ in range(60):
+        path.append((px_, py_))
+        gx, gy = grad(px_, py_)
+        px_ -= lr * gx
+        py_ -= lr * gy
+    path = np.array(path)
+    pz = np.array([Zf(a, b) for a, b in path])
+    ax.plot(path[:, 0], path[:, 1], pz + 0.08, color="black", lw=1.1,
+            zorder=30, solid_capstyle="round")
+    ax.plot(path[:, 0], path[:, 1], pz + 0.08, linestyle="none", marker="o",
+            markersize=2.0, markerfacecolor="black", markeredgewidth=0,
+            color="black", zorder=31)
+
+    # faded reflected surface below the box floor
+    zmin, zmax = ax.get_zlim()
+    ax.plot_surface(X, Y, 2 * zmin - Z - 1.2, cmap=JET, shade=False,
+                    antialiased=True, rstride=4, cstride=4, linewidth=0,
+                    alpha=0.18, zorder=1)
+
+    ax.set_xlim(-3, 3); ax.set_ylim(-3, 3)
+    ax.set_zlim(-6, 5)
+    ax.set_xticks([-3, 0, 3]); ax.set_yticks([-3, 0, 3])
+    ax.set_zticks([-5, 0, 5])
+    axis_style(ax, tsize=5.5)
+    ax.set_box_aspect((1, 1, 0.8), zoom=1.06)
+    redrect(fig, spec)
+    save(fig, "br")
+
+
+plot_tl()
+plot_tr()
+plot_bl()
+plot_br()
+print("all four plots written (k10)")

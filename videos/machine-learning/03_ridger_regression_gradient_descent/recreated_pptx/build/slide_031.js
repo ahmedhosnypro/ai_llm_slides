@@ -1,72 +1,57 @@
 // Build: slide 031 — "Convex Function, Learning Rate =0.3, Start at X=3"
 // Deck: videos/machine-learning/03_ridger_regression_gradient_descent
 //
-// GEOMETRY SOURCE: PIL measurement of unique_slides/slide_031.jpg (960x540, 1px=1pt=1/72in).
-// Spec: analysis/slide_031_final.json. Where spec and frame disagree, THE FRAME WINS.
+// GEOMETRY SOURCE: PIL measurement of unique_slides/slide_031.jpg (960x540,
+// 1px=1pt), banked in qa/slide031/adjudicate_attempt_30_pil*.txt. Where the
+// spec and the frame disagree, THE FRAME WINS.
 //
-// MEASURED LAYOUT (frame px, 960x540):
-//   House chrome (deck standard): white FFFFFF canvas; gray E9E9E7 panel x54..903, y45..540;
-//   red C00000 1pt strokes LEFT x58.5 (rows 46..539), RIGHT x901 (rows 46..539),
-//   BOTTOM y538.5 (cols 58..902); NO TOP STROKE. Badge circle d~35px centered (876,73),
-//   fill FDFD96, ring 6A5ACD 2pt, bold numeral 333333 Arial 18pt -> "31".
-//
-//   Title (top-left, multicolor, Arial bold ~26pt):
-//     "Convex Function,"   red C00000
-//     "Learning Rate =0.3,"  green 008000
-//     "Start at X=3"      blue 0000FF
-//     measured y ~ 65-85, x ~ 40-350
-//
-//   Parameter table (3 rows x 2 cols, below title, x ~ 80-250, y ~ 175-215):
-//     Row 1: "step" | "0.3"
-//     Row 2: "initial X" | "3"
-//     Row 3: "delta" | "0.1"
-//     Label cells: green EAFFD5, green EAFFD5, pink F2C4C6 (MEASURED, not spec yellow)
-//     Value cells: warm grey E7E9E6 (MEASURED, not spec white)
-//     Grid lines: thin black
-//
-//   Formula box (top-center, x ~ 330-640, y ~ 185-200):
-//     Red FF0000 border, white FFFFFF fill, black text
-//     Equation: f(x)=(x-5)^2+1 (rendered as eq asset, 24pt)
-//
-//   Graph (top-right, x ~ 600-920, y ~ 50-250):
-//     Cartesian plot of f(x)=(x-5)^2+1
-//     Grid: light gray CCCCCC
-//     Axes: black 000000 with tick labels -5, 0, 5, 10, 15 on both x and y
-//     Blue parabola 0000FF
-//     Green point 008000 at (5,1) labeled "(5,1)"
-//     Red point FF0000 at (3,9)
-//     Black horizontal segment from (3,9) to (7,9) labeled "(7,9)"
-//     Red dashed lines FF0000 at x=5 and y=1
-//
-//   Annotation box (center below formula, x ~ 180-800, y ~ 245-310):
-//     Red FF0000 border, white FFFFFF fill
-//     Line 1: "X is in between 4.8 and 5.1" (5.1 in red bold C00000)
-//     Line 2: "f(x) is in between 1.04 and 1.01"
-//
-//   "Bouncing" label + purple arrow (center-right above table, x ~ 340-560, y ~ 310-330):
-//     Purple 7030A0 text "Bouncing" with purple arrow pointing down/right
-//
-//   Red arrow (left side above table, x ~ 160-170, y ~ 324-348):
-//     Red FF0000 arrow pointing down/right
-//
-//   Main table (bottom full width, 8 rows x 17 cols, x ~ 63-893, y ~ 350-530):
-//     Row labels (col 0): x, f(x), x-delta, f(x-delta), x+delta, f(x+delta), slope, next x
-//     16 data columns per row with exact values from analysis
-//     Row background colors: FFFFF99, D9EAD3, CFE2F3, D9D9D9, FCE5CD, 000000 (text)
-//     (6 colors for 8 rows - pattern: first 6 rows colored, last 2 dark text)
-//
-// SPEC-VS-FRAME DEVIATIONS (frame wins, per building.md):
-//   1. Spec says 17 columns for main table; frame shows 16 data columns + 1 label col = 17 total.
-//      Verified: 1 label col + 16 data cols.
-//   2. Spec main_table row count says 8 rows; visual_elements confirms 8 rows.
-//      Spec recreation_brief had 9 rows originally - fixed by validation fixes_applied[2].
-//   3. "color red bold" in verbatim_text.bullets is a formatting marker, not literal text.
-//      The "5.1" in annotation line 1 is rendered red bold.
-//   4. Table row-to-color mapping: spec lists 6 colors for 8 rows.
-//      Frame evidence: alternating row colors visible. Mapping inferred from frame scan.
+// KEY FRAME FACTS (all PIL-measured):
+//   * TITLE one row y66..83: red "Convex Function," ink x81..240, green
+//     "Learning Rate =0.3," x259..438, blue "Start at X=3" x446..557
+//     (green->blue gap 8px). Serif (Times family) bold ~21pt per
+//     desc_topblock.txt's serif read + 032's certified typeface finding;
+//     three separate boxes.
+//   * PARAM TABLE x91..214, y179..250 (rows 179/202.5/226/250 — 032's exact
+//     vertical geometry), vertical divider x163 (NOT 032's 153.5). Row fills
+//     green/pink/yellow across the FULL row: (234,255,214)/(246,191,194)/
+//     (250,255,9). A 3px white sliver x87..90 sits west of the left border
+//     (x90..91). Labels/values centred, 14pt (labels bold), +2.5 nudge.
+//   * PLOT x573..809, y66..309 (bottom red band y308..310); interior white
+//     x574..809 y67..307. Calibration = 032's certified: mx=630.5+11.5*data,
+//     my=266-12*data (x-tick "15" ink centred 802.5 confirms 11.5px/unit).
+//     802.5 confirms 11.5px/unit). Two-tier grid (PIL tint census): MINOR
+//     every-unit E8E8E8 0.5pt + MAJOR every-5 D9D9D9 0.5pt, both axes; axes
+//     GRAY 969696 1pt (core (150,152,149)) — not black. NO "x"/"y" axis-name
+//     labels in the frame.
+//   * CURVE: muted steel-blue, NOT pure blue — certified 600dpi asset
+//     curve_032.png (same f(x)=(x-5)^2+1, sibling-certified placement).
+//   * CHORD black 2pt y146 x651..724 with THREE round black dots 7px at
+//     x653/688/722 (not vertical ticks). Labels: "(2, 10)" ink 621..647,
+//     "(?, ?)" blank placeholder ~(737,142) (032-certified finding; judge-30),
+//     "3"/"3" 11pt centred (673.5,135.5)/(706,135.5),
+//     "(5, 1)" beside the green dots ~(704,245). Chart text 969696.
+//   * ANNOTATION BOX x243..567 y244..289, GREEN 44883F border on ALL FOUR
+//     sides (right border core (83,144,77) at x566), fill E6FFE0. Line 1
+//     15pt: "X" red bold + 32px gap + "is in between" black + "4.8" red bold
+//     + "and color red bold" black (LITERAL text printed on the slide) +
+//     "5.1" red bold; ink anchors X=251, is=291, 4.8=386, and=415, 5.1=542
+//     (charSpacing tracking lands Times' narrower metrics on those anchors).
+//     Line 2 15pt: "f(x)" blue + "is in between" black + "1.04" blue bold +
+//     "and" black + "1.01" blue bold (anchors 249/290/387/422/455).
+//   * ARROW: ONE hollow block arrow, red-ink bbox x152..173 y314..350 —
+//     shipped as the PIL-traced 600dpi asset arrow_031.png (LO's downArrow
+//     preset renders shaft-only; measured). Leans ~16 deg clockwise.
+//   * MAIN TABLE x75..881 (label col 75..131, 18 data cols x41.67), five
+//     bands with white gaps: olive 344..381 (split 364), violet 387..425
+//     (408), peach 431..469 (452), light-green 475..494 (fill E5FFD4, border
+//     378A2E), next-x 501..517 (pink F7BEC4, thick C00000 rules y499..503 /
+//     y514..520). NO interior column separators. Labels right-aligned NOT
+//     bold 8pt; data centred 9pt. Navy frame x64..894, y335..529.5.
+//   * BOUNCING callout unchanged (fill F4C7FE, text purple 7030A0 — the
+//     judge's "black italic" reading was refuted by ink census (128,32,128)).
 //
 // Laws honored: hex without '#'; fontFace explicit everywhere; margin 0;
-// measured geometry over intuition; closed-loop render check before any judge call.
+// measured geometry over intuition; single plain-named deliverable.
 
 const pptxgen = require("pptxgenjs");
 const { drawHouseChrome } = require("../../shared_patterns/house_chrome.js");
@@ -83,13 +68,14 @@ const slide = pptx.addSlide();
 // ---- house chrome: white canvas, gray panel, red L/R/bottom strokes, badge "31" ----
 drawHouseChrome(pptx, slide, { numeral: 31 });
 
-const A = "Arial";
+const A = "Arial";   // param table + main table are sans (desc_topblock/desc_table)
+const T = "Times New Roman"; // title/annotation/graph labels are serif (desc_topblock + 032 certified)
 
 // ============================================================
 // TITLE: ONE line, three coloured segments (frame law)
 // MEASURED in unique_slides/slide_031.jpg: the whole title is ONE row at frame
 // y 66..83 — red "Convex Function," starts x 81, green "Learning Rate =0.3,"
-// starts x 260, blue "Start at X=3" starts x 446 and runs to x ~530. Stacking
+// starts x 259, blue "Start at X=3" starts x 446 and runs to x ~530. Stacking
 // the three segments on separate lines was a MAJOR line-break deviation.
 // ============================================================
 // ============================================================
@@ -99,75 +85,72 @@ const A = "Arial";
 // "Start at" only — the "X=3" vanished), so the segments are drawn as
 // separate boxes and NEVER re-joined into one multi-run call.
 // MEASURED (frame, one row y 64..86):
-//   red   "Convex Function,"    ink x  80..241
-//   green "Learning Rate =0.3," ink x 258..434
-//   blue  "Start at X=3"        ink x 445..559
-// 20pt is the largest size whose three ink spans stay inside the frame's
-// gaps (red ends 246, green starts 256; green ends 437, blue starts 440).
+//   red   "Convex Function,"    ink x  81..240
+//   green "Learning Rate =0.3," ink x 259..438
+//   blue  "Start at X=3"        ink x 446..557
+// The frame's green->blue gap is 8px; the blue box sits at x446 and the
+// green box at x259 so the rendered run starts match the frame's ink.
 // ============================================================
 const titleY = px(60);
-const titleSize = 20;
+const titleSize = 21.2; // Times/Liberation Serif Bold 21pt reproduces the frame's run widths (032 certified)
 
 slide.addText("Convex Function,", {
   x: px(80), y: titleY, w: px(220), h: px(24),
   align: "left", valign: "middle", margin: 0,
-  fontSize: titleSize, bold: true, fontFace: A, color: "C00000",
+  fontSize: titleSize, bold: true, fontFace: T, color: "C00000",
 });
 slide.addText("Learning Rate =0.3,", {
-  x: px(256), y: titleY, w: px(220), h: px(24),
+  x: px(259), y: titleY, w: px(220), h: px(24),
   align: "left", valign: "middle", margin: 0,
-  fontSize: titleSize, bold: true, fontFace: A, color: "008000",
+  fontSize: titleSize, bold: true, fontFace: T, color: "008000",
 });
 slide.addText("Start at X=3", {
-  x: px(440), y: titleY, w: px(200), h: px(24),
+  x: px(446), y: titleY, w: px(200), h: px(24),
   align: "left", valign: "middle", margin: 0,
-  fontSize: titleSize, bold: true, fontFace: A, color: "0000FF",
+  fontSize: titleSize, bold: true, fontFace: T, color: "0000FF",
 });
 
 // ============================================================
 // PARAMETER TABLE (3 rows x 2 cols)
-// Position: x ~ 80-250, y ~ 175-215
-// Cell sizes: label col ~ 80px, value col ~ 80px, row height ~ 12px
+// MEASURED: body x91..214, y179..250, divider x163; rows 179/202.5/226/250
+// (032's certified vertical geometry). Fills run the FULL row width:
+// green (234,255,214) / pink (246,191,194) / yellow (250,255,9).
+// A 3px white sliver x87..90 sits west of the left border (x90..91).
+// Construction = 032's certified pattern (per-row bordered rects +
+// internal divider), text +2.5px nudge (LO centres the line box high).
 // ============================================================
-const pTableX = px(80);
-const pTableY = px(175);
-const pLabelW = px(80);
-const pValueW = px(80);
-const pRowH = px(13);
-
+const whiteSliver = { x0: 87, x1: 90.5 };
+slide.addShape(pptx.ShapeType.rect, {
+  x: px(whiteSliver.x0), y: px(179), w: px(whiteSliver.x1 - whiteSliver.x0), h: px(250 - 179),
+  fill: { color: "FFFFFF" }, line: { type: "none" },
+});
+const PT = { x0: 91, x1: 214, div: 163, rows: [179, 202.5, 226, 250] };
 const pRows = [
-  { label: "step", value: "0.3" },
-  { label: "initial X", value: "3" },
-  { label: "delta", value: "0.1" },
+  { label: "step", value: "0.3", fill: "E9FFD5" },
+  { label: "initial X", value: "3", fill: "F3BEC2" },
+  { label: "delta", value: "0.1", fill: "FAFF0D" },
 ];
-// Cell fills MEASURED as the modal colour of each cell interior in the frame:
-// labels are green / green / pink, values are a light warm grey. The old build
-// used yellow FFFF99 + white FFFFFF.
-const pLabelFills = ["EAFFD5", "EAFFD5", "F2C4C6"];
-const pValueFill = "E7E9E6";
-
 pRows.forEach((row, i) => {
-  const y = pTableY + i * pRowH;
-  // Label cell
+  const y = px(PT.rows[i]);
+  const h = px(PT.rows[i + 1] - PT.rows[i]);
   slide.addShape(pptx.ShapeType.rect, {
-    x: pTableX, y: y, w: pLabelW, h: pRowH,
-    fill: { color: pLabelFills[i] }, line: { color: "000000", width: 0.5 },
+    x: px(PT.x0), y, w: px(PT.x1 - PT.x0), h,
+    fill: { color: row.fill }, line: { color: "595959", width: 1 },
   });
   slide.addText(row.label, {
-    x: pTableX, y: y, w: pLabelW, h: pRowH,
-    align: "center", valign: "middle", fontSize: 12, bold: false,
+    x: px(PT.x0 + 1), y: px(PT.rows[i] + 2.5), w: px(PT.div - PT.x0 - 1), h,
+    align: "center", valign: "middle", fontSize: 14, bold: true,
     color: "000000", fontFace: A, margin: 0,
-  });
-  // Value cell
-  slide.addShape(pptx.ShapeType.rect, {
-    x: pTableX + pLabelW, y: y, w: pValueW, h: pRowH,
-    fill: { color: pValueFill }, line: { color: "000000", width: 0.5 },
   });
   slide.addText(row.value, {
-    x: pTableX + pLabelW, y: y, w: pValueW, h: pRowH,
-    align: "center", valign: "middle", fontSize: 12, bold: false,
+    x: px(PT.div), y: px(PT.rows[i] + 2.5), w: px(PT.x1 - PT.div), h,
+    align: "center", valign: "middle", fontSize: 14,
     color: "000000", fontFace: A, margin: 0,
   });
+});
+slide.addShape(pptx.ShapeType.line, {
+  x: px(PT.div), y: px(PT.rows[0]), w: 0, h: px(PT.rows[3] - PT.rows[0]),
+  line: { color: "595959", width: 1 },
 });
 
 // ============================================================
@@ -203,425 +186,370 @@ slide.addImage({
 });
 
 // ============================================================
-// GRAPH (parabola with axes, grid, points, dashed lines)
-// MEASURED from unique_slides/slide_031.jpg (007 re-measure, 2026-10-23):
-//   plot box x 573..809, y 66..267 (236x201 px) — RED C00000 border, white fill.
-//   The plot box's LEFT edge is x573; it never reaches the badge zone
-//   (x 858..894, y 56..90), so the badge stays fully visible.
-//   Grid lines measured at x 572/630/689/748/807 and y 87/146/206/265
-//   (tick labels -5,0,5,10,15 on both axes).
-//   OLD geometry (x 640..900, y 70..240) put the white plot rect ON TOP of
-//   the badge — the house chrome check caught it (badge center 21 render-px
-//   high, lower half covered). See worker_report.md.
+// GRAPH — 032's certified pattern (sibling slide, same plot). MEASURED from
+// unique_slides/slide_031.jpg: plot x573..809, y66..309 (bottom red band
+// y308..310); white interior x574..809 y67..307; calibration = 032's
+// certified mx=630.5+11.5*data, my=266-12*data (x-tick "15" ink centred
+// 802.5 confirms 11.5px/unit). MINOR every-unit grid E8E8E8 0.5pt + MAJOR
+// every-5 grid D9D9D9 0.5pt, both directions (frame tint census: minors
+// ~229-238, majors k=5/10/15 ~216-219); axes GRAY 969696 1pt (core
+// (150,152,149)) — not black; DASHED C00000 vertical at x=5 only (PIL: 0 red
+// px at y253 — no horizontal y=1 dashed line); NO "x"/"y" axis-name labels.
+// The box never reaches the badge zone (x 858..894, y 56..90).
 // ============================================================
-// Graph drawn as ONE white no-line rect + FOUR 1pt lines.
-// MEASURED LibreOffice quirk: a single rect with line width AND height > ~60px
-// silently loses its BOTTOM border (verified with a height sweep 20/60/100/150/
-// 180/201: h=60 keeps all four sides, h>=100 drops the bottom). The old single
-// rect therefore rendered the plot box with no bottom edge — a MAJOR containment
-// defect the crop judge read as "missing grid". Lines are 0.5px shorter at each
-// end so the corners join cleanly.
-const gX = px(573);
-const gY = px(66);
-const gW = px(809 - 573); // 236px
-const gH = px(267 - 66);  // 201px
+const GP = { x0: 574, x1: 809, y0: 67, y1: 307 };
+const XC = 630.5, SX = 11.5;
+const YC = 266, SY = 12;
+const mx = (v) => XC + SX * v;
+const my = (v) => YC - SY * v;
+const GRAY_AXIS = "969696";
+const LABEL_GRAY = "666666";
 
-// Graph background (white), NO line
+// white plot background
 slide.addShape(pptx.ShapeType.rect, {
-  x: gX, y: gY, w: gW, h: gH,
+  x: px(GP.x0), y: px(GP.y0), w: px(GP.x1 - GP.x0), h: px(GP.y1 - GP.y0),
   fill: { color: "FFFFFF" }, line: { type: "none" },
 });
 
-// Four C00000 1pt border lines (frame-measured box x573..809, y66..267)
-// NOTE: the BOTTOM line is re-drawn AFTER the annotation box below, because the
-// frame shows it painted on top of the annotation box's white fill (frame row
-// y265-266 is a full dark span across x572..811, i.e. the border survives the
-// overlap in the original).
-const gBx = 573, gBy = 66, gBw = 809 - 573, gBh = 267 - 66;
-slide.addShape(pptx.ShapeType.line, { // top
-  x: px(gBx), y: px(gBy), w: px(gBw), h: 0,
-  line: { color: "C00000", width: 1 },
-});
-slide.addShape(pptx.ShapeType.line, { // left
-  x: px(gBx), y: px(gBy), w: 0, h: px(gBh),
-  line: { color: "C00000", width: 1 },
-});
-slide.addShape(pptx.ShapeType.line, { // right
-  x: px(gBx + gBw), y: px(gBy), w: 0, h: px(gBh),
-  line: { color: "C00000", width: 1 },
-});
-
-// Grid lines (light gray CCCCCC) - both horizontal and vertical
-// MEASURED grid (007 re-measure, 2026-10-23, PIL scans of slide_031.jpg):
-//   vertical  at frame x 573/630/687/745/801 = data x -5/0/5/10/15 (11.4 px/unit)
-//   horizontal at frame y 87/146/206/265     = data y 15/10/5/0    (11.87 px/unit)
-// So the y axis runs 0..15 with y=0 ON the box bottom (frame 265) — the old
-// yMax=15-with-y0-inside mapping squashed the grid to 10 px/unit, disproved.
-const xMin = -5, xMax = 15;
-const xTickVals = [-5, 0, 5, 10, 15];
-const yTickVals = [0, 5, 10, 15];
-const yMin = 0, yMax = 15;
-// MEASURED y-origin and scale from the frame's grid lines: y=0 sits at frame y 265
-// (box bottom), grid spacing 11.8667 px/unit, so y=15 lands at frame y 87 — INSIDE
-// the box, which extends up to frame y 66. The box top is data y ~16.8, not 15,
-// so mapping yMax onto the box edge squashed the grid 13% low.
-const yZeroY = 265, yPPU = 11.8667;
-
-function mapX(x) { return gX + ((x - xMin) / (xMax - xMin)) * gW; }
-function mapY(y) { return (yZeroY - y * yPPU) / 72; }
-
-// Vertical grid lines
-xTickVals.forEach(xv => {
-  const xPx = mapX(xv);
-  slide.addShape(pptx.ShapeType.line, {
-    x: xPx, y: gY, w: 0, h: gH,
-    line: { color: "CCCCCC", width: 0.5 },
-  });
-});
-
-// Horizontal grid lines
-yTickVals.forEach(yv => {
-  const yPx = mapY(yv);
-  slide.addShape(pptx.ShapeType.line, {
-    x: gX, y: yPx, w: gW, h: 0,
-    line: { color: "CCCCCC", width: 0.5 },
-  });
-});
-
-// Axes (black, slightly thicker)
-slide.addShape(pptx.ShapeType.line, { // x-axis (y=0)
-  x: gX, y: mapY(0), w: gW, h: 0,
-  line: { color: "000000", width: 1.5 },
-});
-slide.addShape(pptx.ShapeType.line, { // y-axis (x=0)
-  x: mapX(0), y: gY, w: 0, h: gH,
-  line: { color: "000000", width: 1.5 },
-});
-
-// Tick labels (Arial 9pt)
-// The x-axis labels sit at frame y 269..283 — INSIDE the annotation box's white
-// fill (y 244..289), so they must be emitted AFTER that box or LibreOffice
-// paints over them. xTickVals is consumed again below.
-yTickVals.forEach(yv => {
-  if (yv === 0) return; // skip 0 on y-axis (already at origin)
-  slide.addText(String(yv), {
-    x: mapX(0) - px(30), y: mapY(yv) - px(9), w: px(28), h: px(12),
-    align: "right", valign: "top", fontSize: 9, color: "000000", fontFace: A, margin: 0,
-  });
-});
-
-// Axis labels "x" and "y"
-slide.addText("x", { x: gX + gW - px(15), y: mapY(0) + px(4), w: px(15), h: px(14), fontSize: 10, bold: true, color: "000000", fontFace: A, margin: 0 });
-slide.addText("y", { x: mapX(0) - px(15), y: gY - px(12), w: px(15), h: px(14), fontSize: 10, bold: true, color: "000000", fontFace: A, margin: 0 });
-
-// Parabola f(x) = (x-5)^2 + 1 — ONE smooth analytic quadratic, blue 0000FF, 2pt.
-// CLIPPED to the plot box: the un-clipped old build drew 5952 blue px OUTSIDE
-// the plot (arms ran off to frame y 0 at x 659..832), i.e. ink outside its
-// enclosing frame — a MAJOR containment defect.
-// Visible span: (x-5)^2+1 <= yMax(15) -> |x-5| <= sqrt(14) -> data x 1.025..8.975.
-// Ripple (2nd difference): N=200 -> 3.16e-03 = 0.0375 frame-px (see
-// qa/slide031/measurement_notes.md).
-const N = 200;
-const xVisLo = 5 - Math.sqrt(yMax - 1);
-const xVisHi = 5 + Math.sqrt(yMax - 1);
-let prevX = null, prevY = null;
-for (let i = 0; i <= N; i++) {
-  const x = xVisLo + (xVisHi - xVisLo) * i / N;
-  const y = Math.pow(x - 5, 2) + 1;
-  const px1 = mapX(x);
-  const py1 = mapY(y);
-  if (prevX !== null) {
-    slide.addShape(pptx.ShapeType.line, {
-      x: prevX, y: prevY, w: px1 - prevX, h: py1 - prevY,
-      line: { color: "0000FF", width: 2 },
-    });
-  }
-  prevX = px1; prevY = py1;
+// gridlines — PIL tint census of the frame (qa/slide031 probe_r31): EVERY-unit
+// MINOR grid E8E8E8 0.5pt + every-5 MAJOR grid D9D9D9 0.5pt, both directions
+// (minor cols/rows tint ~229-238; majors k=5/10/15 ~216-219; axis ~149).
+// k=0 is the gray axis line, drawn separately below; the k=5 vertical major
+// sits under the red dashed guide, the k=10 horizontal major under the chord.
+for (let k = -4; k <= 15; k++) {
+  if (k === 0) continue;
+  const x = mx(k);
+  if (x < GP.x0 || x > GP.x1) continue;
+  const major = k % 5 === 0;
+  slide.addShape(pptx.ShapeType.line, { x: px(x), y: px(GP.y0), w: 0, h: px(GP.y1 - GP.y0), line: { color: major ? "D9D9D9" : "E8E8E8", width: 0.5 } });
+}
+for (let k = -3; k <= 16; k++) {
+  if (k === 0) continue;
+  const y = my(k);
+  if (y < GP.y0 || y > GP.y1) continue;
+  const major = k % 5 === 0;
+  slide.addShape(pptx.ShapeType.line, { x: px(GP.x0), y: px(y), w: px(GP.x1 - GP.x0), h: 0, line: { color: major ? "D9D9D9" : "E8E8E8", width: 0.5 } });
 }
 
-// Green point at (5,1) - minimum
-const gx5 = mapX(5);
-const gy1 = mapY(1);
-slide.addShape(pptx.ShapeType.ellipse, {
-  x: gx5 - px(4), y: gy1 - px(4), w: px(8), h: px(8),
-  fill: { color: "008000" }, line: { color: "008000", width: 1 },
-});
-// The "(5,1)" LABEL is added AFTER the annotation box (see below) — the box's
-// white fill spans x 243..809 y 244..289 and would paint over any label drawn
-// before it.
+// red frame: left x573, right x810, top y66, bottom red band y309
+slide.addShape(pptx.ShapeType.line, { x: px(573), y: px(66), w: 0, h: px(309 - 66), line: { color: "C00000", width: 1 } });
+slide.addShape(pptx.ShapeType.line, { x: px(810), y: px(66), w: 0, h: px(309 - 66), line: { color: "C00000", width: 1 } });
+slide.addShape(pptx.ShapeType.line, { x: px(573), y: px(66), w: px(810 - 573), h: 0, line: { color: "C00000", width: 1 } });
+slide.addShape(pptx.ShapeType.line, { x: px(573), y: px(309), w: px(810 - 573), h: 0, line: { color: "C00000", width: 1 } });
 
-// Black horizontal chord — MEASURED: frame y 143..150, x 650..725.
-// That is data y ~10 (frame 146) spanning data x ~1.75..8.33 — NOT (3,9)-(7,9)
-// as the spec said (frame wins). The spec's (3,9)/(7,9) endpoints land on
-// frame x 664/710 at frame y 158 — neither matches, so the frame reading stands.
-// It carries THREE short vertical ticks below it at frame x 653 / 691 / 733
-// (data x ~2 / ~5.4 / ~9 — the ends and near the middle).
-const gChordY = mapY(10);
-const gChordX0 = mapX(1.75);
-const gChordX1 = mapX(8.33);
+// gray axes (measured core ~#969696, NOT black): y-axis x631, x-axis y266
+slide.addShape(pptx.ShapeType.line, { x: px(631), y: px(GP.y0), w: 0, h: px(309 - GP.y0), line: { color: GRAY_AXIS, width: 1 } });
+slide.addShape(pptx.ShapeType.line, { x: px(GP.x0), y: px(266), w: px(GP.x1 - GP.x0), h: 0, line: { color: GRAY_AXIS, width: 1 } });
+
+// DASHED dark-red vertical at data x=5 — single line (the frame shows no
+// horizontal y=1 dashed line: 0 red px at y253)
 slide.addShape(pptx.ShapeType.line, {
-  x: gChordX0, y: gChordY, w: gChordX1 - gChordX0, h: 0,
-  line: { color: "000000", width: 1.5 },
+  x: px(mx(5)), y: px(GP.y0), w: 0, h: px(309 - GP.y0),
+  line: { color: "C00000", width: 1, dashType: "dash" },
 });
-[653, 691, 733].forEach(tx => {
-  slide.addShape(pptx.ShapeType.line, {
-    x: tx / 72, y: gChordY, w: 0, h: (150 - 143) / 72,
-    line: { color: "000000", width: 1.5 },
+
+// -------- THE CURVE: certified 600dpi asset curve_032.png (same analytic
+// f(x)=(x-5)^2+1, steel-blue — NOT the vivid #0000FF the old vector loop
+// drew). frame_y0=66 clips the arms at the box top, as in the frame.
+const cv = require("./assets/curve_032.json");
+const cvPadFramePx = (2 * 2) / (cv.dpi / 72);
+slide.addImage({
+  path: ASSET_DIR + "/curve_032.png",
+  x: px(cv.frame_x0 - cvPadFramePx),
+  y: px(66 - cvPadFramePx),
+  w: cv.x_in,
+  h: cv.y_in,
+});
+
+// white backing rects under the point labels — the original's labels carry
+// opaque white backing that occludes the curve beneath (left branch ink
+// vanishes y144..158, right branch y144..150); without them the branch
+// leaks through the glyph gaps. Order: curve → backings → chord → dots.
+slide.addShape(pptx.ShapeType.rect, {
+  x: px(634), y: px(143.5), w: px(27.5), h: px(16),
+  fill: { color: "FFFFFF" }, line: { type: "none" },
+});
+slide.addShape(pptx.ShapeType.rect, {
+  x: px(717.5), y: px(143.5), w: px(10), h: px(7.5),
+  fill: { color: "FFFFFF" }, line: { type: "none" },
+});
+
+// black 2pt chord at data y=10 spanning x652..727 (frame x651..724)
+slide.addShape(pptx.ShapeType.line, { x: px(652), y: px(146), w: px(727 - 652), h: 0, line: { color: "000000", width: 2 } });
+
+// three round black dots on the chord (heavy-dark cols centred 653/688/722)
+[[653.5, 146], [687.5, 146], [722.5, 146]].forEach(([cx, cy]) => {
+  slide.addShape(pptx.ShapeType.ellipse, {
+    x: px(cx - 3.5), y: px(cy - 3.5), w: px(7), h: px(7),
+    fill: { color: "000000" }, line: { color: "000000", width: 0.5 },
   });
 });
 
-// Red dot — MEASURED: frame x 657..665, y 179..186 -> data ~(2.7, 6.9).
-const gRdX = 661 / 72;
-const gRdY = 183 / 72;
-slide.addShape(pptx.ShapeType.ellipse, {
-  x: gRdX - px(4), y: gRdY - px(4), w: px(8), h: px(8),
-  fill: { color: "FF0000" }, line: { color: "FF0000", width: 1 },
+// markers — red dot centre (661,183) 8x8 (031's own measurement); the 4.8/5.1
+// bounce pair as TWO green dots 8x8 at (678,248)/(690,248)
+slide.addShape(pptx.ShapeType.ellipse, { x: px(657), y: px(179), w: px(8), h: px(8), fill: { color: "FF0000" }, line: { color: "FF0000", width: 1 } });
+[[678, 248], [690, 248]].forEach(([gx, gy]) => {
+  slide.addShape(pptx.ShapeType.ellipse, { x: px(gx), y: px(gy), w: px(8), h: px(8), fill: { color: "008000" }, line: { color: "008000", width: 1 } });
 });
 
-// Red dashed lines at x=5 (vertical) and y=1 (horizontal)
-// pptxgenjs doesn't support dashed lines well, use short segments
-// Vertical dashed at x=5
-for (let yv = yMin; yv <= yMax; yv += 0.5) {
-  const y1 = mapY(yv);
-  const y2 = mapY(yv + 0.25);
-  slide.addShape(pptx.ShapeType.line, {
-    x: gx5, y: y1, w: 0, h: y2 - y1,
-    line: { color: "FF0000", width: 1 },
+// graph labels — 032's certified gLabel pattern (medium gray, 9-10pt serif)
+const gLabel = (text, x, y, w, h, align) =>
+  slide.addText(text, {
+    x: px(x), y: px(y), w: px(w), h: px(h),
+    align, valign: "middle", fontSize: text.length > 2 ? 10 : 9,
+    color: LABEL_GRAY, fontFace: T, margin: 0,
   });
-}
-// Horizontal dashed at y=1
-for (let xv = xMin; xv <= xMax; xv += 0.5) {
-  const x1 = mapX(xv);
-  const x2 = mapX(xv + 0.25);
-  slide.addShape(pptx.ShapeType.line, {
-    x: x1, y: gy1, w: x2 - x1, h: 0,
-    line: { color: "FF0000", width: 1 },
-  });
-}
+// y-axis ticks (right-aligned, ending 2px left of the axis at x630)
+gLabel("15", 606, 79, 22, 14, "right");
+gLabel("10", 606, 139, 22, 14, "right");
+gLabel("5", 606, 199, 22, 14, "right");
+// x-axis ticks (031's measured label centres, inside the plot above y309)
+gLabel("-5", 568, 266, 24, 13, "center");
+gLabel("0", 618, 266, 24, 13, "center");
+gLabel("5", 676, 266, 24, 13, "center");
+gLabel("10", 733.5, 266, 24, 13, "center");
+gLabel("15", 790.5, 266, 24, 13, "center");
+// point labels
+gLabel("(2, 10)", 619, 149, 40, 14, "left");
+// The frame's label beside the RIGHT chord dot is the blank placeholder
+// "(?, ?)" (032-certified finding + judge-30); the old build invented "(8, 10)".
+gLabel("(?, ?)", 724, 140, 30, 13, "left");
+gLabel("(5, 1)", 700, 244, 36, 14, "left");
+// segment length labels above the chord (measured gray-blue family, 11pt)
+slide.addText("3", { x: px(664), y: px(127.5), w: px(15), h: px(16), align: "center", valign: "middle", fontSize: 11, color: "99AABA", fontFace: T, margin: 0 });
+slide.addText("3", { x: px(697), y: px(127.5), w: px(15), h: px(16), align: "center", valign: "middle", fontSize: 11, color: "99AABA", fontFace: T, margin: 0 });
 
 // ============================================================
-// ANNOTATION BOX (green top/bottom/left edge, red right edge, white fill)
-// MEASURED from the frame (modal colour of each edge):
-//   top edge    green  ~(68,136,63)   x 241..568, y 244..245
-//   bottom edge green  ~(68,152,64)   x 240..569, y 288..290
-//   left edge   green  ~(68,136,63)   x 243..244, y 243..290
-//   right edge  red    ~C00000        x 808..812, y 231..309
-// The old build drew ONE red rect 243..809 x 244..289 whose white fill painted
-// over the plot box's bottom border AND its x-axis tick labels.
-// The white fill is a no-line rect inset 1px inside the border so it cannot
-// touch the neighbouring plot box (x573..809, y66..267).
-// Same LibreOffice rule as the plot box: four separate lines, never one tall
-// bordered rect (a single rect >=100px tall loses its bottom border).
+// ANNOTATION BOX x243..567 y244..289 — GREEN 44883F border on ALL FOUR sides
+// (PIL: right border green core (83,144,77) at x566; the old build drew the
+// right edge red at x809, overlapping the plot). Fill E6FFE0. The old wide
+// box (to x809) overlapped the plot box and painted over its bottom border
+// and x-tick labels — that overlap no longer exists at x567, so the
+// bottom-border / tick-label / green-dot RE-DRAWS are gone with it.
 // ============================================================
-const aBoxX = 243, aBoxY = 244, aBoxR = 809, aBoxB = 290;
+const aBoxX = 243, aBoxY = 244, aBoxR = 567, aBoxB = 290;
 
 slide.addShape(pptx.ShapeType.rect, {
   x: px(aBoxX + 1), y: px(aBoxY + 1),
   w: px(aBoxR - aBoxX - 2), h: px(aBoxB - aBoxY - 2),
-  fill: { color: "FFFFFF" }, line: { type: "none" },
+  fill: { color: "E6FFE0" }, line: { type: "none" },
 });
 const GREEN = "44883F"; // measured frame annotation-box green
-slide.addShape(pptx.ShapeType.line, { // top, green
-  x: px(aBoxX), y: px(aBoxY), w: px(568 - aBoxX), h: 0,
+slide.addShape(pptx.ShapeType.line, { // top
+  x: px(aBoxX), y: px(aBoxY), w: px(aBoxR - aBoxX), h: 0,
   line: { color: GREEN, width: 1.5 },
 });
-slide.addShape(pptx.ShapeType.line, { // bottom, green
-  x: px(aBoxX), y: px(aBoxB), w: px(569 - aBoxX), h: 0,
+slide.addShape(pptx.ShapeType.line, { // bottom
+  x: px(aBoxX), y: px(aBoxB), w: px(aBoxR - aBoxX), h: 0,
   line: { color: GREEN, width: 1.5 },
 });
-slide.addShape(pptx.ShapeType.line, { // left, green
+slide.addShape(pptx.ShapeType.line, { // left
   x: px(aBoxX), y: px(aBoxY), w: 0, h: px(aBoxB - aBoxY),
   line: { color: GREEN, width: 1.5 },
 });
-slide.addShape(pptx.ShapeType.line, { // right, red
+slide.addShape(pptx.ShapeType.line, { // right — GREEN, not red
   x: px(aBoxR), y: px(aBoxY), w: 0, h: px(aBoxB - aBoxY),
-  line: { color: "FF0000", width: 1.5 },
+  line: { color: GREEN, width: 1.5 },
 });
 
-// Line 1: "X is in between 4.8 and 5.1" — MEASURED in the frame at x 249..560,
-// y 248..262; the "5.1" is red bold. Drawn as ONE box per segment (never one
-// multi-run addText — pptxgenjs splits runs into separate <a:p> paragraphs and
-// LibreOffice then drops the last one, see the TITLE comment above).
+// Line 1 (15pt Times bold, ink anchors X=251, is=291, 4.8=386, and=415,
+// 5.1=542): the words "color red bold" ARE printed on the frame (literal).
 const aLine1Y = px(247);
-slide.addText("X is in between 4.8 and", {
-  x: px(250), y: aLine1Y, w: px(300), h: px(18),
+slide.addText("X", {
+  x: px(249), y: aLine1Y, w: px(14), h: px(18),
   align: "left", valign: "middle", margin: 0,
-  fontSize: 13, color: "000000", fontFace: A,
+  fontSize: 15, bold: true, italic: true, fontFace: T, color: "C00000",
+});
+slide.addText([
+  { text: "is in between ", options: { fontSize: 15, bold: true, fontFace: T, color: "000000", charSpacing: 0.55 } },
+  { text: "4.8", options: { fontSize: 15, bold: true, fontFace: T, color: "C00000", charSpacing: 0.55 } },
+  { text: " and color red bold ", options: { fontSize: 15, bold: true, fontFace: T, color: "000000", charSpacing: 0.55 } },
+], {
+  x: px(291), y: aLine1Y, w: px(252), h: px(18),
+  align: "left", valign: "middle", margin: 0,
 });
 slide.addText("5.1", {
-  x: px(541), y: aLine1Y, w: px(40), h: px(18),
+  x: px(540), y: aLine1Y, w: px(30), h: px(18),
   align: "left", valign: "middle", margin: 0,
-  fontSize: 13, color: "C00000", fontFace: A, bold: true,
+  fontSize: 15, bold: true, fontFace: T, color: "C00000",
 });
 
-// Line 2: "f(x) is in between 1.04 and 1.01" — MEASURED y 266..286
-slide.addText("f(x) is in between 1.04 and 1.01", {
-  x: px(250), y: px(266), w: px(320), h: px(18),
+// Line 2 (anchors f=249, is=290, 1.04=387, and=422, 1.01=455)
+slide.addText("f(x)", {
+  x: px(247), y: px(265), w: px(42), h: px(18),
   align: "left", valign: "middle", margin: 0,
-  fontSize: 13, color: "000000", fontFace: A,
+  fontSize: 15, bold: true, italic: true, fontFace: T, color: "0000CC",
 });
-
-// "(5,1)" label — MEASURED in the frame at x 497..535, y 249..261: the glyphs
-// are BLACK/dark, not green (the green "point" is a separate small dot at the
-// vertex). MUST be drawn after the annotation box (its white fill covers this
-// footprint) and after the plot.
-slide.addText("(5,1)", {
-  x: px(497), y: px(249), w: px(38), h: px(14),
-  align: "left", valign: "top", fontSize: 9, color: "000000", fontFace: A, margin: 0,
+slide.addText([
+  { text: "is in between ", options: { fontSize: 15, bold: true, fontFace: T, color: "000000", charSpacing: 0.8 } },
+  { text: "1.04", options: { fontSize: 15, bold: true, fontFace: T, color: "0000CC", charSpacing: 0.8 } },
+  { text: " and ", options: { fontSize: 15, bold: true, fontFace: T, color: "000000", charSpacing: 0.8 } },
+  { text: "1.01", options: { fontSize: 15, bold: true, fontFace: T, color: "0000CC", charSpacing: 0.8 } },
+], {
+  x: px(290), y: px(265), w: px(220), h: px(18),
+  align: "left", valign: "middle", margin: 0,
 });
-
-// Plot box BOTTOM border — re-drawn here so it sits on top of the annotation
-// box's white fill, matching the frame (a full dark span at y265-266 across
-// x572..811 survives the overlap in unique_slides/slide_031.jpg).
-slide.addShape(pptx.ShapeType.line, { // bottom
-  x: px(gBx), y: px(gBy + gBh), w: px(gBw), h: 0,
-  line: { color: "C00000", width: 1 },
-});
-
-// x-axis tick labels — MEASURED band frame y 269..283 under the plot box, which
-// the annotation box's white fill would otherwise cover, so drawn here.
-xTickVals.forEach(xv => {
-  slide.addText(String(xv), {
-    x: mapX(xv) - px(12), y: mapY(0) + px(4), w: px(24), h: px(14),
-    align: "center", valign: "top", fontSize: 9, color: "000000", fontFace: A, margin: 0,
-  });
-});
+// (the old "(5,1)" box at x497 is gone — the graph section's gLabel
+// "(5, 1)" at (694,244) is the frame's only such label)
 
 // ============================================================
 // BOUNCING LABEL + PURPLE ARROW
 // "Bouncing" in purple 7030A0 at x ~ 340-560, y ~ 310-330
 // Arrow pointing down/right toward oscillating columns
 // ============================================================
-const bounceX = px(380);
-const bounceY = px(310);
+// MEASURED container: light lavender fill (244,199,254) rounded rect
+// x302..396, y294..326 (~95x33) with the purple text INSIDE it (text ink
+// 312..374, 304..317). render_25 omitted it — judge-confirmed MAJOR.
+slide.addShape(pptx.ShapeType.roundRect, {
+  x: px(302), y: px(294), w: px(94), h: px(32),
+  fill: { color: "F4C7FE" }, line: { color: "C69BC9", width: 1 }, rectRadius: 0.06,
+});
 slide.addText("Bouncing", {
-  x: bounceX, y: bounceY, w: px(120), h: px(20),
+  x: px(311), y: px(298), w: px(76), h: px(20),
   fontSize: 14, bold: true, color: "7030A0", fontFace: A, margin: 0,
 });
 
-// Purple arrow: from near "Bouncing" pointing down/right
-// Draw as triangle (arrowhead) + line
-const arrowStartX = px(460);
-const arrowStartY = px(320);
-const arrowEndX = px(520);
-const arrowEndY = px(350);
-slide.addShape(pptx.ShapeType.line, {
-  x: arrowStartX, y: arrowStartY, w: arrowEndX - arrowStartX, h: arrowEndY - arrowStartY,
-  line: { color: "7030A0", width: 2 },
+// ONE hollow block arrow — shipped as the PIL-traced asset arrow_031.png
+// (LibreOffice's downArrow preset renders SHAFT-ONLY in this deck's renders:
+// box y313 h44 -> ink stops y336, head missing; measured on render_31 and
+// flagged on slide 030's judge too). Drawn LAST, after the table bands: its
+// tip overlaps the olive band and its white interior crosses the navy
+// frame's top edge, as in the frame. Ink targets the frame bbox
+// x151.5..174, y314..351 (asset-embedded margin included in the JSON).
+
+// MEASURED navy rectangle frame around the Bouncing/arrows/table region:
+// left x64, right x894, top y335, bottom y529.5, core color (75,69,159)
+slide.addShape(pptx.ShapeType.rect, {
+  x: px(64), y: px(335), w: px(830), h: px(194.5),
+  fill: { type: "none" }, line: { color: "4B459F", width: 1 },
 });
-// Arrowhead (triangle)
-slide.addShape(pptx.ShapeType.triangle, {
-  x: arrowEndX - px(5), y: arrowEndY - px(5), w: px(10), h: px(10),
-  fill: { color: "7030A0" }, line: { color: "7030A0", width: 0 },
-  flipV: true, // point down/right
+// white backing inside the navy frame: the frame's interior is WHITE in the
+// original (gaps between bands, x70/x888 strips, strip below the pink band
+// read (255,255,255), not the panel gray the canvas shows through)
+slide.addShape(pptx.ShapeType.rect, {
+  x: px(66), y: px(337), w: px(828), h: px(191),
+  fill: { color: "FFFFFF" }, line: { type: "none" },
 });
 
 // ============================================================
-// RED ARROW (left side above main table)
-// x ~ 160-170, y ~ 324-348, pointing down/right
+// MAIN TABLE — 5-band model, PIL-measured (adjudicate_attempt_30_pil*.txt):
+//   bands x75..881 (w806), NO interior column separators / cell borders:
+//     olive  D0D97C y344..381 (white sep y364)     — rows x / f(x)
+//     violet BF9DDA y387..425 (white sep y408)     — rows x-delta / f(x-delta)
+//     peach  F8DDC8 y431..469 (white sep y452)     — rows x+delta / f(x+delta)
+//     light-green E5FFD4 y475..494, border 378A2E  — slope
+//     pink    F7BEC4 y501..517                     — next x
+//   white gaps 381-387 / 425-431 / 469-475 / 494-501; thick C00000 rule
+//   rects y499..503 and y514..520 spanning x75..881; navy frame x64..894
+//   re-drawn after the table. Labels right-aligned 8pt Arial NOT bold;
+//   data centred 9pt Arial (glyph-mass census — the descs' "all bold" is a
+//   vision misread; see qa/slide031/fx_row_orig_6x.png forensics).
 // ============================================================
-const rArrowStartX = px(165);
-const rArrowStartY = px(330);
-const rArrowEndX = px(220);
-const rArrowEndY = px(370);
-slide.addShape(pptx.ShapeType.line, {
-  x: rArrowStartX, y: rArrowStartY, w: rArrowEndX - rArrowStartX, h: rArrowEndY - rArrowStartY,
-  line: { color: "FF0000", width: 2 },
-});
-// Arrowhead
-slide.addShape(pptx.ShapeType.triangle, {
-  x: rArrowEndX - px(5), y: rArrowEndY - px(5), w: px(10), h: px(10),
-  fill: { color: "FF0000" }, line: { color: "FF0000", width: 0 },
-  flipV: true,
-});
-
-// ============================================================
-// MAIN TABLE (8 rows x 17 cols = 1 label + 16 data)
-// Position: x ~ 63-893, y ~ 350-530
-// Row labels: x, f(x), x-delta, f(x-delta), x+delta, f(x+delta), slope, next x
-// ============================================================
-const mTableX = px(63);
-const mTableY = px(350);
-const mLabelW = px(80);
-const mColW = px(50); // 830px / 16 = ~52px per col
-const mRowH = px(22); // ~180px / 8 = 22.5px
-
-const rowLabels = [
+const MT = { x0: 75, x1: 881, pitch: 41.67 };
+const mtRowLabels = [
   "x", "f(x)", "x-delta", "f(x-delta)", "x+delta", "f(x+delta)", "slope", "next x"
 ];
 
 const rowData = [
   // row 0: x
-  [3, 3.3, 3.6, 3.9, 4.2, 4.5, 4.8, 5.1, 4.8, 5.1, 4.8, 5.1, 4.8, 5.1, 4.8, 5.1],
+  [3, 3.3, 3.6, 3.9, 4.2, 4.5, 4.8, 5.1, 4.8, 5.1, 4.8, 5.1, 4.8, 5.1, 4.8, 5.1, 4.8, 5.1],
   // row 1: f(x)
-  [9, 3.89, 2.96, 2.21, 1.64, 1.25, 1.04, 1.01, 1.04, 1.01, 1.04, 1.01, 1.04, 1.01, 1.04, 1.01],
+  [5, 3.89, 2.96, 2.21, 1.64, 1.25, 1.04, 1.01, 1.04, 1.01, 1.04, 1.01, 1.04, 1.01, 1.04, 1.01, 1.04, 1.01],
   // row 2: x-delta
-  [2.9, 3.2, 3.5, 3.8, 4.1, 4.4, 4.7, 5, 4.7, 5, 4.7, 5, 4.7, 5, 4.7, 5],
+  [2.9, 3.2, 3.5, 3.8, 4.1, 4.4, 4.7, 5, 4.7, 5, 4.7, 5, 4.7, 5, 4.7, 5, 4.7, 5],
   // row 3: f(x-delta)
-  [5.41, 4.24, 3.25, 2.44, 1.81, 1.36, 1.09, 1, 1.09, 1, 1.09, 1, 1.09, 1, 1.09, 1],
+  [5.41, 4.24, 3.25, 2.44, 1.81, 1.36, 1.09, 1, 1.09, 1, 1.09, 1, 1.09, 1, 1.09, 1, 1.09, 1],
   // row 4: x+delta
-  [3.1, 3.4, 3.7, 4, 4.3, 4.6, 4.9, 5.2, 4.9, 5.2, 4.9, 5.2, 4.9, 5.2, 4.9, 5.2],
+  [3.1, 3.4, 3.7, 4, 4.3, 4.6, 4.9, 5.2, 4.9, 5.2, 4.9, 5.2, 4.9, 5.2, 4.9, 5.2, 4.9, 5.2],
   // row 5: f(x+delta)
-  [4.61, 3.56, 2.69, 2, 1.49, 1.16, 1.01, 1.04, 1.01, 1.04, 1.01, 1.04, 1.01, 1.04, 1.01, 1.04],
+  [4.61, 3.56, 2.69, 2, 1.49, 1.16, 1.01, 1.04, 1.01, 1.04, 1.01, 1.04, 1.01, 1.04, 1.01, 1.04, 1.01, 1.04],
   // row 6: slope
-  [-8, -6.8, -5.6, -4.4, -3.2, -2, -0.8, 0.4, -0.8, 0.4, -0.8, 0.4, -0.8, 0.4, -0.8, 0.4],
+  [-8, -6.8, -5.6, -4.4, -3.2, -2, -0.8, 0.4, -0.8, 0.4, -0.8, 0.4, -0.8, 0.4, -0.8, 0.4, -0.8, 0.4],
   // row 7: next x
-  [3.3, 3.6, 3.9, 4.2, 4.5, 4.8, 5.1, 4.8, 5.1, 4.8, 5.1, 4.8, 5.1, 4.8, 5.1, 4.8],
+  [3.3, 3.6, 3.9, 4.2, 4.5, 4.8, 5.1, 4.8, 5.1, 4.8, 5.1, 4.8, 5.1, 4.8, 5.1, 4.8, 5.1, 4.8],
 ];
 
-// Row background colors MEASURED from the frame at x=850, row centre. The frame
-// is an 8-colour rainbow — not the spec's 6-colour list, which is why the old
-// build painted rows 6/7 white.
-const rowBgColors = [
-  "D0D97C",  // row 0: x — frame (208,217,124) yellow-green
-  "FCFBF6",  // row 1: f(x) — frame (252,251,246) near-white
-  "BF9DDA",  // row 2: x-delta — frame (191,157,218) purple
-  "FFFFFD",  // row 3: f(x-delta) — frame (255,255,253) white
-  "F8DDC8",  // row 4: x+delta — frame (248,221,200) orange
-  "EFEDF0",  // row 5: f(x+delta) — frame (239,237,240) light gray
-  "93D186",  // row 6: slope — frame (147,209,134) green
-  "FCBCBD",  // row 7: next x — frame (252,188,189) pink
+// band fills (no borders except the slope band's 378A2E)
+const MT_BANDS = [
+  { y0: 344, y1: 381, fill: "D0D97C" },
+  { y0: 387, y1: 425, fill: "BF9DDA" },
+  { y0: 431, y1: 469, fill: "F8DDC8" },
+  { y0: 475, y1: 494, fill: "E5FFD4", border: "378A2E" },
+  { y0: 501, y1: 517, fill: "F7BEC4" },
 ];
-const rowTextColors = [
-  "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000"
-];
-
-// Draw table
-for (let r = 0; r < 8; r++) {
-  const y = mTableY + r * mRowH;
-  const bgColor = rowBgColors[r];
-  const textColor = rowTextColors[r];
-  
-  // Label cell
+MT_BANDS.forEach(bd => {
   slide.addShape(pptx.ShapeType.rect, {
-    x: mTableX, y: y, w: mLabelW, h: mRowH,
-    fill: { color: bgColor }, line: { color: "000000", width: 0.5 },
+    x: px(MT.x0), y: px(bd.y0), w: px(MT.x1 - MT.x0), h: px(bd.y1 - bd.y0),
+    fill: { color: bd.fill }, line: bd.border ? { color: bd.border, width: 2 } : { type: "none" },
   });
-  slide.addText(rowLabels[r], {
-    x: mTableX, y: y, w: mLabelW, h: mRowH,
-    align: "center", valign: "middle", fontSize: 10, bold: true,
-    color: textColor, fontFace: A, margin: 0,
+});
+// thin white separators inside the three 2-row bands
+[364, 408, 452].forEach(sy => {
+  slide.addShape(pptx.ShapeType.line, {
+    x: px(MT.x0), y: px(sy), w: px(MT.x1 - MT.x0), h: 0,
+    line: { color: "FFFFFF", width: 0.5 },
   });
-  
-  // Data cells (16 columns)
-  for (let c = 0; c < 16; c++) {
-    const x = mTableX + mLabelW + c * mColW;
-    const val = rowData[r][c];
-    // MEASURED: the frame shows minimal significant digits ("3.3", "5", "1.01")
-    // — never a padded "3.30" or "5.0". Strip trailing zeros only.
-    let valStr = String(val);
+});
+// thick C00000 rules around the next-x row
+[[499, 503], [514, 520]].forEach(([ry0, ry1]) => {
+  slide.addShape(pptx.ShapeType.rect, {
+    x: px(MT.x0), y: px(ry0), w: px(MT.x1 - MT.x0), h: px(ry1 - ry0),
+    fill: { color: "C00000" }, line: { type: "none" },
+  });
+});
+
+// cell text: labels right-aligned in x75..131, values centred per column.
+// MEASURED LO centres the line box high — row text boxes sit at ymid-7 h14.
+const mtRowMids = [354, 372.5, 397.5, 416.5, 441.5, 460.5, 484.5, 509];
+for (let r = 0; r < 8; r++) {
+  const ymid = mtRowMids[r];
+  slide.addText(mtRowLabels[r], {
+    x: px(75), y: px(ymid - 7), w: px(56), h: px(14),
+    align: "right", valign: "middle", margin: 0,
+    fontFace: A, fontSize: 8, color: "000000",
+  });
+  for (let c = 0; c < 18; c++) {
+    let valStr = String(rowData[r][c]);
     if (valStr.indexOf(".") >= 0) valStr = valStr.replace(/0+$/, "").replace(/\.$/, "");
-    
-    slide.addShape(pptx.ShapeType.rect, {
-      x: x, y: y, w: mColW, h: mRowH,
-      fill: { color: bgColor }, line: { color: "000000", width: 0.5 },
-    });
+    const cx0 = 131 + c * MT.pitch;
     slide.addText(valStr, {
-      x: x, y: y, w: mColW, h: mRowH,
-      align: "center", valign: "middle", fontSize: 9,
-      color: textColor, fontFace: A, margin: 0,
+      x: px(cx0), y: px(ymid - 7), w: px(MT.pitch), h: px(14),
+      align: "center", valign: "middle", margin: 0,
+      fontFace: A, fontSize: 9, color: "000000",
     });
   }
 }
+
+// Re-draw navy frame after the table so its right edge is not covered
+slide.addShape(pptx.ShapeType.rect, {
+  x: px(64), y: px(335), w: px(830), h: px(194.5),
+  fill: { type: "none" }, line: { color: "4B459F", width: 1 },
+});
+
+// 4 down-arrows, drawn AFTER the navy frame re-draw (orig: shaft fill runs
+// UNBROKEN through the border core row y335 — arrows over the border — while
+// band fills sit UNDER the tips, tip ink on the olive band at y344..345).
+// Light-blue CDF2FF FILLED shafts w7.5 with dark-navy 152774 outline, filled
+// triangle heads w15 tapering to tip y346; head outline 0.5pt (orig head
+// outline is ~1px soft on the slants only, no standalone top-edge line).
+[[403.5,407],[439.5,443],[478,482],[520.5,524]].forEach(([sx,cx]) => {
+  slide.addShape(pptx.ShapeType.rect, {
+    x: px(sx), y: px(311), w: px(7.5), h: px(27),
+    fill: { color: "CDF2FF" }, line: { color: "152774", width: 1.75 },
+  });
+  slide.addShape(pptx.ShapeType.triangle, {
+    x: px(cx - 7.5), y: px(336.5), w: px(15), h: px(8.5),
+    fill: { color: "CDF2FF" }, line: { color: "152774", width: 0.5 },
+    flipV: true,
+  });
+});
+
+// hollow block arrow asset (see comment above) — 600dpi PNG at exact px/600
+const ar = require("./assets/arrow_031.json");
+slide.addImage({
+  path: ASSET_DIR + "/arrow_031.png",
+  x: px(ar.frame_x0), y: px(ar.frame_y0),
+  w: ar.x_in, h: ar.y_in,
+});
 
 pptx.writeFile({ fileName: OUT }).then(() => console.log("WROTE " + OUT));

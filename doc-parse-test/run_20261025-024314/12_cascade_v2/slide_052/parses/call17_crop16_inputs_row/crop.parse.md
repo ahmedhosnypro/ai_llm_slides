@@ -1,0 +1,1 @@
+<x_0.0><y_0.0>feel<x_0.999><y_0.9922><class_Picture>

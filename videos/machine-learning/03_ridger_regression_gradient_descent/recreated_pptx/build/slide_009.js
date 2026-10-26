@@ -46,6 +46,31 @@
 //     (independent cuts at y=300: LEFT x95..465, RIGHT x486.5..869.5) — reproduced
 //     as measured rather than symmetrised.
 //
+// ── FOUNDER DIRECTIVE 2026-10-25 (annotation correction) ──────────────────────
+// The founder re-opened the annotation on the CERTIFIED render and named four
+// defects. Owner feedback ranks above the frame, so the hand-drawn slant of the
+// original is deliberately NOT reproduced:
+//  1. the mm-labels must run ALONG the dimension arrows. They were rendered
+//     ASCENDING (OOXML rot is clockwise-positive, so rot -68/-69 rises toward
+//     the right); the frame's own labels DESCEND left->right (RIGHT label ink
+//     PCA 66.6 deg over bbox x622..652, y209..265).
+//  2. the dimension arrows must be ORTHOGONAL to the fitted line with the foot
+//     exactly ON it. They carried the hand-drawn slant (LEFT 70.4 deg, RIGHT
+//     68.2 deg) against the true perpendiculars 62.81 / 64.54 deg, and they
+//     must be RED.
+//  3. each arrow needs an UPPER arrowhead at the outlier end (double-headed).
+//  4. the short leader beside the outlier must be EXACTLY PARALLEL to the
+//     fitted line, RED, and must carry NO arrowhead. The old pale-rose tail
+//     (2 deg off-parallel) and its red tailHead are deleted.
+//
+// Geometry (probe68/69): LEFT foot (269.43,285.03), u=(0.45691,0.88951),
+// 62.81 deg; RIGHT foot (694.59,320.53), u=(0.42993,0.90286), 64.54 deg. The
+// frame's corridors carry ONLY the periwinkle dashed residual connectors (no
+// shaft ink), so the red arrow is built at the founder's construction; the
+// parallel leader runs through the outlier on the fitted line's exact slope.
+// The group now draws BEFORE the points so the orange outlier stays visible
+// over the upper head's apex.
+//
 // ── EQUATIONS (deck math law: professional 2D format) ─────────────────────────
 //   Both are single-line with a raised superscript -> mathtext PNGs rendered by the
 //   CERTIFIED scripts/render_eq.py with matplotlib's default fontset (DejaVu Sans —
@@ -80,7 +105,6 @@ const BIGRED    = "EE3145";   // the LEFT chart's large solid disc (frame core 2
 const BOXFILL   = "ECFDF9";   // annotation box fill (frame median 236,253,249 = pale cyan)
 const BOXLINE   = "000080";   // annotation box border = navy (same as panel border)
 const INK       = "333333";   // caption remainder ink (frame core 49,51,37)
-const DIMLINE   = "ECBAC4";   // pale-rose dimension line / callout leader (frame core 240,190,200)
 const CONN      = "B4B2D2";   // light-periwinkle dashed residual connectors (frame core ~200,197,220)
 const FONT      = "Times New Roman"; // serif, matches the frame (Liberation Serif metrics)
 
@@ -153,14 +177,15 @@ const PANELS = [
     headRight:{ cy: 434,   tipX: 435, baseX: 428, halfH: 3.5 },
     // Blue fitted line (measured from probe41)
     line: { x0: 141, y0: 351, x1: 433, y1: 201 },
-    // Annotation group measured from the frame 2026-10-24 (PIL + de-rotated reads):
-    // pale-rose dimension line outlier -> fitted line, red head at the line end,
-    // pale-rose callout leader + red head pointing at the outlier, rotated label.
-    dim: { x0: 197, y0: 146, x1: 249, y1: 292 },
-    dimHead: { tipX: 249, tipY: 292, ux: 0.336, uy: 0.942, bw: 7, h: 7.5 },
-    tail: { x0: 164, y0: 167, x1: 185, y1: 157 },
-    tailHead: { tipX: 191, tipY: 150, ux: 0.707, uy: -0.707, bw: 6.5, h: 8 },
-    label: { text: "50.85 mm", cx: 210, cy: 212, rot: -69 },
+    // Annotation group — founder directive 2026-10-25 (header block): RED
+    // double-headed arrow ORTHOGONAL to the fitted line (foot exactly on it)
+    // + a plain RED leader exactly parallel to the fitted line through the
+    // outlier, carrying NO arrowhead + the label rotated to run along the arrow.
+    dim: { x0: 197.5, y0: 145.0, x1: 269.43, y1: 285.03 },
+    dimHeadLow: { tipX: 269.43, tipY: 285.03, ux: 0.45691, uy: 0.88951, bw: 7, h: 7.5 },
+    dimHeadUp:  { tipX: 197.5,  tipY: 145.0,  ux: -0.45691, uy: -0.88951, bw: 8, h: 9 },
+    tail: { x0: 176.5, y0: 155.79, x1: 197.5, y1: 145.0 },
+    label: { text: "50.85 mm", cx: 210, cy: 212, rot: 62.8 },
     // Large red disc (left chart only) — sits ON the dimension line
     bigDisc: { cx: 232.5, cy: 241, d: 24.5 },
     // Data points (12 orange, measured from probe41)
@@ -182,14 +207,13 @@ const PANELS = [
     headUp:   { cx: 540,   tipY: 143, baseY: 151, halfW: 3.5 },
     headRight:{ cy: 434,   tipX: 848, baseX: 841, halfH: 3.5 },
     line: { x0: 555, y0: 387, x1: 849, y1: 247 },
-    // Annotation group measured from the frame 2026-10-24 (same pattern as LEFT):
-    // dimension line ends in a red head ON the fitted line at (682,324) — the text
-    // glyphs end at (650,264); the pale line continues to the line.
-    dim: { x0: 611, y0: 147, x1: 682, y1: 324 },
-    dimHead: { tipX: 682, tipY: 324, ux: 0.372, uy: 0.928, bw: 7, h: 8 },
-    tail: { x0: 585, y0: 158, x1: 601, y1: 152 },
-    tailHead: { tipX: 607, tipY: 144, ux: 0.707, uy: -0.707, bw: 6.5, h: 8 },
-    label: { text: "63.64 mm", cx: 637, cy: 237, rot: -68 },
+    // Same construction as LEFT (founder directive 2026-10-25): RED
+    // double-headed arrow orthogonal to the fitted line + plain parallel leader.
+    dim: { x0: 611.0, y0: 145.0, x1: 694.59, y1: 320.53 },
+    dimHeadLow: { tipX: 694.59, tipY: 320.53, ux: 0.42993, uy: 0.90286, bw: 7, h: 8 },
+    dimHeadUp:  { tipX: 611.0,  tipY: 145.0,  ux: -0.42993, uy: -0.90286, bw: 8, h: 9 },
+    tail: { x0: 591.0, y0: 154.52, x1: 611.0, y1: 145.0 },
+    label: { text: "63.64 mm", cx: 637, cy: 237, rot: 64.5 },
     bigDisc: null,
     points: [
       [611.0, 145.0], [601.5, 355.5], [589.5, 380.5], [656.0, 327.0], [674.0, 333.5],
@@ -237,21 +261,24 @@ for (const p of PANELS) {
     line: { color: BLUE, width: 2 },
   });
 
-  // 5. 12 orange data points, d=7.5 (measured blob widths 6..8)
-  for (const [cx, cy] of p.points) ellipse(cx, cy, 7.5, ORANGE);
-
-  // 6. annotation group (measured geometry, 2026-10-24):
-  //    pale-rose dimension line + red head at the fitted-line end, pale-rose callout
-  //    leader + red head pointing at the outlier, then the large red disc (LEFT only,
-  //    drawn AFTER the dimension line so it covers it — as on the frame).
-  seg(p.dim.x0, p.dim.y0, p.dim.x1, p.dim.y1, DIMLINE, 1.0);
-  head(p.dimHead.tipX, p.dimHead.tipY, p.dimHead.ux, p.dimHead.uy, p.dimHead.bw, p.dimHead.h);
-  seg(p.tail.x0, p.tail.y0, p.tail.x1, p.tail.y1, DIMLINE, 1.0);
-  head(p.tailHead.tipX, p.tailHead.tipY, p.tailHead.ux, p.tailHead.uy, p.tailHead.bw, p.tailHead.h);
+  // 5. annotation group (founder directive 2026-10-25): RED double-headed arrow
+  //    orthogonal to the fitted line (foot exactly on it), a plain RED leader
+  //    exactly parallel to the fitted line through the outlier (NO arrowhead),
+  //    then the large red disc (LEFT only, drawn AFTER the arrow so it covers
+  //    it — as on the frame). Drawn BEFORE the points so the orange outlier
+  //    stays visible over the upper head's apex.
+  seg(p.dim.x0, p.dim.y0, p.dim.x1, p.dim.y1, RED, 1.0);
+  seg(p.tail.x0, p.tail.y0, p.tail.x1, p.tail.y1, RED, 1.0);
+  head(p.dimHeadLow.tipX, p.dimHeadLow.tipY, p.dimHeadLow.ux, p.dimHeadLow.uy, p.dimHeadLow.bw, p.dimHeadLow.h);
+  head(p.dimHeadUp.tipX, p.dimHeadUp.tipY, p.dimHeadUp.ux, p.dimHeadUp.uy, p.dimHeadUp.bw, p.dimHeadUp.h);
   if (p.bigDisc) ellipse(p.bigDisc.cx, p.bigDisc.cy, p.bigDisc.d, BIGRED);
 
-  // 7. rotated measurement label ('50.85 mm' / '63.64 mm'), red bold, written along
-  //    the dimension line (frame: rotated ~-68..-69 deg, reading bottom-to-top).
+  // 6. 12 orange data points, d=7.5 (measured blob widths 6..8)
+  for (const [cx, cy] of p.points) ellipse(cx, cy, 7.5, ORANGE);
+
+  // 7. rotated measurement label ('50.85 mm' / '63.64 mm'), red bold, running
+  //    ALONG the dimension arrow (rot = the arrow's own angle, 62.8 / 64.5 deg
+  //    clockwise, so the text DESCENDS left->right as on the frame).
   slide.addText(p.label.text, {
     x: px(p.label.cx - 45), y: px(p.label.cy - 7), w: px(90), h: px(14),
     align: "center", valign: "middle", margin: 0,

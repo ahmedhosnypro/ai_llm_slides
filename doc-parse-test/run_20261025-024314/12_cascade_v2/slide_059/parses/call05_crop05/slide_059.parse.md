@@ -1,0 +1,1 @@
+<x_0.0><y_0.0>**Single vector representing the whole sequence**<x_0.999><y_0.9984><class_Picture>

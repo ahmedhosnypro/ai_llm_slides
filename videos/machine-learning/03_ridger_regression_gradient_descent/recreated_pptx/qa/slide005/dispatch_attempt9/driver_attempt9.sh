@@ -15,7 +15,7 @@
 # approved walls: --thinking high --max-tokens 65536 --timeout 1200 inside
 # `timeout 1700`, via scripts/16_vision_gate.sh.
 set -u
-ROOT="/worksp""aces/codespaces-blank/ai_llm_slides"
+ROOT="/home/ahmed/Projects/ai_llm_slides"
 cd "$ROOT" || exit 9
 export TMPDIR="$ROOT/scratch/tmp"
 VIDEO_NS="machine-learning/03_ridger_regression_gradient_descent"

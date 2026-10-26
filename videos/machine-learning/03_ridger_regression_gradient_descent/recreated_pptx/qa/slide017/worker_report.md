@@ -346,3 +346,52 @@ any MINOR the K=4 judges raise about the row-label column.
    pre-judge sweep above. Both are inside the tolerance the deck's other certified
    slides already carry for font substitution; no change made without a judge raising
    them as MAJOR.
+
+---
+
+# Certification record — K=4 legs PASSED (2026-10-25, resumed on local workspace)
+
+Workspace moved from the codespace to the local machine; render_4.png and the five
+crop pairs were NOT migrated (all *.png under qa/ were lost in the move). They were
+regenerated, byte-verified against the banked evidence:
+
+- `slide_017_recreated.pptx` md5 `7374f15e46372898ac8b9b5ac330d15f` — matches the
+  banked currency proof (no rebuild).
+- Fresh 150dpi LO render re-banked as `render_4.png` (2001x1125); deck house-chrome
+  checker: **PASS** (panel x112-1882, strokes L/R/bottom, badge (1824,152) d=68).
+- `emit_payloads_kimi.py` re-run: judge_prompt_4.txt md5 `8fc119623b1f020c6d135c834969bf75`
+  — byte-identical to the banked payload; five crop pairs re-cut at matched effective
+  scale; payload reverse byte-checks OK.
+- Dispatch scripts' hardcoded codespace path `/workspaces/codespaces-blank/ai_llm_slides`
+  repointed to `/home/ahmed/Projects/ai_llm_slides` (paths only; payloads untouched).
+
+## Verdicts (all real `FINAL VERDICT:` lines)
+
+| leg | transcript | verdict |
+|---|---|---|
+| Template A full-slide | `judge_attempt_4.txt` | **PASS** (2 MINORs, both pre-adjudicated bank items: λ-run blue title ink is the build's measured design; Train/Test label shade = JPEG softening, rule e) |
+| wbox | `crop_4_wbox_judge.txt` | **PASS** (3 MINORs, adjudicated below) |
+| band1 | `crop_4_band1_judge.txt` | **PASS** |
+| band2 | `crop_4_band2_judge.txt` | **PASS** |
+| band3 | `crop_4_band3_judge.txt` | **PASS** |
+| test | `crop_4_test_judge.txt` | **PASS** |
+
+`check_verdict.py` regex widened to accept markdown-prefixed verdict lines
+(`## FINAL VERDICT: **PASS**`) — the VOID detector semantics unchanged
+(judge_attempt_3.txt still VOID, control verified).
+
+## wbox MINORs — PIL adjudication (both images, frame px)
+
+1. "missing blue underline under W in the norm line" — REFUTED. Render blue
+   underline rows y 238.6..244.3 (145 blue px) vs original 239..241 (33 px, JPEG
+   thinned). The underline is present on both sides.
+2. "IMG1 spaced '‖W‖² = 3.8', IMG2 tight" — REFUTED. Original gaps: ‖²→= 10px,
+   =→3.8 5px; render 6.7px / 5.7px. Both are spaced; deltas ≤3px (JPEG noise).
+3. "red border slightly heavier in IMG1" — rule (e) medium difference as the judge
+   itself conceded (video-capture softening). No action.
+
+## Final DB rows
+
+gen_status=passed, visual_check=PASS, visual_attempts=4, visual_transcript=
+videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide017/judge_attempt_4.txt,
+worker_id="" (released). **SLIDE 017 CERTIFIED.** Slide 018 unblocked.

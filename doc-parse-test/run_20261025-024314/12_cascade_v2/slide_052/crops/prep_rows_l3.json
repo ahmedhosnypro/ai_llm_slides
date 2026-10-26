@@ -1,0 +1,125 @@
+[
+  {
+    "id": "crop14",
+    "class": "k_band",
+    "level": 3,
+    "parent": "crop09",
+    "provenance": "level3",
+    "requested_region_frame_px": [
+      170,
+      155,
+      320,
+      225
+    ],
+    "box_frame_px": [
+      164,
+      152,
+      326,
+      228
+    ],
+    "crop_px": [
+      486,
+      228
+    ],
+    "scale": 3,
+    "transform": "frame_x = crop_x/3 + 164; frame_y = crop_y/3 + 152",
+    "png": "/home/ahmed/Projects/ai_llm_slides/doc-parse-test/run_20261025-024314/12_cascade_v2/slide_052/crops/crop14_k_band/crop.png",
+    "precheck_ok": true,
+    "precheck": {
+      "dims": [
+        486,
+        228
+      ],
+      "gray_extrema": [
+        26,
+        255
+      ]
+    },
+    "estimated": false,
+    "note": "K circle (309,180) alone: kv_band read 'Y1 Y2' (glyph confusion with K/V/Y3 competing); single-glyph band at compliant 162px width",
+    "stop_reason": null,
+    "stop_note": null
+  },
+  {
+    "id": "crop15",
+    "class": "v_band",
+    "level": 3,
+    "parent": "crop09",
+    "provenance": "level3",
+    "requested_region_frame_px": [
+      170,
+      210,
+      320,
+      270
+    ],
+    "box_frame_px": [
+      164,
+      208,
+      326,
+      272
+    ],
+    "crop_px": [
+      486,
+      192
+    ],
+    "scale": 3,
+    "transform": "frame_x = crop_x/3 + 164; frame_y = crop_y/3 + 208",
+    "png": "/home/ahmed/Projects/ai_llm_slides/doc-parse-test/run_20261025-024314/12_cascade_v2/slide_052/crops/crop15_v_band/crop.png",
+    "precheck_ok": true,
+    "precheck": {
+      "dims": [
+        486,
+        192
+      ],
+      "gray_extrema": [
+        15,
+        255
+      ]
+    },
+    "estimated": false,
+    "note": "V circle (310,231) alone: same isolation logic as crop14",
+    "stop_reason": null,
+    "stop_note": null
+  },
+  {
+    "id": "crop16",
+    "class": "inputs_row",
+    "level": 3,
+    "parent": "crop05",
+    "provenance": "level3",
+    "requested_region_frame_px": [
+      40,
+      425,
+      240,
+      480
+    ],
+    "box_frame_px": [
+      32,
+      423,
+      248,
+      482
+    ],
+    "crop_px": [
+      648,
+      177
+    ],
+    "scale": 3,
+    "transform": "frame_x = crop_x/3 + 32; frame_y = crop_y/3 + 423",
+    "png": "/home/ahmed/Projects/ai_llm_slides/doc-parse-test/run_20261025-024314/12_cascade_v2/slide_052/crops/crop16_inputs_row/crop.png",
+    "precheck_ok": true,
+    "precheck": {
+      "dims": [
+        648,
+        177
+      ],
+      "gray_extrema": [
+        10,
+        255
+      ]
+    },
+    "estimated": false,
+    "note": "I/feel/Sick input boxes: crop05 read feel+Sick but dropped 'I' instance (wave-4 leftpanel read all 3 split)",
+    "stop_reason": null,
+    "stop_note": null
+  }
+]

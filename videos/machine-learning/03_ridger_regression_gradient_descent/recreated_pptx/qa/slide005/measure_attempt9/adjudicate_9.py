@@ -14,7 +14,7 @@ import numpy as np
 from PIL import Image
 
 Q = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-VID = ("/workspaces/codespaces-blank/ai_llm_slides/videos/machine-learning/"
+VID = ("/home/ahmed/Projects/ai_llm_slides/videos/machine-learning/"
        "03_ridger_regression_gradient_descent")
 ORIG = os.path.join(VID, "unique_slides/slide_005.jpg")
 REND = os.path.join(Q, "render_9.png")

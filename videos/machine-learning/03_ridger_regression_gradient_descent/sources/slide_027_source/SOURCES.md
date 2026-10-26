@@ -371,6 +371,17 @@ the frame or that ruling — **the frame wins for recreation**.
 - Nothing in this record re-opens the certified build: the founder's three findings and the
   attempt-10 ship stand, and per the founder ruling the frame wins for recreation.
 
+## Independent re-verification (audit lane, 2026-10-25)
+
+A later evidence-only pass re-ran the trust discipline in its own window without touching
+build/pptx/qa evidence. Results — all CONFIRMED:
+
+- All 4 recorded URLs re-fetched live (`curl -sL --max-time 60`, UA `Mozilla/5.0`): HTTP 200
+  for Convex_function (568,135 B), Gradient_descent (610,975 B), Linear_least_squares
+  (468,414 B), Learning_rate (161,172 B). Diffs vs banked copies confined to Wikimedia
+  per-response telemetry (client-js A/B banner, `Parsed by`, `Cached time`); article content
+  identical. The CS229 hosts remained unreachable (the `[?]` above stands).
+
 ## Law reminder
 
 The frame wins for recreation; the source wins for understanding.

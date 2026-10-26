@@ -1,253 +1,198 @@
 // slide_014.js — Ridge Regression Gradient Descent slide 014
 // Built per spec: slide_014_final.json + PIL-measured geometry from unique_slides/slide_014.jpg
 // House chrome from shared_patterns/house_chrome.js
+// 2026-10-25 rebuild (w-s2): band/box geometry re-measured from the frame —
+// vector boxes x80..433 / x457..810 with maroon borders; bands y243..285 (x58..901),
+// y303..341, define-loss x90..665 y347..392, term boxes y399..448 (left x89..471,
+// right x533..880), final box x87..880 y469..528.
 
 const pptxgenpkg = require("pptxgenjs");
-const { CHROME, drawHouseChrome } = require("../../shared_patterns/house_chrome.js");
+const pptxgen = new pptxgenpkg();
+pptxgen.layout = "LAYOUT_WIDE";
+const pptx = pptxgen;
 
-const pptx = new pptxgenpkg();
-pptx.layout = "LAYOUT_WIDE";
-const W = 13.333, H = 7.5;
-
-let s = pptx.addSlide();
+const s = pptx.addSlide();
 
 // ---- HOUSE CHROME ----
-drawHouseChrome(pptx, s, { numeral: 14 });
-
-// ============ CONTENT POSITIONING (px -> in: divide by 72) ============
-// Original frame: 960x540, 1px = 1pt = 1/72 in
-
-// Panel inner content area (inside gray panel, away from red strokes)
-// Panel: x 54..903, y 45..540 px → in: x 0.75..12.54, y 0.625..7.5
-// Left stroke at x=58.5, right at x=901, bottom at y=538.5
-// Inner safe area: x 58.5..901 (0.8125..12.51), y 46..538 (0.64..7.47)
-
-// Content vertical bands (measured from frame):
-// Title: y ~70px (0.97in)
-// Badge: center (876,73) px
-// Vector boxes: y 104..232 px (1.44..3.22in)
-// Ridge band: y 250..278 px (3.47..3.86in)
-// Objective band: y 310..334 px (4.31..4.64in)
-// Define Loss band: y 398 px (5.53in)
-// Loss/Reg boxes: y 468..520 px (6.50..7.22in)
-// Final band: y 510..520 px (7.08..7.22in)
-
-// Horizontal splits:
-// Left column: x ~54..450 px (0.75..6.25in)
-// Right column: x ~500..880 px (6.94..12.22in)
-// Gap: ~450..500 px
+require("../../shared_patterns/house_chrome.js").drawHouseChrome(pptx, s, { numeral: 14 });
 
 // ============ STYLE CONSTANTS ============
 const FONT = "Arial";
-const BLACK = "000000";
 const BLUE = "0000FF";
-const RED = "FF0000";
 const GREEN = "008000";
-
-// Yellow band: #FFF9C4 (255,249,196)
-const YEL_BAND = "FFF9C4";
-// Pink band: #FFEBEE (255,235,238)
-const PNK_BAND = "FFEBEE";
-// Light blue band: #E1F5FE (225,245,254)
-const LBLU_BAND = "E1F5FE";
-// White box
+const RED = "C00000";
+const BLACK = "000000";
+const MAROON = "8F1220";      // vector-box borders + "Function that" title run
+const MAROON_BOX = "742C2D";  // left term-box outline (measured)
+const DARKRED = "B60007";     // "Loss" label (measured)
+const PURPLE = "5D44AC";      // "squared distance" label (measured)
+const EQ_RED = "AD0014";      // "Original Labels" label (measured)
+const TITLE_MAROON = "800020";
+const NAVY = "1E0060";        // band rules
+const YEL = "F9FBDC";         // ridge/objective band interiors
+const PEACH = "F9DEC1";       // define-loss band
+const PEACH2 = "F9DFC8";      // left term box
+const PALE_YEL = "F9FEDE";    // right term box
+const PALE_CYAN = "ECFFFD";   // final objective band
 const WHITE = "FFFFFF";
 
-// ============ TITLE ============
-// "LOSS Function that MINIMIZES Overfitting"
-// LOSS, MINIMIZES, Overfitting in blue; "Function that" in black
-// Top-left, y ~70px = 0.97in, left align
+const ASSETS = "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/build/assets/";
+
+// ============ TITLE (measured: blue / maroon / blue, y70..92, centered x190..744) ============
 s.addText([
-  { text: "LOSS ", options: { fontSize: 38, bold: true, color: BLUE, fontFace: FONT } },
-  { text: "Function that ", options: { fontSize: 38, bold: true, color: BLACK, fontFace: FONT } },
-  { text: "MINIMIZES ", options: { fontSize: 38, bold: true, color: BLUE, fontFace: FONT } },
-  { text: "Overfitting", options: { fontSize: 38, bold: true, color: BLUE, fontFace: FONT } },
+  { text: "LOSS ", options: { fontSize: 28, bold: true, color: BLUE, fontFace: FONT } },
+  { text: "Function that ", options: { fontSize: 28, bold: true, color: TITLE_MAROON, fontFace: FONT } },
+  { text: "MINIMIZES Overfitting", options: { fontSize: 28, bold: true, color: BLUE, fontFace: FONT } },
 ], {
-  x: 0.85, y: 0.75, w: 11.5, h: 0.7, align: "left", valign: "top", margin: 0,
-  lineSpacing: 45.6,
+  x: 0.6, y: 0.85, w: 12.13, h: 0.55, align: "center", valign: "top", margin: 0,
+  lineSpacing: 33.6,
 });
 
-// ============ VECTOR BOXES ============
-// Left: Original Labels box - white rect with black border
-// Right: Predicted Labels box - white rect with black border
-const boxY = 104 / 72;      // 1.444 in
-const boxH = (232 - 104) / 72;  // 1.778 in
-const leftX = 54 / 72;      // 0.75 in
-const rightX = 500 / 72;    // 6.944 in
-const boxW = (450 - 54) / 72;  // 5.5 in approx (gap at ~450..500)
+// ============ VECTOR BOXES (y99..238; left x80..433, right x457..810) ============
+const vboxY = 99 / 72;
+const vboxH = 140 / 72;
+const leftX = 80 / 72, leftW = 354 / 72;
+const rightX = 457 / 72, rightW = 353 / 72;
 
-const vboxFontSize = 16;
-const vboxLineSpacing = vboxFontSize * 1.2;  // 19.2pt
+s.addShape(pptx.ShapeType.rect, { x: leftX, y: vboxY, w: leftW, h: vboxH, fill: { color: WHITE }, line: { color: MAROON, width: 2 } });
+s.addShape(pptx.ShapeType.rect, { x: rightX, y: vboxY, w: rightW, h: vboxH, fill: { color: WHITE }, line: { color: MAROON, width: 2 } });
 
-// Left box - white with black border
-s.addShape(pptx.ShapeType.rect, {
-  x: leftX, y: boxY, w: boxW, h: boxH,
-  fill: { color: WHITE }, line: { color: BLACK, width: 1 },
-});
-
-// Right box
-s.addShape(pptx.ShapeType.rect, {
-  x: rightX, y: boxY, w: boxW, h: boxH,
-  fill: { color: WHITE }, line: { color: BLACK, width: 1 },
-});
-
-// LEFT BOX CONTENT
-// "Let Y = [y1; y2; ...; yn] Nx1"
-// "Original Labels"
-// "from Training Samples"
-const leftTextX = leftX + 0.15;  // padding
-const leftTextW = boxW - 0.3;
+// Left box: "Let Y =" + red column vector (h≈1.3in, vertically centered); labels right of vector
 s.addText([
-  { text: "Let Y = [y1; y2; ...; yn] Nx1", options: { fontSize: vboxFontSize, bold: true, color: BLACK, fontFace: FONT, italic: true } },
-  { text: "Original Labels", options: { fontSize: vboxFontSize, bold: true, color: BLACK, fontFace: FONT }, breakLine: true },
-  { text: "from Training Samples", options: { fontSize: vboxFontSize, color: BLACK, fontFace: FONT }, breakLine: true },
-], {
-  x: leftTextX, y: boxY + 0.1, w: leftTextW, h: boxH - 0.2, align: "left", valign: "top", margin: 0,
-  lineSpacing: vboxLineSpacing,
-});
-
-// RIGHT BOX CONTENT
-// "Let Ŷ = [ŷ1; ŷ2; ...; ŷn] Nx1"
-// "Predicted Labels"
-// "from Model Ŷ = XW"
-const rightTextX = rightX + 0.15;
+  { text: "Let ", options: { fontSize: 18, color: BLACK, fontFace: FONT } },
+  { text: "Y", options: { fontSize: 18, color: BLACK, fontFace: FONT, underline: true } },
+  { text: " =", options: { fontSize: 18, color: BLACK, fontFace: FONT } },
+], { x: leftX + 0.15, y: vboxY, w: 0.9, h: vboxH, align: "left", valign: "middle", margin: 0 });
+s.addImage({ path: ASSETS + "eq_014_Yvec.png", x: leftX + 1.05, y: vboxY + (vboxH - 1.2083) / 2, w: 1.0483, h: 1.2083 });
 s.addText([
-  { text: "Let Ŷ = [ŷ1; ŷ2; ...; ŷn] Nx1", options: { fontSize: vboxFontSize, bold: true, color: BLACK, fontFace: FONT, italic: true } },
-  { text: "Predicted Labels", options: { fontSize: vboxFontSize, bold: true, color: BLACK, fontFace: FONT }, breakLine: true },
-  { text: "from Model Ŷ = XW", options: { fontSize: vboxFontSize, color: BLACK, fontFace: FONT }, breakLine: true },
-], {
-  x: rightTextX, y: boxY + 0.1, w: leftTextW, h: boxH - 0.2, align: "left", valign: "top", margin: 0,
-  lineSpacing: vboxLineSpacing,
-});
-
-// ============ RIDGE REGULARIZATION BAND (Yellow) ============
-// y 250..278 px → 3.47..3.86 in
-const ridgeY = 250 / 72;  // 3.472
-const ridgeH = 28 / 72;   // 0.389
-s.addShape(pptx.ShapeType.rect, {
-  x: CHROME.panel.x, y: ridgeY, w: CHROME.panel.w, h: ridgeH,
-  fill: { color: YEL_BAND },
-});
+  { text: "N", options: { fontSize: 12, color: BLACK, fontFace: FONT } },
+  { text: "\u00D71", options: { fontSize: 12, color: BLACK, fontFace: FONT, subscript: true } },
+], { x: leftX + 2.15, y: vboxY + (vboxH - 1.2083) / 2, w: 0.7, h: 1.2083, align: "left", valign: "bottom", margin: 0 });
 s.addText([
-  { text: "Objective is ", options: { fontSize: 16, color: BLACK, fontFace: FONT } },
-  { text: "Ŷ=Y", options: { fontSize: 16, bold: true, color: BLUE, fontFace: FONT } },
-  { text: " and ", options: { fontSize: 16, color: BLACK, fontFace: FONT } },
-  { text: "||W||", options: { fontSize: 16, bold: true, color: BLUE, fontFace: FONT } },
-  { text: " is minimum", options: { fontSize: 16, color: BLACK, fontFace: FONT } },
-], {
-  x: CHROME.panel.x + 0.2, y: ridgeY + 0.02, w: CHROME.panel.w - 0.4, h: ridgeH - 0.04,
-  align: "left", valign: "top", margin: 0,
-  lineSpacing: 19.2,
-});
+  { text: "Original Labels", options: { fontSize: 14, bold: true, color: EQ_RED, fontFace: FONT } },
+], { x: leftX + 2.6, y: vboxY + 0.30, w: leftW - 2.7, h: 0.28, align: "left", valign: "top", margin: 0, lineSpacing: 17 });
 s.addText([
-  { text: "This is called ", options: { fontSize: 16, color: BLACK, fontFace: FONT } },
-  { text: "Ridge Regularization", options: { fontSize: 16, bold: true, color: GREEN, fontFace: FONT } },
-], {
-  x: CHROME.panel.x + 0.2, y: ridgeY + ridgeH/2, w: CHROME.panel.w - 0.4, h: ridgeH/2,
-  align: "left", valign: "top", margin: 0,
-  lineSpacing: 19.2,
-});
+  { text: "from Training Samples", options: { fontSize: 14, color: BLACK, fontFace: FONT } },
+], { x: leftX + 2.6, y: vboxY + 0.62, w: leftW - 2.7, h: 0.28, align: "left", valign: "top", margin: 0, lineSpacing: 17 });
 
-// ============ OBJECTIVE FUNCTION BAND (Yellow) ============
-// y 310..334 px → 4.31..4.64 in
-const objY = 310 / 72;  // 4.306
-const objH = 24 / 72;   // 0.333
-s.addShape(pptx.ShapeType.rect, {
-  x: CHROME.panel.x, y: objY, w: CHROME.panel.w, h: objH,
-  fill: { color: YEL_BAND },
-});
+// Right box: "Let Ŷ =" + red column vector; labels right of vector
 s.addText([
-  { text: "Objective function ", options: { fontSize: 16, color: BLACK, fontFace: FONT } },
-  { text: "J(W)", options: { fontSize: 16, bold: true, color: BLUE, fontFace: FONT } },
-  { text: " = ", options: { fontSize: 16, color: BLACK, fontFace: FONT } },
-  { text: "Loss", options: { fontSize: 16, bold: true, color: RED, fontFace: FONT } },
-  { text: "(X,Y,W) + ", options: { fontSize: 16, color: BLACK, fontFace: FONT } },
-  { text: "λ", options: { fontSize: 16, color: BLUE, fontFace: FONT } },
-  { text: " ", options: { fontSize: 16, color: BLACK, fontFace: FONT } },
-  { text: "R(W)", options: { fontSize: 16, bold: true, color: BLUE, fontFace: FONT } },
-  { text: "   (", options: { fontSize: 16, color: BLACK, fontFace: FONT } },
-  { text: "λ", options: { fontSize: 16, color: BLUE, fontFace: FONT } },
-  { text: " is a weighting factor)", options: { fontSize: 16, color: BLACK, fontFace: FONT } },
-], {
-  x: CHROME.panel.x + 0.2, y: objY + 0.02, w: CHROME.panel.w - 0.4, h: objH - 0.04,
-  align: "left", valign: "top", margin: 0,
-  lineSpacing: 19.2,
-});
-
-// ============ DEFINE LOSS BAND (Pink) ============
-// y 398 px → 5.53 in, roughly same height
-const lossY = 398 / 72;  // 5.528
-const lossH = 24 / 72;   // 0.333
-s.addShape(pptx.ShapeType.rect, {
-  x: CHROME.panel.x, y: lossY, w: CHROME.panel.w, h: lossH,
-  fill: { color: PNK_BAND },
-});
+  { text: "Let ", options: { fontSize: 18, color: BLACK, fontFace: FONT } },
+  { text: "\u0176", options: { fontSize: 18, color: BLACK, fontFace: FONT } },
+  { text: " =", options: { fontSize: 18, color: BLACK, fontFace: FONT } },
+], { x: rightX + 0.15, y: vboxY, w: 0.9, h: vboxH, align: "left", valign: "middle", margin: 0 });
+s.addImage({ path: ASSETS + "eq_014_Yhatvec.png", x: rightX + 1.05, y: vboxY + (vboxH - 1.22) / 2, w: 1.0483, h: 1.22 });
 s.addText([
-  { text: "Define ", options: { fontSize: 16, color: BLACK, fontFace: FONT } },
-  { text: "Loss", options: { fontSize: 16, bold: true, color: RED, fontFace: FONT } },
-  { text: " function as ", options: { fontSize: 16, color: BLACK, fontFace: FONT } },
-  { text: "squared distance", options: { fontSize: 16, bold: true, color: GREEN, fontFace: FONT } },
-  { text: " between ", options: { fontSize: 16, color: BLACK, fontFace: FONT } },
-  { text: "Ŷ", options: { fontSize: 16, bold: true, italic: true, color: BLACK, fontFace: FONT } },
-  { text: " and ", options: { fontSize: 16, color: BLACK, fontFace: FONT } },
-  { text: "Y", options: { fontSize: 16, bold: true, italic: true, color: BLACK, fontFace: FONT } },
-], {
-  x: CHROME.panel.x + 0.2, y: lossY + 0.02, w: CHROME.panel.w - 0.4, h: lossH - 0.04,
-  align: "left", valign: "top", margin: 0,
-  lineSpacing: 19.2,
-});
-
-// ============ LOSS TERM / REGULARIZATION TERM BOXES (Light Blue) ============
-// y 468..520 px → 6.50..7.22 in
-const termY = 468 / 72;  // 6.50
-const termH = (520 - 468) / 72;  // 0.722
-
-// Left: Loss Term box
-s.addShape(pptx.ShapeType.rect, {
-  x: leftX, y: termY, w: boxW, h: termH,
-  fill: { color: LBLU_BAND },
-});
-// Rich text: "Loss Term" in red, rest in black
+  { text: "N", options: { fontSize: 12, color: BLACK, fontFace: FONT } },
+  { text: "\u00D71", options: { fontSize: 12, color: BLACK, fontFace: FONT, subscript: true } },
+], { x: rightX + 2.15, y: vboxY + (vboxH - 1.22) / 2, w: 0.7, h: 1.22, align: "left", valign: "bottom", margin: 0 });
 s.addText([
-  { text: "Loss Term", options: { fontSize: 16, bold: true, color: RED, fontFace: FONT } },
-  { text: " = ||Y-Ŷ||² = (Y-Ŷ)ᵀ(Y-Ŷ)", options: { fontSize: 16, color: BLACK, fontFace: FONT } },
-], {
-  x: leftTextX, y: termY + 0.1, w: leftTextW, h: termH - 0.2, align: "left", valign: "top", margin: 0,
-  lineSpacing: 19.2,
-});
-
-// Right: Regularization Term box
-s.addShape(pptx.ShapeType.rect, {
-  x: rightX, y: termY, w: boxW, h: termH,
-  fill: { color: LBLU_BAND },
-});
+  { text: "Predicted Labels", options: { fontSize: 14, bold: true, color: BLUE, fontFace: FONT } },
+], { x: rightX + 2.6, y: vboxY + 0.30, w: rightW - 2.7, h: 0.28, align: "left", valign: "top", margin: 0, lineSpacing: 17 });
 s.addText([
-  { text: "Regularization Term", options: { fontSize: 16, bold: true, color: BLUE, fontFace: FONT } },
-  { text: " R = ||W||² = WᵀW", options: { fontSize: 16, color: BLACK, fontFace: FONT } },
-], {
-  x: rightTextX, y: termY + 0.1, w: leftTextW, h: termH - 0.2, align: "left", valign: "top", margin: 0,
-  lineSpacing: 19.2,
-});
+  { text: "from Model ", options: { fontSize: 14, color: BLACK, fontFace: FONT } },
+  { text: "\u0176", options: { fontSize: 14, color: BLACK, fontFace: FONT } },
+  { text: " = ", options: { fontSize: 14, color: BLACK, fontFace: FONT } },
+  { text: "X", options: { fontSize: 14, bold: true, color: BLACK, fontFace: FONT, underline: true } },
+  { text: " ", options: { fontSize: 14, color: BLACK, fontFace: FONT } },
+  { text: "W", options: { fontSize: 14, bold: true, color: BLACK, fontFace: FONT, underline: true } },
+], { x: rightX + 2.6, y: vboxY + 0.62, w: rightW - 2.7, h: 0.28, align: "left", valign: "top", margin: 0, lineSpacing: 17 });
 
-// ============ FINAL OBJECTIVE BAND (Light Blue) ============
-// y 510..520 px → 7.08..7.22 in
-const finalY = 510 / 72;  // 7.083
-const finalH = 10 / 72;   // 0.139 (thin band)
-s.addShape(pptx.ShapeType.rect, {
-  x: CHROME.panel.x, y: finalY, w: CHROME.panel.w, h: finalH,
-  fill: { color: LBLU_BAND },
-});
+// ============ BAND 1 — Ridge Regularization (y243..285, x58..901, yellow, navy rules) ============
+const bandX = 60.5 / 72, bandW = (898.5 - 60.5) / 72;
+const ruleH = 3 / 72;
+function band(yTop, hPx, fill, ruleColor) {
+  const y = yTop / 72, h = hPx / 72;
+  s.addShape(pptx.ShapeType.rect, { x: bandX, y, w: bandW, h, fill: { color: fill } });
+  s.addShape(pptx.ShapeType.rect, { x: bandX, y, w: bandW, h: ruleH, fill: { color: ruleColor } });
+  s.addShape(pptx.ShapeType.rect, { x: bandX, y: y + h - ruleH, w: bandW, h: ruleH, fill: { color: ruleColor } });
+  return { y, h };
+}
+const b1 = band(243, 43, YEL, NAVY);
+const b1t = { x: bandX + 0.25, y: b1.y + ruleH, w: bandW - 0.5, h: b1.h - 2 * ruleH };
 s.addText([
-  { text: "Objective function ", options: { fontSize: 14, color: BLACK, fontFace: FONT } },
-  { text: "J(W)", options: { fontSize: 14, bold: true, color: BLUE, fontFace: FONT } },
-  { text: " = 1/2 [ (Y-Ŷ)ᵀ(Y-Ŷ) + ", options: { fontSize: 14, color: BLACK, fontFace: FONT } },
-  { text: "λ", options: { fontSize: 14, color: BLUE, fontFace: FONT } },
-  { text: " WᵀW ]", options: { fontSize: 14, color: BLACK, fontFace: FONT } },
-], {
-  x: CHROME.panel.x + 0.2, y: finalY + 0.01, w: CHROME.panel.w - 0.4, h: finalH - 0.02,
-  align: "left", valign: "top", margin: 0,
-  lineSpacing: 16.8,
-});
+  { text: "Objective is ", options: { fontSize: 17, color: BLACK, fontFace: FONT } },
+  { text: "\u0176=Y", options: { fontSize: 17, bold: true, color: RED, fontFace: FONT } },
+  { text: " and ", options: { fontSize: 17, color: BLACK, fontFace: FONT } },
+  { text: "||W||", options: { fontSize: 17, bold: true, color: BLUE, fontFace: FONT } },
+  { text: " is minimum This is called ", options: { fontSize: 17, color: BLACK, fontFace: FONT } },
+  { text: "Ridge Regularization", options: { fontSize: 17, bold: true, color: GREEN, fontFace: FONT } },
+], { x: b1t.x, y: b1t.y, w: b1t.w, h: b1t.h, align: "left", valign: "middle", margin: 0, lineSpacing: 20 });
+
+// ============ BAND 2 — Objective function (y303..341, x58..901, yellow, navy rules) ============
+const b2 = band(303, 39, YEL, NAVY);
+const b2t = { x: bandX + 0.25, y: b2.y + ruleH, w: bandW - 0.5, h: b2.h - 2 * ruleH };
+s.addText([
+  { text: "Objective function ", options: { fontSize: 17, color: BLACK, fontFace: FONT } },
+  { text: "J(W)", options: { fontSize: 17, bold: true, color: BLUE, fontFace: FONT } },
+  { text: " = ", options: { fontSize: 17, color: BLACK, fontFace: FONT } },
+  { text: "Loss", options: { fontSize: 17, bold: true, color: RED, fontFace: FONT } },
+  { text: "(X,Y,W) + ", options: { fontSize: 17, color: BLACK, fontFace: FONT } },
+  { text: "\u03bb", options: { fontSize: 17, color: BLUE, fontFace: FONT } },
+  { text: " ", options: { fontSize: 17, color: BLACK, fontFace: FONT } },
+  { text: "R(W)", options: { fontSize: 17, bold: true, color: BLUE, fontFace: FONT } },
+  { text: " (", options: { fontSize: 17, color: BLACK, fontFace: FONT } },
+  { text: "\u03bb", options: { fontSize: 17, color: BLUE, fontFace: FONT } },
+  { text: " is a weighting factor)", options: { fontSize: 17, color: BLACK, fontFace: FONT } },
+], { x: b2t.x, y: b2t.y, w: b2t.w, h: b2t.h, align: "left", valign: "middle", margin: 0, lineSpacing: 20 });
+
+// ============ DEFINE LOSS band (x90..665, y347..392, peach, maroon rules) ============
+{
+  const x = 90 / 72, y = 347 / 72, w = (665 - 90) / 72, h = 45 / 72;
+  s.addShape(pptx.ShapeType.rect, { x, y, w, h, fill: { color: PEACH } });
+  s.addShape(pptx.ShapeType.rect, { x, y, w, h: ruleH, fill: { color: MAROON } });
+  s.addShape(pptx.ShapeType.rect, { x, y: y + h - ruleH, w, h: ruleH, fill: { color: MAROON } });
+  s.addText([
+    { text: "Define ", options: { fontSize: 17, color: BLACK, fontFace: FONT } },
+    { text: "Loss", options: { fontSize: 17, bold: true, color: DARKRED, fontFace: FONT } },
+    { text: " function as ", options: { fontSize: 17, color: BLACK, fontFace: FONT } },
+    { text: "squared distance", options: { fontSize: 17, bold: true, color: PURPLE, fontFace: FONT } },
+    { text: " between ", options: { fontSize: 17, color: BLACK, fontFace: FONT } },
+    { text: "\u0176", options: { fontSize: 17, bold: true, italic: true, color: BLACK, fontFace: FONT, underline: true } },
+    { text: " and ", options: { fontSize: 17, color: BLACK, fontFace: FONT } },
+    { text: "Y", options: { fontSize: 17, bold: true, italic: true, color: BLACK, fontFace: FONT, underline: true } },
+  ], { x: x + 0.25, y: y + ruleH, w: w - 0.5, h: h - 2 * ruleH, align: "left", valign: "middle", margin: 0, lineSpacing: 20 });
+}
+
+// ============ TERM BOXES (y399..448: left x89..471 peach, right x533..880 pale yellow) ============
+{
+  const y = 399 / 72, h = 49 / 72;
+  const lx = 89 / 72, lw = (471 - 89) / 72;
+  const rx = 533 / 72, rw = (880 - 533) / 72;
+  s.addShape(pptx.ShapeType.rect, { x: lx, y, w: lw, h, fill: { color: PEACH2 }, line: { color: MAROON_BOX, width: 1.5 } });
+  s.addShape(pptx.ShapeType.rect, { x: rx, y, w: rw, h, fill: { color: PALE_YEL }, line: { color: NAVY, width: 1.5 } });
+  s.addText([
+    { text: "Loss Term", options: { fontSize: 17, bold: true, color: NAVY, fontFace: FONT } },
+    { text: " = ", options: { fontSize: 17, color: BLACK, fontFace: FONT } },
+    { text: "||Y-\u0176||", options: { fontSize: 17, bold: true, color: RED, fontFace: FONT } },
+    { text: "2", options: { fontSize: 17, color: RED, fontFace: FONT, superscript: true } },
+    { text: " = (Y-\u0176)", options: { fontSize: 17, bold: true, color: RED, fontFace: FONT } },
+    { text: "T", options: { fontSize: 17, color: RED, fontFace: FONT, superscript: true } },
+    { text: "(Y-\u0176)", options: { fontSize: 17, bold: true, color: RED, fontFace: FONT } },
+  ], { x: lx + 0.15, y: y + 0.08, w: lw - 0.3, h: h - 0.16, align: "left", valign: "middle", margin: 0, lineSpacing: 20 });
+  s.addText([
+    { text: "Regularization Term", options: { fontSize: 17, bold: true, color: NAVY, fontFace: FONT } },
+    { text: " R = ||W||", options: { fontSize: 17, color: BLACK, fontFace: FONT } },
+    { text: "2", options: { fontSize: 17, color: BLACK, fontFace: FONT, superscript: true } },
+    { text: " = ", options: { fontSize: 17, color: BLACK, fontFace: FONT } },
+    { text: "W", options: { fontSize: 17, bold: true, color: GREEN, fontFace: FONT } },
+    { text: "T", options: { fontSize: 17, color: GREEN, fontFace: FONT, superscript: true } },
+    { text: "W", options: { fontSize: 17, bold: true, color: GREEN, fontFace: FONT } },
+  ], { x: rx + 0.15, y: y + 0.08, w: rw - 0.3, h: h - 0.16, align: "left", valign: "middle", margin: 0, lineSpacing: 20 });
+}
+
+// ============ FINAL OBJECTIVE BAND (x87..880, y469..528, pale cyan, navy rules) ============
+{
+  const x = 87 / 72, y = 469 / 72, w = (880 - 87) / 72, h = 59 / 72;
+  s.addShape(pptx.ShapeType.rect, { x, y, w, h, fill: { color: PALE_CYAN }, line: { color: NAVY, width: 1.5 } });
+  s.addShape(pptx.ShapeType.rect, { x, y, w, h: ruleH, fill: { color: NAVY } });
+  s.addShape(pptx.ShapeType.rect, { x, y: y + h - ruleH, w, h: ruleH, fill: { color: NAVY } });
+  s.addText([
+    { text: "Objective function ", options: { fontSize: 17, color: BLACK, fontFace: FONT } },
+  ], { x: x + 1.1, y: y + ruleH, w: 2.4, h: h - 2 * ruleH, align: "left", valign: "middle", margin: 0, lineSpacing: 20 });
+  // 2D professional-format objective formula (stacked 1/2 fraction), measured span x350..735 y479..521
+  s.addImage({ path: ASSETS + "eq_014_final.png", x: 350 / 72, y: 479 / 72, w: 3.985, h: 0.4233 });
+}
 
 // ============ WRITE OUTPUT ============
 const outPath = "videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/slide_014_recreated.pptx";

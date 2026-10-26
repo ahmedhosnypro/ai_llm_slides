@@ -9,7 +9,7 @@
 #   analyzer --timeout 1200, inner gate 1650, outer `timeout 1700`.
 # Gate check before dispatch: pgrep -c -f analyze_image.py  must be < 8.
 set -u
-cd "/worksp""aces/codespaces-blank/ai_llm_slides"
+cd "/home/ahmed/Projects/ai_llm_slides"
 DECK="videos/machine-learning/03_ridger_regression_gradient_descent"
 D="$DECK/recreated_pptx/qa/slide051"
 

@@ -237,3 +237,43 @@ was recorded and none was fabricated.
   box cannot be satisfied without breaking containment.
 - Gateway load was observed at 10–17 concurrent `analyze_image.py` over the
   whole run; it never reached the < 8 threshold, so no leg was attempted.
+
+## APPENDIX — judge-s2-20261025 (2026-10-25): attempt-4 legA all-REFUTED adjudication + garbage-retry
+
+Attempt-4 legA (render_4.png, verified CURRENT: fresh LO render of
+slide_015_recreated.pptx is md5-identical to render_4.png, 0019627f1ec…)
+returned FINAL VERDICT: FAIL with 3 MAJORs. All three REFUTED by pixel
+measurement (full evidence: adjudicate_attempt_4.md; refuted transcript banked
+judge_attempt_4_refuted_garbage.txt):
+- "green term on extra line" — the original's ½ is a full-height STACKED
+  handwritten fraction (1/bar/2, decoded at x166..200); the render's mathtext
+  \frac{1}{2} is the same stacked mandated-2D form, and the green ink sits
+  INSIDE each line's dark band (inline) in both images.
+- "missing ⇒ arrow" — the gap (x501..547, y466..521) is ZERO-ink in the original
+  (banked attempt-3 adjudicate_arrow.txt agrees). Nothing to reproduce.
+- "missing Y underlines" — the runs are the BASES OF THE STACKED ½ (4 runs in L1
+  = 4 stacked-½ occurrences; 2+2 in L2/L3 = leading+trailing ½). The zoomed Y
+  at x412..418 has no stroke beneath it. \underline{W} already reproduces the
+  only underlined symbols.
+
+Disposition: garbage verdict on unchanged bytes -> garbage-retry of the SAME
+frozen Template A payload (no new attempt; spent count stays 1 of 6). Retry
+dispatched via dispatch_driver_4.sh judgeA (scratch/tmp/s2_015_legA_retry.log).
+Certification path after a real PASS verdict body: 5 crop legs (eq_stack,
+pinkbox, peachbox, deriv_stack, solution) via dispatch_driver_4.sh crop <SLUG>,
+one leg at a time at pgrep -c -f analyze_image.py < 8, then visual_attempts=4,
+visual_check=PASS, visual_transcript, gen_status passed, heartbeat, release.
+
+## APPENDIX 3 — judge-s2-20261025 (2026-10-25): slide 015 PARKED
+
+Third attempt-4 legA FAIL (judge_attempt_4.txt) claims: (a) duplicated blue
+J(W) — ink census shows exactly ONE J(W) cluster per line; (b) text/boundary
+collisions — containment_015.py reports 0 spills. Both refuted. With 3 garbage
+re-invokes burned on identical bytes and every claim refuted by pixel/doc-parse
+evidence (adjudicate_attempt_4.md, adjudicate_arrow.txt), the slide is PARKED:
+no coherent verdict is obtainable on this render, the cert cannot be written,
+and the 6-attempt judge cap is not exhausted (1 spent) but the garbage-retry
+cap is. Resume = re-dispatch dispatch_4_judgeA.txt (NOT dispatch_driver_4.sh —
+its load() integer test is buggy and sleep-loops) with fresh eyes, then the 5
+crop legs. DB last_error carries the park note; gen_status stays 'building'
+because no verdict chain exists to mark passed.

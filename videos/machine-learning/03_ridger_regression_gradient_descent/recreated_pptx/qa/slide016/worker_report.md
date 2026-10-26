@@ -1050,3 +1050,74 @@ RESUME COMMANDS (project root; build, payloads, crops and dispatcher are all ver
 Verification note: `gen_status` must be set to `passed` AFTER `release` planning — if a
 `claim`/`set` resets it to `building` (15_progress.py:337-339), re-set `gen_status passed`
 before the final `release` so the closing row reads `passed` / `PASS` / `worker_id=""`.
+
+## APPENDIX — judge-s2-20261025 lane (2026-10-25)
+
+Attempt-6 legA (frozen byte-payloads A md5 9387f5… / B md5 481172…) returned a real
+FINAL VERDICT: FAIL with ONE MAJOR — bullet 1 "This has/have the effect of better
+generalization of the model".
+
+Adjudication (judge findings are hypotheses; measure before fixing):
+- validation JSON bullet reads "has" (PASS_WITH_FIXES, score 9) — but the ORIGINAL
+  FRAME is ground truth and both the analysis and the judge disagree with it.
+- doc-parse (nemotron-parse, no vision-gate slot) on the original's white content
+  box (3x LANCZOS, scratch/tmp/orig016_body.png → orig016_body.parse.md):
+  "• This have the effect of better generalization of the model".
+  OCR confirms the ORIGINAL prints "have". The judge is CORRECT; the banked
+  analysis transcript is wrong (a long-standing data error).
+Fix (smallest correct change): build/slide_016.js bullet text "has" -> "have"
+(also replaced the absolute `/workspaces/...` require of house_chrome.js with the
+repo-relative form so the build runs in this checkout). Attempt 7:
+render_7.png (chrome PASS; 3/3 underlines contained; 12/12 bands inked), crops
+crop_7_{last_bullet,full_body}_* re-cut at matched scale, payloads judge_prompt_7A/
+7B byte-identical to the frozen templates (md5 9387f5…/481172…).
+
+## APPENDIX 2 — judge-s2-20261025: attempt-7 legs + honest PARK at the attempt cap
+
+Attempt-7 legA was first dispatched (by template-reference error) against stale
+render_6.png (pre has→have bytes); its PASS transcript is VOID — banked as
+`judge_attempt_7_stale_render6_PASS.txt`, never counted as verdict evidence. The
+re-dispatch against the correct render_7.png returned a real FINAL VERDICT: FAIL
+with ONE MAJOR — bullet 2 "the **regularization** term is added" (judge read the
+original as "generation", ~70% confidence).
+
+Adjudication (PIL-first + doc-parse, two corroborated reads at different
+--max-output-tokens + 3x/4x LANCZOS crops orig016_b1b2.png / b2line1/2):
+nemotron-parse reads the original "…and model generalization, the
+**generalization** term is added to the objective loss function…" — corroborated
+by the attempt-6 legA judge ("generalization"). The judge's "generation" was its
+own misread of the same fact: the build's "regularization" is a REAL verbatim
+deviation (MAJOR). The banked analysis JSON is wrong again.
+
+Fix (attempt 8 build, local work during park — established park practice, cf.
+slide 019): build/slide_016.js b2b "regularization term" -> "generalization term"
+(backup scratch/tmp/slide_016.js.pre_gen2term). Rebuilt slide_016_recreated.pptx
+(02:23Z), rendered render_8.png — HOUSE CHROME CHECK: PASS; doc-parse of the
+render's b2b line confirms "the generalization term is added". Crops re-cut
+(recut_crops_8.py): crop_8_{last_bullet,full_body}_{render,orig}.png at matched
+effective scale 2.083x; payloads re-frozen: judge_prompt_8A.txt md5
+9387f5fbb94ef05a31db19f1e018dde1 (Template A, no standalone K),
+judge_prompt_8B.txt md5 481172b034aa3336f54591d4e8e4bc98 (Template B, \bK\b→8).
+
+PARK (honest, NOT certified): spent judge transcripts = attempts 1,2,4,5,6,7 = 6,
+the cap per judging.md ("6 judge attempts per slide before parking"). No attempt-8
+vision call was dispatched. Attempt-8 legs are STAGED, byte-verified, one command
+each (run ONLY with mission-owner sanction to exceed the cap, ONLY at
+`pgrep -c -f analyze_image.py` < 8, one leg at a time):
+    bash $Q/dispatch_judge_8.sh legA         # -> judge_attempt_8.txt
+    bash $Q/dispatch_judge_8.sh last_bullet  # -> crop_8_last_bullet_judge.txt
+    bash $Q/dispatch_judge_8.sh full_body    # -> crop_8_full_body_judge.txt
+Certification after clean A+B: visual_attempts=8, visual_check=PASS,
+visual_transcript=judge_attempt_8.txt (+ crop transcripts banked), gen_status
+passed, heartbeat, release.
+
+## Appendix — attempt-8 certification (judge-s2-20261025)
+
+All three legs clean after adjudication: legA PASS (zero discrepancies), crop
+last_bullet PASS, crop full_body FAIL-then-adjudicated — its only MAJOR
+("(model parameters)" should be blue) REFUTED by PIL column census of the
+original heading line (blue ink cols 147..358 only; "(model parameters)" is
+black ink cols 366..513; render matches). Minors (weight/hue) accepted.
+visual_check=PASS, gen_status=passed, visual_attempts=8 (sanctioned 7th roll).
+Evidence: judge_attempt_8.txt, crop_8_last_bullet_judge.txt,
+crop_8_full_body_judge.txt, adjudicate_attempt_8.md.

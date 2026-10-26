@@ -122,3 +122,17 @@ bold 18pt vs JPEG-washed original ghosts — adjudication record banked).
 - Scratch renders in project scratch (`scratch/tmp`, TMPDIR redirected);
   private LO profile `/tmp/lo_slide020`. No provider errors occurred (0 sleeps,
   0 retries). No banked evidence deleted.
+
+## S19 payload-exact confirmation addendum (2026-10-25)
+
+Confirmation legA re-ran on the certified deliverable under the pool-299640
+amendment (no rebuild): frozen tplA payload byte-exact from
+shared_patterns/judge_protocol_03.md (payload banked as payload_A_confirm.txt,
+md5 9387f5fbb94ef05a31db19f1e018dde1), render vs original full-frame
+comparison, `--thinking high --max-tokens 65536`.
+
+- Transcript: judge_attempt_1_confirm.txt — FINAL VERDICT: PASS, zero
+  discrepancies raised.
+- DB: last_error note written ('S19 payload-exact confirmation legA PASS
+  2026-10-25; S16 HIGH closed'); gen_status/visual_check untouched.
+- No build, render, or banked evidence was modified.

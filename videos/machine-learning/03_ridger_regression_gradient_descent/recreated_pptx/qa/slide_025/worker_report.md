@@ -386,3 +386,42 @@ REFUTED by measurement:
 (c) BR: pull the surface inside the frame (white margins like the original).
 (d) TL/BL/BR: mesh wireframe + axis tick numerals per the original figures.
 (e) TR: red spike / z-tick set pending the crop verdict.
+
+## Attempt 5 — K=5 rebuild (worker-s4-3730479, 2026-10-25)
+
+Rebuild from the attempt-4 FAIL findings, K=5 wave, all 7 fixes implemented in
+`build/generate_plots_025_k5.py` (K=4 script banked):
+
+1. TL 3rd red line `[200, 88, 274]` added to REFLINES (build/slide_025.js).
+2. LB1/LB2 captions re-broken as in the original ("Concave Function"/"One Maxima",
+   "Convex Function"/"One Minima") with FFFF00 first word.
+3. Axes inset `[0.12, 0.10, 0.82, 0.86]` — tick labels no longer clipped.
+4. TR Z rescaled (max = zlim 1.5, warm tail restored).
+5. BR bowl centred at origin, Z 0.25 factor, z ticks 0/2/4/6.
+6. Mesh rstride/cstride 6 + 0.35 edge lines.
+7. Fill alphas calibrated to 0.97-0.99 (orig measured 0.98-0.99).
+
+Verified in `render_5.png` (md5 9e43b6ef5c2fa0a24d1bb91ecea48203);
+house_chrome_check.py PASS. Judge wave (leg A + 7 crop legs, payloads
+`judge_prompt_4.txt` md5 9387f5fb verbatim Template A and `crop_prompt_5_<name>.txt`
+md5 806ba0da verbatim Template B) staged from this dir; NOT yet dispatched at the
+time of this note (dispatch owned by worker-s4-3730479).
+
+## 2026-10-25 ~12:45Z — crop_11_tr FAIL adjudicated → k11 fixes → render_12
+
+- crop_11_tr (attempt 11, first real verdict at 09:29): FAIL. Adjudication vs pixel
+  census of the original:
+  - #1 MAJOR left-edge tick order reversed: CONFIRMED — at azim=60 the lower-left
+    edge is the X axis (proj_transform probe: x-axis runs to lower-left); orig
+    top→bottom 100..-100 means invert_xaxis. FIX in generate_plots_025_k11.py;
+    verified post-fix by OCR (−100 now at bottom of left edge).
+  - #2 MAJOR extra thick red line at z=0: adjudicated as our plot-PNG redrect frame
+    drawn too heavy (render red rows 2x denser than orig: e.g. y313.9 count 546 vs
+    orig y312 count 256). FIX: redrect lw 1.4→0.7.
+  - #3 MAJOR spike short/blunt: FIX amplitude 1.9→1.98, sigma 22→20 (apex≈zlim top).
+  - #7 MINOR dotted gridlines + floor contours: orig dotted grid + faint contour
+    projections. FIX: grid linestyle ':', TR ax.contour zdir=z offset=0 alpha 0.45.
+  - #4/#6/#8 (refline extents, slanted overshoot, tick labels): reflines trimmed to
+    orig extents (634..873 / 646..873); overshoot left (sub-2px, minor).
+- k11 regenerated all four plot PNGs; slide_025.js rebuilt; render_12; chrome PASS.
+- crop_12 pairs cut (tr/tl/bl/br/title); tr attempt 12 dispatched.

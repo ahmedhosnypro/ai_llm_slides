@@ -1,0 +1,1 @@
+<x_0.0><y_0.0>Yo Y1 Y2 Y3 Y4 Y5 ..... YsN Yn1<x_0.999><y_0.9906><class_Picture>

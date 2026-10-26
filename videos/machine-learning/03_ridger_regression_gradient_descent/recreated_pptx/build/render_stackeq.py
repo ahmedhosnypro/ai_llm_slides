@@ -39,9 +39,9 @@ def render_text(latex, fontsize, color):
     pb = probe.get_window_extent(renderer=renderer)
     buf = np.asarray(fig.canvas.buffer_rgba())
     ink = buf[:, :, 3] > 8
-    px0 = max(int(pb.x0) - 2, 0)
-    baseline_row = int(np.where(ink[:, px0:px0 + 6].any(axis=1))[0][-1])
-    ink[:, :px0 + 20] = False       # drop the probe
+    px0, px1 = max(int(pb.x0) - 2, 0), int(pb.x1) + 2
+    baseline_row = int(np.where(ink[:, px0:px1].any(axis=1))[0][-1])
+    ink[:, :px1 + 20] = False       # drop the probe (through its right edge)
     rows = np.where(ink.any(axis=1))[0]
     cols = np.where(ink.any(axis=0))[0]
     if len(rows) == 0:

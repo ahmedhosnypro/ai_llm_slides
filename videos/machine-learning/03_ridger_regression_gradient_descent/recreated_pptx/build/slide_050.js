@@ -42,8 +42,8 @@
 //                     decision line: least-squares on 1935 red px ->
 //                     y_data = -1.00417*x + 4.90556, ink from (-0.51,5.42) to
 //                     (6.19,-1.31); both ends taper to a point.
-//                     markers: blue squares (1,1),(2,1),(2,2); magenta diamonds
-//                     (5,4),(6,5),(6,6); red triangle (7,6); red origin blob (0,0).
+//                     markers: blue squares (1,1),(2,1),(1,2); magenta diamonds
+//                     (5,4),(6,5),(6,6); red triangle (7,6); red wedge (0,0).
 //                     "+ve" red text at data (0.56,3.84) with two small red arrows.
 
 const pptxgenpkg = require("pptxgenjs");
@@ -200,7 +200,7 @@ s.addShape(pptx.ShapeType.rect, {
 });
 (function () {
   const m = eqInfo("eq_050_finalW.png");   // underlined W = (5/-1/-1) column vector
-  s.addImage({ path: EQ("eq_050_finalW.png"), x: fx(744), y: fx(69), w: m.w_in, h: m.h_in });
+  s.addImage({ path: EQ("eq_050_finalW.png"), x: fx(743), y: fx(67), w: m.w_in, h: m.h_in });
 })();
 
 // ================= 5. RED "Iteration 2" BOX =================
@@ -220,16 +220,16 @@ s.addText([
   { text: "No change in ", options: { color: BLACK } },
   { text: "W", options: { color: BLACK, italic: true, underline: true } },
 ], {
-  x: fx(78), y: fx(350), w: fw(140), h: fw(21),
-  fontFace: FONT, fontSize: 11, align: "left", valign: "middle", margin: 0,
+  x: fx(77), y: fx(348), w: fw(160), h: fw(23),
+  fontFace: FONT, fontSize: 20, align: "left", valign: "middle", margin: 0,
 });
 // "Stop Iterations" — "Stop" red, "Iterations" black (measured Stop ink x83..121)
 s.addText([
   { text: "Stop", options: { color: CHART_RED, bold: true } },
   { text: " Iterations", options: { color: BLACK } },
 ], {
-  x: fx(83), y: fx(375), w: fw(140), h: fw(19),
-  fontFace: FONT, fontSize: 11, align: "left", valign: "middle", margin: 0,
+  x: fx(83), y: fx(373), w: fw(160), h: fw(22),
+  fontFace: FONT, fontSize: 20, align: "left", valign: "middle", margin: 0,
 });
 
 // ================= 7. CHART =================
@@ -288,8 +288,9 @@ s.addShape(pptx.ShapeType.rect, {
   });
 })();
 
-// 7g. blue squares (class C1)
-[[1, 1], [2, 1], [2, 2]].forEach(function (p) {
+// 7g. blue squares (class C1) — original cluster reads (1,1),(2,1),(1,2)
+//     (w050_adjud5: orig blue at data (1.01,2.00),(1.01,0.98),(2.02,0.98))
+[[1, 1], [2, 1], [1, 2]].forEach(function (p) {
   const cx = X2PX(p[0]), cy = Y2PY(p[1]);
   s.addShape(pptx.ShapeType.rect, {
     x: fx(cx - 4), y: fx(cy - 4), w: fw(8), h: fw(8),
@@ -304,21 +305,34 @@ s.addShape(pptx.ShapeType.rect, {
     fill: { color: MARK_MAG }, line: { color: MARK_MAG, width: 1 },
   });
 });
-// 7i. red triangle at (7,6) — measured as an upward triangle 9x9 px
+// 7i. red triangle at (7,6) — measured downward (widest rows y241-245, taper
+//     to y249); all three z-markers point down in the frame
 (function () {
   const cx = X2PX(7), cy = Y2PY(6);
   s.addShape(pptx.ShapeType.triangle, {
     x: fx(cx - 4.5), y: fx(cy - 4.5), w: fw(9), h: fw(9),
     fill: { color: MARK_RED }, line: { color: MARK_RED, width: 1 },
-    rotate: 0,
+    flipV: true, rotate: 0,
   });
 })();
-// 7j. red origin blob at (0,0) — measured 9x9 px filled circle
+// 7i2. red triangle at (3,2) — z3 marker merged into the decision line in the
+//      frame (bulge to 17px at x509..525 y364..371); downward like the others
 (function () {
-  const cx = X2PX(0), cy = Y2PY(0);
-  s.addShape(pptx.ShapeType.ellipse, {
+  const cx = X2PX(3), cy = Y2PY(2);
+  s.addShape(pptx.ShapeType.triangle, {
     x: fx(cx - 4.5), y: fx(cy - 4.5), w: fw(9), h: fw(9),
     fill: { color: MARK_RED }, line: { color: MARK_RED, width: 1 },
+    flipV: true, rotate: 0,
+  });
+})();
+// 7j. red origin marker at (0,0) — measured downward wedge 9x9 px (apex top,
+//     widest rows 426-427, taper to y432); a circle is a judged MAJOR deviation
+(function () {
+  const cx = X2PX(0), cy = Y2PY(0);
+  s.addShape(pptx.ShapeType.triangle, {
+    x: fx(cx - 4.5), y: fx(cy - 4.5), w: fw(9), h: fw(9),
+    fill: { color: MARK_RED }, line: { color: MARK_RED, width: 1 },
+    flipV: true, rotate: 0,
   });
 })();
 

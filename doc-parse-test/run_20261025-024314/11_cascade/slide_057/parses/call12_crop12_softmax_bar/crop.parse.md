@@ -1,0 +1,1 @@
+<x_0.0><y_0.0>SOHmax<x_0.999><y_0.9867><class_Picture>

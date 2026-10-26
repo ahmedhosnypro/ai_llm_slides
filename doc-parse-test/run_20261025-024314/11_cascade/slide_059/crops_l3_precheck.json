@@ -1,0 +1,110 @@
+[
+ {
+  "id": "crop13",
+  "dir": "crop13_xtail_l3",
+  "parent": "crop09",
+  "level": 3,
+  "trigger": "crop09 parse: X/XN/XNd still mangled for N-tails; two-tail window isolated",
+  "plan_box_frame_px": [
+   715,
+   402,
+   870,
+   450
+  ],
+  "crop_box_frame_px": [
+   709,
+   400,
+   876,
+   452
+  ],
+  "scale": 3.0,
+  "size_px": [
+   501,
+   156
+  ],
+  "mean_rgb": 225.9,
+  "precheck_ok": true,
+  "transform": "frame_x = crop_x/3 + 709 ; frame_y = crop_y/3 + 400"
+ },
+ {
+  "id": "crop14",
+  "dir": "crop14_yleft_tight_l3",
+  "parent": "crop10",
+  "level": 3,
+  "trigger": "crop10 parse: Y_d/Y_i garbles + stray standalone 1 tokens; Y0/Y1 pair isolated",
+  "plan_box_frame_px": [
+   195,
+   208,
+   345,
+   262
+  ],
+  "crop_box_frame_px": [
+   189,
+   206,
+   351,
+   264
+  ],
+  "scale": 3.0,
+  "size_px": [
+   486,
+   174
+  ],
+  "mean_rgb": 218.0,
+  "precheck_ok": true,
+  "transform": "frame_x = crop_x/3 + 189 ; frame_y = crop_y/3 + 206"
+ },
+ {
+  "id": "crop15",
+  "dir": "crop15_x12_zone_l3",
+  "parent": "crop08",
+  "level": 3,
+  "trigger": "crop08 parse: middle tokens X3/X2/X3 garbled order; X1/X2 slots re-isolated",
+  "plan_box_frame_px": [
+   500,
+   402,
+   650,
+   450
+  ],
+  "crop_box_frame_px": [
+   494,
+   400,
+   656,
+   452
+  ],
+  "scale": 3.0,
+  "size_px": [
+   486,
+   156
+  ],
+  "mean_rgb": 224.4,
+  "precheck_ok": true,
+  "transform": "frame_x = crop_x/3 + 494 ; frame_y = crop_y/3 + 400"
+ },
+ {
+  "id": "crop16",
+  "dir": "crop16_annot_table_l3",
+  "parent": "crop12",
+  "level": 3,
+  "trigger": "crop12 parse: class_Chart ranked_table returned 2 of 5 stacks; chart region re-cropped",
+  "plan_box_frame_px": [
+   51,
+   375,
+   299,
+   520
+  ],
+  "crop_box_frame_px": [
+   41,
+   369,
+   309,
+   526
+  ],
+  "scale": 2.0,
+  "size_px": [
+   536,
+   314
+  ],
+  "mean_rgb": 207.2,
+  "precheck_ok": true,
+  "transform": "frame_x = crop_x/2 + 41 ; frame_y = crop_y/2 + 369"
+ }
+]

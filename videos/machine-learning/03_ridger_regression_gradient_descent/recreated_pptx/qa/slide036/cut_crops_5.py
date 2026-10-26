@@ -7,7 +7,7 @@ construction (fixes the earlier 1px size mismatch) and remain matched-scale.
 """
 from PIL import Image
 
-V = "/workspaces/codespaces-blank/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent"
+V = "/home/ahmed/Projects/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent"
 ORIG = f"{V}/unique_slides/slide_036.jpg"
 REND = f"{V}/recreated_pptx/qa/slide036/render_5.png"
 OUT = f"{V}/recreated_pptx/qa/slide036"

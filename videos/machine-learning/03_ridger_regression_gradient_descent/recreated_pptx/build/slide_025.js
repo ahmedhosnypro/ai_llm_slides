@@ -70,7 +70,8 @@ const slide = pptx.addSlide();
 drawHouseChrome(pptx, slide, { numeral: 25 });
 
 const RED = "C00000";      // family nominal (founder-ratified; see sibling 024 header)
-const LABEL_BLUE = "0000FF";
+const LABEL_BLUE = "0000A0";
+const CAPTION_YEL = "FFFF00"; // first word of the top caption boxes (measured)
 const WHITE = "FFFFFF";
 const FONT = "Arial";
 
@@ -125,10 +126,21 @@ slide.addImage({ path: path.join(assetsDir, "plot_025_br.png"),
 const REFLINES = [
   [168, 119, 267],   // TL maximum level, upper
   [186, 109, 281],   // TL maximum level, lower
+  [200, 88, 274],    // TL third reference line (measured y200..201 x88..274)
   [226, 633, 875],   // TR minimum level, upper
   [234, 644, 867],   // TR minimum level, lower
   [417, 124, 382],   // BL single reference line
 ];
+// TR slanted strokes (measured red-pixel map): A (860,189)->(655,209)
+// descending-left, B (737,210)->(755,225) descending-right into the y226 line.
+slide.addShape(pptx.ShapeType.line, {
+  x: px(655), y: px(189), w: px(205), h: px(20), flipV: true,
+  line: { color: RED, width: 1 },
+});
+slide.addShape(pptx.ShapeType.line, {
+  x: px(737), y: px(210), w: px(18), h: px(15),
+  line: { color: RED, width: 1 },
+});
 for (const [ry, rx0, rx1] of REFLINES) {
   slide.addShape(pptx.ShapeType.rect, {
     x: px(rx0), y: px(ry), w: (rx1 - rx0 + 1) / 72, h: 2 / 72,
@@ -143,21 +155,37 @@ for (const [ry, rx0, rx1] of REFLINES) {
 // onto two lines, so each gets a two-line text box with lineSpacing pinned to
 // reproduce the ~12px band pitch (~0.25in at 11pt).
 const labels = [
-  { text: "Concave Function One Maxima",           x: 270, y: 137, w: 137, h: 42 },
-  { text: "Convex Function One Minima",            x: 475, y: 184, w: 137, h: 42 },
-  { text: "Gradient Descent Path to reach Minima", x: 474, y: 354, w: 138, h: 38 },
-  { text: "Non-Convex Multiple Minima",            x: 382, y: 452, w: 137, h: 38 },
+  { runs: [
+      { text: "Concave", options: { color: CAPTION_YEL } },
+      { text: " Function", options: { color: WHITE, breakLine: true } },
+      { text: "One Maxima", options: { color: WHITE } },
+    ], x: 270, y: 137, w: 137, h: 42 },
+  { runs: [
+      { text: "Convex", options: { color: CAPTION_YEL } },
+      { text: " Function", options: { color: WHITE, breakLine: true } },
+      { text: "One Minima", options: { color: WHITE } },
+    ], x: 475, y: 184, w: 137, h: 42 },
+  { runs: [
+      { text: "Gradient Descent", options: { color: WHITE, breakLine: true } },
+      { text: "Path to reach Minima", options: { color: WHITE } },
+    ], x: 474, y: 354, w: 138, h: 38 },
+  { runs: [
+      { text: "Non-Convex", options: { color: WHITE, breakLine: true } },
+      { text: "Multiple Minima", options: { color: WHITE } },
+    ], x: 382, y: 452, w: 137, h: 38 },
 ];
 for (const L of labels) {
   slide.addShape(pptx.ShapeType.rect, {
     x: px(L.x), y: px(L.y), w: px(L.w), h: px(L.h),
     fill: { color: LABEL_BLUE },
   });
-  slide.addText(L.text, {
+  const opts = {
     x: px(L.x), y: px(L.y), w: px(L.w), h: px(L.h),
     align: "center", valign: "middle", fontSize: 11, bold: true,
     color: WHITE, fontFace: FONT, margin: 0, lineSpacing: 12,
-  });
+  };
+  if (L.runs) slide.addText(L.runs, opts);
+  else slide.addText(L.text, opts);
 }
 
 const OUT = path.join(outDir, "slide_025_recreated.pptx");

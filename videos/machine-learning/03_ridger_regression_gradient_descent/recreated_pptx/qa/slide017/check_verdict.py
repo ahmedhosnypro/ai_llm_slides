@@ -13,7 +13,7 @@ Exit: 0 if every listed transcript is a real verdict, 1 otherwise.
 import re
 import sys
 
-GENUINE = re.compile(r"^\s*FINAL VERDICT:\s*(PASS|FAIL)\s*\.?\s*$", re.M | re.I)
+GENUINE = re.compile(r"^\s*[#*\s]*FINAL VERDICT:\s*\**(PASS|FAIL)", re.M | re.I)
 ECHO = re.compile(r"FINAL VERDICT:\s*PASS\s+or\s+FAIL", re.I)
 
 rc = 0

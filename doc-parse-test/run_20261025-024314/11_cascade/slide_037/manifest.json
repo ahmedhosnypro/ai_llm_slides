@@ -1,0 +1,400 @@
+{
+  "slide": "slide_037",
+  "frame": [
+    960,
+    540
+  ],
+  "source_image": "/home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/unique_slides/slide_037.jpg",
+  "full_frame_transcript": "03_parses/slide_037/call01_pass1/slide_037.parse.md",
+  "crops": [
+    {
+      "id": "crop01",
+      "dir": "crop01_Section-header",
+      "cls": "Section-header",
+      "level": "level1",
+      "seed_box_frame_px": [
+        106,
+        54,
+        891,
+        91
+      ],
+      "box_frame_px": [
+        75,
+        53,
+        922,
+        92
+      ],
+      "margin": "+4% clamped",
+      "scale": 1.9646,
+      "crop_px": [
+        1664,
+        77
+      ],
+      "transform": "frame_x = crop_x/scale + box.x0; frame_y = crop_y/scale + box.y0",
+      "precheck": {
+        "dims": [
+          1664,
+          77
+        ],
+        "mean": 196.08,
+        "ok": true,
+        "wide_enough": true
+      },
+      "provenance": "parse-driven: 03_parses/slide_037/call01_pass1/slide_037.parse.md block1 <class_Section-header>",
+      "estimated": false,
+      "source_call_dir": "11_cascade/slide_037/parses/call01_crop01",
+      "stop_reason": "leaf (single <class_Page-header> block spanning the whole crop; strings = GT 1 '37' + GT 2 title, EXACT; no novel content -> no judge needed)",
+      "judge": "none needed (no novel strings vs the wave-2 full-frame inventory)",
+      "parse_result": "Transformer Blocks (stacked over Multi-Head) 37 [class_Page-header]"
+    },
+    {
+      "id": "crop02",
+      "dir": "crop02_Picture",
+      "cls": "Picture",
+      "level": "level1",
+      "seed_box_frame_px": [
+        60,
+        99,
+        879,
+        505
+      ],
+      "box_frame_px": [
+        27,
+        83,
+        912,
+        516
+      ],
+      "margin": "+4% clamped, y2 clamped to 516 (video-UI strip excluded)",
+      "scale": 1.8802,
+      "crop_px": [
+        1664,
+        814
+      ],
+      "transform": "frame_x = crop_x/scale + box.x0; frame_y = crop_y/scale + box.y0",
+      "precheck": {
+        "dims": [
+          1664,
+          814
+        ],
+        "mean": 208.11,
+        "ok": true,
+        "wide_enough": true
+      },
+      "provenance": "parse-driven: 03_parses/slide_037/call01_pass1/slide_037.parse.md block2 <class_Picture> mega seed (mis-bounded per scope; judge correction at level2)",
+      "estimated": false,
+      "source_call_dir": "11_cascade/slide_037/parses/call02_crop02",
+      "stop_reason": "no-internal-structure (single <class_Picture> block covering the whole crop again; but zoom DID add novel strings vs full-frame: 'Add & Norm' (new GT 21), 'Decoder' (new GT 17, inside 'Output Decoder'), garble 'Read Forward' (Feed Forward) -> judge running for box correction + classification; recursion into the block itself would be self-referential)",
+      "parse_result": "24 lines; mega Picture block crop-px (52,0)-(1610,814) -> frame (55,83)-(883,516)",
+      "judge": "judges/crop02_judge.md (EXIT 0): Output Decoder = two separate labels Output+Decoder; Read Forward/Ad & Norm = REAL misreads of GT-22/GT-21; M Multi-Head Attention = GT-4 header with M-prefix artifact; V K Q = three separate circle labels",
+      "novel_strings": [
+        "Add & Norm (GT 21, EXACT)",
+        "Decoder (GT 17, merged in 'Output Decoder')",
+        "Read Forward (garble candidate of GT 22 Feed Forward)",
+        "Ad & Norm (garble candidate of GT 21)"
+      ]
+    },
+    {
+      "id": "crop03",
+      "dir": "crop03_Picture_insetA",
+      "cls": "Picture",
+      "level": "level2",
+      "seed_box_frame_px": [
+        58,
+        205,
+        221,
+        486
+      ],
+      "box_frame_px": [
+        51,
+        194,
+        228,
+        497
+      ],
+      "margin": "+4% clamped",
+      "scale": 3.0,
+      "crop_px": [
+        531,
+        909
+      ],
+      "transform": "frame_x = crop_x/scale + box.x0; frame_y = crop_y/scale + box.y0",
+      "precheck": {
+        "dims": [
+          531,
+          909
+        ],
+        "mean": 212.23,
+        "ok": true,
+        "wide_enough": true
+      },
+      "provenance": "level2: corrected split of crop02_Picture mega seed; region estimate from analysis JSON 'Scaled Dot-Product Attention diagram (~6-23%w, 38-90%h)'; corroboration: judges/crop02_judge.md",
+      "estimated": false,
+      "source_call_dir": "11_cascade/slide_037/parses/call03_crop03",
+      "parse_result": "Section-header '**_Scaled Dot-Product Attention_**' + body <class_Picture> block (crop-px 77,194-530,853 -> frame (77,259)-(228,478)); 9 strings, all exact GT",
+      "stop_reason": "recursed (body <class_Picture> child block of call03 -> crop06 level3; body re-cropped at 3x rather than self-referential)",
+      "judge": "none needed (no novel strings vs the wave-2 full-frame inventory; all 9 reads are exact GT)"
+    },
+    {
+      "id": "crop04",
+      "dir": "crop04_Picture_insetB",
+      "cls": "Picture",
+      "level": "level2",
+      "seed_box_frame_px": [
+        288,
+        194,
+        518,
+        502
+      ],
+      "box_frame_px": [
+        279,
+        182,
+        527,
+        514
+      ],
+      "margin": "+4% clamped",
+      "scale": 3.0,
+      "crop_px": [
+        744,
+        996
+      ],
+      "transform": "frame_x = crop_x/scale + box.x0; frame_y = crop_y/scale + box.y0",
+      "precheck": {
+        "dims": [
+          744,
+          996
+        ],
+        "mean": 213.08,
+        "ok": true,
+        "wide_enough": true
+      },
+      "provenance": "level2: corrected split of crop02_Picture mega seed; region estimate from analysis JSON 'Multi-Head Attention diagram (~30-54%w, 36-93%h)'; corroboration: judges/crop02_judge.md",
+      "estimated": false,
+      "source_call_dir": "11_cascade/slide_037/parses/call04_crop04",
+      "parse_result": "Section-header 'Multi-Head Attention' + body <class_Picture> block (crop-px 0,161-743,944 -> frame (279,236)-(527,497)); 10 strings incl. novel GT-15 'h'",
+      "stop_reason": "recursed (body <class_Picture> child block of call04 -> crop07 level3)",
+      "judge": "judges/crop04_judge.md (EXIT 0): all 8 strings CONFIRMED visible incl. novel GT-15 'h' (crop-px (643,524)-(665,556) -> frame ~(493,357), matches GT 484.5,357.5); Linear read as 4 instances; missed text: none"
+    },
+    {
+      "id": "crop05",
+      "dir": "crop05_Picture_arch",
+      "cls": "Picture",
+      "level": "level2",
+      "seed_box_frame_px": [
+        547,
+        92,
+        893,
+        505
+      ],
+      "box_frame_px": [
+        533,
+        75,
+        907,
+        516
+      ],
+      "margin": "+4% clamped, y2 clamped to 516 (video-UI strip excluded)",
+      "scale": 3.0,
+      "crop_px": [
+        1122,
+        1323
+      ],
+      "transform": "frame_x = crop_x/scale + box.x0; frame_y = crop_y/scale + box.y0",
+      "precheck": {
+        "dims": [
+          1122,
+          1323
+        ],
+        "mean": 190.25,
+        "ok": true,
+        "wide_enough": true
+      },
+      "provenance": "level2: corrected split of crop02_Picture mega seed; region estimate from analysis JSON 'Transformer architecture diagram (~57-93%w, 17-96%h)'; corroboration: judges/crop02_judge.md",
+      "estimated": false,
+      "source_call_dir": "11_cascade/slide_037/parses/call05_crop05",
+      "parse_result": "single mega <class_Picture> block spanning whole crop; 23 lines incl. clean GT-17/21/22/26 reads; garbles 'Aad & Norm', 'We ARE HERE', 'O'; corroborated string-identical by call09 (--max-output-tokens 3000)",
+      "stop_reason": "recursed (child <class_Picture> block of call05 -> crop08 level3 no-new-information probe; corroboration re-parse call09 itself stopped no-new-information)",
+      "judge": "judges/crop05_judge.md (attempt 2, EXIT 0; attempt 1 killed by session exit): Aad & Norm -> actually Add & Norm (REAL misread GT-21); O -> actually Q (misread GT-6); We ARE HERE -> casing slip of GT-29; all other strings match; missed text = Probabilities (printed, doc-parse miss), duplicate block labels, 2 extra V/K/Q triplets, occluded left Nx"
+    },
+    {
+      "id": "crop06",
+      "dir": "crop06_Picture_insetA_body",
+      "cls": "Picture",
+      "level": "level3",
+      "parent": "crop03_Picture_insetA",
+      "seed_box_frame_px": [
+        77,
+        259,
+        228,
+        478
+      ],
+      "box_frame_px": [
+        71,
+        250,
+        234,
+        487
+      ],
+      "margin": "+4% clamped",
+      "scale": 3.0,
+      "crop_px": [
+        489,
+        711
+      ],
+      "transform": "frame_x = crop_x/scale + box.x0; frame_y = crop_y/scale + box.y0",
+      "precheck": {
+        "dims": [
+          489,
+          711
+        ],
+        "mean": 209.7,
+        "ok": true,
+        "wide_enough": true
+      },
+      "provenance": "level3 recursion: child <class_Picture> block of call03_crop03 parse (crop px 76.7,193.9-529.9,852.9 -> frame via scale 3, box 51,194)",
+      "estimated": false,
+      "source_call_dir": "11_cascade/slide_037/parses/call06_crop06",
+      "parse_result": "single <class_Picture> block spanning whole crop; 9 lines: 'Attention' (GT-3 header line-2 fragment; crop box clips the header bottom) + MatMul, SoftMax, Mask (opt.), Scale, MatMul, Q, K, V",
+      "stop_reason": "no-new-information (single whole-crop Picture block, no nested coords; every string already in the union via P1/call03 - 'Attention' is the GT-3 header bottom line; re-crop would be self-referential)",
+      "judge": "judges/crop06_judge.md (EXIT 0): all 9 strings CONFIRMED; 'Attention' = lower ~60% of the clipped bold-italic red inset-A header (crop-px x 95-280, y 0-20) = REAL GT-3 fragment; missed text: none"
+    },
+    {
+      "id": "crop07",
+      "dir": "crop07_Picture_insetB_body",
+      "cls": "Picture",
+      "level": "level3",
+      "parent": "crop04_Picture_insetB",
+      "seed_box_frame_px": [
+        279,
+        236,
+        527,
+        497
+      ],
+      "box_frame_px": [
+        269,
+        226,
+        537,
+        507
+      ],
+      "margin": "+4% clamped",
+      "scale": 3.0,
+      "crop_px": [
+        804,
+        843
+      ],
+      "transform": "frame_x = crop_x/scale + box.x0; frame_y = crop_y/scale + box.y0",
+      "precheck": {
+        "dims": [
+          804,
+          843
+        ],
+        "mean": 212.83,
+        "ok": true,
+        "wide_enough": true
+      },
+      "provenance": "level3 recursion: child <class_Picture> block of call04_crop04 parse (crop px 0,161.1-742.5,943.9 -> frame via scale 3, box 279,182)",
+      "estimated": false,
+      "source_call_dir": "11_cascade/slide_037/parses/call07_crop07",
+      "parse_result": "single <class_Picture> block spanning whole crop; 9 lines identical to the call04 body except the final circle letter read as garble '9' vs 'Q'",
+      "stop_reason": "no-new-information (single whole-crop Picture block, no nested coords; zero new strings vs parent call04/union - only delta is garble '9' vs 'Q')",
+      "judge": "judges/crop07_judge.md (EXIT 0): 8 of 9 strings CONFIRMED incl. 'h' (2nd confirmation, crop-px (670,396)-(694,422) + leading dash); '9' NOT visible as 9 = misread of the bottom-right Q circle (crop-px (504,732)-(558,786)); missed: 4th bottom Linear box (still GT-14)"
+    },
+    {
+      "id": "crop08",
+      "dir": "crop08_Picture_arch_body",
+      "cls": "Picture",
+      "level": "level3",
+      "parent": "crop05_Picture_arch",
+      "seed_box_frame_px": [
+        533,
+        75,
+        902,
+        516
+      ],
+      "box_frame_px": [
+        518,
+        57,
+        917,
+        516
+      ],
+      "margin": "+4% clamped, y2 clamped to 516 (video-UI strip excluded)",
+      "scale": 3.0,
+      "crop_px": [
+        1197,
+        1377
+      ],
+      "transform": "frame_x = crop_x/scale + box.x0; frame_y = crop_y/scale + box.y0",
+      "precheck": {
+        "dims": [
+          1197,
+          1377
+        ],
+        "mean": 192.78,
+        "ok": true,
+        "wide_enough": true
+      },
+      "provenance": "level3 recursion: child <class_Picture> block of call05_crop05 parse (crop px 0,0-1107.9,1322 -> frame via scale 3, box 533,75); ~whole parent area = deliberate no-new-information probe",
+      "estimated": false,
+      "source_call_dir": "11_cascade/slide_037/parses/call08_crop08",
+      "parse_result": "2 blocks: title-fragment <class_Picture> ('37', 'ked over Multi-Head)') + arch <class_Picture> block (23 lines; misses Output Embedding vs call05; garbles 'Multi-lead Attention', 'Fixed Forward')",
+      "stop_reason": "no-new-information (deliberate ~whole-parent probe; every string already in the union - title fragment via P1/call01, arch strings via call05; only adds garbles, so recursion would be self-referential)",
+      "judge": "judges/crop08_judge.md (EXIT 0): 22 strings checked; 'ked over Multi-Head)' CONFIRMED as the clipped red title banner (crop-px (0,5)-(985,85)); 'Multi-lead Attention' = misread of Multi-Head Attention (decoder box), 'Fixed Forward' = misread of Feed Forward; missed text = duplicate labels only (Add & Norm x5, V/K/Q x3, Nx x2, MHA x2, FF x2, PE x2); badge '37' confirmed"
+    }
+  ],
+  "recursion": [
+    {
+      "node": "crop01_Section-header",
+      "parent": "full-frame call01_pass1 block1",
+      "children": [],
+      "stop_reason": "leaf"
+    },
+    {
+      "node": "crop02_Picture",
+      "parent": "full-frame call01_pass1 block2 (mega seed)",
+      "children": [
+        "crop03_Picture_insetA",
+        "crop04_Picture_insetB",
+        "crop05_Picture_arch"
+      ],
+      "stop_reason": "no-internal-structure at level1 (single self-referential Picture block); level2 split into 3 semantic children per judges/crop02_judge.md box correction"
+    },
+    {
+      "node": "crop03_Picture_insetA",
+      "parent": "crop02_Picture (level2 judge-corrected split)",
+      "children": [
+        "crop06_Picture_insetA_body"
+      ],
+      "stop_reason": "recursed (body child block of call03)"
+    },
+    {
+      "node": "crop04_Picture_insetB",
+      "parent": "crop02_Picture (level2 judge-corrected split)",
+      "children": [
+        "crop07_Picture_insetB_body"
+      ],
+      "stop_reason": "recursed (body child block of call04)"
+    },
+    {
+      "node": "crop05_Picture_arch",
+      "parent": "crop02_Picture (level2 judge-corrected split)",
+      "children": [
+        "crop08_Picture_arch_body"
+      ],
+      "stop_reason": "recursed (child block of call05)"
+    },
+    {
+      "node": "crop06_Picture_insetA_body",
+      "parent": "crop03_Picture_insetA (call03 body block)",
+      "children": [],
+      "stop_reason": "no-new-information"
+    },
+    {
+      "node": "crop07_Picture_insetB_body",
+      "parent": "crop04_Picture_insetB (call04 body block)",
+      "children": [],
+      "stop_reason": "no-new-information"
+    },
+    {
+      "node": "crop08_Picture_arch_body",
+      "parent": "crop05_Picture_arch (call05 child block)",
+      "children": [],
+      "stop_reason": "no-new-information"
+    }
+  ]
+}

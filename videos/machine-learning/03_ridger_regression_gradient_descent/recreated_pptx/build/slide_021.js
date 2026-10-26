@@ -100,6 +100,15 @@ const arrow = (x0, y0, x1, y1, color, width) =>
     line: { color: color, width: width, endArrowType: "triangle" },
   });
 
+// The original's chain arrows are DOUBLE-STROKE implication arrows "⇒" (measured
+// ink ~17x10.5pt), not single-shaft "→" — glyph is a text run so both strokes render.
+const arrowD = (x0, y, x1, color, pt = 23) =>
+  slide.addText("\u21D2", {
+    x: px(x0 - 3), y: px(y - 9), w: px(x1 - x0 + 20), h: px(18),
+    align: "center", valign: "middle",
+    fontSize: pt, color: color, fontFace: FONT_SERIF, margin: 0,
+  });
+
 // Equation image placed by the ORIGINAL's measured INK box (see placement law above).
 const eq = (png, inkLeft, inkTop, wPx, hPx) =>
   slide.addImage({
@@ -150,31 +159,35 @@ slide.addTable(topTableData, {
   x: px(97), y: px(173), w: px(206), h: px(53),
   fontFace: FONT_SERIF, fontSize: 14, color: BLACK,
   align: "center", valign: "middle",
-  border: [{ type: "solid", color: GRID, pt: 1 }],
+  border: { type: "solid", color: GRID, pt: 1 },
   margin: 0,
   rowH: [px(17), px(18), px(18)],
 });
 
 eq("eq_021_det0.png", 341, 187, 794, 230);
-arrow(460, 201, 476, 201, BLUE, 2);
+arrowD(460, 201, 476, BLUE);
 textAt("Singular Matrix", 492, 192, 212, { boxW: 160, fontSize: 20, color: BLACK });
-arrow(660, 201, 677, 201, BLUE, 2);
+arrowD(660, 201, 677, BLUE);
 textAt("No Inverse", 704, 193, 207, { boxW: 120, fontSize: 21, italic: true, color: RED });
 
 // ── 4. MIDDLE PANEL (P2): (X^T X + lambda I) lambda=3, det 5685 -> Inverse Exists ──
 eq("eq_021_regmat.png", 89, 300, 940, 227);
 eq("eq_021_lambda3.png", 245, 304, 380, 132);
 
-// Original highlight = an OPAQUE FDFD96 band behind each diagonal cell's digits
-// (measured: r1c1 x107..143 y345..357, r2c2 x173..210 y363..374, r3c3 x243..279 y380..392
-// — competent: pale FDFD96, NOT saturated FFFF00, and tight around the digits, not a
-// whole-cell fill). Drawn behind transparent table cells, so the digits sit on top.
+// Original highlight = an OPAQUE FDFD96 ELLIPSE behind each diagonal cell's digits
+// (PIL-measured ovals, tapered not hard-edged: r1c1 x107..143 y340..363, r2c2
+// x173..210 y356..378, r3c3 x243..279 y371..393). Drawn behind transparent table
+// cells, so the digits sit on top.
+const ellipse = (x, y, w, h, fill) =>
+  slide.addShape(pptx.ShapeType.ellipse, {
+    x: px(x), y: px(y), w: px(w), h: px(h), fill: { color: fill },
+  });
 for (const b of [
-  { x: 107, y: 345, w: 37, h: 13 },
-  { x: 173, y: 363, w: 38, h: 12 },
-  { x: 243, y: 380, w: 37, h: 13 },
+  { x: 107, y: 340, w: 37, h: 24 },
+  { x: 173, y: 356, w: 38, h: 23 },
+  { x: 243, y: 371, w: 37, h: 23 },
 ]) {
-  rect(b.x, b.y, b.w, b.h, HILITE);
+  ellipse(b.x, b.y, b.w, b.h, HILITE);
 }
 
 const midTableData = [
@@ -183,23 +196,25 @@ const midTableData = [
   ["20", "80", "95"],
 ];
 slide.addTable(midTableData, {
-  x: px(89), y: px(341), w: px(206), h: px(54),
+  x: px(89), y: px(341), w: px(190), h: px(54),
   fontFace: FONT_SERIF, fontSize: 14, color: BLACK,
   align: "center", valign: "middle",
-  border: [{ type: "solid", color: GRID, pt: 1 }],
+  border: { type: "solid", color: GRID, pt: 1 },
   margin: 0,
   rowH: [px(18), px(17), px(19)],
 });
 
 eq("eq_021_d5685.png", 338, 354, 1064, 215);
-arrow(489, 368, 505, 368, BLUE, 2);
-textAt("Non-Singular Matrix", 495, 358, 378, { boxW: 210, fontSize: 23.5, color: BLACK });
-arrow(728, 368, 744, 368, BLUE, 2);
+// P2 arrows: original ink a1 490..503, a2 729..744 (PIL, thin ~14px wide). The
+// 23pt glyph measures 26px wide and jams into "Non-Singular"; 13pt lands ~15px.
+arrowD(486, 368, 495, BLUE, 13);
+textAt("Non-Singular Matrix", 515, 358, 378, { boxW: 210, fontSize: 23.5, color: BLACK });
+arrowD(725, 368, 734, BLUE, 13);
 textAt("Inverse Exists", 761, 359, 373, { boxW: 140, fontSize: 21, italic: true, color: RED });
 
 // ── 5. BOTTOM PANEL (P3): (X^T X + lambda I)^-1 -> inverse matrix ─────────────
 eq("eq_021_invexpr.png", 155, 466, 1153, 227);
-arrow(364, 480, 380, 480, BLUE, 2);
+arrowD(364, 480, 380, BLUE);
 
 const botTableData = [
   [{ text: "0.07" }, { text: "0.04" }, { text: "-0.03" }],
@@ -210,7 +225,7 @@ slide.addTable(botTableData, {
   x: px(421), y: px(458), w: px(205), h: px(53),
   fontFace: FONT_SERIF, fontSize: 13, color: BLACK,
   align: "center", valign: "middle",
-  border: [{ type: "solid", color: GRID, pt: 1 }],
+  border: { type: "solid", color: GRID, pt: 1 },
   margin: 0,
   rowH: [px(17), px(17), px(19)],
 });

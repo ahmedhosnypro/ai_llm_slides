@@ -1,0 +1,51 @@
+[info] mode analysis | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 1160577
+[info] /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/unique_slides/slide_059.jpg: transcript written (validated winner, atomic): /home/ahmed/Projects/ai_llm_slides/doc-parse-test/run_20261025-024314/10_visual_judge/slide_059/judge/round1_gateway_body.txt (pid 1160577)
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully
+=== /home/ahmed/Projects/ai_llm_slides/videos/deep-learning/002_transformers_part2/unique_slides/slide_059.jpg ===
+[winner] images (round 1, attempt 1)
+## A. DEFECT LIST
+
+[HIGH] Output Classes labels â transcript lists "1C1" and "1C2" as the only class labels; frame shows Câ, Câ, Câ (subscripted) beneath the navy circles â region fx ~435â595, fy ~70â90 â REAL|NOT-IN-GT  
+[HIGH] Badge â transcript says "59"; frame shows "59" inside a navy-outlined circle at top-right â region fx ~862â888, fy ~55â75 â REAL (number correct; circle omitted)  
+[HIGH] Softmax count â transcript has one "Softmax Layer" bar label; frame carries three separate navy "Softmax" texts inside the circles plus one tan bar label â region fx ~425â600, fy ~91â130 â REAL|NOT-IN-GT  
+[HIGH] Output Sequence symbol labels â transcript lists Yd, Xd, Xx, XN, Xt, Yk, YNz, YNd; frame shows Yââ¦ Y_N-2, Y_N-1 (subscripted), spanning fx ~217â853, fy ~215â260 â REAL|GT-GAP  
+[HIGH] Input Sequence symbol labels â transcript lists no X labels for the lower token row; frame shows Xââ¦ X_N-2, X_N-1 (subscripted), spanning fx ~217â853, fy ~405â445 â REAL|GT-GAP  
+[HIGH] Position Information vector labels â transcript reads "VectorP0 â¦ VectorPn-1"; frame shows Vector_Pâ â¦ Vector_P_{N-1} with underscore and proper subscripts, spanning fx ~210â940, fy ~470â500 â REAL  
+[HIGH] Global Average Pooling vs GAP label â transcript omits the side annotation "Global Average Pooling" on the left at fy ~184â207 â region fx ~70â260 â REAL|NOT-IN-GT  
+[MEDIUM] Stacked side labels â transcript collapses "Single vector representing the whole sequence", "Input Sequence", "Word Embedding Vectors", "Position Information Vectors" to single lines; frame shows multi-line stacks â region fx ~70â270, fy ~225â900 â REAL  
+[MEDIUM] Plus disc label â transcript places "+" as a standalone token in the Input band; frame shows "+" inside a red disc at fx ~489â509, fy ~448â466 â REAL  
+[MEDIUM] Sigma glyphs â transcript omits the three "Î£" glyphs inside the navy circles â region fx ~425â600, fy ~100â125 â REAL|GT-GAP  
+[LOW] Transformer Block count â transcript lists "Transformer Block" twice plus "Transformer Encoder"; frame shows three "Transformer Block" labels + one "Transformer Encoder" label â region fx ~455â650, fy ~275â370 â REAL  
+
+## B. VERIFICATIONS
+
+Q1. Lower token row (~fy 405â445), leftâright: Xâ, Xâ, Xâ, Xâ, Xâ, X (ellipsis), X_{N-2}, X_{N-1}. Upper Output Sequence row (~fy 215â260), leftâright: Yâ, Yâ, Yâ, Yâ, Yâ, YN-1}. All subscripts are legible as subscripted digits/letters at this resolution; no label in either row is unreadable.
+
+Q2. Three navy circles, leftâright (cx ~440, 513, 585): each carries the word "Softmax" in white above a navy "Î£" glyph. Ink color inside circles: white text ("Softmax") and navy Greek sigma (Î£).
+
+Q3. Class-labels row (~fy 55â71), leftâright: Câ, Câ, Câ (subscripted, navy). No glyph precedes the leftmost label Câ; above them is the title "Output Classes".
+
+Q4. The narrow pastel row at ~fy 149â164 (fx ~389â631) is the pooled-vector output of Global Average Pooling â a narrow row of small pastel cells (yellow/green) between the GAP box and the fan lines; it shows approximately 7â8 visible cells before the row narrows toward the Softmax bar.
+
+Q5. Left annotation column (~fx 70â270) stacked labels:
+- "Single vector representing / the whole sequence" â 2 lines
+- "Output / Sequence" â 2 lines (stacked vertically)
+- "Input Sequence" â 1 line (bold red)
+- "Word / Embedding / Vectors" â 3 lines
+- "Position / Information / Vectors" â 3 lines
+
+Q6. Four separate visible "Softmax" strings: one tan bar label "Softmax Layer" (~fx 182â262, fy ~91â111), and three white "Softmax" texts inside the navy circles (~cx 440, 513, 585, fy ~95â115).
+
+## C. ADDITIONAL MISSES
+
+- Subscripted "Câ Câ Câ" class labels entirely absent from transcript (transcript wrote "1C1", "1C2").
+- All X and Y subscripted token labels (Xââ¦X_{N-1}, Yââ¦Y_{N-1}) entirely absent.
+- All "Vector_Pâ â¦ Vector_P_{N-1}" labels rendered without underscores and with wrong subscript case.
+- Three "Î£" glyphs inside circles absent.
+- Three white in-circle "Softmax" strings absent.
+- "Output Classes" title present but its subscript labels misread.
+- Badge circle context around "59" absent.
+
+FINAL VERDICT: FAIL for 'doc-parse full-frame transcript fidelity vs the original slide_059 frame'
+
