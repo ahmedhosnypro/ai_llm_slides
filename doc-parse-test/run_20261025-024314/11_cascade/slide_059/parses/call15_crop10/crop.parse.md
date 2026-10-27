@@ -1,1 +1,0 @@
-<x_0.0><y_0.0>Y_d 1 Y_i 1 Y2 1 Y_i<x_0.998><y_0.9922><class_Picture>

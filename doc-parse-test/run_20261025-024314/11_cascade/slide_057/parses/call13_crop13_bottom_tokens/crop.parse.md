@@ -1,1 +1,0 @@
-<x_0.0><y_0.0>Word and Position Encoding<x_0.999><y_0.9867><class_Picture>

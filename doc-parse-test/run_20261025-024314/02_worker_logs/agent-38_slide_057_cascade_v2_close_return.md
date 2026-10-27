@@ -1,3 +1,0 @@
-pool-db.sh returned: `1` (scope-done executed)
-scope-list confirms: `slide_057_cascade_v2 | done | worker-slide_057_cascade_v2 | region_extraction,crop_all_classes,position_tracking,parallel_calls,recursive_until_semantic_stop,composed_final,report`
-Headline: transcript recall 12.5% → **61.5%** (beat wave-4 vj mark 46.9% by +14.6 pp), 16 crops / 19 parse calls (all finish=stop, zero full-frame), speedup **~2.4×** (115 s summed vs 48 s wall); scope closed as `done`.

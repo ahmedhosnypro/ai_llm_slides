@@ -1,3 +1,0 @@
-<x_0.0><y_0.0>X
-XN
-XNd<x_0.998><y_0.9906><class_Picture>
