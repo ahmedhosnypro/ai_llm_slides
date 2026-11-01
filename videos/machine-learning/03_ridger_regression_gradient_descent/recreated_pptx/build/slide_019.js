@@ -36,11 +36,11 @@ const slide = pptx.addSlide();
 // House chrome: white canvas, E9E9E7 panel, C00000 L/R/bottom strokes (NO top stroke on this deck), badge with numeral 19.
 drawHouseChrome(pptx, slide, { numeral: 19 });
 
-// ── COLOR PALETTE ──────────────────────────────────────────────────────────────
-const BLUE   = "0000FF";  // headers, title
-const RED    = "FF0000";  // W vectors, ||W||²
+// ── COLOR PALETTE (spec hierarchy: headers/labels black, W+||W||² red, y green) ─
+const BLUE   = "0000FF";  // column headers, title, test-vector labels
+const RED    = "FF0000";  // W vectors, ||W||² (attempt_1 judge F1/F2 colour fix)
 const GREEN  = "008000";  // predicted y values
-const BLACK  = "000000";  // x values, labels, arrows
+const BLACK  = "000000";  // test headers, x values, labels, W label
 const FONT   = "Arial";
 // Measured from the original frame (qa/slide019/skeleton_census.py):
 const NAVY   = "201860";  // table left/top border + interior rules
@@ -421,44 +421,45 @@ for (const col of columns) {
     const gy = rowGroupsY[gi];
     const group = data[gi];
 
-    // W = bracketed 3-entry column vector (frame truth: tall brackets in the
-    // W cell of the original, 3 stacked entries; third entries are the printed
-    // values per doc-parse 6x OCR — the original's own ||W||² labels are
-    // inconsistent with them (lecturer typos) and are reproduced as printed).
-    // Layout mirrors orig: "W =" mid-left, brackets x0+45..x0+57 spanning
-    // gy+2..gy+58, entries stacked inside, norm line below.
-    // Round-paren delimiters (crop leg 17 #3: orig uses parens for all four
-    // 3-vectors), entries spread at pitch 20 with clearance so no glyph
-    // touches a digit (leg 17 #2: "1.95" was clipped to "95").
-    // Parens sized to span all three entries (leg 18: 42pt ink ended above the
-    // third entry; orig ink runs gy-3..gy+58).
+    // W = 3-entry column vector inside a thin red-bordered box; orig W-cell
+    // delimiters are STRAIGHT RED square-bracket hairlines 1-2px wide just
+    // inside the box edges (col0: x130-131 / x206, y200..297), drawn below.
+    // Third entries are the printed values per doc-parse 6x OCR — the
+    // original's own ||W||² labels are inconsistent with them (lecturer
+    // typos) and are reproduced as printed.
     const v3 = group.w3;
-    // Enclosure rectangle around the W block (crop leg 16 #2: orig boxes each
-    // row group's W area — measured x129..206 / y200..297, 306..405, 415..514)
+    // Enclosure rectangle around the W block: red C00000 1pt outline
+    // (crop leg 16 #2 geometry x129..206 / y200..297, 306..405, 415..514).
     slide.addShape(pptx.ShapeType.rect, {
-      x: px(x0 + 5), y: px(gy - 5), w: px(77), h: px(97),
-      fill: { type: "none" }, line: { color: MAROON, width: 0.75 },
+      x: px(x0 + 5), y: px(gy - 5), w: px(77), h: px(95),
+      fill: { type: "none" }, line: { color: "C00000", width: 1 },
     });
+    // Thin RED SQUARE brackets spanning the stacked weights (HARVEST5/6 MAJOR 1:
+    // orig = straight red hairlines x130-131 / x206, redpx 98/92, bow=1, with
+    // short inward serifs; the box outline alone reads as a rectangle).
+    const bTop = gy - 5, bBot = gy + 90, bL = x0 + 6, bR = x0 + 81;
+    vline(bL, bTop, bBot, "C00000", 1);
+    hline(bTop, bL, bL + 8, "C00000", 1);
+    hline(bBot, bL, bL + 8, "C00000", 1);
+    vline(bR, bTop, bBot, "C00000", 1);
+    hline(bTop, bR - 8, bR, "C00000", 1);
+    hline(bBot, bR - 8, bR, "C00000", 1);
     textBox(x0 + 16, gy + 22, 30, 16, [
       { text: "W", options: { color: RED, fontSize: 9, underline: true } },
       { text: " =", options: { color: BLACK, fontSize: 9 } },
     ], {});
-    textBox(x0 + 37, gy + 2, 8, 60, [
-      { text: "(", options: { color: BLACK, fontSize: 46 } },
-    ], {});
     textBox(x0 + 49, gy + 2, 16, 60, v3.map((v, i) => ({
-      text: v, options: { color: BLACK, fontSize: 7, align: "center", breakLine: i < v3.length - 1 },
+      text: v, options: { color: RED, fontSize: 7, align: "center", breakLine: i < v3.length - 1 },
     })), { lineSpacing: 20 });
-    textBox(x0 + 67, gy + 2, 8, 60, [
-      { text: ")", options: { color: BLACK, fontSize: 46 } },
-    ], {});
-    textBox(x0 + 6, gy + 68, 76, 16, (() => {
+    // ||W||² annotation kept clear of the W-box bottom border (HARVEST5/6
+    // MAJOR 2: orig ink stops y296 vs border y297)
+    textBox(x0 + 6, gy + 64, 76, 16, (() => {
       const m = group.norm.match(/^(\|\|)(W)(\|\|.*$)/);
       return m ? [
-        { text: m[1], options: { color: BLUE, fontSize: 8 } },
-        { text: m[2], options: { color: BLUE, fontSize: 8, underline: true } },
-        { text: m[3], options: { color: BLUE, fontSize: 8 } },
-      ] : [{ text: group.norm, options: { color: BLUE, fontSize: 8 } }];
+        { text: m[1], options: { color: RED, fontSize: 8 } },
+        { text: m[2], options: { color: RED, fontSize: 8, underline: true } },
+        { text: m[3], options: { color: RED, fontSize: 8 } },
+      ] : [{ text: group.norm, options: { color: RED, fontSize: 8 } }];
     })(), {});
 
     // Blue flow arrow between the W box and the test grid (crop leg 13 #4/#5;
@@ -494,9 +495,8 @@ for (const col of columns) {
     }
     // header row
     for (let ti = 0; ti < 3; ti++) {
-      const hcol = ti === 1 ? BLUE : RED;
       textBox(v0 + ti * colW, gy + 5, colW, 15, [
-        { text: `Test${"₁₂₃"[ti]}`, options: { color: hcol, fontSize: 8, align: "center" } },
+        { text: `Test${"₁₂₃"[ti]}`, options: { color: BLACK, fontSize: 8, align: "center" } },
       ], {});
     }
     // x₁ / x₂ rows
@@ -505,9 +505,8 @@ for (const col of columns) {
         { text: key === "x1" ? "x₁" : "x₂", options: { color: BLACK, fontSize: 8, align: "center" } },
       ], {});
       for (let ti = 0; ti < 3; ti++) {
-        const vcol = ti === 1 ? BLUE : RED;
         textBox(v0 + ti * colW, gy + 23 + ri * 22, colW, 15, [
-          { text: String(group.tests[ti][key]), options: { color: vcol, fontSize: 8, align: "center" } },
+          { text: String(group.tests[ti][key]), options: { color: BLACK, fontSize: 8, align: "center" } },
         ], {});
       }
     }

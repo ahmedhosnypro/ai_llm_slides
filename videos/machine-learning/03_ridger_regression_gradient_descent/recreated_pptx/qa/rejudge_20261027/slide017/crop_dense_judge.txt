@@ -1,0 +1,31 @@
+## Comparison of the zoomed region (slide 017, table block at frame px 136,112â440,320)
+
+**Panel structure (both images):** Upper table (header + 3 data rows), a gray horizontal band, then the start of a second, repeated table (header + first data row, last cell yellow-highlighted).
+
+### Cell-by-cell verification
+
+**Upper table header:** Xâ(blue) Xâ(red) Xâ(blue) Xâ(red) X(blue) Xâ(red) Xâ(blue) Xâ(red, clipped at right edge) â identical in both, including subscript placement and the alternating blue/red color scheme.
+
+**Upper table, row 1:** 1 | 2 | 3 | 4 | 8 | 9 | 10 | 11(clipped) â identical in both.
+
+**Upper table, row 2:** 1 | 3 | 5 | 6 | 16 | 7 | 5 | 3(clipped) â identical in both.
+
+**Upper table, row 3:** 2 | 4 | 6 | 8 | 16 | 18 | 20 | 22(clipped) â identical in both.
+
+**Gray band / inter-table gap:** present in both, same relative thickness and light-gray fill; no table lines or rows missing.
+
+**Lower table header:** Xââ¦Xâ with the same colors and subscripts â matches.
+
+**Lower table, row 1:** 1 | 2 | 3 | 4 | 8 | 9 | 10 | yellow-highlighted cell â matches in value sequence, cell alignment, and vertical centering. The yellow fill occupies the same cell in both, and the digit ink in it is red in both.
+
+**Glyph/typography:** Numerals are bold serif in both; the X-subscripts are true lowered subscripts in both; gridlines are thin gray in both; the recreation is sharper, the original is softened by JPEG blur (exempt per rule (e)).
+
+### Discrepancies
+
+1. **MINOR â right-edge crop extent (crop-relative x â 590â640, bottom row; also x â 615â640 on rows 1â3).** IMG1 renders the highlighted cell's value fully as "30" (the "0" at/just past the right boundary), whereas IMG2 shows only "3" with the remainder outside the captured frame; likewise IMG1 shows slightly more of the clipped "11" (row 1) and "3" (row 2) in the Xâ column than IMG2. Consistent with a 1â2 px crop/registration offset and the different upscaling of the video frame, not with an altered table value; the visible leading glyphs and the yellow highlight agree. Confidence: high (artifact) / medium (that this is not a transcription difference).
+
+2. **MINOR â top-left dark-blue title-box fragment (crop-relative x 0â50, y 0â30).** The visible white glyph fragments differ slightly: IMG1 shows bottoms of italic letterforms, IMG2 shows a mostly horizontal white streak. This is inside the caption/title bar and is at the resolution/blur limit of the original; attributable to video softness. Confidence: low that any content is wrong.
+
+No wrong digits, swapped cell values, missing rows, garbled characters, truncated subscripts, mis-colored cells, or misaligned/under-spanning delimiters were found.
+
+### FINAL VERDICT: PASS

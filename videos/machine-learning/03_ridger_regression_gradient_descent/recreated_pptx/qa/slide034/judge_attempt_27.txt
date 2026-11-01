@@ -1,0 +1,44 @@
+# Fidelity Check â Slide 034 "Non-Convex Function"
+
+## Element-by-element comparison
+
+**House chrome (per ground rule (a), not assessed as discrepancies):** Gray E9E9E7 panel, dark-red left/right/bottom strokes only (no top stroke â correct), yellow "34" badge with purple ring at upper right â all present in both images. â
+
+**Title block:**
+- "Non-Convex Function" â dark red, serif bold, verbatim match, same position/centering. â
+- "May reach different minimum value based on:" â verbatim, same red, same letter-spacing. â
+- "initial point and learning rate" â blue with red "and", verbatim, centered. â
+
+**Equation box:** Original shows f(x) = (xÂ²cos(x)âx)/10 in a red-stroked box. Recreation shows the same equation in professional 2D format (stacked fraction with bar, superscript 2). Per ground rule (e), this is a **mandated format upgrade â NOT a discrepancy**. Box geometry, stroke color, and position match. â
+
+**Chart (right panel):** Teal non-convex curve, black axes with arrowheads, gridlines, x-ticks (â10â¦10), y-ticks (â12â¦8), orange arrow to red dot with dashed red drop-line at xâ7, green ellipse at global minimum, pink "Reach global Minima" (italic, magenta) label â all present, positioned and colored consistently. The curve clipping at the top frame edge occurs in BOTH images (matching behavior). The faint mark near the right edge of IMG2's chart is a video-capture artifact â correctly omitted per rule (c). â
+
+**Small parameter table:** step 0.2 / initial X 7 (pink) / delta 0.1 (yellow) â verbatim, same row color coding, same navy border. Red-white arrow down to main table present in both. â
+
+**Green info box:** "X is in between **9.6** and color red bold **9.8**" / "f(x) is in between -10.03 and -9.92" â verbatim including the odd literal "color red bold" phrasing, same green stroke, same bold values, same line spacing. â
+
+**Main table (8 rows):** Checked every cell against the original:
+- x: 7, 7.2 â¦ 9.4, 9.6, 9.8, 9.6, 9.8, 9.6 â
+- f(x): 2.99, 2.43, 1.66, 0.69, â0.45, â1.73, â3.1, â4.5, â5.88, â7.16, â8.28, â9.17, â9.77, â10.03, â9.92, â10.03, â9.92, â10.03 â
+- x-delta: 6.9 â¦ 9.5 â / f(x-delta): 3.19 â¦ â9.95 â
+- x+delta: 7.1 â¦ 9.9, 9.7, 9.9, 9.7 â / f(x+delta): 2.74 â¦ â9.7, â10.02, â9.7, â10.02 â
+- slope: â4.5, â6.7, â8.7, â10.6, â12.2, â13.3, â13.9, â14, â13.4, â12.1, â10.1, â7.5, â4.4, â0.7, **3.2 (yellow)**, â0.7, **3.2 (yellow)**, â0.7 â â salmon cells with red borders match; two yellow 3.2 cells match.
+- next x: 7.2 â¦ 9.8 â
+- Green dashed highlight box spanning the 9.6/9.8/9.6 columns (x and f(x) rows) â present in both, same dashed style and span. â
+- Row color coding (yellow-green, purple/lavender, tan, green-stroke slope, pink next-x with red cell borders) â all match. â
+
+## Discrepancy list
+
+| # | Item | Severity | Confidence |
+|---|------|----------|------------|
+| 1 | Equation typeset in 2D professional format vs original linear/typed | NOT a discrepancy (rule (e)) | High |
+| 2 | Faint mark right of chart in IMG2 | Not a discrepancy (video artifact, rule (c)) | High |
+| 3 | Recreation table rows proportionally taller / slightly larger fonts due to higher render resolution | MINOR | Medium â scaling artifact of 150dpi render, layout ratios preserved |
+| 4 | Chart y-axis label spacing marginally wider in recreation | MINOR | Medium â within tolerance, all tick values and positions correspond |
+
+No BLOCKER or MAJOR defects found. No missing elements (rule 6 satisfied â every row, label, box, arrow, and annotation in the original appears in the recreation). No frame-containment violations (rule 5): all tables, the green box, the equation box, and the chart content sit inside their frames and the house panel; the curve's top-edge clipping matches the original's own clipping. Delimiter/bracket geometry not applicable (no multi-line delimiters). Text is verbatim throughout, including the idiosyncratic "color red bold 9.8" string.
+
+## Visual-quality defects in the recreation
+- None significant. Text legible, no collisions, no clipping, cell text vertically centered, table columns aligned with the dashed highlight box.
+
+**FINAL VERDICT: PASS** for 'faithful, usable recreation'.

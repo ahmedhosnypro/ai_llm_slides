@@ -1,0 +1,26 @@
+## Region analyzed
+Crop covers the blue-ink list region of slide 007: header line + 3 bullet items, left portion of the slide (xâ0â620, yâ0â345 crop-relative). No tables, equations, delimiters, or badges fall in this region, so the applicable checks are glyph identity, text order, duplication, color, underline, spacing, and stroke weight.
+
+## Cell-by-cell / line-by-line verification â what matches
+- **Line 1:** "Linear regression model â¦" â identical wording, same blue, underline present in both. IMG1's crop simply reveals slightly more of the continued header text ("haâ¦") then is cut; IMG2 cuts at "model". Same underlying content; nothing missing or garbled.
+- **Lines 2â4:** "Overfitting Problem" / "Matrix Inversion Problem" / "Matrix Inversion Problem" â text is identical and in identical order in both crops. **Important finding:** the second "Matrix Inversion Problem" line is duplicated in BOTH IMG1 and IMG2 â the duplication exists in the original, so this is faithful, not a recreation artifact.
+
+## Discrepancies found
+
+1. **Bullet glyph shape** â IMG1: bullets are wide, tailed "â¢"-style encompass arrows; IMG2: compact solid right-pointing triangles. Consistent across all three bullets, so systematic substitution. â **MINOR**, high confidence. Decorative-only, no semantic loss.
+
+2. **IMG2 artifact** â small compression/cursor-like blob overlapping the bullet of the third line (xâ35, yâ155). Per ground rule (e) this is a video-capture artifact, excluded. Not counted.
+
+3. **Top-edge dark horizontal line in IMG1** â thin dark line across the top of the crop (yâ0â4); IMG2 shows a light gray band bounded differently at top instead. Almost certainly the slide/canvas boundary or panel edge rather than a painted "top stroke" (this region of the white canvas vs the gray panel). Raised for completeness only; consistent with intentional chrome, **MINOR / low confidence**.
+
+## Non-discrepancies (confirmed faithful)
+- Blue ink color matches; no color drift.
+- Underline present under header in both; neither overlaps letters differently.
+- Line spacing and vertical rhythm consistent between crops.
+- No wrong/missing/truncated characters; no swapped values.
+- Medium differences only (typed-crisp vs video-soft edges) â inherent, per rules (c)/(e).
+
+## Summary
+The only genuine deviation is the bullet-symbol substitution (decorative, MINOR). Every text line, its order, the duplicated list item, color, and underline are faithful.
+
+**FINAL VERDICT: PASS** â faithful, usable recreation of this region.

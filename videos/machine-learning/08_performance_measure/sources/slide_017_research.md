@@ -1,0 +1,26 @@
+# Sources — Slide 017 — F-Score for different Precision and Recall values
+
+Method: mandated web-source verification. Tool: `mcp__agy-cli-mcp__agy_web_search`, 1 new query (F-beta direction, deck-level); curve family re-derived locally in Python against the confirmed formula. Spec consumed: `analysis/slide_017_final.json`. Original frame: `unique_slides/slide_017.jpg`.
+
+- Chart plots F1 against recall for ten fixed precision values (legend "precision = 0.1" ... "precision = 1") on both axes 0.0-1.0: CONFIRMED — Wikipedia, "F-score" (https://en.wikipedia.org/wiki/F-score) — F1 is a function of P and R alone, so a fixed-precision sweep is a valid and conventional way to plot it.
+- Every curve must be monotonically increasing in recall and cap out at 2p/(1+p) (so the p=1 curve tops out at exactly 1.0): CONFIRMED — local numeric re-derivation of F1 = 2PR/(P+R) — Verified for precision 0.1 through 1.0 over recall 0.0-1.0: strictly increasing at every sampled point, F1(1.0) = 2p/(1+p), giving 1.000 for p=1.0 and 0.182 for p=0.1.
+- The harmonic-mean curve never exceeds the arithmetic mean (each curve sits below the straight (p+R)/2 line): CONFIRMED — local numeric re-derivation; also APXML, "F1-score metric" (https://apxml.com/courses/basics-model-evaluation-metrics/chapter-2-metrics-for-classification/f1-score-metric) — Verified at all 60 sample points; the widest gap is p=0.1, R=1.0 where harmonic = 0.182 vs arithmetic = 0.55.
+- Spec's annotation "vertical dashed red line at recall ~0.97-1.0 terminating near F1 ~0.97-1.0" is consistent with the plotted family: CONFIRMED — local numeric re-derivation — That marker sits on the p=1.0 curve, where F1(0.98) = 0.9892 and F1(1.0) = 1.0000, matching the reported endpoints.
+- F-beta direction (the parent's deck-wide check): CONFIRMED — scikit-learn, "sklearn.metrics.fbeta_score" (https://scikit-learn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html) — beta > 1 weights recall more (F2 makes recall twice as important), beta < 1 weights precision more (F0.5). NOTE: this slide itself plots only the beta=1 family; no F-beta curve appears on the frame, so nothing on this slide needs changing.
+- Chart-only slide carries no bullet text: CONFIRMED by the spec's own note — all verbatim text lives in labels (axis titles, ticks, ten legend entries, one "+" marker). The lone "+" entry is a chart-generator marker artifact, not data; no source claim applies.
+
+Query budget: 1 of 3-6.
+
+## Reinforcement (parallel web-research lane)
+
+- Fixed-precision F1-vs-recall family: F1(R; P0) = 2·P0·R/(P0+R) is strictly increasing and concave in R, capped at F1(1; P0) = 2·P0/(1+P0): CONFIRMED — Splunk, "F1 Score" (https://www.splunk.com/en_us/blog/learn/f1-score.html) and DataCamp, "F1 Score" tutorial (https://www.datacamp.com/tutorial/f1-score) — with P0=0.1 and R=1.0, F1 = 0.2/1.1 ≈ 0.18, matching the frame's p=0.1 curve ceiling; P0=1 gives F1(1) = 1.0, matching the p=1 curve topping out at 1.0.
+- A family of curves parametrized by precision, plotted over recall 0..1, is the conventional way to visualize F1: CONFIRMED — scikit-learn example "Precision-Recall" with iso-F1 curves (https://github.com/scikit-learn/scikit-learn/blob/main/examples/model_selection/plot_precision_recall.py) and Stats StackExchange iso-F1 derivation P(R) = F1*·R/(2R − F1*) (https://stats.stackexchange.com/questions/345204/iso-f1-curve-for-precision-recall-curve) — same chart shape and axis ranges 0.0–1.0 as the frame.
+- Each fixed-precision F1 curve stays below the arithmetic-mean line: CONFIRMED — APXML, "F1-score metric" (https://apxml.com/courses/basics-model-evaluation-metrics/chapter-2-metrics-for-classification/f1-score-metric) — P=0.05, R=1.0 gives mean 0.525 vs F1 ≈ 0.095; the harmonic mean penalizes the small component, which is why the frame's curves sit under the straight (p+R)/2 line.
+
+## Second-opinion (lane D, 2026-10-31)
+
+Method: `mcp__agy-cli-mcp__agy_web_search`, 5 batches x 4 queries, URLs resolved live; curve family re-derived locally in Python over precision 0.1..1.0 x recall 0..1. Verdict: CONFIRMED. New confirming sources: Stats StackExchange iso-F1 derivation (https://stats.stackexchange.com/questions/345204/iso-f1-curve-for-precision-recall-curve) and sklearn plot_precision_recall example — for fixed precision p, F1(R;p) = 2pR/(p+R) is strictly increasing in R and caps at R=1 at 2p/(1+p): p=1 -> 1.0, p=0.1 -> 0.1818, matching the frame's curve family; every curve sits below the arithmetic-mean line (widest gap p=0.1, R=1: 0.182 vs 0.55), all re-verified numerically.
+
+## Cross-check (lane F, 2026-10-31, agy web search)
+
+- Chart "F-Score for different Precision and Recall values": ten curves F1(R) = 2PR/(P+R) for fixed precision P = 0.1..1.0 plotted against recall 0..1: CONFIRMED — sklearn model_evaluation / `fbeta_score` with beta=1 (https://scikit-learn.org/stable/modules/model_evaluation.html , https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html) and Ultralytics F1 glossary (https://www.ultralytics.com/glossary/f1-score): F1 = 2PR/(P+R); for fixed P the curve is monotone increasing in R and caps at 2P/(P+1) at R=1 (e.g. P=0.1 -> 0.18, P=1 -> 1.0), matching the frame's legend series precision=0.1..1 and the marker values (e.g. P=0.1 series 0.00,0.10,...,0.18 re-computed locally). No corrections.

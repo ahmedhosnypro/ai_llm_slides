@@ -1,0 +1,14 @@
+# Sources — Slide 26 — Effect of Selecting Threshold Value on Model Performance
+
+Consumed spec: analysis/slide_026_final.json (validation PASS_WITH_FIXES). Frame: unique_slides/slide_026.jpg.
+Method: NO new query spent — cross-references the banked records in slide_021_research.md (economy law).
+
+- At the highest threshold of the block (0.7) the classifier is strictest — false positives fall to zero while false negatives rise: CONFIRMED — Evidently AI, classification-threshold chapter (fetched live, banked on slide 21) https://www.evidentlyai.com/classification-metrics/classification-threshold — "A higher threshold increases precision but decreases recall"; scikit-learn's recall-first example (banked on slide 25) is the exact inverse of this strict operating point.
+- Matrix cells as read (TP=3, FP=2, FN=0, TN=6): CORRECTED (off-diagonal orientation; verify on frame) — as-read FP=2 together with FN=0 at the STRICTEST threshold inverts the confirmed trade-off direction: the strictest cut-off must admit the fewest false positives. The consistent reading is TP=3, FP=0, FN=2, TN=6 (actual P=5, actual N=6, precision 1.00, recall 0.60). Highest-priority orientation check in the block — verify the two off-diagonal cells against slide_026.jpg.
+- Dashed vertical line at x=0.7 with dashed styling differing per spec (gray #808080 in spec, purple/blue elsewhere): UNVERIFIED — course-authored rendering; the threshold position is CONFIRMED by the "Threshold=0.7" label, but the exact line colour is frame data, not source data.
+- Per-cell colours of the numeric matrix (3 blue, 2 red, 0 black, 6 red): UNVERIFIED — the colour scheme is course-authored emphasis, not a source convention; the frame wins for the recreation.
+- The block's purpose — varying only the threshold on one fixed model/data set to expose the trade-off: CONFIRMED — scikit-learn (fetched live, banked on slide 21) https://scikit-learn.org/stable/modules/classification_threshold.html — splitting classification into "the statistical problem of learning a model" and "the decision problem to take concrete action based on those probability predictions"; slides 21-26 vary only the decision part, which is why slide 27 proposes combining them.
+
+## Cross-check (lane F, 2026-10-31, agy web search)
+
+- Threshold=0.7 panel with matrix P row 3/2, N row 0/6 (TP=3, FN=2, FP=0, TN=6): CONFIRMED — sklearn `roc_curve` docs (https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html): a very conservative threshold yields FP=0, so FPR = 0/(0+6) = 0 and specificity = 1.0 (perfect), TPR = 3/(3+2) = 3/5 = 0.6 (recomputed locally; matches the frame's printed TPR=3/(3+2)=0.6, FPR=0/(0+6)=0). Monotone continuation of the sweep (FP 1->0 as threshold rises 0.6->0.7), and sklearn's first roc_curve threshold (max score + 1) produces the (0,0) endpoint beyond this — consistent with slide 036. No corrections.

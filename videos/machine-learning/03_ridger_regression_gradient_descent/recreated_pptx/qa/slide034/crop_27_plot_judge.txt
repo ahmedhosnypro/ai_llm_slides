@@ -1,0 +1,30 @@
+# Comparison â Slide 034, plot region, crop-pair at matched scale
+
+## Element-by-element check
+
+**Axes & ticks**
+- x-axis: both show arrowheads both ends, labels â10, â8, â6, â4, 2, 6, 8, 10 with 0 omitted â identical values, identical positions. â
+- y-axis: both show 8, 6, 4, 2, then â4, â6, â8, â10, â12 with 0 omitted â identical. â
+- Axis labels *x* and *y* italic, correctly placed. â
+
+**Curve f(x) = (xÂ²cos x â x)/10**
+- Overall topology matches: steep entry top-left, deep min â â8.3 near x â â9.3, local max â 5 near x â â6.8, shallow wiggle through the origin, local dip â â1.5 near x â 3.7, local max â 3 under the red dot at x â 7, deep global min â â10 near x â 9.5, steep rise to top-right. All zero-crossings land on the correct tick neighborhoods in both images.
+- **MINOR** (confidence: medium): the second hump (near x â â6.8) peaks slightly higher in IMG1 (~y â 5.3, crop center-left ~x=135, y=165) than in IMG2 (~y â 4.9). Small amplitude-fidelity difference in the rendered curve only.
+
+**Annotations**
+- Red local-max dot at x â 7 with red dashed drop line to the x-axis: present, same position, same dash rhythm. â
+- Orange arrow annotation pointing down-left onto the dot: present, same angle, same taper. â
+- Green ellipse at the global minimum (x â 9.5, y â â10): present, same size/position, sits on the trough in both. â
+- Pink "Reach *global* Minima" label: two lines, italic serif, dark-magenta text on pink fill with darker pink border â text, line break, and box geometry all match (crop lower-right, ~x=295â490, y=455â525). â
+
+**Frame / chrome**
+- Red panel border and background chrome fall under the founder-mandated template rule â not assessed as discrepancies.
+
+## Discrepancy list
+
+1. **MINOR** â Hump amplitude near x â â6.8 slightly taller in the recreation (~0.4 y-units at matched scale). Confidence: medium.
+2. **MINOR** â IMG2 shows a small pencil/cursor artifact at the right edge (~x=500, y=205â230, next to the "x" label) that the recreation does not reproduce. This appears to be a video-capture/editing artifact baked into the original frame rather than slide content, so its absence in the recreation is appropriate; noting for completeness. Confidence: high that it's an artifact.
+
+No wrong, missing, or garbled tick numerals; no swapped or truncated labels; annotation text, colors, and positions all verified glyph-by-glyph.
+
+**FINAL VERDICT: PASS** for "faithful, usable recreation of this region."

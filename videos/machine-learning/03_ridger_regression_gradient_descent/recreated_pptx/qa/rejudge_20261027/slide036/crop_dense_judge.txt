@@ -1,0 +1,46 @@
+## Fidelity check â Slide 36, zoomed crop pair (region = both boxed text blocks)
+
+**Region covered:** top box (definition/discriminant rules, cropped at top) and lower box ("For misclassified â¦"), crop-relative coordinates, IMG1 â 643Ã441.
+
+### Discrepancies
+
+**1. Variable case changed in the discriminant notation: `d(x)` instead of `d(X)` â MAJOR, confidence HIGH**
+All three occurrences of the discriminant in IMG1 use a lowercase italic *x*:
+- 2nd visible line of top box, after "let", at â x 88â168, y 38â82
+- 3rd line, in `d(x) > 0`, at â x 375â460, y 93â135
+- 4th line, in `d(x) < 0`, at â x 400â487, y 153â196
+
+IMG2 clearly uses an **uppercase bold underlined X** in all three places (`d(X)`). This is a symbol-identity error (feature vector *X* vs. scalar *x*), repeated three times, and it is internally inconsistent with IMG1's own uppercase `X` in the `if X â â¦` lines. It is not a medium/handwriting difference. Fix is three characters.
+
+**2. Class-label capitalization: `Class II` (IMG1) vs. `class II` (IMG2) â MINOR, confidence HIGH**
+- Top box, 4th line, blue label at â x 150â300, y 153â196
+- Lower box, 3rd line, blue label at â x 152â300, y 368â412
+- Clipped blue "C" at top edge, â x 598â643, y 0â18 (IMG2 shows lowercase *c* here)
+
+Red `class I` matches case in both. No semantic shift, but the label's casing does not match the original.
+
+**3. Underline emphasis dropped throughout â MINOR, confidence MEDIUMâHIGH**
+IMG2 underlines the X in `if X â` (â x 70â112, y 95â135 and y 155â195), the X inside `d(X)` (â x 445â482 and x 470â508, same rows), and the word `misclassified` in both lower-box lines (â x 370â640, y 308â352 and â x 385â643, y 366â410). IMG1 has no underlines anywhere. Loss of the underline that marks X as the feature vector compounds discrepancy #1.
+
+**4. Bold/weight emphasis lost on "For misclassified X :" â MINOR, confidence HIGH**
+Lower box, 1st line, â x 30â405, y 250â292. IMG2 renders "For misclassified" in bold (and X in bold green); IMG1 renders the whole line in regular weight. The green X is also non-bold in IMG1.
+
+**5. Typeface / slant change (serif italic vs. upright sans) â MINOR (medium rule), confidence HIGH**
+Original math prose is italic serif ("let d(X) be a discriminant function", `d(X)`, `misclassified`, `class I/II`); IMG1 is upright sans-serif throughout, e.g. top box 2nd line â x 30â640, y 38â82, and lower-box lines. Inherent typed-vs-handwritten/medium difference, capped at MINOR.
+
+**6. Slightly larger type metric in the recreation â MINOR (trivial), confidence MEDIUM**
+Same content spans â x 30â355 (IMG1) vs. â x 30â330 (IMG2) for the `if X â class I then` line; IMG1's glyphs are roughly 5â10 % larger and line spacing marginally looser. Right-edge truncation is correspondingly a little earlier, though both crops clip at comparable words.
+
+**7. Tight `âclass` spacing in original not reproduced â MINOR (trivial), confidence MEDIUM**
+Top box lines 3â4 and lower-box lines 2â3: IMG2 sets `âclass I` with essentially no gap; IMG1 inserts a full word space after `â`.
+
+### Checks that pass
+- No tables, numeric cell values, fractions/â constructions, subscripts, or bracket/paren enclosures occur in this region, so no cell-by-cell, numerator/denominator, limit, or delimiter-span defects apply.
+- Color assignments match: green `d`/X, red `class I`, red `>`/`<` and the zeros, blue class-II label; green hue difference is negligible.
+- Red box strokes (left/right/bottom of the top box, top/bottom of the lower box) are present in both at the same relative positions and weights; box heights, line counts, and inter-block gap are equivalent.
+- Line order, wording, "then", "and", colon after `X :`, and the `> 0` / `< 0` comparison directions are all correct; no missing or garbled characters beyond #1â#2.
+
+### Verdict
+The region is readable and structurally correct, but the three `d(x)` / `d(X)` substitutions are symbol-level errors (a wrong character in the defining expression of the slide's core rule), accompanied by a lost vector-underline and a capitalization change in the class label.
+
+FINAL VERDICT: FAIL

@@ -1,0 +1,12 @@
+Ignored per the rules: box chrome, typed-vs-rendered equation treatment, compression softness, and the missing/top-border style.
+
+| # | Discrepancy | Location in crop | Severity / Confidence |
+|---|---|---|---|
+| 1 | **Missing underline on the Y variable(s).** IMG2 shows an underline below the right-hand-side `Y` in the objective equation, and similar underlined-Y ink in the `If Å¶â Y` equation. IMG1 shows `Å¶=Y` and `Å¶â Y` with **no underline at all**, changing it from something like `\hat{Y} = \underline{Y}` to `\hat{Y}=Y`. | Top equation, roughly `xâ0.15â0.25, yâ0.10â0.20`; middle equation, roughly `xâ0.10â0.25, yâ0.50â0.60`. | **BLOCKER / high confidence** |
+| 2 | **Text stroke weight is noticeably thinner / less black in the recreation.** IMG2 uses heavy black strokes throughout; IMG1âs text is lighter and thinner even accounting for zoom. | All three boxes; top line `yâ0.15`, middle line `yâ0.55`, bottom line `yâ0.85`. | **MINOR / high confidence** |
+| 3 | **Small text-color/contrast differences.** Some recreation body text looks duller gray than the original, while the original has crisper black/indigo text and stronger red accents. Visible character values otherwise match. | Mostly bottom band and left-side wording; approximate `yâ0.85`. | **MINOR / medium confidence** |
+| 4 | **Horizontal advance/placement of visible text differs.** In the matched crop, IMG1 reveals more of the line text than IMG2 at the right edge: middle line shows `â¦There is an Error (Loss)` in IMG1 versus only `â¦There is an` in IMG2; bottom line shows `â¦squared dista` versus `â¦squa`. The words themselves match, but the line spacing/font metrics place the recreation text differently in the region. | Right half of middle band `yâ0.55`; right half of bottom band `yâ0.85`. | **MINOR / medium confidence** |
+
+No bracket/parenthesis spanning defect or multi-line delimiter issue is present in this crop.
+
+FINAL VERDICT: FAIL

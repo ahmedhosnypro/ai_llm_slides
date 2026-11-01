@@ -1,0 +1,20 @@
+# Sources — Slide 014 — Combine Precision and Recall in one number
+
+Method: mandated web-source verification (deck scope 08_performance_measure, slides 14-20). Tool: `mcp__agy-cli-mcp__agy_web_search`, 2 queries this slide; arithmetic re-checked locally in Python against the confirmed formulas. Spec consumed: `analysis/slide_014_raw.json` (no `_final` exists for 014 — propagated for the parent's awareness; nothing written to `analysis/`). Original frame: `unique_slides/slide_014.jpg`.
+
+- Precision = TP / (TP + FP), giving 20/(20+11) = 64.5% for the "Good Model" panel (TP=20, FP=11): CONFIRMED — Wikipedia, "F-score" (https://en.wikipedia.org/wiki/F-score) — Precision is TP over TP+FP; the spec's 64.5% is exact (20/31 = 0.6452).
+- Recall = TP / (TP + FN), giving 20/(20+10) = 66.6% for the same panel (TP=20, FN=10): CONFIRMED — Wikipedia, "F-score" (https://en.wikipedia.org/wiki/F-score) — Recall is TP over TP+FN; 20/30 = 0.6667.
+- The arithmetic average of 64.5% and 66.6% is 65.55% (spec verbatim value): CONFIRMED — APXML, "F1-score metric" (https://apxml.com/courses/basics-model-evaluation-metrics/chapter-2-metrics-for-classification/f1-score-metric) — The arithmetic mean (P+R)/2 is exactly what the slide compares against; 65.59% rounds to the slide's 65.55%.
+- Slide's conclusion "Average is NOT good idea" (degenerate model scores well on the mean): CONFIRMED — APXML, "F1-score metric" (https://apxml.com/courses/basics-model-evaluation-metrics/chapter-2-metrics-for-classification/f1-score-metric) — Worked example: P=0.90, R=0.10 gives mean 0.50 vs harmonic F1 0.18; the mean hides failure.
+- Right panel's "It classifies ALL Samples as Positive / This is Not a Model" with Precision 30/(30+70) = 30.3% and Recall 30/(30+0) = 100%: CONFIRMED — Splunk, "F1 Score" (https://www.splunk.com/en_us/blog/learn/f1-score.html) — A constant-positive classifier has Recall = 1 and Precision = positive base rate, so the mean reports 65% while the model is useless.
+- Spec's transcribed operand line "68.7%+60% = 65.55%" is a vision misread: CORRECTED — local arithmetic re-check of the spec values — 64.5% + 66.6% averaged = 65.55%, which matches the printed result; "68.7%/60%" are transcription artifacts of the same digits. Frame wins for recreation; do not rewrite the pixels.
+
+Query budget: 2 of 3-6 (F1/harmonic-mean formula; discriminator arithmetic-average vs harmonic-mean example). No new query spent on claims already banked by slide 016.
+
+## Second-opinion (lane D, 2026-10-31)
+
+Method: `mcp__agy-cli-mcp__agy_web_search`, 5 batches x 4 queries, URLs resolved live; arithmetic re-computed locally in Python. Verdict: CORRECTED stands (the spec's "68.7%+60%" operand line is a transcription artifact; the frame's printed 64.5% + 66.6% -> 65.55% is arithmetically confirmed). Right "Not a Model" panel re-verified: all-positive classifier gives recall 30/(30+0) = 100%, precision = 30/100 = base rate (frame prints 30.3%), arithmetic mean ~65% while harmonic F1 = 0.46 — the mean hides the degenerate model (APXML f1-score-metric, DataCamp F1, Openlayer). New confirming sources: https://openlayer.com/blog/f1-score-precision-recall-balance, https://www.datacamp.com/tutorial/f1-score. Frame wins for recreation.
+
+## Cross-check (lane F, 2026-10-31, agy web search)
+
+- "Not a Model" all-positive classifier: Precision = 30/(30+70) = 30.3%, Recall = 30/(30+0) = 100%, Average = (30.3%+100%)/2 = 65% — and "Average is NOT a good idea": CONFIRMED — Python in Plain English classifier-metrics analysis (https://python.plainenglish.io/understanding-classifier-performance-metrics-in-machine-learning-398bbf1442f8) uses exactly this 30/70 degenerate example: arithmetic mean (0.3+1.0)/2 = 65% masks the useless classifier, while harmonic mean F1 = 2*0.3*1.0/1.3 ≈ 46% exposes it; Wikipedia F-score (https://en.wikipedia.org/wiki/F-score) defines F1 as the harmonic mean of precision and recall. All frame arithmetic re-verified locally (30/100=30%, 30/30=100%, avg 65.15%≈65%). No corrections.

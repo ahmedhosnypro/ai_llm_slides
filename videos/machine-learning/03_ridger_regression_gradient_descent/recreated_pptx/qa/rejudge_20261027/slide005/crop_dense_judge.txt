@@ -1,0 +1,27 @@
+## Comparison notes (cropârelative coordinates, 640Ã432 crops)
+
+**Content inventory check (both crops):** two repeated ridgeâregression loss lines (`Loss = Â½[YáµY + (XW)áµ(XWâ¦]`), then the pink "condition" band with a derivativeâofâloss fraction `â¦/âW = 0` followed by "Get Best **W** that minimâ¦". Numerator/denominator order, the Â½ stacked fraction, the two superscript `T`s, the `[`/`(`/`)` delimiters and the red bold `W` all appear structurally correct in IMG1. No wrong digits, swapped values, or broken stacked fractions were found.
+
+## Discrepancies
+
+1. **MAJOR â Leading `â` of the derivative condition appears to be missing (left edge of the pink band, IMG1 xâ0â100, yâ275â360; IMG2 xâ0â20, yâ275â310).**
+   - IMG2 shows a partial `â` glyph at the extreme left of the frame followed by `Loss` (the `L` starts âx=28) over `âW`.
+   - IMG1 shows `Loss` with the `L` starting âx=3, and the fraction bar under it *terminating at the crop edge* (xâ0â95) rather than being clipped by it. So the recreation reads **âLoss / âW = 0â**, not **ââLoss / âW = 0â** â a mathematically different (and wrong) condition.
+   - Confidence: **~0.7**. Alternative explanation: the IMG1 crop window is shifted ~20â25 px left of the IMG2 window (the `= 0` and âGet Best Wâ¦â text *do* align within ~5 px, but the left numerator does not), in which case the `â` may be outside the crop rather than absent. Either way the pair as presented does not show a matching symbol at a matching position; a reâcrop of the left edge is needed to confirm.
+
+2. **MINOR (high confidence) â Matrix underlines dropped.** In IMG2 every matrix variable is underlined: both `Y`s in `YáµY` (âx=195â275, y=70â95), `X` and `W` in the first `(XW)` (âx=390â480), `X` and `W` in the second `(XW)` (âx=525â610), and the `W` in `âW` (âx=30â75, y=320â350). IMG1 has **no underlines anywhere** on `Y`, `X`, `W`. This removes the conventional âunderline = matrixâ cue (and slightly downgrades the emphasis on `W` in the condition band). Content is still readable, so MINOR, but it is a systematic notation change across the region.
+
+3. **MINOR (high confidence) â Typeface change.** Original (IMG2) is an upright/serif Timesâstyle math face; the recreation (IMG1) uses a sansâserif oblique face for `Loss`, `Y`, `X`, `W`, `â`, with a visibly different `T` superscript shape and a wider, lighterâweight bracket `[` (IMG1 âx=230â245 vs IMG2 âx=172â190). Style, not content.
+
+4. **MINOR (high confidence) â Operator spacing / horizontal metrics.** IMG1 renders `Loss = 1/2 [ YáµY + (XW)áµ(XW` with wide spaces around `=` and before `[` (fraction bar centered âx=207); IMG2 is tight: `Loss=1/2[YáµY+(XW)áµ(XW)]` (fraction bar centered âx=150). This also pushes the trailing `)]` of line 1 (visible in IMG2 at âx=575â615) past IMG1âs right edge. Vertical placement of the Â½ fractions and of the two repeated lines matches within a few pixels.
+
+5. **MINOR (moderate confidence) â Small fill/weight differences.** Pink band: IMG1 â very light salmon (F6C8C8) vs IMG2 slightly deeper/duller (F2BBBB); gray separator strip and cream bottom strip are close but not identical in value. Red `W` and the red baseline rule are consistent. IMG2 softness is capture artifact, per ground rule.
+
+6. **INFO (not scored as a defect) â Rightâedge truncation of both equation lines in IMG1.** Both lines end midâglyph after `(XW` (x=640); in IMG2 the closing `)` and `]` are present (line 1) and the `)` is present (line 2). Because the `W` itself is clipped at IMG1âs edge, this is a crop/scaleâwindow artifact, **not** evidence of a missing closing delimiter. A reâcrop should confirm the recreationâs trailing `)]`.
+
+**Verified as correct (no defect):** stacked Â½ with horizontal bar in all three fractions; superscript `T` after the first `Y` and after `(XW)`; the `[` bracket position and the `( )` geometry on the visible lines; duplicate second loss line; red bold `W`; the `= 0` alignment to the fraction bar; âGet Best W that minimâ¦â wording and the vertical `=0` placement. Per ground rules, the 2D typeset equation formatting and the houseâtemplate chrome are not discrepancies.
+
+## Verdict
+The only substantive question is item 1: as presented, the recreationâs condition band reads `Loss/âW = 0` while the original reads `âLoss/âW = 0`, a missing mathematical symbol in a headline formula; everything else is cosmetic (underlines, typeface, spacing, tint). A matchedâregion reâcrop of the pink bandâs left edge must show the `â` to clear this.
+
+**FINAL VERDICT: FAIL** (driven by the apparent missing `â` in `âLoss/âW = 0`, MAJOR, confidence â0.7; if a reâcrop confirms the `â` is present and merely clipped, the region would flip to PASS with only MINOR items 2â5 outstanding).
