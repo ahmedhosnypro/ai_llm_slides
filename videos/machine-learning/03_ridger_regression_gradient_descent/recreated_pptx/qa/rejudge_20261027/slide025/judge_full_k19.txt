@@ -1,0 +1,28 @@
+## Discrepancies
+
+| # | Discrepancy | Severity | Confidence |
+|---|---|---|---|
+| 1 | **Top-left surface topology looks wrong.** The original labels it âConcave Function / One Maximaâ and shows a dome-like surface with the high region centrally/top-ish. The recreationâs top-left surface appears to have a central trough/valley with blue low region and high rims, i.e. visually closer to a one-minima/convex basin than a one-maxima concave surface. This is a content mismatch, not just styling. | **BLOCKER** | High, ~0.82 |
+| 2 | **Row/frame geometry does not match the original.** In IMG2 the four plot frames form a comparatively even 2Ã2 arrangement. In IMG1 the top-row frames are visually enlarged and extend much lower, while the bottom-row frames appear compressed and shifted, especially on the left. This changes the layout/regions of the slide. | **MAJOR** | High |
+| 3 | **Extra inset/thumbnail overlay in the bottom-right plot.** The recreation has an additional smaller inset landscape pasted into the lower-left of the bottom-right âGradient Descent / Path to reach Minimaâ plot. That inset is not present in the original and partly occludes the main surface. | **MAJOR** | High |
+| 4 | **Bottom-edge containment is tight / appears to touch the house stroke.** The bottom-row frames and the lower âNon-Convex / Multiple Minimaâ label sit very close to the panel bottom stroke and appear to abut/touch it. The original retains clearer separation from the slide/frame bottom. Under the containment rule, touching the enclosing boundary is a defect. | **MAJOR** | Medium-high |
+| 5 | **Top-left axis rendering/orientation does not reproduce the original clearly.** The tick labels/axis arrangement and apparent surface orientation in the recreated top-left plot are not faithful; it does not read as the same plotted surface even allowing for redraw method differences. This compounds issue #1. | **MAJOR** | Medium |
+| 6 | **Bottom-left plot labels/spacing look compressed relative to the original.** The original non-convex plot has generous spatial separation for âGlobal Maximaâ, âLocal Maximaâ, âLocal Minimaâ, and âGlobal Minimaâ; the recreationâs smaller/compressed plot makes the labels more crowded and less consistently positioned. | **MINOR-to-MAJOR** | Medium |
+| 7 | **Bottom-right gradient-descent path/inset collision.** The extra inset from issue #3 visually collides with the gradient path/foreground surface. | **MAJOR** | High |
+
+## Visual-quality defects in the recreation
+
+- Extra inset/thumbnail in the bottom-right plot creates an occlusion/collision.
+- Bottom-row plot frames appear vertically compressed and crowded against the bottom edge.
+- Top-row plots occupy notably more vertical space than in the original, disturbing the intended 2Ã2 balance.
+- The top-left surface is misleading because its convexity/minima shape conflicts with its âOne Maximaâ label.
+- Text itself appears legible, and the main label wording/color coding are otherwise matched.
+
+## Non-issues correctly matched
+
+- Title text `Types of Loss function shapes` and color match.
+- Label wording and line breaks match: âConcave Function / One Maximaâ, âConvex Function / One Minimaâ, âGradient Descent / Path to reach Minimaâ, âNon-Convex / Multiple Minimaâ.
+- Slide-number badge `25` is present and styled as intended house chrome.
+- House gray panel and red left/right/bottom stroke treatment should not be flagged.
+
+FINAL VERDICT: FAIL

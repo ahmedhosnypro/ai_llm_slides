@@ -1,0 +1,56 @@
+[warn] --timeout > 600s: the gateway at localhost:17844 is shared (Stitch proxy + vision). Long-timeout retry loops SATURATE it for everyone — prefer one modest call and retry later.
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 200109
+=== _pool/wB1/render/s_014-1.png, unique_slides/slide_014.jpg ===
+[winner] images (round 1, attempt 1)
+## 1. Verbatim Transcription
+
+### Image 1 (recreation render)
+- **Title block:** "Neural Network Model" / "(Current Layer is Hidden Layer)" (blue) Â· badge "14"
+- **Top corners:** "Input Sample" (lavender tag, left) Â· "Target Label" (lavender tag, right)
+- **Diagram (white panel):** 3 purple input dots â 3 white "Î£" circles each with a small "f" box â 3 blue "Î£" circles â 3 green "Î£" circles â 3 orange "Î£" circles, each with an "f" box â "Output 1", "Output 2", "Output m". Red connection lines with small red weight labels reading approximately "O_j w_ji", "w_ji", "O_i", "w_ji"/"w_kj", "O_j", "w_kj", "O_k", "w_kl" (last subscript small/possibly illegible), plus "Net_j", "O_j" near the blue circles. Two purple bias "1" circles (below 1st and 2nd Î£ columns).
+- **Right rail:** dark-red vertical bar with white "Error" text (partially clipped) Â· green boxes "Class 1", "Class 2", "Class m"
+- **Bottom row:** "For Layer "j"" Â· equations "Net_j = Î£_i(w_ji Â· O_i)" and "O_j = f(Net_j) = 1/(1+e^(âNet_j))" (stacked 2D fraction) Â· "Previous Layer (l)" (blue down-arrow) Â· "Current Layer (You are here)" (green up-arrow) Â· "Next Layer (K)" (orange up-arrow) Â· "Note: Layer "j" is NOT Output Layer" Â· "E = Â½ Î£_j (t_j â O_j)Â²" followed by red "X X X"
+
+### Image 2 (original lecture frame)
+- **Title block:** "Neural Network Model" (maroon) / "(Current Layer is Hidden Layer)" (blue) Â· circular badge "14"
+- **Top corners:** "Input Sample" (pink tag) â dotted line across â "Target Label" (pink tag)
+- **Diagram (beige panel):** same 4-column topology (3 nodes each) of "Î£" â "f" units; red labels "Net_j", "O_j", "O_i", "Net_k", "O_k"; blue weight labels "w_ji", "w_kj" (and "w_ij" lower-left); bias "1" nodes (purple, plus one red-filled) with "Node Bias" caption; gray boxes "Output 1", "Output 2", "Output m"
+- **Right rail:** dark-red vertical bar with vertical white text "Error Error Error" Â· pale-green boxes "Class 1", "Class 2", "Class m"
+- **Bottom row:** "For Layer "j"" (pink tag) Â· "Net_j = Î£_i(w_ji O_i)" Â· "O_j = f(Net_j) = 1/(1+e^(âNet_j))" (inline fraction) Â· "Previous Layer Layer (I)" [arrow "i"] Â· "Current Layer (You are here)" [arrow "j"] Â· "Next Layer Layer (K)" [arrow "k"] Â· "Note: Layer "j" is NOT Output Layer" (pink tag) Â· "E = Â½ Î£_j (t_j â O_j)Â²" + red "X X X"
+- Black capture strip at the very bottom (video artifact)
+
+## 2. Similarities (slide-specific content)
+- **Same purpose & thesis:** a 4-layer feed-forward network with the **current layer "j" being a hidden layer**, showing forward weights, node bias, layer-direction arrows (previous I/l â current j â next K), and why the error term E is marked "XXX" (not applied at the hidden layer).
+- **Same layout regions:** title/subtitle top, Input Sample top-left, Target Label top-right, central network diagram, error bar + Class 1/2/m boxes on the right rail, "For Layer j" equations bottom-left, three layer-caption boxes bottom-center, note + error equation bottom-right, page number "14".
+- **Same diagram components:** 3 inputs; 3 Î£-summation circles per layer Ã 4 layers; "f" activation boxes; bias "1" nodes; fully connected red/pink edges; weight labels w_ji / w_kj with O_i, O_j, O_k, Net_j, Net_k annotations; outputs "Output 1 / 2 / m".
+- **Identical equations:** Net_j = Î£_i(w_jiÂ·O_i); O_j = f(Net_j) = 1/(1+e^(âNet_j)); E = Â½Î£_j(t_j â O_j)Â² with red "XXX".
+- **Identical auxiliary text:** "Current Layer is Hidden Layer", "Note: Layer "j" is NOT Output Layer", "Previous/Current/Next Layer" captions with "(You are here)", "Class 1 / Class 2 / Class m", "Error" rail.
+
+## 3. Differences (classified)
+
+| # | Difference | Detail | Classification |
+|---|---|---|---|
+| 1 | House chrome (red frame, square yellow badge at 12.48,0.30, title-box geometry) | Present in img 1, absent/different in img 2 | **INTENTIONAL** (rule a) |
+| 2 | Black bottom capture strip in img 2 | Omitted in img 1 | **INTENTIONAL** (rule c) |
+| 3 | Equations rendered as stacked 2D fractions / large Î£ with limits in img 1 vs inline in img 2 | Same math | **INTENTIONAL** (rule e) |
+| 4 | Title text color: navy (img 1) vs maroon (img 2) | Text identical | **MINOR** (color shade) |
+| 5 | Diagram panel fill: white/light (img 1) vs beige (img 2) | Same geometry | **MINOR** |
+| 6 | Weight-label color: red in img 1 vs blue w-labels + red Net/O in img 2; connector glyphs (tiny square vs small circle after f) | Labels substantively same | **MINOR** |
+| 7 | Bias annotation: img 1 shows two purple "1" circles and no caption; img 2 shows "1" nodes on more layers incl. one red, plus "Node Bias" caption | Bias still indicated in img 1; core diagram intact | **MINOR** (partial annotation omission; readability unaffected) |
+| 8 | Layer captions: img 1 cleaned to "Previous Layer (l)" / "Next Layer (K)"; img 2 has duplicated wording "Previous Layer Layer (I)" / "Next Layer Layer (K)" plus i/j/k letters under arrows | Same meaning; img 1 is a cleanup | **MINOR** |
+| 9 | Previous-layer arrow direction (down in img 1 vs up with "i" in img 2); dotted leader lines styling | Cosmetic | **MINOR** |
+| 10 | Right error bar: img 1 shows clipped horizontal "Error"; img 2 shows vertical "Error Error Error" | Same element | **MINOR** |
+| 11 | Class-box fill (medium green vs pale green), Input/Target tag color (lavender vs pink), dotted top connector only in img 2 | Color shade / minor chrome of tags | **MINOR** |
+| 12 | Possible weight subscript on final inter-layer edges: img 1's small red label appears to read "w_kl" where img 2 clearly reads "w_kj" â legibility-limited; if genuinely different, it is a subscript-only label slip, equations unaffected | Flagged as possibly illegible | **MINOR** (if real) |
+| 13 | Output labels: plain text (img 1) vs gray boxes (img 2) | Same text | **MINOR** |
+
+No BLOCKER or MAJOR content gaps found: topology, equations, notes, class boxes, and layer captions are all present and correct in both.
+
+## 4. Verdict
+
+**FINAL VERDICT: PASS**
+
+The slide-specific content is faithfully reproduced: the 4-layer network diagram (3 nodes/layer, Î£ + f units, bias nodes, red weighted connections with w_ji/w_kj and O/Net annotations, Output 1/2/m), the right-rail Error bar with Class 1/2/m boxes, the "For Layer j" equations (Net_j = Î£_i(w_jiÂ·O_i), sigmoid O_j = 1/(1+e^âNet_j)), the Previous/Current/Next layer captions with "You are here", the note "Layer 'j' is NOT Output Layer", and the error equation E = Â½Î£_j(t_jâO_j)Â² marked "XXX" all match between the two images. The only differences are intentional house-chrome differences, the omitted video artifact (black strip), the intentional 2D equation upgrade, and minor color/spacing/label-cleanup gaps (title hue, panel beige vs white, weight-label color, bias-caption count, tag colors) â none of which affect readability or the slide's instructional purpose.
+
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully

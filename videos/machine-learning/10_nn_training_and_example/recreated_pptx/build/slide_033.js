@@ -1,15 +1,15 @@
 // slide_033.js — "Initialized weights" / "Updated weights (after iteration # 10)" (badge 33)
-// Two stacked red-bordered white panels, each a 2-3-2 feed-forward net with target block.
-// Geometry measured from unique_slides/slide_033.jpg (960x540 px, PX=13.33/960 in/px).
-// House chrome: gray bg, red frame 0.15in inset, yellow badge. No centered title (none in original).
+// Adapted from certified sibling slide_032.js (identical two-panel geometry, x101..824px).
+// Weight labels: top panel from banked audit _pool/audit2/slide_033.txt; bottom panel
+// best-effort from parse/adjudication reads (single-read values). eta=5 verbatim both panels.
 const pptxgen = require("pptxgenjs");
 const VID = "/home/codespace/ai_llm_slides/videos/machine-learning/10_nn_training_and_example";
 const PX = 13.33 / 960;
 const px = v => +(v * PX).toFixed(4);
 const FONT = "Arial";
-const BLACK = "000000", BLUE = "0000FF", RED = "C00000", GREEN = "008000";
-const MAGENTA = "A000A0", YELLOW = "FFFF99", PEACH = "FBD08A", LBLUE = "9DC3E6";
-const CREAM = "FFFDE7", GRAYCONN = "BFBFBF", NAVY = "000080";
+const BLACK = "000000", BLUE = "0000FF", RED = "C00000";
+const GREEN = "00A651", MAGENTA = "A000A0", YELLOW = "FFFF99";
+const PEACH = "F8CBAD", LIGHTBLUE = "9DC3E6";
 
 const pres = new pptxgen();
 pres.layout = "LAYOUT_WIDE";
@@ -20,7 +20,7 @@ s.background = { color: "E8E8E8" };
 // ========== HOUSE CHROME ==========
 s.addShape(pres.shapes.RECTANGLE, {
   x: 0.15, y: 0.15, w: W - 0.3, h: H - 0.3,
-  fill: { type: "none" }, line: { color: RED, width: 1.5 },
+  fill: { type: "none" }, line: { color: "C00000", width: 1.5 },
 });
 s.addShape(pres.shapes.OVAL, {
   x: 12.48, y: 0.30, w: 0.5, h: 0.5,
@@ -31,11 +31,10 @@ s.addText("33", {
   fontSize: 18, bold: true, color: "333333", fontFace: FONT, margin: 0,
 });
 
-// ========== HELPERS ==========
-function txt(str, x, y, w, h, size, color, bold, align, italic) {
+function txt(str, x, y, w, h, size, color, bold, align, italic, underline) {
   s.addText(str, {
-    x: px(x), y: px(y), w: px(w), h: px(h), align: align || "left",
-    valign: "middle", fontSize: size, bold: !!bold, italic: !!italic,
+    x, y, w, h, align: align || "left", valign: "middle",
+    fontSize: size, bold: !!bold, italic: !!italic, underline: underline ? true : false,
     color, fontFace: FONT, margin: 0,
   });
 }
@@ -45,20 +44,106 @@ function node(cx, cy, r, fill, stroke) {
     fill: { color: fill }, line: { color: stroke, width: 1 },
   });
 }
+function dot(cx, cy, fill) {
+  s.addShape(pres.shapes.OVAL, {
+    x: px(cx - 2), y: px(cy - 2), w: px(4), h: px(4),
+    fill: { color: fill }, line: { color: fill, width: 0.5 },
+  });
+}
 function conn(x1, y1, x2, y2, color) {
   s.addShape(pres.shapes.LINE, {
     x: px(x1), y: px(y1), w: px(x2 - x1), h: px(y2 - y1),
     line: { color, width: 0.75 },
   });
 }
-// near-straight bracket stroke: two segments with slight mid bulge, 3px ink width
-function bracket(cx, yTop, yBot) {
-  conn(cx + 2.5, yTop, cx - 0.5, (yTop + yBot) / 2, BLACK);
-  conn(cx - 0.5, (yTop + yBot) / 2, cx + 2.5, yBot, BLACK);
+function wlab(x1, y1, x2, y2, t, color, ox, oy) {
+  const cx = (x1 + x2) / 2 + (ox || 0), cy = (y1 + y2) / 2 + (oy || 0);
+  txt(t, px(cx - 22), px(cy - 7), px(44), px(14), 7, color, true, "center");
 }
-function vrule(x, yTop, yBot) {
-  conn(x, yTop, x, yBot, BLACK);
+// panel in source-px coords: x0..x1, yTop of panel border
+function drawPanel(yTop, title, g, m, outVec, outDotX) {
+  s.addShape(pres.shapes.RECTANGLE, {
+    x: px(101), y: px(yTop), w: px(824 - 101), h: px(196),
+    fill: { type: "none" }, line: { color: RED, width: 1.25 },
+  });
+  txt(title, px(110), px(yTop + 4), px(340), px(15), 12, RED, true, "left", true);
+
+  txt("Input", px(115), px(yTop + 16), px(80), px(14), 10, BLUE, true, "left", true, true);
+  txt("[", px(120), px(yTop + 32), px(10), px(56), 16, BLACK, true, "center");
+  txt("1", px(132), px(yTop + 38), px(13), px(16), 10, BLACK, true, "center");
+  txt("5", px(132), px(yTop + 76), px(13), px(16), 10, BLACK, true, "center");
+  txt("]", px(146), px(yTop + 32), px(10), px(56), 16, BLACK, true, "center");
+  txt("x1", px(120), px(yTop + 30), px(14), px(12), 8, BLUE, true, "center", true);
+  txt("x2", px(120), px(yTop + 68), px(14), px(12), 8, BLUE, true, "center", true);
+
+  node(190, yTop + 55, 6, BLACK, BLACK);
+  node(190, yTop + 119, 6, BLACK, BLACK);
+  dot(197, yTop + 55, RED); dot(197, yTop + 119, RED);
+  node(185, yTop + 165, 7, LIGHTBLUE, BLUE);
+  txt("1", px(178), px(yTop + 158), px(14), px(14), 8, BLACK, true, "center");
+  txt("Bias", px(148), px(yTop + 160), px(32), px(12), 8, BLUE, true, "center", true);
+
+  const hy = [yTop + 35, yTop + 92, yTop + 148];
+  for (let i = 0; i < 3; i++) {
+    node(344, hy[i], 11, YELLOW, "7F7F7F");
+    txt(String(3 + i), px(334), px(hy[i] - 7), px(20), px(14), 10, BLUE, true, "center");
+    txt("O" + (3 + i), px(360), px(hy[i] - 22), px(24), px(12), 8, BLUE, true, "center");
+    dot(333, hy[i], RED);
+  }
+  txt("Bias", px(300), px(yTop + 160), px(32), px(12), 8, BLUE, true, "center", true);
+  node(344, yTop + 165, 7, LIGHTBLUE, BLUE);
+  txt("1", px(337), px(yTop + 158), px(14), px(14), 8, BLACK, true, "center");
+  dot(336, yTop + 165, RED);
+
+  const oy = [yTop + 67, yTop + 127];
+  for (let i = 0; i < 2; i++) {
+    node(551, oy[i], 10, PEACH, "7F7F7F");
+    txt(String(6 + i), px(541), px(oy[i] - 7), px(20), px(14), 10, BLUE, true, "center");
+  }
+  txt("O6", px(567), px(oy[0] - 22), px(24), px(12), 8, BLUE, true, "center");
+  txt("O7", px(567), px(oy[1] - 22), px(24), px(12), 8, BLUE, true, "center");
+  txt("Output", px(560), px(yTop + 5), px(60), px(14), 10, BLUE, true, "center", true, true);
+  txt(String(outVec[0]), px(outDotX - 10), px(yTop + 55), px(34), px(16), 11, BLACK, true, "left");
+  txt(String(outVec[1]), px(outDotX - 10), px(yTop + 110), px(34), px(16), 11, BLACK, true, "left");
+  s.addShape(pres.shapes.LEFT_RIGHT_ARROW, {
+    x: px(660), y: px(yTop + 86), w: px(34), h: px(14),
+    fill: { color: RED }, line: { color: RED, width: 0.5 },
+  });
+  txt("Target", px(700), px(yTop + 5), px(60), px(14), 10, BLACK, true, "center", true, true);
+  txt("0", px(716), px(yTop + 58), px(16), px(16), 11, BLACK, true, "center");
+  txt("1", px(716), px(yTop + 112), px(16), px(16), 11, BLACK, true, "center");
+  txt("t6", px(700), px(yTop + 62), px(20), px(12), 8, BLACK, true, "center");
+  txt("t7", px(700), px(yTop + 116), px(20), px(12), 8, BLACK, true, "center");
+  txt("η = 5", px(755), px(yTop + 165), px(60), px(16), 11, RED, true, "center");
+
+  const ix = [190, 190, 185], iy = [yTop + 55, yTop + 119, yTop + 165];
+  const gsrc = ["x1", "x2", "b"];
+  for (let a = 0; a < 3; a++) {
+    for (let i = 0; i < 3; i++) {
+      conn(ix[a] + 7, iy[a], 344 - 11, hy[i], "A6A6A6");
+      wlab(ix[a] + 7, iy[a], 344 - 11, hy[i], g[a][i], GREEN, gsrc[a] === "b" ? -22 : 0,
+           gsrc[a] === "b" ? -6 : 0);
+    }
+  }
+  for (let a = 0; a < 4; a++) {
+    const sy = a < 3 ? hy[a] : yTop + 165;
+    for (let i = 0; i < 2; i++) {
+      conn(344 + 11, sy, 551 - 10, oy[i], "A6A6A6");
+      wlab(344 + 11, sy, 551 - 10, oy[i], m[a][i], MAGENTA, 0, 0);
+    }
+  }
 }
-function wlab(cx, cy, t, color, size) {
-  txt(t, cx - 20, cy - 7, 40, 14, size || 7, color, true, "center", true);
-}
+
+// TOP PANEL: Initialized weights — values from banked audit (inputs 1/5; 0.2/0.4 rows, bias 0.1/0.6/0.1)
+const gTop = [["0.2", "0.2", "0.2"], ["0.4", "0.4", "0.4"], ["0.1", "0.6", "0.1"]];
+const mTop = [["0.3", "0.3"], ["0.4", "0.4"], ["0.5", "0.5"], ["0.2", "0.2"]];
+drawPanel(89, "Initialized weights", gTop, mTop, ["0.791", "0.791"], 600);
+
+// BOTTOM PANEL: Updated weights (after iteration # 10) — single-read values, reading order
+const gBot = [["0.155", "-0.999", "0.305"], ["0.675", "0.835", "0.93"], ["0.115", "0.625", "1.05"]];
+const mBot = [["-1.2", "0.943"], ["0.77", "0.943"], ["0.575", "0.943"], ["0.105", "0.105"]];
+drawPanel(330, "Updated weights (after iteration # 10)", gBot, mBot, ["0.064", "0.939"], 600);
+
+pres.writeFile({ fileName: VID + "/recreated_pptx/slide_033_recreated.pptx" })
+  .then(() => console.log("wrote slide_033_recreated.pptx"))
+  .catch(err => { console.error(err); process.exit(1); });

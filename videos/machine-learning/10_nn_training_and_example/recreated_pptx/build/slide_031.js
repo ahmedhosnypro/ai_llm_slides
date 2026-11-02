@@ -109,7 +109,7 @@ eq("s1", px(468), px(238));
 eq("s2", px(468), px(260));
 eq("s3", px(468), px(284));
 eq("s4", px(468), px(308));
-eq("s5", px(468), px(340));
+eq("s5", px(468), px(360));
 
 // ========== E) BOTTOM ΔW / W COLUMNS (9 rows) + blue arrows ==========
 const ROW_Y = [338, 362, 386, 410, 436, 460, 484, 508, 532]; // px baselines

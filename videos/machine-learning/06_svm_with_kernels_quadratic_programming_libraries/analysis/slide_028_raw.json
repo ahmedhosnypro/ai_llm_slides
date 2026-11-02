@@ -1,40 +1,58 @@
 {
   "slide_number": 28,
-  "source_image": "slide_028.jpg",
-  "analysis_type": "vision",
-  "model": "images",
-  "round": 1,
-  "attempt": 2,
-  "winner": "images",
-  "layout_map": "1. Top-right corner: slide-number badge \"28\" inside a yellow circle, sitting on the light-gray stage background.\n2. Top main panel: cream-filled rectangle with a blue border containing the general kernel identity [aᵀb+1]² = ... = φ(a)ᵀφ(b) plus the Where: φ(x) ≡ definition column.\n3. Bottom main panel: white-filled rectangle with a blue border containing the concrete numeric proof (vectors a and b, the φ(a)ᵀφ(b) expansion, the summed result = 144, and the mirrored [aᵀb+1]² = 12² = 144 with a red arrow).\n4. Bottom edge: a thin black horizontal strip spanning the width (likely capture/wrapper chrome; ignored per rules).",
-  "first_glance_test": "A brand-new user sees a static mathematics lecture slide demonstrating polynomial-kernel expansion. No interactive actions are offered on screen. The screen appears to offer only one \"action\": read the proof. Given the injected VIEW purpose (SVM/kernels/QP lecture frame), the focal point should be the final equality proving the kernel trick, and it does win the eye via the bottom-left 144 result and the trailing red arrow. Nothing is confusing or demands study beyond normal parsing of math notation.",
-  "strengths": [
-    "Clear two-panel theory→example progression: top panel states the general identity, bottom panel proves it numerically (bottom panel, full width).",
-    "Color coding is consistent and purposeful: blue for vectors, red for operators/results, black for body math (both panels, throughout).",
-    "Large, legible math type; no cramped notation or microtext (both panels, all equations)."
-  ],
-  "defects": [],
-  "top_3": [
-    "none — section 4 contains no defects; nothing to rank."
-  ],
-  "structural_proposal": "no changes — the two-panel theory/example stack is the correct structure for a lecture frame; no reorganisation is needed or visible.\n[out-of-scope] no new features or panes are warranted; the screen already fulfills its single purpose.",
-  "verdict_scores": {
-    "theme_dark_mode": 8,
-    "typography": 9,
-    "spacing": 9,
-    "alignment": 9,
-    "crowding_density": 9,
-    "hierarchy": 8,
-    "composition": 8,
-    "completeness": 10,
-    "continuity_consistency": 8,
-    "affordance_states": 10,
-    "first_glance_clarity": 8,
-    "overall": 8
+  "source_image": "unique_slides/slide_028.jpg",
+  "slide_title": "none (no printed title; slide-number header only)",
+  "verbatim_text": {
+    "header": ["28"],
+    "labels": ["Where:"],
+    "equations": [
+      "[a^T b + 1]^2 = (a1^2  a2^2  \u221a2 a1 a2  \u221a2 a1  \u221a2 a2  1) (b1^2; b2^2; \u221a2 b1 b2; \u221a2 b1; \u221a2 b2; 1) = \u03c6(a)^T \u03c6(b)",
+      "\u03c6(x) \u2261 (x1; x2; \u221a2 x1 x2; \u221a2 x1; \u221a2 x2; 1) \u21d2 (x1^2; x2^2; \u221a2 x1 x2; \u221a2 x1; \u221a2 x2; 1)",
+      "a = (1; 2)   b = (3; 4)",
+      "\u03c6(a)^T \u03c6(b) = (1^2  2^2  \u221a2 1*2  \u221a2  2\u221a2  1) (3^2; 4^2; \u221a2 3*4; 3\u221a2; 4\u221a2; 1) = (1 4 2\u221a2 \u221a2 2\u221a2 1) (9; 16; 12\u221a2; 3\u221a2; 4\u221a2; 1)",
+      "= 9+64+48+6+16+1 = 144 \u21e6",
+      "[a^T b + 1]^2 = (1*3+2*4+1)^2 = 12^2 = 144 \u21e6"
+    ]
   },
-  "uncertainties": [
-    "The black strip along the bottom edge is treated as capture/wrapper chrome and ignored; if it is instead part of the app UI, it is an empty dead region that would need review.",
-    "Exact mathematical correctness of the displayed arithmetic is not audited (fixture data rule); only presentation is evaluated."
+  "layout": {
+    "arrangement": "Outer red frame with pale interior; badge '28' top-right. Upper blue-bordered panel: general kernel identity with tan-highlighted leading term, red row vector, blue column vector, 'Where' definition with red \u21d2 and target column. Lower blue-bordered panel: numeric example with a/b definitions, \u03c6(a)^T\u03c6(b) product, sum line = 144 \u21e6, and tan-highlighted [a^T b + 1]^2 result line.",
+    "regions": [
+      {"name": "outer frame", "box": [0.059,0.091,0.940,0.948], "stroke": "#C00000", "fill": "#FDF6F6"},
+      {"name": "badge", "box": [0.887,0.109,0.925,0.178], "fill": "#FFFF66"},
+      {"name": "upper panel", "box": [0.063,0.139,0.871,0.500], "stroke": "#2F2FD3", "fill": "#F8F8E8"},
+      {"name": "tan highlight (upper)", "box": [0.073,0.176,0.154,0.224], "fill": "#F2D7A0"},
+      {"name": "red row vector", "box": [0.168,0.150,0.435,0.205]},
+      {"name": "blue column vector", "box": [0.443,0.139,0.505,0.462]},
+      {"name": "Where definition", "box": [0.590,0.235,0.866,0.462], "arrow": [0.812,0.255,0.836,0.286]},
+      {"name": "lower panel", "box": [0.063,0.519,0.924,0.930], "stroke": "#2F2FD3", "fill": "#F8F8E8"},
+      {"name": "a/b definitions", "box": [0.073,0.535,0.250,0.590]},
+      {"name": "lower product", "box": [0.073,0.600,0.900,0.835]},
+      {"name": "sum line", "box": [0.535,0.845,0.765,0.885]},
+      {"name": "tan highlight (lower)", "box": [0.073,0.865,0.160,0.910], "fill": "#F2D7A0"},
+      {"name": "result line", "box": [0.165,0.865,0.430,0.910]}
+    ]
+  },
+  "visual_elements": [
+    {"type": "rectangle", "role": "outer frame", "box": [0.059,0.091,0.940,0.948], "stroke": "#C00000", "fill": "#FDF6F6"},
+    {"type": "circle", "role": "badge", "box": [0.887,0.109,0.925,0.178], "fill": "#FFFF66", "outline": "#D0D000[?]", "text": "28"},
+    {"type": "rectangle", "role": "upper and lower panels", "boxes": [[0.063,0.139,0.871,0.500],[0.063,0.519,0.924,0.930]], "stroke": "#2F2FD3", "fill": "#F8F8E8"},
+    {"type": "rounded-box", "role": "tan highlights on [a^T b + 1]^2", "boxes": [[0.073,0.176,0.154,0.224],[0.073,0.865,0.160,0.910]], "fill": "#F2D7A0", "stroke": "#8A5A2B"},
+    {"type": "arrow-glyph", "role": "\u21d2 right arrow in definition", "box": [0.812,0.255,0.836,0.286], "color": "#FF0000", "direction": "right"},
+    {"type": "arrow-glyph", "role": "\u21e6 left arrows after the 144 results", "boxes": [[0.725,0.850,0.760,0.880],[0.395,0.870,0.430,0.900]], "color": "#FF0000", "direction": "left"},
+    {"type": "picture", "role": "black capture cursor artifact", "box": [0.296,0.765,0.315,0.795], "color": "#000000"}
   ],
-  "vocabulary_proposals": []
+  "imagery": "none",
+  "colors": {
+    "page": "#FFFFFF", "frame_interior": "#FDF6F6", "frame": "#C00000",
+    "panel_fill": "#F8F8E8", "panel_border": "#2F2FD3", "highlight_fill": "#F2D7A0", "highlight_border": "#8A5A2B",
+    "red_accent": "#FF0000", "blue_accent": "#0000CD", "black_text": "#000000",
+    "badge_fill": "#FFFF66", "badge_ink": "#000000"
+  },
+  "typography_notes": "Math variables italic serif/math-style ~18 pt; 'Where:' and results sans black; boxed kernel expressions bold-italic blue for a/b; badge '28' sans ~14 pt centered.",
+  "recreation_brief": [
+    "Draw outer red frame [0.059,0.091,0.940,0.948] on #FDF6F6 interior",
+    "Yellow badge '28' top-right",
+    "Upper blue panel: tan-highlighted [a^T b + 1]^2, red 6-term row vector, blue 6-term column, '= \u03c6(a)^T \u03c6(b)', Where definition with red \u21d2 and 6-row target column",
+    "Lower blue panel: a=(1;2), b=(3;4), numeric \u03c6(a)^T\u03c6(b) chain, '= 9+64+48+6+16+1 = 144 \u21e6', tan-highlighted [a^T b + 1]^2 = ... = 144 \u21e6"
+  ]
 }

@@ -1,0 +1,372 @@
+{
+  "slide_title": "Radial Basis Function (RBF) Kernel",
+  "subtitle_or_header": "30",
+  "verbatim_text": {
+    "header": [
+      "30"
+    ],
+    "title": "Radial Basis Function (RBF) Kernel",
+    "labels": [
+      "\u03c6(a)^T",
+      "\u03c6(b)",
+      "RBF Kernel",
+      "e^(-b^2/2)"
+    ],
+    "equations": [
+      "e^(-1/2(a-b)^2) = e^(-1/2(a^2+b^2-2ab)) = e^(-a^2/2) e^(-b^2/2) e^(ab) =",
+      "e^(-a^2/2) ( 1   a/\u221a1!   a^2/\u221a2!   a^3/\u221a3!   a^4/\u221a4!   ....   ...\u221e )",
+      "( 1 ; b/\u221a1! ; b^2/\u221a2! ; b^3/\u221a3! ; b^4/\u221a4! ; .... ; ...\u221e )",
+      "e^(-\u03b3(a-b)^2)"
+    ],
+    "bullets": [
+      "Radial Basis Function (RBF) Kernel",
+      "e^(-1/2(a-b)^2) = e^(-1/2(a^2+b^2-2ab)) = e^(-a^2/2) e^(-b^2/2) e^(ab) =",
+      "e^(-a^2/2) ( 1   a/\u221a1!   a^2/\u221a2!   a^3/\u221a3!   a^4/\u221a4!   ....   ...\u221e )",
+      "( 1 ; b/\u221a1! ; b^2/\u221a2! ; b^3/\u221a3! ; b^4/\u221a4! ; .... ; ...\u221e )",
+      "\u03c6(a)^T",
+      "\u03c6(b)",
+      "e^(-b^2/2)",
+      "RBF Kernel",
+      "e^(-\u03b3(a-b)^2)"
+    ]
+  },
+  "layout": {
+    "arrangement": "Top band: centered red title in box [0.305,0.095,0.79,0.175]; yellow circular badge '30' at [0.883,0.088,0.937,0.168]; dark-red outer frame at [0.058,0.082,0.948,0.953]. Main blue-bordered white panel at [0.105,0.253,0.668,0.893] has exact width 0.563, i.e. 56.3% of slide width. Inside it: peach highlight at [0.122,0.283,0.232,0.353] over the leading term of the derivation line at [0.118,0.283,0.662,0.356]; pale-blue row-vector box at [0.12,0.378,0.487,0.468]; green \u03c6(a)^T chip at [0.252,0.505,0.332,0.575]; cream column-vector box at [0.5,0.345,0.632,0.865]; yellow \u03c6(b) chip at [0.412,0.613,0.487,0.688]; blue e^(-b^2/2) factor at [0.508,0.63,0.563,0.69]. Right stack: red bold 'RBF Kernel' at [0.718,0.362,0.838,0.398] above blue-bordered white kernel equation box at [0.714,0.432,0.866,0.532].",
+    "regions": [
+      {
+        "name": "outer frame",
+        "box": [
+          0.058,
+          0.082,
+          0.948,
+          0.953
+        ],
+        "stroke": "#9C1C1C"
+      },
+      {
+        "name": "title",
+        "box": [
+          0.305,
+          0.095,
+          0.79,
+          0.175
+        ]
+      },
+      {
+        "name": "badge",
+        "box": [
+          0.883,
+          0.088,
+          0.937,
+          0.168
+        ],
+        "fill": "#FFE14D"
+      },
+      {
+        "name": "main math panel",
+        "box": [
+          0.105,
+          0.253,
+          0.668,
+          0.893
+        ],
+        "stroke": "#2A2AE8",
+        "fill": "#FFFFFF"
+      },
+      {
+        "name": "peach highlight (derivation line)",
+        "box": [
+          0.122,
+          0.283,
+          0.232,
+          0.353
+        ],
+        "fill": "#FCD7B0"
+      },
+      {
+        "name": "derivation line",
+        "box": [
+          0.118,
+          0.283,
+          0.662,
+          0.356
+        ]
+      },
+      {
+        "name": "row-vector box",
+        "box": [
+          0.12,
+          0.378,
+          0.487,
+          0.468
+        ],
+        "fill": "#E9F0FA"
+      },
+      {
+        "name": "\u03c6(a)^T chip",
+        "box": [
+          0.252,
+          0.505,
+          0.332,
+          0.575
+        ],
+        "fill": "#E6F2CF"
+      },
+      {
+        "name": "column-vector box",
+        "box": [
+          0.5,
+          0.345,
+          0.632,
+          0.865
+        ],
+        "fill": "#FFFBDD"
+      },
+      {
+        "name": "\u03c6(b) chip",
+        "box": [
+          0.412,
+          0.613,
+          0.487,
+          0.688
+        ],
+        "fill": "#FCF6D5"
+      },
+      {
+        "name": "e^(-b^2/2) factor",
+        "box": [
+          0.508,
+          0.63,
+          0.563,
+          0.69
+        ],
+        "color": "#2A2AE8"
+      },
+      {
+        "name": "RBF Kernel label",
+        "box": [
+          0.718,
+          0.362,
+          0.838,
+          0.398
+        ]
+      },
+      {
+        "name": "kernel equation box",
+        "box": [
+          0.714,
+          0.432,
+          0.866,
+          0.532
+        ],
+        "stroke": "#2A2AE8",
+        "fill": "#FFFFFF"
+      }
+    ]
+  },
+  "visual_elements": [
+    {
+      "type": "rectangle",
+      "role": "outer frame",
+      "box": [
+        0.058,
+        0.082,
+        0.948,
+        0.953
+      ],
+      "stroke": "#9C1C1C"
+    },
+    {
+      "type": "circle",
+      "role": "badge",
+      "box": [
+        0.883,
+        0.088,
+        0.937,
+        0.168
+      ],
+      "fill": "#FFE14D",
+      "text": "30",
+      "text_color": "#1A1A1A"
+    },
+    {
+      "type": "text",
+      "role": "title",
+      "box": [
+        0.305,
+        0.095,
+        0.79,
+        0.175
+      ],
+      "text": "Radial Basis Function (RBF) Kernel",
+      "text_color": "#CC0000"
+    },
+    {
+      "type": "rectangle",
+      "role": "main math panel",
+      "box": [
+        0.105,
+        0.253,
+        0.668,
+        0.893
+      ],
+      "stroke": "#2A2AE8",
+      "fill": "#FFFFFF"
+    },
+    {
+      "type": "rounded-box",
+      "role": "peach highlight on first exponential term",
+      "box": [
+        0.122,
+        0.283,
+        0.232,
+        0.353
+      ],
+      "fill": "#FCD7B0"
+    },
+    {
+      "type": "text",
+      "role": "derivation line",
+      "box": [
+        0.118,
+        0.283,
+        0.662,
+        0.356
+      ],
+      "text": "e^(-1/2(a-b)^2) = e^(-1/2(a^2+b^2-2ab)) = e^(-a^2/2) e^(-b^2/2) e^(ab) =",
+      "text_color": "#000000"
+    },
+    {
+      "type": "rounded-box",
+      "role": "row-vector container",
+      "box": [
+        0.12,
+        0.378,
+        0.487,
+        0.468
+      ],
+      "fill": "#E9F0FA",
+      "text": "e^(-a^2/2) ( 1   a/\u221a1!   a^2/\u221a2!   a^3/\u221a3!   a^4/\u221a4!   ....   ...\u221e )",
+      "text_color": "#000000"
+    },
+    {
+      "type": "rounded-box",
+      "role": "\u03c6(a)^T chip",
+      "box": [
+        0.252,
+        0.505,
+        0.332,
+        0.575
+      ],
+      "fill": "#E6F2CF",
+      "text": "\u03c6(a)^T",
+      "text_color": "#C00000"
+    },
+    {
+      "type": "rounded-box",
+      "role": "column-vector container",
+      "box": [
+        0.5,
+        0.345,
+        0.632,
+        0.865
+      ],
+      "fill": "#FFFBDD",
+      "text": "( 1 ; b/\u221a1! ; b^2/\u221a2! ; b^3/\u221a3! ; b^4/\u221a4! ; .... ; ...\u221e )",
+      "text_color": "#000000"
+    },
+    {
+      "type": "rounded-box",
+      "role": "\u03c6(b) chip",
+      "box": [
+        0.412,
+        0.613,
+        0.487,
+        0.688
+      ],
+      "fill": "#FCF6D5",
+      "text": "\u03c6(b)",
+      "text_color": "#C00000"
+    },
+    {
+      "type": "text",
+      "role": "e^(-b^2/2) factor",
+      "box": [
+        0.508,
+        0.63,
+        0.563,
+        0.69
+      ],
+      "text": "e^(-b^2/2)",
+      "text_color": "#2A2AE8"
+    },
+    {
+      "type": "text",
+      "role": "RBF Kernel label",
+      "box": [
+        0.718,
+        0.362,
+        0.838,
+        0.398
+      ],
+      "text": "RBF Kernel",
+      "text_color": "#CC0000"
+    },
+    {
+      "type": "rectangle",
+      "role": "RBF kernel equation box",
+      "box": [
+        0.714,
+        0.432,
+        0.866,
+        0.532
+      ],
+      "stroke": "#2A2AE8",
+      "fill": "#FFFFFF",
+      "text": "e^(-\u03b3(a-b)^2)",
+      "text_color": "#000000"
+    }
+  ],
+  "imagery": "none",
+  "colors": {
+    "background": "#FFFFFF",
+    "frame": "#9C1C1C",
+    "title": "#CC0000",
+    "badge_fill": "#FFE14D",
+    "badge_ink": "#1A1A1A",
+    "panel_border": "#2A2AE8",
+    "peach": "#FCD7B0",
+    "row_box": "#E9F0FA",
+    "phi_a_chip": "#E6F2CF",
+    "col_box": "#FFFBDD",
+    "phi_b_chip": "#FCF6D5",
+    "equation_ink": "#000000",
+    "scalar_factor": "#2A2AE8",
+    "phi_label": "#C00000",
+    "rbf_label": "#CC0000"
+  },
+  "typography_notes": "Title and 'RBF Kernel' are bold sans-serif at 28\u201330 pt and red: title #CC0000, RBF label #CC0000. Badge is small sans-serif dark ink #1A1A1A on yellow #FFE14D. Equations are math serif italic at 18\u201320 pt, black #000000 unless marked as scalar factors. \u03c6(a)^T and \u03c6(b) are italic serif red #C00000 with superscript T on \u03c6(a)^T. Scalar factors are blue #2A2AE8.",
+  "animation_state": "No animation state is specified in the source JSON.",
+  "recreation_brief": "1. Set the slide background to white #FFFFFF.\n2. Add a rectangle outer frame at box [0.058,0.082,0.948,0.953] with stroke #9C1C1C and no fill.\n3. Add title text \"Radial Basis Function (RBF) Kernel\" centered in box [0.305,0.095,0.79,0.175], bold sans-serif 28\u201330 pt, color #CC0000.\n4. Add a circle badge at box [0.883,0.088,0.937,0.168], fill #FFE14D, with text \"30\" in small sans-serif, ink #1A1A1A.\n5. Add a rectangle main math panel at box [0.105,0.253,0.668,0.893], fill #FFFFFF, stroke #2A2AE8.\n6. Add a rounded-box peach highlight at box [0.122,0.283,0.232,0.353], fill #FCD7B0, behind the leading term of the derivation line.\n7. Add derivation line text in box [0.118,0.283,0.662,0.356]: \"e^(-1/2(a-b)^2) = e^(-1/2(a^2+b^2-2ab)) = e^(-a^2/2) e^(-b^2/2) e^(ab) =\" in math serif italic 18\u201320 pt, black #000000; render scalar factors e^(-a^2/2), e^(-b^2/2), and e^(ab) in blue #2A2AE8; place leading term e^(-1/2(a-b)^2) over the peach highlight.\n8. Add a rounded-box row-vector container at box [0.12,0.378,0.487,0.468], fill #E9F0FA, containing text \"e^(-a^2/2) ( 1   a/\u221a1!   a^2/\u221a2!   a^3/\u221a3!   a^4/\u221a4!   ....   ...\u221e )\" in black #000000 math serif italic 18\u201320 pt.\n9. Add a rounded-box \u03c6(a)^T chip at box [0.252,0.505,0.332,0.575], fill #E6F2CF, with text \"\u03c6(a)^T\" in italic serif red #C00000 and superscript T.\n10. Add a rounded-box column-vector container at box [0.5,0.345,0.632,0.865], fill #FFFBDD, containing text \"( 1 ; b/\u221a1! ; b^2/\u221a2! ; b^3/\u221a3! ; b^4/\u221a4! ; .... ; ...\u221e )\" in black #000000 math serif italic 18\u201320 pt.\n11. Add a rounded-box \u03c6(b) chip at box [0.412,0.613,0.487,0.688], fill #FCF6D5, with text \"\u03c6(b)\" in italic serif red #C00000.\n12. Add text \"e^(-b^2/2)\" in box [0.508,0.63,0.563,0.69], color #2A2AE8, math serif italic 18\u201320 pt, inside the lower part of the column-vector container.\n13. Add text \"RBF Kernel\" in box [0.718,0.362,0.838,0.398], bold sans-serif 28\u201330 pt, color #CC0000.\n14. Add a rectangle kernel equation box at box [0.714,0.432,0.866,0.532], fill #FFFFFF, stroke #2A2AE8, containing text \"e^(-\u03b3(a-b)^2)\" in black #000000 math serif italic 18\u201320 pt.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Populated required verbatim_text.bullets from the verbatim title, labels, and equations because the source had no bullets field.",
+      "Added visual_elements entries for the title, derivation line, row-vector text, column-vector text, e^(-b^2/2) factor, RBF Kernel label, and kernel equation text so visual_elements matches layout.regions and verbatim_text.",
+      "Replaced the vague main-panel width '~55%' with the exact computed width 0.563, i.e. 56.3% of slide width, and removed the unsupported 'vertically centered' claim for the right-side stack.",
+      "Set subtitle_or_header to '30' from the verbatim header.",
+      "Rewrote recreation_brief as a 14-step numbered placement checklist with exact text, boxes, colors, shapes, and typography."
+    ],
+    "uncertain_items": [
+      "No [?] markers were present in the source JSON.",
+      "Exact font point sizes are not specified; typography_notes gives ranges only: title/RBF Kernel 28\u201330 pt and equations 18\u201320 pt.",
+      "Animation state is not specified in the source JSON.",
+      "Exact intra-equation spacing is preserved only as the spaces and semicolons present in the verbatim equation strings."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "validated_by": "validate_slides",
+    "validation_elapsed_s": 435.2
+  }
+}

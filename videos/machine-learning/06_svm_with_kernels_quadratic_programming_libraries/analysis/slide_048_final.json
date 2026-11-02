@@ -1,0 +1,118 @@
+{
+  "slide_title": "none",
+  "subtitle_or_header": "none",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "48",
+      "0 5 10 15 20 25 30 35 (y-axis ticks, bottom to top)",
+      "0 10 20 30 40 (x-axis ticks, left to right)"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Figure-only slide. White scatter plot with red border centered; yellow badge '48' top-right; three point classes: red outer annulus ring, blue left cluster, black center-right cluster. No title, legend, or equations.",
+    "regions": [
+      {
+        "name": "plot",
+        "position": "[0.231, 0.107, 0.769, 0.902]",
+        "content": "White plot canvas with red #FF0000 border; y ticks left, x ticks bottom"
+      },
+      {
+        "name": "badge",
+        "position": "[0.895, 0.037, 0.949, 0.093]",
+        "content": "Yellow circle '48'"
+      }
+    ]
+  },
+  "visual_elements": [
+    {
+      "type": "box",
+      "description": "Plot border rectangle, stroke #FF0000 ~2px, fill #FFFFFF",
+      "position": "[0.231, 0.107, 0.769, 0.902]",
+      "colors": [
+        "#FF0000",
+        "#FFFFFF"
+      ]
+    },
+    {
+      "type": "badge",
+      "description": "Yellow circle fill #FFFF00, black text '48'",
+      "position": "[0.895, 0.037, 0.949, 0.093]",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ]
+    },
+    {
+      "type": "chart",
+      "description": "2D scatter, no legend, no category names; x ticks 0,10,20,30,40; y ticks 0,5,...,35; faint gray gridlines; readable data values are axis ticks only",
+      "position": "[0.231, 0.107, 0.769, 0.902]",
+      "colors": [
+        "#FFFFFF"
+      ]
+    },
+    {
+      "type": "curve",
+      "description": "Red series #FF0000: ~85 points forming a large outer ring/annulus around center ~(25,20), spanning data x~15-35, y~5-31",
+      "position": "within plot",
+      "colors": [
+        "#FF0000"
+      ]
+    },
+    {
+      "type": "curve",
+      "description": "Blue series #0000FF: ~30 points clustered left, data x~4-16, y~10-22",
+      "position": "within plot",
+      "colors": [
+        "#0000FF"
+      ]
+    },
+    {
+      "type": "curve",
+      "description": "Black series #000000: ~50 points clustered center-right, data x~22-31, y~11-17",
+      "position": "within plot",
+      "colors": [
+        "#000000"
+      ]
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "slide_background": "#F5F5F5",
+    "plot_background": "#FFFFFF",
+    "plot_frame": "#FF0000",
+    "badge_fill": "#FFFF00",
+    "text": "#000000",
+    "series": [
+      "#FF0000",
+      "#0000FF",
+      "#000000"
+    ]
+  },
+  "typography_notes": "Sans-serif throughout; no title. Axis tick labels ~8-9 pt black; badge '48' bold ~14-16 pt black centered in yellow circle.",
+  "animation_state": "static",
+  "recreation_brief": "1. Set slide background to #F5F5F5. 2. Draw plot frame rectangle at [0.231, 0.107, 0.769, 0.902] with white #FFFFFF fill and red #FF0000 border approximately 2px thick. 3. Add faint gray gridlines inside the plot at x tick positions 0,10,20,30,40 and y tick positions 0,5,10,15,20,25,30,35. 4. Place y-axis tick labels '0', '5', '10', '15', '20', '25', '30', '35' to the left of the plot in black sans-serif approximately 8-9 pt. 5. Place x-axis tick labels '0', '10', '20', '30', '40' below the plot in black sans-serif approximately 8-9 pt. 6. Draw yellow #FFFF00 circle at [0.895, 0.037, 0.949, 0.093] with centered black bold text '48' in sans-serif approximately 14-16 pt. 7. Plot red #FF0000 scatter series of approximately 85 points forming an outer annulus/ring centered near data coordinates (25,20), spanning data x~15-35 and y~5-31. 8. Plot blue #0000FF scatter series of approximately 30 points in a left cluster spanning data x~4-16 and y~10-22. 9. Plot black #000000 scatter series of approximately 50 points in a center-right cluster spanning data x~22-31 and y~11-17. 10. Do not add a title, legend, or equations.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Added missing subtitle_or_header field set to 'none'.",
+      "Added missing animation_state field set to 'static'.",
+      "Rewrote recreation_brief into a 10-step ordered checklist with exact positions, colors, text, and approximate point counts for each element.",
+      "Expanded axis tick label placement into separate y-axis and x-axis steps with exact label strings and font details.",
+      "Specified approximate point counts (85, 30, 50) and data ranges for each scatter series in the recreation brief."
+    ],
+    "uncertain_items": [
+      "Exact point counts are approximate: red ~85, blue ~30, black ~50.",
+      "Border thickness is approximate: ~2px.",
+      "Font sizes are approximate: axis labels ~8-9 pt, badge ~14-16 pt.",
+      "Gridline color is described only as 'faint gray' without a hex value.",
+      "Exact pixel coordinates of individual scatter points are not provided; only cluster bounding ranges are given."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "validated_by": "validate_slides",
+    "validation_elapsed_s": 142.7
+  }
+}

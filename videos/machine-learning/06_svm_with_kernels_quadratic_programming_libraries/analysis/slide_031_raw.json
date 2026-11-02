@@ -1,63 +1,53 @@
 {
   "slide_number": 31,
-  "source_image": "slide_031.jpg",
-  "analysis_type": "vision",
-  "model": "images",
-  "round": 1,
-  "attempt": 1,
-  "winner": "images",
-  "layout_map": "1. Slide number badge — top-right corner (yellow circle with \"31\")\n2. Main title — top-center (\"Most Common Kernel Functions\", dark red, largest text)\n3. Four kernel definition cards — stacked vertically, center-left to center-right; each has a red title, blue/purple border, and formula content:\n   - Linear Kernel\n   - Quadratic Kernel\n   - Polynomial Kernel (of degree \"d\")\n   - Radial Basis Function (RBF) Kernel\n4. Math notation — inside each card; variables in red, connector words (\"or\", \"No Mapping\") in dark gray/black\n5. Small unlabeled icon — inside RBF card, between formula and right-side annotation\n6. Bottom black band — full-width black strip along the bottom edge (approx. bottom 8% of frame)\n7. Thin reddish outer frame — hairline border enclosing the slide content area",
-  "first_glance_test": "A brand-new user understands within 3 seconds that this is a reference slide listing four common SVM kernel functions with their mathematical formulas. The screen offers zero interactive actions — it is a static information display, and nothing on it looks clickable. Given the injected VIEW purpose (lecture frame), the focal point should be the kernel formulas; the red main title wins the eye first, then the four red card titles draw the gaze downward in a clear top-to-bottom sequence. The focal point works as intended.",
-  "strengths": [
-    "Four cards stacked vertically with identical borders and red titles make the four kernel types instantly scannable (cards 1–4).",
-    "Consistent color coding: all kernel titles and math variables use the same dark red; all card borders share the same blue/purple hue (cards 1–4).",
-    "Clear typographic hierarchy: main title is largest at top, card titles are second, formulas are third, connector words (\"or\", \"No Mapping\") are smallest and darkest (title area and cards)."
-  ],
-  "defects": [
-    {
-      "category": "b",
-      "severity": "minor",
-      "confidence": "high",
-      "description": "Linear Kernel card — right annotation — \"No Mapping ,\" — space before comma breaks standard punctuation spacing — delete the space before the comma."
-    },
-    {
-      "category": "h",
-      "severity": "minor",
-      "confidence": "medium",
-      "description": "bottom band — full-width black strip at frame bottom — empty black strip reads as a cropped footer or dead void — populate with footer copy or remove the band."
-    },
-    {
-      "category": "k",
-      "severity": "minor",
-      "confidence": "medium",
-      "description": "RBF Kernel card — between formula and right annotation — small unlabeled icon floats with no container or label — it implies interactivity on a static slide — remove the icon or add a visible label."
-    }
-  ],
-  "top_3": [
-    "Bottom black band — §4(h) — dead full-width strip reads as a cropped footer or void, the most visible anomaly on the slide.",
-    "Unlabeled icon — §4(k) — floating glyph implies false interactivity on a static slide, weakening trust in the frame's affordances.",
-    "Space before comma — §4(b) — punctuation error undercuts the professional polish of the mathematical copy."
-  ],
-  "structural_proposal": "No structural moves recommended — the four-card vertical stack already matches the content's reading order, and any reorganization would reduce scannability.",
-  "verdict_scores": {
-    "theme_dark_mode": 8,
-    "typography": 7,
-    "spacing": 8,
-    "alignment": 9,
-    "crowding_density": 9,
-    "hierarchy": 8,
-    "composition": 7,
-    "completeness": 7,
-    "continuity_consistency": 9,
-    "affordance_states": 6,
-    "first_glance_clarity": 9,
-    "overall": 8
+  "source_image": "unique_slides/slide_031.jpg",
+  "slide_title": "Most Common Kernel Functions",
+  "verbatim_text": {
+    "header": ["31"],
+    "title": "Most Common Kernel Functions",
+    "labels": ["Linear Kernel", "Quadratic Kernel", "Polynomial Kernel (of degree \u201cd\u201d)", "Radial Basis Function (RBF) Kernel", "or", "or"],
+    "equations": [
+      "K(a,b)=a^T b",
+      "K(a,b)=[a^T b]^2",
+      "K(a,b)=[a^T b + 1]^2",
+      "K(a,b)=[a^T b]^d",
+      "K(a,b)=[a^T b + 1]^d",
+      "K(a,b)=[e^(\u2212\u03b3(a\u2212b)^2)]"
+    ],
+    "body": ["No Mapping , \u03c6(x)=x", "\u03b3 is called RBF Kernel bandwidth"]
   },
-  "uncertainties": [
-    "Whether the bottom black band is OS window chrome (taskbar/dock) to be ignored per the capture rules, or part of the slide frame requiring a footer or removal.",
-    "Whether this light-themed slide is an exempt slide asset or in-app chrome breaking the app's documented dark-theme surface rules.",
-    "The exact identity of the small floating icon in the RBF card (pencil, cursor, or artifact) at this resolution.",
-    "Precise contrast ratios and font sizes cannot be computed from the static image alone; all legibility judgments are visual estimates."
+  "layout": {
+    "arrangement": "Centered red title with badge '31' top-right inside a maroon frame; four equal-width blue-bordered white boxes stacked vertically, each with a bold black label top-left and a row with red equation plus note/'or' variant.",
+    "regions": [
+      {"name": "outer frame", "box": [0.0625,0.074,0.944,0.965], "stroke": "#A03030"},
+      {"name": "title", "box": [0.283,0.115,0.638,0.163]},
+      {"name": "badge", "box": [0.888,0.102,0.932,0.180], "fill": "#FFFF99"},
+      {"name": "box 1 Linear Kernel", "box": [0.085,0.226,0.701,0.359], "stroke": "#3333CC", "fill": "#FFFFFF",
+       "equation": [0.115,0.275,0.265,0.330], "note": [0.360,0.275,0.585,0.330]},
+      {"name": "box 2 Quadratic Kernel", "box": [0.085,0.385,0.701,0.519], "stroke": "#3333CC", "fill": "#FFFFFF",
+       "equation1": [0.115,0.440,0.300,0.500], "or": [0.345,0.455,0.375,0.490], "equation2": [0.420,0.440,0.615,0.500]},
+      {"name": "box 3 Polynomial Kernel", "box": [0.085,0.537,0.701,0.670], "stroke": "#3333CC", "fill": "#FFFFFF",
+       "equation1": [0.115,0.590,0.300,0.645], "or": [0.345,0.600,0.375,0.630], "equation2": [0.420,0.590,0.640,0.645]},
+      {"name": "box 4 RBF Kernel", "box": [0.085,0.726,0.701,0.896], "stroke": "#3333CC", "fill": "#FFFFFF",
+       "equation": [0.115,0.775,0.370,0.850], "note": [0.420,0.800,0.690,0.850]}
+    ]
+  },
+  "visual_elements": [
+    {"type": "rectangle", "role": "outer frame", "box": [0.0625,0.074,0.944,0.965], "stroke": "#A03030"},
+    {"type": "rectangle", "role": "four kernel rule boxes", "boxes": [[0.085,0.226,0.701,0.359],[0.085,0.385,0.701,0.519],[0.085,0.537,0.701,0.670],[0.085,0.726,0.701,0.896]], "stroke": "#3333CC", "fill": "#FFFFFF"},
+    {"type": "circle", "role": "badge", "box": [0.888,0.102,0.932,0.180], "fill": "#FFFF99", "text": "31", "text_color": "#000000"}
   ],
-  "vocabulary_proposals": []
+  "imagery": "none",
+  "colors": {
+    "background": "#FFFFFF", "frame": "#A03030", "title": "#C00000",
+    "badge_fill": "#FFFF99", "badge_ink": "#000000", "box_border": "#3333CC", "box_fill": "#FFFFFF",
+    "equation_ink": "#FF0000", "label_ink": "#000000", "note_ink": "#000000", "gamma_accent": "#FF0000"
+  },
+  "typography_notes": "Sans-serif (Calibri/Arial-like). Title bold ~22 pt centered red. Box labels bold ~13 pt black left-aligned. Equations/notes regular ~12 pt; kernel K stylized curly red; 'or' small black; \u03c6(x)=x black; leading \u03b3 in bandwidth note red. Badge '31' regular ~14 px centered.",
+  "recreation_brief": [
+    "White canvas; maroon frame [0.0625,0.074,0.944,0.965]",
+    "Centered red bold title; yellow badge '31' top-right",
+    "Four stacked blue-bordered white boxes: Linear Kernel (K(a,b)=a^T b; 'No Mapping , \u03c6(x)=x'), Quadratic Kernel ([a^T b]^2 or [a^T b + 1]^2), Polynomial degree \u201cd\u201d ([a^T b]^d or [a^T b + 1]^d), RBF ([e^(\u2212\u03b3(a\u2212b)^2)]; '\u03b3 is called RBF Kernel bandwidth')",
+    "All equations red; labels black bold; boxes [0.085,...] as listed in layout"
+  ]
 }

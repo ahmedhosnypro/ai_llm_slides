@@ -250,7 +250,7 @@ s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
 });
 const eqImg = {
   path: "/home/codespace/ai_llm_slides/videos/machine-learning/09_introduction_to_neural_networks/recreated_pptx/build/slide_010_eq.png",
-  w_in: 2.45, h_in: 2.45 * (0.25333 / 2.66333),
+  w_in: 1647 / 600, h_in: 152 / 600,
 };
 s.addImage({
   path: eqImg.path,

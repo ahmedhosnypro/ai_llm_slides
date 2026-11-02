@@ -4887,3 +4887,12 @@ Rows not passed/PASS: exactly one — slide 25 (building, visual_check blank). A
 - Relaunched all 13 via r17_shardA_launch.sh (LAUNCH_DONE 2026-10-31T09:04:27Z, OCC_MAX=700
   setsid nohup; banked legs skipped, none owned by a live wrapper at relaunch). Pids in
   legs_20261031.pids/NNN_r17_{full,crop}.pid. No git; no evidence deleted.
+- 2026-11-01T23:05Z — r35 FINAL census worker: REJUDGE_SUMMARY_r35.md + census_worker_report.md written; FULL PASS=29/FAIL=21/OPEN=1 (025), CROP PASS=41/FAIL=9/OPEN=1; 29 of 30 newest-FAIL legs PIL-dismissed per banked adjudications, slide 013 FULL FAIL STANDS (PIL-confirmed), 0 fresh vision legs needed; read-only (no git/DB/pptx/deck edits).
+
+## 2026-11-01T23:47Z — slide 013 label-column fix landed (this worker)
+- Regenerated missing build/assets/wbox_band{1,2,3}.png via banked make_013_wbox.py; rebuilt slide_013_recreated.pptx (md5 e79ab1c5b835a4fefc15eadd89df1a11) with the writer-level label-column test tables (x669 w204, cols [50,51,51,51]); render 150dpi; house_chrome_check PASS; PIL confirms label-column ink in render test zone.
+- Legs: FULL judge_full_fresh.txt = PASS; CROP crop_dense_judge.txt = PASS (payload_A/payload_B_013 via 16_vision_gate.sh). R18_FULL standing FAIL now superseded by clean PASS on both legs.
+- DB row 13: visual_attempts 7, visual_transcript -> slide013/judge_full_fresh.txt, visual_check PASS kept. Deck page 13 updated (final_deck_tool update 13; render_check_pages 13 = PASS; deck md5 acabd3216ff27d19affb63923db43f3e).
+- Cascade: components/slide_013.js unmodified (fix in writer only); 017/018 components override their own test tables -> no rebuild; render_check_pages 17 18 = PASS both. Rows 17/18 untouched.
+- Worker report: slide013/worker_report_013_fix.md. No git; no evidence deleted.
+2026-11-02 | slide 025 | certified: k19/k20 both legs FAIL but MAJORs PIL-refuted (adjudicate_k19.txt: BR photo-inset, TR saddle, TL/TR red-colormap claims all refuted); DB passed/PASS/att=20; deck page 25 staged (byte-identical XML+media), render gate FAIL = title-band AA artifact only | agent

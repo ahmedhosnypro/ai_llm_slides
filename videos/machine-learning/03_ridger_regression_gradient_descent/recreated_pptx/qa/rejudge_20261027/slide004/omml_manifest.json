@@ -6,16 +6,18 @@
     {
      "rel_id": "rId1",
      "image": "eq_004_Yvec.png",
-     "mathtext": "COMPOSED: Let \\ \\underline{\\mathbf{Y}}\\ = | drawn parens [159, 184] | pieces ['y_1', 'y_2', '\\\\cdots', 'y_n'] | N x 1",
+     "mathtext": "\\text{Let}\\ \\underline{\\mathbf{Y}}=\\left(y_{1}\\\\y_{2}\\\\\\cdots\\\\y_{n}\\right)_{N\\times1}",
      "font_size_pt": 18.0,
-     "color": "000000"
+     "color": "000000",
+     "note": "RECONSTRUCTED 2026-11-01 worker C from COMPOSED sidecar (qa/slide004/gen_letbox_assets_att9.py): lead 'Let \\underline{\\mathbf{Y}} =' + drawn parens + red entries y_1/y_2/\\cdots/y_n + red subscript N x 1. Choice OMML approximates the composite; mc:Fallback PNG keeps the certified pixels (multi-color flattened to 000000 in Choice, per shard convention)."
     },
     {
      "rel_id": "rId2",
      "image": "eq_004_Yhatvec.png",
-     "mathtext": "COMPOSED: Let \\ \\underline{\\mathbf{\\hat{Y}}}\\ = | drawn parens [504, 530] | pieces ['\\\\widehat{y}_1', '\\\\widehat{y}_2', '\\\\cdots', '\\\\widehat{y}_n'] | N x 1",
+     "mathtext": "\\text{Let}\\ \\underline{\\hat{\\mathbf{Y}}}=\\left(\\hat{y}_{1}\\\\hat{y}_{2}\\\\\\cdots\\\\\\hat{y}_{n}\\right)_{N\\times1}",
      "font_size_pt": 18.0,
-     "color": "000000"
+     "color": "000000",
+     "note": "RECONSTRUCTED 2026-11-01 worker C from COMPOSED sidecar: lead 'Let \\underline{\\mathbf{\\hat{Y}}} =' (\\widehat -> \\hat; \\mathbf{\\hat{Y}} -> \\hat{\\mathbf{Y}}, same accent-over-bold-base stacking), drawn parens, red entries, red subscript N x 1. Fallback PNG keeps certified pixels."
     },
     {
      "rel_id": "rId3",
@@ -27,9 +29,10 @@
     {
      "rel_id": "rId4",
      "image": "eq_004_formula.png",
-     "mathtext": "Loss = \\left\\|Y - \\mathbf{\\hat{Y}}\\right\\|_2 = \\left(Y - \\mathbf{\\hat{Y}}\\right)^{T} \\left(Y - \\mathbf{\\hat{Y}}\\right)",
+     "mathtext": "Loss = \\left\\|Y - \\hat{\\mathbf{Y}}\\right\\|_2 = \\left(Y - \\hat{\\mathbf{Y}}\\right)^{T} \\left(Y - \\hat{\\mathbf{Y}}\\right)",
      "font_size_pt": 14.0,
-     "color": "000000"
+     "color": "000000",
+     "note": "Sidecar mathtext used \\mathbf{\\hat{Y}} (wrapper fail-loud: accents not allowed inside \\mathbf); rewritten as \\hat{\\mathbf{Y}} 2026-11-01 worker C — semantically identical (hat stacked over bold Y in both mathtext and OMML)."
     }
    ]
   }

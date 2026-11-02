@@ -1,0 +1,21 @@
+PIL adjudication of k19 judge findings (render_19.png vs unique_slides/slide_025.jpg)
+
+FULL k19 items:
+1. TL "saddle-like" — REFUTED at asset level: tl_iter2/3/4 peak (hot-color) centroids
+   all at (0.49-0.51, 0.35) = centered single dome, symmetric hump. Judge MEDIUM conf.
+2. TR missing x10^4 scale/ticks — PARTIAL: generator draws ticks but not the x10^4
+   offset text; steeper bowl claim not PIL-confirmable; MEDIUM conf, styling-level.
+3. BL global/local minima swap — LOW-MED conf; asset has all four labels at the
+   measured anchor boxes (inkfrac 0.11-0.23); label-feature mapping is a 3D-perspective
+   read, not PIL-confirmable as swapped.
+4. BR "photo inset" — REFUTED: BR asset bottom rows are gradual jet floor
+   (bluish 0.10->0.51 ramp, no rectangular edge); original BR crop shows the same
+   blue floor (bluish 0.25-0.67 at bottom rows). Both are surface, not a photo.
+5/6/7. MINOR styling nits (stroke weight, single vs double space, overhang) — MINOR.
+
+CROP k19 items:
+1. "TR funnel vs saddle" — REFUTED: original TR center pixel G=0 (deep bowl minimum,
+   jet low), i.e. the ORIGINAL is the convex bowl, matching the recreation; color
+   histograms of orig TR vs gen TR are same family (jet). Judge read the crop upside-down.
+2. missing tick numbers — PARTIAL (see FULL item 2), MAJOR only in combination with #1.
+3. mesh weight — MINOR.

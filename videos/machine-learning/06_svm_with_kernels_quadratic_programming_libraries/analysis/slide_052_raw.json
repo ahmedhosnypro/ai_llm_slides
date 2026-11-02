@@ -1,5 +1,53 @@
 {
-  "slide": 52,
-  "image": "unique_slides/slide_052.jpg",
-  "analysis": "## 1. LAYOUT MAP\n1. Presentation canvas \u2014 fills the whole frame; mid-gray background (#e5e5e5).\n2. Outer slide border \u2014 thin dark-red rounded rectangle inset ~32px from canvas edges.\n3. Slide-number chip \u2014 top-right corner, purple rounded badge showing \"52\".\n4. Plot panel \u2014 centered rounded rectangle with a thin dark-red border; contains chart axes, gridlines, scatter points, axis numbers.\n5. Top black bar \u2014 along bottom-left edge, spanning nearly full canvas width, ~28px tall (partially cropped at frame bottom).\n\nApparent scale/quality: 960x540 CSS px capture at 1x; raster artwork (not vector UI), slight compression noise visible on scatter points; limits judgment to chart-level composition \u2014 no interactive chrome, no typography, no controls to audit as app UI.\n\n## 2. FIRST-GLANCE TEST\nThe screen offers no app actions \u2014 it is an instructional slide in an SVM/kernels/QP lecture. Within 3 seconds a viewer understands it is lecture frame 52 (number chip) showing a separable-data scatter plot (red dots above, blue dots below, decision boundary line). There are no clickable elements; nothing is hidden or demands study beyond reading the chart. Given the injected VIEW purpose (\"SVM/kernels/QP lecture frame\"), the focal point should be the plot panel \u2014 it wins the eye correctly by central placement and contrast.\n\n## 3. STRENGTHS\n- Central plot panel is clearly framed and centered, giving the lecture content an obvious visual anchor.\n- Color separation between red and blue scatter classes is strong and immediately legible.\n- Slide number \"52\" in a discrete corner chip provides wayfinding without competing with content.\n\n## 4. DEFECT LIST\n- (a) THEME & DARK-MODE PHYSICS clean \u2014 checked, nothing found. (Dark theme not applicable; this is a light lecture slide.)\n- (b) TYPOGRAPHY clean \u2014 checked, nothing found. (Chart axis numerals are small but legible; no body copy present.)\n- (c) SPACING clean \u2014 checked, nothing found. (Chart grid and panel padding appear consistent.)\n- (d) ALIGNMENT & POSITIONING clean \u2014 checked, nothing found.\n- (e) CROWDING & DENSITY clean \u2014 checked, nothing found.\n- (f) HIERARCHY clean \u2014 checked, nothing found. (Plot panel correctly dominates.)\n- (g) COMPOSITION clean \u2014 checked, nothing found.\n- (h) COMPLETENESS: bottom black bar is clipped by the frame bottom edge \u2014 its height is unknown and it looks like an amputated footer/taskbar \u2014 either reveal it fully or remove it so it does not read as a broken strip.\n- (i) CONTINUITY clean \u2014 checked, nothing found.\n- (j) LINES & EDGES clean \u2014 checked, nothing found.\n- (k) AFFORDANCE & STATES clean \u2014 checked, nothing found. (No interactive elements on a lecture slide.)\n- (l) ICONOGRAPHY clean \u2014 checked, nothing found.\n- (m) TABLES & LISTS clean \u2014 checked, nothing found.\n- (n) ACCESSIBILITY & LEGIBILITY clean \u2014 checked, nothing found.\n- (o) UI COPY QUALITY clean \u2014 checked, nothing found.\n\n## 5. TOP 3\n1. \u00a74 (h) COMPLETENESS \u2014 bottom black bar clipped by frame edge \u2014 looks like a broken footer strip; reveal or remove it.\n2. None \u2014 no other defects found.\n3. None \u2014 no other defects found.\n\n## 6. STRUCTURAL PROPOSAL\nNo reorganization proposed \u2014 this is a single-panel lecture slide; reordering visible regions would not improve the first-glance test, and there is no hidden functionality to surface. [out-of-scope] \u2014 no app architecture exists in this capture to reorganize.\n\n## 7. VERDICT\n- Theme & dark-mode: N/A \u2014 light slide, not applicable.\n- Typography: 9 \u2014 chart numerals are legible at this resolution.\n- Spacing: 9 \u2014 plot padding and margins look consistent.\n- Alignment: 9 \u2014 gridlines and panel are centered.\n- Crowding/density: 9 \u2014 plot is airy and uncluttered.\n- Hierarchy: 9 \u2014 plot panel correctly dominates.\n- Composition: 9 \u2014 centered panel with discreet corner chip.\n- Completeness: 6 \u2014 bottom black bar clipped by frame edge.\n- Continuity & consistency: 9 \u2014 single consistent style throughout.\n- Affordance & states: N/A \u2014 no interactive controls.\n- First-glance clarity: 9 \u2014 purpose of the slide is immediate.\n- Overall: 8 \u2014 clean instructional slide; only the clipped bottom bar prevents a higher score.\n\n## 8. UNCERTAINTIES\n- The bottom black bar's purpose is unknown (taskbar, footer, or cropped UI chrome); its partial crop could be intentional capture framing rather than a defect in the source deck.\n- Whether this capture is a photograph/screenshot of a projected slide or a direct render \u2014 affects how harshly to judge edge softness, but the content is still auditable.\n\n## 9. VOCABULARY PROPOSALS\nno additions"
+  "slide_title": "none",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "52",
+      "-5 0 5 10 15 20 (x-axis ticks, left to right)",
+      "35 30 25 20 15 10 5 0 (y-axis ticks, top to bottom)"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Figure-only slide. Maroon outer frame; yellow badge '52' upper-right; inner red frame around a white scatter plot (gray grid); blue U/parabola series, red cluster with two outliers, a vertical dark line at x=0, and a small black arrow near (-1,8) pointing down-left; black band along bottom.",
+    "regions": [
+      {"name": "outer_frame", "position": "[0.065, 0.074, 0.942, 0.946]", "content": "Maroon stroke-only rectangle #8E1B1B"},
+      {"name": "badge", "position": "[0.889, 0.106, 0.934, 0.187]", "content": "Yellow circle '52'"},
+      {"name": "chart_frame", "position": "[0.217, 0.115, 0.784, 0.907]", "content": "Inner red stroke #C81E1E"},
+      {"name": "plot", "position": "[0.260, 0.157, 0.756, 0.881]", "content": "Scatter plot area"},
+      {"name": "bottom_band", "position": "[0.063, 0.959, 1.000, 1.000]", "content": "Black band #000000"}
+    ]
+  },
+  "visual_elements": [
+    {"type": "box", "description": "Outer slide frame, stroke only #8E1B1B", "position": "[0.065, 0.074, 0.942, 0.946]", "colors": ["#8E1B1B"]},
+    {"type": "box", "description": "Inner chart frame, stroke only #C81E1E", "position": "[0.217, 0.115, 0.784, 0.907]", "colors": ["#C81E1E"]},
+    {"type": "badge", "description": "Circle fill #FFFF00, edge #2F2F2F, text '52' #000000", "position": "[0.889, 0.106, 0.934, 0.187]", "colors": ["#FFFF00", "#2F2F2F"]},
+    {"type": "box", "description": "Bottom black band", "position": "[0.063, 0.959, 1.000, 1.000]", "colors": ["#000000"]},
+    {"type": "chart", "description": "Scatter plot, white bg #FFFFFF, grid #D9D9D9 (vertical x=-5,0,5,10,15,20; horizontal y=0..35 step 5), ticks/spines #7F7F7F, labels #404040; no legend; readable values = axis ticks only", "position": "[0.260, 0.157, 0.756, 0.881]", "colors": ["#FFFFFF", "#D9D9D9", "#7F7F7F", "#404040"]},
+    {"type": "curve", "description": "Blue series #0000FF: upward-opening U/parabola, x~1-14, y~15-24; vertex ~(7.5,15), arms peak y~23-24 at x~1.5 and x~13.5", "position": "within plot", "colors": ["#0000FF"]},
+    {"type": "curve", "description": "Red series #FF0000: dense cluster x~4-11, y~21-28, plus outliers ~(2.6,26.5) and ~(3.0,28)", "position": "within plot", "colors": ["#FF0000"]},
+    {"type": "line", "description": "Vertical line #333333 at data x=0, y~11 to ~31", "position": "[0.357, 0.263, 0.361, 0.652]", "colors": ["#333333"]},
+    {"type": "arrow", "description": "Small black arrow near data (-1,8), pointing down-left", "position": "[0.331, 0.700, 0.352, 0.741]", "colors": ["#000000"]}
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "outer_frame": "#8E1B1B",
+    "inner_frame": "#C81E1E",
+    "plot_background": "#FFFFFF",
+    "gridlines": "#D9D9D9",
+    "ticks_spines": "#7F7F7F",
+    "tick_labels": "#404040",
+    "series_blue": "#0000FF",
+    "series_red": "#FF0000",
+    "vertical_line": "#333333",
+    "arrow": "#000000",
+    "badge_fill": "#FFFF00",
+    "badge_edge": "#2F2F2F",
+    "badge_text": "#000000",
+    "bottom_band": "#000000"
+  },
+  "typography_notes": "Generic sans-serif (Arial/Helvetica/DejaVu-like). Tick labels ~11 pt regular #404040, centered on ticks, '-5' with leading minus. Badge '52' ~15 pt black centered. No title/bold/italic.",
+  "recreation_brief": "1. White 960x540 canvas. 2. Outer maroon stroke-only rect [0.065,0.074,0.942,0.946] #8E1B1B. 3. Black bottom band [0.063,0.959,1.000,1.000]. 4. Inner red stroke-only rect [0.217,0.115,0.784,0.907] #C81E1E. 5. Scatter plot [0.260,0.157,0.756,0.881]: white bg, #D9D9D9 grid, x ticks -5/0/5/10/15/20, y ticks 0..35 step 5, labels #404040 ~11pt. 6. Blue #0000FF U/parabola x~1-14, y~15-24 (vertex (7.5,15)). 7. Red #FF0000 cluster x~4-11, y~21-28 plus outliers (2.6,26.5), (3.0,28). 8. Vertical #333333 line at x=0, y 11->31, box [0.357,0.263,0.361,0.652]. 9. Small black arrow near (-1,8) pointing down-left [0.331,0.700,0.352,0.741]. 10. Yellow circle badge [0.889,0.106,0.934,0.187] fill #FFFF00 edge #2F2F2F, centered '52' ~15pt."
 }

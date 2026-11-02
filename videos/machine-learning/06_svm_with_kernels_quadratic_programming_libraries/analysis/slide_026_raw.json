@@ -1,50 +1,60 @@
 {
   "slide_number": 26,
-  "source_image": "slide_026.jpg",
-  "analysis_type": "vision",
-  "model": "images",
-  "round": 1,
-  "attempt": 1,
-  "winner": "images",
-  "layout_map": "1. Header strip: solid purple band across the top containing the slide title (\"Quadratic Kernel Mapping and Kernel Trick\") left-of-center and a yellow circular slide-number chip (\"26\") at the top-right corner.\n2. Top formula band: light cream panel with vector definitions (a = [a₁; a₂], b = [b₁; b₂]) and the boxed expansion of (aᵀb)².\n3. Middle formula band: feature-map derivation φ(a)ᵀφ(b) with the column vector φ(x), a right-side target column vector, and the red \"2D → 3D\" annotation beneath.\n4. Bottom formula band: numeric instantiation with a = [1; 2], b = [3; 4], the expanded dot product, intermediate vectors, the sum \"9 + 64 + 48 = 121\", and the final equality \"[aᵀb]² = (1·3 + 2·4)² = 11² = 121\" with a right-pointing red arrow and return glyph.\n5. Right annotation edge: red callout arrows and equality markers running along the right side of the formula bands.\n6. Outer frame: thin gray border enclosing the full slide with rounded corners on a cream background fill.",
-  "first_glance_test": "Within 3 seconds a viewer understands this is a math lecture slide about kernel mapping; the saturated purple title header wins the eye immediately. Apparent actions are passive consumption only: read the derivation, follow the 2D → 3D feature mapping, and verify the numeric example — all three stages are visible at first glance with nothing hidden behind hover or collapse. Given the VIEW purpose (lecture frame), the focal point should be the central derivation; it commands attention by central placement and scale, though the bold header competes nearly equally.",
-  "strengths": [
-    "Saturated purple header establishes document identity and slide number instantly (top header strip).",
-    "Three-band vertical stack cleanly separates theory, feature-space mapping, and numeric verification, guiding the eye downward (full composition).",
-    "Color-coded mathematical symbols (red/blue/green) make variable tracking easy across the derivation (all formula bands)."
-  ],
-  "defects": [
-    {
-      "category": "b",
-      "severity": "minor",
-      "confidence": "medium",
-      "description": "bottom formula band — final equality line — the \"↵\" return-glyph chip beside \"121\" reads as keyboard/UI residue rather than mathematical notation — replace with a standard math marker or remove."
-    }
-  ],
-  "top_3": [
-    "[minor|med] bottom formula band — final equality line — return-glyph residue reads as keyboard artifact in a math derivation — see §4 (b).",
-    "— no second defect found.",
-    "— no third defect found."
-  ],
-  "structural_proposal": "1. Move the red \"2D → 3D\" label into the middle formula band as a run-in section header so the dimensionality claim is anchored to the φ(x) definition rather than floating between bands (source: middle band, below vector equation → destination: middle band, above vector equation).\n2. [out-of-scope] dock this slide into the dark app shell as a help/reference pane; no app navigation or shell is visible on screen to integrate against.",
-  "verdict_scores": {
-    "theme_dark_mode": 7,
-    "typography": 8,
-    "spacing": 9,
-    "alignment": 9,
-    "crowding_density": 8,
-    "hierarchy": 8,
-    "composition": 8,
-    "completeness": 10,
-    "continuity_consistency": 9,
-    "affordance_states": 10,
-    "first_glance_clarity": 8,
-    "overall": 8
+  "source_image": "unique_slides/slide_026.jpg",
+  "slide_title": "Quadratic Kernel Mapping and Kernel Trick",
+  "verbatim_text": {
+    "labels": ["26", "Where:", "2D \u21d2 3D"],
+    "equations": [
+      "a = (a1; a2)   b = (b1; b2)",
+      "[a^T b]^2 = (a1 a2; b1 b2) = (a1 b1 + a2 b2)^2 = a1^2 b1^2 + a2^2 b2^2 + 2 a1 b1 a2 b2",
+      "[a^T b]^2 = (a1^2 a2^2 \u221a2 a1 a2 ; b1^2 b2^2 \u221a2 b1 b2) = \u03c6(a)^T \u03c6(b)",
+      "\u03c6(x) \u2261 (x1; x2) \u21d2 (x1^2; x2^2; \u221a2 x1 x2)",
+      "a = (1; 2)   b = (3; 4)",
+      "\u03c6(a)^T \u03c6(b) = (1^2 2^2 \u221a2 1*2)(3^2; 4^2; \u221a2 3*4) = (1 4 \u221a2 2)(9; 16; \u221a2 12) = 9+64+48 = 121",
+      "[a^T b]^2 = (1*3 + 2*4)^2 = 11^2 = 121"
+    ]
   },
-  "uncertainties": [
-    "The injected context describes a dark-themed parent app, but the capture is a light-themed lecture slide; I judged the slide on its own merits and cannot determine if it lives inside an app shell.",
-    "Subscript glyphs (a₁, b₂, x₁, etc.) sit near the legibility floor at 1× capture but appear readable; I did not guess at any content.",
-    "Whether the red return glyph (↵) is intentional notation or an artifact cannot be verified from a static image; flagged as a low-confidence suspicion."
+  "layout": {
+    "arrangement": "Title band with badge '26'; upper blue-outlined math box (general identity with salmon highlight on leading term, vertical divider, 'Where' column on right, red '2D\u21d23D'); lower red-outlined exercise box containing inner blue box with a/b definitions and the numeric \u03c6(a)^T\u03c6(b) chain, plus scalar check at bottom right.",
+    "regions": [
+      {"name": "outer frame", "box": [0.047,0.061,0.953,0.941]},
+      {"name": "title", "box": [0.205,0.080,0.795,0.140]},
+      {"name": "badge", "box": [0.878,0.060,0.935,0.130]},
+      {"name": "upper math box", "box": [0.048,0.150,0.952,0.507], "stroke": "#2E5AAC[?]"},
+      {"name": "salmon highlight", "box": [0.063,0.212,0.398,0.328], "fill": "#FCE4D6"},
+      {"name": "vertical divider", "box": [0.615,0.150,0.615,0.505]},
+      {"name": "Where column", "box": [0.625,0.260,0.905,0.480]},
+      {"name": "2D\u21d23D", "box": [0.795,0.462,0.905,0.500]},
+      {"name": "lower exercise box", "box": [0.048,0.515,0.952,0.905], "stroke": "#C00000"},
+      {"name": "inner computation box", "box": [0.062,0.540,0.902,0.762], "stroke": "#2E5AAC[?]"},
+      {"name": "a/b definitions", "box": [0.052,0.550,0.200,0.675]},
+      {"name": "numeric \u03c6 chain", "box": [0.205,0.545,0.905,0.760]},
+      {"name": "scalar check", "box": [0.560,0.795,0.905,0.875]}
+    ]
+  },
+  "visual_elements": [
+    {"type": "rectangle", "role": "outer frame", "box": [0.047,0.061,0.953,0.941], "stroke": "#C00000"},
+    {"type": "rectangle", "role": "upper math box", "box": [0.048,0.150,0.952,0.507], "stroke": "#2E5AAC[?]"},
+    {"type": "rectangle", "role": "salmon highlight", "box": [0.063,0.212,0.398,0.328], "fill": "#FCE4D6"},
+    {"type": "line", "role": "vertical divider", "box": [0.615,0.150,0.615,0.505], "color": "#BFBFBF"},
+    {"type": "rectangle", "role": "lower exercise box", "box": [0.048,0.515,0.952,0.905], "stroke": "#C00000"},
+    {"type": "rectangle", "role": "inner computation box", "box": [0.062,0.540,0.902,0.762], "stroke": "#2E5AAC[?]"},
+    {"type": "circle", "role": "badge", "box": [0.878,0.060,0.935,0.130], "fill": "#FFFF00", "text": "26"},
+    {"type": "arrow-glyph", "role": "red left-pointing arrows at the two 121 results", "boxes": [[0.900,0.555,0.945,0.615],[0.898,0.815,0.945,0.875]], "color": "#C00000", "direction": "left"}
   ],
-  "vocabulary_proposals": []
+  "imagery": "none",
+  "colors": {
+    "background": "#FFFFFF", "frame": "#C00000", "title": "#000000",
+    "badge_fill": "#FFFF00", "box_border_blue": "#2E5AAC[?]", "salmon_fill": "#FCE4D6",
+    "text_red": "#C00000", "text_blue": "#0000C0[?]", "phi_ink": "#000000[?]",
+    "highlight_red": "#FF0000", "divider": "#BFBFBF", "letterbox": "#000000"
+  },
+  "typography_notes": "Title bold ~22 pt centered black. Math in serif italic math face ~12 pt; a-terms red, b-terms blue, \u03c6 black[?]; column vectors stacked; '2D \u21d2 3D' bold red; final 121s flagged by red left arrows.",
+  "recreation_brief": [
+    "White canvas; red outer frame [0.047,0.061,0.953,0.941]",
+    "Centered black title and yellow badge '26' top-right",
+    "Upper blue-outlined box with a/b definitions, salmon-highlighted core identity, feature identity with 2x3 matrix, vertical divider, right 'Where' column, red '2D \u21d2 3D'",
+    "Lower red-outlined exercise box with inner blue computation box: a=(1;2), b=(3;4), numeric \u03c6(a)^T\u03c6(b) chain ending =121 with red left arrow",
+    "Scalar check [a^T b]^2 = ... = 121 at bottom right with red left arrow"
+  ]
 }

@@ -1,0 +1,200 @@
+{
+  "slide_title": "Using Two Perceptron Layers with non-Linearity",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Adding Non-Linearity Solves the XOR Problem"
+    ],
+    "labels": [
+      "Using Two Perceptron Layers with non-Linearity",
+      "15",
+      "x1",
+      "x2",
+      "-1",
+      "1",
+      "-1",
+      "1",
+      "S1",
+      "S2",
+      "S3",
+      "Z1",
+      "Z2",
+      "Z3",
+      "O/P",
+      ">0.5 => 1",
+      "<0.5 => 0",
+      ">= -0.5 => 1",
+      "< -0.5 => 0",
+      ">0 => 1",
+      "<0 => 0",
+      "X1",
+      "X2",
+      "O/P",
+      "0",
+      "1",
+      "x2",
+      "x1",
+      "S1",
+      "Z1",
+      "S2",
+      "Z2",
+      "S3",
+      "Z3",
+      "Adding Non-Linearity",
+      "Solves the",
+      "XOR Problem"
+    ],
+    "equations": [
+      ">0.5 => 1",
+      "<0.5 => 0",
+      ">= -0.5 => 1",
+      "< -0.5 => 0",
+      ">0 => 1",
+      "<0 => 0"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title at top-left/center in red and blue. Slide number '15' in a yellow circle at top-right. A blue-bordered neural network diagram occupies the upper-left/center. A red-bordered truth table with 3 columns and 4 data rows sits at the upper-right. A red-bordered data table with 8 columns and 4 data rows spans the bottom-left/center. A rounded light-yellow callout box with 3 text lines sits at the bottom-right.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top, left-center, ~10% height",
+        "content": "Slide title text 'Using Two Perceptron Layers with non-Linearity'"
+      },
+      {
+        "name": "slide_number",
+        "position": "top-right, ~5% height",
+        "content": "Yellow circle with '15'"
+      },
+      {
+        "name": "neural_network_diagram",
+        "position": "upper-left/center, ~40% height, ~65% width",
+        "content": "Feedforward perceptron diagram with 2 input circles, 2 hidden sigma circles, 3 step-function boxes, 6 weighted arrows, and labels x1, x2, S1, S2, S3, Z1, Z2, Z3, O/P"
+      },
+      {
+        "name": "truth_table",
+        "position": "upper-right, ~30% height, ~25% width",
+        "content": "Red-bordered table with headers X1, X2, O/P and 4 data rows: 0/0/0, 0/1/1, 1/0/1, 1/1/0"
+      },
+      {
+        "name": "data_table",
+        "position": "bottom-left/center, ~25% height, ~70% width",
+        "content": "Red-bordered table with headers x2, x1, S1, Z1, S2, Z2, S3, Z3 and 4 data rows; Z3 cells highlighted cyan/green/cyan/green"
+      },
+      {
+        "name": "callout_box",
+        "position": "bottom-right, ~15% height, ~25% width",
+        "content": "Rounded light-yellow callout with 3 lines: 'Adding Non-Linearity', 'Solves the', 'XOR Problem'"
+      }
+    ],
+    "hierarchy": "Title is largest and most prominent. The neural network diagram is the largest visual block. The truth table and data table are secondary. The callout box is a tertiary accent."
+  },
+  "visual_elements": [
+    {
+      "type": "diagram",
+      "description": "Feedforward neural network diagram. Input layer: two circles labeled x1 (top) and x2 (bottom). Arrows to hidden layer: x1->S1 labeled '-1' (red), x1->S2 labeled '1' (blue), x2->S1 labeled '1' (red), x2->S2 labeled '-1' (blue). Hidden layer: two circles labeled S1 and S2 containing sigma (\u03a3) symbols. From S1 an arrow to a purple-outlined box containing a step-function icon, labeled 'Z1' to its right; above the box are two lines '>0.5 => 1' (yellow) and '<0.5 => 0' (red). From S2 an arrow to a similar box labeled 'Z2'; above it '>= -0.5 => 1' (green) and '< -0.5 => 0' (red). From Z1 an arrow labeled '-1' (red) to output circle S3 (sigma). From Z2 an arrow labeled '1' (green) to S3. From S3 an arrow to a purple-outlined box with step-function icon, labeled 'Z3'/'O/P'; above it '>0 => 1' (yellow) and '<0 => 0' (red). Arrow out labeled 'O/P'.",
+      "colors": [
+        "#ffffff",
+        "#0000ff",
+        "#ff0000",
+        "#008000",
+        "#ffff00",
+        "#c00000",
+        "#d2b48c"
+      ],
+      "position": "upper-left and center, inside blue-bordered rectangle"
+    },
+    {
+      "type": "table",
+      "description": "Truth table with red border. Headers: X1 | X2 | O/P. Row 1: 0 | 0 | 0 (O/P cell cyan). Row 2: 0 | 1 | 1 (O/P cell green). Row 3: 1 | 0 | 1 (O/P cell green). Row 4: 1 | 1 | 0 (O/P cell cyan).",
+      "colors": [
+        "#ffffff",
+        "#ff0000",
+        "#00ffff",
+        "#90ee90",
+        "#000000"
+      ],
+      "position": "upper-right"
+    },
+    {
+      "type": "table",
+      "description": "Data table with red borders and merged header groups. Header row: x2 | x1 || S1 | Z1 || S2 | Z2 || S3 | Z3. Row 1: 0 | 0 | 0 | 0 | 0 | 1 | 1 | 1 (last cell Z3 cyan). Row 2: 0 | 1 | -1 | 0 | -1 | 0 | 0 | 0 (last cell Z3 green). Row 3: 1 | 0 | 1 | 1 | 1 | 1 | 0 | 0 (last cell Z3 green). Row 4: 1 | 1 | 0 | 0 | 0 | 1 | 1 | 1 (last cell Z3 cyan).",
+      "colors": [
+        "#ffffff",
+        "#ff0000",
+        "#00ffff",
+        "#90ee90",
+        "#000000"
+      ],
+      "position": "bottom-left to center"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Rounded rectangle callout with light yellow fill and thin border. Text: 'Adding Non-Linearity' (blue) on first line, 'Solves the' (black) on second, 'XOR Problem' with 'XOR' in red on third.",
+      "colors": [
+        "#ffffe0",
+        "#0000ff",
+        "#000000",
+        "#ff0000"
+      ],
+      "position": "bottom-right"
+    },
+    {
+      "type": "other",
+      "description": "Slide number indicator: yellow circle with black outline containing '15'.",
+      "colors": [
+        "#ffd700",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [
+    "Sigma (\u03a3) symbols inside circles S1, S2, S3 representing perceptron summation units.",
+    "Step-function icons inside purple-outlined boxes representing threshold/activation functions.",
+    "No photographs or illustrations beyond schematic diagram symbols."
+  ],
+  "colors": {
+    "background": "#f2f2f2",
+    "title_text": "#c00000",
+    "body_text": "#000000",
+    "accents": [
+      "#0000ff",
+      "#ffff00",
+      "#008000",
+      "#00ffff",
+      "#90ee90",
+      "#ffd700",
+      "#d2b48c"
+    ]
+  },
+  "typography_notes": "Sans-serif font throughout. Title is bold; 'Using Two Perceptron Layers with' is #c00000 and 'non-Linearity' is #0000ff. Body, table, and diagram labels are black. Condition text above step-function boxes is yellow (#ffff00), green (#008000), or red (#ff0000). No italics observed. No bullet list is used.",
+  "animation_state": "Static slide; no mid-build or partial reveals visible.",
+  "recreation_brief": "1. Set the slide background to #f2f2f2 and use a sans-serif font for all text. 2. Place the title at the top-left/center: 'Using Two Perceptron Layers with' in bold #c00000, immediately followed by 'non-Linearity' in bold #0000ff. Do not add a subtitle. 3. Place a yellow circle at the top-right with #ffd700 fill, #000000 outline, and black text '15'. 4. Draw a blue-bordered (#0000ff) rectangle in the upper-left/center, about 65% slide width and 40% slide height, as the neural network container. Inside it: place 2 white (#ffffff) input circles labeled 'x1' on top and 'x2' on the bottom; place 2 white (#ffffff) hidden circles labeled 'S1' and 'S2' to the right of the inputs, each containing a sigma (\u03a3) symbol; draw 4 arrows with labels: x1->S1 '-1' in #ff0000, x1->S2 '1' in #0000ff, x2->S1 '1' in #ff0000, and x2->S2 '-1' in #0000ff. 5. Still inside the blue-bordered rectangle, place 2 purple-outlined step-function boxes to the right of S1 and S2; label the box to the right of S1 as 'Z1' and the box to the right of S2 as 'Z2'. Above Z1 place '>0.5 => 1' in #ffff00 and '<0.5 => 0' in #ff0000. Above Z2 place '>= -0.5 => 1' in #008000 and '< -0.5 => 0' in #ff0000. 6. Place 1 white (#ffffff) output circle labeled 'S3' with a sigma (\u03a3) symbol to the right of Z1 and Z2. Draw an arrow from Z1 to S3 labeled '-1' in #ff0000, and an arrow from Z2 to S3 labeled '1' in #008000. 7. Draw an arrow from S3 to a third purple-outlined step-function box labeled 'Z3'/'O/P'. Above that box place '>0 => 1' in #ffff00 and '<0 => 0' in #ff0000. Draw an outgoing arrow from the box labeled 'O/P'. 8. Place a red-bordered (#ff0000) truth table at the upper-right with 3 columns and 4 data rows. Headers: 'X1', 'X2', 'O/P'. Rows: '0','0','0' with the O/P cell filled #00ffff; '0','1','1' with the O/P cell filled #90ee90; '1','0','1' with the O/P cell filled #90ee90; '1','1','0' with the O/P cell filled #00ffff. Use black text on white cells. 9. Place a wide red-bordered (#ff0000) data table at the bottom-left/center with 8 columns and 4 data rows. Headers: 'x2','x1','S1','Z1','S2','Z2','S3','Z3'. Rows: '0','0','0','0','0','1','1','1' with the Z3 cell filled #00ffff; '0','1','-1','0','-1','0','0','0' with the Z3 cell filled #90ee90; '1','0','1','1','1','1','0','0' with the Z3 cell filled #90ee90; '1','1','0','0','0','1','1','1' with the Z3 cell filled #00ffff. Use black text on white cells. 10. Place a rounded callout box at the bottom-right with #ffffe0 fill and a thin border. Add 3 lines: 'Adding Non-Linearity' in #0000ff, 'Solves the' in #000000, and 'XOR Problem' with 'XOR' in #ff0000 and 'Problem' in #000000.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Populated empty verbatim_text.bullets with the callout sentence 'Adding Non-Linearity Solves the XOR Problem' reconstructed from the ordered labels; noted that the source has no bullet list.",
+      "Expanded layout.arrangement and region contents to exact counts: 2 input circles, 2 hidden sigma circles, 3 step-function boxes, 6 weighted arrows, 4 truth-table rows, 4 data-table rows, 8 data-table columns, and 3 callout lines.",
+      "Added #d2b48c to colors.accents because it appears in the neural network diagram palette.",
+      "Rewrote recreation_brief as a numbered placement checklist with exact text, positions, colors, and shapes.",
+      "Kept subtitle_or_header null because no subtitle or header is present in the source."
+    ],
+    "uncertain_items": [
+      "No subtitle/header exists in the source; subtitle_or_header is left null.",
+      "Exact hex code for the purple step-function box outlines is not provided.",
+      "The diagram palette includes #d2b48c and #c00000, but the JSON does not map them to specific diagram parts.",
+      "The source has no bullet list; verbatim_text.bullets was reconstructed from the callout labels.",
+      "Exact pixel coordinates are unavailable; positions are approximate regions/percentages from the JSON."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "frame": "slide_015.jpg",
+    "model": "images",
+    "source_timestamps": {},
+    "elapsed_s": 44.0,
+    "validated_by": "validate_slides",
+    "validation_elapsed_s": 789.8
+  }
+}

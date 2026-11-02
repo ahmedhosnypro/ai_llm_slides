@@ -1,0 +1,72 @@
+{
+  "slide_number": 7,
+  "source_image": "unique_slides/slide_007.jpg",
+  "slide_title": "Equal Constraints",
+  "verbatim_text": {
+    "title": ["Equal Constraints"],
+    "labels": [
+      "7",
+      "One Constraint",
+      "Ax=b",
+      "Three Constraints",
+      "Ax=b",
+      "Four Constraints",
+      "Ax=b"
+    ],
+    "bullets": [],
+    "equations": [
+      "\u2211_{i=1}^{3} a_i x_i = a_1x_1 + a_2x_2 + a_3x_3 = Z \u21d2 (a_1 a_2 a_3) (x_1; x_2; x_3) = (Z)_{1*1}",
+      "\u2211_{i=1}^{3} a_i x_i = Z_1",
+      "\u2211_{i=1}^{3} b_i x_i = Z_2",
+      "\u2211_{i=1}^{3} c_i x_i = Z_3",
+      "[a_1 a_2 a_3; b_1 b_2 b_3; c_1 c_2 c_3] (x_1; x_2; x_3) = (Z_1; Z_2; Z_3)_{3*1}",
+      "x_1 + 2x_2 = 7",
+      "3x_1 + 4x_2 = 12",
+      "3x_3 - 5x_1 = 10",
+      "x_1 + x_2 + x_3 = 24",
+      "[1 2 0; 3 4 0; -5 0 3; 1 1 1]_{4*3} (x_1; x_2; x_3) = (7; 12; 10; 24)_{4*1}"
+    ]
+  },
+  "layout": {
+    "arrangement": "Outer red frame; centered title near top; yellow page badge top-right; three stacked red-bordered panels. Each panel: left summed/scalar equations, magenta right double-arrow, center row/matrix-times-column equation, right blue underlined constraint-count label above red/blue 'Ax=b'.",
+    "regions": [
+      {"name": "outer_frame", "box": [0.057, 0.081, 0.943, 0.965]},
+      {"name": "title", "box": [0.397, 0.113, 0.638, 0.169]},
+      {"name": "badge", "box": [0.889, 0.102, 0.930, 0.185]},
+      {"name": "panel1_one_constraint", "box": [0.094, 0.194, 0.876, 0.391]},
+      {"name": "panel2_three_constraints", "box": [0.094, 0.415, 0.876, 0.696]},
+      {"name": "panel3_four_constraints", "box": [0.094, 0.720, 0.876, 0.943]}
+    ]
+  },
+  "visual_elements": [
+    {"type": "rectangle/outer frame", "box": [0.057, 0.081, 0.943, 0.965], "border_color": "#C00000", "fill": "#FFFFFF"},
+    {"type": "rectangle/panel", "box": [0.094, 0.194, 0.876, 0.391], "border_color": "#C00000"},
+    {"type": "rectangle/panel", "box": [0.094, 0.415, 0.876, 0.696], "border_color": "#C00000"},
+    {"type": "rectangle/panel", "box": [0.094, 0.720, 0.876, 0.943], "border_color": "#C00000"},
+    {"type": "circle/badge", "box": [0.889, 0.102, 0.930, 0.185], "fill": "#FFFF00", "outline": "#000000", "contains": "7"},
+    {"type": "arrows \u21d2 magenta", "boxes": [[0.410, 0.285, 0.455, 0.325], [0.260, 0.530, 0.300, 0.580], [0.270, 0.815, 0.305, 0.855]], "direction": "right", "color": "#FF00FF"},
+    {"type": "math groups", "note": "tall parentheses around row/column vectors and matrices; colored series: a-series blue, b-series magenta, c-series green, x-column red, numeric matrix/rhs black; right-side labels are plain text: blue underlined 'One/Three/Four Constraints' above red 'Ax=b'"}
+  ],
+  "imagery": "none",
+  "colors": {
+    "slide_background": "#FFFFFF",
+    "frame_panels_title": "#C00000",
+    "body_math_ink": "#000000",
+    "blue_labels_and_a_series": "#0000FF",
+    "red_x_column_and_Ax=b": "#FF0000",
+    "blue_x_in_Ax=b": "#0000FF [?]",
+    "magenta_b_series_and_arrows": "#FF00FF",
+    "green_c_series": "#00B000",
+    "badge_fill": "#FFFF00",
+    "badge_outline_numeral": "#000000"
+  },
+  "typography_notes": "Sans-serif (Calibri/Arial-like); math variables italic, operators upright. Title bold red ~30 pt centered title case. Body equations ~18-20 pt left-aligned; matrix equations centered within panel. Constraint labels ~15-16 pt blue underlined title case right-aligned. 'Ax=b' ~18 pt bold red with blue x [?]. Badge numeral ~14 pt black.",
+  "equations": [
+    {"linear": "\u2211_{i=1}^{3} a_i x_i = a_1x_1 + a_2x_2 + a_3x_3 = Z \u21d2 (a_1 a_2 a_3) (x_1; x_2; x_3) = (Z)_{1*1}", "box": [0.103, 0.207, 0.640, 0.382], "detail": "stacked sum, tall parentheses, a coefficients blue, x column red"},
+    {"linear": "\u2211_{i=1}^{3} a_i x_i = Z_1 / \u2211_{i=1}^{3} b_i x_i = Z_2 / \u2211_{i=1}^{3} c_i x_i = Z_3 \u21d2 [a_1 a_2 a_3; b_1 b_2 b_3; c_1 c_2 c_3] (x_1; x_2; x_3) = (Z_1; Z_2; Z_3)_{3*1}", "box": [0.103, 0.426, 0.540, 0.685], "detail": "rows blue/magenta/green, rhs subscript 3*1"},
+    {"linear": "x_1 + 2x_2 = 7 / 3x_1 + 4x_2 = 12 / 3x_3 - 5x_1 = 10 / x_1 + x_2 + x_3 = 24 \u21d2 [1 2 0; 3 4 0; -5 0 3; 1 1 1]_{4*3} (x_1; x_2; x_3) = (7; 12; 10; 24)_{4*1}", "box": [0.103, 0.730, 0.550, 0.928], "detail": "4x3 matrix and 4x1 rhs with tall parentheses, subscripts 4*3 and 4*1, x column red"}
+  ],
+  "measurements": "Title 'Equal Constraints' x-extent ~232 px (~x 381-613), ~30 pt, centered x ~497 px (0.518). Longest body line (bottom matrix equation) ~255 px (~x 288-543), ~19-20 pt. Frame inset: left ~55 px, top ~44 px, right ~55 px, bottom ~19 px.",
+  "recreation_brief": "1. White 960x540 canvas; red outer frame [0.057,0.081,0.943,0.965]. 2. Centered red bold title 'Equal Constraints' [0.397,0.113,0.638,0.169], ~30 pt. 3. Yellow circular badge '7' top-right [0.889,0.102,0.930,0.185]. 4. Panel1 red box [0.094,0.194,0.876,0.391]: left sum equation, \u21d2 arrow, row-vector\u00d7column-vector=(Z)_{1*1}, right blue underlined 'One Constraint' and red/blue 'Ax=b'. 5. Panel2 red box [0.094,0.415,0.876,0.696]: three summed equations, \u21d2 arrow, 3x3 colored matrix \u00d7 red x column = Z column with _{3*1}, right 'Three Constraints' and 'Ax=b'. 6. Panel3 red box [0.094,0.720,0.876,0.943]: four linear equations, \u21d2 arrow, 4x3 numeric matrix _{4*3} \u00d7 red x column = 4x1 rhs _{4*1}, right 'Four Constraints' and 'Ax=b'. 7. Colors: #C00000 frame/title, #0000FF, #FF0000, #FF00FF, #00B000, #FFFF00, #000000 on #FFFFFF.",
+  "confidence": "[?] exact hex values estimated from raster; [?] font family Calibri/Arial-like inferred; [?] precise pt sizes/pixel extents; [?] whether the 'x' in 'Ax=b' is blue or anti-aliased; [?] exact subscript placement of 4*3/4*1."
+}

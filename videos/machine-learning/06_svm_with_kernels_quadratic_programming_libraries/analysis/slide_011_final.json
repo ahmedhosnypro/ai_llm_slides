@@ -1,0 +1,281 @@
+{
+  "slide_title": "Slide 11",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "title": [],
+    "labels": [
+      "11",
+      "Use C = 1",
+      "Training Vectors",
+      "Test Vectors",
+      "Minimize:",
+      "Subject to:",
+      "\u03b1\u1d62 < C",
+      "\u03b1\u1d62 \u2265 0",
+      "Quadratic Equation in \u03b1 with constraints",
+      "From Previous Lecture"
+    ],
+    "bullets": [
+      "\u03b1\u2081 \u2264 1 , \u03b1\u2082 \u2264 1 , \u03b1\u2083 \u2264 1 , \u03b1\u2084 \u2264 1",
+      "\u03b1\u2081 \u2265 0 , \u03b1\u2082 \u2265 0 , \u03b1\u2083 \u2265 0 , \u03b1\u2084 \u2265 0"
+    ],
+    "equations": [
+      "\u03b1\u2081y\u2081 + \u03b1\u2082y\u2082 + \u03b1\u2083y\u2083 + \u03b1\u2084y\u2084 = 0",
+      "0 \u2264 \u03b1\u2081 \u2264 C, 0 \u2264 \u03b1\u2082 \u2264 C, 0 \u2264 \u03b1\u2083 \u2264 C, 0 \u2264 \u03b1\u2084 \u2264 C,",
+      "TABLE_CELL: x\u2081 / (1 over 1) / y\u2081 = 1",
+      "TABLE_CELL: x\u2082 / (2 over 2) / y\u2082 = 1",
+      "TABLE_CELL: x\u2083 / (7 over 4) / y\u2083 = -1",
+      "TABLE_CELL: (8 over 4) / y\u2084 = -1",
+      "TABLE_CELL: T\u2081 / (2 over 3)",
+      "TABLE_CELL: T\u2082 / (4 over 5)",
+      "TABLE_CELL: T\u2083 / (6 over 2)",
+      "Maximize L = \u2211_{i=1}^{N} \u03b1\u1d62 \u2212 1/2 \u2211_{j=1}^{N} \u2211_{i=1}^{N} \u03b1\u1d62\u03b1\u2c7c y\u1d62y\u2c7c X\u1d62\u1d40X\u2c7c \u21d2 Minimize L_D(\u03b1) = 1/2 \u2211_{i=1}^{N} \u2211_{j=1}^{N} \u03b1\u1d62\u03b1\u2c7c y\u1d62y\u2c7c X\u1d62\u1d40X\u2c7c \u2212 \u2211_{i=1}^{N} \u03b1\u1d62",
+      "x\u2081\u1d40(1 2), x\u2082\u1d40(2 4), x\u2083\u1d40(7 4), x\u2084\u1d40(8 4) \u00d7 (1 2 / 2 4 / 7 4 / 8 4) = matrix with columns x\u2081 x\u2082 x\u2083 x\u2084: row x\u2081\u1d40 = 2 4 11 12; row x\u2082\u1d40 = 4 8 22 24; row x\u2083\u1d40 = 11 22 65 72; row x\u2084\u1d40 = 12 24 72 80",
+      "(y\u2081=1, y\u2082=1, y\u2083=\u22121, y\u2084=\u22121) \u00d7 |1 1 \u22121 \u22121| = y\u1d62y\u2c7c matrix: y\u2081 row = 1 1 \u22121 \u22121; y\u2082 row = 1 1 \u22121 \u22121; y\u2083 row = \u22121 \u22121 1 1; y\u2084 row = \u22121 \u22121 1 1",
+      "[ +1\u03b1\u2081\u00b2 + 2\u03b1\u2081\u03b1\u2082 \u2212 5.5\u03b1\u2081\u03b1\u2083 \u2212 6\u03b1\u2081\u03b1\u2084 + 2\u03b1\u2082\u03b1\u2081 + 4\u03b1\u2082\u00b2 \u2212 11\u03b1\u2082\u03b1\u2083 \u2212 12\u03b1\u2082\u03b1\u2084 \u2212 5.5\u03b1\u2083\u03b1\u2081 \u2212 11\u03b1\u2083\u03b1\u2082 + 32.5\u03b1\u2083\u00b2 + 36\u03b1\u2083\u03b1\u2084 \u2212 6\u03b1\u2084\u03b1\u2081 \u2212 12\u03b1\u2084\u03b1\u2082 + 36\u03b1\u2084\u03b1\u2083[?] + 40\u03b1\u2084\u00b2 ] \u2212 [ \u03b1\u2081 + \u03b1\u2082 + \u03b1\u2083 + \u03b1\u2084 ]",
+      "\u2211 \u03b1\u1d62y\u1d62 = 0",
+      "\u03b1\u2081 + \u03b1\u2082 \u2212 \u03b1\u2083 \u2212 \u03b1\u2084 = 0"
+    ]
+  },
+  "layout": {
+    "arrangement": "Top row: left beige training/test vector panel, small pink 'Use C = 1' box, yellow page circle '11', blue constraint box. Then a full-width blue SVM objective banner. Then a full-width white matrix-work region with X\u1d40X left and y\u1d62y\u2c7c right. Bottom: full-width beige minimization/constraints panel. All inside a red outer frame.",
+    "regions": [
+      {
+        "name": "outer_frame",
+        "box": [
+          0.055,
+          0.037,
+          0.945,
+          0.968
+        ]
+      },
+      {
+        "name": "training_test_panel",
+        "box": [
+          0.067,
+          0.081,
+          0.59,
+          0.322
+        ]
+      },
+      {
+        "name": "use_c_box",
+        "box": [
+          0.604,
+          0.083,
+          0.698,
+          0.148
+        ]
+      },
+      {
+        "name": "badge",
+        "box": [
+          0.883,
+          0.1,
+          0.924,
+          0.172
+        ]
+      },
+      {
+        "name": "constraint_box",
+        "box": [
+          0.604,
+          0.17,
+          0.902,
+          0.3
+        ]
+      },
+      {
+        "name": "objective_banner",
+        "box": [
+          0.067,
+          0.322,
+          0.902,
+          0.407
+        ]
+      },
+      {
+        "name": "matrix_work_region",
+        "box": [
+          0.067,
+          0.409,
+          0.902,
+          0.639
+        ]
+      },
+      {
+        "name": "bottom_minimize_panel",
+        "box": [
+          0.067,
+          0.648,
+          0.902,
+          0.944
+        ]
+      },
+      {
+        "name": "watermark",
+        "box": [
+          0.1,
+          0.25,
+          0.45,
+          0.55
+        ],
+        "note": "diagonal grey 'From Previous Lecture' across center"
+      }
+    ]
+  },
+  "visual_elements": [
+    {
+      "type": "rectangle/outer frame",
+      "box": [
+        0.055,
+        0.037,
+        0.945,
+        0.968
+      ],
+      "border_color": "#C00000"
+    },
+    {
+      "type": "beige panel",
+      "box": [
+        0.067,
+        0.081,
+        0.59,
+        0.322
+      ],
+      "fill": "#FBEEDD"
+    },
+    {
+      "type": "pink box",
+      "box": [
+        0.604,
+        0.083,
+        0.698,
+        0.148
+      ],
+      "fill": "#FCE4EC",
+      "contains": "Use C = 1",
+      "text_color": "#C00000"
+    },
+    {
+      "type": "circle/badge",
+      "box": [
+        0.883,
+        0.1,
+        0.924,
+        0.172
+      ],
+      "fill": "#FFF2CC",
+      "border": "#BF9000",
+      "contains": "11",
+      "ink": "#7F6000"
+    },
+    {
+      "type": "blue bordered constraint box",
+      "box": [
+        0.604,
+        0.17,
+        0.902,
+        0.3
+      ],
+      "fill": "#EAF1FB",
+      "border": "#4472C4",
+      "ink": "#1F4E79"
+    },
+    {
+      "type": "blue bordered banner",
+      "box": [
+        0.067,
+        0.322,
+        0.902,
+        0.407
+      ],
+      "fill": "#EAF1FB",
+      "border": "#4472C4"
+    },
+    {
+      "type": "red-bordered white matrix panel",
+      "box": [
+        0.067,
+        0.409,
+        0.902,
+        0.639
+      ],
+      "border_color": "#C00000",
+      "fill": "#FFFFFF"
+    },
+    {
+      "type": "beige bottom panel",
+      "box": [
+        0.067,
+        0.648,
+        0.902,
+        0.944
+      ],
+      "fill": "#FBEEDD"
+    },
+    {
+      "type": "vector/matrix notation",
+      "note": "parenthesized stacks and bracketed matrices"
+    },
+    {
+      "type": "arrow \u21d2 in objective banner",
+      "note": "maximize \u21d2 minimize"
+    },
+    {
+      "type": "watermark text",
+      "box": [
+        0.1,
+        0.25,
+        0.45,
+        0.55
+      ],
+      "text": "From Previous Lecture",
+      "color": "#BFBFBF",
+      "style": "diagonal grey italic"
+    }
+  ],
+  "imagery": "none",
+  "colors": {
+    "slide_background": "#FFFFFF",
+    "outer_frame_and_red_accents": "#C00000",
+    "beige_panels": "#FBEEDD",
+    "pink_c_box": "#FCE4EC",
+    "pink_c_box_text": "#C00000",
+    "blue_boxes_banner_fill": "#EAF1FB",
+    "blue_boxes_border": "#4472C4",
+    "blue_ink": "#1F4E79",
+    "matrix_panel_fill": "#FFFFFF",
+    "matrix_panel_border": "#C00000",
+    "math_ink": "#000000",
+    "blue_math_accents": "#2E75B6",
+    "badge_fill": "#FFF2CC",
+    "badge_border": "#BF9000",
+    "badge_ink": "#7F6000",
+    "watermark_grey": "#BFBFBF"
+  },
+  "typography_notes": "Sans-serif (Calibri/Arial-like). Panel headers bold red ~18 pt centered; small labels ~11-12 pt; vector/matrix entries ~12 pt centered; banner equations ~13 pt; bottom quadratic ~13 pt. 'Use C = 1', 'Subject to:', 'Minimize:', 'Quadratic Equation...' bold red ~14-16 pt. Page '11' bold ~14 pt. Math italic variables, upright Maximize/Minimize words; diagonal grey italic watermark.",
+  "animation_state": null,
+  "recreation_brief": "1. Draw outer frame: rectangle, box [0.055, 0.037, 0.945, 0.968], white fill, border #C00000.\n2. Place top-left beige panel: rectangle, box [0.067, 0.081, 0.590, 0.322], fill #FBEEDD. Add red bold headers 'Training Vectors' and 'Test Vectors' centered at top. Inside, lay out 4 training columns: x\u2081(1,1) y\u2081=1, x\u2082(2,2) y\u2082=1, x\u2083(7,4) y\u2083=-1, x\u2084(8,4) y\u2084=-1; and 3 test columns: T\u2081(2,3), T\u2082(4,5), T\u2083(6,2). Use black ~12pt centered text.\n3. Place pink box: rectangle, box [0.604, 0.083, 0.698, 0.148], fill #FCE4EC, text 'Use C = 1' in #C00000 bold ~14-16pt.\n4. Place page badge: circle, box [0.883, 0.100, 0.924, 0.172], fill #FFF2CC, border #BF9000, text '11' in #7F6000 bold ~14pt.\n5. Place blue constraint box: rectangle, box [0.604, 0.170, 0.902, 0.300], fill #EAF1FB, border #4472C4, ink #1F4E79. Line 1: '\u03b1\u2081y\u2081 + \u03b1\u2082y\u2082 + \u03b1\u2083y\u2083 + \u03b1\u2084y\u2084 = 0'. Line 2: '0 \u2264 \u03b1\u2081 \u2264 C, 0 \u2264 \u03b1\u2082 \u2264 C, 0 \u2264 \u03b1\u2083 \u2264 C, 0 \u2264 \u03b1\u2084 \u2264 C,' (trailing comma as printed). ~11-12pt.\n6. Place blue objective banner: rectangle, box [0.067, 0.322, 0.902, 0.407], fill #EAF1FB, border #4472C4. Center equation: 'Maximize L = \u2211_{i=1}^{N} \u03b1\u1d62 \u2212 1/2 \u2211_{j=1}^{N} \u2211_{i=1}^{N} \u03b1\u1d62\u03b1\u2c7c y\u1d62y\u2c7c X\u1d62\u1d40X\u2c7c \u21d2 Minimize L_D(\u03b1) = 1/2 \u2211_{i=1}^{N} \u2211_{j=1}^{N} \u03b1\u1d62\u03b1\u2c7c y\u1d62y\u2c7c X\u1d62\u1d40X\u2c7c \u2212 \u2211_{i=1}^{N} \u03b1\u1d62'. Use red/blue/black accents, ~13pt.\n7. Place white matrix panel: rectangle, box [0.067, 0.409, 0.902, 0.639], fill #FFFFFF, border #C00000. Left region [0.067, 0.409, 0.560, 0.639]: X\u1d40X 4\u00d74 Gram matrix with rows '2 4 11 12', '4 8 22 24', '11 22 65 72', '12 24 72 80'; black text with red row/column labels. Right region [0.560, 0.409, 0.902, 0.639]: y\u1d62y\u2c7c 4\u00d74 matrix with rows '1 1 \u22121 \u22121', '1 1 \u22121 \u22121', '\u22121 \u22121 1 1', '\u22121 \u22121 1 1'; black/red text. ~12pt centered.\n8. Place bottom beige panel: rectangle, box [0.067, 0.648, 0.902, 0.944], fill #FBEEDD. Add red bold headers 'Minimize:' and 'Subject to:' (~14-16pt). Add two-line bracket expression: '[ +1\u03b1\u2081\u00b2 + 2\u03b1\u2081\u03b1\u2082 \u2212 5.5\u03b1\u2081\u03b1\u2083 \u2212 6\u03b1\u2081\u03b1\u2084 + 2\u03b1\u2082\u03b1\u2081 + 4\u03b1\u2082\u00b2 \u2212 11\u03b1\u2082\u03b1\u2083 \u2212 12\u03b1\u2082\u03b1\u2084 \u2212 5.5\u03b1\u2083\u03b1\u2081 \u2212 11\u03b1\u2083\u03b1\u2082 + 32.5\u03b1\u2083\u00b2 + 36\u03b1\u2083\u03b1\u2084 \u2212 6\u03b1\u2084\u03b1\u2081 \u2212 12\u03b1\u2084\u03b1\u2082 + 36\u03b1\u2084\u03b1\u2083[?] + 40\u03b1\u2084\u00b2 ] \u2212 [ \u03b1\u2081 + \u03b1\u2082 + \u03b1\u2083 + \u03b1\u2084 ]' (~13pt, black with red coefficients). Add constraints: '\u2211 \u03b1\u1d62y\u1d62 = 0' and '\u03b1\u2081 + \u03b1\u2082 \u2212 \u03b1\u2083 \u2212 \u03b1\u2084 = 0' (red/black). Add box constraints: '\u03b1\u2081 \u2264 1 , \u03b1\u2082 \u2264 1 , \u03b1\u2083 \u2264 1 , \u03b1\u2084 \u2264 1' and '\u03b1\u2081 \u2265 0 , \u03b1\u2082 \u2265 0 , \u03b1\u2083 \u2265 0 , \u03b1\u2084 \u2265 0'. Add '\u03b1\u1d62 < C' and '\u03b1\u1d62 \u2265 0'. Add red bold text 'Quadratic Equation in \u03b1 with constraints' (~14-16pt).\n9. Place watermark: text box, box [0.10, 0.25, 0.45, 0.55], text 'From Previous Lecture', color #BFBFBF, diagonal grey italic.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Reconstructed missing slide_title as 'Slide 11' from slide_number because no printed title exists on the slide.",
+      "Set subtitle_or_header and animation_state to null as they are absent from the source.",
+      "Rewrote recreation_brief into a 9-step ordered numbered checklist specifying exact text, coordinates, colors, and shape types for every element.",
+      "Preserved all [?] markers in verbatim text and equations and listed them in uncertain_items."
+    ],
+    "uncertain_items": [
+      "Bottom quadratic term '+36 \u03b1\u2084\u03b1\u2083[?]' vs '+36 \u03b1\u2084\u03b1\u2081' is ambiguous.",
+      "Trailing comma after final '0 \u2264 \u03b1\u2084 \u2264 C' in the constraint box is uncertain.",
+      "Slide spelling of 'Quadratic' vs 'Quadractic' is uncertain.",
+      "Watermark opacity and exact diagonal angle are uncertain.",
+      "Minus sign visibility in top-left y\u2083 label was resolved to y\u2083=-1 but originally flagged."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "validated_by": "validate_slides",
+    "validation_elapsed_s": 332.9
+  }
+}

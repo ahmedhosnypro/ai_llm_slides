@@ -1,49 +1,50 @@
 {
   "slide_number": 25,
-  "source_image": "slide_025.jpg",
-  "analysis_type": "vision",
-  "model": "images",
-  "round": 1,
-  "attempt": 1,
-  "winner": "images",
-  "layout_map": "1. Outer slide frame — thin dark border around the full capture\n2. Header — title \"Quadratic Kernel Mapping and Kernel Trick\" top-center; slide number \"25\" in a gold circle at top-right\n3. Main content panel — large rounded rectangle with light beige fill and dark red/purple border, occupying the central slide area\n4. Left equation block — vector definitions (a, b) and dot-product expansion at top-left inside the panel\n5. Right definition block — \"Where:\" feature map φ(x) with arrow and column vector, positioned mid-right inside the panel\n6. Bottom annotation — \"2D ⇒ 3D\" in red at bottom-right inside the panel\n7. Lower dead band — empty beige space below the math content inside/near the panel, roughly the bottom third of the slide height\n8. Bottom black strip — thick black bar at the very bottom edge (likely OS/window chrome; noted once)",
-  "first_glance_test": "A new user understands within 3 seconds that this is a math lecture slide about mapping 2D vectors into 3D via a kernel trick. The screen offers no interactive actions; it is purely informational. The focal point should be the title and the central expansion equation, and it does win the eye via the red title and the centrally placed formula. The \"2D ⇒ 3D\" takeaway is visible but secondary and slightly orphaned at bottom-right.",
-  "strengths": [
-    "The title clearly states the topic and dominates the top of the slide with strong red-on-cream contrast.",
-    "The key dimensionality insight \"2D ⇒ 3D\" is accented in red and easy to spot.",
-    "The content panel uses high contrast between dark borders/text and the light background, keeping the math readable."
-  ],
-  "defects": [
-    {
-      "category": "g",
-      "severity": "minor",
-      "confidence": "high",
-      "description": "main panel — lower dead band — roughly the bottom third of the content panel is untreated empty beige space below the math content, unbalancing the slide vertically — redistribute content downward or add a summary/footer strip."
-    }
-  ],
-  "top_3": [
-    "[g] Lower dead band in the main panel wastes roughly a third of the slide height with empty beige space, weakening vertical composition (see section 4).",
-    "Only one defensible defect was found; no second or third issue meets the visible-evidence threshold."
-  ],
-  "structural_proposal": "1. Move the math block downward so it vertically centers within the main panel, eliminating the lower dead band (source: left equation block + right definition block → destination: main panel, vertically centered).\n2. Add a thin summary strip or footer line at the bottom of the panel to anchor the \"2D ⇒ 3D\" callout and give the dead band purpose (source: bottom annotation → destination: new footer strip inside main panel).",
-  "verdict_scores": {
-    "theme_dark_mode": 7,
-    "typography": 8,
-    "spacing": 7,
-    "alignment": 8,
-    "crowding_density": 6,
-    "hierarchy": 8,
-    "composition": 5,
-    "completeness": 9,
-    "continuity_consistency": 8,
-    "affordance_states": 8,
-    "first_glance_clarity": 8,
-    "overall": 7
+  "source_image": "unique_slides/slide_025.jpg",
+  "slide_title": "Quadratic Kernel Mapping and Kernel Trick",
+  "verbatim_text": {
+    "labels": ["25", "a [a1; a2]   b [b1; b2]", "Where:", "2D \u21d2 3D"],
+    "equations": [
+      "[a^T b]^2 = ([a1 a2][b1; b2])^2 = (a1 b1 + a2 b2)^2 = a1^2 b1^2 + a2^2 b2^2 + 2 a1 b1 a2 b2",
+      "[a^T b]^2 = (a1^2  a2^2  \u221a2 a1 a2) [b1^2; b2^2; \u221a2 b1 b2] = \u03c6(a)^T \u03c6(b)",
+      "\u03c6(x) \u2261 [x1; x2] \u21d2 [x1^2; x2^2; \u221a2 x1 x2]"
+    ]
   },
-  "uncertainties": [
-    "The thick black strip at the bottom edge is likely OS/window chrome; if it is part of the slide design it would be an additional composition defect, but it is treated as capture chrome here.",
-    "Subscript/superscript math (e.g., a₁, b₂, √2a₁a₂) is near the legibility floor at this resolution; exact glyph shapes could not be verified pixel-for-pixel.",
-    "Whether the empty lower panel space is intentional slide design (speaker notes area, etc.) cannot be determined from a single static capture."
+  "layout": {
+    "arrangement": "Title band on top with badge; one large blue-bordered pale-yellow panel holds all content: vector pair row, equation row 1 (with red highlight on leading term), equation row 2 on the left and the 'Where:' definition plus red '2D \u21d2 3D' on the right.",
+    "regions": [
+      {"name": "outer frame", "box": [0.057,0.078,0.943,0.961]},
+      {"name": "title", "box": [0.263,0.100,0.807,0.148]},
+      {"name": "badge", "box": [0.887,0.089,0.930,0.163]},
+      {"name": "content panel", "box": [0.069,0.167,0.931,0.657], "fill": "#FFFFCC[?]", "stroke": "#0000FF"},
+      {"name": "vector pair row", "box": [0.080,0.190,0.235,0.275]},
+      {"name": "equation row 1", "box": [0.072,0.285,0.846,0.345], "highlight": [0.075,0.287,0.146,0.344]},
+      {"name": "equation row 2", "box": [0.072,0.415,0.565,0.567]},
+      {"name": "Where definition", "box": [0.575,0.455,0.930,0.565]},
+      {"name": "2D \u21d2 3D note", "box": [0.694,0.583,0.780,0.626]}
+    ]
+  },
+  "visual_elements": [
+    {"type": "rectangle", "role": "outer frame", "box": [0.057,0.078,0.943,0.961], "stroke": "#C00000", "fill": "none"},
+    {"type": "rectangle", "role": "content panel", "box": [0.069,0.167,0.931,0.657], "stroke": "#0000FF", "fill": "#FFFFCC[?]"},
+    {"type": "rounded-box", "role": "highlight on [a^T b]^2", "box": [0.075,0.287,0.146,0.344], "stroke": "#FF0000"},
+    {"type": "circle", "role": "badge", "box": [0.887,0.089,0.930,0.163], "fill": "#FFFF00", "stroke": "#C00000", "text": "25"},
+    {"type": "arrow-glyph", "role": "\u21d2 in definition and 2D\u21d23D", "color": "#FF0000"}
   ],
-  "vocabulary_proposals": []
+  "imagery": "none",
+  "colors": {
+    "background": "#FFFFFF", "frame": "#C00000", "title": "#C00000",
+    "panel_fill": "#FFFFCC[?]", "panel_border": "#0000FF",
+    "badge_fill": "#FFFF00", "badge_stroke": "#C00000", "badge_ink": "#000000",
+    "math_ink": "#000000", "a_accent": "#FF0000", "b_accent": "#0000FF", "arrow_accent": "#FF0000"
+  },
+  "typography_notes": "Sans-serif (Arial-like). Title bold red ~28 pt centered. Badge numeral bold ~14 pt. Equations left-aligned ~18 pt; variables italic; a-side red, b-side blue, rest black; column vectors stacked. '2D \u21d2 3D' red bold ~18 pt.",
+  "recreation_brief": [
+    "White canvas; red outer frame [0.057,0.078,0.943,0.961]",
+    "Centered red bold title, yellow badge '25' top-right",
+    "Blue-bordered pale-yellow panel [0.069,0.167,0.931,0.657]",
+    "Vector pair row: red a=[a1;a2], blue b=[b1;b2]",
+    "Equation row 1 with red rounded highlight over leading [a^T b]^2",
+    "Equation row 2 with 3-row stacked column vector; right-side 'Where:' definition with red \u21d2 and 3-row result column; red bold '2D \u21d2 3D' below"
+  ]
 }

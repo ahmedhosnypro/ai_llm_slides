@@ -1,0 +1,69 @@
+{
+  "slide_number": 5,
+  "source_image": "unique_slides/slide_005.jpg",
+  "slide_title": "none",
+  "verbatim_text": {
+    "title": [],
+    "labels": [
+      "5",
+      "Three Variables Example"
+    ],
+    "bullets": [
+      "a_11   =>   Coefficient of x_1^2",
+      "a_22   =>   Coefficient of x_2^2",
+      "a_33   =>   Coefficient of x_3^2",
+      "a_21 + a_12   =>   Coefficient of x_1 x_2    =>   a_12 = a_21 = 1/2 coefficient of x_1 x_2",
+      "a_13 + a_31   =>   Coefficient of x_1 x_3    =>   a_13 = a_31 = 1/2 coffecient of x_1 x_3 [?]",
+      "a_32 + a_23   =>   Coefficient of x_2 x_3    =>   a_32 = a_23 = 1/2 coefficient of x_2 x_3"
+    ],
+    "equations": [
+      "(x_1  x_2  x_3) * | a_11  a_12  a_13 ; a_21  a_22  a_23 ; a_31  a_32  a_33 | * (x_1 ; x_2 ; x_3) = | a_11 x_1 + a_21 x_2 + a_31 x_3   a_12 x_1 + a_22 x_2 + a_32 x_3   a_13 x_1 + a_23 x_2 + a_33 x_3 | * (x_1 ; x_2 ; x_3) =",
+      "(a_11 x_1 + a_21 x_2 + a_31 x_3) x_1 + (a_12 x_1 + a_22 x_2 + a_32 x_3) x_2 + (a_13 x_1 + a_23 x_2 + a_33 x_3) x_3 =",
+      "a_11 x_1^2 + a_21 x_1 x_2 + a_31 x_1 x_3 + a_12 x_1 x_2 + a_22 x_2^2 + a_32 x_2 x_3 + a_13 x_1 x_3 + a_23 x_2 x_3 + a_33 x_3^2 =",
+      "a_11 x_1^2 + a_22 x_2^2 + a_33 x_3^2 + (a_21 + a_12) x_1 x_2 + (a_31 + a_13) x_1 x_3 + (a_32 + a_23) x_2 x_3  =>  Quadratic form",
+      "TABLE_CELL: column headings (red) x_1  x_2  x_3 ; row labels (red) x_1, x_2, x_3 ; left 3x3 matrix a_11 a_12 a_13 / a_21 a_22 a_23 / a_31 a_32 a_33 ; arrow => ; right 3x3 matrix: coef of x_1^2 | 0.5 coef of x_1 x_2 | 0.5 coef of x_1 x_3 / 0.5 coef of x_1 x_2 | coef of x_2^2 | 0.5 coef of x_2 x_3 / 0.5 coef of x_1 x_3 | 0.5 coef of x_2 x_3 | coef of x_3^2"
+    ]
+  },
+  "layout": {
+    "arrangement": "Single outer red frame inset from white slide edges. Top-to-bottom: (A) large expansion equation block spanning most of the width, badge at frame's top-right; (B) middle red-bordered box listing coefficient mappings with red underlined side label 'Three Variables Example' to its right; (C) bottom red-bordered box with the original 3x3 matrix, red row/column x-labels, rightward arrow, and the resulting coefficient matrix.",
+    "regions": [
+      {"name": "outer_frame", "box": [0.059, 0.070, 0.925, 0.976]},
+      {"name": "badge", "box": [0.893, 0.100, 0.939, 0.184]},
+      {"name": "top_expansion_block", "box": [0.075, 0.085, 0.895, 0.405]},
+      {"name": "middle_mapping_box", "box": [0.065, 0.437, 0.796, 0.735]},
+      {"name": "side_label", "box": [0.803, 0.452, 0.928, 0.532]},
+      {"name": "bottom_matrix_box", "box": [0.065, 0.748, 0.796, 0.958]}
+    ]
+  },
+  "visual_elements": [
+    {"type": "rectangle/outer frame", "box": [0.059, 0.070, 0.925, 0.976], "border_color": "#C00000", "fill": "none/white"},
+    {"type": "circle/badge", "box": [0.893, 0.100, 0.939, 0.184], "fill": "#FFFF00", "outline": "#000000", "contains": "5"},
+    {"type": "rectangle/middle box", "box": [0.065, 0.437, 0.796, 0.735], "border_color": "#C00000", "fill": "#FFFFFF"},
+    {"type": "rectangle/bottom box", "box": [0.065, 0.748, 0.796, 0.958], "border_color": "#C00000", "fill": "#FFFFFF"},
+    {"type": "matrix bracket glyphs", "note": "large parenthesis-style delimiters around 3x3 arrays in regions A and C, black"},
+    {"type": "arrows =>", "color": "#0000FF", "note": "blue rightward arrows in list rows and between the two bottom matrices"},
+    {"type": "highlight boxes", "box": "gold ~#FFD966 around 'coef of x_1^2'; blue ~#9DC3E6 around '0.5 coef of x_1 x_2' cells; pink ~#F4CCCC around bottom-middle '0.5 coef of x_2 x_3'; small boxes around a_11, a_12, a_32 in left matrix"},
+    {"type": "text label", "box": [0.700, 0.360, 0.880, 0.400], "text": "=> Quadratic form", "color": "#008000"}
+  ],
+  "imagery": "none",
+  "colors": {
+    "slide_background": "#FFFFFF",
+    "frames_and_red_labels": "#C00000",
+    "math_ink": "#000000",
+    "blue_arrows": "#0000FF",
+    "quadratic_form_green": "#008000",
+    "badge_fill": "#FFFF00",
+    "badge_numeral": "#000000",
+    "highlight_gold": "#FFD966",
+    "highlight_blue": "#9DC3E6",
+    "highlight_pink": "#F4CCCC"
+  },
+  "typography_notes": "Italic math serif (Cambria Math/Times-like) for variables and equations with sub/superscripts; plain sans-serif (Arial/Calibri-like) for 'Coefficient of ...' lines and 'Three Variables Example' (red, bold, underlined, title case). Badge '5' bold black. List rows left-aligned; equations linear with line wraps; red italic x_1/x_2/x_3 header and row labels.",
+  "equations": [
+    {"linear": "(x_1  x_2  x_3) * |a_11 a_12 a_13; a_21 a_22 a_23; a_31 a_32 a_33| * (x_1; x_2; x_3) = ... = a_11 x_1^2 + a_22 x_2^2 + a_33 x_3^2 + (a_21+a_12) x_1 x_2 + (a_31+a_13) x_1 x_3 + (a_32+a_23) x_2 x_3 => Quadratic form", "box": [0.075, 0.085, 0.895, 0.405], "detail": "four linear lines, tall matrix delimiters, black ink, x-variables red, green 'Quadratic form'"},
+    {"linear": "left 3x3 a_ij matrix with red x labels, => arrow, right 3x3 coefficient matrix", "box": [0.065, 0.748, 0.796, 0.958], "detail": "boxed a_11/a_12/a_32 in left matrix; colored highlight boxes on right matrix cells"}
+  ],
+  "measurements": "Longest body line (final quadratic-form line) ~x 57-850 px (~793 px), ~13-14 pt. Side heading 'Three Variables Example' ~x 772-890 px (~118 px), ~12-13 pt bold, right-aligned. No centered title; badge '5' x-centre ~880 px. Frame margins: left ~57 px, top ~38 px, right ~72 px, bottom ~13 px.",
+  "recreation_brief": "1. White 960x540 canvas; outer red frame [0.059,0.070,0.925,0.976] stroke #C00000. 2. Yellow circle badge '5' [0.893,0.100,0.939,0.184]. 3. Top expansion block [0.075,0.085,0.895,0.405]: four equation lines in black italic math serif with red x's, ending '=> Quadratic form' in green. 4. Middle red box [0.065,0.437,0.796,0.735] with six left-aligned mapping rows (diagonal a_11/a_22/a_33; cross terms a_21+a_12, a_13+a_31, a_32+a_23 with blue => and 1/2 coefficient notes). 5. Red underlined bold label 'Three Variables Example' [0.803,0.452,0.928,0.532]. 6. Bottom red box [0.065,0.748,0.796,0.958]: left 3x3 a_ij matrix with red x_1/x_2/x_3 row+column labels and boxed a_11/a_12/a_32, blue => arrow, right 3x3 coefficient matrix with 'coef of x_i^2' diagonal and '0.5 coef of x_i x_j' off-diagonals, gold/blue/pink highlight boxes.",
+  "confidence": "[?] exact hex values of frame and highlight fills estimated; [?] middle cross-term row reads 'coffecient' (possible on-slide typo) transcribed as seen; [?] pt sizes and pixel margins approximate from 960x540 capture."
+}

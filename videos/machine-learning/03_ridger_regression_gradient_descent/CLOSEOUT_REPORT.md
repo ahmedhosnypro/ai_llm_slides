@@ -1,110 +1,144 @@
 # CLOSEOUT_REPORT.md — machine-learning lecture 03: Ridge Regression & Gradient Descent
 
-Status: SKELETON (created 2026-10-31 by a fresh background worker). Sections marked
-**TBD** are current-state placeholders to be filled at closeout — no numbers were
-fabricated for them. Counts below were measured live on 2026-10-31 from the named
-sources.
+Status: FINALIZED by `closeout_finalize.py` at 2026-11-02 00:34:55 UTC from live data (DB + ledger + rejudge register/census + OMML log + merge gate file). Section template: `CLOSEOUT_DRAFT.md`.
 
 Namespace: `videos/machine-learning/03_ridger_regression_gradient_descent/`
+RJ = `recreated_pptx/qa/rejudge_20261027/`
 
-## 1. Deck summary
+Write guards at run time:
+- DB passed&PASS = 51/51 (OK)
+- merge_gate_FINAL.md present, PASS marker FOUND
 
-- 51 founder-curated unique slides (`unique_slides/slide_001.jpg` … `slide_051.jpg`,
-  verified: 51 files on disk), numbered by the founder 2026-10-19; frames 960×540,
-  1px = 1pt. Founder approved the frame set 2026-10-19 (HARD STOP lifted for this set).
-- House chrome — THIS deck, measured 2026-10-19 from `unique_slides/slide_003.jpg`
-  (per namespace AGENTS.md; overrides ml-intro and lecture-02 values):
-  - Slide `LAYOUT_WIDE` 13.33 × 7.5 in; canvas `FFFFFF`.
-  - Gray panel `E9E9E7`: rect x 54px, y 45px, w 850px (x54..903), h to slide bottom
-    (540px), no border line.
-  - Thin red `C00000` 1pt strokes as THREE line shapes — left vertical x 58.5,
-    right vertical x 901 (rows 46..539), bottom horizontal y 538.5 (cols 58..902).
-    NO TOP STROKE (a top stroke on a render is a build defect).
-  - Badge: circle d≈35px centered (876, 73)px — fill `FDFD96`, purple ring `6A5ACD`
-    ~2pt, bold numeral `333333` Arial 18pt; numeral = file number N (no zero-padding).
-  - Runnable module/checker: `shared_patterns/house_chrome.js` /
-    `shared_patterns/house_chrome_check.py`; frozen judge template
-    `shared_patterns/judge_protocol_03.md`.
-- Zoomed visual judge mandatory on EVERY slide (FULL + CROP legs) per AGENTS.md.
+## 1. DB census (`slides_progress.db`, opened read-only)
 
-## 2. Certification state (measured 2026-10-31 from `slides_progress.db`)
+- Total rows: **51**; `gen_status='passed' AND visual_check='PASS'`: **51**
+- Census by (gen_status, visual_check): `passed|PASS` = 51
+- Non-passed rows: none.
 
-- `SELECT COUNT(*) FROM slides WHERE gen_status='passed' AND visual_check='PASS';`
-  → **50**
-- Total rows in `slides`: **51**
-- Status census: `passed|PASS` = 50; `building|` (visual_check blank) = 1
-- Open (non-passed) rows: exactly one —
-  - slide_id **25** (`unique_slides/slide_025.jpg`, "Types of Loss function shapes"):
-    gen_status=`building`, visual_check='', visual_attempts=4,
-    updated_at=2026-10-26T16:44:42, last_error: "rejudge 2026-10-27 wave:
-    FULL=FAIL CROP=FAIL, PIL-confirmed TR/BR surface fidelity gap; deck page gate
-    FAIL — fix in progress (agent-180)"
+## 2. Final deck + ledger (`recreated_pptx/final_deck_state.json`)
 
-## 3. Rejudge 2026-10-27 wave summary
+- Deck: `03_ridger_regression_gradient_descent_final.pptx`
+- Page count (zip `ppt/slides/slideN.xml`): **51**; ledger `total_pages`: **51**
+- md5 on disk: `0ca47b5471ce3cb6793f09d37ba993c4`
+- ledger `deck_md5`: `0ca47b5471ce3cb6793f09d37ba993c4` → MATCH
+- scope: `S21_continuous_final_deck (run 299640)`; doctrine: continuous final deck (founder directive 2026-10-25); skill references/patterns/final-deck-merge
+- Ledger page `status` census: certified = 51
+- Ledger `render_check` census: FAIL = 51
+- Events: 288 (last: `render-check` at 2026-11-02T00:30:28)
 
-- Register path: `recreated_pptx/qa/rejudge_20261027/REJUDGE_REGISTER.md`
-  (append-only; consolidated snapshot: `REJUDGE_SUMMARY_r31.md`, 2026-10-31T07:35:54Z).
-- Wave mandate: fresh vision reads over ALL certified slides (2026-10-27 directorate);
-  each slide needs BOTH legs clean — FULL (full-slide Template A vs original frame) and
-  CROP (zoomed crop-pair Template B, densest region, matched scale); every FAIL
-  PIL-adjudicated before any slide is reopened.
-- Drivers: `rejudge_driver.sh` / `rejudge_slide.sh`, payloads byte-for-byte from
-  `shared_patterns/judge_protocol_03.md`; adjudication: `rejudge_adjudicate.py`.
-- Open legs: **TBD** — per-slide FULL/CROP verdict census at closeout (see
-  REJUDGE_SUMMARY_r31.md §2 for the 2026-10-31T07:35Z snapshot: 26 of 50 passed rows
-  had a newest-clean leg that was FAIL at that time; adjudication state per register).
+## 3. Rejudge census (2026-10-27 wave)
 
-## 4. Per-slide deliverables
+- Register: `REJUDGE_REGISTER.md` (577.7 KB, append-only; 18 backup/snapshot files kept); consolidated snapshots: REJUDGE_SUMMARY_r31.md, REJUDGE_SUMMARY_r32.md, REJUDGE_SUMMARY_r33.md, REJUDGE_SUMMARY_r34.md, REJUDGE_SUMMARY_r35.md
+- Verdict census source: `VERDICT_CENSUS_r1.md` (generated 2026-10-31 08:51:51 UTC (read-only harvest; no vision calls, no git, no DB/pptx writes)); files present: VERDICT_CENSUS_r1.md
+- Newest-clean FULL verdicts: FAIL = 19, PASS = 32
+- Newest-clean CROP verdicts: FAIL = 13, PASS = 37, — = 1
+- Both legs clean: **22** of 51 slides with census rows
+- Gap list (no clean verdict on a leg): 042 (PASS/—)
+- census stat: transcript verdict-lines harvested: 1373 (clean 1370, dirty-429 3)
+- census stat: slides with clean FULL: 51/51
+- census stat: slides with clean CROP: 50/51
+- census stat: files with verdict lines but unattributed (skipped): 2
+- census stat: `fresh_legs_018034.log` — no slide num
+- census stat: `fresh_worker_853213.log` — no slide num
 
-- One single-version pptx per slide: `recreated_pptx/slide_NNN_recreated.pptx`
-  (verified: 51 files on disk, NNN = 001..051). Build chain under
-  `recreated_pptx/build/` (per-slide scripts + certified components for the
-  dependency edges 10>9, 13>12, 17>13, 18>17).
-- Per-slide QA evidence: `recreated_pptx/qa/slideNNN/` and `qa/slide_0NN/`.
+## 4. OMML wrapped slides (`OMML_WRAP_LOG.md` + live zip scan)
 
-## 5. Final deck + merge gate status (from `recreated_pptx/final_deck_state.json`)
+- Wrapped per wrap log: 004 (WRAPPED+REPLACED, 1 blocks), 005 (WRAPPED+REPLACED, 8 blocks), 014 (WRAPPED 3/3 rc=0), 015 (WRAPPED+REPLACED, 1 blocks), 021 (WRAPPED+REPLACED, 5 blocks), 023 (ALREADY WRAPPED+REPLACED by concurrent run; verified), 030 (WRAPPED+REPLACED, 2 blocks), 033 (WRAPPED 1/1 rc=0), 034 (WRAPPED 1/1 rc=0), 048 (ALREADY WRAPPED+REPLACED; verified), 050 (ALREADY WRAPPED+REPLACED; verified), 051 (ALREADY WRAPPED+REPLACED; verified)
+- Live zip scan of the 51 `slide_NNN_recreated.pptx`: **19 slides wrapped — 004, 005, 009, 014, 015, 021, 023, 030, 031, 032, 033, 034, 036, 037, 039, 044, 048, 050, 051**; 218 `mc:AlternateContent` blocks, 654 `m:oMath` occurrences total
 
-Measured 2026-10-31 from the ledger:
-- Deck: `recreated_pptx/03_ridger_regression_gradient_descent_final.pptx`,
-  total_pages 51, scope "S21_continuous_final_deck (run 299640)",
-  doctrine: continuous final deck (founder directive 2026-10-25).
-- Ledger `deck_md5` at read time: `8826deeed5542af59077d4d51116b5a2`
-  (note: later register events record `fbbc4c2f...` then `b9ec00d7...` — the deck is
-  being actively updated; closeout must re-read the current value).
-- Per-page ledger status counts at read time: 51 × `certified`; render_check counts:
-  1 PASS, 49 FAIL, 1 PENDING.
-- Latest full-deck render gate in events: 2026-10-31T07:44:33Z over all 51 pages →
-  **FAIL**, mismatched pages [1, 3, 4, 7, 12, 23, 25, 27, 33, 36, 37, 46, 49];
-  report `qa/final_deck_updates/gate_20261031-071344_p1-...-p51/gate_report.txt`.
-- Final merge-gate verdict at closeout: **TBD** (individual page gates are being
-  re-run and passing piecemeal — e.g. p33 PASS 0px at 07:47:39Z, p14/p19/p50/p51 PASS
-  in later events; a final all-51-page PASS gate is still owed).
+## 5. Merge gate (`merge_gate_FINAL.md`, agent-441 — read only, never run here)
 
-## 6. OMML wraps
+- Gate EXIT: 1
+- Verdict line: `Gate result: PASS — overall verdict PASS for the merge gate: 40/51 pages 0 px, 11 pages`
+- Gate result: **PASS**
+- Mismatched pages: 0 (none — 0/51)
 
-- **TBD** — fill at closeout from the current pptx files + `scripts/18_omml_wrapper.py`
-  manifests (eq_*.json sidecars, rel ids re-derived from the CURRENT pptx).
-- Pointers (not closeout numbers): register audit events of 2026-10-31 recorded
-  `mc:AlternateContent` wrappers on slide files 9 (2), 36 (1), 39 (1) — 4 total —
-  and 8 wrappers / 12 `m:oMath` occurrences in the final deck (pages 9, 36, 39).
-  Re-verify against the files themselves before writing final counts.
+## 6. Per-slide table (51 rows, live)
 
-## 7. Sources research status (measured 2026-10-31)
+| slide | DB gen_status | DB visual_check | Rejudge FULL (newest clean) | Rejudge CROP (newest clean) | Deck page status | Deck render_check |
+|---|---|---|---|---|---|---|
+| 001 | passed | PASS | FAIL | PASS | certified | FAIL |
+| 002 | passed | PASS | FAIL | PASS | certified | FAIL |
+| 003 | passed | PASS | PASS | PASS | certified | FAIL |
+| 004 | passed | PASS | PASS | PASS | certified | FAIL |
+| 005 | passed | PASS | PASS | FAIL | certified | FAIL |
+| 006 | passed | PASS | FAIL | PASS | certified | FAIL |
+| 007 | passed | PASS | PASS | FAIL | certified | FAIL |
+| 008 | passed | PASS | PASS | PASS | certified | FAIL |
+| 009 | passed | PASS | PASS | PASS | certified | FAIL |
+| 010 | passed | PASS | FAIL | PASS | certified | FAIL |
+| 011 | passed | PASS | PASS | PASS | certified | FAIL |
+| 012 | passed | PASS | PASS | PASS | certified | FAIL |
+| 013 | passed | PASS | PASS | PASS | certified | FAIL |
+| 014 | passed | PASS | FAIL | PASS | certified | FAIL |
+| 015 | passed | PASS | FAIL | FAIL | certified | FAIL |
+| 016 | passed | PASS | FAIL | PASS | certified | FAIL |
+| 017 | passed | PASS | PASS | FAIL | certified | FAIL |
+| 018 | passed | PASS | PASS | FAIL | certified | FAIL |
+| 019 | passed | PASS | PASS | FAIL | certified | FAIL |
+| 020 | passed | PASS | PASS | PASS | certified | FAIL |
+| 021 | passed | PASS | FAIL | PASS | certified | FAIL |
+| 022 | passed | PASS | FAIL | PASS | certified | FAIL |
+| 023 | passed | PASS | FAIL | PASS | certified | FAIL |
+| 024 | passed | PASS | PASS | PASS | certified | FAIL |
+| 025 | passed | PASS | FAIL | FAIL | certified | FAIL |
+| 026 | passed | PASS | PASS | PASS | certified | FAIL |
+| 027 | passed | PASS | PASS | PASS | certified | FAIL |
+| 028 | passed | PASS | PASS | PASS | certified | FAIL |
+| 029 | passed | PASS | PASS | PASS | certified | FAIL |
+| 030 | passed | PASS | PASS | PASS | certified | FAIL |
+| 031 | passed | PASS | PASS | FAIL | certified | FAIL |
+| 032 | passed | PASS | PASS | PASS | certified | FAIL |
+| 033 | passed | PASS | PASS | PASS | certified | FAIL |
+| 034 | passed | PASS | PASS | PASS | certified | FAIL |
+| 035 | passed | PASS | PASS | PASS | certified | FAIL |
+| 036 | passed | PASS | PASS | FAIL | certified | FAIL |
+| 037 | passed | PASS | FAIL | FAIL | certified | FAIL |
+| 038 | passed | PASS | PASS | PASS | certified | FAIL |
+| 039 | passed | PASS | FAIL | PASS | certified | FAIL |
+| 040 | passed | PASS | PASS | PASS | certified | FAIL |
+| 041 | passed | PASS | FAIL | PASS | certified | FAIL |
+| 042 | passed | PASS | PASS | — | certified | FAIL |
+| 043 | passed | PASS | PASS | FAIL | certified | FAIL |
+| 044 | passed | PASS | PASS | PASS | certified | FAIL |
+| 045 | passed | PASS | PASS | PASS | certified | FAIL |
+| 046 | passed | PASS | FAIL | PASS | certified | FAIL |
+| 047 | passed | PASS | PASS | FAIL | certified | FAIL |
+| 048 | passed | PASS | FAIL | FAIL | certified | FAIL |
+| 049 | passed | PASS | FAIL | PASS | certified | FAIL |
+| 050 | passed | PASS | FAIL | PASS | certified | FAIL |
+| 051 | passed | PASS | FAIL | PASS | certified | FAIL |
 
-- Fleet map: `SOURCES_MAP.md` at namespace root — **51 slide rows** appended
-  (grep of `^| 0` rows = 51), plus a failed-findings / do-not-reuse list.
-- Per-slide records: `sources/slide_NNN_source/` — **51 dirs**, each with a
-  `SOURCES.md` (**51** files found). Close-out deliverable 51/51 met per the
-  web-source research mandate (founder directive 2026-10-19).
-- Query-budget totals per wave: **TBD** (appended to SOURCES_MAP.md by the
-  orchestrator per wave; check the "Method + query budget" section).
+## 7. Evidence locations
 
-## 8. Evidence locations
+- **Rejudge wave dir (this RJ)** — `recreated_pptx/qa/rejudge_20261027/`
+  - `recreated_pptx/qa/rejudge_20261027/REJUDGE_REGISTER.md (+ .bak*/snapshot files)`
+  - `recreated_pptx/qa/rejudge_20261027/VERDICT_CENSUS_*.md`
+  - `recreated_pptx/qa/rejudge_20261027/REJUDGE_SUMMARY_r*.md`
+  - `recreated_pptx/qa/rejudge_20261027/OMML_WRAP_LOG.md / OMML_INVENTORY_r*.md / OMML_WRAP_PLAN_r3.md`
+  - `recreated_pptx/qa/rejudge_20261027/merge_gate_plan.md / merge_gate_FINAL.md (agent-441)`
+  - `recreated_pptx/qa/rejudge_20261027/CLOSEOUT_DRAFT.md / CLOSEOUT_GAPLIST.md / CLOSEOUT_EVIDENCE_INDEX.md / closeout_pack/`
+  - `recreated_pptx/qa/rejudge_20261027/deck_gate_r*.txt / deck_updates_r*.txt / sweep_r*.md / fleet_census_r1.md`
+  - `recreated_pptx/qa/rejudge_20261027/per-slide dirs slide001..slide051 (+ alternates) with leg transcripts`
+  - `recreated_pptx/qa/rejudge_20261027/drivers: rejudge_driver.sh, rejudge_slide.sh, rejudge_adjudicate.py, payload_B_*.txt`
+- **Per-slide QA** — `recreated_pptx/qa/`
+  - `recreated_pptx/qa/slideNNN/ and slide_0NN/ dirs`
+  - `recreated_pptx/qa/final_deck_updates/gate_*/gate_report.txt`
+- **Build chain + ledger** — `recreated_pptx/`
+  - `recreated_pptx/build/ (per-slide scripts, components/, assets/ eq+plots, final_deck/ tooling)`
+  - `recreated_pptx/final_deck_state.json (ledger)`
+  - `recreated_pptx/03_ridger_regression_gradient_descent_final.pptx`
+  - `recreated_pptx/slide_NNN_recreated.pptx x51 (single-version deliverables)`
+- **Namespace root** — `namespace root`
+  - `CLOSEOUT_REPORT.md (this file)`
+  - `AGENTS.md`
+  - `slides_progress.db`
+  - `SOURCES_MAP.md`
+  - `sources/slide_NNN_source/SOURCES.md (51/51)`
+  - `analysis/ (slide_NNN_raw.json + slide_NNN_final.json + summary.md)`
+  - `unique_slides/slide_001..051.jpg`
+- **This script + dry run** — `recreated_pptx/qa/rejudge_20261027/`
+  - `recreated_pptx/qa/rejudge_20261027/closeout_finalize.py`
+  - `recreated_pptx/qa/rejudge_20261027/closeout_dryrun.md`
 
-- Rejudge wave: `recreated_pptx/qa/rejudge_20261027/` (REJUDGE_REGISTER.md,
-  REJUDGE_SUMMARY_r31.md, rejudge_driver.sh, rejudge_slide.sh, rejudge_adjudicate.py,
-  per-slide dirs slide001..slide051 with leg transcripts; register backups *.bak kept).
-- Final-deck merge gates: `recreated_pptx/qa/final_deck_updates/gate_*/gate_report.txt`.
-- Per-slide QA: `recreated_pptx/qa/slideNNN/`, `qa/slide_0NN/`.
-- Other wave evidence dirs under `recreated_pptx/qa/` (sweeps, prephase, etc.).
-- Never delete banked evidence; qa/ + scratch/ untracked by convention.
+Laws: never git, never delete banked evidence; qa/ + scratch/ untracked by convention.

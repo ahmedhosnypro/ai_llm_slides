@@ -58,3 +58,28 @@ This worker's manifests re-derived rel ids independently and match the concurren
 backups: $RJ/slideNNN/slide_NNN_recreated.preOMML.bak.pptx (md5 = pre-wrap deliverables);
 wrapper run logs: $RJ/slideNNN/wrap_full_run.log. No SKIP rows: every shard slide had sidecars and
 embedded eq pics.
+
+# OMML_WRAP_LOG — deck 03 shard {014,031,032,033,034} (worker D1, 2026-11-01)
+
+Report: $RJ/omml_wrap_worker_D1.md. Wrapper used as-is (on-disk version already supports \underline; nothing in this shard needed it). Rel ids re-derived from each CURRENT slide pptx. Manifests: $RJ/slideNNN/omml_manifest.json. Backups: $NS/recreated_pptx/qa/slideNNN/slide_NNN_recreated.preOMML.bak.pptx. Per-slide logs: $NS/recreated_pptx/qa/slideNNN/omml_wrap_log.txt. 0-px LO proofs (150dpi, preOMML bak vs wrapped): all 0 px. Deck gates: pages 14/31/32/33/34 update + render_check all PASS 0px; final deck md5 1966dcc3c489600da188df2b781a1d8c.
+
+| slide | outcome | rel ids | md5 before | md5 after | 0px | deck gate |
+|---|---|---|---|---|---|---|
+| 014 | WRAPPED 3/3 rc=0 | rId1=eq_014_Yvec, rId2=eq_014_Yhatvec, rId3=eq_014_final | 18a724a03609dcf4a84ce81750ec2abe | 63fac3cb150bc17d4aeb730eb86d99e7 | 0 px | p14 PASS |
+| 031 | already wrapped (shard-2); verified, idempotent re-run skipped=1, bytes untouched | rId1=eq_031_main | c39ca2aa915ea8e10b8128ff9d77bead | c39ca2aa915ea8e10b8128ff9d77bead | 0 px | p31 PASS |
+| 032 | already wrapped (shard-2); verified, idempotent re-run skipped=1, bytes untouched | rId2=eq_032_main | 269f0316c0dfd7b0fcdcb89f55bccad4 | 269f0316c0dfd7b0fcdcb89f55bccad4 | 0 px | p32 PASS |
+| 033 | WRAPPED 1/1 rc=0 | rId1=eq_033_main_v7b | 655eb34ed827f01e499eda9ed1097f0e | f0c7806cc2b967103ba85a6f10d7d9ba | 0 px | p33 PASS |
+| 034 | WRAPPED 1/1 rc=0 | rId1=eq_034_main | 00029ccfc4cc2ac5a79318b0d7796f3e | 91a25c27bed85f467279af2fad3c2378 | 0 px | p34 PASS |
+
+Zip diff vs backup = ppt/slides/slide1.xml only on the three wrapped slides; media byte-identical; no LO resave; no git; no db writes; no vision calls. Mathtext sources: 014 from build/slide_014.js + build/assets/gen_eqs_014_v2.py (vectors as \left(...\\...\right) matrices C00000 16pt; final objective multi-color flattened to 000000 17pt, transpose as ^{T} since \top unsupported); 033 f(x)=\dfrac{x^{2}\cos(x)-x}{10} 16.5pt; 034 f(x) = \frac{x^2 \cos(x) - x}{10} 18pt from build/gen_eq_034.py; 031/032 reused banked manifests.
+
+# OMML_WRAP_LOG — restage + final census append (worker, 2026-11-01)
+
+Live drift scan of final_deck_state.json (source_md5 vs on-disk slide pptx, render_check != PASS, page 25 skipped as owned elsewhere): only pages 10 and 23 drifted.
+
+- p10: final_deck_tool.py update 10 + render_check_pages.py 10 -> PASS 0 px (gate_20261101-225651_p10).
+- p23: update 23 run twice; deck slide23.xml + media byte-identical to slide_023_recreated.pptx (md5-verified), but render gate FAILs twice with identical diff bbox (199,415,1785,967) — text-AA render-context artifact, not content mismatch. Ledger render_check stays FAIL with gate reports gate_20261101-225712_p23 / gate_20261101-230027_p23 / gate_20261101-230651_p23.
+- Final OMML census (r5): all 19 eq-pic slides fully wrapped — 122/122 pics, altcontent=2x oMath on every slide (004:1, 005:8, 009:2, 014:3, 015:1, 021:5, 023:1, 030:2, 031:1, 032:1, 033:1, 034:1, 036:1, 037:5, 039:1, 044:54, 048:6, 050:4, 051:11). No unwrapped eq slide remains.
+- Final deck md5 after restage: 35918b6fa1187e85d107aabe481016ff. Inventory: $RJ/OMML_INVENTORY_r5.md. Report: $RJ/omml_restage_report.md.
+- Missing per-slide qa/slideNNN/omml_wrap_log.txt files (004,005,015,021,030,037,044,048,050,051) written as derived from OMML_WRAP_LOG.md rows + $RJ/slideNNN manifests.
+- No pptx modified, no wrapper run, no git, no DB writes, no vision calls, no evidence deleted.

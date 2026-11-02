@@ -1,0 +1,31 @@
+## Discrepancies
+
+**BLOCKER:** none found.
+
+### MAJOR
+1. **Top-left illustration colormap/content mismatch** â original `IMG2` plot for âConcave Function / One Maximaâ is a solid dark-red/red-family 3-D surface with dark grid lines; the recreation `IMG1` uses a default multicolor/rainbow surface instead. This is a major color-fidelity deviation from the original and also alters the perceived surface treatment under the same label. **Severity: MAJOR â Confidence: high**
+
+2. **Top-right illustration colormap/content mismatch** â original âConvex Function / One Minimaâ plot is also a red-family surface with visible contour/grid lines; the recreation replaces it with a rainbow-colored MATLAB-style surface. This changes the visual identity of the graphic. **Severity: MAJOR â Confidence: high**
+
+3. **Missing vertical-axis scale annotation in top-right plot** â original top-right 3-D plot includes a `Ã10â´` vertical scale marker; in the recreation this annotation is absent, so the axis readings are not quantitatively equivalent to the original. A visible label/text present in the original is missing from the render. **Severity: MAJOR â Confidence: moderate-high**
+
+4. **Extra non-original visual element in bottom-right plot** â recreation bottom-right âGradient Descentâ plot contains an additional bright band/reflection-like surface fragment below/beside the main terrain that is not present in the original. It is visible as an extra colored shape and can be read as added content rather than a style change. **Severity: MAJOR â Confidence: moderate**
+
+### MINOR
+5. **âGradient Descent Path to reach Minimaâ label vertical placement** â in the original the blue label is roughly left of and midpoint-aligned with the bottom-right plot; in the recreation it sits slightly higher relative to that plot. **Severity: MINOR â Confidence: moderate**
+
+6. **âNon-Convex Multiple Minimaâ label placement** â original label sits more directly beneath/beside the bottom-left plot; recreation places it slightly more to the left of the plot and lower, causing a minor layout offset relative to the plot. **Severity: MINOR â Confidence: moderate**
+
+7. **Internal bottom-left plot label spacing** â positions of âGlobal Maxima,â âLocal Maxima,â âLocal Minima,â and âGlobal Minimaâ are broadly preserved, but the recreationâs labels are not identically spaced/anchored to the surface features; minor placement drift is visible. **Severity: MINOR â Confidence: moderate**
+
+8. **Top-left plot tick-label details** â tick values differ slightly in placement/emphasis and are harder to match exactly, but no entire axis block is missing. **Severity: MINOR â Confidence: low-moderate**
+
+## Visual-quality defects in recreation
+- The added overlay in the bottom-right plot is a spurious content/artifact and reduces fidelity.
+- The multicolor colormaps in the top two plots reduce the intended contrast between the original-style red surfaces and the guide lines/axes.
+- No text overflow, clipping, illegibility, or house-panel bleed is observed; all content remains inside the gray panel and red L/R/B strokes.
+- Titles, badge, plot borders, and blue label text are crisp and legible.
+
+## FINAL VERDICT: **FAIL**
+
+The slide has the correct structure, title, badge, label set, and overall 2Ã2 arrangement, but multiple visible content/fidelity defects â wrong top-illustration color schemes, a missing vertical-axis scale marker, and an added artifact in the gradient-descent plot â prevent it from being a faithful, usable recreation.

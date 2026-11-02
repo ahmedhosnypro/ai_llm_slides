@@ -1,0 +1,317 @@
+{
+  "slide_title": "Quadratic Kernel Mapping and Kernel Trick",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "labels": [
+      "26",
+      "Where:",
+      "2D \u21d2 3D"
+    ],
+    "equations": [
+      "a = (a1; a2)   b = (b1; b2)",
+      "[a^T b]^2 = (a1 a2; b1 b2) = (a1 b1 + a2 b2)^2 = a1^2 b1^2 + a2^2 b2^2 + 2 a1 b1 a2 b2",
+      "[a^T b]^2 = (a1^2 a2^2 \u221a2 a1 a2 ; b1^2 b2^2 \u221a2 b1 b2) = \u03c6(a)^T \u03c6(b)",
+      "\u03c6(x) \u2261 (x1; x2) \u21d2 (x1^2; x2^2; \u221a2 x1 x2)",
+      "a = (1; 2)   b = (3; 4)",
+      "\u03c6(a)^T \u03c6(b) = (1^2 2^2 \u221a2 1*2)(3^2; 4^2; \u221a2 3*4) = (1 4 \u221a2 2)(9; 16; \u221a2 12) = 9+64+48 = 121",
+      "[a^T b]^2 = (1*3 + 2*4)^2 = 11^2 = 121"
+    ],
+    "bullets": [
+      "26",
+      "Where:",
+      "2D \u21d2 3D",
+      "a = (a1; a2)   b = (b1; b2)",
+      "[a^T b]^2 = (a1 a2; b1 b2) = (a1 b1 + a2 b2)^2 = a1^2 b1^2 + a2^2 b2^2 + 2 a1 b1 a2 b2",
+      "[a^T b]^2 = (a1^2 a2^2 \u221a2 a1 a2 ; b1^2 b2^2 \u221a2 b1 b2) = \u03c6(a)^T \u03c6(b)",
+      "\u03c6(x) \u2261 (x1; x2) \u21d2 (x1^2; x2^2; \u221a2 x1 x2)",
+      "a = (1; 2)   b = (3; 4)",
+      "\u03c6(a)^T \u03c6(b) = (1^2 2^2 \u221a2 1*2)(3^2; 4^2; \u221a2 3*4) = (1 4 \u221a2 2)(9; 16; \u221a2 12) = 9+64+48 = 121",
+      "[a^T b]^2 = (1*3 + 2*4)^2 = 11^2 = 121"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title band with badge '26'; upper blue-outlined math box containing the general identity with salmon highlight on the leading term, a vertical divider, a 'Where' column on the right, and red '2D\u21d23D'; lower red-outlined exercise box containing an inner blue computation box with a/b definitions and the numeric \u03c6(a)^T\u03c6(b) chain, plus a scalar check at the bottom right.",
+    "regions": [
+      {
+        "name": "outer frame",
+        "box": [
+          0.047,
+          0.061,
+          0.953,
+          0.941
+        ]
+      },
+      {
+        "name": "title",
+        "box": [
+          0.205,
+          0.08,
+          0.795,
+          0.14
+        ]
+      },
+      {
+        "name": "badge",
+        "box": [
+          0.878,
+          0.06,
+          0.935,
+          0.13
+        ]
+      },
+      {
+        "name": "upper math box",
+        "box": [
+          0.048,
+          0.15,
+          0.952,
+          0.507
+        ],
+        "stroke": "#2E5AAC[?]"
+      },
+      {
+        "name": "salmon highlight",
+        "box": [
+          0.063,
+          0.212,
+          0.398,
+          0.328
+        ],
+        "fill": "#FCE4D6"
+      },
+      {
+        "name": "vertical divider",
+        "box": [
+          0.615,
+          0.15,
+          0.615,
+          0.505
+        ]
+      },
+      {
+        "name": "Where column",
+        "box": [
+          0.625,
+          0.26,
+          0.905,
+          0.48
+        ]
+      },
+      {
+        "name": "2D\u21d23D",
+        "box": [
+          0.795,
+          0.462,
+          0.905,
+          0.5
+        ]
+      },
+      {
+        "name": "lower exercise box",
+        "box": [
+          0.048,
+          0.515,
+          0.952,
+          0.905
+        ],
+        "stroke": "#C00000"
+      },
+      {
+        "name": "inner computation box",
+        "box": [
+          0.062,
+          0.54,
+          0.902,
+          0.762
+        ],
+        "stroke": "#2E5AAC[?]"
+      },
+      {
+        "name": "a/b definitions",
+        "box": [
+          0.052,
+          0.55,
+          0.2,
+          0.675
+        ]
+      },
+      {
+        "name": "numeric \u03c6 chain",
+        "box": [
+          0.205,
+          0.545,
+          0.905,
+          0.76
+        ]
+      },
+      {
+        "name": "scalar check",
+        "box": [
+          0.56,
+          0.795,
+          0.905,
+          0.875
+        ]
+      },
+      {
+        "name": "red arrow 1",
+        "box": [
+          0.9,
+          0.555,
+          0.945,
+          0.615
+        ]
+      },
+      {
+        "name": "red arrow 2",
+        "box": [
+          0.898,
+          0.815,
+          0.945,
+          0.875
+        ]
+      }
+    ]
+  },
+  "visual_elements": [
+    {
+      "type": "rectangle",
+      "role": "outer frame",
+      "box": [
+        0.047,
+        0.061,
+        0.953,
+        0.941
+      ],
+      "stroke": "#C00000"
+    },
+    {
+      "type": "rectangle",
+      "role": "upper math box",
+      "box": [
+        0.048,
+        0.15,
+        0.952,
+        0.507
+      ],
+      "stroke": "#2E5AAC[?]"
+    },
+    {
+      "type": "rectangle",
+      "role": "salmon highlight",
+      "box": [
+        0.063,
+        0.212,
+        0.398,
+        0.328
+      ],
+      "fill": "#FCE4D6"
+    },
+    {
+      "type": "line",
+      "role": "vertical divider",
+      "box": [
+        0.615,
+        0.15,
+        0.615,
+        0.505
+      ],
+      "color": "#BFBFBF"
+    },
+    {
+      "type": "rectangle",
+      "role": "lower exercise box",
+      "box": [
+        0.048,
+        0.515,
+        0.952,
+        0.905
+      ],
+      "stroke": "#C00000"
+    },
+    {
+      "type": "rectangle",
+      "role": "inner computation box",
+      "box": [
+        0.062,
+        0.54,
+        0.902,
+        0.762
+      ],
+      "stroke": "#2E5AAC[?]"
+    },
+    {
+      "type": "circle",
+      "role": "badge",
+      "box": [
+        0.878,
+        0.06,
+        0.935,
+        0.13
+      ],
+      "fill": "#FFFF00",
+      "text": "26"
+    },
+    {
+      "type": "arrow-glyph",
+      "role": "red left-pointing arrows at the two 121 results",
+      "boxes": [
+        [
+          0.9,
+          0.555,
+          0.945,
+          0.615
+        ],
+        [
+          0.898,
+          0.815,
+          0.945,
+          0.875
+        ]
+      ],
+      "color": "#C00000",
+      "direction": "left"
+    }
+  ],
+  "imagery": "none",
+  "colors": {
+    "background": "#FFFFFF",
+    "frame": "#C00000",
+    "title": "#000000",
+    "badge_fill": "#FFFF00",
+    "box_border_blue": "#2E5AAC[?]",
+    "salmon_fill": "#FCE4D6",
+    "text_red": "#C00000",
+    "text_blue": "#0000C0[?]",
+    "phi_ink": "#000000[?]",
+    "highlight_red": "#FF0000",
+    "divider": "#BFBFBF",
+    "letterbox": "#000000"
+  },
+  "typography_notes": "Title bold ~22 pt centered black. Math in serif italic math face ~12 pt; a-terms red, b-terms blue, \u03c6 black[?]; column vectors stacked; '2D \u21d2 3D' bold red; final 121s flagged by red left arrows.",
+  "animation_state": "static",
+  "recreation_brief": "1. Set the slide background fill to white (#FFFFFF).\n2. Draw a rectangle for the outer frame with stroke #C00000 and no fill at [0.047, 0.061, 0.953, 0.941].\n3. Add a centered text box at [0.205, 0.08, 0.795, 0.14] with bold black (#000000) text \"Quadratic Kernel Mapping and Kernel Trick\" at approximately 22 pt.\n4. Draw a yellow (#FFFF00) filled circle at [0.878, 0.06, 0.935, 0.13] and place black text \"26\" centered inside it.\n5. Draw a rectangle with stroke #2E5AAC and no fill for the upper math box at [0.048, 0.15, 0.952, 0.507].\n6. Inside the upper math box, draw a salmon (#FCE4D6) filled rectangle at [0.063, 0.212, 0.398, 0.328] to highlight the leading identity term.\n7. Inside the upper math box, add the following four equation lines in serif italic math font (~12 pt), coloring a-terms red (#C00000), b-terms blue (#0000C0), and \u03c6 black (#000000): \"a = (a1; a2)   b = (b1; b2)\"; \"[a^T b]^2 = (a1 a2; b1 b2) = (a1 b1 + a2 b2)^2 = a1^2 b1^2 + a2^2 b2^2 + 2 a1 b1 a2 b2\"; \"[a^T b]^2 = (a1^2 a2^2 \u221a2 a1 a2 ; b1^2 b2^2 \u221a2 b1 b2) = \u03c6(a)^T \u03c6(b)\"; \"\u03c6(x) \u2261 (x1; x2) \u21d2 (x1^2; x2^2; \u221a2 x1 x2)\".\n8. Draw a vertical line with color #BFBFBF at x=0.615 from y=0.15 to y=0.505 inside the upper math box.\n9. Add black text \"Where:\" at [0.625, 0.26, 0.905, 0.48] in the right column of the upper math box.\n10. Add bold red (#C00000) text \"2D \u21d2 3D\" at [0.795, 0.462, 0.905, 0.5].\n11. Draw a rectangle with stroke #C00000 and no fill for the lower exercise box at [0.048, 0.515, 0.952, 0.905].\n12. Inside the lower exercise box, draw a rectangle with stroke #2E5AAC and no fill for the inner computation box at [0.062, 0.54, 0.902, 0.762].\n13. Inside the inner computation box at [0.052, 0.55, 0.2, 0.675], add the text \"a = (1; 2)   b = (3; 4)\" in serif italic math font (~12 pt) with a-terms red (#C00000) and b-terms blue (#0000C0).\n14. Inside the inner computation box at [0.205, 0.545, 0.905, 0.76], add the text \"\u03c6(a)^T \u03c6(b) = (1^2 2^2 \u221a2 1*2)(3^2; 4^2; \u221a2 3*4) = (1 4 \u221a2 2)(9; 16; \u221a2 12) = 9+64+48 = 121\" in serif italic math font (~12 pt) with \u03c6 in black (#000000).\n15. Draw a red (#C00000) left-pointing arrow glyph at [0.9, 0.555, 0.945, 0.615] aligned with the first \"121\" result.\n16. Inside the lower exercise box at [0.56, 0.795, 0.905, 0.875], add the text \"[a^T b]^2 = (1*3 + 2*4)^2 = 11^2 = 121\" in serif italic math font (~12 pt).\n17. Draw a red (#C00000) left-pointing arrow glyph at [0.898, 0.815, 0.945, 0.875] aligned with the second \"121\" result.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Added missing verbatim_text.bullets array with 10 reconstructed text lines from labels and equations.",
+      "Added missing subtitle_or_header field set to null (no subtitle present in source).",
+      "Added missing animation_state field set to \"static\" (no animation data present).",
+      "Added two layout.regions entries for the red arrow glyphs at [0.9,0.555,0.945,0.615] and [0.898,0.815,0.945,0.875] to cover all visual_elements.",
+      "Rewrote recreation_brief from 5 vague items into a 17-step ordered checklist specifying exact text, coordinates, colors, and shape types for every element.",
+      "Replaced vague descriptor \"core identity\" with explicit equation text references in the recreation brief."
+    ],
+    "uncertain_items": [
+      "box_border_blue color #2E5AAC is marked [?] in source.",
+      "text_blue color #0000C0 is marked [?] in source.",
+      "phi_ink color #000000 is marked [?] in source.",
+      "Exact serif italic math font family is inferred from typography_notes but not specified.",
+      "Arrow glyph style (left-pointing) is described but exact shape and line weight are not specified."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "validated_by": "validate_slides",
+    "validation_elapsed_s": 280.8
+  }
+}

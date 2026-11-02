@@ -1,0 +1,234 @@
+{
+  "slide_title": "Example",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [
+      "Backward ( Update hidden Layer Weights)",
+      "\u03b4\u2086 = 0.791(1\u22120.791)(0\u22120.791) = \u22120.131",
+      "\u03b4\u2087 = 0.791(1\u22120.791)(1\u22120.791)=0.035",
+      "\u03b4\u2083 = O\u2083(1\u2212O\u2083)[\u03b4\u2086 * W\u2086\u2083 + \u03b4\u2087 * W\u2087\u2083]",
+      "\u03b4\u2083 = 0.9(1\u22120.9)[\u22120.131 * \u22120.29 + 0.035 * 0.458] = 0.005",
+      "\u03b4\u2084 = 0.943(1\u22120.9943)[\u22120.131 * \u22120.218 + 0.035 * 0.565] = 0.003",
+      "\u03b4\u2085 = 0.968(1\u22120.968)[\u22120.131 * \u22120.134 + 0.035 * 0.669] = 0.001",
+      "\u0394 W\u2083\u2081 = 5*0.005*1 = 0.025",
+      "\u0394 W\u2083\u2082 = 5*0.005*5 = 0.125",
+      "\u0394 W\u2083b = 5*0.005*1 = 0.025",
+      "\u0394 W\u2084\u2081 = 5*0.003*1 = 0.015",
+      "\u0394 W\u2084\u2082 = 5*0.003*5 = 0.075",
+      "\u0394 W\u2084b = 5*0.003*1 = 0.015",
+      "\u0394 W\u2085\u2081 = 5*0.001*1 = 0.005",
+      "\u0394 W\u2085\u2082 = 5*0.001*5 = 0.025",
+      "\u0394 W\u2085b = 5*0.001*1 = 0.005",
+      "W\u2083\u2081 = 0.1+0.025 = 0.125",
+      "W\u2083\u2082 = 0.4+0.125 = 0.525",
+      "W\u2083b = 0.1+0.025 = 0.125",
+      "W\u2084\u2081 = 0.5+0.015 = 0.215",
+      "W\u2084\u2082 = 0.2+0.075 = 0.575",
+      "W\u2084b = 0.1+0.015 = 0.115",
+      "W\u2085\u2081 = 0.3+0.005 = 0.305",
+      "W\u2085\u2082 = 0.6+0.025 = 0.625",
+      "W\u2085b = 0.1+0.005 = 0.105"
+    ],
+    "labels": [
+      "30",
+      "Input",
+      "Output",
+      "Target",
+      "x\u2081",
+      "x\u2082",
+      "Bias",
+      "O\u2083",
+      "O\u2084",
+      "O\u2085",
+      "O\u2086",
+      "O\u2087",
+      "t\u2086",
+      "t\u2087",
+      "\u03b7 = 5",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "(1)",
+      "(5)",
+      "(0)",
+      "(1)"
+    ],
+    "equations": [
+      "\u03b4_j = O_j(1\u2212O_j) [\u03a3_k (\u03b4_k w_kj)]",
+      "\u0394_jl = \u03b7 O_i O_j(1\u2212O_j)[\u03a3_k(\u03b4_k w_kj)] = \u03b7 O_i \u03b4_j",
+      "\u03b4\u2086 = 0.791(1\u22120.791)(0\u22120.791) = \u22120.131",
+      "\u03b4\u2087 = 0.791(1\u22120.791)(1\u22120.791)=0.035",
+      "\u03b4\u2083 = O\u2083(1\u2212O\u2083)[\u03b4\u2086 * W\u2086\u2083 + \u03b4\u2087 * W\u2087\u2083]",
+      "\u03b4\u2083 = 0.9(1\u22120.9)[\u22120.131 * \u22120.29 + 0.035 * 0.458] = 0.005",
+      "\u03b4\u2084 = 0.943(1\u22120.9943)[\u22120.131 * \u22120.218 + 0.035 * 0.565] = 0.003",
+      "\u03b4\u2085 = 0.968(1\u22120.968)[\u22120.131 * \u22120.134 + 0.035 * 0.669] = 0.001",
+      "O\u2083 = 1/(1+e^(\u22122.2)) = 0.9",
+      "O\u2084 = 1/(1+e^(\u22122.8)) = 0.943",
+      "O\u2085 = 1/(1+e^(\u22123.4)) = 0.968",
+      "O\u2086 = 1/(1+e^(\u22121.3312)) = 0.791",
+      "O\u2087 = 1/(1+e^(\u22121.3312)) = 0.791",
+      "\u0394 W\u2083\u2081 = 5*0.005*1 = 0.025",
+      "\u0394 W\u2083\u2082 = 5*0.005*5 = 0.125",
+      "\u0394 W\u2083b = 5*0.005*1 = 0.025",
+      "\u0394 W\u2084\u2081 = 5*0.003*1 = 0.015",
+      "\u0394 W\u2084\u2082 = 5*0.003*5 = 0.075",
+      "\u0394 W\u2084b = 5*0.003*1 = 0.015",
+      "\u0394 W\u2085\u2081 = 5*0.001*1 = 0.005",
+      "\u0394 W\u2085\u2082 = 5*0.001*5 = 0.025",
+      "\u0394 W\u2085b = 5*0.001*1 = 0.005",
+      "W\u2083\u2081 = 0.1+0.025 = 0.125",
+      "W\u2083\u2082 = 0.4+0.125 = 0.525",
+      "W\u2083b = 0.1+0.025 = 0.125",
+      "W\u2084\u2081 = 0.5+0.015 = 0.215",
+      "W\u2084\u2082 = 0.2+0.075 = 0.575",
+      "W\u2084b = 0.1+0.015 = 0.115",
+      "W\u2085\u2081 = 0.3+0.005 = 0.305",
+      "W\u2085\u2082 = 0.6+0.025 = 0.625",
+      "W\u2085b = 0.1+0.005 = 0.105"
+    ]
+  },
+  "layout": {
+    "arrangement": "Maroon-bordered pink 16:9 slide. Red bold title 'Example' at top-left; yellow circular slide-number badge '30' at top-right. Top band is split: left is a red-bordered formula box with two output-delta equations beneath it; right is a small feed-forward neural-network diagram with Input/Output/Target labels and \u03b7=5. Middle-left has the blue/red heading 'Backward ( Update hidden Layer Weights)' above a bordered box of hidden-layer delta equations. Bottom-left is a two-column weight-update panel: left column \u0394W values, three red right-pointing arrows, right column updated W values. Right-middle/lower are two gray sigmoid boxes for O3/O4/O5 and O6/O7.",
+    "regions": [
+      {
+        "name": "title",
+        "position": "top-left, roughly 4% from left, 8% from top",
+        "content": "Red bold text 'Example'"
+      },
+      {
+        "name": "slide_number_badge",
+        "position": "top-right corner, roughly 92% left, 12% top",
+        "content": "Yellow circle with red outline containing '30'"
+      },
+      {
+        "name": "formula_box",
+        "position": "upper-left, roughly 4%-42% width, 16%-31% height",
+        "content": "Red-bordered box with general \u03b4_j and \u0394_jl equations; two \u03b4\u2086/\u03b4\u2087 numeric equations directly below"
+      },
+      {
+        "name": "network_diagram",
+        "position": "upper-right, roughly 43%-90% width, 6%-33% height",
+        "content": "Input x1/x2 and Bias to hidden nodes 3/4/5 to output nodes 6/7, target vector, weight labels, \u03b7=5"
+      },
+      {
+        "name": "backward_heading",
+        "position": "middle-left, roughly 5%-45% width, 37%-41% height",
+        "content": "'Backward' in blue followed by '( Update hidden Layer Weights)' in red"
+      },
+      {
+        "name": "hidden_delta_box",
+        "position": "middle-left, roughly 5%-65% width, 42%-59% height",
+        "content": "Bordered box with symbolic \u03b4\u2083 and numeric \u03b4\u2083/\u03b4\u2084/\u03b4\u2085 equations"
+      },
+      {
+        "name": "weight_update_panel",
+        "position": "bottom-left to bottom-center, roughly 5%-66% width, 60%-98% height",
+        "content": "Left column \u0394W\u2083\u2081\u2026\u0394W\u2085b, red arrows, right column updated W\u2083\u2081\u2026W\u2085b"
+      },
+      {
+        "name": "sigmoid_boxes",
+        "position": "right side, roughly 74%-93% width, 34%-70% height",
+        "content": "Upper gray box O3/O4/O5 sigmoid values; lower gray box O6/O7 sigmoid values"
+      }
+    ],
+    "hierarchy": "Largest/dominant: red 'Example' title and the top network diagram. Next: red-bordered formula box and the hidden-delta box. Smallest: dense black/blue/red numeric equations, weight-update rows, and tiny edge labels in the network. Accent colors: red for title/arrows/negative values, blue for 'Backward' and some diagram labels/exponents, yellow badge for slide number."
+  },
+  "visual_elements": [
+    {
+      "type": "network",
+      "description": "Small fully connected 2-3-2 neural net. Left 'Input' column: two black filled input dots labeled x1 and x2 with a vertical vector showing (1) over (5); a blue 'Bias' node with value 1 near lower-left. Middle hidden layer: three pale-yellow circles numbered 3, 4, 5, labeled O3/O4/O5. Right 'Output' column: two pale-yellow circles numbered 6 and 7, labeled O6/O7; far-right 'Target' vertical vector (0) over (1) with t6/t7. Edges run input+bias to each hidden node and each hidden node to each output node. Readable output-edge weights used in equations: to node 6: W63=-0.29, W64=-0.218, W65=-0.134; to node 7: W73=0.458, W74=0.565, W75=0.669. Input/hidden initial weights match the update panel: W31=0.1, W32=0.4, W3b=0.1; W41=0.5, W42=0.2, W4b=0.1; W51=0.3, W52=0.6, W5b=0.1; several tiny edge labels in the drawing are blurred [?]. '\u03b7 = 5' is printed at lower-right of the diagram.",
+      "colors": [
+        "#000000",
+        "#0070C0",
+        "#FFF2CC",
+        "#C00000",
+        "#7030A0",
+        "#808080"
+      ],
+      "position": "upper-right quadrant"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Red rectangular border around the two general backprop equations at upper-left; light fill. Directly below, outside the box, are the two numeric output deltas \u03b4\u2086 and \u03b4\u2087.",
+      "colors": [
+        "#C00000",
+        "#FDF2F8",
+        "#000000",
+        "#0070C0",
+        "#C00000"
+      ],
+      "position": "upper-left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Thin bordered box under the 'Backward ( Update hidden Layer Weights)' heading containing one symbolic hidden-delta line and three numeric hidden-delta lines for \u03b4\u2083, \u03b4\u2084, \u03b4\u2085.",
+      "colors": [
+        "#000000",
+        "#C00000",
+        "#0070C0",
+        "#7030A0",
+        "#FFFFFF"
+      ],
+      "position": "middle-left"
+    },
+    {
+      "type": "arrow",
+      "description": "Three thick red right-pointing block arrows between the \u0394W column and the updated W column, aligned with node 3, node 4, and node 5 update groups.",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "bottom-left/center, between the two weight-update columns"
+    },
+    {
+      "type": "other",
+      "description": "Yellow circular badge with red outline and black '30' at top-right, indicating slide number.",
+      "colors": [
+        "#FFFF00",
+        "#C00000",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    }
+  ],
+  "imagery": [
+    "No photographic imagery. Only vector-style elements: a yellow circular slide-number badge '30' at top-right and the small neural-network diagram at upper-right."
+  ],
+  "colors": {
+    "background": "#F7E8F4",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#C00000",
+      "#0070C0",
+      "#7030A0",
+      "#FFFF00",
+      "#8B1A3A",
+      "#FFF2CC"
+    ]
+  },
+  "typography_notes": "Sans-serif body (Arial/Calibri-like); math symbols appear italic. Title is large bold red. Heading mixes blue bold 'Backward' with red '( Update hidden Layer Weights)'. Equations are small, dense, black with red/blue/purple emphasis on some symbols and negative signs. No all-caps except Input/Output/Target labels in the diagram. Slide number is black on yellow circle.",
+  "animation_state": "Static final state; nothing appears mid-build or partially revealed.",
+  "recreation_brief": [
+    "Create a 16:9 slide (about 1008x560 px equivalent), fill with light pink #F7E8F4 and add a thick maroon #8B1A3A border.",
+    "Top-left: add text box with 'Example' in bold red #C00000, about 28-32 pt.",
+    "Top-right: add a yellow circle #FFFF00 with red outline and black text '30'.",
+    "Upper-left: draw a red-bordered rectangle #C00000 with near-white fill. Inside place two lines: '\u03b4_j = O_j(1\u2212O_j) [\u03a3_k (\u03b4_k w_kj)]' and '\u0394_jl = \u03b7 O_i O_j(1\u2212O_j)[\u03a3_k(\u03b4_k w_kj)] = \u03b7 O_i \u03b4_j', using italic math styling and colored symbols as in the slide. Directly below the box place: '\u03b4\u2086 = 0.791(1\u22120.791)(0\u22120.791) = \u22120.131' and '\u03b4\u2087 = 0.791(1\u22120.791)(1\u22120.791)=0.035'.",
+    "Upper-right: draw the network diagram. Add labels 'Input', 'Output', 'Target'. Draw two black input dots labeled x1/x2 with vector (1)/(5), one blue Bias node labeled 1, three yellow hidden circles 3/4/5 labeled O3/O4/O5, two yellow output circles 6/7 labeled O6/O7, and target vector (0)/(1) with t6/t7. Connect all input+bias to hidden and hidden to output with thin gray/purple lines. Label output edges W63=-0.29, W64=-0.218, W65=-0.134 to node 6 and W73=0.458, W74=0.565, W75=0.669 to node 7; label input edges with initial weights W31=0.1, W32=0.4, W3b=0.1, W41=0.5, W42=0.2, W4b=0.1, W51=0.3, W52=0.6, W5b=0.1 where legible. Add '\u03b7 = 5' at lower-right of diagram.",
+    "Middle-left: add heading with 'Backward' in blue #0070C0 and '( Update hidden Layer Weights)' in red #C00000. Below it draw a bordered box containing: '\u03b4\u2083 = O\u2083(1\u2212O\u2083)[\u03b4\u2086 * W\u2086\u2083 + \u03b4\u2087 * W\u2087\u2083]', '\u03b4\u2083 = 0.9(1\u22120.9)[\u22120.131 * \u22120.29 + 0.035 * 0.458] = 0.005', '\u03b4\u2084 = 0.943(1\u22120.9943)[\u22120.131 * \u22120.218 + 0.035 * 0.565] = 0.003', '\u03b4\u2085 = 0.968(1\u22120.968)[\u22120.131 * \u22120.134 + 0.035 * 0.669] = 0.001'. Preserve the visible '0.9943' in the \u03b4\u2084 line.",
+    "Bottom-left/center: make a two-column update panel. Left column list \u0394W\u2083\u2081=5*0.005*1=0.025; \u0394W\u2083\u2082=5*0.005*5=0.125; \u0394W\u2083b=5*0.005*1=0.025; then \u0394W\u2084\u2081=5*0.003*1=0.015; \u0394W\u2084\u2082=5*0.003*5=0.075; \u0394W\u2084b=5*0.003*1=0.015; then \u0394W\u2085\u2081=5*0.001*1=0.005; \u0394W\u2085\u2082=5*0.001*5=0.025; \u0394W\u2085b=5*0.001*1=0.005. Place three red block arrows pointing right at the three group rows. Right column list W\u2083\u2081=0.1+0.025=0.125; W\u2083\u2082=0.4+0.125=0.525; W\u2083b=0.1+0.025=0.125; W\u2084\u2081=0.5+0.015=0.215; W\u2084\u2082=0.2+0.075=0.575; W\u2084b=0.1+0.015=0.115; W\u2085\u2081=0.3+0.005=0.305; W\u2085\u2082=0.6+0.025=0.625; W\u2085b=0.1+0.005=0.105.",
+    "Right side: add upper gray box with 'O\u2083 = 1/(1+e^(\u22122.2)) = 0.9', 'O\u2084 = 1/(1+e^(\u22122.8)) = 0.943', 'O\u2085 = 1/(1+e^(\u22123.4)) = 0.968', with the negative exponents in blue. Add lower gray box with 'O\u2086 = 1/(1+e^(\u22121.3312)) = 0.791' and 'O\u2087 = 1/(1+e^(\u22121.3312)) = 0.791'.",
+    "Use black body text, red for title/arrows/negative emphasis, blue for 'Backward' and selected math labels, purple for some weight symbols, and keep all numbers exactly as transcribed, including spacing quirks such as '=0.035' without a space after '='."
+  ],
+  "_meta": {
+    "frame": "slide_030.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 30,
+      "image": "slide_030.jpg",
+      "badge": "30"
+    },
+    "elapsed_s": 346.0
+  }
+}

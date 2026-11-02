@@ -1,63 +1,46 @@
 {
   "slide_number": 24,
-  "source_image": "slide_024.jpg",
-  "analysis_type": "vision",
-  "model": "images",
-  "round": 1,
-  "attempt": 1,
-  "winner": "images",
-  "layout_map": "1. Outer slide border — thin dark-red hairline rectangle near the image edges.\n2. Top-right slide-number chip — yellow circle with a purple ring containing \"24\".\n3. Central title block — three centered stacked lines: \"KERNEL Functions\" (dark red), \"and\" (dark red, smaller), \"Kernel Trick\" (blue).\n4. Light gray slide canvas — the large central body surface carrying the title.\n5. Bottom-left hand glyph — tiny pointer/cursor mark inside the canvas, low on the left.\n6. Bottom black strip — full-width black band along the bottom edge beneath the red border.",
-  "first_glance_test": "Within three seconds a new user sees a lecture title slide: \"KERNEL Functions and Kernel Trick.\" The screen offers no interactive actions — it is a static read-only frame — so there is no visible \"next\" action to take. Given the injected view purpose (an SVM/kernels/QP lecture frame), the focal point should be the title, and it wins the eye immediately through centering, size, and contrast; nothing else competes.",
-  "strengths": [
-    "The centered title block is immediately legible and clearly owns the focal point (central title block).",
-    "The top-right slide-number chip provides lightweight wayfinding (top-right chip).",
-    "The composition is airy with no crowding or competing noise (light gray canvas)."
-  ],
-  "defects": [
-    {
-      "category": "b",
-      "severity": "minor",
-      "confidence": "high",
-      "description": "central title block — first line — \"KERNEL Functions\" mixes ALL-CAPS \"KERNEL\" with title-case \"Functions\" — inconsistent capitalization within a single title line — normalize to one case style"
-    },
-    {
-      "category": "f",
-      "severity": "nit",
-      "confidence": "medium",
-      "description": "central title block — third line — \"Kernel Trick\" is set in blue while the rest of the title is dark red — an unexplained mid-title accent switch dilutes a single focal message — keep one title color or justify the split"
-    },
-    {
-      "category": "g",
-      "severity": "minor",
-      "confidence": "high",
-      "description": "bottom black strip — full-width bottom edge — a ~37px-tall black band carries no content — dead band below the slide frame — remove the strip or give it footer copy"
-    }
-  ],
-  "top_3": [
-    "Dead full-width black bottom strip (§4, (g)) — wastes roughly the bottom 7% of the frame with nothing in it.",
-    "Mixed case within the title's first line (§4, (b)) — sloppy typography on the screen's most visible element.",
-    "Unexplained red-to-blue color switch mid-title (§4, (f)) — weakens the title's single focal message."
-  ],
-  "structural_proposal": "No reorganization is recommended — this is a single-purpose lecture title frame, and its only flaw (the empty black strip) is a surface/token fix, not an architecture change. Do not add content to the strip; that would be new content, not a rearrangement.",
-  "verdict_scores": {
-    "theme_dark_mode": 7,
-    "typography": 6,
-    "spacing": 8,
-    "alignment": 8,
-    "crowding_density": 9,
-    "hierarchy": 7,
-    "composition": 7,
-    "completeness": 8,
-    "continuity_consistency": 7,
-    "affordance_states": 8,
-    "first_glance_clarity": 9,
-    "overall": 7
+  "source_image": "unique_slides/slide_024.jpg",
+  "slide_title": "KERNEL Functions and Kernel Trick",
+  "verbatim_text": {
+    "title_lines": ["KERNEL Functions", "and", "Kernel Trick"],
+    "labels": ["24"]
   },
-  "uncertainties": [
-    "Whether the bottom black strip is app chrome or part of the slide design — cannot be determined from a static image.",
-    "Whether the \"24\" chip is interactive — no hover/press state is visible.",
-    "The small bottom-left hand glyph is likely the captured OS cursor, not UI; treated as a capture artifact.",
-    "Exact contrast ratios were estimated by eye, not computed."
+  "layout": {
+    "arrangement": "Minimal section-divider slide: white page surround, thin dark-red rectangular frame enclosing a light-gray field, centered three-line title block, yellow page badge top-right, black letterbox bar along the bottom edge, small cursor icon lower-left.",
+    "regions": [
+      {"name": "red frame", "box": [0.040, 0.056, 0.963, 0.944]},
+      {"name": "light-gray slide field", "box": [0.042, 0.058, 0.961, 0.942]},
+      {"name": "badge circle", "box": [0.889, 0.093, 0.939, 0.152]},
+      {"name": "title line 1", "box": [0.371, 0.337, 0.630, 0.383]},
+      {"name": "title line 2 'and'", "box": [0.466, 0.474, 0.534, 0.510]},
+      {"name": "title line 3", "box": [0.417, 0.552, 0.583, 0.598]},
+      {"name": "cursor icon", "box": [0.338, 0.890, 0.350, 0.906]},
+      {"name": "bottom black bar", "box": [0.000, 0.956, 1.000, 1.000]},
+      {"name": "faint hairline", "box": [0.000, 0.075, 1.000, 0.077]}
+    ]
+  },
+  "visual_elements": [
+    {"type": "rectangle", "role": "outer frame", "box": [0.040,0.056,0.963,0.944], "stroke": "#8B0000", "fill": "none over #F2F2F2 field"},
+    {"type": "circle", "role": "slide-number badge", "box": [0.889,0.093,0.939,0.152], "fill": "#FFFACD", "outline": "#800080", "text": "24", "text_color": "#000000"},
+    {"type": "line", "role": "faint hairline near top", "box": [0.000,0.075,1.000,0.077], "color": "#D8D8D8"},
+    {"type": "rectangle", "role": "bottom letterbox bar", "box": [0.000,0.956,1.000,1.000], "fill": "#000000"},
+    {"type": "picture", "role": "small cursor/pointer icon", "box": [0.338,0.890,0.350,0.906], "color": "#2B2B2B"}
   ],
-  "vocabulary_proposals": []
+  "imagery": "none",
+  "colors": {
+    "page_surround": "#FFFFFF", "slide_field": "#F2F2F2", "frame": "#8B0000",
+    "title_line1": "#CC0000", "title_line2": "#CC0000", "title_line3": "#0000FF",
+    "badge_fill": "#FFFACD", "badge_outline": "#800080", "badge_ink": "#000000",
+    "hairline": "#D8D8D8", "bottom_bar": "#000000", "cursor": "#2B2B2B"
+  },
+  "typography_notes": "Sans-serif (Arial/Helvetica-like). 'KERNEL Functions' bold with KERNEL all-caps, ~32 pt, red, centered. 'and' regular lowercase ~24 pt red, centered. 'Kernel Trick' bold Title Case ~30 pt blue, centered. Badge numeral regular black centered in circle.",
+  "recreation_brief": [
+    "White page background",
+    "Draw dark-red frame at [0.040,0.056,0.963,0.944], fill interior #F2F2F2",
+    "Add faint #D8D8D8 hairline at y\u22480.075 and black bottom bar [0,0.956,1,1]",
+    "Add yellow circle badge top-right with '24'",
+    "Add three centered title lines: red bold 'KERNEL Functions', smaller red 'and', blue bold 'Kernel Trick'",
+    "Add small dark cursor icon lower-left (capture artifact; optional)"
+  ]
 }

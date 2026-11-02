@@ -232,6 +232,6 @@ txt(575, 146, 32, 12, "−0.134", 7, MAGENTA_W, false, false);
 txt(640, 158, 32, 12, "0.669", 7, MAGENTA_W, false, false);
 
 // ========== WRITE FILE ==========
-pres.writeFile({ fileName: "/home/codespace/ai_llm_slides/videos/machine-learning/10_nn_training_and_example/qa/slide030/b15b/slide_030_recreated_b15b.pptx" })
+pres.writeFile({ fileName: "/home/codespace/ai_llm_slides/videos/machine-learning/10_nn_training_and_example/recreated_pptx/slide_030_recreated.pptx" })
   .then(() => console.log("wrote slide_030_recreated.pptx"))
   .catch(err => { console.error(err); process.exit(1); });

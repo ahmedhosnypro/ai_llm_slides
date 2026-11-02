@@ -7,7 +7,7 @@ pptx.layout = "LAYOUT_WIDE";
 
 const BG = "E8E8E8", RED = "C00000", INK = "000000", BADGE = "FFF9C4", NUM = "333333";
 const BLUE = "0070C0", FRAME_BLUE = "0000CC", GREEN = "92D050", GRN_TXT = "45B144";
-const PURPLE = "31115D", DOTRED = "F13148", ARROW_BLUE = "0000FF";
+const PURPLE = "7030A0", DOTRED = "F13148", ARROW_BLUE = "0000FF";
 const FONT = "Arial";
 const P = (px) => px / 72;
 
@@ -87,7 +87,7 @@ s.addImage({
 // --- WORKED EXAMPLE BOX (pale blue, two lines) ---
 s.addShape(pptx.shapes.RECTANGLE, {
   x: P(335), y: P(290), w: P(193), h: P(44),
-  fill: { color: "F2FBFF" }, line: { color: "9DC3E6", width: 1 }
+  fill: { color: "DDEBF7" }, line: { color: "9DC3E6", width: 1 }
 });
 s.addImage({
   path: "/home/codespace/ai_llm_slides/videos/machine-learning/08_performance_measure/recreated_pptx/build/assets/eq_008_worked_v2.png",
@@ -128,20 +128,23 @@ s.addShape("triangle", {
   fill: { color: "FCE4D6" }, line: { color: "F4B183", width: 0.75 }
 });
 
-// --- GREEN CAPTION + traced underline (underline sits below the text) ---
-s.addText("All Samples classified as Positive", {
-  x: P(107), y: P(376), w: P(228), h: P(18), align: "left", valign: "middle",
-  fontSize: 13, italic: true, bold: true, color: GRN_TXT, fontFace: FONT, margin: 0
-});
+// --- GREEN BRACE under the callout boxes + RED italic caption below it ---
 s.addImage({
-  path: "/home/codespace/ai_llm_slides/videos/machine-learning/08_performance_measure/recreated_pptx/build/assets/underline_008_v2.png",
-  x: P(107), y: P(393), w: P(227), h: P(6)
+  path: "/home/codespace/ai_llm_slides/videos/machine-learning/08_performance_measure/recreated_pptx/build/assets/brace_008.png",
+  x: P(108), y: P(385), w: P(224), h: P(16)
+});
+s.addText([
+  { text: "All Samples classified as ", options: { fontSize: 14, italic: true, color: RED, fontFace: FONT, breakLine: false } },
+  { text: "Positive", options: { fontSize: 14, italic: true, bold: true, color: RED, fontFace: FONT, breakLine: false } }
+], {
+  x: P(79), y: P(411), w: P(232), h: P(18), align: "left", valign: "middle",
+  margin: 0, wrap: false
 });
 
 // --- BLUE NOTE BOX ---
 s.addShape(pptx.shapes.RECTANGLE, {
-  x: P(72), y: P(431), w: P(427), h: P(83),
-  fill: { color: "D7FFFA" }, line: { color: "2E75B6", width: 1.25 }
+  x: P(72), y: P(431), w: P(427), h: P(89),
+  fill: { color: "B2D5E7" }, line: { color: "2E75B6", width: 1.25 }
 });
 s.addText([
   { text: "Higher Precision value ", options: { fontSize: 15, italic: true, color: BLUE, fontFace: FONT, breakLine: false } },
@@ -216,11 +219,11 @@ s.addText("Negative", {
 });
 s.addImage({
   path: "/home/codespace/ai_llm_slides/videos/machine-learning/08_performance_measure/recreated_pptx/build/assets/doodle_008_L.png",
-  x: P(590), y: P(315), w: P(82), h: P(48)
+  x: P(588), y: P(318), w: P(84), h: P(57)
 });
 s.addImage({
   path: "/home/codespace/ai_llm_slides/videos/machine-learning/08_performance_measure/recreated_pptx/build/assets/doodle_008_R.png",
-  x: P(766), y: P(313), w: P(119), h: P(54)
+  x: P(764), y: P(318), w: P(90), h: P(50)
 });
 // branch arrows (thin blue lines)
 function arrow(x0, y0, x1, y1) {
@@ -232,8 +235,8 @@ function arrow(x0, y0, x1, y1) {
     rotate: ang, fill: { color: ARROW_BLUE }, line: { color: ARROW_BLUE, width: 0.25 }
   });
 }
-arrow(618, 402, 577, 431); arrow(618, 402, 660, 431);
-arrow(800, 402, 755, 433); arrow(800, 402, 847, 433);
+arrow(619, 394, 574, 456); arrow(619, 394, 661, 457);
+arrow(800, 393, 754, 457); arrow(800, 393, 846, 457);
 // node circles
 function node(x, y, label, fill) {
   s.addShape(pptx.shapes.OVAL, {
@@ -245,34 +248,34 @@ function node(x, y, label, fill) {
     fontSize: 13, bold: true, color: "FFFFFF", fontFace: FONT, margin: 0
   });
 }
-node(602, 369, "30", RED);
-node(560, 433, "10", RED);
-node(646, 433, "20", "00B050");
-node(784, 369, "70", "00B050");
-node(738, 435, "68", "00B050");
-node(832, 435, "2", RED);
+node(603, 379, "30", RED);
+node(558, 441, "10", RED);
+node(644, 442, "20", "00B050");
+node(783, 378, "70", "00B050");
+node(738, 442, "68", "00B050");
+node(830, 442, "2", RED);
 // solid red dot
 s.addShape(pptx.shapes.OVAL, {
-  x: P(602), y: P(467), w: P(23), h: P(23),
+  x: P(603), y: P(477), w: P(23), h: P(23),
   fill: { color: DOTRED }, line: { color: DOTRED, width: 0.5 }
 });
 // TP/FN/TN/FP captions
 function cap(x, t) {
   s.addText(t, {
-    x: P(x), y: P(469), w: P(40), h: P(16), align: "center", valign: "middle",
+    x: P(x), y: P(481), w: P(40), h: P(16), align: "center", valign: "middle",
     fontSize: 11, bold: true, color: INK, fontFace: FONT, margin: 0
   });
 }
-cap(560, "TP"); cap(646, "FN"); cap(738, "TN"); cap(832, "FP");
-// hollow red down-arrows flanking the panel (slightly tilted, orig y~360-397)
-s.addShape(pptx.shapes.RECTANGLE, { x: P(556), y: P(367), w: P(2), h: P(28), fill: { color: RED }, line: { color: RED, width: 0.25 } });
+cap(554, "TP"); cap(641, "FN"); cap(734, "TN"); cap(826, "FP");
+// hollow red down-arrows flanking the panel (orig y~408-445)
+s.addShape(pptx.shapes.RECTANGLE, { x: P(556), y: P(408), w: P(2), h: P(30), fill: { color: RED }, line: { color: RED, width: 0.25 } });
 s.addShape("triangle", {
-  x: P(551), y: P(395), w: P(12), h: P(9), rotate: 170,
+  x: P(551), y: P(436), w: P(12), h: P(9), rotate: 170,
   fill: { color: "FFFFFF" }, line: { color: RED, width: 1.25 }
 });
-s.addShape(pptx.shapes.RECTANGLE, { x: P(862), y: P(367), w: P(2), h: P(28), fill: { color: RED }, line: { color: RED, width: 0.25 } });
+s.addShape(pptx.shapes.RECTANGLE, { x: P(866), y: P(408), w: P(2), h: P(30), fill: { color: RED }, line: { color: RED, width: 0.25 } });
 s.addShape("triangle", {
-  x: P(857), y: P(395), w: P(12), h: P(9), rotate: 190,
+  x: P(861), y: P(436), w: P(12), h: P(9), rotate: 190,
   fill: { color: "FFFFFF" }, line: { color: RED, width: 1.25 }
 });
 
@@ -296,14 +299,14 @@ s.addText("Actual", {
   align: "center", valign: "middle",
   fontSize: 12, bold: true, color: RED, fontFace: FONT, margin: 0
 });
-// 10 with hand-drawn hollow circle (as in original)
+// 10 inside a solid purple filled circle, white text (as in original)
 s.addShape(pptx.shapes.OVAL, {
   x: P(755), y: P(218), w: P(39), h: P(38),
-  fill: { color: "FFFFFF" }, line: { color: PURPLE, width: 2 }
+  fill: { color: PURPLE }, line: { color: PURPLE, width: 0.5 }
 });
 s.addText("10", {
   x: P(757), y: P(220), w: P(35), h: P(34), align: "center", valign: "middle",
-  fontSize: 13, bold: true, color: INK, fontFace: FONT, margin: 0
+  fontSize: 13, bold: true, color: "FFFFFF", fontFace: FONT, margin: 0
 });
 cellText(790, 220, 54, 32, "20");
 // 2 in purple rounded-rect outline

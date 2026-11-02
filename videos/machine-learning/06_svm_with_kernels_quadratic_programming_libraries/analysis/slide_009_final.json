@@ -1,0 +1,235 @@
+{
+  "slide_title": "Example",
+  "subtitle_or_header": "none",
+  "verbatim_text": {
+    "title": [
+      "Example"
+    ],
+    "labels": [
+      "9",
+      "Subject to",
+      "G x \u2264 h",
+      "x = 0, y = 5",
+      "Minimum value:"
+    ],
+    "bullets": [
+      "x \u2265 0",
+      "y \u2265 0",
+      "x + 3 y \u2265 15",
+      "2 x + 5 y \u2264 100",
+      "3 x + 4 y \u2264 80",
+      "\u2212 x \u2264 0",
+      "\u2212 y \u2264 0",
+      "\u2212 x \u2212 3 y \u2264 \u2212 15",
+      "2 x + 5 y \u2264 100",
+      "3 x + 4 y \u2264 80",
+      "x + 3 y = 15   \u21d2   \u2265 15",
+      "2 x + 5 y = 25   \u21d2   \u2264 100",
+      "3 x + 4 y = 20   \u21d2   \u2264 80",
+      "x \u2265 0",
+      "y \u2265 0"
+    ],
+    "equations": [
+      "Minimize  0.5 x\u00b2 + 3 x + 4 y",
+      "Minimize  0.5 x\u00b2 + 0 y\u00b2 + 0 xy + 3 x + 4 y   [0 y\u00b2 and 0 xy in red]",
+      "Minimize  1/2 [ x\u00b2 + 0 y\u00b2 + 0 xy ] + 3 x + 4 y   [1/2 green; 0 y\u00b2, 0 xy red]",
+      "1/2 [ x\u1d40 P x ] + q\u1d40 x   [1/2 green; P and q blue]",
+      "P = | 1  0 ; 0  0 |    q = ( 3 ; 4 )",
+      "G = | \u22121  0 ; 0  \u22121 ; \u22121  \u22123[?] ; 2  5 ; 3  4 |    h = ( 0 ; 0 ; \u221215 ; 100 ; 80 )",
+      "0.5 x\u00b2 + 3 x + 4 y = 20"
+    ]
+  },
+  "layout": {
+    "arrangement": "Outer red frame; title 'Example' top-left; yellow badge '9' top-right; large top panel with objective-function rewriting (two Minimize lines, boxed generic form at right of middle row, P and q on bottom row); bottom-left panel 'Subject to' (label, left constraint column, red \u21d2, converted \u2264 column, boxed 'G x \u2264 h', G matrix and h vector); bottom-right panel with red solution 'x = 0, y = 5', 5 constraint-check lines, and 'Minimum value' line.",
+    "regions": [
+      {
+        "name": "outer_frame",
+        "box": [
+          0.065,
+          0.085,
+          0.935,
+          0.941
+        ]
+      },
+      {
+        "name": "title",
+        "box": [
+          0.099,
+          0.135,
+          0.208,
+          0.185
+        ]
+      },
+      {
+        "name": "badge",
+        "box": [
+          0.876,
+          0.1,
+          0.923,
+          0.163
+        ]
+      },
+      {
+        "name": "top_objective_panel",
+        "box": [
+          0.075,
+          0.193,
+          0.925,
+          0.5
+        ]
+      },
+      {
+        "name": "bottom_left_subject_to_panel",
+        "box": [
+          0.075,
+          0.519,
+          0.678,
+          0.861
+        ]
+      },
+      {
+        "name": "bottom_right_solution_panel",
+        "box": [
+          0.688,
+          0.519,
+          0.925,
+          0.861
+        ]
+      }
+    ]
+  },
+  "visual_elements": [
+    {
+      "type": "rectangle/outer frame",
+      "box": [
+        0.065,
+        0.085,
+        0.935,
+        0.941
+      ],
+      "border_color": "#C00000 [?]",
+      "fill": "#FFFFFF"
+    },
+    {
+      "type": "rectangle/top panel",
+      "box": [
+        0.075,
+        0.193,
+        0.925,
+        0.5
+      ],
+      "border_color": "#C00000",
+      "fill": "#FFFFFF"
+    },
+    {
+      "type": "rectangle/subject-to panel",
+      "box": [
+        0.075,
+        0.519,
+        0.678,
+        0.861
+      ],
+      "border_color": "#C00000",
+      "fill": "#FFFFFF"
+    },
+    {
+      "type": "rectangle/solution panel",
+      "box": [
+        0.688,
+        0.519,
+        0.925,
+        0.861
+      ],
+      "border_color": "#C00000",
+      "fill": "#FFFFFF"
+    },
+    {
+      "type": "rect highlight box",
+      "box": [
+        0.763,
+        0.302,
+        0.92,
+        0.363
+      ],
+      "fill": "#FCE4D6",
+      "border": "#C00000",
+      "contains": "1/2 [x\u1d40 P x] + q\u1d40 x"
+    },
+    {
+      "type": "rect highlight box",
+      "box": [
+        0.402,
+        0.533,
+        0.505,
+        0.583
+      ],
+      "fill": "#FCE4D6",
+      "border": "#C00000",
+      "contains": "G x \u2264 h"
+    },
+    {
+      "type": "circle/badge",
+      "box": [
+        0.876,
+        0.1,
+        0.923,
+        0.163
+      ],
+      "fill": "#FFFF00",
+      "outline": "#000000/#7F6000 [?]",
+      "contains": "9"
+    },
+    {
+      "type": "arrow \u21d2 red",
+      "box": [
+        0.226,
+        0.695,
+        0.252,
+        0.735
+      ],
+      "direction": "right",
+      "color": "#FF0000"
+    },
+    {
+      "type": "matrix/vector bracket delimiters",
+      "note": "text-drawn brackets around P, q, G, h"
+    }
+  ],
+  "imagery": "none",
+  "colors": {
+    "slide_background": "#FFFFFF",
+    "frame_panels_title": "#C00000 [?]",
+    "body_math_ink": "#000000",
+    "red_emphasis": "#FF0000",
+    "green_fraction": "#008000",
+    "blue_letters": "#0000FF",
+    "highlight_fill": "#FCE4D6",
+    "badge_fill": "#FFFF00",
+    "badge_ink": "#000000"
+  },
+  "typography_notes": "Title 'Example' bold sans-serif (Calibri-like) ~26 pt red, left-aligned top-left. 'Minimize'/'Subject to' italic ~15 pt, 'Subject to' underlined. Math expressions Cambria Math-style italic ~14-15 pt with superscripts. 'x = 0, y = 5' and final equation bold red ~15 pt. 'Minimum value:' blue ~14 pt. Panels left-aligned; matrices centered in columns; badge '9' centered.",
+  "animation_state": "static",
+  "recreation_brief": "1. Set canvas background to #FFFFFF. Draw outer rectangle frame at [0.065, 0.085, 0.935, 0.941] with #C00000 [?] border and #FFFFFF fill.\n2. Place title text \"Example\" at [0.099, 0.135, 0.208, 0.185], color #C00000, bold sans-serif ~26 pt, left-aligned.\n3. Draw yellow circle badge at [0.876, 0.100, 0.923, 0.163], fill #FFFF00, outline #000000/#7F6000 [?], with centered text \"9\".\n4. Draw top objective panel rectangle at [0.075, 0.193, 0.925, 0.500] with #C00000 border and #FFFFFF fill.\n5. In top panel, place text \"Minimize 0.5 x\u00b2 + 3 x + 4 y\" at [0.083, 0.222, 0.318, 0.262], black #000000, ~15 pt, with superscript \u00b2.\n6. In top panel, place text \"Minimize 0.5 x\u00b2 + 0 y\u00b2 + 0 xy + 3 x + 4 y\" at [0.375, 0.222, 0.700, 0.262], with \"0 y\u00b2\" and \"0 xy\" in red #FF0000, rest black.\n7. In top panel, place text \"Minimize 1/2 [x\u00b2 + 0 y\u00b2 + 0 xy] + 3 x + 4 y\" at [0.375, 0.313, 0.720, 0.362], with \"1/2\" in green #008000 and \"0 y\u00b2\", \"0 xy\" in red #FF0000.\n8. In top panel, draw beige highlight rectangle at [0.763, 0.302, 0.920, 0.363], fill #FCE4D6, border #C00000, containing \"1/2 [x\u1d40 P x] + q\u1d40 x\" with \"1/2\" green #008000, \"P\" and \"q\" blue #0000FF, and transpose superscripts.\n9. In top panel, place 2\u00d72 matrix \"P = |1 0; 0 0|\" at [0.503, 0.398, 0.580, 0.458] with bracket delimiters, black ink.\n10. In top panel, place 2\u00d71 column vector \"q = (3; 4)\" at [0.628, 0.398, 0.688, 0.458] with parentheses, black ink.\n11. Draw bottom-left \"Subject to\" panel rectangle at [0.075, 0.519, 0.678, 0.861] with #C00000 border and #FFFFFF fill.\n12. In bottom-left panel, place underlined italic label \"Subject to\" at [0.085, 0.533, 0.165, 0.575], ~15 pt.\n13. In bottom-left panel, place left constraint column (5 lines) at [0.083, 0.583, 0.220, 0.833] with exact texts: \"x \u2265 0\", \"y \u2265 0\", \"x + 3 y \u2265 15\", \"2 x + 5 y \u2264 100\", \"3 x + 4 y \u2264 80\".\n14. In bottom-left panel, draw red right-pointing arrow \"\u21d2\" at [0.226, 0.695, 0.252, 0.735], color #FF0000.\n15. In bottom-left panel, place converted \u2264 column (5 lines) at [0.270, 0.583, 0.470, 0.833] with exact texts: \"\u2212 x \u2264 0\", \"\u2212 y \u2264 0\", \"\u2212 x \u2212 3 y \u2264 \u2212 15\", \"2 x + 5 y \u2264 100\", \"3 x + 4 y \u2264 80\".\n16. In bottom-left panel, draw beige highlight rectangle at [0.402, 0.533, 0.505, 0.583], fill #FCE4D6, border #C00000, containing \"G x \u2264 h\".\n17. In bottom-left panel, place 5\u00d72 matrix G at [0.452, 0.610, 0.560, 0.833] with bracket delimiters and rows: \"\u22121 0\", \"0 \u22121\", \"\u22121 \u22123[?]\", \"2 5\", \"3 4\".\n18. In bottom-left panel, place 5\u00d71 vector h at [0.565, 0.610, 0.678, 0.833] with parentheses and entries: \"0\", \"0\", \"\u221215\", \"100\", \"80\".\n19. Draw bottom-right solution panel rectangle at [0.688, 0.519, 0.925, 0.861] with #C00000 border and #FFFFFF fill.\n20. In bottom-right panel, place red bold text \"x = 0, y = 5\" at [0.700, 0.533, 0.850, 0.573], color #FF0000, ~15 pt.\n21. In bottom-right panel, place 5 constraint-check lines within [0.700, 0.583, 0.905, 0.770] with exact texts: \"x + 3 y = 15 \u21d2 \u2265 15\", \"2 x + 5 y = 25 \u21d2 \u2264 100\", \"3 x + 4 y = 20 \u21d2 \u2264 80\", \"x \u2265 0\", \"y \u2265 0\".\n22. In bottom-right panel, place blue text \"Minimum value:\" at [0.700, 0.790, 0.820, 0.825], color #0000FF, ~14 pt.\n23. In bottom-right panel, place red bold equation \"0.5 x\u00b2 + 3 x + 4 y = 20\" at [0.700, 0.828, 0.900, 0.868], color #FF0000, ~15 pt.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Added missing required field subtitle_or_header with value \"none\".",
+      "Added missing required field animation_state with value \"static\".",
+      "Rewrote recreation_brief as a 23-step ordered checklist specifying exact text, normalized position, color, and shape/chart type for every element.",
+      "Corrected bottom-right constraint-check count from the vague/incorrect \"Three check lines\" to the exact 5 lines derivable from verbatim_text.bullets and listed their exact texts.",
+      "Ensured every layout.region and visual_element is explicitly referenced in the recreation_brief.",
+      "Replaced imprecise references with exact counts: 5 left constraint lines, 5 converted constraint lines, 5 constraint-check lines, 2\u00d72 matrix P, 5\u00d72 matrix G, 5\u00d71 vector h."
+    ],
+    "uncertain_items": [
+      "G matrix third row second entry appears overwritten/corrected (\u22123 over a struck digit) [?]",
+      "Exact red of frame/borders (#C00000 vs #B02418) [?]",
+      "Exact math point sizes (estimated 14\u201315 pt) [?]",
+      "Badge circle border color (#000000 vs #7F6000) [?]"
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "validated_by": "validate_slides",
+    "validation_elapsed_s": 624.1
+  }
+}

@@ -1,0 +1,211 @@
+{
+  "slide_title": "Quadratic Coefficients",
+  "subtitle_or_header": "Two Variables Example",
+  "verbatim_text": {
+    "title": [
+      "Quadratic Coefficients"
+    ],
+    "subtitle": [
+      "Two Variables Example"
+    ],
+    "labels": [
+      "4",
+      "Two Variables Example"
+    ],
+    "bullets": [
+      "a_11 \\Rightarrow Coefficient of x_1^2",
+      "a_21 + a_12 \\Rightarrow Coefficient of x_1 x_2 \\Rightarrow a_12 = a_21 = 1/2 Coefficient of x_1 x_2",
+      "a_22 \\Rightarrow Coefficient of x_2^2"
+    ],
+    "equations": [
+      "(x_1  x_2) [[a_11  a_12],[a_21  a_22]] (x_1;x_2) = (a_11 x_1 + a_21 x_2   a_12 x_1 + a_22 x_2) (x_1;x_2)",
+      "= (a_11 x_1 + a_21 x_2)x_1 + (a_12 x_1 + a_22 x_2)x_2 = a_11 x_1^2 + a_21 x_1 x_2 + a_12 x_1 x_2 + a_22 x_2^2",
+      "= a_11 x_1^2 + (a_21 + a_12)x_1 x_2 + a_22 x_2^2 \\Rightarrow Quadratic form",
+      "x_1 x_2",
+      "x_1 [a_11  a_12] \\Rightarrow [ coef of x_1^2   0.5 coef of x_1 x_2 ]",
+      "x_2 [a_21  a_22]              [ 0.5 coef of x_1 x_2   coef of x_2^2 ]"
+    ]
+  },
+  "layout": {
+    "arrangement": "Outer red frame; badge top-right inside frame; centered title near top; left-aligned red subtitle under title; 3 stacked red-bordered panels: top equation panel, middle coefficient-mapping panel, bottom matrix-to-coefficient diagram; blue rightward \\Rightarrow arrows appear inside the middle panel and between the two matrices in the bottom panel.",
+    "regions": [
+      {
+        "name": "outer_frame",
+        "box": [
+          0.063,
+          0.078,
+          0.932,
+          0.939
+        ],
+        "contains": "outer red-bordered white frame"
+      },
+      {
+        "name": "badge",
+        "box": [
+          0.893,
+          0.089,
+          0.925,
+          0.149
+        ],
+        "contains": "numeral 4"
+      },
+      {
+        "name": "title",
+        "box": [
+          0.358,
+          0.111,
+          0.657,
+          0.169
+        ],
+        "contains": "Quadratic Coefficients"
+      },
+      {
+        "name": "subtitle",
+        "box": [
+          0.083,
+          0.185,
+          0.286,
+          0.224
+        ],
+        "contains": "Two Variables Example"
+      },
+      {
+        "name": "top_equation_panel",
+        "box": [
+          0.076,
+          0.248,
+          0.869,
+          0.52
+        ],
+        "contains": "3 equation lines"
+      },
+      {
+        "name": "middle_mapping_panel",
+        "box": [
+          0.076,
+          0.544,
+          0.869,
+          0.713
+        ],
+        "contains": "3 coefficient-mapping lines and blue \\Rightarrow arrows"
+      },
+      {
+        "name": "bottom_matrix_panel",
+        "box": [
+          0.076,
+          0.731,
+          0.869,
+          0.917
+        ],
+        "contains": "2x2 a-matrix, row/column labels x_1,x_2, rightward \\Rightarrow, and 2x2 coefficient matrix"
+      }
+    ]
+  },
+  "visual_elements": [
+    {
+      "type": "rectangle/frame",
+      "box": [
+        0.063,
+        0.078,
+        0.932,
+        0.939
+      ],
+      "border_color": "#C00000",
+      "fill": "#FFFFFF",
+      "contains": "outer frame"
+    },
+    {
+      "type": "rounded-box/badge",
+      "box": [
+        0.893,
+        0.089,
+        0.925,
+        0.149
+      ],
+      "fill": "#FFFF00",
+      "outline": "#000000/#333333",
+      "contains": "4"
+    },
+    {
+      "type": "box",
+      "box": [
+        0.076,
+        0.248,
+        0.869,
+        0.52
+      ],
+      "border_color": "#C00000",
+      "fill": "#FFFFFF",
+      "contains": "top equation panel with 3 equation lines"
+    },
+    {
+      "type": "box",
+      "box": [
+        0.076,
+        0.544,
+        0.869,
+        0.713
+      ],
+      "border_color": "#C00000",
+      "fill": "#FFFFFF",
+      "contains": "middle coefficient-mapping panel with 3 lines and blue arrows"
+    },
+    {
+      "type": "box/diagram",
+      "box": [
+        0.076,
+        0.731,
+        0.869,
+        0.917
+      ],
+      "border_color": "#C00000",
+      "fill": "#FFFFFF",
+      "contains": "2x2 matrix with row/column labels x_1,x_2, black bracket cells, rightward \\Rightarrow to a 2x2 coefficient matrix; diagonal cells 'coef of x_1^2'/'coef of x_2^2', off-diagonal '0.5 coef of x_1 x_2'"
+    },
+    {
+      "type": "arrows",
+      "location": "inside middle_mapping_panel and between the two matrices in bottom_matrix_panel",
+      "color": "#0000FF",
+      "direction": "left-to-right",
+      "symbol": "\\Rightarrow"
+    }
+  ],
+  "imagery": "none",
+  "colors": {
+    "slide_background": "#FFFFFF",
+    "frame_panel_borders_title_subtitle_ink": "#C00000",
+    "variables_x": "#FF0000",
+    "coefficients_and_arrows": "#0000FF",
+    "math_body_ink": "#000000",
+    "quadratic_form_text": "#008000",
+    "badge_fill": "#FFFF00",
+    "badge_ring_numeral": "#000000/#333333",
+    "panel_fills": "#FFFFFF"
+  },
+  "typography_notes": "Sans-serif (Arial/Helvetica-like) for title/labels; math in serif-italic (Times/Cambria Math-like). Title largest, bold, centered, dark red ~22 pt. Subtitle italic underlined, smaller, left-aligned, red. Equations/body left-aligned inside panels; annotations 'Coefficient of ...' roman; body equation lines about 13-14 pt. Badge '4' small bold dark centered.",
+  "animation_state": "No animation specified in the source JSON; treat the slide as static.",
+  "recreation_brief": "1. Set the canvas to 960x540 px with background #FFFFFF; treat all boxes as normalized [x_min,y_min,x_max,y_max] coordinates and multiply x by 960 and y by 540 for pixels. 2. Draw the outer frame as a rectangle at [0.063,0.078,0.932,0.939] with fill #FFFFFF and border #C00000. 3. Draw the badge as a rounded box at [0.893,0.089,0.925,0.149] with fill #FFFF00 and outline #000000/#333333 (use #000000 if a single hex is required); center the bold dark numeral '4' inside it. 4. Place the title 'Quadratic Coefficients' centered in [0.358,0.111,0.657,0.169], bold, #C00000, about 22 pt, sans-serif. 5. Place the subtitle 'Two Variables Example' left-aligned in [0.083,0.185,0.286,0.224], italic, underlined, #C00000, smaller than the title, sans-serif. 6. Draw the top equation panel as a rectangle at [0.076,0.248,0.869,0.520] with fill #FFFFFF and border #C00000; left-align these 3 lines exactly: '(x_1  x_2) [[a_11  a_12],[a_21  a_22]] (x_1;x_2) = (a_11 x_1 + a_21 x_2   a_12 x_1 + a_22 x_2) (x_1;x_2)', '= (a_11 x_1 + a_21 x_2)x_1 + (a_12 x_1 + a_22 x_2)x_2 = a_11 x_1^2 + a_21 x_1 x_2 + a_12 x_1 x_2 + a_22 x_2^2', '= a_11 x_1^2 + (a_21 + a_12)x_1 x_2 + a_22 x_2^2 \\Rightarrow Quadratic form'; color x variables #FF0000, a coefficients #0000FF, other math ink #000000, and 'Quadratic form' #008000. 7. Draw the middle coefficient-mapping panel as a rectangle at [0.076,0.544,0.869,0.713] with fill #FFFFFF and border #C00000; left-align these 3 lines exactly: 'a_11 \\Rightarrow Coefficient of x_1^2', 'a_21 + a_12 \\Rightarrow Coefficient of x_1 x_2 \\Rightarrow a_12 = a_21 = 1/2 Coefficient of x_1 x_2', 'a_22 \\Rightarrow Coefficient of x_2^2'; color the \\Rightarrow arrows and 'a_12 = a_21 = 1/2' #0000FF and the 'Coefficient of ...' text #000000. 8. Draw the bottom matrix-to-coefficient panel as a rectangle at [0.076,0.731,0.869,0.917] with fill #FFFFFF and border #C00000. 9. Inside the bottom panel, place the column labels 'x_1' and 'x_2' above the two columns and the row labels 'x_1' and 'x_2' to the left of the two rows in #FF0000. 10. Inside the bottom panel, draw the left 2x2 matrix with black bracket cells containing row 1 'a_11', 'a_12' and row 2 'a_21', 'a_22'; color the a coefficients #0000FF. 11. Place a rightward '\\Rightarrow' in #0000FF between the left and right matrices. 12. Draw the right 2x2 coefficient matrix with black boxed cells containing row 1 'coef of x_1^2', '0.5 coef of x_1 x_2' and row 2 '0.5 coef of x_1 x_2', 'coef of x_2^2'; color the diagonal text #000000 and the off-diagonal '0.5 coef of x_1 x_2' text #0000FF. 13. Use sans-serif for the title, subtitle, badge, and labels; use serif-italic for math; keep panel text left-aligned except the centered title and badge. 14. Do not add animations; render the slide as static.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Added missing subtitle_or_header field using 'Two Variables Example' from verbatim_text.labels.",
+      "Added missing animation_state field as static because no animation is specified.",
+      "Added arrow coverage to layout.arrangement and layout.regions so the \\Rightarrow elements in the middle and bottom panels are explicitly covered.",
+      "Replaced vague quantity wording with exact counts: 3 stacked panels, 3 equation lines, 3 coefficient-mapping lines, and 2x2 matrices.",
+      "Rewrote recreation_brief as an ordered 14-step checklist with exact text, normalized positions, colors, and shape types.",
+      "Preserved extracted verbatim math strings exactly and flagged ambiguous or unverifiable details instead of inventing them."
+    ],
+    "uncertain_items": [
+      "Badge outline/numeral color is ambiguous in the source: #000000/#333333.",
+      "Vector separators in the first equation are not explicitly captured: '(x_1  x_2)' and '(a_11 x_1 + a_21 x_2   a_12 x_1 + a_22 x_2)' appear to have missing separators.",
+      "Exact coordinates for individual \\Rightarrow arrows are not provided; only panel-level boxes are known.",
+      "Coordinate boxes, hex values, and point sizes are visual estimates per the source confidence note.",
+      "Exact font families are inferred as Arial/Helvetica-like and Times/Cambria Math-like."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "validated_by": "validate_slides",
+    "validation_elapsed_s": 223.3
+  }
+}

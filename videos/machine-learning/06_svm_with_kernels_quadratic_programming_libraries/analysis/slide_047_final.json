@@ -1,0 +1,143 @@
+{
+  "slide_title": "Figure-only slide",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "47",
+      "0 5 10 15 20 25 30 35 (x-axis ticks, left to right)",
+      "40 30 20 10 0 -10 (y-axis ticks, top to bottom)"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Figure-only slide. Outer red-bordered light-gray canvas; white matplotlib plot left-center; yellow badge '47' top-right; bottom black player bar. Plot shows a filled contour decision surface (blue left, red right, speckled gray band) with blue/red scatter along a spiral and a short black arrow near the center pointing right.",
+    "regions": [
+      {
+        "name": "outer_frame",
+        "position": "[0.016, 0.046, 0.984, 0.951]",
+        "content": "Red stroke #B00000 over gray canvas #DCDCDC"
+      },
+      {
+        "name": "badge",
+        "position": "[0.925, 0.072, 0.982, 0.170]",
+        "content": "Pale-yellow ellipse '47'"
+      },
+      {
+        "name": "plot",
+        "position": "[0.231, 0.124, 0.777, 0.874]",
+        "content": "Axes box with contour fill, scatter, arrow"
+      },
+      {
+        "name": "bottom_bar",
+        "position": "[0.000, 0.965, 1.000, 1.000]",
+        "content": "Black player UI bar"
+      }
+    ]
+  },
+  "visual_elements": [
+    {
+      "type": "box",
+      "description": "Outer red frame stroke ~2-3px #B00000; inner gray field #DCDCDC",
+      "position": "[0.016, 0.046, 0.984, 0.951]",
+      "colors": [
+        "#B00000",
+        "#DCDCDC"
+      ]
+    },
+    {
+      "type": "badge",
+      "description": "Ellipse fill #F2F0A6, thin outline #5A5A5A, numeral '47' #000000",
+      "position": "[0.925, 0.072, 0.982, 0.170]",
+      "colors": [
+        "#F2F0A6"
+      ]
+    },
+    {
+      "type": "chart",
+      "description": "Axes frame, white field, black spines/ticks/labels; x ticks 0,5,...,35; y ticks -10,0,...,40",
+      "position": "[0.231, 0.124, 0.777, 0.874]",
+      "colors": [
+        "#FFFFFF",
+        "#000000"
+      ]
+    },
+    {
+      "type": "curve",
+      "description": "Filled contour decision surface across axes: blue #1F4FD8 left/top-left, red #E02424 right/top-right, gray #C4C4C4 band densely dithered with #0A0A0A dots; nested inner rings alternate red/blue around a small white wedge near [0.490,0.545,0.515,0.575]",
+      "position": "[0.231, 0.124, 0.777, 0.874]",
+      "colors": [
+        "#1F4FD8",
+        "#E02424",
+        "#C4C4C4",
+        "#0A0A0A"
+      ]
+    },
+    {
+      "type": "curve",
+      "description": "Scatter, two unlabeled color classes along the spiral: blue #1F4FD8 dots and red #E02424 dots",
+      "position": "within axes box",
+      "colors": [
+        "#1F4FD8",
+        "#E02424"
+      ]
+    },
+    {
+      "type": "arrow",
+      "description": "Short black arrow near spiral center, direction left-to-right (increasing x), data approx (16,11) to (21.5,11)",
+      "position": "[0.486, 0.548, 0.563, 0.566]",
+      "colors": [
+        "#000000"
+      ]
+    },
+    {
+      "type": "box",
+      "description": "Bottom black player bar #000000",
+      "position": "[0.000, 0.965, 1.000, 1.000]",
+      "colors": [
+        "#000000"
+      ]
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "canvas": "#DCDCDC",
+    "outer_frame": "#B00000",
+    "plot_background": "#FFFFFF",
+    "tick_ink": "#000000",
+    "badge_fill": "#F2F0A6",
+    "badge_outline": "#5A5A5A",
+    "badge_text": "#000000",
+    "series_blue": "#1F4FD8",
+    "series_red": "#E02424",
+    "gray_band": "#C4C4C4",
+    "dither_dots": "#0A0A0A",
+    "bottom_bar": "#000000"
+  },
+  "typography_notes": "No title. Tick numerals sans-serif (DejaVu-like), ~10-11 pt regular black; x centered under ticks, y right-aligned. Badge '47' medium/bold sans ~18 pt black centered.",
+  "animation_state": "static",
+  "recreation_brief": "1. Set the slide background fill to solid #DCDCDC.\n2. Draw the outer frame as a rectangle with no fill and a 2-3 px stroke of #B00000 at normalized coordinates [0.016, 0.046, 0.984, 0.951].\n3. Draw the plot area as a white (#FFFFFF) rectangle at [0.231, 0.124, 0.777, 0.874] with black (#000000) spines and tick marks.\n4. Place x-axis tick labels left-to-right with exact text \"0\", \"5\", \"10\", \"15\", \"20\", \"25\", \"30\", \"35\"; center each under its tick in black sans-serif ~10-11 pt.\n5. Place y-axis tick labels top-to-bottom with exact text \"40\", \"30\", \"20\", \"10\", \"0\", \"-10\"; right-align each in black sans-serif ~10-11 pt.\n6. Render a filled contour decision surface inside the plot area: blue #1F4FD8 on the left/top-left, red #E02424 on the right/top-right, and a gray #C4C4C4 band densely dithered with #0A0A0A dots; add nested inner rings alternating red/blue around a small white wedge near [0.490, 0.545, 0.515, 0.575].\n7. Overlay a scatter plot with two unlabeled classes along the spiral using blue #1F4FD8 dots and red #E02424 dots.\n8. Draw a black (#000000) arrow at [0.486, 0.548, 0.563, 0.566] pointing left-to-right (increasing x), from data coordinates approximately (16, 11) to (21.5, 11).\n9. Draw a pale-yellow ellipse badge at [0.925, 0.072, 0.982, 0.170] with fill #F2F0A6 and thin outline #5A5A5A; center the exact text \"47\" inside in black medium/bold sans-serif ~18 pt.\n10. Draw a full-width black (#000000) rectangle player bar at [0.000, 0.965, 1.000, 1.000].",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Replaced empty slide_title 'none' with 'Figure-only slide' reconstructed from layout.arrangement.",
+      "Added missing subtitle_or_header field as null (no subtitle present in source).",
+      "Added missing animation_state field as 'static' (no animation described).",
+      "Rewrote recreation_brief into a 10-step numbered checklist specifying exact text, normalized positions, hex colors, and shape/chart type for each element.",
+      "Replaced vague descriptor 'short black arrow' with exact bounding box [0.486, 0.548, 0.563, 0.566] and approximate data coordinates (16,11) to (21.5,11).",
+      "Split combined canvas/frame instruction into discrete background and frame steps for builder clarity."
+    ],
+    "uncertain_items": [
+      "Arrow data coordinates are approximate: (16,11) to (21.5,11).",
+      "White wedge location is approximate: near [0.490, 0.545, 0.515, 0.575].",
+      "Font sizes are approximate: tick labels ~10-11 pt, badge text ~18 pt.",
+      "Exact dither dot density and spacing for the gray band are unspecified beyond 'densely dithered'.",
+      "Exact data points for the spiral scatter and contour rings are not provided; only colors and general placement are described."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "validated_by": "validate_slides",
+    "validation_elapsed_s": 196.9
+  }
+}

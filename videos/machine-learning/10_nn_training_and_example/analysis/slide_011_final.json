@@ -1,0 +1,230 @@
+{
+  "slide_title": "Updated Weights of Output Layer",
+  "subtitle_or_header": "( Calculated Error is affected by Netj,)",
+  "verbatim_text": {
+    "bullets": [
+      "Input Sample",
+      "Target Label",
+      "Class 1",
+      "Class 2",
+      "Class m",
+      "Output 1",
+      "Output 2",
+      "Output m",
+      "Error Error",
+      "Node Bias",
+      "Netj",
+      "Oj",
+      "f( )",
+      "wji",
+      "wjj",
+      "\u2202E/\u2202wji",
+      "\u2202E/\u2202Netj = -\u03b4j",
+      "\u03b4j"
+    ],
+    "labels": [
+      "11",
+      "Input Sample",
+      "Target Label",
+      "Class 1",
+      "Class 2",
+      "Class m",
+      "Output 1",
+      "Output 2",
+      "Output m",
+      "Error Error",
+      "Node Bias",
+      "Netj",
+      "Oj",
+      "f( )",
+      "wji",
+      "wjj",
+      "\u2202E/\u2202wji",
+      "\u2202E/\u2202Netj = -\u03b4j",
+      "\u03b4j",
+      "\u0394ji = -\u03b7 \u2202E/\u2202wji = - \u2202E/\u2202Netj \u2202Netj/\u2202wji = \u03b7 \u03b4j * Oi",
+      "Where \u03b4j = - \u2202E/\u2202Netj ( one \u03b4 for each Node j )",
+      "For Output Layer, Sigmoid Activation \u21d2 \u03b4j = (tj-Oj) * Oj(1-Oj) \u21d2 \u0394ji = \u03b7 (tj-Oj) * Oj(1-Oj) * Oi"
+    ],
+    "equations": [
+      "\u0394_ji = -\u03b7 \u2202E/\u2202w_ji = - \u2202E/\u2202Net_j \u2202Net_j/\u2202w_ji = \u03b7 \u03b4_j * O_i",
+      "Where \u03b4_j = - \u2202E/\u2202Net_j ( one \u03b4 for each Node j )",
+      "For Output Layer, Sigmoid Activation \u21d2 \u03b4_j = (t_j-O_j) * O_j(1-O_j) \u21d2 \u0394_ji = \u03b7 (t_j-O_j) * O_j(1-O_j) * O_i"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title centered at top with slide number 11 in circle top-right. Main neural network diagram occupies center. Input Sample box top-left, Target Label box top-right. Error bar vertical on far right. Equation row spans bottom of diagram area. Footer strip with sigmoid equation at very bottom.",
+    "regions": [
+      {
+        "name": "title area",
+        "position": "top center, full width",
+        "content": "Main title in red, subtitle in blue below it, slide number 11 in circle top-right"
+      },
+      {
+        "name": "main diagram",
+        "position": "middle, center",
+        "content": "Multi-layer neural network with input dots, 3 white Sigma nodes each followed by f( ) boxes, 3 blue Sigma nodes labeled Netj and Oj, 3 green Sigma nodes labeled Netj and Oj, weight arrows wji and wjj, output labels Output 1/2/m, red derivative labels \u2202E/\u2202wji and \u2202E/\u2202Netj = -\u03b4j, red highlighted node at top right output, Node Bias label with circled 1 bottom-left, circled 1 bottom center, and green upward arrows bottom center-right"
+      },
+      {
+        "name": "side labels",
+        "position": "left and right edges",
+        "content": "Input Sample box top-left, Target Label box top-right, Error Error vertical bar with Class 1/2/m boxes on right"
+      },
+      {
+        "name": "equation row",
+        "position": "bottom of diagram area",
+        "content": "Weight update equation and delta definition"
+      },
+      {
+        "name": "footer strip",
+        "position": "very bottom, full width",
+        "content": "Sigmoid activation equation for output layer"
+      }
+    ],
+    "hierarchy": "Title dominates (largest, red). Main diagram is central focus. Equations at bottom are secondary but prominent. Side labels and slide number are smaller accent elements."
+  },
+  "visual_elements": [
+    {
+      "type": "network",
+      "description": "Neural network diagram showing backpropagation weight updates. Left side has input dots connecting to three Sigma (\u03a3) nodes in first layer, each followed by f( ) boxes. Middle layer has three blue Sigma nodes labeled Netj and Oj. Right-middle layer has three green Sigma nodes labeled Netj and Oj. Outputs labeled Output 1, Output 2, Output m. Arrows show weights wji and wjj. Red text shows \u2202E/\u2202wji and \u2202E/\u2202Netj = -\u03b4j. Red highlighted node at top right output.",
+      "colors": [
+        "#FDF5E6",
+        "#FFFFFF",
+        "#C00000",
+        "#0000FF",
+        "#90EE90",
+        "#FFFF00",
+        "#FFD700"
+      ],
+      "position": "center"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Purple/pink rounded rectangle labeled 'Input Sample' top-left",
+      "colors": [
+        "#DDA0DD",
+        "#FFFFFF"
+      ],
+      "position": "top-left"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Purple/pink rounded rectangle labeled 'Target Label' top-right",
+      "colors": [
+        "#DDA0DD",
+        "#FFFFFF"
+      ],
+      "position": "top-right"
+    },
+    {
+      "type": "chart",
+      "description": "Vertical dark red bar labeled 'Error Error' with three light green boxes to its right labeled Class 1, Class 2, Class m",
+      "colors": [
+        "#8B0000",
+        "#90EE90",
+        "#000000"
+      ],
+      "position": "far right"
+    },
+    {
+      "type": "equation",
+      "description": "Row showing \u0394_ji = -\u03b7 \u2202E/\u2202w_ji = - \u2202E/\u2202Net_j \u2202Net_j/\u2202w_ji = \u03b7 \u03b4_j * O_i, with 'Where \u03b4_j = - \u2202E/\u2202Net_j ( one \u03b4 for each Node j )' to the right",
+      "colors": [
+        "#000000",
+        "#FDF5E6"
+      ],
+      "position": "bottom of diagram area"
+    },
+    {
+      "type": "highlight-box",
+      "description": "Bottom strip with blue border containing sigmoid activation equation",
+      "colors": [
+        "#0000FF",
+        "#FFFFFF",
+        "#C00000"
+      ],
+      "position": "very bottom"
+    },
+    {
+      "type": "icon",
+      "description": "Circled number 11 in yellow/gold circle top-right corner",
+      "colors": [
+        "#FFD700",
+        "#000000"
+      ],
+      "position": "top-right corner"
+    },
+    {
+      "type": "icon",
+      "description": "Circled number 1 in purple near 'Node Bias' text bottom-left of diagram",
+      "colors": [
+        "#800080",
+        "#FFFFFF"
+      ],
+      "position": "bottom-left of diagram"
+    },
+    {
+      "type": "icon",
+      "description": "Circled number 1 in purple near bottom center of diagram",
+      "colors": [
+        "#800080",
+        "#FFFFFF"
+      ],
+      "position": "bottom center of diagram"
+    },
+    {
+      "type": "arrow",
+      "description": "Green upward arrows with circled numbers near bottom of diagram",
+      "colors": [
+        "#00FF00",
+        "#FFFFFF"
+      ],
+      "position": "bottom center-right"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FDF5E6",
+    "title_text": "#C00000",
+    "body_text": "#000000",
+    "accents": [
+      "#FFD700",
+      "#0000FF",
+      "#8B0000",
+      "#90EE90",
+      "#DDA0DD",
+      "#00FF00"
+    ]
+  },
+  "typography_notes": "Sans-serif font throughout. Title is large, bold, red. Subtitle is blue, smaller. Body text is black. 'Output' in title has yellow highlight. 'Sigmoid' in bottom strip is red. Equations use mathematical notation with subscripts. Some labels like 'Node Bias' have circled numbers.",
+  "animation_state": "Static slide, no mid-build elements visible.",
+  "recreation_brief": "1. Set slide background to cream (#FDF5E6).\n2. Add title text \"Updated Weights of Output Layer\" centered at top, full width, in large bold sans-serif red (#C00000); highlight the word \"Output\" in yellow (#FFD700).\n3. Add subtitle text \"( Calculated Error is affected by Netj,)\" centered below the title in blue (#0000FF), smaller than the title.\n4. Add slide number badge: a gold circle (#FFD700) with black text (#000000) reading \"11\", positioned in the top-right corner.\n5. Add a rounded rectangle highlight-box with purple fill (#DDA0DD) and white border (#FFFFFF) containing the text \"Input Sample\", positioned top-left.\n6. Add a rounded rectangle highlight-box with purple fill (#DDA0DD) and white border (#FFFFFF) containing the text \"Target Label\", positioned top-right.\n7. Add a vertical rectangle bar with dark red fill (#8B0000) labeled \"Error Error\", positioned on the far right.\n8. Add three light green rectangles (#90EE90) with black text (#000000) labeled \"Class 1\", \"Class 2\", and \"Class m\", positioned to the right of the Error bar on the far right.\n9. Draw input dots (black circles, #000000) on the left side of the center diagram; exact count not specified in source.\n10. Place three white Sigma (\u03a3) nodes (#FFFFFF) in the first layer of the center diagram, each followed by a box labeled \"f( )\".\n11. Place three blue Sigma nodes (#0000FF) in the middle layer labeled \"Netj\" and \"Oj\".\n12. Place three green Sigma nodes (#90EE90) in the right-middle layer labeled \"Netj\" and \"Oj\".\n13. Add weight arrows between layers labeled \"wji\" and \"wjj\" in black text (#000000).\n14. Add output labels \"Output 1\", \"Output 2\", and \"Output m\" on the right side of the network in black text (#000000).\n15. Add red text labels (#C00000) \"\u2202E/\u2202wji\" and \"\u2202E/\u2202Netj = -\u03b4j\" near the corresponding network nodes.\n16. Add a red highlighted node (#C00000) at the top right output.\n17. Add text \"Node Bias\" with a circled number \"1\" in purple (#800080) and white text (#FFFFFF), positioned bottom-left of the diagram.\n18. Add a circled number \"1\" in purple (#800080) with white text (#FFFFFF), positioned bottom center of the diagram.\n19. Add green upward arrows (#00FF00) with circled numbers, positioned bottom center-right of the diagram.\n20. Add equation text \"\u0394_ji = -\u03b7 \u2202E/\u2202w_ji = - \u2202E/\u2202Net_j \u2202Net_j/\u2202w_ji = \u03b7 \u03b4_j * O_i\" in black (#000000) on the cream background (#FDF5E6), positioned at the bottom of the diagram area.\n21. Add text \"Where \u03b4_j = - \u2202E/\u2202Net_j ( one \u03b4 for each Node j )\" in black (#000000) to the right of the equation row.\n22. Add a footer strip rectangle with blue border (#0000FF) and white fill (#FFFFFF) spanning the full width at the very bottom.\n23. Add text \"For Output Layer, Sigmoid Activation \u21d2 \u03b4_j = (t_j-O_j) * O_j(1-O_j) \u21d2 \u0394_ji = \u03b7 (t_j-O_j) * O_j(1-O_j) * O_i\" inside the footer strip, with \"Sigmoid\" in red (#C00000) and the remaining text in black (#000000).",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Rewrote recreation_brief into a 23-step ordered checklist specifying exact text, position, color, and shape/chart type for each element.",
+      "Updated layout.regions.main_diagram content to explicitly include circled number icons, Node Bias label, and green arrows so every visual_elements entry is covered by a region.",
+      "Added the missing green upward arrow element (visual_elements index 9) to recreation_brief step 19.",
+      "Replaced vague phrasing with exact counts from the JSON: 3 white Sigma nodes, 3 blue Sigma nodes, and 3 green Sigma nodes.",
+      "Noted the unspecified input dot count explicitly rather than inventing a number."
+    ],
+    "uncertain_items": [
+      "Label 'Error Error' appears duplicated in source; kept verbatim but may be an OCR artifact.",
+      "Exact count of input dots on the left side of the neural network is not specified in the source JSON.",
+      "Exact pixel coordinates for circled number icons and green arrows are described only relatively (bottom-left, bottom center, bottom center-right)."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "frame": "slide_011.jpg",
+    "model": "images",
+    "source_timestamps": {
+      "slide": 11,
+      "image": "slide_011.jpg",
+      "badge": "11"
+    },
+    "elapsed_s": 47.6,
+    "validated_by": "validate_slides",
+    "validation_elapsed_s": 515.0
+  }
+}

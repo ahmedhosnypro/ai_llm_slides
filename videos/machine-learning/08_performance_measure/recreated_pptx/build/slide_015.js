@@ -240,11 +240,7 @@ s.addText("0.5", {
   x: px(614), y: boxTop(oBase, OF), w: 0.5, h: 0.3,
   fontSize: OF, color: BRIGHT_RED, fontFace: FONT, margin: 0, valign: "top"
 });
-s.addText("\u00d7", {
-  x: px(652), y: boxTop(oBase, OF), w: 0.3, h: 0.3,
-  fontSize: OF, color: BLACK, fontFace: FONT, margin: 0, valign: "top"
-});
-eqImg(s, "paren_sum", px(676), oInkTop);
+eqImg(s, "paren_sum", px(668), oInkTop);
 
 const outFile = "/home/codespace/ai_llm_slides/videos/machine-learning/08_performance_measure/recreated_pptx/slide_015_recreated.pptx";
 pptx.writeFile({ fileName: outFile }).then(() => console.log("done"));

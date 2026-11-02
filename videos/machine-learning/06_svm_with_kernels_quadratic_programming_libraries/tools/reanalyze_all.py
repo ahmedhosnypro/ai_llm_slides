@@ -5,7 +5,7 @@ import argparse, os, subprocess, sys, time
 
 BASE = "/home/codespace/ai_llm_slides"
 NS = BASE + "/videos/machine-learning/06_svm_with_kernels_quadratic_programming_libraries"
-ANALYZE = BASE + "/.agents/skills/image-analysis/scripts/analyze_image.py"
+ANALYZE = NS + "/tools/analyze_image_local.py"
 GATE = BASE + "/scripts/16_vision_gate.sh"
 OUT = NS + "/qa/reanalysis2"
 PROMPT = NS + "/analysis_prompt_v2.txt"

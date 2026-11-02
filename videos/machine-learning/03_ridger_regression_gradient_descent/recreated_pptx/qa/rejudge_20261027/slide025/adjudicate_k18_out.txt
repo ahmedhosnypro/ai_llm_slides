@@ -1,0 +1,33 @@
+== D4/D5: lowest colored/red/dark ink row in BL and BR plot regions ==
+  BL orig: colored/red ink max slide-y = 524.0 (house bottom stroke y=538.5; image bottoms BL=527 BR=531)
+  BL render: colored/red ink max slide-y = 524.4 (house bottom stroke y=538.5; image bottoms BL=527 BR=531)
+  BR orig: colored/red ink max slide-y = 528.0 (house bottom stroke y=538.5; image bottoms BL=527 BR=531)
+  BR render: colored/red ink max slide-y = 535.8 (house bottom stroke y=538.5; image bottoms BL=527 BR=531)
+
+== D1: BL label anchor boxes, ink stats + cross-corr vs original ==
+  'Global Maxima' box x242..268 y304..319: orig ink=129 bbox x240..268 y304..319 | render ink=197 bbox x238..274 y303..320 | NCC=0.197
+  'Local Maxima' box x286..315 y337..352: orig ink=109 bbox x286..315 y337..352 | render ink=59 bbox x287..320 y333..358 | NCC=-0.020
+  'Local Minima' box x286..311 y390..399: orig ink=95 bbox x287..317 y391..402 | render ink=3 bbox x316..317 y393..394 | NCC=-0.021
+  'Global Minima' box x145..201 y439..465: orig ink=158 bbox x145..207 y433..460 | render ink=572 bbox x139..206 y433..468 | NCC=0.052
+
+== D2: BR photo inset — photo-like (non-jet colored, textured) block scan in BR ==
+  orig: non-jet colored px=850 bbox slide x470..901 y355..528
+  orig: blue-photo mask frac=0.0525 px=4403
+  render: non-jet colored px=482 bbox slide x666..816 y364..517
+  render: blue-photo mask frac=0.0348 px=2915
+
+== D3: TL surface silhouette — colored ink height profile ==
+  TL orig: colored px=10291 slide-y range 119.0..295.0 (height 176.0px) x range 87.0..406.0
+    width profile (per 10px y-band, slide px): [2, 186, 420, 1288, 1287, 1717, 1815, 460, 592, 563, 518, 328, 219, 128, 29, 10, 10, 351, 368]
+  TL render: colored px=62590 slide-y range 117.7..295.2 (height 177.5px) x range 85.4..406.4
+    width profile (per 10px y-band, slide px): [177, 19, 840, 2944, 3199, 3154, 3556, 987, 1112, 1149, 1738, 2363, 2416, 2446, 1828, 1055, 545, 201, 291]
+
+== D6: label boxes vs plot vertical centers ==
+  plot TL: y 116..289 center 202
+  plot TR: y 116..316 center 216
+  plot BR: y 346..530 center 438
+  plot BL: y 296..527 center 412
+  label1: y 137..179 center 158
+  label2: y 184..226 center 205
+  label3: y 354..392 center 373
+  label4: y 452..490 center 471

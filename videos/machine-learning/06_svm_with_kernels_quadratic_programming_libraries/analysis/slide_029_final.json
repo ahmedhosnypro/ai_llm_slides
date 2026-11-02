@@ -1,0 +1,336 @@
+{
+  "slide_number": 29,
+  "source_image": "unique_slides/slide_029.jpg",
+  "slide_title": "Radial Basis Function (RBF) Kernel",
+  "subtitle_or_header": "Taylor series expansion of (x)",
+  "verbatim_text": {
+    "bullets": [
+      "Approx. to 4 terms => 13",
+      "Approx. to 5 terms => 16.375",
+      "Approx. to 6 terms => 18.4",
+      "Approx. to 7 terms => 19.413",
+      "Approx. to 8 terms => 19.84",
+      "Approx. to 9 terms => 19.8420.01",
+      "Actual Value => 20.086"
+    ],
+    "labels": [
+      "29",
+      "\u03c6(a)^T",
+      "\u03c6(b)"
+    ],
+    "header": [
+      "Taylor series expansion of (x)"
+    ],
+    "equations": [
+      "e^{-1/2(a-b)^2}=e^{-1/2(a^2+b^2-2ab)}=e^{-a^2/2}e^{-b^2/2}e^{ab}",
+      "e^{ab}=1+ab/1!+(ab)^2/2!+(ab)^3/3!+(ab)^4/4!+(ab)^5/5!+......\u221e",
+      "e^{ab}=(1  a/\u221a1!  a^2/\u221a2!  a^3/\u221a3!  a^4/\u221a4!  ....  ....  \u221e) [1; b/\u221a1!; b^2/\u221a2!; b^3/\u221a3!; b^4/\u221a4!; ....; ....; \u221e]",
+      "e^x=1+x/1!+(x)^2/2!+(x)^3/3!+(x)^4/4!+(x)^5/5!+......\u221e",
+      "e^3=1+3/1!+(3)^2/2!+(3)^3/3!+(3)^4/4!+(3)^5/5!+......\u221e"
+    ],
+    "body": [
+      "Approx. to 4 terms => 13",
+      "Approx. to 5 terms => 16.375",
+      "Approx. to 6 terms => 18.4",
+      "Approx. to 7 terms => 19.413",
+      "Approx. to 8 terms => 19.84",
+      "Approx. to 9 terms => 19.8420.01",
+      "Actual Value => 20.086"
+    ]
+  },
+  "layout": {
+    "arrangement": "Red-bordered slide; centered dark-red title with yellow badge '29' top-right; left red-bordered white panel with the RBF derivation (equation 1, equation 2 e^ab series, and the row/column vector product with \u03c6 callout chips); right yellow panel with the Taylor header, e^x and e^3 series, and a 7-line approximation ladder ending in red values; black letterbox bars top/bottom and a small black cursor overlay lower-left of the left panel are capture artifacts (do not recreate).",
+    "regions": [
+      {
+        "name": "outer red frame",
+        "box": [
+          0.058,
+          0.033,
+          0.944,
+          0.959
+        ]
+      },
+      {
+        "name": "title",
+        "box": [
+          0.22,
+          0.12,
+          0.78,
+          0.21
+        ]
+      },
+      {
+        "name": "badge",
+        "box": [
+          0.88,
+          0.13,
+          0.94,
+          0.22
+        ]
+      },
+      {
+        "name": "left derivation panel",
+        "box": [
+          0.075,
+          0.23,
+          0.7,
+          0.95
+        ],
+        "stroke": "#B00020[?]",
+        "fill": "#FFFFFF"
+      },
+      {
+        "name": "equation 1",
+        "box": [
+          0.09,
+          0.25,
+          0.69,
+          0.35
+        ]
+      },
+      {
+        "name": "equation 2 (e^ab series)",
+        "box": [
+          0.09,
+          0.36,
+          0.69,
+          0.47
+        ]
+      },
+      {
+        "name": "vector product",
+        "box": [
+          0.09,
+          0.49,
+          0.69,
+          0.93
+        ]
+      },
+      {
+        "name": "\u03c6(a)^T callout",
+        "box": [
+          0.16,
+          0.82,
+          0.36,
+          0.87
+        ]
+      },
+      {
+        "name": "\u03c6(b) callout",
+        "box": [
+          0.53,
+          0.88,
+          0.69,
+          0.94
+        ]
+      },
+      {
+        "name": "right yellow panel",
+        "box": [
+          0.71,
+          0.23,
+          0.94,
+          0.85
+        ],
+        "fill": "#FFF9C4[?]",
+        "stroke": "#B00020[?]"
+      },
+      {
+        "name": "right header",
+        "box": [
+          0.72,
+          0.25,
+          0.93,
+          0.3
+        ]
+      },
+      {
+        "name": "e^x series",
+        "box": [
+          0.72,
+          0.31,
+          0.94,
+          0.39
+        ]
+      },
+      {
+        "name": "e^3 series",
+        "box": [
+          0.72,
+          0.43,
+          0.94,
+          0.5
+        ]
+      },
+      {
+        "name": "approximation ladder",
+        "box": [
+          0.72,
+          0.52,
+          0.94,
+          0.84
+        ]
+      },
+      {
+        "name": "cursor overlay (capture artifact \u2014 do not recreate)",
+        "box": [
+          0.26,
+          0.83,
+          0.29,
+          0.86
+        ]
+      },
+      {
+        "name": "letterbox bar top (capture artifact \u2014 do not recreate)",
+        "box": [
+          0.0,
+          0.0,
+          1.0,
+          0.033
+        ]
+      },
+      {
+        "name": "letterbox bar bottom (capture artifact \u2014 do not recreate)",
+        "box": [
+          0.0,
+          0.959,
+          1.0,
+          1.0
+        ]
+      }
+    ]
+  },
+  "visual_elements": [
+    {
+      "type": "rectangle",
+      "role": "outer red frame",
+      "box": [
+        0.058,
+        0.033,
+        0.944,
+        0.959
+      ],
+      "stroke": "#B00020[?]"
+    },
+    {
+      "type": "rectangle",
+      "role": "left derivation panel",
+      "box": [
+        0.075,
+        0.23,
+        0.7,
+        0.95
+      ],
+      "stroke": "#B00020[?]",
+      "fill": "#FFFFFF"
+    },
+    {
+      "type": "rectangle",
+      "role": "right yellow panel",
+      "box": [
+        0.71,
+        0.23,
+        0.94,
+        0.85
+      ],
+      "stroke": "#B00020[?]",
+      "fill": "#FFF9C4[?]"
+    },
+    {
+      "type": "circle",
+      "role": "badge",
+      "box": [
+        0.88,
+        0.13,
+        0.94,
+        0.22
+      ],
+      "fill": "#FFEB3B[?]",
+      "outline": "#B00020[?]",
+      "text": "29",
+      "text_color": "#990000[?]"
+    },
+    {
+      "type": "rounded-box",
+      "role": "\u03c6(a)^T / \u03c6(b) callout chips",
+      "boxes": [
+        [
+          0.16,
+          0.82,
+          0.36,
+          0.87
+        ],
+        [
+          0.53,
+          0.88,
+          0.69,
+          0.94
+        ]
+      ],
+      "fill": "#FFF9C4[?]",
+      "stroke": "#003399[?]",
+      "text_color": "#003399"
+    },
+    {
+      "type": "vector-brackets",
+      "role": "row parentheses and column square bracket in vector product",
+      "box": [
+        0.14,
+        0.5,
+        0.67,
+        0.91
+      ],
+      "color": "#000000"
+    },
+    {
+      "type": "picture",
+      "role": "small black cursor overlay lower-left of left panel (capture artifact \u2014 do not recreate)",
+      "box": [
+        0.26,
+        0.83,
+        0.29,
+        0.86
+      ],
+      "color": "#000000"
+    }
+  ],
+  "imagery": "none",
+  "colors": {
+    "background": "#FCFCFC",
+    "frame": "#B00020[?]",
+    "title": "#990000[?]",
+    "body_ink": "#000000",
+    "value_red": "#B00000[?]",
+    "panel_yellow": "#FFF9C4[?]",
+    "badge_fill": "#FFEB3B[?]",
+    "callout_ink": "#003399"
+  },
+  "typography_notes": "Title 'Radial Basis Function (RBF) Kernel' bold ~30 pt centered dark red #990000[?]. Right header 'Taylor series expansion of (x)' bold ~20 pt centered dark red \u2014 reproduce verbatim, do not add a base 'e'. Equations black math ~16 pt with stacked fractions and superscripts (use equation editor or Unicode). Ladder labels black ~16 pt; '=>' result values bold red #B00000[?]. \u03c6 callout chips bold #003399 ~16 pt. Badge '29' bold ~18 pt #990000[?] on #FFEB3B[?].",
+  "animation_state": "Static slide; no animations, builds, or transitions specified in the source analysis.",
+  "recreation_brief": "CONVENTION: all boxes are [left, top, right, bottom] as fractions of slide width/height, origin top-left. Colors marked [?] are approximations \u2014 use as specified.\n1) Canvas: set slide background to #FCFCFC. Do NOT draw the black letterbox bars (top/bottom) or the black cursor overlay \u2014 both are capture artifacts.\n2) Outer frame: rectangle, no fill, stroke #B00020[?] ~2\u20133 pt, box [0.058, 0.033, 0.944, 0.959].\n3) Title: text box [0.22, 0.12, 0.78, 0.21]; text exactly 'Radial Basis Function (RBF) Kernel'; bold ~30 pt; color #990000[?]; horizontally centered.\n4) Badge: circle, box [0.88, 0.13, 0.94, 0.22]; fill #FFEB3B[?]; outline #B00020[?]; text '29' bold ~18 pt, color #990000[?], centered.\n5) Left panel: rectangle, box [0.075, 0.23, 0.70, 0.95]; fill #FFFFFF; stroke #B00020[?].\n6) Equation 1 (inside left panel), box [0.09, 0.25, 0.69, 0.35], black ~16 pt with superscripts: 'e^{-1/2(a-b)^2}=e^{-1/2(a^2+b^2-2ab)}=e^{-a^2/2}e^{-b^2/2}e^{ab}'.\n7) Equation 2, box [0.09, 0.36, 0.69, 0.47], black ~16 pt: 'e^{ab}=1+ab/1!+(ab)^2/2!+(ab)^3/3!+(ab)^4/4!+(ab)^5/5!+......\u221e'.\n8) Vector product, box [0.09, 0.49, 0.69, 0.93], black ~16 pt: row vector '(1  a/\u221a1!  a^2/\u221a2!  a^3/\u221a3!  a^4/\u221a4!  ....  ....  \u221e)' inside tall parentheses, followed by column vector '[1; b/\u221a1!; b^2/\u221a2!; b^3/\u221a3!; b^4/\u221a4!; ....; ....; \u221e]' inside tall square brackets; bracket glyphs #000000 spanning [0.14, 0.50, 0.67, 0.91].\n9) \u03c6(a)^T chip: rounded rectangle, box [0.16, 0.82, 0.36, 0.87]; fill #FFF9C4[?]; stroke #003399[?]; text '\u03c6(a)^T' bold ~16 pt, color #003399.\n10) \u03c6(b) chip: rounded rectangle, box [0.53, 0.88, 0.69, 0.94]; same fill, stroke, and text style; text '\u03c6(b)'.\n11) Right panel: rectangle, box [0.71, 0.23, 0.94, 0.85]; fill #FFF9C4[?]; stroke #B00020[?].\n12) Right header, box [0.72, 0.25, 0.93, 0.30]: text exactly 'Taylor series expansion of (x)'; bold ~20 pt; centered; dark red #990000[?]; reproduce verbatim \u2014 do NOT rewrite the base as 'e'.\n13) e^x series, box [0.72, 0.31, 0.94, 0.39], black ~16 pt: 'e^x=1+x/1!+(x)^2/2!+(x)^3/3!+(x)^4/4!+(x)^5/5!+......\u221e'.\n14) e^3 series, box [0.72, 0.43, 0.94, 0.50], black ~16 pt: 'e^3=1+3/1!+(3)^2/2!+(3)^3/3!+(3)^4/4!+(3)^5/5!+......\u221e'.\n15) Approximation ladder, box [0.72, 0.52, 0.94, 0.84]: 7 left-aligned lines, ~16 pt; label text black, value after '=>' bold red #B00000[?]. Lines exactly: 'Approx. to 4 terms => 13'; 'Approx. to 5 terms => 16.375'; 'Approx. to 6 terms => 18.4'; 'Approx. to 7 terms => 19.413'; 'Approx. to 8 terms => 19.84'; 'Approx. to 9 terms => 19.8420.01' (keep printed string verbatim); 'Actual Value => 20.086'.\n16) Final check: imagery = none; the slide contains exactly the title, badge '29', 3 left-panel equation blocks, 2 \u03c6 chips, right header, 2 Taylor series lines, and the 7-line ladder \u2014 nothing else.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Added required verbatim_text.bullets, populated with the 7 approximation-ladder lines (the slide's only list content, taken verbatim from body).",
+      "Added missing animation_state (static; none specified in source).",
+      "Added layout.regions entries for the cursor overlay and top/bottom letterbox bars so every visual_elements item has a covering region; all three marked as capture artifacts / do-not-recreate.",
+      "Harmonized naming: visual_elements role 'right Taylor panel' renamed 'right yellow panel' to match layout.regions.",
+      "Rewrote recreation_brief as a 16-step ordered checklist with exact strings, boxes, colors, fonts, and shape types for every element.",
+      "Removed the unverifiable claim 'per web verification' from recreation_brief; replaced with the instruction to keep printed strings verbatim.",
+      "Replaced the vague count 'three derivation equations' with explicit enumeration (equation 1, equation 2, vector product) and stated the exact ladder line count (7).",
+      "Retained all [?] color markers from the source and listed them in uncertain_items."
+    ],
+    "uncertain_items": [
+      "Colors flagged [?] in source: frame/strokes #B00020, title and badge text #990000, value_red #B00000, panel_yellow #FFF9C4, badge_fill #FFEB3B, callout chip stroke #003399[?].",
+      "Ladder line 'Approx. to 9 terms => 19.8420.01' appears to be an OCR/run-together artifact (possibly '19.842 \u00b10.01' or '20.01'); kept verbatim as printed.",
+      "Right header 'Taylor series expansion of (x)' omits the exponential base; typography_notes explicitly instruct keeping it verbatim, so preserved uncorrected.",
+      "Letterbox bar extents ([0,0,1,0.033] top and [0,0.959,1,1] bottom) are inferred from the outer frame box; the bars are capture artifacts and are excluded from recreation.",
+      "Row-vector term 'a/\u221a1!' is verbatim from source (mathematically equals a); intentionally not corrected."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "validated_by": "validate_slides",
+    "validation_elapsed_s": 393.1
+  }
+}

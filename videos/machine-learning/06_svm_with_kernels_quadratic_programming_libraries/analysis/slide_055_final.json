@@ -1,0 +1,142 @@
+{
+  "slide_title": "Data-only figure slide",
+  "subtitle_or_header": "none",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "55",
+      "0 5 10 15 20 25 (x-axis ticks, left to right)",
+      "25 20 15 10 5 0 (y-axis ticks, top to bottom)"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Data-only figure slide. White canvas with dark-red bottom strip; main square plot frame upper-center; yellow badge '55' top-right. Plot is a checkerboard of alternating red/blue rectangular regions on 0-25 axes with overlaid 4-point marker clusters at lattice intersections in alternating colors. No title, legend, or axis titles.",
+    "regions": [
+      {
+        "name": "badge",
+        "position": "[0.893, 0.047, 0.957, 0.169]",
+        "content": "Yellow oval '55', black outline"
+      },
+      {
+        "name": "plot_frame",
+        "position": "[0.223, 0.054, 0.877, 0.930]",
+        "content": "Black-stroked main plot frame"
+      },
+      {
+        "name": "plot_area",
+        "position": "[0.241, 0.075, 0.868, 0.877]",
+        "content": "Checkerboard field + marker clusters"
+      },
+      {
+        "name": "y_tick_labels",
+        "position": "[0.190, 0.075, 0.223, 0.877]",
+        "content": "Y-axis tick labels '25 20 15 10 5 0' top to bottom, black sans-serif"
+      },
+      {
+        "name": "x_tick_labels",
+        "position": "[0.241, 0.877, 0.868, 0.917]",
+        "content": "X-axis tick labels '0 5 10 15 20 25' left to right, black sans-serif"
+      },
+      {
+        "name": "bottom_strip",
+        "position": "[0.000, 0.917, 1.000, 1.000]",
+        "content": "Dark-red bottom strip ~#7A0000"
+      }
+    ]
+  },
+  "visual_elements": [
+    {
+      "type": "box",
+      "description": "Outer plot frame, black stroke #000000, no fill",
+      "position": "[0.223, 0.054, 0.877, 0.930]",
+      "colors": [
+        "#000000"
+      ]
+    },
+    {
+      "type": "chart",
+      "description": "Coordinate grid 0-25 both axes, thin boundary #000000",
+      "position": "[0.241, 0.075, 0.868, 0.877]",
+      "colors": [
+        "#000000"
+      ]
+    },
+    {
+      "type": "curve",
+      "description": "Checkerboard field: alternating red #FF0000 / blue #0000FF rectangular bands ~5 units wide with white #FFFFFF gaps",
+      "position": "[0.242, 0.075, 0.868, 0.874]",
+      "colors": [
+        "#FF0000",
+        "#0000FF",
+        "#FFFFFF"
+      ]
+    },
+    {
+      "type": "curve",
+      "description": "Marker clusters: repeated groups of four circular markers in a 4x4 layout at lattice intersections, alternating group colors #FF0000 / #0000FF; marker diameter ~4-6 px; cluster centers approx x 4, 9.4, 14.2, 20.2 and y 6.5, 15.8, 22.4 in plot coordinates [?]",
+      "position": "within plot area",
+      "colors": [
+        "#FF0000",
+        "#0000FF"
+      ]
+    },
+    {
+      "type": "badge",
+      "description": "Rounded oval fill #FFFF66, stroke #000000, text '55' #000000",
+      "position": "[0.893, 0.047, 0.957, 0.169]",
+      "colors": [
+        "#FFFF66",
+        "#000000"
+      ]
+    },
+    {
+      "type": "box",
+      "description": "Bottom dark-red strip",
+      "position": "[0.000, 0.917, 1.000, 1.000]",
+      "colors": [
+        "#7A0000"
+      ]
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "slide_background": "#FFFFFF",
+    "bottom_strip": "#7A0000[?]",
+    "plot_frame": "#000000",
+    "field_red": "#FF0000",
+    "field_blue": "#0000FF",
+    "field_gaps": "#FFFFFF",
+    "markers_red": "#FF0000",
+    "markers_blue": "#0000FF",
+    "badge_fill": "#FFFF66",
+    "badge_stroke_text": "#000000",
+    "tick_text": "#000000"
+  },
+  "typography_notes": "No title. Sans-serif tick labels and badge numeral; ticks small, y labels left of plot, x labels below plot; badge '55' centered in yellow oval. Numerals only.",
+  "animation_state": "Static; no animation specified in source.",
+  "recreation_brief": "1. Set slide background to white #FFFFFF on a 960x540 px canvas.\n2. Draw a dark-red bottom strip across the full width from y=495 px to y=540 px (normalized [0.000, 0.917, 1.000, 1.000]); fill #7A0000[?].\n3. Draw a yellow rounded-oval badge at normalized [0.893, 0.047, 0.957, 0.169] (pixels x 857-919, y 25-91); fill #FFFF66, stroke #000000, centered black text '55'.\n4. Draw the main square plot frame at normalized [0.223, 0.054, 0.877, 0.930] (pixels x 214-842, y 29-502); stroke #000000, no fill.\n5. Define the plot area at normalized [0.241, 0.075, 0.868, 0.877] (pixels x 231-833, y 40-474) with a 0-25 coordinate grid on both axes; boundary #000000.\n6. Fill the plot area with a checkerboard field of alternating red #FF0000 and blue #0000FF rectangular bands approximately 5 units wide, separated by white #FFFFFF gaps.\n7. Place 12 marker clusters on a 4-by-3 lattice at plot coordinates x = 4, 9.4, 14.2, 20.2 and y = 6.5, 15.8, 22.4[?]; each cluster contains 4 circular markers (diameter approx. 4-6 px) in a 2x2 arrangement; alternate cluster colors between #FF0000 and #0000FF.\n8. Add y-axis tick labels to the left of the plot area at normalized [0.190, 0.075, 0.223, 0.877]; text top-to-bottom: '25 20 15 10 5 0'; black #000000 sans-serif.\n9. Add x-axis tick labels below the plot area at normalized [0.241, 0.877, 0.868, 0.917]; text left-to-right: '0 5 10 15 20 25'; black #000000 sans-serif.\n10. Do not add a title, legend, or axis titles.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Reconstructed slide_title from layout.arrangement to 'Data-only figure slide'.",
+      "Added layout.regions entries for y-axis and x-axis tick labels to cover verbatim_text.labels.",
+      "Corrected y-axis tick label order in recreation_brief to '25 20 15 10 5 0' top-to-bottom per verbatim_text.labels.",
+      "Replaced vague '4x4 lattice intersections' with exact 4-by-3 lattice (12 cluster centers) derived from listed x and y coordinates.",
+      "Rewrote recreation_brief as a 10-step numbered checklist with exact pixel/normalized positions, colors, and text for every element.",
+      "Added animation_state field with 'Static; no animation specified in source.'",
+      "Kept [?] markers on bottom_strip color and marker cluster centers; listed them in uncertain_items."
+    ],
+    "uncertain_items": [
+      "Bottom strip color #7A0000 is marked [?] in source.",
+      "Marker cluster center coordinates (x 4, 9.4, 14.2, 20.2; y 6.5, 15.8, 22.4) are marked [?] in source.",
+      "Intra-cluster marker arrangement: source phrase 'groups of four circular markers in a 4x4 layout' is ambiguous; interpreted as 4 markers per cluster in a 2x2 arrangement.",
+      "No bullet text, subtitle, or animation state present in source; fields reconstructed as empty/static where absent."
+    ],
+    "recreatability_score_1_to_10": 8
+  },
+  "_meta": {
+    "validated_by": "validate_slides",
+    "validation_elapsed_s": 172.4
+  }
+}

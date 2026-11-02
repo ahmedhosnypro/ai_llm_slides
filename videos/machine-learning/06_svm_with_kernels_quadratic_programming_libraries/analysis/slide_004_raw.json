@@ -1,0 +1,66 @@
+{
+  "slide_number": 4,
+  "source_image": "unique_slides/slide_004.jpg",
+  "slide_title": "Quadratic Coefficients",
+  "verbatim_text": {
+    "title": ["Quadratic Coefficients"],
+    "labels": [
+      "4",
+      "Two Variables Example"
+    ],
+    "bullets": [
+      "a_11 \\Rightarrow Coefficient of x_1^2",
+      "a_21 + a_12 \\Rightarrow Coefficient of x_1 x_2 \\Rightarrow a_12 = a_21 = 1/2 Coefficient of x_1 x_2",
+      "a_22 \\Rightarrow Coefficient of x_2^2"
+    ],
+    "equations": [
+      "(x_1  x_2) [[a_11  a_12],[a_21  a_22]] (x_1;x_2) = (a_11 x_1 + a_21 x_2   a_12 x_1 + a_22 x_2) (x_1;x_2)",
+      "= (a_11 x_1 + a_21 x_2)x_1 + (a_12 x_1 + a_22 x_2)x_2 = a_11 x_1^2 + a_21 x_1 x_2 + a_12 x_1 x_2 + a_22 x_2^2",
+      "= a_11 x_1^2 + (a_21 + a_12)x_1 x_2 + a_22 x_2^2 \\Rightarrow Quadratic form",
+      "x_1 x_2",
+      "x_1 [a_11  a_12] \\Rightarrow [ coef of x_1^2   0.5 coef of x_1 x_2 ]",
+      "x_2 [a_21  a_22]              [ 0.5 coef of x_1 x_2   coef of x_2^2 ]"
+    ]
+  },
+  "layout": {
+    "arrangement": "Outer red frame; badge top-right inside frame; centered title near top; left-aligned red subtitle under title; three stacked red-bordered panels: top equation panel, middle coefficient-mapping panel, bottom matrix-to-coefficient diagram.",
+    "regions": [
+      {"name": "outer_frame", "box": [0.063, 0.078, 0.932, 0.939]},
+      {"name": "badge", "box": [0.893, 0.089, 0.925, 0.149]},
+      {"name": "title", "box": [0.358, 0.111, 0.657, 0.169]},
+      {"name": "subtitle", "box": [0.083, 0.185, 0.286, 0.224]},
+      {"name": "top_equation_panel", "box": [0.076, 0.248, 0.869, 0.520]},
+      {"name": "middle_mapping_panel", "box": [0.076, 0.544, 0.869, 0.713]},
+      {"name": "bottom_matrix_panel", "box": [0.076, 0.731, 0.869, 0.917]}
+    ]
+  },
+  "visual_elements": [
+    {"type": "rectangle/frame", "box": [0.063, 0.078, 0.932, 0.939], "border_color": "#C00000", "fill": "#FFFFFF"},
+    {"type": "rounded-box/badge", "box": [0.893, 0.089, 0.925, 0.149], "fill": "#FFFF00", "outline": "#000000/#333333", "contains": "4"},
+    {"type": "box", "box": [0.076, 0.248, 0.869, 0.520], "border_color": "#C00000", "fill": "#FFFFFF"},
+    {"type": "box", "box": [0.076, 0.544, 0.869, 0.713], "border_color": "#C00000", "fill": "#FFFFFF"},
+    {"type": "box/diagram", "box": [0.076, 0.731, 0.869, 0.917], "border_color": "#C00000", "fill": "#FFFFFF", "contains": "2x2 matrix with row/column labels x_1,x_2, black bracket cells, rightward \\Rightarrow to a 2x2 coefficient matrix; diagonal cells 'coef of x_1^2'/'coef of x_2^2', off-diagonal '0.5 coef of x_1 x_2'"},
+    {"type": "arrows", "note": "\\Rightarrow symbols inside middle box and bottom diagram, direction left-to-right"}
+  ],
+  "imagery": "none",
+  "colors": {
+    "slide_background": "#FFFFFF",
+    "frame_panel_borders_title_subtitle_ink": "#C00000",
+    "variables_x": "#FF0000",
+    "coefficients_and_arrows": "#0000FF",
+    "math_body_ink": "#000000",
+    "quadratic_form_text": "#008000",
+    "badge_fill": "#FFFF00",
+    "badge_ring_numeral": "#000000/#333333",
+    "panel_fills": "#FFFFFF"
+  },
+  "typography_notes": "Sans-serif (Arial/Helvetica-like) for title/labels; math in serif-italic (Times/Cambria Math-like). Title largest, bold, centered, dark red ~22 pt. Subtitle italic underlined, smaller, left-aligned, red. Equations/body left-aligned inside panels; annotations 'Coefficient of ...' roman. Badge '4' small bold dark centered.",
+  "equations": [
+    {"linear": "(x_1  x_2) [[a_11  a_12],[a_21  a_22]] (x_1;x_2) = (a_11 x_1 + a_21 x_2   a_12 x_1 + a_22 x_2) (x_1;x_2) = (a_11 x_1 + a_21 x_2)x_1 + (a_12 x_1 + a_22 x_2)x_2 = a_11 x_1^2 + a_21 x_1 x_2 + a_12 x_1 x_2 + a_22 x_2^2 = a_11 x_1^2 + (a_21 + a_12)x_1 x_2 + a_22 x_2^2 \\Rightarrow Quadratic form", "box": [0.076, 0.248, 0.869, 0.520], "detail": "three lines, x variables red, a coefficients blue, final 'Quadratic form' green"},
+    {"linear": "a_11 \\Rightarrow Coefficient of x_1^2; a_21 + a_12 \\Rightarrow Coefficient of x_1 x_2 \\Rightarrow a_12 = a_21 = 1/2 Coefficient of x_1 x_2; a_22 \\Rightarrow Coefficient of x_2^2", "box": [0.076, 0.544, 0.869, 0.713], "detail": "arrows blue, coefficient text black, 'a_12 = a_21 = 1/2' blue"},
+    {"linear": "x_1 x_2 over columns; rows x_1,x_2: [ [a_11,a_12],[a_21,a_22] ] \\Rightarrow [ [coef of x_1^2, 0.5 coef of x_1 x_2],[0.5 coef of x_1 x_2, coef of x_2^2] ]", "box": [0.076, 0.731, 0.869, 0.917], "detail": "diagonal result cells boxed black, off-diagonal 0.5 terms blue"}
+  ],
+  "measurements": "Title 'Quadratic Coefficients' x-extent ~344-632 px (288 px), ~22 pt, centered x ~488 px (0.508). Longest body line (first equation line) ~86-851 px (765 px), ~13-14 pt. Frame margins: left ~60 px (0.0625), top ~42 px (0.0778), right ~65 px (0.0677), bottom ~33 px (0.0611).",
+  "recreation_brief": "1. White 960x540 canvas; outer red frame [0.063,0.078,0.932,0.939] stroke #C00000. 2. Centered dark-red bold title 'Quadratic Coefficients' [0.358,0.111,0.657,0.169], ~22 pt. 3. Yellow circular badge '4' top-right [0.893,0.089,0.925,0.149], fill #FFFF00. 4. Red italic underlined subtitle 'Two Variables Example' [0.083,0.185,0.286,0.224]. 5. Top red-bordered panel [0.076,0.248,0.869,0.520] with the three equation lines left-aligned; x red, a blue, 'Quadratic form' green. 6. Middle red-bordered panel [0.076,0.544,0.869,0.713] with three coefficient-mapping lines, blue \\Rightarrow arrows, blue 'a_12 = a_21 = 1/2'. 7. Bottom red-bordered panel [0.076,0.731,0.869,0.917]: red row/column labels x_1,x_2, blue 2x2 a-matrix with boxed cells, rightward arrow, right 2x2 coefficient matrix with boxed diagonal cells and blue off-diagonal '0.5 coef of x_1 x_2' entries. 8. Sans-serif title/labels, serif-italic math; panels inside outer frame with margins above.",
+  "confidence": "Coordinate boxes, hex values, and point sizes are visual estimates; no illegible regions."
+}

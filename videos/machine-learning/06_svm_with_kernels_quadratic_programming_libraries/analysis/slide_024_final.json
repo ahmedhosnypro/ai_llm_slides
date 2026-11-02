@@ -1,0 +1,196 @@
+{
+  "slide_title": "KERNEL Functions and Kernel Trick",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "title_lines": [
+      "KERNEL Functions",
+      "and",
+      "Kernel Trick"
+    ],
+    "labels": [
+      "24"
+    ],
+    "bullets": []
+  },
+  "layout": {
+    "arrangement": "Minimal section-divider slide: white page surround, thin dark-red rectangular frame enclosing a light-gray field, centered three-line title block, yellow page badge top-right, black letterbox bar along the bottom edge, small cursor icon lower-left.",
+    "regions": [
+      {
+        "name": "red frame",
+        "box": [
+          0.04,
+          0.056,
+          0.963,
+          0.944
+        ]
+      },
+      {
+        "name": "light-gray slide field",
+        "box": [
+          0.042,
+          0.058,
+          0.961,
+          0.942
+        ]
+      },
+      {
+        "name": "badge circle",
+        "box": [
+          0.889,
+          0.093,
+          0.939,
+          0.152
+        ]
+      },
+      {
+        "name": "title line 1",
+        "box": [
+          0.371,
+          0.337,
+          0.63,
+          0.383
+        ]
+      },
+      {
+        "name": "title line 2 'and'",
+        "box": [
+          0.466,
+          0.474,
+          0.534,
+          0.51
+        ]
+      },
+      {
+        "name": "title line 3",
+        "box": [
+          0.417,
+          0.552,
+          0.583,
+          0.598
+        ]
+      },
+      {
+        "name": "cursor icon",
+        "box": [
+          0.338,
+          0.89,
+          0.35,
+          0.906
+        ]
+      },
+      {
+        "name": "bottom black bar",
+        "box": [
+          0.0,
+          0.956,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "name": "faint hairline",
+        "box": [
+          0.0,
+          0.075,
+          1.0,
+          0.077
+        ]
+      }
+    ]
+  },
+  "visual_elements": [
+    {
+      "type": "rectangle",
+      "role": "outer frame",
+      "box": [
+        0.04,
+        0.056,
+        0.963,
+        0.944
+      ],
+      "stroke": "#8B0000",
+      "fill": "none over #F2F2F2 field"
+    },
+    {
+      "type": "circle",
+      "role": "slide-number badge",
+      "box": [
+        0.889,
+        0.093,
+        0.939,
+        0.152
+      ],
+      "fill": "#FFFACD",
+      "outline": "#800080",
+      "text": "24",
+      "text_color": "#000000"
+    },
+    {
+      "type": "line",
+      "role": "faint hairline near top",
+      "box": [
+        0.0,
+        0.075,
+        1.0,
+        0.077
+      ],
+      "color": "#D8D8D8"
+    },
+    {
+      "type": "rectangle",
+      "role": "bottom letterbox bar",
+      "box": [
+        0.0,
+        0.956,
+        1.0,
+        1.0
+      ],
+      "fill": "#000000"
+    },
+    {
+      "type": "picture",
+      "role": "small cursor/pointer icon",
+      "box": [
+        0.338,
+        0.89,
+        0.35,
+        0.906
+      ],
+      "color": "#2B2B2B"
+    }
+  ],
+  "imagery": "none",
+  "colors": {
+    "page_surround": "#FFFFFF",
+    "slide_field": "#F2F2F2",
+    "frame": "#8B0000",
+    "title_line1": "#CC0000",
+    "title_line2": "#CC0000",
+    "title_line3": "#0000FF",
+    "badge_fill": "#FFFACD",
+    "badge_outline": "#800080",
+    "badge_ink": "#000000",
+    "hairline": "#D8D8D8",
+    "bottom_bar": "#000000",
+    "cursor": "#2B2B2B"
+  },
+  "typography_notes": "Sans-serif (Arial/Helvetica-like). 'KERNEL Functions' bold with KERNEL all-caps, ~32 pt, red, centered. 'and' regular lowercase ~24 pt red, centered. 'Kernel Trick' bold Title Case ~30 pt blue, centered. Badge numeral regular black centered in circle.",
+  "animation_state": "static (no animation indicated in source)",
+  "recreation_brief": "1. Set the slide background to white (#FFFFFF).\n2. Draw a light-gray (#F2F2F2) rectangle as the slide field at normalized bounding box [0.042, 0.058, 0.961, 0.942].\n3. Draw a dark-red (#8B0000) rectangular frame with no fill over the light-gray field at normalized bounding box [0.040, 0.056, 0.963, 0.944].\n4. Add a faint light-gray (#D8D8D8) horizontal hairline spanning the full slide width at y \u2248 0.075\u20130.077.\n5. Add a solid black (#000000) rectangle along the bottom edge at normalized bounding box [0.000, 0.956, 1.000, 1.000].\n6. Place a yellow (#FFFACD) circle with a purple (#800080) outline at normalized bounding box [0.889, 0.093, 0.939, 0.152] and add centered black (#000000) text \"24\" inside it.\n7. Add centered bold red (#CC0000) sans-serif text \"KERNEL Functions\" at normalized bounding box [0.371, 0.337, 0.630, 0.383], approximately 32 pt.\n8. Add centered regular red (#CC0000) sans-serif text \"and\" at normalized bounding box [0.466, 0.474, 0.534, 0.510], approximately 24 pt.\n9. Add centered bold blue (#0000FF) sans-serif text \"Kernel Trick\" at normalized bounding box [0.417, 0.552, 0.583, 0.598], approximately 30 pt.\n10. Place a small dark-gray (#2B2B2B) cursor/pointer icon at normalized bounding box [0.338, 0.890, 0.350, 0.906] in the lower-left area.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Added missing verbatim_text.bullets field as an empty array because the source slide is a section divider with no bullet content.",
+      "Added missing subtitle_or_header field set to null because no subtitle exists in the source.",
+      "Added missing animation_state field set to 'static (no animation indicated in source)'.",
+      "Rewrote recreation_brief from a 6-item summary array into a 10-step ordered numbered checklist specifying exact text, normalized [x1, y1, x2, y2] coordinates, colors, shapes, and approximate font sizes for every element.",
+      "Clarified the coordinate system in recreation_brief as normalized bounding boxes to eliminate placement ambiguity."
+    ],
+    "uncertain_items": [],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "validated_by": "validate_slides",
+    "validation_elapsed_s": 104.5
+  }
+}

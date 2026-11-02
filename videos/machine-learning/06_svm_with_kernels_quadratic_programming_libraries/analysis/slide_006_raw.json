@@ -1,0 +1,81 @@
+{
+  "slide_number": 6,
+  "source_image": "unique_slides/slide_006.jpg",
+  "slide_title": "Less Than Equal Constraints",
+  "verbatim_text": {
+    "title": ["Less Than Equal Constraints"],
+    "labels": [
+      "6",
+      "3 constraints",
+      "G x \u2264 h",
+      "Convert",
+      "6 constraints, 3 variables",
+      "6 x 3",
+      "G x \u2264 h"
+    ],
+    "bullets": [
+      "x\u2081 \u2264 z\u2081 , x\u2082 \u2264 z\u2082 , x\u2083 \u2264 z\u2083",
+      "x\u2081 \u2265 z\u2081 , x\u2082 \u2265 z\u2082 , x\u2083 \u2265 z\u2083",
+      "to",
+      "\u2212x\u2081 \u2264 \u2212z\u2081 , \u2212x\u2082 \u2264 \u2212z\u2082 , \u2212x\u2083 \u2264 \u2212z\u2083",
+      "y\u2081 \u2264 x\u2081 \u2264 z\u2081 , y\u2082 \u2264 x\u2082 \u2264 z\u2082 , y\u2083 \u2264 x\u2083 \u2264 z\u2083"
+    ],
+    "equations": [
+      "x\u2081 \u2264 z\u2081 , x\u2082 \u2264 z\u2082 , x\u2083 \u2264 z\u2083   \u21d2   [[1,0,0],[0,1,0],[0,0,1]] \u00b7 [x\u2081,x\u2082,x\u2083] \u2264 [z\u2081,z\u2082,z\u2083]",
+      "x\u2081 \u2265 z\u2081 , x\u2082 \u2265 z\u2082 , x\u2083 \u2265 z\u2083   \u21d2   [[\u22121,0,0],[0,\u22121,0],[0,0,\u22121]] \u00b7 [x\u2081,x\u2082,x\u2083] \u2264 [\u2212z\u2081,\u2212z\u2082,\u2212z\u2083]",
+      "y\u2081 \u2264 x\u2081 \u2264 z\u2081 , y\u2082 \u2264 x\u2082 \u2264 z\u2082 , y\u2083 \u2264 x\u2083 \u2264 z\u2083 ,   \u21d2   [[\u22121,0,0],[0,\u22121,0],[0,0,\u22121],[1,0,0],[0,1,0],[0,0,1]] \u00b7 [x\u2081,x\u2082,x\u2083] \u2264 [\u2212y\u2081,\u2212y\u2082,\u2212y\u2083,z\u2081,z\u2082,z\u2083]"
+    ]
+  },
+  "layout": {
+    "arrangement": "Light-gray slide field inside one outer red rectangular frame. Centered red bold title across the top; yellow circular badge '6' upper-right. Below the title, three stacked horizontal red-bordered rows of equal width: row 1 '3 constraints' with identity-matrix inequality and right-side 'G x \u2264 h' pill; row 2 greater-than constraints converted to a \u2212I matrix inequality plus pale-yellow 'Convert' note box at right; row 3 '6 constraints, 3 variables' with 6\u00d73 matrix inequality and right-side 'G x \u2264 h' pill.",
+    "regions": [
+      {"name": "outer_frame", "box": [0.062, 0.077, 0.933, 0.945]},
+      {"name": "title", "box": [0.328, 0.118, 0.719, 0.176]},
+      {"name": "badge", "box": [0.888, 0.091, 0.934, 0.185]},
+      {"name": "row1", "box": [0.075, 0.190, 0.900, 0.357]},
+      {"name": "row2", "box": [0.075, 0.387, 0.900, 0.580]},
+      {"name": "row3", "box": [0.075, 0.589, 0.900, 0.913]}
+    ]
+  },
+  "visual_elements": [
+    {"type": "box/outer frame", "box": [0.062, 0.077, 0.933, 0.945], "border_color": "#C00000", "fill": "#F2F2F2"},
+    {"type": "rounded-box/badge", "box": [0.888, 0.091, 0.934, 0.185], "fill": "#FFFF00", "outline": "#7030A0", "contains": "6"},
+    {"type": "box/row", "box": [0.075, 0.190, 0.900, 0.357], "border_color": "#C00000"},
+    {"type": "box/row", "box": [0.075, 0.387, 0.900, 0.580], "border_color": "#C00000"},
+    {"type": "box/row", "box": [0.075, 0.589, 0.900, 0.913], "border_color": "#C00000"},
+    {"type": "rounded-box/Convert note", "box": [0.614, 0.396, 0.881, 0.557], "fill": "#FFF2CC [?]", "border": "#BFBFBF [?]"},
+    {"type": "rounded-box/pill", "box": [0.732, 0.248, 0.834, 0.311], "fill": "#FCE4D6", "contains": "G x \u2264 h"},
+    {"type": "rounded-box/pill", "box": [0.754, 0.697, 0.859, 0.772], "fill": "#FCE4D6", "contains": "G x \u2264 h"},
+    {"type": "arrow \u21d2 green", "boxes": [[0.433, 0.255, 0.466, 0.296], [0.433, 0.425, 0.466, 0.470], [0.433, 0.700, 0.466, 0.742]], "direction": "right"},
+    {"type": "diagram/matrix inequality row1", "box": [0.475, 0.215, 0.670, 0.335], "detail": "bracketed 3x3 identity, column vector x, \u2264, column vector z"},
+    {"type": "diagram/matrix inequality row2", "box": [0.475, 0.388, 0.675, 0.540], "detail": "bracketed 3x3 (\u2212I), column vector x, \u2264, column vector \u2212z"},
+    {"type": "diagram/matrix inequality row3", "box": [0.475, 0.595, 0.750, 0.895], "detail": "bracketed 6x3 matrix, column vector x, \u2264, column vector (\u2212y,z); '6 x 3' tag at [0.558,0.862,0.600,0.898]"}
+  ],
+  "imagery": "none",
+  "colors": {
+    "page_outside_frame": "#FFFFFF",
+    "slide_field_inside_frame": "#F2F2F2",
+    "outer_frame_and_row_borders_and_title_and_labels": "#C00000",
+    "body_numeral_bracket_ink": "#000000",
+    "variable_x": "#FF0000",
+    "variable_y": "#00B050",
+    "variable_z": "#0070C0",
+    "green_arrows": "#00B050",
+    "pill_fill": "#FCE4D6",
+    "pill_ink": "#C00000",
+    "convert_fill": "#FFF2CC [?]",
+    "badge_fill": "#FFFF00",
+    "badge_ring": "#7030A0",
+    "badge_numeral": "#000000"
+  },
+  "typography_notes": "Sans-serif (Calibri-like). Title bold ~32 pt centered title case. Row labels ~14 pt bold red underlined; '6 constraints, 3 variables' also italic. Math ~14 pt, variables italic color-coded, numerals upright, subscripts lowered. Pills 'G x \u2264 h' bold ~16 pt red centered in salmon pill. Badge '6' bold ~14 pt black. '6 x 3' ~9 pt dark.",
+  "equations": [
+    {"linear": "[[1,0,0],[0,1,0],[0,0,1]] \u00b7 [x\u2081,x\u2082,x\u2083] \u2264 [z\u2081,z\u2082,z\u2083]", "box": [0.475, 0.215, 0.670, 0.335], "detail": "bracketed matrix + stacked column vectors, x-vector red, z-vector blue"},
+    {"linear": "[[\u22121,0,0],[0,\u22121,0],[0,0,\u22121]] \u00b7 [x\u2081,x\u2082,x\u2083] \u2264 [\u2212z\u2081,\u2212z\u2082,\u2212z\u2083]", "box": [0.475, 0.388, 0.675, 0.540], "detail": "\u2212I diagonal, RHS negated blue z"},
+    {"linear": "x\u2081 \u2265 z\u2081 , x\u2082 \u2265 z\u2082 , x\u2083 \u2265 z\u2083 / to / \u2212x\u2081 \u2264 \u2212z\u2081 , \u2212x\u2082 \u2264 \u2212z\u2082 , \u2212x\u2083 \u2264 \u2212z\u2083", "box": [0.614, 0.396, 0.881, 0.557], "detail": "Convert note, red underlined 'Convert' header"},
+    {"linear": "[[\u22121,0,0],[0,\u22121,0],[0,0,\u22121],[1,0,0],[0,1,0],[0,0,1]] \u00b7 [x\u2081,x\u2082,x\u2083] \u2264 [\u2212y\u2081,\u2212y\u2082,\u2212y\u2083,z\u2081,z\u2082,z\u2083]", "box": [0.475, 0.595, 0.750, 0.895], "detail": "6x3 matrix (three \u22121 rows then three +1 rows), RHS green \u2212y then blue z; '6 x 3' tag"}
+  ],
+  "measurements": "Title 'Less Than Equal Constraints' x-extent ~316-690 px (~374 px), ~32 pt, x-centre ~503 px (~0.52). Longest body line (row3 equation) ~110-715 px (~605 px), ~14 pt; pill text ~16 pt; '6 x 3' ~9 pt. Frame margins: left ~60 px (0.063), right ~65 px (0.068), top ~42 px (0.078), bottom ~30 px (0.056).",
+  "recreation_brief": "1. White 960x540 page; light-gray field with outer red 1-px frame [0.062,0.077,0.933,0.945]. 2. Centered red bold title 'Less Than Equal Constraints' [0.328,0.118,0.719,0.176], ~32 pt. 3. Yellow circular badge '6' (purple ring, black numeral) [0.888,0.091,0.934,0.185]. 4. Row1 box [0.075,0.190,0.900,0.357]: red underlined label '3 constraints'; constraint line x\u2081\u2264z\u2081, x\u2082\u2264z\u2082, x\u2083\u2264z\u2083 (x red, z blue); green \u21d2; identity matrix \u00d7 red x-column \u2264 blue z-column; salmon pill 'G x \u2264 h' [0.732,0.248,0.834,0.311]. 5. Row2 box [0.075,0.387,0.900,0.580]: constraint line x\u2081\u2265z\u2081, x\u2082\u2265z\u2082, x\u2083\u2265z\u2083; green \u21d2; \u2212I matrix \u00d7 red x-column \u2264 blue (\u2212z)-column; pale-yellow Convert box [0.614,0.396,0.881,0.557] with red underlined 'Convert', the \u2265 line, 'to', and the \u2212x \u2264 \u2212z line. 6. Row3 box [0.075,0.589,0.900,0.913]: red italic underlined '6 constraints, 3 variables'; line y\u2081\u2264x\u2081\u2264z\u2081, y\u2082\u2264x\u2082\u2264z\u2082, y\u2083\u2264x\u2083\u2264z\u2083 (y green, x red, z blue); green \u21d2; 6\u00d73 matrix \u00d7 red x-column \u2264 RHS [\u2212y\u2081,\u2212y\u2082,\u2212y\u2083,z\u2081,z\u2082,z\u2083]; '6 x 3' tag; salmon pill 'G x \u2264 h' [0.754,0.697,0.859,0.772].",
+  "confidence": "[?] exact hex values (field, pill/Convert fills, badge ring); [?] per-cell tint of matrix entries and row2 \u2212I diagonal color; [?] precise pixel extents/pt; [?] Convert-box border color; [?] title x-centre 0.50 vs ~0.52."
+}

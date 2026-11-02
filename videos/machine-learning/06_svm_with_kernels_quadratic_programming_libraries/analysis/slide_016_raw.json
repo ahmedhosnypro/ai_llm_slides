@@ -2,38 +2,51 @@
   "slide_title": "Non-Linearly Separable Data",
   "subtitle_or_header": "Slide 16",
   "verbatim_text": {
-    "bullets": [],
-    "labels": ["Slide 16", "Non-Linearly Separable Data", "Linear Decision Boundary", "Data is linearly separable In the new representation", "Mapping x → φ(x)", "x → (x, x²)", "x"],
-    "equations": ["x → (x, x²)"]
+    "bullets": ["Data is linearly separable", "In the new representation"],
+    "labels": ["16", "Mapping  x  =>  phi(x)", "Linear", "Decision", "Boundary", "x^2", "x"],
+    "equations": ["x  =>  ( x ; x^2 )"]
   },
   "layout": {
-    "arrangement": "Window with light-gray rounded panel. Title 'Non-Linearly Separable Data' (Separable underlined) centered top. Badge '16' yellow circle top-right. Center white plot card with red border: red x/y axes, cyan dots upper, red dots lower, blue horizontal decision boundary line, red x² arrow top. Right side: blue-bordered legend 'Linear Decision Boundary', beige callout 'Data is linearly separable In the new representation', beige mapping box 'Mapping x → φ(x)' with formula. Gray cursor pointer lower-left. Black footer band bottom.",
+    "arrangement": "White canvas with outer red frame [0.063,0.089,0.942,0.920]. Centered title band [0.349,0.102,0.638,0.148]: 'Non-Linearly' and 'Data' in red bold, 'Separable' blue bold underlined. Yellow circle badge '16' top-right [0.894,0.104,0.936,0.178]. Inner white plot rectangle with red border [0.090,0.161,0.902,0.883]. Tan mapping callout upper-left inside plot [0.103,0.254,0.288,0.409] with 'Mapping x => phi(x)' and 'x => (x; x^2)'. Cream annotation callout upper-right [0.689,0.296,0.888,0.383] with two red italic lines. Red vertical axis at x~0.478 (y 0.237-0.815, arrow up, label 'x^2'), red horizontal axis at y~0.815 (x 0.111-0.860, arrow right, label 'x'). Blue horizontal decision boundary mid-plot [0.208,0.576,0.754,0.580] with white blue-bordered three-line label 'Linear / Decision / Boundary' at [0.704,0.444,0.805,0.552] and gray connector [0.714,0.520,0.754,0.580]. Scatter points across plot and on the x-axis.",
     "regions": [
-      {"name": "header", "position": "top 0-15%", "content": "Title + badge"},
-      {"name": "plot_card", "position": "center 15-80%", "content": "White plot with axes, dots, boundaries, annotations"},
-      {"name": "legend", "position": "plot right 15-35%", "content": "Blue 'Linear Decision Boundary' box"},
-      {"name": "callout", "position": "plot right 35-55%", "content": "Beige callout box"},
-      {"name": "mapping", "position": "plot left 35-55%", "content": "Beige mapping box with formula"}
+      {"name": "outer_frame", "position": "[0.063,0.089,0.942,0.920]", "content": "Red border rectangle, no fill"},
+      {"name": "title", "position": "[0.349,0.102,0.638,0.148]", "content": "Centered title, 'Separable' blue underlined"},
+      {"name": "badge", "position": "[0.894,0.104,0.936,0.178]", "content": "Yellow circle '16'"},
+      {"name": "plot", "position": "[0.090,0.161,0.902,0.883]", "content": "White plot rectangle, red border, axes, scatter, boundary"},
+      {"name": "mapping_callout", "position": "[0.103,0.254,0.288,0.409]", "content": "Tan box, 'Mapping x => phi(x)' and 'x => (x; x^2)'"},
+      {"name": "annotation_callout", "position": "[0.689,0.296,0.888,0.383]", "content": "Cream box, 'Data is linearly separable / In the new representation'"},
+      {"name": "boundary_label", "position": "[0.704,0.444,0.805,0.552]", "content": "White box blue border, 'Linear / Decision / Boundary'"}
     ],
-    "hierarchy": "Title top, plot card center dominates, annotations on right"
+    "hierarchy": "Title and badge top, plot card dominates, callouts inside plot"
   },
   "visual_elements": [
-    {"type": "chart", "description": "Scatter plot with axes, two classes (cyan/red), two decision boundaries (blue line, orange curve implied)", "colors": ["#E74C3C", "#3498DB", "#1ABC9C", "#E74C3C"], "position": "center"},
-    {"type": "legend", "description": "Blue-bordered 'Linear Decision Boundary' with leader line", "colors": ["#3498DB"], "position": "plot right"},
-    {"type": "callout", "description": "Beige 'Data is linearly separable In the new representation'", "colors": ["#FADBD8"], "position": "plot right"},
-    {"type": "formula_box", "description": "Beige 'Mapping x → φ(x)' with x → (x, x²)", "colors": ["#FADBD8"], "position": "plot left"},
-    {"type": "axes", "description": "Red x/y axes with labels", "colors": ["#E74C3C"], "position": "plot center"},
-    {"type": "badge", "description": "Yellow circle '16'", "colors": ["#F39C12", "#2C3E50"], "position": "top-right"},
-    {"type": "icon", "description": "Gray cursor pointer", "colors": ["#7F8C8D"], "position": "plot lower-left"}
+    {"type": "rectangle", "description": "Outer frame, border #8B0000, no fill", "colors": ["#8B0000"], "position": "[0.063,0.089,0.942,0.920]"},
+    {"type": "rectangle", "description": "Plot frame, border #8B0000, fill #FFFFFF", "colors": ["#8B0000", "#FFFFFF"], "position": "[0.090,0.161,0.902,0.883]"},
+    {"type": "circle", "description": "Badge, fill #FFFF99, border #8080FF, text '16' black", "colors": ["#FFFF99", "#8080FF", "#000000"], "position": "[0.894,0.104,0.936,0.178]"},
+    {"type": "callout", "description": "Mapping callout, fill #F2D8A7, border #8B4513, 'Mapping' italic #3333CC, 'x => phi(x)' with phi(x) #C00000, vector 'x => (x; x^2)' black", "colors": ["#F2D8A7", "#8B4513", "#3333CC", "#C00000"], "position": "[0.103,0.254,0.288,0.409]"},
+    {"type": "callout", "description": "Annotation, fill #FFF8E7, border #8B0000, two red italic lines 'Data is linearly separable' / 'In the new representation'", "colors": ["#FFF8E7", "#8B0000", "#C00000"], "position": "[0.689,0.296,0.888,0.383]"},
+    {"type": "axes", "description": "Vertical red arrow x~0.478 y0.237-0.815 label 'x^2'; horizontal red arrow y~0.815 x0.111-0.860 label 'x'", "colors": ["#C00000"], "position": "plot center"},
+    {"type": "line", "description": "Horizontal decision boundary, #0000FF, no arrow", "colors": ["#0000FF"], "position": "[0.208,0.576,0.754,0.580]"},
+    {"type": "label", "description": "'Linear / Decision / Boundary' three centered italic blue lines, white fill, blue border, gray connector line", "colors": ["#0000FF", "#FFFFFF", "#7F7F7F"], "position": "[0.704,0.444,0.805,0.552]"},
+    {"type": "scatter", "description": "24 markers, diameter ~7px: 6 cyan filled #00E5EE at [0.327,0.237],[0.656,0.237],[0.356,0.394],[0.589,0.394],[0.385,0.526],[0.560,0.526]; 5 red filled #FF0000 at [0.415,0.596],[0.473,0.687],[0.502,0.737],[0.531,0.687],[0.560,0.596]; 6 blue/purple open circles (edge #5050FF, white fill) on y~0.815 at x 0.298,0.327,0.356,0.590,0.619,0.648; 7 red open circles (edge #FF0000, white fill) on y~0.815 at x 0.385,0.415,0.444,0.473,0.502,0.531,0.560 [?] marker centers approximate to +/-3 px", "colors": ["#00E5EE", "#FF0000", "#5050FF"], "position": "plot + x-axis"}
   ],
   "imagery": [],
   "colors": {
-    "background": "#E8E8E8",
-    "title_text": "#E74C3C",
-    "body_text": "#2C3E50",
-    "accents": ["#E74C3C", "#3498DB", "#1ABC9C", "#F39C12", "#FADBD8"]
+    "background": "#FFFFFF",
+    "frame": "#8B0000",
+    "title_red": "#C00000",
+    "title_accent": "#0000FF",
+    "mapping_fill": "#F2D8A7",
+    "mapping_border": "#8B4513",
+    "annotation_fill": "#FFF8E7",
+    "boundary": "#0000FF",
+    "cyan_series": "#00E5EE",
+    "red_series": "#FF0000",
+    "open_blue_series": "#5050FF",
+    "badge_fill": "#FFFF99",
+    "badge_border": "#8080FF"
   },
-  "typography_notes": "Red title with underlined 'Separable', red axis labels, black math for formula, yellow badge",
+  "typography_notes": "Sans-serif Arial/Helvetica-like. Title ~24pt bold centered, 'Separable' bold blue underlined. Mapping text ~16-17pt left-aligned, 'Mapping' italic blue. Annotation ~15pt italic red left-aligned. Decision label ~15pt italic blue centered. Axis labels ~14-15pt red. Badge '16' ~14pt black centered.",
   "animation_state": "Static lecture slide",
-  "recreation_brief": "1. House frame with badge '16'. 2. Title at y=0.28: 'Non-Linearly Separable Data' (Separable underlined). 3. White plot card with red border. 4. Red x/y axes crossing at center. 5. Cyan dots upper region, red dots lower region. 6. Blue horizontal decision boundary line. 7. Red x² arrow at top. 8. Right side: blue legend 'Linear Decision Boundary' with leader to blue line. 9. Beige callout 'Data is linearly separable In the new representation' (two lines). 10. Beige mapping box 'Mapping x → φ(x)' with formula x → (x, x²). 11. Remove gray cursor pointer. 12. Professional math for formula."
+  "recreation_brief": "1. White 13.33x7.5in canvas, background #FFFFFF; house outer red frame x=0.15,y=0.15,w=13.03,h=7.2 border #C00000 1.5pt. 2. Title at y=0.28 centered ~24pt bold: red 'Non-Linearly ', blue underlined 'Separable', red ' Data'. 3. Badge: yellow circle x=12.48,y=0.30,w=0.5,h=0.5 fill #FFF9C4, bold 18pt '16'. 4. Inner white plot rectangle border #8B0000. 5. Tan mapping callout upper-left with 'Mapping x => phi(x)' and stacked column vector x => (x; x^2) rendered in Professional Format. 6. Cream annotation callout upper-right, two red italic lines 'Data is linearly separable' / 'In the new representation' (keep inline capital 'In'). 7. Red axes with arrowheads, labels 'x^2' (vertical) and 'x' (horizontal). 8. Plot 24 scatter markers per centers above. 9. Blue horizontal decision boundary line mid-plot. 10. 'Linear / Decision / Boundary' label box with gray connector."
 }

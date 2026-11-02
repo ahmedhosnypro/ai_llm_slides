@@ -169,7 +169,7 @@ s.addShape(pres.shapes.DOWN_ARROW, {
   fill: { color: "FF0000" }, line: { color: "FF0000", width: 0.5 },
 });
 
-const OUT = "/home/codespace/ai_llm_slides/videos/machine-learning/10_nn_training_and_example/recreated_pptx/build/slide_034_recreated.pptx";
+const OUT = "/home/codespace/ai_llm_slides/videos/machine-learning/10_nn_training_and_example/recreated_pptx/slide_034_recreated.pptx";
 pres.writeFile({ fileName: OUT })
   .then(() => console.log("wrote", OUT))
   .catch(err => { console.error(err); process.exit(1); });

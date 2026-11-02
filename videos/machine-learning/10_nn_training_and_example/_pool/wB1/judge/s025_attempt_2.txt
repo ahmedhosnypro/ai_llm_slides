@@ -1,0 +1,53 @@
+[warn] --timeout > 600s: the gateway at localhost:17844 is shared (Stitch proxy + vision). Long-timeout retry loops SATURATE it for everyone — prefer one modest call and retry later.
+[info] mode comparison | endpoint http://localhost:17844/v1 | models: images | auth: key file present | pid 241109
+=== _pool/wB1/render/fix025-1.png, unique_slides/slide_025.jpg ===
+[winner] images (round 1, attempt 1)
+## 1) Key visible text transcription
+
+**Image 1 â recreation render**
+- Title/badge: **âVanishing and Exploding Gradientsâ**, **â25â**
+- Heading: **âLong Chain of Derivativesâ**
+- Left equations:  
+  **âf(x) = ReLU = { 0 for x < 0 ; x for x > 0 }â** *(the lower comparator appears to be `>`; if so it differs from image 2)*  
+  **âfâ²(x) = { 0 for x < 0 ; 1 for x â¥ 0 }â**
+- Network labels visible: **âÎ£â**, **âfâ**, **âNetâ**, **âo/Oâ**, **âwâ**, **âw_ijâ**, **âw_jiâ**, **âClass 1â**, **âClass 2â**, **âClass mâ**, **âErrorâ**, **âNode Bâ** *(appears clipped vs âNode Biasâ)*, bias **â1â**, red **â1.0â**
+- Bottom-left: **âExploding Gradientsâ**, axes **âxâ**, **âfâ**, ticks **ââ10 â5 0 5 10â** / **â0 5 10â**
+- Bottom-right: **âVanishing Gradientsâ**, **âSigmoid vs Tanhâ**, legends **âTanhâ**, **âSigmoidâ**, **âTanh Derivativeâ**, **âSigmoid Derivativeâ**, annotations **â1.0â**, **â0.25â**, x-range **ââ4 â¦ 4â**
+
+**Image 2 â original lecture frame**
+- Title/badge: **âVanishing and Exploding Gradientsâ**, **â25â**
+- Heading: **âLong Chain of Derivativesâ**
+- Left equations:  
+  **âf(x) = ReLU = { 0 for x < 0 ; x for x â¥ 0 }â**  
+  **âfâ²(x) = { 0 for x < 0 ; 1 for x â¥ 0 }â**
+- Network labels visible: **âÎ£â**, **âfâ**, **âNetâ**, **âO_i/O_jâ**, weights such as **âw_ijâ**, **âw_jiâ**, output boxes **âOutput 1â**, **âOutput 2â**, **âOutput mâ**, **âNode Biasâ**, bias **â1â**, red **â1.0â**, vertical red **âErrorâ** bar, **âClass 1â**, **âClass 2â**, **âClass mâ**
+- Bottom-left: **âExploding Gradientsâ**, axes **âxâ**, **âfâ**, ticks **ââ10 â5 0 5 10â**, y **â0 5 10â**
+- Bottom-right: **âVanishing Gradientsâ**, **âSigmoid vs Tanhâ**, legends **âTanhâ**, **âSigmoidâ**, **âTanh Derivativeâ**, **âSigmoid Derivativeâ**, red reference labels **â1.0â**, **â0.25â** with horizontal reference lines, x-range **ââ4 â¦ 4â**
+
+## 2) Similarities â slide-specific content only
+- Same four slide regions: upper-left ReLU function + derivative, upper-right âlong chainâ neural-net diagram, lower-left âExploding Gradientsâ plot, lower-right âVanishing Gradientsâ sigmoid/tanh comparison.
+- ReLU concept is the same: output 0 for negative input, linear positive ramp; derivative 0 for negative input, 1 for nonnegative input.
+- Upper-right diagram has the same conceptual components: input nodes, bias â1â node(s), repeated **Î£ â f â Net/O** blocks, inter-layer weights, backprop/chain arrows, outputs leading to class/error region.
+- Lower-left âExploding Gradientsâ graph is the same ReLU ramp: flat at 0 until x=0, then slope-1 line up to about (10,10).
+- Lower-right âVanishing Gradientsâ graphs match in substance: left plot compares **Sigmoid** vs **Tanh**; right plot shows their derivatives, with tanh derivative peaking at **1.0** and sigmoid derivative peaking at **0.25**.
+
+## 3) Differences and classification
+| Difference | Classification | Evidence |
+|---|---:|---|
+| House chrome/title frame/badge styling differs | **INTENTIONAL** | Rule (a): outer frame/badge/title box are house template; title text itself is identical. |
+| Equations rendered as large 2D piecewise braces with colored conditions in recreation vs boxed inline style in original | **INTENTIONAL** | Rule (e): 2D equation upgrade; mathematical content matches. |
+| Recreation ReLU upper branch appears as âx for x > 0â while original uses âx for x â¥ 0â; derivative uses â¥ in both | **MINOR** | Single comparator glyph difference; ReLU value at x=0 does not change the slideâs message. |
+| Original network has explicit âOutput 1/2/mâ boxes and full âNode Biasâ caption; recreation shows âClass 1/2/mâ at the right and a clipped-looking âNode Bâ | **MAJOR â label-level, not blocker** | The bias node and class outputs are still present, but some original node captions are not fully reproduced verbatim. |
+| Network diagram is redrawn cleaner/simpler: fewer/denser-looking connections, some weight indices abbreviated, red curved chain arrows stylized | **MINOR** | Topology concept remains: inputs â Î£/f â Net/O â weights â outputs/classes/error. No wrong diagram content is visible. |
+| Original plots have gridlines, colored plot borders/background, and red horizontal 1.0/0.25 reference lines; recreation plots are plainer white axes with annotations but no visible grid/reference lines | **MINOR** | Curves, legends, axis ranges, and 1.0/0.25 labels are still readable; this is styling, not content loss. |
+| Original repeats vertical âErrorâ on red bar; recreation shows âErrorâ once/more compactly | **MINOR** | Error region is still clearly marked. |
+| Any cursor/capture/window artifacts absent in recreation | **INTENTIONAL** | Rule (c): video artifacts omitted by design. |
+
+## 4) Verdict
+
+**FINAL VERDICT: PASS**
+
+The slide-specific content is faithfully reproduced: the ReLU function/derivative piecewise definitions are present and correct in substance; the upper-right long-chain network still shows inputs, bias, Î£/f/Net/O units, weights, and output/class/error regions; the lower-left exploding-gradient plot is the same ReLU ramp; and the lower-right vanishing-gradient plots preserve the sigmoid-vs-tanh curves plus derivative peaks labeled **1.0** for tanh and **0.25** for sigmoid. The remaining differences are intentional house/equation upgrades, omitted capture artifacts, plot styling/gridlines, and some simplified or clipped diagram labels; none rise to a BLOCKER or make the slide unusable for its purpose.
+
+[info] degenerate events: 0 (full-page tier: 0)
+[info] 1/1 result(s) analyzed successfully

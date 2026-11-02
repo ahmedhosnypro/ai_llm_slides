@@ -1,0 +1,13 @@
+OMML wrap log — slide 014 (worker D1, 2026-11-01)
+rel ids re-derived from CURRENT slide_014_recreated.pptx (pic descr basename -> r:embed):
+rId1=eq_014_Yvec.png, rId2=eq_014_Yhatvec.png, rId3=eq_014_final.png (3 eq pics, all wrapped; AltContent=3)
+manifest: /home/codespace/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/rejudge_20261027/slide014/omml_manifest.json
+mathtext source: build/slide_014.js + build/assets/gen_eqs_014_v2.py (vectors: y_1..y_n / hat{y}_1..hat{y}_n in drawn parens -> \left(...\\...\right) matrix, C00000 16pt; final: composed 5-segment objective J(W)=1/2[(Y-hat Y)^T(Y-hat Y)+lambda W^TW], multi-color flattened to 000000 in Choice per accepted pattern, 17pt)
+backup (preOMML): /home/codespace/ai_llm_slides/videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/slide014/slide_014_recreated.preOMML.bak.pptx
+md5 before: 18a724a03609dcf4a84ce81750ec2abe
+md5 after:  63fac3cb150bc17d4aeb730eb86d99e7
+wrapper: python3 /home/codespace/ai_llm_slides/scripts/18_omml_wrapper.py <pptx> manifest -o tmp && mv over deliverable; rc=0; wrapped=3 skipped=0
+zip diff vs backup: ppt/slides/slide1.xml only; media byte-identical; rels/content-types untouched; XML well-formed
+0-px proof: LO render (soffice headless, separate profiles) preOMML backup vs wrapped, pdftoppm -r 150 -singlefile, PIL diff page 1: 0 differing pixels (2001x1125)
+deck gate: final_deck_tool.py update 14 + render_check_pages.py 14 -> PASS (0 px differ vs fresh 150dpi source render); artifacts qa/final_deck_updates/gate_20261101-*_p14
+no LO resave of wrapped file; no git; no slides_progress.db writes; no vision calls

@@ -11,7 +11,7 @@ const pptxgenpkg = require("pptxgenjs");
 //   matrix grids: x[116,225], vert x=166; m1 rows y92,112,136,157; m2 rows y212,234,256,279
 //   "Predicted as" above each grid: m1 y[78,92], m2 y[198,212]; "Actual" rotated in gutter
 //   metrics right of grids: TPR red #C00000, FPR blue #1F497D, bold, x[230,339]
-//   ROC plot panel x[641,895] y[81,387] -> asset roc_030_v2.png (254x306 px)
+//   ROC plot panel x[641,895] y[81,387] -> asset roc_030_v4.png (254x306 px, gen_030_assets_v4.py)
 //   title box x[353,622] y[426,474] white fill blue border, red bold text
 //   bottom-right cell x[641,895] y[403,507] white fill blue border; formula box
 //   x[649,752] y[415,500]; legend table x[784,880] y[440,500], TP/TN green #92D050,
@@ -26,7 +26,8 @@ pptx.layout = "LAYOUT_WIDE";
 const NS = "/home/codespace/ai_llm_slides/videos/machine-learning/08_performance_measure";
 const ASSETS = NS + "/recreated_pptx/build/assets";
 const BG = "E8E8E8", RED = "C00000", DBLUE = "0000CC", INK = "000000";
-const TAN = "F8DCC6", GREEN = "92D050", GREY = "F2F2F2", BADGE = "FFF9C4", NUM = "333333";
+const TAN = "F7E7CD", GREEN = "81FF00", GREY = "F2F2F2", BADGE = "FFF9C4", NUM = "333333";
+const CREAM = "F9FCE3";
 const FPRBLUE = "1F497D";
 const FONT = "Arial";
 
@@ -65,10 +66,10 @@ hline(59, 635, 401, DBLUE, 1.25);
 function matrixPanel(py, pend, header, ty, rows, cells) {
   // py..pend panel (red border, white fill); header tan box; grid at ty with 3 bands
   rect(60, py, 341, pend, "FFFFFF", RED, 1.25);
-  rect(71, py + 7, 170, py + 27, TAN, RED, 1);
-  txt(71, py + 7, 170, py + 27, header, 13, RED, true);
-  // "Predicted as" above the grid
-  txt(116, ty - 14, 225, ty, "Predicted as", 8, INK, true);
+  rect(65, py + 2, 175, py + 30, TAN, RED, 1);
+  txt(65, py + 2, 175, py + 30, header, 13, RED, true);
+  // "Predicted as" above the grid (red in the original)
+  txt(116, ty - 14, 225, ty, "Predicted as", 8, RED, true);
   // grid
   rect(116, ty, 225, rows[2], "FFFFFF", RED, 1);
   vline(166, ty, rows[2], RED, 1);
@@ -87,11 +88,12 @@ function matrixPanel(py, pend, header, ty, rows, cells) {
   c(166, 225, rows[0], rows[1], cells[1][0], cells[1][1]);
   c(116, 166, rows[1], rows[2], cells[2][0], cells[2][1]);
   c(166, 225, rows[1], rows[2], cells[3][0], cells[3][1]);
-  // worked metrics right of the grid: TPR red, FPR blue
+  // worked metrics right of the grid on a cream callout box: TPR red, FPR blue
+  rect(227, ty + 4, 338, ty + 52, CREAM, CREAM, 0);
   s.addText([
     { text: cells[4], options: { fontSize: 10.5, color: RED, bold: true, fontFace: FONT, breakLine: true } },
     { text: cells[5], options: { fontSize: 10.5, color: FPRBLUE, bold: true, fontFace: FONT, breakLine: true } },
-  ], { x: P(230), y: P(ty + 16), w: P(339 - 230), h: P(44), margin: 0, lineSpacing: 15 });
+  ], { x: P(230), y: P(ty + 12), w: P(339 - 230), h: P(36), margin: 0, lineSpacing: 15 });
 }
 
 matrixPanel(48, 160, "Threshold=0.0", 92, [112, 136, 157],
@@ -100,18 +102,21 @@ matrixPanel(167, 284, "Threshold=0.1", 212, [234, 256, 279],
   [["5", RED], ["0", INK], ["4", RED], ["2", INK], "TPR=5/(5+0)=1", "FPR=4/(4+2)=0.66"]);
 
 // --- ROC plot panel (generated image, whole panel baked) ---
-s.addImage({ path: ASSETS + "/roc_030_v2.png", x: P(641), y: P(81), w: P(254), h: P(306) });
+s.addImage({ path: ASSETS + "/roc_030_v4.png", x: P(641), y: P(81), w: P(254), h: P(306) });
 
-// --- title box (white fill, blue border) ---
-rect(353, 426, 622, 474, "FFFFFF", DBLUE, 1.25);
-txt(358, 428, 612, 470, "ROC Curve for Same Model -different thresholds", 13, RED, true);
+// --- title box (light-gray fill, blue border) ---
+rect(353, 426, 622, 474, "E7E9E6", DBLUE, 1.25);
+s.addText([
+  { text: "ROC Curve for", options: { fontSize: 13, color: RED, bold: true, fontFace: FONT, breakLine: true } },
+  { text: "Same Model -different thresholds", options: { fontSize: 13, color: RED, bold: true, fontFace: FONT } },
+], { x: P(358), y: P(428), w: P(612 - 358), h: P(42), margin: 0, align: "center", valign: "middle", lineSpacing: 19 });
 
-// --- bottom-right cell (white fill, blue border) ---
-rect(641, 403, 895, 507, "FFFFFF", DBLUE, 1.25);
-rect(649, 415, 752, 500, "FFFFFF", DBLUE, 1.25);
+// --- bottom-right: two separate red-bordered formula boxes (no outer cell rect) ---
+rect(651, 416, 749, 456, "FFFFFF", RED, 1);
+rect(651, 465, 749, 504, "FFFFFF", RED, 1);
 // drift equations as professional 2D fractions (600dpi PNG, exact size)
-s.addImage({ path: ASSETS + "/eq_030_v2_tpr.png", x: P(656), y: P(424), w: 728 / 600, h: 230 / 600 });
-s.addImage({ path: ASSETS + "/eq_030_v2_fpr.png", x: P(656), y: P(462), w: 725 / 600, h: 230 / 600 });
+s.addImage({ path: ASSETS + "/eq_030_v2_tpr.png", x: P(656), y: P(421), w: 728 / 600, h: 230 / 600 });
+s.addImage({ path: ASSETS + "/eq_030_v2_fpr.png", x: P(656), y: P(470), w: 725 / 600, h: 230 / 600 });
 
 // --- legend 2x2 key: x[784,880] y[440,500]; cols 784-811-850-880; rows 440-460-480-500 ---
 rect(784, 440, 880, 500, "FFFFFF", INK, 0.75);
@@ -123,7 +128,7 @@ vline(811, 440, 500, INK, 0.75);
 vline(850, 440, 500, INK, 0.75);
 hline(784, 880, 460, INK, 0.75);
 hline(784, 880, 480, INK, 0.75);
-txt(784, 425, 880, 440, "Predicted as", 7, INK, true);
+txt(784, 425, 880, 440, "Predicted as", 7, RED, true);
 txt(811, 440, 850, 460, "P", 7, INK, true);
 txt(850, 440, 880, 460, "N", 7, INK, true);
 txt(784, 460, 811, 500, "Actual", 7, INK, true, { rotate: 270 });

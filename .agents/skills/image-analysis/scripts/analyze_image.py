@@ -693,8 +693,10 @@ def ask_model(session, model, data_urls, prompt, key, timeout, max_tokens,
         # no answer at all. Streaming + the founder defaults stay.
         applied = (THINKING_DISABLE_BLOCK if thinking == "off"
                    else THINKING_HIGH_BLOCK if thinking == "high" else {})
-        if result["status"] in (400, 422, 502) and any(
-            f in result["body"] for f in applied
+        if result["status"] in (400, 422, 502) and (
+            not applied
+            or "upstream_rejected_request" in result["body"]
+            or any(f in result["body"] for f in applied)
         ):
             payload = build_payload(model, max_tokens, content, thinking="bare")
             result = _stream_with_deadline(session, payload, headers, timeout)

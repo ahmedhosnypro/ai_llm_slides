@@ -1,0 +1,89 @@
+{
+  "slide_number": 9,
+  "source_image": "unique_slides/slide_009.jpg",
+  "slide_title": "Example",
+  "verbatim_text": {
+    "title": ["Example"],
+    "labels": [
+      "9",
+      "Subject to",
+      "G x \u2264 h",
+      "x = 0, y = 5",
+      "Minimum value:"
+    ],
+    "bullets": [
+      "x \u2265 0",
+      "y \u2265 0",
+      "x + 3 y \u2265 15",
+      "2 x + 5 y \u2264 100",
+      "3 x + 4 y \u2264 80",
+      "\u2212 x \u2264 0",
+      "\u2212 y \u2264 0",
+      "\u2212 x \u2212 3 y \u2264 \u2212 15",
+      "2 x + 5 y \u2264 100",
+      "3 x + 4 y \u2264 80",
+      "x + 3 y = 15   \u21d2   \u2265 15",
+      "2 x + 5 y = 25   \u21d2   \u2264 100",
+      "3 x + 4 y = 20   \u21d2   \u2264 80",
+      "x \u2265 0",
+      "y \u2265 0"
+    ],
+    "equations": [
+      "Minimize  0.5 x\u00b2 + 3 x + 4 y",
+      "Minimize  0.5 x\u00b2 + 0 y\u00b2 + 0 xy + 3 x + 4 y   [0 y\u00b2 and 0 xy in red]",
+      "Minimize  1/2 [ x\u00b2 + 0 y\u00b2 + 0 xy ] + 3 x + 4 y   [1/2 green; 0 y\u00b2, 0 xy red]",
+      "1/2 [ x\u1d40 P x ] + q\u1d40 x   [1/2 green; P and q blue]",
+      "P = | 1  0 ; 0  0 |    q = ( 3 ; 4 )",
+      "G = | \u22121  0 ; 0  \u22121 ; \u22121  \u22123[?] ; 2  5 ; 3  4 |    h = ( 0 ; 0 ; \u221215 ; 100 ; 80 )",
+      "0.5 x\u00b2 + 3 x + 4 y = 20"
+    ]
+  },
+  "layout": {
+    "arrangement": "Outer red frame; title 'Example' top-left; yellow badge '9' top-right; large top panel with objective-function rewriting (two Minimize lines, boxed generic form at right of middle row, P and q on bottom row); bottom-left panel 'Subject to' (label, left constraint column, red \u21d2, converted \u2264 column, boxed 'G x \u2264 h', G matrix and h vector); bottom-right panel with red solution 'x = 0, y = 5', constraint checks, and 'Minimum value' line.",
+    "regions": [
+      {"name": "outer_frame", "box": [0.065, 0.085, 0.935, 0.941]},
+      {"name": "title", "box": [0.099, 0.135, 0.208, 0.185]},
+      {"name": "badge", "box": [0.876, 0.100, 0.923, 0.163]},
+      {"name": "top_objective_panel", "box": [0.075, 0.193, 0.925, 0.500]},
+      {"name": "bottom_left_subject_to_panel", "box": [0.075, 0.519, 0.678, 0.861]},
+      {"name": "bottom_right_solution_panel", "box": [0.688, 0.519, 0.925, 0.861]}
+    ]
+  },
+  "visual_elements": [
+    {"type": "rectangle/outer frame", "box": [0.065, 0.085, 0.935, 0.941], "border_color": "#C00000 [?]", "fill": "#FFFFFF"},
+    {"type": "rectangle/top panel", "box": [0.075, 0.193, 0.925, 0.500], "border_color": "#C00000", "fill": "#FFFFFF"},
+    {"type": "rectangle/subject-to panel", "box": [0.075, 0.519, 0.678, 0.861], "border_color": "#C00000", "fill": "#FFFFFF"},
+    {"type": "rectangle/solution panel", "box": [0.688, 0.519, 0.925, 0.861], "border_color": "#C00000", "fill": "#FFFFFF"},
+    {"type": "rect highlight box", "box": [0.763, 0.302, 0.920, 0.363], "fill": "#FCE4D6", "border": "#C00000", "contains": "1/2 [x\u1d40 P x] + q\u1d40 x"},
+    {"type": "rect highlight box", "box": [0.402, 0.533, 0.505, 0.583], "fill": "#FCE4D6", "border": "#C00000", "contains": "G x \u2264 h"},
+    {"type": "circle/badge", "box": [0.876, 0.100, 0.923, 0.163], "fill": "#FFFF00", "outline": "#000000/#7F6000 [?]", "contains": "9"},
+    {"type": "arrow \u21d2 red", "box": [0.226, 0.695, 0.252, 0.735], "direction": "right", "color": "#FF0000"},
+    {"type": "matrix/vector bracket delimiters", "note": "text-drawn brackets around P, q, G, h"}
+  ],
+  "imagery": "none",
+  "colors": {
+    "slide_background": "#FFFFFF",
+    "frame_panels_title": "#C00000 [?]",
+    "body_math_ink": "#000000",
+    "red_emphasis": "#FF0000",
+    "green_fraction": "#008000",
+    "blue_letters": "#0000FF",
+    "highlight_fill": "#FCE4D6",
+    "badge_fill": "#FFFF00",
+    "badge_ink": "#000000"
+  },
+  "typography_notes": "Title 'Example' bold sans-serif (Calibri-like) ~26 pt red, left-aligned top-left. 'Minimize'/'Subject to' italic ~15 pt, 'Subject to' underlined. Math expressions Cambria Math-style italic ~14-15 pt with superscripts. 'x = 0, y = 5' and final equation bold red ~15 pt. 'Minimum value:' blue ~14 pt. Panels left-aligned; matrices centered in columns; badge '9' centered.",
+  "equations": [
+    {"linear": "Minimize 0.5 x\u00b2 + 3 x + 4 y", "box": [0.083, 0.222, 0.318, 0.262], "detail": "linear, superscript \u00b2, black"},
+    {"linear": "Minimize 0.5 x\u00b2 + 0 y\u00b2 + 0 xy + 3 x + 4 y", "box": [0.375, 0.222, 0.700, 0.262], "detail": "'0 y\u00b2' and '0 xy' red"},
+    {"linear": "Minimize 1/2 [x\u00b2 + 0 y\u00b2 + 0 xy] + 3 x + 4 y", "box": [0.375, 0.313, 0.720, 0.362], "detail": "'1/2' green, red zeros"},
+    {"linear": "1/2 [x\u1d40 P x] + q\u1d40 x", "box": [0.763, 0.302, 0.920, 0.363], "detail": "in beige box; '1/2' green, P/q blue, transpose superscripts"},
+    {"linear": "P = |1 0; 0 0|", "box": [0.503, 0.398, 0.580, 0.458], "detail": "stacked 2x2 matrix with bracket delimiters"},
+    {"linear": "q = (3; 4)", "box": [0.628, 0.398, 0.688, 0.458], "detail": "stacked column vector with parentheses"},
+    {"linear": "G = | \u22121 0 ; 0 \u22121 ; \u22121 \u22123[?] ; 2 5 ; 3 4 |, h = ( 0 ; 0 ; \u221215 ; 100 ; 80 )", "box": [0.452, 0.610, 0.678, 0.833], "detail": "5x2 matrix and 5x1 vector; G third row second entry appears overwritten/corrected [?]"},
+    {"linear": "0.5 x\u00b2 + 3 x + 4 y = 20", "box": [0.700, 0.828, 0.900, 0.868], "detail": "red bold"}
+  ],
+  "measurements": "Title 'Example' x-extent ~96-200 px (~104 px), ~26 pt bold, left-aligned (x-start ~96 px). Longest body line 'Minimize 0.5 x\u00b2 + 0 y\u00b2 + 0 xy + 3 x + 4 y' ~360-672 px (~312 px), ~15 pt. Frame margins: left ~62 px, right ~62 px, top ~46 px, bottom ~32 px.",
+  "recreation_brief": "1. White 960x540 canvas; outer red frame [0.065,0.085,0.935,0.941] (#C00000 stroke). 2. Title 'Example', red bold ~26 pt, [0.099,0.135,0.208,0.185]. 3. Yellow circle badge '9' [0.876,0.100,0.923,0.163]. 4. Top panel red-bordered [0.075,0.193,0.925,0.500]. 5. Line 1: 'Minimize 0.5x\u00b2+3x+4y' left [0.083,0.222,0.318,0.262]; 'Minimize 0.5x\u00b2+0y\u00b2+0xy+3x+4y' (red 0y\u00b2, 0xy) [0.375,0.222,0.700,0.262]. 6. Line 2: 'Minimize 1/2[x\u00b2+0y\u00b2+0xy]+3x+4y' (green 1/2) [0.375,0.313,0.720,0.362]; beige highlight box [0.763,0.302,0.920,0.363] with '1/2[x\u1d40Px]+q\u1d40x' (green 1/2, blue P,q). 7. Line 3: 'P = |1 0; 0 0|' [0.503,0.398,0.580,0.458]; 'q = (3;4)' [0.628,0.398,0.688,0.458]. 8. Bottom-left panel [0.075,0.519,0.678,0.861]; underlined 'Subject to' [0.085,0.533,0.165,0.575]. 9. Left constraint column (5 lines) [0.083,0.583,0.220,0.833]; red \u21d2 [0.226,0.695,0.252,0.735]; converted \u2264 column (red negations) [0.270,0.583,0.470,0.833]. 10. Beige box 'G x \u2264 h' [0.402,0.533,0.505,0.583]; G 5x2 matrix [0.452,0.610,0.560,0.833]; h 5x1 vector [0.565,0.610,0.678,0.833]. 11. Bottom-right panel [0.688,0.519,0.925,0.861]; red bold 'x = 0, y = 5' [0.700,0.533,0.850,0.573]. 12. Three check lines with \u21d2 [0.700,0.583,0.905,0.770]; 'x \u2265 0', 'y \u2265 0'. 13. Blue 'Minimum value:' [0.700,0.790,0.820,0.825]; red bold '0.5x\u00b2+3x+4y = 20' [0.700,0.828,0.900,0.868].",
+  "confidence": "[?] G matrix third row second entry appears overwritten/corrected (\u22123 over a struck digit); [?] exact red of frame/borders (#C00000 vs #B02418); [?] exact math pt sizes (est. 14-15 pt); [?] badge circle border color."
+}

@@ -1,0 +1,20 @@
+Runtime caveat: at this zoom (â300Ã208 effective px) some small glyphs are at the edge of legibility, so for each item I give the read I can support and a calibrated confidence.
+
+Discrepancies (recreation IMG1 vs original IMG2, same slide region):
+
+1. Plotted surface is a different mathematical object â BLOCKER; confidence HIGH that the two crops are incompatible (geometry + color lobes), MEDIUM on exact function IDs (they cannot be read at this scale).
+   - IMG1 (recreation): the surface is a radiallyâcooling conical/funnel sheet â yellow band at the top, cyan interior, collapsing to a single deepâblue apex at lowerâcenter/right (~65% across, ~85% down). No diagonal fourâlobe color structure; no saddle crossing.
+   - IMG2 (original): a fullâspectrum (green/yellow high ridges â red/orange mid â blue low valleys) indefiniteâsaddle sheet with a central saddle point and broad blue floor, occupying roughly the left/center twoâthirds of the crop. The four color lobes alternate diagonally (a hallmark of a hyperbolicâparaboloid), which is absent in IMG1.
+   - A recreation that renders a convex funnel where the original region shows a saddle cannot be a faithful recreation of the âTR convex plotâ; this alone should fail the region.
+
+2. Axis tick numeric text present in the original is missing from the recreation crop â MAJOR; confidence MEDIUMâHIGH.
+   - IMG2 readable ticks: left vertical axis â1.5 / 1 / 0.5 / 0â (farâleft column, ~10â25% across, spanning ~15â75% down) and front/right axes â100 / 50 / 0 / â50 / â100â (bottom edge, ~15â85% across, ~78â95% down).
+   - IMG1: no corresponding numeric tick labels anywhere in the crop (the axis frame is present but unlabeled; only a faint dash at the bottomâright corner). If IMG1 truly swapped in a different, unlabeled object this is subsumed by #1; treating it independently it is a missingânumbers defect.
+
+3. Grid/mesh line style and weight differ â MINOR; confidence MEDIUM.
+   - IMG2: sparse dotted backâplane grid and thin dashed box edges.
+   - IMG1: a dense, brightâwhite, solidâtoâdashed surface mesh plus heavier white axis dashes. Continuity is not broken, but stroke weight/dotting do not match.
+
+Checked and consistent (no discrepancy flagged): the red callout strokes reproduce in both â two thick horizontal leader lines running off the mid/right (IMG1 ~ y 40â45% ; IMG2 ~ y 72â79%), a thin red diagonal rising to the upper right (IMG1 ~ y 22â30%; IMG2 ~ y 33â53%), and a short red diagonal segment near the surface center (IMG1 ~ 50% across, ~52% down; IMG2 ~ 45% across, ~53% down). They are unbroken and unmangled in both. House border chrome (thin darkâred left/right/bottom, no top) matches the mandated template in both crops, so it is not counted. No table cells, stacked fractions, or bracket/paren enclosures occur in this plot region, so delimiterâspan and cellâcentering checks are N/A.
+
+FINAL VERDICT: FAIL â the recreation crop does not reproduce the original regionâs plotted surface (and drops the originalâs axis tick numbers); not a faithful, usable recreation of this region.

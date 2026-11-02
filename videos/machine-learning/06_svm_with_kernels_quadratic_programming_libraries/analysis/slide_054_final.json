@@ -1,0 +1,146 @@
+{
+  "slide_title": "Data-Only Figure",
+  "subtitle_or_header": "none",
+  "verbatim_text": {
+    "bullets": [],
+    "labels": [
+      "54",
+      "0 5 10 15 20 25 (x-axis ticks, left to right)",
+      "25 20 15 10 5 0 (y-axis ticks, top to bottom)"
+    ],
+    "equations": []
+  },
+  "layout": {
+    "arrangement": "Data-only figure slide. Light-gray slide field inside a red outer frame; red-bordered plot rectangle center-right; yellow badge '54' top-right; black player bar along bottom. Plot holds a 4x4 lattice of two-class dot clusters in alternating blue/red checkerboard on axes 0-25 both directions. No title, legend, axis titles, decision boundary, or annotation.",
+    "regions": [
+      {
+        "name": "outer_frame",
+        "position": "[0.060, 0.080, 0.953, 0.920]",
+        "content": "Red stroke frame over light-gray field #F0F0F0[?]"
+      },
+      {
+        "name": "badge",
+        "position": "[0.927, 0.067, 0.976, 0.153]",
+        "content": "Yellow circle '54', purple outline"
+      },
+      {
+        "name": "plot",
+        "position": "[0.236, 0.116, 0.917, 0.865]",
+        "content": "Red-bordered white plot, axes 0-25 both directions"
+      },
+      {
+        "name": "data_clusters",
+        "position": "within plot [0.236, 0.116, 0.917, 0.865]",
+        "content": "16 clusters (4 dots each) in 4x4 checkerboard lattice; columns x ~3/8/13/18[?], rows y ~5/10/15/20[?]"
+      },
+      {
+        "name": "cursor_artifact",
+        "position": "[0.678, 0.314, 0.690, 0.334]",
+        "content": "Gray mouse-cursor capture artifact; omit from rebuild"
+      },
+      {
+        "name": "bottom_bar",
+        "position": "[0.000, 0.930, 1.000, 1.000]",
+        "content": "Black player bar [?]"
+      }
+    ]
+  },
+  "visual_elements": [
+    {
+      "type": "box",
+      "description": "Outer red frame stroke #FF0000 over gray field #F0F0F0[?]",
+      "position": "[0.060, 0.080, 0.953, 0.920]",
+      "colors": [
+        "#FF0000",
+        "#F0F0F0"
+      ]
+    },
+    {
+      "type": "badge",
+      "description": "Yellow circle fill #FFFF00, outline #7030A0[?], text '54' #000000",
+      "position": "[0.927, 0.067, 0.976, 0.153]",
+      "colors": [
+        "#FFFF00",
+        "#7030A0"
+      ]
+    },
+    {
+      "type": "chart",
+      "description": "Scatter plot, red border #FF0000, white fill #FFFFFF; x ticks 0,5,10,15,20,25; y ticks 0,5,...,25; axis label ink #000000; no legend; readable data values = axis ticks plus cluster lattice",
+      "position": "[0.236, 0.116, 0.917, 0.865]",
+      "colors": [
+        "#FF0000",
+        "#FFFFFF",
+        "#000000"
+      ]
+    },
+    {
+      "type": "curve",
+      "description": "16 point clusters (each 4 dots in a 2x2 mini-square) on a 4x4 lattice; cluster centers at x ~3/8/13/18 [?] (columns) and y ~5/10/15/20 [?]; colors alternate in checkerboard: top row blue/red/blue/red, then alternating each row",
+      "position": "within plot",
+      "colors": [
+        "#0000FF",
+        "#FF0000"
+      ]
+    },
+    {
+      "type": "arrow",
+      "description": "Gray mouse-cursor capture artifact near (18..19, 19) data area [0.678, 0.314, 0.690, 0.334] \u2014 capture artifact, omit from rebuild",
+      "position": "[0.678, 0.314, 0.690, 0.334]",
+      "colors": [
+        "#000000",
+        "#FFFFFF"
+      ]
+    },
+    {
+      "type": "box",
+      "description": "Black player bar along bottom",
+      "position": "[0.000, 0.930, 1.000, 1.000]",
+      "colors": [
+        "#000000"
+      ]
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "capture_outside": "#FFFFFF",
+    "slide_field": "#F0F0F0[?]",
+    "outer_frame": "#FF0000",
+    "plot_border": "#FF0000",
+    "plot_fill": "#FFFFFF",
+    "axis_text": "#000000",
+    "series_blue": "#0000FF",
+    "series_red": "#FF0000",
+    "badge_fill": "#FFFF00",
+    "badge_outline": "#7030A0[?]",
+    "badge_text": "#000000",
+    "bottom_bar": "#000000"
+  },
+  "typography_notes": "No title/body text. Axis tick numerals sans-serif (Arial/Calibri-like), ~10-12 pt black; y ticks right-aligned left of plot, x ticks centered below. Badge '54' ~11-12 pt black centered in yellow circle.",
+  "animation_state": "none",
+  "recreation_brief": "1. Set the capture canvas background to white #FFFFFF.\n2. Draw the light-gray slide field rectangle #F0F0F0[?] at [0.060, 0.080, 0.953, 0.920].\n3. Draw the red outer frame stroke #FF0000 around the slide field at [0.060, 0.080, 0.953, 0.920].\n4. Draw the yellow circle badge at [0.927, 0.067, 0.976, 0.153] with fill #FFFF00, outline #7030A0[?], and centered black text \"54\".\n5. Draw the plot rectangle at [0.236, 0.116, 0.917, 0.865] with white fill #FFFFFF and red border #FF0000.\n6. Add x-axis tick labels below the plot: \"0\", \"5\", \"10\", \"15\", \"20\", \"25\" left-to-right, black sans-serif ~10-12 pt, centered.\n7. Add y-axis tick labels left of the plot: \"25\", \"20\", \"15\", \"10\", \"5\", \"0\" top-to-bottom, black sans-serif ~10-12 pt, right-aligned.\n8. Plot 16 data clusters inside the plot area: 4 columns at x \u2248 3, 8, 13, 18[?] and 4 rows at y \u2248 5, 10, 15, 20[?]; each cluster is 4 dots in a 2x2 mini-square.\n9. Color the clusters in a checkerboard pattern using #0000FF and #FF0000: top row left-to-right blue, red, blue, red; alternate colors on each subsequent row.\n10. Do not add a title, legend, axis titles, decision boundary, or annotations.\n11. Do not include the gray mouse-cursor artifact at [0.678, 0.314, 0.690, 0.334].\n12. Draw the black player bar along the bottom at [0.000, 0.930, 1.000, 1.000] as capture chrome.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Reconstructed slide_title from layout.arrangement to 'Data-Only Figure'.",
+      "Added subtitle_or_header field set to 'none' (no subtitle in source).",
+      "Added animation_state field set to 'none' (no animation data in source).",
+      "Added layout region 'data_clusters' to cover the 16-dot cluster element in visual_elements.",
+      "Added layout region 'cursor_artifact' to cover the mouse-cursor artifact element in visual_elements.",
+      "Rewrote recreation_brief as a 12-step ordered checklist with exact positions, colors, and text for each element.",
+      "Kept verbatim_text.bullets as an empty array because the source contains no bullet text."
+    ],
+    "uncertain_items": [
+      "slide_field color #F0F0F0 marked [?]",
+      "badge_outline color #7030A0 marked [?]",
+      "cluster column x positions ~3/8/13/18 marked [?]",
+      "cluster row y positions ~5/10/15/20 marked [?]",
+      "bottom_bar content 'Black player bar [?]'"
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "validated_by": "validate_slides",
+    "validation_elapsed_s": 182.8
+  }
+}

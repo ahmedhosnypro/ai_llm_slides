@@ -31,10 +31,10 @@ const PANEL_TAN_LINE = "B7A28F";
 const PANEL_TAN_FILL = "FEFEF4";
 const MODEL_RED = "9D0000";
 const AMBER = "F4C692";
-const CAPSULE_PINK = "FBD3D3";
+const CAPSULE_PINK = "F0C090";
 const WHITE = "FFFFFF";
 const BLACK = "000000";
-const ARROW = "333333";
+const ARROW = "900000";
 
 const ASSETS = path.join(__dirname, "assets");
 const PANE_POS = path.join(ASSETS, "pane_pos_002.png"); // 151x362
@@ -141,18 +141,18 @@ s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
   fill: { color: WHITE }, line: { color: PANEL_BLUE_LINE, width: 1.5 },
 });
 s.addText("Activation Function", {
-  x: 584 / 72, y: 99 / 72, w: 120 / 72, h: 0.2, align: "left", valign: "top",
-  fontSize: 13, bold: true, color: BLUE, fontFace: FONT, margin: 0,
+  x: 584 / 72, y: 97 / 72, w: 120 / 72, h: 0.17, align: "left", valign: "top",
+  fontSize: 12, bold: true, color: BLUE, fontFace: FONT, margin: 0,
 });
 s.addText("Sigmoid function (0 , +1)", {
-  x: 584 / 72, y: 118 / 72, w: 115 / 72, h: 0.18, align: "left", valign: "top",
+  x: 584 / 72, y: 120 / 72, w: 115 / 72, h: 0.15, align: "left", valign: "top",
   fontSize: 10, color: BLUE, fontFace: FONT, margin: 0,
 });
 s.addText("Threshold at \u201c0.5\u201d", {
-  x: 584 / 72, y: 137 / 72, w: 115 / 72, h: 0.18, align: "left", valign: "top",
+  x: 584 / 72, y: 141 / 72, w: 115 / 72, h: 0.15, align: "left", valign: "top",
   fontSize: 10, color: RED, fontFace: FONT, margin: 0,
 });
-s.addImage({ path: SIGMOID, x: 706 / 72, y: 96 / 72, w: 170 / 72, h: 64 / 72 });
+s.addImage({ path: SIGMOID, x: 780 / 72, y: 97 / 72, w: 96 / 72, h: 63 / 72 });
 
 // ---- "Training" heading above its panel (orig y~180-190, centered) -----------
 s.addText("Training", {
@@ -175,7 +175,7 @@ s.addText("Input Sample", {
   fontSize: 6.5, color: BLACK, fontFace: FONT, margin: 0,
 });
 s.addShape(pres.shapes.RIGHT_ARROW, {
-  x: 611 / 72, y: 271 / 72, w: 10 / 72, h: 10 / 72,
+  x: 611 / 72, y: 273 / 72, w: 10 / 72, h: 6 / 72,
   fill: { color: ARROW }, line: { type: "none" },
 });
 // Model box (orig x613-736 y245-305, solid dark red)
@@ -189,12 +189,12 @@ s.addText("Model", {
 });
 s.addImage({ path: SIGMOID, x: 688 / 72, y: 252 / 72, w: 44 / 72, h: 18 / 72 });
 s.addText("(Any value) \u2192 (-1, +1)", {
-  x: 616 / 72, y: 284 / 72, w: 117 / 72, h: 0.18, align: "center", valign: "middle",
-  fontSize: 8, color: WHITE, fontFace: FONT, margin: 0,
+  x: 616 / 72, y: 283 / 72, w: 117 / 72, h: 0.2, align: "center", valign: "middle",
+  fontSize: 9.5, bold: true, color: WHITE, fontFace: FONT, margin: 0,
 });
 // arrow Model -> LOSS
 s.addShape(pres.shapes.RIGHT_ARROW, {
-  x: 738 / 72, y: 268 / 72, w: 36 / 72, h: 12 / 72,
+  x: 738 / 72, y: 270 / 72, w: 36 / 72, h: 8 / 72,
   fill: { color: ARROW }, line: { type: "none" },
 });
 // Predicted Class label above LOSS circle, clear of panel top (D7)
@@ -213,7 +213,7 @@ s.addText("LOSS", {
 });
 // D1: left-pointing arrow from Label of Input Sample into LOSS
 s.addShape(pres.shapes.LEFT_ARROW, {
-  x: 831 / 72, y: 268 / 72, w: 14 / 72, h: 12 / 72,
+  x: 831 / 72, y: 270 / 72, w: 14 / 72, h: 8 / 72,
   fill: { color: ARROW }, line: { type: "none" },
 });
 // Label of Input Sample (orig x833-876 y243-261) + (+1, 0) below (orig y287-299)
@@ -247,7 +247,7 @@ s.addText("Test Sample", {
   fontSize: 6.5, color: BLACK, fontFace: FONT, margin: 0,
 });
 s.addShape(pres.shapes.RIGHT_ARROW, {
-  x: 611 / 72, y: 447 / 72, w: 10 / 72, h: 10 / 72,
+  x: 611 / 72, y: 449 / 72, w: 10 / 72, h: 6 / 72,
   fill: { color: ARROW }, line: { type: "none" },
 });
 // Model box (eval, orig x613-736 y422-463)
@@ -261,12 +261,12 @@ s.addText("Model", {
 });
 s.addImage({ path: SIGMOID, x: 688 / 72, y: 428 / 72, w: 44 / 72, h: 18 / 72 });
 s.addText("(Any value) \u2192 (-1, +1)", {
-  x: 616 / 72, y: 447 / 72, w: 117 / 72, h: 0.14, align: "center", valign: "middle",
-  fontSize: 7, color: WHITE, fontFace: FONT, margin: 0,
+  x: 616 / 72, y: 446 / 72, w: 117 / 72, h: 0.16, align: "center", valign: "middle",
+  fontSize: 9, bold: true, color: WHITE, fontFace: FONT, margin: 0,
 });
 // arrow Model -> Predicted Class
 s.addShape(pres.shapes.RIGHT_ARROW, {
-  x: 738 / 72, y: 446 / 72, w: 36 / 72, h: 12 / 72,
+  x: 738 / 72, y: 448 / 72, w: 36 / 72, h: 8 / 72,
   fill: { color: ARROW }, line: { type: "none" },
 });
 // Predicted Class label (orig y420-427 x736-776) + final (+1, 0) (orig y444-456 x770-829)

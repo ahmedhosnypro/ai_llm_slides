@@ -1,0 +1,223 @@
+{
+  "slide_title": "Quadratic Kernel Mapping and Kernel Trick",
+  "subtitle_or_header": null,
+  "verbatim_text": {
+    "labels": [
+      "25",
+      "a [a1; a2]   b [b1; b2]",
+      "Where:",
+      "2D \u21d2 3D"
+    ],
+    "equations": [
+      "[a^T b]^2 = ([a1 a2][b1; b2])^2 = (a1 b1 + a2 b2)^2 = a1^2 b1^2 + a2^2 b2^2 + 2 a1 b1 a2 b2",
+      "[a^T b]^2 = (a1^2  a2^2  \u221a2 a1 a2) [b1^2; b2^2; \u221a2 b1 b2] = \u03c6(a)^T \u03c6(b)",
+      "\u03c6(x) \u2261 [x1; x2] \u21d2 [x1^2; x2^2; \u221a2 x1 x2]"
+    ],
+    "bullets": [
+      "a [a1; a2]   b [b1; b2]",
+      "[a^T b]^2 = ([a1 a2][b1; b2])^2 = (a1 b1 + a2 b2)^2 = a1^2 b1^2 + a2^2 b2^2 + 2 a1 b1 a2 b2",
+      "[a^T b]^2 = (a1^2  a2^2  \u221a2 a1 a2) [b1^2; b2^2; \u221a2 b1 b2] = \u03c6(a)^T \u03c6(b)",
+      "Where:",
+      "\u03c6(x) \u2261 [x1; x2] \u21d2 [x1^2; x2^2; \u221a2 x1 x2]",
+      "2D \u21d2 3D"
+    ]
+  },
+  "layout": {
+    "arrangement": "Title text across the top with a top-right badge; one blue-bordered pale-yellow content panel at [0.069,0.167,0.931,0.657] holds the vector pair row, equation row 1 with a red highlight on the leading term, equation row 2 on the left, and the 'Where:' definition plus red '2D \u21d2 3D' on the right.",
+    "regions": [
+      {
+        "name": "outer frame",
+        "box": [
+          0.057,
+          0.078,
+          0.943,
+          0.961
+        ]
+      },
+      {
+        "name": "title",
+        "box": [
+          0.263,
+          0.1,
+          0.807,
+          0.148
+        ]
+      },
+      {
+        "name": "badge",
+        "box": [
+          0.887,
+          0.089,
+          0.93,
+          0.163
+        ]
+      },
+      {
+        "name": "content panel",
+        "box": [
+          0.069,
+          0.167,
+          0.931,
+          0.657
+        ],
+        "fill": "#FFFFCC[?]",
+        "stroke": "#0000FF"
+      },
+      {
+        "name": "vector pair row",
+        "box": [
+          0.08,
+          0.19,
+          0.235,
+          0.275
+        ]
+      },
+      {
+        "name": "equation row 1",
+        "box": [
+          0.072,
+          0.285,
+          0.846,
+          0.345
+        ],
+        "highlight": [
+          0.075,
+          0.287,
+          0.146,
+          0.344
+        ]
+      },
+      {
+        "name": "equation row 1 highlight",
+        "box": [
+          0.075,
+          0.287,
+          0.146,
+          0.344
+        ]
+      },
+      {
+        "name": "equation row 2",
+        "box": [
+          0.072,
+          0.415,
+          0.565,
+          0.567
+        ]
+      },
+      {
+        "name": "Where definition",
+        "box": [
+          0.575,
+          0.455,
+          0.93,
+          0.565
+        ]
+      },
+      {
+        "name": "2D \u21d2 3D note",
+        "box": [
+          0.694,
+          0.583,
+          0.78,
+          0.626
+        ]
+      }
+    ]
+  },
+  "visual_elements": [
+    {
+      "type": "rectangle",
+      "role": "outer frame",
+      "box": [
+        0.057,
+        0.078,
+        0.943,
+        0.961
+      ],
+      "stroke": "#C00000",
+      "fill": "none"
+    },
+    {
+      "type": "rectangle",
+      "role": "content panel",
+      "box": [
+        0.069,
+        0.167,
+        0.931,
+        0.657
+      ],
+      "stroke": "#0000FF",
+      "fill": "#FFFFCC[?]"
+    },
+    {
+      "type": "rounded-box",
+      "role": "highlight on [a^T b]^2",
+      "box": [
+        0.075,
+        0.287,
+        0.146,
+        0.344
+      ],
+      "stroke": "#FF0000"
+    },
+    {
+      "type": "circle",
+      "role": "badge",
+      "box": [
+        0.887,
+        0.089,
+        0.93,
+        0.163
+      ],
+      "fill": "#FFFF00",
+      "stroke": "#C00000",
+      "text": "25"
+    },
+    {
+      "type": "arrow-glyph",
+      "role": "\u21d2 in definition and 2D\u21d23D",
+      "color": "#FF0000"
+    }
+  ],
+  "imagery": "none",
+  "colors": {
+    "background": "#FFFFFF",
+    "frame": "#C00000",
+    "title": "#C00000",
+    "panel_fill": "#FFFFCC[?]",
+    "panel_border": "#0000FF",
+    "badge_fill": "#FFFF00",
+    "badge_stroke": "#C00000",
+    "badge_ink": "#000000",
+    "math_ink": "#000000",
+    "a_accent": "#FF0000",
+    "b_accent": "#0000FF",
+    "arrow_accent": "#FF0000"
+  },
+  "typography_notes": "Sans-serif (Arial-like). Title bold red ~28 pt centered. Badge numeral bold ~14 pt. Equations left-aligned ~18 pt; variables italic; a-side red, b-side blue, rest black; column vectors stacked. '2D \u21d2 3D' red bold ~18 pt.",
+  "animation_state": "not specified in source",
+  "recreation_brief": "1) Set the slide background to #FFFFFF; all boxes below are normalized [x_min, y_min, x_max, y_max]. 2) Draw 1 rectangle 'outer frame' at [0.057,0.078,0.943,0.961] with fill none and stroke #C00000. 3) Place the title text 'Quadratic Kernel Mapping and Kernel Trick' in the title region [0.263,0.100,0.807,0.148], centered horizontally, bold red #C00000, ~28 pt sans-serif. 4) Draw 1 circle 'badge' at [0.887,0.089,0.930,0.163] with fill #FFFF00, stroke #C00000, and centered bold black #000000 text '25' at ~14 pt. 5) Draw 1 rectangle 'content panel' at [0.069,0.167,0.931,0.657] with fill #FFFFCC[?] and stroke #0000FF. 6) Place the vector pair text 'a [a1; a2]   b [b1; b2]' in [0.080,0.190,0.235,0.275], left-aligned, ~18 pt sans-serif, variables italic, with 'a [a1; a2]' in red #FF0000 and 'b [b1; b2]' in blue #0000FF; render [a1; a2] and [b1; b2] as 2-row stacked column vectors. 7) Place equation row 1 text '[a^T b]^2 = ([a1 a2][b1; b2])^2 = (a1 b1 + a2 b2)^2 = a1^2 b1^2 + a2^2 b2^2 + 2 a1 b1 a2 b2' in [0.072,0.285,0.846,0.345], left-aligned, ~18 pt sans-serif, variables italic, black #000000 with a-side red #FF0000 and b-side blue #0000FF; render [b1; b2] as a 2-row stacked column vector. 8) Draw 1 rounded-box highlight at [0.075,0.287,0.146,0.344] over the leading '[a^T b]^2' with stroke #FF0000; fill is unspecified in the source, so render it with no fill. 9) Place equation row 2 text '[a^T b]^2 = (a1^2  a2^2  \u221a2 a1 a2) [b1^2; b2^2; \u221a2 b1 b2] = \u03c6(a)^T \u03c6(b)' in [0.072,0.415,0.565,0.567], left-aligned, ~18 pt sans-serif, variables italic, black #000000 with a-side red #FF0000 and b-side blue #0000FF; render [b1^2; b2^2; \u221a2 b1 b2] as a 3-row stacked column vector. 10) Place the 'Where:' definition in [0.575,0.455,0.930,0.565] as two lines: 'Where:' then '\u03c6(x) \u2261 [x1; x2] \u21d2 [x1^2; x2^2; \u221a2 x1 x2]', left-aligned, ~18 pt sans-serif, variables italic, black #000000 with the \u21d2 glyph in red #FF0000; render [x1; x2] as a 2-row stacked column vector and [x1^2; x2^2; \u221a2 x1 x2] as a 3-row stacked column vector. 11) Place the note '2D \u21d2 3D' in [0.694,0.583,0.780,0.626], red #FF0000 bold ~18 pt, with the \u21d2 glyph in red #FF0000.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Added verbatim_text.bullets using the exact label and equation strings in reading order.",
+      "Added a separate layout region for the red rounded-box highlight at [0.075,0.287,0.146,0.344] so every visual element has a region.",
+      "Rewrote recreation_brief as an 11-step numbered placement checklist with exact text, normalized positions, colors, shapes, italics, and stacked column vectors.",
+      "Changed arrangement wording from 'title band' to 'title text' because no separate title-band shape exists in visual_elements.",
+      "Set animation_state to 'not specified in source' because the source JSON contains no animation data.",
+      "Left subtitle_or_header null because no subtitle/header text exists in the source.",
+      "Preserved the #FFFFCC[?] uncertainty marker for the content panel fill and listed it in uncertain_items."
+    ],
+    "uncertain_items": [
+      "Content panel fill is marked #FFFFCC[?] in the source.",
+      "The red rounded-box highlight has a stroke color but no fill specified; the brief renders it with no fill as the least-invented option.",
+      "No subtitle/header or animation state is present in the source."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "validated_by": "validate_slides",
+    "validation_elapsed_s": 395.9
+  }
+}
