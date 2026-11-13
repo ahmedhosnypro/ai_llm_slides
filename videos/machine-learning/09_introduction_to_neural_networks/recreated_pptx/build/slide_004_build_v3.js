@@ -120,8 +120,8 @@ s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 1.10, y: 6.15, w: 5.63, h: 0.78, 
 s.addImage({ path: BUILD + "/eq_update_batch.png", x: 1.149, y: 6.250, w: 3.731, h: 0.430 });
 
 // center caption (single line, red, centered in the gap at x 6.79..9.00)
-s.addText("Update after each sample", { x: 6.70, y: 6.24, w: 2.25, h: 0.3, align: "center", valign: "middle", fontSize: 11, color: RED, fontFace: FONT, margin: 0 });
-s.addText("\u25BC", { x: 6.70, y: 6.50, w: 2.25, h: 0.3, align: "center", valign: "top", fontSize: 11, color: BLACK, fontFace: FONT, margin: 0 });
+s.addText("Update after each sample", { x: 6.70, y: 6.24, w: 2.25, h: 0.3, align: "center", valign: "middle", fontSize: 11, color: RED, fontFace: FONT, underline: true, margin: 0 });
+s.addText("\u2194", { x: 6.70, y: 6.48, w: 2.25, h: 0.3, align: "center", valign: "top", fontSize: 20, color: RED, fontFace: FONT, margin: 0 });
 
 s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 9.00, y: 6.15, w: 3.33, h: 0.78, fill: { color: PALE_YELLOW }, line: { color: BOX_GREEN, width: 1.5 }, rectRadius: 0.04 });
 // online update: ink x 9.16, y 6.32 (measured); ink bbox (23,128)-(2214,340), scale 0.778

@@ -198,3 +198,13 @@ Sans-serif font throughout. Title is large, bold, dark red (#c0392b), centered. 
 ### Non-content artifacts (must NOT be reported as missing)
 - Mouse cursor / video-capture chrome in the original (GROUND RULES (c)).
 - The house red frame / yellow badge / title position (GROUND RULES (a)).
+
+### Wave-3 build handoff (2026-11-13, worker wave3-builder-B)
+
+- Deliverable: `recreated_pptx/slide_028_recreated.pptx` (single version).
+- Build script: `recreated_pptx/build/slide_028_build_w3.js`.
+- Diagram generator: `graphgen/slide_028_nn_model.py` -> `recreated_pptx/build/slide_028_nn_model.png`.
+- Render: `recreated_pptx/build/slide_028_rendered-1.png` (2001x1125 at 150 dpi; mean RGB 216.345/209.543/205.693).
+- Judge order for this wave: RECREATION FIRST, ORIGINAL SECOND (explicit dispatcher instruction).
+- Judge prompt/transcripts: `recreated_pptx/qa/slide028/judge_prompt_1.txt`, `judge_attempt_*_body.txt` and `judge_attempt_*_log.txt`.
+- House badge numeral is 28, matching both the original frame and approved slides_index.json.

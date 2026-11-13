@@ -48,8 +48,10 @@ s.addText("13", {
   x: 12.48, y: 0.30, w: 0.5, h: 0.5, align: "center", valign: "middle",
   fontSize: 18, bold: true, color: "333333", fontFace: "Arial", margin: 0,
 });
-txt("", 0.6 / 13.33, 0.28 / 7.5, 12.73 / 13.33, 0.9 / 7.5,
-  { align: "center", fontSize: 20, bold: true, color: "C00000" });
+s.addText("", {
+  x: 0.6, y: 0.28, w: 12.13, h: 0.9,
+  align: "center", fontSize: 20, bold: true, color: "C00000", margin: 0,
+});
 
 // ---- upper red panel (QP formulation) ----
 rect(0.071, 0.120, 0.815, 0.372, "FF0000", 1.5);

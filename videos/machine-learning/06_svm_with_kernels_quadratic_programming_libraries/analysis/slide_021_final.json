@@ -1,0 +1,201 @@
+{
+  "slide_title": "Quadratic Kernel",
+  "subtitle_or_header": "Example-1 / Slide 21",
+  "verbatim_text": {
+    "bullets": [
+      "Higher Computational Complexity !!!",
+      "Higher Computational Complexity !!!"
+    ],
+    "labels": [
+      "Example-1",
+      "21",
+      "Quadratic Kernel",
+      "Map Input data from 2-D to 3-D",
+      "Normal Model",
+      "Calculate a^T b",
+      "Vectors Mapping",
+      "a , b => u , v",
+      "Kernelized Model",
+      "Calculate u^T v"
+    ],
+    "equations": [
+      "[a^T b]^2",
+      "(a1, a2)^T , (b1, b2)^T",
+      "(a1  a2) (b1 ; b2)",
+      "a , b => u , v",
+      "(a1^2, a2^2, sqrt(2) a1 a2)^T , (b1^2, b2^2, sqrt(2) b1 b2)^T",
+      "(a1^2  a2^2  sqrt(2) a1 a2) (b1^2 ; b2^2 ; sqrt(2) b1 b2)"
+    ]
+  },
+  "layout": {
+    "arrangement": "White canvas, outer red frame [0.065,0.078,0.958,0.944]. Header row: dashed blue rounded 'Example-1' badge far left [0.073,0.102,0.193,0.170], red bold title 'Quadratic Kernel' centre-left, maroon '[a^T b]^2' to its right [0.609,0.102,0.729,0.148], yellow circle '21' far right [0.863,0.093,0.917,0.178]. Upper flow row: pale cream input-vector box left [0.081,0.259,0.175,0.367] -> long red block arrow [0.193,0.296,0.547,0.333] -> blue-bordered 'Normal Model' box [0.542,0.200,0.880,0.441] with light-cyan inner rounded box [0.651,0.306,0.776,0.417] -> short red exit arrow [0.885,0.296,0.932,0.333]. Middle: pale-yellow strip [0.099,0.430,0.490,0.485] with blue italic 'Map Input data from 2-D to 3-D'. Bottom flow row left to right: input-vector box [0.081,0.648,0.175,0.769] -> small red arrow [0.182,0.689,0.224,0.726] -> red-bordered 'Vectors Mapping' box [0.214,0.657,0.365,0.769] with beige '[a^T b]^2' label above [0.250,0.578,0.349,0.639] and purple complexity box below [0.234,0.787,0.354,0.880] -> arrow [0.370,0.689,0.411,0.726] -> lavender 3-D vectors box [0.411,0.574,0.562,0.852] -> arrow [0.568,0.689,0.604,0.726] -> green-bordered 'Kernelized Model' box [0.578,0.509,0.875,0.926] with light-green inner box [0.609,0.639,0.823,0.843] and purple complexity box [0.609,0.778,0.734,0.880] -> exit arrow [0.880,0.689,0.927,0.726].",
+    "regions": [
+      {
+        "name": "header",
+        "position": "top 0.09-0.18",
+        "content": "Example-1 badge, title 'Quadratic Kernel', maroon [a^T b]^2, badge 21"
+      },
+      {
+        "name": "upper_flow",
+        "position": "[0.081,0.200]-[0.932,0.441]",
+        "content": "input vectors -> Normal Model (with inner light-cyan product box) -> exit arrow"
+      },
+      {
+        "name": "map_strip",
+        "position": "[0.099,0.430,0.490,0.485]",
+        "content": "'Map Input data from 2-D to 3-D'"
+      },
+      {
+        "name": "lower_flow",
+        "position": "[0.081,0.574]-[0.927,0.926]",
+        "content": "input vectors -> Vectors Mapping (with beige '[a^T b]^2' label above and purple complexity note below) -> 3-D vectors -> Kernelized Model (with inner light-green product box and purple complexity note) -> exit arrow"
+      }
+    ],
+    "hierarchy": "Header top, Normal Model flow upper, mapping strip middle, Vectors Mapping/Kernelized flow bottom"
+  },
+  "visual_elements": [
+    {
+      "type": "rectangle",
+      "description": "Outer red frame",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "[0.065,0.078,0.958,0.944]"
+    },
+    {
+      "type": "rounded_box",
+      "description": "Dashed blue 'Example-1' badge, white fill",
+      "colors": [
+        "#0000FF",
+        "#FFFFFF"
+      ],
+      "position": "[0.073,0.102,0.193,0.170]"
+    },
+    {
+      "type": "circle",
+      "description": "Slide-number badge, yellow fill #FFFF00, black '21'",
+      "colors": [
+        "#FFFF00",
+        "#000000"
+      ],
+      "position": "[0.863,0.093,0.917,0.178]"
+    },
+    {
+      "type": "box",
+      "description": "Input vector box (a1,a2)^T , (b1,b2)^T, pale cream fill ~#FFFDE7, gray stroke #808080",
+      "colors": [
+        "#FFFDE7",
+        "#808080"
+      ],
+      "position": "[0.081,0.259,0.175,0.367] and [0.081,0.648,0.175,0.769]"
+    },
+    {
+      "type": "arrow",
+      "description": "Red block right arrows #FF0000",
+      "colors": [
+        "#FF0000"
+      ],
+      "position": "[0.193,0.296,0.547,0.333], [0.885,0.296,0.932,0.333], [0.182,0.689,0.224,0.726], [0.370,0.689,0.411,0.726], [0.568,0.689,0.604,0.726], [0.880,0.689,0.927,0.726]"
+    },
+    {
+      "type": "rectangle",
+      "description": "Normal Model box, blue stroke #0000FF white fill, red heading, inner light-cyan rounded box #DFF3F7 stroke #2E9BB5 holding row x column product",
+      "colors": [
+        "#0000FF",
+        "#C00000",
+        "#DFF3F7",
+        "#2E9BB5"
+      ],
+      "position": "[0.542,0.200,0.880,0.441], inner [0.651,0.306,0.776,0.417]"
+    },
+    {
+      "type": "strip",
+      "description": "Map label strip, pale yellow fill ~#FFFFCC, blue italic bold text",
+      "colors": [
+        "#FFFFCC",
+        "#0000FF"
+      ],
+      "position": "[0.099,0.430,0.490,0.485]"
+    },
+    {
+      "type": "rectangle",
+      "description": "Vectors Mapping box, red stroke #FF0000, red bold heading, 'a , b => u , v'",
+      "colors": [
+        "#FF0000"
+      ],
+      "position": "[0.214,0.657,0.365,0.769]"
+    },
+    {
+      "type": "label",
+      "description": "Beige '[a^T b]^2' label above Vectors Mapping",
+      "colors": [
+        "#F5E6C8"
+      ],
+      "position": "[0.250,0.578,0.349,0.639]"
+    },
+    {
+      "type": "rounded_box",
+      "description": "Complexity notes, lavender fill ~#E9D6F5, purple stroke/text #7030A0, three lines 'Higher / Computational / Complexity !!!'",
+      "colors": [
+        "#E9D6F5",
+        "#7030A0"
+      ],
+      "position": "[0.234,0.787,0.354,0.880] and [0.609,0.778,0.734,0.880]"
+    },
+    {
+      "type": "box",
+      "description": "3-D mapped vectors box, lavender fill ~#F3EAFB, purple stroke #7030A0, a-vector maroon #8B0000, b-vector blue #0000FF",
+      "colors": [
+        "#F3EAFB",
+        "#7030A0",
+        "#8B0000",
+        "#0000FF"
+      ],
+      "position": "[0.411,0.574,0.562,0.852]"
+    },
+    {
+      "type": "rectangle",
+      "description": "Kernelized Model box, green stroke #00B050 white fill, red heading, inner light-green rounded box #E2EFDA stroke #00B050 holding 3-term row x column product",
+      "colors": [
+        "#00B050",
+        "#C00000",
+        "#E2EFDA"
+      ],
+      "position": "[0.578,0.509,0.875,0.926], inner [0.609,0.639,0.823,0.843]"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "frame": "#C00000",
+    "title": "#C00000",
+    "top_equation": "#7B1B1B",
+    "badge_text": "#0000FF",
+    "arrows": "#FF0000",
+    "normal_model": "#0000FF",
+    "kernelized_model": "#00B050",
+    "complexity": "#7030A0",
+    "vectors_box": "#7030A0",
+    "body_math": "#000000"
+  },
+  "typography_notes": "Sans-serif Calibri/Arial-like. Title ~30pt bold red left-of-centre. 'Example-1' ~14pt bold blue. Badge '21' ~14pt black. Model headings ~12-13pt bold red. Sub-labels ~11pt black. Map strip ~13pt bold italic blue. Complexity notes ~10pt bold purple centered three lines. Vector math ~11-12pt with sub/superscripts.",
+  "animation_state": "Static lecture slide",
+  "recreation_brief": "1. Canvas: 13.33x7.5in, white background #FFFFFF. Draw outer red frame rectangle at normalized [0.065,0.078,0.958,0.944], stroke #C00000 1.5pt, no fill.\n2. Draw dashed blue rounded box at [0.073,0.102,0.193,0.170], white fill #FFFFFF, dashed stroke #0000FF; text 'Example-1' ~14pt bold #0000FF centered.\n3. Place title text 'Quadratic Kernel' in the header row left-of-centre between the 'Example-1' badge and the maroon equation, color #C00000, bold ~30pt sans-serif.\n4. Place maroon text '[a^T b]^2' at [0.609,0.102,0.729,0.148], color #7B1B1B, bold ~14pt.\n5. Draw yellow circle at [0.863,0.093,0.917,0.178], fill #FFFF00, no stroke; text '21' #000000 ~14pt bold centered.\n6. Draw upper input vector box at [0.081,0.259,0.175,0.367], fill #FFFDE7, stroke #808080; text '(a1, a2)^T , (b1, b2)^T' #000000 ~11pt centered.\n7. Draw long red block arrow at [0.193,0.296,0.547,0.333], fill #FF0000, pointing right.\n8. Draw 'Normal Model' outer rectangle at [0.542,0.200,0.880,0.441], white fill, stroke #0000FF; heading 'Normal Model' #C00000 bold ~12-13pt at top.\n9. Inside Normal Model, draw light-cyan rounded box at [0.651,0.306,0.776,0.417], fill #DFF3F7, stroke #2E9BB5; text 'Calculate a^T b' #000000 ~11pt and equation '(a1  a2) (b1 ; b2)' #000000 ~11pt.\n10. Draw short red exit arrow at [0.885,0.296,0.932,0.333], fill #FF0000, pointing right.\n11. Draw pale-yellow strip at [0.099,0.430,0.490,0.485], fill #FFFFCC; text 'Map Input data from 2-D to 3-D' #0000FF bold italic ~13pt centered.\n12. Draw lower input vector box at [0.081,0.648,0.175,0.769], fill #FFFDE7, stroke #808080; text '(a1, a2)^T , (b1, b2)^T' #000000 ~11pt centered.\n13. Draw small red arrow at [0.182,0.689,0.224,0.726], fill #FF0000, pointing right.\n14. Draw 'Vectors Mapping' rectangle at [0.214,0.657,0.365,0.769], white fill, stroke #FF0000; heading 'Vectors Mapping' #FF0000 bold ~12-13pt, text 'a , b => u , v' #000000 ~11pt.\n15. Draw beige label '[a^T b]^2' at [0.250,0.578,0.349,0.639], fill #F5E6C8; text '[a^T b]^2' #000000 ~11pt centered.\n16. Draw purple complexity note at [0.234,0.787,0.354,0.880], fill #E9D6F5, stroke #7030A0; text 'Higher / Computational / Complexity !!!' #7030A0 bold ~10pt centered on three lines.\n17. Draw red arrow at [0.370,0.689,0.411,0.726], fill #FF0000, pointing right.\n18. Draw 3-D mapped vectors box at [0.411,0.574,0.562,0.852], fill #F3EAFB, stroke #7030A0; text '(a1^2, a2^2, sqrt(2) a1 a2)^T , (b1^2, b2^2, sqrt(2) b1 b2)^T' with a-vector #8B0000 and b-vector #0000FF ~11pt.\n19. Draw red arrow at [0.568,0.689,0.604,0.726], fill #FF0000, pointing right.\n20. Draw 'Kernelized Model' outer rectangle at [0.578,0.509,0.875,0.926], white fill, stroke #00B050; heading 'Kernelized Model' #C00000 bold ~12-13pt at top.\n21. Inside Kernelized Model, draw light-green rounded box at [0.609,0.639,0.823,0.843], fill #E2EFDA, stroke #00B050; text 'Calculate u^T v' #000000 ~11pt and equation '(a1^2  a2^2  sqrt(2) a1 a2) (b1^2 ; b2^2 ; sqrt(2) b1 b2)' #000000 ~11pt.\n22. Draw purple complexity note at [0.609,0.778,0.734,0.880], fill #E9D6F5, stroke #7030A0; text 'Higher / Computational / Complexity !!!' #7030A0 bold ~10pt centered on three lines.\n23. Draw red exit arrow at [0.880,0.689,0.927,0.726], fill #FF0000, pointing right.\n24. Format all vector/equation constructs in Professional Format (stacked column vectors in parentheses, superscripts).",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Corrected recreation_brief slide-number badge fill color from #FFF9C4 to #FFFF00 and font size from 18pt to ~14pt to match visual_elements and typography_notes.",
+      "Corrected recreation_brief phrase 'house outer red frame' to 'outer red frame'.",
+      "Updated layout.regions.upper_flow.content to explicitly include the inner light-cyan product box within the Normal Model.",
+      "Updated layout.regions.lower_flow.content to explicitly include the beige '[a^T b]^2' label above Vectors Mapping and the inner light-green product box within Kernelized Model.",
+      "Rewrote recreation_brief as a 24-step numbered checklist specifying exact normalized position, color, shape, and verbatim text for every element.",
+      "Replaced approximate inch coordinates in recreation_brief with exact normalized coordinates from layout/visual_elements to eliminate ambiguity."
+    ],
+    "uncertain_items": [],
+    "recreatability_score_1_to_10": 10
+  },
+  "_meta": {
+    "validated_by": "validate_slides",
+    "validation_elapsed_s": 609.7
+  }
+}

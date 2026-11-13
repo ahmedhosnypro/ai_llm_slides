@@ -72,6 +72,11 @@ def make_panel(name, path, box, draw_fn, xlim, ylim, xticks, yticks,
     for sp in ax.spines.values():
         sp.set_visible(False)
     draw_fn(ax, x0, y0, x1, y1, w_px, h_px)
+    # The source uses dark Cartesian zero axes over the light grid.
+    if xlim[0] < 0 < xlim[1]:
+        ax.axvline(0.0, color=BLACK, linewidth=0.8, zorder=2)
+    if ylim[0] < 0 < ylim[1] or name in ("tl", "br"):
+        ax.axhline(0.0, color=BLACK, linewidth=0.8, zorder=2)
     ax.tick_params(labelsize=axisfs, colors=BLACK, length=2, width=0.6, pad=1.0)
     frame = fig.add_artist(plt.Rectangle(
         (0, 0), 1, 1, transform=fig.transFigure, fill=False,
@@ -129,15 +134,14 @@ def draw_bl(ax, px0, py0, px1, py1, w, h):
     for a, col in [(0.1, "#E8383D"), (0.2, "#00B050"), (0.5, "#0000FF"), (1.0, "#A05050")]:
         y = np.where(x >= 0, x, a * (np.exp(x) - 1.0))
         ax.plot(x, y, color=col, linewidth=1.2, zorder=3)
-    # legend swatch block, measured at px x 183..204, rows 366..394
-    ax.plot([183 - px0, 204 - px0], [370 - py0, 370 - py0], color="#E8383D",
-            linewidth=1.2)
-    ax.plot([183 - px0, 204 - px0], [378 - py0, 378 - py0], color="#00B050",
-            linewidth=1.2)
-    ax.plot([183 - px0, 204 - px0], [386 - py0, 386 - py0], color="#0000FF",
-            linewidth=1.2)
-    ax.plot([183 - px0, 204 - px0], [394 - py0, 394 - py0], color="#A05050",
-            linewidth=1.2)
+    # Legend swatches and labels, measured at px x 183..204, rows 366..394.
+    for row, (a, col) in enumerate([(0.1, "#E8383D"), (0.2, "#00B050"),
+                                    (0.5, "#0000FF"), (1.0, "#A05050")]):
+        yy = 370 + row * 8
+        ax.plot([183 - px0, 204 - px0], [yy - py0, yy - py0], color=col,
+                linewidth=1.2)
+        ax.text(207 - px0, yy - py0, f"\u03b1 = {a:.1f}", fontsize=5.2,
+                color=BLACK, ha="left", va="center")
     # dashed grey guides measured at f=3 and x=3
     ax.axhline(3.0, color=GRAY_GRID, linewidth=0.7, linestyle="--")
     ax.axvline(3.0, color=GRAY_GRID, linewidth=0.7, linestyle="--")
@@ -176,5 +180,5 @@ make_panel("tr", f"{OUT}/graph_prelu.png", TR, draw_tr,
 make_panel("bl", f"{OUT}/graph_elu.png", BL, draw_bl,
            xlim=(-3, 3), ylim=(-1, 3), xticks=(-3, 0, 3), yticks=(-1, 0, 3))
 make_panel("br", f"{OUT}/graph_softplus.png", BR, draw_br,
-           xlim=(-4, 4), ylim=(1, 3), xticks=(-4, -2, 0, 2, 4), yticks=(1, 2, 3))
+           xlim=(-4, 4), ylim=(-1, 3), xticks=(-4, -2, 0, 2, 4), yticks=(-1, 1, 2, 3))
 print("done")

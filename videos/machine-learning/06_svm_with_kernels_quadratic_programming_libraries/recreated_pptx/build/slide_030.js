@@ -1,103 +1,41 @@
-// slide_030.js — RBF Kernel (matches reanalysis spec layout; eq PNGs from eq_030/)
 const pptxgen = require("pptxgenjs");
 const fs = require("fs");
-const path = require("path");
-
+const { W, H, house, box } = require("./house023.js");
 const NS = "/home/codespace/ai_llm_slides/videos/machine-learning/06_svm_with_kernels_quadratic_programming_libraries";
-const EQ = NS + "/recreated_pptx/build/eq_030/";
-const NUM = 30;
-const TITLE = "Radial Basis Function (RBF) Kernel";
-const FONT = "Arial";
-
+const OUT = NS + "/recreated_pptx/slide_030_recreated.pptx";
+const eq = JSON.parse(fs.readFileSync(NS + "/recreated_pptx/build/assets/eqs_023_033.json"))["30"];
+const A = NS + "/recreated_pptx/build/assets/";
 const pres = new pptxgen();
 pres.layout = "LAYOUT_WIDE";
-const W = 13.33, H = 7.5;
 const s = pres.addSlide();
-s.background = { color: "E8E8E8" };
-
-s.addShape(pres.shapes.RECTANGLE, {
-  x: 0.15, y: 0.15, w: W - 0.3, h: H - 0.3,
-  fill: { type: "none" }, line: { color: "C00000", width: 1.5 },
-});
-s.addShape(pres.shapes.OVAL, {
-  x: 12.48, y: 0.30, w: 0.5, h: 0.5,
-  fill: { color: "FFF9C4" }, line: { color: "FFF9C4", width: 0.5 },
-});
-s.addText(String(NUM), {
-  x: 12.48, y: 0.30, w: 0.5, h: 0.5,
-  align: "center", valign: "middle",
-  fontSize: 18, bold: true, color: "333333", fontFace: FONT, margin: 0,
-});
-s.addText(TITLE, {
-  x: 0.6, y: 0.28, w: 12.13, h: 0.55,
-  align: "center", valign: "top",
-  fontSize: 24, bold: true, color: "C00000", fontFace: FONT, margin: 0,
-});
-
-function eq(name, x, y) {
-  const m = JSON.parse(fs.readFileSync(EQ + name + ".png.json"));
-  s.addImage({ path: EQ + name + ".png", x, y, w: m.w_in, h: m.h_in });
-  return m;
+house(pres, s, 30);
+s.addShape(pres.shapes.RECTANGLE, Object.assign(box([0.058, 0.082, 0.948, 0.953]), { fill: { type: "none" }, line: { color: "9C1C1C", width: 1.5 } }));
+let b = box([0.305, 0.095, 0.79, 0.175]);
+s.addText("Radial Basis Function (RBF) Kernel", { x: b.x, y: b.y, w: b.w, h: b.h, align: "center", fontSize: 26, bold: true, color: "CC0000", fontFace: "Arial", margin: 0 });
+// main math panel
+s.addShape(pres.shapes.RECTANGLE, Object.assign(box([0.105, 0.253, 0.668, 0.893]), { fill: { color: "FFFFFF" }, line: { color: "2A2AE8", width: 1 } }));
+s.addShape(pres.shapes.ROUNDED_RECTANGLE, Object.assign(box([0.122, 0.283, 0.232, 0.353]), { fill: { color: "FCD7B0" }, line: { color: "FCD7B0" } }));
+function img(key, x, y) { const e = eq[key]; s.addImage({ path: A + `s030_${key}.png`, x, y, w: e.w_in, h: e.h_in }); }
+img("deriv", 0.118 * W, 0.290 * H);
+// row vector container
+s.addShape(pres.shapes.ROUNDED_RECTANGLE, Object.assign(box([0.12, 0.378, 0.487, 0.468]), { fill: { color: "E9F0FA" }, line: { color: "E9F0FA" } }));
+img("rowvec", 0.128 * W, 0.390 * H);
+function chip(bv, fill, text) {
+  s.addShape(pres.shapes.ROUNDED_RECTANGLE, Object.assign(box(bv), { fill: { color: fill }, line: { color: fill } }));
+  const bb = box(bv);
+  s.addText(text, { x: bb.x, y: bb.y, w: bb.w, h: bb.h, align: "center", valign: "middle", fontSize: 14, bold: true, italic: true, color: "C00000", fontFace: "Arial", margin: 0 });
 }
-
-// Left derivation panel (blue border)
-const lx = 0.29, ly = 1.24, lw = 8.84, lh = 6.0;
-s.addShape(pres.shapes.RECTANGLE, {
-  x: lx, y: ly, w: lw, h: lh,
-  fill: { color: "FFFFFF" }, line: { color: "20457A", width: 1.5 },
-});
-
-// E1 row with peach highlight behind the first term
-s.addShape(pres.shapes.RECTANGLE, {
-  x: 0.77, y: 1.54, w: 2.43, h: 0.71,
-  fill: { color: "FBE3C4" }, line: { color: "FBE3C4", width: 0.5 },
-});
-const e1a = eq("e1a", 0.85, 1.62);
-eq("e1b", 0.85 + e1a.w_in + 0.15, 1.64);
-
-// E2 row vector
-eq("e2", 0.83, 2.74);
-
-// phi(a)^T outlined label box under the row vector
-const paX = 1.93, paY = 4.09, paW = 1.47, paH = 0.75;
-s.addShape(pres.shapes.RECTANGLE, {
-  x: paX, y: paY, w: paW, h: paH,
-  fill: { color: "FFFFFF" }, line: { color: "333333", width: 1 },
-});
-const phia = JSON.parse(fs.readFileSync(EQ + "phia.png.json"));
-s.addImage({ path: EQ + "phia.png", x: paX + (paW - phia.w_in) / 2, y: paY + (paH - phia.h_in) / 2, w: phia.w_in, h: phia.h_in });
-
-// phi(b) outlined label box and e^{-b^2/2} label, left of the column bracket
-const pbX = 4.60, pbY = 4.50, pbW = 1.87, pbH = 0.83;
-s.addShape(pres.shapes.RECTANGLE, {
-  x: pbX, y: pbY, w: pbW, h: pbH,
-  fill: { color: "FFFFFF" }, line: { color: "333333", width: 1 },
-});
-const phib = JSON.parse(fs.readFileSync(EQ + "phib.png.json"));
-s.addImage({ path: EQ + "phib.png", x: pbX + (pbW - phib.w_in) / 2, y: pbY + (pbH - phib.h_in) / 2, w: phib.w_in, h: phib.h_in });
-eq("eb2", 6.33, 4.62);
-
-// tall column bracket of the b series
-eq("colb", 7.27, 2.74);
-
-// Right panel
-const rx = 9.01, ry = 1.80, rw = 4.16, rh = 5.44;
-s.addShape(pres.shapes.RECTANGLE, {
-  x: rx, y: ry, w: rw, h: rh,
-  fill: { color: "FFFFFF" }, line: { color: "20457A", width: 1.5 },
-});
-s.addText("RBF Kernel", {
-  x: rx + 0.32, y: ry + 0.26, w: rw - 0.64, h: 0.41,
-  align: "center", fontSize: 18, bold: true, color: "9E1B1B", fontFace: FONT, margin: 0,
-});
-const bx = 9.49, by = 5.29, bw = 3.28, bh = 0.94;
-s.addShape(pres.shapes.RECTANGLE, {
-  x: bx, y: by, w: bw, h: bh,
-  fill: { color: "FFFFFF" }, line: { color: "333333", width: 1 },
-});
-const rbf = JSON.parse(fs.readFileSync(EQ + "rbf.png.json"));
-s.addImage({ path: EQ + "rbf.png", x: bx + (bw - rbf.w_in) / 2, y: by + (bh - rbf.h_in) / 2, w: rbf.w_in, h: rbf.h_in });
-
-pres.writeFile({ fileName: path.join(NS, "recreated_pptx/slide_030_recreated.pptx") })
-  .then(() => console.log("wrote slide_030_recreated.pptx"))
-  .catch(e => console.error(e));
+chip([0.252, 0.505, 0.332, 0.575], "E6F2CF", "");
+img("phiat", 0.258 * W, 0.520 * H);
+// column vector container
+s.addShape(pres.shapes.ROUNDED_RECTANGLE, Object.assign(box([0.5, 0.345, 0.632, 0.865]), { fill: { color: "FFFBDD" }, line: { color: "FFFBDD" } }));
+s.addText("1\nb/\u221a1!\nb\u00b2/\u221a2!\nb\u00b3/\u221a3!\nb\u2074/\u221a4!\n...\n...\u221e", { x: 0.535 * W, y: 0.365 * H, w: 0.06 * W, h: 0.47 * H, align: "center", fontSize: 12, color: "000000", fontFace: "Arial", margin: 0 });
+chip([0.412, 0.613, 0.487, 0.688], "FCF6D5", "\u03c6(b)");
+let eb = box([0.508, 0.63, 0.563, 0.69]);
+img("bfactor", eb.x, eb.y);
+// right side
+let rb = box([0.690, 0.362, 0.900, 0.398]);
+s.addText("RBF Kernel", { x: rb.x, y: rb.y, w: rb.w, h: rb.h, fontSize: 26, bold: true, color: "CC0000", fontFace: "Arial", margin: 0 });
+s.addShape(pres.shapes.RECTANGLE, Object.assign(box([0.714, 0.432, 0.866, 0.532]), { fill: { color: "FFFFFF" }, line: { color: "2A2AE8", width: 1 } }));
+img("rbf", 0.722 * W, 0.445 * H);
+pres.writeFile({ fileName: OUT }).then(() => console.log("wrote", OUT)).catch(e => console.error(e));

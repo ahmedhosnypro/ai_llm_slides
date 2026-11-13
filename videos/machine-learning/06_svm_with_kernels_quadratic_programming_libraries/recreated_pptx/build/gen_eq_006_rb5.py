@@ -109,7 +109,7 @@ def main():
     render_grid("m3neg", [["-1", "0", "0"], ["0", "-1", "0"], ["0", "0", "-1"]],
                 lambda r, c, v: RED if v == "-1" else BLACK)
     render_grid("m6", [["-1", "0", "0"], ["0", "-1", "0"], ["0", "0", "-1"],
-                       ["0", "0", "1"], ["0", "1", "0"], ["1", "0", "0"]],
+                       ["1", "0", "0"], ["0", "1", "0"], ["0", "0", "1"]],
                 lambda r, c, v: (RED if v == "-1" else GREEN if v == "1" else GRAY),
                 row_h=0.15)
     render_grid("vx3", [["x_{1}"], ["x_{2}"], ["x_{3}"]], lambda r, c, v: RED, col_w=0.5)

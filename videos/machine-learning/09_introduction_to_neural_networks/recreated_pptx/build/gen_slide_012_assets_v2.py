@@ -44,7 +44,7 @@ PW, PH = 307, 262
 fig, ax = new_fig(PW, PH)
 OX, OY = 537, 109           # frame origin of the panel
 def f(x, y):               # frame px -> fig coords
-    return x - OX, PH - (y - OY)
+    return x - OX, y - OY
 
 ax.add_patch(Rectangle((0, 0), PW, PH, facecolor="white",
                        edgecolor=PANEL_PINK, lw=1, zorder=1))

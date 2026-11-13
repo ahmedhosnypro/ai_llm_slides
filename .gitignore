@@ -57,10 +57,7 @@ probe_final_out.txt
 # root-anchored: a worker opened a DB path relative to the repo root (2026-10-13,
 # 0-byte stray) — the real per-video DBs under videos/ are NOT matched by this rule
 /slides_progress.db
-*_recreated.pptx
 # course-level combined deck + large course-material PDF (keep on disk only)
-deep_learning_playlist_final.pptx*
-**/lecture4.pdf
 *.log
 
 # --- portability cargo (founder directive 2026-10-24) ---------------------------
@@ -76,8 +73,6 @@ deep_learning_playlist_final.pptx*
 # deck-03's single-version deliverables + its final merged deck (the close-out
 # cargo: 0-extraction byte merge consumes these). Intermediate attempt pptx stay
 # under qa/ and remain disk-only; other decks' finals were force-tracked earlier.
-!videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/*.pptx
 # qa/ attempt pptx are regenerable from the tracked build_attempt_*.js — evidence,
 # not deliverables (single-version rule). This rule follows the qa/ re-inclusion
 # above, so it re-catches them.
-videos/machine-learning/03_ridger_regression_gradient_descent/recreated_pptx/qa/**/*.pptx

@@ -34,7 +34,6 @@ def compose(name, segs, gap=6):
         json.dump(meta, fh)
     print(name, meta["w_in"], "x", meta["h_in"])
 
-# 2x2 matrix with brackets: rows via overset
 A = r"\left[\overset{a_{11}\;a_{12}}{a_{21}\;a_{22}}\right]"
 XV = r"\left(x_1\;x_2\right)"
 XC = r"\left[\overset{x_1}{x_2}\right]"
@@ -66,6 +65,7 @@ compose("c2a", [
     ("e", BLACK, r"\text{Coefficient of }x_1x_2"),
 ])
 compose("c2b", [
+    ("a", BLUE, r"\Rightarrow\;"),
     ("o", RED, r"a_{12}=a_{21}=\frac{1}{2}"),
     ("e", BLACK, r"\;\text{Coefficient of }x_1x_2"),
 ])
@@ -74,10 +74,11 @@ compose("c3", [
     ("a", BLUE, r"\;\Rightarrow\;"),
     ("e", BLACK, r"\text{Coefficient of }x_2^{2}"),
 ])
-compose("dmat", [
-    ("h1", BLUE, r"x_1\;\;x_2"),
-    ("m", BLUE, A),
-])
+compose("dmat", [("m", BLUE, A)])
+compose("result_top", [("m", BLUE,
+    r"\text{coef of }x_1^2\;\;0.5\,\text{coef of }x_1x_2")])
+compose("result_bottom", [("m", BLUE,
+    r"0.5\,\text{coef of }x_1x_2\;\;\text{coef of }x_2^2")])
 compose("darrow", [("a", BLUE, r"\Rightarrow")])
 compose("bx1", [("b", BLUE, r"\text{coef of }"), ("v", RED, r"x_1^{2}")])
 compose("bx2", [("b", BLUE, r"0.5\,\text{coef of }"), ("v", RED, r"x_1x_2")])

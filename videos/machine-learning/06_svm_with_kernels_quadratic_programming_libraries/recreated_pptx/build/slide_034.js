@@ -55,13 +55,13 @@ s.addShape(pres.shapes.RECTANGLE, {
 // 5. Color-coded Lagrangian (blue vars, red alphas/operators)
 s.addImage({
   path: EQ + "eq1_lagrangian_multi.png",
-  x: 2.0, y: creamY + 0.2, w: 5.40667, h: 0.995,
+  x: 2.0, y: creamY + 0.2, w: 3.75833, h: 0.65833,
 });
 
 // 6. W and b boxes sized to hug their content (judge fix #7)
 const formulaY = creamY + 1.3;
 // W box — hugs the W equation
-const wImgW = 2.01167, wImgH = 0.95;
+const wImgW = 1.40167, wImgH = 0.62667;
 const wBoxW = wImgW + 0.3;
 s.addShape(pres.shapes.RECTANGLE, {
   x: 1.8, y: formulaY, w: wBoxW, h: wImgH + 0.16,
@@ -69,7 +69,7 @@ s.addShape(pres.shapes.RECTANGLE, {
 });
 s.addImage({ path: EQ + "eq2_W_multi.png", x: 1.95, y: formulaY + 0.06, w: wImgW, h: wImgH });
 // b box — hugs the b equation
-const bImgW = 6.26, bImgH = 0.44667;
+const bImgW = 3.58333, bImgH = 0.425;
 s.addShape(pres.shapes.RECTANGLE, {
   x: 1.8 + wBoxW + 0.2, y: formulaY + 0.18, w: bImgW + 0.3, h: bImgH + 0.16,
   fill: { color: "FFFFFF" }, line: { color: "0000FF", width: 1 },
@@ -127,7 +127,7 @@ s.addText([
 });
 
 // 10. Mapping math line — red arrow (judge fix #13)
-s.addImage({ path: EQ + "eq4_mapping.png", x: 3.2, y: mapY + 0.32, w: 2.845, h: 0.45667 });
+s.addImage({ path: EQ + "eq4_mapping.png", x: 3.2, y: mapY + 0.32, w: 1.67167, h: 0.27833 });
 
 // 11. Kernelization row — inline kernel term (judge fix #11), full parenthetical (fix #1)
 const kernY = mapY + 0.9;

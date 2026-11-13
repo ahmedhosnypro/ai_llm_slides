@@ -106,10 +106,12 @@ for y in NODE_Y:
 for y in NODE_Y:
     node(COL3, y, GREEN, LIGHT_GREEN, GREEN)
 
-# fully-connected links col2 -> col3
+# fully-connected links col2 -> col3 (red arrowheads entering col3 nodes)
 for y2 in NODE_Y:
     for y3 in NODE_Y:
-        ax.plot([COL2 + R, COL3 - R], [y2, y3], color=LINK, linewidth=1.0)
+        ax.annotate("", xy=(COL3 - R, y3), xytext=(COL2 + R, y2),
+                    arrowprops=dict(arrowstyle="-|>", color=LINK, linewidth=1.0,
+                                    shrinkA=0, shrinkB=0))
 
 # w_ji labels on links
 WJI_X = X(337)
@@ -117,15 +119,16 @@ for wy in [Y(172), Y(205), Y(242)]:
     ax.text(WJI_X, wy, r"$w_{ji}$", fontsize=11, color=BLUE, ha="center",
             va="center", fontweight="bold", style="italic")
 
-# Net_j above columns 2 and 3
-for col in [COL2, COL3]:
-    ax.text(col, Y(146), r"$\mathit{Net}_j$", fontsize=11, color=RED,
+# Net_i above column 2, Net_j above column 3 (original labels)
+# Y(146) is the original baseline; keep labels fully inside the panel.
+for col, label in [(COL2, r"$\mathit{Net}_i$"), (COL3, r"$\mathit{Net}_j$")]:
+    ax.text(col, Y(146) - 0.06, label, fontsize=11, color=RED,
             ha="center", va="bottom", fontweight="bold", style="italic")
 
-# O_j beside every column-2 and column-3 node
-for col in [COL2, COL3]:
+# O_i beside every column-2 node, O_j beside every column-3 node
+for col, label in [(COL2, r"$\mathit{O}_i$"), (COL3, r"$\mathit{O}_j$")]:
     for y in NODE_Y:
-        ax.text(col + 0.36, y + 0.05, r"$\mathit{O}_j$", fontsize=10,
+        ax.text(col + 0.36, y + 0.05, label, fontsize=10,
                 color=RED, ha="left", va="center", fontweight="bold",
                 style="italic")
 

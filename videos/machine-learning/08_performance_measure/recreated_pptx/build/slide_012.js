@@ -49,7 +49,7 @@ s.addText("Total objects that should be retrieved (Actually Positive)", {
 
 // Meaning panel (pale yellow): orig panel x73-614 y202-268
 s.addShape(pptx.shapes.RECTANGLE, {
-  x: 1.01, y: 2.81, w: 7.51, h: 0.92,
+  x: 1.01, y: 2.81, w: 7.51, h: 0.80,
   fill: { color: "F7FBD6" }, line: { color: "D8D8B0", width: 0.75 },
 });
 s.addText("Meaning", {
@@ -68,14 +68,14 @@ s.addText([
 
 // Formula box: red rounded rect orig x70-303 y263-321; headroom added (judge MAJOR: numerator touched top edge)
 s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
-  x: 0.97, y: 3.60, w: 3.24, h: 0.92,
+  x: 0.97, y: 3.68, w: 3.24, h: 0.84,
   fill: { color: "FFFFFF" }, line: { color: RED, width: 2 }, round: 0.15,
 });
 s.addText("Recall =", {
-  x: 1.14, y: 3.86, w: 1.35, h: 0.40, valign: "middle",
+  x: 1.14, y: 3.90, w: 1.35, h: 0.40, valign: "middle",
   fontSize: 18, bold: true, color: TEXT, fontFace: FONT, margin: 0,
 });
-s.addImage({ path: A + "/eq_012_frac.png", x: 2.70, y: 3.72, w: 1.49, h: 0.69667 });
+s.addImage({ path: A + "/eq_012_frac.png", x: 2.70, y: 3.78, w: 1.49, h: 0.69667 });
 
 // Precision callout with thin border: orig text x340-500 y294-332
 s.addShape(pptx.shapes.RECTANGLE, {

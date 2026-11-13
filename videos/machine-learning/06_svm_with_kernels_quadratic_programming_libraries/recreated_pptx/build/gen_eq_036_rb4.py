@@ -55,13 +55,13 @@ def lag(tail):
         ["suma", BLACK, r"{\sum}_{i=1}^{N}\alpha_i"],
         ["minus", BLACK, "-"],
         ["half", BLACK, r"\frac{1}{2}"],
-        ["sumij", BLACK, r"{\sum}_{i=1}^{N}{\sum}_{j=1}^{N}\alpha_i\alpha_j y_i y_j"],
+        ["sumij", BLACK, r"{\sum}_{j=1}^{N}{\sum}_{i=1}^{N}\alpha_i\alpha_j y_i y_j"],
         ["tail", BLACK, tail],
     ]
 
 
 def w_form():
-    return [["w", BLUE, "w"], ["eq", BLACK, "="],
+    return [["w", BLUE, "W"], ["eq", BLACK, "="],
             ["sum", BLACK, r"{\sum}_{i=1}^{N}\alpha_i y_i X_i"]]
 
 
@@ -79,11 +79,12 @@ def b_form(t1, t2):
 # (name, segs, x_in, cy_in, target_w_in, max_h_in, highlights, center_x_in or None)
 JOBS = [
     ("s36rb4_lag_top", lag(r"X_i^T X_j"), 1.0664, 2.22, 10.2, 0.85, ["tail"], None),
-    ("s36rb4_w_top", w_form(), 1.0664, 2.95, 3.4, 0.60, [], None),
-    ("s36rb4_b_top", b_form(r"W^T X_i", r"W^T X_i"), 5.0654, 2.95, 7.1, 0.60, ["t1", "t2"], None),
+    ("s36rb4_w_top", w_form(), 1.0664, 2.90, 3.4, 0.45, [], None),
+    ("s36rb4_b_top", b_form(r"W^T X_i", r"W^T X_i"), 5.0654, 2.90, 7.1, 0.45, ["t1", "t2"], None),
     ("s36rb4_cls_top",
-     [["t", BLACK, r"\mathrm{Class\ of\ vector}\ Z \Rightarrow \mathrm{sign}(W^T Z + b)"]],
-     None, 3.33, 4.5, 0.28, [], 6.265),
+     [["pre", BLACK, r"\mathrm{Class\ of\ vector}\ Z \Rightarrow \mathrm{sign}("],
+      ["kern", BLACK, r"W^T Z"], ["post", BLACK, r" + b)"]],
+     None, 3.24, 4.5, 0.28, ["kern"], 6.265),
     ("s36rb4_kern", [["k", RED, r"K(a,b) = \left(a^T b\right)^2"]],
      None, 3.825, 1.9, 0.42, [], 8.6645),
     ("s36rb4_lag_bot", lag(r"[X_i^T X_j]^2"), 1.0664, 4.92, 10.2, 0.85, ["tail"], None),

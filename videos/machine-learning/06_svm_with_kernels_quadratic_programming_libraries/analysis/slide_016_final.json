@@ -1,0 +1,230 @@
+{
+  "slide_title": "Non-Linearly Separable Data",
+  "subtitle_or_header": "Slide 16",
+  "verbatim_text": {
+    "bullets": [
+      "Data is linearly separable",
+      "In the new representation"
+    ],
+    "labels": [
+      "16",
+      "Mapping  x  =>  phi(x)",
+      "Linear",
+      "Decision",
+      "Boundary",
+      "x^2",
+      "x"
+    ],
+    "equations": [
+      "x  =>  ( x ; x^2 )"
+    ]
+  },
+  "layout": {
+    "arrangement": "White canvas. Positions are normalized [left, top, right, bottom]. Outer red frame [0.063,0.089,0.942,0.920]. Centered title band [0.349,0.102,0.638,0.148]: 'Non-Linearly' and 'Data' red bold #C00000, 'Separable' blue bold underlined #0000FF. Yellow circle badge '16' top-right [0.894,0.104,0.936,0.178]. Inner white plot rectangle with red border [0.090,0.161,0.902,0.883]. Tan mapping callout [0.103,0.254,0.288,0.409] with 'Mapping  x  =>  phi(x)' and 'x  =>  ( x ; x^2 )'. Cream annotation callout [0.689,0.296,0.888,0.383] with two red italic lines. Red vertical axis at x=0.478 from y=0.237 to y=0.815 with up arrow and label 'x^2'; red horizontal axis at y=0.815 from x=0.111 to x=0.860 with right arrow and label 'x'. Blue horizontal decision boundary [0.208,0.576,0.754,0.580]. White blue-bordered three-line label 'Linear / Decision / Boundary' [0.704,0.444,0.805,0.552] with gray connector [0.714,0.520,0.754,0.580]. 24 scatter markers: 6 cyan filled, 5 red filled, 6 open blue, 7 open red on the x-axis.",
+    "regions": [
+      {
+        "name": "outer_frame",
+        "position": "[0.063,0.089,0.942,0.920]",
+        "content": "Red #8B0000 border rectangle, no fill"
+      },
+      {
+        "name": "title",
+        "position": "[0.349,0.102,0.638,0.148]",
+        "content": "Centered title 'Non-Linearly Separable Data'; 'Non-Linearly' and 'Data' #C00000 bold, 'Separable' #0000FF bold underlined"
+      },
+      {
+        "name": "badge",
+        "position": "[0.894,0.104,0.936,0.178]",
+        "content": "Yellow circle '16'; fill #FFFF99, border #8080FF, black text"
+      },
+      {
+        "name": "plot",
+        "position": "[0.090,0.161,0.902,0.883]",
+        "content": "White plot rectangle, red #8B0000 border; contains axes, boundary, connector, label, and scatter"
+      },
+      {
+        "name": "mapping_callout",
+        "position": "[0.103,0.254,0.288,0.409]",
+        "content": "Tan box fill #F2D8A7 border #8B4513; 'Mapping  x  =>  phi(x)' and 'x  =>  ( x ; x^2 )'"
+      },
+      {
+        "name": "annotation_callout",
+        "position": "[0.689,0.296,0.888,0.383]",
+        "content": "Cream box fill #FFF8E7 border #8B0000; 'Data is linearly separable' / 'In the new representation'"
+      },
+      {
+        "name": "axes",
+        "position": "vertical x=0.478 y0.237-0.815; horizontal y=0.815 x0.111-0.860",
+        "content": "Red #C00000 arrow axes; labels 'x^2' and 'x'"
+      },
+      {
+        "name": "decision_boundary",
+        "position": "[0.208,0.576,0.754,0.580]",
+        "content": "Blue #0000FF horizontal line"
+      },
+      {
+        "name": "boundary_label",
+        "position": "[0.704,0.444,0.805,0.552]",
+        "content": "White box, blue #0000FF border; 'Linear' / 'Decision' / 'Boundary'"
+      },
+      {
+        "name": "connector",
+        "position": "[0.714,0.520,0.754,0.580]",
+        "content": "Gray #7F7F7F connector line"
+      },
+      {
+        "name": "scatter",
+        "position": "centers listed in content",
+        "content": "24 markers ~7px diameter: 6 cyan filled #00E5EE; 5 red filled #FF0000; 6 open blue edge #5050FF white fill on y=0.815; 7 open red edge #FF0000 white fill on y=0.815 [?] approximate +/-3 px"
+      }
+    ],
+    "hierarchy": "Title and badge top, plot card dominates, callouts inside plot"
+  },
+  "visual_elements": [
+    {
+      "type": "rectangle",
+      "description": "Outer frame, border #8B0000, no fill",
+      "colors": [
+        "#8B0000"
+      ],
+      "position": "[0.063,0.089,0.942,0.920]"
+    },
+    {
+      "type": "rectangle",
+      "description": "Plot frame, border #8B0000, fill #FFFFFF",
+      "colors": [
+        "#8B0000",
+        "#FFFFFF"
+      ],
+      "position": "[0.090,0.161,0.902,0.883]"
+    },
+    {
+      "type": "circle",
+      "description": "Badge, fill #FFFF99, border #8080FF, text '16' black",
+      "colors": [
+        "#FFFF99",
+        "#8080FF",
+        "#000000"
+      ],
+      "position": "[0.894,0.104,0.936,0.178]"
+    },
+    {
+      "type": "callout",
+      "description": "Mapping callout, fill #F2D8A7, border #8B4513; 'Mapping' italic #3333CC, 'phi(x)' #C00000, vector 'x  =>  ( x ; x^2 )' black",
+      "colors": [
+        "#F2D8A7",
+        "#8B4513",
+        "#3333CC",
+        "#C00000",
+        "#000000"
+      ],
+      "position": "[0.103,0.254,0.288,0.409]"
+    },
+    {
+      "type": "callout",
+      "description": "Annotation, fill #FFF8E7, border #8B0000, two red italic lines 'Data is linearly separable' / 'In the new representation'",
+      "colors": [
+        "#FFF8E7",
+        "#8B0000",
+        "#C00000"
+      ],
+      "position": "[0.689,0.296,0.888,0.383]"
+    },
+    {
+      "type": "axes",
+      "description": "Vertical red arrow at x=0.478 from y=0.237 to y=0.815, arrowhead up, label 'x^2'; horizontal red arrow at y=0.815 from x=0.111 to x=0.860, arrowhead right, label 'x'",
+      "colors": [
+        "#C00000"
+      ],
+      "position": "vertical x=0.478 y0.237-0.815; horizontal y=0.815 x0.111-0.860"
+    },
+    {
+      "type": "line",
+      "description": "Horizontal decision boundary, #0000FF, no arrow",
+      "colors": [
+        "#0000FF"
+      ],
+      "position": "[0.208,0.576,0.754,0.580]"
+    },
+    {
+      "type": "label",
+      "description": "'Linear' / 'Decision' / 'Boundary' three centered italic blue lines, white fill, blue border",
+      "colors": [
+        "#0000FF",
+        "#FFFFFF"
+      ],
+      "position": "[0.704,0.444,0.805,0.552]"
+    },
+    {
+      "type": "line",
+      "description": "Gray connector from label to decision boundary",
+      "colors": [
+        "#7F7F7F"
+      ],
+      "position": "[0.714,0.520,0.754,0.580]"
+    },
+    {
+      "type": "scatter",
+      "description": "24 markers, diameter ~7px: 6 cyan filled #00E5EE at [0.327,0.237],[0.656,0.237],[0.356,0.394],[0.589,0.394],[0.385,0.526],[0.560,0.526]; 5 red filled #FF0000 at [0.415,0.596],[0.473,0.687],[0.502,0.737],[0.531,0.687],[0.560,0.596]; 6 blue/purple open circles edge #5050FF white fill on y=0.815 at x 0.298,0.327,0.356,0.590,0.619,0.648; 7 red open circles edge #FF0000 white fill on y=0.815 at x 0.385,0.415,0.444,0.473,0.502,0.531,0.560 [?] marker centers approximate to +/-3 px",
+      "colors": [
+        "#00E5EE",
+        "#FF0000",
+        "#5050FF",
+        "#FFFFFF"
+      ],
+      "position": "plot + x-axis; centers listed in description"
+    }
+  ],
+  "imagery": [],
+  "colors": {
+    "background": "#FFFFFF",
+    "frame": "#8B0000",
+    "title_red": "#C00000",
+    "title_accent": "#0000FF",
+    "mapping_fill": "#F2D8A7",
+    "mapping_border": "#8B4513",
+    "mapping_label_blue": "#3333CC",
+    "mapping_phi_red": "#C00000",
+    "annotation_fill": "#FFF8E7",
+    "annotation_border": "#8B0000",
+    "annotation_text": "#C00000",
+    "boundary": "#0000FF",
+    "label_fill": "#FFFFFF",
+    "label_border": "#0000FF",
+    "label_text": "#0000FF",
+    "connector": "#7F7F7F",
+    "axes": "#C00000",
+    "cyan_series": "#00E5EE",
+    "red_series": "#FF0000",
+    "open_blue_series": "#5050FF",
+    "open_red_series": "#FF0000",
+    "badge_fill": "#FFFF99",
+    "badge_border": "#8080FF",
+    "badge_text": "#000000"
+  },
+  "typography_notes": "Sans-serif Arial/Helvetica-like. Title ~24pt bold centered, 'Separable' bold blue underlined. Mapping text ~16-17pt left-aligned, 'Mapping' italic blue. Annotation ~15pt italic red left-aligned. Decision label ~15pt italic blue centered. Axis labels ~14-15pt red. Badge '16' ~14pt black centered. Point sizes and font family are approximate.",
+  "animation_state": "Static lecture slide; no animation specified",
+  "recreation_brief": "Use a white slide and treat all coordinates as normalized [left, top, right, bottom] relative to slide width/height.\n1. Background: full-slide white #FFFFFF.\n2. Outer frame: rectangle, no fill, border #8B0000, L=0.063, T=0.089, R=0.942, B=0.920.\n3. Title: centered text box L=0.349, T=0.102, R=0.638, B=0.148; text 'Non-Linearly Separable Data' ~24pt bold sans-serif; runs: 'Non-Linearly ' #C00000, 'Separable' #0000FF bold underlined, ' Data' #C00000.\n4. Badge: circle L=0.894, T=0.104, R=0.936, B=0.178; fill #FFFF99, border #8080FF; text '16' black centered ~14pt. This is the only slide-number element; do not add a separate 'Slide 16' text box.\n5. Plot frame: rectangle L=0.090, T=0.161, R=0.902, B=0.883; fill #FFFFFF, border #8B0000.\n6. Mapping callout: rectangle L=0.103, T=0.254, R=0.288, B=0.409; fill #F2D8A7, border #8B4513; left-aligned ~16-17pt; line 1 'Mapping  x  =>  phi(x)' with 'Mapping' italic #3333CC and 'phi(x)' #C00000, other characters black; line 2 'x  =>  ( x ; x^2 )' black.\n7. Annotation callout: rectangle L=0.689, T=0.296, R=0.888, B=0.383; fill #FFF8E7, border #8B0000; two left-aligned italic #C00000 lines ~15pt: 'Data is linearly separable' / 'In the new representation'.\n8. Vertical axis: red #C00000 arrow line at x=0.478 from y=0.237 to y=0.815, arrowhead up; label 'x^2' red ~14-15pt at the top arrowhead end.\n9. Horizontal axis: red #C00000 arrow line at y=0.815 from x=0.111 to x=0.860, arrowhead right; label 'x' red ~14-15pt at the right arrowhead end.\n10. Decision boundary: solid horizontal blue #0000FF line from (0.208,0.576) to (0.754,0.580), no arrow.\n11. Boundary label: rectangle L=0.704, T=0.444, R=0.805, B=0.552; fill #FFFFFF, border #0000FF; three centered italic blue #0000FF lines ~15pt: 'Linear' / 'Decision' / 'Boundary'.\n12. Connector: gray #7F7F7F line from (0.714,0.520) to (0.754,0.580).\n13. Scatter: 24 circle markers ~7px diameter. Filled cyan #00E5EE at (0.327,0.237), (0.656,0.237), (0.356,0.394), (0.589,0.394), (0.385,0.526), (0.560,0.526). Filled red #FF0000 at (0.415,0.596), (0.473,0.687), (0.502,0.737), (0.531,0.687), (0.560,0.596). Open blue/purple circles, edge #5050FF, fill #FFFFFF, on y=0.815 at x=0.298,0.327,0.356,0.590,0.619,0.648. Open red circles, edge #FF0000, fill #FFFFFF, on y=0.815 at x=0.385,0.415,0.444,0.473,0.502,0.531,0.560 [?] marker centers approximate to +/-3 px.\n14. Add no other text or objects.",
+  "validation": {
+    "verdict": "PASS_WITH_FIXES",
+    "fixes_applied": [
+      "Added missing layout.regions entries for axes, decision boundary, connector, and scatter so every visual element has a region.",
+      "Standardized all coordinates as normalized [left, top, right, bottom] and removed the unsupported 13.33x7.5in canvas assumption.",
+      "Corrected recreation colors and sizes: outer frame #8B0000, badge fill #FFFF99, badge text ~14pt.",
+      "Replaced vague positions such as 'plot center' and 'plot + x-axis' with exact axis ranges and all 24 scatter marker centers/counts.",
+      "Rewrote recreation_brief as a 14-step ordered placement checklist with exact text, positions, colors, and shapes.",
+      "Preserved the [?] uncertainty on approximate open-circle marker centers."
+    ],
+    "uncertain_items": [
+      "Open-circle marker centers are approximate to +/-3 px [?] as marked in the source.",
+      "Exact coordinates for axis labels 'x^2' and 'x' are not specified; the brief places them at the arrowhead ends.",
+      "Exact line weights and font family are not specified; typography_notes gives Arial/Helvetica-like and approximate point sizes.",
+      "Slide canvas size/aspect ratio is not specified; normalized coordinates are used instead of absolute inches."
+    ],
+    "recreatability_score_1_to_10": 9
+  },
+  "_meta": {
+    "validated_by": "validate_slides",
+    "validation_elapsed_s": 718.4
+  }
+}

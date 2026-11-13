@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import Rectangle, Polygon
 
-W, H = 5.0, 4.5
+W, H = 8.66, 5.25
 fig, ax = plt.subplots(figsize=(W, H), dpi=200)
 ax.set_xlim(-2, 5); ax.set_ylim(-2, 5)
 ax.axis("off")

@@ -86,4 +86,4 @@ gen("checks", 16, 4.690, 1.013,
      [r"x+3y=15\ \Rightarrow\ \geq15", r"2x+5y=25\ \Rightarrow\ \leq100",
       r"3x+4y=20\ \Rightarrow\ \leq80", r"x\geq0", r"y\geq0"]], 10)
 # Blue minimum-value line
-gen("finalv", 16, 4.690, 0.270, [f"{BLUE}:0.5x^{{2}}+3x+4y=20"], 0)
+gen("finalv", 16, 4.690, 0.270, [f"{RED}:0.5x^{{2}}+3x+4y=20"], 0)

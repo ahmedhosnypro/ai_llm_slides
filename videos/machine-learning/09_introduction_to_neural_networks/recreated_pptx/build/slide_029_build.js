@@ -84,13 +84,10 @@ s.addText([
 });
 
 // Dashed magenta arrow from the Input Sample box to the Target Label box.
+// Original has arrowheads at BOTH ends.
 s.addShape(pres.shapes.LINE, {
   x: 1.764, y: 1.52, w: 6.56, h: 0,
-  line: { color: MAGENTA_BORDER, width: 1.5, dashType: "dash" },
-});
-s.addShape(pres.shapes.RIGHT_ARROW, {
-  x: 8.34, y: 1.47, w: 0.16, h: 0.10,
-  fill: { color: MAGENTA_BORDER }, line: { color: MAGENTA_BORDER, width: 0.5 },
+  line: { color: MAGENTA_BORDER, width: 1.5, dashType: "dash", beginArrowType: "triangle", endArrowType: "triangle" },
 });
 
 // 5. Neural network panel: generated image, x0.931-7.569 y1.917-5.361 (6.638 x 3.444 in).
@@ -170,6 +167,10 @@ s.addImage({
   path: `${BUILD}/slide_029_arrow_blue.png`,
   x: 3.57, y: 5.33, w: 0.18, h: 0.21,
 });
+s.addText("i", {
+  x: 3.57, y: 5.33, w: 0.18, h: 0.21,
+  align: "center", valign: "middle", fontSize: 10, bold: true, color: BLUE, fontFace: FONT, margin: 0,
+});
 s.addShape(pres.shapes.RECTANGLE, {
   x: 3.07, y: 5.56, w: 1.21, h: 0.43,
   fill: { color: LIGHT_BLUE_BG }, line: { color: BLUE, width: 1.5 },
@@ -185,6 +186,10 @@ s.addText([
 s.addImage({
   path: `${BUILD}/slide_029_arrow_green.png`,
   x: 5.85, y: 5.28, w: 0.19, h: 0.26,
+});
+s.addText("j", {
+  x: 5.85, y: 5.28, w: 0.19, h: 0.26,
+  align: "center", valign: "middle", fontSize: 10, bold: true, color: DARK_GREEN, fontFace: FONT, margin: 0,
 });
 s.addShape(pres.shapes.RECTANGLE, {
   x: 5.33, y: 5.56, w: 1.25, h: 0.43,

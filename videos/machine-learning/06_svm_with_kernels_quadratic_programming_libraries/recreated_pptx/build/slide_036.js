@@ -54,8 +54,8 @@ function richLabel(b, runs) {
 
 // ---- panels, peach class strips INSIDE the panels, w/b row boxes (judge MAJORs/MINORs) ----
 box([0.06, 0.08, 0.32, 0.14], "FFFFFF", "3333CC", pres.shapes.ROUNDED_RECTANGLE);
-box([0.05, 0.23, 0.96, 0.46], "FFFFFF", "3333CC");
-box([0.05, 0.59, 0.96, 0.87], "FFFFFF", "3333CC");
+box([0.05, 0.23, 0.96, 0.46], "F0FFF0", "3333CC");
+box([0.05, 0.59, 0.96, 0.87], "F0FFF0", "3333CC");
 box([0.12, 0.405, 0.88, 0.45], "FFDAB9", "800000");
 box([0.12, 0.81, 0.88, 0.865], "FFDAB9", "800000");
 box([0.07, 0.345, 0.36, 0.425], "FFFFFF", "3333CC");

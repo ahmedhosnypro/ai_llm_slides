@@ -11,12 +11,13 @@ const RED = "CC0000", BLUE = "0000CC", PINK = "FBEEEE";
 const X = v => v * W, Y = v => v * H;
 const box = r => ({ x: X(r[0]), y: Y(r[1]), w: (r[2] - r[0]) * W, h: (r[3] - r[1]) * H });
 
-function eqImg(slide, name, r) {
+function eqImg(slide, name, r, align = "center") {
   const meta = JSON.parse(fs.readFileSync(path.join(EQ, name + ".json")));
   const b = box(r);
   slide.addImage({
     path: path.join(EQ, name + ".png"),
-    x: b.x + (b.w - meta.w_in) / 2, y: b.y + (b.h - meta.h_in) / 2,
+    x: align === "left" ? b.x : b.x + (b.w - meta.w_in) / 2,
+    y: b.y + (b.h - meta.h_in) / 2,
     w: meta.w_in, h: meta.h_in,
   });
 }
@@ -50,16 +51,16 @@ s.addShape(pres.shapes.RECTANGLE, {
 
 // Upper and lower pale-pink panels
 s.addShape(pres.shapes.RECTANGLE, {
-  ...box([0.071, 0.122, 0.849, 0.380]),
+  ...box([0.071, 0.122, 0.938, 0.380]),
   fill: { color: PINK }, line: { color: RED, width: 1.5 },
 });
 s.addShape(pres.shapes.RECTANGLE, {
-  ...box([0.073, 0.463, 0.880, 0.615]),
+  ...box([0.073, 0.463, 0.933, 0.615]),
   fill: { color: PINK }, line: { color: RED, width: 1.5 },
 });
 
 // Labels
-s.addText("Minimise:", {
+s.addText("Minimize:", {
   ...box([0.078, 0.143, 0.146, 0.172]),
   fontSize: 13, bold: true, italic: true, color: RED, fontFace: SERIF, margin: 0,
 });
@@ -67,16 +68,16 @@ s.addText("Subject to:", {
   ...box([0.076, 0.204, 0.146, 0.233]),
   fontSize: 13, bold: true, color: RED, fontFace: SERIF, margin: 0,
 });
-s.addText("Minimise:", {
+s.addText("Minimize:", {
   ...box([0.078, 0.500, 0.146, 0.530]),
   fontSize: 13, bold: true, italic: true, color: RED, fontFace: SERIF, margin: 0,
 });
 // Upper objective (red, two lines — no 1/2 factor in the original)
-eqImg(s, "r1", [0.154, 0.141, 0.833, 0.176]);
-eqImg(s, "r2", [0.167, 0.183, 0.833, 0.219]);
+eqImg(s, "r1", [0.167, 0.141, 0.833, 0.176], "left");
+eqImg(s, "r2", [0.167, 0.183, 0.833, 0.219], "left");
 
 // Three small white constraint boxes with red borders
-const cBoxes = [[0.079, 0.235, 0.120, 0.281], [0.079, 0.291, 0.120, 0.331], [0.079, 0.335, 0.120, 0.376]];
+const cBoxes = [[0.083, 0.235, 0.163, 0.281], [0.083, 0.291, 0.163, 0.331], [0.083, 0.335, 0.163, 0.376]];
 cBoxes.forEach(b => s.addShape(pres.shapes.RECTANGLE, {
   ...box(b), fill: { color: "FFFFFF" }, line: { color: RED, width: 1 },
 }));
@@ -102,8 +103,8 @@ eqImg(s, "e9b", [0.717, 0.380, 0.865, 0.454]);
 
 // Lower panel: green stacked 1/2 + red objective in two lines
 eqImg(s, "half", [0.149, 0.485, 0.165, 0.541]);
-eqImg(s, "r10", [0.172, 0.496, 0.870, 0.533]);
-eqImg(s, "r11", [0.175, 0.556, 0.870, 0.593]);
+eqImg(s, "r10", [0.175, 0.496, 0.870, 0.533], "left");
+eqImg(s, "r11", [0.175, 0.556, 0.870, 0.593], "left");
 
 // P matrix box (blue border) + matrix image
 s.addShape(pres.shapes.RECTANGLE, {

@@ -71,6 +71,14 @@ s.addText([
   x: 0.6, y: 0.28, w: 12.13, h: 0.62, align: "center", valign: "middle", margin: 0,
 });
 
+// ---- left: beige enclosing panel around the dataset region ------------------
+// PIL-measured on unique_slides/slide_002.jpg: tan border rect x68-556 y90-510
+// (border px ~(127,91,63) -> 7F5B3F, ~3px wide; fill ~(253,253,240) -> FDFDF0)
+s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
+  x: 68 / 72, y: 90 / 72, w: 489 / 72, h: 421 / 72, adj: 1000,
+  fill: { color: "FDFDF0" }, line: { color: "7F5B3F", width: 2 },
+});
+
 // ---- left: class headers + quotes -------------------------------------------
 s.addText("Positive Class", {
   x: 103 / 72, y: 99 / 72, w: 2.2, h: 0.24, align: "left", valign: "top",
@@ -96,18 +104,19 @@ s.addShape(pres.shapes.RECTANGLE, {
 });
 s.addImage({ path: PANE_POS, x: 84 / 72, y: 140 / 72, w: 151 / 72, h: 362 / 72 });
 
+// PIL: pink strip orig x237-288 (fill 251-285), white gap 289-333 before neg pane
 s.addShape(pres.shapes.RECTANGLE, {
-  x: 237 / 72, y: 138 / 72, w: 96 / 72, h: 365 / 72,
+  x: 237 / 72, y: 138 / 72, w: 51 / 72, h: 365 / 72,
   fill: { color: PINK_STRIP }, line: { color: RED, width: 1.25 },
 });
 s.addText("Label", {
-  x: 237 / 72, y: 156 / 72, w: 96 / 72, h: 0.24, align: "center", valign: "top",
+  x: 237 / 72, y: 156 / 72, w: 51 / 72, h: 0.24, align: "center", valign: "top",
   fontSize: 10, color: RED_DARK, fontFace: FONT, margin: 0,
 });
 const plusY = [185, 247, 309, 370, 432];
 for (const py of plusY) {
   s.addText("+1", {
-    x: 244 / 72, y: py / 72, w: 60 / 72, h: 20 / 72, align: "center", valign: "middle",
+    x: 242 / 72, y: py / 72, w: 40 / 72, h: 20 / 72, align: "center", valign: "middle",
     fontSize: 13, bold: true, color: RED_DARK, fontFace: FONT, margin: 0,
   });
 }
@@ -119,18 +128,19 @@ s.addShape(pres.shapes.RECTANGLE, {
 });
 s.addImage({ path: PANE_NEG, x: 336 / 72, y: 140 / 72, w: 144 / 72, h: 362 / 72 });
 
+// PIL: green strip orig x495-541 (fill 496-539), white gap 542-554 to panel border 555
 s.addShape(pres.shapes.RECTANGLE, {
-  x: 482 / 72, y: 138 / 72, w: 73 / 72, h: 365 / 72,
+  x: 495 / 72, y: 138 / 72, w: 46 / 72, h: 365 / 72,
   fill: { color: GREEN_STRIP }, line: { color: GREEN, width: 1.25 },
 });
 s.addText("Label", {
-  x: 482 / 72, y: 156 / 72, w: 73 / 72, h: 0.24, align: "center", valign: "top",
+  x: 495 / 72, y: 156 / 72, w: 46 / 72, h: 0.24, align: "center", valign: "top",
   fontSize: 10, color: GREEN_DARK, fontFace: FONT, margin: 0,
 });
 const zeroY = [185, 247, 309, 370, 432];
 for (const zy of zeroY) {
   s.addText("0", {
-    x: 490 / 72, y: zy / 72, w: 55 / 72, h: 20 / 72, align: "center", valign: "middle",
+    x: 498 / 72, y: zy / 72, w: 40 / 72, h: 20 / 72, align: "center", valign: "middle",
     fontSize: 13, bold: true, color: GREEN_DARK, fontFace: FONT, margin: 0,
   });
 }
@@ -162,7 +172,7 @@ s.addText("Training", {
 
 // ---- right: Training panel (orig x575-881 y205-320, tan) ----------------------
 s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
-  x: 575 / 72, y: 205 / 72, w: 306 / 72, h: 115 / 72,
+  x: 575 / 72, y: 205 / 72, w: 306 / 72, h: 115 / 72, adj: 1000,
   fill: { color: PANEL_TAN_FILL }, line: { color: PANEL_TAN_LINE, width: 1.5 },
 });
 // Input Sample capsule (fully left of Model box)
@@ -234,7 +244,7 @@ s.addText("Evaluation", {
 
 // ---- right: Evaluation panel (orig x575-881 y382-497) ------------------------
 s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
-  x: 575 / 72, y: 382 / 72, w: 306 / 72, h: 115 / 72,
+  x: 575 / 72, y: 382 / 72, w: 306 / 72, h: 115 / 72, adj: 1000,
   fill: { color: PANEL_TAN_FILL }, line: { color: PANEL_TAN_LINE, width: 1.5 },
 });
 // Test Sample capsule (fully left of Model box)

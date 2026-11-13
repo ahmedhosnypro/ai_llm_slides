@@ -12,6 +12,7 @@
 // addImage at px/600 in. slide_005_eq.png carries the decision equation
 // (red X inside d(X), red b*1 tail, bold underlined W) and slide_005_rules.png
 // carries the three blue class rules.
+const fs = require("fs");
 const pptxgen = require("pptxgenjs");
 
 const V = "/home/codespace/ai_llm_slides/videos/machine-learning/09_introduction_to_neural_networks";
@@ -67,26 +68,24 @@ panel(528, 88, 793, 246);
 panel(81, 254, 767, 342);
 panel(227, 349, 613, 508);
 
-// ------------------------------------------------------------- bracket strokes
-// The originals' matrix brackets are 2px vertical strokes with no arms.
-function vbar(x, y0, y1, w, color) {
-  s.addShape(pres.shapes.RECTANGLE, {
-    x: px(x), y: px(y0), w: px(w), h: px(y1 - y0),
-    fill: { color }, line: { type: "none" },
+// --------------------------------------------------------- curved delimiters
+// Mirrored 600-dpi Bézier PNGs reproduce the original's full-height parentheses.
+function delimiter(name, side, edge, top) {
+  const asset = JSON.parse(fs.readFileSync(B + `/slide_005_${name}_${side}.json`));
+  const x = side === "lp" ? px(edge) : px(edge) - asset.w_in;
+  s.addImage({
+    path: B + `/slide_005_${name}_${side}.png`,
+    x, y: px(top), w: asset.w_in, h: asset.h_in,
   });
 }
-// left panel: vector 1 brackets x116-117 / x139-140 (y121-218 / y116-223)
-vbar(116, 121, 218, 2, "000000");
-vbar(139, 116, 223, 2, "000000");
-// left panel: augmented vector brackets x248-250 / x272-273 (y107-231)
-vbar(248, 107, 231, 3, "000000");
-vbar(272, 107, 231, 2, "000000");
-// right panel: weight vector brackets x592-593 / x619-620 (y107-231)
-vbar(592, 107, 231, 2, "000000");
-vbar(619, 107, 231, 2, "000000");
-// banner: rule-group brackets x544-545 / x748-750 (y263-330), muted blue-grey
-vbar(544, 263, 330, 2, "9E9BB6");
-vbar(748, 263, 330, 3, "9E9BB6");
+delimiter("v1", "lp", 116, 110);
+delimiter("v1", "rp", 140, 110);
+delimiter("aug", "lp", 248, 98);
+delimiter("aug", "rp", 273, 98);
+delimiter("w", "lp", 591, 96);
+delimiter("w", "rp", 620, 96);
+delimiter("rules", "lp", 543, 261);
+delimiter("rules", "rp", 750, 261);
 
 // ----------------------------------------------------------- vector entries
 // A matrix entry is placed by its glyph baseline in the original frame.

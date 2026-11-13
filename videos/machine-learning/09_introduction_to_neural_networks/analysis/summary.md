@@ -11,7 +11,7 @@ Perceptron Algorithm | PASS_WITH_FIXES | 9 | 4 |
 | slide_006.jpg | Visualization of Single Layer Perceptron | PASS_WITH_FIXES | 9 | 6 |
 | slide_007.jpg | Multi-Class Classification using
 [ONE VS ALL] Bina | PASS_WITH_FIXES | 8 | 6 |
-| slide_008.jpg | Multi-Class Classification using [ONE VS ALL] Bina | PASS_WITH_FIXES | 7 | 9 |
+| slide_008.jpg | Multi-Class Classification using [ONE VS ALL] Bina | PASS_WITH_FIXES | 8 | 3 |
 | slide_009.jpg | Test Single Perceptron with [AND – OR – XOR] Logic | PASS_WITH_FIXES | 9 | 4 |
 | slide_010.jpg | Classification of “AND” Truth Table | PASS_WITH_FIXES | 9 | 4 |
 | slide_011.jpg | Classification of “AND” Truth Table | PASS_WITH_FIXES | 8 | 6 |

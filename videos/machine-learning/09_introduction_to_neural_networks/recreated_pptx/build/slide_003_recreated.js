@@ -50,9 +50,9 @@ s.addText(TITLE, {
 // fills span the full inner height, last panel ends at 95.6%.
 const boxX = 0.67;
 const boxW = 12.0;
-const topY = 1.15;          // just below the title box
-const gapY = 0.017 * 7.5;   // ~2px of 540 scaled
-const heights = [1.575, 0.781, 0.829, 1.005]; // px-ratio panel heights (of 540)
+const topY = 90 / 540 * 7.5;
+const gapY = 14 / 540 * 7.5;
+const heights = [113, 83, 89, 84].map((px) => px / 540 * 7.5);
 let boxY = topY;
 
 function panel(h) {
@@ -93,8 +93,8 @@ s.addImage({
   path: "assets/eq_error.png",
   x: boxX + 0.25,
   y: boxY + 0.40,
-  w: 11.5,
-  h: 11.5 / 17.6119,
+  w: 9.6,
+  h: 9.6 / (5037 / 366),
 });
 s.addText("X", {
   x: boxX + 11.05, y: boxY + 0.42, w: 1.0, h: 0.3,

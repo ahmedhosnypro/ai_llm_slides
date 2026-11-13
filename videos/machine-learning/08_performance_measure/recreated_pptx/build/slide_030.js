@@ -57,49 +57,50 @@ rect(11, 11, 949, 529, BG, RED, 1.5); // 0.15in,13.03in,7.2in in frame px
 rect(59, 48, 900, 516, "FFFFFF", RED, 1.5);
 
 // --- blue structural lines ---
-vline(342, 48, 516, DBLUE, 1.25);
+vline(344, 48, 516, DBLUE, 1.25);
 hline(59, 635, 162, DBLUE, 1.25);
 hline(59, 635, 288, DBLUE, 1.25);
 hline(59, 635, 401, DBLUE, 1.25);
 
 // --- confusion matrix panels ---
-function matrixPanel(py, pend, header, ty, rows, cells) {
+function matrixPanel(py, pend, header, ty, rows, cells, coY0, coY1) {
   // py..pend panel (red border, white fill); header tan box; grid at ty with 3 bands
-  rect(60, py, 341, pend, "FFFFFF", RED, 1.25);
-  rect(65, py + 2, 175, py + 30, TAN, RED, 1);
-  txt(65, py + 2, 175, py + 30, header, 13, RED, true);
+  rect(60, py, 340, pend, "FFFFFF", RED, 1.25);
+  rect(68, py + 7, 173, py + 30, TAN, RED, 1);
+  txt(68, py + 7, 173, py + 30, header, 13, RED, true);
   // "Predicted as" above the grid (red in the original)
   txt(116, ty - 14, 225, ty, "Predicted as", 8, RED, true);
-  // grid
+  // grid; red row lines run across the gutter (x80..225); red vline separates gutter
   rect(116, ty, 225, rows[2], "FFFFFF", RED, 1);
   vline(166, ty, rows[2], RED, 1);
-  hline(116, 225, rows[0], RED, 1);
-  hline(116, 225, rows[1], RED, 1);
+  vline(80, rows[0], rows[2], RED, 1);
+  hline(80, 225, rows[0], RED, 1);
+  hline(80, 225, rows[1], RED, 1);
   // column headers P N
   txt(116, ty, 166, rows[0], "P", 10, INK, true);
   txt(166, ty, 225, rows[0], "N", 10, INK, true);
-  // row labels via rotated "Actual" in the gutter + P/N row labels
-  txt(63, ty + 6, 111, ty + 65, "Actual", 8, INK, true, { rotate: 270 });
-  txt(60, rows[0], 116, rows[1], "P", 10, INK, true);
-  txt(60, rows[1], 116, rows[2], "N", 10, INK, true);
+  // gutter: rotated red "Actual" at x[63,75] + P/N row labels at x[82,114]
+  txt(65, ty + 18, 77, ty + 68, "Actual", 8, RED, true, { rotate: 270 });
+  txt(82, rows[0], 114, rows[1], "P", 10, INK, true);
+  txt(82, rows[1], 114, rows[2], "N", 10, INK, true);
   // cell values: [PP, PN, NP, NN] colors [cPP, cPN, cNP, cNN]
   const c = (cx0, cx1, cy0, cy1, t, col) => txt(cx0, cy0, cx1, cy1, t, 13, col, true);
   c(116, 166, rows[0], rows[1], cells[0][0], cells[0][1]);
   c(166, 225, rows[0], rows[1], cells[1][0], cells[1][1]);
   c(116, 166, rows[1], rows[2], cells[2][0], cells[2][1]);
   c(166, 225, rows[1], rows[2], cells[3][0], cells[3][1]);
-  // worked metrics right of the grid on a cream callout box: TPR red, FPR blue
-  rect(227, ty + 4, 338, ty + 52, CREAM, CREAM, 0);
+  // worked metrics on a red-bordered cream callout box: TPR red, FPR blue, 20px pitch
+  rect(226, coY0, 338, coY1, CREAM, RED, 1);
   s.addText([
     { text: cells[4], options: { fontSize: 10.5, color: RED, bold: true, fontFace: FONT, breakLine: true } },
     { text: cells[5], options: { fontSize: 10.5, color: FPRBLUE, bold: true, fontFace: FONT, breakLine: true } },
-  ], { x: P(230), y: P(ty + 12), w: P(339 - 230), h: P(36), margin: 0, lineSpacing: 15 });
+  ], { x: P(230), y: P(coY0 + 5), w: P(334 - 230), h: P(38), margin: 0, lineSpacing: 20 });
 }
 
 matrixPanel(48, 160, "Threshold=0.0", 92, [112, 136, 157],
-  [["5", RED], ["0", INK], ["6", RED], ["0", INK], "TPR=5/(5+0)=1", "FPR=6/(6+0)=1"]);
+  [["5", RED], ["0", INK], ["6", RED], ["0", INK], "TPR=5/(5+0)=1", "FPR=6/(6+0)=1"], 99, 147);
 matrixPanel(167, 284, "Threshold=0.1", 212, [234, 256, 279],
-  [["5", RED], ["0", INK], ["4", RED], ["2", INK], "TPR=5/(5+0)=1", "FPR=4/(4+2)=0.66"]);
+  [["5", RED], ["0", INK], ["4", RED], ["2", INK], "TPR=5/(5+0)=1", "FPR=4/(4+2)=0.66"], 218, 273);
 
 // --- ROC plot panel (generated image, whole panel baked) ---
 s.addImage({ path: ASSETS + "/roc_030_v4.png", x: P(641), y: P(81), w: P(254), h: P(306) });
@@ -118,26 +119,25 @@ rect(651, 465, 749, 504, "FFFFFF", RED, 1);
 s.addImage({ path: ASSETS + "/eq_030_v2_tpr.png", x: P(656), y: P(421), w: 728 / 600, h: 230 / 600 });
 s.addImage({ path: ASSETS + "/eq_030_v2_fpr.png", x: P(656), y: P(470), w: 725 / 600, h: 230 / 600 });
 
-// --- legend 2x2 key: x[784,880] y[440,500]; cols 784-811-850-880; rows 440-460-480-500 ---
-rect(784, 440, 880, 500, "FFFFFF", INK, 0.75);
-rect(811, 460, 850, 480, GREEN, INK, 0.75);   // TP
-rect(850, 480, 880, 500, GREEN, INK, 0.75);   // TN
-rect(850, 460, 880, 480, GREY, INK, 0.75);    // FN
-rect(811, 480, 850, 500, GREY, INK, 0.75);    // FP
-vline(811, 440, 500, INK, 0.75);
-vline(850, 440, 500, INK, 0.75);
-hline(784, 880, 460, INK, 0.75);
-hline(784, 880, 480, INK, 0.75);
-txt(784, 425, 880, 440, "Predicted as", 7, RED, true);
-txt(811, 440, 850, 460, "P", 7, INK, true);
-txt(850, 440, 880, 460, "N", 7, INK, true);
-txt(784, 460, 811, 500, "Actual", 7, INK, true, { rotate: 270 });
-txt(784, 460, 811, 480, "P", 8, INK, true);
-txt(784, 480, 811, 500, "N", 8, INK, true);
-txt(811, 460, 850, 480, "TP", 8, INK, true);
-txt(850, 460, 880, 480, "FN", 8, INK, true);
-txt(811, 480, 850, 500, "FP", 8, INK, true);
-txt(850, 480, 880, 500, "TN", 8, INK, true);
+// --- legend 2x2 key: red lines, x[778,885] y[438,500]; cols 778-803-845-885; rows 438-460-480-500 ---
+rect(778, 438, 885, 500, "FFFFFF", RED, 1);
+rect(805, 460, 845, 480, GREEN, RED, 0.75);   // TP
+rect(845, 480, 885, 500, GREEN, RED, 0.75);   // TN
+vline(803, 438, 500, RED, 0.75);
+vline(845, 438, 500, RED, 0.75);
+hline(778, 885, 460, RED, 0.75);
+hline(778, 885, 480, RED, 0.75);
+txt(778, 425, 885, 438, "Predicted as", 7, RED, true);
+txt(812, 440, 836, 460, "P", 8, INK, true);
+txt(854, 440, 876, 460, "N", 8, INK, true);
+txt(779, 460, 795, 480, "P", 8, INK, true);
+txt(779, 480, 795, 500, "N", 8, INK, true);
+txt(805, 460, 845, 480, "TP", 8, INK, true);
+txt(845, 460, 885, 480, "FN", 8, INK, true);
+txt(805, 480, 845, 500, "FP", 8, INK, true);
+txt(845, 480, 885, 500, "TN", 8, INK, true);
+// rotated red "Actual" left of the legend, clear of the P/N row labels
+txt(754, 455, 766, 500, "Actual", 8, RED, true, { rotate: 270 });
 
 // --- HOUSE badge + title LAST ---
 s.addShape(pptx.shapes.OVAL, {

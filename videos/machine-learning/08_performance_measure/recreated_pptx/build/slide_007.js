@@ -85,13 +85,12 @@ function rtext(parts, x0, y0, x1, y1, size, opts) {
 }
 
 // ---------- gray definition band ----------
-rect(72, 113, 823, 173, GRAY_BOX, null);
+rect(72, 113, 656, 173, GRAY_BOX, null);
 rtext([
   ["Correctly Classified (as ", BLACK],
   ["Positive", RED],
   [")", BLACK],
 ], 70, 118, 640, 140, 16, { align: "center" });
-hline(80, 641, 141, RED, 3);
 rtext([
   ["Total Classified as ", BLACK],
   ["Positive", RED],
@@ -124,7 +123,7 @@ text("TP + FP", 218, 298, 310, 319, 18, BLACK);
 // ---------- worked example box (pale cyan) ----------
 rect(336, 288, 508, 340, PALE_C, "9DC3E6", 1);
 text("Precision= 18/(18+10)", 342, 293, 502, 313, 12, BLACK, { align: "left" });
-text("=64.3%", 392, 316, 462, 336, 12, BLACK, { align: "left" });
+rtext([["=", BLACK], ["64.3", BLUE], ["%", BLACK]], 392, 316, 470, 336, 12, { align: "left" });
 
 // ---------- callout notes (folded corner, two-line text, up pointer to the fraction) ----------
 function calloutNote(x0, y0, x1, y1, line1, fill) {
@@ -181,9 +180,11 @@ s.addText([
 // ---------- confusion matrix helper ----------
 // Red grid lines are drawn INSET from the blue panel border (measured: they stop
 // ~20px short of the right border and do not touch the blue frame).
+const CM_BORDER = "6E68AC";  // measured purple panel border in the original (~#6E68AC), not blue
+  const OVAL_HL = "984F7D";    // measured plum hand-drawn highlight ovals (~#984F7D)
 function matrix(o) {
   const fP = o.fsPred, fH = o.fsHdr, fC = o.fsCell;
-  rect(o.x0, o.y0, o.x1, o.y1, "FFFFFF", BLUE, 1.5);
+  rect(o.x0, o.y0, o.x1, o.y1, "FFFFFF", CM_BORDER, 1.5);
   text("Predicted as", o.hdrX0, o.y0 + 9, o.hdrX1, o.hy0, fP, RED);
   text("P", o.cellX0, o.hy0, o.splitX, o.hy1, fH, BLACK);
   text("N", o.splitX, o.hy0, o.cellX1, o.hy1, fH, BLACK);
@@ -239,14 +240,14 @@ matrix({
 text("P", 676, 234, 704, 250, 13, BLACK);
 text("N", 676, 262, 704, 278, 13, BLACK);
 actualLabel(692, 256);
-// hand-drawn blue/purple circles around 18 and 10 (the predicted-positive column)
+// hand-drawn plum circles around 18 and 10 (the predicted-positive column)
 s.addShape(pptx.shapes.OVAL, {
   x: px(742), y: px(216), w: px(62), h: px(40),
-  fill: { type: "none" }, line: { color: BLUE, width: 2 },
+  fill: { type: "none" }, line: { color: OVAL_HL, width: 2 },
 });
 s.addShape(pptx.shapes.OVAL, {
   x: px(742), y: px(248), w: px(62), h: px(40),
-  fill: { type: "none" }, line: { color: BLUE, width: 2 },
+  fill: { type: "none" }, line: { color: OVAL_HL, width: 2 },
 });
 
 // ---------- Positive/Negative tree panel (red border) ----------

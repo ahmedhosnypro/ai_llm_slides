@@ -84,6 +84,9 @@ def check(label, expected, got, tol=TOL):
     if expected is None or got is None:
         ok = False
         delta = "-"
+    elif isinstance(expected, str) and isinstance(got, str):
+        ok = got == expected
+        delta = "-"
     elif isinstance(expected, (tuple, list)) and isinstance(got, (tuple, list)):
         deltas = [g - e for e, g in zip(expected, got)]
         ok = all(abs(d) <= tol for d in deltas)

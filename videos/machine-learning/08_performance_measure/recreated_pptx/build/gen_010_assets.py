@@ -52,6 +52,27 @@ def compose_runs(runs, fontsize, out, gap_px=6):
             "dpi": DPI, "fontsize_pt": fontsize}
 
 
+def compose_fraction(num, den, out):
+    """Stack the colored mathtext runs around a horizontal fraction bar."""
+    width = max(num.shape[1], den.shape[1])
+    gap = 24
+    bar_h = 12
+    height = num.shape[0] + gap + bar_h + gap + den.shape[0]
+    canvas = np.zeros((height, width, 4), dtype=np.uint8)
+    x_num = (width - num.shape[1]) // 2
+    x_den = (width - den.shape[1]) // 2
+    canvas[:num.shape[0], x_num:x_num + num.shape[1]] = num
+    bar_y = num.shape[0] + gap
+    canvas[bar_y:bar_y + bar_h, :, :3] = 0
+    canvas[bar_y:bar_y + bar_h, :, 3] = 255
+    y_den = bar_y + bar_h + gap
+    canvas[y_den:y_den + den.shape[0], x_den:x_den + den.shape[1]] = den
+    Image.fromarray(canvas).save(out)
+    return {"path": out, "w_px": int(width), "h_px": int(height),
+            "w_in": round(width / DPI, 5), "h_in": round(height / DPI, 5),
+            "dpi": DPI, "fontsize_pt": 22}
+
+
 def brace(out, w_in=2.99, h_in=0.20):
     fig = plt.figure(figsize=(w_in, h_in), dpi=DPI)
     ax = fig.add_axes([0, 0, 1, 1])
@@ -122,10 +143,15 @@ def plane(out, w_in, h_in, marking):
 
 
 manifest = {}
-manifest["frac_num"] = compose_runs([("T", BLACK), ("P", RED)], 26,
+manifest["frac_num"] = compose_runs([("\\mathbf{T}", BLACK), ("\\mathbf{P}", RED)], 22,
                                     os.path.join(OUT, "eq_010_frac_num.png"))
-manifest["frac_den"] = compose_runs([("T", BLACK), ("P", RED), ("+", BLACK), ("F", RED), ("N", RED)], 26,
+manifest["frac_den"] = compose_runs([("\\mathbf{T}", BLACK), ("\\mathbf{P}", RED), ("+", BLACK), ("\\mathbf{F}", RED), ("\\mathbf{N}", RED)], 22,
                                     os.path.join(OUT, "eq_010_frac_den.png"), gap_px=10)
+with Image.open(os.path.join(OUT, "eq_010_frac_num.png")) as im:
+    num = np.asarray(im)
+with Image.open(os.path.join(OUT, "eq_010_frac_den.png")) as im:
+    den = np.asarray(im)
+manifest["fraction"] = compose_fraction(num, den, os.path.join(OUT, "eq_010_fraction.png"))
 manifest["brace"] = brace(os.path.join(OUT, "brace_010.png"))
 manifest["plane_pos"] = plane(os.path.join(OUT, "plane_010_pos.png"), 1.10, 0.55, "skull")
 manifest["plane_neg"] = plane(os.path.join(OUT, "plane_010_neg.png"), 1.15, 0.55, "windows")

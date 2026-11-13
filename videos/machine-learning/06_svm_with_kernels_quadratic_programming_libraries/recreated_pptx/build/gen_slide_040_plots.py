@@ -7,14 +7,15 @@ Colors per spec section 4, mapped to ground-truth labels in order (cycled
 when the spec lists fewer colors than clusters).
 """
 import gzip
+import os
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from PIL import Image
 
-DATA = "/tmp/ds040"
 OUT = "/home/codespace/ai_llm_slides/videos/machine-learning/06_svm_with_kernels_quadratic_programming_libraries/recreated_pptx/build"
+DATA = os.path.join(OUT, "data_040")
 
 DPI = 600
 # spec VISUAL_ELEMENTS plot regions [x0,y0,x1,y1] normalized -> inches
@@ -41,10 +42,14 @@ for panel, (reg, colors) in PANELS.items():
     w_in, h_in = (x1 - x0) * 13.33, (y1 - y0) * 7.5
     xy, lab = load(SRC[panel])
     fig = plt.figure(figsize=(w_in, h_in), dpi=DPI)
-    ax = fig.add_axes([0, 0, 1, 1])
+    ax = fig.add_axes([0.12, 0.12, 0.86, 0.86])
     ax.set_xlim(xy[:, 0].min(), xy[:, 0].max())
     ax.set_ylim(xy[:, 1].min(), xy[:, 1].max())
-    ax.axis("off")
+    ax.tick_params(labelsize=6, colors="#000000", length=2)
+    ax.grid(True, color="#D9D9D9", linewidth=0.4)
+    for spine in ax.spines.values():
+        spine.set_color("#808080")
+        spine.set_linewidth(0.6)
     for cls in sorted(set(lab)):
         m = lab == cls
         ax.scatter(xy[m, 0], xy[m, 1], s=10, linewidths=0,

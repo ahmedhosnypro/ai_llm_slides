@@ -37,13 +37,13 @@ def compose(name, segs, fs=17, gap=4):
 a = lambda i: rf"\alpha_{{{i}}}"
 # Red objective lines (judge: original renders objectives red), 2-line layout
 compose("r1", [(RED, r"[+1" + a(1) + r"^{2}+2" + a(1) + a(2) + r"-5.5" + a(1) + a(3)
-    + r"-6" + a(1) + a(4) + r"+2" + a(2) + a(4) + r"\text{[?]}+4" + a(2) + r"^{2}"
+    + r"-6" + a(1) + a(4) + r"+2" + a(2) + a(1) + r"+4" + a(2) + r"^{2}"
     + r"-11" + a(2) + a(3) + r"-12" + a(2) + a(4))], fs=17)
 compose("r2", [(RED, r"-5.5" + a(3) + a(1) + r"-11" + a(3) + a(2) + r"+32.5" + a(3) + r"^{2}"
     + r"+36" + a(3) + a(4) + r"-6" + a(4) + a(1) + r"-12" + a(4) + a(2) + r"+36" + a(4)
     + a(3) + r"+40" + a(4) + r"^{2}]-[" + a(1) + r"+" + a(2) + r"+" + a(3) + r"+" + a(4) + r"]")], fs=17)
 compose("r10", [(RED, r"[+2" + a(1) + r"^{2}+4" + a(1) + a(2) + r"-11" + a(1) + a(3)
-    + r"-12" + a(1) + a(4) + r"+4" + a(1) + a(4) + r"\text{[?]}+8" + a(2) + r"^{2}"
+    + r"-12" + a(1) + a(4) + r"+4" + a(2) + a(1) + r"+8" + a(2) + r"^{2}"
     + r"-22" + a(2) + a(3) + r"-24" + a(2) + a(4))], fs=17)
 compose("r11", [(RED, r"-11" + a(3) + a(1) + r"-22" + a(3) + a(2) + r"+65" + a(3) + r"^{2}"
     + r"+72" + a(3) + a(4) + r"-12" + a(4) + a(1) + r"-24" + a(4) + a(2) + r"+72" + a(4)
@@ -52,7 +52,7 @@ compose("r11", [(RED, r"-11" + a(3) + a(1) + r"-22" + a(3) + a(2) + r"+65" + a(3
 compose("e9b", [(GREEN, r"\frac{1}{2}"), (BLUE, r"[X^{T}PX]+"), (RED, r"q^{T}"), (BLUE, r"X")], fs=20, gap=6)
 # Larger, clearer bound/positivity rows
 compose("e6b", [(RED, a(1) + r"\leq1,\;" + a(2) + r"\leq1,\;" + a(3) + r"\leq1,\;" + a(4) + r"\leq1")], fs=17)
-compose("e8b", [(RED, a(1) + r">0,\;" + a(2) + r">0,\;" + a(3) + r">0,\;" + a(4) + r">0")], fs=17)
+compose("e8b", [(RED, a(1) + r"\geq0,\;" + a(2) + r"\geq0,\;" + a(3) + r"\geq0,\;" + a(4) + r"\geq0")], fs=17)
 # Sidecar for the proper matplotlib-drawn matrix
 im = Image.open(f"{OUT}/p_matrix.png")
 meta = {"path": f"{OUT}/p_matrix.png", "w_px": im.size[0], "h_px": im.size[1],

@@ -52,10 +52,18 @@ ax.set_axisbelow(True)
 for (box, color) in clusters:
     x0, y0 = to_data(box[0], box[3])  # bottom-left in data coords
     x1, y1 = to_data(box[2], box[1])  # top-right
-    n = 20
+    n = 350
     xs = rng.uniform(min(x0, x1), max(x0, x1), n)
     ys = rng.uniform(min(y0, y1), max(y0, y1), n)
-    ax.scatter(xs, ys, s=150, c=color, marker="o", edgecolors="none", linewidths=0, zorder=3)
+    ax.scatter(xs, ys, s=18, c=color, marker="o", edgecolors="none", linewidths=0, zorder=3)
+
+xx = np.linspace(0, 40, 180)
+yy = np.linspace(-10, 40, 180)
+XX, YY = np.meshgrid(xx, yy)
+centers = [(10, 22), (22, 23), (33, 22), (7, 12), (18, 8), (6, 3), (33, 7)]
+d2 = np.min(np.stack([(XX-x)**2 + (YY-y)**2 for x, y in centers]), axis=0)
+bg = np.where(d2 < 30, "#D9D9D9", "#F4A6A6")
+ax.scatter(XX.ravel(), YY.ravel(), s=3, c=bg.ravel(), marker="s", linewidths=0, zorder=1)
 
 out = BASE + "/slide_043_graph.png"
 fig.savefig(out, dpi=DPI, facecolor="white", pad_inches=0)

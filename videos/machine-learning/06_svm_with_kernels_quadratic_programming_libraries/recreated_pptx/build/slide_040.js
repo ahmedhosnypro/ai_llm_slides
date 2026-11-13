@@ -32,8 +32,8 @@ s.addText(String(NUM), {
   align: "center", valign: "middle",
   fontSize: 18, bold: true, color: "333333", fontFace: FONT, margin: 0,
 });
-s.addText("Check class of each background point in the following datasets", {
-  x: 0.6, y: 0.28, w: 12.13, h: 0.55,
+s.addText("Check class of each background point\nin the following datasets", {
+  x: 0.6, y: 0.28, w: 12.13, h: 0.85,
   align: "center", valign: "top",
   fontSize: 24, bold: true, color: "C00000", fontFace: FONT, margin: 0,
 });
@@ -60,6 +60,8 @@ pres.writeFile({ fileName: require("path").join("/home/codespace/ai_llm_slides/v
 // scatter panel: 600-dpi PNG placed at exact pixel size w=px/600, h=py/600 (never rescaled)
 function plot(r, png, pw, ph) {
   const b = box(r);
+  s.addShape(pres.shapes.RECTANGLE, { x: b.x, y: b.y, w: b.w, h: b.h,
+    fill: { color: "FFFFFF" }, line: { color: "C00000", width: 1 } });
   s.addImage({ path: path.join(BUILD, png), x: b.x, y: b.y, w: pw / 600, h: ph / 600 });
 }
 
@@ -79,13 +81,7 @@ plot([0.11, 0.62, 0.31, 0.88], "slide_040_graph_Pathbased.png", 1599, 1170);
 plot([0.39, 0.62, 0.58, 0.88], "slide_040_graph_Flame.png", 1519, 1170);
 plot([0.67, 0.62, 0.86, 0.88], "slide_040_graph_Jain.png", 1519, 1170);
 
-// ---- cursor arrow at [0.56,0.56,0.58,0.58], black (spec section 4; brief item 16) ----
-const a = box([0.56, 0.56, 0.58, 0.58]);
-s.addShape(pres.shapes.RIGHT_ARROW, {
-  x: a.x, y: a.y, w: a.w, h: a.h,
-  fill: { color: "000000" }, line: { color: "000000", width: 0.5 },
-  rotate: -45,
-});
+// Capture cursor omitted per judge ground rules.
 
 pres.writeFile({ fileName: path.join(NS, "recreated_pptx/slide_040_recreated.pptx") })
   .then(() => console.log("wrote slide_040_recreated.pptx"))

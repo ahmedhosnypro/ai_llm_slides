@@ -79,19 +79,24 @@ const place = (file, box, align) => {
   const y = box.y + (box.h - h) / 2;
   return { x, y, w, h };
 };
-const imgLagL = place("rb4_lag_lower.png", lagLbox, "right");
-const imgB_L = place("rb4_b_lower.png", bB_L, "center");
+const imgLagL = place("fix_lag_lower.png", lagLbox, "right");
+const imgB_L = place("fix_b_lower.png", bB_L, "center");
 const oval = (x, y, w, h) => s.addShape(pres.shapes.OVAL, {
   x, y, w, h, fill: { color: "A6F3A6" }, line: { color: "2E9E2E", width: 1.25 },
 });
-// around x_i^T x_j tail of the lower Lagrangian (spec oval [0.401,0.617,0.454,0.683] in lag box)
-oval(imgLagL.x + 0.851 * imgLagL.w, imgLagL.y + 0.077 * imgLagL.h, 0.149 * imgLagL.w, 0.846 * imgLagL.h);
-// around the two W^T X_i terms in the lower b (spec ovals in b box [0.347,0.676,0.736,0.763])
-oval(imgB_L.x + 0.447 * imgB_L.w, imgB_L.y + 0.276 * imgB_L.h, 0.142 * imgB_L.w, 0.598 * imgB_L.h);
-oval(imgB_L.x + 0.823 * imgB_L.w, imgB_L.y + 0.276 * imgB_L.h, 0.144 * imgB_L.w, 0.598 * imgB_L.h);
+const segOval = (r, info, label) => {
+  const g = info.segments[label];
+  oval(r.x + g[0] / 600 * r.w / (info.w_px / 600) - 0.03,
+       r.y + g[2] / 600 * r.h / (info.h_px / 600) - 0.02,
+       (g[1] - g[0]) / 600 * r.w / (info.w_px / 600) + 0.06,
+       (g[3] - g[2]) / 600 * r.h / (info.h_px / 600) + 0.04);
+};
+segOval(imgLagL, imgInfo("fix_lag_lower.png"), "tail");
+segOval(imgB_L, imgInfo("fix_b_lower.png"), "t1");
+segOval(imgB_L, imgInfo("fix_b_lower.png"), "t2");
 // around W^T Z in the lower callout
 {
-  const o = RM(0.388, 0.778, 0.431, 0.826);
+  const o = RM(0.365, 0.778, 0.405, 0.826);
   oval(o.x, o.y, o.w, o.h);
 }
 
@@ -100,12 +105,12 @@ const img = (f, box, align) => {
   const r = place(f, box, align);
   s.addImage({ path: path.join(EQ, f), x: r.x, y: r.y, w: r.w, h: r.h });
 };
-img("rb4_lag_upper.png", lagU, "left");
-img("rb4_lag_lower.png", lagLbox, "right");
-img("rb4_w.png", wB_U, "center");
-img("rb4_w.png", wB_L, "center");
-img("rb4_b_upper.png", bB_U, "center");
-img("rb4_b_lower.png", bB_L, "center");
+img("fix_lag_upper.png", lagU, "left");
+img("fix_lag_lower.png", lagLbox, "right");
+img("fix_w.png", wB_U, "center");
+img("fix_w.png", wB_L, "center");
+img("fix_b_upper.png", bB_U, "center");
+img("fix_b_lower.png", bB_L, "center");
 img("rb4_ident.png", idb, "center");
 // Middle panel texts (font sizes scaled by SY ~1.23)
 const tU = (runs, box) => s.addText(runs, {
@@ -132,7 +137,7 @@ tU([
   { text: " Instead of using ", options: { fontSize: 15, color: "000000", fontFace: FONT } },
   { text: "φ(X", options: { fontSize: 15, color: "FF0000", fontFace: MATH } },
   { text: "i", options: { fontSize: 15, color: "FF0000", fontFace: MATH, subscript: true } },
-  { text: "), φ(X", options: { fontSize: 15, color: "FF0000", fontFace: MATH } },
+  { text: ") φ(X", options: { fontSize: 15, color: "FF0000", fontFace: MATH } },
   { text: "j", options: { fontSize: 15, color: "FF0000", fontFace: MATH, subscript: true } },
   { text: ") use ", options: { fontSize: 15, color: "000000", fontFace: FONT } },
   { text: "K(X", options: { fontSize: 15, bold: true, color: "FF0000", fontFace: MATH } },
@@ -140,7 +145,6 @@ tU([
   { text: "T", options: { fontSize: 15, bold: true, color: "FF0000", fontFace: MATH, superscript: true } },
   { text: ", X", options: { fontSize: 15, bold: true, color: "FF0000", fontFace: MATH } },
   { text: "j", options: { fontSize: 15, bold: true, color: "FF0000", fontFace: MATH, subscript: true } },
-  { text: "T", options: { fontSize: 15, bold: true, color: "FF0000", fontFace: MATH, superscript: true } },
   { text: ")", options: { fontSize: 15, bold: true, color: "FF0000", fontFace: MATH } },
   { text: " (Where ", options: { fontSize: 15, italic: true, color: "0000FF", fontFace: FONT } },
   { text: "K", options: { fontSize: 15, italic: true, color: "0000FF", fontFace: MATH } },
@@ -160,7 +164,7 @@ callout(cU, [
   { text: " Z + b)", options: { fontSize: 16, color: "0000FF", fontFace: MATH } },
 ]);
 callout(cL, [
-  { text: "Class of vector ", options: { fontSize: 16, color: "FF0000", fontFace: MATH } },
+  { text: "Class of vector ", options: { fontSize: 16, color: "000000", fontFace: MATH } },
   { text: "Z", options: { fontSize: 16, bold: true, color: "FF0000", fontFace: MATH } },
   { text: " ⇒ ", options: { fontSize: 16, color: "FF0000", fontFace: MATH } },
   { text: "sign(", options: { fontSize: 16, italic: true, color: "000000", fontFace: MATH } },

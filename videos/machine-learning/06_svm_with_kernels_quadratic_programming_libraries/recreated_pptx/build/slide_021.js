@@ -96,8 +96,7 @@ ab2(slide, [0.594, 0.102, 0.673, 0.157], 20);
 
 // ---- upper-middle row ----
 box(slide, [0.078, 0.230, 0.164, 0.337], "F8F8E8", "B8B88A", 1);
-vecAB(slide, [0.080, 0.248, 0.162, 0.288], 1, 1, 19);
-vecAB(slide, [0.080, 0.288, 0.162, 0.328], 2, 2, 19);
+addEq(slide, "j2_ab", [0.080, 0.248, 0.162, 0.328]);
 arrow(slide, [0.169, 0.263, 0.502, 0.306], RED);
 box(slide, [0.504, 0.180, 0.823, 0.409], "FFFFFF", BLUE, 2, null, false);
 txt(slide, "Normal Model", [0.617, 0.215, 0.709, 0.246], 13, RED, { bold: true, italic: true });
@@ -107,19 +106,9 @@ runs(slide, [
   { t: "T", o: { color: RED, superscript: true } },
   { t: " ", o: {} },
   { t: "b", o: { color: BLUE } },
-], [0.619, 0.256, 0.709, 0.287], 13);
+], [0.619, 0.250, 0.709, 0.275], 13);
 box(slide, [0.611, 0.280, 0.700, 0.394], "E6F0FB", "A8C8E8", 1);
-runs(slide, [
-  { t: "a", o: { color: RED } }, { t: "1", o: { color: RED, subscript: true } },
-  { t: " ", o: {} },
-  { t: "a", o: { color: RED } }, { t: "2", o: { color: RED, subscript: true } },
-  { t: "  |  ", o: { color: DARK, italic: false } },
-  { t: "b", o: { color: BLUE } }, { t: "1", o: { color: BLUE, subscript: true } },
-], [0.613, 0.300, 0.698, 0.340], 18);
-runs(slide, [
-  { t: "      |  ", o: { color: DARK, italic: false } },
-  { t: "b", o: { color: BLUE } }, { t: "2", o: { color: BLUE, subscript: true } },
-], [0.613, 0.340, 0.698, 0.380], 18);
+addEq(slide, "j2_normal", [0.613, 0.292, 0.698, 0.386]);
 arrow(slide, [0.819, 0.291, 0.854, 0.326], RED);
 
 // ---- mid band ----
@@ -128,8 +117,7 @@ txt(slide, "Map Input data from 2-D to 3-D", [0.103, 0.387, 0.455, 0.446], 14, B
 
 // ---- lower half, left flow ----
 box(slide, [0.077, 0.617, 0.164, 0.719], "F8F8E8", "B8B88A", 1);
-vecAB(slide, [0.079, 0.632, 0.162, 0.672], 1, 1, 19);
-vecAB(slide, [0.079, 0.672, 0.162, 0.712], 2, 2, 19);
+addEq(slide, "j2_ab", [0.079, 0.632, 0.162, 0.712]);
 arrow(slide, [0.170, 0.650, 0.202, 0.681], RED);
 box(slide, [0.233, 0.544, 0.310, 0.617], "F8F8E8", "B8B88A", 1);
 ab2(slide, [0.233, 0.544, 0.310, 0.617], 17);
@@ -141,9 +129,9 @@ txt(slide, "Higher\nComputational\nComplexity !!!", [0.212, 0.696, 0.338, 0.844]
 
 // ---- lower half, center -> Kernelized Model panel ----
 box(slide, [0.383, 0.533, 0.518, 0.806], "F9E9F9", "CC88CC", 1, null, false);
-addEq(slide, "fix2_pink", [0.383, 0.533, 0.518, 0.806]);
+addEq(slide, "j2_pink", [0.383, 0.533, 0.518, 0.806]);
 arrow(slide, [0.347, 0.650, 0.381, 0.681], RED);
-arrow(slide, [0.520, 0.650, 0.552, 0.681], RED);
+arrow(slide, [0.520, 0.650, 0.536, 0.681], RED);
 box(slide, [0.537, 0.483, 0.819, 0.861], "FFFFFF", "008000", 2, null, false);
 txt(slide, "Kernelized Model", [0.607, 0.502, 0.722, 0.533], 13, RED, { bold: true, italic: true });
 runs(slide, [
@@ -154,10 +142,9 @@ runs(slide, [
   { t: "v", o: { color: BLUE } },
 ], [0.617, 0.541, 0.698, 0.572], 13);
 box(slide, [0.552, 0.589, 0.761, 0.856], "E9F7E3", "90C090", 1);
-addEq(slide, "fix2_kernel", [0.552, 0.589, 0.761, 0.856]);
-// lavender complexity box: below the green panel, clear of panel and frame border
-box(slide, [0.610, 0.866, 0.750, 0.972], "EADCF8", "B090D8", 1, null, false);
-txt(slide, "Higher\nComputational\nComplexity !!!", [0.610, 0.866, 0.750, 0.972], 11, BLUE, { bold: true, italic: true });
+addEq(slide, "j2_kernel", [0.552, 0.589, 0.761, 0.856]);
+box(slide, [0.610, 0.778, 0.750, 0.856], "EADCF8", "B090D8", 1, null, false);
+txt(slide, "Higher\nComputational\nComplexity !!!", [0.610, 0.778, 0.750, 0.856], 11, BLUE, { bold: true, italic: true });
 arrow(slide, [0.821, 0.657, 0.855, 0.691], RED);
 
 pres.writeFile({ fileName: path.join(NS, "recreated_pptx/slide_021_recreated.pptx") });

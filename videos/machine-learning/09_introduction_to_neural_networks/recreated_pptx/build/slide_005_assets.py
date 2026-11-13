@@ -26,11 +26,12 @@ BLUE = "#0000FF"
 EQ_X0, EQ_X1 = 84, 526
 EQ_Y0, EQ_Y1 = 279, 310          # y grows downward in the original frame
 
-# body: everything up to the red "b*1" tail, rendered as one mathtext string so
-# the operator/subscript kerning comes from the font rather than from hand-placed
-# pieces (mathtext's "=" is wider than Times' and drifts when piece-placed).
-EQ_BODY = (88, 300, BLACK, 20,
-           r"$\mathrm{d}(X) = \mathbf{W}^{\mathrm{T}} \mathbf{X} = "
+# The X inside d(X) is red in the original; the remaining body keeps mathtext
+# kerning, with the red tail and implication arrow placed at measured baselines.
+EQ_PREFIX = (88, 300, BLACK, 20, r"$\mathrm{d}($")
+EQ_RED_X = (108, 300, RED, 20, r"$X$")
+EQ_BODY = (122, 300, BLACK, 20,
+           r"$) = \mathbf{W}^{\mathrm{T}} \mathbf{X} = "
            r"w_1x_1 + w_2x_2 + ..... + w_nx_n + $")
 # superscript T sits on its own baseline
 EQ_SUP = (175, 290, BLACK, 13, r"$\mathrm{T}$")
@@ -73,14 +74,14 @@ def _measure_string(txt, size):
 
 def render_equation():
     fig, ax = make_axes(EQ_X0, EQ_X1, EQ_Y0, EQ_Y1)
-    for spec in (EQ_BODY, EQ_SUP, EQ_TAIL, EQ_ARROW):
+    for spec in (EQ_PREFIX, EQ_RED_X, EQ_BODY, EQ_SUP, EQ_TAIL, EQ_ARROW):
         x, base, colour, size, txt = spec
         ax.text(x, base, txt, ha="left", va="baseline", fontsize=size,
                 color=colour)
     # underline under the bold W: it starts after "d(X) = "
     prefix_w = _measure_string(r"$\mathrm{d}(X) = $", 20)
     w_w = _measure_string(r"$\mathbf{W}$", 20)
-    xw0 = EQ_BODY[0] + prefix_w
+    xw0 = EQ_PREFIX[0] + prefix_w
     ax.plot([xw0, xw0 + w_w], [301, 301], color=BLACK, linewidth=0.8,
             solid_capstyle="butt")
     out = os.path.join(BUILD, "slide_005_eq.png")

@@ -12,7 +12,7 @@ const FONT = "Arial";
 const W = 13.33, H = 7.5;
 const NS = "/home/codespace/ai_llm_slides/videos/machine-learning/06_svm_with_kernels_quadratic_programming_libraries";
 const EQ = path.join(NS, "recreated_pptx", "build", "eq_005");
-const MAN = JSON.parse(fs.readFileSync(path.join(EQ, "w3_manifest.json"), "utf8"));
+const MAN = JSON.parse(fs.readFileSync(path.join(EQ, "w4_manifest.json"), "utf8"));
 
 const pres = new pptxgen();
 pres.layout = "LAYOUT_WIDE";
@@ -53,10 +53,10 @@ function img(name) {
 }
 
 // ---- R2 top equation block (spec sections 2/8: E1, E2, E3) ----
-["w3_e1", "w3_e2", "w3_e3"].forEach(img);
+["w4_e1", "w4_e2", "w4_e3"].forEach(img);
 
 // ---- R3 coefficient-definition list (six implication lines) ----
-["w3_d1", "w3_d2", "w3_d3", "w3_d4", "w3_d5", "w3_d6"].forEach(img);
+["w4_d1", "w4_d2", "w4_d3", "w4_d4", "w4_d5", "w4_d6"].forEach(img);
 
 // ---- R4 right annotation "Three Variables Example" (italic, right-aligned) ----
 s.addText("Three Variables Example", {
@@ -66,7 +66,7 @@ s.addText("Three Variables Example", {
 });
 // ---- R5 bottom diagram ----
 // left matrix header + rows
-["w3_hdr", "w3_m1", "w3_m2", "w3_m3"].forEach(img);
+["w4_hdr", "w4_m1", "w4_m2", "w4_m3"].forEach(img);
 // cell highlights: blue outline around a_11/a_12 row, red outlines around a_22 and a_32
 s.addShape(pres.shapes.RECTANGLE, {
   x: 0.115 * W, y: 0.755 * H, w: (0.230 - 0.115) * W, h: (0.795 - 0.755) * H,
@@ -101,6 +101,6 @@ for (let r = 0; r < 3; r++) {
     });
   }
 }
-["w3_b1", "w3_b2", "w3_b3", "w3_b4", "w3_b5", "w3_b6", "w3_b7", "w3_b8", "w3_b9"].forEach(img);
+["w4_b1", "w4_b2", "w4_b3", "w4_b4", "w4_b5", "w4_b6", "w4_b7", "w4_b8", "w4_b9"].forEach(img);
 
 pres.writeFile({ fileName: path.join(NS, "recreated_pptx", "slide_005_recreated.pptx") });

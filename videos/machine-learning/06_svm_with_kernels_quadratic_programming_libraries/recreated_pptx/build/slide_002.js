@@ -28,32 +28,22 @@ s.addText(String(NUM), {
   fontSize: 18, bold: true, color: "333333", fontFace: FONT, margin: 0,
 });
 
-// House title box: "How to call" (red, ~26pt, centered)
 s.addText("How to call", {
-  x: 0.6, y: 0.28, w: 12.13, h: 0.55,
-  align: "center", valign: "top",
+  x: 0.6, y: 2.75, w: 12.13, h: 0.55,
+  align: "center", valign: "middle",
   fontSize: 26, bold: true, color: "C00000", fontFace: FONT, margin: 0,
 });
 
-// Line 2: [20.63,48.15,79.38,55.56]% -> x=2.750 y=3.611 w=7.831 h=0.556
 s.addText("Python Quadratic Programming Libraries", {
-  x: 2.750, y: 3.611, w: 7.831, h: 0.556,
-  align: "center", valign: "middle",
+  x: 1.5, y: 3.611, w: 10.33, h: 0.556,
+  align: "center", valign: "middle", fit: "shrink",
   fontSize: 30, bold: true, color: "C00000", fontFace: FONT, margin: 0,
 });
 
-// Line 3: [32.29,56.67,67.71,63.00]% -> x=4.304 y=4.250 w=4.722 h=0.475
-s.addText("CVXOPT, QuadProg", {
+s.addText("CVXOPT , QuadProg", {
   x: 4.304, y: 4.250, w: 4.722, h: 0.475,
   align: "center", valign: "middle",
   fontSize: 30, bold: true, color: "3333CC", fontFace: FONT, margin: 0,
-});
-
-// Mouse-pointer arrow: [40.21,54.81,43.13,59.26]% -> x=5.360 y=4.111 w=0.389 h=0.334
-s.addShape(pres.shapes.ISOSCELES_TRIANGLE, {
-  x: 5.360, y: 4.111, w: 0.389, h: 0.334,
-  fill: { color: "000000" }, line: { color: "000000", width: 0.75 },
-  rotate: 315,
 });
 
 pres.writeFile({ fileName: OUT })

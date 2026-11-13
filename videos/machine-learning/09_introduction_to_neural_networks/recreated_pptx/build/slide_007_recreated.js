@@ -34,16 +34,13 @@ s.addText(String(NUM), {
   fontSize: 18, bold: true, color: "333333", fontFace: FONT, margin: 0,
 });
 
-// 3. Title box - TWO LINES per judge (original has break after "Classification")
-// Line 1: "Multi-Class Classification" (red)
-// Line 2: "using [ONE VS ALL] Binary Classifiers" (red, with [ONE VS ALL] in blue)
-s.addText("Multi-Class Classification", {
+// 3. Title box - original breaks after "using"
+s.addText("Multi-Class Classification using", {
   x: 0.6, y: 0.28, w: 12.13, h: 0.55,
   align: "center", valign: "top",
   fontSize: 28, bold: true, color: TITLE_RED, fontFace: FONT, margin: 0,
 });
 s.addText([
-  { text: "using ", options: { color: TITLE_RED, fontSize: 28, bold: true, fontFace: FONT } },
   { text: "[ONE VS ALL] ", options: { color: TITLE_BLUE, fontSize: 28, bold: true, fontFace: FONT } },
   { text: "Binary Classifiers", options: { color: TITLE_RED, fontSize: 28, bold: true, fontFace: FONT } },
 ], {
@@ -52,10 +49,10 @@ s.addText([
 });
 
 // 4. Plot frame position: x=2.4, y=1.65, w=8.66, h=5.25
-const PLOT_X = 2.4;
-const PLOT_Y = 1.65;
-const PLOT_W = 8.66;
-const PLOT_H = 5.25;
+const PLOT_X = 166 / 960 * 13.33;
+const PLOT_Y = 119 / 540 * 7.5;
+const PLOT_W = (798 - 166) / 960 * 13.33;
+const PLOT_H = (507 - 119) / 540 * 7.5;
 
 // White frame background with thin red border
 s.addShape(pres.shapes.RECTANGLE, {

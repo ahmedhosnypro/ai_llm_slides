@@ -9,6 +9,12 @@ const NUM = 11;
 const TITLE = "Training Vectors: SVM QP Formulation";
 const FONT = "Arial";
 const W = 13.33, H = 7.5;
+const MAN = require(EQ + "manifest.json");
+function img(name, x, y, maxw, maxh) {
+  const m = MAN[name];
+  const scale = Math.min(1, maxw / m.w_in, maxh / m.h_in);
+  s.addImage({ path: EQ + name, x, y, w: m.w_in * scale, h: m.h_in * scale });
+}
 
 const pres = new pptxgen();
 pres.layout = "LAYOUT_WIDE";
@@ -44,7 +50,7 @@ s.addText("Training Vectors", {
   x: 0.5, y: 1.02, w: 4.0, h: 0.28,
   fontSize: 14, bold: true, color: "C00000", fontFace: FONT, margin: 0,
 });
-s.addImage({ path: EQ + "eq_vecs.png", x: 0.5, y: 1.32, w: 2.81167, h: 1.495 });
+img("eq_vecs.png", 0.5, 1.32, 4.0, 1.45);
 
 // Top-middle: Test Vectors box
 s.addShape(pres.shapes.RECTANGLE, {
@@ -55,7 +61,7 @@ s.addText("Test Vectors", {
   x: 5.0, y: 1.02, w: 2.4, h: 0.28,
   fontSize: 14, bold: true, color: "C00000", fontFace: FONT, margin: 0,
 });
-s.addImage({ path: EQ + "eq_test.png", x: 5.15, y: 1.45, w: 1.76167, h: 0.94667 });
+img("eq_test.png", 5.15, 1.38, 2.2, 1.35);
 // Top-right: "Use C=1" inside a red rectangular callout box
 s.addShape(pres.shapes.RECTANGLE, {
   x: 7.7, y: 0.95, w: 2.3, h: 0.5,
@@ -72,14 +78,14 @@ s.addShape(pres.shapes.RECTANGLE, {
   x: 7.7, y: 1.55, w: 5.28, h: 1.3,
   fill: { color: "FFFFFF" }, line: { color: "C00000", width: 1.5 },
 });
-s.addImage({ path: EQ + "eq_cons.png", x: 7.85, y: 1.68, w: 2.45333, h: 0.84833 });
+img("eq_cons.png", 7.85, 1.68, 4.9, 1.0);
 
 // Middle band: Maximize => Minimize dual (blue outline)
 s.addShape(pres.shapes.RECTANGLE, {
   x: 0.35, y: 3.0, w: 12.63, h: 0.72,
   fill: { color: "FFFFFF" }, line: { color: "1F4E79", width: 1.5 },
 });
-s.addImage({ path: EQ + "eq_dual.png", x: 0.55, y: 3.06, w: 8.08333, h: 0.59667 });
+img("eq_dual.png", 0.55, 3.06, 12.1, 0.60);
 
 // Diagonal watermark (large grey, as in original)
 s.addText("From Previous Lecture", {
@@ -87,10 +93,10 @@ s.addText("From Previous Lecture", {
   fontSize: 20, bold: true, italic: true, color: "808080", fontFace: FONT, margin: 0,
 });
 // Matrices row: X, G = X^T X, Y = (y_i y_j), Y∘G
-s.addImage({ path: EQ + "eq_X.png", x: 0.5, y: 4.25, w: 1.86333, h: 1.245 });
-s.addImage({ path: EQ + "eq_G.png", x: 3.0, y: 4.2, w: 2.33167, h: 1.32167 });
-s.addImage({ path: EQ + "eq_Y.png", x: 6.2, y: 4.22, w: 2.43833, h: 1.295 });
-s.addImage({ path: EQ + "eq_YG.png", x: 9.2, y: 4.2, w: 1.81167, h: 1.325 });
+img("eq_X.png", 0.5, 4.05, 2.7, 1.45);
+img("eq_G.png", 3.35, 4.05, 2.8, 1.45);
+img("eq_Y.png", 6.35, 4.05, 2.8, 1.45);
+img("eq_YG.png", 9.35, 4.05, 3.2, 1.45);
 
 // Lower red panel: quadratic objective + constraints
 s.addShape(pres.shapes.RECTANGLE, {
@@ -102,16 +108,15 @@ s.addText("Minimize:", {
   fontSize: 13, bold: true, color: "C00000", fontFace: FONT, margin: 0,
 });
 // objective across three aligned lines, leading "[ +1a1^2+2a1a2-5.5a1a3-6a1a4..."
-s.addImage({ path: EQ + "eq_obj.png", x: 1.85, y: 5.64, w: 7.385, h: 1.02 });
-// four separate 0 <= alpha_i <= C rows, right side of panel
-s.addImage({ path: EQ + "eq_bounds.png", x: 9.6, y: 5.64, w: 1.055, h: 0.645 });
+img("eq_obj.png", 1.85, 5.64, 7.4, 1.02);
+img("eq_bounds.png", 9.6, 5.64, 2.8, 0.85);
 
 // "Subject to:" on its own line
 s.addText("Subject to:", {
   x: 0.5, y: 6.78, w: 1.3, h: 0.3,
   fontSize: 12, bold: true, color: "C00000", fontFace: FONT, margin: 0,
 });
-s.addImage({ path: EQ + "eq_subj.png", x: 1.85, y: 6.72, w: 7.39333, h: 0.565 });
+img("eq_subj.png", 1.85, 6.72, 10.5, 0.565);
 
 // "Quadratic Equation in α with constraints" bottom-RIGHT of the panel
 s.addText("Quadratic Equation in \u03b1 with constraints", {

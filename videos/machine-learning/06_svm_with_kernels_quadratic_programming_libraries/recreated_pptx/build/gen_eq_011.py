@@ -14,7 +14,7 @@ os.makedirs(OUT, exist_ok=True)
 
 
 def mat(rows):
-    return r"\left[\;\substack{" + r"\\".join(rows) + r"}\;\right]"
+    return rows
 
 
 ASSETS = [
@@ -25,14 +25,13 @@ ASSETS = [
         r"x_4=(8,4),\ y_4=-1",
     ]),
     ("eq_test.png", 13, 2.4, 1.0, [
-        r"\substack{T_1\quad T_2\quad T_3\\ 2\quad 4\quad 6\\ 3\quad 5\quad 2}",
+        r"T_1\quad T_2\quad T_3",
+        r"2\quad 4\quad 6",
+        r"3\quad 5\quad 2",
     ]),
     ("eq_cons.png", 12, 5.0, 1.15, [
         r"\alpha_1 y_1+\alpha_2 y_2+\alpha_3 y_3+\alpha_4 y_4=0",
-        r"0\leq\alpha_1\leq C",
-        r"0\leq\alpha_2\leq C",
-        r"0\leq\alpha_3\leq C",
-        r"0\leq\alpha_4\leq C,",
+        r"0\leq\alpha_1\leq C\quad 0\leq\alpha_2\leq C\quad 0\leq\alpha_3\leq C\quad 0\leq\alpha_4\leq C,",
     ]),
     ("eq_dual.png", 15, 12.3, 0.62, [
         r"\text{Maximize }\mathcal{L}_p(\alpha)=\sum_{i=1}^{4}\alpha_i-\frac{1}{2}\sum_{i=1}^{4}\sum_{j=1}^{4}\alpha_i\alpha_j y_i y_j x_i^T x_j\ \Rightarrow\ "
@@ -87,6 +86,7 @@ ASSETS = [
 
 manifest = {}
 for name, size, maxw, maxh, rows in ASSETS:
+    rows = [line for row in rows for line in (row if isinstance(row, list) else [row])]
     canvases = []
     for r in rows:
         c, pt = fit_row(r, size, maxw, maxh / len(rows))

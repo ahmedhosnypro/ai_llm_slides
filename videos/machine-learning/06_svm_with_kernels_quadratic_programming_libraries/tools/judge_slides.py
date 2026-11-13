@@ -8,7 +8,7 @@ GATE = "/home/codespace/ai_llm_slides/scripts/16_vision_gate.sh"
 OUTDIR = os.path.join(BASE, "qa", "rejudge2")
 LEDGER = os.path.join(OUTDIR, "ledger.jsonl")
 os.makedirs(OUTDIR, exist_ok=True)
-BASE_RULES = open(os.path.join(BASE, "judge_prompt_active.txt")).read().strip()
+BASE_RULES = open(os.path.join(OUTDIR, "judge_prompt_frozen.txt")).read().strip()
 PARALLEL = int(os.environ.get("JUDGE_PARALLEL", "1"))
 ATTEMPTS = int(os.environ.get("JUDGE_ATTEMPTS", "3"))
 WALL = int(os.environ.get("JUDGE_WALL", "2400"))
@@ -60,7 +60,7 @@ def run(num, attempts=None):
         attempts = ATTEMPTS
     ss = f"{num:03d}"
     paths = {"pptx": os.path.join(BASE, "recreated_pptx", f"slide_{ss}_recreated.pptx"),
-             "orig": os.path.join(BASE, "unique_slides", f"slide_{ss}.jpg"),
+             "orig": os.path.join(OUTDIR, "orig_png", f"slide_{ss}.png"),
              "render": os.path.join(BASE, "recreated_pptx", "renders", f"slide_{ss}_recreated-1.png")}
     for tag, p in paths.items():
         if not os.path.exists(p):
@@ -69,7 +69,7 @@ def run(num, attempts=None):
             return
     m = md5(paths["pptx"])
     prior = ledger_rows().get(ss)
-    if prior and prior.get("pptx_md5") == m and prior.get("verdict") in ("PASS", "FAIL"):
+    if prior and prior.get("pptx_md5") == m and prior.get("verdict") == "PASS":
         print(f"[{ss}] already {prior['verdict']} at this md5 — skip", flush=True)
         return
     prompt = CONTEXT.format(ss=ss, num=num) + "\n" + BASE_RULES

@@ -8,7 +8,7 @@ const NS = "/home/codespace/ai_llm_slides/videos/machine-learning/06_svm_with_ke
 const EQ = path.join(NS, "recreated_pptx", "build", "eq_006") + "/";
 const W = 13.33, H = 7.5;
 const SANS = "Arial";
-const RED = "C00000", LABEL_RED = "FF0000", GREEN = "008000", ORANGE = "FF8C00", BLACK = "000000";
+const RED = "C00000", LABEL_RED = "FF0000", GREEN = "008000", ORANGE = "C00000", BLACK = "000000";
 
 const pres = new pptxgen();
 pres.layout = "LAYOUT_WIDE";
@@ -65,8 +65,8 @@ function gxChip(x0n, y0n, x1n, y1n) {
   });
   imgC("gxleh", x + w / 2, y + h / 2);
 }
-gxChip(0.672, 0.246, 0.790, 0.285);
-gxChip(0.675, 0.700, 0.790, 0.740);
+gxChip(0.760, 0.175, 0.900, 0.215);
+gxChip(0.760, 0.600, 0.900, 0.640);
 
 s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
   x: 0.674 * W, y: 0.375 * H, w: (0.902 - 0.674) * W, h: (0.535 - 0.375) * H,
@@ -76,20 +76,20 @@ const convCx = (0.674 + 0.902) / 2 * W;
 txt(0.063 * W, 0.19 * H, (0.19 - 0.063) * W, 0.375,
   [run("3 constraints", { bold: true, italic: true, color: LABEL_RED, fontSize: 14 })],
   { align: "left" });
-txt(0.063 * W, 0.615 * H, (0.22 - 0.063) * W, 0.3375,
+txt(0.063 * W, 0.615 * H, (0.30 - 0.063) * W, 0.30,
   [run("6 constraints , 3 variables", { bold: true, italic: true, color: LABEL_RED, fontSize: 14 })],
-  { align: "left" });
+  { align: "left", fit: "shrink" });
 
-txt(0.674 * W, 0.385 * H, (0.902 - 0.674) * W, 0.3,
+txt(0.674 * W, 0.380 * H, (0.902 - 0.674) * W, 0.25,
   [run("Convert", { bold: true, italic: true, color: ORANGE, fontSize: 11 })],
   { align: "center" });
 {
   const j1 = meta("conv1");
-  s.addImage({ path: EQ + "rb5_conv1.png", x: convCx - j1.w_in / 2, y: 0.435 * H + (0.225 - j1.h_in) / 2, w: j1.w_in });
+  s.addImage({ path: EQ + "rb5_conv1.png", x: convCx - j1.w_in / 2, y: 0.415 * H, w: j1.w_in });
   const j2 = meta("conv2");
-  s.addImage({ path: EQ + "rb5_conv2.png", x: convCx - j2.w_in / 2, y: 0.485 * H + (0.225 - j2.h_in) / 2, w: j2.w_in });
+  s.addImage({ path: EQ + "rb5_conv2.png", x: convCx - j2.w_in / 2, y: 0.490 * H, w: j2.w_in });
 }
-txt(0.674 * W, 0.468 * H, (0.902 - 0.674) * W, 0.22,
+txt(0.674 * W, 0.465 * H, (0.902 - 0.674) * W, 0.20,
   [run("to", { color: GREEN, fontSize: 11 })], { align: "center" });
 
 imgL("le_str", 0.065 * W, 0.237 * H, (0.275 - 0.237) * H);

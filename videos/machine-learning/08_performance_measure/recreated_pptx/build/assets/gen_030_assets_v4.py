@@ -47,10 +47,11 @@ for cx in [169, 233]:
     ax.add_patch(Circle((cx, PH - 67), 5, fill=True, facecolor=BG,
                         edgecolor=RED, lw=1.4 * PT, zorder=4))
 # black threshold labels above the circles
+LBLBOX = dict(boxstyle="square,pad=0.3", fc="white", ec="#777777")
 ax.text(166, PH - 46, "0.1", color="#000000", fontsize=9 * PT, ha="center",
-        va="center", zorder=5)
-ax.text(218, PH - 46, "0.0", color="#000000", fontsize=9 * PT, ha="center",
-        va="center", zorder=5)
+        va="center", zorder=5, bbox=LBLBOX)
+ax.text(219, PH - 46, "0.0", color="#000000", fontsize=9 * PT, ha="center",
+        va="center", zorder=5, bbox=LBLBOX)
 ax.text(10, PH - 168, "TPR", color=RED, fontsize=11 * PT, rotation=90,
         ha="center", va="center", zorder=5)
 ax.text(129, PH - 282, "FPR", color=RED, fontsize=11 * PT,

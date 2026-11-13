@@ -21,10 +21,10 @@ ASSETS = [
     ("obj", r"#%s:0.5x^{2}+3x+4y" % INK, (0.325 - 0.188) * 13.33, (0.248 - 0.203) * 7.5, 26.0),
     # quadratic form 1/2[x^T P x] + q^T x, box [0.765,0.293,0.917,0.372]
     ("qform",
-     r"#00A650:\frac{1}{2}||#C00060:[||#0033CC:x^{T}Px||#C00060:]\ +\ q^{T}||#0033CC:x",
+     r"#00A650:\frac{1}{2}||#C00060:[||#0033CC:X^{T}PX||#C00060:]\ +\ q^{T}||#0033CC:X",
      (0.917 - 0.765) * 13.33, (0.372 - 0.293) * 7.5, 30.0),
     # "Gx <= h" bold red, box [0.413,0.545,0.500,0.590]
-    ("gxh", r"#C00000:\mathbf{Gx} \leq \mathbf{h}",
+    ("gxh", r"#C00000:\mathbf{G}||#0000FF:\mathbf{x}||#000000:\leq||#C00000:\mathbf{h}",
      (0.500 - 0.413) * 13.33, (0.590 - 0.545) * 7.5, 30.0),
     # constraint stack, boxes from spec section 8; oversize so the glyph fills
     # the box height (widths are the binding constraint for c1/c2)

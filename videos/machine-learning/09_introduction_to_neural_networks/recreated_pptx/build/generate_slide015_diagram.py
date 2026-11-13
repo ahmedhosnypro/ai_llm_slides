@@ -17,7 +17,7 @@ from pathlib import Path
 OUT_DIR = Path("/home/codespace/ai_llm_slides/videos/machine-learning/09_introduction_to_neural_networks/recreated_pptx/build")
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-FIG_W, FIG_H = 8.0, 4.5
+FIG_W, FIG_H = 10.0, 4.0
 DPI = 600
 
 fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DPI)
@@ -37,12 +37,12 @@ PURPLE = '#d2b48c'
 LIGHT_BLUE = '#add8e6'
 
 # Layout columns
-X_INPUT = 0.6
-X_HIDDEN = 2.2
-X_Z = 4.0
-X_OUTPUT = 5.8
-X_Z3 = 7.2
-X_OP = 8.0
+X_INPUT = 0.7
+X_HIDDEN = 2.7
+X_Z = 4.8
+X_OUTPUT = 6.8
+X_Z3 = 8.4
+X_OP = 9.5
 
 # Row positions
 Y_X1 = FIG_H * 0.75

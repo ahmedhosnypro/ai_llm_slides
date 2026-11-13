@@ -43,7 +43,8 @@ const NY = (v) => v * 7.5;
 const box = (b) => ({ x: N(b[0]), y: NY(b[1]), w: N(b[2] - b[0]), h: NY(b[3] - b[1]) });
 function img(name, b, align) {  // native px/600 size, clamped to fit inside the box (no overflow/clipping)
   const m = M[name], r = box(b);
-  const w = Math.min(m.w_in, r.w), h = Math.min(m.h_in, r.h);
+  const scale = Math.min(1, r.w / m.w_in, r.h / m.h_in);
+  const w = m.w_in * scale, h = m.h_in * scale;
   const x = align === "left" ? r.x : r.x + (r.w - w) / 2;
   s.addImage({ path: EQ + m.image, x, y: r.y + (r.h - h) / 2, w, h });
 }

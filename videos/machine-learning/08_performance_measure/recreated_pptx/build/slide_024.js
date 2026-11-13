@@ -1,8 +1,7 @@
 const pptxgen = require("pptxgenjs");
 
-// Slide 24 — "Effect of Selecting Threshold Value on Model Performance"
-// Built from analysis/reanalysis/slide_024_raw.json + sources/slide_024_research.md
-// + pool_run/image_analysis/slide_024_analysis.txt (frame px @960x540, 1px = 1/72 in).
+// Slide 24 v2 — "Effect of Selecting Threshold Value on Model Performance"
+// Rebuilt against PIL-measured original geometry (960x540 frame, 1px = 1pt = 1/72 in).
 const pptx = new pptxgen();
 pptx.layout = "LAYOUT_WIDE";
 const W = 13.33, H = 7.5;
@@ -44,44 +43,45 @@ s.addText("Effect of Selecting Threshold Value on Model Performance", {
   fontSize: 30, bold: true, color: RED, fontFace: FONT, margin: 0,
 });
 
-// ---------- CONFUSION MATRIX (top-left, colored cells with TP/FN/FP/TN + counts) ----------
-// original region px x60-240, y48-168
-const gX = 0.83, gY = 0.67;
-const gLabelW = 0.42, gCellW = 0.75, gHeadH = 0.20, gColH = 0.25, gCellH = 0.55;
-const cellTop = (r) => gY + gHeadH + gColH + r * gCellH;
-const colLeft = (c) => gX + gLabelW + c * gCellW;
+// ---------- DETAILED CONFUSION MATRIX (top-left) ----------
+// original: header 'Predicted as' y~52-76; col heads P/N y~88-100; cells y~104-140;
+// row labels P/N x~75-90; 'Actual' left. Convert px->in (/72).
+const dX = 60 / 72, dY = 50 / 72;
+const dLabelW = 24 / 72, dCellW = 55 / 72, dHeadH = 22 / 72, dColH = 16 / 72, dCellH = 34 / 72;
+const dCellTop = (r) => dY + dHeadH + dColH + r * dCellH;
+const dColLeft = (c) => dX + dLabelW + c * dCellW;
 
 s.addText("Predicted as", {
-  x: gX + gLabelW, y: gY, w: gCellW * 2, h: gHeadH,
-  fontSize: 8, bold: true, color: BLACK, fontFace: FONT, align: "center", valign: "middle", margin: 0,
+  x: dX + dLabelW, y: dY, w: dCellW * 2, h: dHeadH,
+  fontSize: 9, bold: true, color: BLACK, fontFace: FONT, align: "center", valign: "middle", margin: 0,
 });
-s.addText("P", { x: colLeft(0), y: gY + gHeadH, w: gCellW, h: gColH, fontSize: 10, bold: true, color: BLACK, fontFace: FONT, align: "center", valign: "middle", margin: 0 });
-s.addText("N", { x: colLeft(1), y: gY + gHeadH, w: gCellW, h: gColH, fontSize: 10, bold: true, color: BLACK, fontFace: FONT, align: "center", valign: "middle", margin: 0 });
-s.addText("Actual", { x: gX, y: gY + gHeadH + gColH, w: gLabelW, h: gCellH * 2, fontSize: 8, bold: true, color: BLACK, fontFace: FONT, align: "center", valign: "middle", margin: 0 });
-s.addText("P", { x: gX, y: cellTop(0), w: gLabelW, h: gCellH, fontSize: 10, bold: true, color: BLACK, fontFace: FONT, align: "center", valign: "middle", margin: 0 });
-s.addText("N", { x: gX, y: cellTop(1), w: gLabelW, h: gCellH, fontSize: 10, bold: true, color: BLACK, fontFace: FONT, align: "center", valign: "middle", margin: 0 });
+s.addText("P", { x: dColLeft(0), y: dY + dHeadH, w: dCellW, h: dColH, fontSize: 10, bold: true, color: BLACK, fontFace: FONT, align: "center", valign: "middle", margin: 0 });
+s.addText("N", { x: dColLeft(1), y: dY + dHeadH, w: dCellW, h: dColH, fontSize: 10, bold: true, color: BLACK, fontFace: FONT, align: "center", valign: "middle", margin: 0 });
+s.addText("Actual", { x: dX, y: dY + dHeadH + dColH, w: dLabelW, h: dCellH * 2, fontSize: 9, bold: true, color: BLACK, fontFace: FONT, align: "center", valign: "middle", margin: 0 });
+s.addText("P", { x: dX, y: dCellTop(0), w: dLabelW, h: dCellH, fontSize: 10, bold: true, color: BLACK, fontFace: FONT, align: "center", valign: "middle", margin: 0 });
+s.addText("N", { x: dX, y: dCellTop(1), w: dLabelW, h: dCellH, fontSize: 10, bold: true, color: BLACK, fontFace: FONT, align: "center", valign: "middle", margin: 0 });
 
-// Standard orientation: rows = Actual P/N, cols = Predicted P/N
-const gCells = [
+// cells: TP=4 green, FN=1 pink (row 0); FP=1 pink, TN=5 green (row 1)
+const dCells = [
   { lbl: "TP", val: "4", fill: GREEN, row: 0, col: 0 },
   { lbl: "FN", val: "1", fill: PINK, row: 0, col: 1 },
   { lbl: "FP", val: "1", fill: PINK, row: 1, col: 0 },
   { lbl: "TN", val: "5", fill: GREEN, row: 1, col: 1 },
 ];
-for (const c of gCells) {
-  const cx = colLeft(c.col), cy = cellTop(c.row);
-  s.addShape(pptx.shapes.RECTANGLE, { x: cx, y: cy, w: gCellW, h: gCellH, fill: { color: c.fill }, line: { color: BLACK, width: 0.75 } });
+for (const c of dCells) {
+  const cx = dColLeft(c.col), cy = dCellTop(c.row);
+  s.addShape(pptx.shapes.RECTANGLE, { x: cx, y: cy, w: dCellW, h: dCellH, fill: { color: c.fill }, line: { color: BLACK, width: 0.75 } });
   s.addText(c.lbl + "\n" + c.val, {
-    x: cx, y: cy, w: gCellW, h: gCellH,
-    fontSize: 10, bold: true, color: BLACK, fontFace: FONT,
-    align: "center", valign: "middle", margin: 0,
+    x: cx, y: cy, w: dCellW, h: dCellH,
+    fontSize: 9, bold: true, color: BLACK, fontFace: FONT,
+    align: "center", valign: "middle", margin: 0, lineSpacing: 12,
   });
 }
 
-// ---------- NUMERIC CONFUSION MATRIX directly beneath (top-left stack) ----------
-// original region px x66-229, y175-248
-const nX = 0.92, nY = 2.22;
-const nLabelW = 0.40, nCellW = 0.75, nHeadH = 0.18, nColH = 0.20, nCellH = 0.40;
+// ---------- NUMERIC CONFUSION MATRIX directly beneath ----------
+// original: 'Predicted as' y~176-190, col heads y~196-208, cells y~214-246
+const nX = 66 / 72, nY = 172 / 72;
+const nLabelW = 22 / 72, nCellW = 60 / 72, nHeadH = 16 / 72, nColH = 14 / 72, nCellH = 18 / 72;
 const nTop = (r) => nY + nHeadH + nColH + r * nCellH;
 s.addText("Predicted as", {
   x: nX + nLabelW, y: nY, w: nCellW * 2, h: nHeadH,
@@ -97,31 +97,34 @@ for (let r = 0; r < 2; r++) {
   for (let c = 0; c < 2; c++) {
     const cx = nX + nLabelW + c * nCellW, cy = nTop(r);
     s.addShape(pptx.shapes.RECTANGLE, { x: cx, y: cy, w: nCellW, h: nCellH, fill: { color: WHITE }, line: { color: RED, width: 1 } });
-    s.addText(nVals[r][c], { x: cx, y: cy, w: nCellW, h: nCellH, fontSize: 12, bold: true, color: DARKRED, fontFace: FONT, align: "center", valign: "middle", margin: 0 });
+    s.addText(nVals[r][c], { x: cx, y: cy, w: nCellW, h: nCellH, fontSize: 11, bold: true, color: DARKRED, fontFace: FONT, align: "center", valign: "middle", margin: 0 });
   }
 }
 
-// ---------- Threshold=0.5 plain label right of the matrices ----------
+// ---------- Boxed Threshold=0.5 callout (original red outline x178-312 y105-138) ----------
+s.addShape(pptx.shapes.RECTANGLE, {
+  x: 178 / 72, y: 105 / 72, w: 134 / 72, h: 33 / 72,
+  fill: { color: WHITE }, line: { color: RED, width: 1.5 },
+});
 s.addText("Threshold=0.5", {
-  x: 2.85, y: 1.15, w: 1.60, h: 0.35,
-  fontSize: 14, bold: true, color: RED, fontFace: FONT, align: "center", valign: "middle", margin: 0,
+  x: 178 / 72, y: 105 / 72, w: 134 / 72, h: 33 / 72,
+  fontSize: 12, bold: true, color: RED, fontFace: FONT, align: "center", valign: "middle", margin: 0,
 });
 
 // ---------- PIPELINE PANEL (cream) ----------
-// original px x328-868, y56-194
-const pX = 4.56, pY = 0.78, pW = 7.70, pH = 1.95;
-s.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: pX, y: pY, w: pW, h: pH, fill: { color: PANEL }, line: { color: "C8C8A0", width: 1 } });
+// original cream panel approx x113-893, y56-198 -> in
+const pX = 328 / 72, pY = 56 / 72, pW = 576 / 72, pH = 142 / 72;
+s.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: pX, y: pY, w: pW, h: pH, fill: { color: PANEL }, line: { color: "C8C8A0", width: 1 }, adj: 0.08 });
 
-const fy = 1.66; // flow center line
-const bh = 0.52;
-const aw = 0.30;
+const fy = 128 / 72; // flow center line y~128px
+const bh = 40 / 72;
+const aw = 22 / 72;
 
 function arrowRight(x0, y) {
   s.addShape(pptx.shapes.RECTANGLE, { x: x0, y: y - 0.02, w: aw, h: 0.04, fill: { color: BLACK }, line: { type: "none" } });
   s.addShape(pptx.shapes.ISOSCELES_TRIANGLE, { x: x0 + aw - 0.02, y: y - 0.06, w: 0.10, h: 0.12, fill: { color: BLACK }, line: { type: "none" }, rotate: 90 });
 }
 
-// airplane side-profile sketch: fuselage, tail fin up, swept wing down, center dot
 function drawPlane(cx, cy, sc, dotColor) {
   s.addShape(pptx.shapes.OVAL, {
     x: cx - 0.34 * sc, y: cy - 0.035 * sc, w: 0.68 * sc, h: 0.07 * sc,
@@ -145,83 +148,88 @@ function drawPlane(cx, cy, sc, dotColor) {
   });
 }
 
-// Test Sample: label above box, airplane sketch inside
-const tsX = 4.70, tsW = 1.25;
-s.addText("Test Sample", { x: tsX, y: pY + 0.08, w: tsW, h: 0.22, fontSize: 9, bold: true, color: BLACK, fontFace: FONT, align: "center", margin: 0 });
+// Test Sample: label above box (y~66), airplane inside box (x~330-435, y~104-168)
+const tsX = 330 / 72, tsW = 105 / 72;
+s.addText("Test Sample", { x: tsX, y: 64 / 72, w: tsW, h: 16 / 72, fontSize: 9, bold: true, color: BLACK, fontFace: FONT, align: "center", margin: 0 });
 s.addShape(pptx.shapes.RECTANGLE, { x: tsX, y: fy - bh / 2, w: tsW, h: bh, fill: { color: WHITE }, line: { color: RED, width: 1 } });
 drawPlane(tsX + tsW / 2, fy, 0.85, BLUE);
-
 arrowRight(tsX + tsW, fy);
 
-// Model box: dark red fill, white bold text, small white ROC-style curve icon, sub-caption underneath
-const mX = 6.28, mW = 1.00;
-s.addShape(pptx.shapes.RECTANGLE, { x: mX, y: fy - bh / 2, w: mW, h: bh, fill: { color: DARKRED }, line: { color: DARKRED, width: 1 } });
-s.addText("Model", { x: mX, y: fy - bh / 2, w: mW, h: 0.24, fontSize: 11, bold: true, color: WHITE, fontFace: FONT, align: "center", valign: "middle", margin: 0 });
-// curve icon: rising polyline with marker dots in the lower half of the box
-const curve = [[6.36, 1.84], [6.55, 1.79], [6.74, 1.75], [6.94, 1.68], [7.18, 1.61]];
-for (let i = 0; i < curve.length - 1; i++) {
-  s.addShape(pptx.shapes.LINE, { x: curve[i][0], y: curve[i][1], w: curve[i + 1][0] - curve[i][0], h: curve[i + 1][1] - curve[i][1], line: { color: WHITE, width: 1.5 } });
-}
-for (const p of curve.slice(1, -1)) {
-  s.addShape(pptx.shapes.OVAL, { x: p[0] - 0.025, y: p[1] - 0.025, w: 0.05, h: 0.05, fill: { color: WHITE }, line: { type: "none" } });
-}
-s.addText("[Any value] \u2014 (0, +1)", { x: mX - 0.15, y: fy + bh / 2 + 0.03, w: mW + 0.30, h: 0.20, fontSize: 7, color: BLACK, fontFace: FONT, align: "center", margin: 0 });
+// Model box: dark red fill x408-610 y120-180, white bold "Model", purple pie icon right side
+const mX = 408 / 72, mY = 120 / 72, mW = 202 / 72, mH = 60 / 72;
+s.addShape(pptx.shapes.RECTANGLE, { x: mX, y: mY, w: mW, h: mH, fill: { color: DARKRED }, line: { color: DARKRED, width: 1 } });
+s.addText("Model", { x: mX, y: mY, w: 120 / 72, h: mH, fontSize: 14, bold: true, color: WHITE, fontFace: FONT, align: "center", valign: "middle", margin: 0 });
+// purple pie-chart icon at x531-565 y131-156
+s.addShape(pptx.shapes.PIE, {
+  x: 531 / 72, y: 131 / 72, w: 34 / 72, h: 25 / 72,
+  fill: { color: "B4A7D6" }, line: { color: "7030A0", width: 1 },
+  startAngle: 0, endAngle: 270,
+});
+s.addText("[Any value] \u2014 (0, +1)", { x: mX, y: mY + mH + 0.04, w: mW, h: 16 / 72, fontSize: 8, color: BLACK, fontFace: FONT, align: "center", margin: 0 });
 
 arrowRight(mX + mW, fy);
-s.addText("(0 \u2014 1)", { x: mX + mW + 0.02, y: fy - 0.30, w: aw + 0.35, h: 0.18, fontSize: 8, bold: true, color: BLACK, fontFace: FONT, align: "center", margin: 0 });
+// '(0 \u2014 1)' label on the arrow, above it (original y~107-123 x~555-620)
+s.addText("(0 \u2014 1)", { x: 548 / 72, y: 100 / 72, w: 80 / 72, h: 18 / 72, fontSize: 9, bold: true, color: BLACK, fontFace: FONT, align: "center", margin: 0 });
 
-// Threshold (e.g. 0.5) box
-const thX = 7.72, thW = 1.45;
+// 'Predicted Value' header above the threshold/value stage (original ~x575-655 y~70-86, dark red)
+s.addText("Predicted Value", { x: 560 / 72, y: 68 / 72, w: 110 / 72, h: 18 / 72, fontSize: 10, bold: true, color: DARKRED, fontFace: FONT, align: "center", margin: 0 });
+
+// Threshold (e.g. 0.5) box: two lines inside (x~655-770)
+const thX = 655 / 72, thW = 115 / 72;
 s.addShape(pptx.shapes.RECTANGLE, { x: thX, y: fy - bh / 2, w: thW, h: bh, fill: { color: WHITE }, line: { color: RED, width: 1.25 } });
-s.addText("Threshold (e.g. 0.5)", { x: thX, y: fy - bh / 2, w: thW, h: bh, fontSize: 9, bold: true, color: RED, fontFace: FONT, align: "center", valign: "middle", margin: 0 });
+s.addText("Threshold\n(e.g. 0.5)", { x: thX, y: fy - bh / 2, w: thW, h: bh, fontSize: 9, bold: true, color: RED, fontFace: FONT, align: "center", valign: "middle", margin: 0, lineSpacing: 12 });
 
-// branch arrows to Class I / Class II
+// branch arrows to Class I / Class II (fork at x~770)
 const forkX = thX + thW;
-const ciX = 11.10, ciW = 1.05;
+const ciX = 795 / 72, ciW = 85 / 72;
 s.addShape(pptx.shapes.LINE, { x: forkX + 0.03, y: fy - 0.08, w: ciX - forkX - 0.12, h: -(fy - 0.08 - (pY + 0.45)), line: { color: BLACK, width: 1.5 } });
 s.addShape(pptx.shapes.ISOSCELES_TRIANGLE, { x: ciX - 0.11, y: pY + 0.39, w: 0.10, h: 0.12, fill: { color: BLACK }, line: { type: "none" }, rotate: 90 });
 s.addShape(pptx.shapes.LINE, { x: forkX + 0.03, y: fy + 0.08, w: ciX - forkX - 0.12, h: (pY + 1.48) - (fy + 0.08), line: { color: BLACK, width: 1.5 } });
 s.addShape(pptx.shapes.ISOSCELES_TRIANGLE, { x: ciX - 0.11, y: pY + 1.42, w: 0.10, h: 0.12, fill: { color: BLACK }, line: { type: "none" }, rotate: 90 });
 
-// Class I (light green oval, upper) / Class II (light pink oval, lower)
-s.addShape(pptx.shapes.OVAL, { x: ciX, y: pY + 0.24, w: ciW, h: 0.42, fill: { color: "98FB98" }, line: { color: "548235", width: 1 } });
-s.addText("Class I", { x: ciX, y: pY + 0.24, w: ciW, h: 0.42, fontSize: 10, bold: true, color: BLACK, fontFace: FONT, align: "center", valign: "middle", margin: 0 });
-s.addShape(pptx.shapes.OVAL, { x: ciX, y: pY + 1.24, w: ciW, h: 0.42, fill: { color: PINK }, line: { color: "C55A11", width: 1 } });
-s.addText("Class II", { x: ciX, y: pY + 1.24, w: ciW, h: 0.42, fontSize: 10, bold: true, color: BLACK, fontFace: FONT, align: "center", valign: "middle", margin: 0 });
+// Class I (light green oval, upper ~y107-135) / Class II (pink oval, lower ~y163-191)
+s.addShape(pptx.shapes.OVAL, { x: ciX, y: 104 / 72, w: ciW, h: 32 / 72, fill: { color: "98FB98" }, line: { color: "548235", width: 1 } });
+s.addText("Class I", { x: ciX, y: 104 / 72, w: ciW, h: 32 / 72, fontSize: 10, bold: true, color: BLACK, fontFace: FONT, align: "center", valign: "middle", margin: 0 });
+s.addShape(pptx.shapes.OVAL, { x: ciX, y: 160 / 72, w: ciW, h: 32 / 72, fill: { color: PINK }, line: { color: "C55A11", width: 1 } });
+s.addText("Class II", { x: ciX, y: 160 / 72, w: ciW, h: 32 / 72, fontSize: 10, bold: true, color: BLACK, fontFace: FONT, align: "center", valign: "middle", margin: 0 });
 
-// ---------- BOTTOM PLOT: Predicted axis 0.0–1.0, dashed threshold line, red dot, planes ----------
-const axL = 1.19, axR = 12.33, axY = 6.06;   // px 86..888 @ y436
-const thrX = axL + (axR - axL) * 0.5;          // 0.5 tick = px 487
+// ---------- BOTTOM PLOT ----------
+// original: axis row y=435, x58-901; ticks every ~0.1 (x58 + k*84.3); labels 0.0/0.5/1.0 at x~60/482/900 y~448-462;
+// dashed blue line x~487 y195-430; red circle cx494 cy204 r~12; planes measured.
+const axL = 58 / 72, axR = 901 / 72, axY = 435 / 72;
+const thrX = 487 / 72;
 
-s.addText("Predicted", { x: axL, y: axY - 0.32, w: 1.0, h: 0.22, fontSize: 10, bold: true, color: BLACK, fontFace: FONT, align: "left", margin: 0 });
+s.addText("Predicted", { x: axL, y: axY - 24 / 72, w: 70 / 72, h: 16 / 72, fontSize: 10, bold: true, color: BLACK, fontFace: FONT, align: "left", margin: 0 });
 
-// airplanes: 6 left of threshold (blue dot), 5 right (red dot) — predicted N=6, P=5
-const planesLeft = [
-  { x: 1.70, y: 4.10 }, { x: 2.60, y: 3.75 }, { x: 3.50, y: 4.30 },
-  { x: 4.40, y: 3.80 }, { x: 5.30, y: 4.45 }, { x: 6.20, y: 3.90 },
+// airplanes at measured centers (cx, cy in px); blue decal only on right-of-threshold planes
+const planesPlain = [
+  [377, 252], [163, 260], [246, 307], [153, 356], [249, 383], [126, 443],
 ];
-const planesRight = [
-  { x: 7.40, y: 4.00 }, { x: 8.30, y: 4.55 }, { x: 9.40, y: 3.95 },
-  { x: 10.50, y: 4.50 }, { x: 11.60, y: 4.10 },
-];
-for (const p of planesLeft) drawPlane(p.x, p.y, 1.15, BLUE);
-for (const p of planesRight) drawPlane(p.x, p.y, 1.15, "FF0000");
+const planesBlue = [[553, 387], [822, 372]];
+for (const [px, py] of planesPlain) drawPlane(px / 72, py / 72, 1.15, "9E9E9E");
+for (const [px, py] of planesBlue) drawPlane(px / 72, py / 72, 1.15, BLUE);
 
-// dashed blue vertical line at 0.5, from red dot down to the axis
-for (let i = 0; i < 40; i++) {
-  const yy = 3.30 + i * 0.068;
-  if (yy > axY - 0.06) break;
-  s.addShape(pptx.shapes.LINE, { x: thrX, y: yy, w: 0, h: 0.038, line: { color: BLUE, width: 1.5, dashType: "dash" } });
+// dashed vertical line at x=475 from y206 down to the axis
+const thrLineX = 475 / 72;
+for (let yy = 206 / 72; yy < axY - 0.05; yy += 11 / 72) {
+  s.addShape(pptx.shapes.LINE, { x: thrLineX, y: yy, w: 0, h: 6 / 72, line: { color: "8496B0", width: 1.5 } });
 }
-// red threshold circle atop the dashed line (px ~(486,215), r~10)
-s.addShape(pptx.shapes.OVAL, { x: thrX - 0.14, y: 2.85, w: 0.28, h: 0.28, fill: { color: "FF0000" }, line: { type: "none" } });
+// red threshold circle cx494 cy215 r~12px
+s.addShape(pptx.shapes.OVAL, { x: (494 - 12) / 72, y: (215 - 12) / 72, w: 24 / 72, h: 24 / 72, fill: { color: "FF0000" }, line: { type: "none" } });
 
-// dark-red horizontal axis with ticks + labels 0.0 / 0.5 / 1.0
+// dark-red horizontal axis with arrowhead at right end, ticks every 0.1, labels 0.0/0.5/1.0
 s.addShape(pptx.shapes.LINE, { x: axL, y: axY, w: axR - axL, h: 0, line: { color: DARKRED, width: 2 } });
-const ticks = [{ label: "0.0", x: axL }, { label: "0.5", x: thrX }, { label: "1.0", x: axR }];
+s.addShape(pptx.shapes.ISOSCELES_TRIANGLE, {
+  x: (901 - 8) / 72, y: (435 - 5) / 72, w: 16 / 72, h: 10 / 72,
+  fill: { color: DARKRED }, line: { type: "none" }, rotate: 90,
+});
+for (let k = 0; k <= 10; k++) {
+  const tx = axL + (axR - axL) * k / 10;
+  s.addShape(pptx.shapes.LINE, { x: tx, y: axY - 0.08, w: 0, h: 0.16, line: { color: DARKRED, width: 2 } });
+}
+const ticks = [{ label: "0.0", x: axL }, { label: "0.5", x: 475 / 72 }, { label: "1.0", x: axR }];
 for (const t of ticks) {
-  s.addShape(pptx.shapes.LINE, { x: t.x, y: axY - 0.08, w: 0, h: 0.16, line: { color: DARKRED, width: 2 } });
-  s.addText(t.label, { x: t.x - 0.25, y: axY + 0.10, w: 0.50, h: 0.26, fontSize: 10, bold: true, color: BLACK, fontFace: FONT, align: "center", margin: 0 });
+  s.addText(t.label, { x: t.x - 0.25, y: axY + 0.12, w: 0.50, h: 0.26, fontSize: 10, bold: true, color: BLACK, fontFace: FONT, align: "center", margin: 0 });
 }
 
 const outFile = "/home/codespace/ai_llm_slides/videos/machine-learning/08_performance_measure/recreated_pptx/slide_024_recreated.pptx";

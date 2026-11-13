@@ -13,7 +13,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 EQDIR = os.path.join(HERE, "eq_007")
 RENDER = os.path.join(HERE, "render_math.py")
-SIZE = 14.0
+SIZE = 20.0
 
 ASSETS = [
     ("rb4_sum1", [r"#0000FF:\sum_{i=1}^{3} a_i||#FF0000:x_i||#000000:\,=\,||#0000FF:a_1||#FF0000:x_1||#000000:\,+\,||#0000FF:a_2||#FF0000:x_2||#000000:\,+\,||#0000FF:a_3||#FF0000:x_3||#000000:\,=\,Z"], 3.55, 0.69, 10),
