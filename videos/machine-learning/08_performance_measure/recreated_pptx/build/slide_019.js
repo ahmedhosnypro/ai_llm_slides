@@ -1,4 +1,28 @@
-// Slide 019 rebuild v9 — v8 + attempt-4 FAIL fix: Evaluation "Test Sample" text moved
+// Slide 019 rebuild v15 (attempt 14) — attempt-13 FAIL fixes, pixel-adjudicated vs original:
+// label rails are one filled block incl. the header cell: pink x251..289 y120..492 (h373), green x502..535
+// y120..498 (h379); strips drawn BEFORE the 'Label' text so the header sits on the fill (orig: text on pink cell).
+// Rail x/w and label columns moved to match (pink 251 w39, green 502 w34). Bottoms 492/498 stay inside the
+// boxes (bottom 500) and gray panel (bottom 509) — attempt-13's h388/h329 overshot to 515 (capture-bar artifact).
+// Slide 019 rebuild v14 (attempt 13) — verify-12 FAIL fixes, pixel-adjudicated vs original:
+// pink +1 rail y161 h330 -> y127 h388 (orig 127..515); green -1 rail y161 h336 -> y165 h329 (orig 165..494);
+// train model box MTY 245->247 h60->57 (orig 247..303); eval box MEY 420->421 h60->58 (orig 421..478);
+// pos_2 crop -> p019_crop_pos_2c.png (right cols 139-141 whitened, border tint removed).
+// Slide 019 rebuild v13 (attempt 12) — verify-11 FAIL fix, pixel-adjudicated vs original:
+// LOSS circle was x782 y243 60x60 (center 812); original measures x775..828 y245..300 (54x56, center ~802,273).
+// Model badges 38->39 (orig 694..732 x 253..291). Model->LOSS arrow w46->43 so it ends at the circle edge (779).
+// Slide 019 rebuild v12 (attempt 11) — verify-10 FAIL fix: pos_2 plane crop contained the original's
+// box-border pixels (cols 142-144); trimmed asset p019_crop_pos_2b.png (142x70) placed with right edge
+// at frame x=234.5 so no red ink touches the positive box border (x=237, stroke 235.75..238.25).
+// Slide 019 rebuild v11 — attempt-7 FAIL fix: aircraft imagery replaced with PIL crops of the
+// original's 11 hand-drawn planes (build/assets/p019_crop_*.png), placed at measured centers at
+// native size (1px=1pt, aspect preserved); "Input/Test Sample" labels moved to x573 (original
+// ~11px inset from panel edge x562). v10 fixes kept: panels x560 w339, "Bi-polor", 3-line label,
+// LOSS arrow w46 ending at circle edge.
+// Slide 019 rebuild v11 — attempt-7 FAIL fixes: original plane crops placed at original
+// coordinates/sizes; Evaluation "Test Sample" inset to match the original left margin.
+// Slide 019 rebuild v10 — attempt-6 FAIL fixes: Training/Evaluation panels widened to the
+// measured original x560..898 so sample labels/arrows sit inside; LOSS arrow shortened to the
+// circle edge; verbatim "Bi-polor"; threshold darkened to measured ink; 3-line label; varied plane scale/rotation
 // above its input arrow (was clipped by the arrow's white fill); step glyphs shrunk
 // slightly (judge MINOR: larger/thicker than original). Attempt-3 fixes adjudicated by PIL scans + zoomed crops
 // of the original (960x540, 1px=1pt):
@@ -35,7 +59,7 @@ const PINK_STRIP = "F8DBDD"; // measured 248,219,221
 const GREEN_STRIP = "E4FFEE";// measured 228,255,238
 const MAROON = "A01818";
 const TEAL = "12694E";
-const PEACH = "FCC8BD";      // LOSS circle (measured 252,200,189)
+const PEACH = "F5C692";      // LOSS circle (measured original ~245,198,146)
 const CREAM = "FBFEE3";      // measured 251,254,227
 const ORANGE = "E8A33D";
 const BLUE = "20409B";
@@ -44,16 +68,30 @@ const PURPLE = "6A3FB5";
 const NAVY = "2E2A6E";
 const BLUE_TXT = "0000CC";
 const CAP_YELLOW = "FFD652"; // caption yellow (measured 253,166,70-ish gold)
+const THRESH_DARK = "78152A"; // measured threshold ink in original activation panel
 const WHITE = "FFFFFF";
 const GRAY_LINE = "C8C8C8";
 const PANEL_GRAY = "E7E9E6"; // measured 231,233,230
 const FONT = "Arial";
 
 const ASSETS = path.join(__dirname, "assets");
-const PLANES_ENEMY = ["p019_enemy_1.png", "p019_enemy_2.png", "p019_enemy_3.png", "p019_enemy_4.png", "p019_enemy_5.png"];
-const PLANES_SAFE = ["p019_safe_1.png", "p019_safe_2.png", "p019_safe_3.png", "p019_safe_4.png", "p019_safe_5.png", "p019_safe_6.png"];
+// PIL crops of the original's hand-drawn aircraft: {img, cx, cy, w, h} in frame px (1px=1pt)
+const PLANES_ENEMY = [
+  { img: "p019_crop_pos_1.png", cx: 145.0, cy: 185.5, w: 99,  h: 66 },
+  { img: "p019_crop_pos_2c.png", cx: 163.5, cy: 263.5, w: 142, h: 70 }, // v12: border cols trimmed (orig border x235-237), right edge 234.5 clears box border at 237
+  { img: "p019_crop_pos_3.png", cx: 143.5, cy: 326.0, w: 102, h: 41 },
+  { img: "p019_crop_pos_4.png", cx: 142.5, cy: 375.5, w: 100, h: 58 },
+  { img: "p019_crop_pos_5.png", cx: 143.5, cy: 440.0, w: 102, h: 87 },
+];
+const PLANES_SAFE = [
+  { img: "p019_crop_neg_1.png", cx: 407.5, cy: 185.0, w: 102, h: 55 },
+  { img: "p019_crop_neg_2.png", cx: 407.5, cy: 236.5, w: 102, h: 56 },
+  { img: "p019_crop_neg_3.png", cx: 399.0, cy: 291.5, w: 85,  h: 46 },
+  { img: "p019_crop_neg_4.png", cx: 407.5, cy: 339.5, w: 102, h: 46 },
+  { img: "p019_crop_neg_5.png", cx: 414.5, cy: 394.0, w: 120, h: 51 },
+  { img: "p019_crop_neg_6.png", cx: 389.0, cy: 450.5, w: 97,  h: 62 },
+];
 const STEP_PLOT_S = path.join(ASSETS, "eq_019_step_plot_small.png");
-const PLANE_W = 1.30, PLANE_H = 1.30 * 732 / 1092;
 const STEP_S_W = 592 / 600, STEP_S_H = 450 / 600;
 
 const P = 1 / 72; // frame px -> inches
@@ -93,37 +131,36 @@ s.addShape(pptx.shapes.RECTANGLE, {
 
 // Positive Class (red) — 5 enemy planes, 5x "+1"
 s.addText("Positive Class", {
-  x: 113 * P, y: 97 * P, w: 2.6, h: 0.26,
-  fontSize: 14, bold: true, color: TXT_RED, fontFace: FONT, margin: 0,
+  x: 81 * P, y: 97 * P, w: 156 * P, h: 0.26,
+  align: "center", fontSize: 14, bold: true, color: TXT_RED, fontFace: FONT, margin: 0,
 });
 s.addText("\u201CShoot the Enemy\u201D", {
-  x: 113 * P, y: 117 * P, w: 2.6, h: 0.24,
-  fontSize: 12, color: TXT_RED, fontFace: FONT, margin: 0,
+  x: 81 * P, y: 117 * P, w: 156 * P, h: 0.24,
+  align: "center", fontSize: 12, color: TXT_RED, fontFace: FONT, margin: 0,
+});
+s.addShape(pptx.shapes.RECTANGLE, {
+  x: 251 * P, y: 120 * P, w: 39 * P, h: 373 * P,
+  fill: { color: PINK_STRIP }, line: { color: TXT_RED, width: 1 },
 });
 s.addText("Label", {
-  x: 247 * P, y: 118 * P, w: 42 * P, h: 0.2,
+  x: 251 * P, y: 118 * P, w: 39 * P, h: 0.2,
   align: "center", fontSize: 10, bold: true, color: TXT_RED, fontFace: FONT, margin: 0,
 });
 s.addShape(pptx.shapes.RECTANGLE, {
   x: 81 * P, y: 136 * P, w: 156 * P, h: 368 * P,
   fill: { color: WHITE }, line: { color: BOX_RED, width: 2.5 },
 });
-for (let i = 0; i < 5; i++) {
-  const cy = 136 + 368 * (i + 0.5) / 5;
+for (const p of PLANES_ENEMY) {
   s.addImage({
-    path: path.join(ASSETS, PLANES_ENEMY[i]),
-    x: 81 * P + (156 * P - PLANE_W) / 2, y: cy * P - PLANE_H / 2,
-    w: PLANE_W, h: PLANE_H,
+    path: path.join(ASSETS, p.img),
+    x: (p.cx - p.w / 2) * P, y: (p.cy - p.h / 2) * P, w: p.w * P, h: p.h * P,
   });
 }
-s.addShape(pptx.shapes.RECTANGLE, {
-  x: 247 * P, y: 161 * P, w: 42 * P, h: 330 * P,
-  fill: { color: PINK_STRIP }, line: { color: TXT_RED, width: 1 },
-});
-const POS_CY = [195, 257, 319, 380, 441];
+
+const POS_CY = [195, 257, 319, 380, 460];
 for (const cy of POS_CY) {
   s.addText("+1", {
-    x: 247 * P, y: (cy - 9) * P, w: 42 * P, h: 18 * P,
+    x: 251 * P, y: (cy - 9) * P, w: 39 * P, h: 18 * P,
     align: "center", valign: "middle",
     fontSize: 12, bold: true, color: MAROON, fontFace: FONT, margin: 0,
   });
@@ -131,37 +168,36 @@ for (const cy of POS_CY) {
 
 // Negative Class (green) — 6 safe planes, 6x "-1"
 s.addText("Negative Class", {
-  x: 353 * P, y: 97 * P, w: 2.6, h: 0.26,
-  fontSize: 14, bold: true, color: TXT_GREEN, fontFace: FONT, margin: 0,
+  x: 331 * P, y: 97 * P, w: 151 * P, h: 0.26,
+  align: "center", fontSize: 14, bold: true, color: TXT_GREEN, fontFace: FONT, margin: 0,
 });
 s.addText("\u201CSafe\u201D", {
-  x: 353 * P, y: 117 * P, w: 2.6, h: 0.24,
-  fontSize: 12, color: TXT_GREEN, fontFace: FONT, margin: 0,
+  x: 331 * P, y: 117 * P, w: 151 * P, h: 0.24,
+  align: "center", fontSize: 12, color: TXT_GREEN, fontFace: FONT, margin: 0,
+});
+s.addShape(pptx.shapes.RECTANGLE, {
+  x: 502 * P, y: 120 * P, w: 34 * P, h: 379 * P,
+  fill: { color: GREEN_STRIP }, line: { color: TXT_GREEN, width: 1 },
 });
 s.addText("Label", {
-  x: 498 * P, y: 118 * P, w: 42 * P, h: 0.2,
+  x: 502 * P, y: 118 * P, w: 34 * P, h: 0.2,
   align: "center", fontSize: 10, bold: true, color: TXT_GREEN, fontFace: FONT, margin: 0,
 });
 s.addShape(pptx.shapes.RECTANGLE, {
   x: 331 * P, y: 136 * P, w: 151 * P, h: 368 * P,
   fill: { color: WHITE }, line: { color: BOX_RED, width: 2.5 },
 });
-for (let i = 0; i < 6; i++) {
-  const cy = 136 + 368 * (i + 0.5) / 6;
+for (const p of PLANES_SAFE) {
   s.addImage({
-    path: path.join(ASSETS, PLANES_SAFE[i]),
-    x: 331 * P + (151 * P - PLANE_W) / 2, y: cy * P - PLANE_H / 2,
-    w: PLANE_W, h: PLANE_H,
+    path: path.join(ASSETS, p.img),
+    x: (p.cx - p.w / 2) * P, y: (p.cy - p.h / 2) * P, w: p.w * P, h: p.h * P,
   });
 }
-s.addShape(pptx.shapes.RECTANGLE, {
-  x: 498 * P, y: 161 * P, w: 42 * P, h: 336 * P,
-  fill: { color: GREEN_STRIP }, line: { color: TXT_GREEN, width: 1 },
-});
+
 const NEG_CY = [176, 238, 283, 336, 398, 460];
 for (const cy of NEG_CY) {
   s.addText("-1", {
-    x: 498 * P, y: (cy - 9) * P, w: 42 * P, h: 18 * P,
+    x: 502 * P, y: (cy - 9) * P, w: 34 * P, h: 18 * P,
     align: "center", valign: "middle",
     fontSize: 12, bold: true, color: TEAL, fontFace: FONT, margin: 0,
   });
@@ -173,12 +209,12 @@ s.addShape(pptx.shapes.RECTANGLE, {
   fill: { color: ACT_FILL }, line: { color: BLUE, width: 1.5 },
 });
 s.addText("Activation Function", {
-  x: 596 * P, y: 96 * P, w: 204 * P, h: 20 * P,
+  x: 574 * P, y: 96 * P, w: 308 * P, h: 20 * P,
   align: "center", valign: "middle",
   fontSize: 13, bold: true, color: BLUE, fontFace: FONT, margin: 0,
 });
 s.addText([
-  { text: "Bi-polar step ", options: { fontSize: 12, bold: true, color: BLUE, fontFace: FONT } },
+  { text: "Bi-polor step ", options: { fontSize: 12, bold: true, color: BLUE, fontFace: FONT } },
   { text: "(-1 , +1)", options: { fontSize: 12, bold: true, color: DARK, fontFace: FONT } },
 ], {
   x: 583 * P, y: 118 * P, w: 170 * P, h: 18 * P,
@@ -187,7 +223,7 @@ s.addText([
 s.addText("Threshold at \u201Czero\u201D", {
   x: 587 * P, y: 140 * P, w: 160 * P, h: 16 * P,
   align: "left", valign: "middle",
-  fontSize: 12, bold: true, color: TXT_RED, fontFace: FONT, margin: 0,
+  fontSize: 12, bold: true, color: THRESH_DARK, fontFace: FONT, margin: 0,
 });
 // pink circle with bipolar step glyph at panel right (orig x811..868 y99..158, panel center y127.5)
 s.addShape(pptx.shapes.OVAL, {
@@ -206,12 +242,12 @@ s.addText("Training", {
   fontSize: 14, bold: true, color: TXT_RED, fontFace: FONT, margin: 0,
 });
 s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
-  x: 608 * P, y: 206 * P, w: 294 * P, h: 116 * P,
+  x: 560 * P, y: 205 * P, w: 339 * P, h: 117 * P,
   fill: { color: CREAM }, line: { color: ORANGE, width: 1 },
 });
 // "Input Sample" text left of the panel + hollow arrow into the Model box
 s.addText("Input\nSample", {
-  x: 571 * P, y: 233 * P, w: 40 * P, h: 24 * P,
+  x: 573 * P, y: 233 * P, w: 40 * P, h: 24 * P,
   align: "left", valign: "middle",
   fontSize: 10, color: DARK, fontFace: FONT, margin: 0, lineSpacing: 11,
 });
@@ -220,9 +256,9 @@ s.addShape(pptx.shapes.RIGHT_ARROW, {
   fill: { color: WHITE }, line: { color: BOX_RED, width: 1.75 },
 });
 // Model: dark-red box x612..736 y245..305, step circle inside right, yellow caption at bottom
-const MTY = 245 * P;
+const MTY = 247 * P;
 s.addShape(pptx.shapes.RECTANGLE, {
-  x: 612 * P, y: MTY, w: 124 * P, h: 60 * P,
+  x: 612 * P, y: MTY, w: 124 * P, h: 57 * P,
   fill: { color: BOX_RED },
 });
 s.addText("Model", {
@@ -231,7 +267,7 @@ s.addText("Model", {
   fontSize: 13, bold: true, color: WHITE, fontFace: FONT, margin: 0,
 });
 s.addShape(pptx.shapes.OVAL, {
-  x: 694 * P, y: MTY + 8 * P, w: 38 * P, h: 38 * P,
+  x: 694 * P, y: MTY + 8 * P, w: 39 * P, h: 39 * P,
   fill: { color: PINK }, line: { color: PINK, width: 0.5 },
 });
 s.addImage({
@@ -249,26 +285,26 @@ s.addText("Predicted\nClass", {
   align: "center", valign: "middle",
   fontSize: 9, color: DARK, fontFace: FONT, margin: 0, lineSpacing: 10,
 });
-// hollow arrow Model -> LOSS (orig x736..794 y264..281)
+// hollow arrow Model -> LOSS, ending at the circle's left edge so the head stays visible
 s.addShape(pptx.shapes.RIGHT_ARROW, {
-  x: 736 * P, y: 266 * P, w: 58 * P, h: 16 * P,
+  x: 736 * P, y: 266 * P, w: 43 * P, h: 16 * P,
   fill: { color: WHITE }, line: { color: BOX_RED, width: 1.75 },
 });
 // LOSS peach circle center (812,273) d60
 s.addShape(pptx.shapes.OVAL, {
-  x: 782 * P, y: 243 * P, w: 60 * P, h: 60 * P,
-  fill: { color: PEACH }, line: { color: BOX_RED, width: 1.25 },
+  x: 775 * P, y: 245 * P, w: 54 * P, h: 56 * P,
+  fill: { color: PEACH }, line: { color: PEACH, width: 0.5 },
 });
 s.addText("LOSS", {
-  x: 782 * P, y: 243 * P, w: 60 * P, h: 60 * P,
+  x: 775 * P, y: 245 * P, w: 54 * P, h: 56 * P,
   align: "center", valign: "middle",
   fontSize: 10, bold: true, color: BOX_RED, fontFace: FONT, margin: 0,
 });
 // "Label of Input Sample" above the hollow left arrow (orig x831..901 y216..252)
-s.addText("Label of\nInput Sample", {
-  x: 831 * P, y: 218 * P, w: 70 * P, h: 34 * P,
+s.addText("Label of\nInput\nSample", {
+  x: 831 * P, y: 218 * P, w: 70 * P, h: 40 * P,
   align: "center", valign: "middle",
-  fontSize: 9, color: DARK, fontFace: FONT, margin: 0, lineSpacing: 11,
+  fontSize: 9, color: DARK, fontFace: FONT, margin: 0, lineSpacing: 10,
 });
 // hollow LEFT arrow OUTSIDE the circle, head at its right edge (orig x845..885 y265..283)
 s.addShape(pptx.shapes.LEFT_ARROW, {
@@ -289,12 +325,12 @@ s.addText("Evaluation", {
   fontSize: 14, bold: true, color: TXT_RED, fontFace: FONT, margin: 0,
 });
 s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
-  x: 608 * P, y: 380 * P, w: 294 * P, h: 117 * P,
+  x: 560 * P, y: 380 * P, w: 339 * P, h: 118 * P,
   fill: { color: CREAM }, line: { color: ORANGE, width: 1 },
 });
-const MEY = 420 * P;
+const MEY = 421 * P;
 s.addText("Test\nSample", {
-  x: 561 * P, y: MEY - 5 * P, w: 52 * P, h: 24 * P,
+  x: 573 * P, y: MEY - 5 * P, w: 52 * P, h: 24 * P,
   align: "left", valign: "middle",
   fontSize: 10, color: DARK, fontFace: FONT, margin: 0, lineSpacing: 11,
 });
@@ -304,7 +340,7 @@ s.addShape(pptx.shapes.RIGHT_ARROW, {
 });
 // Model box x612..736 y420..480
 s.addShape(pptx.shapes.RECTANGLE, {
-  x: 612 * P, y: MEY, w: 124 * P, h: 60 * P,
+  x: 612 * P, y: MEY, w: 124 * P, h: 58 * P,
   fill: { color: BOX_RED },
 });
 s.addText("Model", {
@@ -313,7 +349,7 @@ s.addText("Model", {
   fontSize: 13, bold: true, color: WHITE, fontFace: FONT, margin: 0,
 });
 s.addShape(pptx.shapes.OVAL, {
-  x: 694 * P, y: MEY + 8 * P, w: 38 * P, h: 38 * P,
+  x: 694 * P, y: MEY + 8 * P, w: 39 * P, h: 39 * P,
   fill: { color: PINK }, line: { color: PINK, width: 0.5 },
 });
 s.addImage({

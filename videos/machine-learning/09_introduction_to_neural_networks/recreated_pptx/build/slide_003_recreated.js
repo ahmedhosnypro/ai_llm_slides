@@ -14,7 +14,7 @@ const BLUE = "0000CC";  // "class I" / "Class II" emphasis (pixel-confirmed)
 const GREEN = "008000"; // d(X), W^T X, delta_i, standalone X
 const BLACK = "000000";
 const BORDERC = "9E1B1B";
-const FILLC = "F0F0F0";
+const FILLC = "E8E8E8";
 
 const pres = new pptxgen();
 pres.layout = "LAYOUT_WIDE";
@@ -46,67 +46,71 @@ s.addText(TITLE, {
   fontSize: 32, bold: true, color: RED, fontFace: FONT, margin: 0,
 });
 
-// 4. panels. Original: borders y=90,203,217,301,315,404,419,516 of 540,
-// fills span the full inner height, last panel ends at 95.6%.
-const boxX = 0.67;
-const boxW = 12.0;
-const topY = 90 / 540 * 7.5;
-const gapY = 14 / 540 * 7.5;
+// 4. panels. Original border rows: 90/203, 217/300, 315/404, 419/503 of 540;
+// side borders at columns 68/871.
+const boxX = 68 / 72;
+const boxW = 803 / 72;
+const textX = 70 / 72;
+const textW = 850 / 72;
+const panelYs = [90, 217, 315, 419].map((px) => px / 540 * 7.5);
 const heights = [113, 83, 89, 84].map((px) => px / 540 * 7.5);
-let boxY = topY;
+let boxY = panelYs[0];
+const BODY = { fontSize: 21, color: BLACK, fontFace: FONT, charSpacing: 0.2 };
 
 function panel(h) {
   s.addShape(pres.shapes.RECTANGLE, {
     x: boxX, y: boxY, w: boxW, h: h,
-    fill: { color: FILLC },
+    fill: { color: "FEFFFD" },
     line: { color: BORDERC, width: 1 },
   });
 }
 
 function line(y, parts, opts) {
-  const runs = parts.map((p) => ({ text: p[0], options: Object.assign({}, opts, p[1]) }));
+  const runs = parts.map((p) => ({ text: p[0], options: Object.assign({}, BODY, opts, p[1]) }));
   s.addText(runs, {
-    x: boxX + 0.25, y: boxY + y, w: boxW - 0.5, h: 0.30,
+    x: textX, y: boxY + y, w: textW, h: 0.32,
     align: "left", valign: "top", margin: 0,
   });
 }
 
 // ---- Panel 1 : Define two classes ----
 panel(heights[0]);
-line(0.10, [["Define two classes: ", {}], ["class I", { color: RED, italic: true, bold: true }], [" and ", {}], ["Class II", { color: BLUE, italic: true, bold: true }]], { fontSize: 20, color: BLACK, fontFace: FONT });
-line(0.42, [["let ", {}], ["d(X)", { color: GREEN, bold: true }], [" be a discriminent function = ", {}], ["W", { bold: true }], ["T", { superscript: true }], [" X", { color: GREEN, bold: true }]], { fontSize: 20, color: BLACK, fontFace: FONT });
-line(0.74, [["if ", {}], ["X", { bold: true, underline: true }], [" ", {}], ["\u2208 ", {}], ["class I", { color: BLUE, italic: true }], [" then ", {}], ["d(X)", { color: GREEN, bold: true }], [" ", {}], ["> 0", { color: RED }]], { fontSize: 20, color: BLACK, fontFace: FONT });
-line(1.06, [["if ", {}], ["X", { bold: true, underline: true }], [" ", {}], ["\u2208 ", {}], ["class II", { color: BLUE, italic: true }], [" then ", {}], ["d(X)", { color: GREEN, bold: true }], [" ", {}], ["< 0", { color: BLUE }]], { fontSize: 20, color: BLACK, fontFace: FONT });
-boxY += heights[0] + gapY;
+line(0.003, [["Define two classes: ", {}], ["class I", { color: RED, italic: true, bold: true }], [" and ", {}], ["Class II", { color: BLUE, italic: true, bold: true }]]);
+line(0.309, [["let ", {}], ["d(X)", { color: GREEN, bold: true }], [" be a discriminent function = ", {}], ["W", { bold: true }], ["T", { superscript: true }], [" X", { color: GREEN, bold: true }]]);
+line(0.726, [["if ", {}], ["X", { bold: true, underline: true }], [" ", {}], ["\u2208 ", {}], ["class I", { color: RED, italic: true }], [" then ", {}], ["d(X)", { color: GREEN, bold: true }], [" ", {}], ["> 0", { color: RED }]]);
+line(1.116, [["if ", {}], ["X", { bold: true, underline: true }], [" ", {}], ["\u2208 ", {}], ["class II", { color: BLUE, italic: true }], [" then ", {}], ["d(X)", { color: GREEN, bold: true }], [" ", {}], ["< 0", { color: BLUE }]]);
+boxY = panelYs[1];
 
 // ---- Panel 2 : For misclassified X ----
 panel(heights[1]);
-line(0.10, [["For misclassified ", { color: BLUE, italic: true }], ["X", { color: GREEN, bold: true }], [" :", {}]], { fontSize: 20, color: BLACK, fontFace: FONT });
-line(0.42, [["If ", {}], ["X", { bold: true, underline: true }], [" ", {}], ["\u2208 ", {}], ["class I", { color: BLUE, italic: true }], [" and ", {}], ["misclassified", { color: RED, italic: true }], [" as ", {}], ["Class II", { color: BLUE, italic: true }], [" then ", {}], ["d(X)", { color: GREEN, bold: true }], [" will be ", {}], ["<0", { color: RED }]], { fontSize: 20, color: BLACK, fontFace: FONT });
-line(0.74, [["If ", {}], ["X", { bold: true, underline: true }], [" ", {}], ["\u2208 ", {}], ["class II", { color: BLUE, italic: true }], [" and ", {}], ["misclassified", { color: RED, italic: true }], [" as ", {}], ["class I", { color: BLUE, italic: true }], [" then ", {}], ["d(X)", { color: GREEN, bold: true }], [" will be ", {}], [">0", { color: BLUE }]], { fontSize: 20, color: BLACK, fontFace: FONT });
-boxY += heights[1] + gapY;
+line(0.003, [["For misclassified ", { italic: true }], ["X", { color: GREEN, bold: true }], [" :", {}]]);
+line(0.323, [["If ", {}], ["X", { bold: true, underline: true }], [" ", {}], ["\u2208 ", {}], ["class I", { color: RED, italic: true }], [" and ", {}], ["misclassified", { color: RED, italic: true }], [" as ", {}], ["Class II", { color: BLUE, italic: true }], [" then ", {}], ["d(X)", { color: GREEN, bold: true }], [" will be ", {}], ["<0", { color: RED }]]);
+line(0.698, [["If ", {}], ["X", { bold: true, underline: true }], [" ", {}], ["\u2208 ", {}], ["class II", { color: RED, italic: true }], [" and ", {}], ["misclassified", { color: RED, italic: true }], [" as ", {}], ["class I", { color: BLUE, italic: true }], [" then ", {}], ["d(X)", { color: GREEN, bold: true }], [" will be ", {}], [">0", { color: BLUE }]]);
+boxY = panelYs[2];
 
 // ---- Panel 3 : Define Error function as ----
 panel(heights[2]);
-line(0.08, [["Define Error function as:", { bold: true, underline: true }]], { fontSize: 20, color: BLACK, fontFace: FONT });
+line(0.08, [["Define Error function as:", { bold: true, underline: true }]]);
 s.addImage({
-  path: "assets/eq_error.png",
-  x: boxX + 0.25,
-  y: boxY + 0.40,
-  w: 9.6,
-  h: 9.6 / (5037 / 366),
+  path: "assets/eq_error_main.png",
+  x: 84 / 72,
+  y: 354 / 72,
+  w: 5416 / 600,
+  h: 327 / 600,
 });
-s.addText("X", {
-  x: boxX + 11.05, y: boxY + 0.42, w: 1.0, h: 0.3,
-  align: "left", valign: "top",
-  fontSize: 20, bold: true, color: RED, fontFace: FONT, margin: 0,
+s.addImage({
+  path: "assets/eq_error_x.png",
+  x: 762 / 72,
+  y: 352 / 72,
+  w: 193 / 600,
+  h: 193 / 600,
 });
-boxY += heights[2] + gapY;
+boxY = panelYs[3];
 
 // ---- Panel 4 : Define delta_i ----
 panel(heights[3]);
-line(0.08, [["Define ", { bold: true, underline: true }], ["\u03b4", { color: GREEN, bold: true }], ["i", { color: GREEN, bold: true, subscript: true }], [" as :", { bold: true, underline: true }]], { fontSize: 20, color: BLACK, fontFace: FONT });
-line(0.40, [["If ", {}], ["X", { bold: true, underline: true }], [" ", {}], ["\u2208 ", {}], ["class I", { color: BLUE, italic: true }], [" and ", {}], ["misclassified", { color: RED, italic: true }], [" as ", {}], ["Class II", { color: BLUE, italic: true }], [" then ", {}], ["d(X)", { color: GREEN, bold: true }], [" will be ", {}], ["<0", { color: RED }], [" \u21d2 ", {}], ["\u03b4", { color: GREEN, bold: true }], ["i", { color: GREEN, bold: true, subscript: true }], [" = -1 \u21d2 ", {}], ["d(X)", { color: GREEN, bold: true }], [" ", {}], ["\u03b4", { color: GREEN, bold: true }], ["i", { color: GREEN, bold: true, subscript: true }], [" >0", {}]], { fontSize: 20, color: BLACK, fontFace: FONT });
-line(0.72, [["If ", {}], ["X", { bold: true, underline: true }], [" ", {}], ["\u2208 ", {}], ["class II", { color: BLUE, italic: true }], [" and ", {}], ["misclassified", { color: RED, italic: true }], [" as ", {}], ["class I", { color: BLUE, italic: true }], [" then ", {}], ["d(X)", { color: GREEN, bold: true }], [" will be ", {}], [">0", { color: BLUE }], [" \u21d2 ", {}], ["\u03b4", { color: GREEN, bold: true }], ["i", { color: GREEN, bold: true, subscript: true }], [" = +1 \u21d2 ", {}], ["d(X)", { color: GREEN, bold: true }], [" ", {}], ["\u03b4", { color: GREEN, bold: true }], ["i", { color: GREEN, bold: true, subscript: true }], [" >0", {}]], { fontSize: 20, color: BLACK, fontFace: FONT });
+line(0.011, [["Define ", { bold: true, underline: true }], ["\u03b4", { color: GREEN, bold: true }], ["i", { color: GREEN, bold: true, subscript: true }], [" as :", { bold: true }]]);
+line(0.33, [["If ", {}], ["X", { bold: true, underline: true }], [" ", {}], ["\u2208 ", {}], ["class I", { color: RED, italic: true }], [" and ", {}], ["misclassified", { color: RED, italic: true }], [" as ", {}], ["Class II", { color: BLUE, italic: true }], [" then ", {}], ["d(X)", { color: GREEN, bold: true }], [" will be ", {}], ["<0", { color: RED }], [" \u21d2 ", {}], ["\u03b4", { color: GREEN, bold: true }], ["i", { color: GREEN, bold: true, subscript: true }], [" = -1 \u21d2 ", {}], ["d(X)", { color: GREEN, bold: true }], [" ", {}], ["\u03b4", { color: GREEN, bold: true }], ["i", { color: GREEN, bold: true, subscript: true }], [" >0", {}]]);
+line(0.61, [["If ", {}], ["X", { bold: true, underline: true }], [" ", {}], ["\u2208 ", {}], ["class II", { color: RED, italic: true }], [" and ", {}], ["misclassified", { color: RED, italic: true }], [" as ", {}], ["class I", { color: BLUE, italic: true }], [" then ", {}], ["d(X)", { color: GREEN, bold: true }], [" will be ", {}], [">0", { color: BLUE }], [" \u21d2 ", {}], ["\u03b4", { color: GREEN, bold: true }], ["i", { color: GREEN, bold: true, subscript: true }], [" = +1 \u21d2 ", {}], ["d(X)", { color: GREEN, bold: true }], [" ", {}], ["\u03b4", { color: GREEN, bold: true }], ["i", { color: GREEN, bold: true, subscript: true }], [" >0", {}]]);
 
 pres.writeFile({ fileName: "slide_003_recreated.pptx" }).then(() => console.log("wrote slide_003_recreated.pptx"));

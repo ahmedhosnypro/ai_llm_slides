@@ -34,39 +34,17 @@ add("w5_e2", [0.030, 0.222, 0.972, 0.288], 14, 0.22, [
     BLACK + r":(a_{11}x_1{+}a_{21}x_2{+}a_{31}x_3)x_1 + (a_{12}x_1{+}a_{22}x_2{+}a_{32}x_3)x_2 + (a_{13}x_1{+}a_{23}x_2{+}a_{33}x_3)x_3 =",
     BLACK + r":a_{11}x_1^2 + a_{21}x_1x_2 + a_{31}x_1x_3 + a_{12}x_1x_2 + a_{22}x_2^2 + a_{32}x_2x_3 + a_{13}x_1x_3 + a_{23}x_2x_3 + a_{33}x_3^2",
 ], rowgap=6)
-# E3 rendered directly at 22pt via render_math.render_row (fit_row's height
-# constraint caps a single row near 3.35in wide; the original line spans ~0.9
-# of the slide width, so use the direct render and record its exact size).
 E3_ROW = (RED + r":a_{11}x_1^2 + a_{22}x_2^2 + a_{33}x_3^2 + (a_{21}{+}a_{12})x_1x_2 + "
           r"(a_{31}{+}a_{13})x_1x_3 + (a_{32}{+}a_{23})x_2x_3||" +
           RED + r":\ \Rightarrow\ ||" + GREEN + r":\mathrm{Quadratic\ form}")
-
-
-def add_e3():
-    sys.path.insert(0, HERE)
-    import render_math as rm
-    from PIL import Image
-    canvas = rm.render_row(E3_ROW, 22)
-    out = os.path.join(EQDIR, "w5_e3.png")
-    Image.fromarray(canvas).save(out)
-    w_in, h_in = canvas.shape[1] / 600.0, canvas.shape[0] / 600.0
-    info = {"path": out, "w_px": int(canvas.shape[1]), "h_px": int(canvas.shape[0]),
-            "w_in": round(w_in, 5), "h_in": round(h_in, 5), "dpi": 600,
-            "fontsize_pt": [22], "rows": [E3_ROW]}
-    with open(os.path.join(EQDIR, "w5_e3.json"), "w") as fh:
-        json.dump(info, fh, indent=2)
-    x0, y0, x1, y1 = 0.030, 0.295, 0.972, 0.350
-    man = {"image": "w5_e3.png", "x": round(x0 * 13.33, 4), "y": round(y0 * 7.5, 4),
-           "w": round((x1 - x0) * 13.33, 4), "h": round((y1 - y0) * 7.5, 4),
-           "w_in": info["w_in"], "h_in": info["h_in"]}
-    return man
+add("w5_e3", [0.030, 0.295, 0.972, 0.350], 22, 0.4125, [E3_ROW])
 DEFS = [
     ("w5_d1", 0.365, r"a_{11}", r"\mathrm{Coefficient\ of\ }x_1^2"),
     ("w5_d2", 0.420, r"a_{22}", r"\mathrm{Coefficient\ of\ }x_2^2"),
     ("w5_d3", 0.475, r"a_{33}", r"\mathrm{Coefficient\ of\ }x_3^2"),
-    ("w5_d4", 0.530, r"a_{21}{+}a_{12}", r"a_{12}{=}a_{21}{=}\frac{1}{2}\ \mathrm{coefficient\ of\ }x_1x_2"),
-    ("w5_d5", 0.585, r"a_{31}{+}a_{13}", r"a_{13}{=}a_{31}{=}\frac{1}{2}\ \mathrm{coefficient\ of\ }x_1x_3"),
-    ("w5_d6", 0.640, r"a_{32}{+}a_{23}", r"a_{32}{=}a_{23}{=}\frac{1}{2}\ \mathrm{coefficient\ of\ }x_2x_3"),
+    ("w5_d4", 0.530, r"a_{21}{+}a_{12}", r"\mathrm{Coefficient\ of\ }x_1x_2\ \Rightarrow\ a_{12}{=}a_{21}{=}\frac{1}{2}\ \mathrm{coefficient\ of\ }x_1x_2"),
+    ("w5_d5", 0.585, r"a_{31}{+}a_{13}", r"\mathrm{Coefficient\ of\ }x_1x_3\ \Rightarrow\ a_{13}{=}a_{31}{=}\frac{1}{2}\ \mathrm{coefficient\ of\ }x_1x_3"),
+    ("w5_d6", 0.640, r"a_{32}{+}a_{23}", r"\mathrm{Coefficient\ of\ }x_2x_3\ \Rightarrow\ a_{32}{=}a_{23}{=}\frac{1}{2}\ \mathrm{coefficient\ of\ }x_2x_3"),
 ]
 for name, y0, lhs, rhs in DEFS:
     add(name, [0.035, y0, 0.605, y0 + 0.055], 14, 0.4125,
@@ -75,15 +53,15 @@ for name, y0, lhs, rhs in DEFS:
 add("w5_hdr", [0.100, 0.700, 0.250, 0.730], 12, 0.225,
     [BLACK + r":x_1\ \ \ x_2\ \ \ x_3"])
 MATS = [
-    ("w5_m1", 0.745, r"x_1\ \ \ a_{11}\ \ \ a_{12}"),
-    ("w5_m2", 0.802, r"x_2\ \ \ a_{21}\ \ \ a_{22}"),
-    ("w5_m3", 0.858, r"x_3\ \ \ a_{31}\ \ \ a_{32}"),
+    ("w5_m1", 0.745, r"x_1\ \ \ a_{11}\ \ \ a_{12}\ \ \ a_{13}"),
+    ("w5_m2", 0.802, r"x_2\ \ \ a_{21}\ \ \ a_{22}\ \ \ a_{23}"),
+    ("w5_m3", 0.858, r"x_3\ \ \ a_{31}\ \ \ a_{32}\ \ \ a_{33}"),
 ]
 for name, y0, latex in MATS:
     add(name, [0.080, y0, 0.230, y0 + 0.057], 13, 0.4275, [BLACK + ":" + latex])
 
 GRID = [
-    r"\mathrm{coef\ of\ }x_1^2", r"0.5\ \mathrm{coef\ of\ }x_1x_3", r"0.5\ \mathrm{coef\ of\ }x_1x_2",
+    r"\mathrm{coef\ of\ }x_1^2", r"0.5\ \mathrm{coef\ of\ }x_1x_2", r"0.5\ \mathrm{coef\ of\ }x_1x_3",
     r"0.5\ \mathrm{coef\ of\ }x_1x_2", r"\mathrm{coef\ of\ }x_2^2", r"0.5\ \mathrm{coef\ of\ }x_2x_3",
     r"0.5\ \mathrm{coef\ of\ }x_1x_3", r"0.5\ \mathrm{coef\ of\ }x_2x_3", r"\mathrm{coef\ of\ }x_3^2",
 ]
@@ -97,8 +75,7 @@ for i, latex in enumerate(GRID):
 
 def main():
     os.makedirs(EQDIR, exist_ok=True)
-    man = {"w5_e3": add_e3()}
-    print("w5_e3", man["w5_e3"]["w_in"], "x", man["w5_e3"]["h_in"])
+    man = {}
     bad = []
     for name, box, size, maxh, rows, rowgap in A:
         x0, y0, x1, y1 = box

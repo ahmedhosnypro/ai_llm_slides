@@ -57,60 +57,49 @@ s.addText([
   fontSize: 30, bold: true, color: RED, fontFace: FONT, margin: 0,
 });
 
-// 4. Left column: Equation box (peach background, rounded rectangle)
-// Position: left side, upper portion below title
-const eq_x = 0.6;
-let eq_y = 1.1;
-const eq_w = 5.8;
-const eq_h = 1.6;
+// Original frame x=60..899, y=60..516 maps onto the mandated house frame.
+const X = (px) => 0.15 + (px - 60) * (13.03 / 839);
+const Y = (py) => 0.15 + (py - 60) * (7.2 / 456);
+const WX = (wpx) => wpx * (13.03 / 839);
+const HY = (hpx) => hpx * (7.2 / 456);
 
-s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
-  x: eq_x, y: eq_y, w: eq_w, h: eq_h,
-  fill: { color: PEACH }, line: { color: "none" },
-});
-
-// Equation 1: d_1(X) = W_1^T X = w_{11}x_1 + w_{12}x_2 + ... + w_{1n}x_n + b_1 * 1
-eq_y = eq_y + 0.15;
-s.addImage({
-  path: "/home/codespace/ai_llm_slides/videos/machine-learning/09_introduction_to_neural_networks/recreated_pptx/build/eq_s006_d1.png",
-  x: eq_x + 0.15, y: eq_y, w: 6.12333, h: 0.345,
-});
-
-// Equation 2: d_2(X) = W_2^T X = w_{21}x_1 + w_{22}x_2 + ... + w_{2n}x_n + b_2 * 1
-eq_y += 0.4;
-s.addImage({
-  path: "/home/codespace/ai_llm_slides/videos/machine-learning/09_introduction_to_neural_networks/recreated_pptx/build/eq_s006_d2.png",
-  x: eq_x + 0.15, y: eq_y, w: 6.12333, h: 0.34667,
-});
-
-// Equation 3: d_m(X) = W_m^T X = w_{m1}x_1 + w_{m2}x_2 + ... + w_{mn}x_n + b_m * 1
-eq_y += 0.4;
-s.addImage({
-  path: "/home/codespace/ai_llm_slides/videos/machine-learning/09_introduction_to_neural_networks/recreated_pptx/build/eq_s006_dm.png",
-  x: eq_x + 0.15, y: eq_y, w: 6.465, h: 0.335,
-});
-
-// 5. Left column below equation box: "Multi-Class Classification" tan box
-const class_x = 0.6;
-const class_y = eq_y + 0.35 + 0.335;  // below last equation
-const class_w = 5.8;
-const class_h = 0.5;
-
-s.addShape(pres.shapes.RECTANGLE, {
-  x: class_x, y: class_y, w: class_w, h: class_h,
-  fill: { color: TAN }, line: { color: "none" },
-});
-s.addText("Multi-Class Classification", {
-  x: class_x + 0.15, y: class_y + 0.05, w: class_w - 0.3, h: class_h - 0.1,
-  align: "center", valign: "middle",
-  fontSize: 16, bold: false, color: TAN_TEXT, fontFace: FONT, margin: 0,
-});
-
-// 6. Right side: Embed the generated perceptron diagram
+// 4. Right side first: generated perceptron diagram (the equation panel occludes its top-left).
 const diag_meta = require("/home/codespace/ai_llm_slides/videos/machine-learning/09_introduction_to_neural_networks/recreated_pptx/build/slide_006_perceptron_multiclass.json");
 s.addImage({
   path: "/home/codespace/ai_llm_slides/videos/machine-learning/09_introduction_to_neural_networks/recreated_pptx/build/slide_006_perceptron_multiclass.png",
   x: diag_meta.position.x, y: diag_meta.position.y, w: diag_meta.position.w, h: diag_meta.position.h,
+});
+
+// 5. Measured white equation panel: original x=72..471, y=100..236.
+const eq_x = X(72), eq_y = Y(100), eq_w = WX(471 - 72), eq_h = HY(236 - 100);
+s.addShape(pres.shapes.RECTANGLE, {
+  x: eq_x, y: eq_y, w: eq_w, h: eq_h,
+  fill: { color: "FFFFFC" }, line: { color: "D64B7E", width: 0.75 },
+});
+
+// Equations at their measured ink tops; exact 600-dpi asset sizes from the sidecars.
+const eq_manifest = require("/home/codespace/ai_llm_slides/videos/machine-learning/09_introduction_to_neural_networks/recreated_pptx/build/slide_006_equations.json");
+const eq_by_name = Object.fromEntries(eq_manifest.equations.map((e) => [e.name, e]));
+for (const [name, py] of [["eq_s006_d1", 108], ["eq_s006_d2", 157], ["eq_s006_dm", 205]]) {
+  const meta = eq_by_name[name].sidecar;
+  s.addImage({
+    path: "/home/codespace/ai_llm_slides/videos/machine-learning/09_introduction_to_neural_networks/recreated_pptx/build/" + name + ".png",
+    x: X(79), y: Y(py), w: meta.w_in, h: meta.h_in,
+  });
+}
+
+// 6. Measured pale-yellow callout: original x=137..327, y=360..399, two centered italic lines.
+const class_x = X(137), class_y = Y(360), class_w = WX(327 - 137), class_h = HY(399 - 360);
+s.addShape(pres.shapes.RECTANGLE, {
+  x: class_x, y: class_y, w: class_w, h: class_h,
+  fill: { color: "FFFFCC" }, line: { color: "B8B400", width: 0.75 },
+});
+s.addText([
+  { text: "Multi-Class", options: { breakLine: true, italic: true, bold: true, fontSize: 12, color: TAN_TEXT, fontFace: FONT } },
+  { text: "Classification", options: { italic: true, bold: true, fontSize: 12, color: TAN_TEXT, fontFace: FONT } },
+], {
+  x: class_x, y: class_y, w: class_w, h: class_h,
+  align: "center", valign: "middle", lineSpacing: 14, margin: 0,
 });
 
 pres.writeFile({ 

@@ -1,0 +1,38 @@
+{
+  "note": "PREP ONLY (2026-11-14): rel_id values are null placeholders \u2014 re-derive rel_id (and all values) from the CURRENT slide_034_recreated.pptx before running scripts/18_omml_wrapper.py. No gen script or mathtext sidecar exists for eq_034 (checked build/ and git history); mathtext read from the PNGs themselves (all ink is exactly #0000FF), font_size_pt estimated by re-rendering at 600dpi and matching image height. \\mathcal is not supported by the wrapper's mathtext subset, so the script-L is written \\mathrm{L}.",
+  "slides": [
+    {
+      "slide": 1,
+      "equations": [
+        {
+          "rel_id": null,
+          "image": "eq1_lagrangian_multi.png",
+          "mathtext": "\\mathrm{L}_D(\\alpha) = \\sum_{i=1}^{N} \\alpha_i - \\frac{1}{2} \\sum_{j=1}^{N} \\sum_{i=1}^{N} \\alpha_i\\alpha_j y_i y_j X_i^T X_j",
+          "font_size_pt": 15.34,
+          "color": "#0000FF"
+        },
+        {
+          "rel_id": null,
+          "image": "eq2_W_multi.png",
+          "mathtext": "W = \\sum_{i=1}^{N} \\alpha_i y_i X_i",
+          "font_size_pt": 15.29,
+          "color": "#0000FF"
+        },
+        {
+          "rel_id": null,
+          "image": "eq3_b_multi.png",
+          "mathtext": "b = -\\frac{1}{2}\\left[\\max_{i:y_i=-1} W^T X_i+\\min_{i:y_i=+1} W^T X_i\\right]",
+          "font_size_pt": 15.93,
+          "color": "#0000FF"
+        },
+        {
+          "rel_id": null,
+          "image": "eq4_mapping.png",
+          "mathtext": "X_i^T X_j \\Rightarrow \\phi(X_i)^T\\phi(X_j)",
+          "font_size_pt": 13.5,
+          "color": "#0000FF"
+        }
+      ]
+    }
+  ]
+}

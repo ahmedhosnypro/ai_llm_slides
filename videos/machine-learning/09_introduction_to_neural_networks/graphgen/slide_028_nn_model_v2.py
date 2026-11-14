@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Circle, Rectangle, FancyArrowPatch
 import numpy as np
 
-OUT = "/home/codespace/ai_llm_slides/videos/machine-learning/09_introduction_to_neural_networks/recreated_pptx/build/slide_028_nn_model.png"
+OUT = "/home/codespace/ai_llm_slides/videos/machine-learning/09_introduction_to_neural_networks/recreated_pptx/build/slide_028_nn_model_v2.png"
 fig = plt.figure(figsize=(13.333333, 7.5), dpi=300)
 fig.patch.set_alpha(0)
 ax = fig.add_axes([0, 0, 1, 1])
@@ -55,17 +55,24 @@ for y in (255, 278, 301, 324):
     for ny in rows:
         ax.plot([82, 143], [y, ny], color="#b8b8b8", lw=0.35, alpha=0.55)
 
+# Five visual columns: unlabeled first column, then Net_i, Net_j, Net_k, output.
 for a in rows:
     for b in rows:
-        ax.plot([177, 403], [a, b], color="#b07070", lw=0.45, alpha=0.65)
-        ax.plot([437, 563], [a, b], color="#b07070", lw=0.45, alpha=0.65)
-        ax.plot([597, 653], [a, b], color="#b07070", lw=0.45, alpha=0.65)
+        ax.plot([177, 233], [a, b], color="#b8b8b8", lw=0.4, alpha=0.6)
+        ax.plot([267, 403], [a, b], color=RED, lw=0.55, alpha=0.7)
+        ax.plot([437, 563], [a, b], color=RED, lw=0.55, alpha=0.7)
+        ax.plot([597, 653], [a, b], color="#b8b8b8", lw=0.4, alpha=0.6)
 
 for y in rows:
     neuron(160, y, "#f4f4f4", "#777777")
+    neuron(250, y, "#e8f0f8", "#7080a0")
     neuron(420, y, "#d8f8c8", "#70a070")
     neuron(580, y, "#ffe0b8", "#c09060")
     neuron(670, y, "#f4f4f4", "#777777")
+    for x in (190, 205, 220, 615, 630, 645):
+        ax.add_patch(Circle((x, y), 2, facecolor="#888888", edgecolor="#888888"))
+    for x in (267, 437, 597):
+        ax.add_patch(Circle((x, y), 3, facecolor=RED, edgecolor=RED))
 
 for x, label in ((200, "i"), (380, "j"), (540, "k")):
     ax.text(x, 183, rf"$Net_{label}$", fontsize=15, color=RED, ha="center", va="center")
@@ -78,7 +85,7 @@ for x, label in ((330, "ji"), (490, "kj")):
 
 for y, label in zip(rows, ("Output 1", "Output 2", "Output m")):
     ax.add_patch(FancyArrowPatch((688, y), (712, y), arrowstyle="-|>",
-                                 mutation_scale=7, lw=0.7, color="#777777"))
+                                 mutation_scale=7, lw=0.7, color=RED))
     ax.text(718, y + 1, label, fontsize=9, ha="left", va="center", color="black")
 
 # Error column, class labels, and the green return arrow.
@@ -90,11 +97,11 @@ for y, label in zip(rows, ("Class 1", "Class 2", "Class m")):
 ax.add_patch(FancyArrowPatch((792, 323), (765, 323), arrowstyle="-|>",
                              mutation_scale=10, lw=1.2, color=GREEN))
 
-# Layer annotations and arrows.
-for x, fill, edge, top, bottom in (
-    (220, "#d5e8f7", "#8090c0", "Previous Layer", "Layer (i)"),
-    (380, "#d5f5e3", "#70a070", "Current Layer", "(You are here)"),
-    (560, "#fdebd0", "#c09060", "Next Layer", "Layer (K)"),
+# Layer annotations and arrows, with the original's i/j/k arrow letters.
+for x, fill, edge, top, bottom, letter in (
+    (220, "#d5e8f7", "#8090c0", "Previous Layer", "Layer (i)", "i"),
+    (380, "#d5f5e3", "#70a070", "Current Layer", "(You are here)", "j"),
+    (560, "#fdebd0", "#c09060", "Next Layer", "Layer (K)", "k"),
 ):
     box(x, 430, 85 if x != 380 else 90, 30, fill, edge)
     ax.text(x + (85 if x != 380 else 90) / 2, 445, f"{top}\n{bottom}",
@@ -102,6 +109,7 @@ for x, fill, edge, top, bottom in (
     cx = x + (85 if x != 380 else 90) / 2
     ax.add_patch(FancyArrowPatch((cx, 429), (cx, 417), arrowstyle="-|>",
                                  mutation_scale=9, lw=0.8, color=edge))
+    ax.text(cx, 423, letter, fontsize=8, ha="center", va="center", color=edge)
 
 # Footer layer labels and hidden-layer extent.
 box(68, 472, 55, 33, "black", "black")

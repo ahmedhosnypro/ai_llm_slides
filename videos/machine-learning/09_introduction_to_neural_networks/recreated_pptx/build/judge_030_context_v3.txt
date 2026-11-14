@@ -1,0 +1,18 @@
+## SLIDE 030 v3 — measured context for the judge
+
+Source frame: `V/unique_slides/slide_030.jpg` (960x540; 72 px/in). Printed badge: 30.
+
+Measured original geometry used by the v3 build:
+- Network panel: x=187..847, y=57..250, white fill, red border.
+- Input vector bars: x=219 and x=248, y=123..203; values 7 at (232,129), 4 at (231,181); blue italic x1/x2 at x=192, y=129/184.
+- Hidden nodes 3/4/5: centers (423,92), (423,162), (422,230), diameter ~29 px, yellow fill, red outline; blue O3/O4/O5 labels at x~432, y=65/135/203.
+- Output nodes 6/7: centers (617,135), (617,190), diameter ~29 px, orange fill, red outline; blue O6/O7 at x=664, y=114/172; blue "Output" at (643,83); black "Target" at (741,84).
+- Target vector bars: x=751 and x=780, y=120..200; 0 at (763,126), 1 at (765,177); blue t6/t7 at x=799, y=128/182; dashed connectors from outputs to target.
+- Input weights 0.1..0.6 are green around x=266..328, y=104..214; hidden-to-output weights 0.3/0.4/0.5 are red.
+- Forward: blue italic underlined at x=72..161, y=241..256.
+- Lower panels: blue x=72..357 y=266..405 and x=72..602 y=417..508; green x=638..879 y=266..405 and x=638..879 y=417..508.
+- Equations: Net3/4/5 baselines y=296/343/390, label x=82, body x=132; Net6/7 baselines y=446/487, label x=79, body x=128; O3/4/5 baselines y=306/351/396, label x=657, body x=683; O6/7 baselines y=458/503, label x=659, body x=685. Labels are red; bodies black; sigmoid fractions are stacked 2D.
+
+Verbatim equations: Net3=7*0.1+4*0.4=2.3; Net4=7*0.2+4*0.5=3.4; Net5=7*0.3+4*0.6=4.5; Net6=Net7=0.909*0.3+0.968*0.4+0.989*0.5=1.1544; O3=1/(1+e^-2.3)=0.909; O4=1/(1+e^-3.4)=0.968; O5=1/(1+e^-4.5)=0.989; O6=O7=1/(1+e^-1.1544)=0.76.
+
+Non-content artifacts (must NOT be reported as missing): mouse cursor / video-capture chrome in the original; house red frame / yellow badge / title position.

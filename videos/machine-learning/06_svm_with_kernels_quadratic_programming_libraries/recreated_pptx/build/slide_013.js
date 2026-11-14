@@ -54,7 +54,7 @@ s.addText("", {
 });
 
 // ---- upper red panel (QP formulation) ----
-rect(0.071, 0.120, 0.815, 0.372, "FF0000", 1.5);
+rect(0.071, 0.120, 0.815, 0.372, "FF0000", 1.5, "FCE4D6");
 txt("Minimize:", 0.075, 0.133, 0.142, 0.165,
   { fontSize: 11, bold: true, italic: true, color: "FF0000", fontFace: SERIF });
 imgC("obj", 0.154, 0.128, 0.592, 0.170);
@@ -95,7 +95,7 @@ txt("G =", 0.106, 0.663, 0.133, 0.707,
   { fontSize: 13, bold: true, color: "FF0000", fontFace: SERIF });
 for (let i = 0; i < 8; i++) {
   const m = M["g_row" + (i + 1)];
-  s.addImage({ path: m.path, x: X(0.136), y: Y(0.544) + i * Y(0.0395), w: m.w_in, h: m.h_in });
+  s.addImage({ path: m.path, x: X(0.136), y: Y(0.540) + i * Y(0.037), w: m.w_in, h: m.h_in });
 }
 imgC("alphavec", 0.302, 0.548, 0.328, 0.715);
 rect(0.351, 0.528, 0.429, 0.844, "0000FF", 1.5, "E0FFFF");

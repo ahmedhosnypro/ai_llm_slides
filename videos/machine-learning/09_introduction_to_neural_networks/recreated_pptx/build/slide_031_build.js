@@ -1,22 +1,21 @@
-// Build slide 031: Example / Better Weights (badge 31)
+const fs = require("fs");
+const path = require("path");
 const pptxgen = require("pptxgenjs");
 
+const B = __dirname;
 const pres = new pptxgen();
 pres.layout = "LAYOUT_WIDE";
 const W = 13.33, H = 7.5;
 const s = pres.addSlide();
 s.background = { color: "E8E8E8" };
 const FONT = "Arial";
+const px = v => v / 72;
 
-// ---- HOUSE CHROME (laws from pattern) ----
-// 1. Outer red frame (0.15in inset from every edge)
 s.addShape(pres.shapes.RECTANGLE, {
   x: 0.15, y: 0.15, w: W - 0.3, h: H - 0.3,
   fill: { type: "none" },
   line: { color: "C00000", width: 1.5 },
 });
-
-// 2. Slide-number badge (yellow oval + centered bold numeral)
 s.addShape(pres.shapes.OVAL, {
   x: 12.48, y: 0.30, w: 0.5, h: 0.5,
   fill: { color: "FFF9C4" }, line: { color: "FFF9C4", width: 0.5 },
@@ -26,81 +25,56 @@ s.addText("31", {
   align: "center", valign: "middle",
   fontSize: 18, bold: true, color: "333333", fontFace: FONT, margin: 0,
 });
-
-// 3. Title box
 s.addText("Example", {
   x: 0.6, y: 0.28, w: 12.13, h: 0.55,
   align: "center", valign: "top",
   fontSize: 24, bold: true, color: "C00000", fontFace: FONT, margin: 0,
 });
-
-// 4. Subtitle box: "Better Weights" in green box
-s.addShape(pres.shapes.RECTANGLE, {
-  x: 0.6, y: 0.85, w: 3.5, h: 0.5,
-  fill: { color: "E0F5E0" },
-  line: { color: "008000", width: 1 },
-});
 s.addText("Better Weights", {
-  x: 0.6, y: 0.85, w: 3.5, h: 0.5,
-  align: "center", valign: "middle",
-  fontSize: 16, bold: true, color: "008000", fontFace: FONT, margin: 0,
+  x: px(73), y: px(65), w: px(104), h: px(15),
+  align: "left", valign: "middle",
+  fontSize: 12, bold: true, color: "C00000", fontFace: FONT, margin: 0,
 });
 
-// ---- SLIDE CONTENT ----
-
-// Neural network diagram (generated graph from graphgen/)
-// The diagram spans top-center to mid-right
-// For now, using a placeholder - the graph will be generated via graphgen/
+const diagram = JSON.parse(fs.readFileSync(path.join(B, "slide_031_nn_diagram.json")));
 s.addImage({
-  path: "slide_031_nn_diagram.png",
-  x: 1.5, y: 1.2, w: 7.5, h: 3.5,
+  path: path.join(B, diagram.image),
+  x: diagram.position.x, y: diagram.position.y,
+  w: diagram.width_in, h: diagram.height_in,
 });
 
-// "Forward" label (blue, italic) - middle-left
 s.addText("Forward", {
-  x: 0.8, y: 3.3, w: 1.5, h: 0.5,
-  align: "center", fontSize: 16, bold: true, italic: true, color: "000080", fontFace: FONT, margin: 0,
+  x: px(70), y: px(245), w: px(110), h: px(22),
+  align: "left", valign: "middle",
+  fontSize: 16, bold: true, italic: true, color: "0000FF", fontFace: FONT, margin: 0,
 });
 
-// Blue-bordered boxes: Net calculations (bottom-left)
-// First blue box: Net3, Net4, Net5
-s.addShape(pres.shapes.RECTANGLE, {
-  x: 0.5, y: 3.8, w: 5.5, h: 1.2,
-  fill: { color: "FFFFFF" },
-  line: { color: "000080", width: 1.5 },
-});
-s.addImage({ path: "eq_net3.png", x: 0.6, y: 3.85, w: 3.55, h: 0.20 });
-s.addImage({ path: "eq_net4.png", x: 0.6, y: 4.15, w: 3.55, h: 0.20 });
-s.addImage({ path: "eq_net5.png", x: 0.6, y: 4.45, w: 3.55, h: 0.20 });
+function box(x, y, w, h, fill, line) {
+  s.addShape(pres.shapes.RECTANGLE, {
+    x: px(x), y: px(y), w: px(w), h: px(h),
+    fill: { color: fill }, line: { color: line, width: 1.5 },
+  });
+}
 
-// Second blue box: Net6, Net7
-s.addShape(pres.shapes.RECTANGLE, {
-  x: 0.5, y: 5.2, w: 5.5, h: 1.0,
-  fill: { color: "FFFFFF" },
-  line: { color: "000080", width: 1.5 },
-});
-s.addImage({ path: "eq_net6.png", x: 0.6, y: 5.25, w: 5.3, h: 0.20 });
-s.addImage({ path: "eq_net7.png", x: 0.6, y: 5.55, w: 5.3, h: 0.20 });
+function eq(name, x, y) {
+  const side = JSON.parse(fs.readFileSync(path.join(B, name.replace(".png", ".json"))));
+  s.addImage({ path: path.join(B, name), x: px(x), y: px(y), w: side.w_in, h: side.h_in });
+}
 
-// Green-bordered boxes: O (sigmoid output) calculations (bottom-right)
-// First green box: O3, O4, O5
-s.addShape(pres.shapes.RECTANGLE, {
-  x: 6.5, y: 3.8, w: 2.5, h: 1.2,
-  fill: { color: "FFFFFF" },
-  line: { color: "008000", width: 1.5 },
-});
-s.addImage({ path: "eq_O3.png", x: 6.6, y: 3.85, w: 1.93, h: 0.29 });
-s.addImage({ path: "eq_O4.png", x: 6.6, y: 4.20, w: 1.93, h: 0.29 });
-s.addImage({ path: "eq_O5.png", x: 6.6, y: 4.55, w: 1.93, h: 0.29 });
+box(72, 267, 360, 137, "FBFDE8", "000080");
+eq("eq_net3.png", 82, 281);
+eq("eq_net4.png", 81, 328);
+eq("eq_net5.png", 82, 375);
+box(72, 418, 557, 89, "FBFDE8", "000080");
+eq("eq_net6.png", 78, 430);
+eq("eq_net7.png", 78, 472);
+box(638, 265, 241, 141, "EFFFE2", "008000");
+eq("eq_O3.png", 657, 273);
+eq("eq_O4.png", 657, 318);
+eq("eq_O5.png", 657, 363);
+box(638, 416, 241, 93, "EFFFF2", "008000");
+eq("eq_O6.png", 663, 424);
+eq("eq_O7.png", 660, 468);
 
-// Second green box: O6, O7
-s.addShape(pres.shapes.RECTANGLE, {
-  x: 6.5, y: 5.2, w: 2.5, h: 1.0,
-  fill: { color: "FFFFFF" },
-  line: { color: "008000", width: 1.5 },
-});
-s.addImage({ path: "eq_O6.png", x: 6.6, y: 5.25, w: 1.88, h: 0.29 });
-s.addImage({ path: "eq_O7.png", x: 6.6, y: 5.60, w: 1.93, h: 0.29 });
-
-const outPath = "slide_031_recreated.pptx";
+const outPath = path.join(B, "slide_031_recreated.pptx");
 pres.writeFile({ fileName: outPath }).then(() => console.log("wrote", outPath));

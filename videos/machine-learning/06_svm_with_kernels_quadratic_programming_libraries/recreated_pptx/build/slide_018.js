@@ -11,7 +11,7 @@ const SERIF = "Times New Roman";
 const NS = "/home/codespace/ai_llm_slides/videos/machine-learning/06_svm_with_kernels_quadratic_programming_libraries";
 const BUILD = NS + "/recreated_pptx/build";
 const eqMap = require(BUILD + "/eq_018/eq18_map_rb5.json");
-const eqCol = require(BUILD + "/eq_018/eq18_colvec_rb5.json");
+const eqCol = require(BUILD + "/eq_018/eq18_colvec_fix.json");
 const graph = require(BUILD + "/slide_018_graph_rb5.png.json");
 
 const pres = new pptxgen();

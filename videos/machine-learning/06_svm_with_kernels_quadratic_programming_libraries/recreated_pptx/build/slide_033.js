@@ -6,6 +6,5 @@ pres.layout = "LAYOUT_WIDE";
 const s = pres.addSlide();
 house(pres, s, 33);
 s.addShape(pres.shapes.RECTANGLE, Object.assign(box([0.066, 0.089, 0.954, 0.913]), { fill: { color: "F2F2F2" }, line: { color: "B00000", width: 2 } }));
-const b = box([0.264, 0.400, 0.735, 0.475]);
-s.addText("How to Kernelize SVM", { x: b.x, y: b.y, w: b.w, h: b.h, align: "center", valign: "middle", fontSize: 30, bold: true, color: "B00000", fontFace: "Arial", margin: 0 });
+s.addText("How to Kernelize SVM", { x: 0.6, y: 0.28, w: 12.13, h: 0.6, align: "center", valign: "top", fontSize: 30, bold: true, color: "B00000", fontFace: "Arial", margin: 0 });
 pres.writeFile({ fileName: OUT }).then(() => console.log("wrote", OUT)).catch(e => console.error(e));

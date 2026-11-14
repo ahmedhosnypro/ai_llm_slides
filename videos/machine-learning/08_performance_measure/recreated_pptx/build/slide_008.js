@@ -6,7 +6,7 @@ const pptx = new pptxgenpkg();
 pptx.layout = "LAYOUT_WIDE";
 
 const BG = "E8E8E8", RED = "C00000", INK = "000000", BADGE = "FFF9C4", NUM = "333333";
-const BLUE = "0070C0", FRAME_BLUE = "0000CC", GREEN = "92D050", GRN_TXT = "45B144";
+const BLUE = "0070C0", FRAME_BLUE = "0000CC", GREEN = "7CFC00", GRN_TXT = "45B144";
 const PURPLE = "7030A0", DOTRED = "F13148", ARROW_BLUE = "0000FF";
 const FONT = "Arial";
 const P = (px) => px / 72;
@@ -87,7 +87,7 @@ s.addImage({
 // --- WORKED EXAMPLE BOX (pale blue, two lines) ---
 s.addShape(pptx.shapes.RECTANGLE, {
   x: P(335), y: P(290), w: P(193), h: P(44),
-  fill: { color: "DDEBF7" }, line: { color: "9DC3E6", width: 1 }
+  fill: { color: "F0FFFF" }, line: { color: "9DC3E6", width: 1 }
 });
 s.addImage({
   path: "/home/codespace/ai_llm_slides/videos/machine-learning/08_performance_measure/recreated_pptx/build/assets/eq_008_worked_v2.png",
@@ -144,7 +144,7 @@ s.addText([
 // --- BLUE NOTE BOX ---
 s.addShape(pptx.shapes.RECTANGLE, {
   x: P(72), y: P(431), w: P(427), h: P(89),
-  fill: { color: "B2D5E7" }, line: { color: "2E75B6", width: 1.25 }
+  fill: { color: "D2F4F4" }, line: { color: "2E75B6", width: 1.25 }
 });
 s.addText([
   { text: "Higher Precision value ", options: { fontSize: 15, italic: true, color: BLUE, fontFace: FONT, breakLine: false } },
@@ -175,34 +175,34 @@ function cellText(x, y, w, h, t) {
   });
 }
 
-// --- MATRIX 1 (labels) ---
+// --- MATRIX 1 (labels) --- panel frame orig x674-867 y53-158
 s.addShape(pptx.shapes.RECTANGLE, {
-  x: P(672), y: P(53), w: P(195), h: P(116),
+  x: P(674), y: P(53), w: P(193), h: P(105),
   fill: { color: "FFFFFF" }, line: { color: FRAME_BLUE, width: 1.5 }
 });
 s.addText("Predicted as", {
-  x: P(738), y: P(58), w: P(106), h: P(18), align: "center", valign: "middle",
+  x: P(737), y: P(56), w: P(109), h: P(15), align: "center", valign: "middle",
   fontSize: 13, bold: true, color: RED, fontFace: FONT, margin: 0
 });
-vline(683, 82, 150); vline(697, 82, 150); vline(737, 82, 150); vline(790, 82, 150); vline(844, 82, 150);
-hline(82, 683, 846); hline(98, 683, 846); hline(124, 683, 846); hline(150, 683, 846);
-cellText(737, 84, 53, 14, "P");
-cellText(790, 84, 54, 14, "N");
-cellText(697, 100, 40, 24, "P");
-cellText(697, 127, 40, 23, "N");
-// Actual rotated 90, clear margin left of the grid (orig ink x~635-650, grid starts x683)
+vline(697, 97, 152); vline(737, 72, 152); vline(790, 72, 152); vline(844, 72, 152);
+hline(72, 737, 846); hline(97, 697, 847); hline(124, 697, 847); hline(150, 697, 847);
+cellText(737, 74, 53, 22, "P");
+cellText(790, 74, 54, 22, "N");
+cellText(697, 99, 40, 24, "P");
+cellText(697, 126, 40, 23, "N");
+// Actual rotated 90 on one line, inside the panel's left strip (orig ink x681-700 y98-151)
 s.addText("Actual", {
-  x: P(638), y: P(118), w: P(52), h: P(14), rotate: 270,
+  x: P(664), y: P(118), w: P(52), h: P(14), rotate: 270,
   align: "center", valign: "middle",
   fontSize: 12, bold: true, color: RED, fontFace: FONT, margin: 0
 });
 // cells: TP green, FN white, FP white, TN green
-s.addShape(pptx.shapes.RECTANGLE, { x: P(749), y: P(101), w: P(39), h: P(23), fill: { color: GREEN }, line: { color: GREEN, width: 0.25 } });
-cellText(737, 100, 53, 24, "TP");
-cellText(790, 100, 54, 24, "FN");
-cellText(737, 127, 53, 23, "FP");
-s.addShape(pptx.shapes.RECTANGLE, { x: P(799), y: P(127), w: P(39), h: P(23), fill: { color: GREEN }, line: { color: GREEN, width: 0.25 } });
-cellText(790, 127, 54, 23, "TN");
+s.addShape(pptx.shapes.RECTANGLE, { x: P(738), y: P(98), w: P(51), h: P(25), fill: { color: GREEN }, line: { color: GREEN, width: 0.25 } });
+cellText(737, 99, 53, 24, "TP");
+cellText(790, 99, 54, 24, "FN");
+cellText(737, 126, 53, 23, "FP");
+s.addShape(pptx.shapes.RECTANGLE, { x: P(791), y: P(125), w: P(52), h: P(24), fill: { color: GREEN }, line: { color: GREEN, width: 0.25 } });
+cellText(790, 126, 54, 23, "TN");
 
 // --- TREE PANEL (red frame) ---
 s.addShape(pptx.shapes.RECTANGLE, {
@@ -279,45 +279,43 @@ s.addShape("triangle", {
   fill: { color: "FFFFFF" }, line: { color: RED, width: 1.25 }
 });
 
-// --- MATRIX 2 (numbers) ---
+// --- MATRIX 2 (numbers) --- panel frame orig x674-867 y168-287
 s.addShape(pptx.shapes.RECTANGLE, {
-  x: P(672), y: P(168), w: P(195), h: P(120),
+  x: P(674), y: P(168), w: P(193), h: P(119),
   fill: { color: "FFFFFF" }, line: { color: FRAME_BLUE, width: 1.5 }
 });
 s.addText("Predicted as", {
-  x: P(738), y: P(172), w: P(106), h: P(16), align: "center", valign: "middle",
+  x: P(745), y: P(171), w: P(112), h: P(17), align: "center", valign: "middle",
   fontSize: 13, bold: true, color: RED, fontFace: FONT, margin: 0
 });
-vline(683, 192, 282); vline(697, 192, 282); vline(737, 192, 282); vline(790, 192, 282); vline(844, 192, 282);
-hline(190, 683, 846); hline(220, 683, 846); hline(252, 683, 846); hline(282, 683, 846);
-cellText(737, 194, 53, 24, "P");
-cellText(790, 194, 54, 24, "N");
-cellText(697, 220, 40, 32, "P");
-cellText(697, 252, 40, 30, "N");
+vline(703, 219, 284); vline(745, 190, 284); vline(799, 190, 284); vline(855, 190, 284);
+hline(190, 745, 857); hline(219, 703, 857); hline(251, 703, 857); hline(283, 703, 857);
+cellText(745, 192, 54, 26, "P");
+cellText(799, 192, 56, 26, "N");
+cellText(703, 221, 42, 30, "P");
+cellText(703, 253, 42, 30, "N");
+// Actual rotated 90 on one line, inside the panel's left strip (orig ink x687-697 y230-275)
 s.addText("Actual", {
-  x: P(638), y: P(229), w: P(52), h: P(14), rotate: 270,
+  x: P(666), y: P(245), w: P(52), h: P(14), rotate: 270,
   align: "center", valign: "middle",
   fontSize: 12, bold: true, color: RED, fontFace: FONT, margin: 0
 });
-// 10 inside a solid purple filled circle, white text (as in original)
+// 10 inside a purple ring outline with black text, contained in the TP cell (orig ring x761-788 y224-245)
 s.addShape(pptx.shapes.OVAL, {
-  x: P(755), y: P(218), w: P(39), h: P(38),
-  fill: { color: PURPLE }, line: { color: PURPLE, width: 0.5 }
+  x: P(760), y: P(223), w: P(29), h: P(24),
+  fill: { color: "FFFFFF" }, line: { color: PURPLE, width: 2 }
 });
-s.addText("10", {
-  x: P(757), y: P(220), w: P(35), h: P(34), align: "center", valign: "middle",
-  fontSize: 13, bold: true, color: "FFFFFF", fontFace: FONT, margin: 0
-});
-cellText(790, 220, 54, 32, "20");
-// 2 in purple rounded-rect outline
+cellText(745, 219, 54, 32, "10");
+cellText(799, 221, 56, 30, "20");
+// 2 in purple rounded-rect outline (orig box x759-791 y251-275)
 s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
-  x: P(756), y: P(253), w: P(36), h: P(25),
+  x: P(759), y: P(251), w: P(32), h: P(24),
   fill: { color: "FFFFFF" }, line: { color: PURPLE, width: 1.5 }
 });
-cellText(737, 252, 53, 30, "2");
+cellText(745, 253, 54, 30, "2");
 // 68 green
-s.addShape(pptx.shapes.RECTANGLE, { x: P(808), y: P(254), w: P(40), h: P(27), fill: { color: GREEN }, line: { color: GREEN, width: 0.25 } });
-cellText(790, 252, 54, 30, "68");
+s.addShape(pptx.shapes.RECTANGLE, { x: P(800), y: P(252), w: P(54), h: P(30), fill: { color: GREEN }, line: { color: GREEN, width: 0.25 } });
+cellText(799, 253, 56, 30, "68");
 
 const outPath = "/home/codespace/ai_llm_slides/videos/machine-learning/08_performance_measure/recreated_pptx/slide_008_recreated.pptx";
 pptx.writeFile({ fileName: outPath }).then(() => console.log("done: " + outPath));

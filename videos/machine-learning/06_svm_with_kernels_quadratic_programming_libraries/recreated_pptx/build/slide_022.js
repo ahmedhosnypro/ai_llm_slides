@@ -111,8 +111,9 @@ arrow([0.18, 0.69, 0.22, 0.72]);
 // gray rounded box with [a^T b + 1]^2 above the mapping box
 rect([0.24, 0.58, 0.35, 0.66], "D3D3D3", "000000", 1.0, true);
 eq("eq_top", [0.24, 0.58, 0.35, 0.66]);
-// Vectors Mapping box (red border) + a,b => u,v (caption removed: not in original)
+// Vectors Mapping box (red border) + heading + a,b => u,v
 rect([0.22, 0.66, 0.36, 0.76], null, "FF0000", 1.25);
+text([0.22, 0.665, 0.36, 0.695], "Vectors Mapping", { fontSize: 12, bold: true, italic: true, color: "FF0000", fontFace: "Arial" });
 eq("eq_map", [0.23, 0.71, 0.35, 0.74]);
 arrow([0.37, 0.69, 0.40, 0.72]);
 // pink mapped-vectors box (purple border) + two 6-D columns with separator line
@@ -137,10 +138,16 @@ eq("eq_calc_uv", [0.68, 0.57, 0.75, 0.61]);
 // light green inner rounded box + row/column feature vectors (kept above the purple callout)
 rect([0.58, 0.62, 0.87, 0.91], "EFFFEF", "33AA33", 1.0, true);
 eq("eq_rowcol", [0.58, 0.63, 0.87, 0.77]);
+rect([0.585, 0.785, 0.70, 0.895], "CC99FF", "AA00AA", 1.0);
+text([0.585, 0.785, 0.70, 0.895], [
+  { text: "Higher", options: { fontSize: 11, italic: true, color: "000000", fontFace: SERIF, breakLine: true } },
+  { text: "Computational", options: { fontSize: 11, italic: true, color: "000000", fontFace: SERIF, breakLine: true } },
+  { text: "Complexity!!!", options: { fontSize: 11, italic: true, color: "000000", fontFace: SERIF } },
+], { align: "center", valign: "middle" });
 // purple "Higher Computational Complexity!!!" callout below the mapping box
 // (original's measured pink fill: x 0.227-0.407, y 0.726-0.881)
-rect([0.227, 0.735, 0.405, 0.88], "CC99FF", "AA00AA", 1.0);
-text([0.227, 0.735, 0.405, 0.88], [
+rect([0.227, 0.785, 0.395, 0.90], "CC99FF", "AA00AA", 1.0);
+text([0.227, 0.785, 0.395, 0.90], [
   { text: "Higher", options: { fontSize: 12, italic: true, color: "000000", fontFace: SERIF, breakLine: true } },
   { text: "Computational", options: { fontSize: 12, italic: true, color: "000000", fontFace: SERIF, breakLine: true } },
   { text: "Complexity!!!", options: { fontSize: 12, italic: true, color: "000000", fontFace: SERIF } },

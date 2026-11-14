@@ -40,22 +40,21 @@ s.addText([
   align: "center", valign: "top", margin: 0,
 });
 
-// Measured original box x77..664 y94..330, mapped into the house frame.
+const px = v => v / 72;
 s.addImage({
   path: BUILD + "/slide_015_main_diagram.png",
-  x: 0.46, y: 0.93, w: 9.04, h: 3.58,
+  x: px(64.0), y: px(84.3), w: px(658.4), h: px(255.0),
 });
 
-const TT_X = 9.64, TT_Y = 1.36, TT_W = 3.37, TT_H = 2.57;
+const TT_X = px(674), TT_Y = px(123), TT_W = px(218), TT_H = px(170);
 s.addShape(pres.shapes.RECTANGLE, {
   x: TT_X, y: TT_Y, w: TT_W, h: TT_H,
   fill: { color: WHITE }, line: { color: RED, width: 1.5 },
 });
-const cellW = TT_W / 3;
-const rowH = 0.42;
+const truthCols = [674, 744, 814, 891];
 ["X1", "X2", "O/P"].forEach((h, i) => {
   s.addText(h, {
-    x: TT_X + i * cellW, y: TT_Y + 0.12, w: cellW, h: rowH,
+    x: px(truthCols[i]), y: px(124), w: px(truthCols[i + 1] - truthCols[i]), h: px(36),
     align: "center", valign: "middle", fontSize: 14, bold: true,
     color: BLACK, fontFace: FONT, margin: 0,
   });
@@ -63,39 +62,46 @@ const rowH = 0.42;
 const truthRows = [
   ["0", "0", "0"], ["0", "1", "1"], ["1", "0", "1"], ["1", "1", "0"],
 ];
+const truthRowY = [160, 197, 231, 262];
+const truthRowH = [37, 34, 31, 30];
+const truthMarks = [CYAN, LIGHT_GREEN, LIGHT_GREEN, CYAN];
 truthRows.forEach((row, r) => {
+  s.addShape(pres.shapes.RECTANGLE, {
+    x: px(840), y: px(truthRowY[r] + 2), w: px(24), h: px(27),
+    fill: { color: truthMarks[r] }, line: { type: "none" },
+  });
   row.forEach((v, c) => {
-    const fill = c === 2 ? ((r === 0 || r === 3) ? CYAN : LIGHT_GREEN) : WHITE;
-    s.addShape(pres.shapes.RECTANGLE, {
-      x: TT_X + c * cellW, y: TT_Y + 0.54 + r * rowH, w: cellW, h: rowH,
-      fill: { color: fill }, line: { color: RED, width: 0.75 },
-    });
     s.addText(v, {
-      x: TT_X + c * cellW, y: TT_Y + 0.54 + r * rowH, w: cellW, h: rowH,
+      x: px(truthCols[c]), y: px(truthRowY[r]), w: px(truthCols[c + 1] - truthCols[c]), h: px(truthRowH[r]),
       align: "center", valign: "middle", fontSize: 14, color: BLACK,
       fontFace: FONT, margin: 0,
     });
   });
 });
 
-const DT_X = 0.69, DT_Y = 4.72, DT_W = 8.58, DT_H = 2.23;
+const DT_X = px(92), DT_Y = px(344), DT_W = px(557), DT_H = px(147);
 s.addShape(pres.shapes.RECTANGLE, {
   x: DT_X, y: DT_Y, w: DT_W, h: DT_H,
   fill: { color: WHITE }, line: { color: RED, width: 1.5 },
 });
-const dtCellW = DT_W / 8;
-const dtRowH = 0.38;
-["x2", "x1", "S1", "Z1", "S2", "Z2", "S3", "Z3"].forEach((h, i) => {
-  s.addText(h, {
-    x: DT_X + i * dtCellW, y: DT_Y + 0.08, w: dtCellW, h: dtRowH,
-    align: "center", valign: "middle", fontSize: 12, bold: true,
-    color: BLACK, fontFace: FONT, margin: 0,
+[378, 405, 433, 463, 491].forEach(y => {
+  s.addShape(pres.shapes.LINE, {
+    x: DT_X, y: px(y), w: DT_W, h: 0,
+    line: { color: RED, width: 0.75 },
   });
 });
-[2, 4, 6].forEach(pos => {
+[210, 339, 472].forEach(x => {
   s.addShape(pres.shapes.LINE, {
-    x: DT_X + pos * dtCellW, y: DT_Y, w: 0, h: DT_H,
+    x: px(x), y: DT_Y, w: 0, h: DT_H,
     line: { color: RED, width: 1.5 },
+  });
+});
+const dtCenters = [126, 167, 260, 306, 393, 437, 521, 565];
+["x2", "x1", "S1", "Z1", "S2", "Z2", "S3", "Z3"].forEach((h, i) => {
+  s.addText(h, {
+    x: px(dtCenters[i] - 25), y: px(345), w: px(50), h: px(32),
+    align: "center", valign: "middle", fontSize: 14, bold: true,
+    color: BLACK, fontFace: FONT, margin: 0,
   });
 });
 const dataRows = [
@@ -104,41 +110,45 @@ const dataRows = [
   ["1", "0", "1", "1", "1", "1", "0", "0"],
   ["1", "1", "0", "0", "0", "1", "1", "1"],
 ];
+const dataRowY = [379, 406, 434, 464];
+const dataRowH = [26, 27, 29, 27];
+const dataMarks = [CYAN, LIGHT_GREEN, LIGHT_GREEN, CYAN];
+const dataMarkY = [380, 408, 435, 464];
+const dataMarkH = [25, 24, 27, 26];
 dataRows.forEach((row, r) => {
+  s.addShape(pres.shapes.RECTANGLE, {
+    x: px(553), y: px(dataMarkY[r]), w: px(24), h: px(dataMarkH[r]),
+    fill: { color: dataMarks[r] }, line: { type: "none" },
+  });
   row.forEach((v, c) => {
-    const fill = c === 7 ? ((r === 0 || r === 3) ? CYAN : LIGHT_GREEN) : WHITE;
-    s.addShape(pres.shapes.RECTANGLE, {
-      x: DT_X + c * dtCellW, y: DT_Y + 0.46 + r * dtRowH, w: dtCellW, h: dtRowH,
-      fill: { color: fill }, line: { color: RED, width: 0.75 },
-    });
     s.addText(v, {
-      x: DT_X + c * dtCellW, y: DT_Y + 0.46 + r * dtRowH, w: dtCellW, h: dtRowH,
-      align: "center", valign: "middle", fontSize: 12, color: BLACK,
+      x: px(dtCenters[c] - 25), y: px(dataRowY[r]), w: px(50), h: px(dataRowH[r]),
+      align: "center", valign: "middle", fontSize: 14, color: BLACK,
       fontFace: FONT, margin: 0,
     });
   });
 });
 
-const CB_X = 9.64, CB_Y = 4.90, CB_W = 3.37, CB_H = 1.55;
-s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
+const CB_X = px(658), CB_Y = px(381), CB_W = px(238), CB_H = px(80);
+s.addShape(pres.shapes.RECTANGLE, {
   x: CB_X, y: CB_Y, w: CB_W, h: CB_H,
   fill: { color: LIGHT_YELLOW }, line: { color: "AAAAAA", width: 0.75 },
 });
 s.addText("Adding Non-Linearity", {
-  x: CB_X + 0.12, y: CB_Y + 0.15, w: CB_W - 0.24, h: 0.35,
-  align: "center", valign: "middle", fontSize: 14, color: NAVY,
+  x: px(666), y: px(384), w: px(222), h: px(28),
+  align: "center", valign: "middle", fontSize: 18, color: NAVY,
   fontFace: FONT, margin: 0,
 });
 s.addText("Solves the", {
-  x: CB_X + 0.12, y: CB_Y + 0.57, w: CB_W - 0.24, h: 0.35,
-  align: "center", valign: "middle", fontSize: 14, color: BLACK,
+  x: px(666), y: px(410), w: px(222), h: px(28),
+  align: "center", valign: "middle", fontSize: 18, color: BLACK,
   fontFace: FONT, margin: 0,
 });
 s.addText([
-  { text: "XOR", options: { color: "FF0000", fontSize: 14, bold: true, fontFace: FONT } },
-  { text: " Problem", options: { color: BLACK, fontSize: 14, fontFace: FONT } },
+  { text: "XOR", options: { color: "FF0000", fontSize: 18, bold: true, fontFace: FONT } },
+  { text: " Problem", options: { color: BLACK, fontSize: 18, fontFace: FONT } },
 ], {
-  x: CB_X + 0.12, y: CB_Y + 0.99, w: CB_W - 0.24, h: 0.35,
+  x: px(666), y: px(434), w: px(222), h: px(28),
   align: "center", valign: "middle", margin: 0,
 });
 

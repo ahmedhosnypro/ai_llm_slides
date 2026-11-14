@@ -3,15 +3,14 @@ const fs = require("fs");
 const { W, H, house, box } = require("./house023.js");
 const NS = "/home/codespace/ai_llm_slides/videos/machine-learning/06_svm_with_kernels_quadratic_programming_libraries";
 const OUT = NS + "/recreated_pptx/slide_032_recreated.pptx";
-const eq = JSON.parse(fs.readFileSync(NS + "/recreated_pptx/build/assets/eqs_023_033.json"))["32"];
+const eq = JSON.parse(fs.readFileSync(NS + "/recreated_pptx/build/assets/resume032/manifest.json"));
 const A = NS + "/recreated_pptx/build/assets/";
 const pres = new pptxgen();
 pres.layout = "LAYOUT_WIDE";
 const s = pres.addSlide();
 house(pres, s, 32);
 s.addShape(pres.shapes.RECTANGLE, Object.assign(box([0.059, 0.078, 0.941, 0.948]), { fill: { color: "FFFFFF" }, line: { color: "A00000", width: 1.5 } }));
-let b = box([0.23, 0.115, 0.77, 0.225]);
-s.addText("New Kernel Functions can be derived From other Kernels", { x: b.x, y: b.y, w: b.w, h: b.h, align: "center", fontSize: 22, bold: true, color: "CC0000", fontFace: "Arial", margin: 0 });
+s.addText("New Kernel Functions can be derived\nFrom other Kernels", { x: 0.6, y: 0.28, w: 12.13, h: 0.9, align: "center", valign: "top", fontSize: 22, bold: true, color: "CC0000", fontFace: "Arial", margin: 0, lineSpacing: 26 });
 function rule(boxv, label, lb, eqKey, eb) {
   s.addShape(pres.shapes.RECTANGLE, Object.assign(box(boxv), { fill: { color: "FFFFFF" }, line: { color: "0000CC", width: 1 } }));
   const l = box(lb);

@@ -24,7 +24,9 @@ s.addShape(pres.shapes.OVAL, { x: 12.48, y: 0.30, w: 0.5, h: 0.5,
   fill: { color: "FFF9C4" }, line: { color: "FFF9C4", width: 0.5 } });
 s.addText("38", { x: 12.48, y: 0.30, w: 0.5, h: 0.5, align: "center", valign: "middle",
   fontSize: 18, bold: true, color: "333333", fontFace: ARIAL, margin: 0 });
-// spec SLIDE_TITLE: none -> no title text
+// house rule: title box at x=0.6 y=0.28 w=12.13 centered (verbatim slide_title)
+s.addText("Training Vectors / Test Vectors (QP Formulation)", { x: 0.6, y: 0.28, w: 12.13, h: 0.45, align: "center", valign: "top",
+  fontSize: 18, bold: true, color: "C00000", fontFace: ARIAL, margin: 0 });
 
 function rbox(b, color, rounded, fill) {
   s.addShape(rounded === false ? pres.shapes.RECTANGLE : pres.shapes.ROUNDED_RECTANGLE, {
@@ -64,9 +66,9 @@ function vecBlock(x0, x1, base, vecs, ys) {
     }
   });
 }
-vecBlock(0.08, 0.45, "x", ["rb5_vec_x1", "rb5_vec_x2", "rb5_vec_x3", "rb5_vec_x4"],
+vecBlock(0.08, 0.45, "x", ["rb6_vec_x1", "rb6_vec_x2", "rb6_vec_x3", "rb6_vec_x4"],
   ["rb5_ylab_1", "rb5_ylab_2", "rb5_ylab_3", "rb5_ylab_4"]);
-vecBlock(0.45, 0.63, "T", ["rb5_vec_T1", "rb5_vec_T2", "rb5_vec_T3"], null);
+vecBlock(0.45, 0.63, "T", ["rb6_vec_T1", "rb6_vec_T2", "rb6_vec_T3"], null);
 
 // "Use C=1" box + blue-framed top-right constraint equations
 rbox([0.65, 0.05, 0.76, 0.12], "C00000", false);
@@ -77,7 +79,7 @@ img("rb5_topcons", X(0.63), Y(0.135), BW(0.63, 0.92));
 
 // middle blue box: dual formulation equation (2D stacked sums, MAJOR fix)
 rbox([0.08, 0.32, 0.92, 0.40], "0070C0", true, "CCFFFF");
-img("rb5_dual", X(0.08), Y(0.318), BW(0.08, 0.92));
+img("rb6_dual", X(0.08), Y(0.318), BW(0.08, 0.92));
 
 // lower-middle red box: kernel matrix expansion (blocks + arrow + line per spec)
 rbox([0.08, 0.44, 0.92, 0.68], "C00000");
@@ -90,13 +92,15 @@ img("rb5_blockC", X(0.555), my);
 img("rb5_blockD", X(0.715), my);
 
 // bottom red box (pink fill per original): QP expansion + constraints + caption
-rbox([0.07, 0.69, 0.93, 0.94], "C00000", true, "FBE5D6");
-img("rb5_qp", X(0.09), Y(0.700), BW(0.09, 0.91));
-txt("Subject to:", X(0.10), Y(0.815), 2.0, 0.22,
+rbox([0.07, 0.69, 0.93, 0.95], "C00000", true, "FBE5D6");
+img("rb6_qp", X(0.09), Y(0.695), BW(0.09, 0.91));
+img("rb6_qp_sum", X(0.09) + BW(0.09, 0.91) - MAN.rb6_qp_sum.w_in,
+  Y(0.695) + MAN.rb6_qp.h_in + 0.005);
+txt("Subject to:", X(0.10), Y(0.83), 2.0, 0.22,
   { align: "left", valign: "middle", fontSize: 13, bold: true, color: "000000" });
-img("rb5_cons_l", X(0.10), Y(0.845));
-img("rb5_cons_r", X(0.18), Y(0.845));
-txt("Quadratic Equation in \u03b1 with constraints", X(0.52), Y(0.82), BW(0.52, 0.90), 0.34,
+img("rb6_cons_l", X(0.10), Y(0.855));
+img("rb6_cons_r", X(0.10) + MAN.rb6_cons_l.w_in + 0.25, Y(0.855));
+txt("Quadratic Equation in \u03b1 with constraints", X(0.52), Y(0.835), BW(0.52, 0.90), 0.34,
   { align: "center", valign: "middle", fontSize: 16, bold: true, color: "C00000", fontFace: MATHF });
 
 pres.writeFile({ fileName: OUT })

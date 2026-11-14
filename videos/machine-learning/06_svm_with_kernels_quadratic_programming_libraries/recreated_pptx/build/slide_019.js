@@ -7,7 +7,7 @@ const fs = require("fs");
 
 const NS = "/home/codespace/ai_llm_slides/videos/machine-learning/06_svm_with_kernels_quadratic_programming_libraries";
 const BUILD = NS + "/recreated_pptx/build";
-const eq = JSON.parse(fs.readFileSync(BUILD + "/eq_019/eq19_kernel_rb4.png.json", "utf8"));
+const eq = JSON.parse(fs.readFileSync(BUILD + "/eq_019/eq19_kernel_fix.png.json", "utf8"));
 const W = 13.33, H = 7.5;
 const ARIAL = "Arial", SERIF = "Times New Roman";
 const X = v => v * 13.33, Y = v => v * 7.5;
@@ -87,7 +87,7 @@ s.addImage({
   path: eq.path,
   x: X(0.122) + (eqBoxW - eq.w_in) / 2,
   y: Y(0.530),
-  w: eq.w_in,
+  w: eq.w_in, h: eq.h_in,
 });
 
 // Bullet 4 [0.082,0.613,0.613,0.652]

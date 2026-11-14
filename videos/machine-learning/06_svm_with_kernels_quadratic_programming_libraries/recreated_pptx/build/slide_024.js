@@ -12,11 +12,18 @@ s.addShape(pres.shapes.RECTANGLE, Object.assign(box([0.040, 0.056, 0.963, 0.944]
 s.addShape(pres.shapes.RECTANGLE, { x: 0, y: 0.075 * H, w: W, h: 0.002 * H, fill: { color: "D8D8D8" }, line: { color: "D8D8D8" } });
 // bottom black letterbox bar
 s.addShape(pres.shapes.RECTANGLE, { x: 0, y: 0.956 * H, w: W, h: 0.044 * H, fill: { color: "000000" }, line: { color: "000000" } });
-// title lines
-let b = box([0.371, 0.337, 0.630, 0.383]);
-s.addText("KERNEL Functions", { x: b.x, y: b.y, w: b.w, h: b.h, align: "center", fontSize: 32, bold: true, color: "CC0000", fontFace: "Arial", margin: 0 });
-b = box([0.466, 0.474, 0.534, 0.510]);
-s.addText("and", { x: b.x, y: b.y, w: b.w, h: b.h, align: "center", fontSize: 24, color: "CC0000", fontFace: "Arial", margin: 0 });
-b = box([0.417, 0.552, 0.583, 0.598]);
-s.addText("Kernel Trick", { x: b.x, y: b.y, w: b.w, h: b.h, align: "center", fontSize: 30, bold: true, color: "0000FF", fontFace: "Arial", margin: 0 });
+// House chrome: title at house position, three separate single-run boxes (LO renders
+// multi-run boxes left-aligned; single-run boxes center correctly)
+s.addText("KERNEL Functions", {
+  x: 0.6, y: 0.28, w: 12.13, h: 0.5, align: "center", valign: "top", margin: 0,
+  fontSize: 32, bold: true, color: "CC0000", fontFace: "Arial",
+});
+s.addText("and", {
+  x: 0.6, y: 0.78, w: 12.13, h: 0.5, align: "center", valign: "top", margin: 0,
+  fontSize: 24, color: "CC0000", fontFace: "Arial",
+});
+s.addText("Kernel Trick", {
+  x: 0.6, y: 1.28, w: 12.13, h: 0.5, align: "center", valign: "top", margin: 0,
+  fontSize: 30, bold: true, color: "0000FF", fontFace: "Arial",
+});
 pres.writeFile({ fileName: OUT }).then(() => console.log("wrote", OUT)).catch(e => console.error(e));

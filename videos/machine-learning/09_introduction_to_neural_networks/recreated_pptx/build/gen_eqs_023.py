@@ -45,27 +45,35 @@ def line(name, parts, gap=10, pad=12):
     save(trim(Image.fromarray(cv)), name)
 
 
+def _parts(parts):
+    if isinstance(parts, tuple):
+        parts = [parts]
+    return [M(*p) if isinstance(p, tuple) else p for p in parts]
+
+
 def frac_parts(num, den):
-    """num/den = (latex,color) tuples; stacked fraction, returns seg-like dict."""
-    n = M(*num)
-    dn = [M(*p) if isinstance(p, tuple) else p for p in den]
+    """num/den = (latex,color) tuples or lists of tuples; stacked fraction."""
+    ns = _parts(num)
+    dn = _parts(den)
+    nw = sum(s["img"].width for s in ns) + 10 * (len(ns) - 1)
     dw = sum(s["img"].width for s in dn) + 10 * (len(dn) - 1)
-    uw, w = n["img"].width, max(n["img"].width, dw)
+    w = max(nw, dw)
     bar_h = max(3, int(round(FS * DPI / 72 * 0.045)))
     gap_up, gap_dn = 14, 10
-    h = n["img"].height + gap_up + bar_h + gap_dn + max(s["img"].height for s in dn)
+    nbase = max(s["base"] for s in ns)
+    dbase = max(s["base"] for s in dn)
+    h = max(s["img"].height for s in ns) + gap_up + bar_h + gap_dn + max(s["img"].height for s in dn)
     cv, p0 = _canvas(w, h)
     ny = p0
-    nx = (w - uw) // 2
-    _place(cv, n, nx, ny)
-    by = ny + n["img"].height + gap_up
+    nx = (w - nw) // 2
+    for s in ns:
+        _place(cv, s, nx, ny + (nbase - s["base"]))
+        nx += s["img"].width + 10
+    by = ny + max(s["img"].height for s in ns) + gap_up
     cv[by:by + bar_h, :, 0:3] = 0
     cv[by:by + bar_h, :, 3] = 255
     dy = by + bar_h + gap_dn
     x = (w - dw) // 2
-    dbase = 0
-    for s in dn:
-        dbase = max(dbase, s["base"])
     for s in dn:
         _place(cv, s, x, dy + (dbase - s["base"]))
         x += s["img"].width + 10
@@ -141,9 +149,10 @@ comb("eq023_L3", [M(BN, BLACK), M(LBL % "Sigmoid", RED), M(r"(x)=", BLACK),
 comb("eq023_R3", [M(r"f'(x)=f(x)", BLACK), M(r"(1-f(x))", BLUE)])
 
 comb("eq023_L4", [M(BN, BLACK), M(LBL % "\\tanh", RED), M(r"(x)=", BLACK),
-                  frac_parts((r"\sinh x", BLACK), [(r"\cosh x", BLACK)])])
+                  frac_parts([(r"\sinh", BLACK), (r"x", RED)],
+                             [(r"\cosh", BLACK), (r"x", RED)])])
 
-comb("eq023_R4", [M(r"f'(x)=1-f(x)", BLACK), M(r"^{2}", BLUE)])
+comb("eq023_R4", [M(BD, BLACK), M(r"1-f(x)^{2}", BLUE)])
 line("eq023_L5", [(BN, BLACK), M(r"\tan^{-1}(x)", BLACK)])
 comb("eq023_R5", [M(BD, BLACK), frac_parts((r"1", BLACK), [(r"x^{2}+1", RED)])])
 

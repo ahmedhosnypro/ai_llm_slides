@@ -38,7 +38,7 @@ EQ_SUP = (175, 290, BLACK, 13, r"$\mathrm{T}$")
 # red tail, bold, on the original's baseline
 EQ_TAIL = (426, 301, RED, 20, r"$b*1$")
 # red double arrow between the equation and the rule group
-EQ_ARROW = (503, 300, RED, 20, r"$\Rightarrow$")
+EQ_ARROW = (498, 300, RED, 20, r"$\Rightarrow$")
 
 RULES_X0, RULES_X1 = 555, 745
 RULES_Y0, RULES_Y1 = 264, 328

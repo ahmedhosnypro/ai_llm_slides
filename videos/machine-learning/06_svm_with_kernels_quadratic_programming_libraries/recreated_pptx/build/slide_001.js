@@ -34,15 +34,10 @@ s.addText(String(NUM), {
   fontSize: 18, bold: true, color: "333333", fontFace: SANS, margin: 0,
 });
 
-// House chrome: title box at y=0.28. Two separate single-line boxes place the
-// title ink at the original's measured position (norm y 0.335-0.393 / 0.465-0.53)
-s.addText("SVM with Kernels &", {
-  x: 0.6, y: 2.42, w: 12.13, h: 0.62, align: "center", valign: "middle",
-  fontSize: 40, bold: true, color: "C00000", fontFace: SANS, margin: 0, wrap: false,
-});
-s.addText("Quadratic Programming Libraries", {
-  x: 0.6, y: 3.44, w: 12.13, h: 0.58, align: "center", valign: "middle",
-  fontSize: 38, bold: true, color: "C00000", fontFace: SANS, margin: 0, wrap: false,
+// House chrome: title box at house position y=0.28 (house rule wins over title-slide layout)
+s.addText("SVM with Kernels &\nQuadratic Programming Libraries", {
+  x: 0.6, y: 0.28, w: 12.13, h: 1.2, align: "center", valign: "top",
+  fontSize: 40, bold: true, color: "C00000", fontFace: SANS, margin: 0,
 });
 
 // body text helper (inches); boxes wider than the ink so nothing wraps

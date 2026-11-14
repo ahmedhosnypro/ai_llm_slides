@@ -92,35 +92,40 @@ s.addText("From Previous Lecture", {
   x: 3.2, y: 3.72, w: 6.6, h: 0.5, rotate: -18,
   fontSize: 20, bold: true, italic: true, color: "808080", fontFace: FONT, margin: 0,
 });
-// Matrices row: X, G = X^T X, Y = (y_i y_j), Y∘G
-img("eq_X.png", 0.5, 4.05, 2.7, 1.45);
-img("eq_G.png", 3.35, 4.05, 2.8, 1.45);
-img("eq_Y.png", 6.35, 4.05, 2.8, 1.45);
-img("eq_YG.png", 9.35, 4.05, 3.2, 1.45);
+// Pale-yellow matrix panel (as in original) behind the matrices row
+s.addShape(pres.shapes.RECTANGLE, {
+  x: 0.35, y: 3.95, w: 12.63, h: 1.67,
+  fill: { color: "FFFDE7" }, line: { color: "C00000", width: 1.5 },
+});
+// Matrices row: X, G = X^T X, y-vector (1,1,-1,-1), |1 1 -1 -1| = YG matrix
+img("eq_X.png", 0.45, 4.05, 2.3, 1.45);
+img("eq_G.png", 2.85, 4.05, 3.3, 1.45);
+img("eq_Y.png", 6.25, 4.05, 1.7, 1.45);
+img("eq_YG.png", 8.05, 4.05, 4.85, 1.45);
 
 // Lower red panel: quadratic objective + constraints
 s.addShape(pres.shapes.RECTANGLE, {
   x: 0.35, y: 5.6, w: 12.63, h: 1.75,
-  fill: { color: "FFF7F7" }, line: { color: "C00000", width: 1.5 },
+  fill: { color: "FBEEDD" }, line: { color: "C00000", width: 1.5 },
 });
 s.addText("Minimize:", {
   x: 0.5, y: 5.68, w: 1.3, h: 0.3,
   fontSize: 13, bold: true, color: "C00000", fontFace: FONT, margin: 0,
 });
 // objective across three aligned lines, leading "[ +1a1^2+2a1a2-5.5a1a3-6a1a4..."
-img("eq_obj.png", 1.85, 5.64, 7.4, 1.02);
-img("eq_bounds.png", 9.6, 5.64, 2.8, 0.85);
+img("eq_obj.png", 1.85, 5.64, 8.6, 1.02);
+img("eq_bounds.png", 9.25, 6.68, 3.6, 0.42);
 
 // "Subject to:" on its own line
 s.addText("Subject to:", {
   x: 0.5, y: 6.78, w: 1.3, h: 0.3,
   fontSize: 12, bold: true, color: "C00000", fontFace: FONT, margin: 0,
 });
-img("eq_subj.png", 1.85, 6.72, 10.5, 0.565);
+img("eq_subj.png", 1.85, 6.72, 7.2, 0.565);
 
 // "Quadratic Equation in α with constraints" bottom-RIGHT of the panel
 s.addText("Quadratic Equation in \u03b1 with constraints", {
-  x: 8.3, y: 6.95, w: 4.6, h: 0.35,
+  x: 8.3, y: 7.12, w: 4.6, h: 0.25,
   align: "right", valign: "middle",
   fontSize: 12, bold: true, color: "C00000", fontFace: FONT, margin: 0,
 });

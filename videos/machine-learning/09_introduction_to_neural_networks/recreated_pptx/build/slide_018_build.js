@@ -120,14 +120,24 @@ s.addText([
   fontSize: 13, color: "1F6FC0", fontFace: FONT, margin: 0,
 });
 
-// ---- DASHED RED CONNECTOR ----
-// The original has exactly ONE dashed red arrow: a vertical dashed segment at
-// x 201..208 running from the uni-polar pane's bottom edge (y=274) down to the
-// sigmoid pane's top edge (y=321). Pixel traces of the reanalysis' "Y-fork"
-// diagonals (610,268)->(483,307) and (610,268)->(730,307) contain no ink at
-// all, so no fork is drawn.
+// ---- DASHED RED CONNECTORS ----
+// PIL red-ink census of the original proves TWO connectors: the left vertical
+// dashed arrow x 201..208, y 274..321, and the right dashed Y-fork whose stub
+// starts near (610, 259) and whose diagonals reach (510, 319) and (776, 319).
 s.addShape(pres.shapes.LINE, {
   x: mx(205), y: my(274), w: 0, h: sh(274, 321),
+  line: { color: "C0392B", width: 1.25, dash: "dash", endArrowType: "triangle" },
+});
+s.addShape(pres.shapes.LINE, {
+  x: mx(610), y: my(259), w: 0, h: sh(259, 264),
+  line: { color: "C0392B", width: 1.25, dash: "dash" },
+});
+s.addShape(pres.shapes.LINE, {
+  x: mx(510), y: my(264), w: sw(510, 610), h: sh(264, 319), flipH: true,
+  line: { color: "C0392B", width: 1.25, dash: "dash", endArrowType: "triangle" },
+});
+s.addShape(pres.shapes.LINE, {
+  x: mx(610), y: my(264), w: sw(610, 776), h: sh(264, 319),
   line: { color: "C0392B", width: 1.25, dash: "dash", endArrowType: "triangle" },
 });
 

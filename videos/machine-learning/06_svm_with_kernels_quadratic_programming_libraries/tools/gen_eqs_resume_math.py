@@ -7,6 +7,8 @@ os.makedirs(OUT, exist_ok=True)
 RENDER = "/home/codespace/ai_llm_slides/scripts/render_eq_wide.py"
 
 def stack(*rows):
+    if len(rows) > 4:
+        return r"\substack{" + r"\\".join(rows) + "}"
     value = rows[-1]
     for row in reversed(rows[:-1]):
         value = r"\overset{%s}{\underset{}{%s}}" % (row, value)
@@ -14,6 +16,9 @@ def stack(*rows):
 
 def vec(*rows):
     return r"\left\vert%s\right\vert" % stack(*rows)
+
+def pvec(*rows):
+    return r"\left(%s\right)" % stack(*rows)
 
 EQS = {
   23: [
@@ -40,20 +45,18 @@ EQS = {
     ("alt", r"[a^{T}b]^{2}=(1{\cdot}3+2{\cdot}4)^{2}=11^{2}=121", 12, "#000000"),
   ],
   27: [
-    ("adef", r"a=" + vec("a_1", "a_2"), 15, "#C00000"),
-    ("bdef", r"b=" + vec("b_1", "b_2"), 15, "#0000CC"),
-    ("rem", r"\mathrm{Remember:}\ [a^{T}b]^{2}=\left\vert a_1\ a_2\right\vert" + vec("b_1", "b_2") + r"=(a_1b_1+a_2b_2)^{2}=", 13, "#000000"),
-    ("rem2", r"a_1^{2}b_1^{2}+a_2^{2}b_2^{2}+2a_1b_1a_2b_2", 13, "#000000"),
-    ("l1", r"[a^{T}b+1]^{2}=(a^{T}b)^{2}+2{\cdot}a^{T}b+1=(a_1b_1+a_2b_2)^{2}=", 13, "#000000"),
+    ("adef", r"a\ " + pvec("a_1", "a_2"), 15, "#C00000"),
+    ("bdef", r"b\ " + pvec("b_1", "b_2"), 15, "#0000CC"),
+    ("rem_all", r"\mathrm{Remember:}\ [a^{T}b]^{2}=\left(a_1\ a_2\right)" + pvec("b_1", "b_2") + r"=(a_1b_1+a_2b_2)^{2}=a_1^{2}b_1^{2}+a_2^{2}b_2^{2}+2a_1b_1a_2b_2", 12, "#000000"),
+    ("exp_all", r"[a^{T}b+1]^{2}=(a^{T}b)^{2}+2{\cdot}a^{T}b+1=(a_1b_1+a_2b_2)^{2}=a_1^{2}b_1^{2}+a_2^{2}b_2^{2}+2a_1b_1a_2b_2+2(a_1b_1+a_2b_2)+1", 12, "#000000"),
     ("brace_label", r"|a^{T}b|^{2}", 9, "#C00000"),
-    ("l2", r"a_1^{2}b_1^{2}+a_2^{2}b_2^{2}+2a_1b_1a_2b_2+2(a_1b_1+a_2b_2)+1", 13, "#000000"),
     ("l3", r"=a_1^{2}b_1^{2}+a_2^{2}b_2^{2}+2a_1b_1a_2b_2+2a_1b_1+2a_2b_2+1", 13, "#000000"),
     ("tan", r"[a^{T}b+1]^{2}=", 14, "#C00000"),
-    ("arow", r"\left\vert a_1^{2}\ a_2^{2}\ \sqrt{2}a_1a_2\ \sqrt{2}a_1\ \sqrt{2}a_2\ 1\right\vert", 13, "#C00000"),
-    ("bcol", vec("b_1^{2}", "b_2^{2}", r"\sqrt{2}b_2b_1", r"\sqrt{2}b_1", r"\sqrt{2}b_2", "1"), 13, "#0000CC"),
+    ("arow", r"\left(a_1^{2}\ a_2^{2}\ \sqrt{2}a_1a_2\ \sqrt{2}a_1\ \sqrt{2}a_2\ 1\right)", 13, "#C00000"),
+    ("bcol", pvec("b_1^{2}", "b_2^{2}", r"\sqrt{2}b_2b_1", r"\sqrt{2}b_1", r"\sqrt{2}b_2", "1"), 13, "#0000CC"),
     ("eq", r"=\phi(a)^{T}\phi(b)", 13, "#000000"),
-    ("wherex", r"\mathrm{Where:}\ \phi(x)\equiv" + vec("x_1", "x_2") + r"\Rightarrow", 13, "#000000"),
-    ("xcol", vec("x_1^{2}", "x_2^{2}", r"\sqrt{2}x_1x_2", r"\sqrt{2}x_1", r"\sqrt{2}x_2", "1"), 13, "#000000"),
+    ("wherex", r"\mathrm{Where:}\ \phi(x)\equiv" + pvec("x_1", "x_2") + r"\Rightarrow", 13, "#000000"),
+    ("xcol", pvec("x_1^{2}", "x_2^{2}", r"\sqrt{2}x_1x_2", r"\sqrt{2}x_1", r"\sqrt{2}x_2", "1"), 13, "#000000"),
   ],
 }
 

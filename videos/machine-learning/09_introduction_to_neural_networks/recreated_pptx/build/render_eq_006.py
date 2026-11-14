@@ -74,16 +74,14 @@ def compose(segs, fontsize):
 
 def main():
     results = []
+    fs = 20.0
     for name, segs in SEGMENTS.items():
         target = TARGET_PX[name]
-        fs = 15.0
-        for _ in range(15):
-            w = sum(render_seg(l, c, fs)[0].shape[1] for l, c in segs)
-            if abs(w - target) / target < 0.01:
-                break
-            fs *= target / w
         canvas = compose(segs, fs)
         h, w = canvas.shape[0], canvas.shape[1]
+        if w != target:
+            canvas = np.asarray(Image.fromarray(canvas).resize((target, h), Image.Resampling.LANCZOS))
+            w = target
         Image.fromarray(canvas).save(BUILD / f"{name}.png")
         results.append({
             "name": name,

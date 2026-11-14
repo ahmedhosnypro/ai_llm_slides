@@ -53,7 +53,7 @@ def compose_runs(runs, fontsize, out, gap_px=6):
 
 
 def compose_fraction(num, den, out):
-    """Stack the colored mathtext runs around a horizontal fraction bar."""
+    """Stack the colored mathtext runs around a horizontal gray fraction bar."""
     width = max(num.shape[1], den.shape[1])
     gap = 24
     bar_h = 12
@@ -63,7 +63,7 @@ def compose_fraction(num, den, out):
     x_den = (width - den.shape[1]) // 2
     canvas[:num.shape[0], x_num:x_num + num.shape[1]] = num
     bar_y = num.shape[0] + gap
-    canvas[bar_y:bar_y + bar_h, :, :3] = 0
+    canvas[bar_y:bar_y + bar_h, :, :3] = 110
     canvas[bar_y:bar_y + bar_h, :, 3] = 255
     y_den = bar_y + bar_h + gap
     canvas[y_den:y_den + den.shape[0], x_den:x_den + den.shape[1]] = den
@@ -155,10 +155,10 @@ def frame_crop(name, box):
 
 
 manifest = {}
-manifest["frac_num"] = compose_runs([("\\mathbf{T}", BLACK), ("\\mathbf{P}", RED)], 22,
+manifest["frac_num"] = compose_runs([("\\mathbf{T}", BLACK), ("\\mathbf{P}", BLACK)], 22,
                                     os.path.join(OUT, "eq_010_frac_num.png"))
 den_parts = [render_run("\\mathbf{T}", 22, BLACK), render_run("\\mathbf{P}", 22, RED),
-             render_run("+", 22, BLACK), render_run("\\mathbf{F}", 22, RED),
+             render_run("+", 22, BLACK), render_run("\\mathbf{F}", 22, BLACK),
              render_run("\\mathbf{N}", 22, RED)]
 den_gaps = [10, 100, 100, 10]
 den_h = max(p.shape[0] for p in den_parts)

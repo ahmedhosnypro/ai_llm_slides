@@ -71,7 +71,10 @@ function panel(dx, dy, label, cells, tpr, fpr) {
   rect(68 + dx, dy + 10, 104, 23, HDRPINK, DRED, 1);
   text(68 + dx, dy + 10, 104, 23, label, 12, DRED, true, { align: "center", valign: "middle" });
   text(117 + dx, dy + 37, 99, 12, "Predicted as", 12, DRED, false, { align: "center", valign: "middle" });
-  const mx0 = 80 + dx, mx1 = 216 + dx, my0 = dy + 49, my1 = dy + 114;
+  const mx0 = 80 + dx, mx1 = 216 + dx, my0 = dy + 49;
+  // matrix bottom measured per row in the original: dy=43 -> 157, dy=163 -> 277,
+  // dy=287 -> 394 (clear of the y=401 divider), dy=401 -> 512
+  const my1 = dy === 287 ? dy + 107 : dy === 401 ? dy + 111 : dy + 114;
   const cols = [mx0, mx0 + 37, mx0 + 85, mx1];
   const rows = [my0, my0 + 21, my0 + 44, my1];
   line(mx0, my0, mx1, my0, DRED, 1);
@@ -94,20 +97,21 @@ function panel(dx, dy, label, cells, tpr, fpr) {
   const acx = mx0 - 17, acy = (rows[1] + my1) / 2;
   text(acx - 35, acy - 9, 70, 18, "Actual", 11, DRED, false,
     { align: "center", valign: "middle", rotate: 270 });
-  // data cells (black numbers in the original)
+  // data cells (dark-red numbers in the original)
   const cw1 = cols[2] - cols[1], cw2 = mx1 - cols[2];
-  text(cols[1], rows[1], cw1, rows[2] - rows[1], cells[0], 14, INK, true, { align: "center", valign: "middle" });
-  text(cols[2], rows[1], cw2, rows[2] - rows[1], cells[1], 14, INK, true, { align: "center", valign: "middle" });
-  text(cols[1], rows[2], cw1, my1 - rows[2], cells[2], 14, INK, true, { align: "center", valign: "middle" });
-  text(cols[2], rows[2], cw2, my1 - rows[2], cells[3], 14, INK, true, { align: "center", valign: "middle" });
-  // TPR lines dark red, FPR lines blue (measured in the original); glyphs ~20px tall -> 14pt.
-  // Right-column formulas extend past the plot panel's left border in the original,
-  // so they must be drawn AFTER the ROC image -> deferred via lateTexts.
+  text(cols[1], rows[1], cw1, rows[2] - rows[1], cells[0], 14, "0B0076", true, { align: "center", valign: "middle" });
+  text(cols[2], rows[1], cw2, rows[2] - rows[1], cells[1], 14, "0B0076", true, { align: "center", valign: "middle" });
+  text(cols[1], rows[2], cw1, my1 - rows[2], cells[2], 14, "0B0076", true, { align: "center", valign: "middle" });
+  text(cols[2], rows[2], cw2, my1 - rows[2], cells[3], 14, "0B0076", true, { align: "center", valign: "middle" });
+  // TPR lines dark red, FPR lines blue (measured in the original); each pair sits in a
+  // pale-yellow red-bordered box (orig box x[227,338] y[dy+53,dy+103], line centers dy+72/dy+91).
+  // Right-column formulas must be drawn AFTER the ROC image -> deferred via lateTexts.
+  rect(227 + dx, dy + 53, 111, 50, "FFF7E1", DRED, 1);
   if (dx > 0) {
-    lateTexts.push([224 + dx, dy + 52, tpr, DRED], [224 + dx, dy + 85, fpr, "100484"]);
+    lateTexts.push([229 + dx, dy + 60, tpr, DRED], [229 + dx, dy + 79, fpr, "100484"]);
   } else {
-    text(224 + dx, dy + 52, 120, 24, tpr, 14, DRED, false, { align: "left", valign: "middle" });
-    text(224 + dx, dy + 85, 120, 24, fpr, 14, "100484", false, { align: "left", valign: "middle" });
+    text(229 + dx, dy + 60, 107, 24, tpr, 10, DRED, false, { align: "left", valign: "middle" });
+    text(229 + dx, dy + 79, 107, 24, fpr, 10, "100484", false, { align: "left", valign: "middle" });
   }
 }
 const lateTexts = [];
@@ -117,17 +121,17 @@ panel(0, 43, "Threshold=0.0", ["5", "0", "6", "0"], "TPR=5/(5+0)=1", "FPR=6/(6+0
 panel(0, 163, "Threshold=0.1", ["5", "0", "4", "2"], "TPR=5/(5+0)=1", "FPR=4/(4+2)=0.66");
 panel(0, 287, "Threshold=0.3", ["5", "0", "2", "4"], "TPR=5/(5+0)=1", "FPR=2/(2+4)=0.33");
 panel(0, 401, "Threshold=0.4", ["4", "1", "1", "5"], "TPR=4/(4+1)=4/5", "FPR=1/(1+5)=0.16");
-// right column: thresholds 0.6, 0.7, 1
-panel(345, 43, "Threshold=0.6", ["3", "1", "1", "5"], "TPR=3/(3+1)=0.6", "FPR=1/(1+5)=0.16");
-panel(345, 163, "Threshold=0.7", ["3", "2", "0", "6"], "TPR=3/(3+2)=0.6", "FPR=0/(0+6)=0");
-panel(345, 287, "Threshold=1", ["0", "5", "0", "6"], "TPR=0/(0+5)=0", "FPR=0/(0+6)=0");
+// right column: thresholds 0.6, 0.7, 1 (orig matrix x[367,503], header x~357, formulas end x<=633)
+panel(287, 43, "Threshold=0.6", ["3", "1", "1", "5"], "TPR=3/(3+1)=0.6", "FPR=1/(1+5)=0.16");
+panel(287, 163, "Threshold=0.7", ["3", "2", "0", "6"], "TPR=3/(3+2)=0.6", "FPR=0/(0+6)=0");
+panel(287, 287, "Threshold=1", ["0", "5", "0", "6"], "TPR=0/(0+5)=0", "FPR=0/(0+6)=0");
 
-// --- center-bottom title (original: navy-bordered box x[344,635] y[426,476], two dark-red lines) ---
-rect(344, 426, 635 - 344, 476 - 426, null, NAVY, 1);
+// --- center-bottom title (original: light-filled navy-bordered box x[354,622] y[426,476], two dark-red lines) ---
+rect(354, 426, 622 - 354, 476 - 426, "E4E9ED", NAVY, 1);
 s.addText([
   { text: "ROC Curve for", options: { fontSize: 15, bold: true, color: DRED, fontFace: FONT, breakLine: true } },
   { text: "Same Model -different thresholds", options: { fontSize: 15, bold: true, color: DRED, fontFace: FONT } }
-], { x: P(344), y: P(426), w: P(635 - 344), h: P(50), align: "center", valign: "middle", margin: 0, lineSpacing: 22 });
+], { x: P(354), y: P(426), w: P(622 - 354), h: P(50), align: "center", valign: "middle", margin: 0, lineSpacing: 22 });
 
 // --- ROC plot: generated matplotlib PNG (panel baked in) at measured box x[636,901] y[43,407] ---
 s.addImage({
@@ -136,30 +140,32 @@ s.addImage({
 });
 // right-column TPR/FPR formulas draw on top of the plot panel border (original does this)
 for (const [tx, ty, tstr, tcol] of lateTexts) {
-  text(tx, ty, 120, 24, tstr, 14, tcol, false, { align: "left", valign: "middle" });
+  text(tx, ty, 107, 24, tstr, 10, tcol, false, { align: "left", valign: "middle" });
 }
 // threshold label '1.0' for the origin point sits in a cream box just under the
-// x-axis at the plot's bottom-left (original: cream x[671,706] y[371,391])
-rect(669, 369, 40, 24, "FFF7C0", "C0A000", 1);
-text(669, 369, 40, 24, "1.0", 10, INK, false, { align: "center", valign: "middle" });
+// x-axis at the plot's bottom-left (original: cream x[672,706] y[375,391], same size as the other badges)
+rect(674, 376, 30, 18, "FFFFE0", "C0A000", 1);
+text(674, 376, 30, 18, "1.0", 12, INK, false, { align: "center", valign: "middle" });
 
 // --- bottom strip: stacked-fraction definition boxes (original: white fill, dark-red
 // border, x[650,748], box1 y[416,455], box2 y[466,503]) ---
 // eq PNGs: 594x136 and 592x136 px at 600 dpi
-rect(650, 416, 98, 39, "FFFFFF", DRED, 1);
-s.addImage({ path: ASSETS + "/eq_036_tpr.png", x: P(654), y: P(424), w: 594 / 600, h: 136 / 600 });
+rect(650, 421, 98, 34, "FFFFFF", DRED, 1);
+s.addImage({ path: ASSETS + "/eq_036_tpr.png", x: P(654), y: P(427), w: 594 / 600, h: 136 / 600 });
 rect(650, 466, 98, 37, "FFFFFF", DRED, 1);
 s.addImage({ path: ASSETS + "/eq_036_fpr.png", x: P(654), y: P(473), w: 592 / 600, h: 136 / 600 });
 
 // --- legend matrix bottom-right: original x[748,889] y[407,499], dark-red grid ---
 // "Predicted as" sits above the two predicted columns (original y ~415-430)
-text(774, 409, 115, 16, "Predicted as", 10, DRED, false, { align: "center", valign: "middle" });
-const lx0 = 748, lx1 = 889, ly0 = 407, ly1 = 499;
+text(774, 417, 115, 16, "Predicted as", 10, DRED, false, { align: "center", valign: "middle" });
+const lx0 = 748, lx1 = 889, ly0 = 421, ly1 = 499;
 const lc = [lx0, 774, 831, lx1], lr = [ly0, 432, 455, 477, ly1];
 for (let i = 1; i < 4; i++) { line(lx0, lr[i], lx1, lr[i], DRED, 1); }
 for (let i = 1; i < 3; i++) { line(lc[i], ly0, lc[i], ly1, DRED, 1); }
 line(lx0, ly0, lx1, ly0, DRED, 1);
 line(lx0, ly1, lx1, ly1, DRED, 1);
+line(lx0, ly0, lx0, ly1, DRED, 1);
+line(lx1, ly0, lx1, ly1, DRED, 1);
 // header P/N (light gray) in row lr[1]..lr[2]
 rect(lc[1], lr[1], lc[2] - lc[1], lr[2] - lr[1], HDRGRAY, INK, 1);
 rect(lc[2], lr[1], lx1 - lc[2], lr[2] - lr[1], HDRGRAY, INK, 1);
@@ -176,8 +182,8 @@ text(lc[0] - 26, lacy - 8, 60, 16, "Actual", 10, DRED, false, { align: "center",
 // cells: TP green, TN green, FN red, FP red (per original highlights)
 rect(lc[1], lr[2], lc[2] - lc[1], lr[3] - lr[2], GREEN, INK, 1);
 rect(lc[2], lr[3], lx1 - lc[2], ly1 - lr[3], GREEN, INK, 1);
-rect(lc[2], lr[2], lx1 - lc[2], lr[3] - lr[2], REDFILL, INK, 1);
-rect(lc[1], lr[3], lc[2] - lc[1], ly1 - lr[3], REDFILL, INK, 1);
+rect(lc[2], lr[2], lx1 - lc[2], lr[3] - lr[2], "FFFFFF", INK, 1);
+rect(lc[1], lr[3], lc[2] - lc[1], ly1 - lr[3], "FFFFFF", INK, 1);
 text(lc[1], lr[2], lc[2] - lc[1], lr[3] - lr[2], "TP", 11, INK, true, { align: "center", valign: "middle" });
 text(lc[2], lr[2], lx1 - lc[2], lr[3] - lr[2], "FN", 11, INK, true, { align: "center", valign: "middle" });
 text(lc[1], lr[3], lc[2] - lc[1], ly1 - lr[3], "FP", 11, INK, true, { align: "center", valign: "middle" });

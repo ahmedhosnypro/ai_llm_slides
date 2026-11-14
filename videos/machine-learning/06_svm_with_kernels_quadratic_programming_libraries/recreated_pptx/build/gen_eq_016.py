@@ -17,7 +17,7 @@ BLUE, RED = "#1F49C7", "#C00000"
 EQS = {
     # x |-> [ x ; x^2 ] as a true 2-D column vector (brackets span both rows)
     "eq_map": (f"{BLUE}:x\\;\\Rightarrow\\;"
-               f"\\left[\\overset{{x}}{{x^{{2}}}}\\right]", 16, 1.65, 0.40),
+               f"\\left[\\overset{{x}}{{x^{{2}}}}\\right]", 16, 1.40, 0.30),
     "eq_x2": (f"{RED}:x^{{2}}", 22, 0.55, 0.45),
     "eq_x": (f"{RED}:x", 22, 0.35, 0.45),
 }

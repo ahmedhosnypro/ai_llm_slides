@@ -57,11 +57,11 @@ s.addText([
   { text: "\u21d2", options: { fontSize: 15, color: "000000", fontFace: SERIF } },
   { text: "  \u03c6(x)", options: { fontSize: 15, color: "C00000", fontFace: SERIF } },
 ], {
-  x: mb.x + 0.01, y: mb.y + 0.01, w: mb.w - 0.02, h: 0.28,
+  x: mb.x + 0.01, y: mb.y + 0.01, w: mb.w - 0.02, h: 0.22,
   align: "left", valign: "middle", margin: 0,
 });
 // Equation image x => [ x ; x^2 ] (true 2-D column, black serif), inside the box
-const eb = box([0.110, 0.300, 0.280, 0.360]);
+const eb = box([0.110, 0.290, 0.280, 0.350]);
 const em = man.eq_map;
 s.addImage({
   path: path.join(EQ, em.file), w: em.w_in,
@@ -92,7 +92,7 @@ s.addText("In the new representation", {
 const bl = box([0.704, 0.444, 0.805, 0.552]);
 s.addShape(pres.shapes.RECTANGLE, {
   x: bl.x, y: bl.y, w: bl.w, h: bl.h,
-  fill: { color: "F6D9A8" }, line: { color: "1F49C7", width: 1 },
+  fill: { color: "FFFFFF" }, line: { color: "1F49C7", width: 1 },
 });
 s.addText("Linear\nDecision\nBoundary", {
   x: bl.x, y: bl.y, w: bl.w, h: bl.h,
@@ -100,7 +100,7 @@ s.addText("Linear\nDecision\nBoundary", {
   fontSize: 13, bold: true, italic: true, color: "1F49C7", fontFace: SERIF, margin: 0,
 });
 s.addShape(pres.shapes.LINE, {
-  x: 0.714 * W, y: 0.520 * H, w: (0.754 - 0.714) * W, h: (0.580 - 0.520) * H,
+  x: 0.754 * W, y: 0.552 * H, w: (0.754 - 0.714) * W, h: (0.580 - 0.552) * H,
   line: { color: "7F7F7F", width: 1 },
 });
 

@@ -10,7 +10,7 @@ const NUM = 43;
 // into the pre-generated plot PNG covering [0.20,0.12,0.76,0.87] (matches spec).
 const pres = newPres();
 const s = pres.addSlide();
-addHouseChrome(pres, s, NUM, null);
+addHouseChrome(pres, s, NUM, "Untitled");
 
 // Generated plot (gen_graph_043.py): 1492x1125 px @200dpi = 7.46 x 5.625 in,
 // placed at the spec region [0.20,0.12,0.76,0.87] -> exact size, no rescale.

@@ -21,13 +21,22 @@ def to_data(x, y):
     return dx, dy
 
 clusters = [
-    ([0.25, 0.28, 0.45, 0.48], "#0000FF"),
-    ([0.28, 0.52, 0.34, 0.62], "#00FF00"),
-    ([0.30, 0.42, 0.37, 0.52], "#FFFF00"),
-    ([0.38, 0.50, 0.58, 0.72], "#FF00FF"),
-    ([0.48, 0.30, 0.56, 0.42], "#FF0000"),
-    ([0.61, 0.25, 0.70, 0.48], "#00FFFF"),
-    ([0.61, 0.50, 0.70, 0.68], "#000000"),
+    ([0.295, 0.313, 0.458, 0.473], "#0000FF"),
+    ([0.494, 0.361, 0.580, 0.417], "#FF0000"),
+    ([0.645, 0.305, 0.730, 0.465], "#00FFFF"),
+    ([0.312, 0.535, 0.372, 0.604], "#FFFF00"),
+    ([0.312, 0.628, 0.381, 0.695], "#00FF00"),
+    ([0.384, 0.544, 0.584, 0.678], "#FF00FF"),
+    ([0.629, 0.526, 0.741, 0.668], "#000000"),
+]
+domains = [
+    ([0.268, 0.281, 0.523, 0.510], "#0000FF"),
+    ([0.483, 0.305, 0.590, 0.435], "#FF0000"),
+    ([0.640, 0.272, 0.770, 0.455], "#00FFFF"),
+    ([0.268, 0.498, 0.397, 0.705], "#FFFF00"),
+    ([0.268, 0.618, 0.397, 0.705], "#00FF00"),
+    ([0.393, 0.526, 0.626, 0.705], "#FF00FF"),
+    ([0.624, 0.498, 0.770, 0.705], "#000000"),
 ]
 
 rng = np.random.default_rng(43)
@@ -60,11 +69,11 @@ for (box, color) in clusters:
 xx = np.linspace(0, 40, 180)
 yy = np.linspace(-10, 40, 180)
 XX, YY = np.meshgrid(xx, yy)
-centers = [(10, 22), (22, 23), (33, 22), (7, 12), (18, 8), (6, 3), (33, 7)]
-d2 = np.min(np.stack([(XX-x)**2 + (YY-y)**2 for x, y in centers]), axis=0)
-palette = ["#0000FF", "#FF0000", "#00FFFF", "#FFFF00", "#FF00FF", "#00FF00", "#000000"]
-dists = np.stack([(XX-x)**2 + (YY-y)**2 for x, y in centers])
-bg = np.take(palette, np.argmin(dists, axis=0))
+bg = np.full(XX.shape, "#FFFFFF", dtype=object)
+for (box, color) in domains:
+    x0, y0 = to_data(box[0], box[3])
+    x1, y1 = to_data(box[2], box[1])
+    bg[(XX >= min(x0, x1)) & (XX <= max(x0, x1)) & (YY >= min(y0, y1)) & (YY <= max(y0, y1))] = color
 ax.scatter(XX.ravel(), YY.ravel(), s=3, c=bg.ravel(), marker="s", linewidths=0, zorder=1)
 
 out = BASE + "/slide_043_graph.png"

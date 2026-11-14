@@ -89,7 +89,7 @@ txt("?", 0.689, 0.244, 0.730, 0.333, { fs: 40, bold: true, color: "C00000", alig
 panel(0.069, 0.420, 0.830, 0.617);
 txt("Put all ≤ , ≥ constraints in the form:", 0.081, 0.433, 0.335, 0.469,
     { fs: 12, bold: true, under: true, color: "C00000" });
-defline([vr("m", "008000")], "is Number of constraints", "", 0.294, 0.476, 0.620, 0.505);
+defline([vr("m", "008000")], "is Number of constraints ,", "", 0.294, 0.476, 0.620, 0.505);
 img("eq_gxleh", 0.081, 0.515, 0.557);
 txt("where:", 0.228, 0.524, 0.275, 0.557, { fs: 11, bold: true });
 defline([vr("X", "0000FF")], "is a Vector of size", "d*1", 0.294, 0.5090, 0.492, 0.5413);
@@ -103,7 +103,7 @@ runs([
   { text: 'Equal "="', options: { fontFace: FONT, fontSize: 12, bold: true, italic: true, underline: true, color: "0000FF" } },
   { text: " constraints in the form:", options: { fontFace: FONT, fontSize: 12, bold: true, underline: true, color: "C00000" } },
 ], 0.081, 0.654, 0.335, 0.691);
-defline([vr("m", "008000")], "is Number of constraints", "", 0.294, 0.696, 0.620, 0.726);
+defline([vr("m", "008000")], "is Number of constraints ,", "", 0.294, 0.696, 0.620, 0.726);
 img("eq_axeqb", 0.081, 0.730, 0.774);
 txt("where:", 0.222, 0.739, 0.271, 0.772, { fs: 11, bold: true });
 defline([vr("X", "0000FF")], "is a Vector of size", "d*1", 0.294, 0.7260, 0.492, 0.7587);

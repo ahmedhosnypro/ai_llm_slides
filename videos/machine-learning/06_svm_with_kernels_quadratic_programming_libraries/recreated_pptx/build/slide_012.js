@@ -41,7 +41,11 @@ s.addText("12", {
   align: "center", valign: "middle",
   fontSize: 18, bold: true, color: "333333", fontFace: "Arial", margin: 0,
 });
-// SLIDE_TITLE: none — no title text added.
+// House chrome: title box at house position y=0.28
+s.addText("SVM Primal Problem & Quadratic Equation in \u03b1 with Constraints", {
+  x: 0.6, y: 0.28, w: 12.13, h: 0.5, align: "center", valign: "top",
+  fontSize: 18, bold: true, color: "C00000", fontFace: "Arial", margin: 0,
+});
 
 // Letterbox black band
 s.addShape(pres.shapes.RECTANGLE, {

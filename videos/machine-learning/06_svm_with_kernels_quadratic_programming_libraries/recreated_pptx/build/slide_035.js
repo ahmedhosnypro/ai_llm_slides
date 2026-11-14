@@ -69,7 +69,7 @@ for (const c of [cU, cL]) {
 // Green highlight ovals (lower panel) drawn BEFORE the equation images so the
 // transparent-PNG glyphs stay readable on top of the translucent-looking highlight
 const lagU = RM(0.098, 0.157, 0.439, 0.233), lagLbox = RM(0.098, 0.611, 0.454, 0.689);
-const idb = RM(0.281, 0.467, 0.590, 0.515);
+const idb = RM(0.281, 0.470, 0.590, 0.515);
 const place = (file, box, align) => {
   const info = imgInfo(file);
   const aspect = info.w_px / info.h_px;
@@ -92,8 +92,8 @@ const segOval = (r, info, label) => {
        (g[3] - g[2]) / 600 * r.h / (info.h_px / 600) + 0.04);
 };
 segOval(imgLagL, imgInfo("fix_lag_lower.png"), "tail");
-oval(imgB_L.x + 0.34 * imgB_L.w, imgB_L.y + 0.12 * imgB_L.h, 0.14 * imgB_L.w, 0.76 * imgB_L.h);
-oval(imgB_L.x + 0.76 * imgB_L.w, imgB_L.y + 0.12 * imgB_L.h, 0.14 * imgB_L.w, 0.76 * imgB_L.h);
+segOval(imgB_L, imgInfo("fix_b_lower.png"), "t1");
+segOval(imgB_L, imgInfo("fix_b_lower.png"), "t2");
 // around W^T Z in the lower callout
 {
   const o = RM(0.345, 0.778, 0.385, 0.826);
@@ -111,7 +111,7 @@ img("fix_w.png", wB_U, "center");
 img("fix_w.png", wB_L, "center");
 img("fix_b_upper.png", bB_U, "center");
 img("fix_b_lower.png", bB_L, "center");
-img("rb4_ident.png", idb, "center");
+img("fix_ident.png", idb, "center");
 // Middle panel texts (font sizes scaled by SY ~1.23)
 const tU = (runs, box) => s.addText(runs, {
   x: box.x, y: box.y, w: box.w, h: box.h, align: "left", valign: "middle", margin: 0,
@@ -119,7 +119,6 @@ const tU = (runs, box) => s.addText(runs, {
 tU([{ text: "Remember :", options: { fontSize: 15, bold: true, italic: true, color: "0000FF", fontFace: FONT } }],
    RM(0.081, 0.400, 0.172, 0.428));
 img("fix_mapping.png", RM(0.081, 0.433, 0.707, 0.467), "left");
-img("fix_mapping2.png", RM(0.270, 0.475, 0.707, 0.515), "left");
 img("fix_kernel.png", RM(0.081, 0.530, 0.813, 0.561), "left");
 // Callout texts: "Class of vector Z ⇒ sign(W^T Z + b)" (upper: black/green/red/blue; lower: red/black)
 const callout = (c, runs) => s.addText(runs, {

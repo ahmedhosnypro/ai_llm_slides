@@ -224,8 +224,8 @@ s.addShape(pres.shapes.RECTANGLE, {
 });
 s.addImage({
   path: `${BUILD}/slide_029_eq_net.png`,
-  x: 1.028 + (2.375 - 1.427) / 2, y: 6.417 + (0.514 - 0.472) / 2,
-  w: 1.427, h: 0.472,
+  x: 1.028 + (2.375 - 1.58667) / 2, y: 6.417 + (0.514 - 0.47167) / 2,
+  w: 1.58667, h: 0.47167,
 });
 
 s.addShape(pres.shapes.RECTANGLE, {

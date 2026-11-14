@@ -1,0 +1,86 @@
+{
+  "slides": [
+    {
+      "slide": 1,
+      "equations": [
+        {
+          "rel_id": "rId1",
+          "image": "image-1-1.png",
+          "mathtext": "x_1=(1,1),\\ y_1=1\\\\x_2=(2,2),\\ y_2=1\\\\x_3=(7,4),\\ y_3=-1\\\\x_4=(8,4),\\ y_4=-1",
+          "font_size_pt": 13,
+          "color": "#000000"
+        },
+        {
+          "rel_id": "rId2",
+          "image": "image-1-2.png",
+          "mathtext": "T_1\\quad T_2\\quad T_3\\\\2\\quad 4\\quad 6\\\\3\\quad 5\\quad 2",
+          "font_size_pt": 13,
+          "color": "#000000"
+        },
+        {
+          "rel_id": "rId3",
+          "image": "image-1-3.png",
+          "mathtext": "\\alpha_1 y_1+\\alpha_2 y_2+\\alpha_3 y_3+\\alpha_4 y_4=0\\\\0\\leq\\alpha_1\\leq C\\quad 0\\leq\\alpha_2\\leq C\\quad 0\\leq\\alpha_3\\leq C\\quad 0\\leq\\alpha_4\\leq C,",
+          "font_size_pt": 12,
+          "color": "#000000"
+        },
+        {
+          "rel_id": "rId4",
+          "image": "image-1-4.png",
+          "mathtext": "\\text{Maximize }\\mathrm{L}_D(\\alpha)=\\sum_{i=1}^{N}\\alpha_i-\\frac{1}{2}\\sum_{j=1}^{N}\\sum_{i=1}^{N}\\alpha_i\\alpha_j y_i y_j X_i^T X_j\\ \\Rightarrow\\ \\text{Minimize }\\mathrm{L}_D(\\alpha)=\\frac{1}{2}\\sum_{j=1}^{N}\\sum_{i=1}^{N}\\alpha_i\\alpha_j y_i y_j X_i^T X_j-\\sum_{i=1}^{N}\\alpha_i",
+          "font_size_pt": 15,
+          "color": "#000000"
+        },
+        {
+          "rel_id": "rId5",
+          "image": "image-1-5.png",
+          "mathtext": "\\text{X}=\\ \\left[\\;\\substack{x_1\\quad x_2\\quad x_3\\quad x_4\\\\1\\quad 2\\quad 7\\quad 8\\\\1\\quad 2\\quad 4\\quad 4}\\;\\right]",
+          "font_size_pt": 14,
+          "color": "#000000"
+        },
+        {
+          "rel_id": "rId6",
+          "image": "image-1-6.png",
+          "mathtext": "\\text{G}=X^T X\\ \\left[\\;\\substack{\\quad x_1\\quad x_2\\quad x_3\\quad x_4\\\\x_1^T\\quad 2\\quad 4\\quad 11\\quad 12\\\\x_2^T\\quad 4\\quad 8\\quad 22\\quad 24\\\\x_3^T\\quad 11\\quad 22\\quad 65\\quad 72\\\\x_4^T\\quad 12\\quad 24\\quad 72\\quad 80}\\;\\right]",
+          "font_size_pt": 15,
+          "color": "#000000"
+        },
+        {
+          "rel_id": "rId7",
+          "image": "image-1-7.png",
+          "mathtext": "\\substack{y_1\\\\y_2\\\\y_3\\\\y_4}\\ \\left(\\substack{1\\\\1\\\\-1\\\\-1}\\right)",
+          "font_size_pt": 14,
+          "color": "#000000"
+        },
+        {
+          "rel_id": "rId8",
+          "image": "image-1-8.png",
+          "mathtext": "\\left|\\ \\substack{y_1\\ \\ y_2\\ \\ y_3\\ \\ y_4\\\\1\\quad 1\\quad -1\\quad -1}\\ \\right|\\ =\\ \\left[\\;\\substack{\\quad y_1\\quad y_2\\quad y_3\\quad y_4\\\\y_1\\quad 1\\quad 1\\quad -1\\quad -1\\\\y_2\\quad 1\\quad 1\\quad -1\\quad -1\\\\y_3\\quad -1\\quad -1\\quad 1\\quad 1\\\\y_4\\quad -1\\quad -1\\quad 1\\quad 1}\\;\\right]",
+          "font_size_pt": 13,
+          "color": "#000000"
+        },
+        {
+          "rel_id": "rId9",
+          "image": "image-1-9.png",
+          "mathtext": "[ +1\\alpha_1^2 +2\\alpha_1\\alpha_2 -5.5\\alpha_1\\alpha_3 -6\\alpha_1\\alpha_4 +2\\alpha_2\\alpha_1 +4\\alpha_2^2 -11\\alpha_2\\alpha_3 -12\\alpha_2\\alpha_4 -5.5\\alpha_3\\alpha_1 -11\\alpha_3\\alpha_2 +32.5\\alpha_3^2 +36\\alpha_3\\alpha_4\\\\-6\\alpha_4\\alpha_1 -12\\alpha_4\\alpha_2 +36\\alpha_4\\alpha_3 +40\\alpha_4^2 ] -[ \\alpha_1+\\alpha_2+\\alpha_3+\\alpha_4 ]",
+          "font_size_pt": 13,
+          "color": "#000000"
+        },
+        {
+          "rel_id": "rId10",
+          "image": "image-1-10.png",
+          "mathtext": "\\alpha_i \\leq C:\\quad \\alpha_1 \\leq 1,\\ \\alpha_2 \\leq 1,\\ \\alpha_3 \\leq 1,\\ \\alpha_4 \\leq 1\\\\\\alpha_i \\geq 0:\\quad \\alpha_1 \\geq 0,\\ \\alpha_2 \\geq 0,\\ \\alpha_3 \\geq 0,\\ \\alpha_4 \\geq 0",
+          "font_size_pt": 12,
+          "color": "#000000"
+        },
+        {
+          "rel_id": "rId11",
+          "image": "image-1-11.png",
+          "mathtext": "{\\sum_i\\alpha_i y_i=0 \\qquad \\alpha_1+\\alpha_2-\\alpha_3-\\alpha_4=0}\\\\\\alpha_i\\leq C:\\ \\alpha_1\\leq1,\\ \\alpha_2\\leq1,\\ \\alpha_3\\leq1,\\ \\alpha_4\\leq1 \\qquad \\alpha_i\\geq0:\\ \\alpha_1\\geq0,\\ \\alpha_2\\geq0,\\ \\alpha_3\\geq0,\\ \\alpha_4\\geq0",
+          "font_size_pt": 11,
+          "color": "#000000"
+        }
+      ]
+    }
+  ]
+}

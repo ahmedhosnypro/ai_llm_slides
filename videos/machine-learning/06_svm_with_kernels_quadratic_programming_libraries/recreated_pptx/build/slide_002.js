@@ -28,16 +28,11 @@ s.addText(String(NUM), {
   fontSize: 18, bold: true, color: "333333", fontFace: FONT, margin: 0,
 });
 
-s.addText("How to call", {
-  x: 0.6, y: 2.75, w: 12.13, h: 0.55,
-  align: "center", valign: "middle",
+// House chrome: title box at house position y=0.28
+s.addText("How to call\nPython Quadratic Programming Libraries", {
+  x: 0.6, y: 0.28, w: 12.13, h: 1.1,
+  align: "center", valign: "top",
   fontSize: 26, bold: true, color: "C00000", fontFace: FONT, margin: 0,
-});
-
-s.addText("Python Quadratic Programming Libraries", {
-  x: 1.5, y: 3.611, w: 10.33, h: 0.556,
-  align: "center", valign: "middle", fit: "shrink",
-  fontSize: 30, bold: true, color: "C00000", fontFace: FONT, margin: 0,
 });
 
 s.addText("CVXOPT , QuadProg", {

@@ -94,7 +94,7 @@ runs([{ text: "Kernelized ", options: { fontSize: 14, bold: true, italic: true, 
       { text: "Model", options: { fontSize: 14, bold: true, italic: true, color: "000000", fontFace: SERIF } }], R(0.604, 0.530, 0.729, 0.561));
 eq("eq20_calc_u", R(0.610, 0.556, 0.750, 0.598));
 rect(R(0.573, 0.611, 0.792, 0.902), "E2EFDA", "A9D08E", 1, true);
-eq("eq20_kern_uv", R(0.578, 0.614, 0.788, 0.768), "right");
+eq("eq20_kern_uv", R(0.578, 0.614, 0.788, 0.898));
 complexity(R(0.594, 0.772, 0.693, 0.870));
 // O/P + small arrow at right of Kernelized panel
 txt("O/P", R(0.881, 0.641, 0.917, 0.667), { fontSize: 13, bold: true, color: BLUE, fontFace: SANS });

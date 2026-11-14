@@ -90,12 +90,12 @@ CW, CH = 375, 141
 fig2, ax2 = new_fig(CW, CH)
 CX, CY = 141, 352
 def p(x, y):
-    return x - CX, CH - (y - CY)
+    return x - CX, y - CY
 
 # thin gray connectors from the inputs into the Sigma circle
 IN_Y = [379, 418, 470]
 for iy in IN_Y:
-    ax2.plot(*zip(p(33, iy), p(158, 420.5)), color="#B8B8B8", lw=0.8, zorder=1)
+    ax2.plot(*zip(p(185, iy), p(298, 420.5)), color="#B8B8B8", lw=0.8, zorder=1)
 
 # inputs + bias
 ax2.text(*p(166, 379), r"$x_1$", fontsize=8, color="black",
@@ -131,16 +131,16 @@ ax2.annotate("", xy=p(360, 420.5), xytext=p(334, 420.5),
 bx, by = p(360, 405)
 ax2.add_patch(Rectangle((bx, by), 39, 31, facecolor=ACT_FILL,
                         edgecolor=ACT_EDGE, lw=1.4, zorder=2))
-# step pictogram (measured ink inside the box)
-ax2.plot(*zip(p(239, 60 + 52), p(239, 78 + 52)), color=BLUE, lw=3,
-         solid_capstyle="butt", zorder=5)                      # vertical jump
-ax2.plot(*zip(p(242, 61 + 52), p(253, 61 + 52)), color=BLUE, lw=3,
-         solid_capstyle="butt", zorder=5)                      # top horizontal
-ax2.plot(*zip(p(226, 77 + 52), p(238, 77 + 52)), color=BLUE, lw=3,
-         solid_capstyle="butt", zorder=5)                      # bottom horizontal
-ax2.plot(*zip(p(227, 69 + 52), p(236, 69 + 52)), color=STEP_RED, lw=3,
+# step pictogram measured in the original: blue top/bottom/vertical, red mid segments
+ax2.plot(*zip(p(380, 410), p(380, 432)), color=BLUE, lw=3,
          solid_capstyle="butt", zorder=5)
-ax2.plot(*zip(p(243, 69 + 52), p(253, 69 + 52)), color=STEP_RED, lw=3,
+ax2.plot(*zip(p(383, 413), p(395, 413)), color=BLUE, lw=3,
+         solid_capstyle="butt", zorder=5)
+ax2.plot(*zip(p(367, 429), p(379, 429)), color=BLUE, lw=3,
+         solid_capstyle="butt", zorder=5)
+ax2.plot(*zip(p(368, 421), p(377, 421)), color=STEP_RED, lw=3,
+         solid_capstyle="butt", zorder=5)
+ax2.plot(*zip(p(384, 421), p(392, 421)), color=STEP_RED, lw=3,
          solid_capstyle="butt", zorder=5)
 
 # rule legend on its pale strip, ABOVE the activation box (measured x 344..408,
@@ -150,9 +150,9 @@ ax2.add_patch(FancyBboxPatch((sx, sy), 64, 31,
                              boxstyle="round,pad=0,rounding_size=3",
                              facecolor=STRIP_FILL, edgecolor="#D8D8A0",
                              lw=0.8, zorder=1))
-ax2.text(*p(235, 373), r">0 $\Rightarrow$ 1", fontsize=8, color="#00A000",
+ax2.text(*p(378, 373), r">0 $\Rightarrow$ 1", fontsize=8, color="#00A000",
          ha="center", va="center", zorder=6)
-ax2.text(*p(235, 386), r"$\leq$0 $\Rightarrow$ 0", fontsize=8,
+ax2.text(*p(378, 386), r"<0 $\Rightarrow$ 0", fontsize=8,
          color="#E07B00", ha="center", va="center", zorder=6)
 
 # red arrow activation box -> O/P, then the label
@@ -169,7 +169,7 @@ print("wrote slide_012_perceptron.png")
 # ------------------------------------------------------------- equation -----
 import render_eq
 info = render_eq.render(r"d(X) = -7 x_1 - 5 x_2 + 2",
-                        f"{BUILD}/eq_s012_dX.png", 29, "#000000")
+                        f"{BUILD}/eq_s012_dX.png", 22, "#000000")
 print("eq:", info)
 print("PLACE x=%.5f y=%.5f w=%.5f h=%.5f" % (
     8.04167 + (3.22222 - info["w_in"]) / 2,

@@ -13,7 +13,7 @@ s.background = { color: "E8E8E8" };
 const FONT = "Arial";
 
 s.addImage({
-  path: path.join(B, "slide_028_nn_model.png"),
+  path: path.join(B, "slide_028_nn_model_v2.png"),
   x: 0, y: 0, w: W, h: H,
 });
 

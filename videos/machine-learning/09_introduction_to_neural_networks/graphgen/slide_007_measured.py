@@ -96,48 +96,53 @@ for poly, face, edge, hatch in [
     ax.add_patch(Polygon(poly, closed=True, facecolor=face, edgecolor=edge,
                          linewidth=0.25, hatch=hatch, zorder=0))
 
-ax.annotate("", xy=(292, 130), xytext=(292, 415),
-            arrowprops=dict(arrowstyle="-|>", mutation_scale=14, color=red, lw=1.5), zorder=2)
-ax.annotate("", xy=(635, 415), xytext=(292, 415),
-            arrowprops=dict(arrowstyle="-|>", mutation_scale=14, color=red, lw=1.5), zorder=2)
+ax.annotate("", xy=(310, 138), xytext=(310, 436),
+            arrowprops=dict(arrowstyle="-|>", mutation_scale=14, color="#FF0000", lw=1.5), zorder=2)
+ax.annotate("", xy=(670, 436), xytext=(310, 436),
+            arrowprops=dict(arrowstyle="-|>", mutation_scale=14, color="#FF0000", lw=1.5), zorder=2)
 
 for line, color in [(red_line, "#FF0000"), (green_line, green), (blue_line, blue)]:
     ax.plot(line[:, 0], line[:, 1], color=color, lw=2.0, zorder=2)
 
 for xy, xytext, color in [
-    ((500, 428), (525, 405), "#FF0000"),
-    ((296, 310), (280, 330), green),
-    ((630, 140), (610, 120), blue),
+    ((530, 468), (540, 445), "#FF0000"),
+    ((312, 326), (320, 355), green),
+    ((665, 145), (650, 165), blue),
 ]:
     ax.annotate("", xy=xy, xytext=xytext,
                 arrowprops=dict(arrowstyle="-|>", mutation_scale=20, color=color, lw=2.8), zorder=3)
 
 points = {
-    green: [(375, 165), (438, 165), (438, 208), (387, 250), (437, 250), (500, 240), (388, 280)],
-    "#FF0000": [(355, 345), (323, 372), (348, 372), (323, 398), (355, 398)],
-    "#1E2FC0": [(643, 297), (533, 340), (588, 340), (637, 340), (533, 370), (637, 370), (585, 380), (602, 390)],
+    green: [(397, 175), (464, 175), (464, 220), (530, 254), (464, 265), (412, 266), (412, 299)],
+    "#FF0000": [(379, 362), (343, 392), (370, 392), (343, 419), (379, 419)],
+    "#1E2FC0": [(681, 314), (636, 353), (512, 359), (567, 359), (676, 362), (512, 389), (636, 392), (567, 408), (606, 408)],
 }
+marker_sizes = {green: 400, "#FF0000": 300, "#1E2FC0": 400}
 for color, coords in points.items():
     xs, ys = zip(*coords)
-    ax.scatter(xs, ys, s=230, c=color, edgecolors="none", zorder=4)
+    ax.scatter(xs, ys, s=marker_sizes[color], c=color, edgecolors="none", zorder=4)
 
 for x, y, color, rotation, label in [
-    (269, 190, "#FF0000", -30, "d$_1$(x)"),
-    (687, 208, green, 18, "d$_2$(x)"),
-    (588, 152, blue, 55, "d$_3$(x)"),
+    (284, 224, "#FF0000", -34, "d$_1$(x)"),
+    (705, 218, green, 18, "d$_2$(x)"),
+    (624, 177, blue, 48, "d$_3$(x)"),
 ]:
     ax.text(x, y, label, color=color, fontsize=14, style="italic",
             ha="center", va="center", rotation=rotation, zorder=5)
 
-for x, y, label in [(655, 133, "+ve"), (270, 316, "+ve"), (513, 456, "+ve")]:
+for x, y, label in [(694, 145, "+ve"), (285, 336, "+ve"), (543, 480, "+ve")]:
     ax.text(x, y, label, color="black", fontsize=14, fontweight="bold",
             ha="center", va="center", zorder=5)
 
-for x, y, color, digit in [(498, 146, green, "1"), (565, 283, blue, "2"), (244, 374, red, "3")]:
-    ax.add_patch(Rectangle((x, y), 35, 28, facecolor="#FFFF00", edgecolor="none", zorder=5))
-    ax.text(x + 14, y + 14, "C", color=color, fontsize=19, fontweight="bold",
+for x, y, w, h, color, digit in [
+    (524, 152, 44, 37, green, "1"),
+    (594, 295, 43, 35, blue, "2"),
+    (260, 394, 43, 37, red, "3"),
+]:
+    ax.add_patch(Rectangle((x, y), w, h, facecolor="#FFFF00", edgecolor="none", zorder=5))
+    ax.text(x + 16, y + 18, "C", color=color, fontsize=19, fontweight="bold",
             ha="center", va="center", zorder=6)
-    ax.text(x + 27, y + 19, digit, color="black", fontsize=12, fontweight="bold",
+    ax.text(x + 34, y + 24, digit, color="black", fontsize=12, fontweight="bold",
             ha="center", va="center", zorder=6)
 
 fig.savefig(OUT, dpi=200, facecolor="white")

@@ -9,6 +9,14 @@
 - **Status**: Unique-frame extraction complete; human review **APPROVED** by the owner
   (2026-10-28: "do it, approved") — the HARD STOP is LIFTED for this namespace.
 
+## CLOSED (2026-11-14)
+
+- **Status**: CLOSED 2026-11-14 — 55/55 slides recreated and certified.
+- Final deck: `recreated_pptx/06_svm_with_kernels_quadratic_programming_libraries_final.pptx`,
+  md5 `7241f9cb5b249c4dde506e081d7a3716`.
+- `CLOSEOUT_REPORT.md` at the namespace root; merge gate PASS.
+- 1 documented residual: slide 024 (see `CLOSEOUT_REPORT.md`).
+
 ## KNOWN DEFECT (root cause of dump slides) — verification recorded 2026-10-28
 
 Slides 023–055 were built from **UI-audit transcripts**, not recreation specs:

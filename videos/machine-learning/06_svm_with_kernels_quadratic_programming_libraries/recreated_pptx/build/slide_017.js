@@ -21,6 +21,14 @@ function line(x0, y0, x1, y1, color, width = 1.5, extra = {}) {
     line: { color, width, ...extra },
   });
 }
+function diag(x0, y0, x1, y1, color, thickness = 0.035) {
+  const dx = X(x1 - x0), dy = Y(y1 - y0), len = Math.hypot(dx, dy);
+  s.addShape(pres.shapes.RECTANGLE, {
+    x: (X(x0) + X(x1)) / 2 - len / 2, y: (Y(y0) + Y(y1)) / 2 - thickness / 2,
+    w: len, h: thickness, rotate: Math.atan2(dy, dx) * 180 / Math.PI,
+    fill: { color }, line: { type: "none" },
+  });
+}
 function dots(points, color) {
   points.forEach(([x, y]) => s.addShape(pres.shapes.OVAL, {
     x: X(x) - 0.07, y: Y(y) - 0.07, w: 0.14, h: 0.14,
@@ -67,12 +75,12 @@ s.addShape(pres.shapes.OVAL, {
   x: X(0.42), y: Y(0.45), w: X(0.13), h: Y(0.23),
   fill: { type: "none" }, line: { color: "ED7D31", width: 2 },
 });
-line(0.40, 0.44, 0.62, 0.77, "1F4ED8", 3, { flipV: true });
+diag(0.40, 0.77, 0.62, 0.44, "1F4ED8", 0.06);
 
 const cyan = [
   [0.51646, 0.46833], [0.45042, 0.46852],
   [0.41896, 0.51852], [0.54792, 0.51852],
-  [0.40323, 0.59667], [0.56365, 0.59667],
+  [0.40323, 0.565], [0.56365, 0.59667],
   [0.41250, 0.66926], [0.55094, 0.66926],
   [0.51656, 0.72519], [0.45031, 0.72537],
 ];
@@ -85,7 +93,7 @@ dots(cyan, "40E0D0");
 dots(red, "C00000");
 callout([0.66, 0.31, 0.75, 0.44], "Linear\nDecision\nBoundary");
 callout([0.60, 0.71, 0.68, 0.84], "Non-Linear\nDecision\nBoundary");
-line(0.60, 0.44, 0.66, 0.50, "1F4ED8", 1.25, { flipHorizontal: true });
+diag(0.60, 0.50, 0.66, 0.40, "1F4ED8", 0.025);
 line(0.53, 0.65, 0.60, 0.71, "808080", 1.25);
 rect([0, 0.96, 1, 1], "000000", "000000", 0);
 

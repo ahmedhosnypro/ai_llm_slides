@@ -15,12 +15,13 @@ import numpy as np
 RENDER = "/home/codespace/ai_llm_slides/scripts/render_eq.py"
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "equations_slide022")
+os.makedirs(OUT, exist_ok=True)
 DPI = 600
 FONT = 18.0
-RED = "C00000"
-BLUE = "2B3FC4"
-GREEN = "1E8B1E"
-BLACK = "000000"
+RED = "#C00000"
+BLUE = "#2B3FC4"
+GREEN = "#1E8B1E"
+BLACK = "#000000"
 PAD = 8
 CANVAS_W, CANVAS_H = 5000, 1400
 
@@ -105,7 +106,7 @@ def seq(canvas, shards, x, base_y, gap):
     return end
 
 
-def piecewise(name, pre, lines):
+def piecewise(name, pre, lines, trailing=None):
     c = Image.new("RGBA", (CANVAS_W, CANVAS_H), (0, 0, 0, 0))
     y1 = Y0 + LINE
     mid = (Y0 + y1) // 2
@@ -113,15 +114,16 @@ def piecewise(name, pre, lines):
     xb = BR.paste(c, end + 60, y1)
     xval = xb + 80
     vmax = 0
-    ends = []
     for i, (val, cond) in enumerate(lines):
         base = Y0 if i == 0 else y1
-        e = seq(c, val, xval, base, 0)
+        e = seq(c, [val], xval, base, 0)
         vmax = max(vmax, e - xval)
-        ends.append(e)
+    cend = 0
     for i, (val, cond) in enumerate(lines):
         base = Y0 if i == 0 else y1
-        seq(c, cond, xval + vmax + 80, base, 0)
+        cend = max(cend, seq(c, [cond], xval + vmax + 80, base, 0))
+    if trailing is not None:
+        trailing.paste(c, cend + 100, y1)
     return finish(c, name)
 
 
@@ -145,3 +147,41 @@ def fraction(name, pre, num, den, bar_color):
     mid = (Y0 + dn) // 2 + 8
     ImageDraw.Draw(c).rectangle([xn, mid, xmax - 20, mid + 6], fill=bar_color)
     return finish(c, name)
+
+
+def main():
+    os.makedirs(OUT, exist_ok=True)
+    manifest = {"slide": 22, "dpi": DPI, "font_size_pt": FONT, "equations": []}
+
+    def sh(name, latex, color):
+        return Shard(name, latex, color)
+
+    fx = lambda: sh("fx", r"\mathit{f(x)=}", BLACK)
+    dfx = lambda: sh("dfx", r"\mathit{f'(x)=}", BLACK)
+    eq = lambda: sh("eq", r"=", BLACK)
+    cond_lt = lambda: sh("lt", r"\mathit{for}\ x<0", BLACK)
+    cond_ge = lambda: sh("ge", r"\mathit{for}\ x\geq 0", GREEN)
+
+    specs = [
+        ("eq_relu_f", piecewise("eq_relu_f.png", [fx(), sh("relu", r"\mathit{Rectified\ Linear\ Unit}", RED), eq()], [(sh("v0", r"0", RED), cond_lt()), (sh("vx", r"x", RED), cond_ge())])),
+        ("eq_relu_df", piecewise("eq_relu_df.png", [dfx()], [(sh("v0", r"0", RED), cond_lt()), (sh("v1", r"1", RED), cond_ge())])),
+        ("eq_prelu_f", piecewise("eq_prelu_f.png", [fx(), sh("p", r"\mathit{P}", BLUE), sh("prelu", r"\mathit{arametric\ ReLU}", RED), eq()], [(sh("ax", r"\alpha x", BLUE), cond_lt()), (sh("x", r"x", RED), cond_ge())], trailing=sh("plus", r"+", "#C98A8A"))),
+        ("eq_prelu_df", piecewise("eq_prelu_df.png", [dfx()], [(sh("a", r"\alpha", BLUE), cond_lt()), (sh("one", r"1", RED), cond_ge())])),
+        ("eq_elu_f", piecewise("eq_elu_f.png", [fx(), sh("e", r"\mathit{E}", BLUE), sh("elu", r"\mathit{xponential\ LU}", RED), eq()], [(sh("eluval", r"\alpha(e^{x}-1)", RED), cond_lt()), (sh("x", r"x", RED), cond_ge())])),
+        ("eq_elu_df", piecewise("eq_elu_df.png", [dfx()], [(sh("fxa", r"\mathit{f(x)}+\alpha", RED), cond_lt()), (sh("one", r"1", RED), cond_ge())])),
+        ("eq_softplus_f", simple("eq_softplus_f.png", [fx(), sh("sp", r"\mathit{SoftPlus}", RED), eq(), sh("log", r"\log_{e}(1+e^{x})", BLACK)])),
+        ("eq_softplus_df", fraction("eq_softplus_df.png", [dfx()], [sh("num", r"1", BLACK)], [sh("d1", r"1+e", BLACK), sh("d2", r"^{-x}", RED)], BLACK)),
+    ]
+    for name, (w_in, h_in) in specs:
+        manifest["equations"].append({
+            "name": name, "image": name + ".png", "w_in": w_in, "h_in": h_in,
+            "font_size_pt": FONT, "color": "mixed",
+            "mathtext": "color-sharded composite; see gen_eq_022.py",
+        })
+        print(name, w_in, h_in)
+    with open(os.path.join(OUT, "manifest.json"), "w") as f:
+        json.dump(manifest, f, indent=2)
+
+
+if __name__ == "__main__":
+    main()

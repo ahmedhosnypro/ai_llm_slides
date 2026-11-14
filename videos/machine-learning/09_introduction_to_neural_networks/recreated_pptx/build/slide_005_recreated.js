@@ -142,9 +142,9 @@ s.addText("⇒", {
 });
 // "Augmented Vector" blue italic, x298-406 y161-175 (baseline 171)
 s.addText("Augmented Vector", {
-  x: px(298), y: px(161 - 16), w: px(121), h: px(24),
+  x: px(300), y: px(156), w: px(121), h: px(24),
   align: "left", valign: "top",
-  fontSize: 16, color: "0000FF", fontFace: SERIF, italic: true, margin: 0,
+  fontSize: 16, charSpacing: -0.6, color: "0000FF", fontFace: SERIF, italic: true, margin: 0,
 });
 // "W" red + "=" black in the right panel (W x560-575 y159-174, = x578-589)
 s.addText("W", {

@@ -10,9 +10,16 @@ pres.layout = "LAYOUT_WIDE";
 const s = pres.addSlide();
 house(pres, s, 31);
 s.addShape(pres.shapes.RECTANGLE, Object.assign(box([0.0625, 0.074, 0.944, 0.965]), { fill: { type: "none" }, line: { color: "A03030", width: 1.5 } }));
-let b = box([0.283, 0.115, 0.638, 0.163]);
-s.addText("Most Common Kernel Functions", { x: b.x, y: b.y, w: b.w, h: b.h, align: "center", fontSize: 22, bold: true, color: "C00000", fontFace: "Arial", margin: 0 });
-function img(key, x, y) { const e = eq[key]; s.addImage({ path: A + `s031_${key}.png`, x, y, w: e.w_in, h: e.h_in }); }
+// House chrome: title box at house position y=0.28
+s.addText("Most Common Kernel Functions", {
+  x: 0.6, y: 0.28, w: 12.13, h: 0.5, align: "center", valign: "top",
+  fontSize: 22, bold: true, color: "C00000", fontFace: "Arial", margin: 0,
+});
+function pngIn(key) {
+  const buf = fs.readFileSync(A + `s031_${key}.png`);
+  return { w_in: buf.readUInt32BE(16) / 600, h_in: buf.readUInt32BE(20) / 600 };
+}
+function img(key, x, y) { const e = eq[key] || pngIn(key); s.addImage({ path: A + `s031_${key}.png`, x, y, w: e.w_in, h: e.h_in }); }
 function rule(boxv, label, labelBox, eqs) {
   s.addShape(pres.shapes.RECTANGLE, Object.assign(box(boxv), { fill: { color: "FFFFFF" }, line: { color: "3333CC", width: 1 } }));
   const lb = box(labelBox);
