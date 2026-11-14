@@ -36,7 +36,7 @@ manifest = {}
 # Equation 1: Net_j = \sum_i (w_{ji} O_i)  — wide equation
 # Per raw.json: "Net_j = \u2211_j (w_ji O_i)" — but the subscript j on sum is wrong per web search
 # Web search confirms: Net_j = \sum_i w_{ji} O_i (sum over i, weight from i to j)
-info = run_render_eq_wide(r"Net_j = \sum_i w_{ji} O_i", "slide_029_eq_net.png", 16)
+info = run_render_eq_wide(r"Net_j = \sum_i (w_{ji} O_i)", "slide_029_eq_net.png", 16)
 manifest["slide_029_eq_net"] = [info]
 
 # Equation 2: O_j = f(Net_j) = \frac{1}{1 + e^{-Net_j}}  — sigmoid

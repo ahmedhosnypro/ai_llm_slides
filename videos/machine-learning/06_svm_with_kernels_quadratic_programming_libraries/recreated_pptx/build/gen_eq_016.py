@@ -15,9 +15,9 @@ os.makedirs(OUT, exist_ok=True)
 BLUE, RED = "#1F49C7", "#C00000"
 # name -> (row segments joined by ||, size_pt, maxw_in, maxh_in)
 EQS = {
-    # x |-> phi(x) = [ x ; x^2 ] as a true 2-D column vector (brackets span both rows)
-    "eq_map": (f"{BLUE}:x\\;\\Rightarrow\\;\\varphi(x)\\;=\\;"
-               f"\\left[\\overset{{x}}{{x^{{2}}}}\\right]", 16, 1.95, 0.60),
+    # x |-> [ x ; x^2 ] as a true 2-D column vector (brackets span both rows)
+    "eq_map": (f"{BLUE}:x\\;\\Rightarrow\\;"
+               f"\\left[\\overset{{x}}{{x^{{2}}}}\\right]", 16, 1.65, 0.40),
     "eq_x2": (f"{RED}:x^{{2}}", 22, 0.55, 0.45),
     "eq_x": (f"{RED}:x", 22, 0.35, 0.45),
 }

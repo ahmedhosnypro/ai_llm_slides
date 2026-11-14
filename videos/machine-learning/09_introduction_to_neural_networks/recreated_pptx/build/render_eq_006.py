@@ -18,8 +18,8 @@ BUILD = Path("/home/codespace/ai_llm_slides/videos/machine-learning/09_introduct
 DPI = 600
 PAD = 8
 
-# target ink width in original-frame px (960 px == 13.33 in == 960 pt, so 1 px == 1 pt)
-TARGET_PX = {"eq_s006_d1": 359, "eq_s006_d2": 349, "eq_s006_dm": 345}
+# Target widths at 600 dpi after mapping the measured original frame to house chrome.
+TARGET_PX = {"eq_s006_d1": 3346, "eq_s006_d2": 3253, "eq_s006_dm": 3215}
 
 BLACK = "#000000"
 RED = "#b51e31"   # measured ink rgb(181,30,49) of the original's red terms

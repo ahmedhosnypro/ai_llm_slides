@@ -1,5 +1,5 @@
 import os
-from PIL import Image
+from PIL import Image, ImageDraw
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
@@ -30,4 +30,17 @@ for sp in ("left", "bottom"):
 fig.subplots_adjust(left=0.04, right=0.98, top=0.96, bottom=0.08)
 fig.savefig(f"{A}/sigmoid_002.png", facecolor="white")
 plt.close(fig)
+
+# Pink elliptical sigmoid badge used inside the two dark-red Model boxes.
+scale = 10
+badge = Image.new("RGBA", (44 * scale, 24 * scale), (0, 0, 0, 0))
+draw = ImageDraw.Draw(badge)
+draw.ellipse((0, 0, 44 * scale - 1, 24 * scale - 1), fill=(255, 225, 255, 255))
+points = []
+for i in range(400):
+    x = -6 + 12 * i / 399
+    y = 1 / (1 + np.exp(-x))
+    points.append(((5 + 34 * i / 399) * scale, (19 - 14 * y) * scale))
+draw.line(points, fill=(112, 48, 160, 255), width=2 * scale, joint="curve")
+badge.resize((44, 24), Image.Resampling.LANCZOS).save(f"{A}/sigmoid_badge_002.png")
 print("assets written:", os.listdir(A))

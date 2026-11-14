@@ -114,8 +114,8 @@ entry("x₂", 256, 164, SZ, "000000", true);
 entry("…", 256, 187, SZ, "000000", true);
 entry("…", 256, 208, SZ, "000000", true);
 entry("xₙ", 256, 229, SZ, "000000", true);
-// weight vector (the leading b is blue in the original, not red)
-entry("b", 602, 120, 20, "0000FF", true);
+// weight vector (the leading b is red in the original)
+entry("b", 602, 120, 20, "C00000", true);
 entry("w₁", 599, 141, SZ, "000000", true);
 entry("w₂", 599, 164, SZ, "000000", true);
 entry("…", 599, 187, SZ, "000000", true);
@@ -142,7 +142,7 @@ s.addText("⇒", {
 });
 // "Augmented Vector" blue italic, x298-406 y161-175 (baseline 171)
 s.addText("Augmented Vector", {
-  x: px(298), y: px(161 - 16), w: px(115), h: px(24),
+  x: px(298), y: px(161 - 16), w: px(121), h: px(24),
   align: "left", valign: "top",
   fontSize: 16, color: "0000FF", fontFace: SERIF, italic: true, margin: 0,
 });

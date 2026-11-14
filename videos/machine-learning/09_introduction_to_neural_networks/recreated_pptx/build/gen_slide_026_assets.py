@@ -5,8 +5,8 @@ All measurements from unique_slides/slide_026.jpg (960x540 px, 1px = 1pt = 1/72i
 
 - cream equation panel: rows 94..222, cols 69..889, fill #feffe8 (drawn by the build)
 - eq row 1 ink rows 107..151: definition cols 76..299 BLACK bold,
-  derivative cols 316..539 RED bold; cream value box cols 560..871, rows 107..149
-- eq row 2 ink rows 176..214: definition cols 78..265, derivative cols 316..468;
+  derivative cols 316..539 BLACK bold; cream value box cols 560..871, rows 107..149
+- eq row 2 ink rows 176..214: definition cols 78..265, derivative cols 316..468 BLACK;
   value box cols 560..871, rows 175..216
 - value box fill #f6e4cc, border #d1c7ac; "at x=0" ink cols 574..627, values cols 664..870
 - chart figure: blue border outer rows 231..432 cols 139..823, mint fill rows 235..427
@@ -29,7 +29,7 @@ DPI = 600
 FS = 20
 
 BLACK = "#1a1a1a"
-RED = "#a02020"   # measured derivative / value ink
+RED = "#a02020"   # measured value-result ink
 
 TANH_RED = "#e74c3c"
 SIG_BLUE = "#3498db"
@@ -81,16 +81,16 @@ def render_eq(mathtext, name, color, target_w_px_960, rescaled=True):
 
 # measured ink widths (960-scale px) per equation part
 eqs = [
-    # row 1: definition (black) + derivative clause (red) + value label/values
+    # row 1: definition and derivative (black) + value label/values
     (r"f(x) = \mathrm{Sigmoid}(x) = \frac{1}{1+e^{-x}}", "eq_s026_def1",
      BLACK, 224),
-    (r"\Rightarrow\ f'(x) = f(x)(1-f(x))", "eq_s026_der1", RED, 224),
+    (r"\Rightarrow\ f'(x) = f(x)(1-f(x))", "eq_s026_der1", BLACK, 224),
     (r"\mathrm{at}\ x=0", "eq_s026_v1a", BLACK, 54),
     (r"f(0)=0.5\quad f'(0)=0.25", "eq_s026_v1b", RED, 207),
     # row 2
     (r"f(x) = \tanh(x) = \frac{\sinh x}{\cosh x}", "eq_s026_def2",
      BLACK, 188),
-    (r"\Rightarrow\ f'(x) = 1-f(x)^{2}", "eq_s026_der2", RED, 153),
+    (r"\Rightarrow\ f'(x) = 1-f(x)^{2}", "eq_s026_der2", BLACK, 153),
     (r"\mathrm{at}\ x=0", "eq_s026_v2a", BLACK, 54),
     (r"f(0)=0\quad f'(0)=1", "eq_s026_v2b", RED, 173),
 ]
@@ -108,18 +108,20 @@ tanh = np.tanh(x)
 sig_d = sigmoid * (1 - sigmoid)
 tanh_d = 1 - tanh ** 2
 
-FW, FH = 9.47222, 2.75694      # measured chart region 140..822 x 232..431 px
+FW, FH = 686 / 72, 202 / 72    # measured chart region 139..825 x 231..433 px
 fig = plt.figure(figsize=(FW, FH), dpi=200)
 fig.patch.set_facecolor(MINT)
 fig.patch.set_edgecolor(BLUE_EDGE)
-fig.patch.set_linewidth(2.0)   # ~2 px at 960 scale
+fig.patch.set_linewidth(2.5)
+fig.add_artist(plt.Rectangle((0, 0), 1, 1, transform=fig.transFigure,
+                             fill=False, edgecolor=BLUE_EDGE, linewidth=2.5))
 
 
 def rect(c0, c1, r0, r1):
-    """original-pixel box -> figure-fractions rect (figure spans cols 140..822,
-    rows 232..431, figure y measured from the bottom)."""
-    return [(c0 - 140) / 682.0, 1 - (r1 - 232) / 199.0,
-            (c1 - c0) / 682.0, (r1 - r0) / 199.0]
+    """original-pixel box -> figure-fractions rect (figure spans cols 139..825,
+    rows 231..433, figure y measured from the bottom)."""
+    return [(c0 - 139) / 686.0, 1 - (r1 - 231) / 202.0,
+            (c1 - c0) / 686.0, (r1 - r0) / 202.0]
 
 
 # ---- left subplot: functions ----
@@ -138,7 +140,7 @@ ax1.axhline(0, color="#555555", lw=1.1, zorder=2)
 ax1.axvline(0, color="#555555", lw=1.1, zorder=2)
 ax1.set_axisbelow(True)
 ax1.legend(loc="upper left", fontsize=8, frameon=True, facecolor="white",
-           edgecolor="#bbbbbb", handlelength=1.6)
+           edgecolor="#bbbbbb", handlelength=1.6, labelspacing=1.5)
 ax1.tick_params(axis="y", labelleft=True, labelright=True, labelsize=8, colors=AXIS)
 ax1.tick_params(axis="x", labelsize=8, colors=AXIS)
 for sp in ax1.spines.values():
@@ -159,7 +161,7 @@ ax2.grid(True, color=GRID, lw=0.6, zorder=1)
 ax2.axvline(0, color="#555555", lw=1.1, zorder=2)
 ax2.set_axisbelow(True)
 ax2.legend(loc="upper right", fontsize=8, frameon=True, facecolor="white",
-           edgecolor="#bbbbbb", handlelength=1.6)
+           edgecolor="#bbbbbb", handlelength=1.6, labelspacing=1.5)
 # red peak-reference labels + horizontal guide lines (original: label left of the
 # peaks, line from just right of the label across the peaks)
 for txt, yv in (("1.0", 1.0), ("0.25", 0.25)):

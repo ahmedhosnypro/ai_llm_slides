@@ -142,19 +142,46 @@ def plane(out, w_in, h_in, marking):
                 "w_in": round(im.size[0] / DPI, 5), "h_in": round(im.size[1] / DPI, 5), "dpi": DPI}
 
 
+def frame_crop(name, box):
+    src = "/home/codespace/ai_llm_slides/videos/machine-learning/08_performance_measure/unique_slides/slide_010.jpg"
+    with Image.open(src) as im:
+        crop = im.crop(box).convert("RGB")
+    w, h = crop.size
+    out = os.path.join(OUT, name)
+    crop.resize((round(w * DPI / 72), round(h * DPI / 72)), Image.Resampling.LANCZOS).save(out, dpi=(DPI, DPI))
+    return {"path": out, "w_px": round(w * DPI / 72), "h_px": round(h * DPI / 72),
+            "w_in": round(w / 72, 5), "h_in": round(h / 72, 5), "dpi": DPI,
+            "source_box": list(box)}
+
+
 manifest = {}
 manifest["frac_num"] = compose_runs([("\\mathbf{T}", BLACK), ("\\mathbf{P}", RED)], 22,
                                     os.path.join(OUT, "eq_010_frac_num.png"))
-manifest["frac_den"] = compose_runs([("\\mathbf{T}", BLACK), ("\\mathbf{P}", RED), ("+", BLACK), ("\\mathbf{F}", RED), ("\\mathbf{N}", RED)], 22,
-                                    os.path.join(OUT, "eq_010_frac_den.png"), gap_px=10)
+den_parts = [render_run("\\mathbf{T}", 22, BLACK), render_run("\\mathbf{P}", 22, RED),
+             render_run("+", 22, BLACK), render_run("\\mathbf{F}", 22, RED),
+             render_run("\\mathbf{N}", 22, RED)]
+den_gaps = [10, 100, 100, 10]
+den_h = max(p.shape[0] for p in den_parts)
+den_w = sum(p.shape[1] for p in den_parts) + sum(den_gaps)
+den = np.zeros((den_h, den_w, 4), dtype=np.uint8)
+x = 0
+for p, gap in zip(den_parts, den_gaps + [0]):
+    y0 = den_h - p.shape[0]
+    den[y0:y0 + p.shape[0], x:x + p.shape[1]] = p
+    x += p.shape[1] + gap
+Image.fromarray(den).save(os.path.join(OUT, "eq_010_frac_den.png"))
+manifest["frac_den"] = {"path": os.path.join(OUT, "eq_010_frac_den.png"),
+                        "w_px": int(den_w), "h_px": int(den_h),
+                        "w_in": round(den_w / DPI, 5), "h_in": round(den_h / DPI, 5),
+                        "dpi": DPI, "fontsize_pt": 22}
 with Image.open(os.path.join(OUT, "eq_010_frac_num.png")) as im:
     num = np.asarray(im)
 with Image.open(os.path.join(OUT, "eq_010_frac_den.png")) as im:
     den = np.asarray(im)
 manifest["fraction"] = compose_fraction(num, den, os.path.join(OUT, "eq_010_fraction.png"))
-manifest["brace"] = brace(os.path.join(OUT, "brace_010.png"))
-manifest["plane_pos"] = plane(os.path.join(OUT, "plane_010_pos.png"), 1.10, 0.55, "skull")
-manifest["plane_neg"] = plane(os.path.join(OUT, "plane_010_neg.png"), 1.15, 0.55, "windows")
+manifest["brace"] = frame_crop("brace_010.png", (108, 387, 335, 401))
+manifest["plane_pos"] = frame_crop("plane_010_pos.png", (588, 318, 678, 374))
+manifest["plane_neg"] = frame_crop("plane_010_neg.png", (764, 318, 854, 374))
 with open(os.path.join(OUT, "eq_010_assets.json"), "w") as f:
     json.dump(manifest, f, indent=2)
 for k, v in manifest.items():

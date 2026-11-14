@@ -120,9 +120,9 @@ for wy in [Y(172), Y(205), Y(242)]:
             va="center", fontweight="bold", style="italic")
 
 # Net_i above column 2, Net_j above column 3 (original labels)
-# Y(146) is the original baseline; keep labels fully inside the panel.
+# Keep the full glyph extents inside the panel, including the taller j subscript.
 for col, label in [(COL2, r"$\mathit{Net}_i$"), (COL3, r"$\mathit{Net}_j$")]:
-    ax.text(col, Y(146) - 0.06, label, fontsize=11, color=RED,
+    ax.text(col, Y(146) - 0.10, label, fontsize=11, color=RED,
             ha="center", va="bottom", fontweight="bold", style="italic")
 
 # O_i beside every column-2 node, O_j beside every column-3 node

@@ -83,10 +83,10 @@ ax.add_line(Line2D([488, 488], [408, 437], color=MAUVE, linewidth=0.8, zorder=4)
 ax.annotate("", xy=(SIG_CX - SIG_R + 1, SIG_CY), xytext=(396, SIG_CY),
             arrowprops=dict(arrowstyle="-|>", color=RED, lw=1.0,
                             mutation_scale=11), zorder=5)
-ax.annotate("", xy=(BOX_L, 420), xytext=(SIG_CX + SIG_R, 420),
+ax.annotate("", xy=(466, 420), xytext=(SIG_CX + SIG_R, 420),
             arrowprops=dict(arrowstyle="-|>", color=RED, lw=1.2,
                             mutation_scale=10), zorder=5)
-ax.annotate("", xy=(577, 420), xytext=(BOX_R, 420),
+ax.annotate("", xy=(577, 420), xytext=(508, 420),
             arrowprops=dict(arrowstyle="-|>", color=RED, lw=1.2,
                             mutation_scale=10), zorder=5)
 ax.text(593, 420, "O/P", ha="center", va="center", fontsize=13,

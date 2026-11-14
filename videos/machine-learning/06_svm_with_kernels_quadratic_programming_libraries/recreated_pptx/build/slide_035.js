@@ -92,11 +92,11 @@ const segOval = (r, info, label) => {
        (g[3] - g[2]) / 600 * r.h / (info.h_px / 600) + 0.04);
 };
 segOval(imgLagL, imgInfo("fix_lag_lower.png"), "tail");
-segOval(imgB_L, imgInfo("fix_b_lower.png"), "t1");
-segOval(imgB_L, imgInfo("fix_b_lower.png"), "t2");
+oval(imgB_L.x + 0.34 * imgB_L.w, imgB_L.y + 0.12 * imgB_L.h, 0.14 * imgB_L.w, 0.76 * imgB_L.h);
+oval(imgB_L.x + 0.76 * imgB_L.w, imgB_L.y + 0.12 * imgB_L.h, 0.14 * imgB_L.w, 0.76 * imgB_L.h);
 // around W^T Z in the lower callout
 {
-  const o = RM(0.365, 0.778, 0.405, 0.826);
+  const o = RM(0.345, 0.778, 0.385, 0.826);
   oval(o.x, o.y, o.w, o.h);
 }
 
@@ -118,38 +118,9 @@ const tU = (runs, box) => s.addText(runs, {
 });
 tU([{ text: "Remember :", options: { fontSize: 15, bold: true, italic: true, color: "0000FF", fontFace: FONT } }],
    RM(0.081, 0.400, 0.172, 0.428));
-// Mapping line (verbatim): Mapping Instead of using X_i (of dimension d) use φ(X_i) (with higher dimension )
-tU([
-  { text: "Mapping", options: { fontSize: 16, bold: true, italic: true, color: "FF0000", fontFace: FONT } },
-  { text: " Instead of using ", options: { fontSize: 15, color: "000000", fontFace: FONT } },
-  { text: "X", options: { fontSize: 15, bold: true, color: "0000FF", fontFace: MATH } },
-  { text: "i", options: { fontSize: 15, bold: true, color: "0000FF", fontFace: MATH, subscript: true } },
-  { text: " (of dimension ", options: { fontSize: 15, color: "000000", fontFace: FONT } },
-  { text: "d", options: { fontSize: 15, bold: true, italic: true, color: "FF0000", fontFace: MATH } },
-  { text: ") use ", options: { fontSize: 15, color: "000000", fontFace: FONT } },
-  { text: "φ(X", options: { fontSize: 15, color: "FF0000", fontFace: MATH } },
-  { text: "i", options: { fontSize: 15, color: "FF0000", fontFace: MATH, subscript: true } },
-  { text: ") (with higher dimension )", options: { fontSize: 15, italic: true, color: "FF0000", fontFace: FONT } },
-], RM(0.081, 0.433, 0.707, 0.467));
-// Kernelization line (verbatim): ... use K(X_i^T, X_j^T) (Where K is one of kernel functions)
-tU([
-  { text: "Kernelization", options: { fontSize: 16, bold: true, italic: true, color: "FF0000", fontFace: FONT } },
-  { text: " Instead of using ", options: { fontSize: 15, color: "000000", fontFace: FONT } },
-  { text: "φ(X", options: { fontSize: 15, color: "FF0000", fontFace: MATH } },
-  { text: "i", options: { fontSize: 15, color: "FF0000", fontFace: MATH, subscript: true } },
-  { text: ") φ(X", options: { fontSize: 15, color: "FF0000", fontFace: MATH } },
-  { text: "j", options: { fontSize: 15, color: "FF0000", fontFace: MATH, subscript: true } },
-  { text: ") use ", options: { fontSize: 15, color: "000000", fontFace: FONT } },
-  { text: "K(X", options: { fontSize: 15, bold: true, color: "FF0000", fontFace: MATH } },
-  { text: "i", options: { fontSize: 15, bold: true, color: "FF0000", fontFace: MATH, subscript: true } },
-  { text: "T", options: { fontSize: 15, bold: true, color: "FF0000", fontFace: MATH, superscript: true } },
-  { text: ", X", options: { fontSize: 15, bold: true, color: "FF0000", fontFace: MATH } },
-  { text: "j", options: { fontSize: 15, bold: true, color: "FF0000", fontFace: MATH, subscript: true } },
-  { text: ")", options: { fontSize: 15, bold: true, color: "FF0000", fontFace: MATH } },
-  { text: " (Where ", options: { fontSize: 15, italic: true, color: "0000FF", fontFace: FONT } },
-  { text: "K", options: { fontSize: 15, italic: true, color: "0000FF", fontFace: MATH } },
-  { text: " is one of kernel functions)", options: { fontSize: 15, italic: true, color: "0000FF", fontFace: FONT } },
-], RM(0.081, 0.530, 0.813, 0.561));
+img("fix_mapping.png", RM(0.081, 0.433, 0.707, 0.467), "left");
+img("fix_mapping2.png", RM(0.270, 0.475, 0.707, 0.515), "left");
+img("fix_kernel.png", RM(0.081, 0.530, 0.813, 0.561), "left");
 // Callout texts: "Class of vector Z ⇒ sign(W^T Z + b)" (upper: black/green/red/blue; lower: red/black)
 const callout = (c, runs) => s.addText(runs, {
   x: c.x, y: c.y, w: c.w, h: c.h, align: "center", valign: "middle", margin: 0,

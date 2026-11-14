@@ -37,11 +37,11 @@ s.addText("Less Than Equal Constraints", {
 function meta(name) { return JSON.parse(fs.readFileSync(EQ + "rb5_" + name + ".json")); }
 function imgC(name, cx, cy) {
   const j = meta(name);
-  s.addImage({ path: EQ + "rb5_" + name + ".png", x: cx - j.w_in / 2, y: cy - j.h_in / 2, w: j.w_in });
+  s.addImage({ path: EQ + "rb5_" + name + ".png", x: cx - j.w_in / 2, y: cy - j.h_in / 2, w: j.w_in, h: j.h_in });
 }
 function imgL(name, x, bandY, bandH) {
   const j = meta(name);
-  s.addImage({ path: EQ + "rb5_" + name + ".png", x, y: bandY + (bandH - j.h_in) / 2, w: j.w_in });
+  s.addImage({ path: EQ + "rb5_" + name + ".png", x, y: bandY + (bandH - j.h_in) / 2, w: j.w_in, h: j.h_in });
 }
 function txt(x, y, w, h, runs, extra) {
   s.addText(runs, Object.assign({ x, y, w, h, margin: 0, valign: "middle", fontFace: SANS }, extra));
@@ -63,16 +63,18 @@ function gxChip(x0n, y0n, x1n, y1n) {
   s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
     x, y, w, h, fill: { color: "F4CCCC" }, line: { color: LABEL_RED, width: 1.25 },
   });
-  imgC("gxleh", x + w / 2, y + h / 2);
+  const j = meta("gxleh");
+  s.addImage({ path: EQ + "rb5_gxleh.png", x: x + (w - j.w_in * 2) / 2,
+    y: y + (h - j.h_in * 2) / 2, w: j.w_in * 2, h: j.h_in * 2 });
 }
 gxChip(0.760, 0.175, 0.900, 0.215);
 gxChip(0.760, 0.600, 0.900, 0.640);
 
 s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
-  x: 0.674 * W, y: 0.375 * H, w: (0.902 - 0.674) * W, h: (0.535 - 0.375) * H,
+  x: 0.700 * W, y: 0.375 * H, w: (0.920 - 0.700) * W, h: (0.535 - 0.375) * H,
   fill: { color: "FFF8DC" }, line: { color: "808080", width: 0.75 },
 });
-const convCx = (0.674 + 0.902) / 2 * W;
+const convCx = (0.700 + 0.920) / 2 * W;
 txt(0.063 * W, 0.19 * H, (0.19 - 0.063) * W, 0.375,
   [run("3 constraints", { bold: true, italic: true, color: LABEL_RED, fontSize: 14 })],
   { align: "left" });
@@ -85,9 +87,9 @@ txt(0.674 * W, 0.380 * H, (0.902 - 0.674) * W, 0.25,
   { align: "center" });
 {
   const j1 = meta("conv1");
-  s.addImage({ path: EQ + "rb5_conv1.png", x: convCx - j1.w_in / 2, y: 0.415 * H, w: j1.w_in });
+  s.addImage({ path: EQ + "rb5_conv1.png", x: convCx - j1.w_in, y: 0.415 * H, w: j1.w_in * 2, h: j1.h_in * 2 });
   const j2 = meta("conv2");
-  s.addImage({ path: EQ + "rb5_conv2.png", x: convCx - j2.w_in / 2, y: 0.490 * H, w: j2.w_in });
+  s.addImage({ path: EQ + "rb5_conv2.png", x: convCx - j2.w_in / 2, y: 0.490 * H, w: j2.w_in, h: j2.h_in });
 }
 txt(0.674 * W, 0.465 * H, (0.902 - 0.674) * W, 0.20,
   [run("to", { color: GREEN, fontSize: 11 })], { align: "center" });

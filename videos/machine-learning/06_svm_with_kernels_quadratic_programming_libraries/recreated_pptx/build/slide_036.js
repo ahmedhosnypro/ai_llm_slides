@@ -54,8 +54,8 @@ function richLabel(b, runs) {
 
 // ---- panels, peach class strips INSIDE the panels, w/b row boxes (judge MAJORs/MINORs) ----
 box([0.06, 0.08, 0.32, 0.14], "FFFFFF", "3333CC", pres.shapes.ROUNDED_RECTANGLE);
-box([0.05, 0.23, 0.96, 0.46], "F0FFF0", "3333CC");
-box([0.05, 0.59, 0.96, 0.87], "F0FFF0", "3333CC");
+box([0.05, 0.23, 0.96, 0.46], "F7F7DE", "3333CC");
+box([0.05, 0.59, 0.96, 0.87], "F7F7DE", "3333CC");
 box([0.12, 0.405, 0.88, 0.45], "FFDAB9", "800000");
 box([0.12, 0.81, 0.88, 0.865], "FFDAB9", "800000");
 box([0.07, 0.345, 0.36, 0.425], "FFFFFF", "3333CC");
@@ -64,7 +64,7 @@ box([0.07, 0.71, 0.36, 0.79], "FFFFFF", "3333CC");
 box([0.37, 0.71, 0.93, 0.79], "FFFFFF", "3333CC");
 // center kernel row
 box([0.28, 0.47, 0.42, 0.54], "FFFFFF", "800000");
-box([0.59, 0.48, 0.71, 0.54], "FFFFFF", "800000");
+box([0.46, 0.48, 0.64, 0.54], "FFFFFF", "800000");
 // labels: "Example:" black italic + "Quadratic Kernel" bold blue; "Kernelize using" black italic
 richLabel([0.06, 0.08, 0.32, 0.14], [
   ["Example: ", { italic: true, color: "000000" }],
@@ -76,7 +76,7 @@ richLabel([0.28, 0.47, 0.42, 0.54], [
 
 // ---- red HOLLOW down-arrow between the panels, tip above the bottom panel (judge MINOR) ----
 s.addShape(pres.shapes.DOWN_ARROW, {
-  x: 0.43 * IN_X, y: 0.545 * IN_Y, w: 0.04 * IN_X, h: 0.04 * IN_Y,
+  x: 0.43 * IN_X, y: 0.535 * IN_Y, w: 0.04 * IN_X, h: 0.065 * IN_Y,
   fill: { type: "none" }, line: { color: "FF0000", width: 2 },
 });
 

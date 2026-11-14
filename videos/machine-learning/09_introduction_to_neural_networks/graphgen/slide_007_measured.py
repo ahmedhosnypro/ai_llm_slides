@@ -21,9 +21,9 @@ red = "#C00000"
 green = "#008000"
 blue = "#0000FF"
 
-red_line = np.array([[245, 195], [570, 468]], dtype=float)
-green_line = np.array([[235, 360], [700, 185]], dtype=float)
-blue_line = np.array([[350, 460], [618, 125]], dtype=float)
+red_line = np.array([[266, 202], [670, 475]], dtype=float)
+green_line = np.array([[250, 380], [747, 215]], dtype=float)
+blue_line = np.array([[377, 477], [690, 133]], dtype=float)
 
 
 def y_on(line, x):

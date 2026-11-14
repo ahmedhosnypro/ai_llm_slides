@@ -40,7 +40,7 @@ FX_FS = 34.0     # trailing red X: cap height 23px => 34.7pt
 RED = "#E00000"
 GREEN = "#008000"
 BLACK = "#000000"
-PANEL_GRAY = (232, 232, 232)
+PANEL_GRAY = (254, 255, 253)
 
 ASSETS = "/home/codespace/ai_llm_slides/videos/machine-learning/09_introduction_to_neural_networks/recreated_pptx/build/assets/"
 

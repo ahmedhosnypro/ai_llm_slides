@@ -35,7 +35,7 @@ EQS = [
      r"#000000:L_D(\alpha) = {\sum}_{i=1}^{N} \alpha_i - \frac{1}{2} {\sum}_{j=1}^{N}{\sum}_{i=1}^{N} \alpha_i \alpha_j y_i y_j [X_i^T X_j + 1]^d",
      [0.1, 0.64, 0.9, 0.72], 0.103),
     ("s37f_b_kern",
-     r"#000000:b = -\frac{1}{2}\left[\max_{i:y_i=-1} [W^T X_i + 1]^d + \min_{i:y_i=+1} [W^T X_i + 1]^d\right]",
+     r"#000000:b = -\frac{1}{2}\left[\max_{i:y_i=-1} [W_i^T X_j + 1]^d + \min_{i:y_i=+1} [W_i^T X_j + 1]^d\right]",
      [0.35, 0.73, 0.9, 0.78], 0.358),
     ("s37f_cls_kern",
      r"#000000:\mathrm{Class\ of\ vector}\ Z\ \mathrm{is}\ \mathrm{sign}([W^T Z + 1]^d + b)",

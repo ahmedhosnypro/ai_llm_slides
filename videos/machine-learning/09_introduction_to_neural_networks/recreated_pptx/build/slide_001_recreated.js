@@ -1,4 +1,4 @@
-// Pattern: house-chrome + slide 001 content (wave-3 rejudge: emblem added to logo tile, logo kept inside frame)
+// Pattern: house-chrome + measured slide 001 content geometry
 // Build: NODE_PATH=$(npm root -g) node slide_001_recreated.js
 const pptxgen = require("pptxgenjs");
 

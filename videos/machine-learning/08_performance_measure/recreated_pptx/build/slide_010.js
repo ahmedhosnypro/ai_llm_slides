@@ -18,11 +18,11 @@ s.addShape(pptx.shapes.OVAL, { x: 12.48, y: 0.30, w: 0.5, h: 0.5, fill: { color:
 s.addText("10", { x: 12.48, y: 0.30, w: 0.5, h: 0.5, align: "center", valign: "middle", fontSize: 18, bold: true, color: INK, fontFace: FONT, margin: 0 });
 s.addText("Recall", { x: 0.6, y: 0.28, w: 12.13, h: 0.5, align: "center", valign: "middle", fontSize: 40, bold: true, color: RED, fontFace: FONT, margin: 0 });
 
-// 1. GRAY DEFINITION BAND (orig x70-657, y46-166 px; top dropped to clear house title box)
-s.addShape(pptx.shapes.RECTANGLE, { x: 0.97, y: 0.80, w: 8.15, h: 1.51, fill: { color: "D9D9D9" }, line: { color: "BFBFBF", width: 0.75 } });
-s.addText("Correctly Classified (as Positive)", { x: 1.1, y: 1.55, w: 7.9, h: 0.35, fontSize: 15, bold: true, color: TEXT, fontFace: FONT, margin: 0, align: "center" });
-s.addShape(pptx.shapes.LINE, { x: 1.125, y: 1.95, w: 7.83, h: 0, line: { color: RED, width: 2 } });
-s.addText("Total objects that should be retrieved (Actually Positive)", { x: 1.1, y: 2.02, w: 7.9, h: 0.28, fontSize: 13, bold: true, color: TEXT, fontFace: FONT, margin: 0, align: "center" });
+// 1. GRAY DEFINITION BAND (orig x70-657, y111-176 px)
+s.addShape(pptx.shapes.RECTANGLE, { x: 70/72, y: 111/72, w: 587/72, h: 65/72, fill: { color: "D9D9D9" }, line: { color: "BFBFBF", width: 0.75 } });
+s.addText("Correctly Classified (as Positive)", { x: 1.1, y: 118/72, w: 7.9, h: 0.35, fontSize: 17.5, bold: true, color: TEXT, fontFace: FONT, margin: 0, align: "center" });
+s.addShape(pptx.shapes.LINE, { x: 81/72, y: 143/72, w: 564/72, h: 0, line: { color: RED, width: 2 } });
+s.addText("Total objects that should be retrieved (Actually Positive)", { x: 1.1, y: 151/72, w: 7.9, h: 0.35, fontSize: 17.5, bold: true, color: TEXT, fontFace: FONT, margin: 0, align: "center" });
 
 // 2. MEANING PANEL (orig x72-614, y202-255 px)
 s.addShape(pptx.shapes.RECTANGLE, { x: 1.0, y: 2.81, w: 7.53, h: 0.74, fill: { color: "FFFFCC" }, line: { color: "D0C000", width: 0.75 } });

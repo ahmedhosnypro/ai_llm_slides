@@ -16,6 +16,8 @@ const X_MIN = 0, X_MAX = 40;
 const Y_MIN = -10, Y_MAX = 40;
 
 const mapper = addPlotShell(pres, s, PX, PY, PW, PH, X_MIN, X_MAX, Y_MIN, Y_MAX, "", "");
+const path = require("path");
+s.addImage({ path: path.join(__dirname, "slide_042_graph.png"), x: 0.20 * W, y: 0.12 * H, w: 0.56 * W, h: 0.75 * H });
 
 // Seven clusters
 // blue upper-left (approx x 5-15, y 15-30)

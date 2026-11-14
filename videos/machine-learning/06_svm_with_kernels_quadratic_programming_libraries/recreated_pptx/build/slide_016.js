@@ -43,7 +43,7 @@ s.addText([
 const pf = box([0.090, 0.161, 0.902, 0.883]);
 s.addShape(pres.shapes.RECTANGLE, {
   x: pf.x, y: pf.y, w: pf.w, h: pf.h,
-  fill: { type: "none" }, line: { color: "C00000", width: 1 },
+  fill: { color: "FFFFFF" }, line: { color: "C00000", width: 1 },
 });
 
 // Beige "Mapping" box, peach fill, blue italic serif header
@@ -57,11 +57,11 @@ s.addText([
   { text: "\u21d2", options: { fontSize: 15, color: "000000", fontFace: SERIF } },
   { text: "  \u03c6(x)", options: { fontSize: 15, color: "C00000", fontFace: SERIF } },
 ], {
-  x: mb.x + 0.01, y: mb.y + 0.01, w: mb.w - 0.02, h: 0.06,
+  x: mb.x + 0.01, y: mb.y + 0.01, w: mb.w - 0.02, h: 0.28,
   align: "left", valign: "middle", margin: 0,
 });
 // Equation image x => [ x ; x^2 ] (true 2-D column, black serif), inside the box
-const eb = box([0.110, 0.330, 0.280, 0.405]);
+const eb = box([0.110, 0.300, 0.280, 0.360]);
 const em = man.eq_map;
 s.addImage({
   path: path.join(EQ, em.file), w: em.w_in,
@@ -118,7 +118,7 @@ s.addShape(pres.shapes.LINE, {
 s.addText([
   { text: "x", options: { fontSize: 18, italic: true, color: "C00000", fontFace: SERIF } },
   { text: "2", options: { fontSize: 12, italic: true, color: "C00000", fontFace: SERIF, superscript: true } },
-], { x: AX * W + 0.09, y: 0.150 * H, w: 0.5, h: 0.3, margin: 0 });
+], { x: AX * W + 0.09, y: 0.235 * H, w: 0.5, h: 0.3, margin: 0 });
 s.addText("x", {
   x: 0.862 * W, y: 0.822 * H, w: 0.3, h: 0.3, margin: 0,
   fontSize: 15, italic: true, color: "C00000", fontFace: SERIF,
@@ -134,8 +134,8 @@ s.addShape(pres.shapes.LINE, {
 // Red class: V converging toward the vertical axis as it approaches the x-axis.
 const cyan = [[0.327, 0.237], [0.656, 0.237], [0.356, 0.394],
               [0.589, 0.394], [0.385, 0.526], [0.560, 0.526]];
-const red = [[0.415, 0.596], [0.473, 0.687], [0.502, 0.737],
-             [0.531, 0.687], [0.560, 0.596], [0.444, 0.760]];
+const red = [[0.3863, 0.6468], [0.4158, 0.7363], [0.4471, 0.7867],
+             [0.4914, 0.7865], [0.5232, 0.7363], [0.5543, 0.6467]];
 function dots(list, color) {
   list.forEach(p => {
     const cx = p[0] * W, cy = p[1] * H, r = 0.085;

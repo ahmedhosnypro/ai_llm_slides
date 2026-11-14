@@ -118,7 +118,7 @@ ticks.forEach(t => {
 const dots = [];
 for (let row = 0; row < 4; row++) {
   for (let col = 0; col < 4; col++) {
-    const cx = 3.5 + col * 6, cy = 3.5 + row * 6;
+    const cx = [3.5, 9.5, 15.5, 21.5][col], cy = 3.5 + row * 6;
     const color = (row + col) % 2 === 0 ? "FF0000" : "0000FF";
     for (const dx of [-0.5, 0.5]) {
       for (const dy of [-0.5, 0.5]) dots.push({x: cx + dx, y: cy + dy, c: color});

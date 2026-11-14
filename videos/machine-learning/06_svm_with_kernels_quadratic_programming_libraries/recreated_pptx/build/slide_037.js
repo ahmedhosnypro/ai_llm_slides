@@ -36,9 +36,9 @@ function box(b, fill, line, shape) {
     Object.assign(N(b), { fill: { color: fill }, line: { color: line, width: 1.25 } }));
 }
 box([0.07, 0.07, 0.93, 0.16], "FFFFFF", "00008B", pres.shapes.ROUNDED_RECTANGLE);
-box([0.07, 0.17, 0.93, 0.45], "F5F5F5", "00008B", pres.shapes.ROUNDED_RECTANGLE);
-box([0.07, 0.49, 0.93, 0.61], "E0E0E0", "00008B", pres.shapes.ROUNDED_RECTANGLE);
-box([0.07, 0.62, 0.93, 0.93], "F5F5F5", "00008B", pres.shapes.ROUNDED_RECTANGLE);
+box([0.07, 0.17, 0.93, 0.45], "F7F7DE", "00008B", pres.shapes.ROUNDED_RECTANGLE);
+box([0.07, 0.49, 0.93, 0.61], "E8E8E8", "00008B", pres.shapes.ROUNDED_RECTANGLE);
+box([0.07, 0.62, 0.93, 0.93], "F7F7DE", "00008B", pres.shapes.ROUNDED_RECTANGLE);
 box([0.08, 0.08, 0.35, 0.14], "FFFFFF", "00008B");
 
 // ---- house chrome title + badge numeral (on top of the header band) ----
@@ -77,7 +77,7 @@ for (const name of Object.keys(HL)) {
 
 // ---- red down-arrow (original-measured [0.435,0.512,0.551,0.596]) ----
 s.addShape(pres.shapes.DOWN_ARROW, Object.assign(N([0.435, 0.512, 0.551, 0.596]), {
-  fill: { color: "FF0000" }, line: { color: "FF0000", width: 0.5 },
+  fill: { type: "none" }, line: { color: "FF0000", width: 2 },
 }));
 
 // ---- equations on top of the highlights ----

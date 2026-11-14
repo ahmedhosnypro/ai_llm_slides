@@ -8,13 +8,13 @@
 // MEASURED GEOMETRY (original px -> slide in = px/72)
 //   cream equation panel   rows 94..222   cols 69..889    (fill #feffe8)
 //   eq row 1 ink rows 107..151: def cols 76..299 (black bold)
-//                                    deriv cols 316..539 (red bold)
+//                                    deriv cols 316..539 (black bold)
 //                                    value box cols 560..871 rows 107..149
 //   eq row 2 ink rows 176..214: def cols 78..265
-//                                    deriv cols 316..468
+//                                    deriv cols 316..468 (black bold)
 //                                    value box cols 560..871 rows 175..216
 //   value-box text: "at x=0" cols 574..627 (black), values cols 664..870 (red)
-//   chart figure  blue border outer rows 231..432 cols 139..823 (mint #e5ffef)
+//   chart figure  blue border outer rows 231..432 cols 139..824 (mint #e5ffef)
 //   footer box    rows 446..513 cols 59..898, white fill, red border, rounded
 //   footer text   3 lines, ink rows 455..467 / 474..488 / 492..505,
 //                 Arial regular ~16pt, line 1 maroon, lines 2-3 navy,
@@ -89,7 +89,7 @@ function eq(name, inkLeftPx, centerRowPx) {
   s.addImage({ path: path.join(B, e.image), x, y, w: e.w_in, h: e.h_in });
 }
 
-// row 1 — definition (black bold) then derivative clause (red bold)
+// row 1 — definition (black bold) then derivative clause (black bold)
 eq("eq_s026_def1", 76, 129);
 eq("eq_s026_der1", 316, 129);
 // row 2
@@ -119,7 +119,7 @@ valueBox([175, 216], "eq_s026_v2a", "eq_s026_v2b");
 // (judge finding 2: those were entirely absent).
 s.addImage({
   path: path.join(B, "slide_026_charts.png"),
-  x: px(140), y: px(232), w: px(822 - 140), h: px(431 - 232),
+  x: px(139), y: px(231), w: px(825 - 139), h: px(433 - 231),
 });
 
 // ---- FOOTER ----

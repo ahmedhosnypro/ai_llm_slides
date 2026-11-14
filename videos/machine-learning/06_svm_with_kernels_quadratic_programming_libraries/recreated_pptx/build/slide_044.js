@@ -15,6 +15,8 @@ const X_MIN = 0, X_MAX = 50;
 const Y_MIN = 0, Y_MAX = 30;
 
 const mapper = addPlotShell(pres, s, PX, PY, PW, PH, X_MIN, X_MAX, Y_MIN, Y_MAX, "", "");
+const path = require("path");
+s.addImage({ path: path.join(__dirname, "slide_044_graph.png"), x: 0.20 * W, y: 0.10 * H, w: 0.56 * W, h: 0.77 * H });
 
 addCluster(pres, s, mapper, 10, 20, 5, 300, "000000", 0.025);
 addCluster(pres, s, mapper, 20, 19, 4, 250, "FF00FF", 0.025);

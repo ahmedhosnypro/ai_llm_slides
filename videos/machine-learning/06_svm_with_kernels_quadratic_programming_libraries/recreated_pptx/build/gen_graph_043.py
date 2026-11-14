@@ -62,7 +62,9 @@ yy = np.linspace(-10, 40, 180)
 XX, YY = np.meshgrid(xx, yy)
 centers = [(10, 22), (22, 23), (33, 22), (7, 12), (18, 8), (6, 3), (33, 7)]
 d2 = np.min(np.stack([(XX-x)**2 + (YY-y)**2 for x, y in centers]), axis=0)
-bg = np.where(d2 < 30, "#D9D9D9", "#F4A6A6")
+palette = ["#0000FF", "#FF0000", "#00FFFF", "#FFFF00", "#FF00FF", "#00FF00", "#000000"]
+dists = np.stack([(XX-x)**2 + (YY-y)**2 for x, y in centers])
+bg = np.take(palette, np.argmin(dists, axis=0))
 ax.scatter(XX.ravel(), YY.ravel(), s=3, c=bg.ravel(), marker="s", linewidths=0, zorder=1)
 
 out = BASE + "/slide_043_graph.png"

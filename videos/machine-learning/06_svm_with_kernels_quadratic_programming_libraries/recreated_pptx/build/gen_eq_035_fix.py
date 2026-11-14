@@ -58,11 +58,10 @@ def w_form():
 
 def b_form():
     return [
-        ["b", BLUE, "b"], ["eq", BLACK, "="], ["minus", BLACK, "-"],
-        ["half", BLACK, r"\frac{1}{2}"], ["lb", BLACK, "["],
-        ["max", RED, r"\max_{i:y_i=-1}"], ["t1", BLUE, r"W^T X_i"],
-        ["plus", BLACK, "+"], ["min", RED, r"\min_{i:y_i=+1}"],
-        ["t2", BLUE, r"W^T X_i"], ["rb", BLACK, "]"],
+        ["b", "00B050", "b"], ["eq", BLACK, "="], ["minus", BLACK, "-"],
+        ["half", BLACK, r"\frac{1}{2}"],
+        ["body", BLACK, r"\left[\max_{i:y_i=-1} W^T X_i+\min_{i:y_i=+1} W^T X_i\right]"],
+
     ]
 
 
@@ -72,6 +71,9 @@ JOBS = [
     ("fix_w", w_form(), 1.65, 0.70),
     ("fix_b_upper", b_form(), 5.75, 0.70),
     ("fix_b_lower", b_form(), 5.75, 0.70),
+    ("fix_mapping", [["all", BLACK, r"\mathrm{Mapping\ Instead\ of\ using}\ X_i\ \mathrm{(of\ dimension}\ d\mathrm{)\ use}\ \phi(X_i)\ \mathrm{(with\ higher\ dimension)}"]], 8.0, 0.30),
+    ("fix_mapping2", [["all", BLACK, r"X_i^T X_j\ \Rightarrow\ \phi(X_i)^T\phi(X_j)"]], 4.0, 0.30),
+    ("fix_kernel", [["all", BLACK, r"\mathrm{Kernelization\ Instead\ of\ using}\ \phi(X_i)^T\phi(X_j)\ \mathrm{use}\ K(X_i^T,X_j)\ \mathrm{(Where}\ K\ \mathrm{is\ one\ of\ kernel\ functions)}"]], 9.5, 0.30),
 ]
 
 
